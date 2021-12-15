@@ -17,6 +17,53 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## December 8, 2021: 2.15 release
+This section lists notable changes made from September 9, 2021,
+through December 8, 2021.
+For details about the 2.15 release, see [Announcing Dart 2.15][].
+
+[Announcing Dart 2.15]: https://medium.com/dartlang/dart-2-15-7e7a598e508a
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Added [Concurrency in Dart][], which discusses features such as
+  isolates that enable parallel execution of Dart code.
+* Documented pub features added or improved in 2.15:
+  * Added a page for a new pub subcommand, [dart pub token][],
+    and a page about [custom package repositories][]
+  * Added information about [package retraction][]
+  * Added the [false_secrets][] field to the pubspec page
+  * Updated the syntax for [hosted dependencies][]
+* Removed all entries for Dart 1 [books][]
+* Expanded on [DartPad troubleshooting tips][]
+* Updated the [diagnostic messages][] page
+* Updated the [linter rules][] page;
+  removed references to deprecated rule sets such as
+  `effective_dart`
+* Updated the instructions for installing and using
+  [Dart DevTools][]
+* Added information about what the [Dart runtime][] provides,
+  and clarified [compilation formats][]
+
+[books]: /resources/books
+[compilation formats]: /tools/dart-compile
+[Concurrency in Dart]: /guides/language/concurrency
+[custom package repositories]: /tools/pub/custom-package-repositories
+[Dart DevTools]: /tools/dart-devtools
+[dart pub token]: /tools/pub/cmd/pub-token
+[Dart runtime]: /overview#runtime
+[DartPad troubleshooting tips]: /tools/dartpad/troubleshoot
+[diagnostic messages]: /tools/diagnostic-messages
+[false_secrets]: /tools/pub/pubspec#false_secrets
+[hosted dependencies]: /tools/pub/dependencies#hosted-packages
+[linter rules]: /tools/linter-rules
+[package retraction]: /tools/pub/publishing#retract
+
+
 ## September 8, 2021: 2.14 release
 
 This section lists notable changes made from May 20, 2021,
