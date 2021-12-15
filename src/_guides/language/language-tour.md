@@ -4397,7 +4397,7 @@ Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.  
 
 For more information, see the following:
-* [Concurrency in Dart][/guides/language/concurrency]
+* [Concurrency in Dart](/guides/language/concurrency)
 * [dart:isolate API reference,][dart:isolate]
   including [Isolate.spawn()][] and
   [TransferableTypedData][]
