@@ -121,9 +121,12 @@ jobs:
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
       - run: ./tool/build.sh
-      - run: ./tool/shared/deploy.sh --robots ok default
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
+          projectId: dart-dev
+          channelId: live
 
   deploy_preview:
     needs: test
