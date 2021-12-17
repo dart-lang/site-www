@@ -65,16 +65,16 @@ jobs:
       github.repository == 'VGVentures/dart-site-www'
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - run: dpkg --print-architecture
       - run: tool/fetch-dart-sdk-sums.sh
-        # with:
-        #   submodules: recursive
-      # - run: make build
-      # - run: make stage
-      #   env:
-      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      #     FIREBASE_PROJECT: vgv
-      #     FIREBASE_CHANNEL: dart
+      - run: make build
+      - run: make stage
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_PROJECT: vgv
+          FIREBASE_CHANNEL: dart
 
 
   # TODO what is this for?

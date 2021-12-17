@@ -25,18 +25,21 @@ done
 
 BASEURL="https://storage.googleapis.com/dart-archive/channels"
 CHANNELS="stable beta dev"
-ARCHS="x64 arm64"
+ARCHS="amd64 arm64"
 
+# Prints output similar to cases in Dockerfile for easy composition
 for CHANNEL in $CHANNELS; do
-  printf "\nFetching sums for the '$CHANNEL' channel...\n\n"
   for ARCH in $ARCHS; do
-    FILENAME="dartsdk-linux-$ARCH-release.zip"
+    echo "${ARCH}_${CHANNEL}) \\"
+    _arch=$ARCH
+    if [[ "$_arch" == "amd64" ]]; then
+      _arch='x64'
+    fi
+    FILENAME="dartsdk-linux-${_arch}-release.zip"
     URL="$BASEURL/$CHANNEL/release/$VERSION/sdk/$FILENAME"
-    echo "Downloading $URL..."
     curl -fsSLO $URL
-    echo "=> $CHANNEL :: $ARCH"
-    shasum -a 256 $FILENAME
+    echo "  DART_SHA256="$(shasum -a 256 $FILENAME)"; \\"
+    echo "  SDK_ARCH="$_arch";; \\"
     rm $FILENAME
-    echo ""
   done
 done

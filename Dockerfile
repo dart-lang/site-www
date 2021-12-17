@@ -26,19 +26,25 @@ ENV DART_VERSION=$DART_VERSION
 ENV DART_CHANNEL=$DART_CHANNEL
 ENV DART_SDK=/usr/lib/dart
 ENV PATH=$DART_SDK/bin:$PATH
-RUN set -eou; \
+RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
-      amd64_stable|amd64_beta) \
-        DART_SHA256="53557538f98578d642741c45cbbcaa01b004d1cc61f5fd94a8a426ade26ef580"; \
+      amd64_stable) \
+        DART_SHA256="0f45dcaa53b4090b69b277b885ea9a4cb3a41589c9119113e1b978ad55ce335f"; \
         SDK_ARCH="x64";; \
-      arm64_stable|arm64_beta) \
-        DART_SHA256="bfa01d1842fccf9e59bfed8edbb3e43921d37b04d4cf1af6a6895e3bc6243000"; \
+      arm64_stable) \
+        DART_SHA256="8836c294234352cc53e8aea4a1ce0442ebbb769a536ce7f309579da5020a2395"; \
+        SDK_ARCH="arm64";; \
+      amd64_beta) \
+        DART_SHA256="b758aefce016c0dfdc8b4e2941c88e0a5c0d29339c4432abd58fab4ef076d2dc"; \
+        SDK_ARCH="x64";; \
+      arm64_beta) \
+        DART_SHA256="1427731141075364bc2f6b2c89c3db28e781048b05149ab8d336ab213382aea6"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="e62bad19024540a641f463523c952e1ee95883c1a5cd861486ccc72f4614cfab"; \
+        DART_SHA256="12f1f7bc8b7d47fdaab5db420ff5640f1f2f0ad37eae7586e291d4b410aef528"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="b9b309a529c1fbee4ea3b0a2b5da45c93dad178332d0370f8d259c1bae99ee1b"; \
+        DART_SHA256="90fdcadbd1065c26a198aabebde53460ab83cf900c8363d51ccc263cddd51ab8"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -65,7 +71,7 @@ RUN $TOOL_DIR/test.sh
 
 # ============== NODEJS INSTALL ==============
 FROM dart as node
-RUN set -eou; \
+RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
     NODE_SHA256=4ba781bb650a918fd05aae57b092852eb411ea2984c88e9d1afae089f428a9b1; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
