@@ -3,6 +3,9 @@
 
 set -eou pipefail
 
+VERSION="latest"
+CHANNEL="stable"
+
 while (( "$#" )); do
   case "$1" in
     --version)
