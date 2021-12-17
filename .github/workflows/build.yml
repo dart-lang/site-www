@@ -65,7 +65,7 @@ jobs:
       github.repository == 'VGVentures/dart-site-www'
     steps:
       - uses: actions/checkout@v2
-      - run: printf "\n\nARCH: $(uname -p)\n\n"
+      - run: dpkg --print-architecture
       - run: tool/fetch-dart-sdk-sums.sh
         # with:
         #   submodules: recursive
