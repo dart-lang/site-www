@@ -15,8 +15,7 @@ services:
       - NODE_ENV=development
     ports:
       - "4002:4002"
-      # - "35729:35729"
-      - "5500:5500"
+      - "5000:5000"
     volumes:
       - ./analysis_options.yaml:/app/analysis_options.yaml
       - ./build.excerpt.yaml:/app/build.excerpt.yaml

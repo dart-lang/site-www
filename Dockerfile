@@ -112,10 +112,9 @@ RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
 
-# Jekyl & Firebase ports
-# EXPOSE 35729
+# Jekyl and Firebase ports
 EXPOSE 4002
-EXPOSE 5500
+EXPOSE 5000
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog
@@ -151,3 +150,11 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 FROM build as build-tests
 RUN npm install -g firebase-tools concurrently linkinator
 RUN npm run checklinks
+
+
+# ============== DEPLOY to FIREBASE ==============
+FROM build-tests as deploy
+ARG FIREBASE_TOKEN
+ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
+RUN [[ -z $FIREBASE_TOKEN ]] && echo "FIREBASE_TOKEN is required!"
+RUN make deploy-ci
