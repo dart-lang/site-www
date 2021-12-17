@@ -95,10 +95,10 @@ function analyze_and_test() {
 
   if [[ -e $EXPECTED_FILE ]]; then
     if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
-      echo "Analyzer output is as expected ($EXPECTED_FILE)."
+      echo -e "$(blue "Analyzer output is as expected ($EXPECTED_FILE).")"
     else
       cat $LOG_FILE
-      echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
+      echo -e "$(yellow "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:")"
       diff $LOG_FILE $EXPECTED_FILE || true
       EXIT_STATUS=1
       if [[ -n $SAVE_LOGS ]]; then 
@@ -123,6 +123,7 @@ function analyze_and_test() {
     cat $LOG_FILE
   fi
 
+  echo -e "$(blue "Reenabling flags in these files")"
   toggle_in_file_analyzer_flags reenable .
 
   if [[ ! -d test ]]; then

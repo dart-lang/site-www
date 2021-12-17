@@ -7,8 +7,11 @@
     "type": "git",
     "url": "https://github.com/dart-lang/site-www.git"
   },
-  "devDependencies": {
-    "bootstrap-scss": "^4.6.0",
-    "concurrently": "^6.4.0"
-  }
+  "scripts": {
+    "checklinks": "concurrently \"make emulate\" \"command2 arg\""
+  },
+  "dependencies": {
+    "bootstrap-scss": "^4.6.0"
+  },
+  "devDependencies": {}
 }

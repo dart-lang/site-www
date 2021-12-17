@@ -8,10 +8,22 @@ repo:
   shared: &repo-shared https://github.com/dart-lang/site-shared
 branch: master
 port: 4000
+source: src
+strict_front_matter: true
+future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+sass:
+  sass_dir: _sass
+  cache: false
+  style: compressed
+  load_paths:
+    - ../node_modules
+plugins:
+  - jekyll-toc
+toc:
+  min_level: 2
+  max_level: 3
+  no_toc_section_class: no_toc_section # ignore if in no_toc_section element
 
-# Global variables
-# use case:
-#   {{site.flutter}}/docs
 
 dart-site: '' 
 dart_vm: /server
@@ -75,29 +87,6 @@ custom:
         ext: zip
         editor-ext: zip
 
-# Build settings
-
-# assets:
-#   source_maps: false
-#   sources:
-#     - _shared/_assets
-#     - _shared/_assets/css
-
-source: src
-strict_front_matter: true
-future: true # In support of https://github.com/dart-lang/site-www/issues/1111
-sass:
-  sass_dir: _sass
-  cache: false
-  style: compressed
-  load_paths:
-    - ../node_modules
-plugins:
-  - jekyll-toc
-toc:
-  min_level: 2
-  max_level: 3
-  no_toc_section_class: no_toc_section # ignore if in no_toc_section element
 
 # `symlinked-sources` can refer to individual files or directories
 # under `src` that are symlinked to somewhere outside `src`, or it can

@@ -4,8 +4,8 @@ on:
   # Run on PRs and pushes to the default branch.
   push:
     branches:
-      - master
-      # - rearch
+      # - master
+      - rearch
   pull_request:
     branches:
       - master
@@ -13,7 +13,7 @@ on:
     - cron: "0 0 * * 0"
 
 env:
-  # Keep for SDK reporting
+  # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
 
 jobs:
@@ -55,7 +55,27 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-  # Not fully understanding what this is for
+  stage:
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' && 
+      github.ref == 'refs/heads/rearch' && 
+      github.repository == 'VGVentures/dart-site-www'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - run: make build
+      - run: make stage
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_PROJECT: vgv
+          FIREBASE_CHANNEL: dart
+
+
+  # TODO what is this for?
   # I think this should be replaced by staging locally for someone
   # deploy_preview:
   #   needs: test

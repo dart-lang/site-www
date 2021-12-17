@@ -57,17 +57,13 @@ RUN set -eou; \
 from dart as dart-tests
 WORKDIR /app
 COPY ./ ./
-# Get root packages after full copy
-# See https://registry.hub.docker.com/r/google/dart/
 RUN dart pub get
-
-# Let's not play "which dir is this"
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
-RUN /app/test.sh
+RUN $TOOL_DIR/test.sh
 
 
-# ============== NODEJS ==============
+# ============== NODEJS INSTALL ==============
 FROM dart as node
 RUN set -eou; \
     NODE_PPA="node_ppa.sh"; \
@@ -82,9 +78,11 @@ RUN set -eou; \
     apt-get update -q && apt-get install -yq --no-install-recommends \
       nodejs \
     && rm -rf /var/lib/apt/lists/*
+# Ensure latest NPM
+RUN npm install -g npm
 
 
-# ============== DEV/JEKYLL ==============
+# ============== DEV/JEKYLL SETUP ==============
 FROM node as dev
 WORKDIR /app
 
@@ -95,7 +93,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json ./
-RUN npm install -g npm firebase-tools linkinator
+RUN npm install -g firebase-tools concurrently linkinator
 RUN npm install
 
 COPY ./ ./
@@ -117,8 +115,8 @@ EXPOSE 5500
 ENV DEBIAN_FRONTEND=dialog
 
 
-# ============== BUILD ==============
-FROM dart AS build
+# ============== BUILD PROD JEKYLL SITE ==============
+FROM node AS build
 WORKDIR /app
 
 ENV JEKYLL_ENV=production
@@ -131,21 +129,19 @@ RUN npm install
 
 COPY ./ ./
 
-# Let's not play which dir is this
-ENV BASE_DIR=/app
-ENV TOOL_DIR=$BASE_DIR/tool
-
 # Get root packages
 RUN dart pub get
 
+ENV BASE_DIR=/app
+ENV TOOL_DIR=$BASE_DIR/tool
+
 ARG BUILD_CONFIGS=_config.yml
 ENV BUILD_CONFIGS=$BUILD_CONFIGS
-RUN echo "User-agent: *" > src/robots.txt && echo "Allow: /" >> src/robots.txt
+RUN printf "User-agent: *\nAllow: /" >> src/robots.txt
 RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 
-# ============== TEST ==============
+# ============== TEST BUILT JEKYLL SITE ==============
 FROM build as build-tests
-RUN echo ">>> __TEST__ <<<"
-# RUN tool/test.sh --target $TEST_TARGET_CHANNEL --check-links --null-safety
-
+RUN npm install -g firebase-tools concurrently linkinator
+RUN npm run checklinks

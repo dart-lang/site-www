@@ -17,11 +17,17 @@ BUILD_TAG ?= dart-dev
 BUILD_TARGET ?= build
 DART_CHANNEL ?= stable
 DART_VERSION ?= latest
-FIREBASE_ALIAS ?= default
-FIREBASE_CHANNEL ?= stage
+FIREBASE_PROJECT ?= default
+FIREBASE_CHANNEL ?= dart
 FIREBASE_EMULATOR_PORT ?= 5500
 JEKYLL_SITE_HOST ?= 0.0.0.0
 JEKYLL_SITE_PORT ?= 4002
+
+# Here so Docker Compose does not complain, add any env 
+# overrides to this file. Blank is okay, it's ignored.
+# For example, add a FIREBASE_PROJECT if staging
+.env:
+	touch $@
 
 # Clean up caches, build files, etc
 clean:
@@ -62,22 +68,18 @@ serve:
 
 # Test hosting locally with Firebase emulator
 emulate:
-	npx firebase emulators:start --only hosting --project ${FIREBASE_ALIAS}
+	npx firebase use ${FIREBASE_PROJECT}
+	npx firebase emulators:start --only hosting
 
-# Deploy to Firebase via a staging channel
-# Usage: `make stage [FIREBASE_CHANNEL=<name>]`
-stage:
-	make build BUILD_CONFIGS=_config.yml,_config_stage.yml
-	npx firebase use ${FIREBASE_ALIAS}
-	npx firebase hosting:channel:deploy ${FIREBASE_CHANNEL}
+check-links:
+	npm run checklinks
 
 # Run all tests inside a built container
 test:
 	DOCKER_BUILDKIT=1 docker build \
 		-t ${BUILD_TAG}:${BUILD_COMMIT} \
 		--no-cache \
-		--target test \
-		--build-arg FIREBASE_ALIAS=${FIREBASE_ALIAS} \
+		--target dart-tests \
 		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} .
 
@@ -103,19 +105,25 @@ build:
 
 # Deploy locally
 deploy:
-	npx firebase use ${FIREBASE_ALIAS}
-	npx firebase deploy -m ${BUILD_COMMIT} --only hosting
+	npx firebase deploy -m ${BUILD_COMMIT} \ 
+		--only hosting \ 
+		--project ${FIREBASE_PROJECT}
 
 # Deploy to Firebase hosting on CI/CD
 # Requires that a `FIREBASE_TOKEN` is set in ENV
 deploy-ci:
-	npx firebase use ${FIREBASE_ALIAS}
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
 		--non-interactive \
+		--project ${FIREBASE_PROJECT}
 		--token ${FIREBASE_TOKEN} \
-		--project ${FIREBASE_ALIAS} \
 		--debug
+
+# Deploy to Firebase via a staging channel
+# Usage: `make stage [FIREBASE_CHANNEL=<name>]`
+stage:
+	npx firebase hosting:channel:deploy ${FIREBASE_CHANNEL} \
+		--project ${FIREBASE_PROJECT}
 
 # Fetch SDK sums for current Dart SDKs by arch
 fetch-sdk-sums:

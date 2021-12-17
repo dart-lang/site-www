@@ -7,18 +7,22 @@ source $TOOL_DIR/utils.sh
 
 EXAMPLES="$BASE_DIR/examples"
 
+# TODO ignoring these until we decided on a consistent line length 
+# that makes sense for code excerpts in docs:
+IGNORE_THESE="/misc/"
+
 # Check formatting for all *.dart files in the examples 
 # directory and report back any files that need to be fixed. 
 function check_formatting() {
   IFS=' '
   read -a files <<< "$@"
-  local count=${#files[@]}
-  printf "\n$(blue "Checking formatting on $count files...")\n"
+  local file_count=${#files[@]}
+  printf "\n$(blue "Checking formatting on $file_count files...")\n"
   IFS=$'\n' 
-  local results=($(dart format --output=none "$@" | grep -v /misc/))
+  local results=($(dart format --output=none "$@" | grep -v $IGNORE_THESE))
   local error_count=${#results[@]} # If greater than 1, we have a file error
   if [[ $error_count -gt 1 ]]; then
-    unset results[-1] # Remove last line of format result
+    unset results[-1] # Remove last line (summary) of format output
     printf "$(red "Found $error_count files that require fixing:")\n\n"
     IFS=' ' 
     for line in "${results[@]}"; do
@@ -35,10 +39,11 @@ dart_files=$(
   ! -path "**/.*" \
   ! -path "**/build/**"
 )
-
 check_formatting $dart_files
 
-# Assuming all dart files have passed, set these ones back to 60/65 char length
+# TODO see above, decide on global max line length for docs so 
+# they are correctly formatted fow showing in a web page.
+# LEGACY Assuming all dart files have passed, set these ones back to 60/65 char length
 printf "\n=> Reformatting line length on language and library tour...\n"
 dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \

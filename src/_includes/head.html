@@ -67,7 +67,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="{{ '/assets/js/os-tabs.js' | append: cache_bust }}"></script>
+  <script src="{{ '/assets/js/utilities.js' | append: cache_bust }}"></script>
+  <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
+
   {% for js in page.js -%}
     <script {% if js.defer %}defer{% endif %} src="{{js.url | default: js}}"></script>
   {% endfor -%}

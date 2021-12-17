@@ -1,16 +1,12 @@
 @import 'core/variables';
 @import 'core/colors';
 @import 'core/mixins';
-
-// TODO fix bad ordering of dependencies
-@import 'bootstrap_config';
-@import '../../node_modules/bootstrap-scss/bootstrap';
-@import 'bootstrap_adjust';
-
-// @import 'font-awesome-sprockets';
-// @import 'font-awesome';
+@import 'core/bootstrap-config';
 
 @import 'vendor/prettify';
+@import 'vendor/bootstrap';
+
+@import 'core/bootstrap-adjust';
 
 @import 'components/code';
 @import 'components/header';
@@ -20,8 +16,7 @@
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
-
-@import 'site_overrides';
+@import 'site-overrides';
 
 
 // Extra variables (defined in terms of bootstrap and other defaults)

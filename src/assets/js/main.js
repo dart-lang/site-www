@@ -1,12 +1,3 @@
-//= require vendor/jquery-3.6.0
-//= require popper
-//= require bootstrap
-//= require _utilities
-//= require _os-tabs
-//= require vendor/code-prettify/prettify
-//= require vendor/code-prettify/lang-css
-//= require vendor/code-prettify/lang-dart
-//= require vendor/code-prettify/lang-yaml
 
 function fixNav() {
   var t = $(document).scrollTop(),
