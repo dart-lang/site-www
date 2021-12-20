@@ -248,5 +248,11 @@
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 }
     ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5000,
+      "host": "0.0.0.0"
+    }
   }
 }

@@ -5,33 +5,36 @@ services:
     image: dart-dev:stable
     build:
       context: .
-      target: dev
-    command: ["make", "serve"]
+      target: checklinks
+    # command: ["make", "serve"]
     env_file: .env
     environment:
       - JEKYLL_ENV=development
       - JEKYLL_SITE_HOST=0.0.0.0
-      - JEKYLL_SITE_PORT=4002
+      - JEKYLL_SITE_PORT=4000
       - NODE_ENV=development
     ports:
-      - "4002:4002"
+      - "4000:4000"
       - "5000:5000"
     volumes:
+      - ./_config_dev.yml:/app/_config_dev.yml
+      - ./_config_test.yml:/app/_config_test.yml
+      - ./_config.yml:/app/_config.yml
+      - ./_site:/app/_site
+      - ./.firebaserc:/app/.firebaserc
       - ./analysis_options.yaml:/app/analysis_options.yaml
       - ./build.excerpt.yaml:/app/build.excerpt.yaml
-      - ./pubspec.yaml:/app/pubspec.yaml
-      - ./examples:/app/examples
       - ./diagrams:/app/diagrams
-      - ./tool:/app/tool
-      - ./src:/app/src
-      - ./site-shared:/app/site-shared
-      - ./Makefile:/app/Makefile
-      - ./_config.yml:/app/_config.yml
-      - ./_config_dev.yml:/app/_config._dev.yml
-      - ./.firebaserc:/app/.firebaserc
+      - ./examples:/app/examples
       - ./firebase.json:/app/firebase.json
-      - ./package.json:/app/package.json
-      - ./package-lock.json:/app/package-lock.json
-      - ./node_modules:/app/node_modules
       - ./Gemfile:/app/Gemfile
       - ./Gemfile.lock:/app/Gemfile.lock
+      - ./linkinator.config.json:/app/linkinator.config.json
+      - ./Makefile:/app/Makefile
+      - ./node_modules:/app/node_modules
+      - ./package-lock.json:/app/package-lock.json
+      - ./package.json:/app/package.json
+      - ./pubspec.yaml:/app/pubspec.yaml
+      - ./site-shared:/app/site-shared
+      - ./src:/app/src
+      - ./tool:/app/tool

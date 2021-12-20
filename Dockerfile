@@ -93,13 +93,13 @@ FROM node as dev
 WORKDIR /app
 
 ENV JEKYLL_ENV=development
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 RUN gem update --system && gem install bundler
 RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json ./
-RUN npm install -g firebase-tools concurrently linkinator
+RUN npm install -g firebase-tools
 RUN npm install
 
 COPY ./ ./
@@ -113,11 +113,22 @@ ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
 
 # Jekyl and Firebase ports
-EXPOSE 4002
+EXPOSE 4000
 EXPOSE 5000
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog
+
+
+# ============== FIREBASE EMULATE ==============
+FROM dev as emulate
+RUN bundle exec jekyll build --config _config.yml,_config_test.yml
+CMD ["make", "emulate"]
+
+# ============== TEST JEKYLL SITE ==============
+FROM dev as checklinks
+RUN bundle exec jekyll build --config _config.yml,_config_test.yml
+CMD ["npm", "run", "checklinks"]
 
 
 # ============== BUILD PROD JEKYLL SITE ==============
@@ -126,6 +137,7 @@ WORKDIR /app
 
 ENV JEKYLL_ENV=production
 COPY Gemfile Gemfile.lock ./
+RUN gem update --system && gem install bundler
 RUN BUNDLE_WITHOUT="test development" bundle install --jobs=4 --retry=2 --quiet
 
 ENV NODE_ENV=production
@@ -134,7 +146,6 @@ RUN npm install
 
 COPY ./ ./
 
-# Get root packages
 RUN dart pub get
 
 ENV BASE_DIR=/app
@@ -146,15 +157,12 @@ RUN printf "User-agent: *\nAllow: /" >> src/robots.txt
 RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 
-# ============== TEST BUILT JEKYLL SITE ==============
-FROM build as build-tests
-RUN npm install -g firebase-tools concurrently linkinator
-RUN npm run checklinks
-
-
 # ============== DEPLOY to FIREBASE ==============
-FROM build-tests as deploy
+FROM build as deploy
+RUN npm install -g firebase-tools
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
-RUN [[ -z $FIREBASE_TOKEN ]] && echo "FIREBASE_TOKEN is required!"
+ARG FIREBASE_PROJECT=default
+ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
+RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci

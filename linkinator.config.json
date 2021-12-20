@@ -1,0 +1,6 @@
+{
+  "concurrency": 15,
+  "recurse": false,
+  "retry": true,
+  "skip": []
+}

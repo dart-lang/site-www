@@ -21,7 +21,7 @@ FIREBASE_PROJECT ?= default
 FIREBASE_CHANNEL ?= dart
 FIREBASE_EMULATOR_PORT ?= 5500
 JEKYLL_SITE_HOST ?= 0.0.0.0
-JEKYLL_SITE_PORT ?= 4002
+JEKYLL_SITE_PORT ?= 4000
 
 # Here so Docker Compose does not complain, add any env 
 # overrides to this file. Blank is okay, it's ignored.
@@ -65,11 +65,6 @@ serve:
 		--livereload \
 		--incremental \
 		--trace
-
-# Test hosting locally with Firebase emulator
-emulate:
-	npx firebase use ${FIREBASE_PROJECT}
-	npx firebase emulators:start --only hosting
 
 check-links:
 	npm run checklinks
@@ -125,9 +120,16 @@ stage:
 	npx firebase hosting:channel:deploy ${FIREBASE_CHANNEL} \
 		--project ${FIREBASE_PROJECT}
 
+# Test hosting locally with Firebase emulator
+emulate:
+	npx firebase emulators:start \
+		--only hosting \
+		--token ${FIREBASE_TOKEN} \
+		--project ${FIREBASE_PROJECT}
+
 # Fetch SDK sums for current Dart SDKs by arch
 fetch-sdk-sums:
-	./tool/fetch-dart-sdk-sums.sh \
+	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
 

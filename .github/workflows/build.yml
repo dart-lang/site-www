@@ -75,27 +75,9 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools
+      - run: npm run checklinks
       - run: make stage
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           FIREBASE_PROJECT: vgv
           FIREBASE_CHANNEL: dart
-
-
-  # TODO what is this for?
-  # I think this should be replaced by staging locally for someone
-  # deploy_preview:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         submodules: recursive
-  #     # TODO do we need this?
-  #     - run: mkdir -p $TMP
-  #     - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
-  #       with:
-  #         repoToken: '${{ secrets.GITHUB_TOKEN }}'
-  #         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
-  #         projectId: dart-dev
