@@ -40,13 +40,13 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
 
   deploy:
-    needs:
-      - test
-    runs-on: ubuntu-latest
     if: |
       github.event_name == 'push' && 
       github.ref == 'refs/heads/master' && 
       github.repository == 'dart-lang/site-www'
+    needs:
+      - test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -57,13 +57,15 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
   stage:
-    # needs:
-    #   - test
-    runs-on: ubuntu-latest
     if: |
       github.event_name == 'push' && 
       github.ref == 'refs/heads/rearch' && 
       github.repository == 'VGVentures/dart-site-www'
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: dash-site-dev
+      FIREBASE_CHANNEL: dart
     steps:
       - uses: actions/checkout@v2
         with:
@@ -74,10 +76,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools
+      - run: npm install -g firebase-tools concurrently linkinator
       - run: npm run checklinks
       - run: make stage
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          FIREBASE_PROJECT: vgv
-          FIREBASE_CHANNEL: dart

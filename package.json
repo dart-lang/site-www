@@ -8,7 +8,7 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "linkinate": "linkinator http://0.0.0.0:5000",
+    "linkinate": "linkinator http://localhost:5000",
     "checklinks": "concurrently --hide=0 --success=last --kill-others \"make emulate\" \"sleep 3; npm run linkinate\""
   },
   "dependencies": {
