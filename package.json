@@ -8,14 +8,12 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "linkinate": "linkinator http://localhost:5000",
-    "checklinks": "concurrently --hide=0 --success=last --kill-others \"make emulate\" \"sleep 3; npm run linkinate\""
+    "linkinate": "linkinator http://localhost:5000"
   },
   "dependencies": {
     "bootstrap-scss": "^4.6.0"
   },
   "devDependencies": {
-    "concurrently": "^6.5.1",
     "linkinator": "^3.0.2"
   }
 }

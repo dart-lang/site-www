@@ -108,7 +108,6 @@ deploy:
 deploy-ci:
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
-		--non-interactive \
 		--project ${FIREBASE_PROJECT}
 		--token ${FIREBASE_TOKEN} \
 		--debug
@@ -123,10 +122,21 @@ stage:
 emulate:
 	npx firebase emulators:start \
 		--only hosting \
-		--token ${FIREBASE_TOKEN} \
 		--project ${FIREBASE_PROJECT}
 
+# Convenience to check for broken links using build stage
+# However, much easier to exec into dev container and run it 
+# manually: `npm run checklinks`
+# check-links:
+# 	DOCKER_BUILDKIT=1 docker build \
+# 		-t linkcheck:${BUILD_COMMIT} \
+# 		--target checklinks .
+# 	docker run --rm --name linkchecker -t linkcheck:${BUILD_COMMIT}
+# 	# docker stop linkchecker
+# 	docker rmi -f linkcheck:${BUILD_COMMIT}
+
 # Fetch SDK sums for current Dart SDKs by arch
+# This outputs a bash case format to be copied to Dockerfile
 fetch-sdk-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eou pipefail
+set -eu -o pipefail
 source $TOOL_DIR/utils.sh
 
 # Validate formatting in files. This will exit if there are 

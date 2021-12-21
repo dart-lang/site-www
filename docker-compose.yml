@@ -5,8 +5,8 @@ services:
     image: dart-dev:stable
     build:
       context: .
-      target: checklinks
-    # command: ["make", "serve"]
+      target: dev
+    command: ["make", "serve"]
     env_file: .env
     environment:
       - JEKYLL_ENV=development

@@ -7,6 +7,7 @@ RUN apt update && apt install -yq --no-install-recommends \
       ca-certificates \
       curl \
       git \
+      lsof \
       make \
       unzip \
       vim-nox \
@@ -66,7 +67,7 @@ COPY ./ ./
 RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
-RUN $TOOL_DIR/test.sh
+CMD ["$TOOL_DIR/test.sh"]
 
 
 # ============== NODEJS INSTALL ==============
