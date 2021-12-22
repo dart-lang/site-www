@@ -27,6 +27,5 @@ else
   echo "Emulator is running"
 fi
 
-# TODO test with linkcheck
-# Linkinate - using local linkinator.config.json
-npx linkinator http://localhost:$EMULATOR_PORT
+SKIP_FILE="$TOOL_DIR/config/linkcheck-skip-list.txt"
+dart run linkcheck :$EMULATOR_PORT --skip-file $SKIP_FILE

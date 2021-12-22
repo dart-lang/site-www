@@ -185,7 +185,7 @@ predict the outcomes of their learning and monitor their understanding.
 <div class="col-md-3" markdown="1">
 
 <img 
-  src="/assets/img/dartpad-best-practices/p_transferlearning"
+  src="/assets/img/dartpad-best-practices/p_transferlearning.png"
   alt="An illustration of learning transfer">
 {: .img-xs-wrapper}
 

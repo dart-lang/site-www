@@ -57,7 +57,7 @@ function toggle_in_file_analyzer_flags() {
     mark=" "
     toggle="!"
   fi
-  printf "\n$(blue "Toggling in-file flags: '$action' ($dir)...")\n"
+  printf "\n$(blue "Toggling in-file flags: '$action'")\n"
   find $dir -name "*.dart" ! -path "**/.*" -exec perl \
     -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$dir}g" {} \;
 }
@@ -121,7 +121,7 @@ function analyze_and_test() {
   fi
 
   printf "\n$(blue "Running VM tests (exclude browser) ...")\n"
-  dart pub run test --exclude-tags=browser \
+  dart run test --exclude-tags=browser \
     | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 
   PASSED=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
@@ -139,7 +139,7 @@ function analyze_and_test() {
     printf "\n$(blue "No browser-only tests - skipping")\n"
   else
     printf "\n$(blue "Running browser-only tests...")\n"
-    dart pub run test \
+    dart run test \
       --tags browser \
       --platform chrome $BROWSER_TESTS 2>&1 | \
         tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"

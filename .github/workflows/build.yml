@@ -15,6 +15,8 @@ on:
 env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
+  BASE_DIR: ${{ github.workspace }}
+  TOOL_DIR: ${{ github.workspace }}/tool
 
 jobs:
 
@@ -32,11 +34,9 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
       - run: dart pub get
-      # - run: tool/test.sh
-      - run: tool/analyze-and-test-examples.sh
+      - run: tool/test.sh
+        continue-on-error: true
         env:
-          BASE_DIR: ${{ github.workspace }}
-          TOOL_DIR: ${{ github.workspace }}/tool
           DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
@@ -47,14 +47,21 @@ jobs:
     needs:
       - test
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: default
+      NODE_VERSION: 16
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
       - run: make build
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm install -g firebase-tools linkinator
+      - run: tool/check-links.sh
       - run: make deploy-ci
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
   stage:
     if: |

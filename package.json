@@ -7,13 +7,7 @@
     "type": "git",
     "url": "https://github.com/dart-lang/site-www.git"
   },
-  "scripts": {
-    "linkinate": "linkinator http://localhost:5000"
-  },
   "dependencies": {
     "bootstrap-scss": "^4.6.0"
-  },
-  "devDependencies": {
-    "linkinator": "^3.0.2"
   }
 }
