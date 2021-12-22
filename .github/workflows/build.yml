@@ -32,10 +32,12 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
       - run: dart pub get
-      - run: tool/test.sh
+      # - run: tool/test.sh
+      - run: tool/analyze-and-test-examples.sh
         env:
           BASE_DIR: ${{ github.workspace }}
-          TOOL_DIR: ${{ github.workspace }}/tool"
+          TOOL_DIR: ${{ github.workspace }}/tool
+          DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
     if: |

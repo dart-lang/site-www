@@ -8,6 +8,8 @@ source $TOOL_DIR/utils.sh
 
 export PUB_ALLOW_PRERELEASE_SDK=quiet
 
+DART_VERSION=$(dart --version | perl -pe '($_)=/version: (\S+)/')
+DART_CHANNEL=${DART_CHANNEL:-stable}
 TMP=$BASE_DIR/tmp
 EXAMPLES=$BASE_DIR/examples
 PUB_ARG="upgrade"
@@ -28,14 +30,6 @@ while [[ $# -gt 0 ]]; do
     --save-logs)  
       SAVE_LOGS=1
       shift
-      ;;
-    --dart-version)
-      DART_VERSION=$2
-      shift 2
-      ;;
-    --dart-channel)
-      DART_CHANNEL=$2
-      shift 2
       ;;
     --tmp)
       TMP=$2
@@ -73,7 +67,7 @@ function toggle_in_file_analyzer_flags() {
 function analyze_and_test() {
   local project_dir="$1"
 
-  printf "\n$(blue "--\nEntering $project_dir...")\n"
+  printf "\n$(blue "--\nProcessing $project_dir...")\n"
   pushd $project_dir > /dev/null
 
   dart pub $PUB_ARG
@@ -146,10 +140,8 @@ function analyze_and_test() {
   else
     printf "\n$(blue "Running browser-only tests...")\n"
     dart pub run test \
-      --tags=browser \
-      --platform=chrome \
-      --headless \
-      --no-sandbox $BROWSER_TESTS 2>&1 | \
+      --tags browser \
+      --platform chrome $BROWSER_TESTS 2>&1 | \
         tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     
     PASSED=$(grep 'All tests passed!' $LOG_FILE)
