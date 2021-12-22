@@ -19,4 +19,6 @@
 
 tool/check-formatting.sh
 tool/refresh-code-excerpts.sh
-tool/analyze-and-test-examples.sh
+# tool/analyze-and-test-examples.sh
+
+printf "\n-- Done --\n\n"

@@ -67,21 +67,21 @@ COPY ./ ./
 RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
-CMD ["$TOOL_DIR/test.sh"]
+CMD ["./tool/test.sh"]
 
 
 # ============== NODEJS INSTALL ==============
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=4ba781bb650a918fd05aae57b092852eb411ea2984c88e9d1afae089f428a9b1; \
+    NODE_SHA256=05dc283d949b7cdd58f37385e310973c2aaa52e0f8cda08a93a5e4812d225338; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo "Node setup failed checksum, please review setup script and update the sha if everything looks good" && \
         rm "$NODE_PPA" && \
         exit 1 \
     ); \
-    echo "Adding nodesource PPA" && sh "$NODE_PPA" && rm "$NODE_PPA"; \
+    sh "$NODE_PPA" && rm "$NODE_PPA"; \
     apt-get update -q && apt-get install -yq --no-install-recommends \
       nodejs \
     && rm -rf /var/lib/apt/lists/*

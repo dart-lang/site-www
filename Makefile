@@ -52,7 +52,7 @@ exec:
 setup:
 	make clean
 	-docker compose down
-	-docker rmi ${BUILD_TAG}:local
+	-docker rmi ${BUILD_TAG}:${DART_CHANNEL}
 	docker compose build site
 
 # Serve the Jekyll site with livereload and incremental builds
@@ -65,17 +65,14 @@ serve:
 		--incremental \
 		--trace
 
-check-links:
-	npm run checklinks
-
 # Run all tests inside a built container
 test:
 	DOCKER_BUILDKIT=1 docker build \
-		-t ${BUILD_TAG}:${BUILD_COMMIT} \
-		--no-cache \
+		-t dart-tests:${DART_CHANNEL} \
 		--target dart-tests \
 		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} .
+	docker run --rm -v ${PWD}:/app dart-tests:${DART_CHANNEL}
 
 # Build docker image with optional target
 # Usage: `make build-image [BUILD_CONFIGS=<config1,[config2,]>]`
@@ -124,23 +121,13 @@ emulate:
 		--only hosting \
 		--project ${FIREBASE_PROJECT}
 
-# Convenience to check for broken links using build stage
-# However, much easier to exec into dev container and run it 
-# manually: `npm run checklinks`
-# check-links:
-# 	DOCKER_BUILDKIT=1 docker build \
-# 		-t linkcheck:${BUILD_COMMIT} \
-# 		--target checklinks .
-# 	docker run --rm --name linkchecker -t linkcheck:${BUILD_COMMIT}
-# 	# docker stop linkchecker
-# 	docker rmi -f linkcheck:${BUILD_COMMIT}
-
-# Fetch SDK sums for current Dart SDKs by arch
+# Fetch SDK sums for current Dart SDKs by arch, Node PPA
 # This outputs a bash case format to be copied to Dockerfile
 fetch-sdk-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
+	tool/fetch-node-ppa/sum.sh
 
 # Test the dev container with pure docker
 test-builds:

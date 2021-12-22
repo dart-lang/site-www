@@ -3,21 +3,23 @@
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
-    "headers": [{
-        "source": "**/*.@(txt|json)",
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|md|txt|json)",
         "headers": [
+          { "key": "Cache-Control", "value": "max-age=3600" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       },
       {
         "source": "**",
         "headers": [
-          { "key": "Content-Security-Policy", "value":  "default-src 'self' https:; script-src 'self' 'unsafe-eval' 'sha256-cTJIwsgB4Xj1loi9AdzTWk3GZ5Kx0NremLhkGfw9zWc=' 'sha256-acZJdbnwXvMNQmfri3ENcArTn+GH3sY664c1uY0xxpg=' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://gstatic.com https://*.gstatic.com https://dartpad.dev https://*.dartpad.dev https://youtube.com https://*.youtube.com https://fonts.googleapis.com https://doubleclick.net https://*.doubleclick.net https://google.com https://*.google.com https://storage.googleapis.com; object-src 'none'; base-uri 'none'; style-src 'self' https: 'unsafe-inline'; frame-ancestors 'self' https://dartpad.dev https://*.dartpad.dev"},
-          { "key": "Referrer-Policy", "value":  "strict-origin-when-cross-origin"},
-          { "key": "X-Content-Type-Options", "value":  "nosniff"},
-          { "key": "X-XSS-Protection", "value": "1; mode=block"}
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+          { "key": "X-Content-Type-Options", "value": "nosniff"},
+          { "key": "X-XSS-Protection", "value": "1;mode=block"}
         ]
-      }],
+      }
+    ],
     "redirects": [
       { "source": "/+", "destination": "https://plus.sandbox.google.com/+dartlang", "type": 301 },
       { "source": "/+dart2js", "destination": "/tools/dart2js", "type": 301 },

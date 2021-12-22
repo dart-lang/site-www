@@ -44,7 +44,7 @@ check_formatting $dart_files
 # TODO see above, decide on global max line length for docs so 
 # they are correctly formatted fow showing in a web page.
 # LEGACY Assuming all dart files have passed, set these ones back to 60/65 char length
-printf "\n=> Reformatting line length on language and library tour...\n"
+printf "\n$(blue "Reformatting line length on language and library tour...")\n"
 dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
   $EXAMPLES/misc/lib/language_tour/classes/logger.dart \

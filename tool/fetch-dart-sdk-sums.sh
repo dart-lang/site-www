@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Use this file locally to update checksum values in the Dockerfile
-
-set -eou pipefail
+# Use this file locally to update Dart SDK checksum values in the Dockerfile
+set -eu -o pipefail
 
 VERSION="latest"
 CHANNEL="stable"

@@ -15,7 +15,6 @@ on:
 env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
-  NODE_VERSION: 16
 
 jobs:
 
@@ -24,20 +23,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - channel: dev
-            experimental: false
-          - channel: beta
-            experimental: false
-          - channel: stable
-            experimental: false 
+        sdk: [stable, beta, dev]
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Test examples against channel
-        run: DART_CHANNEL=${{ matrix.channel }} make test
-        continue-on-error: ${{ matrix.experimental }}
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - run: dart pub get
+      - run: tool/test.sh
+        env:
+          BASE_DIR: $GITHUB_WORKSPACE
+          TOOL_DIR: $GITHUB_WORKSPACE/tool
 
   deploy:
     if: |
@@ -66,12 +64,14 @@ jobs:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       FIREBASE_PROJECT: dash-site-dev
       FIREBASE_CHANNEL: dart
+      NODE_VERSION: 16
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
       - run: dpkg --print-architecture
       - run: tool/fetch-dart-sdk-sums.sh
+      - run: tool/fetch-node-ppa-sum.sh
       - run: make build
       - uses: actions/setup-node@v2
         with:

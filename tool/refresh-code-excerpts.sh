@@ -34,6 +34,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+printf "\n$(blue "Preparing excerpt refresh...")\n"
+
 # Final arg, if any, should be target or default to main /src
 TARGET_SRC="${1:-$BASE_DIR/src}"
 
@@ -42,7 +44,7 @@ if [[ ! -e $TARGET_SRC ]]; then
   exit 1
 fi
 
-if [[ -e "$FRAG" ]]; then 
+if [[ -e "$FRAG" ]]; then
   echo -e "$(blue "Deleting existing fragments ($FRAG)")"
   rm -rf $FRAG
 fi
@@ -51,10 +53,11 @@ if [[ ! -e "pubspec.lock" ]]; then
   dart pub get
 fi
 
-dart run build_runner build \
-  --delete-conflicting-outputs \
-  --config excerpt \
-  --output $FRAG
+( set -x
+  dart run build_runner build \
+    --delete-conflicting-outputs \
+    --config excerpt \
+    --output $FRAG)
 
 if [[ ! -e "$FRAG/examples" ]]; then
   echo -e "$(red "Fragments directory ($FRAG/examples) was not generated")"
@@ -76,12 +79,14 @@ ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brack
 # once we can use embedded DPs this won't be needed)?
 ARGS+="/\/\/!(analysis-issue|runtime-error)[^\n]*//g;" # Removed warning/error marker
 
-printf "\n$(blue "
-Running excerpt refresh...
-Args: \n$ARGS")\n\n"
+printf "\n$(blue "Running excerpt refresh...")\n"
+IFS=' '; read -a debug_args <<< $ARGS
+for arg in "${debug_args[@]}" ; do
+  echo -e "  $(yellow $arg)"
+done
+echo "--"
 
-# For reference this lives in:
-# ./site-shared/packages/code_excerpt_updater
+# Script lives in: site-shared/packages/code_excerpt_updater
 dart run code_excerpt_updater $ARGS $TARGET_SRC 2>&1 | tee $LOG_FILE
   
 if [[ -z "$KEEP_CACHE" ]]; then
@@ -89,14 +94,14 @@ if [[ -z "$KEEP_CACHE" ]]; then
   rm -r "$BASE_DIR/.dart_tool/"
 fi
 
-# NOTE if this is the only use of the file, then we can achieve
-# this in a different way than reading errors from it.
 if [[ ! -f $LOG_FILE ]]; then
-  printf "\n$(red "Log file ($LOG_FILE) does not exist - something has gone wrong")\n\n"
+  printf "\n$(red "Log file ($LOG_FILE) does not exist - something went wrong")\n\n"
 fi
 
 LOGS=$(cat $LOG_FILE)
 if [[ $LOGS != *" 0 out of"* || $LOGS == *Error* ]]; then
-  printf "\n\n$(red "Errors were encountered refrshing code excerpts")\n\n"
+  printf "\n$(red "Errors were encountered refreshing code excerpts")\n\n"
   exit 1
+else
+  printf "\n$(blue "All looks good!")\n\n"
 fi
