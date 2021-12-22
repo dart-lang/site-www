@@ -27,5 +27,6 @@ else
   echo "Emulator is running"
 fi
 
+# TODO test with linkcheck
 # Linkinate - using local linkinator.config.json
 npx linkinator http://localhost:$EMULATOR_PORT

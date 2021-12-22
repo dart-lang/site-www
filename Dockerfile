@@ -17,6 +17,9 @@ RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
 WORKDIR /root
 
 
+# google-chrome-stable
+
+
 # ============== DART ==============
 # See https://github.com/dart-lang/dart-docker
 # See https://github.com/dart-lang/setup-dart/blob/main/setup.sh
@@ -58,6 +61,7 @@ RUN set -eu; \
         exit 1 \
     ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
+ENV PUB_CACHE="${HOME}/.pub-cache"
 
 
 # ============== DART-TESTS ==============

@@ -10,7 +10,7 @@ export PUB_ALLOW_PRERELEASE_SDK=quiet
 
 TMP=$BASE_DIR/tmp
 EXAMPLES=$BASE_DIR/examples
-PUB_ARGS="upgrade"
+PUB_ARG="upgrade"
 LOG_FILE="$TMP/analyzer-output.txt"
 EXIT_STATUS=0
 QUICK=0
@@ -18,7 +18,7 @@ QUICK=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --get)
-      PUB_ARGS="get"
+      PUB_ARG="get"
       shift
       ;;
     --quick)
@@ -52,17 +52,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-
-printf "\n$(blue "
-TMP:          $TMP
-EXAMPLES:     $EXAMPLES
-DART_VERSION: $DART_VERSION
-DART_CHANNEL: $DART_CHANNEL
-")\n"
-
-
 # Toggle analyzer comments in file via find/replace
-# Arguments: [disable|reenable] path path...
+# Usage: toggle_in_file_analyzer_flags [disable|reenable] [path]
 function toggle_in_file_analyzer_flags() {
   local action="$1"
   local dir="$2"
@@ -72,15 +63,20 @@ function toggle_in_file_analyzer_flags() {
     mark=" "
     toggle="!"
   fi
+  printf "\n$(blue "Toggling in-file flags: '$action' ($dir)...")\n"
   find $dir -name "*.dart" ! -path "**/.*" -exec perl \
     -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$dir}g" {} \;
 }
 
+# Analyze and test code for arg $1
+# Usage: analyze_and_test /path/to/dir
 function analyze_and_test() {
   local project_dir="$1"
 
+  printf "\n$(blue "--\nEntering $project_dir...")\n"
   pushd $project_dir > /dev/null
-  dart pub $PUB_ARGS
+
+  dart pub $PUB_ARG
 
   EXPECTED_FILE="$project_dir/analyzer-results-$DART_CHANNEL.txt"
   if [[ ! -e $EXPECTED_FILE ]]; then
@@ -123,43 +119,46 @@ function analyze_and_test() {
     cat $LOG_FILE
   fi
 
-  echo -e "$(blue "Reenabling flags in these files")"
   toggle_in_file_analyzer_flags reenable .
 
-  if [[ ! -d test ]]; then
+  if [[ ! -d "test" ]]; then
     echo -e "$(blue "Nothing to test in this project.")"
     return
   fi
 
-  printf "\n$(blue "Running VM tests (no browser tests) ...")\n"
+  printf "\n$(blue "Running VM tests (exclude browser) ...")\n"
   dart pub run test --exclude-tags=browser \
     | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 
-  LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
-  if [[ -z "$LOG" ]]; then 
-    printf "\n$(red "Found errors")\n"
+  PASSED=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
+  if [[ -z "$PASSED" ]]; then 
+    printf "\n$(red "Found VM test errors")\n"
     EXIT_STATUS=1
   fi
 
   # TODO(chalin): as of 2019/11/17, we don't need to select individual browser 
   # test files. Run browser tests over all files, since VM-only tests have 
   # been annotated as such.
-  TEST_FILES=$(find . -name "*browser_test.dart" -o -name "*html_test.dart")
-  BROWSER_PLATFORM="chrome"
+  BROWSER_TESTS=$(find . -name "*browser_test.dart" -o -name "*html_test.dart")
 
-  if [[ -z $TEST_FILES ]]; then
-    printf "\n$(blue "No browser-only tests, skipping")\n"
+  if [[ -z $BROWSER_TESTS ]]; then
+    printf "\n$(blue "No browser-only tests - skipping")\n"
   else
     printf "\n$(blue "Running browser-only tests...")\n"
-    dart pub run test --tags=browser --platform=$BROWSER_PLATFORM $TEST_FILES 2>&1 \
-      | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
+    dart pub run test \
+      --tags=browser \
+      --platform=chrome \
+      --headless \
+      --no-sandbox $BROWSER_TESTS 2>&1 | \
+        tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     
-    LOG=$(grep 'All tests passed!' $LOG_FILE)
-    if [[ -z "$LOG" ]]; then 
-      echo -e "$(yellow "Some browser-only tests failed")"
+    PASSED=$(grep 'All tests passed!' $LOG_FILE)
+    if [[ -z "$PASSED" ]]; then 
+      printf "\n$(red "Found browser-only test errors")\n\n"
       EXIT_STATUS=1
     fi
   fi
+
   popd > /dev/null
 }
 
@@ -179,24 +178,27 @@ else
   FILTER_ARG="-"
 fi
 
-echo -e "$(blue "Entering examples ($EXAMPLES) and starting tests...")"
-pushd $EXAMPLES > /dev/null
 
-for d in $EXAMPLES/??*; do
-  if [[ ! -d $d || $d == *util ]]; then 
+printf "\n$(blue "Begin test and analyze...
+TMP:          $TMP
+EXAMPLES:     $EXAMPLES
+DART_VERSION: $DART_VERSION
+DART_CHANNEL: $DART_CHANNEL
+")\n"
+
+
+for dir in $EXAMPLES/??*; do
+  if [[ ! -d $dir || $dir == *util ]]; then 
     continue
   fi
-  printf "\n$(blue "Processing directory ($d) ...")\n"
-  analyze_and_test $d
+  analyze_and_test $dir
 done
 
-popd > /dev/null
-
 if [[ $EXIT_STATUS == 0 ]]; then
-  echo -e "$(blue "All tests passed for all suites!")"
+  printf "\n$(blue "All tests passed for all suites!")\n\n"
 else
   printf "\n$(red "
-  Some packages have test failures or analysis errors. 
+  Some packages have test failures and/or analysis errors. 
   Look at the full output from this script for details.
   ")\n"
 fi

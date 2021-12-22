@@ -34,8 +34,8 @@ jobs:
       - run: dart pub get
       - run: tool/test.sh
         env:
-          BASE_DIR: $GITHUB_WORKSPACE
-          TOOL_DIR: $GITHUB_WORKSPACE/tool
+          BASE_DIR: ${{ github.workspace }}
+          TOOL_DIR: ${{ github.workspace }}/tool"
 
   deploy:
     if: |
