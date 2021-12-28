@@ -8,7 +8,7 @@ analyzer:
     implicit-casts: false
 
 linter:
-  # Rules and documentation: http://dart-lang.github.io/linter/lints
+  # Rules and documentation: https://dart.dev/lints
   rules:
     - always_declare_return_types
     - cancel_subscriptions
