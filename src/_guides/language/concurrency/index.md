@@ -109,7 +109,7 @@ String _readFileSync() {
 Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 {% prettify dart tag=pre+code %}
-void main() [!async!] {
+[!Future<void>!] main() [!async!] {
   // Read some data.
   final fileData = [!await!] _readFileAsync();
   final jsonData = jsonDecode(fileData);
@@ -312,7 +312,7 @@ This example uses the following isolate-related API:
 Here’s the code for the main isolate:
 
 ```dart
-void main() async {
+Future<void> main() async {
   // Read some data.
   final jsonData = await _parseInBackground();
 
