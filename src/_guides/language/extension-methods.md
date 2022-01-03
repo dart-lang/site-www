@@ -254,6 +254,7 @@ For more information about extension methods, see the following:
 
 * [Article: Dart Extension Methods Fundamentals][article]
 * [Feature specification][specification]
+* [Extension Methods Sample][sample]
 
 {% comment %}
 * Video
@@ -265,3 +266,5 @@ For more information about extension methods, see the following:
 [specification]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 
 [article]: https://medium.com/dartlang/extension-methods-2d466cd8b308
+
+[sample]: https://github.com/dart-lang/samples/tree/master/extension_methods
