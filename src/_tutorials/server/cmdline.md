@@ -574,9 +574,12 @@ consult to the API reference for
 [dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html)
 and the [args]({{argsAPI}}/args-library.html) package.  
 
-For an example of a command line app, see the [command_line](https://github.com/dart-lang/samples/tree/master/command_line) sample.
+For another example of a command line app, 
+see the [command_line][command_line] sample.
 
 ## What next?
 
 If you're interested in server-side programming,
 check out the [next tutorial](/tutorials/server/httpserver).
+
+[command_line]: https://github.com/dart-lang/samples/tree/master/command_line
