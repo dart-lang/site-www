@@ -254,7 +254,7 @@ For more information about extension methods, see the following:
 
 * [Article: Dart Extension Methods Fundamentals][article]
 * [Feature specification][specification]
-* [Extension Methods Sample][sample]
+* [Extension methods sample][sample]
 
 {% comment %}
 * Video
