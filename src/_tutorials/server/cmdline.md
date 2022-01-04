@@ -583,5 +583,3 @@ see the [command_line][] sample.
 
 If you're interested in server-side programming,
 check out the [next tutorial](/tutorials/server/httpserver).
-
-
