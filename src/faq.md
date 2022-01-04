@@ -186,9 +186,9 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
-[Dart on the Server]: https://dart-lang.github.io/server/
+[Dart on the Server]: /server
 [Dart tools]: /tools/
-[Dart and Google Cloud Platform]: https://dart-lang.github.io/server/google-cloud-platform/
+[Dart and Google Cloud Platform]: /server/google-cloud
 [Who Uses Dart]: /community/who-uses-dart
 [spec]: https://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
