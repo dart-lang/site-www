@@ -575,7 +575,7 @@ consult to the API reference for
 and the [args]({{argsAPI}}/args-library.html) package.  
 
 For another example of a command line app, 
-see the [command_line][command_line] sample.
+see the [command_line][] sample.
 
 ## What next?
 
