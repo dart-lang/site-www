@@ -137,7 +137,7 @@
       { "source": "/go/dart-fix", "destination": "https://github.com/dart-lang/sdk/blob/main/pkg/dartdev/doc/dart-fix.md", "type": 301 },
       { "source": "/go/dartdoc-options-file", "destination": "https://github.com/dart-lang/dartdoc#dartdoc_optionsyaml", "type": 301 },
       { "source": "/go/data-driven-fixes", "destination": "https://github.com/flutter/flutter/wiki/Data-driven-Fixes", "type": 301 },
-      { "source": "/go/dot-packages-deprecation", "destination": "https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md", "type": 301 },
+      { "source": "/go/dot-packages-deprecation", "destination": "https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md", "type": 301 },
       { "source": "/go/experiments", "destination": "/tools/experiment-flags", "type": 301 },
       { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
       { "source": "/go/ffi", "destination": "/guides/libraries/c-interop", "type": 301 },
@@ -150,7 +150,7 @@
       { "source": "/go/pubignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
       { "source": "/go/sdk-constraint", "destination": "https://dart.dev/tools/pub/pubspec#sdk-constraints", "type": 301 },
       { "source": "/go/test-docs/:page*", "destination": "https://github.com/dart-lang/test/blob/master/pkgs/test/doc/:page*", "type": 301 },
-      { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 },
+      { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 }, 
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
