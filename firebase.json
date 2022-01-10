@@ -166,6 +166,7 @@
       { "source": "/install", "destination": "/get-dart", "type": 301 },
       { "source": "/install/**", "destination": "/get-dart", "type": 301 },
       { "source": "/install/archive", "destination": "/tools/sdk/archive", "type": 301 },
+      { "source": "/isolates", "destination": "/guides/language/concurrency#how-isolates-work", "type": 301 },
       { "source": "/jobs", "destination": "https://docs.flutter.dev/jobs", "type": 301 },
       { "source": "/language-tour", "destination": "/guides/language/language-tour", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
