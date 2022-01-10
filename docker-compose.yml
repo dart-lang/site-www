@@ -29,7 +29,6 @@ services:
       - ./firebase.json:/app/firebase.json
       - ./Gemfile:/app/Gemfile
       - ./Gemfile.lock:/app/Gemfile.lock
-      - ./linkinator.config.json:/app/linkinator.config.json
       - ./Makefile:/app/Makefile
       - ./node_modules:/app/node_modules
       - ./package-lock.json:/app/package-lock.json

@@ -103,5 +103,5 @@ if [[ $LOGS != *" 0 out of"* || $LOGS == *Error* ]]; then
   printf "\n$(red "Errors were encountered refreshing code excerpts")\n\n"
   exit 1
 else
-  printf "\n$(blue "All looks good!")\n\n"
+  printf "\n$(blue "Looking good!")\n\n"
 fi
