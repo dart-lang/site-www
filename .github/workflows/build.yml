@@ -23,50 +23,49 @@ env:
 
 jobs:
 
-  # test:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       sdk: [stable, beta, dev]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         submodules: recursive
-  #     - uses: dart-lang/setup-dart@v1
-  #       with:
-  #         sdk: ${{ matrix.sdk }}
-  #     - run: dart pub get
-  #     - run: tool/test.sh
-  #       continue-on-error: true
-  #       env:
-  #         DART_CHANNEL: ${{ matrix.sdk }}
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [stable, beta, dev]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - run: dart pub get
+      - run: tool/test.sh
+        continue-on-error: true
+        env:
+          DART_CHANNEL: ${{ matrix.sdk }}
 
-  # deploy:
-  #   if: |
-  #     github.event_name == 'push' && 
-  #     github.ref == 'refs/heads/master' && 
-  #     github.repository == 'dart-lang/site-www'
-  #   needs:
-  #     - test
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-  #     FIREBASE_PROJECT: default
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         submodules: recursive
-  #     - run: make build
-  #     - uses: actions/setup-node@v2
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-  #     - run: npm install -g firebase-tools
-  #     - uses: dart-lang/setup-dart@v1
-  #       with:
-  #         sdk: stable
-  #     - run: tool/check-links.sh
-  #     - run: make deploy-ci
+  deploy:
+    if: ${{ github.event_name == 'push' && 
+            github.ref == 'refs/heads/master' && 
+            github.repository == 'dart-lang/site-www' }}
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: default
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - run: make build
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm install -g firebase-tools
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - run: tool/check-links.sh
+      - run: make deploy-ci
 
   stage:
     if: ${{ github.event_name == 'push' && 
