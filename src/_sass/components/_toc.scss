@@ -1,0 +1,206 @@
+#site-toc--side {
+  $padding: map-get($spacers, 2);
+
+  display: none;
+  right: 0;
+
+  .nav { 
+    display: block;
+  }
+
+  .nav-link {
+    padding-bottom: $padding;
+
+    color: theme-color('primary');
+
+    &.active {
+      color: theme-color('secondary');
+      font-weight: 500;
+    }
+  }
+
+  > ul > li {
+    padding-bottom: $padding; // Extra space for top-level entries
+
+    li { 
+      padding-left: $padding; 
+    } // Indent subentries
+  }
+}
+
+.site-toc {
+  $line-height: normal;
+
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-bottom: $site-content-top-padding;
+    padding-top: $site-content-top-padding;
+
+    @at-root {
+      #site-toc--inline { display: none; }
+      #site-toc--side { display: block; }
+    }
+  }
+
+  .nav-item {
+    font-size: $font-size-sm;
+
+    .nav-link {
+      color: $site-color-body-light !important;
+      line-height: $line-height;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-family: $site-font-family-alt;
+    font-size: $font-size-lg;
+    margin-bottom: bs-spacer(2);
+  }
+
+  &--button__page-top {
+    @include float-right;
+    font-size: $font-size-sm;
+    line-height: $line-height;
+    padding-top: 0;
+    padding-right: 0;
+
+    &::after {
+      content: 'vertical_align_top'; // 'keyboard_arrow_up';
+      font: $site-font-icon;
+    }
+  }
+}
+
+.toc-entry.toc-h1,
+.toc-entry.toc-h4,
+.toc-entry.toc-h5,
+.toc-entry.toc-h6,
+.no_toc {
+  display: none;
+}
+
+
+// Overrides moved here from main.scss
+// TODO these should be merged with the above defaults
+.site-toc--button__toggle {
+  display: none;
+}
+
+#site-toc--inline {
+  background: #f5f5f7;
+  padding: 15px 30px;
+  margin-bottom: 1rem;
+
+  .site-toc__title {
+    font-size: 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+
+  &.toc-collapsible {
+    > .section-nav {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    .site-toc--inline__toggle {
+      float: right;
+    }
+
+    .toc-toggle-down {
+      display: none;
+    }
+
+    &.toc-collapsed {
+      .section-nav {
+        max-height: 72px;
+        overflow: hidden;
+      }
+
+      .toc-toggle-up {
+        display: none;
+      }
+
+      .toc-toggle-down {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// The table-of-content section on the right side of the screen.
+#site-toc--side {
+  @include sidenav-top-position;
+
+  position: fixed;
+  bottom: 0;
+  min-width: 226px;
+  max-width: 246px;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  z-index: 999;
+
+  // override shared/_toc.scss
+  &.site-toc {
+    padding: $top-content-padding 20px $content-padding 30px;
+  }
+
+  // Override BS defaults for .nav, etc.
+  .site-toc__title {
+    color: $site-color-body;
+    font-size: 18px;
+  }
+
+  .toc-entry {
+    padding-bottom: 0.5rem;
+
+    // Indent subsequent lines
+    margin-left: 1rem;
+    text-indent: -1rem;
+
+    & .toc-entry {
+      margin-left: 0;
+    }
+
+    .nav {
+      padding-top: 0.5rem;
+    }
+  }
+
+  .section-nav {
+    display: block;
+    padding-top: 0.5rem;
+
+    .nav-link {
+      color: $site-color-body !important;
+      font-size: $font-size-small;
+      font-weight: 400;
+      padding: 1px 0;
+
+      &.active {
+        color: $site-color-sidebar-active !important;
+
+        // removing the '>' before the menu item
+        // override shared/_toc.scss
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  body.hide_toc & {
+    display: none;
+  }
+}

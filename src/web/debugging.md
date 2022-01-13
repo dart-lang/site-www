@@ -63,7 +63,7 @@ or can't use the Chrome browser to debug, see the tips in the
 
 ## Getting started with Dart DevTools {#using-dart-devtools}
 
-<img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools>
+<img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
 
 This section leads you through the basics of
 using Dart DevTools to debug a web app.

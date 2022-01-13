@@ -33,68 +33,68 @@ If you want or need to build, follow the steps below.
 > or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
 > (or both).
 
+
 ## Before you build this site
+For changes beyond simple text and CSS tweaks, 
+we recommend building the site.
 
 ### 1. Get the prerequisites
+Install the following tools, if you don't have them already:
 
-Install the following tools if you don't have them already.
+- **bash**, the Bourne shell. 
+  These instructions assume you're using `bash`, 
+  and setup might not work if you use another shell.
+- **GNU Make**. 
+  On Windows the easiest way to install Make is `choco install make`. 
+  Other options include using a [subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+- **Docker**. 
+  We use Docker for local dev, tests, and building the site. 
+  Install it from https://docs.docker.com/get-docker/.
+- **Firebase CLI**, for hosting the site locally. 
+  One way to get this is to run `npm install -g firebase-tools`. 
+  For full setup details, 
+  read the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
 
-- **bash**, the Bourne shell. These instructions assume you're using `bash`;
-setup might not work if you use another shell.
-- **[nvm][]**, the Node Version Manager.
+### 2. Clone this repo _and_ its submodules
 
-  > NOTE: To make `nvm` immediately available in your current shell,
-  > run `source <PATH_TO_INSTALLATION>`. For example:
-  > ```console
-  > $ source ~/.nvm/nvm.sh
-  > ```
+> **Note:** This repo has git _submodules_, 
+> which affects how you clone it. 
+> The GitHub documentation has general help on [forking][] and [cloning][] repos.
 
-- **[rvm][]**, the Ruby Version Manager.
+If you're outside of the Flutter organization, 
+we recommend you **create a fork** of the repo under your own account, 
+and then submit a PR from that fork. 
 
-  > NOTE: To make `rvm` immediately available in your current shell,
-  > run `source <PATH_TO_INSTALLATION>`. For example:
-  > ```console
-  > $ source ~/.rvm/bin/rvm
-  > ```
-- **[Dart][]**
-- **[GNU diffutils][]** version 3.6 or later.
-  > NOTE: `diff` v3.6+ is required to ensure that in-page code diffs are
-  > consistently refreshed across macOS and Linux.
-  > To upgrade `diffutils` on macOS run:<br>
-  > ```console
-  > $ brew install diffutils
-  > ```
+Once you have a fork (or you're a Flutter org member), 
+_choose one_ of the following submodule-cloning techniques:
 
-> IMPORTANT: Follow the installation instructions for each of the tools
-carefully. In particular, configure your shell/environment so
-that the tools are available in every terminal/command window you create.
-
-### 2. Clone this repo _and_ its submodule
-
-> NOTE: This repo has a git _submodule_, which affects how you clone it.
-
-To **clone this repo** ([site-www][]), follow the instructions given in the
-GitHub help on [Cloning a repository][], and _choose one_ of the following
-submodule-cloning techniques:
-
-- Clone this repo and its submodule _at the same time_, use the
-  `--recurse-submodules` option:<br>
-
-  ```console
+- Clone the repo and its submodule at the same
+  using the `--recurse-submodules` option:
+  ```bash
   $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
   ```
 
   OR
-- If you've already cloned this repo without its submodule, then run
-  this command from the repo root:<br>
-
-  ```console
+  
+- If you've already cloned the repo without its submodule, 
+  then run this command from the repo root:<br>
+  ```bash
   $ git submodule update --init --recursive
   ```
 
-> IMPORTANT:
-> Whenever you update your repo, update the submodule as well:<br>
-> `git pull; git submodule update --init --recursive`
+> **Note:** At any time during development 
+> you can use the `git submodule` command to refresh submodules:
+> ```bash
+> $ git pull; git submodule update --init --recursive
+> ```
+
+
+
+
+///
+
+
+
 
 ### 3. Run installation scripts
 

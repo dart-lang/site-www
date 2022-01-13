@@ -56,7 +56,7 @@ RUN set -eu; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-        echo "Dart zip failed checksum, please review version and update sha if everything looks good" && \
+        echo -e "\n\nDART CHECKSUM FAILED! Run tool/fetch-dart-sdk-sums.sh for updated values.\n\n" && \
         rm "$SDK" && \
         exit 1 \
     ); \
@@ -82,7 +82,7 @@ RUN set -eu; \
     NODE_SHA256=05dc283d949b7cdd58f37385e310973c2aaa52e0f8cda08a93a5e4812d225338; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo "Node setup failed checksum, please review setup script and update the sha if everything looks good" && \
+        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
         rm "$NODE_PPA" && \
         exit 1 \
     ); \
@@ -118,9 +118,13 @@ RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
 
-# Jekyl and Firebase ports
+# Jekyl
 EXPOSE 4000
-EXPOSE 5000
+EXPOSE 35729
+
+# Firebase emulator port
+# Airplay runs on :5000 by default now
+EXPOSE 5500 
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog
@@ -159,7 +163,6 @@ ENV TOOL_DIR=$BASE_DIR/tool
 
 ARG BUILD_CONFIGS=_config.yml
 ENV BUILD_CONFIGS=$BUILD_CONFIGS
-RUN printf "User-agent: *\nAllow: /" >> src/robots.txt
 RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 

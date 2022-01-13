@@ -7,11 +7,10 @@ source $TOOL_DIR/utils.sh
 # any formatting fixes required in the examples directory.
 $TOOL_DIR/format-examples.sh
 
-printf "\n$(blue "+ Refreshing code excerpts...")"
-(
-  set -x
+printf "\n$(blue "Refreshing code excerpts...")"
+( set -x
   $TOOL_DIR/refresh-code-excerpts.sh --keep-dart-tool
 ) || (
-  printf "\n$(red "+ Some code excerpts need to be refreshed")"
+  printf "\n$(red "+ Some code excerpts need to be refreshed")\n"
   exit 1
 )

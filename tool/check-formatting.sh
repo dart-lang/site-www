@@ -10,7 +10,7 @@ EXAMPLES="$BASE_DIR/examples"
 # Check formatting for all *.dart files in the examples 
 # directory and report back any files that need to be fixed. 
 function check_formatting() {
-  IFS=' '
+  IFS=" "
   read -a files <<< "$@"
   local file_count=${#files[@]}
   printf "\n$(blue "Checking formatting on $file_count files...")\n"

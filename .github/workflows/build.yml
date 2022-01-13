@@ -68,9 +68,7 @@ jobs:
       - run: make deploy-ci
 
   stage:
-    if: ${{ github.event_name == 'push' && 
-            github.ref == 'refs/heads/rearch' && 
-            github.repository == 'VGVentures/dart-site-www' }}
+    if: ${{ github.event_name == 'push' &&  github.ref == 'refs/heads/rearch' }}
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

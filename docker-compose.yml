@@ -15,6 +15,7 @@ services:
       - NODE_ENV=development
     ports:
       - "4000:4000"
+      - "35729:35729"
       - "5000:5000"
     volumes:
       - ./_config_dev.yml:/app/_config_dev.yml

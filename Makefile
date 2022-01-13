@@ -9,7 +9,7 @@ all: clean up down debug shell serve test-build test-run setup \
 .PHONY: all
 .DEFAULT_GOAL := up
 
-# NOTE all vars can be overridden by a .env file
+# NOTE all vars can be overridden by using a local .env file
 BUILD_COMMIT := $(shell git rev-parse --short HEAD)
 BUILD_CONFIGS ?= _config.yml
 BUILD_NAME ?= dart_dev_build
@@ -30,7 +30,7 @@ JEKYLL_SITE_PORT ?= 4000
 
 # Clean up caches, build files, etc
 clean:
-	rm -rf _site .jekyll* src/.jekyll* *.log tmp .dart_tool
+	rm -rf _site **/.jekyll*  *.log tmp .dart_tool
 
 # Start local dev container/server
 up:
