@@ -121,6 +121,7 @@ jobs:
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
       - run: ./tool/build.sh
+      - run: ./tool/before-release.sh
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
