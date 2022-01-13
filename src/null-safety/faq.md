@@ -390,5 +390,5 @@ A few notes that are worth highlighting:
     
 ## Resources
 
-*   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
+*   [DartPad with Null Safety]({{site.dartpad}})
 *   [Sound null safety](/null-safety)
