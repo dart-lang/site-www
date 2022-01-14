@@ -32,12 +32,7 @@ int? aNullableInt = null;
 You can
 [use null safety](#enable-null-safety) in your normal development environment,
 [migrate existing code][migration guide] to use null safety,
-enable null safety in [DartPad]({{site.dartpad}}),
-or learn about null safety using
-[DartPad with Null Safety][nullsafety.dartpad.dev]
-(shown in the following screenshot).
-
-![Screenshot of DartPad in null-safe mode](/null-safety/dartpad-snippet.png)
+or try null safety in [DartPad]({{site.dartpad}}).
 
 For an interactive, example-driven introduction to null safety language features,
 see the [null safety codelab][Null safety codelab].
@@ -135,7 +130,7 @@ For more information about null safety, see the following resources:
 * [Understanding null safety][]
 * [Migration guide for existing code][migration guide]
 * [Null safety FAQ][]
-* [DartPad with null safety][nullsafety.dartpad.dev]
+* [DartPad with null safety]({{site.dartpad}})
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
 * [Dart blog][]
@@ -147,6 +142,5 @@ For more information about null safety, see the following resources:
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety codelab]: /codelabs/null-safety
-[nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [Understanding null safety]: /null-safety/understanding-null-safety
 

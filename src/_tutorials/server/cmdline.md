@@ -572,7 +572,12 @@ For more classes, functions, and properties,
 consult to the API reference for
 [dart:io,]({{ioAPI}}/dart-io-library.html)
 [dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html)
-and the [args]({{argsAPI}}/args-library.html) package.
+and the [args]({{argsAPI}}/args-library.html) package.  
+
+For another example of a command line app, 
+see the [command_line][] sample.
+
+[command_line]: https://github.com/dart-lang/samples/tree/master/command_line
 
 ## What next?
 
