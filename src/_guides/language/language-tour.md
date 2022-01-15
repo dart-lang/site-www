@@ -1398,8 +1398,8 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
 <a id="default-parameters"></a>
 #### Default parameter values
 
-Your function can use `=` to define default values for both named and positional
-parameters. The default values must be compile-time constants.
+Your function can use `=` to define default values for both named and optional
+positional parameters. The default values must be compile-time constants.
 If no default value is provided, the default value is `null`.
 
 Here's an example of setting default values for named parameters:
