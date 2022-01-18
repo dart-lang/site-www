@@ -14,7 +14,7 @@ Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
 [flexible execution runtime platform](#platform) for app frameworks.
 
-Languages are defined by their _technical envelope_ -
+Languages are defined by their _technical envelope_ —
 the choices made during development that
 shape the capabilities and strengths of a language.
 Dart is designed for a technical envelope that is
