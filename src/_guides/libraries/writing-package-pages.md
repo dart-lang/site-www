@@ -361,7 +361,7 @@ Here are some suggestions for what to tell potential users:
 * Where to get help on using the package.
   Possibilities include an issue tracker, a chat room, or an email address.
 * What you're planning to do with the package.
-  A roadmap - either in the README or in an external page -
+  A roadmap — either in the README or in an external page —
   can help users know whether the feature they need is coming soon.
 * How to contribute code to the package.
 
