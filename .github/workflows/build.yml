@@ -4,7 +4,7 @@ on:
   # Run on PRs and pushes to the default branch.
   push:
     branches:
-      # - master
+      - master
       - rearch
   pull_request:
     branches:
@@ -17,7 +17,7 @@ env:
   PUB_ENVIRONMENT: bot.github
   # LTS
   NODE_VERSION: 16
-  # Script location
+  # Tool location
   BASE_DIR: ${{ github.workspace }}
   TOOL_DIR: ${{ github.workspace }}/tool
 
@@ -68,7 +68,7 @@ jobs:
       - run: make deploy-ci
 
   stage:
-    if: ${{ github.event_name == 'push' &&  github.ref == 'refs/heads/rearch' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/rearch' }}
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

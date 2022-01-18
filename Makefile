@@ -96,8 +96,8 @@ build:
 
 # Deploy locally
 deploy:
-	npx firebase deploy -m ${BUILD_COMMIT} \ 
-		--only hosting \ 
+	npx firebase deploy -m ${BUILD_COMMIT} \
+		--only hosting \
 		--project ${FIREBASE_PROJECT}
 
 # Deploy to Firebase hosting on CI/CD
@@ -105,7 +105,7 @@ deploy:
 deploy-ci:
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
-		--project ${FIREBASE_PROJECT}
+		--project ${FIREBASE_PROJECT} \
 		--token ${FIREBASE_TOKEN} \
 		--debug
 
@@ -123,7 +123,7 @@ emulate:
 
 # Fetch SDK sums for current Dart SDKs by arch, Node PPA
 # This outputs a bash case format to be copied to Dockerfile
-fetch-sdk-sums:
+fetch-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
