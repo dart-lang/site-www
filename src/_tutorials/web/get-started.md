@@ -122,7 +122,7 @@ $ webdev serve
 <i class="material-icons">web</i>
 Or run the app from your IDE.
 
-To view your app, use the Chrome browser to visit the app's URL -
+To view your app, use the Chrome browser to visit the app's URL —
 for example, [localhost:8080](localhost:8080).
 
 Whether you use an IDE or the command line,
