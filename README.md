@@ -187,16 +187,51 @@ You can deploy your local edits to a personal Firebase hosting staging site as f
 
 1. Deploy to your activated Firebase project's default hosting site:
    ```bash
-   $ firebase deploy
+   $ FIREBASE_PROJECT=<your-project> make deploy
    ```
+
+   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file and it will overwrite the default every time you deploy without specifying.
 
 1. Navigate to your PR on GitHub and update it with the location of 
   the staged version, the names of your reviewers, and so on.
 
 
+## Creating and/or editing DartPad example code
+Most of the code used to create [DartPad][] examples is hosted on GitHub. 
+However, this repo also contains some `*.dart` files responsible for DartPad example code.
+
+# Refresh DartPad HTML tooltips
+Files that require DartPad HTML to be manually updated include instructions at the top that specify running: 
+```bash
+$ tool/create_code_with_tooltips.dart
+```
+
+Follow the instructions in those files to refresh the appropriate code.
+
+### DartPad picker
+The DartPad date picker must be manually compiled if changes are made. This will regenerate the associated JavaScript file in `src/assets/dash/js`:
+```bash
+$ tool/compile.sh
+```
+
+
+## Dockerfile Maintenance
+
+### Dart SDK and Node PPA Checksum values
+Since both the Dart SDK and Node PPA `curl` remote files, it's important to verify checksum values. Both installs use `latest` and `lts` respectively, so these files may be periodically updated. When this happens, local checksums may fail and **This will break the Docker/Compose setup/build**. You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`. When this happens, run the following command:
+
+```bash
+make fetch-sums
+```
+
+This command will output the updated checksum values for both Node and Dart, and that output will be formatted similar or the same as what is currently in the Dockerfile. Copy this output and replace the relevant install code in the Dockerfile, then rerun your setup/build again. 
+
+
+
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [cloning]: https://help.github.com/articles/cloning-a-repository
+[DartPad]: https://dartpad.dev
 [Firebase]: https://firebase.google.com/
 [first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
 [first-timers]: https://www.firsttimersonly.com/

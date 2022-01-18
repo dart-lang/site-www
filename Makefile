@@ -53,7 +53,7 @@ setup:
 	make clean
 	-docker compose down
 	-docker rmi ${BUILD_TAG}:${DART_CHANNEL}
-	docker compose build site
+	docker compose build --no-cache site
 
 # Serve the Jekyll site with livereload and incremental builds
 serve:
@@ -94,8 +94,15 @@ build:
 	docker stop ${BUILD_NAME}
 	docker rmi -f ${BUILD_TAG}:${BUILD_COMMIT}
 
+# Overwrite robots.txt with production version
+_write-prod-robots:
+	@echo "User-agent: *\nDisallow:" > _site/robots.txt
+
 # Deploy locally
 deploy:
+ifeq ("${FIREBASE_PROJECT}", "default")
+	make _write-prod-robots
+endif
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
 		--project ${FIREBASE_PROJECT}
@@ -103,6 +110,9 @@ deploy:
 # Deploy to Firebase hosting on CI/CD
 # Requires that a `FIREBASE_TOKEN` is set in ENV
 deploy-ci:
+ifeq ("${FIREBASE_PROJECT}", "default")
+	make _write-prod-robots
+endif
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
 		--project ${FIREBASE_PROJECT} \
@@ -120,6 +130,10 @@ emulate:
 	npx firebase emulators:start \
 		--only hosting \
 		--project ${FIREBASE_PROJECT}
+
+
+
+################## UTILS ##################
 
 # Fetch SDK sums for current Dart SDKs by arch, Node PPA
 # This outputs a bash case format to be copied to Dockerfile

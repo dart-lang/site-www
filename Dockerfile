@@ -104,7 +104,7 @@ RUN gem update --system && gem install bundler
 RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
-COPY package.json ./
+COPY package.json package-lock.json ./
 RUN npm install -g firebase-tools
 RUN npm install
 
