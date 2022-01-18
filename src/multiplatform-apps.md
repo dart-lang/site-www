@@ -18,7 +18,7 @@ Flutter is powered by the [Dart platform](/overview#platform).
 The [Dart VM](/overview#platform) provides an instant _hot reload_ developer cycle.
 The Dart compilers -
 an [ahead-of-time (AOT) compiler for native code](/overview#native-platform)
-and a [Dart-to-JavaScript compiler](/overview#web-platform) for web code -
+and a [Dart-to-JavaScript compiler](/overview#web-platform) for web code —
 create fast production code for any platform.
 
 <p class="text-center"> 
