@@ -260,7 +260,7 @@ and go to the code that interests them:
 
 If your package looks promising, users might want to test your package.
 Include a "Get started" or "Usage" section that has
-at least one code sample that users can easily understand -
+at least one code sample that users can easily understand —
 and, ideally, that they can copy and paste into their project.
 It’s even better if you can provide more examples with more details
 to help users to understand your package. 
