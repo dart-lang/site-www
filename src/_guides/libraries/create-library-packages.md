@@ -85,7 +85,7 @@ library packages:
 
 Directly under lib, the main library file,
 `shelf.dart`, exports API from several files in lib/src.
-To avoid exposing more API than intended -
+To avoid exposing more API than intended —
 and to give developers an overview of the entire public API of the package -
 `shelf.dart` uses `show` to specify exactly which symbols to export:
 
