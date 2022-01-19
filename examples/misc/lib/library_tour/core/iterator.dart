@@ -1,7 +1,6 @@
 import 'dart:collection';
 
-final Iterator<Process> _it =
-    [Process(), Process(), Process()].iterator;
+final Iterator<Process> _it = [Process(), Process(), Process()].iterator;
 
 // #docregion
 class Process {
