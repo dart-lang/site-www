@@ -28,7 +28,7 @@ If you want or need to build, follow the steps below.
 > **Help us improve these instructions!**
 > If you have any problems getting set up to build or performing the
 > actual build, please
-> [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> [edit this README](https://github.com/dart-lang/site-www/edit/main/README.md)
 > or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
 > (or both).
 
@@ -237,7 +237,7 @@ This command will output the updated checksum values for both Node and Dart, and
 [first-timers]: https://www.firsttimersonly.com/
 [forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Jekyll]: https://jekyllrb.com
-[Makefile]: (https://github.com/dart-lang/site-www/blob/master/Makefile)
+[Makefile]: (https://github.com/dart-lang/site-www/blob/main/Makefile)
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amaster
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
