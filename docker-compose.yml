@@ -16,7 +16,7 @@ services:
     ports:
       - "4000:4000"
       - "35729:35729"
-      - "5000:5000"
+      - "5500:5500"
     volumes:
       - ./_config_dev.yml:/app/_config_dev.yml
       - ./_config_test.yml:/app/_config_test.yml
