@@ -1323,7 +1323,7 @@ Future<int> f() async {
 ### body_might_complete_normally
 
 _The body might complete normally, causing 'null' to be returned, but the return
-type is a potentially non-nullable type._
+type, '{0}', is a potentially non-nullable type._
 
 #### Description
 
@@ -1384,13 +1384,15 @@ class C<T> {
 }
 {% endprettify %}
 
-If the method intentionally returns `null` at the end, then change the
+If the method intentionally returns `null` at the end, then add an
+explicit return of `null` at the end of the method and change the
 return type so that it's valid to return `null`:
 
 {% prettify dart tag=pre+code %}
 class C<T> {
   T? m(T t) {
     print(t);
+    return null;
   }
 }
 {% endprettify %}
@@ -3499,9 +3501,10 @@ constructor._
 
 #### Description
 
-The analyzer produces this diagnostic when there's more than one field
-formal parameter for the same field in a constructor's parameter list. It
-isn't useful to assign a value that will immediately be overwritten.
+The analyzer produces this diagnostic when there's more than one
+initializing formal parameter for the same field in a constructor's
+parameter list. It isn't useful to assign a value that will immediately be
+overwritten.
 
 #### Example
 
@@ -3518,7 +3521,7 @@ class C {
 
 #### Common fixes
 
-Remove one of the field formal parameters:
+Remove one of the initializing formal parameters:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4716,7 +4719,8 @@ the parameter list and in the initializer list of a constructor.
 #### Example
 
 The following code produces this diagnostic because the field `f` is
-initialized both by a field formal parameter and in the initializer list:
+initialized both by an initializing formal parameter and in the
+initializer list:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4767,14 +4771,14 @@ _Initializing formal parameters can't be used in factory constructors._
 
 #### Description
 
-The analyzer produces this diagnostic when a factory constructor has a
-field formal parameter. Factory constructors can't assign values to fields
-because no instance is created; hence, there is no field to assign.
+The analyzer produces this diagnostic when a factory constructor has an
+initializing formal parameter. Factory constructors can't assign values to
+fields because no instance is created; hence, there is no field to assign.
 
 #### Example
 
 The following code produces this diagnostic because the factory constructor
-uses a field formal parameter:
+uses an initializing formal parameter:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4786,7 +4790,7 @@ class C {
 
 #### Common fixes
 
-Replace the field formal parameter with a normal parameter:
+Replace the initializing formal parameter with a normal parameter:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4860,8 +4864,8 @@ initialized.
 #### Examples
 
 The following code produces this diagnostic because the constructor
-`C.zero`, which redirects to the constructor `C`, has a field formal
-parameter that initializes the field `f`:
+`C.zero`, which redirects to the constructor `C`, has an initializing
+formal parameter that initializes the field `f`:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4889,8 +4893,8 @@ class C {
 
 #### Common fixes
 
-If the initialization is done by a field formal parameter, then use a
-normal parameter:
+If the initialization is done by an initializing formal parameter, then
+use a normal parameter:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4921,14 +4925,16 @@ _The parameter type '{0}' is incompatible with the field type '{1}'._
 
 #### Description
 
-The analyzer produces this diagnostic when the type of a field formal
-parameter isn't assignable to the type of the field being initialized.
+The analyzer produces this diagnostic when the type of an initializing
+formal parameter isn't assignable to the type of the field being
+initialized.
 
 #### Example
 
-The following code produces this diagnostic because the field formal
-parameter has the type `String`, but the type of the field is `int`. The
-parameter must have a type that is a subtype of the field's type.
+The following code produces this diagnostic because the initializing
+formal parameter has the type `String`, but the type of the field is
+`int`. The parameter must have a type that is a subtype of the field's
+type.
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -4964,8 +4970,8 @@ class C {
 {% endprettify %}
 
 If the types of both the field and the parameter are correct, then use an
-initializer rather than a field formal parameter to convert the parameter
-value into a value of the correct type:
+initializer rather than an initializing formal parameter to convert the
+parameter value into a value of the correct type:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -5050,7 +5056,7 @@ final x = 0;
 
 For instance fields, you can add an initializer as shown in the previous
 example, or you can initialize the field in every constructor. You can
-initialize the field by using a field formal parameter:
+initialize the field by using an initializing formal parameter:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -5100,8 +5106,8 @@ class C {
 
 #### Common fixes
 
-If the value should be passed in to the constructor directly, then use a
-field formal parameter to initialize the field `value`:
+If the value should be passed in to the constructor directly, then use an
+initializing formal parameter to initialize the field `value`:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -5878,14 +5884,14 @@ constructor can't be static._
 
 #### Description
 
-The analyzer produces this diagnostic when a static field is initialized in
-a constructor using either a field formal parameter or an assignment in the
-initializer list.
+The analyzer produces this diagnostic when a static field is initialized
+in a constructor using either an initializing formal parameter or an
+assignment in the initializer list.
 
 #### Example
 
-The following code produces this diagnostic because the static field `a` is
-being initialized by the field formal parameter `this.a`:
+The following code produces this diagnostic because the static field `a`
+is being initialized by the initializing formal parameter `this.a`:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -5934,10 +5940,10 @@ _'{0}' isn't a field in the enclosing class._
 
 #### Description
 
-The analyzer produces this diagnostic when a field formal parameter is
-found in a constructor in a class that doesn't declare the field being
-initialized. Constructors can't initialize fields that aren't declared and
-fields that are inherited from superclasses.
+The analyzer produces this diagnostic when an initializing formal
+parameter is found in a constructor in a class that doesn't declare the
+field being initialized. Constructors can't initialize fields that aren't
+declared and fields that are inherited from superclasses.
 
 #### Example
 
@@ -6518,7 +6524,7 @@ _Publishable packages can't have '{0}' dependencies._
 #### Description
 
 The analyzer produces this diagnostic when a package under either
-`dependencies` or `dev_dependencies` is not a pub, `git`, or `path` based
+`dependencies` or `dev_dependencies` isn't a pub, `git`, or `path` based
 dependency.
 
 See [Package dependencies](https://dart.dev/tools/pub/dependencies) for
@@ -6527,7 +6533,7 @@ more information about the kind of dependencies that are supported.
 #### Example
 
 The following code produces this diagnostic because the dependency on the
-package `transmogrify` is not a pub, `git`, or `path` based dependency:
+package `transmogrify` isn't a pub, `git`, or `path` based dependency:
 
 ```yaml
 name: example
@@ -6968,7 +6974,7 @@ operator following `s` short-circuits the evaluation of both `length` and
 `isEven` if `s` is `null`. In other words, if `s` is `null`, then neither
 `length` nor `isEven` will be invoked, and if `s` is non-`null`, then
 `length` can't return a `null` value. Either way, `isEven` can't be invoked
-on a `null` value, so the null-aware operator is not necessary. See
+on a `null` value, so the null-aware operator isn't necessary. See
 [Understanding null safety](/null-safety/understanding-null-safety#smarter-null-aware-methods)
 for more details.
 
@@ -7149,46 +7155,6 @@ match the callback:
 {% prettify dart tag=pre+code %}
 void f(Future<String> future, String Function(dynamic, StackTrace) callback) {
   future.catchError(callback);
-}
-{% endprettify %}
-
-### invalid_super_invocation
-
-_The superclass call must be last in an initializer list: '{0}'._
-
-#### Description
-
-The analyzer produces this diagnostic when the initializer list of a
-constructor contains an invocation of a constructor in the superclass, but
-the invocation isn't the last item in the initializer list.
-
-#### Example
-
-The following code produces this diagnostic because the invocation of the
-superclass' constructor isn't the last item in the initializer list:
-
-{% prettify dart tag=pre+code %}
-class A {
-  A(int x);
-}
-
-class B extends A {
-  B(int x) : [!super!](x), assert(x >= 0);
-}
-{% endprettify %}
-
-#### Common fixes
-
-Move the invocation of the superclass' constructor to the end of the
-initializer list:
-
-{% prettify dart tag=pre+code %}
-class A {
-  A(int x);
-}
-
-class B extends A {
-  B(int x) : assert(x >= 0), super(x);
 }
 {% endprettify %}
 
@@ -8079,6 +8045,8 @@ Reinstall the Dart or Flutter SDK.
 
 _The parameter '{0}' can't have a value of 'null' because of its type, but the
 implicit default value is 'null'._
+
+_With null safety, use the 'required' keyword, not the '@required' annotation._
 
 #### Description
 
@@ -12846,6 +12814,48 @@ typedef T<S> = S;
 class C extends Object {}
 {% endprettify %}
 
+### super_invocation_not_last
+
+<a id="invalid_super_invocation" aria-hidden="true"></a>_(Previously known as `invalid_super_invocation`)_
+
+_The superconstructor call must be last in an initializer list: '{0}'._
+
+#### Description
+
+The analyzer produces this diagnostic when the initializer list of a
+constructor contains an invocation of a constructor in the superclass, but
+the invocation isn't the last item in the initializer list.
+
+#### Example
+
+The following code produces this diagnostic because the invocation of the
+superclass' constructor isn't the last item in the initializer list:
+
+{% prettify dart tag=pre+code %}
+class A {
+  A(int x);
+}
+
+class B extends A {
+  B(int x) : [!super!](x), assert(x >= 0);
+}
+{% endprettify %}
+
+#### Common fixes
+
+Move the invocation of the superclass' constructor to the end of the
+initializer list:
+
+{% prettify dart tag=pre+code %}
+class A {
+  A(int x);
+}
+
+class B extends A {
+  B(int x) : assert(x >= 0), super(x);
+}
+{% endprettify %}
+
 ### super_in_extension
 
 _The 'super' keyword can't be used in an extension because an extension doesn't
@@ -13016,6 +13026,82 @@ void f() {
 #### Common fixes
 
 Tear off the constructor of a concrete class.
+
+### text_direction_code_point_in_comment
+
+_The Unicode code point 'U+{0}' changes the appearance of text from how it's
+interpreted by the compiler._
+
+#### Description
+
+The analyzer produces this diagnostic when it encounters source that
+contains text direction Unicode code points. These code points cause
+source code in either a string literal or a comment to be interpreted
+and compiled differently than how it appears in editors, leading to
+possible security vulnerabilities.
+
+#### Example
+
+The following code produces this diagnostic twice because there are
+hidden characters at the start and end of the label string:
+
+{% prettify dart tag=pre+code %}
+var label = '[!I!]nteractive text[!'!];
+{% endprettify %}
+
+#### Common fixes
+
+If the code points are intended to be included in the string literal,
+then escape them:
+
+{% prettify dart tag=pre+code %}
+var label = '\u202AInteractive text\u202C';
+{% endprettify %}
+
+If the code points aren't intended to be included in the string literal,
+then remove them:
+
+{% prettify dart tag=pre+code %}
+var label = 'Interactive text';
+{% endprettify %}
+
+### text_direction_code_point_in_literal
+
+_The Unicode code point 'U+{0}' changes the appearance of text from how it's
+interpreted by the compiler._
+
+#### Description
+
+The analyzer produces this diagnostic when it encounters source that
+contains text direction Unicode code points. These code points cause
+source code in either a string literal or a comment to be interpreted
+and compiled differently than how it appears in editors, leading to
+possible security vulnerabilities.
+
+#### Example
+
+The following code produces this diagnostic twice because there are
+hidden characters at the start and end of the label string:
+
+{% prettify dart tag=pre+code %}
+var label = '[!I!]nteractive text[!'!];
+{% endprettify %}
+
+#### Common fixes
+
+If the code points are intended to be included in the string literal,
+then escape them:
+
+{% prettify dart tag=pre+code %}
+var label = '\u202AInteractive text\u202C';
+{% endprettify %}
+
+If the code points aren't intended to be included in the string literal,
+then remove them:
+
+{% prettify dart tag=pre+code %}
+var label = 'Interactive text';
+{% endprettify %}
 
 ### throw_of_invalid_type
 
@@ -14329,7 +14415,7 @@ the imported libraries.
 
 ### undefined_referenced_parameter
 
-_The parameter '{0}' is not defined by '{1}'._
+_The parameter '{0}' isn't defined by '{1}'._
 
 #### Description
 
@@ -14435,7 +14521,7 @@ var x = min(0, 1);
 
 ### undefined_super_member
 
-<a id="undefined_super_method" aria-hidden="true"></a>_(Previously known as `UNDEFINED_SUPER_METHOD`)_
+<a id="undefined_super_method" aria-hidden="true"></a>_(Previously known as `undefined_super_method`)_
 
 _The getter '{0}' isn't defined in a superclass of '{1}'._
 
