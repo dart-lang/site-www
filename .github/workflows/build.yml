@@ -3,125 +3,67 @@ name: build
 on:
   # Run on PRs and pushes to the default branch.
   push:
-    branches: [ master ]
+    branches:
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
   schedule:
     - cron: "0 0 * * 0"
 
 env:
-  _OS_NAME: linux
-  DART_SITE_ENV_DEFS: 1
-  JEKYLL_ENV: production
+  # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
-  SITE_LOCALHOST_PORT: 5000
-  SITE_JEKYLL_DEST: _site
-  SITE_JEKYLL_SRC: src
-  TMP: ${{ github.workspace }}/tmp
-  TZ: US/Pacific # normalize build timestamp
+  # LTS
+  NODE_VERSION: '16'
+  # Tool location
+  BASE_DIR: ${{ github.workspace }}
+  TOOL_DIR: ${{ github.workspace }}/tool
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        sdk: [dev, beta, stable]
-        task:
-          - ./tool/build.sh --check-links
-          - ./tool/check-code.sh
-        experimental: [false]
-        include:
-          - sdk: dev
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: false
-          - sdk: beta
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: false
-          - sdk: stable
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: false
+        sdk: [stable, beta, dev]
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        if: contains(matrix.task, 'build.sh')
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.4
-      - uses: dart-lang/setup-dart@v1.3
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
-      - name: Install node dependencies
-        # TODO: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-        if: contains(matrix.task, 'build.sh')
-      - run: ${{ matrix.task }}
-        continue-on-error: ${{ matrix.experimental }}
-
-#  sdk-files-up-to-date:
-#    runs-on: ubuntu-latest
-#    if: |
-#      github.event_name == 'push'
-#      && github.ref == 'refs/heads/master'
-#    steps:
-#      - uses: actions/checkout@v2
-#      - run: mkdir -p $TMP
-#      - uses: dart-lang/setup-dart@v1.3
-#        with:
-#          sdk: stable
-#      - run: ./tool/check-diagnostics.sh
-
-  firebase-checks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: mkdir -p $TMP
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - run: ./tool/firebase-checks.sh
+      - run: dart pub get
+      - run: tool/test.sh
+        continue-on-error: true
+        env:
+          DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
-    needs: [test, firebase-checks]
+    if: ${{ github.event_name == 'push' && 
+            github.ref == 'refs/heads/main' && 
+            github.repository == 'dart-lang/site-www' }}
+    needs: test
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push'
-      && github.ref == 'refs/heads/master'
-      && github.repository == 'dart-lang/site-www'
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: default
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
+          submodules: recursive
+      - run: make build
+      - run: make write-prod-robots
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.4
-      - uses: dart-lang/setup-dart@v1.3
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm install -g firebase-tools
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-      - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/build.sh
-      - run: ./tool/before-release.sh
+      - run: tool/check-links.sh
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -129,34 +71,24 @@ jobs:
           projectId: dart-dev
           channelId: live
 
-  deploy_preview:
+  stage:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     needs: test
     runs-on: ubuntu-latest
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
+          submodules: recursive
+      - run: make build
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.4
-      - uses: dart-lang/setup-dart@v1.3
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm install -g firebase-tools
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-      - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/build.sh
-      - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
+      - run: tool/check-links.sh
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'

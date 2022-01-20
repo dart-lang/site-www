@@ -36,7 +36,9 @@ In Dart, all numbers are part of the common `Object` type hierarchy,
 and there are two concrete, user-visible numeric types:
 `int`, representing integer values, and `double`, representing fractional values.
 
-<img src="{% asset number-class-hierarchy.svg @path %}" alt="Object is the parent of num, which is the parent of int and double">
+<img 
+  src="/assets/img/number-class-hierarchy.svg" 
+  alt="Object is the parent of num, which is the parent of int and double">
 
 Depending on the platform,
 those numeric types have different, hidden implementations.
@@ -95,7 +97,9 @@ the concrete type for `int` on native implements only the `int` interface.
 However, the concrete type for `int` on the web implements
 both `int` and `double`.
 
-<img src="{% asset number-platform-specific.svg @path %}" alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
+<img 
+  src="/assets/img/number-platform-specific.svg" 
+  alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
 
 
 {{site.alert.note}}

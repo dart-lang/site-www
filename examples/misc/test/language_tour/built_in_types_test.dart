@@ -109,12 +109,7 @@ void main() {
   test('list-if', () {
     var promoActive = true;
     // #docregion list-if
-    var nav = [
-      'Home',
-      'Furniture',
-      'Plants',
-      if (promoActive) 'Outlet'
-    ];
+    var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
     // #enddocregion list-if
     assert(nav.length == 4);
   });
@@ -122,22 +117,13 @@ void main() {
   test('list-for', () {
     // #docregion list-for
     var listOfInts = [1, 2, 3];
-    var listOfStrings = [
-      '#0',
-      for (var i in listOfInts) '#$i'
-    ];
+    var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
     assert(listOfStrings[1] == '#1');
     // #enddocregion list-for
   });
 
   test('set-length', () {
-    var halogens = {
-      'fluorine',
-      'chlorine',
-      'bromine',
-      'iodine',
-      'astatine'
-    };
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
     // #docregion set-length
     var elements = <String>{};

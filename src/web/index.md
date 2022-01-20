@@ -28,7 +28,8 @@ and other web app frameworks for Dart are powered by the Dart web platform.
 
 <p class="text-center">
   <br>
-  <img src="{% asset flutter-gallery.jpg @path %}"
+  <img 
+    src="/assets/img/flutter-gallery.jpg"
     alt="screenshot of Flutter Gallery">
   <br>
   <em>Flutter Gallery, running in a web browser</em>

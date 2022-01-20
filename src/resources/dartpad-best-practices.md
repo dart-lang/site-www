@@ -33,7 +33,9 @@ The following screenshot shows DartPad.
 
 
 <div class="col-md-10" markdown="1">
-{% asset dartpad-best-practices/anatomy.png alt="A screenshot of DartPad with annotations" %}
+<img 
+  src="/assets/img/dartpad-best-practices/anatomy.png"
+  alt="A screenshot of DartPad with annotations">
 <p style="text-align: center;" markdown="1">
   *A screenshot of DartPad with annotations*
 </p>
@@ -95,7 +97,9 @@ Coding tutorials are sometimes referred to as _codelabs._
 </div>
 <div class="col-lg-4 col-md-4 col-sm" markdown="1">
 
-{% asset dartpad-best-practices/codelab.png alt="An illustration of people studying" %}
+<img 
+  src="/assets/img/dartpad-best-practices/codelab.png" 
+  alt="An illustration of people studying">
 {: .img-xs-wrapper}
 
 </div>
@@ -141,7 +145,9 @@ using DartPad in interactive tutorials:
 <div class="row">
 <div class="col-md-3" markdown="1">
 
-{% asset dartpad-best-practices/p_hands-on.png alt="An illustration of hands-on exercise" %}
+<img 
+  src="/assets/img/dartpad-best-practices/p_hands-on.png" 
+  alt="An illustration of hands-on exercise">
 {: .img-xs-wrapper}
 
 #### **Enable hands-on exercises**
@@ -152,7 +158,9 @@ engage learners in actively writing code.
 </div>
 <div class="col-md-3" markdown="1">
 
-{% asset dartpad-best-practices/p_feedback.png alt="An illustration of feedback" %}
+<img 
+  src="/assets/img/dartpad-best-practices/p_feedback.png"
+  alt="An illustration of feedback">
 {: .img-xs-wrapper}
 
 #### **Give just-in-time and just-enough help, and feedback**
@@ -163,7 +171,9 @@ learners’ progress without taking away learning opportunities.
 </div>
 <div class="col-md-3" markdown="1">
 
-{% asset dartpad-best-practices/p_reflection.png alt="An illustration of reflection" %}
+<img 
+  src="/assets/img/dartpad-best-practices/p_reflection.png"
+  alt="An illustration of reflection">
 {: .img-xs-wrapper}
 
 #### **Facilitate reflection**
@@ -174,7 +184,9 @@ predict the outcomes of their learning and monitor their understanding.
 </div>
 <div class="col-md-3" markdown="1">
 
-{% asset dartpad-best-practices/p_transferlearning alt="An illustration of learning transfer" %}
+<img 
+  src="/assets/img/dartpad-best-practices/p_transferlearning.png"
+  alt="An illustration of learning transfer">
 {: .img-xs-wrapper}
 
 #### **Support learning transfer**
@@ -198,7 +210,9 @@ configuring DartPad to show demos, exercises, and quizzes.
 
 **I. Demo**
 
-{% asset dartpad-best-practices/m_demo.png alt="An illustration of andemo" %}
+<img 
+  src="/assets/img/dartpad-best-practices/m_demo.png"
+  alt="An illustration of andemo">
 {: .img-xs-wrapper}
 
 </div>
@@ -206,7 +220,9 @@ configuring DartPad to show demos, exercises, and quizzes.
 
 **II. Exercise**
 
-{% asset dartpad-best-practices/m_exercise.png alt="An illustration of an exercise" %}
+<img 
+  src="/assets/img/dartpad-best-practices/m_exercise.png" 
+  alt="An illustration of an exercise">
 {: .img-xs-wrapper}
 
 </div>
@@ -214,7 +230,9 @@ configuring DartPad to show demos, exercises, and quizzes.
 
 **III. Quiz**
 
-{% asset dartpad-best-practices/m_quiz.png alt="An illustration of a quiz" %}
+<img 
+  src="/assets/img/dartpad-best-practices/m_quiz.png" 
+  alt="An illustration of a quiz">
 {: .img-xs-wrapper}
 
 </div>
@@ -227,7 +245,9 @@ This is similar to how science teachers bring experiments into the classroom to 
 
 <div class="col-md-11" markdown="1">
 
-{% asset dartpad-best-practices/demo_screenshot.png alt="A screenshot of a demo" %}
+<img 
+  src="/assets/img/dartpad-best-practices/demo_screenshot.png" 
+  alt="A screenshot of a demo">
 <p style="text-align: center;" markdown="1">
   *A code demo: abstract execution flow and instructions for changing code*
 </p>
@@ -242,7 +262,9 @@ and other kinds of feedback and help.
 
 <div class="col-md-11" markdown="1">
 
-{% asset dartpad-best-practices/exercise_screenshot.png alt="A screenshot of an exercise" %}
+<img 
+  src="/assets/img/dartpad-best-practices/exercise_screenshot.png" 
+  alt="A screenshot of an exercise">
 <p style="text-align: center;" markdown="1">
   *A coding exercise: implementing two async functions*
 </p>
@@ -257,7 +279,9 @@ This is useful to evaluate whether the [transfer of learning][] happened.
 
 <div class="col-md-11" markdown="1">
 
-{% asset dartpad-best-practices/quiz_future.png alt="A screenshot of a quiz" %}
+<img 
+  src="/assets/img/dartpad-best-practices/quiz_future.png" 
+  alt="A screenshot of a quiz">
 <p style="text-align: center;" markdown="1">
   *A quiz on async functions, the async and await keywords,
   and errors handling
@@ -305,7 +329,9 @@ or _the Dart Futures codelab_ for short.
 
 <div class="col-md-10" markdown="1">
 
-{% asset dartpad-best-practices/futurecodelab2.png alt="A screenshot of the Dart Futures codelab" %}
+<img 
+  src="/assets/img/dartpad-best-practices/futurecodelab2.png" 
+  alt="A screenshot of the Dart Futures codelab">
 <p style="text-align: center;" markdown="1">
   *The Dart Futures codelab*
 </p>
@@ -322,7 +348,9 @@ we walk you through how each use case is used in the design of this tutorial.
 
 <div class="col-md-9" markdown="1">
 
-{% asset dartpad-best-practices/ToC.png alt="Table of contents: 5 demos, 2 exercises, and 1 final quiz" %}
+<img 
+  src="/assets/img/dartpad-best-practices/ToC.png"
+  alt="Table of contents: 5 demos, 2 exercises, and 1 final quiz">
 <p style="text-align: center;" markdown="1">
   *Table of contents: 5 demos, 2 exercises, and 1 final quiz*
 </p>
@@ -354,7 +382,7 @@ what they thought would happen and what might not make sense to them.
 For example, the following [demo][] presents learners with
 an example of incorrectly using an asynchronous function.
 Above the code snippet is a prompt:
-_Before running this example, try to spot the issue –
+_Before running this example, try to spot the issue -
 what do you think the output will be?_
 Beneath the code example is a description of what the code example is about,
 how the code is executed,
@@ -362,7 +390,9 @@ and an explanation of why the code fails to print the desired value.
 
 <div class="col-md-11" markdown="1">
 
-{% asset dartpad-best-practices/demo_incorrect_usecase.png alt="A prompt to ask the user to consider the output of an example that incorrectly uses an asynchronous function, followed by an explanation." %}
+<img 
+  src="/assets/img/dartpad-best-practices/demo_incorrect_usecase.png"
+  alt="A prompt to ask the user to consider the output of an example that incorrectly uses an asynchronous function, followed by an explanation.">
 <p style="text-align: center;" markdown="1">
   *A prompt to ask the user to consider the output of an example that
   incorrectly uses an asynchronous function, followed by an explanation.*
@@ -383,7 +413,9 @@ learners can better understand the execution flow in asynchronous code.
 
 <div class="col-md-11" markdown="1">
 
-{% asset dartpad-best-practices/demo_changecode.png alt="A code example: abstract execution flow and instructions for changing code" %}
+<img 
+  src="/assets/img/dartpad-best-practices/demo_changecode.png" 
+  alt="A code example: abstract execution flow and instructions for changing code">
 <p style="text-align: center;" markdown="1">
   *A code example:
   abstract execution flow and instructions for changing code*
@@ -403,7 +435,9 @@ using the `Future` class, the `async` keyword, and the `await` keyword.
 Learners have an opportunity to practice what they just learned from the demos.
 
 <div class="col-md-11" markdown="1">
-{% asset dartpad-best-practices/exercise_future.png alt="A coding exercise: implementing two async functions" %}
+<img 
+  src="/assets/img/dartpad-best-practices/exercise_future.png" 
+  alt="A coding exercise: implementing two async functions">
 <p style="text-align: center;" markdown="1">
   *A coding exercise: implementing two async functions*
 </p>
@@ -430,7 +464,9 @@ implement the hidden code that was provided, such as `main()` and
 two asynchronous functions, `getRole()` and `getLoginAmount()`.
 
 <div class="col-md-9" markdown="1">
-{% asset dartpad-best-practices/exercise_workflow.png alt="Briefly explain what the exercise is about and what learners are supposed (or not supposed) to do." %}
+<img 
+  src="/assets/img/dartpad-best-practices/exercise_workflow.png" 
+  alt="Briefly explain what the exercise is about and what learners are supposed (or not supposed) to do.">
 <p style="text-align: center;" markdown="1">
   *Briefly explain what the exercise is about and
   what learners are supposed (or not supposed) to do.*
@@ -456,7 +492,9 @@ the dark DartPad theme for exercises.
 The continuous improvement is tracked using [this GitHub issue.][1150]
 
 <div class="col-md-9" markdown="1">
-{% asset dartpad-best-practices/instruction_title.png alt="Clearly label the titles, and use different themes for demos and exercises." %}
+<img 
+  src="/assets/img/dartpad-best-practices/instruction_title.png" 
+  alt="Clearly label the titles, and use different themes for demos and exercises.">
 <p style="text-align: center;" markdown="1">
   *Clearly label the titles,
   and use different themes for demos and exercises.*
@@ -490,7 +528,9 @@ has more pre-filled code snippets in the starting state,
 while in Part 2, `reportLogins()`, only the function name is offered.
 
 <div class="col-md-9" markdown="1">
-{% asset dartpad-best-practices/codesnippet_scaffold.png alt="Part 1 has more complete code snippets in the starting state than Part 2 does." %}
+<img 
+  src="/assets/img/dartpad-best-practices/codesnippet_scaffold.png" 
+  alt="Part 1 has more complete code snippets in the starting state than Part 2 does.">
 <p style="text-align: center;" markdown="1">
   *Part 1 has more complete code snippets in the starting state than
   Part 2 does.*
@@ -543,7 +583,9 @@ it's usually to me that means it's like a test of
 every single thing that you've written out and combining them.“
 
 <div class="col-md-9" markdown="1">
-{% asset dartpad-best-practices/quiz_future.png alt="A coding quiz: implementing 3 functions about async functions, async/await keywords and handling errors" %}
+<img 
+  src="/assets/img/dartpad-best-practices/quiz_future.png"
+  alt="A coding quiz: implementing 3 functions about async functions, async/await keywords and handling errors">
 <p style="text-align: center;" markdown="1">
   *A coding quiz: implementing 3 functions about async functions,
   async/await keywords, and handling errors*

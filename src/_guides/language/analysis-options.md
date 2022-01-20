@@ -149,7 +149,9 @@ If no file is available, the analyzer defaults to standard checks.
 
 Consider the following directory structure for a large project:
 
-{% asset guides/analysis-options-directory-structure.png alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2)." %}
+<img 
+  src="/assets/img/guides/analysis-options-directory-structure.png"
+  alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
 
 The analyzer uses file #1 to analyze the code in `my_other_package`
 and `my_other_other_package`, and file #2 to analyze the code in
@@ -385,13 +387,25 @@ To suppress more than one rule, use a comma-separated list:
 // ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
 
+To suppress all linter rules, add a `type=lint` specifier:
+
+<?code-excerpt "analysis/lib/ignore_lints.dart (ignore_type_for_file)"?>
+```dart
+// ignore_for_file: type=lint
+```
+
+{{site.alert.version-note}}
+  Support for the `type=lint` specifier was added in Dart 2.15.
+{{site.alert.end}}
+
 
 ### Suppressing rules for a line of code
 
 To suppress a specific non-error rule on a specific line of code,
 put an `ignore` comment
-above the line of code. Here's an example of ignoring code that causes a runtime
-error, as you might do in a language test:
+above the line of code. 
+Here's an example of ignoring code that causes a runtime error, 
+as you might do in a language test:
 
 <?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart

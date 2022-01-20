@@ -11,7 +11,7 @@ you consent to be bound by Google's general [Terms of Service][]
 and Google's general [Privacy Policy.][Privacy Policy]
 
 The "Dart" name and the Dart logo
-{% asset shared/dart/icon/64.png width="32px" alt="Dart logo" class="align-baseline" %}
+<img src="/assets/shared/dart/icon/64.png" width="32" alt="Dart logo" class="align-baseline">
 (the "Dart Marks") are trademarks owned by Google and are not included
 within the assets licensed under the Creative Commons Attribution 4.0
 International License.  Google grants you a non-transferable,

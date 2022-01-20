@@ -24,7 +24,10 @@ writing a better package README,
 which provides the content marked **README (this document)**
 in the following screenshot:
 
-{% asset libraries/package-page-sections.png alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-sections.png"
+  alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" 
+  class="screenshot">
 
 For details about other parts of the package page,
 follow these links:
@@ -99,7 +102,10 @@ For example:
 Here's a screenshot of the [`in_app_purchase`][] package page,
 which starts with a brief explanation of the package and a caution:
 
-{% asset libraries/package-page-description.png alt="description of the package in_app_purchase" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-description.png"
+  alt="description of the package in_app_purchase" 
+  class="screenshot">
 
 [Badges][] are often near the top of the README,
 either above or under the short description. 
@@ -129,7 +135,10 @@ The screenshots below show how
 adding visual content made the `in_app_purchase` package page look informative at first glance.
 (The _before_ picture is on the left; _after_ is on the right.)
 
-{% asset libraries/package-page-example-iap.png alt="in_app_purchase readme without and with images" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-example-iap.png"
+  alt="in_app_purchase readme without and with images" 
+  class="screenshot">
 
 {{site.alert.tip}}
   When adding visual content,
@@ -167,12 +176,18 @@ Help those users find out whether your package supports their needs.
 The following screenshot shows how the `in_app_purchase` README
 presents the package's features:
 
-{% asset libraries/package-page-features-list.png alt="list of features of the package in_app_purchase" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-features-list.png"
+  alt="list of features of the package in_app_purchase" 
+  class="screenshot">
 
 The next screenshot shows a table from the `just_audio` README
 that lists the package's features and platform support:
 
-{% asset libraries/package-page-features-table.png alt="list of features of the package just_audio in a table format" class="screenshot-narrow" %}
+<img 
+  src="/assets/img/libraries/package-page-features-table.png"
+  alt="list of features of the package just_audio in a table format" 
+  class="screenshot-narrow">
 
 
 #### Parameters, attributes, or properties {#list2}
@@ -183,7 +198,10 @@ API reference documentation, as well as in the package page.)
 
 For example, the `url_launcher` package has a table of supported URL schemes:
 
-{% asset libraries/package-page-list-property.png alt="list of supported schemes of the package url_launcher" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-list-property.png"
+  alt="list of supported schemes of the package url_launcher" 
+  class="screenshot">
 
 Linking to specific functions or classes
 in the API reference documentation can also be useful.
@@ -198,7 +216,10 @@ list setup instructions in the README.
 For example, the following screenshot for the `google_maps_flutter` package
 shows instructions on getting started with Google Maps Platform:
 
-{% asset libraries/package-page-list-requirements.png alt="additional instructions to use google_maps_flutter" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-list-requirements.png" 
+  alt="additional instructions to use google_maps_flutter" 
+  class="screenshot">
 
 
 #### Functionality that's out of scope of your package {#list4}
@@ -229,7 +250,10 @@ has a lot of examples.
 The following table of contents helps users understand which examples exist,
 and go to the code that interests them:
 
-{% asset libraries/package-page-list-subsections.png alt="content of the usage section of the package in_app_purchase" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-list-subsections.png" 
+  alt="content of the usage section of the package in_app_purchase" 
+  class="screenshot">
 
 
 ### 4. Include usage examples {#tip4}
@@ -255,7 +279,10 @@ the [package layout conventions][].
 The following screenshot shows one of several examples in the README for
 the `in_app_purchase` package:
 
-{% asset libraries/package-page-usage-example.png alt="sample code of the package in_app_purchase" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-usage-example.png"
+  alt="sample code of the package in_app_purchase" 
+  class="screenshot">
 
 ### 5. Use Dart code formatting {#tip5}
 
@@ -299,7 +326,10 @@ supports in-app subscription.
 A user who searches for the keyword _subscription_
 might abandon the page if the page doesn't use that term.
 
-{% asset libraries/package-page-terms.png alt="the keyword is highlighted when users search for it within the page" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-terms.png"
+  alt="the keyword is highlighted when users search for it within the page" 
+  class="screenshot">
 
 After mentioning all the terms that people might search for,
 be consistent about the terms you use.
@@ -308,11 +338,17 @@ If needed, clearly define the terms.
 For example, the [`in_app_purchase`][] package defines
 _underlying store_ at the beginning:
 
-{% asset libraries/package-page-terms-definition.png alt="the meaning of underlying store" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-terms-definition.png"
+  alt="the meaning of underlying store" 
+  class="screenshot">
 
 The rest of the page consistently uses that term:
 
-{% asset libraries/package-page-terms-consistent.png alt="The term underlying store is used consistently across the page" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-terms-consistent.png"
+  alt="The term underlying store is used consistently across the page" 
+  class="screenshot">
 
 
 ### 7. Tell users where to go next {#tip7}
@@ -332,7 +368,10 @@ Here are some suggestions for what to tell potential users:
 The following screenshot shows the part of the `in_app_purchase` README
 that has information for potential contributors:
 
-{% asset libraries/package-page-contribute.png alt="how to contribute to in_app_purchase" class="screenshot" %}
+<img 
+  src="/assets/img/libraries/package-page-contribute.png"
+  alt="how to contribute to in_app_purchase" 
+  class="screenshot">
 
 
 ## Learn more about good README authoring

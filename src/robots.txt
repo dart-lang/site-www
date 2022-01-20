@@ -1,1 +1,15 @@
-_shared/robots.txt
+---
+layout: none
+---
+
+{%- comment %}
+This is the default robots file used when serving locally or 
+on staging servers. When the site is deployed to the "default" 
+Firebase project, the production version is used.
+{% endcomment -%}
+
+User-agent: linkcheck
+Disallow:
+
+User-agent: *
+Disallow: /

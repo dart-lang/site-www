@@ -18,7 +18,9 @@ TODO: Add coverage of packages that contain tools.
 The following diagram shows the layout of the simplest
 library package:
 
-{% asset libraries/simple-lib2.png alt="root directory contains pubspec.yaml and lib/file.dart" %}
+<img 
+  src="/assets/img/libraries/simple-lib2.png" 
+  alt="root directory contains pubspec.yaml and lib/file.dart">
 
 The minimal requirements for a library are:
 
@@ -77,7 +79,9 @@ package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart
 library packages:
 
-{% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
+<img 
+  src="/assets/img/libraries/shelf.png"
+  alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Directly under lib, the main library file,
 `shelf.dart`, exports API from several files in lib/src.
@@ -128,7 +132,9 @@ Use `package:` when the imported file is in lib and the importer is outside.
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
 
-{% asset libraries/import-lib-rules.png alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import" %}
+<img 
+  src="/assets/img/libraries/import-lib-rules.png"
+  alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 
 ## Conditionally importing and exporting library files

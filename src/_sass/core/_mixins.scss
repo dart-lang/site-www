@@ -1,0 +1,67 @@
+/* -----------------------------------------
+   Mixins
+----------------------------------------- */
+
+@mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
+  transition: $property $duration $effect;
+}
+
+@mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
+  animation-name: $effect;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-delay: ($delay);
+}
+
+// Material design icons
+@mixin md-icon-content($icon-name, $width: '') {
+  font-family: 'Material Icons';
+  content: $icon-name;
+  @if $width {
+    max-width: $width; // Improves UX by minimizing flicker due to delay in font rendering
+  }
+  vertical-align: bottom;
+}
+
+@mixin md-icon-before($icon-name) {
+  &:before { @include md-icon-content($icon-name); }
+}
+
+// The left and right sidebar is dynamically repositioned as the user scrolls,
+// to follow both the header's bottom and the banner's bottom position.
+//
+// On page load this repositioning happens with a delay, which causes a "flash"
+// as it finally happens. The below rulesmatch the expected initial positions
+// to minimize the "flash".
+@mixin sidenav-top-position() {
+  top: $site-header-height;
+
+  body.show_banner & {
+    top: $site-header-with-banner-height;
+  }
+
+  body.obsolete & {
+    top: $site-header-with-obsolete-height;
+  }
+
+  body.obsolete.show_banner & {
+    top: $site-header-with-banner-obsolete-height;
+  }
+}
+
+@mixin dart-style-for($kind, $bg-color, $fg-color, $msg) {
+  .#{$kind} {
+    background-color: $bg-color !important;
+    position: relative;
+    &:after {
+      font-family: $font-family-monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      content: $msg;
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      color: $fg-color;
+    }
+  }
+}
