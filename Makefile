@@ -111,7 +111,7 @@ endif
 # Requires that a `FIREBASE_TOKEN` is set in ENV
 deploy-ci:
 ifeq ("${FIREBASE_PROJECT}", "default")
-	make _write-prod-robots
+	make write-prod-robots
 endif
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
