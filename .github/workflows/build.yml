@@ -55,6 +55,7 @@ jobs:
         with:
           submodules: recursive
       - run: make build
+      - run: make write-prod-robots
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}

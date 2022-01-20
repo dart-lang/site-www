@@ -95,13 +95,13 @@ build:
 	docker rmi -f ${BUILD_TAG}:${BUILD_COMMIT}
 
 # Overwrite robots.txt with production version
-_write-prod-robots:
+write-prod-robots:
 	@echo "User-agent: *\nDisallow:" > _site/robots.txt
 
 # Deploy locally
 deploy:
 ifeq ("${FIREBASE_PROJECT}", "default")
-	make _write-prod-robots
+	make write-prod-robots
 endif
 	npx firebase deploy -m ${BUILD_COMMIT} \
 		--only hosting \
