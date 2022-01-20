@@ -628,15 +628,15 @@ As long as you get the return correct,
 being able to write how you write it is nice.*”
 
 [DartPad]: {{site.dartpad}}
-[new dp issue]: https://github.com/dart-lang/dart-pad/issues/new
-[dart.dev DP docs]:/tools/dartpad
+[new dp issue]: https://github.com/dart-lang/dart-pad/issues/new/choose
+[dart.dev DP docs]: /tools/dartpad
 [dart-lang/dart-pad]: https://github.com/dart-lang/dart-pad
 [embedding guide]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [gddsg]: https://developers.google.com/style/
-[cswwg]: https://cloud.google.com/shell/docs/walkthrough-writing-guide#writing_style
+[cswwg]: https://cloud.google.com/shell/docs/cloud-shell-tutorials/style-guide#writing_style
 [Content guidelines: Content handbook for web.dev]: https://web.dev/handbook#content-guidelines
-[Other editorial resources]: https://developers.google.com/style/resources
-[guided discovery learning]: https://thinkeracademy.com/guided-discovery-learning/
+[Other editorial resources]: https://developers.google.com/style#editorial-resources
+[guided discovery learning]: https://www.globalcognition.org/guided-discovery-learning/
 [Mayer, Richard E., 2004]: https://www.csun.edu/learningnet/TeachScience/UPimages/1/12/MayerThreeStrikesAP04.pdf
 [Kim, Ada S., and Amy J. Ko., 2017]: https://faculty.washington.edu/ajko/papers/Kim2017CodingTutorialEvaluation.pdf
 [transfer of learning]: https://en.wikipedia.org/wiki/Transfer_of_learning
@@ -644,6 +644,3 @@ being able to write how you write it is nice.*”
 [demo]: /codelabs/async-await#example-incorrectly-using-an-asynchronous-function
 [exercises]: /codelabs/async-await#exercise-practice-using-async-and-await
 [1150]: https://github.com/dart-lang/dart-pad/issues/1150
-
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeTPsbOh5YPxF2lMzKEvdkq5UXZP9QO8iuTtbp6GNa8kCfcZA/viewform?embedded=true" width="100%" height="1011" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
