@@ -238,6 +238,6 @@ This command will output the updated checksum values for both Node and Dart, and
 [forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Jekyll]: https://jekyllrb.com
 [Makefile]: (https://github.com/dart-lang/site-www/blob/main/Makefile)
-[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amaster
+[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
