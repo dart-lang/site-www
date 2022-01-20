@@ -23,7 +23,7 @@ If you find another Dart book that might be helpful, please
 
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
-  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
 </a>
 <div class="details col-sm-9" markdown="1">
 ### [{{book.title}}]({{book.link}})
@@ -46,7 +46,7 @@ The following books cover [Dart 2](/dart-2), but not [null safety](/null-safety)
 
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
-  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
 </a>
 <div class="details col-sm-9" markdown="1">
 ### [{{book.title}}]({{book.link}})

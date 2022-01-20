@@ -1,12 +1,9 @@
 // ignore_for_file: type_annotate_public_apis, prefer_collection_literals, avoid_function_literals_in_foreach_calls
 import 'package:test/test.dart';
 
-import 'package:examples/library_tour/core/comparable.dart'
-    as comparable;
-import 'package:examples/library_tour/core/hash_code.dart'
-    as hash_code;
-import 'package:examples/library_tour/core/iterator.dart'
-    as iterator;
+import 'package:examples/library_tour/core/comparable.dart' as comparable;
+import 'package:examples/library_tour/core/hash_code.dart' as hash_code;
+import 'package:examples/library_tour/core/iterator.dart' as iterator;
 import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
@@ -111,8 +108,7 @@ void main() {
         }
 
         // Get all the UTF-16 code units in the string.
-        var codeUnitList =
-            'Never odd or even'.codeUnits.toList();
+        var codeUnitList = 'Never odd or even'.codeUnits.toList();
         assert(codeUnitList[0] == 78);
         // #enddocregion substring-etc
       }
@@ -123,12 +119,10 @@ void main() {
     test('change case', () {
       // #docregion toUpperCase-toLowerCase
       // Convert to uppercase.
-      assert('structured web apps'.toUpperCase() ==
-          'STRUCTURED WEB APPS');
+      assert('structured web apps'.toUpperCase() == 'STRUCTURED WEB APPS');
 
       // Convert to lowercase.
-      assert('STRUCTURED WEB APPS'.toLowerCase() ==
-          'structured web apps');
+      assert('STRUCTURED WEB APPS'.toLowerCase() == 'structured web apps');
       // #enddocregion toUpperCase-toLowerCase
     });
 
@@ -148,8 +142,7 @@ void main() {
     test('replace', () {
       // #docregion replace
       var greetingTemplate = 'Hello, NAME!';
-      var greeting =
-          greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
+      var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
       // greetingTemplate didn't change.
       assert(greeting != greetingTemplate);
@@ -166,8 +159,7 @@ void main() {
 
       var fullString = sb.toString();
 
-      assert(fullString ==
-          'Use a StringBuffer for efficient string creation.');
+      assert(fullString == 'Use a StringBuffer for efficient string creation.');
       // #enddocregion StringBuffer
     });
 
@@ -409,8 +401,7 @@ void main() {
       String pickToughestKid() => 'Rock';
       // #docregion putIfAbsent
       var teamAssignments = <String, String>{};
-      teamAssignments.putIfAbsent(
-          'Catcher', () => pickToughestKid());
+      teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
       assert(teamAssignments['Catcher'] != null);
       // #enddocregion putIfAbsent
     });
@@ -443,8 +434,7 @@ void main() {
         expect(teas, _teas);
       }
 
-      expect(
-          _test, m.prints(_teas.map((tea) => 'I drink $tea')));
+      expect(_test, m.prints(_teas.map((tea) => 'I drink $tea')));
     });
 
     test('Map.forEach()', () {
@@ -460,9 +450,7 @@ void main() {
       }
 
       expect(
-          _test,
-          m.prints(
-              'I want to visit Honolulu and swim at Hanauma Bay'));
+          _test, m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
     });
 
     test('List.map()', () {
@@ -476,15 +464,13 @@ void main() {
         expect(teas, _teas);
       }
 
-      expect(_test,
-          m.prints(_teas.map((tea) => tea.toUpperCase())));
+      expect(_test, m.prints(_teas.map((tea) => tea.toUpperCase())));
     });
 
     test('toList()', () {
       var teas = <String>[];
       // #docregion toList
-      var loudTeas =
-          teas.map((tea) => tea.toUpperCase()).toList();
+      var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
       // #enddocregion toList
       // ignore: stable, beta, dev, unnecessary_type_check
       expect(loudTeas is List, isTrue);
@@ -495,13 +481,11 @@ void main() {
       var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
       // Chamomile is not caffeinated.
-      bool isDecaffeinated(String teaName) =>
-          teaName == 'chamomile';
+      bool isDecaffeinated(String teaName) => teaName == 'chamomile';
 
       // Use where() to find only the items that return true
       // from the provided function.
-      var decaffeinatedTeas =
-          teas.where((tea) => isDecaffeinated(tea));
+      var decaffeinatedTeas = teas.where((tea) => isDecaffeinated(tea));
       // or teas.where(isDecaffeinated)
 
       // Use any() to check whether at least one item in the
@@ -522,8 +506,7 @@ void main() {
       var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeFull(uri);
-      assert(encoded ==
-          'https://example.org/api?foo=some%20message');
+      assert(encoded == 'https://example.org/api?foo=some%20message');
 
       var decoded = Uri.decodeFull(encoded);
       assert(uri == decoded);
@@ -535,8 +518,8 @@ void main() {
       var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeComponent(uri);
-      assert(encoded ==
-          'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+      assert(
+          encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
       var decoded = Uri.decodeComponent(encoded);
       assert(uri == decoded);
@@ -545,8 +528,7 @@ void main() {
 
     test('Uri.parse', () {
       // #docregion Uri-parse
-      var uri =
-          Uri.parse('https://example.org:8080/foo/bar#frag');
+      var uri = Uri.parse('https://example.org:8080/foo/bar#frag');
 
       assert(uri.scheme == 'https');
       assert(uri.host == 'example.org');
@@ -563,8 +545,7 @@ void main() {
           host: 'example.org',
           path: '/foo/bar',
           fragment: 'frag');
-      assert(
-          uri.toString() == 'https://example.org/foo/bar#frag');
+      assert(uri.toString() == 'https://example.org/foo/bar#frag');
       // #enddocregion Uri
     });
   });
@@ -585,8 +566,7 @@ void main() {
       y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
       // Specify a date and time in ms since the Unix epoch.
-      y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
-          isUtc: true);
+      y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
 
       // Parse an ISO 8601 date.
       y2k = DateTime.parse('2000-01-01T00:00:00Z');
@@ -616,8 +596,7 @@ void main() {
       assert(y2001.year == 2001);
 
       // Subtract 30 days.
-      var december2000 =
-          y2001.subtract(const Duration(days: 30));
+      var december2000 = y2001.subtract(const Duration(days: 30));
       assert(december2000.year == 2000);
       assert(december2000.month == 12);
 

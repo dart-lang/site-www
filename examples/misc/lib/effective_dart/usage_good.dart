@@ -7,12 +7,10 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0<Future<void>> longRunningCalculation =
-    () => Future.value();
+Func0<Future<void>> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
-Func1<bool, dynamic> canHandle = (_) => false,
-    verifyResult = (_) => false;
+Func1<bool, dynamic> canHandle = (_) => false, verifyResult = (_) => false;
 
 class Thing {
   bool get isEnabled => true;
@@ -36,8 +34,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm(
-        'ERROR: Parts of the spaceship are on fire. Other '
+    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
         'parts are overrun by martians. Unclear which are which.');
     // #enddocregion adjacent-strings-literals
   }
@@ -76,8 +73,7 @@ void miscDeclAnalyzedButNotTested() {
       command,
       ...?modeFlags,
       for (var path in filePaths)
-        if (path.endsWith('.dart'))
-          path.replaceAll('.dart', '.js')
+        if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
     ];
     // #enddocregion spread-etc
   }
@@ -217,8 +213,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<int> fastestBranch(
-        Future<int> left, Future<int> right) {
+    Future<int> fastestBranch(Future<int> left, Future<int> right) {
       return Future.any([left, right]);
     }
     // #enddocregion unnecessary-async
@@ -307,8 +302,7 @@ class Player {
 
 class Team {
   Future<List<Player>> get roster => Future.value([]);
-  Future<Team?> downloadTeam(String name) =>
-      Future.value(Team());
+  Future<Team?> downloadTeam(String name) => Future.value(Team());
   dynamic get log => null;
 
   // #docregion async-await
@@ -416,11 +410,7 @@ class Treasure {
 }
 
 class C {
-  double left = 0.0,
-      right = 0.0,
-      top = 0.0,
-      bottom = 0.0,
-      minTime = 0.0;
+  double left = 0.0, right = 0.0, top = 0.0, bottom = 0.0, minTime = 0.0;
   Point center = Point(0.0, 0.0);
   final Map<Chest, Treasure> _opened = {};
 

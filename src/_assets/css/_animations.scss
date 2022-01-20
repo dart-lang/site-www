@@ -1,6 +1,0 @@
-@mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
-  animation-name: $effect;
-  animation-duration: $duration;
-  animation-fill-mode: both;
-  animation-delay: ($delay);
-}

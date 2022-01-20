@@ -4,8 +4,10 @@ description: A short introduction to Dart
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
-<img style="padding: 30px; float: right; width: 300px" src="{% asset
-logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
+<img 
+  style="padding: 30px; float: right; width: 300px" 
+  src="/assets/img/logo_lockup_dart_horizontal.png" 
+  alt="Dart product logo">
 
 Dart is a client-optimized language for developing fast apps on any platform.
 Its goal is to offer the most productive programming language for
@@ -189,8 +191,10 @@ Dart's compiler technology lets you run code in different ways:
   a production time compiler (dart2js).
   Both compilers translate Dart into JavaScript.
 
-<img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
-illustration of the targets supported by Dart">
+<img 
+  src="/assets/img/Dart-platforms.svg" 
+  width="800" 
+  alt="An illustration of the targets supported by Dart">
 
 The [Flutter framework]({{site.flutter}}) is a popular,
 multi-platform UI toolkit that's powered by the Dart platform,

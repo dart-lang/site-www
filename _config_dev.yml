@@ -1,7 +1,9 @@
 # Site settings for development mode
-url: https://dartlang-org-dev.firebaseapp.com
+# url: https://dartlang-org-dev.firebaseapp.com
 # url: https://dartlang-org-staging-0.firebaseapp.com
-# url: http://localhost:4000
 
-# webdev: "http://localhost:4001"
-# webdev: "https://webdev-dartlang-org.firebaseapp.com"
+# Dev url inside Docker container
+url: http://0.0.0.0:4000
+sass:
+  cache: true
+  style: extended

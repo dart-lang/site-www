@@ -34,8 +34,7 @@ The following tools support the Dart language on all platforms.
 
 ### DartPad
 
-<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World"
- width="200px" align="right" />
+<img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 [DartPad](/tools/dartpad) is
 a great, no-download-required way to learn Dart syntax
 and to experiment with Dart language features.
@@ -49,18 +48,16 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/android_studio.svg @path %}"
-     width="48" alt="Android Studio logo">
+<img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
-<img src="{% asset tools/intellij-idea.svg @path %}"
-     width="48" alt="IntelliJ logo">
+<img src="/assets/img/tools/intellij-idea.svg" width="48" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="{% asset tools/vscode.svg @path %}"
+<img src="/assets/img/tools/vscode.svg"
      width="48" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
@@ -71,15 +68,15 @@ thanks to the Dart community.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/emacs.png @path %}" alt="Emacs logo">
+<img src="/assets/img/tools/emacs.png" alt="Emacs logo">
 <a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="{% asset tools/vim.png @path %}" alt="Vim logo">
+<img src="/assets/img/tools/vim.png" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
-<img src="{% asset tools/eclipse-logo.png @path %}" alt="Eclipse logo">
+<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
 <a class="no-automatic-external" href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
 </li>
 </ul>

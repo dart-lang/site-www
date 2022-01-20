@@ -1,0 +1,12 @@
+#stable,
+#beta,
+#dev {
+  tbody {
+    tr {
+      @include transition();
+      &.hidden {
+        display:none;
+      }
+    }
+  }
+}

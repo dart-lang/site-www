@@ -9,7 +9,6 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 [first-timer friendly][first-timers]!
 
 ## Getting started
-
 Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
 that catches your interest, or create an issue with your proposed change.
 Ask for the issue to be assigned to you.
@@ -18,7 +17,7 @@ To update this site, fork the repo, make your changes, and generate a pull
 request. For simple changes (such as to CSS and text), you probably don't need
 to build this site. Often you can make changes using the GitHub UI.
 
-> NOTE: If you clone this repo locally, see the instructions below on cloning
+> **NOTE:** If you clone this repo locally, see the instructions below on cloning
 > with its submodule.
 
 If your change involves code samples, adds/removes pages, or affects
@@ -29,281 +28,216 @@ If you want or need to build, follow the steps below.
 > **Help us improve these instructions!**
 > If you have any problems getting set up to build or performing the
 > actual build, please
-> [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> [edit this README](https://github.com/dart-lang/site-www/edit/main/README.md)
 > or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
 > (or both).
 
+
 ## Before you build this site
+For changes beyond simple text and CSS tweaks, 
+we recommend building the site.
 
 ### 1. Get the prerequisites
+Install the following tools, if you don't have them already:
 
-Install the following tools if you don't have them already.
+- **bash**, the Bourne shell. 
+  These instructions assume you're using `bash`, 
+  and setup might not work if you use another shell.
+- **GNU Make**. 
+  On Windows the easiest way to install Make is `choco install make`. 
+  Other options include using a [subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+- **Docker**. 
+  We use Docker for local dev, tests, and building the site. 
+  Install it from https://docs.docker.com/get-docker/.
+- **Firebase CLI**, for hosting the site locally. 
+  One way to get this is to run `npm install -g firebase-tools`. 
+  For full setup details, 
+  read the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
 
-- **bash**, the Bourne shell. These instructions assume you're using `bash`;
-setup might not work if you use another shell.
-- **[nvm][]**, the Node Version Manager.
+### 2. Clone this repo _and_ its submodules
+> **Note:** This repo has git _submodules_, which affects how you clone it. 
+> The GitHub documentation has general help on [forking][] and [cloning][] repos.
 
-  > NOTE: To make `nvm` immediately available in your current shell,
-  > run `source <PATH_TO_INSTALLATION>`. For example:
-  > ```console
-  > $ source ~/.nvm/nvm.sh
-  > ```
+If you're outside of the Dart organization, we recommend you **create a fork** of this repo under your own account, and then submit a PR from that fork. 
 
-- **[rvm][]**, the Ruby Version Manager.
+Once you have a fork (or you're a Dart org member), 
+_choose one_ of the following submodule-cloning techniques:
 
-  > NOTE: To make `rvm` immediately available in your current shell,
-  > run `source <PATH_TO_INSTALLATION>`. For example:
-  > ```console
-  > $ source ~/.rvm/bin/rvm
-  > ```
-- **[Dart][]**
-- **[GNU diffutils][]** version 3.6 or later.
-  > NOTE: `diff` v3.6+ is required to ensure that in-page code diffs are
-  > consistently refreshed across macOS and Linux.
-  > To upgrade `diffutils` on macOS run:<br>
-  > ```console
-  > $ brew install diffutils
-  > ```
-
-> IMPORTANT: Follow the installation instructions for each of the tools
-carefully. In particular, configure your shell/environment so
-that the tools are available in every terminal/command window you create.
-
-### 2. Clone this repo _and_ its submodule
-
-> NOTE: This repo has a git _submodule_, which affects how you clone it.
-
-To **clone this repo** ([site-www][]), follow the instructions given in the
-GitHub help on [Cloning a repository][], and _choose one_ of the following
-submodule-cloning techniques:
-
-- Clone this repo and its submodule _at the same time_, use the
-  `--recurse-submodules` option:<br>
-
-  ```console
+- Clone the repo and its submodule at the same using the `--recurse-submodules` option:
+  ```bash
   $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
   ```
 
-  OR
-- If you've already cloned this repo without its submodule, then run
-  this command from the repo root:<br>
-
-  ```console
+  *OR*
+  
+- If you've already cloned the repo without its submodule, then run this command from the repo root:
+  ```bash
   $ git submodule update --init --recursive
   ```
 
-> IMPORTANT:
-> Whenever you update your repo, update the submodule as well:<br>
-> `git pull; git submodule update --init --recursive`
+> **Note:** At any time during development 
+> you can use the `git submodule` command to refresh submodules:
+> ```bash
+> $ git pull; git submodule update --init --recursive
+> ```
 
-### 3. Run installation scripts
 
-> NOTE: It is safe to (re-)run all of the commands and scripts given below even
-> if you already have the required packages installed.
+## Setting up your local environment and serve changes
 
-**Open a bash terminal/command window** and execute the following commands:
-
-1. After you have cloned this repo, change to the _root of this repo_:
-
-   ```console
-   $ cd <PATH_TO_REPO>
+1. _Optional:_ After cloning the repo and its submodules, 
+   create a branch for your changes:
+   ```bash
+   $ git checkout -b <BRANCH_NAME>
    ```
-1.  Run the `env-set.sh` script to initialize environment variables,
-    and to install/use required Node & Ruby version:
+   
+1. If the Docker Desktop application isn't already running on your machine, 
+   start it. Look for the Docker status icon: if it has an exclamation 
+   point (`!`), then update Docker Desktop before proceeding.
 
-    ```console
-    $ source ./tool/env-set.sh
-    ```
-1.  Run `before-install.sh` to install the  core set of required tools:
+1. Run the initial local setup command:
+   ```bash
+   $ make setup
+   ```
 
-    ```console
-    $ ./tool/before-install.sh
-    ```
-1.  Run `install.sh` to install everything else needed to build this site:
+1. Serve the site locally (via `docker-compose`):
+   ```bash
+   $ make up
+   ```
+   The site is generated, and then the development server runs in the 
+   Docker container, with the generated `_site` directory visible locally as a mirrored volume from inside the container.
 
-    ```console
-    $ ./tool/install.sh
-    ```
+1. View your changes in the browser by navigating to `http://localhost:4000`.
+   > **Note:** Unless you're editing files under `site-shared`, 
+   > you can safely ignore `ERROR: directory is already being watched` messages. 
+   > For details, see [#1363](https://github.com/flutter/website/issues/1363).
 
-You _may_ need to run `gem install bundler` to upgrade it to the latest version
-if you get errors such as `require: cannot load such file` later.
-Another command that seems to be useful
-when the usual installation process doesn't work is
-`bundle install --force`.
+1. Make your changes to the local repo. 
 
-> IMPORTANT:
-> - Any time you create a **new terminal/command window** to work on
->   this repo, **repeat steps 1 and 2** above.
+   The site will rebuild and the browser will autoreload to reflect the changes. 
 
-## Building this site
+   > **Tip:** If you aren't seeing the changes you expect (e.g. src/_data), 
+   > `ctrl-C` out of your running dev server and rebuild the site from scratch 
+   > using the following commands:
+   > ```bash
+   > $ make down && make clean && make up
+   > ```
 
-Once everything is installed, you need to do a full site build at least once:
 
-```console
-$ jekyll build # full site build
+1. Commit your changes to the branch and submit your PR.
+   > See [Pre-push site checks](#pre-push-site-checks)
+
+1. When you've finished developing, shut down the Docker container:
+   ```bash
+   $ make down
+   ```
+   
+> **Tip:** To find additional commands, read the [Makefile][]. 
+> For example, if you need to debug the Docker setup, 
+> you can run:
+> ```bash
+> $ make run
+> ```
+
+
+## Pre-push site checks
+
+### Checking documentation and example code
+If you've made changes to this site's documentation and/or example code, and committed locally, then run the following command before pushing your work:
+
+```bash
+# Enter a running Docker container shell
+make run
+
+# Check/validate example code
+tool/test.sh
+
+# Check links for 404 errors
+tool/check-links.sh
 ```
 
-The generated site is placed in the `_site` folder. To serve this folder use:
+If these scripts report errors or warnings, then address those issues and rerun the above commands. Otherwise, you can push your changes.
 
-```console
-$ npx superstatic --port 4000
+
+## Deploying to a staging site
+You can deploy your local edits to a personal Firebase hosting staging site as follows.
+
+1. If you don't already have a Firebase project, 
+   
+   - Navigate to the [Firebase Console](https://console.firebase.google.com) 
+   and create your own Firebase project (for example, `dart-dev-staging`).
+
+   - Head back to your local repo shell and verify that you are logged in.
+      ```bash
+      $ firebase login
+      ```
+
+   - Ensure that your project exists and activate that project:
+      ```bash
+      $ firebase projects:list
+      $ firebase use <your-project>
+      ```
+   
+1. Build the site via Docker:
+   ```bash
+   $ make build
+   ```
+
+   This will build the site and copy it to your local `_site` directory. 
+   If that directory previously existed, it will be replaced. 
+
+1. Deploy to your activated Firebase project's default hosting site:
+   ```bash
+   $ FIREBASE_PROJECT=<your-project> make deploy
+   ```
+
+   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file and it will overwrite the default every time you deploy without specifying.
+
+1. Navigate to your PR on GitHub and update it with the location of 
+  the staged version, the names of your reviewers, and so on.
+
+
+## Creating and/or editing DartPad example code
+Most of the code used to create [DartPad][] examples is hosted on GitHub. 
+However, this repo also contains some `*.dart` files responsible for DartPad example code.
+
+# Refresh DartPad HTML tooltips
+Files that require DartPad HTML to be manually updated include instructions at the top that specify running: 
+```bash
+$ tool/create_code_with_tooltips.dart
 ```
 
-Or, if you aren't testing redirects, use this command (which has the bonus of
-autorefreshing your browser after edits):
+Follow the instructions in those files to refresh the appropriate code.
 
-```console
-$ jekyll serve --livereload
+### DartPad picker
+The DartPad date picker must be manually compiled if changes are made. This will regenerate the associated JavaScript file in `src/assets/dash/js`:
+```bash
+$ tool/compile.sh
 ```
 
-To view the generated site open [localhost:4000](http://localhost:4000).
 
-You can build, serve, and have a watcher for changes by
-running the following command:
+## Dockerfile Maintenance
 
-```console
-$ ./tool/serve.sh
+### Dart SDK and Node PPA Checksum values
+Since both the Dart SDK and Node PPA `curl` remote files, it's important to verify checksum values. Both installs use `latest` and `lts` respectively, so these files may be periodically updated. When this happens, local checksums may fail and **This will break the Docker/Compose setup/build**. You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`. When this happens, run the following command:
+
+```bash
+make fetch-sums
 ```
 
-## Pre-push checks
-
-If you've made changes to this site's documentation and committed locally, then
-run the following command before pushing your work:
-
-```console
-$ ./tool/pre-push.sh
-```
-
-If the script reports errors or warnings, then address the issues and rerun the
-script. Otherwise, you can push your changes.
-
-## Site checks
-
-### Checking example code
-
-If you've made changes to the example code run the following commands:
-
-```console
-$ ./tool/dartformat.sh
-$ ./tool/refresh-code-excerpts.sh
-$ ./tool/analyze-and-test-examples.sh --quick
-```
-
-If the last command reports failed tests and you'd like to know which
-test failed, then rerun the command without the `-q` flag.
-
-### Checking the site's HTML
-
-1. Build the site and launch the server:
-
-    ```console
-    $ jekyll build && npx superstatic --port 4000
-    ```
-
-1. Next, to check for broken links, run this from the top of the repo:
-
-    ```console
-    $ ./tool/shared/check-links.sh
-    ```
-
-    To also check external URLs (which is much slower), run the linkcheck command
-    with the `--external` (or `-e`, for short) option.
-
-    With this tool you can check any URL by simply specifying it as a parameter:
-
-    ```console
-    $ dart pub global activate linkcheck
-    $ linkcheck https://dart.dev
-    ```
-
-    To check for valid HTML, good images, and broken links (though not as well
-    as linkcheck.dart), run this from the top of the repo:
-    **NOTE: As of April 16, 2019, this doesn't work. See
-    [issue #1461](https://github.com/dart-lang/site-www/issues/1461).**
-
-    ```console
-    $ ./deploy/html_proof.rb
-    ```
-
-    To find old links (from the site version before this one) that are broken,
-    use these commands:
-
-    ```console
-    $ ./tool/serve.sh &
-    $ linkcheck -i deploy/urls/old_site_urls.txt
-    ```
-
-## Staging the site
-
-1. Save your changes. For example, from the top directory:
-
-    ```consolew
-    $ git commit src
-    ```
-
-1. Create a pull request by pushing your branch to GitHub.
-
-    ```console
-    $ git push origin <branchname>
-    ```
-
-1. Navigate to the Firebase console,
-[console.firebase.google.com](https://console.firebase.google.com/).
-
-1. If you don't already have a project to stage to,
-   create it:
-
-   1. Select **Create New Project**.
-   1. Enter a project name in the dialog, such as `staging-1`.
-   1. Click **Create Project**. This takes you to the
-      page for your new project.
-
-    > **Note:** To keep the number of projects under control,
-    > we reuse them. Our naming convention is
-    > `<first initial><last initial>-dart-dev-<number>`. For example,
-    > `sz-dart-dev-1` and `kw-dart-dev-1`.
-
-1. Build the docs, to get the latest changes:
-
-    ```console
-    $ jekyll build
-    ```
-
-1. Return to the [Firebase console](https://console.firebase.google.com),
-   and get the name of your project (e.g. `sz-dart-dev-2`),
-   which the following step calls FB-NAME.
-
-1. Deploy the docs, substituting the name of your project for FB-NAME:
-
-    ```console
-    $ ./tool/shared/deploy.sh --local FB-NAME
-    ```
-
-    You can now navigate to the staged version at
-    `https://<your-instance>.firebaseapp.com` -— for example,
-    `https://sz-dart-dev-2.firebaseapp.com`.
-
-1. Navigate to the PR on GitHub and update it with
-   the location of the staged version,
-   the names of your reviewers, and so on.
+This command will output the updated checksum values for both Node and Dart, and that output will be formatted similar or the same as what is currently in the Dockerfile. Copy this output and replace the relevant install code in the Dockerfile, then rerun your setup/build again. 
 
 
-## Troubleshooting the build
-
-See the [Troubleshooting wiki page][].
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[Cloning a repository]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
-[Dart]: https://dart.dev/get-dart
-[Dart install]: https://dart.dev/get-dart
+[cloning]: https://help.github.com/articles/cloning-a-repository
+[DartPad]: https://dartpad.dev
 [Firebase]: https://firebase.google.com/
 [first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
 [first-timers]: https://www.firsttimersonly.com/
-[GNU diffutils]: https://www.gnu.org/software/diffutils
-[Jekyll]: https://jekyllrb.com/
-[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
+[Jekyll]: https://jekyllrb.com
+[Makefile]: (https://github.com/dart-lang/site-www/blob/main/Makefile)
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amaster
-[rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting

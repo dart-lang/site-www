@@ -19,7 +19,9 @@ the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 Here's what DartPad looks like when configured to run Dart:
 
-<img src="{% asset dartpad-hello.png @path %}" alt="Showcases what a Hello World app looks like in DartPad" />
+<img 
+   src="/assets/img/dartpad-hello.png" 
+   alt="Showcases what a Hello World app looks like in DartPad">
 
 
 ## Library support

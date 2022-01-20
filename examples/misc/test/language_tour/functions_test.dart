@@ -28,14 +28,12 @@ void main() {
 
   test('optional-positional-param-default', () {
     // #docregion optional-positional-param-default
-    String say(String from, String msg,
-        [String device = 'carrier pigeon']) {
+    String say(String from, String msg, [String device = 'carrier pigeon']) {
       var result = '$from says $msg with a $device';
       return result;
     }
 
-    assert(say('Bob', 'Howdy') ==
-        'Bob says Howdy with a carrier pigeon');
+    assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
     // #enddocregion optional-positional-param-default
   });
 
@@ -90,8 +88,7 @@ void main() {
     void _test() {
       var list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
-      list.forEach(
-          (item) => print('${list.indexOf(item)}: $item'));
+      list.forEach((item) => print('${list.indexOf(item)}: $item'));
       // #enddocregion anon-func
     }
 

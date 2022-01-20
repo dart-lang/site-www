@@ -1,0 +1,25 @@
+.banner {
+  background-color: #e7f8ff;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.banner__text {
+  font-family: $site-font-family-roboto;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.banner__frontpage-row {
+  .content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .banner {
+    margin-bottom: 0;
+  }
+}

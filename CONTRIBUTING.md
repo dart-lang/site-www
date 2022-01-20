@@ -81,8 +81,8 @@ the [GitHub Actions][] CI build will fail.
 Just update the PR, and GitHub Actions will run again.
 
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
-[/src/_guides/language/language-tour.md]: https://github.com/dart-lang/site-www/blob/master/src/_guides/language/language-tour.md
-[/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/language_tour/variables.dart
+[/src/_guides/language/language-tour.md]: https://github.com/dart-lang/site-www/blob/main/src/_guides/language/language-tour.md
+[/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/language_tour/variables.dart
 
 ## A word about conduct
 
