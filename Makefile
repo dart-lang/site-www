@@ -96,7 +96,8 @@ build:
 
 # Overwrite robots.txt with production version
 write-prod-robots:
-	@echo "User-agent: *\nDisallow:" > _site/robots.txt
+	@echo "User-agent: *\nDisallow:\n\nSitemap: https://dart.dev/sitemap.xml" \
+    		> _site/robots.txt
 
 # Deploy locally
 deploy:
