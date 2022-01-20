@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - rearch
   pull_request:
     branches:
       - main
@@ -16,7 +15,7 @@ env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
   # LTS
-  NODE_VERSION: 16
+  NODE_VERSION: '16'
   # Tool location
   BASE_DIR: ${{ github.workspace }}
   TOOL_DIR: ${{ github.workspace }}/tool
@@ -46,8 +45,7 @@ jobs:
     if: ${{ github.event_name == 'push' && 
             github.ref == 'refs/heads/main' && 
             github.repository == 'dart-lang/site-www' }}
-    needs:
-      - test
+    needs: test
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
@@ -65,22 +63,21 @@ jobs:
         with:
           sdk: stable
       - run: tool/check-links.sh
-      - run: make deploy-ci
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
+          projectId: dart-dev
+          channelId: live
 
   stage:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/rearch' }}
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    needs: test
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      FIREBASE_PROJECT: dash-site-dev
-      FIREBASE_CHANNEL: dart
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      - run: dpkg --print-architecture
-      - run: tool/fetch-dart-sdk-sums.sh
-      - run: tool/fetch-node-ppa-sum.sh
       - run: make build
       - uses: actions/setup-node@v2
         with:
@@ -90,4 +87,8 @@ jobs:
         with:
           sdk: stable
       - run: tool/check-links.sh
-      - run: make stage
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
+          projectId: dart-dev
