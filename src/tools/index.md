@@ -96,7 +96,7 @@ The Dart SDK includes the following general-purpose tools:
   testing, compiling, and running Dart code,
   as well as working with the [pub package manager](/guides/packages).
 
-[`dartdoc`](/tools/dartdoc)
+[`dartdoc`](/tools/dart-doc)
 : A documentation generator.
   For examples of dartdoc's output, see the API reference documentation
   published at [api.dart.dev]({{site.dart_api}}) and pub.dev

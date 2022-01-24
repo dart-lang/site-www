@@ -36,7 +36,7 @@ directory that has these command-line tools:
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
 
-[`dartdoc`](/tools/dartdoc)
+[`dartdoc`](/tools/dart-doc)
 : The API documentation generator.
 
 {{site.alert.note}}
