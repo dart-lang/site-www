@@ -31,7 +31,7 @@ directory that has these command-line tools:
 
 [`dart`](/tools/dart-tool)
 : The command-line interface for creating, formatting, analyzing, testing,
-  compiling, and running Dart code.
+  documenting, compiling, and running Dart code.
   
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
