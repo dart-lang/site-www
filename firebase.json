@@ -222,7 +222,7 @@
       { "source": "/tools/dart2native", "destination": "/tools/dart-compile", "type": 301 },
       { "source": "/tools/dartanalyzer", "destination": "/tools/dart-analyze", "type": 301 },
       { "source": "/tools/dartdoc", "destination": "/tools/dart-doc", "type": 301 },
-      { "source": "/tools/dartdocgen{,/**}", "destination": "https://github.com/dart-lang/dartdoc#dartdoc", "type": 301 },
+      { "source": "/tools/dartdocgen{,/**}", "destination": "/tools/dart-doc", "type": 301 },
       { "source": "/tools/dartfmt", "destination": "/tools/dart-format", "type": 301 },
       { "source": "/tools/dartium?(.html)", "destination": "/web/dart-2#tools", "type": 301 },
       { "source": "/tools/debian?(.html)", "destination": "/get-dart", "type": 301 },
