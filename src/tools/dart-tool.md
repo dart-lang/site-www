@@ -54,6 +54,7 @@ you might use the [`flutter` tool][] instead.
 | `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
 | `compile` | `dart compile exe <DART_FILE>`          | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
 | `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>Use instead of [`stagehand`.][].<br>[Learn more.][create] | 
+| `doc`     | `dart doc <DIRECTORY>`                  | Generates API reference documentation.<br>Use instead of [`dartdoc`][].<br>[Learn more.][doc] |
 | `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
 | `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] |
 | `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
@@ -66,6 +67,7 @@ you might use the [`flutter` tool][] instead.
 [analyze]: /tools/dart-analyze
 [compile]: /tools/dart-compile
 [create]: /tools/dart-create
+[doc]: /tools/dart-doc
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
 [pub]: /tools/pub/cmd
@@ -79,7 +81,7 @@ You can also get details on `pub` commands — for example,
 `dart help pub outdated`.
 
 [`dartaotruntime`]: /tools/dartaotruntime
-[`dartdoc`]: https://github.com/dart-lang/dartdoc#dartdoc
+[`dartdoc`]: {{site.pub-pkg}}/dartdoc
 [`dartfix`]: {{site.pub-pkg}}/dartfix
 [null safety]: /null-safety
 [`stagehand`.]: {{site.pub-pkg}}/stagehand
