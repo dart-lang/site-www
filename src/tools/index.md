@@ -89,18 +89,12 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 ### Command-line tools {#cli}
 
-The Dart SDK includes the following general-purpose tools:
+The Dart SDK includes the following general-purpose `dart` tool:
 
 [`dart`](/tools/dart-tool)
 : A command-line interface (CLI) for creating, formatting, analyzing,
-  testing, compiling, and running Dart code,
+  testing, documenting, compiling, and running Dart code,
   as well as working with the [pub package manager](/guides/packages).
-
-[`dartdoc`](/tools/dart-doc)
-: A documentation generator.
-  For examples of dartdoc's output, see the API reference documentation
-  published at [api.dart.dev]({{site.dart_api}}) and pub.dev
-  (for example, the [`path` API reference]({{site.pub-api}}/path)).
 
 
 ### Debugging

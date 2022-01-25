@@ -1,5 +1,5 @@
 ---
-title: dartdoc
+title: dart doc
 description: API reference generation tool.
 toc: false
 ---

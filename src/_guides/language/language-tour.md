@@ -4606,7 +4606,7 @@ to the docs for the `feed` method,
 and `[Food]` becomes a link to the docs for the `Food` class.
 
 To parse Dart code and generate HTML documentation, you can use Dart's
-[documentation generation tool, dartdoc.](/tools/dart-doc)
+documentation generation tool, [`dart doc`](/tools/dart-doc).
 For an example of generated documentation, see the [Dart API
 documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice on how to structure
 your comments, see
