@@ -21,7 +21,7 @@
       }
     ],
     "redirects": [
-      { "source": "/+", "destination": "https://plus.sandbox.google.com/+dartlang", "type": 301 },
+      { "source": "/+", "destination": "/community", "type": 301 },
       { "source": "/+dart2js", "destination": "/tools/dart2js", "type": 301 },
       { "source": "/+isolates", "destination": "https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a", "type": 301 },
       { "source": "/+lexicalscope", "destination": "/guides/language/language-tour#lexical-scope", "type": 301 },
