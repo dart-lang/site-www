@@ -76,6 +76,7 @@
       { "source": "/books", "destination": "/resources/books", "type": 301 },
       { "source": "/cloud{,/**}", "destination": "/server/google-cloud", "type": 301 },
       { "source": "/codelabs/server{,/**}", "destination": "/tutorials/server/httpserver", "type": 301 },
+      { "source": "/concurrency", "destination": "/guides/language/concurrency", "type": 301 },
       { "source": "/dart-2.0", "destination": "/dart-2", "type": 301 },
       { "source": "/dart-by-example", "destination": "/samples", "type": 301 },
       { "source": "/dart-tips{,/**}", "destination": "/guides/language/language-tour", "type": 301 },
