@@ -1,9 +1,10 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
-import 'package:platform_detect/platform_detect.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
+
+import 'operating_system.dart';
 
 const _storageBase = 'https://storage.googleapis.com/dart-archive';
 
@@ -38,11 +39,12 @@ class VersionSelector {
   }
 
   void _selectOsDropdown() {
-    if (operatingSystem.isMac) {
+    if (OperatingSystem.current.isMac) {
       _osSelector.options[1].selected = true;
-    } else if (operatingSystem.isLinux || operatingSystem.isUnix) {
+    } else if (OperatingSystem.current.isLinux ||
+        OperatingSystem.current.isUnix) {
       _osSelector.options[2].selected = true;
-    } else if (operatingSystem.isWindows) {
+    } else if (OperatingSystem.current.isWindows) {
       _osSelector.options[3].selected = true;
     }
     _osSelector.dispatchEvent(Event('change'));
