@@ -1,12 +1,11 @@
 name: sdk_builds
 description: Utilities for accessing builds of the Dart SDK.
-version: 0.3.0
 
 environment:
   sdk: '>=2.13.0 <3.0.0'
 
 dependencies:
-  googleapis: ^4.0.0
+  googleapis: ^7.0.0
   http: ^0.13.1
   path: ^1.8.0
   pub_semver: ^2.0.0

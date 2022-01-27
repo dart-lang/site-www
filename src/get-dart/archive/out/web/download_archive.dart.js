@@ -8542,7 +8542,7 @@ s($,"oS","lx",()=>A.MI("Windows",new A.Ur()))
 s($,"zT","zQ",()=>A.MI("ChromeOS",new A.vY()))
 s($,"xz","Vd",()=>A.Yt(null))
 s($,"TA","t",()=>{var q=t.N
-return A.EF(["user-agent","google-api-dart-client/4.0.0","x-goog-api-client","gl-dart/unknown gdcl/4.0.0"],q,q)})
+return A.EF(["user-agent","google-api-dart-client/7.0.0","x-goog-api-client","gl-dart/unknown gdcl/7.0.0"],q,q)})
 s($,"Mz","XX",()=>A.nu("^[\\w!#%&'*+\\-.^`|~]+$"))
 s($,"Hy","iN",()=>A.nu('["\\x00-\\x1F\\x7F]'))
 s($,"qD","CG",()=>A.nu('[^()<>@,;:"\\\\/[\\]?={} \\t\\x00-\\x1F\\x7F]+'))
