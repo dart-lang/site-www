@@ -15,7 +15,7 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
   static VersionInfo parse(
       String channel, String revisionPath, Map<String, dynamic> json) {
     // Date parse magic
-    var dateJson = json['date'];
+    var dateJson = json['date'] as String;
     DateTime date;
     try {
       date = DateTime.parse(dateJson);
@@ -26,7 +26,7 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
     }
 
     // Version logic
-    var jsonVersion = json['version'];
+    var jsonVersion = json['version'] as String;
 
     final oldMatch = _oldRevisionPostfix.firstMatch(jsonVersion);
     if (oldMatch != null) {
@@ -35,11 +35,10 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
 
     final version = Version.parse(jsonVersion);
 
-    final revision = json['revision'];
+    final revision = json['revision'] as String;
     final svnRevision = int.tryParse(revision);
     if (svnRevision == null) {
       // assume git!
-      assert(revision is String);
       assert(revision.length == 40);
 
       return GitVersionInfo(version, date, channel, revisionPath, revision);

@@ -1,5 +1,9 @@
 include: package:lints/recommended.yaml
 
+analyzer:
+  language:
+    strict-casts: true
+
 linter:
   rules:
     - always_declare_return_types

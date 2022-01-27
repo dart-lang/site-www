@@ -1,5 +1,9 @@
 include: package:lints/recommended.yaml
 
+analyzer:
+  language:
+    strict-casts: true
+
 linter:
   rules:
     - always_declare_return_types
@@ -9,6 +13,7 @@ linter:
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs
+    - prefer_expression_function_bodies
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first
