@@ -30,7 +30,7 @@ to the list of pets.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app:null_safety-true
+```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app
 {$ begin main.dart $}
 import 'dart:html';
 

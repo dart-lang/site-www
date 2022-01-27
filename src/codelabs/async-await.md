@@ -49,7 +49,7 @@ Before running this example, try to spot the issue -- what do you think the
 output will be?
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px:ga_id-incorrect_usage:null_safety-true
+```dart:run-dartpad:height-380px:ga_id-incorrect_usage
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -145,7 +145,7 @@ printing to the console. Because it doesn't return a usable value,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
 <?code-excerpt "async_await/bin/futures_intro.dart"?>
-```dart:run-dartpad:height-300px:ga_id-introducting_futures:null_safety-true
+```dart:run-dartpad:height-300px:ga_id-introducting_futures
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
@@ -168,7 +168,7 @@ Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px:ga_id-completing_with_error:null_safety-true
+```dart:run-dartpad:height-300px:ga_id-completing_with_error
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
   return Future.delayed(const Duration(seconds: 2),
@@ -343,7 +343,7 @@ Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px:ga_id-execution_within_async_function:null_safety-true
+```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -422,7 +422,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using:null_safety-true
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
 {$ begin main.dart $}
 // Part 1
 // You can call the provided async function fetchRole()
@@ -588,7 +588,7 @@ Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
 <?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px:ga_id-try_catch:null_safety-true
+```dart:run-dartpad:height-530px:ga_id-try_catch
 Future<void> printOrderMessage() async {
   try {
     print('Awaiting user order...');
@@ -639,7 +639,7 @@ that does the following:
 {% comment %}
 PENDING: Any way to auto-include this code?
 {% endcomment %}
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors:null_safety-true
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
 {$ begin main.dart $}
 // Implement changeUsername here
 changeUsername() {}
@@ -818,7 +818,7 @@ Write the following:
 {% comment %}
 PENDING: Any way to auto-include this code?
 {% endcomment %}
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:null_safety-true
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
 {$ begin main.dart $}
 // Part 1
 addHello(user){}

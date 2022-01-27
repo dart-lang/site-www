@@ -63,7 +63,7 @@ generating a simple stream of integers using an `async*` function:
 {{site.alert.end}}
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (final value in stream) {
@@ -114,7 +114,7 @@ error using **try-catch**.  The following example throws an
 error when the loop iterator equals 4:
 
 <?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {

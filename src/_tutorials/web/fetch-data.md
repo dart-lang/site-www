@@ -178,7 +178,7 @@ void _showJson([Event? _]) {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=ddebf4ee5ba6757aafe07f7779d7b0c1&null_safety=true&ga_id=about_json"
+src="{{site.dartpad-embed-html}}?id=ddebf4ee5ba6757aafe07f7779d7b0c1&ga_id=about_json"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -399,7 +399,7 @@ and loads the file.
 
 {% comment %} https://gist.github.com/parlough/c637fbedc6aa0d2a8ffcd44562648197 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=c637fbedc6aa0d2a8ffcd44562648197&null_safety=true&ga_id=using_getstring"
+src="{{site.dartpad-embed-html}}?id=c637fbedc6aa0d2a8ffcd44562648197&ga_id=using_getstring"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -455,7 +455,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/parlough/2211d1ee6e16a6fc76cee04fc8fb5df2 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=2211d1ee6e16a6fc76cee04fc8fb5df2&null_safety=true&ga_id=using_http_request"
+src="{{site.dartpad-embed-html}}?id=2211d1ee6e16a6fc76cee04fc8fb5df2&ga_id=using_http_request"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
