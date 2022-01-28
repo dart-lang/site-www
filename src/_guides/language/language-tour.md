@@ -1559,7 +1559,7 @@ list.forEach((item) {
 Click **Run** to execute the code.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
-```dart:run-dartpad:height-400px:ga_id-anonymous_functions:null_safety-true
+```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
   list.forEach((item) {
@@ -2958,7 +2958,7 @@ In the following example, the constructor for the Employee class calls the named
 constructor for its superclass, Person. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (super)" plaster="none"?>
-```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor:null_safety-true
+```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
 class Person {
   String? firstName;
 
@@ -3042,7 +3042,7 @@ initializes three final fields in an initializer list. Click **Run** to execute
 the code.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
-```dart:run-dartpad:height-340px:ga_id-initializer_list:null_safety-true
+```dart:run-dartpad:height-340px:ga_id-initializer_list
 import 'dart:math';
 
 class Point {
@@ -4374,7 +4374,7 @@ that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
-```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
+```dart:run-dartpad:height-350px:ga_id-callable_classes
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }

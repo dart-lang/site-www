@@ -45,7 +45,7 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-```dart:run-dartpad:ga_id-string_interpolation:null_safety-true
+```dart:run-dartpad:ga_id-string_interpolation
 {$ begin main.dart $}
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
@@ -130,7 +130,7 @@ Try to declare two variables below:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-nullable_variables:null_safety-true
+```dart:run-dartpad:ga_id-nullable_variables
 {$ begin main.dart $}
 // Declare the two variables here
 {$ end main.dart $}
@@ -196,7 +196,7 @@ to implement the described behavior in the following snippet.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-255px:ga_id-null_aware:null_safety-true
+```dart:run-dartpad:height-255px:ga_id-null_aware
 {$ begin main.dart $}
 String? foo = 'a string';
 String? bar; // = null
@@ -288,7 +288,7 @@ null.
 
 Try using conditional property access to finish the code snippet below.
 
-```dart:run-dartpad:ga_id-conditional-property_access:null_safety-true
+```dart:run-dartpad:ga_id-conditional-property_access
 {$ begin main.dart $}
 // This method should return the uppercase version of `str`
 // or null if `str` is null.
@@ -384,7 +384,7 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
-```dart:run-dartpad:height-400px:ga_id-collection_literals:null_safety-true
+```dart:run-dartpad:height-400px:ga_id-collection_literals
 {$ begin main.dart $}
 // Assign this a list containing 'a', 'b', and 'c' in that order:
 final aListOfStrings = null;
@@ -509,7 +509,7 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 Try finishing the following statements, which use arrow syntax.
 
-```dart:run-dartpad:height-345px:ga_id-arrow_syntax:null_safety-true
+```dart:run-dartpad:height-345px:ga_id-arrow_syntax
 {$ begin main.dart $}
 class MyClass {
   int value1 = 2;
@@ -665,7 +665,7 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-```dart:run-dartpad:height-345px:ga_id-cascades:null_safety-true
+```dart:run-dartpad:height-345px:ga_id-cascades
 {$ begin main.dart $}
 class BigObject {
   int anInt = 0;
@@ -815,7 +815,7 @@ Add the following:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-240px:ga_id-getters_setters:null_safety-true
+```dart:run-dartpad:height-240px:ga_id-getters_setters
 {$ begin main.dart $}
 class InvalidPriceException {}
 
@@ -970,7 +970,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-```dart:run-dartpad:ga_id-optional_positional_parameters:null_safety-true
+```dart:run-dartpad:ga_id-optional_positional_parameters
 {$ begin main.dart $}
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
@@ -1101,7 +1101,7 @@ then copy its value into `anInt`.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-310px:ga_id-optional_named_parameters:null_safety-true
+```dart:run-dartpad:height-310px:ga_id-optional_named_parameters
 {$ begin main.dart $}
 class MyDataObject {
   final int anInt;
@@ -1278,7 +1278,7 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-```dart:run-dartpad:height-420px:ga_id-exceptions:null_safety-true
+```dart:run-dartpad:height-420px:ga_id-exceptions
 {$ begin main.dart $}
 typedef VoidFunction = void Function();
 
@@ -1481,7 +1481,7 @@ all three properties of the class.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-this_constructor:null_safety-true
+```dart:run-dartpad:ga_id-this_constructor
 {$ begin main.dart $}
 class MyClass {
   final int anInt;
@@ -1598,7 +1598,7 @@ FINALLY: Suggest using https://pub.dev/packages/characters
 if this is a user-entered string.
 {% endcomment %}
 
-```dart:run-dartpad:ga_id-initializer_lists:null_safety-true
+```dart:run-dartpad:ga_id-initializer_lists
 {$ begin main.dart $}
 class FirstTwoLetters {
   final String letterOne;
@@ -1702,7 +1702,7 @@ that sets all three properties to zero.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-240px:ga_id-named_constructors:null_safety-true
+```dart:run-dartpad:height-240px:ga_id-named_constructors
 {$ begin main.dart $}
 class Color {
   int red;
@@ -1802,7 +1802,7 @@ making it do the following:
   create an `IntegerTriple` with the values in order.
 * Otherwise, throw an `Error`.
 
-```dart:run-dartpad:height-415px:ga_id-factory_constructors:null_safety-true
+```dart:run-dartpad:height-415px:ga_id-factory_constructors
 {$ begin main.dart $}
 class IntegerHolder {
   IntegerHolder();
@@ -1992,7 +1992,7 @@ default constructor with zeros as the arguments.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-255px:ga_id-redirecting_constructors:null_safety-true
+```dart:run-dartpad:height-255px:ga_id-redirecting_constructors
 {$ begin main.dart $}
 class Color {
   int red;
@@ -2084,7 +2084,7 @@ and create a constant constructor that does the following:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-const_constructors:null_safety-true
+```dart:run-dartpad:ga_id-const_constructors
 {$ begin main.dart $}
 class Recipe {
   List<String> ingredients;

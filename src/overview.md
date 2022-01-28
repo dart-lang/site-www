@@ -62,7 +62,7 @@ To learn more about the language, take the [Dart language
 tour](/guides/language/language-tour).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
-```dart:run-dartpad:ga_id-overview:null_safety-true
+```dart:run-dartpad:ga_id-overview
 import 'dart:math' show Random;
 
 void main() async {
