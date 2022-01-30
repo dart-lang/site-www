@@ -33,7 +33,7 @@ printf "\n$(blue "Copy the following output and replace the existing code in the
 
 for CHANNEL in $CHANNELS; do
   for ARCH in $ARCHS; do
-    echo -e "$(yellow "${ARCH}_${CHANNEL}) \\")"
+    echo -e "$(yellow "${ARCH}_${CHANNEL})") \\"
     _arch=$ARCH
     if [[ "$_arch" == "amd64" ]]; then
       _arch='x64'
@@ -45,8 +45,8 @@ for CHANNEL in $CHANNELS; do
     IFS=" " # Split checksum output by space delimiter 
     read -a _fname_arr <<< "$_checksum" # Read in string output as array
     unset _fname_arr[-1] # Remove filename portion of checksum output
-    echo -e "$(yellow "  DART_SHA256=\"$_fname_arr\"; \\")"
-    echo -e "$(yellow "  SDK_ARCH=\"$_arch\";; \\")"
+    echo -e "$(yellow "  DART_SHA256=\"$_fname_arr\";") \\"
+    echo -e "$(yellow "  SDK_ARCH=\"$_arch\";;") \\"
     rm $_filename
   done
 done
