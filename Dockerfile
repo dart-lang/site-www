@@ -56,7 +56,7 @@ RUN set -eu; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nDART CHECKSUM FAILED! Run tool/fetch-dart-sdk-sums.sh for updated values.\n\n" && \
+        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
         rm "$SDK" && \
         exit 1 \
     ); \
