@@ -235,6 +235,12 @@ follow these practices:
   `dart pub publish` says it's going to publish.
   Cancel the upload if any undesired files appear in that list.
 
+## Specifying the platforms a package supports
+
+If you wish to change the tags listing supported platforms
+you can [specify the platforms][] in the pubspec.
+
+[specify the platforms]: /tools/pub/pubspec#platforms
 
 ## Uploaders
 
