@@ -78,11 +78,6 @@ A pubspec can have the following fields:
   
 `platforms`
 : Optional. Manually specify the platforms (e.g. Android and macOS)
-  that a package supports. 
-  [_Learn more._](#platforms)
-
-`platforms`
-: Optional. Manually specify the platforms (e.g. Android and macOS)
   that a package supports. This field is meant for Dart-only packages.
   For Flutter packages, see the Flutter note below.
   [_Learn more._](#platforms)
@@ -337,7 +332,7 @@ the pattern is considered relative to the package's root directory.
   Support for the `false_secrets` field was added in Dart 2.15.
 {{site.alert.end}}
 
-### Supported platforms
+### Platforms
 
 Once a package is published the pub.dev site will analyze it,
 and try to determine the set of platforms
