@@ -75,6 +75,17 @@ A pubspec can have the following fields:
 : Optional. Specify files to ignore when conducting a pre-publishing search
   for potential leaks of secrets.
   [_Learn more._](#false_secrets)
+  
+`platforms`
+: Optional. Manually specify the platforms (e.g. Android and macOS)
+  that a package supports. 
+  [_Learn more._](#platforms)
+
+`platforms`
+: Optional. Manually specify the platforms (e.g. Android and macOS)
+  that a package supports. This field is meant for Dart-only packages.
+  For Flutter packages, see the Flutter note below.
+  [_Learn more._](#platforms)
 
 Pub ignores all other fields,
 
@@ -326,6 +337,27 @@ the pattern is considered relative to the package's root directory.
   Support for the `false_secrets` field was added in Dart 2.15.
 {{site.alert.end}}
 
+### Supported platforms
+
+Once a package is published the pub.dev site will analyze it,
+and try to determine the set of platforms
+(Android, iOS, macOS, Windows, Linux, Web) it supports
+based on the libraries and SDKs the package imports.
+You may want to manually specify that a package
+specifies just some platforms. For Flutter packages
+you can use the [Flutter platforms tag][].
+For Dart packages, you can use the top-level
+`platforms` tag like this:
+
+```
+# Supports only Windows and macOS.
+platforms:
+  windows:
+  macos:
+```
+
+[Flutter platforms tag]: https://docs.flutter.dev/development/packages-and-plugins/developing-packages#plugin-platforms
+  
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
