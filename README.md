@@ -245,14 +245,27 @@ $ tool/compile.sh
 ## Dockerfile Maintenance
 
 ### Dart SDK and Node PPA Checksum values
-Since both the Dart SDK and Node PPA `curl` remote files, it's important to verify checksum values. Both installs use `latest` and `lts` respectively, so these files may be periodically updated. When this happens, local checksums may fail and **This will break the Docker/Compose setup/build**. You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`. When this happens, run the following command:
+
+Since both the Dart SDK and Node PPA `curl` remote files, 
+it's important to verify checksum values. 
+Both installs use `latest` and `lts` respectively, 
+so these files may be periodically updated. 
+When this happens, 
+local checksums may fail and **This will break the Docker/Compose setup/build**.
+You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`. 
+When this happens, run the following command:
 
 ```bash
+make run
+
 make fetch-sums
 ```
 
-This command will output the updated checksum values for both Node and Dart, and that output will be formatted similar or the same as what is currently in the Dockerfile. Copy this output and replace the relevant install code in the Dockerfile, then rerun your setup/build again. 
-
+This command will output the updated checksum values for both Node and Dart, 
+and that output will be formatted similar 
+or the same as what is currently in the Dockerfile. 
+Copy this output and replace the relevant install code in the Dockerfile, 
+then rerun your setup/build again. 
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg

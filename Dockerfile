@@ -39,16 +39,16 @@ RUN set -eu; \
         DART_SHA256="8836c294234352cc53e8aea4a1ce0442ebbb769a536ce7f309579da5020a2395"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="b758aefce016c0dfdc8b4e2941c88e0a5c0d29339c4432abd58fab4ef076d2dc"; \
+        DART_SHA256="315767a7242ad49d9003a5d4d43ebd7bbe8556c7a7ac1dbfc160d71216b732c6"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="1427731141075364bc2f6b2c89c3db28e781048b05149ab8d336ab213382aea6"; \
+        DART_SHA256="95312f8e1253b9f67e800f4949972de39ed4870681c4544a799899a75bc1bdbd"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="12f1f7bc8b7d47fdaab5db420ff5640f1f2f0ad37eae7586e291d4b410aef528"; \
+        DART_SHA256="b33662233081d04b4f5cec82d92dd5ed4316fe87abff5d3708cd8a4c76665925"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="90fdcadbd1065c26a198aabebde53460ab83cf900c8363d51ccc263cddd51ab8"; \
+        DART_SHA256="97d13e4f0faca7768a593119d06292322594fc5610a336455e9d745d0de1a229"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -56,7 +56,7 @@ RUN set -eu; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nDART CHECKSUM FAILED! Run tool/fetch-dart-sdk-sums.sh for updated values.\n\n" && \
+        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
         rm "$SDK" && \
         exit 1 \
     ); \

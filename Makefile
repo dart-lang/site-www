@@ -4,7 +4,7 @@
 
 all: clean up down debug shell serve test-build test-run setup \
 	serve emulate stage test build-image build deploy deploy-ci \
-	fetch-sdk-sums test-builds test-run
+	fetch-sums test-builds test-run
 
 .PHONY: all
 .DEFAULT_GOAL := up
@@ -142,7 +142,7 @@ fetch-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
-	tool/fetch-node-ppa/sum.sh
+	tool/fetch-node-ppa-sum.sh
 
 # Test the dev container with pure docker
 test-builds:
