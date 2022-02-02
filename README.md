@@ -5,10 +5,11 @@
 
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md), and we're
-[first-timer friendly][first-timers]!
+[We welcome contributions](CONTRIBUTING.md), 
+and we're [first-timer friendly][first-timers]!
 
 ## Getting started
+
 Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
 that catches your interest, or create an issue with your proposed change.
 Ask for the issue to be assigned to you.
@@ -17,11 +18,11 @@ To update this site, fork the repo, make your changes, and generate a pull
 request. For simple changes (such as to CSS and text), you probably don't need
 to build this site. Often you can make changes using the GitHub UI.
 
-> **NOTE:** If you clone this repo locally, see the instructions below on cloning
-> with its submodule.
+> **NOTE:** If you clone this repo locally, 
+> see the instructions below on cloning with its submodule.
 
-If your change involves code samples, adds/removes pages, or affects
-navigation, you'll need to build and test your work before submitting.
+If your change involves code samples, adds/removes pages, or affects navigation,
+you'll need to build and test your work before submitting.
 
 If you want or need to build, follow the steps below.
 
@@ -34,43 +35,53 @@ If you want or need to build, follow the steps below.
 
 
 ## Before you build this site
+
 For changes beyond simple text and CSS tweaks, 
 we recommend building the site.
 
 ### 1. Get the prerequisites
+
 Install the following tools, if you don't have them already:
 
 - **bash**, the Bourne shell. 
   These instructions assume you're using `bash`, 
   and setup might not work if you use another shell.
+
 - **GNU Make**. 
   On Windows the easiest way to install Make is `choco install make`. 
-  Other options include using a [subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+  Other options include using a [subsystem][wsl].
+
 - **Docker**. 
   We use Docker for local dev, tests, and building the site. 
   Install it from https://docs.docker.com/get-docker/.
+
 - **Firebase CLI**, for hosting the site locally. 
   One way to get this is to run `npm install -g firebase-tools`. 
   For full setup details, 
   read the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
 
 ### 2. Clone this repo _and_ its submodules
+
 > **Note:** This repo has git _submodules_, which affects how you clone it. 
 > The GitHub documentation has general help on [forking][] and [cloning][] repos.
 
-If you're outside of the Dart organization, we recommend you **create a fork** of this repo under your own account, and then submit a PR from that fork. 
+If you're not a member of the Dart organization, 
+we recommend you **create a fork** of this repo under your own account, 
+and then submit a PR from that fork. 
 
 Once you have a fork (or you're a Dart org member), 
 _choose one_ of the following submodule-cloning techniques:
 
-- Clone the repo and its submodule at the same using the `--recurse-submodules` option:
+- Clone the repo and its submodule at the same time
+  using the `--recurse-submodules` option:
   ```bash
   $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
   ```
 
   *OR*
   
-- If you've already cloned the repo without its submodule, then run this command from the repo root:
+- If you've already cloned the repo without its submodule, 
+  then run this command from the repo root:
   ```bash
   $ git submodule update --init --recursive
   ```
@@ -90,28 +101,29 @@ _choose one_ of the following submodule-cloning techniques:
    $ git checkout -b <BRANCH_NAME>
    ```
    
-1. If the Docker Desktop application isn't already running on your machine, 
+2. If the Docker Desktop application isn't already running on your machine, 
    start it. Look for the Docker status icon: if it has an exclamation 
    point (`!`), then update Docker Desktop before proceeding.
 
-1. Run the initial local setup command:
+3. Run the initial local setup command:
    ```bash
    $ make setup
    ```
 
-1. Serve the site locally (via `docker-compose`):
+4. Serve the site locally (via `docker-compose`):
    ```bash
    $ make up
    ```
    The site is generated, and then the development server runs in the 
-   Docker container, with the generated `_site` directory visible locally as a mirrored volume from inside the container.
+   Docker container, with the generated `_site` directory visible locally
+   as a mirrored volume from inside the container.
 
-1. View your changes in the browser by navigating to `http://localhost:4000`.
+5. View your changes in the browser by navigating to `http://localhost:4000`.
    > **Note:** Unless you're editing files under `site-shared`, 
    > you can safely ignore `ERROR: directory is already being watched` messages. 
    > For details, see [#1363](https://github.com/flutter/website/issues/1363).
 
-1. Make your changes to the local repo. 
+6. Make your changes to the local repo. 
 
    The site will rebuild and the browser will autoreload to reflect the changes. 
 
@@ -123,10 +135,10 @@ _choose one_ of the following submodule-cloning techniques:
    > ```
 
 
-1. Commit your changes to the branch and submit your PR.
+7. Commit your changes to the branch and submit your PR.
    > See [Pre-push site checks](#pre-push-site-checks)
 
-1. When you've finished developing, shut down the Docker container:
+8. When you've finished developing, shut down the Docker container:
    ```bash
    $ make down
    ```
@@ -142,7 +154,9 @@ _choose one_ of the following submodule-cloning techniques:
 ## Pre-push site checks
 
 ### Checking documentation and example code
-If you've made changes to this site's documentation and/or example code, and committed locally, then run the following command before pushing your work:
+
+If you've made changes to this site's documentation and/or example code, 
+and committed locally, then run the following command before pushing your work:
 
 ```bash
 # Enter a running Docker container shell
@@ -155,27 +169,31 @@ tool/test.sh
 tool/check-links.sh
 ```
 
-If these scripts report errors or warnings, then address those issues and rerun the above commands. Otherwise, you can push your changes.
+If these scripts report errors or warnings, 
+then address those issues and rerun the above commands. 
+Otherwise, you can push your changes.
 
 
 ## Deploying to a staging site
-You can deploy your local edits to a personal Firebase hosting staging site as follows.
+
+You can deploy your local edits to a
+personal Firebase hosting staging site as follows:
 
 1. If you don't already have a Firebase project, 
    
    - Navigate to the [Firebase Console](https://console.firebase.google.com) 
-   and create your own Firebase project (for example, `dart-dev-staging`).
+     and create your own Firebase project (for example, `dart-dev-staging`).
 
    - Head back to your local repo shell and verify that you are logged in.
-      ```bash
-      $ firebase login
-      ```
+     ```bash
+     $ firebase login
+     ```
 
    - Ensure that your project exists and activate that project:
-      ```bash
-      $ firebase projects:list
-      $ firebase use <your-project>
-      ```
+     ```bash
+     $ firebase projects:list
+     $ firebase use <your-project>
+     ```
    
 1. Build the site via Docker:
    ```bash
@@ -190,18 +208,24 @@ You can deploy your local edits to a personal Firebase hosting staging site as f
    $ FIREBASE_PROJECT=<your-project> make deploy
    ```
 
-   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file and it will overwrite the default every time you deploy without specifying.
+   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file 
+   > and it will overwrite the default every time you deploy without specifying.
 
 1. Navigate to your PR on GitHub and update it with the location of 
   the staged version, the names of your reviewers, and so on.
 
 
 ## Creating and/or editing DartPad example code
+
 Most of the code used to create [DartPad][] examples is hosted on GitHub. 
-However, this repo also contains some `*.dart` files responsible for DartPad example code.
+However, this repo also contains some `*.dart` files
+responsible for DartPad example code.
 
 # Refresh DartPad HTML tooltips
-Files that require DartPad HTML to be manually updated include instructions at the top that specify running: 
+
+Files that require DartPad HTML to be manually updated
+include instructions at the top that specify running: 
+
 ```bash
 $ tool/create_code_with_tooltips.dart
 ```
@@ -209,7 +233,10 @@ $ tool/create_code_with_tooltips.dart
 Follow the instructions in those files to refresh the appropriate code.
 
 ### DartPad picker
-The DartPad date picker must be manually compiled if changes are made. This will regenerate the associated JavaScript file in `src/assets/dash/js`:
+
+The DartPad example picker must be manually compiled if changes are made. 
+This will regenerate the associated JavaScript file in `src/assets/dash/js`:
+
 ```bash
 $ tool/compile.sh
 ```
@@ -241,7 +268,6 @@ Copy this output and replace the relevant install code in the Dockerfile,
 then rerun your setup/build again. 
 
 
-
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [cloning]: https://help.github.com/articles/cloning-a-repository
 [DartPad]: https://dartpad.dev
@@ -254,3 +280,4 @@ then rerun your setup/build again.
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
+[wsl]: https://docs.microsoft.com/en-us/windows/wsl/install

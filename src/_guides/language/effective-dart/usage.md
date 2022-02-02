@@ -460,6 +460,9 @@ it's almost always cleaner and shorter to use interpolation:
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 {% endprettify %}
 
+Note that this guideline applies to combining *multiple* literals and values.
+It's fine to use `.toString()` when converting only a single object to a string.
+
 ### AVOID using curly braces in interpolation when not needed.
 
 {% include linter-rule-mention.md rule="unnecessary_brace_in_string_interps" %}
