@@ -68,7 +68,8 @@ A pubspec can have the following fields:
   [_Learn more._](#executables)
 
 `platforms`
-: Optional. Used to explicitly declare supported platforms on the [pub.dev site.]({{site.pub}}).
+: Optional. Used to explicitly declare supported platforms
+  on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#platforms)
 
 `publish_to`
@@ -275,17 +276,18 @@ For more information, see
 
 ### Platforms
 
-When publishing packages to the [pub.dev site.]({{site.pub}}) the set of
-_supported platforms_ will be automatically detected based on transitively
-imported `dart:...` libraries and [Flutter plugin declarations][]. The set of
-supported platforms is displayed on the package page, and used for filtering
-when searching for packages on the [pub.dev site.]({{site.pub}}).
+When publishing packages to the [pub.dev site]({{site.pub}})
+the set of _supported platforms_ will be automatically detected based on 
+transitively imported `dart:...` libraries and [Flutter plugin declarations][]. 
+The set of supported platforms is displayed on the package page, 
+and used for filtering when searching for packages
+on the [pub.dev site]({{site.pub}}).
 
-If the supported platforms automatically detected is incorrect, the list of
-_supported platforms_ can be explicitly declared using the `platforms:` key
-as follows:
+If the supported platforms automatically detected is incorrect,
+the list of _supported platforms_ can be explicitly declared
+using the `platforms:` key as follows:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 # This package supports all platforms listed below
 platforms:
   android:
@@ -294,41 +296,44 @@ platforms:
   macos:
   web:
   windows:
-{% endprettify %}
+```
 
-The automatic detection of supported platforms is not perfect. For example, a
-package using `chmod` through `Process.run` from `dart:io` won't work on
-Windows, even though `dart:io` is available on Windows. Hence, it is reasonable
-to explicitly declare that the package only supports Linux and MacOS, as
-illustrated below:
+The automatic detection of supported platforms is not perfect. 
+For example, a package using `chmod` through `Process.run` from `dart:io`
+won't work on Windows, even though `dart:io` is available on Windows. 
+Hence, it is reasonable to explicitly declare
+that the package only supports Linux and macOS, as illustrated below:
 
-{% prettify yaml tag=pre+code %}
-# This package only supports Linux and MacOS
+```yaml
+# This package only supports Linux and macOS
 platforms:
   linux:
   macos:
-{% endprettify %}
+```
 
 {{site.alert.info}}
-  The automatic detection of support platforms will conclude that a package does
-  not support web, if the primary library transitively imports `dart:io`.
-  Because while it possible to import `dart:io` when compiling Dart to
-  Javascript, it is not possible to use functionality from `dart:io` at runtime
-  when compiled to Javascript. Trying to use `dart:io` when compiled to
-  Javascript will throw an error.
-
-  Some packages do import `dart:io` and avoid using it when they are compiled to
-  Javascript. This technically works, and but prevents automatic platform
-  detection from correctly determining that the package supports web.
-
-  These packages are encouraged to [conditionally import][] `dart:io` instead of
-  explicitly declaring supported platforms. Using conditional import reduces the
-  risk of runtime errors due to accidental usage of `dart:io` when compiled to
-  Javascript, and it ensures that packages with dependency upon this package
+  The automatic detection of supported platforms will conclude that a package
+  does not support web if the primary library transitively imports `dart:io`.
+  Because, while it possible to import `dart:io` 
+  when compiling Dart to JavaScript, 
+  it is not possible to use functionality from `dart:io`
+  at runtime when compiled to JavaScript. 
+  Trying to use `dart:io` when compiled to JavaScript will throw an error.
+  
+  Some packages do import `dart:io` 
+  and avoid using it when they are compiled to JavaScript. 
+  This technically works, but prevents automatic platform detection
+  from correctly determining that the package supports web.
+  
+  These packages are encouraged to [conditionally import][] `dart:io` 
+  instead of explicitly declaring supported platforms. 
+  Using conditional import reduces the risk of runtime errors
+  due to accidental usage of `dart:io` when compiled to JavaScript, 
+  and it ensures that packages with a dependency on this package
   doesn't also have to explicitly declare supported platforms.
 {{site.alert.end}}
 
-[Flutter plugin declarations]: https://docs.flutter.dev/development/packages-and-plugins/developing-packages#plugin-platforms
+[Flutter plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 [conditionally import]: /guides/libraries/create-library-packages#conditionally-importing-and-exporting-library-files
 
 
