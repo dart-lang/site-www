@@ -12,8 +12,8 @@ example:
 
 ```console
 $ cd examples/misc
-$ pub get
-$ dartanalyzer analysis_options.yaml .
+$ dart pub get
+$ dart analyze .
 ```
 
 ## How do I run example tests?
@@ -23,9 +23,9 @@ example:
 
 ```console
 $ cd examples/misc
-$ pub get
-$ pub run test  # Run VM tests
-$ pub run test -p chrome  # Run browser tests
+$ dart pub get
+$ dart test  # Run VM tests
+$ dart test -p chrome  # Run browser tests
 ```
 
 ## How do I run the analyzer and tests for all examples?
@@ -47,7 +47,7 @@ dev Dart releases. Otherwise, update only the release specific file: either
 
 To update the analyzer results files:
 
-1. Run `pub upgrade` to get the latest version of the pedantic package.
+1. Run `dart pub upgrade` to get the latest version of the lints package.
 1. Run `./tool/analyze-and-test-examples.sh --save-logs`.
 1. Look at the diffs for the results files.
 1. If the diffs look good but some comments are missing,
