@@ -236,6 +236,18 @@ follow these practices:
   Cancel the upload if any undesired files appear in that list.
 
 
+## Platform support
+
+The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
+displaying these platforms on the package page.
+Users of pub.dev can filter searches by platform.
+
+To change the automatically generated list of supported platforms,
+[specify supported platforms][] in the pubspec.
+
+[specify supported platforms]: /tools/pub/pubspec#platforms
+
+
 ## Uploaders
 
 Whoever publishes the first version of a package automatically becomes
