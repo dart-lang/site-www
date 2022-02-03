@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="0f45dcaa53b4090b69b277b885ea9a4cb3a41589c9119113e1b978ad55ce335f"; \
+        DART_SHA256="9fe86bde232de52d2211e47f5fdcc143ce936e309a8da1b447213e223d7f68d3"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="8836c294234352cc53e8aea4a1ce0442ebbb769a536ce7f309579da5020a2395"; \
+        DART_SHA256="34e08cd8412a7a40265d202630a2220df82589d353d106dc3bc4a902fd44060b"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="315767a7242ad49d9003a5d4d43ebd7bbe8556c7a7ac1dbfc160d71216b732c6"; \
