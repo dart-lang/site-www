@@ -28,7 +28,7 @@ A pubspec can have the following fields:
   [_Learn more._](#version)
 
 `description`
-: Required for packages that are hosted on the [pub.dev site.]({{site.pub}})
+: Required for packages that are hosted on the pub.dev site.
   [_Learn more._](#description)
 
 `homepage`
@@ -69,7 +69,7 @@ A pubspec can have the following fields:
 
 `platforms`
 : Optional. Used to explicitly declare supported platforms
-  on the [pub.dev site]({{site.pub}}).
+  on the pub.dev site.
   [_Learn more._](#platforms)
 
 `publish_to`
