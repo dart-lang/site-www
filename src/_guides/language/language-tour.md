@@ -226,7 +226,7 @@ The following table lists the words that the Dart language treats specially.
 [export]: /guides/libraries/create-library-packages
 [extends]: #extending-a-class
 [extension]: #extension-methods
-[external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
+[external]: https://spec.dart.dev/DartLangSpecDraft.pdf#External%20Functions
 [factory]: #factory-constructors
 [false]: #booleans
 [final]: #final-and-const
@@ -239,7 +239,7 @@ The following table lists the words that the Dart language treats specially.
 [implements]: #implicit-interfaces
 [import]: #using-libraries
 [in]: #for-loops
-[interface]: https://stackoverflow.com/questions/28595501/was-the-interface-keyword-removed-from-dart
+[interface]: #implicit-interfaces
 [is]: #type-test-operators
 [late]: #late-variables
 [library]: #libraries-and-visibility
@@ -280,8 +280,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   They're valid identifiers everywhere.
 
 * Words with the superscript **2** are **built-in identifiers**.
-  To simplify the task of porting JavaScript code to Dart,
-  these keywords are valid identifiers in most places,
+  These keywords are valid identifiers in most places,
   but they can't be used as class or type names, or as import prefixes.
 
 * Words with the superscript **3** are limited reserved words related to
