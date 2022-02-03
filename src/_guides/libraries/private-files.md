@@ -27,7 +27,8 @@ build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
 
-**Don't commit** the API documentation directory created by dartdoc:
+**Don't commit** the API documentation directory
+created by [`dart doc`](/tools/dart-doc):
 
 {% prettify none tag=pre+code %}
 doc/api/

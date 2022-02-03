@@ -245,8 +245,8 @@ see the [pub package layout conventions](/tools/pub/package-layout).
 ## Documenting a library
 
 You can generate API docs for your library using
-the [dartdoc][] tool.
-Dartdoc parses the source looking for
+the [`dart doc`][] tool.
+`dart doc` parses the source looking for
 [documentation comments](/guides/language/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
@@ -288,12 +288,12 @@ Links to previous versions' docs are in the
 To ensure that your package's API docs look good on the pub.dev site,
 follow these steps:
 
-* Before publishing your package, run the [dartdoc][] tool
+* Before publishing your package, run the [`dart doc`][] tool
   to make sure that your docs generate successfully and look as expected.
 * After publishing your package, check the **Versions** tab
   to make sure that the docs generated successfully.
 * If the docs didn't generate at all,
-  click **failed** in the **Versions** tab to see the dartdoc output.
+  click **failed** in the **Versions** tab to see the `dart doc` output.
 
 ## Resources
 
@@ -315,4 +315,4 @@ Use the following resources to learn more about library packages:
   [source_gen,](https://github.com/dart-lang/source_gen) and
   [test.](https://github.com/dart-lang/test)
 
-[dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc
+[`dart doc`]: /tools/dart-doc
