@@ -244,7 +244,8 @@ Users of pub.dev can filter searches by platform.
 
 Automated platform-support detection relies on the package's
 transitively imported `dart:*` libraries and
-on its Flutter plugin declarations.
+(if the package contains a Flutter plugin)
+on [plugin declarations][].
 For example, a package that requires `dart:html`
 works only on the web platform.
 A package that requires `dart:io`
@@ -264,6 +265,7 @@ can't work on Windows.
 To change the list of platforms that a package supports,
 [specify supported platforms][] in the pubspec.
 
+[plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 [conditionally import]: /guides/libraries/create-library-packages#conditionally-importing-and-exporting-library-files
 [specify supported platforms]: /tools/pub/pubspec#platforms
 

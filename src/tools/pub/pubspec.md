@@ -307,8 +307,15 @@ platforms:
   macos:
 ```
 
+{{site.alert.info}}
+  **Flutter note:**
+  Flutter plugins use [plugin declarations][]
+  instead of this field.
+{{site.alert.end}}
+
 [publish a package]: /tools/pub/publishing
 [platform support]: /tools/pub/publishing#platform-support
+[plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 
 
 ### Publish_to
