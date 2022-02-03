@@ -103,7 +103,7 @@ Here's one way to configure Dart support:
   {{site.alert.note}}
     The **Dart SDK** specifies the directory that
     contains the SDK's `bin` and `lib` directories;
-    the `bin` directory contains tools such as `dart` and `dartdoc`.
+    the `bin` directory contains tools such as `dart` and `dartaotruntime`.
     The IDE ensures that the path is valid.
   {{site.alert.end}}
 </li>

@@ -49,7 +49,7 @@ shows that your package is worth trying.
 {{site.alert.note}}
   The package README is used in multiple ways.
   For example, its content appears not only in the package page on pub.dev,
-  but also in [dartdoc][]-produced API reference documentation.
+  but also in [`dart doc`][]-produced API reference documentation.
 {{site.alert.end}}
 
 Although this page features the [`in_app_purchase`][] package README,
@@ -411,7 +411,7 @@ You’re the only person who can provide the information that the reader needs.
 
 [Awesome README]: https://github.com/matiassingers/awesome-readme
 [Badges]: https://github.com/badges/shields#readme
-[dartdoc]: /tools/dartdoc
+[`dart doc`]: /tools/dart-doc
 [How to write a great README for your GitHub project]: https://dbader.org/blog/write-a-great-readme-for-your-github-project
 [`in_app_purchase`]: {{site.pub-pkg}}/in_app_purchase
 [in its repo]: https://github.com/flutter/plugins/tree/master/packages/in_app_purchase/in_app_purchase/doc
