@@ -218,6 +218,8 @@
           permalink: /tools/dart-compile
         - title: dart create
           permalink: /tools/dart-create
+        - title: dart doc
+          permalink: /tools/dart-doc
         - title: dart fix 
           permalink: /tools/dart-fix
         - title: dart format 
@@ -230,8 +232,6 @@
           permalink: /tools/dart-test
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
-        - title: dartdoc
-          permalink: /tools/dartdoc
         - title: Experiment flags
           permalink: /tools/experiment-flags
     - title: Other command-line tools

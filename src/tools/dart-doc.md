@@ -1,10 +1,11 @@
 ---
-title: dartdoc
+title: dart doc
 description: API reference generation tool.
 toc: false
 ---
 
-The `dartdoc` command creates API reference documentation
+The `dart doc` command (previously called `dartdoc`)
+creates API reference documentation
 from Dart source code.
 You can add descriptions to the generated documentation
 by using [documentation comments][],
@@ -17,36 +18,29 @@ see the [documentation part of Effective Dart][effective doc].
   without errors.
 {{site.alert.end}}
 
-Run `dartdoc` from the root directory of your package. For example:
+Run `dart doc` from the root directory of your package. For example:
 
 ```terminal
 $ cd my_app
-$ dartdoc
+$ dart doc .
 Documenting my_app...
 ...
 Success! Docs generated into /Users/me/projects/my_app/doc/api
 ```
 
 By default, the documentation files are static HTML files,
-placed in the `doc/api` directory.
-To view the rendered documentation, you need an HTTP server.
+placed in the `doc/api` directory. You can create the
+files in a different directory with the `--output-dir` flag.
 
-Although `dartdoc` is in the Dart SDK,
-it's also available in the [dartdoc package.][]
-You might use the package when you need a programmatic interface
-or when you want to try features that
-aren't yet in the SDK's version of `dartdoc`.
-
-For information on command-line options, use the `--help` flag:
+For information on command-line options, use the `help` command:
 
 ```terminal
-$ dartdoc --help
+$ dart help doc
 ```
 
 [documentation comments]: /guides/language/language-tour#documentation-comments
 [effective doc]: /guides/language/effective-dart/documentation
 [dart analyze]: /tools/dart-analyze
-[dartdoc package.]: {{site.pub-pkg}}/dartdoc
 
 {% comment %}
 [PENDING: Add more help, info on commonly used options, links to examples of use.]
