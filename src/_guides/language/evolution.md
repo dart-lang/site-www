@@ -225,6 +225,11 @@ For details, see the [Dart 2.15 announcement][].
 
 [Dart 2.15 announcement]: https://medium.com/dartlang/dart-2-15-7e7a598e508a
 
+### Dart 2.16
+
+Dart 2.16 didn’t add any features to the Dart language.
+
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
