@@ -67,6 +67,11 @@ A pubspec can have the following fields:
 : Optional. Used to put a package's executables on your PATH.
   [_Learn more._](#executables)
 
+`platforms`
+: Optional. Used to explicitly declare supported platforms
+  on the [pub.dev site]({{site.pub}}).
+  [_Learn more._](#platforms)
+
 `publish_to`
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
@@ -267,6 +272,43 @@ If you don't specify the value, it is inferred from the key.
 
 For more information, see
 [pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+
+
+### Platforms
+
+When you [publish a package][], pub.dev automatically 
+[detects the platforms that the package supports][platform support].
+If this platform-support list is incorrect,
+use `platforms` to explicitly declare
+which platforms your package supports.
+
+For example, the following `platforms` entry causes pub.dev
+to list the package as supporting
+Android, iOS, Linux, macOS, Web, and Windows:
+
+```yaml
+# This package supports all platforms listed below.
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+```
+
+Here is an example of declaring that the package supports
+only Linux and macOS (and not, for example, Windows):
+
+```yaml
+# This package supports only Linux and macOS.
+platforms:
+  linux:
+  macos:
+```
+
+[publish a package]: /tools/pub/publishing
+[platform support]: /tools/pub/publishing#platform-support
 
 
 ### Publish_to
