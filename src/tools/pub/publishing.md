@@ -245,7 +245,7 @@ Users of pub.dev can filter searches by platform.
 Automated platform-support detection relies on the package's
 transitively imported `dart:*` libraries and
 (if the package contains a Flutter plugin)
-on [plugin declarations][].
+on its [plugin declarations][].
 For example, a package that requires `dart:html`
 works only on the web platform.
 A package that requires `dart:io`
