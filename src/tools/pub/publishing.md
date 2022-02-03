@@ -242,31 +242,9 @@ The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
 displaying these platforms on the package page.
 Users of pub.dev can filter searches by platform.
 
-Automated platform-support detection relies on the package's
-transitively imported `dart:*` libraries and
-(if the package contains a Flutter plugin)
-on its [plugin declarations][].
-For example, a package that requires `dart:html`
-works only on the web platform.
-A package that requires `dart:io`
-can't work on the web platform.
-
-{{site.alert.tip}}
-  If your package supports the web but uses `dart:io` for
-  code that isn't compiled to JavaScript,
-  [conditionally import][] `dart:io`.
-{{site.alert.end}}
-
-Platform-support detection isn't perfect.
-For example, although `dart:io` is available on Windows,
-a package that uses `chmod` (through `Process.run` from `dart:io`)
-can't work on Windows. 
-
-To change the list of platforms that a package supports,
+To change the automatically generated list of supported platforms,
 [specify supported platforms][] in the pubspec.
 
-[plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
-[conditionally import]: /guides/libraries/create-library-packages#conditionally-importing-and-exporting-library-files
 [specify supported platforms]: /tools/pub/pubspec#platforms
 
 

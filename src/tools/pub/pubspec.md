@@ -277,7 +277,7 @@ For more information, see
 ### Platforms
 
 When you [publish a package][], pub.dev automatically 
-[detects the platforms that the package supports][platform support].
+detects the platforms that the package supports.
 If this platform-support list is incorrect,
 use `platforms` to explicitly declare
 which platforms your package supports.
@@ -314,7 +314,6 @@ platforms:
 {{site.alert.end}}
 
 [publish a package]: /tools/pub/publishing
-[platform support]: /tools/pub/publishing#platform-support
 [plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 
 
