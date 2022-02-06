@@ -313,6 +313,10 @@ platforms:
   instead of this field.
 {{site.alert.end}}
 
+{{site.alert.version-note}}
+  Support for the `platforms` entry was added in Dart 2.16.
+{{site.alert.end}}
+
 [publish a package]: /tools/pub/publishing
 [plugin declarations]: {{site.flutter_docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
 
