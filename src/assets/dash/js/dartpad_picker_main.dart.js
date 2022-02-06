@@ -2525,7 +2525,7 @@ n.textContent=o.a
 q.toString
 r.appendChild(n).toString}A.JE(r,"change",new A.XV(this),!1)},
 u(){var s=this,r="_iFrameElement",q=document.createElement("iframe")
-q.src="https://dartpad.dev/embed-dart.html?theme=dark&null_safety=true"
+q.src="https://dartpad.dev/embed-dart.html?theme=dark"
 A.IT(s.f,r)
 s.f=q
 A.mk(q,r).id=s.e
