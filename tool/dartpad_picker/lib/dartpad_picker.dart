@@ -49,7 +49,7 @@ class DartPadPicker {
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
-      ..src = iFrameSrc(theme: 'dark', mode: 'dart', nullSafety: true);
+      ..src = iFrameSrc(theme: 'dark', mode: 'dart');
     final id = frameId;
     if (id != null) {
       _iFrameElement.id = id;
@@ -59,9 +59,7 @@ class DartPadPicker {
       final e = _e as MessageEvent;
       // Don't handle events from other iframe elements
       final data = e.data;
-      if (data is Map &&
-          data.containsKey('type') &&
-          data['type'] == 'ready') {
+      if (data is Map && data['type'] == 'ready') {
         _sendSourceCode();
       }
     });
@@ -71,8 +69,6 @@ class DartPadPicker {
     _iFrameElement.contentWindow?.postMessage(_sourceCodeMessage, '*');
   }
 
-  String iFrameSrc(
-      {String theme = 'dark', String mode = 'dart', bool nullSafety = true}) {
-    return '$dartPadUrl/embed-$mode.html?theme=$theme&null_safety=$nullSafety';
-  }
+  String iFrameSrc({String theme = 'dark', String mode = 'dart'}) =>
+      '$dartPadUrl/embed-$mode.html?theme=$theme';
 }

@@ -1,11 +1,25 @@
 include: package:lints/recommended.yaml
 
-# For lint rules and documentation, see https://dart.dev/lints.
-# Uncomment to specify additional rules.
-# linter:
-#   rules:
-#     - camel_case_types
-
 analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    - always_declare_return_types
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
+    - one_member_abstracts
+    - only_throw_errors
+    - package_api_docs
+    - prefer_expression_function_bodies
+    - prefer_single_quotes
+    - sort_child_properties_last
+    - sort_unnamed_constructors_first
+    - test_types_in_equals
+    - throw_in_finally
+    - type_annotate_public_apis
+    - unawaited_futures
