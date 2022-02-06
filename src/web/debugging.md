@@ -39,7 +39,7 @@ instead of the JavaScript that [dartdevc][] produces.
 For more information on using Chrome DevTools,
 see the [Chrome DevTools documentation.][Chrome DevTools]
 
-[source maps]: https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps
+[source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
 
 To use the Dart DevTools or Chrome DevTools
 to debug a Dart web app, you need the following software:
@@ -207,7 +207,7 @@ For more information, see the following:
 * [webdev package documentation][webdev-pkg]
 * [Tips for debugging dart2js-produced code][dart2js-debug]
 
-[Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
+[Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
 [IDE]: /tools#ides-and-editors
@@ -219,7 +219,7 @@ For more information, see the following:
 [devtools-pkg]: {{site.pub-pkg}}/devtools
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
-[JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
+[JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
 [dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
 [webdev repo,]: https://github.com/dart-lang/webdev

@@ -177,7 +177,7 @@ Click **Debugger** to start debugging the app.
 
 
 [App size tool]: {{site.flutter_docs}}/development/tools/devtools/app-size
-[Chrome DevTools.]: https://developers.google.com/web/tools/chrome-devtools
+[Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
 [CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
