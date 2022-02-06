@@ -201,7 +201,6 @@ For more information, see the following:
 
 * Documentation for [your IDE][IDE]
 * [Dart DevTools documentation][Dart DevTools]
-* [devtools package documentation][devtools-pkg]
 * [dartdevc FAQ][]
 * [webdev tool documentation][webdev]
 * [webdev package documentation][webdev-pkg]
@@ -216,7 +215,6 @@ For more information, see the following:
 [dart2js-debug]: /tools/dart2js#debugging
 [dartdevc]: /tools/dartdevc
 [dartdevc FAQ]: /tools/dartdevc/faq
-[devtools-pkg]: {{site.pub-pkg}}/devtools
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
