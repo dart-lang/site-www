@@ -59,9 +59,7 @@ class DartPadPicker {
       final e = _e as MessageEvent;
       // Don't handle events from other iframe elements
       final data = e.data;
-      if (data is Map &&
-          data.containsKey('type') &&
-          data['type'] == 'ready') {
+      if (data is Map && data['type'] == 'ready') {
         _sendSourceCode();
       }
     });
@@ -72,7 +70,8 @@ class DartPadPicker {
   }
 
   String iFrameSrc(
-      {String theme = 'dark', String mode = 'dart', bool nullSafety = true}) {
-    return '$dartPadUrl/embed-$mode.html?theme=$theme&null_safety=$nullSafety';
-  }
+          {String theme = 'dark',
+          String mode = 'dart',
+          bool nullSafety = true}) =>
+      '$dartPadUrl/embed-$mode.html?theme=$theme&null_safety=$nullSafety';
 }

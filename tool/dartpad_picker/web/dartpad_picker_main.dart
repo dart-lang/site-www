@@ -38,9 +38,7 @@ void main() {
 final RegExp _mobileRegex =
     RegExp(r'Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini');
 
-bool isMobile() {
-  return _mobileRegex.hasMatch(window.navigator.userAgent);
-}
+bool isMobile() => _mobileRegex.hasMatch(window.navigator.userAgent);
 
 // Snippets
 
