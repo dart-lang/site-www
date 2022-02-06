@@ -6,7 +6,7 @@ description: A suite of debugging and performance tools.
 Dart DevTools is a suite of debugging and performance tools
 for Dart and Flutter.
 These tools are distributed as part of the `dart` tool
-and interact with tools like IDEs, `dart run`, and `webdev`.
+and interact with tools such as IDEs, `dart run`, and `webdev`.
 
 The following table shows which tools
 you can use with common Dart app types.
