@@ -17,7 +17,52 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## February 3, 2022: 2.16 release
+
+This section lists notable changes made from December 8, 2021,
+through February 3, 2022.
+For details about the 2.16 release, 
+see [Dart 2.16: Improved tooling and platform handling][].
+
+[Dart 2.16: Improved tooling and platform handling]: https://medium.com/dartlang/dart-2-16-improved-tooling-and-platform-handling-dd87abd6bad1
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+We [updated the website infrastructure][] to a Docker based setup
+to enable [easier contributions][] and more closely align with
+the setup for [docs.flutter.dev]({{site.flutter_docs}}).
+
+In addition to other bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Switched to documenting the new [`dart doc`][] tool 
+  which is replacing `dartdoc`.
+* Documented the new [`platform` entry][] to specify supported platforms
+  within a package's `pubspec.yaml`.
+* Updated the [diagnostic messages] and [linter rules][] pages.
+* Documented how to [ignore all linter rules][] in a file.
+* Removed mentions of the old standalone tools from the [Dart SDK overview][].
+* Update remaining mentions of the old standalone tools
+  to their [`dart`] tool equivalents.
+* Added clarifications to the
+  [PREFER using interpolation to compose strings and values][]
+  Effective Dart guideline.
+
+[updated the website infrastructure]: https://github.com/dart-lang/site-www/pull/3765
+[easier contributions]: {{site.repo.this}}#getting-started
+[`dart doc`]: /tools/dart-doc
+[`platform` entry]: /tools/pub/pubspec#platforms
+[ignore all linter rules]: /guides/language/analysis-options#suppressing-rules-for-a-file
+[diagnostic messages]: /tools/diagnostic-messages
+[linter rules]: /tools/linter-rules
+[Dart SDK overview]: /tools/sdk
+[PREFER using interpolation to compose strings and values]: /guides/language/effective-dart/usage#prefer-using-interpolation-to-compose-strings-and-values
+[`dart`]: /tools/dart-tool
+
+
 ## December 8, 2021: 2.15 release
+
 This section lists notable changes made from September 9, 2021,
 through December 8, 2021.
 For details about the 2.15 release, see [Announcing Dart 2.15][].
