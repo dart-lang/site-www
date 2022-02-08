@@ -28,7 +28,7 @@ so it's easy to find (but not more tempting than package managers).
 
 *Note*: The Flutter SDK includes the full Dart SDK,
 and has Dart's [`dart`](/tools/dart-tool) command-line interface
-in it's `bin` folder.
+in its `bin` folder.
 
 {{site.alert.warn}}
   {% include_relative archive/_sdk-terms.md %}
