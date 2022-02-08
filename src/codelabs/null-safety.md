@@ -135,9 +135,10 @@ This behavior is called
 
 ### Exercise: Definite assignment
 
-Dart's type system can track where variables are assigned and
-read, and can verify that non-nullable fields are given
-values before any code tries to read from them. This process is called
+Dart's type system can track where variables are assigned and read, 
+and can verify that non-nullable variables are given values
+before any code tries to read from them.
+This process is called
 [definite assignment](/null-safety/understanding-null-safety#definite-assignment-analysis).
 
 Try uncommenting the `if`-`else` statement in the code below, and
