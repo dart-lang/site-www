@@ -30,7 +30,7 @@ see [Dart 2.16: Improved tooling and platform handling][].
 {: .no_toc}
 
 We [updated the website infrastructure][] to a Docker based setup
-to enable easier contributions and more closely align with
+to enable [easier contributions][] and more closely align with
 the setup for [docs.flutter.dev]({{site.flutter_docs}}).
 
 In addition to other bug fixes and incremental improvements,
@@ -50,6 +50,7 @@ we made the following changes to this site:
   Effective Dart guideline.
 
 [updated the website infrastructure]: https://github.com/dart-lang/site-www/pull/3765
+[easier contributions]: {{site.repo.this}}#getting-started
 [`dart doc`]: /tools/dart-doc
 [`platform` entry]: /tools/pub/pubspec#platforms
 [ignore all linter rules]: /guides/language/analysis-options#suppressing-rules-for-a-file
