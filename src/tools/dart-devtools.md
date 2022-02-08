@@ -5,8 +5,8 @@ description: A suite of debugging and performance tools.
 
 Dart DevTools is a suite of debugging and performance tools
 for Dart and Flutter.
-These tools are distributed in IDEs, the `flutter` tool, the `webdev` tool,
-and the [devtools package.][devtools package]
+These tools are distributed as part of the `dart` tool
+and interact with tools such as IDEs, `dart run`, and `webdev`.
 
 The following table shows which tools
 you can use with common Dart app types.
@@ -182,7 +182,6 @@ Click **Debugger** to start debugging the app.
 [CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
-[devtools package]: {{site.pub-pkg}}/devtools
 [Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
 [Flutter mobile or desktop]: {{site.flutter_docs}}/development/tools/devtools/overview
 [Flutter web]: {{site.flutter_docs}}/development/tools/devtools/overview
