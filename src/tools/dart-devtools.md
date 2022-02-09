@@ -172,6 +172,7 @@ Click **Debugger** to start debugging the app.
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
 [CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
+[devtools package]: https://github.com/flutter/devtools
 [Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
 [Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
