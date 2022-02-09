@@ -202,6 +202,7 @@ void bar(String jsonText) {
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to the parameter type"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
+error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>' - argument_type_not_assignable
 ```
 
 {{site.alert.version-note}}
