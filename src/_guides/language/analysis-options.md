@@ -165,11 +165,13 @@ the [Dart type system][type-system] requires,
 consider enabling the 
 `strict-casts`, `strict-inference`, and `strict-raw-types` language modes:
 
-<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-casts" remove="exclude"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-raw-types" remove="exclude"?>
 ```yaml
 analyzer:
   language:
     strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
 ```
 
 You can use the modes together or separately; all default to `false`.
