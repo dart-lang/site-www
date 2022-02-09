@@ -31,6 +31,7 @@ made its way into an `if` statement:
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 {% prettify dart class="linenums:8 analyzer"%}
 void increment() {
+  //!, beta, dev,  empty_statements
   if (count < 10) [!;!]
   count++;
 }
@@ -52,6 +53,7 @@ For example, perhaps you've forgotten to close a sink method:
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 {% prettify dart class="analyzer"%}
+//!, beta, dev, close_sinks
 var [!controller = StreamController<String>()!];
 {% endprettify %}
 
@@ -188,17 +190,18 @@ You can use the modes together or separately; all default to `false`.
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
 {% prettify dart class="analyzer" %}
-void parse(List<String> lines) => ...;
+void foo(List<String> lines) {
+  ...
+}
 
-void load(String jsonText) {
-  load([!jsonDecode(jsonText)!]); // Implicit cast
+void bar(String jsonText) {
+  foo([!jsonDecode(jsonText)!]); // Implicit cast
 }
 {% endprettify %}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to the parameter type"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>' - argument_type_not_assignable
 ```
 
 {{site.alert.version-note}}
@@ -231,7 +234,7 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="dynamicValue can't be inferred"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```

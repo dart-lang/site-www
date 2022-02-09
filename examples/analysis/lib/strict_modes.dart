@@ -6,11 +6,13 @@ import 'dart:convert';
 import 'package:examples_util/ellipsis.dart';
 
 // #docregion strict-casts
-void foo(List<String> lines) => ellipsis<String>();
+void foo(List<String> lines) {
+  ellipsis<String>();
+}
 
 void bar(String jsonText) {
   // ignore: stable, beta, dev, argument_type_not_assignable
-  foo(jsonDecode(jsonText));
+  foo(jsonDecode(jsonText)); // Implicit cast
 }
 // #enddocregion strict-casts
 
