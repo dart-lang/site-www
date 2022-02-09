@@ -239,11 +239,11 @@ info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_co
 ```
 
 {{site.alert.info}}
-  The `strict-inference` mode identifies many conditions
+  The `strict-inference` mode can identify many situations
   which result in an inference failure.
 
   See [Conditions for strict inference failure][] 
-  for an extensive set of examples highlighting inference failures.
+  for an exhaustive list of inference failure conditions.
 {{site.alert.end}}
 
 [Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
