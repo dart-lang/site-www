@@ -162,26 +162,26 @@ and `my_other_other_package`, and file #2 to analyze the code in
 
 If you want stricter static checks than
 the [Dart type system][type-system] requires,
-consider using the `implicit-casts` and `implicit-dynamic` flags:
+consider enabling the 
+`strict-casts`, `strict-inference`, and `strict-raw-types` language modes:
 
-<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-casts" remove="exclude"?>
 ```yaml
 analyzer:
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
+  language:
+    strict-casts: true
 ```
 
-You can use the flags together or separately; both default to `true`.
+You can use the modes together or separately; all default to `false`.
 
-`implicit-casts: <bool>`
-: A value of `false` ensures that the type inference engine never
+`strict-casts: <bool>`
+: A value of `true` ensures that the type inference engine never
   implicitly casts from `dynamic` to a more specific type.
   The following valid Dart code
-  includes an implicit downcast that would be caught by this flag:
+  includes an implicit downcast that would be caught by this mode:
 
 {:.fails-sa}
-<?code-excerpt "analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/(s = )(o)/$1[!$2!]/g"?>
 {% prettify dart class="analyzer" %}
 dynamic o = ...
 String s = [!o!]; // Implicit downcast
@@ -195,21 +195,69 @@ error - A value of type 'dynamic' can't be assigned to a variable of type 'Strin
 ```
 
 {{site.alert.version-note}}
-  In packages that use a [language version][] before 2.12
-  (when support for [null safety](/null-safety) was introduced),
-  code can implicitly downcast from non-`dynamic` types such as `Object`.
-  The `implicit-casts` flag can catch those non-`dynamic` downcasts,
-  even if you're using a more recent Dart SDK.
+  The `strict-casts` mode was introduced in Dart 2.16.
+  To enable similar checks with earlier SDK releases,
+  consider using the now deprecated `implicit-casts` option:
+
+  ```yaml
+  analyzer:
+    strong-mode:
+      implicit-casts: false
+  ```
 {{site.alert.end}}
 
-`implicit-dynamic: <bool>`
-: A value of `false` ensures that the type inference engine never chooses
+`strict-inference: <bool>`
+: A value of `true` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type.
+  The following valid Dart code has an expression
+  that fails to evaluate to a static type, 
+  resulting in an inference failure hint by this mode:
 
-{% comment %}
-TODO: Clarify that description, and insert an example here.
-{% endcomment %}
+{:.fails-sa}
+<?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/var dynamicValue/var [!dynamicValue!]/g"?>
+{% prettify dart class="analyzer" %}
+var [!dynamicValue!];
+dynamicValue.add(1);
+dynamicValue.add(2);
+{% endprettify %}
 
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="dynamicValue can't be inferred"  replace="/. Try.*variable. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+```nocode
+info - The type of dynamicValue can't be inferred without either a type or initializer - inference_failure_on_uninitialized_variable
+```
+
+{{site.alert.info}}
+  The `strict-inference` mode identifies many conditions
+  which result in an inference failure.
+
+  See [Conditions for strict inference failure][] 
+  for an extensive set of examples highlighting inference failures.
+{{site.alert.end}}
+
+[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+
+`strict-raw-types: <bool>`
+: A value of `true` ensures that the type inference engine never chooses
+  the `dynamic` type when it can't determine a static type
+  due to omitted type arguments.
+  The following valid Dart code has a `List` variable with a raw type,
+  resulting in a raw type hint by this mode:
+
+{:.fails-sa}
+<?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
+{% prettify dart class="analyzer" %}
+[!List!] numbers = [1, 2, 3]; // List with raw type
+for (final n in numbers) {
+  print(n.length); // Runtime error
+}
+{% endprettify %}
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*'List<dynamic>'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+```nocode
+info - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
+```
 
 ## Enabling and disabling linter rules {#enabling-linter-rules}
 
