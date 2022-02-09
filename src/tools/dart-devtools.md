@@ -24,8 +24,8 @@ you can use with common Dart app types.
   <thead>
     <tr markdown="1">
       <th>&nbsp;</th>
-      <th scope="col" markdown="1">[Flutter mobile or desktop][]</th>
-      <th scope="col" markdown="1">[Flutter web][]</th>
+      <th scope="col" markdown="1">[Flutter mobile or desktop][Flutter devtools]</th>
+      <th scope="col" markdown="1">[Flutter web][Flutter devtools]</th>
       <th scope="col" markdown="1">[Other web][]</th>
       <th scope="col" markdown="1">[Command-line][]</th>
     </tr>
@@ -110,9 +110,7 @@ other web apps should use browser tools such as the Chrome DevTools.
 
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
-[DevTools documentation on flutter.dev.][flutter-devtools]
-
-[flutter-devtools]: {{site.flutter_docs}}/development/tools/devtools/overview
+[DevTools documentation on flutter.dev.][Flutter devtools]
 
 
 ## Using DevTools with a non-Flutter web app
@@ -170,12 +168,6 @@ displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
 
-## Resources
-
-* [Using DevTools for Flutter development][Flutter mobile or desktop]
-* [devtools package page][devtools package]
-
-
 [App size tool]: {{site.flutter_docs}}/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
@@ -183,8 +175,7 @@ Click **Debugger** to start debugging the app.
 [Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
 [Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
-[Flutter mobile or desktop]: {{site.flutter_docs}}/development/tools/devtools/overview
-[Flutter web]: {{site.flutter_docs}}/development/tools/devtools/overview
+[Flutter devtools]: {{site.flutter_docs}}/development/tools/devtools/overview
 [Logging view]: {{site.flutter_docs}}/development/tools/devtools/logging
 [Memory view]: {{site.flutter_docs}}/development/tools/devtools/memory
 [Network view]: {{site.flutter_docs}}/development/tools/devtools/network
