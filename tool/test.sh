@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Run all tests for validating code examples
-source $TOOL_DIR/utils.sh
-
 set -u
+
+source $TOOL_DIR/utils.sh
 
 EXIT_STATUS=0
 
@@ -16,8 +16,8 @@ if [[ "$EXIT_STATUS" -eq "0" ]]; then
   printf "\n$(blue "All tests and checks have passed!")\n\n"
 else
   printf "\n$(red "
-  Some tests and/or checks have failed.
-  Look at the full output from this script for details.
+Some tests and/or checks have failed.
+Look at the full output from this script for details.
   ")\n"
 fi
 
