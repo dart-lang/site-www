@@ -1,23 +1,27 @@
-// ignore_for_file: dead_code, prefer_typing_uninitialized_variables
+// ignore_for_file: dead_code, prefer_typing_uninitialized_variables,
+// ignore_for_file: unused_local_variable
+
+import 'dart:convert';
 
 import 'package:examples_util/ellipsis.dart';
 
-String strictCasts() {
-  // #docregion strict-casts
-  dynamic o = ellipsis<String>();
-  // ignore: stable, beta, dev, invalid_assignment
-  String s = o; // Implicit downcast
-  String s2 = s.substring(1);
-  // #enddocregion strict-casts
-  return s2;
+// #docregion strict-casts
+void foo(List<String> lines) => ellipsis<String>();
+
+void bar(String jsonText) {
+  // ignore: stable, beta, dev, argument_type_not_assignable
+  foo(jsonDecode(jsonText));
 }
+// #enddocregion strict-casts
 
 void strictInference() {
   // #docregion strict-inference
-  // ignore: stable, beta, dev, inference_failure_on_uninitialized_variable
-  var dynamicValue;
-  dynamicValue.add(1);
-  dynamicValue.add(2);
+  // ignore: stable, beta, dev, inference_failure_on_collection_literal
+  final lines = {}; // Inference failure
+  lines['Dart'] = 10000;
+  lines['C++'] = 'one thousand';
+  lines['Go'] = 2000;
+  print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
   // #enddocregion strict-inference
 }
 

@@ -179,21 +179,26 @@ You can use the modes together or separately; all default to `false`.
 `strict-casts: <bool>`
 : A value of `true` ensures that the type inference engine never
   implicitly casts from `dynamic` to a more specific type.
-  The following valid Dart code
-  includes an implicit downcast that would be caught by this mode:
+  The following valid Dart code includes an implicit downcast from the
+  `dynamic` value returned by `jsonDecode` to `List<String>`
+  that could fail at runtime.
+  This mode reports the potential error, 
+  requiring you to add an explicit cast or otherwise adjust your code.
 
 {:.fails-sa}
-<?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/(s = )(o)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
 {% prettify dart class="analyzer" %}
-dynamic o = ...
-String s = [!o!]; // Implicit downcast
-String s2 = s.substring(1);
+void parse(List<String> lines) => ...;
+
+void load(String jsonText) {
+  load([!jsonDecode(jsonText)!]); // Implicit cast
+}
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to the parameter type"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-error - A value of type 'dynamic' can't be assigned to a variable of type 'String' - invalid_assignment
+error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>' - argument_type_not_assignable
 ```
 
 {{site.alert.version-note}}
@@ -211,22 +216,24 @@ error - A value of type 'dynamic' can't be assigned to a variable of type 'Strin
 `strict-inference: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type.
-  The following valid Dart code has an expression
-  that fails to evaluate to a static type, 
+  The following valid Dart code creates a `Map`
+  whose type argument cannot be inferred, 
   resulting in an inference failure hint by this mode:
 
 {:.fails-sa}
-<?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/var dynamicValue/var [!dynamicValue!]/g"?>
+<?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
 {% prettify dart class="analyzer" %}
-var [!dynamicValue!];
-dynamicValue.add(1);
-dynamicValue.add(2);
+final lines = [!{}!]; // Inference failure
+lines['Dart'] = 10000;
+lines['C++'] = 'one thousand';
+lines['Go'] = 2000;
+print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="dynamicValue can't be inferred"  replace="/. Try.*variable. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="dynamicValue can't be inferred"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - The type of dynamicValue can't be inferred without either a type or initializer - inference_failure_on_uninitialized_variable
+info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
 {{site.alert.info}}

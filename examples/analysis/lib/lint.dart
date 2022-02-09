@@ -5,7 +5,7 @@ import 'dart:async';
 int count = 0;
 // #docregion empty_statements
 void increment() {
-  // ignore: stable, beta, dev,  empty_statements
+  //!, beta, dev,  empty_statements
   if (count < 10) ;
   count++;
 }
@@ -13,7 +13,7 @@ void increment() {
 
 void controller() {
   // #docregion close_sinks
-  // ignore: stable, beta, dev, close_sinks
+  //!, beta, dev, close_sinks
   var controller = StreamController<String>();
   // #enddocregion close_sinks
 }
