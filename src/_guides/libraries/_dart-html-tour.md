@@ -337,7 +337,7 @@ to ensure that you have the data before continuing execution.
 
 <?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() async {
+void main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
   // Do something with pageHtml...
 }
@@ -361,7 +361,7 @@ retrieves, you can use the `request()` static method instead of
 
 <?code-excerpt "html/test/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   HttpRequest req = await HttpRequest.request(
     url,
     method: 'HEAD',
@@ -418,7 +418,7 @@ String encodeMap(Map<String, String> data) => data.entries
         '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
     .join('&');
 
-Future<void> main() async {
+void main() async {
   const data = {'dart': 'fun', 'angular': 'productive'};
 
   var request = HttpRequest();

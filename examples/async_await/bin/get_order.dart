@@ -11,7 +11,7 @@ Future<String> fetchUserOrder() =>
     );
 
 // #docregion main-sig
-Future<void> main() async {
+void main() async {
   // #enddocregion main-sig
   print('Fetching user order...');
   // #docregion print-order

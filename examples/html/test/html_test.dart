@@ -62,7 +62,7 @@ void main() {
   test('getString', () async {
     final url = 'https://httpbin.org';
     // #docregion getString
-    Future<void> main() async {
+    void main() async {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
       // #enddocregion getString
@@ -80,7 +80,7 @@ void main() {
   test('request', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
-    Future<void> main() async {
+    void main() async {
       HttpRequest req = await HttpRequest.request(
         url,
         method: 'HEAD',
@@ -105,7 +105,7 @@ void main() {
             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
 
-    Future<void> main() async {
+    void main() async {
       const data = {'dart': 'fun', 'angular': 'productive'};
 
       var request = HttpRequest();

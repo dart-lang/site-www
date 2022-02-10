@@ -184,7 +184,7 @@ void main() {
 ```dart
 import 'dart:math' show Random;
 
-Future<void> main() async {
+void main() async {
   print('Compute π using the Monte Carlo method.');
   await for (final estimate in computePi().take(100)) {
     print('π ≅ $estimate');

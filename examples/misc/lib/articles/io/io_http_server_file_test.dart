@@ -35,7 +35,7 @@ Future<void> sendNotFound(HttpResponse response) async {
   await response.close();
 }
 
-Future<void> main() async {
+void main() async {
   // Compute base path for the request based on the location of the
   // script, and then start the server.
   final script = File(Platform.script.toFilePath());

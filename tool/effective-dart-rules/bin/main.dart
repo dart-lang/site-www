@@ -8,7 +8,7 @@ import 'package:path/path.dart' as path;
 final _unescape = HtmlUnescape();
 final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
-Future<void> main(List<String> arguments) async {
+void main(List<String> arguments) async {
   const dirPath = 'src/_guides/language/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
