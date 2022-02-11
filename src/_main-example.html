@@ -6,9 +6,9 @@ from sources in the example folder.
 <pre class="prettyprint lang-dart">
 <code><a tabindex="0" role="button" data-toggle="popover" data-content="Dart has one canonical way to import libraries, and one canonical (and easy) way to install library packages.">import</a> '<a tabindex="0" role="button" data-toggle="popover" data-content="The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.">dart:math</a>' show Random;
 
-Future&lt;void&gt; <a tabindex="0" role="button" data-toggle="popover" data-content="The <code>main()</code> function is the single point of entry.">main()</a> async {
+void <a tabindex="0" role="button" data-toggle="popover" data-content="The <code>main()</code> function is the single point of entry.">main()</a> async {
   print('Compute <a tabindex="0" role="button" data-toggle="popover" data-content="Unicode support is baked in.">π</a> using the Monte Carlo method.');
-  <a tabindex="0" role="button" data-toggle="popover" data-content="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</a> for (var estimate in computePi().take(500)) {
+  <a tabindex="0" role="button" data-toggle="popover" data-content="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</a> for (final estimate in computePi().take(500)) {
     print('π ≅ <a tabindex="0" role="button" data-toggle="popover" data-content="String interpolation is easy. Just put <code>${expression}</code> or <code>$variable</code> in your string literal.">$estimate</a>');
   }
 }

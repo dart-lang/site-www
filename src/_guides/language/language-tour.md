@@ -4197,7 +4197,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() [!async!] {
+void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
@@ -4301,7 +4301,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() [!async!] {
+void main() [!async!] {
   // ...
   [!await for!] (final request in requestServer) {
     handleRequest(request);

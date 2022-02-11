@@ -13,7 +13,7 @@ import 'package:examples_util/print_matcher.dart' as m;
 void main() {
   test('readAsString, readAsLines', () async {
     // #docregion readAsString
-    Future<void> main() async {
+    void main() async {
       var config = File('test_data/config.txt');
 
       // Put the whole file in a single string.
@@ -34,7 +34,7 @@ void main() {
 
   test('readAsBytes', () {
     // #docregion readAsBytes
-    Future<void> main() async {
+    void main() async {
       var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
@@ -47,7 +47,7 @@ void main() {
 
   test('try-catch', () {
     // #docregion try-catch
-    Future<void> main() async {
+    void main() async {
       var config = File('does-not-exist.txt');
       try {
         var contents = await config.readAsString();
@@ -88,7 +88,7 @@ void main() {
 
   test('list-dir', () {
     // #docregion list-dir
-    Future<void> main() async {
+    void main() async {
       var dir = Directory('test_data');
 
       try {
@@ -111,7 +111,7 @@ void main() {
 
   test('client-server', () async {
     // #docregion client
-    Future<void> main() async {
+    void main() async {
       var url = Uri.parse('http://localhost:8888/dart');
       var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
@@ -141,7 +141,7 @@ void main() {
 // included in the excerpt.
 
 // #docregion read-from-stream
-Future<void> main_test_read_from_stream() async {
+void main_test_read_from_stream() async {
   var config = File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 

@@ -2,7 +2,7 @@ import 'dart:io';
 
 int stopAfter = 10;
 // #docregion
-Future<void> main() async {
+void main() async {
   final requests = await HttpServer.bind('localhost', 8888);
   // #enddocregion
   final _requests = requests.take(stopAfter);

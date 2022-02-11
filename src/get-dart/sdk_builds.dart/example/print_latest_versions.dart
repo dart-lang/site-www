@@ -9,7 +9,7 @@ import 'package:sdk_builds/sdk_builds.dart';
 
 final _dd = DartDownloads();
 
-Future<void> main() async {
+void main() async {
   try {
     await latest('stable');
     await latest('dev');

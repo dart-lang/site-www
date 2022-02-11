@@ -1,7 +1,7 @@
 // #docregion
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final semicolon = ';'.codeUnitAt(0);
   final result = <int>[];
 
