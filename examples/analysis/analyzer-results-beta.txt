@@ -1,7 +1,9 @@
 Analyzing analysis...
 
-  error - lib/assignment.dart:11:14 - A value of type 'dynamic' can't be assigned to a variable of type 'String'. Try changing the type of the variable, or casting the right-hand type to 'String'. - invalid_assignment
+  error - lib/strict_modes.dart:13:7 - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
    info - lib/lint.dart:9:19 - Avoid empty statements. - empty_statements
    info - lib/lint.dart:17:7 - Close instances of `dart.core.Sink`. - close_sinks
+   info - lib/strict_modes.dart:22:27 - The type argument(s) of 'Map' can't be inferred. Use explicit type argument(s) for 'Map'. - inference_failure_on_collection_literal
+   info - lib/strict_modes.dart:33:3 - The generic type 'List<dynamic>' should have explicit type arguments but doesn't. Use explicit type arguments for 'List<dynamic>'. - strict_raw_type
 
-3 issues found.
+5 issues found.
