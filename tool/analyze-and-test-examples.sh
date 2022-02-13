@@ -15,6 +15,7 @@ EXAMPLES=$BASE_DIR/examples
 PUB_ARG="upgrade"
 LOG_FILE="$TMP/analyzer-output.txt"
 EXIT_STATUS=0
+SAVE_LOGS=0
 QUICK=0
 
 while [[ $# -gt 0 ]]; do
