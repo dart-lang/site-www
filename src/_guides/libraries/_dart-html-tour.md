@@ -335,7 +335,7 @@ The HttpRequest static method `getString()` is an easy way to get data
 from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
-<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g; /Future\<void\> retrieveData/void main/g"?>
 {% prettify dart tag=pre+code %}
 void main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
@@ -361,7 +361,7 @@ retrieves, you can use the `request()` static method instead of
 
 <?code-excerpt "html/test/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
 ```dart
-void main() async {
+Future<void> checkStatus() async {
   HttpRequest req = await HttpRequest.request(
     url,
     method: 'HEAD',
