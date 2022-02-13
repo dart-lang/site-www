@@ -93,9 +93,9 @@ void main() {
         assert('Never odd or even'.substring(6, 9) == 'odd');
 
         // Split a string using a string pattern.
-        var parts = 'structured web apps'.split(' ');
+        var parts = 'progressive web apps'.split(' ');
         assert(parts.length == 3);
-        assert(parts[0] == 'structured');
+        assert(parts[0] == 'progressive');
 
         // Get a UTF-16 code unit (as a string) by index.
         assert('Never odd or even'[0] == 'N');
@@ -119,10 +119,10 @@ void main() {
     test('change case', () {
       // #docregion toUpperCase-toLowerCase
       // Convert to uppercase.
-      assert('structured web apps'.toUpperCase() == 'STRUCTURED WEB APPS');
+      assert('web apps'.toUpperCase() == 'WEB APPS');
 
       // Convert to lowercase.
-      assert('STRUCTURED WEB APPS'.toLowerCase() == 'structured web apps');
+      assert('WEB APPS'.toLowerCase() == 'web apps');
       // #enddocregion toUpperCase-toLowerCase
     });
 

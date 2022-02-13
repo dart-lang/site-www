@@ -931,12 +931,7 @@ to create a list with three or four items in it:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
-var nav = [
-  'Home',
-  'Furniture',
-  'Plants',
-  if (promoActive) 'Outlet'
-];
+var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
 ```
 
 Here's an example of using **collection for**
@@ -946,10 +941,7 @@ adding them to another list:
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 ```dart
 var listOfInts = [1, 2, 3];
-var listOfStrings = [
-  '#0',
-  for (var i in listOfInts) '#$i'
-];
+var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
 assert(listOfStrings[1] == '#1');
 ```
 
@@ -1430,14 +1422,12 @@ The next example shows how to set default values for positional parameters:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
-String say(String from, String msg,
-    [String device = 'carrier pigeon']) {
+String say(String from, String msg, [String device = 'carrier pigeon']) {
   var result = '$from says $msg with a $device';
   return result;
 }
 
-assert(say('Bob', 'Howdy') ==
-    'Bob says Howdy with a carrier pigeon');
+assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
 You can also pass lists or maps as default values.
@@ -1574,8 +1564,7 @@ it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list.forEach(
-    (item) => print('${list.indexOf(item)}: $item'));
+list.forEach((item) => print('${list.indexOf(item)}: $item'));
 ```
 
 
@@ -3133,12 +3122,10 @@ class Logger {
 
   // _cache is library-private, thanks to
   // the _ in front of its name.
-  static final Map<String, Logger> _cache =
-      <String, Logger>{};
+  static final Map<String, Logger> _cache = <String, Logger>{};
 
   factory Logger(String name) {
-    return _cache.putIfAbsent(
-        name, () => Logger._internal(name));
+    return _cache.putIfAbsent(name, () => Logger._internal(name));
   }
 
   factory Logger.fromJson(Map<String, Object> json) {
@@ -3603,8 +3590,7 @@ class Musician extends Performer [!with Musical!] {
   // ···
 }
 
-class Maestro extends Person
-    [!with Musical, Aggressive, Demented!] {
+class Maestro extends Person [!with Musical, Aggressive, Demented!] {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;

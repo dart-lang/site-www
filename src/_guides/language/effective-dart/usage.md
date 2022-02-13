@@ -428,8 +428,7 @@ a single long string that doesn't fit on one line.
 {:.good}
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart tag=pre+code %}
-raiseAlarm(
-    'ERROR: Parts of the spaceship are on fire. Other '
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
@@ -533,8 +532,7 @@ var arguments = [
   command,
   ...?modeFlags,
   for (var path in filePaths)
-    if (path.endsWith('.dart'))
-      path.replaceAll('.dart', '.js')
+    if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
 ];
 {% endprettify %}
 
@@ -1667,8 +1665,7 @@ omit the `async` without changing the behavior of the function, do so.
 {:.good}
 <?code-excerpt "usage_good.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future<int> fastestBranch(
-    Future<int> left, Future<int> right) {
+Future<int> fastestBranch(Future<int> left, Future<int> right) {
   return Future.any([left, right]);
 }
 {% endprettify %}

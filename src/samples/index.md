@@ -193,8 +193,7 @@ class Spacecraft {
     // Type promotion doesn't work on getters.
     var launchDate = this.launchDate;
     if (launchDate != null) {
-      int years =
-          DateTime.now().difference(launchDate).inDays ~/ 365;
+      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
