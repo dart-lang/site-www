@@ -111,7 +111,7 @@ void main() {
 
   test('client-server', () async {
     // #docregion client
-    void main() async {
+    Future<void> main() async {
       var url = Uri.parse('http://localhost:8888/dart');
       var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
