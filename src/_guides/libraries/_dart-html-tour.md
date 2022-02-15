@@ -361,7 +361,7 @@ retrieves, you can use the `request()` static method instead of
 
 <?code-excerpt "html/test/html_test.dart (request)" replace="/Future\<void\>/void/g; /await.*;/[!$&!]/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   HttpRequest req = await HttpRequest.request(
     url,
     method: 'HEAD',

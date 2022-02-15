@@ -93,7 +93,7 @@ class _HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last
   _HoneyBadger(Eats food, String name)
-      // ignore: stable, beta, dev, invalid_super_invocation
+      // ignore: stable, beta, dev, super_invocation_not_last
       : super(food),
         _name = name {/* ... */}
 // #enddocregion super-goes-last
