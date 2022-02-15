@@ -56,8 +56,8 @@ abstract class NumberAdder {
 }
 
 class MyAdder extends NumberAdder {
-  // ignore: stable, beta, dev, invalid_override
   @override
+  // ignore: stable, beta, dev, invalid_override
   num add(int a, int b) => a + b;
 }
 // #enddocregion invalid-method-override
