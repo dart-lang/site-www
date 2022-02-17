@@ -50,8 +50,7 @@ void main() async {
 
   // Put the whole file in a single string.
   var stringContents = await config.readAsString();
-  print(
-      'The file is ${stringContents.length} characters long.');
+  print('The file is ${stringContents.length} characters long.');
 
   // Put each line of the file into its own string.
   var lines = await config.readAsLines();
@@ -111,9 +110,7 @@ void main() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines = utf8.decoder
-      .bind(inputStream)
-      .transform(const LineSplitter());
+  var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
   try {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
@@ -209,7 +206,7 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/Future\<void\>/void/g; /\b_//g"?>
 ```dart
 void main() async {
   final requests = await HttpServer.bind('localhost', 8888);
@@ -245,7 +242,7 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future\<void\>/void/g"?>
 ```dart
 void main() async {
   var url = Uri.parse('http://localhost:8888/dart');

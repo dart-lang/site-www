@@ -62,7 +62,7 @@ void main() {
   test('getString', () async {
     final url = 'https://httpbin.org';
     // #docregion getString
-    void main() async {
+    Future<void> main() async {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
       // #enddocregion getString
@@ -80,7 +80,7 @@ void main() {
   test('request', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
-    void main() async {
+    Future<void> main() async {
       HttpRequest req = await HttpRequest.request(
         url,
         method: 'HEAD',
@@ -98,7 +98,7 @@ void main() {
   });
 
   test('POST', () async {
-    final url = 'https://httpbin.org/post';
+    const url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.entries
         .map((e) =>

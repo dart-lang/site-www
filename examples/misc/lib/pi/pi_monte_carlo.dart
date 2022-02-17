@@ -23,7 +23,7 @@ int numIterations = 500; //!web-only
 //!web-only
 //!tip("main()")
 // #docregion try-dart
-void main() async {
+Future<void> main() async {
   print('Compute π using the Monte Carlo method.'); //!tip("π")
   var output = querySelector('#value-of-pi')!; //!web-only
   //!tip("await")

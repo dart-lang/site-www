@@ -180,7 +180,7 @@ void main() {
 ### Compute π
 
 {:#try-dart-compute-pi}
-<?code-excerpt "misc/lib/pi/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
+<?code-excerpt "misc/lib/pi/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/Future\<void\>/void/g; /numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
 ```dart
 import 'dart:math' show Random;
 

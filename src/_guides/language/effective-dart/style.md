@@ -144,8 +144,7 @@ import 'SliderMenu.dart';
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as math;
-import 'package:angular_components/angular_components'
-    as angular_components;
+import 'package:angular_components/angular_components' as angular_components;
 import 'package:js/js.dart' as js;
 {% endprettify %}
 
@@ -153,8 +152,7 @@ import 'package:js/js.dart' as js;
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as Math;
-import 'package:angular_components/angular_components'
-    as angularComponents;
+import 'package:angular_components/angular_components' as angularComponents;
 import 'package:js/js.dart' as JS;
 {% endprettify %}
 
