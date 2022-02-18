@@ -31,10 +31,11 @@ multi-platform and web platform. When writing Flutter apps,
 DartPad also supports the `package:flutter`
 and `dart:ui` libraries.
 
-DartPad doesn't support [deferred loading][] or any other libraries. 
-For example, DartPad doesn't support using packages from 
-the [pub.dev]({{site.pub}}) package repository. 
-(Package support might change; for details, see [issue 901][].)
+DartPad doesn't support [deferred loading][] 
+or using packages from the [pub.dev]({{site.pub}}) package repository
+besides the [currently supported packages][].
+
+[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 ## Getting started
 
@@ -125,4 +126,3 @@ For technical details on embedding DartPads, see the
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await
-[issue 901]: https://github.com/dart-lang/dart-pad/issues/901
