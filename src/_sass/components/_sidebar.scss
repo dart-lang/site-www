@@ -103,6 +103,20 @@
   }
 }
 
+
+// Material icon styles
+.material-icons{
+  vertical-align: middle;
+  margin-left: 2px;
+  color: inherit;
+  opacity: 0.8;
+}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+
 // Overrides that had been added to main.scss
 // TODO these should be merged with the above defaults
 #sidenav {
