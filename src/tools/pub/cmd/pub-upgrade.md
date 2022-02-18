@@ -130,6 +130,11 @@ ignoring any upper-bound constraint in the `pubspec.yaml` file.
 Also updates `pubspec.yaml` with the new constraints.
 This command is similar to `--major-versions`.
 
+{{site.alert.tip}}
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
+{{site.alert.end}}
+
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
@@ -145,11 +150,6 @@ Also updates `pubspec.yaml` with the new constraints.
 
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
-
-{{site.alert.tip}}
-  Commit the `pubspec.yaml` file before running this command,
-  so that you can undo the changes if necessary.
-{{site.alert.end}}
 
 
 {{site.alert.info}}
