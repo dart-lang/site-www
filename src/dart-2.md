@@ -13,7 +13,8 @@ For information on _why_ Dart 2 has changed, see the
 
 ## Differences
 
-The Dart language, libraries, build system, and web development tools have changed.
+The Dart language, libraries, build system, 
+and web development tools have changed.
 
 ### Language and libraries
 
@@ -70,7 +71,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter pub upgrade`][flutter pub upgrade]
    * Server-side or web: [`dart pub upgrade`][dart pub upgrade]
-3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
+3. **Run the [dart2_fix tool][dart2_fix]**. It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
@@ -166,33 +167,28 @@ environment:
 [dartdevc]: /tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
-[customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter_docs}}/testing/debugging#the-dart-analyzer
 [dart analyze]: /tools/dart-analyze
 [flutter pub upgrade]: {{site.flutter_docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
-[dart2_fix]: https://github.com/dart-lang/dart2_fix
-[angular-examples repos]: https://github.com/angular-examples
+[dart2_fix]: https://github.com/dart-archive/dart2_fix
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
 [build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
-[creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
-[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200
-[Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
+[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200---2018-08-07
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter SDK upgrade]: {{site.flutter_docs}}/development/tools/sdk/upgrading
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
-[newsletters]: https://github.com/dart-lang/sdk/tree/main/docs/newsletter#dart-language-and-library-newsletters
 [prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/type-system
 [testing]: /guides/testing
-[Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
+[Updating your pub package to Dart 2,]: https://filiph.medium.com/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: /web/dart-2
 [sync async start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
