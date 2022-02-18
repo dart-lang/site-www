@@ -78,7 +78,7 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-Future<void> main() async {
+void main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // 55
@@ -137,7 +137,7 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-Future<void> main() async {
+void main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // -1
@@ -346,7 +346,7 @@ All lines are printed, except any that begin with a hashtag, `#`.
 import 'dart:convert';
 import 'dart:io';
 
-Future<void> main(List<String> args) async {
+void main(List<String> args) async {
   var file = File(args[0]);
   var lines = utf8.decoder
       .bind(file.openRead())

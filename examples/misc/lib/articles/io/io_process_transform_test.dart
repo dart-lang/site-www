@@ -2,7 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final process = await Process.start('ls', ['-l']);
   final lineStream = process.stdout
       .transform(const Utf8Decoder())

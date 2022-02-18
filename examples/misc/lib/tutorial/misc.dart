@@ -8,7 +8,7 @@ void futuresTutorial() {
   void doSomethingWith(_) {}
   // #docregion multiple-await
   // Sequential processing using async and await.
-  Future<void> main() async {
+  void main() async {
     await expensiveA();
     await expensiveB();
     doSomethingWith(await expensiveC());

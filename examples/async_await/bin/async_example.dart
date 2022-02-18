@@ -12,7 +12,7 @@ Future<String> fetchUserOrder() {
   return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
-Future<void> main() async {
+void main() async {
   countSeconds(4);
   await printOrderMessage();
 }

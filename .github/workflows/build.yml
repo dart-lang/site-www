@@ -37,7 +37,6 @@ jobs:
           sdk: ${{ matrix.sdk }}
       - run: dart pub get
       - run: tool/test.sh
-        continue-on-error: true
         env:
           DART_CHANNEL: ${{ matrix.sdk }}
 

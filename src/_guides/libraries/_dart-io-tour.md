@@ -45,13 +45,12 @@ strings.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   var config = File('config.txt');
 
   // Put the whole file in a single string.
   var stringContents = await config.readAsString();
-  print(
-      'The file is ${stringContents.length} characters long.');
+  print('The file is ${stringContents.length} characters long.');
 
   // Put each line of the file into its own string.
   var lines = await config.readAsLines();
@@ -68,7 +67,7 @@ when it’s available.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   var config = File('config.txt');
 
   var contents = await config.readAsBytes();
@@ -84,7 +83,7 @@ or (in an `async` function) use try-catch:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   var config = File('config.txt');
   try {
     var contents = await config.readAsString();
@@ -107,13 +106,11 @@ or `await for`, part of Dart's
 import 'dart:io';
 import 'dart:convert';
 
-Future<void> main() async {
+void main() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines = utf8.decoder
-      .bind(inputStream)
-      .transform(const LineSplitter());
+  var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
   try {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
@@ -160,7 +157,7 @@ when a file or directory is encountered.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   var dir = Directory('tmp');
 
   try {
@@ -209,9 +206,9 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/Future\<void\>/void/g; /\b_//g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   final requests = await HttpServer.bind('localhost', 8888);
   await for (final request in requests) {
     processRequest(request);
@@ -245,9 +242,9 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future\<void\>/void/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = HttpClient();
   var request = await httpClient.getUrl(url);

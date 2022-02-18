@@ -371,9 +371,9 @@ specify the type as `<String, dynamic>`.
 <a id="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
-<?code-excerpt "analyzer-results-stable.txt" retain="/superclass call must be last.*food/" replace="/food/.../g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/Animal/.../g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-error - The superclass call must be last in an initializer list: 'super(...)'. - invalid_super_invocation
+error - The superconstructor call must be last in an initializer list: '...'. - super_invocation_not_last
 ```
 
 This error occurs when the `super()` call is not last in a constructor's
@@ -390,9 +390,9 @@ HoneyBadger(Eats food, String name)
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analyzer-results-stable.txt" retain="/superclass call must be last.*food/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-error - The superclass call must be last in an initializer list: 'super(food)'. - invalid_super_invocation
+error - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
 ```
 
 #### Fix: Put the `super()` call last

@@ -98,14 +98,14 @@ void main() {
   });
 
   test('POST', () async {
-    final url = 'https://httpbin.org/post';
+    const url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.entries
         .map((e) =>
             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
 
-    Future<void> main() async {
+    void main() async {
       const data = {'dart': 'fun', 'angular': 'productive'};
 
       var request = HttpRequest();

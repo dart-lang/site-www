@@ -52,7 +52,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
   {
     Future<void> checkVersion() async {}
     // #docregion main
-    Future<void> main() async {
+    void main() async {
       checkVersion();
       print('In main: version is ${await lookUpVersion()}');
     }
@@ -63,7 +63,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
     Stream<dynamic> requestServer = Stream.empty();
     Future<dynamic> handleRequest(_) async => Never;
     // #docregion number_thinker
-    Future<void> main() async {
+    void main() async {
       // ...
       await for (final request in requestServer) {
         handleRequest(request);

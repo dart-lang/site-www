@@ -335,9 +335,9 @@ The HttpRequest static method `getString()` is an easy way to get data
 from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
-<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g; /Future\<void\>/void/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() async {
+void main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
   // Do something with pageHtml...
 }
@@ -359,9 +359,9 @@ If you need access to the HttpRequest, not just the text data it
 retrieves, you can use the `request()` static method instead of
 `getString()`. Here’s an example of reading XML data:
 
-<?code-excerpt "html/test/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "html/test/html_test.dart (request)" replace="/Future\<void\>/void/g; /await.*;/[!$&!]/g"?>
 ```dart
-Future<void> main() async {
+void main() async {
   HttpRequest req = await HttpRequest.request(
     url,
     method: 'HEAD',
@@ -418,7 +418,7 @@ String encodeMap(Map<String, String> data) => data.entries
         '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
     .join('&');
 
-Future<void> main() async {
+void main() async {
   const data = {'dart': 'fun', 'angular': 'productive'};
 
   var request = HttpRequest();

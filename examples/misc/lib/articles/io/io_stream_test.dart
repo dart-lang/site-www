@@ -1,7 +1,7 @@
 // #docregion
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();

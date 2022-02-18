@@ -1,7 +1,7 @@
 // #docregion
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
 

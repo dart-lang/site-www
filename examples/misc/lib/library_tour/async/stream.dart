@@ -30,7 +30,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion await-for
-    Future<void> main(List<String> arguments) async {
+    void main(List<String> arguments) async {
       // ...
       if (await FileSystemEntity.isDirectory(searchPath)) {
         final startingDir = Directory(searchPath);
