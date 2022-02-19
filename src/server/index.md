@@ -20,9 +20,12 @@ that can help you develop command-line and server apps.
   DartPad lets you try out language features and dart:* APIs.
 
   {{site.alert.note}}
-    DartPad does **not** support using dart:io APIs or
-    importing libraries from packages.
+    DartPad does **not** support using VM libraries, such as `dart:io`,
+    or importing libraries from packages
+    besides the [currently supported packages][].
   {{site.alert.end}}
+
+[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/get-dart) to get the core Dart
