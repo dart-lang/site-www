@@ -104,13 +104,11 @@ For more information, see
 
 [Lazily loading libraries][] is a production use case,
 and dartdevc isn't intended for production code.
-However, dartdevc could validate that
+However, dartdevc validates that
 when code uses a deferred library,
 that code first calls `loadLibrary()`.
-For more information, see [SDK issue #27776.][27776]
 
 [Lazily loading libraries]: /guides/language/language-tour#lazily-loading-a-library
-[27776]: https://github.com/dart-lang/sdk/issues/27776
 
 
 ### Where can I see known problems with dartdevc?
