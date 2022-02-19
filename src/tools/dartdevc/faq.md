@@ -104,7 +104,7 @@ For more information, see
 
 [Lazily loading libraries][] is a production use case,
 and dartdevc isn't intended for production code.
-However, dartdevc does validate that
+However, dartdevc validates that
 when code uses a deferred library,
 that code first calls `loadLibrary()`.
 
