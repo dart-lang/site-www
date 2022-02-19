@@ -39,7 +39,7 @@ The following tools support the Dart language on all platforms.
 a great, no-download-required way to learn Dart syntax
 and to experiment with Dart language features.
 It supports Dart's core libraries,
-except for VM libraries such as dart:io.
+except for VM libraries such as `dart:io`.
 
 
 ### IDEs and editors

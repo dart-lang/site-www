@@ -20,7 +20,7 @@ that can help you develop command-line and server apps.
   DartPad lets you try out language features and dart:* APIs.
 
   {{site.alert.note}}
-    DartPad does **not** support using VM libraries, such as dart:io,
+    DartPad does **not** support using VM libraries, such as `dart:io`,
     or importing libraries from packages
     besides the [currently supported packages][].
   {{site.alert.end}}
