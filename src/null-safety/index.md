@@ -96,31 +96,6 @@ environment:
 
 [language version]: /guides/language/evolution#language-versioning
 
-## Known issues
-
-Some parts of the Dart ecosystem still need additional work to
-[migrate to null safety][migration guide].
-
-The Dart team is currently aware of the following issues:
-
-  * Migration of the pub.dev packages owned by the Dart team
-    is nearly complete, but a few are still missing. See pub.dev for
-    [null-safe packages from the Dart team][ns-dart-pkgs].
-  * Packages that have unit tests typically have
-    a dev dependency on the [`test` package][`test`].
-    A few packages extend the framework in package:test,
-    and might have a direct dependency on it.
-    When publishing these packages you might get pub warnings about
-    the `test` package not being fully migrated.
-    As long as your package doesn't ignore any of the
-    `import_of_legacy_library_into_null_safe` or
-    [`export_legacy_symbol`][] analyzer warnings,
-    then you can ignore this warning and safely publish your package.
-
-[`export_legacy_symbol`]: /tools/diagnostic-messages#export_legacy_symbol
-[`test`]: {{site.pub-pkg}}/test
-
-[ns-dart-pkgs]: {{site.pub-pkg}}?q=publisher%3Adart.dev&null-safe=1
 
 ## Where to learn more
 
