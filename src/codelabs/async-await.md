@@ -232,7 +232,7 @@ If the function doesn't explicitly return a value, then the return type is
 
 <?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
 {% prettify dart tag=pre+code %}
-void main() async { ··· }
+Future<void> main() async { ··· }
 {% endprettify %}
 
 Now that you have an `async` function, you can use the `await` keyword to wait
