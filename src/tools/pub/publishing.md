@@ -231,7 +231,7 @@ follow these practices:
   `dart pub publish` says it's going to publish.
   Cancel the upload if any undesired files appear in that list.
 
-{{site.alert.version-note}}
+{{site.alert.note}}
   Most packages don't need a  `.pubignore` file.
   More information about useful scenarios for this
   can be found in this [StackOverflow answer][pubignore-when].
