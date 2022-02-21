@@ -106,37 +106,41 @@ $(function () {
   // Initialize the video on the homepage, if it exists.
   initVideoModal();
 
-  setupSearchShortcut();
+  document.addEventListener('keydown', handleSearchShortcut);
 });
 
-function setupSearchShortcut() {
-  $(document).on('keydown', function (e) {
-    const activeElement = document.activeElement;
-    if (activeElement instanceof HTMLInputElement ||
-        activeElement instanceof HTMLTextAreaElement) {
-      return;
-    }
-    if (e.code === 'Slash') {
-      let parentElement;
-      if (document.body.classList.contains('open_menu')) {
-        parentElement = document.getElementById('sidenav');
-      } else {
-        const bodySearch = document.getElementById('in-content-search');
-        if (bodySearch !== null) {
-          parentElement = bodySearch;
-        } else {
-          parentElement = document.getElementById('cse-search-box');
-        }
-      }
+function handleSearchShortcut(event) {
+  const activeElement = document.activeElement;
+  if (activeElement instanceof HTMLInputElement ||
+      activeElement instanceof HTMLTextAreaElement ||
+      event.code !== 'Slash'
+  ) {
+    return;
+  }
 
-      if (parentElement !== null) {
-        parentElement
-            .querySelector('.search-field')
-            .focus();
-        e.preventDefault();
-      }
+  let parentElement;
+  // If the sidebar is open, focus its search field
+  if (document.body.classList.contains('open_menu')) {
+    parentElement = document.getElementById('sidenav');
+  } else {
+    const bodySearch = document.getElementById('in-content-search');
+    // If the page has a search field in the body, focus that
+    if (bodySearch !== null) {
+      parentElement = bodySearch;
+    } else {
+      // Otherwise, fallback to the top navbar search field
+      parentElement = document.getElementById('cse-search-box');
     }
-  });
+  }
+
+  // If we found a search field, focus that
+  if (parentElement !== null) {
+    parentElement
+        .querySelector('.search-field')
+        .focus();
+    // Prevent the initial slash from showing up in the search field
+    event.preventDefault();
+  }
 }
 
 function switchBanner(galleryName) {
