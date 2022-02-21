@@ -213,10 +213,6 @@ with the following exceptions:
  * Any directories with the name `packages`
  * Files and directories ignored by a `.pubignore` or `.gitignore` file
 
-{{site.alert.version-note}}
-  Support for `.pubignore` files was added in Dart 2.14.
-{{site.alert.end}}
-
 If you want different ignore rules for `git` and `dart pub publish`,
 then overrule the `.gitignore` file in a given directory by
 creating a `.pubignore` file.
@@ -235,6 +231,11 @@ follow these practices:
   `dart pub publish` says it's going to publish.
   Cancel the upload if any undesired files appear in that list.
 
+{{site.alert.note}}
+  Most packages don't need a  `.pubignore` file.
+  More information about useful scenarios for this
+  can be found in this [StackOverflow answer][pubignore-when].
+{{site.alert.end}}
 
 ## Platform support
 
@@ -430,3 +431,4 @@ For more information, see the reference pages for the following `pub` commands:
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
 [git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
+[pubignore-when]: https://stackoverflow.com/a/69767697
