@@ -298,7 +298,7 @@ Future<String> fetchUserOrder() =>
       () => 'Large Latte',
     );
 
-void main() [!async!] {
+[!Future<void>!] main() [!async!] {
   print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
