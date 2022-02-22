@@ -47,10 +47,10 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
-    - title: Numbers
-      permalink: /guides/language/numbers
     - title: Concurrency
       permalink: /guides/language/concurrency
+    - title: Numbers
+      permalink: /guides/language/numbers
     - title: Null safety
       expanded: false
       children:
