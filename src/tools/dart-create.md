@@ -31,10 +31,11 @@ The following table shows the templates you can use:
 |------------------+------------------------------------------------------|
 | Template         | Description                                          |
 |------------------|------------------------------------------------------|
-| `console`        | A command-line application..                         |
-| `package`        | A package containing shared Dart libraries.         |
+| `console-simple` | A simple command-line app (the default template).    |
+| `console-full`   | A complete command-line app.                         |
+| `package-simple` | A starting point for Dart libraries or apps.         |
 | `server-shelf`   | A server built using [shelf][].                      |
-| `web`            | A web app built using core Dart libraries.           |
+| `web-simple`     | A web app built using core Dart libraries.           |
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
@@ -68,16 +69,21 @@ $ dart create --help
 Create a new Dart project.
 
 Usage: dart create [arguments] <directory>
--h, --help                       Print this usage information.
--t, --template                   The project template to use.
+-h, --help        Print this usage information.
+-t, --template    The project template to use.
+                  [console-simple (default), console-full, package-simple, server-shelf, web-simple]
+    --[no-]pub    Whether to run 'pub get' after the project has been created.
+                  (defaults to on)
+    --force       Force project generation, even if the target directory already exists.
 
-          [console] (default)    A command-line application.
-          [package]              A package containing shared Dart libraries.
-          [server-shelf]         A server app using `package:shelf`
-          [web]                  A web app that uses only core Dart libraries.
+Run "dart help" to see global options.
 
-    --[no-]pub                   Whether to run 'pub get' after the project has been created.
-                                 (defaults to on)
-    --force                      Force project generation, even if the target directory already exists.
+Available templates:
+  console-simple: A simple command-line application. (default)
+    console-full: A command-line application sample.
+  package-simple: A starting point for Dart libraries or applications.
+    server-shelf: A server app using `package:shelf`
+      web-simple: A web app that uses only core Dart libraries.
+
 ```
 {% endcomment %}

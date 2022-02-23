@@ -14,7 +14,7 @@ Here's how you might use the `dart` tool
 to create, analyze, test, and run an app:
 
 ```terminal
-$ dart create -t console my_app
+$ dart create -t console-full my_app
 $ cd my_app
 $ dart analyze
 $ dart test

@@ -76,7 +76,7 @@ see the [migration guide][].
   For example:
 
   ```terminal
-  $ dart create -t console my_cli
+  $ dart create -t console-full my_cli
   $ cd my_cli
   $ dart migrate --apply-changes
   ```

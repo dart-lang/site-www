@@ -50,10 +50,10 @@ More information:
 ## 3. Create a small app
 
 Use the [`dart create`](/tools/dart-create) command
-and the `console` template to create a command-line app:
+and the `console-full` template to create a command-line app:
 
 ```terminal
-$ dart create -t console cli
+$ dart create -t console-full cli
 ```
 
 This command creates a small Dart app that has the following:
