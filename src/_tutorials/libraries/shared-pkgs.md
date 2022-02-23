@@ -65,13 +65,13 @@ $ dart create --help
 ```
 
 You'll see a list of templates, including various web and server-side apps.
-One of the templates is named **console-full**.
+One of the templates is named **console**.
 
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
 
 ```terminal
-$ dart create -t console-full vector_victor 
+$ dart create -t console vector_victor 
 $ cd vector_victor
 ```
 
