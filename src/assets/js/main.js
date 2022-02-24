@@ -105,8 +105,43 @@ $(function () {
 
   // Initialize the video on the homepage, if it exists.
   initVideoModal();
+
+  document.addEventListener('keydown', handleSearchShortcut);
 });
 
+function handleSearchShortcut(event) {
+  const activeElement = document.activeElement;
+  if (activeElement instanceof HTMLInputElement ||
+      activeElement instanceof HTMLTextAreaElement ||
+      event.code !== 'Slash'
+  ) {
+    return;
+  }
+
+  let parentElement;
+  // If the sidebar is open, focus its search field
+  if (document.body.classList.contains('open_menu')) {
+    parentElement = document.getElementById('sidenav');
+  } else {
+    const bodySearch = document.getElementById('in-content-search');
+    // If the page has a search field in the body, focus that
+    if (bodySearch !== null) {
+      parentElement = bodySearch;
+    } else {
+      // Otherwise, fallback to the top navbar search field
+      parentElement = document.getElementById('cse-search-box');
+    }
+  }
+
+  // If we found a search field, focus that
+  if (parentElement !== null) {
+    parentElement
+        .querySelector('.search-field')
+        .focus();
+    // Prevent the initial slash from showing up in the search field
+    event.preventDefault();
+  }
+}
 
 function switchBanner(galleryName) {
     $('#' + galleryName + ' .selector li').removeClass('highlight');
