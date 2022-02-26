@@ -103,5 +103,5 @@ significant test scaffolding to be written and the effort isn't worth the small
 gain.
 
 [CI]: https://www.thoughtworks.com/continuous-integration
-[site-shared docs]: https://github.com/dart-lang/site-shared/tree/master/doc
-[Examples]: https://github.com/dart-lang/site-shared/blob/master/doc/examples.md
+[site-shared docs]: https://github.com/dart-lang/site-shared/tree/main/doc
+[Examples]: https://github.com/dart-lang/site-shared/blob/main/doc/examples.md

@@ -1,4 +1,4 @@
-# <img src="https://github.com/dart-lang/site-shared/blob/master/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> The Dart language site (dart.dev)
+# <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> The Dart language site (dart.dev)
 
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![first-timers SVG][]][first-timers]

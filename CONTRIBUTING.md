@@ -42,11 +42,11 @@ More info:
 [GitHub pull request]: https://docs.github.com/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [Google Developer Documentation Style Guide]: https://developers.google.com/style/
 [help wanted]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
-[in the site-shared repo]: https://github.com/dart-lang/site-shared/blob/master/doc
+[in the site-shared repo]: https://github.com/dart-lang/site-shared/blob/main/doc
 [issue tracker]: https://github.com/dart-lang/site-www/issues
 [on Flutter's Discord server]: https://github.com/flutter/flutter/wiki/Chat
 [Report issues]: https://github.com/dart-lang/site-www/issues/new/choose
-[semantic line breaks]: https://github.com/dart-lang/site-shared/blob/master/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
+[semantic line breaks]: https://github.com/dart-lang/site-shared/blob/main/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
 [sign the CLA]: https://developers.google.com/open-source/cla/individual
 [www]: https://dart.dev
 
