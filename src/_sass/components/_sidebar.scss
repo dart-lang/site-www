@@ -168,11 +168,12 @@
       
 
       &.external {
-        i {
-          position: relative;
-          left: 6px;
-          font-size: .65rem;
-          top: -1px;
+        span.material-icons {
+          vertical-align: middle;
+          margin-left: 4px;
+          font-size: 12px;
+          color: inherit;
+          opacity: 0.8;
         }
       
         &::after {
