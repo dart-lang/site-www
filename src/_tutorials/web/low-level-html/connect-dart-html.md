@@ -1,12 +1,10 @@
 ---
 title: Connect Dart and HTML
-description: Shows basic scaffolding of a Dart web app.
+description: Learn how to set up basic scaffolding of a Dart web app.
 nextpage:
   url: /tutorials/web/low-level-html/add-elements
   title: Add elements to the DOM
 ---
-
-{% include not-null-safe.md %}
 
 This tutorial is the first of a series on
 basic, low-level web programming with the dart:html library.
@@ -23,7 +21,7 @@ but you might not need to use the dart:html library at all.
 * Compile a web app's Dart code to JavaScript to run the app in any modern browser.
 * An HTML file hosts your Dart code in a browser page.
 * The DOM models a browser page in a tree/node structure.
-* Use querySelector() with an ID to get an element from the DOM.
+* Use `querySelector()` with an ID to get an element from the DOM.
 * CSS selectors are patterns used to select matching elements in the DOM.
 * Use CSS rules to style elements.
 
@@ -31,7 +29,7 @@ but you might not need to use the dart:html library at all.
 
 To write a low-level web app with Dart,
 you need to understand
-several topics&mdash;the DOM tree, nodes, elements,
+several topics—the DOM tree, nodes, elements,
 HTML, and the Dart language and libraries.
 
 The interdependencies are circular,
@@ -54,17 +52,17 @@ for more interesting and useful web apps.
 ## About the Dart, HTML, and CSS triumvirate {#source-files}
 
 If you've used
-<a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad,</a>
-you've already seen the DART, HTML, and CSS tabs
+[DartPad]({{site.dartpad}}){:target="_blank" rel="noopener"},
+you may have already seen the Dart, HTML, and CSS tabs
 that let you write the code for a web app.
 Each of these three languages
 is responsible for a different aspect of the web app.
 
-| Language | Purpose |
-|---|---|
-| Dart | Implements the interactivity and dynamic behavior of the web app |
-| HTML | Describes the content of the web app's page (the elements in the document and the structure) |
-| CSS | Governs the appearance of page elements |
+| Language | Purpose                                                                                      |
+|----------|----------------------------------------------------------------------------------------------|
+| Dart     | Implements the interactivity and dynamic behavior of the web app                             |
+| HTML     | Describes the content of the web app's page (the elements in the document and the structure) |
+| CSS      | Governs the appearance of page elements                                                      |
 {: .table}
 
 A Dart program can
@@ -104,12 +102,11 @@ the resulting web browser page in Chrome.
 
 HTML uses tags to describe the document.
 For example, the simple HTML code above
-uses the \<title> tag for the page title,
-\<h1> for a level-one header,
-and \<p> for a paragraph.
+uses the `<title>` tag for the page title,
+`<h1>` for a level-one header,
+and `<p>` for a paragraph.
 Some tags in the HTML code,
-such as
-\<head> and \<body>,
+such as `<head>` and `<body>`,
 are not visible on the web page,
 but do contribute to the structure of the document.
 
@@ -123,9 +120,9 @@ text nodes, and attribute nodes.
 Here is the DOM tree for the simple HTML file above.
 
 <img class="scale-img-max" src="/tutorials/web/images/simple-dom-tree.png"
-     alt="The DOM tree for a simple HTML file">
+     alt="A Dart dynamically changing the DOM">
 
-Notice that some tags, such as the \<p> paragraph tag,
+Notice that some tags, such as the `<p>` paragraph tag,
 are represented by multiple nodes.
 The paragraph itself is an element node.
 The text within the paragraph is a text node
@@ -153,7 +150,7 @@ or even insert an entire subtree of nodes.
 
 ## Create a new Dart app {#create-dart-app}
 
-1. Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
+1. Go to the [DartPad]({{site.dartpad}}){:target="_blank" rel="noopener"}.
 2. Click the **New Pad** button to undo any changes you might have made
    the last time you visited DartPad.
 3. Click **Dart**.   
@@ -162,27 +159,27 @@ or even insert an entire subtree of nodes.
 
 {{site.alert.note}}
   These instructions feature DartPad,
-  which hides some of the HTML boilerplate code.
+  which hides some HTML boilerplate code.
   If you want to use any other editor,
   then we recommend starting with a small Dart web app sample
-  and modifying the non-script tags inside the \<body> section.
+  and modifying the non-script tags inside the `<body>` section.
   [HTML and Dart connections](#connections) shows the full HTML code.
 {{site.alert.end}}
 
 ## Edit the HTML source code {#create-html}
 
 1. Click **HTML**, at the upper left of DartPad.
-   The view switches from Dart code to the (non-existent) HTML code.
+   The view switches from Dart code to the (currently non-existent) HTML code.
 
 2. Add the following HTML code:
 
-   {% prettify html tag=pre+code %}
+   ```html
    <p id="RipVanWinkle">
      RipVanWinkle paragraph.
    </p>
-   {% endprettify %}
+   ```
 
-3. Click **HTML OUTPUT** to see how a browser would render your HTML.
+3. Expand the output pane to see how a browser would render your HTML.
 
 
 ## About the HTML source code {#about-html-code}
@@ -191,41 +188,39 @@ This HTML code is similar to the HTML code in the
 various diagrams earlier in this tutorial,
 but it's even simpler.
 
-In DartPad you need only the tags you really care about—in
-this case, \<p>.
-You don't need surrounding tags such as
-\<html> and \<body>.
+In DartPad you need only the tags you really care about—in this case: `<p>`.
+You don't need surrounding tags such as `<html>` and `<body>`.
 Because DartPad knows where your Dart code is,
-you don't need a \<script> tag.
+you don't need a `<script>` tag.
 
 {{site.alert.info}}
   [HTML and Dart connections](#connections) shows the full HTML code
-  that you need to run your web app outside of DartPad.
+  that you need to run your web app outside DartPad.
 {{site.alert.end}}
 
-The paragraph tag has the identifier "RipVanWinkle".
+The paragraph tag has the identifier `RipVanWinkle`.
 The Dart code you create in the next step uses this ID
 to get the paragraph element.
 
 
 ## Edit the Dart source code {#dart-editor-happiness}
 
-1. Click **DART**, at the upper right of DartPad.
+1. Click **Dart** at the upper right of DartPad.
    The view switches from HTML code to Dart code.
 
 2. Change the Dart code to the following:
 
-   {% prettify dart tag=pre+code %}
+   ```dart
    import 'dart:html';
 
    void main() {
-     querySelector('#RipVanWinkle').text = 'Wake up, sleepy head!';
+     querySelector('#RipVanWinkle')!.text = 'Wake up, sleepy head!';
    }
-   {% endprettify %}
+   ```
 
 3. Click **Run** to execute your code.
 
-The text in the HTML OUTPUT tab changes to "Wake up, sleepy head!"
+The text in the output pane changes to "Wake up, sleepy head!"
 
 
 ## About the Dart source code {#about-dart-code}
@@ -235,63 +230,94 @@ Let's step through the Dart code.
 ### Importing libraries
 
 The import directive imports the specified library,
-making all of the classes and functions
+making all the classes and functions 
 in that library
 available to your program.
 
-<pre class="prettyprint lang-dart allow-scroll">
-<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Imports Dart's HTML classes and functions">import 'dart:html';</a>
-</pre>
+The following `import` statement imports Dart's HTML library,
+which contains key classes and functions for programming the DOM:
+
+```dart
+import 'dart:html';
+```
 
 This program imports Dart's HTML library,
 which contains key classes and functions for programming the DOM.
 Key classes include:
 
-| Dart class | Description |
-|---|---|
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a> | Implements a DOM node. |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a> | A subclass of Node; implements a web page element. |
+| Dart class                                                                                                                               | Description                                               |
+|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>         | Implements a DOM node.                                    |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>   | A subclass of Node; implements a web page element.        |
 | <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html" target="_blank" rel="noopener">Document</a> | Another subclass of Node; implements the document object. |
 {: .table}
 
-The Dart core library contains another useful class:
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html" target="_blank" rel="noopener">List,</a>
+The `dart:core` library, which is automatically imported,
+contains many other useful classes, such as:
+[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"},
 a parameterized class that can specify the type of its members.
-An instance of Element keeps its list of child Elements
-in a List\<Element>.
+An instance of `Element` keeps its list of child Element objects
+in a `List<Element>`.
 
 ### Using the querySelector() function
 
-This app's main() function contains a single
+This app's `main()` function contains a single
 line of code that is a little like a run-on sentence
 with multiple things happening one after another.
 Let's deconstruct it.
 
-querySelector() is a top-level function provided by the Dart HTML library
-that gets an Element object from the DOM.
+`querySelector()` is a top-level function provided by the `dart:html` library
+that gets an `Element` object from the DOM.
 
-<pre class="prettyprint lang-dart allow-scroll">
-<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Returns the matching Element">querySelector('#RipVanWinkle')</a>.text = 'Wake up, sleepy head!';
-</pre>
+{% prettify dart tag=pre+code %}
+[!querySelector!]('#RipVanWinkle')!.text = 'Wake up, sleepy head!';
+{% endprettify %}
 
-The argument to querySelector(), a string,
-is a CSS selector that identifies the object.
+The argument to `querySelector()` is a string
+containing a CSS selector that identifies the object.
 Most commonly CSS selectors specify classes, identifiers, or attributes.
 We'll look at these in more detail later,
 when we add a CSS file to the mini app.
 In this case, RipVanWinkle is the unique ID for a paragraph element
 declared in the HTML file,
-and #RipVanWinkle specifies that ID.
-
-<pre class="prettyprint lang-dart allow-scroll">
-querySelector(<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="ID from HTML file">'#RipVanWinkle'</a>).text = 'Wake up, sleepy head!';
-</pre>
+and `#RipVanWinkle` specifies that ID.
 
 Another useful function for getting elements from the DOM
-is querySelectorAll(),
-which returns multiple Element objects via
-a list of elements&mdash;List<Element>&mdash;all
+is `querySelectorAll()`,
+which returns multiple `Element` objects via
+a list of elements—`List<Element>`—all
 of which match the provided selector.
+
+### Using nullable properties
+
+Because DOM elements might be missing,
+the `querySelector()` function returns a nullable result,
+as indicated by the `?` in the function's return type (`Element?`).
+A `null` return value means that
+no element matches the specified CSS selector.
+
+To use the `text` property of a returned `Element?`,
+the type must be promoted to `Element`.
+Because we wrote the HTML and know that the element is always present,
+we can use the
+[null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator) (`!`)
+when referring to the element's properties:
+
+{% prettify dart tag=pre+code %}
+querySelector('#RipVanWinkle')[!!!].text = 'Wake up, sleepy head!';
+{% endprettify %}
+
+If the element with the `#RipVanWinkle` ID
+isn't guaranteed to be present in the DOM,
+you can instead use the conditional member access operator (`?.`)
+to set `text` only if the returned element is not `null`:
+
+{% prettify dart tag=pre+code %}
+querySelector('#RipVanWinkle')[!?!].text = 'Wake up, sleepy head!';
+{% endprettify %}
+
+To learn more about nullable types and null safety in general,
+see [Sound null safety](/null-safety).
 
 ### Setting the text of an Element
 
@@ -312,12 +338,12 @@ would be represented with a subtree of text nodes and other objects.
 
 In Dart,
 you can simply use the Element `text` property,
-which has a getter
-that walks the subtree of nodes for you and extracts their text.
+which has a getter and setter
+that walk the subtree of nodes for you and extract or set their text:
 
-<pre class="prettyprint lang-dart allow-scroll">
-querySelector('#RipVanWinkle')<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Convenience API to the Element's text">.text</a> = 'Wake up, sleepy head!';
-</pre>
+{% prettify dart tag=pre+code %}
+querySelector('#RipVanWinkle')![!.text!] = 'Wake up, sleepy head!';
+{% endprettify %}
 
 However, if the text node has styles (and thus a subtree),
 getting text and then setting it immediately is likely
@@ -325,17 +351,17 @@ to change the DOM, as a result of losing subtree information.
 Often, as with our RipVanWinkle example,
 this simplification has no adverse effects.
 
-The assignment operator (=) sets the text
-of the Element returned by the querySelector() function
+The assignment operator (`=`) sets the text
+of the `Element` returned by the `querySelector()` function
 to the string "Wake up, sleepy head!".
 
-<pre class="prettyprint lang-dart allow-scroll">
-querySelector('#RipVanWinkle').text <a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Dynamically changes the DOM">=</a> 'Wake up, sleepy head!';
-</pre>
+{% prettify dart tag=pre+code %}
+querySelector('#RipVanWinkle')!.text [!=!] 'Wake up, sleepy head!';
+{% endprettify %}
 
 This causes the browser to immediately re-render
-the browser page containing this app, thus
-dynamically displaying the text on the browser page.
+the browser page containing this app,   
+thus dynamically displaying the text on the browser page.
 
 
 ## HTML and Dart connections {#connections}
@@ -350,27 +376,24 @@ from a Dart app to a browser page.
 
 In DartPad, the only visible connection between
 the Dart code and the HTML code
-is the RipVanWinkle ID.
+is the `RipVanWinkle` ID.
 
 <img class="scale-img-max" src="/tutorials/web/images/dart-html-connect.png"
      alt="The RipVanWinkle ID is used by both Dart and HTML">
 
-To run your app outside of DartPad, you need to compile your Dart
-code to JavaScript. [Use the **webdev build** command][build]
+To run your app outside DartPad,
+you need to compile your Dart code to JavaScript.
+Use the [`webdev build`][build] command
 to compile your app to deployable JavaScript.
 Then you need to make another connection between the HTML and
-generated JavaScript: you must add a \<script> tag to the HTML
+generated JavaScript:
+you must add a `<script>` tag to the HTML
 to tell the browser where to find the compiled Dart code.
-
-{% comment %}
-PENDING: We should include or link to instructions
-on how to convert a DartPad app into one you can run in the browser.
-{% endcomment %}
 
 Here's the full HTML code for this app,
 assuming that the Dart code is in a file named `main.dart`:
 
-```dart
+```html
 <!DOCTYPE html>
 
 <html>
@@ -394,26 +417,26 @@ Most HTML uses cascading style sheets (CSS) to define _styles_
 that control the appearance of page elements.
 Let's customize the CSS for the mini app.
 
-1. Click **CSS**.
+1. Click **CSS** at the upper left of DartPad.
    The view switches from Dart code to the (non-existent) CSS code.
 
 2. Add the following CSS code:
 
-   {% prettify none tag=pre+code %}
+   ```css
    #RipVanWinkle {
      font-size: 20px;
-     font-family: 'Open Sans', sans-serif;
+     font-family: 'Roboto', sans-serif;
      text-align: center;
      margin-top: 20px;
      background-color: SlateBlue;
      color: Yellow;
    }
-   {% endprettify %}
+   ```
 
-The display under HTML OUTPUT immediately changes
+The display in the output pane immediately changes
 to reflect the new styles,
 which apply only to the page element
-that has the ID RipVanWinkle.
+that has the ID `RipVanWinkle`.
 
 
 ## About CSS selectors {#about-css-selectors}
@@ -421,7 +444,7 @@ that has the ID RipVanWinkle.
 IDs, classes, and other information about elements
 are established in HTML.
 Your Dart code can use this information
-to get elements using a CSS selector&mdash;a pattern
+to get elements using a CSS selector—a pattern
 used to select matching elements in the DOM.
 CSS selectors allow the CSS, HTML, and Dart code
 to refer to the same objects.
@@ -431,27 +454,27 @@ a class, or an attribute.
 Selectors can also be nested.
 
 CSS selectors are important in Dart programs
-because you use them with querySelector() and querySelectorAll()
+because you use them with `querySelector()` and `querySelectorAll()`
 to get matching elements from the DOM.
-Most often Dart programs use ID selectors with querySelector()
-and class selectors with querySelectorAll().
+Most often Dart programs use ID selectors with `querySelector()`
+and class selectors with `querySelectorAll()`.
 
 Here are some examples of CSS selectors:
 
-| Selector type | Example | Description |
-|---|---|
-| ID selector | #RipVanWinkle | Matches a single, unique element |
-| HTML element | p | Matches all paragraphs |
-| HTML element | h1 | Matches all level-one headers |
-| Class | _.classname_ | Matches all items with the class _classname_  |
-| Asterisk | * | Matches all elements |
-| Attribute | input[type="button"] | Matches all button input elements |
+| Selector type | Example                          | Description                                  |
+|---------------|----------------------------------|----------------------------------------------|
+| ID selector   | `#RipVanWinkle`                  | Matches a single, unique element             |
+| HTML element  | `p`                              | Matches all paragraphs                       |
+| HTML element  | `h1`                             | Matches all level-one headers                |
+| Class         | <code>.<em>classname</em></code> | Matches all items with the class _classname_ |
+| Asterisk      | `*`                              | Matches all elements                         |
+| Attribute     | `input[type="button"]`           | Matches all button input elements            |
 {: .table}
 
 {{site.alert.tip}}
   As you saw,
   the mini app used a CSS selector,
-  the ID `#RipVanWinkle`,
+  the ID `RipVanWinkle`,
   even when there was no CSS file.
   You do not need a CSS file for a Dart program.
   Nor do you need a CSS file to use CSS selectors.
@@ -467,19 +490,19 @@ A CSS rule has two main parts: a selector and a set of declarations.
 <img class="scale-img-max" src="/tutorials/web/images/css-rule-explained.png"
      alt="The parts of a CSS rule">
 
-In the mini app, the selector #RipVanWinkle is an ID selector,
-as signaled by the hash tag (#);
+In the mini app, the selector `#RipVanWinkle` is an ID selector,
+as signaled by the hashtag (`#`);
 it matches a single, unique element with the specified ID,
-our now tired RipVanWinkle paragraph element.
-RipVanWinkle is the ID in the HTML file.
+our now tired `RipVanWinkle` paragraph element.
+`RipVanWinkle` is the ID in the HTML file.
 It is referred to in the CSS file and in the Dart code
-using a hash tag(#).
-Classnames are specified in the HTML file without a period (.)
-and referred to in the CSS file and in Dart code with a period (.).
+using a hashtag(`#`).
+Classnames are specified in the HTML file without a period (`.`)
+and referred to in the CSS file and in Dart code with a period (`.`).
 
 Between the curly brackets of a CSS rule is
 a list of declarations,
-each of which ends in a semi-colon (;).
+each of which ends in a semi-colon (`;`).
 Each declaration specifies a property and its value.
 Together the set of declarations define the _style sheet_
 for all matching elements.
@@ -489,20 +512,18 @@ of the matching element(s) on the web page.
 <img class="scale-img-max" src="/tutorials/web/images/css-property-value.png"
      alt="A declaration specifies an attribute and its value">
 
-The CSS rule for the RipVanWinkle paragraph
+The CSS rule for the `RipVanWinkle` paragraph
 specifies several properties;
 for example, it sets the text color to Yellow.
 
 ## Other resources
 
-{% comment %}
-PENDING: Link to WebStorm docs? DartPad docs?
-{% endcomment %}
-
-* The <a href="/guides/language/language-tour">language tour</a>
+* The [language tour](/guides/language/language-tour)
   provides thorough coverage of the Dart language.
-* <a href="/tools">Dart tools page</a>
+* The Dart [tools page](/tools)
   lists IDEs and editors that have Dart plugins.
+* The [DartPad documentation](/tools/dartpad)
+  walks through the basics of using the DartPad web editor.
 
 ## What next?
 
