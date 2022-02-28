@@ -152,7 +152,7 @@ that something will happen when the item is clicked.
 
 This behavior is coded in the app's CSS file with this rule:
 
-```dart
+```css
 #to-do-list li:hover {
   color: blue;
   cursor: pointer;
