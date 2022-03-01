@@ -288,7 +288,7 @@ which returns multiple `Element` objects via
 a list of elements—`List<Element>`—all
 of which match the provided selector.
 
-### Using nullable properties
+### Handling nullable elements
 
 Because DOM elements might be missing,
 the `querySelector()` function returns a nullable result,
@@ -324,6 +324,7 @@ the queried element to the expected type:
 
 {% prettify dart tag=pre+code %}
 final paragraph = querySelector('#RipVanWinkle') [!as ParagraphElement!];
+paragraph.text = 'Wake up, sleepy head!';
 {% endprettify %}
 
 To learn more about nullable types and null safety in general,
