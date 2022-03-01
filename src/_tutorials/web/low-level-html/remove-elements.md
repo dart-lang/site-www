@@ -1,24 +1,29 @@
 ---
 title: Remove DOM elements
-description: Remove a child element from the DOM.
+description: Learn how to set up basic scaffolding of a Dart web app.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
   title: Add elements to the DOM
 ---
 
-{% include not-null-safe.md %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
 
-* Use _element_.remove() to remove an element from the DOM.
-* Remove all children from an element with _element_.children.clear().
+* Use `element.remove()` to remove an element from the DOM.
+* Remove all children from an element with `element.children.clear()`.
 * Function expressions are a convenient way to define single-use functions.
-* => is a shorthand syntax for defining functions that contain just one expression.
+* `=>` is a shorthand syntax for defining functions that contain just one expression.
 
 </div>
+
+
+{{site.alert.note}}
+    This page uses embedded DartPads to display runnable examples.
+    {% include dartpads-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
 This tutorial shows you how to delete elements from the DOM.
 A new and improved version of the todo app from
@@ -31,44 +36,6 @@ either one at a time, or all at once.
 Below is a revised version
 of the todo app from the previous tutorial
 that allows you to delete items.
-Stop procrastinating and remove items from your to do list.
-
-{% comment %}
-https://gist.github.com/Sfshaza/582b9a8d36786566ba08
-
-------------------------------------------------------------------
-main.dart:
-------------------------------------------------------------------
-
-// Copyright (c) 2012, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-import 'dart:html';
-
-InputElement toDoInput;
-UListElement toDoList;
-ButtonElement deleteAll;
-
-void main() {
-  toDoInput = querySelector('#to-do-input');
-  toDoList = querySelector('#to-do-list');
-  toDoInput.onChange.listen(addToDoItem);
-  deleteAll = querySelector('#delete-all');
-  deleteAll.onClick.listen((e) =>
-      toDoList.children.clear());
-}
-
-void addToDoItem(Event e) {
-  var newToDo = new LIElement();
-  newToDo.text = toDoInput.value;
-  newToDo.onClick.listen((e) => newToDo.remove());
-  toDoInput.value = '';
-  toDoList.children.add(newToDo);
-}
-{% endcomment %}
 
 **Try it!**
 Click **Run** to start the web app.
@@ -79,44 +46,118 @@ Point the mouse cursor at one of the items in the list;
 the item turns red and gets slightly larger.
 Click it and it disappears from the list.
 Use the **Delete All** button
-to remove all of the items in the list at once.
+to remove all the items in the list at once.
 
-{{site.alert.note}}
-  {% include dartpad-embedded-troubleshooting.md %}
-{{site.alert.end}}
+```dart:run-dartpad:mode-html:ga_id-try_the_app
+{$ begin main.dart $}
+import 'dart:html';
 
-<iframe
-src="{{site.dartpad-embed-html}}?id=582b9a8d36786566ba08&ga_id=try_the_app"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
+final InputElement toDoInput = querySelector('#to-do-input') as InputElement;
+final UListElement toDoList = querySelector('#to-do-list') as UListElement;
+final ButtonElement deleteAll = querySelector('#delete-all') as ButtonElement;
+
+void main() {
+  toDoInput.onChange.listen(addToDoItem);
+  deleteAll.onClick.listen((_) => toDoList.children.clear());
+}
+
+void addToDoItem(Event e) {
+  final newToDo = LIElement()..text = toDoInput.value;
+  newToDo.onClick.listen((_) => newToDo.remove());
+  toDoInput.value = '';
+  toDoList.children.add(newToDo);
+}
+{$ end main.dart $}
+{$ begin index.html $}
+<h2>Todo</h2>
+        
+<div>
+  <input id="to-do-input" type="text" placeholder="What needs to be done?">
+</div>
+   
+<div>
+  <ul id="to-do-list">
+  </ul>
+</div>
+
+<button id="delete-all" type="button" style="float:right">Delete All</button>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: WhiteSmoke;
+  margin: 15px;
+  color: black;
+}
+
+h2 {
+  color: black;
+}
+
+#to-do-input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 0px 5px 5px;
+  width: 100%;
+  border: 1px solid Silver;
+  background-color: White;
+}
+
+#to-do-list {
+  padding: 0;
+  margin: 0;
+  list-style-position: inside;
+}
+
+#to-do-list li {
+  padding: 5px 0px 5px 5px;
+  border-bottom: 1px dotted Silver;
+}
+
+#to-do-list li:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+#delete-all {
+  margin-top: 8px;
+  background-color: #F8F8F8;
+  border: 1px dotted #ccc;
+  border-radius: 1em;
+  float: right;
+}
+
+#delete-all:hover {
+  background-color: #ddd;
+}
+{$ end styles.css $}
+```
 
 The remaining sections describe
 key aspects of the code
 added to the todo app for this tutorial.
 Specifically, they look at
 the Dart code that removes one or more elements from the DOM
-and the CSS code that makes the text red and larger.
+and the CSS code that makes the text blue and larger.
 
 ## Changing the appearance when cursor is over an element
 
-As you saw, an item in the list turns red and gets bigger
+As you saw, an item in the list turns blue and gets bigger
 when the user points at it.
 The mouse cursor also changes shape.
 These visual clues are an important part of the user interface
 in this example because they are the only indication to the user
 that something will happen when the item is clicked.
 
-This behavior is coded in the todo_with_delete app's CSS file with this rule:
+This behavior is coded in the app's CSS file with this rule:
 
-{% prettify dart tag=pre+code %}
+```css
 #to-do-list li:hover {
-  color: red;
-  font-size: 18px;
-  cursor:pointer;
+  color: blue;
+  cursor: pointer;
 }
-{% endprettify %}
+```
 
 We've used this CSS trick
 instead of providing a familiar user interface,
@@ -128,25 +169,24 @@ to keep the code simpler.
 An element is removed from
 the DOM when it is removed from its parent's list of children.
 The
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html" target="_blank" rel="noopener">List</a>
-class provides functions for finding an item in the list
+[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}class provides functions for finding an item in the list
 and removing it.
 But, in this case,
-using the element's remove() function
+using the element's `remove()` function
 is shorter and more concise than
-using functions from the List class.
+using functions from the `List` class.
 
 <img class="scale-img-max" src="/tutorials/web/images/remove-element.png"
      alt="Use element.remove() to remove an element from the DOM">
 
-In the todo_with_delete app,
+In the app,
 the user clicks an item to delete it.
 This is achieved with one line of Dart code.
 When a new to do item is created,
 the code registers a mouse click handler on the new element.
 When the user clicks that new element,
 its event handler causes the element to remove itself from the DOM
-with remove().
+with `remove()`.
 
 <img class="scale-img-max" src="/tutorials/web/images/remove-element-code.png"
      alt="Registering an event handler to delete an item">
@@ -163,78 +203,72 @@ all elements are removed from the list.
 <img class="scale-img-max" src="/tutorials/web/images/remove-all-elements.png"
      alt="Use element.children.clear() to remove all of an element's children">
 
-In this case, using the List class's clear() function
+In this case, using the `List` class's `clear()` function
 yields the most concise code.
-Here's the code from the todo_with_delete app
+Here's the code from the app
 that implements the **Delete All** button.
 
-<ol>
-<li markdown="1">
-The HTML code creates a button with the ID delete-all.
-(The CSS styles it.)
+1. The HTML code creates a button with the ID `delete-all`.
+   (The CSS styles it.)
 
-{% prettify dart tag=pre+code %}
-<button id="delete-all" type="button" style="float:right"> Delete All </button>
-{% endprettify %}
+    ```html
+    <button id="delete-all" type="button" style="float:right">Delete All</button>
+    ```
 
-</li>
+2. The Dart code gets the button element from the DOM
+   using `querySelector()` and the button's ID, `delete-all`.
+   The code registers a mouse click handler on the button;
+   the handler removes all of the child elements from the to do list.
+   Here is all the Dart code related to the **Delete All** button.
 
-<li markdown="1">
-The Dart code gets the button element from the DOM
-using querySelector() and the button's ID, #delete-all.
-The code registers a mouse click handler on the button;
-the handler removes all of the child elements from the to do list.
-Here is all of the Dart code related to the **Delete All** button.
-
-<img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
-     alt="Remove all child elements from an Element">
-
-</li>
-</ol>
+   <img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
+   alt="Remove all child elements from an Element">
 
 ## About function expressions and =>
 
-The todo_with_delete app uses
+The app uses
 some interesting Dart syntax
 when adding an event listener to the **Delete All** button.
-The argument passed into the listen() function
+The argument passed into the `listen()` function
 is an example of a _function expression_,
 which is a shorthand way of defining functions
-and it uses the => syntax to define the function concisely.
+and it uses the `=>` syntax to define the function concisely.
+For more details,
+see the language tour's coverage of
+[functions](/guides/language/language-tour#functions).
 
 <img class="scale-img-max" src="/tutorials/web/images/event-listener-exp.png"
      alt="A one-line function definition">
 
 It is equivalent to writing this:
 
-{% prettify dart tag=pre+code %}
-deleteAll.onClick.listen((e) {
+```dart
+deleteAll.onClick.listen((_) {
   toDoList.children.clear();
 });
-{% endprettify %}
+```
 
 or even this:
 
-{% prettify dart tag=pre+code %}
+```dart
 ...
 void main() {
   ...
   deleteAll.onClick.listen(deleteAllElements);
 }
-
 void deleteAllElements(Event e) {
   toDoList.children.clear();
 }
 ...
-{% endprettify %}
+```
 
 Function expressions are often used
 when registering event handlers on an element
 and can extend over multiple lines.
 When registering event handlers,
-the function must be an EventListener.
+the function must be an `EventListener`.
 That is,
-it returns no value and takes an Event object as a parameter.
+it returns no value and takes an `Event` object as a parameter.
 
 
 ## What next?
