@@ -316,6 +316,16 @@ to set `text` only if the returned element is not `null`:
 querySelector('#RipVanWinkle')[!?!].text = 'Wake up, sleepy head!';
 {% endprettify %}
 
+If you plan to access the element multiple times
+and know its type,
+another option is to
+[typecast](/guides/language/language-tour#type-test-operators)
+the queried element to the expected type:
+
+{% prettify dart tag=pre+code %}
+final paragraph = querySelector('#RipVanWinkle') [!as ParagraphElement!].
+{% endprettify %}
+
 To learn more about nullable types and null safety in general,
 see [Sound null safety](/null-safety).
 
