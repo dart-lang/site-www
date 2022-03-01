@@ -323,7 +323,7 @@ another option is to
 the queried element to the expected type:
 
 {% prettify dart tag=pre+code %}
-final paragraph = querySelector('#RipVanWinkle') [!as ParagraphElement!].
+final paragraph = querySelector('#RipVanWinkle') [!as ParagraphElement!];
 {% endprettify %}
 
 To learn more about nullable types and null safety in general,
