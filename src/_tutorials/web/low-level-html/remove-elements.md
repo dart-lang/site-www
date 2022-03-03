@@ -1,6 +1,6 @@
 ---
 title: Remove DOM elements
-description: Learn how to remove the elements from DOM.
+description: Learn how to remove children elements from the DOM.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 
 prevpage:
