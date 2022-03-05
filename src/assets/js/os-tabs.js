@@ -1,35 +1,47 @@
 function setupOsTabs() {
-  "use strict";
-
-  var tabs = $('.tabs__top-bar li');
-  var tabContents = $('.tabs__content');
+  const tabs = document.querySelectorAll('.tabs__top-bar li');
+  const tabContents = document.querySelectorAll('.tabs__content');
 
   function clearTabsCurrent() {
-    tabs.removeClass('current');
-    tabContents.removeClass('current');
+    tabs.forEach(function (tab) {
+      tab.classList.remove('current');
+    });
+    tabContents.forEach(function (content) {
+      content.classList.remove('current');
+    });
   }
 
-  tabs.click(function () {
-    clearTabsCurrent();
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      clearTabsCurrent();
 
-    var tab_id = $(this).attr('data-tab');
-
-    $(this).addClass('current');
-    $("#" + tab_id).addClass('current');
+      const tabId = tab.getAttribute('data-tab');
+      tab.classList.add('current');
+      document.getElementById(tabId).classList.add('current');
+    });
   });
 
-  // The following selects the correct default tab in /guides/get-started
+  // The following selects the correct default tab in /tutorials/server/get-started
   function selectOperatingSystemInTabs(osName) {
     clearTabsCurrent();
 
-    $("li[data-tab='tab-sdk-install-" + osName + "']").addClass('current');
-    $('#tab-sdk-install-' + osName).addClass('current');
+    document
+        .querySelector("li[data-tab='tab-sdk-install-" + osName + "']")
+        .classList
+        .add('current');
+
+    document
+        .getElementById('tab-sdk-install-' + osName)
+        .classList
+        .add('current');
   }
 
-  if (window.navigator.userAgent.indexOf("Mac") != -1) {
+  const userAgent = window.navigator.userAgent;
+
+  if (userAgent.indexOf("Mac") !== -1) {
     selectOperatingSystemInTabs('mac');
-  } else if (window.navigator.userAgent.indexOf("Linux") != -1 &&
-             window.navigator.userAgent.indexOf("Android") == -1) {
+  } else if (userAgent.indexOf("Linux") !== -1 &&
+      userAgent.indexOf("Android") === -1) {
     // Doesn't auto-select the Linux tab when on Android.
     selectOperatingSystemInTabs('linux');
   }
