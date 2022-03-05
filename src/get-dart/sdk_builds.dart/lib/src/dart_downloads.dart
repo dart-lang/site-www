@@ -115,4 +115,4 @@ class DartDownloads {
   }
 }
 
-late final _jsonAsciiDecoder = json.fuse(ascii).decoder;
+final _jsonAsciiDecoder = json.fuse(ascii).decoder;

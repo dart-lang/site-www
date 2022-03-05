@@ -99,8 +99,8 @@ void main() {
   });
 
   test('list-null-spread', () {
+    List<int>? list;
     // #docregion list-null-spread
-    var list;
     var list2 = [0, ...?list];
     assert(list2.length == 1);
     // #enddocregion list-null-spread

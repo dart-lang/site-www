@@ -3,6 +3,8 @@ include: package:lints/recommended.yaml
 analyzer:
   language:
     strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
 
 linter:
   rules:
@@ -13,6 +15,7 @@ linter:
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs
+    - prefer_expression_function_bodies
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first
@@ -20,3 +23,4 @@ linter:
     - throw_in_finally
     - type_annotate_public_apis
     - unawaited_futures
+    - unnecessary_late

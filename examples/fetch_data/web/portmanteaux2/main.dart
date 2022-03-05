@@ -43,7 +43,7 @@ void requestComplete(HttpRequest request) {
 
 // #docregion processResponse
 void processResponse(String jsonString) {
-  for (final portmanteau in json.decode(jsonString)) {
-    wordList.children.add(LIElement()..text = portmanteau as String);
+  for (final portmanteau in json.decode(jsonString) as List<String>) {
+    wordList.children.add(LIElement()..text = portmanteau);
   }
 }

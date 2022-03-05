@@ -35,7 +35,8 @@ Future<void> writeAnalyzerResultsFile(
     return;
   }
   if (output.exitCode != 3) {
-    throw 'Unexpected exit code: ${output.exitCode}\n${output.stderr}';
+    throw Exception(
+        'Unexpected exit code: ${output.exitCode}\n${output.stderr}');
   }
 
   var analyzerFile =
@@ -45,12 +46,20 @@ Future<void> writeAnalyzerResultsFile(
   }
 
   print('writing results to ${analyzerFile.path}');
-  await analyzerFile.writeAsString(output.stdout);
+  final stdout = output.stdout;
+  if (stdout is! String) {
+    return;
+  }
+  await analyzerFile.writeAsString(stdout);
 }
 
 Future<String> getDartChannel() async {
   final version = await Process.run('dart', ['--version']);
   final regex = RegExp(r'version: \S+ \(([a-z]+)\)');
-  final match = regex.firstMatch(version.stderr);
+  final stderr = version.stderr;
+  if (stderr is! String) {
+    return 'missing';
+  }
+  final match = regex.firstMatch(stderr);
   return match?.group(1) ?? 'missing';
 }

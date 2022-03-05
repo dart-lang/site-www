@@ -424,8 +424,8 @@ Future<void> makeRequest(Event _) async {
 }
 
 void processResponse(String jsonString) {
-  for (final portmanteau in json.decode(jsonString)) {
-    wordList.children.add(LIElement()..text = portmanteau as String);
+  for (final portmanteau in json.decode(jsonString) as List<String>) {
+    wordList.children.add(LIElement()..text = portmanteau);
   }
 }
 {% endprettify %}
@@ -567,8 +567,8 @@ and adds it to the `<ul>` element on the page.
 <?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void processResponse(String jsonString) {
-  for (final portmanteau in [!json.decode!](jsonString)) {
-    wordList.children.add(LIElement()..text = portmanteau as String);
+  for (final portmanteau in [!json.decode!](jsonString) as List<String>) {
+    wordList.children.add(LIElement()..text = portmanteau);
   }
 }
 {% endprettify %}
