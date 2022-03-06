@@ -33,20 +33,21 @@ To install the Dart SDK:
 </div>
 
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-  You can use Aptitude to install the Dart SDK on Linux.
+  You can use APT to install the Dart SDK on Linux.
 
-   1. Perform the following one-time setup:
-      ```terminal
-      $ sudo apt-get update
-      $ sudo apt-get install apt-transport-https
-      $ sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-      $ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
-      ```
-   2. Install the Dart SDK:
-      ```terminal
-      $ sudo apt-get update
-      $ sudo apt-get install dart
-      ```
+  1. Perform the following one-time setup:
+     ```terminal
+     $ sudo apt-get update
+     $ sudo apt-get install apt-transport-https
+     $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
+     $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
+     ```
+
+  2. Install the Dart SDK:
+     ```terminal
+     $ sudo apt-get update
+     $ sudo apt-get install dart
+     ```
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
