@@ -43,7 +43,7 @@ void requestComplete(HttpRequest request) {
 
 // #docregion processResponse
 void processResponse(String jsonString) {
-  for (final portmanteau in json.decode(jsonString)) {
+  for (final portmanteau in json.decode(jsonString) as List<dynamic>) {
     wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }

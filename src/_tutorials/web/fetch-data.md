@@ -1,6 +1,7 @@
 ---
 title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt path-base="fetch_data"?>
 
@@ -45,66 +46,49 @@ and simple data structures such as lists and maps
 can be serialized and represented by strings.
 
 **Try it!**
-The following app, `its_all_about_you`,
+The following app
 displays the JSON string for data of various types.
 Click **Run** to start the app.
 Then change the values of the input elements,
 and check out the JSON format for each data type.
-You might prefer to
-[open the app in DartPad]({{site.dartpad}}/ddebf4ee5ba6757aafe07f7779d7b0c1){: target="_blank" rel="noopener"}
-to have more space for the app's code and UI.
 
-{% comment %}
-https://gist.github.com/parlough/ddebf4ee5ba6757aafe07f7779d7b0c1
+{{site.alert.note}}
+  {% include dartpad-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
-<?code-excerpt "web/main.dart"?>
-```dart
-// Copyright (c) 2015, the Dart project authors. Please see the AUTHORS file for
-// details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
+```dart:run-dartpad:mode-html:height-520px:ga_id-about_json
+{$ begin main.dart $}
 import 'dart:html';
 import 'dart:convert';
 
 // Input fields
-late final InputElement favoriteNumber;
-late final InputElement valueOfPi;
-late final InputElement horoscope;
-late final InputElement favOne;
-late final InputElement favTwo;
-late final InputElement favThree;
-late final RadioButtonInputElement loveChocolate;
-late final RadioButtonInputElement noLoveForChocolate;
+final InputElement favoriteNumber =
+    querySelector('#favoriteNumber') as InputElement;
+final InputElement valueOfPi = querySelector('#valueOfPi') as InputElement;
+final InputElement horoscope = querySelector('#horoscope') as InputElement;
+final InputElement favOne = querySelector('#favOne') as InputElement;
+final InputElement favTwo = querySelector('#favTwo') as InputElement;
+final InputElement favThree = querySelector('#favThree') as InputElement;
+final RadioButtonInputElement loveChocolate =
+    querySelector('#loveChocolate') as RadioButtonInputElement;
+final RadioButtonInputElement noLoveForChocolate =
+    querySelector('#noLoveForChocolate') as RadioButtonInputElement;
 
-// Result fields
-late final TextAreaElement intAsJson;
-late final TextAreaElement doubleAsJson;
-late final TextAreaElement stringAsJson;
-late final TextAreaElement listAsJson;
-late final TextAreaElement boolAsJson;
-late final TextAreaElement mapAsJson;
+// Result fields to display values as JSON
+final TextAreaElement intAsJson =
+    querySelector('#intAsJson') as TextAreaElement;
+final TextAreaElement doubleAsJson =
+    querySelector('#doubleAsJson') as TextAreaElement;
+final TextAreaElement stringAsJson =
+    querySelector('#stringAsJson') as TextAreaElement;
+final TextAreaElement listAsJson =
+    querySelector('#listAsJson') as TextAreaElement;
+final TextAreaElement boolAsJson =
+    querySelector('#boolAsJson') as TextAreaElement;
+final TextAreaElement mapAsJson =
+    querySelector('#mapAsJson') as TextAreaElement;
 
 void main() {
-  // Set up the input text areas.
-  favoriteNumber = querySelector('#favoriteNumber') as InputElement;
-  valueOfPi = querySelector('#valueOfPi') as InputElement;
-  horoscope = querySelector('#horoscope') as InputElement;
-  favOne = querySelector('#favOne') as InputElement;
-  favTwo = querySelector('#favTwo') as InputElement;
-  favThree = querySelector('#favThree') as InputElement;
-  loveChocolate = querySelector('#loveChocolate') as RadioButtonInputElement;
-  noLoveForChocolate =
-      querySelector('#noLoveForChocolate') as RadioButtonInputElement;
-
-  // Set up the results text areas
-  // to display the values as JSON.
-  intAsJson = querySelector('#intAsJson') as TextAreaElement;
-  doubleAsJson = querySelector('#doubleAsJson') as TextAreaElement;
-  boolAsJson = querySelector('#boolAsJson') as TextAreaElement;
-  stringAsJson = querySelector('#stringAsJson') as TextAreaElement;
-  listAsJson = querySelector('#listAsJson') as TextAreaElement;
-  mapAsJson = querySelector('#mapAsJson') as TextAreaElement;
-
   // Set up the listeners.
   favoriteNumber.onKeyUp.listen(_showJson);
   valueOfPi.onKeyUp.listen(_showJson);
@@ -135,10 +119,10 @@ void _populateFromJson() {
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  final favoriteThings = List<String>.from(jsonData['favoriteThings'] as List);
-  favOne.value = favoriteThings[0];
-  favTwo.value = favoriteThings[1];
-  favThree.value = favoriteThings[2];
+  final favoriteThings = jsonData['favoriteThings'] as List<dynamic>;
+  favOne.value = favoriteThings[0] as String;
+  favTwo.value = favoriteThings[1] as String;
+  favThree.value = favoriteThings[2] as String;
 
   final chocolateRadioButton =
       jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
@@ -174,23 +158,137 @@ void _showJson([Event? _]) {
   listAsJson.text = json.encode(favoriteThings);
   mapAsJson.text = json.encode(formData);
 }
-```
-{% endcomment %}
+{$ end main.dart $}
+{$ begin index.html $}
+<h1>It's All About You</h1>
 
-<iframe
-src="{{site.dartpad-embed-html}}?id=ddebf4ee5ba6757aafe07f7779d7b0c1&ga_id=about_json"
-    width="100%"
-    height="600px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<table>
+  <thead>
+  <tr>        <th> </th>
+    <th>Enter value</th>
+    <th>Data type</th>
+    <th>JSON string</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td align="right">Favorite number:</td>
+    <td><input type="text" id="favoriteNumber"></td>
+    <td>integer</td>
+    <td><textarea class="result" id="intAsJson" readonly></textarea></td>
+  </tr>
+
+  <tr>
+    <td align="right">Do you know pi?</td>
+    <td><input type="text" id="valueOfPi"></td>
+    <td>double</td>
+    <td><textarea class="result" id="doubleAsJson" readonly></textarea></td>
+  </tr>
+
+  <tr>
+    <td align="right">What's your sign?</td>
+    <td><input type="text" id="horoscope"></td>
+    <td>String</td>
+    <td><textarea class="result" id="stringAsJson" readonly></textarea></td>
+  </tr>
+
+  <tr>
+    <td align="right">A few of your favorite things?</td>
+    <td>
+      <input type="text" id="favOne">
+      <input type="text" id="favTwo">
+      <input type="text" id="favThree">
+    </td>
+    <td>List&lt;String&gt;</td>
+    <td><textarea class="result" id="listAsJson" readonly></textarea></td>
+  </tr>
+
+  <tr>
+    <td align="right">I love chocolate!</td>
+    <td>
+      <form>
+        <input type="radio" name="chocolate" id="loveChocolate" checked>True
+        <input type="radio" name="chocolate" id="noLoveForChocolate" checked>False
+      </form>
+    </td>
+    <td>bool</td>
+    <td><textarea class="result" id="boolAsJson" readonly> </textarea></td>
+  </tr>
+
+  </tbody>
+</table>
+
+<div>
+  <label>All data together as a map</label><br>
+  <textarea id="mapAsJson" readonly></textarea>
+</div>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  background-color: #F8F8F8;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1, p, td, th, label, table {
+  color: #333;
+}
+
+table {
+  text-align: left;
+  border-spacing: 5px 15px
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+.result {
+  background-color: Ivory;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid black;
+}
+
+#mapAsJson {
+  background-color: Ivory;
+  padding: 5px 5px 5px 5px;
+  margin-top: 15px;
+  border: 1px solid black;
+  width: 500px;
+  height: 50px;
+  font-size:14px;
+}
+
+table {
+  text-align: left;
+  border-spacing: 5px 15px
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+{$ end styles.css $}
+```
 
 The `dart:convert` library contains two convenient functions
 for working with JSON strings:
 
-| dart:convert function | Description |
-|---|---|
+| dart:convert function                              | Description                                             |
+|----------------------------------------------------|---------------------------------------------------------|
 | [json.decode()][]{:target="_blank" rel="noopener"} | Builds Dart objects from a string containing JSON data. |
-| [json.encode()][]{:target="_blank" rel="noopener"} |  Serializes a Dart object into a JSON string. |
+| [json.encode()][]{:target="_blank" rel="noopener"} | Serializes a Dart object into a JSON string.            |
 {: .table}
 
 To use these functions,
@@ -378,11 +476,11 @@ and co-located with the app.
 The SDK provides these useful classes for
 formulating URIs and making HTTP requests:
 
-| Dart code | Library | Description |
-|---|---|
-| [Uri][] | [dart:core][] | Uniform resource identifier |
-| [HttpRequest][HttpRequest] |  [dart:html][] | Client-side HTTP request object. For use in web apps. |
-| [HttpRequest][HttpRequest@io] |  [dart:io][] | Server-side HTTP request object. Does not work in web apps. |
+| Dart code                     | Library       | Description                                                 |
+|-------------------------------|---------------|-------------------------------------------------------------|
+| [Uri][]                       | [dart:core][] | Uniform resource identifier                                 |
+| [HttpRequest][HttpRequest]    | [dart:html][] | Client-side HTTP request object. For use in web apps.       |
+| [HttpRequest][HttpRequest@io] | [dart:io][]   | Server-side HTTP request object. Does not work in web apps. |
 {: .table}
 
 ## Using getString() to load a file {#using-getString-function}
@@ -397,13 +495,60 @@ and loads the file.
 
 **Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
-{% comment %} https://gist.github.com/parlough/c637fbedc6aa0d2a8ffcd44562648197 {% endcomment %}
-<iframe
-src="{{site.dartpad-embed-html}}?id=c637fbedc6aa0d2a8ffcd44562648197&ga_id=using_getstring"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
+```dart:run-dartpad:mode-html:height-480px:ga_id-using_getstring
+{$ begin main.dart $}
+import 'dart:async';
+import 'dart:convert';
+import 'dart:html';
+
+final UListElement wordList = querySelector('#wordList') as UListElement;
+
+void main() {
+  querySelector('#getWords')!.onClick.listen(makeRequest);
+}
+
+Future<void> makeRequest(Event _) async {
+  const path = 'https://dart.dev/f/portmanteaux.json';
+  try {
+    // Make the GET request
+    final jsonString = await HttpRequest.getString(path);
+    // The request succeeded. Process the JSON.
+    processResponse(jsonString);
+  } catch (e) {
+    // The GET request failed. Handle the error.
+    print("Couldn't open $path");
+    wordList.children.add(LIElement()..text = 'Request failed.');
+  }
+}
+
+void processResponse(String jsonString) {
+  for (final portmanteau in json.decode(jsonString) as List<dynamic>) {
+    wordList.children.add(LIElement()..text = portmanteau as String);
+  }
+}
+{$ end main.dart $}
+{$ begin index.html $}
+<body>
+  <h1>Portmanteaux</h1>
+  <button id="getWords">Get portmanteaux</button>
+  <ul id="wordList"></ul>
+</body>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  background-color: #F8F8F8;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1, p, li {
+  color: #333;
+}
+{$ end styles.css $}
+```
 
 This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
@@ -424,7 +569,7 @@ Future<void> makeRequest(Event _) async {
 }
 
 void processResponse(String jsonString) {
-  for (final portmanteau in json.decode(jsonString)) {
+  for (final portmanteau in json.decode(jsonString) as List<dynamic>) {
     wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
@@ -453,13 +598,69 @@ and use the [send()][] method to make the request.
 This section rewrites the portmanteaux code to explicitly construct
 an HttpRequest object.
 
-{% comment %} https://gist.github.com/parlough/2211d1ee6e16a6fc76cee04fc8fb5df2 {% endcomment %}
-<iframe
-src="{{site.dartpad-embed-html}}?id=2211d1ee6e16a6fc76cee04fc8fb5df2&ga_id=using_http_request"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
+```dart:run-dartpad:mode-html:height-480px:ga_id-using_http_request
+{$ begin main.dart $}
+import 'dart:async';
+import 'dart:html';
+import 'dart:convert';
+
+final UListElement wordList = querySelector('#wordList') as UListElement;
+
+void main() {
+  querySelector('#getWords')!.onClick.listen(makeRequest);
+}
+
+Future<void> makeRequest(Event _) async {
+  const path = 'https://dart.dev/f/portmanteaux.json';
+  final httpRequest = HttpRequest();
+  httpRequest
+    ..open('GET', path)
+    ..onLoadEnd.listen((e) => requestComplete(httpRequest))
+    ..send('');
+}
+
+void requestComplete(HttpRequest request) {
+  if (request.status == 200) {
+    final response = request.responseText;
+    if (response != null) {
+      processResponse(response);
+      return;
+    }
+  }
+
+  // The GET request failed. Handle the error.
+  final li = LIElement()..text = 'Request failed, status=${request.status}';
+  wordList.children.add(li);
+}
+
+void processResponse(String jsonString) {
+  for (final portmanteau in json.decode(jsonString) as List<dynamic>) {
+    wordList.children.add(LIElement()..text = portmanteau as String);
+  }
+}
+{$ end main.dart $}
+{$ begin index.html $}
+<body>
+  <h1>Portmanteaux</h1>
+  <button id="getWords">Get portmanteaux</button>
+  <ul id="wordList"></ul>
+</body>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  background-color: #F8F8F8;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1, p, li {
+  color: #333;
+}
+{$ end styles.css $}
+```
 
 ### Setting up the HttpRequest object
 
@@ -545,14 +746,14 @@ The data file in the portmanteaux example,
 contains the following JSON-formatted list of strings:
 
 <?code-excerpt "web/portmanteaux.json"?>
-{% prettify json tag=pre+code %}
+```json
 [
   "portmanteau", "fantabulous", "spork", "smog",
   "spanglish", "gerrymander", "turducken", "stagflation",
   "bromance", "freeware", "oxbridge", "palimony", "netiquette",
   "brunch", "blog", "chortle", "Hassenpfeffer", "Schnitzelbank"
 ]
-{% endprettify %}
+```
 
 Upon request, the server reads the file
 and sends it as a single string
@@ -567,7 +768,7 @@ and adds it to the `<ul>` element on the page.
 <?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void processResponse(String jsonString) {
-  for (final portmanteau in [!json.decode!](jsonString)) {
+  for (final portmanteau in [!json.decode!](jsonString) as List<dynamic>) {
     wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
