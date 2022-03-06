@@ -25,15 +25,19 @@ function setupOsTabs() {
   function selectOperatingSystemInTabs(osName) {
     clearTabsCurrent();
 
-    document
-        .querySelector("li[data-tab='tab-sdk-install-" + osName + "']")
-        .classList
-        .add('current');
+    const tabListItem = document
+        .querySelector("li[data-tab='tab-sdk-install-" + osName + "']");
 
-    document
-        .getElementById('tab-sdk-install-' + osName)
-        .classList
-        .add('current');
+    if (tabListItem) {
+      tabListItem.classList.add('current');
+    }
+
+    const installItem = document
+        .getElementById('tab-sdk-install-' + osName);
+
+    if (installItem) {
+      installItem.classList.add('current');
+    }
   }
 
   const userAgent = window.navigator.userAgent;
