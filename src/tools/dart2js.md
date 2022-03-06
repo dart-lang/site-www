@@ -213,19 +213,15 @@ To debug in Edge:
 
 ### Firefox {#dart2js-debugging-firefox}
 
-Firefox doesn’t yet support source maps (see [bug #771597.](https://bugzilla.mozilla.org/show_bug.cgi?id=771597))
-
 To debug in Firefox:
 
-1. Enable the Developer Toolbar, as described in Kevin Dangoor’s blog post,
-   <a href="https://hacks.mozilla.org/2012/08/new-firefox-command-line-helps-you-develop-faster/">New Firefox Command Line Helps You Develop
-   Faster"</a>.
-
-2. Click <strong>Pause on exceptions</strong>, as shown in the
-   following figure.
-   <img src="/assets/img/ff-debug.png" alt="Firefox Toolbar"><br /><br />
-3. Reload your app.
-
+1. Open the Web Developer Tools window, as described in the
+   [Firefox developer tools documentation](https://developer.mozilla.org/en-US/docs/Tools).
+2. Enable **Pause on exceptions**, as shown in the following figure:
+   
+   <img width="640px" src="/assets/img/ff-debug.png" alt="Enable Pause on exceptions in Firefox debugger">
+   
+3. Reload the app. The **Debugger** tab shows source-mapped files.
 
 ### Safari {#dart2js-debugging-safari}
 
