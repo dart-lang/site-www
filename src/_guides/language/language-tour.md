@@ -913,7 +913,6 @@ you can avoid exceptions by using a null-aware spread operator (`...?`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
 ```dart
-var list;
 var list2 = [0, ...?list];
 assert(list2.length == 1);
 ```

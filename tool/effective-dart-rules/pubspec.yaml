@@ -3,7 +3,7 @@ description: Builds a file with all the rules in the different sections of Effec
 version: 0.0.3
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=2.16.0 <3.0.0'
 
 dependencies:
   html_unescape: ^2.0.0

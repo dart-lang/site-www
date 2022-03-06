@@ -113,9 +113,8 @@ include: package:lints/recommended.yaml
 analyzer:
   exclude: [build/**]
   language:
+    strict-casts: true
     strict-raw-types: true
-  strong-mode:
-    implicit-casts: false
 
 linter:
   rules:
