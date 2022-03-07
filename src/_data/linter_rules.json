@@ -6,7 +6,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "*DO* avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use absolute imports for files withing the\n`lib/` directory.\n\nThis is the opposite of 'prefer_relative_imports'.\nMight be used with 'avoid_relative_lib_imports' to avoid relative imports of\nfiles within `lib/` directory outside of it. (for example `test/`)\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'package:foo/baz.dart';\n\nimport 'package:foo/src/baz.dart';\n...\n```\n\n**BAD:**\n\n```dart\nimport 'baz.dart';\n\nimport 'src/bag.dart'\n\nimport '../lib/baz.dart';\n\n...\n```\n\n"
+    "details": "*DO* avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use absolute imports for files withing the\n`lib/` directory.\n\nThis is the opposite of 'prefer_relative_imports'.\n\nYou can also use 'avoid_relative_lib_imports' to disallow relative imports of\nfiles within `lib/` directory outside of it (for example `test/`).\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'package:foo/baz.dart';\n\nimport 'package:foo/src/baz.dart';\n...\n```\n\n**BAD:**\n\n```dart\nimport 'baz.dart';\n\nimport 'src/bag.dart'\n\nimport '../lib/baz.dart';\n\n...\n```\n\n"
   },
   {
     "name": "avoid_dynamic_calls",
@@ -39,7 +39,7 @@
     "sets": [
       "flutter"
     ],
-    "details": "**DO** avoid `print` calls in production code.\n\n**BAD:**\n```dart\nvoid f(int x) {\n  print('debug: $x');\n  ...\n}\n```\n"
+    "details": "**DO** avoid `print` calls in production code.\n\nFor production code, consider using a logging framework.\nIf you are using Flutter, you can use `debugPrint`\nor surround `print` calls with a check for `kDebugMode`\n\n**BAD:**\n```dart\nvoid f(int x) {\n  print('debug: $x');\n  ...\n}\n```\n\n\n**GOOD:**\n```dart\nvoid f(int x) {\n  debugPrint('debug: $x');\n  ...\n}\n```\n\n\n**GOOD:**\n```dart\nvoid f(int x) {\n  log('log: $x');\n  ...\n}\n```\n\n\n**GOOD:**\n```dart\nvoid f(int x) {\n  if (kDebugMode) {\n      print('debug: $x');\n  }\n  ...\n}\n```\n"
   },
   {
     "name": "avoid_relative_lib_imports",
@@ -53,7 +53,7 @@
       "flutter",
       "pedantic"
     ],
-    "details": "*DO* avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways.  An easy way to avoid\nthat is to ensure you have no relative imports that include `lib/` in their\npaths.\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'baz.dart';\n\n...\n```\n\n**BAD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport '../lib/baz.dart';\n\n...\n```\n\n"
+    "details": "*DO* avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways.  An easy way to avoid\nthat is to ensure you have no relative imports that include `lib/` in their\npaths.\n\nYou can also use 'always_use_package_imports' to disallow relative imports\nbetween files within `lib/`.\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'baz.dart';\n\n...\n```\n\n**BAD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport '../lib/baz.dart';\n\n...\n```\n\n"
   },
   {
     "name": "avoid_returning_null_for_future",
@@ -132,7 +132,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DO** reference only in scope identifiers in doc comments.\n\nIf you surround things like variable, method, or type names in square brackets,\nthen [dartdoc](https://dart.dev/guides/language/effective-dart/documentation) will look\nup the name and link to its docs.  For this all to work, ensure that all\nidentifiers in docs wrapped in brackets are in scope.\n\nFor example,\n\n**GOOD:**\n```dart\n/// Return the larger of [a] or [b].\nint max_int(int a, int b) { ... }\n```\n\nOn the other hand, assuming `outOfScopeId` is out of scope:\n\n**BAD:**\n```dart\n/// Return true if [value] is larger than [outOfScopeId].\nbool isOutOfRange(int value) { ... }\n```\n\nNote that the square bracket comment format is designed to allow \ncomments to refer to declarations using a fairly natural format \nbut does not allow *arbitrary expressions*.  In particular, code \nreferences within square brackets can consist of either\n\n- a single identifier where the identifier is any identifier in scope for the comment (see the spec for what is in scope in doc comments),\n- two identifiers separated by a period where the first identifier is the name of a class that is in scope and the second is the name of a member declared in the class,\n- a single identifier followed by a pair of parentheses where the identifier is the name of a class that is in scope (used to refer to the unnamed constructor for the class), or\n- two identifiers separated by a period and followed by a pair of parentheses where the first identifier is the name of a class that is in scope and the second is the name of a named constructor (not strictly necessary, but allowed for consistency).\n\n"
+    "details": "\n**DO** reference only in scope identifiers in doc comments.\n\nIf you surround things like variable, method, or type names in square brackets,\nthen [`dart doc`](https://dart.dev/tools/dart-doc) will look\nup the name and link to its docs.  For this all to work, ensure that all\nidentifiers in docs wrapped in brackets are in scope.\n\nFor example,\n\n**GOOD:**\n```dart\n/// Return the larger of [a] or [b].\nint max_int(int a, int b) { ... }\n```\n\nOn the other hand, assuming `outOfScopeId` is out of scope:\n\n**BAD:**\n```dart\n/// Return true if [value] is larger than [outOfScopeId].\nbool isOutOfRange(int value) { ... }\n```\n\nNote that the square bracket comment format is designed to allow \ncomments to refer to declarations using a fairly natural format \nbut does not allow *arbitrary expressions*.  In particular, code \nreferences within square brackets can consist of either\n\n- a single identifier where the identifier is any identifier in scope for the comment (see the spec for what is in scope in doc comments),\n- two identifiers separated by a period where the first identifier is the name of a class that is in scope and the second is the name of a member declared in the class,\n- a single identifier followed by a pair of parentheses where the identifier is the name of a class that is in scope (used to refer to the unnamed constructor for the class), or\n- two identifiers separated by a period and followed by a pair of parentheses where the first identifier is the name of a class that is in scope and the second is the name of a named constructor (not strictly necessary, but allowed for consistency).\n\n"
   },
   {
     "name": "control_flow_in_finally",
@@ -674,7 +674,7 @@
       "recommended",
       "flutter"
     ],
-    "details": "**DON'T** rename parameters of overridden methods.\n\nMethods that override another method, but do not have their own documentation\ncomment, will inherit the overridden method's comment when dartdoc produces\ndocumentation. If the inherited method contains the name of the parameter (in\nsquare brackets), then dartdoc cannot link it correctly.\n\n**BAD:**\n```dart\nabstract class A {\n  m(a);\n}\n\nabstract class B extends A {\n  m(b);\n}\n```\n\n**GOOD:**\n```dart\nabstract class A {\n  m(a);\n}\n\nabstract class B extends A {\n  m(a);\n}\n```\n\n"
+    "details": "**DON'T** rename parameters of overridden methods.\n\nMethods that override another method, but do not have their own documentation\ncomment, will inherit the overridden method's comment when `dart doc` produces\ndocumentation. If the inherited method contains the name of the parameter (in\nsquare brackets), then `dart doc` cannot link it correctly.\n\n**BAD:**\n```dart\nabstract class A {\n  m(a);\n}\n\nabstract class B extends A {\n  m(b);\n}\n```\n\n**GOOD:**\n```dart\nabstract class A {\n  m(a);\n}\n\nabstract class B extends A {\n  m(a);\n}\n```\n\n"
   },
   {
     "name": "avoid_return_types_on_setters",
@@ -793,7 +793,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DO** mark async functions to return Future<void>.\n\nWhen declaring an async method or function which does not return a value,\ndeclare that it returns Future<void> and not just void.\n\n**BAD:**\n```dart\nvoid f() async {}\nvoid f2() async => null;\n```\n\n**GOOD:**\n```dart\nFuture<void> f() async {}\nFuture<void> f2() async => null;\n```\n\n"
+    "details": "\n**DO** mark async functions as returning Future<void>.\n\nWhen declaring an async method or function which does not return a value,\ndeclare that it returns `Future<void>` and not just `void`.\n\n**BAD:**\n```dart\nvoid f() async {}\nvoid f2() async => null;\n```\n\n**GOOD:**\n```dart\nFuture<void> f() async {}\nFuture<void> f2() async => null;\n```\n\n**EXCEPTION**\n\nAn exception is made for top-level `main` functions, where the `Future`\nannotation *can* (and generally should) be dropped in favor of `void`.\n\n**GOOD:**\n```dart\nFuture<void> f() async {}\n\nvoid main() async {\n  await f();\n}\n```\n"
   },
   {
     "name": "await_only_futures",
@@ -1131,7 +1131,7 @@
     "name": "null_check_on_nullable_type_parameter",
     "description": "Don't use null check on a potentially nullable type parameter.",
     "group": "style",
-    "maturity": "experimental",
+    "maturity": "stable",
     "incompatible": [],
     "sets": [],
     "details": "\nDon't use null check on a potentially nullable type parameter.\n\nGiven a generic type parameter `T` which has a nullable bound (e.g. the default\nbound of `Object?`), it is very easy to introduce erroneous null checks when\nworking with a variable of type `T?`. Specifically, it is not uncommon to have\n`T? x;` and want to assert that `x` has been set to a valid value of type `T`.\nA common mistake is to do so using `x!`. This is almost always incorrect, since\nif `T` is a nullable type, `x` may validly hold `null` as a value of type `T`.\n\n**BAD:**\n```dart\nT run<T>(T callback()) {\n  T? result;\n   (() { result = callback(); })();\n  return result!;\n}\n```\n\n**GOOD:**\n```dart\nT run<T>(T callback()) {\n  T? result;\n   (() { result = callback(); })();\n  return result as T;\n}\n```\n\n"
@@ -1238,12 +1238,12 @@
   },
   {
     "name": "prefer_asserts_in_initializer_lists",
-    "description": "Prefer putting asserts in initializer list.",
+    "description": "Prefer putting asserts in initializer lists.",
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "**DO** put asserts in initializer list for constructors with only asserts in\ntheir body.\n\n**GOOD:**\n```dart\nclass A {\n  A(int a) : assert(a != null);\n}\n```\n\n**BAD:**\n```dart\nclass A {\n  A(int a) {\n    assert(a != null);\n  }\n}\n```\n\n"
+    "details": "**DO** put asserts in initializer lists.\n\n**GOOD:**\n```dart\nclass A {\n  A(int a) : assert(a != 0);\n}\n```\n\n**BAD:**\n```dart\nclass A {\n  A(int a) {\n    assert(a != 0);\n  }\n}\n```\n"
   },
   {
     "name": "prefer_asserts_with_message",
@@ -1689,7 +1689,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DO** document all public members.\n\nAll non-overriding public members should be documented with `///` doc-style\ncomments.\n\n**GOOD:**\n```dart\n/// A good thing.\nabstract class Good {\n  /// Start doing your thing.\n  void start() => _start();\n\n  _start();\n}\n```\n\n**BAD:**\n```dart\nclass Bad {\n  void meh() { }\n}\n```\n\nIn case a public member overrides a member it is up to the declaring member\nto provide documentation.  For example, in the following, `Sub` needn't\ndocument `init` (though it certainly may, if there's need).\n\n**GOOD:**\n```dart\n/// Base of all things.\nabstract class Base {\n  /// Initialize the base.\n  void init();\n}\n\n/// A sub base.\nclass Sub extends Base {\n  @override\n  void init() { ... }\n}\n```\n\nNote that consistent with `dartdoc`, an exception to the rule is made when\ndocumented getters have corresponding undocumented setters.  In this case the\nsetters inherit the docs from the getters.\n\n"
+    "details": "\n**DO** document all public members.\n\nAll non-overriding public members should be documented with `///` doc-style\ncomments.\n\n**GOOD:**\n```dart\n/// A good thing.\nabstract class Good {\n  /// Start doing your thing.\n  void start() => _start();\n\n  _start();\n}\n```\n\n**BAD:**\n```dart\nclass Bad {\n  void meh() { }\n}\n```\n\nIn case a public member overrides a member it is up to the declaring member\nto provide documentation.  For example, in the following, `Sub` needn't\ndocument `init` (though it certainly may, if there's need).\n\n**GOOD:**\n```dart\n/// Base of all things.\nabstract class Base {\n  /// Initialize the base.\n  void init();\n}\n\n/// A sub base.\nclass Sub extends Base {\n  @override\n  void init() { ... }\n}\n```\n\nNote that consistent with `dart doc`, an exception to the rule is made when\ndocumented getters have corresponding undocumented setters.  In this case the\nsetters inherit the docs from the getters.\n\n"
   },
   {
     "name": "recursive_getters",
@@ -1791,7 +1791,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\nTighten type of initializing formal if a non-null assert exists. This allows the\ntype system to catch problems rather than have them only be caught at run-time.\n\n**BAD:**\n```dart\nclass A {\n  A.c1(this.p) : assert(p != null);\n  A.c2(this.p);\n  final String? p;\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.c1(String this.p) : assert(p != null);\n  A.c2(this.p);\n  final String? p;\n}\n```\n\n"
+    "details": "\nTighten the type of an initializing formal if a non-null assert exists. This\nallows the type system to catch problems rather than have them only be caught at\nrun-time.\n\n**BAD:**\n```dart\nclass A {\n  A.c1(this.p) : assert(p != null);\n  A.c2(this.p);\n  final String? p;\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.c1(String this.p);\n  A.c2(this.p);\n  final String? p;\n}\n\nclass B {\n  String? b;\n  A(this.b);\n}\n\nclass C extends B {\n  B(String super.b);\n}\n```\n"
   },
   {
     "name": "type_annotate_public_apis",
@@ -1813,7 +1813,7 @@
       "flutter",
       "pedantic"
     ],
-    "details": "\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DON'T** type annotate initializing formals.\n\nIf a constructor parameter is using `this.x` to initialize a field, then the\ntype of the parameter is understood to be the same type as the field.\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(int this.x, int this.y);\n}\n```\n\n"
+    "details": "\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DON'T** type annotate initializing formals.\n\nIf a constructor parameter is using `this.x` to initialize a field, then the\ntype of the parameter is understood to be the same type as the field. If a \na constructor parameter is using `super.x` to forward to a super constructor,\nthen the type of the parameter is understood to be the same as the super\nconstructor parameter.\n\nType annotating an initializing formal with a different type than that of the\nfield is OK.\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(int this.x, int this.y);\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(super.a);\n}\n```\n\n**BAD:**\n```dart\nclass A {\n  int a;\n  A(this.a);\n}\n\nclass B extends A {\n  B(int super.a);\n}\n```\n"
   },
   {
     "name": "unawaited_futures",
@@ -2035,6 +2035,15 @@
     "details": "\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DON'T** use `this` when not needed to avoid shadowing.\n\n**BAD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    this.value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(value) {\n    this.value = value;\n  }\n}\n```\n\n"
   },
   {
+    "name": "use_colored_box",
+    "description": "Use `ColoredBox`.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "\n**DO** use `ColoredBox` when `Container` has only a `Color`.\n\nA `Container` is a heavier Widget than a `ColoredBox`, and as bonus,\n`ColoredBox` has a `const` constructor.\n\n**BAD:**\n```dart\nWidget buildArea() {\n  return Container(\n    color: Colors.blue,\n    child: const Text('hello'),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildArea() {\n  return const ColoredBox(\n    color: Colors.blue,\n    child: Text('hello'),\n  );\n}\n```\n"
+  },
+  {
     "name": "use_decorated_box",
     "description": "Use `DecoratedBox`.",
     "group": "style",
@@ -2042,6 +2051,15 @@
     "incompatible": [],
     "sets": [],
     "details": "\n**DO** use `DecoratedBox` when `Container` has only a `Decoration`.\n\nA `Container` is a heavier Widget than a `DecoratedBox`, and as bonus,\n`DecoratedBox` has a `const` constructor.\n\n**BAD:**\n```dart\nWidget buildArea() {\n  return Container(\n    decoration: const BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: const Text('...'),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildArea() {\n  return const DecoratedBox(\n    decoration: BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: Text('...'),\n  );\n}\n```\n"
+  },
+  {
+    "name": "use_enums",
+    "description": "Use enums rather than classes that behave like enums.",
+    "group": "style",
+    "maturity": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "details": "Classes that look like enumerations should be declared as `enum`s.\n\n**DO** use enums where appropriate.\n\nCandidates for enums are classes that:\n  * are concrete,\n  * are private or have only private generative constructors,\n  * have two or more static const fields with the same type as the class,\n  * have generative constructors that are only invoked at the top-level of the\n    initialization expression of these static fields,\n  * do not define `hashCode`, `==`, `values` or `index`,\n  * do not extend any class other than Object, and\n  * have no subclasses declared in the defining library.\n\n**BAD:**\n```dart\nclass LogPriority {\n  static const error = LogPriority._(1, 'Error');\n  static const warning = LogPriority._(2, 'Warning');\n  static const unknown = LogPriority._unknown('Log');\n\n  final String prefix;\n  final int priorty;\n  const LogPriority._(this.priority, this.prefix);\n  const LogPriority._unknown(String prefix) : this._(-1, prefix);\n}\n```\n\n**GOOD:**\n```dart\nenum LogPriority {\n  error(1, 'Error'),\n  warning(2, 'Warning'),\n  log.unknown('Log');\n \n  final String prefix;\n  final int priorty;\n  LogPriority(this.priority, this.prefix);\n  LogPriority.unknown(String prefix) : this(-1, prefix);\n}\n```\n"
   },
   {
     "name": "use_full_hex_values_for_flutter_colors",
@@ -2088,12 +2106,12 @@
   },
   {
     "name": "use_late_for_private_fields_and_variables",
-    "description": "Use late for private members with non-nullable type.",
+    "description": "Use late for private members with a non-nullable type.",
     "group": "style",
     "maturity": "experimental",
     "incompatible": [],
     "sets": [],
-    "details": "\nUse late for private members with non-nullable types that are always expected to\nbe non-null. Thus it's clear that the field is not expected to be `null` and it\navoids null checks.\n\n**BAD:**\n```dart\nint? _i;\nm() {\n  _i!.abs();\n}\n```\n\n**GOOD:**\n```dart\nlate int _i;\nm() {\n  _i.abs();\n}\n```\n\n"
+    "details": "\nUse `late` for private members with non-nullable types that are always expected\nto be non-null. Thus it's clear that the field is not expected to be `null`\nand it avoids null checks.\n\n**BAD:**\n```dart\nint? _i;\nm() {\n  _i!.abs();\n}\n```\n\n**GOOD:**\n```dart\nlate int _i;\nm() {\n  _i.abs();\n}\n```\n\n**OK:**\n```dart\nint? _i;\nm() {\n  _i?.abs();\n  _i = null;\n}\n```\n\n"
   },
   {
     "name": "use_named_constants",
@@ -2143,6 +2161,15 @@
     "incompatible": [],
     "sets": [],
     "details": "\n**DO** use string buffers to compose strings.\n\nIn most cases, using a string buffer is preferred for composing strings due to\nits improved performance.\n\n**BAD:**\n```dart\nString foo() {\n  final buffer = '';\n  for (int i = 0; i < 10; i++) {\n    buffer += 'a'; // LINT\n  }\n  return buffer;\n}\n```\n\n**GOOD:**\n```dart\nString foo() {\n  final buffer = StringBuffer();\n  for (int i = 0; i < 10; i++) {\n    buffer.write('a');\n  }\n  return buffer.toString();\n}\n```\n\n"
+  },
+  {
+    "name": "use_super_initializers",
+    "description": "Use super-initializer parameters where possible.",
+    "group": "style",
+    "maturity": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "details": "\"Forwarding constructor\"s, that do nothing except forward parameters to their \nsuperclass constructors should take advantage of super-initializer parameters \nrather than repeating the names of parameters when passing them to the \nsuperclass constructors.  This makes the code more concise and easier to read\nand maintain.\n\n**DO** use super-initializer parameters where possible.\n\n**BAD:**\n```dart\nclass A {\n  A({int? x, int? y});\n}\nclass B extends A {\n  B({int? x, int? y}) : super(x: x, y: y);\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  A({int? x, int? y});\n}\nclass B extends A {\n  B({super.x, super.y});\n}\n```\n"
   },
   {
     "name": "use_test_throws_matchers",
