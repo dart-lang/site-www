@@ -3,10 +3,11 @@ title: dart pub uploader
 description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
 ---
 
-{{site.alert.tip}}
-  Instead of specifying uploaders for each package you publish,
-  consider using a
-  [verified publisher](/tools/pub/verified-publishers).
+{{site.alert.warning}}
+  The `dart pub uploader` command is _deprecated_ and will be
+   removed in Dart 2.17. It won't work for earlier versions, either.
+  Package owners can manage uploaders using the admin page on pub.dev:
+  `https://pub.dev/packages/<package>/admin`.
 {{site.alert.end}}
 
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -30,6 +31,12 @@ They'll be added as an uploader after they accept the invitation.
 ~/code/transmogrify$ dart pub uploader remove bob@example.com
 bob@example.com has been removed as an uploader for this package.
 ```
+
+{{site.alert.tip}}
+  Instead of specifying uploaders for each package that you publish,
+  consider using a
+  [verified publisher](/tools/pub/verified-publishers).
+{{site.alert.end}}
 
 If a package has only one uploader, that uploader can't be removed. You can
 remove yourself as an uploader (as long as other uploaders are available),
