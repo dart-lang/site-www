@@ -4,8 +4,9 @@ description: Use dart pub uploader to add or remove uploaders for your Dart pack
 ---
 
 {{site.alert.warning}}
-  The `dart pub uploader` command is _deprecated_ and will be removed in Dart
-  2.17. And will stop working for earlier versions too. Package owners can manage uploaders using the admin page on pub.dev:
+  The `dart pub uploader` command is _deprecated_ and will be
+   removed in Dart 2.17. It won't work for earlier versions, either.
+  Package owners can manage uploaders using the admin page on pub.dev:
   `https://pub.dev/packages/<package>/admin`.
 {{site.alert.end}}
 
