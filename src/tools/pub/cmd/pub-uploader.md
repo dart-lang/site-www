@@ -33,7 +33,7 @@ bob@example.com has been removed as an uploader for this package.
 ```
 
 {{site.alert.tip}}
-  Instead of specifying uploaders for each package you publish,
+  Instead of specifying uploaders for each package that you publish,
   consider using a
   [verified publisher](/tools/pub/verified-publishers).
 {{site.alert.end}}
