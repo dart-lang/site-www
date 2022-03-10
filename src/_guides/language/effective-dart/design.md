@@ -1533,8 +1533,8 @@ Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
 `dynamic` for `users`. It's fine to leave `users` without a type annotation. The
 distinction is a little subtle. It's OK to allow inference to *propagate*
 `dynamic` through your code from a `dynamic` type annotation somewhere else, but
-you don't want it to summon `dynamic` *ex nihilo* when nothing in your code ever
-requested it.
+you don't want it to inject a `dynamic` type annotation in a place where your
+code did not specify one.
 
 {{site.alert.info}}
   Before Dart 2, this guideline stated the exact opposite: 
