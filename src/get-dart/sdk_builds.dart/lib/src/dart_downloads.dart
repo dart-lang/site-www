@@ -108,11 +108,10 @@ class DartDownloads {
   void close() => _client.close();
 
   Future<storage.Media> _fetchFile(
-      String channel, String revision, String path) async {
-    return await _api.objects.get(
-        _dartChannel, _revisionPath(channel, revision, [path]),
-        downloadOptions: storage.DownloadOptions.fullMedia) as storage.Media;
-  }
+          String channel, String revision, String path) async =>
+      await _api.objects.get(
+          _dartChannel, _revisionPath(channel, revision, [path]),
+          downloadOptions: storage.DownloadOptions.fullMedia) as storage.Media;
 }
 
 final _jsonAsciiDecoder = json.fuse(ascii).decoder;

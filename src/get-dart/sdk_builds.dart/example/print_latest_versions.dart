@@ -18,7 +18,7 @@ void main() async {
   }
 }
 
-Future latest(String channel) async {
+Future<void> latest(String channel) async {
   var info = await _dd.fetchVersion(channel, 'latest');
 
   print('$channel\t${info.version}');
