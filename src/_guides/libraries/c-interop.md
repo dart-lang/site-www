@@ -41,6 +41,7 @@ The hello_world example has the following files:
 | [pubspec.yaml]({{page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
 | [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
 | [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def) | A module-definition file which specifies information used when building a DLL. |
 | [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 {:.table .table-striped }
 
