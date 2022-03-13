@@ -6,3 +6,12 @@
   cover: dart-apprentice.png
   link: "https://www.raywenderlich.com/books/dart-apprentice"
   desc: "Dart Apprentice will teach you all the basic concepts you need to master this language. Follow along the easily and thoroughly explained concepts and you will be building Dart applications in a breeze."
+- title: "Data Structures & Algorithms in Dart"
+  authors:
+    - Jonathan Sande
+    - Vincent Ngo
+    - Kelvin Lau
+  publisher: raywenderlich
+  cover: data-structures-algorithms-dart.png
+  link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
+  desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
