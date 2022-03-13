@@ -21,8 +21,8 @@ Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
-The pubspec contains some metadata about the package. Additionally,
-a package can contain dependencies (listed in the pubspec),
+The pubspec contains some metadata about the package. 
+Additionally, a package can contain dependencies (listed in the pubspec),
 Dart libraries, apps, resources, tests, images, and examples.
 
 To use a package, do the following:
@@ -30,29 +30,29 @@ To use a package, do the following:
 * Create a pubspec (a file named `pubspec.yaml` that
   lists package dependencies and includes
   other metadata, such as a version number).
-* Use pub to get your package's dependencies.
+* Use [`dart pub get`][get] to retrieve your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
 
 ## Creating a pubspec
 
-The pubspec is a file named <code class="literal">pubspec.yaml</code>
+The pubspec is a file named `pubspec.yaml`
 that's in the top directory of your application.
 The simplest possible pubspec lists only the package name:
 
-{% comment %} TODO: make 3-backtick-yaml the same as prettify yaml {% endcomment %}
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
-{% endprettify %}
+```
 
 Here is an example of a pubspec that declares dependencies on
 two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
+
 dependencies:
   js: ^0.6.0
-  intl: ^0.15.8
-{% endprettify %}
+  intl: ^0.17.0
+```
 
 For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
@@ -83,8 +83,8 @@ grabs both the `js` package and the `test` package.
 
 Pub creates a
 `package_config.json` file (under the `.dart_tool/` directory)
-that maps each package name
-that your app depends on to the corresponding package in the system cache.
+that maps each package name that your app depends on
+to the corresponding package in the system cache.
 
 {% comment %}
 PENDING: Here only to make it easy to find the packages discussion:
@@ -93,8 +93,8 @@ packages-dir.html
 
 ## Importing libraries from packages
 
-To import libraries found in packages, use the
-<code class="literal">package:</code> prefix:
+To import libraries found in packages, 
+use the `package:` prefix:
 
 ```dart
 import 'package:js/js.dart' as js;
@@ -108,7 +108,7 @@ your app.
 You can also use this style to import libraries from within your own package.
 Let's say that the `transmogrify` package is laid out as follows:
 
-{% prettify none tag=pre+code %}
+```nocode
 transmogrify/
   lib/
     transmogrify.dart
@@ -116,13 +116,13 @@ transmogrify/
   test/
     parser/
       parser_test.dart
-{% endprettify %}
+```
 
 The `parser_test.dart` file can import `parser.dart` like this:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:transmogrify/parser.dart';
-{% endprettify %}
+```
 
 
 ## Upgrading a dependency
@@ -132,15 +132,16 @@ pub downloads the latest version of it that's compatible with
 your other dependencies.
 It then locks your package to *always* use that version by
 creating a **lockfile**.
-This is a file named `pubspec.lock` that pub creates and stores next to your
-pubspec. It lists the specific versions of each dependency (immediate and
-transitive) that your package uses.
+This is a file named `pubspec.lock` that pub creates
+and stores next to your pubspec. 
+It lists the specific versions of each dependency (immediate and transitive) 
+that your package uses.
 
 If your package is an application package,
 you should check this file into
 [source control](/guides/libraries/private-files).
 That way, everyone working on your app uses the same versions
-of all of the packages.
+of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
