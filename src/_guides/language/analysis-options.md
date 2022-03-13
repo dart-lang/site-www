@@ -264,7 +264,7 @@ for (final n in numbers) {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*'List<dynamic>'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
