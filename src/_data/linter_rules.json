@@ -2163,7 +2163,7 @@
     "details": "\n**DO** use string buffers to compose strings.\n\nIn most cases, using a string buffer is preferred for composing strings due to\nits improved performance.\n\n**BAD:**\n```dart\nString foo() {\n  final buffer = '';\n  for (int i = 0; i < 10; i++) {\n    buffer += 'a'; // LINT\n  }\n  return buffer;\n}\n```\n\n**GOOD:**\n```dart\nString foo() {\n  final buffer = StringBuffer();\n  for (int i = 0; i < 10; i++) {\n    buffer.write('a');\n  }\n  return buffer.toString();\n}\n```\n\n"
   },
   {
-    "name": "use_super_initializers",
+    "name": "use_super_parameters",
     "description": "Use super-initializer parameters where possible.",
     "group": "style",
     "maturity": "experimental",
