@@ -23,8 +23,10 @@ Environment variables allow you to customize pub to suit your needs.
   use the `PUB_HOSTED_URL` environment variable. For example:
 
 {% prettify sh tag=pre+code %}
-PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
+PUB_HOSTED_URL = http://pub.example.com
 {% endprettify %}
+
+See also [overriding the default package repository](/tools/pub/custom-package-repositories#overriding-the-default-package-repository).
 
 {{site.alert.note}}
   If you are attempting to use `pub get` behind a corporate firewall
