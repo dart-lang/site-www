@@ -329,7 +329,7 @@ void main() async {
 Future<Map<String, dynamic>> _parseInBackground() async {
   final p = ReceivePort();
   await Isolate.spawn(_readAndParseJson, p.sendPort);
-  return await p.first;
+  return await p.first as Map<String, dynamic>;
 }
 ```
 
@@ -361,7 +361,7 @@ The spawned isolate executes the following code:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
-Future _readAndParseJson(SendPort p) async {
+Future<void> _readAndParseJson(SendPort p) async {
   final fileData = await File(filename).readAsString();
   final jsonData = jsonDecode(fileData);
   Isolate.exit(p, jsonData);
