@@ -42,6 +42,17 @@ another operation to finish. Here are some common asynchronous operations:
 To perform asynchronous operations in Dart, you can use the `Future` class
 and the `async` and `await` keywords.
 
+Typically, APIs that return `Future`s fall into one of the following categories:
+
+* APIs that are backed by logic running on a different thread. For example,
+  `File.readAsString` (and most of the other I/O APIs) call operating system
+  functions from threads on a dedicated thread pool, rather than from the
+  thread on which Dart code is exectured.
+
+* APIs that wait for an event of some kind and perform no work in the meantime.
+  For example, `Future.delayed` waits for time to have elapsed, and `Stream.first`
+  waits for an event to be posted on the stream.
+
 ### Example: Incorrectly using an asynchronous function
 The following example shows the wrong way to use an asynchronous function
 (`fetchUserOrder()`). Later you'll fix the example using `async` and `await`.
