@@ -89,6 +89,7 @@ and use their results.
 
 Here’s an example of some synchronous code that blocks while waiting for file I/O:
 
+<?code-excerpt "misc/concurrency/bin/sync_number_of_keys.dart"?>
 ```dart
 void main() {
   // Read some data.
@@ -108,6 +109,7 @@ String _readFileSync() {
 
 Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
+<?code-excerpt "misc/concurrency/bin/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
 void main() [!async!] {
   // Read some data.
@@ -311,13 +313,14 @@ This example uses the following isolate-related API:
 
 Here’s the code for the main isolate:
 
+<?code-excerpt "misc/concurrency/bin/simple_worker_isolate.dart (main)"?>
 ```dart
 void main() async {
   // Read some data.
   final jsonData = await _parseInBackground();
 
   // Use that data
-  print('number of JSON keys = ${jsonData.length}');
+  print('Number of JSON keys: ${jsonData.length}');
 }
 
 // Spawns an isolate and waits for the first message
@@ -354,6 +357,7 @@ and then returns the result:
 
 The spawned isolate executes the following code:
 
+<?code-excerpt "misc/concurrency/bin/simple_worker_isolate.dart (spawned)"?>
 ```dart
 Future _readAndParseJson(SendPort p) async {
   final fileData = await File(filename).readAsString();
@@ -443,8 +447,6 @@ is slower when isolates are in different groups.
 {% comment %}
 TODO:
 * After publishing:
-  * Use code excerpts. [parlough will do!]
-  * Add this page to the sidenav. Link to it appropriately.
   * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
 * Maybe:
   * Add a new macro & style for flutter notes?
