@@ -3,6 +3,8 @@ title: Concurrency in Dart
 description: Use isolates to enable parallel code execution on multiple processor cores.
 ---
 
+<?code-excerpt path-base="concurrency"?>
+
 <style>
   img {
     padding: 15px 0;
@@ -89,7 +91,7 @@ and use their results.
 
 Here’s an example of some synchronous code that blocks while waiting for file I/O:
 
-<?code-excerpt "misc/concurrency/bin/sync_number_of_keys.dart"?>
+<?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
 void main() {
   // Read some data.
@@ -109,7 +111,7 @@ String _readFileSync() {
 
 Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
-<?code-excerpt "misc/concurrency/bin/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
+<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
 void main() [!async!] {
   // Read some data.
@@ -313,7 +315,7 @@ This example uses the following isolate-related API:
 
 Here’s the code for the main isolate:
 
-<?code-excerpt "misc/concurrency/bin/simple_worker_isolate.dart (main)"?>
+<?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
 void main() async {
   // Read some data.
@@ -357,7 +359,7 @@ and then returns the result:
 
 The spawned isolate executes the following code:
 
-<?code-excerpt "misc/concurrency/bin/simple_worker_isolate.dart (spawned)"?>
+<?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
 Future _readAndParseJson(SendPort p) async {
   final fileData = await File(filename).readAsString();
