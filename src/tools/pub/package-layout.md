@@ -66,8 +66,8 @@ enchilada/
     [application package](/tools/pub/glossary#application-package).
 
 \*** The `doc/api` directory exists locally after you've run
-      [`dart doc`](/tools/dart-doc).
-      Don't check the `api` directory into source control.
+     [`dart doc`](/tools/dart-doc).
+     Don't check the `api` directory into source control.
 
 
 ## The pubspec
