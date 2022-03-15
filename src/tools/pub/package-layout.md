@@ -59,7 +59,7 @@ enchilada/
 {% endprettify %}
 
 \* The `.dart_tool/` directory exists after you've run `pub get`. 
-   Don't check them it into source control.
+   Don't check it into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
