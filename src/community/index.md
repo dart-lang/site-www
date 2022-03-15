@@ -38,8 +38,7 @@ Get answers and connect with Dart developers.
 : The subreddit for all things related to Dart.
 
 [The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
-: Chat with other Dart developers and contributors.
-  Come get help, help others, work together, and discuss contributions.
+: Chat with and get help from other Dart developers.
 
 #### Google Groups
 
