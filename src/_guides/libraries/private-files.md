@@ -22,7 +22,6 @@ created by pub:
 
 {% prettify none tag=pre+code %}
 .dart_tool/
-.packages
 build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
@@ -83,10 +82,6 @@ see the GitHub help page
 
 The `.dart_tool/` directory contains files used by 
 various Dart tools.
-
-### .packages
-
-{% include packages-dir.html %}
 
 ### pubspec.lock
 
