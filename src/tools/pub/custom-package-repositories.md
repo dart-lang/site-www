@@ -120,10 +120,17 @@ publish_to: https://pub.example.com
 {{site.alert.end}}
 
 
-## Writing a custom package repository
-
+## Getting a custom package repository
 The REST API for writing a custom package repository is outlined in the
 [Hosted Pub Repository Specification Version 2][repository-spec-v2.md].
+
+
+### Dart package repository as a service
+Dart package repositories are also offered as a service by the following
+vendors:
+
+ * [Cloudsmith](https://help.cloudsmith.io/docs/dart-repository)
+ * [JFrog Artifactory](https://jfrog.com/blog/how-to-use-pub-repositories-in-artifactory/)
 
 
 [repository-spec-v2.md]: https://github.com/dart-lang/pub/blob/master/doc/repository-spec-v2.md
