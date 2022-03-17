@@ -16,6 +16,10 @@ a git-repository it just fetches a specific revision of the git-repository.
 Hence, when many people are collaborating it is sometimes preferable to use a
 private package repository.
 
+{{site.alert.note}}
+  If you host a private repository, also check out the free article on Medium,
+  [Hosting a private Dart package repository](https://medium.com/dartlang/hosting-a-private-dart-package-repository-774c3c51dff9).
+{{site.alert.end}}
 
 ## Authenticating with a custom package repository
 
