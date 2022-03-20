@@ -320,7 +320,7 @@ main .content {
   li {
     page-break-inside: avoid;
     padding: $font-size-base / 2;
-    font-size: smaller;
+    font-size: $font-size-small;
   }
 }
 
