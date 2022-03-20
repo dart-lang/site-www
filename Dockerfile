@@ -62,6 +62,7 @@ RUN set -eu; \
     ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
 ENV PUB_CACHE="${HOME}/.pub-cache"
+RUN dart --disable-analytics
 RUN echo -e "Successfully installed Dart SDK:" && dart --version
 
 
