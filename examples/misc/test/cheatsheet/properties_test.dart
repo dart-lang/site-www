@@ -4,24 +4,24 @@ import 'package:test/test.dart';
 
 void main() {
   test('getters_setters', () {
-    getters_setters.MyClass _class = getters_setters.MyClass();
-    _class.aProperty = 5;
+    getters_setters.MyClass clazz = getters_setters.MyClass();
+    clazz.aProperty = 5;
 
-    expect(_class.aProperty, equals(5));
+    expect(clazz.aProperty, equals(5));
 
-    _class.aProperty = -10;
+    clazz.aProperty = -10;
 
-    expect(_class.aProperty, equals(5));
+    expect(clazz.aProperty, equals(5));
   });
 
   test('getter_compute', () {
-    getters_compute.MyClass _class = getters_compute.MyClass();
-    _class.addValue(5);
+    getters_compute.MyClass clazz = getters_compute.MyClass();
+    clazz.addValue(5);
 
-    expect(_class.count, equals(1));
+    expect(clazz.count, equals(1));
 
-    _class.addValue(7);
+    clazz.addValue(7);
 
-    expect(_class.count, equals(2));
+    expect(clazz.count, equals(2));
   });
 }

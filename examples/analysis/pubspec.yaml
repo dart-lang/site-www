@@ -4,6 +4,8 @@ description: dart.dev example code.
 environment:
   sdk: '>=2.16.0 <3.0.0'
 
-dev_dependencies:
+dependencies:
   examples_util: {path: ../util}
+
+dev_dependencies:
   lints: ^1.0.0

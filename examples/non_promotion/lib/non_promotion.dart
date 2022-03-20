@@ -1,4 +1,6 @@
-// ignore_for_file: expected_executable, missing_statement, unused_local_variable, unused_element, prefer_function_declarations_over_variables
+// ignore_for_file: expected_executable, missing_statement
+// ignore_for_file: unused_local_variable, unused_element
+// ignore_for_file: prefer_function_declarations_over_variables
 
 class C1 {
   int? i;
