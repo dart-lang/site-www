@@ -351,11 +351,11 @@ linter:
     - cancel_subscriptions
     - close_sinks
     - comment_references
+    - depend_on_referenced_packages
+    - library_private_types_in_public_api
     - one_member_abstracts
     - only_throw_errors
-    - package_api_docs
-    - prefer_final_in_for_each
-    - prefer_single_quotes
+    - no_leading_underscores_for_library_prefixes
 ```
 
 

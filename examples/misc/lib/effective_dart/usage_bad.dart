@@ -1,10 +1,11 @@
-// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty,
-// ignore_for_file: type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps,
-// ignore_for_file: unnecessary_getters_setters, unused_element, unused_local_variable, prefer_equal_for_default_values,
-// ignore_for_file: use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype, prefer_initializing_formals, unnecessary_this
+// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1
+// ignore_for_file: type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_getters_setters, unused_element, unused_local_variable, prefer_equal_for_default_values
+// ignore_for_file: use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype, prefer_initializing_formals
 // ignore_for_file: prefer_typing_uninitialized_variables, prefer_collection_literals, unnecessary_cast, strict_raw_type
-// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_function_declarations_over_variables, always_declare_return_types
-// ignore_for_file: prefer_adjacent_string_concatenation
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_function_declarations_over_variables
+// ignore_for_file: prefer_adjacent_string_concatenation, prefer_is_not_empty, prefer_interpolation_to_compose_strings
+// ignore_for_file: unnecessary_this, always_declare_return_types, no_leading_underscores_for_local_identifiers
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';

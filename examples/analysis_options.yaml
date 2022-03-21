@@ -13,10 +13,16 @@ linter:
     - cancel_subscriptions
     - close_sinks
     - comment_references
+    - depend_on_referenced_packages
+    - library_private_types_in_public_api
     - one_member_abstracts
     - only_throw_errors
+    - no_leading_underscores_for_library_prefixes
+    - no_leading_underscores_for_local_identifiers
+    - null_check_on_nullable_type_parameter
     - package_api_docs
     - prefer_final_in_for_each
+    - prefer_interpolation_to_compose_strings
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first
@@ -24,4 +30,7 @@ linter:
     - throw_in_finally
     - type_annotate_public_apis
     - unawaited_futures
+    - unnecessary_constructor_name
     - unnecessary_late
+    - unnecessary_null_aware_assignments
+    - unnecessary_nullable_for_final_variable_declarations

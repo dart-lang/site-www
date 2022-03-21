@@ -1,4 +1,5 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type
+// ignore_for_file: no_leading_underscores_for_local_identifiers, use_function_type_syntax_for_parameters
 
 import 'package:examples_util/ellipsis.dart';
 

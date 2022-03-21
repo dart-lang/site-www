@@ -410,9 +410,9 @@ void main() {
   group('Collections: Common methods:', () {
     // Because of code excerpt formatting issues, it is a bit messy
     // to avoid repeating the `var teas` declaration in each code excerpt.
-    // Instead, we provide a group-global declaration `_teas`
-    // and check that the code-excerpt-local `teas` matches `_teas`.
-    final _teas = ['green', 'black', 'chamomile', 'earl grey'];
+    // Instead, we provide a group-global declaration `teasCheck`
+    // and check that the code-excerpt-local `teas` matches `teasCheck`.
+    final teasCheck = ['green', 'black', 'chamomile', 'earl grey'];
 
     test('isEmpty', () {
       // #docregion isEmpty
@@ -421,7 +421,7 @@ void main() {
       assert(coffees.isEmpty);
       assert(teas.isNotEmpty);
       // #enddocregion isEmpty
-      expect(teas, _teas);
+      expect(teas, teasCheck);
     });
 
     test('List.forEach()', () {
@@ -431,10 +431,10 @@ void main() {
 
         teas.forEach((tea) => print('I drink $tea'));
         // #enddocregion List-forEach
-        expect(teas, _teas);
+        expect(teas, teasCheck);
       }
 
-      expect(_test, m.prints(_teas.map((tea) => 'I drink $tea')));
+      expect(_test, m.prints(teasCheck.map((tea) => 'I drink $tea')));
     });
 
     test('Map.forEach()', () {
@@ -461,10 +461,10 @@ void main() {
         var loudTeas = teas.map((tea) => tea.toUpperCase());
         loudTeas.forEach(print);
         // #enddocregion List-map
-        expect(teas, _teas);
+        expect(teas, teasCheck);
       }
 
-      expect(_test, m.prints(_teas.map((tea) => tea.toUpperCase())));
+      expect(_test, m.prints(teasCheck.map((tea) => tea.toUpperCase())));
     });
 
     test('toList()', () {

@@ -141,18 +141,18 @@ import 'SliderMenu.dart';
 {% include linter-rule-mention.md rule="library_prefixes" %}
 
 {:.good}
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as math;
-import 'package:angular_components/angular_components' as angular_components;
+import 'package:angular_components/angular_components.dart' as angular_components;
 import 'package:js/js.dart' as js;
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g; / math/ Math/g;/as js/as JS/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as Math;
-import 'package:angular_components/angular_components' as angularComponents;
+import 'package:angular_components/angular_components.dart' as angularComponents;
 import 'package:js/js.dart' as JS;
 {% endprettify %}
 
