@@ -39,7 +39,7 @@ void miscDeclAnalyzedButNotTested() {
     void repeat(Function func, {int times = 1}) {}
 
     // #docregion named-arguments-anywhere
-    repeat(count: 2, () {
+    repeat(times: 2, () {
       /*...*/
     });
     // #enddocregion named-arguments-anywhere
