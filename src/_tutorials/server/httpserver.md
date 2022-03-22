@@ -7,13 +7,6 @@ prevpage:
   title: "Write command-line apps"
 ---
 
-{{site.alert.info}}
-  **Under construction.**
-  This page used to feature the `http_server` package,
-  which has been discontinued.
-  We plan to update it to use the `shelf` package instead.
-{{site.alert.end}}
-
 Here are some resources for writing servers using Dart:
 
 * Documentation
