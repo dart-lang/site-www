@@ -1055,7 +1055,7 @@ you can define parameters that have names.
 Named parameters are optional
 unless they're explicitly marked as `required`.
 
-<?code-excerpt "misc/lib/cheatsheet/named_params.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/named_parameters.dart"?>
 ```dart
 void printName(String firstName, String lastName, {String? middleName}) {
   print('$firstName ${middleName ?? ''} $lastName');
