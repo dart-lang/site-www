@@ -914,8 +914,7 @@ with a function you give it
 ## Optional positional parameters
 
 Dart has two kinds of function parameters: positional and named. 
-Positional parameters are the kind
-you're likely familiar with:
+Positional parameters are the kind you're likely familiar with:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
