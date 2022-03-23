@@ -2661,11 +2661,6 @@ double distance = p.distanceTo(Point(4, 4));
 Use `?.` instead of `.` to avoid an exception
 when the leftmost operand is null:
 
-{% comment %}
-{{site.dartpad}}/0cb25997742ed5382e4a
-https://gist.github.com/0cb25997742ed5382e4a
-{% endcomment %}
-
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
 // If p is non-null, set a variable equal to its y value.
