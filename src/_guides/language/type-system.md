@@ -31,7 +31,7 @@ and `main()` creates a list and passes it to `printInts()`.
 void printInts(List<int> a) => print(a);
 
 void main() {
-  var list = [];
+  final list = [];
   list.add(1);
   list.add('2');
   printInts([!list!]);
@@ -66,7 +66,7 @@ that passes static analysis and runs with no errors or warnings.
 void printInts(List<int> a) => print(a);
 
 void main() {
-  var list = [!<int>!][];
+  final list = [!<int>!][];
   list.add(1);
   list.add([!2!]);
   printInts(list);
