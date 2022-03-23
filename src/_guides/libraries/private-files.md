@@ -22,7 +22,7 @@ created by pub:
 
 {% prettify none tag=pre+code %}
 .dart_tool/
-.packages
+.packages # Can be removed after Dart 2.17
 build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
