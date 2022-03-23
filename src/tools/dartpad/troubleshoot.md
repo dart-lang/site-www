@@ -89,6 +89,24 @@ don't match the code being displayed,
 verify you are editing the code in the **Dart** tab,
 not **Solution** or **Tests**.
 
+
+## Previously working code now has errors
+
+If the code is using language or library features no longer supported
+in the latest stable release of Dart,
+the code may no longer analyze or run properly.
+
+* If the code worked in the previous Dart release,
+  consider switching to the *old channel*
+  with the *channel* dropdown at the bottom left of the playground.
+  If possible, update the code to work with the latest release,
+  as the *old channel* only supports the previous stable release.
+
+* If the code has not been updated to support [null safety][]
+  you will need to update the code accordingly.
+  DartPad no longer supports non-nullable Dart code.
+
+
 ## DartPad doesn't work in China
   
 Try [dartpad.cn.](https://dartpad.cn)
@@ -103,4 +121,5 @@ If you have any other problems when using DartPad,
 [browser]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
+[null safety]: /null-safety
 [HTML and Dart connections]: /tutorials/web/low-level-html/connect-dart-html#connections
