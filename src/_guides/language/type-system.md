@@ -73,7 +73,7 @@ void main() {
 }
 {% endprettify %}
 
-[Try it in DartPad]({{site.dartpad}}/f64e963cb5f894e2146c2b28d5efa4ed).
+[Try it in DartPad]({{site.dartpad}}/25074a51a00c71b4b000f33b688dedd0).
 
 ## What is soundness?
 
@@ -452,13 +452,6 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 {% prettify dart tag=pre+code %}
 List<Cat> myCats = <[!MaineCoon!]>[];
 {% endprettify %}
-
-{% comment %}
-Gist:  https://gist.github.com/4a2a9bc2242042ba5338533d091213c0
-DartPad: {{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0
-
-[Try it in DartPad]({{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0).
-{% endcomment %}
 
 What about going in the other direction? 
 Can you assign an `Animal` list to a `List<Cat>`?

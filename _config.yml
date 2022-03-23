@@ -35,9 +35,6 @@ pub: https://pub.dev
 pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages
 dartpad: https://dartpad.dev
-dartpad-embed: https://dartpad.dev/embed-dart.html
-dartpad-embed-html: https://dartpad.dev/embed-html.html
-dartpad-embed-inline: https://dartpad.dev/embed-inline.html
 news: https://news.dartlang.org
 group: https://groups.google.com/a/dartlang.org
 
