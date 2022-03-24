@@ -18,7 +18,7 @@ function setupOsTabs() {
       const tabId = tab.getAttribute('data-tab');
       tab.classList.add('current');
       document.getElementById(tabId).classList.add('current');
-    });
+    }, {passive: true});
   });
 
   // The following selects the correct default tab in /tutorials/server/get-started
