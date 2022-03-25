@@ -97,10 +97,10 @@ in the latest stable release of Dart,
 the code may no longer analyze or run properly.
 
 * If the code worked in the previous Dart release,
-  consider switching to the *old channel*
-  with the *channel* dropdown at the bottom left of the playground.
+  consider switching to the **old channel**
+  with the **channel** dropdown at the bottom left of the playground.
   If possible, update the code to work with the latest release,
-  as the *old channel* only supports the previous stable release.
+  as the **old channel** only supports the previous stable release.
 
 * If the code has not been updated to support [null safety][]
   you will need to update the code accordingly.
