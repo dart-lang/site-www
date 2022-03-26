@@ -335,7 +335,7 @@ constructor, use `.new` after the class name:
 {:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>
 {% prettify dart tag=pre+code %}
-/// To create a point, call [Point.new()] or use [Point.polar()] to ...
+/// To create a point, call [Point.new] or use [Point.polar()] to ...
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
