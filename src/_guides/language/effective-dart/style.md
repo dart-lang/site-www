@@ -130,8 +130,7 @@ import 'SliderMenu.dart';
 {% endprettify %}
 
 {{site.alert.note}}
-  **Note:** This guideline specifies *how* to name a library
-  *if you choose to name it*. 
+  This guideline specifies *how* to name a library *if you choose to name it*. 
   It is fine to _omit_ the library directive in a file if you want.
 {{site.alert.end}}
 
