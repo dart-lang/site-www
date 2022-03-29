@@ -85,7 +85,7 @@ void miscDeclAnalyzedButNotTested() {
     void method1() {}
 
     // #docregion ctor
-    /// To create a point from polar coordinates, use [Point.polar()].
+    /// To create a point, call [Point.new] or use [Point.polar] to ...
     // #enddocregion ctor
     void method2() {}
   };
