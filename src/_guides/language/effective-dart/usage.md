@@ -350,7 +350,7 @@ Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
 
-### CONSIDER copying a nullable field to a local variable to enable type promotion.
+### CONSIDER assigning a nullable field to a local variable to enable type promotion.
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
@@ -358,12 +358,12 @@ to functions expecting a non-nullable type. Unfortunately, promotion is only
 sound for local variables and parameters, so fields and top-level variables
 aren't promoted.
 
-One pattern to work around this is to copy the field's value to a local
+One pattern to work around this is to assign the field's value to a local
 variable. Null checks on that variable do promote, so you can safely treat
 it as non-nullable.
 
 {:.good}
-<?code-excerpt "usage_good.dart (copy-nullable-field)"?>
+<?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
 {% prettify dart tag=pre+code %}
 class UploadException {
   final Response? response;
@@ -372,7 +372,7 @@ class UploadException {
 
   @override
   String toString() {
-    var response = this.response;
+    final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
@@ -383,11 +383,11 @@ class UploadException {
 }
 {% endprettify %}
 
-Copying to a local variable can be cleaner and safer than using `!` every place
-the field or top-level variable is used:
+Assigning to a local variable can be cleaner and safer than using `!` every
+place the field or top-level variable is used:
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
+<?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 {% prettify dart tag=pre+code %}
 class UploadException {
   final Response? response;
@@ -406,10 +406,11 @@ class UploadException {
 }
 {% endprettify %}
 
-Be careful when using a local copy. If you need to write back to the field,
-then make sure you do so, and don't just write to the local variable. Also, if
-the field might change while the local is still in scope, then the local might
-have a stale value. Sometimes it's best to simply use `!` on the field.
+Be careful when using a local variable. If you need to write back to the field,
+make sure that you don't write back to the local variable instead. (Making the
+local variable `final` can prevent such mistakes.) Also, if the field might
+change while the local is still in scope, then the local might have a stale
+value. Sometimes it's best to simply use `!` on the field.
 
 
 ## Strings
