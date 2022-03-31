@@ -143,6 +143,18 @@ class VersionSelector {
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
             continue;
+          } else if (platformVariant.architecture == 'riscv64') {
+            // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
+            // and not in stable or beta yet.
+            // TODO: After this ships in stable 2.x, remove the stable check,
+            // and just test for versionInfo.version < Version(2,x,0).
+            if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
+              continue;
+            }
+
+            if (versionInfo.channel == 'stable' || versionInfo.channel == 'beta') {
+              continue;
+            }
           }
         }
 
