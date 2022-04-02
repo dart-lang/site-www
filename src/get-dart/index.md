@@ -61,7 +61,8 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 ### Linux
 
 * **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
-* **Supported architectures:** x64, ia32, arm, arm64.
+* **Supported architectures:** x64, ia32, arm64, arm, riscv64.
+  Support for riscv4 is in preview, and is available only in the dev channel.
 
 {{site.alert.note}}
   The arm support requires glibc 2.23 or newer due to a
