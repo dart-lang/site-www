@@ -2860,24 +2860,33 @@ class Point {
 The `this` keyword refers to the current instance.
 
 {{site.alert.note}}
-  Use `this` only when there is a name conflict. Otherwise, Dart style
-  omits the `this`.
+  Use `this` only when there is a name conflict. 
+  Otherwise, Dart style omits the `this`.
 {{site.alert.end}}
 
+
+#### Initializing parameters
+
 The pattern of assigning a constructor argument to an instance variable
-is so common, Dart has syntactic sugar to make it easy:
+is so common, 
+Dart has initializing parameters to make it easy.
+
+Initializing parameters can also be used to initialize
+non-nullable or `final` instance variables,
+which both must be initialized or provided a default value.
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
-  // Syntactic sugar for setting x and y
+  // Sets the x and y instance variables
   // before the constructor body runs.
   Point(this.x, this.y);
 }
 ```
+
 
 #### Default constructors
 
@@ -3166,8 +3175,8 @@ instance method:
 import 'dart:math';
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
