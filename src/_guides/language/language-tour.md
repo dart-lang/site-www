@@ -2850,7 +2850,7 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // There's a better way to do this, stay tuned.
+    // See initializing parameters for a better way to do this
     this.x = x;
     this.y = y;
   }
@@ -2997,6 +2997,7 @@ class Employee extends Person {
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
 
+
 #### Initializer list
 
 Besides invoking a superclass constructor, you can also initialize
@@ -3078,6 +3079,7 @@ class Point {
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
+
 
 #### Constant constructors
 
