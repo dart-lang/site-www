@@ -2894,11 +2894,13 @@ If you don’t declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
+
 #### Constructors aren’t inherited
 
 Subclasses don’t inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
+
 
 #### Named constructors
 
@@ -2911,8 +2913,8 @@ const double xOrigin = 0;
 const double yOrigin = 0;
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
@@ -2927,6 +2929,7 @@ Remember that constructors are not inherited, which means that a
 superclass’s named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
+
 
 #### Invoking a non-default superclass constructor
 
