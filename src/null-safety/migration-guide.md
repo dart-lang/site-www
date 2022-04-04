@@ -17,7 +17,8 @@ Here are the basic steps for migrating each package that you own:
    as a **prerelease** version.
 
 {{site.alert.info}}
-  If your application or library is large, check out [Gradual null safety migration for large Dart projects](https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9).
+  If your application or library is large, check out
+  [Gradual null safety migration for large Dart projects](https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9).
 {{site.alert.end}}
 
 {{site.alert.info}}
