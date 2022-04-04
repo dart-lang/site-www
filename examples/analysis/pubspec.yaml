@@ -8,4 +8,4 @@ dependencies:
   examples_util: {path: ../util}
 
 dev_dependencies:
-  lints: ^1.0.0
+  lints: ^2.0.0
