@@ -5,8 +5,9 @@ description: Your development tools generate a bunch of files. Not all of them s
 
 When you put Dart source code in a repository—using the
 [pub tool](/tools/pub/cmd), [GitHub,](https://github.com/)
-or another source code management system—don't include most of the files
-that your IDE or code editor, the pub tool, and other tools generate.
+or another source code management system&mdash;don't
+include most of the files that your IDE or code editor,
+the pub tool, and other tools generate.
 
 {{site.alert.note}}
   Except where noted, this page discusses only source code repositories,
@@ -22,8 +23,9 @@ created by pub:
 
 {% prettify none tag=pre+code %}
 .dart_tool/
-.packages
+.packages (deprecated)
 build/
+package_config.json
 pubspec.lock  # Except for application packages
 {% endprettify %}
 
@@ -84,7 +86,7 @@ see the GitHub help page
 The `.dart_tool/` directory contains files used by 
 various Dart tools.
 
-### .packages
+### package_config.json
 
 {% include packages-dir.html %}
 

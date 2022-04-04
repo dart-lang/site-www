@@ -56,12 +56,14 @@ get the latest versions of all dependencies.
 ## Package resolution
 
 By default, pub creates a `package_config.json` file
-in the `.dart_tool/` directory that maps from package names to location URIs.
+in the `.dart_tool/` directory that maps from
+package names to location URIs.
 Before the `package_config.json` file, 
-pub used to create a `.packages` file in the root directory.
+pub used to create a `.packages` file in the root directory,
+but that file is now deprecated.
 
 {{site.alert.note}}
-  Don't check the generated `.packages` file
+  Don't check the generated `package_config.json` file
   or the `.dart_tool/` directory into your repo;
   add them to your repo's `.gitignore` file.
   For more information, 
@@ -129,7 +131,7 @@ run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later versi
 
 ## Options
 
-For options that apply to all pub commands, see
+For options that apply to all pub commands, check out
 [Global options](/tools/pub/cmd#global-options).
 
 ### `--[no-]offline`

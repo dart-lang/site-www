@@ -13,7 +13,7 @@ package, and how to name things.
   <div markdown="1">
   **Note:**
   Flutter apps can use custom directories for their assets.
-  For details, see
+  For details, check out
   [Adding assets and images]({{site.flutter_docs}}/development/ui/assets-and-images)
   on the [Flutter website.]({{site.flutter}})
   </div>
@@ -26,7 +26,7 @@ might look like:
 {% prettify none tag=pre+code %}
 enchilada/
   .dart_tool/ *
-  .packages *
+  package_config.json *
   pubspec.yaml
   pubspec.lock **
   LICENSE
@@ -59,8 +59,15 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool/` directory and `.packages` file exist after you've run
-   `pub get`. Don't check them into source control.
+{{site.alert.secondary}}
+  **Version note:** Prior to Dart 2.17, `pub get` also
+  generated a `.packages` file. That generated file has been
+  replaced by `package_config.json`.
+{{site.alert.end}}
+
+\* The `.dart_tool/` directory and `package_config.json`
+   files exist after you've run `pub get`.
+   Don't check them into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
@@ -88,11 +95,14 @@ package.
 Running [`pub get`](/tools/pub/cmd/pub-get),
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), or
 [`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package creates a
-**lockfile**, named `pubspec.lock`. If your package is an [application
-package](/tools/pub/glossary#application-package), check the lockfile into source
+**lockfile**, named `pubspec.lock`.
+If your package is an
+[application package](/tools/pub/glossary#application-package),
+check the lockfile into source
 control. Otherwise, don't.
 
-For more information, see the [pubspec page](/tools/pub/pubspec).
+For more information,
+check out the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
@@ -120,7 +130,7 @@ rendered as [Markdown][] — on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
-For guidance on how to write a great README, see
+For guidance on how to write a great README, check out
 [Writing package pages](/guides/libraries/writing-package-pages).
 
 ## CHANGELOG.md
@@ -246,7 +256,7 @@ resolve. Instead, your entrypoints should go in the appropriate
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 {{site.alert.end}}
 
-For more information on library packages, see
+For more information on library packages, check out
 [Creating packages](/guides/libraries/create-library-packages).
 
 ### Public tools {#public-tools}
