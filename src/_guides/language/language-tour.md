@@ -2850,7 +2850,8 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // There's a better way to do this, stay tuned.
+    // See initializing parameters for a better way
+    // to initialize instance variables.
     this.x = x;
     this.y = y;
   }
@@ -2860,24 +2861,33 @@ class Point {
 The `this` keyword refers to the current instance.
 
 {{site.alert.note}}
-  Use `this` only when there is a name conflict. Otherwise, Dart style
-  omits the `this`.
+  Use `this` only when there is a name conflict. 
+  Otherwise, Dart style omits the `this`.
 {{site.alert.end}}
 
+
+#### Initializing parameters
+
 The pattern of assigning a constructor argument to an instance variable
-is so common, Dart has syntactic sugar to make it easy:
+is so common, 
+Dart has initializing parameters to make it easy.
+
+Initializing parameters can also be used to initialize
+non-nullable or `final` instance variables,
+which both must be initialized or provided a default value.
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
-  // Syntactic sugar for setting x and y
+  // Sets the x and y instance variables
   // before the constructor body runs.
   Point(this.x, this.y);
 }
 ```
+
 
 #### Default constructors
 
@@ -2885,11 +2895,13 @@ If you don’t declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
+
 #### Constructors aren’t inherited
 
 Subclasses don’t inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
+
 
 #### Named constructors
 
@@ -2902,8 +2914,8 @@ const double xOrigin = 0;
 const double yOrigin = 0;
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
@@ -2918,6 +2930,7 @@ Remember that constructors are not inherited, which means that a
 superclass’s named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
+
 
 #### Invoking a non-default superclass constructor
 
@@ -2984,6 +2997,7 @@ class Employee extends Person {
   Arguments to the superclass constructor don't have access to `this`. For
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
+
 
 #### Initializer list
 
@@ -3066,6 +3080,7 @@ class Point {
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
+
 
 #### Constant constructors
 
@@ -3166,8 +3181,8 @@ instance method:
 import 'dart:math';
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
