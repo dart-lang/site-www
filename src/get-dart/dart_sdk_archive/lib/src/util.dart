@@ -42,7 +42,7 @@ const Map<String, String> archiveMap = {
   'ARM64': 'arm64',
   'ARMv7': 'arm',
   'ARMv8 (ARM64)': 'arm64',
-  'riscv64': 'riscv64',
+  'RISC-V (RV64GC)': 'riscv64',
   'Dart SDK': 'dartsdk',
 };
 
@@ -67,7 +67,7 @@ const Map<String, List<PlatformVariant>> platforms = {
     PlatformVariant('ia32', ['Dart SDK']),
     PlatformVariant('ARMv8 (ARM64)', ['Dart SDK']),
     PlatformVariant('ARMv7', ['Dart SDK']),
-    PlatformVariant('riscv64', ['Dart SDK']),
+    PlatformVariant('RISC-V (RV64GC)', ['Dart SDK']),
   ],
   'Windows': [
     PlatformVariant('x64', ['Dart SDK']),
