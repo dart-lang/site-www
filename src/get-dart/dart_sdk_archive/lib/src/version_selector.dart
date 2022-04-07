@@ -157,18 +157,16 @@ class VersionSelector {
               continue;
             }
           }
-        }
-
-        if (name == 'macOS') {
-          // No macOS 32-bit SDK builds after 2.8.0
-          if (platformVariant.architecture == 'IA32' &&
-              versionInfo.version > Version(2, 7, 0)) {
-            continue;
-          }
-
-          // No macOS ARM64 SDK builds before 2.14.1 (earlier builds did not have trained snapshots).
-          if (platformVariant.architecture == 'ARM64' &&
+        } else if (name == 'macOS') {
+          if (platformVariant.architecture == 'IA32') {
+            if (versionInfo.version > Version(2, 7, 0)) {
+              // No macOS 32-bit SDK builds after 2.8.0
+              continue;
+            }
+          } else if (platformVariant.architecture == 'ARM64' &&
               versionInfo.version < Version(2, 14, 1)) {
+            // No macOS ARM64 SDK builds before 2.14.1
+            // (earlier builds did not have trained snapshots).
             continue;
           }
         }
@@ -188,7 +186,7 @@ class VersionSelector {
         var possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
-        for (var pa in possibleArchives) {
+        for (final pa in possibleArchives) {
           if (platformVariant.archives.contains(pa)) {
             // We had no editor downloads after the move to GitHub.
             // This skips the editor link in those cases
