@@ -168,8 +168,9 @@ and C are transitive ones.
 ## Uploader
 
 Someone who has administrative permissions for a package.
-A package uploader can upload new versions of the package,
-and they can also [add and remove other uploaders](/tools/pub/cmd/pub-uploader)
+A package uploader can upload new versions of the package, 
+and they can also 
+[add and remove other uploaders](/tools/pub/publishing#uploaders)
 for that package. 
 
 If a package has a verified publisher,

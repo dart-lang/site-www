@@ -254,8 +254,9 @@ To change the automatically generated list of supported platforms,
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
 To allow or disallow other people to upload versions,
-use the [`dart pub uploader`][] command
-or transfer the package to a [verified publisher][].
+transfer the package to a [verified publisher][] or
+manage authorized uploaders on the admin page for the package:
+`https://pub.dev/packages/<package>/admin`.
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
@@ -417,7 +418,6 @@ If you change your mind, you can remove the discontinued mark at any time.
 For more information, see the reference pages for the following `pub` commands:
 
 * [`dart pub publish`][]
-* [`dart pub uploader`][]
 
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
@@ -426,7 +426,6 @@ For more information, see the reference pages for the following `pub` commands:
 [policy]: {{site.pub}}/policy
 [pub]: /guides/packages
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
-[`dart pub uploader`]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
