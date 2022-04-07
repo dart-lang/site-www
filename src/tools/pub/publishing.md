@@ -413,12 +413,8 @@ Then go to the package's **Admin** tab,
 where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
-## Resources
 
-For more information, see the reference pages for the following `pub` commands:
-
-* [`dart pub publish`][]
-
+[Create a verified publisher]: https://pub.dev/create-publisher
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
