@@ -152,22 +152,23 @@ class VersionSelector {
               continue;
             }
 
-            if (versionInfo.channel == 'stable' || versionInfo.channel == 'beta') {
+            if (versionInfo.channel == 'stable' ||
+                versionInfo.channel == 'beta') {
               continue;
             }
           }
         }
 
-        // No Mac 32-bit SDK builds after 2.80
-        if (name == 'macOS' && platformVariant.architecture == 'IA32') {
-          if (versionInfo.version > Version(2, 7, 0)) {
+        if (name == 'macOS') {
+          // No macOS 32-bit SDK builds after 2.8.0
+          if (platformVariant.architecture == 'IA32' &&
+              versionInfo.version > Version(2, 7, 0)) {
             continue;
           }
-        }
 
-        // No Mac arm64 SDK builds before 2.14.1 (earlier builds did not have trained snapshots).
-        if (name == 'macOS' && platformVariant.architecture == 'ARM64') {
-          if (versionInfo.version < Version(2, 14, 1)) {
+          // No macOS ARM64 SDK builds before 2.14.1 (earlier builds did not have trained snapshots).
+          if (platformVariant.architecture == 'ARM64' &&
+              versionInfo.version < Version(2, 14, 1)) {
             continue;
           }
         }
