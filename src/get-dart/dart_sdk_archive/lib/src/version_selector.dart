@@ -143,7 +143,7 @@ class VersionSelector {
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
             continue;
-          } else if (platformVariant.architecture == 'riscv64') {
+          } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
             // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
             // and not in stable or beta yet.
             // TODO: After this ships in stable 2.x, remove the stable check,
@@ -159,7 +159,7 @@ class VersionSelector {
         }
 
         // No Mac 32-bit SDK builds after 2.80
-        if (name == 'macOS' && platformVariant.architecture == 'ia32') {
+        if (name == 'macOS' && platformVariant.architecture == 'IA32') {
           if (versionInfo.version > Version(2, 7, 0)) {
             continue;
           }
