@@ -228,6 +228,7 @@
       { "source": "/tools/pub/cmd/pub-build?(.html)", "destination": "/tools/webdev", "type": 301 },
       { "source": "/tools/pub/cmd/pub-run?(.html)", "destination": "/tools/dart-run", "type": 301 },
       { "source": "/tools/pub/cmd/pub-serve?(.html)", "destination": "/tools/webdev", "type": 301 },
+      { "source": "/tools/pub/cmd/pub-uploader?(.html)", "destination": "/tools/pub/publishing#uploaders", "type": 301 },
       { "source": "/tools/pub/create-library-packages?(.html)", "destination": "/guides/libraries/create-library-packages", "type": 301 },
       { "source": "/tools/pub/faq?(.html)", "destination": "/tools/faq#pub", "type": 301 },
       { "source": "/tools/pub/get-started?(.html)", "destination": "/guides/packages", "type": 301 },
