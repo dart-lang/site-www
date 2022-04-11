@@ -1,15 +1,22 @@
 ---
 title: dart fix
-description: Help for bringing your code up-to-date.
+description: Command-line tool for applying analysis fixes and migrating API usages.
 toc: false
 ---
 
-The `dart fix` command (added in Dart 2.12)
+The `dart fix` command
 finds and fixes two types of issues:
 
-* Analysis issues that have associated automated fixes
+* Analysis issues identified by [`dart analyze`][]
+  that have associated automated fixes
   (sometimes called _quick-fixes_ or _code actions_)
+
+  To learn more about customizing the analysis issues identified,
+  see [Customizing static analysis](/guides/language/analysis-options).
 * Issues that have associated package API migration information
+
+  For information about how automated package API changes work,
+  see [Data driven fixes][] on the Flutter wiki.
 
 {% include tools/dart-tool-note.md %}
 
@@ -25,9 +32,5 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
-For information about how automated package API changes work,
-see [dart.dev/go/dart-fix](/go/dart-fix).
-
-The `dart fix` command replaces [`dartfix`][].
-
-[`dartfix`]: {{site.pub-pkg}}/dartfix
+[`dart analyze`]: /tools/dart-analyze
+[Data driven fixes]: https://github.com/flutter/flutter/wiki/Data-driven-Fixes
