@@ -182,7 +182,7 @@ Reference their API documentation for further subtypes.
 
 | **Dart type**                                                                         | **Description**                                                  |
 |---------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| [AbiSpecificInteger]({{site.dart_api}}/stable/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][]-specific integer types.             |
+| [AbiSpecificInteger]({{site.dart_api}}/stable/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][] specific integer types.             |
 | [Array]({{site.dart_api}}/stable/dart-ffi/Array-class.html)                           | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Bool]({{site.dart_api}}/stable/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                                   |
 | [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.                          |
