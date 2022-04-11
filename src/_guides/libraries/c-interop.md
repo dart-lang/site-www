@@ -185,7 +185,7 @@ Reference their API documentation for further subtypes.
 | [AbiSpecificInteger]({{site.dart_api}}/stable/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][]-specific integer types.             |
 | [Array]({{site.dart_api}}/stable/dart-ffi/Array-class.html)                           | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Bool]({{site.dart_api}}/stable/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                                   |
-| [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents native 64 bit double in C.                            |
+| [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.                          |
 | [Float]({{site.dart_api}}/stable/dart-ffi/Float-class.html)                           | Represents a native 32 bit float in C.                           |
 | [Handle]({{site.dart_api}}/stable/dart-ffi/Handle-class.html)                         | Represents Dart_Handle in C.                                     |
 | [Int8]({{site.dart_api}}/stable/dart-ffi/Int8-class.html)                             | Represents a native signed 8 bit integer in C.                   |
@@ -194,7 +194,7 @@ Reference their API documentation for further subtypes.
 | [Int64]({{site.dart_api}}/stable/dart-ffi/Int64-class.html)                           | Represents a native signed 64 bit integer in C.                  |
 | [NativeFunction]({{site.dart_api}}/stable/dart-ffi/NativeFunction-class.html)         | Represents a function type in C.                                 |
 | [Opaque]({{site.dart_api}}/stable/dart-ffi/Opaque-class.html)                         | The supertype of all opaque types in C.                          |
-| [Pointer]({{site.dart_api}}/stable/dart-ffi/Pointer-class.html)                       | Represents a pointer into the native C memory.                   |
+| [Pointer]({{site.dart_api}}/stable/dart-ffi/Pointer-class.html)                       | Represents a pointer into native C memory.                       |
 | [Struct]({{site.dart_api}}/stable/dart-ffi/Struct-class.html)                         | The supertype of all FFI struct types.                           |
 | [Uint8]({{site.dart_api}}/stable/dart-ffi/Uint8-class.html)                           | Represents a native unsigned 8 bit integer in C.                 |
 | [Uint16]({{site.dart_api}}/stable/dart-ffi/Uint16-class.html)                         | Represents a native unsigned 16 bit integer in C.                |
