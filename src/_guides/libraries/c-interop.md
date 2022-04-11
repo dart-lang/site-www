@@ -187,7 +187,6 @@ Reference their API documentation for further subtypes.
 | [Bool]({{site.dart_api}}/stable/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                                   |
 | [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.                          |
 | [Float]({{site.dart_api}}/stable/dart-ffi/Float-class.html)                           | Represents a native 32 bit float in C.                           |
-| [Handle]({{site.dart_api}}/stable/dart-ffi/Handle-class.html)                         | Represents Dart_Handle in C.                                     |
 | [Int8]({{site.dart_api}}/stable/dart-ffi/Int8-class.html)                             | Represents a native signed 8 bit integer in C.                   |
 | [Int16]({{site.dart_api}}/stable/dart-ffi/Int16-class.html)                           | Represents a native signed 16 bit integer in C.                  |
 | [Int32]({{site.dart_api}}/stable/dart-ffi/Int32-class.html)                           | Represents a native signed 32 bit integer in C.                  |
