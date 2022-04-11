@@ -170,20 +170,17 @@ For details, see the following:
 
 ## Interfacing with native types
 
-The dart:ffi library provides multiple types 
+The dart:ffi library provides multiple types
+that implement [`NativeType`][]
 which represent native types in C.
 
-They all implement [`NativeType`][] and
-serve purely as markers in type signatures.
-Subtypes of `NativeType` are not instantiable in Dart code.
-
-The following are some common types used as markers.
-Reference their API documentation for further subtypes. 
+The following are some native types which are only
+used as markers in type signatures
+but are not instantiable in Dart code:
 
 | **Dart type**                                                                         | **Description**                                                  |
 |---------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | [AbiSpecificInteger]({{site.dart_api}}/stable/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][] specific integer types.             |
-| [Array]({{site.dart_api}}/stable/dart-ffi/Array-class.html)                           | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Bool]({{site.dart_api}}/stable/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                                   |
 | [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.                          |
 | [Float]({{site.dart_api}}/stable/dart-ffi/Float-class.html)                           | Represents a native 32 bit float in C.                           |
@@ -193,15 +190,24 @@ Reference their API documentation for further subtypes.
 | [Int64]({{site.dart_api}}/stable/dart-ffi/Int64-class.html)                           | Represents a native signed 64 bit integer in C.                  |
 | [NativeFunction]({{site.dart_api}}/stable/dart-ffi/NativeFunction-class.html)         | Represents a function type in C.                                 |
 | [Opaque]({{site.dart_api}}/stable/dart-ffi/Opaque-class.html)                         | The supertype of all opaque types in C.                          |
-| [Pointer]({{site.dart_api}}/stable/dart-ffi/Pointer-class.html)                       | Represents a pointer into native C memory.                       |
-| [Struct]({{site.dart_api}}/stable/dart-ffi/Struct-class.html)                         | The supertype of all FFI struct types.                           |
 | [Uint8]({{site.dart_api}}/stable/dart-ffi/Uint8-class.html)                           | Represents a native unsigned 8 bit integer in C.                 |
 | [Uint16]({{site.dart_api}}/stable/dart-ffi/Uint16-class.html)                         | Represents a native unsigned 16 bit integer in C.                |
 | [Uint32]({{site.dart_api}}/stable/dart-ffi/Uint32-class.html)                         | Represents a native unsigned 32 bit integer in C.                |
 | [Uint64]({{site.dart_api}}/stable/dart-ffi/Uint64-class.html)                         | Represents a native unsigned 64 bit integer in C.                |
-| [Union]({{site.dart_api}}/stable/dart-ffi/Union-class.html)                           | The supertype of all FFI union types.                            |
 | [Void]({{site.dart_api}}/stable/dart-ffi/Void-class.html)                             | Represents a void type in C.                                     |
 {:.table .table-striped }
+
+The following native types can also be used as markers in type signatures
+but they or their subtypes can be instantiated in Dart code:
+
+| **Dart type**                                                   | **Description**                                                  |
+|-----------------------------------------------------------------|------------------------------------------------------------------|
+| [Array]({{site.dart_api}}/stable/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
+| [Pointer]({{site.dart_api}}/stable/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
+| [Struct]({{site.dart_api}}/stable/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
+| [Union]({{site.dart_api}}/stable/dart-ffi/Union-class.html)     | The supertype of all FFI union types.                            |
+{:.table .table-striped }
+
 
 ## Generating FFI bindings with `package:ffigen`
 
