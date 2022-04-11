@@ -179,6 +179,11 @@ The `dart:ffi` library provides multiple types
 that implement [`NativeType`][]
 which represent native types in C.
 
+Some native types are only used as markers in type signatures
+while others or their subtypes can be instantiated.
+
+#### Purely marker native types
+
 The following are some native types which are only
 used as markers in type signatures
 but are not instantiable in Dart code:
@@ -202,8 +207,10 @@ but are not instantiable in Dart code:
 | [Void]({{site.dart_api}}/stable/dart-ffi/Void-class.html)                             | Represents a void type in C.                                     |
 {:.table .table-striped }
 
-The following native types can also be used as markers in type signatures
-but they or their subtypes can be instantiated in Dart code:
+#### Instantiable native types
+
+The following native types can be used as markers in type signatures
+and they or their subtypes can be instantiated in Dart code:
 
 | **Dart type**                                                   | **Description**                                                  |
 |-----------------------------------------------------------------|------------------------------------------------------------------|
