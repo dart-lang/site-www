@@ -210,7 +210,7 @@ but are not instantiable in Dart code:
 #### Instantiable native types
 
 The following native types can be used as markers in type signatures
-and they or their subtypes can be instantiated in Dart code:
+and they (or their subtypes) can be instantiated in Dart code:
 
 | **Dart type**                                                   | **Description**                                                  |
 |-----------------------------------------------------------------|------------------------------------------------------------------|
