@@ -177,7 +177,7 @@ For details, see the following:
 
 The `dart:ffi` library provides multiple types
 that implement [`NativeType`][]
-which represent native types in C.
+and represent native types in C.
 
 Some native types are only used as markers in type signatures
 while others or their subtypes can be instantiated.
