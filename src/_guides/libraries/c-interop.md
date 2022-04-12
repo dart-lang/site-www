@@ -180,7 +180,7 @@ that implement [`NativeType`][]
 and represent native types in C.
 
 Some native types are only used as markers in type signatures
-while others or their subtypes can be instantiated.
+while others (or their subtypes) can be instantiated.
 
 #### Purely marker native types
 
