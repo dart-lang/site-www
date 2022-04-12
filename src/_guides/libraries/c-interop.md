@@ -184,9 +184,9 @@ while others (or their subtypes) can be instantiated.
 
 #### Purely marker native types
 
-The following are some native types which are only
-used as markers in type signatures
-but are not instantiable in Dart code:
+The following table lists some native types that are only
+used as markers in type signatures,
+and can't be instantiated in Dart code:
 
 | **Dart type**                                                                         | **Description**                                                  |
 |---------------------------------------------------------------------------------------|------------------------------------------------------------------|
