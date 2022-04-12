@@ -20,5 +20,5 @@ even outside of Dart's public communication channels.
 
 If you are subject to or witness unacceptable behavior,
 or have any other concerns,
-please [email us](mailto:conduct@dart.dev).
+please [email us](mailto:conduct@dartlang.org).
 
