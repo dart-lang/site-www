@@ -13,10 +13,9 @@ finds and fixes two types of issues:
 
   To learn more about customizing the analysis issues identified,
   see [Customizing static analysis](/guides/language/analysis-options).
-* Issues that have associated package API migration information
 
-  For information about how automated package API changes work,
-  see [Data driven fixes][] on the Flutter wiki.
+* Outdated API usages when updating to
+  newer releases of the Dart and Flutter SDKs.
 
 {% include tools/dart-tool-note.md %}
 
@@ -33,4 +32,3 @@ $ dart fix --apply
 ```
 
 [`dart analyze`]: /tools/dart-analyze
-[Data driven fixes]: https://github.com/flutter/flutter/wiki/Data-driven-Fixes
