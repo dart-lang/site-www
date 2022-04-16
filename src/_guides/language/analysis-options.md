@@ -77,7 +77,7 @@ and other suggested guidelines in
 [Effective Dart][]. Dart tools such as the
 [Dart compiler (`dart compile`)](/tools/dart-compile),
 [`dart analyze`](/tools/dart-analyze),
-[`flutter analyze`]({{site.flutter_docs}}/testing/debugging#the-dart-analyzer),
+[`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 

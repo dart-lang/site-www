@@ -168,17 +168,17 @@ displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
 
-[App size tool]: {{site.flutter_docs}}/development/tools/devtools/app-size
+[App size tool]: {{site.flutter-docs}}/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
-[CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
-[Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
+[CPU profiler]: {{site.flutter-docs}}/development/tools/devtools/cpu-profiler
+[Debugger]: {{site.flutter-docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
-[Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
-[Flutter devtools]: {{site.flutter_docs}}/development/tools/devtools/overview
-[Logging view]: {{site.flutter_docs}}/development/tools/devtools/logging
-[Memory view]: {{site.flutter_docs}}/development/tools/devtools/memory
-[Network view]: {{site.flutter_docs}}/development/tools/devtools/network
+[Flutter inspector]: {{site.flutter-docs}}/development/tools/devtools/inspector
+[Flutter devtools]: {{site.flutter-docs}}/development/tools/devtools/overview
+[Logging view]: {{site.flutter-docs}}/development/tools/devtools/logging
+[Memory view]: {{site.flutter-docs}}/development/tools/devtools/memory
+[Network view]: {{site.flutter-docs}}/development/tools/devtools/network
 [Other web]: #using-devtools-with-a-non-flutter-web-app
-[Performance view]: {{site.flutter_docs}}/development/tools/devtools/performance
-[Timeline view]: {{site.flutter_docs}}/development/tools/devtools/timeline
+[Performance view]: {{site.flutter-docs}}/development/tools/devtools/performance
+[Timeline view]: {{site.flutter-docs}}/development/tools/devtools/timeline
