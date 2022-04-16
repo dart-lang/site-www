@@ -38,12 +38,12 @@ you might use the [`flutter` tool][] instead.
 |-----------+-----------------------------------------+-----------------------------------|
 | Command   | Example of use                          | More information                  |
 |-----------|-----------------------------------------|-----------------------------------|
-| `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
+| `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>[Learn more.][analyze] |
 | `compile` | `dart compile exe <DART_FILE>`          | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
-| `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>Use instead of [`stagehand`][].<br>[Learn more.][create] | 
+| `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>[Learn more.][create] | 
 | `doc`     | `dart doc <DIRECTORY>`                  | Generates API reference documentation.<br>Use instead of [`dartdoc`][].<br>[Learn more.][doc] |
-| `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
-| `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] |
+| `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>[Learn more.][fix] | 
+| `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>[Learn more.][format] |
 | `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
 | `pub`     | `dart pub <PUB_COMMAND>`                | Works with packages.<br>Use instead of `pub`.<br>[Learn more.][pub] | 
 | `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Use instead of the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
@@ -67,8 +67,5 @@ or follow the links in the **More information** column.
 You can also get details on `pub` commands — for example,
 `dart help pub outdated`.
 
-[`dartaotruntime`]: /tools/dartaotruntime
 [`dartdoc`]: {{site.pub-pkg}}/dartdoc
-[`dartfix`]: {{site.pub-pkg}}/dartfix
 [null safety]: /null-safety
-[`stagehand`]: {{site.pub-pkg}}/stagehand
