@@ -251,7 +251,7 @@ they can have much slower startup than architecture-specific AOT output formats.
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
 For running and debugging during development,
-see [Web debugging](/web/debugging).
+see the [`webdev serve`][] command.
 
 You usually use the [`webdev` tool][webdev] instead of
 directly using a Dart-to-JavaScript compiler.
