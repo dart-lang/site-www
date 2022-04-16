@@ -277,4 +277,4 @@ For more information, see the [`dart2js` documentation](/tools/dart2js).
 
 [assert statements]: /guides/language/language-tour#assert
 [static analysis]: /guides/language/analysis-options
-[`String.fromEnvironment()` constructor]: https://api.dart.dev/stable/dart-core/String/String.fromEnvironment.html
+[`String.fromEnvironment()` constructor]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
