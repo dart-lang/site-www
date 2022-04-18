@@ -188,23 +188,23 @@ The following table lists some native types that are only
 used as markers in type signatures,
 and can't be instantiated in Dart code:
 
-| **Dart type**                                                                         | **Description**                                                  |
-|---------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| [AbiSpecificInteger]({{site.dart_api}}/stable/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][] specific integer types.             |
-| [Bool]({{site.dart_api}}/stable/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                                   |
-| [Double]({{site.dart_api}}/stable/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.                          |
-| [Float]({{site.dart_api}}/stable/dart-ffi/Float-class.html)                           | Represents a native 32 bit float in C.                           |
-| [Int8]({{site.dart_api}}/stable/dart-ffi/Int8-class.html)                             | Represents a native signed 8 bit integer in C.                   |
-| [Int16]({{site.dart_api}}/stable/dart-ffi/Int16-class.html)                           | Represents a native signed 16 bit integer in C.                  |
-| [Int32]({{site.dart_api}}/stable/dart-ffi/Int32-class.html)                           | Represents a native signed 32 bit integer in C.                  |
-| [Int64]({{site.dart_api}}/stable/dart-ffi/Int64-class.html)                           | Represents a native signed 64 bit integer in C.                  |
-| [NativeFunction]({{site.dart_api}}/stable/dart-ffi/NativeFunction-class.html)         | Represents a function type in C.                                 |
-| [Opaque]({{site.dart_api}}/stable/dart-ffi/Opaque-class.html)                         | The supertype of all opaque types in C.                          |
-| [Uint8]({{site.dart_api}}/stable/dart-ffi/Uint8-class.html)                           | Represents a native unsigned 8 bit integer in C.                 |
-| [Uint16]({{site.dart_api}}/stable/dart-ffi/Uint16-class.html)                         | Represents a native unsigned 16 bit integer in C.                |
-| [Uint32]({{site.dart_api}}/stable/dart-ffi/Uint32-class.html)                         | Represents a native unsigned 32 bit integer in C.                |
-| [Uint64]({{site.dart_api}}/stable/dart-ffi/Uint64-class.html)                         | Represents a native unsigned 64 bit integer in C.                |
-| [Void]({{site.dart_api}}/stable/dart-ffi/Void-class.html)                             | Represents a void type in C.                                     |
+| **Dart type**                                                                                                     | **Description**                                      |
+|-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| [AbiSpecificInteger]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html) | The supertype of all [Abi][] specific integer types. |
+| [Bool]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Bool-class.html)                             | Represents a native bool in C.                       |
+| [Double]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Double-class.html)                         | Represents a native 64 bit double in C.              |
+| [Float]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Float-class.html)                           | Represents a native 32 bit float in C.               |
+| [Int8]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int8-class.html)                             | Represents a native signed 8 bit integer in C.       |
+| [Int16]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int16-class.html)                           | Represents a native signed 16 bit integer in C.      |
+| [Int32]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int32-class.html)                           | Represents a native signed 32 bit integer in C.      |
+| [Int64]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int64-class.html)                           | Represents a native signed 64 bit integer in C.      |
+| [NativeFunction]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFunction-class.html)         | Represents a function type in C.                     |
+| [Opaque]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Opaque-class.html)                         | The supertype of all opaque types in C.              |
+| [Uint8]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Uint8-class.html)                           | Represents a native unsigned 8 bit integer in C.     |
+| [Uint16]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Uint16-class.html)                         | Represents a native unsigned 16 bit integer in C.    |
+| [Uint32]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Uint32-class.html)                         | Represents a native unsigned 32 bit integer in C.    |
+| [Uint64]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Uint64-class.html)                         | Represents a native unsigned 64 bit integer in C.    |
+| [Void]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Void-class.html)                             | Represents a void type in C.                         |
 {:.table .table-striped }
 
 #### Instantiable native types
@@ -212,12 +212,12 @@ and can't be instantiated in Dart code:
 The following native types can be used as markers in type signatures
 and they (or their subtypes) can be instantiated in Dart code:
 
-| **Dart type**                                                   | **Description**                                                  |
-|-----------------------------------------------------------------|------------------------------------------------------------------|
-| [Array]({{site.dart_api}}/stable/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
-| [Pointer]({{site.dart_api}}/stable/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
-| [Struct]({{site.dart_api}}/stable/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
-| [Union]({{site.dart_api}}/stable/dart-ffi/Union-class.html)     | The supertype of all FFI union types.                            |
+| **Dart type**                                                                               | **Description**                                                  |
+|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| [Array]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
+| [Pointer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
+| [Struct]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
+| [Union]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Union-class.html)     | The supertype of all FFI union types.                            |
 {:.table .table-striped }
 
 
@@ -230,13 +230,13 @@ you can use the [`package:ffigen`][ffigen] binding generator
 to automatically create FFI wrappers from C header files.
 
 
-[Abi]: {{site.dart_api}}/stable/dart-ffi/Abi-class.html
-[binding]: {{site.flutter_docs}}/development/platform-integration/c-interop
+[Abi]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
+[binding]: {{site.flutter-docs}}/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [hello_world]: {{page.hw}}
 [primitives]: {{page.samples}}/primitives
 [structs]: {{page.samples}}/structs
 [sqlite]: https://github.com/dart-lang/sdk/tree/main/samples/ffi/sqlite
 [mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
-[`NativeType`]: {{site.dart_api}}/stable/dart-ffi/NativeType-class.html
+[`NativeType`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeType-class.html
 [ffigen]: {{site.pub-pkg}}/ffigen

@@ -2,6 +2,7 @@
 permalink: /community
 title: Community and support
 description: Communities, mailing lists, and bug databases for the Dart project.
+group: https://groups.google.com/a/dartlang.org
 ---
 
 Track the Dart project, get help, and talk with other Dart developers.
@@ -12,7 +13,7 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## Stay informed
 
-[Dart announce]({{site.group}}/d/forum/announce)
+[Dart announce]({{page.group}}/d/forum/announce)
 : Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
@@ -42,10 +43,10 @@ Get answers and connect with Dart developers.
 
 #### Google Groups
 
-[General discussions]({{site.group}}/d/forum/misc)
+[General discussions]({{page.group}}/d/forum/misc)
 : Discuss miscellaneous Dart topics.
 
-[Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
 : Get help understanding the [Dart analyzer](/tools/dart-analyze).
 
 ## Contribute
@@ -63,7 +64,7 @@ Learn how to
   * [This site](https://github.com/dart-lang/site-www/)
     ([issue tracker](https://github.com/dart-lang/site-www/issues/))
 
-[Dart reviews]({{site.group}}/d/forum/reviews)
+[Dart reviews]({{page.group}}/d/forum/reviews)
 : High-traffic list of all core SDK code reviews.
 
 ## Additional community resources

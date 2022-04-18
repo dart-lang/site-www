@@ -28,7 +28,7 @@ then try the following:
   **allow cookies for dartpad.dev**.
   If you're using embedded DartPads,
   such as in the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet) or the
-  [implicit animations codelab]({{site.flutter_docs}}/codelabs/implicit-animations),
+  [implicit animations codelab]({{site.flutter-docs}}/codelabs/implicit-animations),
   you might need to allow cookies for the embedding site domain, as well
   (in these cases, **dart.dev** and **flutter.dev**, respectively).
 
