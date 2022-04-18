@@ -26,6 +26,10 @@
 - title: Language
   expanded: false
   children:
+    - title: Coming from...
+      children:
+        - title: JavaScript to Dart
+          permalink: /guides/language/from/js-to-dart
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Type system
