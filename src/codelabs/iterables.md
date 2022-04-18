@@ -1187,11 +1187,11 @@ here are some suggestions for where to go next:
 * Read the [Iterable API reference][iterable class]
   to learn about methods not covered by this codelab.
 
-[hashmap class]: {{site.dart_api}}/stable/dart-collection/HashMap-class.html
-[iterable class]: {{site.dart_api}}/stable/dart-core/Iterable-class.html
-[iterator class]: {{site.dart_api}}/stable/dart-core/Iterator-class.html
-[list class]: {{site.dart_api}}/stable/dart-core/List-class.html
-[map class]: {{site.dart_api}}/stable/dart-core/Map-class.html
-[set class]: {{site.dart_api}}/stable/dart-core/Set-class.html
-[StateError class]: {{site.dart_api}}/stable/dart-core/StateError-class.html
-[String class]: {{site.dart_api}}/stable/dart-core/String-class.html
+[hashmap class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/HashMap-class.html
+[iterable class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[iterator class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[list class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[map class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[StateError class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StateError-class.html
+[String class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
