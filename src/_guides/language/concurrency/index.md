@@ -238,7 +238,7 @@ In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
 Worse, the UI might become completely unresponsive.
 
-[jank]: {{site.flutter_docs}}/perf/rendering
+[jank]: {{site.flutter-docs}}/perf/rendering-performance
 
 
 ### Background workers
@@ -252,7 +252,7 @@ is spawning a simple worker isolate that
 performs a computation and then exits.
 The worker isolate returns its result in a message when the worker exits.
 
-[json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
 ![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
@@ -292,7 +292,7 @@ to implement isolates.
   move a single function call to a worker isolate.
 {{site.alert.end}}
 
- [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+ [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 
 ### Implementing a simple worker isolate

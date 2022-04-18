@@ -342,7 +342,7 @@ For more information about how language versioning works, see the
 [Dart FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
-[`flutter` tool]: {{site.flutter_docs}}/reference/flutter-cli
+[`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language tour]: /guides/language/language-tour

@@ -231,7 +231,7 @@ to automatically create FFI wrappers from C header files.
 
 
 [Abi]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
-[binding]: {{site.flutter_docs}}/development/platform-integration/c-interop
+[binding]: {{site.flutter-docs}}/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [hello_world]: {{page.hw}}
 [primitives]: {{page.samples}}/primitives

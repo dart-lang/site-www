@@ -14,7 +14,7 @@ as described in [Testing Flutter apps][].
 
 [testing documentation]: /guides/testing
 [`test` package]: {{site.pub-pkg}}/test
-[Testing Flutter apps]: {{site.flutter_docs}}/testing
+[Testing Flutter apps]: {{site.flutter-docs}}/testing
 
 {% include tools/dart-tool-note.md %}
 

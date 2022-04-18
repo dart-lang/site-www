@@ -40,7 +40,7 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 {{site.alert.end}}
 
 
@@ -285,7 +285,7 @@ use the `package:` prefix.
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
    [vector_math API
-   docs]({{site.pub}}/documentation/vector_math/latest),
+   docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
    {{site.alert.note}}

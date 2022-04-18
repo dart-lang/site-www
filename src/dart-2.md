@@ -167,9 +167,9 @@ environment:
 [dartdevc]: /tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
-[Flutter analyzer]: {{site.flutter_docs}}/testing/debugging#the-dart-analyzer
+[Flutter analyzer]: {{site.flutter-docs}}/testing/debugging#the-dart-analyzer
 [dart analyze]: /tools/dart-analyze
-[flutter pub upgrade]: {{site.flutter_docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
+[flutter pub upgrade]: {{site.flutter-docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-archive/dart2_fix
 [apiref]: {{site.dart_api}}/dev
@@ -180,7 +180,7 @@ environment:
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200---2018-08-07
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter SDK upgrade]: {{site.flutter_docs}}/development/tools/sdk/upgrading
+[Flutter SDK upgrade]: {{site.flutter-docs}}/development/tools/sdk/upgrading
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [prerelease]: /get-dart#release-channels
