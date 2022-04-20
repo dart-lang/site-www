@@ -664,7 +664,7 @@ that does the following:
 changeUsername() {}
 {$ end main.dart $}
 {$ begin solution.dart $}
-Future<String> changeUsername () async {
+Future<String> changeUsername() async {
   try {
     return await fetchNewUsername();
   } catch (err) {
