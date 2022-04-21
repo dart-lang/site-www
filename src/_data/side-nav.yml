@@ -26,7 +26,8 @@
 - title: Language
   expanded: false
   children:
-    - title: Coming from...
+    - title: Coming from ...
+      expanded: false
       children:
         - title: JavaScript to Dart
           permalink: /guides/language/from/js-to-dart
