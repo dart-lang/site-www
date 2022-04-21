@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=05dc283d949b7cdd58f37385e310973c2aaa52e0f8cda08a93a5e4812d225338; \
+    NODE_SHA256=9e7ae5cb709609546a44c5a17233a464db1c757e173d676c487b0653ac36c984; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
