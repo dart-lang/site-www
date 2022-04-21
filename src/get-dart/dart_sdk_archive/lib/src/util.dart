@@ -72,6 +72,7 @@ const Map<String, List<PlatformVariant>> platforms = {
   'Windows': [
     PlatformVariant('x64', ['Dart SDK']),
     PlatformVariant('IA32', ['Dart SDK']),
+    PlatformVariant('ARM64', ['Dart SDK']),
   ],
 };
 

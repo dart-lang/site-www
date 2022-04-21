@@ -169,6 +169,21 @@ class VersionSelector {
             // (earlier builds did not have trained snapshots).
             continue;
           }
+        } else if (name == 'Windows') {
+          if (platformVariant.architecture == 'ARM64') {
+            // No Windows arm64 SDK builds before 2.18.0-41.0.dev,
+            // and not in stable or beta yet.
+            // TODO: After this ships in stable 2.x, remove the stable check,
+            // and just test for versionInfo.version < Version(2,x,0).
+            if (versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
+              continue;
+            }
+
+            if (versionInfo.channel == 'stable' ||
+                versionInfo.channel == 'beta') {
+              continue;
+            }
+          }
         }
 
         // Build rows for all supported builds.
