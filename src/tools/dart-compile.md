@@ -250,20 +250,32 @@ they can have much slower startup than architecture-specific AOT output formats.
 ### JavaScript (js) {#js}
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
-For running and debugging during development,
-see the [`webdev serve`][] command.
 
-You usually use the [`webdev` tool][webdev] instead of
-directly using a Dart-to-JavaScript compiler.
-The [`webdev build`][] command, by default,
-produces deployable JavaScript.
-The [`webdev serve`][] command uses `dartdevc` by default, but you can switch
-to producing deployable JavaScript by using the `--release` flag.
+Here's an example of compiling a Dart application to JavaScript
+with many optimizations enabled:
 
-For more information on building and deploying JavaScript applications,
-see [Web deployment](/web/deployment).
+```terminal
+$ dart compile js -02 -o out/main.js web/main.dart
+```
+
+For more information on configuring the compiler, 
+see the [dart2js compiler options](/tools/dart2js#options).
+
+{{site.alert.note}}
+  You usually use the [`webdev` tool][webdev] instead of
+  directly using a Dart-to-JavaScript compiler.
+  The [`webdev build`][] command, by default,
+  also produces deployable JavaScript.
+  The [`webdev serve`][] command, by default,
+  uses the [dartdevc compiler][]
+  for running and debugging during development.
+{{site.alert.end}}
+
+To learn more about building and deploying JavaScript applications,
+check out [Web deployment](/web/deployment).
 
 [webdev]: /tools/webdev
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
+[dartdevc compiler]: /tools/dartdevc/faq
