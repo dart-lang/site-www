@@ -11,6 +11,7 @@ lets you run and debug your Dart web app in the Chrome browser.
 {{site.alert.note}}
   The dartdevc compiler is for _development_ only.
   Continue to use [dart2js](/tools/dart2js)
+  through [`dart compile js`](/tools/dart-compile#js) or the [`webdev`][] tool
   to compile for deployment.
 {{site.alert.end}}
 
@@ -31,7 +32,7 @@ refresh times with dartdevc are much faster than with dart2js.
 ## More information
 
 * [dartdevc: FAQ](/tools/dartdevc/faq)
-* [webdev][], which uses dartdevc by default when serving and testing web apps
+* [`webdev`][], which uses dartdevc by default when serving and testing web apps
 
 [serve]: /tools/webdev#serve
-[webdev]: /tools/webdev
+[`webdev`]: /tools/webdev

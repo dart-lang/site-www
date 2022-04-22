@@ -111,13 +111,14 @@ The following tools support developing web apps:
 : A CLI for Dart web app development,
   including building and serving web apps.
 
-[`dart2js`](/tools/dart2js)
+[dart2js](/tools/dart2js)
 : The original Dart-to-JavaScript compiler, with tree shaking.
-  IDEs and the `webdev` CLI use `dart2js` when building web apps for deployment.
+  IDEs, `dart compile js`, and the `webdev` CLI 
+  use dart2js when building web apps for deployment.
 
-[`dartdevc`](/tools/dartdevc)
+[dartdevc](/tools/dartdevc)
 : The Dart dev compiler, a modular Dart-to-JavaScript compiler.
-  IDEs and the `webdev` CLI use `dartdevc` when running a development server.
+  IDEs and the `webdev` CLI use dartdevc when running a development server.
 
 
 ## Tools for developing command-line apps and servers {#server}

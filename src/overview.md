@@ -234,13 +234,14 @@ turn runs in a browser — for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
 Dart web contains both an incremental dev compiler enabling a fast developer
-cycle, and an optimizing production compiler, `dart2js`, which compiles Dart
+cycle, and an optimizing production compiler, dart2js, which compiles Dart
 code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 More information:
 * [Get started: Web apps](/tutorials/web/get-started)
-* [`dartdevc` compiler](/tools/dartdevc)
+* [dart2js compiler](/tools/dart2js)
+* [dartdevc compiler](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 
