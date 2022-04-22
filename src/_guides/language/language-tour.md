@@ -2457,7 +2457,7 @@ That depends on the tools and framework you're using:
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
 * Development-only tools such as [dartdevc][]
   typically enable assertions by default.
-* Some tools, such as [`dart run`][] and [`dart2js`][]
+* Some tools, such as [`dart run`][] and [dart2js][]
   support assertions through a command-line flag: `--enable-asserts`.
 
 In production code, assertions are ignored, and
@@ -4623,7 +4623,7 @@ To learn more about Dart's core libraries, see
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
-[`dart2js`]: /tools/dart2js
+[dart2js]: /tools/dart2js
 [`dart run`]: /tools/dart-run
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
