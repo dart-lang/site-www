@@ -152,8 +152,7 @@ class VersionSelector {
               continue;
             }
 
-            if (versionInfo.channel == 'stable' ||
-                versionInfo.channel == 'beta') {
+            if (versionInfo.channel == 'stable') {
               continue;
             }
           }
