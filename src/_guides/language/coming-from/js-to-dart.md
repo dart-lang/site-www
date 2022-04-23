@@ -1370,7 +1370,7 @@ need hash values to be stored in a `Set`.
   check out the [`hashCode`][] property page.
 {{site.alert.end}}
 
-[`hashcode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
+[`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
 The following code snippet shows how to initialize a `Set`: 
 
@@ -1468,10 +1468,8 @@ every object contains a unique hash.
   In Dart, the hash value defaults to an instance
   of an object but you can override it to resemble
   a data class. For more information,
-  check out the [`hashCode`] property page.
+  check out the [`hashCode`][] property page.
 {{site.alert.end}}
-
-[`hashCode`]: {{site.dart-api}}/flutter/dart-core/Object/hashCode.html
 
 Here are a couple of simple `Map` examples,
 created using literals:
@@ -1903,9 +1901,9 @@ you have several different ways to create a stream.
 The `Stream` class has utility constructors for
 creating streams from `Future`s or `Iterable`s,
 or for creating streams that emit values at a timed interval.
-For more information, check out the [Stream][] API page.
+For more information, check out the [`Stream`][] API page.
 
-[Stream]: {{site.dart-api}}/dart-async/Stream-class.html
+[`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
 ##### StreamController
 
