@@ -1674,7 +1674,7 @@ to their JavaScript counterparts.
 
 ### Futures
 
-`Futures` are Dart's version of a `Promise`:
+`Future` is Dart's version of a `Promise`:
 an asynchronous operation that resolves at a later point. 
 
 Functions in Dart (or in packages that you use) might
@@ -1686,8 +1686,7 @@ in the same way in Dart as a promise works in JavaScript:
 
 _Dart_
 ```dart
-Future<String> httpResponseBody 
-  = func();
+Future<String> httpResponseBody = func();
 
 httpResponseBody.then((String value) {
   print('Future resolved to a value: $value');
@@ -1696,8 +1695,7 @@ httpResponseBody.then((String value) {
 
 _JavaScript_
 ```js
-const httpResponseBody 
-  = func();
+const httpResponseBody = func();
 
 httpResponseBody.then(value => {
   console.log(`Promise resolved to a value: ${value}`);
