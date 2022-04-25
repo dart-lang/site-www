@@ -447,7 +447,7 @@ check out the [Classes](#classes) section.
 
 Unlike vanilla JavaScript,
 Dart supports null safety, making any type non-nullable
-by default (as of Dart 2.0). One key benefit of this is
+by default (as of Dart 2.12). One key benefit of this is
 that null reference exceptions are caught when writing code,
 so they are unlikely to occur at runtime. 
 
