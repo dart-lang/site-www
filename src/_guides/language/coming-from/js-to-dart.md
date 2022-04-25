@@ -1395,17 +1395,9 @@ final names = <String>{};
 
 The following examples provide an overview of the
 basic actions that you can perform on a Dart `Set`.
-The first example shows how to retrieve a value
-from a `Set` using the index operator:
 
-_Dart_
-```dart
-final fruits = {'apple', 'orange', 'pear'};
-final fruit = fruits[1];
-```
-
-Add a value to the end of the `Set` using the
-`add` method. Use the `addAll` method to add multiple values:
+Add a value to the end of the `Set` using the `add` method. 
+Use the `addAll` method to add multiple values:
 
 _Dart_
 ```dart
