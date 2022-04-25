@@ -105,7 +105,7 @@ of the the following built-in types:
 * Lists (`List`, also known as arrays)
 * Sets (`Set`)
 * Maps (`Map`)
-* Symbols (`Symbols`)
+* Symbols (`Symbol`)
 * The value `null` (`Null`)
 
 For more information, check out
