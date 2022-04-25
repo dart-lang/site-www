@@ -1369,7 +1369,7 @@ need hash values to be stored in a `Set`.
   check out the [`hashCode`][] property page.
 {{site.alert.end}}
 
-[`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
+[`hashCode`]: {{site.dart_api}}/dart-core/Object/hashCode.html
 
 The following code snippet shows how to initialize a `Set`: 
 
@@ -1498,6 +1498,10 @@ _Dart_
 final gifts = {'first': 'partridge'};
 final gift = gifts['first'];
 ```
+
+{{site.alert.note}}
+  The index operator (`[]`) returns a **nullable** value.
+{{site.alert.end}}
 
 Use the `containsKey` method to check if a key
 is already present in the `Map`:
@@ -1902,7 +1906,7 @@ creating streams from `Future`s or `Iterable`s,
 or for creating streams that emit values at a timed interval.
 For more information, check out the [`Stream`][] API page.
 
-[`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
+[`Stream`]: {{site.dart_pi}}/dart-async/Stream-class.html
 
 ##### StreamController
 
@@ -1936,7 +1940,7 @@ stream.listen((int value) {
 });
 ```
 
-[`StreamController`]: {{site.dart-api}}/dart-async/StreamController-class.html
+[`StreamController`]: {{site.dart_api}}/dart-async/StreamController-class.html
 
 ##### Async generators
 
@@ -2833,3 +2837,15 @@ multi-platform applications from a single codebase),
 where you'll find in-depth information about the
 language and practical ways of getting started. 
 
+Some possible next steps:
+
+* [Language tour][] to learn more about the Dart language
+* [Library tour][] to learn about Dart's core libraries
+* [Dart codelabs][] for hands-on experience learning a variety of topics
+* [Effective Dart][] to learn about common conventions
+  and guidelines when writing Dart code
+
+[Language tour]:  /guides/language/language-tour
+[Library tour]:   /guides/libraries/library-tour
+[Dart codelabs]:  /codelabs
+[Effective Dart]: /guides/language/effective-dart
