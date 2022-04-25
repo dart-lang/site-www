@@ -99,7 +99,7 @@ checking for that identifier.
 Dart supports nullable and non-nullable versions
 of the the following built-in types:
 
-* Numbers (`int`, `double`)
+* Numbers (`num`, `int`, `double`)
 * Strings (`String`)
 * Booleans (`bool`)
 * Lists (`List`, also known as arrays)
