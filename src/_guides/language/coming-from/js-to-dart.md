@@ -643,7 +643,7 @@ parameters after an optional parameter.
 
 Due to null safety, optional positional parameters
 must have a default value or be marked as nullable.
-Learn more in the following section about null safety. 
+Learn more in the preceding section about [null safety](#null-safety). 
 
 The following code has one valid and two invalid examples
 of functions that define optional positional parameters:
