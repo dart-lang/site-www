@@ -1314,7 +1314,7 @@ Use `isEmpty` to check if the `List` is empty:
 
 _Dart_
 ```dart
-var fruits = {};
+var fruits = [];
 assert(fruits.isEmpty);
 ```
 
