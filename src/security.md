@@ -28,7 +28,7 @@ Dart's security strategy is based on five key pillars:
 To report a security issue, use [https://g.co/vulnz][].
 Coordination and disclosure happen in the [dart-lang GitHub repos][repos]
 (including [GitHub security advisories][]).
-Please include detailed description of the issue,
+Please include a detailed description of the issue,
 the steps you took to create the issue, affected versions, and any 
 mitigations for the issue.
 The Google Security Team will respond within 5 working days of
@@ -38,6 +38,7 @@ For more information about how Google handles security issues, see
 [Google’s security philosophy][].
 
 ##  Flagging existing issues as security-related
+
 If you believe that an existing issue is security-related, 
 we ask that you report it via [https://g.co/vulnz][] and include 
 the issue id in your report.
@@ -45,13 +46,16 @@ the issue id in your report.
 ## Supported versions
 
 We commit to publishing security updates for the version of Dart currently for 
-the most recent [stable](https://dart.dev/get-dart#release-channels) Dart release branch.
+the most recent [stable][] Dart release.
+
+[stable]: https://dart.dev/get-dart#release-channels
 
 ## Expectations
 
-We treat security issues equivalent to a P0 priority level and release a beta or
-hotfix for any major security issues found in the most recent stable version of 
-our SDK. 
+We treat security issues equivalent to a P0 priority level 
+and release a beta or patch fix
+for any major security issues found
+in the most recent stable release of the Dart SDK.
 Any vulnerability reported for Dart websites like dart.dev does not 
 require a release and will be fixed in the website itself.
 
