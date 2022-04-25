@@ -244,7 +244,7 @@ check out [Strings][] in the [Dart Language Tour][].
 
 As in JavaScript template literals,
 insert expressions into the string literal
-using the ${<expression>} syntax.
+using the `${<expression>}` syntax.
 Dart expands on this by allowing the curly braces
 to be omitted when the expression is a single identifier:
 
