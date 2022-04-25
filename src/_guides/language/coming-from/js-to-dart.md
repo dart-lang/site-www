@@ -1043,7 +1043,7 @@ different between the two languages:
 |----------------------------------------------------|---------------|--------------------|
 | Typecast (described below)                         | `var as T`    |                    |
 | True if the object has the specified type          | `var is T`    | `typeof var === T` |
-| True if the object doesn’t have the specified type | `var is! T` | ``typeof var !== T`  |
+| True if the object doesn’t have the specified type | `var is! T`   | `typeof var !== T` |
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj`
