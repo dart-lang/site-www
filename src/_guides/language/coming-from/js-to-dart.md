@@ -1019,7 +1019,7 @@ work in the same way:
 
 Unlike JavaScript,
 Dart doesn’t have the concept of abstract equality,
-so the `==` and `!=` operators aren't available.
+so the `==` and `!=` JavaScript operators have no equivalent.
 
 For example:
 
