@@ -2753,7 +2753,7 @@ var manager = NumberManager<String>();
 
 ### Generics in literals
 
-`Map`-, `Set`- and `List` literals can explicitly
+`Map`, `Set`, and `List` literals can explicitly
 declare generic types, which is useful when the
 type isn’t inferred or is incorrectly inferred. 
 
