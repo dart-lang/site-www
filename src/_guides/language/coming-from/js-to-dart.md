@@ -84,7 +84,7 @@ check out [Effective Dart][] and [Linter rules][].
 [Effective Dart]: /guides/language/effective-dart 
 [Linter rules]: /tools/linter-rules
 [Prettier]: https://prettier.io/
-[Using trailing commas]: {{site.flutter}}/development/tools/formatting#using-trailing-commas
+[Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
 
 ## Built-in types
