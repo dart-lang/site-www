@@ -2665,6 +2665,7 @@ a = 2; // Throws a runtime exception `a` is already initialized.
 ```
 
 ## Generics 
+
 While Vanilla JavaScript doesn’t offer generics,
 they are available in Dart to improve type safety
 and reduce code duplication. 
