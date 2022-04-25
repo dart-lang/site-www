@@ -46,8 +46,7 @@ and many different standards and configurations,
 Dart has official layout conventions and includes
 a linter to make compliance effortless.
 To customize the lint rules for your project,
-follow the [Customizing static analysis][]
-instructions on dart.dev.
+follow the [Customizing static analysis][] instructions.
 
 {{site.alert.secondary}}
   **Pro tip:** Dart provides [`dart fix`][],
