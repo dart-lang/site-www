@@ -601,7 +601,7 @@ For example, the following `isNoble` functions are equivalent:
 
 _Dart_
 ```dart
-isNoble(atomicNumber) {
+bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
 ```
