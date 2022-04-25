@@ -250,8 +250,9 @@ to be omitted when the expression is a single identifier:
 
 _Dart_
 ```dart
-var str = 'I eat $food'; // "I eat $food".
-var str = 'I eat ${food}'; // "I eat ${food}".
+var food = 'bread';
+var str = 'I eat $food'; // I eat bread
+var str = 'I eat ${food}'; // I eat bread
 ```
 
 #### String concatenation and multiline declaration
