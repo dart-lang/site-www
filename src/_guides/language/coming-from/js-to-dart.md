@@ -943,20 +943,19 @@ class Box {
 The equality and relational operators of both languages
 are almost identical, as shown in the following table:
 
-|---------------------------------------------------+---------------+---------------|
-| Meaning                                           | Dart operator | JS equivalent |
-|---------------------------------------------------|---------------|---------------|
-| Add                                               | `+`             | `+`         |
-| Subtract                                          | `-`             | `-`         |
-| Unary minus, also known as negation               | `-expr`         | `-expr`     |
-| Multiply                                          | `*`             | `*`         |
-| Divide                                            | `/`             | `/`         |
-| Divide returning an integer result                | `~/`            |             |
-| Get the remainder of an integer division (modulo) | `%`             | `%`         |
-| `var = var + 1` (expression value is `var + 1`)   | `++var`         | `++var`     |
-| `var = var + 1` (expression value is `var`)       | `var++`         | `var++`     |
-| `var = var - 1` (expression value is `var - 1`)   | `--var`         | `--var`     |
-| `var = var - 1` (expression value is `var`)       | `var--`         | `var--`     |
+| Meaning                                           | Dart operator   | JS equivalent |
+|---------------------------------------------------|-----------------|---------------|
+| Add                                               | `+`             | `+`           |
+| Subtract                                          | `-`             | `-`           |
+| Unary minus, also known as negation               | `-expr`         | `-expr`       |
+| Multiply                                          | `*`             | `*`           |
+| Divide                                            | `/`             | `/`           |
+| Divide returning an integer result                | `~/`            |               |
+| Get the remainder of an integer division (modulo) | `%`             | `%`           |
+| `var = var + 1` (expression value is `var + 1`)   | `++var`         | `++var`       |
+| `var = var + 1` (expression value is `var`)       | `var++`         | `var++`       |
+| `var = var - 1` (expression value is `var - 1`)   | `--var`         | `--var`       |
+| `var = var - 1` (expression value is `var`)       | `var--`         | `var--`       |
 {:.table .table-striped}
 
 
@@ -1004,7 +1003,6 @@ assert(25 == 51.6 ~/ 2);
 The equality and relational operators of both languages
 work in the same way:
 
-|-------------------------------+---------------+---------------|
 | Meaning                       | Dart operator | JS equivalent |
 |-------------------------------|---------------|---------------|
 | Strict equal                  | `==`          | `===`         |
@@ -1038,7 +1036,6 @@ assert(2 <= 3);
 The implementation of test operators is a bit
 different between the two languages: 
 
-|----------------------------------------------------+---------------+--------------------|
 | Meaning                                            | Dart operator | JS equivalent      |
 |----------------------------------------------------|---------------|--------------------|
 | Typecast (described below)                         | `var as T`    |                    |
@@ -1084,14 +1081,13 @@ You can invert or combine boolean expressions
 using logical operators. The logical operators
 of both languages are identical.
 
-|----------------------------------------------------+---------------+--------------------|
-| Meaning                                            | Dart operator | JS equivalent      |
-|----------------------------------------------------|---------------|--------------------|
-| Inverts the following expression (changes false to true, and vice versa) | `!var` | `!var`  |
-| Logical OR  | `||` | `||` |
-| Logical AND | `&&` | `&&` |
+|--------------------------------------------------------------------------|---------------|---------------|
+| Meaning                                                                  | Dart operator | JS equivalent |
+|--------------------------------------------------------------------------|---------------|---------------|
+| Inverts the following expression (changes false to true, and vice versa) | `!var`        | `!var`        |
+| Logical OR                                                               | `||`          | `||`          |
+| Logical AND                                                              | `&&`          | `&&`          |
 {:.table .table-striped}
-
 
 Dart does not have the concept of "truthy" or "falsy"
 values&mdash;only actual booleans. Because of this,
@@ -1115,17 +1111,16 @@ by using bitwise and shift operators with integers.
 The operators of both languages are almost identical,
 as shown in the following table:
 
-
-|----------------------------------------------------+---------------+--------------------|
-| Meaning                                            | Dart operator | JS equivalent      |
-|----------------------------------------------------|---------------|--------------------|
-| Bitwise AND | `&`  | `&`  |
-| Bitwise OR  | `|`  | `|`  |
-| Bitwise XOR | `^`  | `^`  |
-| Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr` | `~expr` |
-| Shift left  | `<<` | `<<` |
-| Shift right | `>>` | `>>` |
-| Unsigned shift right | `>>>` | `>>>` |
+|-------------------------------------------------------|---------------|---------------|
+| Meaning                                               | Dart operator | JS equivalent |
+|-------------------------------------------------------|---------------|---------------|
+| Bitwise AND                                           | `&`           | `&`           |
+| Bitwise OR                                            | `|`           | `|`           |
+| Bitwise XOR                                           | `^`           | `^`           |
+| Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr`       | `~expr`       |
+| Shift left                                            | `<<`          | `<<`          |
+| Shift right                                           | `>>`          | `>>`          |
+| Unsigned shift right                                  | `>>>`         | `>>>`         |
 {:.table .table-striped}
 
 For example: 
