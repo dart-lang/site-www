@@ -1396,7 +1396,7 @@ final names = <String>{};
 The following examples provide an overview of the
 basic actions that you can perform on a Dart `Set`.
 
-Add a value to the end of the `Set` using the `add` method. 
+Add a value to the `Set` using the `add` method. 
 Use the `addAll` method to add multiple values:
 
 _Dart_
