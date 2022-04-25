@@ -1081,7 +1081,7 @@ You can invert or combine boolean expressions
 using logical operators. The logical operators
 of both languages are identical.
 
-|--------------------------------------------------------------------------|---------------|---------------|
+|--------------------------------------------------------------------------+---------------+---------------|
 | Meaning                                                                  | Dart operator | JS equivalent |
 |--------------------------------------------------------------------------|---------------|---------------|
 | Inverts the following expression (changes false to true, and vice versa) | `!var`        | `!var`        |
@@ -1111,7 +1111,7 @@ by using bitwise and shift operators with integers.
 The operators of both languages are almost identical,
 as shown in the following table:
 
-|-------------------------------------------------------|---------------|---------------|
+|-------------------------------------------------------+---------------+---------------|
 | Meaning                                               | Dart operator | JS equivalent |
 |-------------------------------------------------------|---------------|---------------|
 | Bitwise AND                                           | `&`           | `&`           |
