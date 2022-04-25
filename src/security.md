@@ -8,7 +8,8 @@ This page describes how to report any vulnerabilities that you find,
 and lists best practices to minimize the risk of introducing a vulnerability.
 
 ## Security philosophy
-Flutter security strategy is based on five key pillars
+
+Dart's security strategy is based on five key pillars:
 
 * **Identify**: Track & prioritize key security risks by identifying core assets, 
 key threats and vulnerabilities. 
