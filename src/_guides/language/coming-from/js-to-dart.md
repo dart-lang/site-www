@@ -33,7 +33,7 @@ it might take a while to learn how to write null safe code,
 but the trade-off is better protection against
 null reference exceptions that are detected even
 before compiling Dart code. (Thereby avoiding those
-dreaded `TypeErrors` that occur when doing operations
+dreaded `TypeError`s that occur when doing operations
 on a JS variable that turns out to be null.)
 
 ## Conventions and linting
