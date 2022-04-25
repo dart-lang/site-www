@@ -1589,7 +1589,7 @@ collections like arrays, sets, or dictionaries immutable:
   of the `Set` to be modified:<br>
   `final fruits = <String>{'apple', 'orange', 'pear'};`
 * Create a final version of your collection type
-  using the unmodifiable constructor
+  using the `unmodifiable` constructor
   (as shown in the following example).
   This creates a collection that cannot change its size or content: 
 
