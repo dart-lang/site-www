@@ -12,23 +12,23 @@ and lists best practices to minimize the risk of introducing a vulnerability.
 Dart's security strategy is based on five key pillars:
 
 * **Identify**: Track & prioritize key security risks by identifying core assets, 
-key threats and vulnerabilities. 
+  key threats and vulnerabilities. 
 * **Detect**: Detect and identify vulnerabilities using techniques and tools like
- vulnerability scanning,
+  vulnerability scanning,
   static application security testing and fuzzing.
 * **Protect**: Eliminate risks by mitigating known vulnerabilities and protect 
-critical assets against source threats.
+  critical assets against source threats.
 * **Respond**: Define processes to report, triage and respond to vulnerabilities 
-or attacks.
+  or attacks.
 * **Recover**: Build capabilities to contain and recover from an incident with 
-minimal impact.
+  minimal impact.
 
 ## Reporting vulnerabilities
 
 To report a security issue, use [https://g.co/vulnz][].
 Coordination and disclosure happen in the [dart-lang GitHub repos][repos]
 (including [GitHub security advisories][]).
-Please include proper description of the issue,
+Please include detailed description of the issue,
 the steps you took to create the issue, affected versions, and any 
 mitigations for the issue.
 The Google Security Team will respond within 5 working days of
@@ -44,8 +44,8 @@ the issue id in your report.
 
 ## Supported versions
 
-We commit to publishing security updates for the version of Dart 
-currently on the `stable` branch.
+We commit to publishing security updates for the version of Dart currently for 
+the most recent [stable](https://dart.dev/get-dart#release-channels) Dart release branch.
 
 ## Expectations
 
