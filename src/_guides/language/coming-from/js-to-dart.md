@@ -229,7 +229,7 @@ check out [Runes and grapheme clusters][].
 #### String interpolation
 
 JavaScript supports template literals,
-which are literals delimited with backtick (`\``) characters,
+which are literals delimited with backtick (`` ` ``) characters,
 allowing for multiline strings,
 for string interpolation with embedded expressions,
 and for special constructs called tagged templates.
