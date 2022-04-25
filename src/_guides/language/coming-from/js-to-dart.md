@@ -1485,7 +1485,7 @@ final nobleGases = {
 The following code samples provide an overview of the
 basic actions that you can perform on a Dart `Map`.
 The first example shows how to retrieve a value from
-a `Map` using the key operator:
+a `Map` using the index operator:
 
 _Dart_
 ```dart
