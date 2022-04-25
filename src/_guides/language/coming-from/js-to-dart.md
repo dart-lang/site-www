@@ -2800,7 +2800,7 @@ to block comments spanning multiple lines.
 
 In addition to regular comments,
 Dart also has [doc comments][] that work in tandem
-with [dartdoc][]: a first party tool that generates
+with [`dart doc`][]: a first party tool that generates
 HTML documentation for Dart packages.
 It's considered best practice to place doc comments
 above all declarations for public members.
@@ -2814,7 +2814,7 @@ _Dart_
 int get length => ...
 ```
 
-[dartdoc]: /tools/dart-doc
+[`dart doc`]: /tools/dart-doc
 [doc comments]: /guides/language/effective-dart/documentation#doc-comments
 
 ## Next steps
