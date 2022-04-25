@@ -14,8 +14,8 @@ as both languages share many concepts.
 
 Like JavaScript, Dart runs on an event loop,
 so both languages execute code in a similar way.
-For example, asynchronous concepts like `Futures`
-(`Promises` in JS) and the `async/await` syntax are very similar.
+For example, asynchronous concepts like futures
+(promises in JS) and the `async/await` syntax are very similar.
 
 Dart is strongly typed, unlike JavaScript.
 If you are also familiar with TypeScript or tooling
