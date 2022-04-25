@@ -27,7 +27,7 @@ The good news is that since Dart is strongly typed,
 many errors that might exist in JavaScript code are
 caught even before compiling your Dart code.
 
-As of Dart 2.0, null safety is enabled by default,
+As of Dart 2.12, null safety is enabled by default,
 which JavaScript doesn't support. As a JavaScript developer,
 it might take a while to learn how to write null safe code,
 but the trade-off is better protection against
