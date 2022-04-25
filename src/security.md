@@ -11,16 +11,16 @@ and lists best practices to minimize the risk of introducing a vulnerability.
 
 Dart's security strategy is based on five key pillars:
 
-* **Identify**: Track & prioritize key security risks by identifying core assets, 
+- **Identify**: Track & prioritize key security risks by identifying core assets, 
   key threats and vulnerabilities. 
-* **Detect**: Detect and identify vulnerabilities using techniques and tools like
+- **Detect**: Detect and identify vulnerabilities using techniques and tools like
   vulnerability scanning,
   static application security testing and fuzzing.
-* **Protect**: Eliminate risks by mitigating known vulnerabilities and protect 
+- **Protect**: Eliminate risks by mitigating known vulnerabilities and protect 
   critical assets against source threats.
-* **Respond**: Define processes to report, triage and respond to vulnerabilities 
+- **Respond**: Define processes to report, triage and respond to vulnerabilities 
   or attacks.
-* **Recover**: Build capabilities to contain and recover from an incident with 
+- **Recover**: Build capabilities to contain and recover from an incident with 
   minimal impact.
 
 ## Reporting vulnerabilities
