@@ -104,7 +104,7 @@ and dartdevc recompiles only the modules that are affected by those changes.
 Are the implementation files for your package under `lib/src`?
 If not, dartdevc is probably creating too many modules.
 For more information, see
-[How are the modules created?](#how-are-the-modules-created)
+[How are the modules created?](#how-the-modules-are-created)
 
 
 ### Producing too many JavaScript files
@@ -112,7 +112,7 @@ For more information, see
 This happens when dartdevc is creating too many modules.
 Are the implementation files for your package under `lib/src`?
 For more information, see
-[How are the modules created?](#how-are-the-modules-created)
+[How are the modules created?](#how-the-modules-are-created)
 
 
 ### Doesn't lazily load deferred libraries
@@ -148,7 +148,7 @@ Addy Osmani’s
 [article on writing modular JavaScript.](https://addyosmani.com/writing-modular-js/)
 
 
-### How JavaScript modules are created from Dart code
+### How the modules are created
 
 When you use a webdev command with dartdevc,
 a heuristic that's based on package structure
