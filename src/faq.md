@@ -247,6 +247,8 @@ the last two major releases of the following browsers:
   * Safari
 
 The _development_ compiler ([dartdevc][]) supports only Chrome.
+You _might_ be able to use other modern browsers
+(Chromium Edge, Firefox, and Safari).
 
 ### Q. Is Dart supported by my browser?
 

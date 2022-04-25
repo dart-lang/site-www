@@ -64,6 +64,7 @@ As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 ```terminal
 $ dart pub get
 ```
+
 ## Using webdev and build_runner commands
 
 This section describes how to use the following commands:

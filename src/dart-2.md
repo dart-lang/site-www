@@ -43,8 +43,8 @@ and web development tools have changed.
   Instead, use the [new build system.][build system]
 * Tools related to web development have changed.
   * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
-  * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
-
+  * Dartium is no longer supported. 
+    Instead, use the [`webdev` tool][] and Chrome.
 
 ## Migrating your code {#migration}
 
@@ -164,7 +164,7 @@ environment:
   using Travis to perform continuous integration (CI) testing
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
-[dartdevc]: /tools/dartdevc
+[`webdev` tool]: /tools/webdev
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [Flutter analyzer]: {{site.flutter-docs}}/testing/debugging#the-dart-analyzer

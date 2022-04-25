@@ -22,13 +22,14 @@ These changes are necessary because of the following:
 The development environment for web apps is different in Dart 2 from Dart 1.x.
 Here are the highlights:
 
+| **Dart 1.x**           | **Dart 2**                                                 |
+|------------------------|------------------------------------------------------------|
+| Dartium, content shell | Chrome and the [`webdev` tool](/tools/webdev)              |
+| `pub build`            | [`webdev build`](/tools/webdev#build)                      |
+| `pub serve`            | [`webdev serve`](/tools/webdev#serve)                      |
+| `pub run angular_test` | `dart run build_runner test -- -p chrome`                  |
+| pub transformers       | [build][] package transformers. See: [Transforming code][] |
 {:.table .table-striped}
-| **Dart 1.x** | **Dart 2** |
-| Dartium, content shell | Chrome and [dartdevc][] |
-| `pub build` | [`webdev build`](/tools/webdev#build) |
-| `pub serve` | [`webdev serve`](/tools/webdev#serve) |
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. |
-| pub transformers | [build][] package transformers. See: [Transforming code][] |
 
 ## Code
 
@@ -92,6 +93,5 @@ information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 [angular-examples/toh-5]: https://github.com/googlearchive/toh-5/compare/4.x...master
 [build]: https://github.com/dart-lang/build
 [dart-2]: /dart-2
-[dartdevc]: /tools/dartdevc
 [Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
 [Transforming code]: https://github.com/dart-lang/build/blob/master/docs/transforming_code.md

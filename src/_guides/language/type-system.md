@@ -254,7 +254,7 @@ void main() {
 
 ## Runtime checks
 
-Runtime checks in the Dart VM and [dartdevc][]
+Runtime checks in the Dart VM and in web apps compiled with [dartdevc][]
 deal with type safety issues that the analyzer can't catch.
 
 For example, the following code throws an exception at runtime

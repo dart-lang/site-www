@@ -241,7 +241,7 @@ elimination.
 More information:
 * [Get started: Web apps](/tutorials/web/get-started)
 * [dart2js compiler](/tools/dart2js)
-* [dartdevc compiler](/tools/dartdevc)
+* [dartdevc](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 

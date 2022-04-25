@@ -89,7 +89,7 @@ Common options for the dart2js compiler include:
     are safe for all programs.
     {{site.alert.note}}
       With `-O2`, string representations of types are no longer the same as
-      those in the Dart VM and with [the dartdevc compiler][dartdevc].
+      those in the Dart VM and when compiled with [dartdevc][].
     {{site.alert.end}}
   * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
     {{site.alert.warning}}
