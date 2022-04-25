@@ -56,8 +56,8 @@ follow the [Customizing static analysis][] instructions.
 Dart also provides a code formatter,
 which is similar to JS tools like [Prettier][].
 Automatically format any Dart project by running
-`dart format` on the command line. For Flutter,
-`flutter format` acts as an alias for this command.
+[`dart format`](/tools/dart-format) on the command line. 
+For Flutter, `flutter format` acts as an alias for this command.
 (Note that the IDE plugins for Dart and Flutter
 also provide this functionality.)
 
