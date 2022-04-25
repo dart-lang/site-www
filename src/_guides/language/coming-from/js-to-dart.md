@@ -2604,7 +2604,7 @@ reserved for code generators.
 
 [avoid doing so]: /guides/libraries/create-library-packages#organizing-a-library-package
 
-### Late fields 
+### Late variables
 
 Assign the `late` keyword to class fields to
 indicate they are initialized at a later point,
