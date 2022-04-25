@@ -2826,7 +2826,8 @@ int get length => ...
 This guide has introduced you to the major differences
 between Dart and JavaScript. At this point,
 you might consider moving to the general documentation
-for Dart or Flutter (an open-source framework that
+for Dart or [Flutter]({{site.flutter}}) 
+(an open-source framework that
 uses Dart for building beautiful, natively compiled,
 multi-platform applications from a single codebase),
 where you'll find in-depth information about the
