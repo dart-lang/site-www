@@ -64,7 +64,7 @@ Dart does not have a bug bounty program.
 ## Receiving security updates
 
 The best way to receive security updates is to subscribe to the 
-[dart-announce](https://groups.google.com/a/google.com/g/dart-announce) 
+[dart-announce](https://groups.google.com/a/dartlang.org/g/announce) 
 mailing list.
 We will also announce security updates in the technical release blog post.
 
