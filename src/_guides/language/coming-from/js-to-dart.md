@@ -1209,7 +1209,7 @@ using the cascade operator:
 
 _Dart_
 ```dart
-var animal = new Animal()
+var animal = Animal()
   ..name = "Bob"
   ..age = 5
   ..feed()
