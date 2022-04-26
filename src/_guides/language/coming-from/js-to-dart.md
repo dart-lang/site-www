@@ -244,14 +244,15 @@ check out [Strings][] in the [Dart Language Tour][].
 
 As in JavaScript template literals,
 insert expressions into the string literal
-using the ${<expression>} syntax.
+using the `${<expression>}` syntax.
 Dart expands on this by allowing the curly braces
 to be omitted when the expression is a single identifier:
 
 _Dart_
 ```dart
-var str = 'I eat $food'; // "I eat $food".
-var str = 'I eat ${food}'; // "I eat ${food}".
+var food = 'bread';
+var str = 'I eat $food'; // I eat bread
+var str = 'I eat ${food}'; // I eat bread
 ```
 
 #### String concatenation and multiline declaration
@@ -446,7 +447,7 @@ check out the [Classes](#classes) section.
 
 Unlike vanilla JavaScript,
 Dart supports null safety, making any type non-nullable
-by default (as of Dart 2.0). One key benefit of this is
+by default (as of Dart 2.12). One key benefit of this is
 that null reference exceptions are caught when writing code,
 so they are unlikely to occur at runtime. 
 
@@ -600,7 +601,7 @@ For example, the following `isNoble` functions are equivalent:
 
 _Dart_
 ```dart
-isNoble(atomicNumber) {
+bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
 ```
@@ -642,7 +643,7 @@ parameters after an optional parameter.
 
 Due to null safety, optional positional parameters
 must have a default value or be marked as nullable.
-Learn more in the following section about null safety. 
+Learn more in the preceding section about [null safety](#null-safety). 
 
 The following code has one valid and two invalid examples
 of functions that define optional positional parameters:
@@ -942,20 +943,19 @@ class Box {
 The equality and relational operators of both languages
 are almost identical, as shown in the following table:
 
-|---------------------------------------------------+---------------+---------------|
-| Meaning                                           | Dart operator | JS equivalent |
-|---------------------------------------------------|---------------|---------------|
-| Add                                               | `+`             | `+`         |
-| Subtract                                          | `-`             | `-`         |
-| Unary minus, also known as negation               | `-expr`         | `-expr`     |
-| Multiply                                          | `*`             | `*`         |
-| Divide                                            | `/`             | `/`         |
-| Divide returning an integer result                | `~/`            |             |
-| Get the remainder of an integer division (modulo) | `%`             | `%`         |
-| `var = var + 1` (expression value is `var + 1`)   | `++var`         | `++var`     |
-| `var = var + 1` (expression value is `var`)       | `var++`         | `var++`     |
-| `var = var - 1` (expression value is `var - 1`)   | `--var`         | `--var`     |
-| `var = var - 1` (expression value is `var`)       | `var--`         | `var--`     |
+| Meaning                                           | Dart operator   | JS equivalent |
+|---------------------------------------------------|-----------------|---------------|
+| Add                                               | `+`             | `+`           |
+| Subtract                                          | `-`             | `-`           |
+| Unary minus, also known as negation               | `-expr`         | `-expr`       |
+| Multiply                                          | `*`             | `*`           |
+| Divide                                            | `/`             | `/`           |
+| Divide returning an integer result                | `~/`            |               |
+| Get the remainder of an integer division (modulo) | `%`             | `%`           |
+| `var = var + 1` (expression value is `var + 1`)   | `++var`         | `++var`       |
+| `var = var + 1` (expression value is `var`)       | `var++`         | `var++`       |
+| `var = var - 1` (expression value is `var - 1`)   | `--var`         | `--var`       |
+| `var = var - 1` (expression value is `var`)       | `var--`         | `var--`       |
 {:.table .table-striped}
 
 
@@ -1003,7 +1003,6 @@ assert(25 == 51.6 ~/ 2);
 The equality and relational operators of both languages
 work in the same way:
 
-|-------------------------------+---------------+---------------|
 | Meaning                       | Dart operator | JS equivalent |
 |-------------------------------|---------------|---------------|
 | Strict equal                  | `==`          | `===`         |
@@ -1018,7 +1017,7 @@ work in the same way:
 
 Unlike JavaScript,
 Dart doesn’t have the concept of abstract equality,
-so the `==` and `!=` operators aren't available.
+so the `==` and `!=` JavaScript operators have no equivalent.
 
 For example:
 
@@ -1037,12 +1036,11 @@ assert(2 <= 3);
 The implementation of test operators is a bit
 different between the two languages: 
 
-|----------------------------------------------------+---------------+--------------------|
 | Meaning                                            | Dart operator | JS equivalent      |
 |----------------------------------------------------|---------------|--------------------|
 | Typecast (described below)                         | `var as T`    |                    |
 | True if the object has the specified type          | `var is T`    | `typeof var === T` |
-| True if the object doesn’t have the specified type | `var is! T` | ``typeof var !== T`  |
+| True if the object doesn’t have the specified type | `var is! T`   | `typeof var !== T` |
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj`
@@ -1083,14 +1081,13 @@ You can invert or combine boolean expressions
 using logical operators. The logical operators
 of both languages are identical.
 
-|----------------------------------------------------+---------------+--------------------|
-| Meaning                                            | Dart operator | JS equivalent      |
-|----------------------------------------------------|---------------|--------------------|
-| Inverts the following expression (changes false to true, and vice versa) | `!var` | `!var`  |
-| Logical OR  | `||` | `||` |
-| Logical AND | `&&` | `&&` |
+|--------------------------------------------------------------------------+---------------+---------------|
+| Meaning                                                                  | Dart operator | JS equivalent |
+|--------------------------------------------------------------------------|---------------|---------------|
+| Inverts the following expression (changes false to true, and vice versa) | `!var`        | `!var`        |
+| Logical OR                                                               | `||`          | `||`          |
+| Logical AND                                                              | `&&`          | `&&`          |
 {:.table .table-striped}
-
 
 Dart does not have the concept of "truthy" or "falsy"
 values&mdash;only actual booleans. Because of this,
@@ -1114,17 +1111,16 @@ by using bitwise and shift operators with integers.
 The operators of both languages are almost identical,
 as shown in the following table:
 
-
-|----------------------------------------------------+---------------+--------------------|
-| Meaning                                            | Dart operator | JS equivalent      |
-|----------------------------------------------------|---------------|--------------------|
-| Bitwise AND | `&`  | `&`  |
-| Bitwise OR  | `|`  | `|`  |
-| Bitwise XOR | `^`  | `^`  |
-| Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr` | `~expr` |
-| Shift left  | `<<` | `<<` |
-| Shift right | `>>` | `>>` |
-| Unsigned shift right | `>>>` | `>>>` |
+|-------------------------------------------------------+---------------+---------------|
+| Meaning                                               | Dart operator | JS equivalent |
+|-------------------------------------------------------|---------------|---------------|
+| Bitwise AND                                           | `&`           | `&`           |
+| Bitwise OR                                            | `|`           | `|`           |
+| Bitwise XOR                                           | `^`           | `^`           |
+| Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr`       | `~expr`       |
+| Shift left                                            | `<<`          | `<<`          |
+| Shift right                                           | `>>`          | `>>`          |
+| Unsigned shift right                                  | `>>>`         | `>>>`         |
 {:.table .table-striped}
 
 For example: 
@@ -1185,7 +1181,8 @@ back to that same variable:
 | `=`  | `*=`  | `%=`  | `>>>=` | `^=` |
 | `+=` | `/=`  | `<<=` | `&=`   | `|=` |
 | `-=` | `~/=` | `>>=` |        |      |
- 
+{:.table} 
+
 _Dart_
 ```dart
 var a = 5;
@@ -1207,7 +1204,7 @@ using the cascade operator:
 
 _Dart_
 ```dart
-var animal = new Animal()
+var animal = Animal()
   ..name = "Bob"
   ..age = 5
   ..feed()
@@ -1312,7 +1309,7 @@ Use `isEmpty` to check if the `List` is empty:
 
 _Dart_
 ```dart
-var fruits = {};
+var fruits = [];
 assert(fruits.isEmpty);
 ```
 
@@ -1393,17 +1390,9 @@ final names = <String>{};
 
 The following examples provide an overview of the
 basic actions that you can perform on a Dart `Set`.
-The first example shows how to retrieve a value
-from a `Set` using the index operator:
 
-_Dart_
-```dart
-final fruits = {'apple', 'orange', 'pear'};
-final fruit = fruits[1];
-```
-
-Add a value to the end of the `Set` using the
-`add` method. Use the `addAll` method to add multiple values:
+Add a value to the `Set` using the `add` method. 
+Use the `addAll` method to add multiple values:
 
 _Dart_
 ```dart
@@ -1491,7 +1480,7 @@ final nobleGases = {
 The following code samples provide an overview of the
 basic actions that you can perform on a Dart `Map`.
 The first example shows how to retrieve a value from
-a `Map` using the key operator:
+a `Map` using the index operator:
 
 _Dart_
 ```dart
@@ -1595,7 +1584,7 @@ collections like arrays, sets, or dictionaries immutable:
   of the `Set` to be modified:<br>
   `final fruits = <String>{'apple', 'orange', 'pear'};`
 * Create a final version of your collection type
-  using the unmodifiable constructor
+  using the `unmodifiable` constructor
   (as shown in the following example).
   This creates a collection that cannot change its size or content: 
 
@@ -1680,7 +1669,7 @@ to their JavaScript counterparts.
 
 ### Futures
 
-`Futures` are Dart's version of a `Promise`:
+`Future` is Dart's version of a `Promise`:
 an asynchronous operation that resolves at a later point. 
 
 Functions in Dart (or in packages that you use) might
@@ -1692,8 +1681,7 @@ in the same way in Dart as a promise works in JavaScript:
 
 _Dart_
 ```dart
-Future<String> httpResponseBody 
-  = func();
+Future<String> httpResponseBody = func();
 
 httpResponseBody.then((String value) {
   print('Future resolved to a value: $value');
@@ -1702,8 +1690,7 @@ httpResponseBody.then((String value) {
 
 _JavaScript_
 ```js
-const httpResponseBody 
-  = func();
+const httpResponseBody = func();
 
 httpResponseBody.then(value => {
   console.log(`Promise resolved to a value: ${value}`);
@@ -2099,7 +2086,6 @@ _Dart_
 ```dart
 const double xOrigin = 0;
 const double yOrigin = 0;
-
 
 class Point {
   double x = 0;
@@ -2613,7 +2599,7 @@ reserved for code generators.
 
 [avoid doing so]: /guides/libraries/create-library-packages#organizing-a-library-package
 
-### Late fields 
+### Late variables
 
 Assign the `late` keyword to class fields to
 indicate they are initialized at a later point,
@@ -2674,6 +2660,7 @@ a = 2; // Throws a runtime exception `a` is already initialized.
 ```
 
 ## Generics 
+
 While Vanilla JavaScript doesn’t offer generics,
 they are available in Dart to improve type safety
 and reduce code duplication. 
@@ -2761,7 +2748,7 @@ var manager = NumberManager<String>();
 
 ### Generics in literals
 
-`Map`-, `Set`- and `List` literals can explicitly
+`Map`, `Set`, and `List` literals can explicitly
 declare generic types, which is useful when the
 type isn’t inferred or is incorrectly inferred. 
 
@@ -2808,7 +2795,7 @@ to block comments spanning multiple lines.
 
 In addition to regular comments,
 Dart also has [doc comments][] that work in tandem
-with [dartdoc][]: a first party tool that generates
+with [`dart doc`][]: a first party tool that generates
 HTML documentation for Dart packages.
 It's considered best practice to place doc comments
 above all declarations for public members.
@@ -2822,7 +2809,7 @@ _Dart_
 int get length => ...
 ```
 
-[dartdoc]: /tools/dart-doc
+[`dart doc`]: /tools/dart-doc
 [doc comments]: /guides/language/effective-dart/documentation#doc-comments
 
 ## Next steps
