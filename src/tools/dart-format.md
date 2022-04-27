@@ -60,8 +60,6 @@ use the `dart help` command or see the documentation for the
 $ dart help format
 ```
 
-The `dart format` command replaces `dartfmt`.
-
 {% comment %}
 [PENDING: Add info on commonly used options.]
 
