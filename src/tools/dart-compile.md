@@ -158,10 +158,6 @@ No cross-compilation support ([issue 28617][])
   A workaround is to use a CI (continuous integration) provider
   that supports all three operating systems.
 
-No signing support ([issue 39106][])
-: The format of the executables isn’t compatible with
-  standard signing tools such as codesign and SignTool.
-
 No support for `dart:mirrors` and `dart:developer`
 : For a complete list of the core libraries you can use,
   see the **All** and **AOT** entries in the
