@@ -66,7 +66,6 @@ Dart does not have a bug bounty program.
 Depending on the issue and the fix release, an announcement will be made to
 [dart-announce](https://groups.google.com/a/dartlang.org/g/announce) 
 mailing list.
-If the update is released in [stable](https://dart.dev/get-dart#release-channels), we will also announce security updates in the technical release blog post.
 
 ## Best practices
 
