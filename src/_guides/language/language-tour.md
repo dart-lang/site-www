@@ -2850,7 +2850,7 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // See initializing parameters for a better way
+    // See initializing formal parameters for a better way
     // to initialize instance variables.
     this.x = x;
     this.y = y;
@@ -2866,11 +2866,11 @@ The `this` keyword refers to the current instance.
 {{site.alert.end}}
 
 
-#### Initializing parameters
+#### Initializing formal parameters
 
 The pattern of assigning a constructor argument to an instance variable
 is so common, 
-Dart has initializing parameters to make it easy.
+Dart has initializing formal parameters to make it easy.
 
 Initializing parameters can also be used to initialize
 non-nullable or `final` instance variables,

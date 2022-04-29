@@ -10,7 +10,7 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // See initializing parameters for a better way
+    // See initializing formal parameters for a better way
     // to initialize instance variables.
     this.x = x;
     this.y = y;
