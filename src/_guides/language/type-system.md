@@ -254,8 +254,8 @@ void main() {
 
 ## Runtime checks
 
-Runtime checks in the Dart VM and in web apps compiled with [dartdevc][]
-deal with type safety issues that the analyzer can't catch.
+Runtime checks deals with type safety issues
+that can't be detected at compile time.
 
 For example, the following code throws an exception at runtime
 because it is an error to cast a list of dogs to a list of cats:
