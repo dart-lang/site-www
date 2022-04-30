@@ -56,14 +56,6 @@ For further information on command-line options, use the `--help` flag:
 $ dart create --help
 ```
 
-{{site.alert.version-note}}
-  The `dart create` command was introduced in Dart 2.10.
-  Its functionality was previously provided by
-  a command in the now-discontinued [`stagehand` package][].
-{{site.alert.end}}
-
-[`stagehand` package]: {{site.pub-pkg}}/stagehand
-
 {% comment %}
 ```
 Create a new Dart project.

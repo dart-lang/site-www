@@ -145,15 +145,14 @@ class VersionSelector {
             continue;
           } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
             // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
-            // and not in stable or beta yet.
+            // and none in stable yet.
             // TODO: After this ships in stable 2.x, remove the stable check,
             // and just test for versionInfo.version < Version(2,x,0).
             if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
               continue;
             }
 
-            if (versionInfo.channel == 'stable' ||
-                versionInfo.channel == 'beta') {
+            if (versionInfo.channel == 'stable') {
               continue;
             }
           }

@@ -15,3 +15,10 @@
   cover: data-structures-algorithms-dart.png
   link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
   desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
+- title: "O guia de Dart"
+  authors:
+    - Julio Bitencourt
+  publisher: Casa do Código
+  cover: o-guia-de-dart.jpeg
+  link: "https://www.casadocodigo.com.br/products/livro-dart"
+  desc: "Fundamentos, prática, conceitos avançados e tudo mais. Embarque neste livro que te guiará no aprendizado de Dart.<br>Fundamentals, practice, the concepts and everything. Embark on a journey of learning Dart in Portuguese."
