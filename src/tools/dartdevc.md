@@ -4,7 +4,7 @@ short-title: dartdevc
 description: A development compiler for fast, modular compilation of Dart code to JavaScript.
 ---
 
-The Dart development compiler _(dartdevc_, also known as _DDC)_
+The Dart development compiler (_dartdevc_, also known as _DDC_)
 is a Dart-to-JavaScript compiler
 that's targeted at web app development in modern browsers.
 
@@ -104,7 +104,7 @@ and dartdevc recompiles only the modules that are affected by those changes.
 Are the implementation files for your package under `lib/src`?
 If not, dartdevc is probably creating too many modules.
 For more information, see
-[How are the modules created?](#how-the-modules-are-created)
+[How the modules are created.](#how-the-modules-are-created)
 
 
 ### Producing too many JavaScript files
@@ -112,7 +112,7 @@ For more information, see
 This happens when dartdevc is creating too many modules.
 Are the implementation files for your package under `lib/src`?
 For more information, see
-[How are the modules created?](#how-the-modules-are-created)
+[How the modules are created.](#how-the-modules-are-created)
 
 
 ### Doesn't lazily load deferred libraries

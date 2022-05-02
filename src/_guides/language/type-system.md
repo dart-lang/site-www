@@ -254,11 +254,11 @@ void main() {
 
 ## Runtime checks
 
-Runtime checks deals with type safety issues
+Runtime checks deal with type safety issues
 that can't be detected at compile time.
 
 For example, the following code throws an exception at runtime
-because it is an error to cast a list of dogs to a list of cats:
+because it's an error to cast a list of dogs to a list of cats:
 
 {:.runtime-fail}
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
