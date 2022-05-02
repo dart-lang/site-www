@@ -267,7 +267,7 @@ see the [dart2js compiler options](/tools/dart2js#options).
   The [`webdev build`][] command, by default,
   also produces deployable JavaScript.
   The [`webdev serve`][] command, by default,
-  uses the [dartdevc compiler][]
+  uses [dartdevc][] to compile web apps
   for running and debugging during development.
 {{site.alert.end}}
 
@@ -278,4 +278,4 @@ check out [Web deployment](/web/deployment).
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
-[dartdevc compiler]: /tools/dartdevc/faq
+[dartdevc]: /tools/dartdevc
