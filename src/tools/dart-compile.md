@@ -151,7 +151,12 @@ Executables created with `dart compile exe`
 support signing on macOS and Windows.
 
 For detailed documentation,
-see the platform documentation for those operating systems.
+see the platform documentation for those operating systems,
+such as the Windows [`SignTool.exe` documentation][],
+and the [Apple Code Signing guide][]
+
+[`SignTool.exe` documentation]: https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe
+[Apple Code Signing guide]: https://developer.apple.com/support/code-signing/
 
 #### Known limitations
 
