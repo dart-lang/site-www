@@ -145,6 +145,14 @@ $ cd /tmp
 $ ./myapp
 ```
 
+#### Signing
+
+Executables created with `dart compile exe`
+support signing on macOS and Windows.
+
+For detailed documentation,
+see the platform documentation for those operating systems.
+
 #### Known limitations
 
 The `exe` and `aot-snapshot` subcommands have some known limitations:
