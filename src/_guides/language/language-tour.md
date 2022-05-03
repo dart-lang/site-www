@@ -554,6 +554,7 @@ use the `Map()` constructor to create a map.
 Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
+* `Enum`: The superclass of all enums.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
 * `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions](#generator).
@@ -3526,17 +3527,41 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
+{{site.alert.note}}
+  All enums automatically extend the [`Enum`][] class.
+{{site.alert.end}}
 
 #### Using enums
 
-Declare an enumerated type using the `enum` keyword:
+To declare a simple enumerated type,
+use the `enum` keyword and
+list the values you want to be enumerated:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 ```dart
 enum Color { red, green, blue }
 ```
 
-You can use [trailing commas][] when declaring an enumerated type.
+{{site.alert.tip}}
+  You can also use [trailing commas][] when declaring an enumerated type
+  to help prevent copy-paste errors:
+
+  <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)" replace="/blue/$[!,!]/g"?>
+  ```dart
+    enum Color { red, green, blue[!,!] }
+  ```
+{{site.alert.end}}
+
+Access the enumerated values like
+any other [static variable](#static-variables):
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
+```dart
+final favoriteColor = Color.blue;
+if (favoriteColor == Color.blue) {
+  print('Your favorite color is blue!');
+}
+```
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
@@ -3550,7 +3575,7 @@ assert(Color.green.index == 1);
 assert(Color.blue.index == 2);
 ```
 
-To get a list of all of the values in the enum,
+To get a list of all the enumerated values,
 use the enum's `values` constant.
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
@@ -3576,6 +3601,15 @@ switch (aColor) {
   default: // Without this, you see a WARNING.
     print(aColor); // 'Color.blue'
 }
+```
+
+If you need to access the enumerated value of an enum,
+such as `'blue'` from `Color.blue`, 
+use the [`EnumName`] extension:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
+```dart
+print(EnumName(Color.blue).name); // 'blue'
 ```
 
 Enumerated types have the following limits:
