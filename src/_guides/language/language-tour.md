@@ -4664,7 +4664,7 @@ To learn more about Dart's core libraries, see
 [`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
 [`EnumName`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
-[`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName.html
+[`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
