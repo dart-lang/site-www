@@ -3598,7 +3598,7 @@ switch (aColor) {
 }
 ```
 
-If you need to access the enumerated value of an enum,
+If you need to access the name of an enumerated value,
 such as `'blue'` from `Color.blue`, 
 use the [`EnumName`][] extension:
 
