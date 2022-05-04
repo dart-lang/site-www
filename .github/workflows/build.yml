@@ -11,6 +11,9 @@ on:
   schedule:
     - cron: "0 0 * * 0"
 
+# Declare default permissions as read only.
+permissions: read-all
+
 env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
