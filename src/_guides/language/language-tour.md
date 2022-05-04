@@ -3600,7 +3600,7 @@ switch (aColor) {
 
 If you need to access the enumerated value of an enum,
 such as `'blue'` from `Color.blue`, 
-use the [`EnumName`] extension:
+use the [`EnumName`][] extension:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
@@ -4661,8 +4661,10 @@ To learn more about Dart's core libraries, see
 [dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
+[`EnumName`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
-[`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
