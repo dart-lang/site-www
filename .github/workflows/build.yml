@@ -75,7 +75,8 @@ jobs:
 
   stage:
     permissions:
-      contents: read
+      checks: write
+      contents: write
       pull-requests: write
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     needs: test
