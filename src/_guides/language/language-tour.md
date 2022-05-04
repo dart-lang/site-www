@@ -3546,10 +3546,10 @@ enum Color { red, green, blue }
   You can also use [trailing commas][] when declaring an enumerated type
   to help prevent copy-paste errors:
 
-  <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)" replace="/blue/$[!,!]/g"?>
-  ```dart
-    enum Color { red, green, blue[!,!] }
-  ```
+  <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)" replace="/(blue)/$1[!,!]/g"?>
+  {% prettify dart tag=pre+code %}
+  enum Color { red, green, blue[!,!] }
+  {% endprettify %}
 {{site.alert.end}}
 
 Access the enumerated values like
