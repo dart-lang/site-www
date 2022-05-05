@@ -2888,6 +2888,9 @@ class Point {
 }
 ```
 
+The variables introduced by the initializing formals
+are implicitly final and only in scope of the initializer list.
+
 
 #### Default constructors
 
@@ -2997,6 +3000,53 @@ class Employee extends Person {
   Arguments to the superclass constructor don't have access to `this`. For
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
+
+To avoid having to manually pass each parameter
+into the super invocation of a non-redirecting constructor,
+you can use super-initializer parameters to forward parameters
+to the specified or default superclass constructor. 
+Super-initializer parameters have similar syntax and semantics to
+[initializing formal parameters](#initializing-formal-parameters):
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
+```dart
+class Vector2d {
+  final double x;
+  final double y;
+
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  // Forward the x and y parameters to the default super constructor like:
+  // Vector3d(final double x, final double y, this.z) : super(x, y);
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+Super-initializer parameters cannot be positional 
+if the super-constructor invocation already has positional arguments,
+but they can always be named:
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
+```dart
+class Vector2d {
+  // ...
+
+  Vector2d.named({required this.x, required this.y});
+}
+
+class Vector3d extends Vector2d {
+  // ...
+
+  // Forward the y parameter to the named super constructor like:
+  // Vector3d.yzPlane({required double y, required this.z})
+  //       : super.named(x: 0, y: y);
+  Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
+}
+```
 
 
 #### Initializer list
