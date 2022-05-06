@@ -86,6 +86,7 @@ abstract class Describable {
     print('=========');
   }
 }
+// #enddocregion abstract
 
 // #docregion simple-enum
 enum PlanetType { terrestrial, gas, ice }
@@ -106,7 +107,7 @@ enum Planet {
   uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
-  /// A constant generate constructor
+  /// A constant generating constructor
   const Planet(
       {required this.planetType, required this.moons, required this.hasRings});
 
