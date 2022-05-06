@@ -44,6 +44,9 @@ jobs:
           DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
+    permissions:
+      checks: write
+      pull-requests: write
     if: ${{ github.event_name == 'push' && 
             github.ref == 'refs/heads/main' && 
             github.repository == 'dart-lang/site-www' }}
