@@ -55,9 +55,7 @@ enum Vehicle implements Comparable<Vehicle> {
   });
 
   final int tires;
-
   final int passengers;
-
   final int carbonPerKilometer;
 
   int get carbonFootprint => (carbonPerKilometer / passengers).round();

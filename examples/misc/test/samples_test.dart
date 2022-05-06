@@ -140,6 +140,20 @@ void main() {
         ]));
   });
 
+  test('use enum', () {
+    void testIsGiant() {
+      // #docregion use-enum
+      final yourPlanet = Planet.earth;
+
+      if (!yourPlanet.isGiant) {
+        print('Your planet is not a "giant planet".');
+      }
+      // #enddocregion use-enum
+    }
+
+    expect(testIsGiant, m.prints('Your planet is not a "giant planet".'));
+  });
+
   test('extends', () {
     final o = Orbiter('O', someDate, 42);
     expect(o.launchYear, someDate.year);
