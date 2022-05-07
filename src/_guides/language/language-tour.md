@@ -3576,7 +3576,7 @@ but with a few extra requirements:
   in the beginning of the declaration
   (of which there must be at least one).
 
-Here is an example which declares an enhanced enum
+Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
 a getter, and an implemented interface:
 
