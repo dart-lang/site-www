@@ -3051,9 +3051,8 @@ class Vector3d extends Vector2d {
 ```
 
 {{site.alert.version-note}}
-  Super-initializer parameters were introduced in Dart 2.17.
-  In previous releases, you must manually pass in the super parameters
-  to the super constructor invocation.
+  Using super-initializer parameters 
+  requires a [language version][] of at least 2.17.
 {{site.alert.end}}
 
 #### Initializer list
