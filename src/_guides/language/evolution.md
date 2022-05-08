@@ -229,6 +229,46 @@ For details, see the [Dart 2.15 announcement][].
 
 Dart 2.16 didn’t add any features to the Dart language.
 
+### Dart 2.17
+
+Dart 2.17 expanded enum functionality with class-like enums,
+also known as enhanced enums.
+These allow enum declarations to define members 
+including fields, constructors, methods, getters, etc.
+For more information, see the
+[Enhanced enums][] section of the language tour.
+
+[Enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+
+Dart 2.17 also added support for super initializer parameters in constructors.
+Super parameters allow you
+to avoid having to manually pass each parameter
+into the super invocation of a non-redirecting constructor.
+You can instead use super parameters to forward parameters
+to a superclass constructor.
+For more information, see the language tour's documentation
+of [super initializer parameters][].
+
+[super initializer parameters]: /guides/language/language-tour#super-parameters
+
+Dart 2.17 also removed some restrictions on named arguments.
+Named arguments can now be freely interleaved with positional arguments.
+The following code was invalid before 2.17,
+but is now allowed:
+
+```dart
+void main() {
+  test(skip: true, 'A test description', () {
+    // Very long function body here...
+  });
+}
+```
+
+To learn more about named parameters and arguments, see the
+[Named parameters] section of the language tour.
+
+[Named parameters]: /guides/language/language-tour#named-parameters
+
 
 ## Language versioning
 
