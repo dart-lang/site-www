@@ -3,6 +3,13 @@ enum Color { red, green, blue }
 // #enddocregion enum
 
 void main() {
+  // #docregion access
+  final favoriteColor = Color.blue;
+  if (favoriteColor == Color.blue) {
+    print('Your favorite color is blue!');
+  }
+  // #enddocregion access
+
   // #docregion index
   assert(Color.red.index == 0);
   assert(Color.green.index == 1);
@@ -29,4 +36,8 @@ void main() {
       print(aColor); // 'Color.blue'
   }
   // #enddocregion switch
+
+  // #docregion name
+  print(EnumName(Color.blue).name); // 'blue'
+  // #enddocregion name
 }
