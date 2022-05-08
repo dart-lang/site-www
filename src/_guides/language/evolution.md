@@ -265,7 +265,7 @@ void main() {
 ```
 
 To learn more about named parameters and arguments, see the
-[Named parameters] section of the language tour.
+[Named parameters][] section of the language tour.
 
 [Named parameters]: /guides/language/language-tour#named-parameters
 
