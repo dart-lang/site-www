@@ -240,16 +240,16 @@ For more information, see the
 
 [Enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
 
-Dart 2.17 also added support for super initializer parameters in constructors.
+Dart 2.17 also added support for super-initializer parameters in constructors.
 Super parameters allow you
 to avoid having to manually pass each parameter
 into the super invocation of a non-redirecting constructor.
 You can instead use super parameters to forward parameters
 to a superclass constructor.
-For more information, see the language tour's documentation
-of [super initializer parameters][].
+For more information, 
+see the language tour's documentation of [super parameters][].
 
-[super initializer parameters]: /guides/language/language-tour#super-parameters
+[super parameters]: /guides/language/language-tour#super-parameters
 
 Dart 2.17 also removed some restrictions on named arguments.
 Named arguments can now be freely interleaved with positional arguments.
