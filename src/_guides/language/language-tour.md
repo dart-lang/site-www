@@ -3053,6 +3053,8 @@ class Vector3d extends Vector2d {
 {{site.alert.version-note}}
   Using super-initializer parameters 
   requires a [language version][] of at least 2.17.
+  If you're using an earlier language version,
+  you must manually pass in all super constructor parameters.
 {{site.alert.end}}
 
 #### Initializer list
