@@ -3599,12 +3599,12 @@ switch (aColor) {
 ```
 
 If you need to access the name of an enumerated value,
-such as `'blue'` from `Color.blue`, 
-use the [`EnumName`][] extension:
+such as `'blue'` from `Color.blue`,
+use the `.name` property:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
-print(EnumName(Color.blue).name); // 'blue'
+print(Color.blue.name); // 'blue'
 ```
 
 Enumerated types have the following limits:
@@ -4662,7 +4662,6 @@ To learn more about Dart's core libraries, see
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
-[`EnumName`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
