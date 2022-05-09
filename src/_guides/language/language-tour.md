@@ -3569,8 +3569,6 @@ but with a few extra requirements:
 * All [generative constructors](#constant-constructors) must be constant.
 * [Factory constructors](#factory-constructors) can only return
   one of the fixed, known enum instances.
-* All constructors must be
-  [constant generative constructors](#constant-constructors).
 * No other class can be extended, [`Enum`] is automatically extended.
 * There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
 * A member named `values` cannot be declared in an enum,
