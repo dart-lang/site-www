@@ -11,6 +11,9 @@ on:
   schedule:
     - cron: "0 0 * * 0"
 
+# Declare default permissions as read only.
+permissions: read-all
+
 env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
@@ -41,6 +44,9 @@ jobs:
           DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
+    permissions:
+      checks: write
+      pull-requests: write
     if: ${{ github.event_name == 'push' && 
             github.ref == 'refs/heads/main' && 
             github.repository == 'dart-lang/site-www' }}
@@ -71,6 +77,9 @@ jobs:
           channelId: live
 
   stage:
+    permissions:
+      checks: write
+      pull-requests: write
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     needs: test
     runs-on: ubuntu-latest
