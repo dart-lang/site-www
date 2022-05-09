@@ -231,9 +231,8 @@ Dart 2.16 didn’t add any features to the Dart language.
 
 ### Dart 2.17
 
-Dart 2.17 expanded enum functionality with class-like enums,
-also known as enhanced enums.
-These allow enum declarations to define members 
+Dart 2.17 expanded enum functionality with enhanced enums.
+Enhanced enums allow enum declarations to define members 
 including fields, constructors, methods, getters, etc.
 For more information, see the
 [Enhanced enums][] section of the language tour.
