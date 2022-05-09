@@ -3568,13 +3568,13 @@ but with a few extra requirements:
   including those added by [mixins](#mixins).
 * All constructors must be
   [constant generative constructors](#constant-constructors).
-* No other class can be extended, [`Enum`] is the superclass.
+* No other class can be extended, [`Enum`] is automatically extended.
 * There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
 * A member named `values` cannot be declared in an enum,
   as it would conflict with the automatically generated static `values` getter.
 * All instances of the enum must be declared
-  in the beginning of the declaration
-  (of which there must be at least one).
+  in the beginning of the declaration,
+  and there must be at least one instance declared.
 
 Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
