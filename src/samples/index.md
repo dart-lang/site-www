@@ -220,7 +220,8 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 
 ## Enums
 
-Enums are a way of enumerating a predefined set of values or instances.
+Enums are a way of enumerating a predefined set of values or instances
+in a way which ensures that there cannot be any other instances of that type.
 
 Here is an example of a simple `enum` that defines
 a simple list of predefined planet types:
@@ -231,8 +232,9 @@ enum PlanetType { terrestrial, gas, ice }
 ```
 
 Here is an example of an enhanced enum declaration
-that allows you to define a class-like structure
-with a defined set of constant instances:
+of a class describing planets,
+with a defined set of constant instances,
+namely the planets of our own solar system.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (enhanced-enum)"?>
 ```dart
