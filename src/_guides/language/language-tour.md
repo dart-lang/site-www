@@ -3004,9 +3004,10 @@ class Employee extends Person {
 
 <a name="super-parameters"></a>
 To avoid having to manually pass each parameter
-into the super invocation of a non-redirecting constructor,
+into the super invocation of a constructor,
 you can use super-initializer parameters to forward parameters
-to the specified or default superclass constructor. 
+to the specified or default superclass constructor.
+This feature can't be used with redirecting constructors.
 Super-initializer parameters have similar syntax and semantics to
 [initializing formal parameters](#initializing-formal-parameters):
 
