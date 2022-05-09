@@ -3566,6 +3566,9 @@ but with a few extra requirements:
 
 * Instance variables must be `final`, 
   including those added by [mixins](#mixins).
+* All [generative constructors](#constant-constructors) must be constant.
+* [Factory constructors](#factory-constructors) can only return
+  one of the fixed, known enum instances.
 * All constructors must be
   [constant generative constructors](#constant-constructors).
 * No other class can be extended, [`Enum`] is automatically extended.
