@@ -32,7 +32,7 @@ see [Dart 2.17: BLOG POST TODO][].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Introduced the [Learning Dart as a JavaScript developer][] guide
+* Introduced the [Learning Dart as a JavaScript developer][] guide,
   which aims to leverage your JavaScript programming knowledge
   when learning Dart.
 * Documented the features and changes introduced in Dart 2.17:
@@ -63,7 +63,7 @@ we made the following changes to this site:
   * Expanded documentation about the functionality of the [`dart fix`][] tool.
   * Adjusted the guidelines and documentation for the [`dart doc`][] tool
     to match its functionality and underlying behavior.
-  * Added furthered documentation and samples of [`dart compile js`][].
+  * Added further documentation and samples of [`dart compile js`][].
   * Removed mentions of the old standalone tools.
 * Updated the documentation and usage of the analyzer and linter:
   * Documented the analyzer's new [strict language modes][].
