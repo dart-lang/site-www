@@ -64,7 +64,7 @@ we made the following changes to this site:
   * Adjusted the guidelines and documentation for the [`dart doc`][] tool
     to match its functionality and underlying behavior.
   * Added further documentation and samples of [`dart compile js`][].
-  * Removed mentions of the old standalone tools.
+  * Removed mentions of removed standalone tools.
 * Updated the documentation and usage of the analyzer and linter:
   * Documented the analyzer's new [strict language modes][].
   * Incorporated changes to the 
