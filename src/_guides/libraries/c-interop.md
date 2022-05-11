@@ -206,7 +206,7 @@ and can't be instantiated in Dart code:
 | [Void]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Void-class.html)                     | Represents a void type in C.                         |
 {:.table .table-striped }
 
-There are also many [ABI][] specific marker types
+There are also many [ABI][] specific marker native types
 that extend [AbiSpecificInteger][].
 Refer to their linked API documentation for more information and
 a guideline on what types they map to on specific platforms:
