@@ -178,10 +178,6 @@ if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from the `.dart_tool/package_config.json` file.
 
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
-
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.

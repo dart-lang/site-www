@@ -38,7 +38,7 @@ void main() {
   // #enddocregion switch
 
   // #docregion name
-  print(EnumName(Color.blue).name); // 'blue'
+  print(Color.blue.name); // 'blue'
   // #enddocregion name
 }
 

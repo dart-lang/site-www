@@ -18,7 +18,7 @@ linter:
     - one_member_abstracts
     - only_throw_errors
     - no_leading_underscores_for_library_prefixes
-    - no_leading_underscores_for_local_identifiers
+    # - no_leading_underscores_for_local_identifiers
     - null_check_on_nullable_type_parameter
     - package_api_docs
     - prefer_final_in_for_each
