@@ -841,8 +841,10 @@ Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
 [`List`][] objects, so most people just call them *lists*.
 
-Dart list literals look like JavaScript array literals. Here’s a simple
-Dart list:
+Dart list literals are denoted by
+a comma separated list of expressions or values,
+enclosed in square brackets (`[]`).
+Here's a simple Dart list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -871,9 +873,9 @@ var list = [
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first value
-and `list.length - 1` is the index of the last value. You can get a
-list’s length and refer to list values just as you would in
-JavaScript:
+and `list.length - 1` is the index of the last value. 
+You can get a list’s length using the `.length` property
+and access a list's values using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 ```dart
@@ -1092,8 +1094,8 @@ nobleGases[18] = 'argon';
   For details, see [Using constructors](#using-constructors).
 {{site.alert.end}}
 
-Add a new key-value pair to an existing map just as you would in
-JavaScript:
+Add a new key-value pair to an existing map
+using the subscript assignment operator (`[]=`):
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
@@ -1101,7 +1103,7 @@ var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
-Retrieve a value from a map the same way you would in JavaScript:
+Retrieve a value from a map using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
@@ -1109,7 +1111,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn’t in a map, you get a null in return:
+If you look for a key that isn’t in a map, you get `null` in return:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
@@ -1310,15 +1312,8 @@ or when you define function parameters.
 
 #### Named parameters
 
-Named parameters are optional unless they're specifically marked as `required`.
-
-When calling a function, you can specify named parameters using
-<code><em>paramName</em>: <em>value</em></code>. For example:
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
-```dart
-enableFlags(bold: true, hidden: false);
-```
+Named parameters are optional
+unless they're explicitly marked as `required`.
 
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
@@ -1328,6 +1323,27 @@ to specify named parameters:
 ```dart
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool? bold, bool? hidden}) {...}
+```
+
+When calling a function, 
+you can specify named arguments using
+<code><em>paramName</em>: <em>value</em></code>. 
+For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
+```dart
+enableFlags(bold: true, hidden: false);
+```
+
+Although it often makes sense to place positional arguments first,
+named arguments can be placed anywhere in the argument list
+when it suits your API:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
+```dart
+repeat(times: 2, () {
+  ...
+});
 ```
 
 {{site.alert.tip}}
@@ -2209,8 +2225,9 @@ if (isRaining()) {
 }
 ```
 
-Unlike JavaScript, conditions must use boolean values, nothing else. See
-[Booleans](#booleans) for more information.
+The statement conditions must be expressions
+that evaluate to boolean values, nothing else.
+See [Booleans](#booleans) for more information.
 
 
 ### For loops
@@ -3657,12 +3674,12 @@ switch (aColor) {
 ```
 
 If you need to access the name of an enumerated value,
-such as `'blue'` from `Color.blue`, 
-use the [`EnumName`][] extension:
+such as `'blue'` from `Color.blue`,
+use the `.name` property:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
-print(EnumName(Color.blue).name); // 'blue'
+print(Color.blue.name); // 'blue'
 ```
 
 Enumerated types have the following limits:
@@ -4720,7 +4737,6 @@ To learn more about Dart's core libraries, see
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
-[`EnumName`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/EnumName-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
