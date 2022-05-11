@@ -22,9 +22,9 @@ and follow the [Dart blog][].
 This section lists notable changes made from February 4, 2022,
 through May 11, 2022.
 For details about the 2.17 release,
-see [Dart 2.17: BLOG POST TODO][].
+see [Dart 2.17: Productivity and integration][].
 
-[Dart 2.17: BLOG POST TODO]: https://medium.com/dartlang/TODO
+[Dart 2.17: Productivity and integration]: https://medium.com/dartlang/dart-2-17-b216bfc80c5d
 
 ### Docs updated or added to dart.dev
 {: .no_toc}
