@@ -31,7 +31,7 @@ The following table shows the templates you can use:
 |------------------+------------------------------------------------------|
 | Template         | Description                                          |
 |------------------|------------------------------------------------------|
-| `console`        | A command-line application..                         |
+| `console`        | A command-line application.                          |
 | `package`        | A package containing shared Dart libraries.         |
 | `server-shelf`   | A server built using [shelf][].                      |
 | `web`            | A web app built using core Dart libraries.           |
