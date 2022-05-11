@@ -449,8 +449,8 @@ void main() {
         // #enddocregion Map-forEach
       }
 
-      expect(
-          testForEach, m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
+      expect(testForEach,
+          m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
     });
 
     test('List.map()', () {
