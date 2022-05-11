@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="3cc63a0c21500bc5eb9671733843dcc20040b39fdc02f35defcf7af59f88d459"; \
+        DART_SHA256="57b8fd964e47c81d467aeb95b099a670ab7e8f54a1cd74d45bcd1fdc77913d86"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="de9d1c528367f83bbd192bd565af5b7d9d48f76f79baa4c0e4cf64723e3fb8be"; \
+        DART_SHA256="05a1db0fd84585877d6180858346d7c53c7ef89433667db3b85f3f2e5fa7036b"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="edca0fe2afb7cb2a5d6c1ebc65cc9cf92db50940cad452de8ff0040272fe4444"; \
+        DART_SHA256="b57e68c74c1d72cdb78ac0203b4ded6e8e96c7311d1ca969322d4f7096a04b7c"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="4bb7866c4fdda23e3d9603b27b3c669376b3740b7b9eca2feb8e9ccbc1673bb8"; \
+        DART_SHA256="c233288fc80e9b013fea21c9d6b2bba08ab25a59fb7146574a690200f1a4c474"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="f5eeea0a4409b00812811707a28197de2d01dc51621d262e27fc3b237f13ad81"; \
+        DART_SHA256="b6899ae1dea1204c4c643313c01d64b785af750bfefee8e616cdba7810fbafbd"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="7df44514eb98f044bc0c070e24b3965821191809eff00e855379903f0f89c9cb"; \
+        DART_SHA256="e505140a5ff57d3a859cccb2682dd430eff2e008673fda42519525a23b9f8531"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=05dc283d949b7cdd58f37385e310973c2aaa52e0f8cda08a93a5e4812d225338; \
+    NODE_SHA256=915d0c7c80f0780146f3320468a6e51798e50dd61ae8ae399e80d67de880b43a; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \

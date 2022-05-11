@@ -322,7 +322,7 @@ Item? bestDeal(List<Item> cart) {
 
 //----------------------------------------------------------------------------
 
-// #docregion copy-nullable-field
+// #docregion shadow-nullable-field
 class UploadException {
   final Response? response;
 
@@ -338,7 +338,7 @@ class UploadException {
     return 'Could not upload (no response).';
   }
 }
-// #enddocregion copy-nullable-field
+// #enddocregion shadow-nullable-field
 
 //----------------------------------------------------------------------------
 

@@ -29,7 +29,7 @@ The following libraries and packages are useful across Dart platforms:
 
 ## Flutter resources
 
-[JSON and serialization]({{site.flutter_docs}}/development/data-and-backend/json)
+[JSON and serialization]({{site.flutter-docs}}/development/data-and-backend/json)
 : Shows how Flutter apps can serialize and deserialize both
   with dart:convert and with json_serializable.
 

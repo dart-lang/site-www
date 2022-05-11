@@ -49,7 +49,7 @@ This exit code is often used with continuous integration (CI)
 to indicate that a check should fail.
 
 ```terminal
-$ dart format -o none --set-exit-if-changed
+$ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
 For information on additional command-line options,
@@ -59,8 +59,6 @@ use the `dart help` command or see the documentation for the
 ```terminal
 $ dart help format
 ```
-
-The `dart format` command replaces `dartfmt`.
 
 {% comment %}
 [PENDING: Add info on commonly used options.]

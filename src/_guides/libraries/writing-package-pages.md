@@ -34,7 +34,7 @@ follow these links:
 
 1. [Package layout ](https://dart.dev/tools/pub/package-layout)
 2. [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites)
-3. [Package scoring](https://pub.dev/help/scoring)
+3. [Package scoring]({{site.pub}}/help/scoring)
 4. [Verified publishers](https://dart.dev/tools/pub/verified-publishers)
 5. [Pubspec file](https://dart.dev/tools/pub/pubspec)
 
@@ -418,4 +418,4 @@ You’re the only person who can provide the information that the reader needs.
 [Make a README]: https://www.makeareadme.com
 [README Checklist]: https://github.com/ddbeck/readme-checklist/blob/main/checklist.md
 [style-guide]: https://developers.google.com/style/highlights
-[`yaml`]: https://pub.dev/packages/yaml 
+[`yaml`]: {{site.pub-pkg}}/yaml 

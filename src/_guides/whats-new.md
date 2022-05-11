@@ -13,7 +13,7 @@ To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group][dart-announce]
 and follow the [Dart blog][].
 
-[flutter-whats-new]: {{site.flutter_docs}}/whats-new
+[flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
@@ -31,7 +31,7 @@ see [Dart 2.16: Improved tooling and platform handling][].
 
 We [updated the website infrastructure][] to a Docker-based setup
 to enable [easier contributions][] and more closely align with
-the setup for [docs.flutter.dev]({{site.flutter_docs}}).
+the setup for [docs.flutter.dev]({{site.flutter-docs}}).
 
 In addition to other bug fixes and incremental improvements,
 we made the following changes to this site:

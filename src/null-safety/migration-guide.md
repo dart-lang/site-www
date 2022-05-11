@@ -16,6 +16,11 @@ Here are the basic steps for migrating each package that you own:
    [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
+{{site.alert.tip}}
+  If your application or library is large, check out
+  [Gradual null safety migration for large Dart projects][].
+{{site.alert.end}}
+
 {{site.alert.info}}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
@@ -27,6 +32,7 @@ For an informal look at the experience of using the migration tool, watch this v
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eBr5tlumwlg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [null safety]: /null-safety
+[Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 
 ## 1. Wait to migrate {#step1-wait}

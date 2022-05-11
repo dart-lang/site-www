@@ -138,7 +138,8 @@ void main() {
   });
 
   test('enum_with_main', () {
-    expect(enum_with_main.main, m.prints('Color.blue'));
+    expect(enum_with_main.main,
+        m.prints(['Your favorite color is blue!', 'Color.blue', 'blue']));
   });
 
   test('orchestra', () {

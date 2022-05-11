@@ -554,6 +554,7 @@ use the `Map()` constructor to create a map.
 Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
+* `Enum`: The superclass of all enums.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
 * `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions](#generator).
@@ -2471,7 +2472,7 @@ That depends on the tools and framework you're using:
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
 * Development-only tools such as [dartdevc][]
   typically enable assertions by default.
-* Some tools, such as [`dart run`][] and [`dart2js`][]
+* Some tools, such as [`dart run`][] and [dart2js][]
   support assertions through a command-line flag: `--enable-asserts`.
 
 In production code, assertions are ignored, and
@@ -2675,11 +2676,6 @@ double distance = p.distanceTo(Point(4, 4));
 Use `?.` instead of `.` to avoid an exception
 when the leftmost operand is null:
 
-{% comment %}
-{{site.dartpad}}/0cb25997742ed5382e4a
-https://gist.github.com/0cb25997742ed5382e4a
-{% endcomment %}
-
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
 // If p is non-null, set a variable equal to its y value.
@@ -2869,7 +2865,8 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // There's a better way to do this, stay tuned.
+    // See initializing formal parameters for a better way
+    // to initialize instance variables.
     this.x = x;
     this.y = y;
   }
@@ -2879,24 +2876,33 @@ class Point {
 The `this` keyword refers to the current instance.
 
 {{site.alert.note}}
-  Use `this` only when there is a name conflict. Otherwise, Dart style
-  omits the `this`.
+  Use `this` only when there is a name conflict. 
+  Otherwise, Dart style omits the `this`.
 {{site.alert.end}}
 
+
+#### Initializing formal parameters
+
 The pattern of assigning a constructor argument to an instance variable
-is so common, Dart has syntactic sugar to make it easy:
+is so common, 
+Dart has initializing formal parameters to make it easy.
+
+Initializing parameters can also be used to initialize
+non-nullable or `final` instance variables,
+which both must be initialized or provided a default value.
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
-  // Syntactic sugar for setting x and y
+  // Sets the x and y instance variables
   // before the constructor body runs.
   Point(this.x, this.y);
 }
 ```
+
 
 #### Default constructors
 
@@ -2904,11 +2910,13 @@ If you don’t declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
+
 #### Constructors aren’t inherited
 
 Subclasses don’t inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
+
 
 #### Named constructors
 
@@ -2921,8 +2929,8 @@ const double xOrigin = 0;
 const double yOrigin = 0;
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
@@ -2937,6 +2945,7 @@ Remember that constructors are not inherited, which means that a
 superclass’s named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
+
 
 #### Invoking a non-default superclass constructor
 
@@ -3003,6 +3012,7 @@ class Employee extends Person {
   Arguments to the superclass constructor don't have access to `this`. For
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
+
 
 #### Initializer list
 
@@ -3085,6 +3095,7 @@ class Point {
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
+
 
 #### Constant constructors
 
@@ -3185,8 +3196,8 @@ instance method:
 import 'dart:math';
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
@@ -3530,17 +3541,36 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
+{{site.alert.note}}
+  All enums automatically extend the [`Enum`][] class.
+{{site.alert.end}}
 
 #### Using enums
 
-Declare an enumerated type using the `enum` keyword:
+To declare a simple enumerated type,
+use the `enum` keyword and
+list the values you want to be enumerated:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 ```dart
 enum Color { red, green, blue }
 ```
 
-You can use [trailing commas][] when declaring an enumerated type.
+{{site.alert.tip}}
+  You can also use [trailing commas][] when declaring an enumerated type
+  to help prevent copy-paste errors.
+{{site.alert.end}}
+
+Access the enumerated values like
+any other [static variable](#static-variables):
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
+```dart
+final favoriteColor = Color.blue;
+if (favoriteColor == Color.blue) {
+  print('Your favorite color is blue!');
+}
+```
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
@@ -3554,7 +3584,7 @@ assert(Color.green.index == 1);
 assert(Color.blue.index == 2);
 ```
 
-To get a list of all of the values in the enum,
+To get a list of all the enumerated values,
 use the enum's `values` constant.
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
@@ -3580,6 +3610,15 @@ switch (aColor) {
   default: // Without this, you see a WARNING.
     print(aColor); // 'Color.blue'
 }
+```
+
+If you need to access the name of an enumerated value,
+such as `'blue'` from `Color.blue`,
+use the `.name` property:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
+```dart
+print(Color.blue.name); // 'blue'
 ```
 
 Enumerated types have the following limits:
@@ -4405,7 +4444,7 @@ For more information, see the following:
 
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
-[background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[background json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 [Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 
@@ -4627,7 +4666,7 @@ To learn more about Dart's core libraries, see
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
-[`dart2js`]: /tools/dart2js
+[dart2js]: /tools/dart2js
 [`dart run`]: /tools/dart-run
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
@@ -4636,11 +4675,12 @@ To learn more about Dart's core libraries, see
 [dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
-[Flutter debug mode]: {{site.flutter_docs}}/testing/debugging#debug-mode-assertions
+[Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

@@ -76,12 +76,30 @@ the `Future<String>` completes with either a string value or an error.
 [`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
 [`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
-Why does it matter whether a method is synchronous or asynchronous?
-It matters because most apps need to do more than one thing at a time.
+
+#### Why asynchronous code matters
+
+It matters whether a method is synchronous or asynchronous
+because most apps need to do more than one thing at a time.
+
+Asynchronous computations are often the result of performing computations
+outside of the current Dart code; 
+this includes computations that don't complete immediately, 
+and where you aren't willing to block your Dart code waiting for the result.
 For example, an app might start an HTTP request,
 but need to update its display or respond to user input
 before the HTTP request completes.
 Asynchronous code helps apps stay responsive.
+
+These scenarios include operating system calls like
+non-blocking I/O, performing an HTTP request, or communicating with a browser. 
+Other scenarios include waiting for computations
+performed in another Dart isolate as described below, 
+or maybe just waiting for a timer to trigger. 
+All of these processes either run in a different thread, 
+or are handled by the operating system or the Dart runtime, 
+which allows Dart code to run concurrently with the computation.
+
 
 ### The async-await syntax
 
@@ -89,7 +107,8 @@ The `async` and `await` keywords provide
 a declarative way to define asynchronous functions
 and use their results.
 
-Here’s an example of some synchronous code that blocks while waiting for file I/O:
+Here’s an example of some synchronous code
+that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
@@ -238,7 +257,7 @@ In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
 Worse, the UI might become completely unresponsive.
 
-[jank]: {{site.flutter_docs}}/perf/rendering
+[jank]: {{site.flutter-docs}}/perf/rendering-performance
 
 
 ### Background workers
@@ -252,7 +271,7 @@ is spawning a simple worker isolate that
 performs a computation and then exits.
 The worker isolate returns its result in a message when the worker exits.
 
-[json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
 ![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
@@ -292,7 +311,7 @@ to implement isolates.
   move a single function call to a worker isolate.
 {{site.alert.end}}
 
- [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+ [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 
 ### Implementing a simple worker isolate

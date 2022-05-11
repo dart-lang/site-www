@@ -120,6 +120,10 @@
       display: none;
     }
 
+    .toc-toggle-up, .toc-toggle-down {
+      user-select: none;
+    }
+
     &.toc-collapsed {
       .section-nav {
         max-height: 72px;
