@@ -3350,7 +3350,7 @@ abstract class AbstractContainer {
 }
 ```
 
-
+<a id="interfaces"></a>
 ### Implicit interfaces
 
 Every class implicitly defines an interface containing all the instance
@@ -3546,9 +3546,16 @@ a fixed number of constant values.
 
 {{site.alert.note}}
   All enums automatically extend the [`Enum`][] class.
+  They are also sealed, 
+  meaning they cannot be subclassed, implemented, mixed in, 
+  or otherwise explicitly instantiated.
+
+  Abstract classes and mixins can explicitly implement or extend `Enum`,
+  but unless they are then implemented by or mixed into an enum declaration,
+  no objects can actually implement the type of that class or mixin.
 {{site.alert.end}}
 
-#### Using enums
+#### Declaring simple enums
 
 To declare a simple enumerated type,
 use the `enum` keyword and
@@ -3563,6 +3570,66 @@ enum Color { red, green, blue }
   You can also use [trailing commas][] when declaring an enumerated type
   to help prevent copy-paste errors.
 {{site.alert.end}}
+
+#### Declaring enhanced enums
+
+Dart also allows enum declarations to declare classes
+with fields, methods, and const constructors
+which are limited to a fixed number of known constant instances.
+
+To declare an enhanced enum,
+follow a syntax similar to normal [classes](#classes),
+but with a few extra requirements:
+
+* Instance variables must be `final`, 
+  including those added by [mixins](#mixins).
+* All [generative constructors](#constant-constructors) must be constant.
+* [Factory constructors](#factory-constructors) can only return
+  one of the fixed, known enum instances.
+* No other class can be extended as [`Enum`] is automatically extended.
+* There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
+* A member named `values` cannot be declared in an enum,
+  as it would conflict with the automatically generated static `values` getter.
+* All instances of the enum must be declared
+  in the beginning of the declaration,
+  and there must be at least one instance declared.
+
+Here is an example that declares an enhanced enum
+with multiple instances, instance variables,
+a getter, and an implemented interface:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
+```dart
+enum Vehicle implements Comparable<Vehicle> {
+  car(tires: 4, passengers: 5, carbonPerKilometer: 400),
+  bus(tires: 6, passengers: 50, carbonPerKilometer: 800),
+  bicycle(tires: 2, passengers: 1, carbonPerKilometer: 0);
+
+  const Vehicle({
+    required this.tires,
+    required this.passengers,
+    required this.carbonPerKilometer,
+  });
+
+  final int tires;
+  final int passengers;
+  final int carbonPerKilometer;
+
+  int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  @override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
+
+To learn more about declaring enhanced enums,
+see the section on [Classes](#classes).
+
+{{site.alert.version-note}}
+  Enhanced enums require a [language version][] of at least 2.17.
+{{site.alert.end}}
+
+#### Using enums
 
 Access the enumerated values like
 any other [static variable](#static-variables):
@@ -3624,14 +3691,8 @@ use the `.name` property:
 print(Color.blue.name); // 'blue'
 ```
 
-Enumerated types have the following limits:
 
-* You can't subclass, mix in, or implement an enum.
-* You can't explicitly instantiate an enum.
-
-For more information, see the [Dart language specification][].
-
-
+<a id="mixins"></a>
 ### Adding features to a class: mixins
 
 Mixins are a way of reusing a class's code in multiple class
