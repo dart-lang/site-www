@@ -17,6 +17,144 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## May 11, 2022: 2.17 release
+
+This section lists notable changes made from February 4, 2022,
+through May 11, 2022.
+For details about the 2.17 release,
+see [Dart 2.17: Productivity and integration][].
+
+[Dart 2.17: Productivity and integration]: https://medium.com/dartlang/dart-2-17-b216bfc80c5d
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Introduced the [Learning Dart as a JavaScript developer][] guide,
+  which aims to leverage your JavaScript programming knowledge
+  when learning Dart.
+* Documented the features and changes introduced in Dart 2.17:
+  * Updated the [Named parameters][] section of the language tour
+    to reflect support for specifying named arguments anywhere.
+  * Added documentation for [super-initializer parameters][].
+  * Expanded the [Enumerated types][] section of the language tour
+    and documented [enhanced enums][].
+  * Documented support for [signing][] macOS and Windows executables
+    compiled with `dart compile exe`.
+  * Updated the templates supported by [`dart create`][]
+    to their new, standardized names.
+* Accounted for changes to the [pub.dev site][] and the [pub tool][].
+  * Listed vendors offering [Dart package repositories as a service][].
+  * Removed documentation for the now discontinued `dart pub uploader` command.
+  * Expanded the documentation for managing pub project [uploaders][].
+  * Removed most mentions to the deprecated `.packages` file,
+    pointing instead to its `.dart_tool/package_config.json` replacement.
+* Updated the documentation for updating and installing Dart:
+  * Documented how to switch between Dart versions
+    with Homebrew within the macOS [install instructions][get-dart-install].
+  * Updated the linux [installation instructions][get-dart-install]
+    to use [SecureApt][] and follow the latest best practices.
+  * Added support for downloading experimental, Linux RISC-V (RV64GC) builds
+    from the [Dart SDK archive][].
+* Continued work to improve and update documentation
+  of the [unified `dart` tool][dart-tool]:
+  * Expanded documentation about the functionality of the [`dart fix`][] tool.
+  * Adjusted the guidelines and documentation for the [`dart doc`][] tool
+    to match its functionality and underlying behavior.
+  * Added further documentation and samples of [`dart compile js`][].
+  * Removed mentions of removed standalone tools.
+* Updated the documentation and usage of the analyzer and linter:
+  * Documented the analyzer's new [strict language modes][].
+  * Incorporated changes to the 
+    [diagnostic messages][] and [linter rules][] pages.
+  * Updated documentation and samples
+    to use the `2.0.0` release of the `lints` package.
+* Began an overhaul of the documentation for web compilation:
+  * Documented for the deprecation and planned removal
+    of the `dart2js` and `dartdevc` standalone tools.
+  * Consolidated and clarified the documentation
+    of [dart2js][] and [dartdevc][]
+    as the underlying compilers of tools like
+    [`dart compile js`][] and [`webdev`][].
+* Increased documentation coverage of null safety:
+  * Documented the null assertion operator (`!`) as part of
+    the [Other operators][] section of the language tour.
+  * Migrated the [Low-level HTML tutorials][] to support null safety
+    and discuss how to interact with web APIs while using it.
+* Made miscellaneous other updates:
+  * Documented the [native types][] provided by `dart:ffi`
+    for use in C interop.
+  * Introduced a new section to the language tour documenting
+    [initializing formal parameters][].
+  * Documented DartPad's [support for packages][].
+  * Fixed formatting in the [asynchronous programming codelab][]
+    and elaborated on [why asynchronous code matters][].
+  * Updated the [security][] page to match our current security practices.
+  * Added a key binding (`/`) to automatically focus the search bar.
+
+[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+
+[Named parameters]: /guides/language/language-tour#named-parameters
+[Enumerated types]: /guides/language/language-tour#enumerated-types
+[enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+[super-initializer parameters]: /guides/language/language-tour#super-parameters
+[signing]: /tools/dart-compile#signing
+[`dart create`]: /tools/dart-create
+
+[pub.dev site]: {{site.pub}}
+[pub tool]: /tools/pub/cmd
+[Dart package repositories as a service]: /tools/pub/custom-package-repositories#dart-package-repositories-as-a-service
+[uploaders]: /tools/pub/publishing#uploaders
+
+[get-dart-install]: /get-dart#install
+[SecureApt]: https://wiki.debian.org/SecureApt
+[Dart SDK archive]: /get-dart/archive
+
+[dart-tool]: /tools/dart-tool
+[`dart fix`]: /tools/dart-fix
+[`dart doc`]: /tools/dart-doc
+[`dart compile js`]: /tools/dart-compile#js
+
+[strict language modes]: /guides/language/analysis-options#enabling-additional-type-checks
+[diagnostic messages]: /tools/diagnostic-messages
+[linter rules]: /tools/linter-rules
+
+[dart2js]: /tools/dart2js
+[dartdevc]: /tools/dartdevc
+[`webdev`]: /tools/webdev
+
+[Other operators]: /guides/language/language-tour#other-operators
+[Low-level HTML tutorials]: /tutorials/web/low-level-html
+
+[native types]: /guides/libraries/c-interop#interfacing-with-native-types
+[initializing formal parameters]: /guides/language/language-tour#initializing-formal-parameters
+[support for packages]: /tools/dartpad#library-support
+[asynchronous programming codelab]: /codelabs/async-await
+[why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
+[security]: /security
+
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following articles on the Dart blog:
+
+* [Bulk application of fixes][blog-5-5-22]
+* [Dart asynchronous programming: Streams][blog-4-14-22]
+* [Contributors for Google Summer of Code 2022][blog-4-7-22]
+* [Gradual null safety migration for large Dart projects][blog-3-31-22]
+* [Hosting a private Dart package repository][blog-3-16-22]
+* [Quick fixes for analysis issues][blog-3-4-22]
+
+[blog-5-5-22]: https://medium.com/dartlang/bulk-application-of-fixes-e6add333c3c1
+[blog-4-14-22]: https://medium.com/dartlang/dart-asynchronous-programming-streams-dab952023ed7
+[blog-4-7-22]: https://medium.com/dartlang/contributors-for-google-summer-of-code-2022-17e777f043f0
+[blog-3-31-22]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
+[blog-3-16-22]: https://medium.com/dartlang/hosting-a-private-dart-package-repository-774c3c51dff9
+[blog-3-4-22]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
+
 ## February 3, 2022: 2.16 release
 
 This section lists notable changes made from December 8, 2021,
