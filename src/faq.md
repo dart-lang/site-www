@@ -197,7 +197,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [DDC]: https://github.com/dart-lang/sdk/tree/main/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/type-system
 [Dart's type system]: /guides/language/type-system
-[Flutter no mirrors]: {{site.flutter_docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
+[Flutter no mirrors]: {{site.flutter-docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
 [FlutterShowcase]: {{site.flutter}}/showcase
 
 ---
@@ -247,6 +247,8 @@ the last two major releases of the following browsers:
   * Safari
 
 The _development_ compiler ([dartdevc][]) supports only Chrome.
+You _might_ be able to use other modern browsers
+(Chromium Edge, Firefox, and Safari).
 
 ### Q. Is Dart supported by my browser?
 

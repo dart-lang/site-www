@@ -4,7 +4,7 @@ description: Command-line tool for static analysis
 toc: false
 ---
 
-The `dart analyze` command (previously called `dartanalyzer`)
+The `dart analyze` command
 performs the same [static analysis][]
 that you get when you use an IDE or editor that has Dart support.
 

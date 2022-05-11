@@ -53,7 +53,7 @@ For more information, see the [documentation for dart2js][dart2js].
   Make sure your app has good test coverage
   before you use either of the `--trust-*` options.
   If some code paths aren't tested,
-  your app might run in dartdevc but
+  your app might run with dartdevc but
   misbehave when compiled using dart2js.
 {{site.alert.end}}
 

@@ -143,8 +143,8 @@ which automatically breaks execution at the start of the script.
 $ cd path/to/dart/app
 $ dart run --pause-isolates-on-start --observe main.dart
 
-Observatory listening on http://127.0.0.1:8181/SzEylE7vt7w=/
-The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/SzEylE7vt7w=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FSzEylE7vt7w%3D%2Fws
+The Dart VM service is listening on http://127.0.0.1:8181/afZySiNbDPg=/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/afZySiNbDPg=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FafZySiNbDPg%3D%2Fws
 ```
 
 Note the **Dart DevTools debugger and profiler** URL.
@@ -168,17 +168,17 @@ displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
 
-[App size tool]: {{site.flutter_docs}}/development/tools/devtools/app-size
+[App size tool]: {{site.flutter-docs}}/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
-[CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
-[Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
+[CPU profiler]: {{site.flutter-docs}}/development/tools/devtools/cpu-profiler
+[Debugger]: {{site.flutter-docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
-[Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
-[Flutter devtools]: {{site.flutter_docs}}/development/tools/devtools/overview
-[Logging view]: {{site.flutter_docs}}/development/tools/devtools/logging
-[Memory view]: {{site.flutter_docs}}/development/tools/devtools/memory
-[Network view]: {{site.flutter_docs}}/development/tools/devtools/network
+[Flutter inspector]: {{site.flutter-docs}}/development/tools/devtools/inspector
+[Flutter devtools]: {{site.flutter-docs}}/development/tools/devtools/overview
+[Logging view]: {{site.flutter-docs}}/development/tools/devtools/logging
+[Memory view]: {{site.flutter-docs}}/development/tools/devtools/memory
+[Network view]: {{site.flutter-docs}}/development/tools/devtools/network
 [Other web]: #using-devtools-with-a-non-flutter-web-app
-[Performance view]: {{site.flutter_docs}}/development/tools/devtools/performance
-[Timeline view]: {{site.flutter_docs}}/development/tools/devtools/timeline
+[Performance view]: {{site.flutter-docs}}/development/tools/devtools/performance
+[Timeline view]: {{site.flutter-docs}}/development/tools/devtools/timeline

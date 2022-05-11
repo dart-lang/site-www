@@ -9,12 +9,7 @@ if(!(r.__proto__&&r.__proto__.p===s.prototype.p))return false
 try{if(typeof navigator!="undefined"&&typeof navigator.userAgent=="string"&&navigator.userAgent.indexOf("Chrome/")>=0)return true
 if(typeof version=="function"&&version.length==0){var q=version()
 if(/^\d+\.\d+\.\d+\.\d+$/.test(q))return true}}catch(p){}return false}()
-function setFunctionNamesIfNecessary(a){function t(){};if(typeof t.name=="string")return
-for(var s=0;s<a.length;s++){var r=a[s]
-var q=Object.keys(r)
-for(var p=0;p<q.length;p++){var o=q[p]
-var n=r[o]
-if(typeof n=="function")n.name=o}}}function inherit(a,b){a.prototype.constructor=a
+function inherit(a,b){a.prototype.constructor=a
 a.prototype["$i"+a.name]=a
 if(b!=null){if(z){a.prototype.__proto__=b.prototype
 return}var s=Object.create(b.prototype)
@@ -64,7 +59,7 @@ var r=s.length
 s.push.apply(s,a)
 return r}function updateHolder(a,b){copyProperties(b,a)
 return a}var hunkHelpers=function(){var s=function(a,b,c,d,e){return function(f,g,h,i){return installInstanceTearOff(f,g,a,b,c,d,[h],i,e,false)}},r=function(a,b,c,d){return function(e,f,g,h){return installStaticTearOff(e,f,a,b,c,[g],h,d)}}
-return{inherit:inherit,inheritMany:inheritMany,mixin:mixinEasy,mixinHard:mixinHard,installStaticTearOff:installStaticTearOff,installInstanceTearOff:installInstanceTearOff,_instance_0u:s(0,0,null,["$0"],0),_instance_1u:s(0,1,null,["$1"],0),_instance_2u:s(0,2,null,["$2"],0),_instance_0i:s(1,0,null,["$0"],0),_instance_1i:s(1,1,null,["$1"],0),_instance_2i:s(1,2,null,["$2"],0),_static_0:r(0,null,["$0"],0),_static_1:r(1,null,["$1"],0),_static_2:r(2,null,["$2"],0),makeConstList:makeConstList,lazy:lazy,lazyFinal:lazyFinal,lazyOld:lazyOld,updateHolder:updateHolder,convertToFastObject:convertToFastObject,setFunctionNamesIfNecessary:setFunctionNamesIfNecessary,updateTypes:updateTypes,setOrUpdateInterceptorsByTag:setOrUpdateInterceptorsByTag,setOrUpdateLeafTags:setOrUpdateLeafTags}}()
+return{inherit:inherit,inheritMany:inheritMany,mixin:mixinEasy,mixinHard:mixinHard,installStaticTearOff:installStaticTearOff,installInstanceTearOff:installInstanceTearOff,_instance_0u:s(0,0,null,["$0"],0),_instance_1u:s(0,1,null,["$1"],0),_instance_2u:s(0,2,null,["$2"],0),_instance_0i:s(1,0,null,["$0"],0),_instance_1i:s(1,1,null,["$1"],0),_instance_2i:s(1,2,null,["$2"],0),_static_0:r(0,null,["$0"],0),_static_1:r(1,null,["$1"],0),_static_2:r(2,null,["$2"],0),makeConstList:makeConstList,lazy:lazy,lazyFinal:lazyFinal,lazyOld:lazyOld,updateHolder:updateHolder,convertToFastObject:convertToFastObject,updateTypes:updateTypes,setOrUpdateInterceptorsByTag:setOrUpdateInterceptorsByTag,setOrUpdateLeafTags:setOrUpdateLeafTags}}()
 function initializeDeferredHunk(a){x=v.types.length
 a(hunkHelpers,v,w,$)}var A={FK:function FK(){},
 GJ(a,b,c){if(b.C("bQ<0>").b(a))return new A.ol(a,b.C("@<0>").K(c).C("ol<1,2>"))
@@ -3315,7 +3310,9 @@ if(a<0)A.vh(A.xY("Major version must be non-negative.",null))
 if(b<0)A.vh(A.xY("Minor version must be non-negative.",null))
 if(c<0)A.vh(A.xY("Patch version must be non-negative.",null))
 return new A.M3(a,b,c,s,r,f)},
-jm(a,b,c){return A.Ot(a,b,c,null,null,""+a+"."+b+"."+c)},
+jm(a,b,c,d){var s=""+a+"."+b+"."+c
+if(d!=null)s+="-"+d
+return A.Ot(a,b,c,d,null,s)},
 pT(a){var s,r,q,p,o,n,m,l=null,k='Could not parse "',j=$.Dp().ej(a)
 if(j==null)throw A.J(A.rr(k+a+'".',l,l))
 try{n=j.b[1]
@@ -3353,15 +3350,19 @@ if(q!=null){p=q.b
 r=A.Ej(p[1])+"-rev."+A.Ej(p[2])+"."+A.Ej(p[3])}o=A.pT(r)
 n=A.Bt(c.q(0,"revision"))
 m=A.Hp(n,null)
-if(m==null)return new A.Xx(n,o,k)
-return new A.p5(m,o,k)},
+if(m==null)return new A.Xx(n,o,k,a)
+return new A.p5(m,o,k,a)},
 Rj:function Rj(){},
-p5:function p5(a,b,c){this.e=a
-this.a=b
-this.b=c},
-Xx:function Xx(a,b,c){this.e=a
-this.a=b
-this.b=c},
+p5:function p5(a,b,c,d){var _=this
+_.e=a
+_.a=b
+_.b=c
+_.c=d},
+Xx:function Xx(a,b,c,d){var _=this
+_.e=a
+_.a=b
+_.b=c
+_.c=d},
 ji(a,b){if(b<0)A.vh(A.C3("Offset may not be negative, was "+b+"."))
 else if(b>a.c.length)A.vh(A.C3("Offset "+b+u.s+a.gB(a)+"."))
 return new A.VW(a,b)},
@@ -3762,7 +3763,6 @@ L7:function L7(){},
 kD:function kD(){},
 Dr:function Dr(){}},B={}
 var w=[A,J,B]
-hunkHelpers.setFunctionNamesIfNecessary(w)
 var $={}
 A.FK.prototype={}
 J.vB.prototype={
@@ -3823,6 +3823,8 @@ Kh(a,b){var s,r=b.length
 if(r===0)return
 if(a===b)throw A.J(A.a4(a))
 for(s=0;s<r;++s)a.push(b[s])},
+V1(a){if(!!a.fixed$length)A.vh(A.u0("clear"))
+a.length=0},
 aN(a,b){var s,r=a.length
 for(s=0;s<r;++s){b.$1(a[s])
 if(a.length!==r)throw A.J(A.a4(a))}},
@@ -5554,7 +5556,7 @@ s=A.Fl(t.N,t.z)
 r=n.Cf()
 for(q=0;p=r.length,q<p;++q){o=r[q]
 s.Y5(0,o,n.q(0,o))}if(p===0)r.push("")
-else B.Nm.sB(r,0)
+else B.Nm.V1(r)
 n.a=n.b=null
 return n.c=s},
 fb(a){var s
@@ -7000,118 +7002,119 @@ A.TT(new A.wz(n,k)).Rz(0,q)
 n=l.querySelectorAll(o!=="all"?s+('[data-os="'+A.Ej(o)+'"]'):s)
 n.toString
 A.TT(new A.wz(n,k)).Rz(0,q)}},
-PS(b4){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2="data-version",b3="href"
-for(s=B.j7.gvc(),s=s.gkz(s),r=this.a,q="https://storage.googleapis.com/dart-archive/channels/"+r+"/release/",p=b4.a,o=t.bY,n=p.f,m=t.W,l=this.c,k=t.fD,r=r==="dev",j=b4.b.a;s.G();){i=s.gl()
-h=B.j7.q(0,i)
-if(h==null)h=B.iH
-for(g=h.length,f=i==="macOS",e=0;e<g;++e){d=h[e]
-if(B.CT.q(0,i)==="linux"){c=d.a
-if(c==="ARMv7")b=j<A.Gl(r?"2015-10-21":"2015-08-31").a
-else b=!1
-if(b)continue
-else if(c==="ARMv8 (ARM64)"&&j<A.Gl("2017-03-09").a)continue}if(f&&d.a==="ia32")if(p.iM(0,A.jm(2,7,0))>0)continue
-if(f&&d.a==="ARM64")if(p.iM(0,A.jm(2,14,1))<0)continue
-c=l.tBodies
-c.toString
-c=new A.zO(c,k)
-if(c.gB(c)===0)A.vh(A.Wp())
-a=m.a(J.oD(c.q(0,0),-1))
-a.setAttribute(b2,n)
-c=B.CT.q(0,i)
-a.setAttribute("data-os",c==null?"":c)
-c=a.insertCell(-1)
-c.toString
-o.a(c)
-c.textContent=n
-b=document
-a0=b.createElement("span")
-a0.toString
-a0.textContent=" ("+A.Ej(A.yl(b4))+")"
-a1=a0.classList
-a1.contains("muted").toString
-a1.add("muted")
-c.appendChild(a0).toString
-a0=a.insertCell(-1)
-a0.toString
-o.a(a0).textContent=i
-a0=a.insertCell(-1)
-a0.toString
-o.a(a0)
-a1=a0.classList
-a1.contains("nowrap").toString
-a1.add("nowrap")
-c=d.a
-a0.textContent=c
-a2=["Dart SDK","Debian package"]
-a0=a.insertCell(-1)
-a0.toString
-o.a(a0)
-a1=a0.classList
-a1.contains("archives").toString
-a1.add("archives")
-for(a3=d.b,a4=0;a4<2;++a4){a5=a2[a4]
-if(B.Nm.tg(a3,a5)){if(a5==="Dart Editor")continue
-a6=A.Ej(B.CT.q(0,a5))+"-"+A.Ej(B.CT.q(0,i))+"-"+A.Ej(B.CT.q(0,c))
-a7=a5==="Debian package"
-if(a7)if(p.iM(0,A.jm(2,0,0))<0)continue
-else a6="dart_"+A.C5(b4)
-a8=q+A.C5(b4)+"/"+A.Ej(B.zu.q(0,a5))+"/"+a6+A.Ej(B.EL.q(0,a5))
-a9=b.createElement("a")
-a9.textContent=a5
-a9.setAttribute(b3,a8)
-a0.appendChild(a9).toString
-b0=A.En(b4)
-if(!a7)a7=b0==null||b0>38976
-else a7=!1
-if(a7){a7=b.createTextNode(" ")
-a7.toString
-a0.appendChild(a7).toString
-a9=b.createElement("a")
-a9.textContent="(SHA-256)"
-a9.setAttribute(b3,a8+".sha256sum")
-a1=a9.classList
-a1.contains("sha").toString
-a1.add("sha")
-a0.appendChild(a9).toString}a7=b.createElement("br")
-a7.toString
-a0.appendChild(a7).toString}}}}s=l.tBodies
+PS(b5){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3="data-version",b4="href"
+for(s=B.zu.gvc(),s=s.gkz(s),r=this.a,q="https://storage.googleapis.com/dart-archive/channels/"+r+"/release/",p=b5.a,o=t.bY,n=p.f,m=t.W,l=this.c,k=t.fD,r=r==="dev",j=b5.b.a,i=b5.c==="stable";s.G();){h=s.gl()
+g=B.zu.q(0,h)
+if(g==null)g=B.iH
+for(f=g.length,e=h==="macOS",d=0;d<f;++d){c=g[d]
+if(B.OI.q(0,h)==="linux"){b=c.a
+if(b==="ARMv7")a=j<A.Gl(r?"2015-10-21":"2015-08-31").a
+else a=!1
+if(a)continue
+else if(b==="ARMv8 (ARM64)"&&j<A.Gl("2017-03-09").a)continue
+else if(b==="RISC-V (RV64GC)"){if(p.iM(0,A.jm(2,17,0,"258.0.dev"))<0)continue
+if(i)continue}}else if(e){b=c.a
+if(b==="IA32"){if(p.iM(0,A.jm(2,7,0,null))>0)continue}else if(b==="ARM64"&&p.iM(0,A.jm(2,14,1,null))<0)continue}b=l.tBodies
+b.toString
+b=new A.zO(b,k)
+if(b.gB(b)===0)A.vh(A.Wp())
+a0=m.a(J.oD(b.q(0,0),-1))
+a0.setAttribute(b3,n)
+b=B.OI.q(0,h)
+a0.setAttribute("data-os",b==null?"":b)
+b=a0.insertCell(-1)
+b.toString
+o.a(b)
+b.textContent=n
+a=document
+a1=a.createElement("span")
+a1.toString
+a1.textContent=" ("+A.Ej(A.yl(b5))+")"
+a2=a1.classList
+a2.contains("muted").toString
+a2.add("muted")
+b.appendChild(a1).toString
+a1=a0.insertCell(-1)
+a1.toString
+o.a(a1).textContent=h
+a1=a0.insertCell(-1)
+a1.toString
+o.a(a1)
+a2=a1.classList
+a2.contains("nowrap").toString
+a2.add("nowrap")
+b=c.a
+a1.textContent=b
+a3=["Dart SDK","Debian package"]
+a1=a0.insertCell(-1)
+a1.toString
+o.a(a1)
+a2=a1.classList
+a2.contains("archives").toString
+a2.add("archives")
+for(a4=c.b,a5=0;a5<2;++a5){a6=a3[a5]
+if(B.Nm.tg(a4,a6)){if(a6==="Dart Editor")continue
+a7=A.Ej(B.OI.q(0,a6))+"-"+A.Ej(B.OI.q(0,h))+"-"+A.Ej(B.OI.q(0,b))
+a8=a6==="Debian package"
+if(a8)if(p.iM(0,A.jm(2,0,0,null))<0)continue
+else a7="dart_"+A.C5(b5)
+a9=q+A.C5(b5)+"/"+A.Ej(B.d4.q(0,a6))+"/"+a7+A.Ej(B.EL.q(0,a6))
+b0=a.createElement("a")
+b0.textContent=a6
+b0.setAttribute(b4,a9)
+a1.appendChild(b0).toString
+b1=A.En(b5)
+if(!a8)a8=b1==null||b1>38976
+else a8=!1
+if(a8){a8=a.createTextNode(" ")
+a8.toString
+a1.appendChild(a8).toString
+b0=a.createElement("a")
+b0.textContent="(SHA-256)"
+b0.setAttribute(b4,a9+".sha256sum")
+a2=b0.classList
+a2.contains("sha").toString
+a2.add("sha")
+a1.appendChild(b0).toString}a8=a.createElement("br")
+a8.toString
+a1.appendChild(a8).toString}}}}s=l.tBodies
 s.toString
 k=new A.zO(s,k)
-a=m.a(J.oD(k.gFV(k),-1))
-a.setAttribute(b2,n)
-a.setAttribute("data-os","api")
+a0=m.a(J.oD(k.gFV(k),-1))
+a0.setAttribute(b3,n)
+a0.setAttribute("data-os","api")
 k=document.createElement("span")
 k.toString
-k.textContent=" ("+A.Ej(A.yl(b4))+")"
-a1=k.classList
-a1.contains("muted").toString
-a1.add("muted")
-m=a.insertCell(-1)
+k.textContent=" ("+A.Ej(A.yl(b5))+")"
+a2=k.classList
+a2.contains("muted").toString
+a2.add("muted")
+m=a0.insertCell(-1)
 m.toString
 o.a(m)
 m.textContent=n
 m.appendChild(k).toString
-k=a.insertCell(-1)
+k=a0.insertCell(-1)
 k.toString
 o.a(k).textContent="---"
-k=a.insertCell(-1)
+k=a0.insertCell(-1)
 k.toString
 o.a(k).textContent="---"
-k=a.insertCell(-1)
+k=a0.insertCell(-1)
 k.toString
 o.a(k)
-a1=k.classList
-a1.contains("archives").toString
-a1.add("archives")
+a2=k.classList
+a2.contains("archives").toString
+a2.add("archives")
 p=p["["](0)
 o=A.J6()
 o.textContent="API docs"
-o.setAttribute(b3,q+p+"/api-docs/dartdocs-gen-api.zip")
+o.setAttribute(b4,q+p+"/api-docs/dartdocs-gen-api.zip")
 k.appendChild(o).toString
 l=l.querySelectorAll(".template")
 l.toString
-b1=new A.wz(l,t.Z)
-for(s=new A.a7(b1,b1.gB(b1)),r=A.Lh(s).c;s.G();){q=s.d
+b2=new A.wz(l,t.Z)
+for(s=new A.a7(b2,b2.gB(b2)),r=A.Lh(s).c;s.G();){q=s.d
 if(q==null)q=r.a(q)
 p=q.parentNode
 if(p!=null)p.removeChild(q).toString}}}
@@ -8473,24 +8476,25 @@ B.ea=A.QI(s([0,0,32754,11263,65534,34815,65534,18431]),t.t)
 B.Wd=A.QI(s([0,0,65490,12287,65535,34815,65534,18431]),t.t)
 B.Ux=A.QI(s(["Dart SDK","Debian package"]),t.s)
 B.EL=new A.LP(2,{"Dart SDK":"-release.zip","Debian package":"-1_amd64.deb"},B.Ux,t.w)
-B.zu=new A.LP(2,{"Dart SDK":"sdk","Debian package":"linux_packages"},B.Ux,t.w)
+B.d4=new A.LP(2,{"Dart SDK":"sdk","Debian package":"linux_packages"},B.Ux,t.w)
 B.e8=A.QI(s(["macOS","Linux","Windows"]),t.s)
 B.Vb=A.QI(s(["Dart SDK"]),t.s)
 B.pB=new A.mi("x64",B.Vb)
 B.Lv=new A.mi("ARM64",B.Vb)
-B.Wg=new A.mi("ia32",B.Vb)
-B.Dj=A.QI(s([B.pB,B.Lv,B.Wg]),t.c)
+B.x3=new A.mi("IA32",B.Vb)
+B.q9=A.QI(s([B.pB,B.Lv,B.x3]),t.c)
 B.mb=new A.mi("x64",B.Ux)
 B.Cj=new A.mi("ARMv8 (ARM64)",B.Vb)
 B.hI=new A.mi("ARMv7",B.Vb)
-B.JD=A.QI(s([B.mb,B.Wg,B.Cj,B.hI]),t.c)
-B.jN=A.QI(s([B.pB,B.Wg]),t.c)
-B.j7=new A.LP(3,{macOS:B.Dj,Linux:B.JD,Windows:B.jN},B.e8,A.N0("LP<qU,zM<mi>>"))
+B.af=new A.mi("RISC-V (RV64GC)",B.Vb)
+B.La=A.QI(s([B.mb,B.x3,B.Cj,B.hI,B.af]),t.c)
+B.rQ=A.QI(s([B.pB,B.x3]),t.c)
+B.zu=new A.LP(3,{macOS:B.q9,Linux:B.La,Windows:B.rQ},B.e8,A.N0("LP<qU,zM<mi>>"))
 B.CM=new A.LP(0,{},B.xD,t.w)
-B.T3=A.QI(s(["macOS","Linux","Windows","ia32","x64","ARM64","ARMv7","ARMv8 (ARM64)","Dart SDK"]),t.s)
-B.CT=new A.LP(9,{macOS:"macos",Linux:"linux",Windows:"windows",ia32:"ia32",x64:"x64",ARM64:"arm64",ARMv7:"arm","ARMv8 (ARM64)":"arm64","Dart SDK":"dartsdk"},B.T3,t.w)
 B.o6=A.QI(s(["29803","30107","30188","31822","30798","30036","32314","33014","34825","35530","36345","35121","36647","38663","37644","37972","37348","37942","39553","42013","41096","42039","42828","44672","45104","45396","45692","30039","29962","30104","30338","30187","30657","30821","31123","31329","30939","31777","31661","31736","31918","31818","32164","32242","32426","32688","32712","32844","32778","32954","33060","33192","33495","34229","33731","34463","34284","34497","34591","34792","34756","35275","35068","34683","35677","35890","35960","36091","35362","36146","36210","36284","36412","36341","36630","36542","36871","37028","37071","37223","37161","37360","37251","37302","37385","37438","37532","36979","37580","37475","37639","37743","37846","37936","38083","38145","38380","38621","38831","38967","39285","39401","39442","39661","39537","40090","39799","40675","40302","40806","40917","40987","41004","41090","41275","41389","41515","41684","41762","41923","41847","41793","41978","42033","41145","42684","42546","42856","42241","43384","43584","43903","44224","43715","44018","44260","44314","44550","44500","44532","44630","44728","44601","45054","45089","45201","45268","45369","45311","45519"]),t.s)
 B.xy=new A.LP(150,{"29803":"0.8.10-rev.3.29803","30107":"0.8.10-rev.10.30107","30188":"1.0.0-rev.3.30188","31822":"1.1.1","30798":"1.0.0-rev.10.30798","30036":"0.8.10-rev.6.30036","32314":"1.1.3","33014":"1.2.0","34825":"1.3.0","35530":"1.3.6","36345":"1.4.0","35121":"1.3.3","36647":"1.4.2","38663":"1.5.8","37644":"1.5.1","37972":"1.5.3","37348":"1.4.3","37942":"1.5.2","39553":"1.6.0","42013":"1.8.0","41096":"1.7.2","42039":"1.8.3","42828":"1.8.5","44672":"1.9.1","45104":"1.9.3","45396":"1.10.0","45692":"1.10.1","30039":"0.8.10-rev.8.30039","29962":"0.8.10-rev.6.29962","30104":"0.8.10-rev.10.30104","30338":"1.0.0-rev.7.30338","30187":"1.0.0-rev.3.30187","30657":"1.0.1-rev.3.30657","30821":"1.0.2-rev.1.30821","31123":"1.1.0-dev.4.0","31329":"1.1.0-dev.5.0","30939":"1.0.3-rev.0.30939","31777":"1.1.0-dev.5.10","31661":"1.1.0-dev.5.6","31736":"1.1.0-dev.5.9","31918":"1.2.0-dev.1.0","31818":"1.1.0-dev.5.11","32164":"1.2.0-dev.2.4","32242":"1.2.0-dev.3.2","32426":"1.2.0-dev.4.0","32688":"1.2.0-dev.5.7","32712":"1.2.0-dev.5.8","32844":"1.2.0-dev.5.12","32778":"1.2.0-dev.5.11","32954":"1.2.0-dev.5.15","33060":"1.3.0-dev.0.0","33192":"1.3.0-dev.1.1","33495":"1.3.0-dev.3.2","34229":"1.3.0-dev.5.2","33731":"1.3.0-dev.4.1","34463":"1.3.0-dev.7.2","34284":"1.3.0-dev.6.1","34497":"1.3.0-dev.7.5","34591":"1.3.0-dev.7.7","34792":"1.3.0-dev.7.12","34756":"1.3.0-dev.7.11","35275":"1.4.0-dev.3.0","35068":"1.4.0-dev.2.2","34683":"1.3.0-dev.7.10","35677":"1.4.0-dev.5.1","35890":"1.4.0-dev.6.2","35960":"1.4.0-dev.6.3","36091":"1.4.0-dev.6.5","35362":"1.4.0-dev.4.0","36146":"1.4.0-dev.6.6","36210":"1.4.0-dev.6.7","36284":"1.4.0-dev.6.8","36412":"1.5.0-dev.0.0","36341":"1.4.0-dev.6.9","36630":"1.5.0-dev.2.0","36542":"1.5.0-dev.1.1","36871":"1.5.0-dev.3.4","37028":"1.5.0-dev.4.1","37071":"1.5.0-dev.4.2","37223":"1.5.0-dev.4.7","37161":"1.5.0-dev.4.5","37360":"1.5.0-dev.4.13","37251":"1.5.0-dev.4.8","37302":"1.5.0-dev.4.11","37385":"1.5.0-dev.4.14","37438":"1.5.0-dev.4.15","37532":"1.5.0-dev.4.17","36979":"1.5.0-dev.4.0","37580":"1.5.0-dev.4.20","37475":"1.5.0-dev.4.16","37639":"1.5.0-dev.4.23","37743":"1.6.0-dev.0.0","37846":"1.6.0-dev.0.1","37936":"1.6.0-dev.1.2","38083":"1.6.0-dev.2.0","38145":"1.6.0-dev.3.0","38380":"1.6.0-dev.4.0","38621":"1.6.0-dev.6.0","38831":"1.6.0-dev.7.0","38967":"1.6.0-dev.8.0","39285":"1.6.0-dev.9.3","39401":"1.6.0-dev.9.5","39442":"1.6.0-dev.9.6","39661":"1.7.0-dev.0.1","39537":"1.6.0-dev.9.7","40090":"1.7.0-dev.2.0","39799":"1.7.0-dev.1.0","40675":"1.7.0-dev.4.0","40302":"1.7.0-dev.3.0","40806":"1.7.0-dev.4.1","40917":"1.7.0-dev.4.3","40987":"1.7.0-dev.4.4","41004":"1.7.0-dev.4.5","41090":"1.7.0-dev.4.6","41275":"1.8.0-dev.1.1","41389":"1.8.0-dev.2.0","41515":"1.8.0-dev.3.0","41684":"1.8.0-dev.4.0","41762":"1.8.0-dev.4.1","41923":"1.8.0-dev.4.5","41847":"1.8.0-dev.4.4","41793":"1.8.0-dev.4.2","41978":"1.8.0-dev.4.6","42033":"1.9.0-dev.0.0","41145":"1.8.0-dev.0.0","42684":"1.9.0-dev.3.0","42546":"1.9.0-dev.2.2","42856":"1.9.0-dev.4.0","42241":"1.9.0-dev.1.0","43384":"1.9.0-dev.5.1","43584":"1.9.0-dev.7.1","43903":"1.9.0-dev.8.4","44224":"1.9.0-dev.10.0","43715":"1.9.0-dev.8.0","44018":"1.9.0-dev.9.1","44260":"1.9.0-dev.10.2","44314":"1.9.0-dev.10.4","44550":"1.9.0-dev.10.10","44500":"1.9.0-dev.10.7","44532":"1.9.0-dev.10.9","44630":"1.9.0-dev.10.13","44728":"1.10.0-dev.0.1","44601":"1.9.0-dev.10.12","45054":"1.10.0-dev.1.0","45089":"1.10.0-dev.1.1","45201":"1.10.0-dev.1.5","45268":"1.10.0-dev.1.7","45369":"1.10.0-dev.1.10","45311":"1.10.0-dev.1.9","45519":"1.11.0-dev.0.0"},B.o6,t.w)
+B.fJ=A.QI(s(["macOS","Linux","Windows","IA32","x64","ARM64","ARMv7","ARMv8 (ARM64)","RISC-V (RV64GC)","Dart SDK"]),t.s)
+B.OI=new A.LP(10,{macOS:"macos",Linux:"linux",Windows:"windows",IA32:"ia32",x64:"x64",ARM64:"arm64",ARMv7:"arm","ARMv8 (ARM64)":"arm64","RISC-V (RV64GC)":"riscv64","Dart SDK":"dartsdk"},B.fJ,t.w)
 B.vU=A.QI(s(["user-agent","content-length"]),t.s)
 B.No=new A.LP(2,{"user-agent":null,"content-length":null},B.vU,A.N0("LP<qU,c8>"))
 B.wD=new A.ZY(B.No,A.N0("ZY<qU>"))

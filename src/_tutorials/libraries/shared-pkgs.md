@@ -40,7 +40,7 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 {{site.alert.end}}
 
 
@@ -178,10 +178,6 @@ if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from the `.dart_tool/package_config.json` file.
 
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
-
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
@@ -285,7 +281,7 @@ use the `package:` prefix.
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
    [vector_math API
-   docs]({{site.pub}}/documentation/vector_math/latest),
+   docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
    {{site.alert.note}}
