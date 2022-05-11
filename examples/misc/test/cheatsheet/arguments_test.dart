@@ -1,4 +1,4 @@
-import 'package:examples/cheatsheet/optional_named_params.dart';
+import 'package:examples/cheatsheet/named_parameters.dart';
 import 'package:examples/cheatsheet/optional_positional_args.dart'
     as optional_args;
 import 'package:examples/cheatsheet/optional_positional_args2.dart'
@@ -9,23 +9,23 @@ void main() {
   test('print_name', () {
     expect(() {
       printNameTest();
-    }, prints('Avinash Gupta \nPoshmeister Moneybuckets IV\n'));
+    }, prints('Dash  Dartisan\nJohn Who Smith\nJohn Who Smith\n'));
   });
 
-  test('print_name_default', () {
-    // #docregion defaulted-suffix
-    void printName(String firstName, String lastName, {String suffix = ''}) {
-      print('$firstName $lastName $suffix');
-    }
-    // #enddocregion defaulted-suffix
+  // #docregion defaulted-middle
+  void printName(String firstName, String lastName, {String middleName = ''}) {
+    print('$firstName $middleName $lastName');
+  }
+  // #enddocregion defaulted-middle
 
+  test('print_name_default', () {
     expect(() {
-      printName('Dash', 'Dartisan', suffix: 'III');
-    }, prints('Dash Dartisan III\n'));
+      printName('Dash', 'Dartisan', middleName: 'Best');
+    }, prints('Dash Best Dartisan\n'));
 
     expect(() {
       printName('Dash', 'Dartisan');
-    }, prints('Dash Dartisan \n'));
+    }, prints('Dash  Dartisan\n'));
   });
 
   test('optional_positional_args', () {
