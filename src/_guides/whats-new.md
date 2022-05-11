@@ -101,7 +101,7 @@ we made the following changes to this site:
 [enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
 [super-initializer parameters]: /guides/language/language-tour#super-parameters
 [signing]: /tools/dart-compile#signing
-[`dart create`]: /tools/dart create
+[`dart create`]: /tools/dart-create
 
 [pub.dev site]: {{site.pub}}
 [pub tool]: /tools/pub/cmd
