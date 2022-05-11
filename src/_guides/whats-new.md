@@ -17,10 +17,10 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
-## TODO DATE: 2.17 release
+## May 11, 2022: 2.17 release
 
 This section lists notable changes made from February 4, 2022,
-through TODO DATE.
+through May 11, 2022.
 For details about the 2.17 release,
 see [Dart 2.17: BLOG POST TODO][].
 
