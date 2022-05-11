@@ -15,7 +15,7 @@ void main() {
   });
 
   test('for-and-closures', () {
-    void _test() {
+    void testForEachClosures() {
       // #docregion for-and-closures
       var callbacks = [];
       for (var i = 0; i < 2; i++) {
@@ -25,24 +25,24 @@ void main() {
       // #enddocregion for-and-closures
     }
 
-    expect(_test, m.prints(['0', '1']));
+    expect(testForEachClosures, m.prints(['0', '1']));
   });
 
   test('forEach', () {
-    void _test() {
+    void testCollectionForEach() {
       // #docregion forEach
       var collection = [1, 2, 3];
       collection.forEach(print); // 1 2 3
       // #enddocregion forEach
     }
 
-    expect(_test, m.prints([1, 2, 3]));
+    expect(testCollectionForEach, m.prints([1, 2, 3]));
   });
 
   test('assert', () {
     // trick to make text nullable
-    String? _text() => '';
-    String? text = _text();
+    String? nullableText() => '';
+    String? text = nullableText();
     var number = 0, urlString = 'https';
     // #docregion assert
     // Make sure the variable has a non-null value.

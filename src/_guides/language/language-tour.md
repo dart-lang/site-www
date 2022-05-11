@@ -429,8 +429,8 @@ then the expensive `_readThermometer()` function is never called:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
-// This is the program's only call to _readThermometer().
-[!late!] String temperature = _readThermometer(); // Lazily initialized.
+// This is the program's only call to readThermometer().
+[!late!] String temperature = readThermometer(); // Lazily initialized.
 ```
 
 

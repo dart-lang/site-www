@@ -66,7 +66,7 @@ void main() {
 ''';
 
   test('anonymous-function', () {
-    void _test() {
+    void testForEachAnonymousFunction() {
       // #docregion anonymous-function-main
       void main() {
         // #docregion anonymous-function
@@ -81,18 +81,18 @@ void main() {
       main();
     }
 
-    expect(_test, prints(indexedFruit));
+    expect(testForEachAnonymousFunction, prints(indexedFruit));
   });
 
   test('anon-func', () {
-    void _test() {
+    void testAnonymousFunction() {
       var list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
       list.forEach((item) => print('${list.indexOf(item)}: $item'));
       // #enddocregion anon-func
     }
 
-    expect(_test, prints(indexedFruit));
+    expect(testAnonymousFunction, prints(indexedFruit));
   });
 
   test('nested-functions', () {
