@@ -65,13 +65,13 @@ $ dart create --help
 ```
 
 You'll see a list of templates, including various web and server-side apps.
-One of the templates is named **console-full**.
+One of the templates is named **console**.
 
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
 
 ```terminal
-$ dart create -t console-full vector_victor 
+$ dart create -t console vector_victor 
 $ cd vector_victor
 ```
 
@@ -93,7 +93,7 @@ environment:
 #   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^1.0.0
+  lints: ^2.0.0
   test: ^1.16.0
 ```
 
@@ -177,10 +177,6 @@ Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from the `.dart_tool/package_config.json` file.
-
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
 
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.

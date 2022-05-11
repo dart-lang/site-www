@@ -329,7 +329,7 @@
     "sets": [
       "pedantic"
     ],
-    "details": "\n**AVOID**\n\n* assigning directly to the `href` field of an AnchorElement\n* assigning directly to the `src` field of an EmbedElement, IFrameElement,\n  ImageElement, or ScriptElement\n* assigning directly to the `srcdoc` field of an IFrameElement\n* calling the `createFragment` method of Element\n* calling the `open` method of Window\n* calling the `setInnerHtml` method of Element\n* calling the `Element.html` constructor\n* calling the `DocumentFragment.html` constructor\n\n\n**BAD:**\n```dart\nvar script = ScriptElement()..src = 'foo.js';\n```\n"
+    "details": "\n**AVOID**\n\n* assigning directly to the `href` field of an AnchorElement\n* assigning directly to the `src` field of an EmbedElement, IFrameElement, or\n  ScriptElement\n* assigning directly to the `srcdoc` field of an IFrameElement\n* calling the `createFragment` method of Element\n* calling the `open` method of Window\n* calling the `setInnerHtml` method of Element\n* calling the `Element.html` constructor\n* calling the `DocumentFragment.html` constructor\n\n\n**BAD:**\n```dart\nvar script = ScriptElement()..src = 'foo.js';\n```\n"
   },
   {
     "name": "use_build_context_synchronously",
@@ -337,7 +337,9 @@
     "group": "errors",
     "maturity": "experimental",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "flutter"
+    ],
     "details": "**DO NOT** use BuildContext across asynchronous gaps.\n\nStoring `BuildContext` for later usage can easily lead to difficult to diagnose\ncrashes. Asynchronous gaps are implicitly storing `BuildContext` and are some of\nthe easiest to overlook when writing code.\n\nWhen a `BuildContext` is used from a `StatefulWidget`, the `mounted` property\nmust be checked after an asynchronous gap.\n\n**GOOD:**\n```dart\nvoid onButtonTapped(BuildContext context) {\n  Navigator.of(context).pop();\n}\n```\n\n**BAD:**\n```dart\nvoid onButtonTapped(BuildContext context) async {\n  await Future.delayed(const Duration(seconds: 1));\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nclass _MyWidgetState extends State<MyWidget> {\n  ...\n\n  void onButtonTapped() async {\n    await Future.delayed(const Duration(seconds: 1));\n\n    if (!mounted) return;\n    Navigator.of(context).pop();\n  }\n}\n```\n"
   },
   {
@@ -371,7 +373,11 @@
     "group": "pub",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "details": "\n**DO** Depend on referenced packages.\n\nWhen importing a package, add a dependency on it to your pubspec.\n\nDepending explicitly on packages that you reference ensures they will always\nexist and allows you to put a dependency constraint on them to guard you\nagainst breaking changes.\n\nWhether this should be a regular dependency or dev_dependency depends on if it\nis referenced from a public file (one under either `lib` or `bin`), or some\nother private file.\n\n**BAD:**\n```dart\nimport 'package:a/a.dart';\n```\n\n```yaml\ndependencies:\n```\n\n**GOOD:**\n```dart\nimport 'package:a/a.dart';\n```\n\n```yaml\ndependencies:\n  a: ^1.0.0\n```\n\n"
   },
   {
@@ -1048,7 +1054,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "\n**AVOID** using library private types in public APIs.\n\nFor the purposes of this lint, a public API is considered to be any top-level or\nmember declaration unless the declaration is library private or contained in a\ndeclaration that's library private. The following uses of types are checked:\n\n- the return type of a function or method,\n- the type of any parameter of a function or method,\n- the bound of a type parameter to any function, method, class, mixin,\n  extension's extended type, or type alias,\n- the type of any top level variable or field,\n- any type used in the declaration of a type alias (for example\n  `typedef F = _Private Function();`), or\n- any type used in the `on` clause of an extension or a mixin\n\n**GOOD:**\n```dart\nf(String s) { ... }\n```\n\n**BAD:**\n```dart\nf(_Private p) { ... }\nclass _Private {}\n```\n\n"
   },
   {
@@ -1084,7 +1093,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "**DON’T** use a leading underscore for library prefixes.\nThere is no concept of \"private\" for library prefixes. When one of those has a\nname that starts with an underscore, it sends a confusing signal to the reader. \nTo avoid that, don't use leading underscores in those names.\n\n**BAD**\n```dart\nimport 'dart:core' as _core;\n```\n\n**GOOD:**\n```dart\nimport 'dart:core' as core;\n```\n"
   },
   {
@@ -1093,7 +1105,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "**DON’T** use a leading underscore for identifiers that aren't private. Dart\nuses a leading underscore in an identifier to mark members and top-level\ndeclarations as private. This trains users to associate a leading underscore\nwith one of those kinds of declarations. They see `_` and  think \"private\".\nThere is no concept of \"private\" for local variables or parameters.  When one of \nthose has a name that starts with an underscore, it sends a confusing signal to\nthe reader. To avoid that, don't use leading underscores in those names.\n\n**Exception**: An unused parameter can be named `_`, `__`, `___`, etc.  This is\ncommon practice in callbacks where you are passed a value but you don't need\nto use it. Giving it a name that consists solely of underscores is the idiomatic\nway to indicate that the value isn't used.\n\n**BAD**\n```dart\nvoid print(String _name) {\n  var _size = _name.length;\n  ...\n}\n```\n**GOOD:**\n\n```dart\nvoid print(String name) {\n  var size = name.length;\n  ...\n}\n```\n\n**OK:**\n\n```dart\n[1,2,3].map((_) => print('Hello'));\n```\n"
   },
   {
@@ -1133,7 +1148,11 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "details": "\nDon't use null check on a potentially nullable type parameter.\n\nGiven a generic type parameter `T` which has a nullable bound (e.g. the default\nbound of `Object?`), it is very easy to introduce erroneous null checks when\nworking with a variable of type `T?`. Specifically, it is not uncommon to have\n`T? x;` and want to assert that `x` has been set to a valid value of type `T`.\nA common mistake is to do so using `x!`. This is almost always incorrect, since\nif `T` is a nullable type, `x` may validly hold `null` as a value of type `T`.\n\n**BAD:**\n```dart\nT run<T>(T callback()) {\n  T? result;\n   (() { result = callback(); })();\n  return result!;\n}\n```\n\n**GOOD:**\n```dart\nT run<T>(T callback()) {\n  T? result;\n   (() { result = callback(); })();\n  return result as T;\n}\n```\n\n"
   },
   {
@@ -1435,7 +1454,7 @@
   },
   {
     "name": "prefer_for_elements_to_map_fromIterable",
-    "description": "Prefer for elements when building maps from iterables.",
+    "description": "Prefer 'for' elements when building maps from iterables.",
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
@@ -1444,7 +1463,7 @@
       "flutter",
       "pedantic"
     ],
-    "details": "When building maps from iterables, it is preferable to use for elements.\n\n**BAD:**\n```dart\nMap<String, WidgetBuilder>.fromIterable(\n  kAllGalleryDemos,\n  key: (demo) => '${demo.routeName}',\n  value: (demo) => demo.buildRoute,\n);\n\n```\n\n**GOOD:**\n```dart\nreturn {\n  for (var demo in kAllGalleryDemos)\n    '${demo.routeName}': demo.buildRoute,\n};\n```\n"
+    "details": "When building maps from iterables, it is preferable to use 'for' elements.\n\nUsing 'for' elements brings several benefits including:\n\n- Performance\n- Flexibility\n- Readability\n- Improved type inference\n- Improved interaction with null safety\n\n\n**BAD:**\n```dart\nMap<String, WidgetBuilder>.fromIterable(\n  kAllGalleryDemos,\n  key: (demo) => '${demo.routeName}',\n  value: (demo) => demo.buildRoute,\n);\n\n```\n\n**GOOD:**\n```dart\nreturn {\n  for (var demo in kAllGalleryDemos)\n    '${demo.routeName}': demo.buildRoute,\n};\n```\n\n**GOOD:**\n```dart\n// Map<int, Student> is not required, type is inferred automatically.\nfinal pizzaRecipients = {\n  ...studentLeaders,\n  for (var student in classG)\n    if (student.isPassing) student.id: student,\n};\n```\n"
   },
   {
     "name": "prefer_foreach",
@@ -1543,8 +1562,11 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
-    "details": "\n**PREFER** using interpolation to compose strings and values.\n\nUsing interpolation when composing strings and values is usually easier to write\nand read than concatenation.\n\n**BAD:**\n```dart\n'Hello, ' + name + '! You are ' + (year - birth) + ' years old.';\n```\n\n**GOOD:**\n```dart\n'Hello, $name! You are ${year - birth} years old.';\n```\n\n"
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
+    "details": "\n**PREFER** using interpolation to compose strings and values.\n\nUsing interpolation when composing strings and values is usually easier to write\nand read than concatenation.\n\n**BAD:**\n```dart\n'Hello, ' + person.name + ' from ' + person.city + '.';\n```\n\n**GOOD:**\n```dart\n'Hello, ${person.name} from ${person.city}.'\n```\n\n"
   },
   {
     "name": "prefer_is_empty",
@@ -1753,6 +1775,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [
+      "flutter",
       "pedantic"
     ],
     "details": "Sort child properties last in widget instance creations.  This improves\nreadability and plays nicest with UI as Code visualization in IDEs with UI as\nCode Guides in editors (such as IntelliJ) where Properties in the correct order\nappear clearly associated with the constructor call and separated from the\nchildren.\n\n**BAD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    child: Column(\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n      mainAxisAlignment: MainAxisAlignment.center,\n    ),\n    widthFactor: 0.5,\n  ),\n  floatingActionButton: FloatingActionButton(\n    child: Icon(Icons.add),\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n  ),\n);\n```\n\n**GOOD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    widthFactor: 0.5,\n    child: Column(\n      mainAxisAlignment: MainAxisAlignment.center,\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n    ),\n  ),\n  floatingActionButton: FloatingActionButton(\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n    child: Icon(Icons.add),\n  ),\n);\n```\n\nException: It's allowed to have parameter with a function expression after the\n`child` property.\n\n"
@@ -1791,7 +1814,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\nTighten the type of an initializing formal if a non-null assert exists. This\nallows the type system to catch problems rather than have them only be caught at\nrun-time.\n\n**BAD:**\n```dart\nclass A {\n  A.c1(this.p) : assert(p != null);\n  A.c2(this.p);\n  final String? p;\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.c1(String this.p);\n  A.c2(this.p);\n  final String? p;\n}\n\nclass B {\n  String? b;\n  A(this.b);\n}\n\nclass C extends B {\n  B(String super.b);\n}\n```\n"
+    "details": "\nTighten the type of an initializing formal if a non-null assert exists. This\nallows the type system to catch problems rather than have them only be caught at\nrun-time.\n\n**BAD:**\n```dart\nclass A {\n  A.c1(this.p) : assert(p != null);\n  A.c2(this.p);\n  final String? p;\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.c1(String this.p);\n  A.c2(this.p);\n  final String? p;\n}\n\nclass B {\n  String? b;\n  B(this.b);\n}\n\nclass C extends B {\n  B(String super.b);\n}\n```\n"
   },
   {
     "name": "type_annotate_public_apis",
@@ -1867,7 +1890,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "**PREFER** using the default unnamed Constructor over `.new`.\n\nGiven a class `C`, the named unnamed constructor `C.new` refers to the same\nconstructor as the unnamed `C`. As such it adds nothing but visual noise to\ninvocations and should be avoided (unless being used to identify a constructor\ntear-off).\n\n**BAD:**\n```dart\nclass A {\n  A.new(); // LINT\n}\n\nvar a = A.new(); // LINT\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.ok();\n}\n\nvar a = A();\nvar aa = A.ok();\nvar makeA = A.new;\n```\n"
   },
   {
@@ -1910,7 +1936,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "\n**DO** not specify the `late` modifier for top-level and static variables\nwhen the declaration contains an initializer. \n\nTop-level and static variables with initializers are already evaluated lazily\nas if they are marked `late`.\n\n**BAD:**\n```dart\nlate String badTopLevel = '';\n```\n\n**GOOD:**\n```dart\nString goodTopLevel = '';\n```\n\n**BAD:**\n```dart\nclass BadExample {\n  static late String badStatic = '';\n}\n```\n\n**GOOD:**\n```dart\nclass GoodExample {\n  late String goodStatic;\n}\n```\n"
   },
   {
@@ -1932,7 +1961,10 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "\n**AVOID** `null` in null-aware assignment.\n\nUsing `null` on the right-hand side of a null-aware assignment effectively makes\nthe assignment redundant.\n\n**GOOD:**\n```dart\nvar x;\nx ??= 1;\n```\n\n**BAD:**\n```dart\nvar x;\nx ??= null;\n```\n\n"
   },
   {
@@ -1963,7 +1995,10 @@
     "group": "style",
     "maturity": "experimental",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "details": "\nUse a non-nullable type for a final variable initialized with a non-nullable\nvalue.\n\n**BAD:**\n```dart\nfinal int? i = 1;\n```\n\n**GOOD:**\n```dart\nfinal int i = 1;\n```\n\n"
   },
   {
@@ -2059,7 +2094,7 @@
     "maturity": "experimental",
     "incompatible": [],
     "sets": [],
-    "details": "Classes that look like enumerations should be declared as `enum`s.\n\n**DO** use enums where appropriate.\n\nCandidates for enums are classes that:\n  * are concrete,\n  * are private or have only private generative constructors,\n  * have two or more static const fields with the same type as the class,\n  * have generative constructors that are only invoked at the top-level of the\n    initialization expression of these static fields,\n  * do not define `hashCode`, `==`, `values` or `index`,\n  * do not extend any class other than Object, and\n  * have no subclasses declared in the defining library.\n\n**BAD:**\n```dart\nclass LogPriority {\n  static const error = LogPriority._(1, 'Error');\n  static const warning = LogPriority._(2, 'Warning');\n  static const unknown = LogPriority._unknown('Log');\n\n  final String prefix;\n  final int priorty;\n  const LogPriority._(this.priority, this.prefix);\n  const LogPriority._unknown(String prefix) : this._(-1, prefix);\n}\n```\n\n**GOOD:**\n```dart\nenum LogPriority {\n  error(1, 'Error'),\n  warning(2, 'Warning'),\n  log.unknown('Log');\n \n  final String prefix;\n  final int priorty;\n  LogPriority(this.priority, this.prefix);\n  LogPriority.unknown(String prefix) : this(-1, prefix);\n}\n```\n"
+    "details": "Classes that look like enumerations should be declared as `enum`s.\n\n**DO** use enums where appropriate.\n\nCandidates for enums are classes that:\n  * are concrete,\n  * are private or have only private generative constructors,\n  * have two or more static const fields with the same type as the class,\n  * have generative constructors that are only invoked at the top-level of the\n    initialization expression of these static fields,\n  * do not define `hashCode`, `==`, `values` or `index`,\n  * do not extend any class other than Object, and\n  * have no subclasses declared in the defining library.\n\n**BAD:**\n```dart\nclass LogPriority {\n  static const error = LogPriority._(1, 'Error');\n  static const warning = LogPriority._(2, 'Warning');\n  static const log = LogPriority._unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority._(this.priority, this.prefix);\n  const LogPriority._unknown(String prefix) : this._(-1, prefix);\n}\n```\n\n**GOOD:**\n```dart\nenum LogPriority {\n  error(1, 'Error'),\n  warning(2, 'Warning'),\n  log.unknown('Log');\n\n  final String prefix;\n  final int priority;\n  const LogPriority(this.priority, this.prefix);\n  const LogPriority.unknown(String prefix) : this(-1, prefix);\n}\n```\n"
   },
   {
     "name": "use_full_hex_values_for_flutter_colors",

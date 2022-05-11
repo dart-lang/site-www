@@ -56,7 +56,7 @@ void main() {
     });
 
     test('Control flow', () {
-      void _test() {
+      void testControlFlow() {
         // #docregion control-flow
         if (year >= 2001) {
           print('21st century');
@@ -79,7 +79,7 @@ void main() {
       }
 
       expect(
-          _test,
+          testControlFlow,
           m.prints(flatten([
             '20th century',
             flybyObjects,
@@ -88,13 +88,13 @@ void main() {
     });
 
     test('arrow', () {
-      void _test() {
+      void testArrowFunction() {
         // #docregion arrow
         flybyObjects.where((name) => name.contains('turn')).forEach(print);
         // #enddocregion arrow
       }
 
-      expect(_test, m.prints('Saturn'));
+      expect(testArrowFunction, m.prints('Saturn'));
     });
   });
 
@@ -111,7 +111,7 @@ void main() {
   });
 
   test('use class', () {
-    void _test1() {
+    void testUseClass() {
       // #docregion use-class
       var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
       voyager.describe();
@@ -119,7 +119,7 @@ void main() {
       // #enddocregion use-class
     }
 
-    void _test2() {
+    void testNamedConstructor() {
       // #docregion use-class
       var voyager3 = Spacecraft.unlaunched('Voyager III');
       voyager3.describe();
@@ -127,17 +127,31 @@ void main() {
     }
 
     expect(
-        _test1,
+        testUseClass,
         prints(allOf(
           startsWith('Spacecraft: Voyager I'),
           contains('Launched: 1977'),
         )));
     expect(
-        _test2,
+        testNamedConstructor,
         m.prints([
           'Spacecraft: Voyager III',
           'Unlaunched',
         ]));
+  });
+
+  test('use enum', () {
+    void testIsGiant() {
+      // #docregion use-enum
+      final yourPlanet = Planet.earth;
+
+      if (!yourPlanet.isGiant) {
+        print('Your planet is not a "giant planet".');
+      }
+      // #enddocregion use-enum
+    }
+
+    expect(testIsGiant, m.prints('Your planet is not a "giant planet".'));
   });
 
   test('extends', () {
@@ -219,14 +233,14 @@ void main() {
       }
       // #enddocregion await
 
-      void _test() async {
+      void testAwait() async {
         final objects = ['test_data/config', testFileBase];
         await createDescriptions(objects);
         expect(testFile.existsSync(), isTrue);
       }
 
       expect(
-          _test,
+          testAwait,
           prints(
             contains('File for test_data/config already exists.'),
           ));
@@ -263,7 +277,7 @@ void main() {
   });
 
   test('try', () {
-    void _test() async {
+    void testTry() async {
       final flybyObjects = ['Moon'];
       // #docregion try
       try {
@@ -279,6 +293,6 @@ void main() {
       // #enddocregion try
     }
 
-    expect(_test, prints(startsWith('Could not describe object:')));
+    expect(testTry, prints(startsWith('Could not describe object:')));
   });
 }

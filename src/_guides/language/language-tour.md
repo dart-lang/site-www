@@ -429,8 +429,8 @@ then the expensive `_readThermometer()` function is never called:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
-// This is the program's only call to _readThermometer().
-[!late!] String temperature = _readThermometer(); // Lazily initialized.
+// This is the program's only call to readThermometer().
+[!late!] String temperature = readThermometer(); // Lazily initialized.
 ```
 
 
@@ -841,8 +841,10 @@ Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
 [`List`][] objects, so most people just call them *lists*.
 
-Dart list literals look like JavaScript array literals. Here’s a simple
-Dart list:
+Dart list literals are denoted by
+a comma separated list of expressions or values,
+enclosed in square brackets (`[]`).
+Here's a simple Dart list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -871,9 +873,9 @@ var list = [
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first value
-and `list.length - 1` is the index of the last value. You can get a
-list’s length and refer to list values just as you would in
-JavaScript:
+and `list.length - 1` is the index of the last value. 
+You can get a list’s length using the `.length` property
+and access a list's values using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 ```dart
@@ -1092,8 +1094,8 @@ nobleGases[18] = 'argon';
   For details, see [Using constructors](#using-constructors).
 {{site.alert.end}}
 
-Add a new key-value pair to an existing map just as you would in
-JavaScript:
+Add a new key-value pair to an existing map
+using the subscript assignment operator (`[]=`):
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
@@ -1101,7 +1103,7 @@ var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
-Retrieve a value from a map the same way you would in JavaScript:
+Retrieve a value from a map using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
@@ -1109,7 +1111,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn’t in a map, you get a null in return:
+If you look for a key that isn’t in a map, you get `null` in return:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
@@ -1310,15 +1312,8 @@ or when you define function parameters.
 
 #### Named parameters
 
-Named parameters are optional unless they're specifically marked as `required`.
-
-When calling a function, you can specify named parameters using
-<code><em>paramName</em>: <em>value</em></code>. For example:
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
-```dart
-enableFlags(bold: true, hidden: false);
-```
+Named parameters are optional
+unless they're explicitly marked as `required`.
 
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
@@ -1328,6 +1323,27 @@ to specify named parameters:
 ```dart
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool? bold, bool? hidden}) {...}
+```
+
+When calling a function, 
+you can specify named arguments using
+<code><em>paramName</em>: <em>value</em></code>. 
+For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
+```dart
+enableFlags(bold: true, hidden: false);
+```
+
+Although it often makes sense to place positional arguments first,
+named arguments can be placed anywhere in the argument list
+when it suits your API:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
+```dart
+repeat(times: 2, () {
+  ...
+});
 ```
 
 {{site.alert.tip}}
@@ -2209,8 +2225,9 @@ if (isRaining()) {
 }
 ```
 
-Unlike JavaScript, conditions must use boolean values, nothing else. See
-[Booleans](#booleans) for more information.
+The statement conditions must be expressions
+that evaluate to boolean values, nothing else.
+See [Booleans](#booleans) for more information.
 
 
 ### For loops
@@ -2889,6 +2906,9 @@ class Point {
 }
 ```
 
+The variables introduced by the initializing formals
+are implicitly final and only in scope of the initializer list.
+
 
 #### Default constructors
 
@@ -2999,6 +3019,61 @@ class Employee extends Person {
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
 
+<a name="super-parameters"></a>
+To avoid having to manually pass each parameter
+into the super invocation of a constructor,
+you can use super-initializer parameters to forward parameters
+to the specified or default superclass constructor.
+This feature can't be used with redirecting constructors.
+Super-initializer parameters have similar syntax and semantics to
+[initializing formal parameters](#initializing-formal-parameters):
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
+```dart
+class Vector2d {
+  final double x;
+  final double y;
+
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  // Forward the x and y parameters to the default super constructor like:
+  // Vector3d(final double x, final double y, this.z) : super(x, y);
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+Super-initializer parameters cannot be positional 
+if the super-constructor invocation already has positional arguments,
+but they can always be named:
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
+```dart
+class Vector2d {
+  // ...
+
+  Vector2d.named({required this.x, required this.y});
+}
+
+class Vector3d extends Vector2d {
+  // ...
+
+  // Forward the y parameter to the named super constructor like:
+  // Vector3d.yzPlane({required double y, required this.z})
+  //       : super.named(x: 0, y: y);
+  Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
+}
+```
+
+{{site.alert.version-note}}
+  Using super-initializer parameters 
+  requires a [language version][] of at least 2.17.
+  If you're using an earlier language version,
+  you must manually pass in all super constructor parameters.
+{{site.alert.end}}
 
 #### Initializer list
 
@@ -3333,7 +3408,7 @@ abstract class AbstractContainer {
 }
 ```
 
-
+<a id="interfaces"></a>
 ### Implicit interfaces
 
 Every class implicitly defines an interface containing all the instance
@@ -3529,9 +3604,16 @@ a fixed number of constant values.
 
 {{site.alert.note}}
   All enums automatically extend the [`Enum`][] class.
+  They are also sealed, 
+  meaning they cannot be subclassed, implemented, mixed in, 
+  or otherwise explicitly instantiated.
+
+  Abstract classes and mixins can explicitly implement or extend `Enum`,
+  but unless they are then implemented by or mixed into an enum declaration,
+  no objects can actually implement the type of that class or mixin.
 {{site.alert.end}}
 
-#### Using enums
+#### Declaring simple enums
 
 To declare a simple enumerated type,
 use the `enum` keyword and
@@ -3546,6 +3628,66 @@ enum Color { red, green, blue }
   You can also use [trailing commas][] when declaring an enumerated type
   to help prevent copy-paste errors.
 {{site.alert.end}}
+
+#### Declaring enhanced enums
+
+Dart also allows enum declarations to declare classes
+with fields, methods, and const constructors
+which are limited to a fixed number of known constant instances.
+
+To declare an enhanced enum,
+follow a syntax similar to normal [classes](#classes),
+but with a few extra requirements:
+
+* Instance variables must be `final`, 
+  including those added by [mixins](#mixins).
+* All [generative constructors](#constant-constructors) must be constant.
+* [Factory constructors](#factory-constructors) can only return
+  one of the fixed, known enum instances.
+* No other class can be extended as [`Enum`] is automatically extended.
+* There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
+* A member named `values` cannot be declared in an enum,
+  as it would conflict with the automatically generated static `values` getter.
+* All instances of the enum must be declared
+  in the beginning of the declaration,
+  and there must be at least one instance declared.
+
+Here is an example that declares an enhanced enum
+with multiple instances, instance variables,
+a getter, and an implemented interface:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
+```dart
+enum Vehicle implements Comparable<Vehicle> {
+  car(tires: 4, passengers: 5, carbonPerKilometer: 400),
+  bus(tires: 6, passengers: 50, carbonPerKilometer: 800),
+  bicycle(tires: 2, passengers: 1, carbonPerKilometer: 0);
+
+  const Vehicle({
+    required this.tires,
+    required this.passengers,
+    required this.carbonPerKilometer,
+  });
+
+  final int tires;
+  final int passengers;
+  final int carbonPerKilometer;
+
+  int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  @override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
+
+To learn more about declaring enhanced enums,
+see the section on [Classes](#classes).
+
+{{site.alert.version-note}}
+  Enhanced enums require a [language version][] of at least 2.17.
+{{site.alert.end}}
+
+#### Using enums
 
 Access the enumerated values like
 any other [static variable](#static-variables):
@@ -3607,14 +3749,8 @@ use the `.name` property:
 print(Color.blue.name); // 'blue'
 ```
 
-Enumerated types have the following limits:
 
-* You can't subclass, mix in, or implement an enum.
-* You can't explicitly instantiate an enum.
-
-For more information, see the [Dart language specification][].
-
-
+<a id="mixins"></a>
 ### Adding features to a class: mixins
 
 Mixins are a way of reusing a class's code in multiple class
