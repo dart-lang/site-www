@@ -55,10 +55,10 @@ class DartPadPicker {
       _iFrameElement.id = id;
     }
     iFrameHost.children.add(_iFrameElement);
-    window.addEventListener('message', (Event _e) {
-      final e = _e as MessageEvent;
+    window.addEventListener('message', (Event event) {
+      final messageEvent = event as MessageEvent;
       // Don't handle events from other iframe elements
-      final data = e.data;
+      final data = messageEvent.data;
       if (data is Map && data['type'] == 'ready') {
         _sendSourceCode();
       }

@@ -87,7 +87,7 @@ void main() {
     });
 
     test('substring-etc', () {
-      void _test() {
+      void testSubstring() {
         // #docregion substring-etc
         // Grab a substring.
         assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -113,7 +113,7 @@ void main() {
         // #enddocregion substring-etc
       }
 
-      expect(_test, m.prints(['h', 'e', 'l', 'l', 'o']));
+      expect(testSubstring, m.prints(['h', 'e', 'l', 'l', 'o']));
     });
 
     test('change case', () {
@@ -182,7 +182,7 @@ void main() {
     });
 
     test('match', () {
-      void _test() {
+      void testMatch() {
         // #docregion match
         var numbers = RegExp(r'\d+');
         var someDigits = 'llamas live 15 to 20 years';
@@ -197,7 +197,7 @@ void main() {
         // #enddocregion match
       }
 
-      expect(_test, m.prints([15, 20]));
+      expect(testMatch, m.prints([15, 20]));
     });
   });
 
@@ -425,7 +425,7 @@ void main() {
     });
 
     test('List.forEach()', () {
-      void _test() {
+      void testForEach() {
         // #docregion List-forEach
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -434,11 +434,11 @@ void main() {
         expect(teas, teasCheck);
       }
 
-      expect(_test, m.prints(teasCheck.map((tea) => 'I drink $tea')));
+      expect(testForEach, m.prints(teasCheck.map((tea) => 'I drink $tea')));
     });
 
     test('Map.forEach()', () {
-      void _test() {
+      void testForEach() {
         final hawaiianBeaches = {'Honolulu': 'Hanauma Bay'};
         // #docregion Map-forEach
         hawaiianBeaches.forEach((k, v) {
@@ -449,12 +449,12 @@ void main() {
         // #enddocregion Map-forEach
       }
 
-      expect(
-          _test, m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
+      expect(testForEach,
+          m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
     });
 
     test('List.map()', () {
-      void _test() {
+      void testListMap() {
         // #docregion List-map
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -464,7 +464,7 @@ void main() {
         expect(teas, teasCheck);
       }
 
-      expect(_test, m.prints(teasCheck.map((tea) => tea.toUpperCase())));
+      expect(testListMap, m.prints(teasCheck.map((tea) => tea.toUpperCase())));
     });
 
     test('toList()', () {

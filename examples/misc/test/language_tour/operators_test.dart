@@ -105,13 +105,13 @@ void main() {
     // #enddocregion assignment-gist-main-body
     */
 
-    void _test001() {
+    void testInitiallyNonNull() {
       // #docregion assignment-gist-main-body
       assignValues(0, 0, 1);
       // #enddocregion assignment-gist-main-body
     }
 
-    void _testNull() {
+    void testNull() {
       // #docregion assignment-gist-main-body
       assignValues(null, null, 1);
       // #enddocregion assignment-gist-main-body
@@ -119,7 +119,7 @@ void main() {
 
     test('var initially non-null', () {
       expect(
-          _test001,
+          testInitiallyNonNull,
           m.prints([
             'Initially: a == 0, b == 0',
             'After: a == 1, b == 0',
@@ -128,7 +128,7 @@ void main() {
 
     test('var initially non-null', () {
       expect(
-          _testNull,
+          testNull,
           m.prints([
             'Initially: a == null, b == null',
             'After: a == 1, b == 1',

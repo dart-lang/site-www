@@ -66,7 +66,7 @@ void main() {
   });
 
   test('const, identical, runtimeType', () {
-    void _test() {
+    void checkIdentical() {
       // #docregion const
       var p = const ImmutablePoint(2, 2);
       // #enddocregion const
@@ -83,7 +83,7 @@ void main() {
       // #enddocregion runtimeType
     }
 
-    expect(_test, m.prints('The type of a is ImmutablePoint'));
+    expect(checkIdentical, m.prints('The type of a is ImmutablePoint'));
   });
 
   test('point_with_main', () {
