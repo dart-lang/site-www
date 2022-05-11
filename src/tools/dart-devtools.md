@@ -143,8 +143,8 @@ which automatically breaks execution at the start of the script.
 $ cd path/to/dart/app
 $ dart run --pause-isolates-on-start --observe main.dart
 
-Observatory listening on http://127.0.0.1:8181/SzEylE7vt7w=/
-The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/SzEylE7vt7w=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FSzEylE7vt7w%3D%2Fws
+The Dart VM service is listening on http://127.0.0.1:8181/afZySiNbDPg=/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/afZySiNbDPg=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FafZySiNbDPg%3D%2Fws
 ```
 
 Note the **Dart DevTools debugger and profiler** URL.

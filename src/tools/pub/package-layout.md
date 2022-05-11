@@ -26,7 +26,6 @@ might look like:
 {% prettify none tag=pre+code %}
 enchilada/
   .dart_tool/ *
-  .packages *
   pubspec.yaml
   pubspec.lock **
   LICENSE
@@ -59,18 +58,16 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool/` directory and `.packages` file exist after you've run
-   `pub get`. Don't check them into source control.
+\* The `.dart_tool/` directory exists after you've run `pub get`. 
+   Don't check it into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
 \*** The `doc/api` directory exists locally after you've run
-      [`dart doc`](/tools/dart-doc).
-      Don't check the `api` directory into source control.
-
-{% include packages-dir.html %}
+     [`dart doc`](/tools/dart-doc).
+     Don't check the `api` directory into source control.
 
 
 ## The pubspec

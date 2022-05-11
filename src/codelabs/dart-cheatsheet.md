@@ -913,8 +913,8 @@ with a function you give it
 
 ## Optional positional parameters
 
-Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
-you're likely familiar with:
+Dart has two kinds of function parameters: positional and named. 
+Positional parameters are the kind you're likely familiar with:
 
 <?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
@@ -1046,25 +1046,30 @@ before you add them to the final string.
 {$ end hint.txt $}
 ```
 
+<a id="optional-named-parameters"></a>
+## Named parameters
 
-## Optional named parameters
+Using a curly brace syntax at the end of the parameter list,
+you can define parameters that have names.
 
-Using a curly brace syntax,
-you can define optional parameters that have names.
+Named parameters are optional
+unless they're explicitly marked as `required`.
 
-<?code-excerpt "misc/lib/cheatsheet/optional_named_params.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/named_parameters.dart"?>
 ```dart
-void printName(String firstName, String lastName, {String? suffix}) {
-  print('$firstName $lastName ${suffix ?? ''}');
+void printName(String firstName, String lastName, {String? middleName}) {
+  print('$firstName ${middleName ?? ''} $lastName');
 }
 // ···
-  printName('Avinash', 'Gupta');
-  printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
+  printName('Dash', 'Dartisan');
+  printName('John', 'Smith', middleName: 'Who');
+  // Named arguments can be placed anywhere in the argument list
+  printName('John', middleName: 'Who', 'Smith');
 ```
 
 As you might expect,
-the default value of an optional named parameter is `null`,
-but you can provide a default value.
+the default value of a nullable named parameter is `null`,
+but you can provide a custom default value.
 
 If the type of a parameter is non-nullable,
 then you must either provide a default value
@@ -1073,14 +1078,14 @@ or mark the parameter as `required`
 (as shown in the
 [constructor section](#using-this-in-a-constructor)).
 
-<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-suffix)" replace="/ = ''/[! = ''!]/g;"?>
+<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-middle)" replace="/ = ''/[! = ''!]/g;"?>
 ```dart
-void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
-  print('$firstName $lastName $suffix');
+void printName(String firstName, String lastName, {String middleName[! = ''!]}) {
+  print('$firstName $middleName $lastName');
 }
 ```
 
-A function can't have both optional positional and optional named parameters.
+A function can't have both optional positional and named parameters.
 
 
 ### Code example

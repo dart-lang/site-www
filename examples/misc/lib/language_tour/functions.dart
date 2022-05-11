@@ -35,6 +35,14 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion use-named-parameters
     enableFlags(bold: true, hidden: false);
     // #enddocregion use-named-parameters
+
+    void repeat(Function func, {int times = 1}) {}
+
+    // #docregion named-arguments-anywhere
+    repeat(times: 2, () {
+      /*...*/
+    });
+    // #enddocregion named-arguments-anywhere
   }
 
   {
