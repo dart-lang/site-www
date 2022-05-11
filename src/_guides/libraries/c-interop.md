@@ -185,7 +185,7 @@ while others (or their subtypes) can be instantiated.
 #### Purely marker native types
 
 The following table lists the platform-agnostic native types
-that are only used as markers in type signatures,
+that are used only as markers in type signatures,
 and can't be instantiated in Dart code:
 
 | **Dart type**                                                                                             | **Description**                                      |
