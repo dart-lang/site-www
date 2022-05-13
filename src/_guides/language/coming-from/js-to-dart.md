@@ -1302,7 +1302,7 @@ Use `length` to obtain the number of values in the `List`:
 _Dart_
 ```dart
 final fruits = <String>['apple', 'orange', 'pear'];
-assert(fruits.length == 2);
+assert(fruits.length == 3);
 ```
 
 Use `isEmpty` to check if the `List` is empty:
