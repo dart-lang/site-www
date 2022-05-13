@@ -1420,7 +1420,7 @@ Use `length` to get the number of values in the `Set`:
 _Dart_
 ```dart
 final fruits = {'apple', 'orange', 'pear'};
-assert(fruits.length == 2);
+assert(fruits.length == 3);
 ```
 
 Use `isEmpty` to check if the `Set` is empty:
