@@ -30,8 +30,9 @@ $ dart fix --apply
 
 ## Customizing dart fix
 
-The `dart fix` command applies it's fixes based on the analysis configuration
-of the code it us run on. To learn more about customizing the analysis
+The `dart fix` command applies its fixes
+based on the analysis configuration of the code it us run on. 
+To learn more about customizing the analysis,
 see [Customizing static analysis](/guides/language/analysis-options).
 
 ### Example
@@ -67,16 +68,16 @@ To enable the dart fix to upgrade existing code to use this feature,
 and to ensure that the analyzer warns you when you later forget to use it,
 configure your `analysis_options.yaml` file like this:
 
-```
+```yaml
 linter:
   rules:
     - use_super_parameters
 ```
 
-You should then see:
+You should then see the following when viewing the proposed changes:
 
-```console
-mit-macbookpro5:si mit$ dart fix --dry-run
+```terminal
+$ dart fix --dry-run
 Computing fixes in si (dry run)... 9.0s
 
 1 proposed fixes in 1 files.
