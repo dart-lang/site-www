@@ -11,9 +11,6 @@ finds and fixes two types of issues:
   that have associated automated fixes
   (sometimes called _quick-fixes_ or _code actions_)
 
-  To learn more about customizing the analysis issues identified,
-  see [Customizing static analysis](/guides/language/analysis-options).
-
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
@@ -29,6 +26,63 @@ To apply the proposed changes, use the `--apply` flag:
 
 ```terminal
 $ dart fix --apply
+```
+
+## Customizing dart fix
+
+The `dart fix` command applies it's fixes based on the analysis configuration
+of the code it us run on. To learn more about customizing the analysis
+see [Customizing static analysis](/guides/language/analysis-options).
+
+### Example
+
+Imagine you have code like this:
+
+```dart
+class Vector2d {
+  final double x, y;
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  Vector3d(final double x, final double y, this.z) : super(x, y);
+}
+```
+
+Dart 2.17 introduced a new language feature called super initializers, 
+which allows you to write the constructor of `Vector3d`
+with a more compact style:
+
+```dart
+class Vector3d extends Vector2d {
+  final double z;
+
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+To enable the dart fix to upgrade existing code to use this feature,
+and to ensure that the analyzer warns you when you later forget to use it,
+configure your `analysis_options.yaml` file like this:
+
+```
+linter:
+  rules:
+    - use_super_parameters
+```
+
+You should then see:
+
+```console
+mit-macbookpro5:si mit$ dart fix --dry-run
+Computing fixes in si (dry run)... 9.0s
+
+1 proposed fixes in 1 files.
+
+lib/si.dart
+  use_super_parameters • 1 fix
 ```
 
 [`dart analyze`]: /tools/dart-analyze
