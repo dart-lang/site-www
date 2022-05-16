@@ -78,11 +78,11 @@ You should then see the following when viewing the proposed changes:
 
 ```terminal
 $ dart fix --dry-run
-Computing fixes in si (dry run)... 9.0s
+Computing fixes in myapp (dry run)... 9.0s
 
 1 proposed fixes in 1 files.
 
-lib/si.dart
+lib/myapp.dart
   use_super_parameters • 1 fix
 ```
 
