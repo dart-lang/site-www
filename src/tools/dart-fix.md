@@ -31,7 +31,7 @@ $ dart fix --apply
 ## Customizing dart fix
 
 The `dart fix` command applies its fixes
-based on the analysis configuration of the code it us run on. 
+based on the analysis configuration of the code it runs on. 
 To learn more about customizing the analysis,
 see [Customizing static analysis](/guides/language/analysis-options).
 
