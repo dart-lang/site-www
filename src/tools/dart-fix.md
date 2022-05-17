@@ -78,6 +78,17 @@ linter:
     - use_super_parameters
 ```
 
+We also need to make sure the code enables the required
+[language version](/guides/language/evolution#language-versioning).
+Super parameters was introduced in Dart 2.17,
+so update `pubspec.yaml` to have at least that
+in the lower SDK constraint:
+
+```
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+```
+
 You should then see the following when viewing the proposed changes:
 
 ```terminal
