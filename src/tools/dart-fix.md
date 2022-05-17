@@ -11,9 +11,6 @@ finds and fixes two types of issues:
   that have associated automated fixes
   (sometimes called _quick-fixes_ or _code actions_)
 
-  To learn more about customizing the analysis issues identified,
-  see [Customizing static analysis](/guides/language/analysis-options).
-
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
@@ -31,4 +28,69 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
+## Customizing dart fix
+
+The dart fix command only applies fixes 
+when there is a "problem" identified by a diagnostic. 
+Some diagnostics, such as compilation errors, are implicitly enabled,
+while others, such as lints, must be explicitly enabled 
+in the [analysis options file](/guides/language/analysis-options),
+as individual preferences for these vary.
+
+You can sometimes increase the number of fixes that can be applied
+by enabling additional lints. It should be noted, however,
+that not all diagnostics have associated fixes.
+
+### Example
+
+Imagine you have code like this:
+
+```dart
+class Vector2d {
+  final double x, y;
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+  Vector3d(final double x, final double y, this.z) : super(x, y);
+}
+```
+
+Dart 2.17 introduced a new language feature called super initializers, 
+which allows you to write the constructor of `Vector3d`
+with a more compact style:
+
+```dart
+class Vector3d extends Vector2d {
+  final double z;
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+To enable the dart fix to upgrade existing code to use this feature,
+and to ensure that the analyzer warns you when you later forget to use it,
+configure your `analysis_options.yaml` file like this:
+
+```yaml
+linter:
+  rules:
+    - use_super_parameters
+```
+
+You should then see the following when viewing the proposed changes:
+
+```terminal
+$ dart fix --dry-run
+Computing fixes in myapp (dry run)... 9.0s
+
+1 proposed fixes in 1 files.
+
+lib/myapp.dart
+  use_super_parameters • 1 fix
+```
+
 [`dart analyze`]: /tools/dart-analyze
+
+To learn more about customizing the analysis
+see [Customizing static analysis](/guides/language/analysis-options).
