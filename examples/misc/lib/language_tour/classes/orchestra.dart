@@ -38,7 +38,7 @@ abstract class Performer {
 // #docregion Musician-and-Maestro
 class Musician extends Performer with Musical {
   // #enddocregion Musician-and-Maestro
-  Musician(String name) : super(name);
+  Musician(super.name);
   // #docregion Musician-and-Maestro
 }
 
@@ -55,7 +55,7 @@ class Maestro extends Person with Musical, Aggressive, Demented {
 
 class Musician2 extends Performer with Musical {
   Musician2() : super('Anonymous');
-  Musician2.withName(String name) : super(name);
+  Musician2.withName(super.name);
 }
 
 // Simple version of Musician for the mixin example.
@@ -85,7 +85,7 @@ mixin MusicalPerformer on Musician2 {
 class SingerDancer extends Musician2 with MusicalPerformer {
   // ...
   // #enddocregion mixin-on
-  SingerDancer(String name) : super.withName(name);
+  SingerDancer(super.name) : super.withName();
 // #docregion mixin-on
 }
 // #enddocregion mixin-on

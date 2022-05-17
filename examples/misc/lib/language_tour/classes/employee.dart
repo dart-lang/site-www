@@ -18,8 +18,8 @@ class Employee extends Person {
   // #enddocregion method-then-constructor
   // #docregion super
   // Person does not have a default constructor;
-  // you must call super.fromJson(data).
-  Employee.fromJson(Map data) : super.fromJson(data) {
+  // you must call super.fromJson().
+  Employee.fromJson(super.data) : super.fromJson() {
     print('in Employee');
   }
 // #docregion method-then-constructor

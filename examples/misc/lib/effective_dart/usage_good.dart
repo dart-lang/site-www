@@ -480,6 +480,7 @@ class BaseBox {
 class Box3 extends BaseBox {
   Object? value;
 
+  // ignore: use_super_parameters
   Box3(Object? value)
       : value = value,
         super(value);
@@ -557,21 +558,3 @@ Widget build(BuildContext context) {
   );
 }
 // #enddocregion no-new
-
-//----------------------------------------------------------------------------
-
-class Style {}
-
-class ViewBase {
-  ViewBase(_);
-}
-
-class View extends ViewBase {
-  final List _children;
-  // #docregion super-first
-  View(Style style, List children)
-      : _children = children,
-        super(style);
-  // #enddocregion super-first
-  List get children => _children;
-}
