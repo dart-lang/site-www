@@ -1359,7 +1359,7 @@ For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-const Scrollbar({Key? key, [!required!] Widget child})
+const Scrollbar({super.key, [!required!] Widget child});
 {% endprettify %}
 
 If someone tries to create a `Scrollbar`
@@ -2986,8 +2986,8 @@ class Person {
 
 class Employee extends Person {
   // Person does not have a default constructor;
-  // you must call super.fromJson(data).
-  Employee.fromJson(Map data) : super.fromJson(data) {
+  // you must call super.fromJson().
+  Employee.fromJson(super.data) : super.fromJson() {
     print('in Employee');
   }
 }

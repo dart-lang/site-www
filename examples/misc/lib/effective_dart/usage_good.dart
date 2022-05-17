@@ -1,6 +1,7 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 // ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
 // ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
+// ignore_for_file: use_super_parameters
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -557,21 +558,3 @@ Widget build(BuildContext context) {
   );
 }
 // #enddocregion no-new
-
-//----------------------------------------------------------------------------
-
-class Style {}
-
-class ViewBase {
-  ViewBase(_);
-}
-
-class View extends ViewBase {
-  final List _children;
-  // #docregion super-first
-  View(Style style, List children)
-      : _children = children,
-        super(style);
-  // #enddocregion super-first
-  List get children => _children;
-}

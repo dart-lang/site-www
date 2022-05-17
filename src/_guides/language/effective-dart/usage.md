@@ -1288,7 +1288,7 @@ class Box extends BaseBox {
 {% endprettify %}
 
 This looks surprising, but works like you want. Fortunately, code like this is
-relatively rare thanks to initializing formals.
+relatively rare thanks to initializing formals and super initializers.
 
 
 ### DO initialize fields at their declaration when possible.

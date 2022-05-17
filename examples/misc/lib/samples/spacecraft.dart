@@ -33,8 +33,7 @@ class Spacecraft {
 class Orbiter extends Spacecraft {
   double altitude;
 
-  Orbiter(String name, DateTime launchDate, this.altitude)
-      : super(name, launchDate);
+  Orbiter(super.name, DateTime super.launchDate, this.altitude);
 }
 // #enddocregion extends
 
@@ -51,7 +50,7 @@ mixin Piloted {
 // #docregion mixin-use
 class PilotedCraft extends Spacecraft with Piloted {
   // #enddocregion mixin-use
-  PilotedCraft(String name, DateTime launchDate) : super(name, launchDate);
+  PilotedCraft(super.name, DateTime super.launchDate);
   // #docregion mixin-use
 }
 // #enddocregion mixin-use

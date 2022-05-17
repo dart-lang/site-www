@@ -92,7 +92,6 @@ abstract class Widget {
 
 class Scrollbar extends Widget {
   // #docregion required-named-parameters
-  const Scrollbar({Key? key, required Widget child})
-      // #enddocregion required-named-parameters
-      : super(key: key);
+  const Scrollbar({super.key, required Widget child});
+  // #enddocregion required-named-parameters
 }
