@@ -30,10 +30,16 @@ $ dart fix --apply
 
 ## Customizing dart fix
 
-The `dart fix` command applies its fixes
-based on the analysis configuration of the code it runs on. 
-To learn more about customizing the analysis,
-see [Customizing static analysis](/guides/language/analysis-options).
+The dart fix command only applies fixes 
+when there is a "problem" identified by a diagnostic. 
+Some diagnostics, such as compilation errors, are implicitly enabled,
+while others, such as lints, must be explicitly enabled 
+in the [analysis options file]((/guides/language/analysis-options),
+as individual preferences for these vary.
+
+You can sometimes increase the number of fixes that can be applied
+by enabling additional lints. It should be noted, however,
+that not all diagnostics have associated fixes.
 
 ### Example
 
@@ -47,7 +53,6 @@ class Vector2d {
 
 class Vector3d extends Vector2d {
   final double z;
-
   Vector3d(final double x, final double y, this.z) : super(x, y);
 }
 ```
@@ -59,7 +64,6 @@ with a more compact style:
 ```dart
 class Vector3d extends Vector2d {
   final double z;
-
   Vector3d(super.x, super.y, this.z);
 }
 ```
@@ -87,3 +91,6 @@ lib/myapp.dart
 ```
 
 [`dart analyze`]: /tools/dart-analyze
+
+To learn more about customizing the analysis
+see [Customizing static analysis](/guides/language/analysis-options).
