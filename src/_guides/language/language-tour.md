@@ -1783,7 +1783,7 @@ Dart supports the usual arithmetic operators, as shown in the following table.
 | Operator                    | Meaning                                   |
 |-----------------------------+-------------------------------------------|
 | `+`                         | Add
-| `–`                         | Subtract
+| `-`                         | Subtract
 | <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression)
 | `*`                         | Multiply
 | `/`                         | Divide
@@ -1813,8 +1813,8 @@ operators.
 |-----------------------------+-------------------------------------------|
 | <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
 | <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em> – 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em></code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> – 1</code>)
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)
 {:.table .table-striped}
 
 Example:
@@ -3279,7 +3279,7 @@ Dart allows you to define operators with the following names:
 `>`  | `/`  | `^`  | `[]`
 `<=` | `~/` | `&`  | `[]=`
 `>=` | `*`  | `<<` | `~`
-`–`  | `%`  | `>>` | `==`
+`-`  | `%`  | `>>` | `==`
 {:.table}
 
 {{site.alert.note}}
