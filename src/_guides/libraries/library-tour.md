@@ -1072,7 +1072,7 @@ it won't be garbage collected
 until the code block where it is declared has exited.
 
 {{site.alert.version-note}}
-Support for weak references and finalizers was added in Dart 2.17.
+  Support for weak references and finalizers was added in Dart 2.17.
 {{site.alert.end}}
 
 ## dart:async - asynchronous programming
