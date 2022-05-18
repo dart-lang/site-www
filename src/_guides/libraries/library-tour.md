@@ -1047,11 +1047,10 @@ if the target object can't be subclassed.
 
 A [WeakReference][]
 stores a reference to the target object
-without increasing the reference count
-considered by the garbage collector.
+that does not affect how it is 
+collected by the garbage collector.
 Another option is to use an [Expando][]
-to add properties to an object
-without affecting how it's garbage collected.
+to add properties to an object.
 
 A [Finalizer][] can be used to execute a callback function
 after an object is no longer referenced.
@@ -1065,8 +1064,8 @@ after the object is no longer referenced.
 Also, it can be used to close native resources
 such as a database connection or open files.
 
-To ensure that an object won't be finalized
-or garbage collected too early,
+To ensure that an object won't be
+garbage collected and finalized too early,
 classes can implement the [Finalizable][] interface.
 
 ## dart:async - asynchronous programming
