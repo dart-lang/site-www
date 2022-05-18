@@ -1067,6 +1067,9 @@ such as a database connection or open files.
 To ensure that an object won't be
 garbage collected and finalized too early,
 classes can implement the [Finalizable][] interface.
+When a local variable is Finalizable, 
+it won't be garbage collected
+until the code block where it is declared has exited.
 
 {{site.alert.version-note}}
 Support for weak references and finalizers was added in Dart 2.17.
