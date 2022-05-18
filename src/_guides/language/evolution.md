@@ -288,7 +288,7 @@ Dart uses language versioning to support
 using non-null-safe code alongside null-safe code.
 For an example of how an app or package can migrate to
 a new language version
-with an incompatible feature—like was introduced with null safety—see 
+with an incompatible feature (null safety, for example), see 
 [Migrating to null safety](/null-safety/migration-guide).
 
 Each package has a default language version,
