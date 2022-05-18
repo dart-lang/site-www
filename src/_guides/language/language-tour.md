@@ -1813,7 +1813,7 @@ operators.
 |-----------------------------+-------------------------------------------|
 | <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
 | <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> – 1</code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>)
 | <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)
 {:.table .table-striped}
 
