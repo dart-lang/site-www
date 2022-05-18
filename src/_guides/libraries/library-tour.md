@@ -1036,13 +1036,14 @@ For more information, see
 (in the language tour) and the [Exception API reference.][Exception]
 
 ### Weak references and finalizers
+
 Dart is a [garbage-collected][] language,
 which means that any Dart object
 that isn't referenced by at least one other object
 will eventually be disposed by the garbage collector. 
-This default behavior may not be desireable in
+This default behavior might not be desirable in
 some scenarios involving native resources or 
-if the target object cannot be sub-classed.
+if the target object can't be subclassed.
 
 A [WeakReference][]
 stores a reference to the target object
@@ -1050,18 +1051,18 @@ without increasing the reference count
 considered by the garbage collector.
 Another option is to use an [Expando][]
 to add properties to an object
-without affecting how they are garbage-collected.
+without affecting how it's garbage collected.
 
 A [Finalizer][] can be used to execute a callback function
 after an object is no longer referenced.
-It is not guaranteed to execute this callback, however.
+However, it is not guaranteed to execute this callback.
 
 A [NativeFinalizer][]
 provides stronger guarantees
-for interacting with native code using [dart:ffi][].
-Its callback will be called at least once
+for interacting with native code using [dart:ffi][];
+its callback is invoked at least once
 after the object is no longer referenced.
-It can be used to close native resources
+Also, it can be used to close native resources
 such as a database connection or open files.
 
 To ensure that an object won't be finalized
