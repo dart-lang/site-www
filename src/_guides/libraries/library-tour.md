@@ -1043,7 +1043,7 @@ that isn't referenced
 can be disposed by the garbage collector. 
 This default behavior might not be desirable in
 some scenarios involving native resources or 
-if the target object can't be subclassed.
+if the target object can't be modified.
 
 A [WeakReference][]
 stores a reference to the target object
