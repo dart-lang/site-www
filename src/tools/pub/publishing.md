@@ -208,8 +208,8 @@ Here's how to transfer a package to a verified publisher:
 included in the published package,
 with the following exceptions:
 
- * Any _hidden_ files or directories —
-   that is, files with names that begin with dot (`.`)
+ * Any _hidden_ files or directories—that is, 
+   files with names that begin with dot (`.`)
  * Any directories with the name `packages`
  * Files and directories ignored by a `.pubignore` or `.gitignore` file
 

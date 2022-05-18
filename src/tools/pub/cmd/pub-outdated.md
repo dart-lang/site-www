@@ -24,8 +24,8 @@ update the dependencies of a package that you own
 
 1. If your package doesn't have a `pubspec.lock` file
    checked into source control,
-   **run `dart pub get`** in the top directory of the package —
-   the directory that contains your package's
+   **run `dart pub get`** in the top directory of the package—the
+   directory that contains your package's
    [`pubspec.yaml`](/tools/pub/pubspec) file.
 2. **Run `dart pub outdated`**
    to identify which package dependencies are out-of-date.

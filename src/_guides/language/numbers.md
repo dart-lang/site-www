@@ -122,8 +122,8 @@ which can lead to some surprises.
 
 Most integer and double arithmetic
 has essentially the same behavior.
-There are, however, important differences —
-particularly when your code has strict expectations about
+There are, however, important differences—particularly 
+when your code has strict expectations about
 precision, string formatting, or underlying runtime types.
 
 When arithmetic results differ, as described in this section,
@@ -147,7 +147,7 @@ On the web, integers lose precision past 53 bits.
 In particular, 2<sup>53</sup> and 2<sup>53</sup>+1
 map to the same value due to truncation.
 On native, these values can still be differentiated
-because native numbers have 64 bits — 63 bits for the value and 1 for the sign.
+because native numbers have 64 bits—63 bits for the value and 1 for the sign.
 
 The effect of overflow is visible
 when comparing 2<sup>63</sup>-1 to 2<sup>63</sup>.
@@ -460,9 +460,8 @@ converting the expressions in the first column can lead to different results.
 Usually, you don't need to change your numeric code.
 Dart code has been running on both native and web platforms for years,
 and number implementation differences are rarely a problem.
-Common, typical code —
-such as iterating through a range of small integers and indexing a list —
-behaves the same.
+Common, typical code—such as iterating through a range of small integers 
+and indexing a list—behaves the same.
 
 If you have tests or assertions that compare string results,
 write them in a platform-resilient manner.

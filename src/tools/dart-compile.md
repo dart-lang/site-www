@@ -5,8 +5,8 @@ description: Command-line tool for compiling Dart source code.
 
 Use the `dart compile` command to compile
 a Dart program to a [target platform](/platforms).
-The output — which you specify using a subcommand —
-can either include a [Dart runtime][] or be a _module_
+The output—which you specify using a subcommand—can 
+either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
 {% include tools/dart-tool-note.md %}
@@ -51,8 +51,8 @@ The `dart compile` command replaces the
 {{site.alert.note}}
   You don't need to compile Dart programs before running them.
   Instead, you can use the [`dart run` command][dart-run],
-  which uses the Dart VM's JIT (just-in-time) compiler —
-  a feature that's especially useful during development.
+  which uses the Dart VM's JIT (just-in-time) compiler—a 
+  feature that's especially useful during development.
   For more information on AOT and JIT compilation,
   see the [platforms discussion](/overview#platform).
 {{site.alert.end}}
@@ -165,9 +165,8 @@ The `exe` and `aot-snapshot` subcommands have some known limitations:
 No cross-compilation support ([issue 28617][])
 : The compiler supports creating machine code only for
   the operating system it’s running on.
-  You need to run the compiler three times —
-  on macOS, Windows, and Linux —
-  to create executables for all three operating systems.
+  You need to run the compiler three times—on macOS, Windows, and Linux—to 
+  create executables for all three operating systems.
   A workaround is to use a CI (continuous integration) provider
   that supports all three operating systems.
 

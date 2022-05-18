@@ -6,7 +6,7 @@ description: Add other packages to your app. Specify package locations, version 
 Dependencies are one of the core concepts of the [pub package manager][].
 A _dependency_ is another package that your package needs in order to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only _immediate dependencies_ — the
+You list only _immediate dependencies_—the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
@@ -451,7 +451,7 @@ Depend on the latest stable package versions
 Test whenever you update package dependencies
 : If you run [`pub upgrade`][] without updating your pubspec,
   the API should stay the same
-  and your code should run as before — but test to make sure.
+  and your code should run as before—but test to make sure.
   If you modify the pubspec and update to a new major version,
   then you might encounter breaking changes,
   so you need to test even more thoroughly.

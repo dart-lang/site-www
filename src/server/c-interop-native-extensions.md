@@ -5,15 +5,15 @@ toc: false
 ---
 
 {{site.alert.note}}
-  The extension mechanism that was previously discussed on this page —
-  _native extensions_ — was removed in Dart 2.15.
+  The extension mechanism that was previously discussed
+  on this page—_native extensions_—was removed in Dart 2.15.
   
   If you need to call existing code written in C or C++, see the
   [FFI documentation](/server/c-interop).
   
-  A mechanism that's similar to native extensions —
-  the [Dart Embedding API][`include/dart_api.h`] —
-  is supported when the Dart VM is
+  A mechanism that's similar to 
+  native extensions—the [Dart Embedding API][`include/dart_api.h`]—is
+  supported when the Dart VM is
   embedded as a library into another application. 
   For examples of how to use the Dart Embedding API, see
   [these examples maintained by the community][examples].

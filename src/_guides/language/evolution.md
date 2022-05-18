@@ -129,9 +129,8 @@ This functionality has since been folded into the [`dart compile`][] command.
 ### Dart 2.7
 
 Dart 2.7 added support for **[extension methods][]**,
-enabling you to add functionality to any type —
-even types you don’t control — with the brevity and auto-complete experience
-of regular method calls.
+enabling you to add functionality to any type—even types you don’t control—with
+the brevity and auto-complete experience of regular method calls.
 Because the tech preview for this feature was in 2.6,
 you can use extension methods without warnings if you
 specify 2.6.0 or a later release as the lower SDK constraint.
@@ -281,9 +280,8 @@ when Dart introduces an incompatible feature like [null safety][].
 Code that used to compile cleanly before null safety
 (but perhaps crash at runtime)
 might no longer compile once null safety is enabled.
-Because migrating your apps and packages
-— and all the packages they depend on —
-to null safety might take a while,
+Because migrating your apps and packages—and all the packages they depend on—to
+null safety might take a while,
 Dart uses language versioning to support
 using non-null-safe code alongside null-safe code.
 
@@ -334,9 +332,8 @@ implies the following:
 ### Per-library language version selection
 
 By default, every Dart file
-in a package uses the same language version —
-the language version indicated by
-the lower SDK constraint in the pubspec.
+in a package uses the same language version—the language version
+indicated by the lower SDK constraint in the pubspec.
 Sometimes, however, a Dart file
 might need to use an older language version.
 For example,

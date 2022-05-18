@@ -469,8 +469,8 @@ keep these tips in mind:
   implementing the `listen` method and the extra functionality on top,
   that is generally not recommended because
   it introduces a new type that users have to consider.
-  Instead, you can often make a class that _has_ a `Stream` (and more) —
-  instead of one that _is_ a Stream (and more).
+  Instead of a class that _is_ a `Stream` (and more), 
+  you can often make a class that _has_ a `Stream` (and more).
 
 {% comment %}
 The tests for this article are at /src/tests/site/articles/creating-streams.

@@ -7,8 +7,8 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 <?code-excerpt plaster="none"?>
 
 This codelab teaches you how to use collections that
-implement the [Iterable][iterable class] class —
-for example [List][list class] and [Set.][set class]
+implement the [Iterable][iterable class] class—for example
+[List][list class] and [Set.][set class]
 Iterables are basic building blocks for
 all sorts of Dart applications,
 and you're probably already using them,
@@ -843,9 +843,10 @@ Iterable<int> output = numbers.map((number) => number * 10);
 
 In this example, each element of the `Iterable` numbers is multiplied by 10.
 
-You can also use `map()` to transform an element into a different object —
-for example, to convert all `int` to `String`,
-as you can see in the following example.
+You can also use `map()` 
+to transform an element into a different object—for example, 
+to convert all `int` to `String`,
+as you can see in the following example:
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
 ```dart

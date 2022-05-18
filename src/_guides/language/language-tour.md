@@ -134,9 +134,9 @@ mind:
 
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
-    (if you've [enabled null safety][ns-enable]), `Object`, or —
-    if you must defer type checking until runtime —
-    the [special type `dynamic`][ObjectVsDynamic].
+    (if you've [enabled null safety][ns-enable]), `Object`,
+    or—if you must defer type checking until runtime—the
+    [special type `dynamic`][ObjectVsDynamic].
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<Object>` (a list of objects of any type).
@@ -1301,7 +1301,7 @@ followed either by *named* parameters or by *optional positional* parameters
 (but not both).
 
 {{site.alert.note}}
-  Some APIs — notably [Flutter][] widget constructors — use only named
+  Some APIs—notably [Flutter][] widget constructors—use only named
   parameters, even for parameters that are mandatory. See the next section for
   details.
 {{site.alert.end}}
@@ -1353,8 +1353,8 @@ repeat(times: 2, () {
 
 Although named parameters are a kind of optional parameter,
 you can annotate them with `required` to indicate
-that the parameter is mandatory —
-that users must provide a value for the parameter.
+that the parameter is mandatory—that users
+must provide a value for the parameter.
 For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
@@ -1537,8 +1537,8 @@ called an _anonymous function_, or sometimes a _lambda_ or _closure_.
 You might assign an anonymous function to a variable so that,
 for example, you can add or remove it from a collection.
 
-An anonymous function looks similar to a named function&mdash;
-zero or more parameters, separated by commas
+An anonymous function looks similar
+to a named function&mdash;zero or more parameters, separated by commas
 and optional type annotations, between parentheses.
 
 The code block that follows contains the function's body:
@@ -2435,11 +2435,11 @@ the scope of that clause.
 
 ### Assert
 
-During development, use an assert statement
-— <code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>; —
-to disrupt normal execution if a boolean
-condition is false. You can find examples of assert statements
-throughout this tour. Here are some more:
+During development, use an assert 
+statement—<code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>;—to
+disrupt normal execution if a boolean condition is false. 
+You can find examples of assert statements throughout this tour. 
+Here are some more:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 ```dart
@@ -4366,8 +4366,7 @@ void main() [!async!] {
 
 {{site.alert.note}}
   The preceding example uses an `async` function (`checkVersion()`)
-  without waiting for a result —
-  a practice that can cause problems
+  without waiting for a result—a practice that can cause problems
   if the code assumes that the function has finished executing.
   To avoid this problem,
   use the [unawaited_futures linter rule][].
@@ -4572,8 +4571,8 @@ For more information, see the following:
 
 ## Typedefs
 
-A type alias — often called a _typedef_ because
-it's declared with the keyword `typedef` — is
+A type alias—often called a _typedef_ because
+it's declared with the keyword `typedef`—is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
 

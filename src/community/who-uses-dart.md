@@ -5,8 +5,7 @@ toc: false
 ---
 
 The popular [Flutter toolkit][Flutter] relies on the Dart language,
-so developers writing Flutter apps —
-for Android, iOS, or other targets — use Dart.
+so developers writing Flutter apps—for Android, iOS, or other targets—use Dart.
 To find a list of Flutter apps, visit the [Flutter showcase.][showcase]
 
 [Flutter]: {{site.flutter}}

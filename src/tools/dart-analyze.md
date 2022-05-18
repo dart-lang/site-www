@@ -22,9 +22,8 @@ Normally the analyzer reports failure when it finds any errors or warnings,
 but not when it finds info-level issues.
 You can customize this behavior using the
 `--fatal-infos` and `--no-fatal-warnings` flags.
-For example, to make the analyzer fail when any issue is found —
-as you might want in continuous integration (CI) testing —
-add the `--fatal-infos` flag:
+For example, to make the analyzer fail when any issue is 
+the `--fatal-infos` flag:
 
 ```terminal
 $ dart analyze --fatal-infos

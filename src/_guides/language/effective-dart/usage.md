@@ -1324,7 +1324,7 @@ class ProfileMark {
 {% endprettify %}
 
 Some fields can't be initialized at their declarations because they need to reference
-`this` — to use other fields or call methods, for example. However, if the
+`this`—to use other fields or call methods, for example. However, if the
 field is marked `late`, then the initializer *can* access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized

@@ -209,7 +209,7 @@ While providing a `homepage` is optional, *please provide* it or `repository`
 ### Repository
 
 The optional `repository` field should contain the URL for your package's source
-code repository — for example, `https://github.com/<user>/<repository>`.
+code repository—for example, `https://github.com/<user>/<repository>`.
 If you publish your package to the pub.dev site, then your package's page
 displays the repository URL.
 While providing a `repository` is optional, *please provide* it or `homepage`

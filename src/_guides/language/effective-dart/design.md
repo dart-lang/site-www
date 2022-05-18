@@ -231,8 +231,8 @@ negation&mdash;"open" and "closed", "enabled" and "disabled", etc. Often the
 latter name literally has a prefix that negates the former: "visible" and
 "*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
 
-When choosing which of the two cases that `true` represents &mdash; and thus
-which case the property is named for &mdash; prefer the positive or more
+When choosing which of the two cases that `true` represents&mdash;and thus
+which case the property is named for&mdash;prefer the positive or more
 fundamental one. Boolean members are often nested inside logical expressions,
 including negation operators. If your property itself reads like a negation,
 it's harder for the reader to mentally perform the double negation and

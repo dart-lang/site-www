@@ -185,8 +185,8 @@ void main() async {
 ```
 
 The stream subscription is implicitly handled by `await for`.
-Exiting the `await for` statement — using `break`, `return`, or an uncaught exception —
-cancels the subscription.
+Exiting the `await for` statement—using `break`, `return`, 
+or an uncaught exception—cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.

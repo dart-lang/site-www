@@ -11,15 +11,20 @@ all text must be aligned left - no indent.
 <div class="container">
 <div class="row">
 <div class="col-sm-6" markdown="1">
-We recommend the [Flutter framework]({{site.flutter}}) for developing multi-platform native apps
+We recommend the [Flutter framework][] for developing multi-platform native apps
 for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
 
-Flutter is powered by the [Dart platform](/overview#platform).
+Flutter is powered by the [Dart platform][].
 The [Dart VM](/overview#platform) provides an instant _hot reload_ developer cycle.
-The Dart compilers —
-an [ahead-of-time (AOT) compiler for native code](/overview#native-platform)
-and a [Dart-to-JavaScript compiler](/overview#web-platform) for web code —
-create fast production code for any platform.
+The Dart compilers—an [ahead-of-time (AOT) compiler][] for native code
+and a [Dart-to-JavaScript compiler][] for web code—create 
+fast production code for any platform.
+
+[Flutter framework]: {{site.flutter}}
+[Dart platform]: /overview#platform
+[ahead-of-time (AOT) compiler]: /overview#native-platform
+[Dart-to-JavaScript compiler]: /overview#web-platform
+
 
 <p class="text-center"> 
   <a href="{{site.flutter-docs}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
