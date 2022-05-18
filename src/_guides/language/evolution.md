@@ -286,11 +286,10 @@ Because migrating your apps and packages
 to null safety might take a while,
 Dart uses language versioning to support
 using non-null-safe code alongside null-safe code.
-
-{% comment %}
-  Once /null-safety/migrating-to-null-safety exists,
-  the previous paragraph should link to it.
-{% endcomment %}
+For an example of how an app or package can migrate to
+a new language version
+with an incompatible feature—like was introduced with null safety—see 
+[Migrating to null safety](/null-safety/migration-guide).
 
 Each package has a default language version,
 equal to the `<major>.<minor>` part of the
