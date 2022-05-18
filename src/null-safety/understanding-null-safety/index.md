@@ -647,8 +647,8 @@ the non-nullable side so you can call methods on it. Flow analysis is one of the
 primary ways to do this for local variables and parameters. We've extended type
 promotion to also look at `== null` and `!= null` expressions.
 
-If you check a variable with nullable type to see if it is not `null`, Dart then
-promotes the variable to the underlying non-nullable type:
+If you check a local variable with nullable type to see if it is not `null`, 
+Dart then promotes the variable to the underlying non-nullable type:
 
 ```dart
 // Using null safety:
@@ -691,6 +691,11 @@ or assignments, or the postfix `!` operator we'll get to soon also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
+
+Note that type promotion only works on local variables,
+not on fields or top-level variables.
+For more information about working with non-local variables,
+see [Working with nullable fields](#working-with-nullable-fields).
 
 ### Unnecessary code warnings
 
@@ -1234,6 +1239,9 @@ void checkTemp() {
 Since the type promotion does apply to locals, this now works fine. If you need
 to *change* the value, just remember to store back to the field and not just the
 local.
+
+For more information on handling these and other type promotion issues,
+see [Fixing type promotion failures](/tools/non-promotion-reasons).
 
 ### Nullability and generics
 
