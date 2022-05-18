@@ -439,7 +439,7 @@ Cat c = MaineCoon();
 ### Generic type assignment
 
 Are the rules the same for generic types? Yes. Consider the hierarchy
-of lists of animals&mdash;a `List` of `Cat` is a subtype of a `List` of
+of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 `Animal`, and a supertype of a `List` of `MaineCoon`:
 
 <img src="images/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">

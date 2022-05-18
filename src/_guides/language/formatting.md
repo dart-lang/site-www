@@ -11,9 +11,9 @@ If two pieces of code look different it should be because
 they _are_ different in some meaningful way.
 When a bit of code stands out and catches your eye, it should do so for a useful reason.
 
-Fortunately, you can use the [`dart format` tool][dart format] —
-from the command line or in your favorite [Dart-savvy IDE][ide] —
-to perform most of the drudge work of formatting your code.
+Fortunately, you can use the [`dart format` tool][dart format]—from the 
+command line or in your favorite [Dart-savvy IDE][ide]—to 
+perform most of the drudge work of formatting your code.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 

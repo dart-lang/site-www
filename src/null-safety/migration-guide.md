@@ -52,7 +52,7 @@ the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
 {{site.alert.info}}
-  **You can — and should — migrate your package before
+  **You can—and should—migrate your package before
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
   don't use null safety yet,
@@ -349,8 +349,8 @@ Then, if you've published your code on pub.dev,
 If you prefer not to use the migration tool,
 you can migrate manually.
 
-We recommend that you **first migrate leaf libraries** —
-libraries that don't import other files from the package.
+We recommend that you **first migrate leaf libraries**—libraries 
+that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
 intra-package dependencies.
@@ -433,9 +433,8 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. Publish {#step5-publish}
 
-We encourage you to publish packages — 
-possibly as prereleases — 
-as soon as you migrate:
+We encourage you to publish packages—possibly as prereleases—as 
+soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
 * [Update the SDK constraints and package dependencies.](#check-your-pubspec)

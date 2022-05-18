@@ -5,9 +5,8 @@ description: Some of the most useful and popular packages, and where you can lea
 
 This page lists some of the most popular and useful
 [packages](/guides/packages) that Dart developers have published.
-To find more packages —
-and search [core libraries](/guides/libraries), as well —
-use the [pub.dev site.]({{site.pub}})
+To find more packages—and search [core libraries](/guides/libraries)
+as well—use the [pub.dev site.]({{site.pub}})
 
 Commonly used packages fall into three groups:
 

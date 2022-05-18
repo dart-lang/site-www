@@ -8,10 +8,10 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab — which is based on a
+This codelab—which is based on a
 [Dart language cheatsheet](/guides/language/cheatsheet)
-written by and for Google engineers —
-walks you through the most important of these language features.
+written by and for Google engineers—walks you through
+the most important of these language features.
 
 The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
@@ -627,7 +627,7 @@ myObject..someMethod()
 ```
 
 Although it still invokes `someMethod()` on `myObject`, the result
-of the expression **isn't** the return value — it's a reference to `myObject`!
+of the expression **isn't** the return value—it's a reference to `myObject`!
 
 Using cascades, you can chain together operations that
 would otherwise require separate statements.

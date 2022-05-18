@@ -3,9 +3,9 @@ title: dart run
 description: Command-line tool for running a Dart program.
 ---
 
-The `dart run` command supports running a Dart program —
-located in a file, in the current package, or in one of
-the dependencies of the current package — from the command line.
+The `dart run` command supports running 
+a Dart program—located in a file, in the current package, 
+or in one of the dependencies of the current package—from the command line.
 This command provides functionality that was previously in `pub run`
 and the Dart VM tool.
 To run a program from an arbitrary location,

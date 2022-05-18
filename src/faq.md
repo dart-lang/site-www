@@ -220,7 +220,7 @@ Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
 Linux. For more details, see the [dart compile][] documentation.
 
-### Q. Which is faster — AOT- or JIT-compiled code?
+### Q. Which is faster: AOT- or JIT-compiled code?
 
 Code that's compiled ahead-of-time (_AOT_) with
 a tool such as [dart compile][]
@@ -418,8 +418,8 @@ real-world apps instead of trivial examples.
 ### Q. How are floating point numbers handled when compiled to JavaScript?
 
 JavaScript has only one number representation: an IEEE-754 double-precision
-floating-point number. This means that any number&mdash;integer or floating
-point&mdash;is represented as a double. JavaScript has typed data arrays,
+floating-point number. This means that any number—integer or floating
+point—is represented as a double. JavaScript has typed data arrays,
 and the mapping from native Dart typed lists to JavaScript typed arrays is trivial.
 
 ### Q. How are integers handled when compiled to JavaScript?

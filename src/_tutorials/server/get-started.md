@@ -23,7 +23,7 @@ APIs, no download necessary.
 
 For example, here's an embedded DartPad that lets you play with the code for a
 small Hello World program. Click **Run** to run the app; output appears in the
-console view. Try editing the source code &mdash; perhaps you'd like to change the
+console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 {{site.alert.note}}

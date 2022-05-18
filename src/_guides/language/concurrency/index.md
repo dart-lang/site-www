@@ -217,8 +217,8 @@ using asynchronous operations as necessary.
 As the following figure shows,
 every isolate starts by running some Dart code,
 such as the `main()` function.
-This Dart code might register some event listeners —
-to respond to user input or file I/O, for example.
+This Dart code might register some event listeners—to 
+respond to user input or file I/O, for example.
 When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
@@ -262,9 +262,9 @@ Worse, the UI might become completely unresponsive.
 
 ### Background workers
 
-If your app’s UI becomes unresponsive due to a time-consuming computation —
-[parsing a large JSON file][json], for example —
-consider offloading that computation to a worker isolate,
+If your app’s UI becomes unresponsive due to 
+a time-consuming computation—[parsing a large JSON file][json], 
+for example—consider offloading that computation to a worker isolate,
 often called a _background worker._
 A common case, shown in the following figure,
 is spawning a simple worker isolate that
@@ -390,12 +390,12 @@ Future<void> _readAndParseJson(SendPort p) async {
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
 Message passing between isolates normally involves data copying,
-and thus can be slow and increases with the size of the message —
-O(n) in [big O notation][].
+and thus can be slow and increases linearly
+with the size of the message (`O(n)` in [big O notation][]).
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time — O(1).
+That transfer is quick and completes in constant time (`O(1)`).
 
 [big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 

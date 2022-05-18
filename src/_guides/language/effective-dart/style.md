@@ -211,8 +211,8 @@ You may use `SCREAMING_CAPS` for consistency with existing code,
 as in the following cases:
 
 * When adding code to a file or library that already uses `SCREAMING_CAPS`.
-* When generating Dart code that's parallel to Java code —
-  for example, in enumerated types generated from [protobufs.][]
+* When generating Dart code that's parallel to Java code—for example, 
+  in enumerated types generated from [protobufs.][]
 
 {{site.alert.note}}
   We initially used Java's `SCREAMING_CAPS` style for constants. We

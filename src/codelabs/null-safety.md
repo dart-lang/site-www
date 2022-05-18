@@ -198,10 +198,11 @@ void main() {
 
 ## The late keyword
 
-Sometimes variables — fields in a class, or top-level variables — 
-should be non-nullable, but they can't be
-assigned a value immediately. For cases like that, use the
-[`late` keyword]( /null-safety/understanding-null-safety#late-variables).
+Sometimes variables—fields in a class, or top-level variables—should 
+be non-nullable, but they can't be
+assigned a value immediately. 
+For cases like that, use the
+[`late` keyword](/null-safety/understanding-null-safety#late-variables).
 
 When you put `late` in front of a variable declaration,
 that tells Dart the following:

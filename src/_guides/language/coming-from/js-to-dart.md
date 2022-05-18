@@ -687,7 +687,7 @@ You refer to them by name instead. By default,
 these are optional, unless they're flagged as required.
 Named parameters are defined by surrounding them with curly braces.
 You can combine named parameters with required
-positional parameters&mdash;in this scenario,
+positional parameters—in this scenario,
 the named parameters are always placed after positional.
 When calling a function with named parameters,
 pass values by prefixing the passed value with the
@@ -1051,7 +1051,7 @@ Since JavaScript makes use of type coercion,
 it doesn't have an equivalent. 
 
 Use the typecast operator to cast an object
-to a particular type if&mdash;and only if&mdash;you
+to a particular type if—and only if—you
 are sure that the object is of that type.
 
 For example:
@@ -1090,7 +1090,7 @@ of both languages are identical.
 {:.table .table-striped}
 
 Dart does not have the concept of "truthy" or "falsy"
-values&mdash;only actual booleans. Because of this,
+values—only actual booleans. Because of this,
 Logical OR and Logical AND expressions always resolve
 to a boolean, not one of the two values like these
 operators do in JavaScript.
@@ -1932,7 +1932,7 @@ stream.listen((int value) {
 ##### Async generators
 
 Another way to create streams is by using async generator
-functions&mdash;these have the same syntax as a
+functions—these have the same syntax as a
 synchronous generator function, but use the `async*`
 keyword instead of `sync*`,
 and always return a `Stream` instead of an `Iterable`.

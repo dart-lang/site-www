@@ -14,8 +14,8 @@ Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
 [flexible execution runtime platform](#platform) for app frameworks.
 
-Languages are defined by their _technical envelope_ —
-the choices made during development that
+Languages are defined by their _technical envelope_—the 
+choices made during development that
 shape the capabilities and strengths of a language.
 Dart is designed for a technical envelope that is
 particularly suited to client development,
@@ -145,8 +145,8 @@ providing essentials for many everyday programming tasks:
 * Foreign function interfaces for interoperability with
   other code that presents a C-style interface
   (`dart:ffi`)
-* Concurrent programming using _isolates_ —
-  independent workers that are similar to threads but
+* Concurrent programming using _isolates_—independent workers
+  that are similar to threads but
   don't share memory, communicating only through messages
   (`dart:isolate`)
 * HTML elements and other resources for web-based applications that need to
@@ -208,10 +208,10 @@ The Dart VM offers a just-in-time compiler (JIT) with
 incremental recompilation (enabling hot reload), live metrics collections
 (powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
-When apps are ready to be deployed to production —
-whether you're publishing to an app store or
-deploying to a production backend —
-the Dart AOT compiler enables ahead-of-time compilation to
+When apps are ready to be deployed to production—whether
+you're publishing to an app store 
+or deploying to a production backend—the 
+Dart AOT compiler enables ahead-of-time compilation to
 native ARM or x64 machine code.
 Your AOT-compiled app launches with consistent, short startup time.
 
@@ -230,7 +230,7 @@ More information:
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
-turn runs in a browser — for example, [V8](https://v8.dev/) inside
+turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
 Dart web contains both an incremental dev compiler enabling a fast developer
