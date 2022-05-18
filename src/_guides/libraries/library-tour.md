@@ -1068,6 +1068,10 @@ To ensure that an object won't be
 garbage collected and finalized too early,
 classes can implement the [Finalizable][] interface.
 
+{{site.alert.version-note}}
+Support for weak references and finalizers was added in Dart 2.17.
+{{site.alert.end}}
+
 ## dart:async - asynchronous programming
 
 Asynchronous programming often uses callback functions, but Dart
