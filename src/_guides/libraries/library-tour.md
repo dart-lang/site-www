@@ -1039,7 +1039,7 @@ For more information, see
 
 Dart is a [garbage-collected][] language,
 which means that any Dart object
-that isn't referenced by at least one other object
+that isn't referenced
 can be disposed by the garbage collector. 
 This default behavior might not be desirable in
 some scenarios involving native resources or 
