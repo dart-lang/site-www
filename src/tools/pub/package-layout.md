@@ -227,7 +227,7 @@ import 'package:enchilada/some/path/olives.dart';
 {% endprettify %}
 
 Note that only *libraries* should be in `lib`.
-*Entrypoints*&mdash;Dart scripts with a `main()` function&mdash;cannot
+*Entrypoints*—Dart scripts with a `main()` function—cannot
 go in `lib`. If you place a Dart script inside `lib`,
 you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
@@ -343,8 +343,8 @@ enchilada/
     style.css
 {% endprettify %}
 
-For web packages, place entrypoint code&mdash;Dart scripts that include
-`main()` and supporting files, such as CSS or HTML&mdash;under `web`.
+For web packages, place entrypoint code—Dart scripts that include
+`main()` and supporting files, such as CSS or HTML—under `web`.
 You can organize the `web` directory into subdirectories if you like.
 
 Put [library code](#public-libraries) under `lib`.

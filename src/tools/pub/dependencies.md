@@ -201,7 +201,7 @@ Relative paths are allowed and are considered relative to the directory
 containing your pubspec.
 
 Path dependencies are useful for local development, but do not work when
-sharing code with the outside world&mdash;not everyone can get to
+sharing code with the outside world—not everyone can get to
 your file system. Because of this, you cannot upload a package to the
 [pub.dev site][pubsite] if it has any path dependencies in its pubspec.
 
@@ -337,8 +337,8 @@ dependencies.* Dev dependencies differ from regular dependencies in that *dev
 dependencies of packages you depend on are ignored*. Here's an example:
 
 Say the `transmogrify` package uses the `test` package in its tests and only
-in its tests. If someone just wants to use `transmogrify`&mdash;import its
-libraries&mdash;it doesn't actually need `test`. In this case, it specifies
+in its tests. If someone just wants to use `transmogrify`—import its
+libraries—it doesn't actually need `test`. In this case, it specifies
 `test` as a dev dependency. Its pubspec will have something like:
 
 ```yaml

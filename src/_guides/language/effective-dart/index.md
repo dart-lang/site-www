@@ -99,7 +99,7 @@ Each guideline starts with one of these words:
   follow, depending on circumstances, precedents, and your own preference.
 
 Some guidelines describe an **exception** where the rule does *not* apply. When
-listed, the exceptions may not be exhaustive&mdash;you might still need to use
+listed, the exceptions may not be exhaustive—you might still need to use
 your judgement on other cases.
 
 This sounds like the police are going to beat down your door if you don't have

@@ -418,8 +418,8 @@ real-world apps instead of trivial examples.
 ### Q. How are floating point numbers handled when compiled to JavaScript?
 
 JavaScript has only one number representation: an IEEE-754 double-precision
-floating-point number. This means that any number&mdash;integer or floating
-point&mdash;is represented as a double. JavaScript has typed data arrays,
+floating-point number. This means that any number—integer or floating
+point—is represented as a double. JavaScript has typed data arrays,
 and the mapping from native Dart typed lists to JavaScript typed arrays is trivial.
 
 ### Q. How are integers handled when compiled to JavaScript?

@@ -24,8 +24,8 @@ you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [pub.dev site]({{site.pub}}) repository.
 
-This tutorial shows how to use `dart pub`&mdash;a package manager
-that comes with Dart&mdash;to
+This tutorial shows how to use `dart pub`—a package manager
+that comes with Dart—to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at

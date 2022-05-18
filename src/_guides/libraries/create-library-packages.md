@@ -26,7 +26,7 @@ The minimal requirements for a library are:
 
 pubspec file
 : The `pubspec.yaml` file for a library is the same
-  as for an application package&mdash;there is no special
+  as for an application package—there is no special
   designation to indicate that the package is a library.
 
 lib directory

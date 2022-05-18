@@ -1538,7 +1538,7 @@ You might assign an anonymous function to a variable so that,
 for example, you can add or remove it from a collection.
 
 An anonymous function looks similar
-to a named function&mdash;zero or more parameters, separated by commas
+to a named function—zero or more parameters, separated by commas
 and optional type annotations, between parentheses.
 
 The code block that follows contains the function's body:

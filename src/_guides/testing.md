@@ -49,7 +49,7 @@ encounter when using Dart technologies:
 ## Generally useful libraries
 
 Although your tests partly depend on the platform your code is intended
-for&mdash;Flutter, the web, or server-side, for example&mdash;the
+for—Flutter, the web, or server-side, for example—the
 following packages are useful across Dart platforms:
 
 * [package:test]({{site.pub-pkg}}/test)<br>

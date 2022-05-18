@@ -172,7 +172,7 @@ When you select a version, follow [semantic versioning.][semantic versioning]
 
 This is optional for your own personal packages, but if you intend to
 publish your package you must provide a description, which should be in English.
-The description should be relatively short&mdash;60 to 180 characters&mdash;and
+The description should be relatively short—60 to 180 characters—and
 tell a casual reader what they might want to know about your package.
 
 Think of the description as the sales pitch for your package. Users see it
@@ -237,7 +237,7 @@ with that URL; pub shows a link to this documentation on your package's page.
 In this section you list each package that your package needs in order to work.
 
 Dependencies fall into one of two types. _Regular dependencies_ are listed
-under `dependencies:`&mdash;these are packages that anyone using your package
+under `dependencies:`—these are packages that anyone using your package
 will also need. Dependencies that are only needed in the development phase of
 the package itself are listed under `dev_dependencies`.
 
