@@ -30,7 +30,7 @@ $ dart fix --apply
 
 ## Customizing dart fix
 
-The dart fix command only applies fixes 
+The `dart fix` command only applies fixes 
 when there is a "problem" identified by a diagnostic. 
 Some diagnostics, such as compilation errors, are implicitly enabled,
 while others, such as lints, must be explicitly enabled 
@@ -38,8 +38,8 @@ in the [analysis options file](/guides/language/analysis-options),
 as individual preferences for these vary.
 
 You can sometimes increase the number of fixes that can be applied
-by enabling additional lints. It should be noted, however,
-that not all diagnostics have associated fixes.
+by enabling additional lints. 
+Note that not all diagnostics have associated fixes.
 
 ### Example
 
@@ -68,9 +68,9 @@ class Vector3d extends Vector2d {
 }
 ```
 
-To enable the dart fix to upgrade existing code to use this feature,
+To enable `dart fix` to upgrade existing code to use this feature,
 and to ensure that the analyzer warns you when you later forget to use it,
-configure your `analysis_options.yaml` file like this:
+configure your `analysis_options.yaml` file as follows:
 
 ```yaml
 linter:
@@ -78,13 +78,12 @@ linter:
     - use_super_parameters
 ```
 
-We also need to make sure the code enables the required
-[language version](/guides/language/evolution#language-versioning).
-Super parameters was introduced in Dart 2.17,
+We also need to make sure the code enables the required [language version][].
+Super initializers were introduced in Dart 2.17,
 so update `pubspec.yaml` to have at least that
 in the lower SDK constraint:
 
-```
+```yaml
 environment:
   sdk: ">=2.17.0 <3.0.0"
 ```
@@ -101,7 +100,8 @@ lib/myapp.dart
   use_super_parameters • 1 fix
 ```
 
-[`dart analyze`]: /tools/dart-analyze
-
-To learn more about customizing the analysis
+To learn more about customizing analysis results and behavior,
 see [Customizing static analysis](/guides/language/analysis-options).
+
+[`dart analyze`]: /tools/dart-analyze
+[language version]: /guides/language/evolution#language-versioning
