@@ -98,47 +98,82 @@ i.fa-external-link-alt {
 
 #page-footer {
   position: relative;
-  background-color: $site-color-footer;
-  color: $site-color-white;
-  font-weight: 400;
-  font-size: $font-size-small;
   z-index: 5;
-  .brand {
-    width: 120px;
+  background-color: $site-color-footer;
+  padding: 32px;
+
+  color: $site-color-light-grey;
+  font-weight: 400;
+  font-family: $site-font-family-gsans;
+  font-size: $font-size-small;
+
+  .footer-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
+
+    @media(max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
-  .licenses {
-    font-size: 10px;
+
+  .footer-main {
+    padding-bottom: 24px;
+    align-items: center;
   }
-  h4 {
-    color: #fff;
-    text-transform: uppercase;
-    font-size: inherit;
-    a {
-      color: $white-base;
-      &:hover, &:focus, &:active {
-        color: $gray-lighter;
+
+  .footer-tray {
+    border-top: 1px solid #82878c;
+    padding-top: 24px;
+
+    .footer-licenses {
+      width: 70%;
+      max-width: 720px;
+
+      @media(max-width: 768px) {
+        width: 100%;
       }
     }
   }
+
+  .footer-social-links {
+    a {
+      margin-left: 16px;
+
+      svg {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    @media(max-width: 768px) {
+      margin-top: 24px;
+    }
+  }
+
   ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-    margin-bottom: 0;
+
     li {
       display: inline;
-      border-right: 1px solid $site-color-white;
-      padding: 0 1rem;
-      a {
-        color: #ffffff;
-        font-family: $site-font-family-gsans;
-
-        &:hover, &:focus, &:active {
-          color: $gray-lighter;
-        }
-      }
+      margin-left: 16px;
     }
-    li:last-child {
-      border: none;
+
+    @media(max-width: 768px) {
+      margin-top: 12px;
+    }
+  }
+
+  a {
+    color: $site-color-light-grey;
+
+    &:hover, &:focus, &:active {
+      color: $site-color-white;
     }
   }
 }
