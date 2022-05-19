@@ -197,7 +197,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [DDC]: https://github.com/dart-lang/sdk/tree/main/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/type-system
 [Dart's type system]: /guides/language/type-system
-[Flutter no mirrors]: {{site.flutter_docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
+[Flutter no mirrors]: {{site.flutter-docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
 [FlutterShowcase]: {{site.flutter}}/showcase
 
 ---
@@ -220,7 +220,7 @@ Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
 Linux. For more details, see the [dart compile][] documentation.
 
-### Q. Which is faster — AOT- or JIT-compiled code?
+### Q. Which is faster: AOT- or JIT-compiled code?
 
 Code that's compiled ahead-of-time (_AOT_) with
 a tool such as [dart compile][]
@@ -247,6 +247,8 @@ the last two major releases of the following browsers:
   * Safari
 
 The _development_ compiler ([dartdevc][]) supports only Chrome.
+You _might_ be able to use other modern browsers
+(Chromium Edge, Firefox, and Safari).
 
 ### Q. Is Dart supported by my browser?
 
@@ -416,8 +418,8 @@ real-world apps instead of trivial examples.
 ### Q. How are floating point numbers handled when compiled to JavaScript?
 
 JavaScript has only one number representation: an IEEE-754 double-precision
-floating-point number. This means that any number&mdash;integer or floating
-point&mdash;is represented as a double. JavaScript has typed data arrays,
+floating-point number. This means that any number—integer or floating
+point—is represented as a double. JavaScript has typed data arrays,
 and the mapping from native Dart typed lists to JavaScript typed arrays is trivial.
 
 ### Q. How are integers handled when compiled to JavaScript?

@@ -24,8 +24,8 @@ you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [pub.dev site]({{site.pub}}) repository.
 
-This tutorial shows how to use `dart pub`&mdash;a package manager
-that comes with Dart&mdash;to
+This tutorial shows how to use `dart pub`—a package manager
+that comes with Dart—to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
@@ -40,7 +40,7 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 {{site.alert.end}}
 
 
@@ -65,13 +65,13 @@ $ dart create --help
 ```
 
 You'll see a list of templates, including various web and server-side apps.
-One of the templates is named **console-full**.
+One of the templates is named **console**.
 
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
 
 ```terminal
-$ dart create -t console-full vector_victor 
+$ dart create -t console vector_victor 
 $ cd vector_victor
 ```
 
@@ -93,7 +93,7 @@ environment:
 #   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^1.0.0
+  lints: ^2.0.0
   test: ^1.16.0
 ```
 
@@ -177,10 +177,6 @@ Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from the `.dart_tool/package_config.json` file.
-
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
 
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
@@ -285,7 +281,7 @@ use the `package:` prefix.
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
    [vector_math API
-   docs]({{site.pub}}/documentation/vector_math/latest),
+   docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
    {{site.alert.note}}

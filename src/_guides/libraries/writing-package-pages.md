@@ -34,7 +34,7 @@ follow these links:
 
 1. [Package layout ](https://dart.dev/tools/pub/package-layout)
 2. [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites)
-3. [Package scoring](https://pub.dev/help/scoring)
+3. [Package scoring]({{site.pub}}/help/scoring)
 4. [Verified publishers](https://dart.dev/tools/pub/verified-publishers)
 5. [Pubspec file](https://dart.dev/tools/pub/pubspec)
 
@@ -260,8 +260,8 @@ and go to the code that interests them:
 
 If your package looks promising, users might want to test your package.
 Include a "Get started" or "Usage" section that has
-at least one code sample that users can easily understand —
-and, ideally, that they can copy and paste into their project.
+at least one code sample that users can easily understand—and, 
+ideally, that they can copy and paste into their project.
 It’s even better if you can provide more examples with more details
 to help users to understand your package. 
 
@@ -361,8 +361,8 @@ Here are some suggestions for what to tell potential users:
 * Where to get help on using the package.
   Possibilities include an issue tracker, a chat room, or an email address.
 * What you're planning to do with the package.
-  A roadmap — either in the README or in an external page —
-  can help users know whether the feature they need is coming soon.
+  A roadmap—either in the README or in an external page—can 
+  help users know whether the feature they need is coming soon.
 * How to contribute code to the package.
 
 The following screenshot shows the part of the `in_app_purchase` README
@@ -418,4 +418,4 @@ You’re the only person who can provide the information that the reader needs.
 [Make a README]: https://www.makeareadme.com
 [README Checklist]: https://github.com/ddbeck/readme-checklist/blob/main/checklist.md
 [style-guide]: https://developers.google.com/style/highlights
-[`yaml`]: https://pub.dev/packages/yaml 
+[`yaml`]: {{site.pub-pkg}}/yaml 

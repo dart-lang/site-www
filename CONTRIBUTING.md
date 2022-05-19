@@ -13,8 +13,8 @@ You can contribute in a few ways.
   review your fix within one working day, and your fix will appear online less
   than an hour after we merge your PR.
 
-  **Note:** If this is your first contribution to a Google project — _welcome!_
-  — you'll need to [sign the CLA][].
+  **Note:** If this is your first contribution to
+  a Google project—_welcome!_—you'll need to [sign the CLA][].
 
 * **[Report issues][].**
 

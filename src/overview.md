@@ -14,8 +14,8 @@ Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
 [flexible execution runtime platform](#platform) for app frameworks.
 
-Languages are defined by their _technical envelope_ —
-the choices made during development that
+Languages are defined by their _technical envelope_—the 
+choices made during development that
 shape the capabilities and strengths of a language.
 Dart is designed for a technical envelope that is
 particularly suited to client development,
@@ -113,8 +113,8 @@ class Point {
 {{site.alert.info}}
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
-  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
-  target="_blank">open this example in its own window</a>.
+  <a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"
+  target="_blank" rel="noopener">open this example in its own window</a>.
 {{site.alert.end}}
 
 
@@ -145,8 +145,8 @@ providing essentials for many everyday programming tasks:
 * Foreign function interfaces for interoperability with
   other code that presents a C-style interface
   (`dart:ffi`)
-* Concurrent programming using _isolates_ —
-  independent workers that are similar to threads but
+* Concurrent programming using _isolates_—independent workers
+  that are similar to threads but
   don't share memory, communicating only through messages
   (`dart:isolate`)
 * HTML elements and other resources for web-based applications that need to
@@ -208,10 +208,10 @@ The Dart VM offers a just-in-time compiler (JIT) with
 incremental recompilation (enabling hot reload), live metrics collections
 (powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
-When apps are ready to be deployed to production —
-whether you're publishing to an app store or
-deploying to a production backend —
-the Dart AOT compiler enables ahead-of-time compilation to
+When apps are ready to be deployed to production—whether
+you're publishing to an app store 
+or deploying to a production backend—the 
+Dart AOT compiler enables ahead-of-time compilation to
 native ARM or x64 machine code.
 Your AOT-compiled app launches with consistent, short startup time.
 
@@ -230,17 +230,18 @@ More information:
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
-turn runs in a browser — for example, [V8](https://v8.dev/) inside
+turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
 Dart web contains both an incremental dev compiler enabling a fast developer
-cycle, and an optimizing production compiler, `dart2js`, which compiles Dart
+cycle, and an optimizing production compiler, dart2js, which compiles Dart
 code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 More information:
 * [Get started: Web apps](/tutorials/web/get-started)
-* [`dartdevc` compiler](/tools/dartdevc)
+* [dart2js compiler](/tools/dart2js)
+* [dartdevc](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 

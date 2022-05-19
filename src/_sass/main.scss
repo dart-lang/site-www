@@ -320,7 +320,7 @@ main .content {
   li {
     page-break-inside: avoid;
     padding: $font-size-base / 2;
-    font-size: smaller;
+    font-size: $font-size-small;
   }
 }
 
@@ -577,9 +577,14 @@ h3.popover-header {
   margin-top: 32px;
   padding: 30px 30px;
 
-  pre, code {
+  code {
     background-color: transparent;
   }
+
+  pre {
+    background-color: #00000010;
+  }
+
   p:last-child {
     margin-bottom: 0;
   }

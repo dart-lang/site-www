@@ -4,8 +4,8 @@ description: Links to Dart codelabs.
 toc: false
 ---
 
-The Dart codelabs provide a guided, hands-on coding experience —
-no download required!
+The Dart codelabs provide a guided, 
+hands-on coding experience—no download required!
 
 ## General
 
@@ -39,4 +39,4 @@ which was introduced in Dart 2.12.
 ## Flutter
 
 To learn about Flutter, try one of the
-[Flutter codelabs.]({{site.flutter_docs}}/codelabs)
+[Flutter codelabs.]({{site.flutter-docs}}/codelabs)

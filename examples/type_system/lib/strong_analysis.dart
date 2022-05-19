@@ -20,7 +20,7 @@ void _miscDeclAnalyzedButNotTested() {
     void printInts(List<int> a) => print(a);
 
     void main() {
-      var list = [];
+      final list = [];
       list.add(1);
       list.add('2');
       // ignore: stable, beta, dev, argument_type_not_assignable

@@ -23,7 +23,7 @@ APIs, no download necessary.
 
 For example, here's an embedded DartPad that lets you play with the code for a
 small Hello World program. Click **Run** to run the app; output appears in the
-console view. Try editing the source code &mdash; perhaps you'd like to change the
+console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 {{site.alert.note}}
@@ -50,10 +50,10 @@ More information:
 ## 3. Create a small app
 
 Use the [`dart create`](/tools/dart-create) command
-and the `console-full` template to create a command-line app:
+and the `console` template to create a command-line app:
 
 ```terminal
-$ dart create -t console-full cli
+$ dart create -t console cli
 ```
 
 This command creates a small Dart app that has the following:

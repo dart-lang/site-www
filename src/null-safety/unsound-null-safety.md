@@ -77,8 +77,8 @@ Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your program and its tests.
 
-We recommend that you **first migrate leaf libraries** —
-libraries that don't import other files from the package.
+We recommend that you **first migrate leaf libraries**—libraries 
+that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
 intra-package dependencies.
@@ -172,8 +172,8 @@ You can do this in two ways:
   $ flutter run --no-sound-null-safety
   ```
 
-* Alternatively, set the language version in the entrypoint —
-  the file that contains `main()` function — to 2.9.
+* Alternatively, set the language version in the 
+  entrypoint—the file that contains `main()` function—to 2.9.
   In Flutter apps, this file is often named `lib/main.dart`.
   In command-line apps, this file is often named `bin/<packageName>.dart`.
   You can also opt out files under `test`,

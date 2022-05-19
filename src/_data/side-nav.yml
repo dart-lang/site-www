@@ -45,6 +45,11 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+    - title: Coming from ...
+      expanded: false
+      children:
+        - title: JavaScript to Dart
+          permalink: /guides/language/coming-from/js-to-dart
     - title: Extension methods
       permalink: /guides/language/extension-methods
     - title: Concurrency

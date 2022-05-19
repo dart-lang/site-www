@@ -33,15 +33,15 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    String _readThermometer() {
+    String readThermometer() {
       print('in _readThermometer()');
       return '37.0';
     }
 
     {
       // #docregion var-late-lazy
-      // This is the program's only call to _readThermometer().
-      late String temperature = _readThermometer(); // Lazily initialized.
+      // This is the program's only call to readThermometer().
+      late String temperature = readThermometer(); // Lazily initialized.
       // #enddocregion var-late-lazy
       print('$temperature degrees');
       // #docregion var-ns-init

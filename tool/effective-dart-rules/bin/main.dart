@@ -71,7 +71,7 @@ void write(IOSink out, Section section) {
   for (final subsection in section.subsections) {
     out.writeln('\n**${subsection.name}**\n');
     for (final rule in subsection.rules) {
-      var link = section.uri.resolve('#' + rule.fragment);
+      var link = section.uri.resolve('#${rule.fragment}');
       out.writeln("* <a href='$link'>${rule.html}</a>");
     }
   }

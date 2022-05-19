@@ -5,8 +5,8 @@ description: Command-line tools for Dart web development.
 <!--?code-excerpt path-base="examples/ng/doc"?-->
 
 This page explains how to use `webdev` and
-a tool it depends on — `build_runner` —
-to build, serve, and test your web apps.
+a tool it depends on—`build_runner`—to 
+build, serve, and test your web apps.
 The [webdev][] package provides `webdev`,
 which wraps around the more general-purpose
 [`build_runner` tool.][build_runner]
@@ -64,6 +64,7 @@ As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 ```terminal
 $ dart pub get
 ```
+
 ## Using webdev and build_runner commands
 
 This section describes how to use the following commands:

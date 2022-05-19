@@ -490,8 +490,8 @@ h1, h3, p {
 When the program starts,
 it creates one button element for each of seven
 randomly selected letters.
-The program adds each button to a DOM element&mdash;a simple
-`<div>` element identified by the CSS selector `letterpile`&mdash;with
+The program adds each button to a DOM element—a simple
+`<div>` element identified by the CSS selector `letterpile`—with
 a call to `letterpile.children.add()`.
 
 <img class="scale-img-max" src="/tutorials/web/images/anagram-newletters.png"
@@ -518,7 +518,7 @@ The `+=` operator is a compound assignment operator,
 which combines an operation (`+`) with an assignment.
 
 The `scrabbleValues` variable is a
-[`Map`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}&mdash;a
+[`Map`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}—a
 data structure that contains key/value pairs.
 Use the square bracket syntax to retrieve a value by its key
 and the `length` property to get the number of pairs it contains.

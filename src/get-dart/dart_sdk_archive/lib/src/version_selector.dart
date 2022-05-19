@@ -143,19 +143,29 @@ class VersionSelector {
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
             continue;
-          }
-        }
+          } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
+            // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
+            // and none in stable yet.
+            // TODO: After this ships in stable 2.x, remove the stable check,
+            // and just test for versionInfo.version < Version(2,x,0).
+            if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
+              continue;
+            }
 
-        // No Mac 32-bit SDK builds after 2.80
-        if (name == 'macOS' && platformVariant.architecture == 'ia32') {
-          if (versionInfo.version > Version(2, 7, 0)) {
-            continue;
+            if (versionInfo.channel == 'stable') {
+              continue;
+            }
           }
-        }
-
-        // No Mac arm64 SDK builds before 2.14.1 (earlier builds did not have trained snapshots).
-        if (name == 'macOS' && platformVariant.architecture == 'ARM64') {
-          if (versionInfo.version < Version(2, 14, 1)) {
+        } else if (name == 'macOS') {
+          if (platformVariant.architecture == 'IA32') {
+            if (versionInfo.version > Version(2, 7, 0)) {
+              // No macOS 32-bit SDK builds after 2.8.0
+              continue;
+            }
+          } else if (platformVariant.architecture == 'ARM64' &&
+              versionInfo.version < Version(2, 14, 1)) {
+            // No macOS ARM64 SDK builds before 2.14.1
+            // (earlier builds did not have trained snapshots).
             continue;
           }
         }
@@ -175,7 +185,7 @@ class VersionSelector {
         var possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
-        for (var pa in possibleArchives) {
+        for (final pa in possibleArchives) {
           if (platformVariant.archives.contains(pa)) {
             // We had no editor downloads after the move to GitHub.
             // This skips the editor link in those cases

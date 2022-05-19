@@ -31,7 +31,7 @@ For example, consider the following code that parses a string into an integer:
 int.parse('42')
 ```
 
-It might be nice — shorter and easier to use with tools — to
+It might be nice—shorter and easier to use with tools—to
 have that functionality be on `String` instead:
 
 ```dart
@@ -72,8 +72,8 @@ After that are sections about _implementing_ extension methods.
 ## Using extension methods
 
 Like all Dart code, extension methods are in libraries.
-You've already seen how to use an extension method —
-just import the library it's in, and use it like an ordinary method:
+You've already seen how to use an extension method—just 
+import the library it's in, and use it like an ordinary method:
 
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
 ```dart

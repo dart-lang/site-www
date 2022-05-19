@@ -36,7 +36,7 @@ generates `.css` files from `.scss` and `.sass` files.
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
 
-<?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" replace="/args.*/# ···/g"?>
+<?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" to="build_test" replace="/args.*/# ···/g"?>
 ```yaml
 dev_dependencies:
   # ···

@@ -8,11 +8,11 @@ const double yOrigin = 0;
 
 // #docregion class-with-distanceTo, constructor-initializer
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   // #enddocregion class-with-distanceTo, named-constructor
-  // Syntactic sugar for setting x and y
+  // Sets the x and y instance variables
   // before the constructor body runs.
   // #docregion class-with-distanceTo, named-constructor
   Point(this.x, this.y);

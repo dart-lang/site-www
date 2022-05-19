@@ -1,4 +1,5 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type
+// ignore_for_file: no_leading_underscores_for_local_identifiers, use_function_type_syntax_for_parameters
 
 import 'package:examples_util/ellipsis.dart';
 
@@ -84,7 +85,7 @@ void miscDeclAnalyzedButNotTested() {
     void method1() {}
 
     // #docregion ctor
-    /// To create a point from polar coordinates, use [Point.polar()].
+    /// To create a point, call [Point.new] or use [Point.polar] to ...
     // #enddocregion ctor
     void method2() {}
   };

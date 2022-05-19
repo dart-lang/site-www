@@ -14,7 +14,7 @@ package, and how to name things.
   **Note:**
   Flutter apps can use custom directories for their assets.
   For details, see
-  [Adding assets and images]({{site.flutter_docs}}/development/ui/assets-and-images)
+  [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
   on the [Flutter website.]({{site.flutter}})
   </div>
 </div></aside>
@@ -26,7 +26,6 @@ might look like:
 {% prettify none tag=pre+code %}
 enchilada/
   .dart_tool/ *
-  .packages *
   pubspec.yaml
   pubspec.lock **
   LICENSE
@@ -59,18 +58,16 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool/` directory and `.packages` file exist after you've run
-   `pub get`. Don't check them into source control.
+\* The `.dart_tool/` directory exists after you've run `pub get`. 
+   Don't check it into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
 \*** The `doc/api` directory exists locally after you've run
-      [`dart doc`](/tools/dart-doc).
-      Don't check the `api` directory into source control.
-
-{% include packages-dir.html %}
+     [`dart doc`](/tools/dart-doc).
+     Don't check the `api` directory into source control.
 
 
 ## The pubspec
@@ -115,10 +112,9 @@ enchilada/
 
 One file that's very common in open source is a _README_ file that
 describes the project. This is especially important in pub. When you upload
-to the [pub.dev site,]({{site.pub}}) your `README.md` file is shown —
-rendered as [Markdown][] — on
-the page for your package. This is the perfect place to introduce people to
-your code.
+to the [pub.dev site,]({{site.pub}}) your `README.md` file
+is shown—rendered as [Markdown][]—on the page for your package. 
+This is the perfect place to introduce people to your code.
 
 For guidance on how to write a great README, see
 [Writing package pages](/guides/libraries/writing-package-pages).
@@ -231,7 +227,7 @@ import 'package:enchilada/some/path/olives.dart';
 {% endprettify %}
 
 Note that only *libraries* should be in `lib`.
-*Entrypoints*&mdash;Dart scripts with a `main()` function&mdash;cannot
+*Entrypoints*—Dart scripts with a `main()` function—cannot
 go in `lib`. If you place a Dart script inside `lib`,
 you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
@@ -347,8 +343,8 @@ enchilada/
     style.css
 {% endprettify %}
 
-For web packages, place entrypoint code&mdash;Dart scripts that include
-`main()` and supporting files, such as CSS or HTML&mdash;under `web`.
+For web packages, place entrypoint code—Dart scripts that include
+`main()` and supporting files, such as CSS or HTML—under `web`.
 You can organize the `web` directory into subdirectories if you like.
 
 Put [library code](#public-libraries) under `lib`.

@@ -89,9 +89,9 @@ but you'll need to adjust the instructions to match your app.
    using either your IDE or `webdev` at the command line.
 
    {{site.alert.note}}
-    The first dartdevc compilation takes the longest,
-    because the entire app must be compiled.
-    After that, refreshes are much faster.
+     The first dartdevc compilation takes the longest,
+     because the entire app must be compiled.
+     After that, refreshes are much faster.
    {{site.alert.end}}
 
    If you're using webdev at the command line,
@@ -201,7 +201,7 @@ For more information, see the following:
 
 * Documentation for [your IDE][IDE]
 * [Dart DevTools documentation][Dart DevTools]
-* [dartdevc FAQ][]
+* [dartdevc documentation][]
 * [webdev tool documentation][webdev]
 * [webdev package documentation][webdev-pkg]
 * [Tips for debugging dart2js-produced code][dart2js-debug]
@@ -213,8 +213,7 @@ For more information, see the following:
 [Dart SDK]: /get-dart
 [Dart web app]: /web
 [dart2js-debug]: /tools/dart2js#debugging
-[dartdevc]: /tools/dartdevc
-[dartdevc FAQ]: /tools/dartdevc/faq
+[dartdevc documentation]: /tools/dartdevc
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
 [JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/

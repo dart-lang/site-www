@@ -101,7 +101,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-late-variables-if-you-need-to-check-whether-they-are-initialized'>AVOID <code>late</code> variables if you need to check whether they are initialized.</a>
-* <a href='/guides/language/effective-dart/usage#consider-copying-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER copying a nullable field to a local variable to enable type promotion.</a>
+* <a href='/guides/language/effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER assigning a nullable field to a local variable to enable type promotion.</a>
 
 **Strings**
 

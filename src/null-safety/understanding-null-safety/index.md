@@ -126,12 +126,12 @@ In type theory lingo, the `Null` type was treated as a subtype of all types:
 
 <img src="understanding-null-safety/hierarchy-before.png" width="335">
 
-The set of operations&mdash;getters, setters, methods, and
-operators&mdash;allowed on some expression are defined by its type. If the type
+The set of operations—getters, setters, methods, and
+operators—allowed on some expressions are defined by its type. If the type
 is `List`, you can call `.add()` or `[]` on it. If it's `int`, you can call `+`.
 But the `null` value doesn't define any of those methods. Allowing `null` to
 flow into an expression of some other type means any of those operations can
-fail. This is really the crux of null reference errors&mdash;every failure comes
+fail. This is really the crux of null reference errors—every failure comes
 from trying to look up a method or property on `null` that it doesn't have.
 
 ### Non-nullable and nullable types
@@ -647,8 +647,8 @@ the non-nullable side so you can call methods on it. Flow analysis is one of the
 primary ways to do this for local variables and parameters. We've extended type
 promotion to also look at `== null` and `!= null` expressions.
 
-If you check a variable with nullable type to see if it is not `null`, Dart then
-promotes the variable to the underlying non-nullable type:
+If you check a local variable with nullable type to see if it is not `null`, 
+Dart then promotes the variable to the underlying non-nullable type:
 
 ```dart
 // Using null safety:
@@ -691,6 +691,11 @@ or assignments, or the postfix `!` operator we'll get to soon also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
+
+Note that type promotion only works on local variables,
+not on fields or top-level variables.
+For more information about working with non-local variables,
+see [Working with nullable fields](#working-with-nullable-fields).
 
 ### Unnecessary code warnings
 
@@ -750,7 +755,7 @@ resulting system is still painfully restrictive. Flow analysis only helps with
 locals and parameters.
 
 To try to regain as much of the flexibility that Dart had before null
-safety&mdash;and to go beyond it on some places&mdash;we have a handful of other
+safety—and to go beyond it on some places—we have a handful of other
 new features.
 
 ### Smarter null-aware methods
@@ -1077,8 +1082,8 @@ class Coffee {
 Unlike normal `final` fields, you do not have to initialize the field in its
 declaration or in the constructor initialization list. You can assign to it
 later at runtime. But you can only assign to it *once*, and that fact is checked
-at runtime. If you try to assign to it more than once&mdash;like calling both
-`heat()` and `chill()` here&mdash;the second assignment throws an exception.
+at runtime. If you try to assign to it more than once—like calling both
+`heat()` and `chill()` here—the second assignment throws an exception.
 This is a great way to model state that gets initialized eventually and is
 immutable afterwards.
 
@@ -1235,6 +1240,9 @@ Since the type promotion does apply to locals, this now works fine. If you need
 to *change* the value, just remember to store back to the field and not just the
 local.
 
+For more information on handling these and other type promotion issues,
+see [Fixing type promotion failures](/tools/non-promotion-reasons).
+
 ### Nullability and generics
 
 Like most modern statically-typed languages, Dart has generic classes and
@@ -1333,7 +1341,7 @@ class Interval<T extends num> {
 ```
 
 If the bound is non-nullable, then the type parameter is also non-nullable. This
-means you have the restrictions of non-nullable types&mdash;you can't leave
+means you have the restrictions of non-nullable types—you can't leave
 fields and variables uninitialized. The example class here must have a
 constructor that initializes the fields.
 

@@ -33,8 +33,7 @@ class Spacecraft {
 class Orbiter extends Spacecraft {
   double altitude;
 
-  Orbiter(String name, DateTime launchDate, this.altitude)
-      : super(name, launchDate);
+  Orbiter(super.name, DateTime super.launchDate, this.altitude);
 }
 // #enddocregion extends
 
@@ -51,7 +50,7 @@ mixin Piloted {
 // #docregion mixin-use
 class PilotedCraft extends Spacecraft with Piloted {
   // #enddocregion mixin-use
-  PilotedCraft(String name, DateTime launchDate) : super(name, launchDate);
+  PilotedCraft(super.name, DateTime super.launchDate);
   // #docregion mixin-use
 }
 // #enddocregion mixin-use
@@ -86,3 +85,38 @@ abstract class Describable {
     print('=========');
   }
 }
+// #enddocregion abstract
+
+// #docregion simple-enum
+enum PlanetType { terrestrial, gas, ice }
+// #enddocregion simple-enum
+
+// #docregion enhanced-enum
+/// Enum that enumerates the different planets in our solar system
+/// and some of their properties.
+enum Planet {
+  mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  // #enddocregion enhanced-enum
+  earth(planetType: PlanetType.terrestrial, moons: 1, hasRings: false),
+  mars(planetType: PlanetType.terrestrial, moons: 2, hasRings: false),
+  jupiter(planetType: PlanetType.gas, moons: 80, hasRings: true),
+  saturn(planetType: PlanetType.gas, moons: 83, hasRings: true),
+  // #docregion enhanced-enum
+  uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
+  neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
+
+  /// A constant generating constructor
+  const Planet(
+      {required this.planetType, required this.moons, required this.hasRings});
+
+  /// All instance variables are final
+  final PlanetType planetType;
+  final int moons;
+  final bool hasRings;
+
+  /// Enhanced enums support getters and other methods
+  bool get isGiant =>
+      planetType == PlanetType.gas || planetType == PlanetType.ice;
+}
+// #enddocregion enhanced-enum

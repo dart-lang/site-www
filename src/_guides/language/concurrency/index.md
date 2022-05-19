@@ -76,12 +76,30 @@ the `Future<String>` completes with either a string value or an error.
 [`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
 [`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
-Why does it matter whether a method is synchronous or asynchronous?
-It matters because most apps need to do more than one thing at a time.
+
+#### Why asynchronous code matters
+
+It matters whether a method is synchronous or asynchronous
+because most apps need to do more than one thing at a time.
+
+Asynchronous computations are often the result of performing computations
+outside of the current Dart code; 
+this includes computations that don't complete immediately, 
+and where you aren't willing to block your Dart code waiting for the result.
 For example, an app might start an HTTP request,
 but need to update its display or respond to user input
 before the HTTP request completes.
 Asynchronous code helps apps stay responsive.
+
+These scenarios include operating system calls like
+non-blocking I/O, performing an HTTP request, or communicating with a browser. 
+Other scenarios include waiting for computations
+performed in another Dart isolate as described below, 
+or maybe just waiting for a timer to trigger. 
+All of these processes either run in a different thread, 
+or are handled by the operating system or the Dart runtime, 
+which allows Dart code to run concurrently with the computation.
+
 
 ### The async-await syntax
 
@@ -89,7 +107,8 @@ The `async` and `await` keywords provide
 a declarative way to define asynchronous functions
 and use their results.
 
-Here’s an example of some synchronous code that blocks while waiting for file I/O:
+Here’s an example of some synchronous code
+that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
@@ -198,8 +217,8 @@ using asynchronous operations as necessary.
 As the following figure shows,
 every isolate starts by running some Dart code,
 such as the `main()` function.
-This Dart code might register some event listeners —
-to respond to user input or file I/O, for example.
+This Dart code might register some event listeners—to 
+respond to user input or file I/O, for example.
 When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
@@ -238,21 +257,21 @@ In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
 Worse, the UI might become completely unresponsive.
 
-[jank]: {{site.flutter_docs}}/perf/rendering
+[jank]: {{site.flutter-docs}}/perf/rendering-performance
 
 
 ### Background workers
 
-If your app’s UI becomes unresponsive due to a time-consuming computation —
-[parsing a large JSON file][json], for example —
-consider offloading that computation to a worker isolate,
+If your app’s UI becomes unresponsive due to 
+a time-consuming computation—[parsing a large JSON file][json], 
+for example—consider offloading that computation to a worker isolate,
 often called a _background worker._
 A common case, shown in the following figure,
 is spawning a simple worker isolate that
 performs a computation and then exits.
 The worker isolate returns its result in a message when the worker exits.
 
-[json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
 ![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
@@ -292,7 +311,7 @@ to implement isolates.
   move a single function call to a worker isolate.
 {{site.alert.end}}
 
- [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+ [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 
 ### Implementing a simple worker isolate
@@ -371,12 +390,12 @@ Future<void> _readAndParseJson(SendPort p) async {
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
 Message passing between isolates normally involves data copying,
-and thus can be slow and increases with the size of the message —
-O(n) in [big O notation][].
+and thus can be slow and increases linearly
+with the size of the message (`O(n)` in [big O notation][]).
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time — O(1).
+That transfer is quick and completes in constant time (`O(1)`).
 
 [big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 

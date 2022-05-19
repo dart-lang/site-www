@@ -20,6 +20,8 @@ import 'package:examples/language_tour/classes/point_with_main.dart'
     as point_with_main;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
+import 'package:examples/language_tour/classes/super_initializer_parameters.dart'
+    as super_initializer_parameters;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
 import 'package:examples_util/print_matcher.dart' as m;
 
@@ -64,7 +66,7 @@ void main() {
   });
 
   test('const, identical, runtimeType', () {
-    void _test() {
+    void checkIdentical() {
       // #docregion const
       var p = const ImmutablePoint(2, 2);
       // #enddocregion const
@@ -81,7 +83,7 @@ void main() {
       // #enddocregion runtimeType
     }
 
-    expect(_test, m.prints('The type of a is ImmutablePoint'));
+    expect(checkIdentical, m.prints('The type of a is ImmutablePoint'));
   });
 
   test('point_with_main', () {
@@ -138,7 +140,8 @@ void main() {
   });
 
   test('enum_with_main', () {
-    expect(enum_with_main.main, m.prints('Color.blue'));
+    expect(enum_with_main.main,
+        m.prints(['Your favorite color is blue!', 'Color.blue', 'blue']));
   });
 
   test('orchestra', () {
@@ -184,5 +187,18 @@ void main() {
     // #enddocregion nonconst-const-constructor
 
     expect(a == b, isFalse);
+  });
+
+  test('super_initializer_parameters', () {
+    final simpleVector3d = super_initializer_parameters.Vector3d(2.17, 6.4, 3);
+    expect(simpleVector3d.x, equals(2.17));
+    expect(simpleVector3d.y, equals(6.4));
+    expect(simpleVector3d.z, equals(3));
+
+    final yzPlaneVector3d =
+        super_initializer_parameters.Vector3d.yzPlane(y: 2.17, z: 3);
+    expect(yzPlaneVector3d.x, equals(0));
+    expect(yzPlaneVector3d.y, equals(2.17));
+    expect(yzPlaneVector3d.z, equals(3));
   });
 }

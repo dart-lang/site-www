@@ -350,7 +350,7 @@ Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
 
-### CONSIDER copying a nullable field to a local variable to enable type promotion.
+### CONSIDER assigning a nullable field to a local variable to enable type promotion.
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
@@ -358,12 +358,12 @@ to functions expecting a non-nullable type. Unfortunately, promotion is only
 sound for local variables and parameters, so fields and top-level variables
 aren't promoted.
 
-One pattern to work around this is to copy the field's value to a local
+One pattern to work around this is to assign the field's value to a local
 variable. Null checks on that variable do promote, so you can safely treat
 it as non-nullable.
 
 {:.good}
-<?code-excerpt "usage_good.dart (copy-nullable-field)"?>
+<?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
 {% prettify dart tag=pre+code %}
 class UploadException {
   final Response? response;
@@ -372,7 +372,7 @@ class UploadException {
 
   @override
   String toString() {
-    var response = this.response;
+    final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
@@ -383,11 +383,11 @@ class UploadException {
 }
 {% endprettify %}
 
-Copying to a local variable can be cleaner and safer than using `!` every place
-the field or top-level variable is used:
+Assigning to a local variable can be cleaner and safer than using `!` every
+place the field or top-level variable is used:
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
+<?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 {% prettify dart tag=pre+code %}
 class UploadException {
   final Response? response;
@@ -406,10 +406,11 @@ class UploadException {
 }
 {% endprettify %}
 
-Be careful when using a local copy. If you need to write back to the field,
-then make sure you do so, and don't just write to the local variable. Also, if
-the field might change while the local is still in scope, then the local might
-have a stale value. Sometimes it's best to simply use `!` on the field.
+Be careful when using a local variable. If you need to write back to the field,
+make sure that you don't write back to the local variable instead. (Making the
+local variable `final` can prevent such mistakes.) Also, if the field might
+change while the local is still in scope, then the local might have a stale
+value. Sometimes it's best to simply use `!` on the field.
 
 
 ## Strings
@@ -420,8 +421,8 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 {% include linter-rule-mention.md rule="prefer_adjacent_string_concatenation" %}
 
-If you have two string literals&mdash;not values, but the actual quoted literal
-form&mdash;you do not need to use `+` to concatenate them. Just like in C and
+If you have two string literals—not values, but the actual quoted literal
+form—you do not need to use `+` to concatenate them. Just like in C and
 C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
@@ -846,7 +847,7 @@ int median(List<Object> objects) {
 {% endprettify %}
 
 These alternatives don't always work, of course, and sometimes `cast()` is the
-right answer. But consider that method a little risky and undesirable&mdash;it
+right answer. But consider that method a little risky and undesirable—it
 can be slow and may fail at runtime if you aren't careful.
 
 
@@ -893,7 +894,7 @@ void main() {
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
 When you refer to a function, method, or named constructor but omit the
-parentheses, Dart creates a _tear-off_&mdash;a closure that takes the same
+parentheses, Dart creates a _tear-off_—a closure that takes the same
 parameters as the function and invokes the underlying function when you call it.
 If all you need is a closure that invokes a named function with the same
 parameters as the closure accepts, don't manually wrap the call in a lambda.
@@ -1011,7 +1012,7 @@ calculations that we could recalculate from other data we already have. They are
 trading increased memory for reduced CPU usage. Do we know we have a performance
 problem that merits that trade-off?
 
-Worse, the code is *wrong*. The problem with caches is *invalidation*&mdash;how
+Worse, the code is *wrong*. The problem with caches is *invalidation*—how
 do you know when the cache is out of date and needs to be recalculated? Here, we
 never do, even though `radius` is mutable. You can assign a different value and
 the `area` and `circumference` will retain their previous, now incorrect values.
@@ -1160,8 +1161,8 @@ String capitalize(String name) =>
 
 People *writing* code seem to love `=>`, but it's very easy to abuse it and end
 up with code that's hard to *read*. If your declaration is more than a couple of
-lines or contains deeply nested expressions&mdash;cascades and conditional
-operators are common offenders&mdash;do yourself and everyone who has to read
+lines or contains deeply nested expressions—cascades and conditional
+operators are common offenders—do yourself and everyone who has to read
 your code a favor and use a block body and some statements.
 
 {:.good}
@@ -1201,8 +1202,8 @@ set x(num value) => center = Point(value, center.y);
 {% include linter-rule-mention.md rule="unnecessary_this" %}
 
 JavaScript requires an explicit `this.` to refer to members on the object whose
-method is currently being executed, but Dart&mdash;like C++, Java, and
-C#&mdash;doesn't have that limitation.
+method is currently being executed, but Dart—like C++, Java, and
+C#—doesn't have that limitation.
 
 There are only two times you need to use `this.`. One is when a local variable
 with the same name shadows the member you want to access:
@@ -1287,7 +1288,7 @@ class Box extends BaseBox {
 {% endprettify %}
 
 This looks surprising, but works like you want. Fortunately, code like this is
-relatively rare thanks to initializing formals.
+relatively rare thanks to initializing formals and super initializers.
 
 
 ### DO initialize fields at their declaration when possible.
@@ -1323,7 +1324,7 @@ class ProfileMark {
 {% endprettify %}
 
 Some fields can't be initialized at their declarations because they need to reference
-`this` — to use other fields or call methods, for example. However, if the
+`this`—to use other fields or call methods, for example. However, if the
 field is marked `late`, then the initializer *can* access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized
@@ -1489,7 +1490,7 @@ expression inside:
 * A const constructor call
 * A metadata annotation.
 * The initializer for a const variable declaration.
-* A switch case expression&mdash;the part right after `case` before the `:`, not
+* A switch case expression—the part right after `case` before the `:`, not
   the body of the case.
 
 (Default values are not included in this list because future versions of Dart

@@ -579,7 +579,7 @@ The `getString()` method uses a Future object to handle the request.
 A [Future][] is a way to perform potentially time-consuming operations,
 such as HTTP requests, asynchronously.
 If you haven't encountered futures yet,
-you can learn about them — as well as the `async` and `await` keywords — in the
+you can learn about them—as well as the `async` and `await` keywords—in the
 [asynchronous programming codelab](/codelabs/async-await).
 Until then, you can use the code above as a guide
 and provide your own code for the body of the `processResponse()` function

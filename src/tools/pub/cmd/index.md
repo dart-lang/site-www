@@ -19,10 +19,10 @@ but if your current directory holds a Flutter app
 or other Flutter-specific code,
 use `flutter pub <subcommand>` instead.
 For more information, see
-[Using packages]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+[Using packages]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 on the [Flutter website]({{site.flutter}}).
 
-[flutter-cli]: {{site.flutter_docs}}/reference/flutter-cli
+[flutter-cli]: {{site.flutter-docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
 {{site.alert.version-note}}
@@ -125,9 +125,11 @@ With pub you can publish packages and command-line apps.
 
 To share your Dart packages with the world, you can
 use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the
-package to the [pub.dev site]({{site.pub}}). The
-[`uploader`](/tools/pub/cmd/pub-uploader) subcommand enables specific
-users to modify and upload new versions of your package.
+package to the [pub.dev site]({{site.pub}}).
+For information on allowing other users 
+to modify and upload new versions of your package,
+see [Uploaders](/tools/pub/publishing#uploaders).
+
 
 #### Command-line apps
 

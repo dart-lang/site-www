@@ -22,7 +22,7 @@ void main() {
   });
 
   test('generic-collections', () {
-    void _test() {
+    void testGenericCollection() {
       // #docregion generic-collections
       var names = <String>[];
       names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -31,7 +31,7 @@ void main() {
       // #enddocregion generic-collections
     }
 
-    expect(_test, prints('true\n'));
+    expect(testGenericCollection, prints('true\n'));
   });
 
   test('method', () {

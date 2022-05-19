@@ -57,13 +57,10 @@ get the latest versions of all dependencies.
 
 By default, pub creates a `package_config.json` file
 in the `.dart_tool/` directory that maps from package names to location URIs.
-Before the `package_config.json` file, 
-pub used to create a `.packages` file in the root directory.
 
 {{site.alert.note}}
-  Don't check the generated `.packages` file
-  or the `.dart_tool/` directory into your repo;
-  add them to your repo's `.gitignore` file.
+  Don't check the generated `.dart_tool/` directory into your repo;
+  add it to your repo's `.gitignore` file.
   For more information, 
   see [What not to commit](/guides/libraries/private-files).
 {{site.alert.end}}

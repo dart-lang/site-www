@@ -16,6 +16,10 @@ a git-repository it just fetches a specific revision of the git-repository.
 Hence, when many people are collaborating it is sometimes preferable to use a
 private package repository.
 
+{{site.alert.note}}
+  If you host a private repository, also check out the free article on Medium,
+  [Hosting a private Dart package repository](https://medium.com/dartlang/hosting-a-private-dart-package-repository-774c3c51dff9).
+{{site.alert.end}}
 
 ## Authenticating with a custom package repository
 
@@ -116,10 +120,27 @@ publish_to: https://pub.example.com
 {{site.alert.end}}
 
 
-## Writing a custom package repository
+## Getting a custom package repository
 
 The REST API for writing a custom package repository is outlined in the
 [Hosted Pub Repository Specification Version 2][repository-spec-v2.md].
+
+
+### Dart package repositories as a service
+
+Dart package repositories are also offered as a service
+by the following vendors:
+
+<ul class="col2">
+<li>
+  <img src="/assets/img/tools/cloudsmith.svg" width="48" alt="Cloudsmith logo">
+  <a href="https://help.cloudsmith.io/docs/dart-repository"><b>Cloudsmith</b></a>
+</li>
+<li>
+  <img src="/assets/img/tools/jfrog.svg" width="48" alt="JFrog logo">
+  <a href="https://jfrog.com/blog/how-to-use-pub-repositories-in-artifactory/"><b>JFrog Artifactory</b></a>
+</li>
+</ul>
 
 
 [repository-spec-v2.md]: https://github.com/dart-lang/pub/blob/master/doc/repository-spec-v2.md

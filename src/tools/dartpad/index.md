@@ -5,8 +5,8 @@ description: The tool that lets you interactively play with Dart in a browser.
 
 DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
 that lets you play with the Dart language in any modern browser.
-Many pages in this site — especially [codelabs](/codelabs) —
-have [embedded DartPads](#embedding).
+Many pages in this site—especially [codelabs](/codelabs)—have
+[embedded DartPads](#embedding).
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 

@@ -95,7 +95,7 @@ one or more of the following:
 
 {{site.alert.note}}
   You can work around all of these non-promotion examples by adding
-  a _redundant check_ — code that confirms a
+  a _redundant check_—code that confirms a
   condition that's already been checked.
   If the promotion that's failing is a null check, use `!`;
   if it's a type check, you can use `as`.
@@ -351,8 +351,8 @@ because `Pattern` isn't a subtype of `Comparable`.
 then you wouldn't be able to use methods on `Comparable`.)
 Note that just because `Pattern` isn't a subtype of `Comparable`
 doesn't mean the code at (3) is dead;
-`o` might have a type — like `String` —
-that implements both `Comparable` and `Pattern`.
+`o` might have a type—like `String`—that 
+implements both `Comparable` and `Pattern`.
 
 One possible solution is to create a new local variable so that
 the original variable is promoted to `Comparable`, and

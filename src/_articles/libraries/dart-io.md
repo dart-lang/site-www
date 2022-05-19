@@ -19,7 +19,7 @@ by going through a couple of examples.
   When writing a Flutter app, use
   [Flutter-specific APIs]({{site.flutter_api}})
   instead of dart:io whenever possible. For example, use the
-  [Flutter asset support]({{site.flutter_docs}}/development/ui/assets-and-images) to load
+  [Flutter asset support]({{site.flutter-docs}}/development/ui/assets-and-images) to load
   images and other assets into your app.
 {{site.alert.end}}
 
@@ -185,8 +185,8 @@ void main() async {
 ```
 
 The stream subscription is implicitly handled by `await for`.
-Exiting the `await for` statement — using `break`, `return`, or an uncaught exception —
-cancels the subscription.
+Exiting the `await for` statement—using `break`, `return`, 
+or an uncaught exception—cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.

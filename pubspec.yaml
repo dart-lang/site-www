@@ -12,3 +12,4 @@ dev_dependencies:
   code_excerpter:
     path: site-shared/packages/code_excerpter
   linkcheck: ^2.0.19
+  lints: ^2.0.0

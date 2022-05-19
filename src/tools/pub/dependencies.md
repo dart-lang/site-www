@@ -6,7 +6,7 @@ description: Add other packages to your app. Specify package locations, version 
 Dependencies are one of the core concepts of the [pub package manager][].
 A _dependency_ is another package that your package needs in order to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only _immediate dependencies_ — the
+You list only _immediate dependencies_—the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
@@ -201,7 +201,7 @@ Relative paths are allowed and are considered relative to the directory
 containing your pubspec.
 
 Path dependencies are useful for local development, but do not work when
-sharing code with the outside world&mdash;not everyone can get to
+sharing code with the outside world—not everyone can get to
 your file system. Because of this, you cannot upload a package to the
 [pub.dev site][pubsite] if it has any path dependencies in its pubspec.
 
@@ -337,8 +337,8 @@ dependencies.* Dev dependencies differ from regular dependencies in that *dev
 dependencies of packages you depend on are ignored*. Here's an example:
 
 Say the `transmogrify` package uses the `test` package in its tests and only
-in its tests. If someone just wants to use `transmogrify`&mdash;import its
-libraries&mdash;it doesn't actually need `test`. In this case, it specifies
+in its tests. If someone just wants to use `transmogrify`—import its
+libraries—it doesn't actually need `test`. In this case, it specifies
 `test` as a dev dependency. Its pubspec will have something like:
 
 ```yaml
@@ -451,7 +451,7 @@ Depend on the latest stable package versions
 Test whenever you update package dependencies
 : If you run [`pub upgrade`][] without updating your pubspec,
   the API should stay the same
-  and your code should run as before — but test to make sure.
+  and your code should run as before—but test to make sure.
   If you modify the pubspec and update to a new major version,
   then you might encounter breaking changes,
   so you need to test even more thoroughly.

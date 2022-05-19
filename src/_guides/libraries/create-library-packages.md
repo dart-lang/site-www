@@ -26,7 +26,7 @@ The minimal requirements for a library are:
 
 pubspec file
 : The `pubspec.yaml` file for a library is the same
-  as for an application package&mdash;there is no special
+  as for an application package—there is no special
   designation to indicate that the package is a library.
 
 lib directory
@@ -84,10 +84,11 @@ library packages:
   alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Directly under lib, the main library file,
-`shelf.dart`, exports API from several files in lib/src.
-To avoid exposing more API than intended —
-and to give developers an overview of the entire public API of the package —
-`shelf.dart` uses `show` to specify exactly which symbols to export:
+`shelf.dart`, exports API from several files in `lib/src`.
+To avoid exposing more API than intended—and 
+to give developers an overview of the entire
+public API of the package—`shelf.dart` 
+uses `show` to specify exactly which symbols to export:
 
 ```dart
 export 'src/cascade.dart' show Cascade;

@@ -129,9 +129,8 @@ This functionality has since been folded into the [`dart compile`][] command.
 ### Dart 2.7
 
 Dart 2.7 added support for **[extension methods][]**,
-enabling you to add functionality to any type —
-even types you don’t control — with the brevity and auto-complete experience
-of regular method calls.
+enabling you to add functionality to any type—even types you don’t control—with
+the brevity and auto-complete experience of regular method calls.
 Because the tech preview for this feature was in 2.6,
 you can use extension methods without warnings if you
 specify 2.6.0 or a later release as the lower SDK constraint.
@@ -229,6 +228,45 @@ For details, see the [Dart 2.15 announcement][].
 
 Dart 2.16 didn’t add any features to the Dart language.
 
+### Dart 2.17
+
+Dart 2.17 expanded enum functionality with enhanced enums.
+Enhanced enums allow enum declarations to define members 
+including fields, constructors, methods, getters, etc.
+For more information, see the
+[Enhanced enums][] section of the language tour.
+
+[Enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+
+Dart 2.17 also added support for super-initializer parameters in constructors.
+Super parameters allow you
+to avoid having to manually pass each parameter
+into the super invocation of a non-redirecting constructor.
+You can instead use super parameters to forward parameters
+to a superclass constructor.
+For more information, 
+see the language tour's documentation of [super parameters][].
+
+[super parameters]: /guides/language/language-tour#super-parameters
+
+Dart 2.17 also removed some restrictions on named arguments.
+Named arguments can now be freely interleaved with positional arguments.
+The following code was invalid before 2.17,
+but is now allowed:
+
+```dart
+void main() {
+  test(skip: true, 'A test description', () {
+    // Very long function body here...
+  });
+}
+```
+
+To learn more about named parameters and arguments, see the
+[Named parameters][] section of the language tour.
+
+[Named parameters]: /guides/language/language-tour#named-parameters
+
 
 ## Language versioning
 
@@ -242,16 +280,14 @@ when Dart introduces an incompatible feature like [null safety][].
 Code that used to compile cleanly before null safety
 (but perhaps crash at runtime)
 might no longer compile once null safety is enabled.
-Because migrating your apps and packages
-— and all the packages they depend on —
-to null safety might take a while,
+Because migrating your apps and packages—and all the packages they depend on—to
+null safety might take a while,
 Dart uses language versioning to support
 using non-null-safe code alongside null-safe code.
-
-{% comment %}
-  Once /null-safety/migrating-to-null-safety exists,
-  the previous paragraph should link to it.
-{% endcomment %}
+For an example of how an app or package can migrate to
+a new language version
+with an incompatible feature (null safety, for example), see 
+[Migrating to null safety](/null-safety/migration-guide).
 
 Each package has a default language version,
 equal to the `<major>.<minor>` part of the
@@ -295,9 +331,8 @@ implies the following:
 ### Per-library language version selection
 
 By default, every Dart file
-in a package uses the same language version —
-the language version indicated by
-the lower SDK constraint in the pubspec.
+in a package uses the same language version—the language version
+indicated by the lower SDK constraint in the pubspec.
 Sometimes, however, a Dart file
 might need to use an older language version.
 For example,
@@ -342,7 +377,7 @@ For more information about how language versioning works, see the
 [Dart FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
-[`flutter` tool]: {{site.flutter_docs}}/reference/flutter-cli
+[`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language tour]: /guides/language/language-tour
