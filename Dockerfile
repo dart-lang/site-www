@@ -111,9 +111,8 @@ RUN npm install
 
 COPY ./ ./
 
-# Get root packages after full copy
-# See https://registry.hub.docker.com/r/google/dart/
-RUN dart pub get
+# Ensure packages are still up-to-date if anything has changed
+RUN dart pub get --offline
 
 # Let's not play "which dir is this"
 ENV BASE_DIR=/app
