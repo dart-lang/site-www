@@ -141,7 +141,9 @@ i.fa-external-link-alt {
 
   .footer-social-links {
     a {
-      margin-left: 16px;
+      &:not(:first-child) {
+        margin-left: 16px;
+      }
 
       svg {
         height: 32px;
@@ -166,6 +168,10 @@ i.fa-external-link-alt {
 
     @media(max-width: 768px) {
       margin-top: 12px;
+
+      li:first-child {
+        margin-left: 0;
+      }
     }
   }
 
