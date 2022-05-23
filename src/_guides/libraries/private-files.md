@@ -103,7 +103,7 @@ similar to Ruby's `Gemfile.lock`.
 Regenerating the `pubspec.lock` file lets you test your package
 against the latest compatible versions of its dependencies.
 
-**For application packages**, we recommend that you
-**commit** the `pubspec.lock` file.
-Saving `pubspec.lock` ensures that everyone working on the app
-uses the exact same versions.
+**For application packages**, we recommend that you commit
+the `pubspec.lock` file.
+Saving `pubspec.lock` will track the dependencies in production or
+development, it can help you locate problems due to dependency changes.
