@@ -57,6 +57,10 @@ body.homepage .cookie-notice {
       
       a {
         color: $site-color-card-link;
+
+        &:hover {
+          color: darken($site-color-card-link, 20%);
+        }
       }
     }
   }
