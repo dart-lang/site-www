@@ -58,7 +58,7 @@ body.homepage .cookie-notice {
       a {
         color: $site-color-card-link;
 
-        &:hover {
+        &:hover, &:focus, &:active {
           color: darken($site-color-card-link, 20%);
         }
       }
