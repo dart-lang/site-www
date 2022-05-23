@@ -45,7 +45,7 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------|-------------------------------|
 | [`dart:ffi`][dart-ffi], [`package:ffi`][package-ffi]<br>A foreign function interface that lets Dart code use native C APIs.<br>`package:ffi` contains utilities incl. support for converting Dart strings and C strings. | |
 | [`dart:io`][dart-io], [`package:io`][package-io]<br>File, socket, HTTP, and other I/O support for non-web applications.<br>`package:io` provides additional utilities. | |
-| [`dart:isolate`][dart-isolate], [`package:io`][package-io]<br> Concurrent programming using isolates: independent workers similar to threads.<br>`package:isolate` provides additional utilities. | |
+| [`dart:isolate`][dart-isolate], [`package:isolate`][package-isolate]<br> Concurrent programming using isolates: independent workers similar to threads.<br>`package:isolate` provides additional utilities. | |
 | [`dart:mirrors`][dart-mirrors]<br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT only (_not_&nbsp;Flutter) |
 {:.table .table-striped}
 </div>
