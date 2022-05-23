@@ -24,7 +24,7 @@ The following table lists the Dart core libraries that work on all
 |-----------------------------------------------+-------------------------------|
 | Library                                       | Notes   |
 |-----------------------------------------------|-------------------------------|
-| [`dart:core`][dart-core]                <br>Built-in types, collections, and other core functionality for every Dart program. | |
+| [`dart:core`][dart-core]<br>Built-in types, collections, and other core functionality for every Dart program. | |
 | [`dart:async`][dart-async], [`package:async`][package-async]<br>Support for asynchronous programming, with classes such as Future and Stream.<br>`package:async` provides additional utilities. | |
 | [`dart:collection`][dart-collection], [`package:collection`][package-collection]<br>Classes and utilities that supplement the collection support in `dart:core`.<br>`package:collection` provides additional utilities.| |
 | [`dart:convert`][dart-convert], [`package:convert`][package-convert]<br>Encoders and decoders for converting between different data representations, including JSON and UTF-8.<br>`package:convert` provides additional encoders and decoders.||
@@ -45,7 +45,7 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------|-------------------------------|
 | [`dart:ffi`][dart-ffi], [`package:ffi`][package-ffi]<br>A foreign function interface that lets Dart code use native C APIs.<br>`package:ffi` contains utilities incl. support for converting Dart strings and C strings. | |
 | [`dart:io`][dart-io], [`package:io`][package-io]<br>File, socket, HTTP, and other I/O support for non-web applications.<br>`package:io` provides additional utilities. | |
-| [`dart:isolate`][dart-isolate], [`package:isolate`][package-isolate]<br> Concurrent programming using isolates: independent workers similar to threads.<br>`package:isolate` provides additional utilities. | |
+| [`dart:isolate`][dart-isolate]<br> Concurrent programming using isolates: independent workers similar to threads. | |
 | [`dart:mirrors`][dart-mirrors]<br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT only (_not_&nbsp;Flutter) |
 {:.table .table-striped}
 </div>
