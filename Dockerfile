@@ -112,7 +112,8 @@ RUN npm install
 COPY ./ ./
 
 # Ensure packages are still up-to-date if anything has changed
-RUN dart pub get --offline
+# RUN dart pub get --offline
+RUN dart pub get
 
 # Let's not play "which dir is this"
 ENV BASE_DIR=/app
