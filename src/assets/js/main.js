@@ -156,7 +156,7 @@ function initCookieNotice() {
   agreeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     Cookies.set(cookieKey, cookieConsentValue);
-    notice.classList.remove(activeClass)
+    notice.classList.remove(activeClass);
   });
 }
 
