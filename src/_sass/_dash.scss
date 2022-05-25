@@ -298,6 +298,10 @@ $dash-dartpad-border: #293542;
   }
 }
 
+.dash-dartpad-row {
+  background-color: $dash-callout;
+}
+
 .dash-dartpad {
   flex: 1;
 
@@ -306,9 +310,9 @@ $dash-dartpad-border: #293542;
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
+  height: 102vh;
   padding: 32px;
-  margin-block-end: 50px;
+  margin-block-end: 48px;
 
   background-color: $dash-callout;
 
