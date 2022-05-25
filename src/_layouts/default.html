@@ -2,6 +2,7 @@
 <html>
   {% include head.html %}
   <body class="{{page.layout}}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
+    {% include cookie-notice.html %}
     {% include gtags.html %}
     {% include page-header.html %}
     {% include navigation-side.html %}
@@ -24,5 +25,6 @@
       </article>
     </main>
     {% include page-footer.html %}
+   
   </body>
 </html>
