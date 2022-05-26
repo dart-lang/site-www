@@ -103,7 +103,10 @@ similar to Ruby's `Gemfile.lock`.
 Regenerating the `pubspec.lock` file lets you test your package
 against the latest compatible versions of its dependencies.
 
-**For application packages**, we recommend that you
-**commit** the `pubspec.lock` file.
-Saving `pubspec.lock` ensures that everyone working on the app
-uses the exact same versions.
+**For application packages**, 
+we recommend that you commit the `pubspec.lock` file.
+Versioning the `pubspeck.lock` file
+ensures changes to transitive dependencies are explicit.
+Each time the dependencies change due to `dart pub upgrade`
+or a change in `pubspec.yaml` 
+the difference will be apparent in the lock file.
