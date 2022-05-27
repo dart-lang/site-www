@@ -2122,7 +2122,7 @@ are attempted on that null object.
 querySelector('#confirm') // Get an object.
   ?..text = 'Confirm' // Use its members.
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'));
+  ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
