@@ -138,7 +138,6 @@ function setPopovers(root, viewport) {
 
 /**
  * Activate the cookie notice footer
- * @returns null
  */
 function initCookieNotice() {
   const notice = document.getElementById('cookie-notice');
