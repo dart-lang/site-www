@@ -18,13 +18,15 @@ void main() {
   button?.text = 'Confirm';
   button?.classes.add('important');
   button?.onClick.listen((e) => window.alert('Confirmed!'));
+  button?.scrollIntoView();
   // #enddocregion query-without-cascades
 
   // #docregion query-with-cascades
   querySelector('#confirm')
     ?..text = 'Confirm'
     ..classes.add('important')
-    ..onClick.listen((e) => window.alert('Confirmed!'));
+    ..onClick.listen((e) => window.alert('Confirmed!'))
+    ..scrollIntoView();
   // #enddocregion query-with-cascades
 }
 

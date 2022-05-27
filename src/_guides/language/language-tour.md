@@ -2081,8 +2081,8 @@ String playerName(String? name) {
 ### Cascade notation
 
 Cascades (`..`, `?..`) allow you to make a sequence of operations
-on the same object. In addition to function calls,
-you can also access fields on that same object.
+on the same object. In addition to accessing instance members,
+you can also call instance methods on that same object.
 This often saves you the step of creating a temporary variable and
 allows you to write more fluid code.
 
@@ -2112,10 +2112,6 @@ paint.strokeCap = StrokeCap.round;
 paint.strokeWidth = 5.0;
 ```
 
-{% comment %}
-[TODO #2950: make sure `?..` is covered in /null-safety]
-{% endcomment %}
-
 If the object that the cascade operates on can be null,
 then use a _null-shorting_ cascade (`?..`) for the first operation.
 Starting with `?..` guarantees that none of the cascade operations
@@ -2127,6 +2123,7 @@ querySelector('#confirm') // Get an object.
   ?..text = 'Confirm' // Use its members.
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
+  ..scrollIntoView();
 ```
 
 {{site.alert.version-note}}
@@ -2141,6 +2138,7 @@ var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
 ```
 
 You can also nest cascades. For example:

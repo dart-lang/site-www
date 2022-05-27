@@ -641,6 +641,7 @@ var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
 ```
 
 To instead use cascades, 
@@ -655,7 +656,8 @@ and makes the `button` variable unnecessary:
 querySelector('#confirm')
   ?..text = 'Confirm'
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'));
+  ..onClick.listen((e) => window.alert('Confirmed!'))
+  ..scrollIntoView();
 ```
 
 ### Code example
