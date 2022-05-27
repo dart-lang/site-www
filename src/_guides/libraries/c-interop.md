@@ -76,12 +76,13 @@ Hello World
 ```
 
 {{site.alert.info}}
-  **On macOS,** the Dart VM (`dart`) can load only **signed libraries.**
-  For details and workarounds,
-  see [SDK issue #38314.][38314]
+  **On macOS,** executables, including the Dart VM (`dart`),
+  can load only **signed libraries.**
+  For more information on signing libraries, 
+  see Apple's [Code Signing Guide.][codesign]
 {{site.alert.end}}
 
-[38314]: https://github.com/dart-lang/sdk/issues/38314
+[codesign]: https://developer.apple.com/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
   
 
 ### Using dart:ffi
