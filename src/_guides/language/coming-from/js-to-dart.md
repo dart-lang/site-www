@@ -890,7 +890,7 @@ their behavior is different.
 
 JavaScript's `for-in` loop iterates over an object's properties,
 so to iterate over an iterable object's elements,
-you must instead `for-of` or `Array.forEach()`
+you must instead `for-of` or `Array.forEach()`.
 Dart's `for-in` loop does this natively.
 
 The following example shows iterating
