@@ -55,6 +55,8 @@ and web development tools have changed.
 
 How to migrate your code depends on how old your code is
 and what platforms it runs on.
+For help with migrating web apps,
+see [Migrating web apps](#web-migration).
 If you're migrating a Flutter app,
 consult the [breaking change notification.][Leaf's email]
 If you publish packages,
