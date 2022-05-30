@@ -80,7 +80,6 @@ jobs:
     permissions:
       checks: write
       pull-requests: write
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -96,7 +95,11 @@ jobs:
         with:
           sdk: stable
       - run: tool/check-links.sh
-      - uses: FirebaseExtended/action-hosting-deploy@3a02c012c6a9b183828eeb456247327a894fc698
+      - name: Stage site on Firebase
+        if: ${{ 
+          github.event.pull_request.head.repo.full_name == github.repository
+          github.event.pull_request.user.login != 'dependabot[bot]' }}
+        uses: FirebaseExtended/action-hosting-deploy@3a02c012c6a9b183828eeb456247327a894fc698
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
