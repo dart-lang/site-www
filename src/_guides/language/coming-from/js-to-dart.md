@@ -883,7 +883,7 @@ although some have additional uses when it comes
 to collections
 (discussed in more detail in the [Collections](#collections) section).
 
-#### Loops
+#### Iteration
 
 While both JavaScript and Dart have `for-in` loops,
 their behavior is different.
