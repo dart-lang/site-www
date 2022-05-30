@@ -117,7 +117,7 @@ you need to first update your tool usage
 as described in [Tools](#tools).
 
 You'll also need to make the following changes
-to the `<script>` elements including your Dart code:
+to the `<script>` elements referencing your compiled Dart code:
 
 - Drop <del>`<script defer src="packages/browser/dart.js"></script>`</del>
 - Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
