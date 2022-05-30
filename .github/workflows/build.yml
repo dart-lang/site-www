@@ -97,7 +97,7 @@ jobs:
       - run: tool/check-links.sh
       - name: Stage site on Firebase
         if: ${{ 
-          github.event.pull_request.head.repo.full_name == github.repository
+          github.event.pull_request.head.repo.full_name == github.repository &&
           github.event.pull_request.user.login != 'dependabot[bot]' }}
         uses: FirebaseExtended/action-hosting-deploy@3a02c012c6a9b183828eeb456247327a894fc698
         with:
