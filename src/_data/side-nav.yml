@@ -292,10 +292,6 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /dart-2
-        - title: Migrating web apps to Dart&nbsp;2
-          permalink: /web/dart-2
-        - title: Obsolete pub features
-          permalink: /tools/pub/obsolete
     - title: Videos
       permalink: /resources/videos
 
