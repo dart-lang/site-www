@@ -19764,3 +19764,5 @@ Iterable<String> get zero sync* {
   yield '0';
 }
 {% endprettify %}
+
+[C interop using dart:ffi]: /guides/libraries/c-interop
