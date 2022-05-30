@@ -59,10 +59,9 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------+-------------------------------|
 | Library                                       | Notes   |
 |-----------------------------------------------|-------------------------------|
-| [`dart:html`][dart-html], [`package:html`][package-html]<br>HTML elements and other resources for web-based applications.<br>`package:html` provides an HTML parser. | |
+| [`dart:html`][dart-html]<br>HTML elements and other resources for web-based applications. | |
 | [`dart:indexed_db`][dart-indexed_db]<br>Client-side key-value store with support for indexes. | |
-| [`dart:js`][dart-js], [`package:js`][package-js]<br>_Don't use `dart:js` directly._ Instead, use the `package:js`, as described in [JavaScript interoperability][]. | Direct use of `dart:js` is *deprecated* |
-| [`dart:js_util`][dart-js_util]<br>APIs to supplement missing functionality in `dart:html` or the `js` package. | |
+| [`dart:js`][dart-js], [`dart:js_util`][dart-js_util], [`package:js`][package-js]<br>`dart:js_util` provides low-level primitives for interoperability; typically the higher-level annotations in `package:js` are recommended, as they help express interoperability more succinctly. _Don't use `dart:js` directly; direct use of those legacy APIs is *deprecated*. For more details see [JavaScript interoperability][]. | |
 | [`dart:svg`][dart-svg]<br>Scalable Vector Graphics. | |
 | [`dart:web_audio`][dart-web_audio]<br>High-fidelity audio programming in the browser. | |
 | [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser. | |
@@ -101,7 +100,6 @@ Native platform libraries
 Web platform libraries
 -->
 [dart-html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[package-html]: {{site.pub-pkg}}/html
 [dart-indexed_db]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
 [dart-js]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/dart-js-library.html
 [package-js]: {{site.pub-pkg}}/js
