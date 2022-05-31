@@ -883,6 +883,35 @@ although some have additional uses when it comes
 to collections
 (discussed in more detail in the [Collections](#collections) section).
 
+#### Iteration
+
+While both JavaScript and Dart have `for-in` loops,
+their behavior is different.
+
+JavaScript's `for-in` loop iterates over an object's properties,
+so to iterate over an iterable object's elements,
+you must instead `for-of` or `Array.forEach()`.
+Dart's `for-in` loop does this natively.
+
+The following example shows iterating
+over a collection and printing out each element:
+
+_Dart_
+```dart
+for (final element in list) {
+  print(element)
+}
+```
+
+_JavaScript_
+```js
+for (const element of list) {
+  console.log(element);
+}
+```
+
+#### Switch
+
 {{site.alert.note}}
   One key difference with the `switch` statement
   in JavaScript and Dart: when a case has no `break`,
