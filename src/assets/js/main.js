@@ -138,10 +138,9 @@ function setPopovers(root, viewport) {
 
 /**
  * Activate the cookie notice footer
- * @returns null
  */
 function initCookieNotice() {
-  const notice = document.querySelector('.cookie-notice');
+  const notice = document.getElementById('cookie-notice');
   const agreeBtn = document.getElementById('cookie-consent');
   const cookieKey = 'dart-site-cookie-consent';
   const cookieConsentValue = 'true'
@@ -155,7 +154,7 @@ function initCookieNotice() {
 
   agreeBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue);
+    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
     notice.classList.remove(activeClass);
   });
 }

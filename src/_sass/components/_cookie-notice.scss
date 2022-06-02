@@ -1,4 +1,4 @@
-.cookie-notice {
+#cookie-notice {
   background-color: white;
   padding: 2.5rem 0 !important;
   position: fixed;
@@ -48,7 +48,7 @@
   }
 }
 
-body.homepage .cookie-notice {
+body.homepage #cookie-notice {
   background-color: $site-color-dark-background;
 
   .container {
