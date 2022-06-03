@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, duplicate_import
 // #docregion
 library peg_parser.source_scanner;
 
