@@ -969,6 +969,7 @@ Unless you *do* want users to call the setter, it's better to pick one of the
 following solutions:
 
 * Don't use `late`.
+* Use a factory constructor to compute the `final` field values.
 * Use `late`, but initialize the `late` field at its declaration.
 * Use `late`, but make the `late` field private and define a public getter for it.
 
