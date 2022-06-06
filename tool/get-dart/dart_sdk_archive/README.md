@@ -17,4 +17,4 @@ webdev serve
 
 ## Publishing
 
-See `../archive/_README.md`
+See `../archive/README.md`
