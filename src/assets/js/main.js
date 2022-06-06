@@ -185,7 +185,7 @@ $(function() {
   });
 
   // Remove open_menu when switched back to normal sidenav
-  window.addEventListener("resize", function(e) {
+  $(window).smartresize((e) => {
     if (document.body.clientWidth > 1025) {
       document.body.classList.remove('open_menu');
     }
@@ -201,7 +201,7 @@ $(function() {
     });
   }
 
-  $(window).smartresize(fixNav());
+  $(window).smartresize(fixNav);
 
   // Add external link indicators
   $('a[href^="http"], a[target="_blank"]').not('.no-automatic-external').addClass('external');
