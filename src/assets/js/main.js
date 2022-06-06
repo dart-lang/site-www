@@ -184,6 +184,13 @@ $(function() {
     $(document.body).toggleClass('open_menu');
   });
 
+  // Remove open_menu when switched back to normal sidenav
+  window.addEventListener("resize", function(e) {
+    if (document.body.clientWidth > 1025) {
+      document.body.classList.remove('open_menu');
+    }
+  });
+
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
   for (var i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
