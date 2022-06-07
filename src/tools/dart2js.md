@@ -166,9 +166,8 @@ The following options control the analysis that dart2js performs on Dart code:
 `--dump-info`
 : Generates a file (with the suffix `.info.json`)
   that contains information about the generated code.
-  You can inspect the generated file with the
-  [Dump Info Visualizer.](https://github.com/dart-lang/dump-info-visualizer)
-
+  You can inspect the generated file with tools in
+  [dart2js_info](/go/dart2js-info).
 
 ## Helping dart2js generate better code {#helping-dart2js-generate-efficient-code}
 
