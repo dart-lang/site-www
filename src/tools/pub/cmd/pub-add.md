@@ -39,8 +39,8 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 The options given will apply to all the packages added in an invocation. For
-example `dart pub add test http --dev` will add both package:test and package
-http as dev-dependencies.
+example `dart pub add test http --dev` will add both package:test and
+package:http as dev-dependencies.
 
 ### `-d, --dev`
 
