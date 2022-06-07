@@ -167,7 +167,7 @@ The following options control the analysis that dart2js performs on Dart code:
 : Generates a file (with the suffix `.info.json`)
   that contains information about the generated code.
   You can inspect the generated file with tools in
-  [dart2js_info](https://github.com/dart-lang/sdk/tree/main/pkg/dart2js_info).
+  [dart2js_info](/go/dart2js-info).
 
 ## Helping dart2js generate better code {#helping-dart2js-generate-efficient-code}
 
