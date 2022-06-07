@@ -253,16 +253,23 @@ To change the automatically generated list of supported platforms,
 
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
-To allow or disallow other people to upload versions,
-transfer the package to a [verified publisher][] or
-manage authorized uploaders on the admin page for the package:
+
+To allow or disallow other people to upload versions, either:
+
+* manage authorized uploaders on the admin page for the package:
 `https://pub.dev/packages/<package>/admin`.
+
+* transfer the package to a [verified publisher][];
+all members of the publisher are authorized to upload.
+
+## Locating the package publisher
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
-Otherwise, the page displays the email addresses of
-the authorized uploaders for the package.
 
+For packages published without a publisher,
+the publisher is not disclosed for privacy reasons
+(the Publisher field just says "unverified uploader").
 
 ## Publishing prereleases
 
