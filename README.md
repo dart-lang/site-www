@@ -48,7 +48,8 @@ Install the following tools, if you don't have them already:
   and setup might not work if you use another shell.
 
 - **GNU Make**. 
-  On Windows the easiest way to install Make is `choco install make`. 
+  On Windows the easiest way to install Make is `choco install make`
+  using command prompt or powershell as an admin. 
   Other options include using a [subsystem][wsl].
 
 - **Docker**. 
