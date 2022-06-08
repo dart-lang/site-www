@@ -1,4 +1,4 @@
-FROM ruby:3-slim-bullseye as base
+FROM ruby:3-slim-bullseye@sha256:fd04845e99c1370b5bd56e0c703cdd4f8d20e7f896ec122a1b5b51d4da66c7aa as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -106,7 +106,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools
+RUN npm install -g firebase-tools@11.0.1
 RUN npm install
 
 COPY ./ ./
@@ -169,7 +169,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools
+RUN npm install -g firebase-tools@11.0.1
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default
