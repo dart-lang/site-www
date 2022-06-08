@@ -256,11 +256,11 @@ the first and only person authorized to upload additional versions of that packa
 
 To allow or disallow other people to upload versions, either:
 
-* manage authorized uploaders on the admin page for the package:
-`https://pub.dev/packages/<package>/admin`.
+* Manage authorized uploaders on the admin page for the package:
+  `https://pub.dev/packages/<package>/admin`.
 
-* transfer the package to a [verified publisher][];
-all members of the publisher are authorized to upload.
+* Transfer the package to a [verified publisher][];
+  all members of a publisher are authorized to upload.
 
 ## Locating the package publisher
 
