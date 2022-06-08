@@ -6,13 +6,14 @@ description: Use dart pub add to add a dependency.
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```nocode
-$ dart pub add <package>[:<constraint>] [options]
+$ dart pub add <package>[:<constraint>] [<package2>[:<constraint2>]... ] [options]
 ```
 
-This command adds the specified package to the pubspec as a dependency,
-and then gets the dependency.
+This command adds the specified packages to the pubspec as dependencies, 
+and then gets the dependencies.
+
 For example, the following command is equivalent to
-editing `pubspec.yaml` to add the `http` package,
+editing `pubspec.yaml` to add the `http` package, 
 and then calling `dart pub get`:
 
 ```terminal
@@ -37,6 +38,14 @@ $ dart pub add --dev test
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+{{site.alert.note}}
+  Any specified options will apply to all the packages
+  included in an invocation of the command.
+  For example, `dart pub add test http --dev` 
+  will add both the `test` and `http` packages 
+  as dev dependencies.
+{{site.alert.end}}
 
 ### `-d, --dev`
 
