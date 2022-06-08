@@ -9,6 +9,9 @@ This page tells you how to create a package,
 with a focus on the most common kind of package,
 [_library_ packages](/tools/pub/glossary#library-package).
 
+Create library package is easy to run `dart create -t package [YOUR_PACKAGE_NAME]`,
+For more details you can read [dart create](/tools/dart-create)
+
 {% comment %}
 TODO: Add coverage of packages that contain tools.
 {% endcomment %}
