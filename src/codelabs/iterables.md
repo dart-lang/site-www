@@ -1079,14 +1079,18 @@ const input = [
   'cal@gmail.com',
 ];
 
+const correctInput = ['dash@gmail.com', 'sparky@gmail.com'];
+
 bool isValidEmailAddress(EmailAddress email) {
   return email.address.contains('@');
 }
 
 void main() {
   Iterable<EmailAddress> emails;
+  Iterable<EmailAddress> correctEmails;
   try {
     emails = parseEmailAddresses(input);
+    correctEmails = parseEmailAddresses(correctInput);
     if (emails.isEmpty) {
       _result(false, [
         'Tried running `parseEmailAddresses`, but received an empty list.'
@@ -1117,7 +1121,14 @@ void main() {
     final out = anyInvalidEmailAddress(emails);
     if (!out) {
       _result(false, [
-        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! There is at least one invalid address.'
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with at least one invalid address.'
+      ]);
+      return;
+    }
+    final falseOut = anyInvalidEmailAddress(correctEmails);
+    if (falseOut) {
+      _result(false, [
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with all valid addresses.'
       ]);
       return;
     }
