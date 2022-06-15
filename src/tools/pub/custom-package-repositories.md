@@ -3,16 +3,17 @@ title: Custom package repositories
 description: "How Dart's package management tool, pub, works with custom package repositories."
 ---
 
-The `pub` tool has support for third-party package repositories. A package
+The `dart pub` tool has support for third-party package repositories. A package
 repository is an HTTP server from which the `pub` client can fetch packages.
 The official package repository is [pub.dev]({{site.pub}}), this repository
-is by the `pub` tool by default. A package repository is identified by a
-_hosted-url_ (e.g. `https://pub.example.com/my-account/`). 
+is by the `dart pub` tool by default. A package repository is identified by a
+_hosted-url_ (e.g. `https://dart-packages.example.com/my-account/`). 
 
-Third-party package servers can be useful for hosting private packages. It is
-also common to use [git-dependencies](/tools/pub/dependencies#git-packages) for hosting
-private packages, however, the `pub` does not support resolving versions against
-a git-repository it just fetches a specific revision of the git-repository.
+Third-party package servers can be useful for hosting private packages. 
+It is also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
+for hosting private packages, however, 
+the `dart pub` tool does not support resolving versions against
+a git-repository it just fetches a specific revision of the git repository.
 Hence, when many people are collaborating it is sometimes preferable to use a
 private package repository.
 
@@ -23,34 +24,71 @@ private package repository.
 
 ## Authenticating with a custom package repository
 
-Custom package servers are often private and require authentication. The `pub`
-tool authenticates against package repositories by attaching a secret token to
-the requests. When the `pub` tool does not have a token for a given
-_hosted-url_ it will attempt to make requests without authentication.
+Most custom package repositories are
+private package repositories that require authentication.
+To authenticate against custom package repositories,
+the `dart pub` tool attaches a secret token to the requests.
 
-To specify a secret token for the `pub` tool to use with a given _hosted-url_,
-use the `dart pub token add <hosted-url>` command.
+You can obtain the secret token from your custom package repository
+and either specify it manually or through an environment variable.
+To manually specify the secret token,
+use the `dart pub token add` command
+which prompts for the token:
+
+```terminal
+$ dart pub token add https://dart-packages.example.com
+Enter secret token: [enter secret token]
+Requests to "https://dart-packages.example.com" will now be authenticated using the secret token.
+```
+
+You can also tell `dart pub` to read the token from an environment variable,
+including in a CI environment, with the `--env-var` flag:
+
+```terminal
+$ dart pub token add https://dart-packages.example.com --env-var MY_SECRET_TOKEN
+Requests to "https://dart-packages.example.com" will now be authenticated using the secret token stored in the environment variable "MY_SECRET_TOKEN".
+```
+
+This ensures that `dart pub` doesn’t actually 
+store the secret token in its configuration, 
+instead it merely stores the fact that it
+should read the secret from the environment variable `$MY_SECRET_TOKEN`. 
+This reduces the risk that secrets are accidentally leaked
+if the execution environment is shared between CI jobs.
+
+{{site.alert.note}}
+  When the `pub` tool does not have a token for a given
+  repository URL it will attempt to make requests without authentication.
+{{site.alert.end}}
 
 
 ## Getting dependencies from a custom package repository
 
-To fetch a package from custom package repository we must specify the
-_hosted-url_ for the package in `pubspec.yaml`, using the syntax for
-[hosted packages](/tools/pub/dependencies#hosted-packages).
+To fetch a package from custom package repository,
+you must specify the _hosted-url_ for the package in `pubspec.yaml`, 
+using the syntax for [hosted packages](/tools/pub/dependencies#hosted-packages):
 
 ```yaml
 dependencies:
   foo:
-    hosted: https://pub.example.com
+    hosted: https://dart-packages.example.com
     version: ^1.4.0
 ```
 
-In the example above `package:foo` will be fetched from
-`https://pub.example.com`. If authentication is required by this package
-repository, it can be specified using
-`dart pub token add https://pub.example.com`, which will prompt for the secret
-token.
+In the example above `package:foo` 
+will be fetched from `https://dart-packages.example.com`. 
+If authentication is required by this package repository, 
+see [Authenticating with a custom package repository][]
+for more information on how to authenticate your requests.
 
+You can also use the `dart pub add` command
+with the `--hosted` flag to add a dependency from a custom package repository:
+
+```terminal
+$ dart pub add foo --hosted https://dart-packages.example.com
+```
+
+[Authenticating with a custom package repository]: #authenticating-with-a-custom-package-repository
 
 ### Using multiple package repositories
 
@@ -71,7 +109,7 @@ dependencies:
 This enables you to keep private packages on a private package repository
 while staying up-to-date with latest public dependencies. However, conflicts can
 easily arise if package `retry` requires `meta` from pub.dev, and `foo` requires
-`meta` from `https://pub.example.com`. Thus, if mirroing packages into a private
+`meta` from `https://pub.example.com`. Thus, if mirroring packages into a private
 package repository is it frequently necessary to also mirror all dependencies
 and either update the `dependencies` section in section in each package, or
 override the default package repository.
@@ -87,13 +125,15 @@ override the default package repository.
 
 ### Overriding the default package repository
 
-The package repository to be used can be specified on a per-dependency basis,
-or the default package repository can be overriden with the
+By default, dart pub get fetches dependencies from the pub.dev site
+unless the hosted-dependency syntax 
+is used to specify a custom package repository.
+However, it’s possible to override the default package repository using the 
 [`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
 
-This can be useful if you are mirroring all packages in a private package
-repository, or working in a restricted network environment using a mirror of
-[pub.dev]({{site.pub}}).
+This approach is particularly useful when mirroring
+all packages in a private package repository 
+or a subset of pub.dev when working in a restricted network environment.
 
 
 ## Publishing to a custom package repository
@@ -138,7 +178,7 @@ by the following vendors:
 </li>
 <li>
   <img src="/assets/img/tools/jfrog.svg" width="48" alt="JFrog logo">
-  <a href="https://jfrog.com/blog/how-to-use-pub-repositories-in-artifactory/"><b>JFrog Artifactory</b></a>
+  <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories"><b>JFrog Artifactory</b></a>
 </li>
 </ul>
 
