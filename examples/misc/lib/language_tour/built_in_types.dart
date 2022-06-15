@@ -6,7 +6,6 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     var x = 1;
     var hex = 0xDEADBEEF;
-    var exponent = 8e5;
     // #enddocregion integer-literals
   }
 
