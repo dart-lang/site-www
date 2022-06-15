@@ -620,7 +620,6 @@ defining integer literals:
 ```dart
 var x = 1;
 var hex = 0xDEADBEEF;
-var exponent = 8e5;
 ```
 
 If a number includes a decimal, it is a double. Here are some examples
