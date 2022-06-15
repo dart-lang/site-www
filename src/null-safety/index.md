@@ -39,6 +39,9 @@ see the [null safety codelab][Null safety codelab].
 For an in-depth discussion, see
 [Understanding null safety](/null-safety/understanding-null-safety).
 
+For cheatsheet, you may read [Null-aware operators](/codelabs/dart-cheatsheet#null-aware-operators),
+It will save you much more time to deal with Null check.
+
 
 ## Null safety principles
 
