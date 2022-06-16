@@ -389,15 +389,14 @@ Future<void> _readAndParseJson(SendPort p) async {
 
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
-Message passing between isolates normally involves data copying,
-and thus can be slow and increases linearly
-with the size of the message (`O(n)` in [big O notation][]).
+Message passing using `SendPort.send` normally involves data copying,
+and thus can be slow.
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time (`O(1)`).
+The sender will nonetheless perform a verification pass to ensure
+the objects are allowed to be transferred.
 
-[big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 
 {{site.alert.version-note}}
   `Isolate.exit()` was added in 2.15.
