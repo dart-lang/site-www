@@ -497,7 +497,6 @@ and loads the file.
 
 ```dart:run-dartpad:mode-html:height-480px:ga_id-using_getstring
 {$ begin main.dart $}
-import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
@@ -600,7 +599,6 @@ an HttpRequest object.
 
 ```dart:run-dartpad:mode-html:height-480px:ga_id-using_http_request
 {$ begin main.dart $}
-import 'dart:async';
 import 'dart:html';
 import 'dart:convert';
 
