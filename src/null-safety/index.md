@@ -42,6 +42,8 @@ For an in-depth discussion, see
 For cheatsheet, you may read [Null-aware operators](/codelabs/dart-cheatsheet#null-aware-operators),
 It will save you much more time to deal with Null check.
 
+Or you want to read [Working with nullable types](/null-safety/understanding-null-safety#working-with-nullable-types) for detail explain.
+
 
 ## Null safety principles
 
