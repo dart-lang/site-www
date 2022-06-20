@@ -85,7 +85,7 @@ but you'll need to adjust the instructions to match your app.
    $ dart pub get
    ```
 
-1. Compile and serve the app with dartdevc,
+1. Compile and serve the app in debug mode with dartdevc,
    using either your IDE or `webdev` at the command line.
 
    {{site.alert.note}}
@@ -105,8 +105,9 @@ but you'll need to adjust the instructions to match your app.
      $ webdev serve --debug-extension
      ```
 
-   * Otherwise, use the following command, which launches a new instance of
-     Chrome and runs the app:
+   * Otherwise, use the following command, 
+     which launches a new instance of Chrome
+     and runs the app:
 
      ```terminal
      $ webdev serve --debug
@@ -167,12 +168,10 @@ but you'll need to adjust the instructions to match your app.
 
 If you're using the command line instead of an IDE or Dart-enabled editor,
 then you need the [webdev tool][webdev].
-To use Dart DevTools, you also need the [devtools package.][devtools-pkg]
-Use pub to get these tools:
+Dart DevTools is provided by the SDK.
 
 ```terminal
 $ dart pub global activate webdev
-$ dart pub global activate devtools
 ```
 
 If your PATH environment variable is set up correctly,
@@ -192,7 +191,6 @@ update the tools by activating them again:
 
 ```terminal
 $ dart pub global activate webdev     # update webdev
-$ dart pub global activate devtools   # update devtools
 ```
 
 ## Resources
@@ -208,6 +206,7 @@ For more information, see the following:
 
 [Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
+[dartdevc]: /tools/dartdevc
 [Dart DevTools]: /tools/dart-devtools
 [IDE]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
