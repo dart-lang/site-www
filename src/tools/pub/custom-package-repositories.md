@@ -88,7 +88,7 @@ override the default package repository.
 ### Overriding the default package repository
 
 The package repository to be used can be specified on a per-dependency basis,
-or the default package repository can be overriden with the
+or the default package repository can be overridden with the
 [`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
 
 This can be useful if you are mirroring all packages in a private package
