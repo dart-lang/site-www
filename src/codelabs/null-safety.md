@@ -157,7 +157,6 @@ In the code below, try using conditional property access
 in the `stringLength` method to fix the error and
 to return the length of the string or `null` if it is `null`:
 
-<?code-excerpt "null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart:run-dartpad:ga_id-null-safety-conditional-property
 {$ begin main.dart $}
 int? stringLength(String? nullableString) {
@@ -238,7 +237,6 @@ In the code below, try using these operators
 to implement `updateStoredValue`
 following the logic outlined in its documentation comment:
 
-<?code-excerpt "null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart:run-dartpad:ga_id-null-safety-coalescing-operators
 {$ begin main.dart $}
 abstract class Store {
