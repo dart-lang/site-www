@@ -192,7 +192,7 @@ environment:
 [flutter pub upgrade]: {{site.flutter-docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-archive/dart2_fix
-[apiref]: {{site.dart_api}}/dev
+[apiref]: {{site.dart-api}}/dev
 [assert statements]: /guides/language/language-tour#assert
 [build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings

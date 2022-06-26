@@ -9,7 +9,7 @@ that provide low-level web APIs.
 You can supplement or replace these APIs using web packages.
 
 [Dart SDK]: /tools/sdk
-[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 
 
 ## SDK libraries
