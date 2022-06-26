@@ -88,7 +88,7 @@ class VersionSelector {
         selector += '[data-version="$selectedVersion"]';
       }
       _table
-          .querySelectorAll(selector + '[data-os="api"]')
+          .querySelectorAll('$selector[data-os="api"]')
           .classes
           .remove('hidden');
       if (selectedOs != 'all') {

@@ -73,7 +73,7 @@ class DartDownloads {
   }
 
   Stream<String> fetchVersionPaths(String channel) async* {
-    final prefix = p.join('channels', channel, _flavor) + '/';
+    final prefix = '${p.join('channels', channel, _flavor)}/';
 
     String? nextToken;
 
