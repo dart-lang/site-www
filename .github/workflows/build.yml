@@ -45,7 +45,6 @@ jobs:
 
   deploy:
     permissions:
-      checks: write
       pull-requests: write
     if: ${{ github.event_name == 'push' && 
             github.ref == 'refs/heads/main' && 
@@ -78,7 +77,6 @@ jobs:
 
   stage:
     permissions:
-      checks: write
       pull-requests: write
     needs: test
     runs-on: ubuntu-latest
