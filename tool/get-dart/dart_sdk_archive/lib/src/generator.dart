@@ -19,7 +19,7 @@ class SvnVersionGenerator {
     return result;
   }
 
-  Future _loadVersionInfo(
+  Future<void> _loadVersionInfo(
       Map<String, VersionInfo> versionInfos, String channel) async {
     final versionBaseNames = await _downloader
         .fetchVersionPaths(channel)

@@ -84,9 +84,9 @@ Use the following resources to learn more about testing Flutter apps:
 
 * [Testing Flutter Apps]({{site.flutter-docs}}/testing)<br>
   How to perform unit, widget, or integration tests on a Flutter app.
-* [flutter_test]({{site.flutter_api}}/flutter/flutter_test/flutter_test-library.html)<br>
+* [flutter_test]({{site.flutter-api}}/flutter/flutter_test/flutter_test-library.html)<br>
   A testing library for Flutter built on top of package:test.
-* [flutter_driver]({{site.flutter_api}}/flutter/flutter_driver/flutter_driver-library.html)<br>
+* [flutter_driver]({{site.flutter-api}}/flutter/flutter_driver/flutter_driver-library.html)<br>
   A testing library for testing Flutter applications on real devices and
   emulators (in a separate process).
 * [flutter_gallery](https://github.com/flutter/gallery)<br>

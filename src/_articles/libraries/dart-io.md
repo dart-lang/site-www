@@ -17,7 +17,7 @@ by going through a couple of examples.
 
 {{site.alert.note}}
   When writing a Flutter app, use
-  [Flutter-specific APIs]({{site.flutter_api}})
+  [Flutter-specific APIs]({{site.flutter-api}})
   instead of dart:io whenever possible. For example, use the
   [Flutter asset support]({{site.flutter-docs}}/development/ui/assets-and-images) to load
   images and other assets into your app.

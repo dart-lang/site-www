@@ -57,15 +57,13 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
 class SvnVersionInfo extends VersionInfo {
   final int revision;
 
-  SvnVersionInfo(Version version, DateTime date, String channel,
-      String revisionPath, this.revision)
-      : super(version, date, channel, revisionPath);
+  SvnVersionInfo(super.version, super.date, super.channel, super.revisionPath,
+      this.revision);
 }
 
 class GitVersionInfo extends VersionInfo {
   final String ref;
 
-  GitVersionInfo(Version version, DateTime date, String channel,
-      String revisionPath, this.ref)
-      : super(version, date, channel, revisionPath);
+  GitVersionInfo(
+      super.version, super.date, super.channel, super.revisionPath, this.ref);
 }
