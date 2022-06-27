@@ -403,4 +403,4 @@ also prevents errors from *accidentally* leaking out of your function.
 See the [Future API reference][Future class]
 for more information on Futures.
 
-[Future class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Future class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

@@ -71,7 +71,7 @@ A doc comment is any comment that appears before a declaration
 and uses the special `///` syntax that `dart doc` looks for.
 
 [`dart doc`]: /tools/dart-doc
-[docs]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
+[docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 
 ### DO use `///` doc comments to document members and types.
 

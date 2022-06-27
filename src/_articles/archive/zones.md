@@ -454,7 +454,7 @@ that works in asynchronous contexts.
 Use the `zoneSpecification` argument to `runZoned()`
 to override functionality that is managed by zones.
 The argument's value is a
-[ZoneSpecification]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html) object,
+[ZoneSpecification]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html) object,
 with which you can override any of the following functionality:
 
 * Forking child zones
@@ -751,10 +751,10 @@ that you can use for functionality such as profiling.
 
 Zone-related API documentation
 : Read the docs for
-  [runZoned()]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),
-  [Zone]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Zone-class.html),
-  [ZoneDelegate]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneDelegate-class.html), and
-  [ZoneSpecification]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html).
+  [runZoned()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),
+  [Zone]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Zone-class.html),
+  [ZoneDelegate]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneDelegate-class.html), and
+  [ZoneSpecification]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html).
 
 stack_trace
 : With the stack_trace library's

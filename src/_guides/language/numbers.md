@@ -499,5 +499,5 @@ provides strict 64-bit signed numbers, even on the web.
 Use these types with care, though:
 they often result in significantly bigger and slower code.
 
-[`BigInt`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html
+[`BigInt`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html
 [`fixnum`]: {{site.pub-pkg}}/fixnum

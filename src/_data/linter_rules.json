@@ -156,6 +156,15 @@
     "details": "**DO** reference all public properties in `debug` method implementations.\n\nImplementers of `Diagnosticable` should reference all public properties in\na `debugFillProperties(...)` or `debugDescribeChildren(...)` method\nimplementation to improve debuggability at runtime.\n\nPublic properties are defined as fields and getters that are\n\n* not package-private (e.g., prefixed with `_`)\n* not `static` or overriding\n* not themselves `Widget`s or collections of `Widget`s\n\nIn addition, the \"debug\" prefix is treated specially for properties in Flutter.\nFor the purposes of diagnostics, a property `foo` and a prefixed property\n`debugFoo` are treated as effectively describing the same property and it is\nsufficient to refer to one or the other.\n\n**BAD:**\n```dart\nclass Absorber extends Widget {\n  bool get absorbing => _absorbing;\n  bool _absorbing;\n  bool get ignoringSemantics => _ignoringSemantics;\n  bool _ignoringSemantics;\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('absorbing', absorbing));\n    // Missing reference to ignoringSemantics\n  }\n}  \n```\n\n**GOOD:**\n```dart\nclass Absorber extends Widget {\n  bool get absorbing => _absorbing;\n  bool _absorbing;\n  bool get ignoringSemantics => _ignoringSemantics;\n  bool _ignoringSemantics;\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('absorbing', absorbing));\n    properties.add(DiagnosticsProperty<bool>('ignoringSemantics', ignoringSemantics));\n  }\n}  \n```\n"
   },
   {
+    "name": "discarded_futures",
+    "description": "Don't invoke asynchronous functions in non-async blocks.",
+    "group": "errors",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "Making asynchronous calls in non-`async` functions is usually the sign of a\nprogramming error.  In general these functions should be marked `async` and such\nfutures should likely be awaited (as enforced by `unawaited_futures`).\n\n**DON'T** invoke asynchronous functions in non-`async` blocks.\n\n**BAD:**\n```dart\nvoid recreateDir(String path) {\n  deleteDir(path);\n  createDir(path);\n}\n\nFuture<void> deleteDir(String path) async {}\n\nFuture<void> createDir(String path) async {}\n```\n\n**GOOD:**\n```dart\nFuture<void> recreateDir(String path) async {\n  await deleteDir(path);\n  await createDir(path);\n}\n\nFuture<void> deleteDir(String path) async {}\n\nFuture<void> createDir(String path) async {}\n```\n"
+  },
+  {
     "name": "empty_statements",
     "description": "Avoid empty statements.",
     "group": "errors",
@@ -1968,6 +1977,15 @@
     "details": "\n**AVOID** `null` in null-aware assignment.\n\nUsing `null` on the right-hand side of a null-aware assignment effectively makes\nthe assignment redundant.\n\n**GOOD:**\n```dart\nvar x;\nx ??= 1;\n```\n\n**BAD:**\n```dart\nvar x;\nx ??= null;\n```\n\n"
   },
   {
+    "name": "unnecessary_null_aware_operator_on_extension_on_nullable",
+    "description": "Unnecessary null aware operator on extension on a nullable type",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "\nAvoid null aware operators for members defined in an extension on a nullable type.\n\n**BAD:**\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\nf(int? i) => i?.m();\n```\n\n**GOOD:**\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\nf(int? i) => i.m();\n```\n\n"
+  },
+  {
     "name": "unnecessary_null_checks",
     "description": "Unnecessary null checks.",
     "group": "style",
@@ -2068,6 +2086,15 @@
       "pedantic"
     ],
     "details": "\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DON'T** use `this` when not needed to avoid shadowing.\n\n**BAD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    this.value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(value) {\n    this.value = value;\n  }\n}\n```\n\n"
+  },
+  {
+    "name": "unnecessary_to_list_in_spreads",
+    "description": "Unnecessary toList() in spreads.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "\nUnnecessary `toList()` in spreads.\n\n**BAD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)).toList(),\n]\n```\n\n**GOOD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)),\n]\n```\n\n"
   },
   {
     "name": "use_colored_box",

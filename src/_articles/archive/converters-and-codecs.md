@@ -13,7 +13,7 @@ February 2014 (updated March 2015)_
 
 Converting data between different representations is a common task in computer
 engineering. Dart is no exception and comes with
-[dart:convert]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html), a
+[dart:convert]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html), a
 core library that provides a set of converters
 and useful tools to build new converters.
 Examples of converters provided by the library include those
@@ -64,7 +64,7 @@ As can be seen, codecs provide convenience methods such as `encode()` and
 method and `inverted` getter allow you to fuse converters and
 change the direction of a codec, respectively.
 The base implementation of
-[Codec]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Codec-class.html)
+[Codec]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Codec-class.html)
 for these two members
 provides a solid default implementation
 and implementers usually don’t need to worry about them.
@@ -72,7 +72,7 @@ and implementers usually don’t need to worry about them.
 The `encode()` and `decode()`
 methods, too, may be left untouched, but they can be extended for additional
 arguments. For example, the
-[JsonCodec]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html)
+[JsonCodec]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html)
 adds named arguments to `encode()` and `decode()`
 to make these methods more useful:
 
@@ -105,7 +105,7 @@ T convert(S input);  // where T is the target and S the source type.
 {% endprettify %}
 
 A minimal converter implementation only needs to extend the
-[Converter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Converter-class.html) class and
+[Converter]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Converter-class.html) class and
 implement the `convert()` method. Similar to the Codec class, converters can be
 made configurable by extending the constructors and adding named arguments to
 the `convert()` method.
@@ -114,11 +114,11 @@ Such a minimal converter works in synchronous settings, but
 does not work when used with chunks (either synchronously or asynchronously). In
 particular, such a simple converter doesn’t work as a transformer (one of the
 nicer features of Converters). A fully implemented converter implements the
-[StreamTransformer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)
+[StreamTransformer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)
 interface and can thus be given to the `Stream.transform()` method.
 
 Probably the most common use case is the decoding of UTF-8 with
-[utf8.decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec-class.html):
+[utf8.decoder]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec-class.html):
 
 {% prettify dart tag=pre+code %}
 File.openRead().transform(utf8.decoder).
@@ -129,7 +129,7 @@ File.openRead().transform(utf8.decoder).
 The concept of chunked conversions can be confusing, but at its core, it is
 relatively simple. When a chunked conversion (including a stream
 transformation) is started, the converter’s
-[startChunkedConversion]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Converter/startChunkedConversion.html)
+[startChunkedConversion]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Converter/startChunkedConversion.html)
 method is invoked with an output-
 sink as argument. The method then returns an input sink into which the caller
 puts data.
@@ -169,11 +169,11 @@ is currently (January 2014) implemented.
 
 Interestingly, the type of chunked conversion cannot be extrapolated from its
 synchronous conversion. For example, the
-[HtmlEscape]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/HtmlEscape-class.html)
+[HtmlEscape]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/HtmlEscape-class.html)
 converter synchronously
 converts Strings to Strings, and asynchronously converts chunks of Strings to
 chunks of Strings (String→String). The
-[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html)
+[LineSplitter]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html)
 converter synchronously
 converts Strings to List<String> (the individual lines). Despite the difference
 in the synchronous signature, the chunked version of the LineSplitter converter
@@ -209,17 +209,17 @@ useful case when used as a StreamTransformer.
 
 ### ChunkedConversionSink
 
-[ChunkedConversionSinks]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/ChunkedConversionSink-class.html)
+[ChunkedConversionSinks]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/ChunkedConversionSink-class.html)
 are used to add new data to a
 converter or as output from converters. The basic ChunkedConversionSink comes
 with two methods: `add()` and `close()`. These have the same functionality as in
 all other sinks of the system such as
-[StringSinks]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringSink-class.html)
+[StringSinks]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringSink-class.html)
 or
-[StreamSinks]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamSink-class.html).
+[StreamSinks]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamSink-class.html).
 
 The ChunkedConversionSinks semantics are similar to that of
-[IOSinks]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html):
+[IOSinks]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html):
 data added to the
 sink must not be modified unless it can be guaranteed that the data has been
 handled. For Strings this is not a problem (since they are immutable), but for
@@ -228,7 +228,7 @@ can be inefficient and the dart:convert library thus comes with subclasses of
 ChunkedConversionSink that support more efficient ways of passing data.
 
 For instance, the
-[ByteConversionSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/ByteConversionSink-class.html),
+[ByteConversionSink]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/ByteConversionSink-class.html),
 has the additional method
 
 `addSlice(List<int> chunk, int start, int end, bool isLast)`
@@ -397,7 +397,7 @@ the cost of allocating a new list for every chunk is killing performance
 (a reasonable assumption).
 
 We start by making the allocation cost cheaper: by using a
-[typed byte-list]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Uint8List-class.html)
+[typed byte-list]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Uint8List-class.html)
 we can reduce the size of the allocated list by a factor of 8 (on 64-bit
 machines). This one line change doesn’t remove the allocation, but makes it much
 cheaper.
