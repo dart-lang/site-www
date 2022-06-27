@@ -130,10 +130,11 @@ void main() {
 If a variable or expression is nullable,
 you can use [type promotion](#type-promotion) 
 to access the type's members,
-or you can also use null-aware operators to
+or you can use null-aware operators to
 handle nullable values.
 
-If based on the flow of the program you know the value isn't `null`
+If based on the flow of the program,
+you know the value of an expression isn't `null`,
 you can use the [null assertion operator](#the-null-assertion-operator-) (`!`),
 but that will throw an exception if the value is `null`.
 
