@@ -23,3 +23,5 @@ linter:
     - throw_in_finally
     - type_annotate_public_apis
     - unawaited_futures
+    - use_enums
+    - use_super_parameters
