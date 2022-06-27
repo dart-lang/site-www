@@ -247,14 +247,14 @@ Key classes include:
 
 | Dart class                                                                                                                               | Description                                               |
 |------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>         | Implements a DOM node.                                    |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>   | A subclass of Node; implements a web page element.        |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html" target="_blank" rel="noopener">Document</a> | Another subclass of Node; implements the document object. |
+| <a href="{{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>         | Implements a DOM node.                                    |
+| <a href="{{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>   | A subclass of Node; implements a web page element.        |
+| <a href="{{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html" target="_blank" rel="noopener">Document</a> | Another subclass of Node; implements the document object. |
 {: .table}
 
 The `dart:core` library, which is automatically imported,
 contains many other useful classes, such as:
-[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"},
+[`List`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"},
 a parameterized class that can specify the type of its members.
 An instance of `Element` keeps its list of child Element objects
 in a `List<Element>`.

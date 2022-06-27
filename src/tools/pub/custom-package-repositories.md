@@ -128,7 +128,7 @@ override the default package repository.
 By default, dart pub get fetches dependencies from the pub.dev site
 unless the hosted-dependency syntax 
 is used to specify a custom package repository.
-However, it’s possible to override the default package repository using the 
+However, it’s possible to override the default package repository using the
 [`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
 
 This approach is particularly useful when mirroring

@@ -1395,7 +1395,7 @@ need hash values to be stored in a `Set`.
   check out the [`hashCode`][] property page.
 {{site.alert.end}}
 
-[`hashCode`]: {{site.dart_api}}/dart-core/Object/hashCode.html
+[`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
 The following code snippet shows how to initialize a `Set`: 
 
@@ -1922,7 +1922,7 @@ creating streams from `Future`s or `Iterable`s,
 or for creating streams that emit values at a timed interval.
 For more information, check out the [`Stream`][] API page.
 
-[`Stream`]: {{site.dart_api}}/dart-async/Stream-class.html
+[`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
 ##### StreamController
 
@@ -1956,7 +1956,7 @@ stream.listen((int value) {
 });
 ```
 
-[`StreamController`]: {{site.dart_api}}/dart-async/StreamController-class.html
+[`StreamController`]: {{site.dart-api}}/dart-async/StreamController-class.html
 
 ##### Async generators
 

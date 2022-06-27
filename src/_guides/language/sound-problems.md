@@ -599,8 +599,8 @@ The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
-[cast()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/cast.html
-[Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[cast()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/cast.html
+[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [implicit casts]: /guides/language/analysis-options#enabling-additional-type-checks
-[List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [top type]: https://en.wikipedia.org/wiki/Top_type

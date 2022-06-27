@@ -497,7 +497,6 @@ and loads the file.
 
 ```dart:run-dartpad:mode-html:height-480px:ga_id-using_getstring
 {$ begin main.dart $}
-import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
@@ -600,7 +599,6 @@ an HttpRequest object.
 
 ```dart:run-dartpad:mode-html:height-480px:ga_id-using_http_request
 {$ begin main.dart $}
-import 'dart:async';
 import 'dart:html';
 import 'dart:convert';
 
@@ -779,19 +777,19 @@ void processResponse(String jsonString) {
 * [Using JSON](/guides/json)
 * [Asynchronous programming: futures, async, await](/codelabs/async-await)
 
-[dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
-[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
-[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[getString()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/getString.html
-[HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[HttpRequest@io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpRequest-class.html
-[json.decode()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/decode.html
-[json.encode()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/encode.html
-[LIElement]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html
-[onLoadEnd]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequestEventTarget/onLoadEnd.html
-[responseText]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/responseText.html
-[send()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/send.html
-[setRequestHeader()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/setRequestHeader.html
-[Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
+[dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[getString()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/getString.html
+[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[HttpRequest@io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpRequest-class.html
+[json.decode()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/decode.html
+[json.encode()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/encode.html
+[LIElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html
+[onLoadEnd]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequestEventTarget/onLoadEnd.html
+[responseText]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/responseText.html
+[send()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/send.html
+[setRequestHeader()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest/setRequestHeader.html
+[Uri]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html

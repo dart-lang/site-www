@@ -169,7 +169,7 @@ to keep the code simpler.
 An element is removed from
 the DOM when it is removed from its parent's list of children.
 The
-[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}class provides functions for finding an item in the list
+[`List`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}class provides functions for finding an item in the list
 and removing it.
 But, in this case,
 using the element's `remove()` function

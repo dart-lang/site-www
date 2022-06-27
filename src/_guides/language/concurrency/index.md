@@ -73,8 +73,8 @@ immediately returns an object of type `Future<String>`.
 At some point in the future,
 the `Future<String>` completes with either a string value or an error.
 
-[`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
-[`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
+[`readAsStringSync()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
+[`readAsString()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
 
 #### Why asynchronous code matters
@@ -293,7 +293,7 @@ It has its own memory and
 doesn’t share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
-[`send()` method]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
 
 ## Code examples
@@ -327,10 +327,10 @@ This example uses the following isolate-related API:
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
 
-[`Isolate.exit()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
 Here’s the code for the main isolate:
 
@@ -374,7 +374,7 @@ and then returns the result:
    the [`first`][] property is an easy way to get
    the single message that the worker isolate sends.
 
-[`first`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
+[`first`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
 
 The spawned isolate executes the following code:
 
@@ -389,15 +389,14 @@ Future<void> _readAndParseJson(SendPort p) async {
 
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
-Message passing between isolates normally involves data copying,
-and thus can be slow and increases linearly
-with the size of the message (`O(n)` in [big O notation][]).
+Message passing using `SendPort.send` normally involves data copying,
+and thus can be slow.
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time (`O(1)`).
+The sender will nonetheless perform a verification pass to ensure
+the objects are allowed to be transferred.
 
-[big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 
 {{site.alert.version-note}}
   `Isolate.exit()` was added in 2.15.
@@ -458,7 +457,7 @@ and the new isolate isn't in its spawner's isolate group.
 Another performance consequence is that message passing
 is slower when isolates are in different groups.
 
-[`Isolate.spawnUri()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
 {{ site.alert.info }}
   **Flutter note:**

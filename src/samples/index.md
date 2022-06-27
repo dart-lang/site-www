@@ -471,5 +471,5 @@ and the difference between `Error` and `Exception`.
 Many more code samples are in the
 [language tour](/guides/language/language-tour) and the
 [library tour](/guides/libraries/library-tour).
-Also see the [Dart API reference,]({{site.dart_api}})
+Also see the [Dart API reference,]({{site.dart-api}})
 which often contains examples.
