@@ -267,13 +267,13 @@ For more information about server-side and command-line app development, see the
 
 
 [library tour]: /guides/libraries/library-tour
-[dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
-[Directory]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
-[File]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html
-[HttpClient]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
-[HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[HttpServer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html
-[IOSink]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html
-[Process]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html
-[Socket]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
-[WebSocket]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/WebSocket-class.html
+[dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[Directory]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
+[File]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html
+[HttpClient]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
+[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[HttpServer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html
+[IOSink]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html
+[Process]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html
+[Socket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
+[WebSocket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/WebSocket-class.html

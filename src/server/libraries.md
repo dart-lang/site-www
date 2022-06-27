@@ -8,7 +8,7 @@ The [Dart SDK][] contains [dart:io][] and other libraries
 that provide low-level command-line & server APIs.
 
 [Dart SDK]: /tools/sdk
-[dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 
 ## SDK libraries
 

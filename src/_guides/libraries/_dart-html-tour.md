@@ -543,18 +543,18 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
-[AnchorElement]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
-[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
+[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [Dart Library Tour]: /guides/libraries/library-tour
-[Document]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
-[Element]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
-[HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[IndexedDB]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[MessageEvent]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
-[Nodes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
+[Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
+[Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
+[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[MessageEvent]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
+[Nodes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
 [URIs]: /guides/libraries/library-tour#uris
-[web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
-[WebGL]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
-[WebSocket]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html
+[web audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
+[WebGL]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
+[WebSocket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html
 [web library overview]: /web/libraries
-[Window]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Window-class.html
+[Window]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Window-class.html
