@@ -12,8 +12,8 @@ _hosted-url_ (e.g. `https://dart-packages.example.com/my-account/`).
 Third-party package servers can be useful for hosting private packages. 
 It is also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
 for hosting private packages, however, 
-the `dart pub` tool does not support resolving versions against
-a git-repository it just fetches a specific revision of the git repository.
+the `dart pub` tool doesn't support resolving versions against
+a git-repository; it just fetches a specific revision of the git repository.
 Hence, when many people are collaborating it is sometimes preferable to use a
 private package repository.
 
