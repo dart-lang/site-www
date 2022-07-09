@@ -35,7 +35,7 @@ Each node in the tree represents an item on the page.
 Each node in the tree keeps track of both
 its parent and its children.
 In Dart, the
-[`Node`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html){:target="_blank" rel="noopener"}
+[`Node`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html){:target="_blank" rel="noopener"}
 class contains the methods and properties
 that implement a node's tree functionality.
 
@@ -47,7 +47,7 @@ button elements, and so on.
 
 In Dart,
 elements are implemented by the
-[`Element`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html){:target="_blank" rel="noopener"}
+[`Element`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html){:target="_blank" rel="noopener"}
 class, which is a subclass of `Node`.
 Because the nodes you care about most are usually elements,
 this tutorial focuses on `Element`,
@@ -176,7 +176,7 @@ you would refer to its parent element with `anElement.parent`.
      alt="Dart code reference to anElement's parent">
 
 An `Element` object maintains references to its child elements in a list.
-[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}is a class in the dart:core library
+[`List`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}is a class in the dart:core library
 that implements an indexable collection with a length.
 A list can be of fixed size or extendable.
 
@@ -270,9 +270,9 @@ This program uses three:
 
 | HTML tag  | Dart class                                                                                                                                |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `<input>` | [`InputElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
-| `<ul>`    | [`UListElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
-| `<li>`    | [`LIElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
+| `<input>` | [`InputElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
+| `<ul>`    | [`UListElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
+| `<li>`    | [`LIElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
 {: .table}
 
 ## Registering an event handler {#event-handler}
@@ -303,7 +303,7 @@ or `keyDown` for when the user presses a key on the keyboard.
 
 The argument passed to the `listen()` method is a _callback function_
 of type
-[`EventListener`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/EventListener.html){:target="_blank" rel="noopener"}.
+[`EventListener`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/EventListener.html){:target="_blank" rel="noopener"}.
 `EventListener` is a typedef defined in the `dart:html` library as follows:
 
 ```dart
@@ -311,7 +311,7 @@ typedef void EventListener(Event event)
 ```
 
 As you can see, an EventListener returns no value (`void`) and takes an
-[`Event`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}object as an argument.
+[`Event`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}object as an argument.
 Any function with this signature is an `EventListener`.
 Based on its signature, the `addToDoItem()` function is an `EventListener`.
 
@@ -518,7 +518,7 @@ The `+=` operator is a compound assignment operator,
 which combines an operation (`+`) with an assignment.
 
 The `scrabbleValues` variable is a
-[`Map`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}—a
+[`Map`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}—a
 data structure that contains key/value pairs.
 Use the square bracket syntax to retrieve a value by its key
 and the `length` property to get the number of pairs it contains.

@@ -68,41 +68,41 @@ The following table lists the Dart core libraries that work on the
 <!---
 Multi-platform libraries
 -->
-[dart-core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
-[dart-async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
+[dart-core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[dart-async]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
 [package-async]: {{site.pub-pkg}}/async
-[dart-collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
+[dart-collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [package-collection]: {{site.pub-pkg}}/collection
-[dart-convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart-convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [package-convert]: {{site.pub-pkg}}/convert
-[dart-developer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
-[dart-math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart-developer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
+[dart-math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
+[dart-typed_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [package-typed_data]: {{site.pub-pkg}}/typed_data
 
 <!---
 Native platform libraries
 -->
-[dart-ffi]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
+[dart-ffi]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
 [package-ffi]: {{site.pub-pkg}}/ffi
-[dart-cli]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-cli/dart-cli-library.html
-[dart-io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[dart-cli]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-cli/dart-cli-library.html
+[dart-io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [package-io]: {{site.pub-pkg}}/io
-[dart-isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
+[dart-isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
 [package-isolate]: {{site.pub-pkg}}/isolate
-[dart-mirrors]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html
+[dart-mirrors]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html
 
 <!---
 Web platform libraries
 -->
-[dart-html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[dart-indexed_db]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[dart-js]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/dart-js-library.html
+[dart-html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[dart-indexed_db]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[dart-js]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/dart-js-library.html
 [package-js]: {{site.pub-pkg}}/js
-[dart-js_util]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
-[dart-svg]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
-[dart-web_audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
-[dart-web_gl]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
+[dart-js_util]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[dart-svg]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
+[dart-web_audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
+[dart-web_gl]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
 
 <!---
 Misc

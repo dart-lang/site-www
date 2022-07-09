@@ -660,11 +660,11 @@ that does the following:
   * Example return value from `changeUsername()`: `"jane_smith_92"`
 * Catches any error that occurs and returns the string value of the error.
   * You can use the
-    [toString()]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError/toString.html)
+    [toString()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError/toString.html)
     method to stringify both
-    [Exceptions]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html) 
+    [Exceptions]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html) 
     and
-    [Errors.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
+    [Errors.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
 {$ begin main.dart $}
@@ -1071,7 +1071,7 @@ If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
-[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
 [usage guide]: /guides/language/effective-dart/usage

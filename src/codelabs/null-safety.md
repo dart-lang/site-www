@@ -17,6 +17,7 @@ This codelab covers the following material:
 * Nullable and non-nullable types.
 * When to add `?` or `!` to indicate nullability or non-nullability.
 * Flow analysis and type promotion.
+* How and when to use null-aware operators.
 * How the `late` keyword affects variables and initialization.
 
 Using embedded DartPad editors, you can test your knowledge by
@@ -122,6 +123,227 @@ void main() {
   print('b is $b.');
   print('c is $c.');
 }
+```
+
+## Null-aware operators
+
+If a variable or expression is nullable,
+you can use [type promotion](#type-promotion) 
+to access the type's members,
+or you can use null-aware operators to
+handle nullable values.
+
+If based on the flow of the program,
+you know the value of an expression isn't `null`,
+you can use the [null assertion operator](#the-null-assertion-operator-) (`!`),
+but that will throw an exception if the value is `null`.
+
+To handle potentially `null` values you can instead use
+the conditional property access operator (`?.`)
+or null-coalescing operators (`??`)
+to conditionally access a property or
+provide a default value if `null` respectively.
+
+
+### Exercise: Conditional property access
+
+If you're unsure that an expression with a nullable type is `null` or not,
+you can use the conditional member access operator (`?.`)
+to conditional execute the remainder of the expression.
+
+<?code-excerpt "null_safety_codelab/bin/null_aware_operators.dart (conditional-property-access)"?>
+```dart
+// The following calls the 'action' method only if nullableObject is not null
+nullableObject?.action();
+```
+
+In the code below, try using conditional property access
+in the `stringLength` method to fix the error and
+to return the length of the string or `null` if it is `null`:
+
+```dart:run-dartpad:ga_id-null-safety-conditional-property
+{$ begin main.dart $}
+int? stringLength(String? nullableString) {
+  return nullableString.length;
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+int? stringLength(String? nullableString) {
+  return nullableString?.length;
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  const nonNullString = 'testing';
+  try {
+    final nonNullResult = stringLength(nonNullString);
+    if (nonNullResult != nonNullString.length) {
+      _result(false, [
+        'Tried calling `stringLength`, with the string \'testing\' but '
+            'received $nonNullResult instead of the expected ${nonNullString.length}.'
+      ]);
+      return;
+    }
+
+    final nullableResult = stringLength(null);
+    if (nullableResult != null) {
+      _result(false, [
+        'Tried calling `stringLength`, with a `null` value but '
+            'received $nullableResult instead of the expected `null`.'
+      ]);
+      return;
+    }
+    
+    _result(true);
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `stringLength`, but received an error. Did you implement the method?'
+    ]);
+    return;
+  } catch (e) {
+    _result(
+        false, ['Tried calling `stringLength`, but received an exception: $e']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+You can use the conditional property access operator (?.)
+to only access a property of if expression is not null otherwise return null.
+{$ end hint.txt $}
+```
+
+### Exercise: Null-coalescing operators
+
+If you want to provide an alternative value
+when the expression evaluates to `null`,
+you can specify another expression to evaluate and return instead
+with the null-coalescing operator (`??`).
+
+<?code-excerpt "null_safety_codelab/bin/null_aware_operators.dart (null-coalescing)"?>
+```dart
+// Both of the following print out 'alternate' if nullableString is null
+print(nullableString ?? 'alternate');
+print(nullableString != null ? nullableString : 'alternate');
+```
+
+You can also use the null-coalescing assignment operator (`??=`)
+to evaluate and assign an expression result to a variable
+only if that variable is currently `null`.
+
+<?code-excerpt "null_safety_codelab/bin/null_aware_operators.dart (null-coalescing-assignment)"?>
+```dart
+// Both of the following set nullableString to 'alternate' if it is null
+nullableString ??= 'alternate';
+nullableString = nullableString != null ? nullableString : 'alternate';
+```
+
+In the code below, try using these operators
+to implement `updateStoredValue`
+following the logic outlined in its documentation comment:
+
+```dart:run-dartpad:ga_id-null-safety-coalescing-operators
+{$ begin main.dart $}
+abstract class Store {
+  int? storedNullableValue;
+
+  /// If [storedNullableValue] is currently `null`,
+  /// set it to the result of [calculateValue] 
+  /// or `0` if [calculateValue] returns `null`.
+  void updateStoredValue() {
+    TODO('Implement following documentation comment');
+  }
+
+  /// Calculates a value to be used,
+  /// potentially `null`.
+  int? calculateValue();
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+abstract class Store {
+  int? storedNullableValue;
+
+  /// If [storedNullableValue] is currently `null`,
+  /// set it to the result of [calculateValue] 
+  /// or `0` if [calculateValue] returns `null`.
+  void updateStoredValue() {
+    storedNullableValue ??= calculateValue() ?? 0;
+  }
+
+  /// Calculates a value to be used,
+  /// potentially `null`.
+  int? calculateValue();
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+class NullStore extends Store {
+  @override
+  int? calculateValue() {
+    return null;
+  }
+}
+
+class FiveStore extends Store {
+  @override
+  int? calculateValue() {
+    return 5;
+  }
+}
+
+void main() {
+  try {
+    final nullStore = NullStore();
+    if (nullStore.storedNullableValue != null) {
+      _result(false,
+          ['The `storedNullableValue` field should be `null` at first.']);
+      return;
+    }
+    nullStore.updateStoredValue();
+    if (nullStore.storedNullableValue != 0) {
+      _result(false, [
+        'Tried calling `updateStoredValue`, when `calculateValue` returned `null` '
+            'but `storedNullableValue` was ${nullStore.storedNullableValue} '
+            'instead of the expected 0.'
+      ]);
+      return;
+    }
+
+    final fiveStore = FiveStore();
+    fiveStore.updateStoredValue();
+    if (fiveStore.storedNullableValue != 5) {
+      _result(false, [
+        'Tried calling `updateStoredValue`, when `calculateValue` returned `5`'
+            'but `storedNullableValue` was ${fiveStore.storedNullableValue} '
+            'instead of the expected 5.'
+      ]);
+      return;
+    }
+
+    fiveStore.storedNullableValue = 3;
+    if (fiveStore.storedNullableValue != 3) {
+      _result(false, [
+        'Tried calling `updateStoredValue`, when `storedNullableValue` '
+            'was already not `null`'
+            'but `storedNullableValue` was still updated when it shouldn\'t be.'
+      ]);
+      return;
+    }
+
+    _result(true);
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `updateStoredValue`, but received an error. Did you implement the method?'
+    ]);
+    return;
+  } catch (e) {
+    _result(false,
+        ['Tried calling `updateStoredValue`, but received an exception: $e']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+You can think of the null-coalescing operators
+as providing an alternative value if the left-hand side is `null`.
+{$ end hint.txt $}
 ```
 
 ## Type promotion

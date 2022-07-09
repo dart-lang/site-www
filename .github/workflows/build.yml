@@ -80,6 +80,7 @@ jobs:
     permissions:
       checks: write
       pull-requests: write
+    if: ${{ github.ref != 'refs/heads/main' }}
     needs: test
     runs-on: ubuntu-latest
     steps:

@@ -282,7 +282,7 @@ You have many choices for learning Dart. Here are a few that we recommend:
   covers the basics of using Dart to build for the command line.
 * [Work through extensive online training][udemy]
   from Dart experts.
-* [Explore the API documentation]({{site.dart_api}}) that
+* [Explore the API documentation]({{site.dart-api}}) that
   describes the Dart core libraries.
 * [Read a book about Dart programming](/resources/books).
 
