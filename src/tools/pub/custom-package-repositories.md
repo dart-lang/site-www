@@ -10,7 +10,7 @@ The default package repository used, [pub.dev]({{site.pub}}),
 is operated by the Dart team to 
 facilitate publication of Dart packages for public use.
 A package repository is identified by a
-_hosted-url_ (e.g. `https://dart-packages.example.com/my-account/`). 
+_hosted-url_, such as `https://dart-packages.example.com/`.
 
 Third-party package servers can be useful for hosting private packages. 
 It is also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
