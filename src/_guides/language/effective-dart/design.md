@@ -1518,9 +1518,6 @@ mergeJson(original, changes) => ...
 
 Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
 
-An exception to this is skipping the type annotation on an unused symbol (`_`),
-such as on an argument in a lambda callback.
-
 {:.good}
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
 {% prettify dart tag=pre+code %}
@@ -1551,6 +1548,7 @@ code did not specify one.
   safety and performance of static types.
 {{site.alert.end}}
 
+**Exception**: type annotation on an unused parameter (`_`) can be skipped.
 
 ### PREFER signatures in function type annotations.
 
