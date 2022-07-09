@@ -73,12 +73,12 @@ using the syntax for [hosted packages](/tools/pub/dependencies#hosted-packages):
 
 ```yaml
 dependencies:
-  foo:
+  example_package:
     hosted: https://dart-packages.example.com
     version: ^1.4.0
 ```
 
-In the example above `package:foo` 
+In the example above `package:example_package` 
 will be fetched from `https://dart-packages.example.com`. 
 If authentication is required by this package repository, 
 see [Authenticating with a custom package repository][]
@@ -88,7 +88,7 @@ You can also use the `dart pub add` command
 with the `--hosted` flag to add a dependency from a custom package repository:
 
 ```terminal
-$ dart pub add foo --hosted https://dart-packages.example.com
+$ dart pub add example_package --hosted https://dart-packages.example.com
 ```
 
 [Authenticating with a custom package repository]: #authenticating-with-a-custom-package-repository
@@ -103,15 +103,15 @@ illustrated below.
 dependencies:
   # package retry is fetched from pub.dev (the default package repository)
   retry: ^3.0.0
-  # package foo is fetched from https://dart-packages.example.com
-  foo:
+  # package example_package is fetched from https://dart-packages.example.com
+  example_package:
     hosted: https://dart-packages.example.com
     version: ^1.4.0
 ```
 
 This enables you to keep private packages on a private package repository
 while staying up-to-date with latest public dependencies. However, conflicts can
-easily arise if package `retry` requires `meta` from pub.dev, and `foo` requires
+easily arise if package `retry` requires `meta` from pub.dev, and `example_package` requires
 `meta` from `https://dart-packages.example.com`. Thus, if mirroring packages into a private
 package repository is it frequently necessary to also mirror all dependencies
 and either update the `dependencies` section in section in each package, or
@@ -146,7 +146,7 @@ To prepare a package for publishing to `https://dart-packages.example.com`,
 your `pubspec.yaml` should look minimally like the following:
 
 ```yaml
-name: mypkg
+name: example_package
 version: 1.0.0
 # Ensures the package is published to https://dart-packages.example.com
 publish_to: https://dart-packages.example.com
@@ -157,12 +157,12 @@ use `dart pub publish`:
 
 ```terminal
 $ dart pub publish
-Publishing mypkg 1.0.0 to https://dart-packages.example.com
+Publishing example_package 1.0.0 to https://dart-packages.example.com
 |-- CHANGELOG.md
 |-- LICENSE
 |-- README.md
 |-- lib
-|   '-- mypkg.dart
+|   '-- example_package.dart
 '-- pubspec.yaml
 ...
 ```
