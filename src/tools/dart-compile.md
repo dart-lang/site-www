@@ -263,7 +263,7 @@ Here's an example of compiling a Dart application to JavaScript
 with many optimizations enabled:
 
 ```terminal
-$ dart compile js -02 -o out/main.js web/main.dart
+$ dart compile js -O2 -o out/main.js web/main.dart
 ```
 
 For more information on configuring the compiler, 
