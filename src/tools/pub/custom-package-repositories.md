@@ -3,10 +3,13 @@ title: Custom package repositories
 description: "How Dart's package management tool, pub, works with custom package repositories."
 ---
 
-The `dart pub` tool has support for third-party package repositories. A package
-repository is an HTTP server from which the `pub` client can fetch packages.
-The official package repository is [pub.dev]({{site.pub}}), this repository
-is by the `dart pub` tool by default. A package repository is identified by a
+The `dart pub` tool has support for third-party package repositories.
+A package repository is a server that hosts Dart packages
+for consumption by the `dart pub` tool.
+The default package repository used, [pub.dev]({{site.pub}}), 
+is operated by the Dart team to 
+facilitate publication of Dart packages for public use.
+A package repository is identified by a
 _hosted-url_ (e.g. `https://dart-packages.example.com/my-account/`). 
 
 Third-party package servers can be useful for hosting private packages. 
@@ -22,7 +25,7 @@ private package repository.
   [Hosting a private Dart package repository](https://medium.com/dartlang/hosting-a-private-dart-package-repository-774c3c51dff9).
 {{site.alert.end}}
 
-## Authenticating with a custom package repository
+## Authenticating with a custom package repository {#token-authentication}
 
 Most custom package repositories are
 private package repositories that require authentication.
@@ -100,16 +103,16 @@ illustrated below.
 dependencies:
   # package retry is fetched from pub.dev (the default package repository)
   retry: ^3.0.0
-  # package foo is fetched from https://pub.example.com
+  # package foo is fetched from https://dart-packages.example.com
   foo:
-    hosted: https://pub.example.com
+    hosted: https://dart-packages.example.com
     version: ^1.4.0
 ```
 
 This enables you to keep private packages on a private package repository
 while staying up-to-date with latest public dependencies. However, conflicts can
 easily arise if package `retry` requires `meta` from pub.dev, and `foo` requires
-`meta` from `https://pub.example.com`. Thus, if mirroring packages into a private
+`meta` from `https://dart-packages.example.com`. Thus, if mirroring packages into a private
 package repository is it frequently necessary to also mirror all dependencies
 and either update the `dependencies` section in section in each package, or
 override the default package repository.
@@ -123,53 +126,80 @@ override the default package repository.
 {{site.alert.end}}
 
 
-### Overriding the default package repository
-
-By default, dart pub get fetches dependencies from the pub.dev site
-unless the hosted-dependency syntax 
-is used to specify a custom package repository.
-However, it’s possible to override the default package repository using the
-[`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
-
-This approach is particularly useful when mirroring
-all packages in a private package repository 
-or a subset of pub.dev when working in a restricted network environment.
-
-
 ## Publishing to a custom package repository
 
-The `pub` tool also supports publishing packages to a private package
-repository, using the [`publish_to`](/tools/pub/pubspec#publish_to) property in
-`pubspec.yaml`. If working on a private package it is a good idea to specify
-this early in the development, so as to prevent accidental publication to
-[pub.dev]({{site.pub}}). 
+To publish a package to a custom package repository
+instead of [pub.dev]({{site.pub}}),
+you specify the 
+[`publish_to`](/tools/pub/pubspec#publish_to) property in `pubspec.yaml`.
+If authentication is enabled,
+publishing uses the same [token authentication](#token-authentication)
+as retrieving packages.
 
-To publish a package to `https://pub.example.com` you would write a
-`pubspec.yaml` as follows, and run `dart pub publish`.
+{{site.alert.note}}
+  To prevent accidental publication to [pub.dev]({{site.pub}})
+  when working on private package 
+  it is a good idea to specify this early in the development.
+{{site.alert.end}}
+
+To prepare a package for publishing to `https://dart-packages.example.com`,
+your `pubspec.yaml` should look minimally like the following:
 
 ```yaml
 name: mypkg
 version: 1.0.0
-# Ensures the package is published to https://pub.example.com
-publish_to: https://pub.example.com
+# Ensures the package is published to https://dart-packages.example.com
+publish_to: https://dart-packages.example.com
+```
+
+To then publish a new version of the package,
+use `dart pub publish`:
+
+```terminal
+$ dart pub publish
+Publishing mypkg 1.0.0 to https://dart-packages.example.com
+|-- CHANGELOG.md
+|-- LICENSE
+|-- README.md
+|-- lib
+|   '-- mypkg.dart
+'-- pubspec.yaml
+...
 ```
 
 {{site.alert.note}}
-  Even if you don't have a private repository, you can specify
-  `publish_to: none` which stops accidental publication.
+  Even if you aren't using a private repository, 
+  you can specify `publish_to: none` 
+  which stops any accidental publication.
 {{site.alert.end}}
 
 
-## Getting a custom package repository
+### Overriding the default package repository
 
-The REST API for writing a custom package repository is outlined in the
+By default, `dart pub` retrieves dependencies from and publishes packages
+to the [pub.dev site]({{site.pub}})
+unless the hosted-dependency syntax
+is used to specify a custom package repository.
+However, it’s possible to override the default package repository using the
+[`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
+
+This approach is particularly useful when mirroring all packages
+in a private package repository or a subset of pub.dev
+when working in a restricted network environment.
+
+
+## Setting up a custom package repository
+
+You can write a custom package repository by implementing
+the REST API outlined in the
 [Hosted Pub Repository Specification Version 2][repository-spec-v2.md].
-
 
 ### Dart package repositories as a service
 
-Dart package repositories are also offered as a service
-by the following vendors:
+Custom Dart package repositories are also offered as a service
+with support for token authentication by multiple vendors,
+alleviating you from the overhead of hosting and maintaining
+your own custom package repository:
 
 <ul class="col2">
 <li>
