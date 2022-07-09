@@ -1548,7 +1548,7 @@ code did not specify one.
   safety and performance of static types.
 {{site.alert.end}}
 
-**Exception**: type annotation on an unused parameter (`_`) can be skipped.
+**Exception**: Type annotations on unused parameters (`_`) can be omitted.
 
 ### PREFER signatures in function type annotations.
 
