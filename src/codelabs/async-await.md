@@ -447,8 +447,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
-{$ begin main.dart $}
+```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_using:file-main.dart
 // Part 1
 // You can call the provided async function fetchRole()
 // to return the user role.
@@ -461,8 +460,9 @@ Future<String> reportUserRole() async {
 // You can call the provided async function fetchLoginAmount()
 // to return the number of times that the user has logged in.
 reportLogins() {}
-{$ end main.dart $}
-{$ begin solution.dart $}
+```
+
+```dart:file-solution.dart
 Future<String> reportUserRole() async {
   var username = await fetchRole();
   return 'User role: $username';
@@ -472,8 +472,9 @@ Future<String> reportLogins() async {
   var logins = await fetchLoginAmount();
   return 'Total number of logins: $logins';
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+```
+
+```dart:file-test.dart
 const role = 'administrator';
 const logins = 42;
 const passed = 'PASSED';
@@ -576,14 +577,14 @@ Future<String> asyncEquals({
     return e.toString();
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
+```
+
+```text:end-dartpad:file-hint.txt
 Did you remember to add the async keyword to the reportUserRole() function?
 
 Did you remember to use the await keyword before invoking fetchRole()?
 
 Remember: reportUserRole() needs to return a future!
-{$ end hint.txt $}
 ```
 
 {{site.alert.note}}
@@ -666,12 +667,12 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
-{$ begin main.dart $}
+```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_errors:file-main.dart
 // Implement changeUsername here
 changeUsername() {}
-{$ end main.dart $}
-{$ begin solution.dart $}
+```
+
+```dart:file-solution.dart
 Future<String> changeUsername() async {
   try {
     return await fetchNewUsername();
@@ -679,8 +680,9 @@ Future<String> changeUsername() async {
     return err.toString();
   }
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+```
+
+```dart:file-test.dart
 List<String> messages = [];
 bool logoutSucceeds = false;
 const passed = 'PASSED';
@@ -787,12 +789,12 @@ Future<String> asyncDidCatchException(Function fn) async {
     return passed;
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
+```
+
+```text:end-dartpad:file-hint.txt
 Implement changeUsername() to return the string from fetchNewUsername() or
 (if that fails) the string value of any error that occurs.
 You'll need a try-catch statement to catch and handle errors.
-{$ end hint.txt $}
 ```
 
 {% comment %}
@@ -841,8 +843,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
-{$ begin main.dart $}
+```dart:start-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:file-main.dart
 // Part 1
 addHello(String user) {}
 
@@ -855,8 +856,9 @@ greetUser() {}
 // You can call the provided async function logoutUser()
 // to log out the user.
 sayGoodbye() {}
-{$ end main.dart $}
-{$ begin solution.dart $}
+```
+
+```dart:file-solution.dart
 String addHello(String user) => 'Hello $user';
 
 Future<String> greetUser() async {
@@ -872,8 +874,9 @@ Future<String> sayGoodbye() async {
     return 'Failed to logout user: $e';
   }
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+```
+
+```dart:file-test.dart
 List<String> messages = [];
 bool logoutSucceeds = false;
 const passed = 'PASSED';
@@ -1040,11 +1043,11 @@ Future<String> asyncDidCatchException(Function fn) async {
     return noCatch;
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
+```
+
+```text:end-dartpad:file-hint.txt
 The greetUser() and sayGoodbye() functions are asynchronous;
 addHello() isn't.
-{$ end hint.txt $}
 ```
 
 ## What's next?
