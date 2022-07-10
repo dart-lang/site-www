@@ -855,6 +855,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
+<?code-excerpt "async_await/lib/putting_together/main.dart"?>
 ```dart:start-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:file-main.dart
 // Part 1
 addHello(String user) {}
@@ -870,6 +871,7 @@ greetUser() {}
 sayGoodbye() {}
 ```
 
+<?code-excerpt "async_await/lib/putting_together/solution.dart"?>
 ```dart:file-solution.dart
 String addHello(String user) => 'Hello $user';
 
@@ -888,17 +890,19 @@ Future<String> sayGoodbye() async {
 }
 ```
 
+<?code-excerpt "async_await/lib/putting_together/test.dart"?>
 ```dart:file-test.dart
 List<String> messages = [];
 bool logoutSucceeds = false;
 const passed = 'PASSED';
 const noCatch = 'NO_CATCH';
 const typoMessage = 'Test failed! Check for typos in your return value';
-const didNotImplement = 'Test failed! Did you forget to implement or return from ';
+const didNotImplement =
+    'Test failed! Did you forget to implement or return from ';
 const oneSecond = Duration(seconds: 1);
 
 Future<String> fetchUsername() => Future.delayed(oneSecond, () => 'Jean');
-String failOnce () {
+String failOnce() {
   if (logoutSucceeds) {
     return 'Success!';
   } else {
@@ -907,72 +911,81 @@ String failOnce () {
   }
 }
 
-logoutUser() => Future.delayed(oneSecond, failOnce);
+Future<String> logoutUser() => Future.delayed(oneSecond, failOnce);
 
 void main() async {
   try {
     // ignore: cascade_invocations
     messages
       ..add(makeReadable(
-
-        testLabel: 'Part 1',
-        testResult: await asyncEquals(
-          expected: 'Hello Jerry',
-          actual: addHello('Jerry'),
-          typoKeyword: 'Jerry'
-        ),
-        readableErrors: {
-          typoMessage: typoMessage,
-          'null': '$didNotImplement addHello?',
-          'Hello Instance of \'Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
-          'Hello Instance of \'_Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
-        }))
+          testLabel: 'Part 1',
+          testResult: await asyncEquals(
+              expected: 'Hello Jerry',
+              actual: addHello('Jerry'),
+              typoKeyword: 'Jerry'),
+          readableErrors: {
+            typoMessage: typoMessage,
+            'null': '$didNotImplement addHello?',
+            'Hello Instance of \'Future<String>\'':
+                'Looks like you forgot to use the \'await\' keyword!',
+            'Hello Instance of \'_Future<String>\'':
+                'Looks like you forgot to use the \'await\' keyword!',
+          }))
       ..add(makeReadable(
-
-        testLabel: 'Part 2',
-        testResult: await asyncEquals(
-          expected: 'Hello Jean',
-          actual: await greetUser(),
-          typoKeyword: 'Jean'
-        ),
-        readableErrors: {
-          typoMessage: typoMessage,
-          'null': '$didNotImplement greetUser?',
-          'HelloJean' : 'Looks like you forgot the space between \'Hello\' and \'Jean\'',
-          'Hello Instance of \'Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
-          'Hello Instance of \'_Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
-          '{Closure: (String) => dynamic from Function \'addHello\': static.(await fetchUsername())}': 'Did you place the \'\$\' character correctly?',
-          '{Closure \'addHello\'(await fetchUsername())}': 'Did you place the \'\$\' character correctly?', 
-        }))
+          testLabel: 'Part 2',
+          testResult: await asyncEquals(
+              expected: 'Hello Jean',
+              actual: await greetUser(),
+              typoKeyword: 'Jean'),
+          readableErrors: {
+            typoMessage: typoMessage,
+            'null': '$didNotImplement greetUser?',
+            'HelloJean':
+                'Looks like you forgot the space between \'Hello\' and \'Jean\'',
+            'Hello Instance of \'Future<String>\'':
+                'Looks like you forgot to use the \'await\' keyword!',
+            'Hello Instance of \'_Future<String>\'':
+                'Looks like you forgot to use the \'await\' keyword!',
+            '{Closure: (String) => dynamic from Function \'addHello\': static.(await fetchUsername())}':
+                'Did you place the \'\$\' character correctly?',
+            '{Closure \'addHello\'(await fetchUsername())}':
+                'Did you place the \'\$\' character correctly?',
+          }))
       ..add(makeReadable(
-        testLabel: 'Part 3',
-        testResult: await asyncDidCatchException(sayGoodbye),
-        readableErrors: {
-          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
-          'null': '$didNotImplement sayGoodbye?',
-          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
-          'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-          'Instance of \'_Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-        }
-      ))
+          testLabel: 'Part 3',
+          testResult: await asyncDidCatchException(sayGoodbye),
+          readableErrors: {
+            typoMessage:
+                '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+            'null': '$didNotImplement sayGoodbye?',
+            noCatch:
+                'Did you remember to call logoutUser within a try/catch block?',
+            'Instance of \'Future<String>\' Thanks, see you next time':
+                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'_Future<String>\' Thanks, see you next time':
+                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          }))
       ..add(makeReadable(
-        testLabel: 'Part 3',
-        testResult: await asyncEquals(
-          expected: 'Success! Thanks, see you next time',
-          actual: await sayGoodbye(),
-          typoKeyword: 'Success'
-        ),
-        readableErrors: {
-          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
-          'null': '$didNotImplement sayGoodbye?',
-          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
-          'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-          'Instance of \'_Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-          'Instance of \'_Exception\'': 'CAUGHT Did you remember to return a string?',
-          }
-      ))
-    ..removeWhere((m) => m.contains(passed))
-    ..toList();
+          testLabel: 'Part 3',
+          testResult: await asyncEquals(
+              expected: 'Success! Thanks, see you next time',
+              actual: await sayGoodbye(),
+              typoKeyword: 'Success'),
+          readableErrors: {
+            typoMessage:
+                '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+            'null': '$didNotImplement sayGoodbye?',
+            noCatch:
+                'Did you remember to call logoutUser within a try/catch block?',
+            'Instance of \'Future<String>\' Thanks, see you next time':
+                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'_Future<String>\' Thanks, see you next time':
+                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'_Exception\'':
+                'CAUGHT Did you remember to return a string?',
+          }))
+      ..removeWhere((m) => m.contains(passed))
+      ..toList();
 
     if (messages.isEmpty) {
       _result(true);
@@ -1004,11 +1017,10 @@ String makeReadable({
   }
 }
 
-void passIfNoMessages(List<String> messages, Map<String, String> readable){
+void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-
     // ignore: omit_local_variable_types
     List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
@@ -1019,12 +1031,13 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable){
     _result(false, userMessages);
   }
 }
+
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
 Future<String> asyncEquals({
-  expected,
-  actual,
+  required String expected,
+  required dynamic actual,
   required String typoKeyword,
 }) async {
   var strActual = actual is String ? actual : actual.toString();
@@ -1036,7 +1049,7 @@ Future<String> asyncEquals({
     } else {
       return strActual;
     }
-  } catch(e) {
+  } catch (e) {
     return e.toString();
   }
 }
@@ -1045,7 +1058,7 @@ Future<String> asyncDidCatchException(Function fn) async {
   var caught = true;
   try {
     await fn();
-  } on Exception catch(_) {
+  } on Exception catch (_) {
     caught = false;
   }
 
