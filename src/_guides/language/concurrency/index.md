@@ -302,8 +302,7 @@ This section discusses some examples
 that use the `Isolate` API
 to implement isolates.
 
-{{site.alert.info}}
-  **Flutter note:**
+{{site.alert.flutter-note}}
   If you're using Flutter on a non-web platform,
   then instead of using the `Isolate` API directly,
   consider using the [Flutter `compute()` function][].
@@ -459,10 +458,9 @@ is slower when isolates are in different groups.
 
 [`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
-{{ site.alert.info }}
-  **Flutter note:**
+{{site.alert.flutter-note}}
   Flutter doesn't support `Isolate.spawnUri()`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 {% comment %}
 TODO:

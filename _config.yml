@@ -105,6 +105,9 @@ alert:
   note: >-
     <aside class="alert alert-info" role="alert" markdown="1">
     <i class="fas fa-info-circle"></i> **Note:**
+  flutter-note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <img src="/assets/img/shared/flutter/icon/64.png" width="24" alt="Flutter logo"> **Flutter note:**
   version-note: >-
     <aside class="alert alert-info" role="alert" markdown="1">
     <i class="fas fa-code-branch"></i> **Version note:**
