@@ -83,8 +83,7 @@ A pubspec can have the following fields:
 
 Pub ignores all other fields,
 
-{{site.alert.
-flutter-note}}
+{{site.alert.flutter-note}}
   Pubspecs for [Flutter apps]({{site.flutter}}) can have
   [additional fields]({{site.flutter-docs}}/development/tools/pubspec)
   for configuring the environment and managing assets.
