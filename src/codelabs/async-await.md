@@ -764,8 +764,7 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-    // ignore: omit_local_variable_types
-    List<String> userMessages = messages
+    final userMessages = messages
         .where((message) => readable.containsKey(message))
         .map((message) => readable[message]!)
         .toList();
@@ -915,7 +914,6 @@ Future<String> logoutUser() => Future.delayed(oneSecond, failOnce);
 
 void main() async {
   try {
-    // ignore: cascade_invocations
     messages
       ..add(makeReadable(
           testLabel: 'Part 1',
@@ -1021,8 +1019,7 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-    // ignore: omit_local_variable_types
-    List<String> userMessages = messages
+    final userMessages = messages
         .where((message) => readable.containsKey(message))
         .map((message) => readable[message]!)
         .toList();
