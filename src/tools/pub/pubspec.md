@@ -83,8 +83,8 @@ A pubspec can have the following fields:
 
 Pub ignores all other fields,
 
-{{site.alert.info}}
-  **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
+{{site.alert.flutter-note}}
+  Pubspecs for [Flutter apps]({{site.flutter}}) can have
   [additional fields]({{site.flutter-docs}}/development/tools/pubspec)
   for configuring the environment and managing assets.
 {{site.alert.end}}
@@ -307,8 +307,7 @@ platforms:
   macos:
 ```
 
-{{site.alert.info}}
-  **Flutter note:**
+{{site.alert.flutter-note}}
   Flutter plugins use [plugin declarations][]
   instead of this field.
 {{site.alert.end}}

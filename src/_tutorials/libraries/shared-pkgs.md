@@ -34,8 +34,7 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-{{site.alert.info}}
-  **Flutter note:**
+{{site.alert.flutter-note}}
   This page doesn't describe the tools you use with Flutter, but the
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
