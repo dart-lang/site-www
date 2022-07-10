@@ -677,11 +677,13 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
 
+<?code-excerpt "async_await/lib/practice_errors/main.dart"?>
 ```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_errors:file-main.dart
 // Implement changeUsername here
 changeUsername() {}
 ```
 
+<?code-excerpt "async_await/lib/practice_errors/solution.dart"?>
 ```dart:file-solution.dart
 Future<String> changeUsername() async {
   try {
@@ -692,6 +694,7 @@ Future<String> changeUsername() async {
 }
 ```
 
+<?code-excerpt "async_await/lib/practice_errors/test.dart"?>
 ```dart:file-test.dart
 List<String> messages = [];
 bool logoutSucceeds = false;
@@ -704,31 +707,30 @@ class UserError implements Exception {
   String errMsg() => 'New username is invalid';
 }
 
-Future fetchNewUsername() {
+Future<String> fetchNewUsername() {
   var str = Future.delayed(oneSecond, () => throw UserError());
   return str;
 }
 
 void main() async {
   try {
-    // ignore: cascade_invocations
     messages
       ..add(makeReadable(
           testLabel: '',
           testResult: await asyncDidCatchException(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
-            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }
-      ))
+            noCatch:
+                'Did you remember to call fetchNewUsername within a try/catch block?',
+          }))
       ..add(makeReadable(
           testLabel: '',
           testResult: await asyncErrorEquals(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
-            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }
-      ))
+            noCatch:
+                'Did you remember to call fetchNewUsername within a try/catch block?',
+          }))
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -747,7 +749,7 @@ void main() async {
 ////////////////////////////////////////
 String makeReadable({
   required String testResult,
-  required Map readableErrors,
+  required Map<String, String> readableErrors,
   required String testLabel,
 }) {
   if (readableErrors.containsKey(testResult)) {
@@ -758,11 +760,10 @@ String makeReadable({
   }
 }
 
-void passIfNoMessages(List<String> messages, Map<String, String> readable){
+void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-
     // ignore: omit_local_variable_types
     List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
@@ -773,6 +774,7 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable){
     _result(false, userMessages);
   }
 }
+
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
@@ -789,7 +791,7 @@ Future<String> asyncDidCatchException(Function fn) async {
   var caught = true;
   try {
     await fn();
-  } on UserError catch(_) {
+  } on UserError catch (_) {
     caught = false;
   }
 
