@@ -25,9 +25,9 @@ might look like:
 
 {% prettify none tag=pre+code %}
 enchilada/
-  .dart_tool/ *
+  .dart_tool/
   pubspec.yaml
-  pubspec.lock **
+  pubspec.lock *
   LICENSE
   README.md
   CHANGELOG.md
@@ -36,7 +36,7 @@ enchilada/
   bin/
     enchilada
   doc/
-    api/ ***
+    api/ **
     getting_started.md
   example/
     main.dart
@@ -58,14 +58,11 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool/` directory exists after you've run `pub get`. 
-   Don't check it into source control.
-
-\** The `pubspec.lock` file exists after you've run `pub get`.
+\* The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
-\*** The `doc/api` directory exists locally after you've run
+\** The `doc/api` directory exists locally after you've run
      [`dart doc`](/tools/dart-doc).
      Don't check the `api` directory into source control.
 
@@ -475,5 +472,34 @@ documentation generators, or other bits of automation.
 
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
+
+## Project specific caching for tools
+
+{{site.alert.info}}
+  Do not check the `.dart_tool/` directory into source control.
+  Instead keep `.dart_tool/` in `.gitignore`.
+{{site.alert.end}}
+
+The `.dart_tool/` is created when you've run `dart pub get`.
+The directory used by various tooling for caching files specific to your project and/or local machine.
+Thus, the `.dart_tool/` directory should never be checked into source control, or copied between machines.
+
+It is also generally safe to delete the `.dart_tool/` directory, though some tools might need recompute the cached information before they work again. 
+
+**Example:** The [dart pub get](https://dart.dev/tools/pub/cmd/pub-get) tool will dowload and extract dependencies to a global `$PUB_CACHE` directory, and then write a `.dart_tool/package_config.json` file mapping _package names_ to directories in the global `$PUB_CACHE` directory. The `.dart_tool/package_config.json` file is used by other tools, such as analyzer, compiler, etc. when they need to resolve statments such as `import "package:foo/foo.dart"`.
+
+When developing a tool that needs project specific caching, it can be advantagous to use the `.dart_tool/` directory because most users already have it ignored in `.gitignore`.
+When caching files for your tool in a user's `.dart_tool/` directory, you should always use a unique subdirectory.
+To avoid collisions, subdirectories like `.dart_tool/<tool_package_name>/` are reserved for the package named `<tool_package_name>`.
+If your tool is not distributed through [pub.dev](https://pub.dev), you may publish a placeholder package in order to reserve the reserve a unique name.
+
+**Example:** [`package:build`](https://pub.dev/packages/build) provides a framework for writing code generation steps, when running these build steps files are cached in `.dart_tool/build/`, this helps speed-up future re-runs of the build steps.
+
+{{site.alert.warning}}
+When developing a tool that wants to cache files in `.dart_tool/`, ensure that:
+  * You are using a subdirectory named after a package you own (`.dart_tool/<my_tool_package_name>/`).
+  * Never store files that should be under source control in `.dart_tool/`.
+{{site.alert.warning}}
+
 
 [Markdown]: {{site.pub-pkg}}/markdown
