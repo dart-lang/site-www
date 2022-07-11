@@ -447,8 +447,8 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-<?code-excerpt "async_await/lib/practice_using/main.dart"?>
-```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_using:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
+{$ begin main.dart $}
 // Part 1
 // You can call the provided async function fetchRole()
 // to return the user role.
@@ -461,10 +461,8 @@ Future<String> reportUserRole() async {
 // You can call the provided async function fetchLoginAmount()
 // to return the number of times that the user has logged in.
 reportLogins() {}
-```
-
-<?code-excerpt "async_await/lib/practice_using/solution.dart"?>
-```dart:file-solution.dart
+{$ end main.dart $}
+{$ begin solution.dart $}
 Future<String> reportUserRole() async {
   var username = await fetchRole();
   return 'User role: $username';
@@ -474,17 +472,14 @@ Future<String> reportLogins() async {
   var logins = await fetchLoginAmount();
   return 'Total number of logins: $logins';
 }
-```
-
-<?code-excerpt "async_await/lib/practice_using/test.dart"?>
-```dart:file-test.dart
+{$ end solution.dart $}
+{$ begin test.dart $}
 const role = 'administrator';
 const logins = 42;
 const passed = 'PASSED';
 const testFailedMessage = 'Test failed for the function:';
 const typoMessage = 'Test failed! Check for typos in your return value';
-const didNotImplement =
-    'Test failed! Did you forget to implement or return from ';
+const didNotImplement = 'Test failed! Did you forget to implement or return from ';
 const oneSecond = Duration(seconds: 1);
 List<String> messages = [];
 Future<String> fetchRole() => Future.delayed(oneSecond, () => role);
@@ -494,45 +489,39 @@ void main() async {
   try {
     messages
       ..add(makeReadable(
-          testLabel: 'Part 1',
-          testResult: await asyncEquals(
-              expected: 'User role: administrator',
-              actual: await reportUserRole(),
-              typoKeyword: role),
-          readableErrors: {
-            typoMessage: typoMessage,
-            'null': '$didNotImplement reportUserRole?',
-            'User role: Instance of \'Future<String>\'':
-                '$testFailedMessage reportUserRole. Did you use the await keyword?',
-            'User role: Instance of \'_Future<String>\'':
-                '$testFailedMessage reportUserRole. Did you use the await keyword?',
-            'User role:':
-                '$testFailedMessage reportUserRole. Did you return a user role?',
-            'User role: ':
-                '$testFailedMessage reportUserRole. Did you return a user role?',
-            'User role: tester':
-                '$testFailedMessage reportUserRole. Did you invoke fetchRole to fetch the user\'s role?',
-          }))
+
+        testLabel: 'Part 1',
+        testResult: await asyncEquals(
+          expected: 'User role: administrator',
+          actual: await reportUserRole(),
+          typoKeyword: role
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement reportUserRole?',
+          'User role: Instance of \'Future<String>\'': '$testFailedMessage reportUserRole. Did you use the await keyword?',
+          'User role: Instance of \'_Future<String>\'': '$testFailedMessage reportUserRole. Did you use the await keyword?',
+          'User role:' : '$testFailedMessage reportUserRole. Did you return a user role?',
+          'User role: ' : '$testFailedMessage reportUserRole. Did you return a user role?',
+          'User role: tester' : '$testFailedMessage reportUserRole. Did you invoke fetchRole to fetch the user\'s role?',
+        }))
+
       ..add(makeReadable(
-          testLabel: 'Part 2',
-          testResult: await asyncEquals(
-              expected: 'Total number of logins: 42',
-              actual: await reportLogins(),
-              typoKeyword: logins.toString()),
-          readableErrors: {
-            typoMessage: typoMessage,
-            'null': '$didNotImplement reportLogins?',
-            'Total number of logins: Instance of \'Future<int>\'':
-                '$testFailedMessage reportLogins. Did you use the await keyword?',
-            'Total number of logins: Instance of \'_Future<int>\'':
-                '$testFailedMessage reportLogins. Did you use the await keyword?',
-            'Total number of logins: ':
-                '$testFailedMessage reportLogins. Did you return the number of logins?',
-            'Total number of logins:':
-                '$testFailedMessage reportLogins. Did you return the number of logins?',
-            'Total number of logins: 57':
-                '$testFailedMessage reportLogins. Did you invoke fetchLoginAmount to fetch the number of user logins?',
-          }))
+        testLabel: 'Part 2',
+        testResult: await asyncEquals(
+          expected: 'Total number of logins: 42',
+          actual: await reportLogins(),
+          typoKeyword: logins.toString()
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement reportLogins?',
+          'Total number of logins: Instance of \'Future<int>\'': '$testFailedMessage reportLogins. Did you use the await keyword?',
+          'Total number of logins: Instance of \'_Future<int>\'': '$testFailedMessage reportLogins. Did you use the await keyword?',
+          'Total number of logins: ': '$testFailedMessage reportLogins. Did you return the number of logins?',
+          'Total number of logins:': '$testFailedMessage reportLogins. Did you return the number of logins?',
+          'Total number of logins: 57': '$testFailedMessage reportLogins. Did you invoke fetchLoginAmount to fetch the number of user logins?',
+        }))
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -555,7 +544,7 @@ void main() async {
 ////////////////////////////////////////
 String makeReadable({
   required String testResult,
-  required Map<String, String> readableErrors,
+  required Map readableErrors,
   required String testLabel,
 }) {
   if (readableErrors.containsKey(testResult)) {
@@ -570,8 +559,8 @@ String makeReadable({
 //////////// Assertions ///////////////
 ///////////////////////////////////////
 Future<String> asyncEquals({
-  required String expected,
-  required dynamic actual,
+  expected,
+  actual,
   required String typoKeyword,
 }) async {
   var strActual = actual is String ? actual : actual.toString();
@@ -583,18 +572,18 @@ Future<String> asyncEquals({
     } else {
       return strActual;
     }
-  } catch (e) {
+  } catch(e) {
     return e.toString();
   }
 }
-```
-
-```text:end-dartpad:file-hint.txt
+{$ end test.dart $}
+{$ begin hint.txt $}
 Did you remember to add the async keyword to the reportUserRole() function?
 
 Did you remember to use the await keyword before invoking fetchRole()?
 
 Remember: reportUserRole() needs to return a future!
+{$ end hint.txt $}
 ```
 
 {{site.alert.note}}
@@ -677,14 +666,12 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
 
-<?code-excerpt "async_await/lib/practice_errors/main.dart"?>
-```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_errors:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
+{$ begin main.dart $}
 // Implement changeUsername here
 changeUsername() {}
-```
-
-<?code-excerpt "async_await/lib/practice_errors/solution.dart"?>
-```dart:file-solution.dart
+{$ end main.dart $}
+{$ begin solution.dart $}
 Future<String> changeUsername() async {
   try {
     return await fetchNewUsername();
@@ -692,10 +679,8 @@ Future<String> changeUsername() async {
     return err.toString();
   }
 }
-```
-
-<?code-excerpt "async_await/lib/practice_errors/test.dart"?>
-```dart:file-test.dart
+{$ end solution.dart $}
+{$ begin test.dart $}
 List<String> messages = [];
 bool logoutSucceeds = false;
 const passed = 'PASSED';
@@ -707,30 +692,31 @@ class UserError implements Exception {
   String errMsg() => 'New username is invalid';
 }
 
-Future<String> fetchNewUsername() {
+Future fetchNewUsername() {
   var str = Future.delayed(oneSecond, () => throw UserError());
   return str;
 }
 
 void main() async {
   try {
+    // ignore: cascade_invocations
     messages
       ..add(makeReadable(
           testLabel: '',
           testResult: await asyncDidCatchException(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
-            noCatch:
-                'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
+            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
+          }
+      ))
       ..add(makeReadable(
           testLabel: '',
           testResult: await asyncErrorEquals(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
-            noCatch:
-                'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
+            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
+          }
+      ))
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -749,7 +735,7 @@ void main() async {
 ////////////////////////////////////////
 String makeReadable({
   required String testResult,
-  required Map<String, String> readableErrors,
+  required Map readableErrors,
   required String testLabel,
 }) {
   if (readableErrors.containsKey(testResult)) {
@@ -760,11 +746,13 @@ String makeReadable({
   }
 }
 
-void passIfNoMessages(List<String> messages, Map<String, String> readable) {
+void passIfNoMessages(List<String> messages, Map<String, String> readable){
   if (messages.isEmpty) {
     _result(true);
   } else {
-    final userMessages = messages
+
+    // ignore: omit_local_variable_types
+    List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
         .map((message) => readable[message]!)
         .toList();
@@ -773,7 +761,6 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
     _result(false, userMessages);
   }
 }
-
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
@@ -790,7 +777,7 @@ Future<String> asyncDidCatchException(Function fn) async {
   var caught = true;
   try {
     await fn();
-  } on UserError catch (_) {
+  } on UserError catch(_) {
     caught = false;
   }
 
@@ -800,12 +787,12 @@ Future<String> asyncDidCatchException(Function fn) async {
     return passed;
   }
 }
-```
-
-```text:end-dartpad:file-hint.txt
+{$ end test.dart $}
+{$ begin hint.txt $}
 Implement changeUsername() to return the string from fetchNewUsername() or
 (if that fails) the string value of any error that occurs.
 You'll need a try-catch statement to catch and handle errors.
+{$ end hint.txt $}
 ```
 
 {% comment %}
@@ -854,8 +841,8 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
-<?code-excerpt "async_await/lib/putting_together/main.dart"?>
-```dart:start-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
+{$ begin main.dart $}
 // Part 1
 addHello(String user) {}
 
@@ -868,10 +855,8 @@ greetUser() {}
 // You can call the provided async function logoutUser()
 // to log out the user.
 sayGoodbye() {}
-```
-
-<?code-excerpt "async_await/lib/putting_together/solution.dart"?>
-```dart:file-solution.dart
+{$ end main.dart $}
+{$ begin solution.dart $}
 String addHello(String user) => 'Hello $user';
 
 Future<String> greetUser() async {
@@ -887,21 +872,18 @@ Future<String> sayGoodbye() async {
     return 'Failed to logout user: $e';
   }
 }
-```
-
-<?code-excerpt "async_await/lib/putting_together/test.dart"?>
-```dart:file-test.dart
+{$ end solution.dart $}
+{$ begin test.dart $}
 List<String> messages = [];
 bool logoutSucceeds = false;
 const passed = 'PASSED';
 const noCatch = 'NO_CATCH';
 const typoMessage = 'Test failed! Check for typos in your return value';
-const didNotImplement =
-    'Test failed! Did you forget to implement or return from ';
+const didNotImplement = 'Test failed! Did you forget to implement or return from ';
 const oneSecond = Duration(seconds: 1);
 
 Future<String> fetchUsername() => Future.delayed(oneSecond, () => 'Jean');
-String failOnce() {
+String failOnce () {
   if (logoutSucceeds) {
     return 'Success!';
   } else {
@@ -910,80 +892,72 @@ String failOnce() {
   }
 }
 
-Future<String> logoutUser() => Future.delayed(oneSecond, failOnce);
+logoutUser() => Future.delayed(oneSecond, failOnce);
 
 void main() async {
   try {
+    // ignore: cascade_invocations
     messages
       ..add(makeReadable(
-          testLabel: 'Part 1',
-          testResult: await asyncEquals(
-              expected: 'Hello Jerry',
-              actual: addHello('Jerry'),
-              typoKeyword: 'Jerry'),
-          readableErrors: {
-            typoMessage: typoMessage,
-            'null': '$didNotImplement addHello?',
-            'Hello Instance of \'Future<String>\'':
-                'Looks like you forgot to use the \'await\' keyword!',
-            'Hello Instance of \'_Future<String>\'':
-                'Looks like you forgot to use the \'await\' keyword!',
-          }))
+
+        testLabel: 'Part 1',
+        testResult: await asyncEquals(
+          expected: 'Hello Jerry',
+          actual: addHello('Jerry'),
+          typoKeyword: 'Jerry'
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement addHello?',
+          'Hello Instance of \'Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
+          'Hello Instance of \'_Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
+        }))
       ..add(makeReadable(
-          testLabel: 'Part 2',
-          testResult: await asyncEquals(
-              expected: 'Hello Jean',
-              actual: await greetUser(),
-              typoKeyword: 'Jean'),
-          readableErrors: {
-            typoMessage: typoMessage,
-            'null': '$didNotImplement greetUser?',
-            'HelloJean':
-                'Looks like you forgot the space between \'Hello\' and \'Jean\'',
-            'Hello Instance of \'Future<String>\'':
-                'Looks like you forgot to use the \'await\' keyword!',
-            'Hello Instance of \'_Future<String>\'':
-                'Looks like you forgot to use the \'await\' keyword!',
-            '{Closure: (String) => dynamic from Function \'addHello\': static.(await fetchUsername())}':
-                'Did you place the \'\$\' character correctly?',
-            '{Closure \'addHello\'(await fetchUsername())}':
-                'Did you place the \'\$\' character correctly?',
-          }))
+
+        testLabel: 'Part 2',
+        testResult: await asyncEquals(
+          expected: 'Hello Jean',
+          actual: await greetUser(),
+          typoKeyword: 'Jean'
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement greetUser?',
+          'HelloJean' : 'Looks like you forgot the space between \'Hello\' and \'Jean\'',
+          'Hello Instance of \'Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
+          'Hello Instance of \'_Future<String>\'': 'Looks like you forgot to use the \'await\' keyword!',
+          '{Closure: (String) => dynamic from Function \'addHello\': static.(await fetchUsername())}': 'Did you place the \'\$\' character correctly?',
+          '{Closure \'addHello\'(await fetchUsername())}': 'Did you place the \'\$\' character correctly?', 
+        }))
       ..add(makeReadable(
-          testLabel: 'Part 3',
-          testResult: await asyncDidCatchException(sayGoodbye),
-          readableErrors: {
-            typoMessage:
-                '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
-            'null': '$didNotImplement sayGoodbye?',
-            noCatch:
-                'Did you remember to call logoutUser within a try/catch block?',
-            'Instance of \'Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-            'Instance of \'_Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-          }))
+        testLabel: 'Part 3',
+        testResult: await asyncDidCatchException(sayGoodbye),
+        readableErrors: {
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+          'null': '$didNotImplement sayGoodbye?',
+          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
+          'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+        }
+      ))
       ..add(makeReadable(
-          testLabel: 'Part 3',
-          testResult: await asyncEquals(
-              expected: 'Success! Thanks, see you next time',
-              actual: await sayGoodbye(),
-              typoKeyword: 'Success'),
-          readableErrors: {
-            typoMessage:
-                '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
-            'null': '$didNotImplement sayGoodbye?',
-            noCatch:
-                'Did you remember to call logoutUser within a try/catch block?',
-            'Instance of \'Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-            'Instance of \'_Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-            'Instance of \'_Exception\'':
-                'CAUGHT Did you remember to return a string?',
-          }))
-      ..removeWhere((m) => m.contains(passed))
-      ..toList();
+        testLabel: 'Part 3',
+        testResult: await asyncEquals(
+          expected: 'Success! Thanks, see you next time',
+          actual: await sayGoodbye(),
+          typoKeyword: 'Success'
+        ),
+        readableErrors: {
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+          'null': '$didNotImplement sayGoodbye?',
+          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
+          'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Exception\'': 'CAUGHT Did you remember to return a string?',
+          }
+      ))
+    ..removeWhere((m) => m.contains(passed))
+    ..toList();
 
     if (messages.isEmpty) {
       _result(true);
@@ -1015,11 +989,13 @@ String makeReadable({
   }
 }
 
-void passIfNoMessages(List<String> messages, Map<String, String> readable) {
+void passIfNoMessages(List<String> messages, Map<String, String> readable){
   if (messages.isEmpty) {
     _result(true);
   } else {
-    final userMessages = messages
+
+    // ignore: omit_local_variable_types
+    List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
         .map((message) => readable[message]!)
         .toList();
@@ -1028,13 +1004,12 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
     _result(false, userMessages);
   }
 }
-
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
 Future<String> asyncEquals({
-  required String expected,
-  required dynamic actual,
+  expected,
+  actual,
   required String typoKeyword,
 }) async {
   var strActual = actual is String ? actual : actual.toString();
@@ -1046,7 +1021,7 @@ Future<String> asyncEquals({
     } else {
       return strActual;
     }
-  } catch (e) {
+  } catch(e) {
     return e.toString();
   }
 }
@@ -1055,7 +1030,7 @@ Future<String> asyncDidCatchException(Function fn) async {
   var caught = true;
   try {
     await fn();
-  } on Exception catch (_) {
+  } on Exception catch(_) {
     caught = false;
   }
 
@@ -1065,11 +1040,11 @@ Future<String> asyncDidCatchException(Function fn) async {
     return noCatch;
   }
 }
-```
-
-```text:end-dartpad:file-hint.txt
+{$ end test.dart $}
+{$ begin hint.txt $}
 The greetUser() and sayGoodbye() functions are asynchronous;
 addHello() isn't.
+{$ end hint.txt $}
 ```
 
 ## What's next?
