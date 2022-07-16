@@ -425,7 +425,7 @@ This lazy initialization is handy in a couple of cases:
 
 In the following example,
 if the `temperature` variable is never used,
-then the expensive `_readThermometer()` function is never called:
+then the expensive `readThermometer()` function is never called:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
