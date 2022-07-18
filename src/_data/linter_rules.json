@@ -193,10 +193,10 @@
     "name": "invariant_booleans",
     "description": "Conditions should not unconditionally evaluate to `true` or to `false`.",
     "group": "errors",
-    "maturity": "experimental",
+    "maturity": "deprecated",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DON'T** test for conditions that can be inferred at compile time or test the\nsame condition twice.\n\nConditional statements using a condition which cannot be anything but `false`\nhave the effect of making blocks of code non-functional.  If the condition\ncannot evaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false` and does not perform redundant tests.\nThis rule will hint to the test conflicting with the linted one.\n\n**BAD:**\n```dart\n// foo can't be both equal and not equal to bar in the same expression\nif(foo == bar && something && foo != bar) {...}\n```\n\n**BAD:**\n```dart\nvoid compute(int foo) {\n  if (foo == 4) {\n    doSomething();\n    // we know foo is equal to 4 at this point, so the next condition is always false\n    if (foo > 4) {...}\n    ...\n  }\n  ...\n}\n```\n\n**BAD:**\n```dart\nvoid compute(bool foo) {\n  if (foo) {\n    return;\n  }\n  doSomething();\n  // foo is always false here\n  if (foo){...}\n  ...\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOK() {\n  if (foo == bar) {\n    foo = baz;\n    if (foo != bar) {...}\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOk2() {\n  if (foo == bar) {\n    return;\n  }\n\n  foo = baz;\n  if (foo == bar) {...} // OK\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOk5() {\n  if (foo != null) {\n    if (bar != null) {\n      return;\n    }\n  }\n\n  if (bar != null) {...} // OK\n}\n```\n\n"
+    "details": "**DEPRECATED:** This rule is unmaintained and will be removed in a future Linter\nrelease.\n\n**DON'T** test for conditions that can be inferred at compile time or test the\nsame condition twice.\n\nConditional statements using a condition which cannot be anything but `false`\nhave the effect of making blocks of code non-functional.  If the condition\ncannot evaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false` and does not perform redundant tests.\nThis rule will hint to the test conflicting with the linted one.\n\n**BAD:**\n```dart\n// foo can't be both equal and not equal to bar in the same expression\nif(foo == bar && something && foo != bar) {...}\n```\n\n**BAD:**\n```dart\nvoid compute(int foo) {\n  if (foo == 4) {\n    doSomething();\n    // we know foo is equal to 4 at this point, so the next condition is always false\n    if (foo > 4) {...}\n    ...\n  }\n  ...\n}\n```\n\n**BAD:**\n```dart\nvoid compute(bool foo) {\n  if (foo) {\n    return;\n  }\n  doSomething();\n  // foo is always false here\n  if (foo){...}\n  ...\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOK() {\n  if (foo == bar) {\n    foo = baz;\n    if (foo != bar) {...}\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOk2() {\n  if (foo == bar) {\n    return;\n  }\n\n  foo = baz;\n  if (foo == bar) {...} // OK\n}\n```\n\n**GOOD:**\n```dart\nvoid nestedOk5() {\n  if (foo != null) {\n    if (bar != null) {\n      return;\n    }\n  }\n\n  if (bar != null) {...} // OK\n}\n```\n\n"
   },
   {
     "name": "iterable_contains_unrelated_type",
@@ -870,6 +870,15 @@
     "details": "\nDon't cast a nullable value to a non nullable type. This hides a null check\nand most of the time it is not what is expected.\n\n**BAD:**\n```dart\nclass A {}\nclass B extends A {}\n\nA? a;\nvar v = a as B;\nvar v = a as A;\n```\n\n**GOOD:**\n```dart\nclass A {}\nclass B extends A {}\n\nA? a;\nvar v = a! as B;\nvar v = a!;\n```\n\n"
   },
   {
+    "name": "combinators_ordering",
+    "description": "Sort combinator names alphabetically.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "\n**DO** sort combinator names alphabetically.\n\n**BAD:**\n```dart\nimport 'a.dart' show B, A hide D, C;\nexport 'a.dart' show B, A hide D, C;\n```\n\n**GOOD:**\n```dart\nimport 'a.dart' show A, B hide C, D;\nexport 'a.dart' show A, B hide C, D;\n```\n\n"
+  },
+  {
     "name": "conditional_uri_does_not_exist",
     "description": "Missing conditional import.",
     "group": "style",
@@ -1516,7 +1525,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "When building collections, it is preferable to use `if` elements rather than\nconditionals.\n\n**BAD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      isAndroid ? IconButton(icon: Icon(Icons.search)) : null,\n    ].where((child) => child != null).toList(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      if (isAndroid) IconButton(icon: Icon(Icons.search)),\n    ]\n  );\n}\n```\n"
+    "details": "When building collections, it is preferable to use `if` elements rather than\nconditionals.\n\n**BAD:**\n```dart\nvar list = ['a', 'b', condition ? 'c' : null].where((e) => e != null).toList();\n```\n\n**GOOD:**\n```dart\nvar list = ['a', 'b', if (condition) 'c'];\n```\n"
   },
   {
     "name": "prefer_if_null_operators",
@@ -2030,7 +2039,7 @@
       "recommended",
       "flutter"
     ],
-    "details": "\n**DON'T** override a method to do a super method invocation with same parameters.\n\n**BAD:**\n```dart\nclass A extends B {\n  @override\n  void foo() {\n    super.foo();\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass A extends B {\n  @override\n  void foo() {\n    doSomethingElse();\n  }\n}\n```\n\nIt's valid to override a member in the following cases:\n\n* if a type (return type or a parameter type) is not the exactly the same as the\nsuper method,\n* if the `covariant` keyword is added to one of the parameters,\n* if documentation comments are present on the member,\n* if the member has annotations other than `@override`.\n\n`noSuchMethod` is a special method and is not checked by this rule.\n\n"
+    "details": "\n**DON'T** override a method to do a super method invocation with same parameters.\n\n**BAD:**\n```dart\nclass A extends B {\n  @override\n  void foo() {\n    super.foo();\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass A extends B {\n  @override\n  void foo() {\n    doSomethingElse();\n  }\n}\n```\n\nIt's valid to override a member in the following cases:\n\n* if a type (return type or a parameter type) is not the exactly the same as the\n  super member,\n* if the `covariant` keyword is added to one of the parameters,\n* if documentation comments are present on the member,\n* if the member has annotations other than `@override`,\n* if the member is not annotated with `@protected`, and the super member is.\n\n`noSuchMethod` is a special method and is not checked by this rule.\n\n"
   },
   {
     "name": "unnecessary_parenthesis",
@@ -2155,7 +2164,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\nUse if-null operators to convert nulls to bools.\n\n**BAD:**\n```dart\nif (nullableBool == true) {\n}\nif (nullableBool != false) {\n}\n```\n\n**GOOD:**\n```dart\nif (nullableBool ?? false) {\n}\nif (nullableBool ?? true) {\n}\n```\n\n"
+    "details": "\nFrom [effective dart](https://dart.dev/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value):\n\nUse if-null operators to convert nulls to bools.\n\n**BAD:**\n```dart\nif (nullableBool == true) {\n}\nif (nullableBool != false) {\n}\n```\n\n**GOOD:**\n```dart\nif (nullableBool ?? false) {\n}\nif (nullableBool ?? true) {\n}\n```\n\n"
   },
   {
     "name": "use_is_even_rather_than_modulo",
