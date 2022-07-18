@@ -12,7 +12,7 @@ running on the [Dart Native platform](/overview#platform), on macOS or iOS,
 can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
 to call Objective-C APIs.
 
-`dart:ffi` allows Dart code to interact with native C APIs
+`dart:ffi` allows Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
 so it is possible to interact with Objective-C APIs using only `dart:ffi`.
 However, doing so involves a lot of boilerplate code,
