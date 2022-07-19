@@ -3,7 +3,6 @@ title: "Objective-C interop using package:ffigen"
 description: "To use Objective-C code in your Dart program, use package:ffigen."
 ffigen: "https://pub.dev/packages/ffigen"
 example: "https://github.com/dart-lang/ffigen/tree/master/example/objective_c"
-ffidoc: "https://api.dart.dev/stable/2.17.0/dart-ffi"
 appledoc: "https://developer.apple.com/documentation"
 ---
 
@@ -39,15 +38,13 @@ from the `package:ffigen` README for more details.
 
 ### Configuring ffigen
 
-Add `package:ffigen` as a dev dependency in your `pubspec.yaml` file
-and run `dart pub get`.
+First, add `package:ffiigen` as a dev dependency:
 
-```yaml
-dev_dependencies:
-  ffigen: ^6.0.1
+```terminal
+$ dart pub add --dev ffigen
 ```
 
-Then configure ffigen to generate bindings for the
+Then, configure ffigen to generate bindings for the
 Objective-C header containing the API.
 The ffigen configuration options go in your `pubspec.yaml` file,
 under a top-level `ffigen` entry.
@@ -64,11 +61,12 @@ ffigen:
       - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h'
 ```
 
-The `name` is the name of the native library wrapper class that will be
-generated, and the `description` will be used in the comments of that class.
+The `name` is the name of the native library wrapper class
+that will be generated,
+and the `description` will be used in the documentation for that class.
 The `output` is the path of the Dart file that ffigen will create.
-The entry point is the header file containing the API. For our example,
-it is the internal `AVAudioPlayer.h` header.
+The entry point is the header file containing the API.
+In this example, it is the internal `AVAudioPlayer.h` header.
 
 Another import thing you'll see,
 if you look at the [example config]({{page.example}}/pubspec.yaml),
@@ -118,9 +116,9 @@ ffigen will exclude all other interfaces.
 The `exclude` entries are all excluding the regular expression `'.*'`,
 which matches anything.
 The result is that nothing is included except `AVAudioPlayer`,
-and the things that it depends on, such as `NSObject` and `NSString`,
+and the things that it depends on, such as `NSObject` and `NSString`.
 So instead of several million lines of bindings,
-we end up with tens of thousands.
+you end up with tens of thousands.
 
 You can also use the `preamble` option
 to insert text at the top of the generated file.
@@ -187,7 +185,7 @@ the dylib path is pointing at an internal framework dylib.
 You can also load your own `.dylib` file,
 or if the library is statically linked into your app (often the case on iOS)
 you can use [`DynamicLibrary.process()`](
-{{page.ffidoc}}/DynamicLibrary/DynamicLibrary.process.html):
+{{site.dart-api}}/dart-ffi/DynamicLibrary/DynamicLibrary.process.html):
 
 ```dart
   final lib = AVFAudio(DynamicLibrary.process());
@@ -232,19 +230,13 @@ use the [`initWithContentsOfURL:error:`][] method.
         AVAudioPlayer.alloc(lib).initWithContentsOfURL_error_(fileUrl, nullptr);
 ```
 
-Objective-C uses reference counting for memory management (eg `retain` and
-`release`), but on the Dart side this is all handled automatically. The
-Dart wrapper object retains a reference to the Objective-C object, and
-when the Dart object is garbage collected it automatically releases that
-reference.
-
 Objective-C uses reference counting for memory management
 (through retain, release, and other functions),
 but on the Dart side memory management is handled automatically.
 The Dart wrapper object retains a reference to the Objective-C object,
 and when the Dart object is garbage collected,
 the generated code automatically releases that reference using a
-[`NativeFinalizer`]({{page.ffidoc}}/NativeFinalizer-class.html).
+[`NativeFinalizer`]({{site.dart-api}}/dart-ffi/NativeFinalizer-class.html).
 
 Next, look up the length of the audio file,
 which you'll need later to wait for the audio to finish.
