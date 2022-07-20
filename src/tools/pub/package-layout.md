@@ -480,11 +480,14 @@ If you have any of these, place them in a directory called `tool`.
   Instead keep `.dart_tool/` in `.gitignore`.
 {{site.alert.end}}
 
-The `.dart_tool/` directory is created when you run `dart pub get`.
-The directory is used by various tools for caching files specific to your project and/or local machine.
-The `.dart_tool/` directory should never be checked into source control, or copied between machines.
+The `.dart_tool/` directory is created when you run `dart pub get`
+and might be deleted at any time. Various tools use this directory
+for caching files specific to your project and/or local machine.
+The `.dart_tool/` directory should never be checked into
+source control, or copied between machines.
 
-It is also generally safe to delete the `.dart_tool/` directory, though some tools might need recompute the cached information before they work again. 
+It is also generally safe to delete the `.dart_tool/` directory,
+though some tools might need recompute the cached information. 
 
 **Example:** The [dart pub get](https://dart.dev/tools/pub/cmd/pub-get) tool
 will dowload and extract dependencies to a global `$PUB_CACHE` directory,
