@@ -477,7 +477,7 @@ If you have any of these, place them in a directory called `tool`.
 
 {{site.alert.info}}
   Do not check the `.dart_tool/` directory into source control.
-  Instead keep `.dart_tool/` in `.gitignore`.
+  Instead, keep `.dart_tool/` in `.gitignore`.
 {{site.alert.end}}
 
 The `.dart_tool/` directory is created when you run `dart pub get`
