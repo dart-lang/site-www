@@ -494,14 +494,16 @@ The `.dart_tool/package_config.json` file is used by other tools,
 such as analyzer, compiler, etc, when they need to resolve statments
 such as `import "package:foo/foo.dart"`.
 
-When developing a tool that needs project specific caching, it can be
-advantagous to use the `.dart_tool/` directory because most users already
-ignore the directory using `.gitignore`.
+When developing a tool that needs project-specific caching, 
+you might consider using the `.dart_tool/` directory 
+because most users already ignore it with `.gitignore`.
 When caching files for your tool in a user's `.dart_tool/` directory,
-you should always use a unique subdirectory.
-To avoid collisions, subdirectories of the form `.dart_tool/<tool_package_name>/`
+you should use a unique subdirectory. To avoid collisions,
+subdirectories of the form `.dart_tool/<tool_package_name>/`
 are reserved for the package named `<tool_package_name>`.
-If your tool is not distributed through [pub.dev](https://pub.dev), you may publish a placeholder package in order to reserve the reserve a unique name.
+If your tool isn't distributed through the [pub.dev site,]({{site.pub}})
+you might consider publishing a placeholder package in order to 
+reserve the unique name.
 
 **Example:** [`package:build`](https://pub.dev/packages/build) provides a
 framework for writing code generation steps.
