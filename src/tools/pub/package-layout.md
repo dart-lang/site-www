@@ -473,7 +473,7 @@ documentation generators, or other bits of automation.
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
 
-## Project specific caching for tools
+## Project-specific caching for tools
 
 {{site.alert.info}}
   Do not check the `.dart_tool/` directory into source control.
