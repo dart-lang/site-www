@@ -147,7 +147,7 @@
       children:
         - title: C interop
           permalink: /guides/libraries/c-interop
-        - title: Objective C interop
+        - title: Objective-C interop
           permalink: /guides/libraries/objective-c-interop
         - title: JavaScript interop
           permalink: /web/js-interop

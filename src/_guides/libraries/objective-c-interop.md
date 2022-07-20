@@ -34,7 +34,7 @@ and then load the library with `dart:ffi`.
 using [LLVM](https://llvm.org/),
 so you'll need to install that first.
 See [Installing LLVM]({{page.ffigen}}#installing-llvm)
-from the `package:ffigen` README for more details.
+from the ffigen README for more details.
 
 ### Configuring ffigen
 
@@ -166,7 +166,7 @@ Now you're ready to load and interact with the generated library.
 The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
 loads and plays audio files passed as command line arguments.
 The first step is to load the
-[dylib]({{page.appledoc}}/documentation/avfaudio?language=objc)
+[dylib]({{page.appledoc}}/avfaudio?language=objc)
 and instantiate the native `AVFAudio` library:
 
 ```dart
@@ -223,7 +223,7 @@ Methods with names starting with `init*` do the initialization.
 Some interfaces also provide `new*` methods that do both of these steps.
 
 To initialize the `AVAudioPlayer`,
-use the [`initWithContentsOfURL:error:`][] method.
+use the [`initWithContentsOfURL:error:`][] method:
 
 ```dart
     final player =
