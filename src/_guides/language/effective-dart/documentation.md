@@ -251,14 +251,14 @@ void start() {
 }
 {% endprettify %}
 
-### PREFER starting variable, getter, or setter comments with noun phrases.
+### PREFER starting non-boolean variables or properties with noun phrases.
 
 The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
 the *result* of that work, not the work itself.
 
 {:.good}
-<?code-excerpt "docs_good.dart (noun-phrases-for-var-etc)"?>
+<?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
 {% prettify dart tag=pre+code %}
 /// The current day of the week, where `0` is Sunday.
 int weekday;
@@ -267,10 +267,55 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
+### PREFER starting boolean variables or properties with "Whether" followed by noun or gerund phrases.
+
+The doc comment should clarify the states this variable represents. This is
+true even for getters which may do calculation or other work. What the caller
+cares about is the *result* of that work, not the work itself.
+
+{:.good}
+<?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
+{% prettify dart tag=pre+code %}
+/// Whether the modal is currently displayed to the user.
+bool isVisible;
+
+/// Whether the modal should confirm the user's intent on navigation.
+bool get shouldConfirm => ...
+
+/// Whether resizing the current browser window will also resize the modal.
+bool get canResize => ...
+{% endprettify %}
+
+{{site.alert.note}}
+  This guideline intentionally doesn't include using "Whether or not". In many
+  cases, usage of "or not" with "whether" is superfluous and can be omitted,
+  especially when used in this context.
+{{site.alert.end}}
+
+### DON'T write documentation for both the getter and setter of a property.
+
 If a property has both a getter and a setter, then create a doc comment for
 only one of them. `dart doc` treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
 `dart doc` discards the setter's doc comment.
+
+{:.good}
+<?code-excerpt "docs_good.dart (getter-and-setter)"?>
+{% prettify dart tag=pre+code %}
+/// The pH level of the water in the pool.
+///
+/// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
+int get phLevel => ...
+set phLevel(int level) => ...
+
+{:.bad}
+<?code-excerpt "docs_bad.dart (getter-and-setter)"?>
+/// The depth of the water in the pool, in meters.
+int get waterDepth => ...
+
+/// Updates the water depth to a total of [meters] in height.
+set waterDepth(int meters) => ...
+{% endprettify %}
 
 ### PREFER starting library or type comments with noun phrases.
 
