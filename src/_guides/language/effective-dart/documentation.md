@@ -307,9 +307,11 @@ and if both the getter and the setter have doc comments, then
 /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
 int get phLevel => ...
 set phLevel(int level) => ...
+{% endprettify %}
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (getter-and-setter)"?>
+{% prettify dart tag=pre+code %}
 /// The depth of the water in the pool, in meters.
 int get waterDepth => ...
 
