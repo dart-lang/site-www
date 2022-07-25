@@ -269,9 +269,9 @@ int get checkedCount => ...
 
 ### PREFER starting boolean variables or properties with "Whether" followed by noun or gerund phrases.
 
-The doc comment should clarify the states this variable represents. This is
-true even for getters which may do calculation or other work. What the caller
-cares about is the *result* of that work, not the work itself.
+The doc comment should clarify the states this variable represents. 
+This is true even for getters which may do calculation or other work. 
+What the caller cares about is the *result* of that work, not the work itself.
 
 {:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
