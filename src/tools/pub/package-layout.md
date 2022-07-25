@@ -84,12 +84,13 @@ Every package has a [_pubspec_](/tools/pub/pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
 package.
 
-Running [`pub get`](/tools/pub/cmd/pub-get),
-[`pub upgrade`](/tools/pub/cmd/pub-upgrade), or
-[`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package creates a
-**lockfile**, named `pubspec.lock`. If your package is an [application
-package](/tools/pub/glossary#application-package), check the lockfile into source
-control. Otherwise, don't.
+Running [`dart pub get`](/tools/pub/cmd/pub-get),
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), or
+[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package
+creates a **lockfile**, named `pubspec.lock`. 
+If your package is an 
+[application package](/tools/pub/glossary#application-package), 
+check the lockfile into source control. Otherwise, don't.
 
 For more information, see the [pubspec page](/tools/pub/pubspec).
 
