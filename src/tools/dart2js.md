@@ -263,4 +263,4 @@ To debug in Safari:
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 
-[Dart Package Configuration File.]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.mdx
+[Dart Package Configuration File.]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md
