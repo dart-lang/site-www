@@ -274,7 +274,7 @@ This is true even for getters which may do calculation or other work.
 What the caller cares about is the *result* of that work, not the work itself.
 
 {:.good}
-<?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
+<?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
 {% prettify dart tag=pre+code %}
 /// Whether the modal is currently displayed to the user.
 bool isVisible;
