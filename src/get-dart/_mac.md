@@ -3,7 +3,7 @@ and then run the following commands:
 
 ```terminal
 $ brew tap dart-lang/dart
-$ brew install dart
+$ brew install dart-sdk
 ```
 
 {{site.alert.important}}
