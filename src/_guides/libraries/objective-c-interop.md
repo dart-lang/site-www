@@ -76,7 +76,7 @@ In this example, it is the internal `AVAudioPlayer.h` header.
 
 Another import thing you'll see,
 if you look at the [example config]({{page.example}}/pubspec.yaml),
-is a lot of exclusions.
+is the exclude and include options.
 By default, ffigen will generate bindings for everything
 it finds in the header,
 and everything that those bindings depend on in other headers.
@@ -89,6 +89,26 @@ the ffigen config has fields that allow you to filter out
 all the functions, structs, enums, etc., that you're not interested in.
 For this example, we're only interested in `AVAudioPlayer`,
 so you can exclude everything else:
+
+```yaml
+  exclude-all-by-default: true
+  objc-interfaces:
+    include:
+      - 'AVAudioPlayer'
+```
+
+Since `AVAudioPlayer` is explicitly included like this,
+ffigen will exclude all other interfaces.
+The `exclude-all-by-default` flag tells ffigen to
+exclude everything else.
+The result is that nothing is included except `AVAudioPlayer`,
+and the things that it depends on, such as `NSObject` and `NSString`.
+So instead of several million lines of bindings,
+you end up with tens of thousands.
+
+If you need more granular control,
+you can exclude or include all the declarations individually,
+rather than using `exclude-all-by-default`:
 
 ```yaml
   functions:
@@ -112,19 +132,10 @@ so you can exclude everything else:
   unnamed-enums:
     exclude:
       - '.*'
-  objc-interfaces:
-    include:
-      - 'AVAudioPlayer'
 ```
 
-Since `AVAudioPlayer` is explicitly included like this,
-ffigen will exclude all other interfaces.
-The `exclude` entries are all excluding the regular expression `'.*'`,
+These `exclude` entries are all excluding the regular expression `'.*'`,
 which matches anything.
-The result is that nothing is included except `AVAudioPlayer`,
-and the things that it depends on, such as `NSObject` and `NSString`.
-So instead of several million lines of bindings,
-you end up with tens of thousands.
 
 You can also use the `preamble` option
 to insert text at the top of the generated file.
