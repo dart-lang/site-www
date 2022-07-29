@@ -25,6 +25,12 @@ see the [C interop guide](/guides/libraries/c-interop).
 This guide walks you through [an example]({{page.example}})
 that uses `package:ffigen` to generate bindings for
 [`AVAudioPlayer`]({{page.appledoc}}/avfaudio/avaudioplayer?language=objc).
+This API requires at least macOS SDK 10.7,
+so check your version and update xcode if necessary:
+
+```terminal
+$ xcodebuild -showsdks
+```
 
 Generating bindings to wrap an Objective-C API is similar to wrapping a C API.
 Direct `package:ffigen` at the header file that describes the API,
