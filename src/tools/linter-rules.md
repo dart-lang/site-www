@@ -102,6 +102,10 @@ Deprecated
 : These rules are no longer suggested for use
   and might be removed in a future linter release.
 
+## Quick fixes
+
+TODO: Quick fixes documentation
+
 ## Error rules
 
 These rules identify possible errors and other mistakes in your code.
