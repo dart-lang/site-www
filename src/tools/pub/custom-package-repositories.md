@@ -54,7 +54,7 @@ $ dart pub token add https://dart-packages.example.com --env-var MY_SECRET_TOKEN
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token stored in the environment variable "MY_SECRET_TOKEN".
 ```
 
-This ensures that `dart pub` doesn’t actually 
+This ensures that `dart pub` doesn't actually 
 store the secret token in its configuration, 
 instead it merely stores the fact that it
 should read the secret from the environment variable `$MY_SECRET_TOKEN`. 
