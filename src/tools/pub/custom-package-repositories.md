@@ -83,7 +83,7 @@ dependencies:
 In the example above `package:example_package` 
 will be fetched from `https://dart-packages.example.com`. 
 If authentication is required by this package repository, 
-see [Authenticating with a custom package repository][]
+see [Authenticating with a custom package repository](#token-authentication)
 for more information on how to authenticate your requests.
 
 You can also use the `dart pub add` command
@@ -92,8 +92,6 @@ with the `--hosted` flag to add a dependency from a custom package repository:
 ```terminal
 $ dart pub add example_package --hosted https://dart-packages.example.com
 ```
-
-[Authenticating with a custom package repository]: #authenticating-with-a-custom-package-repository
 
 ### Using multiple package repositories
 
