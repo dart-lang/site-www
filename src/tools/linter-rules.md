@@ -104,7 +104,17 @@ Deprecated
 
 ## Quick fixes
 
-TODO: Quick fixes documentation
+Some rules can be fixed automatically using quick fixes.
+A quick fix is an automated edit 
+targeted at fixing the issue
+reported by the linter rule.
+
+If the rule has a quick fix,
+it can be applied using [`dart fix`](/tools/dart-fix)
+or using your [editor with Dart support](/tools#ides-and-editors).
+To learn more, see [Quick fixes for analysis issues][].
+
+[Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
 
 ## Error rules
 
