@@ -7012,120 +7012,120 @@ A.TT(new A.wz(n,k)).Rz(0,q)
 n=l.querySelectorAll(o!=="all"?s+('[data-os="'+A.Ej(o)+'"]'):s)
 n.toString
 A.TT(new A.wz(n,k)).Rz(0,q)}},
-PS(b8){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6="data-version",b7="href"
-for(s=B.fj.gvc(),s=s.gkz(s),r=this.a,q="https://storage.googleapis.com/dart-archive/channels/"+r+"/release/",p=b8.a,o=t.bY,n=p.f,m=t.W,l=this.c,k=t.fD,j=b8.c,i=j==="stable",h=!i,j=j==="beta",r=r==="dev",g=b8.b.a;s.G();){f=s.gl()
-e=B.fj.q(0,f)
-if(e==null)e=B.iH
-for(d=e.length,c=f==="Windows",b=f==="macOS",a=0;a<d;++a){a0=e[a]
-if(B.OI.q(0,f)==="linux"){a1=a0.a
-if(a1==="ARMv7")a2=g<A.Gl(r?"2015-10-21":"2015-08-31").a
-else a2=!1
-if(a2)continue
-else if(a1==="ARMv8 (ARM64)"&&g<A.Gl("2017-03-09").a)continue
-else if(a1==="RISC-V (RV64GC)"){if(p.iM(0,A.jm(2,17,0,"258.0.dev"))<0)continue
-if(i)continue}}else if(b){a1=a0.a
-if(a1==="IA32"){if(p.iM(0,A.jm(2,7,0,null))>0)continue}else if(a1==="ARM64"&&p.iM(0,A.jm(2,14,1,null))<0)continue}else if(c)if(a0.a==="ARM64"){if(p.iM(0,A.jm(2,18,0,"41.0.dev"))<0)continue
-if(!h||j)continue}a1=l.tBodies
-a1.toString
-a1=new A.zO(a1,k)
-if(a1.gB(a1)===0)A.vh(A.Wp())
-a3=m.a(J.oD(a1.q(0,0),-1))
-a3.setAttribute(b6,n)
-a1=B.OI.q(0,f)
-a3.setAttribute("data-os",a1==null?"":a1)
-a1=a3.insertCell(-1)
-a1.toString
-o.a(a1)
-a1.textContent=n
-a2=document
-a4=a2.createElement("span")
-a4.toString
-a4.textContent=" ("+A.Ej(A.yl(b8))+")"
-a5=a4.classList
-a5.contains("muted").toString
-a5.add("muted")
-a1.appendChild(a4).toString
-a4=a3.insertCell(-1)
-a4.toString
-o.a(a4).textContent=f
-a4=a3.insertCell(-1)
-a4.toString
-o.a(a4)
-a5=a4.classList
-a5.contains("nowrap").toString
-a5.add("nowrap")
-a1=a0.a
-a4.textContent=a1
-a6=["Dart SDK","Debian package"]
-a4=a3.insertCell(-1)
-a4.toString
-o.a(a4)
-a5=a4.classList
-a5.contains("archives").toString
-a5.add("archives")
-for(a7=a0.b,a8=0;a8<2;++a8){a9=a6[a8]
-if(B.Nm.tg(a7,a9)){if(a9==="Dart Editor")continue
-b0=A.Ej(B.OI.q(0,a9))+"-"+A.Ej(B.OI.q(0,f))+"-"+A.Ej(B.OI.q(0,a1))
-b1=a9==="Debian package"
-if(b1)if(p.iM(0,A.jm(2,0,0,null))<0)continue
-else b0="dart_"+A.C5(b8)
-b2=q+A.C5(b8)+"/"+A.Ej(B.zu.q(0,a9))+"/"+b0+A.Ej(B.EL.q(0,a9))
-b3=a2.createElement("a")
-b3.textContent=a9
-b3.setAttribute(b7,b2)
-a4.appendChild(b3).toString
-b4=A.En(b8)
-if(!b1)b1=b4==null||b4>38976
-else b1=!1
-if(b1){b1=a2.createTextNode(" ")
-b1.toString
-a4.appendChild(b1).toString
-b3=a2.createElement("a")
-b3.textContent="(SHA-256)"
-b3.setAttribute(b7,b2+".sha256sum")
-a5=b3.classList
-a5.contains("sha").toString
-a5.add("sha")
-a4.appendChild(b3).toString}b1=a2.createElement("br")
-b1.toString
-a4.appendChild(b1).toString}}}}s=l.tBodies
+PS(b6){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4="data-version",b5="href"
+for(s=B.fj.gvc(),s=s.gkz(s),r=this.a,q="https://storage.googleapis.com/dart-archive/channels/"+r+"/release/",p=b6.a,o=t.bY,n=p.f,m=t.W,l=this.c,k=t.fD,j=b6.c==="stable",r=r==="dev",i=b6.b.a;s.G();){h=s.gl()
+g=B.fj.q(0,h)
+if(g==null)g=B.iH
+for(f=g.length,e=h==="Windows",d=h==="macOS",c=0;c<f;++c){b=g[c]
+if(B.OI.q(0,h)==="linux"){a=b.a
+if(a==="ARMv7")a0=i<A.Gl(r?"2015-10-21":"2015-08-31").a
+else a0=!1
+if(a0)continue
+else if(a==="ARMv8 (ARM64)"&&i<A.Gl("2017-03-09").a)continue
+else if(a==="RISC-V (RV64GC)"){if(p.iM(0,A.jm(2,17,0,"258.0.dev"))<0)continue
+if(j)continue}}else if(d){a=b.a
+if(a==="IA32"){if(p.iM(0,A.jm(2,7,0,null))>0)continue}else if(a==="ARM64"&&p.iM(0,A.jm(2,14,1,null))<0)continue}else if(e)if(b.a==="ARM64"){if(p.iM(0,A.jm(2,18,0,"41.0.dev"))<0)continue
+if(j)continue}a=l.tBodies
+a.toString
+a=new A.zO(a,k)
+if(a.gB(a)===0)A.vh(A.Wp())
+a1=m.a(J.oD(a.q(0,0),-1))
+a1.setAttribute(b4,n)
+a=B.OI.q(0,h)
+a1.setAttribute("data-os",a==null?"":a)
+a=a1.insertCell(-1)
+a.toString
+o.a(a)
+a.textContent=n
+a0=document
+a2=a0.createElement("span")
+a2.toString
+a2.textContent=" ("+A.Ej(A.yl(b6))+")"
+a3=a2.classList
+a3.contains("muted").toString
+a3.add("muted")
+a.appendChild(a2).toString
+a2=a1.insertCell(-1)
+a2.toString
+o.a(a2).textContent=h
+a2=a1.insertCell(-1)
+a2.toString
+o.a(a2)
+a3=a2.classList
+a3.contains("nowrap").toString
+a3.add("nowrap")
+a=b.a
+a2.textContent=a
+a4=["Dart SDK","Debian package"]
+a2=a1.insertCell(-1)
+a2.toString
+o.a(a2)
+a3=a2.classList
+a3.contains("archives").toString
+a3.add("archives")
+for(a5=b.b,a6=0;a6<2;++a6){a7=a4[a6]
+if(B.Nm.tg(a5,a7)){if(a7==="Dart Editor")continue
+a8=A.Ej(B.OI.q(0,a7))+"-"+A.Ej(B.OI.q(0,h))+"-"+A.Ej(B.OI.q(0,a))
+a9=a7==="Debian package"
+if(a9)if(p.iM(0,A.jm(2,0,0,null))<0)continue
+else a8="dart_"+A.C5(b6)
+b0=q+A.C5(b6)+"/"+A.Ej(B.zu.q(0,a7))+"/"+a8+A.Ej(B.EL.q(0,a7))
+b1=a0.createElement("a")
+b1.textContent=a7
+b1.setAttribute(b5,b0)
+a2.appendChild(b1).toString
+b2=A.En(b6)
+if(!a9)a9=b2==null||b2>38976
+else a9=!1
+if(a9){a9=a0.createTextNode(" ")
+a9.toString
+a2.appendChild(a9).toString
+b1=a0.createElement("a")
+b1.textContent="(SHA-256)"
+b1.setAttribute(b5,b0+".sha256sum")
+a3=b1.classList
+a3.contains("sha").toString
+a3.add("sha")
+a2.appendChild(b1).toString}a9=a0.createElement("br")
+a9.toString
+a2.appendChild(a9).toString}}}}s=l.tBodies
 s.toString
 k=new A.zO(s,k)
-a3=m.a(J.oD(k.gFV(k),-1))
-a3.setAttribute(b6,n)
-a3.setAttribute("data-os","api")
+a1=m.a(J.oD(k.gFV(k),-1))
+a1.setAttribute(b4,n)
+a1.setAttribute("data-os","api")
 k=document.createElement("span")
 k.toString
-k.textContent=" ("+A.Ej(A.yl(b8))+")"
-a5=k.classList
-a5.contains("muted").toString
-a5.add("muted")
-m=a3.insertCell(-1)
+k.textContent=" ("+A.Ej(A.yl(b6))+")"
+a3=k.classList
+a3.contains("muted").toString
+a3.add("muted")
+m=a1.insertCell(-1)
 m.toString
 o.a(m)
 m.textContent=n
 m.appendChild(k).toString
-k=a3.insertCell(-1)
+k=a1.insertCell(-1)
 k.toString
 o.a(k).textContent="---"
-k=a3.insertCell(-1)
+k=a1.insertCell(-1)
 k.toString
 o.a(k).textContent="---"
-k=a3.insertCell(-1)
+k=a1.insertCell(-1)
 k.toString
 o.a(k)
-a5=k.classList
-a5.contains("archives").toString
-a5.add("archives")
+a3=k.classList
+a3.contains("archives").toString
+a3.add("archives")
 p=p["["](0)
 o=A.J6()
 o.textContent="API docs"
-o.setAttribute(b7,q+p+"/api-docs/dartdocs-gen-api.zip")
+o.setAttribute(b5,q+p+"/api-docs/dartdocs-gen-api.zip")
 k.appendChild(o).toString
 l=l.querySelectorAll(".template")
 l.toString
-b5=new A.wz(l,t.Z)
-for(s=new A.a7(b5,b5.gB(b5)),r=A.Lh(s).c;s.G();){q=s.d
+b3=new A.wz(l,t.Z)
+for(s=new A.a7(b3,b3.gB(b3)),r=A.Lh(s).c;s.G();){q=s.d
 if(q==null)q=r.a(q)
 p=q.parentNode
 if(p!=null)p.removeChild(q).toString}}}
