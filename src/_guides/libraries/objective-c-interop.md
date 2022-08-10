@@ -1,15 +1,16 @@
 ---
-title: "Objective-C interop using package:ffigen"
-description: "To use Objective-C code in your Dart program, use package:ffigen."
+title: "Objective-C and Swift interop using package:ffigen"
+description: "To use Objective-C and Swift code in your Dart program, use package:ffigen."
 ffigen: "https://pub.dev/packages/ffigen"
 example: "https://github.com/dart-lang/ffigen/tree/master/example/objective_c"
+swift_example: "https://github.com/dart-lang/ffigen/tree/master/example/swift"
 appledoc: "https://developer.apple.com/documentation"
 ---
 
 Dart mobile, command-line, and server apps
 running on the [Dart Native platform](/overview#platform), on macOS or iOS,
 can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
-to call Objective-C APIs.
+to call Objective-C and Swift APIs.
 
 `dart:ffi` allows Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
@@ -20,13 +21,16 @@ the Dart FFI bindings for a given Objective-C API.
 To learn more about FFI and interfacing with C code directly,
 see the [C interop guide](/guides/libraries/c-interop).
 
-## Example: AVAudioPlayer
+It is also possible to generate Objective-C headers for Swift APIs,
+allowing `dart:ffi` and `package:ffigen` to interact with Swift.
+
+## Objective-C Example
 
 This guide walks you through [an example]({{page.example}})
 that uses `package:ffigen` to generate bindings for
 [`AVAudioPlayer`]({{page.appledoc}}/avfaudio/avaudioplayer?language=objc).
 This API requires at least macOS SDK 10.7,
-so check your version and update xcode if necessary:
+so check your version and update Xcode if necessary:
 
 ```terminal
 $ xcodebuild -showsdks
@@ -44,7 +48,7 @@ from the ffigen README for more details.
 
 ### Configuring ffigen
 
-First, add `package:ffiigen` as a dev dependency:
+First, add `package:ffigen` as a dev dependency:
 
 ```terminal
 $ dart pub add --dev ffigen
@@ -150,7 +154,7 @@ to insert some linter ignore rules at the top of the generated file:
 See the [ffigen readme]({{page.ffigen}}#configurations)
 for a full list of configuration options.
 
-### Generating the bindings
+### Generating the Dart bindings
 
 To generate the bindings, navigate to the example directory,
 and run ffigen:
@@ -284,6 +288,193 @@ then check the status, and wait for the duration of the audio file:
     }
 ```
 
+## Swift Example
+
+This [example]({{page.swift_example}}) demonstrates how to
+make a Swift class compatible with Objective-C,
+generate a wrapper header, and invoke it from Dart code.
+
+### Generating the Objective-C wrapper header
+
+Swift APIs can be made compatible with Objective-C,
+by using the `@objc` annotation.
+Make sure to make any classes or methods you want to use
+`public`, and have your classes extend `NSObject`.
+
+```swift
+import Foundation
+
+@objc public class SwiftClass: NSObject {
+  @objc public func sayHello() -> String {
+    return "Hello from Swift!";
+  }
+
+  @objc public var someField = 123;
+}
+```
+
+If you're trying to interact with a 3rd party library,
+and can't modify their code,
+you may need to write an Objective-C compatible wrapper class
+that exposes the methods you want to use.
+
+For more information about Objective-C / Swift interoperability,
+see the [Swift documentation][].
+
+Once you've made your class compatible,
+you can generate an Objective-C wrapper header.
+You can do this using Xcode,
+or using the command line Swift compiler, `swiftc`.
+For this example, we'll use the command line:
+
+```terminal
+$ swiftc -c swift_api.swift             \
+    -module-name swift_module           \
+    -emit-objc-header-path swift_api.h  \
+    -emit-library -o libswiftapi.dylib
+```
+
+This command compiles our swift file, `swift_api.swift`,
+and generates a wrapper header, `swift_api.h`.
+It also generates the dylib we're going to load later,
+`libswiftapi.dylib`.
+
+You can verify that the header generated correctly
+by opening it checking the interfaces are what you expect.
+Towards the bottom of the file,
+you should see something like this:
+
+```objc
+SWIFT_CLASS("_TtC12swift_module10SwiftClass")
+@interface SwiftClass : NSObject
+- (NSString * _Nonnull)sayHello SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSInteger someField;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+```
+
+If the interface is missing, or doesn't have all its methods,
+make sure they're all annotated with `@objc` and `public`.
+
+### Configuring ffigen
+
+Ffigen only sees the Objective-C wrapper header, `swift_api.h`.
+So most of this config will look similar
+to our Objective-C example,
+including setting the language to `objc`.
+
+```yaml
+ffigen:
+  name: SwiftLibrary
+  description: Bindings for swift_api.
+  language: objc
+  output: 'swift_api_bindings.dart'
+  exclude-all-by-default: true
+  objc-interfaces:
+    include:
+      - 'SwiftClass'
+    module:
+      'SwiftClass': 'swift_module'
+  headers:
+    entry-points:
+      - 'swift_api.h'
+  preamble: |
+    // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
+```
+
+As before, we set language to `objc`,
+set the entry point to our header,
+exclude everything by default,
+and then explicitly include our interface.
+
+There is one important difference between the config
+for a wrapped Swift API and a pure Objective-C API:
+the `objc-interfaces` -> `module` option.
+When `swiftc` compiles the library,
+it gives the Objective-C interface a module prefix.
+Internally, `SwiftClass` is actually registered as
+`swift_module.SwiftClass`.
+So you need to tell ffigen about this prefix,
+so it loads the correct class from the dylib.
+
+Not every class gets this prefix.
+For example, `NSString` and `NSObject` won't
+get a module prefix, because they are
+internal classes.
+This is why the `module` option is a map
+from class name to module prefix.
+You can also use regular expressions to match
+multiple class names at once.
+
+The module prefix will be whatever you passed to
+`swiftc` in the `-module-name` flag.
+In our case it is `swift_module`.
+If you don't explicitly set this flag,
+it defaults to the name of the swift file.
+
+If you aren't sure what the module name is,
+you can also check the generated Objective-C header.
+Above our `@interface`, there is a `SWIFT_CLASS` macro:
+
+```objc
+SWIFT_CLASS("_TtC12swift_module10SwiftClass")
+@interface SwiftClass : NSObject
+```
+
+The string inside the macro is a bit cryptic, but you can
+see it contains the module name and the class name:
+"\_TtC12***swift\_module***10***SwiftClass***".
+
+Swift can even demangle this name for us:
+
+```terminal
+$ echo "_TtC12swift_module10SwiftClass" | swift demangle
+```
+
+This outputs `swift_module.SwiftClass`.
+
+### Generating the Dart bindings
+
+As before, navigate to the example directory,
+and run ffigen:
+
+```terminal
+$ dart run ffigen
+```
+
+This will generate `swift_api_bindings.dart`.
+
+### Using the bindings
+
+Interacting with these bindings is exactly the same
+as for a normal Objective-C library:
+
+```dart
+import 'dart:ffi';
+import 'swift_api_bindings.dart';
+
+void main() {
+  final lib = SwiftLibrary(DynamicLibrary.open('libswiftapi.dylib'));
+  final object = SwiftClass.new1(lib);
+  print(object.sayHello());
+  print('field = ${object.someField}');
+  object.someField = 456;
+  print('field = ${object.someField}');
+}
+```
+
+Note that the module name is not mentioned
+in the generated Dart API.
+It's only used internally,
+to load the class from the dylib.
+
+Now you can run the example using:
+
+```terminal
+$ dart run example.dart
+```
+
 [`initWithContentsOfURL:error:`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387281-initwithcontentsofurl?language=objc
 [`duration`]: {{page.appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
 [`play`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
+[Swift documentation]: {{page.appledoc}}/swift/importing-swift-into-objective-c
