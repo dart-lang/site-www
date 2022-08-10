@@ -36,6 +36,10 @@ _This rule is currently **{{lint.maturity}}**._
 
 {% endif %}
 
+{% if lint.fixStatus == "hasFix" %}
+<em>This rule has a [quick fix](#quick-fixes) available.</em>
+{% endif %}
+
 {% if lint.incompatible != empty %}
 
 {% assign incompatible_rules = "" %}
