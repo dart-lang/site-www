@@ -12,7 +12,7 @@ can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
 to call Objective-C APIs.
 
 {{site.alert.note}}
-  **Note**: This interop feature is **experimental**,
+  This interop feature is **experimental**,
   and [in active development][https://github.com/dart-lang/sdk/issues/49673].
 {{site.alert.end}}
 
