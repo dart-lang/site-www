@@ -13,7 +13,7 @@ to call Objective-C APIs.
 
 {{site.alert.note}}
   This interop feature is **experimental**,
-  and [in active development][https://github.com/dart-lang/sdk/issues/49673].
+  and [in active development](https://github.com/dart-lang/sdk/issues/49673).
 {{site.alert.end}}
 
 `dart:ffi` allows Dart code to interact with native C APIs.
