@@ -21,7 +21,7 @@ the Dart FFI bindings for a given Objective-C API.
 To learn more about FFI and interfacing with C code directly,
 see the [C interop guide](/guides/libraries/c-interop).
 
-It is also possible to generate Objective-C headers for Swift APIs,
+You can generate Objective-C headers for Swift APIs,
 allowing `dart:ffi` and `package:ffigen` to interact with Swift.
 
 ## Objective-C Example
@@ -81,7 +81,7 @@ In this example, it is the internal `AVAudioPlayer.h` header.
 Another import thing you'll see,
 if you look at the [example config]({{page.example}}/pubspec.yaml),
 is the exclude and include options.
-By default, ffigen will generate bindings for everything
+By default, `ffigen` generates bindings for everything
 it finds in the header,
 and everything that those bindings depend on in other headers.
 Most Objective-C libraries depend on Apple's internal libraries,
@@ -102,16 +102,16 @@ so you can exclude everything else:
 ```
 
 Since `AVAudioPlayer` is explicitly included like this,
-ffigen will exclude all other interfaces.
-The `exclude-all-by-default` flag tells ffigen to
+`ffigen` excludes all other interfaces.
+The `exclude-all-by-default` flag tells `ffigen` to
 exclude everything else.
 The result is that nothing is included except `AVAudioPlayer`,
-and the things that it depends on, such as `NSObject` and `NSString`.
+and its dependencies, such as `NSObject` and `NSString`.
 So instead of several million lines of bindings,
 you end up with tens of thousands.
 
 If you need more granular control,
-you can exclude or include all the declarations individually,
+you can exclude or include all declarations individually,
 rather than using `exclude-all-by-default`:
 
 ```yaml
@@ -138,7 +138,7 @@ rather than using `exclude-all-by-default`:
       - '.*'
 ```
 
-These `exclude` entries are all excluding the regular expression `'.*'`,
+These `exclude` entries all exclude the regular expression `'.*'`,
 which matches anything.
 
 You can also use the `preamble` option
@@ -288,7 +288,7 @@ then check the status, and wait for the duration of the audio file:
     }
 ```
 
-## Swift Example
+## Swift example
 
 This [example]({{page.swift_example}}) demonstrates how to
 make a Swift class compatible with Objective-C,
@@ -315,7 +315,7 @@ import Foundation
 
 If you're trying to interact with a 3rd party library,
 and can't modify their code,
-you may need to write an Objective-C compatible wrapper class
+you might need to write an Objective-C compatible wrapper class
 that exposes the methods you want to use.
 
 For more information about Objective-C / Swift interoperability,
@@ -325,7 +325,7 @@ Once you've made your class compatible,
 you can generate an Objective-C wrapper header.
 You can do this using Xcode,
 or using the command line Swift compiler, `swiftc`.
-For this example, we'll use the command line:
+This example uses the command line:
 
 ```terminal
 $ swiftc -c swift_api.swift             \
@@ -334,15 +334,15 @@ $ swiftc -c swift_api.swift             \
     -emit-library -o libswiftapi.dylib
 ```
 
-This command compiles our swift file, `swift_api.swift`,
+This command compiles the swift file, `swift_api.swift`,
 and generates a wrapper header, `swift_api.h`.
 It also generates the dylib we're going to load later,
 `libswiftapi.dylib`.
 
 You can verify that the header generated correctly
-by opening it checking the interfaces are what you expect.
+by opening it, and checking that the interfaces are what you expect.
 Towards the bottom of the file,
-you should see something like this:
+you should see something like the following:
 
 ```objc
 SWIFT_CLASS("_TtC12swift_module10SwiftClass")
@@ -359,8 +359,8 @@ make sure they're all annotated with `@objc` and `public`.
 ### Configuring ffigen
 
 Ffigen only sees the Objective-C wrapper header, `swift_api.h`.
-So most of this config will look similar
-to our Objective-C example,
+So most of this config looks similar
+to the Objective-C example,
 including setting the language to `objc`.
 
 ```yaml
@@ -382,39 +382,39 @@ ffigen:
     // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
-As before, we set language to `objc`,
-set the entry point to our header,
+As before, set the language to `objc`,
+and the entry point to the header;
 exclude everything by default,
-and then explicitly include our interface.
+and explicitly include the generated interface.
 
-There is one important difference between the config
+One important difference between the config
 for a wrapped Swift API and a pure Objective-C API:
 the `objc-interfaces` -> `module` option.
 When `swiftc` compiles the library,
 it gives the Objective-C interface a module prefix.
 Internally, `SwiftClass` is actually registered as
 `swift_module.SwiftClass`.
-So you need to tell ffigen about this prefix,
+You need to tell `ffigen` about this prefix,
 so it loads the correct class from the dylib.
 
 Not every class gets this prefix.
 For example, `NSString` and `NSObject` won't
 get a module prefix, because they are
 internal classes.
-This is why the `module` option is a map
+This is why the `module` option maps
 from class name to module prefix.
 You can also use regular expressions to match
 multiple class names at once.
 
-The module prefix will be whatever you passed to
+The module prefix is whatever you passed to
 `swiftc` in the `-module-name` flag.
-In our case it is `swift_module`.
+In this example, it's `swift_module`.
 If you don't explicitly set this flag,
 it defaults to the name of the swift file.
 
 If you aren't sure what the module name is,
 you can also check the generated Objective-C header.
-Above our `@interface`, there is a `SWIFT_CLASS` macro:
+Above the `@interface`, you'll find a `SWIFT_CLASS` macro:
 
 ```objc
 SWIFT_CLASS("_TtC12swift_module10SwiftClass")
@@ -442,7 +442,7 @@ and run ffigen:
 $ dart run ffigen
 ```
 
-This will generate `swift_api_bindings.dart`.
+This generates `swift_api_bindings.dart`.
 
 ### Using the bindings
 
