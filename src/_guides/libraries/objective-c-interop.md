@@ -385,7 +385,7 @@ ffigen:
 As before, set the language to `objc`,
 and the entry point to the header;
 exclude everything by default,
-and explicitly include the generated interface.
+and explicitly include the interface you are binding.
 
 One important difference between the config
 for a wrapped Swift API and a pure Objective-C API:
