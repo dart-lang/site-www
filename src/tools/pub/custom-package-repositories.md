@@ -3,7 +3,7 @@ title: Custom package repositories
 description: "How Dart's package management tool, pub, works with custom package repositories."
 ---
 
-The `dart pub` tool has support for third-party package repositories.
+The `dart pub` tool supports third-party package repositories.
 A package repository is a server that hosts Dart packages
 for consumption by the `dart pub` tool.
 The default package repository used, [pub.dev]({{site.pub}}), 
@@ -20,12 +20,12 @@ including in some of the following scenarios:
 2. Tight control of dependencies in enterprise environments.
 3. Secure environments without public internet access.
 
-It is also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
+It's also common to use [git-dependencies](/tools/pub/dependencies#git-packages) 
 for hosting private packages, however, 
 the `dart pub` tool doesn't support resolving versions against a git repository; 
 it just fetches a specific revision of the git repository.
 Therefore, when many people are collaborating
-it is often preferable to use a private package repository.
+it's often preferable to use a private package repository.
 
 ## Authenticating with a custom package repository {#token-authentication}
 
@@ -62,8 +62,8 @@ This reduces the risk that secrets are accidentally leaked
 if the execution environment is shared between CI jobs.
 
 {{site.alert.note}}
-  When the `dart pub` tool does not have a token for a given repository URL,
-  it will attempt to make requests without authentication.
+  When the `dart pub` tool doesn't have a token for a given repository URL,
+  it attempts to make requests without authentication.
 {{site.alert.end}}
 
 
@@ -71,7 +71,8 @@ if the execution environment is shared between CI jobs.
 
 To fetch a package from custom package repository,
 you must specify the _hosted-url_ for the package in `pubspec.yaml`, 
-using the syntax for [hosted packages](/tools/pub/dependencies#hosted-packages):
+using the syntax for [hosted packages](/tools/pub/dependencies#hosted-packages).
+For example:
 
 ```yaml
 dependencies:
@@ -80,8 +81,8 @@ dependencies:
     version: ^1.4.0
 ```
 
-In the example above `package:example_package` 
-will be fetched from `https://dart-packages.example.com`. 
+In the previous example, `package:example_package` 
+is fetched from `https://dart-packages.example.com`. 
 If authentication is required by this package repository, 
 see [Authenticating with a custom package repository](#token-authentication)
 for more information on how to authenticate your requests.
@@ -95,7 +96,7 @@ $ dart pub add example_package --hosted https://dart-packages.example.com
 
 ### Using multiple package repositories
 
-It is also possible to fetch different dependencies
+You can also fetch different dependencies
 from different package repositories, 
 as the _hosted-url_ can be specified for each dependency:
 
@@ -113,18 +114,18 @@ This enables you to keep private packages on a private package repository
 while using the most up-to-date public packages as dependencies. 
 
 However, conflicts can easily arise if your dependencies require
-a package with the same name from different repositories,
-such as if package `retry` requires `meta` from pub.dev, 
+a package with the same name from different repositories.
+For example, if package `retry` requires `meta` from pub.dev, 
 and `example_package` requires `meta` from `https://dart-packages.example.com`.
 Therefore, if mirroring any packages into a private package repository 
-it is frequently necessary to mirror all dependencies
+it's often necessary to mirror all dependencies
 and either update the `dependencies` section of each package, 
 or [override the default package repository](#default-override).
 
 {{site.alert.note}}
   To ensure that public packages are usable to everyone, 
   the official package repository, [pub.dev]({{site.pub}}),
-  does not allow publication of packages
+  doesn't allow publication of packages
   with git-dependencies or hosted-dependencies from custom package repositories.
 
   However, such packages can be published to a custom package repository.
@@ -135,7 +136,7 @@ or [override the default package repository](#default-override).
 
 To publish a package to a custom package repository
 instead of [pub.dev]({{site.pub}}),
-you specify the 
+specify the 
 [`publish_to`](/tools/pub/pubspec#publish_to) property in `pubspec.yaml`.
 If authentication is enabled,
 publishing uses the same [token authentication](#token-authentication)
@@ -143,8 +144,8 @@ as retrieving packages.
 
 {{site.alert.note}}
   To prevent accidental publication to [pub.dev]({{site.pub}})
-  when working on private package 
-  it is a good idea to specify this early in the development.
+  when working on a private package, 
+  it's a good idea to specify this early in the development.
 {{site.alert.end}}
 
 To prepare a package for publishing to `https://dart-packages.example.com`,
@@ -185,7 +186,7 @@ By default, `dart pub` retrieves dependencies from and publishes packages
 to the [pub.dev site]({{site.pub}})
 unless the hosted-dependency syntax
 is used to specify a custom package repository.
-However, it’s possible to override the default package repository using the
+However, you can override the default package repository using the
 [`PUB_HOSTED_URL`](/tools/pub/environment-variables) environment variable.
 
 This approach is particularly useful when mirroring all packages
