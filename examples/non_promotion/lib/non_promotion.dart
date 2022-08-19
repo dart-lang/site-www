@@ -240,6 +240,5 @@ void miscDeclAnalyzedButNotTested() {
       };
     }
     // #enddocregion closure-write-capture
-
   }
 }
