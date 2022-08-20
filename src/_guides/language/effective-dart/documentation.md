@@ -251,7 +251,7 @@ void start() {
 }
 {% endprettify %}
 
-### PREFER starting non-boolean variables or properties with noun phrases.
+### PREFER starting a non-boolean variable or property comment with a noun phrase.
 
 The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
@@ -267,7 +267,7 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-### PREFER starting boolean variables or properties with "Whether" followed by noun or gerund phrases.
+### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase.
 
 The doc comment should clarify the states this variable represents. 
 This is true even for getters which may do calculation or other work. 
