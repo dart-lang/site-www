@@ -166,7 +166,7 @@ the mention of StreamSubscription?]
 This function returns a `Stream`.
 When that stream is listened to, the body starts running.
 It repeatedly delays for the requested interval and then yields the next number.
-If the `count` parameter is omitted, there is no stop condition on the loop,
+If the `maxCount` parameter is omitted, there is no stop condition on the loop,
 so the stream outputs increasingly larger numbers forever -
 or until the listener cancels its subscription.
 

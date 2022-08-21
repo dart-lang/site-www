@@ -181,13 +181,42 @@ class C0 {
 class C1 {
   C1(this.weekday);
 
-// #docregion noun-phrases-for-var-etc
+// #docregion noun-phrases-for-non-boolean-var-etc
   /// The current day of the week, where `0` is Sunday.
   int weekday;
 
   /// The number of checked buttons on the page.
   int get checkedCount => ellipsis();
-// #enddocregion noun-phrases-for-var-etc
+// #enddocregion noun-phrases-for-non-boolean-var-etc
+}
+
+//----------------------------------------------------------------------------
+
+class Modal {
+  Modal(this.isVisible);
+
+// #docregion noun-phrases-for-boolean-var-etc
+  /// Whether the modal is currently displayed to the user.
+  bool isVisible;
+
+  /// Whether the modal should confirm the user's intent on navigation.
+  bool get shouldConfirm => ellipsis();
+
+  /// Whether resizing the current browser window will also resize the modal.
+  bool get canResize => ellipsis();
+// #enddocregion noun-phrases-for-boolean-var-etc
+}
+
+//----------------------------------------------------------------------------
+
+class Pool {
+// #docregion getter-and-setter
+  /// The pH level of the water in the pool.
+  ///
+  /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
+  int get phLevel => ellipsis();
+  set phLevel(int level) => ellipsis();
+// #enddocregion getter-and-setter
 }
 
 //----------------------------------------------------------------------------
