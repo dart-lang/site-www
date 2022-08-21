@@ -313,7 +313,7 @@ import Foundation
 }
 ```
 
-If you're trying to interact with a 3rd party library,
+If you're trying to interact with a third-party library,
 and can't modify their code,
 you might need to write an Objective-C compatible wrapper class
 that exposes the methods you want to use.
@@ -324,7 +324,7 @@ see the [Swift documentation][].
 Once you've made your class compatible,
 you can generate an Objective-C wrapper header.
 You can do this using Xcode,
-or using the command line Swift compiler, `swiftc`.
+or using the Swift command-line compiler, `swiftc`.
 This example uses the command line:
 
 ```terminal
@@ -334,13 +334,13 @@ $ swiftc -c swift_api.swift             \
     -emit-library -o libswiftapi.dylib
 ```
 
-This command compiles the swift file, `swift_api.swift`,
+This command compiles the Swift file, `swift_api.swift`,
 and generates a wrapper header, `swift_api.h`.
-It also generates the dylib we're going to load later,
+It also generates the dylib you're going to load later,
 `libswiftapi.dylib`.
 
-You can verify that the header generated correctly
-by opening it, and checking that the interfaces are what you expect.
+You can verify that the header generated correctly by opening it, 
+and checking that the interfaces are what you expect.
 Towards the bottom of the file,
 you should see something like the following:
 
@@ -398,9 +398,9 @@ You need to tell `ffigen` about this prefix,
 so it loads the correct class from the dylib.
 
 Not every class gets this prefix.
-For example, `NSString` and `NSObject` won't
-get a module prefix, because they are
-internal classes.
+For example, `NSString` and `NSObject` 
+won't get a module prefix, 
+because they are internal classes.
 This is why the `module` option maps
 from class name to module prefix.
 You can also use regular expressions to match
@@ -410,7 +410,7 @@ The module prefix is whatever you passed to
 `swiftc` in the `-module-name` flag.
 In this example, it's `swift_module`.
 If you don't explicitly set this flag,
-it defaults to the name of the swift file.
+it defaults to the name of the Swift file.
 
 If you aren't sure what the module name is,
 you can also check the generated Objective-C header.
@@ -423,7 +423,7 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 
 The string inside the macro is a bit cryptic, but you can
 see it contains the module name and the class name:
-"\_TtC12***swift\_module***10***SwiftClass***".
+`"\_TtC12***swift\_module***10***SwiftClass***"`.
 
 Swift can even demangle this name for us:
 
