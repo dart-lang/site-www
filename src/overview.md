@@ -186,10 +186,9 @@ Dart's compiler technology lets you run code in different ways:
   Dart includes both a Dart VM with just-in-time (JIT) compilation and
   an ahead-of-time (AOT) compiler for producing machine code.
 
-* **Web platform**: For apps targeting the web,
-  Dart includes both a development time compiler (dartdevc) and
-  a production time compiler (dart2js).
-  Both compilers translate Dart into JavaScript.
+* **Web platform**: For apps targeting the web, Dart can compile for
+  development or production purposes. Its web compiler translates Dart
+  into JavaScript.
 
 <img 
   src="/assets/img/Dart-platforms.svg" 
@@ -208,12 +207,11 @@ The Dart VM offers a just-in-time compiler (JIT) with
 incremental recompilation (enabling hot reload), live metrics collections
 (powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
-When apps are ready to be deployed to production—whether
-you're publishing to an app store 
-or deploying to a production backend—the 
-Dart AOT compiler enables ahead-of-time compilation to
-native ARM or x64 machine code.
-Your AOT-compiled app launches with consistent, short startup time.
+When apps are ready to be deployed to production—whether you're
+publishing to an app store or deploying to a production backend—the 
+Dart ahead-of-time (AOT) compiler can compile to native ARM or x64
+machine code. Your AOT-compiled app launches with consistent, short
+startup time.
 
 The AOT-compiled code runs inside an efficient Dart runtime that
 enforces the sound Dart type system and
@@ -233,15 +231,16 @@ JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
-Dart web contains both an incremental dev compiler enabling a fast developer
-cycle, and an optimizing production compiler, dart2js, which compiles Dart
-code to fast, compact, deployable JavaScript using techniques such as dead-code
-elimination.
+Dart web contains two compiliation modes:
+
+* An incremental development compiler enabling a fast developer cycle
+* An optimizing production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These effeciencies come from
+  techniques such as dead-code elimination.
 
 More information:
 * [Get started: Web apps](/tutorials/web/get-started)
-* [dart2js compiler](/tools/dart2js)
-* [dartdevc](/tools/dartdevc)
+* [`dart compile js`](/tools/dart-compile#js)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 
