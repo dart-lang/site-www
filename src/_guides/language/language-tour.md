@@ -2476,21 +2476,23 @@ When exactly do assertions work?
 That depends on the tools and framework you're using:
 
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
-* Development-only tools such as [dartdevc][]
+* Development-only tools such as [`webdev serve`][]
   typically enable assertions by default.
-* Some tools, such as [`dart run`][] and [dart2js][]
+* Some tools, such as [`dart run`][] and [`dart compile js`][]
   support assertions through a command-line flag: `--enable-asserts`.
 
 In production code, assertions are ignored, and
 the arguments to `assert` aren't evaluated.
 
+[webdev serve]: /tools/webdev#serve
+[dart compile js]: /tools/dart-compile#js
 
 ## Exceptions
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn’t
-caught, the [isolate](#isolates) that raised the exception is suspended, and
-typically the isolate and its program are terminated.
+caught, the [isolate](#isolates) that raised the exception is suspended,
+and typically the isolate and its program are terminated.
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
 Methods don't declare which exceptions they might throw, and you aren't
@@ -4208,9 +4210,9 @@ Here are some cases when you might use deferred loading:
 * To load rarely used functionality, such as optional screens and dialogs.
 
 {{site.alert.warn}}
-  **Only dart2js supports deferred loading.**
-  Flutter, the Dart VM, and dartdevc don't support deferred loading.
-  For more information, see
+  **Only `dart compile js` supports deferred loading.**
+  Flutter and the Dart VM don't support deferred loading.
+  To learn more, see
   [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
   [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
 {{site.alert.end}}
@@ -4790,7 +4792,6 @@ To learn more about Dart's core libraries, see
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
-[dart2js]: /tools/dart2js
 [`dart run`]: /tools/dart-run
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
