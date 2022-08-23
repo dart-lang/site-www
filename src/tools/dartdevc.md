@@ -181,14 +181,14 @@ minimizes the amount of code that your app loads.
 
 ### What kind of modules dartdevc produces
 
-When run with [webdev][], dartdevc generates
+When run with [`webdev`][], dartdevc generates
 [AMD modules.](https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd)
 dartdevc can also generate
 [ES6 (Harmony)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) and
 [CommonJS (Node)](https://nodejs.org/docs/latest/api/modules.html#modules_modules)
 modules, but these options aren't currently supported by the
 [build_web_compilers][] package
-used with the [build_runner][] and [webdev][] tools.
+used with the [build_runner][] and [`webdev`][] tools.
 
 
 ## Resources
