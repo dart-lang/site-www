@@ -271,7 +271,7 @@ To learn more about named parameters and arguments, see the
 ### Dart 2.18
 
 Dart 2.18 improved null safety inference by allowing information flow between arguments in generic function calls. 
-Leaving argument type unspecified within an invocation previously triggered type errors, citing potential null occurences.
+Leaving argument type unspecified within an invocation previously triggered type errors, citing potential null occurrences.
 The compiler can now infer argument type from other values in an invocation, so specifying argument type inline is no longer necessary. 
 For more information, see the [null safety homepage][].
 

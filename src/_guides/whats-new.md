@@ -30,10 +30,13 @@ see [Dart 2.18: Objective-C & Swift interop][], and the [change log][].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Updated the [language evolution page] to reflect type inference enhancements
+* Updated the [language evolution page] to reflect null safety inference improvements.
+* All mention of `.packages` has been removed from the documentation, as it is fully de-supported.
+  *  See [][] if you still need to generate a `.packages` file for historical depedencies.
 
 
 [language evolution page]: /guides/language/evolution
+[]: /
 
 ## May 11, 2022: 2.17 release
 
