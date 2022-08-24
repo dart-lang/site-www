@@ -1426,7 +1426,12 @@ enableFlags(bold: true);
   That support is deprecated and will be removed, 
   so we recommend that you **[use `=` to specify default values.][use =]**
 
+  If you have the [`prefer_equal_for_default_values`][] linter rule enabled,
+  you can use [`dart fix`][] to migrate to the suggested `=` syntax.
+
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
+[`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
+  [`dart fix`]: /tools/dart-fix
 {{site.alert.end}}
 
 {% comment %}
