@@ -1420,10 +1420,11 @@ enableFlags(bold: true);
 ```
 
 {{site.alert.info}}
-  **Deprecation note:** Old code might use a colon (`:`) instead of `=` to set
-  default values of named parameters. The reason is that originally, only `:`
-  was supported for named parameters. That support might be deprecated, so we
-  recommend that you **[use `=` to specify default values.][use =]**
+  **Deprecation note:** Old code might use a colon (`:`) instead of `=`
+  to specify default values of named parameters. 
+  The reason is that originally, only `:` was supported for named parameters. 
+  That support is deprecated and will be removed, 
+  so we recommend that you **[use `=` to specify default values.][use =]**
 
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
 {{site.alert.end}}
