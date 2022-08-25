@@ -17,6 +17,24 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## August 30, 2022: 2.18 release
+
+This section lists notable changes made from May 12, 2022,
+through August 30, 2022.
+For details about the 2.18 release,
+see [Dart 2.18: Objective-C & Swift interop][], and the [change log][].
+
+[Dart 2.18: Objective-C & Swift interop]: https://medium.com/dartlang/dart-2-18-f4b3101f146c
+[change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Updated the [language evolution page] to reflect type inference enhancements
+
+
+[language evolution page]: /guides/language/evolution
+
 ## May 11, 2022: 2.17 release
 
 This section lists notable changes made from February 4, 2022,

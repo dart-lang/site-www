@@ -268,6 +268,21 @@ To learn more about named parameters and arguments, see the
 [Named parameters]: /guides/language/language-tour#named-parameters
 
 
+### Dart 2.18
+
+Dart 2.18 improved null safety inference by allowing information flow between arguments in generic function calls. 
+Leaving argument type unspecified within an invocation previously triggered type errors, citing potential null occurences.
+The compiler can now infer argument type from other values in an invocation, so specifying argument type inline is no longer necessary. 
+For more information, see the [null safety homepage][].
+
+[null safety homepage]: /null-safety
+
+Dart 2.18 also completely removed support for mixin classes that don't extend `Object`.
+To learn more about mixins, see [Adding features to a class: mixins][] in the language tour.
+
+[Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
+
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
