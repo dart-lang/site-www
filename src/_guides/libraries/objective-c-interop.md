@@ -301,8 +301,8 @@ there are some limitations to keep in mind
 when using them.
 
 1. Dart isolates are not the same thing as threads.
-   An isolate is not garunteed to run on a particular thread.
-   The VM may change which thread an isolate is running on
+   An isolate is not guaranteed to run on a particular thread,
+   and the VM may change which thread an isolate is running on
    without warning.
    There is an [open feature request][] to allow isolates to be
    pinned to specific theads.
