@@ -293,6 +293,44 @@ then check the status, and wait for the duration of the audio file:
     }
 ```
 
+### Callbacks and multithreading limitations
+
+While `ffigen` does support converting
+Dart functions to Objective-C blocks,
+there are some limitations to keep in mind
+when using them.
+
+1. Dart isolates are not the same thing as threads.
+   An isolate is not garunteed to run on a particular thread.
+   The VM may change which thread an isolate is running on
+   without warning.
+   There is an [open feature request][] to allow isolates to be
+   pinned to specific theads.
+2. Most Apple APIs don't have any guarantees about
+   which thread a callback will be run on.
+3. Many Apple APIs can only be called from the main thread,
+   also known in Flutter as the platform thread.
+   This includes any APIs that involve UI interaction.
+
+Points 1 and 2 mean that a callback created in one isolate
+may be invoked on a thread running a different isolate,
+or no isolate at all.
+This will cause your app to crash.
+You can work around this limitation by writing some
+Objective-C code that intercepts your callback and
+forwards it over a [`Dart_Port`]({{site.dart-api}}/dart-ffi/NativePort.html)
+to the correct isolate.
+For an example of this,
+see the implementation of [`package:cupertino_http`][].
+
+Point 3 means that directly calling some Apple APIs
+using the generated Dart bindings may be thread unsafe.
+This could crash your app, or do other unpredicable things.
+You can work around this limitation by writing some
+Objective-C code that dispatches your call
+to the main thread.
+One way of doing this is to use [`performSelectorOnMainThread`][].
+
 ## Swift example
 
 This [example]({{page.swift_example}}) demonstrates how to
@@ -483,3 +521,6 @@ $ dart run example.dart
 [`duration`]: {{page.appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
 [`play`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
 [Swift documentation]: {{page.appledoc}}/swift/importing-swift-into-objective-c
+[open feature request]: https://github.com/dart-lang/sdk/issues/46943
+[`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
+[`performSelectorOnMainThread`]: {{page.appledoc}}/objectivec/nsobject/1414900-performselectoronmainthread
