@@ -297,22 +297,22 @@ then check the status, and wait for the duration of the audio file:
 
 Multithreading issues are the biggest limitation
 of Dart's experimental support for Objective-C interop.
-While `ffigen` does support converting
+While `ffigen` supports converting
 Dart functions to Objective-C blocks,
-these limitations must be kept in mind when using them.
-These issues also affect the use of certain Apple APIs.
+these limitations must be kept in mind.
+The following issues also affect the use of certain Apple APIs:
 
-1. Dart isolates are not the same thing as threads.
-   An isolate is not guaranteed to run on a particular thread,
-   and the VM may change which thread an isolate is running on
+* Dart isolates are not the same thing as threads.
+   An isolate isn't guaranteed to run on a particular thread,
+   and the VM might change which thread an isolate is running on
    without warning.
    There is an [open feature request][] to allow isolates to be
    pinned to specific theads.
-2. Most Apple APIs don't have any guarantees about
-   which thread a callback will be run on.
-3. Most APIs that involve UI interaction
+* Most Apple APIs don't have any guarantees about
+   on which thread a callback will run.
+* Most APIs that involve UI interaction
    can only be called on the main thread,
-   also known in Flutter as the platform thread.
+   also called the _platform_ thread in Flutter.
 4. Many Apple APIs are [not thread safe][].
 
 Points 1 and 2 mean that a callback created in one isolate
@@ -326,21 +326,21 @@ to the correct isolate.
 For an example of this,
 see the implementation of [`package:cupertino_http`][].
 
-Point 3 means that directly calling some Apple APIs
-using the generated Dart bindings may be thread unsafe.
-This could crash your app, or do other unpredicable things.
+The third point means that directly calling some Apple APIs
+using the generated Dart bindings might be thread unsafe.
+This could crash your app, or cause other unpredictable behavior.
 You can work around this limitation by writing some
 Objective-C code that dispatches your call
 to the main thread.
 For more information, see the [Objective-C dispatch documentaion][].
 
-Regarding point 4,
+Regarding the last point,
 although Dart isolates can switch threads,
-they are only ever run on one thread at a time.
-So the API you are interacting with
+they only ever run on one thread at a time.
+So, the API you are interacting with
 doesn't necessarily have to be thread safe,
 as long as it is not thread hostile,
-and doesn't have constraints about which thread it is called from.
+and doesn't have constraints about which thread it's called from.
 
 You can safely interact with Objective-C code,
 as long as you keep these limitations in mind.
