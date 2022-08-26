@@ -348,8 +348,8 @@ funding:
  - https://www.patreon.com/some-account
 {% endprettify %}
 
-If published to [pub.dev]({{site.pub}}) the links will be displayed on the
-package page. This aims to help users that wish to help fund the development
+If published to [pub.dev]({{site.pub}}) the links are displayed on the
+package page. This aims to help users fund the development
 of their dependencies.
 
 
