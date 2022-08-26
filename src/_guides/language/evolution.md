@@ -275,7 +275,7 @@ Leaving argument type unspecified within some invocations previously triggered t
 The compiler can now infer argument type from other values in an invocation, so specifying argument type inline is no longer necessary. 
 For more information, see the [Type system][] page.
 
-[Type system]: /guides/language/type-system
+[Type system]: /guides/language/type-system#type-argument-inference
 
 Dart 2.18 also discontinued support for mixin classes that don't extend `Object`.
 To learn more about mixins, see [Adding features to a class: mixins][] in the language tour.
