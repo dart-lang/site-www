@@ -338,8 +338,9 @@ publish_to: none
 
 ### Funding
 
-Package authors may use the `funding` property specify a list of URLs that
+Package authors can use the `funding` property to specify a list of URLs that
 provide information on how users can help fund the development of the package.
+For example:
 
 {% prettify yaml tag=pre+code %}
 funding:
