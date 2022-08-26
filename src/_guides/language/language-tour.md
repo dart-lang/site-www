@@ -1419,7 +1419,7 @@ void enableFlags({bool bold = false, bool hidden = false}) {...}
 enableFlags(bold: true);
 ```
 
-{{site.alert.info}}
+{{site.alert.secondary}}
   **Deprecation note:** Old code might use a colon (`:`) instead of `=`
   to specify default values of named parameters. 
   The reason is that originally, only `:` was supported for named parameters. 
