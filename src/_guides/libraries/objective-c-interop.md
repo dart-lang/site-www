@@ -295,10 +295,12 @@ then check the status, and wait for the duration of the audio file:
 
 ### Callbacks and multithreading limitations
 
+Multithreading issues are the biggest limitation
+of Dart's experimental support for Objective-C interop.
 While `ffigen` does support converting
 Dart functions to Objective-C blocks,
-there are some limitations to keep in mind
-when using them.
+these limitations must be kept in mind when using them.
+These issues also affect the use of certain Apple APIs.
 
 1. Dart isolates are not the same thing as threads.
    An isolate is not guaranteed to run on a particular thread,
@@ -308,9 +310,10 @@ when using them.
    pinned to specific theads.
 2. Most Apple APIs don't have any guarantees about
    which thread a callback will be run on.
-3. Many Apple APIs can only be called from the main thread,
+3. Most APIs that involve UI interaction
+   can only be called on the main thread,
    also known in Flutter as the platform thread.
-   This includes any APIs that involve UI interaction.
+4. Many Apple APIs are [not thread safe][].
 
 Points 1 and 2 mean that a callback created in one isolate
 may be invoked on a thread running a different isolate,
@@ -329,7 +332,18 @@ This could crash your app, or do other unpredicable things.
 You can work around this limitation by writing some
 Objective-C code that dispatches your call
 to the main thread.
-One way of doing this is to use [`performSelectorOnMainThread`][].
+For more information, see the [Objective-C dispatch documentaion][].
+
+Regarding point 4,
+although Dart isolates can switch threads,
+they are only ever run on one thread at a time.
+So the API you are interacting with
+doesn't necessarily have to be thread safe,
+as long as it is not thread hostile,
+and doesn't have constraints about which thread it is called from.
+
+You can safely interact with Objective-C code,
+as long as you keep these limitations in mind.
 
 ## Swift example
 
@@ -524,3 +538,5 @@ $ dart run example.dart
 [open feature request]: https://github.com/dart-lang/sdk/issues/46943
 [`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
 [`performSelectorOnMainThread`]: {{page.appledoc}}/objectivec/nsobject/1414900-performselectoronmainthread
+[not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
+[Objective-C dispatch documentaion]: {{page.appledoc}}/dispatch?language=objc
