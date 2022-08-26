@@ -22,7 +22,8 @@ and follow the [Dart blog][].
 This section lists notable changes made from May 12, 2022,
 through August 30, 2022.
 For details about the 2.18 release,
-see [Dart 2.18: Objective-C & Swift interop][], and the [change log][].
+see [Dart 2.18: Objective-C & Swift interop][],
+and the [change log][].
 
 [Dart 2.18: Objective-C & Swift interop]: https://medium.com/dartlang/dart-2-18-f4b3101f146c
 [change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
@@ -30,13 +31,23 @@ see [Dart 2.18: Objective-C & Swift interop][], and the [change log][].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Updated the [language evolution page] to reflect null safety inference improvements.
-* All mention of `.packages` has been removed from the documentation, as it is fully de-supported.
-  *  See [][] if you still need to generate a `.packages` file for historical depedencies.
+* Added a workaround to [Fixing common type problems][], 
+  for the rare case where type inference may still incorrectly infer an argument type is null.
+* Removed all mention of discontinued `.packages` files from [What not to commit][].
+  * See [][] if you still need to generate a `.packages` file due to third-party legacy depedencies.
+* Adjsuted the [dart2js compiler][] page and the [dart command line tool][] page to reflect the full removal of the previously deprecated `dart2js` command.
+  * Other command line tools discontinued in this release,
+  `dartdevc` and `dartanalyzer`,
+  were already removed from the documentation when deprecated.
+* Updated the [Asynchronous programming: futures, async, await][] codelab to reflect subtle behavior changes from the revamped methods.
 
+[Fixing common type problems]: /guides/language/sound-problems
+[What not to commit]: /guides/libraries/private-files#packages
+[Troubleshooting pub]: /tools/pub/troubleshoot
+[dart2js compiler]: /tools/dart2js
+[dart command line tool]: /tools/dart-tool
+[Asynchronous programming: futures, async, await]: /codelabs/async-await
 
-[language evolution page]: /guides/language/evolution
-[]: /
 
 ## May 11, 2022: 2.17 release
 
