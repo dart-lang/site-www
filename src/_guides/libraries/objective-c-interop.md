@@ -313,7 +313,7 @@ The following issues also affect the use of certain Apple APIs:
 * Most APIs that involve UI interaction
    can only be called on the main thread,
    also called the _platform_ thread in Flutter.
-4. Many Apple APIs are [not thread safe][].
+* Many Apple APIs are [not thread safe][].
 
 Points 1 and 2 mean that a callback created in one isolate
 may be invoked on a thread running a different isolate,
