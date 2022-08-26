@@ -1419,13 +1419,19 @@ void enableFlags({bool bold = false, bool hidden = false}) {...}
 enableFlags(bold: true);
 ```
 
-{{site.alert.info}}
-  **Deprecation note:** Old code might use a colon (`:`) instead of `=` to set
-  default values of named parameters. The reason is that originally, only `:`
-  was supported for named parameters. That support might be deprecated, so we
-  recommend that you **[use `=` to specify default values.][use =]**
+{{site.alert.secondary}}
+  **Deprecation note:** Old code might use a colon (`:`) instead of `=`
+  to specify default values of named parameters. 
+  The reason is that originally, only `:` was supported for named parameters. 
+  That support is deprecated and will be removed, 
+  so we recommend that you **[use `=` to specify default values.][use =]**
+
+  If you have the [`prefer_equal_for_default_values`][] linter rule enabled,
+  you can use [`dart fix`][] to migrate to the suggested `=` syntax.
 
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
+  [`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
+  [`dart fix`]: /tools/dart-fix
 {{site.alert.end}}
 
 {% comment %}
