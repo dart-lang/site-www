@@ -342,11 +342,11 @@ Package authors can use the `funding` property to specify a list of URLs that
 provide information on how users can help fund the development of the package.
 For example:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 funding:
  - https://www.buymeacoffee.com/example_user
  - https://www.patreon.com/some-account
-{% endprettify %}
+```
 
 If published to [pub.dev]({{site.pub}}) the links are displayed on the
 package page. This aims to help users fund the development
