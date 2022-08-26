@@ -537,6 +537,5 @@ $ dart run example.dart
 [Swift documentation]: {{page.appledoc}}/swift/importing-swift-into-objective-c
 [open feature request]: https://github.com/dart-lang/sdk/issues/46943
 [`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
-[`performSelectorOnMainThread`]: {{page.appledoc}}/objectivec/nsobject/1414900-performselectoronmainthread
 [not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
 [Objective-C dispatch documentaion]: {{page.appledoc}}/dispatch?language=objc
