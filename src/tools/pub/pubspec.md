@@ -76,6 +76,10 @@ A pubspec can have the following fields:
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
 
+`funding`
+: Optional. List of URLs where users can sponsor development of the package.
+  [_Learn more._](#funding)
+
 `false_secrets`
 : Optional. Specify files to ignore when conducting a pre-publishing search
   for potential leaks of secrets.
@@ -330,6 +334,23 @@ to publish.
 {% prettify yaml tag=pre+code %}
 publish_to: none
 {% endprettify %}
+
+
+### Funding
+
+Package authors can use the `funding` property to specify a list of URLs that
+provide information on how users can help fund the development of the package.
+For example:
+
+```yaml
+funding:
+ - https://www.buymeacoffee.com/example_user
+ - https://www.patreon.com/some-account
+```
+
+If published to [pub.dev]({{site.pub}}) the links are displayed on the
+package page. This aims to help users fund the development
+of their dependencies.
 
 
 ### False_secrets
