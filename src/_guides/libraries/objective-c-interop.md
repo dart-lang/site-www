@@ -307,7 +307,7 @@ and the way Apple's APIs handle multithreading:
   and the VM might change which thread an isolate is running on
   without warning.
   There is an [open feature request][] to allow isolates to be
-  pinned to specific theads.
+  pinned to specific threads.
 * While `ffigen` supports converting
   Dart functions to Objective-C blocks,
   most Apple APIs don't make any guarantees about
@@ -334,7 +334,7 @@ This could crash your app, or cause other unpredictable behavior.
 You can work around this limitation by writing some
 Objective-C code that dispatches your call
 to the main thread.
-For more information, see the [Objective-C dispatch documentaion][].
+For more information, see the [Objective-C dispatch documentation][].
 
 Regarding the last point,
 although Dart isolates can switch threads,
@@ -540,4 +540,4 @@ $ dart run example.dart
 [open feature request]: https://github.com/dart-lang/sdk/issues/46943
 [`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
 [not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
-[Objective-C dispatch documentaion]: {{page.appledoc}}/dispatch?language=objc
+[Objective-C dispatch documentation]: {{page.appledoc}}/dispatch?language=objc
