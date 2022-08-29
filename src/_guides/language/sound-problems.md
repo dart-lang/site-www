@@ -37,7 +37,8 @@ List<String> [!string = numbers!];
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. 
 
-You can see other examples of static analysis errors, as well as other error types, in the sections below.
+You can see other examples of static analysis errors,
+as well as other error types, in the following sections.
 
 
 ## No type errors {#no-type-errors}
@@ -489,24 +490,24 @@ filterValues((x) => (x [!as String!]).contains('Hello'));
 ### Incorrect type inference
 
 ```nocode
-error - ...
+error - The return type '...' isn't a '...', as required by the closure's context - return_of_invalid_type_from_closure
 ```
 
-On rare occasions, Dart's enhaced type inference may infer the wrong type for function literal arguments in a generic constructor invocation.
+On rare occasions, Dart's enhanced type inference might infer
+the wrong type for function literal arguments in a generic constructor invocation.
 This primarily affects `Iterable.fold`
 
 #### Example
 
-In this code, type inference will infer that `a` has a type of `Null`:
+In the following code,
+type inference will infer that `a` has a type of `Null`:
 
 {:.fails-sa}
 <?code-excerpt "lib/... ()" replace=""?>
 {% prettify dart tag=pre+code %}
-void main() {
   List<int> ints = [1, 2, 3];
   var maximumOrNull = ints.fold(null,
       (a, b) => a == null || a < b ? b : a);
-}
 {% endprettify %}
 
 #### Fix: Supply appropriate type as explicit type argument
@@ -514,11 +515,9 @@ void main() {
 {:.passes-sa}
 <?code-excerpt "lib/... ()" replace=""?>
 {% prettify dart tag=pre+code %}
-void main() {
   List<int> ints = [1, 2, 3];
   var maximumOrNull = ints.fold<int?>(null,
       (a, b) => a == null || a < b ? b : a);
-}
 {% endprettify %}
 
 <hr>
