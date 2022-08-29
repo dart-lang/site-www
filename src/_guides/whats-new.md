@@ -23,10 +23,10 @@ This section lists notable changes made from May 12, 2022,
 through August 30, 2022.
 For details about the 2.18 release,
 see [Dart 2.18: Objective-C & Swift interop][],
-and the [change log][].
+and the [SDK changelog][].
 
 [Dart 2.18: Objective-C & Swift interop]: https://medium.com/dartlang/dart-2-18-f4b3101f146c
-[change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -37,8 +37,8 @@ we made the following changes to this site:
   If you still need to generate a `.packages` file due to third-party legacy depedencies,
   see [`dart pub get` Options][].
 * Removed dedicated pages and any other mention of discontinued `dart2js` and `dartdevc` command line tools.
-  * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`]() page.
-  * Added information on debugging production code to [Debugging Dart web apps]().
+  * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`][] page.
+  * Added information on debugging production code to [Debugging Dart web apps][].
 
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files#packages

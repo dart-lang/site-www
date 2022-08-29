@@ -276,9 +276,9 @@ citing potential null occurrences.
 The compiler can now infer the argument type from other values in an invocation,
 so specifying the argument type inline is no longer necessary. 
 For more information,
-see the [Type system][] page.
+see [Type argument inference][].
 
-[Type system]: /guides/language/type-system#type-argument-inference
+[Type argument inference]: /guides/language/type-system#type-argument-inference
 
 Dart 2.18 also discontinued support for mixin classes that don't extend `Object`.
 To learn more about mixins,
