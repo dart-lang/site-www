@@ -48,7 +48,6 @@ we made the following changes to this site:
 [dart command line tool]: /tools/dart-tool
 [Asynchronous programming: futures, async, await]: /codelabs/async-await
 
-
 ## May 11, 2022: 2.17 release
 
 This section lists notable changes made from February 4, 2022,
