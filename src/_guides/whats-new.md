@@ -32,10 +32,11 @@ In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
 * Added a workaround to [Fixing common type problems][], 
-  for the rare case where type inference may still incorrectly infer an argument type is null.
+  for the rare case where type inference might still incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
-  * See [`dart pub get` Options][] if you still need to generate a `.packages` file due to third-party legacy depedencies.
-* Removed dedicated pages and all mention of discontinued `dart2js` and `dartdevc` command line tools.
+  If you still need to generate a `.packages` file due to third-party legacy depedencies,
+  see [`dart pub get` Options][].
+* Removed dedicated pages and any other mention of discontinued `dart2js` and `dartdevc` command line tools.
   * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`]() page.
   * Added information on debugging production code to [Debugging Dart web apps]().
 
