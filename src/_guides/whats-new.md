@@ -34,7 +34,7 @@ we made the following changes to this site:
 * Added a workaround to [Fixing common type problems][], 
   for the rare case where type inference may still incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
-  * See [][] if you still need to generate a `.packages` file due to third-party legacy depedencies.
+  * See [`dart pub get` Options][] if you still need to generate a `.packages` file due to third-party legacy depedencies.
 * Adjsuted the [dart2js compiler][] page and the [dart command line tool][] page to reflect the full removal of the previously deprecated `dart2js` command.
   * Other command line tools discontinued in this release,
   `dartdevc` and `dartanalyzer`,
@@ -43,7 +43,7 @@ we made the following changes to this site:
 
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files#packages
-[Troubleshooting pub]: /tools/pub/troubleshoot
+[`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [dart2js compiler]: /tools/dart2js
 [dart command line tool]: /tools/dart-tool
 [Asynchronous programming: futures, async, await]: /codelabs/async-await
