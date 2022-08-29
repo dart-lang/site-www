@@ -131,3 +131,17 @@ void funcCast() {
   filterValues((x) => (x as String).contains('Hello'));
   // #enddocregion func-cast
 }
+
+//-----------------------------------------------
+
+// #docregion type-inf-null
+  List<int> ints = [1, 2, 3];
+  var maximumOrNull = ints.fold(null,
+      (a, b) => a == null || a < b ? b : a);
+// #enddocregion type-inf-null
+
+// #docregion type-inf-fix
+  List<int> ints = [1, 2, 3];
+  var maximumOrNull = ints.fold<int?>(null,
+      (a, b) => a == null || a < b ? b : a);
+// #enddocregion type-inf-fix

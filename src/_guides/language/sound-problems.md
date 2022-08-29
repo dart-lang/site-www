@@ -495,7 +495,7 @@ error - The return type '...' isn't a '...', as required by the closure's contex
 
 On rare occasions, Dart's enhanced type inference might infer
 the wrong type for function literal arguments in a generic constructor invocation.
-This primarily affects `Iterable.fold`
+This primarily affects `Iterable.fold`.
 
 #### Example
 
@@ -503,7 +503,7 @@ In the following code,
 type inference will infer that `a` has a type of `Null`:
 
 {:.fails-sa}
-<?code-excerpt "lib/... ()" replace=""?>
+<?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
 {% prettify dart tag=pre+code %}
   List<int> ints = [1, 2, 3];
   var maximumOrNull = ints.fold(null,
@@ -513,7 +513,7 @@ type inference will infer that `a` has a type of `Null`:
 #### Fix: Supply appropriate type as explicit type argument
 
 {:.passes-sa}
-<?code-excerpt "lib/... ()" replace=""?>
+<?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
 {% prettify dart tag=pre+code %}
   List<int> ints = [1, 2, 3];
   var maximumOrNull = ints.fold<int?>(null,
