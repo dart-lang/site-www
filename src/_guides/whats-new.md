@@ -35,17 +35,16 @@ we made the following changes to this site:
   for the rare case where type inference may still incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   * See [`dart pub get` Options][] if you still need to generate a `.packages` file due to third-party legacy depedencies.
-* Adjsuted the [dart2js compiler][] page and the [dart command line tool][] page to reflect the full removal of the previously deprecated `dart2js` command.
-  * Other command line tools discontinued in this release,
-  `dartdevc` and `dartanalyzer`,
-  were already removed from the documentation when deprecated.
+* Removed dedicated pages and all mention of discontinued `dart2js` and `dartdevc` command line tools.
+  * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`]() page.
+  * Added information on debugging production code to [Debugging Dart web apps]().
 * Updated the [Asynchronous programming: futures, async, await][] codelab to reflect subtle behavior changes from the revamped methods.
 
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files#packages
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
-[dart2js compiler]: /tools/dart2js
-[dart command line tool]: /tools/dart-tool
+[`dart compile`]: /tools/dart-compile
+[Debugging Dart web apps]: /web/debugging
 [Asynchronous programming: futures, async, await]: /codelabs/async-await
 
 ## May 11, 2022: 2.17 release
