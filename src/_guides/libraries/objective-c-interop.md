@@ -297,26 +297,28 @@ then check the status, and wait for the duration of the audio file:
 
 Multithreading issues are the biggest limitation
 of Dart's experimental support for Objective-C interop.
-While `ffigen` supports converting
-Dart functions to Objective-C blocks,
-these limitations must be kept in mind.
-The following issues also affect the use of certain Apple APIs:
+These limitations are due to the relationship between
+Dart isolates and OS threads,
+and the way Apple's APIs handle multithreading:
 
 * Dart isolates are not the same thing as threads.
-   An isolate isn't guaranteed to run on a particular thread,
-   and the VM might change which thread an isolate is running on
-   without warning.
-   There is an [open feature request][] to allow isolates to be
-   pinned to specific theads.
-* Most Apple APIs don't have any guarantees about
-   on which thread a callback will run.
+  Isolates run on threads,
+  but aren't guaranteed to run on any particular thread,
+  and the VM might change which thread an isolate is running on
+  without warning.
+  There is an [open feature request][] to allow isolates to be
+  pinned to specific theads.
+* While `ffigen` supports converting
+  Dart functions to Objective-C blocks,
+  most Apple APIs don't make any guarantees about
+  on which thread a callback will run.
 * Most APIs that involve UI interaction
-   can only be called on the main thread,
-   also called the _platform_ thread in Flutter.
+  can only be called on the main thread,
+  also called the _platform_ thread in Flutter.
 * Many Apple APIs are [not thread safe][].
 
-Points 1 and 2 mean that a callback created in one isolate
-may be invoked on a thread running a different isolate,
+The first two points mean that a callback created in one isolate
+might be invoked on a thread running a different isolate,
 or no isolate at all.
 This will cause your app to crash.
 You can work around this limitation by writing some
