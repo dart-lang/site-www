@@ -38,14 +38,12 @@ we made the following changes to this site:
 * Removed dedicated pages and all mention of discontinued `dart2js` and `dartdevc` command line tools.
   * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`]() page.
   * Added information on debugging production code to [Debugging Dart web apps]().
-* Updated the [Asynchronous programming: futures, async, await][] codelab to reflect subtle behavior changes from the revamped methods.
 
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files#packages
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging
-[Asynchronous programming: futures, async, await]: /codelabs/async-await
 
 ## May 11, 2022: 2.17 release
 
