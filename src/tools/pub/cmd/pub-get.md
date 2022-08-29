@@ -145,6 +145,13 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--legacy-packages-file`
+
+If you utilize any third-party tools with a legacy dependency on `.packages` (desupported in [2.18](/guides/whats-new)),
+use `--legacy-packages-file` to generate a `.packages` file.
+This support will be removed in an upcoming stable release.
+
+
 {{site.alert.info}}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
