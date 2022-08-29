@@ -147,9 +147,10 @@ To prevent precompilation, use `--no-precompile`.
 
 ### `--legacy-packages-file`
 
-If you utilize any third-party tools with a legacy dependency on `.packages` (desupported in [2.18](/guides/whats-new)),
+If you are using Dart 2.18 and have any third-party tools
+which still use the discontinued `.packages` file,
 use `--legacy-packages-file` to generate a `.packages` file.
-This support will be removed in an upcoming stable release.
+Support for this flag will be removed in Dart 2.19.
 
 
 {{site.alert.info}}
