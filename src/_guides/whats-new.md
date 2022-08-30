@@ -38,8 +38,10 @@ we made the following changes to this site:
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy depedencies,
   see [`dart pub get` Options][].
-* Removed dedicated pages and any other mention of discontinued `dart2js` and `dartdevc` command line tools.
-  * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`][] page.
+* Removed dedicated pages and any other mention of discontinued `dart2js`
+  and `dartdevc` command line tools.
+  * Added command line options and known issues previously associated with
+  `dart2js` to the [`dart compile`][] page.
   * Added information on debugging production code to [Debugging Dart web apps][].
 * Added support for downloading experimental Windows ARM builds
   to the [Dart SDK archive][].
