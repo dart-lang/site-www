@@ -33,7 +33,7 @@ we made the following changes to this site:
 
 * Introduced the [Objective-C and Swift interop][] page,
   which explains how to use Dart packages to call APIs from those languages.
-* Added a workaround to [Fixing common type problems][], 
+* Added a workaround to [Fixing common type problems][]. 
   This corrects for when type inference might conclude that an argument type can use a null value.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy depedencies,
