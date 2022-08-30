@@ -527,7 +527,6 @@ This helps speed-up future re-runs of the build steps.
        (`.dart_tool/<my_tool_package_name>/`)
     * Your files don't belong under source control, 
        as `.dart_tools` is generally listed in `.gitignore`
-       
 {{site.alert.end}}
 
 
