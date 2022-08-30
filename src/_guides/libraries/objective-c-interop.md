@@ -482,7 +482,7 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 
 The string inside the macro is a bit cryptic, but you can
 see it contains the module name and the class name:
-`"\_TtC12***swift\_module***10***SwiftClass***"`.
+`"_TtC12`***`swift_module`***`10`***`SwiftClass`***`"`.
 
 Swift can even demangle this name for us:
 
