@@ -3,18 +3,16 @@ title: build_runner
 description: A tool for building, testing, and running Dart code.
 ---
 
-The [build_runner][] package provides general-purpose commands for generating files,
-and for optionally testing the generated files
+The [build_runner][] package provides general-purpose commands for
+generating files, including testing the generated files
 or serving both source and generated files.
-Read this page for an overview of using build_runner, with links to
-where you can find more information.
-For details of using build_runner with a specific package,
+This page explains how to use `build_runner`.
+To learn how to use build_runner with a specific package,
 see the documentation for that package.
 
 {{site.alert.info}}
-  **If you're a web developer:**
-  You can use the [`webdev` tool][webdev] instead of directly using
-  build_runner to build and serve web apps.
+  **If you're a web developer**, use the [`webdev` tool][webdev] to
+  build and serve web apps.
 {{site.alert.end}}
 
 The build_runner commands work with _builders_—packages

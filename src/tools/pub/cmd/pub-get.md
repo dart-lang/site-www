@@ -145,6 +145,14 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--legacy-packages-file`
+
+If you're using Dart 2.18 and use any third-party tools
+that rely on the discontinued `.packages` file,
+use `--legacy-packages-file` to generate a `.packages` file.
+Support for this flag will be removed in Dart 2.19.
+
+
 {{site.alert.info}}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
