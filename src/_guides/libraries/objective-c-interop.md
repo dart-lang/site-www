@@ -293,6 +293,60 @@ then check the status, and wait for the duration of the audio file:
     }
 ```
 
+### Callbacks and multithreading limitations
+
+Multithreading issues are the biggest limitation
+of Dart's experimental support for Objective-C interop.
+These limitations are due to the relationship between
+Dart isolates and OS threads,
+and the way Apple's APIs handle multithreading:
+
+* Dart isolates are not the same thing as threads.
+  Isolates run on threads,
+  but aren't guaranteed to run on any particular thread,
+  and the VM might change which thread an isolate is running on
+  without warning.
+  There is an [open feature request][] to allow isolates to be
+  pinned to specific threads.
+* While `ffigen` supports converting
+  Dart functions to Objective-C blocks,
+  most Apple APIs don't make any guarantees about
+  on which thread a callback will run.
+* Most APIs that involve UI interaction
+  can only be called on the main thread,
+  also called the _platform_ thread in Flutter.
+* Many Apple APIs are [not thread safe][].
+
+The first two points mean that a callback created in one isolate
+might be invoked on a thread running a different isolate,
+or no isolate at all.
+This will cause your app to crash.
+You can work around this limitation by writing some
+Objective-C code that intercepts your callback and
+forwards it over a [`Dart_Port`]({{site.dart-api}}/dart-ffi/NativePort.html)
+to the correct isolate.
+For an example of this,
+see the implementation of [`package:cupertino_http`][].
+
+The third point means that directly calling some Apple APIs
+using the generated Dart bindings might be thread unsafe.
+This could crash your app, or cause other unpredictable behavior.
+You can work around this limitation by writing some
+Objective-C code that dispatches your call
+to the main thread.
+For more information, see the [Objective-C dispatch documentation][].
+
+Regarding the last point,
+although Dart isolates can switch threads,
+they only ever run on one thread at a time.
+So, the API you are interacting with
+doesn't necessarily have to be thread safe,
+as long as it is not thread hostile,
+and doesn't have constraints about which thread it's called from.
+
+You can safely interact with Objective-C code,
+as long as you keep these limitations in mind.
+
 ## Swift example
 
 This [example]({{page.swift_example}}) demonstrates how to
@@ -483,3 +537,7 @@ $ dart run example.dart
 [`duration`]: {{page.appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
 [`play`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
 [Swift documentation]: {{page.appledoc}}/swift/importing-swift-into-objective-c
+[open feature request]: https://github.com/dart-lang/sdk/issues/46943
+[`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
+[not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
+[Objective-C dispatch documentation]: {{page.appledoc}}/dispatch?language=objc
