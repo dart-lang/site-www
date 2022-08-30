@@ -36,7 +36,7 @@ we made the following changes to this site:
 * Added a workaround to [Fixing common type problems][], 
   for the rare case where type inference might incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
-  If you still need to generate a `.packages` file due to third-party legacy depedencies,
+  If you still need to generate a `.packages` file due to third-party legacy dependencies,
   see [`dart pub get` Options][].
 * Removed dedicated pages and any other mention of discontinued `dart2js`
   and `dartdevc` command line tools.
@@ -50,7 +50,7 @@ we made the following changes to this site:
 
 [Objective-C and Swift interop]: /guides/libraries/objective-c-interop
 [Fixing common type problems]: /guides/language/sound-problems
-[What not to commit]: /guides/libraries/private-files#packages
+[What not to commit]: /guides/libraries/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging

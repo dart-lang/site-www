@@ -23,7 +23,7 @@ With a little extra work, you can make your deployable app
 [Use the `webdev build` command][build] to create a deployable version
 of your app. This command converts your code to JavaScript and saves
 the result as `build/web/main.dart.js`. You can use [any option
-available to `dart compile js`](/web/deployment#prod-compile-options)
+available to `dart compile js`](/tools/dart-compile#prod-compile-options)
 with `webdev build`.
 
 ### Make your app smaller, faster, and more reliable
