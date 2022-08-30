@@ -31,20 +31,30 @@ and the [SDK changelog][].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
+* Introduced the [Objective-C and Swift interop][] page,
+  which explains how to use Dart packages to call APIs from those languages.
 * Added a workaround to [Fixing common type problems][], 
-  for the rare case where type inference might still incorrectly infer an argument type is null.
+  for the rare case where type inference might incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy depedencies,
   see [`dart pub get` Options][].
 * Removed dedicated pages and any other mention of discontinued `dart2js` and `dartdevc` command line tools.
   * Added command line options and known issues previously associated with `dart2js` to the [`dart compile`][] page.
   * Added information on debugging production code to [Debugging Dart web apps][].
+* Added support for downloading experimental Windows ARM builds
+  to the [Dart SDK archive][].
+* Updated the [Library tour][] to include information on weak references and finalizers.
+* Added a section on customizing [`dart fix`][].
 
+[Objective-C and Swift interop]: /guides/libraries/objective-c-interop
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files#packages
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging
+[Dart SDK archive]: /get-dart/archive
+[Library tour]: /guides/libraries/library-tour#weak-references-and-finalizers
+[`dart fix`]: /tools/dart-fix#customizing-dart-fix
 
 ## May 11, 2022: 2.17 release
 

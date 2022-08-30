@@ -269,13 +269,13 @@ To learn more about named parameters and arguments, see the
 
 ### Dart 2.18
 
-Dart 2.18 enhanced type inference by allowing information flow between arguments in generic function calls.
-Leaving the argument type unspecified within some invocations previously triggered type errors,
-citing potential null occurrences.
+Dart 2.18 enhanced type inference by allowing information flow
+between arguments in generic function calls.
+Leaving the argument type unspecified within some invocations 
+previously triggered type errors, citing potential null occurrences.
 The compiler can now infer the argument type from other values in an invocation,
 so specifying the argument type inline is no longer necessary. 
-For more information,
-see [Type argument inference][].
+For more information, see [Type argument inference][].
 
 [Type argument inference]: /guides/language/type-system#type-argument-inference
 
