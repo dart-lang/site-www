@@ -116,7 +116,7 @@ void main() {
 
 // #docregion downcast-check
 void assumeStrings(dynamic objects) {
-  // ignore: stable, beta, dev, invalid_assignment
+  //!, beta, dev, invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
   // #enddocregion downcast-check
