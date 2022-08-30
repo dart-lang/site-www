@@ -267,8 +267,22 @@ To learn more about named parameters and arguments, see the
 
 [Named parameters]: /guides/language/language-tour#named-parameters
 
-
 ### Dart 2.18
+
+Dart 2.18 enhanced type inference. This change allows information flow between
+arguments in generic function calls. Before 2.18, if you didn't specify an
+argument's type in some methods, Dart returned errors. These type errors cited
+potential null occurrences. With 2.18, the compiler infers the argument type
+from other values in an invocation. You don't need to specify the argument type
+inline. To learn more, see [Type argument inference][].
+
+[Type argument inference]: /guides/language/type-system#type-argument-inference
+
+Dart 2.18 also discontinued support for mixin classes that don't extend `Object`.
+To learn more about mixins,
+see [Adding features to a class: mixins][] in the language tour.
+
+[Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
 
 ## Language versioning
 
