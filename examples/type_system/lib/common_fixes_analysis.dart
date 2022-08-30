@@ -134,14 +134,18 @@ void funcCast() {
 
 //-----------------------------------------------
 
-// #docregion type-inf-null
+void infNull() {
+  // #docregion type-inf-null
   List<int> ints = [1, 2, 3];
-  var maximumOrNull = ints.fold(null,
-      (a, b) => a == null || a < b ? b : a);
-// #enddocregion type-inf-null
+  // ignore: non_bool_operand, undefined_operator
+  var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
+  // #enddocregion type-inf-null    
+} 
 
-// #docregion type-inf-fix
+void infFix() {
+  // #docregion type-inf-fix
   List<int> ints = [1, 2, 3];
-  var maximumOrNull = ints.fold<int?>(null,
-      (a, b) => a == null || a < b ? b : a);
-// #enddocregion type-inf-fix
+  var maximumOrNull =
+      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+  // #enddocregion type-inf-fix
+}

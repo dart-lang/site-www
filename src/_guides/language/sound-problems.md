@@ -494,10 +494,6 @@ filterValues((x) => (x [!as String!]).contains('Hello'));
 
 ### Incorrect type inference
 
-```nocode
-error - The return type '...' isn't a '...', as required by the closure's context - return_of_invalid_type_from_closure
-```
-
 On rare occasions, Dart's enhanced type inference might infer
 the wrong type for function literal arguments in a generic constructor invocation.
 This primarily affects `Iterable.fold`.
