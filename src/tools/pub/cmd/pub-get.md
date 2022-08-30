@@ -147,8 +147,8 @@ To prevent precompilation, use `--no-precompile`.
 
 ### `--legacy-packages-file`
 
-If you are using Dart 2.18 and have any third-party tools
-which still use the discontinued `.packages` file,
+If you're using Dart 2.18 (or later) and use any third-party tools
+that rely on the discontinued `.packages` file,
 use `--legacy-packages-file` to generate a `.packages` file.
 Support for this flag will be removed in Dart 2.19.
 
