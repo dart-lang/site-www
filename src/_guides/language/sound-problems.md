@@ -507,8 +507,8 @@ type inference will infer that `a` has a type of `Null`:
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
 {% prettify dart tag=pre+code %}
-  List<int> ints = [1, 2, 3];
-  var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
+List<int> ints = [1, 2, 3];
+var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
 
 #### Fix: Supply appropriate type as explicit type argument
@@ -516,9 +516,9 @@ type inference will infer that `a` has a type of `Null`:
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
 {% prettify dart tag=pre+code %}
-  List<int> ints = [1, 2, 3];
-  var maximumOrNull =
-      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+List<int> ints = [1, 2, 3];
+var maximumOrNull =
+    ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
 
 <hr>

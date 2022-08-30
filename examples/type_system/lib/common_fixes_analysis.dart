@@ -139,8 +139,8 @@ void infNull() {
   List<int> ints = [1, 2, 3];
   // ignore: non_bool_operand, undefined_operator
   var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
-  // #enddocregion type-inf-null    
-} 
+  // #enddocregion type-inf-null
+}
 
 void infFix() {
   // #docregion type-inf-fix
