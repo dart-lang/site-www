@@ -136,13 +136,22 @@ plus a small [Dart runtime][] that handles
 type checking and garbage collection.
 
 You can distribute and run the output file like you would
-any other executable file:
+any other executable file.
+
+Compile your app and set the output file.
 
 ```terminal
 $ dart compile exe bin/myapp.dart -o /tmp/myapp
+```
+
+When successful, this command returns the following.
+```terminal
 Generated: /tmp/myapp
-$ cd /tmp
-$ ./myapp
+```
+
+Run your compiled app from the `/tmp` directory.
+```terminal
+$ ./tmp/myapp
 ```
 
 #### Signing
@@ -150,49 +159,31 @@ $ ./myapp
 Executables created with `dart compile exe`
 support signing on macOS and Windows.
 
-For detailed documentation,
-see the platform documentation for those operating systems,
-such as the Windows [`SignTool.exe` documentation][],
-and the [Apple Code Signing guide][].
+To learn more about platform-specific code signing,
+see the platform documentation for those operating systems:
+
+* Windows [`SignTool.exe` documentation][]
+* [Apple Code Signing guide][]
 
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
 [Apple Code Signing guide]: https://developer.apple.com/support/code-signing/
 
 #### Known limitations
 
-The `exe` and `aot-snapshot` subcommands have some known limitations:
+The `exe` subcommand has some known limitations:
 
-No cross-compilation support ([issue 28617][])
-: The compiler supports creating machine code only for
-  the operating system it’s running on.
-  You need to run the compiler three times—on macOS, Windows, and Linux—to 
-  create executables for all three operating systems.
-  A workaround is to use a CI (continuous integration) provider
-  that supports all three operating systems.
-
-No support for `dart:mirrors` and `dart:developer`
-: For a complete list of the core libraries you can use,
-  see the **All** and **AOT** entries in the
-  [table of core Dart libraries](/guides/libraries).
-
-[issue 28617]: https://github.com/dart-lang/sdk/issues/28617
-[issue 39106]: https://github.com/dart-lang/sdk/issues/39106
-
-{{site.alert.tip}}
-  If one of these issues is important to you,
-  let the Dart team know by adding a "thumbs up" to the issue.
-{{site.alert.end}}
-
+{% include known-issues/compile-ki.md %}
 
 ### AOT modules (aot-snapshot) {#aot-snapshot}
 
-Use AOT modules to reduce disk space requirements
-when distributing multiple command-line apps.
-The `aot-snapshot` subcommand produces an output file
-that's specific to the current architecture.
+Use AOT modules to reduce disk space requirements when distributing
+multiple command-line apps. The `aot-snapshot` subcommand produces an
+output file specific to the current architecture on which you compile
+your app.
+
 For example, if you use macOS to create a `.aot` file,
 then that file can run on macOS only.
-AOT modules are supported on Windows, macOS, and Linux.
+Dart supports AOT modules on Windows, macOS, and Linux.
 
 ```terminal
 $ dart compile aot-snapshot bin/myapp.dart
@@ -200,8 +191,11 @@ Generated: /Users/me/myapp/bin/myapp.aot
 $ dartaotruntime bin/myapp.aot
 ```
 
-For more information, see
-[Known limitations](#known-limitations) and the
+The `aot-snapshot` subcommand has some known limitations.
+
+{% include known-issues/compile-ki.md %}
+
+To learn more, see the
 [`dartaotruntime` documentation](/tools/dartaotruntime).
 
 
@@ -259,24 +253,45 @@ they can have much slower startup than architecture-specific AOT output formats.
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
 
-Here's an example of compiling a Dart application to JavaScript
-with many optimizations enabled:
+{{site.alert.note}}
+  Use the [`webdev` tool][webdev] rather than running the 
+  Dart-to-JavaScript compiler.
+
+  * The [`webdev build`][] command, by default, produces minified, deployable JavaScript.
+
+  * The [`webdev serve`][] command, by default, produces JavaScript
+    modules for running and debugging during development.
+{{site.alert.end}}
+
+{% include tools/dart-compile-js-options.md %}
+
+#### Compiling web app example
+
+For example, to compile a Dart application to optimized JavaScript, run
+the following command:
 
 ```terminal
 $ dart compile js -O2 -o out/main.js web/main.dart
 ```
 
-For more information on configuring the compiler, 
-see the [dart2js compiler options](/tools/dart2js#options).
 
-{{site.alert.note}}
-  You usually use the [`webdev` tool][webdev] instead of
-  directly using a Dart-to-JavaScript compiler.
-  The [`webdev build`][] command, by default,
-  also produces deployable JavaScript.
-  The [`webdev serve`][] command, by default,
-  uses [dartdevc][] to compile web apps
-  for running and debugging during development.
+#### Improving production web compiliation {#helping-generate-efficient-code}
+
+Follow these practices to improve type inference, reduce file size, and
+improve JavaScript performance:
+
+* Don't use `Function.apply()`.
+* Don't override `noSuchMethod()`.
+* Avoid setting variables to `null`.
+* Be consistent with the types of arguments
+  you pass into each function or method.
+
+{{site.alert.tip}}
+  Don’t worry about the size of your app’s included libraries. 
+  The production compiler performs tree shaking to omit
+  unused classes, functions, methods, and so on.
+  Import the libraries you think you'll need, 
+  and let the compiler get rid of what it doesn't need.
 {{site.alert.end}}
 
 To learn more about building and deploying JavaScript applications,
@@ -286,4 +301,3 @@ check out [Web deployment](/web/deployment).
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
-[dartdevc]: /tools/dartdevc

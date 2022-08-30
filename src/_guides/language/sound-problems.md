@@ -20,7 +20,34 @@ and see [these other resources](/guides/language/type-system#other-resources).
 
 ## Troubleshooting
 
-### No type errors {#no-type-errors}
+Dart enforces a sound type system. 
+This means you can't write code where a
+variable's value differs from its static type.
+A variable with an `int` type can't store a number with a decimal place.
+Dart checks variable values against their types at
+[compile-time](#static-errors-and-warnings) and [runtime](#runtime-errors).
+
+you can't get into a situation where the value stored in a variable is
+different from the variable's static type. Like most modern statically
+typed languages, Dart accomplishes this with a combination of
+[static (compile-time)](#static-errors-and-warnings) and [dynamic (runtime)](#runtime-errors) checking.
+
+For example, the following type error is detected at compile-time:
+
+{:.fails-sa}
+{% prettify dart tag=pre+code %}
+List<int> numbers = [1, 2, 3];
+List<String> [!string = numbers!];
+{% endprettify %}
+
+Since neither `List<int>` nor `List<String>` is a subtype of the other,
+Dart rules this out statically. 
+
+You can see other examples of static analysis errors,
+as well as other error types, in the following sections.
+
+
+## No type errors {#no-type-errors}
 
 If you're not seeing expected errors or warnings,
 make sure that you're using the latest version of Dart
@@ -466,29 +493,41 @@ filterValues((x) => (x [!as String!]).contains('Hello'));
 
 <hr>
 
-<a id="common-errors-and-warnings"></a>
-## Runtime errors
+### Incorrect type inference
 
-Dart enforces a sound type system. Roughly, this means
-you can't get into a situation where the value stored in a variable is
-different from the variable's static type. Like most modern statically
-typed languages, Dart accomplishes this with a combination of static
-(compile-time) and dynamic (runtime) checking.
+On rare occasions, Dart's enhanced type inference might infer
+the wrong type for function literal arguments in a generic constructor invocation.
+This primarily affects `Iterable.fold`.
 
-For example, the following type error is detected at compile-time:
+#### Example
+
+In the following code,
+type inference will infer that `a` has a type of `Null`:
 
 {:.fails-sa}
+<?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
 {% prettify dart tag=pre+code %}
-List<int> numbers = [1, 2, 3];
-List<String> [!string = numbers!];
+  List<int> ints = [1, 2, 3];
+  var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
 
-Since neither `List<int>` nor `List<String>` is a subtype of the other,
-Dart rules this out statically. You can see other examples of these
-static analysis errors in 
-[Unexpected collection element type](#unexpected-collection-element-type).
+#### Fix: Supply appropriate type as explicit type argument
 
-The errors discussed in the remainder of this section are reported at
+{:.passes-sa}
+<?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
+{% prettify dart tag=pre+code %}
+  List<int> ints = [1, 2, 3];
+  var maximumOrNull =
+      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+{% endprettify %}
+
+<hr>
+
+<a id="common-errors-and-warnings"></a>
+
+## Runtime errors
+
+The errors discussed in this section are reported at
 [runtime](type-system#runtime-checks).
 
 ### Invalid casts

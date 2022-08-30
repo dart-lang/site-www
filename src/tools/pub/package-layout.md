@@ -522,11 +522,12 @@ This helps speed-up future re-runs of the build steps.
 {{site.alert.warning}}
   When developing a tool that wants to cache files in `.dart_tool/`,
   ensure the following:
+  
     * You are using a subdirectory named after a package you own
        (`.dart_tool/<my_tool_package_name>/`)
     * Your files don't belong under source control, 
        as `.dart_tools` is generally listed in `.gitignore`
-{{site.alert.warning}}
+{{site.alert.end}}
 
 
 [Markdown]: {{site.pub-pkg}}/markdown
