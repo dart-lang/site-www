@@ -171,7 +171,7 @@ and then load that library
 depends on your platform and the type of library.
 For details, see the following:
 
-* [Flutter `dart:ffi` page][binding]
+* Flutter `dart:ffi` page: [Android][android], [iOS][ios], and [macOS][macos] 
 * [`dart:ffi` examples]({{page.samples}})
 
 ## Interfacing with native types
@@ -255,7 +255,9 @@ to automatically create FFI wrappers from C header files.
 
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
-[binding]: {{site.flutter-docs}}/development/platform-integration/c-interop
+[ios]: {{site.flutter-docs}}/development/platform-integration/ios/c-interop
+[android]: {{site.flutter-docs}}/development/platform-integration/android/c-interop
+[macos]: {{site.flutter-docs}}/development/platform-integration/macos/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [hello_world]: {{page.hw}}
 [primitives]: {{page.samples}}/primitives
