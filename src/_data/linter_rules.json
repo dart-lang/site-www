@@ -394,7 +394,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "**DO** use key in widget constructors.\n\nIt's a good practice to expose the ability to provide a key when creating public\nwidgets.\n\n**BAD:**\n```dart\nclass MyPublicWidget extends StatelessWidget {\n}\n```\n\n**GOOD:**\n```dart\nclass MyPublicWidget extends StatelessWidget {\n  MyPublicWidget({Key? key}) : super(key: key);\n}\n```\n"
+    "details": "**DO** use key in widget constructors.\n\nIt's a good practice to expose the ability to provide a key when creating public\nwidgets.\n\n**BAD:**\n```dart\nclass MyPublicWidget extends StatelessWidget {\n}\n```\n\n**GOOD:**\n```dart\nclass MyPublicWidget extends StatelessWidget {\n  MyPublicWidget({super.key});\n}\n```\n"
   },
   {
     "name": "valid_regexps",
@@ -654,7 +654,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "\n**AVOID** using `forEach` with a function literal.\n\n**BAD:**\n```dart\npeople.forEach((person) {\n  ...\n});\n```\n\n**GOOD:**\n```dart\nfor (var person in people) {\n  ...\n}\n\npeople.forEach(print);\n```\n"
+    "details": "\n**AVOID** using `forEach` with a function literal.\n\nThe `for` loop enables a developer to be clear and explicit as to their intent.\nA return in the body of the `for` loop returns from the body of the function, \nwhere as a return in the body of the `forEach` closure only returns a value \nfor that iteration of the `forEach`. The body of a `for` loop can contain \n`await`s, while the closure body of a `forEach` cannot.\n\n**BAD:**\n```dart\npeople.forEach((person) {\n  ...\n});\n```\n\n**GOOD:**\n```dart\nfor (var person in people) {\n  ...\n}\n```\n"
   },
   {
     "name": "avoid_implementing_value_types",
@@ -958,7 +958,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsEvaluation",
+    "fixStatus": "hasFix",
     "details": "\n**DO** sort combinator names alphabetically.\n\n**BAD:**\n```dart\nimport 'a.dart' show B, A hide D, C;\nexport 'a.dart' show B, A hide D, C;\n```\n\n**GOOD:**\n```dart\nimport 'a.dart' show A, B hide C, D;\nexport 'a.dart' show A, B hide C, D;\n```\n\n"
   },
   {
@@ -1266,7 +1266,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsEvaluation",
+    "fixStatus": "needsFix",
     "details": "\nSome operations on primitive types are idempotent and can be removed.\n\n**BAD:**\n\n```dart\ndoubleValue.toDouble();\n\nintValue.toInt();\nintValue.round();\nintValue.ceil();\nintValue.floor();\nintValue.truncate();\n\nstring.toString();\nstring = 'hello\\n'\n    'world\\n'\n    ''; // useless empty string\n\n'string with ${x.toString()}';\n```\n"
   },
   {
@@ -2299,6 +2299,16 @@
     "details": "\nUnnecessary `toList()` in spreads.\n\n**BAD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)).toList(),\n]\n```\n\n**GOOD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)),\n]\n```\n\n"
   },
   {
+    "name": "unreachable_from_main",
+    "description": "Unreachable top-level members in executable libraries.",
+    "group": "style",
+    "maturity": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsEvaluation",
+    "details": "\nTop-level members in an executable library should be used directly inside this\nlibrary.  An executable library is a library that contains a `main` top-level\nfunction or that contains a top-level function annotated with\n`@pragma('vm:entry-point')`).  Executable libraries are not usually imported\nand it's better to avoid defining unused members.\n\nThis rule assumes that an executable library isn't imported by other files\nexcept to execute its `main` function.\n\n**BAD:**\n\n```dart\nmain() {}\nvoid f() {}\n```\n\n**GOOD:**\n\n```dart\nmain() {\n  f();\n}\nvoid f() {}\n```\n\n"
+  },
+  {
     "name": "use_colored_box",
     "description": "Use `ColoredBox`.",
     "group": "style",
@@ -2438,6 +2448,16 @@
     "sets": [],
     "fixStatus": "needsEvaluation",
     "details": "\n**DO** use string buffers to compose strings.\n\nIn most cases, using a string buffer is preferred for composing strings due to\nits improved performance.\n\n**BAD:**\n```dart\nString foo() {\n  final buffer = '';\n  for (int i = 0; i < 10; i++) {\n    buffer += 'a'; // LINT\n  }\n  return buffer;\n}\n```\n\n**GOOD:**\n```dart\nString foo() {\n  final buffer = StringBuffer();\n  for (int i = 0; i < 10; i++) {\n    buffer.write('a');\n  }\n  return buffer.toString();\n}\n```\n\n"
+  },
+  {
+    "name": "use_string_in_part_of_directives",
+    "description": "Use string in part of directives.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "\nFrom [effective dart](https://dart.dev/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives):\n\n**DO** use strings in `part of` directives.\n\n**BAD:**\n\n```dart\npart of my_library;\n```\n\n**GOOD:**\n\n```dart\npart of '../../my_library.dart';\n```\n\n"
   },
   {
     "name": "use_super_parameters",
