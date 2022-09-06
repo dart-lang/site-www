@@ -5,24 +5,29 @@ description: Information about Dart's null safety feature
 
 The Dart language comes with sound null safety.
 
-When using sound null safety,
-types in your code are non-nullable by default, meaning that
-variables can’t contain `null` _unless you say they can._
-With null safety, your **runtime** null-dereference errors
-turn into **edit-time** analysis errors, enabling you to fix
-errors before deploying to customers.
+Null safety prevents errors that result from unintentionel access
+of variables set to `null`.
+For example, if a method expects an integer but receives `null`,
+your app causes a runtime error. This type of error, a null dereference error,
+can be difficult to debug.
+
+With sound null safety variables are 'non-nullable' by default.
+You can specify that the type of a variable is nullable,
+and only then can they contain a `null`.
+Sound null safety changes potential **runtime errors**
+into **edit-time** analysis errors.
+This allows you to fix these errors before deploying your app.
 
 {{site.alert.warn}}
-In Dart 2.x SDKs, sound null safety is enabled or disabled
-via configuration of the project SDK constraint;
-see [Enabling/disabling null safety](#enable-null-safety) for details.
+In Dart 2.x SDKs, you can enable or disable sound null safety 
+through configuration of the project SDK constraint.
+To learn more, see [Enabling/disabling null safety](#enable-null-safety).
 
-In Dart 3 -- tentatively planned for release by mid 2023 --
-sound null safety will always be enabled,
-and running _without_ sound null will no longer be possible.
+Dart 3 -- tentatively planned for release by mid 2023 --
+will require sound null safety. It will prevent code from running without it.
 All existing code must be [migrated](#migrate) to sound null safety
 to be compatible with Dart 3.
-For details, see the [Dart 3 sound null safety tracking issue][].
+To learn more, see the [Dart 3 sound null safety tracking issue][].
 {{site.alert.end}}
 
 [Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
