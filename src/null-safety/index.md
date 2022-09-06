@@ -52,10 +52,10 @@ just add `?` to its type declaration:
 int? aNullableInt = null;
 ```
 
-For more interactive examples,
-see the [null safety codelab][Null safety codelab].
-For an in-depth discussion, see
-[Understanding null safety](/null-safety/understanding-null-safety).
+- To try an interactive example,
+  see the [null safety codelab][Null safety codelab].
+- To learn more about this topic, see
+  [Understanding null safety](/null-safety/understanding-null-safety).
 
 
 ## Null safety principles
