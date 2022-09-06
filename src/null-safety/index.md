@@ -82,7 +82,7 @@ and in Flutter 2.0 and later. Dart 3 and later will
 
 Sound null safety is currently enabled by setting the
 [SDK constraint lower-bound](/tools/pub/pubspec#sdk-constraints)
-to a [language version][] of 2.12 or higher.
+to a [language version][] of 2.12 or later.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 ```yaml
