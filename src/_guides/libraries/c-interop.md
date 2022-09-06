@@ -171,7 +171,7 @@ and then load that library
 depends on your platform and the type of library.
 For details, see the following:
 
-* Flutter `dart:ffi` page: [Android][android], [iOS][ios], and [macOS][macos] 
+* Flutter `dart:ffi` pages: [Android][android], [iOS][ios], and [macOS][macos] 
 * [`dart:ffi` examples]({{page.samples}})
 
 ## Interfacing with native types
