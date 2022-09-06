@@ -3,7 +3,7 @@ title: Sound null safety
 description: Information about Dart's null safety feature
 ---
 
-The Dart language comes with sound null safety!
+The Dart language comes with sound null safety.
 
 When using sound null safety,
 types in your code are non-nullable by default, meaning that
@@ -27,7 +27,7 @@ For details, see the [Dart 3 sound null safety tracking issue][].
 
 [Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
 
-## Introduction via examples
+## Introduction through examples
 
 With null safety,
 all of the variables in the following code are non-nullable:
