@@ -76,9 +76,8 @@ Dart null safety support is based on the following three core design principles:
 
 ## Enabling/disabling null safety {#enable-null-safety}
 
-Sound null safety is available in Dart 2.12 or later,
-and in Flutter 2.0 and later. Dart 3 and later will
-[_only_ support sound null safety][Dart 3 sound null safety tracking issue].
+You can use sound null safety in Dart 2.12 and Flutter 2.0 or later.
+Dart 3 and later will [_only_ support sound null safety][Dart 3 sound null safety tracking issue].
 
 <a id="constraints"></a>
 To enable sound null safety, set the
