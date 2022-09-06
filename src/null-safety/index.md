@@ -94,16 +94,16 @@ environment:
 
 ### Migrating an existing package or app {#migrate}
 
-The Dart SDK contains a tool that can help you
-migrate code written prior to Dart 2.12 to support
-sound null safety:
+The Dart SDK includes the `dart migrate` tool.
+This tool helps you migrate code that supports sound null safety. 
+Use `dart migrate` if you wrote Dart code with Dart 2.12 or earlier.
 
-  ```terminal
-  $ cd my_app
-  $ dart migrate
-  ```
+```terminal
+$ cd my_app
+$ dart migrate
+```
 
-For details instructions on how to migrate your code to null safety,
+To learn how to migrate your code to null safety,
 see the [migration guide][].
 
 
