@@ -11,11 +11,18 @@ For example, if a method expects an integer but receives `null`,
 your app causes a runtime error. This type of error, a null dereference error,
 can be difficult to debug.
 
-With sound null safety variables are 'non-nullable' by default.
-You can specify that the type of a variable is nullable,
-and only then can they contain a `null`.
+With sound null safety variables are 'non-nullable' by default:
+They can be assigned only values of the declared type
+(e.g. `int i=42`), and never be assigned `null`.
+You can specify that a type of a variable is nullable
+(e.g. `int? i`),
+and only then can they contain either a `null` *or*
+a value of the defined type.
+
 Sound null safety changes potential **runtime errors**
-into **edit-time** analysis errors.
+into **edit-time** analysis errors, by flagging when
+any non-nullable variable hasn't been initialized with a 
+non-null value or is being assigned a `null`.
 This allows you to fix these errors before deploying your app.
 
 {{site.alert.warn}}
