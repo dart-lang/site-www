@@ -5,7 +5,7 @@ description: Information about Dart's null safety feature
 
 The Dart language comes with sound null safety.
 
-Null safety prevents errors that result from unintentionel access
+Null safety prevents errors that result from unintentional access
 of variables set to `null`.
 For example, if a method expects an integer but receives `null`,
 your app causes a runtime error. This type of error, a null dereference error,
@@ -23,7 +23,7 @@ In Dart 2.x SDKs, you can enable or disable sound null safety
 through configuration of the project SDK constraint.
 To learn more, see [Enabling/disabling null safety](#enable-null-safety).
 
-Dart 3 -- tentatively planned for release by mid 2023 --
+Dart 3--planned for a mid-2023 release--
 will require sound null safety. It will prevent code from running without it.
 All existing code must be [migrated](#migrate) to sound null safety
 to be compatible with Dart 3.
