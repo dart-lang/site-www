@@ -55,7 +55,6 @@ with valid pubspec.yaml files and directory structures.
 This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
-
 Run the `dart create` command with the `--help` flag
 to see what kinds of template files it can generate:
 
@@ -79,6 +78,7 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
+<?code-excerpt "vector_victor/pubspec.yaml" to="test"?>
 ```yaml
 name: vector_victor
 description: A sample command-line application.
@@ -86,7 +86,7 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 # dependencies:
 #   path: ^1.8.0
@@ -107,40 +107,34 @@ specifies the name and version
 of a package that your app uses.
 
 Let's make the vector_victor app have a dependency
-on the vector_math package,
+on the `vector_math` package,
 which is available at the [pub.dev site]({{site.pub}}).
 
- 1. Get the current installation details for the package:
+Run the [`dart pub add`](/tools/pub/cmd/pub-add) command 
+and specify `vector_math`
+to add a dependency on the package:
 
-    {: type="a"}
-     1. Go to [vector_math's entry on the Package
-        site.]({{site.pub-pkg}}/vector_math)
-     2. Click the **Installing** tab.
-     3. Copy the **vector_math** line from the sample **dependencies** entry.
-        The entry should look something like this:
+```terminal
+$ dart pub add vector_math
+Resolving dependencies... 
++ vector_math 2.1.3
+Downloading vector_math 2.1.3...
+Changed 1 dependency!
+```
 
-        ```yaml
-        dependencies:
-          vector_math: ^2.0.8
-        ```
+This will add `vector_math` to the
+`dependencies` entry of your `pubspec.yaml`,
+resulting in the following:
 
- 2. Edit `pubspec.yaml`.
+<?code-excerpt "vector_victor/pubspec.yaml" from="dependencies"?>
+```yaml
+dependencies:
+  vector_math: ^2.1.3
+```
 
- 3. In the dependencies section, add the string you copied from the
-    pub.dev site. Be careful to keep the indentation the same; YAML is
-    picky! For example:
-
-    ```yaml
-    environment:
-      sdk: '>=2.8.1 <3.0.0'
-
-    dependencies:
-      vector_math: ^2.0.8
-
-    dev_dependencies:
-      pedantic: ^1.9.0
-      test: ^1.14.4
-    ```
+You can also find your desired version on the
+`vector_math` [page on pub.dev]({{site.pub-pkg}}/vector_math)
+and add it manually to the dependency section.
 
 For details of what version numbers mean
 and how you can format them,
@@ -156,7 +150,7 @@ as we have done here.
 
 ## Install the package dependencies
 
-If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
+If you're using a Dart-savvy editor or `dart pub` to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
 If not, do it yourself by running
@@ -165,7 +159,7 @@ If not, do it yourself by running
 ```terminal
 $ dart pub get
 Resolving dependencies...
-+ vector_math 2.0.8
++ vector_math 2.1.3
 Changed 1 dependency!
 ```
 
@@ -186,16 +180,16 @@ to update to new versions as needed.
 ## What did you get (and not get)?
 
 Besides the Dart libraries,
-the vector_math package has other resources that might be useful to you
+the `vector_math` package has other resources that might be useful to you
 that do not get installed into your app directory.
 Let's take a step back for a moment to look at what
 you got and where it came from.
 
-To see the contents of the vector_math package,
+To see the contents of the `vector_math` package,
 visit the
-<a href="https://github.com/johnmccutchan/vector_math"
+<a href="https://github.com/google/vector_math"
 target="_blank" rel="noopener">Dart vector math repository</a>
-at GitHub.
+on GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
 
@@ -267,19 +261,19 @@ use the `package:` prefix.
 1. Get the import details for the package's main library:
 
    {: type="a"}
-   1. Go to [vector_math's entry on the Package
-      site.]({{site.pub-pkg}}/vector_math)
+   1. Go to the `vector_math` [page on pub.dev.]({{site.pub-pkg}}/vector_math)
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
-
+      
+      <?code-excerpt "vector_victor/lib/vector_victor.dart (import)"?>
       ```dart
       import 'package:vector_math/vector_math.dart';
       ```
 
 2. In your vector_victor app, edit `lib/vector_victor.dart`,
-   so that it imports the vector_math library and uses some of its API.
+   so that it imports the `vector_math` library and uses some of its API.
    For inspiration, look at the
-   [vector_math API
+   [`vector_math` API
    docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
