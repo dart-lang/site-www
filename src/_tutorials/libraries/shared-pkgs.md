@@ -133,7 +133,7 @@ dependencies:
 ```
 
 You can also find your desired version on the
-`vector_math` [page on pub.dev]({{site.pub-pkg}}/vector_math)
+[`vector_math` page on pub.dev]({{site.pub-pkg}}/vector_math)
 and add it manually to the dependency section.
 
 For details of what version numbers mean
@@ -261,7 +261,7 @@ use the `package:` prefix.
 1. Get the import details for the package's main library:
 
    {: type="a"}
-   1. Go to the `vector_math` [page on pub.dev.]({{site.pub-pkg}}/vector_math)
+   1. Go to the [`vector_math` page on pub.dev.]({{site.pub-pkg}}/vector_math)
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
       
