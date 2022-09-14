@@ -60,7 +60,7 @@ function toggle_in_file_analyzer_flags() {
   fi
   printf "\n$(blue "Toggling in-file flags: '$action'")\n"
   find $dir -name "*.dart" ! -path "**/.*" -exec perl \
-    -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$dir}g" {} \;
+    -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$1}g" {} \;
 }
 
 # Analyze and test code for arg $1
