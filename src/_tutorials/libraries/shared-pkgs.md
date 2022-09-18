@@ -126,7 +126,7 @@ This will add `vector_math` to the
 `dependencies` entry of your `pubspec.yaml`,
 resulting in the following:
 
-<?code-excerpt "vector_victor/pubspec.yaml" from="dependencies"?>
+<?code-excerpt "vector_victor/pubspec.yaml" from="/^dependencies/"?>
 ```yaml
 dependencies:
   vector_math: ^2.1.3
