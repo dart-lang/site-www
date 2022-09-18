@@ -349,7 +349,7 @@ class [!C!] extends AbiSpecificInteger {
 }
 {% endprettify %}
 
-The following code produces this diagnostic because the class `C` defineS
+The following code produces this diagnostic because the class `C` defines
 a field:
 
 {% prettify dart tag=pre+code %}
@@ -468,8 +468,8 @@ class C extends AbiSpecificInteger {
 
 ### abi_specific_integer_mapping_unsupported
 
-_Only mappings to 'Int8', 'Int16', 'Int32', 'Int64', 'Uint8', 'Uint16',
-'UInt32', and 'Uint64' are supported._
+_Invalid mapping to '{0}'; only mappings to 'Int8', 'Int16', 'Int32', 'Int64',
+'Uint8', 'Uint16', 'UInt32', and 'Uint64' are supported._
 
 #### Description
 
@@ -493,7 +493,7 @@ entry is `Array<Uint8>`, which isn't a valid integer type:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-@[!AbiSpecificIntegerMapping!]({Abi.macosX64 : Array<Uint8>(4)})
+@AbiSpecificIntegerMapping({Abi.macosX64 : [!Array<Uint8>(4)!]})
 class C extends AbiSpecificInteger {
   const C();
 }
@@ -4158,7 +4158,7 @@ class C {
 {% endprettify %}
 
 If there are multiple named constructors and all except one of them are
-unneeded, then remove the constructorsthat aren't needed:
+unneeded, then remove the constructors that aren't needed:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -7310,8 +7310,6 @@ Given a [part file][] named `part.dart` containing the following:
 
 {% prettify dart tag=pre+code %}
 part of lib;
-
-class C{}
 {% endprettify %}
 
 The following code produces this diagnostic because imported files can't
@@ -7321,8 +7319,6 @@ have a part-of directive:
 library lib;
 
 import [!'part.dart'!];
-
-C c = C();
 {% endprettify %}
 
 #### Common fixes
@@ -12996,7 +12992,7 @@ class C {
 
 ### non_type_as_type_argument
 
-_The name '{0}' isn't a type so it can't be used as a type argument._
+_The name '{0}' isn't a type, so it can't be used as a type argument._
 
 #### Description
 
@@ -14116,88 +14112,6 @@ class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
-
-### packed_nesting_non_packed
-
-_Nesting the non-packed or less tightly packed struct '{0}' in a packed struct
-'{1}' isn't supported._
-
-#### Description
-
-The analyzer produces this diagnostic when a subclass of `Struct` that is
-annotated as being `Packed` declares a field whose type is also a subclass
-of `Struct` and the field's type is either not packed or is packed less
-tightly.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the class `Outer`,
-which is a subclass of `Struct` and is packed on 1-byte boundaries,
-declared a field whose type (`Inner`) is packed on 8-byte boundaries:
-
-{% prettify dart tag=pre+code %}
-import 'dart:ffi';
-
-@Packed(8)
-class Inner extends Struct {
-  external Pointer<Uint8> notEmpty;
-}
-
-@Packed(1)
-class Outer extends Struct {
-  external Pointer<Uint8> notEmpty;
-
-  external [!Inner!] nestedLooselyPacked;
-}
-{% endprettify %}
-
-#### Common fixes
-
-If the inner struct should be packed more tightly, then change the
-argument to the inner struct's `Packed` annotation:
-
-{% prettify dart tag=pre+code %}
-import 'dart:ffi';
-
-@Packed(1)
-class Inner extends Struct {
-  external Pointer<Uint8> notEmpty;
-}
-
-@Packed(1)
-class Outer extends Struct {
-  external Pointer<Uint8> notEmpty;
-
-  external Inner nestedLooselyPacked;
-}
-{% endprettify %}
-
-If the outer struct should be packed less tightly, then change the
-argument to the outer struct's `Packed` annotation:
-
-{% prettify dart tag=pre+code %}
-import 'dart:ffi';
-
-@Packed(8)
-class Inner extends Struct {
-  external Pointer<Uint8> notEmpty;
-}
-
-@Packed(8)
-class Outer extends Struct {
-  external Pointer<Uint8> notEmpty;
-
-  external Inner nestedLooselyPacked;
-}
-{% endprettify %}
-
-If the inner struct doesn't have an annotation and should be packed, then
-add an annotation.
-
-If the inner struct doesn't have an annotation and the outer struct
-shouldn't be packed, then remove its annotation.
 
 ### part_of_different_library
 
@@ -16538,7 +16452,7 @@ class B extends a.A {}
 
 ### subtype_of_disallowed_type
 
-_''{0}' can't be used as a superclass constraint._
+_'{0}' can't be used as a superclass constraint._
 
 _Classes and mixins can't implement '{0}'._
 
@@ -17123,7 +17037,7 @@ _Invalid context for 'super' invocation._
 #### Description
 
 The analyzer produces this diagnostic when the keyword `super` is used
-outside of a instance method.
+outside of an instance method.
 
 #### Example
 
@@ -19484,11 +19398,19 @@ _The declaration '{0}' isn't referenced._
 The analyzer produces this diagnostic when a private declaration isn't
 referenced in the library that contains the declaration. The following
 kinds of declarations are analyzed:
-- Private top-level declarations, such as classes, enums, mixins, typedefs,
-  top-level variables, and top-level functions
-- Private static and instance methods
+- Private top-level declarations and all of their members
+- Private members of public declarations
 - Optional parameters of private functions for which a value is never
-  passed, even when the parameter doesn't have a private name
+  passed
+
+Not all references to an element will mark it as "used":
+- Assigning a value to a top-level variable (with a standard `=`
+  assignment, or a null-aware `??=` assignment) does not count as using
+  it.
+- Referring to an element in a doc comment reference does not count as
+  using it.
+- Referring to a class, mixin, or enum on the right side of an `is`
+  expression does not count as using it.
 
 #### Example
 
@@ -20371,5 +20293,3 @@ Iterable<String> get zero sync* {
   yield '0';
 }
 {% endprettify %}
-
-[C interop using dart:ffi]: /guides/libraries/c-interop

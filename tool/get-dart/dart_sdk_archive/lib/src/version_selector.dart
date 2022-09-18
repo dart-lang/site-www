@@ -145,8 +145,9 @@ class VersionSelector {
             continue;
           } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
             // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
-            // and none in stable yet.
-            // TODO: After this ships in stable 2.x, remove the stable check,
+            // and only want to surface beta and dev.
+            // TODO: After this is marked stable stable in 2.x,
+            // remove the stable check,
             // and just test for versionInfo.version < Version(2,x,0).
             if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
               continue;
@@ -167,6 +168,21 @@ class VersionSelector {
             // No macOS ARM64 SDK builds before 2.14.1
             // (earlier builds did not have trained snapshots).
             continue;
+          }
+        } else if (name == 'Windows') {
+          if (platformVariant.architecture == 'ARM64') {
+            // No Windows arm64 SDK builds before 2.18.0-41.0.dev,
+            // and only want to surface beta and dev.
+            // TODO: After this is marked stable stable in 2.x,
+            // remove the stable check,
+            // and just test for versionInfo.version < Version(2,x,0).
+            if (versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
+              continue;
+            }
+
+            if (versionInfo.channel == 'stable') {
+              continue;
+            }
           }
         }
 

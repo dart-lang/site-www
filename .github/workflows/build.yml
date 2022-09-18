@@ -69,7 +69,7 @@ jobs:
         with:
           sdk: stable
       - run: tool/check-links.sh
-      - uses: FirebaseExtended/action-hosting-deploy@3a02c012c6a9b183828eeb456247327a894fc698
+      - uses: FirebaseExtended/action-hosting-deploy@ff6e7dde58a4f7f1db590927596bf683250c6cc8
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
@@ -100,7 +100,7 @@ jobs:
         if: ${{ 
           github.event.pull_request.head.repo.full_name == github.repository &&
           github.event.pull_request.user.login != 'dependabot[bot]' }}
-        uses: FirebaseExtended/action-hosting-deploy@3a02c012c6a9b183828eeb456247327a894fc698
+        uses: FirebaseExtended/action-hosting-deploy@ff6e7dde58a4f7f1db590927596bf683250c6cc8
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'

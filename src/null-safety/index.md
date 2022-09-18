@@ -3,13 +3,43 @@ title: Sound null safety
 description: Information about Dart's null safety feature
 ---
 
-The Dart language now supports sound null safety!
+The Dart language comes with sound null safety.
 
-When you opt into null safety,
-types in your code are non-nullable by default, meaning that
-variables can’t contain `null` _unless you say they can._
-With null safety, your **runtime** null-dereference errors
-turn into **edit-time** analysis errors.
+Null safety prevents errors that result from unintentional access
+of variables set to `null`.
+For example, if a method expects an integer but receives `null`,
+your app causes a runtime error. This type of error, a null dereference error,
+can be difficult to debug.
+
+With sound null safety variables are 'non-nullable' by default:
+They can be assigned only values of the declared type
+(e.g. `int i=42`), and never be assigned `null`.
+You can specify that a type of a variable is nullable
+(e.g. `int? i`),
+and only then can they contain either a `null` *or*
+a value of the defined type.
+
+Sound null safety changes potential **runtime errors**
+into **edit-time** analysis errors, by flagging when
+any non-nullable variable hasn't been initialized with a 
+non-null value or is being assigned a `null`.
+This allows you to fix these errors before deploying your app.
+
+{{site.alert.warn}}
+In Dart 2.x SDKs, you can enable or disable sound null safety 
+through configuration of the project SDK constraint.
+To learn more, see [Enabling/disabling null safety](#enable-null-safety).
+
+Dart 3--planned for a mid-2023 release--
+will require sound null safety. It will prevent code from running without it.
+All existing code must be [migrated](#migrate) to sound null safety
+to be compatible with Dart 3.
+To learn more, see the [Dart 3 sound null safety tracking issue][].
+{{site.alert.end}}
+
+[Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
+
+## Introduction through examples
 
 With null safety,
 all of the variables in the following code are non-nullable:
@@ -29,15 +59,10 @@ just add `?` to its type declaration:
 int? aNullableInt = null;
 ```
 
-You can
-[use null safety](#enable-null-safety) in your normal development environment,
-[migrate existing code][migration guide] to use null safety,
-or try null safety in [DartPad]({{site.dartpad}}).
-
-For an interactive, example-driven introduction to null safety language features,
-see the [null safety codelab][Null safety codelab].
-For an in-depth discussion, see
-[Understanding null safety](/null-safety/understanding-null-safety).
+- To try an interactive example,
+  see the [null safety codelab][Null safety codelab].
+- To learn more about this topic, see
+  [Understanding null safety](/null-safety/understanding-null-safety).
 
 
 ## Null safety principles
@@ -61,33 +86,15 @@ Dart null safety support is based on the following three core design principles:
   fewer bugs, but smaller binaries and faster execution.
 
 
-## Enabling null safety {#enable-null-safety}
+## Enabling/disabling null safety {#enable-null-safety}
 
-Sound null safety is available in Dart 2.12 and Flutter 2.
+You can use sound null safety in Dart 2.12 and Flutter 2.0 or later.
+Dart 3 and later will [_only_ support sound null safety][Dart 3 sound null safety tracking issue].
 
-
-### Migrating an existing package or app {#migrate}
-
-For instructions on how to migrate your code to null safety,
-see the [migration guide][].
-
-{{site.alert.version-note}}
-  Before Dart 2.13, the templates used by the [`dart create`][] command
-  and IDEs aren't null safe, so you need to migrate the code they create.
-  For example:
-
-  ```terminal
-  $ dart create -t console my_cli
-  $ cd my_cli
-  $ dart migrate --apply-changes
-  ```
-{{site.alert.end}}
-
-### Behind the scenes: SDK constraints {#constraints}
-
-To make Dart treat your code as null safe,
-the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
-must require a [language version][] that has null safety support.
+<a id="constraints"></a>
+To enable sound null safety, set the
+[SDK constraint lower-bound](/tools/pub/pubspec#sdk-constraints)
+to a [language version][] of 2.12 or later.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 ```yaml
@@ -96,6 +103,20 @@ environment:
 ```
 
 [language version]: /guides/language/evolution#language-versioning
+
+### Migrating an existing package or app {#migrate}
+
+The Dart SDK includes the `dart migrate` tool.
+This tool helps you migrate code that supports sound null safety. 
+Use `dart migrate` if you wrote Dart code with Dart 2.12 or earlier.
+
+```terminal
+$ cd my_app
+$ dart migrate
+```
+
+To learn how to migrate your code to null safety,
+see the [migration guide][].
 
 
 ## Where to learn more

@@ -2159,7 +2159,7 @@ To make the constructor const, you'll need to make all the properties final.
 {$ end hint.txt $}
 ```
 
-## What next?
+## What's next?
 
 We hope you enjoyed using this codelab to learn or test your knowledge of
 some of the most interesting features of the Dart language.

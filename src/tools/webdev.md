@@ -4,54 +4,46 @@ description: Command-line tools for Dart web development.
 ---
 <!--?code-excerpt path-base="examples/ng/doc"?-->
 
-This page explains how to use `webdev` and
-a tool it depends on—`build_runner`—to 
-build, serve, and test your web apps.
-The [webdev][] package provides `webdev`,
-which wraps around the more general-purpose
-[`build_runner` tool.][build_runner]
-
-Usually you can use `webdev` instead of directly using `build_runner`.
-The only time most web app developers run `build_runner` is for tests.
+This page explains how to use `webdev` to compile your app and
+`build_runner` to test your app.
 
 ## Setup
 
-The easiest way to get `webdev` is to globally install it,
-so that it can be [in your PATH.][PATH]
-Before you can use `webdev`,
-your web app must depend on the
-build_runner and build_web_compilers packages.
+Follow these instructions to get started using `webdev`.
 
+Before you can use `webdev`, Add dependencies to the [build_runner][] 
+and [build_web_compilers][] packages to your app. The `build_runner`
+package adds scripting capabilities to `webdev`.
+
+```terminal
+$ dart pub add build_runner build_web_compilers --dev
+```
 
 ### Installing and updating webdev
 
-[Globally install][] `webdev` using pub:
+Use `dart pub` to install `webdev` for [all users][].
 
 ```terminal
 $ dart pub global activate webdev
 ```
 
-Use the same command to update `webdev`.
-We recommend updating `webdev` whenever you update your Dart SDK
-or when `webdev` commands unexpectedly fail.
+Use the same command to update `webdev`. 
+Update `webdev` when you update your Dart SDK or when `webdev` commands fail in a way you can't explain.
 
-[Globally install]: /tools/pub/cmd/pub-global
+[all users]: /tools/pub/cmd/pub-global
 
 
 ### Depending on build_* packages
 
-To use `webdev` or (in a web app context) `build_runner`,
-you must be in the root directory of a package that depends on 
-the **build_runner** and **build_web_compilers** packages.
-If you're testing the app,
-it must also depend on **build_test**.
+To use `webdev`, you must be in the root directory of a package that
+depends on the **build_runner** and **build_web_compilers** packages.
+If you're testing the app, it must also depend on **build_test**.
 
-To depend on these packages,
-add the following [dev dependencies][]
-to your app's `pubspec.yaml` file:
+To depend on these packages, add the following [dev_dependencies][] to
+your app's `pubspec.yaml` file:
 
 <!--?code-excerpt "quickstart/pubspec.yaml (build dependencies)"?-->
-```
+```yaml
   dev_dependencies:
     # ···
     build_runner: ^2.1.0
@@ -59,52 +51,69 @@ to your app's `pubspec.yaml` file:
     build_web_compilers: ^3.0.0
 ```
 
-As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
+As usual after `pubspec.yaml` changes, run `dart pub get` or 
+`dart pub upgrade`:
 
 ```terminal
 $ dart pub get
 ```
 
-## Using webdev and build_runner commands
+## Using commands from Dart packages to compile and test
+
+This tool can compile in two ways: one that makes debugging easier
+(`serve`) and one that makes for small, fast code (`build`).
+
+The development compiler supports incremental updates and produces
+[Asynchronous Module Definition (AMD) modules.](https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd).
+With [`webdev serve`][serve], you can edit your Dart files, refresh in
+Chrome, and see your edits in short order. This speed comes from
+compiling updated modules, not all the packages that your app requires.
+
+The first compilation takes the longest as it compiles the entire app.
+While [`serve`][serve] command runs, successive builds should compile
+faster.
+
+The production compiler generates a single, minified JavaScript file.
 
 This section describes how to use the following commands:
 
 [webdev serve](#serve)
-: Runs a development server that continuously builds a web app.
+: Runs a development server that continuously builds a JavaScript app.
 
 [webdev build](#build)
-: Builds a deployable version of a web app.
+: Builds a deployable version of a JavaScript app.
 
 [build_runner test](#test)
 : Runs tests.
 
-You can customize your build using build config files. For details, see
-the [build_web_compilers package.][build_web_compilers]
-
+You can customize your build using build configuration files. 
+To learn more about build configuration files, see the 
+[build_web_compilers][] package.
 
 ### webdev serve {#serve}
 
-To launch a development server, which serves your app and watches for source
-code changes, use the following command:
-
-```
-webdev serve [--debug | --release] [ [<directory>[:<port>]] ... ]
-```
-
-By default, `webdev serve` compiles your app using [dartdevc][] and 
-serves the app at [localhost:8080](localhost:8080):
+To serve a development version of your web app, run the following
+command.
 
 ```terminal
-$ webdev serve  # uses dartdevc
+$ webdev serve [--debug | --release] [ [<directory>[:<port>]] ... ]
 ```
 
-The first dartdevc build is the slowest. After that, assets are cached on disk,
-and incremental builds are much faster.
+This command launches a development server that serves your app and
+watches for source code changes. By default, this command serves the
+ app at [localhost:8080](localhost:8080):
+
+```terminal
+$ webdev serve
+```
+
+The first `webdev serve` compiles slow. After the first compile, it caches
+assets on disk. This makes later builds compile faster.
 
 {{site.alert.note}}
-  The development compiler (dartdevc) supports **only Chrome.**
+  The development compiler supports **only Chrome.**
   To view your app in another browser,
-  use the production compiler (dart2js).
+  use the production compiler.
   For a list of supported browsers, [see the FAQ][supported browsers].
 {{site.alert.end}}
 
@@ -114,35 +123,34 @@ To enable [Dart DevTools][], add the `--debug` flag:
 $ webdev serve --debug  # enables Dart DevTools
 ```
 
-To use [dart2js][] instead of dartdevc, add the `--release` flag:
+To use production compiler instead of development compiler, add the `--release` flag:
 
 ```terminal
-$ webdev serve --release  # uses dart2js
+$ webdev serve --release  # uses production compiler
 ```
 
-You can specify different directory-port configurations. For example, the
-following command changes the test port from the default (8081) to 8083:
+You can specify different directory-port configurations. 
+
+For example, the following command changes the test port from the
+default (8081) to 8083:
 
 ```terminal
 $ webdev serve web test:8083 # App: 8080; tests: 8083
 ```
 
-
 ### webdev build {#build}
 
 Use the following command to build your app:
 
-```
-webdev build [--no-release] --output [<dirname>:]<dirname>
+```terminal
+$ webdev build [--no-release] --output [<dirname>:]<dirname>
 ```
 
-By default, the `build` command uses the [dart2js][] web compiler to create a
-production version of your app. Add `--no-release` to compile with [dartdevc][].
-Using the `--output` option, you can control which top-level project folders are
-compiled and where output is written.
+By default, the `build` command uses the production JavaScript compiler to create a production version of your app. Add `--no-release` to compile with the development JavaScript compiler. Use the `--output` option to control where Dart compiles top-level project folders and writes its output.
 
-For example, the following command uses dart2js to compile the project's
-top-level `web` folder into the `build` directory:
+The following command shows how to compile the project's top-level
+`web` folder into the `build` directory. This command uses the
+production JavaScript compiler by default.
 
 ```terminal
 $ webdev build --output web:build
@@ -159,7 +167,7 @@ $ dart run build_runner test [build_runner options] -- -p <platform> [test optio
 
 {{site.alert.tip}}
   If the command fails to load the test file,
-  make sure that your app's pubspec has a dev dependency on `build_test`.
+  make sure that your app's `pubspec` has a `dev_dependency` on `build_test`.
 {{site.alert.end}}
 
 For example, here's how to run all Chrome platform tests:
@@ -174,10 +182,9 @@ To see all available build_runner options, use the `--help` or `-h` option:
 $ dart run build_runner test -h
 ```
 
-Arguments after the empty `--` argument
-are passed directly to the [test package][] runner.
-To see all command-line options for the test package runner,
-use this command:
+Dart passes arguments after the empty `--` argument directly to the
+[test package][] runner. To see all command-line options for the
+test package runner, use this command:
 
 ```terminal
 $ dart test -h
@@ -187,7 +194,7 @@ $ dart test -h
 ## More information
 
 For a complete list of `webdev` options, run `webdev --help` or see the
-[webdev package.][webdev]
+[webdev package][webdev].
 
 Also see the following pages:
 
@@ -197,16 +204,13 @@ Also see the following pages:
 * [build_web_compilers:][build_web_compilers]
   Has information on configuring builds,
   with an example of using `dart2js_args` to specify
-  [dart2js options.][]
+  [compiler options](/tools/dart-compile#js).
 
 [build_runner]: /tools/build_runner
 [build_runner test]: #test
 [build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
 [Dart DevTools]: /tools/dart-devtools
-[dart2js]: /tools/dart2js
-[dart2js options.]: /tools/dart2js#options
-[dartdevc]: /tools/dartdevc
-[dev dependencies]: /tools/pub/dependencies#dev-dependencies
+[dev_dependencies]: /tools/pub/dependencies#dev-dependencies
 [PATH]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 [supported browsers]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test

@@ -58,10 +58,12 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool/` directory exists after you've run `pub get`. 
+\* The `.dart_tool/` directory exists after you've run `dart pub get`.
    Don't check it into source control.
+   To learn more, see 
+   [Project specific caching for tools](#project-specific-caching-for-tools).
 
-\** The `pubspec.lock` file exists after you've run `pub get`.
+\** The `pubspec.lock` file exists after you've run `dart pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
@@ -82,12 +84,13 @@ Every package has a [_pubspec_](/tools/pub/pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
 package.
 
-Running [`pub get`](/tools/pub/cmd/pub-get),
-[`pub upgrade`](/tools/pub/cmd/pub-upgrade), or
-[`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package creates a
-**lockfile**, named `pubspec.lock`. If your package is an [application
-package](/tools/pub/glossary#application-package), check the lockfile into source
-control. Otherwise, don't.
+Running [`dart pub get`](/tools/pub/cmd/pub-get),
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), or
+[`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package
+creates a **lockfile**, named `pubspec.lock`. 
+If your package is an 
+[application package](/tools/pub/glossary#application-package), 
+check the lockfile into source control. Otherwise, don't.
 
 For more information, see the [pubspec page](/tools/pub/pubspec).
 
@@ -475,5 +478,56 @@ documentation generators, or other bits of automation.
 
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
+
+## Project-specific caching for tools
+
+{{site.alert.info}}
+  Do not check the `.dart_tool/` directory into source control.
+  Instead, keep `.dart_tool/` in `.gitignore`.
+{{site.alert.end}}
+
+The `.dart_tool/` directory is created when you run `dart pub get`
+and might be deleted at any time. Various tools use this directory
+for caching files specific to your project and/or local machine.
+The `.dart_tool/` directory should never be checked into
+source control, or copied between machines.
+
+It is also generally safe to delete the `.dart_tool/` directory,
+though some tools might need recompute the cached information. 
+
+**Example:** The [dart pub get](https://dart.dev/tools/pub/cmd/pub-get) tool
+will dowload and extract dependencies to a global `$PUB_CACHE` directory,
+and then write a `.dart_tool/package_config.json` file mapping _package names_
+to directories in the global `$PUB_CACHE` directory.
+The `.dart_tool/package_config.json` file is used by other tools,
+such as analyzer, compiler, etc, when they need to resolve statments
+such as `import "package:foo/foo.dart"`.
+
+When developing a tool that needs project-specific caching, 
+you might consider using the `.dart_tool/` directory 
+because most users already ignore it with `.gitignore`.
+When caching files for your tool in a user's `.dart_tool/` directory,
+you should use a unique subdirectory. To avoid collisions,
+subdirectories of the form `.dart_tool/<tool_package_name>/`
+are reserved for the package named `<tool_package_name>`.
+If your tool isn't distributed through the [pub.dev site,]({{site.pub}})
+you might consider publishing a placeholder package in order to 
+reserve the unique name.
+
+**Example:** [`package:build`](https://pub.dev/packages/build) provides a
+framework for writing code generation steps.
+When running these build steps, files are cached in `.dart_tool/build/`.
+This helps speed-up future re-runs of the build steps.
+
+{{site.alert.warning}}
+  When developing a tool that wants to cache files in `.dart_tool/`,
+  ensure the following:
+  
+    * You are using a subdirectory named after a package you own
+       (`.dart_tool/<my_tool_package_name>/`)
+    * Your files don't belong under source control, 
+       as `.dart_tools` is generally listed in `.gitignore`
+{{site.alert.end}}
+
 
 [Markdown]: {{site.pub-pkg}}/markdown

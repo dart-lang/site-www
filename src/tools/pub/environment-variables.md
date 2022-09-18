@@ -38,4 +38,4 @@ see [Overriding the default package repository][].
 {{site.alert.end}}
 
 [`pub get` fails from behind a corporate firewall]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
-[Overriding the default package repository]: /tools/pub/custom-package-repositories#overriding-the-default-package-repository
+[Overriding the default package repository]: /tools/pub/custom-package-repositories#default-override
