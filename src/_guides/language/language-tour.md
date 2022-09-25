@@ -3312,8 +3312,11 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown.
-  // ···
+  @override
+  bool operator == (other) => other is Vector && x == other.x && y == other.y;
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
 }
 
 void main() {
