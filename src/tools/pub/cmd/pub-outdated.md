@@ -204,14 +204,6 @@ so that each package uses the versions in the **Resolvable** column.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--[no-]color`
-
-Adds color to the output for emphasis (`--color`). 
-The default depends on whether you're using this command at a terminal.
-At a terminal, `--color` is the default, 
-otherwise, `--no-color` is the default. 
-Use `--no-color` to disable color in all environments.
-
 ### `--[no-]dependency-overrides`
 
 By default, accounts for [`dependency_overrides`][]

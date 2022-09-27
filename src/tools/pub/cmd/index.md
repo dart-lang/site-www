@@ -170,3 +170,11 @@ Equivalent to `--verbosity=all`.
 
 Runs the command in the specified directory.
 
+### `--[no-]color`
+
+Adds color to the output for emphasis (`--color`).
+The default depends on whether you're using this command at a terminal.
+At a terminal, `--color` is the default,
+otherwise, `--no-color` is the default.
+Use `--no-color` to disable color in all environments.
+
