@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'activesupport', '~> 7.0.2'
+gem 'activesupport', '~> 7.0.4'
 gem 'jekyll', '4.2.2'
 gem 'kramdown-parser-gfm'
 gem 'liquid-tag-parser', '~> 2.0.2'
