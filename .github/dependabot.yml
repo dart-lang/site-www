@@ -3,9 +3,25 @@
 
 version: 2
 updates:
-
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      # Check for updates to GitHub Actions once a week
-      interval: "weekly"
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: "production"
+  - package-ecosystem: 'gitsubmodule'
+    directory: '/'
+    schedule:
+      interval: 'daily'
