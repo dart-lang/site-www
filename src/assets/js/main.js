@@ -34,9 +34,15 @@ function handleSearchShortcut(event) {
 }
 
 function switchBanner(galleryName) {
-    $('#' + galleryName + ' .selector li').removeClass('highlight');
-    $(this).addClass('highlight');
-    $('.' + galleryName).attr('src', $(this).data('banner'));
+  const selectors = document.querySelectorAll('#' + galleryName + ' .selector li')
+  const imgSelector = document.querySelector('.' + galleryName);
+
+  selectors.forEach(selector => {
+    selector.classList.remove('highlight')
+  })
+  this.classList.add('highlight')
+  
+  imgSelector.setAttribute('src', this.dataset.banner)
 }
 
 function initVideoModal() {
@@ -105,15 +111,19 @@ function adjustToc() {
 function createGallery() {
   for (var i = 0; i < arguments.length; i++) {
     const galleryName = arguments[i];
-    const selector = $('#' + galleryName + ' .selector li');
-    
-    selector.hover(function () {
-      switchBanner.call(this, galleryName);
-    });
+    const selectors = document.querySelectorAll('#' + galleryName + ' .selector li')
 
-    selector.focus(function () {
-      switchBanner.call(this, galleryName);
-    });
+    selectors.forEach(selector => {
+      selector.addEventListener('mouseover', function (event) {
+        switchBanner.call(this, galleryName);
+      });
+    })
+    
+    selectors.forEach(selector => {
+      selector.addEventListener('focus', function (event) {
+        switchBanner.call(this, galleryName);
+      });
+    })
   }
 }
 
