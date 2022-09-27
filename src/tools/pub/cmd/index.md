@@ -146,22 +146,6 @@ Prints usage information.
 
 Prints debugging information when an error occurs.
 
-### `--verbosity=`_`<level>`_
-
-The specified level determines the amount of information that is displayed:
-
-* `all`
-: Shows all output, including internal tracing messages.
-
-* `io`
-: Shows I/O operations.
-
-* `normal`
-: Shows errors, warnings, and user messages.
-
-* `solver`
-: Shows steps during version resolution.
-
 ### `--verbose` or `-v`
 
 Equivalent to `--verbosity=all`.
