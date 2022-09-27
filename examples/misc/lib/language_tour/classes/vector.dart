@@ -14,7 +14,7 @@ class Vector {
       other is Vector && x == other.x && y == other.y;
 
   @override
-  int get hashCode => 37 * (629 + x.hashCode) + y.hashCode;
+  int get hashCode => Object.hash(x, y);
 
   @override
   String toString() => '($x, $y)';
