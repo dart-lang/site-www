@@ -3313,7 +3313,8 @@ class Vector {
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
   @override
-  bool operator == (other) => other is Vector && x == other.x && y == other.y;
+  bool operator ==(Object other) =>
+      other is Vector && x == other.x && y == other.y;
 
   @override
   int get hashCode => Object.hash(x, y);

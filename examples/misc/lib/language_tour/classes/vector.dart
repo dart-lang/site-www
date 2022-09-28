@@ -7,18 +7,17 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown.
-  // #enddocregion ''
   @override
   bool operator ==(Object other) =>
       other is Vector && x == other.x && y == other.y;
 
   @override
-  int get hashCode => 37 * (629 + x.hashCode) + y.hashCode;
+  int get hashCode => Object.hash(x, y);
 
+  // #enddocregion ''
   @override
   String toString() => '($x, $y)';
-  // #docregion ''
+// #docregion ''
 }
 
 void main() {
