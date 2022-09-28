@@ -38,7 +38,7 @@ function switchBanner(galleryName) {
   const imgSelector = document.querySelector('.' + galleryName);
 
   selectors.forEach(selector => {
-    selector.classList.remove('highlight')
+    selector.classList.remove('highlight');
   });
   this.classList.add('highlight');
   
