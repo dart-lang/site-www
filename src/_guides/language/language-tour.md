@@ -3300,7 +3300,8 @@ Dart allows you to define operators with the following names:
 {% endcomment %}
 
 An operator declaration is identified using the built-in identifier `operator`.
-The following example defines vector addition (`+`) and subtraction (`-`):
+The following example defines vector 
+addition (`+`), subtraction (`-`), and equality (`==`):
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 ```dart
