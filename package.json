@@ -8,6 +8,6 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "dependencies": {
-    "bootstrap-scss": "^4.6.0"
+    "bootstrap-scss": "^4.6.2"
   }
 }
