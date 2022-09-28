@@ -34,15 +34,15 @@ function handleSearchShortcut(event) {
 }
 
 function switchBanner(galleryName) {
-  const selectors = document.querySelectorAll('#' + galleryName + ' .selector li')
+  const selectors = document.querySelectorAll('#' + galleryName + ' .selector li');
   const imgSelector = document.querySelector('.' + galleryName);
 
   selectors.forEach(selector => {
     selector.classList.remove('highlight')
-  })
-  this.classList.add('highlight')
+  });
+  this.classList.add('highlight');
   
-  imgSelector.setAttribute('src', this.dataset.banner)
+  imgSelector.setAttribute('src', this.dataset.banner);
 }
 
 function initVideoModal() {
@@ -109,21 +109,19 @@ function adjustToc() {
 }
 
 function createGallery() {
-  for (var i = 0; i < arguments.length; i++) {
+  for (let i = 0; i < arguments.length; i++) {
     const galleryName = arguments[i];
-    const selectors = document.querySelectorAll('#' + galleryName + ' .selector li')
+    const selectors = document.querySelectorAll('#' + galleryName + ' .selector li');
 
     selectors.forEach(selector => {
-      selector.addEventListener('mouseover', function (event) {
+      selector.addEventListener('mouseover', function (_) {
         switchBanner.call(this, galleryName);
       });
-    })
-    
-    selectors.forEach(selector => {
-      selector.addEventListener('focus', function (event) {
+
+      selector.addEventListener('focus', function (_) {
         switchBanner.call(this, galleryName);
       });
-    })
+    });
   }
 }
 
