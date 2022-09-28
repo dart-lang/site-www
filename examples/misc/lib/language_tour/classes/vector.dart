@@ -1,4 +1,3 @@
-// #docregion ''
 class Vector {
   final int x, y;
 
@@ -13,11 +12,6 @@ class Vector {
 
   @override
   int get hashCode => Object.hash(x, y);
-
-  // #enddocregion ''
-  @override
-  String toString() => '($x, $y)';
-// #docregion ''
 }
 
 void main() {
