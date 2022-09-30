@@ -1,6 +1,8 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl_browser.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
@@ -58,6 +60,7 @@ class VersionSelector {
     var svnRevision = svnRevisionForVersion(selectedVersion);
     var versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
+    await findSystemLocale();
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
@@ -194,11 +197,11 @@ class VersionSelector {
         versionCell.append(SpanElement()
           ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
-        row.addCell().text = name;
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        var possibleArchives = ['Dart SDK', 'Debian package'];
+        row.addCell().text = DateFormat.yMd().format(versionInfo.date);
+        const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
         for (final pa in possibleArchives) {
