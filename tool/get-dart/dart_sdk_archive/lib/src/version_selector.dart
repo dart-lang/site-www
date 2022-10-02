@@ -200,7 +200,13 @@ class VersionSelector {
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        row.addCell().text = DateFormat.yMd().format(versionInfo.date);
+        final creationDate = versionInfo.creationTime;
+        final dateRow = row.addCell();
+        if (creationDate == null) {
+          dateRow.text = 'Unspecified';
+        } else {
+          dateRow.text = DateFormat.yMd().format(creationDate);
+        }
         const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
