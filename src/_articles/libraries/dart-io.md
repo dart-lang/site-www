@@ -31,7 +31,7 @@ Instead of blocking on I/O operations,
 dart:io uses an asynchronous programming model inspired by
 [node.js,](https://nodejs.org)
 [EventMachine,](https://github.com/eventmachine/eventmachine/wiki) and
-[Twisted.](https://twistedmatrix.com/trac/)
+[Twisted.](https://twisted.org/)
 
 ## The Dart VM and the event loop
 
