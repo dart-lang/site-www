@@ -199,6 +199,7 @@ class VersionSelector {
         versionCell.append(SpanElement()
           ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
+        row.addCell().text = name;
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
