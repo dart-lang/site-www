@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
 import 'package:pub_semver/pub_semver.dart';
@@ -61,6 +62,7 @@ class VersionSelector {
     var versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     await findSystemLocale();
+    await initializeDateFormatting(Intl.systemLocale);
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
@@ -205,7 +207,7 @@ class VersionSelector {
         if (creationDate == null) {
           dateRow.text = '---';
         } else {
-          dateRow.text = DateFormat.yMd().format(creationDate);
+          dateRow.text = DateFormat.yMd(Intl.systemLocale).format(creationDate);
         }
         const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
