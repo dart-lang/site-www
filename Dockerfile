@@ -136,11 +136,6 @@ FROM dev as emulate
 RUN bundle exec jekyll build --config _config.yml,_config_test.yml
 CMD ["make", "emulate"]
 
-# ============== TEST JEKYLL SITE ==============
-FROM dev as checklinks
-RUN bundle exec jekyll build --config _config.yml,_config_test.yml
-CMD ["npm", "run", "checklinks"]
-
 
 # ============== BUILD PROD JEKYLL SITE ==============
 FROM node AS build
