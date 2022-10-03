@@ -207,7 +207,8 @@ class VersionSelector {
         if (creationDate == null) {
           dateRow.text = '---';
         } else {
-          dateRow.text = DateFormat.yMd(Intl.systemLocale).format(creationDate);
+          dateRow.text =
+              DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
         }
         const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
