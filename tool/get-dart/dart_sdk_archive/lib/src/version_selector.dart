@@ -203,7 +203,7 @@ class VersionSelector {
         final creationDate = versionInfo.creationTime;
         final dateRow = row.addCell();
         if (creationDate == null) {
-          dateRow.text = 'Unspecified';
+          dateRow.text = '---';
         } else {
           dateRow.text = DateFormat.yMd().format(creationDate);
         }
