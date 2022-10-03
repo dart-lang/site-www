@@ -203,14 +203,7 @@ class VersionSelector {
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        final creationDate = versionInfo.creationTime;
-        final dateRow = row.addCell();
-        if (creationDate == null) {
-          dateRow.text = '---';
-        } else {
-          dateRow.text =
-              DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
-        }
+        _addReleaseDateCell(versionInfo, row);
         const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
@@ -269,6 +262,9 @@ class VersionSelector {
       ..append(rev);
     row.addCell().text = '---';
     row.addCell().text = '---';
+
+    _addReleaseDateCell(versionInfo, row);
+
     var c = row.addCell()..classes.add('archives');
     var uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
@@ -279,6 +275,16 @@ class VersionSelector {
     var templateRows = _table.querySelectorAll('.template');
     for (var row in templateRows) {
       row.remove();
+    }
+  }
+
+  void _addReleaseDateCell(VersionInfo versionInfo, TableRowElement row) {
+    final creationDate = versionInfo.creationTime;
+    final dateRow = row.addCell();
+    if (creationDate == null) {
+      dateRow.text = '---';
+    } else {
+      dateRow.text = DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
     }
   }
 }
