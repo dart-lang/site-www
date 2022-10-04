@@ -84,6 +84,10 @@ A pubspec can have the following fields:
 : Optional. Specify files to ignore when conducting a pre-publishing search
   for potential leaks of secrets.
   [_Learn more._](#false_secrets)
+  
+`screenshots`
+: Optional. Specify a list of screenshot files to be shown on the [pub.dev site]({{site.pub}}).
+  [_Learn more._](#screenshots)
 
 Pub ignores all other fields,
 
@@ -398,6 +402,30 @@ the pattern is considered relative to the package's root directory.
   Support for the `false_secrets` field was added in Dart 2.15.
 {{site.alert.end}}
 
+### Screenshots
+
+Packages may showcase their widgets or other visual elements using screenshots.
+
+A package can include up to 10 screenshots. These are specified in the pubspec as a list under the `screenshots` field. 
+Each screenshot is specified by a `description` and a `path`. The `description` is a string of at most 160 characters describing the screenshot. 
+For example:
+
+
+```yaml
+screenshots:
+  - description: 'description of screenshot'
+    path: path/to/image/in/package/500x500.webp
+  - description: 'description of second screenshot'
+    path: path/to/image/in/package.png
+```
+
+Supported file types include : `png`, `jpg`, `gif`, `webp`. Both static and animated files are supported. The screenshots shown on the pub.dev site
+will all be `webp` images generated from the original image. 
+
+The first screenshot in the list will be used for a thumbnail. Thumbnails will always be static. In case the original image is animated the first frame will be used for the thumbnail. We generate quadratic thumbnails to be shown on the pub.dev site. Hence, for the first screenshot, we recommend a 1:1 aspect ratio for best fitting. If the ratio is not 1:1, the image will be resized keeping the original aspect ratio. 
+
+The maximum allowed image file size is 4MB.
+  
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
