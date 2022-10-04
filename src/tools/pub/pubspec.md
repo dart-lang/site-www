@@ -422,7 +422,7 @@ screenshots:
 Supported file types include : `png`, `jpg`, `gif`, `webp`. Both static and animated files are supported. The screenshots shown on the pub.dev site
 will all be `webp` images generated from the original image. 
 
-The first screenshot in the list will be used for a thumbnail. Thumbnails will always be static. In case the original image is animated the first frame will be used for the thumbnail. We generate quadratic thumbnails to be shown on the pub.dev site. Hence, for the first screenshot, we recommend a 1:1 aspect ratio for best fitting. If the ratio is not 1:1, the image will be resized keeping the original aspect ratio. 
+The first screenshot in the list will be used for a thumbnail. Thumbnails will always be static. In case the original image is animated the first frame will be used for the thumbnail. Pub.dev generates square thumbnails, so, for the first screenshot, we recommend a 1:1 aspect ratio. If the ratio is not 1:1, the image will be resized to fit in a square, but keeping the original aspect ratio. 
 
 The maximum allowed image file size is 4MB.
   
