@@ -3582,8 +3582,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
-
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 ### Extension methods
 
@@ -4576,7 +4575,7 @@ For more information, see the following:
 [Isolate.spawn()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
-[Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
+[Isolate sample app]: https://github.com/flutter/samples/tree/main/isolate_example
 
 
 ## Typedefs

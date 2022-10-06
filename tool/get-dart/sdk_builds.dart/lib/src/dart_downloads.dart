@@ -96,13 +96,16 @@ class DartDownloads {
 
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
     final media = await _fetchFile(channel, revision, 'VERSION');
+    final creationTime = (await _fetchMetadata(channel, revision, 'VERSION'))
+        .timeCreated as DateTime?;
 
     final json = await _jsonAsciiDecoder
         .bind(media.stream)
         .cast<Map<String, dynamic>>()
         .first;
 
-    return VersionInfo.parse(channel, revision, json);
+    return VersionInfo.parse(channel, revision, json,
+        creationTime: creationTime);
   }
 
   void close() => _client.close();
@@ -112,6 +115,12 @@ class DartDownloads {
       await _api.objects.get(
           _dartChannel, _revisionPath(channel, revision, [path]),
           downloadOptions: storage.DownloadOptions.fullMedia) as storage.Media;
+
+  Future<dynamic> _fetchMetadata(
+          String channel, String revision, String path) async =>
+      await _api.objects.get(
+          _dartChannel, _revisionPath(channel, revision, [path]),
+          downloadOptions: storage.DownloadOptions.metadata);
 }
 
 final _jsonAsciiDecoder = json.fuse(ascii).decoder;
