@@ -1351,8 +1351,9 @@ function's parameters. In those cases, you may need to annotate.
 
 {% include linter-rule-mention.md rule="type_init_formals" %}
 
-If a constructor parameter is using `this.` to initialize a field, then the type
-of the parameter is inferred to have the same type as the field.
+If a constructor parameter is using `this.` to initialize a field, or `super.`
+to forward a super parameter, then the type of the parameter is inferred to have
+the same type as the field.
 
 {:.good}
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
@@ -1360,6 +1361,9 @@ of the parameter is inferred to have the same type as the field.
 class Point {
   double x, y;
   Point(this.x, this.y);
+}
+class MyWidget extends StatelessWidget {
+  MyWidget({super.key});
 }
 {% endprettify %}
 
@@ -1369,6 +1373,9 @@ class Point {
 class Point {
   double x, y;
   Point(double this.x, double this.y);
+}
+class MyWidget extends StatelessWidget {
+  MyWidget({Key? super.key});
 }
 {% endprettify %}
 
