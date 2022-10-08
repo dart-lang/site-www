@@ -35,6 +35,13 @@ class Padding extends Widget {
   Padding({required double padding, required Widget child});
 }
 
+class Key {}
+
+class StatelessWidget {
+  final Key? key;
+  StatelessWidget({this.key});
+}
+
 void miscDeclAnalyzedButNotTested() {
   (Iterable errors, Iterable<Monster> monsters) {
     // #docregion code-like-prose
@@ -348,6 +355,10 @@ void miscDeclAnalyzedButNotTested() {
 class Point1 {
   double x, y;
   Point1(this.x, this.y);
+}
+
+class MyWidget extends StatelessWidget {
+  MyWidget({super.key});
 }
 // #enddocregion dont-type-init-formals
 

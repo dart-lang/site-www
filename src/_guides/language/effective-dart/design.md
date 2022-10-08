@@ -1362,6 +1362,7 @@ class Point {
   double x, y;
   Point(this.x, this.y);
 }
+
 class MyWidget extends StatelessWidget {
   MyWidget({super.key});
 }
@@ -1374,6 +1375,7 @@ class Point {
   double x, y;
   Point(double this.x, double this.y);
 }
+
 class MyWidget extends StatelessWidget {
   MyWidget({Key? super.key});
 }
