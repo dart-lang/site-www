@@ -11,6 +11,9 @@ RUN apt update && apt install -yq --no-install-recommends \
       make \
       unzip \
       vim-nox \
+      nano \
+      libconfig-dev \
+      wget \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
