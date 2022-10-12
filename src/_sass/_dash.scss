@@ -355,6 +355,7 @@ $dash-dartpad-border: #293542;
 
 .banner {
   background-color: $dash_callout;
+  z-index: 500;
 
   .banner__text {
     color: white;
