@@ -1354,7 +1354,8 @@ function's parameters. In those cases, you may need to annotate.
 If a constructor parameter is using `this.` to initialize a field, 
 or `super.` to forward a super parameter, 
 then the type of the parameter
-is inferred to have the same type as the field.
+is inferred to have the same type as 
+the field or super-constructor parameter respectively.
 
 {:.good}
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
