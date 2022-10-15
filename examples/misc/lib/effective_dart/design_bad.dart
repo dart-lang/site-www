@@ -8,6 +8,13 @@ import 'package:examples_util/ellipsis.dart';
 
 import 'design_good.dart';
 
+class Key {}
+
+class StatelessWidget {
+  final Key? key;
+  StatelessWidget({this.key});
+}
+
 void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
     // #docregion code-like-prose
@@ -160,6 +167,10 @@ class MyIterable<T> {
 class Point1 {
   double x, y;
   Point1(double this.x, double this.y);
+}
+
+class MyWidget extends StatelessWidget {
+  MyWidget({Key? super.key});
 }
 // #enddocregion dont-type-init-formals
 
