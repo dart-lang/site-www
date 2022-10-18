@@ -136,7 +136,8 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion generic-type-assignment-MaineCoon
-    List<Cat> myCats = <MaineCoon>[];
+    List<MaineCoon> myMaineCoons = ellipsis();
+    List<Cat> myCats = myMaineCoons;
     // #enddocregion generic-type-assignment-MaineCoon
   }
 

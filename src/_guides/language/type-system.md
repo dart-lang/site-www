@@ -448,9 +448,10 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 `List<MaineCoon>` is a subtype of `List<Cat>`:
 
 {:.passes-sa}
-<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/<MaineCoon/<[!MaineCoon!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = <[!MaineCoon!]>[];
+List<[!MaineCoon!]> myMaineCoons = ...
+List<Cat> myCats = myMaineCoons;
 {% endprettify %}
 
 What about going in the other direction? 
