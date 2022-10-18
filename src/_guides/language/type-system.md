@@ -487,7 +487,7 @@ List<Cat> myCats = myAnimals [!as List<Cat>!];
 {% endprettify %}
 
 An explicit cast might still fail at runtime, though,
-depending on the actual value of the casted list (`myAnimals`).
+depending on the actual type of the list being cast (`myAnimals`).
 
 ### Methods
 
