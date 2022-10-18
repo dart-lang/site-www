@@ -457,9 +457,9 @@ What about going in the other direction?
 Can you assign an `Animal` list to a `List<Cat>`?
 
 {:.fails-sa}
-<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/<Animal/<[!Animal!]/g"?>
 {% prettify dart tag=pre+code %}
-List<[!Animal!]> myAnimals = ...;
+List<[!Animal!]> myAnimals = ...
 List<Cat> myCats = myAnimals;
 {% endprettify %}
 
@@ -482,7 +482,7 @@ but it might fail at runtime.
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Animal> myAnimals = ...;
+List<Animal> myAnimals = ...
 List<Cat> myCats = myAnimals [!as List<Cat>!];
 {% endprettify %}
 
