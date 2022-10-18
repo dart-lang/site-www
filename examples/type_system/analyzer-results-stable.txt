@@ -13,7 +13,7 @@ Analyzing type_system...
   error - lib/strong_analysis.dart:36:16 - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
   error - lib/strong_analysis.dart:47:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
   error - lib/strong_analysis.dart:63:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
-  error - lib/strong_analysis.dart:88:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
+  error - lib/strong_analysis.dart:85:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
   error - lib/strong_analysis.dart:109:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
   error - lib/strong_analysis.dart:121:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
   error - lib/strong_analysis.dart:147:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
