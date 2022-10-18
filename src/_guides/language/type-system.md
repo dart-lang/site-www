@@ -459,7 +459,8 @@ Can you assign an `Animal` list to a `List<Cat>`?
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = <[!Animal!]>[];
+List<[!Animal!]> myAnimals = ...;
+List<Cat> myCats = myAnimals;
 {% endprettify %}
 
 This assignment doesn't pass static analysis 
@@ -475,13 +476,14 @@ which is disallowed from non-`dynamic` types such as `Animal`.
   in the [analysis options file.][analysis]
 {{site.alert.end}}
 
-To make this code pass static analysis, 
-use an explicit cast, 
-which might fail at runtime.
+To make this type of code pass static analysis, 
+you can use an explicit cast, 
+but it might fail at runtime.
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = <Animal>[] [!as List<Cat>!];
+List<Animal> myAnimals = ...;
+List<Cat> myCats = myAnimals [!as List<Cat>!];
 {% endprettify %}
 
 ### Methods

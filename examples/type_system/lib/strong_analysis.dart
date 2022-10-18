@@ -1,5 +1,7 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable
+// ignore_for_file: unused_element, unused_local_variable, dead_code
+
+import 'package:examples_util/ellipsis.dart';
 
 import 'animal.dart';
 
@@ -140,14 +142,16 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion generic-type-assignment-Animal
+    List<Animal> myAnimals = ellipsis();
     // ignore: stable, beta, dev, invalid_assignment
-    List<Cat> myCats = <Animal>[];
+    List<Cat> myCats = myAnimals;
     // #enddocregion generic-type-assignment-Animal
   }
 
   {
     // #docregion generic-type-assignment-implied-cast
-    List<Cat> myCats = <Animal>[] as List<Cat>;
+    List<Animal> myAnimals = ellipsis();
+    List<Cat> myCats = myAnimals as List<Cat>;
     // #enddocregion generic-type-assignment-implied-cast
   }
 }
