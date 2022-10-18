@@ -444,8 +444,9 @@ of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 
 <img src="images/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
-In the following example, you can assign a `MaineCoon` list to `myCats` because
-`List<MaineCoon>` is a subtype of `List<Cat>`:
+In the following example, 
+you can assign a `MaineCoon` list to `myCats`
+because `List<MaineCoon>` is a subtype of `List<Cat>`:
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/<MaineCoon/<[!MaineCoon!]/g"?>
