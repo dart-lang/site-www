@@ -477,14 +477,16 @@ which is disallowed from non-`dynamic` types such as `Animal`.
 {{site.alert.end}}
 
 To make this type of code pass static analysis, 
-you can use an explicit cast, 
-but it might fail at runtime.
+you can use an explicit cast. 
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<Animal> myAnimals = ...
 List<Cat> myCats = myAnimals [!as List<Cat>!];
 {% endprettify %}
+
+An explicit cast might still fail at runtime, though,
+depending on the actual value of the casted list (`myAnimals`).
 
 ### Methods
 
