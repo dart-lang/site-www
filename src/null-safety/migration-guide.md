@@ -368,6 +368,7 @@ To migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
    setting the minimum SDK constraint to at least `2.12.0`:
+
    ```yaml
    environment:
      sdk: '>=2.12.0 <3.0.0'

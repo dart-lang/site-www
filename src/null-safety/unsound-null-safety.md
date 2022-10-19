@@ -116,6 +116,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
    setting the minimum SDK constraint to `2.12.0`:
+
    ```yaml
    environment:
      sdk: '>=2.12.0 <3.0.0'
@@ -140,6 +141,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
 4. Add a [language version comment][] to the top of
    any Dart files that you don't want to consider during your current migration:
+   
    ```dart
    // @dart=2.9
    ```
