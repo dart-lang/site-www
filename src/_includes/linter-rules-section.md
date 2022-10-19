@@ -11,9 +11,9 @@ _This rule is currently **experimental**
 and not yet available in a stable SDK._
 {% elsif lint.maturity != "stable" %}
 _This rule is currently **{{lint.maturity}}**
-and available as of Dart **{{lint.sinceDartSDK}}**.
+and available as of Dart **{{lint.sinceDartSdk}}**._
 {% else %}
-_This rule is available as of Dart **{{lint.sinceDartSDK}}**.
+_This rule is available as of Dart **{{lint.sinceDartSdk}}**._
 {% endif %}
 
 {% if lint.maturity != "stable" %}
