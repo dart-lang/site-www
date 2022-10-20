@@ -3,7 +3,7 @@
 void main() {
   {
     // #docregion invalid-null
-    // ignore: stable, beta, dev, invalid_assignment
+    // ignore: invalid_assignment
     int a = null; // INVALID in null-safe Dart.
     // #enddocregion invalid-null
   }
