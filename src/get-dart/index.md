@@ -67,11 +67,6 @@ The Dart SDK is supported on Windows, Linux, and macOS.
   Support for RISC-V is experimental, 
   and is available only in the beta and dev channels.
 
-{{site.alert.note}}
-  The arm support requires glibc 2.23 or newer due to a
-  [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
-{{site.alert.end}}
-
 ### macOS
 
 * **Supported versions:** Latest three major versions.
