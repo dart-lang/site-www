@@ -53,18 +53,8 @@ which the following packages provide:
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
-<a id="pedantic"></a>
-[pedantic][] (_deprecated_)
-: The deprecated set of rules previously used to match
-  the rules used for all Google-internal Dart code.
-  Consider migrating to one of the rule sets in
-  the [`lints`](#lints) or [`flutter_lints`](#flutter_lints) packages.
-  See [Migrating from pedantic][] for more information on switching.
-   
-[Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
 [lints]: {{site.pub-pkg}}/lints
 [flutter_lints]: {{site.pub-pkg}}/flutter_lints
-[pedantic]: {{site.pub-pkg}}/pedantic
 
 To learn how to use a specific rule set,
 see the documentation for [enabling and disabling linter rules][].
