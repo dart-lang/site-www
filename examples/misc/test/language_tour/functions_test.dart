@@ -1,5 +1,5 @@
 // ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables
-// ignore_for_file: avoid_function_literals_in_foreach_calls, always_declare_return_types
+// ignore_for_file: always_declare_return_types
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
 import 'package:test/test.dart';
@@ -60,9 +60,9 @@ void main() {
     // #enddocregion function-as-var
   });
 
-  const indexedFruit = '''0: apples
-1: bananas
-2: oranges
+  const indexedFruit = '''APPLES: 6
+BANANAS: 7
+ORANGES: 7
 ''';
 
   test('anonymous-function', () {
@@ -71,8 +71,10 @@ void main() {
       void main() {
         // #docregion anonymous-function
         const list = ['apples', 'bananas', 'oranges'];
-        list.forEach((item) {
-          print('${list.indexOf(item)}: $item');
+        list.map((item) {
+          return item.toUpperCase();
+        }).forEach((item) {
+          print('$item: ${item.length}');
         });
         // #enddocregion anonymous-function
       }
@@ -86,9 +88,11 @@ void main() {
 
   test('anon-func', () {
     void testAnonymousFunction() {
-      var list = ['apples', 'bananas', 'oranges'];
+      const list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
-      list.forEach((item) => print('${list.indexOf(item)}: $item'));
+      list
+          .map((item) => item.toUpperCase())
+          .forEach((item) => print('$item: ${item.length}'));
       // #enddocregion anon-func
     }
 
