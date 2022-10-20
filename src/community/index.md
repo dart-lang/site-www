@@ -72,7 +72,7 @@ Learn how to
 
 ## Additional community resources
 
-Our wonderful community has provided these resources.
+Our wonderful community has provided these resources:
 
 * [Chinese version of this site (此网站的中文版)](https://dart.cn)
 
