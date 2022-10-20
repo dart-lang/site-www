@@ -1568,7 +1568,7 @@ const list = ['apples', 'bananas', 'oranges'];
 list.map((item) {
   return item.toUpperCase();
 }).forEach((item) {
-  print('$item : ${item.length}');
+  print('$item: ${item.length}');
 });
 ```
 
@@ -1581,7 +1581,7 @@ void main() {
   list.map((item) {
     return item.toUpperCase();
   }).forEach((item) {
-    print('$item : ${item.length}');
+    print('$item: ${item.length}');
   });
 }
 ```
@@ -1595,7 +1595,7 @@ to verify that it is functionally equivalent.
 ```dart
 list
     .map((item) => item.toUpperCase())
-    .forEach((item) => print('$item : ${item.length}'));
+    .forEach((item) => print('$item: ${item.length}'));
 ```
 
 
