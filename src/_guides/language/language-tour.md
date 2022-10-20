@@ -1713,32 +1713,37 @@ assert(foo() == null);
 
 ## Operators
 
-Dart supports the operators shown in the following table.
+Dart supports the operators shown in the following table,
+which **approximates** Dart's operator associativity 
+as well as precedence from highest to lowest.
 You can implement many of these [operators as class members](#_operators).
 
-|--------------------------+------------------------------------------------|
-|Description               | Operator                                       |
-|--------------------------|------------------------------------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!` |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    |
-| multiplicative           | `*`    `/`    `%`    `~/`                      |
-| additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`    `>>>`                          |
-| bitwise AND              | `&`                                            |
-| bitwise XOR              | `^`                                            |
-| bitwise OR               | `|`                                            |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!` |
-| equality                 | `==`    `!=`                                   |
-| logical AND              | `&&`                                           |
-| logical OR               | `||`                                           |
-| if null                  | `??`                                           |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
-| cascade                  | `..` &nbsp;&nbsp; `?..`                        |
-| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
+|--------------------------+------------------------------------------------+----------------------|
+|Description               | Operator                                       | Associativity        |
+|--------------------------+------------------------------------------------+----------------------|
+| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!` | None |
+| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None |
+| multiplicative           | `*`    `/`    `%`    `~/`                      | Left |
+| additive                 | `+`    `-`                                     | Left |
+| shift                    | `<<`    `>>`    `>>>`                          | Left |
+| bitwise AND              | `&`                                            | Left |
+| bitwise XOR              | `^`                                            | Left |
+| bitwise OR               | `|`                                            | Left |
+| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!` | None |
+| equality                 | `==`    `!=`                                   | None|
+| logical AND              | `&&`                                           | Left |
+| logical OR               | `||`                                           | Left |
+| if null                  | `??`                                           | Left |
+| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> | Right |
+| cascade                  | `..` &nbsp;&nbsp; `?..`                        | Right |
+| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> | Right
 {:.table .table-striped}
 
 {{site.alert.warning}}
-  Operator precedence is an approximation of the behavior of a Dart parser.
+  The operator precedence outlined here from highest to lowest
+  is only an approximation of the precedence and associativity
+  given implicitly by Dart's grammar
+  and should only be used as a helpful guide.
   For definitive answers, consult the grammar in the
   [Dart language specification][].
 {{site.alert.end}}
