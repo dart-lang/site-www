@@ -18,11 +18,27 @@ You aren't an uploader for package '<foo>'
 This problem can occur if one of your accounts was granted permission to
 publish a package, but the pub client registers you with another account.
 
-You can reset pub's authentication process by removing the credentials file:
+You can reset pub's authentication process by deleting the pub credentials file,
+which can be found in the following locations:
 
-```terminal
-$ rm ~/.pub-cache/credentials.json
-```
+Linux
+: If `$XDG_CONFIG_HOME` is defined
+  then `$XDG_CONFIG_HOME/dart/pub-credentials.json`,
+  otherwise `$HOME/.config/dart/pub-credentials.json`.
+
+macOS
+: `$HOME/Library/Application Support/dart/pub-credentials.json`
+
+Windows
+: `%APPDATA%/dart/pub-credentials.json`
+
+{{site.alert.version-note}}
+  In Dart 2.14 or earlier,
+  you should instead delete the `credentials.json` file
+  found in the [`PUB_CACHE`][] folder.
+{{site.alert.end}}
+
+[`PUB_CACHE`]: /tools/pub/environment-variables
 
 ## Getting an "UnauthorizedAccess" error when publishing a package {#pub-publish-unauthorized}
 
