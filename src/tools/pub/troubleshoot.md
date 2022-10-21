@@ -21,7 +21,7 @@ publish a package, but the pub client registers you with another account.
 You can reset pub's authentication process
 by deleting the pub credentials file:
 
-### Linux
+#### Linux {#pub-credentials-linux}
 
 If `$XDG_CONFIG_HOME` is defined:
 
@@ -35,13 +35,13 @@ Otherwise:
 $ rm $HOME/.config/dart/pub-credentials.json
 ```
 
-### macOS
+#### macOS {#pub-credentials-mac}
 
 ```terminal
 $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 ```
 
-### Windows
+#### Windows {#pub-credentials-windows}
 
 If you're using Command Prompt:
 
