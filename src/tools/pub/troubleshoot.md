@@ -18,19 +18,42 @@ You aren't an uploader for package '<foo>'
 This problem can occur if one of your accounts was granted permission to
 publish a package, but the pub client registers you with another account.
 
-You can reset pub's authentication process by deleting the pub credentials file,
-which can be found in the following locations:
+You can reset pub's authentication process
+by deleting the pub credentials file:
 
-Linux
-: If `$XDG_CONFIG_HOME` is defined
-  then `$XDG_CONFIG_HOME/dart/pub-credentials.json`,
-  otherwise `$HOME/.config/dart/pub-credentials.json`.
+### Linux
 
-macOS
-: `$HOME/Library/Application Support/dart/pub-credentials.json`
+If `$XDG_CONFIG_HOME` is defined:
 
-Windows
-: `%APPDATA%/dart/pub-credentials.json`
+```terminal
+$ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
+```
+
+Otherwise:
+
+```terminal
+$ rm $HOME/.config/dart/pub-credentials.json
+```
+
+### macOS
+
+```terminal
+$ rm $HOME/Library/Application Support/dart/pub-credentials.json
+```
+
+### Windows
+
+If you're using Command Prompt:
+
+```terminal
+$ del "%APPDATA%\dart\pub-credentials.json"
+```
+
+If you're using PowerShell:
+
+```terminal
+$ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
+```
 
 {{site.alert.version-note}}
   In Dart 2.14 or earlier,
@@ -115,6 +138,7 @@ On Windows PowerShell:
 ```terminal
 $ $Env:https_proxy="username:password@hostname:port"
 ```
+
 ## Localhost unreachable after sign-in
 
 When you run `dart pub publish` in a container or over an SSH session,
@@ -137,8 +161,8 @@ Try this workaround, which uses the command line to complete sign-in:
    complete sign-in using the _new localhost URL_:
 
    ```terminal
-$ curl 'http://localhost:<port>?code=...'
-```
+   $ curl 'http://localhost:<port>?code=...'
+   ```
 
 ## Getting a socket error trying to find a package {#pub-get-socket-error}
 
