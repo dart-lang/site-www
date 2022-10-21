@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
 import 'package:test/test.dart';
 import 'package:examples_util/print_matcher.dart' as m;
 
@@ -21,7 +19,10 @@ void main() {
       for (var i = 0; i < 2; i++) {
         callbacks.add(() => print(i));
       }
-      callbacks.forEach((c) => c());
+
+      for (final c in callbacks) {
+        c();
+      }
       // #enddocregion for-and-closures
     }
 
