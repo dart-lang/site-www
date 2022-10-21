@@ -197,8 +197,8 @@ Each author could be either a single name
 (`Natalie Weizenbaum <nweiz@google.com>`).
 However, these values weren't verified.
 
-The pub.dev site no longer displays package authors, and
-(as of Dart 2.7) the `pub publish` command
+The pub.dev site no longer displays package authors, 
+and the [`dart pub publish`](/tools/pub/cmd/pub-lish) command
 displays a warning if your pubspec has an `author` or `authors` section.
 
 
@@ -454,8 +454,8 @@ environment:
 
 #### Flutter SDK constraints
 
-As of Dart 1.19.0,
-pub supports Flutter SDK constraints under the `environment:` field:
+Pub supports specifying Flutter SDK constraints
+under the `environment:` field:
 
 ```yaml
 environment:

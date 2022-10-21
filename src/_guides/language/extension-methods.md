@@ -2,8 +2,7 @@
 title: Extension methods
 description: Learn how to add to existing APIs.
 ---
-Extension methods, introduced in Dart 2.7,
-are a way to add functionality to existing libraries.
+Extension methods are a way to add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
