@@ -1554,15 +1554,21 @@ The code block that follows contains the function's body:
 }; <br>
 </code>
 
-The following example defines an anonymous function with an untyped parameter, `item`.
+The following example defines an anonymous function
+with an untyped parameter, `item`,
+and passes it to the `map` function.
 The function, invoked for each item in the list,
-prints a string that includes the value at the specified index.
+converts each string to uppercase.
+Then in the anonymous function passed to `forEach`,
+each converted string is printed out alongside its length.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
-list.forEach((item) {
-  print('${list.indexOf(item)}: $item');
+list.map((item) {
+  return item.toUpperCase();
+}).forEach((item) {
+  print('$item: ${item.length}');
 });
 ```
 
@@ -1572,20 +1578,24 @@ Click **Run** to execute the code.
 ```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
-  list.forEach((item) {
-    print('${list.indexOf(item)}: $item');
+  list.map((item) {
+    return item.toUpperCase();
+  }).forEach((item) {
+    print('$item: ${item.length}');
   });
 }
 ```
 
 If the function contains only a single expression or return statement,
-you can shorten it using arrow
-notation. Paste the following line into DartPad and click **Run** to verify that
-it is functionally equivalent.
+you can shorten it using arrow notation. 
+Paste the following line into DartPad and click **Run**
+to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list.forEach((item) => print('${list.indexOf(item)}: $item'));
+list
+    .map((item) => item.toUpperCase())
+    .forEach((item) => print('$item: ${item.length}'));
 ```
 
 
@@ -2254,7 +2264,10 @@ var callbacks = [];
 for (var i = 0; i < 2; i++) {
   callbacks.add(() => print(i));
 }
-callbacks.forEach((c) => c());
+
+for (final c in callbacks) {
+  c();
+}
 ```
 
 The output is `0` and then `1`, as expected. In contrast, the example
