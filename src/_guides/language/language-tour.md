@@ -4544,48 +4544,31 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-
 ## Callable classes
 
-In Dart you can define a class that behaves like a function, you can call it, pass parameters and return value, let's see how we can do this.
-  
-First we should know about `call()` method.`call()` is a special method which allows you to call instances of the class as functions.So we should implement `call()` in the class so that our class will be callable.
-  
-Example 
+To allow an instance of your Dart class to be called like a function,
+implement the `call()` method.
+
+The `call()` method is a special method
+that allows any class that defines it to emulate a function,
+while supporting the same functionality as normal [functions](#functions)
+such as parameters and return types.
+
+In the following example, the `WannabeFunction` class defines a `call()` function
+that takes three strings and concatenates them, separating each with a space,
+and appending an exclamation. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
-```dart
+```dart:run-dartpad:height-350px:ga_id-callable_classes
 class WannabeFunction {
- call(){
-  print("Hello you call it as a function");
-  }
+  String call(String a, String b, String c) => '$a $b $c!';
 }
 
-void main() {
-  var wf = WannabeFunction();
- wf();
-}
+var wf = WannabeFunction();
+var out = wf('Hi', 'there,', 'gang');
+
+void main() => print(out);
 ```
-  
-You can also pass parameters to the instance of the class by making `call()` method accepting parameters 
-
-Example 
-  
-<?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
-```dart
-class WannabeFunction {
-String call(String name){
-  return "Hello $name you call it as a function";
-  }
-}
-
-void main() {
-  var wf = WannabeFunction();
- print(wf('Mahmoud'));
-}
-```
-  
-Note : It is not allowed to implement two `call()` methods in the same class that will cause an error 
 
 ## Isolates
 
