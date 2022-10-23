@@ -896,7 +896,7 @@ var constantList = const [1, 2, 3];
 ```
 
 <a id="spread-operator"> </a>
-Dart 2.3 introduced the **spread operator** (`...`) and the
+Dart supports the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 

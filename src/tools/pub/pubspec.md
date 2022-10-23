@@ -183,25 +183,6 @@ Think of the description as the sales pitch for your package. Users see it
 when they [browse for packages.]({{site.pub-pkg}})
 The description is plain text: no markdown or HTML.
 
-### Author/authors
-
-_Deprecated._ Use a [verified publisher][] instead.
-
-[verified publisher]: /tools/pub/verified-publishers
-
-You might see an `author` or `authors` section in old pubspecs.
-These optional fields were a way to describe
-the author(s) of your package and to provide contact information.
-Each author could be either a single name
-(`Natalie Weizenbaum`) or a name and an email address
-(`Natalie Weizenbaum <nweiz@google.com>`).
-However, these values weren't verified.
-
-The pub.dev site no longer displays package authors, and
-(as of Dart 2.7) the `pub publish` command
-displays a warning if your pubspec has an `author` or `authors` section.
-
-
 ### Homepage
 
 This should be a URL pointing to the website for your package.
@@ -454,8 +435,8 @@ environment:
 
 #### Flutter SDK constraints
 
-As of Dart 1.19.0,
-pub supports Flutter SDK constraints under the `environment:` field:
+Pub supports specifying Flutter SDK constraints
+under the `environment:` field:
 
 ```yaml
 environment:
