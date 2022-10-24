@@ -172,7 +172,7 @@ or security software is blocking internet access from `dart`.
 
 {:.console-output}
 ```nocode
-Got socket error trying to find package ... at https://pub.dartlang.org.
+Got socket error trying to find package ... at https://pub.dev.
 pub get failed (server unavailable) -- attempting retry 1 in 1 second...
 ```
 
@@ -187,13 +187,15 @@ that blocks internet access from `dart`.
    Even if _Kaspersky Internet Security_ protection is turned off in the menu bar,
    the VPN application filter `sysextctrld` still runs in the background,
    causing a failure to connect to the pub.dev server.
-   The solution is to add `https://pub.dartlang.org` to the trusted zone:
+   The solution is to add `https://pub.dev` and `https://pub.dartlang.org`
+   to the trusted zone:
 
    1. Open Kaspersky Internet Security, and click the **Privacy** icon.
-   1. Under the **Block website tracking** section, click the **Preferences** button.
-   1. In the top icon bar, select **Threats**.
-   1. Under **Threats**, click **Trusted Zone**.
-   1. Select the **Trusted web addresses** tab.
-   1. Click the **+** button, and add the URL `https://pub.dartlang.org`.
-   1. Click **OK**.
+   2. Under the **Block website tracking** section, click the **Preferences** button.
+   3. In the top icon bar, select **Threats**.
+   4. Under **Threats**, click **Trusted Zone**.
+   5. Select the **Trusted web addresses** tab.
+   6. Click the **+** button, and add the URL `https://pub.dev.org`.
+   7. Click **OK**.
+   8. Repeat the previous two steps for `https://pub.dartlang.org`
 </details>
