@@ -4549,9 +4549,8 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 
-The `call()` method is a special method
-that allows any class that defines it to emulate a function,
-while supporting the same functionality as normal [functions](#functions)
+The `call()` method allows any class that defines it to emulate a function.
+This method supports the same functionality as normal [functions](#functions)
 such as parameters and return types.
 
 In the following example, the `WannabeFunction` class defines a `call()` function
