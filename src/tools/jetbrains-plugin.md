@@ -3,18 +3,22 @@ title: IntelliJ & Android Studio
 description: Use Dart with a variety of IDEs and editors from JetBrains.
 ---
 
-The [Dart plugin][] adds Dart support to JetBrains IDEs such as
-IntelliJ IDEA, WebStorm, and Android Studio.
-IntelliJ IDEA is an intelligent Java IDE
-with support for many other languages and frameworks.
-WebStorm is an IDE based on IntelliJ IDEA
-that's focused on web development and debugging.
-Android Studio is an IDE based on IntelliJ IDEA
-that's used for Android and Flutter development.
+The [Dart plugin][] adds Dart support
+to IntelliJ Platform-based IDEs developed by JetBrains.
+These IDEs provide features unique to specific development technologies.
+The IDEs recommended for Dart and Flutter development include:
+
+- [IntelliJ IDEA][] which specializes in JVM-based language development.
+- [WebStorm][] which specializes in web app development.
+- [Android Studio][] which specializes in Android and Flutter development.
 
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
 and find more information when you need it.
+
+[IntelliJ IDEA]: https://www.jetbrains.com/idea/
+[WebStorm]: https://www.jetbrains.com/webstorm/
+[Android Studio]: https://developer.android.com/studio
 
 ## Getting started
 
@@ -26,17 +30,17 @@ Then install the Dart plugin and tell it where to find the Dart SDK.
 
 Install a JetBrains IDE if you don't already have one. Choose one:
 
-* [IntelliJ IDEA][IDEA]{:target="_blank" rel="noopener"}
-* [IntelliJ IDEA EAP][IDEA EAP]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA][IDEA-Install]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA EAP][IDEA-EAP-Install]{:target="_blank" rel="noopener"}
   (for early access to the latest Dart language features and IntelliJ functionality)
-* [WebStorm][]{:target="_blank" rel="noopener"}
-* [Android Studio][]{:target="_blank" rel="noopener"}
+* [WebStorm][WS-Install]{:target="_blank" rel="noopener"}
+* [Android Studio][AS-Install]{:target="_blank" rel="noopener"}
 * [Another JetBrains product][Other]{:target="_blank" rel="noopener"}
 
-[IDEA]: https://www.jetbrains.com/idea/download/
-[IDEA EAP]: https://www.jetbrains.com/idea/nextversion/
-[WebStorm]: https://www.jetbrains.com/webstorm/download/
-[Android Studio]: https://developer.android.com/studio/install
+[IDEA-Install]: https://www.jetbrains.com/idea/download/
+[IDEA-EAP-Install]: https://www.jetbrains.com/idea/nextversion/
+[WS-Install]: https://www.jetbrains.com/webstorm/download/
+[AS-Install]: https://developer.android.com/studio/install
 [Other]: https://www.jetbrains.com/products.html
 
 {{site.alert.note}}
