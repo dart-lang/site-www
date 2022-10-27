@@ -184,18 +184,22 @@ that blocks internet access from `dart`.
  <summary>
    <b>Detailed instructions for Kaspersky Internet Security</b>
   </summary>
-   Even if _Kaspersky Internet Security_ protection is turned off in the menu bar,
-   the VPN application filter `sysextctrld` still runs in the background,
-   causing a failure to connect to the pub.dev server.
-   The solution is to add `https://pub.dev` and `https://pub.dartlang.org`
+   When you have turned off _Kaspersky Internet Security_ protection
+   from the menu bar,
+   the VPN application filter `sysextctrld`
+   still runs in the background.
+   This filter causes a failure to connect to `pub.dev`.
+   To resolve this issue, 
+   add both `https://pub.dev` and `https://pub.dartlang.org`
    to the trusted zone:
 
-   1. Open Kaspersky Internet Security, and click the **Privacy** icon.
-   2. Under the **Block website tracking** section, click the **Preferences** button.
-   3. In the top icon bar, select **Threats**.
-   4. Under **Threats**, click **Trusted Zone**.
-   5. Select the **Trusted web addresses** tab.
-   6. Click the **+** button, and add the URL `https://pub.dev.org`.
-   7. Click **OK**.
-   8. Repeat the previous two steps for `https://pub.dartlang.org`
+   1. Open Kaspersky Internet Security.
+   2. Click the **Privacy** icon.
+   3. Under the **Block website tracking** section, click the **Preferences** button.
+   4. In the top icon bar, select **Threats**.
+   5. Under **Threats**, click **Trusted Zone**.
+   6. Select the **Trusted web addresses** tab.
+   7. Click the **+** button, and add the URL `https://pub.dev.org`.
+   8. Click **OK**.
+   9. Repeat the previous two steps for `https://pub.dartlang.org`
 </details>
