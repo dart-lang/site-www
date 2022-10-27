@@ -1,4 +1,4 @@
-// ignore_for_file: dead_code, prefer_typing_uninitialized_variables,
+// ignore_for_file: dead_code
 // ignore_for_file: unused_local_variable
 
 import 'dart:convert';

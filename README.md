@@ -1,6 +1,7 @@
 # <img src="https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/dart/logo/64.png" alt="Dart" width="28" height="28"/> The Dart language site (dart.dev)
 
 [![Build Status SVG][]][Repo on GitHub Actions]
+[![OpenSSF Scorecard SVG][]][Scorecard Results]
 [![first-timers SVG][]][first-timers]
 
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
@@ -270,6 +271,8 @@ then rerun your setup/build again.
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
+[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
+[Scorecard Results]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www
 [cloning]: https://help.github.com/articles/cloning-a-repository
 [DartPad]: https://dartpad.dev
 [Firebase]: https://firebase.google.com/

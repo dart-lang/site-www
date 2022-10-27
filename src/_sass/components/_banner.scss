@@ -1,7 +1,9 @@
 .banner {
+  position: relative;
   background-color: #e7f8ff;
   padding: 12px 0;
   text-align: center;
+  z-index: 1000;
 }
 
 .banner__text {

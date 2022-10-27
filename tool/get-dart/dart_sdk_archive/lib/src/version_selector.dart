@@ -1,6 +1,9 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl_browser.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
@@ -58,6 +61,8 @@ class VersionSelector {
     var svnRevision = svnRevisionForVersion(selectedVersion);
     var versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
+    await findSystemLocale();
+    await initializeDateFormatting(Intl.systemLocale);
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
@@ -198,7 +203,8 @@ class VersionSelector {
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        var possibleArchives = ['Dart SDK', 'Debian package'];
+        _addReleaseDateCell(versionInfo, row);
+        const possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
         for (final pa in possibleArchives) {
@@ -256,6 +262,9 @@ class VersionSelector {
       ..append(rev);
     row.addCell().text = '---';
     row.addCell().text = '---';
+
+    _addReleaseDateCell(versionInfo, row);
+
     var c = row.addCell()..classes.add('archives');
     var uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
@@ -266,6 +275,16 @@ class VersionSelector {
     var templateRows = _table.querySelectorAll('.template');
     for (var row in templateRows) {
       row.remove();
+    }
+  }
+
+  void _addReleaseDateCell(VersionInfo versionInfo, TableRowElement row) {
+    final creationDate = versionInfo.creationTime;
+    final dateRow = row.addCell();
+    if (creationDate == null) {
+      dateRow.text = '---';
+    } else {
+      dateRow.text = DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
     }
   }
 }

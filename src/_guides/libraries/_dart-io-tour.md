@@ -206,7 +206,7 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/Future\<void\>/void/g; /\b_//g"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/Future<\w+\W/void/g; /\b_//g"?>
 ```dart
 void main() async {
   final requests = await HttpServer.bind('localhost', 8888);
@@ -242,7 +242,7 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future\<void\>/void/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future<\w+\W/void/g"?>
 ```dart
 void main() async {
   var url = Uri.parse('http://localhost:8888/dart');

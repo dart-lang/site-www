@@ -896,7 +896,7 @@ var constantList = const [1, 2, 3];
 ```
 
 <a id="spread-operator"> </a>
-Dart 2.3 introduced the **spread operator** (`...`) and the
+Dart supports the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 
@@ -1554,15 +1554,21 @@ The code block that follows contains the function's body:
 }; <br>
 </code>
 
-The following example defines an anonymous function with an untyped parameter, `item`.
+The following example defines an anonymous function
+with an untyped parameter, `item`,
+and passes it to the `map` function.
 The function, invoked for each item in the list,
-prints a string that includes the value at the specified index.
+converts each string to uppercase.
+Then in the anonymous function passed to `forEach`,
+each converted string is printed out alongside its length.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
-list.forEach((item) {
-  print('${list.indexOf(item)}: $item');
+list.map((item) {
+  return item.toUpperCase();
+}).forEach((item) {
+  print('$item: ${item.length}');
 });
 ```
 
@@ -1572,20 +1578,24 @@ Click **Run** to execute the code.
 ```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
-  list.forEach((item) {
-    print('${list.indexOf(item)}: $item');
+  list.map((item) {
+    return item.toUpperCase();
+  }).forEach((item) {
+    print('$item: ${item.length}');
   });
 }
 ```
 
 If the function contains only a single expression or return statement,
-you can shorten it using arrow
-notation. Paste the following line into DartPad and click **Run** to verify that
-it is functionally equivalent.
+you can shorten it using arrow notation. 
+Paste the following line into DartPad and click **Run**
+to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list.forEach((item) => print('${list.indexOf(item)}: $item'));
+list
+    .map((item) => item.toUpperCase())
+    .forEach((item) => print('$item: ${item.length}'));
 ```
 
 
@@ -2254,7 +2264,10 @@ var callbacks = [];
 for (var i = 0; i < 2; i++) {
   callbacks.add(() => print(i));
 }
-callbacks.forEach((c) => c());
+
+for (final c in callbacks) {
+  c();
+}
 ```
 
 The output is `0` and then `1`, as expected. In contrast, the example
@@ -3300,7 +3313,8 @@ Dart allows you to define operators with the following names:
 {% endcomment %}
 
 An operator declaration is identified using the built-in identifier `operator`.
-The following example defines vector addition (`+`) and subtraction (`-`):
+The following example defines vector 
+addition (`+`), subtraction (`-`), and equality (`==`):
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 ```dart
@@ -3312,8 +3326,12 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown.
-  // ···
+  @override
+  bool operator ==(Object other) =>
+      other is Vector && x == other.x && y == other.y;
+
+  @override
+  int get hashCode => Object.hash(x, y);
 }
 
 void main() {
@@ -3577,8 +3595,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
-
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 ### Extension methods
 
@@ -4527,13 +4544,16 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-
 ## Callable classes
 
 To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 
-In the following example, the `WannabeFunction` class defines a call() function
+The `call()` method allows any class that defines it to emulate a function.
+This method supports the same functionality as normal [functions](#functions)
+such as parameters and return types.
+
+In the following example, the `WannabeFunction` class defines a `call()` function
 that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
@@ -4571,7 +4591,7 @@ For more information, see the following:
 [Isolate.spawn()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
-[Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
+[Isolate sample app]: https://github.com/flutter/samples/tree/main/isolate_example
 
 
 ## Typedefs

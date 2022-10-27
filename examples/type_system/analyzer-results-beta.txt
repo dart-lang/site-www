@@ -9,14 +9,14 @@ Analyzing type_system...
            - The member being overridden at lib/common_fixes_analysis.dart:74:8.
   error - lib/common_fixes_analysis.dart:97:9 - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
   error - lib/common_fixes_analysis.dart:117:16 - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
-  error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
-  error - lib/strong_analysis.dart:34:16 - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
-  error - lib/strong_analysis.dart:45:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
-  error - lib/strong_analysis.dart:61:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
-  error - lib/strong_analysis.dart:83:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
-  error - lib/strong_analysis.dart:107:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
-  error - lib/strong_analysis.dart:119:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
-  error - lib/strong_analysis.dart:144:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
+  error - lib/strong_analysis.dart:29:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:36:16 - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
+  error - lib/strong_analysis.dart:47:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:63:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:85:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
+  error - lib/strong_analysis.dart:109:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
+  error - lib/strong_analysis.dart:121:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
+  error - lib/strong_analysis.dart:148:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
   error - test/strong_test.dart:120:26 - A value of type 'dynamic' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
 
 16 issues found.

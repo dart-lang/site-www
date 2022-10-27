@@ -18,11 +18,50 @@ You aren't an uploader for package '<foo>'
 This problem can occur if one of your accounts was granted permission to
 publish a package, but the pub client registers you with another account.
 
-You can reset pub's authentication process by removing the credentials file:
+You can reset pub's authentication process
+by deleting the pub credentials file:
+
+#### Linux {#pub-credentials-linux}
+
+If `$XDG_CONFIG_HOME` is defined:
 
 ```terminal
-$ rm ~/.pub-cache/credentials.json
+$ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
 ```
+
+Otherwise:
+
+```terminal
+$ rm $HOME/.config/dart/pub-credentials.json
+```
+
+#### macOS {#pub-credentials-mac}
+
+```terminal
+$ rm $HOME/Library/Application Support/dart/pub-credentials.json
+```
+
+#### Windows {#pub-credentials-windows}
+
+If you're using Command Prompt:
+
+```terminal
+$ del "%APPDATA%\dart\pub-credentials.json"
+```
+
+If you're using PowerShell:
+
+```terminal
+$ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
+```
+
+{{site.alert.version-note}}
+  In Dart 2.14 or earlier,
+  you should instead delete the `credentials.json` file
+  found in the [`PUB_CACHE`][] folder.
+{{site.alert.end}}
+
+[`PUB_CACHE`]: /tools/pub/environment-variables
 
 ## Getting an "UnauthorizedAccess" error when publishing a package {#pub-publish-unauthorized}
 
@@ -99,6 +138,7 @@ On Windows PowerShell:
 ```terminal
 $ $Env:https_proxy="username:password@hostname:port"
 ```
+
 ## Localhost unreachable after sign-in
 
 When you run `dart pub publish` in a container or over an SSH session,
@@ -121,8 +161,8 @@ Try this workaround, which uses the command line to complete sign-in:
    complete sign-in using the _new localhost URL_:
 
    ```terminal
-$ curl 'http://localhost:<port>?code=...'
-```
+   $ curl 'http://localhost:<port>?code=...'
+   ```
 
 ## Getting a socket error trying to find a package {#pub-get-socket-error}
 
@@ -132,7 +172,7 @@ or security software is blocking internet access from `dart`.
 
 {:.console-output}
 ```nocode
-Got socket error trying to find package ... at https://pub.dartlang.org.
+Got socket error trying to find package ... at https://pub.dev.
 pub get failed (server unavailable) -- attempting retry 1 in 1 second...
 ```
 
@@ -144,16 +184,22 @@ that blocks internet access from `dart`.
  <summary>
    <b>Detailed instructions for Kaspersky Internet Security</b>
   </summary>
-   Even if _Kaspersky Internet Security_ protection is turned off in the menu bar,
-   the VPN application filter `sysextctrld` still runs in the background,
-   causing a failure to connect to the pub.dev server.
-   The solution is to add `https://pub.dartlang.org` to the trusted zone:
+   When you have turned off _Kaspersky Internet Security_ protection
+   from the menu bar,
+   the VPN application filter `sysextctrld`
+   still runs in the background.
+   This filter causes a failure to connect to `pub.dev`.
+   To resolve this issue, 
+   add both `https://pub.dev` and `https://pub.dartlang.org`
+   to the trusted zone:
 
-   1. Open Kaspersky Internet Security, and click the **Privacy** icon.
-   1. Under the **Block website tracking** section, click the **Preferences** button.
-   1. In the top icon bar, select **Threats**.
-   1. Under **Threats**, click **Trusted Zone**.
-   1. Select the **Trusted web addresses** tab.
-   1. Click the **+** button, and add the URL `https://pub.dartlang.org`.
-   1. Click **OK**.
+   1. Open Kaspersky Internet Security.
+   2. Click the **Privacy** icon.
+   3. Under the **Block website tracking** section, click the **Preferences** button.
+   4. In the top icon bar, select **Threats**.
+   5. Under **Threats**, click **Trusted Zone**.
+   6. Select the **Trusted web addresses** tab.
+   7. Click the **+** button, and add the URL `https://pub.dev`.
+   8. Click **OK**.
+   9. Repeat the previous two steps for `https://pub.dartlang.org`
 </details>

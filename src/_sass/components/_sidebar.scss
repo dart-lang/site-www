@@ -116,6 +116,10 @@
   overflow-y: auto;
   z-index: 1;
 
+  .open_menu & {
+    z-index: 10000;
+  }
+
   .site-sidebar {
     // override shared/_sidebar.scss
     padding: $top-content-padding 30px $content-padding;

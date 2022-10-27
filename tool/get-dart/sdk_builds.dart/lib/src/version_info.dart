@@ -9,11 +9,14 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
   final DateTime date;
   final String channel;
   final String revisionPath;
+  final DateTime? creationTime;
 
-  VersionInfo(this.version, this.date, this.channel, this.revisionPath);
+  VersionInfo(this.version, this.date, this.channel, this.revisionPath,
+      {this.creationTime});
 
   static VersionInfo parse(
-      String channel, String revisionPath, Map<String, dynamic> json) {
+      String channel, String revisionPath, Map<String, dynamic> json,
+      {DateTime? creationTime}) {
     // Date parse magic
     var dateJson = json['date'] as String;
     DateTime date;
@@ -41,10 +44,12 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
       // assume git!
       assert(revision.length == 40);
 
-      return GitVersionInfo(version, date, channel, revisionPath, revision);
+      return GitVersionInfo(version, date, channel, revisionPath, revision,
+          creationTime: creationTime);
     }
 
-    return SvnVersionInfo(version, date, channel, revisionPath, svnRevision);
+    return SvnVersionInfo(version, date, channel, revisionPath, svnRevision,
+        creationTime: creationTime);
   }
 
   @override
@@ -58,12 +63,14 @@ class SvnVersionInfo extends VersionInfo {
   final int revision;
 
   SvnVersionInfo(super.version, super.date, super.channel, super.revisionPath,
-      this.revision);
+      this.revision,
+      {super.creationTime});
 }
 
 class GitVersionInfo extends VersionInfo {
   final String ref;
 
   GitVersionInfo(
-      super.version, super.date, super.channel, super.revisionPath, this.ref);
+      super.version, super.date, super.channel, super.revisionPath, this.ref,
+      {super.creationTime});
 }

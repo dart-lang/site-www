@@ -89,7 +89,7 @@ input.gsc-search-button {
     right: 20px;
     font-size: 30px;
     cursor: pointer;
-    z-index: 999;
+    z-index: 5;
     &:hover {
       color: $gray;
     }
