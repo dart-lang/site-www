@@ -86,7 +86,7 @@ A pubspec can have the following fields:
   [_Learn more._](#false_secrets)
   
 `screenshots`
-: Optional. Specify a list of screenshot files to be shown 
+: Optional. Specify a list of screenshot files to display 
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
@@ -400,46 +400,38 @@ the pattern is considered relative to the package's root directory.
 {{site.alert.end}}
 
 {{site.alert.version-note}}
-  Support for the `false_secrets` field was added in Dart 2.15.
+  Dart 2.15 added support for the `false_secrets` field.
 {{site.alert.end}}
 
 ### Screenshots
 
-Packages may showcase their widgets or other visual elements using screenshots.
+Packages can showcase their widgets or other visual elements using screenshots
+displayed on their package page.
 
-A package can include up to 10 screenshots. 
-These are specified in the pubspec as a list under the `screenshots` field. 
-Each screenshot is specified by a `description` and a `path`. 
-The `description` is a string of at most 160 characters
-describing the screenshot. 
+A package can list up to 10 screenshots under the `screenshots` field.
+Each screenshot includes one `description` and one `path`. 
+The `description` explains what the screenshot depicts in no more than 160 
+characters. 
 For example:
 
 ```yaml
 screenshots:
-  - description: 'description of screenshot'
+  - description: 'This screenshot shows the transformation of a number of bytes 
+  to a human-readable expression.'
     path: path/to/image/in/package/500x500.webp
-  - description: 'description of second screenshot'
+  - description: 'This screenshot shows a stack trace returning a human-readable
+  representation.'
     path: path/to/image/in/package.png
 ```
 
-Supported file types include: `png`, `jpg`, `gif`, and `webp`. 
-Both static and animated files are supported. 
-The screenshots shown on the pub.dev site
-will all be `webp` images generated from the original image. 
+Screenshots are limited to:
+- File size: max 4 MB per image.
+- File types: `png`, `jpg`, `gif`, or `webp`. 
+- Static and animated images are both allowed.
 
-The first screenshot in the list will be used for a thumbnail. 
-Thumbnails will always be static. 
-In case the original image is animated,
-the first frame will be used for the thumbnail. 
-Pub.dev generates square thumbnails, so, 
-for the first screenshot, 
-we recommend a 1:1 aspect ratio. 
-If the ratio is not 1:1, 
-the image will be resized to fit in a square, 
-but keeping the original aspect ratio. 
-
-The maximum allowed image file size is 4MB.
-  
+ Pub.dev generates the package's thumbnail image from the first screenshot. If 
+ this screenshot uses animation, pub.dev uses its first frame.
+ 
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
