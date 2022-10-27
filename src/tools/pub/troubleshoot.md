@@ -199,7 +199,7 @@ that blocks internet access from `dart`.
    4. In the top icon bar, select **Threats**.
    5. Under **Threats**, click **Trusted Zone**.
    6. Select the **Trusted web addresses** tab.
-   7. Click the **+** button, and add the URL `https://pub.dev.org`.
+   7. Click the **+** button, and add the URL `https://pub.dev`.
    8. Click **OK**.
    9. Repeat the previous two steps for `https://pub.dartlang.org`
 </details>
