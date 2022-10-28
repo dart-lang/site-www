@@ -801,6 +801,7 @@ you can instead use the `Uri.http` or `Uri.https` factory constructors:
 var httpUri = Uri.http('example.org', '/foo/bar#frag', {'lang': 'dart'});
 var httpsUri =
     Uri.https('example.org', '/foo/bar#frag', {'lang': 'dart'});
+
 assert(httpUri.toString() == 'http://example.org/foo/bar#frag?lang=dart');
 assert(
     httpsUri.toString() == 'https://example.org/foo/bar#frag?lang=dart');
