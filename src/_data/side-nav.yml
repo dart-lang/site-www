@@ -166,6 +166,7 @@
         - title: Write command-line apps
           permalink: /tutorials/server/cmdline
         - title: Fetch data dynamically
+          permalink: /tutorials/server/fetch-data
         - title: Write HTTP servers
           permalink: /tutorials/server/httpserver
         - title: Libraries and packages
