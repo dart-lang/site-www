@@ -36,6 +36,10 @@ import 'package:http/http.dart' as http;
 If you just need the body of the response, 
 you can use the top-level `read` function.
 
+```dart
+
+```
+
 If you need other information from the response,
 such as the `statusCode` or the `headers`,
 you can instead use the top-level `get` function.
