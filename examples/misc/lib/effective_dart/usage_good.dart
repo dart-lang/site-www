@@ -232,7 +232,7 @@ void miscDeclAnalyzedButNotTested() {
       throw 'Error!';
     }
 
-    Future<void> asyncValue() async => 'value';
+    Future<String> asyncValue() async => 'value';
     // #enddocregion async
   }
 
