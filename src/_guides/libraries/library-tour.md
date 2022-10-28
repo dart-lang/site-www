@@ -793,18 +793,16 @@ var uri = Uri(
 assert(uri.toString() == 'https://example.org/foo/bar#frag?lang=dart');
 ```
 
-To create a URI with a http or https scheme,
+To create a URI with a http or https scheme and without a fragment,
 you can instead use the `Uri.http` or `Uri.https` factory constructors:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri-http)"?>
 ```dart
-var httpUri = Uri.http('example.org', '/foo/bar#frag', {'lang': 'dart'});
-var httpsUri =
-    Uri.https('example.org', '/foo/bar#frag', {'lang': 'dart'});
+var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
+var httpsUri = Uri.https('example.org', '/foo/bar', {'lang': 'dart'});
 
-assert(httpUri.toString() == 'http://example.org/foo/bar#frag?lang=dart');
-assert(
-    httpsUri.toString() == 'https://example.org/foo/bar#frag?lang=dart');
+assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
+assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 ```
 
 ### Dates and times
