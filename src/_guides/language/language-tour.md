@@ -4109,8 +4109,7 @@ var foo = [!Foo<Object>!]();
 
 ### Using generic methods
 
-Initially, Dart's generic support was limited to classes.
-A newer syntax, called _generic methods_, allows type arguments on methods and functions:
+Type arguments are also allowed on methods and functions:
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
