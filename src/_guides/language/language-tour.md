@@ -4109,7 +4109,7 @@ var foo = [!Foo<Object>!]();
 
 ### Using generic methods
 
-Type arguments are also allowed on methods and functions:
+Methods and functions also allow type arguments:
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
