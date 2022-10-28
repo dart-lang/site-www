@@ -788,8 +788,9 @@ var uri = Uri(
     scheme: 'https',
     host: 'example.org',
     path: '/foo/bar',
-    fragment: 'frag');
-assert(uri.toString() == 'https://example.org/foo/bar#frag');
+    fragment: 'frag',
+    queryParameters: {'lang': 'dart'});
+assert(uri.toString() == 'https://example.org/foo/bar#frag?lang=dart');
 ```
 
 To create a URI with a http or https scheme,
