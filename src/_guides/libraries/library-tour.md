@@ -793,7 +793,8 @@ var uri = Uri(
 assert(uri.toString() == 'https://example.org/foo/bar#frag?lang=dart');
 ```
 
-To create a URI with a http or https scheme and without a fragment,
+If you don't need to specify a fragment,
+to create a URI with a http or https scheme,
 you can instead use the `Uri.http` or `Uri.https` factory constructors:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri-http)"?>
