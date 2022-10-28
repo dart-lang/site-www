@@ -1700,7 +1700,7 @@ Future<void> asyncError() async {
   throw 'Error!';
 }
 
-Future<void> asyncValue() async => 'value';
+Future<String> asyncValue() async => 'value';
 {% endprettify %}
 
 ### CONSIDER using higher-order methods to transform a stream.
