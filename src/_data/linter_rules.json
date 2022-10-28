@@ -305,7 +305,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**DON'T** test for conditions composed only by literals, since the value can be\ninferred at compile time.\n\nConditional statements using a condition which cannot be anything but FALSE have\nthe effect of making blocks of code non-functional.  If the condition cannot\nevaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false`.\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 < 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && false) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0 || 3 < 4) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 || 3 < 4 && true) {} // LINT\n}\n```\n\n**NOTE:** that an exception is made for the common `while (true) { }` idiom,\nwhich is often reasonably prefered to the equivalent `for (;;)`.\n\n**GOOD:**\n```dart\nvoid good() {\n  while (true) {\n    // Do stuff.\n  }\n}\n```\n",
+    "details": "**DON'T** test for conditions composed only by literals, since the value can be\ninferred at compile time.\n\nConditional statements using a condition which cannot be anything but FALSE have\nthe effect of making blocks of code non-functional.  If the condition cannot\nevaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false`.\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 < 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && false) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0 || 3 < 4) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 || 3 < 4 && true) {} // LINT\n}\n```\n\n**NOTE:** that an exception is made for the common `while (true) { }` idiom,\nwhich is often reasonably preferred to the equivalent `for (;;)`.\n\n**GOOD:**\n```dart\nvoid good() {\n  while (true) {\n    // Do stuff.\n  }\n}\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.25"
   },
@@ -752,7 +752,7 @@
     ],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**AVOID** declaring parameters as final.\n\nDeclaring parameters as final can lead to unecessarily verbose code, especially\nwhen using the \"parameter_assignments\" rule.\n\n**GOOD:**\n```dart\nvoid badParameter(String label) { // OK\n  print(label);\n}\n```\n\n**BAD:**\n```dart\nvoid goodParameter(final String label) { // LINT\n  print(label);\n}\n```\n\n**GOOD:**\n```dart\nvoid badExpression(int value) => print(value); // OK\n```\n\n**BAD:**\n```dart\nvoid goodExpression(final int value) => print(value); // LINT\n```\n\n**GOOD:**\n```dart\n[1, 4, 6, 8].forEach((value) => print(value + 2)); // OK\n```\n\n**BAD:**\n```dart\n[1, 4, 6, 8].forEach((final value) => print(value + 2)); // LINT\n```\n\n",
+    "details": "**AVOID** declaring parameters as final.\n\nDeclaring parameters as final can lead to unnecessarily verbose code, especially\nwhen using the \"parameter_assignments\" rule.\n\n**GOOD:**\n```dart\nvoid badParameter(String label) { // OK\n  print(label);\n}\n```\n\n**BAD:**\n```dart\nvoid goodParameter(final String label) { // LINT\n  print(label);\n}\n```\n\n**GOOD:**\n```dart\nvoid badExpression(int value) => print(value); // OK\n```\n\n**BAD:**\n```dart\nvoid goodExpression(final int value) => print(value); // LINT\n```\n\n**GOOD:**\n```dart\n[1, 4, 6, 8].forEach((value) => print(value + 2)); // OK\n```\n\n**BAD:**\n```dart\n[1, 4, 6, 8].forEach((final value) => print(value + 2)); // LINT\n```\n\n",
     "sinceDartSdk": "2.16.0",
     "sinceLinter": "1.15.0"
   },
@@ -1300,6 +1300,18 @@
     "details": "From the the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files):\n\n**DON'T** import implementation files from another package.\n\nThe libraries inside `lib` are publicly visible: other packages are free to\nimport them.  But much of a package's code is internal implementation libraries\nthat should only be imported and used by the package itself.  Those go inside a\nsubdirectory of `lib` called `src`.  You can create subdirectories in there if\nit helps you organize things.\n\nYou are free to import libraries that live in `lib/src` from within other Dart\ncode in the same package (like other libraries in `lib`, scripts in `bin`,\nand tests) but you should never import from another package's `lib/src`\ndirectory.  Those files are not part of the package's public API, and they\nmight change in ways that could break your code.\n\n**BAD:**\n```dart\n// In 'road_runner'\nimport 'package:acme/lib/src/internals.dart;\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.4"
+  },
+  {
+    "name": "implicit_call_tearoffs",
+    "description": "Explicitly tear-off `call` methods when using an object as a Function.",
+    "group": "style",
+    "maturity": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "**DO**\nExplicitly tear off `.call` methods from objects when assigning to a Function\ntype. There is less magic with an explicit tear off. Future language versions\nmay remove the implicit call tear off.\n\n**BAD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable());\n```\n\n**GOOD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable().call);\n```\n\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
   },
   {
     "name": "join_return_with_assignment",
