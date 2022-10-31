@@ -1728,25 +1728,26 @@ which **approximates** Dart's operator associativity
 as well as operator precedence from highest to lowest.
 You can implement many of these [operators as class members](#_operators).
 
-|--------------------------+------------------------------------------------+----------------------|
-|Description               | Operator                                       | Associativity        |
-|--------------------------+------------------------------------------------+----------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!` | None |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None |
-| multiplicative           | `*`    `/`    `%`    `~/`                      | Left |
-| additive                 | `+`    `-`                                     | Left |
-| shift                    | `<<`    `>>`    `>>>`                          | Left |
-| bitwise AND              | `&`                                            | Left |
-| bitwise XOR              | `^`                                            | Left |
-| bitwise OR               | `|`                                            | Left |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!` | None |
-| equality                 | `==`    `!=`                                   | None|
-| logical AND              | `&&`                                           | Left |
-| logical OR               | `||`                                           | Left |
-| if null                  | `??`                                           | Left |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> | Right |
-| cascade                  | `..` &nbsp;&nbsp; `?..`                        | Right |
-| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> | Right
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| Description                             | Operator                                                                                                                                                                                          | Associativity |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| unary postfix                           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!`                                                                                       | None          |
+| unary prefix                            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None          |
+| multiplicative                          | `*`    `/`    `%`    `~/`                                                                                                                                                                         | Left          |
+| additive                                | `+`    `-`                                                                                                                                                                                        | Left          |
+| shift                                   | `<<`    `>>`    `>>>`                                                                                                                                                                             | Left          |
+| bitwise AND                             | `&`                                                                                                                                                                                               | Left          |
+| bitwise XOR                             | `^`                                                                                                                                                                                               | Left          |
+| bitwise OR                              | `|`                                                                                                                                                                                               | Left              |
+| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                                                                                                               | None          |
+| equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
+| logical AND                             | `&&`                                                                                                                                                                                              | Left          |
+| logical OR                              | `||`                                                                                                                                                                                              | Left          |
+| if null                                 | `??`                                                                                                                                                                                              | Left          |
+| conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
+| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
+| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
+
 {:.table .table-striped}
 
 {{site.alert.warning}}
