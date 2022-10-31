@@ -264,7 +264,7 @@ void main() {
 
       fruits.add('apples');
       var fruit = fruits[0];
-      // ignore: stable, beta, dev, unnecessary_type_check
+      // ignore: unnecessary_type_check
       assert(fruit is String);
       // #enddocregion List-of-String
     });
@@ -472,7 +472,7 @@ void main() {
       // #docregion toList
       var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
       // #enddocregion toList
-      // ignore: stable, beta, dev, unnecessary_type_check
+      // ignore: unnecessary_type_check
       expect(loudTeas is List, isTrue);
     });
 
@@ -544,9 +544,20 @@ void main() {
           scheme: 'https',
           host: 'example.org',
           path: '/foo/bar',
-          fragment: 'frag');
-      assert(uri.toString() == 'https://example.org/foo/bar#frag');
+          fragment: 'frag',
+          queryParameters: {'lang': 'dart'});
+      assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
       // #enddocregion Uri
+    });
+
+    test('http constructors', () {
+      // #docregion Uri-http
+      var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
+      var httpsUri = Uri.https('example.org', '/foo/bar', {'lang': 'dart'});
+
+      assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
+      assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
+      // #enddocregion Uri-http
     });
   });
 

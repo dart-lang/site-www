@@ -116,10 +116,11 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
    setting the minimum SDK constraint to `2.12.0`:
+
    ```yaml
-environment:
-  sdk: '>=2.12.0 <3.0.0'
-```
+   environment:
+     sdk: '>=2.12.0 <3.0.0'
+   ```
 
 2. Regenerate the [package configuration file][]:
 
@@ -127,7 +128,7 @@ environment:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
+   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
@@ -140,9 +141,10 @@ environment:
 
 4. Add a [language version comment][] to the top of
    any Dart files that you don't want to consider during your current migration:
+   
    ```dart
-// @dart=2.9
-```
+   // @dart=2.9
+   ```
 
    Using language version 2.9 for a library that's in a 2.12 package
    can reduce analysis errors (red squiggles) coming from unmigrated code.
@@ -184,7 +186,7 @@ You can do this in two ways:
   // @dart=2.9
   import 'src/my_app.dart';
 
-  main() {
+  void main() {
     //...
   }
   ```

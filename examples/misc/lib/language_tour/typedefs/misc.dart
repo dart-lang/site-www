@@ -15,6 +15,6 @@ typedef Compare<T> = int Function(T a, T b);
 int sort(int a, int b) => a - b;
 
 void main() {
-  // ignore: stable, beta, dev, unnecessary_type_check
+  // ignore: unnecessary_type_check
   assert(sort is Compare<int>); // True!
 }
