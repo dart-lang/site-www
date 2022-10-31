@@ -1750,7 +1750,7 @@ You can implement many of these [operators as class members](#_operators).
 {:.table .table-striped}
 
 {{site.alert.warning}}
-  The operator precedence outlined here from highest to lowest
+  The operator precedence outlined here
   is only an approximation of the precedence and associativity
   given implicitly by Dart's grammar
   and should only be used as a helpful guide.
