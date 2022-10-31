@@ -587,6 +587,7 @@ void main() {
       // #enddocregion DateTime
       assert(2016 < now.year, 'Time travel is verboten!');
       expect(y2k.year, 2000);
+      expect(sameTimeLastYear.year, now.year - 1);
     });
 
     test('millisecondsSinceEpoch', () {
