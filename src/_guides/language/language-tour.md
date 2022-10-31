@@ -1725,7 +1725,7 @@ assert(foo() == null);
 
 Dart supports the operators shown in the following table,
 which **approximates** Dart's operator associativity 
-as well as precedence from highest to lowest.
+as well as operator precedence from highest to lowest.
 You can implement many of these [operators as class members](#_operators).
 
 |--------------------------+------------------------------------------------+----------------------|
