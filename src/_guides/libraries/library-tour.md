@@ -814,7 +814,7 @@ assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 A DateTime object is a point in time. The time zone is either UTC or the
 local time zone.
 
-You can create DateTime objects using several constructors:
+You can create DateTime objects using several constructors and methods:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
 ```dart
