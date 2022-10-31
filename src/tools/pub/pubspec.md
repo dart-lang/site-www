@@ -429,8 +429,11 @@ Screenshots are limited to:
 - File types: `png`, `jpg`, `gif`, or `webp`. 
 - Static and animated images are both allowed.
 
- Pub.dev generates the package's thumbnail image from the first screenshot. If 
- this screenshot uses animation, pub.dev uses its first frame.
+It is recommended to keep screenshot files small, since the files will be 
+included in each download of the package.
+
+Pub.dev generates the package's thumbnail image from the first screenshot. If 
+this screenshot uses animation, pub.dev uses its first frame.
  
 ### SDK constraints
 
