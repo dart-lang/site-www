@@ -325,6 +325,7 @@ void main() {
   parseAndRead(data).catchError((e) {
     print('Inside catchError');
     print(e);
+    return -1;
   });
 }
 
@@ -371,6 +372,7 @@ void main() {
   parseAndRead(data).catchError((e) {
     print('Inside catchError');
     print(e);
+    return -1;
   });
 }
 
