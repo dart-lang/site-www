@@ -18,7 +18,7 @@ env:
   # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
   # LTS
-  NODE_VERSION: '16'
+  NODE_VERSION: '18'
   # Tool location
   BASE_DIR: ${{ github.workspace }}
   TOOL_DIR: ${{ github.workspace }}/tool
