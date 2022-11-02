@@ -6,6 +6,6 @@ void main() {
     expect(
         characters.main,
         prints(
-            'Hi 🇩🇰\nThe end of the string: \u{DDF0}\nThe last character: 🇩🇰\n\n'));
+            'Hi 🇩🇰\nThe end of the string: \u{DDF0}\nThe last character: 🇩🇰\n'));
   });
 }
