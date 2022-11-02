@@ -6,6 +6,7 @@ environment:
 
 dependencies:
   args: ^2.3.0
+  characters: ^1.2.1
   examples_util: { path: ../util }
 
 dev_dependencies:
