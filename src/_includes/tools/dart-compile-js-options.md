@@ -64,7 +64,7 @@ Some other handy options include:
   [Dart Package Configuration File.][]
 
 `-D<flag>=<value>`
-: Defines an environment variable
+: Defines an environment declaration and value pair
   which can be accessed with 
   [`String.fromEnvironment`][], [`int.fromEnvironment`][], 
   [`bool.fromEnvironment`][], or [`bool.hasEnvironment`][].
