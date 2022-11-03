@@ -406,7 +406,7 @@ the pattern is considered relative to the package's root directory.
 ### Screenshots
 
 Packages can showcase their widgets or other visual elements using screenshots
-displayed on their package page.
+displayed on their page.
 
 A package can list up to 10 screenshots under the `screenshots` field.
 Each screenshot includes one `description` and one `path`. 
@@ -424,13 +424,14 @@ screenshots:
     path: path/to/image/in/package.png
 ```
 
-Screenshots are limited to:
+Pub.dev limits screenshots to the following specifications:
+
 - File size: max 4 MB per image.
 - File types: `png`, `jpg`, `gif`, or `webp`. 
 - Static and animated images are both allowed.
 
-It is recommended to keep screenshot files small, since the files will be 
-included in each download of the package.
+Keep screenshot files small.
+Each download of the package includes all screenshot files.
 
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
