@@ -1722,9 +1722,10 @@ assert(foo() == null);
 
 ## Operators
 
-Dart supports the operators shown in the following table,
-which **approximates** Dart's operator associativity 
-as well as operator precedence from highest to lowest.
+Dart supports the operators shown in the following table.
+The table shows Dart's operator associativity 
+and [operator precedence](#operator-precedence) from highest to lowest,
+which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members](#_operators).
 
 |-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
@@ -1746,16 +1747,14 @@ You can implement many of these [operators as class members](#_operators).
 | conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
 | cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
-
 {:.table .table-striped}
 
 {{site.alert.warning}}
-  The operator precedence outlined here
-  is only an approximation of the precedence and associativity
-  given implicitly by Dart's grammar
-  and should only be used as a helpful guide.
-  For definitive answers, consult the grammar in the
-  [Dart language specification][].
+  The previous table should only be used as a helpful guide.
+  The notion of operator precedence and associativity
+  is an approximation of the truth found in the language grammar.
+  You can find the authoritative behavior of Dart's operator relationships
+  in the grammar defined in the [Dart language specification][].
 {{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
@@ -1771,6 +1770,7 @@ c ? a : b
 a is T
 ```
 
+<a id="operator-precedence"></a>
 In the [operator table](#operators),
 each operator has higher precedence than the operators in the rows
 that follow it. For example, the multiplicative operator `%` has higher
