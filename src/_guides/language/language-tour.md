@@ -1724,7 +1724,7 @@ assert(foo() == null);
 
 Dart supports the operators shown in the following table.
 The table shows Dart's operator associativity 
-and [operator precedence](#operator-precedence) from highest to lowest,
+and [operator precedence](#operator-precedence-example) from highest to lowest,
 which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members](#_operators).
 
@@ -1770,7 +1770,7 @@ c ? a : b
 a is T
 ```
 
-<a id="operator-precedence"></a>
+<a id="operator-precedence-example"></a>
 In the [operator table](#operators),
 each operator has higher precedence than the operators in the rows
 that follow it. For example, the multiplicative operator `%` has higher
