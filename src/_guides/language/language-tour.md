@@ -1180,17 +1180,16 @@ The returned [`Characters`][] object is the string as
 a sequence of grapheme clusters.
 Here's an example of using the characters API:
 
-{% comment %}
-TODO #2950: add test code
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/characters.dart"?>
 ```dart
 import 'package:characters/characters.dart';
-...
-var hi = 'Hi 🇩🇰';
-print(hi);
-print('The end of the string: ${hi.substring(hi.length - 1)}');
-print('The last character: ${hi.characters.last}\n');
+
+void main() {
+  var hi = 'Hi 🇩🇰';
+  print(hi);
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}');
+}
 ```
 
 The output, depending on your environment, looks something like this:
