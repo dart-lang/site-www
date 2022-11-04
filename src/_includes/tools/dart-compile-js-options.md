@@ -64,11 +64,18 @@ Some other handy options include:
   [Dart Package Configuration File.][]
 
 `-D<flag>=<value>`
-: Defines an [environment variable](https://api.dart.dev/stable/2.18.0/dart-core/int/int.fromEnvironment.html).
+: Defines an environment declaration and value pair
+  which can be accessed with 
+  [`String.fromEnvironment`][], [`int.fromEnvironment`][], 
+  [`bool.fromEnvironment`][], or [`bool.hasEnvironment`][].
 
 `--version`
 : Displays version information for `dart`.
 
+[`String.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
+[`int.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
+[`bool.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html
+[`bool.hasEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/bool/bool.hasEnvironment.html
 
 ###### Display options
 
