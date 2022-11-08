@@ -74,7 +74,8 @@ $ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
 Pub assumes that the package is in the root of the Git repository. 
-To specify a different location in the repo, 
+To specify a different location in the repo,
+use the `--git-path` flag to
 specify a path relative to the repository root:
 
 ```terminal
