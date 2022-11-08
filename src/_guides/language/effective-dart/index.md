@@ -101,7 +101,7 @@ then the guideline links to that rule using the following format:
 
 {% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
 
-For help using the linter,
+To learn how to use the linter,
 see [Enabling linter rules][]
 and the list of [linter rules][].
 
