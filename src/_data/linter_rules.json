@@ -169,7 +169,7 @@
     "fixStatus": "unregistered",
     "details": "**DON'T** invoke certain collection method with an argument with an unrelated\ntype.\n\nDoing this will invoke `==` on the collection's elements and most likely will\nreturn `false`.\n\nAn argument passed to a collection method should relate to the collection type\nas follows:\n\n* an argument to `Iterable<E>.contains` should be related to `E`\n* an argument to `List<E>.remove` should be related to `E`\n* an argument to `Map<K, V>.containsKey` should be related to `K`\n* an argument to `Map<K, V>.containsValue` should be related to `V`\n* an argument to `Map<K, V>.remove` should be related to `K`\n* an argument to `Map<K, V>.[]` should be related to `K`\n* an argument to `Queue<E>.remove` should be related to `E`\n* an argument to `Set<E>.containsAll` should be related to `Iterable<E>`\n* an argument to `Set<E>.difference` should be related to `Set<E>`\n* an argument to `Set<E>.intersection` should be related to `Set<E>`\n* an argument to `Set<E>.lookup` should be related to `E`\n* an argument to `Set<E>.remove` should be related to `E`\n* an argument to `Set<E>.removeAll` should be related to `Iterable<E>`\n* an argument to `Set<E>.retainAll` should be related to `Iterable<E>`\n\n**BAD:**\n```dart\nvoid someFunction() {\n  var list = <int>[];\n  if (list.contains('1')) print('someFunction'); // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid someFunction() {\n  var set = <int>{};\n  set.removeAll({'1'}); // LINT\n}\n```\n\n**GOOD:**\n```dart\nvoid someFunction() {\n  var list = <int>[];\n  if (list.contains(1)) print('someFunction'); // OK\n}\n```\n\n**GOOD:**\n```dart\nvoid someFunction() {\n  var set = <int>{};\n  set.removeAll({1}); // OK\n}\n```\n\n",
     "sinceDartSdk": "Unreleased",
-    "sinceLinter": "Unreleased"
+    "sinceLinter": "1.29.0"
   },
   {
     "name": "comment_references",
@@ -1165,6 +1165,18 @@
     "sinceLinter": "0.1.57"
   },
   {
+    "name": "dangling_library_doc_comments",
+    "description": "Attach library doc comments to library directives.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "Attach library doc comments (with `///`) to library directives, rather than\nleaving them dangling near the top of a library.\n\n**BAD:**\n```dart\n/// This is a great library.\nimport 'package:math';\n```\n\n```dart\n/// This is a great library.\n\nclass C {}\n```\n\n**GOOD:**\n```dart\n/// This is a great library.\nlibrary;\n\nimport 'package:math';\n\nclass C {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "1.29.0"
+  },
+  {
     "name": "deprecated_consistency",
     "description": "Missing deprecated annotation.",
     "group": "style",
@@ -1311,7 +1323,7 @@
     "fixStatus": "unregistered",
     "details": "**DO**\nExplicitly tear off `.call` methods from objects when assigning to a Function\ntype. There is less magic with an explicit tear off. Future language versions\nmay remove the implicit call tear off.\n\n**BAD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable());\n```\n\n**GOOD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable().call);\n```\n\n",
     "sinceDartSdk": "Unreleased",
-    "sinceLinter": "Unreleased"
+    "sinceLinter": "1.29.0"
   },
   {
     "name": "join_return_with_assignment",
@@ -2472,6 +2484,18 @@
     "details": "**DO** not specify the `late` modifier for top-level and static variables\nwhen the declaration contains an initializer. \n\nTop-level and static variables with initializers are already evaluated lazily\nas if they are marked `late`.\n\n**BAD:**\n```dart\nlate String badTopLevel = '';\n```\n\n**GOOD:**\n```dart\nString goodTopLevel = '';\n```\n\n**BAD:**\n```dart\nclass BadExample {\n  static late String badStatic = '';\n}\n```\n\n**GOOD:**\n```dart\nclass GoodExample {\n  late String goodStatic;\n}\n```\n",
     "sinceDartSdk": "2.16.0",
     "sinceLinter": "1.17.0"
+  },
+  {
+    "name": "unnecessary_library_directive",
+    "description": "Avoid library directives unless they have documentation comments or annotations.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "**DO** use library directives if you want to document a library and/or annotate \na library.\n\n**GOOD:**\n```dart\n/// This library does important things\nlibrary;\n```\n\n```dart\n@TestOn('js')\nlibrary;\n```\n\n**BAD:**\n```dart\nlibrary;\n```\n\nNOTE: Due to limitations with this lint, libraries with parts will not be\nflagged for unnecessary library directives.\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "1.29.0"
   },
   {
     "name": "unnecessary_new",
