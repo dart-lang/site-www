@@ -95,18 +95,22 @@ your laces tied correctly. Things aren't that bad. Most of the guidelines here
 are common sense and we're all reasonable people. The goal, as always, is nice,
 readable and maintainable code.
 
-The Dart analyzer has a linter to help you write good, consistent code.
-If a linter rule exists that can help you follow a guideline,
-then the guideline links to that rule using the following format:
+The Dart analyzer provides a linter
+to help you write good, consistent code
+that follows these and other guidelines.
+If one or more [linter rules][lints] exist
+that can help you follow a guideline
+then the guideline links to those rules.
+The links use the following format:
 
 {% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
 
 To learn how to use the linter,
 see [Enabling linter rules][]
-and the list of [linter rules][].
+and the list of [linter rules][lints].
 
 [Enabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
-[Linter rules]: /tools/linter-rules
+[lints]: /tools/linter-rules
 
 ## Glossary
 
