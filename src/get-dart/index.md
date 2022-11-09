@@ -75,7 +75,7 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 ### macOS
 
 * **Supported versions:** Latest three major versions.
-Dart supports the following macOS versions as of October 2022:
+Dart supports the following macOS versions as of November 2022:
   - macOS 11 (Big Sur)
   - macOS 12 (Monterey)
   - macOS 13 (Ventura)
