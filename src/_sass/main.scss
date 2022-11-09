@@ -489,7 +489,7 @@ li.card {
 @include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
 @include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
 @include dart-style-for('include-lang.language-dart', $pre-bg, $brand-primary, 'Dart');
-@include dart-style-for(language-js, $pre-bg, #f1a85a, 'JavaScript');
+@include dart-style-for('include-lang.language-js', $pre-bg, #f1a85a, 'JavaScript');
 
 .muted {
   color: $gray;
