@@ -9,12 +9,11 @@ void main() async {
   // Read some data.
   final jsonData = await Isolate.run(() async {
     final fileData = await File(filename).readAsString();
-    final jsonData = jsonDecode(fileData) as Map<String, dynamic>; 
+    final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
     return jsonData;
   });
-  
+
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
 // #enddocregion main
-
