@@ -1180,17 +1180,16 @@ The returned [`Characters`][] object is the string as
 a sequence of grapheme clusters.
 Here's an example of using the characters API:
 
-{% comment %}
-TODO #2950: add test code
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/characters.dart"?>
 ```dart
 import 'package:characters/characters.dart';
-...
-var hi = 'Hi 🇩🇰';
-print(hi);
-print('The end of the string: ${hi.substring(hi.length - 1)}');
-print('The last character: ${hi.characters.last}\n');
+
+void main() {
+  var hi = 'Hi 🇩🇰';
+  print(hi);
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}');
+}
 ```
 
 The output, depending on your environment, looks something like this:
@@ -4109,8 +4108,7 @@ var foo = [!Foo<Object>!]();
 
 ### Using generic methods
 
-Initially, Dart's generic support was limited to classes.
-A newer syntax, called _generic methods_, allows type arguments on methods and functions:
+Methods and functions also allow type arguments:
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
