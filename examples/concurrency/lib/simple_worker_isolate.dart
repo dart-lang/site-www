@@ -9,7 +9,7 @@ void main() async {
   // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
 
-  // Use that data
+  // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
 // #enddocregion main

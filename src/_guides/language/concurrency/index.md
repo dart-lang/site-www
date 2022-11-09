@@ -295,13 +295,6 @@ The worker isolate can block without affecting other isolates.
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
-Message passing normally involves data copying, and thus can be slow.
-However, when you send data using isolates,
-the memory that holds the message in the worker isolate isn’t copied,
-but instead is transferred to the receiving isolate.
-The sender will nonetheless perform a verification pass to ensure
-the objects are allowed to be transferred.
-
 ## Code examples
 
 This section discusses some examples
@@ -317,7 +310,6 @@ to implement isolates.
 {{site.alert.end}}
 
  [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
-
 
 ### Implementing a simple worker isolate
 
@@ -346,7 +338,7 @@ void main() async {
   // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
 
-  // Use that data
+  // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
 ```
@@ -372,18 +364,24 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
    shutting down the worker isolate and
    sending `jsonData` back to the main isolate as the result.
 
-In this example, `_readAndParseJson()` is an existing,
+4. The memory holding the result in the worker isolate is *transferred*
+   to the main isolate, *not copied*.
+   The worker isolate still performs a verification pass to ensure
+   the objects are allowed to be transferred.
+
+`_readAndParseJson()` is an existing,
 asynchronous function that could just as easily
 run directly in the main isolate.
 But using `Isolate.run()` enables concurrency,
 so its computations are completely abstracted by the worker isolate
 and can complete without blocking the main isolate.
 
-An added benefit is that the result of
-`Isolate.run()` is always asynchronous,
-even if the function it’s executing is not
-(`readAndParseJson()` is already asynchronous,
-though, so it’s not affected).
+Because `Isolate.run()` allows code in the main isolate to continue running
+while its computations execute in a new one,
+its result is always returned as a `Future`.
+The original isolate doesn't care whether the computation
+running in the other isolate is synchronous or asynchronous,
+because it's being run concurrently either way.
 
 {% comment %}
 TODO:
@@ -406,13 +404,13 @@ directly in the main isolate.
 ```dart
 void main() async {
   // Read some data.
-  final jsonData = await Isolate.run(() {
+  final jsonData = await Isolate.run(() async {
     final fileData = await File(filename).readAsString();
     final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
-    return await jsonData;
+    return jsonData;
   });
 
-  // Use that data
+  // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
 ```
