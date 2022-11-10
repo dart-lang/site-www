@@ -7,7 +7,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use absolute imports for files withing the\n`lib/` directory.\n\nThis is the opposite of 'prefer_relative_imports'.\n\nYou can also use 'avoid_relative_lib_imports' to disallow relative imports of\nfiles within `lib/` directory outside of it (for example `test/`).\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'package:foo/baz.dart';\n\nimport 'package:foo/src/baz.dart';\n...\n```\n\n**BAD:**\n\n```dart\nimport 'baz.dart';\n\nimport 'src/bag.dart'\n\nimport '../lib/baz.dart';\n\n...\n```\n\n",
+    "details": "**DO** avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use absolute imports for files within the\n`lib/` directory.\n\nThis is the opposite of 'prefer_relative_imports'.\n\nYou can also use 'avoid_relative_lib_imports' to disallow relative imports of\nfiles within `lib/` directory outside of it (for example `test/`).\n\n**GOOD:**\n\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'package:foo/baz.dart';\n\nimport 'package:foo/src/baz.dart';\n...\n```\n\n**BAD:**\n\n```dart\nimport 'baz.dart';\n\nimport 'src/bag.dart'\n\nimport '../lib/baz.dart';\n\n...\n```\n\n",
     "sinceDartSdk": "2.10.0",
     "sinceLinter": "0.1.118"
   },
@@ -166,7 +166,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "unregistered",
+    "fixStatus": "needsEvaluation",
     "details": "**DON'T** invoke certain collection method with an argument with an unrelated\ntype.\n\nDoing this will invoke `==` on the collection's elements and most likely will\nreturn `false`.\n\nAn argument passed to a collection method should relate to the collection type\nas follows:\n\n* an argument to `Iterable<E>.contains` should be related to `E`\n* an argument to `List<E>.remove` should be related to `E`\n* an argument to `Map<K, V>.containsKey` should be related to `K`\n* an argument to `Map<K, V>.containsValue` should be related to `V`\n* an argument to `Map<K, V>.remove` should be related to `K`\n* an argument to `Map<K, V>.[]` should be related to `K`\n* an argument to `Queue<E>.remove` should be related to `E`\n* an argument to `Set<E>.containsAll` should be related to `Iterable<E>`\n* an argument to `Set<E>.difference` should be related to `Set<E>`\n* an argument to `Set<E>.intersection` should be related to `Set<E>`\n* an argument to `Set<E>.lookup` should be related to `E`\n* an argument to `Set<E>.remove` should be related to `E`\n* an argument to `Set<E>.removeAll` should be related to `Iterable<E>`\n* an argument to `Set<E>.retainAll` should be related to `Iterable<E>`\n\n**BAD:**\n```dart\nvoid someFunction() {\n  var list = <int>[];\n  if (list.contains('1')) print('someFunction'); // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid someFunction() {\n  var set = <int>{};\n  set.removeAll({'1'}); // LINT\n}\n```\n\n**GOOD:**\n```dart\nvoid someFunction() {\n  var list = <int>[];\n  if (list.contains(1)) print('someFunction'); // OK\n}\n```\n\n**GOOD:**\n```dart\nvoid someFunction() {\n  var set = <int>{};\n  set.removeAll({1}); // OK\n}\n```\n\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
@@ -359,7 +359,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**PREFER** relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use relative imports for files withing the\n`lib/` directory.\n\n**GOOD:**\n\n```dart\nimport 'bar.dart';\n```\n\n**BAD:**\n\n```dart\nimport 'package:my_package/bar.dart';\n```\n\n",
+    "details": "**PREFER** relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use relative imports for files within the\n`lib/` directory.\n\n**GOOD:**\n\n```dart\nimport 'bar.dart';\n```\n\n**BAD:**\n\n```dart\nimport 'package:my_package/bar.dart';\n```\n\n",
     "sinceDartSdk": "2.6.0",
     "sinceLinter": "0.1.99"
   },
@@ -794,7 +794,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [effective dart](https://dart.dev/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to null.\n\nIn Dart, a variable or field that is not explicitly initialized automatically\ngets initialized to null.  This is reliably specified by the language.  There's\nno concept of \"uninitialized memory\" in Dart.  Adding `= null` is redundant and\nunneeded.\n\n**GOOD:**\n```dart\nint _nextId;\n\nclass LazyId {\n  int _id;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n**BAD:**\n```dart\nint _nextId = null;\n\nclass LazyId {\n  int _id = null;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to null.\n\nIn Dart, a variable or field that is not explicitly initialized automatically\ngets initialized to null.  This is reliably specified by the language.  There's\nno concept of \"uninitialized memory\" in Dart.  Adding `= null` is redundant and\nunneeded.\n\n**GOOD:**\n```dart\nint _nextId;\n\nclass LazyId {\n  int _id;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n**BAD:**\n```dart\nint _nextId = null;\n\nclass LazyId {\n  int _id = null;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.11"
   },
@@ -1171,7 +1171,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "unregistered",
+    "fixStatus": "needsEvaluation",
     "details": "Attach library doc comments (with `///`) to library directives, rather than\nleaving them dangling near the top of a library.\n\n**BAD:**\n```dart\n/// This is a great library.\nimport 'package:math';\n```\n\n```dart\n/// This is a great library.\n\nclass C {}\n```\n\n**GOOD:**\n```dart\n/// This is a great library.\nlibrary;\n\nimport 'package:math';\n\nclass C {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
@@ -1196,7 +1196,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** follow the conventions in the \n[Effective Dart Guide](https://dart.dev/guides/language/effective-dart/style#ordering)\n\n**DO** place `dart:` imports before other imports.\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n\nimport 'dart:async';  // LINT\nimport 'dart:html';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'dart:html';  // OK\nimport 'package:bar/bar.dart';\n\nimport 'dart:async';  // LINT\nimport 'package:foo/foo.dart';\n```\n\n**GOOD:**\n```dart\nimport 'dart:async';  // OK\nimport 'dart:html';  // OK\n\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n```\n\n**DO** place `package:` imports before relative imports.\n\n**BAD:**\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nimport 'package:bar/bar.dart';  // LINT\nimport 'package:foo/foo.dart';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'a.dart';\n\nimport 'package:foo/foo.dart';  // LINT\nimport 'b.dart';\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'package:foo/foo.dart';  // OK\n\nimport 'a.dart';\nimport 'b.dart';\n```\n\n**DO** specify exports in a separate section after all imports.\n\n**BAD:**\n```dart\nimport 'src/error.dart';\nexport 'src/error.dart'; // LINT\nimport 'src/string_source.dart';\n```\n\n**GOOD:**\n```dart\nimport 'src/error.dart';\nimport 'src/string_source.dart';\n\nexport 'src/error.dart'; // OK\n```\n\n**DO** sort sections alphabetically.\n\n**BAD:**\n```dart\nimport 'package:foo/bar.dart'; // OK\nimport 'package:bar/bar.dart'; // LINT\n\nimport 'a/b.dart'; // OK\nimport 'a.dart'; // LINT\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart'; // OK\nimport 'package:foo/bar.dart'; // OK\n\nimport 'a.dart'; // OK\nimport 'a/b.dart'; // OK\n```\n",
+    "details": "**DO** follow the directive ordering conventions in\n[Effective Dart](https://dart.dev/guides/language/effective-dart/style#ordering):\n\n**DO** place `dart:` imports before other imports.\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n\nimport 'dart:async';  // LINT\nimport 'dart:html';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'dart:html';  // OK\nimport 'package:bar/bar.dart';\n\nimport 'dart:async';  // LINT\nimport 'package:foo/foo.dart';\n```\n\n**GOOD:**\n```dart\nimport 'dart:async';  // OK\nimport 'dart:html';  // OK\n\nimport 'package:bar/bar.dart';\nimport 'package:foo/foo.dart';\n```\n\n**DO** place `package:` imports before relative imports.\n\n**BAD:**\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nimport 'package:bar/bar.dart';  // LINT\nimport 'package:foo/foo.dart';  // LINT\n```\n\n**BAD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'a.dart';\n\nimport 'package:foo/foo.dart';  // LINT\nimport 'b.dart';\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart';  // OK\nimport 'package:foo/foo.dart';  // OK\n\nimport 'a.dart';\nimport 'b.dart';\n```\n\n**DO** specify exports in a separate section after all imports.\n\n**BAD:**\n```dart\nimport 'src/error.dart';\nexport 'src/error.dart'; // LINT\nimport 'src/string_source.dart';\n```\n\n**GOOD:**\n```dart\nimport 'src/error.dart';\nimport 'src/string_source.dart';\n\nexport 'src/error.dart'; // OK\n```\n\n**DO** sort sections alphabetically.\n\n**BAD:**\n```dart\nimport 'package:foo/bar.dart'; // OK\nimport 'package:bar/bar.dart'; // LINT\n\nimport 'a/b.dart'; // OK\nimport 'a.dart'; // LINT\n```\n\n**GOOD:**\n```dart\nimport 'package:bar/bar.dart'; // OK\nimport 'package:foo/bar.dart'; // OK\n\nimport 'a.dart'; // OK\nimport 'a/b.dart'; // OK\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.30"
   },
@@ -1242,6 +1242,18 @@
     "details": "From the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DO** use `;` instead of `{}` for empty constructor bodies.\n\nIn Dart, a constructor with an empty body can be terminated with just a\nsemicolon.  This is required for const constructors.  For consistency and\nbrevity, other constructors should also do this.\n\n**GOOD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y);\n}\n```\n\n**BAD:**\n```dart\nclass Point {\n  int x, y;\n  Point(this.x, this.y) {}\n}\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.1"
+  },
+  {
+    "name": "enable_null_safety",
+    "description": "Do use sound null safety.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "**DO** use sound null safety, by not specifying a dart version lower than `2.12`.\n\n**BAD:**\n```dart\n// @dart=2.8\na() {\n}\n```\n\n**GOOD:**\n```dart\nb() {\n}\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
   },
   {
     "name": "eol_at_end_of_file",
@@ -1320,7 +1332,7 @@
     "maturity": "experimental",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "unregistered",
+    "fixStatus": "hasFix",
     "details": "**DO**\nExplicitly tear off `.call` methods from objects when assigning to a Function\ntype. There is less magic with an explicit tear off. Future language versions\nmay remove the implicit call tear off.\n\n**BAD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable());\n```\n\n**GOOD:**\n```dart\nclass Callable {\n  void call() {}\n}\nvoid callIt(void Function() f) {\n  f();\n}\n\ncallIt(Callable().call);\n```\n\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
@@ -1348,6 +1360,18 @@
     "details": "Multiline strings are easier to read when they start with a newline (a newline\nstarting a multiline string is ignored).\n\n**BAD:**\n```dart\nvar s1 = '''{\n  \"a\": 1,\n  \"b\": 2\n}''';\n```\n\n**GOOD:**\n```dart\nvar s1 = '''\n{\n  \"a\": 1,\n  \"b\": 2\n}''';\n\nvar s2 = '''This one-liner multiline string is ok. It usually allows to escape both ' and \" in the string.''';\n```\n\n",
     "sinceDartSdk": "2.8.1",
     "sinceLinter": "0.1.113"
+  },
+  {
+    "name": "library_annotations",
+    "description": "Attach library annotations to library directives.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "Attach library annotations to library directives, rather than\nsome other library-level element.\n\n**BAD:**\n```dart\nimport 'package:test/test.dart';\n\n@TestOn('browser')\nvoid main() {}\n```\n\n**GOOD:**\n```dart\n@TestOn('browser')\nlibrary;\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
   },
   {
     "name": "library_names",
@@ -1686,7 +1710,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "**DO** use collection literals when possible.\n\n**BAD:**\n```dart\nvar points = List();\nvar addresses = Map();\nvar uniqueNames = Set();\nvar ids = LinkedHashSet();\nvar coordinates = LinkedHashMap();\n```\n\n**GOOD:**\n```dart\nvar points = [];\nvar addresses = <String,String>{};\nvar uniqueNames = <String>{};\nvar ids = <int>{};\nvar coordinates = <int,int>{};\n```\n\n**EXCEPTIONS:**\n\nThere are cases with `LinkedHashSet` or `LinkedHashMap` where a literal constructor\nwill trigger a type error so those will be excluded from the lint.\n\n```dart\nvoid main() {\n  LinkedHashSet<int> linkedHashSet =  LinkedHashSet.from([1, 2, 3]); // OK\n  LinkedHashMap linkedHashMap = LinkedHashMap(); // OK\n  \n  printSet(LinkedHashSet<int>()); // LINT\n  printHashSet(LinkedHashSet<int>()); // OK\n\n  printMap(LinkedHashMap<int, int>()); // LINT\n  printHashMap(LinkedHashMap<int, int>()); // OK\n}\n\nvoid printSet(Set<int> ids) => print('$ids!');\nvoid printHashSet(LinkedHashSet<int> ids) => printSet(ids);\nvoid printMap(Map map) => print('$map!');\nvoid printHashMap(LinkedHashMap map) => printMap(map);\n```\n",
+    "details": "**DO** use collection literals when possible.\n\n**BAD:**\n```dart\nvar points = List();\nvar addresses = Map<String, String>();\nvar uniqueNames = Set<String>();\nvar ids = LinkedHashSet<int>();\nvar coordinates = LinkedHashMap<int, int>();\n```\n\n**GOOD:**\n```dart\nvar points = [];\nvar addresses = <String, String>{};\nvar uniqueNames = <String>{};\nvar ids = <int>{};\nvar coordinates = <int, int>{};\n```\n\n**EXCEPTIONS:**\n\nThere are cases with `LinkedHashSet` or `LinkedHashMap` where a literal constructor\nwill trigger a type error so those will be excluded from the lint.\n\n```dart\nvoid main() {\n  LinkedHashSet<int> linkedHashSet =  LinkedHashSet.from([1, 2, 3]); // OK\n  LinkedHashMap linkedHashMap = LinkedHashMap(); // OK\n  \n  printSet(LinkedHashSet<int>()); // LINT\n  printHashSet(LinkedHashSet<int>()); // OK\n\n  printMap(LinkedHashMap<int, int>()); // LINT\n  printHashMap(LinkedHashMap<int, int>()); // OK\n}\n\nvoid printSet(Set<int> ids) => print('$ids!');\nvoid printHashSet(LinkedHashSet<int> ids) => printSet(ids);\nvoid printMap(Map map) => print('$map!');\nvoid printHashMap(LinkedHashMap map) => printMap(map);\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.30"
   },
@@ -2340,7 +2364,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From [effective dart](https://dart.dev/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious):\n\n**PREFER** type annotating public APIs.\n\nType annotations are important documentation for how a library should be used.\nAnnotating the parameter and return types of public methods and functions helps\nusers understand what the API expects and what it provides.\n\nNote that if a public API accepts a range of values that Dart's type system\ncannot express, then it is acceptable to leave that untyped.  In that case, the\nimplicit `dynamic` is the correct type for the API.\n\nFor code internal to a library (either private, or things like nested functions)\nannotate where you feel it helps, but don't feel that you *must* provide them.\n\n**BAD:**\n```dart\ninstall(id, destination) {\n  // ...\n}\n```\n\nHere, it's unclear what `id` is.  A string? And what is `destination`? A string\nor a `File` object? Is this method synchronous or asynchronous?\n\n**GOOD:**\n```dart\nFuture<bool> install(PackageId id, String destination) {\n  // ...\n}\n```\n\nWith types, all of this is clarified.\n\n",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious):\n\n**PREFER** type annotating public APIs.\n\nType annotations are important documentation for how a library should be used.\nAnnotating the parameter and return types of public methods and functions helps\nusers understand what the API expects and what it provides.\n\nNote that if a public API accepts a range of values that Dart's type system\ncannot express, then it is acceptable to leave that untyped.  In that case, the\nimplicit `dynamic` is the correct type for the API.\n\nFor code internal to a library (either private, or things like nested functions)\nannotate where you feel it helps, but don't feel that you *must* provide them.\n\n**BAD:**\n```dart\ninstall(id, destination) {\n  // ...\n}\n```\n\nHere, it's unclear what `id` is.  A string? And what is `destination`? A string\nor a `File` object? Is this method synchronous or asynchronous?\n\n**GOOD:**\n```dart\nFuture<bool> install(PackageId id, String destination) {\n  // ...\n}\n```\n\nWith types, all of this is clarified.\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.5"
   },
@@ -2492,7 +2516,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "unregistered",
+    "fixStatus": "needsEvaluation",
     "details": "**DO** use library directives if you want to document a library and/or annotate \na library.\n\n**GOOD:**\n```dart\n/// This library does important things\nlibrary;\n```\n\n```dart\n@TestOn('js')\nlibrary;\n```\n\n**BAD:**\n```dart\nlibrary;\n```\n\nNOTE: Due to limitations with this lint, libraries with parts will not be\nflagged for unnecessary library directives.\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
@@ -2763,7 +2787,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "From [effective dart](https://dart.dev/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value):\n\nUse if-null operators to convert nulls to bools.\n\n**BAD:**\n```dart\nif (nullableBool == true) {\n}\nif (nullableBool != false) {\n}\n```\n\n**GOOD:**\n```dart\nif (nullableBool ?? false) {\n}\nif (nullableBool ?? true) {\n}\n```\n\n",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value):\n\nUse if-null operators to convert nulls to bools.\n\n**BAD:**\n```dart\nif (nullableBool == true) {\n}\nif (nullableBool != false) {\n}\n```\n\n**GOOD:**\n```dart\nif (nullableBool ?? false) {\n}\nif (nullableBool ?? true) {\n}\n```\n\n",
     "sinceDartSdk": "2.13.0",
     "sinceLinter": "1.0.0"
   },
@@ -2862,7 +2886,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsFix",
-    "details": "From [effective dart](https://dart.dev/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives):\n\n**DO** use strings in `part of` directives.\n\n**BAD:**\n\n```dart\npart of my_library;\n```\n\n**GOOD:**\n\n```dart\npart of '../../my_library.dart';\n```\n\n",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives):\n\n**DO** use strings in `part of` directives.\n\n**BAD:**\n\n```dart\npart of my_library;\n```\n\n**GOOD:**\n\n```dart\npart of '../../my_library.dart';\n```\n\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.27.0"
   },
