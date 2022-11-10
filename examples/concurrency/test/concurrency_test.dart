@@ -8,8 +8,7 @@ import 'package:concurrency_examples/simple_isolate_closure.dart'
     as simple_isolate_closure;
 import 'package:test/test.dart';
 
-
-void main() {
+Future<void> main() async {
   test('sync number of keys counts correctly', () {
     expect(() {
       sync_number_of_keys.main();
