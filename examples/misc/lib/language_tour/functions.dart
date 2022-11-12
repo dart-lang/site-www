@@ -95,3 +95,9 @@ class Scrollbar extends Widget {
   const Scrollbar({super.key, required Widget child});
   // #enddocregion required-named-parameters
 }
+
+class ScrollbarTwo extends Widget {
+  // #docregion required-named-parameters-nullable
+  const ScrollbarTwo({super.key, required Widget? child});
+  // #enddocregion required-named-parameters-nullable
+}

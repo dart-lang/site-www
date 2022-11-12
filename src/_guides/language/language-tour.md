@@ -1316,7 +1316,7 @@ unless they're explicitly marked as `required`.
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
 to specify named parameters.
-If you don't provide a [default value](#default-parameter-values)
+If you don't provide a default value
 or mark a named parameter as `required`,
 their types must be nullable
 as their default value will be `null`:
@@ -1334,12 +1334,13 @@ For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 ```dart
-enableFlags(bold: true);
+enableFlags(bold: true, hidden: false);
 ```
 
-To provide a default value to a named parameter besides `null`,
+<a id="default-parameters"></a>
+To define a default value for a named parameter besides `null`,
 use `=` to specify a default value.
-The specified default value must be a compile-time constant.
+The specified value must be a compile-time constant.
 For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
@@ -1368,7 +1369,9 @@ then the analyzer reports an issue.
   A parameter marked as `required`
   can still be nullable:
 
+  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
   ```dart
+  const Scrollbar({super.key, required Widget? child});
   ```
 {{site.alert.end}}
 
@@ -1385,8 +1388,11 @@ repeat(times: 2, () {
 
 #### Optional positional parameters
 
-Wrapping a set of function parameters in `[]` marks them as optional
-positional parameters:
+Wrapping a set of function parameters in `[]`
+marks them as optional positional parameters.
+If you don't provide a default value,
+their types must be nullable
+as their default value will be `null`:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
@@ -1399,8 +1405,8 @@ String say(String from, String msg, [String? device]) {
 }
 ```
 
-Here’s an example of calling this function without the optional
-parameter:
+Here’s an example of calling this function
+without the optional parameter:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 ```dart
@@ -1415,45 +1421,10 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
 ```
 
-<a id="default-parameters"></a>
-#### Default parameter values
-
-Your function can use `=` to define default values for optional parameters,
-both named and positional. The default values must be compile-time constants.
-If no default value is provided, the default value is `null`.
-
-Here's an example of setting default values for named parameters:
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
-```dart
-/// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {...}
-
-// bold will be true; hidden will be false.
-enableFlags(bold: true);
-```
-
-{{site.alert.secondary}}
-  **Deprecation note:** Old code might use a colon (`:`) instead of `=`
-  to specify default values of named parameters. 
-  The reason is that originally, only `:` was supported for named parameters. 
-  That support is deprecated and will be removed, 
-  so we recommend that you **[use `=` to specify default values.][use =]**
-
-  If you have the [`prefer_equal_for_default_values`][] linter rule enabled,
-  you can use [`dart fix`][] to migrate to the suggested `=` syntax.
-
-  [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
-  [`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
-  [`dart fix`]: /tools/dart-fix
-{{site.alert.end}}
-
-{% comment %}
-TODO #2950: Update if/when we drop support for `:`.
-See `defaultNamedParameter` in the language spec.
-{% endcomment %}
-
-The next example shows how to set default values for positional parameters:
+To define a default value for an optional positional parameter besides `null`,
+use `=` to specify a default value.
+The specified value must be a compile-time constant.
+For example:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
@@ -1465,28 +1436,6 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
-You can also pass lists or maps as default values.
-The following example defines a function, `doStuff()`,
-that specifies a default list for the `list`
-parameter and a default map for the `gifts` parameter.
-{% comment %}
-The function is called three times with different values. Click **Run** to see
-list and map default values in action.
-{% endcomment %}
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
-```dart
-void doStuff(
-    {List<int> list = const [1, 2, 3],
-    Map<String, String> gifts = const {
-      'first': 'paper',
-      'second': 'cotton',
-      'third': 'leather'
-    }}) {
-  print('list:  $list');
-  print('gifts: $gifts');
-}
-```
 
 ### The main() function
 
