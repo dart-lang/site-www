@@ -4683,8 +4683,6 @@ And here’s an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart"?>
 ```dart
-import 'todo.dart';
-
 @Todo('Dash', 'Implement this function')
 void doSomething() {
   print('Do something');
