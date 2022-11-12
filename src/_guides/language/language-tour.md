@@ -1369,9 +1369,9 @@ then the analyzer reports an issue.
   A parameter marked as `required`
   can still be nullable:
 
-  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
+  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
   ```dart
-  const Scrollbar({super.key, required Widget? child});
+  const Scrollbar({super.key, required [!Widget?!] child});
   ```
 {{site.alert.end}}
 
