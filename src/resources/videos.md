@@ -14,7 +14,6 @@ If you'd like other videos to be listed on this page,
 TODO: If the list of videos grows, consider automating this like book.md.
 {% endcomment %}
 
-<!-- Flutter DevRel playlist -->
 ## Dart videos from Google
 
 A playlist of Google-produced videos,
@@ -24,13 +23,3 @@ to the Dart session from Google I/O 2019.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{page.dart-playlist-id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [Playlist: Dart videos](https://www.youtube.com/playlist?list={{page.dart-playlist-id}})
-
-
-<!-- Smartherd playlist -->
-## Dart tutorial for beginners (by Smartherd)
-
-A community-provided series of tutorial videos about the Dart language.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{page.smartherd-playlist-id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-[Playlist: Dart tutorial for beginners](https://www.youtube.com/playlist?list={{page.smartherd-playlist-id}})
