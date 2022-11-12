@@ -2,7 +2,6 @@
 title: Videos
 description: Learn by watching! Here's a collection of videos about Dart.
 dart-playlist-id: PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
-smartherd-playlist-id: PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q
 ---
 
 Here are some videos about the Dart language and core libraries.
