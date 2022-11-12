@@ -56,21 +56,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion list-map-default-function-param
-    void doStuff(
-        {List<int> list = const [1, 2, 3],
-        Map<String, String> gifts = const {
-          'first': 'paper',
-          'second': 'cotton',
-          'third': 'leather'
-        }}) {
-      print('list:  $list');
-      print('gifts: $gifts');
-    }
-    // #enddocregion list-map-default-function-param
-  }
-
-  {
     // #docregion function-as-param
     void printElement(int element) {
       print(element);
