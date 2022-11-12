@@ -1315,7 +1315,11 @@ unless they're explicitly marked as `required`.
 
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
-to specify named parameters:
+to specify named parameters.
+If you don't provide a [default value](#default-parameter-values)
+or mark a named parameter as `required`,
+their types must be nullable
+as their default value will be `null`:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
@@ -1330,8 +1334,43 @@ For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 ```dart
-enableFlags(bold: true, hidden: false);
+enableFlags(bold: true);
 ```
+
+To provide a default value to a named parameter besides `null`,
+use `=` to specify a default value.
+The specified default value must be a compile-time constant.
+For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
+```dart
+/// Sets the [bold] and [hidden] flags ...
+void enableFlags({bool bold = false, bool hidden = false}) {...}
+
+// bold will be true; hidden will be false.
+enableFlags(bold: true);
+```
+
+If you instead want a named parameter to be mandatory,
+requiring callers to provide a value for the parameter,
+annotate them with `required`:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
+```dart
+const Scrollbar({super.key, [!required!] Widget child});
+```
+
+If someone tries to create a `Scrollbar`
+without specifying the `child` argument,
+then the analyzer reports an issue.
+
+{{site.alert.note}}
+  A parameter marked as `required`
+  can still be nullable:
+
+  ```dart
+  ```
+{{site.alert.end}}
 
 Although it often makes sense to place positional arguments first,
 named arguments can be placed anywhere in the argument list
@@ -1343,30 +1382,6 @@ repeat(times: 2, () {
   ...
 });
 ```
-
-{{site.alert.tip}}
-  If a parameter is optional but can't be `null`,
-  provide a [default value](#default-parameter-values).
-{{site.alert.end}}
-
-Although named parameters are a kind of optional parameter,
-you can annotate them with `required` to indicate
-that the parameter is mandatory—that users
-must provide a value for the parameter.
-For example:
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
-const Scrollbar({super.key, [!required!] Widget child});
-{% endprettify %}
-
-If someone tries to create a `Scrollbar`
-without specifying the `child` argument,
-then the analyzer reports an issue.
-
-{% comment %}
-NULLSAFE: Rewrite this section.
-{% endcomment %}
 
 #### Optional positional parameters
 
