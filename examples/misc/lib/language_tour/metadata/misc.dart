@@ -1,6 +1,6 @@
 import 'todo.dart';
 
-@Todo('seth', 'make this do something')
+@Todo('Dash', 'Implement this function')
 void doSomething() {
-  print('do something');
+  print('Do something');
 }

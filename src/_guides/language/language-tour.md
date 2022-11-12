@@ -4671,8 +4671,6 @@ defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 ```dart
-library todo;
-
 class Todo {
   final String who;
   final String what;
@@ -4687,9 +4685,9 @@ And here’s an example of using that `@Todo` annotation:
 ```dart
 import 'todo.dart';
 
-@Todo('seth', 'make this do something')
+@Todo('Dash', 'Implement this function')
 void doSomething() {
-  print('do something');
+  print('Do something');
 }
 ```
 
