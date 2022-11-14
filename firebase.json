@@ -55,6 +55,7 @@
       { "source": "/articles/language/optional-types", "destination": "/faq#types", "type": 301 },
       { "source": "/articles/libraries", "destination": "/articles", "type": 301 },
       { "source": "/articles/libraries/converters-and-codecs", "destination": "/articles/archive/converters-and-codecs", "type": 301 },
+      { "source": "/articles/libraries/dart-io", "destination": "/guides/libraries/library-tour#dartio", "type": 301 },
       { "source": "/articles/libraries/zones", "destination": "/articles/archive/zones", "type": 301 },
       { "source": "/articles/m*{,/**}", "destination": "/articles", "type": 301 },
       { "source": "/articles/m1-language-changes{,/**}", "destination": "/guides/language/spec", "type": 301 },
