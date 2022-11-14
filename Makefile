@@ -89,10 +89,14 @@ build-image:
 build:
 	make clean
 	make build-image
+	make check-links
 	docker run --rm -d --name ${BUILD_NAME} -t ${BUILD_TAG}:${BUILD_COMMIT}
 	docker cp ${BUILD_NAME}:/app/_site _site
 	docker stop ${BUILD_NAME}
 	docker rmi -f ${BUILD_TAG}:${BUILD_COMMIT}
+
+check-links:
+	tool/check-links.sh
 
 # Overwrite robots.txt with production version
 write-prod-robots:

@@ -14,6 +14,8 @@ clean_up() {
   echo -e "$(blue "Done!")\n"
 }
 
+dart --disable-analytics
+
 echo -e "$(blue "Starting Firebase emulator async...")"
 npx firebase emulators:start \
   --only hosting \

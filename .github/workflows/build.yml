@@ -61,14 +61,6 @@ jobs:
           submodules: recursive
       - run: make build
       - run: make write-prod-robots
-      - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@11.15.0
-      - uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
-        with:
-          sdk: stable
-      - run: tool/check-links.sh
       - uses: FirebaseExtended/action-hosting-deploy@4d0d0023f1d92b9b7d16dda64b3d7abd2c98974b
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -88,14 +80,6 @@ jobs:
         with:
           submodules: recursive
       - run: make build
-      - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@11.15.0
-      - uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
-        with:
-          sdk: stable
-      - run: tool/check-links.sh
       - name: Stage site on Firebase
         if: ${{ 
           github.event.pull_request.head.repo.full_name == github.repository &&
