@@ -161,8 +161,6 @@ ARG BUILD_CONFIGS=_config.yml
 ENV BUILD_CONFIGS=$BUILD_CONFIGS
 RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
-CMD ["tool/check-links.sh"]
-
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
@@ -173,3 +171,8 @@ ARG FIREBASE_PROJECT=default
 ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
 RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci
+
+# ============== TEST BUILT SITE LINKS ==============
+FROM build as checklinks
+
+CMD ["tool/check-links.sh"]
