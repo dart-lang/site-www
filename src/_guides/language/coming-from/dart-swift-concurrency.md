@@ -58,7 +58,7 @@ and await tells the system to await a result
 from the asynchronous function that was called- 
 meaning that the function can be suspended at this point. 
 For more details on asynchronous programming, 
-see [`Concurrency in Dart`][].
+see (Concurrency in Dart)[{{site.url}}/guides/language/concurrency].
 
 ### Leveraging the Main Thread or Isolate
 For Apple operating systems, the primary– or main– 
@@ -205,7 +205,8 @@ In other words, you don't have to create a
 inside functions that are marked as `async`. 
 
 The last step is to display the resulting Weather to the user. 
-In Flutter, [`FutureBuilder`][] and [`StreamBuilder`][] 
+In Flutter, [`FutureBuilder`]({{site.flutter-api}}/flutter/widgets/FutureBuilder-class.html) and 
+[`StreamBuilder`]({{site.flutter-api}}/flutter/widgets/StreamBuilder-class.html)  
 widgets can be used to display the results of a Future in the UI. 
 In this example, a `FutureBuilder` is used:
 
@@ -245,7 +246,7 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-You can see the complete [example on Github][].
+You can see the complete (example on Github)[https://github.com/dart-lang/site-www/tree/main/examples/concurrency/lib/async_weather.dart].
 
 ### Leveraging Background Threads or Isolates
 Flutter apps can run on a variety of multicore hardware, 
@@ -300,8 +301,3 @@ Map<String, dynamic> getNumberOfKeys(String jsonString) {
  return jsonDecode(jsonString);
 }
 ```
-
-[example on Github]: https://github.com/dart-lang/site-www/tree/main/examples/concurrency/lib/async_weather.dart
-[`Concurrency in Dart`]: {{site.url}}/guides/language/concurrency
-[`FutureBuilder`]: {{site.flutter-api}}/flutter/widgets/FutureBuilder-class.html
-[`StreamBuilder`]: {{site.flutter-api}}/flutter/widgets/StreamBuilder-class.html
