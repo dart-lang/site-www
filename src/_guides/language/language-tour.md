@@ -1375,9 +1375,10 @@ then the analyzer reports an issue.
   ```
 {{site.alert.end}}
 
-Although it often makes sense to place positional arguments first,
-named arguments can be placed anywhere in the argument list
-when it suits your API:
+You might want to place positional arguments first,
+but Dart doesn't require it.
+Dart allows named arguments to be placed anywhere in the
+argument list when it suits your API:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
 ```dart
