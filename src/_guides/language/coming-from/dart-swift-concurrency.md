@@ -162,7 +162,7 @@ main actor because work will run on the main isolate by default.
 To recreate the same example as above, 
 the first step is to create the `Weather` `enum` in dart. 
 
-<?code-excerpt "lib/async_weather.dart (Weather)">
+<?code-excerpt "lib/async_weather.dart (Weather)"?>
 ```dart
 enum Weather {
   rainy,
@@ -179,7 +179,7 @@ that represents values to be provided in the future.
 So in this example you can return a `Future<Weather>` 
 from a function within the view model:
 
-<?code-excerpt "lib/async_weather.dart (HomePageViewModel)">
+<?code-excerpt "lib/async_weather.dart (HomePageViewModel)"?>
 ```dart
 @immutable
 class HomePageViewModel {
@@ -210,7 +210,7 @@ In Flutter, [`FutureBuilder`]({{site.flutter-api}}/flutter/widgets/FutureBuilder
 widgets can be used to display the results of a Future in the UI. 
 In this example, a `FutureBuilder` is used:
 
-<?code-excerpt "lib/async_weather.dart (HomePageWidget)">
+<?code-excerpt "lib/async_weather.dart (HomePageWidget)"?>
 ```dart
 class HomePage extends StatelessWidget {
   final HomePageViewModel viewModel = const HomePageViewModel();
