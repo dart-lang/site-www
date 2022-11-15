@@ -285,7 +285,7 @@ _jellyPoints = [
 ];
 {% endprettify %}
 
-To generate a fixed-length list with distinct values,
+To generate a fixed-length list,
 use the [`List.generate`][] constructor
 with the `growable` parameter set to `false`:
 
