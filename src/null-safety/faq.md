@@ -285,9 +285,9 @@ _jellyPoints = [
 ];
 {% endprettify %}
 
-If you need to generate a fixed-length list,
-you can instead use the [`List.generate`][] constructor
-and set the `growable` parameter to `false`:
+To generate a fixed-length list with distinct values,
+use the [`List.generate`][] constructor
+with the `growable` parameter set to `false`:
 
 ```dart
 _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
