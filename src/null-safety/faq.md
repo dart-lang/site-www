@@ -285,6 +285,21 @@ _jellyPoints = [
 ];
 {% endprettify %}
 
+To generate a fixed-length list,
+use the [`List.generate`][] constructor
+with the `growable` parameter set to `false`:
+
+```dart
+_jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
+```
+
+[`List.generate`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.generate.html
+
+{% comment %}
+  Would preferably suggest a language syntax here,
+  which is being suggested in https://github.com/dart-lang/language/issues/2477.
+{% endcomment %}
+ 
 ## What happened to the default List constructor?
 
 You may encounter this error:
