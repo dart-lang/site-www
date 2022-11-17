@@ -23,27 +23,15 @@ Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.
 To communicate with each other,
 isolates use message passing.
+Many Dart apps use only one isolate (the _main isolate_),
+but you can create additional isolates,
+enabling parallel code execution on multiple processor cores.
+
 Although Dart's isolate model is built with underlying primitives
 such as processes and threads
 that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
-
-Many Dart apps use only one isolate (the _main isolate_),
-but you can create additional isolates,
-enabling parallel code execution on multiple processor cores.
-
-{{site.alert.info}}
-  **Platform note:**
-  All apps can use async-await, `Future`, and `Stream`.
-  Isolates are implemented only on the [Dart Native platform][];
-  Dart web apps can use [web workers][] for similar functionality.
-{{site.alert.end}}
-
-[Dart Native platform]: /overview#platform
-[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-
-
 
 ## Asynchrony types and syntax
 
@@ -194,6 +182,14 @@ using additional processor cores if they’re available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
+{{site.alert.info}}
+  **Platform note:**
+    Isolates are implemented only on the [Dart Native platform][];
+    For information on the Dart Web platform,
+    see the [Concurrency on the web](#concurrency-on-the-web) section.
+{{site.alert.end}}
+
+[Dart Native platform]: /overview#platform
 
 ### The main isolate
 
@@ -461,6 +457,38 @@ is slower when isolates are in different groups.
 {{site.alert.flutter-note}}
   Flutter doesn't support `Isolate.spawnUri()`.
 {{site.alert.end}}
+
+## Concurrency on the web
+
+All Dart apps can use `async-await`, `Future`, and `Stream`.
+Isolates, however, are not available on the [Dart web platform][].
+Dart web apps can use [web workers][] to
+run scripts in background threads
+similar to isolates.
+Web workers' functionality and capabilities
+differ somewhat from isolates, though.
+
+For instance, when web workers send data between threads,
+they copy the data back and forth.
+Data copying can be very slow, though,
+especially for large messages. 
+So, rather than copying, isolates _transfer_ the memory
+that holds the message in the exiting isolate
+to the receiving isolate
+(specifically by `Isolate.exit()`, and by extension `Isolate.run()`).
+
+How you create web workers and isolates also differs.
+On the web, you can only create web workers by declaring
+a separate program entrypoint and compiling that separately.
+Natively, you can start isolates in a similar manner,
+with separate sources, separate from existing isolates.
+More typically though, creation means branching from an existing isolate.
+This makes both isolates part of the same isolate group,
+and therefore much more lightweight 
+(as mentioned in [Performance and isolate groups](#performance-and-isolate-groups)).
+
+[web platform]: /overview#platform
+[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
 
 {% comment %}
 TODO:
