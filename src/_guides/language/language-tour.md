@@ -4541,7 +4541,9 @@ concurrency is error prone and can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of *isolates*. 
 Each Dart isolate has a single thread of execution and
-shares no mutable objects with other isolates.  
+shares no mutable objects with other isolates.
+Spinning up multiple isolates creates multiple threads of execution,
+enabling multi-threading without the typical issues that surround it.
 
 For more information, see the following:
 * [Concurrency in Dart](/guides/language/concurrency)
