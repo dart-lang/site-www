@@ -15,13 +15,10 @@ For help using the `js` package, see the following:
   * [pub.dev site page][js]
   * [API reference][js-api]
 * Packages that use the `js` package:
-  * [firebase][] is a good example of providing a Dart-like API
-    to a JavaScript library.
   * [sass][] is an example of a more unusual use case: providing a
     way for JavaScript code to call Dart code.
 
 [js]: {{site.pub-pkg}}/js
 [js-api]: {{site.pub-api}}/js
-[firebase]: {{site.pub-pkg}}/firebase
 [sass]: {{site.pub-pkg}}/sass
 
