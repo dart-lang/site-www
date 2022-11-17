@@ -475,7 +475,11 @@ especially for large messages.
 So, rather than copying, isolates _transfer_ the memory
 that holds the message in the exiting isolate
 to the receiving isolate
-(specifically by `Isolate.exit()`, and by extension `Isolate.run()`).
+(specifically by `Isolate.exit()`).
+
+{% comment %}
+Add ", and by extension `Isolate.run()`" to parenthesis after 2.19 and `run()` releases.
+{% endcomment %}
 
 How you create web workers and isolates also differs.
 On the web, you can only create web workers by declaring
