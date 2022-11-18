@@ -1,7 +1,6 @@
 ---
 title: dart pub outdated
 description: Use dart pub outdated to help you update your package dependencies.
-diff2html: true
 ---
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -95,10 +94,6 @@ the version in the **Resolvable** column
 (or a compatible higher version).
 In [caret syntax][], that's **`^0.12.1`**.
 Here's the diff for `pubspec.yaml`:
-
-{% comment %}
-  [TODO: Improve the formatting of the following diff]
-{% endcomment %}
 
 ```diff
 -  http: ^0.11.0
