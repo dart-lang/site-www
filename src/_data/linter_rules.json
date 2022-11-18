@@ -714,7 +714,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**AVOID** overloading operator == and hashCode on classes not marked `@immutable`.\n\nIf a class is not immutable, overloading operator == and hashCode can lead to\nunpredictable and undesirable behavior when used in collections. See\nhttps://dart.dev/guides/language/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes\nfor more information.\n\n**BAD:**\n```dart\nclass B {\n  String key;\n  const B(this.key);\n  @override\n  operator ==(other) => other is B && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n**GOOD:**\n```dart\n@immutable\nclass A {\n  final String key;\n  const A(this.key);\n  @override\n  operator ==(other) => other is A && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\nNOTE: The lint checks the use of the @immutable annotation, and will trigger\neven if the class is otherwise not mutable. Thus:\n\n**BAD:**\n```dart\nclass C {\n  final String key;\n  const C(this.key);\n  @override\n  operator ==(other) => other is C && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n",
+    "details": "**AVOID** overloading operator == and hashCode on classes not marked `@immutable`.\n\nIf a class is not immutable, overloading operator == and hashCode can lead to\nunpredictable and undesirable behavior when used in collections. See\nhttps://dart.dev/guides/language/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes\nfor more information.\n\n**BAD:**\n```dart\nclass B {\n  String key;\n  const B(this.key);\n  @override\n  operator ==(other) => other is B && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n**GOOD:**\n```dart\n@immutable\nclass A {\n  final String key;\n  const A(this.key);\n  @override\n  operator ==(other) => other is A && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\nNOTE: The lint checks the use of the `@immutable` annotation, and will trigger\neven if the class is otherwise not mutable. Thus:\n\n**BAD:**\n```dart\nclass C {\n  final String key;\n  const C(this.key);\n  @override\n  operator ==(other) => other is C && other.key == key;\n  @override\n  int get hashCode => key.hashCode;\n}\n```\n\n",
     "sinceDartSdk": "2.6.0",
     "sinceLinter": "0.1.97"
   },
@@ -1251,7 +1251,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "**DO** use sound null safety, by not specifying a dart version lower than `2.12`.\n\n**BAD:**\n```dart\n// @dart=2.8\na() {\n}\n```\n\n**GOOD:**\n```dart\nb() {\n}\n",
+    "details": "**DO** use sound null safety, by not specifying a dart version lower than `2.12`.\n\n**BAD:**\n```dart\n// @dart=2.8\na() {\n}\n```\n\n**GOOD:**\n```dart\nb() {\n}\n```\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.30.0"
   },
