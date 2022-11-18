@@ -98,11 +98,10 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 [extensions]: /guides/language/extension-methods
 
-### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
+### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
 {% include linter-rule-mention.md rule1="library_names" rule2="file_names" %}
 <!-- source for rules (update these if you update the guideline):
-https://github.com/dart-lang/linter/blob/master/lib/src/rules/library_names.dart
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
 Some file systems are not case-sensitive, so many projects require filenames to
@@ -129,11 +128,9 @@ import 'file-system.dart';
 import 'SliderMenu.dart';
 {% endprettify %}
 
-{{site.alert.note}}
-  This guideline specifies *how* to name a library *if you choose to name it*. 
-  It is fine to _omit_ the library directive in a file if you want.
-{{site.alert.end}}
-
+{% comment %}
+Need to change these code examples to not be naming libraries, not sure what the syntax for anything else would be.
+{% endcomment %}
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 

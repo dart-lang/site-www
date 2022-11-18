@@ -19,21 +19,59 @@ but *maintainers* of it sure will.
 
 These guidelines help you compose your program out of multiple files in a
 consistent, maintainable way. To keep these guidelines brief, they use "import"
-to cover `import` and `export` directives. The guidelines apply equally to both.
+to cover `import` and `export` directives. The guidelines apply equally to both. 
+
+### DON'T use library directives unless attaching doc comments or annotations
+
+[Library-level doc comments][] and [annotations][]
+must prepend a `library` declaration at the start of a file.
+There is no other reason to use the library directive. 
+
+{:.bad}
+<?code-excerpt "docs_good.dart (library-dir)"?>
+{% prettify dart tag=pre+code %}
+
+library;
+
+{% endprettify %}
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
+
+[Library-level doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[annotations]: /guides/language/language-tour#metadata
+
+### DON'T explicitly name libraries
+
+Though appending a name to the `library` directive is technically possible,
+it is a legacy feature and discouraged. 
+
+A unique tag is generated for each library based on its path and filename.
+Naming libraries overrides their intrinsic URI, actually making it harder for
+tools to physically find the main library file. 
+
+To indicate a specific library, the preferred, modern syntax
+is to use a URI string that points directly to the library file.
 
 ### DO use strings in `part of` directives.
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
 `part` to split part of a library out into another file, Dart requires the other
-file to in turn indicate which library it's a part of. For legacy reasons, Dart
-allows this `part of` directive to use the *name* of the library it's a part of.
-That makes it harder for tools to physically find the main library file, and can
-make it ambiguous which library the part is actually part of.
+file to in turn indicate which library it's a part of. 
 
-The preferred, modern syntax is to use a URI string that points directly to the
-library file, just like you use in other directives. If you have some library,
-`my_library.dart`, that contains:
+For legacy reasons, Dart allows this `part of` directive to use the *name* of the
+library it's a part of. But naming libraries is [discouraged][], and using a
+library name can make it ambiguous which library the part is actually part of.
+
+[discouraged]: #dont-explicitly-name-libraries
+
+If you have some library, `my_library.dart`, that contains:
 
 <?code-excerpt "my_library.dart"?>
 {% prettify dart tag=pre+code %}
@@ -42,7 +80,7 @@ library my_library;
 part 'some/other/file.dart';
 {% endprettify %}
 
-Then the part file should look like:
+Then the part file should use the library file's URI string:
 
 {:.good}
 <?code-excerpt "some/other/file.dart"?>
@@ -50,7 +88,7 @@ Then the part file should look like:
 part of '../../my_library.dart';
 {% endprettify %}
 
-And not:
+Not the library name:
 
 {:.bad}
 <?code-excerpt "some/other/file_2.dart"?>
