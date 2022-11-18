@@ -28,11 +28,10 @@ must prepend a `library` declaration at the start of a file.
 There is no other reason to use the library directive. 
 
 {:.bad}
-<?code-excerpt "docs_good.dart (library-dir)"?>
+<?code-excerpt "usage_bad.dart (library-dir)"?>
 {% prettify dart tag=pre+code %}
 
 library;
-
 {% endprettify %}
 
 {:.good}
@@ -52,8 +51,8 @@ Though appending a name to the `library` directive is technically possible,
 it is a legacy feature and discouraged. 
 
 A unique tag is generated for each library based on its path and filename.
-Naming libraries overrides their intrinsic URI, actually making it harder for
-tools to physically find the main library file. 
+Naming libraries overrides their intrinsic URI, which can actually make it
+harder for tools to physically find the main library file you're referring to. 
 
 To indicate a specific library, the preferred, modern syntax
 is to use a URI string that points directly to the library file.
@@ -66,7 +65,7 @@ about their code when each library is a single file. If you do choose to use
 file to in turn indicate which library it's a part of. 
 
 For legacy reasons, Dart allows this `part of` directive to use the *name* of the
-library it's a part of. But naming libraries is [discouraged][], and using a
+library it's a part of. But naming libraries is [discouraged][]; using a
 library name can make it ambiguous which library the part is actually part of.
 
 [discouraged]: #dont-explicitly-name-libraries
