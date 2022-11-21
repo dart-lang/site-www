@@ -126,7 +126,7 @@ functionality provided within. Consider including:
 * Links to external references on the domain the library is concerned with.
 
 To document a library, place a doc comment right above
-a `library` directive (and any annotations that might be attached)
+the `library` directive (and any annotations that might be attached)
 at the start of the file.
 
 {:.good}

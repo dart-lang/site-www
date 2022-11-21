@@ -23,9 +23,10 @@ to cover `import` and `export` directives. The guidelines apply equally to both.
 
 ### DON'T use library directives unless attaching doc comments or annotations
 
-[Library-level doc comments][] and [annotations][]
-must prepend a `library` declaration at the start of a file.
-There is no other reason to use the library directive. 
+The only reason to use a library directive is
+to attach library-level [doc comments][] or [metadata annotations][].
+Library-level comments and annotations must prepend
+the `library` declaration at the start of a file.
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (library-dir)"?>
@@ -42,8 +43,10 @@ library;
 library;
 {% endprettify %}
 
-[Library-level doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
-[annotations]: /guides/language/language-tour#metadata
+Library directives serve no other purpose.
+
+[doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[metadata annotations]: /guides/language/language-tour#metadata
 
 ### DON'T explicitly name libraries
 
@@ -53,9 +56,6 @@ it is a legacy feature and discouraged.
 A unique tag is generated for each library based on its path and filename.
 Naming libraries overrides their intrinsic URI, which can actually make it
 harder for tools to physically find the main library file you're referring to. 
-
-To indicate a specific library, the preferred, modern syntax
-is to use a URI string that points directly to the library file.
 
 ### DO use strings in `part of` directives.
 
@@ -70,6 +70,9 @@ library name can make it ambiguous which library the part is actually part of.
 
 [discouraged]: #dont-explicitly-name-libraries
 
+To indicate a specific library, the preferred, modern syntax
+is to use a URI string that points directly to the library file,
+just like you use in other directives.
 If you have some library, `my_library.dart`, that contains:
 
 <?code-excerpt "my_library.dart"?>
