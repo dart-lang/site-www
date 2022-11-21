@@ -839,7 +839,9 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 // Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
-
+{{site.alert.warning}}
+  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
+{{site.alert.end}}
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
