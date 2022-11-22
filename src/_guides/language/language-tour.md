@@ -3564,6 +3564,8 @@ defines the unimplemented method (abstract is OK),
 and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
+Additonally, you **can't invoke** private members of an implemented interface, **ever**.
+
 For more information, see the informal
 [noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
 
