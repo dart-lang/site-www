@@ -158,7 +158,7 @@ class VersionSelector {
               continue;
             }
 
-            if (versionInfo.channel == 'stable') {
+            if (['beta', 'stable'].contains(versionInfo.channel)) {
               continue;
             }
           }
@@ -185,7 +185,7 @@ class VersionSelector {
               continue;
             }
 
-            if (versionInfo.channel == 'stable') {
+            if (['beta', 'stable'].contains(versionInfo.channel)) {
               continue;
             }
           }
