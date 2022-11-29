@@ -25,10 +25,14 @@ _Written by Florian Loitsch and Kathy Walrath<br>
 March 2014_
 
 This article discusses zone-related APIs in the dart:async library,
-with a focus on the top-level `runZoned()` function.
+with a focus on the top-level [`runZoned()`][]
+and [`runZonedGuarded()`][] functions.
 Before reading this article,
 you should be familiar with the techniques covered in
 [Futures and Error Handling](/guides/libraries/futures-error-handling).
+
+[`runZoned()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html)
+[`runZonedGuarded()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html)
 
 Currently, the most common use of zones is
 to handle errors raised in asynchronously executed code.
@@ -37,12 +41,12 @@ a simple HTTP server
 might use the following code:
 
 {% prettify dart tag=pre+code %}
-[!runZoned(() {!]
+[!runZonedGuarded(() {!]
   HttpServer.bind('0.0.0.0', port).then((server) {
     server.listen(staticFiles.serveRequest);
   });
 [!},
-onError: (e, stackTrace) => print('Oh noes! $e $stackTrace'));!]
+(error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
 {% endprettify %}
 
 Running the HTTP server in a zone
@@ -51,10 +55,12 @@ errors in the server's asynchronous code.
 
 {{site.alert.info}}
   **API note:**
-  This use case won't always require zones.
-  We expect that isolates will have an API enabling you to
-  listen for uncaught errors.
+  This use case doesn't *require* zones.
+  The isolate API [`Isolate.run()`][] also handles 
+  listening for uncaught errors.
 {{site.alert.end}}
+
+[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
 Zones make the following tasks possible:
 
@@ -165,16 +171,24 @@ Another way to produce an uncaught error is
 to call `new Future.error()` or
 a Completer's `completeError()` method.
 
-Use the `onError` argument to `runZoned()` to
-install a _zoned error handler_—an asynchronous error handler
+`runZoned()` does not handle errors.
+Its error-handling parameter `onError` 
+was deprecated because it requires the
+function's return type to always be nullable,
+which is unneccesarily cumbersome for [Null Safe code][]. 
+
+[Null Safe code]: /null-safety/index
+
+Instead, use `runZonedGuarded()` to install a
+_zoned error handler_ — an asynchronous error handler
 that's invoked for every uncaught error in the zone.
 For example:
 
 <!-- run_zoned1.dart -->
 {% prettify dart tag=pre+code %}
-runZoned(() {
+runZonedGuarded(() {
   Timer.run(() { throw 'Would normally kill the program'; });
-}, onError: (error, stackTrace) {
+}, (error, stackTrace) {
   print('Uncaught error: $error');
 });
 {% endprettify %}
@@ -193,9 +207,9 @@ they still execute.
 As a consequence a zoned error handler might
 be invoked multiple times.
 
-Also note that an _error zone_—a zone that has an error handler—might
-handle errors that originate in a child (or other descendant)
-of that zone.
+Also note that an _error zone_ — a zone that has an error handler
+— might handle errors that originate in a child
+(or other descendant) of that zone.
 A simple rule determines where
 errors are handled in a sequence of future transformations
 (using `then()` or `catchError()`):
@@ -217,19 +231,19 @@ can't cross into an error zone.
 <!-- run_zoned2.dart -->
 {% prettify dart tag=pre+code %}
 var f = new Future.error(499);
-f = f.whenComplete(() { print('Outside runZoned'); });
+f = f.whenComplete(() { print('Outside of zones'); });
 runZoned(() {
   f = f.whenComplete(() { print('Inside non-error zone'); });
 });
-runZoned(() {
+runZonedGuarded(() {
   f = f.whenComplete(() { print('Inside error zone (not called)'); });
-}, onError: print);
+}, (error) { print(error); });
 {% endprettify %}
 
 Here's the output you see if you run the example:
 
 {% prettify xml tag=pre+code %}
-Outside runZoned
+Outside of zones
 Inside non-error zone
 Uncaught Error: 499
 Unhandled exception:
@@ -237,12 +251,12 @@ Unhandled exception:
 ...stack trace...
 {% endprettify %}
 
-If you remove the calls to `runZoned()` or
-remove the `onError` argument,
+If you remove the call to `runZoned()` or
+to `runZonedGuarded()`,
 you see this output:
 
 {% prettify xml tag=pre+code %}
-Outside runZoned
+Outside of zones
 Inside non-error zone
 [!Inside error zone (not called)!]
 Uncaught Error: 499
@@ -251,7 +265,7 @@ Unhandled exception:
 ...stack trace...
 {% endprettify %}
 
-Note how removing either the zones or the error zone causes
+Note how removing either the zone or error zone causes
 the error to propagate further.
 
 The stack trace appears because the error happens outside an error zone.
@@ -271,20 +285,20 @@ Consider this example:
 var completer = new Completer();
 var future = completer.future.then((x) => x + 1);
 var zoneFuture;
-runZoned(() {
+runZonedGuarded(() {
   zoneFuture = future.then((y) => throw 'Inside zone');
-}, onError: (error) {
-  print('Caught: $error');
-});
+}, (error) { print('Caught: $error'); });
+
 zoneFuture.catchError((e) { print('Never reached'); });
 completer.complete(499);
 {% endprettify %}
 
 Even though the future chain ends in a `catchError()`,
 the asynchronous error can't leave the error zone.
-Instead, the zoned error handler (the one specified in `onError`)
+Instead, the zoned error handler
+(the one specified in `runZonedGuarded()`)
 handles the error.
-As a result, *zoneFuture never completes*—neither
+As a result, *zoneFuture never completes* — neither
 with a value, nor with an error.
 
 ## Using zones with streams
@@ -302,21 +316,21 @@ streams should have no side effect until listened to.
 A similar situation in synchronous code is the behavior of Iterables,
 which aren't evaluated until you ask for values.
 
-### Example: Using a stream with runZoned()
+### Example: Using a stream with runZonedGuarded()
 
-Here is an example of using a stream with `runZoned()`:
+Here is an example of using a stream with `runZonedGuarded()`:
 
 <!-- stream.dart -->
 {% prettify dart tag=pre+code %}
 var stream = new File('stream.dart').openRead()
     .map((x) => throw 'Callback throws');
 
-runZoned(() { stream.listen(print); },
-         onError: (e) { print('Caught error: $e'); });
+runZonedGuarded(() { stream.listen(print); },
+         (e) { print('Caught error: $e'); });
 {% endprettify %}
 
 The exception thrown by the callback
-is caught by the error handler of `runZoned()`.
+is caught by the error handler of `runZonedGuarded()`.
 Here's the output:
 
 {% prettify xml tag=pre+code %}
@@ -461,7 +475,7 @@ with which you can override any of the following functionality:
 * Registering and running callbacks in the zone
 * Scheduling microtasks and timers
 * Handling uncaught asynchronous errors
-  (`onError` is a shortcut for this)
+  (`runZonedGuarded()` is a shortcut for this)
 * Printing
 
 ### Example: Overriding print
@@ -752,6 +766,7 @@ that you can use for functionality such as profiling.
 Zone-related API documentation
 : Read the docs for
   [runZoned()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),
+  [runZonedGuarded()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html),
   [Zone]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Zone-class.html),
   [ZoneDelegate]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneDelegate-class.html), and
   [ZoneSpecification]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html).
