@@ -429,10 +429,10 @@ depend on that package.
 These stale versions can have a negative impact on
 the stability, performance, and quality of apps.
 
-We recommend the following best practices for package dependencies:
+We recommend the following best practices for package dependencies.
 
-Use [caret syntax](#caret-syntax)
-: Specifying dependencies with version ranges is such as `^1.6.3`
+### Use [caret syntax](#caret-syntax)
+ Specifying dependencies with version ranges is such as `^1.6.3`
   is a good practice because it allows the pub tool to
   select newer versions of the package when they become available.
   Also, it places an upper limit on the allowed version,
@@ -441,20 +441,33 @@ Use [caret syntax](#caret-syntax)
   but where a new version `2.x` would be a major upgrade
   that isn't semantically compatible with `1.x` versions. 
 
-Depend on the latest stable package versions
-: Use [`pub upgrade`][] to update to the latest package versions
+### Depend on the latest stable package versions
+ Use [`pub upgrade`][] to update to the latest package versions
   that your pubspec allows.
   To identify dependencies in your app or package that
   aren't on the latest stable versions,
   use [`pub outdated`][].
 
-Test whenever you update package dependencies
-: If you run [`pub upgrade`][] without updating your pubspec,
+### Test whenever you update package dependencies
+ If you run [`pub upgrade`][] without updating your pubspec,
   the API should stay the same
   and your code should run as before—but test to make sure.
   If you modify the pubspec and update to a new major version,
   then you might encounter breaking changes,
   so you need to test even more thoroughly.
+
+### Verify the integrity of downloaded packages
+ When getting new dependencies, use the [`--enforce-lockfile`][]
+  option to ensure the extracted package content matches
+  the contents of the original archive.
+  Without modifying the [lockfile][],
+  this flag only resolves new dependencies if:
+  * `pubspec.yaml` is satisfied
+  * `pubspec.lock` is not missing
+  * The packages' content hashes match
+
+[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+[lockfile]: /tools/pub/glossary#lockfile
 
 ---
 

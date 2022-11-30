@@ -111,13 +111,15 @@ identifying information for every immediate and transitive dependency a package
 relies on.
 
 Unlike the pubspec, which only lists immediate dependencies and allows version
-ranges, the lock file comprehensively pins down the entire dependency graph to
+ranges, the lockfile comprehensively pins down the entire dependency graph to
 specific versions of packages. A lockfile ensures that you can recreate the
 exact configuration of packages used by an application.
 
 The lockfile is generated automatically for you by pub when you run
 [`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade),
 or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
+The first time `pub get` runs, pub generates and embeddeds a content hash in the description of the lockfile. Future gets compare hashes; if the description of a package's `pubspec.lock` doesn't match the one in the cache, the archive is redownloaded. If the hash still doesn't match, the resolution fails with an error.
+
 If your package is an application package, you will typically check this into
 source control. For library packages, you usually won't.
 
