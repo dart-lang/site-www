@@ -11,7 +11,7 @@
 
 // #docregion library-dir
 
-library;
+library my_library;
 
 // #enddocregion library-dir
 

@@ -21,42 +21,6 @@ These guidelines help you compose your program out of multiple files in a
 consistent, maintainable way. To keep these guidelines brief, they use "import"
 to cover `import` and `export` directives. The guidelines apply equally to both. 
 
-### DON'T use library directives unless attaching doc comments or annotations
-
-The only reason to use a library directive is
-to attach library-level [doc comments][] or [metadata annotations][].
-Library-level comments and annotations must prepend
-the `library` declaration at the start of a file.
-
-{:.bad}
-<?code-excerpt "usage_bad.dart (library-dir)"?>
-{% prettify dart tag=pre+code %}
-
-library;
-{% endprettify %}
-
-{:.good}
-<?code-excerpt "docs_good.dart (library-doc)"?>
-{% prettify dart tag=pre+code %}
-/// A really great test library.
-@TestOn('browser')
-library;
-{% endprettify %}
-
-Library directives serve no other purpose.
-
-[doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
-[metadata annotations]: /guides/language/language-tour#metadata
-
-### DON'T explicitly name libraries
-
-Though appending a name to the `library` directive is technically possible,
-it is a legacy feature and discouraged. 
-
-A unique tag is generated for each library based on its path and filename.
-Naming libraries overrides their intrinsic URI, which can actually make it
-harder for tools to physically find the main library file you're referring to. 
-
 ### DO use strings in `part of` directives.
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
@@ -68,7 +32,7 @@ For legacy reasons, Dart allows this `part of` directive to use the *name* of th
 library it's a part of. But naming libraries is [discouraged][]; using a
 library name can make it ambiguous which library the part is actually part of.
 
-[discouraged]: #dont-explicitly-name-libraries
+[discouraged]: guides/language/effective-dart/style#dont-explicitly-name-libraries
 
 To indicate a specific library, the preferred, modern syntax
 is to use a URI string that points directly to the library file,

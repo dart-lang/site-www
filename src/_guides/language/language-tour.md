@@ -4107,7 +4107,7 @@ The `import` and `library` directives can help you create a
 modular and shareable code base. Libraries not only provide APIs, but
 are a unit of privacy: identifiers that start with an underscore (`_`)
 are visible only inside the library. *Every Dart app is a library*, even
-if it doesn’t use a `library` directive.
+if it doesn’t use a [`library`](#the-library-directive) directive.
 
 Libraries can be distributed using [packages](/guides/packages).
 
@@ -4147,7 +4147,6 @@ import 'package:test/test.dart';
   *URI* stands for uniform resource identifier.
   *URLs* (uniform resource locators) are a common kind of URI.
 {{site.alert.end}}
-
 
 #### Specifying a library prefix
 
@@ -4241,6 +4240,33 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
 
+#### The `library` directive
+
+The only reason to use a library directive is
+to attach library-level [doc comments][] or [metadata annotations][].
+Library-level comments and annotations need to prepend
+a `library` declaration at the start of a file.
+There's also no reason to name a library using the directive;
+in fact, it's [discouraged][].
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (library-dir)"?>
+{% prettify dart tag=pre+code %}
+
+library my_library;
+{% endprettify %}
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
+
+[discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[metadata annotations]: /guides/language/language-tour#metadata
 
 ### Implementing libraries
 
@@ -4251,7 +4277,6 @@ for advice on how to implement a library package, including:
 * How to organize library source code.
 * How to use the `export` directive.
 * When to use the `part` directive.
-* When to use the `library` directive.
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 

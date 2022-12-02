@@ -100,7 +100,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 ### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
-{% include linter-rule-mention.md rule1="library_names" rule2="file_names" %}
+{% include linter-rule-mention.md rule="file_names" %}
 <!-- source for rules (update these if you update the guideline):
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
@@ -111,26 +111,21 @@ a valid Dart identifier, which may be helpful if the language later supports
 symbolic imports.
 
 {:.good}
-<?code-excerpt "style_lib_good.dart" replace="/foo\///g"?>
-{% prettify dart tag=pre+code %}
-library peg_parser.source_scanner;
-
-import 'file_system.dart';
-import 'slider_menu.dart';
-{% endprettify %}
+```text
+my_package
+└─ lib
+   └─ file_system.dart
+   └─ slider_menu.dart
+```
 
 {:.bad}
-<?code-excerpt "style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
-{% prettify dart tag=pre+code %}
-library pegparser.SourceScanner;
+```text
+mypackage
+└─ lib
+   └─ file-system.dart
+   └─ SliderMenu.dart
+```
 
-import 'file-system.dart';
-import 'SliderMenu.dart';
-{% endprettify %}
-
-{% comment %}
-Need to change these code examples to not be naming libraries, not sure what the syntax for anything else would be.
-{% endcomment %}
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
@@ -320,6 +315,14 @@ defaultTimeout
 kDefaultTimeout
 {% endprettify %}
 
+### DON'T explicitly name libraries
+
+Though appending a name to the `library` directive is technically possible,
+it is a legacy feature and discouraged. 
+
+A unique tag is generated for each library based on its path and filename.
+Naming libraries overrides their intrinsic URI, which can actually make it
+harder for tools to physically find the main library file you're referring to. 
 
 ## Ordering
 
