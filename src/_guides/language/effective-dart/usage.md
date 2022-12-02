@@ -32,7 +32,7 @@ For legacy reasons, Dart allows this `part of` directive to use the *name* of th
 library it's a part of. But naming libraries is [discouraged][]; using a
 library name can make it ambiguous which library the part is actually part of.
 
-[discouraged]: guides/language/effective-dart/style#dont-explicitly-name-libraries
+[discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 
 To indicate a specific library, the preferred, modern syntax
 is to use a URI string that points directly to the library file,

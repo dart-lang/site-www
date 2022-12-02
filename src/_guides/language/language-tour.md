@@ -4250,14 +4250,14 @@ There's also no reason to name a library using the directive;
 in fact, it's [discouraged][].
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (library-dir)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (library-dir)"?>
 {% prettify dart tag=pre+code %}
 
 library my_library;
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "docs_good.dart (library-doc)"?>
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
 {% prettify dart tag=pre+code %}
 /// A really great test library.
 @TestOn('browser')
