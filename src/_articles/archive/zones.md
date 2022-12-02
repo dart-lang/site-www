@@ -21,9 +21,6 @@ obsolete: true
 
 ### Asynchronous dynamic extents
 
-_Written by Florian Loitsch and Kathy Walrath<br>
-March 2014_
-
 This article discusses zone-related APIs in the dart:async library,
 with a focus on the top-level [`runZoned()`][]
 and [`runZonedGuarded()`][] functions.
@@ -34,8 +31,7 @@ you should be familiar with the techniques covered in
 [`runZoned()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html)
 [`runZonedGuarded()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html)
 
-Currently, the most common use of zones is
-to handle errors raised in asynchronously executed code.
+Developers commonly use zones to handle uncaught errors.
 For example,
 a simple HTTP server
 might use the following code:
@@ -158,31 +154,33 @@ Code might execute in other nested child zones as well,
 but at a minimum it always runs in the root zone.
 
 
-## Handling asynchronous errors
+## Handling uncaught errors
 
 One of the most used features of zones is
-their ability to handle uncaught errors
-in asynchronously executing code.
-The concept is similar to a try-catch in synchronous code.
+their ability to catch and handle uncaught errors,
+both synchronous and asynchronous.
+An _uncaught error_ is often caused by code using `throw`
+to raise an exception without an accompanying `catch`
+statement to handle it.
 
-An _uncaught error_ is often caused by some code using `throw`
-to raise an exception that is not handled by a `catch` statement.
-Another way to produce an uncaught error is
-to call `new Future.error()` or
-a Completer's `completeError()` method.
+In `async` functions, errors usually end up as the result of a Future.
+Futures allow you to handle errors where you `await` the future.
+Sometimes an error escapes, or a future is not `await`-ed,
+in which case an error becomes an uncaught error.
+Uncaught errors can crash your program.
 
-`runZoned()` does not handle errors.
-Its error-handling parameter `onError` 
-was deprecated because it requires the
-function's return type to always be nullable,
-which is unneccesarily cumbersome for [Null Safe code][]. 
+Zones can install an _uncaught error handler_ upon creation.
+When an uncaught error occurs in that zone,
+rather than just crashing the program,
+it calls its uncaught error handler.
+(In fact, any zone that doesn't specify a handler
+inherits the uncaught error handler of the root zone,
+which just crashes the program on an uncaught error).
 
-[Null Safe code]: /null-safety/index
-
-Instead, use `runZonedGuarded()` to install a
-_zoned error handler_ — an asynchronous error handler
-that's invoked for every uncaught error in the zone.
-For example:
+The simplest way to introduce a new zone with an uncaught error handler
+is to use `runZoneGuarded`. Its `onError` callback becomes the
+uncaught error handler of a new zone, and handles any
+synchronous errors thrown by the call as well.
 
 <!-- run_zoned1.dart -->
 {% prettify dart tag=pre+code %}
@@ -192,6 +190,14 @@ runZonedGuarded(() {
   print('Uncaught error: $error');
 });
 {% endprettify %}
+
+_See also [`Zone.fork`][], [`Zone.runGuarded`][]
+and [`ZoneSpecification.uncaughtErrorHandler`][]
+for more uncaught error handling methods in zones._
+
+[`Zone.fork`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/fork.html)
+[`Zone.runGuarded`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/runGuarded.html)
+[`ZoneSpecification.uncaughtErrorHandler`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/ZoneSpecification/handleUncaughtError.html)
 
 The preceding code has an asynchronous callback
 (through `Timer.run()`) that throws an exception.
@@ -207,16 +213,13 @@ they still execute.
 As a consequence a zoned error handler might
 be invoked multiple times.
 
-Also note that an _error zone_ — a zone that has an error handler
-— might handle errors that originate in a child
-(or other descendant) of that zone.
+A zoned error handler exists in an _error zone_.
+An error zone might handle errors that originate
+in a descendant of that zone.
 A simple rule determines where
 errors are handled in a sequence of future transformations
 (using `then()` or `catchError()`):
-
-{{site.alert.note}}
-  Errors on Future chains never cross the boundaries of error zones.
-{{site.alert.end}}
+Errors on Future chains never cross the boundaries of error zones.
 
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
@@ -295,8 +298,7 @@ completer.complete(499);
 
 Even though the future chain ends in a `catchError()`,
 the asynchronous error can't leave the error zone.
-Instead, the zoned error handler
-(the one specified in `runZonedGuarded()`)
+The zoned error handler found in `runZonedGuarded()`
 handles the error.
 As a result, *zoneFuture never completes* — neither
 with a value, nor with an error.
@@ -316,9 +318,10 @@ streams should have no side effect until listened to.
 A similar situation in synchronous code is the behavior of Iterables,
 which aren't evaluated until you ask for values.
 
-### Example: Using a stream with runZonedGuarded()
+### Example: Using a stream with `runZonedGuarded()`
 
-Here is an example of using a stream with `runZonedGuarded()`:
+Here's an example that sets up a stream with a callback,
+and then executes that stream in a new zone with `runZonedGuarded()`:
 
 <!-- stream.dart -->
 {% prettify dart tag=pre+code %}
