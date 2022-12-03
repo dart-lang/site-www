@@ -125,8 +125,8 @@ functionality provided within. Consider including:
 * Links to the most important or most commonly used classes and functions.
 * Links to external references on the domain the library is concerned with.
 
-To document a library, place a doc comment right above
-the `library` directive (and any annotations that might be attached)
+To document a library, place a doc comment before
+the `library` directive and any annotations that might be attached
 at the start of the file.
 
 {:.good}

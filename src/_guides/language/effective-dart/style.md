@@ -317,12 +317,14 @@ kDefaultTimeout
 
 ### DON'T explicitly name libraries
 
-Though appending a name to the `library` directive is technically possible,
-it is a legacy feature and discouraged. 
+Appending a name to the `library` directive is technically possible,
+but is a legacy feature and discouraged. 
 
-A unique tag is generated for each library based on its path and filename.
-Naming libraries overrides their intrinsic URI, which can actually make it
-harder for tools to physically find the main library file you're referring to. 
+Dart generates a unique tag for each library
+based on its path and filename.
+Naming libraries overrides this generated URI, 
+which can make it harder for tools to physically find
+the main library file in question. 
 
 ## Ordering
 
