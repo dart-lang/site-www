@@ -234,8 +234,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 
 {{site.alert.info}}
   **Tip for web apps:**
-  For the best performance when developing with
-  [dartdevc,](/tools/dartdevc)
+  For the best performance when developing web apps,
   put [implementation files](#implementation-files) under `/lib/src`,
   instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
