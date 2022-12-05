@@ -486,7 +486,7 @@ source control, or copied between machines.
 It is also generally safe to delete the `.dart_tool/` directory,
 though some tools might need recompute the cached information. 
 
-**Example:** The [`dart pub get`](https://dart.dev/tools/pub/cmd/pub-get) tool
+**Example:** The [`dart pub get`](/tools/pub/cmd/pub-get) tool
 will download and extract dependencies to a global `$PUB_CACHE` directory,
 and then write a `.dart_tool/package_config.json` file mapping _package names_
 to directories in the global `$PUB_CACHE` directory.
