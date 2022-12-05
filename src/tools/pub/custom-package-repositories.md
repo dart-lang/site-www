@@ -207,10 +207,14 @@ with support for token authentication by multiple vendors,
 alleviating you from the overhead of hosting and maintaining
 your own custom package repository:
 
-<ul class="col2">
+<ul class="col3">
 <li>
   <img src="/assets/img/tools/cloudsmith.svg" width="48" alt="Cloudsmith logo">
   <a href="https://help.cloudsmith.io/docs/dart-repository"><b>Cloudsmith</b></a>
+</li>
+<li>
+  <img src="/assets/img/tools/jetbrains-space.svg" width="48" alt="JetBrains Space logo">
+  <a href="https://www.jetbrains.com/help/space/dart-package-repository.html"><b>JetBrains Space</b></a>
 </li>
 <li>
   <img src="/assets/img/tools/jfrog.svg" width="48" alt="JFrog logo">

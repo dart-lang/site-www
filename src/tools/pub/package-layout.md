@@ -8,22 +8,18 @@ we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
 
-<aside class="alert alert-info"><div class="alert-with-image">
-  <img src="/assets/img/shared/flutter/logo/default.svg" alt="Flutter">
-  <div markdown="1">
-  **Note:**
+{{site.alert.flutter-note}}
   Flutter apps can use custom directories for their assets.
   For details, see
   [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
-  on the [Flutter website.]({{site.flutter}})
-  </div>
-</div></aside>
+  on the [Flutter website.]({{site.flutter-docs}})
+{{site.alert.end}}
 
 Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
 might look like:
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   .dart_tool/ *
   pubspec.yaml
@@ -56,7 +52,7 @@ enchilada/
     index.html
     main.dart
     style.css
-{% endprettify %}
+```    
 
 \* The `.dart_tool/` directory exists after you've run `dart pub get`.
    Don't check it into source control.
@@ -74,11 +70,11 @@ enchilada/
 
 ## The pubspec
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   pubspec.yaml
   pubspec.lock
-{% endprettify %}
+```
 
 Every package has a [_pubspec_](/tools/pub/pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
@@ -96,10 +92,10 @@ For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   LICENSE
-{% endprettify %}
+```
 
 If you're publishing your package, include a license file named `LICENSE`.
 We recommend using an [OSI-approved license](https://opensource.org/licenses)
@@ -108,10 +104,10 @@ so that others can reuse your work.
 
 ## README.md
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   README.md
-{% endprettify %}
+```
 
 One file that's very common in open source is a _README_ file that
 describes the project. This is especially important in pub. When you upload
@@ -124,10 +120,10 @@ For guidance on how to write a great README, see
 
 ## CHANGELOG.md
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   CHANGELOG.md
-{% endprettify %}
+```
 
 Include a `CHANGELOG.md` file that has a section for
 each release of your package,
@@ -152,7 +148,7 @@ appears in the **Changelog** tab, rendered as [Markdown.][Markdown]
 Here's an example of a `CHANGELOG.md` file.
 As the example shows, you can add subsections.
 
-{% prettify markdown tag=pre+code %}
+```markdown
 # 1.0.1
 
 * Fixed missing exclamation mark in `sayHi()` method.
@@ -173,7 +169,7 @@ Change all calls to `sayHello()` to instead be to `sayHi()`.
 # 0.1.0
 
 * Initial development release.
-{% endprettify %}
+```
 
 
 ## Public directories
@@ -186,12 +182,12 @@ Two directories in your package are public to other packages: `lib` and
 
 The following directory structure shows the `lib` portion of enchilada:
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   lib/
     enchilada.dart
     tortilla.dart
-{% endprettify %}
+```
 
 Many packages are [*library
 packages*](/tools/pub/glossary#library-package): they
@@ -206,28 +202,28 @@ libraries with whatever names make sense for your package.
 When you do, users can import these libraries using the name of the
 package and the library file, like so:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:enchilada/enchilada.dart';
 import 'package:enchilada/tortilla.dart';
-{% endprettify %}
+```
 
 If you want to organize your public libraries, you can also create
 subdirectories inside `lib`. If you do that, users will specify that path
 when they import it. Say you have the following file hierarchy:
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   lib/
     some/
       path/
         olives.dart
-{% endprettify %}
+```
 
 Users import `olives.dart` as follows:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:enchilada/some/path/olives.dart';
-{% endprettify %}
+```
 
 Note that only *libraries* should be in `lib`.
 *Entrypoints*—Dart scripts with a `main()` function—cannot
@@ -238,8 +234,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 
 {{site.alert.info}}
   **Tip for web apps:**
-  For the best performance when developing with
-  [dartdevc,](/tools/dartdevc)
+  For the best performance when developing web apps,
   put [implementation files](#implementation-files) under `/lib/src`,
   instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
@@ -270,11 +265,11 @@ scripts in `bin`.
 
 ## Public assets
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   lib/
     guacamole.css
-{% endprettify %}
+```
 
 While most library packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
@@ -284,20 +279,16 @@ for consumers of the package to use.
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
-{{site.alert.warning}}
-  Old code might refer to assets using `/packages/<package>/<path>` URLs.
-{{site.alert.end}}
-
 
 ## Implementation files
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   lib/
     src/
       beans.dart
       queso.dart
-{% endprettify %}
+```
 
 The libraries inside `lib` are publicly visible: other packages are free to
 import them. But much of a package's code is internal implementation libraries
@@ -325,26 +316,26 @@ depends on the locations of the libraries:
 
 For example:
 
-{% prettify dart tag=pre+code %}
+```dart
 // When importing from lib/beans.dart
 import 'src/beans.dart';
 
 // When importing from test/beans_test.dart
 import 'package:enchilada/src/beans.dart';
-{% endprettify %}
+```
 
 The name you use here (in this case `enchilada`) is the name you specify for
 your package in its [pubspec](/tools/pub/pubspec).
 
 ## Web files
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   web/
     index.html
     main.dart
     style.css
-{% endprettify %}
+```
 
 For web packages, place entrypoint code—Dart scripts that include
 `main()` and supporting files, such as CSS or HTML—under `web`.
@@ -359,11 +350,11 @@ such as images.
 
 ## Command-line apps
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   bin/
     enchilada
-{% endprettify %}
+```
 
 Some packages define programs that can be run directly from the command
 line. These can be shell scripts or any other scripting language,
@@ -376,12 +367,12 @@ using
 
 ## Tests and benchmarks
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   test/
     enchilada_test.dart
     tortilla_test.dart
-{% endprettify %}
+```
 
 Every package should have tests. With pub, the convention is
 that these go in a `test` directory (or some directory inside it if you like)
@@ -390,11 +381,11 @@ and have `_test` at the end of their file names.
 Typically, these use the [test]({{site.pub-pkg}}/test)
 package.
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   benchmark/
     make_lunch.dart
-{% endprettify %}
+```
 
 Packages that have performance critical code may also include *benchmarks*.
 These test the API not for correctness but for speed (or memory use, or maybe
@@ -402,14 +393,14 @@ other empirical metrics).
 
 ## Documentation
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   doc/
     api/
     getting_started.md
-{% endprettify %}
+```
 
-If you've got code and tests, the next piece you might want
+If you have code and tests, the next piece you might want
 is good documentation. That goes inside a directory named `doc`.
 
 When you run the [`dart doc`](/tools/dart-doc)
@@ -423,11 +414,11 @@ that you author.  Use whatever markup format that you prefer.
 
 ## Examples
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   example/
     main.dart
-{% endprettify %}
+```
 
 Code, tests, docs, what else
 could your users want? Standalone example programs that use your package, of
@@ -466,11 +457,11 @@ https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 
 ## Internal tools and scripts
 
-{% prettify none tag=pre+code %}
+```nocode
 enchilada/
   tool/
     generate_docs.dart
-{% endprettify %}
+```
 
 Mature packages often have little helper scripts and programs that people
 run while developing the package itself. Think things like test runners,
@@ -495,13 +486,13 @@ source control, or copied between machines.
 It is also generally safe to delete the `.dart_tool/` directory,
 though some tools might need recompute the cached information. 
 
-**Example:** The [dart pub get](https://dart.dev/tools/pub/cmd/pub-get) tool
-will dowload and extract dependencies to a global `$PUB_CACHE` directory,
+**Example:** The [`dart pub get`](/tools/pub/cmd/pub-get) tool
+will download and extract dependencies to a global `$PUB_CACHE` directory,
 and then write a `.dart_tool/package_config.json` file mapping _package names_
 to directories in the global `$PUB_CACHE` directory.
 The `.dart_tool/package_config.json` file is used by other tools,
-such as analyzer, compiler, etc, when they need to resolve statments
-such as `import "package:foo/foo.dart"`.
+such as the analyzer and compilers when they need to resolve statements
+such as `import 'package:foo/foo.dart'`.
 
 When developing a tool that needs project-specific caching, 
 you might consider using the `.dart_tool/` directory 
@@ -523,10 +514,10 @@ This helps speed-up future re-runs of the build steps.
   When developing a tool that wants to cache files in `.dart_tool/`,
   ensure the following:
   
-    * You are using a subdirectory named after a package you own
-       (`.dart_tool/<my_tool_package_name>/`)
-    * Your files don't belong under source control, 
-       as `.dart_tools` is generally listed in `.gitignore`
+  * You are using a subdirectory named after a package you own
+    (`.dart_tool/<my_tool_package_name>/`)
+  * Your files don't belong under source control, 
+    as `.dart_tools` is generally listed in `.gitignore`
 {{site.alert.end}}
 
 
