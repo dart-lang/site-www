@@ -320,7 +320,7 @@ which efficiently abstracts the complexity
 of setting up and managing worker isolates manually:
 
 * Spawns (starts and creates) an isolate
-* Takes a function argument and executes
+* Runs a function on the spawned isolate
 * Captures the result
 * Returns the result to the main isolate
 * Terminates the isolate once work is complete
@@ -343,7 +343,8 @@ void main() async {
 }
 ```
 
-The spawned isolate executes the following code:
+The spawned isolate executes the function
+passed as the first argument, `_readAndParseJson`:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
@@ -360,9 +361,9 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
 2. The new isolate executes the argument passed to `run()`:
    the function `_readAndParseJson()`.
 
-3. The `return` statement ends the computation,
-   shutting down the worker isolate and
-   sending `jsonData` back to the main isolate as the result.
+3. `Isolate.run()` takes the result from `return`
+   and sends the value back to the main isolate,
+   shutting down the worker isolate.
 
 4. The memory holding the result in the worker isolate is *transferred*
    to the main isolate, *not copied*.
@@ -498,14 +499,3 @@ is slower when isolates are in different groups.
 {{site.alert.flutter-note}}
   Flutter doesn't support `Isolate.spawnUri()`.
 {{site.alert.end}}
-
-{% comment %}
-TODO:
-* After publishing:
-  * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
-* Maybe:
-  * Add a new macro & style for flutter notes?
-  * Add the following text somewhere in this page (or in the FAQ):
-    * Dart code executes in a predictable sequence that can’t be interrupted by other Dart code.
-  * Add a figure up high in the doc? (if so, what?)
-{% endcomment %}
