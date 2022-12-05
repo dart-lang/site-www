@@ -86,19 +86,19 @@ Dart supports the following macOS versions as of November 2022:
 The Dart SDK has three release channels:
 
 * **Stable** channel: **stable releases**, updated roughly every three months;
-  currently `[calculating]`{:.editor-build-rev-stable}.
+  currently `[calculating]`{:.build-rev-stable}.
   
   Stable releases are suitable for production use.
   
 * **Beta** channel: **preview releases**, usually updated every month;
-  currently `[calculating]`{:.editor-build-rev-beta}.
+  currently `[calculating]`{:.build-rev-beta}.
   
   Beta channel builds are preview builds for the stable channel. We recommend
   testing, but not releasing, your apps against beta to preview new features or
   test compatibility with future releases.
   
 * **Dev** channel: **prereleases**, usually updated twice a week;
-  currently `[calculating]`{:.editor-build-rev-dev}.
+  currently `[calculating]`{:.build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
   are unsupported, and may contain unvetted breaking changes.
