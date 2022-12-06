@@ -31,19 +31,21 @@ specify `any` for their dependencies' [version constraints][].
 
 ## Content hashes
 
-The pub.dev repository serves the sha256 hash of each package version it hosts.
-This is useful for the pub client to validate the integrity of the downloaded package. 
+The pub.dev repository serves a sha256 hash of each package version it hosts.
+The pub client can use this hash to validate the integrity of downloaded packages,
+and protect against changes on the repository. 
 
-When `dart pub get` downloads a package, it computes the hash of the downloaded archive and re-downloads if there is a discrepancy. 
+When `dart pub get` downloads a package, it computes the hash of the
+downloaded archive. The hash of each hosted dependency is stored with the
+[resolution][] in the [lockfile][].
 
-But furthermore the hash is used to protect against changes on the repository.
+The pub client uses this content hash to verify that running `pub get` again using
+the same lockfile, potentially on a different computer, uses exactly the same packages.
 
-The hash of each hosted dependency will be stored with the resolution in the [lockfile][].
+If the locked hash doesn't match what's currently in the pub cache,
+pub redownloads the archive. If it still doesn't match, the lockfile
+updates and a warning is printed. For example:
 
-The pub client uses this content hash to verify that exactly the same packages are used when running `pub get` again using the same lock file, potentially on a different computer.
-
-If the locked hash doesn't match what's currently in the pub cache, the archive is redownloaded.
-If it still doesn't match, the lockfile is updated and a warning is printed like:
 ```
 $ dart pub get
 Resolving dependencies...
@@ -63,9 +65,12 @@ https://dart.dev/go/content-hashes
 Changed 1 dependency!
 ```
 
-This updated hash will now show up in your version control diff and should make you suspicious.
+The updated content hash will show up in your version control diff,
+and should make you suspicious.
 
-To make a discrepancy become an error instead of a warning use [`dart pub get --enforce-lockfile`][] that will fail if it cannot find package archives with the same hashes without updating the lockfile.
+To make a discrepancy become an error instead of a warning, use
+[`dart pub get --enforce-lockfile`][]. It will cause the resolution to fail
+if it cannot find package archives with the same hashes, without updating the lockfile.
 
 ```
 $ dart pub get --enforce-lockfile
@@ -88,6 +93,7 @@ To update `pubspec.lock` run `dart pub get` without
 `--enforce-lockfile`.
 ```
 
+[resolution]: /guides/packages#upgrading-a-dependency
 [lockfile]: #lockfile
 [`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
 
