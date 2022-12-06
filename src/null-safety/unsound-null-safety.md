@@ -9,8 +9,8 @@ These **mixed-version programs**
 rely on **unsound null safety**.
 
 {{site.alert.warn}}
-Dart 3--planned for a mid-2023 release--
-will require sound null safety. It will prevent code from running without
+Dart 3---planned for a mid-2023 release---will require sound null safety. 
+It will prevent code from running without
 null safety, or with unsound null safety.
 All existing code must be [migrated][] to sound null safety
 to be compatible with Dart 3.
