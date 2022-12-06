@@ -12,11 +12,14 @@ rely on **unsound null safety**.
 Dart 3--planned for a mid-2023 release--
 will require sound null safety. It will prevent code from running without
 null safety, or with unsound null safety.
-All existing code must be [migrated](#migrate) to sound null safety
+All existing code must be [migrated][] to sound null safety
 to be compatible with Dart 3.
 To learn more, see the [Dart 3 sound null safety tracking issue][].
 {{site.alert.end}}
+
 [null safe]: /null-safety
+[migrated]: /null-safety#migrate
+[Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
 
 The ability to mix [language versions][]
 frees package maintainers to migrate their code,
