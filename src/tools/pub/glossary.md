@@ -31,23 +31,64 @@ specify `any` for their dependencies' [version constraints][].
 
 ## Content hashes
 
-The first time `dart pub get` runs,
-it computes a sha256 hash for each hosted package,
-derived from the contents of their [lockfiles][].
-The hash embeds in the description of `pubspec.lock`.
-The pub client uses content hashes to
-verify the integrity of downloaded archives
-and detect if something has changed on the server.
-On future `pub get` runs, 
-the client can verify descriptions provided by the server
-against the descriptions of its cached packages.
-If they don't match, the archive is redownlaoded.
-If they still don't match, the resolution fails with an error.
+The pub.dev repository serves the sha256 hash of each package version it hosts.
+This is useful for the pub client to validate the integrity of the downloaded package. 
 
-To utilize this feature during package resolution,
-call [`dart pub get --enforce-lockfile`][].
+When `dart pub get` downloads a package, it computes the hash of the downloaded archive and re-downloads if there is a discrepancy. 
 
-[lockfiles]: #lockfile
+But furthermore the hash is used to protect against changes on the repository.
+
+The hash of each hosted dependency will be stored with the resolution in the [lockfile][].
+
+The pub client uses this content hash to verify that exactly the same packages are used when running `pub get` again using the same lock file, potentially on a different computer.
+
+If the locked hash doesn't match what's currently in the pub cache, the archive is redownloaded.
+If it still doesn't match, the lockfile is updated and a warning is printed like:
+```
+$ dart pub get
+Resolving dependencies...
+Cached version of foo-1.0.0 has wrong hash - redownloading.
+ ~ foo 1.0.0 (was 1.0.0)
+The existing content-hash from pubspec.lock doesn't match contents for:
+ * foo-1.0.0 from "pub.dev"
+This indicates one of:
+ * The content has changed on the server since you created the pubspec.lock.
+ * The pubspec.lock has been corrupted.
+ 
+The content-hashes in pubspec.lock has been updated.
+
+For more information see:
+https://dart.dev/go/content-hashes
+
+Changed 1 dependency!
+```
+
+This updated hash will now show up in your version control diff and should make you suspicious.
+
+To make a discrepancy become an error instead of a warning use [`dart pub get --enforce-lockfile`][] that will fail if it cannot find package archives with the same hashes without updating the lockfile.
+
+```
+$ dart pub get --enforce-lockfile
+Resolving dependencies...
+Cached version of foo-1.0.0 has wrong hash - redownloading.
+~ foo 1.0.0 (was 1.0.0)
+The existing content-hash from pubspec.lock doesn't match contents for:
+ * foo-1.0.0 from "pub.dev"
+
+This indicates one of:
+ * The content has changed on the server since you created the pubspec.lock.
+ * The pubspec.lock has been corrupted.
+
+For more information see:
+https://dart.dev/go/content-hashes
+Would change 1 dependency.
+Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
+
+To update `pubspec.lock` run `dart pub get` without
+`--enforce-lockfile`.
+```
+
+[lockfile]: #lockfile
 [`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
 
 ## Dependency
