@@ -4305,15 +4305,16 @@ Future<void> checkVersion() [!async!] {
 {% endprettify %}
 
 {{site.alert.note}}
-  Although an `async` function might perform time-consuming operations, it
-  doesn't wait for those operations. Instead, the `async` function executes only
-  until it encounters its first `await` expression
-  ([details][synchronous-async-start]). Then it returns a Future object,
+  Although an `async` function might perform time-consuming operations, 
+  it doesn't wait for those operations. 
+  Instead, the `async` function executes only
+  until it encounters its first `await` expression.
+  Then it returns a `Future` object,
   resuming execution only after the `await` expression completes.
 {{site.alert.end}}
 
-Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
-`await`:
+Use `try`, `catch`, and `finally` to handle errors and cleanup
+in code that uses `await`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (try-catch)"?>
 ```dart
@@ -4818,7 +4819,6 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators
