@@ -21,60 +21,49 @@ obsolete: true
 
 ### Asynchronous dynamic extents
 
-This article discusses zone-related APIs in the dart:async library,
+This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]
 and [`runZonedGuarded()`][] functions.
 Before reading this article,
 you should be familiar with the techniques covered in
 [Futures and Error Handling](/guides/libraries/futures-error-handling).
 
+[dart:async]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
 [`runZoned()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html)
 [`runZonedGuarded()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html)
 
-Developers commonly use zones to handle uncaught errors.
-For example,
-a simple HTTP server
-might use the following code:
-
-{% prettify dart tag=pre+code %}
-[!runZonedGuarded(() {!]
-  HttpServer.bind('0.0.0.0', port).then((server) {
-    server.listen(staticFiles.serveRequest);
-  });
-[!},
-(error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
-{% endprettify %}
-
-Running the HTTP server in a zone
-enables the app to continue running despite uncaught (but non-fatal)
-errors in the server's asynchronous code.
-
-{{site.alert.info}}
-  **API note:**
-  This use case doesn't *require* zones.
-  The isolate API [`Isolate.run()`][] also handles 
-  listening for uncaught errors.
-{{site.alert.end}}
-
-[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
-
 Zones make the following tasks possible:
 
-* Protecting your app from exiting due to
-  an uncaught exception thrown by asynchronous code,
-  as shown in the preceding example.
+* **Protecting your app from exiting due to
+  an uncaught exception**.
+  For example,
+  a simple HTTP server
+  might use the following asynchronous code:
 
-* Associating data—known as
-  <em>zone-local values</em>—with individual zones.
+  {% prettify dart tag=pre+code %}
+  [!runZonedGuarded(() {!]
+    HttpServer.bind('0.0.0.0', port).then((server) {
+      server.listen(staticFiles.serveRequest);
+    });
+  [!},
+  (error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
+  {% endprettify %}
+  
+  Running the HTTP server in a zone
+  enables the app to continue running despite uncaught (but non-fatal)
+  errors in the server's asynchronous code.
 
-* Overriding a limited set of methods,
+* **Associating data**—known as
+  <em>zone-local values</em>—**with individual zones**.
+
+* **Overriding a limited set of methods**,
   such as `print()` and `scheduleMicrotask()`,
   within part or all of the code.
 
-* Performing an operation—such as
+* **Performing an operation**—such as
   starting or stopping a timer,
-  or saving a stack trace—each time that
-  code enters or exits a zone.
+  or saving a stack trace—**each time that
+  code enters or exits a zone**.
 
 You might have encountered something similar to zones in other languages.
 _Domains_ in Node.js were an inspiration for Dart’s zones.
@@ -157,25 +146,21 @@ but at a minimum it always runs in the root zone.
 ## Handling uncaught errors
 
 One of the most used features of zones is
-their ability to catch and handle uncaught errors,
-both synchronous and asynchronous.
-An _uncaught error_ is often caused by code using `throw`
+their ability to catch and handle uncaught errors.
+
+_Uncaught errors_ often occur because of code using `throw`
 to raise an exception without an accompanying `catch`
 statement to handle it.
+Uncaught errors can also arise in `async` functions
+when a Future completes with an error result,
+but is missing a corresponding `await` to handle the error.
 
-In `async` functions, errors usually end up as the result of a Future.
-Futures allow you to handle errors where you `await` the future.
-Sometimes an error escapes, or a future is not `await`-ed,
-in which case an error becomes an uncaught error.
-Uncaught errors can crash your program.
-
-Zones can install an _uncaught error handler_ upon creation.
-When an uncaught error occurs in that zone,
-rather than just crashing the program,
-it calls its uncaught error handler.
-(In fact, any zone that doesn't specify a handler
-inherits the uncaught error handler of the root zone,
-which just crashes the program on an uncaught error).
+An uncaught error always reports to the current zone which 
+failed to catch it. Zones' default behavior is to handle uncaught
+errors by crashing the program.
+Instead of letting your program terminate,
+you can install your own custom _uncaught error handler_ to a new zone
+to intercept and handle uncaught errors however you prefer.
 
 The simplest way to introduce a new zone with an uncaught error handler
 is to use `runZoneGuarded`. Its `onError` callback becomes the
@@ -191,9 +176,9 @@ runZonedGuarded(() {
 });
 {% endprettify %}
 
-_See also [`Zone.fork`][], [`Zone.runGuarded`][]
-and [`ZoneSpecification.uncaughtErrorHandler`][]
-for more uncaught error handling methods in zones._
+_Other zone APIs that facilitate uncaught error handling include
+[`Zone.fork`][], [`Zone.runGuarded`][]
+and [`ZoneSpecification.uncaughtErrorHandler`][]._
 
 [`Zone.fork`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/fork.html)
 [`Zone.runGuarded`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/runGuarded.html)
@@ -213,7 +198,7 @@ they still execute.
 As a consequence a zoned error handler might
 be invoked multiple times.
 
-A zoned error handler exists in an _error zone_.
+Any zone that includes a zoned error handler is an _error zone_.
 An error zone might handle errors that originate
 in a descendant of that zone.
 A simple rule determines where
@@ -224,6 +209,14 @@ Errors on Future chains never cross the boundaries of error zones.
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
 
+{{site.alert.info}}
+  **API note:**
+  Handling uncaught errors doesn't *require* zones.
+  The isolate API [`Isolate.run()`][] also handles 
+  listening for uncaught errors.
+{{site.alert.end}}
+
+[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
 ### Example: Errors can't cross into error zones
 
@@ -320,7 +313,7 @@ which aren't evaluated until you ask for values.
 
 ### Example: Using a stream with `runZonedGuarded()`
 
-Here's an example that sets up a stream with a callback,
+The following example sets up a stream with a callback,
 and then executes that stream in a new zone with `runZonedGuarded()`:
 
 <!-- stream.dart -->
@@ -332,8 +325,8 @@ runZonedGuarded(() { stream.listen(print); },
          (e) { print('Caught error: $e'); });
 {% endprettify %}
 
-The exception thrown by the callback
-is caught by the error handler of `runZonedGuarded()`.
+The error handler in `runZonedGuarded()`
+catches the error the callback throws.
 Here's the output:
 
 {% prettify xml tag=pre+code %}
