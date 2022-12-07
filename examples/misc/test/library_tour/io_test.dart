@@ -58,7 +58,7 @@ void main() {
     }
 
     // #enddocregion try-catch
-    expect(main, prints(startsWith('FileSystemException')));
+    expect(main, prints(contains('Cannot open file')));
   });
 
   test('read-from-stream', () {

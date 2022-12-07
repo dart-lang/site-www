@@ -1688,33 +1688,38 @@ assert(foo() == null);
 ## Operators
 
 Dart supports the operators shown in the following table.
+The table shows Dart's operator associativity 
+and [operator precedence](#operator-precedence-example) from highest to lowest,
+which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members](#_operators).
 
-|--------------------------+------------------------------------------------|
-|Description               | Operator                                       |
-|--------------------------|------------------------------------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!` |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    |
-| multiplicative           | `*`    `/`    `%`    `~/`                      |
-| additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`    `>>>`                          |
-| bitwise AND              | `&`                                            |
-| bitwise XOR              | `^`                                            |
-| bitwise OR               | `|`                                            |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!` |
-| equality                 | `==`    `!=`                                   |
-| logical AND              | `&&`                                           |
-| logical OR               | `||`                                           |
-| if null                  | `??`                                           |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
-| cascade                  | `..` &nbsp;&nbsp; `?..`                        |
-| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| Description                             | Operator                                                                                                                                                                                          | Associativity |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| unary postfix                           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!`                                                                                       | None          |
+| unary prefix                            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None          |
+| multiplicative                          | `*`    `/`    `%`    `~/`                                                                                                                                                                         | Left          |
+| additive                                | `+`    `-`                                                                                                                                                                                        | Left          |
+| shift                                   | `<<`    `>>`    `>>>`                                                                                                                                                                             | Left          |
+| bitwise AND                             | `&`                                                                                                                                                                                               | Left          |
+| bitwise XOR                             | `^`                                                                                                                                                                                               | Left          |
+| bitwise OR                              | `|`                                                                                                                                                                                               | Left          |
+| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                                                                                                               | None          |
+| equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
+| logical AND                             | `&&`                                                                                                                                                                                              | Left          |
+| logical OR                              | `||`                                                                                                                                                                                              | Left          |
+| if null                                 | `??`                                                                                                                                                                                              | Left          |
+| conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
+| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
+| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
 {:.table .table-striped}
 
 {{site.alert.warning}}
-  Operator precedence is an approximation of the behavior of a Dart parser.
-  For definitive answers, consult the grammar in the
-  [Dart language specification][].
+  The previous table should only be used as a helpful guide.
+  The notion of operator precedence and associativity
+  is an approximation of the truth found in the language grammar.
+  You can find the authoritative behavior of Dart's operator relationships
+  in the grammar defined in the [Dart language specification][].
 {{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
@@ -1730,6 +1735,7 @@ c ? a : b
 a is T
 ```
 
+<a id="operator-precedence-example"></a>
 In the [operator table](#operators),
 each operator has higher precedence than the operators in the rows
 that follow it. For example, the multiplicative operator `%` has higher
@@ -4541,7 +4547,9 @@ concurrency is error prone and can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of *isolates*. 
 Each Dart isolate has a single thread of execution and
-shares no mutable objects with other isolates.  
+shares no mutable objects with other isolates.
+Spinning up multiple isolates creates multiple threads of execution,
+enabling multi-threading without the typical issues that surround it.
 
 For more information, see the following:
 * [Concurrency in Dart](/guides/language/concurrency)
