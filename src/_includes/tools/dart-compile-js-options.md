@@ -75,7 +75,7 @@ Some other handy options include:
 [`String.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
 [`int.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
 [`bool.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html
-[`bool.hasEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/bool/bool.hasEnvironment.html
+[`bool.hasEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.hasEnvironment.html
 
 ###### Display options
 
