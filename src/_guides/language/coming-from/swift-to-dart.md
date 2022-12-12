@@ -96,8 +96,7 @@ As in Swift, Dart supports type inference where the
 compiler infers the type based on the value assigned
 to the variable:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // String-typed variable.
 String name = 'Bob';
@@ -121,8 +120,7 @@ when the analyzer can implicitly infer the type][inference].
 
 [inference]: /guides/language/effective-dart/design#types
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Declare a variable first:
 String name; 
@@ -135,7 +133,7 @@ var name = 'bob';
 The Swift equivalent of the above Dart code
 would looks as follows:
 
-**Swift**
+{:.include-lang}
 ```swift
 // Declare a variable first: 
 var name: String
@@ -176,8 +174,7 @@ in a compile-time error. Both of the following code
 snippets are valid, but subsequently setting `name`
 results in compilation errors.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final String name;
 if (b1) {
@@ -187,7 +184,7 @@ if (b1) {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let name: String
 if (b1) {
@@ -204,8 +201,7 @@ One benefit of `const` is that it's fully evaluated
 at compile-time and can't be modified during the
 lifetime of the application.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 const bar = 1000000; // Unit of pressure (dynes/cm2)
 const double atm = 1.01325 * bar; // Standard atmosphere
@@ -214,8 +210,7 @@ const double atm = 1.01325 * bar; // Standard atmosphere
 A `const` variable defined at a class level
 needs to be marked as `static const`.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class StandardAtmosphere {
   static const bar = 1000000; // Unit of pressure (dynes/cm2)
@@ -227,8 +222,7 @@ The `const` keyword isn't just for declaring
 constant variables; it can also be used to create
 constant values:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 var foo = const ['one', 'two', 'three'];
 foo.add('four'); // Error: foo contains a constant value.
@@ -246,8 +240,7 @@ You can also assign a constant value to a `final` field.
 You can't use the `final` field in a constant context,
 but you can use the constant. For example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final foo1 = const [1, 2, 3];
 const foo2 = [1, 2, 3]; // Equivalent to `const [1, 2, 3]`
@@ -313,8 +306,7 @@ they have the convenience of exposing their own
 utility functions. Because of this, a `double` can,
 for example, be rounded up as follows:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int intVariable = 3;
 double doubleVariable = intVariable.toDouble();
@@ -323,7 +315,7 @@ double doubleVariable = intVariable.toDouble();
 The same is accomplished in Swift using the
 specialized initializer:
 
-**Swift**
+{:.include-lang}
 ```swift
 var intVariable: Int = 3
 var doubleVariable: Double = Double(intVariable)
@@ -334,8 +326,7 @@ Dart automatically converts the integer literal
 into a `double` value. The following code
 is perfectly fine:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 double doubleValue = 3;
 ```
@@ -344,8 +335,7 @@ Unlike Swift, in Dart you can compare an integer
 value to a double using the equality (`==`) operator,
 as shown below:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int intVariable = 3;
 double doubleVariable = 3.0;
@@ -368,15 +358,14 @@ a `Character` type representing one character.
 A `String` can be defined with either single or
 double quotes, however, _single quotes are preferred_.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 String c = 'a'; // There isn't a specialized "Character" type
 String s1 = 'This is a String';
 String s2 = "This is also a String";
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let c: Character = "a"
 let s1: String = "This is a String"
@@ -392,8 +381,7 @@ using the backslash character.
 
 The following code shows some examples:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final singleQuotes = 'I\'m learning Dart'; // I'm learning Dart
 final doubleQuotes = "Escaping the \" character"; // Escaping the " character
@@ -422,8 +410,7 @@ Dart has several ways to define multiline strings:
    Any neighboring string literals are automatically
    concatenated, even when spread over multiple lines:
 
-   **Dart**
-   <!--skip-->
+   {:.include-lang}
    ```dart
    final s1 = 'String '
      'concatenation'
@@ -436,8 +423,7 @@ Dart has several ways to define multiline strings:
    side of the string,
    the literal is allowed to span multiple lines:
 
-   **Dart**
-   <!--skip-->
+   {:.include-lang}
    ```dart
    final s2 = '''You can create
    multiline strings like this one.''';
@@ -450,8 +436,7 @@ Dart has several ways to define multiline strings:
    the `+` operator. This works with both string
    literals and string variables:
 
-   **Dart**
-   <!--skip-->
+   {:.include-lang}
    ```dart
    final name = 'John';
    final greeting = 'Hello ' + name + '!';
@@ -464,8 +449,7 @@ Insert expressions into the string literal using the
 allowing the curly braces to be omitted when the
 expression is a single identifier:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 var food = 'bread';
 var str = 'I eat $food'; // I eat bread
@@ -476,7 +460,7 @@ In Swift, you can achieve the same result by
 surrounding the variable or expression with
 parentheses and prefixing with a backslash: 
 
-**Swift**
+{:.include-lang}
 ```swift
 let s = "string interpolation"
 let c = "Swift has \(s), which is very handy."
@@ -490,8 +474,7 @@ includes any special characters present in the string.
 You can do this in Dart by prefixing the string literal
 with the letter `r`, as shown in the following example.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Include the \n characters.
 final s1 = r'Includes the \n characters.';
@@ -508,7 +491,7 @@ final s4 = r"""
   """;
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let s1 = #"Includes the \n characters."#
 let s2 = #"""
@@ -524,8 +507,7 @@ compares whether two strings are equal.
 Two strings are equal if they contain the same
 sequence of code units.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final s1 = 'String '
   'concatenation'
@@ -569,13 +551,12 @@ The null coalescing operator (`??`),
 and optional chaining operator (`?.`)
 are available in Dart and operate the same as in Swift:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 a = a ?? b;
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let str: String? = nil
 let count = str?.count ?? 0
@@ -592,8 +573,7 @@ with a nullable type when its current value is `null`.
 It's expressed as `a ??= b;` and is shorthand for
 the following:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 a = a ?? b;
 
@@ -601,7 +581,7 @@ a = a ?? b;
 a ??= b; 
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 a = a ?? b
 ```
@@ -617,8 +597,7 @@ by placing it as a suffix to the expression.
 (Don't confuse this with Dart's "not" operator,
 which uses the same symbol:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int? a = 5;
 
@@ -633,8 +612,7 @@ Like the `?.` operator,
 use the `!` operator when accessing properties
 or methods on an object:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 myObject!.someProperty;
 myObject!.someMethod();
@@ -658,8 +636,7 @@ a non-nullable `late` field throws a runtime error
 when observed before being initialized,
 a scenario you want to avoid in a well behaved app.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Using null safety:
 class Coffee {
@@ -681,8 +658,7 @@ Note that `_temperature` can't ever be `null`.
 You can also use the `late` keyword to make
 initialization lazy when combining it with an initializer:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Weather {
   late int _temperature = _readThermometer();
@@ -700,8 +676,7 @@ the `final` variable when marking it as `late`,
 it can still be initialized only once.
 A second assignment results in a runtime error.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 late final int a;
 a = 1;
@@ -716,8 +691,7 @@ entry point. Dart uses the `main` function
 as an app's entry point. Every program must
 have a `main` function to be executable. For example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 void main() {
   // main function is the entry point
@@ -725,7 +699,7 @@ void main() {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // main.swift file is the entry point
 print("hello world")
@@ -761,8 +735,7 @@ function call in a `try-catch` block.
 [errors]: {{site.dart-api}}/dart-core/Error-class.html
 [exceptions]: {{site.dart-api}}/dart-core/Exception-class.html
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 try {
   // Create audio player object
@@ -781,7 +754,7 @@ catch {
 Similarly, Swift uses a `do-try-catch` block.
 For example:
 
-**Swift**
+{:.include-lang}
 ```swift
 do {
   // Create audio player object
@@ -795,6 +768,7 @@ catch {
   print("Couldn't create the audio player for file \(soundFilename)")
 }
 ```
+
 You can use the `try-catch` block in both
 synchronous and asynchronous Dart code.
 For more information,
@@ -809,8 +783,7 @@ these aren't the default in Dart.
 The default parameter type in Dart is a
 positional parameter.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int multiply(int a, int b) {
   return a * b;
@@ -821,7 +794,7 @@ The equivalent in Swift prefaces a parameter
 with an underscore to remove the need
 for an argument label.
 
-**Swift**
+{:.include-lang}
 ```swift
 func multiply(_ a: Int, _ b: Int) -> Int {
   return a * b
@@ -833,8 +806,7 @@ they must be defined separately in a
 block of curly braces,
 after any positional parameters:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int multiply(int a, int b, {int c = 1, int d = 1}) {
   return a * b * c * d;
@@ -847,7 +819,7 @@ multiply(3, 5, d: 3); // 45
 multiply(3, 5, c: 2, d: 3); // 90
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // The Swift equivalent
 func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
@@ -865,8 +837,7 @@ are covered in a later section.
 To make a named parameter required in Dart,
 you must prefix it with the `required` keyword:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int multiply(int a, int b, { required int c }) {
   return a * b * c;
@@ -883,8 +854,7 @@ They must be listed after any required positional
 parameters and can't be used in conjunction
 with named parameters.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 int multiply(int a, int b, [int c = 1, int d = 1]) {
   return a * b * c * d;
@@ -895,7 +865,7 @@ multiply(3, 5, 2); // 30
 multiply(3, 5, 2, 3); // 90
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // The Swift equivalent
 func multiply(_ a: Int, _ b: Int, _ c: Int = 1, _ d: Int = 1) -> Int {
@@ -916,8 +886,7 @@ return a function from a function:
 
 [first class citizens]: https://en.wikipedia.org/wiki/First-class_citizen
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 typedef int MultiplierFunction(int value);
 // Define a function that returns another function
@@ -932,7 +901,7 @@ MultiplierFunction multiplyByTwo = multiplyBy(2);
 print(multiplyByTwo(3)); // 6
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // The Swift equivalent of the Dart function below
 // Define a function that returns a closure
@@ -966,14 +935,14 @@ works like any other function.
 It allows you to use multiple lines, and it
 needs a return statement for any value to be returned.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Multi line anonymous function
 [1,2,3].map((element) { 
   return element * 2; 
 }).toList(); // [2, 4, 6]
 ```
+
 {{site.alert.note}}
   As the map function used in the example returns
   an `Iterable<T`> rather than a `List<T>`,
@@ -981,7 +950,7 @@ needs a return statement for any value to be returned.
   the returned `Iterator` to turn it back into a `List`. 
 {{site.alert.end}}
 
-**Swift**
+{:.include-lang}
 ```swift
   // Swift equivalent anonymous function
   [1, 2, 3].map { $0 * 2 }
@@ -995,8 +964,7 @@ and where the value is returned.
 This omits the need for any braces or
 a return statement, as these are implied.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Single-line anonymous function
 [1,2,3].map((element) => element * 2).toList(); // [2, 4, 6]
@@ -1006,8 +974,7 @@ The choice between the arrow syntax or
 curly braces is available for any function,
 not just anonymous functions.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 multiply(int a, int b) => a * b;
 
@@ -1029,8 +996,7 @@ or add whole collections of items using `yield*`.
 The following example shows how to write a basic
 generator function:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Iterable<int> listNumbers(int n) sync* {
   int k = 0;
@@ -1078,8 +1044,7 @@ curly braces around flow control statements
 with no else clause and the whole if statement
 fits on one line, you can omit the braces if you prefer.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```swift
 var a = 1;
 // Parentheses for conditions are required in Dart.
@@ -1095,7 +1060,7 @@ if (a == 1) {
 if (a == 1) print('a == 1');
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let a = 1;
 if a == 1 {
@@ -1120,8 +1085,7 @@ Dart's `for-in` loop works like its Swift counterpart,
 and it can loop over any value that is an `Iterable`,
 as in the `List` example below:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 var list = [0, 1, 2, 3, 4];
 for (var i in list) {
@@ -1129,7 +1093,7 @@ for (var i in list) {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let array = [0, 1, 2, 3, 4]
 for i in array {
@@ -1144,8 +1108,7 @@ To achieve a similar effect, you can
 extract the map's entries as an `Iterable` type.
 Alternatively, you can use `Map.forEach`:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Map<String, int> dict = {
   'Foo': 1,
@@ -1159,7 +1122,7 @@ dict.forEach((key, value) {
 });
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 var dict:[String:Int] = [
   "Foo":1,
@@ -1177,8 +1140,7 @@ of new operators, but it does allow you to overload
 existing operators with the operator keyword.
 For example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Vector {
   final double x;
@@ -1191,7 +1153,7 @@ class Vector {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 struct Vector {
   let x: Double
@@ -1226,8 +1188,7 @@ use Dart's truncating division operator (`~/`).
   (_Floored_ meaning that the result is truncated
   and not rounded.) For example:
 
-  **Dart**
-  <!--skip-->
+{:.include-lang}
   ```dart
   assert(25 == 50.4 ~/ 2);
   assert(25 == 50.6 ~/ 2);
@@ -1243,8 +1204,7 @@ For example:
 
 [removed in Swift 3.0]: https://www.appsloveworld.com/swift/100/9/-is-deprecated-it-will-be-removed-in-swift-3
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
@@ -1286,8 +1246,7 @@ Use the typecast operator to cast an object
 to a particular type&mdash;if and only if&mdash;you're
 sure that the object is of that type. For example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 (person as Employee).employeeNumber = 4204583;
 ```
@@ -1296,7 +1255,7 @@ Dart has only the single-type casting operator,
 which acts like Swift's `as!` operator.
 There's no equivalent for Swift's `as?` operator.
 
-**Swift**
+{:.include-lang}
 ```swift
 (person as! Employee).employeeNumber = 4204583;
 ```
@@ -1310,15 +1269,14 @@ This also happens for null checks.
 Promotion only applies to _local_ variables,
 not to instance variables.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 if (person is Employee) {
   person.employeeNumber = 4204583;
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // Swift requires the variable to be cast.
 if let person = person as? Employee {
@@ -1332,8 +1290,6 @@ The logical operators (such as AND (`&&`),
 OR (`||`) and NOT (`!`)) are identical
 in both languages. For example:
 
-**Dart/Swift**
-<!--skip-->
 ```dart
 if (!done && (col == 0 || col == 3)) {
   // ...Do something...
@@ -1360,8 +1316,7 @@ in both languages.
 
 For example: 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final value = 0x22;
 final bitmask = 0x0f;
@@ -1381,13 +1336,12 @@ Both Dart and Swift contain a conditional operator
 (`?:`) for evaluating expressions that might otherwise
 require `if-else` statements:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final displayLabel = canAfford ? 'Please pay below' : 'Insufficient funds';
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let displayLabel = canAfford ?  "Please pay below" : "Insufficient funds"
 ```
@@ -1404,8 +1358,7 @@ value of multiple properties, then calling
 multiple methods on a newly constructed object,
 all within a single chain using the cascade operator:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Animal animal = Animal()
   ..name = ‘Bob'
@@ -1417,7 +1370,7 @@ print(animal.name); // "Bob"
 print(animal.age); // 5
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 var animal = Animal()
 animal.name = "Bob"
@@ -1442,15 +1395,14 @@ separated by commas. The syntax between the two
 languages is very similar, however there are some
 subtle differences, shown in the following example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final List<String> list1 = <String>['one', 'two', 'three']; // Initialize list and specify full type
 final list2 = <String>['one', 'two', 'three']; // Initialize list using shorthand type
 final list3 = ['one', 'two', 'three']; // Dart can also infer the type
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 var list1: Array<String> = ["one", "two", "three"] // Initialize array and specify the full type
 var list2: [String] = ["one", "two", "three"] // Initialize array using shorthand type
@@ -1462,8 +1414,7 @@ basic actions that you can perform on a Dart `List`.
 The first example shows how to retrieve a value
 from a list using the `index` operator:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final fruits = ['apple', 'orange', 'pear'];
 final fruit = fruits[1];
@@ -1473,8 +1424,7 @@ To add a value to the back of the list,
 use the `add` method. To add another `List`
 use the `addAll` method:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final fruits = ['apple', 'orange', 'pear'];
 fruits.add('peach');
@@ -1514,13 +1464,12 @@ you have several options to choose from:
   or content, making it behave just like a constant
   `Array` in Swift.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final fruits = List<String>.unmodifiable(['apple', 'orange', 'pear']);
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let fruits = ["apple", "orange", "pear"]
 ```
@@ -1536,9 +1485,8 @@ For example, you can use the spread operator
 (`...`) to insert all the values of a list
 into another list, as shown below:
 
-**Dart**
-<!--skip-->
-```dash
+{:.include-lang}
+```dart
 final list = [1, 2, 3];
 final list2 = [0, ...list]; // [ 0, 1, 2, 3 ]
 assert(list2.length == 4);
@@ -1548,7 +1496,7 @@ Though Swift has no spread operator,
 the equivalent to line 2 above would
 be the following:
 
-**Swift**
+{:.include-lang}
 ```swift
 let list2 = [0] + list
 ```
@@ -1557,15 +1505,14 @@ If the expression to the right of the spread operator
 might be `null`, you can avoid exceptions by using
 a null-aware spread operator (`...?`):
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 List<int>? list;
 final list2 = [0, ...?list]; //[ 0 ]
 assert(list2.length == 1);
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let list2 = [0] + list ?? []
 ```
@@ -1595,13 +1542,12 @@ can be stored in a `Set`.
 The following code snippets show the differences
 between initializing a `Set` in Dart and Swift:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final abc = {'a', 'b', 'c'};
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 var abc: Set<String> = ["a", "b", "c"]
 ```
@@ -1613,8 +1559,7 @@ To create an empty `Set`,
 precede the `{}` declaration with a type argument
 or assign `{}` to a variable of type `Set`:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final names = <String>{};
 Set<String> alsoNames = {}; // This works, too.
@@ -1626,13 +1571,12 @@ Set<String> alsoNames = {}; // This works, too.
 Similar to `List`, `Set` also has an unmodifiable version.
 For example: 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final abc = Set<String>.unmodifiable(['a', 'b', 'c']);
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let abc: Set<String> = ["a", "b", "c"]
 ```
@@ -1665,8 +1609,7 @@ before the object can be stored in a `Dictionary`.
 Here are a couple of simple `Map` and `Dictionary` examples,
 created using literals:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final gifts = {
  'first': 'partridge',
@@ -1681,7 +1624,7 @@ final nobleGases = {
 };
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 let gifts = [
    "first": "partridge",
@@ -1701,8 +1644,7 @@ of the basic actions that you can perform on a
 Dart `Map`. The first example shows how to
 retrieve a value from a `Map` using the `key` operator:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final gifts = {'first': 'partridge'};
 final gift = gifts['first']; // ‘partridge'
@@ -1711,8 +1653,7 @@ final gift = gifts['first']; // ‘partridge'
 Use the `containsKey` method to check whether a
 key is already present in the `Map`:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final gifts = {'first': 'partridge'};
 assert(gifts.containsKey('fifth')); // false
@@ -1723,8 +1664,7 @@ or update an entry in the `Map`. If the `Map`
 doesn't contain the key yet, the entry is added.
 If the key is present, the entry's value is updated:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final gifts = {'first': 'partridge'};
 gifts['second'] = 'turtle'; // Gets added
@@ -1735,8 +1675,7 @@ To remove an entry from the `Map` use the `remove` method,
 and to removes all entries that satisfy a given test
 use the `removeWhere` method:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final gifts = {'first': 'partridge'};
 gifts.remove('first');
@@ -1792,8 +1731,7 @@ Rather than the `init` keyword, Dart uses the full class name.
 The `new` keyword, once required for creating new
 class instances, is now optional and no longer recommended. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Point {
   double x = 0;
@@ -1816,8 +1754,7 @@ Since writing code to assign all class fields
 in the constructor is often quite redundant,
 Dart has some syntactic sugar to make this easier:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Point {
   double x;
@@ -1835,8 +1772,7 @@ Point p = Point(3, 5);
 Similar to functions, constructors can also take
 optional positional or named parameters:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Point {
   ...
@@ -1859,8 +1795,7 @@ which run after any fields that are directly set
 using `this` in the constructor parameters,
 but still before the constructor body:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Point {
   ...
@@ -1883,8 +1818,7 @@ You have the option of using one unnamed constructor,
 but any additional constructors must be named.
 A class can also have only named constructors.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```swift
 class Point {
   double x;
@@ -1910,8 +1844,7 @@ Defining a constructor as `const` makes the class
 unmodifiable: all non-static fields in the class
 must be flagged as `final`. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class ImmutablePoint {
   final double x, y;
@@ -1923,7 +1856,7 @@ class ImmutablePoint {
 This also means you can use that class as a constant value,
 making the object a compile-time constant:
 
-<!--skip-->
+{:.include-lang}
 ```dart
 const ImmutablePoint origin = ImmutablePoint(0, 0);
 ```
@@ -1934,8 +1867,7 @@ You can call constructors from other constructors,
 for example, to prevent code duplication or to
 add additional defaults for parameters:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Point {
   double x, y;
@@ -1954,8 +1886,7 @@ You can use factory constructors when you don't
 need to create a new class instance.
 One example is if a cached instance could be returned instead:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Logger {
   static final Map<String, Logger> _cache =
@@ -1976,8 +1907,7 @@ class Logger {
 In both Dart and Swift, methods are functions
 that provide behavior for an object. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 void doSomething() { // This is a function
  // Implementation..
@@ -1990,7 +1920,7 @@ class Example {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```skip
 func doSomething() { // This is a function
   // Implementation..
@@ -2014,8 +1944,7 @@ as the `get` and `set` keywords need to be defined
 inside of a property statement and can only be defined
 as a statement, not as an expression:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Rectangle {
   double left, top, width, height;
@@ -2031,7 +1960,7 @@ class Rectangle {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 class Rectangle {
  var left, top, width, height: Double;
@@ -2083,8 +2012,7 @@ The following example declares an abstract class
 that has an abstract method and a method
 containing a default implementation:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // This class is declared abstract and thus can't be instantiated.
 abstract class AbstractContainer {
@@ -2114,8 +2042,7 @@ and then provide the APIs required by the interfaces.
 Both Dart and Swift have a different ways of
 implementing interfaces. For example:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 abstract class Animal {
   int getLegs();
@@ -2131,7 +2058,7 @@ class Dog implements Animal {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 protocol Animal {
    func getLegs() -> Int;
@@ -2156,8 +2083,7 @@ Class inheritance in Dart is very similar to Swift.
 In Dart, you can use `extends` to create a subclass,
 and `super` to refer to the superclass:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 abstract class Animal {
   // Define constructors, fields, methods...
@@ -2168,7 +2094,7 @@ class Dog extends Animal {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 class Animal {
   // Define constructors, fields, methods...
@@ -2205,8 +2131,7 @@ The following example shows how this behavior is
 achieved in Dart, and how similar behavior is
 replicated in Swift:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 abstract class Animal {}
 
@@ -2235,7 +2160,7 @@ class Animal {
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 // Defining the "mixins"
 protocol Flyer {
@@ -2276,8 +2201,7 @@ Dog().fly(); // "dog" doesn't have the `fly` method
 Replacing the `class` keyword with `mixin`
 prevents the mixin from being used as a regular class.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 mixin Walker {
   walk() => print('Walks legs');
@@ -2304,7 +2228,7 @@ so the order in which they are added to a class matters.
 
 To give an example:
 
-<!--skip-->
+{:.include-lang}
 ```dart
 class Bird extends Animal with Consumer, Flyer {
 ```
@@ -2327,15 +2251,14 @@ getters, setters, and operators&mdash;to existing types.
 The syntax in both Dart and Swift for creating an
 extension looks very similar:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 extension <name> on <type> {
   (<member definition>)*
 }
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 extension <type> {
   (<member definition>)*
@@ -2346,8 +2269,7 @@ As an example, the following extension on
 the `String` class from the Dart SDK
 allows parsing of integers:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 extension NumberParsing on String {
   int parseInt() {
@@ -2358,7 +2280,7 @@ extension NumberParsing on String {
 print('21'.parseInt() * 2); // 42
 ```
 
-**Swift**
+{:.include-lang}
 ```swift
 extension String {
   func parseInt() -> Int {
@@ -2392,8 +2314,7 @@ with another library. If the name begins with an underscore,
 the extension is only available within the library
 in which it's defined.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Hide "MyExtension" when importing types from
 // "path/to/file.dart".
@@ -2417,8 +2338,7 @@ constructors to a class, but you can add a
 static extension method that creates an instance
 of the type. Consider the following example: 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Person {
   Person(this.fullName);
@@ -2445,8 +2365,7 @@ the two languages. In Dart, you can use the
 `@override` annotation to indicate that you are
 intentionally overriding a member:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Animal {
   void makeNoise => print('Noise');
@@ -2461,7 +2380,7 @@ class Dog implements Animal {
 In Swift, you add the `override` keyword
 to the method definition:
 
-**Swift**
+{:.include-lang}
 ```swift
 class Animal {
   func makeNoise() {
@@ -2490,8 +2409,7 @@ To define a generic type, place it between
 This type can then be used within the method
 (as the return type), or in the method's parameters:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Defining a method that uses generics.
 T transform<T>(T param) {
@@ -2512,8 +2430,7 @@ the return value is an `int`.
 Define multiple generics by separating them
 with a comma:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Defining a method with multiple generics.
 T transform<T, Q>(T param1, Q param2) {
@@ -2534,8 +2451,7 @@ which allows you to tailor reusable classes to specific types.
 In the following example,
 the `Cache` class is for caching specific types:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class Cache<T> {
   T getByKey(String key) {}
@@ -2560,8 +2476,7 @@ family of types using `extends`. This ensures
 that your class is instantiated with a generic type
 that extends a specific type (and is similar to Swift):
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 class NumberManager<T extends num> {
   // ...
@@ -2588,8 +2503,7 @@ which is used in some membery types of the `List` class's.
 When defining a `List` literal,
 you can explicitly define the generic type as follows:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 var objList = [5, 2.0]; // Type: List<num> // Automatic type inference
 var objList = <Object>[5, 2.0]; // Type: List<Object> // Explicit type definition
@@ -2600,8 +2514,7 @@ This is also true for a `Map`,
 which also define its `key` and `value` types
 using generics (`class Map<K, V>)`:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Automatic type inference
 var map = {
@@ -2657,8 +2570,7 @@ which is discussed in the next section.
 When you have a value that needs to be a `Future`,
 you can easily turn it into one using the `Future` class: 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 String str = 'String Value';
 Future<String> strFuture = Future<String>.value(str);
@@ -2686,8 +2598,7 @@ Rather, if an exception occurs in an async function,
 the returned `Future` fails with the exception,
 which can then be appropriately handled. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // Returns a future of a string, as the method is async
 Future<String> fetchString() async {
@@ -2704,8 +2615,7 @@ Future<String> fetchString() async {
 
 This async function can then be called as follows:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 String stringFuture = await fetchString();
 print(str); // "String Value"
@@ -2713,7 +2623,7 @@ print(str); // "String Value"
 
 The equivalent async function in Swift:
 
-**Swift**
+{:.include-lang}
 ```swift
 func fetchString() async throws -> String {
   // Typically some other async operations would be done here.
@@ -2753,8 +2663,7 @@ evaluates to that value or throws that error.
 When it completes, the future's value is returned.
 You can only `await` in an `async` context, as in Swift.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // We can only await futures within an async context.
 asyncFunction() async {
@@ -2767,8 +2676,7 @@ When the awaited future fails, an error object
 is thrown on the line with the `await` keyword.
 You can handle this using a regular `try-catch` block:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 // We can only await futures within an async context.
 Future<void> asyncFunction() async {
@@ -2814,8 +2722,7 @@ The `for` loop invokes the callback method
 for each item emitted, and ends when the stream
 completes or errors out:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
@@ -2835,8 +2742,7 @@ the error is thrown at the line containing the
 `await` keyword, which you can handle with a
 `try-catch` statement:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 for try await value in stream {
   await for (final value in stream) { ... }
@@ -2850,8 +2756,7 @@ you can also call its `listen` method and
 provide a callback, which is called whenever
 the stream emits a value:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Stream<int> stream = ...
 stream.listen((int value) {
@@ -2862,8 +2767,7 @@ stream.listen((int value) {
 The `listen` method has some optional callbacks
 for error handling, or for when the stream completes:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 stream.listen(
   (int value) { ... },
@@ -2880,8 +2784,7 @@ The `listen` method returns an instance of a
 `StreamSubscription`, which you can use to
 stop listening to the stream:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 StreamSubscription subscription = stream.listen(...);
 subscription.cancel();
@@ -2911,8 +2814,7 @@ emitted to this stream. In the following example,
 the function only continues once the newly yielded
 stream has completed:
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 Stream<int> asynchronousNaturalsTo(int n) async* {
   int k = 0;
@@ -2951,8 +2853,7 @@ tools in Swift.
 As in Swift, you define a doc comment by
 using three forward slashes instead of two (`///`):
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 /// The number of characters in this chunk when unsplit.
 int get length => ...
@@ -2961,8 +2862,7 @@ int get length => ...
 Surround types, parameter-, and method names
 with square brackets within doc comments. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 /// Returns the [int] multiplication result of [a] * [b].
 multiply(int a, int b) => a * b;
@@ -2971,8 +2871,7 @@ multiply(int a, int b) => a * b;
 While there is support for JavaDoc-style doc comments,
 you should avoid them and use the `///` syntax. 
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 /** 
  * The number of characters in this chunk when unsplit. 
@@ -2993,8 +2892,7 @@ are public by default. Private variables
 are prefixed with the underline character (`_`),
 and are enforced by the Dart compiler.
 
-**Dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 final foo = 'this is a public property';
 final _foo = 'this is a private property';
@@ -3034,7 +2932,7 @@ In other words,
 private objects aren't shared across libraries.
 
 **animal.dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 library animals;
 
@@ -3048,7 +2946,7 @@ class _Animal {
 ```
 
 **parrot.dart**
-<!--skip-->
+{:.include-lang}
 ```dart
 part of animals;
 
