@@ -92,7 +92,7 @@ expression. This means that Dart apps have sound static typing.
 JavaScript provides primitive types `num`, `string`, and `boolean`
 and the `null` value as well as _arrays_ and a `Map` type.
 
-Dart supports built-in types include:
+Dart supports built-in types, including:
 
 * Numbers (`num`, `int`, `double`)
 * Strings (`String`)
