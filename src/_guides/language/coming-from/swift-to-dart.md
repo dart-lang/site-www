@@ -1921,7 +1921,7 @@ class Example {
 ```
 
 {:.include-lang}
-```skip
+```swift
 func doSomething() { // This is a function
   // Implementation..
 }
