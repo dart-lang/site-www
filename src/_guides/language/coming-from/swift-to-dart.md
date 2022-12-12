@@ -645,7 +645,7 @@ a runtime error occurs.
 
 ### Late fields 
 
-The `late keyword can be assigned to class fields
+The `late` keyword can be assigned to class fields
 to indicate they are initialized at a later point,
 while remaining non-nullable. This is similar to Swift's
 "implicitly unwrapped optionals."
