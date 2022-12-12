@@ -204,9 +204,9 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 
 ### Q. Is Dart single-threaded?
 
-No. On native targets, Dart features like isolates and async-await
-can enable multiple threads of execution at any given time.
-The Dart VM will utilize multiple cores of a multi-core processor
+No. On native targets, Dart's isolate API can 
+enable multiple threads of execution at any given time.
+The Dart VM uses multiple processor cores
 to run those threads concurrently.
 
 [Dart's concurrency architecture](/guides/language/concurrency)
@@ -283,11 +283,12 @@ Dart is designed to compile to JavaScript to run across the modern web.
 
 ### Q. Is Dart single-threaded on the web?
 
-Dart is *mostly* single-threaded on the web. 
-Web apps can use concurrency features like async-await,
-futures, and streams, but not isolates.
-Web apps can use [web workers][] in place of isolates,
-but with differing capabilities. For more information, see the
+Dart is *mostly* single-threaded on the web,
+since web apps cannot use isolates.
+To run code concurrently, web apps use [web workers][] instead.
+Web workers lack the ease and efficiency of isolates,
+and have different capabilities and restrictions.
+To learn more, see the
 [Concurrency in Dart](/guides/language/concurrency) page.
 
 {% comment %}
