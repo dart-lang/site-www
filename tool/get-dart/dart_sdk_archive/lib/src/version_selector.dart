@@ -150,15 +150,14 @@ class VersionSelector {
             continue;
           } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
             // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
-            // and only want to surface beta and dev.
-            // TODO: After this is marked stable stable in 2.x,
-            // remove the stable check,
-            // and just test for versionInfo.version < Version(2,x,0).
+            // and only want to surface for dev.
+            // TODO: After this is marked beta or stable in 2.x,
+            // remove the beta or stable check respectively.
             if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
               continue;
             }
 
-            if (versionInfo.channel == 'stable') {
+            if (const {'stable', 'beta'}.contains(versionInfo.channel)) {
               continue;
             }
           }
@@ -177,15 +176,14 @@ class VersionSelector {
         } else if (name == 'Windows') {
           if (platformVariant.architecture == 'ARM64') {
             // No Windows arm64 SDK builds before 2.18.0-41.0.dev,
-            // and only want to surface beta and dev.
-            // TODO: After this is marked stable stable in 2.x,
-            // remove the stable check,
-            // and just test for versionInfo.version < Version(2,x,0).
+            // and only want to surface for dev.
+            // TODO: After this is marked beta or stable in 2.x,
+            // adjust the beta or stable check respectively.
             if (versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
               continue;
             }
 
-            if (versionInfo.channel == 'stable') {
+            if (const {'stable', 'beta'}.contains(versionInfo.channel)) {
               continue;
             }
           }

@@ -213,7 +213,8 @@ to run those threads concurrently.
 abstracts the complex, error-prone code of typical shared-memory threading,
 which might explain the misconception that Dart is single-threaded.
 
-This is not quite the case for web apps, though. To learn more, see
+Note that concurrency works differently in Dart web apps.
+To learn more, see
 [Is Dart single-threaded on the web?](#q-is-dart-single-threaded-on-the-web)
 
 ### Q. Can I compile Dart code to native code?
