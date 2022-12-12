@@ -486,5 +486,5 @@ which requires fewer resources because it
 [reuses some of the same code and data](#performance-and-isolate-groups)
 as the spawning isolate. Web workers don't have an equivalent API.
 
-[web platform]: /overview#platform
+[Dart web platform]: /overview#platform
 [web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
