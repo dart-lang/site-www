@@ -4,6 +4,9 @@
 localhost:(404\d|8080)
 127.0.0.1:(404\d|8080)
 
+# Sites which don't allow robots or break from rate limiting
+https://github.com
+
 # FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
 # https://github.com/dart-lang/site-www/issues/1107
 /assets/css/main.css
@@ -12,3 +15,7 @@ fonts.gstatic.com
 fonts.googleapis.com
 
 github.com/dart-lang/site-www/issues/new
+
+# Redirects from firebase.json
+/jobs
+/go/.*?
