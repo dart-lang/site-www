@@ -2526,8 +2526,8 @@ var map = <String, Object>{
 
 ## Concurrency
 
-Swift supports multithreading and Dart supports
-the `Isolate`, which are similar to lightweight threads
+Swift supports multithreading and Dart supports isolates, 
+which are similar to lightweight threads
 and won't be covered here.
 Each isolate has its own event loop.
 For more information, see [How isolates work][].
