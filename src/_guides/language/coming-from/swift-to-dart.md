@@ -769,8 +769,8 @@ catch {
 You can use the `try-catch` block in both
 synchronous and asynchronous Dart code.
 For more information,
-see the docs for the [Error][errors] and
-[Exception][exceptions] classes.
+see the docs for the [`Error`][errors] and
+[`Exception`][exceptions] classes.
 
 ### Parameters
 
@@ -828,7 +828,7 @@ Named parameters must have a default value,
 be marked as nullable (which defaults to a `null` value,
 if not explicitly provided), or be marked as `required`
 for the function to compile.
-Nullable types and null safety](#null-safety)
+Nullable types and [null safety](#null-safety)
 are covered in a later section.
 
 To make a named parameter required in Dart,
@@ -1429,9 +1429,9 @@ fruits.addAll(['kiwi', 'mango']);
 ```
 
 For the complete List API,
-refer to the [`List<E>` class] page.
+refer to the [`List` class] documentation.
 
-[`List<E>` class]: {{site.dart-api}}/dart-core/List-class.html
+[`List` class]: {{site.dart-api}}/dart-core/List-class.html
 
 #### Unmodifiable
 
@@ -1611,7 +1611,7 @@ created using literals:
 final gifts = {
  'first': 'partridge',
  'second': 'turtle doves',
- 'fifth': 'golden rings'
+ 'fifth': 'golden rings',
 };
 
 final nobleGases = {
@@ -1627,13 +1627,13 @@ let gifts = [
    "first": "partridge",
    "second": "turtle doves",
    "fifth": "golden rings",
-];
+]
 
 let nobleGases = [
    2: "helium",
    10: "neon",
    18: "argon",
-];
+]
 ```
 
 The following code samples provide an overview
@@ -1708,11 +1708,9 @@ constructors that set that state,
 methods with functionality,
 and even override existing members.
 For more information, check out
-[Enhanced enums with members][] on the Dart blog,
-and [Declaring enhanced enums][] in the Dart language tour.
+[Declaring enhanced enums][] in the Dart language tour.
 
 [Declaring enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
-[Enhanced enums with members]: https://medium.com/dartlang/dart-2-17-b216bfc80c5d#:~:text=verbose%20and%20repetitive.-,Enhanced,-enums%20with%20members
 
 ### Constructors 
 
@@ -1816,7 +1814,7 @@ but any additional constructors must be named.
 A class can also have only named constructors.
 
 {:.include-lang}
-```swift
+```dart
 class Point {
   double x;
   double y;
@@ -2601,7 +2599,7 @@ which can then be appropriately handled.
 Future<String> fetchString() async {
   // Typically some other async operations would be done here.
   
-  Response response = makeNetworkRequest();
+  Response response = await makeNetworkRequest();
   if (!response.success) {
     throw BadNetwork();
   }
@@ -2741,7 +2739,7 @@ the error is thrown at the line containing the
 
 {:.include-lang}
 ```dart
-for try await value in stream {
+try {
   await for (final value in stream) { ... }
 } catch (err) {
   print('Stream encountered an error! $err');
