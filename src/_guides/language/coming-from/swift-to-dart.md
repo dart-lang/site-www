@@ -595,7 +595,7 @@ any compile-time errors.
 This is done using the suffix `!` operator,
 by placing it as a suffix to the expression.
 (Don't confuse this with Dart's "not" operator,
-which uses the same symbol:
+which uses the same symbol):
 
 {:.include-lang}
 ```dart
