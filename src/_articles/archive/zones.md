@@ -24,7 +24,8 @@ obsolete: true
 This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]
 and [`runZonedGuarded()`][] functions.
-Review the techniques covered in [Futures and Error Handling](/guides/libraries/futures-error-handling)
+Review the techniques covered in
+[Futures and Error Handling](/guides/libraries/futures-error-handling)
 before reading this article.
 
 [dart:async]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
@@ -59,10 +60,11 @@ Zones make the following tasks possible:
   such as `print()` and `scheduleMicrotask()`,
   within part or all of the code.
 
-* **Performing an operation**—such as
-  starting or stopping a timer,
-  or saving a stack trace—**each time that
+* **Performing an operation each time that
   code enters or exits a zone**.
+  Such operations could include
+  starting or stopping a timer,
+  or saving a stack trace.
 
 You might have encountered something similar to zones in other languages.
 _Domains_ in Node.js were an inspiration for Dart’s zones.
@@ -144,8 +146,7 @@ but at a minimum it always runs in the root zone.
 
 ## Handling uncaught errors
 
-One of the most used features of zones is
-their ability to catch and handle uncaught errors.
+Zones are able to catch and handle uncaught errors.
 
 _Uncaught errors_ often occur because of code using `throw`
 to raise an exception without an accompanying `catch`
@@ -154,11 +155,9 @@ Uncaught errors can also arise in `async` functions
 when a Future completes with an error result,
 but is missing a corresponding `await` to handle the error.
 
-An uncaught error always reports to the current zone which 
-failed to catch it. Zones' default behavior is to handle uncaught
-errors by crashing the program.
-Instead of letting your program terminate,
-you can install your own custom _uncaught error handler_ to a new zone
+An uncaught error reports to the current zone that failed to catch it.
+By default, zones will crash the program in response to uncaught errors.
+You can install your own custom _uncaught error handler_ to a new zone
 to intercept and handle uncaught errors however you prefer.
 
 To introduce a new zone with an uncaught error handler,
