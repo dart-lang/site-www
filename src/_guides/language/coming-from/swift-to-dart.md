@@ -129,7 +129,7 @@ var name = 'bob';
 ```
 
 The Swift equivalent of the above Dart code
-would looks as follows:
+would look as follows:
 
 {:.include-lang}
 ```swift
@@ -632,7 +632,7 @@ A non-nullable `late` field can't have null
 assigned at a later point. Also,
 a non-nullable `late` field throws a runtime error
 when observed before being initialized,
-a scenario you want to avoid in a well behaved app.
+a scenario you want to avoid in a well-behaved app.
 
 {:.include-lang}
 ```dart
@@ -1669,7 +1669,7 @@ gifts['second'] = 'turtle doves'; // Gets updated
 ```
 
 To remove an entry from the `Map` use the `remove` method,
-and to removes all entries that satisfy a given test
+and to remove all entries that satisfy a given test
 use the `removeWhere` method:
 
 {:.include-lang}
