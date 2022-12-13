@@ -1,6 +1,6 @@
 ---
 title: Learning Dart as a Swift developer
-description: Leverage your JavaScript knowledge when learning Dart.
+description: Leverage your Swift knowledge when learning Dart.
 ---
 
 This guide aims to leverage your Swift programming
