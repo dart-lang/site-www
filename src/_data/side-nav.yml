@@ -50,6 +50,8 @@
       children:
         - title: JavaScript to Dart
           permalink: /guides/language/coming-from/js-to-dart
+        - title: Swift to Dart
+          permalink: /guides/language/coming-from/swift-to-dart
     - title: Extension methods
       permalink: /guides/language/extension-methods
     - title: Concurrency

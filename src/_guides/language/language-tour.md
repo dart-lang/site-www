@@ -4547,8 +4547,11 @@ shared-memory threads running concurrently. However, shared-state
 concurrency is error prone and can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of *isolates*. 
-Each Dart isolate has a single thread of execution and
-shares no mutable objects with other isolates.  
+Each Dart isolate uses a single thread of execution and
+shares no mutable objects with other isolates.
+Spinning up multiple isolates creates multiple threads of execution.
+This enables multi-threading without its primary drawback,
+[race conditions](https://en.wikipedia.org/wiki/Race_condition#In_software)
 
 For more information, see the following:
 * [Concurrency in Dart](/guides/language/concurrency)
