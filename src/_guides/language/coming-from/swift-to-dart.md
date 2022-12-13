@@ -737,15 +737,14 @@ function call in a `try-catch` block.
 ```dart
 try {
   // Create audio player object
-  audioPlayer = AVAudioPlayer(soundURL);
+  audioPlayer = AVAudioPlayer(soundUrl);
             
   // Play the sound
-  audioPlayer?.play();
+  audioPlayer.play();
 }
 catch {
   // Couldn't create audio player object, log the exception
-  print('Couldn't create the audio player for %s',
-     soundFilename);
+  print("Couldn't create the audio player for file $soundFilename");
 }
 ```
 
