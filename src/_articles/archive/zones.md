@@ -24,9 +24,8 @@ obsolete: true
 This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]
 and [`runZonedGuarded()`][] functions.
-Before reading this article,
-you should be familiar with the techniques covered in
-[Futures and Error Handling](/guides/libraries/futures-error-handling).
+Review the techniques covered in [Futures and Error Handling](/guides/libraries/futures-error-handling)
+before reading this article.
 
 [dart:async]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
 [`runZoned()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html)
@@ -162,10 +161,10 @@ Instead of letting your program terminate,
 you can install your own custom _uncaught error handler_ to a new zone
 to intercept and handle uncaught errors however you prefer.
 
-The simplest way to introduce a new zone with an uncaught error handler
-is to use `runZoneGuarded`. Its `onError` callback becomes the
-uncaught error handler of a new zone, and handles any
-synchronous errors thrown by the call as well.
+To introduce a new zone with an uncaught error handler,
+use the `runZoneGuarded` method. Its `onError` callback becomes the
+uncaught error handler of a new zone. This callback handles any
+synchronous errors that the call throws.
 
 <!-- run_zoned1.dart -->
 {% prettify dart tag=pre+code %}
@@ -198,7 +197,7 @@ they still execute.
 As a consequence a zoned error handler might
 be invoked multiple times.
 
-Any zone that includes a zoned error handler is an _error zone_.
+Any zone with an uncaught error handler is called an _error zone_.
 An error zone might handle errors that originate
 in a descendant of that zone.
 A simple rule determines where
