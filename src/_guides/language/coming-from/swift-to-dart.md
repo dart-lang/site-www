@@ -59,10 +59,8 @@ provide this functionality.)
 
 Dart also provides a code formatter,
 which can automatically format any Dart project when
-running `dart format` from the command line or through
-the IDE. At one time, Flutter provided a `flutter format`
-command, but that is deprecated. Use the `dart format`
-command instead.
+running `dart format` from the command line
+or through the IDE.
 
 {{site.alert.secondary}}
   **Pro tip:** Dart supports optional trailing
