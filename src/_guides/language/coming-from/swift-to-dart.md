@@ -2696,7 +2696,7 @@ check out the [Asynchronous programming][] codelab.
 
 ### Streams
 
-Another tool in Dart's async toolbox is the `Stream`.
+Another tool in Dart's async toolbox is the `Stream` class.
 While Swift has its own concept of streams,
 those in Dart are similar to `AsyncSequence` in Swift.
 Similarly, if you know `Observables` (in RxSwift) or
