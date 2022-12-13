@@ -323,7 +323,7 @@ but is a legacy feature and discouraged.
 Dart generates a unique tag for each library
 based on its path and filename.
 Naming libraries overrides this generated URI, 
-which can make it harder for tools to physically find
+which can make it harder for tools to find
 the main library file in question. 
 
 ## Ordering

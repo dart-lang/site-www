@@ -30,7 +30,7 @@ file to in turn indicate which library it's a part of.
 
 Dart allows the `part of` directive to use the *name* of a library.
 Naming libraries is a legacy feature that is now [discouraged][]. 
-Using a library name can make it ambiguous which library a part belongs to.
+Library names can introduce ambiguity when determining which library a part belongs to.
 
 [discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 
