@@ -713,7 +713,7 @@ can be returned that contains these values.
 More on this can be found in the sections on
 [collections](#collections) and [classes](#classes).
 
-[several tuple packages]: {{site.dart-site.pub}}/packages?q=tuples
+[several tuple packages]: {{site.pub}}/packages?q=tuples
 
 ### Exception and error handling
 
