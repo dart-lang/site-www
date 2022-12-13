@@ -2726,8 +2726,8 @@ completes or errors out:
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try { 
-      await for (final value in stream) {
-        sum += value;
+    await for (final value in stream) {
+      sum += value;
     }
   } catch (error) {
     print('Stream encountered an error! $err');
