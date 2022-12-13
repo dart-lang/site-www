@@ -301,8 +301,12 @@ as their parent class:
 
 As number values are technically class instances,
 they have the convenience of exposing their own
-utility functions. Because of this, a `double` can,
-for example, be rounded up as follows:
+utility functions. Because of this, a `int` can,
+for example, be turned into a `double` as follows:
+
+{% comment %}
+TODO: Use a different example here, such as rounding
+{% endcomment %}
 
 {:.include-lang}
 ```dart
