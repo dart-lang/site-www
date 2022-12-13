@@ -31,7 +31,7 @@ specify `any` for their dependencies' [version constraints][].
 
 ## Content hashes
 
-The pub.dev repository serves a sha256 hash of each package version it hosts.
+The pub.dev repository maintains a sha256 hash of each package version it hosts.
 The pub client can use this hash to validate the integrity of downloaded packages,
 and protect against changes on the repository. 
 
