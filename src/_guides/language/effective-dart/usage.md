@@ -250,7 +250,8 @@ void error([String? message = null]) {
 
 Using the equality operator to evaluate a *non-nullable* Boolean expression 
 against a Boolean literal is redundant. 
-It's always simpler to eliminate the equality operator, and add `!` if necessary:
+It's always simpler to eliminate the equality operator, 
+and use the unary negation operator (`!`) if necessary:
 
 {:.good}
 {% prettify dart tag=pre+code %}
@@ -262,7 +263,7 @@ if (nonNullableBool) { ... }
 if (nonNullableBool == true) { ... }
 {% endprettify %}
 
-To evaluate a Boolean expression that *is nullable*, you should only use `??`
+To evaluate a boolean expression that *is nullable*, you should use `??`
 or an explicit `!= null` check.
 
 {:.good}
@@ -284,7 +285,8 @@ if (nullableBool) { ... }
 if (nullableBool == true) { ... }
 {% endprettify %}
 
-`if (nullableBool == true)` is a viable expression, but shouldn't be used for several reasons:
+`nullableBool == true` is a viable expression, 
+but shouldn't be used for several reasons:
 
 * It doesn't indicate the code has anything to do with `null`.
 
