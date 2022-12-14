@@ -93,7 +93,7 @@ To update `pubspec.lock` run `dart pub get` without
 `--enforce-lockfile`.
 ```
 
-[resolution]: /guides/packages#upgrading-a-dependency
+[resolution]: /tools/pub/cmd/pub-get
 [lockfile]: #lockfile
 [`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
 

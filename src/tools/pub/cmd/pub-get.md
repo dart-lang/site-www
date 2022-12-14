@@ -149,8 +149,8 @@ To prevent precompilation, use `--no-precompile`.
 
 Fetches dependencies, but will refuse to resolve
 if anything deviates from `pubspec.lock` or there is no `pubspec.lock`.
-This is useful for deploying,
-and ensuring reproducible runs in CI and production. 
+Such deviations normally trigger a warning, but
+`--enforce-lockfile` turns it into an error.
 
 ### `--legacy-packages-file`
 

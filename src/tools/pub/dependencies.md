@@ -472,7 +472,7 @@ this flag only resolves new dependencies if:
 
 [`--enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
 [lockfile]: /tools/pub/glossary#lockfile
-[content hashes]: //tools/pub/glossary#content-hashes
+[content hashes]: /tools/pub/glossary#content-hashes
 ---
 
 <aside id="fn:semver" class="footnote" markdown="1">
