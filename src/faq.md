@@ -288,14 +288,10 @@ since web apps cannot use isolates.
 To run code concurrently, web apps use [web workers][] instead.
 Web workers lack the ease and efficiency of isolates,
 and have different capabilities and restrictions.
-To learn more, see the
-[Concurrency in Dart](/guides/language/concurrency#concurrency-on-the-web) page.
+To learn more, see
+[Concurrency on the web](/guides/language/concurrency#concurrency-on-the-web).
 
-{% comment %}
-TODO: Change "Concurrency in Dart" link to the section on web apps that I'll be adding in another PR.
-{% endcomment %}
-
-[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+[web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
 ---
 
