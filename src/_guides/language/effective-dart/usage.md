@@ -245,6 +245,7 @@ void error([String? message = null]) {
 }
 {% endprettify %}
 
+<a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
 ### DON'T use `true` or `false` in equality operations
 
 Using the equality operator to evaluate a *non-nullable* Boolean expression 
