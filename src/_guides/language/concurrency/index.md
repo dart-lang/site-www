@@ -23,27 +23,15 @@ Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.
 To communicate with each other,
 isolates use message passing.
+Many Dart apps use only one isolate, the _main isolate_.
+You can create additional isolates to enable
+parallel code execution on multiple processor cores.
+
 Although Dart's isolate model is built with underlying primitives
 such as processes and threads
 that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
-
-Many Dart apps use only one isolate (the _main isolate_),
-but you can create additional isolates,
-enabling parallel code execution on multiple processor cores.
-
-{{site.alert.info}}
-  **Platform note:**
-  All apps can use async-await, `Future`, and `Stream`.
-  Isolates are implemented only on the [Dart Native platform][];
-  Dart web apps can use [web workers][] for similar functionality.
-{{site.alert.end}}
-
-[Dart Native platform]: /overview#platform
-[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-
-
 
 ## Asynchrony types and syntax
 
@@ -194,6 +182,14 @@ using additional processor cores if they’re available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
+{{site.alert.info}}
+  **Platform note:**
+    Only the [Dart Native platform][] implements isolates.
+    To learn more about the Dart Web platform,
+    see the [Concurrency on the web](#concurrency-on-the-web) section.
+{{site.alert.end}}
+
+[Dart Native platform]: /overview#platform
 
 ### The main isolate
 
@@ -462,14 +458,34 @@ is slower when isolates are in different groups.
   Flutter doesn't support `Isolate.spawnUri()`.
 {{site.alert.end}}
 
-{% comment %}
-TODO:
-* After publishing:
-  * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
-* Maybe:
-  * Add a new macro & style for flutter notes?
-  * Add the following text somewhere in this page (or in the FAQ):
-    * Sometimes Dart is called a _single-threaded language._
-    * Dart code executes in a predictable sequence that can’t be interrupted by other Dart code.
-  * Add a figure up high in the doc? (if so, what?)
-{% endcomment %}
+## Concurrency on the web
+
+All Dart apps can use `async-await`, `Future`, and `Stream`
+for non-blocking, interleaved computations.
+The [Dart web platform][], however, does not support isolates.
+Dart web apps can use [web workers][] to
+run scripts in background threads
+similar to isolates.
+Web workers' functionality and capabilities
+differ somewhat from isolates, though.
+
+For instance, when web workers send data between threads,
+they copy the data back and forth.
+Data copying can be very slow, though,
+especially for large messages. 
+Isolates do the same, but also provide APIs
+that can more efficiently _transfer_
+the memory that holds the message instead.
+
+Creating web workers and isolates also differs.
+You can only create web workers by declaring
+a separate program entrypoint and compiling it separately.
+Starting a web worker is similar to using `Isolate.spawnUri` to start an isolate.
+You can also start an isolate with `Isolate.spawn`,
+which requires fewer resources because it
+[reuses some of the same code and data](#performance-and-isolate-groups)
+as the spawning isolate. 
+Web workers don't have an equivalent API.
+
+[Dart web platform]: /overview#platform
+[web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
