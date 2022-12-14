@@ -29,11 +29,18 @@ BASEURL="https://storage.googleapis.com/dart-archive/channels"
 CHANNELS="stable beta dev"
 ARCHS="amd64 arm64"
 
-printf "\n$(blue "Copy the following output and replace the existing code in the Dockerfile:")\n\n"
+# Fixes the odd display of color in the output
+CYAN="\033[36m"
+YELLOW="\033[33m"
+ENDCOLOR="\033[0m"
+
+echo -e "\n${CYAN}Copy the following output and replace"
+echo -e "the existing code in the Dockerfile"
+echo -e "inside the 'set eu' case statement:${ENDCOLOR}\n\n"
 
 for CHANNEL in $CHANNELS; do
   for ARCH in $ARCHS; do
-    echo -e "$(yellow "${ARCH}_${CHANNEL})") \\"
+    echo -e "${YELLOW} ${ARCH}_${CHANNEL} \\ ${ENDCOLOR}"
     _arch=$ARCH
     if [[ "$_arch" == "amd64" ]]; then
       _arch='x64'
@@ -42,11 +49,11 @@ for CHANNEL in $CHANNELS; do
     _url="$BASEURL/$CHANNEL/release/$VERSION/sdk/$_filename"
     curl -fsSLO $_url
     _checksum=$(shasum -a 256 $_filename)
-    IFS=" " # Split checksum output by space delimiter 
-    read -a _fname_arr <<< "$_checksum" # Read in string output as array
-    unset _fname_arr[-1] # Remove filename portion of checksum output
-    echo -e "$(yellow "  DART_SHA256=\"$_fname_arr\";") \\"
-    echo -e "$(yellow "  SDK_ARCH=\"$_arch\";;") \\"
+    read -a _fname_arr <<< "${_checksum}" # Read in string output as array
+    # Resolves the bad array subscript error
+    _checkonly="${_fname_arr%:*}" # Remove filename portion of checksum output
+    echo -e "${YELLOW}  DART_SHA256=\"$_checkonly\"; \\ ${ENDCOLOR}"
+    echo -e "${YELLOW}  SDK_ARCH=\"$_arch\";; \\ ${ENDCOLOR}"
     rm $_filename
   done
 done
