@@ -34,9 +34,8 @@ Library names can introduce ambiguity when determining which library a part belo
 
 [discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 
-To indicate a specific library, the preferred, modern syntax
-is to use a URI string that points directly to the library file,
-just like you use in other directives.
+The preferred syntax syntax is to use a URI string that points
+directly to the library file. 
 If you have some library, `my_library.dart`, that contains:
 
 <?code-excerpt "my_library.dart"?>
