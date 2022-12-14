@@ -4305,15 +4305,16 @@ Future<void> checkVersion() [!async!] {
 {% endprettify %}
 
 {{site.alert.note}}
-  Although an `async` function might perform time-consuming operations, it
-  doesn't wait for those operations. Instead, the `async` function executes only
-  until it encounters its first `await` expression
-  ([details][synchronous-async-start]). Then it returns a Future object,
+  Although an `async` function might perform time-consuming operations, 
+  it doesn't wait for those operations. 
+  Instead, the `async` function executes only
+  until it encounters its first `await` expression.
+  Then it returns a `Future` object,
   resuming execution only after the `await` expression completes.
 {{site.alert.end}}
 
-Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
-`await`:
+Use `try`, `catch`, and `finally` to handle errors and cleanup
+in code that uses `await`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (try-catch)"?>
 ```dart
@@ -4546,8 +4547,11 @@ shared-memory threads running concurrently. However, shared-state
 concurrency is error prone and can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of *isolates*. 
-Each Dart isolate has a single thread of execution and
-shares no mutable objects with other isolates.  
+Each Dart isolate uses a single thread of execution and
+shares no mutable objects with other isolates.
+Spinning up multiple isolates creates multiple threads of execution.
+This enables multi-threading without its primary drawback,
+[race conditions](https://en.wikipedia.org/wiki/Race_condition#In_software)
 
 For more information, see the following:
 * [Concurrency in Dart](/guides/language/concurrency)
@@ -4816,7 +4820,6 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators

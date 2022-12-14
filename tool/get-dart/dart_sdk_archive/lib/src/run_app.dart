@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/version_selector.dart';
@@ -31,10 +32,7 @@ Future<void> runApp() async {
     querySelector('#dev-os') as SelectElement,
   );
 
-  // ignore: unawaited_futures
-  stableSelector.init();
-  // ignore: unawaited_futures
-  betaSelector.init();
-  // ignore: unawaited_futures
-  devSelector.init();
+  unawaited(stableSelector.init());
+  unawaited(betaSelector.init());
+  unawaited(devSelector.init());
 }
