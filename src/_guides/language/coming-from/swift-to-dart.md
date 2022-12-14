@@ -1,6 +1,6 @@
 ---
 title: Learning Dart as a Swift developer
-description: Leverage your JavaScript knowledge when learning Dart.
+description: Leverage your Swift knowledge when learning Dart.
 ---
 
 This guide aims to leverage your Swift programming
@@ -129,7 +129,7 @@ var name = 'bob';
 ```
 
 The Swift equivalent of the above Dart code
-would looks as follows:
+would look as follows:
 
 {:.include-lang}
 ```swift
@@ -301,8 +301,12 @@ as their parent class:
 
 As number values are technically class instances,
 they have the convenience of exposing their own
-utility functions. Because of this, a `double` can,
-for example, be rounded up as follows:
+utility functions. Because of this, a `int` can,
+for example, be turned into a `double` as follows:
+
+{% comment %}
+TODO: Use a different example here, such as rounding
+{% endcomment %}
 
 {:.include-lang}
 ```dart
@@ -632,7 +636,7 @@ A non-nullable `late` field can't have null
 assigned at a later point. Also,
 a non-nullable `late` field throws a runtime error
 when observed before being initialized,
-a scenario you want to avoid in a well behaved app.
+a scenario you want to avoid in a well-behaved app.
 
 {:.include-lang}
 ```dart
@@ -737,15 +741,14 @@ function call in a `try-catch` block.
 ```dart
 try {
   // Create audio player object
-  audioPlayer = AVAudioPlayer(soundURL);
+  audioPlayer = AVAudioPlayer(soundUrl);
             
   // Play the sound
-  audioPlayer?.play();
+  audioPlayer.play();
 }
 catch {
   // Couldn't create audio player object, log the exception
-  print('Couldn't create the audio player for %s',
-     soundFilename);
+  print("Couldn't create the audio player for file $soundFilename");
 }
 ```
 
@@ -770,8 +773,8 @@ catch {
 You can use the `try-catch` block in both
 synchronous and asynchronous Dart code.
 For more information,
-see the docs for the [Error][errors] and
-[Exception][exceptions] classes.
+see the docs for the [`Error`][errors] and
+[`Exception`][exceptions] classes.
 
 ### Parameters
 
@@ -829,7 +832,7 @@ Named parameters must have a default value,
 be marked as nullable (which defaults to a `null` value,
 if not explicitly provided), or be marked as `required`
 for the function to compile.
-Nullable types and null safety](#null-safety)
+Nullable types and [null safety](#null-safety)
 are covered in a later section.
 
 To make a named parameter required in Dart,
@@ -1430,9 +1433,9 @@ fruits.addAll(['kiwi', 'mango']);
 ```
 
 For the complete List API,
-refer to the [`List<E>` class] page.
+refer to the [`List` class] documentation.
 
-[`List<E>` class]: {{site.dart-api}}/dart-core/List-class.html
+[`List` class]: {{site.dart-api}}/dart-core/List-class.html
 
 #### Unmodifiable
 
@@ -1612,7 +1615,7 @@ created using literals:
 final gifts = {
  'first': 'partridge',
  'second': 'turtle doves',
- 'fifth': 'golden rings'
+ 'fifth': 'golden rings',
 };
 
 final nobleGases = {
@@ -1628,13 +1631,13 @@ let gifts = [
    "first": "partridge",
    "second": "turtle doves",
    "fifth": "golden rings",
-];
+]
 
 let nobleGases = [
    2: "helium",
    10: "neon",
    18: "argon",
-];
+]
 ```
 
 The following code samples provide an overview
@@ -1670,7 +1673,7 @@ gifts['second'] = 'turtle doves'; // Gets updated
 ```
 
 To remove an entry from the `Map` use the `remove` method,
-and to removes all entries that satisfy a given test
+and to remove all entries that satisfy a given test
 use the `removeWhere` method:
 
 {:.include-lang}
@@ -1709,11 +1712,9 @@ constructors that set that state,
 methods with functionality,
 and even override existing members.
 For more information, check out
-[Enhanced enums with members][] on the Dart blog,
-and [Declaring enhanced enums][] in the Dart language tour.
+[Declaring enhanced enums][] in the Dart language tour.
 
 [Declaring enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
-[Enhanced enums with members]: https://medium.com/dartlang/dart-2-17-b216bfc80c5d#:~:text=verbose%20and%20repetitive.-,Enhanced,-enums%20with%20members
 
 ### Constructors 
 
@@ -1817,7 +1818,7 @@ but any additional constructors must be named.
 A class can also have only named constructors.
 
 {:.include-lang}
-```swift
+```dart
 class Point {
   double x;
   double y;
@@ -2602,7 +2603,7 @@ which can then be appropriately handled.
 Future<String> fetchString() async {
   // Typically some other async operations would be done here.
   
-  Response response = makeNetworkRequest();
+  Response response = await makeNetworkRequest();
   if (!response.success) {
     throw BadNetwork();
   }
@@ -2725,8 +2726,8 @@ completes or errors out:
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try { 
-      await for (final value in stream) {
-        sum += value;
+    await for (final value in stream) {
+      sum += value;
     }
   } catch (error) {
     print('Stream encountered an error! $err');
@@ -2742,7 +2743,7 @@ the error is thrown at the line containing the
 
 {:.include-lang}
 ```dart
-for try await value in stream {
+try {
   await for (final value in stream) { ... }
 } catch (err) {
   print('Stream encountered an error! $err');
