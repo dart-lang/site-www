@@ -794,7 +794,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to null.\n\nIn Dart, a variable or field that is not explicitly initialized automatically\ngets initialized to null.  This is reliably specified by the language.  There's\nno concept of \"uninitialized memory\" in Dart.  Adding `= null` is redundant and\nunneeded.\n\n**BAD:**\n```dart\nint _nextId = null;\n\nclass LazyId {\n  int _id = null;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n**GOOD:**\n```dart\nint _nextId;\n\nclass LazyId {\n  int _id;\n\n  int get id {\n    if (_nextId == null) _nextId = 0;\n    if (_id == null) _id = _nextId++;\n\n    return _id;\n  }\n}\n```\n\n",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null):\n\n**DON'T** explicitly initialize variables to `null`.\n\nIf a variable has a non-nullable type or is `final`, \nDart reports a compile error if you try to use it\nbefore it has been definitely initialized. \nIf the variable is nullable and not `const` or `final`, \nthen it is implicitly initialized to `null` for you. \nThere's no concept of \"uninitialized memory\" in Dart \nand no need to explicitly initialize a variable to `null` to be \"safe\".\nAdding `= null` is redundant and unneeded.\n\n**BAD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem = null;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```\n\n**GOOD:**\n```dart\nItem? bestDeal(List<Item> cart) {\n  Item? bestItem;\n\n  for (final item in cart) {\n    if (bestItem == null || item.price < bestItem.price) {\n      bestItem = item;\n    }\n  }\n\n  return bestItem;\n}\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.11"
   },
@@ -1171,7 +1171,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsEvaluation",
+    "fixStatus": "hasFix",
     "details": "Attach library doc comments (with `///`) to library directives, rather than\nleaving them dangling near the top of a library.\n\n**BAD:**\n```dart\n/// This is a great library.\nimport 'package:math';\n```\n\n```dart\n/// This is a great library.\n\nclass C {}\n```\n\n**GOOD:**\n```dart\n/// This is a great library.\nlibrary;\n\nimport 'package:math';\n\nclass C {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
@@ -1263,7 +1263,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** put a single newline at the end of non-empty files.\n\n**BAD:**\n```dart\na {\n}\n```\n\n**GOOD:**\n```dart\nb {\n}\n    <-- newline\n```    \n",
+    "details": "**DO** put a single newline at the end of non-empty files.\n\n**BAD:**\n```dart\na {\n}\n```\n\n**GOOD:**\n```dart\nb {\n}\n    <-- newline\n```\n",
     "sinceDartSdk": "2.14.0",
     "sinceLinter": "1.8.0"
   },
@@ -1368,8 +1368,8 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsFix",
-    "details": "Attach library annotations to library directives, rather than\nsome other library-level element.\n\n**BAD:**\n```dart\nimport 'package:test/test.dart';\n\n@TestOn('browser')\nvoid main() {}\n```\n\n**GOOD:**\n```dart\n@TestOn('browser')\nlibrary;\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
+    "fixStatus": "hasFix",
+    "details": "Attach library annotations to library directives, rather than\nsome other library-level element.\n\n**BAD:**\n```dart\n@TestOn('browser')\n\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**GOOD:**\n```dart\n@TestOn('browser')\nlibrary;\n\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.30.0"
   },
@@ -1426,7 +1426,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**AVOID** lines longer than 80 characters\n\nReadability studies show that long lines of text are harder to read because your\neye has to travel farther when moving to the beginning of the next line. This is\nwhy newspapers and magazines use multiple columns of text.\n\nIf you really find yourself wanting lines longer than 80 characters, our\nexperience is that your code is likely too verbose and could be a little more\ncompact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask\nyourself, “Does each word in that type name tell me something critical or\nprevent a name collision?” If not, consider omitting it.\n\nNote that `dart format` does 99% of this for you, but the last 1% is you. It \ndoes not split long string literals to fit in 80 columns, so you have to do \nthat manually.\n\nWe make an exception for URIs and file paths. When those occur in comments or\nstrings (usually in imports and exports), they may remain on a single line even\nif they go over the line limit. This makes it easier to search source files for\na given path.\n",
+    "details": "**AVOID** lines longer than 80 characters\n\nReadability studies show that long lines of text are harder to read because your\neye has to travel farther when moving to the beginning of the next line. This is\nwhy newspapers and magazines use multiple columns of text.\n\nIf you really find yourself wanting lines longer than 80 characters, our\nexperience is that your code is likely too verbose and could be a little more\ncompact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask\nyourself, “Does each word in that type name tell me something critical or\nprevent a name collision?” If not, consider omitting it.\n\nNote that `dart format` does 99% of this for you, but the last 1% is you. It\ndoes not split long string literals to fit in 80 columns, so you have to do\nthat manually.\n\nWe make an exception for URIs and file paths. When those occur in comments or\nstrings (usually in imports and exports), they may remain on a single line even\nif they go over the line limit. This makes it easier to search source files for\na given path.\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.56"
   },
@@ -1836,8 +1836,8 @@
       "recommended",
       "flutter"
     ],
-    "fixStatus": "hasFix",
-    "details": "From the [style guide](https://dart.dev/guides/language/effective-dart/usage):\n\n**DO** use `=` to separate a named parameter from its default value.\n\n**BAD:**\n```dart\nm({a: 1})\n```\n\n**GOOD:**\n```dart\nm({a = 1})\n```\n\n",
+    "fixStatus": "noFix",
+    "details": "**DEPRECATED:** In Dart 2.19, \nthe Dart analyzer reports the old `:` syntax as a warning\nand will report it as an error in Dart 3.0.\nAs a result, this rule is unmaintained \nand will be removed in a future Linter release.\n\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/usage):\n\n**DO** use `=` to separate a named parameter from its default value.\n\n**BAD:**\n```dart\nm({a: 1})\n```\n\n**GOOD:**\n```dart\nm({a = 1})\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.46"
   },
@@ -1932,7 +1932,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**DO** use `forEach` if you are only going to apply a function or a method\nto all the elements of an iterable.\n\nUsing `forEach` when you are only going to apply a function or method to all\nelements of an iterable is a good practice because it makes your code more\nterse.\n\n**BAD:**\n```dart\nfor (final key in map.keys.toList()) {\n  map.remove(key);\n}\n```\n\n**GOOD:**\n```dart\nmap.keys.toList().forEach(map.remove);\n```\n\n**NOTE:** Replacing a for each statement with a forEach call may change the \nbehavior in the case where there are side-effects on the iterable itself.\n```dart\nfor (final v in myList) {\n  foo().f(v); // This code invokes foo() many times.\n}\n\nmyList.forEach(foo().f); // But this one invokes foo() just once.\n```\n\n",
+    "details": "**DO** use `forEach` if you are only going to apply a function or a method\nto all the elements of an iterable.\n\nUsing `forEach` when you are only going to apply a function or method to all\nelements of an iterable is a good practice because it makes your code more\nterse.\n\n**BAD:**\n```dart\nfor (final key in map.keys.toList()) {\n  map.remove(key);\n}\n```\n\n**GOOD:**\n```dart\nmap.keys.toList().forEach(map.remove);\n```\n\n**NOTE:** Replacing a for each statement with a forEach call may change the\nbehavior in the case where there are side-effects on the iterable itself.\n```dart\nfor (final v in myList) {\n  foo().f(v); // This code invokes foo() many times.\n}\n\nmyList.forEach(foo().f); // But this one invokes foo() just once.\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.31"
   },
@@ -2516,7 +2516,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsEvaluation",
+    "fixStatus": "hasFix",
     "details": "**DO** use library directives if you want to document a library and/or annotate \na library.\n\n**BAD:**\n```dart\nlibrary;\n```\n\n**GOOD:**\n```dart\n/// This library does important things\nlibrary;\n```\n\n```dart\n@TestOn('js')\nlibrary;\n```\n\nNOTE: Due to limitations with this lint, libraries with parts will not be\nflagged for unnecessary library directives.\n",
     "sinceDartSdk": "Unreleased",
     "sinceLinter": "1.29.0"
