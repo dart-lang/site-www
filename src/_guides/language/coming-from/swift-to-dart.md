@@ -100,7 +100,7 @@ to the variable:
 String name = 'Bob';
 
 // Immutable String-typed variable.
-final String = 'Bob';
+final String name = 'Bob';
 
 // This is the same as `String name = 'Bob';`
 // since Dart infers the type to be String.
