@@ -248,14 +248,16 @@ void error([String? message = null]) {
 <a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
 ### DON'T use `true` or `false` in equality operations
 
-Using the equality operator to evaluate a *non-nullable* Boolean expression 
-against a Boolean literal is redundant. 
+Using the equality operator to evaluate a *non-nullable* boolean expression 
+against a boolean literal is redundant. 
 It's always simpler to eliminate the equality operator, 
-and use the unary negation operator (`!`) if necessary:
+and use the unary negation operator `!` if necessary:
 
 {:.good}
 {% prettify dart tag=pre+code %}
 if (nonNullableBool) { ... }
+
+if (!nonNullableBool) { ... }
 {% endprettify %}
 
 {:.bad}
@@ -300,10 +302,8 @@ means the condition evaluates as false.
 The `??` operator makes it clear that something to do with null is happening,
 so it won't be mistaken for a redundant operation. The logic is much clearer too; 
 the result of the expression being null is the same as the Boolean literal.
-This is commonly considered "converting" `null` to `true` or `false` to be able to
-pass the result of the evaluation to something that expects a non-nullable Boolean value.
 
-Using a null-aware operator on a variable inside a condition
+Using a null-aware operator such as `??` on a variable inside a condition
 doesn’t promote the variable to a non-nullable type. 
 If you want the variable to be promoted inside the body of the `if` statement,
 it's better to use an explicit `!= null` check instead of `??`. 
