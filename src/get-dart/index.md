@@ -58,14 +58,14 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 * **Supported versions:** Windows 10 and 11.
 * **Supported architectures:** x64, IA32, ARM64.<br>
   Support for ARM64 is experimental,
-  and is available only in the beta and dev channels.
+  and is available only in the dev channel.
 
 ### Linux
 
 * **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
 * **Supported architectures:** x64, IA32, ARM64, ARM, RISC-V (RV64GC).<br>
   Support for RISC-V is experimental, 
-  and is available only in the beta and dev channels.
+  and is available only in the dev channel.
 
 {{site.alert.note}}
   The arm support requires glibc 2.23 or newer due to a
@@ -86,19 +86,19 @@ Dart supports the following macOS versions as of November 2022:
 The Dart SDK has three release channels:
 
 * **Stable** channel: **stable releases**, updated roughly every three months;
-  currently `[calculating]`{:.editor-build-rev-stable}.
+  currently `[calculating]`{:.build-rev-stable}.
   
   Stable releases are suitable for production use.
   
 * **Beta** channel: **preview releases**, usually updated every month;
-  currently `[calculating]`{:.editor-build-rev-beta}.
+  currently `[calculating]`{:.build-rev-beta}.
   
   Beta channel builds are preview builds for the stable channel. We recommend
   testing, but not releasing, your apps against beta to preview new features or
   test compatibility with future releases.
   
 * **Dev** channel: **prereleases**, usually updated twice a week;
-  currently `[calculating]`{:.editor-build-rev-dev}.
+  currently `[calculating]`{:.build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
   are unsupported, and may contain unvetted breaking changes.

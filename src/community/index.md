@@ -74,7 +74,8 @@ Learn how to
 
 Our wonderful community has provided these resources:
 
-* [Chinese version of this site (此网站的中文版)](https://dart.cn)
+* [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
+* [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
