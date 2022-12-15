@@ -31,7 +31,8 @@ CHANNELS="stable beta dev"
 ARCHS="amd64 arm64"
 ENDING='\\\n'
 
-printf "\n$(blue "Copy the following output and replace the existing code in the Dockerfile:")\n\n"
+printf "\n$(blue "Copy the following output and replace the existing code in the Dockerfile")\n"
+printf "$(blue "inside the 'set -eu' run statement:")\n\n"
 
 
 for CHANNEL in $CHANNELS; do
