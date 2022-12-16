@@ -45,10 +45,10 @@ RUN set -eu; \
         DART_SHA256="6c9384814d1d516eec616f40d22df161e219eb15d730105a28bf260f3274b4ed"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="5fe7f37d6dc63bf8d3d0cd511a71c5b563d31376bc854e107be577925fd495a1"; \
+        DART_SHA256="1af733e28fb5aa160e3b706a6e52c52c63d3b5a8ad857313ebf996e8341898a5"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="fa48e48f77c5673e64c160278ed5623d938cb075143203221f8006baa8388966"; \
+        DART_SHA256="43351649429575afa006b9470eb72aea62bceb391c5e0b817a86404479a88934"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
