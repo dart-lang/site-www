@@ -1115,7 +1115,7 @@ class Box {
 
 ### PREFER using a `final` field to make a read-only property.
 
-{% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
+{% include linter-rule-mention.md rule="unnecessary_getters" %}
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
