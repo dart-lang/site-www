@@ -4244,8 +4244,6 @@ Keep in mind the following when you use deferred loading:
 
 To specify library-level [doc comments][] or [metadata annotations][],
 attach them to a `library` declaration at the start of the file.
-There's also no reason to name a library using the directive;
-in fact, it's [discouraged][].
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
 {% prettify dart tag=pre+code %}
