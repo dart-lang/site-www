@@ -100,7 +100,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 ### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
-{% include linter-rule-mention.md rule="file_names" %}
+{% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
 <!-- source for rules (update these if you update the guideline):
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
@@ -325,6 +325,21 @@ based on its path and filename.
 Naming libraries overrides this generated URI.
 Without the URI, it can be harder for tools to find
 the main library file in question. 
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (library-dir)"?>
+{% prettify dart tag=pre+code %}
+
+library my_library;
+{% endprettify %}
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
 
 ## Ordering
 

@@ -4240,7 +4240,7 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
 
-#### The `library` directive
+#### The `library` directive {#library-directive}
 
 The only reason to use a library directive is
 to attach library-level [doc comments][] or [metadata annotations][].
@@ -4249,14 +4249,6 @@ a `library` declaration at the start of a file.
 There's also no reason to name a library using the directive;
 in fact, it's [discouraged][].
 
-{:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (library-dir)"?>
-{% prettify dart tag=pre+code %}
-
-library my_library;
-{% endprettify %}
-
-{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
 {% prettify dart tag=pre+code %}
 /// A really great test library.
