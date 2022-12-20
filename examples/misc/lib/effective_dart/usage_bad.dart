@@ -6,7 +6,7 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_function_declarations_over_variables
 // ignore_for_file: prefer_adjacent_string_concatenation, prefer_is_not_empty, prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_this, always_declare_return_types, no_leading_underscores_for_local_identifiers
-// ignore_for_file: deprecated_colon_for_default_value
+// ignore_for_file: deprecated_colon_for_default_value, unchecked_use_of_nullable_value
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -20,18 +20,22 @@ class EnableableThing {
 
 void miscDeclAnalyzedButNotTested() {
   {
-    dynamic optionalThing;
-    // #docregion convert-null-equals
-    // If you want null to be false:
-    if (optionalThing?.isEnabled == true) {
-      print('Have enabled thing.');
-    }
+    bool nonNullableBool = true;
+    bool? nullableBool = null;
 
-    // If you want null to be true:
-    if (optionalThing?.isEnabled != false) {
-      print('Have enabled thing or nothing.');
-    }
-    // #enddocregion convert-null-equals
+    // #docregion non-null-boolean-expression
+    if (nonNullableBool == true) {/* ... */}
+
+    if (nonNullableBool == false) {/* ... */}
+    // #enddocregion non-null-boolean-expression
+
+    // #docregion nullable-boolean-expression
+    // Static error if null:
+    if (nullableBool) {/* ... */}
+
+    // If you want null to be false:
+    if (nullableBool == true) {/* ... */}
+    // #enddocregion nullable-boolean-expression
   }
 
   {
