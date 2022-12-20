@@ -4107,7 +4107,7 @@ The `import` and `library` directives can help you create a
 modular and shareable code base. Libraries not only provide APIs, but
 are a unit of privacy: identifiers that start with an underscore (`_`)
 are visible only inside the library. *Every Dart app is a library*, even
-if it doesn’t use a [`library`](#the-library-directive) directive.
+if it doesn’t use a [`library`](#library-directive) directive.
 
 Libraries can be distributed using [packages](/guides/packages).
 
@@ -4242,10 +4242,8 @@ Keep in mind the following when you use deferred loading:
 
 #### The `library` directive {#library-directive}
 
-The only reason to use a library directive is
-to attach library-level [doc comments][] or [metadata annotations][].
-Library-level comments and annotations need to prepend
-a `library` declaration at the start of a file.
+To specify library-level [doc comments][] or [metadata annotations][],
+attach them to a `library` declaration at the start of the file.
 There's also no reason to name a library using the directive;
 in fact, it's [discouraged][].
 

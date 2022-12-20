@@ -265,7 +265,7 @@ For an example of generated docs, see the
 [shelf documentation.]({{site.pub-api}}/shelf/latest)
 
 To include any *library-level* documentation in the generated docs,
-you must specify the `library` directive and attach the comment directly above it.
+add a `library` directive and attach the comment directly above it.
 For the how-and-why of documenting libraries, see
 [Effective Dart: Documentation](/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 

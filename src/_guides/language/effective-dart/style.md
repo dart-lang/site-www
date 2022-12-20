@@ -98,7 +98,8 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 [extensions]: /guides/language/extension-methods
 
-### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
+<a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
+### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
 {% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
 <!-- source for rules (update these if you update the guideline):
