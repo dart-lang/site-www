@@ -433,7 +433,7 @@ We recommend the following best practices for package dependencies.
 
 ### Use [caret syntax](#caret-syntax)
 
-Specifying dependencies with version ranges is such as `^1.6.3`
+Specifying dependencies with version ranges such as `^1.6.3`
 is a good practice because it allows the pub tool to
 select newer versions of the package when they become available.
 Also, it places an upper limit on the allowed version,
@@ -461,11 +461,12 @@ so you need to test even more thoroughly.
 
 ### Verify the integrity of downloaded packages
 
-When getting new dependencies, use the [`--enforce-lockfile`][]
+When retrieving new dependencies, use the [`--enforce-lockfile`][]
 option to ensure the extracted package content matches
 the contents of the original archive.
 Without modifying the [lockfile][],
 this flag only resolves new dependencies if:
+
 * `pubspec.yaml` is satisfied
 * `pubspec.lock` is not missing
 * The packages' [content hashes][] match

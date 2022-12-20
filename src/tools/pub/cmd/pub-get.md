@@ -147,10 +147,8 @@ To prevent precompilation, use `--no-precompile`.
 
 ### `--enforce-lockfile`
 
-Fetches dependencies, but will refuse to resolve
-if anything deviates from `pubspec.lock` or there is no `pubspec.lock`.
-Such deviations normally trigger a warning, but
-`--enforce-lockfile` turns it into an error.
+Refuses to resolve dependencies with an error message
+if the `pubspec.lock` file deviates or is missing.
 
 ### `--legacy-packages-file`
 
