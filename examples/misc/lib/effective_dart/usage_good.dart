@@ -1,7 +1,7 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 // ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
 // ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
-// ignore_for_file: use_super_parameters, dead_code, avoid_init_to_null
+// ignore_for_file: use_super_parameters, dead_code
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -13,6 +13,7 @@ Func0<Future<void>> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
 Func1<bool, dynamic> canHandle = (_) => false, verifyResult = (_) => false;
+T? somethingNullable<T>() => null;
 
 class Thing {
   bool get isEnabled => true;
@@ -21,7 +22,7 @@ class Thing {
 void miscDeclAnalyzedButNotTested() {
   {
     bool nonNullableBool = true;
-    bool? nullableBool = null;
+    bool? nullableBool = somethingNullable<bool>();
 
     // #docregion non-null-boolean-expression
     if (nonNullableBool) {/* ... */}
