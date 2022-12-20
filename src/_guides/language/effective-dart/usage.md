@@ -254,6 +254,7 @@ It's always simpler to eliminate the equality operator,
 and use the unary negation operator `!` if necessary:
 
 {:.good}
+<?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
 if (nonNullableBool) { ... }
 
@@ -261,14 +262,18 @@ if (!nonNullableBool) { ... }
 {% endprettify %}
 
 {:.bad}
+<?code-excerpt "usage_bad.dart (non-null-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
 if (nonNullableBool == true) { ... }
+
+if (nonNullableBool == false) { ... }
 {% endprettify %}
 
 To evaluate a boolean expression that *is nullable*, you should use `??`
 or an explicit `!= null` check.
 
 {:.good}
+<?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
 // If you want null to result in false:
 if (nullableBool ?? false) { ... }
@@ -279,8 +284,9 @@ if (nullableBool != null && nullableBool) { ... }
 {% endprettify %}
 
 {:.bad}
+<?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
-// Error if null 
+// Static error if null:
 if (nullableBool) { ... }
 
 // If you want null to be false:
