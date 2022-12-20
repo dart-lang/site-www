@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-RED='\e[0;31m'
-YELLOW='\e[0;33m'
-BLUE='\e[0;34m'
-GRAY='\e[0;37m'
-END='\e[0m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+GRAY='\033[0;37m'
+END='\033[0m'
 
 
 function blue() {

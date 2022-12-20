@@ -97,13 +97,6 @@ add static analysis to your tool, see the
 Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
-{{site.alert.tip}}
-  The older name for the analysis options file was `.analysis_options`;
-  support for that filename was dropped in Dart 2.8.
-  To upgrade an `.analysis_options` file,
-  just change its name to `analysis_options.yaml`.
-{{site.alert.end}}
-
 Here's a sample analysis options file:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
