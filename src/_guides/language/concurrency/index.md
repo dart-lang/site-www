@@ -194,7 +194,8 @@ but each isolate has its own memory and a single thread running an event loop.
 ### The main isolate
 
 You often don’t need to think about isolates at all.
-A typical Dart app executes all its code in the app's main isolate,
+Dart programs run in the main isolate by default.
+It's the thread where a program starts to run and execute, 
 as shown in the following figure:
 
 ![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/guides/language/concurrency/images/basics-main-isolate.png)
@@ -291,7 +292,6 @@ The worker isolate can block without affecting other isolates.
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
-
 ## Code examples
 
 This section discusses some examples
@@ -308,16 +308,125 @@ to implement isolates.
 
  [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
-
 ### Implementing a simple worker isolate
 
-This section shows the implementation for a
-main isolate and the simple worker isolate that it spawns.
-The worker isolate executes a function and then exits,
-sending the main isolate a single message as it exits.
-(The [Flutter `compute()` function][] works in a similar way.)
+These examples implement a main isolate
+that spawns a simple worker isolate.
+[`Isolate.run()`][] simplifies the steps behind
+setting up and managing worker isolates:
 
-This example uses the following isolate-related API:
+1. Spawns (starts and creates) an isolate
+2. Runs a function on the spawned isolate
+3. Captures the result
+4. Returns the result to the main isolate
+5. Terminates the isolate once work is complete
+6. Checks, captures, and throws exceptions and errors back to the main isolate
+
+[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
+
+#### Running an existing method in a new isolate
+
+The main isolate contains the code that spawns a new isolate: 
+
+<?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
+```dart
+void main() async {
+  // Read some data.
+  final jsonData = await Isolate.run(_readAndParseJson);
+
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
+}
+```
+
+The spawned isolate executes the function
+passed as the first argument, `_readAndParseJson`:
+
+<?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
+```dart
+Future<Map<String, dynamic>> _readAndParseJson() async {
+  final fileData = await File(filename).readAsString();
+  final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
+  return jsonData;
+}
+```
+
+1. `Isolate.run()` spawns an isolate, the background worker,
+   while `main()` waits for the result.
+
+2. The spawned isolate executes the argument passed to `run()`:
+   the function `_readAndParseJson()`.
+
+3. `Isolate.run()` takes the result from `return`
+   and sends the value back to the main isolate,
+   shutting down the worker isolate.
+
+4. The worker isolate *transfers* the memory holding the result
+   to the main isolate. It *does not copy* the data.
+   The worker isolate performs a verification pass to ensure
+   the objects are allowed to be transferred.
+
+`_readAndParseJson()` is an existing,
+asynchronous function that could just as easily
+run directly in the main isolate.
+Using `Isolate.run()` to run it instead enables concurrency.
+The worker isolate completely abstracts the computations
+of `_readAndParseJson()`. It can complete without blocking the main isolate.
+
+The result of `Isolate.run()` is always a Future,
+because code in the main isolate continues to run.
+Whether the computation the worker isolate executes
+is synchronous or asynchronous doesn't impact the
+main isolate, because it's running concurrently either way.
+
+{% comment %}
+TODO:
+Should create a diagram for the current example.
+Previous example's diagram and text for reference:
+
+  The following figure illustrates the communication between
+  the main isolate and the worker isolate:
+  
+  ![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
+{% endcomment %}
+
+#### Sending closures with isolates
+
+You can also create a simple worker isolate with `run()` using a
+function literal, or closure, directly in the main isolate.
+
+<?code-excerpt "lib/simple_isolate_closure.dart (main)"?>
+```dart
+void main() async {
+  // Read some data.
+  final jsonData = await Isolate.run(() async {
+    final fileData = await File(filename).readAsString();
+    final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
+    return jsonData;
+  });
+
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
+}
+```
+
+This example accomplishes the same as the previous.
+A new isolate spawns, computes something, and sends back the result.
+
+However, now the isolate sends a [closure][].
+Closures are less limited than typical named functions,
+both in how they function and how they're written into the code.
+In this example, `Isolate.run()` executes what looks like local code, concurrently.
+In that sense, you can imagine `run()` to work like a [control flow operator][]
+for “run in parallel”.
+
+[closure]: /guides/language/language-tour#anonymous-functions
+[control flow operator]: /guides/language/language-tour#control-flow-statements
+
+### Sending multiple messages between isolates
+
+`Isolate.run()` abstracts a handful of lower-level, 
+isolate-related API to simplify isolate management:
 
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
@@ -327,88 +436,13 @@ This example uses the following isolate-related API:
 [`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
-Here’s the code for the main isolate:
+You can use these primitives directly for more granular
+control over isolate functionality. For example, `run()` shuts
+down its isolate after returning a single message. 
+What if you want to allow multiple messages to pass between isolates?
+You can set up your own isolate much the same way `run()` is implemented,
+just utilizing the [`send()` method][] of `SendPort` in a slightly different way.
 
-<?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
-```dart
-void main() async {
-  // Read some data.
-  final jsonData = await _parseInBackground();
-
-  // Use that data
-  print('Number of JSON keys: ${jsonData.length}');
-}
-
-// Spawns an isolate and waits for the first message
-Future<Map<String, dynamic>> _parseInBackground() async {
-  final p = ReceivePort();
-  await Isolate.spawn(_readAndParseJson, p.sendPort);
-  return await p.first as Map<String, dynamic>;
-}
-```
-
-The `_parseInBackground()` function contains the code that
-_spawns_ (creates and starts) the isolate for the background worker,
-and then returns the result:
-
-1. Before spawning the isolate, the code creates a `ReceivePort`,
-   which enables the worker isolate
-   to send messages to the main isolate.
-
-2. Next is the call to `Isolate.spawn()`,
-   which creates and starts the isolate for the background worker.
-   The first argument to `Isolate.spawn()` is the function that
-   the worker isolate executes: `_readAndParseJson`.
-   The second argument is the `SendPort`
-   that the worker isolate can use to send messages to the main isolate.
-   The code doesn't _create_ a `SendPort`;
-   it uses the `sendPort` property of the `ReceivePort`.
-
-3. Once the isolate is spawned, the main isolate waits for the result.
-   Because the `ReceivePort` class implements `Stream`,
-   the [`first`][] property is an easy way to get
-   the single message that the worker isolate sends.
-
-[`first`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
-
-The spawned isolate executes the following code:
-
-<?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
-```dart
-Future<void> _readAndParseJson(SendPort p) async {
-  final fileData = await File(filename).readAsString();
-  final jsonData = jsonDecode(fileData);
-  Isolate.exit(p, jsonData);
-}
-```
-
-The relevant statement is the last one, which exits the isolate,
-sending `jsonData` to the passed-in `SendPort`.
-Message passing using `SendPort.send` normally involves data copying,
-and thus can be slow.
-However, when you send the data using `Isolate.exit()`,
-then the memory that holds the message in the exiting isolate isn’t copied,
-but instead is transferred to the receiving isolate.
-The sender will nonetheless perform a verification pass to ensure
-the objects are allowed to be transferred.
-
-
-{{site.alert.version-note}}
-  `Isolate.exit()` was added in 2.15.
-  Previous releases support only explicit message passing,
-  using `Isolate.send()` as shown in the next section's example.
-{{site.alert.end}}
-
-The following figure illustrates the communication between
-the main isolate and the worker isolate:
-
-![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
-
-
-### Sending multiple messages between isolates
-
-If you need more communication between isolates,
-then you need to use the [`send()` method][] of `SendPort`.
 One common pattern, which the following figure shows,
 is for the main isolate to send a request message to the worker isolate,
 which then sends one or more reply messages.
@@ -421,7 +455,8 @@ see the following [isolate samples][]:
 * [send_and_receive.dart][],
   which shows how to send a message from
   the main isolate to the spawned isolate.
-  It’s otherwise similar to the preceding example.
+  It’s otherwise similar to the preceding examples,
+  but doesn't use `run()`.
 * [long_running_isolate.dart][],
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
