@@ -30,7 +30,7 @@ on the [Flutter website]({{site.flutter}}).
   Although you might still find examples of
   using the standalone `pub` command instead of
   `dart pub` or `flutter pub`,
-  the standalone `pub` command is deprecated.
+  the standalone `pub` command has been removed.
 {{site.alert.end}}
 
 If you encounter problems using the pub tool,
