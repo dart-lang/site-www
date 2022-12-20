@@ -7,6 +7,14 @@
 // ignore_for_file: prefer_adjacent_string_concatenation, prefer_is_not_empty, prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_this, always_declare_return_types, no_leading_underscores_for_local_identifiers
 // ignore_for_file: deprecated_colon_for_default_value, unchecked_use_of_nullable_value
+// ignore_for_file: experiment_not_enabled, missing_identifier
+
+// #docregion library-dir
+
+library my_library;
+
+// #enddocregion library-dir
+
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
