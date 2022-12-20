@@ -292,16 +292,19 @@ but shouldn't be used for several reasons:
 
 * It doesn't indicate the code has anything to do with `null`.
 
-* Because it's not evidently `null` related, it can easily be mistaken for the non-nullable case,
-where the equality operator is redundant and can be removed.
-That’s only true when the boolean expression on the left has no chance of producing null, but not when it can.
+* Because it's not evidently `null` related, 
+  it can easily be mistaken for the non-nullable case,
+  where the equality operator is redundant and can be removed.
+  That’s only true when the boolean expression on the left
+  has no chance of producing null, but not when it can.
 
-* The boolean logic is confusing. If `nullableBool` is null, then `nullableBool == true`
-means the condition evaluates as false.
+* The boolean logic is confusing. If `nullableBool` is null, 
+  then `nullableBool == true` means the condition evaluates to `false`.
 
 The `??` operator makes it clear that something to do with null is happening,
-so it won't be mistaken for a redundant operation. The logic is much clearer too; 
-the result of the expression being null is the same as the Boolean literal.
+so it won't be mistaken for a redundant operation. 
+The logic is much clearer too; 
+the result of the expression being `null` is the same as the boolean literal.
 
 Using a null-aware operator such as `??` on a variable inside a condition
 doesn’t promote the variable to a non-nullable type. 
