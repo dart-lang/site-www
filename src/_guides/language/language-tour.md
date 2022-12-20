@@ -4252,7 +4252,6 @@ attach them to a `library` declaration at the start of the file.
 library;
 {% endprettify %}
 
-[discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /guides/language/language-tour#metadata
 
