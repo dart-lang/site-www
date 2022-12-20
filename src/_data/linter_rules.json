@@ -833,7 +833,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "**DON'T** check for null in custom == operators.\n\nAs null is a special type, no class can be equivalent to it.  Thus, it is\nredundant to check whether the other instance is null. \n\n**BAD:**\n```dart\nclass Person {\n  final String name;\n\n  @override\n  operator ==(other) =>\n      other != null && other is Person && name == other.name;\n}\n```\n\n**GOOD:**\n```dart\nclass Person {\n  final String name;\n\n  @override\n  operator ==(other) => other is Person && name == other.name;\n}\n```\n\n",
+    "details": "**DON'T** check for null in custom == operators.\n\nAs null is a special value, no instance of any class (other than `Null`) can be\nequivalent to it.  Thus, it is redundant to check whether the other instance is\nnull.\n\n**BAD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) =>\n      other != null && other is Person && name == other.name;\n}\n```\n\n**GOOD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) => other is Person && name == other.name;\n}\n```\n\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.31"
   },
