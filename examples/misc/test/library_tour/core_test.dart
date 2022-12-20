@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, prefer_collection_literals, avoid_function_literals_in_foreach_calls
+// ignore_for_file: type_annotate_public_apis, prefer_collection_literals, avoid_function_literals_in_foreach_calls, undefined_method
 import 'package:test/test.dart';
 
 import 'package:examples/library_tour/core/comparable.dart' as comparable;
@@ -579,11 +579,15 @@ void main() {
       // Specify a date and time in ms since the Unix epoch.
       y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
 
-      // Parse an ISO 8601 date.
+      // Parse an ISO 8601 date in the UTC time zone.
       y2k = DateTime.parse('2000-01-01T00:00:00Z');
+
+      // Create a new DateTime from an existing one, adjusting just some properties:
+      var sameTimeLastYear = now.copyWith(year: now.year - 1);
       // #enddocregion DateTime
       assert(2016 < now.year, 'Time travel is verboten!');
       expect(y2k.year, 2000);
+      expect(sameTimeLastYear.year, now.year - 1);
     });
 
     test('millisecondsSinceEpoch', () {
