@@ -29,6 +29,76 @@ specify `any` for their dependencies' [version constraints][].
 [lockfiles]: #lockfile
 [version constraints]: #version-constraint
 
+## Content hashes
+
+The pub.dev repository maintains a sha256 hash of each package version it hosts.
+Pub clients can use this hash to validate the integrity of downloaded packages,
+and protect against changes on the repository. 
+
+When `dart pub get` downloads a package,
+it computes the hash of the downloaded archive.
+The hash of each hosted dependency is stored with the
+[resolution][] in the [lockfile][].
+
+The pub client uses this content hash
+to verify that running `dart pub get` again using the same lockfile,
+potentially on a different computer, uses exactly the same packages.
+
+If the locked hash doesn't match what's currently in the pub cache,
+pub redownloads the archive. If it still doesn't match, the lockfile
+updates and a warning is printed. For example:
+
+{% prettify nocode tag=pre+code %}
+$ dart pub get
+Resolving dependencies...
+[!Cached version of foo-1.0.0 has wrong hash - redownloading.!]
+ ~ foo 1.0.0 (was 1.0.0)
+[!The existing content-hash from pubspec.lock doesn't match contents for:!]
+ * foo-1.0.0 from "pub.dev"
+This indicates one of:
+ * The content has changed on the server since you created the pubspec.lock.
+ * The pubspec.lock has been corrupted.
+ 
+[!The content-hashes in pubspec.lock has been updated.!]
+
+For more information see:
+https://dart.dev/go/content-hashes
+
+Changed 1 dependency!
+{% endprettify %}
+
+The updated content hash will show up in your version control diff,
+and should make you suspicious.
+
+To make a discrepancy become an error instead of a warning, use
+[`dart pub get --enforce-lockfile`][]. It will cause the resolution to fail
+if it cannot find package archives with the same hashes, without updating the lockfile.
+
+{% prettify nocode tag=pre+code %}
+$ dart pub get [!--enforce-lockfile!]
+Resolving dependencies...
+Cached version of foo-1.0.0 has wrong hash - redownloading.
+~ foo 1.0.0 (was 1.0.0)
+The existing content-hash from pubspec.lock doesn't match contents for:
+ * foo-1.0.0 from "pub.dev"
+
+This indicates one of:
+ * The content has changed on the server since you created the pubspec.lock.
+ * The pubspec.lock has been corrupted.
+
+For more information see:
+https://dart.dev/go/content-hashes
+[!Would change 1 dependency.
+Unable to satisfy `pubspec.yaml` using `pubspec.lock`.!]
+
+To update `pubspec.lock` run `dart pub get` without
+`--enforce-lockfile`.
+{% endprettify %}
+
+[resolution]: /tools/pub/cmd/pub-get
+[lockfile]: #lockfile
+[`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+
 ## Dependency
 
 Another package that your package relies on. If your package wants to import
@@ -111,15 +181,20 @@ identifying information for every immediate and transitive dependency a package
 relies on.
 
 Unlike the pubspec, which only lists immediate dependencies and allows version
-ranges, the lock file comprehensively pins down the entire dependency graph to
+ranges, the lockfile comprehensively pins down the entire dependency graph to
 specific versions of packages. A lockfile ensures that you can recreate the
 exact configuration of packages used by an application.
 
 The lockfile is generated automatically for you by pub when you run
 [`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade),
 or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
+Pub includes a [content hash][] for each package
+to check against during future resolutions.
+
 If your package is an application package, you will typically check this into
 source control. For library packages, you usually won't.
+
+[content hash]: #content-hashes
 
 ## SDK constraint
 

@@ -145,6 +145,11 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--enforce-lockfile`
+
+Refuses to resolve dependencies with an error message
+if the `pubspec.lock` file deviates or is missing.
+
 ### `--legacy-packages-file`
 
 If you're using Dart 2.18 and use any third-party tools
