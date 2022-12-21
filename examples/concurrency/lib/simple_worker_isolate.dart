@@ -1,5 +1,3 @@
-// ignore_for_file: undefined_method
-
 import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
