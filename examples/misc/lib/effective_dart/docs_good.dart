@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type, undefined_annotation, experiment_not_enabled, missing_identifier
+// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type
 // ignore_for_file: no_leading_underscores_for_local_identifiers, use_function_type_syntax_for_parameters
 
 // #docregion library-doc
@@ -8,6 +8,10 @@ library;
 // #enddocregion library-doc
 
 import 'package:examples_util/ellipsis.dart';
+
+class TestOn {
+  const TestOn(String platform);
+}
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {

@@ -35,7 +35,7 @@ when determining which library a part belongs to.
 
 [discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 
-The preferred syntax syntax is to use a URI string that points
+The preferred syntax is to use a URI string that points
 directly to the library file. 
 If you have some library, `my_library.dart`, that contains:
 
