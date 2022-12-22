@@ -447,7 +447,7 @@ To catch an exception, use a `try` statement with `on` or `catch` (or both):
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
 ```
 try {
-  for (final object in flybyObjects) {
+  for (final object in flybyObjects) async {
     var description = await File('$object.txt').readAsString();
     print(description);
   }
