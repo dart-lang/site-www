@@ -444,7 +444,7 @@ if (astronauts == 0) {
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-<?code-excerpt "misc/test/samples_test.dart (try)"?>
+<?code-excerpt "misc/test/samples_test.dart (try)" replace="/on.*e\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<void> describeFlybyObjects(List<String> flybyObjects) async {
   try {
