@@ -445,18 +445,20 @@ if (astronauts == 0) {
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
-```
-try {
-  for (final object in flybyObjects) {
-    var description = await File('$object.txt').readAsString();
-    print(description);
+{% prettify dart tag=pre+code %}
+Future<void> describeFlybyObjects(List<String> flybyObjects) async {
+  try {
+    for (final object in flybyObjects) {
+      var description = await File('$object.txt').readAsString();
+      print(description);
+    }
+  } [!on IOException catch (e)!] {
+    print('Could not describe object: $e');
+  } finally {
+    flybyObjects.clear();
   }
-} on IOException catch (e) {
-  print('Could not describe object: $e');
-} finally {
-  flybyObjects.clear();
 }
-```
+{% endprettify %}
 
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
