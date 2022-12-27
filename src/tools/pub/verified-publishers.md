@@ -7,11 +7,11 @@ The pub.dev verified publisher badge <img src="/assets/img/verified-publisher.sv
 lets you know that the pub.dev site 
 verified the identity of the publisher of a package.
 For example, [dart.dev]({{site.pub}}/publishers/dart.dev/)
-is the verified publisher for packages that are supported by
-Google's Dart team.
+is the verified publisher for packages that Google's Dart
+team supports.
 
 The badge appears in several places on pub.dev,
-next to packages published by verified publishers:
+next to packages that verified publishers published:
 
   * Package search results
   * Package detail pages
