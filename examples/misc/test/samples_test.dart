@@ -277,9 +277,9 @@ void main() {
   });
 
   test('try', () {
-    void testTry() async {
-      final flybyObjects = ['Moon'];
-      // #docregion try
+    final flybyObjects = ['Moon'];
+    // #docregion try
+    Future<void> describeFlybyObjects(List<String> flybyObjects) async {
       try {
         for (final object in flybyObjects) {
           var description = await File('$object.txt').readAsString();
@@ -290,9 +290,10 @@ void main() {
       } finally {
         flybyObjects.clear();
       }
-      // #enddocregion try
     }
+    // #enddocregion try
 
-    expect(testTry, prints(startsWith('Could not describe object:')));
+    expect(() => describeFlybyObjects(flybyObjects),
+        prints(startsWith('Could not describe object:')));
   });
 }
