@@ -325,7 +325,7 @@ setting up and managing worker isolates:
   on the current event loop.
 {{site.alert.end}}
 
-[Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+[Flutter `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
 #### Running an existing method in a new isolate
 
