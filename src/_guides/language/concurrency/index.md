@@ -316,14 +316,14 @@ setting up and managing worker isolates:
 
 {{site.alert.flutter-note}}
   If you're using Flutter,
-  then instead of using `Isolate.run()`,
-  consider using the [Flutter `compute()` function][].
-  On native platforms, 
-  the `compute()` function is implemented using `Isolate.run()`,
-  while on the web platform, 
-  it falls back to running the passed-in callback
-  on the current event loop.
+  consider using the [Flutter `compute()` function][]
+  instead of `Isolate.run()` to allow your code to work
+  on both [native and non-native platforms][].
+  `Isolate.run()` is the better API choice
+  for Flutter on native platforms only. 
 {{site.alert.end}}
+
+[native and non-native platforms]: overview#platform
 
 [Flutter `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
