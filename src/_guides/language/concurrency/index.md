@@ -317,10 +317,12 @@ setting up and managing worker isolates:
 {{site.alert.flutter-note}}
   If you're using Flutter,
   consider using [Flutter's `compute()` function][]
-  instead of `Isolate.run()` to allow your code to work
-  on both [native and non-native platforms][].
-  `Isolate.run()` is the more ergonomic API choice
-  for Flutter apps targeting native platforms only. 
+  instead of `Isolate.run()`.
+  The `compute` function
+  allows your code to work  on both
+  [native and non-native platforms][].
+  Use `Isolate.run()` when targeting native platforms only
+  for a more ergonomic API.
 {{site.alert.end}}
 
 [native and non-native platforms]: /overview#platform
