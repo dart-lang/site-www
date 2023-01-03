@@ -70,12 +70,13 @@ so that you can easily undo any changes.
 
 ### Switch to the latest stable Dart release
 
-Switch to the **latest stable release**
-of either the Dart SDK or the Flutter SDK.
+Switch to the **Dart 2.19 stable release**
+of the Dart SDK. This is included in the Flutter 3.7 SDK.
 
-Check that you have Dart 2.12 or later:
-  ```terminal
+Check that you have Dart 2.19:
+```terminal
 $ dart --version
+Dart SDK version: 2.19.0
 ```
 
 ### Check dependency status
@@ -327,6 +328,9 @@ except for a 2.9 [version comment][].
 
 For more information about incremental migration, see
 [Unsound null safety][].
+
+Note that only fully migrated apps and packages 
+are compatible with Dart 3.
 
 [version comment]: /guides/language/evolution#per-library-language-version-selection
 
