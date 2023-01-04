@@ -83,6 +83,10 @@ The `output` is the path of the Dart file that ffigen will create.
 The entry point is the header file containing the API.
 In this example, it is the internal `AVAudioPlayer.h` header.
 
+If you are creating an iOS plugin, you may need to reference 
+header files from the iPhoneOS SDK framework directory:
+`/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/`
+
 Another import thing you'll see,
 if you look at the [example config]({{page.example}}/pubspec.yaml),
 is the exclude and include options.
