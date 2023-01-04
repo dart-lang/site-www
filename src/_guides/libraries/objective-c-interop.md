@@ -160,6 +160,15 @@ to insert some linter ignore rules at the top of the generated file:
     // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
+In some cases you may need to specify compiler flags 
+to include the framework dependencies, or specify the minimum platform version:
+
+```yaml
+compiler-opts:
+  - "-F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks"
+  - "-mios-version-min=13.0"
+```
+
 See the [ffigen readme]({{page.ffigen}}#configurations)
 for a full list of configuration options.
 
