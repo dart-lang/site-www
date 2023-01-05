@@ -479,7 +479,13 @@ we strongly recommend following these pubspec rules:
 
 If you made it this far,
 you should have a fully migrated, null-safe Dart package.
+
 If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
+You should see output like this when running or compiling your code:
+
+```terminal
+Compiling with sound null safety
+```
 
 From all of the Dart team, *thank you* for migrating your code.

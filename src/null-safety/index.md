@@ -88,7 +88,7 @@ dependencies:
 $ dart pub get
 
 Because mypackage doesn't support null safety, version solving failed.
-The lower bound of '>=2.9.0 <3.0.0' must be 2.12.0 or higher to enable null safety.
+The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
 Libraries that opt out of null safety will cause analysis or compilation
@@ -102,8 +102,10 @@ $ dart run bin/hi.dart
 ^^^^^^^^^^^^
 ```
 
-To resolve these issues, you must [migrate](#migrate) all existing code to use
-sound null safety.
+To resolve these issues, you must 
+[upgrade your dependencies](/null-safety/migration-guide#check-dependency-status)
+for any packages you installed from pub.dev, and [migrate](#migrate) all
+existing source code you own to use sound null safety.
 
 ### Dart 3 backwards compatibility
 
@@ -124,8 +126,8 @@ been migrated to 2.12 null safety without needing a second migration.
 
 ## Dart 2.x and null safety {#enable-null-safety}
 
-In Dart 2.12 or later, null safety is a configuration option in the pubspec.
-Null safety is not available in SDK versions prior to Dart 2.12.
+In Dart 2.12 to 2.19, null safety is a configuration option in the pubspec. Null
+safety is not available in SDK versions prior to Dart 2.12.
 
 <a id="constraints"></a>
 To enable sound null safety, set the
