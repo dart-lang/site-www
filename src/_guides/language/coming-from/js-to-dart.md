@@ -324,9 +324,12 @@ with two exceptions:
 
 A Dart variable gets its type in one of two ways:
 
-1. Declared: A type written in the declaration 
-1. Inferred: An expression used to initialize the variable
-   By convention, use `var` or `final` when the analyzer can infer the type.
+1. Declared: A type written in the declaration.
+1. Inferred: An expression used to initialize the variable.
+   By [convention][omit_local_variable_types], 
+   use `var` or `final` when the analyzer can infer the type.
+
+[omit_local_variable_types]: /guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
 
 ```js
 // Declare and initialize a variable at once
