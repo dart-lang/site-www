@@ -55,6 +55,7 @@
       { "source": "/articles/language/optional-types", "destination": "/faq#types", "type": 301 },
       { "source": "/articles/libraries", "destination": "/articles", "type": 301 },
       { "source": "/articles/libraries/converters-and-codecs", "destination": "/articles/archive/converters-and-codecs", "type": 301 },
+      { "source": "/articles/libraries/dart-io", "destination": "/guides/libraries/library-tour#dartio", "type": 301 },
       { "source": "/articles/libraries/zones", "destination": "/articles/archive/zones", "type": 301 },
       { "source": "/articles/m*{,/**}", "destination": "/articles", "type": 301 },
       { "source": "/articles/m1-language-changes{,/**}", "destination": "/guides/language/spec", "type": 301 },
@@ -138,6 +139,7 @@
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html", "type": 301 },
       { "source": "/go/cloud", "destination": "/server/google-cloud?utm_source=go-link&utm_medium=referral&utm_campaign=go-cloud", "type": 301 },
+      { "source": "/go/content-hashes", "destination": "https://github.com/dart-lang/site-www/issues/4361", "type": 301 },
       { "source": "/go/core-lints", "destination": "https://github.com/dart-lang/lints", "type": 301 },
       { "source": "/go/dart-fix", "destination": "/tools/dart-fix", "type": 301 },
       { "source": "/go/dartdoc-options-file", "destination": "https://github.com/dart-lang/dartdoc#dartdoc_optionsyaml", "type": 301 },

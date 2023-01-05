@@ -245,87 +245,77 @@ void error([String? message = null]) {
 }
 {% endprettify %}
 
+<a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
+### DON'T use `true` or `false` in equality operations
 
-### PREFER using `??` to convert `null` to a boolean value.
-
-This rule applies when an expression can evaluate to `true`, `false`, or `null`,
-and you need to pass the result to something that expects a non-nullable boolean
-value. A common case is using the result of a null-aware method call as a
-condition. You can "convert" `null` to `true` or `false` using `==`, but we
-recommend using `??`:
+Using the equality operator to evaluate a *non-nullable* boolean expression 
+against a boolean literal is redundant. 
+It's always simpler to eliminate the equality operator, 
+and use the unary negation operator `!` if necessary:
 
 {:.good}
-<?code-excerpt "usage_good.dart (convert-null-aware)"?>
+<?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
-// If you want null to be false:
-if (optionalThing?.isEnabled ?? false) {
-  print('Have enabled thing.');
-}
+if (nonNullableBool) { ... }
 
-// If you want null to be true:
-if (optionalThing?.isEnabled ?? true) {
-  print('Have enabled thing or nothing.');
-}
+if (!nonNullableBool) { ... }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (convert-null-equals)"?>
+<?code-excerpt "usage_bad.dart (non-null-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
-// If you want null to be false:
-if (optionalThing?.isEnabled == true) {
-  print('Have enabled thing.');
-}
+if (nonNullableBool == true) { ... }
 
-// If you want null to be true:
-if (optionalThing?.isEnabled != false) {
-  print('Have enabled thing or nothing.');
-}
+if (nonNullableBool == false) { ... }
 {% endprettify %}
 
-Both operations produce the same result and do the right thing, but `??` is
-preferred for three main reasons:
-
-*   The `??` operator signals that the code has something to do with `null`.
-
-*   The `== true` looks like a common mistake where the equality operator is
-    redundant and can be removed. That's true when the boolean expression on the
-    left will not produce `null`, but not when it can.
-
-*   The `?? false` and `?? true` clearly show what value will be used when the
-    expression is `null`. With `== true`, you have to think through the boolean
-    logic to realize that means that a `null` gets converted to *false*.
-
-**Exception:** Using a null-aware operator on a variable inside a condition
-doesn't promote the variable to a non-nullable type. If you want the variable
-to be promoted inside the body of the `if` statement, it might be better to use
-an explicit `!= null` check instead of `?.` followed by `??`:
+To evaluate a boolean expression that *is nullable*, you should use `??`
+or an explicit `!= null` check.
 
 {:.good}
-<?code-excerpt "usage_good.dart (null-aware-promote)"?>
+<?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
-int measureMessage(String? message) {
-  if (message != null && message.isNotEmpty) {
-    // message is promoted to String.
-    return message.length;
-  }
+// If you want null to result in false:
+if (nullableBool ?? false) { ... }
 
-  return 0;
-}
+// If you want null to result in false
+// and you want the variable to type promote:
+if (nullableBool != null && nullableBool) { ... }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (null-aware-promote)"?>
+<?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 {% prettify dart tag=pre+code %}
-int measureMessage(String? message) {
-  if (message?.isNotEmpty ?? false) {
-    // message is not promoted to String.
-    return message!.length;
-  }
+// Static error if null:
+if (nullableBool) { ... }
 
-  return 0;
-}
+// If you want null to be false:
+if (nullableBool == true) { ... }
 {% endprettify %}
 
+`nullableBool == true` is a viable expression, 
+but shouldn't be used for several reasons:
+
+* It doesn't indicate the code has anything to do with `null`.
+
+* Because it's not evidently `null` related, 
+  it can easily be mistaken for the non-nullable case,
+  where the equality operator is redundant and can be removed.
+  That’s only true when the boolean expression on the left
+  has no chance of producing null, but not when it can.
+
+* The boolean logic is confusing. If `nullableBool` is null, 
+  then `nullableBool == true` means the condition evaluates to `false`.
+
+The `??` operator makes it clear that something to do with null is happening,
+so it won't be mistaken for a redundant operation. 
+The logic is much clearer too; 
+the result of the expression being `null` is the same as the boolean literal.
+
+Using a null-aware operator such as `??` on a variable inside a condition
+doesn’t promote the variable to a non-nullable type. 
+If you want the variable to be promoted inside the body of the `if` statement,
+it's better to use an explicit `!= null` check instead of `??`. 
 
 ### AVOID `late` variables if you need to check whether they are initialized.
 
@@ -1114,8 +1104,6 @@ class Box {
 
 
 ### PREFER using a `final` field to make a read-only property.
-
-{% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.

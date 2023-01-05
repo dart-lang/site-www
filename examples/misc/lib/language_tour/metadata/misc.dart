@@ -1,6 +1,8 @@
 import 'todo.dart';
 
-@Todo('seth', 'make this do something')
+// #docregion
+@Todo('Dash', 'Implement this function')
 void doSomething() {
-  print('do something');
+  print('Do something');
 }
+// #enddocregion

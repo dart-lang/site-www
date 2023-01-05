@@ -1,4 +1,4 @@
-FROM ruby:3-slim-bullseye@sha256:ed50d5719f8ecd0bae4d26bc91672f130463d7be05b67433ab595af39da1a95d as base
+FROM ruby:3.1-slim-bullseye@sha256:b8820a646bca22a4d8090ca2165a0c6552547ae8bec55bdeea3b62690ea16294 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="945c3e29ac7386e00c9eeeb2a5ccc836acb0ce9883fbc29df82fd41c90eb3bd6"; \
+        DART_SHA256="492c0e835203c4402e3d8291d12b53927f0300c8080aaf63a9113c204255a735"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="b279454d8e2827800b18b736d745126c8d99ffffdcc752156145a6ed5a39cf62"; \
+        DART_SHA256="61dbb462b48aee4f3184b6ecdd356632f39165ae8570fe77a62900a6444f702c"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="1f7f7ca69fde326ec7b67e2467581e174feab05d8b565742af70a33eb4d9ee04"; \
+        DART_SHA256="9454bfc7eeab61dd7d9b13a393c0c2978ee5a71a2059c687b1b2e8e31eef6740"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="8fd51694cc0d94fd393669a8ada893ca76e4097eb2f32fc3a95ceb8a4204e437"; \
+        DART_SHA256="b03f47f26373873643e7e7ce85fad3b6fe0220d1707be774288e9b4f1d9beddf"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="3f226a1c88ddd6ad2aff1bb2687b45ee81caa905cb8d5eaa39bdd81593c4e860"; \
+        DART_SHA256="2bd2d59e7f176b3082bd5a328924800bd9f06220d01858b7c55bac9a3f98cffe"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="3c05b5cf65ee729ad45944f9403aa6aca5c817bf54961b9d07e347059f157d5a"; \
+        DART_SHA256="28e6ed61229f847bc27328a944d5aa747ec541cfb8c66f80839fdc01a63b315f"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=2a7d087bd1843b760f9c7462dfd687869655cebf42605fdaf8a746892cf4e9d6; \
+    NODE_SHA256=061519c83ce8799cc00d36e3bab85ffcb9a8b4164c57b536cc2837048de9939f; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
@@ -106,7 +106,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.15.0
+RUN npm install -g firebase-tools@11.19.0
 RUN npm install
 
 COPY ./ ./
@@ -164,7 +164,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.15.0
+RUN npm install -g firebase-tools@11.19.0
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default

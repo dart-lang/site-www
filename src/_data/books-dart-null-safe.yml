@@ -1,11 +1,17 @@
-- title: 'Dart Apprentice'
+- title: 'Dart Apprentice: Fundamentals'
   authors:
     - Jonathan Sande
-    - Matt Galloway
-  publisher: raywenderlich
-  cover: dart-apprentice.png
-  link: "https://www.raywenderlich.com/books/dart-apprentice"
-  desc: "Dart Apprentice will teach you all the basic concepts you need to master this language. Follow along the easily and thoroughly explained concepts and you will be building Dart applications in a breeze."
+  publisher: Kodeco
+  cover: dart-apprentice-fundamentals.png
+  link: "https://www.kodeco.com/books/dart-apprentice-fundamentals"
+  desc: "Dart Apprentice: Fundamentals is the first of a two-book series that will teach you all the basic concepts you need to master this powerful and versatile language."
+- title: 'Dart Apprentice: Beyond the Basics'
+  authors:
+    - Jonathan Sande
+  publisher: Kodeco
+  cover: dart-apprentice-beyond-the-basics.png
+  link: "https://www.kodeco.com/books/dart-apprentice-beyond-the-basics"
+  desc: "Dart Apprentice: Beyond the Basics is the second of a two-book series that will teach you all the important concepts you need to master this powerful and versatile language."
 - title: "Data Structures & Algorithms in Dart"
   authors:
     - Jonathan Sande

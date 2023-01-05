@@ -134,9 +134,10 @@ update its dependencies to null-safe versions:
 Most of the changes that your code needs to be null safe
 are easily predictable.
 For example, if a variable can be `null`,
-[its type needs a `?` suffix][nullable type].
-A named parameter that shouldn't be nullable
-needs to be [marked `required`][required].
+[its type needs a `?` suffix][nullable type]. 
+If a named parameter shouldn't be nullable,
+mark it [`required`][required]
+or give it a [default value][].
 
 You have two options for migrating:
 
@@ -151,6 +152,7 @@ You have two options for migrating:
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
+[default value]: /guides/language/language-tour#default-parameters
 [migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 

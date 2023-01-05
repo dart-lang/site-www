@@ -84,6 +84,11 @@ A pubspec can have the following fields:
 : Optional. Specify files to ignore when conducting a pre-publishing search
   for potential leaks of secrets.
   [_Learn more._](#false_secrets)
+  
+`screenshots`
+: Optional. Specify a list of screenshot files to display 
+  on the [pub.dev site]({{site.pub}}).
+  [_Learn more._](#screenshots)
 
 Pub ignores all other fields,
 
@@ -376,9 +381,42 @@ the pattern is considered relative to the package's root directory.
 {{site.alert.end}}
 
 {{site.alert.version-note}}
-  Support for the `false_secrets` field was added in Dart 2.15.
+  Dart 2.15 added support for the `false_secrets` field.
 {{site.alert.end}}
 
+### Screenshots
+
+Packages can showcase their widgets or other visual elements using screenshots
+displayed on their page.
+
+A package can list up to 10 screenshots under the `screenshots` field.
+Each screenshot includes one `description` and one `path`. 
+The `description` explains what the screenshot depicts in no more than 160 
+characters. 
+For example:
+
+```yaml
+screenshots:
+  - description: 'This screenshot shows the transformation of a number of bytes 
+  to a human-readable expression.'
+    path: path/to/image/in/package/500x500.webp
+  - description: 'This screenshot shows a stack trace returning a human-readable
+  representation.'
+    path: path/to/image/in/package.png
+```
+
+Pub.dev limits screenshots to the following specifications:
+
+- File size: max 4 MB per image.
+- File types: `png`, `jpg`, `gif`, or `webp`. 
+- Static and animated images are both allowed.
+
+Keep screenshot files small.
+Each download of the package includes all screenshot files.
+
+Pub.dev generates the package's thumbnail image from the first screenshot. If 
+this screenshot uses animation, pub.dev uses its first frame.
+ 
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
