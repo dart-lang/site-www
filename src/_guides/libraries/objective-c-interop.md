@@ -349,11 +349,11 @@ must include a callback that transforms the returned data
 into Dart C Objects and sends the data, or a pointer to the object, 
 to the Dart Port. You can see an [example here](https://github.com/dart-lang/http/blob/2f8205c5254886e088aa5ebd52a2e4dc4ec18afb/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m#L63).
 
-  1. You should copy the Dart API classes from the [`dart-sdk` directory](https://github.com/dart-lang/http/tree/master/pkgs/cupertino_http/src/dart-sdk).
+    - You should copy the Dart API classes from the [`dart-sdk` directory](https://github.com/dart-lang/http/tree/master/pkgs/cupertino_http/src/dart-sdk).
 
-  1. If you will reference an Objective-C object in your Dart code, 
-   use [`retain`](https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571946-retain), to ensure the object is not garbage collected.
-  You can see an [example here](https://github.com/dart-lang/http/blob/2f8205c5254886e088aa5ebd52a2e4dc4ec18afb/pkgs/cupertino_http/src/CUPHTTPForwardedDelegate.m#L16).
+    - If you will reference an Objective-C object in your Dart code, 
+    use [`retain`](https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571946-retain), to ensure the object is not garbage collected.
+    You can see an [example here](https://github.com/dart-lang/http/blob/2f8205c5254886e088aa5ebd52a2e4dc4ec18afb/pkgs/cupertino_http/src/CUPHTTPForwardedDelegate.m#L16).
 
 1. Include the source files in the `ios/Classes` directory, 
 [as shown here](https://github.com/dart-lang/http/tree/master/pkgs/cupertino_http/ios/Classes).
