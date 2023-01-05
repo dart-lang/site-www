@@ -3,7 +3,7 @@
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart run deploy/effective-dart-rules/bin/main.dart
+      $ dart run tool/effective-dart-rules/bin/main.dart
 
     {% endcomment %}
     
@@ -101,7 +101,7 @@
 
 * <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
-* <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations'>DON'T use <code>true</code> or <code>false</code> in equality operations</a>
 * <a href='/guides/language/effective-dart/usage#avoid-late-variables-if-you-need-to-check-whether-they-are-initialized'>AVOID <code>late</code> variables if you need to check whether they are initialized.</a>
 * <a href='/guides/language/effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER assigning a nullable field to a local variable to enable type promotion.</a>
 
