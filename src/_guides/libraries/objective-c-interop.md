@@ -341,6 +341,34 @@ to the correct isolate.
 For an example of this,
 see the implementation of [`package:cupertino_http`][].
 
+There are a few steps required to handle callbacks:
+
+1. Create an Objective-C function, or method, 
+that calls the method of interest. Your helper function or method 
+must include a callback that transforms the returned data 
+into Dart C Objects and sends the data, or a pointer to the object, 
+to the Dart Port. You can see an [example here](https://github.com/dart-lang/http/blob/2f8205c5254886e088aa5ebd52a2e4dc4ec18afb/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m#L63).
+
+  1. You should copy the Dart API classes from the [`dart-sdk` directory](https://github.com/dart-lang/http/tree/master/pkgs/cupertino_http/src/dart-sdk).
+
+  1. If you will reference an Objective-C object in your Dart code, 
+   use [`retain`](https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571946-retain), to ensure the object is not garbage collected.
+  You can see an [example here](https://github.com/dart-lang/http/blob/2f8205c5254886e088aa5ebd52a2e4dc4ec18afb/pkgs/cupertino_http/src/CUPHTTPForwardedDelegate.m#L16).
+
+1. Include the source files in the `ios/Classes` directory, 
+[as shown here](https://github.com/dart-lang/http/tree/master/pkgs/cupertino_http/ios/Classes).
+
+1. Include the header files for your helper functions, or classes, 
+in the `ffigen` config [as shown here](https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/ffigen.yaml#L23).
+
+1. On the Dart side, open up a Dart port to receive the data from 
+the callback as [shown here](https://github.com/dart-lang/http/blob/047d6ed015d397be169a7fb892d75141d9bfd58f/pkgs/cupertino_http/lib/cupertino_http.dart#L823). 
+
+1. To leverage the Objective-C object in Dart, cast the pointer that 
+was passed to the Dart port. You can see an [example here](https://github.com/dart-lang/http/blob/047d6ed015d397be169a7fb892d75141d9bfd58f/pkgs/cupertino_http/lib/cupertino_http.dart#L830). `release: true` 
+ensures that the object is released.
+
+
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
 This could crash your app, or cause other unpredictable behavior.
