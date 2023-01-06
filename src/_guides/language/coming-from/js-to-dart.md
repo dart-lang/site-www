@@ -916,7 +916,7 @@ for (const element of list) {
 
 ```dart
 for (final element in list) {
-  print(element)
+  print(element);
 }
 ```
 
