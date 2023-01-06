@@ -916,7 +916,7 @@ for (const element of list) {
 
 ```dart
 for (final element in list) {
-  print(element)
+  print(element);
 }
 ```
 
@@ -1104,7 +1104,6 @@ You can invert or combine boolean expressions
 using logical operators. The logical operators
 of both languages are identical.
 
-|----------------------------------------------------------------+---------------------|---------------+
 | Meaning                                                        | JavaScript operator | Dart operator |
 |----------------------------------------------------------------|---------------------|---------------|
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
@@ -1132,7 +1131,6 @@ by using bitwise and shift operators with integers.
 The operators of both languages are almost identical,
 as shown in the following table:
 
-|-------------------------------------------------------+---------------------+---------------|
 | Meaning                                               | JavaScript operator | Dart operator |
 |-------------------------------------------------------|---------------------|---------------|
 | Bitwise AND                                           | `&`                 | `&`           |
@@ -1203,7 +1201,7 @@ the variable initial value as operands.
 The following table lists these assignment operators:
 
 | Operator | Description                     |
-+----------+---------------------------------+
+|----------|---------------------------------|
 | `=`      | Assignment                      |
 | `+=`     | Addition assignment             |
 | `-=`     | Subtraction assignment          |
@@ -1217,7 +1215,7 @@ The following table lists these assignment operators:
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
 | `|=`     | Bitwise OR assignment           |
-{:.table}
+{:.table .table-striped}
 
 JavaScript does not support the `~/=` assignment operator.
 
@@ -1585,7 +1583,7 @@ Pure JavaScript doesn't support immutability.
 Dart offers multiple ways to make collections like arrays, sets, or
 dictionaries immutable.
 
-* If the list is a compile-time constant and shouldn't
+* If the collection is a compile-time constant and shouldn't
   be modified, use the `const` keyword:<br>
   `const fruits = <String>{'apple', 'orange', 'pear'};`
 * Assign the `Set` to a `final` field, meaning that
