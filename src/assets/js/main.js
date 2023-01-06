@@ -1,4 +1,3 @@
-
 function handleSearchShortcut(event) {
   const activeElement = document.activeElement;
   if (activeElement instanceof HTMLInputElement ||
@@ -30,6 +29,23 @@ function handleSearchShortcut(event) {
         .focus();
     // Prevent the initial slash from showing up in the search field
     event.preventDefault();
+  }
+}
+
+function scrollSidebarIntoView() {
+  const sidenav = document.getElementById('sidenav');
+  if (!sidenav) {
+    return;
+  }
+
+  const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
+
+  if (activeEntries.length > 0) {
+    const activeEntry = activeEntries[activeEntries.length - 1];
+
+    sidenav.scrollTo({
+      top: activeEntry.offsetTop - window.innerHeight / 3,
+    });
   }
 }
 
@@ -210,6 +226,8 @@ $(function() {
   }
 
   $(window).smartresize(fixNav);
+
+  scrollSidebarIntoView();
 
   // Add external link indicators
   $('a[href^="http"], a[target="_blank"]')
