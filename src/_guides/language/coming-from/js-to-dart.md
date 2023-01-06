@@ -1585,7 +1585,7 @@ Pure JavaScript doesn't support immutability.
 Dart offers multiple ways to make collections like arrays, sets, or
 dictionaries immutable.
 
-* If the list is a compile-time constant and shouldn't
+* If the set is a compile-time constant and shouldn't
   be modified, use the `const` keyword:<br>
   `const fruits = <String>{'apple', 'orange', 'pear'};`
 * Assign the `Set` to a `final` field, meaning that
