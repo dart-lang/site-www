@@ -74,6 +74,7 @@ Learn how to
 
 Our wonderful community has provided these resources:
 
+* [Korean version of this site (한국어)](https://dart-ko.dev/)
 * [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
 * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 
