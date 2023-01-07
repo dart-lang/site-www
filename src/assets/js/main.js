@@ -226,7 +226,6 @@ $(function() {
   }
 
   $(window).smartresize(fixNav);
-
   scrollSidebarIntoView();
 
   // Add external link indicators
