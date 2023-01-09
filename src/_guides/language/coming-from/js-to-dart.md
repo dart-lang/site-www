@@ -82,13 +82,11 @@ Both JavaScript and Dart categorize their data into _types_.
 Every variable has an associated type.
 The type determines the kind of value the variable can store and
 what operations can be performed on these values.
-Dart differs from JavaScript in that it assigns a static type to every
-variable and to every expression.
-In Dart, the static type predicts the runtime type of the values of a
-variable, or of the value of an expression.
-Dart assigns a static type to every expression and variable.
-In Dart, the static type predicts the runtime type of the value of an
-expression. This means that Dart apps have sound static typing.
+Dart differs from JavaScript in that it assigns a static type
+to every expression and variable.
+The static type predicts the runtime type
+of the values of a variable, or of the value of an expression.
+This means that Dart apps have sound static typing.
 
 JavaScript provides primitive types `num`, `string`, and `boolean`
 and the `null` value as well as _arrays_ and a `Map` type.
