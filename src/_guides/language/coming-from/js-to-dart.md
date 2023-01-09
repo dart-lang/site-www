@@ -627,7 +627,7 @@ multiply(int a, [int b = 5, int? c]) {
 multiply(int a, [int b = 5], int c) {
   ...
 }
-// Invalid: Neither positional parameter has a default
+// Invalid: Neither optional positional parameter has a default
 //          value or has been flagged as nullable.
 multiply(int a, [int b, int c]) {
   ...
