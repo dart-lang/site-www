@@ -296,16 +296,6 @@ This section discusses some examples
 that use the `Isolate` API
 to implement isolates.
 
-{{site.alert.flutter-note}}
-  If you're using Flutter on a non-web platform,
-  then instead of using the `Isolate` API directly,
-  consider using the [Flutter `compute()` function][].
-  The `compute()` function is a simple way to
-  move a single function call to a worker isolate.
-{{site.alert.end}}
-
- [Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
-
 ### Implementing a simple worker isolate
 
 These examples implement a main isolate
@@ -321,6 +311,20 @@ setting up and managing worker isolates:
 6. Checks, captures, and throws exceptions and errors back to the main isolate
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
+
+{{site.alert.flutter-note}}
+  If you're using Flutter,
+  consider using [Flutter's `compute()` function][]
+  instead of `Isolate.run()`.
+  The `compute` function
+  allows your code to work  on both
+  [native and non-native platforms][].
+  Use `Isolate.run()` when targeting native platforms only
+  for a more ergonomic API.
+{{site.alert.end}}
+
+[native and non-native platforms]: /overview#platform
+[Flutter's `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
 #### Running an existing method in a new isolate
 
