@@ -155,6 +155,7 @@
       { "source": "/go/non-promo-write", "destination": "/tools/non-promotion-reasons#write", "type": 301 },
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
+      { "source": "/go/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
       { "source": "/go/pubignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
       { "source": "/go/sdk-constraint", "destination": "/tools/pub/pubspec#sdk-constraints", "type": 301 },
       { "source": "/go/test-docs/:page*", "destination": "https://github.com/dart-lang/test/blob/master/pkgs/test/doc/:page*", "type": 301 },
