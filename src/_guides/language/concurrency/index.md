@@ -6,7 +6,7 @@ description: Use isolates to enable parallel code execution on multiple processo
 <?code-excerpt path-base="concurrency"?>
 
 <style>
-  #page-content img {
+  article img {
     padding: 15px 0;
   }
 </style>
