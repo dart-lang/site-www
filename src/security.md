@@ -34,8 +34,13 @@ mitigations for the issue.
 The Google Security Team will respond within 5 working days of
 your report on g.co/vulnz.
 
+Before reporting a security vulnerability found by a static analysis tool,
+consider checking our list of [known false positives][].
+
 For more information about how Google handles security issues, see
 [Google’s security philosophy][].
+
+[known false positives]: /resources/security-false-positives
 
 ##  Flagging existing issues as security-related
 
