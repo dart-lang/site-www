@@ -29,8 +29,7 @@ $enable-deprecation-messages: false;
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
-$font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
-
+$font-weight-light-bold: ($font-weight-normal + $font-weight-bold) * 0.5;
 
 
 // Disable template-generated external links.
@@ -358,10 +357,10 @@ main .content {
   list-style: none;
   column-count: 2;
   column-gap: 0;
-  padding-left: $font-size-base / 2;
+  padding-left: $font-size-base * 0.5;
   li {
     page-break-inside: avoid;
-    padding: $font-size-base / 2;
+    padding: $font-size-base * 0.5;
     font-size: $font-size-small;
   }
 }
@@ -530,7 +529,7 @@ li.card {
       display: table-cell;
       text-align: right;
       color: $teal;
-      padding-right: $font-size-base / 2;
+      padding-right: $font-size-base * 0.5;
       // background-color: lightyellow;
     }
   }
@@ -713,7 +712,7 @@ ul.nav-list {
   float: right;
   .btn {
     color: $site-color-body;
-    $padding-x: $btn-padding-x / 2;
+    $padding-x: $btn-padding-x * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
   }
