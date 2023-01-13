@@ -6,11 +6,9 @@ description: Use isolates to enable parallel code execution on multiple processo
 <?code-excerpt path-base="concurrency"?>
 
 <style>
-  img {
+  article img {
     padding: 15px 0;
   }
-}
-
 </style>
 
 Dart supports concurrent programming with async-await, isolates, and
