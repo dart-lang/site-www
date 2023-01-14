@@ -333,7 +333,7 @@ A single linter rule handles all the ordering guidelines:
 [directives_ordering.](/tools/linter-rules#directives_ordering)
 
 
-### DO place "dart:" imports before other imports.
+### DO place `dart:` imports before other imports.
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
@@ -348,7 +348,7 @@ import 'package:foo/foo.dart';
 {% endprettify %}
 
 
-### DO place "package:" imports before relative imports.
+### DO place `package:` imports before relative imports.
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
