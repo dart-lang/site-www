@@ -7,7 +7,7 @@ environment:
 
 dependencies:
   html_unescape: ^2.0.0
-  markdown: ^5.0.0
+  markdown: ^6.0.0
   path: ^1.8.0
 
 dev_dependencies:

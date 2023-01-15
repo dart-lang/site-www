@@ -16,7 +16,7 @@ sass:
   cache: false
   style: compressed
   load_paths:
-    - ../node_modules
+    - ../node_modules/bootstrap-scss
 plugins:
   - jekyll-toc
 toc:

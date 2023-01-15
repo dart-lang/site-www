@@ -3,14 +3,15 @@ title: Verified publishers
 description: Learn what verified publishers are, and they're verified.
 ---
 
-The pub.dev verified publisher badge <img src="/assets/img/verified-publisher.svg" alt="pub.dev verified publisher logo"> lets you know that a package
-was published by a publisher whose identity has been verified.
+The pub.dev verified publisher badge <img src="/assets/img/verified-publisher.svg" width="20" height="20" alt="pub.dev verified publisher logo"> 
+lets you know that the pub.dev site 
+verified the identity of the publisher of a package.
 For example, [dart.dev]({{site.pub}}/publishers/dart.dev/)
-is the verified publisher for packages that are supported by
-Google's Dart team.
+is the verified publisher for packages that Google's Dart
+team supports.
 
 The badge appears in several places on pub.dev,
-next to packages published by verified publishers:
+next to packages that verified publishers published:
 
   * Package search results
   * Package detail pages
@@ -22,7 +23,9 @@ all packages belonging to that publisher,
 plus additional details such as the publisher's contact email.
 To visit the publisher page, click the publisher identity link
 (for example, `dart.dev`) next to the verified publisher badge 
-<img 
+<img
+  width="20" 
+  height="20"
   src="/assets/img/verified-publisher.svg" 
   alt="pub.dev verified publisher logo">.
 

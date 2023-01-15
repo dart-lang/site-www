@@ -90,7 +90,9 @@ Using a verified publisher has the following advantages:
 * The consumers of your package know that the publisher domain has been verified.
 * You can avoid having pub.dev display your personal email address.
   Instead, pub.dev displays the publisher domain and contact address.
-* A verified publisher badge <img src="/assets/img/verified-publisher.svg" alt="pub.dev verified publisher logo"> is displayed next to your package name on both search pages and individual package pages.
+* The pub.dev site displays a verified publisher badge 
+  <img src="/assets/img/verified-publisher.svg" width="20" height="20" alt="pub.dev verified publisher logo">
+  next to your package name on search pages and individual package pages.
 
 
 ### Creating a verified publisher {#create-verified-publisher}

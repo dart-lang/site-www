@@ -165,7 +165,7 @@ body.homepage .chip-grid-section {
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     color: $default-link;
-    margin-bottom: $font-size-base / 2;
+    margin-bottom: $font-size-base * 0.5;
     font-size: $font-size-base;
   }
 
