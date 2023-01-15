@@ -303,7 +303,8 @@ main .content {
       .octicon-link {
         @include transition(.1s);
 
-        @include md-icon-before("link");
+        @include md-icon-before("tag");
+        font-style: italic;
         font-size: 24px;
         color: $site-color-body;
         opacity: 0;
@@ -405,7 +406,7 @@ main .content {
   width: 300px;
   height: auto;
   min-height: 100px;
-  padding: $content-padding;
+  padding: 20px;
   margin: 15px;
   overflow: hidden;
   box-sizing: border-box;
@@ -547,16 +548,6 @@ li.card {
  margin: 0 auto;
 }
 
-.page-header {
-  margin: 0;
-  margin-bottom: 10px;
-  padding: $content-padding;
-  border-bottom: 1px solid $gray;
-  h1, h2 {
-    font-size: 36px;
-  }
-}
-
 // TODO: replace usage of .panel with .mini-toc
 .mini-toc {
   @extend .alert;
@@ -652,20 +643,6 @@ h3.popover-header {
     width: auto;
     background-color: $gray-dark;
     color: $white-base;
-  }
-}
-
-.alert-with-image {
-  display: table-row;
-  > img {
-    margin-right: $content-padding * 2;
-    width: $font-size-base * 3;
-    @include media-breakpoint-down(sm) { display: none; }
-  }
-  > div {
-    display: table-cell;
-    @include media-breakpoint-up(sm) { padding-left: $content-padding; }
-    vertical-align: top;
   }
 }
 
