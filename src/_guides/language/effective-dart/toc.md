@@ -3,7 +3,7 @@
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart run tool/effective-dart-rules/bin/main.dart
+      $ dart run tool/effective_dart_rules/bin/main.dart
 
     {% endcomment %}
     
@@ -27,8 +27,8 @@
 
 **Ordering**
 
-* <a href='/guides/language/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place "dart:" imports before other imports.</a>
-* <a href='/guides/language/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place "package:" imports before relative imports.</a>
+* <a href='/guides/language/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place <code>dart:</code> imports before other imports.</a>
+* <a href='/guides/language/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place <code>package:</code> imports before relative imports.</a>
 * <a href='/guides/language/effective-dart/style#do-specify-exports-in-a-separate-section-after-all-imports'>DO specify exports in a separate section after all imports.</a>
 * <a href='/guides/language/effective-dart/style#do-sort-sections-alphabetically'>DO sort sections alphabetically.</a>
 
