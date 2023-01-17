@@ -9,23 +9,23 @@ void main() async {
 }
 
 Future<void> printPackageInformation(String packageName) async {
-  final PackageInfo httpPackage;
+  final PackageInfo packageInfo;
 
   try {
-    httpPackage = await getPackage(packageName);
+    packageInfo = await getPackage(packageName);
   } on PackageRetrievalException catch (e) {
     print(e);
     return;
   }
 
-  print('Information about the http package:');
-  print('Latest version: ${httpPackage.latestVersion}');
-  print('Description: ${httpPackage.description}');
-  print('Publisher: ${httpPackage.publisher}');
+  print('Information about the $packageName package:');
+  print('Latest version: ${packageInfo.latestVersion}');
+  print('Description: ${packageInfo.description}');
+  print('Publisher: ${packageInfo.publisher}');
 
-  final httpRepository = httpPackage.repository;
-  if (httpRepository != null) {
-    print('Repository: ${httpPackage.repository}');
+  final repository = packageInfo.repository;
+  if (repository != null) {
+    print('Repository: $repository');
   }
 }
 
