@@ -5,7 +5,7 @@ description: Publish Dart packages to pub.dev directly from GitHub Actions.
 
 You can automate publishing from:
  * [GitHub Actions](https://github.com/features/actions),
- * [Google Cloud Build][9], or,
+ * [Google Cloud Build][9] or,
  * Anywhere else using a [GCP service account][2].
 
 The following sections will explain how automated publishing is configured, and
