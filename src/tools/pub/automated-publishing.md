@@ -340,7 +340,7 @@ needed.
   The _service account_ must be created in the same cloud project where you
   intend to run Cloud Build. If you need to impersonate across cloud projects,
   refer to [enabling service account impersonation across projects][27].
-{{site.alert.note}}
+{{site.alert.end}}
 
 
 ### Granting Cloud Build permission to publish
