@@ -423,6 +423,14 @@ where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
 
+## Automated Publishing
+
+Once the first version of a package has been published, it is possible to
+configured automated publishing through GitHub Actions or Google Cloud
+service acconts. See [automated publishing](/tools/pub/automated-publishing)
+for details.
+
+
 [Create a verified publisher]: {{site.pub}}/create-publisher
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
