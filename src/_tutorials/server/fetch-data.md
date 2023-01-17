@@ -30,7 +30,7 @@ with multiple options to best meet your app's requirements.
 In this tutorial,
 you will learn more about HTTP requests, URIs, and JSON.
 Then you will learn how to use [`package:http`][http-pub]
-and Dart's JSON in the [`dart:convert`][convert-docs] library
+as well as Dart's JSON support in the [`dart:convert`][convert-docs] library
 to fetch, decode, then use JSON-formatted data
 retrieved from an HTTP server.
 
