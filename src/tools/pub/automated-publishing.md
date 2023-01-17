@@ -134,7 +134,7 @@ the lines of:
 # .github/workflows/publish.yml
 name: Publish to pub.dev
 
-on:
+on:f
   push:
     tags:
     - 'v[0-9]+.[0-9]+.[0-9]+*' # tag pattern on pub.dev: 'v{{version}}'
@@ -443,7 +443,7 @@ repository in the `/cloudbuild.yaml` file.
 Do **not** specify a _service account_ for the build to be triggered with.
 Instead you'll want to use the default service account for Cloud Build.
 
-[!Configuration for trigger](images/gcb-trigger-configuration.png)
+[!Configuration for trigger](gcb-trigger-configuration.png)
 
 {{site.alert.note}}
   You can configure the Cloud Build trigger to run under a custom
@@ -477,12 +477,12 @@ requires approval, it won't run when triggered. Instead, it'll wait for
 approval.
 This can be used to limit who can publish new versions of your package.
 
-[!Enabling approvals in configuration of the Cloud Build trigger](images/gcb-approval-checkbox.png)
+[!Enabling approvals in configuration of the Cloud Build trigger](gcb-approval-checkbox.png)
 
 Only a user with the **Cloud Build Approver** role can give approval.
 When giving a approval, the approver can specify a URL and comment.
 
-[!Cloud Build run waiting for approval to run](images/gcp-waiting-for-approval.png)
+[!Cloud Build run waiting for approval to run](gcp-waiting-for-approval.png)
 
 You can also configure notifications for pending approvals.
 To learn more, check out [gate build on approval][17].
