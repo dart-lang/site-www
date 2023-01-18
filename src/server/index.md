@@ -33,10 +33,11 @@ that can help you develop command-line and server apps.
 
 ## Frameworks
 
-Server-side frameworks written in Dart.
+Server-side frameworks written in Dart:
 
 [Serverpod](https://serverpod.dev)
-: A scalable app server with support for code generation, authentication, real-time communication, databases, and caching.
+: A scalable app server that supports code generation,
+  authentication, real-time communication, databases, and caching.
 
 [Dart Frog](https://dartfrog.vgv.dev/)
 : A fast, minimalistic backend framework for Dart.
