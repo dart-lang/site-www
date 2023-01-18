@@ -98,7 +98,7 @@ check out [An overview of HTTP][] on the mdn web docs.
 ### URIs and URLs
 
 To make an HTTP request,
-you need to provide a [URI][] (Uniform Resource Identifier) for the resource.
+you need to provide a [URI][] (Uniform Resource Identifier) to the resource.
 A URI is a character string that uniquely identifies a resource.
 A URL (Uniform Resource Locator) is a specific kind of URI
 that also provides the location of the resource.
