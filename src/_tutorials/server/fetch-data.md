@@ -51,7 +51,7 @@ see [Retrieve the necessary dependencies][].
 JSON (JavaScript Object Notation) is a data-interchange format
 that has become ubiquitous across
 application development and client-server communication.
-It is both lightweight but also easy for
+It is lightweight but also easy for
 humans to read and write due to being text based.
 With JSON, various data types and simple data structures
 such as lists and maps can be serialized and represented by strings.
@@ -73,19 +73,20 @@ originally between web clients and web servers.
 You interacted with the protocol to load this page,
 as your browser uses an HTTP `GET` request
 to retrieve the contents of a page from a web server.
-Since its introduction use of the HTTP protocol and its various versions
+Since its introduction, use of the HTTP protocol and its various versions
 have expanded to applications outside the web as well,
 essentially wherever communication from a client to a server is needed.
 
 HTTP requests sent from the client to communicate with the server
-are composed of multiple components,
-that libraries such as provided by `package:http` enable control of:
+are composed of multiple components.
+HTTP libraries, such as `package:http`, allow you
+to specify the following kinds of communication:
 
 * An HTTP method defining the desired action,
   such as `GET` to retrieve data or `POST` to submit new data.
 * The location of the resource through a URI.
 * The version of HTTP being used.
-* Headers to provide extra information to the server.
+* Headers that provide extra information to the server.
 * An optional body, so the request can send data to the server,
   not just retrieve it.
 
@@ -129,14 +130,14 @@ for making composable HTTP requests,
 with optional fine-grained control.
 
 To add a dependency on `package:http`,
-run the [`dart pub add`][] command
-while specifying `http`:
+run the following [`dart pub add`][] command
+from the top of your repo:
 
 ```terminal
 $ dart pub add http
 ```
 
-To then use `package:http` in your code,
+To use `package:http` in your code,
 import it and optionally [specify a library prefix][]:
 
 <?code-excerpt "lib/fetch_data.dart (http-import)"?>
@@ -155,7 +156,7 @@ and its [API documentation][http-docs].
 
 As previously mentioned,
 to make an HTTP request,
-you first need a URL which identifies
+you first need a URL that identifies
 the resource being requested
 or endpoint being accessed.
 
@@ -191,7 +192,7 @@ If you just need to quickly fetch a string representation
 of a requested resource,
 you can use the top-level [`read`][http-read]
 function found in `package:http`
-which returns a `Future<String>` or throws
+that returns a `Future<String>` or throws
 a [`ClientException`][http-client-exc] if the request wasn't successful.
 The following example uses `read` to
 retrieve the mock JSON-formatted information
@@ -230,14 +231,14 @@ which can also be seen in your browser at
 }
 ```  
 
-Note the structure of the data,
-in this case a map,
+Note the structure of the data
+(in this case a map),
 as you will need it when decoding the JSON later on.
 
 If you need other information from the response,
 such as the [status code][] or the [headers][],
 you can instead use the top-level [`get`][http-get] function
-which returns a `Future` with a [`Response`][http-response].
+that returns a `Future` with a [`Response`][http-response].
 
 The following snippet uses `get` to get the whole response
 in order to exit early if the request was not successful,
@@ -257,15 +258,15 @@ void main() async {
 ```
 
 There are many other status codes besides **200**
-and your app may want to handle them differently.
+and your app might want to handle them differently.
 To learn more about what different status codes mean,
 see [HTTP response status codes][] on the mdn web docs.
 
-If the endpoint you are requesting from requires more information,
-such as authentication or user-agent information,
-it often requires you to include [HTTP headers][headers].
+Some server requests require more information,
+such as authentication or user-agent information;
+in this case you might need to include [HTTP headers][headers].
 You can specify headers by passing in a `Map<String, String>`
-of the key-value pairs to the `headers` optional named parameter:
+of the key-value pairs as the `headers` optional named parameter:
 
 <?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
@@ -327,8 +328,8 @@ void main() async {
 }
 ```
 
-The `RetryClient` has a default behavior
-for how many times to retry and how long between each request,
+The `RetryClient` has a default behavior for how many
+times to retry and how long to wait between each request,
 but its behavior can be modified through parameters
 to the [`RetryClient()`][http-retry-client-cons]
 or [`RetryClient.withDelays()`][http-retry-client-delay] constructors.
@@ -356,7 +357,7 @@ in the `dart:convert` library
 to convert the raw string into
 a JSON representation using Dart objects.
 In this case, the JSON data is represented in a map structure
-and in JSON, map keys are always strings,
+and, in JSON, map keys are always strings,
 so you can cast the result of `json.decode` to a `Map<String, dynamic>`:
 
 <?code-excerpt "lib/fetch_data.dart (json-decode)" plaster="none" replace="/decodeMain/main/g; /(import 'd.*?;)/[!$1!]/g; /(json\.de.*?)\;/[!$1!];/g"?>
@@ -379,12 +380,12 @@ void main() async {
 
 To provide the decoded JSON with more structure,
 making it easier to work with,
-you can create a class which can store the
+create a class that can store the
 retrieved data using specific types depending
 on the schema of your data.
 
-The following snippets shows a class-based representation
-which can store the package information returned
+The following snippet shows a class-based representation
+that can store the package information returned
 from the mock JSON file you requested.
 This structure assumes all fields except the `repository`
 are required and provided every time.
@@ -439,7 +440,7 @@ class PackageInfo {
 }
 ```
 
-A handwritten method, such as used here,
+A handwritten method, such as in the previous example,
 is often sufficient for relatively simple JSON structures,
 but there are more flexible options as well.
 To learn more about JSON serialization and deserialization,
@@ -451,8 +452,8 @@ see the [Using JSON][] guide.
 Now you have a class to store your data
 and a way to convert the decoded JSON object
 into an object of that type.
-Next you can write a function which
-puts everything to together:
+Next, you can write a function that
+pulls everything together:
 
 1. Create your `URI` based off a passed-in package name.
 2. Use `http.get` to retrieve the data for that package.
@@ -500,7 +501,7 @@ outputting information to a CLI, or
 displaying it in a [web][] or [Flutter][] app.
 
 Here is complete, runnable example
-which requests, decodes, then displays
+that requests, decodes, then displays
 the mock information about the `http` and `path` packages:
 
 <?code-excerpt "bin/fetch_http_package.dart"?>
@@ -604,7 +605,7 @@ class PackageRetrievalException implements Exception {
 
 {{site.alert.flutter-note}}
   For another example that covers fetching then displaying data in Flutter,
-  see the [Fetching data from the internet][] Flutter cookbook.
+  see the [Fetching data from the internet][] Flutter recipe.
 {{site.alert.end}}
 
 [web]: /web
@@ -613,7 +614,7 @@ class PackageRetrievalException implements Exception {
 
 ## What next?
 
-Now that you have retrieved, parsed, and utilized
+Now that you have retrieved, parsed, and used
 data from the internet,
 consider learning more about [Concurrency in Dart][].
 If your data is large and complex,
