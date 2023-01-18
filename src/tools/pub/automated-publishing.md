@@ -28,7 +28,7 @@ to use in some environments, but also pose a larger risk if accidentally leaked.
 {{site.alert.end}}
 
 
-## Publishing packages using Github Actions
+## Publishing packages using GitHub Actions
 
 You can configure automated publishing using GitHub Actions. This involves:
  * Enabling automated publishing on pub.dev, specifying:
@@ -61,21 +61,21 @@ If you have sufficient permission, you can enable automated publishing by:
 1. Click **Enable publishing from GitHub Actions**, this prompts you to
    specify:
    * A repository (`<organization>/<repository>`, example: `dart-lang/pana`),
-   * A _tag-pattern_ (a string containing `{% raw %}{{version}}{% raw %}`).
+   * A _tag-pattern_ (a string containing `{% raw %}{{version}}{% endraw %}`).
 
-The _repository_ is the `<organization>/<repository>` on Github.
+The _repository_ is the `<organization>/<repository>` on GitHub.
 For example, if your repository is
 `https://github.com/dart-lang/pana` you must specify `dart-lang/pana` in the
 repository field.
 
-The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% raw %}`.
-Only Github Actions triggered by a push of a tag that matches this
+The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% endraw %}`.
+Only GitHub Actions triggered by a push of a tag that matches this
 _tag pattern_ will be allowed to publish your package.
 
-[!Configuration of publishing from GitHub Actions on pub.dev](pub-dev-gh-setup.png)
+![Configuration of publishing from GitHub Actions on pub.dev](pub-dev-gh-setup.png)
 
-**Example:** a _tag pattern_ like `v{% raw %}{{version}}{% raw %}` allows
-Github Actions (triggered by `git tag v1.2.3 && git push v1.2.3`) to publish
+**Example:** a _tag pattern_ like `v{% raw %}{{version}}{% endraw %}` allows
+GitHub Actions (triggered by `git tag v1.2.3 && git push v1.2.3`) to publish
 version `1.2.3` of your package. Thus, it's also important that the `version` key in
 `pubspec.yaml` matches this version number.
 
@@ -171,13 +171,13 @@ To publish to pub.dev, subsequent steps can run `dart pub publish --force`.
 [sec-gh-environment]: #hardening-security-with-github-deployment-environments
 
 
-### Triggering automated publishing from Github Actions
+### Triggering automated publishing from GitHub Actions
 
 After you've configured automated publishing on `pub.dev` and created a
 GitHub Actions workflow, you can publish a new version of your package.
 To publish, push a _git tag_ matching the configured _tag pattern_.
 
-```console
+```terminal
 $ cat pubspec.yaml
 package: my_package_name
 version: 1.2.3            # must match the version number used in the git tag
@@ -200,7 +200,7 @@ Once published, you can see the publication event in the `audit-log` on
 The `audit-log` entry should contain a link to the GitHub Action run that
 published the package version.
 
-[!Audit log after publishing from GitHub Actions](audit-log-pub-gh.png)
+![Audit log after publishing from GitHub Actions](audit-log-pub-gh.png)
 
 If you don't like using the `git` CLI to create tags, you can create _releases_
 on GitHub from `https://github.com/<organization>/<repository>/releases/new`.
@@ -233,7 +233,7 @@ To require a _GitHub Actions environment_ for publishing you must:
 1. Click **Require GitHub Actions environment**.
 1. Specify an **Environment** name, (`pub.dev` is typically a good name)
 
-[!Configure pub.dev to require a GitHub deployment environment](pub-dev-gh-env-setup.png)
+![Configure pub.dev to require a GitHub deployment environment](pub-dev-gh-env-setup.png)
 
 When an environment is required on pub.dev, GitHub Actions won't be able to
 publish unless they have `environment: pub.dev`. Thus, you must:
@@ -271,7 +271,7 @@ configure _required reviewers_. If you configure this option, GitHub prevents
 actions with the environment from running until one of the
 _required reviewers_ have approved the run.
 
-[!GitHub Action waiting for deployment review](gh-pending-review.png)
+![GitHub Action waiting for deployment review](gh-pending-review.png)
 
 
 ## Publishing from Google Cloud Build
@@ -329,7 +329,7 @@ grant Cloud Build permission to impersonate this service account.
       You created this account in the previous step:
       `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
 
-[!Configuration that allows service account to publish on pub.dev](pub-dev-gcb-config.png)
+![Configuration that allows service account to publish on pub.dev](pub-dev-gcb-config.png)
 
 With this procedure complete, anyone who can impersonate the service account can
 publish new versions of the package. Make sure to review who has permissions to
@@ -443,7 +443,7 @@ repository in the `/cloudbuild.yaml` file.
 Do **not** specify a _service account_ for the build to be triggered with.
 Instead you'll want to use the default service account for Cloud Build.
 
-[!Configuration for trigger](gcb-trigger-configuration.png)
+![Configuration for trigger](gcb-trigger-configuration.png)
 
 {{site.alert.note}}
   You can configure the Cloud Build trigger to run under a custom
@@ -477,12 +477,12 @@ requires approval, it won't run when triggered. Instead, it'll wait for
 approval.
 This can be used to limit who can publish new versions of your package.
 
-[!Enabling approvals in configuration of the Cloud Build trigger](gcb-approval-checkbox.png)
+![Enabling approvals in configuration of the Cloud Build trigger](gcb-approval-checkbox.png)
 
 Only a user with the **Cloud Build Approver** role can give approval.
 When giving a approval, the approver can specify a URL and comment.
 
-[!Cloud Build run waiting for approval to run](gcp-waiting-for-approval.png)
+![Cloud Build run waiting for approval to run](gcp-waiting-for-approval.png)
 
 You can also configure notifications for pending approvals.
 To learn more, check out [gate build on approval][17].
@@ -491,7 +491,7 @@ To learn more, check out [gate build on approval][17].
 ## Publish from anywhere using a Service Account
 
 To allow automated publishing outside of GitHub Actions, you might
-authenticate using service accounts in way similiar to _Cloud Build_.
+authenticate using service accounts in way similar to _Cloud Build_.
 
 This usually involves:
 * [Create a service account for publishing][create-svc],
