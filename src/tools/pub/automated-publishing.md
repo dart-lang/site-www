@@ -134,7 +134,7 @@ the lines of:
 # .github/workflows/publish.yml
 name: Publish to pub.dev
 
-on:f
+on:
   push:
     tags:
     - 'v[0-9]+.[0-9]+.[0-9]+*' # tag pattern on pub.dev: 'v{{version}}'
