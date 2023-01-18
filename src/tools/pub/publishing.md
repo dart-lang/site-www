@@ -423,7 +423,7 @@ where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
 
-## Automated Publishing
+## Automated publishing
 
 Once the first version of a package has been published, it is possible to
 configured automated publishing through GitHub Actions or Google Cloud
