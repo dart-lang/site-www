@@ -958,7 +958,7 @@ class Person {
   // You should generally implement operator `==` if you
   // override `hashCode`.
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is Person &&
         other.firstName == firstName &&
         other.lastName == lastName;

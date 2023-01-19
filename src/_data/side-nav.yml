@@ -165,6 +165,8 @@
           permalink: /tutorials/server/get-started
         - title: Write command-line apps
           permalink: /tutorials/server/cmdline
+        - title: Fetch data from the internet
+          permalink: /tutorials/server/fetch-data
         - title: Write HTTP servers
           permalink: /tutorials/server/httpserver
         - title: Libraries and packages
@@ -179,8 +181,6 @@
           permalink: /web
         - title: Get started
           permalink: /tutorials/web/get-started
-        - title: Fetch data dynamically
-          permalink: /tutorials/web/fetch-data
         - title: Low-level web programming
           children:
           - title: Connect Dart & HTML
