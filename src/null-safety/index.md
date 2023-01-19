@@ -5,7 +5,7 @@ description: Information about Dart's null safety feature
 
 The Dart language comes with sound null safety. 
 
-In Dart 3, null safety is always enabled. In Dart 2.x,
+In Dart 3, you always get null safety. In Dart 2.x,
 it must be enabled [with a pubspec setting](#enable-null-safety).
 
 Null safety prevents errors that result from unintentional access
@@ -78,16 +78,16 @@ Dart null safety support is based on the following three core design principles:
 
 ## Dart 3 and null safety
 
-Dart 3---planned for a mid-2023 release---requires sound null safety. It
-will prevent code from running without it.
+Dart 3---planned for a mid-2023 release---always has sound null safety.
+Dart 3 will prevent code from running without it.
 
-Packages without null safety support will cause issues when resolving
-dependencies:
+Packages developed with null safety support will cause issues
+when resolving dependencies:
 
 ```
 $ dart pub get
 
-Because mypackage doesn't support null safety, version solving failed.
+Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
@@ -95,17 +95,25 @@ Libraries that opt out of null safety will cause analysis or compilation
 errors:
 
 ```
-$ dart run bin/hi.dart
+$ dart analyze .
+Analyzing ....                         0.6s
 
-../testpkg1/lib/testpkg1.dart:1:1: Error: Library doesn't support null safety.
+  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0. 
+  Try removing the language version override and migrating the code.
+  • illegal_language_version_override
+```
+
+```
+$ dart run bin/my_app.dart
+../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
 ^^^^^^^^^^^^
 ```
 
-To resolve these issues, you must 
-[upgrade your dependencies](/null-safety/migration-guide#check-dependency-status)
-for any packages you installed from pub.dev, and [migrate](#migrate) all
-existing source code you own to use sound null safety.
+To resolve these issues, check for 
+[null safe versions](/null-safety/migration-guide#check-dependency-status)
+of any packages you installed from pub.dev, and [migrate](#migrate) all
+of your own source code to use sound null safety.
 
 ### Dart 3 backwards compatibility
 
