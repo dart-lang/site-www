@@ -82,13 +82,11 @@ Both JavaScript and Dart categorize their data into _types_.
 Every variable has an associated type.
 The type determines the kind of value the variable can store and
 what operations can be performed on these values.
-Dart differs from JavaScript in that it assigns a static type to every
-variable and to every expression.
-In Dart, the static type predicts the runtime type of the values of a
-variable, or of the value of an expression.
-Dart assigns a static type to every expression and variable.
-In Dart, the static type predicts the runtime type of the value of an
-expression. This means that Dart apps have sound static typing.
+Dart differs from JavaScript in that it assigns a static type
+to every expression and variable.
+The static type predicts the runtime type
+of the values of a variable, or of the value of an expression.
+This means that Dart apps have sound static typing.
 
 JavaScript provides primitive types `num`, `string`, and `boolean`
 and the `null` value as well as _arrays_ and a `Map` type.
@@ -324,9 +322,12 @@ with two exceptions:
 
 A Dart variable gets its type in one of two ways:
 
-1. Declared: A type written in the declaration 
-1. Inferred: An expression used to initialize the variable
-   By convention, use `var` or `final` when the analyzer can infer the type.
+1. Declared: A type written in the declaration.
+1. Inferred: An expression used to initialize the variable.
+   By [convention][omit_local_variable_types], 
+   use `var` or `final` when the analyzer can infer the type.
+
+[omit_local_variable_types]: /guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
 
 ```js
 // Declare and initialize a variable at once
@@ -627,7 +628,7 @@ multiply(int a, [int b = 5, int? c]) {
 multiply(int a, [int b = 5], int c) {
   ...
 }
-// Invalid: Neither positional parameter has a default
+// Invalid: Neither optional positional parameter has a default
 //          value or has been flagged as nullable.
 multiply(int a, [int b, int c]) {
   ...
@@ -916,7 +917,7 @@ for (const element of list) {
 
 ```dart
 for (final element in list) {
-  print(element)
+  print(element);
 }
 ```
 
@@ -1104,7 +1105,6 @@ You can invert or combine boolean expressions
 using logical operators. The logical operators
 of both languages are identical.
 
-|----------------------------------------------------------------+---------------------|---------------+
 | Meaning                                                        | JavaScript operator | Dart operator |
 |----------------------------------------------------------------|---------------------|---------------|
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
@@ -1132,7 +1132,6 @@ by using bitwise and shift operators with integers.
 The operators of both languages are almost identical,
 as shown in the following table:
 
-|-------------------------------------------------------+---------------------+---------------|
 | Meaning                                               | JavaScript operator | Dart operator |
 |-------------------------------------------------------|---------------------|---------------|
 | Bitwise AND                                           | `&`                 | `&`           |
@@ -1203,7 +1202,7 @@ the variable initial value as operands.
 The following table lists these assignment operators:
 
 | Operator | Description                     |
-+----------+---------------------------------+
+|----------|---------------------------------|
 | `=`      | Assignment                      |
 | `+=`     | Addition assignment             |
 | `-=`     | Subtraction assignment          |
@@ -1217,7 +1216,7 @@ The following table lists these assignment operators:
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
 | `|=`     | Bitwise OR assignment           |
-{:.table}
+{:.table .table-striped}
 
 JavaScript does not support the `~/=` assignment operator.
 
@@ -1585,7 +1584,7 @@ Pure JavaScript doesn't support immutability.
 Dart offers multiple ways to make collections like arrays, sets, or
 dictionaries immutable.
 
-* If the list is a compile-time constant and shouldn't
+* If the collection is a compile-time constant and shouldn't
   be modified, use the `const` keyword:<br>
   `const fruits = <String>{'apple', 'orange', 'pear'};`
 * Assign the `Set` to a `final` field, meaning that

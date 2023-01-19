@@ -9,8 +9,8 @@
 {% if lint.sinceDartSdk == "Unreleased" %}
 _This rule is currently **experimental**
 and not yet available in a stable SDK._
-{% elsif lint.maturity != "stable" %}
-_This rule is currently **{{lint.maturity}}**
+{% elsif lint.state != "stable" %}
+_This rule is currently **{{lint.state}}**
 and available as of Dart {{lint.sinceDartSdk}}._
 {% else %}
 _This rule is available as of Dart {{lint.sinceDartSdk}}._

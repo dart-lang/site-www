@@ -7,16 +7,20 @@ import 'package:path/path.dart' as path;
 final _unescape = HtmlUnescape();
 final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
-void main(List<String> arguments) async {
+void main() async {
   const dirPath = 'src/_guides/language/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
-  var sections = filenames.map((name) => Section(dirPath, name)).toList();
+  var sections =
+      filenames.map((name) => Section(dirPath, name)).toList(growable: false);
 
   for (final section in sections) {
     var lines = section.file.readAsLinesSync();
-    // Ignore the YAML frontmatter (can lead to false H3 elements).
-    lines = lines.skip(1).skipWhile((line) => line.trim() != '---').toList();
+    // Ignore the YAML front matter (can lead to false H3 elements).
+    lines = lines
+        .skip(1)
+        .skipWhile((line) => line.trim() != '---')
+        .toList(growable: false);
     var document = md.Document();
 
     var nodes = document.parseLines(lines);
@@ -42,7 +46,7 @@ void main(List<String> arguments) async {
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart run deploy/effective-dart-rules/bin/main.dart
+      $ dart run tool/effective_dart_rules/bin/main.dart
 
     {% endcomment %}
     ''');
