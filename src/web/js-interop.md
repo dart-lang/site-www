@@ -51,13 +51,13 @@ per library.
 
 [Dart 3]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
 [`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/dart2wasm.md#running-dart2wasm
-[`package:js`]: https://pub.dev/packages/js
+[`package:js`]: {{site.pub-pkg}}/js
 
 ### `package:js`
 
 If you're interested in interop that will work with
 `dart2wasm` when Dart 3 is released, you can implement
-[static interop][] using the `package:js` class `@staticInterop`.
+[static interop][] using the `package:js` annotation `@staticInterop`.
 Static interop will be continually eveloving until Dart 3.
 
 The set of features for future static interop currently includes:
@@ -70,8 +70,8 @@ The set of features for future static interop currently includes:
 * Top-level external members
 * [`@JSExport`][] for mocking and exports
 
-[static interop]: https://github.com/dart-lang/sdk/tree/main/pkg/js#staticinterop
-[`@JSExport`]: https://github.com/dart-lang/sdk/tree/main/pkg/js#jsexport-and-js_utilcreatedartexport
+[static interop]: https://pub.dev/packages/js#staticinterop
+[`@JSExport`]: https://pub.dev/packages/js#jsexport-and-js_utilcreatedartexport
 
 ### `dart:js_util`
 
