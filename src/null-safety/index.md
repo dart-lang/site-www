@@ -84,7 +84,7 @@ Dart 3 will prevent code from running without it.
 Packages developed without null safety support will cause issues
 when resolving dependencies:
 
-```
+```terminal
 $ dart pub get
 
 Because pkg1 doesn't support null safety, version solving failed.
@@ -94,7 +94,7 @@ The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable nu
 Libraries that opt out of null safety will cause analysis or compilation
 errors:
 
-```
+```terminal
 $ dart analyze .
 Analyzing ....                         0.6s
 
@@ -103,7 +103,7 @@ Analyzing ....                         0.6s
   • illegal_language_version_override
 ```
 
-```
+```terminal
 $ dart run bin/my_app.dart
 ../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
