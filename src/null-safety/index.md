@@ -81,7 +81,7 @@ Dart null safety support is based on the following three core design principles:
 Dart 3---planned for a mid-2023 release---always has sound null safety.
 Dart 3 will prevent code from running without it.
 
-Packages developed with null safety support will cause issues
+Packages developed without null safety support will cause issues
 when resolving dependencies:
 
 ```
