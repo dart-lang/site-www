@@ -131,13 +131,13 @@ environment:
 
 This allows developers to use Dart 3 sound null safety with packages that have
 been migrated to 2.12 null safety without needing a second migration.
-Note that this only applies to code that doesn't depend on Dart 3 breaking
-changes:
+Note that this only applies to code that
+doesn't depend on Dart 3 breaking changes:
 
 * Several historical core library APIs have been removed; for details,
-see the GitHub issues [#34233][] and [#49529][].
+  see the GitHub issues [#34233][] and [#49529][].
 * The historical language syntax for default parameter values
-([#2357][]) has been discontinued.
+  ([#2357][]) has been discontinued.
 
 
 ## Dart 2.x and null safety {#enable-null-safety}
