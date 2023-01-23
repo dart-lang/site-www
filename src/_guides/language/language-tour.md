@@ -1710,7 +1710,7 @@ You can implement many of these [operators as class members](#_operators).
 | logical OR                              | `||`                                                                                                                                                                                              | Left          |
 | if null                                 | `??`                                                                                                                                                                                              | Left          |
 | conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
-| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
+| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
 {:.table .table-striped}
 
