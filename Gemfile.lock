@@ -19,10 +19,11 @@ GEM
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     google-protobuf (3.21.12)
+    google-protobuf (3.21.12-x86_64-linux)
     http_parser.rb (0.8.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    jekyll (4.3.1)
+    jekyll (4.3.2)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -98,7 +99,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 7.0.4)
-  jekyll (= 4.3.1)
+  jekyll (= 4.3.2)
   jekyll-sass-converter (~> 3.0.0)
   jekyll-toc (~> 0.17.1)
   kramdown-parser-gfm
