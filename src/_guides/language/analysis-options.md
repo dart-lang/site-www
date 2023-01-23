@@ -42,7 +42,7 @@ produces the following warning:
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
-info - example.dart:9:19 - Avoid empty statements. - empty_statements
+info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 </blockquote>
 
