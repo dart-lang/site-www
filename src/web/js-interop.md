@@ -84,7 +84,7 @@ as before.
 more idiomatic in Dart, and making the boundary between the two languages more visible.
 For example, it enforces that JS classes are not meant to be mixed with Dart
 (e.g. no dynamic calls, JS interop types cannot be implemented as a Dart class).
-We expect upcoming integration with inline-classes
+We expect upcoming integration with inline classes
 will help make interop even more idiomatic.
 
 You can implement static interop using the `package:js`
@@ -111,7 +111,7 @@ visit the [static interop][] specification.
 We recommend using static interop over `js_util`
 in future JS interop. 
 
-However, since `js_util` provides lower-level
+However, since [`js_util`][] provides lower-level
 functionality than static interop, it can be
 configured in a more granular, customizable way.
 This means `js_util` could *potentially* help with
@@ -126,6 +126,6 @@ The former is what we recommend, but it may be easier
 to automate migrations using the latter.
 
 While `dart:js_util` is supported by `dart2wasm` in future interop,
-it won't be as ergonomic, and won't be optimized for it. 
+it won't be as ergonomic, and won't be optimized. 
 
 [`js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
