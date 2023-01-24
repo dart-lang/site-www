@@ -140,7 +140,7 @@
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html", "type": 301 },
       { "source": "/go/automated-publishing", "destination": "/tools/pub/automated-publishing", "type": 301 }, 
       { "source": "/go/cloud", "destination": "/server/google-cloud?utm_source=go-link&utm_medium=referral&utm_campaign=go-cloud", "type": 301 },
-      { "source": "/go/content-hashes", "destination": "https://github.com/dart-lang/site-www/issues/4361", "type": 301 },
+      { "source": "/go/content-hashes", "destination": "/tools/pub/glossary#content-hashes", "type": 301 },
       { "source": "/go/core-lints", "destination": "https://github.com/dart-lang/lints", "type": 301 },
       { "source": "/go/dart-fix", "destination": "/tools/dart-fix", "type": 301 },
       { "source": "/go/dart2js-info", "destination": "https://github.com/dart-lang/sdk/tree/main/pkg/dart2js_info", "type": 301 },
