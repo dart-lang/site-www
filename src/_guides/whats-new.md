@@ -111,7 +111,7 @@ We published the following articles on the Dart blog:
 * [Google Summer of Code 2022 Results][blog-11-3-22]
 * [Partnering with GitHub on supply chain security for Dart packages][blog-10-6-22]
 
-[blog-1-24-23]: https://medium.com/@mbelanger_65682/547ef3d6459b
+[blog-1-24-23]: https://medium.com/dartlang/547ef3d6459b
 [blog-1-18-23]: https://medium.com/dartlang/screenshots-and-automated-publishing-for-pub-dev-9bceb19edf79
 [blog-12-8-22]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
 [blog-11-3-22]: https://medium.com/dartlang/google-summer-of-code-2022-results-a3ce1c13c06c
