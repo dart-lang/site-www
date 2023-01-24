@@ -22,44 +22,69 @@ For help using the `js` package, see the following:
 [js-api]: {{site.pub-api}}/js
 [sass]: {{site.pub-pkg}}/sass
 
-## Future-proof JS interop
-
-Dart's JS interop story is currently evolving. 
-Many of the features that enable future JS interop,
-and support of all three compilers,
-are ready to use (Dart version 2.19). 
-To ease the transition to future JS interop,
-you can refactor your code to conform to the
-syntax and semantics of the new features now.
+## Next-generation JS interop preview
 
 {{site.alert.note}}
-  Future-proofing is for those *very* eager to
-  prepare their code for [Dart 3][], or to try
-  integrating with [`dart2wasm`][] before Dart 3.
-  None of this necessarily works *performantly* on
-  `dart2wasm` yet, but refactoring now means you
-  won't need to later, if that's important to you.
+  This interop feature is **experimental**,
+  and [in active development](https://github.com/dart-lang/sdk/issues/35084).
 {{site.alert.end}}
 
+Dart's JS interop story is currently evolving. 
+Many of the features that enable future JS interop
+are ready to experiment with as of Dart version 2.19.
+These features support the existing production
+and development web compilers, as well as Dart's
+in-progress Wasm compiler ([`dart2wasm`][]).
+
+For a glimpse into the next generation of JS interop,
+you can refactor your code to conform to the new
+syntax and semantics now. Doing so will
+likely not prevent the need to refactor again once
+[Dart 3][] lands, as the features are still in development. 
+However, the features available for preview are much
+closer to future JS interop than any pattern supported today,
+so there are a few reasons to try them out now:
+* Potentially ease transition of existing JS
+interop code once migration becomes necessary.
+* Existing JS interop developers eager to prepare their code for Dart 3.
+* Existing JS interop developers eager to integrate with `dart2wasm`.
+* New JS interop developers learning future JS interop
+so they won't have to unlearn obsolete patterns in a few months.
+
 The following sections are the set of features
-expected to work across compilers for JS interop,
-per library.
+expected to work across compilers for JS interop.
 
 *Requirements:*
 * Dart SDK constraint: `>= 2.19`
 * [`package:js`][] constraint: `>= 0.6.6`
 
-[Dart 3]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
 [`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/dart2wasm.md#running-dart2wasm
+[Dart 3]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
 [`package:js`]: {{site.pub-pkg}}/js
 
 ### `package:js`
 
-If you're interested in interop that will work with
-`dart2wasm` when Dart 3 is released, you can implement
-[static interop][] using the `package:js` annotation `@staticInterop`.
-Static interop will be continually eveloving until Dart 3.
+The key feature of next-generation JS interop is [static interop][].
+We recommend using static interop as the default for `package:js`,
+as it is more declaritive, more likely to be optimized,
+more likely to perform better, and required for `dart2wasm`.
+Static interop addresses several gaps in the existing JS interop story:
 
+* **Missing features:** Static interop enables previously
+unavailable features, like easily wrapping and transforming APIs,
+renaming members, and static checking.
+
+* **Inconsistencies:** Static interop makes backends more consistent,
+so development and production web compilers won't behave as differently
+as before.
+
+* **Clarity:** JS interop uses Dart syntax in non-Dart contexts,
+which can be cognitively challenging. Static interop doesn't
+solve this yet, but the upcoming integration with inline-classes
+will help make interop more idiomatic.
+
+You can implement static interop using the `package:js`
+annotation `@staticInterop`.
 The set of features for future static interop currently includes:
 * `@staticInterop` interfaces
   * External factory constructors with and without `@anonymous`
@@ -70,29 +95,51 @@ The set of features for future static interop currently includes:
 * Top-level external members
 * [`@JSExport`][] for mocking and exports
 
+To learn how to implement static interop and see examples,
+visit the [static interop][] specification.
+
 [static interop]: https://pub.dev/packages/js#staticinterop
 [`@JSExport`]: https://pub.dev/packages/js#jsexport-and-js_utilcreatedartexport
 
+
 ### `dart:js_util`
 
-If you're interested in refactoring your [`js_util`][]
-interop code in preparation for Dart 3, the following
-list of features for the library currently work:
-* jsify
-* dartify
-* getProperty
-* hasProperty
-* setProperty
-* callMethod
-* callConstructor
-* instanceof
-* promiseToFuture
-* globalThis
-* newObject
-* createStaticInteropMock
-* createDartExport
-* allowInterop
+We recommend using static interop over `js_util`
+in future JS interop. 
 
-The library may continue to evolve before Dart 3.
+However, since `js_util` provides lower-level
+functionality than static interop, it can be
+configured in a more granular, customizable way.
+This means `js_util` could *potentially* help with
+some rare edge cases we haven't accounted for yet,
+that static interop won't be able to  address.
 
-[`js_util`]: https://pub.dev/packages/js_util
+For example, we may discover that some migrations are
+easier to accomplish with `js_util`. Preexisting uses of
+`dart:js` (now deprecated) can be replaced by a combination
+of static interop and `dart:js_util`.
+The former is what we recommend, but it may be easier
+to automate migrations using the latter.
+
+The following subset of `dart:js_util` features
+currently work across the JS and Wasm compilers
+for JS interop (more may be added before Dart 3):
+* `jsify`
+* `dartify`
+* `getProperty`
+* `hasProperty`
+* `setProperty`
+* `callMethod`
+* `callConstructor`
+* `instanceof`
+* `promiseToFuture`
+* `globalThis`
+* `newObject`
+* `createStaticInteropMock`
+* `createDartExport`
+* `allowInterop`
+
+While `dart:js_util` is supported by `dart2wasm` in future interop,
+it won't be as ergonomic, and won't be optimized for it. 
+
+[`js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
