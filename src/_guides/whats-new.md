@@ -67,9 +67,9 @@ we made the following changes to this site:
 * Added documentation on [package screenshots][].
 * Improved the [explicit downcast section][] of The Dart type system page.
 * Increased analyzer and lint coverage:
- * 
- * 
- * 
+  * 
+  * 
+  * 
  
 
 [Fetch data from the internet]: /tutorials/server/fetch-data
