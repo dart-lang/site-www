@@ -284,6 +284,27 @@ see [Adding features to a class: mixins][] in the language tour.
 
 [Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
 
+### Dart 2.19
+
+Dart 2.19 introduced some precautions surrounding type inference.
+The cases covered are rare, but needed to be addressed to close
+loopholes and make way for more complex inference-related language
+features upcoming in the next major release. These include:
+
+* Flow analysis now flags code as unreachable due to `Never` and `Null` types.
+* Inaccessible private names can no longer delegate to `noSuchMethod`.
+* Cyclic dependencies now cause a compile-time error during top-level type inference.
+
+Dart 2.19 also introduced support for unnamed libraries. Library directives, used for appending library-level doc comments and annotations, can ([and should][]) now be written without a name:
+
+```dart
+/// A really great test library.
+@TestOn('browser')
+library;
+```
+
+[and should]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
