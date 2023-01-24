@@ -79,11 +79,11 @@ we made the following changes to this site:
 [Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
 [booleans and equality operators]: /guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
-[Zones]: /articles/archives/zones
+[Zones]: /articles/archive/zones
 [Documentation]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
-[The language tour]: /guides/language/language-tour#the-library-directive
+[The language tour]: /guides/language/language-tour#library-directive
 [Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
 [Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /guides/language/concurrency#concurrency-on-the-web
