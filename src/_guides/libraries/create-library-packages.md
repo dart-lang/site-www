@@ -50,14 +50,6 @@ lib directory
   To make APIs under lib/src public, you can export lib/src files
   from a file that's directly under lib.
 
-{{site.alert.note}}
-  When the `library` directive isn't specified, a unique
-  tag is generated for each library based on its path and filename.
-  Therefore, we suggest that you omit the `library` directive from
-  your code unless you plan to
-  [generate library-level documentation](#documenting-a-library).
-{{site.alert.end}}
-
 ## Organizing a library package
 
 Library packages are easiest to maintain, extend, and test
@@ -272,11 +264,11 @@ void updateBadge() {
 For an example of generated docs, see the
 [shelf documentation.]({{site.pub-api}}/shelf/latest)
 
-{{site.alert.note}}
-  To include any library-level documentation in the generated docs,
-  you must specify the `library` directive.
-  See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
-{{site.alert.end}}
+To include any *library-level* documentation in the generated docs,
+add a `library` directive and attach the comment directly above it.
+For the how-and-why of documenting libraries, see
+[Effective Dart: Documentation](/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
+
 
 ## Distributing an open source library {#distributing-a-library}
 
