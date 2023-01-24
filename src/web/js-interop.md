@@ -42,14 +42,16 @@ syntax and semantics now. Doing so will
 likely not prevent the need to refactor again once
 [Dart 3][] lands, as the features are still in development. 
 However, the features available for preview are much
-closer to future JS interop than any pattern supported today,
-so there are a few reasons to try them out now:
+closer to future JS interop than any pattern supported today.
+So, there are a few reasons to try them out now:
+
+* New JS interop developers can learn and build with future JS interop
+so they won't have to unlearn obsolete patterns in a few months.
+* Existing JS interop developers eager to experiment with
+the latest features in JS interop
+or with `dart2wasm` when it becomes available.
 * Potentially ease transition of existing JS
 interop code once migration becomes necessary.
-* Existing JS interop developers eager to prepare their code for Dart 3.
-* Existing JS interop developers eager to integrate with `dart2wasm`.
-* New JS interop developers learning future JS interop
-so they won't have to unlearn obsolete patterns in a few months.
 
 The following sections are the set of features
 expected to work across compilers for JS interop.
@@ -78,10 +80,12 @@ renaming members, and static checking.
 so development and production web compilers won't behave as differently
 as before.
 
-* **Clarity:** JS interop uses Dart syntax in non-Dart contexts,
-which can be cognitively challenging. Static interop doesn't
-solve this yet, but the upcoming integration with inline-classes
-will help make interop more idiomatic.
+* **Clarity:** Static interop takes a step towards making JS interop
+more idiomatic in Dart, and making the boundary between the two languages more visible.
+For example, it enforces that JS classes are not meant to be mixed with Dart
+(e.g. no dynamic calls, JS interop types cannot be implemented as a Dart class).
+We expect upcoming integration with inline-classes
+will help make interop even more idiomatic.
 
 You can implement static interop using the `package:js`
 annotation `@staticInterop`.
@@ -120,24 +124,6 @@ easier to accomplish with `js_util`. Preexisting uses of
 of static interop and `dart:js_util`.
 The former is what we recommend, but it may be easier
 to automate migrations using the latter.
-
-The following subset of `dart:js_util` features
-currently work across the JS and Wasm compilers
-for JS interop (more may be added before Dart 3):
-* `jsify`
-* `dartify`
-* `getProperty`
-* `hasProperty`
-* `setProperty`
-* `callMethod`
-* `callConstructor`
-* `instanceof`
-* `promiseToFuture`
-* `globalThis`
-* `newObject`
-* `createStaticInteropMock`
-* `createDartExport`
-* `allowInterop`
 
 While `dart:js_util` is supported by `dart2wasm` in future interop,
 it won't be as ergonomic, and won't be optimized for it. 
