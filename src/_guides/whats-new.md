@@ -51,11 +51,11 @@ we made the following changes to this site:
   * Effective Dart: [Documentation][], [Style][], and [Usage][]
   * New library directive section in [The language tour][]
 * Improved clarity surrounding Dart's single-threaded or multi-threaded status:
- * Removed the outdated `dart:io` page.
- * Added two sections to the FAQ:
-   * [Is Dart single-threaded?][]
-   * [Is Dart single-threaded on the web?][]
- * Expanded on [Dart's web concurrency capabilities][].
+  * Removed the outdated `dart:io` page.
+  * Added two sections to the FAQ:
+    * [Is Dart single-threaded?][]
+    * [Is Dart single-threaded on the web?][]
+  * Expanded on [Dart's web concurrency capabilities][].
 * Rearranged and clarified [discussion][] of default values for optional and positional parameters.
 * Updated [Concurrency in Dart][] to default to new `Isolate.run()` function.
 * Documented specifying a file path when activating a package on the [`pub global` page][].
@@ -86,7 +86,7 @@ we made the following changes to this site:
 [The language tour]: /guides/language/language-tour#the-library-directive
 [Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
 [Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
-[Dart's concurrency capabilities]: /guides/language/concurrency#concurrency-on-the-web
+[Dart's web concurrency capabilities]: /guides/language/concurrency#concurrency-on-the-web
 [discussion]: /guides/language/language-tour#parameters
 [Concurrency in Dart]: /guides/language/concurrency
 [`pub global` page]: /tools/pub/cmd/pub-global
