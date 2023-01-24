@@ -291,11 +291,14 @@ The cases covered are rare, but needed to be addressed to close
 loopholes and make way for more complex inference-related language
 features upcoming in the next major release. These include:
 
-* Flow analysis now flags code as unreachable due to `Never` and `Null` types.
+* Flow analysis now flags more code as unreachable due to `Never` and `Null` types.
 * Inaccessible private names can no longer delegate to `noSuchMethod`.
 * Cyclic dependencies now cause a compile-time error during top-level type inference.
 
-Dart 2.19 also introduced support for unnamed libraries. Library directives, used for appending library-level doc comments and annotations, can ([and should][]) now be written without a name:
+Dart 2.19 also introduced support for unnamed libraries.
+Library directives, used for appending 
+library-level doc comments and annotations, 
+can ([and should][]) now be written without a name:
 
 ```dart
 /// A really great test library.

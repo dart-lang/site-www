@@ -35,9 +35,8 @@ we made the following changes to this site:
 
 * Introduced the [Fetch data from the internet][] tutorial about using `package:http`.
 * Added a page on [Automated publishing of packages to pub.dev][].
-* Included links to three new site translations in our [community resources section][]:
+* Included links to two new site translations in our [community resources section][]:
   * [Korean version of this site (한국어)](https://dart-ko.dev/)
-  * [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
   * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 * Updated null safety content in preparation of Dart 3:
   * Changed the version constraints in the [migration guide][] for Dart 3 compatibility.
@@ -46,7 +45,8 @@ we made the following changes to this site:
 * Introduced the new [Learning Dart as a Swift developer][] guide.
 * Replaced an Effective Dart section with more general guidance on [booleans and equality operators][]. 
 * Documented [content-hashing][] across the pub docs.
-* Began effort to overhaul [Zones][] page by changing examples to use `runZonedGuarded` instead of `onError`.
+* Began effort to overhaul the [Zones][] page by
+  changing examples to use `runZonedGuarded` instead of `onError`.
 * Updated content on libraries to cover new no-name declarations development:
   * Effective Dart: [Documentation][], [Style][], and [Usage][]
   * New library directive section in [The language tour][]
@@ -67,7 +67,7 @@ we made the following changes to this site:
 * Added documentation on [package screenshots][].
 * Improved the [explicit downcast section][] of The Dart type system page.
 * Increased [analyzer][] and [lint][] coverage:
-  * Included SDK information for linter rules.
+  * Included SDK version support info for linter rules.
   * Added diagnostic and lint messages for 2.19 changes.
  
 [Fetch data from the internet]: /tutorials/server/fetch-data
