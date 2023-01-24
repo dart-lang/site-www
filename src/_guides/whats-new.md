@@ -66,12 +66,10 @@ we made the following changes to this site:
 * Accounted for [pub's transition to pub.dev][] from pub.dartlang.org.
 * Added documentation on [package screenshots][].
 * Improved the [explicit downcast section][] of The Dart type system page.
-* Increased analyzer and lint coverage:
-  * 
-  * 
-  * 
+* Increased [analyzer][] and [lint][] coverage:
+  * Included SDK information for linter rules.
+  * Added diagnostic and lint messages for 2.19 changes.
  
-
 [Fetch data from the internet]: /tutorials/server/fetch-data
 [Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
 [community resources section]: /community#additional-community-resources
@@ -99,6 +97,8 @@ we made the following changes to this site:
 [pub's transition to pub.dev]: /tools/pub/troubleshoot#pub-get-socket-error
 [package screenshots]: /tools/pub/pubspec#screenshots
 [explicit downcast section]: /guides/language/type-system#generic-type-assignment
+[analyzer]: /tools/diagnostic-messages
+[lint]: /tools/linter-rules
 
 ### Articles added to the Dart blog
 {: .no_toc}
