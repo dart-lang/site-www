@@ -386,7 +386,7 @@ dependency_overrides:
     path: ../transmogrify_patch/
 ```
 
-When you run [`pub get`][] or [`pub upgrade`][],
+When you run [`dart pub get`][] or [`dart pub upgrade`][],
 the pubspec's lockfile is updated to reflect the
 new path to your dependency and, wherever transmogrify is used, pub
 uses the local version instead.
@@ -429,33 +429,51 @@ depend on that package.
 These stale versions can have a negative impact on
 the stability, performance, and quality of apps.
 
-We recommend the following best practices for package dependencies:
+We recommend the following best practices for package dependencies.
 
-Use [caret syntax](#caret-syntax)
-: Specifying dependencies with version ranges is such as `^1.6.3`
-  is a good practice because it allows the pub tool to
-  select newer versions of the package when they become available.
-  Also, it places an upper limit on the allowed version,
-  based on an assumption that packages use [semantic versions][],
-  where any version of path versioned `1.x` is compatible,
-  but where a new version `2.x` would be a major upgrade
-  that isn't semantically compatible with `1.x` versions. 
+### Use [caret syntax](#caret-syntax)
 
-Depend on the latest stable package versions
-: Use [`pub upgrade`][] to update to the latest package versions
-  that your pubspec allows.
-  To identify dependencies in your app or package that
-  aren't on the latest stable versions,
-  use [`pub outdated`][].
+Specifying dependencies with version ranges such as `^1.6.3`
+is a good practice because it allows the pub tool to
+select newer versions of the package when they become available.
+Also, it places an upper limit on the allowed version,
+based on an assumption that packages use [semantic versions][],
+where any version of path versioned `1.x` is compatible,
+but where a new version `2.x` would be a major upgrade
+that isn't semantically compatible with `1.x` versions. 
 
-Test whenever you update package dependencies
-: If you run [`pub upgrade`][] without updating your pubspec,
-  the API should stay the same
-  and your code should run as before—but test to make sure.
-  If you modify the pubspec and update to a new major version,
-  then you might encounter breaking changes,
-  so you need to test even more thoroughly.
+### Depend on the latest stable package versions
 
+Use [`dart pub upgrade`][] to update to the latest package versions
+that your pubspec allows.
+To identify dependencies in your app or package that
+aren't on the latest stable versions,
+use [`dart pub outdated`][].
+
+### Test whenever you update package dependencies
+
+If you run [`dart pub upgrade`][] without updating your pubspec,
+the API should stay the same
+and your code should run as before—but test to make sure.
+If you modify the pubspec and update to a new major version,
+then you might encounter breaking changes,
+so you need to test even more thoroughly.
+
+### Verify the integrity of downloaded packages
+
+When retrieving new dependencies, use the [`--enforce-lockfile`][]
+option to ensure the extracted package content matches
+the contents of the original archive.
+Without modifying the [lockfile][],
+this flag only resolves new dependencies if:
+
+* `pubspec.yaml` is satisfied
+* `pubspec.lock` is not missing
+* The packages' [content hashes][] match
+
+[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+[lockfile]: /tools/pub/glossary#lockfile
+[content hashes]: /tools/pub/glossary#content-hashes
 ---
 
 <aside id="fn:semver" class="footnote" markdown="1">
@@ -469,9 +487,9 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pub package manager]: /guides/packages
-[`pub get`]: /tools/pub/cmd/pub-get
-[`pub outdated`]: /tools/pub/cmd/pub-outdated
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
+[`dart pub get`]: /tools/pub/cmd/pub-get
+[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
+[`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [PubGrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
 [pubsite]: {{site.pub}}
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints

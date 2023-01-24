@@ -101,7 +101,7 @@ For a list of available IDEs, see the
 To create a web app from the command line, use these commands:
 
 ```terminal
-$ dart create -t web-simple quickstart
+$ dart create -t web quickstart
 ```
 
 <i class="material-icons">web</i>

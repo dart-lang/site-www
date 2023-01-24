@@ -341,8 +341,10 @@ result is a complete list of every package that your app depends on either
 directly or indirectly and the best version of that package that will work with
 your app's constraints.
 
-Pub takes that and writes it out to a **lockfile** in your app's directory
-called `pubspec.lock`. 
+For each package, pub takes that information,
+computes a [content hash][] from it,
+and writes both to a [**lockfile**][]
+in your app's directory called `pubspec.lock`. 
 When pub builds the `.dart_tool/package_config.json` file for your app, 
 it uses the lockfile to know what versions of each package to refer to. 
 (And if you're curious to see what versions it selected, 
@@ -359,6 +361,9 @@ control system!_ That way, everyone on your team will be using
 the exact same versions of every dependency when they build your app. You'll
 also use this when you deploy your app so you can ensure that your production
 servers are using the exact same packages that you're developing with.
+
+[**lockfile**]: /tools/pub/glossary#lockfile
+[content hash]: /tools/pub/glossary#content-hashes
 
 ## When things go wrong
 
