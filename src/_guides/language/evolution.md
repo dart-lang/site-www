@@ -287,15 +287,11 @@ see [Adding features to a class: mixins][] in the language tour.
 ### Dart 2.19
 
 Dart 2.19 introduced some precautions surrounding type inference.
-The cases covered are rare, but needed to be addressed to close
-loopholes and make way for more complex inference-related language
-features upcoming in the next major release. These include:
+These include:
 
-* Flow analysis now flags more cases as unreachable
-  due to `Never` and `Null` types.
-* Inaccessible private names can no longer delegate to `noSuchMethod`.
-* Cyclic dependencies now cause a compile-time error
-  during top-level type inference.
+* More flow analysis flags for unreachable code cases.
+* No longer delegate inaccessible private names to `noSuchMethod`.
+* Top-level type inference throws on cyclic dependencies.
 
 Dart 2.19 also introduced support for unnamed libraries.
 Library directives, used for appending
