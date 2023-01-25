@@ -3,21 +3,16 @@ title: dart pub add
 description: Use dart pub add to add a dependency.
 ---
 
-version note: Introduced in 2.19, this is the recommended method for add now, others will be deprecated (see old section)
-
-
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```nocode
 $ dart pub add <package>[:<constraint>] [<package2>[:<constraint2>]... ] [options]
-$ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor]
-       ...]
 ```
 
 This command adds the specified packages to the `pubspec.yaml` as dependencies, 
-and then gets the dependencies. 
+and then gets the dependencies.  
 
-For example, the following command is equivalent to
+The following example command is equivalent to
 editing `pubspec.yaml` to add the `http` package, 
 and then calling `dart pub get`:
 
@@ -31,91 +26,140 @@ For example, if 0.13.3 is the latest stable version of the `http` package,
 then `dart pub add http` adds
 `http: ^0.13.3` under `dependencies` in the pubspec.
 
-if `dart pub add foo:<constraint>` is an existing dependency, will update the constraint rather than fail.
+You can also specify a constraint or constraint range
 
-It can add multiple packages from different sources, 
-and have some packages be dev dependencies while others are not. 
+```terminal
+$ dart pub add foo:2.0.0
+$ dart pub add foo:'>=2.0.0'
+$ dart pub add foo:'>2.0.0 <3.0.1'
+```
 
-[dev dependency]: /tools/pub/dependencies#dev-dependencies
+If `dart pub add <package>:<constraint>` is an existing dependency,
+it will update the constraint.
 
-## YAML syntax
+## YAML descriptor
 
-`descriptor` is a yaml-formatted descriptor, as it would be written in pubspec.yaml in the dependencies section
-foo:{<source>:<descriptor>,"version":"<constraint>"}
+{{site.alert.version-note}}
+  YAML-formatted descriptor syntax was added in Dart 2.19.
+  The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
+  We still support these arguments, but the documented method is now yaml-descriptor only.
+{{site.alert.end}}
 
+The YAML descriptor reflects how dependencies are written in `pubspec.yaml`.
 
-For example:
-  * Add a hosted dependency at newest compatible stable version:
-    `$topLevelProgram pub add foo`
-  * Add a hosted dev dependency at newest compatible stable version:
-    `$topLevelProgram pub add dev:foo`
-  * Add a hosted dependency with the given constraint
-    `$topLevelProgram pub add foo:^1.2.3`
-  * Add multiple dependencies:
-    `$topLevelProgram pub add foo dev:bar`
-  * Add a path dependency:
-    `$topLevelProgram pub add 'foo{"path":"../foo"}'`
-  * Add a hosted dependency:
-    `$topLevelProgram pub add 'foo{"hosted":"my-pub.dev"}'`
-  * Add an sdk dependency:
-    `$topLevelProgram pub add 'foo{"sdk":"flutter"}'`
-  * Add a git dependency:
-    `$topLevelProgram pub add 'foo{"git":"https://github.com/foo/foo"}'`
-  * Add a git dependency with a path and ref specified:
-    `$topLevelProgram pub add /
-      'foo{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'`
+```nocode
+$ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor]
+       ...]
+```
 
+Within the `descriptor` you can add a package with specific constraints or other sources:
+```nocode
+'<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
+```
 
+The `descriptor` syntax cannot be used in conjunction with any of the optional arguments it replaces.
+Their new corresponding yaml sources are listed below.
 
-  /// Examples:
-  /// ```
-  /// retry
-  /// retry:2.0.0
-  /// dev:retry:^2.0.0
-  /// retry:'>=2.0.0'
-  /// retry:'>2.0.0 <3.0.1'
-  /// 'retry:>2.0.0 <3.0.1'
-  /// retry:any
-  /// 'retry:{"path":"../foo"}'
-  /// 'retry:{"git":{"url":"../foo","ref":"branchname"},"version":"^1.2.3"}'
-  /// 'retry:{"sdk":"flutter"}'
-  /// 'retry:{"hosted":"mypub.dev"}'
-  /// ```
+### `dev` {#d---dev}
 
-### `dev:`
-
-To add a [dev dependency][], use the `dev:` prefix:
+Adds the package as a [dev dependency][],
+instead of as a regular dependency.
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 
 ```terminal
-$ dart pub add dev:test
+$ dart pub add dev:foo           # adds newest compatible stable version of foo
+$ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
+$ dart pub add foo dev:bar`      # adds regular dependency foo and dev dependency bar simultaneously
 ```
 
-### `hosted`
+_Previously the `-d, --dev` option_:
 
-### `path`
-
-### `sdk`
-
-### `git`
+```terminal
+$ dart pub add --dev foo
+```
 
 ### `git` 
 
-#### `path`
+Adds a git dependency. 
 
-#### `ref`
+```terminal
+# dart pub add 'foo{"git":"https://github.com/foo/foo"}'
+```
 
-#### `url`
+You can also specify the repository, and the branch or commit, or exact location, within that repository:
 
+```terminal
+# dart pub add 'foo{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
+```
+
+#### `url` {#git-urlgit_repo_url}
+
+Depends on the package in the
+[specified Git repository](/tools/pub/dependencies#git-packages).
+
+```terminal
+# dart pub add 'foo{"git":"https://github.com/foo/foo"}'
+```
+
+_Previously the `--git-url=<git_repo_url>` option_:
+
+```terminal
+$ dart pub add http --git-url=https://github.com/my/http.git
+```
+
+#### `ref` {#git-refbranch_or_commit}
+
+With `url`, depends on the specified branch or commit of a Git repo.
+
+_Previously the `--git-ref=<branch_or_commit>` option_:
+
+```terminal
+$ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
+```
+
+#### `path` {#git-pathdirectory_path}
+
+With `url`, specifies the location of a package within a Git repo.
+
+_Previously the `--git-path=<directory_path>` option_.
+
+### `hosted` {#hosted-urlpackage_server_url}
+
+Adds a hosted dependency that depends on
+the package server at the specified URL
+
+```terminal
+$ dart pub add 'foo:{"hosted":"my-pub.dev"}'
+```
+
+_Previously the `--hosted-url=<package_server_url>` option_
+
+### `path` {#pathdirectory_path}
+
+Adds path dependency on a locally stored package.
+
+```terminal 
+$ dart pub add 'foo:{"path":"../foo"}'
+```
+
+_Previously the `--path=<directory_path>` option_.
+
+### `sdk` {#sdksdk_name}
+
+Adds a package with the specified SDK dependency.
+
+```terminal
+$ dart pub add 'foo:{"sdk":"flutter"}'
+```
+
+_Previously the `--sdk=<sdk_name>` option_:
+
+```terminal
+$ dart pub add foo --sdk=flutter
+```
 
 ## Options
-
-The `descriptor` used to be given with args like `--path`, `--sdk`,
-`--git-<option>`.
-
-We still support these arguments, but now the documented way to give the
-descriptor is to give a yaml-descriptor as in pubspec.yaml.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
@@ -127,67 +171,6 @@ For options that apply to all pub commands, see
   will add both the `test` and `http` packages 
   as dev dependencies.
 {{site.alert.end}}
-
-### `-d, --dev`
-
-_See yaml section_
-
-Adds the package as a dev dependency,
-instead of as a regular dependency.
-
-To add a [dev dependency][], use the `--dev` option:
-
-[dev dependency]: /tools/pub/dependencies#dev-dependencies
-
-```terminal
-$ dart pub add --dev test
-```
-
-### `--git-url=`_`<git_repo_url>`_
-
-_hidden/deprecated in favor of new syntax_
-
-Depends on the package in the
-[specified Git repository](/tools/pub/dependencies#git-packages).
-
-```terminal
-$ dart pub add http --git-url=https://github.com/my/http.git
-```
-
-### `--git-ref=`_`<branch_or_commit>`_
-
-_hidden/deprecated in favor of new syntax_
-
-With `--git-url`, depends on the specified branch or commit of a Git repo.
-
-```terminal
-$ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
-```
-
-### `--git-path=`_`<directory_path>`_
-
-_hidden/deprecated in favor of new syntax_
-
-With `--git-url`, specifies the location of a package within a Git repo.
-
-### `--hosted-url=`_`<package_server_url>`_
-
-_hidden/deprecated in favor of new syntax_
-
-Depends on the package server at the specified URL.
-
-### `--path=`_`<directory_path>`_
-
-_hidden/deprecated in favor of new syntax_
-
-Depends on a locally stored package.
-
-### `--sdk=`_`<sdk_name>`_
-
-_hidden/deprecated in favor of new syntax_
-
-Depends on a package that's shipped with the specified SDK
-(example: `--sdk=flutter`).
 
 ### `--[no-]offline`
 
