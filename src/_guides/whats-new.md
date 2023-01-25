@@ -17,6 +17,108 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## January 25, 2023: 2.19 + 3.0 alpha releases
+
+This section lists notable changes made from August 31, 2022,
+through January 25, 2023.
+For details about the 2.19 + 3.0 alpha releases,
+see [Introducing Dart 3 alpha][],
+and the [SDK changelog][].
+
+[Introducing Dart 3 alpha]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#2190
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Introduced the [Fetch data from the internet][] tutorial about using `package:http`.
+* Added a page on [Automated publishing of packages to pub.dev][].
+* Included links to two new site translations in our [community resources section][]:
+  * [Korean version of this site (한국어)](https://dart-ko.dev/)
+  * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
+* Updated null safety content in preparation of Dart 3:
+  * Changed the version constraints in the [migration guide][] for Dart 3 compatibility.
+  * Added Dart 3 full sound null safety overview to the [Sound null safety][] page.
+  * Emphasized Dart 3's incompatibility with [unsound null safety][] in a note.
+* Introduced the new [Learning Dart as a Swift developer][] guide.
+* Replaced an Effective Dart section with more general guidance on [booleans and equality operators][]. 
+* Documented [content-hashing][] across the pub docs.
+* Began effort to overhaul the [Zones][] page by
+  changing examples to use `runZonedGuarded` instead of `onError`.
+* Updated content on libraries to cover new no-name declarations development:
+  * Effective Dart: [Documentation][], [Style][], and [Usage][]
+  * New library directive section in [The language tour][]
+* Improved clarity surrounding Dart's single-threaded or multi-threaded status:
+  * Removed the outdated `dart:io` page.
+  * Added two sections to the FAQ:
+    * [Is Dart single-threaded?][]
+    * [Is Dart single-threaded on the web?][]
+  * Expanded on [Dart's web concurrency capabilities][].
+* Rearranged and clarified [discussion][] of default values for optional and positional parameters.
+* Updated [Concurrency in Dart][] to default to new `Isolate.run()` function.
+* Documented specifying a file path when activating a package on the [`pub global` page][].
+* Rewrote [Learning Dart as a JavaScript developer][].
+* Added a brief overview of Dart DevTools to [`dart run` page][].
+* Provided more clarity around [operator precedence and associativity][] in the Language tour.
+* Expanded Library tour section on [Building URIs][] with URI http and factory constructor info.
+* Accounted for [pub's transition to pub.dev][] from pub.dartlang.org.
+* Added documentation on [package screenshots][].
+* Improved the [explicit downcast section][] of The Dart type system page.
+* Increased [analyzer][] and [lint][] coverage:
+  * Included SDK version support info for linter rules.
+  * Added diagnostic and lint messages for 2.19 changes.
+ 
+[Fetch data from the internet]: /tutorials/server/fetch-data
+[Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
+[community resources section]: /community#additional-community-resources
+[migration guide]: /null-safety/migration-guide
+[Sound null safety]: /null-safety#dart-3-and-null-safety
+[unsound null safety]: /null-safety/unsound-null-safety
+[Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
+[booleans and equality operators]: /guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations
+[content-hashing]: /tools/pub/glossary#content-hashes
+[Zones]: /articles/archive/zones
+[Documentation]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
+[The language tour]: /guides/language/language-tour#library-directive
+[Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
+[Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
+[Dart's web concurrency capabilities]: /guides/language/concurrency#concurrency-on-the-web
+[discussion]: /guides/language/language-tour#parameters
+[Concurrency in Dart]: /guides/language/concurrency
+[`pub global` page]: /tools/pub/cmd/pub-global
+[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+[`dart run` page]: /tools/dart-run#debugging
+[operator precedence and associativity]: /guides/language/language-tour#operators
+[Building URIs]: /guides/libraries/library-tour#building-uris
+[pub's transition to pub.dev]: /tools/pub/troubleshoot#pub-get-socket-error
+[package screenshots]: /tools/pub/pubspec#screenshots
+[explicit downcast section]: /guides/language/type-system#generic-type-assignment
+[analyzer]: /tools/diagnostic-messages
+[lint]: /tools/linter-rules
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following articles on the Dart blog:
+
+* [Better isolate management with Isolate.run()][blog-1-24-23]
+* [Screenshots and automated publishing for pub.dev][blog-1-18-23]
+* [The road to Dart 3: A fully sound, null safe language][blog-12-8-22]
+* [Google Summer of Code 2022 Results][blog-11-3-22]
+* [Partnering with GitHub on supply chain security for Dart packages][blog-10-6-22]
+
+[blog-1-24-23]: https://medium.com/dartlang/better-isolate-management-with-isolate-run-547ef3d6459b
+[blog-1-18-23]: https://medium.com/dartlang/screenshots-and-automated-publishing-for-pub-dev-9bceb19edf79
+[blog-12-8-22]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
+[blog-11-3-22]: https://medium.com/dartlang/google-summer-of-code-2022-results-a3ce1c13c06c
+[blog-10-6-22]: https://medium.com/dartlang/partnering-with-github-on-an-supply-chain-security-485eed1fc388
+
+
 ## August 30, 2022: 2.18 release
 
 This section lists notable changes made from May 12, 2022,
