@@ -33,30 +33,31 @@ Dart's JS interop story is currently evolving.
 Many of the features that enable future JS interop
 are ready to experiment with as of Dart version 2.19.
 These features support the existing production
-and development web compilers, as well as Dart's
-in-progress Wasm compiler ([`dart2wasm`][]).
+and development web compilers, 
+as well as Dart's in-progress Wasm compiler ([`dart2wasm`][]).
 
 For a glimpse into the next generation of JS interop,
-you can refactor your code to conform to the new
-syntax and semantics now. Doing so will
-likely not prevent the need to refactor again once
-[Dart 3][] lands, as the features are still in development. 
-However, the features available for preview are much
-closer to future JS interop than any pattern supported today.
+you can refactor your code to conform to
+the new syntax and semantics now. 
+Doing so will likely not prevent the need to refactor again
+once [Dart 3][] lands, as the features are still in development. 
+However, the features available for preview are much closer
+to future JS interop than any pattern supported today.
 So, there are a few reasons to try them out now:
 
 * New JS interop developers can learn and build with future JS interop
-so they won't have to unlearn obsolete patterns in a few months.
+  so they won't have to unlearn obsolete patterns in a few months.
 * Existing JS interop developers eager to experiment with
-the latest features in JS interop
-or with `dart2wasm` when it becomes available.
-* Potentially ease transition of existing JS
-interop code once migration becomes necessary.
+  the latest features in JS interop 
+  or with `dart2wasm` when it becomes available.
+* Potentially ease transition of existing JS interop code
+  once migration becomes necessary.
 
 The following sections are the set of features
 expected to work across compilers for JS interop.
 
 *Requirements:*
+
 * Dart SDK constraint: `>= 2.19`
 * [`package:js`][] constraint: `>= 0.6.6`
 
@@ -73,28 +74,31 @@ more likely to perform better, and required for `dart2wasm`.
 Static interop addresses several gaps in the existing JS interop story:
 
 * **Missing features:** Static interop enables previously
-unavailable features, like easily wrapping and transforming APIs,
-renaming members, and static checking.
+  unavailable features, like easily wrapping and transforming APIs,
+  renaming members, and static checking.
 
 * **Inconsistencies:** Static interop makes backends more consistent,
-so development and production web compilers won't behave as differently
-as before.
+  so development and production web compilers
+  won't behave as differently as before.
 
-* **Clarity:** Static interop takes a step towards making JS interop
-more idiomatic in Dart, and making the boundary between the two languages more visible.
-For example, it enforces that JS classes are not meant to be mixed with Dart
-(dynamic calls aren't allowed, and JS interop types cannot be implemented as a Dart class).
-We expect upcoming integration with inline classes
-will help make interop even more idiomatic.
+* **Clarity:** Static interop takes a step towards making 
+  JS interop more idiomatic in Dart, 
+  and making the boundary between the two languages more visible.
+  For example, it enforces that JS classes are not meant to be mixed with Dart
+  (dynamic calls aren't allowed, 
+  and JS interop types cannot be implemented as a Dart class).
+  We expect upcoming integration with inline classes
+  will help make interop even more idiomatic.
 
-You can implement static interop using the `package:js`
-annotation `@staticInterop`.
+You can implement static interop using
+the `package:js` annotation `@staticInterop`.
 The set of features for future static interop currently includes:
+
 * `@staticInterop` interfaces
   * External factory constructors with and without `@anonymous`
   * External `static` class members
   * External non-`static` extension members on a `@staticInterop`
-  class (fields, getters, setters, methods)
+    class (fields, getters, setters, methods)
   * Non-external extension members on a `@staticInterop` class
 * Top-level external members
 * [`@JSExport`][] for mocking and exports
