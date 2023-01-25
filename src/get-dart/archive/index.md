@@ -72,7 +72,7 @@ downloaded after 25 January 2023
 * For the Dart SDK embedded in the Flutter SDK,
 use any [Flutter **master channel** SDK][]
 downloaded after 25 January 2023 
-(`dart --version` should report `3.0.0-157.0.dev` or later).
+(`dart --version` should report `3.0.0-151.0.dev` or later).
 
 [Flutter **master channel** SDK]: https://docs.flutter.dev/development/tools/sdk/upgrading#switching-flutter-channels
 
