@@ -115,6 +115,24 @@ To resolve these issues, check for
 of any packages you installed from pub.dev, and [migrate](#migrate) all
 of your own source code to use sound null safety.
 
+As of late January 2023, **Dart 3 alpha** is available from the Dart dev channel
+and the Flutter master channel; see [the download page][] for details.
+We recommend you test your code for Dart 3 compatibility using that release:
+
+```terminal
+$ dart --version                     # make sure this reports 3.0.0-151.0.dev or higher
+$ dart pub get / flutter pub get     # this should resolve without issues
+$ dart analyze / flutter analyze     # this should pass without errors
+```
+
+If the `pub get` step fails, check the [status of the dependencies][].
+
+If the `analyze` step fails, update your code to resolve the issues
+listed by the analyzer.
+
+[the download page]: /get-dart/archive#dart-3-alpha
+[status of the dependencies]: /null-safety/migration-guide#check-dependency-status
+
 ### Dart 3 backwards compatibility
 
 Packages and apps migrated to use null safety with Dart 2.12 or later will

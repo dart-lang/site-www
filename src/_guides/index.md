@@ -6,9 +6,9 @@ toc: false
 
 Welcome to the Dart documentation!
 For a list of changes to this site—new pages, new guidelines, and more—see
-the [What's new page][].
+the [What's new][] page.
 
-[What's new page]: /guides/whats-new
+[What's new]: /guides/whats-new
 
 Here are some of this site's most visited pages:
 
