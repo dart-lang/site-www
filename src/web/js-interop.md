@@ -61,7 +61,7 @@ expected to work across compilers for JS interop.
 * [`package:js`][] constraint: `>= 0.6.6`
 
 [`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/dart2wasm.md#running-dart2wasm
-[Dart 3]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
+[Dart 3]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
 [`package:js`]: {{site.pub-pkg}}/js
 
 ### `package:js`
@@ -105,27 +105,17 @@ visit the [static interop][] specification.
 [static interop]: https://pub.dev/packages/js#staticinterop
 [`@JSExport`]: https://pub.dev/packages/js#jsexport-and-js_utilcreatedartexport
 
-
 ### `dart:js_util`
 
-We recommend using static interop over `js_util`
-in future JS interop. 
+[`dart:js_util`][] provides low-level interop API
+and is supported by the JS and `dart2wasm` backends.
+`dart:js_util` can provide more flexibility,
+for example, in potential, rare edge cases we haven't yet
+accounted for where static interop is not expressive enough.
 
-However, since [`js_util`][] provides lower-level
-functionality than static interop, it can be
-configured in a more granular, customizable way.
-This means `js_util` could *potentially* help with
-some rare edge cases we haven't accounted for yet,
-that static interop won't be able to  address.
+However, it is not as ergonomic, and we do not plan
+to optimize it in the same way as static interop.
+As a result, we highly recommend using static interop over
+`dart:js_util` whenever it's possible.
 
-For example, we may discover that some migrations are
-easier to accomplish with `js_util`. Preexisting uses of
-`dart:js` (now deprecated) can be replaced by a combination
-of static interop and `dart:js_util`.
-The former is what we recommend, but it may be easier
-to automate migrations using the latter.
-
-While `dart:js_util` is supported by `dart2wasm` in future interop,
-it won't be as ergonomic, and won't be optimized. 
-
-[`js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[`dart:js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
