@@ -17,14 +17,15 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
-## January 24, 2023: 2.19 + 3.0 alpha releases
+## January 25, 2023: 2.19 + 3.0 alpha releases
+
 This section lists notable changes made from August 31, 2022,
-through January 24, 2023.
+through January 25, 2023.
 For details about the 2.19 + 3.0 alpha releases,
-see [Dart FlutterForward + 3.0 alpha blog post][],
+see [Introducing Dart 3 alpha][],
 and the [SDK changelog][].
 
-[Dart FlutterForward + 3.0 alpha blog post]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
+[Introducing Dart 3 alpha]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#2190
 
 ### Docs updated or added to dart.dev
@@ -111,7 +112,7 @@ We published the following articles on the Dart blog:
 * [Google Summer of Code 2022 Results][blog-11-3-22]
 * [Partnering with GitHub on supply chain security for Dart packages][blog-10-6-22]
 
-[blog-1-24-23]: https://medium.com/dartlang/547ef3d6459b
+[blog-1-24-23]: https://medium.com/dartlang/better-isolate-management-with-isolate-run-547ef3d6459b
 [blog-1-18-23]: https://medium.com/dartlang/screenshots-and-automated-publishing-for-pub-dev-9bceb19edf79
 [blog-12-8-22]: https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa
 [blog-11-3-22]: https://medium.com/dartlang/google-summer-of-code-2022-results-a3ce1c13c06c
