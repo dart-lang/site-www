@@ -125,7 +125,13 @@ $ dart pub get                       # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
 ```
 
+If the `pub get` step fails, check the [status of the dependencies][].
+
+If the `analyze` step fails, update your code to resolve the issues
+listed by the analyzer.
+
 [the download page]: /get-dart/archive#dart-3-alpha
+[status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
 ### Dart 3 backwards compatibility
 
