@@ -60,6 +60,21 @@ experimental development use, not for production use.
 To download a main channel build, use a
 [main channel URL](#main-channel-url-scheme).
 
+## Dart 3 alpha
+
+Dart 3 alpha -- the preview of our next major release --
+is currently available in two ways:
+
+* For a standalone Dart SDK, use any **dev channel** Dart SDK
+downloaded after 25 January 2023
+(Dart version `3.0.0-151.0.dev` or later).
+
+* For the Dart SDK embedded in the Flutter SDK,
+use any [Flutter **master channel** SDK][]
+downloaded after 25 January 2023 (this should give you
+Dart version `3.0.0-157.0.dev` or later).
+
+[Flutter **master channel** SDK]: https://docs.flutter.dev/development/tools/sdk/upgrading#switching-flutter-channels
 
 ## Download URLs
 
