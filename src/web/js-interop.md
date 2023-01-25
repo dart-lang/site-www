@@ -68,7 +68,7 @@ expected to work across compilers for JS interop.
 
 The key feature of next-generation JS interop is [static interop][].
 We recommend using static interop as the default for `package:js`,
-as it is more declaritive, more likely to be optimized,
+as it is more declarative, more likely to be optimized,
 more likely to perform better, and required for `dart2wasm`.
 Static interop addresses several gaps in the existing JS interop story:
 
@@ -83,7 +83,7 @@ as before.
 * **Clarity:** Static interop takes a step towards making JS interop
 more idiomatic in Dart, and making the boundary between the two languages more visible.
 For example, it enforces that JS classes are not meant to be mixed with Dart
-(e.g. no dynamic calls, JS interop types cannot be implemented as a Dart class).
+(dynamic calls aren't allowed, and JS interop types cannot be implemented as a Dart class).
 We expect upcoming integration with inline classes
 will help make interop even more idiomatic.
 
