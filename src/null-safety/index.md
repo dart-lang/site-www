@@ -121,7 +121,7 @@ We recommend you test your code for Dart 3 compatibility using that release:
 
 ```terminal
 $ dart --version                     # make sure this reports 3.0.0-151.0.dev or higher
-$ dart pub get                       # this should resolve without issues
+$ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
 ```
 
