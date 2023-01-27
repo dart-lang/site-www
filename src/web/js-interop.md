@@ -103,7 +103,7 @@ The set of features for future static interop currently includes:
 To learn how to implement static interop and see examples,
 visit the [static interop][] specification.
 
-[`@staticInterop`]: https://pub.dev/documentation/js/latest/js/staticInterop-constant.html
+[`@staticInterop`]: {{site.pub-api}}/js/latest/js/staticInterop-constant.html
 [static interop]: {{site.pub-pkg}}/js#staticinterop
 [`@JSExport`]: {{site.pub-pkg}}/js#jsexport-and-js_utilcreatedartexport
 
