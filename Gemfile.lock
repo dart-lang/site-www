@@ -22,7 +22,7 @@ GEM
     http_parser.rb (0.8.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    jekyll (4.3.1)
+    jekyll (4.3.2)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -40,9 +40,9 @@ GEM
       webrick (~> 1.7)
     jekyll-sass-converter (3.0.0)
       sass-embedded (~> 1.54)
-    jekyll-toc (0.17.1)
+    jekyll-toc (0.18.0)
       jekyll (>= 3.9)
-      nokogiri (~> 1.11)
+      nokogiri (~> 1.12)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     kramdown (2.4.0)
@@ -98,12 +98,12 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 7.0.4)
-  jekyll (= 4.3.1)
+  jekyll (= 4.3.2)
   jekyll-sass-converter (~> 3.0.0)
-  jekyll-toc (~> 0.17.1)
+  jekyll-toc (~> 0.18.0)
   kramdown-parser-gfm
   liquid-tag-parser (~> 2.0.2)
   webrick
 
 BUNDLED WITH
-   2.4.4
+   2.4.5
