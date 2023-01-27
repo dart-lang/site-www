@@ -2,7 +2,6 @@
 title: JavaScript interoperability
 short-title: JS interop
 description: "Use package:js to integrate JavaScript code into your Dart web app."
-toc: false
 ---
 
 The [Dart web platform](/overview#web-platform) supports calling
@@ -87,11 +86,9 @@ Static interop addresses several gaps in the existing JS interop story:
   For example, it enforces that JS classes are not meant to be mixed with Dart
   (dynamic calls aren't allowed, 
   and JS interop types cannot be implemented as a Dart class).
-  We expect upcoming integration with inline classes
-  will help make interop even more idiomatic.
 
 You can implement static interop using
-the `package:js` annotation `@staticInterop`.
+the `package:js` annotation [`@staticInterop`][].
 The set of features for future static interop currently includes:
 
 * `@staticInterop` interfaces
@@ -106,8 +103,9 @@ The set of features for future static interop currently includes:
 To learn how to implement static interop and see examples,
 visit the [static interop][] specification.
 
-[static interop]: https://pub.dev/packages/js#staticinterop
-[`@JSExport`]: https://pub.dev/packages/js#jsexport-and-js_utilcreatedartexport
+[`@staticInterop`]: https://pub.dev/documentation/js/latest/js/staticInterop-constant.html
+[static interop]: {{site.pub-pkg}}/js#staticinterop
+[`@JSExport`]: {{site.pub-pkg}}/js#jsexport-and-js_utilcreatedartexport
 
 ### `dart:js_util`
 
