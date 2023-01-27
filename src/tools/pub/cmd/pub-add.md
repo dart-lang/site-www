@@ -10,7 +10,7 @@ $ dart pub add <package>[:<constraint>] [<package2>[:<constraint2>]... ] [option
 ```
 
 This command adds the specified packages to the `pubspec.yaml` as dependencies, 
-and then gets the dependencies.  
+and then retrieves the dependencies to resolve `pubspec.yaml`.  
 
 The following example command is equivalent to
 editing `pubspec.yaml` to add the `http` package, 
@@ -30,7 +30,7 @@ You can also specify a constraint or constraint range
 
 ```terminal
 $ dart pub add foo:2.0.0
-$ dart pub add foo:'>=2.0.0'
+$ dart pub add foo:'^2.0.0'
 $ dart pub add foo:'>2.0.0 <3.0.1'
 ```
 
@@ -60,7 +60,7 @@ Within the `descriptor` you can add a package with specific constraints or other
 The `descriptor` syntax cannot be used in conjunction with any of the optional arguments it replaces.
 Their new corresponding yaml sources are listed below.
 
-### `dev` {#d---dev}
+### `dev`
 
 Adds the package as a [dev dependency][],
 instead of as a regular dependency.
@@ -93,7 +93,7 @@ You can also specify the repository, and the branch or commit, or exact location
 # dart pub add 'foo{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
-#### `url` {#git-urlgit_repo_url}
+#### `url`
 
 Depends on the package in the
 [specified Git repository](/tools/pub/dependencies#git-packages).
@@ -108,7 +108,7 @@ _Previously the `--git-url=<git_repo_url>` option_:
 $ dart pub add http --git-url=https://github.com/my/http.git
 ```
 
-#### `ref` {#git-refbranch_or_commit}
+#### `ref`
 
 With `url`, depends on the specified branch or commit of a Git repo.
 
@@ -118,13 +118,13 @@ _Previously the `--git-ref=<branch_or_commit>` option_:
 $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
 ```
 
-#### `path` {#git-pathdirectory_path}
+#### `path`
 
 With `url`, specifies the location of a package within a Git repo.
 
 _Previously the `--git-path=<directory_path>` option_.
 
-### `hosted` {#hosted-urlpackage_server_url}
+### `hosted`
 
 Adds a hosted dependency that depends on
 the package server at the specified URL
@@ -135,7 +135,7 @@ $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
 
 _Previously the `--hosted-url=<package_server_url>` option_
 
-### `path` {#pathdirectory_path}
+### `path`
 
 Adds path dependency on a locally stored package.
 
@@ -145,7 +145,7 @@ $ dart pub add 'foo:{"path":"../foo"}'
 
 _Previously the `--path=<directory_path>` option_.
 
-### `sdk` {#sdksdk_name}
+### `sdk`
 
 Adds a package with the specified SDK dependency.
 
@@ -165,7 +165,9 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 {{site.alert.note}}
-  Any specified options will apply to all the packages
+  The previous `pub add` syntax for options
+  (without YAML descriptors) applies the
+  specified options to all the packages
   included in an invocation of the command.
   For example, `dart pub add test http --dev` 
   will add both the `test` and `http` packages 
