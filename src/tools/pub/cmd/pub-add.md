@@ -42,7 +42,7 @@ it will update the constraint.
 {{site.alert.version-note}}
   YAML-formatted descriptor syntax was added in Dart 2.19.
   The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
-  We still support these arguments, but the documented method is now yaml-descriptor only.
+  We still support these arguments, but the documented method is now YAML-descriptor only.
 {{site.alert.end}}
 
 The YAML descriptor reflects how dependencies are written in `pubspec.yaml`.
@@ -58,7 +58,7 @@ Within the `descriptor` you can add a package with specific constraints or other
 ```
 
 The `descriptor` syntax cannot be used in conjunction with any of the optional arguments it replaces.
-Their new corresponding yaml sources are listed below.
+Their new corresponding YAML sources are listed below.
 
 ### `dev`
 
@@ -84,23 +84,19 @@ $ dart pub add --dev foo
 Adds a git dependency. 
 
 ```terminal
-# dart pub add 'foo{"git":"https://github.com/foo/foo"}'
+# dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
 You can also specify the repository, and the branch or commit, or exact location, within that repository:
 
 ```terminal
-# dart pub add 'foo{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
+# dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
 #### `url`
 
 Depends on the package in the
 [specified Git repository](/tools/pub/dependencies#git-packages).
-
-```terminal
-# dart pub add 'foo{"git":"https://github.com/foo/foo"}'
-```
 
 _Previously the `--git-url=<git_repo_url>` option_:
 
@@ -133,7 +129,7 @@ the package server at the specified URL
 $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
 ```
 
-_Previously the `--hosted-url=<package_server_url>` option_
+_Previously the `--hosted-url=<package_server_url>` option_.
 
 ### `path`
 
