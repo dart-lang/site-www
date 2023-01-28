@@ -26,7 +26,7 @@ For example, if 0.13.3 is the latest stable version of the `http` package,
 then `dart pub add http` adds
 `http: ^0.13.3` under `dependencies` in the pubspec.
 
-You can also specify a constraint or constraint range
+You can also specify a constraint or constraint range:
 
 ```terminal
 $ dart pub add foo:2.0.0
@@ -37,28 +37,30 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-## YAML descriptor
+## YAML syntax
 
 {{site.alert.version-note}}
   YAML-formatted descriptor syntax was added in Dart 2.19.
   The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
-  We still support these arguments, but the documented method is now YAML-descriptor only.
+  We still support these arguments, but the recommended method is now
+  YAML-descriptor only.
 {{site.alert.end}}
 
-The YAML descriptor reflects how dependencies are written in `pubspec.yaml`.
+The YAML descriptor syntax allows you to add multiple packages from different
+sources, and apply different options and contraints to each. 
 
 ```nocode
-$ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor]
-       ...]
+$ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor] ...]
 ```
 
-Within the `descriptor` you can add a package with specific constraints or other sources:
+The syntax reflects how dependencies are written in `pubspec.yaml`.
+
 ```nocode
 '<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
 ```
 
-The `descriptor` syntax cannot be used in conjunction with any of the optional arguments it replaces.
-Their new corresponding YAML sources are listed below.
+The new syntax cannot be used in conjunction with any of the optional
+arguments it replaces. Their new, corresponding YAML arguments are listed below.
 
 ### `dev`
 
@@ -81,13 +83,14 @@ $ dart pub add --dev foo
 
 ### `git` 
 
-Adds a git dependency. 
+Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
 ```terminal
 # dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
-You can also specify the repository, and the branch or commit, or exact location, within that repository:
+You can specify the repository, and the branch or commit, or exact location,
+within that repository:
 
 ```terminal
 # dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
@@ -95,8 +98,7 @@ You can also specify the repository, and the branch or commit, or exact location
 
 #### `url`
 
-Depends on the package in the
-[specified Git repository](/tools/pub/dependencies#git-packages).
+Depends on the package in the specified Git repository.
 
 _Previously the `--git-url=<git_repo_url>` option_:
 
@@ -123,7 +125,7 @@ _Previously the `--git-path=<directory_path>` option_.
 ### `hosted`
 
 Adds a hosted dependency that depends on
-the package server at the specified URL
+the package server at the specified URL.
 
 ```terminal
 $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
@@ -133,7 +135,7 @@ _Previously the `--hosted-url=<package_server_url>` option_.
 
 ### `path`
 
-Adds path dependency on a locally stored package.
+Adds a [path dependency]() on a locally stored package.
 
 ```terminal 
 $ dart pub add 'foo:{"path":"../foo"}'
@@ -141,9 +143,11 @@ $ dart pub add 'foo:{"path":"../foo"}'
 
 _Previously the `--path=<directory_path>` option_.
 
+[path dependency]: /tools/pub/dependencies#path-packages
+
 ### `sdk`
 
-Adds a package with the specified SDK dependency.
+Adds a package from the specified SDK source.
 
 ```terminal
 $ dart pub add 'foo:{"sdk":"flutter"}'
