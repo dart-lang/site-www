@@ -125,7 +125,7 @@ $ javac java/dev/dart/Example.java
 Now you're ready to run the example:
 
 ```terminal
-dart run jnigen_example:sum 17 25
+$ dart run jnigen_example:sum 17 25
 ```
 
 Which outputs `42`!
