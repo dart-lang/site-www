@@ -6,7 +6,7 @@ description: Use dart pub add to add a dependency.
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```nocode
-$ dart pub add <package>[:<constraint>] [<package2>[:<constraint2>]... ] [options]
+$ dart pub add [dev:]<package>[:<constraint>] [[dev:]<package>[:<constraint>]... ] [options]
 ```
 
 This command adds the specified packages to the `pubspec.yaml` as dependencies, 
@@ -19,6 +19,7 @@ and then calling `dart pub get`:
 ```terminal
 $ dart pub add http
 ```
+## Version constraint
 
 By default, `dart pub add` uses the
 latest stable version of the package from the [pub.dev site]({{site.pub}}).
@@ -37,7 +38,26 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-## YAML syntax
+## `dev` dependency
+
+The `dev:` prefix adds the package as a [dev dependency][],
+instead of as a regular dependency.
+
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
+
+```terminal
+$ dart pub add dev:foo           # adds newest compatible stable version of foo
+$ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
+$ dart pub add foo dev:bar`      # adds regular dependency foo and dev dependency bar simultaneously
+```
+
+_Previously the `-d, --dev` option_:
+
+```terminal
+$ dart pub add --dev foo
+```
+
+## YAML descriptor
 
 {{site.alert.version-note}}
   YAML-formatted descriptor syntax was added in Dart 2.19.
@@ -59,27 +79,8 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 '<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
 ```
 
-The new syntax cannot be used in conjunction with any of the optional
-arguments it replaces. Their new, corresponding YAML arguments are listed below.
-
-### `dev`
-
-Adds the package as a [dev dependency][],
-instead of as a regular dependency.
-
-[dev dependency]: /tools/pub/dependencies#dev-dependencies
-
-```terminal
-$ dart pub add dev:foo           # adds newest compatible stable version of foo
-$ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
-$ dart pub add foo dev:bar`      # adds regular dependency foo and dev dependency bar simultaneously
-```
-
-_Previously the `-d, --dev` option_:
-
-```terminal
-$ dart pub add --dev foo
-```
+The `descriptor` syntax cannot be used in conjunction with any of the optional
+arguments it replaces. Their new, corresponding YAML sources are listed below.
 
 ### `git` 
 
