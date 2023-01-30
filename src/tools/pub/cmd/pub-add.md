@@ -19,6 +19,7 @@ and then calling `dart pub get`:
 ```terminal
 $ dart pub add http
 ```
+
 ## Version constraint
 
 By default, `dart pub add` uses the
@@ -48,7 +49,7 @@ instead of as a regular dependency.
 ```terminal
 $ dart pub add dev:foo           # adds newest compatible stable version of foo
 $ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
-$ dart pub add foo dev:bar`      # adds regular dependency foo and dev dependency bar simultaneously
+$ dart pub add foo dev:bar       # adds regular dependency foo and dev dependency bar simultaneously
 ```
 
 _Previously the `-d, --dev` option_:
@@ -57,7 +58,7 @@ _Previously the `-d, --dev` option_:
 $ dart pub add --dev foo
 ```
 
-## YAML descriptor
+## Source descriptor
 
 {{site.alert.version-note}}
   YAML-formatted descriptor syntax was added in Dart 2.19.
