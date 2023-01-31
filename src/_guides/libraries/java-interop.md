@@ -9,7 +9,7 @@ jnidoc: "https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html"
 
 Dart mobile, command-line, and server apps
 running on the [Dart Native platform](/overview#platform), on Android, Windows,
-macOS (not yet on Flutter), and Linux can use [`package:jni`]({{page.jni}})
+macOS, and Linux can use [`package:jni`]({{page.jni}})
 and [`package:jnigen`]({{page.jnigen}})
 to call Java and Kotlin APIs.
 
