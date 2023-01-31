@@ -262,8 +262,8 @@
         permalink: /guides/language/analysis-options
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
-      - title: Diagnostic messages
-        permalink: /tools/diagnostic-messages
+      - title: Diagnostics
+        permalink: /tools/diagnostics
       - title: Linter rules
         permalink: /tools/linter-rules
   - title: Testing & optimization
