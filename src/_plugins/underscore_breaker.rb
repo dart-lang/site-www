@@ -3,6 +3,7 @@ module UnderscoreBreaker
   # to more intelligently wrap identifiers and text split with underscores.
   # If `in_anchor` is `true`, it will only replace the inner text content.
   def underscore_breaker(string_to_break, in_achor = false)
+    # Only consider text which has underscores in it to keep this simpler
     return unless string_to_break.include? '_'
     if in_achor then
       # If the replacement is to be done inside an anchor,
