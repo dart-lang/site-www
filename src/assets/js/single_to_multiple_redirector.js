@@ -1,6 +1,9 @@
 function setupRedirects(oldPage, newDirectory) {
   const oldFragment = window.location.hash;
-  if (!oldFragment || oldFragment.length === 0) return;
+  if (!oldFragment || oldFragment.length === 0) {
+    window.location = newDirectory;
+    return;
+  }
 
   const newDestination = newDirectory + oldFragment.substring(1);
 
