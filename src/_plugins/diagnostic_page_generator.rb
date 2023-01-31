@@ -2,6 +2,7 @@ module Jekyll
   class DiagnosticPageGenerator < Jekyll::Generator
     def generate(site)
       diagnostics = site.data['diagnostics']
+      cfe_messages = site.data['cfe_messages']
 
       new_info = {}
 
@@ -30,6 +31,16 @@ module Jekyll
             }
           end
         }
+      }
+
+      cfe_messages.each { |name, info|
+        if info['documentation'] != nil then
+          analyzer_name = info['analyzerCode'].gsub('ParserErrorCode.', '').downcase
+          new_info[analyzer_name] = {
+            'problemMessages' => [info['problemMessage']],
+            'documentation' => info['documentation']
+          }
+        end
       }
 
       new_info.each { |name, info|
