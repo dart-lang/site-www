@@ -4,18 +4,18 @@ description: "To use Java in your Dart program, use package:jnigen."
 jnigen: "https://pub.dev/packages/jnigen"
 jni: "https://pub.dev/packages/jni"
 example: "https://github.com/HosseinYousefi/jnigen_example/tree/main"
-jnidoc: "https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html"
+jnidoc: "https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html"
 ---
 
 Dart mobile, command-line, and server apps
-running on the [Dart Native platform](/overview#platform), on Android, Windows
-and Linux can use [`package:jni`]({{page.jni}})
+running on the [Dart Native platform](/overview#platform), on Android, Windows,
+macOS (not yet on Flutter), and Linux can use [`package:jni`]({{page.jni}})
 and [`package:jnigen`]({{page.jnigen}})
 to call Java and Kotlin APIs.
 
 {{site.alert.note}}
   This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/jnigen/issues).
+  and [in active development](https://github.com/dart-lang/sdk/issues/49674).
 {{site.alert.end}}
 
 `package:jni` allows Dart code to interact
@@ -27,25 +27,27 @@ the Dart bindings for a given Java API.
 You can decompile Kotlin to Java, allowing `package:jnigen`
 to generate bindings for Kotlin as well.
 
-## Simple Java Example
+## Simple Java example
 
 This guide walks you through [an example]({{page.example}})
 that uses `package:jnigen` to generate bindings for a simple class
 that can show a toast.
 
-Along with JDK, maven is required. 
+### Prerequisites
 
-It's recommended to have `clang-format` installed to format the generated
-C bindings.
+* JDK
+* Maven
+* (Optional) `clang-format` to format the generated C bindings
 
-### Configuring jnigen
+### Configuring `jnigen`
 
 First, add `package:jni` as a dependency and `package:jnigen`
-as a dev dependency.
+as a [dev dependency][].
+
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
 
 ```terminal
-$ dart pub add jni
-$ dart pub add --dev jnigen
+$ dart pub add jni dev:jnigen
 ```
 
 Next, create a top-level file called `jnigen.yaml`. This will contain
@@ -68,7 +70,7 @@ classes:
 
 `path` specifies the path for the generated `c` and `dart` bindings.
 
-`source_path` specifies the path of the java source file that we want to
+`source_path` specifies the path of the Java source file that we want to
 generate bindings for, and `classes` specifies the Java class.
 
 `java/dev/dart/Example.java` contains a very simple class, which has a public
@@ -86,7 +88,7 @@ public class Example {
 
 ### Generating the Dart bindings
 
-To generate the Dart (and C) bindings, run jnigen and specify the config file
+To generate the Dart (and C) bindings, run `jnigen` and specify the config file
 using the `--config` option.
 
 ```terminal
@@ -108,14 +110,14 @@ as arguments and prints their sum. Using the `Example.sum` method is identical
 to Java.
 
 ```dart
-// a and b are integer arguments passed.
+// a and b are integer arguments
 print(Example.sum(a, b));
 ```
 
 ### Running the example
 
-Before running the example, you must build the dynamic libraries for jni and the
-generated C files. The Java sources also must be compiled. To do so, run:
+Before running the example, you must build the dynamic libraries for `jni` and
+the generated C files. The Java sources also must be compiled. To do so, run:
 
 ```terminal
 $ dart run jni:setup -p jni -s src/example
