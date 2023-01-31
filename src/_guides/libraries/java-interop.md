@@ -24,7 +24,7 @@ However, doing so involves a lot of boilerplate code,
 so you can use `package:jnigen` to automatically generate
 the Dart bindings for a given Java API.
 
-You can decompile Kotlin to Java, allowing `package:jnigen`
+You can compile Kotlin to Java bytecode, allowing `package:jnigen`
 to generate bindings for Kotlin as well.
 
 ## Simple Java example
