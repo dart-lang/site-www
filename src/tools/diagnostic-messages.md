@@ -6,7 +6,15 @@ js:
     url: /assets/js/single_to_multiple_redirector.js
 obsolete: true
 sitemap: false
+toc: false
 ---
+
+{{site.alert.warning}}
+  Documentation of diagnostic messages has moved!
+  
+  Visit the new [Diagnostics](/tools/diagnostics) page for the
+  up-to-date documentation for analyzer diagnostics.
+{{site.alert.end}}
 
 ### abi_specific_integer_invalid
 
