@@ -28,16 +28,6 @@ to generate bindings for Kotlin as well.
 [jnigen-pkg]: {{site.pub-pkg}}/jnigen
 [jnidoc]: https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html
 
-## Examples
-
-The following examples show how to use `package:jnigen`:
-
-| **Example**             | **Description**                                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------------------------- |
-| [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call that using `jnigen`. |
-| [pdfbox_plugin][]       | Example of a Flutter plugin which provides bindings to Apache PDFBox library.                     |
-| [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code which uses Android libraries.          |
-
 ## Simple Java example
 
 This guide walks you through [an example]({{page.example}})
@@ -140,7 +130,19 @@ $ dart run jnigen_example:sum 17 25
 
 Which outputs `42`!
 
+## More examples
+
+Here are some more complex examples of using `package:jnigen`:
+
+| **Example**             | **Description**                                                                                 |
+|-------------------------|-------------------------------------------------------------------------------------------------|
+| [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call it use `jnigen`. |
+| [pdfbox_plugin][]       | Example of a Flutter plugin that provides bindings to the [Apache PDFBox][] library.            |
+| [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code that uses Android libraries.         |
+
+
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [in_app_java]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/in_app_java
 [notification_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/notification_plugin
 [pdfbox_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/pdfbox_plugin
+[Apache PDFBox]: https://pdfbox.apache.org/
