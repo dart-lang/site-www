@@ -125,7 +125,7 @@ $ dart run jni:setup -p jni -s src/example
 $ javac java/dev/dart/Example.java
 ```
 
-Now you're ready to run the example:
+Now you can run the example:
 
 ```terminal
 $ dart run jnigen_example:sum 17 25
@@ -135,7 +135,7 @@ Which outputs `42`!
 
 ## More examples
 
-Here are some more complex examples of using `package:jnigen`:
+The following are some more comprehensive examples of using `package:jnigen`:
 
 | **Example**             | **Description**                                                                                 |
 |-------------------------|-------------------------------------------------------------------------------------------------|
