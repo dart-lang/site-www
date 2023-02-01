@@ -42,7 +42,7 @@ that uses `package:jnigen` to generate bindings for a simple class.
 [Maven]: https://maven.apache.org/
 [`clang-format`]: https://clang.llvm.org/docs/ClangFormat.html
 
-### Configuring `jnigen`
+### Configure `jnigen`
 
 First, add `package:jni` as a dependency and `package:jnigen`
 as a [dev dependency][].
@@ -87,7 +87,7 @@ public class Example {
 }
 ```
 
-### Generating the Dart bindings
+### Generate the Dart bindings
 
 To generate the Dart (and C) bindings, run `jnigen` and specify the config file
 using the `--config` option.
@@ -103,7 +103,7 @@ For this example, this will generate
 This file contains a class called `Example`, which has a static method called
 `sum`, just like the Java file.
 
-### Using the bindings
+### Use the bindings
 
 Now you're ready to load and interact with the generated library.
 The example app, [bin/sum.dart]({{page.example}}/bin/sum.dart), gets two numbers
@@ -115,7 +115,7 @@ to Java.
 print(Example.sum(a, b));
 ```
 
-### Running the example
+### Run the example
 
 Before running the example, you must build the dynamic libraries for `jni` and
 the generated C files. The Java sources also must be compiled. To do so, run:
