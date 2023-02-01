@@ -1,16 +1,13 @@
 ---
 title: 'Java interop using package:jnigen'
 description: 'To use Java in your Dart program, use package:jnigen.'
-jnigen: 'https://pub.dev/packages/jnigen'
-jni: 'https://pub.dev/packages/jni'
 example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
-jnidoc: 'https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html'
 ---
 
 Dart mobile, command-line, and server apps
 running on the [Dart Native platform](/overview#platform), on Android, Windows,
-macOS, and Linux can use [`package:jni`]({{page.jni}})
-and [`package:jnigen`]({{page.jnigen}})
+macOS, and Linux can use [`package:jni`][jni-pkg]
+and [`package:jnigen`][jnigen-pkg]
 to call Java and Kotlin APIs.
 
 {{site.alert.note}}
@@ -26,6 +23,10 @@ the Dart bindings for a given Java API.
 
 You can compile Kotlin to Java bytecode, allowing `package:jnigen`
 to generate bindings for Kotlin as well.
+
+[jni-pkg]: {{site.pub-pkg}}/jni
+[jnigen-pkg]: {{site.pub-pkg}}/jnigen
+[jnidoc]: https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html
 
 ## Examples
 
