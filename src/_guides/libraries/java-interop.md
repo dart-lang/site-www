@@ -71,7 +71,7 @@ classes:
 
 `path` specifies the path for the generated `c` and `dart` bindings.
 
-`source_path` specifies the path of the Java source file that we want to
+`source_path` specifies the path of the Java source file that you want to
 generate bindings for, and `classes` specifies the Java class.
 
 `java/dev/dart/Example.java` contains a very simple class, which has a public
@@ -97,7 +97,7 @@ $ dart run jnigen --config jnigen.yaml
 ```
 
 For this example, this will generate
-[lib/example.dart]({{page.example}}/lib/example.dart), just as we specified in
+[lib/example.dart]({{page.example}}/lib/example.dart), just as you specified in
 `jnigen.yaml`.
 
 This file contains a class called `Example`, which has a static method called
