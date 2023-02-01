@@ -2799,6 +2799,7 @@ see [Getters and setters](#getters-and-setters).
 If you initialize a non-`late` instance variable where it's declared,
 the value is set when the instance is created,
 which is before the constructor and its initializer list execute.
+As a result, non-`late` instance variable initializers can't access `this`.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
