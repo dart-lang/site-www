@@ -145,7 +145,7 @@ The following are some more comprehensive examples of using `package:jnigen`:
 | [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call it use `jnigen`. |
 | [pdfbox_plugin][]       | Example of a Flutter plugin that provides bindings to the [Apache PDFBox][] library.            |
 | [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code that uses Android libraries.         |
-
+{:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [in_app_java]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/in_app_java
