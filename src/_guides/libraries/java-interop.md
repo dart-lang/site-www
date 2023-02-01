@@ -33,7 +33,7 @@ The following examples show how to use `package:jnigen`:
 
 | **Example**             | **Description**                                                                                   |
 | ----------------------- | ------------------------------------------------------------------------------------------------- |
-| [in_app_java][]         | Demonstrates how to include custom Java code in Flutter application and call that using `jnigen`. |
+| [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call that using `jnigen`. |
 | [pdfbox_plugin][]       | Example of a Flutter plugin which provides bindings to Apache PDFBox library.                     |
 | [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code which uses Android libraries.          |
 
