@@ -1,10 +1,10 @@
 ---
-title: "Java interop using package:jnigen"
-description: "To use Java in your Dart program, use package:jnigen."
-jnigen: "https://pub.dev/packages/jnigen"
-jni: "https://pub.dev/packages/jni"
-example: "https://github.com/HosseinYousefi/jnigen_example/tree/main"
-jnidoc: "https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html"
+title: 'Java interop using package:jnigen'
+description: 'To use Java in your Dart program, use package:jnigen.'
+jnigen: 'https://pub.dev/packages/jnigen'
+jni: 'https://pub.dev/packages/jni'
+example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
+jnidoc: 'https://docs.oracle.com/en/java/javase/17/docs/specs/jni/index.html'
 ---
 
 Dart mobile, command-line, and server apps
@@ -14,12 +14,12 @@ and [`package:jnigen`]({{page.jnigen}})
 to call Java and Kotlin APIs.
 
 {{site.alert.note}}
-  This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/49674).
+This interop feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/49674).
 {{site.alert.end}}
 
 `package:jni` allows Dart code to interact
-with Java through [JNI]({{page.jnidoc}}). 
+with Java through [JNI]({{page.jnidoc}}).
 However, doing so involves a lot of boilerplate code,
 so you can use `package:jnigen` to automatically generate
 the Dart bindings for a given Java API.
@@ -27,24 +27,31 @@ the Dart bindings for a given Java API.
 You can compile Kotlin to Java bytecode, allowing `package:jnigen`
 to generate bindings for Kotlin as well.
 
+## Examples
+
+The following examples show how to use `package:jnigen`:
+
+| **Example**             | **Description**                                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| [in_app_java][]         | Demonstrates how to include custom Java code in Flutter application and call that using `jnigen`. |
+| [pdfbox_plugin][]       | Example of a Flutter plugin which provides bindings to Apache PDFBox library.                     |
+| [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code which uses Android libraries.          |
+
 ## Simple Java example
 
 This guide walks you through [an example]({{page.example}})
-that uses `package:jnigen` to generate bindings for a simple class
-that can show a toast.
+that uses `package:jnigen` to generate bindings for a simple class.
 
 ### Prerequisites
 
-* JDK
-* Maven
-* (Optional) `clang-format` to format the generated C bindings
+- JDK
+- Maven
+- (Optional) `clang-format` to format the generated C bindings
 
 ### Configuring `jnigen`
 
 First, add `package:jni` as a dependency and `package:jnigen`
 as a [dev dependency][].
-
-[dev dependency]: /tools/pub/dependencies#dev-dependencies
 
 ```terminal
 $ dart pub add jni dev:jnigen
@@ -63,7 +70,7 @@ output:
     structure: single_file
 
 source_path:
-  - 'java/' 
+  - 'java/'
 classes:
   - 'dev.dart.Example'
 ```
@@ -131,3 +138,8 @@ $ dart run jnigen_example:sum 17 25
 ```
 
 Which outputs `42`!
+
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
+[in_app_java]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/in_app_java
+[notification_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/notification_plugin
+[pdfbox_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/pdfbox_plugin
