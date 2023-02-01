@@ -120,7 +120,7 @@ homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
   
 dependencies:
   efts: ^2.0.4
@@ -440,11 +440,11 @@ dependencies.
 [language evolution page]: /guides/language/evolution
 
 For example, the following constraint says that this package
-works with any Dart SDK that's version 2.10.0 or higher:
+works with any Dart SDK that's version 2.12.0 or higher:
 
 ```yaml
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 Pub tries to find the latest version of a package whose SDK constraint works
@@ -459,7 +459,9 @@ pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
+  
+See https://dart.dev/go/sdk-constraint
 ```
 
 {{site.alert.warning}}
