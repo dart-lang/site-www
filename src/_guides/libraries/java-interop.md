@@ -97,7 +97,7 @@ specify the config file using the `--config` option:
 $ dart run jnigen --config jnigen.yaml
 ```
 
-For this example, this will generate
+In this example, this generates
 [lib/example.dart]({{page.example}}/lib/example.dart), just
 as you specified in `jnigen.yaml`.
 
