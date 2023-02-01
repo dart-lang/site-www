@@ -5,14 +5,14 @@ example: 'https://github.com/HosseinYousefi/jnigen_example/tree/main'
 ---
 
 Dart mobile, command-line, and server apps
-running on the [Dart Native platform](/overview#platform), on Android, Windows,
-macOS, and Linux can use [`package:jni`][jni-pkg]
+running on the [Dart Native platform](/overview#platform), on
+Android, Windows, macOS, and Linux can use [`package:jni`][jni-pkg]
 and [`package:jnigen`][jnigen-pkg]
 to call Java and Kotlin APIs.
 
 {{site.alert.note}}
-This interop feature is **experimental**,
-and [in active development](https://github.com/dart-lang/sdk/issues/49674).
+  This interop feature is **experimental**,
+  and [in active development](https://github.com/dart-lang/sdk/issues/49674).
 {{site.alert.end}}
 
 `package:jni` allows Dart code to interact
@@ -44,15 +44,15 @@ that uses `package:jnigen` to generate bindings for a simple class.
 
 ### Configure `jnigen`
 
-First, add `package:jni` as a dependency and `package:jnigen`
-as a [dev dependency][].
+First, add `package:jni` as a dependency and
+`package:jnigen` as a [dev dependency][].
 
 ```terminal
 $ dart pub add jni dev:jnigen
 ```
 
-Next, create a top-level file called `jnigen.yaml`. This will contain
-the configuration for generating the bindings.
+Next, create a top-level file called `jnigen.yaml`. 
+This file contains the configuration for generating the bindings.
 
 ```yaml
 output:
@@ -71,11 +71,12 @@ classes:
 
 `path` specifies the path for the generated `c` and `dart` bindings.
 
-`source_path` specifies the path of the Java source file that you want to
-generate bindings for, and `classes` specifies the Java class.
+`source_path` specifies the path of the Java source file that
+you want to generate bindings for, 
+and `classes` specifies the Java class.
 
-`java/dev/dart/Example.java` contains a very simple class, which has a public
-static method called `sum`:
+`java/dev/dart/Example.java` contains a very simple class, which
+has a public static method called `sum`:
 
 ```java
 package dev.dart;
@@ -89,26 +90,27 @@ public class Example {
 
 ### Generate the Dart bindings
 
-To generate the Dart (and C) bindings, run `jnigen` and specify the config file
-using the `--config` option.
+To generate the Dart (and C) bindings, run `jnigen` and
+specify the config file using the `--config` option:
 
 ```terminal
 $ dart run jnigen --config jnigen.yaml
 ```
 
 For this example, this will generate
-[lib/example.dart]({{page.example}}/lib/example.dart), just as you specified in
-`jnigen.yaml`.
+[lib/example.dart]({{page.example}}/lib/example.dart), just
+as you specified in `jnigen.yaml`.
 
-This file contains a class called `Example`, which has a static method called
-`sum`, just like the Java file.
+This file contains a class called `Example`, 
+which has a static method called `sum`, 
+just like the Java file.
 
 ### Use the bindings
 
 Now you're ready to load and interact with the generated library.
-The example app, [bin/sum.dart]({{page.example}}/bin/sum.dart), gets two numbers
-as arguments and prints their sum. Using the `Example.sum` method is identical
-to Java.
+The example app, [bin/sum.dart]({{page.example}}/bin/sum.dart), gets 
+two numbers as arguments and prints their sum. 
+Using the `Example.sum` method is identical to Java.
 
 ```dart
 // a and b are integer arguments
@@ -117,8 +119,9 @@ print(Example.sum(a, b));
 
 ### Run the example
 
-Before running the example, you must build the dynamic libraries for `jni` and
-the generated C files. The Java sources also must be compiled. To do so, run:
+Before running the example, 
+you must build the dynamic libraries for `jni` and the generated C files. 
+The Java sources also must be compiled. To do so, run:
 
 ```terminal
 $ dart run jni:setup -p jni -s src/example
