@@ -182,7 +182,7 @@ $ cat pubspec.yaml
 package: my_package_name
 version: 1.2.3            # must match the version number used in the git tag
 environment:
-  sdk: ^2.18.0
+  sdk: ^2.19.0
 
 $ git tag v1.2.3          # assuming my tag pattern is: 'v{{version}}'
 $ git push origin v1.2.3  # triggers the action that publishes my package.
