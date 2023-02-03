@@ -116,6 +116,9 @@ jobs:
 
 Make sure to match the pattern in `on.push.tags` with the _tag pattern_
 specified on pub.dev. Otherwise, the GitHub Action workflow won’t work.
+If publishing multiple packages from the same repository, use a per-package
+_tag pattern_ like `my_package_name-v{{version}}` can create a workflow file
+for each package, as they need to be triggered with different `working-directory`.
 
 The workflow file above uses
 `dart-lang/setup-dart/.github/workflows/publish.yml` to publish the package.
