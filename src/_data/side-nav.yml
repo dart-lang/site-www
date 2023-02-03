@@ -149,6 +149,8 @@
           permalink: /guides/libraries/c-interop
         - title: Objective-C and Swift interop
           permalink: /guides/libraries/objective-c-interop
+        - title: Java and Kotlin interop
+          permalink: /guides/libraries/java-interop
         - title: JavaScript interop
           permalink: /web/js-interop
     - title: Google APIs
