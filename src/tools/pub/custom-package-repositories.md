@@ -220,6 +220,10 @@ your own custom package repository:
   <img src="/assets/img/tools/jfrog.svg" width="48" alt="JFrog logo">
   <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories"><b>JFrog Artifactory</b></a>
 </li>
+<li>
+  <img src="onepub-logo.svg" width="48" alt="OnePub logo">
+  <a href="https://onepub.dev"><b>OnePub Dart Repository</b></a>
+</li>
 </ul>
 
 
