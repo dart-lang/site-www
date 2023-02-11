@@ -133,9 +133,9 @@ $ dart run --define=DEBUG=true -DFLAVOR=free
 
 To learn about configuring `webdev` to pass environment declarations
 to both the development and production web compilers,
-see [Configuring -D environment variables][].
+see [the `webdev` configuration documentation][webdev-config].
 
-[Configuring -D environment variables]: {{site.pub-pkg}}/build_web_compilers#configuring--d-environment-variables
+[webdev-config]: {{site.pub-pkg}}/build_web_compilers#configuring--d-environment-variables
 
 ### Visual Studio Code
 
