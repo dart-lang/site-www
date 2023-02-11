@@ -178,7 +178,7 @@ To specify environment declarations to the Flutter tool,
 use the `--dart-define` option instead:
 
 ```terminal
-$ flutter run ---dartdefine=DEBUG=true
+$ flutter run ---dart-define=DEBUG=true
 ```
 
 {%- comment %}
