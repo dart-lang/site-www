@@ -56,11 +56,6 @@ defaults:
   values:
     layout: default
     toc: true
-- scope:
-    path: ''
-    type: tutorials
-  values:
-    layout: tutorial
 
 custom:
   downloads:
