@@ -11,6 +11,7 @@
   {% assign topStyle = 'toc-collapsible toc-collapsed' %}
 {% endif %}
 {% if include.extendToc -%}
+  {% assign toc = toc | underscore_breaker: true %}
   {% assign toc = toc | replace: '<ul>', '<ul class="nav">' %}
   {% assign toc = toc | replace: '<ul class="section-nav">', '<ul class="section-nav nav">' %}
   {% assign toc = toc | replace: 'class="toc-entry', 'class="toc-entry nav-item' %}
@@ -19,7 +20,6 @@
 <div id="{{include.id}}" class="site-toc {{topStyle}}">
   <header class="site-toc__title">
     Contents
-    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
     {% if collapsible %}
       <span class="{{include.id}}__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
       <span class="{{include.id}}__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
