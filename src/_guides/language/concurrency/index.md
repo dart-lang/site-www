@@ -324,7 +324,7 @@ setting up and managing worker isolates:
 {{site.alert.end}}
 
 [native and non-native platforms]: /overview#platform
-[Flutter's `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute.html
+[Flutter's `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute-constant.html
 
 #### Running an existing method in a new isolate
 
