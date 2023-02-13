@@ -137,10 +137,6 @@
 - title: Development
   expanded: false
   children:
-    - title: Futures, async, await
-      permalink: /codelabs/async-await
-    - title: Streams
-      permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
     - title: Interoperability
