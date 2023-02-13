@@ -78,7 +78,7 @@ and other suggested guidelines in
 [Dart compiler (`dart compile`)](/tools/dart-compile),
 [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [Editors and IDEs](/tools#ides-and-editors)
+and [IDEs and editors](/tools#ides-and-editors)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
