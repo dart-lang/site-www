@@ -27,7 +27,8 @@ run `dart info` from any directory:
 $ dart info
 ```
 
-The output on a macOS computer will look similar to the following:
+For example, on macOS, 
+the output looks similar to the following:
 
 ```nocode
 #### General info
