@@ -13,7 +13,7 @@ that are accessed and evaluated at compile time.
 Your app can use the values of environment declarations
 to change its functionality or behavior.
 Dart compilers can take advantage of this to eliminate code
-no longer reached due to the values specified through tree shaking.
+no longer reachable due to the values specified, through "tree shaking".
 
 Some potential use cases for defining environment declarations are:
 
@@ -57,9 +57,10 @@ and [`String.fromEnvironment`][string-from] for anything else.
 Each of the `fromEnvironment` constructors require the
 name or key of the environment declaration key-value pair,
 as well as an optional `defaultValue` override
-that is used when a declaration wasn't defined.
+that is used when a declaration wasn't defined
+or the specified value cannot be parsed as the expected type.
 
-For example, if you only want to log messages only
+For example, if you only want to log messages
 when the environment declaration `DEBUG` is set to `true`:
 
 <?code-excerpt "misc/lib/development/environment_declarations.dart (debug-log)"?>
@@ -74,12 +75,13 @@ void log(String message) {
 ```
 
 In this snippet, if `DEBUG` is set to `false`
-during compilation or not specified at all,
+during compilation, or not specified at all,
 production compilers can completely remove the condition and its body.
 
 The `fromEnvironment` constructors always
-have a default value when the declaration isn't specified.
-Therefore, if you need to specifically check if
+have a default value for when the declaration isn't specified
+or the specified value cannot be parsed.
+Therefore, if you need to specifically check whether
 an environment declaration has been specified,
 use the [`bool.hasEnvironment`][bool-has] constructor:
 
@@ -105,12 +107,12 @@ if (const bool.hasEnvironment('DEBUG')) {
   see [SDK issue 44995][].
 {{site.alert.end}}
 
-[SDK issue 44995]: https://github.com/dart-lang/sdk/issues/4499
+[SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
 
 ### Dart CLI
 
 Both `dart run` and the `dart compile` subcommands accept
-the `-D` or `--define` options
+any number of the `-D` or `--define` options
 to specify environment declaration values.
 
 ```terminal
@@ -120,13 +122,6 @@ $ dart compile js --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile aot-snapshot --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile jit-snapshot --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile kernel --define=DEBUG=true -DFLAVOR=free main.dart
-```
-
-To specify multiple declarations, 
-you can use multiple define options:
-
-```terminal
-$ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
 #### `webdev`
