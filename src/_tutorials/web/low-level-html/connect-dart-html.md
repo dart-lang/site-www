@@ -12,19 +12,17 @@ If you use a web framework,
 some of these concepts might be useful,
 but you might not need to use the dart:html library at all.
 
-<div class="panel" markdown="1">
+<div class="mini-toc" markdown="1">
+  <h4>What's the point?</h4>
 
-#### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
-
-* DartPad lets you write a simple Dart web app without HTML boilerplate.
-* A Dart web app has Dart, HTML, and (usually) CSS code.
-* Compile a web app's Dart code to JavaScript to run the app in any modern browser.
-* An HTML file hosts your Dart code in a browser page.
-* The DOM models a browser page in a tree/node structure.
-* Use `querySelector()` with an ID to get an element from the DOM.
-* CSS selectors are patterns used to select matching elements in the DOM.
-* Use CSS rules to style elements.
-
+  * DartPad lets you write a simple Dart web app without HTML boilerplate.
+  * A Dart web app has Dart, HTML, and (usually) CSS code.
+  * Compile a web app's Dart code to JavaScript to run the app in any modern browser.
+  * An HTML file hosts your Dart code in a browser page.
+  * The DOM models a browser page in a tree/node structure.
+  * Use `querySelector()` with an ID to get an element from the DOM.
+  * CSS selectors are patterns used to select matching elements in the DOM.
+  * Use CSS rules to style elements.
 </div>
 
 To write a low-level web app with Dart,
