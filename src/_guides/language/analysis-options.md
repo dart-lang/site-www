@@ -73,10 +73,8 @@ problems, including errors and warnings specified in the
 You can also configure linter rules,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
-and other suggested guidelines in
-[Effective Dart][]. Dart tools such as the
-[Dart compiler (`dart compile`)](/tools/dart-compile),
-[`dart analyze`](/tools/dart-analyze),
+and other suggested guidelines in [Effective Dart][]. 
+Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
 and [IDEs and editors](/tools#ides-and-editors)
 use the analyzer package to evaluate your code.
