@@ -44,6 +44,7 @@ you might use the [`flutter` tool][] instead.
 | `doc`     | `dart doc <DIRECTORY>`                  | Generates API reference documentation.<br>Replaces [`dartdoc`][].<br>[Learn more.][doc] |
 | `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>[Learn more.][fix] | 
 | `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>[Learn more.][format] |
+| `info`    | `dart info`                             | Outputs Dart tooling diagnostic information.<br>[Learn more.][info] |
 | `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
 | `pub`     | `dart pub <PUB_COMMAND>`                | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub] | 
 | `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Replaces the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
@@ -57,6 +58,7 @@ you might use the [`flutter` tool][] instead.
 [doc]: /tools/dart-doc
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
+[info]: /tools/dart-info
 [pub]: /tools/pub/cmd
 [run]: /tools/dart-run
 [test]: /tools/dart-test
