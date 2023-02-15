@@ -1120,8 +1120,8 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{{site.alert.version-note}}
-  As of Dart 2.1, you don't need to import dart:async to use the Future and
+{{site.alert.tip}}
+  You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
 {{site.alert.end}}
 
