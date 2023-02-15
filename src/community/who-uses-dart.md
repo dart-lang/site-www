@@ -4,52 +4,89 @@ description: Mobile apps and Google web apps are two of the most common uses for
 toc: false
 ---
 
-The popular [Flutter toolkit][Flutter] relies on the Dart language,
-so developers writing Flutter apps—for Android, iOS, or other targets—use Dart.
-Some of the popular Flutter-based apps are [Alibaba][], [Google Pay][], [PUBG][]
-and to find a list of Flutter apps, visit the [Flutter showcase.][showcase]
+## Flutter
 
-[Flutter]: {{site.flutter}}
-[showcase]: {{site.flutter}}/showcase
-[Alibaba]: https://play.google.com/store/apps/details?id=com.alibaba.intl.android.apps.poseidon
-[BMW]: https://www.press.bmwgroup.com/global
-[PUBG]: https://play.google.com/store/apps/details?id=com.pubg.newstate
+The popular [Flutter toolkit][] is powered by the Dart language,
+runtimes, tooling, and libraries. Over 500,000 Flutter apps for Android,
+iOS, the web, and other targets, are all Dart-based.
 
-Google engineers use Dart to create many applications, 
-including some that are critical to Google's enterprise.
-For example, if you use the [Google Ads][] web or mobile app, 
-you're using a Dart app that supports much of Google's revenue.
-Also, the Assistant team at Google uses Dart for features in Smart Displays, 
-as described in [this announcement.][flutter-io19]
+The [Flutter showcase][] features popular Flutter apps, including:
 
-[Google Ads]: https://ads.google.com/getstarted
-[flutter-io19]: https://developers.googleblog.com/2019/05/Flutter-io19.html
+* [BMW][]
+    > "The BMW Group is establishing itself as a leading automotive app developer
+    and provider with a Flutter architecture developed 100% in-house."
+* [Sonos][]: 
+    > "...If setup is the “grand entryway” to the Sonos ecosystem, Flutter forms
+    its elegant façade..."
+* [Alibaba][]: 
+    > "When the Xianyu team was challenged to improve their user experience by
+    developing an app that was consistent across platforms, had beautiful graphics,
+    and still loaded fast, they turned to Flutter."
+* [PUBG][]: 
+    > "When the PUBG MOBILE team wanted to add a community module to allow players
+    from all over the world to share gameplay clips and more, they turned to Flutter."
 
-Some of the google powered applications that use dart are
-- The [Google Play Console] that lets app publishers market Android apps
-- The [Google Nest Hub] and Hub Max devices: both the UI and a lot of back-end code are written in Dart
-- [Google Pay][], [Google One][], [Google Fibre][], [Google Elections][], [Google Shopping][], [Cloud Search][]
-- [Family Link][], [Google One][], [Cloud Search][]: Flutter and Dart
+[Flutter toolkit]: {{site.flutter}}
+[Flutter showcase]: {{site.flutter}}/showcase
+[BMW]: https://www.press.bmwgroup.com/global/article/detail/T0328610EN/the-my-bmw-app:-new-features-and-tech-insights-for-march-2021?language=en
+[Sonos]: https://tech-blog.sonos.com/posts/renovating-setup-with-flutter/
+[Alibaba]: https://flutter.dev/showcase/alibaba-group
+[PUBG]: https://flutter.dev/showcase/pubg-mobile
+
+## Google 
+
+Dart is used in almost every product group at Google:
+
+* The [Google Play Console][] lets app publishers market Android apps, and
+is written completely in Dart.
+* The [Google Ads][] team continues to grow, with hundreds of SWEs primarily
+writing Dart code.
+* The [Google Assistant][] team uses Flutter and Dart to drive the overall system
+UI of their Smart Displays.
+* Both the UI and much of the back-end code for [Google Nest Hub][] and Hub Max
+devices are written in Dart.
+* The list goes on, with many more Google applications made using Dart and Flutter:
+  * [Google Pay][]
+  * [Google One][]
+  * [Google Fibre][]
+  * [Google Elections][]
+  * [Google Shopping][]
+  * [Cloud Search][]
+  * [Family Link][]
+  * [Google One][]
+  * [Cloud Search][] 
+
+Several other Google teams are currently rewritting their projects in Flutter.
+In all, Google has thousands of developers writing millions of lines of code in Dart.
 
 [Google Play Console]: https://android-developers.googleblog.com/2020/06/introducing-new-google-play-console-beta.html
+[Google Ads]: https://ads.google.com/getstarted
+[Google Assistant]: https://developers.googleblog.com/2019/05/Flutter-io19.html
 [Google Nest Hub]: https://store.google.com/us/product/nest_hub_2nd_gen?hl=en-US
 [Google Pay]: https://pay.google.com/intl/en_in/about
-[Family Link]: https://families.google/familylink
-[Google One]: https://one.google.com/about
 [Google Fibre]: https://fiber.google.com
 [Google Elections]: https://elections.google
 [Google Shopping]: https://shopping.google.com
+[Family Link]: https://families.google/familylink
+[Google One]: https://one.google.com/about
 [Cloud Search]: https://workspace.google.com/intl/en_in/products/cloud-search
 
-Many companies use dart for building applications, such companies are:
+## External
 
-[Wrike][] uses the angulardart framework which is developed using dart, 
-[Blossom][], [ufirst][], [Modanisa][], [Sonos][], [Easy Insure][] and [Workiva][] uses for their web applications.
+Beyond Google and Flutter, many companies use Dart for building their applications:
 
+* [Workiva's][] next-generation client applications for their productivity suite
+are built with Dart.
+* [Wrike][] uses the [AngularDart][] framework to develop project management tools.
+* [Blossom][] is an agile project management tool built with Dart.
+* And many more!
+
+If you build production software with Dart and want to be included in this list,
+please visit [our site's GitHub] to open an issue or pull request, thanks!
+
+[Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com
-[Sonos]: https://www.sonos.com/en-in/home
+[AngularDart]: https://angulardart.xyz/guide/setup
 [Blossom]: https://blossom.co
-[ufirst]: https://ufirst.com/en
-[Modanisa]: https://www.modanisa.com/en
-[Easy Insure]: https://easyinsure.ca/main.aspx
-[Workiva]: https://www.workiva.com/en-in
+[our site's GitHub]: https://github.com/dart-lang/site-www
+
