@@ -1,14 +1,20 @@
 ---
-title: Configuring apps with environment declarations
+title: Configuring apps with compilation environment declarations
 description: >
-  Learn about using environment declarations to customize application behavior.
+  Learn about using compilation environment declarations to customize application behavior.
 ---
 
-Dart supports specifying environment declarations when
+Dart supports specifying compilation environment declarations when
 building or running an application.
-Environment declarations are used to specify
+Compilation environment declarations are used to specify
 configuration values or options as key-value pairs
 that are accessed and evaluated at compile time.
+
+{{site.alert.note}}
+  This page uses "environment" and "environment declarations"
+  to refer to the compilation environment, not the OS environment
+  often referred to as "the environment" in software terminology.
+{{site.alert.end}}
 
 Your app can use the values of environment declarations
 to change its functionality or behavior.

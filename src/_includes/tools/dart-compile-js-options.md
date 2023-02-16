@@ -69,7 +69,7 @@ Some other handy options include:
   [`String.fromEnvironment`][], [`int.fromEnvironment`][], 
   [`bool.fromEnvironment`][], or [`bool.hasEnvironment`][].
   To learn more about environment declarations,
-  see [Configuring apps with environment declarations][].
+  see [Configuring apps with compilation environment declarations][].
 
 `--version`
 : Displays version information for `dart`.
@@ -78,7 +78,7 @@ Some other handy options include:
 [`int.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
 [`bool.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html
 [`bool.hasEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.hasEnvironment.html
-[Configuring apps with environment declarations]: /guides/environment-declarations
+[Configuring apps with compilation environment declarations]: /guides/environment-declarations
 
 ###### Display options
 
