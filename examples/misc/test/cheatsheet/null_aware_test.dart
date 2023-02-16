@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, unnecessary_null_in_if_null_operators, dead_null_aware_expression
+// ignore_for_file: unused_local_variable, unnecessary_null_in_if_null_operators, dead_null_aware_expression, unnecessary_null_comparison
 
 import 'package:test/test.dart';
 
