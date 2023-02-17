@@ -30,34 +30,10 @@
       permalink: /guides/language/language-tour
     - title: Type system
       permalink: /guides/language/type-system
-    - title: Effective Dart
-      expanded: false
-      children:
-        - title: Overview
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /guides/language/effective-dart
-        - title: Style
-          permalink: /guides/language/effective-dart/style
-        - title: Documentation
-          permalink: /guides/language/effective-dart/documentation
-        - title: Usage
-          permalink: /guides/language/effective-dart/usage
-        - title: Design
-          permalink: /guides/language/effective-dart/design
-    - title: Coming from ...
-      expanded: false
-      children:
-        - title: JavaScript to Dart
-          permalink: /guides/language/coming-from/js-to-dart
-        - title: Swift to Dart
-          permalink: /guides/language/coming-from/swift-to-dart
     - title: Extension methods
       permalink: /guides/language/extension-methods
     - title: Concurrency
       permalink: /guides/language/concurrency
-    - title: Numbers
-      permalink: /guides/language/numbers
     - title: Null safety
       expanded: false
       children:
@@ -82,10 +58,21 @@
           match-page-url-exactly: true
           permalink: /null-safety/faq
 
-    - title: Evolution
-      permalink: /guides/language/evolution
-    - title: Specification
-      permalink: /guides/language/spec
+- title: Effective Dart
+  expanded: false
+  children:
+    - title: Overview
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /guides/language/effective-dart
+    - title: Style
+      permalink: /guides/language/effective-dart/style
+    - title: Documentation
+      permalink: /guides/language/effective-dart/documentation
+    - title: Usage
+      permalink: /guides/language/effective-dart/usage
+    - title: Design
+      permalink: /guides/language/effective-dart/design
 
 - title: Core libraries
   expanded: false
@@ -195,6 +182,8 @@
           permalink: /web/deployment
         - title: Libraries and packages
           permalink: /web/libraries
+    - title: Number representation
+      permalink: /guides/language/numbers
 
 - title: Tools & techniques
   expanded: false
@@ -212,7 +201,13 @@
       - title: Dart DevTools
         permalink: /tools/dart-devtools
       - title: DartPad
-        permalink: /tools/dartpad
+        children:
+          - title: Overview
+            permalink: /tools/dartpad
+          - title: DartPad in tutorials
+            permalink: /resources/dartpad-best-practices
+          - title: Troubleshooting DartPad
+            permalink: /tools/dartpad/troubleshoot
   - title: Command-line tools
     children:
     - title: Dart SDK
@@ -280,24 +275,21 @@
 - title: Resources
   expanded: false
   children:
-    - title: Overview
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /resources
-    - title: Books
-      permalink: /resources/books
-    - title: "DartPad in tutorials: Best practices"
-      permalink: /resources/dartpad-best-practices
-    - title: Code of conduct
-      permalink: /code-of-conduct
     - title: FAQ
       permalink: /faq
-    - title: History
+    - title: Language evolution
+      permalink: /guides/language/evolution
+    - title: Language specification
+      permalink: /guides/language/spec    
+    - title: Coming from ...
+      expanded: false
       children:
-        - title: Migrating to Dart&nbsp;2
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /dart-2
+        - title: JavaScript to Dart
+          permalink: /guides/language/coming-from/js-to-dart
+        - title: Swift to Dart
+          permalink: /guides/language/coming-from/swift-to-dart
+    - title: Books
+      permalink: /resources/books
     - title: Videos
       permalink: /resources/videos
 
