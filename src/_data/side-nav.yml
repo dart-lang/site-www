@@ -57,8 +57,6 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/faq
-    - title: Language evolution
-      permalink: /guides/language/evolution
 
 - title: Effective Dart
   expanded: false
@@ -188,6 +186,7 @@
           permalink: /web/libraries
     - title: Environment declarations
       permalink: /guides/environment-declarations
+
 
 - title: Tools & techniques
   expanded: false
