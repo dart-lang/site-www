@@ -195,6 +195,7 @@
       { "source": "/pub/tools/editor", "destination": "/tools", "type": 301 },
       { "source": "/redirects/sdk-download-*", "destination": "/get-dart", "type": 301 },
       { "source": "/resources/dart-tips*{,/**}", "destination": "/guides/language/language-tour", "type": 301 },
+      { "source": "/resources/dartpad-best-practices", "destination": "/tools/dartpad/dartpad-best-practices", "type": 301 },
       { "source": "/resources/dartpad-tutorials.pdf", "destination": "/resources/dartpad-best-practices", "type": 301 },
       { "source": "/samples/spirodraw{,/**}", "destination": "/samples", "type": 301 },
       { "source": "/samples/todomvc{,/**}", "destination": "/samples", "type": 301 },
