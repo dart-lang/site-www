@@ -130,6 +130,8 @@
       permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
+    - title: Number representation
+      permalink: /guides/language/numbers
     - title: Interoperability
       children:
         - title: C interop
@@ -182,8 +184,6 @@
           permalink: /web/deployment
         - title: Libraries and packages
           permalink: /web/libraries
-    - title: Number representation
-      permalink: /guides/language/numbers
 
 - title: Tools & techniques
   expanded: false
@@ -203,9 +203,11 @@
       - title: DartPad
         children:
           - title: Overview
+            urlExactMatch: true
+            match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: DartPad in tutorials
-            permalink: /resources/dartpad-best-practices
+            permalink: /tools/dartpad/dartpad-best-practices
           - title: Troubleshooting DartPad
             permalink: /tools/dartpad/troubleshoot
   - title: Command-line tools
