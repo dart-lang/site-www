@@ -102,7 +102,7 @@
     - title: Concurrency
       children: 
         - title: Asynchronous support
-          permalink: /lanaguage/async
+          permalink: /language/async
         - title: Isolates
           permalink: /language/concurrency
 

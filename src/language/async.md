@@ -107,8 +107,6 @@ void main() [!async!] {
   use the [unawaited_futures linter rule][].
 {{site.alert.end}}
 
-[unawaited_futures linter rule]: /tools/linter-rules#unawaited_futures
-
 For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
 
@@ -207,3 +205,6 @@ For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
 
+[`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[unawaited_futures linter rule]: /tools/linter-rules#unawaited_futures

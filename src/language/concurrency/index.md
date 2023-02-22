@@ -422,8 +422,8 @@ In this example, `Isolate.run()` executes what looks like local code, concurrent
 In that sense, you can imagine `run()` to work like a [control flow operator][]
 for “run in parallel”.
 
-[closure]: /guides/language/language-tour#anonymous-functions
-[control flow operator]: /guides/language/language-tour#control-flow-statements
+[closure]: /language/functions#anonymous-functions
+[control flow operator]: /language/control-flow
 
 ### Sending multiple messages between isolates
 
