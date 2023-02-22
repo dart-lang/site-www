@@ -124,7 +124,7 @@ Future<void> greet() async {
 In the preceding code,
 the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
-see [asynchrony support](#asynchrony-support).
+see [asynchrony support](/language/async).
 
 You can invoke `loadLibrary()` multiple times on a library without problems.
 The library is loaded only once.
@@ -165,4 +165,4 @@ for advice on how to implement a library package, including:
   a library that supports multiple platforms.
 
 [doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
-[metadata annotations]: /guides/language/language-tour#metadata
+[metadata annotations]: /language/metadata

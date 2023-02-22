@@ -99,7 +99,7 @@ void main() async {
 Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](/guides/libraries/library-tour#stream)
 or `await for`, part of Dart's
-[asynchrony support.](/guides/language/language-tour#asynchrony-support)
+[asynchrony support.](/language/async)
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 ```dart

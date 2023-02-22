@@ -116,7 +116,7 @@ Because extension methods are resolved statically,
 they're as fast as calling a static function.
 
 For more information about static types and `dynamic`, see
-[The Dart type system](/guides/language/type-system).
+[The Dart type system](/language/type-system).
 
 ### API conflicts
 

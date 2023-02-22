@@ -96,7 +96,7 @@ extension MyFancyList<T> on List<T> { ... }
 extension SmartIterable<T> on Iterable<T> { ... }
 {% endprettify %}
 
-[extensions]: /guides/language/extension-methods
+[extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
 ### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}

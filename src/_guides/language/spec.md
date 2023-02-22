@@ -6,7 +6,7 @@ description: The formal specification for the Dart language.
 
 Use this page to find the formal Dart language specification.
 For a gentler introduction to Dart, see the
-[language tour](/guides/language/language-tour).
+[language tour](/language/basics).
 
 ## Dart 2
 

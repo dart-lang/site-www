@@ -11,7 +11,7 @@ The Dart language has special support for the following:
 - [Lists][] (`List`, also known as *arrays*)
 - [Sets][] (`Set`)
 - [Maps][] (`Map`)
-- [Runes](#characters) (`Runes`; often replaced by the `characters` API)
+- [Runes](#runes-and-grapheme-clusters) (`Runes`; often replaced by the `characters` API)
 - [Symbols](#symbols) (`Symbol`)
 - The value `null` (`Null`)
 
@@ -245,7 +245,7 @@ You can create a “raw” string by prefixing it with `r`:
 var s = r'In a raw string, not even \n gets special treatment.';
 ```
 
-See [Runes and grapheme clusters](#characters) for details on how
+See [Runes and grapheme clusters](#runes-and-grapheme-clusters) for details on how
 to express Unicode characters in a string.
 
 Literal strings are compile-time constants,

@@ -617,7 +617,7 @@ try {
 ```
 
 Within an `async` function, you can write 
-[try-catch clauses](/guides/language/language-tour#catch)
+[try-catch clauses](/language/error-handling#catch)
 the same way you would in synchronous code.
 
 ### Example: async and await with try-catch
@@ -1082,7 +1082,7 @@ are some suggestions for where to go next:
 - Learn more about futures and asynchrony:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.
-  - [Concurrency in Dart](/guides/language/concurrency)
+  - [Concurrency in Dart](/language/concurrency)
     Understand and learn how to implement concurrency in Dart.
   - [Dart videos from Google:][Dart videos]
     Watch one or more of the videos about asynchronous coding.

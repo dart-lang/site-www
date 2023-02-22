@@ -391,5 +391,5 @@ var loggerJson = Logger.fromJson(logMap);
 ```
 
 [language version]: /guides/language/evolution#language-versioning
-[using constructors]: /languages/classes#using-constructors
+[using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers

@@ -102,7 +102,7 @@ Dart supports the following built-in types:
 * Symbols (`Symbol`)
 * The value `null` (`Null`)
 
-To learn more, see [Built-in types][] in the [Dart Language Tour][].
+To learn more, check out [Built-in types][] in the [Dart Language Tour][].
 
 All non-`Null` types in Dart are subtypes of Object.
 All values are also objects.
@@ -121,7 +121,7 @@ This means only one `int` value with the numerical value `1` exists.
   consider themselves as equal.
 {{site.alert.end}}
 
-[Built-in types]: /guides/language/language-tour#built-in-types
+[Built-in types]: /language/built-in-types
 [Dart Language Tour]: /guides/language
 
 For example:
@@ -213,7 +213,7 @@ final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
   see [Runes and grapheme clusters][].
 {{site.alert.end}}
 
-[Runes and grapheme clusters]: /guides/language/language-tour#characters
+[Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
 ##### String interpolation
 
@@ -227,9 +227,9 @@ These use backtick (`` ` ``) character delimiters for the following reasons:
 In Dart, you don't need to enclose a string in backticks to concatenate
 strings or use interpolations within string literals.
 
-To learn more, see [Strings][] in the [Dart Language Tour][].
+To learn more, check out [Strings][] in the Dart Language Tour.
 
-[Strings]: /guides/language/language-tour#strings
+[Strings]: /language/built-in-types#strings
 
 As in JavaScript template literals,
 you can use the `${<expression>}` syntax to insert expressions into
@@ -819,7 +819,7 @@ and return an `Iterable`.
 Add items to the final iterable using the
 `yield` keyword, or add whole sets of items using `yield*`.
 
-[_generator functions_]: /guides/language/language-tour#generators
+[_generator functions_]: /language/generators
 
 The following example shows how to write a
 basic generator function:
@@ -1178,7 +1178,7 @@ let visibility = isPublic ? "public" : "private";
 final visibility = isPublic ? 'public' : 'private';
 ```
 
-[if-else]: /guides/language/language-tour#if-and-else
+[if-else]: /language/control-flow#if-and-else
 
 ### Assignment operators
 
@@ -2044,7 +2044,7 @@ class Point {
 Point p = Point(3, 5);
 ```
 
-[initializing parameters]: /guides/language/language-tour#constructors
+[initializing parameters]: /language/constructors
 
 Similar to functions, constructors have the
 option to take positioned or named parameters:
@@ -2775,7 +2775,7 @@ Some possible next steps:
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
-[Language tour]:  /guides/language/language-tour
+[Language tour]:  /language/basics
 [Library tour]:   /guides/libraries/library-tour
 [Dart codelabs]:  /codelabs
 [Effective Dart]: /guides/language/effective-dart

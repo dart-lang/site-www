@@ -151,7 +151,7 @@ the Dart code pauses while `readAsString()` executes non-Dart code,
 in either the Dart virtual machine (VM) or the operating system (OS).
 Once `readAsString()` returns a value, Dart code execution resumes.
 
-![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/guides/language/concurrency/images/basics-await.png)
+![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/language/concurrency/images/basics-await.png)
 
 If you’d like to learn more about using `async`, `await`, and futures,
 visit the [asynchronous programming codelab][].
@@ -196,7 +196,7 @@ Dart programs run in the main isolate by default.
 It's the thread where a program starts to run and execute, 
 as shown in the following figure:
 
-![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/guides/language/concurrency/images/basics-main-isolate.png)
+![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/language/concurrency/images/basics-main-isolate.png)
 
 Even single-isolate programs can execute smoothly
 by using async-await to wait for asynchronous operations to complete
@@ -218,7 +218,7 @@ When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
 
-![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/guides/language/concurrency/images/basics-isolate.png)
+![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/language/concurrency/images/basics-isolate.png)
 
 
 ### Event handling
@@ -229,7 +229,7 @@ For example, the following figure shows a repaint event,
 followed by a tap event, followed by two repaint events.
 The event loop takes events from the queue in first in, first out order.
 
-![A figure showing events being fed, one by one, into the event loop](/guides/language/concurrency/images/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/language/concurrency/images/event-loop.png)
 
 Event handling happens on the main isolate after `main()` exits.
 In the following figure, after `main()` exits,
@@ -237,7 +237,7 @@ the main isolate handles the first repaint event.
 After that, the main isolate handles the tap event,
 followed by a repaint event.
 
-![A figure showing the main isolate executing event handlers, one by one](/guides/language/concurrency/images/event-handling.png)
+![A figure showing the main isolate executing event handlers, one by one](/language/concurrency/images/event-handling.png)
 
 If a synchronous operation takes too much processing time,
 the app can become unresponsive.
@@ -246,7 +246,7 @@ so subsequent events are handled too late.
 The app might appear to freeze,
 and any animation it performs might be jerky.
 
-![A figure showing a tap handler with a too-long execution time](/guides/language/concurrency/images/event-jank.png)
+![A figure showing a tap handler with a too-long execution time](/language/concurrency/images/event-jank.png)
 
 In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
@@ -268,7 +268,7 @@ The worker isolate returns its result in a message when the worker exits.
 
 [json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
-![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
+![A figure showing a main isolate and a simple worker isolate](/language/concurrency/images/isolate-bg-worker.png)
 
 Each isolate message can deliver one object,
 which includes anything that’s transitively reachable from that object.
@@ -389,7 +389,7 @@ Previous example's diagram and text for reference:
   The following figure illustrates the communication between
   the main isolate and the worker isolate:
   
-  ![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
+  ![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/language/concurrency/images/isolate-api.png)
 {% endcomment %}
 
 #### Sending closures with isolates
@@ -449,7 +449,7 @@ One common pattern, which the following figure shows,
 is for the main isolate to send a request message to the worker isolate,
 which then sends one or more reply messages.
 
-![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
+![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/language/concurrency/images/isolate-custom-bg-worker.png)
 
 For examples of sending multiple messages,
 see the following [isolate samples][]:

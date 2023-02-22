@@ -3,7 +3,7 @@
   url: /samples
 - name: Language tour
   description: A more thorough (yet still example-based) introduction to the Dart language.
-  url: /guides/language/language-tour
+  url: /language/basics
 - name: Effective Dart
   description: Best practices for building consistent, maintainable, efficient Dart code.
   url: /guides/language/effective-dart

@@ -303,8 +303,7 @@ follow these steps:
 
 Use the following resources to learn more about library packages:
 
-* [Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
-  in the [language tour](/guides/language/language-tour) covers
+* [Libraries and visibility](/guides/libraries/visibility) covers
   using library files.
 * The [package](/guides/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).

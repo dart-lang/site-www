@@ -293,7 +293,7 @@ the arguments to `assert` aren't evaluated.
 
 [Exceptions]: /language/error-handling#exceptions
 [conditional expressions]: /language/operators#conditional-expressions
-[Booleans]: /language/buit-in-types#booleans
+[Booleans]: /language/built-in-types#booleans
 [iteration]: /guides/libraries/library-tour#iteration
 [forEach()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html

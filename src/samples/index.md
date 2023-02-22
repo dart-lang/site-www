@@ -58,7 +58,7 @@ var image = {
 };
 ```
 
-[Read more](/guides/language/language-tour#variables) about variables in Dart, 
+[Read more](/language/variables) about variables in Dart, 
 including default values, the `final` and `const` keywords, and static types.
 
 
@@ -87,7 +87,7 @@ while (year < 2016) {
 }
 ```
 
-[Read more](/guides/language/language-tour#control-flow-statements) 
+[Read more](/language/control-flow) 
 about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
@@ -120,7 +120,7 @@ Besides showing an anonymous function (the argument to `where()`),
 this code shows that you can use a function as an argument:
 the top-level `print()` function is an argument to `forEach()`.
 
-[Read more](/guides/language/language-tour#functions) about functions in Dart,
+[Read more](/language/functions) about functions in Dart,
 including optional parameters, default parameter values, and lexical scope.
 
 
@@ -138,7 +138,7 @@ Dart comments usually start with `//`.
 /* Comments like these are also supported. */
 ```
 
-[Read more](/guides/language/language-tour#comments) about comments in Dart,
+[Read more](/language/comments) about comments in Dart,
 including how the documentation tooling works.
 
 
@@ -158,7 +158,7 @@ import 'package:test/test.dart';
 import 'path/to/my_other_file.dart';
 ```
 
-[Read more](/guides/language/language-tour#libraries-and-visibility) 
+[Read more](/guides/libraries/visibility) 
 about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, 
 and lazy loading through the `deferred` keyword.
@@ -213,7 +213,7 @@ var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 ```
 
-[Read more](/guides/language/language-tour#classes) about classes in Dart,
+[Read more](/language/classes) about classes in Dart,
 including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
@@ -273,7 +273,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/guides/language/language-tour#enums) about enums in Dart,
+[Read more](/language/enum) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
@@ -291,7 +291,7 @@ class Orbiter extends Spacecraft {
 }
 ```
 
-[Read more](/guides/language/language-tour#extending-a-class) 
+[Read more](/language/extend) 
 about extending classes, the optional `@override` annotation, and more.
 
 
@@ -322,7 +322,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 `PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
-[Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
+[Read more](/language/mixins) about mixins.
 
 
 ## Interfaces and abstract classes
@@ -338,7 +338,7 @@ class MockSpaceship implements Spacecraft {
 }
 ```
 
-[Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
+[Read more](/language/classes#implicit-interfaces) about implicit interfaces.
 
 You can create an abstract class
 to be extended (or implemented) by a concrete class. 
@@ -360,7 +360,7 @@ Abstract classes can contain abstract methods (with empty bodies).
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
 
-[Read more](/guides/language/language-tour#abstract-classes) 
+[Read more](/language/classes#abstract-classes) 
 about abstract classes and methods.
 
 
@@ -426,7 +426,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 }
 ```
 
-[Read more](/guides/language/language-tour#asynchrony-support) about
+[Read more](/language/async) about
 asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
@@ -463,7 +463,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
-[Read more](/guides/language/language-tour#exceptions) about exceptions, 
+[Read more](/language/error-handling#exceptions) about exceptions, 
 including stack traces, `rethrow`, 
 and the difference between `Error` and `Exception`.
 
@@ -471,7 +471,7 @@ and the difference between `Error` and `Exception`.
 ## Other topics
 
 Many more code samples are in the
-[language tour](/guides/language/language-tour) and the
+[language tour](/language/basics) and the
 [library tour](/guides/libraries/library-tour).
 Also see the [Dart API reference,]({{site.dart-api}})
 which often contains examples.
