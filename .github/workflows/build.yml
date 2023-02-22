@@ -35,6 +35,8 @@ jobs:
         include:
           - sdk: dev
             experimental: false
+          - sdk: beta
+            experimental: false
           - sdk: stable
             experimental: true
     continue-on-error: ${{ matrix.experimental }}

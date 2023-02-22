@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation
+// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, avoid_init_to_null
 
 import 'package:test/test.dart';
 
@@ -70,7 +70,7 @@ void main() {
     assert(hitPoints <= 0);
 
     // Check for null.
-    var unicorn;
+    var unicorn = null;
     assert(unicorn == null);
 
     // Check for NaN.

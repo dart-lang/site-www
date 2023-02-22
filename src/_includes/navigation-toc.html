@@ -11,6 +11,7 @@
   {% assign topStyle = 'toc-collapsible toc-collapsed' %}
 {% endif %}
 {% if include.extendToc -%}
+  {% assign toc = toc | underscore_breaker: true %}
   {% assign toc = toc | replace: '<ul>', '<ul class="nav">' %}
   {% assign toc = toc | replace: '<ul class="section-nav">', '<ul class="section-nav nav">' %}
   {% assign toc = toc | replace: 'class="toc-entry', 'class="toc-entry nav-item' %}
