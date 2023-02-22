@@ -26,18 +26,56 @@
 - title: Language
   expanded: false
   children:
-    - title: Tour
-      permalink: /guides/language/language-tour
-    - title: Type system
-      permalink: /guides/language/type-system
-    - title: Extension methods
-      permalink: /guides/language/extension-methods
-    - title: Concurrency
-      permalink: /guides/language/concurrency
+    - title: Dart basics
+      permalink: /language/basics
+    - title: Variables & expressions
+      children:
+        - title: Keywords
+          permalink: /language/keywords 
+        - title: Variables
+          permalink: /language/variables
+        - title: Operators
+          permalink: /language/operators
+        - title: Comments
+          permalink: /language/comments
+        - title: Metadata
+          permalink: /language/metadata
+    - title: Types
+      children:
+        - title: Built-in types
+          permalink: /language/built-in-types
+        - title: Type system
+          permalink: /language/type-system 
+        - title: Collection types
+          permalink: /language/collection-types
+        - title: Typedefs
+          permalink: /language/typedefs
+        - title: Generics
+          permalink: /language/generics
+    - title: Functions
+      permalink: /language/functions
+    - title: Classes & objects
+      children: 
+        - title: Classes
+          permalink: /language/classes
+        - title: Constructors
+          permalink: /language/constructors
+        - title: Methods
+          permalink: /language/methods
+        - title: Extend a class
+          permalink: /language/extend
+        - title: Extension methods
+          permalink: /language/extension-methods
+        - title: Enum types
+          permalink: /language/enum
+        - title: Mixins
+          permalink: /language/mixins
+        - title: Callable classes
+          permalink: /language/callable-classes
     - title: Null safety
       expanded: false
       children:
-        - title: "Overview: Sound null safety"
+        - title: Sound null safety
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
@@ -57,6 +95,16 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/faq
+    - title: Control flow
+      permalink: /language/control-flow
+    - title: Error handling
+      permalink: /language/error-handling
+    - title: Concurrency
+      children: 
+        - title: Asynchronous support
+          permalink: /lanaguage/async
+        - title: Isolates
+          permalink: /language/concurrency
 
 - title: Effective Dart
   expanded: false
@@ -81,6 +129,8 @@
       urlExactMatch: true
       match-page-url-exactly: true
       permalink: /guides/libraries
+    - title: Libraries & visibility
+      permalink: /guides/libraries/visibility
     - title: Tour
       permalink: /guides/libraries/library-tour
     - title: Articles

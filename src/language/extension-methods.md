@@ -8,15 +8,15 @@ You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-<iframe width="560" height="315"
-  src="https://www.youtube.com/embed/D3j0OSfT9ZI"
-  frameborder="0"
-  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-<em>If you like to learn by watching videos,
-here's a good overview of extension methods.</em>
+Here's an example of using an extension method on `String`
+named `parseInt()` that's defined in `string_apis.dart`:
 
+```dart
+import 'string_apis.dart';
+...
+print('42'.padLeft(5)); // Use a String method.
+print('42'.parseInt()); // Use an extension method.
+```
 
 ## Overview
 
@@ -272,6 +272,18 @@ For more information about extension methods, see the following:
 * [Feature specification][specification]
 * [Extension methods sample][sample]
 
+<<<<<<< HEAD:src/_guides/language/extension-methods.md
+=======
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/D3j0OSfT9ZI"
+  frameborder="0"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+<em>If you like to learn by watching videos,
+here's a good overview of extension methods.</em>
+
+>>>>>>> 59e53837 (breakup language-tour to new pages, fix on-page links):src/language/extension-methods.md
 [specification]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 
 [article]: https://medium.com/dartlang/extension-methods-2d466cd8b308
