@@ -3,6 +3,8 @@ title: Generics
 description: Learn about generic types in Dart.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+
 If you look at the API documentation for the basic array type,
 [`List`][], you’ll see that the
 type is actually `List<E>`. The \<...\> notation marks List as a

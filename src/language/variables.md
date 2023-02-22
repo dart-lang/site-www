@@ -3,6 +3,8 @@ title: Variables
 description: Learn about variables in Dart.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+
 Here’s an example of creating a variable and initializing it:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>

@@ -3,6 +3,8 @@ title: Constructors
 description: Everything about using constructors in Dart.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+
 Declare a constructor by creating a function with the same name as its
 class (plus, optionally, an additional identifier as described in
 [Named constructors](#named-constructors)).

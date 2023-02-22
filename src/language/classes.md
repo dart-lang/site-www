@@ -3,6 +3,8 @@ title: Classes
 description: Summary of classes, class instances, and their members.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+
 Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
 except `Null` descend from [`Object`][].

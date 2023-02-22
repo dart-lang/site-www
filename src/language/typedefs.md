@@ -3,6 +3,8 @@ title: Typedefs
 description: Learn about type aliases in Dart.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+
 A type alias—often called a _typedef_ because
 it's declared with the keyword `typedef`—is
 a concise way to refer to a type.
