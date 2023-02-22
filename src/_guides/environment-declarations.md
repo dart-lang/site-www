@@ -37,13 +37,14 @@ use the `-D` or `--define` options and specify `<NAME>=<VALUE>`:
 $ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
-To learn more about specifying environment declarations,
-including for other tools and compilers, see
-[Specifying environment declarations][].
+To learn how to set these declarations with other tools, 
+check out the [specifying environment declarations][] section in this guide.
+That section explains the declaration syntax and
+how to specify them on the command line and in IDEs and editors.
 
 [`dart run`]: /tools/dart-run
 [`dart compile`]: /tools/dart-compile
-[Specifying environment declarations]: #specifying-environment-declarations
+[specifying environment declarations]: #specifying-environment-declarations
 
 ## Accessing environment declarations
 
@@ -109,8 +110,8 @@ if (const bool.hasEnvironment('DEBUG')) {
   Dart tools and compilers currently do not
   consistently handle environment declarations
   with comma-separated values.
-  For more details,
-  see [SDK issue 44995][].
+  To track standardization of this handling,
+  reference [SDK issue 44995][].
 {{site.alert.end}}
 
 [SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
@@ -134,7 +135,7 @@ $ dart compile kernel --define=DEBUG=true -DFLAVOR=free main.dart
 
 To learn about configuring `webdev` to pass environment declarations
 to both the development and production web compilers,
-see [the `webdev` configuration documentation][webdev-config].
+check out [the `webdev` configuration documentation][webdev-config].
 
 [webdev-config]: {{site.pub-pkg}}/build_web_compilers#configuring--d-environment-variables
 
@@ -156,7 +157,7 @@ add a new `toolArgs` key containing the your desired environment declarations:
 ]
 ```
 
-For more information, see the documentation for
+To learn more, check out the documentation for
 [VS Code launch configurations.][VSC instructions]
 
 [VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
@@ -168,7 +169,7 @@ add your desired environment declarations to **VM options**:
 
 ![Adding define option to Jetbrains IDE](/assets/img/env-decl-jetbrains.png){:width="500"}
 
-For more information, see the JetBrains' documentation for
+To learn more, check out JetBrains' documentation for
 [Dart Run/Debug Configurations][jetbrains-run-debug].
 
 [jetbrains-run-debug]: https://www.jetbrains.com/help/webstorm/run-debug-configuration-dart-command-line-application.html
@@ -184,5 +185,5 @@ $ flutter run ---dart-define=DEBUG=true
 
 {%- comment %}
   TODO: Once Flutter adds `--dart-define` documentation:
-  To learn more, see Flutter's documentation on `--dart define`.
+  To learn more, check out Flutter's documentation on `--dart define`.
 {% endcomment -%}
