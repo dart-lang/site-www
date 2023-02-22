@@ -3,6 +3,15 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
+{{site.alert.version-note}}
+  Dart 2.19 is the final release that supports null-safety migration,
+  including the `dart migrate` tool.
+  To migrate your package to null safety,
+  use the latest Dart 2.19 SDK.
+  To learn more,
+  see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
+{{site.alert.end}}
+
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
@@ -74,9 +83,10 @@ Switch to the **Dart 2.19 stable release**
 of the Dart SDK. This is included in the Flutter 3.7 SDK.
 
 Check that you have Dart 2.19:
+
 ```terminal
 $ dart --version
-Dart SDK version: 2.19.0
+Dart SDK version: 2.19.2
 ```
 
 ### Check dependency status
@@ -169,7 +179,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest stable release of the Dart SDK.
+* Use the latest 2.19 release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
