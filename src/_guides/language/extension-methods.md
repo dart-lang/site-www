@@ -231,9 +231,10 @@ extension on String {
 }
 ```
 
-Note that without a name,
-an extension's static members can only be invoked
-within the extension declaration.
+{{site.alert.note}}
+  Without a name, you can invoke an extension's
+  static members only within the extension declaration.
+{{site.alert.end}}
 
 ## Implementing generic extensions
 
