@@ -233,8 +233,8 @@ extension on String {
 ```
 
 {{site.alert.note}}
-  Without a name, you can invoke an extension's
-  static members only within the extension declaration.
+  You can invoke an unnamed extension's static members
+  only within the extension declaration.
 {{site.alert.end}}
 
 ## Implementing generic extensions
