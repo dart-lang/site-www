@@ -11,9 +11,10 @@ configuration values or options as key-value pairs
 that are accessed and evaluated at compile time.
 
 {{site.alert.note}}
-  This page uses "environment" and "environment declarations"
-  to refer to the compilation environment, not the OS environment
-  often referred to as "the environment" in software terminology.
+  This page uses "environment" to refer
+  to the Dart compilation environment. 
+  The common use of the term instead refers
+  to the operating system environment.
 {{site.alert.end}}
 
 Your app can use the values of environment declarations
@@ -62,13 +63,14 @@ and [`String.fromEnvironment`][string-from] for anything else.
 {{site.alert.end}}
 
 Each of the `fromEnvironment` constructors require the
-name or key of the environment declaration key-value pair,
-as well as an optional `defaultValue` override
-that is used when a declaration wasn't defined
+name or key of the environment declaration.
+They also accept an optional `defaultValue` named argument
+to override the default fallback value.
+The default fallback value is used when a declaration isn't defined
 or the specified value cannot be parsed as the expected type.
 
-For example, if you only want to log messages
-when the environment declaration `DEBUG` is set to `true`:
+For example, if you want to print log messages
+only when the environment declaration `DEBUG` is set to `true`:
 
 <?code-excerpt "misc/lib/development/environment_declarations.dart (debug-log)"?>
 ```dart
@@ -85,10 +87,10 @@ In this snippet, if `DEBUG` is set to `false`
 during compilation, or not specified at all,
 production compilers can completely remove the condition and its body.
 
-The `fromEnvironment` constructors always
-have a default value for when the declaration isn't specified
-or the specified value cannot be parsed.
-Therefore, if you need to specifically check whether
+The `fromEnvironment` constructors fallback to 
+a default value when the declaration isn't specified or
+the specified value cannot be parsed.
+Therefore, to specifically check whether
 an environment declaration has been specified,
 use the [`bool.hasEnvironment`][bool-has] constructor:
 
