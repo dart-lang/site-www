@@ -4,10 +4,10 @@ description: >
   Learn about using compilation environment declarations to customize application behavior.
 ---
 
-Dart supports specifying compilation environment declarations when
-building or running an application.
-Compilation environment declarations are used to specify
-configuration values or options as key-value pairs
+You can specify compilation environment declarations
+when building or running a Dart application.
+Compilation environment declarations specify
+configuration options as key-value pairs
 that are accessed and evaluated at compile time.
 
 {{site.alert.note}}
@@ -19,8 +19,8 @@ that are accessed and evaluated at compile time.
 
 Your app can use the values of environment declarations
 to change its functionality or behavior.
-Dart compilers can take advantage of this to eliminate code
-no longer reachable due to the values specified, through "tree shaking".
+Dart compilers can eliminate the code made unreachable
+due to control flow using the environment declaration values.
 
 You might define and use environment declarations to:
 
