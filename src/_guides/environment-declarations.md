@@ -22,13 +22,13 @@ to change its functionality or behavior.
 Dart compilers can take advantage of this to eliminate code
 no longer reachable due to the values specified, through "tree shaking".
 
-Some potential use cases for defining environment declarations are:
+You might define and use environment declarations to:
 
-* Adding functionality during debugging, such as enabling logging.
-* Creating separate flavors of your application.
-* Configuring application behavior, such as the port of an HTTP server.
-* Enabling an experimental mode of your application for testing.
-* Switching between testing and production backends.
+* Add functionality during debugging, such as enabling logging.
+* Create separate flavors of your application.
+* Configure application behavior, such as the port of an HTTP server.
+* Enable an experimental mode of your application for testing.
+* Switch between testing and production backends.
 
 To specify an environment declaration
 to an application with the [`dart run`][] or [`dart compile`][] subcommands,
