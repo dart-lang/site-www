@@ -31,8 +31,10 @@ You might define and use environment declarations to:
 * Switch between testing and production backends.
 
 To specify an environment declaration
-to an application with the [`dart run`][] or [`dart compile`][] subcommands,
-use the `-D` or `--define` options and specify `<NAME>=<VALUE>`:
+when running or compiling a Dart application,
+use the `--define` option or its abbreviation, `-D`.
+Specify the declaration key-value pair
+using a `<NAME>=<VALUE>` format:
 
 ```terminal
 $ dart run --define=DEBUG=true -DFLAVOR=free
