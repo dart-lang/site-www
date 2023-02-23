@@ -247,24 +247,6 @@ For example, in the following code, `T` is `PENDING` because PENDING:
 [PENDING: Explain why it matters in normal usage.]
 {% endcomment %}
 
-## Anynonymous Extensions
-
-You can write extensions without name as below.
-
-```dart
-extension on int {
-  String get friendlyDate => DateFormat('dd-MMM-y HH:mm:ss').format(DateTime.fromMillisecondsSinceEpoch(this))
-}
-```
-
-You can use this as 
-```dart
-   int epochMillis = .........;
-   print(epochMillis.friendlyDate);
-```
-
-But, these extension methods can be used only in the file where it is defined. If the methods are required for other dart files, then the extention should have a name.
-
 ## Resources
 
 For more information about extension methods, see the following:
