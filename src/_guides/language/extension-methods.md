@@ -218,10 +218,11 @@ Extensions can also have static fields and static helper methods.
 
 ### Unnamed extensions
 
-You can optionally omit the name when declaring an extension.
-An unnamed extension is visible only
-in the library where it's declared.
-You also can't apply it explicitly
+When declaring an extension, you can omit the name.
+Unnamed extensions are visible only
+in the library where they're declared.
+Since they don't have a name,
+there is no way to explicitly apply them
 to resolve [API conflicts](#api-conflicts).
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis_unnamed.dart (unnamed)"?>
