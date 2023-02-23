@@ -190,5 +190,5 @@ $ flutter run ---dart-define=DEBUG=true
 
 {%- comment %}
   TODO: Once Flutter adds `--dart-define` documentation:
-  To learn more, check out Flutter's documentation on `--dart define`.
+  To learn more, check out Flutter's documentation on `--dart-define`.
 {% endcomment -%}
