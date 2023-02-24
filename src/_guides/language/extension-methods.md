@@ -222,7 +222,7 @@ When declaring an extension, you can omit the name.
 Unnamed extensions are visible only
 in the library where they're declared.
 Since they don't have a name,
-there is no way to explicitly apply them
+they can't be explicitly applied
 to resolve [API conflicts](#api-conflicts).
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis_unnamed.dart (unnamed)"?>
