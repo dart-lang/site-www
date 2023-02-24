@@ -195,6 +195,8 @@
           permalink: /web/deployment
         - title: Libraries and packages
           permalink: /web/libraries
+    - title: Environment declarations
+      permalink: /guides/environment-declarations
 
 - title: Tools & techniques
   expanded: false

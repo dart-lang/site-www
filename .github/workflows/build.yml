@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk: [stable, dev]
+        sdk: [stable, beta, dev]
     steps:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
@@ -64,7 +64,7 @@ jobs:
       - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@11.19.0
+      - run: npm install -g firebase-tools@11.23.1
       - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
           sdk: stable
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@11.19.0
+      - run: npm install -g firebase-tools@11.23.1
       - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
           sdk: stable
