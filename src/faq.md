@@ -4,8 +4,6 @@ short-title: FAQ
 description: You have questions about Dart, we have answers.
 ---
 
-_Updated June 2019_
-
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced.
 

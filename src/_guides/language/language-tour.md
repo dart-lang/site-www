@@ -825,7 +825,7 @@ var hitPoints = 0;
 assert(hitPoints <= 0);
 
 // Check for null.
-var unicorn;
+var unicorn = null;
 assert(unicorn == null);
 
 // Check for NaN.
