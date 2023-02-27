@@ -998,7 +998,7 @@ curly braces around flow control statements
 with no else clause and the whole if statement
 fits on one line, you can omit the braces if you prefer.
 
-```swift
+```dart
 var a = 1;
 // Parentheses for conditions are required in Dart.
 if (a == 1) {
