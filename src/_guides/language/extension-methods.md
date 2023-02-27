@@ -2,6 +2,7 @@
 title: Extension methods
 description: Learn how to add to existing APIs.
 ---
+
 Extension methods add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
@@ -49,7 +50,7 @@ print('42'.parseInt()); // Use an extension method.
 
 Extensions can define not just methods,
 but also other members such as getter, setters, and operators.
-Also, extensions have names, which can be helpful if an API conflict arises.
+Also, extensions can have names, which can be helpful if an API conflict arises.
 Here's how you might implement the extension method `parseInt()`,
 using an extension (named `NumberParsing`) that operates on strings:
 
@@ -191,7 +192,7 @@ to avoid a name conflict when invoking an extension explicitly.
 Use the following syntax to create an extension:
 
 ```
-extension <extension name> on <type> {
+extension <extension name>? on <type> {
   (<member definition>)*
 }
 ```
@@ -212,13 +213,29 @@ extension NumberParsing on String {
 ```
 <div class="prettify-filename">lib/string_apis.dart</div>
 
-To create a local extension that's visible only in
-the library where it's declared,
-either omit the extension name or give it a name
-that starts with an underscore (`_`).
-
-The members of the extension can be methods, getters, setters, operators.
+The members of an extension can be methods, getters, setters, or operators.
 Extensions can also have static fields and static helper methods.
+
+### Unnamed extensions
+
+When declaring an extension, you can omit the name.
+Unnamed extensions are visible only
+in the library where they're declared.
+Since they don't have a name,
+they can't be explicitly applied
+to resolve [API conflicts](#api-conflicts).
+
+<?code-excerpt "extension_methods/lib/string_extensions/string_apis_unnamed.dart (unnamed)"?>
+```dart
+extension on String {
+  bool get isBlank => trim().isEmpty;
+}
+```
+
+{{site.alert.note}}
+  You can invoke an unnamed extension's static members
+  only within the extension declaration.
+{{site.alert.end}}
 
 ## Implementing generic extensions
 
@@ -254,13 +271,6 @@ For more information about extension methods, see the following:
 * [Article: Dart Extension Methods Fundamentals][article]
 * [Feature specification][specification]
 * [Extension methods sample][sample]
-
-{% comment %}
-* Video
-* 2.7 blog post?
-* Release notes?
-* Examples?
-{% endcomment %}
 
 [specification]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 
