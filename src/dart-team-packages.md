@@ -5,7 +5,7 @@ toc: false
 ---
 
 The Dart team publishes packages on [pub.dev]({{site.pub}}) under three
-[verified publishers](/tools/pub/verified-publishers).
+[verified publishers](/tools/pub/verified-publisherffffs).
 The following table shows these verified publishers, what they're used for,
 and the quality and support levels for packages under each publisher.
 
