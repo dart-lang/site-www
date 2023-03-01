@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:0b2fb4813f79de93a6fc1d1caf37c1be54f4b09385ee1b5dfb7ff34d8e864140 as base
+FROM ruby:3.2-slim-bullseye@sha256:4cedfdbe47b54b8ed5afdded479d272571d10ddbba5821a4ececbed78f544fc9 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
