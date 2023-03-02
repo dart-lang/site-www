@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="326f6085aaf3a6733f3cf2eface18513afbd07c70e4068c4da9c6880161ddb2b"; \
+        DART_SHA256="93b5db66868b0a0fd7f3615f2ae279985430de57f5e925e498d35b7d79ab0747"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="4c6f5139bde79f557af92790d219e64f1a2e043a657848e5618efbcb82f9b77e"; \
+        DART_SHA256="af6e4aa9a146aab0844bca502c3bb3ebad33895d78f48743ff3513a7ef3dd163"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="da65d6733d9cca10f04cf981c97f3af7835e51afda84dce73f2e6fea8848c21b"; \
@@ -45,10 +45,10 @@ RUN set -eu; \
         DART_SHA256="b0cd5dacc35e56ca569125a0cdab4539580465a4c0f820311c3f7e22e6f817b4"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="a54f12542d289c1ec00c913a85a84d8554e405739bbe5c8ebf74ee95ea5fc305"; \
+        DART_SHA256="f2ed05b9c72172fa1c562f054fb1f4dd3fd1dfce7e0b4d92879c62656bfb96ee"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="cb269e8e1634d7f91488d2aa87ef9d1c3c264a80fab55c5f16befb499bdd1095"; \
+        DART_SHA256="b8fbdbdf2a1de3a3ee5eb608b930d200c45d623d0ea2f0431477a0ec0f1bc501"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
