@@ -176,11 +176,11 @@ void main() {
 }
 ```
 
-In the preceding example, 
-even though `fetchUserOrder()` executes before the `print()` call on line 8, 
-the console shows the output from line 8("Fetching user order...") 
-before the output from `fetchUserOrder()` ("Large Latte").
-This is because `fetchUserOrder()` delays before it prints "Large Latte".
+The `fetchUserOrder()` function returns a future that resolves after a 2-second delay using the `Future.delayed()` method. When the future completes, it prints "Large Latte" to the console.
+
+In the `main()` function, we call `fetchUserOrder()` to initiate the asynchronous operation and print "Fetching user order..." to the console. Since the `fetchUserOrder()` function returns a future, the `main()` function does not wait for the future to complete before moving on to the next line of code. As a result, the "Fetching user order..." message is printed immediately after the `fetchUserOrder()` function is called, before the 2-second delay.
+
+Therefore, the "Fetching user order..." message is printed first, followed by "Large Latte" after 2 seconds when the future completes.
 
 ### Example: Completing with an error
 
