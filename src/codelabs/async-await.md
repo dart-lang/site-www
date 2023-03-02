@@ -121,8 +121,8 @@ print the desired value ("Large Latte") to the console.
 
 A future (lower case "f") is an instance
 of the [Future][] (capitalized "F") class. 
-A future represents the result of an asynchronous operation, 
-and can have two states: uncompleted or completed.
+A future is a way to represent a task that might take some time to complete. It's like making a plan for the computer to do something in the future and get back with the result when it's done. Futures are commonly used to handle asynchronous tasks. Asynchronous tasks allow the program to continue executing other tasks without waiting for the completion of the first task. This is particularly useful when performing tasks such as loading data from a server or executing heavy computations, as it prevents the program from feeling slow or unresponsive.
+futures can have two states: uncompleted or completed.
 
 {{site.alert.note}}
   _Uncompleted_ is a Dart term referring to the state of a future
