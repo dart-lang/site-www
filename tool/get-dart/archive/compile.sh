@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Enter the tool's directory as the working directory to avoid path conflicts under different environments.
+# Enter the tool's directory as the working directory
+# to avoid path conflicts under different environments.
 cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
 : ${TMP:=tmp}
