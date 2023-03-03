@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
 : ${TMP:=tmp}
 OUT_DIR="$TMP/download_archive"
