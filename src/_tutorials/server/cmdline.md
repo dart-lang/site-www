@@ -113,7 +113,7 @@ with the [`dart create`](/tools/dart-create) command.
    $ cd dcat
    ```
    
-3. Inside the `dcat` directory, use [pub](/tools/pub) 
+3. Inside the `dcat` directory, use [dart pub add](/tools/pub/cmd/pub-add) 
    to add the `args` package as a dependency. This adds `args` to 
    the list of your dependencies found in the `pubspec.yaml` file.
 
