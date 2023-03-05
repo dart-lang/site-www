@@ -547,7 +547,7 @@ are some suggestions for where to go next:
 -   [Get the Dart SDK](/get-dart).
 
 If you're interested in using embedded DartPads, like this codelab does, see
-[best practices for using DartPad in tutorials](/resources/dartpad-best-practices).
+[best practices for using DartPad in tutorials](/tools/dartpad/dartpad-best-practices).
 If you're interested in improving this codelab, see
 [issue #3093][].
 
