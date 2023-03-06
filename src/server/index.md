@@ -67,7 +67,7 @@ You might find the following tutorials helpful.
 [Dart API]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}})
 : API reference for dart:* libraries.
 
-[dart:io section of the library tour](/guides/libraries/library-tour/#dartio)
+[dart:io section of the library tour](/guides/libraries/library-tour#dartio)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   non-web [Flutter apps.]({{site.flutter}})

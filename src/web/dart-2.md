@@ -92,6 +92,6 @@ information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 [angular-examples/quickstart/web/index.html]: https://github.com/googlearchive/quickstart/compare/4.x...master#diff-8f62b6ced28d3396b501d2e89a2e7cb761d16cd7dc977aebece03d4a5da5c24e
 [angular-examples/toh-5]: https://github.com/googlearchive/toh-5/compare/4.x...master
 [build]: https://github.com/dart-lang/build
-[dart-2]: /dart-2
+[dart-2]: /articles/archive/dart-2
 [Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
 [Transforming code]: https://github.com/dart-lang/build/blob/master/docs/transforming_code.md
