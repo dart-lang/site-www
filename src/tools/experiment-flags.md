@@ -34,7 +34,7 @@ edit the launch configuration.
 ### Visual Studio Code
 
 In `launch.json` under `configurations`,
-add a new `vmAdditionalArgs` key containing the desired flags.
+add a new `toolArgs` key containing the desired flags.
 Example:
 
 ```json
@@ -44,7 +44,7 @@ Example:
             "program": "bin/main.dart",
             "request": "launch",
             "type": "dart",
-            "vmAdditionalArgs": [
+            "toolArgs": [
                 "--enable-experiment=super-mixins,no-slow-checks",
             ],
         }
