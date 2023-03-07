@@ -57,6 +57,8 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/faq
+    - title: Language evolution
+      permalink: /guides/language/evolution
 
 - title: Effective Dart
   expanded: false
@@ -281,8 +283,6 @@
   children:
     - title: FAQ
       permalink: /faq
-    - title: Language evolution
-      permalink: /guides/language/evolution
     - title: Language specification
       permalink: /guides/language/spec    
     - title: Coming from ...
