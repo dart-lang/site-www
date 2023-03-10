@@ -303,7 +303,7 @@ follow these steps:
 
 Use the following resources to learn more about library packages:
 
-* [Libraries and visibility](/guides/libraries/visibility) covers
+* [Libraries and imports](/language/libraries) covers
   using library files.
 * The [package](/guides/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).

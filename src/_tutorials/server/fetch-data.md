@@ -150,7 +150,7 @@ see its [page on the pub.dev site][http-pub]
 and its [API documentation][http-docs].
 
 [`dart pub add`]: /tools/pub/cmd/pub-add
-[specify a library prefix]: /guides/libraries/visibility#specifying-a-library-prefix
+[specify a library prefix]: /language/libraries#specifying-a-library-prefix
 
 ## Build a URL
 

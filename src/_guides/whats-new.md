@@ -84,7 +84,7 @@ we made the following changes to this site:
 [Documentation]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
-[The language tour]: /guides/libraries/visibility#library-directive
+[The language tour]: /language/libraries#library-directive
 [Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
 [Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web

@@ -501,7 +501,7 @@ For more information about the `.`, `?.`, and `..` operators, see
 [Dart language specification]: /guides/language/spec
 [identical()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [Operators]: /language/methods#operators
-[library prefixes]: /guides/libraries/visibility#specifying-a-library-prefix
+[library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/control-flow#if-and-else
 [language version]: /guides/language/evolution#language-versioning
 [Classes]: /language/classes

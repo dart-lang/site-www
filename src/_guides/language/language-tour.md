@@ -385,32 +385,32 @@ This content has moved to [Generics](/language/generics#using-generic-methods).
 
 ## Libraries and visibility
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility).
+This content has moved to [Libraries & visibility](/language/libraries).
 
 ### Using libraries
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#using-libraries).
+This content has moved to [Libraries & visibility](/language/libraries#using-libraries).
 
 #### Specifying a library prefix
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#specifying-a-library-prefix).
+This content has moved to [Libraries & visibility](/language/libraries#specifying-a-library-prefix).
 
 #### Importing only part of a library
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#importing-only-part-of-a-library).
+This content has moved to [Libraries & visibility](/language/libraries#importing-only-part-of-a-library).
 
 <a id="deferred-loading"></a>
 #### Lazily loading a library
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#lazily-loading-a-library).
+This content has moved to [Libraries & visibility](/language/libraries#lazily-loading-a-library).
 
 #### The `library` directive {#library-directive}
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#the-library-directive).
+This content has moved to [Libraries & visibility](/language/libraries#the-library-directive).
 
 ### Implementing libraries
 
-This content has moved to [Libraries & visibility](/guides/libraries/visibility#implementing-libraries).
+This content has moved to [Libraries & visibility](/language/libraries#implementing-libraries).
 
 <a id="asynchrony"></a>
 ## Asynchrony support

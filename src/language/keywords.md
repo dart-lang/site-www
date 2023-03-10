@@ -45,7 +45,7 @@ The following table lists the words that the Dart language treats specially.
 [continue]: /language/control-flow#break-and-continue
 [covariant]: /guides/language/sound-problems#the-covariant-keyword
 [default]: /language/control-flow#switch-and-case
-[deferred]: /guides/libraries/visibility#lazily-loading-a-library
+[deferred]: /language/libraries#lazily-loading-a-library
 [do]: /language/control-flow#while-and-do-while
 [dynamic]: /language/basics#important-concepts
 [else]: /language/control-flow#if-and-else
@@ -61,15 +61,15 @@ The following table lists the words that the Dart language treats specially.
 [for]: /language/control-flow#for-loops
 [Function]: /language/functions
 [get]: /language/methods#getters-and-setters
-[hide]: /guides/libraries/visibility#importing-only-part-of-a-library
+[hide]: /language/libraries#importing-only-part-of-a-library
 [if]: /language/control-flow#if-and-else
 [implements]: /language/classes#implicit-interfaces
-[import]: /guides/libraries/visibility#using-libraries
+[import]: /language/libraries#using-libraries
 [in]: /language/control-flow#for-loops
 [interface]: /language/classes#implicit-interfaces
 [is]: /language/operators#type-test-operators
 [late]: /language/variables#late-variables
-[library]: /guides/libraries/visibility
+[library]: /language/libraries
 [mixin]: /language/mixins
 [new]: /language/classes#using-constructors
 [null]: /language/variables#default-value
@@ -80,7 +80,7 @@ The following table lists the words that the Dart language treats specially.
 [rethrow]: /language/error-handling#catch
 [return]: /language/functions#return-values
 [set]: /language/methods#getters-and-setters
-[show]: /guides/libraries/visibility#importing-only-part-of-a-library
+[show]: /language/libraries#importing-only-part-of-a-library
 [static]: /language/classes#class-variables-and-methods
 [super]: /language/extend
 [switch]: /language/control-flow#switch-and-case

@@ -1,5 +1,5 @@
 ---
-title: Libraries & visibility
+title: Libraries & imports
 description: Guidance on importing and implementing libraries.
 ---
 
@@ -164,5 +164,6 @@ for advice on how to implement a library package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
+[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

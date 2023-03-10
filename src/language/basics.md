@@ -135,7 +135,7 @@ mind:
 -   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (`_`), it’s
     private to its library. For details, see
-    [Libraries and visibility][].
+    [Libraries and imports][].
 
 -   *Identifiers* can start with a letter or underscore (`_`), followed by any
     combination of those characters plus digits.
@@ -165,7 +165,7 @@ mind:
 [`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [language version]: /guides/language/evolution#language-versioning
 [ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
-[Libraries and visibility]: /guides/libraries/visibility
+[Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
 [if-else statement]: /language/control-flow#if-and-else
 [exception]: /language/error-handling#exceptions

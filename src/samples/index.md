@@ -158,7 +158,7 @@ import 'package:test/test.dart';
 import 'path/to/my_other_file.dart';
 ```
 
-[Read more](/guides/libraries/visibility) 
+[Read more](/language/libraries) 
 about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, 
 and lazy loading through the `deferred` keyword.

@@ -28,10 +28,8 @@
   children:
     - title: Introduction
       permalink: /language/basics
-    - title: Variables & expressions
+    - title: Syntax basics
       children:
-        - title: Keywords
-          permalink: /language/keywords 
         - title: Variables
           permalink: /language/variables
         - title: Operators
@@ -40,20 +38,28 @@
           permalink: /language/comments
         - title: Metadata
           permalink: /language/metadata
+        - title: Libraries & imports
+          permalink: /language/libraries
+        - title: Keywords
+          permalink: /language/keywords 
     - title: Types
       children:
         - title: Built-in types
           permalink: /language/built-in-types
-        - title: Type system
-          permalink: /language/type-system 
         - title: Collection types
           permalink: /language/collection-types
         - title: Typedefs
           permalink: /language/typedefs
         - title: Generics
           permalink: /language/generics
+        - title: Type system
+          permalink: /language/type-system 
     - title: Functions
       permalink: /language/functions
+    - title: Control flow
+      permalink: /language/control-flow
+    - title: Error handling
+      permalink: /language/error-handling
     - title: Classes & objects
       children: 
         - title: Classes
@@ -72,6 +78,12 @@
           permalink: /language/mixins
         - title: Callable classes
           permalink: /language/callable-classes
+    - title: Concurrency
+      children: 
+        - title: Asynchronous support
+          permalink: /language/async
+        - title: Isolates
+          permalink: /language/concurrency
     - title: Null safety
       expanded: false
       children:
@@ -95,16 +107,6 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/faq
-    - title: Control flow
-      permalink: /language/control-flow
-    - title: Error handling
-      permalink: /language/error-handling
-    - title: Concurrency
-      children: 
-        - title: Asynchronous support
-          permalink: /language/async
-        - title: Isolates
-          permalink: /language/concurrency
 
 - title: Effective Dart
   expanded: false
@@ -129,8 +131,6 @@
       urlExactMatch: true
       match-page-url-exactly: true
       permalink: /guides/libraries
-    - title: Libraries & visibility
-      permalink: /guides/libraries/visibility
     - title: Tour
       permalink: /guides/libraries/library-tour
     - title: Articles
