@@ -69,7 +69,7 @@ print('I drink $tea.');
 ```
 
 For more information on basic strings and `toString()`, see
-[Strings](/language/built-in-types#strings) in the language tour.
+[Strings](/guides/language/language-tour#strings) in the language tour.
 
 
 ### Numbers
@@ -135,7 +135,7 @@ the [dart:math section](#dartmath---math-and-random).
 
 A string in Dart is an immutable sequence of UTF-16 code units.
 The language tour has more information about
-[strings](/language/built-in-types#strings).
+[strings](/guides/language/language-tour#strings).
 You can use regular expressions (RegExp objects)
 to search within strings and to
 replace parts of strings.
@@ -410,7 +410,7 @@ assert(fruits[0] == 'apples');
 ```
 
 Lists are parameterized types
-([generics](/language/generics)),
+([generics](/guides/language/language-tour#generics)),
 so you can specify the type that a list
 should contain:
 
@@ -434,7 +434,7 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
   In many cases, you don't
   need to explicitly specify generic
   types, because Dart will
-  [infer](/language/type-system#type-inference)
+  [infer](/guides/language/type-system#type-inference)
   them for you.
   A list like `['Dash', 'Dart']` is understood
   to be a `List<String>` (read: list of strings).
@@ -1053,7 +1053,7 @@ class FooException implements Exception {
 ```
 
 For more information, see
-[Exceptions](/language/error-handling#exceptions)
+[Exceptions](/guides/language/language-tour#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
 ### Weak references and finalizers
@@ -1736,7 +1736,7 @@ To learn more about the Dart language, see the
 [language tour][].
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[Assert]: /language/control-flow#assert
+[Assert]: /guides/language/language-tour#assert
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
@@ -1781,7 +1781,7 @@ To learn more about the Dart language, see the
 [double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 [int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[language tour]: /language/basics
+[language tour]: /guides/language/language-tour
 [num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html

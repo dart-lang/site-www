@@ -147,7 +147,7 @@ Check out these resources:
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
   * [Sample code](/samples)
-  * [Language tour](/language/basics)
+  * [Language tour](/guides/language/language-tour)
   * [Library tour](/guides/libraries/library-tour)
   * [Effective Dart](/guides/language/effective-dart)
 * Tools and libraries
@@ -159,9 +159,9 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
-[Arithmetic operators]: /language/operators#arithmetic-operators
+[Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
 [DartPad documentation]: /tools/dartpad
-[Dart language tour]: /language/basics
+[Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors
 
