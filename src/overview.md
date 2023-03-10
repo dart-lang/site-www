@@ -59,7 +59,7 @@ arrow syntax, generators, streams, and getters.
 To find examples of using additional Dart features,
 see the [samples page](/samples).
 To learn more about the language, take the [Dart language
-tour](/guides/language/language-tour).
+tour](/language/basics).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview
@@ -258,9 +258,9 @@ This runtime is responsible for the following critical tasks:
   Although most type checks in Dart are static (compile-time),
   some type checks are dynamic (runtime).
   For example, the Dart runtime enforces dynamic checks by
-  [type check and cast operators](/guides/language/language-tour#type-test-operators).
+  [type check and cast operators](/language/operators#type-test-operators).
 
-* Managing [isolates](/guides/language/language-tour#isolates):
+* Managing [isolates](/language/concurrency):
   The Dart runtime controls the main isolate (where code normally runs)
   and any other isolates that the app creates.
 
@@ -275,7 +275,7 @@ You have many choices for learning Dart. Here are a few that we recommend:
 
 * [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
-* [Take a tour of the Dart language](/guides/language/language-tour),
+* [Take a tour of the Dart language](/language/basics),
   which shows you how to use each major Dart feature.
 * [Complete a Dart tutorial](/tutorials/server/cmdline) that 
   covers the basics of using Dart to build for the command line.

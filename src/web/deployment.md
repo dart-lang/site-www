@@ -50,7 +50,7 @@ To learn more about using this package, see
 You can use Dart's support for deferred loading to
 reduce your app's initial download size.
 For details, see the language tour's coverage of
-[deferred loading](/guides/language/language-tour#lazily-loading-a-library).
+[deferred loading](/language/libraries#lazily-loading-a-library).
 
 
 #### Follow best practices for web apps

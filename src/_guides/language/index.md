@@ -9,7 +9,7 @@ These two resources are popular with both beginning Dart developers and experts.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/guides/language/language-tour">Language tour</a></h3>
+    <h3><a href="/language/basics">Language tour</a></h3>
     <p>A walk through all of the major features of the Dart language.</p>
   </div>
   <div class="card">
@@ -22,7 +22,7 @@ These two resources are popular with both beginning Dart developers and experts.
 
 ## Other resources
 
-* [Dart's type system](/guides/language/type-system)<br>
+* [Dart's type system](/language/type-system)<br>
     Learn about Dart's sound type system.
   * [Fixing common type problems](/guides/language/sound-problems)<br>
     How to fix errors and warnings you may encounter.

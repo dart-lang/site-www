@@ -124,5 +124,5 @@ For technical details on embedding DartPads, see the
 [DartPad]: {{site.dartpad}}
 [best practices for using DartPad in tutorials]: /tools/dartpad/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
-[deferred loading]: /guides/language/language-tour#lazily-loading-a-library
+[deferred loading]: /language/libraries#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await

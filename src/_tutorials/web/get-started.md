@@ -211,7 +211,7 @@ Check out these resources:
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
   * [Sample code](/samples)
-  * [Language tour](/guides/language/language-tour)
+  * [Language tour](/language/basics)
   * [Library tour](/guides/libraries/library-tour)
   * [Effective Dart](/guides/language/effective-dart)
 * Tools & libraries
@@ -224,7 +224,7 @@ If you get stuck, find help at [Community and Support.](/community)
 
 [dartdevc]: /tools/dartdevc
 [DartPad documentation]: /tools/dartpad
-[Dart language tour]: /guides/language/language-tour
+[Dart language tour]: /language/basics
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging

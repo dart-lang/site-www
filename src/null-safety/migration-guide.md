@@ -163,7 +163,7 @@ You have two options for migrating:
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
-[default value]: /guides/language/language-tour#default-parameters
+[default value]: /language/functions#default-parameters
 [migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 
