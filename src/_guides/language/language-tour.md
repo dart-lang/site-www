@@ -56,6 +56,19 @@ This content has moved to [Built-in types](/language/built-in-types#booleans).
 
 This content has moved to [Collection types](/language/collection-types#lists).
 
+<a id="trailing-comma"></a>
+#### Trailing commas
+
+This content has moved to [Collections](/language/collections#trailing-commas).
+
+#### Spread operator
+
+This content has moved to [Collections](/language/collections#spread-operator).
+
+#### Collection operators
+
+This content has moves to [Collections](/language/collections#collection-operators).
+
 ### Sets
 
 This content has moved to [Collection types](/language/collection-types#sets).
@@ -64,6 +77,7 @@ This content has moved to [Collection types](/language/collection-types#sets).
 
 This content has moved to [Collection types](/language/collection-types#maps).
 
+<a id="characters"></a>
 ### Runes and grapheme clusters
 
 This content has moved to [Built-in types](/language/built-in-types#runes-and-grapheme-clusters).
@@ -83,6 +97,10 @@ This content has moved to [Functions](/language/functions#parameters).
 #### Named parameters
 
 This content has moved to [Functions](/language/functions#named-parameters).
+
+#### Default parameters
+
+This content has moved to [Functions](/language/functions#default-parameters).
 
 #### Optional positional parameters
 
@@ -148,6 +166,7 @@ This content has moved to [Operators](/language/operators#bitwise-and-shift-oper
 
 This content has moved to [Operators](/language/operators#conditional-operators).
 
+<a id="cascade"></a>
 ### Cascade notation
 
 This content has moved to [Operators](/language/operators#cascade-notation).
@@ -246,7 +265,6 @@ This content has moved to [Constructors](/language/constructors#named-constructo
 
 This content has moved to [Constructors](/language/constructors#invoking-a-non-default-superclass-constructor).
 
-<a name="super-parameters"></a>
 ### Super parameters
 
 This content has moved to [Constructors](/language/constructors#super-parameters).
@@ -305,8 +323,7 @@ This content has moved to [Classes](/language/classes#implicit-interfaces).
 
 This content has moved to [Extend a class](/language/extend).
 
-<a name="overridable-operators"></a>
-
+<a id="overridable-operators"></a>
 #### Overriding members
 
 This content has moved to [Extend a class](/language/extend#overriding-members).
@@ -318,7 +335,6 @@ This content has moved to [Extend a class](/language/extend#nosuchmethod).
 ### Extension methods
 
 This content has moved to [Extension methods](/language/extension-methods).
-
 
 <a id="enums"></a>
 ### Enumerated types
@@ -336,7 +352,6 @@ This content has moved to [Enumerated types](/language/enum#declaring-enhanced-e
 #### Using enums
 
 This content has moved to [Enumerated types](/language/enum#using-enums).
-
 
 <a id="mixins"></a>
 ### Adding features to a class: mixins
