@@ -92,16 +92,12 @@
           match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
-          urlExactMatch: true
           permalink: /null-safety/migration-guide
         - title: Understanding null safety
-          urlExactMatch: true
           permalink: /null-safety/understanding-null-safety
         - title: Unsound null safety
-          urlExactMatch: true
           permalink: /null-safety/unsound-null-safety
         - title: FAQ
-          urlExactMatch: true
           permalink: /null-safety/faq
 
 - title: Effective Dart
