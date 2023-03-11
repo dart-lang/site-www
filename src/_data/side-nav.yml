@@ -332,6 +332,8 @@
   children:
     - title: FAQ
       permalink: /faq
+    - title: Language evolution
+      permalink: /guides/language/evolution
     - title: Language specification
       permalink: /guides/language/spec    
     - title: Coming from ...
