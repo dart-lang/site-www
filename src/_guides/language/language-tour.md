@@ -59,15 +59,15 @@ This content has moved to [Collections](/language/collections#lists).
 <a id="trailing-comma"></a>
 #### Trailing commas
 
-This content has moved to [Collection types](/language/collection-types#trailing-commas).
+This content has moved to [Collections](/language/collections#trailing-commas).
 
 #### Spread operator
 
-This content has moved to [Collection types](/language/collection-types#spread-operator).
+This content has moved to [Collections](/language/collections#spread-operator).
 
 #### Collection operators
 
-This content has moves to [Collection types](/language/collection-types#collection-operators).
+This content has moves to [Collections](/language/collections#collection-operators).
 
 ### Sets
 
