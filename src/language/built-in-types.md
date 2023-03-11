@@ -396,9 +396,9 @@ Symbol literals are compile-time constants.
 
 
 
-[Lists]: /language/collection-types#lists
-[Sets]: /language/collection-types#sets
-[Maps]: /language/collection-types#maps
+[Lists]: /language/collections#lists
+[Sets]: /language/collections#sets
+[Maps]: /language/collections#maps
 [asynchrony support]: /language/async
 [iteration]: /guides/libraries/library-tour#iteration
 [generator functions]: /language/generators

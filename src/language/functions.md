@@ -445,4 +445,4 @@ assert(foo() == null);
 [if statement]: /language/control-flow#if-and-else
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
-[trailing commas]: /language/collection-types#lists
+[trailing commas]: /language/collections#lists

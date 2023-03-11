@@ -46,8 +46,8 @@
       children:
         - title: Built-in types
           permalink: /language/built-in-types
-        - title: Collection types
-          permalink: /language/collection-types
+        - title: Collections
+          permalink: /language/collections
         - title: Typedefs
           permalink: /language/typedefs
         - title: Generics
