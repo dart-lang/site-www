@@ -12,7 +12,7 @@ This content has moved to [Introduction to the Dart language](/language/basics).
 
 ## Important concepts
 
-This content has moved to [Introduction to the Dart language](/language/basics).
+This content has moved to [Introduction to the Dart language](/language/basics#important-concepts).
 
 ## Keywords
 
