@@ -1,6 +1,7 @@
 ---
 title: Callable classes
-description: How to use the call() method 
+description: How to use the call() method
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 To allow an instance of your Dart class to be called like a function,
