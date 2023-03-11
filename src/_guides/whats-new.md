@@ -577,7 +577,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [null safety homepage]: /null-safety
 [Overview page]: /overview
 [Effective Dart]: /guides/language/effective-dart
-[language tour]: /language/basics
+[language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /guides/libraries/library-tour
 [samples]: /samples

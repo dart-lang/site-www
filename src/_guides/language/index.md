@@ -9,7 +9,7 @@ These two resources are popular with both beginning Dart developers and experts.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/language/basics">Language tour</a></h3>
+    <h3><a href="/language">Language tour</a></h3>
     <p>A walk through all of the major features of the Dart language.</p>
   </div>
   <div class="card">
