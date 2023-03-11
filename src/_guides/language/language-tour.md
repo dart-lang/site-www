@@ -54,7 +54,7 @@ This content has moved to [Built-in types](/language/built-in-types#booleans).
 
 ### Lists
 
-This content has moved to [Collection types](/language/collections#lists).
+This content has moved to [Collections](/language/collections#lists).
 
 <a id="trailing-comma"></a>
 #### Trailing commas
@@ -71,11 +71,11 @@ This content has moves to [Collection types](/language/collection-types#collecti
 
 ### Sets
 
-This content has moved to [Collection types](/language/collections#sets).
+This content has moved to [Collections](/language/collections#sets).
 
 ### Maps
 
-This content has moved to [Collection types](/language/collections#maps).
+This content has moved to [Collections](/language/collections#maps).
 
 <a id="characters"></a>
 ### Runes and grapheme clusters
