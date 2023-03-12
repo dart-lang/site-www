@@ -121,8 +121,7 @@ This adapter handles HttpRequest objects from `dart:io`.
 
 ## Importing library files
 
-When importing a library file from another package, use the
-the `package:` directive to specify the URI of that file.
+When importing a library file from another package, use the `package:` directive to specify the URI of that file.
 
 ```dart
 import 'package:utilities/utilities.dart';
