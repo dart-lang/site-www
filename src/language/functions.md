@@ -1,6 +1,7 @@
 ---
 title: Functions
 description: Everything about functions in Dart.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Dart is a true object-oriented language, so even functions are objects
@@ -445,4 +446,4 @@ assert(foo() == null);
 [if statement]: /language/control-flow#if-and-else
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
-[trailing commas]: /language/collection-types#lists
+[trailing commas]: /language/collections#lists
