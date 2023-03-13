@@ -418,7 +418,7 @@ For more information about how language versioning works, see the
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
-[language tour]: /language/basics
+[language tour]: /language
 [language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety

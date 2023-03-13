@@ -47,7 +47,7 @@ The following table lists the words that the Dart language treats specially.
 [default]: /language/control-flow#switch-and-case
 [deferred]: /language/libraries#lazily-loading-a-library
 [do]: /language/control-flow#while-and-do-while
-[dynamic]: /language/basics#important-concepts
+[dynamic]: /language#important-concepts
 [else]: /language/control-flow#if-and-else
 [enum]: /language/enum
 [export]: /guides/libraries/create-library-packages

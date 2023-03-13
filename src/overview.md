@@ -59,7 +59,7 @@ arrow syntax, generators, streams, and getters.
 To find examples of using additional Dart features,
 see the [samples page](/samples).
 To learn more about the language, take the [Dart language
-tour](/language/basics).
+tour](/language).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview
@@ -275,7 +275,7 @@ You have many choices for learning Dart. Here are a few that we recommend:
 
 * [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
-* [Take a tour of the Dart language](/language/basics),
+* [Take a tour of the Dart language](/language),
   which shows you how to use each major Dart feature.
 * [Complete a Dart tutorial](/tutorials/server/cmdline) that 
   covers the basics of using Dart to build for the command line.

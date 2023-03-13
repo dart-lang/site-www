@@ -2775,7 +2775,7 @@ Some possible next steps:
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
-[Language tour]:  /language/basics
+[Language tour]:  /language
 [Library tour]:   /guides/libraries/library-tour
 [Dart codelabs]:  /codelabs
 [Effective Dart]: /guides/language/effective-dart
