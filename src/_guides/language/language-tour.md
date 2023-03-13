@@ -68,19 +68,6 @@ This content has moved to [Collections](/language/collections#spread-operator).
 
 This content has moves to [Collections](/language/collections#collection-operators).
 
-<a id="trailing-comma"></a>
-#### Trailing commas
-
-This content has moved to [Collection types](/language/collection-types#trailing-commas).
-
-#### Spread operator
-
-This content has moved to [Collection types](/language/collection-types#spread-operator).
-
-#### Collection operators
-
-This content has moves to [Collection types](/language/collection-types#collection-operators).
-
 ### Sets
 
 This content has moved to [Collections](/language/collections#sets).
