@@ -449,7 +449,7 @@ This content has moved to [Asynchrony support](/language/async#handling-streams)
 <a id="generator"></a>
 ## Generators
 
-This content has moved to [Generators](/language/generators).
+This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 
