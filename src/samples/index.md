@@ -10,7 +10,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="/language/basics">Language tour</a></h3>
+    <h3><a href="/language">Language tour</a></h3>
     <p>
       A comprehensive tour, with examples, of the Dart language.
       Most of the <em>read more</em> links in this page
@@ -471,7 +471,7 @@ and the difference between `Error` and `Exception`.
 ## Other topics
 
 Many more code samples are in the
-[language tour](/language/basics) and the
+[language tour](/language) and the
 [library tour](/guides/libraries/library-tour).
 Also see the [Dart API reference,]({{site.dart-api}})
 which often contains examples.

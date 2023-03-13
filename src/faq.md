@@ -178,7 +178,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
 [announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
-[lang]: /language/basics
+[lang]: /language
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html

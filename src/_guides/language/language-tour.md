@@ -7,11 +7,11 @@ sitemap: false
 
 ## A basic Dart program
 
-This content has moved to [Introduction to the Dart language](/language/basics).
+This content has moved to [Introduction to the Dart language](/language).
 
 ## Important concepts
 
-This content has moved to [Introduction to the Dart language](/language/basics#important-concepts).
+This content has moved to [Introduction to the Dart language](/language).
 
 ## Keywords
 

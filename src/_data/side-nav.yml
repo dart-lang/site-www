@@ -27,7 +27,8 @@
   expanded: false
   children:
     - title: Introduction
-      permalink: /language/basics
+      match-page-url-exactly: true
+      permalink: /language
     - title: Syntax basics
       children:
         - title: Variables

@@ -183,6 +183,7 @@
       { "source": "/install/archive", "destination": "/get-dart/archive", "type": 301 },
       { "source": "/jobs", "destination": "https://docs.flutter.dev/jobs", "type": 301 },
       { "source": "/language-tour", "destination": "/language", "type": 301 },
+      { "source": "/language/basics", "destination": "/language", "type": 301 },
       { "source": "/language/collection-types", "destination": "/language/collections", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
