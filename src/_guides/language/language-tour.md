@@ -3,6 +3,7 @@ title: A tour of the Dart language
 description: A tour of all the major Dart language features.
 short-title: Language tour
 sitemap: false
+canonical: https://dart.dev/language
 ---
 
 ## A basic Dart program
