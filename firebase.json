@@ -185,6 +185,7 @@
       { "source": "/language-tour", "destination": "/language", "type": 301 },
       { "source": "/language/basics", "destination": "/language", "type": 301 },
       { "source": "/language/collection-types", "destination": "/language/collections", "type": 301 },
+      { "source": "/language/generators", "destination": "/language/functions#generators", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
       { "source": "/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },

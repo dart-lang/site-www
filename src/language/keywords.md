@@ -84,7 +84,7 @@ The following table lists the words that the Dart language treats specially.
 [static]: /language/classes#class-variables-and-methods
 [super]: /language/extend
 [switch]: /language/control-flow#switch-and-case
-[sync]: /language/generators
+[sync]: /language/functions#generators
 [this]: /language/constructors
 [throw]: /language/error-handling#throw
 [true]: /language/built-in-types#booleans
@@ -97,7 +97,7 @@ The following table lists the words that the Dart language treats specially.
 {% endcomment %}
 [with]: /language/mixins
 [while]: /language/control-flow#while-and-do-while
-[yield]: /language/generators
+[yield]: /language/functions#generators
 
 Avoid using these words as identifiers.
 However, if necessary, the keywords marked with superscripts can be identifiers:
