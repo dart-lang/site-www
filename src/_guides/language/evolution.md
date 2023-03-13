@@ -408,8 +408,8 @@ For more information about how language versioning works, see the
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
-[collection for]: /language/collection-types#collection-operators
-[collection if]: /language/collection-types#collection-operators
+[collection for]: /language/collections#collection-operators
+[collection if]: /language/collections#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart compile`]: /tools/dart-compile
 [Dart FFI]: /guides/libraries/c-interop
@@ -424,8 +424,8 @@ For more information about how language versioning works, see the
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-[set literals]: /language/collection-types#sets
+[set literals]: /language/collections#sets
 [sound null safety]: /null-safety
 [sound type system]: /language/type-system
-[spread operator]: /language/collection-types#spread-operators
+[spread operator]: /language/collections#spread-operators
 [type aliases]: /language/typedefs
