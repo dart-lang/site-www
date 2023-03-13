@@ -176,7 +176,7 @@ This content has moved to [Operators](/language/operators#bitwise-and-shift-oper
 
 ### Conditional expressions
 
-This content has moved to [Operators](/language/operators#conditional-operators).
+This content has moved to [Operators](/language/operators#conditional-expressions).
 
 <a id="cascade"></a>
 ### Cascade notation
