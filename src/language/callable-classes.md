@@ -2,6 +2,7 @@
 title: Callable classes
 description: Learn how to create and use callable classes in Dart.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+toc: false
 ---
 
 To allow an instance of your Dart class to be called like a function,
