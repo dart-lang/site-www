@@ -1,6 +1,7 @@
 ---
 title: Keywords
 description: Keywords in Dart.
+toc: false
 ---
 
 The following table lists the words that the Dart language treats specially.
