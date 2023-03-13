@@ -163,7 +163,7 @@ This content has moved to [Operators](/language/operators#bitwise-and-shift-oper
 
 ### Conditional expressions
 
-This content has moved to [Operators](/language/operators#conditional-operators).
+This content has moved to [Operators](/language/operators#conditional-expressions).
 
 <a id="cascade"></a>
 ### Cascade notation
@@ -449,7 +449,7 @@ This content has moved to [Asynchrony support](/language/async#handling-streams)
 <a id="generator"></a>
 ## Generators
 
-This content has moved to [Generators](/language/generators).
+This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 

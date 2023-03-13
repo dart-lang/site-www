@@ -1,6 +1,7 @@
 ---
 title: Metadata
-description: Metadata in Dart.
+description: Metadata and annotations in Dart.
+toc: false
 ---
 
 

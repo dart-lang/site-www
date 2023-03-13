@@ -819,7 +819,7 @@ and return an `Iterable`.
 Add items to the final iterable using the
 `yield` keyword, or add whole sets of items using `yield*`.
 
-[_generator functions_]: /language/generators
+[_generator functions_]: /language/functions#generators
 
 The following example shows how to write a
 basic generator function:
