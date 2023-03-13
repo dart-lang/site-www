@@ -69,19 +69,6 @@ This content has moved to [Collections](/language/collections#spread-operator).
 
 This content has moves to [Collections](/language/collections#collection-operators).
 
-<a id="trailing-comma"></a>
-#### Trailing commas
-
-This content has moved to [Collection types](/language/collection-types#trailing-commas).
-
-#### Spread operator
-
-This content has moved to [Collection types](/language/collection-types#spread-operator).
-
-#### Collection operators
-
-This content has moves to [Collection types](/language/collection-types#collection-operators).
-
 ### Sets
 
 This content has moved to [Collections](/language/collections#sets).
@@ -177,7 +164,7 @@ This content has moved to [Operators](/language/operators#bitwise-and-shift-oper
 
 ### Conditional expressions
 
-This content has moved to [Operators](/language/operators#conditional-operators).
+This content has moved to [Operators](/language/operators#conditional-expressions).
 
 <a id="cascade"></a>
 ### Cascade notation
@@ -463,7 +450,7 @@ This content has moved to [Asynchrony support](/language/async#handling-streams)
 <a id="generator"></a>
 ## Generators
 
-This content has moved to [Generators](/language/generators).
+This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 
