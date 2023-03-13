@@ -2,6 +2,7 @@
 title: A tour of the Dart language
 description: A tour of all the major Dart language features.
 short-title: Language tour
+js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 ---
 
