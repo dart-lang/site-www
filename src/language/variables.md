@@ -241,8 +241,8 @@ For more information on using `const` to create constant values, see
 [Instance variables]: /language/classes#instance-variables
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [type checks and casts]: /language/operators#type-test-operators
-[collection `if`]: /language/collection-types#collection-operators
-[spread operators]: /language/collection-types#spread-operators
-[Lists]: /language/collection-types#lists
-[Maps]: /language//collection-types#maps
+[collection `if`]: /language/collections#collection-operators
+[spread operators]: /language/collections#spread-operators
+[Lists]: /language/collections#lists
+[Maps]: /language/collections#maps
 [Classes]: /language/classes
