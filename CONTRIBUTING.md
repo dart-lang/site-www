@@ -59,8 +59,8 @@ you'll probably need to change the code in two places:
 1. In a `.md` file for the page.
 2. In a `.dart` file under the `/examples` directory.
 
-For example, say  you want to change the following code in the
-[language tour](https://dart.dev//language/variables):
+For example, say you want to change the following code in the
+[Variables documentation](https://dart.dev/language/variables):
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
@@ -87,4 +87,4 @@ Just update the PR, and GitHub Actions will run again.
 ## A word about conduct
 
 We pledge to maintain an open and welcoming environment.
-For details, see our [code of conduct](https://dart.dev/code-of-conduct).
+For details, see our [code of conduct](https://dart.dev/community/code-of-conduct).

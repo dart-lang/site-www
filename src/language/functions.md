@@ -1,6 +1,7 @@
 ---
 title: Functions
 description: Everything about functions in Dart.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Dart is a true object-oriented language, so even functions are objects
