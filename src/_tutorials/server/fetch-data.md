@@ -150,7 +150,7 @@ see its [page on the pub.dev site][http-pub]
 and its [API documentation][http-docs].
 
 [`dart pub add`]: /tools/pub/cmd/pub-add
-[specify a library prefix]: /guides/language/language-tour#specifying-a-library-prefix
+[specify a library prefix]: /language/libraries#specifying-a-library-prefix
 
 ## Build a URL
 
@@ -622,8 +622,8 @@ you can move retrieval and decoding
 to another [isolate][] as a background worker
 to prevent your interface from becoming unresponsive.
 
-[Concurrency in Dart]: /guides/language/concurrency
-[isolate]: /guides/language/concurrency#how-isolates-work
+[Concurrency in Dart]: /language/concurrency
+[isolate]: /language/concurrency#how-isolates-work
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json

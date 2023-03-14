@@ -8,7 +8,8 @@ group: https://groups.google.com/a/dartlang.org
 Track the Dart project, get help, and talk with other Dart developers.
 
 We pledge to maintain an open and welcoming environment.
-For details, see our [code of conduct](/code-of-conduct).
+To learn more about our community standards, check out
+our [code of conduct](/community/code-of-conduct).
 
 
 ## Stay informed

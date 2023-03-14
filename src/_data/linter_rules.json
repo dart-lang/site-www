@@ -5,7 +5,9 @@
     "group": "errors",
     "maturity": "stable",
     "state": "stable",
-    "incompatible": [],
+    "incompatible": [
+      "prefer_relative_imports"
+    ],
     "sets": [],
     "fixStatus": "hasFix",
     "details": "**DO** avoid relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use absolute imports for files within the\n`lib/` directory.\n\nThis is the opposite of 'prefer_relative_imports'.\n\nYou can also use 'avoid_relative_lib_imports' to disallow relative imports of\nfiles within `lib/` directory outside of it (for example `test/`).\n\n**BAD:**\n```dart\nimport 'baz.dart';\n\nimport 'src/bag.dart'\n\nimport '../lib/baz.dart';\n\n...\n```\n\n**GOOD:**\n```dart\nimport 'package:foo/bar.dart';\n\nimport 'package:foo/baz.dart';\n\nimport 'package:foo/src/baz.dart';\n...\n```\n\n",
@@ -273,6 +275,19 @@
     "sinceLinter": "0.1.11"
   },
   {
+    "name": "invalid_case_patterns",
+    "description": "Use case expressions that are valid in Dart 3.0.",
+    "group": "errors",
+    "maturity": "experimental",
+    "state": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "Some case expressions that are valid in Dart 2.19 and below will become an error\nor have changed semantics when a library is upgraded to 3.0. This lint flags\nthose expressions in order to ease migration to Dart 3.0.\n\nSome valid switch cases in 2.19 will become compile errors in Dart 3.0:\n\n* Set literals\n* Parenthesized expressions\n* Calls to `identical()`.\n* Unary operator expressions `!`, `-`, or `~` (except for `-` before an integer\n  literal, which is a valid pattern and is fine)\n* Binary operator expressions `!=`, `==`, `&`, `|`, `^`, `~/`, `>>`, `>>>`,\n  `<<`, `+`, `-`, `*`, `/`, `%`, `<`, `<=`, `>`, `>=`, `??`.\n* Conditional operator `?:`\n* `.length` calls on strings\n* `is` and `is!` expressions\n\nExamples of all of them:\n\n```dart\nswitch (obj) {\n  case {1}: // Set literal.\n  case (1): // Parenthesized expression.\n  case identical(1, 2): // `identical()` call.\n  case -pi: // Unary operator.\n  case 1 + 2: // Binary operator.\n  case true ? 1 : 2: // Conditional operator.\n  case 'hi'.length: // .length call.\n  case i is int: // is expression.\n}\n```\n\nSome valid switch cases in 2.19 are also syntactically valid patterns, but the\npattern matching behavior may be different from the current constant equality\nbehavior. They are:\n\n**List and map literals.** A list or map literal can appear as a constant in a\ncase:\n\n```dart\nswitch (obj) {\n  case [1, 2]: ...\n  case {'k': 'v'}: ...\n}\n```\n\nCurrently, the case will only match if the incoming value has the same identity\nas the constant. So:\n\n```dart\ntest(List<int> list) {\n  switch (list) {\n    case [1, 2]: print('Matched'); break;\n    default: print('Did not match'); break;\n  }\n}\n\nmain() {\n  test(const [1, 2]); // Prints \"Matched\".\n  test([1, 2]); // Prints \"Did not match\".\n}\n```\n\nWith patterns, a list or map literal becomes a list or map pattern. The pattern\ndestructures the incoming object and matches if the subpatterns all match. In\nother words, list and map pattern match using something more like deep equality.\n\nWith Dart 3.0, the above program prints \"Matched\" twice.\n\n**Constant constructor calls.** Similar to collections, you can construct a\nconstant instance of a class in a case:\n\n```dart\nclass Point {\n  final int x;\n  final int y;\n  const Point({this.x, this.y});\n}\n\ntest(Point p) {\n  switch (p) {\n    case Point(x: 1, y: 2): print('Matched'); break;\n    default: print('Did not match'); break;\n  }\n}\n\nmain() {\n  test(const Point(1, 2)); // Prints \"Matched\".\n  test(Point(1, 2)); // Prints \"Did not match\".\n}\n```\n\nAgain, like collections, the case currently only matches if the incoming value\nhas the same identity. With patterns, the `Point(...)` syntax becomes an object\npattern that destructures the incoming point, calls the `x` and `y` getters on\nit and then matches the results of those against the corresponding subpatterns.\n\nIn this example, it will print \"Matched\" twice.\n\nNote that object patterns only support named fields. So any constant constructor\nin a case today that has positional arguments will become a compile-time error\nwhen parsed as a pattern. A constant constructor call with no arguments is a\nvalid object pattern and only does a type test:\n\n```dart\nclass Thing {\n  const Thing();\n}\n\ntest(Thing t) {\n  switch (t) {\n    case Thing(): print('Matched'); break;\n    default: print('Did not match'); break;\n  }\n}\n\nmain() {\n  test(const Thing()); // Prints \"Matched\".\n  test(Thing()); // Prints \"Did not match\".\n}\n```\n\nWhen interpreted as a pattern, this prints \"Matched\" twice.\n\n**Wildcards.** Today, you can have a constant named `_`:\n\n```dart\ntest(int n) {\n  const _ = 3;\n  switch (n) {\n    case _: print('Matched'); break;\n    default: print('Did not match'); break;\n  }\n}\n\nmain() {\n  test(3); // Prints \"Matched\".\n  test(5); // Prints \"Did not match\".\n}\n```\n\nWith patterns, the identifier `_` is treated as a pattern that matches all \nvalues, so this prints \"Matched\" twice.\n\n**Logic operators.** The logic operators `&&` and `||` are valid constant\nexpressions and also valid patterns. As a constant expression, they simply\nevaluate the expression to a boolean and match if the incoming value is equal to\nthat boolean value. So:\n\n```dart\ntest(bool b) {\n  switch (b) {\n    case true && false: print('Matched'); break;\n    default: print('Did not match'); break;\n  }\n}\n\nmain() {\n  test(false); // Prints \"Matched\".\n  test(true); // Prints \"Did not match\".\n}\n```\n\nWith Dart 3.0, these become patterns. The above example prints \"Did not match\"\ntwice because no boolean value can be both true and false.\n\nMany of invalid cases can be mechanically changed to something that is valid\nboth in Dart today and valid and means the same in Dart 3.0.\n\n**Parenthesized expressions:** Provided the inner expression is one that's not\nbroken in Dart 3.0, just discard the parentheses.\n\n**List literals, map literals, set literals, and constant constructor calls:**\nPut `const` before the literal or call. This turns it into a constant pattern\nwhich preserves the current behavior:\n\n**BAD:**\n\n```dart\ncase [1, 2]:\ncase {'k': 'v'}:\ncase {1, 2}:\ncase Point(1, 2):\n```\n\n**GOOD:**\n\n```dart\ncase const [1, 2]:\ncase const {'k': 'v'}:\ncase const {1, 2}:\ncase const Point(1, 2):\n```\n\n* **Wildcards:** Rename the constant from `_` to something else. Since the name\nis private, this can be done locally in the library without affecting other\ncode.\n\n* **Everything else:** For any other invalid expression, you have to hoist the\nexpression out into a new named constant. For example, if you have code like\nthis:\n\n\n**BAD:**\n\n```dart\nswitch (n) {\n  case 1 + 2: ...\n}\n```\n\nIt can be fixed by changing it to:\n\n**GOOD:**\n\n ```dart\nconst three = 1 + 2;\n\nswitch (n) {\n  case three: ...\n}\n```\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "1.34.0"
+  },
+  {
     "name": "invariant_booleans",
     "description": "Conditions should not unconditionally evaluate to `true` or to `false`.",
     "group": "errors",
@@ -383,7 +398,9 @@
     "group": "errors",
     "maturity": "stable",
     "state": "stable",
-    "incompatible": [],
+    "incompatible": [
+      "always_use_package_imports"
+    ],
     "sets": [],
     "fixStatus": "hasFix",
     "details": "**PREFER** relative imports for files in `lib/`.\n\nWhen mixing relative and absolute imports it's possible to create confusion\nwhere the same member gets imported in two different ways. One way to avoid\nthat is to ensure you consistently use relative imports for files within the\n`lib/` directory.\n\n**BAD:**\n```dart\nimport 'package:my_package/bar.dart';\n```\n\n**GOOD:**\n```dart\nimport 'bar.dart';\n```\n\n",
@@ -1682,7 +1699,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DON'T** redundantly type annotate initialized local variables.\n\nLocal variables, especially in modern code where functions tend to be small,\nhave very little scope. Omitting the type focuses the reader's attention on the\nmore important *name* of the variable and its initialized value.\n\n**BAD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  List<List<Ingredient>> desserts = <List<Ingredient>>[];\n  for (final List<Ingredient> recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\n**GOOD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  var desserts = <List<Ingredient>>[];\n  for (final recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\nSometimes the inferred type is not the type you want the variable to have. For\nexample, you may intend to assign values of other types later. In that case,\nannotate the variable with the type you want.\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  [!Widget!] result = Text('You won!');\n  if (applyPadding) {\n    result = Padding(padding: EdgeInsets.all(8.0), child: result);\n  }\n  return result;\n}\n```\n",
+    "details": "**DON'T** redundantly type annotate initialized local variables.\n\nLocal variables, especially in modern code where functions tend to be small,\nhave very little scope. Omitting the type focuses the reader's attention on the\nmore important *name* of the variable and its initialized value.\n\n**BAD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  List<List<Ingredient>> desserts = <List<Ingredient>>[];\n  for (final List<Ingredient> recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\n**GOOD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  var desserts = <List<Ingredient>>[];\n  for (final recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\nSometimes the inferred type is not the type you want the variable to have. For\nexample, you may intend to assign values of other types later. In that case,\nannotate the variable with the type you want.\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  Widget result = Text('You won!');\n  if (applyPadding) {\n    result = Padding(padding: EdgeInsets.all(8.0), child: result);\n  }\n  return result;\n}\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.30"
   },
@@ -1817,12 +1834,12 @@
     "name": "prefer_bool_in_asserts",
     "description": "Prefer using a boolean as the assert condition.",
     "group": "style",
-    "maturity": "deprecated",
-    "state": "deprecated",
+    "maturity": "removed",
+    "state": "removed",
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**DO** use a boolean for assert conditions.\n\nNot using booleans in assert conditions can lead to code where it isn't clear\nwhat the intention of the assert statement is.\n\n**BAD:**\n```dart\nassert(() {\n  f();\n  return true;\n});\n```\n\n**GOOD:**\n```dart\nassert(() {\n  f();\n  return true;\n}());\n```\n\n**DEPRECATED:** In Dart 2, `assert`s no longer accept  non-`bool` values so this\nrule is made redundant by the Dart analyzer's basic checks and is no longer\nnecessary.\n\nThe rule will be removed in a future Linter release.\n",
+    "details": "**DO** use a boolean for assert conditions.\n\nNot using booleans in assert conditions can lead to code where it isn't clear\nwhat the intention of the assert statement is.\n\n**BAD:**\n```dart\nassert(() {\n  f();\n  return true;\n});\n```\n\n**GOOD:**\n```dart\nassert(() {\n  f();\n  return true;\n}());\n```\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.36"
   },
@@ -2609,10 +2626,10 @@
     "state": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "unregistered",
+    "fixStatus": "hasFix",
     "details": "Only use a `break` in a non-empty switch case statement if you need to break\nbefore the end of the case body.  Dart does not support fallthrough execution\nfor non-empty cases, so `break`s at the end of non-empty switch case statements\nare unnecessary.\n\n**BAD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n    break;\n  case 2:\n    print(\"two\");\n    break;\n}\n```\n\n**GOOD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n  case 2:\n    print(\"two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n  case 2:\n    print(\"one or two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n    break;\n  case 2:\n    print(\"just two\");\n}\n```\n",
     "sinceDartSdk": "Unreleased",
-    "sinceLinter": "Unreleased"
+    "sinceLinter": "1.33.0"
   },
   {
     "name": "unnecessary_const",

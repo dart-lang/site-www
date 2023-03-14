@@ -200,7 +200,7 @@ except that it always fills the most significant bits with zeros.
 For more information, see the
 [bitwise and shift operator][] section of the language tour.
 
-[bitwise and shift operator]: /guides/language/language-tour#bitwise-and-shift-operators
+[bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 
 Dart 2.14 also removed some restrictions on type arguments.
 You can now pass type arguments to annotations,
@@ -236,7 +236,7 @@ including fields, constructors, methods, getters, etc.
 For more information, see the
 [Enhanced enums][] section of the language tour.
 
-[Enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+[Enhanced enums]: /language/enum#declaring-enhanced-enums
 
 Dart 2.17 also added support for super-initializer parameters in constructors.
 Super parameters allow you
@@ -247,7 +247,7 @@ to a superclass constructor.
 For more information, 
 see the language tour's documentation of [super parameters][].
 
-[super parameters]: /guides/language/language-tour#super-parameters
+[super parameters]: /language/constructors#super-parameters
 
 Dart 2.17 also removed some restrictions on named arguments.
 Named arguments can now be freely interleaved with positional arguments.
@@ -265,7 +265,7 @@ void main() {
 To learn more about named parameters and arguments, see the
 [Named parameters][] section of the language tour.
 
-[Named parameters]: /guides/language/language-tour#named-parameters
+[Named parameters]: /language/functions#named-parameters
 
 ### Dart 2.18
 
@@ -276,13 +276,13 @@ potential null occurrences. With 2.18, the compiler infers the argument type
 from other values in an invocation. You don't need to specify the argument type
 inline. To learn more, see [Type argument inference][].
 
-[Type argument inference]: /guides/language/type-system#type-argument-inference
+[Type argument inference]: /language/type-system#type-argument-inference
 
 Dart 2.18 also discontinued support for mixin classes that don't extend `Object`.
 To learn more about mixins,
 see [Adding features to a class: mixins][] in the language tour.
 
-[Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
+[Adding features to a class: mixins]: /language/mixins
 
 ### Dart 2.19
 
@@ -408,24 +408,24 @@ For more information about how language versioning works, see the
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
-[collection for]: /guides/language/language-tour#collection-operators
-[collection if]: /guides/language/language-tour#collection-operators
+[collection for]: /language/collections#collection-operators
+[collection if]: /language/collections#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart compile`]: /tools/dart-compile
 [Dart FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
-[extension methods]: /guides/language/extension-methods
+[extension methods]: /language/extension-methods
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
-[language tour]: /guides/language/language-tour
+[language tour]: /language
 [language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
-[migrated to Dart 2]: /dart-2
+[migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-[set literals]: /guides/language/language-tour#sets
+[set literals]: /language/collections#sets
 [sound null safety]: /null-safety
-[sound type system]: /guides/language/type-system
-[spread operator]: /guides/language/language-tour#spread-operator
-[type aliases]: /guides/language/language-tour#typedefs
+[sound type system]: /language/type-system
+[spread operator]: /language/collections#spread-operators
+[type aliases]: /language/typedefs

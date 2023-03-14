@@ -103,7 +103,7 @@ on:
     - 'v[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: 'v{{version}}'
     # If you prefer tags like '1.2.3', without the 'v' prefix, then use:
     # - '[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: '{{version}}'
-    # If you repository contains multiple packages consider a pattern like:
+    # If your repository contains multiple packages consider a pattern like:
     # - 'my_package_name-v[0-9]+.[0-9]+.[0-9]+*'
 
 # Publish using the reusable workflow from dart-lang.
@@ -116,6 +116,9 @@ jobs:
 
 Make sure to match the pattern in `on.push.tags` with the _tag pattern_
 specified on pub.dev. Otherwise, the GitHub Action workflow won’t work.
+If publishing multiple packages from the same repository, 
+use a per-package _tag pattern_ like `my_package_name-v{{version}}`
+and create a separate workflow file for each package.
 
 The workflow file above uses
 `dart-lang/setup-dart/.github/workflows/publish.yml` to publish the package.

@@ -9,7 +9,7 @@ import 'package:sdk_builds/sdk_builds.dart';
 
 import 'operating_system.dart';
 
-const _storageBase = 'https://storage.googleapis.com/dart-archive';
+const _storageBase = '${storageBaseUrl}dart-archive';
 
 class VersionSelector {
   final String channel;

@@ -317,7 +317,7 @@ querySelector('#RipVanWinkle')[!?!].text = 'Wake up, sleepy head!';
 If you plan to access the element multiple times
 and know its type,
 another option is to
-[typecast](/guides/language/language-tour#type-test-operators)
+[typecast](/language/operators#type-test-operators)
 the queried element to the expected type:
 
 {% prettify dart tag=pre+code %}
@@ -527,7 +527,7 @@ for example, it sets the text color to Yellow.
 
 ## Other resources
 
-* The [language tour](/guides/language/language-tour)
+* The [language tour](/language)
   provides thorough coverage of the Dart language.
 * The Dart [tools page](/tools)
   lists IDEs and editors that have Dart plugins.

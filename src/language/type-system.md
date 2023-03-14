@@ -12,9 +12,6 @@ sometimes referred to as sound typing.
 Although _types_ are mandatory, type _annotations_ are optional
 because of [type inference](#type-inference).
 
-For a full introduction to the Dart language, including types, see the
-[language tour](/guides/language/language-tour).
-
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]
 
@@ -343,7 +340,7 @@ y = 4.0;
 ### Type argument inference
 
 Type arguments to constructor calls and
-[generic method](/guides/language/language-tour#using-generic-methods) invocations
+[generic method](/language/generics#using-generic-methods) invocations
 are inferred based on a combination of downward information from the context
 of occurrence, and upward information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
@@ -520,8 +517,6 @@ The following resources have further information on sound Dart:
 * [Customizing static analysis][analysis] - 
   How to set up and customize the analyzer and linter
   using an analysis options file.
-* [Dart 2 migration guide](/dart-2) - 
-  How to update Dart 1.x code to Dart 2.
 
 
 [analysis]: /guides/language/analysis-options

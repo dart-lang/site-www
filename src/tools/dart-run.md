@@ -124,7 +124,7 @@ while you're in the top directory of the `foo` package:
 $ dart run foo arg1 arg2
 ```
 
-[args]: /guides/language/language-tour#the-main-function
+[args]: /language/functions#the-main-function
 
 ## Debugging
 
@@ -152,7 +152,7 @@ to your `dart run` command:
 
 To learn more about other debugging options, run `dart run --help`.
 
-[assert]: /guides/language/language-tour#assert
+[assert]: /language/control-flow#assert
 [Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
 
 ## Enabling experimental features

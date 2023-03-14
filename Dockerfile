@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:0b2fb4813f79de93a6fc1d1caf37c1be54f4b09385ee1b5dfb7ff34d8e864140 as base
+FROM ruby:3.2-slim-bullseye@sha256:cae4a499f8ca1d9084dfa7ccfbaa35f3e2d0088368132c0acdf2cff556cc99d4 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="326f6085aaf3a6733f3cf2eface18513afbd07c70e4068c4da9c6880161ddb2b"; \
+        DART_SHA256="f8591944512834ba19b4d8383d270d7f56fef03c56ba53d4e35c23db80ea8a33"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="4c6f5139bde79f557af92790d219e64f1a2e043a657848e5618efbcb82f9b77e"; \
+        DART_SHA256="c81303feea24228148bd4ec14c65bb9c341cba3596e3d68e8a874a9df947f928"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="da65d6733d9cca10f04cf981c97f3af7835e51afda84dce73f2e6fea8848c21b"; \
@@ -45,10 +45,10 @@ RUN set -eu; \
         DART_SHA256="b0cd5dacc35e56ca569125a0cdab4539580465a4c0f820311c3f7e22e6f817b4"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="a54f12542d289c1ec00c913a85a84d8554e405739bbe5c8ebf74ee95ea5fc305"; \
+        DART_SHA256="eb1c63c0de6ffcff76d81973346697007a62815aa2db326d23e0834535da0ec0"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="cb269e8e1634d7f91488d2aa87ef9d1c3c264a80fab55c5f16befb499bdd1095"; \
+        DART_SHA256="24ee8f580d8b13d8e86ce77a5b7d1ca19061c1a95829889253f9706e7dc71592"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -107,7 +107,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.19.0
+RUN npm install -g firebase-tools@11.23.1
 RUN npm install
 
 COPY ./ ./
@@ -165,7 +165,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.19.0
+RUN npm install -g firebase-tools@11.23.1
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default
