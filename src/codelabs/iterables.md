@@ -250,6 +250,18 @@ There is no right or wrong way.
 Use the way that works best for you, 
 and that makes your code easier to read and understand.
 
+In the example, `firstWhere()` with
+the optional named parameter `orElse`,
+which provides an alternative when an element isn't found.
+In this case, the text `'None!'` is returned because
+no element satisfies the provided condition.
+
+{{site.alert.note}}
+  If no element satisfies the test predicate and
+  the `orElse` parameter isn't provided,
+  then `firstWhere()` throws a [StateError.][StateError class]
+{{site.alert.end}}
+
 {{site.alert.secondary}}
   **Quick review:**
   * The elements of an `Iterable` must be accessed sequentially.
