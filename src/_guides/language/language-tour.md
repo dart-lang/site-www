@@ -9,7 +9,7 @@ noindex: true
 
 {{site.alert.warning}}
   The Dart language tour's content has been split across
-  several different pages in the sidenav under **Language**.
+  several different pages in the left side navigation under **Language**.
   To begin your journey learning Dart,
   check out [Introduction to the Dart language](/language).
 {{site.alert.end}}
