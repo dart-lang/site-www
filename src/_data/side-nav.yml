@@ -27,7 +27,8 @@
   expanded: false
   children:
     - title: Introduction
-      permalink: /language/basics
+      match-page-url-exactly: true
+      permalink: /language
     - title: Syntax basics
       children:
         - title: Variables
@@ -46,8 +47,8 @@
       children:
         - title: Built-in types
           permalink: /language/built-in-types
-        - title: Collection types
-          permalink: /language/collection-types
+        - title: Collections
+          permalink: /language/collections
         - title: Typedefs
           permalink: /language/typedefs
         - title: Generics
@@ -92,20 +93,12 @@
           match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/migration-guide
         - title: Understanding null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
         - title: Unsound null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/unsound-null-safety
         - title: FAQ
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/faq
 
 - title: Effective Dart
@@ -332,6 +325,8 @@
   children:
     - title: FAQ
       permalink: /faq
+    - title: Language evolution
+      permalink: /guides/language/evolution
     - title: Language specification
       permalink: /guides/language/spec    
     - title: Coming from ...

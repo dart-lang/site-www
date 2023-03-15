@@ -2,17 +2,26 @@
 title: A tour of the Dart language
 description: A tour of all the major Dart language features.
 short-title: Language tour
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
+canonical: https://dart.dev/language
+noindex: true
 ---
+
+{{site.alert.warning}}
+  The Dart language tour's content has been split across
+  several different pages in the left side navigation under **Language**.
+  To begin your journey learning Dart,
+  check out [Introduction to the Dart language](/language).
+{{site.alert.end}}
 
 ## A basic Dart program
 
-This content has moved to [Introduction to the Dart language](/language/basics).
+This content has moved to [Introduction to the Dart language](/language).
 
 ## Important concepts
 
-This content has moved to [Introduction to the Dart language](/language/basics).
+This content has moved to [Introduction to the Dart language](/language).
 
 ## Keywords
 
@@ -54,16 +63,30 @@ This content has moved to [Built-in types](/language/built-in-types#booleans).
 
 ### Lists
 
-This content has moved to [Collection types](/language/collection-types#lists).
+This content has moved to [Collections](/language/collections#lists).
+
+<a id="trailing-comma"></a>
+#### Trailing commas
+
+This content has moved to [Collections](/language/collections#trailing-commas).
+
+#### Spread operator
+
+This content has moved to [Collections](/language/collections#spread-operator).
+
+#### Collection operators
+
+This content has moves to [Collections](/language/collections#collection-operators).
 
 ### Sets
 
-This content has moved to [Collection types](/language/collection-types#sets).
+This content has moved to [Collections](/language/collections#sets).
 
 ### Maps
 
-This content has moved to [Collection types](/language/collection-types#maps).
+This content has moved to [Collections](/language/collections#maps).
 
+<a id="characters"></a>
 ### Runes and grapheme clusters
 
 This content has moved to [Built-in types](/language/built-in-types#runes-and-grapheme-clusters).
@@ -83,6 +106,10 @@ This content has moved to [Functions](/language/functions#parameters).
 #### Named parameters
 
 This content has moved to [Functions](/language/functions#named-parameters).
+
+#### Default parameters
+
+This content has moved to [Functions](/language/functions#default-parameters).
 
 #### Optional positional parameters
 
@@ -146,8 +173,9 @@ This content has moved to [Operators](/language/operators#bitwise-and-shift-oper
 
 ### Conditional expressions
 
-This content has moved to [Operators](/language/operators#conditional-operators).
+This content has moved to [Operators](/language/operators#conditional-expressions).
 
+<a id="cascade"></a>
 ### Cascade notation
 
 This content has moved to [Operators](/language/operators#cascade-notation).
@@ -246,7 +274,6 @@ This content has moved to [Constructors](/language/constructors#named-constructo
 
 This content has moved to [Constructors](/language/constructors#invoking-a-non-default-superclass-constructor).
 
-<a name="super-parameters"></a>
 ### Super parameters
 
 This content has moved to [Constructors](/language/constructors#super-parameters).
@@ -305,8 +332,7 @@ This content has moved to [Classes](/language/classes#implicit-interfaces).
 
 This content has moved to [Extend a class](/language/extend).
 
-<a name="overridable-operators"></a>
-
+<a id="overridable-operators"></a>
 #### Overriding members
 
 This content has moved to [Extend a class](/language/extend#overriding-members).
@@ -318,7 +344,6 @@ This content has moved to [Extend a class](/language/extend#nosuchmethod).
 ### Extension methods
 
 This content has moved to [Extension methods](/language/extension-methods).
-
 
 <a id="enums"></a>
 ### Enumerated types
@@ -336,7 +361,6 @@ This content has moved to [Enumerated types](/language/enum#declaring-enhanced-e
 #### Using enums
 
 This content has moved to [Enumerated types](/language/enum#using-enums).
-
 
 <a id="mixins"></a>
 ### Adding features to a class: mixins
@@ -435,7 +459,7 @@ This content has moved to [Asynchrony support](/language/async#handling-streams)
 <a id="generator"></a>
 ## Generators
 
-This content has moved to [Generators](/language/generators).
+This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 

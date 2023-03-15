@@ -527,7 +527,7 @@ for example, it sets the text color to Yellow.
 
 ## Other resources
 
-* The [language tour](/language/basics)
+* The [language tour](/language)
   provides thorough coverage of the Dart language.
 * The Dart [tools page](/tools)
   lists IDEs and editors that have Dart plugins.

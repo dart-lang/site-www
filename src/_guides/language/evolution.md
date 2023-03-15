@@ -408,8 +408,8 @@ For more information about how language versioning works, see the
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
-[collection for]: /language/collection-types#collection-operators
-[collection if]: /language/collection-types#collection-operators
+[collection for]: /language/collections#collection-operators
+[collection if]: /language/collections#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart compile`]: /tools/dart-compile
 [Dart FFI]: /guides/libraries/c-interop
@@ -418,14 +418,14 @@ For more information about how language versioning works, see the
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
-[language tour]: /language/basics
+[language tour]: /language
 [language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-[set literals]: /language/collection-types#sets
+[set literals]: /language/collections#sets
 [sound null safety]: /null-safety
 [sound type system]: /language/type-system
-[spread operator]: /language/collection-types#spread-operators
+[spread operator]: /language/collections#spread-operators
 [type aliases]: /language/typedefs

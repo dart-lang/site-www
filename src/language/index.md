@@ -4,7 +4,7 @@ description: A brief introduction to Dart programs and important concepts.
 short-title: Dart basics
 ---
 
-This page shows you how to use each major Dart feature, from
+These pages show you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 For a briefer, less complete introduction to the language, see the
@@ -84,8 +84,8 @@ apps:
 
 ## Important concepts
 
-As you learn about the Dart language, keep these facts and concepts in
-mind:
+As you learn about the Dart language, 
+keep these facts and concepts in mind:
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and

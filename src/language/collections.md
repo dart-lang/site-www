@@ -1,6 +1,6 @@
 ---
-title: Collection types
-description: Summary of collection types in Dart.
+title: Collections
+description: Summary of the different types of collections in Dart.
 ---
 
 ## Lists

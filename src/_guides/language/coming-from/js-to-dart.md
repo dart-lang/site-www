@@ -819,7 +819,7 @@ and return an `Iterable`.
 Add items to the final iterable using the
 `yield` keyword, or add whole sets of items using `yield*`.
 
-[_generator functions_]: /language/generators
+[_generator functions_]: /language/functions#generators
 
 The following example shows how to write a
 basic generator function:
@@ -2775,7 +2775,7 @@ Some possible next steps:
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
-[Language tour]:  /language/basics
+[Language tour]:  /language
 [Library tour]:   /guides/libraries/library-tour
 [Dart codelabs]:  /codelabs
 [Effective Dart]: /guides/language/effective-dart

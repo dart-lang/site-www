@@ -1,6 +1,7 @@
 ---
 title: Constructors
 description: Everything about using constructors in Dart.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>

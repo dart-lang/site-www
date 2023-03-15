@@ -298,7 +298,7 @@ the arguments to `assert` aren't evaluated.
 [forEach()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [Enumerated types]: /language/enum
-[trailing comma]: /language/collection-types#lists
+[trailing comma]: /language/collections#lists
 [`AssertionError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [webdev serve]: /tools/webdev#serve

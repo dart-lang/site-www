@@ -153,7 +153,7 @@ print(Color.blue.name); // 'blue'
 ```
 
 [`Enum`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
-[trailing commas]: /language/collection-types#lists
+[trailing commas]: /language/collections#lists
 [classes]: /language/classes
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
