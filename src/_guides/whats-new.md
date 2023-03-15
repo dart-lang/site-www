@@ -557,7 +557,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Updated the [language evolution page][evolution]
   to add information about language versioning
   and to reflect Dart 2.12.
-* Updated the [library tour][], [samples][], and [codelabs][]
+* Updated the [library tour][] and [codelabs][]
   to reflect sound null safety.
 * Updated pages across the site to use [the `dart` tool][]
   instead of deprecated commands.
@@ -580,7 +580,6 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /guides/libraries/library-tour
-[samples]: /samples
 [codelabs]: /codelabs
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze

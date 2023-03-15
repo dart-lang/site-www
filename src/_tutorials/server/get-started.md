@@ -146,7 +146,6 @@ Check out these resources:
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
-  * [Sample code](/samples)
   * [Language tour](/language)
   * [Library tour](/guides/libraries/library-tour)
   * [Effective Dart](/guides/language/effective-dart)
