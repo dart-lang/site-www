@@ -135,7 +135,7 @@ const oldToNew = {
 };
 
 function toDefault() {
-    window.location = '/language';
+    window.location.replace('/language');
 }
 
 function handleRedirect() {
@@ -170,7 +170,7 @@ function handleRedirect() {
     fetch(newDestination)
         .then((response) => {
             if (response.status === 200) {
-                window.location = newDestination;
+                window.location.replace(newDestination);
             } else {
                 toDefault();
             }
