@@ -7,8 +7,9 @@ short-title: Dart basics
 This page provides a brief introduction to the Dart language
 through samples. 
 
-For more details on the Dart language, see the individual language
-pages in the menu.
+To learn more of the Dart language, 
+see the individual pages
+in the left side menu under **Language**.
 
 You might also want to check out the 
 [library tour](/guides/libraries/library-tour)
