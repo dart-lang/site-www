@@ -206,7 +206,7 @@
       { "source": "/samples/", "destination": "/language", "type": 301 },
       { "source": "/samples/spirodraw{,/**}", "destination": "/language", "type": 301 },
       { "source": "/samples/todomvc{,/**}", "destination": "/language", "type": 301 },
-      { "source": "/samples/video{,/**}", "destination": "/language∏SAVE", "type": 301 },
+      { "source": "/samples/video{,/**}", "destination": "/language", "type": 301 },
       { "source": "/samples/sunflower{,/**}", "destination": "https://gist.github.com/5c0e154dd50af4a9ac856908061291bc", "type": 301 },
       { "source": "/samples/{,/**}", "destination": "https://github.com/dart-lang/samples/", "type": 301 },
       { "source": "/sdk-changelog-2.4.0", "destination": "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#240---2019-06-27", "type": 301 },
