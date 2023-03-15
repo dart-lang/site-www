@@ -84,6 +84,7 @@
       { "source": "/dart-2", "destination": "/articles/archive/dart-2", "type": 301 },
       { "source": "/dart-2.0", "destination": "/dart-2", "type": 301 },
       { "source": "/dart-by-example", "destination": "/samples", "type": 301 },
+      { "source": "/dart-team-packages", "destination": "/resources/dart-team-packages", "type": 301 },
       { "source": "/dart-tips{,/**}", "destination": "/guides/language/effective-dart", "type": 301 },
       { "source": "/dart-vm", "destination": "/server", "type": 301 },
       { "source": "/dart-vm/:page*", "destination": "/server/:page*", "type": 301 },
@@ -137,6 +138,7 @@
       { "source": "/events/2015{,/**}", "destination": "https://www.youtube.com/watch?list=PLOU2XLYxmsIIQorIS8gagUiMau9S84vZV&v=FiXiI2Atexc", "type": 301 },
       { "source": "/events/2016{,/**}", "destination": "https://events.dartlang.org/2016/summit", "type": 301 },
       { "source": "/events{,/**}", "destination": "https://events.dartlang.org", "type": 301 },
+      { "source": "/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.dev", "type": 301 },
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html", "type": 301 },

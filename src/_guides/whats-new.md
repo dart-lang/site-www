@@ -587,7 +587,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [`dart compile`]: /tools/dart-compile
 [`dart fix`]: /tools/dart-fix
 [`dart format`]: /tools/dart-format
-[Dart team packages]: /dart-team-packages
+[Dart team packages]: /resources/dart-team-packages
 
 
 ### Articles added to the Dart blog
