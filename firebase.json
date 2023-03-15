@@ -203,7 +203,7 @@
       { "source": "/resources/dart-tips*{,/**}", "destination": "/guides/language/effective-dart", "type": 301 },
       { "source": "/resources/dartpad-best-practices", "destination": "/tools/dartpad/dartpad-best-practices", "type": 301 },
       { "source": "/resources/dartpad-tutorials.pdf", "destination": "/resources/dartpad-best-practices", "type": 301 },
-      { "source": "/samples/", "destination": "/language", "type": 301 },
+      { "source": "/samples", "destination": "/language", "type": 301 },
       { "source": "/samples/spirodraw{,/**}", "destination": "/language", "type": 301 },
       { "source": "/samples/todomvc{,/**}", "destination": "/language", "type": 301 },
       { "source": "/samples/video{,/**}", "destination": "/language", "type": 301 },
