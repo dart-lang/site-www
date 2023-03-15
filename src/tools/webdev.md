@@ -212,6 +212,6 @@ Also see the following pages:
 [Dart DevTools]: /tools/dart-devtools
 [dev_dependencies]: /tools/pub/dependencies#dev-dependencies
 [PATH]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
-[supported browsers]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
+[supported browsers]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev
