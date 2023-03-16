@@ -324,7 +324,7 @@
   expanded: false
   children:
     - title: FAQ
-      permalink: /faq
+      permalink: /resources/faq
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification

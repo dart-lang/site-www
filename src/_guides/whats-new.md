@@ -85,8 +85,8 @@ we made the following changes to this site:
 [Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
 [The language tour]: /language/libraries#library-directive
-[Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
-[Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
+[Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
+[Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency
@@ -587,7 +587,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [`dart compile`]: /tools/dart-compile
 [`dart fix`]: /tools/dart-fix
 [`dart format`]: /tools/dart-format
-[Dart team packages]: /dart-team-packages
+[Dart team packages]: /resources/dart-team-packages
 
 
 ### Articles added to the Dart blog
