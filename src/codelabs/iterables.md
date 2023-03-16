@@ -250,7 +250,7 @@ There is no right or wrong way.
 Use the way that works best for you, 
 and that makes your code easier to read and understand.
 
-In the example, `firstWhereWithOrElse()` calls `firstWhere()` with
+The final example calls `firstWhere()` with
 the optional named parameter `orElse`,
 which provides an alternative when an element isn't found.
 In this case, the text `'None!'` is returned because
