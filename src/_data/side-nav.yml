@@ -1,8 +1,10 @@
-- title: Samples & tutorials
+- title: Tutorials & codelabs
   expanded: false
   children:
-    - title: Language samples
-      permalink: /samples
+    - title: Tutorials
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /tutorials
     - title: Codelabs
       expanded: true
       children:
@@ -18,11 +20,6 @@
           permalink: /codelabs/async-await
         - title: Null safety
           permalink: /codelabs/null-safety
-    - title: Tutorials
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /tutorials
-
 - title: Language
   expanded: false
   children:
