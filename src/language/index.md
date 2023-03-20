@@ -5,20 +5,21 @@ short-title: Dart basics
 ---
 
 This page provides a brief introduction to the Dart language
-through samples. 
+through samples of its main features. 
 
-To learn more of the Dart language, 
-see the individual pages
-in the left side menu under **Language**.
+To learn more about the Dart language, 
+visit the in-depth, individual topic pages
+listed under **Language** in the left side menu.
 
-You might also want to check out the 
-[library tour](/guides/libraries/library-tour)
-or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
+For coverage of Dart's core libraries, check out the [library tour](/guides/libraries/library-tour).
+You can also visit the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
+for a more hands-on introduction.
 
 
 ## Hello World
 
-Every app has a `main()` function.
+Every app requires the top-level `main()` function, where execution starts.
+Functions that don't explicitly return a value have the `void` return type.
 To display text on the console, you can use the top-level `print()` function:
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
@@ -27,12 +28,17 @@ void main() {
   print('Hello, World!');
 }
 ```
+Read more about [the `main()` function][] in Dart,
+including optional parameters for command-line arguments.
 
+[the `main()` function]: /language/functions#the-main-function
 
 ## Variables
 
-Even in type-safe Dart code, most variables don't need explicit types,
-thanks to type inference:
+Even in [type-safe](https://dart.dev/language/type-system) Dart code,
+you can declare most variables without explicitly specifying their type using `var`. 
+Thanks to type inference, these variables' types are determined by their initial values: 
+
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
 ```dart
@@ -156,7 +162,9 @@ and lazy loading through the `deferred` keyword.
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
-defined using a getter method (instead of a variable).
+defined using a getter method (instead of a variable). The method 
+uses string interpolation to print variables' string equivalents inside
+of string literals. 
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 ```dart
@@ -189,6 +197,9 @@ class Spacecraft {
   }
 }
 ```
+
+[Read more](/language/built-in-types#strings) about strings,
+including string interpolation, literals, expressions, and the `toString()` method.
 
 You might use the `Spacecraft` class like this:
 
