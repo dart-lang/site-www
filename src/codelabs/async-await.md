@@ -14,7 +14,7 @@ and completing exercises.
 
 To get the most out of this codelab, you should have the following:
 
-* Knowledge of [basic Dart syntax](/samples).
+* Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
 
 This codelab covers the following material:

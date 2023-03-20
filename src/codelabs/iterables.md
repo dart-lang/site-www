@@ -20,7 +20,7 @@ you can test your knowledge by
 running example code and completing exercises.
 
 To get the most out of this codelab,
-you should have basic knowledge of [Dart syntax](/samples).
+you should have basic knowledge of [Dart syntax](/language).
 
 This codelab covers the following material:
 
