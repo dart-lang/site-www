@@ -12,7 +12,6 @@ If you want a hands-on coding experience, try a
 
 The following tours assume a basic familiarity with the Dart language,
 which you can get from skimming the
-[language samples](/samples) or the
 [language tour](/language).
 Next, learn about futures by following the
 [asynchronous programming codelab](/codelabs/async-await).
