@@ -1,5 +1,5 @@
 ---
-title: Asychrony support
+title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 ---
 
