@@ -216,6 +216,19 @@
     "sinceLinter": "0.1.16"
   },
   {
+    "name": "deprecated_member_use_from_same_package",
+    "description": "Avoid using deprecated elements from within the package in which they are declared.",
+    "group": "errors",
+    "maturity": "stable",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "unregistered",
+    "details": "Elements which are annotated with `@deprecated` should not be referenced from\nwithin the package in which they are declared.\n\n**AVOID** using deprecated elements.\n\n...\n\n**BAD:**\n```dart\n// Declared in one library:\nclass Foo {\n  @Deprecated(\"Use 'm2' instead\")\n  void m1() {}\n\n  void m2({\n      @Deprecated('This is an old parameter') int? p,\n  })\n}\n\n@Deprecated('Do not use')\nint x = 0;\n\n// In the same or another library, but within the same package:\nvoid m(Foo foo) {\n  foo.m1();\n  foo.m2(p: 7);\n  x = 1;\n}\n```\n\nDeprecated elements can be used from within _other_ deprecated elements, in\norder to allow for the deprecation of a collection of APIs together as one unit.\n\n**GOOD:**\n```dart\n// Declared in one library:\nclass Foo {\n  @Deprecated(\"Use 'm2' instead\")\n  void m1() {}\n\n  void m2({\n      @Deprecated('This is an old parameter') int? p,\n  })\n}\n\n@Deprecated('Do not use')\nint x = 0;\n\n// In the same or another library, but within the same package:\n@Deprecated('Do not use')\nvoid m(Foo foo) {\n  foo.m1();\n  foo.m2(p: 7);\n  x = 1;\n}\n```\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
+  },
+  {
     "name": "diagnostic_describe_all_properties",
     "description": "DO reference all public properties in debug methods.",
     "group": "errors",
@@ -373,7 +386,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "**DON'T** use more than one case with same value.\n\nThis is usually a typo or changed value of constant.\n\n**BAD:**\n```dart\nconst int A = 1;\nswitch (v) {\n  case 1:\n  case 2:\n  case A:\n  case 2:\n}\n```\n\n**GOOD:**\n```dart\nconst int A = 1;\nswitch (v) {\n  case A:\n  case 2:\n}\n```\n\n",
+    "details": "**DON'T** use more than one case with same value.\n\nThis is usually a typo or changed value of constant.\n\n**BAD:**\n```dart\nconst int A = 1;\nswitch (v) {\n  case 1:\n  case 2:\n  case A:\n  case 2:\n}\n```\n\n**GOOD:**\n```dart\nconst int A = 1;\nswitch (v) {\n  case A:\n  case 2:\n}\n```\n\nNOTE: this lint only reports duplicate cases in libraries opted in to Dart 2.19\nand below. In Dart 3.0 and after, duplicate cases are reported as dead code\nby the analyzer.\n",
     "sinceDartSdk": "2.0.0",
     "sinceLinter": "0.1.30"
   },
@@ -2965,7 +2978,7 @@
     "state": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsEvaluation",
+    "fixStatus": "needsFix",
     "details": "**DO** use `DecoratedBox` when `Container` has only a `Decoration`.\n\nA `Container` is a heavier Widget than a `DecoratedBox`, and as bonus,\n`DecoratedBox` has a `const` constructor.\n\n**BAD:**\n```dart\nWidget buildArea() {\n  return Container(\n    decoration: const BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: const Text('...'),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildArea() {\n  return const DecoratedBox(\n    decoration: BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: Text('...'),\n  );\n}\n```\n",
     "sinceDartSdk": "2.16.0",
     "sinceLinter": "1.15.0"

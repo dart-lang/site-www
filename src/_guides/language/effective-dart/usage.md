@@ -516,8 +516,8 @@ for including the contents of other collections,
 and [`if` and `for`][control] for performing control flow while
 building the contents:
 
-[spread]: /guides/language/language-tour#spread-operator
-[control]: /guides/language/language-tour#collection-operators
+[spread]: /language/collections#spread-operators
+[control]: /language/collections#collection-operators
 
 {:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>

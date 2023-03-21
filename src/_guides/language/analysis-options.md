@@ -550,7 +550,7 @@ Use the following resources to learn more about static analysis in Dart:
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
 [language version]: /guides/language/evolution#language-versioning
 [linter rules]: /tools/linter-rules
-[type-system]: /guides/language/type-system
+[type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
 [Effective Dart]: /guides/language/effective-dart

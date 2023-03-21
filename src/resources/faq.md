@@ -178,7 +178,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
 [announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
-[lang]: /guides/language/language-tour
+[lang]: /language
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
@@ -191,8 +191,8 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/main/pkg/dev_compiler#dev_compiler
-[strong mode]: /guides/language/type-system
-[Dart's type system]: /guides/language/type-system
+[strong mode]: /language/type-system
+[Dart's type system]: /language/type-system
 [Flutter no mirrors]: {{site.flutter-docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
 [FlutterShowcase]: {{site.flutter}}/showcase
 
@@ -207,7 +207,7 @@ enable multiple threads of execution at any given time.
 The Dart VM uses multiple processor cores
 to run those threads concurrently.
 
-[Dart's concurrency architecture](/guides/language/concurrency)
+[Dart's concurrency architecture](/language/concurrency)
 abstracts the complex, error-prone code of typical shared-memory threading,
 which might explain the misconception that Dart is single-threaded.
 
@@ -287,7 +287,7 @@ To run code concurrently, web apps use [web workers][] instead.
 Web workers lack the ease and efficiency of isolates,
 and have different capabilities and restrictions.
 To learn more, see
-[Concurrency on the web](/guides/language/concurrency#concurrency-on-the-web).
+[Concurrency on the web](/language/concurrency#concurrency-on-the-web).
 
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
@@ -394,7 +394,7 @@ available to the browser.
 
 Each developer journey has different requirements. How Dart generates
 JavaScript code depends on what you need to do. You should not need to
-worry about which compiler you use. The `[webdev][]` tool chooses the
+worry about which compiler you use. The [`webdev`][webdev] tool chooses the
 right compiler for your use case. 
 
 * When you're developing your app, `webdev` uses Dart's development

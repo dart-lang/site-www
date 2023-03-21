@@ -14,7 +14,7 @@ and completing exercises.
 
 To get the most out of this codelab, you should have the following:
 
-* Knowledge of [basic Dart syntax](/samples).
+* Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
 
 This codelab covers the following material:
@@ -617,7 +617,7 @@ try {
 ```
 
 Within an `async` function, you can write 
-[try-catch clauses](/guides/language/language-tour#catch)
+[try-catch clauses](/language/error-handling#catch)
 the same way you would in synchronous code.
 
 ### Example: async and await with try-catch
@@ -1082,7 +1082,7 @@ are some suggestions for where to go next:
 - Learn more about futures and asynchrony:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.
-  - [Concurrency in Dart](/guides/language/concurrency)
+  - [Concurrency in Dart](/language/concurrency)
     Understand and learn how to implement concurrency in Dart.
   - [Dart videos from Google:][Dart videos]
     Watch one or more of the videos about asynchronous coding.

@@ -22,7 +22,7 @@ This codelab covers the following material:
 
 Using embedded DartPad editors, you can test your knowledge by
 completing and running exercises. To get the most out of
-this codelab, you should have some knowledge of [basic Dart syntax](/samples).
+this codelab, you should have some knowledge of [basic Dart syntax](/language).
 
 {{site.alert.note}}
   This page uses embedded DartPads to display exercises.
