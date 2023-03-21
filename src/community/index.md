@@ -24,9 +24,6 @@ our [code of conduct](/community/code-of-conduct).
 [Dart blog](https://medium.com/dartlang)
 : The latest news and insights from a diverse group of Dart users.
 
-[This Week in Dart](https://thisweekindart.dev/)
-: A community ran, weekly newsletter covering the Dart ecosystem.
-
 ## Join the conversation
 
 Get answers and connect with Dart developers.
