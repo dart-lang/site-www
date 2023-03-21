@@ -2,7 +2,7 @@ name: dart_tools
 description: Dart-based tools for site-www
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: ^2.19.4
 
 dependencies:
   path: ^1.8.0
