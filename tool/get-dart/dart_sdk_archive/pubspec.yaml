@@ -3,7 +3,7 @@ description: An absolute bare-bones web app.
 publish_to: none
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  sdk: ^2.19.4
 
 dependencies:
   http: ^0.13.5
