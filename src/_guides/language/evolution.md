@@ -20,7 +20,7 @@ set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
 
 ```yaml
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ^2.12.0
 ```
 
 [2.12]: #dart-212
@@ -358,12 +358,13 @@ version with an incompatible feature, check out
 Each package has a default language version, equal to the
 `<major>.<minor>` part of the **lower SDK constraint** in the pubspec.
 For example, the following entry in a `pubspec.yaml` file
-indicates that this package uses the Dart 2.7 language version.
+indicates that this package uses the Dart 2.18 language version.
 
 ```yaml
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ^2.18.0
 ```
+
 
 ### Language version numbers
 
@@ -415,7 +416,7 @@ For example:
 
 ```dart
 // Description of what's in this file.
-// @dart = 2.7
+// @dart = 2.17
 import 'dart:math';
 ...
 ```
