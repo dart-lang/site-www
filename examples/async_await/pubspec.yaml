@@ -2,7 +2,7 @@ name: async_await
 description: dart.dev example code.
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: ^2.19.4
 
 dependencies:
   examples_util: {path: ../util}
