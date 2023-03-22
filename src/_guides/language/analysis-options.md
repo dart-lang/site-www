@@ -381,6 +381,44 @@ linter:
   You can, however, use the other syntax for rules in an included file.
 {{site.alert.end}}
 
+## Enabling analyzer plugins (experimental)
+
+The Analyzer package offers an experimental feature called Analyzer plugins.
+These plugins allow you to add linter rules and quick fixes that third-party
+plugins specify.
+You can use no more than one Analyzer plugin in each
+`analysis_options.yaml` file.
+Each analyzer plugin that you use increases how much memory the analyzer uses.
+
+Don’t use analyzer plugins if your situation meets either of the following
+conditions:
+
+* Your development machine has less than 16 GB of memory
+* You use a mono-repo with more than 10 `pubspec.yaml` and
+  `analysis_options.yaml` files.
+  
+You can find a few analyzer plugins on [pub.dev]({{site.pub}}).
+
+To enable a plugin:
+
+1. Add the plugin package as you would a dev dependency:
+
+    ```terminal
+    dart pub add --dev your_favorite_analyzer_plugin_package
+    ```
+
+2. Edit your `analysis_options.yaml` file to enable the plugin:
+
+    ```json
+    analyzer:
+      plugins:
+        - your_favorite_analyzer_plugin_package
+    ```
+
+Additional configuration may also be needed to specify which lint rules
+from the plugin to enable.  
+
+
 ## Excluding code from analysis
 
 Sometimes it's OK for some code to fail analysis.
