@@ -33,9 +33,6 @@ Get answers and connect with Dart developers.
 [StackOverflow](https://stackoverflow.com/tags/dart)
 : The best place for how-to questions.
 
-[Gitter](https://gitter.im/dart-lang/home)
-: Chat with Dart team and community members.
-
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 : The subreddit for all things related to Dart.
 
