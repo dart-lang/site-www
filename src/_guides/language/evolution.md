@@ -12,10 +12,10 @@ Dart programming language.
 * For a full history of changes to the Dart SDK, see the [SDK changelog][].
 
 To use a language feature introduced after 2.0,
-set [SDK constraints][] no lower than
+set an [SDK constraint][] no lower than
 the release when Dart first supported that feature.
 
-To use null safety, introduced in [2.12][],
+**For example:** To use null safety, introduced in [2.12][],
 set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
 
 ```yaml
@@ -24,7 +24,7 @@ environment:
 ```
 
 [2.12]: #dart-212
-[SDK constraints]: /tools/pub/pubspec#sdk-constraints
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [language versioning section]: #language-versioning
 
 {{site.alert.tip}}
@@ -137,8 +137,7 @@ In particular, constructor tear-offs are now supported.
 _Released 8 September 2021_
 | [Dart 2.14 announcement](https://medium.com/dartlang/announcing-dart-2-14-b48b9bb2fb67)
 
-Dart 2.14 added the unsigned shift operator (`>>>`),
-known as _triple-shift_.
+Dart 2.14 added the unsigned shift (or _triple-shift_) operator (`>>>`).
 This new operator works like `>>`,
 except that it always fills the most significant bits with zeros.
 
@@ -154,7 +153,7 @@ var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
 ```
 
-To learn more about Dart 2.14, check out [bitwise and shift operator][].
+To learn more about these operators, check out [bitwise and shift operator][].
 
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 
@@ -195,12 +194,12 @@ Flutter SDK's [`flutter` tool][].
 _Released 6 May 2020_
 | [Dart 2.8 announcement](https://medium.com/dartlang/announcing-dart-2-8-7750918db0a)
 
-Dart 2.8 didn't add any features to the Dart language, but it did
+Dart 2.8 didn't add any features to the Dart language. It did
 contain a number of preparatory [breaking changes][2.8 breaking changes]
-to ensure great nullability-related usability and performance in the
-upcoming [null safety][] feature.
+to improve nullability-related usability and performance for [null safety][].
 
-It also contained a faster pub tool, and a new [pub outdated][] command.
+It improved the performance of the `pub` tool and
+added the [`pub outdated`][] command.
 
 ### Dart 2.7
 _Released 11 December 2019_
@@ -213,8 +212,8 @@ Because the tech preview for this feature was in 2.6,
 you can use extension methods without warnings if you
 specify 2.6.0 or a later release as the lower SDK constraint.
 
-The following example extends the `String` class from `dart:core` with a new
-`parseInt()` method:
+The following example extends the `String` class from
+`dart:core` with a new `parseInt()` method:
 
 ```dart
 extension ParseNumbers on String {
@@ -233,10 +232,7 @@ void main() {
 _Released 5 November 2019_
 | [Dart 2.6 announcement](https://medium.com/dartlang/dart2native-a76c815e6baf)
 
-Dart 2.6 didn't add any features to the Dart language, but it did add a
-**new tool, `dart2native`,** for compiling Dart code to native
-executables.
-This functionality has been folded into the [`dart compile`][] command.
+Dart 2.6 added a new compiler that has since been retired.
 
 ### Dart 2.5
 _Released 10 September 2019_
@@ -268,10 +264,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-The **[collection if][]** operator enables adding elements that meet
-conditions.
-The following example adds a `FlatButton` element unless this element
-falls on the last page:
+The **[collection if][]** operator enables adding elements conditionally.
+The following example adds a `FlatButton` element unless
+the app displays the last page:
 
 ```dart
 Widget build(BuildContext context) {
@@ -312,10 +307,11 @@ const Set<String> currencies = {'EUR', 'USD', 'JPY'};
 _Released 15 November 2018_
 | [Dart 2.1 announcement](https://medium.com/dartlang/announcing-dart-2-1-improved-performance-usability-9f55fca6f31a)
 
-Dart 2.1 added support for **int-to-double conversion**, allowing developers to
-set `double` values using integer literals. This feature removed the annoyance
-of being forced to use a `double` literal (for example, `4.0`)
-when the value was conceptually an integer.
+Dart 2.1 added support for **int-to-double conversion**,
+allowing developers to set `double` values using integer literals.
+This feature removed the annoyance of being forced to use a
+`double` literal (for example, `4.0`)
+when the value was an integer in concept.
 
 In the following Flutter code, `horizontal` and `vertical` have type `double`:
 
@@ -344,20 +340,23 @@ and it interprets the code according to that version.
 
 Language versioning becomes important on the rare occasions when Dart
 introduces an incompatible feature like [null safety][].
-Before null safety, code could compile but might crash at runtime.
-With null safety, the code might no longer compile.
-Migrating your apps plus your own and other dependent packages
-to null safety might take a while.
-Dart uses language versioning to support using non-null-safe code
-alongside null-safe code.
+When Dart introduces a breaking change, code that did compile
+might no longer compile. Using language versions allows you to indicate
+the compatibility of the code using the `pubspec.yaml` file.
 
-For an example of how an app or package can migrate to a new language
-version with an incompatible feature, check out
+In the case of null safety, Dart versions 2.12 through 2.19 allowed you
+to _choose_ to update your code to use null safety.
+Dart uses language versioning to permit non-null-safe code to run
+alongside null-safe code.
+This decision enabled migration from non-null-safe to null-safe code.
+To check out an example of how an app or package can migrate to a new
+language version with an incompatible feature, check out
 [Migrating to null safety](/null-safety/migration-guide).
 
 Each package has a default language version, equal to the
 `<major>.<minor>` part of the **lower SDK constraint** in the pubspec.
-For example, the following entry in a `pubspec.yaml` file
+
+**For example:** the following entry in a `pubspec.yaml` file
 indicates that this package uses the Dart 2.18 language version.
 
 ```yaml
