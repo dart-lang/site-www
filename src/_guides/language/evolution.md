@@ -8,7 +8,7 @@ This page lists notable changes and additions to the
 Dart programming language.
 
 * To learn specific details about the most recent supported language version,
-check out the [language documentation][] or the [language specification][].
+  check out the [language documentation][] or the [language specification][].
 * For a full history of changes to the Dart SDK, see the [SDK changelog][].
 
 To use a language feature introduced after 2.0,
@@ -28,9 +28,10 @@ environment:
 [language versioning section]: #language-versioning
 
 {{site.alert.tip}}
-  To review the features being discussed, investigated, and added to
-  the Dart language,
-  check out the [language funnel][] tracker in the Dart language GitHub repo.
+  To review the features being discussed, investigated, and
+  added to the Dart language,
+  check out the [language funnel][] tracker
+  on the Dart language GitHub repo.
 {{site.alert.end}}
 
 
@@ -283,8 +284,8 @@ Widget build(BuildContext context) {
 ```
 
 The **[collection for][]** operator enables building repeated elements.
-The following example adds one `HeadingAction` element for each section
-in `sections`:
+The following example adds one `HeadingAction` element for 
+each section in `sections`:
 
 ```dart
 Widget build(BuildContext context) {
@@ -301,8 +302,7 @@ Widget build(BuildContext context) {
 _Released 26 February 2019_
 | [Dart 2.2 announcement](https://medium.com/dartlang/announcing-dart-2-2-faster-native-code-support-for-set-literals-7e2ab19cc86d)
 
-Dart supports literal lists and maps, but Dart 2.2 added support for
-**[set literals][]**:
+Dart 2.2 added support for **[set literals][]**:
 
 ```dart
 const Set<String> currencies = {'EUR', 'USD', 'JPY'};
@@ -330,9 +330,10 @@ padding: const EdgeInsets.symmetric(
 _Released 22 February 2018_
 | [Dart 2.0 announcement](https://medium.com/dartlang/announcing-dart-2-80ba01f43b6)
 
-Dart 2.0 implemented a new **[sound type system][]**. Before Dart 2.0,
-types weren't fully sound, and Dart relied heavily on runtime type
-checking. Dart 1.x code had to be [migrated to Dart 2][].
+Dart 2.0 implemented a new **[sound type system][]**. 
+Before Dart 2.0, types weren't fully sound, and 
+Dart relied heavily on runtime type checking. 
+Dart 1.x code had to be [migrated to Dart 2][].
 
 ## Language versioning
 
@@ -381,7 +382,7 @@ Deriving the language version from the SDK version
 implies the following:
 
 * Whenever a minor version of the SDK ships, a new language version appears.
-  In practice, many of these language versions function in very
+  In practice, many of these language versions function in a very
   similar manner to previous versions with full compatibility.
   For example, the Dart 2.9 language works much like the Dart 2.8
   language.
@@ -395,8 +396,8 @@ implies the following:
 ### Per-library language version selection
 
 By default, every Dart file in a package uses the same language version.
-The pubspec YAML file identifies this language version as the lower SDK
-constraint.
+Dart identifies the default language version as the 
+lower-bound of the SDK constraint specified in the `pubspec.yaml` file.
 Sometimes, a Dart file might need to use an older language version.
 For example, you might not be able to migrate all the files in a package
 to null safety at the same time.
