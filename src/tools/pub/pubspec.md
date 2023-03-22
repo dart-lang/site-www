@@ -90,7 +90,7 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
-Pub ignores all other fields,
+Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
   Pubspecs for [Flutter apps]({{site.flutter}}) can have
