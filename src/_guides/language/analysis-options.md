@@ -397,7 +397,7 @@ conditions:
 * You use a mono-repo with more than 10 `pubspec.yaml` and
   `analysis_options.yaml` files.
   
-You can find a few analyzer plugins on [pub.dev]({{site.pub}}).
+You can find a few analyzer plugins on [pub.dev]({{site.pub}}/packages?q=dependency%3Aanalyzer_plugin).
 
 To enable a plugin:
 
