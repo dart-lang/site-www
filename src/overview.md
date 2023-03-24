@@ -56,8 +56,6 @@ you’ll see that non-nullability is retained at runtime
 The following code sample showcases several Dart language features,
 including libraries, async calls, nullable and non-nullable types,
 arrow syntax, generators, streams, and getters.
-To find examples of using additional Dart features,
-see the [samples page](/samples).
 To learn more about the language, take the [Dart language
 tour](/language).
 

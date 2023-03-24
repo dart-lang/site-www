@@ -24,7 +24,7 @@ Check out the following Dart language resources:
   </div>
   
   <div class="card">
-    <h3><a href="/faq">Dart FAQ</a></h3>
+    <h3><a href="/resources/faq">Dart FAQ</a></h3>
     <p>Answers to questions from the Dart community.</p>
   </div> 
 

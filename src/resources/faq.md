@@ -394,7 +394,7 @@ available to the browser.
 
 Each developer journey has different requirements. How Dart generates
 JavaScript code depends on what you need to do. You should not need to
-worry about which compiler you use. The `[webdev][]` tool chooses the
+worry about which compiler you use. The [`webdev`][webdev] tool chooses the
 right compiler for your use case. 
 
 * When you're developing your app, `webdev` uses Dart's development

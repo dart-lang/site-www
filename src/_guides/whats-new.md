@@ -85,8 +85,8 @@ we made the following changes to this site:
 [Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
 [The language tour]: /language/libraries#library-directive
-[Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
-[Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
+[Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
+[Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency
@@ -557,7 +557,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Updated the [language evolution page][evolution]
   to add information about language versioning
   and to reflect Dart 2.12.
-* Updated the [library tour][], [samples][], and [codelabs][]
+* Updated the [library tour][] and [codelabs][]
   to reflect sound null safety.
 * Updated pages across the site to use [the `dart` tool][]
   instead of deprecated commands.
@@ -580,14 +580,13 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /guides/libraries/library-tour
-[samples]: /samples
 [codelabs]: /codelabs
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze
 [`dart compile`]: /tools/dart-compile
 [`dart fix`]: /tools/dart-fix
 [`dart format`]: /tools/dart-format
-[Dart team packages]: /dart-team-packages
+[Dart team packages]: /resources/dart-team-packages
 
 
 ### Articles added to the Dart blog

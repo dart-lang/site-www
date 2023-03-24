@@ -24,9 +24,6 @@ our [code of conduct](/community/code-of-conduct).
 [Dart blog](https://medium.com/dartlang)
 : The latest news and insights from a diverse group of Dart users.
 
-[This Week in Dart](https://thisweekindart.dev/)
-: A community ran, weekly newsletter covering the Dart ecosystem.
-
 ## Join the conversation
 
 Get answers and connect with Dart developers.
@@ -35,9 +32,6 @@ Get answers and connect with Dart developers.
 
 [StackOverflow](https://stackoverflow.com/tags/dart)
 : The best place for how-to questions.
-
-[Gitter](https://gitter.im/dart-lang/home)
-: Chat with Dart team and community members.
 
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 : The subreddit for all things related to Dart.
