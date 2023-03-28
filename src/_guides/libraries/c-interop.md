@@ -20,12 +20,12 @@ API documentation is available in the
 
 The following examples show how to use the `dart:ffi` library:
 
-| **Example**     | **Description**                                                                                                             |
-|-----------------|-----------------------------------------------------------------------------------------------------------------------------|
-| [hello_world][] | How to call a C function with no arguments and no return value.                                                             |
-| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates **varargs**. |
-| [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**.                     |
-| [sqlite][]      | An example in the Dart SDK repo that comes with a [mini tutorial.][]                                                        |
+| **Example**     | **Description**                                                                                         |
+|-----------------|---------------------------------------------------------------------------------------------------------|
+| [hello_world][] | How to call a C function with no arguments and no return value.                                         |
+| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.            |
+| [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
+| [sqlite][]      | An example in the Dart SDK repo that comes with a [mini tutorial.][]                                    |
 
 
 ## Walkthrough of hello_world
