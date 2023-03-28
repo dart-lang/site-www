@@ -63,20 +63,19 @@ library;
 _Released 30 August 2022_
 | [Dart 2.18 announcement](https://medium.com/dartlang/dart-2-18-f4b3101f146c)
 
-Dart 2.18 enhanced type inference. 
-This change allows information flow between 
-arguments in generic function calls. 
-Before 2.18, if you didn't specify an
-argument's type in some methods, Dart reported errors. 
-These type errors cited potential null occurrences. 
-With 2.18, the compiler infers the argument type 
-from other values in an invocation. 
+Dart 2.18 enhanced type inference.
+This change allows information flow between arguments in generic function calls.
+Before 2.18, if you didn't specify an argument's type in some methods,
+Dart reported errors.
+These type errors cited potential null occurrences.
+With 2.18, the compiler infers the argument type
+from other values in an invocation.
 You don't need to specify the argument type inline.
 
 Dart 2.18 also discontinued support for mixin classes that don't extend
 `Object`.
 
-To learn more about Dart 2.18, check out:
+To learn more about these features, check out:
 
 * [Type argument inference][]
 * [Adding features to a class: mixins][]
@@ -85,7 +84,7 @@ To learn more about Dart 2.18, check out:
 [Adding features to a class: mixins]: /language/mixins
 
 ### Dart 2.17
-_Released 11 May 2022_ 
+_Released 11 May 2022_
 | [Dart 2.17 announcement](https://medium.com/dartlang/dart-2-17-b216bfc80c5d)
 
 Dart 2.17 expanded enum functionality with enhanced enums.
@@ -111,7 +110,7 @@ void main() {
 }
 ```
 
-To learn more about Dart 2.17, check out:
+To learn more about these features, check out:
 
 * [Enhanced enums][]
 * [Super parameters][]
@@ -125,8 +124,7 @@ To learn more about Dart 2.17, check out:
 _Released 3 February 2022_
 | [Dart 2.16 announcement](https://medium.com/dartlang/dart-2-15-7e7a598e508a)
 
-Dart 2.16 added no new features to the Dart language, but fixed one
-security vulnerability and made two breaking changes.
+Dart 2.16 added no new features to the Dart language.
 It did expand the Dart tools.
 
 ### Dart 2.15
@@ -144,6 +142,10 @@ Dart 2.14 added the unsigned shift (or _triple-shift_) operator (`>>>`).
 This new operator works like `>>`,
 except that it always fills the most significant bits with zeros.
 
+To learn more about these operators, check out [bitwise and shift operator][].
+
+[bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
+
 Dart 2.14 removed some restrictions on type arguments.
 You can pass type arguments to annotations and use a generic function
 type as a type argument.
@@ -155,10 +157,6 @@ late List<T Function<T>(T)> idFunctions;
 var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
 ```
-
-To learn more about these operators, check out [bitwise and shift operator][].
-
-[bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 
 ### Dart 2.13
 _Released 19 May 2021_
@@ -193,6 +191,10 @@ Dart 2.10 added no new features to the Dart language.
 It did add an expanded [`dart` tool][dart-tool] similar to the
 Flutter SDK's [`flutter` tool][].
 
+### Dart 2.9
+
+Dart 2.9 added no new features to the Dart language.
+
 ### Dart 2.8
 _Released 6 May 2020_
 | [Dart 2.8 announcement](https://medium.com/dartlang/announcing-dart-2-8-7750918db0a)
@@ -209,11 +211,9 @@ _Released 11 December 2019_
 | [Dart 2.7 announcement](https://medium.com/dartlang/dart-2-7-a3710ec54e97)
 
 Dart 2.7 added support for **[extension methods][]**,
-enabling you to add functionality to any type—even types you don’t control—with
-the brevity and auto-complete experience of regular method calls.
-Because the tech preview for this feature was in 2.6,
-you can use extension methods without warnings if you
-specify 2.6.0 or a later release as the lower SDK constraint.
+enabling you to add functionality to any type
+—-even types you don’t control—-
+with the brevity and auto-complete experience of regular method calls.
 
 The following example extends the `String` class from
 `dart:core` with a new `parseInt()` method:
@@ -235,7 +235,23 @@ void main() {
 _Released 5 November 2019_
 | [Dart 2.6 announcement](https://medium.com/dartlang/dart2native-a76c815e6baf)
 
-Dart 2.6 added a new compiler that has since been retired.
+Dart 2.6 introduced a
+[breaking change (dart-lang/sdk#37985)](https://github.com/dart-lang/sdk/issues/37985).
+Inference changes when using Null values in a `FutureOr` context.
+Constraints of the forms similar to `Null <:FutureOr` now yield `Null`
+as the solution for `T`.
+
+For example: The following code now prints `Null`.
+Before Dart 2.6, it printed `dynamic`.
+The anonymous closure `() {}` returns the `Null` type.
+
+```dart
+import 'dart:async';
+
+void foo<T>(FutureOr<T> Function() f) { print(T); }
+
+main() { foo(() {}); }
+```
 
 ### Dart 2.5
 _Released 10 September 2019_
@@ -244,6 +260,24 @@ _Released 10 September 2019_
 Dart 2.5 didn't add any features to the Dart language, but it did add
 support for [calling native C code][] from Dart code
 using a new **core library, `dart:ffi`.**
+
+### Dart 2.4
+_Released 27 June 2019_
+
+
+Dart 2.4 introduces a breaking change
+[dart-lang/sdk#35097](https://github.com/dart-lang/sdk/issues/35097).
+
+Dart now enforces covariance of type variables used in super-interfaces.
+For example: Prior to this release Dart accepted, but now rejects,
+the following code:
+
+```dart
+class A<X> {};
+class B<X> extends A<void Function(X)> {};
+```
+
+You can now use the identifier async in asynchronous and generator functions.
 
 ### Dart 2.3
 _Released 8 May 2019_
@@ -282,7 +316,7 @@ Widget build(BuildContext context) {
 ```
 
 The **[collection for][]** operator enables building repeated elements.
-The following example adds one `HeadingAction` element for 
+The following example adds one `HeadingAction` element for
 each section in `sections`:
 
 ```dart
@@ -329,9 +363,9 @@ padding: const EdgeInsets.symmetric(
 _Released 22 February 2018_
 | [Dart 2.0 announcement](https://medium.com/dartlang/announcing-dart-2-80ba01f43b6)
 
-Dart 2.0 implemented a new **[sound type system][]**. 
-Before Dart 2.0, types weren't fully sound, and 
-Dart relied heavily on runtime type checking. 
+Dart 2.0 implemented a new **[sound type system][]**.
+Before Dart 2.0, types weren't fully sound, and
+Dart relied heavily on runtime type checking.
 Dart 1.x code had to be [migrated to Dart 2][].
 
 ## Language versioning
@@ -344,63 +378,63 @@ and it interprets the code according to that version.
 Language versioning becomes important on the rare occasions when Dart
 introduces an incompatible feature like [null safety][].
 When Dart introduces a breaking change, code that
-did compile might no longer compile. 
-Language versioning allows you to maintain compatibility
-by configuring each library's language version.
+did compile might no longer compile.
+Language versioning allows you to set each library's language version
+to maintain compatibility.
 
 In the case of null safety, Dart SDKs 2.12 through 2.19 allowed you
 to _choose_ to update your code to use null safety.
 Dart uses language versioning to permit non-null-safe code to run
 alongside null-safe code.
 This decision enabled migration from non-null-safe to null-safe code.
-To check out an example of how an app or package can migrate to a new
+To review an example of how an app or package can migrate to a new
 language version with an incompatible feature, check out
 [Migrating to null safety](/null-safety/migration-guide).
 
-Each package has a default language version, equal to the
-`<major>.<minor>` part of the **lower SDK constraint** in the pubspec.
+Each package has a default language version
+equal to the **lower bound of the SDK constraint** in the `pubspec.yaml` file.
 
-**For example:** the following entry in a `pubspec.yaml` file
-indicates that this package uses the Dart 2.18 language version.
+**For example:** The following entry in a `pubspec.yaml` file
+indicates that this package uses the Dart 2.18 language version or later.
 
 ```yaml
 environment:
   sdk: '>=2.18.0 <3.0.0'
 ```
 
-
 ### Language version numbers
 
-Dart language versions follow semantic versioning with
-a major version number and a minor version number.
-Dart language versions can include a patch number.
+Dart formats its language versions as two numbers separated with a period.
+It reads as a major version number and a minor version number.
+Though this appears to follow semantic versioning, it does not.
+Minor version numbers might introduce breaking changes.
+
+Dart releases might append a patch number to a language version.
 Patches should not change the language except for bug fixes.
 To illustrate: Dart 2.18.3 serves as the latest release of the
-Dart 2.18 SDK.
+Dart 2.18 SDK language version.
+
 Each Dart SDK supports all of the language versions within its major
 version number.
 That means that Dart SDK 2.18.3 supports language versions
 2.0 through 2.18 inclusive, but not Dart 1.x.
 
-Deriving the language version from the SDK version
-implies the following:
+Deriving the language version from the SDK version implies the following:
 
 * Whenever a minor version of the SDK ships, a new language version appears.
-  In practice, many of these language versions function in a very
-  similar manner to previous versions with full compatibility.
-  For example, the Dart 2.9 language works much like the Dart 2.8
-  language.
+  In practice, many of these language versions work in a very similar manner
+  to previous versions and have with full compatibility between them.
+  For example: The Dart 2.9 language works much like the Dart 2.8 language.
 
-* When a patch version of the SDK ships,
-  it cannot introduce any language features.
-  For example, because 2.18.3 belongs to language version 2.18,
-  it must remain compatible with 2.18.1 and 2.18.0.
-
+* When a patch release of the SDK ships,
+  it cannot introduce new language features.
+  For example: The 2.18.3 release _remains_ language version 2.18.
+  It must remain compatible with 2.18.2, 2.18.1, and 2.18.0.
 
 ### Per-library language version selection
 
 By default, every Dart file in a package uses the same language version.
-Dart identifies the default language version as the 
+Dart identifies the default language version as the
 lower-bound of the SDK constraint specified in the `pubspec.yaml` file.
 Sometimes, a Dart file might need to use an older language version.
 For example, you might not be able to migrate all the files in a package
@@ -431,8 +465,8 @@ except within the `@dart` and version strings.
 As the previous example shows,
 other comments can appear before the `@dart` comment.
 
-To learn how language versioning works, check out the
-[language versioning specification][language versioning feature].
+To learn how and why the Dart team developed this versioning method,
+check out the [language versioning specification][].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
@@ -447,7 +481,7 @@ To learn how language versioning works, check out the
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
-[language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
+[language versioning specification]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
