@@ -20,7 +20,7 @@ set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
 
 ```yaml
 environment:
-  sdk: ^2.12.0
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 [2.12]: #dart-212
@@ -63,12 +63,15 @@ library;
 _Released 30 August 2022_
 | [Dart 2.18 announcement](https://medium.com/dartlang/dart-2-18-f4b3101f146c)
 
-Dart 2.18 enhanced type inference. This change allows information flow between
-arguments in generic function calls. Before 2.18, if you didn't specify an
-argument's type in some methods, Dart returned errors. These type errors cited
-potential null occurrences. With 2.18, the compiler infers the argument type
-from other values in an invocation. You don't need to specify the argument type
-inline.
+Dart 2.18 enhanced type inference. 
+This change allows information flow between 
+arguments in generic function calls. 
+Before 2.18, if you didn't specify an
+argument's type in some methods, Dart reported errors. 
+These type errors cited potential null occurrences. 
+With 2.18, the compiler infers the argument type 
+from other values in an invocation. 
+You don't need to specify the argument type inline.
 
 Dart 2.18 also discontinued support for mixin classes that don't extend
 `Object`.
@@ -340,11 +343,12 @@ and it interprets the code according to that version.
 
 Language versioning becomes important on the rare occasions when Dart
 introduces an incompatible feature like [null safety][].
-When Dart introduces a breaking change, code that did compile
-might no longer compile. Using language versions allows you to indicate
-the compatibility of the code using the `pubspec.yaml` file.
+When Dart introduces a breaking change, code that
+did compile might no longer compile. 
+Language versioning allows you to maintain compatibility
+by configuring each library's language version.
 
-In the case of null safety, Dart versions 2.12 through 2.19 allowed you
+In the case of null safety, Dart SDKs 2.12 through 2.19 allowed you
 to _choose_ to update your code to use null safety.
 Dart uses language versioning to permit non-null-safe code to run
 alongside null-safe code.
@@ -361,7 +365,7 @@ indicates that this package uses the Dart 2.18 language version.
 
 ```yaml
 environment:
-  sdk: ^2.18.0
+  sdk: '>=2.18.0 <3.0.0'
 ```
 
 
@@ -390,7 +394,7 @@ implies the following:
 * When a patch version of the SDK ships,
   it cannot introduce any language features.
   For example, because 2.18.3 belongs to language version 2.18,
-  it must remain compatible with 2.17.1 and 2.17.0.
+  it must remain compatible with 2.18.1 and 2.18.0.
 
 
 ### Per-library language version selection
@@ -402,9 +406,9 @@ Sometimes, a Dart file might need to use an older language version.
 For example, you might not be able to migrate all the files in a package
 to null safety at the same time.
 
-The Dart 2.8 compiler introduced support for per-library language
-version selection.
-To opt to have a different language version, a [Dart library][] must
+Dart supports for per-library language version selection.
+To opt to have a different language version from
+the rest of a package, a [Dart library][] must
 include a comment in the following format:
 
 ```dart
