@@ -376,38 +376,38 @@ linter:
 ```
 
 {{site.alert.note}}
-  Due to YAML restrictions, 
+  Due to YAML restrictions,
   **you can't mix list and key-value syntax in the same `rules` entry.**
-  You can, however, use the other syntax for rules in an included file.
+  You may use the other syntax for rules in an included file.
 {{site.alert.end}}
 
 ## Enabling analyzer plugins (experimental) {#plugins}
 
 The analyzer has experimental support for plugins.
-These plugins can integrate with the analyzer and add functionality
-such as new diagnostics, quick fixes, custom code completion, and more.
+These plugins integrate with the analyzer to add functionality
+such as new diagnostics, quick fixes, and custom code completion.
 You can enable only one plugin per `analysis_options.yaml` file.
-Each analyzer plugin that you use increases how much memory the analyzer uses.
+Enabling an analyzer plugin increases how much memory the analyzer uses.
 
 Don’t use analyzer plugins if your situation meets
 either of the following conditions:
 
-* Your development machine has less than 16 GB of memory
+* You use a development machine with less than 16 GB of memory.
 * You use a mono-repo with more than 10 `pubspec.yaml` and
   `analysis_options.yaml` files.
   
-You can find a few analyzer plugins on 
+You can find a few analyzer plugins on
 [pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
 
 To enable a plugin:
 
-1. Add the package containing the plugin as a dev dependency:
+1. Add the package containing the plugin as a dev dependency.
 
     ```terminal
     dart pub add --dev your_favorite_analyzer_plugin_package
     ```
 
-2. Edit your `analysis_options.yaml` file to enable the plugin:
+2. Edit your `analysis_options.yaml` file to enable the plugin.
 
     ```yaml
     analyzer:
@@ -415,9 +415,8 @@ To enable a plugin:
         - your_favorite_analyzer_plugin_package
     ```
 
-Additional configuration may also be needed to specify which functionality, 
-such as new diagnostics, from the plugin to enable.
-
+    To indicate specific plugin functionality to enable,
+    such as new diagnostics, additional setup might be required.
 
 ## Excluding code from analysis
 
