@@ -381,27 +381,27 @@ linter:
   You can, however, use the other syntax for rules in an included file.
 {{site.alert.end}}
 
-## Enabling analyzer plugins (experimental)
+## Enabling analyzer plugins (experimental) {#plugins}
 
-The Analyzer package offers an experimental feature called Analyzer plugins.
-These plugins allow you to add linter rules and quick fixes that third-party
-plugins specify.
-You can use no more than one Analyzer plugin in each
-`analysis_options.yaml` file.
+The analyzer has experimental support for plugins.
+These plugins can integrate with the analyzer and add functionality
+such as new diagnostics, quick fixes, custom code completion, and more.
+You can enable only one plugin per `analysis_options.yaml` file.
 Each analyzer plugin that you use increases how much memory the analyzer uses.
 
-Don’t use analyzer plugins if your situation meets either of the following
-conditions:
+Don’t use analyzer plugins if your situation meets
+either of the following conditions:
 
 * Your development machine has less than 16 GB of memory
 * You use a mono-repo with more than 10 `pubspec.yaml` and
   `analysis_options.yaml` files.
   
-You can find a few analyzer plugins on [pub.dev]({{site.pub}}/packages?q=dependency%3Aanalyzer_plugin).
+You can find a few analyzer plugins on 
+[pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
 
 To enable a plugin:
 
-1. Add the plugin package as you would a dev dependency:
+1. Add the package containing the plugin as a dev dependency:
 
     ```terminal
     dart pub add --dev your_favorite_analyzer_plugin_package
@@ -409,14 +409,14 @@ To enable a plugin:
 
 2. Edit your `analysis_options.yaml` file to enable the plugin:
 
-    ```json
+    ```yaml
     analyzer:
       plugins:
         - your_favorite_analyzer_plugin_package
     ```
 
-Additional configuration may also be needed to specify which lint rules
-from the plugin to enable.  
+Additional configuration may also be needed to specify which functionality, 
+such as new diagnostics, from the plugin to enable.
 
 
 ## Excluding code from analysis
