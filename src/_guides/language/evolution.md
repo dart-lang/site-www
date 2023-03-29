@@ -142,9 +142,9 @@ Dart 2.14 added the unsigned shift (or _triple-shift_) operator (`>>>`).
 This new operator works like `>>`,
 except that it always fills the most significant bits with zeros.
 
-To learn more about these operators, check out [bitwise and shift operator][].
+To learn more about these operators, check out [bitwise and shift operators][].
 
-[bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
+[bitwise and shift operators]: /language/operators#bitwise-and-shift-operators
 
 Dart 2.14 removed some restrictions on type arguments.
 You can pass type arguments to annotations and use a generic function
@@ -188,10 +188,9 @@ _Released 1 October 2020_
 | [Dart 2.10 announcement](https://medium.com/dartlang/announcing-dart-2-10-350823952bd5)
 
 Dart 2.10 added no new features to the Dart language.
-It did add an expanded [`dart` tool][dart-tool] similar to the
-Flutter SDK's [`flutter` tool][].
 
 ### Dart 2.9
+_Released 5 August 2020_
 
 Dart 2.9 added no new features to the Dart language.
 
@@ -202,9 +201,6 @@ _Released 6 May 2020_
 Dart 2.8 didn't add any features to the Dart language. It did
 contain a number of preparatory [breaking changes][2.8 breaking changes]
 to improve nullability-related usability and performance for [null safety][].
-
-It improved the performance of the `pub` tool and
-added the [`pub outdated`][] command.
 
 ### Dart 2.7
 _Released 11 December 2019_
@@ -237,9 +233,8 @@ _Released 5 November 2019_
 
 Dart 2.6 introduced a
 [breaking change (dart-lang/sdk#37985)](https://github.com/dart-lang/sdk/issues/37985).
-Inference changes when using Null values in a `FutureOr` context.
-Constraints of the forms similar to `Null <:FutureOr` now yield `Null`
-as the solution for `T`.
+Constraints of the forms similar to `Null` serves as a subtype of `FutureOr`
+now yield `Null` as the solution for `T`.
 
 For example: The following code now prints `Null`.
 Before Dart 2.6, it printed `dynamic`.
@@ -277,7 +272,7 @@ class A<X> {};
 class B<X> extends A<void Function(X)> {};
 ```
 
-You can now use the identifier async in asynchronous and generator functions.
+You can now use `async` as an identifier in asynchronous and generator functions.
 
 ### Dart 2.3
 _Released 8 May 2019_
@@ -391,8 +386,8 @@ To review an example of how an app or package can migrate to a new
 language version with an incompatible feature, check out
 [Migrating to null safety](/null-safety/migration-guide).
 
-Each package has a default language version
-equal to the **lower bound of the SDK constraint** in the `pubspec.yaml` file.
+Each package has a default language version equal to the **lower bound**
+of the SDK constraint in the `pubspec.yaml` file.
 
 **For example:** The following entry in a `pubspec.yaml` file
 indicates that this package uses the Dart 2.18 language version or later.
@@ -406,7 +401,6 @@ environment:
 
 Dart formats its language versions as two numbers separated with a period.
 It reads as a major version number and a minor version number.
-Though this appears to follow semantic versioning, it does not.
 Minor version numbers might introduce breaking changes.
 
 Dart releases might append a patch number to a language version.
