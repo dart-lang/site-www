@@ -258,8 +258,6 @@ You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`.
 When this happens, run the following command:
 
 ```bash
-make run
-
 make fetch-sums
 ```
 
