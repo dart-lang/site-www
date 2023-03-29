@@ -378,7 +378,7 @@ linter:
 {{site.alert.note}}
   Due to YAML restrictions,
   **you can't mix list and key-value syntax in the same `rules` entry.**
-  You may use the other syntax for rules in an included file.
+  You can use the other syntax for rules in an included file.
 {{site.alert.end}}
 
 ## Enabling analyzer plugins (experimental) {#plugins}
@@ -401,13 +401,13 @@ You can find a few analyzer plugins on
 
 To enable a plugin:
 
-1. Add the package containing the plugin as a dev dependency.
+ 1. Add the package containing the plugin as a dev dependency.
 
     ```terminal
-    dart pub add --dev your_favorite_analyzer_plugin_package
+    $ dart pub add --dev <your_favorite_analyzer_plugin_package>
     ```
 
-2. Edit your `analysis_options.yaml` file to enable the plugin.
+ 2. Edit your `analysis_options.yaml` file to enable the plugin.
 
     ```yaml
     analyzer:
