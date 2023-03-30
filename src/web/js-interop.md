@@ -60,7 +60,7 @@ expected to work across compilers for JS interop.
 * Dart SDK constraint: `>= 2.19`
 * [`package:js`][] constraint: `>= 0.6.6`
 
-[`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/dart2wasm.md#running-dart2wasm
+[`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm#running-dart2wasm
 [Dart 3]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
 [`package:js`]: {{site.pub-pkg}}/js
 

@@ -258,8 +258,6 @@ You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`.
 When this happens, run the following command:
 
 ```bash
-make run
-
 make fetch-sums
 ```
 
@@ -272,7 +270,7 @@ then rerun your setup/build again.
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
-[Scorecard Results]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www
+[Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
 [cloning]: https://help.github.com/articles/cloning-a-repository
 [DartPad]: https://dartpad.dev
 [Firebase]: https://firebase.google.com/
