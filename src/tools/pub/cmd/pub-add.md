@@ -39,7 +39,7 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-### Adding Dependency Overrides
+## Adding Dependency Overrides
 
 Starting in Dart 3, `dart pub add` supports adding dependency overrides in a similar fashion to dev dependencies. To add a dependency override, use the following syntax:
 `dart pub add override:<package>:<version>`
@@ -81,10 +81,10 @@ $ dart pub add --dev foo
 ## Source descriptor
 
 {{site.alert.version-note}}
-YAML-formatted descriptor syntax was added in Dart 2.19.
-The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
-We still support these arguments, but the recommended method is now
-YAML-descriptor only.
+  YAML-formatted descriptor syntax was added in Dart 2.19.
+  The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
+  We still support these arguments, but the recommended method is now
+  YAML-descriptor only.
 {{site.alert.end}}
 
 The YAML descriptor syntax allows you to add multiple packages from different
@@ -187,13 +187,13 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 {{site.alert.note}}
-The previous `pub add` syntax for options
-(without YAML descriptors) applies the
-specified options to all the packages
-included in an invocation of the command.
-For example, `dart pub add test http --dev`
-will add both the `test` and `http` packages
-as dev dependencies.
+  The previous `pub add` syntax for options
+  (without YAML descriptors) applies the
+  specified options to all the packages
+  included in an invocation of the command.
+  For example, `dart pub add test http --dev`
+  will add both the `test` and `http` packages
+  as dev dependencies.
 {{site.alert.end}}
 
 ### `--[no-]offline`
@@ -212,6 +212,6 @@ in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
 {{site.alert.info}}
-_Problems?_
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 {{site.alert.end}}
