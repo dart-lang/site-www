@@ -1,8 +1,8 @@
 ---
 title: "C interop using dart:ffi"
 description: "To use C code in your Dart program, use the dart:ffi library."
-hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
-samples: "https://github.com/dart-lang/samples/tree/master/ffi"
+hw: "https://github.com/dart-lang/samples/tree/main/ffi/hello_world"
+samples: "https://github.com/dart-lang/samples/tree/main/ffi"
 ---
 
 Dart mobile, command-line, and server apps 

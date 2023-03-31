@@ -463,7 +463,7 @@ see the following [isolate samples][]:
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
 
-{% assign samples = "https://github.com/dart-lang/samples/tree/master/isolates" %}
+{% assign samples = "https://github.com/dart-lang/samples/tree/main/isolates" %}
 
 [isolate samples]: {{ samples }}
 [send_and_receive.dart]: {{ samples }}/bin/send_and_receive.dart
