@@ -46,7 +46,9 @@ include a [source descriptor](#source-descriptor).
 
 [dependency override]: /tools/pub/dependencies#dependency-overrides
 
-For example, to add an override for the `foo` package version `1.0.0`, run the following command:
+**For example**, to override all references to `package:foo`
+to use version `1.0.0` of the package,
+run the following command:
 
 ```
 dart pub add override:foo:1.0.0
