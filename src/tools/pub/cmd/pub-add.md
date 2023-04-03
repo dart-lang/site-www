@@ -41,8 +41,10 @@ it will update the constraint.
 
 ## Dependency overrides
 
-Starting in Dart 3, `dart pub add` supports adding dependency overrides in a similar fashion to dev dependencies. To add a dependency override, use the following syntax:
-`dart pub add override:<package>:<version>`
+To specify a [dependency override][], add the `override:` prefix and
+include a [source descriptor](#source-descriptor).
+
+[dependency override]: /tools/pub/dependencies#dependency-overrides
 
 For example, to add an override for the `foo` package version `1.0.0`, run the following command:
 
