@@ -61,8 +61,6 @@ dependency_overrides:
 foo: 1.0.0
 ```
 
-Note that dependency overrides can conflict with the normal dependency resolution process and should be used with caution.
-
 ## `dev` dependency
 
 The `dev:` prefix adds the package as a [dev dependency][],
