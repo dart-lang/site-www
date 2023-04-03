@@ -58,7 +58,7 @@ This adds the override to your `pubspec.yaml` file:
 
 ```yaml
 dependency_overrides:
-foo: 1.0.0
+  foo: 1.0.0
 ```
 
 ## `dev` dependency
