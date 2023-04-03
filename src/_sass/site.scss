@@ -303,7 +303,8 @@ main .content {
       .octicon-link {
         @include transition(.1s);
 
-        @include md-icon-before("link");
+        @include md-icon-before("tag");
+        font-style: italic;
         font-size: 24px;
         color: $site-color-body;
         opacity: 0;
@@ -405,7 +406,7 @@ main .content {
   width: 300px;
   height: auto;
   min-height: 100px;
-  padding: $content-padding;
+  padding: 20px;
   margin: 15px;
   overflow: hidden;
   box-sizing: border-box;
@@ -487,9 +488,9 @@ li.card {
 @include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
 @include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
 @include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
-@include dart-style-for('highlight-languages .language-dart:not(.no-lang)', $pre-bg, $brand-primary, 'Dart');
-@include dart-style-for('highlight-languages .language-js:not(.no-lang)', $pre-bg, #f1a85a, 'JavaScript');
-@include dart-style-for('highlight-languages .language-swift:not(.no-lang)', $pre-bg, #f05137, 'Swift');
+@include dart-style-for('highlight-languages .language-dart:not(.no-lang)', inherit, $brand-primary, 'Dart');
+@include dart-style-for('highlight-languages .language-js:not(.no-lang)', inherit, #f1a85a, 'JavaScript');
+@include dart-style-for('highlight-languages .language-swift:not(.no-lang)', inherit, #f05137, 'Swift');
 
 .muted {
   color: $gray;
@@ -547,32 +548,17 @@ li.card {
  margin: 0 auto;
 }
 
-.page-header {
-  margin: 0;
-  margin-bottom: 10px;
-  padding: $content-padding;
-  border-bottom: 1px solid $gray;
-  h1, h2 {
-    font-size: 36px;
-  }
-}
-
-// TODO: replace usage of .panel with .mini-toc
 .mini-toc {
   @extend .alert;
   background-color: $gray-light;
-}
 
-.panel {
-  background-color: $gray-light;
-  padding: $content-padding;
-  margin-bottom: 20px;
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    margin-bottom: 5px;
+  h4 {
+    margin-top: 0;
   }
+
   ul {
-    padding-left: 15px;
+    padding-left: 1.5rem;
+    margin-bottom: 0;
   }
 }
 
@@ -652,20 +638,6 @@ h3.popover-header {
     width: auto;
     background-color: $gray-dark;
     color: $white-base;
-  }
-}
-
-.alert-with-image {
-  display: table-row;
-  > img {
-    margin-right: $content-padding * 2;
-    width: $font-size-base * 3;
-    @include media-breakpoint-down(sm) { display: none; }
-  }
-  > div {
-    display: table-cell;
-    @include media-breakpoint-up(sm) { padding-left: $content-padding; }
-    vertical-align: top;
   }
 }
 

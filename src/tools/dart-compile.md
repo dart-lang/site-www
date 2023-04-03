@@ -4,7 +4,7 @@ description: Command-line tool for compiling Dart source code.
 ---
 
 Use the `dart compile` command to compile
-a Dart program to a [target platform](/platforms).
+a Dart program to a [target platform](/overview#platform).
 The output—which you specify using a subcommand—can 
 either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
@@ -61,7 +61,7 @@ Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
 followed by examples of running the app.
 
-[native_app]: https://github.com/dart-lang/samples/tree/master/native_app
+[native_app]: https://github.com/dart-lang/samples/tree/main/native_app
 [dart-run]: /tools/dart-run
 
 ## Subcommands

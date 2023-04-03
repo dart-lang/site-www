@@ -108,7 +108,7 @@ Dart plugins exist for many [commonly used IDEs](/tools/#ides-and-editors).
 
 Dart DevTools is a suite of performance tools for Dart and Flutter.
 For details, see the
-[Dart DevTools documentation.](/tools/dart-devtools/)
+[Dart DevTools documentation.](/tools/dart-devtools)
 
 
 ### Continuous integration

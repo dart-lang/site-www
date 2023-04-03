@@ -113,7 +113,7 @@ with the [`dart create`](/tools/dart-create) command.
    $ cd dcat
    ```
    
-3. Inside the `dcat` directory, use [pub](/tools/pub) 
+3. Inside the `dcat` directory, use [dart pub add](/tools/pub/cmd/pub-add) 
    to add the `args` package as a dependency. This adds `args` to 
    the list of your dependencies found in the `pubspec.yaml` file.
 
@@ -138,21 +138,21 @@ like `pubspec.yaml`:
 ```terminal
 $ dart run bin/dcat.dart -n pubspec.yaml
 1 name: dcat
-2 description: A simple command-line application.
+2 description: A sample command-line application.
 3 version: 1.0.0
-4 # homepage: https://www.example.com
-5
+4 # repository: https://github.com/my_org/my_repo
+5 
 6 environment:
-7   sdk: '>=2.15.0 <3.0.0'
-8
-9
-10 # dependencies:
-11 #   path: ^1.8.0
-12
-13 dev_dependencies:
-14   lints: ^2.0.0
+7   sdk: '>=2.19.0 <3.0.0'
+8 
+9 # dependencies:
+10 #   path: ^1.8.0
+11 
+12 dev_dependencies:
+13   lints: ^2.0.0
+14   test: ^1.21.0
 15 dependencies:
-16   args: ^2.3.0
+16   args: ^2.3.2
 ```
 
 This command displays each line of the specified file. Because the `-n` argument
@@ -577,7 +577,7 @@ and the [args]({{argsAPI}}/args-library.html) package.
 For another example of a command line app, 
 see the [command_line][] sample.
 
-[command_line]: https://github.com/dart-lang/samples/tree/master/command_line
+[command_line]: https://github.com/dart-lang/samples/tree/main/command_line
 
 ## What next?
 

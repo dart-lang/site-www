@@ -62,26 +62,12 @@
     font-size: $font-size-lg;
     margin-bottom: bs-spacer(2);
   }
-
-  &--button__page-top {
-    @include float-right;
-    font-size: $font-size-sm;
-    line-height: $line-height;
-    padding-top: 0;
-    padding-right: 0;
-
-    &::after {
-      content: 'vertical_align_top'; // 'keyboard_arrow_up';
-      font: $site-font-icon;
-    }
-  }
 }
 
 .toc-entry.toc-h1,
 .toc-entry.toc-h4,
 .toc-entry.toc-h5,
-.toc-entry.toc-h6,
-.no_toc {
+.toc-entry.toc-h6 {
   display: none;
 }
 

@@ -42,7 +42,7 @@ produces the following warning:
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
-info - example.dart:9:19 - Avoid empty statements. - empty_statements
+info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 </blockquote>
 
@@ -70,15 +70,13 @@ to perform static analysis.
 You can customize static analysis to look for a variety of potential
 problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
-You can also configure the linter, one of the analyzer's plugins,
+You can also configure linter rules,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
-and other suggested guidelines in
-[Effective Dart][]. Dart tools such as the
-[Dart compiler (`dart compile`)](/tools/dart-compile),
-[`dart analyze`](/tools/dart-analyze),
+and other suggested guidelines in [Effective Dart][]. 
+Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [JetBrains IDEs](/tools/jetbrains-plugin)
+and [IDEs and editors](/tools#ides-and-editors)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
@@ -378,10 +376,47 @@ linter:
 ```
 
 {{site.alert.note}}
-  Due to YAML restrictions, 
+  Due to YAML restrictions,
   **you can't mix list and key-value syntax in the same `rules` entry.**
-  You can, however, use the other syntax for rules in an included file.
+  You can use the other syntax for rules in an included file.
 {{site.alert.end}}
+
+## Enabling analyzer plugins (experimental) {#plugins}
+
+The analyzer has experimental support for plugins.
+These plugins integrate with the analyzer to add functionality
+such as new diagnostics, quick fixes, and custom code completion.
+You can enable only one plugin per `analysis_options.yaml` file.
+Enabling an analyzer plugin increases how much memory the analyzer uses.
+
+Don’t use analyzer plugins if your situation meets
+either of the following conditions:
+
+* You use a development machine with less than 16 GB of memory.
+* You use a mono-repo with more than 10 `pubspec.yaml` and
+  `analysis_options.yaml` files.
+  
+You can find a few analyzer plugins on
+[pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
+
+To enable a plugin:
+
+ 1. Add the package containing the plugin as a dev dependency.
+
+    ```terminal
+    $ dart pub add --dev <your_favorite_analyzer_plugin_package>
+    ```
+
+ 2. Edit your `analysis_options.yaml` file to enable the plugin.
+
+    ```yaml
+    analyzer:
+      plugins:
+        - your_favorite_analyzer_plugin_package
+    ```
+
+    To indicate specific plugin functionality to enable,
+    such as new diagnostics, additional setup might be required.
 
 ## Excluding code from analysis
 
@@ -552,7 +587,7 @@ Use the following resources to learn more about static analysis in Dart:
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
 [language version]: /guides/language/evolution#language-versioning
 [linter rules]: /tools/linter-rules
-[type-system]: /guides/language/type-system
+[type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
 [Effective Dart]: /guides/language/effective-dart

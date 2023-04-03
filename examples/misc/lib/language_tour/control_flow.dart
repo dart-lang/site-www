@@ -1,3 +1,5 @@
+import 'package:examples_util/nullable.dart';
+
 class Candidate {
   int yearsExperience = 0;
 
@@ -166,7 +168,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     int number = 0;
     String urlString = '';
-    String? text;
+    String? text = nullableValue<String>();
     // #docregion assert
     // Make sure the variable has a non-null value.
     assert(text != null);

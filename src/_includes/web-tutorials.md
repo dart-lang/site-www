@@ -2,10 +2,6 @@ These tutorials cover topics relevant to Dart web apps.
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="/tutorials/web/fetch-data">Fetch data dynamically</a></h3>
-    <p> Load data from a static file or from a server. </p>
-  </div>
-  <div class="card">
     <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart and HTML</a></h3>
     <p> Include a Dart script in an HTML page. </p>
   </div>

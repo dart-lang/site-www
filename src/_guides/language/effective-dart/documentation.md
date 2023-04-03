@@ -125,9 +125,17 @@ functionality provided within. Consider including:
 * Links to the most important or most commonly used classes and functions.
 * Links to external references on the domain the library is concerned with.
 
-You document a library by placing a doc comment right above the `library`
-directive at the start of the file. If the library doesn't have a `library`
-directive, you can add one just to hang the doc comment off of it.
+To document a library, place a doc comment before
+the `library` directive and any annotations that might be attached
+at the start of the file.
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
 
 ### CONSIDER writing doc comments for private APIs.
 

@@ -431,15 +431,14 @@ That ensures that the example code in your package looks exactly
 like code outside of your package would look.
 
 If you might publish your package,
-consider creating an example file with one of the following names
-(case insensitive):
+consider creating an example file with one of the following names:
 
 * <code>example/example[.md]</code>
 * <code>example[/lib]/main.dart</code>
 * <code>example[/lib]/<em>package_name</em>.dart</code>
 * <code>example[/lib]/<em>package_name</em>_example.dart</code>
 * <code>example[/lib]/example.dart</code>
-* <code>example/readme[.md]</code>
+* <code>example/README[.md]</code>
 
 When you publish a package that contains one or more of the above files,
 the pub.dev site creates an **Example** tab to display the first file it finds

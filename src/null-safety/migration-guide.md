@@ -3,6 +3,15 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
+{{site.alert.version-note}}
+  Dart 2.19 is the final release that supports null-safety migration,
+  including the `dart migrate` tool.
+  To migrate your package to null safety,
+  use the latest Dart 2.19 SDK.
+  To learn more,
+  see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
+{{site.alert.end}}
+
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
@@ -70,12 +79,14 @@ so that you can easily undo any changes.
 
 ### Switch to the latest stable Dart release
 
-Switch to the **latest stable release**
-of either the Dart SDK or the Flutter SDK.
+Switch to the **Dart 2.19 stable release**
+of the Dart SDK. This is included in the Flutter 3.7 SDK.
 
-Check that you have Dart 2.12 or later:
-  ```terminal
+Check that you have Dart 2.19:
+
+```terminal
 $ dart --version
+Dart SDK version: 2.19.2
 ```
 
 ### Check dependency status
@@ -152,7 +163,7 @@ You have two options for migrating:
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
-[default value]: /guides/language/language-tour#default-parameters
+[default value]: /language/functions#default-parameters
 [migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 
@@ -168,7 +179,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest stable release of the Dart SDK.
+* Use the latest 2.19 release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
@@ -328,6 +339,9 @@ except for a 2.9 [version comment][].
 For more information about incremental migration, see
 [Unsound null safety][].
 
+Note that only fully migrated apps and packages 
+are compatible with Dart 3.
+
 [version comment]: /guides/language/evolution#per-library-language-version-selection
 
 
@@ -475,7 +489,13 @@ we strongly recommend following these pubspec rules:
 
 If you made it this far,
 you should have a fully migrated, null-safe Dart package.
+
 If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
+You should see output like this when running or compiling your code:
+
+```terminal
+Compiling with sound null safety
+```
 
 From all of the Dart team, *thank you* for migrating your code.

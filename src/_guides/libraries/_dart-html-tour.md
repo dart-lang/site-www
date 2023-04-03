@@ -385,10 +385,6 @@ The general flow for using the full API of HttpRequest is as follows:
 
 For example:
 
-{% comment %}
-TODO: use original source from dart-tutorials-samples/web/portmanteaux/portmanteaux.dart
-{% endcomment %}
-
 <?code-excerpt "html/lib/html.dart (new-HttpRequest)"?>
 ```dart
 var request = HttpRequest();

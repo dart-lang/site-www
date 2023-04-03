@@ -9,7 +9,7 @@ These **mixed-version programs**
 rely on **unsound null safety**.
 
 {{site.alert.warn}}
-Dart 3---planned for a mid-2023 release---will require sound null safety. 
+Dart 3---planned for a mid-2023 release---requires sound null safety. 
 It will prevent code from running without
 null safety, or with unsound null safety.
 All existing code must be [migrated][] to sound null safety
@@ -126,7 +126,7 @@ you cannot un-migrate a file once it has been migrated.
 If you want to incrementally migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0`:
+   setting the minimum SDK constraint to at least `2.12.0`:
 
    ```yaml
    environment:

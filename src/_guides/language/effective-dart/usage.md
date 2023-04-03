@@ -19,21 +19,25 @@ but *maintainers* of it sure will.
 
 These guidelines help you compose your program out of multiple files in a
 consistent, maintainable way. To keep these guidelines brief, they use "import"
-to cover `import` and `export` directives. The guidelines apply equally to both.
+to cover `import` and `export` directives. The guidelines apply equally to both. 
 
 ### DO use strings in `part of` directives.
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
 `part` to split part of a library out into another file, Dart requires the other
-file to in turn indicate which library it's a part of. For legacy reasons, Dart
-allows this `part of` directive to use the *name* of the library it's a part of.
-That makes it harder for tools to physically find the main library file, and can
-make it ambiguous which library the part is actually part of.
+file to in turn indicate which library it's a part of. 
 
-The preferred, modern syntax is to use a URI string that points directly to the
-library file, just like you use in other directives. If you have some library,
-`my_library.dart`, that contains:
+Dart allows the `part of` directive to use the *name* of a library.
+Naming libraries is a legacy feature that is now [discouraged][]. 
+Library names can introduce ambiguity
+when determining which library a part belongs to.
+
+[discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+
+The preferred syntax is to use a URI string that points
+directly to the library file. 
+If you have some library, `my_library.dart`, that contains:
 
 <?code-excerpt "my_library.dart"?>
 {% prettify dart tag=pre+code %}
@@ -42,7 +46,7 @@ library my_library;
 part 'some/other/file.dart';
 {% endprettify %}
 
-Then the part file should look like:
+Then the part file should use the library file's URI string:
 
 {:.good}
 <?code-excerpt "some/other/file.dart"?>
@@ -50,7 +54,7 @@ Then the part file should look like:
 part of '../../my_library.dart';
 {% endprettify %}
 
-And not:
+Not the library name:
 
 {:.bad}
 <?code-excerpt "some/other/file_2.dart"?>
@@ -512,8 +516,8 @@ for including the contents of other collections,
 and [`if` and `for`][control] for performing control flow while
 building the contents:
 
-[spread]: /guides/language/language-tour#spread-operator
-[control]: /guides/language/language-tour#collection-operators
+[spread]: /language/collections#spread-operators
+[control]: /language/collections#collection-operators
 
 {:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>

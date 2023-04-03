@@ -13,7 +13,7 @@ feature needing a long introduction. Today, Kotlin, Swift, Rust, and other
 languages all have their own answers to what has become a very [familiar
 problem.][billion] Here is an example:
 
-[strong]: /guides/language/type-system
+[strong]: /language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 
 ```dart
@@ -124,7 +124,7 @@ types.
 
 In type theory lingo, the `Null` type was treated as a subtype of all types:
 
-<img src="understanding-null-safety/hierarchy-before.png" width="335">
+<img src="/null-safety/understanding-null-safety/hierarchy-before.png" width="335">
 
 The set of operations—getters, setters, methods, and
 operators—allowed on some expressions are defined by its type. If the type
@@ -140,7 +140,7 @@ Null safety eliminates that problem at the root by changing the type hierarchy.
 The `Null` type still exists, but it's no longer a subtype of all types.
 Instead, the type hierarchy looks like this:
 
-<img src="understanding-null-safety/hierarchy-after.png" width="344">
+<img src="/null-safety/understanding-null-safety/hierarchy-after.png" width="344">
 
 Since `Null` is no longer a subtype, no type except the special `Null` class
 permits the value `null`. We've made all types *non-nullable by default*. If you
@@ -202,7 +202,7 @@ problems. We model this by making every nullable type a supertype of its
 underlying type. You can also safely pass `null` to something expecting a nullable type, so
 `Null` is also a subtype of every nullable type:
 
-<img src="understanding-null-safety/nullable-hierarchy.png" width="235">
+<img src="/null-safety/understanding-null-safety/nullable-hierarchy.png" width="235">
 
 But going the other direction and passing a nullable type to something expecting
 the underlying non-nullable type is unsafe. Code that expects a `String` may
@@ -281,7 +281,7 @@ returns. With the removal of implicit downcasts, this becomes a compile error.
 Where were we? Right, OK, so it's as if we've taken the universe of types in
 your program and split them into two halves:
 
-<img src="understanding-null-safety/bifurcate.png" width="668">
+<img src="/null-safety/understanding-null-safety/bifurcate.png" width="668">
 
 There is a region of non-nullable types. Those types let you access all of the
 interesting methods, but can never ever contain `null`. And then there is a
@@ -322,7 +322,7 @@ subtype of it. Dart has no *named* top type. If you need a top type, you want
 `Object?`. Likewise, `Null` is no longer the bottom type. If it was, everything
 would still be nullable. Instead, we've added a new bottom type named `Never`:
 
-<img src="understanding-null-safety/top-and-bottom.png" width="360">
+<img src="/null-safety/understanding-null-safety/top-and-bottom.png" width="360">
 
 In practice, this means:
 

@@ -20,10 +20,10 @@ that contains a simple console app (the default template):
 $ dart create my_cli
 ```
 
-To use a different template, such as `web-simple`, add a template argument:
+To use a different template, such as `web`, add a template argument:
 
 ```terminal
-$ dart create -t web-simple my_web_app
+$ dart create -t web my_web_app
 ```
 
 The following table shows the templates you can use:

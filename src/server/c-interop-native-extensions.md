@@ -20,4 +20,4 @@ toc: false
 {{site.alert.end}}
 
 [`include/dart_api.h`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api.h
-[examples]: https://github.com/fuzzybinary/dart-embedding-example
+[examples]: https://github.com/fuzzybinary/dart_shared_libray

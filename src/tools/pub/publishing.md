@@ -183,6 +183,14 @@ dependencies:
   transmogrify: ^1.0.0
 ```
 
+### Automated publishing
+
+Once the first version of a package has been published, 
+it is possible to configure automated publishing 
+through GitHub Actions or Google Cloud service accounts. 
+To learn more about automated publishing, see
+[Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
+
 ### Transferring a package to a verified publisher
 
 To transfer a package to a verified publisher,

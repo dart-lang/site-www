@@ -69,7 +69,7 @@ print('I drink $tea.');
 ```
 
 For more information on basic strings and `toString()`, see
-[Strings](/guides/language/language-tour#strings) in the language tour.
+[Strings](/language/built-in-types#strings) in the language tour.
 
 
 ### Numbers
@@ -135,7 +135,7 @@ the [dart:math section](#dartmath---math-and-random).
 
 A string in Dart is an immutable sequence of UTF-16 code units.
 The language tour has more information about
-[strings](/guides/language/language-tour#strings).
+[strings](/language/built-in-types#strings).
 You can use regular expressions (RegExp objects)
 to search within strings and to
 replace parts of strings.
@@ -410,7 +410,7 @@ assert(fruits[0] == 'apples');
 ```
 
 Lists are parameterized types
-([generics](/guides/language/language-tour#generics)),
+([generics](/language/generics)),
 so you can specify the type that a list
 should contain:
 
@@ -434,7 +434,7 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
   In many cases, you don't
   need to explicitly specify generic
   types, because Dart will
-  [infer](/guides/language/type-system#type-inference)
+  [infer](/language/type-system#type-inference)
   them for you.
   A list like `['Dash', 'Dart']` is understood
   to be a `List<String>` (read: list of strings).
@@ -814,7 +814,7 @@ assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 A DateTime object is a point in time. The time zone is either UTC or the
 local time zone.
 
-You can create DateTime objects using several constructors:
+You can create DateTime objects using several constructors and methods:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
 ```dart
@@ -833,10 +833,15 @@ y2k = DateTime.utc(2000); // 1/1/2000, UTC
 // Specify a date and time in ms since the Unix epoch.
 y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
 
-// Parse an ISO 8601 date.
+// Parse an ISO 8601 date in the UTC time zone.
 y2k = DateTime.parse('2000-01-01T00:00:00Z');
-```
 
+// Create a new DateTime from an existing one, adjusting just some properties:
+var sameTimeLastYear = now.copyWith(year: now.year - 1);
+```
+{{site.alert.warning}}
+  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
+{{site.alert.end}}
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
@@ -958,7 +963,7 @@ class Person {
   // You should generally implement operator `==` if you
   // override `hashCode`.
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is Person &&
         other.firstName == firstName &&
         other.lastName == lastName;
@@ -1048,7 +1053,7 @@ class FooException implements Exception {
 ```
 
 For more information, see
-[Exceptions](/guides/language/language-tour#exceptions)
+[Exceptions](/language/error-handling#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
 ### Weak references and finalizers
@@ -1115,8 +1120,8 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{{site.alert.version-note}}
-  As of Dart 2.1, you don't need to import dart:async to use the Future and
+{{site.alert.tip}}
+  You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
 {{site.alert.end}}
 
@@ -1731,7 +1736,7 @@ To learn more about the Dart language, see the
 [language tour][].
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[Assert]: /guides/language/language-tour#assert
+[Assert]: /language/control-flow#assert
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
@@ -1776,7 +1781,7 @@ To learn more about the Dart language, see the
 [double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 [int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[language tour]: /guides/language/language-tour
+[language tour]: /language
 [num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html

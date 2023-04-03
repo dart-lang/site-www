@@ -1,4 +1,4 @@
-name: No Response
+name: No response
 
 # Both `issue_comment` and `scheduled` event types are required for this Action
 # to work properly.
@@ -6,8 +6,8 @@ on:
   issue_comment:
     types: [created]
   schedule:
-    # Schedule for five minutes after the hour, every hour
-    - cron: '5 * * * *'
+    # Schedule for every day at 8am
+    - cron: '0 8 * * *'
 
 # By specifying the access of one of the scopes, all of those that are not
 # specified are set to 'none'.

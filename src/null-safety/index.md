@@ -3,7 +3,10 @@ title: Sound null safety
 description: Information about Dart's null safety feature
 ---
 
-The Dart language comes with sound null safety.
+The Dart language comes with sound null safety. 
+
+In Dart 3, you always get null safety. In Dart 2.x,
+it must be enabled [with a pubspec setting](#enable-null-safety).
 
 Null safety prevents errors that result from unintentional access
 of variables set to `null`.
@@ -25,19 +28,6 @@ any non-nullable variable hasn't been initialized with a
 non-null value or is being assigned a `null`.
 This allows you to fix these errors before deploying your app.
 
-{{site.alert.warn}}
-In Dart 2.x SDKs, you can enable or disable sound null safety 
-through configuration of the project SDK constraint.
-To learn more, see [Enabling/disabling null safety](#enable-null-safety).
-
-Dart 3--planned for a mid-2023 release--
-will require sound null safety. It will prevent code from running without it.
-All existing code must be [migrated](#migrate) to sound null safety
-to be compatible with Dart 3.
-To learn more, see the [Dart 3 sound null safety tracking issue][].
-{{site.alert.end}}
-
-[Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
 
 ## Introduction through examples
 
@@ -86,10 +76,92 @@ Dart null safety support is based on the following three core design principles:
   fewer bugs, but smaller binaries and faster execution.
 
 
-## Enabling/disabling null safety {#enable-null-safety}
+## Dart 3 and null safety
 
-You can use sound null safety in Dart 2.12 and Flutter 2.0 or later.
-Dart 3 and later will [_only_ support sound null safety][Dart 3 sound null safety tracking issue].
+Dart 3---planned for a mid-2023 release---always has sound null safety.
+Dart 3 will prevent code from running without it.
+
+Packages developed without null safety support will cause issues
+when resolving dependencies:
+
+```terminal
+$ dart pub get
+
+Because pkg1 doesn't support null safety, version solving failed.
+The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
+```
+
+Libraries that opt out of null safety will cause analysis or compilation
+errors:
+
+```terminal
+$ dart analyze .
+Analyzing ....                         0.6s
+
+  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0. 
+  Try removing the language version override and migrating the code.
+  • illegal_language_version_override
+```
+
+```terminal
+$ dart run bin/my_app.dart
+../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
+// @dart=2.9
+^^^^^^^^^^^^
+```
+
+To resolve these issues, check for 
+[null safe versions](/null-safety/migration-guide#check-dependency-status)
+of any packages you installed from pub.dev, and [migrate](#migrate) all
+of your own source code to use sound null safety.
+
+As of late January 2023, **Dart 3 alpha** is available from the Dart dev channel
+and the Flutter master channel; see [the download page][] for details.
+We recommend you test your code for Dart 3 compatibility using that release:
+
+```terminal
+$ dart --version                     # make sure this reports 3.0.0-151.0.dev or higher
+$ dart pub get / flutter pub get     # this should resolve without issues
+$ dart analyze / flutter analyze     # this should pass without errors
+```
+
+If the `pub get` step fails, check the [status of the dependencies][].
+
+If the `analyze` step fails, update your code to resolve the issues
+listed by the analyzer.
+
+[the download page]: /get-dart/archive#dart-3-alpha
+[status of the dependencies]: /null-safety/migration-guide#check-dependency-status
+
+### Dart 3 backwards compatibility
+
+Packages and apps migrated to use null safety with Dart 2.12 or later will
+likely be backwards compatible with Dart 3. Specifically, for any package where
+the lower bound of the SDK constraint is 2.12.0 or higher, pub will allow
+resolution even when the upper bound is limited to versions below 3.0.0. For
+example, a package with the following constraint will be allowed to resolve with
+a Dart 3.x SDK:
+
+```yaml
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+```
+
+This allows developers to use Dart 3 sound null safety with packages that have
+been migrated to 2.12 null safety without needing a second migration.
+Note that this only applies to code that
+doesn't depend on Dart 3 breaking changes:
+
+* Several historical core library APIs have been removed; for details,
+  see the GitHub issues [#34233][] and [#49529][].
+* The historical language syntax for default parameter values
+  ([#2357][]) has been discontinued.
+
+
+## Dart 2.x and null safety {#enable-null-safety}
+
+In Dart 2.12 to 2.19, null safety is a configuration option in the pubspec. Null
+safety is not available in SDK versions prior to Dart 2.12.
 
 <a id="constraints"></a>
 To enable sound null safety, set the
@@ -104,18 +176,18 @@ environment:
 
 [language version]: /guides/language/evolution#language-versioning
 
-### Migrating an existing package or app {#migrate}
+## Migrating existing code {#migrate}
 
-The Dart SDK includes the `dart migrate` tool.
-This tool helps you migrate code that supports sound null safety. 
-Use `dart migrate` if you wrote Dart code with Dart 2.12 or earlier.
+Dart code written without null safety support can be migrated to use null
+safety. We recommend using the `dart migrate` tool, included in the Dart SDK
+versions 2.12 to 2.19.
 
 ```terminal
 $ cd my_app
 $ dart migrate
 ```
 
-To learn how to migrate your code to null safety,
+For more details on how to migrate your code to null safety,
 see the [migration guide][].
 
 
@@ -127,17 +199,14 @@ For more information about null safety, see the following resources:
 * [Understanding null safety][]
 * [Migration guide for existing code][migration guide]
 * [Null safety FAQ][]
-* [DartPad with null safety]({{site.dartpad}})
 * [Null safety sample code][calculate_lix]
-* [Null safety tracking issue][110]
-* [Dart blog][]
 
-[110]: https://github.com/dart-lang/language/issues/110
-[calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
-[`dart create`]: /tools/dart-create
-[Dart blog]: https://medium.com/dartlang
+[calculate_lix]: https://github.com/dart-lang/samples/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety codelab]: /codelabs/null-safety
 [Understanding null safety]: /null-safety/understanding-null-safety
+[#34233]: https://github.com/dart-lang/sdk/issues/34233
+[#49529]: https://github.com/dart-lang/sdk/issues/49529
+[#2357]: https://github.com/dart-lang/language/issues/2357
 

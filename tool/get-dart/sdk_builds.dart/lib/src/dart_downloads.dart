@@ -8,6 +8,12 @@ import 'package:path/path.dart' as p;
 
 import 'version_info.dart';
 
+/// Define the storage base URL explicitly.
+///
+/// This will help to modify the base easily
+/// if any site is using a different storage base.
+const storageBaseUrl = 'https://storage.googleapis.com/';
+
 const _dartChannel = 'dart-archive';
 const _flavor = 'release';
 
@@ -25,7 +31,7 @@ class DartDownloads {
 
   DartDownloads._(http.Client client)
       : _client = client,
-        _api = storage.StorageApi(client);
+        _api = storage.StorageApi(client, rootUrl: storageBaseUrl);
 
   Future<Uri> createDownloadLink(
       String channel, String revision, String path) async {

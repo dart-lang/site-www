@@ -11,16 +11,14 @@ prevpage:
   title: Connect Dart and HTML
 ---
 
-<div class="panel" markdown="1">
+<div class="mini-toc" markdown="1">
+  <h4>What's the point?</h4>
 
-#### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
-
-* In Dart, page elements are of type `Element`.
-* An `Element` knows its parent.
-* An `Element` keeps its children in a `List<Element>`.
-* Change the DOM by adding or removing children of elements.
-* Respond to user input with an `EventListener`.
-
+  * In Dart, page elements are of type `Element`.
+  * An `Element` knows its parent.
+  * An `Element` keeps its children in a `List<Element>`.
+  * Change the DOM by adding or removing children of elements.
+  * Respond to user input with an `EventListener`.
 </div>
 
 {{site.alert.note}}
