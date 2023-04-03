@@ -39,7 +39,7 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-## Adding Dependency Overrides
+## Dependency overrides
 
 Starting in Dart 3, `dart pub add` supports adding dependency overrides in a similar fashion to dev dependencies. To add a dependency override, use the following syntax:
 `dart pub add override:<package>:<version>`
