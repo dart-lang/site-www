@@ -51,7 +51,7 @@ to use version `1.0.0` of the package,
 run the following command:
 
 ```terminal
-dart pub add override:foo:1.0.0
+$ dart pub add override:foo:1.0.0
 ```
 
 This adds the override to your `pubspec.yaml` file:
