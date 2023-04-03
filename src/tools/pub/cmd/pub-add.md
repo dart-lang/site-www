@@ -50,7 +50,7 @@ include a [source descriptor](#source-descriptor).
 to use version `1.0.0` of the package,
 run the following command:
 
-```
+```terminal
 dart pub add override:foo:1.0.0
 ```
 
