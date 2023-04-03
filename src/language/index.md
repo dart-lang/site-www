@@ -484,7 +484,7 @@ keep these facts and concepts in mind:
     {{site.alert.end}}
 
 -   Although Dart is strongly typed, type annotations are optional
-    because Dart can infer types. In the code above, `number`
+    because Dart can infer types. In the code `var number = 101`, `number`
     is inferred to be of type `int`.
 
 -   If you enable [null safety][ns],
