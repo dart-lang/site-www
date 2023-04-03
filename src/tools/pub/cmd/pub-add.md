@@ -54,7 +54,7 @@ run the following command:
 dart pub add override:foo:1.0.0
 ```
 
-This will add an override to your `pubspec.yaml` file:
+This adds the override to your `pubspec.yaml` file:
 
 ```
 dependency_overrides:
