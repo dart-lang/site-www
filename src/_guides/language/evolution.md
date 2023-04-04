@@ -233,7 +233,7 @@ _Released 5 November 2019_
 
 Dart 2.6 introduced a
 [breaking change (dart-lang/sdk#37985)](https://github.com/dart-lang/sdk/issues/37985).
-Constraints of the forms similar to `Null` serves as a subtype of `FutureOr`
+Constraints where `Null` serves as a subtype of `FutureOr<T>`
 now yield `Null` as the solution for `T`.
 
 For example: The following code now prints `Null`.
@@ -390,7 +390,7 @@ Each package has a default language version equal to the **lower bound**
 of the SDK constraint in the `pubspec.yaml` file.
 
 **For example:** The following entry in a `pubspec.yaml` file
-indicates that this package uses the Dart 2.18 language version or later.
+indicates that this package defaults to the Dart 2.18 language version.
 
 ```yaml
 environment:
