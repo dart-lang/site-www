@@ -46,7 +46,7 @@ include a [source descriptor](#source-descriptor).
 
 [dependency override]: /tools/pub/dependencies#dependency-overrides
 
-**For example**, to override all references to `package:foo`
+**For example:** To override all references to `package:foo`
 to use version `1.0.0` of the package,
 run the following command:
 
