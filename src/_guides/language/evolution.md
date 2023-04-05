@@ -272,7 +272,8 @@ class A<X> {};
 class B<X> extends A<void Function(X)> {};
 ```
 
-You can now use `async` as an identifier in asynchronous and generator functions.
+You can now use `async` as an identifier in
+asynchronous and generator functions.
 
 ### Dart 2.3
 _Released 8 May 2019_
@@ -408,8 +409,8 @@ Patches should not change the language except for bug fixes.
 To illustrate: Dart 2.18.3 serves as the latest release of the
 Dart 2.18 SDK language version.
 
-Each Dart SDK supports all of the language versions within its major
-version number.
+Each Dart SDK supports all of the language versions within
+its major version number.
 That means that Dart SDK 2.18.3 supports language versions
 2.0 through 2.18 inclusive, but not Dart 1.x.
 
@@ -434,7 +435,7 @@ Sometimes, a Dart file might need to use an older language version.
 For example, you might not be able to migrate all the files in a package
 to null safety at the same time.
 
-Dart supports for per-library language version selection.
+Dart supports per-library language version selection.
 To opt to have a different language version from
 the rest of a package, a [Dart library][] must
 include a comment in the following format:
@@ -467,18 +468,14 @@ check out the [language versioning specification][].
 [collection for]: /language/collections#collection-operators
 [collection if]: /language/collections#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
-[`dart compile`]: /tools/dart-compile
 [Dart FFI]: /guides/libraries/c-interop
-[dart-tool]: /tools/dart-tool
 [extension methods]: /language/extension-methods
-[`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
 [language versioning specification]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
-[pub outdated]: /tools/pub/cmd/pub-outdated
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [set literals]: /language/collections#sets
 [sound null safety]: /null-safety
