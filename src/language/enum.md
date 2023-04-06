@@ -58,9 +58,11 @@ but with a few extra requirements:
   in the beginning of the declaration,
   and there must be at least one instance declared.
 
+Methods in an enhanced enum can use `this` to reference the value of the enum.
+
 Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
-a getter, and an implemented interface:
+getters, and an implemented interface:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
 ```dart
@@ -80,6 +82,8 @@ enum Vehicle implements Comparable<Vehicle> {
   final int carbonPerKilometer;
 
   int get carbonFootprint => (carbonPerKilometer / passengers).round();
+  
+  bool get isTwoWheeled => this == Vehicle.bicycle;
 
   @override
   int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
@@ -150,6 +154,13 @@ use the `.name` property:
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
 print(Color.blue.name); // 'blue'
+```
+
+You can invoke a method on an enhanced enum just like you would on a class:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
+```dart
+print(Vehicle.car.carbonFootprint);
 ```
 
 [`Enum`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
