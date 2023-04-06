@@ -108,10 +108,15 @@ see [Customizing static analysis](/guides/language/analysis-options).
 
 ## VS Code
 
-When you open a project in VS Code, it will be scanned for problems that can be fixed by `dart fix`. If this is the case, you'll see a prompt to remind you.
+When you open a project in VS Code,
+the Dart plugin scans the project for issues that `dart fix` can repair.
+If it finds issues for repair, VS Code displays a prompt to remind you.
 
 <img src="/assets/img/tools/vscode/dart_fix_notification.png" width="550" height="175" alt="VS Code notification about 'dart fix'">
 
-This prompt may also appear after running `dart pub get` or `dart pub upgrade` if package changes introduce problems that can be fixed by `dart fix`.
+After running `dart pub get` or `dart pub upgrade`,
+VS Code might also display this prompt if package changes
+add issues that `dart fix` can repair.
 
-You should ensure all of your files have been saved in the editor before running `dart fix` to ensure the latest versions of your files are used.
+Save all of your files before running `dart fix`.
+This ensures that Dart uses the latest versions of your files.
