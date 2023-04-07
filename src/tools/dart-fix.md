@@ -9,12 +9,23 @@ finds and fixes two types of issues:
 
 * Analysis issues identified by [`dart analyze`][]
   that have associated automated fixes
-  (sometimes called _quick-fixes_ or _code actions_)
+  (sometimes called _quick-fixes_ or _code actions_).
 
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{% include tools/dart-tool-note.md %}
+{{site.alert.tip}}
+  To learn about `dart fix` in a video format,
+  check out this deep dive on **Decoding Flutter**:
+
+  <iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen></iframe>
+{{site.alert.end}}  
+
+## Usage
 
 To preview proposed changes, use the `--dry-run` flag:
 
@@ -28,7 +39,7 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
-## Customizing dart fix
+## Customization
 
 The `dart fix` command only applies fixes 
 when there is a "problem" identified by a diagnostic. 
