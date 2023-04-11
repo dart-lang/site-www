@@ -9,7 +9,7 @@ import 'package:sdk_builds/sdk_builds.dart';
 
 import 'operating_system.dart';
 
-const _storageBase = 'https://storage.googleapis.com/dart-archive';
+const _storageBase = '${storageBaseUrl}dart-archive';
 
 class VersionSelector {
   final String channel;
@@ -149,15 +149,18 @@ class VersionSelector {
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
             continue;
           } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
-            // No Linux risc64 SDK builds before 2.17.0-258.0.dev,
-            // and only want to surface for dev.
-            // TODO: After this is marked beta or stable in 2.x,
-            // remove the beta or stable check respectively.
-            if (versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
+            // Dev builds start at 2.17.0-258.0.dev.
+            if (versionInfo.channel == 'dev' &&
+                versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
               continue;
             }
-
-            if (const {'stable', 'beta'}.contains(versionInfo.channel)) {
+            // Beta builds start at 3.0.0-290.2.beta.
+            if (versionInfo.channel == 'beta' &&
+                versionInfo.version < Version(3, 0, 0, pre: '290.2.beta')) {
+              continue;
+            }
+            // No stable builds yet.
+            if (versionInfo.channel == 'stable') {
               continue;
             }
           }

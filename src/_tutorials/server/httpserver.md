@@ -25,12 +25,12 @@ Here are some resources for writing servers using Dart:
       [`shelf_router`][] packages.
     * Is deployable on Cloud Run.
 
-[cloud-sample]: https://github.com/dart-lang/samples/tree/master/server/google_apis
+[cloud-sample]: https://github.com/dart-lang/samples/tree/main/server/google_apis
 [`googleapis`]: {{site.pub-pkg}}/googleapis
 [`googleapis_auth`]: {{site.pub-pkg}}/googleapis_auth
 [`shelf`]: {{site.pub-pkg}}/shelf
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static
-[simple-sample]: https://github.com/dart-lang/samples/tree/master/server/simple
+[simple-sample]: https://github.com/dart-lang/samples/tree/main/server/simple
 [Using Google APIs]: /guides/google-apis
 [Using Google Cloud]: /server/google-cloud

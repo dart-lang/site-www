@@ -8,8 +8,8 @@ description: Common type issues you may have and how to fix them.
 
 If you're having problems with type checks,
 this page can help. To learn more, read about
-[Dart's type system](/guides/language/type-system),
-and see [these other resources](/guides/language/type-system#other-resources).
+[Dart's type system](/language/type-system),
+and see [these other resources](/language/type-system#other-resources).
 
 {{site.alert.info}}
   **Help us improve this page!** If you encounter a warning or error that isn't
@@ -267,7 +267,7 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 For more information, see 
-[Use proper input parameter types when overriding methods](/guides/language/type-system#use-proper-param-types).
+[Use proper input parameter types when overriding methods](/language/type-system#use-proper-param-types).
 
 {{site.alert.note}}
   If you have a valid reason to use a subtype, you can use the
@@ -528,7 +528,7 @@ var maximumOrNull =
 ## Runtime errors
 
 The errors discussed in this section are reported at
-[runtime](type-system#runtime-checks).
+[runtime](/language/type-system#runtime-checks).
 
 ### Invalid casts
 

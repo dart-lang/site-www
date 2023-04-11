@@ -26,6 +26,23 @@ $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
 
+## Using experiment flags with the Dart analyzer (command-line and IDE)
+
+To enable experiments affecting analysis,
+use the `enable-experiment` key in the [analysis options file][].
+Here's an example of enabling the experiments
+`super-mixins` and `no-slow-checks` in `analysis_options.yaml`:
+
+[analysis options file]: /guides/language/analysis-options#the-analysis-options-file
+
+```yaml
+analyzer:
+  enable-experiment:
+    - super-mixins
+    - no-slow-checks
+```
+
+
 ## Using experiment flags with IDEs
 
 To enable experiments related to running or debugging apps in IDEs,
@@ -34,7 +51,7 @@ edit the launch configuration.
 ### Visual Studio Code
 
 In `launch.json` under `configurations`,
-add a new `vmAdditionalArgs` key containing the desired flags.
+add a new `toolArgs` key containing the desired flags.
 Example:
 
 ```json
@@ -44,7 +61,7 @@ Example:
             "program": "bin/main.dart",
             "request": "launch",
             "type": "dart",
-            "vmAdditionalArgs": [
+            "toolArgs": [
                 "--enable-experiment=super-mixins,no-slow-checks",
             ],
         }
@@ -76,23 +93,6 @@ For more information, consult the instructions for
 [Android Studio run/debug configurations.][AS instructions]
 
 [AS instructions]: https://developer.android.com/studio/run/rundebugconfig
-
-
-## Using experiment flags with the Dart analyzer (command-line and IDE)
-
-To enable experiments affecting analysis,
-use the `enable-experiment` key in the [analysis options file][].
-Here's an example of enabling the experiments
-`super-mixins` and `no-slow-checks` in `analysis_options.yaml`:
-
-[analysis options file]: /guides/language/analysis-options#the-analysis-options-file
-
-```yaml
-analyzer:
-  enable-experiment:
-    - super-mixins
-    - no-slow-checks
-```
 
 
 ## More information

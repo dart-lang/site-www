@@ -45,7 +45,7 @@ use the `help` command:
 $ dart help doc
 ```
 
-[documentation comments]: /guides/language/language-tour#documentation-comments
+[documentation comments]: /language/comments#documentation-comments
 [effective doc]: /guides/language/effective-dart/documentation
 [Markdown]: {{site.pub-pkg}}/markdown
 

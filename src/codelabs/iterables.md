@@ -20,7 +20,7 @@ you can test your knowledge by
 running example code and completing exercises.
 
 To get the most out of this codelab,
-you should have basic knowledge of [Dart syntax](/samples).
+you should have basic knowledge of [Dart syntax](/language).
 
 This codelab covers the following material:
 
@@ -250,7 +250,7 @@ There is no right or wrong way.
 Use the way that works best for you, 
 and that makes your code easier to read and understand.
 
-In the example, `firstWhereWithOrElse()` calls `firstWhere()` with
+The final example calls `firstWhere()` with
 the optional named parameter `orElse`,
 which provides an alternative when an element isn't found.
 In this case, the text `'None!'` is returned because

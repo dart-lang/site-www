@@ -154,7 +154,7 @@ assign it to `Object?` rather than `dynamic`.
 For more information, check out the
 [Variables section][] in the Dart language tour.
 
-[Variables section]: /guides/language/language-tour#variables
+[Variables section]: /language/variables
 
 ### Final
 
@@ -262,7 +262,7 @@ libraries, such as:
 For more information, check out [Built-in types][]
 in the Dart language tour.
 
-[Built-in types]: /guides/language/language-tour#built-in-types
+[Built-in types]: /language/built-in-types
 
 ### Numbers
 
@@ -383,7 +383,7 @@ unicode characters, check out
 [Runes and grapheme clusters][]
 in the Dart language tour.
 
-[Runes and grapheme clusters]: /guides/language/language-tour#runes-and-grapheme-clusters
+[Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
 #### String concatenation and multiline declaration
 
@@ -507,10 +507,9 @@ to check if a string is empty with `isEmpty`.
 There are other convenience methods,
 such as `toUpperCase` and `toLowerCase`.
 For more information,
-check out [Strings][] in the [Dart language tour][]. 
+check out [Strings][] in the Dart language tour. 
 
-[Strings]: /guides/language/language-tour#strings
-[Dart language tour]: /guides/language/language-tour
+[Strings]: /language/built-in-types#strings
 
 ### Booleans
 
@@ -946,7 +945,7 @@ items that are built lazily. Add items
 to the final iterable using the `yield` keyword,
 or add whole collections of items using `yield*`.
 
-[_generator functions_]: /guides/language/language-tour#generators
+[_generator functions_]: /language/functions#generators
 
 The following example shows how to write a basic
 generator function:
@@ -1628,7 +1627,7 @@ and even override existing members.
 For more information, check out
 [Declaring enhanced enums][] in the Dart language tour.
 
-[Declaring enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+[Declaring enhanced enums]: /language/enum#declaring-enhanced-enums
 
 ### Constructors 
 
@@ -2108,7 +2107,7 @@ class Bat extends Walker {}
   [Extending a class][] in the Dart language tour.
 {{site.alert.end}}
 
-[Extending a class]: /guides/language/language-tour#restricting-the-parameterized-type
+[Extending a class]: /language/generics#restricting-the-parameterized-type
 
 Since you can use multiple mixins,
 their methods or fields can overlap with
@@ -2184,7 +2183,7 @@ cover the most important differences,
 but check out [Extension methods][] for a complete
 overview.
 
-[Extension methods]: /guides/language/extension-methods
+[Extension methods]: /language/extension-methods
 
 {{site.alert.note}}
   Dart doesn't support extending an existing type
@@ -2411,7 +2410,7 @@ and won't be covered here.
 Each isolate has its own event loop.
 For more information, see [How isolates work][].
 
-[How isolates work]: /guides/language/concurrency#how-isolates-work
+[How isolates work]: /language/concurrency#how-isolates-work
 
 ### Futures
 

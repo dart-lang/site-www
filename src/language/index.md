@@ -1,36 +1,25 @@
 ---
-title: Language samples
-description: Examples of idiomatic Dart with links to larger examples.
+title: Introduction to Dart
+description: A brief introduction to Dart programs and important concepts.
+short-title: Dart basics
 ---
 
-This collection is not exhaustive—it's just a brief
-introduction to the language for people who like to learn by example.
-You might also want to check out the language and library tours,
-or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
+This page provides a brief introduction to the Dart language
+through samples of its main features. 
 
-<div class="card-grid no_toc_section">
-  <div class="card">
-    <h3><a href="/guides/language/language-tour">Language tour</a></h3>
-    <p>
-      A comprehensive tour, with examples, of the Dart language.
-      Most of the <em>read more</em> links in this page
-      point to the language tour.
-    </p>
-  </div>
-  <div class="card">
-    <h3><a href="/guides/libraries/library-tour">Library tour</a></h3>
-    <p>
-      An example-based introduction to the Dart core libraries.
-      See how to use the built-in types, collections,
-      dates and times, streams, and more.
-    </p>
-  </div>
-</div>
+To learn more about the Dart language, 
+visit the in-depth, individual topic pages
+listed under **Language** in the left side menu.
+
+For coverage of Dart's core libraries, check out the [library tour](/guides/libraries/library-tour).
+You can also visit the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
+for a more hands-on introduction.
 
 
 ## Hello World
 
-Every app has a `main()` function.
+Every app requires the top-level `main()` function, where execution starts.
+Functions that don't explicitly return a value have the `void` return type.
 To display text on the console, you can use the top-level `print()` function:
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
@@ -39,12 +28,17 @@ void main() {
   print('Hello, World!');
 }
 ```
+Read more about [the `main()` function][] in Dart,
+including optional parameters for command-line arguments.
 
+[the `main()` function]: /language/functions#the-main-function
 
 ## Variables
 
-Even in type-safe Dart code, most variables don't need explicit types,
-thanks to type inference:
+Even in [type-safe](https://dart.dev/language/type-system) Dart code,
+you can declare most variables without explicitly specifying their type using `var`. 
+Thanks to type inference, these variables' types are determined by their initial values: 
+
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
 ```dart
@@ -58,7 +52,7 @@ var image = {
 };
 ```
 
-[Read more](/guides/language/language-tour#variables) about variables in Dart, 
+[Read more](/language/variables) about variables in Dart, 
 including default values, the `final` and `const` keywords, and static types.
 
 
@@ -87,7 +81,7 @@ while (year < 2016) {
 }
 ```
 
-[Read more](/guides/language/language-tour#control-flow-statements) 
+[Read more](/language/control-flow) 
 about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
@@ -120,7 +114,7 @@ Besides showing an anonymous function (the argument to `where()`),
 this code shows that you can use a function as an argument:
 the top-level `print()` function is an argument to `forEach()`.
 
-[Read more](/guides/language/language-tour#functions) about functions in Dart,
+[Read more](/language/functions) about functions in Dart,
 including optional parameters, default parameter values, and lexical scope.
 
 
@@ -138,7 +132,7 @@ Dart comments usually start with `//`.
 /* Comments like these are also supported. */
 ```
 
-[Read more](/guides/language/language-tour#comments) about comments in Dart,
+[Read more](/language/comments) about comments in Dart,
 including how the documentation tooling works.
 
 
@@ -158,7 +152,7 @@ import 'package:test/test.dart';
 import 'path/to/my_other_file.dart';
 ```
 
-[Read more](/guides/language/language-tour#libraries-and-visibility) 
+[Read more](/language/libraries) 
 about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, 
 and lazy loading through the `deferred` keyword.
@@ -168,7 +162,9 @@ and lazy loading through the `deferred` keyword.
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
-defined using a getter method (instead of a variable).
+defined using a getter method (instead of a variable). The method 
+uses string interpolation to print variables' string equivalents inside
+of string literals. 
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 ```dart
@@ -202,6 +198,9 @@ class Spacecraft {
 }
 ```
 
+[Read more](/language/built-in-types#strings) about strings,
+including string interpolation, literals, expressions, and the `toString()` method.
+
 You might use the `Spacecraft` class like this:
 
 <?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
@@ -213,7 +212,7 @@ var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 ```
 
-[Read more](/guides/language/language-tour#classes) about classes in Dart,
+[Read more](/language/classes) about classes in Dart,
 including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
@@ -273,7 +272,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/guides/language/language-tour#enums) about enums in Dart,
+[Read more](/language/enum) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
@@ -291,7 +290,7 @@ class Orbiter extends Spacecraft {
 }
 ```
 
-[Read more](/guides/language/language-tour#extending-a-class) 
+[Read more](/language/extend) 
 about extending classes, the optional `@override` annotation, and more.
 
 
@@ -322,7 +321,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 `PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
-[Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
+[Read more](/language/mixins) about mixins.
 
 
 ## Interfaces and abstract classes
@@ -338,7 +337,7 @@ class MockSpaceship implements Spacecraft {
 }
 ```
 
-[Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
+[Read more](/language/classes#implicit-interfaces) about implicit interfaces.
 
 You can create an abstract class
 to be extended (or implemented) by a concrete class. 
@@ -360,7 +359,7 @@ Abstract classes can contain abstract methods (with empty bodies).
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
 
-[Read more](/guides/language/language-tour#abstract-classes) 
+[Read more](/language/classes#abstract-classes) 
 about abstract classes and methods.
 
 
@@ -426,7 +425,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 }
 ```
 
-[Read more](/guides/language/language-tour#asynchrony-support) about
+[Read more](/language/async) about
 asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
@@ -463,15 +462,103 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
-[Read more](/guides/language/language-tour#exceptions) about exceptions, 
+[Read more](/language/error-handling#exceptions) about exceptions, 
 including stack traces, `rethrow`, 
 and the difference between `Error` and `Exception`.
 
 
-## Other topics
+## Important concepts
 
-Many more code samples are in the
-[language tour](/guides/language/language-tour) and the
-[library tour](/guides/libraries/library-tour).
-Also see the [Dart API reference,]({{site.dart-api}})
-which often contains examples.
+As you continue to learn about the Dart language, 
+keep these facts and concepts in mind:
+
+-   Everything you can place in a variable is an *object*, and every
+    object is an instance of a *class*. Even numbers, functions, and
+    `null` are objects.
+    With the exception of `null` (if you enable [sound null safety][ns]),
+    all objects inherit from the [`Object`][] class.
+
+    {{site.alert.version-note}}
+      [Null safety][ns] was introduced in Dart 2.12.
+      Using null safety requires a [language version][] of at least 2.12.
+    {{site.alert.end}}
+
+-   Although Dart is strongly typed, type annotations are optional
+    because Dart can infer types. In `var number = 101`, `number`
+    is inferred to be of type `int`.
+
+-   If you enable [null safety][ns],
+    variables can’t contain `null` unless you say they can.
+    You can make a variable nullable by
+    putting a question mark (`?`) at the end of its type.
+    For example, a variable of type `int?` might be an integer,
+    or it might be `null`.
+    If you _know_ that an expression never evaluates to `null`
+    but Dart disagrees,
+    you can add `!` to assert that it isn't null
+    (and to throw an exception if it is).
+    An example: `int x = nullableButNotNullInt!`
+
+-   When you want to explicitly say
+    that any type is allowed, use the type `Object?`
+    (if you've enabled null safety), `Object`,
+    or—if you must defer type checking until runtime—the
+    [special type `dynamic`][ObjectVsDynamic].
+
+-   Dart supports generic types, like `List<int>` (a list of integers)
+    or `List<Object>` (a list of objects of any type).
+
+-   Dart supports top-level functions (such as `main()`), as well as
+    functions tied to a class or object (*static* and *instance
+    methods*, respectively). You can also create functions within
+    functions (*nested* or *local functions*).
+
+-   Similarly, Dart supports top-level *variables*, as well as variables
+    tied to a class or object (static and instance variables). Instance
+    variables are sometimes known as *fields* or *properties*.
+
+-   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
+    and `private`. If an identifier starts with an underscore (`_`), it’s
+    private to its library. For details, see
+    [Libraries and imports][].
+
+-   *Identifiers* can start with a letter or underscore (`_`), followed by any
+    combination of those characters plus digits.
+
+-   Dart has both *expressions* (which have runtime values) and
+    *statements* (which don't).
+    For example, the [conditional expression][]
+    `condition ? expr1 : expr2` has a value of `expr1` or `expr2`.
+    Compare that to an [if-else statement][], which has no value.
+    A statement often contains one or more expressions,
+    but an expression can't directly contain a statement.
+
+-   Dart tools can report two kinds of problems: _warnings_ and _errors_.
+    Warnings are just indications that your code might not work, but
+    they don’t prevent your program from executing. Errors can be either
+    compile-time or run-time. A compile-time error prevents the code
+    from executing at all; a run-time error results in an
+    [exception][] being raised while the code executes.
+
+
+## Additional resources
+
+More code samples are in the the
+[library tour](/guides/libraries/library-tour)
+and the [Dart API reference,]({{site.dart-api}}).
+This site’s code follows the conventions in the
+[Dart style guide](/guides/language/effective-dart/style).
+
+[Dart language specification]: /guides/language/spec
+[Comments]: /language/comments
+[built-in types]: /language/built-in-types
+[Strings]: /language/built-in-types#strings
+[The main() function]: /language/functions#the-main-function
+[ns]: /null-safety
+[`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[language version]: /guides/language/evolution#language-versioning
+[ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[Libraries and imports]: /language/libraries
+[conditional expression]: /language/operators#conditional-expressions
+[if-else statement]: /language/control-flow#if-and-else
+[exception]: /language/error-handling#exceptions
