@@ -1,8 +1,10 @@
-- title: Samples & tutorials
+- title: Tutorials & codelabs
   expanded: false
   children:
-    - title: Language samples
-      permalink: /samples
+    - title: Tutorials
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /tutorials
     - title: Codelabs
       expanded: true
       children:
@@ -18,44 +20,82 @@
           permalink: /codelabs/async-await
         - title: Null safety
           permalink: /codelabs/null-safety
-    - title: Tutorials
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /tutorials
-
 - title: Language
   expanded: false
   children:
-    - title: Tour
-      permalink: /guides/language/language-tour
-    - title: Type system
-      permalink: /guides/language/type-system
-    - title: Extension methods
-      permalink: /guides/language/extension-methods
+    - title: Introduction
+      match-page-url-exactly: true
+      permalink: /language
+    - title: Syntax basics
+      children:
+        - title: Variables
+          permalink: /language/variables
+        - title: Operators
+          permalink: /language/operators
+        - title: Comments
+          permalink: /language/comments
+        - title: Metadata
+          permalink: /language/metadata
+        - title: Libraries & imports
+          permalink: /language/libraries
+        - title: Keywords
+          permalink: /language/keywords 
+    - title: Types
+      children:
+        - title: Built-in types
+          permalink: /language/built-in-types
+        - title: Collections
+          permalink: /language/collections
+        - title: Typedefs
+          permalink: /language/typedefs
+        - title: Generics
+          permalink: /language/generics
+        - title: Type system
+          permalink: /language/type-system 
+    - title: Functions
+      permalink: /language/functions
+    - title: Control flow
+      permalink: /language/control-flow
+    - title: Error handling
+      permalink: /language/error-handling
+    - title: Classes & objects
+      children: 
+        - title: Classes
+          permalink: /language/classes
+        - title: Constructors
+          permalink: /language/constructors
+        - title: Methods
+          permalink: /language/methods
+        - title: Extend a class
+          permalink: /language/extend
+        - title: Extension methods
+          permalink: /language/extension-methods
+        - title: Enum types
+          permalink: /language/enum
+        - title: Mixins
+          permalink: /language/mixins
+        - title: Callable classes
+          permalink: /language/callable-classes
     - title: Concurrency
-      permalink: /guides/language/concurrency
+      children: 
+        - title: Asynchronous support
+          permalink: /language/async
+        - title: Isolates
+          permalink: /language/concurrency
     - title: Null safety
       expanded: false
       children:
-        - title: "Overview: Sound null safety"
+        - title: Sound null safety
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/migration-guide
         - title: Understanding null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
         - title: Unsound null safety
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/unsound-null-safety
         - title: FAQ
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/faq
 
 - title: Effective Dart
@@ -187,6 +227,7 @@
     - title: Environment declarations
       permalink: /guides/environment-declarations
 
+
 - title: Tools & techniques
   expanded: false
   children:
@@ -280,7 +321,7 @@
   expanded: false
   children:
     - title: FAQ
-      permalink: /faq
+      permalink: /resources/faq
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification

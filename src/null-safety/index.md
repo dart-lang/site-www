@@ -201,7 +201,7 @@ For more information about null safety, see the following resources:
 * [Null safety FAQ][]
 * [Null safety sample code][calculate_lix]
 
-[calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
+[calculate_lix]: https://github.com/dart-lang/samples/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety codelab]: /codelabs/null-safety

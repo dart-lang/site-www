@@ -4,7 +4,7 @@ description: Everything you wanted to know about handling errors and exceptions 
 ---
 
 The Dart language has native
-[asynchrony support](/guides/language/language-tour#asynchrony-support),
+[asynchrony support](/language/async),
 making asynchronous Dart code much easier to read and write.
 However, some code—especially older code—might still use
 [Future methods][Future class]

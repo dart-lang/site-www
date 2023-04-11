@@ -32,10 +32,10 @@ jobs:
       matrix:
         sdk: [stable, beta, dev]
     steps:
-      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+      - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
         with:
           sdk: ${{ matrix.sdk }}
       - run: dart pub get
@@ -56,7 +56,7 @@ jobs:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       FIREBASE_PROJECT: default
     steps:
-      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
         with:
           submodules: recursive
       - run: make build
@@ -65,7 +65,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools@11.23.1
-      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+      - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
         with:
           sdk: stable
       - run: tool/check-links.sh
@@ -84,7 +84,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
         with:
           submodules: recursive
       - run: make build
@@ -92,7 +92,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools@11.23.1
-      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+      - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
         with:
           sdk: stable
       - run: tool/check-links.sh

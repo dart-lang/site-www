@@ -2166,6 +2166,6 @@ some of the most interesting features of the Dart language.
 Here are some suggestions for what to do now:
 
 * Try [other Dart codelabs](/codelabs).
-* Read the [Dart language tour](/guides/language/language-tour).
+* Read the [Dart language tour](/language).
 * Play with [DartPad.]({{site.dartpad}})
 * [Get the Dart SDK](/get-dart).

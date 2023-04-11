@@ -17,6 +17,14 @@
   <meta name="description" content="{{desc}}">
   <title>{% if page.short-title %}{{page.short-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
 
+  {% if page.canonical -%}
+    <link rel="canonical" href="{{page.canonical}}" />
+  {% endif -%}
+
+  {% if page.noindex -%}
+    <meta name="robots" content="noindex">
+  {% endif -%}
+
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
   <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">

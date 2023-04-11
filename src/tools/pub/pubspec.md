@@ -90,7 +90,7 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
-Pub ignores all other fields,
+Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
   Pubspecs for [Flutter apps]({{site.flutter}}) can have
@@ -133,14 +133,7 @@ dev_dependencies:
 
 ## Details
 
-This section has more information about most of the pubspec fields.
-
-{% comment %}
-TODO: Consider adding subsection for publish_to and anything else
-that's missing so we don't have to say "most of".
-https://github.com/dart-lang/site-www/issues/702
-{% endcomment %}
-
+This section has more information about each of the pubspec fields.
 
 ### Name
 
@@ -151,7 +144,7 @@ The name should be all lowercase, with underscores to separate words,
 `just_like_this`. Use only basic Latin letters and Arabic digits:
 `[a-z0-9_]`. Also, make sure the name is a valid Dart identifier—that it
 doesn't start with digits and isn't a
-[reserved word](/guides/language/language-tour#keywords).
+[reserved word](/language/keywords).
 
 Try to pick a name that is clear, terse, and not already in use.
 A quick search of packages on the
@@ -243,17 +236,17 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-{% prettify none tag=pre+code %}
+```nocode
 <name-of-executable>: <Dart-script-from-bin>
-{% endprettify %}
+```
 
 For example, the following pubspec entry lists two scripts:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 executables:
   slidy: main
   fvm:
-{% endprettify %}
+```
 
 Once the package is activated using `pub global activate`,
 typing `slidy` executes `bin/main.dart`.
@@ -317,9 +310,9 @@ a package from being published. This setting can be used to specify a
 [custom pub package server](/tools/pub/custom-package-repositories)
 to publish.
 
-{% prettify yaml tag=pre+code %}
+```yaml
 publish_to: none
-{% endprettify %}
+```
 
 
 ### Funding
@@ -362,11 +355,11 @@ and in all `.pem` files in the `test/localhost_certificates/` directory:
 
 [publish a package]: /tools/pub/publishing
 
-{% prettify yaml tag=pre+code %}
+```yaml
 false_secrets:
  - /lib/src/hardcoded_api_key.dart
  - /test/localhost_certificates/*.pem
-{% endprettify %}
+```
 
 Starting a `gitignore` pattern with slash (`/`) ensures that
 the pattern is considered relative to the package's root directory.
@@ -434,10 +427,10 @@ dependencies.
   For a package to use a feature introduced after 2.0,
   its pubspec must have a lower constraint that's at least
   the version when the feature was introduced.
-  For details, see the [language evolution page][].
+  For details, check out [Language versioning][].
 {{site.alert.end}}
 
-[language evolution page]: /guides/language/evolution
+[Language versioning]: /guides/language/evolution#language-versioning
 
 For example, the following constraint says that this package
 works with any Dart SDK that's version 2.12.0 or higher:
@@ -495,4 +488,3 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
-[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

@@ -84,20 +84,20 @@ we made the following changes to this site:
 [Documentation]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
-[The language tour]: /guides/language/language-tour#library-directive
-[Is Dart single-threaded?]: /faq#q-is-dart-single-threaded
-[Is Dart single-threaded on the web?]: /faq#q-is-dart-single-threaded-on-the-web
-[Dart's web concurrency capabilities]: /guides/language/concurrency#concurrency-on-the-web
-[discussion]: /guides/language/language-tour#parameters
-[Concurrency in Dart]: /guides/language/concurrency
+[The language tour]: /language/libraries#library-directive
+[Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
+[Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
+[Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web
+[discussion]: /language/functions#parameters
+[Concurrency in Dart]: /language/concurrency
 [`pub global` page]: /tools/pub/cmd/pub-global
 [Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
 [`dart run` page]: /tools/dart-run#debugging
-[operator precedence and associativity]: /guides/language/language-tour#operators
+[operator precedence and associativity]: /language/operators
 [Building URIs]: /guides/libraries/library-tour#building-uris
 [pub's transition to pub.dev]: /tools/pub/troubleshoot#pub-get-socket-error
 [package screenshots]: /tools/pub/pubspec#screenshots
-[explicit downcast section]: /guides/language/type-system#generic-type-assignment
+[explicit downcast section]: /language/type-system#generic-type-assignment
 [analyzer]: /tools/diagnostic-messages
 [lint]: /tools/linter-rules
 
@@ -239,10 +239,10 @@ we made the following changes to this site:
 
 [Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
 
-[Named parameters]: /guides/language/language-tour#named-parameters
-[Enumerated types]: /guides/language/language-tour#enumerated-types
-[enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
-[super-initializer parameters]: /guides/language/language-tour#super-parameters
+[Named parameters]: /language/functions#named-parameters
+[Enumerated types]: /language/enum
+[enhanced enums]: /language/enum#declaring-enhanced-enums
+[super-initializer parameters]: /language/constructors#super-parameters
 [signing]: /tools/dart-compile#signing
 [`dart create`]: /tools/dart-create
 
@@ -268,11 +268,11 @@ we made the following changes to this site:
 [dartdevc]: /tools/dartdevc
 [`webdev`]: /tools/webdev
 
-[Other operators]: /guides/language/language-tour#other-operators
+[Other operators]: /language/operators#other-operators
 [Low-level HTML tutorials]: /tutorials/web/low-level-html
 
 [native types]: /guides/libraries/c-interop#interfacing-with-native-types
-[initializing formal parameters]: /guides/language/language-tour#initializing-formal-parameters
+[initializing formal parameters]: /language/constructors#initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await
 [why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
@@ -377,7 +377,7 @@ we made the following changes to this site:
 
 [books]: /resources/books
 [compilation formats]: /tools/dart-compile
-[Concurrency in Dart]: /guides/language/concurrency
+[Concurrency in Dart]: /language/concurrency
 [custom package repositories]: /tools/pub/custom-package-repositories
 [Dart DevTools]: /tools/dart-devtools
 [dart pub token]: /tools/pub/cmd/pub-token
@@ -426,7 +426,7 @@ we made the following changes to this site:
   updating text to match.
   Found more site code that hadn't been analyzed; fixed that.
 
-[unsigned shift operator]: /guides/language/language-tour#bitwise-and-shift-operators
+[unsigned shift operator]: /language/operators#bitwise-and-shift-operators
 [`.pubignore` file]: /tools/pub/publishing#what-files-are-published
 [linter rule page]: /tools/linter-rules
 [dart-tool]: /tools/dart-tool
@@ -512,7 +512,7 @@ we made the following changes to this site:
 [Null safety codelab]: /codelabs/null-safety
 [Numbers in Dart]: /guides/language/numbers
 [streams tutorial]: /tutorials/language/streams
-[typedef section]: /guides/language/language-tour#typedefs
+[typedef section]: /language/typedefs
 [Using Google APIs]: /guides/google-apis
 [Using Google Cloud]: /server/google-cloud
 [Writing package pages]: /guides/libraries/writing-package-pages
@@ -557,7 +557,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Updated the [language evolution page][evolution]
   to add information about language versioning
   and to reflect Dart 2.12.
-* Updated the [library tour][], [samples][], and [codelabs][]
+* Updated the [library tour][] and [codelabs][]
   to reflect sound null safety.
 * Updated pages across the site to use [the `dart` tool][]
   instead of deprecated commands.
@@ -577,17 +577,16 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [null safety homepage]: /null-safety
 [Overview page]: /overview
 [Effective Dart]: /guides/language/effective-dart
-[language tour]: /guides/language/language-tour
-[`late` variables]: /guides/language/language-tour#late-variables
+[language tour]: /language
+[`late` variables]: /language/variables#late-variables
 [library tour]: /guides/libraries/library-tour
-[samples]: /samples
 [codelabs]: /codelabs
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze
 [`dart compile`]: /tools/dart-compile
 [`dart fix`]: /tools/dart-fix
 [`dart format`]: /tools/dart-format
-[Dart team packages]: /dart-team-packages
+[Dart team packages]: /resources/dart-team-packages
 
 
 ### Articles added to the Dart blog

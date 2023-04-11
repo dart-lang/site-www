@@ -146,8 +146,7 @@ Check out these resources:
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
-  * [Sample code](/samples)
-  * [Language tour](/guides/language/language-tour)
+  * [Language tour](/language)
   * [Library tour](/guides/libraries/library-tour)
   * [Effective Dart](/guides/language/effective-dart)
 * Tools and libraries
@@ -155,13 +154,13 @@ Check out these resources:
   * [Dart tools](/tools)
   * [IDEs](/tools#ides-and-editors)
 * Other examples of natively compiled apps
-  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
+  * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 
-[Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
+[Arithmetic operators]: /language/operators#arithmetic-operators
 [DartPad documentation]: /tools/dartpad
-[Dart language tour]: /guides/language/language-tour
+[Dart language tour]: /language
 [Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors
 

@@ -6,7 +6,7 @@ browsers that support source maps such as Chrome.
 
 {{site.alert.tip}}
   Whenever possible, instead of debugging production code,
-  debug code using a development server such provided by [`webdev`]
+  debug code using a development server such as provided by [`webdev`][].
 {{site.alert.end}}
 
 [`webdev`]: /tools/webdev

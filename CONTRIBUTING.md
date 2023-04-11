@@ -59,8 +59,8 @@ you'll probably need to change the code in two places:
 1. In a `.md` file for the page.
 2. In a `.dart` file under the `/examples` directory.
 
-For example, say  you want to change the following code in the
-[language tour](https://dart.dev/guides/language/language-tour):
+For example, say you want to change the following code in the
+[Variables documentation](https://dart.dev/language/variables):
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
@@ -70,7 +70,7 @@ var name = 'Bob';
 ```
 
 Besides editing
-[/src/_guides/language/language-tour.md][]
+[/src/language/variables.md][]
 (which you can find by clicking the GitHub icon at the top right of the page),
 you'll also need to edit the `var-decl` region of
 [/examples/misc/lib/language_tour/variables.dart][].
@@ -81,10 +81,10 @@ the [GitHub Actions][] CI build will fail.
 Just update the PR, and GitHub Actions will run again.
 
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
-[/src/_guides/language/language-tour.md]: https://github.com/dart-lang/site-www/blob/main/src/_guides/language/language-tour.md
+[/src/language/variables.md]: https://github.com/dart-lang/site-www/blob/main/src/language/variables.md
 [/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/language_tour/variables.dart
 
 ## A word about conduct
 
 We pledge to maintain an open and welcoming environment.
-For details, see our [code of conduct](https://dart.dev/code-of-conduct).
+For details, see our [code of conduct](https://dart.dev/community/code-of-conduct).
