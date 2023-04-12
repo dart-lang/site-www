@@ -3,6 +3,9 @@ title: Collections
 description: Summary of the different types of collections in Dart.
 ---
 
+Lists, sets, and maps are all collections in Dart. You can learn more about each
+in the [Collections][] section of the Library tour, and on the [Generics][] page.
+
 ## Lists
 
 Perhaps the most common collection in nearly every programming language
@@ -62,67 +65,6 @@ add `const` before the list literal:
 var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
 ```
-
-### Spread operators
-
-Dart supports the **spread operator** (`...`) and the
-**null-aware spread operator** (`...?`),
-which provide a concise way to insert multiple values into a collection.
-
-For example, you can use the spread operator (`...`) to insert
-all the values of a list into another list:
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
-```dart
-var list = [1, 2, 3];
-var list2 = [0, ...list];
-assert(list2.length == 4);
-```
-
-If the expression to the right of the spread operator might be null,
-you can avoid exceptions by using a null-aware spread operator (`...?`):
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
-```dart
-var list2 = [0, ...?list];
-assert(list2.length == 1);
-```
-
-For more details and examples of using the spread operator, see the
-[spread operator proposal.][spread proposal]
-
-### Collection operators
-
-Dart also offers **collection if** and **collection for**,
-which you can use to build collections using conditionals (`if`)
-and repetition (`for`).
-
-Here's an example of using **collection if**
-to create a list with three or four items in it:
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
-```dart
-var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
-```
-
-Here's an example of using **collection for**
-to manipulate the items of a list before
-adding them to another list:
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
-```dart
-var listOfInts = [1, 2, 3];
-var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
-assert(listOfStrings[1] == '#1');
-```
-
-For more details and examples of using collection `if` and `for`, see the
-[control flow collections proposal.][collections proposal]
-
-The List type has many handy methods for manipulating lists. For more
-information about lists, see the page on [generics][] and
-[Collections](/guides/libraries/library-tour#collections).
-
 
 ## Sets
 
@@ -194,17 +136,6 @@ final constantSet = const {
 };
 // constantSet.add('helium'); // This line will cause an error.
 ```
-
-Sets support spread operators (`...` and `...?`)
-and collection `if` and `for`,
-just like lists do.
-For more information, see the
-[list spread operator](#spread-operators) and
-[list collection operator](#collection-operators) discussions.
-
-For more information about sets, see
-[Generics](/language/generics) and
-[Sets](/guides/libraries/library-tour#sets).
 
 ## Maps
 
@@ -307,17 +238,65 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-Maps support spread operators (`...` and `...?`)
-and collection `if` and `for`, just like lists do.
-For details and examples, see the
-[spread operator proposal][spread proposal] and the
+## Operators
+
+### Spread operators
+
+Dart supports the **spread operator** (`...`) and the
+**null-aware spread operator** (`...?`) in list, map, and set literals.
+Spread operators provide a concise way to insert multiple values into a collection.
+
+For example, you can use the spread operator (`...`) to insert
+all the values of a list into another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
+```dart
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+assert(list2.length == 4);
+```
+
+If the expression to the right of the spread operator might be null,
+you can avoid exceptions by using a null-aware spread operator (`...?`):
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
+```dart
+var list2 = [0, ...?list];
+assert(list2.length == 1);
+```
+
+For more details and examples of using the spread operator, see the
+[spread operator proposal.][spread proposal]
+
+### Collection operators
+
+Dart also offers **collection if** and **collection for** for use in lists, maps,
+and sets. These operators build collections using conditionals (`if`)
+and repetition (`for`).
+
+Here's an example of using **collection if**
+to create a list with three or four items in it:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
+```dart
+var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+```
+
+Here's an example of using **collection for**
+to manipulate the items of a list before
+adding them to another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
+```dart
+var listOfInts = [1, 2, 3];
+var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+assert(listOfStrings[1] == '#1');
+```
+
+For more details and examples of using collection `if` and `for`, see the
 [control flow collections proposal.][collections proposal]
 
-For more information about maps, see the
-[generics][] section and
-the library tour's coverage of
-the [`Maps` API](/guides/libraries/library-tour#maps).
-
+[collections]: /guides/libraries/library-tour#collections
 [type inference]: /language/type-system#type-inference
 [`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
