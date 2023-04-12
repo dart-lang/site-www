@@ -79,7 +79,7 @@ const oldToNew = {
     '_operators': '/language/methods#operators',
     'getters-and-setters': '/language/methods#getters-and-setters',
     'abstract-methods': '/language/methods#abstract-methods',
-    'abstract-classes': '/language/classes#abstract-classes',
+    'abstract-classes': '/language/class-modifiers#abstract',
     'interfaces': '/language/classes#implicit-interfaces',
     'implicit-interfaces': '/language/classes#implicit-interfaces',
     'extend': '/language/extend',

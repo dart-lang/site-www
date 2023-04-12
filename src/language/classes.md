@@ -14,6 +14,7 @@ has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods][] are a way to
 add functionality to a class without changing the class or creating a subclass.
+[Class modifiers][] are a way to restrict use of a class by libraries outside of its own.
 
 
 ## Using class members
@@ -213,32 +214,6 @@ after the constructor body starts, you can use one of the following:
 * Use `late final`, but [_be careful:_][late-final-ivar]
   a `late final` without an initializer adds a setter to the API.
 
-
-
-## Abstract classes
-
-Use the `abstract` modifier to define an *abstract class*—a class that
-can’t be instantiated. Abstract classes are useful for defining
-interfaces, often with some implementation. If you want your abstract
-class to appear to be instantiable, define a [factory
-constructor](/language/constructors#factory-constructors).
-
-Abstract classes often have [abstract methods][].
-Here’s an example of declaring an abstract class that has an abstract
-method:
-
-<?code-excerpt "misc/lib/language_tour/classes/misc.dart (abstract)"?>
-```dart
-// This class is declared abstract and thus
-// can't be instantiated.
-abstract class AbstractContainer {
-  // Define constructors, fields, methods...
-
-  void updateChildren(); // Abstract method.
-}
-```
-
-
 ## Implicit interfaces
 
 Every class implicitly defines an interface containing all the instance
@@ -361,6 +336,7 @@ can pass a static method as a parameter to a constant constructor.
 [`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [Extension methods]: /language/extension-methods
+[Class modifiers]: /language/class-modifiers
 [constant constructors]: /language/constructors#constant-constructors
 [`Type`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
 [type test operator]: /language/operators#type-test-operators
@@ -368,4 +344,3 @@ can pass a static method as a parameter to a constant constructor.
 [initializer list]: /language/constructors#initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
-[abstract methods]: /language/methods#abstract-methods

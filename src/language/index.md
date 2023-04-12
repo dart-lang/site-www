@@ -359,7 +359,7 @@ Abstract classes can contain abstract methods (with empty bodies).
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
 
-[Read more](/language/classes#abstract-classes) 
+[Read more](/language/class-modifiers#abstract) 
 about abstract classes and methods.
 
 

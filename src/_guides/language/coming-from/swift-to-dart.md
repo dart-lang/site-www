@@ -1604,7 +1604,7 @@ If you want to introduce just an interface,
 create an abstract class with no concrete members.
 To get a more detailed understanding of these categories,
 check out the documentation in the
-[abstract classes](#abstract-classes),
+[abstract classes](#abstract),
 [implicit interfaces](#implicit-interfaces),
 and [extending a class](#extending-a-class) sections.
 

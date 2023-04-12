@@ -26,10 +26,17 @@ class Maestro extends Person [!with Musical, Aggressive, Demented!] {
 }
 {% endprettify %}
 
-To _implement_ a mixin, create a class that extends Object and
-declares no constructors.
-Unless you want your mixin to be usable as a regular class,
-use the `mixin` keyword instead of `class`.
+To _implement_ a mixin, use the `mixin` declaration. Or, if you want your mixin
+to be usable as both a regular class and a mixin, use the `mixin class` declaration.
+
+{{site.alert.version-note}}
+  The `mixin class` declaration requires a language version of at least 3.0.
+  See [`class`, `mixin`, or `mixin class`?][] for more information.
+{{site.alert.end}}
+
+Mixins and mixin classes must extend `Object` 
+and must not declare any generative constructors.
+
 For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musical)"?>
@@ -75,3 +82,5 @@ only classes that extend or implement the `Musician` class
 can use the mixin `MusicalPerformer`.
 Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
+
+[`class`, `mixin`, or `mixin class`?]: /language/class-modifiers#class-mixin-or-mixin-class
