@@ -577,7 +577,7 @@ and the [args]({{argsAPI}}/args-library.html) package.
 For another example of a command line app, 
 see the [command_line][] sample.
 
-[command_line]: https://github.com/dart-lang/samples/tree/master/command_line
+[command_line]: https://github.com/dart-lang/samples/tree/main/command_line
 
 ## What next?
 
