@@ -52,7 +52,7 @@ mixin Musical {
 ```
 
 Sometimes the mixin might depend on being able to invoke a method or access fields
-that the mixin doesn't define. To require classes that use the mixin to define these
+that the mixin doesn't define. To require classes that use the mixin to define these,
 you can define getters in the mixin or restrict the types that can use a mixin.
 As the following example shows, you can restrict a mixin's use
 by using the `on` keyword to specify the required superclass:
