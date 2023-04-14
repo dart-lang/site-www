@@ -3,8 +3,7 @@ title: Collections
 description: Summary of the different types of collections in Dart.
 ---
 
-Lists, sets, and maps are all collections in Dart. You can learn more about each
-in the [Collections][] section of the Library tour, and on the [Generics][] page.
+Dart has built-in support for list, set, and map [collections][], as well as the ability to declare them through [literals][].
 
 ## Lists
 
@@ -65,6 +64,9 @@ add `const` before the list literal:
 var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
 ```
+
+For more information about lists, refer to the
+[Library tour](/guides/libraries/library-tour#lists).
 
 ## Sets
 
@@ -136,6 +138,9 @@ final constantSet = const {
 };
 // constantSet.add('helium'); // This line will cause an error.
 ```
+
+For more information about sets, refer to the
+[Library tour](/guides/libraries/library-tour#sets).
 
 ## Maps
 
@@ -238,6 +243,9 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
+For more information about maps, refer to the
+[Library tour](/guides/libraries/library-tour#maps).
+
 ## Operators
 
 ### Spread operators
@@ -268,11 +276,12 @@ assert(list2.length == 1);
 For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
-### Collection operators
+<a id="collection-operators"></a>
+### Control-flow operators
 
-Dart also offers **collection if** and **collection for** for use in lists, maps,
-and sets. These operators build collections using conditionals (`if`)
-and repetition (`for`).
+Dart also offers **collection if** and **collection for** for use in list, map,
+and set literals. You can use these operators to build collections using
+conditionals (`if`) and repetition (`for`).
 
 Here's an example of using **collection if**
 to create a list with three or four items in it:
