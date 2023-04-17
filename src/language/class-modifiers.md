@@ -3,17 +3,17 @@ title: Class modifiers
 description: Modifier keywords for class declarations to control external library access.
 ---
 
-Class modifiers control how a class or a mixin can be implemented, extended,
-or mixed in. 
+Class modifiers control how a class or a mixin can be utilized by libraries
+outside of the library where it's defined
 
-The full set of modifiers that can appear before a class declaration are `base`,
-`final`, `interface`, `sealed`, `abstract`, and `mixin`. 
+The full set of modifiers that can appear before a class or mixin declaration
+are `base`, `final`, `interface`, `sealed`, and `abstract`. 
 Only the `base` modifier can appear before a mixin declaration. The modifiers do
 not apply to other declarations like `enum`, `typedef`, or `extension`.
 
 When deciding whether or not to use class modifiers, consider the following questions:
 1. Is [any access](#no-modifier) fine?
-2. If not, what do you want to restrict?
+2. If not, what is the intended use for the class? / what behavior does the class need to rely on?
     - [Implementation](#base)?
     - [Inheritance](#interface)?
     - [Both](#final)?
@@ -24,18 +24,21 @@ When deciding whether or not to use class modifiers, consider the following ques
 ## No modifier
 
 Use a `class` or `mixin` declaration without a modifier to **allow unrestricted
-access** to outside libraries. The standard behaviors apply:
+access** from outside libraries. By default, you can:
 
-- [Construct][] new instances of a class
-- [Extend][] a class to create a new subtype
-- [Implement][] a class's interface
-- [Mix in][] a mixin or mixin class
+- [Construct][] new instances of a class.
+- [Extend][] a class to create a new subtype.
+- [Implement][] a class or mixin's interface.
+- [Mix in][] a mixin or mixin class.
 
 ## `base`
 
-Use the `base` modifier to **disallow implementation** of a class or mixin.
-A base class can be extended and constructed. This applies trasitively to all
-subtypes, because implementing a subtype implements the supertype as well.  
+Use the `base` modifier to **disallow implementation** of a class or mixin
+outside of the current library.
+The `base` modifier must be applied transitively to all the subtypes of a class;
+any class which implements or extends a base class must be marked `base` as well.
+
+A base class can be extended and constructed. 
 
 {{site.alert.note}}
   Only the `base` modifier can accompany a mixin declaration. 
@@ -45,64 +48,68 @@ subtypes, because implementing a subtype implements the supertype as well.
 {{site.alert.end}}
 
 ```dart
+// a.dart
 base class Vehicle {
-  String make;
-  String model;
-  void moveForward(int meters) { … }
+  String make?;
+  String model?;
+  void moveForward(int meters) { ... }
 }
+```
 
-var myCar = Vehicle(     // Can be constructed
-  make: 'Ford',
-  model: 'T',
-);
+```dart
+// b.dart
 
-class Car extends     // Can be extended
+var myCar = Vehicle();     // Can be constructed
+
+class Car extends          // Can be extended
   Vehicle {
     int passengers;
-…
+    ...
 }
 
-class MockVehicle     // ERROR: Cannot be implemented
+class MockVehicle          // ERROR: Cannot be implemented
   implements Vehicle {
     @override
-    void moveForward …
+    void moveForward ...
 }
-
 ```
 
 Disallowing implementation makes `base` useful for:
-- Preventing users of the API from overriding the constructor, for example, to
-bypass its validation.
-- Ensuring all private members are available to subtypes of the base class, and
+- Ensuring that the base class constructor is called whenever an instance of a
+subtype of the class is created
+- Ensuring all private members are available on subtypes of the base class, and
 and accessing them will never cause a [`noSuchMethod`][] error.
 
 ## `interface`
 
-Use the `interface` modifier to **disallow extending a class**.
+Use the `interface` modifier to **disallow extending a class** 
+outside of the current library.
 An interface class can be implemented and constructed.
 
 ```dart
+// a.dart
 interface class Vehicle {
-  String make;
-  String model;
-  void moveForward(int meters) { … }
+  String make?;
+  String model?;
+  void moveForward(int meters) { ... }
 }
+```
 
-var myCar = Vehicle(     // Can be constructed
-  make: 'Ford',
-  model: 'T',
-);
+```dart
+// b.dart
 
-class Car extends     // ERROR: Cannot be inherited
+var myCar = Vehicle();     // Can be constructed
+
+class Car extends          // ERROR: Cannot be inherited
   Vehicle {
     int passengers;
-…
+    ...
 }
 
-class MockVehicle     // Can be implemented     
+class MockVehicle          // Can be implemented     
   implements Vehicle {
     @override
-    void moveForward …
+    void moveForward ...
 }
 ```
 
@@ -112,31 +119,34 @@ Disallowing inheritance makes `interface` useful for:
 
 ## `final` 
 
-Use the `final` modifier to **disallow extending _and_ implementing** a class.
+Use the `final` modifier to **disallow extending _and_ implementing** a class
+outside of the current library.
 Final classes can be constructed.
 
 ```dart
+// a.dart
 final class Vehicle {
   String make;
   String model;
-  void moveForward(int meters) { … }
+  void moveForward(int meters) { ... }
 }
+```
 
-var myCar = Vehicle(     // Can be constructed
-  make: 'Ford',
-  model: 'T',
-);
+```dart
+// b.dart
 
-class Car extends     // ERROR: Cannot be inherited
+var myCar = Vehicle();     // Can be constructed
+
+class Car extends          // ERROR: Cannot be inherited
   Vehicle {
     int passengers;
-…
+    ...
 }
 
-class MockVehicle     // ERROR: Cannot be implemented     
+class MockVehicle          // ERROR: Cannot be implemented     
   implements Vehicle {
     @override
-    void moveForward …
+    void moveForward ...
 }
 ```
 
@@ -150,7 +160,7 @@ throw a [`noSuchMethod`][] error.
 ## `sealed`
 
 Use the `sealed` modifier to define a class that **cannot be constructed, extended,
-or implementated** outside of the library where the class is defined. 
+or implemented** outside of the library where the class is defined. 
 
 The purpose of the `sealed` modifier is to enable [_exhaustiveness checking_][]
 for switch cases.
@@ -164,7 +174,7 @@ all possible subtypes in its cases.
 sealed class Vehicle {
   String make;
   String model;
-  void moveForward(int meters) { … }
+  void moveForward(int meters) { ... }
 }
 
 class Car extends Vehicle { }
@@ -173,10 +183,10 @@ class Bicycle extends Vehicle { }
 
 // ...
 
-return switch (vehicle) {     // ERROR: The switch is missing a subtype of Vehicle
-  Car => 'vroom',
-  Truck => 'VROOOOMM'
-};
+  return switch (vehicle) {         // ERROR: The switch is missing a subtype of Vehicle
+    Car => 'vroom',
+    Truck => 'VROOOOMM'
+  };
 ```
 
 ## `abstract`
@@ -203,9 +213,9 @@ abstract class AbstractContainer {
 
 ## `class`, `mixin`, or `mixin class`?
 
-The `mixin` declaration defines a [mixin][]. The `mixin` _modifier_ can only be
-applied to a `class` declaration to create a _mixin class_: a class that can be
-treated both as a class and a mixed in. Regular classes cannot be mixed in.
+A `mixin` declaration defines a [mixin][]. A `class` declaration defines a [class][]. A
+`mixin class` declaration defines both a mixin and a class, with the same name and
+the same type.
 
 Mixins and mixin classes are meant to be mixed in, so they cannot be combined
 with the modifiers that prevent inheritance: `interface`, `final`, and `sealed`.
