@@ -3,7 +3,9 @@ title: Collections
 description: Summary of the different types of collections in Dart.
 ---
 
-Dart has built-in support for list, set, and map [collections][], as well as the ability to declare them through [literals][].
+Dart has built-in support for list, set, and map [collections][].
+To learn more about configuring the types collections contain,
+check out [Generics][].
 
 ## Lists
 
@@ -65,7 +67,7 @@ var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
 ```
 
-For more information about lists, refer to the
+For more information about lists, refer to the Lists section of the
 [Library tour](/guides/libraries/library-tour#lists).
 
 ## Sets
@@ -139,7 +141,7 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-For more information about sets, refer to the
+For more information about sets, refer to the Sets section of the
 [Library tour](/guides/libraries/library-tour#sets).
 
 ## Maps
@@ -243,7 +245,7 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-For more information about maps, refer to the
+For more information about maps, refer to the Maps section of the
 [Library tour](/guides/libraries/library-tour#maps).
 
 ## Operators
