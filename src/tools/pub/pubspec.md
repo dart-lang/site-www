@@ -380,7 +380,9 @@ the pattern is considered relative to the package's root directory.
 ### Screenshots
 
 Packages can showcase their widgets or other visual elements using screenshots
-displayed on their page.
+displayed on their page. The `screenshots` section is only intended for
+screenshots of the package in use. Do not use it for branding purposes such as
+logos.
 
 A package can list up to 10 screenshots under the `screenshots` field.
 Each screenshot includes one `description` and one `path`. 
