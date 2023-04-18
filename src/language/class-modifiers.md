@@ -19,7 +19,7 @@ When deciding whether or not to use class modifiers, consider the following ques
     - [Both](#final)?
     - [Subtyping](#sealed) by outside libraries at all?
 3. Then, does it need to be [abstract](#abstract)?
-4. And lastly, should it be a [class, mixin, or mixin class](#class-mixin-or-mixin-class)?
+4. And lastly, should it be a [class, mixin, or mixin class][]?
 
 ## No modifier
 
@@ -211,33 +211,28 @@ abstract class AbstractContainer {
 }
 ```
 
-## `class`, `mixin`, or `mixin class`?
-
-A `mixin` declaration defines a [mixin][]. A `class` declaration defines a [class][]. A
-`mixin class` declaration defines both a mixin and a class, with the same name and
-the same type.
-
-Mixins and mixin classes are meant to be mixed in, so they cannot be combined
-with the modifiers that prevent inheritance: `interface`, `final`, and `sealed`.
-
 ## Combining modifiers
 
-It is possible to combine some modifiers for layered restrictions. For example, 
-an `abstract interface class` combines restrictions on instantiation and inheritance.
-This could be useful to define a "pure contract", or a class that doesn't update
-any preexisting state.
+It is possible to combine some modifiers for layered restrictions. Some
+combinations are disallowed beacause they are contradictory, redundant, or
+otherwise mutually exclusive. 
 
-Modifiers that are mutually exclusive cannot be combined. For example,
-`base` allows extending and disallows implementing, and `interface` allows
-implementing and disallows extending.
+A class declaration can be, in order:
 
-Modifiers that are redundant cannot be combined. For example, mixins and sealed
-classes already cannot be constructed, so combining them with `abstract`, which
-disallows construction, is redundant. 
+* (Optional) `abstract`, describing whether the class can contain abstract members
+and prevents instantiation.
+* (Optional) One of `base`, `interface`, `final` or `sealed`, describing
+restrictions on other libraries subtyping the class.
+* (Optional) `mixin`, describing whether the declaration can be mixed in.
+* The `class` keyword itself.
 
-The [syntax specification] documents the valid combinations and their capabilities.
+Some combinations are disallowed:
 
-[class]: /language/classes
+* `abstract` with `sealed` (because a sealed class is always implicitly abstract).
+* `interface`, `final` or `sealed` with `mixin` (because those access modifiers
+prevent mixing in).
+
+[class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mix in]: /language/mixins
 [mixin]: /language/mixins
 [`noSuchMethod`]: /language/extend#nosuchmethod
