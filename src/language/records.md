@@ -13,21 +13,22 @@ functions, and store them in lists.
 
 ## Record syntax
 
-Records are comma-delimited lists of named or positional fields,
+_Records expressions_ are comma-delimited lists of named or positional fields,
 enclosed in parenthesis:
 
 ```dart
 var record = ('first', a: 2, b: true, 'last');    // Record expression
 ```
 
-Named fields inside record type annotations go inside a brace-delimited section
-of type and name pairs:
+Named fields inside _record type annotations_ go inside a brace-delimited section
+of type and name pairs, after all positional fields:
 
 ```dart
-(Sring, {int a, bool b}, String?) record;    // Record type annotation
+(String, String?, {int a, bool b}) record;    // Record type annotation
 ```
-Naming fields in record type annotations is optional for documentation purposes.
-The names don't need to match any record expression corresponding to the type.
+Naming fields in record type annotations is optional for documentation purposes,
+but the names of named fields are not optional. For more information,
+see the [Record equality](#record-equality) section.
 
 ## Record fields
 
@@ -38,6 +39,8 @@ Named fields expose getters of the same name. Positional fields expose getters
 of the name `$<position>`, skipping named fields:
 
 ```dart
+var record = ('first', a: 2, b: true, 'last');
+
 print(record.$1);    // Prints '123'
 print(record.a);     // Prints 2
 print(record.b);     // Prints true
@@ -52,17 +55,19 @@ To streamline record field access even more, see the page on [Patterns][].
 
 ## Record types
 
-There is no explicit record type; records are
-structurally typed based on the types of their fields.
+There is no type declaration for individual record types. Records are structurally
+typed based on the types of their fields. A record's _shape_ (the set of its fields,
+the fields' types, and their names, if any) uniquely determines the type of a record. 
 
 Each field in a record has its own type, which can be different from other
-fields' types in the same record. Records are transparent to the type system.
-The type system remembers and applies each fields' type wherever it is
-accessed from the record:
+fields' types in the same record. The type system is aware of each
+field's type wherever it is accessed from the record:
 
 ```dart
-var oneField = record.$1;       // oneField is a String
-var anotherField = record.a;    // anotherField is an int 
+(num, Object) pair = (42, "a");
+
+var first = pair.$1;     // static type `num`, runtime type `int`
+var second = pair.$2;    // static type `Object`, runtime type `String`
 ```
 
 If two unrelated libraries create records with the same set of fields,
@@ -73,48 +78,65 @@ libraries are not coupled to each other.
 
 Two records are equal if they have the same _shape_ (set of fields),
 and their corresponding fields have the same values.
-Named field order does not affect a record's shape:
+Since named field order is not part of a record's shape, the order of named
+fields does not affect equality:
 
 ```dart
-var a = (x: 1, 2);
-var b = (2, x: 1);
-assert(a == b);        // True
+(int x, int y, int z) point = (1, 2, 3);
+(int r, int g, int b) color = (1, 2, 3);
+
+// OK:
+point = color;
+```
+
+```dart
+({int x, int y, int z}) point = (x: 1, y: 2, z: 3);
+({int r, int g, int b}) color = (r: 1, g: 2, b: 3);
+
+// Error, different types:
+point = color;
 ```
 
 Records automatically define `hashCode` and `==` methods structurally based on
 their fields.
 
-{% comment %}
-    Example of record as a composite hash key in map? Supposedly a benefit of
-    record value semantice.
-{% endcomment %}
-
 ## Multiple returns
 
-Records allow functions to return multiple values bundled together:
+Records allow functions to return multiple values bundled together. Using [pattern matching][], you can retrieve record values from a return by destructuring them directly into local variables:
+
+{% comment %}
+    TODO: link to patterns page, specifically records destructuring section.
+{% endcomment %}
 
 ```dart
+// Returns multiple values in a record:
 (String, int) userInfo(Map<String, dynamic> json) {
   return (json['name'] as String, json['age'] as int);
 }
 
-main() {
+void main() {
+  // Destructures using a record pattern:
+  var (name, age) = userInfo(json);
+
+  /* Equivalent to:
   var info = userInfo(json);
   var name = info.$1;
   var age  = info.$2;
+  */
 }
 ```
 
-The only ways to accomplish multiple returns otherwise are
+Other ways to accomplish multiple returns are
 either to create a class (which is verbose), or use
-another collection type like List or Map (which lose type safety).
+another collection type like `List` or `Map` (which loses type safety).
 
 {{site.alert.note}}
   Records' multiple-return and heterogenous-type characteristics enable
-  parallelization of Futures of different types, which you can read about in the
+  parallelization of futures of different types, which you can read about in the
   [Library tour][].
 {{site.alert.end}}
 
 [collection types]: /language/collections
 [Patterns]: /language
+[pattern matching]: /language
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures

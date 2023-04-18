@@ -1303,44 +1303,48 @@ You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{s
 or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
-These extensions return a future with the resulting values of the provided futures.
-Unlike `Future.wait()`, if any future in the collection completes with an error,
-`wait` completes with a [`ParallelWaitError`][] that allows the caller to
-handle individual errors and dispose successful results if necessary:
+These extensions return a future with the resulting values of all the provided
+futures. Unlike `Future.wait()`, if any future in the collection completes with
+an error, `wait` completes with a [`ParallelWaitError`][] that allows the caller
+to handle individual errors and dispose successful results if necessary:
 
 ```dart
 void main() async {
   Future<bool> delete() async =>  ...
   Future<bool> copy() async =>  ...
-  Future<bool> causesError() async =>  ...
+  Future<bool> errorResult() async =>  ...
 
-  try {
-    await [delete(), copy(), causesError()].wait;    // List of futures
-    Expect.fail("Didn't throw");
-  } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {   
+  try {      // Wait for each future in list.
+    
+    var results = await [delete(), copy(), errorResult()].wait;    // List of futures
+
+    } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
+
     print(e.values[0]);    // Prints result of future
     print(e.values[1]);    // Prints result of future
     print(e.values[2]);    // Prints null
 
     print(e.errors[0]);    // Prints null
     print(e.errors[1]);    // Prints null
-    print(e.errors[2]);    // Preints error
+    print(e.errors[2]);    // Prints error
   }
+
 }
 ```
 
 Waiting on a record of futures enables the same functionality, with the additional 
-feature that the futures can be of different types:
+benefit that the futures can be of different types:
 
 ```dart
 void main() async {
-  Future<int>    delete() async =>  ...
+  Future<int> delete() async =>  ...
   Future<String> copy() async =>  ...
-  Future<bool>   causesError() async =>  ...
+  Future<bool> errorResult() async =>  ...
 
-  try {
-    await (delete(), copy(), causesError()).wait;    // Record of futures
-    Expect.fail("Didn't throw");
+  try {    
+    // Record of futures
+    (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
+  
   } on ParallelWaitError<(int?, String?, bool?),
       (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
     // ...
