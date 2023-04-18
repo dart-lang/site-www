@@ -517,7 +517,7 @@ and [`if` and `for`][control] for performing control flow while
 building the contents:
 
 [spread]: /language/collections#spread-operators
-[control]: /language/collections#collection-operators
+[control]: /language/collections#control-flow-operators
 
 {:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>
