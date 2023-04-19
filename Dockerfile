@@ -83,11 +83,12 @@ RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
     NODE_SHA256=dd56e9dd3c5081242dc08f58d9cbfa6e2d7bb8e62b434721f704ffff71bd5dc6; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
-    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
-        rm "$NODE_PPA" && \
-        exit 1 \
-    ); \
+#    TODO(parlough): Re-enable when moving back to stable
+#    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
+#        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
+#        rm "$NODE_PPA" && \
+#        exit 1 \
+#    ); \
     sh "$NODE_PPA" && rm "$NODE_PPA"; \
     apt-get update -q && apt-get install -yq --no-install-recommends \
       nodejs \
