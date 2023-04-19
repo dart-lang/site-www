@@ -157,7 +157,8 @@ use the `.name` property:
 print(Color.blue.name); // 'blue'
 ```
 
-You can access a member of an enum just like you would on a normal object:
+You can access a member of an enum value
+like you would on a normal object:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (method-call)"?>
 ```dart
