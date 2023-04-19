@@ -324,8 +324,8 @@ Previews can be useful when **all** of the following are true:
 
 As an example, consider a new version of `package:args` that has
 a finished version `2.0.0` but that
-depends on a feature in Dart `2.12.0-259.8.beta`,
-where Dart SDK version `2.12.0` stable hasn't been released yet.
+depends on a feature in Dart `3.0.0-417.1.beta`,
+where Dart SDK version `3.0.0` stable hasn't been released yet.
 The pubspec might look like this:
 
 ```
@@ -333,7 +333,7 @@ name: args
 version: 2.0.0
 
 environment:
-  sdk: '>=2.12.0-259.8.beta <3.0.0'
+  sdk: '>=3.0.0-417.1.beta <4.0.0'
 ```
 
 When this package is published to pub.dev,
@@ -344,7 +344,7 @@ where the stable version is listed as
 
 ![Illustration of a preview version](preview-version.png){:width="600px"}<br>
 
-When Dart `2.12.0` stable is released,
+When Dart `3.0.0` stable is released,
 pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
@@ -353,7 +353,7 @@ then you can ignore the following warning from `dart pub publish`:
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
-   version 2.12.0-0, consider publishing the package as a pre-release
+   version 3.0.0-0, consider publishing the package as a pre-release
    instead."*
 
 

@@ -46,10 +46,10 @@
           permalink: /language/built-in-types
         - title: Collections
           permalink: /language/collections
-        - title: Typedefs
-          permalink: /language/typedefs
         - title: Generics
           permalink: /language/generics
+        - title: Typedefs
+          permalink: /language/typedefs
         - title: Type system
           permalink: /language/type-system 
     - title: Functions
