@@ -58,7 +58,8 @@ but with a few extra requirements:
   in the beginning of the declaration,
   and there must be at least one instance declared.
 
-Methods in an enhanced enum can use `this` to reference the value of the enum.
+Instance methods in an enhanced enum can use `this` to
+reference the current enum value.
 
 Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
