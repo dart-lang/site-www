@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:7c22155c73415ab401137d8216959ae186617b8129b6e788e3281725582878a0 as base
+FROM ruby:3.2-slim-bullseye@sha256:d8e5caa21b5ebc425828af1eb43a678afceaca80681cac26b457063a18488e10 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -39,16 +39,16 @@ RUN set -eu; \
         DART_SHA256="6913b7c0b3b78bc141d372cd473da21771e57372b1ab45c977ce1550c8ff0b9c"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="eaaeee6be87a140a08ae0b6cc76e23ff4e5cb0ef7bbfa8ffa08b90e26b826e6e"; \
+        DART_SHA256="7062c3ae887fc9454610fd72ff12c23c8cc930a76a00300c2280656db3b968dd"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="b8f3d1f6c65657296757455ac99fab5772dcdb333cc83d15d626717779f2224a"; \
+        DART_SHA256="c94ef155690e3216ef4accd3a09b0d6231e834a8882bbba74d060c106bee6561"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ca5318cfea322d5122cf4e6fa90c2165bac8523bd84e5c529dffa8ebc147ccc6"; \
+        DART_SHA256="b3f4eb4e05e5bb4a5f053e24918cfe6458bc59c6f6e77235a66eeb1045cf0b5c"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="3ccc4dea7af77f5e3510910365a6234f9fae15cbcd3731ef695b00cda4c5c36d"; \
+        DART_SHA256="735c2adb31abafac131814e71de6ccf39cf84b785141c5d6d0d5b470245e26d6"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -106,7 +106,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.23.1
+RUN npm install -g firebase-tools@11.26.0
 RUN npm install
 
 COPY ./ ./
@@ -164,7 +164,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.23.1
+RUN npm install -g firebase-tools@11.26.0
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default
