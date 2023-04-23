@@ -7,7 +7,7 @@ body_class: highlight-languages
 This guide aims to leverage your JavaScript programming knowledge
 when learning Dart.
 It showcases key similarities and differences in both languages,
-and introduces Dart concepts that unsupported in JavaScript.
+and introduces Dart concepts that are unsupported in JavaScript.
 As a JavaScript developer, Dart should feel quite familiar,
 as both languages share many concepts.
 
