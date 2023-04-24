@@ -13,3 +13,6 @@ dev_dependencies:
     path: site-shared/packages/code_excerpter
   linkcheck: ^3.0.0
   lints: ^2.0.1
+
+dependency_overrides:
+  analyzer: 5.10.0
