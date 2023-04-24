@@ -124,25 +124,19 @@ Other valid ways to end a non-empty `case` clause are a [`continue`][break],
 
 Use a `default` or wildcard `_` clause to execute code when no `case` clause matches:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (switch)"?>
 ```dart
 var command = 'OPEN';
 switch (command) {
   case 'CLOSED':
     executeClosed();
-    break;
   case 'PENDING':
     executePending();
-    break;
   case 'APPROVED':
     executeApproved();
-    break;
   case 'DENIED':
     executeDenied();
-    break;
   case 'OPEN':
     executeOpen();
-    break;
   default:
     executeUnknown();
 }
@@ -151,7 +145,6 @@ switch (command) {
 Empty cases fall through to the next case. For an empty case that does not fall
 through, use [`break`][break] for its body:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-empty-case)"?>
 ```dart
 var command = 'CLOSED';
 switch (command) {
@@ -159,14 +152,12 @@ switch (command) {
   case 'NOW_CLOSED':
     // Runs for both CLOSED and NOW_CLOSED.
     executeNowClosed();
-    break;
 }
 ```
 
 For non-sequential fall-through, you can use a [`continue` statement][break] and
 a label:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-continue)"?>
 ```dart
 var command = 'CLOSED';
 switch (command) {
@@ -179,7 +170,6 @@ switch (command) {
   case 'NOW_CLOSED':
     // Runs for both CLOSED and NOW_CLOSED.
     executeNowClosed();
-    break;
 }
 ```
 

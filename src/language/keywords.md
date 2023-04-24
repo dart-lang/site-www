@@ -22,10 +22,10 @@ The following table lists the words that the Dart language treats specially.
 | [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
 | [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
 | [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
-| [default][]           | [get][]{{bii}}        | [required][]{{bii}}   | [while][]         |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [rethrow][]           | [with][]          |
-| [do][]                | [if][]                | [return][]            | [yield][]{{lrw}}  |
-| [dynamic][]{{bii}}    | [implements][]{{bii}} | [set][]{{bii}}        |                   |
+| [default][]           | [get][]{{bii}}        | [required][]{{bii}}   | [when][]          |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [rethrow][]           | [while][]         |
+| [do][]                | [if][]                | [return][]            | [with][]          |
+| [dynamic][]{{bii}}    | [implements][]{{bii}} | [set][]{{bii}}        | [yield][]{{lrw}}  |
 {:.table .table-striped .nowrap}
 </div>
 
@@ -96,6 +96,7 @@ The following table lists the words that the Dart language treats specially.
 {% comment %}
   TODO #2950: Add coverage of void to the language tour.
 {% endcomment %}
+[when]: /language/branches#when
 [with]: /language/mixins
 [while]: /language/loops#while-and-do-while
 [yield]: /language/functions#generators
