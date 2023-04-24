@@ -80,6 +80,7 @@
       { "source": "/codelabs/server{,/**}", "destination": "/tutorials/server/httpserver", "type": 301 },
       { "source": "/code-of-conduct", "destination": "/community/code-of-conduct", "type": 301 },
       { "source": "/concurrency", "destination": "/language/concurrency", "type": 301 },
+      { "source": "/control-flow", "destination": "/language/loops", "type": 301 },
       { "source": "/dart", "destination": "/overview", "type": 301 },
       { "source": "/dart-2", "destination": "/articles/archive/dart-2", "type": 301 },
       { "source": "/dart-2.0", "destination": "/dart-2", "type": 301 },

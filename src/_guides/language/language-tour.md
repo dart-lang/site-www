@@ -186,31 +186,31 @@ This content has moved to [Operators](/language/operators#other-operators).
 
 ## Control flow statements
 
-This content has moved to [Control flow](/language/control-flow).
+This content has moved to [Control flow](/language/loops).
 
 ### If and else
 
-This content has moved to [Control flow](/language/control-flow#if-and-else).
+This content has moved to [Control flow](/language/branches#if-else).
 
 ### For loops
 
-This content has moved to [Control flow](/language/control-flow#for-loops).
+This content has moved to [Control flow](/language/loops#for-loops).
 
 ### While and do-while
 
-This content has moved to [Control flow](/language/control-flow#while-and-do-while).
+This content has moved to [Control flow](/language/loops#while-and-do-while).
 
 ### Break and continue
 
-This content has moved to [Control flow](/language/control-flow#break-and-continue).
+This content has moved to [Control flow](/language/loops#break-and-continue).
 
 ### Switch and case
 
-This content has moved to [Control flow](/language/control-flow#switch-and-case).
+This content has moved to [Control flow](/language/branches#switch).
 
 ### Assert
 
-This content has moved to [Control flow](/language/control-flow#assert).
+This content has moved to [Control flow](/language/#assert).
 
 ## Exceptions
 
