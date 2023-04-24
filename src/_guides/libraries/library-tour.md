@@ -1304,15 +1304,18 @@ or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Futu
 of futures.
 
 These extensions return a future with the resulting values of all the provided
-futures. Unlike `Future.wait()`, if any future in the collection completes with
+futures. Unlike `Future.wait`, if any future in the collection completes with
 an error, `wait` completes with a [`ParallelWaitError`][] that allows the caller
-to handle individual errors and dispose successful results if necessary:
+to handle individual errors and dispose successful results if necessary.
+
+A common use case is wanting to know when all the futures complete, and handle
+any errors, but not necessarily caring about the result of each individual future:
 
 ```dart
 void main() async {
-  Future<bool> delete() async =>  ...
-  Future<bool> copy() async =>  ...
-  Future<bool> errorResult() async =>  ...
+  Future<void> delete() async =>  ...
+  Future<void> copy() async =>  ...
+  Future<void> errorResult() async =>  ...
 
   try {      // Wait for each future in list.
     
@@ -1320,20 +1323,20 @@ void main() async {
 
     } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
 
-    print(e.values[0]);    // Prints result of future
-    print(e.values[1]);    // Prints result of future
-    print(e.values[2]);    // Prints null
+    print(e.values[0]);    // Prints successful future
+    print(e.values[1]);    // Prints successful future
+    print(e.values[2]);    // Prints null when the result is an error
 
-    print(e.errors[0]);    // Prints null
-    print(e.errors[1]);    // Prints null
+    print(e.errors[0]);    // Prints null when the result is succesful
+    print(e.errors[1]);    // Prints null when the result is succesful
     print(e.errors[2]);    // Prints error
   }
 
 }
 ```
 
-Waiting on a record of futures enables the same functionality, with the additional 
-benefit that the futures can be of different types:
+Waiting on a _record_ of futures enables the same functionality, with the additional 
+benefit that the futures can be of different types: 
 
 ```dart
 void main() async {
@@ -1349,8 +1352,18 @@ void main() async {
       (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
     // ...
     }
+
+  // Do something with the results:
+  var deleteInt  = result.$1;
+  var copyString = result.$2;
+  var errorBool  = result.$3;
 }
 ```
+
+Waiting for a record of futures should be used when you need the individual
+result values from each future
+(otherwise, just use `wait` on an iterable as described in the previous example).
+
 
 ### Stream
 

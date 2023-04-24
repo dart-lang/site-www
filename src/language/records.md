@@ -20,15 +20,31 @@ enclosed in parenthesis:
 var record = ('first', a: 2, b: true, 'last');    // Record expression
 ```
 
+_Record type annotations_ are comma-delimited lists of types enclosed in parenthesis.
+The `(int, int)` statements here are record type annotations used as a return
+type and as parameter types:
+
+```dart
+(int, int) swap((int, int) record) {
+  var (a, b) = record;
+  return (b, a);
+}
+```
+
 Named fields inside _record type annotations_ go inside a brace-delimited section
 of type and name pairs, after all positional fields:
 
 ```dart
-(String, String?, {int a, bool b}) record;    // Record type annotation
+// Record type annotation in a variable declaration
+(String, String?, {int a, bool b}) record;
 ```
-Naming fields in record type annotations is optional for documentation purposes,
-but the names of named fields are not optional. For more information,
-see the [Record equality](#record-equality) section.
+
+Naming fields in record type annotations is optional for documentation purposes.
+The names of those named fields are not optional, though,  
+once you create a record with named fields. The field names become part of the
+[record's type definition](#record-types). They can be omitted, but not replaced.
+
+For more information, see the [Record equality](#record-equality) section.
 
 ## Record fields
 
@@ -78,7 +94,7 @@ libraries are not coupled to each other.
 
 Two records are equal if they have the same _shape_ (set of fields),
 and their corresponding fields have the same values.
-Since named field order is not part of a record's shape, the order of named
+Since named field _order_ is not part of a record's shape, the order of named
 fields does not affect equality:
 
 ```dart
@@ -102,7 +118,9 @@ their fields.
 
 ## Multiple returns
 
-Records allow functions to return multiple values bundled together. Using [pattern matching][], you can retrieve record values from a return by destructuring them directly into local variables:
+Records allow functions to return multiple values bundled together.
+Using [pattern matching][], you can retrieve record values from a return by
+destructuring them directly into local variables:
 
 {% comment %}
     TODO: link to patterns page, specifically records destructuring section.
@@ -127,7 +145,7 @@ void main() {
 ```
 
 Other ways to accomplish multiple returns are
-either to create a class (which is verbose), or use
+either to create a class (which is more verbose), or use
 another collection type like `List` or `Map` (which loses type safety).
 
 {{site.alert.note}}
