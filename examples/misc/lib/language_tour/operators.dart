@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, one_member_abstracts, dead_code
+// ignore_for_file: unused_local_variable, dead_code
 
 void miscDeclAnalyzedButNotTested() {
   (bool done, int col) {
@@ -45,7 +45,7 @@ void miscDeclAnalyzedButNotTested() {
 
 // Minimal class definitions in support of nested-cascades
 
-abstract class Builder<T> {
+mixin Builder<T> {
   T build();
 }
 
