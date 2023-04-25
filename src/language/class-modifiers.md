@@ -3,11 +3,21 @@ title: Class modifiers
 description: Modifier keywords for class declarations to control external library access.
 ---
 
-Class modifiers control how a class or a mixin can be subtyped in libraries
-outside of the library where it's defined.
+Class modifiers control how a class or a mixin can be subtyped, both
+[from within its own library](#abstract), and from outside of the library where
+it's defined.
 
-The full set of modifiers that can appear before a class declaration
-are `abstract`, [`mixin`][mixin], `base`, `final`, `interface`, and `sealed`. 
+Modifiers prepend a class or mixin declaration.
+For example, writing `abstract class` defines an abstract class.
+The full set of modifiers that can appear before a class declaration are:
+
+- `abstract`
+- `base`
+- `final`
+- `interface`
+- `sealed`
+- [`mixin`][class, mixin, or mixin class]
+
 Only the `base` modifier can appear before a mixin declaration. The modifiers do
 not apply to other declarations like `enum`, `typedef`, or `extension`.
 
@@ -17,7 +27,7 @@ class, and what behaviors the class needs to be able to rely on.
 ## No modifier
 
 Use a `class` or `mixin` declaration without a modifier to allow unrestricted
-permission to create subtype relationships from outside libraries.
+permission to create subtype relationships from any library.
 By default, you can:
 
 - [Construct][] new instances of a class.
@@ -27,14 +37,14 @@ By default, you can:
 
 ## `abstract`
 
-Use the `abstract` modifier to define a class that can’t be constructed.
+Use the `abstract` modifier to define a class that can’t be constructed from any
+library (it's own, as well as outside libraries).
 Abstract classes are useful for defining interfaces, often with some
-implementation. Abstract classes often have [abstract methods][]:
+implementation. Abstract classes often have [abstract methods][].
 
 ```dart
 // Library a.dart
-abstract class Vehicle {
-  
+abstract class Vehicle { 
   void moveForward();     // Abstract method.
 }
 ```
@@ -64,18 +74,19 @@ define a [factory constructor][].
 ## `base`
 
 Use the `base` modifier to enforce inheritance of a class or mixin's implementation.
-
 The `base` modifier disallows implementation outside of the current library, which
 guarantees:
 
 - The base class constructor is called whenever an instance of a subtype of the
 class is created.
 - That all implemented private members exist in subtypes.
-- Adding new members to a class reduces the risk of breaking subtypes, since all
-subtypes will inherit the new member.
+- Adding a new implemented member to a `base` class will not break subtypes (except
+  when they already declare a member with the same name and an incompatible
+  signature), since all subtypes will inherit the new member.
 
 The `base` modifier must be applied transitively to all the subtypes of a class;
-any class which implements or extends a base class must be marked `base` as well. 
+any class which implements or extends a base class must be marked `base`, `final`,
+or `sealed`. 
 
 ```dart
 // Library a.dart
@@ -108,6 +119,7 @@ base class MockVehicle          // ERROR: Cannot be implemented
 Use the `interface` modifier to define an interface. Interface classes can be
 implemented outside of the current library, but not extended. This guarantees:
 
+- All members of the class must have an implementation.
 - Users of the API are prevented from overriding a subset of methods.
 - A solution to the [fragile base class problem][], or the freedom to change the
 interface's implementation, because there are no inherited member implementations
@@ -140,18 +152,19 @@ class MockVehicle          // Can be implemented
 ```
 
 To define a pure interface that others are free to implement, that cannot be
-inherited and only has abstract members, define an `abstract interface class`.
+inherited but is allowed to have abstract members, define an
+`abstract interface class`.
 
 ## `final` 
 
 Use the `final` modifier to prevent subtyping from a class outside of the current
 library, closing the type hierarchy. 
-
 Disallowing both inheritance and implementation means `final` classes provide all
 the same guarantees of [`base`](#base) and [`interface`](#interface) classes.
 
-Final class can be extended or implemented within the
-same library, but like the `base` modifier, any subtypes must be marked `base`.
+Final classes can be extended or implemented within the
+same library, but like the `base` modifier, any subtypes must be marked `base`, 
+`final`, or `sealed`.
 
 ```dart
 // Library a.dart
@@ -240,6 +253,6 @@ prevent mixing in).
 [extend]: /language/extend
 [implement]: /language/classes#implicit-interfaces
 [factory constructor]: /language/constructors#factory-constructors
-[exhaustive]: /language/control-flow
+[exhaustive]: /
 [abstract methods]: /language/methods#abstract-methods
 [syntax specification]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/class-modifiers/feature-specification.md#syntax
