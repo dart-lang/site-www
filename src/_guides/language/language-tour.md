@@ -16,8 +16,8 @@ noindex: true
   links to the old language tour do not break.
 
   In the short term, if you move content that is referenced here,
-  update the text, link, and the redirection map
-  in `src/assets/js/language-tour-redirector.js`.
+  update the text and link in this file, as well as
+  the redirection map in `src/assets/js/language-tour-redirector.js`.
 {% endcomment -%}
 
 {{site.alert.warning}}
