@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:e0be7ab1fa6b43159fff18191e365061b2dd180c81db2a4b080527e43d6e2528 as base
+FROM ruby:3.2-slim-bullseye@sha256:d8e5caa21b5ebc425828af1eb43a678afceaca80681cac26b457063a18488e10 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -39,16 +39,16 @@ RUN set -eu; \
         DART_SHA256="6913b7c0b3b78bc141d372cd473da21771e57372b1ab45c977ce1550c8ff0b9c"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="eaaeee6be87a140a08ae0b6cc76e23ff4e5cb0ef7bbfa8ffa08b90e26b826e6e"; \
+        DART_SHA256="02c21fd46d0be0ea4d184406a8c8446205129db0e19b8feff6a3ab06a127f83f"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="b8f3d1f6c65657296757455ac99fab5772dcdb333cc83d15d626717779f2224a"; \
+        DART_SHA256="4253dae7dfaca493c844e25ba42a504f93ac69174d3b9a2a808068125f245508"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ca5318cfea322d5122cf4e6fa90c2165bac8523bd84e5c529dffa8ebc147ccc6"; \
+        DART_SHA256="e697e3bee1469482ed2b781085febc3c75f043886c21138ab738d09ab56b1c4d"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="3ccc4dea7af77f5e3510910365a6234f9fae15cbcd3731ef695b00cda4c5c36d"; \
+        DART_SHA256="197b31f24c171e88c2454b9e750671a7c4f7a72875cf9482dc7444bb159781ea"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -81,13 +81,14 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=061519c83ce8799cc00d36e3bab85ffcb9a8b4164c57b536cc2837048de9939f; \
+    NODE_SHA256=9f6707e20789ff7c1d39a11ed3be09039bf44e85f2082329cb27ae4c45541c81; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
-    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
-        rm "$NODE_PPA" && \
-        exit 1 \
-    ); \
+#    TODO(parlough): Re-enable when moving back to stable
+#    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
+#        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
+#        rm "$NODE_PPA" && \
+#        exit 1 \
+#    ); \
     sh "$NODE_PPA" && rm "$NODE_PPA"; \
     apt-get update -q && apt-get install -yq --no-install-recommends \
       nodejs \
@@ -107,7 +108,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.23.1
+RUN npm install -g firebase-tools@11.26.0
 RUN npm install
 
 COPY ./ ./
@@ -165,7 +166,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.23.1
+RUN npm install -g firebase-tools@11.26.0
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default

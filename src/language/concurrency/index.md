@@ -381,6 +381,8 @@ Whether the computation the worker isolate executes
 is synchronous or asynchronous doesn't impact the
 main isolate, because it's running concurrently either way.
 
+For the complete program, check out the [send_and_receive.dart][] sample.
+
 {% comment %}
 TODO:
 Should create a diagram for the current example.
@@ -451,19 +453,11 @@ which then sends one or more reply messages.
 
 ![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/language/concurrency/images/isolate-custom-bg-worker.png)
 
-For examples of sending multiple messages,
-see the following [isolate samples][]:
+Check out the [long_running_isolate.dart][] sample,
+which shows how to spawn a long-running isolate
+that receives and sends messages multiple times between isolates.
 
-* [send_and_receive.dart][],
-  which shows how to send a message from
-  the main isolate to the spawned isolate.
-  It’s otherwise similar to the preceding examples,
-  but doesn't use `run()`.
-* [long_running_isolate.dart][],
-  which shows how to spawn a long-running isolate that
-  receives and sends multiple times.
-
-{% assign samples = "https://github.com/dart-lang/samples/tree/master/isolates" %}
+{% assign samples = "https://github.com/dart-lang/samples/tree/main/isolates" %}
 
 [isolate samples]: {{ samples }}
 [send_and_receive.dart]: {{ samples }}/bin/send_and_receive.dart

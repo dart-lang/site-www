@@ -81,7 +81,7 @@ If you _want_ to use App Engine, consider using the [`appengine` package][].
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[server examples]: https://github.com/dart-lang/samples/tree/master/server
+[server examples]: https://github.com/dart-lang/samples/tree/main/server
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
 [Dart Functions Framework]: {{site.pub-pkg}}/functions_framework
 [CloudEvents]: https://cloudevents.io/

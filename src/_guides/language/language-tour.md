@@ -76,7 +76,7 @@ This content has moved to [Collections](/language/collections#spread-operator).
 
 #### Collection operators
 
-This content has moves to [Collections](/language/collections#collection-operators).
+This content has moves to [Collections](/language/collections#control-flow-operators).
 
 ### Sets
 
