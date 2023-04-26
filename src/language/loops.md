@@ -3,19 +3,15 @@ title: Loops
 description: Learn how to use loops to control the flow of your Dart code.
 ---
 
-You can control the flow of your Dart code using loops and supporting statements:
+This page shows how you can control the flow of your Dart code using loops and
+supporting statements:
 
 -   `for` loops
 -   `while` and `do while` loops
 -   `break` and `continue`
 
-Other methods of manipulating control flow in Dart are:
-
--   [`if`, `case`, and `else`][]
--   [`switch` and `case`][]
--   [`assert`][]
-
-You can also affect control flow using [Exceptions][], like `try-catch` and `throw`.
+You can also manipulate control flow in Dart using [branching][], like `if`
+and `switch`, or even using [exceptions][], like `try-catch` and `throw`.
 
 ## For loops
 
@@ -55,6 +51,15 @@ you can use the `for-in` form of [iteration][]:
 ```dart
 for (final candidate in candidates) {
   candidate.interview();
+}
+```
+
+You can also use a [pattern][] in a `for-in` loop to process the values obtained
+from the iterable:
+
+```dart
+for (var (x, y) in listOfPairs) {
+  assert(x != y);
 }
 ```
 
@@ -128,10 +133,9 @@ candidates
     .forEach((c) => c.interview());
 ```
 
-[Exceptions]: /language/error-handling
-[`if`, `case`, and `else`]: /language/branches#if-else
-[`switch` and `case`]: /language/branches#switch-case
-[`assert`]: /language/assert
+[exceptions]: /language/error-handling
+[branching]: /language/branches
 [iteration]: /guides/libraries/library-tour#iteration
 [forEach()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[pattern]: /

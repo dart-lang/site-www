@@ -173,4 +173,4 @@ print(Vehicle.car.carbonFootprint);
 [Factory constructors]: /language/constructors#factory-constructors
 [language version]: /guides/language/evolution#language-versioning
 [static variable]: /language/classes#class-variables-and-methods
-[switch statements]: /language/branches#switch-case
+[switch statements]: /language/branches#switch

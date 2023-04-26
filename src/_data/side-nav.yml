@@ -60,8 +60,6 @@
         permalink: /language/loops
       - title: Branches
         permalink: /language/branches
-      - title: Assert
-        permalink: /language/assert
     - title: Error handling
       permalink: /language/error-handling
     - title: Classes & objects

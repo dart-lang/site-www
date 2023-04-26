@@ -190,7 +190,7 @@ This content has moved to [Control flow](/language/loops).
 
 ### If and else
 
-This content has moved to [Control flow](/language/branches#if-else).
+This content has moved to [Control flow](/language/branches#if).
 
 ### For loops
 
@@ -210,7 +210,7 @@ This content has moved to [Control flow](/language/branches#switch).
 
 ### Assert
 
-This content has moved to [Control flow](/language/#assert).
+This content has moved to [Control flow](/language/error-handling#assert).
 
 ## Exceptions
 

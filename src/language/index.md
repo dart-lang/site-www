@@ -561,5 +561,5 @@ This site’s code follows the conventions in the
 [ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
-[if-else statement]: /language/branches#if-else
+[if-else statement]: /language/branches#if
 [exception]: /language/error-handling#exceptions

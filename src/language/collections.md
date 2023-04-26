@@ -296,7 +296,7 @@ var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
 Dart also supports [if-case][] inside collection literals:
 
 ```dart
-var nav = ['Home', 'Furniture', 'Plants', if (promoActive case String x) $x];
+var nav = ['Home', 'Furniture', 'Plants', if (login case 'Manager') 'Inventory'];
 ```
 
 Here's an example of using **collection for**

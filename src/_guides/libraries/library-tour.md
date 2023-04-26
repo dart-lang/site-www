@@ -1736,7 +1736,7 @@ To learn more about the Dart language, see the
 [language tour][].
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[Assert]: /language/assert
+[Assert]: /language/error-handling#assert
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html

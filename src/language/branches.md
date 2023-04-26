@@ -3,24 +3,19 @@ title: Branches
 description: Learn how to use branches to control the flow of your Dart code.
 ---
 
-You can control the flow of your Dart code using branches:
+This page shows how you can control the flow of your Dart code using branches:
 
--   `if`, `case`, and `else`
--   `switch` and `case` statements
--   `switch` and `case` expressions
+- `if` statements and elements
+- `if-case` statements and elements
+- `switch` statements and expressions
 
-Other methods of manipulating control flow in Dart are:
+You can also manipulate control flow in Dart using [loops][], like `for`
+and `while`, or even using [exceptions][], like `try-catch` and `throw`.
 
--   [`for` loops][]
--   [`while` and `do while` loops][]
--   [`break` and `continue`][break]
--   [`assert`][]
+## If
 
-You can also affect control flow using [Exceptions][], like `try-catch` and `throw`.
-
-## If else
-
-Dart supports `if` statements with optional `else` statements:
+Dart supports `if` statements with optional `else` clauses. The condition in
+parentheses after `if` must be an expression that evaluates to a [boolean][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (if-else)"?>
 ```dart
@@ -33,20 +28,18 @@ if (isRaining()) {
 }
 ```
 
-The statement conditions must be expressions
-that evaluate to [boolean values][boolean], nothing else.
 To learn how to use `if` in an expression context, see [Conditional expressions][]
 
-## If case
+### If-case
 
-Dart `if` statements support `case` clauses followed by a [case pattern][pattern]: 
+Dart `if` statements support `case` clauses followed by a [pattern][]: 
 
 ```dart
 if (pair case [int x, int y]) return Point(x, y);
 ```
 
-If the case pattern (the list pattern `[int x, int y]` in the example above)
-matches the case expression (`pair`), then the branch (`return Point(x, y)`)
+If the pattern (the list pattern `[int x, int y]` in the example above)
+matches the value (`pair`), then the branch (`return Point(x, y)`)
 executes with any variables the pattern defines in scope (`x` and `y`).
 
 Otherwise, the else branch is executed, if there is one:
@@ -60,63 +53,13 @@ if (pair case [int x, int y]) {
 ```
 
 If-case is a simple way to match and destructure against a
-_single_ pattern. To test a value against _multiple_ patterns, use [switch](#switch-case).
+_single_ pattern. To test a value against _multiple_ patterns, use [switch](#switch).
 
-## Switch case
+## Switch
 
-Switch cases (both [statements](#switch-statements) and [expressions](#switch-expressions))
-in Dart compare an object against one or more [case patterns][pattern]. 
-
-Case patterns allow control flow to
-either match and destructure the object being switched, or continue execution
-if the object doesn't match. They can be any kind of [refutable pattern][]:
-
-- **Constant patterns**: the object's value has to be equivalent to match.
-  ```dart
-  switch (number) {
-    case 1:           // Matches if number == 1
-      print("one");     
-  }
-  ```
-- **List**, **map**, or **record patterns**: the elements are destructured if matched.
-  ```dart
-  switch (obj) {
-    case [a, b]:                  // Matches if obj is a list with two elements
-      print("$a and $b match");    
-  }
-  ```  
-- **Variable patterns**: the matched value binds to a new variable.
-  ```dart
-  switch ((1, 2)) {
-    case (var a, var b): ...     // Matches if 1 and 2 can be assigned to a and b
-  }
-  ```  
-- **Logical** or **relational patterns**: the object matches if the comparison to a constant returns `true`.
-  ```dart
-  switch (code) {
-    case >= first && <= last: ...    
-    // Matches if code's value is between the constant values of first and last
-  }
-  ```  
-- **Null check** or **assert patterns**: the match is first on whether the object is not null, then on the value.
-  ```dart
-  switch (maybeString) {
-    case var s?:                 
-    // Matches if maybe is not null, and then against the inner pattern "var s"
-  }
-  ```  
-- **Object patterns**: the match exposes getters on the object type.
-  ```dart
-  switch (Shape shape) {
-    case Rect(width: var w, height: var h): ...
-    // Matches if shape is of type Rect, and then against the properties of Rect
-  }
-  ```  
-
-Values destructured by a case pattern become local variables, only available in the
-scope of that clause. 
-
-### Switch statements
+Switch statements evaluate a value expression against a series of cases.
+Each case clause is a [pattern][] followed by a series of statements in the case
+body to execute if the value matches that pattern. 
 
 Non-empty `case` clauses implicitly jump to the end of the switch after completion.
 Other valid ways to end a non-empty `case` clause are a [`continue`][break],
@@ -142,89 +85,125 @@ switch (command) {
 }
 ```
 
-Empty cases fall through to the next case. For an empty case that does not fall
-through, use [`break`][break] for its body:
+Empty cases fall through to the next case. For non-sequential fall-through,
+you can use a [`continue` statement][break] and a label:
 
 ```dart
-var command = 'CLOSED';
 switch (command) {
-  case 'CLOSED': // Empty case falls through.
-  case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
-    executeNowClosed();
-}
-```
-
-For non-sequential fall-through, you can use a [`continue` statement][break] and
-a label:
-
-```dart
-var command = 'CLOSED';
-switch (command) {
+  case 'OPEN':
+    executeOpen();
+    continue newCase;     // Continues executing at the newCase label.
+  
+  case 'DENIED':          // Empty case falls through.
   case 'CLOSED':
-    executeClosed();
-    continue nowClosed;
-  // Continues executing at the nowClosed label.
-
-  nowClosed:
-  case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
-    executeNowClosed();
+    executeClosed();      // Runs for both DENIED and CLOSED,
+  
+  newCase:
+  case 'PENDING':
+    executeNowClosed();   // Runs for both OPEN and PENDING.
 }
 ```
+For an empty case that does not fall through, use [`break`][break] for its body.
+
+### Case patterns
+
+The pattern following a case, or case pattern, allows control flow to
+either match and destructure the object being switched on, or continue execution
+if the object doesn't match. Case patterns can be any kind of [pattern][]:
+
+- **Constant patterns**: the object's value has to be equivalent to match.
+  ```dart
+  switch (number) {
+    case 1:           // Matches if number == 1
+      print("one");     
+  }
+  ```
+- **List**, **map**, or **record patterns**: the elements are destructured if matched.
+  ```dart
+  switch (obj) {
+    case [a, b]:                  // Matches if obj is a list with two elements
+      print("$a and $b match");    
+  }
+  ```  
+- **Variable patterns**: the matched value binds to a new variable.
+  ```dart
+  switch ((1, 2)) {
+    case (var a, var b): ...     // Matches if 1 and 2 can be assigned to a and b
+  }
+  ```  
+- **Logical** or **relational patterns**: the object matches if the comparison to
+a constant returns `true`.
+  ```dart
+  switch (code) {
+    case >= first && <= last: ...    
+    // Matches if the value of code is between the constant values of first and last
+  }
+  ```  
+- **Null check** or **assert patterns**: the match is first on whether the object is not null, then on the value.
+  ```dart
+  switch (maybe) {
+    case var s?:                 
+    // Matches if maybe is not null, and then against the inner pattern "var s"
+  }
+  ```  
+- **Object patterns**: the match exposes getters on the object type.
+  ```dart
+  switch (Shape shape) {
+    case Rect(width: var w, height: var h): ...
+    // Matches if shape is of type Rect, and then against the properties of Rect
+  }
+  ```  
+
+Values [destructured][] by a pattern in a case become local variables,
+only available in the body of that case. 
 
 ### Switch expressions
 
-_Switch expressions_ write a result value determined by a switch
-directly into a variable or return statement. 
+Switch expressions are similar to switch statements, but you can use them anywhere
+you can use an expression. They produce a value based on the expression body of
+whichever case matches.
 
-The syntax rules for a switch expression are:
-- The expression body is a series of case patterns.
-- Cases _do not_ use the `case` keyword.
-- Case patterns are followed by `=>`, and then a case body. 
-- Case bodies terminate with a comma `,`.
-- The switch expression body terminates with a semicolon `;`.
-- The wildcard pattern `_` catches remaining values instead of `default`.
+Switch expression syntax differs slightly from switch statements:
 
-This allows you to rewrite a 
-_statement_ like this:
+- Cases _do not_ start with the `case` keyword.
+- A case body is a single expression instead of a series of statements.
+- Each case must have a body; there is no implicit fallthrough for empty cases.
+- Case patterns are separated from their bodies using `=>` instead of `:`.
+- Cases are separated by `,` (and an optional trailing `,` is allowed).
+- Default cases can _only_ use `_`, instead of allowing both `default` and `_`.
+
+Switch expressions allow you to rewrite a _statement_ like this:
 
 ```dart
+// Where slash, star, comma, semicolon, etc., are constant variables...
+
 switch (charCode) {
-  case slash when nextCharCode == slash:   // Constant pattern with guard
-    skipComment();
-  case slash || star || plus || minus:     // Logical-or pattern
-    operator(charCode);
-  case >= digit0 && <= digit9:             // Relational and logical-and patterns
-    number();
+  case slash || star || plus || minus:    // Logical-or pattern
+    token = operator(charCode);
+  case comma || semicolon:                // Logical-or pattern
+    token = punctuation(charCode);
+  case >= digit0 && <= digit9:            // Relational and logical-and patterns
+    token = number();
   default:
-    invalid();
+    throw invalid();
 }
 ```
 
 Into an _expression_, like this:
 
 ```dart
-var token = switch (charCode) {
-  slash when nextCharCode == slash => skipComment(),
-  slash || star || plus || minus   => operator(charCode),
-  >= digit0 && <= digit9           => number(),
-  _                                => throw invalid()
+token = switch (charCode) {
+  slash || star || plus || minus => operator(charCode),
+  comma || semicolon => punctuation(charCode),
+  >= digit0 && <= digit9 => number(),
+  _ => throw invalid()
 };
 ```
 
 ### Exhaustiveness checking
 
-Exhaustiveness checking is a feature of switches that raises a compile-time error
-if a switch is not exhaustively covering all possible values that could flow through it.
-
-The compiler can only know if a set of cases is
-exhaustive if it is soundly aware of all possible enumerations of that type. So,
-exhaustiveness checking works only when switching on types that are fully enumerable:
-
-- [Boolean][boolean] types, because there are only two possible values, `true` and `false`.
-- [Enum][enum] types, because they are always a fixed number of constant values.
-- [Sealed][sealed] types, because they are classes with a closed hierarcy of subtypes in the same library.
+Exhaustiveness checking is a feature of switches that reports a compile-time
+error if it's possible for a value entering the switch to not match any of the cases.
 
 ```dart
 bool? b = false;
@@ -235,8 +214,13 @@ switch (b) {
 }
 ```
 
-Use the [`sealed` modifier][sealed] on a class to enable exhaustiveness checking when 
-switching over subtypes of that class:
+A default case (`default` or `_`) covers all possible values, making a switch on
+any type exhaustive.
+
+[Enums][enum] and [sealed types][sealed] are particularly useful for switches
+because, even without a default case, their possible values are known and fully
+enumerable. Use the [`sealed` modifier][sealed] on a class to enable
+exhaustiveness checking when switching over subtypes of that class:
 
 ```dart
 sealed class Shape {
@@ -256,11 +240,13 @@ double calculateArea(Shape shape) =>
 ```
 
 If a new subclass of `Shape` is ever added, exhaustiveness 
-checking will warn you about the missing subtype, because your switch is incomplete.
+checking will tell you about the missing subtype, because your switch is incomplete.
 This allows you to use Dart in a somewhat 
-[functional algrbraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
+[functional algebraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
 
-## When
+## Guard clause
+
+<a id="when"></a>
 
 An optional guard clause can appear after any case clause
 (`if case`, and both `switch` statements and expressions)
@@ -280,16 +266,14 @@ switch (pair) {
 When the guard clause evaluates to false, execution proceeds to the next case
 rather than exiting the entire switch.
 
-[`for` loops]: /language/loops#for-loops
-[`while` and `do while` loops]: /language/loops#while-and-do-while
-[break]: /language/loops#break-and-continue
-[`assert`]: /language/assert
-[Exceptions]: /language/error-handling
+[loops]: /language/loops
+[exceptions]: /language/error-handling
 [conditional expressions]: /language/operators#conditional-expressions
 [boolean]: /language/built-in-types#booleans
 [pattern]: /
 [enum]: /language/enum
 [`throw`]: /language/error-handling#throw
 [`return`]: /language/functions#return-values
+[break]: /language/loops#break-and-continue
 [sealed]: /
-[refutable pattern]: /resources/glossary#refutable-pattern
+[destructured]: /

@@ -502,6 +502,6 @@ For more information about the `.`, `?.`, and `..` operators, see
 [identical()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
-[if-else]: /language/branches#if-else
+[if-else]: /language/branches#if
 [language version]: /guides/language/evolution#language-versioning
 [Classes]: /language/classes

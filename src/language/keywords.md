@@ -35,7 +35,7 @@ The following table lists the words that the Dart language treats specially.
 [async]: /language/async
 [await]: /language/async
 [break]: /language/loops#break-and-continue
-[case]: /language/branches#switch-case
+[case]: /language/branches#switch
 [catch]: /language/error-handling#catch
 [class]: /language/classes#instance-variables
 [const]: /language/variables#final-and-const
@@ -45,11 +45,11 @@ The following table lists the words that the Dart language treats specially.
 {% endcomment %}
 [continue]: /language/loops#break-and-continue
 [covariant]: /guides/language/sound-problems#the-covariant-keyword
-[default]: /language/branches#switch-case
+[default]: /language/branches#switch
 [deferred]: /language/libraries#lazily-loading-a-library
 [do]: /language/loops#while-and-do-while
 [dynamic]: /language#important-concepts
-[else]: /language/branches#if-else
+[else]: /language/branches#if
 [enum]: /language/enum
 [export]: /guides/libraries/create-library-packages
 [extends]: /language/extend
@@ -63,7 +63,7 @@ The following table lists the words that the Dart language treats specially.
 [Function]: /language/functions
 [get]: /language/methods#getters-and-setters
 [hide]: /language/libraries#importing-only-part-of-a-library
-[if]: /language/branches#if-else
+[if]: /language/branches#if
 [implements]: /language/classes#implicit-interfaces
 [import]: /language/libraries#using-libraries
 [in]: /language/loops#for-loops
@@ -84,7 +84,7 @@ The following table lists the words that the Dart language treats specially.
 [show]: /language/libraries#importing-only-part-of-a-library
 [static]: /language/classes#class-variables-and-methods
 [super]: /language/extend
-[switch]: /language/branches#switch-case
+[switch]: /language/branches#switch
 [sync]: /language/functions#generators
 [this]: /language/constructors
 [throw]: /language/error-handling#throw

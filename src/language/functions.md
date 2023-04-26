@@ -493,7 +493,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 [Function API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Callable classes]: /language/callable-classes
 [type annotations for public APIs]: /guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
-[if statement]: /language/branches#if-else
+[if statement]: /language/branches#if
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
