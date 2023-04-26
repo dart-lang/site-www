@@ -326,8 +326,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 ## Interfaces and abstract classes
 
-Dart has no `interface` keyword. 
-Instead, all classes implicitly define an interface. 
+All classes implicitly define an interface. 
 Therefore, you can implement any class.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
@@ -337,7 +336,8 @@ class MockSpaceship implements Spacecraft {
 }
 ```
 
-[Read more](/language/classes#implicit-interfaces) about implicit interfaces.
+Read more about [implicit interfaces](/language/classes#implicit-interfaces), or
+about the explicit [`interface` keyword](/language/class-modifiers#interface).
 
 You can create an abstract class
 to be extended (or implemented) by a concrete class. 
