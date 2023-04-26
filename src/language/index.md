@@ -84,7 +84,7 @@ while (year < 2016) {
 Read more about control flow statements in Dart,
 including [`break` and `continue`](/language/loops),
 [`switch` and `case`](/language/branches),
-and [`assert`](/language/assert).
+and [`assert`](/language/error-handling#assert).
 
 
 ## Functions

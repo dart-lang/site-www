@@ -237,7 +237,7 @@ For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
 
-[Assert]: /language/assert
+[Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [type checks and casts]: /language/operators#type-test-operators

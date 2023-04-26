@@ -31,7 +31,7 @@ The following table lists the words that the Dart language treats specially.
 
 [abstract]: /language/classes#abstract-classes
 [as]: /language/operators#type-test-operators
-[assert]: /language/assert
+[assert]: /language/error-handling#assert
 [async]: /language/async
 [await]: /language/async
 [break]: /language/loops#break-and-continue
