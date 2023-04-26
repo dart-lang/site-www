@@ -115,12 +115,12 @@ To resolve these issues, check for
 of any packages you installed from pub.dev, and [migrate](#migrate) all
 of your own source code to use sound null safety.
 
-As of late January 2023, **Dart 3 alpha** is available from the Dart dev channel
-and the Flutter master channel; see [the download page][] for details.
+As of late April 2023, **Dart 3 beta** is available from the Dart beta channel
+and the Flutter beta channel; see [the download page][] for details.
 We recommend you test your code for Dart 3 compatibility using that release:
 
 ```terminal
-$ dart --version                     # make sure this reports 3.0.0-151.0.dev or higher
+$ dart --version                     # make sure this reports 3.0.0-417.0.beta or higher
 $ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
 ```
