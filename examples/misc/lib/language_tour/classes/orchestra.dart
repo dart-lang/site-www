@@ -16,11 +16,11 @@ mixin Musical {
 }
 // #enddocregion Musical
 
-abstract class Aggressive {
+mixin Aggressive {
   bool passive = false;
 }
 
-abstract class Demented {
+mixin Demented {
   bool dangerous = false;
 }
 
