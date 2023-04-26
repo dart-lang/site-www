@@ -517,7 +517,7 @@ and [`if` and `for`][control] for performing control flow while
 building the contents:
 
 [spread]: /language/collections#spread-operators
-[control]: /language/collections#collection-operators
+[control]: /language/collections#control-flow-operators
 
 {:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>
@@ -940,9 +940,9 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 
 {% include linter-rule-mention.md rule="prefer_equal_for_default_values" %}
 
-For legacy reasons, Dart allows both `:` and `=` as the default value separator
-for named parameters. For consistency with optional positional parameters, use
-`=`.
+Before Dart 3, Dart allowed both `:` and `=` 
+as the default value separator for named parameters. 
+For consistency with optional positional parameters, use `=`.
 
 {:.good}
 <?code-excerpt "usage_good.dart (default-separator)"?>
@@ -951,7 +951,6 @@ void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (default-separator)"?>
 {% prettify dart tag=pre+code %}
 void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}

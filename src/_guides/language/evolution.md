@@ -465,8 +465,8 @@ check out the [language versioning specification][].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
-[collection for]: /language/collections#collection-operators
-[collection if]: /language/collections#collection-operators
+[collection for]: /language/collections#control-flow-operators
+[collection if]: /language/collections#control-flow-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [Dart FFI]: /guides/libraries/c-interop
 [extension methods]: /language/extension-methods
