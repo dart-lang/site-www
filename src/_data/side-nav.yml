@@ -2,14 +2,12 @@
   expanded: false
   children:
     - title: Tutorials
-      urlExactMatch: true
       match-page-url-exactly: true
       permalink: /tutorials
     - title: Codelabs
       expanded: true
       children:
         - title: List of Dart codelabs
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
         - title: Language cheatsheet
@@ -90,7 +88,6 @@
       expanded: false
       children:
         - title: Sound null safety
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
@@ -106,7 +103,6 @@
   expanded: false
   children:
     - title: Overview
-      urlExactMatch: true
       match-page-url-exactly: true
       permalink: /guides/language/effective-dart
     - title: Style
@@ -122,7 +118,6 @@
   expanded: false
   children:
     - title: Overview
-      urlExactMatch: true
       match-page-url-exactly: true
       permalink: /guides/libraries
     - title: Tour
@@ -193,7 +188,6 @@
     - title: Command-line & server apps
       children:
         - title: Overview
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /server
         - title: Get started
@@ -211,7 +205,6 @@
     - title: Web apps
       children:
         - title: Overview
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /web
         - title: Get started
@@ -236,7 +229,6 @@
   expanded: false
   children:
   - title: Overview
-    urlExactMatch: true
     match-page-url-exactly: true
     permalink: /tools
   - title: Editors & debuggers
@@ -250,7 +242,6 @@
       - title: DartPad
         children:
           - title: Overview
-            urlExactMatch: true
             match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: DartPad in tutorials
@@ -266,7 +257,6 @@
           permalink: /tools/sdk
         - title: dart
           permalink: /tools/dart-tool
-          urlExactMatch: true
         - title: dart analyze
           permalink: /tools/dart-analyze
         - title: dart compile
@@ -355,8 +345,3 @@
       permalink: https://flutter.dev
     - title: Package site
       permalink: https://pub.dev
-
-# - title: Books
-#   permalink: /resources/books
-# - title: Videos
-#   permalink: /resources/videos
