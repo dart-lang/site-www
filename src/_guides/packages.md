@@ -54,6 +54,18 @@ dependencies:
   intl: ^0.17.0
 ```
 
+Rather than editing the pubspec manually, 
+you can also add a dependency by running a `dart` tool command. 
+This adds a dependency on `vector_math`: 
+
+```terminal
+$ dart pub add vector_math
+Resolving dependencies... 
++ vector_math 2.1.3
+Downloading vector_math 2.1.3...
+Changed 1 dependency!
+```
+
 For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
