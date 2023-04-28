@@ -15,7 +15,7 @@ const oldToNew = {
     'trailing-commas': '/language/collections#trailing-comma',
     'spread-operator': '/language/collections#spread-operators',
     'spread-operators': '/language/collections#spread-operators',
-    'collection-operators': '/language/collections#collection-operators',
+    'collection-operators': '/language/collections#control-flow-operators',
     'sets': '/language/collections#sets',
     'maps': '/language/collections#maps',
     'characters': '/language/built-in-types#runes-and-grapheme-clusters',

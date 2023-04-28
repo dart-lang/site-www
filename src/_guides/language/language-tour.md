@@ -8,6 +8,18 @@ canonical: https://dart.dev/language
 noindex: true
 ---
 
+{% comment %}
+  !! NOTE:
+  
+  All new language content should go within the `/language` directory.
+  This file exists temporarily for legacy reasons so
+  links to the old language tour do not break.
+
+  In the short term, if you move content that is referenced here,
+  update the text and link in this file, as well as
+  the redirection map in `src/assets/js/language-tour-redirector.js`.
+{% endcomment -%}
+
 {{site.alert.warning}}
   The Dart language tour's content has been split across
   several different pages in the left side navigation under **Language**.
@@ -76,7 +88,7 @@ This content has moved to [Collections](/language/collections#spread-operator).
 
 #### Collection operators
 
-This content has moves to [Collections](/language/collections#collection-operators).
+This content has moves to [Collections](/language/collections#control-flow-operators).
 
 ### Sets
 

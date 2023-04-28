@@ -301,6 +301,6 @@ the arguments to `assert` aren't evaluated.
 [trailing comma]: /language/collections#lists
 [`AssertionError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
-[webdev serve]: /tools/webdev#serve
+[`webdev serve`]: /tools/webdev#serve
 [`dart run`]: /tools/dart-run
-[dart compile js]: /tools/dart-compile#js
+[`dart compile js`]: /tools/dart-compile#js
