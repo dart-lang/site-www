@@ -3,10 +3,27 @@ title: Tutorials
 description: Tutorials for writing Dart apps.
 ---
 
-These tutorials teach you how to use the Dart
-language, tools, and APIs to build applications.
-If you want a hands-on coding experience, try a
-**[codelab](/codelabs)**.
+Welcome to the Dart tutorials! 
+These teach you how to use the Dart
+language, libraries, and tools build applications.
+
+## Language
+
+If you like learning via coding exercises 
+checkout the [Dart koans](/codelabs/dart-cheatsheet).
+For a more textual introduction see the 
+[language intro](/language). 
+The Language menu on the left also has tutorials
+on more detailed topics, and tutorials written
+for those with existing knowledge of other programming languages.
+
+## Libraries
+
+The Libraries menu contains tutorials on the Dart core libraries,
+including collections, math, asynchronous programming, and I/O.
+
+
+
 
 ## The basics
 
