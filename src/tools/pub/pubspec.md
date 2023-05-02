@@ -90,6 +90,10 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
+`topics`
+: Optional. List of topics for the package.
+  [_Learn more._](#topics)
+
 Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
@@ -410,6 +414,37 @@ Each download of the package includes all screenshot files.
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
  
+### Topics
+
+Package authors can use the `topics` field to categorize their package. Topics
+can be used to assist discoverability during search with filters on pub.dev.
+Pub.dev displays the topics on the package page as well as in the search
+results.
+
+The field consists of a list of names. For example:
+
+```yaml
+topics:
+  - network
+  - http
+```
+
+Pub.dev limits topics to the following specifications:
+
+- At most 5 topics per package.
+- The length of the topic name should be 2-32 characters.
+- The topic name should consist of lowercase alphanumeric characters or dash
+  (but no double dash), starting with a-z and ending with a-z or 0-9.
+
+
+When choosing topics it is good practice to look at
+[existing topics]({{site.pub}}/topics) to see if there are established topics
+that match your package.
+
+Another good idea, if you have a number of related packages, for instance
+belonging to the same framework, it is good practice to tag of all these
+packages with the same topic, e.g. the name of the framework.
+
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
