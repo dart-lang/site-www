@@ -14,7 +14,8 @@ these.
 ## 100% sound null safety
 
 Null safety was introduced in Dart 2.12, more than two years ago. In Dart 2.12
-it was enabled [with a pubspec setting](#enable-null-safety), but in Dart 3, you always get null safety, and it cannot be turned off.
+it was enabled [with a pubspec setting](/null-safety/#enable-null-safety),
+but in Dart 3, you always get null safety, and it cannot be turned off.
 
 #### Symptom
 
@@ -28,7 +29,7 @@ Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Libraries that opt out of null safety with [language version comments](language/evolution#per-library-language-version-selection)
+Libraries that opt out of null safety with [language version comments](/language/evolution#per-library-language-version-selection)
 that select any language version below `2.12` will cause analysis or compilation
 errors:
 
@@ -341,7 +342,7 @@ Use Dart 2.19 to [migrate to nulls safety](/null-safety/migration-guide).
 
 ## Other tools changes
 
-  * The deprecated Observatory has been hidden by default. We recommend using [DevTools](LINK_TODO).
+  * The deprecated Observatory has been hidden by default. We recommend using [DevTools](/tools/dart-devtools).
   * The command `dart format fix` has been replaced by `dart fix`
     (#1153)[https://github.com/dart-lang/dart_style/issues/1153].
   * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up (#50700)[https://github.com/dart-lang/sdk/issues/50700].
