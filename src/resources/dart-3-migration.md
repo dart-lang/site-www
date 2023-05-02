@@ -340,6 +340,25 @@ These commands will fail.
 
 Use Dart 2.19 to [migrate to nulls safety](/null-safety/migration-guide).
 
+## Analyzer config changes
+
+**TODO**
+
+* Replace analyzer settings from
+```
+  analyzer:
+    strong-mode:
+      implicit-casts: false
+      implicit-dynamic: false
+```
+to
+```
+  analyzer:
+    language:
+      strict-casts: true
+      strict-raw-types: true
+```
+
 ## Other tools changes
 
   * The deprecated Observatory has been hidden by default. We recommend using [DevTools](/tools/dart-devtools).
