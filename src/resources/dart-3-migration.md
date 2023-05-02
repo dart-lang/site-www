@@ -1,0 +1,350 @@
+---
+title: Dart 3 migration guide
+description: Tips for how to migrate existing Dart code to be compatible with Dart 3.
+---
+
+Dart 3 is a new major release of Dart, that brings new core capabilities like
+records, patterns, and classes. Alongside these new capabilities the release
+also contains a number of changes, that may break existing code. The present
+document is intended to be a migration guide that may be helpful in resolving
+these.
+
+# Language
+
+## 100% sound null safety
+
+Null safety was introduced in Dart 2.12, more than two years ago. In Dart 2.12
+it was enabled [with a pubspec setting](#enable-null-safety), but in Dart 3, you always get null safety, and it cannot be turned off.
+
+#### Symptom
+
+Packages developed without null safety support will cause issues
+when resolving dependencies with `pub get`:
+
+```terminal
+$ dart pub get
+
+Because pkg1 doesn't support null safety, version solving failed.
+The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
+```
+
+Libraries that opt out of null safety with [language version comments](language/evolution#per-library-language-version-selection)
+that select any language version below `2.12` will cause analysis or compilation
+errors:
+
+```terminal
+$ dart analyze .
+Analyzing ....                         0.6s
+
+  error • lib/pkg1.dart:1:1 • The language version must be >=2.12.0. 
+  Try removing the language version override and migrating the code.
+  • illegal_language_version_override
+```
+
+```terminal
+$ dart run bin/my_app.dart
+../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
+// @dart=2.9
+^^^^^^^^^^^^
+```
+
+#### Migration
+
+A first step before beginning any migration to Dart 3, is to ensure your app or package has been 100% migrated to enable null safety. This must happen using a Dart `2.19` SDK, not a Dart 3 SDK. For details, see the [null safety migration guide](/null-safety/migration-guide).
+
+## Colon-syntax for default values
+
+For historical reasons, named optional parameters could specify their default value using either `:` or `=`. In Dart 3 only the `=` syntax is allowed.
+
+#### Symptom
+
+Dart analysis produces errors like:
+
+```
+line 2 • Using a colon as a separator before a default value is no longer supported.
+```
+
+#### Migration
+
+Change from using colons:
+
+```dart
+int someInt({int x: 0}) => x;
+```
+
+To using equals:
+
+```dart
+int someInt({int x = 0}) => x;
+```
+
+This migration can be made manually, or automated with `dart fix`:
+
+```
+$ dart fix --apply --code=obsolete_colon_for_default_value
+```
+
+## Tweaks to `switch` and `continue` statements
+
+**TODO**
+
+Breaking change: Dart 3.0 interprets switch cases as patterns instead of constant expressions. Most constant expressions found in switch cases are valid patterns with the same meaning (named constants, literals, etc.). You may need to tweak a few constant expressions to make them valid. This only affects libraries that have upgraded to language version 3.0.
+
+Breaking Change #50902: Dart reports a compile-time error if a continue statement targets a label that is not a loop (for, do and while statements) or a switch member. Fix this by changing the continue to target a valid labeled statement.
+
+#### Symptom
+
+**TODO**
+
+#### Migration
+
+**TODO**
+
+
+# Core libraries
+
+## Core libraries -- APIs removed
+
+The core libraries have been cleaned up to remove APIs that have been deprecated for several years. The following APIs no longer exist in the Dart core libraries:
+
+#### `dart:core`
+
+- **Breaking change** [#49529][]:
+  - Removed the deprecated `List` constructor, as it wasn't null safe.
+    Use list literals (e.g. `[]` for an empty list or `<int>[]` for an empty
+    typed list) or [`List.filled`][].
+  - Removed the deprecated `onError` argument on [`int.parse`][], [`double.parse`][],
+    and [`num.parse`][]. Use the [`tryParse`][] method instead.
+  - Removed the deprecated [`proxy`][] and [`Provisional`][] annotations.
+    The original `proxy` annotation has no effect in Dart 2,
+    and the `Provisional` type and [`provisional`][] constant
+    were only used internally during the Dart 2.0 development process.
+  - Removed the deprecated [`Deprecated.expires`][] getter.
+    Use [`Deprecated.message`][] instead.
+  - Removed the deprecated [`CastError`][] error.
+    Use [`TypeError`][] instead.
+  - Removed the deprecated [`FallThroughError`][] error. The kind of
+    fall-through previously throwing this error was made a compile-time
+    error in Dart 2.0.
+  - Removed the deprecated [`NullThrownError`][] error. This error is never
+    thrown from null safe code.
+  - Removed the deprecated [`AbstractClassInstantiationError`][] error. It was made
+    a compile-time error to call the constructor of an abstract class in Dart 2.0.
+  - Removed the deprecated [`CyclicInitializationError`]. Cyclic dependencies are
+    no longer detected at runtime in null safe code. Such code will fail in other
+    ways instead, possibly with a StackOverflowError.
+  - Removed the deprecated [`NoSuchMethodError`][] default constructor.
+    Use the [`NoSuchMethodError.withInvocation`][] named constructor instead.
+  - Removed the deprecated [`BidirectionalIterator`][] class.
+    Existing bidirectional iterators can still work, they just don't have
+    a shared supertype locking them to a specific name for moving backwards.
+
+[#49529]: https://github.com/dart-lang/sdk/issues/49529
+[`List.filled`]: https://api.dart.dev/stable/2.18.6/dart-core/List/List.filled.html
+[`int.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/int/parse.html
+[`double.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/double/parse.html
+[`num.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/num/parse.html
+[`tryParse`]: https://api.dart.dev/stable/2.18.4/dart-core/num/tryParse.html
+[`Deprecated.expires`]: https://api.dart.dev/stable/2.18.4/dart-core/Deprecated/expires.html
+[`Deprecated.message`]: https://api.dart.dev/stable/2.18.4/dart-core/Deprecated/message.html
+[`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.17.4/dart-core/AbstractClassInstantiationError-class.html
+[`CastError`]: https://api.dart.dev/stable/2.17.4/dart-core/CastError-class.html
+[`FallThroughError`]: https://api.dart.dev/stable/2.17.4/dart-core/FallThroughError-class.html
+[`NoSuchMethodError`]: https://api.dart.dev/stable/2.18.4/dart-core/NoSuchMethodError/NoSuchMethodError.html
+[`NoSuchMethodError.withInvocation`]: https://api.dart.dev/stable/2.18.4/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
+[`CyclicInitializationError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/CyclicInitializationError-class.html
+[`Provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/Provisional-class.html
+[`provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/provisional-constant.html
+[`proxy`]: https://api.dart.dev/stable/2.18.4/dart-core/proxy-constant.html
+[`CastError`]: https://api.dart.dev/stable/2.18.3/dart-core/CastError-class.html
+[`TypeError`]: https://api.dart.dev/stable/2.18.3/dart-core/TypeError-class.html
+[`FallThroughError`]: https://api.dart.dev/dev/2.19.0-374.0.dev/dart-core/FallThroughError-class.html
+[`NullThrownError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/NullThrownError-class.html
+[`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.18.3/dart-core/AbstractClassInstantiationError-class.html
+[`CyclicInitializationError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/CyclicInitializationError-class.html
+[`BidirectionalIterator`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/BidirectionalIterator-class.html
+
+#### `dart:async`
+
+- **Breaking change** [#49529][]:
+  - Removed the deprecated [`DeferredLibrary`][] class.
+    Use the [`deferred as`][] import syntax instead.
+
+[#49529]: https://github.com/dart-lang/sdk/issues/49529
+[`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
+[`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
+
+#### `dart:collection`
+
+- **Breaking change**:
+  - The following interface can no longer be extended, only implemented:
+    * `Queue`
+  - The following implementation classes can no longer be implemented:
+    * `LinkedList`
+    * `LinkedListEntry`
+  - The following implementation classes can no longer be implemented
+    or extended:
+    * `HasNextIterator` (Also deprecated.)
+    * `HashMap`
+    * `LinkedHashMap`
+    * `HashSet`
+    * `LinkedHashSet`
+    * `DoubleLinkedQueue`
+    * `ListQueue`
+    * `SplayTreeMap`
+    * `SplayTreeSet`
+
+#### `dart:developer`
+
+- **Breaking change** [#49529][]:
+  - Removed the deprecated [`MAX_USER_TAGS`][] constant.
+    Use [`maxUserTags`][] instead.
+
+- **Breaking change** [#50231][]:
+  - Removed the deprecated [`Metrics`][], [`Metric`][], [`Counter`][],
+    and [`Gauge`][] classes as they have been broken since Dart 2.0.
+
+[#49529]: https://github.com/dart-lang/sdk/issues/49529
+[#50231]: https://github.com/dart-lang/sdk/issues/50231
+[`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
+[`maxUserTags`]: https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
+[`Metrics`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html
+[`Metric`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html
+[`Counter`]: https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html
+[`Gauge`]: https://api.dart.dev/stable/2.18.2/dart-developer/Gauge-class.html
+
+#### `dart:html`
+
+- **Breaking change**: As previously announced, the deprecated `registerElement`
+  and `registerElement2` methods in `Document` and `HtmlDocument` have been
+  removed.  See [#49536](https://github.com/dart-lang/sdk/issues/49536) for
+  details.
+
+#### `dart:math`
+
+- **Breaking change**:
+  - The `Random` interface can only be implemented, not extended.
+
+#### `dart:io`
+
+- **Breaking change** [#51035][]:
+  - Update `NetworkProfiling` to accommodate new `String` ids
+    that are introduced in vm_service:11.0.0
+
+[#51035]: https://github.com/dart-lang/sdk/issues/51035
+
+
+#### Symptom
+
+Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`) will fail with errors like:
+
+```
+error line 2 • Undefined class 'CyclicInitializationError'.
+```
+
+#### Migration
+
+Manually migrate away from using these APIs.
+
+## Core libraries -- changes to what can be mixed in, extended, or implemented
+
+**TODO FINISH THIS SECTION**
+
+Non-`mixin` classes in the platform libraries
+
+  can no longer be mixed in, unless they are explicitly marked as `mixin class`.
+  The following existing classes have been made mixin classes:
+  * `Iterable`
+  * `IterableMixin` (now alias for `Iterable`)
+  * `IterableBase` (now alias for `Iterable`)
+  * `ListMixin`
+  * `SetMixin`
+  * `MapMixin`
+  * `LinkedListEntry`
+  * `StringConversionSink`
+
+
+Breaking change when migrating code to Dart 3.0: Some changes to platform libraries only affect code when that code is migrated to language version 3.0.
+
+The Function type can no longer be implemented, extended or mixed in. Since Dart 2.0 writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
+
+The following declarations can only be implemented, not extended:
+
+Comparable
+Exception
+Iterator
+Pattern
+Match
+RegExp
+RegExpMatch
+StackTrace
+StringSink
+None of these declarations contained any implementation to inherit, and are marked as interface to signify that they are only intended as interfaces.
+
+The following declarations can no longer be implemented or extended:
+
+MapEntry
+OutOfMemoryError
+StackOverflowError
+Expando
+WeakReference
+Finalizer
+
+The MapEntry value class is restricted to enable later optimizations. The remaining classes are tightly coupled to the platform and not intended to be subclassed or implemented.
+
+
+# Tools
+
+## Discontinued command-line tools
+
+Historically the Dart team has offered a number of smaller developer tools for
+things like formatting code (`dartfmt`), analyzing code (`dartanalyzer`), etc.
+In Dart 2.10 (October 2020) we introduced a new unified Dart developer tool, the
+[`dart` tool](https://dart.dev/tools/dart-tool).
+
+#### Symptom
+
+In Dart 3 these smaller tools do not exist, and have been replaced by the new
+combined `dart` tool.
+
+#### Migration
+
+Use new sub-commands available in the `dart` tool:
+
+| Historical tool | `dart` replacement                                       | Deprecation | Discontinuation |
+|-----------------|----------------------------------------------------------|-------------|-----------------|
+| `stagehand`     |  `dart create`                                           | [2.14](https://github.com/dart-lang/stagehand/issues/671)        | 2.14*  |
+| `dartfmt`       | [`dart format`](https://dart.dev/tools/dart-format)      | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
+| `dart2native`   | [`dart compile exe`](https://dart.dev/tools/dart-compile)    | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
+| `dart2js`       | [`dart compile js`](https://dart.dev/tools/dart-compile)    | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartdevc`      | none                              | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartanalyzer`  | [`dart analyze`](https://dart.dev/tools/dart-analyze)    | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
+| `dartdoc`       | `dart doc`                                                      | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
+| `pub`           | [`dart pub`](https://dart.dev/tools/dart-pub)            | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
+
+
+## Null safety migration tools removed
+
+  * The following null safety migration commands have been removed,
+    as Dart 3 doesn't support code without null safety (see the 100% sound null safety section above):
+    - `dart migrate`
+    - `dart pub upgrade --null-safety`
+    - `dart pub outdated --mode=null-safety`
+
+#### Symptom
+
+These commands will fail.
+
+#### Migration
+
+Use Dart 2.19 to [migrate to nulls safety](/null-safety/migration-guide).
+
+## Other tools changes
+
+  * The deprecated Observatory has been hidden by default. We recommend using [DevTools](LINK_TODO).
+  * The command `dart format fix` has been replaced by `dart fix`
+    (#1153)[https://github.com/dart-lang/dart_style/issues/1153].
+  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up (#50700)[https://github.com/dart-lang/sdk/issues/50700].
+
+
+
