@@ -78,8 +78,8 @@ Dart null safety support is based on the following three core design principles:
 
 ## Dart 3 and null safety
 
-Dart 3---planned for a mid-2023 release---always has sound null safety.
-Dart 3 will prevent code from running without it.
+Dart 3 always has sound null safety,
+and will prevent code from running without it.
 
 Packages developed without null safety support will cause issues
 when resolving dependencies:
@@ -132,31 +132,6 @@ listed by the analyzer.
 
 [the download page]: /get-dart/archive#dart-3-beta
 [status of the dependencies]: /null-safety/migration-guide#check-dependency-status
-
-### Dart 3 backwards compatibility
-
-Packages and apps migrated to use null safety with Dart 2.12 or later will
-likely be backwards compatible with Dart 3. Specifically, for any package where
-the lower bound of the SDK constraint is 2.12.0 or higher, pub will allow
-resolution even when the upper bound is limited to versions below 3.0.0. For
-example, a package with the following constraint will be allowed to resolve with
-a Dart 3.x SDK:
-
-```yaml
-environment:
-  sdk: '>=2.14.0 <3.0.0'
-```
-
-This allows developers to use Dart 3 sound null safety with packages that have
-been migrated to 2.12 null safety without needing a second migration.
-Note that this only applies to code that
-doesn't depend on Dart 3 breaking changes:
-
-* Several historical core library APIs have been removed; for details,
-  see the GitHub issues [#34233][] and [#49529][].
-* The historical language syntax for default parameter values
-  ([#2357][]) has been discontinued.
-
 
 ## Dart 2.x and null safety {#enable-null-safety}
 
