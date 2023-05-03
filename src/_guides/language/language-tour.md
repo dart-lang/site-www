@@ -15,6 +15,18 @@ noindex: true
   check out [Introduction to the Dart language](/language).
 {{site.alert.end}}
 
+{% comment %}
+  !! NOTE:
+  
+  All new language content should go within the `/language` directory.
+  This file exists temporarily for legacy reasons so
+  links to the old language tour do not break.
+  
+  In the short term, if you move content that is referenced here,
+  update the text and link in this file, as well as
+  the redirection map in `src/assets/js/language-tour-redirector.js`.
+{% endcomment -%}
+
 ## A basic Dart program
 
 This content has moved to [Introduction to the Dart language](/language).
