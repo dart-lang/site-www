@@ -355,7 +355,7 @@ Manually migrate away from using these APIs.
 
 ### Extends & implements
 
-Dart 3 supports new [class modifiers][*TODO*] that can restrict the capabilities of a class.
+Dart 3 supports new class modifiers [*TODO* LINK] that can restrict the capabilities of a class.
 They have been applied to a number of classes in the core libraries.
 
 #### Scope
