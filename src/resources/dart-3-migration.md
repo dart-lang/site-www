@@ -63,9 +63,23 @@ To understand if your source code is impacted by any Dart 3 changes,
 use these steps:
 
 ```terminal
-$ dart --version                     # make sure this reports 3.0.0 or higher
-$ dart pub get / flutter pub get     # this should resolve without issues
-$ dart analyze / flutter analyze     # this should pass without errors
+$ dart --version    # make sure this reports 3.0.0 or higher
+$ dart pub get      # this should resolve without issues
+$ dart analyze      # this should pass without errors
+```
+
+If the `pub get` step fails, try to upgrade your dependencies
+to see if more recent versions might support Dart 3:
+
+```terminal
+$ dart pub upgrade
+$ dart analyze      # this should pass without errors
+```
+
+Or if needed also include major versions upgrades:
+```terminal
+$ dart pub upgrade --major-versions
+$ dart analyze      # this should pass without errors
 ```
 
 ## Dart 3 language changes
@@ -153,25 +167,53 @@ This migration can be made manually, or automated with `dart fix`:
 $ dart fix --apply --code=obsolete_colon_for_default_value
 ```
 
-### `switch` and `continue`
+### `mixin`
+
+Pre-Dart 3, any `class` could be used as a `mixin`.
+In Dart 3, only types declared `mixin class` or `mixin`, may be used as a mixin.
 
 #### Scope
 
 This is a *versioned* change, that only applies to language version 3.0 or later.
 
-**TODO**
+#### Migration
 
-Breaking change: Dart 3.0 interprets switch cases as patterns instead of constant expressions. Most constant expressions found in switch cases are valid patterns with the same meaning (named constants, literals, etc.). You may need to tweak a few constant expressions to make them valid. This only affects libraries that have upgraded to language version 3.0.
+Determine if the class is intended to be used as a mixin.
 
-Breaking Change #50902: Dart reports a compile-time error if a continue statement targets a label that is not a loop (for, do and while statements) or a switch member. Fix this by changing the continue to target a valid labeled statement.
+If the class defines an interface, consider using `implements`.
+
+### `switch` and `continue`
+
+Dart 3.0 interprets [switch cases](/language/control-flow#switch-and-case)
+as [patterns](/language/patterns) instead of constant expressions. 
+
+Also, Dart 3 reports a compile-time error if a continue statement targets a
+label that is not a loop (for, do and while statements) or a switch member.
+
+#### Scope
+
+This is a *versioned* change, that only applies to language version 3.0 or later.
 
 #### Symptom
 
-**TODO**
+Most constant expressions found in switch cases are valid patterns
+with the same meaning (named constants, literals, etc.).
+
+TODO: Give an example
+
+For continue statements, you will see an error like:
+```
+The label used in a 'continue' statement must be defined on either a loop or a switch member.
+```
 
 #### Migration
 
-**TODO**
+For constant expressions, tweak them to make them valid.
+
+TODO: Give an example
+
+For continue statements, change the continue to target a valid labeled statement,
+which must be attached to a `for`, `do` or `while` statement.
 
 
 ## Dart 3 core library changes
@@ -311,22 +353,10 @@ error line 2 • Undefined class 'CyclicInitializationError'.
 
 Manually migrate away from using these APIs.
 
-### Mixins, extends, implements
+### Extends & implements
 
-**TODO FINISH THIS SECTION**
-
-Non-`mixin` classes in the platform libraries
-
-  can no longer be mixed in, unless they are explicitly marked as `mixin class`.
-  The following existing classes have been made mixin classes:
-  * `Iterable`
-  * `IterableMixin` (now alias for `Iterable`)
-  * `IterableBase` (now alias for `Iterable`)
-  * `ListMixin`
-  * `SetMixin`
-  * `MapMixin`
-  * `LinkedListEntry`
-  * `StringConversionSink`
+Dart 3 supports new [class modifiers][*TODO*] that can restrict the capabilities of a class.
+They have been applied to a number of classes in the core libraries.
 
 #### Scope
 
@@ -334,33 +364,32 @@ This is a *versioned* change, that only applies to language version 3.0 or later
 
 #### Details
 
-Breaking change when migrating code to Dart 3.0: Some changes to platform libraries only affect code when that code is migrated to language version 3.0.
+* The `Function` type can no longer be implemented, extended or mixed in. Since Dart 2.0 writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
 
-The Function type can no longer be implemented, extended or mixed in. Since Dart 2.0 writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
+* The following declarations can only be implemented, not extended:
+  - Comparable
+  - Exception
+  - Iterator
+  - Pattern
+  - Match
+  - RegExp
+  - RegExpMatch
+  - StackTrace
+  - StringSink
 
-The following declarations can only be implemented, not extended:
-
-Comparable
-Exception
-Iterator
-Pattern
-Match
-RegExp
-RegExpMatch
-StackTrace
-StringSink
 None of these declarations contained any implementation to inherit, and are marked as interface to signify that they are only intended as interfaces.
 
-The following declarations can no longer be implemented or extended:
+* The following declarations can no longer be implemented or extended:
 
-MapEntry
-OutOfMemoryError
-StackOverflowError
-Expando
-WeakReference
-Finalizer
+  - MapEntry
+  - OutOfMemoryError
+  - StackOverflowError
+  - Expando
+  - WeakReference
+  - Finalizer
 
 The MapEntry value class is restricted to enable later optimizations. The remaining classes are tightly coupled to the platform and not intended to be subclassed or implemented.
+
 
 
 ## Dart 3 tools changes
