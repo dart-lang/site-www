@@ -29,7 +29,7 @@ Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Libraries that opt out of null safety with [language version comments](/language/evolution#per-library-language-version-selection)
+Libraries that opt out of null safety with [language version comments](/guides/language/evolution#per-library-language-version-selection)
 that select any language version below `2.12` will cause analysis or compilation
 errors:
 
