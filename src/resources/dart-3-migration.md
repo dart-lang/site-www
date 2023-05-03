@@ -182,13 +182,10 @@ Determine if the class is intended to be used as a mixin.
 
 If the class defines an interface, consider using `implements`.
 
-### `switch` and `continue`
+### `switch`
 
 Dart 3.0 interprets [switch cases](/language/control-flow#switch-and-case)
 as patterns [*TODO* LINK] instead of constant expressions. 
-
-Also, Dart 3 reports a compile-time error if a continue statement targets a
-label that is not a loop (for, do and while statements) or a switch member.
 
 #### Scope
 
@@ -201,20 +198,40 @@ with the same meaning (named constants, literals, etc.).
 
 TODO: Give an example
 
-For continue statements, you will see an error like:
-```
-The label used in a 'continue' statement must be defined on either a loop or a switch member.
-```
-
 #### Migration
 
 For constant expressions, tweak them to make them valid.
 
 TODO: Give an example
 
-For continue statements, change the continue to target a valid labeled statement,
+
+### `continue`
+
+Dart 3 reports a compile-time error if a continue statement targets a
+label that is not a loop (for, do and while statements) or a switch member.
+
+#### Scope
+
+This is a *versioned* change, that only applies to language version 3.0 or later.
+
+#### Symptom
+
+You will see an error like:
+```
+The label used in a 'continue' statement must be defined on either a loop or a switch member.
+```
+
+#### Migration
+
+If changing behavpir is acceptable, 
+change the continue to target a valid labeled statement,
 which must be attached to a `for`, `do` or `while` statement.
 
+If you want to preserve behavoir use `break`:
+In previous versions of Dart, a `continue` statement 
+that wasn't targeted at a loop or a switch member 
+behaved like `break`. So to migrate to Dart 3.0, 
+change the `continue` statement to a `break` statement.
 
 ## Dart 3 core library changes
 
@@ -232,7 +249,8 @@ This is an *unversioned* change, that applies to all Dart 3 code.
 
 - Removed the deprecated `List` constructor, as it wasn't null safe.
   Use list literals (e.g. `[]` for an empty list or `<int>[]` for an empty
-  typed list) or [`List.filled`][].
+  typed list) or [`List.filled`][]. This only impacts non-null safe code,
+  as null safe code already couldn't use this constructor.
 - Removed the deprecated `onError` argument on [`int.parse`][], [`double.parse`][],
   and [`num.parse`][]. Use the [`tryParse`][] method instead.
 - Removed the deprecated [`proxy`][] and [`Provisional`][] annotations.
@@ -421,7 +439,7 @@ Use new sub-commands available in the `dart` tool:
 | `dartfmt`       | [`dart format`](https://dart.dev/tools/dart-format)      | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
 | `dart2native`   | [`dart compile exe`](https://dart.dev/tools/dart-compile)    | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
 | `dart2js`       | [`dart compile js`](https://dart.dev/tools/dart-compile)    | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
-| `dartdevc`      | none                              | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartdevc`      | [`webdev`](/tools/webdev)                              | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
 | `dartanalyzer`  | [`dart analyze`](https://dart.dev/tools/dart-analyze)    | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
 | `dartdoc`       | `dart doc`                                                      | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
 | `pub`           | [`dart pub`](https://dart.dev/tools/dart-pub)            | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
