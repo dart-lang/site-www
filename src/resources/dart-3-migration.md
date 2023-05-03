@@ -291,25 +291,6 @@ This is an *unversioned* change, that applies to all Dart 3 code.
 [`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
 [`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
 
-#### `dart:collection`
-
-- The following interface can no longer be extended, only implemented:
-  * `Queue`
-- The following implementation classes can no longer be implemented:
-  * `LinkedList`
-  * `LinkedListEntry`
-- The following implementation classes can no longer be implemented
-  or extended:
-  * `HasNextIterator` (Also deprecated.)
-  * `HashMap`
-  * `LinkedHashMap`
-  * `HashSet`
-  * `LinkedHashSet`
-  * `DoubleLinkedQueue`
-  * `ListQueue`
-  * `SplayTreeMap`
-  * `SplayTreeSet`
-
 #### `dart:developer`
 
 - Removed the deprecated [`MAX_USER_TAGS`][] constant.
@@ -362,35 +343,55 @@ They have been applied to a number of classes in the core libraries.
 
 This is a *versioned* change, that only applies to language version 3.0 or later.
 
-#### Details
+#### `dart:core`
 
 * The `Function` type can no longer be implemented, extended or mixed in. Since Dart 2.0 writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
 
 * The following declarations can only be implemented, not extended:
-  - Comparable
-  - Exception
-  - Iterator
-  - Pattern
-  - Match
-  - RegExp
-  - RegExpMatch
-  - StackTrace
-  - StringSink
+  - `Comparable`
+  - `Exception`
+  - `Iterator`
+  - `Pattern`
+  - `Match`
+  - `RegExp`
+  - `RegExpMatch`
+  - `StackTrace`
+  - `StringSink`
 
 None of these declarations contained any implementation to inherit, and are marked as interface to signify that they are only intended as interfaces.
 
 * The following declarations can no longer be implemented or extended:
 
-  - MapEntry
-  - OutOfMemoryError
-  - StackOverflowError
-  - Expando
-  - WeakReference
-  - Finalizer
+  - `MapEntry`
+  - `OutOfMemoryError`
+  - `StackOverflowError`
+  - `Expando`
+  - `WeakReference`
+  - `Finalizer`
 
 The MapEntry value class is restricted to enable later optimizations. The remaining classes are tightly coupled to the platform and not intended to be subclassed or implemented.
 
+#### `dart:collection`
 
+* The following interface can no longer be extended, only implemented:
+
+  - `Queue`
+
+* The following implementation classes can no longer be implemented:
+  - `LinkedList`
+  - `LinkedListEntry`
+
+* The following implementation classes can no longer be implemented
+  or extended:
+  - `HasNextIterator` (Also deprecated.)
+  - `HashMap`
+  - `LinkedHashMap`
+  - `HashSet`
+  - `LinkedHashSet`
+  - `DoubleLinkedQueue`
+  - `ListQueue`
+  - `SplayTreeMap`
+  - `SplayTreeSet`
 
 ## Dart 3 tools changes
 
