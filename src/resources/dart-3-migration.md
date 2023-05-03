@@ -345,7 +345,7 @@ This is a *versioned* change, that only applies to language version 3.0 or later
 
 #### `dart:core`
 
-* The `Function` type can no longer be implemented, extended or mixed in. Since Dart 2.0 writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
+* The `Function` type can no longer be implemented, extended or mixed in. Since Dart 2.0, writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
 
 * The following declarations can only be implemented, not extended:
   - `Comparable`
