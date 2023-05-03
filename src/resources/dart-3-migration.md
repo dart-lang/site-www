@@ -185,7 +185,7 @@ If the class defines an interface, consider using `implements`.
 ### `switch` and `continue`
 
 Dart 3.0 interprets [switch cases](/language/control-flow#switch-and-case)
-as [patterns](/language/patterns) instead of constant expressions. 
+as patterns [*TODO* LINK] instead of constant expressions. 
 
 Also, Dart 3 reports a compile-time error if a continue statement targets a
 label that is not a loop (for, do and while statements) or a switch member.
