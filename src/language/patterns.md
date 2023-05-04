@@ -12,14 +12,27 @@ A pattern represents the shape of a set of values that it may match against actu
 values.
 
 This page describes:
-- What patterns do (match and destructure)
+- What patterns do
 - Where patterns are allowed in Dart code
 - Common use cases for patterns
 
 To learn about the different kinds of patterns, visit the [pattern types][types]
 page.
 
-## Matching
+## What patterns do
+
+In general, a pattern may **match** a value, **destructure** a value, or both,
+depending on the context and shape of the pattern.
+
+First, given a value, pattern matching allows you to check whether the value has
+a certain shape, or is a certain constant, or is equal to something else, or has
+a certain type.
+
+Then, destructuring provides you with a convenient declarative syntax to break
+that value into its constituent parts, possibly binding variables to some or all
+of those parts in the process.
+
+### Matching
 
 A pattern is always tested against a value to determine if the value has the form
 you expect, or in other words, if the value _matches_ the pattern. 
@@ -51,7 +64,7 @@ switch (obj) {
 Patterns can ignore parts of a matched value by using a [wildcard pattern][]
 as a place holder, or a [rest element][] in the case of list patterns.
 
-## Destructuring
+### Destructuring
 
 When an object and pattern match, the pattern can then access the object's data 
 and extract it in parts. In other words, the pattern _destructures_ the object:
@@ -64,9 +77,8 @@ var [a, b, c] = numList;
 print(a + b + c);          
 ```
 
-Whether a pattern destructures depends on what [kind of pattern][types]
-you're using. You can nest any kind of pattern inside a destructuring pattern, 
-though. For example, this case pattern matches and destructures a two-element
+You can nest [any kind of pattern][types] inside a destructuring pattern, 
+For example, this case pattern matches and destructures a two-element
 list whose first element is `a` or `b`:
 
 ```dart
