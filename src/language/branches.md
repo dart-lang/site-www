@@ -58,8 +58,9 @@ _single_ pattern. To test a value against _multiple_ patterns, use [switch](#swi
 ## Switch
 
 Switch statements evaluate a value expression against a series of cases.
-Each case clause is a [pattern][] followed by a series of statements in the case
-body to execute if the value matches that pattern. 
+Each case clause is a [pattern][] to match against the value being switched on,
+followed by a series of statements in the case body to execute if the value
+matches that pattern. You can use [any kind of pattern][] for a case.
 
 Non-empty `case` clauses implicitly jump to the end of the switch after completion.
 Other valid ways to end a non-empty `case` clause are a [`continue`][break],
@@ -104,58 +105,6 @@ switch (command) {
 }
 ```
 For an empty case that does not fall through, use [`break`][break] for its body.
-
-### Case patterns
-
-The pattern following a case, or case pattern, allows control flow to
-either match and destructure the object being switched on, or continue execution
-if the object doesn't match. Case patterns can be any kind of [pattern][]:
-
-- **Constant patterns**: the object's value has to be equivalent to match.
-  ```dart
-  switch (number) {
-    case 1:           // Matches if number == 1
-      print("one");     
-  }
-  ```
-- **List**, **map**, or **record patterns**: the elements are destructured if matched.
-  ```dart
-  switch (obj) {
-    case [a, b]:                  // Matches if obj is a list with two elements
-      print("$a and $b match");    
-  }
-  ```  
-- **Variable patterns**: the matched value binds to a new variable.
-  ```dart
-  switch ((1, 2)) {
-    case (var a, var b): ...     // Matches if 1 and 2 can be assigned to a and b
-  }
-  ```  
-- **Logical** or **relational patterns**: the object matches if the comparison to
-a constant returns `true`.
-  ```dart
-  switch (code) {
-    case >= first && <= last: ...    
-    // Matches if the value of code is between the constant values of first and last
-  }
-  ```  
-- **Null check** or **assert patterns**: the match is first on whether the object is not null, then on the value.
-  ```dart
-  switch (maybe) {
-    case var s?:                 
-    // Matches if maybe is not null, and then against the inner pattern "var s"
-  }
-  ```  
-- **Object patterns**: the match exposes getters on the object type.
-  ```dart
-  switch (Shape shape) {
-    case Rect(width: var w, height: var h): ...
-    // Matches if shape is of type Rect, and then against the properties of Rect
-  }
-  ```  
-
-Values [destructured][] by a pattern in a case become local variables,
-only available in the body of that case. 
 
 ### Switch expressions
 
@@ -277,3 +226,4 @@ rather than exiting the entire switch.
 [break]: /language/loops#break-and-continue
 [sealed]: /
 [destructured]: /
+[any kind of pattern]: /
