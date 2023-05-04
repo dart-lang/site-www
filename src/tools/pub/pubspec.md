@@ -437,13 +437,14 @@ Pub.dev limits topics to the following specifications:
   (but no double dash), starting with a-z and ending with a-z or 0-9.
 
 
-When choosing topics it is good practice to look at
-[existing topics]({{site.pub}}/topics) to see if there are established topics
-that match your package.
+#### Best Practices
 
-Another good idea, if you have a number of related packages, for instance
-belonging to the same framework, it is good practice to tag of all these
-packages with the same topic, e.g. the name of the framework.
+When choosing topics, first look at [existing topics]({{site.pub}}/topics) to
+check if established topics exist that match your package.
+
+If you have a number of related packages, tag of all these packages with the
+same topic. Such packages could belong to the same framework and be tagged with
+the name of the framework.
 
 ### SDK constraints
 
