@@ -670,10 +670,7 @@
     "maturity": "deprecated",
     "state": "deprecated",
     "incompatible": [],
-    "sets": [
-      "recommended",
-      "flutter"
-    ],
+    "sets": [],
     "fixStatus": "hasFix",
     "details": "**DO** specify `@required` on named parameters without a default value on which \nan `assert(param != null)` is done.\n\n**BAD:**\n```dart\nm1({a}) {\n  assert(a != null);\n}\n```\n\n**GOOD:**\n```dart\nm1({@required a}) {\n  assert(a != null);\n}\n\nm2({a: 1}) {\n  assert(a != null);\n}\n```\n\nNOTE: Only asserts at the start of the bodies will be taken into account.\n\n",
     "sinceDartSdk": "2.0.0",
@@ -1581,6 +1578,19 @@
     "sinceLinter": "0.1.56"
   },
   {
+    "name": "matching_super_parameters",
+    "description": "Use matching super parameter names.",
+    "group": "style",
+    "maturity": "stable",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "**DO** use super parameter names that match their corresponding super\nconstructor's parameter names.\n\n**BAD:**\n\n```dart\nclass Rectangle {\n  final int width;\n  final int height;\n  \n  Rectangle(this.width, this.height);\n}\n\nclass ColoredRectangle extends Rectangle {\n  final Color color;\n  \n  ColoredRectangle(\n    this.color,\n    super.height, // Bad, actually corresponds to the `width` parameter.\n    super.width, // Bad, actually corresponds to the `height` parameter.\n  ); \n}\n```\n\n**GOOD:**\n\n```dart\nclass Rectangle {\n  final int width;\n  final int height;\n  \n  Rectangle(this.width, this.height);\n}\n\nclass ColoredRectangle extends Rectangle {\n  final Color color;\n  \n  ColoredRectangle(\n    this.color,\n    super.width,\n    super.height, \n  ); \n}\n```\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
+  },
+  {
     "name": "missing_whitespace_between_adjacent_strings",
     "description": "Missing whitespace between adjacent strings.",
     "group": "style",
@@ -1637,6 +1647,19 @@
     "details": "**DON'T** use a leading underscore for identifiers that aren't private. Dart\nuses a leading underscore in an identifier to mark members and top-level\ndeclarations as private. This trains users to associate a leading underscore\nwith one of those kinds of declarations. They see `_` and  think \"private\".\nThere is no concept of \"private\" for local variables or parameters.  When one of \nthose has a name that starts with an underscore, it sends a confusing signal to\nthe reader. To avoid that, don't use leading underscores in those names.\n\n**EXCEPTION:**: An unused parameter can be named `_`, `__`, `___`, etc.  This is\ncommon practice in callbacks where you are passed a value but you don't need\nto use it. Giving it a name that consists solely of underscores is the idiomatic\nway to indicate that the value isn't used.\n\n**BAD:**\n```dart\nvoid print(String _name) {\n  var _size = _name.length;\n  ...\n}\n```\n**GOOD:**\n\n```dart\nvoid print(String name) {\n  var size = name.length;\n  ...\n}\n```\n\n**OK:**\n\n```dart\n[1,2,3].map((_) => print('Hello'));\n```\n",
     "sinceDartSdk": "2.16.0",
     "sinceLinter": "1.15.0"
+  },
+  {
+    "name": "no_literal_bool_comparisons",
+    "description": "Don't compare booleans to boolean literals.",
+    "group": "style",
+    "maturity": "stable",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "From [Effective Dart](https://dart.dev/guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations):\n\n**DON'T** use `true` or `false` in equality operations.\n\nThis lint applies only if the expression is of a non-nullable `bool` type.\n\n**BAD:**\n```dart\nif (someBool == true) {\n}\nwhile (someBool == false) {\n}\n```\n\n**GOOD:**\n```dart\nif (someBool) {\n}\nwhile (!someBool) {\n}\n```\n",
+    "sinceDartSdk": "Unreleased",
+    "sinceLinter": "Unreleased"
   },
   {
     "name": "no_runtimeType_toString",
