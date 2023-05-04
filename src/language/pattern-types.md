@@ -3,12 +3,16 @@ title: Pattern types
 description: Pattern type reference in Dart.
 ---
 
+This page is a reference for the different kinds of patterns.
+For an overview of how patterns work, where you can use them in Dart, and common
+use cases, visit the main [Patterns][] page.
+
 ## Cast
 
 `foo as String`
 
-Cast patterns let you insert a [type cast][] as a pattern is
-[destructuring][destructure] values:
+A cast pattern lets you insert a [type cast][] in the middle of destructuring,
+before passing the value to another subpattern:
 
 ```dart
 (num, Object) record = (1, "s");
@@ -23,20 +27,33 @@ expected type of some destructured value.
 
 `123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)`
 
-Constant patterns allow simple literals and references to named constants to be
-used directly as patterns. They match when the value is equal to the constant.
+Constant patterns match when the value is equal to the constant: 
 
-Some valid constant expressions may not be valid constant patterns. In that case,
-to distinguish a constant expression from a constant pattern, prefix the expression
-with `const` and wrap it in parenthesis so it is unambiguosly an expression and
-not a constant pattern:
+```dart
+switch (number) {
+  // Matches if 1 == number.
+  case 1: // ... 
+}
+```
+
+You can use simple literals and references to named constants directly as constant patterns:
+
+- Number literals (`123`, `45.56`)
+- Boolean literals (`true`)
+- String literals (`'string'`)
+- Named constants (`someConstant`, `math.pi`, `double.infinity`)
+- Constant constructors (`const Point(0, 0)`)
+- Constant collection literals (`const []`, `const {1, 2}`)
+
+More complex constant expressions must be parenthesized and prefixed with
+`const` (`const (1 + 2)`):
 
 ```dart
 // List or map pattern:
-case [a, b]: ...
+case [a, b]: // ...
 
 // List or map literal:
-case const [a, b]: ...
+case const [a, b]: // ...
 ```
 
 ## Identifier	
@@ -44,7 +61,7 @@ case const [a, b]: ...
 `foo, _`
 
 Identifier patterns may behave like a [constant pattern](#constant) or like a
-[variable pattern](#variable), depending on the context where it appears:
+[variable pattern](#variable), depending on the context where they appear:
 
 - [Declaration][] context: declares a new variable with identifier name:
   `var (a, b) = (1, 2);`
@@ -55,7 +72,7 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
   const c = 1;
   switch (2) {
     case c: print('match $c');
-    default: print('no match');    // Prints "no match".
+    default: print('no match'); // Prints "no match".
    }
   ``` 
 - [Wildcard](#wildcard) identifier in any context: matches any value and discards it:
@@ -65,11 +82,19 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 
 `[subpattern1, subpattern2]`
 
-List patterns match values that implement [`List`][], and then recursively match
-its subpatterns against the list's elements to destructure them by position.
+A list pattern matches values that implement [`List`][], and then recursively
+matches its subpatterns against the list's elements to destructure them by position:
 
-List patterns require that the pattern match the entire list, but you can use
-[rest elements](#rest-element) as a place holder.
+```dart
+switch (obj) {
+  // Matches if obj is a list with two elements.
+  case [a, b]: // ... 
+}
+```  
+
+List patterns require that the number of elements in the pattern match the entire
+list. You can, however, use a [rest element](#rest-element) as a place holder to
+account for any number of elements in a list. 
 
 ### Rest element
 
@@ -78,15 +103,17 @@ of arbitrary lengths.
 
 ```dart
 var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
-print('$a $b $c $d'); // Prints "1 2 6 7".
+// Prints "1 2 6 7".
+print('$a $b $c $d'); 
 ```
 
-Rest elements can also have subpatterns that collects elements that don't match
+A rest element can also have a subpattern that collects elements that don't match
 the other subpatterns in the list, into a new list:
 
 ```dart
 var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
-print('$a $b $rest $c $d'); // Prints "1 2 [3, 4, 5] 6 7".
+// Prints "1 2 [3, 4, 5] 6 7".
+print('$a $b $rest $c $d'); 
 ```
 
 ## Logical-and	
@@ -94,27 +121,40 @@ print('$a $b $rest $c $d'); // Prints "1 2 [3, 4, 5] 6 7".
 `subpattern1 && subpattern2`
 
 A pair of patterns separated by `&&` matches only if both subpatterns match. If the
-left branch does not match, the right branch is not evaluated. 
+left branch does not match, the right branch is not evaluated.
+
+Subpatterns in a logical-and pattern can bind variables, but the variables in
+each subpattern must not overlap, because they will both be bound if the pattern
+matches:
+
+```dart
+switch ((1, 2)) {
+  // Error, both subpatterns attempt to bind 'b'.
+  case (var a, var b) && (var b, var c): // ... 
+}
+```
 
 ## Logical-or
 
 `subpattern1 || subpattern2`
 
-A pair of patterns separated by `||` matches if either of the branches match.
-If the left branch matches, the right branch is not evaluated. 
-
-Logical-or patterns can be nested inside a destructuring pattern. 
+A logical-or pattern separates subpatterns by `||` and matches if any of the
+branches match. Branches are evaluated left-to-right. Once a branch matches, the
+rest are not evaluated.
 
 ```dart
-switch (list) {
-  // Matches a two-element list whose first element is 'a' or 'b':
-  case ['a' || 'b', var c]:
-}
+var isPrimary = switch (Color color) {
+  Color.red || Color.yellow || Color.blue => true,
+  _ => false
+};
 ```
+
+Subpatterns in a logical-or pattern can bind variables, but the branches must
+define the same set of variables, because only one branch will be evaluated when
+the pattern matches.
 
 {% comment %}
 [TODO: move the below content to the switch page, doesn't belong here]
-{% endcomment %}
 
 Logical-or patterns are useful for having multiple cases share a body in switch
 expressions or statements.
@@ -137,6 +177,8 @@ switch (shape) {
 }
 ```
 
+{% endcomment %}
+
 ## Map
 
 `{"key": subpattern1, someConst: subpattern2}`
@@ -144,55 +186,69 @@ switch (shape) {
 Map patterns match values that implement [`Map`][], and then recursively 
 match its subpatterns against the map’s keys to destructure them.
 
-Map patterns don't require the pattern to match the entire map. If a map has
-extra keys that te pattern doesn't destructure, it can still match.
+Map patterns don't require the pattern to match the entire map. A map pattern
+ignores any keys that the map contains that aren't matched by the pattern.
 
 ## Null-assert	
 
 `subpattern!`
 
-Null-assert patterns permit non-null values to flow through, but [throw][] if the
-matched value is null. 
+Null-assert patterns match first if the object is not null, then on the value.
+They permit non-null values to flow through, but [throw][] if the matched value is null. 
 
 ```dart
 List<String?> row = // ...
 
 // If the first column is 'user', we expect to have a name after it.
 switch (row) {
-  case ['user', var name!]:
-    // name is a non-nullable string here.
+  case ['user', var name!]: // ...
+    // 'name' is a non-nullable string here.
 }
 ```
+
+Use the null-assert pattern to eliminate `null` values from variable declaration
+patterns.
 
 ## Null-check	
 
 `subpattern?`
 
-Null-check patterns match if the value is not null, and then match the inner
+Null-check patterns match first if the value is not null, and then match the inner
 pattern against that same value.
-
 
 ```dart
 String? maybeString = // ...
 switch (maybeString) {
-  case var s?:
-    // s has type non-nullable String here.
+  case var s?: ...
+    // 's' has type non-nullable String here.
 }
 ```
+
+Use a null-check pattern while matching if you need to ensure `null` values
+aren't silently treated as match failures.
+
+To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
 ## Object
 
 `SomeClass(x: subpattern1, y: subpattern2)`
 
-Object patterns checks the matched value against a given named type to destructure
-data using the getters the object's class already defines. They are [refuted][]
+Object patterns check the matched value against a given named type to destructure
+data using getters on the object's properties. They are [refuted][]
 if the value doesn't have the same type.
+
+```dart
+switch (Shape shape) {
+  // Matches if shape is of type Rect, and then against the properties of Rect.
+  case Rect(width: var w, height: var h): // ...
+}
+```  
 
 The getter name can be omitted and inferred from the [variable pattern](#variable)
 or [identifier pattern](#identifier) in the field subpattern:
 
 ```dart
-var Point(:var x, :var y) = Point(1, 2);
+var Point(:x, :y) = Point(1, 2);
 ```
 
 Object patterns don't require the pattern to match the entire object.
@@ -217,8 +273,19 @@ If the value isn't a record with the same [shape][] as the pattern, the match
 fails. Otherwise, the field subpatterns are matched against the corresponding
 fields in the record.
 
+Record patterns require that the pattern match the entire record. To destructure 
+a record with _named_ fields using a pattern, include the field names in the pattern:
+
 ```dart
-// Variable:
+var (myString: foo, myNumber: bar) = (myString: 'string', myNumber: 1);
+```
+
+The getter name can be omitted and inferred from the [variable pattern](#variable)
+or [identifier pattern](#identifier) in the field subpattern. These pairs of
+patterns are each equivalent:
+
+```dart
+// Record pattern with variable subpatterns:
 var (untyped: untyped, typed: int typed) = // ...
 var (:untyped, :int typed) = // ...
 
@@ -227,21 +294,16 @@ switch (obj) {
   case (:var untyped, :int typed): // ...
 }
 
-// Null-check and null-assert:
+// Record pattern wih null-check and null-assert subpatterns:
 switch (obj) {
   case (checked: var checked?, asserted: var asserted!): // ...
   case (:var checked?, :var asserted!): // ...
 }
 
-// Cast:
+// Record pattern wih cast subpattern:
 var (field: field as int) = // ...
 var (:field as int) = // ...
 ```
-
-The getter name can be omitted and inferred from the [variable pattern](#variable)
-or [identifier pattern](#identifier) in the field subpattern.
-
-Record patterns require that the pattern match the entire record.
 
 ## Relational
 
@@ -287,13 +349,23 @@ pattern has matched.
 
 ```dart
 switch ((1, 2)) {
+  // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
   case (var a, var b): // ...
-  // var a and var b are variable patterns that bind to 1 and 2, respectively.
-  // They are in scope in the case body.
+  // 'a' and 'b' are in scope in the case body.
 }
 ```
 
-A [wildcard pattern](#wildcard) can be used a variable pattern. 
+A _typed_ variable pattern only matches if the matched value has the declared type,
+and fails otherwise:
+
+```dart
+switch ((1, 2)) {
+  // Does not match.
+  case (int a, String b): // ...
+}
+```
+
+You can use a [wildcard pattern](#wildcard) as a variable pattern. 
 
 ## Wildcard
 
@@ -320,6 +392,7 @@ switch (record) {
 }
 ```
 
+[Patterns]: /language/patterns
 [type cast]: /language/operators#type-test-operators
 [destructure]: /language/patterns#destructuring
 [throw]: /language/error-handling#throw
