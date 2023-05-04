@@ -223,7 +223,7 @@ The label used in a 'continue' statement must be defined on either a loop or a s
 
 #### Migration
 
-If changing behavpir is acceptable, 
+If changing behavior is acceptable, 
 change the continue to target a valid labeled statement,
 which must be attached to a `for`, `do` or `while` statement.
 
