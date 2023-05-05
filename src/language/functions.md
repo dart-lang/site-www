@@ -440,7 +440,7 @@ foo() {}
 assert(foo() == null);
 ```
 
-A function can return multiple values by aggregating them in a [record][].
+To return multiple values in a function, aggregate the values in a [record][].
 
 ```dart
 (String, int) foo() {

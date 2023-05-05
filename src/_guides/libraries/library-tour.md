@@ -1293,9 +1293,9 @@ await Future.wait([
 print('Done with all the long steps!');
 ```
 
-`Future.wait()` returns a future which will complete once all the provided
-futures have completed, either with their results, or with an error if any of
-the provided futures fail. 
+`Future.wait()` returns a future which completes once all the provided
+futures have completed. It completes either with their results,
+or with an error if any of the provided futures fail. 
 
 #### Handling errors for multiple futures
 
@@ -1303,23 +1303,25 @@ You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{s
 or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
-These extensions return a future with the resulting values of all the provided
-futures. Unlike `Future.wait`, if any future in the collection completes with
-an error, `wait` completes with a [`ParallelWaitError`][] that allows the caller
-to handle individual errors and dispose successful results if necessary.
+These extensions return a future with the resulting values of all provided
+futures. Unlike `Future.wait`, they also let you handle errors. 
 
-A common use case is wanting to know when all the futures complete, and handle
-any errors, but not necessarily caring about the result of each individual future:
+If any future in the collection completes with an error, `wait` completes with a
+[`ParallelWaitError`][]. This allows the caller to handle individual errors and
+dispose successful results if necessary.
+
+Use `wait` on an _iterable_ of futures when you _don't_ need the result values
+from each individual future:
 
 ```dart
 void main() async {
   Future<void> delete() async =>  ...
   Future<void> copy() async =>  ...
   Future<void> errorResult() async =>  ...
-
-  try {      // Wait for each future in list.
-    
-    var results = await [delete(), copy(), errorResult()].wait;    // List of futures
+  
+  try {
+    // Wait for each future in a list, returns a list of futures:
+    var results = await [delete(), copy(), errorResult()].wait;
 
     } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
 
@@ -1335,8 +1337,8 @@ void main() async {
 }
 ```
 
-Waiting on a _record_ of futures enables the same functionality, with the additional 
-benefit that the futures can be of different types: 
+Use `wait` on a _record_ of futures when you _do_ need the individual result values
+from each future. This also provides the additional benefit that the futures can be of different types:
 
 ```dart
 void main() async {
@@ -1345,7 +1347,7 @@ void main() async {
   Future<bool> errorResult() async =>  ...
 
   try {    
-    // Record of futures
+    // Wait for each future in a record, returns a record of futures:
     (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
   
   } on ParallelWaitError<(int?, String?, bool?),
@@ -1359,11 +1361,6 @@ void main() async {
   var errorBool  = result.$3;
 }
 ```
-
-Waiting for a record of futures should be used when you need the individual
-result values from each future
-(otherwise, just use `wait` on an iterable as described in the previous example).
-
 
 ### Stream
 

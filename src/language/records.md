@@ -1,7 +1,6 @@
 ---
 title: Records
 description: Summary of the record data structure in Dart.
-toc: false
 ---
 
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
@@ -14,15 +13,16 @@ functions, and store them in lists.
 ## Record syntax
 
 _Records expressions_ are comma-delimited lists of named or positional fields,
-enclosed in parenthesis:
+enclosed in parentheses:
 
 ```dart
-var record = ('first', a: 2, b: true, 'last');    // Record expression
+// Record expression:
+var record = ('first', a: 2, b: true, 'last');
 ```
 
-_Record type annotations_ are comma-delimited lists of types enclosed in parenthesis.
-The `(int, int)` statements here are record type annotations used as a return
-type and as parameter types:
+_Record type annotations_ are comma-delimited lists of types enclosed in parentheses.
+The `(int, int)` statements in the following example are record type annotations
+used as a return type and as parameter types:
 
 ```dart
 (int, int) swap((int, int) record) {
@@ -31,20 +31,40 @@ type and as parameter types:
 }
 ```
 
-Named fields inside _record type annotations_ go inside a brace-delimited section
-of type and name pairs, after all positional fields:
+Named fields inside _record type annotations_ mirror how [named parameters and arguments][]
+work in functions. They go inside a curly brace-delimited
+section of type-and-name pairs, after all positional fields:
 
 ```dart
-// Record type annotation in a variable declaration
+// Record type annotation in a variable declaration:
 (String, String?, {int a, bool b}) record;
 ```
 
 Naming fields in record type annotations is optional for documentation purposes.
-The names of those named fields are not optional, though,  
-once you create a record with named fields. The field names become part of the
-[record's type definition](#record-types). They can be omitted, but not replaced.
+Once you create a record from a type annotation with named fields using a record
+expression, the names become part of the [record's type definition](#record-types),
+or its _shape_:
 
-For more information, see the [Record equality](#record-equality) section.
+```dart 
+  ({int x, int y}) someRecord = (x: 1, y: 2);
+// ^^^^^^^^^^^^^^^              ^^^^^^^^^^^^
+// type annotation              expression
+```
+
+They can be ommitted from the creation expression, but not replaced
+with other names.
+
+```dart
+// Type annotation:
+({int x, int y}) someRecord;
+// Record expression creating record from type annotation, omitting names:
+someRecord = (1, 2);
+// Prints 1, 2:
+print(someRecord.x, someRecord.y);
+```
+
+For more information and examples, check out [Record types](#record-types) and
+[Record equality](#record-equality).
 
 ## Record fields
 
@@ -57,7 +77,7 @@ of the name `$<position>`, skipping named fields:
 ```dart
 var record = ('first', a: 2, b: true, 'last');
 
-print(record.$1);    // Prints '123'
+print(record.$1);    // Prints 'first'
 print(record.a);     // Prints 2
 print(record.b);     // Prints true
 print(record.$2);    // Prints 'last'
@@ -75,9 +95,9 @@ There is no type declaration for individual record types. Records are structural
 typed based on the types of their fields. A record's _shape_ (the set of its fields,
 the fields' types, and their names, if any) uniquely determines the type of a record. 
 
-Each field in a record has its own type, which can be different from other
-fields' types in the same record. The type system is aware of each
-field's type wherever it is accessed from the record:
+Each field in a record has its own type. Field types can differ within the same
+record. The type system is aware of each field's type wherever it is accessed
+from the record:
 
 ```dart
 (num, Object) pair = (42, "a");
@@ -86,8 +106,8 @@ var first = pair.$1;     // static type `num`, runtime type `int`
 var second = pair.$2;    // static type `Object`, runtime type `String`
 ```
 
-If two unrelated libraries create records with the same set of fields,
-the type system understands that those records are the same type even though the
+Consider two unrelated libraries that create records with the same set of fields.
+The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
 
 ## Record equality
@@ -95,7 +115,7 @@ libraries are not coupled to each other.
 Two records are equal if they have the same _shape_ (set of fields),
 and their corresponding fields have the same values.
 Since named field _order_ is not part of a record's shape, the order of named
-fields does not affect equality:
+fields does not affect equality.
 
 ```dart
 (int x, int y, int z) point = (1, 2, 3);
@@ -113,18 +133,14 @@ point = color;
 point = color;
 ```
 
-Records automatically define `hashCode` and `==` methods structurally based on
-their fields.
+Records automatically define `hashCode` and `==` methods based on the structure
+of their fields.
 
 ## Multiple returns
 
 Records allow functions to return multiple values bundled together.
-Using [pattern matching][], you can retrieve record values from a return by
-destructuring them directly into local variables:
-
-{% comment %}
-    TODO: link to patterns page, specifically records destructuring section.
-{% endcomment %}
+To retrieve record values from a return,
+destructure the values into local variables using [pattern matching][].
 
 ```dart
 // Returns multiple values in a record:
@@ -144,9 +160,10 @@ void main() {
 }
 ```
 
-Other ways to accomplish multiple returns are
-either to create a class (which is more verbose), or use
-another collection type like `List` or `Map` (which loses type safety).
+You can return multiple values from a function without records,
+but other methods come with downsides.
+For example, creating a class is much more verbose, and using other collection
+types like `List` or `Map` loses type safety. 
 
 {{site.alert.note}}
   Records' multiple-return and heterogenous-type characteristics enable
@@ -158,3 +175,4 @@ another collection type like `List` or `Map` (which loses type safety).
 [Patterns]: /language
 [pattern matching]: /language
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
+[named parameters and arguments]: /language/functions#named-parameters
