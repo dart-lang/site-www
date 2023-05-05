@@ -14,7 +14,7 @@ has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods][] are a way to
 add functionality to a class without changing the class or creating a subclass.
-[Class modifiers][] are a way to restrict use of a class by libraries outside of its own.
+[Class modifiers][] allow you to control how libraries can subtype a class.
 
 
 ## Using class members

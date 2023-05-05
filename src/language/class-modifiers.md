@@ -3,13 +3,13 @@ title: Class modifiers
 description: Modifier keywords for class declarations to control external library access.
 ---
 
-Class modifiers control how a class or a mixin can be subtyped, both
+Class modifiers control how a class or mixin can be used, both
 [from within its own library](#abstract), and from outside of the library where
 it's defined.
 
 Modifiers prepend a class or mixin declaration.
 For example, writing `abstract class` defines an abstract class.
-The full set of modifiers that can appear before a class declaration are:
+The full set of modifiers that can appear before a class declaration include:
 
 - `abstract`
 - `base`
@@ -26,9 +26,8 @@ class, and what behaviors the class needs to be able to rely on.
 
 ## No modifier
 
-Use a `class` or `mixin` declaration without a modifier to allow unrestricted
-permission to create subtype relationships from any library.
-By default, you can:
+To allow unrestricted permission to construct or subtype from any library,
+use a `class` or `mixin` declaration without a modifier. By default, you can:
 
 - [Construct][] new instances of a class.
 - [Extend][] a class to create a new subtype.
@@ -37,10 +36,11 @@ By default, you can:
 
 ## `abstract`
 
-Use the `abstract` modifier to define a class that can’t be constructed from any
-library (it's own, as well as outside libraries).
-Abstract classes are useful for defining interfaces, often with some
-implementation. Abstract classes often have [abstract methods][].
+To define a class that doesn't require a full, concrete implementation of its
+entire interface, use the `abstract` modifier.
+
+Abstract classes cannot be constructed from any library, whether its own or
+an outside library. Abstract classes often have [abstract methods][].
 
 ```dart
 // Library a.dart
@@ -73,20 +73,20 @@ define a [factory constructor][].
 
 ## `base`
 
-Use the `base` modifier to enforce inheritance of a class or mixin's implementation.
-The `base` modifier disallows implementation outside of the current library, which
-guarantees:
+To enforce inheritance of a class or mixin's implementation, use the `base` modifier.
+A base class disallows implementation outside of its own library. This guarantees:
 
 - The base class constructor is called whenever an instance of a subtype of the
 class is created.
-- That all implemented private members exist in subtypes.
-- Adding a new implemented member to a `base` class will not break subtypes (except
-  when they already declare a member with the same name and an incompatible
-  signature), since all subtypes will inherit the new member.
+- All implemented private members exist in subtypes.
+- A new implemented member in a `base` class does not break subtypes,
+since all subtypes inherit the new member.
+  - This is true unless the subtype already declares a member with the same name
+  and an incompatible signature.
 
-The `base` modifier must be applied transitively to all the subtypes of a class;
-any class which implements or extends a base class must be marked `base`, `final`,
-or `sealed`. 
+Any class which implements or extends a base class must transitively be marked
+`base`, `final`, or `sealed`. This is necessary to prevent outside libraries from
+breaking the base class guarantees.
 
 ```dart
 // Library a.dart
@@ -116,14 +116,14 @@ base class MockVehicle          // ERROR: Cannot be implemented
 
 ## `interface`
 
-Use the `interface` modifier to define an interface. Interface classes can be
-implemented outside of the current library, but not extended. This guarantees:
+To define an interface, use the `interface` modifier. Libraries outside of the
+interface's own defining library can implement the interface, but not extend it.
+This guarantees:
 
-- All members of the class must have an implementation.
-- Users of the API are prevented from overriding a subset of methods.
-- A solution to the [fragile base class problem][], or the freedom to change the
-interface's implementation, because there are no inherited member implementations
-outside of the current library whose behavior needs to be preserved. 
+- When an instance method in the class calls another instance method on `this`,
+it will always invoke a known implementation of the method from the same library.
+- Other libraries can't override methods which may then be called by the interface
+class's own methods in unexpected ways. This reduces the [fragile base class problem][].
 
 ```dart
 // Library a.dart
@@ -151,20 +151,31 @@ class MockVehicle          // Can be implemented
 }
 ```
 
-To define a pure interface that others are free to implement, that cannot be
-inherited but is allowed to have abstract members, define an
-`abstract interface class`.
+### `abstract interface`
+
+The most common use for the `interface` modifier is to [combine](#combining-modifiers)
+it with [`abstract`](#abstract) for an `abstract interface class`.
+This defines a pure interface. 
+
+Like an `interface` class, other libraries can implement, but cannot inherit,
+a pure interface. Like an `abstract` class, a pure interface is allowed to have
+abstract members.
 
 ## `final` 
 
-Use the `final` modifier to prevent subtyping from a class outside of the current
-library, closing the type hierarchy. 
-Disallowing both inheritance and implementation means `final` classes provide all
-the same guarantees of [`base`](#base) and [`interface`](#interface) classes.
+To close the type hierarchy, use the `final` modifier.
+This prevents subtyping from a class outside of the current library. 
+Disallowing both inheritance and implementation prevents subtyping entirely.
+This guarantees:
+
+- You can safely add incremental changes to the API.
+- You can call instance methods knowing that they haven't been overwritten in a
+third-party subclass.
 
 Final classes can be extended or implemented within the
-same library, but like the `base` modifier, any subtypes must be marked `base`, 
-`final`, or `sealed`.
+same library. The `final` modifier encompasses the effects of `base`, and
+therefore any subclasses must also be marked `base`, `final`, or `sealed`.
+
 
 ```dart
 // Library a.dart
@@ -194,15 +205,16 @@ class MockVehicle          // ERROR: Cannot be implemented
 
 ## `sealed`
 
-Use the `sealed` modifier to create a known, enumerable set of subtypes, so that
-a switch over those types can be statically ensured to be [_exhaustive_][exhaustive].
+To create a known, enumerable set of subtypes, so that a switch over those types
+can be statically ensured to be [_exhaustive_][exhaustive], use the `sealed` modifier.
 
 The `sealed` modifier prevents a class from being extended or implemented outside
-of the library where the class is defined. The compiler is aware of any possible
-direct subtypes because they can only exist in the same library.
+of the library where the class is defined. They also prevent construction,
+and are therefore implicitly [abstract](#abstract).
 
-This allows the compiler to alert you when a switch is not exhaustively handling
-all possible subtypes in its cases:
+The compiler is aware of any possible direct subtypes because they can only exist
+in the same library. This allows the compiler to alert you when a switch does not
+exhaustively handle all possible subtypes in its cases:
 
 ```dart
 sealed class Vehicle { ... }
@@ -223,27 +235,29 @@ return switch (Vehicle vehicle) {       // ERROR: The switch is missing a subtyp
 };
 ```
 
-If [exhaustiveness checking][exhaustive] is not necessary for your use case, use
-[`final`](#final) instead.
+If you don't intend users to be able to [exhaustively switch][exhaustive] over
+the subtypes of the class, or you want the freedom to add new subtypes later
+without it being a breaking API change, use [`final`](#final) instead.
 
 ## Combining modifiers
 
-It is possible to combine some modifiers for layered restrictions. 
+You can combine some modifiers for layered restrictions. 
 A class declaration can be, in order:
 
-* (Optional) `abstract`, describing whether the class can contain abstract members
+1. (Optional) `abstract`, describing whether the class can contain abstract members
 and prevents instantiation.
-* (Optional) One of `base`, `interface`, `final` or `sealed`, describing
+2. (Optional) One of `base`, `interface`, `final` or `sealed`, describing
 restrictions on other libraries subtyping the class.
-* (Optional) `mixin`, describing whether the declaration can be mixed in.
-* The `class` keyword itself.
+3. (Optional) `mixin`, describing whether the declaration can be mixed in.
+4. The `class` keyword itself.
 
-Some combinations are disallowed beacause they are contradictory, redundant, or
+You can't combine some modifiers beacause they are contradictory, redundant, or
 otherwise mutually exclusive:
 
-* `abstract` with `sealed` (because a sealed class is always implicitly abstract).
-* `interface`, `final` or `sealed` with `mixin` (because those access modifiers
-prevent mixing in).
+* `abstract` with `sealed`. A [sealed](#sealed) class is always implicitly
+[abstract](#abstract).
+* `interface`, `final` or `sealed` with `mixin`. These access modifiers
+prevent [mixing in][mixin].
 
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mixin]: /language/mixins
