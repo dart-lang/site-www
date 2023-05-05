@@ -2,7 +2,6 @@
 title: webdev
 description: Command-line tools for Dart web development.
 ---
-<!--?code-excerpt path-base="examples/ng/doc"?-->
 
 This page explains how to use `webdev` to compile your app and
 `build_runner` to test your app.
@@ -42,13 +41,12 @@ If you're testing the app, it must also depend on **build_test**.
 To depend on these packages, add the following [dev_dependencies][] to
 your app's `pubspec.yaml` file:
 
-<!--?code-excerpt "quickstart/pubspec.yaml (build dependencies)"?-->
 ```yaml
   dev_dependencies:
     # ···
-    build_runner: ^2.1.0
-    build_test: ^2.1.0
-    build_web_compilers: ^3.0.0
+    build_runner: ^2.4.1
+    build_test: ^2.1.7
+    build_web_compilers: ^4.0.3
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or 
