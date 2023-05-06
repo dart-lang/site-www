@@ -10,8 +10,10 @@ supporting statements:
 -   `while` and `do while` loops
 -   `break` and `continue`
 
-You can also manipulate control flow in Dart using [branching][], like `if`
-and `switch`, or even using [exceptions][], like `try-catch` and `throw`.
+You can also manipulate control flow in Dart using:
+
+- [Branching][], like `if` and `switch`
+- [Exceptions][], like `try`, `catch`, and `throw`
 
 ## For loops
 
@@ -25,8 +27,8 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-Closures inside of Dart’s `for` loops capture the _value_ of the index,
-avoiding a common pitfall found in JavaScript. For example, consider:
+Closures inside of Dart’s `for` loops capture the _value_ of the index.
+This avoidds a common pitfall found in JavaScript. For example, consider:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (for-and-closures)"?>
 ```dart
@@ -43,9 +45,9 @@ for (final c in callbacks) {
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-If the object that you are iterating over is an Iterable (such as List or Set)
-and if you don't need to know the current iteration counter, 
-you can use the `for-in` form of [iteration][]:
+Sometimes you might not need to know the current iteration counter
+when iterating over an [`Iterable`][] type, like `List` or `Set`.
+In that case, use the `for-in` loop for cleaner code:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
@@ -54,8 +56,8 @@ for (final candidate in candidates) {
 }
 ```
 
-You can also use a [pattern][] in a `for-in` loop to process the values obtained
-from the iterable:
+To process the values obtained from the iterable, you can also use a [pattern][]
+in a `for-in` loop:
 
 ```dart
 for (var (x, y) in listOfPairs) {
@@ -123,8 +125,8 @@ for (int i = 0; i < candidates.length; i++) {
 }
 ```
 
-You might write that example differently if you’re using an
-[`Iterable`][] such as a list or set:
+If you’re using an [`Iterable`][] such as a list or set,
+how you write the previous example might differ:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (where)"?>
 ```dart
