@@ -58,8 +58,8 @@ assert(lineCount == null);
   _condition_ is false. For details, check out [Assert][].
 {{site.alert.end}}
 
-If you enable null safety, then you must initialize the values
-of non-nullable variables before you use them:
+With null safety, you must initialize the values
+of non-nullable variables before you use them.
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart

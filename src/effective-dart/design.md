@@ -1794,11 +1794,6 @@ The main exception to this rule is when working with existing APIs that use
 so, when using a value from one of these APIs, it's often a good idea to cast it
 to a more precise type before accessing members.
 
-{{site.alert.version-note}}
-In code that hasn't been migrated to null safety yet, use `Object` to accept
-values of all types, including `null`.
-{{site.alert.end}}
-
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values
 
@@ -2065,9 +2060,3 @@ class Person {
 }
 {% endprettify %}
 
-{{site.alert.version-note}}
-In code that has not been migrated to null safety yet, the `Object` type
-annotation permits `null`. Even so, Dart will never call your `==` method and
-pass `null` to it, so you don't need to handle `null` inside the body of the
-method.
-{{site.alert.end}}
