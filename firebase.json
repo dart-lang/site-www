@@ -33,6 +33,7 @@
       { "source": "/articles/api-naming-guide{,/**}", "destination": "/guides/language/effective-dart/design", "type": 301 },
       { "source": "/articles/archive/event-loop", "destination": "https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a", "type": 301 },
       { "source": "/articles/await-async", "destination": "/codelabs/async-await", "type": 301 },
+      { "source": "/articles/broadcast-streams", "destination": "https://medium.com/dartlang/dart-asynchronous-programming-streams-dab952023ed7", "type": 301 },
       { "source": "/articles/converters-and-codecs", "destination": "/articles/archive/converters-and-codecs", "type": 301 },
       { "source": "/articles/creating-streams", "destination": "/articles/libraries/creating-streams", "type": 301 },
       { "source": "/articles/dart-unit-tests{,/**}", "destination": "https://github.com/dart-lang/test#writing-tests", "type": 301 },
