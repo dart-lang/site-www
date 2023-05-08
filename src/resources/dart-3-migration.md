@@ -222,10 +222,15 @@ The few constant expressions that aren't valid patterns will trigger the [`inval
 
 #### Migration
 
-For constant expressions, tweak them to make them valid.
+You can revert back to the original behavior by prefixing the case pattern with `const`, so it's no longer interpreted as a pattern:
 
-TODO: Give an example
+{enclose in backticks:}
+case const [1, 2]:
+case const {'k': 'v'}:
+case const {1, 2}:
+case const Point(1, 2):
 
+You can run a quick fix for this breaking change, using `dart fix` or from your IDE.
 
 ### `continue`
 
