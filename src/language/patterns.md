@@ -14,7 +14,7 @@ values.
 This page describes:
 - What patterns do.
 - Where patterns are allowed in Dart code.
-- What the common use cases for patterns are.ß
+- What the common use cases for patterns are.
 
 To learn about the different kinds of patterns, visit the [pattern types][types]
 page.
