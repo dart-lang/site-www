@@ -78,8 +78,9 @@ Dart null safety support is based on the following three core design principles:
 
 ## Dart 3 and null safety
 
-Dart 3 always has sound null safety,
+Dart 3 has sound null safety built-in,
 and will prevent code from running without it.
+
 For guidance on migrating to Dart 3, check out the [Dart 3 migration guide][/resources/dart-3-migration]
 Packages developed without null safety support will cause issues
 when resolving dependencies:
