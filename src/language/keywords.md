@@ -22,22 +22,22 @@ The following table lists the words that the Dart language treats specially.
 | [class][]             | [final (class)][]{{bii}} | [on][]{{ckw}}         | [typedef][]{{bii}} |
 | [const][]             | [finally][]              | [operator][]{{bii}}   | [var][]            |
 | [continue][]          | [for][]                  | [part][]{{bii}}       | [void][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}      | [required][]{{bii}}   | [while][]          |
-| [default][]           | [get][]{{bii}}           | [rethrow][]           | [with][]           |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}          | [return][]            | [yield][]{{lrw}}   |
-| [do][]                | [if][]                   | [sealed][]{{bii}}     |                    |
+| [covariant][]{{bii}}  | [Function][]{{bii}}      | [required][]{{bii}}   | [when][]           |
+| [default][]           | [get][]{{bii}}           | [rethrow][]           | [while][]          |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}          | [return][]            | [with][]           |
+| [do][]                | [if][]                   | [sealed][]{{bii}}     | [yield][]{{lrw}}   |
 | [dynamic][]{{bii}}    | [implements][]{{bii}}    | [set][]{{bii}}        |                    |
 {:.table .table-striped .nowrap}
 </div>
 
 [abstract]: /language/class-modifiers#abstract
 [as]: /language/operators#type-test-operators
-[assert]: /language/control-flow#assert
+[assert]: /language/error-handling#assert
 [async]: /language/async
 [await]: /language/async
 [base]: /language/class-modifiers#base
-[break]: /language/control-flow#break-and-continue
-[case]: /language/control-flow#switch-and-case
+[break]: /language/loops#break-and-continue
+[case]: /language/branches#switch
 [catch]: /language/error-handling#catch
 [class]: /language/classes#instance-variables
 [const]: /language/variables#final-and-const
@@ -45,13 +45,13 @@ The following table lists the words that the Dart language treats specially.
   [TODO #2950: Make sure that points to a place that talks about const constructors,
   as well as const literals and variables.]
 {% endcomment %}
-[continue]: /language/control-flow#break-and-continue
+[continue]: /language/loops#break-and-continue
 [covariant]: /guides/language/sound-problems#the-covariant-keyword
-[default]: /language/control-flow#switch-and-case
+[default]: /language/branches#switch
 [deferred]: /language/libraries#lazily-loading-a-library
-[do]: /language/control-flow#while-and-do-while
+[do]: /language/loops#while-and-do-while
 [dynamic]: /language#important-concepts
-[else]: /language/control-flow#if-and-else
+[else]: /language/branches#if
 [enum]: /language/enum
 [export]: /guides/libraries/create-library-packages
 [extends]: /language/extend
@@ -62,14 +62,14 @@ The following table lists the words that the Dart language treats specially.
 [final (variable)]: /language/variables#final-and-const
 [final (class)]: /language/class-modifiers#final
 [finally]: /language/error-handling#finally
-[for]: /language/control-flow#for-loops
+[for]: /language/loops#for-loops
 [Function]: /language/functions
 [get]: /language/methods#getters-and-setters
 [hide]: /language/libraries#importing-only-part-of-a-library
-[if]: /language/control-flow#if-and-else
+[if]: /language/branches#if
 [implements]: /language/classes#implicit-interfaces
 [import]: /language/libraries#using-libraries
-[in]: /language/control-flow#for-loops
+[in]: /language/loops#for-loops
 [interface]: /language/class-modifiers#interface
 [is]: /language/operators#type-test-operators
 [late]: /language/variables#late-variables
@@ -88,7 +88,7 @@ The following table lists the words that the Dart language treats specially.
 [show]: /language/libraries#importing-only-part-of-a-library
 [static]: /language/classes#class-variables-and-methods
 [super]: /language/extend
-[switch]: /language/control-flow#switch-and-case
+[switch]: /language/branches#switch
 [sync]: /language/functions#generators
 [this]: /language/constructors
 [throw]: /language/error-handling#throw
@@ -100,8 +100,9 @@ The following table lists the words that the Dart language treats specially.
 {% comment %}
   TODO #2950: Add coverage of void to the language tour.
 {% endcomment %}
+[when]: /language/branches#when
 [with]: /language/mixins
-[while]: /language/control-flow#while-and-do-while
+[while]: /language/loops#while-and-do-while
 [yield]: /language/functions#generators
 
 Avoid using these words as identifiers.

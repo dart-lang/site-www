@@ -193,7 +193,7 @@ environment:
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-archive/dart2_fix
 [apiref]: {{site.dart-api}}/dev
-[assert statements]: /language/control-flow#assert
+[assert statements]: /language/error-handling#assert
 [build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6

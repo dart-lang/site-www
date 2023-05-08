@@ -81,9 +81,10 @@ while (year < 2016) {
 }
 ```
 
-[Read more](/language/control-flow) 
-about control flow statements in Dart,
-including `break` and `continue`, `switch` and `case`, and `assert`.
+Read more about control flow statements in Dart,
+including [`break` and `continue`](/language/loops),
+[`switch` and `case`](/language/branches),
+and [`assert`](/language/error-handling#assert).
 
 
 ## Functions
@@ -560,5 +561,5 @@ This site’s code follows the conventions in the
 [ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
-[if-else statement]: /language/control-flow#if-and-else
+[if-else statement]: /language/branches#if
 [exception]: /language/error-handling#exceptions
