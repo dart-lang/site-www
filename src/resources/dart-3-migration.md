@@ -17,9 +17,9 @@ and how you can resolve them.
 
 The potentially breaking changes listed below fall into one of two categories:
 
-* **Unversioned changes**: These are changes which are affect any Dart code,
-which is used after upgrading to a Dart 3 SDK. There is no way to "turn off"
-these changes.
+* **Unversioned changes**: These changes affect any Dart code
+after upgrading to a Dart 3.0 SDK or later. 
+There is no way to "turn off" these changes.
 
 * **Versioned changes**: Versioned changes are different, 
 and only apply when the package/app has selected the 
