@@ -22,12 +22,12 @@ The potentially breaking changes listed below fall into one of two categories:
 after upgrading to a Dart 3.0 SDK or later. 
 There is no way to "turn off" these changes.
 
-* **Versioned changes**: Versioned changes are different, 
-and only apply when the package/app has selected the 
-Dart 3.0 (or above) language version. 
-The language version [is derived](/guides/language/evolution#language-version-numbers)
-from the `sdk` lower-constraint in the `pubspec.yaml` file. An SDK constraint like
-this does *not* apply the Dart 3 versioned changes:
+* **Versioned changes**: These changes only apply when the package or app's
+language version is set to >= Dart 3.0. 
+The [language version](/guides/language/evolution#language-version-numbers)
+is derived from the `sdk` lower-constraint in the
+[`pubspec.yaml` file](/guides/packages#creating-a-pubspec). 
+An SDK constraint like this does *not* apply the Dart 3 versioned changes:
     ```yaml
     environment:
       sdk: '>=2.14.0 <3.0.0'
