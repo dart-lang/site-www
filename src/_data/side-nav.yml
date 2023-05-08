@@ -61,7 +61,11 @@
     - title: Functions
       permalink: /language/functions
     - title: Control flow
-      permalink: /language/control-flow
+      children:
+      - title: Loops
+        permalink: /language/loops
+      - title: Branches
+        permalink: /language/branches
     - title: Error handling
       permalink: /language/error-handling
     - title: Classes & objects
