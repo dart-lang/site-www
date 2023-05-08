@@ -1,13 +1,15 @@
 ---
 title: Dart 3 migration guide
-description: Tips for how to migrate existing Dart code to be compatible with Dart 3.
+description: How to migrate existing Dart code to be compatible with Dart 3.
 ---
 
-Dart 3 is a new major release of Dart, that brings new core capabilities like
-records, patterns, and classes. Alongside these new capabilities the release
-also contains a number of changes, that may break existing code. The present
-document is intended to be a migration guide that may be helpful in resolving
-these.
+Dart 3 is a major release that introduces new core capabilities to Dart: 
+records, patterns, and class modifiers.
+
+Alongside these new capabilities, Dart 3 contains a number of changes
+that may break existing code. 
+This migration guide explains the breaking changes in Dart 3
+and how you can resolve them.
 
 ## Introduction
 
@@ -35,15 +37,16 @@ this does *not* apply the Dart 3 versioned changes:
       sdk: '>=3.0.0 <4.0.0'
     ```
 
-Note that to use the new Dart 3 features you have to update the language version
-to 3.0, and thus you'll also get the Dart 3 versioned changes at the same time.
+To use the new Dart 3 features you have to update the language version
+to 3.0. This gets you the Dart 3 versioned changes at the same time.
 
 ### Dart 3 backwards compatibility
 
-Many packages and apps migrated to use null safety with Dart 2.12 or later are
-likely be backwards compatible with Dart 3. This is possible as for any package where
-the lower bound of the SDK constraint is 2.12.0 or higher, pub will allow
-resolution even when the upper bound is limited to versions below 3.0.0. For
+Many packages and apps that used null safety with Dart 2.12 or later are
+likely backwards compatible with Dart 3. This is possible for any package where
+the lower bound of the SDK constraint is 2.12.0 or higher. 
+
+[Dart's pub tool](/guides/packages) allows resolution even when the upper bound is limited to versions below 3.0.0. For 
 example, a package with the following constraint will be allowed to resolve with
 a Dart 3.x SDK, as pub will re-interpret the upper-constraint `<3.0.0` as `<4.0.0`
 when the lower constraint is `2.12` or higher:
@@ -63,9 +66,9 @@ To understand if your source code is impacted by any Dart 3 changes,
 use these steps:
 
 ```terminal
-$ dart --version    # make sure this reports 3.0.0 or higher
-$ dart pub get      # this should resolve without issues
-$ dart analyze      # this should pass without errors
+$ dart --version    # Make sure this reports 3.0.0 or higher.
+$ dart pub get      # This should resolve without issues.
+$ dart analyze      # This should pass without errors.
 ```
 
 If the `pub get` step fails, try to upgrade your dependencies
@@ -73,26 +76,26 @@ to see if more recent versions might support Dart 3:
 
 ```terminal
 $ dart pub upgrade
-$ dart analyze      # this should pass without errors
+$ dart analyze      # This should pass without errors.
 ```
 
-Or if needed also include major versions upgrades:
+Or, if needed, also include [major versions](tools/pub/cmd/pub-upgrade#--major-versions) upgrades:
 ```terminal
 $ dart pub upgrade --major-versions
-$ dart analyze      # this should pass without errors
+$ dart analyze      # This should pass without errors.
 ```
 
 ## Dart 3 language changes
 
 ### 100% sound null safety
 
-Null safety was introduced in Dart 2.12, more than two years ago. In Dart 2.12
-it was enabled [with a pubspec setting](/null-safety/#enable-null-safety),
-but in Dart 3, you always get null safety, and it cannot be turned off.
+Dart 2.12 introduced null safety more than two years ago. In Dart 2.12, 
+users needed to enable null safety [with a pubspec setting](/null-safety/#enable-null-safety).
+In Dart 3, null safety is built in; you cannot turn it off.
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -128,16 +131,17 @@ $ dart run bin/my_app.dart
 
 #### Migration
 
-A first step before beginning any migration to Dart 3, is to ensure your app or package has been 100% migrated to enable null safety. This must happen using a Dart `2.19` SDK, not a Dart 3 SDK. For details, see the [null safety migration guide](/null-safety/migration-guide).
+Before beginning any migration to Dart 3, ensure your app or package has been 100% migrated to enable null safety. 
+This requires a Dart `2.19` SDK, not a Dart 3 SDK. For details, see the [null safety migration guide](/null-safety/migration-guide).
 
 ### Colon-syntax for default values
 
 For historical reasons, named optional parameters could specify their default
-value using either `:` or `=`. In Dart 3 only the `=` syntax is allowed.
+value using either `:` or `=`. In Dart 3, only the `=` syntax is allowed.
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -169,12 +173,12 @@ $ dart fix --apply --code=obsolete_colon_for_default_value
 
 ### `mixin`
 
-Pre-Dart 3, any `class` could be used as a `mixin`.
+Pre-Dart 3, any `class` could be used as a `mixin`, as long as it had no declared constructors and no superclass other than `Object`.
 In Dart 3, only types declared `mixin class` or `mixin`, may be used as a mixin.
 
 #### Scope
 
-This is a *versioned* change, that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
 
 #### Migration
 
@@ -208,7 +212,7 @@ TODO: Give an example
 ### `continue`
 
 Dart 3 reports a compile-time error if a continue statement targets a
-label that is not a loop (for, do and while statements) or a switch member.
+label that is not a loop (`for`, `do`, and `while` statements) or a switch member.
 
 #### Scope
 
@@ -224,14 +228,14 @@ The label used in a 'continue' statement must be defined on either a loop or a s
 #### Migration
 
 If changing behavior is acceptable, 
-change the continue to target a valid labeled statement,
+change the `continue` to target a valid labeled statement,
 which must be attached to a `for`, `do` or `while` statement.
 
-If you want to preserve behavoir use `break`:
+If you want to preserve behavior, change the
+`continue` statement to a `break` statement.
 In previous versions of Dart, a `continue` statement 
 that wasn't targeted at a loop or a switch member 
-behaved like `break`. So to migrate to Dart 3.0, 
-change the `continue` statement to a `break` statement.
+behaved like `break`.
 
 ## Dart 3 core library changes
 
@@ -363,7 +367,11 @@ This is a *versioned* change, that only applies to language version 3.0 or later
 
 #### `dart:core`
 
-* The `Function` type can no longer be implemented, extended or mixed in. Since Dart 2.0, writing implements Function has been allowed for backwards compatibility, but it has not had any effect. In Dart 3.0, the Function type is final and cannot be subtyped, preventing code from mistakenly assuming it works.
+* The `Function` type can no longer be implemented, extended or mixed in.
+Since Dart 2.0, writing `implements Function` has been allowed
+for backwards compatibility, but it has not had any effect.
+In Dart 3.0, the `Function` type is final and cannot be subtyped,
+preventing code from mistakenly assuming it works.
 
 * The following declarations can only be implemented, not extended:
   - `Comparable`
@@ -376,7 +384,8 @@ This is a *versioned* change, that only applies to language version 3.0 or later
   - `StackTrace`
   - `StringSink`
 
-None of these declarations contained any implementation to inherit, and are marked as interface to signify that they are only intended as interfaces.
+None of these declarations contained any implementation to inherit.
+They are marked as `interface` to signify that they are only intended as interfaces.
 
 * The following declarations can no longer be implemented or extended:
 
@@ -387,12 +396,13 @@ None of these declarations contained any implementation to inherit, and are mark
   - `WeakReference`
   - `Finalizer`
 
-The MapEntry value class is restricted to enable later optimizations. The remaining classes are tightly coupled to the platform and not intended to be subclassed or implemented.
+The `MapEntry` value class is restricted to enable later optimizations.
+The remaining classes are tightly coupled to the platform and not
+intended to be subclassed or implemented.
 
 #### `dart:collection`
 
 * The following interface can no longer be extended, only implemented:
-
   - `Queue`
 
 * The following implementation classes can no longer be implemented:
@@ -504,8 +514,8 @@ analyzer:
 
   * The deprecated Observatory has been hidden by default. We recommend using [DevTools](/tools/dart-devtools).
   * The command `dart format fix` has been replaced by `dart fix`
-    (#1153)[https://github.com/dart-lang/dart_style/issues/1153].
-  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up (#50700)[https://github.com/dart-lang/sdk/issues/50700].
+    [#1153][https://github.com/dart-lang/dart_style/issues/1153].
+  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up [#50700][https://github.com/dart-lang/sdk/issues/50700].
 
 #### Scope
 
