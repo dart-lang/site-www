@@ -1310,8 +1310,8 @@ If any future in the collection completes with an error, `wait` completes with a
 [`ParallelWaitError`][]. This allows the caller to handle individual errors and
 dispose successful results if necessary.
 
-Use `wait` on an _iterable_ of futures when you _don't_ need the result values
-from each individual future:
+When you _don't_ need the result values from each individual future,
+use `wait` on an _iterable_ of futures:
 
 ```dart
 void main() async {
@@ -1337,8 +1337,9 @@ void main() async {
 }
 ```
 
-Use `wait` on a _record_ of futures when you _do_ need the individual result values
-from each future. This also provides the additional benefit that the futures can be of different types:
+When you _do_ need the individual result values from each future,
+use `wait` on a _record_ of futures.
+This provides the additional benefit that the futures can be of different types:
 
 ```dart
 void main() async {

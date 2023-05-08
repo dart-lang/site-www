@@ -21,8 +21,8 @@ var record = ('first', a: 2, b: true, 'last');
 ```
 
 _Record type annotations_ are comma-delimited lists of types enclosed in parentheses.
-The `(int, int)` statements in the following example are record type annotations
-used as a return type and as parameter types:
+You can use record type annotations to define return types and parameter types.
+For example, the following `(int, int)` statements are record type annotations:
 
 ```dart
 (int, int) swap((int, int) record) {
@@ -31,7 +31,8 @@ used as a return type and as parameter types:
 }
 ```
 
-Named fields inside _record type annotations_ mirror how [named parameters and arguments][]
+Named fields inside _record type annotations_ mirror how
+[named parameters and arguments][]
 work in functions. They go inside a curly brace-delimited
 section of type-and-name pairs, after all positional fields:
 
