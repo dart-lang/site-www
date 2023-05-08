@@ -84,8 +84,8 @@ since all subtypes inherit the new member.
   - This is true unless the subtype already declares a member with the same name
   and an incompatible signature.
 
-Any class which implements or extends a base class must transitively be marked
-`base`, `final`, or `sealed`. This is necessary to prevent outside libraries from
+You must mark any class which implements or extends a base class as
+`base`, `final`, or `sealed`. This prevents outside libraries from
 breaking the base class guarantees.
 
 ```dart
@@ -120,10 +120,11 @@ To define an interface, use the `interface` modifier. Libraries outside of the
 interface's own defining library can implement the interface, but not extend it.
 This guarantees:
 
-- When an instance method in the class calls another instance method on `this`,
+- When one of the class's instance methods calls another instance method on `this`,
 it will always invoke a known implementation of the method from the same library.
-- Other libraries can't override methods which may then be called by the interface
-class's own methods in unexpected ways. This reduces the [fragile base class problem][].
+- Other libraries can't override methods that the interface
+class's own methods might later call in unexpected ways.
+This reduces the [fragile base class problem][].
 
 ```dart
 // Library a.dart
@@ -153,12 +154,12 @@ class MockVehicle          // Can be implemented
 
 ### `abstract interface`
 
-The most common use for the `interface` modifier is to [combine](#combining-modifiers)
-it with [`abstract`](#abstract) for an `abstract interface class`.
-This defines a pure interface. 
+The most common use for the `interface` modifier is to define a pure interface. 
+[Combine](#combining-modifiers) the `interface` and [`abstract`](#abstract)
+modifiers for an `abstract interface class`.
 
 Like an `interface` class, other libraries can implement, but cannot inherit,
-a pure interface. Like an `abstract` class, a pure interface is allowed to have
+a pure interface. Like an `abstract` class, a pure interface can have
 abstract members.
 
 ## `final` 
@@ -205,11 +206,12 @@ class MockVehicle          // ERROR: Cannot be implemented
 
 ## `sealed`
 
-To create a known, enumerable set of subtypes, so that a switch over those types
-can be statically ensured to be [_exhaustive_][exhaustive], use the `sealed` modifier.
+To create a known, enumerable set of subtypes, use the `sealed` modifier.
+This allows you to create a switch over those subtypes that is statically ensured
+to be [_exhaustive_][exhaustive].
 
 The `sealed` modifier prevents a class from being extended or implemented outside
-of the library where the class is defined. They also prevent construction,
+of its own library. Sealed classes also prevent construction,
 and are therefore implicitly [abstract](#abstract).
 
 The compiler is aware of any possible direct subtypes because they can only exist
@@ -235,9 +237,8 @@ return switch (Vehicle vehicle) {       // ERROR: The switch is missing a subtyp
 };
 ```
 
-If you don't intend users to be able to [exhaustively switch][exhaustive] over
-the subtypes of the class, or you want the freedom to add new subtypes later
-without it being a breaking API change, use [`final`](#final) instead.
+If you don’t want [exhaustive switching][exhaustive], or want to be able to add
+subtypes later without breaking the API, use [`final`](#final).
 
 ## Combining modifiers
 
