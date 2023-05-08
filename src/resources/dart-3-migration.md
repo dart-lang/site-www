@@ -7,9 +7,7 @@ Dart 3 is a major release that introduces new core capabilities to Dart:
 records, patterns, and class modifiers.
 
 Alongside these new capabilities, Dart 3 contains a number of changes
-that may break existing code. 
-This migration guide explains the breaking changes in Dart 3
-and how you can resolve them.
+that may break existing code. This guide will help you resolve these.
 
 ## Introduction
 
@@ -173,8 +171,13 @@ $ dart fix --apply --code=obsolete_colon_for_default_value
 
 ### `mixin`
 
-Pre-Dart 3, any `class` could be used as a `mixin`, as long as it had no declared constructors and no superclass other than `Object`.
-In Dart 3, only types declared `mixin class` or `mixin`, may be used as a mixin.
+Pre-Dart 3, any `class` could be used as a `mixin`,
+as long as it had no declared constructors and no superclass other than `Object`.
+
+In Dart 3, classes declared in libraries at language version 3.0 or later
+can't be used as mixins unless marked `mixin`.
+This restriction applies to code in any library attempting to use the class as a mixin, 
+regardless of the latter library's language version.
 
 #### Scope
 
@@ -193,7 +196,7 @@ as patterns [*TODO* LINK] instead of constant expressions.
 
 #### Scope
 
-This is a *versioned* change, that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
 
 #### Symptom
 
@@ -216,7 +219,7 @@ label that is not a loop (`for`, `do`, and `while` statements) or a switch membe
 
 #### Scope
 
-This is a *versioned* change, that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
 
 #### Symptom
 
@@ -247,7 +250,7 @@ behaved like `break`.
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### `dart:core`
 
@@ -363,7 +366,7 @@ They have been applied to a number of classes in the core libraries.
 
 #### Scope
 
-This is a *versioned* change, that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
 
 #### `dart:core`
 
@@ -432,7 +435,7 @@ In Dart 2.10 (October 2020) we introduced a new unified Dart developer tool, the
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -465,7 +468,7 @@ Use new sub-commands available in the `dart` tool:
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -482,7 +485,7 @@ for enabling stricter checking have changed.
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -519,4 +522,4 @@ analyzer:
 
 #### Scope
 
-This is an *unversioned* change, that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
