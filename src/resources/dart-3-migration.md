@@ -77,7 +77,7 @@ $ dart pub upgrade
 $ dart analyze      # This should pass without errors.
 ```
 
-Or, if needed, also include [major versions](tools/pub/cmd/pub-upgrade#--major-versions) upgrades:
+Or, if needed, also include [major versions](/tools/pub/cmd/pub-upgrade#--major-versions) upgrades:
 ```terminal
 $ dart pub upgrade --major-versions
 $ dart analyze      # This should pass without errors.
