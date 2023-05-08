@@ -28,7 +28,7 @@ for (var i = 0; i < 5; i++) {
 ```
 
 Closures inside of Dart’s `for` loops capture the _value_ of the index.
-This avoidds a common pitfall found in JavaScript. For example, consider:
+This avoids a common pitfall found in JavaScript. For example, consider:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (for-and-closures)"?>
 ```dart

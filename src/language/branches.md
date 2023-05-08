@@ -70,7 +70,8 @@ Each `case` clause is a [pattern][] for the value to match against.
 You can use [any kind of pattern][] for a case.
 
 When the value matches a case's pattern, the case body executes. 
-Non-empty `case` clauses implicitly jump to the end of the switch after completion.
+Non-empty `case` clauses jump to the end of the switch after completion. They do
+not require a `break` statement.
 Other valid ways to end a non-empty `case` clause are a [`continue`][break],
 [`throw`][], or [`return`][] statement.
 
