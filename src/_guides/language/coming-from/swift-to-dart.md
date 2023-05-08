@@ -545,14 +545,14 @@ This operator ignores any operations when
 the target expression resolves to `null`.
 Dart also offers the null assignment operator (`??=`),
 which Swift doesn't.
-This operator permits you to assign a value to a variable
-with a nullable type when its current value is `null`.
+If a variable with a nullable type has a current value of `null`,
+this operator assigns a value to that variable.
 Expressed as `a ??= b;`, it serves as shorthand for the following:
 
 ```dart
 a = a ?? b;
 
-// equivalent to:
+// Assign b to a if a is null; otherwise, a stays the same
 a ??= b; 
 ```
 
@@ -786,8 +786,7 @@ func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
 }
 ```
 
-For the function to compile in Dart, named parameters must include
-one of the following:
+Named parameters must include one of the following:
 
 * A default value
 * A `?` at the end of the type to set the type as nullable

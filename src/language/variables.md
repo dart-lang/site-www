@@ -38,7 +38,34 @@ String name = 'Bob';
   of using `var`, rather than type annotations, for local variables.
 {{site.alert.end}}
 
+## Null safety
 
+The Dart language enforces sound null safety.
+
+Null safety prevents errors that result from unintentional access
+of variables set to `null`.
+
+For example, if a method expects an integer but receives `null`,
+your app returns a runtime error.
+This type of error, a null dereference error, can be difficult to debug.
+
+With sound null safety, all variables require a value.
+This means Dart considers all variables _non-nullable_.
+You can assign values of the declared type only, like `int i=42`.
+You can never assign a value of `null` to default variable types.
+To specify that a variable type can have no value, add a `?` after
+the type label, like `int? i`.
+These specific types can contain either a `null` _or_
+a value of the defined type.
+
+Sound null safety changes potential **runtime errors**
+into **edit-time** analysis errors.
+Null safety flags a non-null variable when it has been either:
+
+* Not initialized with a non-null value.
+* Assigned a `null` value.
+
+This check allows you to fix these errors _before_ deploying your app.
 ## Default value
 
 Uninitialized variables that have a nullable type

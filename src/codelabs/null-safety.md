@@ -164,7 +164,7 @@ nullableObject?.action();
 
 In the following code, try using conditional property access
 in the `stringLength` method. This fixes the error and
-to return the length of the string or `null` if it equals `null`:
+returns the length of the string or `null` if it equals `null`:
 
 ```dart:run-dartpad:ga_id-null-safety-conditional-property
 {$ begin main.dart $}
@@ -352,8 +352,7 @@ as providing an alternative value if the left-hand side is `null`.
 
 ## Type promotion
 
-With sound null safety, we extended Dart's
-[flow analysis](/null-safety/understanding-null-safety#flow-analysis)
+Dart's [flow analysis](/null-safety/understanding-null-safety#flow-analysis)
 to account for nullability.
 Dart treats nullable variables with no ability to contain null values
 as non-nullable variables.
@@ -434,7 +433,7 @@ For cases like that, use the
 When you put `late` in front of a variable declaration,
 that tells Dart the following about the variable:
 
-- It cannot be assigned a value yet.
+- The developer didn't want to assign it a value yet.
 - It will get a value later.
 - It will have a value _before_ being used.
 
