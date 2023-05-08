@@ -72,12 +72,14 @@
           permalink: /language/methods
         - title: Extend a class
           permalink: /language/extend
-        - title: Extension methods
-          permalink: /language/extension-methods
-        - title: Enum types
-          permalink: /language/enum
         - title: Mixins
           permalink: /language/mixins
+        - title: Class modifiers
+          permalink: /language/class-modifiers
+        - title: Enum types
+          permalink: /language/enum
+        - title: Extension methods
+          permalink: /language/extension-methods
         - title: Callable classes
           permalink: /language/callable-classes
     - title: Concurrency
