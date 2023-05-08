@@ -24,13 +24,13 @@ page.
 In general, a pattern may **match** a value, **destructure** a value, or both,
 depending on the context and shape of the pattern.
 
-First, pattern matching allows you to check whether a given value:
+First, _pattern matching_ allows you to check whether a given value:
 - Has a certain shape.
 - Is a certain constant.
 - Is equal to something else.
 - Has a certain type.
 
-Then, pattern destructuring provides you with a convenient declarative syntax to
+Then, _pattern destructuring_ provides you with a convenient declarative syntax to
 break that value into its constituent parts. The same pattern can also let you 
 bind variables to some or all of those parts in the process.
 
@@ -124,8 +124,8 @@ A _variable assignment pattern_ falls on the left side of an assignment.
 First, it destructures the matched object. Then it assigns the values to
 _existing_ variables, instead of binding new ones. 
 
-This is useful when you want to swap the values of two variables without declaring
-a third temporary one:
+Use a variable assignment pattern to swap the values of two variables without
+declaring a third temporary one:
 
 ```dart
 var (a, b) = ('left', 'right');
@@ -141,8 +141,8 @@ You can use [any kind of pattern][types] in a case.
 
 _Case patterns_ are [refutable][].
 They allow control flow to either:
-- Match and destructure the object being switched on,
-- Or continue execution if the object doesn't match.
+- Match and destructure the object being switched on.
+- Continue execution if the object doesn't match.
 
 ```dart
 switch (obj) {
@@ -204,8 +204,8 @@ the values of two variables, or
 in a map. This section describes even more use cases, answering:
 
 - _When and why_ you might want to use patterns.
-- The kinds of problems they solve.
-- The idioms for which they're best suited.
+- What kinds of problems they solve.
+- Which idioms they best suit.
 
 ### Destructuring multiple returns
 
@@ -293,7 +293,7 @@ var json = {'user': ['Lily', 13]};
 var {'user': [name, age]} = json;
 ```
 
-IF you know that the JSON data has the structure you expect,
+If you know that the JSON data has the structure you expect,
 the previous example is realistic.
 But data typically comes from an external source, like over the network.
 You need to validate it first to confirm its structure. 
@@ -315,8 +315,8 @@ if (json is Map<String, dynamic> &&
 
 A single [case pattern](#switch-statements-and-expressions)
 can achieve the same validation.
-Single cases are conducive to [if-case][if] statements.
-An if-case pattern is a more declarative, and much less verbose
+Single cases work best as [if-case][if] statements.
+Patterns provide a more declarative, and much less verbose
 method of validating JSON:
 
 ```dart

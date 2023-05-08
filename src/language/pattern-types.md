@@ -197,8 +197,8 @@ Null-assert patterns match first if the object is not null, then on the value.
 They permit non-null values to flow through, but [throw][] if the matched value
 is null. 
 
-Use a null-assert pattern while matching if you need to ensure `null` values
-are not silently treated as match failures:
+To ensure `null` values are not silently treated as match failures,
+use a null-assert pattern while matching:
 
 ```dart
 List<String?> row = // ...
@@ -209,8 +209,8 @@ switch (row) {
 }
 ```
 
-Use the null-assert pattern to eliminate `null` values from variable declaration
-patterns:
+To eliminate `null` values from variable declaration patterns,
+use the null-assert pattern:
 
 ```dart
 (int?, int?) position = // ...
@@ -225,10 +225,11 @@ To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 `subpattern?`
 
 Null-check patterns match first if the value is not null, and then match the inner
-pattern against that same value.
+pattern against that same value. They let you bind a variable whose type is the
+non-nullable base type of the nullable value being matched.
 
-Use the null-check pattern to silently treat `null` values as match failures
-without throwing.
+To treat `null` values as match failures
+without throwing, use the null-check pattern.
 
 ```dart
 String? maybeString = // ... maybeString is nullable with the base type String.
@@ -237,9 +238,6 @@ switch (maybeString) {
     // 's' has type non-nullable String here.
 }
 ```
-
-The null-check pattern provides a terse way to bind a variable whose type is the
-non-nullable base type of the nullable value being matched.
 
 To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
