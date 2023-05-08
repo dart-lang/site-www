@@ -7,7 +7,10 @@ Dart 3 is a major release that introduces new core capabilities to Dart:
 records, patterns, and class modifiers.
 
 Alongside these new capabilities, Dart 3 contains a number of changes
-that may break existing code. This guide will help you resolve these.
+that may break existing code. 
+
+This guide will help you resolve any migration issues you might encounter
+after [upgrading to Dart 3](/get-dart).
 
 ## Introduction
 
