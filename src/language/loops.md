@@ -140,4 +140,4 @@ candidates
 [iteration]: /guides/libraries/library-tour#iteration
 [forEach()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[pattern]: /
+[pattern]: /language/patterns

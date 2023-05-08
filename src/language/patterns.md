@@ -340,14 +340,14 @@ This case pattern simultaneously validates that:
 [wildcard pattern]: /language/pattern-types#wildcard
 [rest element]: /language/pattern-types#rest-element
 [null-check pattern]: /language/pattern-types#null-check
-[for]: /
-[if]: /
-[switch]: /
-[expressions]: /
+[for]: /language/loops#for-loops
+[if]: /language/branches#if-case
+[switch]: /language/branches#switch-statements
+[expressions]: /language/branches#switch-expressions
 [collection literals]: /language/collections#control-flow-operators
 [null-assert pattern]: /language/pattern-types#null-assert
 [record]: /language/pattern-types#record
-[Records]: /
+[Records]: /language/records
 [refutable]: /resources/glossary#refutable-pattern
 [constant]: /language/pattern-types#constant
 [list]: /language/pattern-types#list

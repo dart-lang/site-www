@@ -58,12 +58,11 @@ if (pair case [int x, int y]) {
 }
 ```
 
-The if-case statement provides a way to match and destructure against a
+The if-case statement provides a way to match and [destructure][] against a
 _single_ pattern. To test a value against _multiple_ patterns, use [switch](#switch).
 
-## Switch statements
-
 <a id="switch"></a>
+## Switch statements
 
 A `switch` statement evaluates a value expression against a series of cases.
 Each `case` clause is a [pattern][] for the value to match against.
@@ -95,7 +94,10 @@ switch (command) {
 }
 ```
 
-Empty cases fall through to the next case. For non-sequential fall-through,
+Empty cases fall through to the next case. 
+For an empty case that does not fall through,
+use [`break`][break] for its body.
+For non-sequential fall-through,
 you can use a [`continue` statement][break] and a label:
 
 ```dart
@@ -113,7 +115,8 @@ switch (command) {
     executeNowClosed();   // Runs for both OPEN and PENDING.
 }
 ```
-For an empty case that does not fall through, use [`break`][break] for its body.
+
+For more details, check out the patterns [section on switch][].
 
 ### Switch expressions
 
@@ -227,12 +230,13 @@ rather than exiting the entire switch.
 [exceptions]: /language/error-handling
 [conditional expressions]: /language/operators#conditional-expressions
 [boolean]: /language/built-in-types#booleans
-[pattern]: /
+[pattern]: /language/patterns
 [enum]: /language/enum
 [`throw`]: /language/error-handling#throw
 [`return`]: /language/functions#return-values
-[wildcard `_`]: /
+[wildcard `_`]: /language/pattern-types#wildcard
 [break]: /language/loops#break-and-continue
-[sealed]: /
-[destructured]: /
-[any kind of pattern]: /
+[sealed]: /language/class-modifiers#sealed
+[any kind of pattern]: /language/pattern-types
+[destructure]: /language/patterns#destructuring
+[section on switch]: /language/patterns#switch-statements-and-expressions

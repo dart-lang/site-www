@@ -268,6 +268,6 @@ prevent [mixing in][mixin].
 [extend]: /language/extend
 [implement]: /language/classes#implicit-interfaces
 [factory constructor]: /language/constructors#factory-constructors
-[exhaustive]: /
+[exhaustive]: /language/branches#exhaustiveness-checking
 [abstract methods]: /language/methods#abstract-methods
 [syntax specification]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/class-modifiers/feature-specification.md#syntax
