@@ -10,30 +10,32 @@ The following table lists the words that the Dart language treats specially.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 <div class="table-wrapper" markdown="1">
-| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [show][]{{ckw}}   |
-| [as][]{{bii}}         | [enum][]              | [in][]                | [static][]{{bii}} |
-| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [super][]         |
-| [async][]{{ckw}}      | [extends][]           | [is][]                | [switch][]        |
-| [await][]{{lrw}}      | [extension][]{{bii}}  | [late][]{{bii}}       | [sync][]{{ckw}}   |
-| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
-| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
-| [catch][]             | [false][]             | [new][]               | [true][]          |
-| [class][]             | [final][]             | [null][]              | [try][]           |
-| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
-| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
-| [default][]           | [get][]{{bii}}        | [required][]{{bii}}   | [when][]          |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [rethrow][]           | [while][]         |
-| [do][]                | [if][]                | [return][]            | [with][]          |
-| [dynamic][]{{bii}}    | [implements][]{{bii}} | [set][]{{bii}}        | [yield][]{{lrw}}  |
+| [abstract][]{{bii}}   | [else][]                 | [import][]{{bii}}     | [show][]{{ckw}}    |
+| [as][]{{bii}}         | [enum][]                 | [in][]                | [static][]{{bii}}  |
+| [assert][]            | [export][]{{bii}}        | [interface][]{{bii}}  | [super][]          |
+| [async][]{{ckw}}      | [extends][]              | [is][]                | [switch][]         |
+| [await][]{{lrw}}      | [extension][]{{bii}}     | [late][]{{bii}}       | [sync][]{{ckw}}    |
+| [base][]{{bii}}       | [external][]{{bii}}      | [library][]{{bii}}    | [this][]           |
+| [break][]             | [factory][]{{bii}}       | [mixin][]{{bii}}      | [throw][]          |
+| [case][]              | [false][]                | [new][]               | [true][]           |
+| [catch][]             | [final (variable)][]     | [null][]              | [try][]            |
+| [class][]             | [final (class)][]{{bii}} | [on][]{{ckw}}         | [typedef][]{{bii}} |
+| [const][]             | [finally][]              | [operator][]{{bii}}   | [var][]            |
+| [continue][]          | [for][]                  | [part][]{{bii}}       | [void][]           |
+| [covariant][]{{bii}}  | [Function][]{{bii}}      | [required][]{{bii}}   | [when][]           |
+| [default][]           | [get][]{{bii}}           | [rethrow][]           | [while][]          |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}          | [return][]            | [with][]           |
+| [do][]                | [if][]                   | [sealed][]{{bii}}     | [yield][]{{lrw}}   |
+| [dynamic][]{{bii}}    | [implements][]{{bii}}    | [set][]{{bii}}        |                    |
 {:.table .table-striped .nowrap}
 </div>
 
-[abstract]: /language/classes#abstract-classes
+[abstract]: /language/class-modifiers#abstract
 [as]: /language/operators#type-test-operators
 [assert]: /language/error-handling#assert
 [async]: /language/async
 [await]: /language/async
+[base]: /language/class-modifiers#base
 [break]: /language/loops#break-and-continue
 [case]: /language/branches#switch
 [catch]: /language/error-handling#catch
@@ -57,7 +59,8 @@ The following table lists the words that the Dart language treats specially.
 [external]: https://spec.dart.dev/DartLangSpecDraft.pdf#External%20Functions
 [factory]: /language/constructors#factory-constructors
 [false]: /language/built-in-types#booleans
-[final]: /language/variables#final-and-const
+[final (variable)]: /language/variables#final-and-const
+[final (class)]: /language/class-modifiers#final
 [finally]: /language/error-handling#finally
 [for]: /language/loops#for-loops
 [Function]: /language/functions
@@ -67,7 +70,7 @@ The following table lists the words that the Dart language treats specially.
 [implements]: /language/classes#implicit-interfaces
 [import]: /language/libraries#using-libraries
 [in]: /language/loops#for-loops
-[interface]: /language/classes#implicit-interfaces
+[interface]: /language/class-modifiers#interface
 [is]: /language/operators#type-test-operators
 [late]: /language/variables#late-variables
 [library]: /language/libraries
@@ -80,6 +83,7 @@ The following table lists the words that the Dart language treats specially.
 [required]: /language/functions#named-parameters
 [rethrow]: /language/error-handling#catch
 [return]: /language/functions#return-values
+[sealed]: /language/class-modifiers#sealed
 [set]: /language/methods#getters-and-setters
 [show]: /language/libraries#importing-only-part-of-a-library
 [static]: /language/classes#class-variables-and-methods

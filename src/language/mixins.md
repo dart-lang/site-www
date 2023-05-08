@@ -6,10 +6,10 @@ toc: false
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Mixins are a way of reusing a class's code in multiple class
-hierarchies.
+Mixins are a way of defining code that can be reused in multiple class hierarchies.
+They are intended to provide member implementations en masse. 
 
-To _use_ a mixin, use the `with` keyword followed by one or more mixin
+To use a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
@@ -26,10 +26,13 @@ class Maestro extends Person [!with Musical, Aggressive, Demented!] {
 }
 {% endprettify %}
 
-To _implement_ a mixin, create a class that extends Object and
-declares no constructors.
-Unless you want your mixin to be usable as a regular class,
-use the `mixin` keyword instead of `class`.
+To define a mixin, use the `mixin` declaration. 
+In the rare case where you need to define both a mixin _and_ a class, you can use
+the [`mixin class` declaration](#class-mixin-or-mixin-class).
+
+Mixins and mixin classes cannot have an `extends` clause,
+and must not declare any generative constructors.
+
 For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musical)"?>
@@ -75,3 +78,17 @@ only classes that extend or implement the `Musician` class
 can use the mixin `MusicalPerformer`.
 Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
+
+## `class`, `mixin`, or `mixin class`?
+
+{{site.alert.version-note}}
+  The `mixin class` declaration requires a [language version][] of at least 3.0.
+{{site.alert.end}}
+
+A `mixin` declaration defines a mixin. A `class` declaration defines a [class][].
+A `mixin class` declaration defines a class that is usable as both a regular class
+and a mixin, with the same name and the same type.
+
+[language version]: /guides/language/evolution
+[class]: /language/classes
+[class modifiers]: /language/class-modifiers
