@@ -333,7 +333,7 @@ This content has moved to [Methods](/language/methods#abstract-methods).
 
 ### Abstract classes
 
-This content has moved to [Classes](/language/classes#abstract-classes).
+This content has moved to [Classes](/language/class-modifiers#abstract).
 
 <a id="interfaces"></a>
 ### Implicit interfaces
