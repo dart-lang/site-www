@@ -12,9 +12,9 @@ A pattern represents the shape of a set of values that it may match against actu
 values.
 
 This page describes:
-- What patterns do
-- Where patterns are allowed in Dart code
-- Common use cases for patterns
+- What patterns do.
+- Where patterns are allowed in Dart code.
+- What the common use cases for patterns are.ß
 
 To learn about the different kinds of patterns, visit the [pattern types][types]
 page.
@@ -24,20 +24,22 @@ page.
 In general, a pattern may **match** a value, **destructure** a value, or both,
 depending on the context and shape of the pattern.
 
-First, given a value, pattern matching allows you to check whether the value has
-a certain shape, or is a certain constant, or is equal to something else, or has
-a certain type.
+First, pattern matching allows you to check whether a given value:
+- Has a certain shape.
+- Is a certain constant.
+- Is equal to something else.
+- Has a certain type.
 
-Then, destructuring provides you with a convenient declarative syntax to break
-that value into its constituent parts, possibly binding variables to some or all
-of those parts in the process.
+Then, pattern destructuring provides you with a convenient declarative syntax to
+break that value into its constituent parts. The same pattern can also let you 
+bind variables to some or all of those parts in the process.
 
 ### Matching
 
-A pattern is always tested against a value to determine if the value has the form
-you expect, or in other words, if the value _matches_ the pattern. 
+A pattern always tests against a value to determine if the value has the form
+you expect. In other words, you are checking if the value _matches_ the pattern. 
 
-What constitutes a match depends on [what kind of pattern][types] is being used.
+What constitutes a match depends on [what kind of pattern][types] you are using.
 For example, a constant pattern matches if the value is equal to the pattern's 
 constant:
 
@@ -48,8 +50,8 @@ switch (number) {
 }
 ```
 
-Many patterns make use of subpatterns (sometimes called outer and inner patterns,
-respectively). Patterns match recursively on their subpatterns.
+Many patterns make use of subpatterns, sometimes called _outer_ and _inner_
+patterns, respectively. Patterns match recursively on their subpatterns.
 For example, the individual fields of any [collection-type][] pattern could be 
 [variable patterns][variable] or [constant patterns][constant]:
 
@@ -61,8 +63,8 @@ switch (obj) {
 }                    
 ```
 
-Patterns can ignore parts of a matched value by using a [wildcard pattern][]
-as a place holder, or a [rest element][] in the case of list patterns.
+To ignore parts of a matched value, you can use a [wildcard pattern][]
+as a place holder. In the case of list patterns, you can use a [rest element][].
 
 ### Destructuring
 
@@ -77,7 +79,7 @@ var [a, b, c] = numList;
 print(a + b + c);          
 ```
 
-You can nest [any kind of pattern][types] inside a destructuring pattern, 
+You can nest [any kind of pattern][types] inside a destructuring pattern. 
 For example, this case pattern matches and destructures a two-element
 list whose first element is `a` or `b`:
 
@@ -99,15 +101,14 @@ You can use patterns in several places in the Dart language:
 - [if-case][if] and [switch-case][switch]
 - Control flow in [collection literals][]
 
-This section describes common use cases for matching and destructuring with patterns, 
-combining various contexts, pattern types, and surrounding code constructs.
+This section describes common use cases for matching and destructuring with patterns.
 
 ### Variable declaration
 
-Anywhere Dart allows local variable declaration, like in the body of a function,
-you can also use a _pattern variable declaration_. The pattern matches against
-and destructures the value on the right of the declaration, binding it to
-new local variables:
+You can use a _pattern variable declaration_ anywhere Dart allows local variable
+declaration. 
+The pattern matches against the value on the right of the declaration.
+Once matched, it destructures the value and binds it to new local variables:
 
 ```dart
 // Declares new variables a, b, and c.
@@ -119,12 +120,12 @@ by a pattern.
 
 ### Variable assignment 
 
-A _variable assignment pattern_ on the left side of an assignment destructures the
-matched object and assigns the values to _existing_ variables,
-instead of binding new ones. 
+A _variable assignment pattern_ falls on the left side of an assignment.
+First, it destructures the matched object. Then it assigns the values to
+_existing_ variables, instead of binding new ones. 
 
-One convenient use case is swapping the values of two variables without needing
-to declare a third temporary one:
+This is useful when you want to swap the values of two variables without declaring
+a third temporary one:
 
 ```dart
 var (a, b) = ('left', 'right');
@@ -136,11 +137,12 @@ print('$a $b'); // Prints "right left".
 
 Every case clause contains a pattern. This applies to [switch statements][switch]
 and [expressions][], as well as [if-case statements][if].
+You can use [any kind of pattern][types] in a case.
 
-_Case patterns_ are [refutable][];
-they allow control flow to either match and destructure the object being switched
-on, or continue execution if the object doesn't match. Case patterns can be
-[any kind of pattern][types]:
+_Case patterns_ are [refutable][].
+They allow control flow to either:
+- Match and destructure the object being switched on,
+- Or continue execution if the object doesn't match.
 
 ```dart
 switch (obj) {
@@ -151,14 +153,14 @@ switch (obj) {
   case (var a, var b): ...
     // Matches if obj is a record with two fields, then assigns the fields to 'a' and 'b'.
   case Rect(width: var w, height: var h): ...
-    // Matches if obj is an instance of Rect, and then against the properties of Rect.
+    // Matches if obj is an instance of Rect, and then against the properties of Rect,
+    // and then assigns the properties to 'w' and 'h'.
   default: ...
 }
 ```
 
-
-Values destructured by a pattern in a case become local variables,
-only available in the body of that case. 
+The values that a pattern destructures in a case become local variables.
+Their scope is only within the body of that case.
 
 ### For and for-in loops
 
@@ -194,16 +196,16 @@ for (var MapEntry(:key, value: count) in hist.entries) {
 
 ## Uses cases for patterns
 
-The [section above](#places-patterns-can-appear)
-describes _how_ you can use patterns in Dart code constructs, 
-sometimes with interesting uses cases as examples (like [swapping](#variable-assignment)
+The [previous section](#places-patterns-can-appear)
+describes _how_ patterns fit into other Dart code constructs. 
+You saw some interesting uses cases as examples, like [swapping](#variable-assignment)
 the values of two variables, or
 [destructuring key-value pairs](#for-and-for-in-loops)
-in a map). 
+in a map. This section describes even more use cases, answering:
 
-This section describes even more use cases, answering _when and why_ you might
-want to use patterns, the kinds of problems they solve, and the idioms they're 
-best suited for.
+- _When and why_ you might want to use patterns.
+- The kinds of problems they solve.
+- The idioms for which they're best suited.
 
 ### Destructuring multiple returns
 
@@ -251,13 +253,15 @@ main() {
 ### Algebraic datatypes 
 
 Object destructuring and switch cases are conducive to writing
-code in an [algebraic datatype][] style: 
-when you have a family of related types and an operation that needs
-specific behavior for each type.
+code in an [algebraic datatype][] style.
+Use this method when:
+- You have a family of related types.
+- You have an operation that needs specific behavior for each type.
+- You want to group that behavior in one place instead of spreading it across all
+the different type definitions. 
 
-Instead of implementing the operation as an instance method for every respective type,
-you can keep the operations in a single function, switching over subtypes for
-variations in behavior:
+Instead of implementing the operation as an instance method for every type,
+keep the operation's variations in a single function that switches over the subtypes:
 
 ```dart
 sealed class Shape {}
@@ -289,11 +293,10 @@ var json = {'user': ['Lily', 13]};
 var {'user': [name, age]} = json;
 ```
 
-The example above makes sense when you already know that the JSON
-data has the structure you expect.
-If the data comes from an external source, like over the network as is commonly
-the case, you can't be sure of it's structure and
-should validate it first. 
+IF you know that the JSON data has the structure you expect,
+the previous example is realistic.
+But data typically comes from an external source, like over the network.
+You need to validate it first to confirm its structure. 
 
 Without patterns, validation is verbose:
 
@@ -311,9 +314,10 @@ if (json is Map<String, dynamic> &&
 ```
 
 A single [case pattern](#switch-statements-and-expressions)
-(conducive to an [if-case][if] statement)
-achieves the same validation as above, but is much clearer, more declarative,
-and much shorter:
+can achieve the same validation.
+Single cases are conducive to [if-case][if] statements.
+An if-case pattern is a more declarative, and much less verbose
+method of validating JSON:
 
 ```dart
 if (json case {'user': [String name, int age]}) 
@@ -322,7 +326,7 @@ if (json case {'user': [String name, int age]})
 
 This case pattern simultaneously validates that:
 
-- `json` is a map (because it must first match the outer [map pattern][map] to proceed).
+- `json` is a map, because it must first match the outer [map pattern][map] to proceed.
   - And, since it's a map, it also confirms `json` is not null.
 - `json` contains a key `user`.
 - The key `user` pairs with a list of two values.
