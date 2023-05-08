@@ -186,6 +186,17 @@ regardless of the latter library's language version.
 
 This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
 
+#### Symptom
+
+An analysis error like:
+
+```
+Mixin can only be applied to class.
+```
+
+The analyzer produces this diagnostic when a class that is neither a
+`mixin class` nor a `mixin` is used in a `with` clause.
+
 #### Migration
 
 Determine if the class is intended to be used as a mixin.
@@ -208,8 +219,6 @@ with the same meaning (named constants, literals, etc.).
 These will behave the same and no symptoms will arise.
 
 The few constant expressions that aren't valid patterns will trigger the [`invalid_case_patterns` lint](tools/linter-rules#invalid_case_patterns).
-
-TODO: Give an example
 
 #### Migration
 
