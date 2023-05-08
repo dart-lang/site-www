@@ -52,6 +52,12 @@
           permalink: /language/typedefs
         - title: Type system
           permalink: /language/type-system 
+    - title: Patterns
+      children:
+        - title: Overview & usage
+          permalink: /language/patterns
+        - title: Pattern types
+          permalink: /language/pattern-types
     - title: Functions
       permalink: /language/functions
     - title: Control flow
