@@ -47,10 +47,10 @@ This means values can’t be null unless you say they can be.
 With sound null safety, Dart can protect you from
 null exceptions at runtime through static code analysis.
 Unlike many other null-safe languages,
-when Dart determines that a variable can't be null,
+when Dart determines that a variable is non-nullable,
 that variable can never be null.
 If you inspect your running code in the debugger,
-you see that runtime retains this non-nullability; hence _sound_ null safety.
+you see that non-nullability is retained at runtime; hence _sound_ null safety.
 
 The following code sample showcases several Dart language features,
 including libraries, async calls, nullable and non-nullable types,

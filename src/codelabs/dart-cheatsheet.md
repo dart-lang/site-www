@@ -88,7 +88,7 @@ reference them inside single quotes, with a space in between.
 
 ## Nullable variables
 
-Dart 3.0 enforces sound null safety.
+Dart enforces sound null safety.
 This means values can’t be null unless you say they can be.
 In other words, types default to non-nullable.
 
@@ -98,7 +98,7 @@ A variable of type `int` can't have the value `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
 ```dart
-int a = [!null!]; // INVALID in Dart 3.0.
+int a = [!null!]; // INVALID
 ```
 
 When creating a variable, add `?` to the type to indicate
@@ -106,7 +106,7 @@ that the variable can be `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
 ```dart
-[!int?!] a = null; // Valid in Dart 3.0.
+[!int?!] a = null; // Valid
 ```
 
 You can simplify that code a bit because, in all versions of Dart,

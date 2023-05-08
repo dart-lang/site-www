@@ -1362,9 +1362,9 @@ initializing. But when you *can* use initializing formals, you *should*.
 
 ### DON'T use `late` when a constructor initializer list will do
 
-Sound null safety requires Dart to initialize a non-nullable field
-before it can be read. Since fields can be read inside the
-constructor body, this means an error returns if you don't initialize a
+Dart requires you to initialize non-nullable fields before they can be read.
+Since fields can be read inside the constructor body, 
+this means you get an error if you don't initialize a
 non-nullable field before the body runs.
 
 You can make this error go away by marking the field `late`. That turns the

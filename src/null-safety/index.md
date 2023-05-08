@@ -9,32 +9,33 @@ Null safety prevents errors that result from unintentional access
 of variables set to `null`.
 
 For example, if a method expects an integer but receives `null`,
-your app returns a runtime error.
+your app causes a runtime error.
 This type of error, a null dereference error, can be difficult to debug.
 
 With sound null safety, variables default to 'non-nullable'.
-You can assigned values of the declared type only, like `int i=42`.
-You can never assign the value to `null` to default variable types.
-To specify that a variable type can be nullable, you add a `?` after
-the type label: `int? i`.
-These specific types can contain either a `null` *or*
+You can assign values of the declared type only, like `int i=42`.
+You can never assign the value `null` to non-nullable variables.
+To specify that a variable type can be nullable, 
+add a `?` after the type label: `int? i`.
+These nullable types can contain either `null` *or*
 a value of the defined type.
 
 Sound null safety changes potential **runtime errors**
 into **edit-time** analysis errors.
-Null safety does flagging that a non-null variable has either:
+With null safety, the Dart analyzer and compilers
+flag if a non-nullable variable has either:
 
 * Not been initialized with a non-null value
 * Been assigned a `null` value.
 
-This check allows you to fix these errors _before_ deploying your app.
+These checks allows you to fix these errors _before_ deploying your app.
 
 ## Introduction through examples
 
 With null safety, all variables in the following code can't be `null`:
 
 ```dart
-// In Dart 3, none of these can ever be null.
+// With null safety, none of these can ever be null.
 var i = 42; // Inferred to be an int.
 String name = getFileName();
 final b = Foo();
@@ -136,8 +137,6 @@ listed by the analyzer.
 ## Dart 2.x and null safety {#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
-To enable null safety, set the `sdk` option to `'>=2.12.0'`
-in the `pubspec.yaml` file.
 You cannot use null safety in SDK versions earlier than Dart 2.12.
 
 <a id="constraints"></a>
@@ -155,7 +154,7 @@ environment:
 
 ## Where to learn more
 
-To learn more about null safety, see the following resources:
+To learn more about null safety, check out the following resources:
 
 * [Null safety codelab][]
 * [Understanding null safety][]

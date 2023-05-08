@@ -519,8 +519,8 @@ Booleans represent a binary value in both Dart
 ### Null safety
 
 Dart enforces sound null safety.
-By default, types can't contain a null value unless marked as `nullable`.
-Dart indicates this with a question mark at the end of the type.
+By default, types don't allow a null value unless marked as nullable.
+Dart indicates this with a question mark (`?`) at the end of the type.
 This works like Swift's _optionals_.
 
 ### Null-aware operators
@@ -542,11 +542,11 @@ let count = str?.count ?? 0
 In addition, Dart offers a
 [null safe version of the cascade operator][] (`?..`).
 This operator ignores any operations when
-the target object resolves to `null`.
+the target expression resolves to `null`.
 Dart also offers the null assignment operator (`??=`),
 which Swift doesn't.
 This operator permits you to assign a value to a variable
-with a nullable type when its current value resolves to `null`.
+with a nullable type when its current value is `null`.
 Expressed as `a ??= b;`, it serves as shorthand for the following:
 
 ```dart
@@ -795,7 +795,7 @@ one of the following:
 
 To learn more about nullable types, check out [null safety](#null-safety).
 
-To set a named parameter as required in Dart,
+To mark a named parameter as required in Dart,
 you must prefix it with the `required` keyword:
 
 ```dart

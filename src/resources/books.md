@@ -17,7 +17,6 @@ If you find another Dart book that might be helpful,
   and new developer tools.
 {{site.alert.end}}
 
-## Dart books
 
 {% for book in site.data.books-dart-null-safe %}
 

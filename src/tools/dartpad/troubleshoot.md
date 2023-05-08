@@ -94,7 +94,7 @@ not **Solution** or **Tests**.
 
 If the code is using language or library features no longer supported
 in the latest stable release of Dart,
-the code may no longer analyze or run.
+the code may no longer analyze or run without errors.
 
 * If the code worked in the previous Dart release,
   consider switching to the **old channel**

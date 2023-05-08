@@ -44,7 +44,7 @@ or it can be null.
 
 ### Exercise: Non-nullable types
 
-In the following example, the variable `a` declares itself an `int`.
+In the following example, the developer declared variable `a` an `int`.
 Try changing the value in the assignment to `3` or `145`, but not `null`!
 
 <?code-excerpt "null_safety_codelab/bin/non_nullable_types.dart" replace="/145/null/g"?>
@@ -91,19 +91,19 @@ void main() {
 
 ## The null assertion operator (!)
 
-If you believe that an expression with a nullable type doesn't equal `null`,
-you can use a [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+If you're sure an expression with a nullable type doesn't equal `null`,
+you can use the [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
 (`!`) to make Dart treat it as non-nullable.
-By adding `!` after the type in the expression,
+By adding `!` after the expression,
 you assert two conditions to Dart about the expression:
 
 1. Its value doesn't equal `null`
 2. Dart can assign the value to a non-nullable variable
 
 {{site.alert.warn}}
-  If expression does equal `null`, **Dart throws an exception at run-time**.
+  If the expression does equal `null`, **Dart throws an exception at run-time**.
   This makes the `!` operator _unsafe_.
-  Don't use it unless you have no doubt expression cannot equal `null`.
+  Don't use it unless you have no doubt the expression can't equal `null`.
 {{site.alert.end}}
 
 ### Exercise: Null assertion
@@ -131,16 +131,15 @@ void main() {
 
 ## Null-aware operators
 
-If a variable or expression can be set to `null`,
+If a variable or expression is nullable,
 you can use [type promotion](#type-promotion)
 to access the type's members.
 You can also use null-aware operators to handle nullable values.
 
 Sometimes the flow of the program tells you that the value of an
 expression cannot be `null`.
-To force Dart to treat that variable as non-nullable,
-add the [null assertion operator](#the-null-assertion-operator-) (`!`)
-to that variable's type.
+To force Dart to treat that expression as non-nullable,
+add the [null assertion operator](#the-null-assertion-operator-) (`!`).
 If the value does equal `null`, using this operator throws an exception.
 
 To handle potential `null` values, use the conditional property access
@@ -164,7 +163,7 @@ nullableObject?.action();
 ```
 
 In the following code, try using conditional property access
-in the `stringLength` method. This should fix the error and
+in the `stringLength` method. This fixes the error and
 to return the length of the string or `null` if it equals `null`:
 
 ```dart:run-dartpad:ga_id-null-safety-conditional-property
@@ -363,10 +362,10 @@ We call this behavior
 
 ### Exercise: Definite assignment
 
-Dart's type system can track where it assigns and reads variables.
-It can also verify that it assigned values to non-nullable variables
+Dart's type system can track where variables are assigned and read.
+It can also verify that the developer assigned values to non-nullable variables
 before any code tries to read from those variables.
-We call this process
+This process is called
 [definite assignment](/null-safety/understanding-null-safety#definite-assignment-analysis).
 
 Try uncommenting the `if`-`else` statement in the following code.
@@ -435,12 +434,12 @@ For cases like that, use the
 When you put `late` in front of a variable declaration,
 that tells Dart the following about the variable:
 
-- It doesn't have a value yet.
+- It cannot be assigned a value yet.
 - It will get a value later.
 - It will have a value _before_ being used.
 
-If you declare a variable `late` and
-Dart reads the variable before it has a value, Dart returns an error.
+If you declare a variable `late` and Dart reads the variable before
+you assigned a value, Dart throws an error.
 
 ### Exercise: Using late
 
@@ -536,7 +535,7 @@ void main() {
   **Fun fact:**
   After you add `late` to the declaration of `_cache`,
   if you move the   `_computeValue` function into the
-  `CachedValueProvider` class the code still works!
+  `CachedValueProvider` class, the code still works!
   Initialization expressions for `late` fields can use instance
   methods in their initializers.
 {{site.alert.end}}
