@@ -218,7 +218,7 @@ Most constant expressions found in switch cases are valid patterns
 with the same meaning (named constants, literals, etc.).
 These will behave the same and no symptoms will arise.
 
-The few constant expressions that aren't valid patterns will trigger the [`invalid_case_patterns` lint](tools/linter-rules#invalid_case_patterns).
+The few constant expressions that aren't valid patterns will trigger the [`invalid_case_patterns` lint](/tools/linter-rules#invalid_case_patterns).
 
 #### Migration
 
