@@ -513,7 +513,7 @@ Try using the new 'strict-casts' option.
 
 #### Migration
 
-Replace the analyzer config:
+Replace this part of the analyzer config:
 ```
 analyzer:
   strong-mode:
