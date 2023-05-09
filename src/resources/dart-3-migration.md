@@ -65,7 +65,7 @@ environment:
 ```
 
 This allows developers to use Dart 3 sound null safety with packages
-that have been migrated to 2.12 null safety
+that already support 2.12 null safety
 without needing a second migration, unless 
 the code is affected by any other Dart 3 changes.
 
@@ -151,7 +151,8 @@ $ dart run bin/my_app.dart
 Before beginning any migration to Dart 3, 
 ensure your app or package has been 100% migrated to enable null safety. 
 This requires a Dart `2.19` SDK, not a Dart 3 SDK. 
-For details, see the [null safety migration guide][].
+To learn how to first migrate your app or package to support null safety,
+check out the [null safety migration guide][].
 
 [null safety migration guide]: /null-safety/migration-guide
 
@@ -163,8 +164,8 @@ In Dart 3, only the `=` syntax is allowed.
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
-that applies to all Dart 3 code.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), 
+that only applies to language version 3.0 or later.
 
 #### Symptom
 
