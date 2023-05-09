@@ -353,7 +353,7 @@ as providing an alternative value if the left-hand side is `null`.
 ## Type promotion
 
 Dart's [flow analysis](/null-safety/understanding-null-safety#flow-analysis)
-to account for nullability.
+accounts for nullability.
 Dart treats nullable variables with no ability to contain null values
 as non-nullable variables.
 We call this behavior
@@ -389,7 +389,7 @@ void main() {
 ### Exercise: Null checking
 
 In the following code, add an `if` statement to the beginning of
-`getLength` that returns zero if `str` has no value:
+`getLength` that returns zero if `str` is `null`:
 
 <?code-excerpt "null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart:run-dartpad:ga_id-null_checking

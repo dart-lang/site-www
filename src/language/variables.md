@@ -46,7 +46,7 @@ Null safety prevents errors that result from unintentional access
 of variables set to `null`.
 
 For example, if a method expects an integer but receives `null`,
-your app returns a runtime error.
+your app causes a runtime error.
 This type of error, a null dereference error, can be difficult to debug.
 
 With sound null safety, all variables require a value.
@@ -66,6 +66,7 @@ Null safety flags a non-null variable when it has been either:
 * Assigned a `null` value.
 
 This check allows you to fix these errors _before_ deploying your app.
+
 ## Default value
 
 Uninitialized variables that have a nullable type
