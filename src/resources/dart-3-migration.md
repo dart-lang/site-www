@@ -304,24 +304,24 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
   Existing bidirectional iterators can still work, they just don't have
   a shared supertype locking them to a specific name for moving backwards.
 
-[`List.filled`]: https://api.dart.dev/stable/2.18.6/dart-core/List/List.filled.html
-[`int.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/int/parse.html
-[`double.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/double/parse.html
-[`num.parse`]: https://api.dart.dev/stable/2.18.4/dart-core/num/parse.html
-[`tryParse`]: https://api.dart.dev/stable/2.18.4/dart-core/num/tryParse.html
+[`List.filled`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.filled.html
+[`int.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/parse.html
+[`double.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double/parse.html
+[`num.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/parse.html
+[`tryParse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/tryParse.html
 [`Deprecated.expires`]: https://api.dart.dev/stable/2.18.4/dart-core/Deprecated/expires.html
-[`Deprecated.message`]: https://api.dart.dev/stable/2.18.4/dart-core/Deprecated/message.html
+[`Deprecated.message`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Deprecated/message.html
 [`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.17.4/dart-core/AbstractClassInstantiationError-class.html
 [`CastError`]: https://api.dart.dev/stable/2.17.4/dart-core/CastError-class.html
 [`FallThroughError`]: https://api.dart.dev/stable/2.17.4/dart-core/FallThroughError-class.html
 [`NoSuchMethodError`]: https://api.dart.dev/stable/2.18.4/dart-core/NoSuchMethodError/NoSuchMethodError.html
-[`NoSuchMethodError.withInvocation`]: https://api.dart.dev/stable/2.18.4/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
+[`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
 [`CyclicInitializationError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/CyclicInitializationError-class.html
 [`Provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/Provisional-class.html
 [`provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/provisional-constant.html
 [`proxy`]: https://api.dart.dev/stable/2.18.4/dart-core/proxy-constant.html
 [`CastError`]: https://api.dart.dev/stable/2.18.3/dart-core/CastError-class.html
-[`TypeError`]: https://api.dart.dev/stable/2.18.3/dart-core/TypeError-class.html
+[`TypeError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/TypeError-class.html
 [`FallThroughError`]: https://api.dart.dev/dev/2.19.0-374.0.dev/dart-core/FallThroughError-class.html
 [`NullThrownError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/NullThrownError-class.html
 [`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.18.3/dart-core/AbstractClassInstantiationError-class.html
@@ -345,7 +345,7 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
 [`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
+[`maxUserTags`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/UserTag/maxUserTags-constant.html
 [`Metrics`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html
 [`Metric`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html
 [`Counter`]: https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html
