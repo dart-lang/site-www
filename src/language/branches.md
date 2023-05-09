@@ -116,7 +116,8 @@ switch (command) {
 }
 ```
 
-For more details, check out the patterns [section on switch][].
+To learn more about patterns in case clauses, 
+check out the patterns documentation on [Switch statements and expressions][].
 
 ### Switch expressions
 

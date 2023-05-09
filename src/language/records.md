@@ -84,7 +84,8 @@ print(record.b);     // Prints true
 print(record.$2);    // Prints 'last'
 ```
 
-To streamline record field access even more, see the page on [Patterns][pattern].
+To streamline record field access even more, 
+check out the page on [Patterns][pattern].
 
 ## Record types
 
