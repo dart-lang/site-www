@@ -84,11 +84,8 @@ print(record.b);     // Prints true
 print(record.$2);    // Prints 'last'
 ```
 
-To streamline record field access even more, see the page on [Patterns][].
-
-{% comment %}
-    TODO: link to patterns page, specifically records destructuring section.
-{% endcomment %}
+To streamline record field access even more, 
+check out the page on [Patterns][pattern].
 
 ## Record types
 
@@ -103,8 +100,8 @@ from the record:
 ```dart
 (num, Object) pair = (42, "a");
 
-var first = pair.$1;     // static type `num`, runtime type `int`
-var second = pair.$2;    // static type `Object`, runtime type `String`
+var first = pair.$1;     // Static type `num`, runtime type `int`.
+var second = pair.$2;    // Static type `Object`, runtime type `String`.
 ```
 
 Consider two unrelated libraries that create records with the same set of fields.
@@ -141,7 +138,7 @@ of their fields.
 
 Records allow functions to return multiple values bundled together.
 To retrieve record values from a return,
-destructure the values into local variables using [pattern matching][].
+destructure the values into local variables using [pattern matching][pattern].
 
 ```dart
 // Returns multiple values in a record:
@@ -173,7 +170,6 @@ types like `List` or `Map` loses type safety.
 {{site.alert.end}}
 
 [collection types]: /language/collections
-[Patterns]: /language
-[pattern matching]: /language
+[pattern]: /language/patterns#destructuring-multiple-returns
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
 [named parameters and arguments]: /language/functions#named-parameters

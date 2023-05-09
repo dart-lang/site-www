@@ -260,6 +260,7 @@ The getter name can be omitted and inferred from the [variable pattern](#variabl
 or [identifier pattern](#identifier) in the field subpattern:
 
 ```dart
+// Binds new variables x and y to the values of Point's x and y properties.
 var Point(:x, :y) = Point(1, 2);
 ```
 
@@ -414,5 +415,5 @@ switch (record) {
 [`List`]: /language/collections#lists
 [`Map`]: /language/collections#maps
 [refuted]: /resources/glossary#refutable-pattern
-[record]: /
-[shape]: /
+[record]: /language/records
+[shape]: /language/records#record-types
