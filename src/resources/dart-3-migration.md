@@ -309,31 +309,31 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 [`double.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double/parse.html
 [`num.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/parse.html
 [`tryParse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/tryParse.html
-[`Deprecated.expires`]: https://api.dart.dev/stable/2.18.4/dart-core/Deprecated/expires.html
+[`Deprecated.expires`]: {{site.dart-api}}/stable/2.19.6/dart-core/Deprecated/expires.html
 [`Deprecated.message`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Deprecated/message.html
-[`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.17.4/dart-core/AbstractClassInstantiationError-class.html
-[`CastError`]: https://api.dart.dev/stable/2.17.4/dart-core/CastError-class.html
-[`FallThroughError`]: https://api.dart.dev/stable/2.17.4/dart-core/FallThroughError-class.html
-[`NoSuchMethodError`]: https://api.dart.dev/stable/2.18.4/dart-core/NoSuchMethodError/NoSuchMethodError.html
+[`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
+[`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
+[`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
+[`NoSuchMethodError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NoSuchMethodError/NoSuchMethodError.html
 [`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
-[`CyclicInitializationError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/CyclicInitializationError-class.html
-[`Provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/Provisional-class.html
-[`provisional`]: https://api.dart.dev/stable/2.18.4/dart-core/provisional-constant.html
-[`proxy`]: https://api.dart.dev/stable/2.18.4/dart-core/proxy-constant.html
-[`CastError`]: https://api.dart.dev/stable/2.18.3/dart-core/CastError-class.html
+[`CyclicInitializationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CyclicInitializationError-class.html
+[`Provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/Provisional-class.html
+[`provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/provisional-constant.html
+[`proxy`]: {{site.dart-api}}/stable/2.19.6/dart-core/proxy-constant.html
+[`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
 [`TypeError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/TypeError-class.html
-[`FallThroughError`]: https://api.dart.dev/dev/2.19.0-374.0.dev/dart-core/FallThroughError-class.html
-[`NullThrownError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/NullThrownError-class.html
-[`AbstractClassInstantiationError`]: https://api.dart.dev/stable/2.18.3/dart-core/AbstractClassInstantiationError-class.html
-[`CyclicInitializationError`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/CyclicInitializationError-class.html
-[`BidirectionalIterator`]: https://api.dart.dev/dev/2.19.0-430.0.dev/dart-core/BidirectionalIterator-class.html
+[`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
+[`NullThrownError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NullThrownError-class.html
+[`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
+[`CyclicInitializationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CyclicInitializationError-class.html
+[`BidirectionalIterator`]: {{site.dart-api}}/stable/2.19.6/dart-core/BidirectionalIterator-class.html
 
 #### `dart:async`
 
 - Removed the deprecated [`DeferredLibrary`][] class.
   Use the [`deferred as`][] import syntax instead.
 
-[`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
+  [`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
 [`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
 
 #### `dart:developer`
@@ -344,12 +344,12 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 - Removed the deprecated [`Metrics`][], [`Metric`][], [`Counter`][],
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
-[`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
+[`MAX_USER_TAGS`]: {{site.dart-api}}/stable/2.19.6/dart-developer/UserTag/MAX_USER_TAGS-constant.html
 [`maxUserTags`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/UserTag/maxUserTags-constant.html
-[`Metrics`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html
-[`Metric`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html
-[`Counter`]: https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html
-[`Gauge`]: https://api.dart.dev/stable/2.18.2/dart-developer/Gauge-class.html
+[`Metrics`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metrics-class.html
+[`Metric`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metric-class.html
+[`Counter`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Counter-class.html
+[`Gauge`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Gauge-class.html
 
 #### `dart:html`
 
