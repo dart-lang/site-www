@@ -19,37 +19,44 @@ after [upgrading to Dart 3](/get-dart).
 The potentially breaking changes listed below fall into one of two categories:
 
 * **Unversioned changes**: These changes affect any Dart code
-after upgrading to a Dart 3.0 SDK or later. 
-There is no way to "turn off" these changes.
+  after upgrading to a Dart 3.0 SDK or later. 
+  There is no way to "turn off" these changes.
 
 * **Versioned changes**: These changes only apply when the package or app's
-language version is set to >= Dart 3.0. 
-The [language version](/guides/language/evolution#language-version-numbers)
-is derived from the `sdk` lower-constraint in the
-[`pubspec.yaml` file](/guides/packages#creating-a-pubspec). 
-An SDK constraint like this does *not* apply the Dart 3 versioned changes:
-    ```yaml
-    environment:
-      sdk: '>=2.14.0 <3.0.0'
-    ```
-    But an SDK constraint like this does:
-    ```yaml
-    environment:
-      sdk: '>=3.0.0 <4.0.0'
-    ```
+  language version is set to >= Dart 3.0. 
+  The [language version](/guides/language/evolution#language-version-numbers)
+  is derived from the `sdk` lower-constraint in the
+  [`pubspec.yaml` file](/guides/packages#creating-a-pubspec). 
+  An SDK constraint like this does *not* apply the Dart 3 versioned changes:
 
-To use the new Dart 3 features you have to update the language version
-to 3.0. This gets you the Dart 3 versioned changes at the same time.
+  ```yaml
+  environment:
+    sdk: '>=2.14.0 <3.0.0'
+  ```
+  
+  But an SDK constraint like this does:
+
+  ```yaml
+  environment:
+    sdk: '>=3.0.0 <4.0.0'
+  ```
+
+To use the new Dart 3 features you have to
+update the language version to 3.0. 
+This gets you the Dart 3 versioned changes at the same time.
 
 ### Dart 3 backwards compatibility
 
-Many packages and apps that used null safety with Dart 2.12 or later are
-likely backwards compatible with Dart 3. This is possible for any package where
+Many packages and apps that used null safety with Dart 2.12 or
+later are likely backwards compatible with Dart 3. 
+This is possible for any package where 
 the lower bound of the SDK constraint is 2.12.0 or higher. 
 
-[Dart's pub tool](/guides/packages) allows resolution even when the upper bound is limited to versions below 3.0.0. For 
-example, a package with the following constraint will be allowed to resolve with
-a Dart 3.x SDK, as pub will re-interpret the upper-constraint `<3.0.0` as `<4.0.0`
+[Dart's pub tool](/guides/packages) allows resolution even when
+the upper bound is limited to versions below 3.0.0. 
+For example, a package with the following constraint
+will be allowed to resolve with a Dart 3.x SDK, 
+as pub will re-interpret the upper-constraint `<3.0.0` as `<4.0.0`
 when the lower constraint is `2.12` or higher:
 
 ```yaml
@@ -57,8 +64,9 @@ environment:
   sdk: '>=2.14.0 <3.0.0'           # This is interpreted as '>=2.14.0 <4.0.0'
 ```
 
-This allows developers to use Dart 3 sound null safety with packages that have
-been migrated to 2.12 null safety without needing a second migration, unless
+This allows developers to use Dart 3 sound null safety with packages
+that have been migrated to 2.12 null safety
+without needing a second migration, unless 
 the code is affected by any other Dart 3 changes.
 
 ### Testing for impact
@@ -80,24 +88,29 @@ $ dart pub upgrade
 $ dart analyze      # This should pass without errors.
 ```
 
-Or, if needed, also include [major versions](/tools/pub/cmd/pub-upgrade#--major-versions) upgrades:
+Or, if needed, also include [major versions][] upgrades:
 
 ```terminal
 $ dart pub upgrade --major-versions
 $ dart analyze      # This should pass without errors.
 ```
 
+[major versions]: /tools/pub/cmd/pub-upgrade#--major-versions
+
 ## Dart 3 language changes
 
 ### 100% sound null safety
 
-Dart 2.12 introduced null safety more than two years ago. In Dart 2.12, 
-users needed to enable null safety [with a pubspec setting](/null-safety/#enable-null-safety).
+Dart 2.12 introduced null safety more than two years ago. 
+In Dart 2.12, users needed to enable null safety [with a pubspec setting][].
 In Dart 3, null safety is built in; you cannot turn it off.
+
+[with a pubspec setting]: /null-safety/#enable-null-safety
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -111,9 +124,9 @@ Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Libraries that opt out of null safety with [language version comments](/guides/language/evolution#per-library-language-version-selection)
-that select any language version below `2.12` will cause analysis or compilation
-errors:
+Libraries that opt out of null safety with [language version comments][]
+that select any language version below `2.12` will
+cause analysis or compilation errors:
 
 ```terminal
 $ dart analyze .
@@ -131,19 +144,27 @@ $ dart run bin/my_app.dart
 ^^^^^^^^^^^^
 ```
 
+[language version comments]: /guides/language/evolution#per-library-language-version-selection
+
 #### Migration
 
-Before beginning any migration to Dart 3, ensure your app or package has been 100% migrated to enable null safety. 
-This requires a Dart `2.19` SDK, not a Dart 3 SDK. For details, see the [null safety migration guide](/null-safety/migration-guide).
+Before beginning any migration to Dart 3, 
+ensure your app or package has been 100% migrated to enable null safety. 
+This requires a Dart `2.19` SDK, not a Dart 3 SDK. 
+For details, see the [null safety migration guide][].
+
+[null safety migration guide]: /null-safety/migration-guide
 
 ### Colon-syntax for default values
 
-For historical reasons, named optional parameters could specify their default
-value using either `:` or `=`. In Dart 3, only the `=` syntax is allowed.
+For historical reasons, named optional parameters could
+specify their default value using either `:` or `=`. 
+In Dart 3, only the `=` syntax is allowed.
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -175,17 +196,19 @@ $ dart fix --apply --code=obsolete_colon_for_default_value
 
 ### `mixin`
 
-Pre-Dart 3, any `class` could be used as a `mixin`,
-as long as it had no declared constructors and no superclass other than `Object`.
+Pre-Dart 3, any `class` could be used as a `mixin`, as long as
+it had no declared constructors and no superclass other than `Object`.
 
 In Dart 3, classes declared in libraries at language version 3.0 or later
 can't be used as mixins unless marked `mixin`.
-This restriction applies to code in any library attempting to use the class as a mixin, 
+This restriction applies to code in any library
+attempting to use the class as a mixin, 
 regardless of the latter library's language version.
 
 #### Scope
 
-This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), 
+that only applies to language version 3.0 or later.
 
 #### Symptom
 
@@ -211,7 +234,8 @@ as patterns instead of constant expressions.
 
 #### Scope
 
-This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), 
+that only applies to language version 3.0 or later.
 
 #### Symptom
 
@@ -219,11 +243,15 @@ Most constant expressions found in switch cases are valid patterns
 with the same meaning (named constants, literals, etc.).
 These will behave the same and no symptoms will arise.
 
-The few constant expressions that aren't valid patterns will trigger the [`invalid_case_patterns` lint](/tools/linter-rules#invalid_case_patterns).
+The few constant expressions that aren't valid patterns
+will trigger the [`invalid_case_patterns` lint][].
+
+[`invalid_case_patterns` lint]: /tools/linter-rules#invalid_case_patterns
 
 #### Migration
 
-You can revert back to the original behavior by prefixing the case pattern with `const`, so it's no longer interpreted as a pattern:
+You can revert back to the original behavior by prefixing
+the case pattern with `const`, so it's no longer interpreted as a pattern:
 
 ```dart
 case const [1, 2]:
@@ -232,16 +260,18 @@ case const {1, 2}:
 case const Point(1, 2):
 ```
 
-You can run a quick fix for this breaking change, using `dart fix` or from your IDE.
+You can run a quick fix for this breaking change, 
+by using `dart fix` or from your IDE.
 
 ### `continue`
 
-Dart 3 reports a compile-time error if a continue statement targets a
-label that is not a loop (`for`, `do`, and `while` statements) or a switch member.
+Dart 3 reports a compile-time error if a continue statement targets a label
+that is not a loop (`for`, `do`, and `while` statements) or a switch member.
 
 #### Scope
 
-This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), 
+that only applies to language version 3.0 or later.
 
 #### Symptom
 
@@ -267,13 +297,16 @@ behaved like `break`.
 
 ### APIs removed
 
-**Breaking change [#49529][]**: The core libraries have been cleaned up to remove APIs that have been deprecated for several years. The following APIs no longer exist in the Dart core libraries.
+**Breaking change [#49529][]**: The core libraries have been cleaned up
+to remove APIs that have been deprecated for several years. 
+The following APIs no longer exist in the Dart core libraries.
 
 [#49529]: https://github.com/dart-lang/sdk/issues/49529
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### `dart:core`
 
@@ -343,7 +376,6 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 
 - Removed the deprecated [`MAX_USER_TAGS`][] constant.
   Use [`maxUserTags`][] instead.
-
 - Removed the deprecated [`Metrics`][], [`Metric`][], [`Counter`][],
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
@@ -372,7 +404,8 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 
 #### Symptom
 
-Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`) will fail with errors like:
+Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`)
+will fail with errors like:
 
 ```nocode
 error line 2 • Undefined class 'CyclicInitializationError'.
@@ -384,22 +417,25 @@ Manually migrate away from using these APIs.
 
 ### Extends & implements
 
-Dart 3 supports new class modifiers [*TODO* LINK] that can restrict the capabilities of a class.
+Dart 3 supports new class modifiers that
+can restrict the capabilities of a class.
 They have been applied to a number of classes in the core libraries.
 
 #### Scope
 
-This is a [*versioned* change](#unversioned-vs-versioned-changes), that only applies to language version 3.0 or later.
+This is a [*versioned* change](#unversioned-vs-versioned-changes), 
+that only applies to language version 3.0 or later.
 
 #### `dart:core`
 
 * The `Function` type can no longer be implemented, extended or mixed in.
-Since Dart 2.0, writing `implements Function` has been allowed
-for backwards compatibility, but it has not had any effect.
-In Dart 3.0, the `Function` type is final and cannot be subtyped,
-preventing code from mistakenly assuming it works.
+  Since Dart 2.0, writing `implements Function` has been allowed
+  for backwards compatibility, but it has not had any effect.
+  In Dart 3.0, the `Function` type is final and cannot be subtyped,
+  preventing code from mistakenly assuming it works.
 
 * The following declarations can only be implemented, not extended:
+
   - `Comparable`
   - `Exception`
   - `Iterator`
@@ -410,8 +446,9 @@ preventing code from mistakenly assuming it works.
   - `StackTrace`
   - `StringSink`
 
-None of these declarations contained any implementation to inherit.
-They are marked as `interface` to signify that they are only intended as interfaces.
+  None of these declarations contained any implementation to inherit.
+  They are marked as `interface` to signify that
+  they are only intended as interfaces.
 
 * The following declarations can no longer be implemented or extended:
 
@@ -422,21 +459,24 @@ They are marked as `interface` to signify that they are only intended as interfa
   - `WeakReference`
   - `Finalizer`
 
-The `MapEntry` value class is restricted to enable later optimizations.
-The remaining classes are tightly coupled to the platform and not
-intended to be subclassed or implemented.
+  The `MapEntry` value class is restricted to enable later optimizations.
+  The remaining classes are tightly coupled to the platform and not
+  intended to be subclassed or implemented.
 
 #### `dart:collection`
 
 * The following interface can no longer be extended, only implemented:
+
   - `Queue`
 
 * The following implementation classes can no longer be implemented:
+
   - `LinkedList`
   - `LinkedListEntry`
 
 * The following implementation classes can no longer be implemented
   or extended:
+
   - `HasNextIterator` (Also deprecated.)
   - `HashMap`
   - `LinkedHashMap`
@@ -458,12 +498,13 @@ In Dart 2.10 (October 2020) we introduced a new unified Dart developer tool, the
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### Symptom
 
-In Dart 3 these smaller tools do not exist, and have been replaced by the new
-combined `dart` tool.
+In Dart 3 these smaller tools do not exist, and
+have been replaced by the new combined `dart` tool.
 
 #### Migration
 
@@ -483,15 +524,17 @@ Use new sub-commands available in the `dart` tool:
 
 ### Null safety migration tools
 
-  * The following null safety migration commands have been removed,
-    as Dart 3 [doesn't support code without null safety](#100-sound-null-safety):
-    - `dart migrate`
-    - `dart pub upgrade --null-safety`
-    - `dart pub outdated --mode=null-safety`
+The following null safety migration commands have been removed,
+as Dart 3 [doesn't support code without null safety](#100-sound-null-safety):
+
+- `dart migrate`
+- `dart pub upgrade --null-safety`
+- `dart pub outdated --mode=null-safety`
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -503,12 +546,15 @@ Use Dart 2.19 to [migrate to null safety](/null-safety/migration-guide).
 
 ### Analyzer config
 
-The [analyzer configuration options](/guides/language/analysis-options#enabling-additional-type-checks)
-for enabling stricter checking have changed.
+The [analyzer configuration options][] for 
+enabling stricter checking have changed.
+
+[analyzer configuration options]: /guides/language/analysis-options#enabling-additional-type-checks
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
 
 #### Symptom
 
@@ -541,11 +587,14 @@ analyzer:
 
 ### Other tools changes
 
-  * The deprecated Observatory has been hidden by default. We recommend using [DevTools](/tools/dart-devtools).
-  * The command `dart format fix` has been replaced by `dart fix`
-    [#1153](https://github.com/dart-lang/dart_style/issues/1153).
-  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
+* The deprecated Observatory has been hidden by default. 
+  We recommend using [DevTools](/tools/dart-devtools).
+* The command `dart format fix` has been replaced by `dart fix`
+  [#1153](https://github.com/dart-lang/dart_style/issues/1153).
+* The snapshot files bundled in the SDK for the Dart web compiler
+  have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
 
 #### Scope
 
-This is an [*unversioned* change](#unversioned-vs-versioned-changes), that applies to all Dart 3 code.
+This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
+that applies to all Dart 3 code.
