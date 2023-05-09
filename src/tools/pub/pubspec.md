@@ -436,15 +436,8 @@ Pub.dev limits topics to the following specifications:
 - The topic name should consist of lowercase alphanumeric characters or dash
   (but no double dash), starting with a-z and ending with a-z or 0-9.
 
-
-#### Best Practices
-
-When choosing topics, first look at [existing topics]({{site.pub}}/topics) to
-check if established topics exist that match your package.
-
-If you have a number of related packages, tag of all these packages with the
-same topic. Such packages could belong to the same framework and be tagged with
-the name of the framework.
+When choosing topics, consider if [existing topics]({{site.pub}}/topics)
+are relevant. Tagging with existing topics helps users discover your package.
 
 ### SDK constraints
 
