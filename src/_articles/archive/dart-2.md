@@ -210,4 +210,4 @@ environment:
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://filiph.medium.com/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /language/classes#using-constructors
-[sync async start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
+[sync async start]: https://github.com/dart-lang/language/blob/main/archive/newsletter/20170915.md#synchronous-async-start
