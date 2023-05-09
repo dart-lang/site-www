@@ -54,6 +54,18 @@ dependencies:
   intl: ^0.17.0
 ```
 
+To update the `pubspec.yaml` file, without manual editing, 
+you can run `dart pub add` command.
+The following example adds a dependency on `vector_math`.
+
+```terminal
+$ dart pub add vector_math
+Resolving dependencies... 
++ vector_math 2.1.3
+Downloading vector_math 2.1.3...
+Changed 1 dependency!
+```
+
 For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
