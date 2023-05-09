@@ -87,7 +87,6 @@
       { "source": "/dart-team-packages", "destination": "/resources/dart-team-packages", "type": 301 },
       { "source": "/dart-tips{,/**}", "destination": "/guides/language/effective-dart", "type": 301 },
       { "source": "/dart-vm", "destination": "/server", "type": 301 },
-      { "source": "/dart-vm/dart-by-example", "destination": "/language", "type": 301 },
       { "source": "/dart-vm/:page*", "destination": "/server/:page*", "type": 301 },
       { "source": "/dart2js-reflection", "destination": "https://github.com/dart-lang/sdk/issues/21654", "type": 301 },
       { "source": "/dartium{,/**}", "destination": "/tools#ides-and-editors", "type": 301 },
