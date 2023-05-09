@@ -594,6 +594,8 @@ analyzer:
   [#1153](https://github.com/dart-lang/dart_style/issues/1153).
 * The snapshot files bundled in the SDK for the Dart web compiler
   have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
+* The output of `dart format` changed a bit for
+  [some code](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#formatter).
 
 #### Scope
 
