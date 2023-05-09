@@ -81,6 +81,7 @@ $ dart analyze      # This should pass without errors.
 ```
 
 Or, if needed, also include [major versions](/tools/pub/cmd/pub-upgrade#--major-versions) upgrades:
+
 ```terminal
 $ dart pub upgrade --major-versions
 $ dart analyze      # This should pass without errors.
@@ -148,7 +149,7 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 
 Dart analysis produces errors like:
 
-```
+```nocode
 line 2 • Using a colon as a separator before a default value is no longer supported.
 ```
 
@@ -168,7 +169,7 @@ int someInt({int x = 0}) => x;
 
 This migration can be made manually, or automated with `dart fix`:
 
-```
+```terminal
 $ dart fix --apply --code=obsolete_colon_for_default_value
 ```
 
@@ -190,7 +191,7 @@ This is a [*versioned* change](#unversioned-vs-versioned-changes), that only app
 
 An analysis error like:
 
-```
+```nocode
 Mixin can only be applied to class.
 ```
 
@@ -245,7 +246,8 @@ This is a [*versioned* change](#unversioned-vs-versioned-changes), that only app
 #### Symptom
 
 You will see an error like:
-```
+
+```nocode
 The label used in a 'continue' statement must be defined on either a loop or a switch member.
 ```
 
@@ -372,7 +374,7 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 
 Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`) will fail with errors like:
 
-```
+```nocode
 error line 2 • Undefined class 'CyclicInitializationError'.
 ```
 
@@ -512,7 +514,7 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 
 The former configuration options will fail with a warning like:
 
-```
+```nocode
 The option 'implicit-casts' is no longer supported.
 Try using the new 'strict-casts' option.
 ```
@@ -520,14 +522,17 @@ Try using the new 'strict-casts' option.
 #### Migration
 
 Replace this part of the analyzer config:
-```
+
+```yaml
 analyzer:
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
 ```
+
 with:
-```
+
+```yaml
 analyzer:
   language:
     strict-casts: true
