@@ -334,8 +334,8 @@ This is an [*unversioned* change](#unversioned-vs-versioned-changes), that appli
 - Removed the deprecated [`DeferredLibrary`][] class.
   Use the [`deferred as`][] import syntax instead.
 
-  [`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
-[`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
+[`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
+[`deferred as`]: /guides/language/language-tour#deferred-loading
 
 #### `dart:developer`
 
@@ -452,7 +452,7 @@ intended to be subclassed or implemented.
 Historically the Dart team has offered a number of smaller developer tools for
 things like formatting code (`dartfmt`), analyzing code (`dartanalyzer`), etc.
 In Dart 2.10 (October 2020) we introduced a new unified Dart developer tool, the
-[`dart` tool](https://dart.dev/tools/dart-tool).
+[`dart` tool](/tools/dart-tool).
 
 #### Scope
 
@@ -467,16 +467,16 @@ combined `dart` tool.
 
 Use new sub-commands available in the `dart` tool:
 
-| Historical tool | `dart` replacement                                       | Deprecation | Discontinuation |
-|-----------------|----------------------------------------------------------|-------------|-----------------|
-| `stagehand`     |  `dart create`                                           | [2.14](https://github.com/dart-lang/stagehand/issues/671)        | 2.14*  |
-| `dartfmt`       | [`dart format`](https://dart.dev/tools/dart-format)      | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
-| `dart2native`   | [`dart compile exe`](https://dart.dev/tools/dart-compile#exe)    | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
-| `dart2js`       | [`dart compile js`](https://dart.dev/tools/dart-compile)    | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
-| `dartdevc`      | [`webdev`](/tools/webdev)                              | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
-| `dartanalyzer`  | [`dart analyze`](https://dart.dev/tools/dart-analyze)    | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
-| `dartdoc`       | `dart doc`                                                      | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
-| `pub`           | [`dart pub`](https://dart.dev/tools/dart-pub)            | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
+| Historical tool | `dart` replacement                            | Deprecation | Discontinuation |
+|-----------------|-----------------------------------------------|-------------|-----------------|
+| `stagehand`     | [`dart create`](/tools/dart-create)           | [2.14](https://github.com/dart-lang/stagehand/issues/671)        | 2.14*  |
+| `dartfmt`       | [`dart format`](/tools/dart-format)           | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
+| `dart2native`   | [`dart compile exe`](/tools/dart-compile#exe) | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
+| `dart2js`       | [`dart compile js`](/tools/dart-compile)      | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartdevc`      | [`webdev`](/tools/webdev)                     | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartanalyzer`  | [`dart analyze`](/tools/dart-analyze)         | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
+| `dartdoc`       | [`dart doc`](/tools/dart-doc)                 | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
+| `pub`           | [`dart pub`](/tools/dart-pub)                 | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
 {:.table .table-striped .nowrap}
 
 ### Null safety migration tools
