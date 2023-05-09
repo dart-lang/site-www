@@ -433,36 +433,36 @@ dependencies.
 [Language versioning]: /guides/language/evolution#language-versioning
 
 For example, the following constraint says that this package
-works with any Dart SDK that's version 2.12.0 or higher:
+works with any Dart SDK that's version 3.0.0 or higher:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.0.0
 ```
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
-As of Dart 2.12, omitting the SDK constraint is an error.
+Omitting the SDK constraint is an error.
 When the pubspec has no SDK constraint,
-`pub get` fails with a message like the following:
+`dart pub get` fails with a message like the following:
 
 ```
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '^3.0.0'
   
 See https://dart.dev/go/sdk-constraint
 ```
 
-{{site.alert.warning}}
-  Caret syntax (`^`) is a compact way to represent version ranges, 
-  but **don't use it for the SDK constraint.** 
-  Instead, **include an upper bound for the SDK** (`<3.0.0`, usually). 
-  For more information, 
-  see the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+{{site.alert.version-note}}
+  Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
+  In earlier versions, provide a complete range,
+  such as `'>=2.12.0 <3.0.0'`.
+  For more information, check out
+  the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
 {{site.alert.end}}
 
 
