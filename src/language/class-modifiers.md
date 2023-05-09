@@ -53,16 +53,14 @@ abstract class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();     // Error: Cannot be constructed
+var myCar = Vehicle();       // Error: Cannot be constructed
 
-class Car extends          // Can be extended
-  Vehicle {
+class Car extends Vehicle {  // Can be extended
     int passengers;
-    ...
+    // ...
 }
 
-class MockVehicle          // Can be implemented
-  implements Vehicle {
+class MockVehicle implements Vehicle {  // Can be implemented
     @override
     void moveForward(int meters) { ... }
 }
@@ -99,18 +97,16 @@ base class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();          // Can be constructed
+var myCar = Vehicle();            // Can be constructed
 
-base class Car extends          // Can be extended
-  Vehicle {
+base class Car extends Vehicle {  // Can be extended
     int passengers;
-    ...
+    // ...
 }
 
-base class MockVehicle          // ERROR: Cannot be implemented
-  implements Vehicle {
+base class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
     @override
-    void moveForward ...
+    void moveForward { ... }
 }
 ```
 
@@ -137,18 +133,16 @@ interface class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();     // Can be constructed
+var myCar = Vehicle();       // Can be constructed
 
-class Car extends          // ERROR: Cannot be inherited
-  Vehicle {
+class Car extends Vehicle {  // ERROR: Cannot be inherited
     int passengers;
-    ...
+    // ...
 }
 
-class MockVehicle          // Can be implemented     
-  implements Vehicle {
+class MockVehicle implements Vehicle {  // Can be implemented     
     @override
-    void moveForward ...
+    void moveForward { ... }
 }
 ```
 
@@ -189,18 +183,16 @@ final class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();     // Can be constructed
+var myCar = Vehicle();       // Can be constructed
 
-class Car extends          // ERROR: Cannot be inherited
-  Vehicle {
+class Car extends Vehicle {  // ERROR: Cannot be inherited
     int passengers;
-    ...
+    // ...
 }
 
-class MockVehicle          // ERROR: Cannot be implemented     
-  implements Vehicle {
+class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented     
     @override
-    void moveForward ...
+    void moveForward { ... }
 }
 ```
 
@@ -227,11 +219,11 @@ class Bicycle extends Vehicle { }
 
 // ...
 
-var vehicle = Vehicle();                 // ERROR: Cannot be instantiated
+var vehicle = Vehicle();           // ERROR: Cannot be instantiated
 
 // ...
 
-return switch (Vehicle vehicle) {       // ERROR: The switch is missing a subtype of Vehicle
+return switch (Vehicle vehicle) {  // ERROR: The switch is missing a subtype of Vehicle
   Car => 'vroom',
   Truck => 'VROOOOMM'
 };
