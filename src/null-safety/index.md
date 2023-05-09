@@ -73,7 +73,7 @@ Dart supports null safety using the following three core design principles:
 
 ## Dart 3 and null safety
 
-Dart 3 code has built-in sound null safety.
+Dart 3 has built-in sound null safety.
 Dart 3 prevents code without it from running.
 
 To learn how to migrate to Dart 3, 
@@ -134,8 +134,6 @@ listed by the analyzer.
 ## Dart 2.x and null safety {#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
-To enable null safety, set the `sdk` option to `'>=2.12.0'`
-in the `pubspec.yaml` file.
 You cannot use null safety in SDK versions earlier than Dart 2.12.
 
 <a id="constraints"></a>
@@ -170,6 +168,7 @@ versions 2.12 to 2.19.
 $ cd my_app
 $ dart migrate
 ```
+
 To learn how to migrate your code to null safety,
 check out the [migration guide][].
 

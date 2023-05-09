@@ -42,21 +42,35 @@ String name = 'Bob';
 
 The Dart language enforces sound null safety.
 
-Null safety prevents errors that result from unintentional access
-of variables set to `null`.
+Null safety prevents an error that results from unintentional access
+of variables set to `null`. The error is called a null dereference error.
+If you try to access a property or call a method on a variable set to `null`,
+that causes a null dereference error.
+For example, say you want to find the absolute value of an `int` variable `i`.
+If `i` is `null`, calling `i.abs()` causes a null dereference error.
+In other languages, trying this could lead to a runtime error,
+but Dart's compiler prohibits these actions.
+Therefore, Dart apps can't cause runtime errors.
 
-For example, if a method expects an integer but receives `null`,
-your app causes a runtime error.
-This type of error, a null dereference error, can be difficult to debug.
+Null safety introduces two key changes to type declaration.
 
-With sound null safety, all variables require a value.
-This means Dart considers all variables _non-nullable_.
-You can assign values of the declared type only, like `int i=42`.
-You can never assign a value of `null` to default variable types.
-To specify that a variable type can have no value, add a `?` after
-the type label, like `int? i`.
-These specific types can contain either a `null` _or_
-a value of the defined type.
+First, you can specify that a variable _can_ be set to `null`.
+To call out nullability, you add a `?` to the end of the type declaration.
+
+```dart
+String? name  // Nullable type. Can be `null` or string.
+
+String name   // Default type. Cannot be `null` but can be string.
+```
+
+Second, you must initialize variables before using them.
+Nullable variables default to `null`, so they are initialized by default.
+Dart doesn't set initial values to default types.
+It forces you to set an initial value.
+Dart doesn't allow you to observe an uninitialized variable.
+This prevents you from accessing properties or calling methods
+on a variable that equals `null`.
+
 
 Sound null safety changes potential **runtime errors**
 into **edit-time** analysis errors.

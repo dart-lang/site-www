@@ -152,9 +152,8 @@ provide a default value if `null` respectively.
 
 If you don't know that an expression with a nullable type equals `null` or not,
 you can use the conditional member access operator (`?.`).
-With this operator,
-you can execute the remainder of the expression based on the condition that
-`nullableObject` has a value.
+This operator evaluates to `null` if the target expression resolves to `null`.
+Otherwise, it accesses the property on the non-null target value.
 
 <?code-excerpt "null_safety_codelab/bin/null_aware_operators.dart (conditional-property-access)"?>
 ```dart

@@ -42,7 +42,7 @@ allowing the use of a `dynamic` type combined with runtime checks,
 which can be useful during experimentation or
 for code that needs to be especially dynamic.
 
-Dart offers [sound null safety](/null-safety).
+Dart has built-in [sound null safety](/null-safety).
 This means values can’t be null unless you say they can be.
 With sound null safety, Dart can protect you from
 null exceptions at runtime through static code analysis.
