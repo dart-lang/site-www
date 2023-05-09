@@ -73,7 +73,7 @@ for (final Candidate(:name, :yearsExperience) in candidates) {
 
 Iterable classes also have a [forEach()][] method as another option:
 
-<?code-excerpt "language/test/control_flow/loops_test.dart (forEach)"?>
+<?code-excerpt "language/test/control_flow/loops_test.dart (for-each)"?>
 ```dart
 var collection = [1, 2, 3];
 collection.forEach(print); // 1 2 3
