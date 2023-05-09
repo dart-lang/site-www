@@ -205,8 +205,8 @@ If the class defines an interface, consider using `implements`.
 
 ### `switch`
 
-Dart 3.0 interprets [switch cases](/language/control-flow#switch-and-case)
-as patterns [*TODO* LINK] instead of constant expressions. 
+Dart 3.0 interprets switch cases
+as patterns instead of constant expressions. 
 
 #### Scope
 
@@ -224,11 +224,12 @@ The few constant expressions that aren't valid patterns will trigger the [`inval
 
 You can revert back to the original behavior by prefixing the case pattern with `const`, so it's no longer interpreted as a pattern:
 
-{enclose in backticks:}
+```dart
 case const [1, 2]:
 case const {'k': 'v'}:
 case const {1, 2}:
 case const Point(1, 2):
+```
 
 You can run a quick fix for this breaking change, using `dart fix` or from your IDE.
 
@@ -470,7 +471,7 @@ Use new sub-commands available in the `dart` tool:
 |-----------------|----------------------------------------------------------|-------------|-----------------|
 | `stagehand`     |  `dart create`                                           | [2.14](https://github.com/dart-lang/stagehand/issues/671)        | 2.14*  |
 | `dartfmt`       | [`dart format`](https://dart.dev/tools/dart-format)      | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
-| `dart2native`   | [`dart compile exe`](https://dart.dev/tools/dart-compile)    | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
+| `dart2native`   | [`dart compile exe`](https://dart.dev/tools/dart-compile#exe)    | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
 | `dart2js`       | [`dart compile js`](https://dart.dev/tools/dart-compile)    | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
 | `dartdevc`      | [`webdev`](/tools/webdev)                              | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
 | `dartanalyzer`  | [`dart analyze`](https://dart.dev/tools/dart-analyze)    | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
@@ -537,8 +538,8 @@ analyzer:
 
   * The deprecated Observatory has been hidden by default. We recommend using [DevTools](/tools/dart-devtools).
   * The command `dart format fix` has been replaced by `dart fix`
-    [#1153][https://github.com/dart-lang/dart_style/issues/1153].
-  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up [#50700][https://github.com/dart-lang/sdk/issues/50700].
+    [#1153](https://github.com/dart-lang/dart_style/issues/1153).
+  * The snapshot files bundled in the SDK for the Dart web compiler have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
 
 #### Scope
 
