@@ -31,6 +31,12 @@ with special attention to filtering and mapping values.
 Use DartPad to learn or remind yourself of how to write 
 asynchronous code using futures and the `async` and `await` keywords.
 
+### [Records and Patterns in Dart 3](https://codelabs.developers.google.com/codelabs/dart-patterns-records)
+
+Discover Dart 3's new records and patterns features.
+Learn how you can use them in a Flutter app to help you
+write more readable and maintainable Dart code.
+
 ### [Null safety](/codelabs/null-safety)
 
 Use DartPad to learn about Dart's null-safe type system,
@@ -38,13 +44,5 @@ which was introduced in Dart 2.12.
 
 ## Flutter
 
-### [Records and Patterns in Dart 3](https://codelabs.developers.google.com/codelabs/dart-patterns-records)
-
-Discover Dart 3's new records and patterns features.
-Learn how you can use them in a Flutter app to help you
-write more readable and maintainable Dart code.
-
-### Other codelabs
-
-To learn about Flutter, try one of the other
+To learn about Flutter, try one of the
 [Flutter codelabs.]({{site.flutter-docs}}/codelabs)
