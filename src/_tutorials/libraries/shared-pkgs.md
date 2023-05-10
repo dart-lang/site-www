@@ -78,7 +78,7 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-<?code-excerpt "vector_victor/pubspec.yaml" to="test"?>
+<?code-excerpt "vector_victor/pubspec.yaml" to="test" replace="/-0//g"?>
 ```yaml
 name: vector_victor
 description: A sample command-line application.
@@ -86,14 +86,14 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: ^3.0.0
 
 # dependencies:
 #   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.16.0
+  lints: ^2.1.0
+  test: ^1.24.2
 ```
 
 ## Name the package dependencies
@@ -117,8 +117,8 @@ to add a dependency on the package:
 ```terminal
 $ dart pub add vector_math
 Resolving dependencies... 
-+ vector_math 2.1.3
-Downloading vector_math 2.1.3...
++ vector_math 2.1.4
+Downloading vector_math 2.1.4...
 Changed 1 dependency!
 ```
 
@@ -129,7 +129,7 @@ resulting in the following:
 <?code-excerpt "vector_victor/pubspec.yaml" from="/^dependencies/"?>
 ```yaml
 dependencies:
-  vector_math: ^2.1.3
+  vector_math: ^2.1.4
 ```
 
 You can also find your desired version on the
@@ -159,7 +159,7 @@ If not, do it yourself by running
 ```terminal
 $ dart pub get
 Resolving dependencies...
-+ vector_math 2.1.3
++ vector_math 2.1.4
 Changed 1 dependency!
 ```
 
