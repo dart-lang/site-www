@@ -59,19 +59,22 @@ abstract class Vehicle {
 
 <?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
 ```dart
+
 // Library b.dart
 import 'a.dart';
 
 var myCar = Vehicle();       // Error: Cannot be constructed
 
-class Car extends Vehicle {  // Can be extended
-    int passengers;
+base class Car extends Vehicle {  // Can be extended
+    int passengers = 4;
     // ...
 }
 
-class MockVehicle implements Vehicle {  // Can be implemented
+base class MockVehicle implements Vehicle {  // Can be implemented
     @override
-    void moveForward(int meters) { ... }
+    void moveForward(int meters) {
+      //...
+    }
 }
 ```
 
@@ -99,25 +102,30 @@ breaking the base class guarantees.
 ```dart
 // Library a.dart
 base class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex2/b.dart"?>
 ```dart
+
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();            // Can be constructed
+Vehicle myCar = Vehicle();            // Can be constructed
 
 base class Car extends Vehicle {  // Can be extended
-    int passengers;
+  int passengers = 4;
     // ...
 }
 
 base class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
-    @override
-    void moveForward { ... }
+  @override
+  void moveForward() {
+    // ...
+  }
 }
 ```
 
@@ -137,25 +145,30 @@ This reduces the [fragile base class problem][].
 ```dart
 // Library a.dart
 interface class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex3/b.dart"?>
 ```dart
+
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Can be constructed
+Vehicle myCar = Vehicle();       // Can be constructed
 
 class Car extends Vehicle {  // ERROR: Cannot be inherited
-    int passengers;
-    // ...
+  int passengers = 4;
+  // ...
 }
 
-class MockVehicle implements Vehicle {  // Can be implemented     
-    @override
-    void moveForward { ... }
+class MockVehicle implements Vehicle {  // Can be implemented
+  @override
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
@@ -188,25 +201,30 @@ therefore any subclasses must also be marked `base`, `final`, or `sealed`.
 ```dart
 // Library a.dart
 final class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex4/b.dart"?>
 ```dart
+
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Can be constructed
+Vehicle myCar = Vehicle();       // Can be constructed
 
 class Car extends Vehicle {  // ERROR: Cannot be inherited
-    int passengers;
+    int passengers = 4;
     // ...
 }
 
-class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented     
+class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
     @override
-    void moveForward { ... }
+    void moveForward(int meters) {
+      // ...
+    }
 }
 ```
 
@@ -232,24 +250,35 @@ exhaustively handle all possible subtypes in its cases:
 
 <?code-excerpt "language/lib/class_modifiers/ex5/sealed.dart"?>
 ```dart
-sealed class Vehicle { ... }
 
-class Car extends Vehicle { }
-class Truck implements Vehicle { }
-class Bicycle extends Vehicle { }
+sealed class Vehicle {
+  void moveForward(int meters) {
+    //...
+  }
+}
 
-// ...
+class Car extends Vehicle {
+  @override
+  void moveForward(int meters) {}}
+class Truck implements Vehicle {
+  @override
+  void moveForward(int meters) {}
+}
+class Bicycle extends Vehicle {
+  @override
+  void moveForward(int meters) {}
+}
 
-var vehicle = Vehicle();  // ERROR: Cannot be instantiated
-var vehicle = Car();      // Subclasses can be instantiated
+Vehicle vehicle = Vehicle();  // ERROR: Cannot be instantiated
+Vehicle anotherVehicle = Car();      // Subclasses can be instantiated
 
-// ...
-
-// ERROR: The switch is missing the Bicycle subtype or a default case.
-return switch (vehicle) {
-  Car() => 'vroom',
-  Truck() => 'VROOOOMM'
-};
+String getVehicleSound(Vehicle vehicle) {
+  // ERROR: The switch is missing the Bicycle subtype or a default case.
+  return switch (vehicle) {
+    Car() => 'vroom',
+    Truck() => 'VROOOOMM',
+  };
+}
 ```
 
 If you don’t want [exhaustive switching][exhaustive], 
