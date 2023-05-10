@@ -52,8 +52,10 @@ an outside library. Abstract classes often have [abstract methods][].
 <?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart
 // Library a.dart
-abstract class Vehicle { 
-  void moveForward();     // Abstract method.
+base class Vehicle {
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
@@ -63,18 +65,20 @@ abstract class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Error: Cannot be constructed
+var myCar = Vehicle(); // Error: Cannot be constructed
 
-base class Car extends Vehicle {  // Can be extended
-    int passengers = 4;
-    // ...
+base class Car extends Vehicle {
+  // Can be extended
+  int passengers = 4;
+  // ...
 }
 
-base class MockVehicle implements Vehicle {  // Can be implemented
-    @override
-    void moveForward(int meters) {
-      //...
-    }
+base class MockVehicle implements Vehicle {
+  // Can be implemented
+  @override
+  void moveForward(int meters) {
+    //...
+  }
 }
 ```
 
@@ -114,14 +118,16 @@ base class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle();            // Can be constructed
+Vehicle myCar = Vehicle(); // Can be constructed
 
-base class Car extends Vehicle {  // Can be extended
+base class Car extends Vehicle {
+  // Can be extended
   int passengers = 4;
-    // ...
+  // ...
 }
 
-base class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
+base class MockVehicle implements Vehicle {
+  // ERROR: Cannot be implemented
   @override
   void moveForward() {
     // ...
@@ -157,14 +163,16 @@ interface class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle();       // Can be constructed
+Vehicle myCar = Vehicle(); // Can be constructed
 
-class Car extends Vehicle {  // ERROR: Cannot be inherited
+class Car extends Vehicle {
+  // ERROR: Cannot be inherited
   int passengers = 4;
   // ...
 }
 
-class MockVehicle implements Vehicle {  // Can be implemented
+class MockVehicle implements Vehicle {
+  // Can be implemented
   @override
   void moveForward(int meters) {
     //...
@@ -213,18 +221,20 @@ final class Vehicle {
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle();       // Can be constructed
+Vehicle myCar = Vehicle(); // Can be constructed
 
-class Car extends Vehicle {  // ERROR: Cannot be inherited
-    int passengers = 4;
-    // ...
+class Car extends Vehicle {
+  // ERROR: Cannot be inherited
+  int passengers = 4;
+  // ...
 }
 
-class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
-    @override
-    void moveForward(int meters) {
-      // ...
-    }
+class MockVehicle implements Vehicle {
+  // ERROR: Cannot be implemented
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
@@ -259,18 +269,21 @@ sealed class Vehicle {
 
 class Car extends Vehicle {
   @override
-  void moveForward(int meters) {}}
+  void moveForward(int meters) {}
+}
+
 class Truck implements Vehicle {
   @override
   void moveForward(int meters) {}
 }
+
 class Bicycle extends Vehicle {
   @override
   void moveForward(int meters) {}
 }
 
-Vehicle vehicle = Vehicle();  // ERROR: Cannot be instantiated
-Vehicle anotherVehicle = Car();      // Subclasses can be instantiated
+Vehicle vehicle = Vehicle(); // ERROR: Cannot be instantiated
+Vehicle anotherVehicle = Car(); // Subclasses can be instantiated
 
 String getVehicleSound(Vehicle vehicle) {
   // ERROR: The switch is missing the Bicycle subtype or a default case.
