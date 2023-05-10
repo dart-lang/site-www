@@ -206,9 +206,8 @@ be incomplete. Exhaustiveness checking would inform you of the missing subtype.
 This allows you to use Dart in a somewhat 
 [functional algebraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
 
-## Guard clause
-
 <a id="when"></a>
+## Guard clause
 
 To set an optional guard clause after a `case` clause, use the keyword `when`.
 A guard clause can follow `if case`, and both `switch` statements and expressions.

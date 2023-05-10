@@ -3,6 +3,10 @@ title: Records
 description: Summary of the record data structure in Dart.
 ---
 
+{{site.alert.version-note}}
+  Records require a [language version][] of at least 3.0.
+{{site.alert.end}}
+
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
 they let you bundle multiple objects into a single object. Unlike other collection 
 types, records are fixed-sized, heterogeneous, and typed.
@@ -31,41 +35,58 @@ For example, the following `(int, int)` statements are record type annotations:
 }
 ```
 
-Named fields inside _record type annotations_ mirror how
-[named parameters and arguments][]
-work in functions. They go inside a curly brace-delimited
-section of type-and-name pairs, after all positional fields:
+Fields in record expressions and type annotations mirror
+how [parameters and arguments][] work in functions. 
+Positional fields go directly inside the parentheses:
 
 ```dart
 // Record type annotation in a variable declaration:
-(String, String?, {int a, bool b}) record;
+(String, int) record;
+
+// Initialize it with a record expression:
+record = ('A string', 123);
 ```
 
-Naming fields in record type annotations is optional for documentation purposes.
-Once you create a record from a type annotation with named fields using a record
-expression, the names become part of the [record's type definition](#record-types),
-or its _shape_:
-
-```dart 
-  ({int x, int y}) someRecord = (x: 1, y: 2);
-// ^^^^^^^^^^^^^^^              ^^^^^^^^^^^^
-// type annotation              expression
-```
-
-They can be ommitted from the creation expression, but not replaced
-with other names.
+In a record type annotation, named fields go inside a curly brace-delimited
+section of type-and-name pairs, after all positional fields. In a record
+expression, the names go before each field value with a colon after:
 
 ```dart
-// Type annotation:
-({int x, int y}) someRecord;
-// Record expression creating record from type annotation, omitting names:
-someRecord = (1, 2);
-// Prints 1, 2:
-print(someRecord.x, someRecord.y);
+// Record type annotation in a variable declaration:
+({int a, bool b}) record;
+
+// Initialize it with a record expression:
+record = (a: 123, b: true);
 ```
 
-For more information and examples, check out [Record types](#record-types) and
-[Record equality](#record-equality).
+The names of named fields in a record type are part of
+the [record's type definition](#record-types), or its _shape_. 
+Two records with named fields with
+different names have different types:
+
+```dart
+({int a, int b}) recordAB = (a: 1, b: 2);
+({int x, int y}) recordXY = (x: 3, y: 4);
+
+recordAB = recordXY; // Compile error! These records don't have the same type.
+```
+
+In a record type annotation, you can also name the *positional* fields, but
+these names are purely for documentation and don't affect the record's type:
+
+```dart
+(int a, int b) recordAB = (1, 2);
+(int x, int y) recordXY = (3, 4);
+
+recordAB = recordXY; // OK.
+```
+
+This is similar to how positional parameters
+in a function declaration or function typedef
+can have names but those names don't affect the signature of the function.
+
+For more information and examples, check out 
+[Record types](#record-types) and [Record equality](#record-equality).
 
 ## Record fields
 
@@ -164,12 +185,13 @@ For example, creating a class is much more verbose, and using other collection
 types like `List` or `Map` loses type safety. 
 
 {{site.alert.note}}
-  Records' multiple-return and heterogenous-type characteristics enable
+  Records' multiple-return and heterogeneous-type characteristics enable
   parallelization of futures of different types, which you can read about in the
   [Library tour][].
 {{site.alert.end}}
 
+[language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
-[named parameters and arguments]: /language/functions#named-parameters
+[parameters and arguments]: /language/functions#parameters

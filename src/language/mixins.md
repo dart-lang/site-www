@@ -89,6 +89,6 @@ A `mixin` declaration defines a mixin. A `class` declaration defines a [class][]
 A `mixin class` declaration defines a class that is usable as both a regular class
 and a mixin, with the same name and the same type.
 
-[language version]: /guides/language/evolution
+[language version]: /guides/language/evolution#language-versioning
 [class]: /language/classes
 [class modifiers]: /language/class-modifiers
