@@ -9,4 +9,4 @@ dependencies:
   http: ^0.13.5
 
 dev_dependencies:
-  lints: ^2.0.1
+  lints: ^2.1.0
