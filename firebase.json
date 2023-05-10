@@ -82,6 +82,7 @@
       { "source": "/concurrency", "destination": "/language/concurrency", "type": 301 },
       { "source": "/dart", "destination": "/overview", "type": 301 },
       { "source": "/dart-2", "destination": "/articles/archive/dart-2", "type": 301 },
+      { "source": "/dart-3", "destination": "/resources/dart-3-migration", "type": 301 },
       { "source": "/dart-2.0", "destination": "/dart-2", "type": 301 },
       { "source": "/dart-by-example", "destination": "/samples", "type": 301 },
       { "source": "/dart-team-packages", "destination": "/resources/dart-team-packages", "type": 301 },
