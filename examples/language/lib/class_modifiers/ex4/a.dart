@@ -1,6 +1,6 @@
 // Library a.dart
 final class Vehicle {
-  void moveForward(int meters) { 
+  void moveForward(int meters) {
     //...
   }
 }
