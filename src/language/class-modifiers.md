@@ -57,7 +57,7 @@ abstract class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/ex1_b.dart"?>
+<?code-excerpt "language/lib/ex1/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
