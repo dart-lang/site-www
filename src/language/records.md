@@ -79,7 +79,7 @@ different names have different types:
 In a record type annotation, you can also name the *positional* fields, but
 these names are purely for documentation and don't affect the record's type:
 
-<?code-excerpt "language/test/records_test.dart (record-type-mismatched-names)"?>
+<?code-excerpt "language/test/records_test.dart (record-type-matched-names)"?>
 ```dart
 ({int a, int b}) recordAB = (a: 1, b: 2);
 ({int x, int y}) recordXY = (x: 3, y: 4);
