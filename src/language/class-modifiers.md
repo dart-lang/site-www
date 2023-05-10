@@ -49,7 +49,7 @@ entire interface, use the `abstract` modifier.
 Abstract classes cannot be constructed from any library, whether its own or
 an outside library. Abstract classes often have [abstract methods][].
 
-<?code-excerpt "language/lib/class_modifiers/ex1_a.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart
 // Library a.dart
 abstract class Vehicle { 
