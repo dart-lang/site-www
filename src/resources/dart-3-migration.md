@@ -4,7 +4,7 @@ description: How to migrate existing Dart code to be compatible with Dart 3.
 ---
 
 Dart 3 is a major release that introduces new core capabilities to Dart: 
-records, patterns, and class modifiers.
+[records][], [patterns][], and [class modifiers][].
 
 Alongside these new capabilities, Dart 3 contains a number of changes
 that may break existing code. 
@@ -230,8 +230,8 @@ If the class defines an interface, consider using `implements`.
 
 ### `switch`
 
-Dart 3.0 interprets switch cases
-as patterns instead of constant expressions. 
+Dart 3.0 interprets [switch](/language/branches#switch) cases
+as [patterns][] instead of constant expressions. 
 
 #### Scope
 
@@ -418,7 +418,7 @@ Manually migrate away from using these APIs.
 
 ### Extends & implements
 
-Dart 3 supports new class modifiers that
+Dart 3 supports new [class modifiers][] that
 can restrict the capabilities of a class.
 They have been applied to a number of classes in the core libraries.
 
@@ -601,3 +601,7 @@ analyzer:
 
 This is an [*unversioned* change](#unversioned-vs-versioned-changes), 
 that applies to all Dart 3 code.
+
+[records]: /language/records
+[patterns]: /language/patterns
+[class modifiers]: /language/class-modifiers
