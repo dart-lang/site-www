@@ -224,9 +224,9 @@ var vehicle = Car();      // Subclasses can be instantiated
 // ...
 
 // ERROR: The switch is missing the Bicycle subtype or a default case.
-return switch (Vehicle vehicle) {
-  Car => 'vroom',
-  Truck => 'VROOOOMM'
+return switch (vehicle) {
+  Car() => 'vroom',
+  Truck() => 'VROOOOMM'
 };
 ```
 
