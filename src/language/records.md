@@ -81,11 +81,10 @@ these names are purely for documentation and don't affect the record's type:
 
 <?code-excerpt "language/test/records_test.dart (record-type-matched-names)"?>
 ```dart
-({int a, int b}) recordAB = (a: 1, b: 2);
-({int x, int y}) recordXY = (x: 3, y: 4);
+(int a, int b) recordAB = (1, 2);
+(int x, int y) recordXY = (3, 4);
 
-// Compile error! These records don't have the same type.
-// recordAB = recordXY;
+recordAB = recordXY; // OK.
 ```
 
 This is similar to how positional parameters
