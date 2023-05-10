@@ -219,7 +219,7 @@ class Bicycle extends Vehicle { }
 // ...
 
 var vehicle = Vehicle();  // ERROR: Cannot be instantiated
-var vehicle = Car();    // Subclasses can be instantiated
+var vehicle = Car();      // Subclasses can be instantiated
 
 // ...
 
