@@ -17,7 +17,7 @@ You can find the in-progress specification in PDF format:
   (produced from a [LaTeX file][])
 
 [latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
-[LaTeX file]: https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex
+[LaTeX file]: https://github.com/dart-lang/language/blob/main/specification/dartLangSpec.tex
 
 New language features are typically described using
 informal language feature specifications in the [dart-lang/language][] repo:
@@ -26,8 +26,8 @@ informal language feature specifications in the [dart-lang/language][] repo:
 * [Drafts of potential features][]
 
 [dart-lang/language]: https://github.com/dart-lang/language
-[Accepted informal proposals]: https://github.com/dart-lang/language/tree/master/accepted
-[Drafts of potential features]: https://github.com/dart-lang/language/tree/master/working
+[Accepted informal proposals]: https://github.com/dart-lang/language/tree/main/accepted
+[Drafts of potential features]: https://github.com/dart-lang/language/tree/main/working
 
 {{site.alert.info}}
   Dart 3 changed the Dart language in a few ways,
