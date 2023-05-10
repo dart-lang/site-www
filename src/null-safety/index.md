@@ -81,7 +81,8 @@ Dart null safety support is based on the following three core design principles:
 Dart 3 has sound null safety built-in,
 and will prevent code from running without it.
 
-For guidance on migrating to Dart 3, check out the [Dart 3 migration guide][/resources/dart-3-migration]
+For guidance on migrating to Dart 3, 
+check out the [Dart 3 migration guide](/resources/dart-3-migration).
 Packages developed without null safety support will cause issues
 when resolving dependencies:
 
@@ -92,8 +93,8 @@ Because pkg1 doesn't support null safety, version solving failed.
 The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable null safety.
 ```
 
-Libraries that opt out of null safety will cause analysis or compilation
-errors:
+Libraries that opt out of null safety will cause analysis or
+compilation errors:
 
 ```terminal
 $ dart analyze .
@@ -131,7 +132,7 @@ If the `pub get` step fails, check the [status of the dependencies][].
 If the `analyze` step fails, update your code to resolve the issues
 listed by the analyzer.
 
-[the download page]: /get-dart/archive#dart-3-beta
+[the download page]: /get-dart/archive
 [status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
 ## Dart 2.x and null safety {#enable-null-safety}

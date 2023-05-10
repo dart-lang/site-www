@@ -440,6 +440,13 @@ foo() {}
 assert(foo() == null);
 ```
 
+To return multiple values in a function, aggregate the values in a [record][].
+
+```dart
+(String, int) foo() {
+  return ('something', 42);
+}
+```
 
 ## Generators
 
@@ -489,11 +496,12 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[record]: /language/records#multiple-returns
 
 [Function API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Callable classes]: /language/callable-classes
 [type annotations for public APIs]: /guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
-[if statement]: /language/control-flow#if-and-else
+[if statement]: /language/branches#if
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
