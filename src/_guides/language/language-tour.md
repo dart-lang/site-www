@@ -80,11 +80,11 @@ This content has moved to [Collections](/language/collections#lists).
 <a id="trailing-comma"></a>
 #### Trailing commas
 
-This content has moved to [Collections](/language/collections#trailing-commas).
+This content has moved to [Collections](/language/collections#trailing-comma).
 
 #### Spread operator
 
-This content has moved to [Collections](/language/collections#spread-operator).
+This content has moved to [Collections](/language/collections#spread-operators).
 
 #### Collection operators
 
@@ -149,7 +149,7 @@ This content has moved to [Functions](/language/functions#lexical-closures).
 
 ### Testing functions for equality
 
-This content has moved to [Functions](/language/functions#testing-functions-for-inequality).
+This content has moved to [Functions](/language/functions#testing-functions-for-equality).
 
 ### Return values
 
@@ -442,7 +442,7 @@ This content has moved to [Libraries & visibility](/language/libraries#lazily-lo
 
 #### The `library` directive {#library-directive}
 
-This content has moved to [Libraries & visibility](/language/libraries#the-library-directive).
+This content has moved to [Libraries & visibility](/language/libraries#library-directive).
 
 ### Implementing libraries
 

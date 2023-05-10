@@ -371,7 +371,7 @@ that applies to all Dart 3 code.
   Use the [`deferred as`][] import syntax instead.
 
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.19.6/dart-async/DeferredLibrary-class.html
-[`deferred as`]: /guides/language/language-tour#deferred-loading
+[`deferred as`]: /language/libraries#lazily-loading-a-library
 
 #### `dart:developer`
 
