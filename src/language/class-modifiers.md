@@ -203,7 +203,13 @@ This allows you to create a switch over those subtypes that is statically ensure
 to be [_exhaustive_][exhaustive].
 
 The `sealed` modifier prevents a class from being extended or
-implemented outside of its own library.
+implemented outside its own library.
+
+Sealed classes also prevent construction,
+and are therefore implicitly [abstract](#abstract).
+However, subclasses of sealed classes can be constructed, 
+and sealed classes can have
+[factory constructors](/language/constructors#factory-constructors).
 
 The compiler is aware of any possible direct subtypes because they can only exist
 in the same library. This allows the compiler to alert you when a switch does not
@@ -229,11 +235,6 @@ return switch (vehicle) {
   Truck() => 'VROOOOMM'
 };
 ```
-
-Sealed classes also prevent construction,
-and are therefore implicitly [abstract](#abstract).
-Subclasses of sealed classes can be constructed, and sealed classes can have
-[factory constructors](/language/constructors#factory-constructors).
 
 If you don’t want [exhaustive switching][exhaustive], 
 or want to be able to add subtypes later without breaking the API, 
