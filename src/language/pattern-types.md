@@ -143,7 +143,7 @@ branches match. Branches are evaluated left-to-right. Once a branch matches, the
 rest are not evaluated.
 
 ```dart
-var isPrimary = switch (Color color) {
+var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
   _ => false
 };
@@ -250,7 +250,7 @@ data using getters on the object's properties. They are [refuted][]
 if the value doesn't have the same type.
 
 ```dart
-switch (Shape shape) {
+switch (shape) {
   // Matches if shape is of type Rect, and then against the properties of Rect.
   case Rect(width: var w, height: var h): // ...
 }
