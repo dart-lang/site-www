@@ -194,4 +194,4 @@ types like `List` or `Map` loses type safety.
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
-[named parameters and arguments]: /language/functions#named-parameters
+[parameters and arguments]: /language/functions#parameters
