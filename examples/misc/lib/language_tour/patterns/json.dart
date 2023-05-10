@@ -7,8 +7,8 @@ void main() {
   // #enddocregion json-1
 
   {
-    // #docregion json-2
     Object json = {};
+    // #docregion json-2
     if (json is Map<String, dynamic> &&
         json.length == 1 &&
         json.containsKey('user')) {

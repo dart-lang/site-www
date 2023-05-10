@@ -319,7 +319,6 @@ Without patterns, validation is verbose:
 
 <?code-excerpt "misc/lib/language_tour/patterns/json.dart (json-2)"?>
 ```dart
-Object json = {};
 if (json is Map<String, dynamic> &&
     json.length == 1 &&
     json.containsKey('user')) {
