@@ -39,7 +39,7 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-## Dependency overrides
+## Dependency override
 
 To specify a [dependency override][], add the `override:` prefix and
 include a [source descriptor](#source-descriptor).
@@ -61,7 +61,7 @@ dependency_overrides:
   foo: 1.0.0
 ```
 
-## `dev` dependency
+## Dev dependency
 
 The `dev:` prefix adds the package as a [dev dependency][],
 instead of as a regular dependency.
@@ -90,7 +90,7 @@ $ dart pub add --dev foo
 {{site.alert.end}}
 
 The YAML descriptor syntax allows you to add multiple packages from different
-sources, and apply different options and contraints to each.
+sources, and apply different options and constraints to each.
 
 ```nocode
 $ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor] ...]
