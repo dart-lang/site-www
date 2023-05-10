@@ -58,8 +58,14 @@ if (pair case [int x, int y]) {
 }
 ```
 
-The if-case statement provides a way to match and [destructure][] against a
-_single_ pattern. To test a value against _multiple_ patterns, use [switch](#switch).
+The if-case statement provides a way to match and
+[destructure][] against a _single_ pattern. 
+To test a value against _multiple_ patterns, use [switch](#switch).
+
+{{site.alert.version-note}}
+  Case clauses in if statements require
+  a [language version][] of at least 3.0.
+{{site.alert.end}}
 
 <a id="switch"></a>
 ## Switch statements
@@ -161,6 +167,10 @@ token = switch (charCode) {
   _ => throw invalid()
 };
 ```
+
+{{site.alert.version-note}}
+    Switch expressions require a [language version][] of at least 3.0.
+{{site.alert.end}}
 
 ### Exhaustiveness checking
 

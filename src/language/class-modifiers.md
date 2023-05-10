@@ -3,6 +3,11 @@ title: Class modifiers
 description: Modifier keywords for class declarations to control external library access.
 ---
 
+{{site.alert.version-note}}
+  Class modifiers, besides `abstract`, require
+  a [language version][] of at least 3.0.
+{{site.alert.end}}
+
 Class modifiers control how a class or mixin can be used, both
 [from within its own library](#abstract), and from outside of the library where
 it's defined.
@@ -253,7 +258,7 @@ restrictions on other libraries subtyping the class.
 3. (Optional) `mixin`, describing whether the declaration can be mixed in.
 4. The `class` keyword itself.
 
-You can't combine some modifiers beacause they are contradictory, redundant, or
+You can't combine some modifiers because they are contradictory, redundant, or
 otherwise mutually exclusive:
 
 * `abstract` with `sealed`. A [sealed](#sealed) class is always implicitly
