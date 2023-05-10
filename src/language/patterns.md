@@ -217,7 +217,7 @@ Instead of individually declaring new local variables for each record field,
 like this:
 
 ```dart
-main() {
+void main() {
   var info = userInfo(json);
   var name = info.$1;
   var age = info.$2;
@@ -229,7 +229,7 @@ variables using a [variable declaration](#variable-declaration) or
 [assigment pattern](#variable-assignment), and a record pattern as its subpattern:
 
 ```dart
-main() {
+void main() {
   var (name, age) = userInfo(json);
 }
 ```
