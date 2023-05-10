@@ -211,8 +211,9 @@ However, subclasses of sealed classes can be constructed,
 and sealed classes can have
 [factory constructors](/language/constructors#factory-constructors).
 
-The compiler is aware of any possible direct subtypes because they can only exist
-in the same library. This allows the compiler to alert you when a switch does not
+The compiler is aware of any possible direct subtypes
+because they can only exist in the same library. 
+This allows the compiler to alert you when a switch does not
 exhaustively handle all possible subtypes in its cases:
 
 ```dart
@@ -238,7 +239,7 @@ return switch (vehicle) {
 
 If you don’t want [exhaustive switching][exhaustive], 
 or want to be able to add subtypes later without breaking the API, 
-use [`final`](#final).
+use the [`final`](#final) modifier.
 
 ## Combining modifiers
 
