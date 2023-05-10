@@ -3,6 +3,10 @@ title: Records
 description: Summary of the record data structure in Dart.
 ---
 
+{{site.alert.version-note}}
+  Records require a [language version][] of at least 3.0.
+{{site.alert.end}}
+
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
 they let you bundle multiple objects into a single object. Unlike other collection 
 types, records are fixed-sized, heterogeneous, and typed.
@@ -181,11 +185,12 @@ For example, creating a class is much more verbose, and using other collection
 types like `List` or `Map` loses type safety. 
 
 {{site.alert.note}}
-  Records' multiple-return and heterogenous-type characteristics enable
+  Records' multiple-return and heterogeneous-type characteristics enable
   parallelization of futures of different types, which you can read about in the
   [Library tour][].
 {{site.alert.end}}
 
+[language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures

@@ -22,7 +22,6 @@ Here's a simple Dart list:
 ```dart
 var list = [1, 2, 3];
 ```
-<a name="trailing-comma"></a>
 
 {{site.alert.note}}
   Dart infers that `list` has type `List<int>`. If you try to add non-integer
@@ -30,6 +29,7 @@ var list = [1, 2, 3];
   information, read about [type inference][].
 {{site.alert.end}}
 
+<a id="trailing-comma"></a>
 You can add a comma after the last item in a Dart collection literal.
 This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.

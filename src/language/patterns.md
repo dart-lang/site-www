@@ -57,14 +57,14 @@ For example, the individual fields of any [collection-type][] pattern could be
 
 ```dart
 switch (obj) {
-  // List pattern [a,b] matches obj first if obj is a list wth two fields,
+  // List pattern [a, b] matches obj first if obj is a list with two fields,
   // then if its fields match the constant subpatterns 'a' and 'b'.
   case [a, b]: // ...   
 }                    
 ```
 
 To ignore parts of a matched value, you can use a [wildcard pattern][]
-as a place holder. In the case of list patterns, you can use a [rest element][].
+as a placeholder. In the case of list patterns, you can use a [rest element][].
 
 ### Destructuring
 
@@ -239,21 +239,22 @@ main() {
 [Object patterns][object] match against named object types, allowing
 you to destructure their data using the getters the object's class already exposes.
 
-To destructure an instance of a class, use the named type, followed by the properties
-to destructure enclosed in parenthesis:
+To destructure an instance of a class, use the named type, 
+followed by the properties to 
+destructure enclosed in parentheses:
 
 ```dart
-main() {
+void main() {
   final Foo myFoo = Foo(one: 'one', two: 2);
   var Foo(:one, :two) = myFoo;
   print('one $one, two $two');
 }
 ```
 
-### Algebraic datatypes 
+### Algebraic data types 
 
 Object destructuring and switch cases are conducive to writing
-code in an [algebraic datatype][] style.
+code in an [algebraic data type][] style.
 Use this method when:
 - You have a family of related types.
 - You have an operation that needs specific behavior for each type.
@@ -359,4 +360,4 @@ This case pattern simultaneously validates that:
 [assert]: /language/pattern-types#null-assert
 [object]: /language/pattern-types#object
 [`MapEntry`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/MapEntry-class.html
-[algebraic datatype]: https://en.wikipedia.org/wiki/Algebraic_data_type
+[algebraic data type]: https://en.wikipedia.org/wiki/Algebraic_data_type
