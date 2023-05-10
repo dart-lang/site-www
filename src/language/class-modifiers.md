@@ -49,7 +49,7 @@ entire interface, use the `abstract` modifier.
 Abstract classes cannot be constructed from any library, whether its own or
 an outside library. Abstract classes often have [abstract methods][].
 
-<?code-excerpt "language/lib/ex1_a.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex1_a.dart"?>
 ```dart
 // Library a.dart
 abstract class Vehicle { 
@@ -57,7 +57,7 @@ abstract class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/ex1/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
@@ -95,7 +95,7 @@ You must mark any class which implements or extends a base class as
 `base`, `final`, or `sealed`. This prevents outside libraries from
 breaking the base class guarantees.
 
-<?code-excerpt "language/lib/ex2/a.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex2/a.dart"?>
 ```dart
 // Library a.dart
 base class Vehicle {
@@ -103,7 +103,7 @@ base class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/ex2/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex2/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
@@ -133,7 +133,7 @@ it will always invoke a known implementation of the method from the same library
 class's own methods might later call in unexpected ways.
 This reduces the [fragile base class problem][].
 
-<?code-excerpt "language/lib/ex3/a.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex3/a.dart"?>
 ```dart
 // Library a.dart
 interface class Vehicle {
@@ -141,7 +141,7 @@ interface class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/ex3/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex3/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
@@ -184,7 +184,7 @@ Final classes can be extended or implemented within the
 same library. The `final` modifier encompasses the effects of `base`, and
 therefore any subclasses must also be marked `base`, `final`, or `sealed`.
 
-<?code-excerpt "language/lib/ex4/a.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex4/a.dart"?>
 ```dart
 // Library a.dart
 final class Vehicle {
@@ -192,7 +192,7 @@ final class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/ex4/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex4/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
@@ -230,7 +230,7 @@ because they can only exist in the same library.
 This allows the compiler to alert you when a switch does not
 exhaustively handle all possible subtypes in its cases:
 
-<?code-excerpt "language/lib/ex5/sealed.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex5/sealed.dart"?>
 ```dart
 sealed class Vehicle { ... }
 
