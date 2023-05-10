@@ -19,8 +19,8 @@ functions, and store them in lists.
 _Records expressions_ are comma-delimited lists of named or positional fields,
 enclosed in parentheses:
 
+<?code-excerpt "language/test/records_test.dart (record-syntax)"?>
 ```dart
-// Record expression:
 var record = ('first', a: 2, b: true, 'last');
 ```
 
@@ -28,6 +28,7 @@ _Record type annotations_ are comma-delimited lists of types enclosed in parenth
 You can use record type annotations to define return types and parameter types.
 For example, the following `(int, int)` statements are record type annotations:
 
+<?code-excerpt "language/test/records_test.dart (record-type-annotation)"?>
 ```dart
 (int, int) swap((int, int) record) {
   var (a, b) = record;
@@ -39,6 +40,7 @@ Fields in record expressions and type annotations mirror
 how [parameters and arguments][] work in functions. 
 Positional fields go directly inside the parentheses:
 
+<?code-excerpt "language/test/records_test.dart (record-type-declaration)"?>
 ```dart
 // Record type annotation in a variable declaration:
 (String, int) record;
@@ -51,6 +53,7 @@ In a record type annotation, named fields go inside a curly brace-delimited
 section of type-and-name pairs, after all positional fields. In a record
 expression, the names go before each field value with a colon after:
 
+<?code-excerpt "language/test/records_test.dart (record-type-named-declaration)"?>
 ```dart
 // Record type annotation in a variable declaration:
 ({int a, bool b}) record;
@@ -64,16 +67,19 @@ the [record's type definition](#record-types), or its _shape_.
 Two records with named fields with
 different names have different types:
 
+<?code-excerpt "language/test/records_test.dart (record-type-mismatched-names)"?>
 ```dart
 ({int a, int b}) recordAB = (a: 1, b: 2);
 ({int x, int y}) recordXY = (x: 3, y: 4);
 
-recordAB = recordXY; // Compile error! These records don't have the same type.
+// Compile error! These records don't have the same type.
+// recordAB = recordXY;
 ```
 
 In a record type annotation, you can also name the *positional* fields, but
 these names are purely for documentation and don't affect the record's type:
 
+<?code-excerpt "language/test/records_test.dart (record-type-matched-names)"?>
 ```dart
 (int a, int b) recordAB = (1, 2);
 (int x, int y) recordXY = (3, 4);
@@ -96,13 +102,14 @@ so fields do not have setters.
 Named fields expose getters of the same name. Positional fields expose getters
 of the name `$<position>`, skipping named fields:
 
+<?code-excerpt "language/test/records_test.dart (record-getters)"?>
 ```dart
 var record = ('first', a: 2, b: true, 'last');
 
-print(record.$1);    // Prints 'first'
-print(record.a);     // Prints 2
-print(record.b);     // Prints true
-print(record.$2);    // Prints 'last'
+print(record.$1); // Prints 'first'
+print(record.a); // Prints 2
+print(record.b); // Prints true
+print(record.$2); // Prints 'last'
 ```
 
 To streamline record field access even more, 
@@ -118,11 +125,12 @@ Each field in a record has its own type. Field types can differ within the same
 record. The type system is aware of each field's type wherever it is accessed
 from the record:
 
+<?code-excerpt "language/test/records_test.dart (record-getters-two)"?>
 ```dart
-(num, Object) pair = (42, "a");
+(num, Object) pair = (42, 'a');
 
-var first = pair.$1;     // Static type `num`, runtime type `int`.
-var second = pair.$2;    // Static type `Object`, runtime type `String`.
+var first = pair.$1; // Static type `num`, runtime type `int`.
+var second = pair.$2; // Static type `Object`, runtime type `String`.
 ```
 
 Consider two unrelated libraries that create records with the same set of fields.
@@ -136,6 +144,7 @@ and their corresponding fields have the same values.
 Since named field _order_ is not part of a record's shape, the order of named
 fields does not affect equality.
 
+<?code-excerpt "language/test/records_test.dart (record-shape)"?>
 ```dart
 (int x, int y, int z) point = (1, 2, 3);
 (int r, int g, int b) color = (1, 2, 3);
@@ -144,12 +153,13 @@ fields does not affect equality.
 point = color;
 ```
 
+<?code-excerpt "language/test/records_test.dart (record-shape-mismatch)"?>
 ```dart
 ({int x, int y, int z}) point = (x: 1, y: 2, z: 3);
 ({int r, int g, int b}) color = (r: 1, g: 2, b: 3);
 
-// Error, different types:
-point = color;
+// Compile error! These record don't have the same shape.
+// point = color;
 ```
 
 Records automatically define `hashCode` and `==` methods based on the structure
@@ -161,22 +171,27 @@ Records allow functions to return multiple values bundled together.
 To retrieve record values from a return,
 destructure the values into local variables using [pattern matching][pattern].
 
+<?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
 // Returns multiple values in a record:
 (String, int) userInfo(Map<String, dynamic> json) {
   return (json['name'] as String, json['age'] as int);
 }
 
-void main() {
-  // Destructures using a record pattern:
-  var (name, age) = userInfo(json);
+final json = <String, dynamic>{
+  'name': 'Dash',
+  'age': 10,
+  'color': 'blue',
+};
 
-  /* Equivalent to:
+// Destructures using a record pattern:
+(name, age) = userInfo(json);
+
+/* Equivalent to:
   var info = userInfo(json);
   var name = info.$1;
   var age  = info.$2;
-  */
-}
+*/
 ```
 
 You can return multiple values from a function without records,
