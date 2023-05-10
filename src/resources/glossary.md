@@ -21,4 +21,4 @@ If not, the pattern _refutes_, or denies, the match.
 Refutable patterns appear in [_matching contexts_][pattern context].
 
 
-[pattern context]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/0546-patterns/feature-specification.md#pattern-context
+[pattern context]: https://github.com/dart-lang/language/blob/main/accepted/future-releases/0546-patterns/feature-specification.md#pattern-context
