@@ -1,3 +1,8 @@
+- title: Dart 3
+  expanded: false
+  children:
+    - title: Dart 3 migration guide
+      permalink: /resources/dart-3-migration
 - title: Tutorials & codelabs
   expanded: false
   children:
@@ -330,8 +335,6 @@
       permalink: /guides/language/evolution
     - title: Language specification
       permalink: /guides/language/spec    
-    - title: Dart 3 migration guide
-      permalink: /resources/dart-3-migration
     - title: Coming from ...
       expanded: false
       children:
