@@ -125,6 +125,8 @@ switch (command) {
 To learn more about patterns in case clauses, 
 check out the patterns documentation on [Switch statements and expressions][].
 
+[Switch statements and expressions]: /language/patterns#switch-statements-and-expressions
+
 ### Switch expressions
 
 A `switch` expression is similar to a `switch` statement, but you can use them
