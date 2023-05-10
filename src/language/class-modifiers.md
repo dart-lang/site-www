@@ -7,7 +7,7 @@ Class modifiers control how a class or mixin can be used, both
 [from within its own library](#abstract), and from outside of the library where
 it's defined.
 
-Modifiers prepend a class or mixin declaration.
+Modifier keywords come before a class or mixin declaration.
 For example, writing `abstract class` defines an abstract class.
 The full set of modifiers that can appear before a class declaration include:
 
@@ -202,9 +202,8 @@ To create a known, enumerable set of subtypes, use the `sealed` modifier.
 This allows you to create a switch over those subtypes that is statically ensured
 to be [_exhaustive_][exhaustive].
 
-The `sealed` modifier prevents a class from being extended or implemented outside
-of its own library. Sealed classes also prevent construction,
-and are therefore implicitly [abstract](#abstract).
+The `sealed` modifier prevents a class from being extended or
+implemented outside of its own library.
 
 The compiler is aware of any possible direct subtypes because they can only exist
 in the same library. This allows the compiler to alert you when a switch does not
@@ -219,18 +218,26 @@ class Bicycle extends Vehicle { }
 
 // ...
 
-var vehicle = Vehicle();           // ERROR: Cannot be instantiated
+var vehicle = Vehicle();  // ERROR: Cannot be instantiated
+var vehicle = Car();    // Subclasses can be instantiated
 
 // ...
 
-return switch (Vehicle vehicle) {  // ERROR: The switch is missing a subtype of Vehicle
+// ERROR: The switch is missing the Bicycle subtype or a default case.
+return switch (Vehicle vehicle) {
   Car => 'vroom',
   Truck => 'VROOOOMM'
 };
 ```
 
-If you don’t want [exhaustive switching][exhaustive], or want to be able to add
-subtypes later without breaking the API, use [`final`](#final).
+Sealed classes also prevent construction,
+and are therefore implicitly [abstract](#abstract).
+Subclasses of sealed classes can be constructed, and sealed classes can have
+[factory constructors](/language/constructors#factory-constructors).
+
+If you don’t want [exhaustive switching][exhaustive], 
+or want to be able to add subtypes later without breaking the API, 
+use [`final`](#final).
 
 ## Combining modifiers
 
