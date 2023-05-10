@@ -266,6 +266,7 @@ otherwise mutually exclusive:
 * `interface`, `final` or `sealed` with `mixin`. These access modifiers
 prevent [mixing in][mixin].
 
+[language version]: /guides/language/evolution#language-versioning
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mixin]: /language/mixins
 [fragile base class problem]: https://en.wikipedia.org/wiki/Fragile_base_class
