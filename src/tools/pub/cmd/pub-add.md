@@ -110,14 +110,14 @@ arguments it replaces. Their new, corresponding YAML sources are listed below.
 Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
 ```terminal
-# dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
+$ dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
 You can specify the repository, and the branch or commit, or exact location,
 within that repository:
 
 ```terminal
-# dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
+$ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
 #### `url`
