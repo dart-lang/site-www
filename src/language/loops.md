@@ -19,7 +19,7 @@ You can also manipulate control flow in Dart using:
 
 You can iterate with the standard `for` loop. For example:
 
-<?code-excerpt "misc/test/language_tour/control_flow_test.dart (for)"?>
+<?code-excerpt "language/test/control_flow/loops_test.dart (for)"?>
 ```dart
 var message = StringBuffer('Dart is fun');
 for (var i = 0; i < 5; i++) {
@@ -30,7 +30,7 @@ for (var i = 0; i < 5; i++) {
 Closures inside of Dart’s `for` loops capture the _value_ of the index.
 This avoids a common pitfall found in JavaScript. For example, consider:
 
-<?code-excerpt "misc/test/language_tour/control_flow_test.dart (for-and-closures)"?>
+<?code-excerpt "language/test/control_flow/loops_test.dart (for-and-closures)"?>
 ```dart
 var callbacks = [];
 for (var i = 0; i < 2; i++) {
@@ -49,19 +49,20 @@ Sometimes you might not need to know the current iteration counter
 when iterating over an [`Iterable`][] type, like `List` or `Set`.
 In that case, use the `for-in` loop for cleaner code:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
 ```dart
 for (final candidate in candidates) {
   candidate.interview();
 }
 ```
 
-To process the values obtained from the iterable, you can also use a [pattern][]
-in a `for-in` loop:
+To process the values obtained from the iterable, 
+you can also use a [pattern][] in a `for-in` loop:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (collection-for-pattern)"?>
 ```dart
-for (var (x, y) in listOfPairs) {
-  assert(x != y);
+for (final Candidate(:name, :yearsExperience) in candidates) {
+  print('$name has $yearsExperience of experience.');
 }
 ```
 
@@ -72,7 +73,7 @@ for (var (x, y) in listOfPairs) {
 
 Iterable classes also have a [forEach()][] method as another option:
 
-<?code-excerpt "misc/test/language_tour/control_flow_test.dart (forEach)"?>
+<?code-excerpt "language/test/control_flow/loops_test.dart (for-each)"?>
 ```dart
 var collection = [1, 2, 3];
 collection.forEach(print); // 1 2 3
@@ -83,7 +84,7 @@ collection.forEach(print); // 1 2 3
 
 A `while` loop evaluates the condition before the loop:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (while)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (while)"?>
 ```dart
 while (!isDone()) {
   doSomething();
@@ -92,7 +93,7 @@ while (!isDone()) {
 
 A `do`-`while` loop evaluates the condition *after* the loop:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (do-while)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (do-while)"?>
 ```dart
 do {
   printLine();
@@ -104,7 +105,7 @@ do {
 
 Use `break` to stop looping:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (while-break)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (while-break)"?>
 ```dart
 while (true) {
   if (shutDownRequested()) break;
@@ -114,7 +115,7 @@ while (true) {
 
 Use `continue` to skip to the next loop iteration:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (for-continue)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (for-continue)"?>
 ```dart
 for (int i = 0; i < candidates.length; i++) {
   var candidate = candidates[i];
@@ -128,7 +129,7 @@ for (int i = 0; i < candidates.length; i++) {
 If you’re using an [`Iterable`][] such as a list or set,
 how you write the previous example might differ:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (where)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (where)"?>
 ```dart
 candidates
     .where((c) => c.yearsExperience >= 5)
