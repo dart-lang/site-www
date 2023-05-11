@@ -3,15 +3,16 @@ title: Class modifiers for API maintainers
 description: How to use the class modifiers added in Dart 3.0 to make your package's API more robust and maintainable.
 ---
 
-Dart 3.0 adds a handful of new modifiers
-that you can place on class and mixin declarations.
+Dart 3.0 adds a few [new modifiers][class modifiers]
+that you can place on class and [mixin declarations][mixin].
 If you are the author of a library package,
 these modifiers give you more control over what users are allowed to do
 with the types that your package exports.
 That control can make it easier to evolve your package
 and easier to tell if a change to your code may break users.
 
-TODO: link to guide docs.
+[class modifiers]: /language/class-modifiers
+[mixin]: /language/mixins
 
 Dart 3.0 also includes a breaking change around using classes as mixins.
 This change might not break *your* class,
@@ -227,7 +228,7 @@ It exists primarily to enable [exhaustiveness checking][] in pattern matching.
 If a switch has cases for every direct subtype of a type marked `sealed`,
 then the compiler knows the switch is exhaustive.
 
-[exhaustiveness checking]: TODO: Link.
+[exhaustiveness checking]: /language/branches#exhaustiveness-checking
 
 ```dart
 // amigos.dart
