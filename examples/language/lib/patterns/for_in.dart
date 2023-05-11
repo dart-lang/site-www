@@ -1,5 +1,4 @@
 void main() {
-
   // #docregion for-in-pattern
   Map<String, int> hist = {
     'a': 23,
