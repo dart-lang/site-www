@@ -1,5 +1,5 @@
 ---
-title: Dart 3.0 class modifiers for API maintainers
+title: Class modifiers for API maintainers
 description: How to use the class modifiers added in Dart 3.0 to make your package's API more robust and maintainable.
 ---
 
