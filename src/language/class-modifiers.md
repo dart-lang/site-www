@@ -61,14 +61,14 @@ base class Vehicle {
 
 <?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
 ```dart
-
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle(); // Error: Cannot be constructed
+// Error: Cannot be constructed
+var myCar = Vehicle();
 
+// Can be extended
 base class Car extends Vehicle {
-  // Can be extended
   int passengers = 4;
   // ...
 }
@@ -114,14 +114,13 @@ base class Vehicle {
 
 <?code-excerpt "language/lib/class_modifiers/ex2/b.dart"?>
 ```dart
-
 // Library b.dart
 import 'a.dart';
 
 Vehicle myCar = Vehicle(); // Can be constructed
 
+// Can be extended
 base class Car extends Vehicle {
-  // Can be extended
   int passengers = 4;
   // ...
 }
@@ -152,21 +151,21 @@ This reduces the [fragile base class problem][].
 // Library a.dart
 interface class Vehicle {
   void moveForward(int meters) {
-    //...
+    // ...
   }
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex3/b.dart"?>
 ```dart
-
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle(); // Can be constructed
+// Can be constructed
+Vehicle myCar = Vehicle();
 
+// ERROR: Cannot be inherited
 class Car extends Vehicle {
-  // ERROR: Cannot be inherited
   int passengers = 4;
   // ...
 }
@@ -175,7 +174,7 @@ class MockVehicle implements Vehicle {
   // Can be implemented
   @override
   void moveForward(int meters) {
-    //...
+    // ...
   }
 }
 ```
@@ -210,21 +209,21 @@ therefore any subclasses must also be marked `base`, `final`, or `sealed`.
 // Library a.dart
 final class Vehicle {
   void moveForward(int meters) {
-    //...
+    // ...
   }
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex4/b.dart"?>
 ```dart
-
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle(); // Can be constructed
+// Can be constructed
+Vehicle myCar = Vehicle();
 
+// ERROR: Cannot be inherited
 class Car extends Vehicle {
-  // ERROR: Cannot be inherited
   int passengers = 4;
   // ...
 }
