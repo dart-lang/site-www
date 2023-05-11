@@ -4,8 +4,8 @@ import 'a.dart';
 
 Vehicle myCar = Vehicle(); // Can be constructed
 
+// Can be extended
 base class Car extends Vehicle {
-  // Can be extended
   int passengers = 4;
   // ...
 }

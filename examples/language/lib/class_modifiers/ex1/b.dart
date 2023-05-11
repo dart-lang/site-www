@@ -2,10 +2,11 @@
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle(); // Error: Cannot be constructed
+// Error: Cannot be constructed
+var myCar = Vehicle();
 
+// Can be extended
 base class Car extends Vehicle {
-  // Can be extended
   int passengers = 4;
   // ...
 }

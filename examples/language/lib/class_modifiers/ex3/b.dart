@@ -2,10 +2,11 @@
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle(); // Can be constructed
+// Can be constructed
+Vehicle myCar = Vehicle();
 
+// ERROR: Cannot be inherited
 class Car extends Vehicle {
-  // ERROR: Cannot be inherited
   int passengers = 4;
   // ...
 }
