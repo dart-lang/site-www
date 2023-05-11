@@ -43,7 +43,7 @@ What constitutes a match depends on [what kind of pattern][types] you are using.
 For example, a constant pattern matches if the value is equal to the pattern's 
 constant:
 
-<?code-excerpt "misc/lib/language_tour/patterns/switch.dart (constant-pattern)"?>
+<?code-excerpt "language/lib/patterns/switch.dart (constant-pattern)"?>
 ```dart
 switch (number) {
   // Constant pattern matches if 1 == number.
@@ -57,7 +57,7 @@ patterns, respectively. Patterns match recursively on their subpatterns.
 For example, the individual fields of any [collection-type][] pattern could be 
 [variable patterns][variable] or [constant patterns][constant]:
 
-<?code-excerpt "misc/lib/language_tour/patterns/switch.dart (list-pattern)"?>
+<?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
 ```dart
 switch (obj) {
   // List pattern [a, b] matches obj first if obj is a list with two fields,
@@ -75,7 +75,7 @@ as a placeholder. In the case of list patterns, you can use a [rest element][].
 When an object and pattern match, the pattern can then access the object's data 
 and extract it in parts. In other words, the pattern _destructures_ the object:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (list-pattern)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (list-pattern)"?>
 ```dart
 var numList = [1, 2, 3];
 // List pattern [a, b, c] destructures the three elements from numList...
@@ -88,7 +88,7 @@ You can nest [any kind of pattern][types] inside a destructuring pattern.
 For example, this case pattern matches and destructures a two-element
 list whose first element is `a` or `b`:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (nested-pattern)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (nested-pattern)"?>
 ```dart
 switch (list) {
   case ['a' || 'b', var c]:
@@ -116,7 +116,7 @@ declaration.
 The pattern matches against the value on the right of the declaration.
 Once matched, it destructures the value and binds it to new local variables:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (variable-declaration)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (variable-declaration)"?>
 ```dart
 // Declares new variables a, b, and c.
 var (a, [b, c]) = ('str', [1, 2]);
@@ -134,7 +134,7 @@ _existing_ variables, instead of binding new ones.
 Use a variable assignment pattern to swap the values of two variables without
 declaring a third temporary one:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (variable-assignment)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (variable-assignment)"?>
 ```dart
 var (a, b) = ('left', 'right');
 (b, a) = (a, b); // Swap.
@@ -152,7 +152,7 @@ They allow control flow to either:
 - Match and destructure the object being switched on.
 - Continue execution if the object doesn't match.
 
-<?code-excerpt "misc/lib/language_tour/patterns/switch.dart (switch-statement)"?>
+<?code-excerpt "language/lib/patterns/switch.dart (switch-statement)"?>
 ```dart
 switch (obj) {
   // Matches if 1 == obj.
@@ -181,7 +181,7 @@ values in a collection.
 This example uses [object destructuring][object] in a for-in loop to destructure
 the [`MapEntry`][] objects that a `<Map>.entries` call returns:
 
-<?code-excerpt "misc/lib/language_tour/patterns/for_in.dart (for-in-pattern)"?>
+<?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
 Map<String, int> hist = {
   'a': 23,
@@ -203,7 +203,7 @@ use case, so object patterns can also infer the getter name from the
 [variable subpattern][variable]. This allows you to simplify the variable pattern
 from something redundant like `key: key` to just `:key`:
 
-<?code-excerpt "misc/lib/language_tour/patterns/for_in.dart (for-in-short)"?>
+<?code-excerpt "language/lib/patterns/for_in.dart (for-in-short)"?>
 ```dart
 for (var MapEntry(:key, value: count) in hist.entries) {
   print('$key occurred $count times');
@@ -232,7 +232,7 @@ directly into local variables, inline with the function call.
 Instead of individually declaring new local variables for each record field,
 like this:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (destructure-multiple-returns-1)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-1)"?>
 ```dart
 var info = userInfo(json);
 var name = info.$1;
@@ -243,7 +243,7 @@ You can destructure the fields of a record that a function returns into local
 variables using a [variable declaration](#variable-declaration) or
 [assigment pattern](#variable-assignment), and a record pattern as its subpattern:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (destructure-multiple-returns-2)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-2)"?>
 ```dart
 var (name, age) = userInfo(json);
 ```
@@ -257,7 +257,7 @@ To destructure an instance of a class, use the named type,
 followed by the properties to 
 destructure enclosed in parentheses:
 
-<?code-excerpt "misc/lib/language_tour/patterns/destructuring.dart (destructure-class-instances)"?>
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-class-instances)"?>
 ```dart
 final Foo myFoo = Foo(one: 'one', two: 2);
 var Foo(:one, :two) = myFoo;
@@ -277,7 +277,7 @@ the different type definitions.
 Instead of implementing the operation as an instance method for every type,
 keep the operation's variations in a single function that switches over the subtypes:
 
-<?code-excerpt "misc/lib/language_tour/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
 ```dart
 sealed class Shape {}
 
@@ -302,7 +302,7 @@ double calculateArea(Shape shape) => switch (shape) {
 [Map][] and [list][] patterns work well for destructuring key-value pairs in
 JSON data:
 
-<?code-excerpt "misc/lib/language_tour/patterns/json.dart (json-1)"?>
+<?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
 ```dart 
 var json = {
   'user': ['Lily', 13]
@@ -317,7 +317,7 @@ You need to validate it first to confirm its structure.
 
 Without patterns, validation is verbose:
 
-<?code-excerpt "misc/lib/language_tour/patterns/json.dart (json-2)"?>
+<?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
 if (json is Map<String, dynamic> &&
     json.length == 1 &&
@@ -340,7 +340,7 @@ Single cases work best as [if-case][if] statements.
 Patterns provide a more declarative, and much less verbose
 method of validating JSON:
 
-<?code-excerpt "misc/lib/language_tour/patterns/json.dart (json-3)"?>
+<?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
 if (json case {'user': [String name, int age]}) {
   print('User $name is $age years old.');
