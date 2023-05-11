@@ -1,4 +1,4 @@
-// ignore_for_file: duplicate_variable_pattern, duplicate_definition
+// ignore_for_file: duplicate_variable_pattern, duplicate_definition, unused_local_variable, dead_code, constant_pattern_never_matches_value_type, unnecessary_null_check_pattern, pattern_never_matches_value_type, unreachable_switch_case, unused_element
 
 sealed class Shape {}
 
@@ -183,7 +183,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var record = (untyped: 1, typed: 2);
+    var record = (untyped: '1', typed: 2);
     // #docregion record-getter
     // Record pattern with variable subpatterns:
     var (untyped: untyped, typed: int typed) = record;
