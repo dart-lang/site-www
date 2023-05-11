@@ -1,5 +1,4 @@
 // ignore_for_file: invalid_use_of_type_outside_library
-
 // Library b.dart
 import 'a.dart';
 
