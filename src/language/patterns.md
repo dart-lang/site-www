@@ -43,10 +43,12 @@ What constitutes a match depends on [what kind of pattern][types] you are using.
 For example, a constant pattern matches if the value is equal to the pattern's 
 constant:
 
+<?code-excerpt "language/lib/patterns/switch.dart (constant-pattern)"?>
 ```dart
 switch (number) {
   // Constant pattern matches if 1 == number.
-  case 1: // ...        
+  case 1:
+    print('one');
 }
 ```
 
@@ -55,12 +57,14 @@ patterns, respectively. Patterns match recursively on their subpatterns.
 For example, the individual fields of any [collection-type][] pattern could be 
 [variable patterns][variable] or [constant patterns][constant]:
 
+<?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
 ```dart
 switch (obj) {
   // List pattern [a, b] matches obj first if obj is a list with two fields,
   // then if its fields match the constant subpatterns 'a' and 'b'.
-  case [a, b]: // ...   
-}                    
+  case [a, b]:
+    print('$a, $b');
+}
 ```
 
 To ignore parts of a matched value, you can use a [wildcard pattern][]
@@ -71,22 +75,24 @@ as a placeholder. In the case of list patterns, you can use a [rest element][].
 When an object and pattern match, the pattern can then access the object's data 
 and extract it in parts. In other words, the pattern _destructures_ the object:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (list-pattern)"?>
 ```dart
 var numList = [1, 2, 3];
 // List pattern [a, b, c] destructures the three elements from numList...
 var [a, b, c] = numList;
 // ...and assigns them to new variables.
-print(a + b + c);          
+print(a + b + c);
 ```
 
 You can nest [any kind of pattern][types] inside a destructuring pattern. 
 For example, this case pattern matches and destructures a two-element
 list whose first element is `a` or `b`:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (nested-pattern)"?>
 ```dart
 switch (list) {
-  case ['a' || 'b', var c]: 
-  // ...
+  case ['a' || 'b', var c]:
+    print(c);
 }
 ```
 
@@ -110,9 +116,10 @@ declaration.
 The pattern matches against the value on the right of the declaration.
 Once matched, it destructures the value and binds it to new local variables:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (variable-declaration)"?>
 ```dart
 // Declares new variables a, b, and c.
-var (a, [b, c]) = ("str", [1, 2]);
+var (a, [b, c]) = ('str', [1, 2]);
 ```
 
 A pattern variable declaration must start with either `var` or `final`, followed
@@ -127,6 +134,7 @@ _existing_ variables, instead of binding new ones.
 Use a variable assignment pattern to swap the values of two variables without
 declaring a third temporary one:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (variable-assignment)"?>
 ```dart
 var (a, b) = ('left', 'right');
 (b, a) = (a, b); // Swap.
@@ -144,19 +152,22 @@ They allow control flow to either:
 - Match and destructure the object being switched on.
 - Continue execution if the object doesn't match.
 
+<?code-excerpt "language/lib/patterns/switch.dart (switch-statement)"?>
 ```dart
 switch (obj) {
-  case 1: ...
-    // Matches if 1 == obj.
-  case >= first && <= last: ...  
-    // Matches if the value of obj is between the constant values of 'first' and 'last'.
-  case (var a, var b): ...
-    // Matches if obj is a record with two fields, then assigns the fields to 'a' and 'b'.
-  case Rect(width: var w, height: var h): ...
-    // Matches if obj is an instance of Rect, and then against the properties of Rect,
-    // and then assigns the properties to 'w' and 'h'.
-  default: ...
-}
+  // Matches if 1 == obj.
+  case 1:
+    print('one');
+
+  // Matches if the value of obj is between the constant values of 'first' and 'last'.
+  case >= first && <= last:
+    print('in range');
+
+  // Matches if obj is a record with two fields, then assigns the fields to 'a' and 'b'.
+  case (var a, var b):
+    print('a = $a, b = $b');
+
+  default:
 ```
 
 The values that a pattern destructures in a case become local variables.
@@ -170,8 +181,12 @@ values in a collection.
 This example uses [object destructuring][object] in a for-in loop to destructure
 the [`MapEntry`][] objects that a `<Map>.entries` call returns:
 
+<?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
-Map<String, int> hist = // ...
+Map<String, int> hist = {
+  'a': 23,
+  'b': 100,
+};
 
 for (var MapEntry(key: key, value: count) in hist.entries) {
   print('$key occurred $count times');
@@ -188,8 +203,9 @@ use case, so object patterns can also infer the getter name from the
 [variable subpattern][variable]. This allows you to simplify the variable pattern
 from something redundant like `key: key` to just `:key`:
 
+<?code-excerpt "language/lib/patterns/for_in.dart (for-in-short)"?>
 ```dart
-for (var MapEntry(:key, value: count) in hist.entries) { 
+for (var MapEntry(:key, value: count) in hist.entries) {
   print('$key occurred $count times');
 }
 ```
@@ -216,22 +232,20 @@ directly into local variables, inline with the function call.
 Instead of individually declaring new local variables for each record field,
 like this:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-1)"?>
 ```dart
-void main() {
-  var info = userInfo(json);
-  var name = info.$1;
-  var age = info.$2;
-}
+var info = userInfo(json);
+var name = info.$1;
+var age = info.$2;
 ```
 
 You can destructure the fields of a record that a function returns into local
 variables using a [variable declaration](#variable-declaration) or
 [assigment pattern](#variable-assignment), and a record pattern as its subpattern:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-2)"?>
 ```dart
-void main() {
-  var (name, age) = userInfo(json);
-}
+var (name, age) = userInfo(json);
 ```
 
 ### Destructuring class instances
@@ -243,12 +257,11 @@ To destructure an instance of a class, use the named type,
 followed by the properties to 
 destructure enclosed in parentheses:
 
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-class-instances)"?>
 ```dart
-void main() {
-  final Foo myFoo = Foo(one: 'one', two: 2);
-  var Foo(:one, :two) = myFoo;
-  print('one $one, two $two');
-}
+final Foo myFoo = Foo(one: 'one', two: 2);
+var Foo(:one, :two) = myFoo;
+print('one $one, two $two');
 ```
 
 ### Algebraic data types 
@@ -264,6 +277,7 @@ the different type definitions.
 Instead of implementing the operation as an instance method for every type,
 keep the operation's variations in a single function that switches over the subtypes:
 
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
 ```dart
 sealed class Shape {}
 
@@ -277,11 +291,10 @@ class Circle implements Shape {
   Circle(this.radius);
 }
 
-double calculateArea(Shape shape) =>
-  switch (shape) {
-    Square(length: var l) => l * l,
-    Circle(radius: var r) => math.pi * r * r
-  };
+double calculateArea(Shape shape) => switch (shape) {
+      Square(length: var l) => l * l,
+      Circle(radius: var r) => math.pi * r * r
+    };
 ```
 
 ### Validating incoming JSON
@@ -289,8 +302,11 @@ double calculateArea(Shape shape) =>
 [Map][] and [list][] patterns work well for destructuring key-value pairs in
 JSON data:
 
+<?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
 ```dart 
-var json = {'user': ['Lily', 13]};
+var json = {
+  'user': ['Lily', 13]
+};
 var {'user': [name, age]} = json;
 ```
 
@@ -301,12 +317,16 @@ You need to validate it first to confirm its structure.
 
 Without patterns, validation is verbose:
 
+<?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
 if (json is Map<String, dynamic> &&
-    json.length == 1 && json.containsKey('user')) {
-  var user = json[user];
-  if (user is List<dynamic> && user.length == 2 &&
-      user[0] is String && user[1] is int) {
+    json.length == 1 &&
+    json.containsKey('user')) {
+  var user = json['user'];
+  if (user is List<dynamic> &&
+      user.length == 2 &&
+      user[0] is String &&
+      user[1] is int) {
     var name = user[2] as String;
     var age = user[1] as int;
     print('User $name is $age years old.');
@@ -320,9 +340,11 @@ Single cases work best as [if-case][if] statements.
 Patterns provide a more declarative, and much less verbose
 method of validating JSON:
 
+<?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
-if (json case {'user': [String name, int age]}) 
+if (json case {'user': [String name, int age]}) {
   print('User $name is $age years old.');
+}
 ```
 
 This case pattern simultaneously validates that:
