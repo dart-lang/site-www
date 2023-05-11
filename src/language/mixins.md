@@ -127,8 +127,8 @@ class Novice extends Musician { // Use Musician as a class
 } 
 ```
 
-By declaring `Musician` abstract, you force any type that uses
-it to define the abstract method its behavior depends on. 
+By declaring the `Musician` mixin as abstract, you force any type that uses
+it to define the abstract method upon which its behavior depends. 
 
 This is similar to how the `on` directive ensures a mixin has access to any
 interfaces it depends on by specifying the superclass of that interface.
