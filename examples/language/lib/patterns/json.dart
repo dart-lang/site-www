@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 void main() {
   // #docregion json-1
   var json = {

@@ -1,9 +1,11 @@
+// ignore_for_file: unused_local_variable
 
 class Foo {
   final String one;
   final int two;
   Foo({required this.one, required this.two});
 }
+
 void main() {
   // #docregion list-pattern
   var numList = [1, 2, 3];
@@ -58,10 +60,9 @@ void main() {
   }
   {
     // #docregion destructure-class-instances
-      final Foo myFoo = Foo(one: 'one', two: 2);
-      var Foo(:one, :two) = myFoo;
-      print('one $one, two $two');
+    final Foo myFoo = Foo(one: 'one', two: 2);
+    var Foo(:one, :two) = myFoo;
+    print('one $one, two $two');
     // #enddocregion destructure-class-instances
-
   }
 }
