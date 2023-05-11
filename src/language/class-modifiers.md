@@ -210,9 +210,10 @@ to be [_exhaustive_][exhaustive].
 The `sealed` modifier prevents a class from being extended or
 implemented outside its own library.
 
-Sealed classes also prevent construction,
-and are therefore implicitly [abstract](#abstract).
-However, subclasses of sealed classes can be constructed, 
+Sealed classes are implicitly [abstract](#abstract).
+They cannot be constructed themselves,
+but they can define constructors for their subclasses to use.
+Subclasses of sealed classes can be constructed, 
 and sealed classes can have
 [factory constructors](/language/constructors#factory-constructors).
 
