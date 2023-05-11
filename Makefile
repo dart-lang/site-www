@@ -15,7 +15,7 @@ BUILD_CONFIGS ?= _config.yml
 BUILD_NAME ?= dart_dev_build
 BUILD_TAG ?= dart-dev
 BUILD_TARGET ?= build
-DART_CHANNEL ?= stable
+DART_CHANNEL ?= beta
 DART_VERSION ?= latest
 FIREBASE_PROJECT ?= default
 FIREBASE_CHANNEL ?= dart
@@ -53,7 +53,9 @@ setup:
 	make clean
 	-docker compose down
 	-docker rmi ${BUILD_TAG}:${DART_CHANNEL}
-	docker compose build --no-cache site
+	docker compose build --no-cache site \
+	 --build-arg DART_VERSION=${DART_VERSION} \
+	 --build-arg DART_CHANNEL=${DART_CHANNEL}
 
 # Serve the Jekyll site with livereload and incremental builds
 serve:

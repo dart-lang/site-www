@@ -473,7 +473,7 @@ check out the [language versioning specification][].
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
-[language versioning specification]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
+[language versioning specification]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md

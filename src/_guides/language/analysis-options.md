@@ -236,7 +236,7 @@ info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_co
   for an exhaustive list of inference failure conditions.
 {{site.alert.end}}
 
-[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
 : A value of `true` ensures that the type inference engine never chooses

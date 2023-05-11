@@ -158,7 +158,7 @@ condition is `true` and the path in which the condition is `false`.
 For additional details, see the
 [specification of definite assignment][definiteAssignmentSpec].
 
-[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
+[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
 ### Mixin application
 
@@ -323,7 +323,7 @@ define a const constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
 }
 {% endprettify %}
 
@@ -334,7 +334,7 @@ a `const` constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   C();
 }
 {% endprettify %}
@@ -346,7 +346,7 @@ multiple constructors:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   const C.zero();
   const C.one();
 }
@@ -359,7 +359,7 @@ a field:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   final int i;
 
   const C(this.i);
@@ -373,7 +373,7 @@ type parameter:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!]<T> extends AbiSpecificInteger { // type parameters
+final class [!C!]<T> extends AbiSpecificInteger { // type parameters
   const C();
 }
 {% endprettify %}
@@ -387,7 +387,7 @@ parameters and a single member that is a `const` constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -413,7 +413,7 @@ import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
 @[!AbiSpecificIntegerMapping!]({Abi.linuxX64 : Uint16()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -427,7 +427,7 @@ appropriate:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8(), Abi.linuxX64 : Uint16()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -451,7 +451,7 @@ The following code produces this diagnostic because there's no
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -464,7 +464,7 @@ Add an `AbiSpecificIntegerMapping` annotation to the class:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -497,7 +497,7 @@ entry is `Array<Uint8>`, which isn't a valid integer type:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : [!Array<Uint8>(4)!]})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -510,7 +510,7 @@ Use one of the valid types as a value in the map:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -566,7 +566,8 @@ abstract class C {
 
 ### abstract_sealed_class
 
-_A class can't be declared both 'sealed' and 'abstract'._
+_A 'sealed' class can't be marked 'abstract' because it's already implicitly
+abstract._
 
 #### Description
 
@@ -951,7 +952,7 @@ annotation `@Double()`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Double()!]
   external Pointer<Int8> p;
 }
@@ -964,7 +965,7 @@ Remove the annotations from the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Int8> p;
 }
 {% endprettify %}
@@ -2426,7 +2427,7 @@ implements `Finalizable`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!S!] extends Struct implements Finalizable {
+final class [!S!] extends Struct implements Finalizable {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -2438,7 +2439,7 @@ Try removing the implements clause from the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -3568,7 +3569,7 @@ instantiated using a generative constructor:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int a;
 }
@@ -3587,7 +3588,7 @@ If you need to allocate the structure described by the class, then use the
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int a;
 }
@@ -5294,7 +5295,7 @@ extends `Struct`, doesn't declare any fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!C!] extends Struct {}
+final class [!C!] extends Struct {}
 {% endprettify %}
 
 #### Common fixes
@@ -5304,7 +5305,7 @@ If the class is intended to be a struct, then declare one or more fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -5316,7 +5317,7 @@ make it a subclass of `Opaque`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Opaque {}
+final class C extends Opaque {}
 {% endprettify %}
 
 If the class isn't intended to be a struct, then remove or change the
@@ -6455,7 +6456,7 @@ annotations describing the native type of the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   [!@Int16()!]
   external int x;
@@ -6468,7 +6469,7 @@ Remove all but one of the annotations:
 
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -6571,7 +6572,7 @@ annotations that specify the size of the native array:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(4)
   [!@Array(8)!]
   external Array<Uint8> a0;
@@ -6585,7 +6586,7 @@ Remove all but one of the annotations:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -6787,7 +6788,7 @@ constructor with an initializer for the field `f`:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   int f;
 
@@ -6803,7 +6804,7 @@ Remove the field initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   int f;
 
@@ -7052,7 +7053,7 @@ initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   Pointer [!p!] = nullptr;
 }
 {% endprettify %}
@@ -7065,7 +7066,7 @@ Remove the initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   Pointer p;
 }
 {% endprettify %}
@@ -7089,7 +7090,7 @@ marked as being `external`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int16()
   int [!a!];
 }
@@ -7102,7 +7103,7 @@ Add the required `external` modifier:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int16()
   external int a;
 }
@@ -7515,7 +7516,7 @@ the type parameter `T`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!S!]<T> extends Struct {
+final class [!S!]<T> extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -7527,7 +7528,7 @@ Remove the type parameters from the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -9584,7 +9585,7 @@ subclass of `Struct`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!String!] s;
 
   @Int32()
@@ -9600,7 +9601,7 @@ Use one of the allowed types for the field:
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Utf8> s;
 
   @Int32()
@@ -11833,7 +11834,7 @@ The following code produces this diagnostic because the annotation
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Double()!]
   external int x;
 }
@@ -11846,7 +11847,7 @@ If the type of the field is correct, then change the annotation to match:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -11857,7 +11858,7 @@ If the annotation is correct, then change the type of the field to match:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Double()
   external double x;
 }
@@ -11886,7 +11887,7 @@ have an annotation indicating the underlying width of the integer value:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!int!] x;
 }
 {% endprettify %}
@@ -11898,7 +11899,7 @@ Add an appropriate annotation to the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int64()
   external int x;
 }
@@ -12101,7 +12102,7 @@ doesn't have a type annotation:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external var [!str!];
 
   @Int32()
@@ -12117,7 +12118,7 @@ Explicitly specify the type of the field:
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Utf8> str;
 
   @Int32()
@@ -12404,7 +12405,7 @@ have an `Array` annotation:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!Array<Uint8>!] a0;
 }
 {% endprettify %}
@@ -12416,7 +12417,7 @@ Ensure that there's exactly one `Array` annotation on the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -14625,7 +14626,7 @@ The following code produces this diagnostic because an array dimension of
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class MyStruct extends Struct {
+final class MyStruct extends Struct {
   @Array([!-8!])
   external Array<Uint8> a0;
 }
@@ -14638,7 +14639,7 @@ Change the dimension to be a positive integer:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class MyStruct extends Struct {
+final class MyStruct extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -14666,7 +14667,7 @@ The following code produces this diagnostic because the type argument to
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<[!Void!]> a0;
 }
@@ -14679,7 +14680,7 @@ Change the type argument to one of the valid types:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -15837,7 +15838,7 @@ import 'dart:ffi';
 
 @Packed(1)
 [!@Packed(1)!]
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15850,7 +15851,7 @@ Remove all but one of the annotations:
 import 'dart:ffi';
 
 @Packed(1)
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15875,7 +15876,7 @@ The following code produces this diagnostic because the argument to the
 import 'dart:ffi';
 
 @Packed([!3!])
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15888,7 +15889,7 @@ Change the alignment to be one of the allowed values:
 import 'dart:ffi';
 
 @Packed(4)
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -18623,7 +18624,7 @@ type with three nested arrays, but only two dimensions are given in the
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Array(8, 8)!]
   external Array<Array<Array<Uint8>>> a0;
 }
@@ -18637,7 +18638,7 @@ required number of dimensions:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8, 8, 4)
   external Array<Array<Array<Uint8>>> a0;
 }
@@ -18648,7 +18649,7 @@ If the type of the field is wrong, then fix the type of the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8, 8)
   external Array<Array<Uint8>> a0;
 }
@@ -18876,7 +18877,7 @@ The following code produces this diagnostic because the class `C` extends
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends [!Double!] {}
+final class C extends [!Double!] {}
 {% endprettify %}
 
 #### Common fixes
@@ -18887,7 +18888,7 @@ declaration of the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int i;
 }
@@ -18897,7 +18898,7 @@ If the class shouldn't extend either `Struct` or `Union`, then remove any
 references to FFI classes:
 
 {% prettify dart tag=pre+code %}
-class C {}
+final class C {}
 {% endprettify %}
 
 ### subtype_of_sealed_class
@@ -18978,11 +18979,11 @@ The following code produces this diagnostic because the class `C` extends
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer f;
 }
 
-class C extends [!S!] {
+final class C extends [!S!] {
   external Pointer g;
 }
 {% endprettify %}
@@ -18996,11 +18997,11 @@ directly and copy the shared fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer f;
 }
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer f;
 
   external Pointer g;

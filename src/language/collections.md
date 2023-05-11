@@ -29,7 +29,7 @@ var list = [1, 2, 3];
   information, read about [type inference][].
 {{site.alert.end}}
 
-<a name="trailing-comma"></a>
+<a id="trailing-comma"></a>
 You can add a comma after the last item in a Dart collection literal.
 This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.
@@ -281,7 +281,7 @@ For more details and examples of using the spread operator, see the
 <a id="collection-operators"></a>
 ### Control-flow operators
 
-Dart also offers **collection if** and **collection for** for use in list, map,
+Dart offers **collection if** and **collection for** for use in list, map,
 and set literals. You can use these operators to build collections using
 conditionals (`if`) and repetition (`for`).
 
@@ -291,6 +291,12 @@ to create a list with three or four items in it:
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
 var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+```
+
+Dart also supports [if-case][] inside collection literals:
+
+```dart
+var nav = ['Home', 'Furniture', 'Plants', if (login case 'Manager') 'Inventory'];
 ```
 
 Here's an example of using **collection for**
@@ -312,7 +318,8 @@ For more details and examples of using collection `if` and `for`, see the
 [`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [Using constructors]: /language/classes#using-constructors
-[collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
-[spread proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/spread-collections/feature-specification.md
+[collections proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
+[spread proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/spread-collections/feature-specification.md
 [generics]: /language/generics
 [`Set`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[if-case]: /language/branches#if-case
