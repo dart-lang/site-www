@@ -203,7 +203,7 @@ because, even without a default case, their possible values are known and fully
 enumerable. Use the [`sealed` modifier][sealed] on a class to enable
 exhaustiveness checking when switching over subtypes of that class:
 
-<?code-excerpt "language/lib/control_flow/exhaustiveness.dart (exh-check)"?>
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
 ```dart
 sealed class Shape {}
 
