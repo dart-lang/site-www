@@ -14,8 +14,9 @@ use cases, visit the main [Patterns][] page.
 A cast pattern lets you insert a [type cast][] in the middle of destructuring,
 before passing the value to another subpattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (cast)"?>
 ```dart
-(num, Object) record = (1, "s");
+(num, Object) record = (1, 's');
 var (i as int, s as String) = record;
 ```
 
@@ -29,10 +30,11 @@ expected type of some destructured value.
 
 Constant patterns match when the value is equal to the constant: 
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (constant)"?>
 ```dart
 switch (number) {
   // Matches if 1 == number.
-  case 1: // ... 
+  case 1: // ...
 }
 ```
 
@@ -48,6 +50,7 @@ You can use simple literals and references to named constants directly as consta
 More complex constant expressions must be parenthesized and prefixed with
 `const` (`const (1 + 2)`):
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (complex-constant)"?>
 ```dart
 // List or map pattern:
 case [a, b]: // ...
@@ -68,6 +71,7 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 - [Assignment][] context: assigns to existing variable with identifier name:
   `(a, b) = (3, 4);`
 - [Matching][] context: treated as a named constant pattern (unless its name is `_`):
+  <?code-excerpt "language/lib/patterns/pattern_types.dart (match-constant)"?>
   ```dart
   const c = 1;
   switch (2) {
@@ -85,6 +89,7 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 A list pattern matches values that implement [`List`][], and then recursively
 matches its subpatterns against the list's elements to destructure them by position:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (list)"?>
 ```dart
 switch (obj) {
   // Matches if obj is a list with two elements.
@@ -101,6 +106,7 @@ account for any number of elements in a list.
 List patterns can contain _one_ rest element (`...`) which allows matching lists
 of arbitrary lengths.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (rest)"?>
 ```dart
 var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
 // Prints "1 2 6 7".
@@ -110,6 +116,7 @@ print('$a $b $c $d');
 A rest element can also have a subpattern that collects elements that don't match
 the other subpatterns in the list, into a new list:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (rest-sub)"?>
 ```dart
 var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
 // Prints "1 2 [3, 4, 5] 6 7".
@@ -127,6 +134,7 @@ Subpatterns in a logical-and pattern can bind variables, but the variables in
 each subpattern must not overlap, because they will both be bound if the pattern
 matches:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch ((1, 2)) {
   // Error, both subpatterns attempt to bind 'b'.
@@ -142,6 +150,7 @@ A logical-or pattern separates subpatterns by `||` and matches if any of the
 branches match. Branches are evaluated left-to-right. Once a branch matches, the
 rest are not evaluated.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
@@ -153,12 +162,10 @@ Subpatterns in a logical-or pattern can bind variables, but the branches must
 define the same set of variables, because only one branch will be evaluated when
 the pattern matches.
 
-{% comment %}
-[TODO: move the below content to the switch page, doesn't belong here]
+Logical-or patterns are useful for having multiple cases share a body in [switch
+expressions or statements][].
 
-Logical-or patterns are useful for having multiple cases share a body in switch
-expressions or statements.
-
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
@@ -166,18 +173,18 @@ var isPrimary = switch (color) {
 };
 ```
 
-Switch statements can have multiple cases share a body without using logical-or
+Switch statements (not expressions)
+can have multiple cases share a body without using logical-or
 patterns, but they are still uniquely useful for allowing multiple cases to share
 a guard: 
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch (shape) {
   case Square(size: var s) || Circle(size: var s) when s > 0:
     print('Non-empty symmetric shape');
 }
 ```
-
-{% endcomment %}
 
 ## Map
 
@@ -200,6 +207,7 @@ is null.
 To ensure `null` values are not silently treated as match failures,
 use a null-assert pattern while matching:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 List<String?> row = // ...
 
@@ -212,6 +220,7 @@ switch (row) {
 To eliminate `null` values from variable declaration patterns,
 use the null-assert pattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 (int?, int?) position = // ...
 
@@ -231,6 +240,7 @@ non-nullable base type of the nullable value being matched.
 To treat `null` values as match failures
 without throwing, use the null-check pattern.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 String? maybeString = // ... maybeString is nullable with the base type String.
 switch (maybeString) {
@@ -249,6 +259,7 @@ Object patterns check the matched value against a given named type to destructur
 data using getters on the object's properties. They are [refuted][]
 if the value doesn't have the same type.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch (shape) {
   // Matches if shape is of type Rect, and then against the properties of Rect.
@@ -259,6 +270,7 @@ switch (shape) {
 The getter name can be omitted and inferred from the [variable pattern](#variable)
 or [identifier pattern](#identifier) in the field subpattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 // Binds new variables x and y to the values of Point's x and y properties.
 var Point(:x, :y) = Point(1, 2);
@@ -289,6 +301,7 @@ fields in the record.
 Record patterns require that the pattern match the entire record. To destructure 
 a record with _named_ fields using a pattern, include the field names in the pattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 var (myString: foo, myNumber: bar) = (myString: 'string', myNumber: 1);
 ```
@@ -297,6 +310,7 @@ The getter name can be omitted and inferred from the [variable pattern](#variabl
 or [identifier pattern](#identifier) in the field subpattern. These pairs of
 patterns are each equivalent:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 // Record pattern with variable subpatterns:
 var (untyped: untyped, typed: int typed) = // ...
@@ -333,6 +347,7 @@ with the constant as an argument returns `true`.
 Relational patterns are useful for matching on numeric ranges, especially when
 combined with the [logical-and pattern](#logical-and):
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 String asciiCharType(int char) {
   const space = 32;
@@ -360,6 +375,7 @@ capture a destructured value.
 The variables are in scope in a region of code that is only reachable when the
 pattern has matched.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch ((1, 2)) {
   // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
@@ -371,6 +387,7 @@ switch ((1, 2)) {
 A _typed_ variable pattern only matches if the matched value has the declared type,
 and fails otherwise:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch ((1, 2)) {
   // Does not match.
@@ -390,6 +407,7 @@ A pattern named `_` is a wildcard, either a [variable pattern](#variable) or
 It's useful as a placeholder in places where you need a subpattern in order to
 destructure later positional values:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 var list = [1, 2, 3];
 var [_, two, _] = list;
@@ -398,6 +416,7 @@ var [_, two, _] = list;
 A wildcard name with a type annotation is useful when you want to test a value's
 type but not bind the value to a name:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart ()"?>
 ```dart
 switch (record) {
   case (int _, String _):
@@ -417,3 +436,4 @@ switch (record) {
 [refuted]: /resources/glossary#refutable-pattern
 [record]: /language/records
 [shape]: /language/records#record-types
+[switch]: /language/branches#switch
