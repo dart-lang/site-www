@@ -185,7 +185,7 @@ final json = <String, dynamic>{
 };
 
 // Destructures using a record pattern:
-(name, age) = userInfo(json);
+var (name, age) = userInfo(json);
 
 /* Equivalent to:
   var info = userInfo(json);
