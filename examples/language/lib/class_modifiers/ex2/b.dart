@@ -2,7 +2,8 @@
 // Library b.dart
 import 'a.dart';
 
-Vehicle myCar = Vehicle(); // Can be constructed
+// Can be constructed
+Vehicle myVehicle = Vehicle();
 
 // Can be extended
 base class Car extends Vehicle {
@@ -10,8 +11,8 @@ base class Car extends Vehicle {
   // ...
 }
 
+// ERROR: Cannot be implemented
 base class MockVehicle implements Vehicle {
-  // ERROR: Cannot be implemented
   @override
   void moveForward() {
     // ...

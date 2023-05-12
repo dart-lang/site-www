@@ -3,7 +3,7 @@
 import 'a.dart';
 
 // Can be constructed
-Vehicle myCar = Vehicle();
+Vehicle myVehicle = Vehicle();
 
 // ERROR: Cannot be inherited
 class Car extends Vehicle {
@@ -11,8 +11,8 @@ class Car extends Vehicle {
   // ...
 }
 
+// Can be implemented
 class MockVehicle implements Vehicle {
-  // Can be implemented
   @override
   void moveForward(int meters) {
     // ...

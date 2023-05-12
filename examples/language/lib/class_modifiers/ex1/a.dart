@@ -1,6 +1,5 @@
+// ignore_for_file: one_member_abstracts
 // Library a.dart
-base class Vehicle {
-  void moveForward(int meters) {
-    //...
-  }
+abstract class Vehicle {
+  void moveForward(int meters);
 }
