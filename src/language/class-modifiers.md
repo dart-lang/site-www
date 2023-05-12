@@ -63,13 +63,11 @@ abstract class Vehicle {
 import 'a.dart';
 
 // Error: Cannot be constructed
-// ignore: instantiate_abstract_class
 Vehicle myVehicle = Vehicle();
 
 // Can be extended
 class Car extends Vehicle {
   int passengers = 4;
-
   // ···
 }
 
