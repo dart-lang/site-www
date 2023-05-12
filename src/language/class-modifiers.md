@@ -258,7 +258,6 @@ exhaustively handle all possible subtypes in its cases:
 
 <?code-excerpt "language/lib/class_modifiers/ex5/sealed.dart"?>
 ```dart
-
 sealed class Vehicle {}
 
 class Car extends Vehicle {}

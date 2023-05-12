@@ -1,5 +1,4 @@
 // ignore_for_file: instantiate_abstract_class,non_exhaustive_switch_expression
-
 sealed class Vehicle {}
 
 class Car extends Vehicle {}
