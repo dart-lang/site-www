@@ -38,7 +38,7 @@ The potentially breaking changes listed below fall into one of two categories:
 
   ```yaml
   environment:
-    sdk: '>=3.0.0 <4.0.0'
+    sdk: ^3.0.0
   ```
 
 To use the new Dart 3 features you have to
