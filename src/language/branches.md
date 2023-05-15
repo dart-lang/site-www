@@ -129,20 +129,14 @@ check out the patterns documentation on [Switch statements and expressions][].
 
 ### Switch expressions
 
-A `switch` expression is similar to a `switch` statement, but you can use them
-anywhere you can use an expression. They produce a value based on the expression
-body of whichever case matches.
+A `switch` _expression_ produces a value based on the expression
+body of whichever case matches. 
+You can use a switch expression wherever Dart allows expressions,
+_except_ at the start of an expression statement.
+If your switch doesn't need to return a value into some expression statement,
+use a [switch _statement_](#switch-statements) instead of an expression.
 
-The syntax of a `switch` expression differs from `switch` statement syntax:
-
-- Cases _do not_ start with the `case` keyword.
-- A case body is a single expression instead of a series of statements.
-- Each case must have a body; there is no implicit fallthrough for empty cases.
-- Case patterns are separated from their bodies using `=>` instead of `:`.
-- Cases are separated by `,` (and an optional trailing `,` is allowed).
-- Default cases can _only_ use `_`, instead of allowing both `default` and `_`.
-
-Switch expressions allow you to rewrite a _statement_ like this:
+Switch expressions allow you to rewrite a switch _statement_ like this:
 
 ```dart
 // Where slash, star, comma, semicolon, etc., are constant variables...
@@ -169,6 +163,15 @@ token = switch (charCode) {
   _ => throw invalid()
 };
 ```
+
+The syntax of a `switch` expression differs from `switch` statement syntax:
+
+- Cases _do not_ start with the `case` keyword.
+- A case body is a single expression instead of a series of statements.
+- Each case must have a body; there is no implicit fallthrough for empty cases.
+- Case patterns are separated from their bodies using `=>` instead of `:`.
+- Cases are separated by `,` (and an optional trailing `,` is allowed).
+- Default cases can _only_ use `_`, instead of allowing both `default` and `_`.
 
 {{site.alert.version-note}}
     Switch expressions require a [language version][] of at least 3.0.
