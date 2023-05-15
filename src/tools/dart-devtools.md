@@ -106,25 +106,6 @@ The Flutter inspector works only for Flutter apps;
 other web apps should use browser tools such as the Chrome DevTools.
 
 
-## Using DevTools with a Flutter app
-
-For details on using DevTools with a Flutter app for any platform
-(including web) see the
-[DevTools documentation on flutter.dev.][Flutter devtools]
-
-
-## Using DevTools with a non-Flutter web app
-
-To launch a web app so that you can use Dart DevTools,
-use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
-
-```terminal
-$ webdev serve --debug
-```
-
-For more information, see [Debugging Dart web apps][].
-
-
 ## Using DevTools with a command-line app
 
 You can use DevTools to perform source-level debugging 
@@ -167,6 +148,24 @@ the Dart DevTools UI appears,
 displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
+
+## Using DevTools with a Flutter app
+
+For details on using DevTools with a Flutter app for any platform
+(including web) see the
+[DevTools documentation on flutter.dev.][Flutter devtools]
+
+
+## Using DevTools with a non-Flutter web app
+
+To launch a web app so that you can use Dart DevTools,
+use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
+
+```terminal
+$ webdev serve --debug
+```
+
+For more information, see [Debugging Dart web apps][].
 
 [App size tool]: {{site.flutter-docs}}/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
