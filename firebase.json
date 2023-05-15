@@ -262,7 +262,8 @@
       { "source": "/tutorials/web/fetch-data", "destination": "/tutorials/server/fetch-data", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/web/dart-2?(.html)", "destination": "/dart-2#web-migration", "type": 301 },
-      { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 }
+      { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
+      { "source": "/language/callable-classes", "destination": "/language/callable-objects", "type": 301 }
     ]
   },
   "emulators": {

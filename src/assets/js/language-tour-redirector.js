@@ -125,7 +125,7 @@ const oldToNew = {
     'handling-streams': '/language/async#handling-streams',
     'generator': '/language/functions#generators',
     'generators': '/language/functions#generators',
-    'callable-classes': '/language/callable-classes',
+    'callable-classes': '/language/callable-objects',
     'isolates': '/language/concurrency',
     'typedefs': '/language/typedefs',
     'metadata': '/language/metadata',
