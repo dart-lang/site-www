@@ -475,7 +475,7 @@ This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 
-This content has moved to [Callable classes](/language/callable-classes).
+This content has moved to [Callable objects](/language/callable-objects).
 
 ## Isolates
 
