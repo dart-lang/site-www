@@ -596,6 +596,12 @@ analyzer:
   have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
 * The output of `dart format` changed a bit for
   [some code](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#formatter).
+* On Windows the default location for the `PUB_CACHE` changed to
+  `%LOCALAPPDATA%\Pub\Cache`. Users who created their pub-cache with a Dart SDK
+  prior to 2.8 may have a pub-cache in `%APPDATA%\Pub\Cache`. Since Dart 2.8 the
+  pub-cache have preferred `%LOCALAPPDATA%\Pub\Cache` if present.
+  If you have `%APPDATA%\Pub\Cache\bin` in `PATH` you may need to update your
+  `PATH` variable.
 
 #### Scope
 
