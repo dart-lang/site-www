@@ -247,10 +247,9 @@ implemented outside its own library.
 
 Sealed classes are implicitly [abstract](#abstract).
 They cannot be constructed themselves,
-but they can define constructors for their subclasses to use.
-Subclasses of sealed classes can be constructed, 
-and sealed classes can have
+but they can define constructors for their subclasses to use and have 
 [factory constructors](/language/constructors#factory-constructors).
+Subclasses of sealed classes are, however, not implicitly abstract.
 
 The compiler is aware of any possible direct subtypes
 because they can only exist in the same library. 
