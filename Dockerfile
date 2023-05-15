@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="0fdff25e6acba3d6094155a7e341634f8de3477e86c2fda4ad47232c1adf704f"; \
+        DART_SHA256="a256514a66cbbb8e151b968a7098a72c81fa9e4f1b2680f0f7d046cc64762665"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="6913b7c0b3b78bc141d372cd473da21771e57372b1ab45c977ce1550c8ff0b9c"; \
+        DART_SHA256="4dd7b18b6494fdac16ca6104533bb271af15c035e8558a0e4a77029fadb4255c"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="1edcf9e1c5be94633fa025614866d49c437322ab3cc759822645287ddb9bfd62"; \
@@ -55,12 +55,11 @@ RUN set -eu; \
     BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
-#    TODO(parlough): Re-enable when moving back to stable
-#    echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-#        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
-#        rm "$SDK" && \
-#        exit 1 \
-#    ); \
+    echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
+        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
+        rm "$SDK" && \
+        exit 1 \
+    ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
 ENV PUB_CACHE="${HOME}/.pub-cache"
 RUN dart --disable-analytics
