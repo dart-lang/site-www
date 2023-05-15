@@ -99,8 +99,8 @@
           permalink: /language/enum
         - title: Extension methods
           permalink: /language/extension-methods
-        - title: Callable classes
-          permalink: /language/callable-classes
+        - title: Callable objects
+          permalink: /language/callable-objects
     - title: Concurrency
       children: 
         - title: Asynchronous support
