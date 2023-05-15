@@ -114,8 +114,6 @@ void main() {
   });
 
   test('record-multiple-returns', () {
-    late String name;
-    late int age;
     // #docregion record-multiple-returns
     // Returns multiple values in a record:
     (String, int) userInfo(Map<String, dynamic> json) {
@@ -129,14 +127,13 @@ void main() {
     };
 
     // Destructures using a record pattern:
-    (name, age) = userInfo(json);
+    var (name, age) = userInfo(json);
 
     /* Equivalent to:
       var info = userInfo(json);
       var name = info.$1;
       var age  = info.$2;
     */
-
     // #enddocregion record-multiple-returns
     name;
     age;
