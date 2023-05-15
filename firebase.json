@@ -182,6 +182,7 @@
       { "source": "/jobs", "destination": "https://docs.flutter.dev/jobs", "type": 301 },
       { "source": "/language-tour", "destination": "/language", "type": 301 },
       { "source": "/language/basics", "destination": "/language", "type": 301 },
+      { "source": "/language/callable-classes", "destination": "/language/callable-objects", "type": 301 },
       { "source": "/language/collection-types", "destination": "/language/collections", "type": 301 },
       { "source": "/language/control-flow", "destination": "/language/loops", "type": 301 },
       { "source": "/language/generators", "destination": "/language/functions#generators", "type": 301 },
@@ -262,8 +263,7 @@
       { "source": "/tutorials/web/fetch-data", "destination": "/tutorials/server/fetch-data", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/web/dart-2?(.html)", "destination": "/dart-2#web-migration", "type": 301 },
-      { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
-      { "source": "/language/callable-classes", "destination": "/language/callable-objects", "type": 301 }
+      { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 }
     ]
   },
   "emulators": {
