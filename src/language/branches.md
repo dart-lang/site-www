@@ -133,8 +133,8 @@ A `switch` _expression_ produces a value based on the expression
 body of whichever case matches. 
 You can use a switch expression wherever Dart allows expressions,
 _except_ at the start of an expression statement.
-If your switch doesn't need to return a value into some expression statement,
-use a [switch _statement_](#switch-statements) instead of an expression.
+Not all switch statments need to return a value into some expression statement.
+If yours doesn't, use a [switch _statement_](#switch-statements) rather than an expression.
 
 Switch expressions allow you to rewrite a switch _statement_ like this:
 
