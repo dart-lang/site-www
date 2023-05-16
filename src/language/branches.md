@@ -136,7 +136,7 @@ You can use a switch expression wherever Dart allows expressions*, for example:
 ```dart
 var x = switch (y) { ... };
 
-print(switch (x) { ... };
+print(switch (x) { ... });
 
 return switch (x) { ... };
 ```
