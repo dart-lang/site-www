@@ -131,7 +131,8 @@ check out the patterns documentation on [Switch statements and expressions][].
 
 A `switch` _expression_ produces a value based on the expression
 body of whichever case matches. 
-You can use a switch expression wherever Dart allows expressions*, for example:
+You can use a switch expression wherever Dart allows expressions,
+_except_ at the start of an expression statement. For example:
 
 ```dart
 var x = switch (y) { ... };
@@ -141,8 +142,8 @@ print(switch (x) { ... });
 return switch (x) { ... };
 ```
 
-*You _can't_ use a switch expression at the start of an expression statement.
-Instead, use a [switch statement](#switch-statements).
+If you want to use a switch at the start of an expression statement,
+use a [switch statement](#switch-statements).
 
 Switch expressions allow you to rewrite a switch _statement_ like this:
 
