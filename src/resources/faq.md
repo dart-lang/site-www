@@ -32,8 +32,8 @@ welcomed distributed committers.
 ### Q. Isn't Dart a lot like Java?
 
 Dart has some similarities with Java.
-Check out the code samples in [Introduction to Dart](/language)
-for a brief introduction with often familiar syntax.
+Check out the code samples in the [Introduction to Dart](/language)
+for brief examples with familiar syntax.
 
 ### Q. How does Dart relate to Go?
 
