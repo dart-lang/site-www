@@ -53,7 +53,9 @@ setup:
 	make clean
 	-docker compose down
 	-docker rmi ${BUILD_TAG}:${DART_CHANNEL}
-	docker compose build --no-cache site
+	docker compose build --no-cache site \
+	 --build-arg DART_VERSION=${DART_VERSION} \
+	 --build-arg DART_CHANNEL=${DART_CHANNEL}
 
 # Serve the Jekyll site with livereload and incremental builds
 serve:

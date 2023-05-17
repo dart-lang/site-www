@@ -381,6 +381,8 @@ Whether the computation the worker isolate executes
 is synchronous or asynchronous doesn't impact the
 main isolate, because it's running concurrently either way.
 
+For the complete program, check out the [send_and_receive.dart][] sample.
+
 {% comment %}
 TODO:
 Should create a diagram for the current example.
@@ -419,11 +421,10 @@ However, now the isolate sends a [closure][].
 Closures are less limited than typical named functions,
 both in how they function and how they're written into the code.
 In this example, `Isolate.run()` executes what looks like local code, concurrently.
-In that sense, you can imagine `run()` to work like a [control flow operator][]
+In that sense, you can imagine `run()` to work like a control flow operator
 for “run in parallel”.
 
 [closure]: /language/functions#anonymous-functions
-[control flow operator]: /language/control-flow
 
 ### Sending multiple messages between isolates
 
@@ -451,17 +452,9 @@ which then sends one or more reply messages.
 
 ![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/language/concurrency/images/isolate-custom-bg-worker.png)
 
-For examples of sending multiple messages,
-see the following [isolate samples][]:
-
-* [send_and_receive.dart][],
-  which shows how to send a message from
-  the main isolate to the spawned isolate.
-  It’s otherwise similar to the preceding examples,
-  but doesn't use `run()`.
-* [long_running_isolate.dart][],
-  which shows how to spawn a long-running isolate that
-  receives and sends multiple times.
+Check out the [long_running_isolate.dart][] sample,
+which shows how to spawn a long-running isolate
+that receives and sends messages multiple times between isolates.
 
 {% assign samples = "https://github.com/dart-lang/samples/tree/main/isolates" %}
 

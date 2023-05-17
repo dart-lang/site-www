@@ -10,6 +10,9 @@ branch: main
 port: 4000
 source: src
 strict_front_matter: true
+liquid:
+  error_mode: strict
+  strict_filters: true
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 sass:
   sass_dir: _sass

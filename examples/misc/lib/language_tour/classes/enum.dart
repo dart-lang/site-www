@@ -40,6 +40,10 @@ void main() {
   // #docregion name
   print(Color.blue.name); // 'blue'
   // #enddocregion name
+
+  // #docregion method-call
+  print(Vehicle.car.carbonFootprint);
+  // #enddocregion method-call
 }
 
 // #docregion enhanced
@@ -59,6 +63,8 @@ enum Vehicle implements Comparable<Vehicle> {
   final int carbonPerKilometer;
 
   int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  bool get isTwoWheeled => this == Vehicle.bicycle;
 
   @override
   int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;

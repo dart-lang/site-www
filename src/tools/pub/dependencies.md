@@ -273,17 +273,6 @@ dependencies:
   string_scanner: ^0.1.2
 ```
 
-Because caret syntax was introduced in Dart 1.8.3,
-it requires an [SDK constraint][]
-(using [traditional syntax](#traditional-syntax))
-to ensure that older versions of pub don't try to process it.
-For example:
-
-```yaml
-environment:
-  sdk: '>=1.8.3 <3.0.0'
-```
-
 ### Traditional syntax
 
 A version constraint that uses _traditional syntax_

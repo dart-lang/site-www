@@ -495,8 +495,8 @@ filterValues((x) => (x [!as String!]).contains('Hello'));
 
 ### Incorrect type inference
 
-On rare occasions, Dart's enhanced type inference might infer
-the wrong type for function literal arguments in a generic constructor invocation.
+On rare occasions, Dart's type inference might infer the 
+wrong type for function literal arguments in a generic constructor invocation.
 This primarily affects `Iterable.fold`.
 
 #### Example
@@ -507,7 +507,7 @@ type inference will infer that `a` has a type of `Null`:
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
 {% prettify dart tag=pre+code %}
-List<int> ints = [1, 2, 3];
+var ints = [1, 2, 3];
 var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
 
@@ -516,7 +516,7 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
 {% prettify dart tag=pre+code %}
-List<int> ints = [1, 2, 3];
+var ints = [1, 2, 3];
 var maximumOrNull =
     ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}

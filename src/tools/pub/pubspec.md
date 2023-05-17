@@ -90,6 +90,10 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
+`topics`
+: Optional. List of topics for the package.
+  [_Learn more._](#topics)
+
 Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
@@ -410,6 +414,34 @@ Each download of the package includes all screenshot files.
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
  
+### Topics
+
+Package authors can use the `topics` field to categorize their package. Topics
+can be used to assist discoverability during search with filters on pub.dev.
+Pub.dev displays the topics on the package page as well as in the search
+results.
+
+The field consists of a list of names. For example:
+
+```yaml
+topics:
+  - network
+  - http
+```
+
+Pub.dev requires topics to follow these specifications:
+
+- Tag each package with at most 5 topics.
+- Write the topic name following these requirements:
+  - Use between 2 and 32 characters.
+  - Use only lowercase alphanumeric characters or hyphens (`a-z`, `0-9`, `-`).
+  - Don't use two consecutive hyphens (`--`).
+  - Start the name with lowercase alphabet characters (`a-z`).
+  - End with alphanumeric characters (`a-z` or `0-9`).
+
+When choosing topics, consider if [existing topics]({{site.pub}}/topics)
+are relevant. Tagging with existing topics helps users discover your package.
+
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
@@ -433,36 +465,36 @@ dependencies.
 [Language versioning]: /guides/language/evolution#language-versioning
 
 For example, the following constraint says that this package
-works with any Dart SDK that's version 2.12.0 or higher:
+works with any Dart SDK that's version 3.0.0 or higher:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.0.0
 ```
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
-As of Dart 2.12, omitting the SDK constraint is an error.
+Omitting the SDK constraint is an error.
 When the pubspec has no SDK constraint,
-`pub get` fails with a message like the following:
+`dart pub get` fails with a message like the following:
 
 ```
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '^3.0.0'
   
 See https://dart.dev/go/sdk-constraint
 ```
 
-{{site.alert.warning}}
-  Caret syntax (`^`) is a compact way to represent version ranges, 
-  but **don't use it for the SDK constraint.** 
-  Instead, **include an upper bound for the SDK** (`<3.0.0`, usually). 
-  For more information, 
-  see the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+{{site.alert.version-note}}
+  Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
+  In earlier versions, provide a complete range,
+  such as `'>=2.12.0 <3.0.0'`.
+  For more information, check out
+  the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
 {{site.alert.end}}
 
 
