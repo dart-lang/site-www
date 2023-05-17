@@ -171,11 +171,15 @@ switch (obj) {
     print('a = $a, b = $b');
 
   default:
+}
 ```
+
+<a id="or-pattern-swtich"></a>
 
 [Logical-or patterns][logical-or] are useful for having multiple cases share a
 body in switch expressions or statements:
 
+<?code-excerpt "language/lib/patterns/switch.dart (or-share-body)"?>
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
@@ -187,6 +191,7 @@ Switch statements can have multiple cases share a body without using logical-or
 patterns, but they are still uniquely useful for allowing multiple cases to share
 a guard: 
 
+<?code-excerpt "language/lib/patterns/switch.dart (or-share-guard)"?>
 ```dart
 switch (shape) {
   case Square(size: var s) || Circle(size: var s) when s > 0:
