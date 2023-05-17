@@ -1,3 +1,4 @@
+// ignore_for_file: unrelated_type_equality_checks
 import 'package:test/test.dart';
 // import 'package:examples_util/print_matcher.dart' as m;
 
@@ -95,8 +96,7 @@ void main() {
     (int x, int y, int z) point = (1, 2, 3);
     (int r, int g, int b) color = (1, 2, 3);
 
-    // OK:
-    point = color;
+    print(point == color); // Prints 'true'.
     // #enddocregion record-shape
     expect(point, (1, 2, 3));
   });
@@ -106,8 +106,7 @@ void main() {
     ({int x, int y, int z}) point = (x: 1, y: 2, z: 3);
     ({int r, int g, int b}) color = (r: 1, g: 2, b: 3);
 
-    // Compile error! These record don't have the same shape.
-    // point = color;
+    print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
     // #enddocregion record-shape-mismatch
     point;
     color;
