@@ -193,7 +193,7 @@ environment:
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-archive/dart2_fix
 [apiref]: {{site.dart-api}}/dev
-[assert statements]: /language/control-flow#assert
+[assert statements]: /language/error-handling#assert
 [build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
@@ -210,4 +210,4 @@ environment:
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://filiph.medium.com/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /language/classes#using-constructors
-[sync async start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
+[sync async start]: https://github.com/dart-lang/language/blob/main/archive/newsletter/20170915.md#synchronous-async-start

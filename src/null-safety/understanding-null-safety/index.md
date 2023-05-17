@@ -525,7 +525,7 @@ reached when `object` is a list.
 For null safety, we've taken this limited analysis and made it [much more
 powerful in several ways.][flow analysis]
 
-[flow analysis]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
+[flow analysis]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
 ### Reachability analysis
 

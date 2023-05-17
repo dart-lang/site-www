@@ -9,11 +9,11 @@ _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 $ dart pub add [dev:]<package>[:<constraint>] [[dev:]<package>[:<constraint>]... ] [options]
 ```
 
-This command adds the specified packages to the `pubspec.yaml` as dependencies, 
-and then retrieves the dependencies to resolve `pubspec.yaml`.  
+This command adds the specified packages to the `pubspec.yaml` as dependencies,
+and then retrieves the dependencies to resolve `pubspec.yaml`.
 
 The following example command is equivalent to
-editing `pubspec.yaml` to add the `http` package, 
+editing `pubspec.yaml` to add the `http` package,
 and then calling `dart pub get`:
 
 ```terminal
@@ -39,7 +39,29 @@ $ dart pub add foo:'>2.0.0 <3.0.1'
 If `dart pub add <package>:<constraint>` is an existing dependency,
 it will update the constraint.
 
-## `dev` dependency
+## Dependency override
+
+To specify a [dependency override][], add the `override:` prefix and
+include a [source descriptor](#source-descriptor).
+
+[dependency override]: /tools/pub/dependencies#dependency-overrides
+
+**For example:** To override all references to `package:foo`
+to use version `1.0.0` of the package,
+run the following command:
+
+```terminal
+$ dart pub add override:foo:1.0.0
+```
+
+This adds the override to your `pubspec.yaml` file:
+
+```yaml
+dependency_overrides:
+  foo: 1.0.0
+```
+
+## Dev dependency
 
 The `dev:` prefix adds the package as a [dev dependency][],
 instead of as a regular dependency.
@@ -68,7 +90,7 @@ $ dart pub add --dev foo
 {{site.alert.end}}
 
 The YAML descriptor syntax allows you to add multiple packages from different
-sources, and apply different options and contraints to each. 
+sources, and apply different options and constraints to each.
 
 ```nocode
 $ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor] ...]
@@ -83,19 +105,19 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 The `descriptor` syntax cannot be used in conjunction with any of the optional
 arguments it replaces. Their new, corresponding YAML sources are listed below.
 
-### `git` 
+### `git`
 
 Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
 ```terminal
-# dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
+$ dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
 You can specify the repository, and the branch or commit, or exact location,
 within that repository:
 
 ```terminal
-# dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
+$ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
 #### `url`
@@ -139,7 +161,7 @@ _Previously the `--hosted-url=<package_server_url>` option_.
 
 Adds a [path dependency]() on a locally stored package.
 
-```terminal 
+```terminal
 $ dart pub add 'foo:{"path":"../foo"}'
 ```
 
@@ -171,8 +193,8 @@ For options that apply to all pub commands, see
   (without YAML descriptors) applies the
   specified options to all the packages
   included in an invocation of the command.
-  For example, `dart pub add test http --dev` 
-  will add both the `test` and `http` packages 
+  For example, `dart pub add test http --dev`
+  will add both the `test` and `http` packages
   as dev dependencies.
 {{site.alert.end}}
 
