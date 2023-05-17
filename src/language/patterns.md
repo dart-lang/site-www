@@ -152,6 +152,9 @@ They allow control flow to either:
 - Match and destructure the object being switched on.
 - Continue execution if the object doesn't match.
 
+The values that a pattern destructures in a case become local variables.
+Their scope is only within the body of that case.
+
 <?code-excerpt "language/lib/patterns/switch.dart (switch-statement)"?>
 ```dart
 switch (obj) {
@@ -168,10 +171,33 @@ switch (obj) {
     print('a = $a, b = $b');
 
   default:
+}
 ```
 
-The values that a pattern destructures in a case become local variables.
-Their scope is only within the body of that case.
+<a id="or-pattern-switch"></a>
+
+[Logical-or patterns][logical-or] are useful for having multiple cases share a
+body in switch expressions or statements:
+
+<?code-excerpt "language/lib/patterns/switch.dart (or-share-body)"?>
+```dart
+var isPrimary = switch (color) {
+  Color.red || Color.yellow || Color.blue => true,
+  _ => false
+};
+```
+
+Switch statements can have multiple cases share a body
+without using logical-or patterns, but they are
+still uniquely useful for allowing multiple cases to share a guard:
+
+<?code-excerpt "language/lib/patterns/switch.dart (or-share-guard)"?>
+```dart
+switch (shape) {
+  case Square(size: var s) || Circle(size: var s) when s > 0:
+    print('Non-empty symmetric shape');
+}
+```
 
 ### For and for-in loops
 
@@ -327,7 +353,7 @@ if (json is Map<String, dynamic> &&
       user.length == 2 &&
       user[0] is String &&
       user[1] is int) {
-    var name = user[2] as String;
+    var name = user[0] as String;
     var age = user[1] as int;
     print('User $name is $age years old.');
   }
@@ -376,7 +402,7 @@ This case pattern simultaneously validates that:
 [list]: /language/pattern-types#list
 [map]: /language/pattern-types#map
 [variable]: /language/pattern-types#variable
-[logical]: /language/pattern-types#logical-and
+[logical-or]: /language/pattern-types#logical-or
 [relational]: /language/pattern-types#relational
 [check]: /language/pattern-types#null-check
 [assert]: /language/pattern-types#null-assert
