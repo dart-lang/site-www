@@ -4,6 +4,8 @@ set -eu -o pipefail
 source $TOOL_DIR/utils.sh
 trap clean_up SIGINT SIGTERM ERR EXIT
 
+dart pub get
+
 echo "Checking for valid link references..."
 # Check for invalid link references before checking for links
 dart run tool/check_link_references.dart
