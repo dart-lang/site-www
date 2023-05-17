@@ -174,7 +174,7 @@ switch (obj) {
 }
 ```
 
-<a id="or-pattern-swtich"></a>
+<a id="or-pattern-switch"></a>
 
 [Logical-or patterns][logical-or] are useful for having multiple cases share a
 body in switch expressions or statements:
@@ -187,9 +187,9 @@ var isPrimary = switch (color) {
 };
 ```
 
-Switch statements can have multiple cases share a body without using logical-or
-patterns, but they are still uniquely useful for allowing multiple cases to share
-a guard: 
+Switch statements can have multiple cases share a body
+without using logical-or patterns, but they are
+still uniquely useful for allowing multiple cases to share a guard:
 
 <?code-excerpt "language/lib/patterns/switch.dart (or-share-guard)"?>
 ```dart

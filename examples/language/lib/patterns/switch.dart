@@ -69,7 +69,7 @@ void main() {
       _ => false
     };
     // #enddocregion or-share-body
-    isPrimary;
+    print(isPrimary);
   }
 
   {

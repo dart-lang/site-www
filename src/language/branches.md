@@ -266,4 +266,4 @@ rather than exiting the entire switch.
 [any kind of pattern]: /language/pattern-types
 [destructure]: /language/patterns#destructuring
 [section on switch]: /language/patterns#switch-statements-and-expressions
-[logical-or patterns]: /language/patterns#or-pattern-swtich
+[logical-or patterns]: /language/patterns#or-pattern-switch
