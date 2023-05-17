@@ -542,7 +542,7 @@ let count = str?.count ?? 0
 ```
 
 Additionally, Dart offers a
-[null safe version of the cascade operator][] (`?..`),
+null safe version of the cascade operator (`?..`),
 which ignores any operations when
 the target object is `null`.
 Dart also offers the null assignment operator (`??=`),
@@ -2712,7 +2712,7 @@ you add comments for various documentation generation
 tools in Swift.
 
 [doc comments]: /guides/language/effective-dart/documentation
-[dartdoc]: /tools/dart-doc
+[`dart doc`]: /tools/dart-doc
 
 As in Swift, you define a doc comment by
 using three forward slashes instead of two (`///`):
