@@ -19,7 +19,7 @@ void main() {
           user.length == 2 &&
           user[0] is String &&
           user[1] is int) {
-        var name = user[0] as String;
+        var name = user[2] as String;
         var age = user[1] as int;
         print('User $name is $age years old.');
       }
