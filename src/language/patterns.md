@@ -324,11 +324,11 @@ if (json is Map<String, dynamic> &&
     json.containsKey('user')) {
   var user = json['user'];
   if (user is List<dynamic> &&
-      user?.length == 2 &&
-      user?[0] is String &&
-      user?[1] is int) {
-    var name = user?[0] as String;
-    var age = user?[1] as int;
+      user.length == 2 &&
+      user[0] is String &&
+      user[1] is int) {
+    var name = user[0] as String;
+    var age = user[1] as int;
     print('User $name is $age years old.');
   }
 }
