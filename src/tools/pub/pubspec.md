@@ -429,12 +429,15 @@ topics:
   - http
 ```
 
-Pub.dev limits topics to the following specifications:
+Pub.dev requires topics to follow these specifications:
 
-- At most 5 topics per package.
-- The length of the topic name should be 2-32 characters.
-- The topic name should consist of lowercase alphanumeric characters or dash
-  (but no double dash), starting with a-z and ending with a-z or 0-9.
+- Tag each package with at most 5 topics.
+- Write the topic name following these requirements:
+  - Use between 2 and 32 characters.
+  - Use only lowercase alphanumeric characters or hyphens (`a-z`, `0-9`, `-`).
+  - Don't use two consecutive hyphens (`--`).
+  - Start the name with lowercase alphabet characters (`a-z`).
+  - End with alphanumeric characters (`a-z` or `0-9`).
 
 When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
