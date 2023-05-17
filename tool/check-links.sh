@@ -5,12 +5,10 @@ source $TOOL_DIR/utils.sh
 
 dart pub get
 
-echo "::group::link reference check"
 echo "Checking for valid link references..."
 # Check for invalid link references before checking for links
 dart run tool/check_link_references.dart
 echo $'No invalid link references found!\n'
-echo "::endgroup::"
 
 trap clean_up SIGINT SIGTERM ERR EXIT
 
