@@ -11,8 +11,8 @@ Records are an anonymous, immutable, aggregate type. Like other [collection type
 they let you bundle multiple objects into a single object. Unlike other collection 
 types, records are fixed-sized, heterogeneous, and typed.
 
-Records are real values; you can store them in variables, pass them to and from
-functions, and store them in lists.
+Records are real values; you can store them in variables, nest them, pass them to
+and from functions, and store them in data structures such as lists, maps, and sets.
 
 ## Record syntax
 
