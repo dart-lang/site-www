@@ -17,7 +17,7 @@ updates:
       interval: "daily"
     labels:
       - autosubmit
-- package-ecosystem: "npm"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
