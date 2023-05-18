@@ -1,23 +1,36 @@
-- title: Tutorials & codelabs
+- title: Tutorials
   expanded: false
   children:
-    - title: Tutorials
+    - title: Introduction
       match-page-url-exactly: true
       permalink: /tutorials
-    - title: Codelabs
-      expanded: true
+    - title: Language
+      expanded: false
       children:
-        - title: List of Dart codelabs
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Language cheatsheet
-          permalink: /codelabs/dart-cheatsheet
+      - title: Koans (code exercises)
+        permalink: /codelabs/dart-cheatsheet
+      - title: Null safety
+        permalink: /codelabs/null-safety
+      - title: Coming from ...
+        expanded: false
+        children:
+          - title: JavaScript to Dart
+            permalink: /guides/language/coming-from/js-to-dart
+          - title: Swift to Dart
+            permalink: /guides/language/coming-from/swift-to-dart
+          - title: Java to Dart
+            permalink: https://codelabs.developers.google.com/codelabs/from-java-to-dart/
+    - title: Libraries
+      expanded: false
+      children:
+        - title: Library tour
+          permalink: /guides/libraries/library-tour
         - title: Iterable collections
           permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await
-        - title: Null safety
-          permalink: /codelabs/null-safety
+    - title: Building a command-line app
+      permalink: /tutorials/server/get-started
 - title: Language
   expanded: false
   children:
@@ -332,13 +345,6 @@
       permalink: /guides/language/spec    
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
-    - title: Coming from ...
-      expanded: false
-      children:
-        - title: JavaScript to Dart
-          permalink: /guides/language/coming-from/js-to-dart
-        - title: Swift to Dart
-          permalink: /guides/language/coming-from/swift-to-dart
     - title: Books
       permalink: /resources/books
     - title: Videos

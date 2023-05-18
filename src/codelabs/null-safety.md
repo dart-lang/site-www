@@ -1,5 +1,5 @@
 ---
-title: Null safety codelab
+title: Null safety tutorial
 description: Learn about and practice writing null-safe code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
@@ -7,12 +7,12 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n)*\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This codelab teaches you about Dart’s [null-safe type system](/null-safety),
+This tutorial teaches you about Dart’s [null-safe type system](/null-safety),
 which was introduced in Dart 2.12. When you opt into null safety,
 types in your code are non-nullable by default,
 meaning that values can’t be `null` unless you say they can be.
 
-This codelab covers the following material:
+This tutorial covers the following material:
 
 * Nullable and non-nullable types.
 * When to add `?` or `!` to indicate nullability or non-nullability.
@@ -22,7 +22,7 @@ This codelab covers the following material:
 
 Using embedded DartPad editors, you can test your knowledge by
 completing and running exercises. To get the most out of
-this codelab, you should have some knowledge of [basic Dart syntax](/language).
+this tutorial, you should have some knowledge of [basic Dart syntax](/language).
 
 {{site.alert.note}}
   This page uses embedded DartPads to display exercises.
@@ -536,19 +536,19 @@ void main() {
 
 ## What's next?
 
-Congratulations, you've finished the codelab! If you'd like to learn more, here
+Congratulations, you've finished the tutorial! If you'd like to learn more, here
 are some suggestions for where to go next:
 
 -   Learn more about null safety:
     -   Overview: [Sound null safety](/null-safety).
     -   Deep dive:
         [Understanding null safety](/null-safety/understanding-null-safety).
--   Try another [codelab](/codelabs).
+-   Try another [tutorial](/tutorials).
 -   [Get the Dart SDK](/get-dart).
 
-If you're interested in using embedded DartPads, like this codelab does, see
+If you're interested in using embedded DartPads, like this tutorial does, see
 [best practices for using DartPad in tutorials](/tools/dartpad/dartpad-best-practices).
-If you're interested in improving this codelab, see
+If you're interested in improving this tutorial, see
 [issue #3093][].
 
 [issue #3093]: https://github.com/dart-lang/site-www/issues/3093
