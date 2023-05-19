@@ -153,32 +153,6 @@ Subpatterns in a logical-or pattern can bind variables, but the branches must
 define the same set of variables, because only one branch will be evaluated when
 the pattern matches.
 
-{% comment %}
-[TODO: move the below content to the switch page, doesn't belong here]
-
-Logical-or patterns are useful for having multiple cases share a body in switch
-expressions or statements.
-
-```dart
-var isPrimary = switch (color) {
-  Color.red || Color.yellow || Color.blue => true,
-  _ => false
-};
-```
-
-Switch statements can have multiple cases share a body without using logical-or
-patterns, but they are still uniquely useful for allowing multiple cases to share
-a guard: 
-
-```dart
-switch (shape) {
-  case Square(size: var s) || Circle(size: var s) when s > 0:
-    print('Non-empty symmetric shape');
-}
-```
-
-{% endcomment %}
-
 ## Map
 
 `{"key": subpattern1, someConst: subpattern2}`
