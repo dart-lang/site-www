@@ -224,6 +224,7 @@ void miscDeclAnalyzedButNotTested() {
       };
     }
     // #enddocregion relational
+
     assert(asciiCharType(32) == 'space');
   }
 
