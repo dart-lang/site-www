@@ -1097,7 +1097,7 @@ If you're interested in using embedded DartPads, like this codelab does, see
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[style guide]: /guides/language/effective-dart/style
-[documentation guide]: /guides/language/effective-dart/documentation
-[usage guide]: /guides/language/effective-dart/usage
-[design guide]: /guides/language/effective-dart/design
+[style guide]: /effective-dart/style
+[documentation guide]: /effective-dart/documentation
+[usage guide]: /effective-dart/usage
+[design guide]: /effective-dart/design

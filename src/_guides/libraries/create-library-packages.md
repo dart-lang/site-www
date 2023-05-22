@@ -251,7 +251,7 @@ see the [pub package layout conventions](/tools/pub/package-layout).
 You can generate API docs for your library using
 the [`dart doc`][] tool.
 `dart doc` parses the source looking for
-[documentation comments](/guides/language/effective-dart/documentation#doc-comments),
+[documentation comments](/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
 {% prettify dart tag=pre+code %}
@@ -267,7 +267,7 @@ For an example of generated docs, see the
 To include any *library-level* documentation in the generated docs,
 add a `library` directive and attach the comment directly above it.
 For the how-and-why of documenting libraries, see
-[Effective Dart: Documentation](/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
+[Effective Dart: Documentation](/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
 
 ## Distributing an open source library {#distributing-a-library}
