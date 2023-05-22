@@ -7,14 +7,25 @@ This page is a reference for the different kinds of patterns.
 For an overview of how patterns work, where you can use them in Dart, and common
 use cases, visit the main [Patterns][] page.
 
-We've listed the patterns in ascending order of precedence:
+#### Pattern precedence
 
-- Logical-or patterns (`||`) have the lowest precedence,
-- Then logical-and patterns (`&&`),
-- Then the postfix _unary patterns_: cast (`as`), null-check (`?`),
-and null-assert (`!`),
-- Followed by the remaining highest precedence primary patterns: constant, variable,
-identifier, parenthesized, list, map, record, and object.
+Similar to [operator precedence](/language/operators#operator-precedence-example),
+pattern evaluation adheres to precendence rules.
+You can use [parenthesized patterns](#parenthesized) to evaluate lower-precedence
+patterns first.  
+
+We've listed the patterns ascending order of precedence:
+* [Logical-or](#logical-or) patterns are lower-precedence than [logical-and](#logical-and),
+logical-and patterns are lower-precedence than [relational](#relational) patterns,
+and so on. 
+
+* Post-fix unary patterns ([cast](#cast), [null-check](#null-check),
+and [null-assert](#null-assert)) share the same level of precedence. 
+
+* The remaining primary patterns share the highest precedence.
+Collection-type ([record](#record), [list](#list), and [map](#map))
+and [Object](#object) patterns obviously encompass other
+data, so are evaluated first as outer-patterns. 
 
 ## Logical-or
 
@@ -242,9 +253,26 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 
 `(subpattern)`
 
-Like parenthesized expressions, parentheses in a pattern let you control pattern
-precedence and insert a lower precedence pattern where a higher precedence one is
-expected.
+Like parenthesized expressions, parentheses in a pattern let you control
+[pattern precedence](#pattern-precedence) and insert a lower-precedence
+pattern where a higher precedence one is expected.
+
+For example, imagine the boolean constants `x`, `y`, and `z` are 
+equivalent to `true`, `true`, and `false`, respectively:
+
+<?code-excerpt "language/lib/patterns/switch.dart (parens)"?>
+``` dart
+      case x || y && z:
+        'matches true';
+      case (x || y) && z:
+        'matches false';
+```
+
+In the first case, the logical-and pattern `y && z` evaluates first because
+logical-and patterns have higher precedence than logical-or.
+But parenthesizing the logical-or pattern in the next case causes it
+to evaluate first, resulting in a different match.
+
 
 ## List
 
