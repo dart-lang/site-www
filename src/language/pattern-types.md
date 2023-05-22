@@ -152,9 +152,6 @@ A logical-or pattern separates subpatterns by `||` and matches if any of the
 branches match. Branches are evaluated left-to-right. Once a branch matches, the
 rest are not evaluated.
 
-Logical-or patterns are useful for having multiple cases share a body in [switch
-expressions or statements][].
-
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
 ```dart
 var isPrimary = switch (color) {
