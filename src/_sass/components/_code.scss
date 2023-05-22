@@ -1,10 +1,10 @@
-$pre-bg: $site-color-codeblock-bg;  // TODO #2859: use $site-color-codeblock-bg?
+$pre-bg: $site-color-codeblock-bg;
 
 @mixin pre-defaults {
   background-color: $pre-bg;
   font-size: 0.875rem; // 14px
   font-weight: $font-weight-normal;
-  padding: 1.5rem; // TODO #2859: 1.5rem;
+  padding: 1.875rem; // 30 px
 }
 
 //
@@ -105,7 +105,6 @@ iframe[src^="https://dartpad"]:not(#try-dart-pad) {
 
 @media screen {
   .com { color: #6E6E70; }
-  // TODO #2859: dropping the following overrides would allow us to be consistent with Flutter
   .kwd { color: #BC0056; }
   .pln { color: #7500A0; }
   .lit,
