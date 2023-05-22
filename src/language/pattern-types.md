@@ -262,10 +262,12 @@ equivalent to `true`, `true`, and `false`, respectively:
 
 <?code-excerpt "language/lib/patterns/switch.dart (parens)"?>
 ``` dart
-      case x || y && z:
-        'matches true';
-      case (x || y) && z:
-        'matches false';
+// ...
+case x || y && z:
+  'matches true';
+case (x || y) && z:
+  'matches false';
+// ...
 ```
 
 In the first case, the logical-and pattern `y && z` evaluates first because
