@@ -156,24 +156,12 @@ Logical-or patterns are useful for having multiple cases share a body in [switch
 expressions or statements][].
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
+
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
   _ => false
 };
-```
-
-Switch statements (not expressions)
-can have multiple cases share a body without using logical-or
-patterns, but they are still uniquely useful for allowing multiple cases to share
-a guard: 
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (share-guard)"?>
-```dart
-switch (shape) {
-  case Square(size: var s) || Circle(size: var s) when s > 0:
-    print('Non-empty symmetric shape');
-}
 ```
 
 Subpatterns in a logical-or pattern can bind variables, but the branches must

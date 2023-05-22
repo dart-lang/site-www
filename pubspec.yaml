@@ -3,10 +3,10 @@ name: site_www
 homepage: https://dart.dev
 
 environment:
-  sdk: ^3.0.0-0
+  sdk: ^3.0.1
 
 dev_dependencies:
-  build_runner: ^2.3.2
+  build_runner: ^2.4.4
   code_excerpt_updater:
     path: site-shared/packages/code_excerpt_updater
   code_excerpter:

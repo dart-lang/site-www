@@ -8,7 +8,7 @@ Dart is a true object-oriented language, so even functions are objects
 and have a type, [Function.][Function API reference]
 This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
-it were a function. For details, see [Callable classes][].
+it were a function. For details, see [Callable objects][].
 
 Here’s an example of implementing a function:
 
@@ -499,7 +499,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 [record]: /language/records#multiple-returns
 
 [Function API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
-[Callable classes]: /language/callable-classes
+[Callable objects]: /language/callable-objects
 [type annotations for public APIs]: /guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
 [if statement]: /language/branches#if
 [conditional expression]: /language/operators#conditional-expressions

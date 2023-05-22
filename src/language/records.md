@@ -11,8 +11,9 @@ Records are an anonymous, immutable, aggregate type. Like other [collection type
 they let you bundle multiple objects into a single object. Unlike other collection 
 types, records are fixed-sized, heterogeneous, and typed.
 
-Records are real values; you can store them in variables, pass them to and from
-functions, and store them in lists.
+Records are real values; you can store them in variables, 
+nest them, pass them to and from functions, 
+and store them in data structures such as lists, maps, and sets.
 
 ## Record syntax
 
@@ -144,13 +145,14 @@ and their corresponding fields have the same values.
 Since named field _order_ is not part of a record's shape, the order of named
 fields does not affect equality.
 
+For example:
+
 <?code-excerpt "language/test/records_test.dart (record-shape)"?>
 ```dart
 (int x, int y, int z) point = (1, 2, 3);
 (int r, int g, int b) color = (1, 2, 3);
 
-// OK:
-point = color;
+print(point == color); // Prints 'true'.
 ```
 
 <?code-excerpt "language/test/records_test.dart (record-shape-mismatch)"?>
@@ -158,8 +160,7 @@ point = color;
 ({int x, int y, int z}) point = (x: 1, y: 2, z: 3);
 ({int r, int g, int b}) color = (r: 1, g: 2, b: 3);
 
-// Compile error! These record don't have the same shape.
-// point = color;
+print(point == color); // Prints 'false'. Lint: Equals on unrelated types.
 ```
 
 Records automatically define `hashCode` and `==` methods based on the structure
