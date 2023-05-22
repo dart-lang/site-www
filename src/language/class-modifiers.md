@@ -243,13 +243,14 @@ This allows you to create a switch over those subtypes that is statically ensure
 to be [_exhaustive_][exhaustive].
 
 The `sealed` modifier prevents a class from being extended or
-implemented outside its own library.
+implemented outside its own library. Sealed classes are implicitly
+[abstract](#abstract).
 
-Sealed classes also prevent construction,
-and are therefore implicitly [abstract](#abstract).
-However, subclasses of sealed classes can be constructed, 
-and sealed classes can have
-[factory constructors](/language/constructors#factory-constructors).
+- They cannot be constructed themselves.
+- They can have [factory constructors](/language/constructors#factory-constructors).
+- They can define constructors for their subclasses to use.
+
+Subclasses of sealed classes are, however, not implicitly abstract.
 
 The compiler is aware of any possible direct subtypes
 because they can only exist in the same library. 

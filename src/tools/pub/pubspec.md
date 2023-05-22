@@ -90,6 +90,10 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
+`topics`
+: Optional. List of topics for the package.
+  [_Learn more._](#topics)
+
 Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
@@ -379,13 +383,16 @@ the pattern is considered relative to the package's root directory.
 
 ### Screenshots
 
-Packages can showcase their widgets or other visual elements using screenshots
-displayed on their page.
+Packages can showcase their widgets or other visual elements
+using screenshots displayed on their pub.dev page. 
+To specify screenshots for the package to display,
+use the `screenshots` field.
 
 A package can list up to 10 screenshots under the `screenshots` field.
+Don't include logos or other branding imagery in this section.
 Each screenshot includes one `description` and one `path`. 
-The `description` explains what the screenshot depicts in no more than 160 
-characters. 
+The `description` explains what the screenshot depicts in
+no more than 160 characters. 
 For example:
 
 ```yaml
@@ -410,6 +417,34 @@ Each download of the package includes all screenshot files.
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
  
+### Topics
+
+Package authors can use the `topics` field to categorize their package. Topics
+can be used to assist discoverability during search with filters on pub.dev.
+Pub.dev displays the topics on the package page as well as in the search
+results.
+
+The field consists of a list of names. For example:
+
+```yaml
+topics:
+  - network
+  - http
+```
+
+Pub.dev requires topics to follow these specifications:
+
+- Tag each package with at most 5 topics.
+- Write the topic name following these requirements:
+  - Use between 2 and 32 characters.
+  - Use only lowercase alphanumeric characters or hyphens (`a-z`, `0-9`, `-`).
+  - Don't use two consecutive hyphens (`--`).
+  - Start the name with lowercase alphabet characters (`a-z`).
+  - End with alphanumeric characters (`a-z` or `0-9`).
+
+When choosing topics, consider if [existing topics]({{site.pub}}/topics)
+are relevant. Tagging with existing topics helps users discover your package.
+
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
