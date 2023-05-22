@@ -6,7 +6,7 @@ toc: false
 
 Use the `dart format` command to replace the whitespace in your program
 with formatting that follows
-[Dart guidelines](/guides/language/effective-dart/style#formatting).
+[Dart guidelines](/effective-dart/style#formatting).
 This is the same formatting that you can get
 when using an IDE or editor that has Dart support.
 
