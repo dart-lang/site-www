@@ -4,6 +4,18 @@ class Rect {
   Rect({required this.width, required this.height});
 }
 
+enum Color { red, yellow, blue, green }
+
+class Square {
+  int size;
+  Square({required this.size});
+}
+
+class Circle {
+  int size;
+  Circle({required this.size});
+}
+
 void main() {
   var number = 1;
   // #docregion constant-pattern
@@ -45,7 +57,28 @@ void main() {
         print('a = $a, b = $b');
 
       default:
-      // #enddocregion switch-statement
     }
+    // #enddocregion switch-statement
+  }
+
+  {
+    final color = Color.red;
+    // #docregion or-share-body
+    var isPrimary = switch (color) {
+      Color.red || Color.yellow || Color.blue => true,
+      _ => false
+    };
+    // #enddocregion or-share-body
+    print(isPrimary);
+  }
+
+  {
+    var shape = Circle(size: 5);
+    // #docregion or-share-guard
+    switch (shape) {
+      case Square(size: var s) || Circle(size: var s) when s > 0:
+        print('Non-empty symmetric shape');
+    }
+    // #enddocregion or-share-guard
   }
 }
