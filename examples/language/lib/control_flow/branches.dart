@@ -114,9 +114,10 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
+    bool? nullableBool = false;
     // #docregion exh-bool
-    bool? b = false;
-    switch (b) {
+    // Non-exhaustive switch on bool?, missing case to match null possiblity:
+    switch (nullableBool) {
       case true:
         print('yes');
       case false:

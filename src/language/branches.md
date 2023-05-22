@@ -199,8 +199,8 @@ error if it's possible for a value to enter a switch but not match any of the ca
 
 <?code-excerpt "language/lib/control_flow/branches.dart (exh-bool)"?>
 ```dart
-bool? b = false;
-switch (b) {
+// Non-exhaustive switch on bool?, missing case to match null possiblity:
+switch (nullableBool) {
   case true:
     print('yes');
   case false:
