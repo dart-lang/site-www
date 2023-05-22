@@ -1,4 +1,6 @@
-// ignore_for_file: duplicate_variable_pattern, duplicate_definition, unused_local_variable, dead_code, constant_pattern_never_matches_value_type, unnecessary_null_check_pattern, pattern_never_matches_value_type, unreachable_switch_case, unused_element
+// ignore_for_file: duplicate_variable_pattern, duplicate_definition, unused_local_variable
+// ignore_for_file: dead_code, constant_pattern_never_matches_value_type, unnecessary_null_check_pattern
+// ignore_for_file: pattern_never_matches_value_type, unreachable_switch_case
 
 sealed class Shape {}
 
@@ -19,14 +21,14 @@ class Color {
 }
 
 class Rect {
-  int width;
-  int height;
+  final int width;
+  final int height;
   Rect({required this.width, required this.height});
 }
 
 class Point {
-  int? x;
-  int? y;
+  final int? x;
+  final int? y;
 
   Point(this.x, this.y);
 }
@@ -222,6 +224,7 @@ void miscDeclAnalyzedButNotTested() {
       };
     }
     // #enddocregion relational
+    assert(asciiCharType(32) == 'space');
   }
 
   {
