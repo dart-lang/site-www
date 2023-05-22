@@ -345,11 +345,11 @@ Without patterns, validation is verbose:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
-if (json is Map<String, dynamic> &&
+if (json is Map<String, Object?> &&
     json.length == 1 &&
     json.containsKey('user')) {
   var user = json['user'];
-  if (user is List<dynamic> &&
+  if (user is List<Object> &&
       user.length == 2 &&
       user[0] is String &&
       user[1] is int) {
