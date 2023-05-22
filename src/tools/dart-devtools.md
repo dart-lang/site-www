@@ -8,7 +8,7 @@ for Dart and Flutter.
 These tools are distributed as part of the `dart` tool
 and interact with tools such as IDEs, `dart run`, and `webdev`.
 
-<img src="/tools/DevTools.png" width="400">
+<img src="/tools/DevTools.png" width="640" alt="Screenshot of DevTools' Memory page">
 
 The following table shows which tools
 you can use with common Dart app types.
