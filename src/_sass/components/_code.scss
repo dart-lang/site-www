@@ -1,10 +1,8 @@
-$pre-bg: $site-color-codeblock-bg;
-
 @mixin pre-defaults {
-  background-color: $pre-bg;
+  background-color: $site-color-codeblock-bg;
   font-size: 0.875rem; // 14px
   font-weight: $font-weight-normal;
-  padding: 1.875rem; // 30 px
+  padding: 1.875rem; // 30px
 }
 
 //
