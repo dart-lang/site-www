@@ -122,7 +122,8 @@ switch (command) {
 }
 ```
 
-To learn more about patterns in case clauses, 
+You can use [logical-or patterns][] to allow cases to share a body or a guard.
+To learn more about patterns and case clauses, 
 check out the patterns documentation on [Switch statements and expressions][].
 
 [Switch statements and expressions]: /language/patterns#switch-statements-and-expressions
@@ -265,3 +266,4 @@ rather than exiting the entire switch.
 [any kind of pattern]: /language/pattern-types
 [destructure]: /language/patterns#destructuring
 [section on switch]: /language/patterns#switch-statements-and-expressions
+[logical-or patterns]: /language/patterns#or-pattern-switch
