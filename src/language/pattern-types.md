@@ -156,7 +156,6 @@ Logical-or patterns are useful for having multiple cases share a body in [switch
 expressions or statements][].
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
-
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
