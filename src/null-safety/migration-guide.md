@@ -76,17 +76,17 @@ with the help of the `dart pub outdated` command in null-safety mode.
 The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
+<a id="switch-to-the-latest-stable-dart-release"></a>
+### Switch to the latest Dart 2.19 release
 
-### Switch to the latest stable Dart release
-
-Switch to the **Dart 2.19 stable release**
-of the Dart SDK. This is included in the Flutter 3.7 SDK.
+Switch to the latest **Dart 2.19 release** of the Dart SDK. 
+This is included in the Flutter 3.7 SDK.
 
 Check that you have Dart 2.19:
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.19.2
+Dart SDK version: 2.19.6
 ```
 
 ### Check dependency status
@@ -396,7 +396,7 @@ To migrate a package by hand, follow these steps:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md
+   [package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of at least `2.12.0`
    sets the default language version of

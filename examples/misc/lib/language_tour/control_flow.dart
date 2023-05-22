@@ -1,14 +1,6 @@
 import 'package:examples_util/nullable.dart';
 
-class Candidate {
-  int yearsExperience = 0;
-
-  void interview() {}
-}
-
 void miscDeclAnalyzedButNotTested() {
-  final candidates = <Candidate>[];
-
   {
     bool isRaining() => true;
     bool isSnowing() => true;
@@ -22,65 +14,6 @@ void miscDeclAnalyzedButNotTested() {
       car.putTopDown();
     }
     // #enddocregion if-else
-  }
-
-  {
-    // #docregion collection
-    for (final candidate in candidates) {
-      candidate.interview();
-    }
-    // #enddocregion collection
-  }
-
-  {
-    bool isDone() => true;
-    bool doSomething() => true;
-    // #docregion while
-    while (!isDone()) {
-      doSomething();
-    }
-    // #enddocregion while
-  }
-
-  {
-    bool atEndOfPage() => true;
-    bool printLine() => true;
-    // #docregion do-while
-    do {
-      printLine();
-    } while (!atEndOfPage());
-    // #enddocregion do-while
-  }
-
-  {
-    bool shutDownRequested() => true;
-    bool processIncomingRequests() => true;
-    // #docregion while-break
-    while (true) {
-      if (shutDownRequested()) break;
-      processIncomingRequests();
-    }
-    // #enddocregion while-break
-  }
-
-  {
-    // #docregion for-continue
-    for (int i = 0; i < candidates.length; i++) {
-      var candidate = candidates[i];
-      if (candidate.yearsExperience < 5) {
-        continue;
-      }
-      candidate.interview();
-    }
-    // #enddocregion for-continue
-  }
-
-  {
-    // #docregion where
-    candidates
-        .where((c) => c.yearsExperience >= 5)
-        .forEach((c) => c.interview());
-    // #enddocregion where
   }
 
   void executeClosed() {}

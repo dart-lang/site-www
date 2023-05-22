@@ -421,11 +421,10 @@ However, now the isolate sends a [closure][].
 Closures are less limited than typical named functions,
 both in how they function and how they're written into the code.
 In this example, `Isolate.run()` executes what looks like local code, concurrently.
-In that sense, you can imagine `run()` to work like a [control flow operator][]
+In that sense, you can imagine `run()` to work like a control flow operator
 for “run in parallel”.
 
 [closure]: /language/functions#anonymous-functions
-[control flow operator]: /language/control-flow
 
 ### Sending multiple messages between isolates
 

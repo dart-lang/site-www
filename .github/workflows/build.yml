@@ -30,7 +30,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk: [stable, beta, dev]
+        include:
+          - sdk: dev
+            experimental: false
+          - sdk: beta
+            experimental: false
+          - sdk: stable
+            experimental: false
+    continue-on-error: ${{ matrix.experimental }}
     steps:
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
         with:
@@ -69,7 +76,7 @@ jobs:
         with:
           sdk: stable
       - run: tool/check-links.sh
-      - uses: FirebaseExtended/action-hosting-deploy@4d0d0023f1d92b9b7d16dda64b3d7abd2c98974b
+      - uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
@@ -94,13 +101,13 @@ jobs:
       - run: npm install -g firebase-tools@11.26.0
       - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
         with:
-          sdk: stable
+          sdk: beta
       - run: tool/check-links.sh
       - name: Stage site on Firebase
         if: ${{ 
           github.event.pull_request.head.repo.full_name == github.repository &&
           github.event.pull_request.user.login != 'dependabot[bot]' }}
-        uses: FirebaseExtended/action-hosting-deploy@4d0d0023f1d92b9b7d16dda64b3d7abd2c98974b
+        uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'

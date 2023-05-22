@@ -42,6 +42,8 @@
       children:
         - title: Built-in types
           permalink: /language/built-in-types
+        - title: Records
+          permalink: /language/records
         - title: Collections
           permalink: /language/collections
         - title: Generics
@@ -50,10 +52,20 @@
           permalink: /language/typedefs
         - title: Type system
           permalink: /language/type-system 
+    - title: Patterns
+      children:
+        - title: Overview & usage
+          permalink: /language/patterns
+        - title: Pattern types
+          permalink: /language/pattern-types
     - title: Functions
       permalink: /language/functions
     - title: Control flow
-      permalink: /language/control-flow
+      children:
+      - title: Loops
+        permalink: /language/loops
+      - title: Branches
+        permalink: /language/branches
     - title: Error handling
       permalink: /language/error-handling
     - title: Classes & objects
@@ -66,14 +78,16 @@
           permalink: /language/methods
         - title: Extend a class
           permalink: /language/extend
-        - title: Extension methods
-          permalink: /language/extension-methods
-        - title: Enum types
-          permalink: /language/enum
         - title: Mixins
           permalink: /language/mixins
-        - title: Callable classes
-          permalink: /language/callable-classes
+        - title: Class modifiers
+          permalink: /language/class-modifiers
+        - title: Enum types
+          permalink: /language/enum
+        - title: Extension methods
+          permalink: /language/extension-methods
+        - title: Callable objects
+          permalink: /language/callable-objects
     - title: Concurrency
       children: 
         - title: Asynchronous support
@@ -316,6 +330,8 @@
       permalink: /guides/language/evolution
     - title: Language specification
       permalink: /guides/language/spec    
+    - title: Dart 3 migration guide
+      permalink: /resources/dart-3-migration
     - title: Coming from ...
       expanded: false
       children:

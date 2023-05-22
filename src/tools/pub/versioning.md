@@ -162,7 +162,7 @@ dependencies:
 {{site.alert.note}}
   This example uses _caret syntax_ to express a range of versions.
   The string `^2.3.5` means 
-  "the range of all versions from 2.3.5  to 3.0.0, not including 3.0.0." 
+  "the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
   For more information, 
   see [Caret syntax](/tools/pub/dependencies#caret-syntax).
 {{site.alert.end}}
