@@ -314,7 +314,7 @@ setting up and managing worker isolates:
 
 {{site.alert.flutter-note}}
   If you're using Flutter,
-  consider using [Flutter's `compute` function][]
+  you can use [Flutter's `compute` function][]
   instead of `Isolate.run()`.
   On the [web](#web), the `compute` function falls back
   to running the specified function on the current event loop.
