@@ -102,8 +102,9 @@ String asciiCharType(int char) {
 A cast pattern lets you insert a [type cast][] in the middle of destructuring,
 before passing the value to another subpattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (cast)"?>
 ```dart
-(num, Object) record = (1, "s");
+(num, Object) record = (1, 's');
 var (i as int, s as String) = record;
 ```
 
@@ -169,10 +170,11 @@ To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
 Constant patterns match when the value is equal to the constant: 
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (constant)"?>
 ```dart
 switch (number) {
   // Matches if 1 == number.
-  case 1: // ... 
+  case 1: // ...
 }
 ```
 
@@ -188,6 +190,7 @@ You can use simple literals and references to named constants directly as consta
 More complex constant expressions must be parenthesized and prefixed with
 `const` (`const (1 + 2)`):
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (complex-constant)"?>
 ```dart
 // List or map pattern:
 case [a, b]: // ...
@@ -239,12 +242,15 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
 - [Assignment][] context: assigns to existing variable with identifier name:
   `(a, b) = (3, 4);`
 - [Matching][] context: treated as a named constant pattern (unless its name is `_`):
+  <?code-excerpt "language/lib/patterns/pattern_types.dart (match-context)"?>
   ```dart
   const c = 1;
   switch (2) {
-    case c: print('match $c');
-    default: print('no match'); // Prints "no match".
-   }
+    case c:
+      print('match $c');
+    default:
+      print('no match'); // Prints "no match".
+  }
   ``` 
 - [Wildcard](#wildcard) identifier in any context: matches any value and discards it:
   `case [_, var y, _]: print('The middle element is $y');`
@@ -283,10 +289,11 @@ to evaluate first, resulting in a different match.
 A list pattern matches values that implement [`List`][], and then recursively
 matches its subpatterns against the list's elements to destructure them by position:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (list)"?>
 ```dart
 switch (obj) {
   // Matches if obj is a list with two elements.
-  case [a, b]: // ... 
+  case [a, b]: // ...
 }
 ```  
 
@@ -299,19 +306,21 @@ account for any number of elements in a list.
 List patterns can contain _one_ rest element (`...`) which allows matching lists
 of arbitrary lengths.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (rest)"?>
 ```dart
 var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
 // Prints "1 2 6 7".
-print('$a $b $c $d'); 
+print('$a $b $c $d');
 ```
 
 A rest element can also have a subpattern that collects elements that don't match
 the other subpatterns in the list, into a new list:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (rest-sub)"?>
 ```dart
 var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
 // Prints "1 2 [3, 4, 5] 6 7".
-print('$a $b $rest $c $d'); 
+print('$a $b $rest $c $d');
 ```
 
 ## Map
@@ -338,6 +347,7 @@ fields in the record.
 Record patterns require that the pattern match the entire record. To destructure 
 a record with _named_ fields using a pattern, include the field names in the pattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (record)"?>
 ```dart
 var (myString: foo, myNumber: bar) = (myString: 'string', myNumber: 1);
 ```
@@ -346,25 +356,26 @@ The getter name can be omitted and inferred from the [variable pattern](#variabl
 or [identifier pattern](#identifier) in the field subpattern. These pairs of
 patterns are each equivalent:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (record-getter)"?>
 ```dart
 // Record pattern with variable subpatterns:
-var (untyped: untyped, typed: int typed) = // ...
-var (:untyped, :int typed) = // ...
+var (untyped: untyped, typed: int typed) = record;
+var (:untyped, :int typed) = record;
 
-switch (obj) {
+switch (record) {
   case (untyped: var untyped, typed: int typed): // ...
   case (:var untyped, :int typed): // ...
 }
 
 // Record pattern wih null-check and null-assert subpatterns:
-switch (obj) {
+switch (record) {
   case (checked: var checked?, asserted: var asserted!): // ...
   case (:var checked?, :var asserted!): // ...
 }
 
 // Record pattern wih cast subpattern:
-var (field: field as int) = // ...
-var (:field as int) = // ...
+var (untyped: untyped as int, typed: typed as String) = record;
+var (:untyped as int, :typed as String) = record;
 ```
 
 ## Object
@@ -375,6 +386,7 @@ Object patterns check the matched value against a given named type to destructur
 data using getters on the object's properties. They are [refuted][]
 if the value doesn't have the same type.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
 ```dart
 switch (shape) {
   // Matches if shape is of type Rect, and then against the properties of Rect.
@@ -385,6 +397,7 @@ switch (shape) {
 The getter name can be omitted and inferred from the [variable pattern](#variable)
 or [identifier pattern](#identifier) in the field subpattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
 ```dart
 // Binds new variables x and y to the values of Point's x and y properties.
 var Point(:x, :y) = Point(1, 2);
@@ -403,6 +416,7 @@ A pattern named `_` is a wildcard, either a [variable pattern](#variable) or
 It's useful as a placeholder in places where you need a subpattern in order to
 destructure later positional values:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard)"?>
 ```dart
 var list = [1, 2, 3];
 var [_, two, _] = list;
@@ -411,6 +425,7 @@ var [_, two, _] = list;
 A wildcard name with a type annotation is useful when you want to test a value's
 type but not bind the value to a name:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard-typed)"?>
 ```dart
 switch (record) {
   case (int _, String _):
@@ -430,3 +445,4 @@ switch (record) {
 [refuted]: /resources/glossary#refutable-pattern
 [record]: /language/records
 [shape]: /language/records#record-types
+[switch]: /language/branches#switch
