@@ -10,11 +10,12 @@ use cases, visit the main [Patterns][] page.
 #### Pattern precedence
 
 Similar to [operator precedence](/language/operators#operator-precedence-example),
-pattern evaluation adheres to precendence rules.
-You can use [parenthesized patterns](#parenthesized) to evaluate lower-precedence
-patterns first.  
+pattern evaluation adheres to precedence rules.
+You can use [parenthesized patterns](#parenthesized) to 
+evaluate lower-precedence patterns first.  
 
-We've listed the patterns ascending order of precedence:
+This document lists the pattern types in ascending order of precedence:
+
 * [Logical-or](#logical-or) patterns are lower-precedence than [logical-and](#logical-and),
 logical-and patterns are lower-precedence than [relational](#relational) patterns,
 and so on. 
@@ -24,7 +25,7 @@ and [null-assert](#null-assert)) share the same level of precedence.
 
 * The remaining primary patterns share the highest precedence.
 Collection-type ([record](#record), [list](#list), and [map](#map))
-and [Object](#object) patterns obviously encompass other
+and [Object](#object) patterns encompass other
 data, so are evaluated first as outer-patterns. 
 
 ## Logical-or
@@ -209,7 +210,7 @@ case const [a, b]: // ...
 `var bar, String str, final int _`
 
 Variable patterns bind new variables to values that have been matched or destructured. 
-They usually occur as part of a [destructuring pattern][destructure] in order to
+They usually occur as part of a [destructuring pattern][destructure] to
 capture a destructured value.
 
 The variables are in scope in a region of code that is only reachable when the
@@ -283,8 +284,7 @@ x || y && z => 'matches true',
 
 In the first case, the logical-and pattern `y && z` evaluates first because
 logical-and patterns have higher precedence than logical-or.
-But parenthesizing the logical-or pattern in the next case causes it
-to evaluate first, resulting in a different match.
+If you enclose the logical-or pattern in parentheses in the next case, the pattern evaluates first. This results in a different match.
 
 
 ## List
