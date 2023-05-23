@@ -2,6 +2,14 @@
 # Check for non-200 links in built Jekyll site using Firebase emulator
 set -eu -o pipefail 
 source $TOOL_DIR/utils.sh
+
+dart pub get
+
+echo "Checking for valid link references..."
+# Check for invalid link references before checking for links
+dart run tool/check_link_references.dart
+echo $'No invalid link references found!\n'
+
 trap clean_up SIGINT SIGTERM ERR EXIT
 
 EMULATOR_PORT=5500 # airplay runs on :5000
