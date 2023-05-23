@@ -8,10 +8,10 @@ final _unescape = HtmlUnescape();
 final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
 void main() async {
-  const dirPath = 'src/_guides/language/effective-dart';
+  const dirPath = 'src/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
-  var sections =
+  final sections =
       filenames.map((name) => Section(dirPath, name)).toList(growable: false);
 
   for (final section in sections) {
@@ -21,39 +21,40 @@ void main() async {
         .skip(1)
         .skipWhile((line) => line.trim() != '---')
         .toList(growable: false);
-    var document = md.Document();
+    final document = md.Document();
 
-    var nodes = document.parseLines(lines);
+    final nodes = document.parseLines(lines);
     for (final element in nodes.whereType<md.Element>()) {
       if (element.tag == 'h2') {
-        var subsection = Subsection(element);
+        final subsection = Subsection(element);
         section.subsections.add(subsection);
       } else if (element.tag == 'h3') {
-        var rule = Rule(element);
+        final rule = Rule(element);
         section.subsections.last.rules.add(rule);
       }
     }
   }
 
-  var outFile = File(path.join(dirPath, 'toc.md'));
+  final outFile = File(path.join(dirPath, 'toc.md'));
   IOSink? out;
   try {
     out = outFile.openWrite();
 
     out.writeln(r'''
-    {% comment %}
-    This file is generated from the other files in this directory.
-    To re-generate it, please run the following command from root of
-    the project:
+{% comment %}
+This file is generated from the other files in this directory.
+To re-generate it, please run the following command from root of
+the project:
 
-      $ dart run tool/effective_dart_rules/bin/main.dart
-
-    {% endcomment %}
+```
+$ dart run tool/effective_dart_rules/bin/main.dart
+```
+{% endcomment %}
     ''');
 
     out.writeln(r"<div class='effective_dart--summary_column' markdown='1'>");
     for (var i = 0; i < sections.length; i++) {
-      var section = sections[i];
+      final section = sections[i];
       if (i > 0) {
         if (i.isEven) {
           out.writeln("<div style='clear:both'></div>");
@@ -75,7 +76,7 @@ void write(IOSink out, Section section) {
   for (final subsection in section.subsections) {
     out.writeln('\n**${subsection.name}**\n');
     for (final rule in subsection.rules) {
-      var link = section.uri.resolve('#${rule.fragment}');
+      final link = section.uri.resolve('#${rule.fragment}');
       out.writeln("* <a href='$link'>${rule.html}</a>");
     }
   }
@@ -105,6 +106,13 @@ class Rule {
       }
     }
 
+    if (html.endsWith('.')) {
+      throw Exception(
+          "Effective Dart rule '$name' ends with a period when it shouldn't.");
+    }
+
+    html += '.';
+
     return Rule._(name, html, fragment);
   }
 
@@ -119,8 +127,7 @@ class Section {
 
   Section(String dirPath, String filename)
       : file = File(path.join(dirPath, filename)),
-        uri = Uri.parse('/guides/language/effective-dart/')
-            .resolve(filename.split('.').first),
+        uri = Uri.parse('/effective-dart/').resolve(filename.split('.').first),
         name = '${filename[0].toUpperCase()}'
             "${filename.substring(1).split('.').first}";
 }

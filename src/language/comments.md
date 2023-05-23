@@ -92,4 +92,4 @@ documentation generation tool, [`dart doc`](/tools/dart-doc).
 For an example of generated documentation, see the 
 [Dart API documentation.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}) 
 For advice on how to structure your comments, see
-[Effective Dart: Documentation.](/guides/language/effective-dart/documentation)
+[Effective Dart: Documentation.](/effective-dart/documentation)

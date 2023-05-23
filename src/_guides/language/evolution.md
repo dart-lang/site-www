@@ -73,7 +73,7 @@ annotations, can and [should][] now be written without a name:
 library;
 ```
 
-[should]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[should]: /effective-dart/style#dont-explicitly-name-libraries
 
 ### Dart 2.18
 _Released 30 August 2022_

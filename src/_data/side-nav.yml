@@ -37,7 +37,7 @@
         - title: Libraries & imports
           permalink: /language/libraries
         - title: Keywords
-          permalink: /language/keywords 
+          permalink: /language/keywords
     - title: Types
       children:
         - title: Built-in types
@@ -51,7 +51,7 @@
         - title: Typedefs
           permalink: /language/typedefs
         - title: Type system
-          permalink: /language/type-system 
+          permalink: /language/type-system
     - title: Patterns
       children:
         - title: Overview & usage
@@ -69,7 +69,7 @@
     - title: Error handling
       permalink: /language/error-handling
     - title: Classes & objects
-      children: 
+      children:
         - title: Classes
           permalink: /language/classes
         - title: Constructors
@@ -89,7 +89,7 @@
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Concurrency
-      children: 
+      children:
         - title: Asynchronous support
           permalink: /language/async
         - title: Isolates
@@ -111,18 +111,19 @@
 
 - title: Effective Dart
   expanded: false
+  permalink: /effective-dart
   children:
     - title: Overview
       match-page-url-exactly: true
-      permalink: /guides/language/effective-dart
+      permalink: /effective-dart
     - title: Style
-      permalink: /guides/language/effective-dart/style
+      permalink: /effective-dart/style
     - title: Documentation
-      permalink: /guides/language/effective-dart/documentation
+      permalink: /effective-dart/documentation
     - title: Usage
-      permalink: /guides/language/effective-dart/usage
+      permalink: /effective-dart/usage
     - title: Design
-      permalink: /guides/language/effective-dart/design
+      permalink: /effective-dart/design
 
 - title: Core libraries
   expanded: false
@@ -275,9 +276,9 @@
           permalink: /tools/dart-create
         - title: dart doc
           permalink: /tools/dart-doc
-        - title: dart fix 
+        - title: dart fix
           permalink: /tools/dart-fix
-        - title: dart format 
+        - title: dart format
           permalink: /tools/dart-format
         - title: dart info
           permalink: /tools/dart-info
@@ -329,7 +330,7 @@
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification
-      permalink: /guides/language/spec    
+      permalink: /guides/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
     - title: Coming from ...
