@@ -272,7 +272,7 @@ Like parenthesized expressions, parentheses in a pattern let you control
 pattern where a higher precedence one is expected.
 
 For example, imagine the boolean constants `x`, `y`, and `z` are 
-equivalent to `true`, `true`, and `false`, respectively:
+equal to `true`, `true`, and `false`, respectively:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
 ``` dart
