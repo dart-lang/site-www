@@ -284,7 +284,8 @@ x || y && z => 'matches true',
 
 In the first case, the logical-and pattern `y && z` evaluates first because
 logical-and patterns have higher precedence than logical-or.
-If you enclose the logical-or pattern in parentheses in the next case, the pattern evaluates first. This results in a different match.
+In the next case, the logical-or pattern is parenthesized. It evaluates first,
+which results in a different match.
 
 
 ## List
