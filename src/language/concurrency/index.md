@@ -318,7 +318,7 @@ setting up and managing worker isolates:
   instead of `Isolate.run()`.
   On the [web](#web), the `compute` function falls back
   to running the specified function on the current event loop.
-  Use `Isolate.run()` when targeting native platforms only
+  Use `Isolate.run()` when targeting native platforms only,
   for a more ergonomic API.
 {{site.alert.end}}
 
