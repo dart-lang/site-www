@@ -70,6 +70,19 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 
 {{lint.details}}
 
+#### Usage
+
+To enable the `{{lint.name}}` rule,
+add `{{lint.name}}` under **linter > rules** in your
+[`analysis_options.yaml`](https://dart.dev/guides/language/analysis-options)
+file:
+
+```yaml
+linter:
+  rules:
+    - {{lint.name}}
+```
+
 {% endif %}
 
 {% endfor %}

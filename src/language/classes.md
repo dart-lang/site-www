@@ -288,7 +288,7 @@ Static variables aren’t initialized until they’re used.
 
 {{site.alert.note}}
   This page follows the [style guide
-  recommendation](/guides/language/effective-dart/style#identifiers)
+  recommendation](/effective-dart/style#identifiers)
   of preferring `lowerCamelCase` for constant names.
 {{site.alert.end}}
 
@@ -343,4 +343,4 @@ can pass a static method as a parameter to a constant constructor.
 [Getters and setters]: /language/methods#getters-and-setters
 [initializer list]: /language/constructors#initializer-list
 [factory constructor]: /language/constructors#factory-constructors
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+[late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers

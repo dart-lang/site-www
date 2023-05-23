@@ -32,7 +32,7 @@ More information:
 * [Effective Dart: Style][style guidelines]
 
 [dart format]: /tools/dart-format
-[Effective Dart]: /guides/language/effective-dart
-[formatting guidelines]: /guides/language/effective-dart/style#formatting
+[Effective Dart]: /effective-dart
+[formatting guidelines]: /effective-dart/style#formatting
 [ide]: /tools/#ides-and-editors
-[style guidelines]: /guides/language/effective-dart/style
+[style guidelines]: /effective-dart/style

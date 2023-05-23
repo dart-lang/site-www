@@ -82,7 +82,7 @@ or through the IDE.
 For more information about Dart conventions and linting,
 check out [Effective Dart][] and [Linter rules][]. 
 
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 
 ## Variables
@@ -116,7 +116,7 @@ You can replace `var` in Dart with an explicit type.
 However, by convention, [`var` is recommended
 when the analyzer can implicitly infer the type][inference].
 
-[inference]: /guides/language/effective-dart/design#types
+[inference]: /effective-dart/design#types
 
 ```dart
 // Declare a variable first:
@@ -542,7 +542,7 @@ let count = str?.count ?? 0
 ```
 
 Additionally, Dart offers a
-[null safe version of the cascade operator][] (`?..`),
+null safe version of the cascade operator (`?..`),
 which ignores any operations when
 the target object is `null`.
 Dart also offers the null assignment operator (`??=`),
@@ -2711,8 +2711,8 @@ You might notice that this process is similar to how
 you add comments for various documentation generation
 tools in Swift.
 
-[doc comments]: /guides/language/effective-dart/documentation
-[dartdoc]: /tools/dart-doc
+[doc comments]: /effective-dart/documentation
+[`dart doc`]: /tools/dart-doc
 
 As in Swift, you define a doc comment by
 using three forward slashes instead of two (`///`):

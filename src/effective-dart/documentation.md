@@ -2,10 +2,10 @@
 title: "Effective Dart: Documentation"
 description: Clear, helpful comments and documentation.
 nextpage:
-  url: /guides/language/effective-dart/usage
+  url: /effective-dart/usage
   title: Usage
 prevpage:
-  url: /guides/language/effective-dart/style
+  url: /effective-dart/style
   title: Style
 ---
 
@@ -27,7 +27,7 @@ likely that you're doing too little. Try to step it up.
 The following tips apply to comments that you don't want included in the
 generated documentation.
 
-### DO format comments like sentences.
+### DO format comments like sentences
 
 {:.good}
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
@@ -40,7 +40,7 @@ Capitalize the first word unless it's a case-sensitive identifier. End it with a
 period (or "!" or "?", I suppose). This is true for all comments: doc comments,
 inline stuff, even TODOs. Even if it's a sentence fragment.
 
-### DON'T use block comments for documentation.
+### DON'T use block comments for documentation
 
 {:.good}
 <?code-excerpt "docs_good.dart (block-comments)"?>
@@ -73,7 +73,7 @@ and uses the special `///` syntax that `dart doc` looks for.
 [`dart doc`]: /tools/dart-doc
 [docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 
-### DO use `///` doc comments to document members and types.
+### DO use `///` doc comments to document members and types
 
 {% include linter-rule-mention.md rule="slash_for_doc_comments" %}
 
@@ -104,14 +104,14 @@ when a doc comment contains a bulleted list that uses `*` to mark list items.
 If you stumble onto code that still uses the JavaDoc style, consider cleaning it
 up.
 
-### PREFER writing doc comments for public APIs.
+### PREFER writing doc comments for public APIs
 
 {% include linter-rule-mention.md rule1="package_api_docs" rule2="public_member_api_docs"%}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
 
-### CONSIDER writing a library-level doc comment.
+### CONSIDER writing a library-level doc comment
 
 Unlike languages like Java where the class is the only unit of program
 organization, in Dart, a library is itself an entity that users work with
@@ -137,13 +137,13 @@ at the start of the file.
 library;
 {% endprettify %}
 
-### CONSIDER writing doc comments for private APIs.
+### CONSIDER writing doc comments for private APIs
 
 Doc comments aren't just for external consumers of your library's public API.
 They can also be helpful for understanding private members that are called from
 other parts of the library.
 
-### DO start doc comments with a single-sentence summary.
+### DO start doc comments with a single-sentence summary
 
 Start your doc comment with a brief, user-centric description ending with a
 period. A sentence fragment is often sufficient. Provide just enough context for
@@ -171,7 +171,7 @@ void delete(String path) {
 }
 {% endprettify %}
 
-### DO separate the first sentence of a doc comment into its own paragraph.
+### DO separate the first sentence of a doc comment into its own paragraph
 
 Add a blank line after the first sentence to split it out into its own
 paragraph. If more than a single sentence of explanation is useful, put the
@@ -204,7 +204,7 @@ void delete(String path) {
 }
 {% endprettify %}
 
-### AVOID redundancy with the surrounding context.
+### AVOID redundancy with the surrounding context
 
 The reader of a class's doc comment can clearly see the name of the class, what
 interfaces it implements, etc. When reading docs for a member, the signature is
@@ -243,7 +243,7 @@ It's better to say nothing
 than waste a reader's time telling them something they already know.
 
 
-### PREFER starting function or method comments with third-person verbs.
+### PREFER starting function or method comments with third-person verbs
 
 The doc comment should focus on what the code *does*.
 
@@ -259,7 +259,7 @@ void start() {
 }
 {% endprettify %}
 
-### PREFER starting a non-boolean variable or property comment with a noun phrase.
+### PREFER starting a non-boolean variable or property comment with a noun phrase
 
 The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
@@ -275,7 +275,7 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase.
+### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
 The doc comment should clarify the states this variable represents. 
 This is true even for getters which may do calculation or other work. 
@@ -300,7 +300,7 @@ bool get canResize => ...
   especially when used in this context.
 {{site.alert.end}}
 
-### DON'T write documentation for both the getter and setter of a property.
+### DON'T write documentation for both the getter and setter of a property
 
 If a property has both a getter and a setter, then create a doc comment for
 only one of them. `dart doc` treats the getter and setter like a single field,
@@ -327,7 +327,7 @@ int get waterDepth => ...
 set waterDepth(int meters) => ...
 {% endprettify %}
 
-### PREFER starting library or type comments with noun phrases.
+### PREFER starting library or type comments with noun phrases
 
 Doc comments for classes are often the most important documentation in your
 program. They describe the type's invariants, establish the terminology it uses,
@@ -343,7 +343,7 @@ extra effort here can make all of the other members simpler to document.
 class Chunk { ... }
 {% endprettify %}
 
-### CONSIDER including code samples in doc comments.
+### CONSIDER including code samples in doc comments
 
 {:.good}
 <?code-excerpt "docs_good.dart (code-sample)"?>
@@ -359,7 +359,7 @@ num min(num a, num b) => ...
 Humans are great at generalizing from examples, so even a single code sample
 makes an API easier to learn.
 
-### DO use square brackets in doc comments to refer to in-scope identifiers.
+### DO use square brackets in doc comments to refer to in-scope identifiers
 
 {% include linter-rule-mention.md rule="comment_references" %}
 
@@ -393,7 +393,7 @@ constructor, use `.new` after the class name:
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 {% endprettify %}
 
-### DO use prose to explain parameters, return values, and exceptions.
+### DO use prose to explain parameters, return values, and exceptions
 
 Other languages use verbose tags and sections to describe what the parameters
 and returns of a method are.
@@ -424,7 +424,7 @@ and highlight parameters using square brackets.
 Flag addFlag(String name, String abbr) => ...
 {% endprettify %}
 
-### DO put doc comments before metadata annotations.
+### DO put doc comments before metadata annotations
 
 {:.good}
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
@@ -509,18 +509,18 @@ a flavor of what's supported:
 /// #### If you need this many levels of headers, you're doing it wrong
 {% endprettify %}
 
-### AVOID using markdown excessively.
+### AVOID using markdown excessively
 
 When in doubt, format less. Formatting exists to illuminate your content, not
 replace it. Words are what matter.
 
-### AVOID using HTML for formatting.
+### AVOID using HTML for formatting
 
 It *may* be useful to use it in rare cases for things like tables, but in almost
 all cases, if it's too complex to express in Markdown, you're better off not
 expressing it.
 
-### PREFER backtick fences for code blocks.
+### PREFER backtick fences for code blocks
 
 Markdown has two ways to indicate a block of code: indenting the code four
 spaces on each line, or surrounding it in a pair of triple-backtick "fence"
@@ -560,17 +560,17 @@ This section lists a few guidelines for our docs. You can learn more about
 best practices for technical writing, in general, from articles such as
 [Technical writing style](https://en.wikiversity.org/wiki/Technical_writing_style).
 
-### PREFER brevity.
+### PREFER brevity
 
 Be clear and precise, but also terse.
 
-### AVOID abbreviations and acronyms unless they are obvious.
+### AVOID abbreviations and acronyms unless they are obvious
 
 Many people don't know what "i.e.", "e.g." and "et al." mean. That acronym
 that you're sure everyone in your field knows may not be as widely known as you
 think.
 
-### PREFER using "this" instead of "the" to refer to a member's instance.
+### PREFER using "this" instead of "the" to refer to a member's instance
 
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.

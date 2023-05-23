@@ -3,7 +3,7 @@
   url: /language
 - name: Effective Dart
   description: Best practices for building consistent, maintainable, efficient Dart code.
-  url: /guides/language/effective-dart
+  url: /effective-dart
 - name: Library tour
   description: An example-based introduction to the major features in the Dart SDK's core libraries.
   url: /guides/libraries/library-tour

@@ -72,7 +72,7 @@ problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
 You can also configure linter rules,
 to ensure that your code complies with the
-[Dart Style Guide](/guides/language/effective-dart/style)
+[Dart Style Guide](/effective-dart/style)
 and other suggested guidelines in [Effective Dart][]. 
 Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
@@ -590,4 +590,4 @@ Use the following resources to learn more about static analysis in Dart:
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart

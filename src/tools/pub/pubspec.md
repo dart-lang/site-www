@@ -383,13 +383,16 @@ the pattern is considered relative to the package's root directory.
 
 ### Screenshots
 
-Packages can showcase their widgets or other visual elements using screenshots
-displayed on their page.
+Packages can showcase their widgets or other visual elements
+using screenshots displayed on their pub.dev page. 
+To specify screenshots for the package to display,
+use the `screenshots` field.
 
 A package can list up to 10 screenshots under the `screenshots` field.
+Don't include logos or other branding imagery in this section.
 Each screenshot includes one `description` and one `path`. 
-The `description` explains what the screenshot depicts in no more than 160 
-characters. 
+The `description` explains what the screenshot depicts in
+no more than 160 characters. 
 For example:
 
 ```yaml
