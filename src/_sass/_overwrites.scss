@@ -99,11 +99,11 @@ body.homepage {
   h3 {
     text-align: left;
     background: none;
-    font-size: $font-size-h4;
+    font-size: $h4-font-size;
 
-    @include media-breakpoint-up(md) { font-size: $font-size-h4 * 0.9; }
-    @include media-breakpoint-up(lg) { font-size: $font-size-h4; }
-    @include media-breakpoint-up(xl) { font-size: $font-size-h3; }
+    @include media-breakpoint-up(md) { font-size: $h4-font-size * 0.9; }
+    @include media-breakpoint-up(lg) { font-size: $h4-font-size; }
+    @include media-breakpoint-up(xl) { font-size: $h3-font-size; }
 
     font-weight: 300;
     line-height: 150%;
