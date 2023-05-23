@@ -600,8 +600,8 @@ analyzer:
   Prior to Dart 3 `%APPDATA%\Pub\Cache` was a fallback location for pub-cache.
   Starting with Dart 3, the default pub-cache is located at
   `%LOCALAPPDATA%\Pub\Cache`.
-  If you have added globally activated packages to your `PATH`, you may wish
-  to update `PATH` to contain `%LOCALAPPDATA%\Pub\Cache\bin`.
+  If you have added globally activated packages to your `PATH`, consider
+  updating `PATH` to contain `%LOCALAPPDATA%\Pub\Cache\bin`.
 
 #### Scope
 
