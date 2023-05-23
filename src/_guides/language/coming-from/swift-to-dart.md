@@ -540,7 +540,7 @@ let count = str?.count ?? 0
 ```
 
 In addition, Dart offers a
-[null safe version of the cascade operator][] (`?..`).
+null safe version of the cascade operator (`?..`).
 This operator ignores any operations when
 the target expression resolves to `null`.
 Dart also offers the null assignment operator (`??=`),
