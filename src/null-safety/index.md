@@ -17,7 +17,7 @@ This means Dart considers all variables _non-nullable_.
 You can assign values of the declared type only, like `int i=42`.
 You can never assign a value of `null` to default variable types.
 To specify that a variable type can have a `null` value, add a `?` after
-the type label: `int? i`.
+the type annotation: `int? i`.
 These specific types can contain either a `null` _or_
 a value of the defined type.
 
