@@ -263,4 +263,21 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion wildcard-typed
   }
+
+  {
+    const x = true;
+    const y = true;
+    const z = false;
+    var result = true;
+
+    var token = switch (result) {
+      // #docregion parens
+      // ...
+      x || y && z => 'matches true',
+      (x || y) && z => 'matches false',
+      // ...
+      // #enddocregion parens
+      _ => throw FormatException('Invalid')
+    };
+  }
 }

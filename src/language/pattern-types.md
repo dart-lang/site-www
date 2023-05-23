@@ -7,6 +7,98 @@ This page is a reference for the different kinds of patterns.
 For an overview of how patterns work, where you can use them in Dart, and common
 use cases, visit the main [Patterns][] page.
 
+#### Pattern precedence
+
+Similar to [operator precedence](/language/operators#operator-precedence-example),
+pattern evaluation adheres to precedence rules.
+You can use [parenthesized patterns](#parenthesized) to 
+evaluate lower-precedence patterns first.  
+
+This document lists the pattern types in ascending order of precedence:
+
+* [Logical-or](#logical-or) patterns are lower-precedence than [logical-and](#logical-and),
+logical-and patterns are lower-precedence than [relational](#relational) patterns,
+and so on. 
+
+* Post-fix unary patterns ([cast](#cast), [null-check](#null-check),
+and [null-assert](#null-assert)) share the same level of precedence. 
+
+* The remaining primary patterns share the highest precedence.
+Collection-type ([record](#record), [list](#list), and [map](#map))
+and [Object](#object) patterns encompass other
+data, so are evaluated first as outer-patterns. 
+
+## Logical-or
+
+`subpattern1 || subpattern2`
+
+A logical-or pattern separates subpatterns by `||` and matches if any of the
+branches match. Branches are evaluated left-to-right. Once a branch matches, the
+rest are not evaluated.
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
+```dart
+var isPrimary = switch (color) {
+  Color.red || Color.yellow || Color.blue => true,
+  _ => false
+};
+```
+
+Subpatterns in a logical-or pattern can bind variables, but the branches must
+define the same set of variables, because only one branch will be evaluated when
+the pattern matches.
+
+## Logical-and	
+
+`subpattern1 && subpattern2`
+
+A pair of patterns separated by `&&` matches only if both subpatterns match. If the
+left branch does not match, the right branch is not evaluated.
+
+Subpatterns in a logical-and pattern can bind variables, but the variables in
+each subpattern must not overlap, because they will both be bound if the pattern
+matches:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-and)"?>
+```dart
+switch ((1, 2)) {
+  // Error, both subpatterns attempt to bind 'b'.
+  case (var a, var b) && (var b, var c): // ...
+}
+```
+
+## Relational
+
+`== expression`
+
+`< expression`
+
+Relational patterns compare the matched value to a given constant using any of
+the equality or relational operators: `==`, `!=`, `<`, `>`, `<=`, and `>=`.
+
+The pattern matches when calling the appropriate operator on the matched value
+with the constant as an argument returns `true`.
+
+Relational patterns are useful for matching on numeric ranges, especially when
+combined with the [logical-and pattern](#logical-and):
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (relational)"?>
+```dart
+String asciiCharType(int char) {
+  const space = 32;
+  const zero = 48;
+  const nine = 57;
+
+  return switch (char) {
+    < space => 'control',
+    == space => 'space',
+    > space && < zero => 'punctuation',
+    >= zero && <= nine => 'digit',
+    _ => ''
+  };
+}
+```
+
 ## Cast
 
 `foo as String`
@@ -23,6 +115,60 @@ var (i as int, s as String) = record;
 Cast patterns will [throw][] if the value doesn't have the stated type.
 Like the [null-assert pattern](#null-assert), this lets you forcibly assert the
 expected type of some destructured value.
+
+## Null-check	
+
+`subpattern?`
+
+Null-check patterns match first if the value is not null, and then match the inner
+pattern against that same value. They let you bind a variable whose type is the
+non-nullable base type of the nullable value being matched.
+
+To treat `null` values as match failures
+without throwing, use the null-check pattern.
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-check)"?>
+```dart
+String? maybeString = 'nullable with base type String';
+switch (maybeString) {
+  case var s?:
+  // 's' has type non-nullable String here.
+}
+```
+
+To match when the value _is_ null, use the [constant pattern](#constant) `null`.
+
+## Null-assert	
+
+`subpattern!`
+
+Null-assert patterns match first if the object is not null, then on the value.
+They permit non-null values to flow through, but [throw][] if the matched value
+is null. 
+
+To ensure `null` values are not silently treated as match failures,
+use a null-assert pattern while matching:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-match)"?>
+```dart
+List<String?> row = ['user', null];
+switch (row) {
+  case ['user', var name!]: // ...
+  // 'name' is a non-nullable string here.
+}
+```
+
+To eliminate `null` values from variable declaration patterns,
+use the null-assert pattern:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-dec)"?>
+```dart
+(int?, int?) position = (2, 3);
+
+var (x!, y!) = position;
+```
+
+To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
 ## Constant	
 
@@ -59,6 +205,39 @@ case [a, b]: // ...
 case const [a, b]: // ...
 ```
 
+## Variable
+
+`var bar, String str, final int _`
+
+Variable patterns bind new variables to values that have been matched or destructured. 
+They usually occur as part of a [destructuring pattern][destructure] to
+capture a destructured value.
+
+The variables are in scope in a region of code that is only reachable when the
+pattern has matched.
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
+```dart
+switch ((1, 2)) {
+  // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
+  case (var a, var b): // ...
+  // 'a' and 'b' are in scope in the case body.
+}
+```
+
+A _typed_ variable pattern only matches if the matched value has the declared type,
+and fails otherwise:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
+```dart
+switch ((1, 2)) {
+  // Does not match.
+  case (int a, String b): // ...
+}
+```
+
+You can use a [wildcard pattern](#wildcard) as a variable pattern. 
+
 ## Identifier	
 
 `foo, _`
@@ -83,6 +262,31 @@ Identifier patterns may behave like a [constant pattern](#constant) or like a
   ``` 
 - [Wildcard](#wildcard) identifier in any context: matches any value and discards it:
   `case [_, var y, _]: print('The middle element is $y');`
+
+## Parenthesized
+
+`(subpattern)`
+
+Like parenthesized expressions, parentheses in a pattern let you control
+[pattern precedence](#pattern-precedence) and insert a lower-precedence
+pattern where a higher precedence one is expected.
+
+For example, imagine the boolean constants `x`, `y`, and `z` are 
+equal to `true`, `true`, and `false`, respectively:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
+``` dart
+// ...
+x || y && z => 'matches true',
+(x || y) && z => 'matches false',
+// ...
+```
+
+In the first case, the logical-and pattern `y && z` evaluates first because
+logical-and patterns have higher precedence than logical-or.
+In the next case, the logical-or pattern is parenthesized. It evaluates first,
+which results in a different match.
+
 
 ## List
 
@@ -125,45 +329,6 @@ var [a, b, ...rest, c, d] = [1, 2, 3, 4, 5, 6, 7];
 print('$a $b $rest $c $d');
 ```
 
-## Logical-and	
-
-`subpattern1 && subpattern2`
-
-A pair of patterns separated by `&&` matches only if both subpatterns match. If the
-left branch does not match, the right branch is not evaluated.
-
-Subpatterns in a logical-and pattern can bind variables, but the variables in
-each subpattern must not overlap, because they will both be bound if the pattern
-matches:
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-and)"?>
-```dart
-switch ((1, 2)) {
-  // Error, both subpatterns attempt to bind 'b'.
-  case (var a, var b) && (var b, var c): // ...
-}
-```
-
-## Logical-or
-
-`subpattern1 || subpattern2`
-
-A logical-or pattern separates subpatterns by `||` and matches if any of the
-branches match. Branches are evaluated left-to-right. Once a branch matches, the
-rest are not evaluated.
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
-```dart
-var isPrimary = switch (color) {
-  Color.red || Color.yellow || Color.blue => true,
-  _ => false
-};
-```
-
-Subpatterns in a logical-or pattern can bind variables, but the branches must
-define the same set of variables, because only one branch will be evaluated when
-the pattern matches.
-
 ## Map
 
 `{"key": subpattern1, someConst: subpattern2}`
@@ -173,96 +338,6 @@ match its subpatterns against the map’s keys to destructure them.
 
 Map patterns don't require the pattern to match the entire map. A map pattern
 ignores any keys that the map contains that aren't matched by the pattern.
-
-## Null-assert	
-
-`subpattern!`
-
-Null-assert patterns match first if the object is not null, then on the value.
-They permit non-null values to flow through, but [throw][] if the matched value
-is null. 
-
-To ensure `null` values are not silently treated as match failures,
-use a null-assert pattern while matching:
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-match)"?>
-```dart
-List<String?> row = ['user', null];
-switch (row) {
-  case ['user', var name!]: // ...
-  // 'name' is a non-nullable string here.
-}
-```
-
-To eliminate `null` values from variable declaration patterns,
-use the null-assert pattern:
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-dec)"?>
-```dart
-(int?, int?) position = (2, 3);
-
-var (x!, y!) = position;
-```
-
-To match when the value _is_ null, use the [constant pattern](#constant) `null`.
-
-## Null-check	
-
-`subpattern?`
-
-Null-check patterns match first if the value is not null, and then match the inner
-pattern against that same value. They let you bind a variable whose type is the
-non-nullable base type of the nullable value being matched.
-
-To treat `null` values as match failures
-without throwing, use the null-check pattern.
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (null-check)"?>
-```dart
-String? maybeString = 'nullable with base type String';
-switch (maybeString) {
-  case var s?:
-  // 's' has type non-nullable String here.
-}
-```
-
-To match when the value _is_ null, use the [constant pattern](#constant) `null`.
-
-## Object
-
-`SomeClass(x: subpattern1, y: subpattern2)`
-
-Object patterns check the matched value against a given named type to destructure
-data using getters on the object's properties. They are [refuted][]
-if the value doesn't have the same type.
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>
-```dart
-switch (shape) {
-  // Matches if shape is of type Rect, and then against the properties of Rect.
-  case Rect(width: var w, height: var h): // ...
-}
-```  
-
-The getter name can be omitted and inferred from the [variable pattern](#variable)
-or [identifier pattern](#identifier) in the field subpattern:
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (object-getter)"?>
-```dart
-// Binds new variables x and y to the values of Point's x and y properties.
-var Point(:x, :y) = Point(1, 2);
-```
-
-Object patterns don't require the pattern to match the entire object.
-If an object has extra fields that the pattern doesn't destructure, it can still match.
-
-## Parenthesized
-
-`(subpattern)`
-
-Like parenthesized expressions, parentheses in a pattern let you control pattern
-precedence and insert a lower precedence pattern where a higher precedence one is
-expected.
 
 ## Record
 
@@ -309,70 +384,33 @@ var (untyped: untyped as int, typed: typed as String) = record;
 var (:untyped as int, :typed as String) = record;
 ```
 
-## Relational
+## Object
 
-`== expression`
+`SomeClass(x: subpattern1, y: subpattern2)`
 
-`< expression`
+Object patterns check the matched value against a given named type to destructure
+data using getters on the object's properties. They are [refuted][]
+if the value doesn't have the same type.
 
-Relational patterns compare the matched value to a given constant using any of
-the equality or relational operators: `==`, `!=`, `<`, `>`, `<=`, and `>=`.
-
-The pattern matches when calling the appropriate operator on the matched value
-with the constant as an argument returns `true`.
-
-Relational patterns are useful for matching on numeric ranges, especially when
-combined with the [logical-and pattern](#logical-and):
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (relational)"?>
+<?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>
 ```dart
-String asciiCharType(int char) {
-  const space = 32;
-  const zero = 48;
-  const nine = 57;
-
-  return switch (char) {
-    < space => 'control',
-    == space => 'space',
-    > space && < zero => 'punctuation',
-    >= zero && <= nine => 'digit',
-    _ => ''
-  };
+switch (shape) {
+  // Matches if shape is of type Rect, and then against the properties of Rect.
+  case Rect(width: var w, height: var h): // ...
 }
+```  
+
+The getter name can be omitted and inferred from the [variable pattern](#variable)
+or [identifier pattern](#identifier) in the field subpattern:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (object-getter)"?>
+```dart
+// Binds new variables x and y to the values of Point's x and y properties.
+var Point(:x, :y) = Point(1, 2);
 ```
 
-## Variable
-
-`var bar, String str, final int _`
-
-Variable patterns bind new variables to values that have been matched or destructured. 
-They usually occur as part of a [destructuring pattern][destructure] in order to
-capture a destructured value.
-
-The variables are in scope in a region of code that is only reachable when the
-pattern has matched.
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
-```dart
-switch ((1, 2)) {
-  // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
-  case (var a, var b): // ...
-  // 'a' and 'b' are in scope in the case body.
-}
-```
-
-A _typed_ variable pattern only matches if the matched value has the declared type,
-and fails otherwise:
-
-<?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
-```dart
-switch ((1, 2)) {
-  // Does not match.
-  case (int a, String b): // ...
-}
-```
-
-You can use a [wildcard pattern](#wildcard) as a variable pattern. 
+Object patterns don't require the pattern to match the entire object.
+If an object has extra fields that the pattern doesn't destructure, it can still match.
 
 ## Wildcard
 
