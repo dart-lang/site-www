@@ -2,14 +2,12 @@
   expanded: false
   children:
     - title: Tutorials
-      urlExactMatch: true
       match-page-url-exactly: true
       permalink: /tutorials
     - title: Codelabs
       expanded: true
       children:
         - title: List of Dart codelabs
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
         - title: Language cheatsheet
@@ -39,27 +37,39 @@
         - title: Libraries & imports
           permalink: /language/libraries
         - title: Keywords
-          permalink: /language/keywords 
+          permalink: /language/keywords
     - title: Types
       children:
         - title: Built-in types
           permalink: /language/built-in-types
+        - title: Records
+          permalink: /language/records
         - title: Collections
           permalink: /language/collections
-        - title: Typedefs
-          permalink: /language/typedefs
         - title: Generics
           permalink: /language/generics
+        - title: Typedefs
+          permalink: /language/typedefs
         - title: Type system
-          permalink: /language/type-system 
+          permalink: /language/type-system
+    - title: Patterns
+      children:
+        - title: Overview & usage
+          permalink: /language/patterns
+        - title: Pattern types
+          permalink: /language/pattern-types
     - title: Functions
       permalink: /language/functions
     - title: Control flow
-      permalink: /language/control-flow
+      children:
+      - title: Loops
+        permalink: /language/loops
+      - title: Branches
+        permalink: /language/branches
     - title: Error handling
       permalink: /language/error-handling
     - title: Classes & objects
-      children: 
+      children:
         - title: Classes
           permalink: /language/classes
         - title: Constructors
@@ -68,16 +78,18 @@
           permalink: /language/methods
         - title: Extend a class
           permalink: /language/extend
-        - title: Extension methods
-          permalink: /language/extension-methods
-        - title: Enum types
-          permalink: /language/enum
         - title: Mixins
           permalink: /language/mixins
-        - title: Callable classes
-          permalink: /language/callable-classes
+        - title: Class modifiers
+          permalink: /language/class-modifiers
+        - title: Enum types
+          permalink: /language/enum
+        - title: Extension methods
+          permalink: /language/extension-methods
+        - title: Callable objects
+          permalink: /language/callable-objects
     - title: Concurrency
-      children: 
+      children:
         - title: Asynchronous support
           permalink: /language/async
         - title: Isolates
@@ -86,7 +98,6 @@
       expanded: false
       children:
         - title: Sound null safety
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
@@ -100,25 +111,24 @@
 
 - title: Effective Dart
   expanded: false
+  permalink: /effective-dart
   children:
     - title: Overview
-      urlExactMatch: true
       match-page-url-exactly: true
-      permalink: /guides/language/effective-dart
+      permalink: /effective-dart
     - title: Style
-      permalink: /guides/language/effective-dart/style
+      permalink: /effective-dart/style
     - title: Documentation
-      permalink: /guides/language/effective-dart/documentation
+      permalink: /effective-dart/documentation
     - title: Usage
-      permalink: /guides/language/effective-dart/usage
+      permalink: /effective-dart/usage
     - title: Design
-      permalink: /guides/language/effective-dart/design
+      permalink: /effective-dart/design
 
 - title: Core libraries
   expanded: false
   children:
     - title: Overview
-      urlExactMatch: true
       match-page-url-exactly: true
       permalink: /guides/libraries
     - title: Tour
@@ -189,7 +199,6 @@
     - title: Command-line & server apps
       children:
         - title: Overview
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /server
         - title: Get started
@@ -207,7 +216,6 @@
     - title: Web apps
       children:
         - title: Overview
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /web
         - title: Get started
@@ -232,7 +240,6 @@
   expanded: false
   children:
   - title: Overview
-    urlExactMatch: true
     match-page-url-exactly: true
     permalink: /tools
   - title: Editors & debuggers
@@ -246,7 +253,6 @@
       - title: DartPad
         children:
           - title: Overview
-            urlExactMatch: true
             match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: DartPad in tutorials
@@ -262,7 +268,6 @@
           permalink: /tools/sdk
         - title: dart
           permalink: /tools/dart-tool
-          urlExactMatch: true
         - title: dart analyze
           permalink: /tools/dart-analyze
         - title: dart compile
@@ -271,9 +276,9 @@
           permalink: /tools/dart-create
         - title: dart doc
           permalink: /tools/dart-doc
-        - title: dart fix 
+        - title: dart fix
           permalink: /tools/dart-fix
-        - title: dart format 
+        - title: dart format
           permalink: /tools/dart-format
         - title: dart info
           permalink: /tools/dart-info
@@ -325,7 +330,9 @@
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification
-      permalink: /guides/language/spec    
+      permalink: /guides/language/spec
+    - title: Dart 3 migration guide
+      permalink: /resources/dart-3-migration
     - title: Coming from ...
       expanded: false
       children:
@@ -351,8 +358,3 @@
       permalink: https://flutter.dev
     - title: Package site
       permalink: https://pub.dev
-
-# - title: Books
-#   permalink: /resources/books
-# - title: Videos
-#   permalink: /resources/videos

@@ -135,7 +135,7 @@ b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // Increment a AFTER b gets its value.
+b = a++; // Increment a after b gets its value.
 assert(a != b); // 1 != 0
 
 a = 0;
@@ -143,7 +143,7 @@ b = --a; // Decrement a before b gets its value.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--; // Decrement a AFTER b gets its value.
+b = a--; // Decrement a after b gets its value.
 assert(a != b); // -1 != 0
 ```
 
@@ -502,6 +502,6 @@ For more information about the `.`, `?.`, and `..` operators, see
 [identical()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
-[if-else]: /language/control-flow#if-and-else
+[if-else]: /language/branches#if
 [language version]: /guides/language/evolution#language-versioning
 [Classes]: /language/classes

@@ -18,5 +18,5 @@ dev_dependencies:
   build_web_compilers: ^3.2.7
   dart_style: ^2.2.4
   grinder: ^0.9.3
-  lints: ^2.0.1
-  test: ^1.19.2
+  lints: ^2.1.0
+  test: ^1.24.2

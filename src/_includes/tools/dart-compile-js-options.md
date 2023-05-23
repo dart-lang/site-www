@@ -60,8 +60,8 @@ Some other handy options include:
 
 `--packages=<path>`
 : Specifies the path to the package resolution configuration file.
-  For more information, see
-  [Dart Package Configuration File.][]
+  For more information, check out the
+  [Dart package configuration file][] specification.
 
 `-D<flag>=<value>`
 : Defines an environment declaration and value pair
@@ -74,6 +74,7 @@ Some other handy options include:
 `--version`
 : Displays version information for `dart`.
 
+[Dart package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 [`String.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
 [`int.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
 [`bool.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html

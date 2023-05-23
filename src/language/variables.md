@@ -34,7 +34,7 @@ String name = 'Bob';
 
 {{site.alert.note}}
   This page follows the
-  [style guide recommendation](/guides/language/effective-dart/design#types)
+  [style guide recommendation](/effective-dart/design#types)
   of using `var`, rather than type annotations, for local variables.
 {{site.alert.end}}
 
@@ -237,11 +237,11 @@ For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
 
-[Assert]: /language/control-flow#assert
+[Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
-[DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
+[DON’T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly
 [type checks and casts]: /language/operators#type-test-operators
-[collection `if`]: /language/collections#collection-operators
+[collection `if`]: /language/collections#control-flow-operators
 [spread operators]: /language/collections#spread-operators
 [Lists]: /language/collections#lists
 [Maps]: /language/collections#maps

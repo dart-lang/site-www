@@ -58,7 +58,7 @@ var [!controller = StreamController<String>()!];
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - Close instances of `dart.core.Sink`. - close_sinks
+info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 </blockquote>
 
@@ -72,7 +72,7 @@ problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
 You can also configure linter rules,
 to ensure that your code complies with the
-[Dart Style Guide](/guides/language/effective-dart/style)
+[Dart Style Guide](/effective-dart/style)
 and other suggested guidelines in [Effective Dart][]. 
 Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
@@ -225,7 +225,7 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
+warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
 {{site.alert.info}}
@@ -236,7 +236,7 @@ info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_co
   for an exhaustive list of inference failure conditions.
 {{site.alert.end}}
 
-[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
@@ -257,7 +257,7 @@ for (final n in numbers) {
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
+warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
 ## Enabling and disabling linter rules {#enabling-linter-rules}
@@ -590,4 +590,4 @@ Use the following resources to learn more about static analysis in Dart:
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart

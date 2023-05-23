@@ -9,6 +9,8 @@
 {% if lint.sinceDartSdk == "Unreleased" %}
 _This rule is currently **experimental**
 and not yet available in a stable SDK._
+{% elsif lint.state == "removed" %}
+_This rule has been removed as of the latest Dart releases._
 {% elsif lint.state != "stable" %}
 _This rule is currently **{{lint.state}}**
 and available as of Dart {{lint.sinceDartSdk}}._
@@ -67,6 +69,19 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 #### Details
 
 {{lint.details}}
+
+#### Usage
+
+To enable the `{{lint.name}}` rule,
+add `{{lint.name}}` under **linter > rules** in your
+[`analysis_options.yaml`](https://dart.dev/guides/language/analysis-options)
+file:
+
+```yaml
+linter:
+  rules:
+    - {{lint.name}}
+```
 
 {% endif %}
 
