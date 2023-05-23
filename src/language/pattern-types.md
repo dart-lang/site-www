@@ -35,6 +35,7 @@ A logical-or pattern separates subpatterns by `||` and matches if any of the
 branches match. Branches are evaluated left-to-right. Once a branch matches, the
 rest are not evaluated.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-or)"?>
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
@@ -57,10 +58,11 @@ Subpatterns in a logical-and pattern can bind variables, but the variables in
 each subpattern must not overlap, because they will both be bound if the pattern
 matches:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (logical-and)"?>
 ```dart
 switch ((1, 2)) {
   // Error, both subpatterns attempt to bind 'b'.
-  case (var a, var b) && (var b, var c): // ... 
+  case (var a, var b) && (var b, var c): // ...
 }
 ```
 
@@ -79,6 +81,7 @@ with the constant as an argument returns `true`.
 Relational patterns are useful for matching on numeric ranges, especially when
 combined with the [logical-and pattern](#logical-and):
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (relational)"?>
 ```dart
 String asciiCharType(int char) {
   const space = 32;
@@ -89,9 +92,9 @@ String asciiCharType(int char) {
     < space => 'control',
     == space => 'space',
     > space && < zero => 'punctuation',
-    >= zero && <= nine => 'digit'
-    // Etc...
-  }
+    >= zero && <= nine => 'digit',
+    _ => ''
+  };
 }
 ```
 
@@ -123,11 +126,12 @@ non-nullable base type of the nullable value being matched.
 To treat `null` values as match failures
 without throwing, use the null-check pattern.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-check)"?>
 ```dart
-String? maybeString = // ... maybeString is nullable with the base type String.
+String? maybeString = 'nullable with base type String';
 switch (maybeString) {
-  case var s?: ...
-    // 's' has type non-nullable String here.
+  case var s?:
+  // 's' has type non-nullable String here.
 }
 ```
 
@@ -144,20 +148,21 @@ is null.
 To ensure `null` values are not silently treated as match failures,
 use a null-assert pattern while matching:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-match)"?>
 ```dart
-List<String?> row = // ...
-
+List<String?> row = ['user', null];
 switch (row) {
   case ['user', var name!]: // ...
-    // 'name' is a non-nullable string here.
+  // 'name' is a non-nullable string here.
 }
 ```
 
 To eliminate `null` values from variable declaration patterns,
 use the null-assert pattern:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (null-assert-dec)"?>
 ```dart
-(int?, int?) position = // ...
+(int?, int?) position = (2, 3);
 
 var (x!, y!) = position;
 ```
@@ -210,6 +215,7 @@ capture a destructured value.
 The variables are in scope in a region of code that is only reachable when the
 pattern has matched.
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
 ```dart
 switch ((1, 2)) {
   // 'var a' and 'var b' are variable patterns that bind to 1 and 2, respectively.
@@ -221,6 +227,7 @@ switch ((1, 2)) {
 A _typed_ variable pattern only matches if the matched value has the declared type,
 and fails otherwise:
 
+<?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
 ```dart
 switch ((1, 2)) {
   // Does not match.
@@ -266,13 +273,11 @@ pattern where a higher precedence one is expected.
 For example, imagine the boolean constants `x`, `y`, and `z` are 
 equivalent to `true`, `true`, and `false`, respectively:
 
-<?code-excerpt "language/lib/patterns/switch.dart (parens)"?>
+<?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
 ``` dart
 // ...
-case x || y && z:
-  'matches true';
-case (x || y) && z:
-  'matches false';
+x || y && z => 'matches true',
+(x || y) && z => 'matches false',
 // ...
 ```
 
@@ -386,7 +391,7 @@ Object patterns check the matched value against a given named type to destructur
 data using getters on the object's properties. They are [refuted][]
 if the value doesn't have the same type.
 
-<?code-excerpt "language/lib/patterns/pattern_types.dart (variable)"?>
+<?code-excerpt "language/lib/patterns/pattern_types.dart (object)"?>
 ```dart
 switch (shape) {
   // Matches if shape is of type Rect, and then against the properties of Rect.
@@ -397,7 +402,7 @@ switch (shape) {
 The getter name can be omitted and inferred from the [variable pattern](#variable)
 or [identifier pattern](#identifier) in the field subpattern:
 
-<?code-excerpt "language/lib/patterns/pattern_types.dart (variable-typed)"?>
+<?code-excerpt "language/lib/patterns/pattern_types.dart (object-getter)"?>
 ```dart
 // Binds new variables x and y to the values of Point's x and y properties.
 var Point(:x, :y) = Point(1, 2);

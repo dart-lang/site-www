@@ -81,24 +81,4 @@ void main() {
     }
     // #enddocregion or-share-guard
   }
-
-  {
-    const x = true;
-    const y = true;
-    const z = false;
-    var result = true;
-
-    switch (result) {
-      // #docregion parens
-      // ...
-      case x || y && z:
-        'matches true';
-      case (x || y) && z:
-        'matches false';
-      // ...
-      // #enddocregion parens
-      default:
-        throw FormatException('Invalid');
-    }
-  }
 }
