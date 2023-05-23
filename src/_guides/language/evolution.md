@@ -37,6 +37,22 @@ environment:
 
 ## Changes in each release
 
+### Dart 3.0
+_Released 10 May 2023_
+| [Dart 3.0 announcement](https://medium.com/dartlang/announcing-dart-3-53f065a10635)
+
+Dart 3.0 introduced several new major language features:
+
+* [Patterns][], a new category of grammar that lets you match and destructure values.
+* [Records][], a new type that lets you aggregate multiple values of different types
+  in a single function return.
+* [Class modifiers][], a new set of keywords that let you control how a class or
+  mixin can be used.
+
+[Patterns]: /language/patterns
+[Records]: /language/records
+[Class modifiers]: /language/class-modifiers
+
 ### Dart 2.19
 _Released 25 January 2023_
 
@@ -57,7 +73,7 @@ annotations, can and [should][] now be written without a name:
 library;
 ```
 
-[should]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[should]: /effective-dart/style#dont-explicitly-name-libraries
 
 ### Dart 2.18
 _Released 30 August 2022_

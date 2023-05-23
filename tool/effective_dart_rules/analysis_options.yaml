@@ -16,6 +16,7 @@ linter:
     - only_throw_errors
     - package_api_docs
     - prefer_final_in_for_each
+    - prefer_final_locals
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first

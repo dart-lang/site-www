@@ -395,4 +395,4 @@ var loggerJson = Logger.fromJson(logMap);
 
 [language version]: /guides/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+[late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers

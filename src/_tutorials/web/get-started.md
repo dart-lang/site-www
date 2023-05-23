@@ -212,7 +212,7 @@ Check out these resources:
 * Dart language, libraries, and conventions
   * [Language tour](/language)
   * [Library tour](/guides/libraries/library-tour)
-  * [Effective Dart](/guides/language/effective-dart)
+  * [Effective Dart](/effective-dart)
 * Tools & libraries
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
