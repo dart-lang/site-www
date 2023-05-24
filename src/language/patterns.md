@@ -60,10 +60,10 @@ For example, the individual fields of any [collection-type][] pattern could be
 <?code-excerpt "language/lib/patterns/switch.dart (list-pattern)"?>
 ```dart
 switch (obj) {
-  // List pattern [a, b] matches obj first if obj is a list with two fields,
+  // List pattern ['a', 'b'] matches obj first if obj is a list with two fields,
   // then if its fields match the constant subpatterns 'a' and 'b'.
-  case [a, b]:
-    print('$a, $b');
+  case ['a', 'b']:
+    print('pattern matched');
 }
 ```
 
