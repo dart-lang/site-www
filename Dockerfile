@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="caab438213bffba5ab704d88155710327f0fc4326594224714271bf823dfdc70"; \
+        DART_SHA256="0ed1bd52359b583336c2a3a85fb59661d557c2ec84c51360e23f9b98a61f50ff"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="d05d9052fe8eba57d4838cea5a29577a34988d882ea9610096f137f256409d03"; \
+        DART_SHA256="99ebbb0f2a2f6fe0d0c2df839ca750558949d7cc88ea3315c70ff95e11fa42a9"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="1edcf9e1c5be94633fa025614866d49c437322ab3cc759822645287ddb9bfd62"; \
@@ -45,10 +45,10 @@ RUN set -eu; \
         DART_SHA256="63442bd94a4bcb043fccf9f3f22a5ca846fbb3a3933eea84dcfe8502f8f767de"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="b60573251ee22613164df137343156f9dc397ad86c90c24bc189a9727caa63ef"; \
+        DART_SHA256="20cd173d78b9fb7e0b68d348e98580daa9055d605196b081ecaa4a95aa2150bc"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="534f3ddaf3b4e7dfbd541bee4ce3de813371e01726869f490e21f0f56ceddb52"; \
+        DART_SHA256="aa3a99c4600b7ed6344bad1a99703ebb6106c5e685967cada4597a89cfcf55d7"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -125,7 +125,7 @@ EXPOSE 35729
 
 # Firebase emulator port
 # Airplay runs on :5000 by default now
-EXPOSE 5500 
+EXPOSE 5500
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog
