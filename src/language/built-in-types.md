@@ -45,8 +45,8 @@ Some other types also have special roles in the Dart language:
 {% endcomment %}
 
 The `Object`, `Object?`, `Null`, and `Never` classes
-have special roles in the class hierarchy,
-as described in [Understanding null safety][].
+have special roles in the class hierarchy.
+Learn about these roles in [Understanding null safety][].
 
 {% comment %}
 If we decide to cover `dynamic` more,

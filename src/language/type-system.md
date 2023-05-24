@@ -466,15 +466,6 @@ This assignment doesn't pass static analysis
 because it creates an implicit downcast, 
 which is disallowed from non-`dynamic` types such as `Animal`.
 
-{{site.alert.version-note}}
-  In packages that use a [language version][] before 2.12
-  (when support for [null safety][] was introduced),
-  code can implicitly downcast from these non-`dynamic` types.
-  You can disallow non-`dynamic` downcasts in a pre-2.12 project
-  by specifying `implicit-casts: false` 
-  in the [analysis options file.][analysis]
-{{site.alert.end}}
-
 To make this type of code pass static analysis, 
 you can use an explicit cast. 
 
@@ -513,7 +504,7 @@ The following resources have further information on sound Dart:
 * [Fixing type promotion failures](/tools/non-promotion-reasons) - 
   Understand and learn how to fix type promotion errors.
 * [Sound null safety](/null-safety) - 
-  Learn about writing code with sound null safety enabled.
+  Learn about writing code with sound null safety.
 * [Customizing static analysis][analysis] - 
   How to set up and customize the analyzer and linter
   using an analysis options file.

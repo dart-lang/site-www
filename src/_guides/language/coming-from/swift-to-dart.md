@@ -11,8 +11,8 @@ and introduces Dart concepts that aren't present in Swift.
 As a Swift developer, Dart might feel familiar,
 as both languages share many concepts. 
 
-Both Swift and Dart support sound null safety&mdash;in
-each language, variables can't be null by default.
+Both Swift and Dart support sound null safety. 
+Neither language allows variables to be null by default.
  
 Like Swift, Dart has similar support for
 [collections](#collections), [generics](#generics),
@@ -516,14 +516,12 @@ check out [Strings][] in the Dart language tour.
 Booleans represent a binary value in both Dart
 (`bool`) and Swift (`Bool`).
 
-### Null safety 
+### Null safety
 
-Dart supports null safety, making any type
-non-nullable by default (as of Dart 2.12).
-This works pretty much the same as Swift's _optionals_.
-By default, types can't contain a null value,
-unless marked as `nullable` (`optional` in Swift),
-with a question mark at the end of the type.
+Dart enforces sound null safety.
+By default, types don't allow a null value unless marked as nullable.
+Dart indicates this with a question mark (`?`) at the end of the type.
+This works like Swift's _optionals_.
 
 ### Null-aware operators
 
@@ -541,21 +539,20 @@ let str: String? = nil
 let count = str?.count ?? 0
 ```
 
-Additionally, Dart offers a
-null safe version of the cascade operator (`?..`),
-which ignores any operations when
-the target object is `null`.
+In addition, Dart offers a
+null safe version of the cascade operator (`?..`).
+This operator ignores any operations when
+the target expression resolves to `null`.
 Dart also offers the null assignment operator (`??=`),
 which Swift doesn't.
-It allows you to only assign a value to a variable
-with a nullable type when its current value is `null`.
-It's expressed as `a ??= b;` and is shorthand for
-the following:
+If a variable with a nullable type has a current value of `null`,
+this operator assigns a value to that variable.
+Expressed as `a ??= b;`, it serves as shorthand for the following:
 
 ```dart
 a = a ?? b;
 
-// equivalent to:
+// Assign b to a if a is null; otherwise, a stays the same
 a ??= b; 
 ```
 
@@ -767,9 +764,8 @@ func multiply(_ a: Int, _ b: Int) -> Int {
 ```
 
 When creating named parameters in Dart,
-they must be defined separately in a
-block of curly braces,
-after any positional parameters:
+define them in a separate block of curly braces,
+after positional parameters:
 
 ```dart
 int multiply(int a, int b, {int c = 1, int d = 1}) {
@@ -790,14 +786,15 @@ func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
 }
 ```
 
-Named parameters must have a default value,
-be marked as nullable (which defaults to a `null` value,
-if not explicitly provided), or be marked as `required`
-for the function to compile.
-Nullable types and [null safety](#null-safety)
-are covered in a later section.
+Named parameters must include one of the following:
 
-To make a named parameter required in Dart,
+* A default value
+* A `?` at the end of the type to set the type as nullable
+* The keyword `required` before the variable type
+
+To learn more about nullable types, check out [null safety](#null-safety).
+
+To mark a named parameter as required in Dart,
 you must prefix it with the `required` keyword:
 
 ```dart
@@ -808,7 +805,7 @@ int multiply(int a, int b, { required int c }) {
 multiply(3, 5, c: 2);
 ```
 
-Lastly, a third parameter type is the _optional
+A third parameter type is the _optional
 positional parameter_. As the name suggests,
 these are similar to the default positional parameters,
 but they can be omitted when calling the function.
@@ -834,7 +831,7 @@ func multiply(_ a: Int, _ b: Int, _ c: Int = 1, _ d: Int = 1) -> Int {
 ```
 
 Like named parameters, optional positional parameters
-must have either a default value or a nullable type. 
+must have either a default value or a nullable type.
 
 ### First-class functions
 
