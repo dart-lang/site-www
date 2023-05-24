@@ -61,7 +61,6 @@ For example, the individual fields of any [collection-type][] pattern could be
 ```dart
 const a = 'a';
 const b = 'b';
-var obj = Object();
 switch (obj) {
   // List pattern [a, b] matches obj first if obj is a list with two fields,
   // then if its fields match the constant subpatterns 'a' and 'b'.
