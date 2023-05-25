@@ -1,6 +1,12 @@
 ---
 title: Branches 
 description: Learn how to use branches to control the flow of your Dart code.
+prevpage:
+  url: /language/loops
+  title: Loops
+nextpage:
+  url: /language/error-handling
+  title: Error handling
 ---
 
 This page shows how you can control the flow of your Dart code using branches:

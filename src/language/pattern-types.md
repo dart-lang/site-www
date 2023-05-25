@@ -1,6 +1,12 @@
 ---
 title: Pattern types
 description: Pattern type reference in Dart.
+prevpage:
+  url: /language/patterns
+  title: Patterns
+nextpage:
+  url: /language/functions
+  title: Functions
 ---
 
 This page is a reference for the different kinds of patterns.

@@ -1,6 +1,12 @@
 ---
 title: Built-in types
 description: Information on the types Dart supports.
+prevpage:
+  url: /language/keywords
+  title: Keywords
+nextpage:
+  url: /language/records
+  title: Records
 ---
 
 The Dart language has special support for the following:

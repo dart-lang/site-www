@@ -1,6 +1,12 @@
 ---
 title: Methods
 description: Learn about methods in Dart.
+prevpage:
+  url: /language/constructors
+  title: Constructors
+nextpage:
+  url: /language/extend
+  title: Extend a class
 ---
 
 Methods are functions that provide behavior for an object.

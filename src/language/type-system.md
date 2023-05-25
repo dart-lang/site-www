@@ -1,6 +1,12 @@
 ---
 title: The Dart type system
 description: Why and how to write sound Dart code.
+prevpage:
+  url: /language/typedefs
+  title: Typedefs
+nextpage:
+  url: /language/patterns
+  title: Patterns
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt path-base="type_system"?>

@@ -1,6 +1,13 @@
 ---
 title: Libraries & imports
+short-title: Libraries
 description: Guidance on importing and implementing libraries.
+prevpage:
+  url: /language/metadata
+  title: Metadata
+nextpage:
+  url: /language/keywords
+  title: Keywords
 ---
 
 The `import` and `library` directives can help you create a

@@ -1,6 +1,12 @@
 ---
 title: Loops 
 description: Learn how to use loops to control the flow of your Dart code.
+prevpage:
+  url: /language/functions
+  title: Functions
+nextpage:
+  url: /language/branches
+  title: Branches
 ---
 
 This page shows how you can control the flow of your Dart code using loops and

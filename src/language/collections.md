@@ -1,6 +1,12 @@
 ---
 title: Collections
 description: Summary of the different types of collections in Dart.
+prevpage:
+  url: /language/records
+  title: Records
+nextpage:
+  url: /language/Generics
+  title: Generics
 ---
 
 Dart has built-in support for list, set, and map [collections][].
