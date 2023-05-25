@@ -733,7 +733,7 @@ body.error {
   }
 
   background-color: #132030;
-  background-image: asset_url('404-bg-pattern.jpg');
+  background-image: url('/assets/img/404-bg-pattern.jpg');
   color: #8d9399;
 
   @media(min-width: 1600px) {
