@@ -5,7 +5,7 @@ prevpage:
   url: /language/records
   title: Records
 nextpage:
-  url: /language/Generics
+  url: /language/generics
   title: Generics
 ---
 
