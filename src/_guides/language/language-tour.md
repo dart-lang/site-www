@@ -360,19 +360,19 @@ This content has moved to [Extension methods](/language/extension-methods).
 <a id="enums"></a>
 ### Enumerated types
 
-This content has moved to [Enumerated types](/language/enum).
+This content has moved to [Enumerated types](/language/enums).
 
 #### Declaring simple enums
 
-This content has moved to [Enumerated types](/language/enum#declaring-simple-enums).
+This content has moved to [Enumerated types](/language/enums#declaring-simple-enums).
 
 #### Declaring enhanced enums
 
-This content has moved to [Enumerated types](/language/enum#declaring-enhanced-enums).
+This content has moved to [Enumerated types](/language/enums#declaring-enhanced-enums).
 
 #### Using enums
 
-This content has moved to [Enumerated types](/language/enum#using-enums).
+This content has moved to [Enumerated types](/language/enums#using-enums).
 
 <a id="mixins"></a>
 ### Adding features to a class: mixins

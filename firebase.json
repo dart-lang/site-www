@@ -186,6 +186,7 @@
       { "source": "/language/callable-classes", "destination": "/language/callable-objects", "type": 301 },
       { "source": "/language/collection-types", "destination": "/language/collections", "type": 301 },
       { "source": "/language/control-flow", "destination": "/language/loops", "type": 301 },
+      { "source": "/language/enum", "destination": "/language/enums", "type": 301 },
       { "source": "/language/generators", "destination": "/language/functions#generators", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
