@@ -1624,7 +1624,7 @@ and even override existing members.
 For more information, check out
 [Declaring enhanced enums][] in the Dart language tour.
 
-[Declaring enhanced enums]: /language/enum#declaring-enhanced-enums
+[Declaring enhanced enums]: /language/enums#declaring-enhanced-enums
 
 ### Constructors 
 

@@ -273,7 +273,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/language/enum) about enums in Dart,
+[Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 

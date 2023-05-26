@@ -132,7 +132,7 @@ To learn more about these features, check out:
 * [Super parameters][]
 * [Named parameters][]
 
-[Enhanced enums]: /language/enum#declaring-enhanced-enums
+[Enhanced enums]: /language/enums#declaring-enhanced-enums
 [Super parameters]: /language/constructors#super-parameters
 [Named parameters]: /language/functions#named-parameters
 
