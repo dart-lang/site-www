@@ -85,10 +85,10 @@ jobs:
 
   stage:
     permissions:
+      contents: read
       checks: write
       pull-requests: write
     if: ${{ github.ref != 'refs/heads/main' }}
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
