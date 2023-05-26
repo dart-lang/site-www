@@ -6,7 +6,7 @@ prevpage:
   url: /language/mixins
   title: Mixins
 nextpage:
-  url: /language/enum
+  url: /language/enums
   title: Enums
 ---
 

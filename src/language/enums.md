@@ -1,7 +1,7 @@
 ---
 title: Enumerated types
 description: Learn about the enum type in Dart.
-short-title: Enum
+short-title: Enums
 prevpage:
   url: /language/class-modifiers
   title: Class modifiers

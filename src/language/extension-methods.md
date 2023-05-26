@@ -2,7 +2,7 @@
 title: Extension methods
 description: Learn how to add to existing APIs.
 prevpage:
-  url: /language/enum
+  url: /language/enums
   title: Enums
 nextpage:
   url: /language/callable-objects
