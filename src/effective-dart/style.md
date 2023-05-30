@@ -2,10 +2,10 @@
 title: "Effective Dart: Style"
 description: Formatting and naming rules for consistent, readable code.
 nextpage:
-  url: /guides/language/effective-dart/documentation
+  url: /effective-dart/documentation
   title: Documentation
 prevpage:
-  url: /guides/language/effective-dart
+  url: /effective-dart
   title: Overview
 ---
 <?code-excerpt plaster="none"?>
@@ -33,7 +33,7 @@ Identifiers come in three flavors in Dart.
     and separate words with `_`.
 
 
-### DO name types using `UpperCamelCase`.
+### DO name types using `UpperCamelCase`
 
 {% include linter-rule-mention.md rule="camel_case_types" %}
 
@@ -80,7 +80,7 @@ class C { ... }
 
 [Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
-### DO name extensions using `UpperCamelCase`.
+### DO name extensions using `UpperCamelCase`
 
 {% include linter-rule-mention.md rule="camel_case_extensions" %}
 
@@ -99,7 +99,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 [extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
-### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
+### DO name packages, directories, and source files using `lowercase_with_underscores` {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
 {% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
 <!-- source for rules (update these if you update the guideline):
@@ -128,7 +128,7 @@ mypackage
 ```
 
 
-### DO name import prefixes using `lowercase_with_underscores`.
+### DO name import prefixes using `lowercase_with_underscores`
 
 {% include linter-rule-mention.md rule="library_prefixes" %}
 
@@ -149,7 +149,7 @@ import 'package:js/js.dart' as JS;
 {% endprettify %}
 
 
-### DO name other identifiers using `lowerCamelCase`.
+### DO name other identifiers using `lowerCamelCase`
 
 {% include linter-rule-mention.md rule="non_constant_identifier_names" %}
 
@@ -170,7 +170,7 @@ void align(bool clearItems) {
 {% endprettify %}
 
 
-### PREFER using `lowerCamelCase` for constant names.
+### PREFER using `lowerCamelCase` for constant names
 
 {% include linter-rule-mention.md rule="constant_identifier_names" %}
 
@@ -222,7 +222,7 @@ as in the following cases:
 [protobufs.]: {{site.pub-pkg}}/protobuf
 
 
-### DO capitalize acronyms and abbreviations longer than two letters like words.
+### DO capitalize acronyms and abbreviations longer than two letters like words
 
 Capitalized acronyms can be hard to read, and
 multiple adjacent acronyms can lead to ambiguous names.
@@ -262,7 +262,7 @@ ID iD;
 {% endprettify %}
 
 
-### PREFER using `_`, `__`, etc. for unused callback parameters.
+### PREFER using `_`, `__`, etc. for unused callback parameters
 
 Sometimes the type signature of a callback function requires a parameter,
 but the callback implementation doesn't _use_ the parameter.
@@ -286,7 +286,7 @@ so their parameters must be named so that it's clear what each parameter is for,
 even if it isn't used.
 
 
-### DON'T use a leading underscore for identifiers that aren't private.
+### DON'T use a leading underscore for identifiers that aren't private
 
 Dart uses a leading underscore in an identifier to mark members and top-level
 declarations as private. This trains users to associate a leading underscore
@@ -298,7 +298,7 @@ underscore, it sends a confusing signal to the reader. To avoid that, don't use
 leading underscores in those names.
 
 
-### DON'T use prefix letters.
+### DON'T use prefix letters
 
 [Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
 other schemes arose in the time of BCPL, when the compiler didn't do much to
@@ -351,7 +351,7 @@ A single linter rule handles all the ordering guidelines:
 [directives_ordering.](/tools/linter-rules#directives_ordering)
 
 
-### DO place `dart:` imports before other imports.
+### DO place `dart:` imports before other imports
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
@@ -366,7 +366,7 @@ import 'package:foo/foo.dart';
 {% endprettify %}
 
 
-### DO place `package:` imports before relative imports.
+### DO place `package:` imports before relative imports
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
@@ -380,7 +380,7 @@ import 'util.dart';
 {% endprettify %}
 
 
-### DO specify exports in a separate section after all imports.
+### DO specify exports in a separate section after all imports
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
@@ -402,7 +402,7 @@ import 'src/foo_bar.dart';
 {% endprettify %}
 
 
-### DO sort sections alphabetically.
+### DO sort sections alphabetically
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 
@@ -434,7 +434,7 @@ consistent whitespace style helps ensure that human readers see code the same
 way the compiler does.
 
 
-### DO format your code using `dart format`.
+### DO format your code using `dart format`
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
@@ -448,7 +448,7 @@ for you.
 [`dart format`]: /tools/dart-format
 [dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
 
-### CONSIDER changing your code to make it more formatter-friendly.
+### CONSIDER changing your code to make it more formatter-friendly
 
 The formatter does the best it can with whatever code you throw at it, but it
 can't work miracles. If your code has particularly long identifiers, deeply
@@ -463,7 +463,7 @@ formatting the code by hand and trying to make it more readable. Think of
 to produce beautiful code.
 
 
-### AVOID lines longer than 80 characters.
+### AVOID lines longer than 80 characters
 
 {% include linter-rule-mention.md rule="lines_longer_than_80_chars" %}
 
@@ -489,7 +489,7 @@ an import or export), it may remain whole even if it causes the line to go over
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
-### DO use curly braces for all flow control statements. {#do-use-curly-braces-for-all-flow-control-structures}
+### DO use curly braces for all flow control statements {#do-use-curly-braces-for-all-flow-control-structures}
 
 {% include linter-rule-mention.md rule="curly_braces_in_flow_control_structures" %}
 

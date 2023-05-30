@@ -9,12 +9,6 @@ hands-on coding experience—no download required!
 
 ## General
 
-<img src="/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
-### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
-
-Use DartPad to explore how
-Dart makes writing apps easy and fun.
-
 ### [Dart cheatsheet](/codelabs/dart-cheatsheet)
 
 Use DartPad to learn or remind yourself of
@@ -39,8 +33,7 @@ write more readable and maintainable Dart code.
 
 ### [Null safety](/codelabs/null-safety)
 
-Use DartPad to learn about Dart's null-safe type system,
-which was introduced in Dart 2.12.
+Use DartPad to learn about Dart's null-safe type system.
 
 ## Flutter
 

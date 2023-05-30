@@ -78,12 +78,12 @@ we made the following changes to this site:
 [Sound null safety]: /null-safety#dart-3-and-null-safety
 [unsound null safety]: /null-safety/unsound-null-safety
 [Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
-[booleans and equality operators]: /guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations
+[booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
 [Zones]: /articles/archive/zones
-[Documentation]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
-[Style]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
-[Usage]: /guides/language/effective-dart/usage#do-use-strings-in-part-of-directives
+[Documentation]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[Style]: /effective-dart/style#dont-explicitly-name-libraries
+[Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives
 [The language tour]: /language/libraries#library-directive
 [Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
 [Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
@@ -240,8 +240,8 @@ we made the following changes to this site:
 [Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
 
 [Named parameters]: /language/functions#named-parameters
-[Enumerated types]: /language/enum
-[enhanced enums]: /language/enum#declaring-enhanced-enums
+[Enumerated types]: /language/enums
+[enhanced enums]: /language/enums#declaring-enhanced-enums
 [super-initializer parameters]: /language/constructors#super-parameters
 [signing]: /tools/dart-compile#signing
 [`dart create`]: /tools/dart-create
@@ -338,7 +338,7 @@ we made the following changes to this site:
 [diagnostic messages]: /tools/diagnostic-messages
 [linter rules]: /tools/linter-rules
 [Dart SDK overview]: /tools/sdk
-[PREFER using interpolation to compose strings and values]: /guides/language/effective-dart/usage#prefer-using-interpolation-to-compose-strings-and-values
+[PREFER using interpolation to compose strings and values]: /effective-dart/usage#prefer-using-interpolation-to-compose-strings-and-values
 [`dart`]: /tools/dart-tool
 
 
@@ -576,7 +576,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [Unsound null safety]: /null-safety/unsound-null-safety
 [null safety homepage]: /null-safety
 [Overview page]: /overview
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /guides/libraries/library-tour
@@ -660,8 +660,8 @@ we made the following changes to this site:
 
 [dart-tool]: /tools/dart-tool
 [diagnostics]: /tools/diagnostic-messages
-[dynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
-[Effective Dart]: /guides/language/effective-dart
+[dynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[Effective Dart]: /effective-dart
 [evolution]: /guides/language/evolution
 [experiments]: /tools/experiment-flags#using-experiment-flags-with-ides
 [ns-enable]: /null-safety#enable-null-safety

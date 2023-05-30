@@ -428,7 +428,7 @@ main .content {
   }
 
   h3 {
-    font-size: $font-size-h2;
+    font-size: $h2-font-size;
   }
 
   a {
@@ -604,7 +604,7 @@ h3.popover-header {
   border: none;
   border-radius: 0;
   color: $site-color-body;
-  margin-top: 32px;
+  margin-top: 1rem;
   padding: 30px 30px;
 
   code {
@@ -733,7 +733,7 @@ body.error {
   }
 
   background-color: #132030;
-  background-image: asset_url('404-bg-pattern.jpg');
+  background-image: url('/assets/img/404-bg-pattern.jpg');
   color: #8d9399;
 
   @media(min-width: 1600px) {

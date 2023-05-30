@@ -1,6 +1,12 @@
 ---
 title: Error handling
 description: Learn about handling errors and exceptions in Dart.
+prevpage:
+  url: /language/branches
+  title: Branches
+nextpage:
+  url: /language/classes
+  title: Classes
 ---
 
 ## Exceptions

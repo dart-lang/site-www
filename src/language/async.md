@@ -1,6 +1,13 @@
 ---
 title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
+short-title: Async
+prevpage:
+  url: /language/callable-objects
+  title: Callable objects
+nextpage:
+  url: /language/concurrency
+  title: Concurrency
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>

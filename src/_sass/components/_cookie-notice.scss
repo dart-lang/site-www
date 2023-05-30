@@ -48,18 +48,21 @@
   }
 }
 
-body.homepage #cookie-notice {
-  background-color: $site-color-dark-background;
+body.homepage, .error {
 
-  .container {
-    p {
-      color: white;
-      
-      a {
-        color: $site-color-card-link;
+  #cookie-notice {
+    background-color: $site-color-dark-background;
 
-        &:hover, &:focus, &:active {
-          color: darken($site-color-card-link, 20%);
+    .container {
+      p {
+        color: white;
+
+        a {
+          color: $site-color-card-link;
+
+          &:hover, &:focus, &:active {
+            color: darken($site-color-card-link, 20%);
+          }
         }
       }
     }

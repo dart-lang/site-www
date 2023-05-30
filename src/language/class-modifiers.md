@@ -1,7 +1,16 @@
 ---
 title: Class modifiers
-description: Modifier keywords for class declarations to control external library access.
+description: >
+  Modifier keywords for class declarations to control external library access.
+prevpage:
+  url: /language/mixins
+  title: Mixins
+nextpage:
+  url: /language/enums
+  title: Enums
 ---
+
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 {{site.alert.version-note}}
   Class modifiers, besides `abstract`, require
@@ -47,27 +56,34 @@ entire interface, use the `abstract` modifier.
 Abstract classes cannot be constructed from any library, whether its own or
 an outside library. Abstract classes often have [abstract methods][].
 
+<?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart
 // Library a.dart
-abstract class Vehicle { 
-  void moveForward();     // Abstract method.
+abstract class Vehicle {
+  void moveForward(int meters);
 }
 ```
 
+<?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Error: Cannot be constructed
+// Error: Cannot be constructed
+Vehicle myVehicle = Vehicle();
 
-class Car extends Vehicle {  // Can be extended
-    int passengers;
-    // ...
+// Can be extended
+class Car extends Vehicle {
+  int passengers = 4;
+  // ···
 }
 
-class MockVehicle implements Vehicle {  // Can be implemented
-    @override
-    void moveForward(int meters) { ... }
+// Can be implemented
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
@@ -91,27 +107,36 @@ You must mark any class which implements or extends a base class as
 `base`, `final`, or `sealed`. This prevents outside libraries from
 breaking the base class guarantees.
 
+<?code-excerpt "language/lib/class_modifiers/ex2/a.dart"?>
 ```dart
 // Library a.dart
 base class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
+<?code-excerpt "language/lib/class_modifiers/ex2/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();            // Can be constructed
+// Can be constructed
+Vehicle myVehicle = Vehicle();
 
-base class Car extends Vehicle {  // Can be extended
-    int passengers;
-    // ...
+// Can be extended
+base class Car extends Vehicle {
+  int passengers = 4;
+  // ...
 }
 
-base class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented
-    @override
-    void moveForward { ... }
+// ERROR: Cannot be implemented
+base class MockVehicle implements Vehicle {
+  @override
+  void moveForward() {
+    // ...
+  }
 }
 ```
 
@@ -127,27 +152,36 @@ it will always invoke a known implementation of the method from the same library
 class's own methods might later call in unexpected ways.
 This reduces the [fragile base class problem][].
 
+<?code-excerpt "language/lib/class_modifiers/ex3/a.dart"?>
 ```dart
 // Library a.dart
 interface class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
+<?code-excerpt "language/lib/class_modifiers/ex3/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Can be constructed
+// Can be constructed
+Vehicle myVehicle = Vehicle();
 
-class Car extends Vehicle {  // ERROR: Cannot be inherited
-    int passengers;
-    // ...
+// ERROR: Cannot be inherited
+class Car extends Vehicle {
+  int passengers = 4;
+  // ...
 }
 
-class MockVehicle implements Vehicle {  // Can be implemented     
-    @override
-    void moveForward { ... }
+// Can be implemented
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
@@ -176,28 +210,36 @@ Final classes can be extended or implemented within the
 same library. The `final` modifier encompasses the effects of `base`, and
 therefore any subclasses must also be marked `base`, `final`, or `sealed`.
 
-
+<?code-excerpt "language/lib/class_modifiers/ex4/a.dart"?>
 ```dart
 // Library a.dart
 final class Vehicle {
-  void moveForward(int meters) { ... }
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
+<?code-excerpt "language/lib/class_modifiers/ex4/b.dart"?>
 ```dart
 // Library b.dart
 import 'a.dart';
 
-var myCar = Vehicle();       // Can be constructed
+// Can be constructed
+Vehicle myVehicle = Vehicle();
 
-class Car extends Vehicle {  // ERROR: Cannot be inherited
-    int passengers;
-    // ...
+// ERROR: Cannot be inherited
+class Car extends Vehicle {
+  int passengers = 4;
+  // ...
 }
 
-class MockVehicle implements Vehicle {  // ERROR: Cannot be implemented     
-    @override
-    void moveForward { ... }
+class MockVehicle implements Vehicle {
+  // ERROR: Cannot be implemented
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
 }
 ```
 
@@ -208,38 +250,43 @@ This allows you to create a switch over those subtypes that is statically ensure
 to be [_exhaustive_][exhaustive].
 
 The `sealed` modifier prevents a class from being extended or
-implemented outside its own library.
+implemented outside its own library. Sealed classes are implicitly
+[abstract](#abstract).
 
-Sealed classes also prevent construction,
-and are therefore implicitly [abstract](#abstract).
-However, subclasses of sealed classes can be constructed, 
-and sealed classes can have
-[factory constructors](/language/constructors#factory-constructors).
+- They cannot be constructed themselves.
+- They can have [factory constructors](/language/constructors#factory-constructors).
+- They can define constructors for their subclasses to use.
+
+Subclasses of sealed classes are, however, not implicitly abstract.
 
 The compiler is aware of any possible direct subtypes
 because they can only exist in the same library. 
 This allows the compiler to alert you when a switch does not
 exhaustively handle all possible subtypes in its cases:
 
+<?code-excerpt "language/lib/class_modifiers/ex5/sealed.dart"?>
 ```dart
-sealed class Vehicle { ... }
+sealed class Vehicle {}
 
-class Car extends Vehicle { }
-class Truck implements Vehicle { }
-class Bicycle extends Vehicle { }
+class Car extends Vehicle {}
 
-// ...
+class Truck implements Vehicle {}
 
-var vehicle = Vehicle();  // ERROR: Cannot be instantiated
-var vehicle = Car();      // Subclasses can be instantiated
+class Bicycle extends Vehicle {}
 
-// ...
+// ERROR: Cannot be instantiated
+Vehicle myVehicle = Vehicle();
 
-// ERROR: The switch is missing the Bicycle subtype or a default case.
-return switch (vehicle) {
-  Car() => 'vroom',
-  Truck() => 'VROOOOMM'
-};
+// Subclasses can be instantiated
+Vehicle myCar = Car();
+
+String getVehicleSound(Vehicle vehicle) {
+  // ERROR: The switch is missing the Bicycle subtype or a default case.
+  return switch (vehicle) {
+    Car() => 'vroom',
+    Truck() => 'VROOOOMM',
+  };
+}
 ```
 
 If you don’t want [exhaustive switching][exhaustive], 

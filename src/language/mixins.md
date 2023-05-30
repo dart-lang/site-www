@@ -2,6 +2,12 @@
 title: Mixins
 description: Learn how to add to features to a class in Dart.
 toc: false
+prevpage:
+  url: /language/extend
+  title: Extend a class
+nextpage:
+  url: /language/class-modifiers
+  title: Class modifiers
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -88,6 +94,50 @@ Because `SingerDancer` extends `Musician`,
 A `mixin` declaration defines a mixin. A `class` declaration defines a [class][].
 A `mixin class` declaration defines a class that is usable as both a regular class
 and a mixin, with the same name and the same type.
+
+Any restrictions that apply to classes or mixins also apply to mixin classes:
+
+- Mixins can't have `extends` or `with` clauses, so neither can a `mixin class`.
+- Classes can't have an `on` clause, so neither can a `mixin class`. 
+
+### `abstract mixin class`
+
+You can achieve similar behavior to the `on` directive for a mixin class. 
+Make the mixin class `abstract` and define the abstract methods its behavior 
+depends on:
+
+```dart
+abstract mixin class Musician {
+  // No 'on' clause, but an abstract method that other types must define if 
+  // they want to use (mix in or extend) Musician: 
+  void playInstrument(String instrumentName);
+
+  void playPiano() {
+    playInstrument('Piano');
+  }
+  void playFlute() {
+    playInstrument('Flute');
+  }
+}
+
+class Virtuoso with Musician { // Use Musician as a mixin
+  void playInstrument(String instrumentName) {
+    print('Plays the $instrumentName beautifully');
+  }  
+} 
+
+class Novice extends Musician { // Use Musician as a class
+  void playInstrument(String instrumentName) {
+    print('Plays the $instrumentName poorly');
+  }  
+} 
+```
+
+By declaring the `Musician` mixin as abstract, you force any type that uses
+it to define the abstract method upon which its behavior depends. 
+
+This is similar to how the `on` directive ensures a mixin has access to any
+interfaces it depends on by specifying the superclass of that interface.
 
 [language version]: /guides/language/evolution#language-versioning
 [class]: /language/classes

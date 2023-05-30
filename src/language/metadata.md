@@ -2,6 +2,12 @@
 title: Metadata
 description: Metadata and annotations in Dart.
 toc: false
+prevpage:
+  url: /language/comments
+  title: Comments
+nextpage:
+  url: /language/libraries
+  title: Libraries
 ---
 
 

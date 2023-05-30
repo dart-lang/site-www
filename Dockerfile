@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:70370316b02901d7db3f6e453d6259ed4d0d52326d6ac57e3a579f7e3b616e41 as base
+FROM ruby:3.2-slim-bullseye@sha256:506427360ecafed78530865257378ce4a287bd004315e5cafdd64690bcb56efe as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="0fdff25e6acba3d6094155a7e341634f8de3477e86c2fda4ad47232c1adf704f"; \
+        DART_SHA256="0ed1bd52359b583336c2a3a85fb59661d557c2ec84c51360e23f9b98a61f50ff"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="6913b7c0b3b78bc141d372cd473da21771e57372b1ab45c977ce1550c8ff0b9c"; \
+        DART_SHA256="99ebbb0f2a2f6fe0d0c2df839ca750558949d7cc88ea3315c70ff95e11fa42a9"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="1edcf9e1c5be94633fa025614866d49c437322ab3cc759822645287ddb9bfd62"; \
@@ -45,22 +45,21 @@ RUN set -eu; \
         DART_SHA256="63442bd94a4bcb043fccf9f3f22a5ca846fbb3a3933eea84dcfe8502f8f767de"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ab4662beed14739ee1b329dd920f10eada1d19226b28f09c56fcb2d0741fb613"; \
+        DART_SHA256="20cd173d78b9fb7e0b68d348e98580daa9055d605196b081ecaa4a95aa2150bc"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="e9641cab9d7b11ead212064da06112573fb09cf30cea3030d285b7f7f493e433"; \
+        DART_SHA256="aa3a99c4600b7ed6344bad1a99703ebb6106c5e685967cada4597a89cfcf55d7"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
     BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
-#    TODO(parlough): Re-enable when moving back to stable
-#    echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-#        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
-#        rm "$SDK" && \
-#        exit 1 \
-#    ); \
+    echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
+        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
+        rm "$SDK" && \
+        exit 1 \
+    ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
 ENV PUB_CACHE="${HOME}/.pub-cache"
 RUN dart --disable-analytics
@@ -126,7 +125,7 @@ EXPOSE 35729
 
 # Firebase emulator port
 # Airplay runs on :5000 by default now
-EXPOSE 5500 
+EXPOSE 5500
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog

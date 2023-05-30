@@ -1,6 +1,12 @@
 ---
 title: Extension methods
 description: Learn how to add to existing APIs.
+prevpage:
+  url: /language/enums
+  title: Enums
+nextpage:
+  url: /language/callable-objects
+  title: Callable objects
 ---
 
 Extension methods add functionality to existing libraries.

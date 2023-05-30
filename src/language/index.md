@@ -2,6 +2,9 @@
 title: Introduction to Dart
 description: A brief introduction to Dart programs and important concepts.
 short-title: Dart basics
+nextpage:
+  url: /language/variables
+  title: Variables
 ---
 
 This page provides a brief introduction to the Dart language
@@ -89,7 +92,7 @@ and [`assert`](/language/error-handling#assert).
 
 ## Functions
 
-[We recommend](/guides/language/effective-dart/design#types)
+[We recommend](/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
@@ -273,7 +276,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/language/enum) about enums in Dart,
+[Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
@@ -548,7 +551,7 @@ More code samples are in the the
 [library tour](/guides/libraries/library-tour)
 and the [Dart API reference,]({{site.dart-api}}).
 This site’s code follows the conventions in the
-[Dart style guide](/guides/language/effective-dart/style).
+[Dart style guide](/effective-dart/style).
 
 [Dart language specification]: /guides/language/spec
 [Comments]: /language/comments
@@ -558,7 +561,7 @@ This site’s code follows the conventions in the
 [ns]: /null-safety
 [`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [language version]: /guides/language/evolution#language-versioning
-[ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
 [if-else statement]: /language/branches#if

@@ -1,6 +1,12 @@
 ---
 title: Generics
 description: Learn about generic types in Dart.
+prevpage:
+  url: /language/collections
+  title: Collections
+nextpage:
+  url: /language/typedefs
+  title: Typedefs
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -217,5 +223,5 @@ allows you to use the type argument `T` in several places:
 * In the type of a local variable (`T tmp`).
 
 [`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[By convention]: /guides/language/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
+[By convention]: /effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
