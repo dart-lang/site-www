@@ -1,6 +1,12 @@
 ---
 title: Patterns
 description: Summary of patterns in Dart.
+prevpage:
+  url: /language/type-system
+  title: Type system
+nextpage:
+  url: /language/pattern-types
+  title: Pattern types
 ---
 
 {{site.alert.version-note}}

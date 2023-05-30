@@ -2,6 +2,12 @@
 title: Functions
 description: Everything about functions in Dart.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+prevpage:
+  url: /language/pattern-types
+  title: Pattern types
+nextpage:
+  url: /language/loops
+  title: Loops
 ---
 
 Dart is a true object-oriented language, so even functions are objects

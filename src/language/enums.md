@@ -2,6 +2,12 @@
 title: Enumerated types
 description: Learn about the enum type in Dart.
 short-title: Enums
+prevpage:
+  url: /language/class-modifiers
+  title: Class modifiers
+nextpage:
+  url: /language/extension-methods
+  title: Extension methods
 ---
 
 Enumerated types, often called _enumerations_ or _enums_,

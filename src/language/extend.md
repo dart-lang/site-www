@@ -1,6 +1,12 @@
 ---
 title: Extend a class
 description: Learn how to create subclasses from a superclass.
+prevpage:
+  url: /language/methods
+  title: Methods
+nextpage:
+  url: /language/mixins
+  title: Mixins
 ---
 
 Use `extends` to create a subclass, and `super` to refer to the

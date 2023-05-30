@@ -1,6 +1,13 @@
 ---
 title: Class modifiers
-description: Modifier keywords for class declarations to control external library access.
+description: >
+  Modifier keywords for class declarations to control external library access.
+prevpage:
+  url: /language/mixins
+  title: Mixins
+nextpage:
+  url: /language/enums
+  title: Enums
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>

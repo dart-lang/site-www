@@ -1,6 +1,12 @@
 ---
 title: Comments
 description: The different comment types in Dart.
+prevpage:
+  url: /language/operators
+  title: Operators
+nextpage:
+  url: /language/metadata
+  title: Metadata
 ---
 
 Dart supports single-line comments, multi-line comments, and

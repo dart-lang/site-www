@@ -2,6 +2,12 @@
 title: Keywords
 description: Keywords in Dart.
 toc: false
+prevpage:
+  url: /language/libraries
+  title: Libraries
+nextpage:
+  url: /language/built-in-types
+  title: Built-in types
 ---
 
 The following table lists the words that the Dart language treats specially.
