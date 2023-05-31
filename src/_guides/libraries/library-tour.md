@@ -1329,8 +1329,8 @@ void main() async {
     print(e.values[1]);    // Prints successful future
     print(e.values[2]);    // Prints null when the result is an error
 
-    print(e.errors[0]);    // Prints null when the result is succesful
-    print(e.errors[1]);    // Prints null when the result is succesful
+    print(e.errors[0]);    // Prints null when the result is successful
+    print(e.errors[1]);    // Prints null when the result is successful
     print(e.errors[2]);    // Prints error
   }
 
