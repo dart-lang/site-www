@@ -2,6 +2,9 @@
 title: Introduction to Dart
 description: A brief introduction to Dart programs and important concepts.
 short-title: Dart basics
+nextpage:
+  url: /language/variables
+  title: Variables
 ---
 
 This page provides a brief introduction to the Dart language
@@ -81,14 +84,15 @@ while (year < 2016) {
 }
 ```
 
-[Read more](/language/control-flow) 
-about control flow statements in Dart,
-including `break` and `continue`, `switch` and `case`, and `assert`.
+Read more about control flow statements in Dart,
+including [`break` and `continue`](/language/loops),
+[`switch` and `case`](/language/branches),
+and [`assert`](/language/error-handling#assert).
 
 
 ## Functions
 
-[We recommend](/guides/language/effective-dart/design#types)
+[We recommend](/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
@@ -272,7 +276,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/language/enum) about enums in Dart,
+[Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
@@ -326,8 +330,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 ## Interfaces and abstract classes
 
-Dart has no `interface` keyword. 
-Instead, all classes implicitly define an interface. 
+All classes implicitly define an interface. 
 Therefore, you can implement any class.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
@@ -337,7 +340,8 @@ class MockSpaceship implements Spacecraft {
 }
 ```
 
-[Read more](/language/classes#implicit-interfaces) about implicit interfaces.
+Read more about [implicit interfaces](/language/classes#implicit-interfaces), or
+about the explicit [`interface` keyword](/language/class-modifiers#interface).
 
 You can create an abstract class
 to be extended (or implemented) by a concrete class. 
@@ -359,7 +363,7 @@ Abstract classes can contain abstract methods (with empty bodies).
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
 
-[Read more](/language/classes#abstract-classes) 
+[Read more](/language/class-modifiers#abstract) 
 about abstract classes and methods.
 
 
@@ -547,7 +551,7 @@ More code samples are in the the
 [library tour](/guides/libraries/library-tour)
 and the [Dart API reference,]({{site.dart-api}}).
 This site’s code follows the conventions in the
-[Dart style guide](/guides/language/effective-dart/style).
+[Dart style guide](/effective-dart/style).
 
 [Dart language specification]: /guides/language/spec
 [Comments]: /language/comments
@@ -557,8 +561,8 @@ This site’s code follows the conventions in the
 [ns]: /null-safety
 [`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [language version]: /guides/language/evolution#language-versioning
-[ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
-[if-else statement]: /language/control-flow#if-and-else
+[if-else statement]: /language/branches#if
 [exception]: /language/error-handling#exceptions

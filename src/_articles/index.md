@@ -19,5 +19,5 @@ To find newer articles, see the
 
 Also see:
 
-* [Effective Dart](/guides/language/effective-dart)
+* [Effective Dart](/effective-dart)
 * [Tutorials](/tutorials)

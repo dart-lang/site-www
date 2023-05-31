@@ -1,6 +1,13 @@
 ---
 title: Libraries & imports
+short-title: Libraries
 description: Guidance on importing and implementing libraries.
+prevpage:
+  url: /language/metadata
+  title: Metadata
+nextpage:
+  url: /language/keywords
+  title: Keywords
 ---
 
 The `import` and `library` directives can help you create a
@@ -165,5 +172,5 @@ for advice on how to implement a library package, including:
   a library that supports multiple platforms.
 
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
-[doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

@@ -2,6 +2,12 @@
 title: Constructors
 description: Everything about using constructors in Dart.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+prevpage:
+  url: /language/classes
+  title: Classes
+nextpage:
+  url: /language/methods
+  title: Methods
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -395,4 +401,4 @@ var loggerJson = Logger.fromJson(logMap);
 
 [language version]: /guides/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+[late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers

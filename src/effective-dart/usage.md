@@ -2,10 +2,10 @@
 title: "Effective Dart: Usage"
 description: Guidelines for using language features to write maintainable code.
 nextpage:
-  url: /guides/language/effective-dart/design
+  url: /effective-dart/design
   title: Design
 prevpage:
-  url: /guides/language/effective-dart/documentation
+  url: /effective-dart/documentation
   title: Documentation
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
@@ -21,7 +21,7 @@ These guidelines help you compose your program out of multiple files in a
 consistent, maintainable way. To keep these guidelines brief, they use "import"
 to cover `import` and `export` directives. The guidelines apply equally to both. 
 
-### DO use strings in `part of` directives.
+### DO use strings in `part of` directives
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
@@ -33,7 +33,7 @@ Naming libraries is a legacy feature that is now [discouraged][].
 Library names can introduce ambiguity
 when determining which library a part belongs to.
 
-[discouraged]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[discouraged]: /effective-dart/style#dont-explicitly-name-libraries
 
 The preferred syntax is to use a URI string that points
 directly to the library file. 
@@ -62,7 +62,7 @@ Not the library name:
 part of my_library;
 {% endprettify %}
 
-### DON'T import libraries that are inside the `src` directory of another package.
+### DON'T import libraries that are inside the `src` directory of another package
 
 {% include linter-rule-mention.md rule="implementation_imports" %}
 
@@ -78,7 +78,7 @@ That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
 
-### DON'T allow an import path to reach into or out of `lib`.
+### DON'T allow an import path to reach into or out of `lib`
 
 {% include linter-rule-mention.md rule="avoid_relative_lib_imports" %}
 
@@ -131,7 +131,7 @@ A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
 
 
-### PREFER relative import paths.
+### PREFER relative import paths
 
 {% include linter-rule-mention.md rule="prefer_relative_imports" %}
 
@@ -183,7 +183,7 @@ import 'test_utils.dart'; // Relative within 'test' is fine.
 ## Null
 
 
-### DON'T explicitly initialize variables to `null`.
+### DON'T explicitly initialize variables to `null`
 
 {% include linter-rule-mention.md rule="avoid_init_to_null" %}
 
@@ -226,7 +226,7 @@ Item? bestDeal(List<Item> cart) {
 {% endprettify %}
 
 
-### DON'T use an explicit default value of `null`.
+### DON'T use an explicit default value of `null`
 
 {% include linter-rule-mention.md rule="avoid_init_to_null" %}
 
@@ -321,7 +321,7 @@ doesn’t promote the variable to a non-nullable type.
 If you want the variable to be promoted inside the body of the `if` statement,
 it's better to use an explicit `!= null` check instead of `??`. 
 
-### AVOID `late` variables if you need to check whether they are initialized.
+### AVOID `late` variables if you need to check whether they are initialized
 
 Dart offers no way to tell if a `late` variable
 has been initialized or assigned to.
@@ -344,7 +344,7 @@ Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
 
-### CONSIDER assigning a nullable field to a local variable to enable type promotion.
+### CONSIDER assigning a nullable field to a local variable to enable type promotion
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
@@ -411,7 +411,7 @@ value. Sometimes it's best to simply use `!` on the field.
 
 Here are some best practices to keep in mind when composing strings in Dart.
 
-### DO use adjacent strings to concatenate string literals.
+### DO use adjacent strings to concatenate string literals
 
 {% include linter-rule-mention.md rule="prefer_adjacent_string_concatenation" %}
 
@@ -434,7 +434,7 @@ raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
-### PREFER using interpolation to compose strings and values.
+### PREFER using interpolation to compose strings and values
 
 {% include linter-rule-mention.md rule="prefer_interpolation_to_compose_strings" %}
 
@@ -457,7 +457,7 @@ it's almost always cleaner and shorter to use interpolation:
 Note that this guideline applies to combining *multiple* literals and values.
 It's fine to use `.toString()` when converting only a single object to a string.
 
-### AVOID using curly braces in interpolation when not needed.
+### AVOID using curly braces in interpolation when not needed
 
 {% include linter-rule-mention.md rule="unnecessary_brace_in_string_interps" %}
 
@@ -481,7 +481,7 @@ var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
 Out of the box, Dart supports four collection types: lists, maps, queues, and sets.
 The following best practices apply to collections.
 
-### DO use collection literals when possible.
+### DO use collection literals when possible
 
 {% include linter-rule-mention.md rule="prefer_collection_literals" %}
 
@@ -517,7 +517,7 @@ and [`if` and `for`][control] for performing control flow while
 building the contents:
 
 [spread]: /language/collections#spread-operators
-[control]: /language/collections#collection-operators
+[control]: /language/collections#control-flow-operators
 
 {:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>
@@ -544,7 +544,7 @@ arguments.addAll(filePaths
 {% endprettify %}
 
 
-### DON'T use `.length` to see if a collection is empty.
+### DON'T use `.length` to see if a collection is empty
 
 {% include linter-rule-mention.md rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
 
@@ -572,7 +572,7 @@ if (!words.isEmpty) return words.join(' ');
 {% endprettify %}
 
 
-### AVOID using `Iterable.forEach()` with a function literal.
+### AVOID using `Iterable.forEach()` with a function literal
 
 {% include linter-rule-mention.md rule="avoid_function_literals_in_foreach_calls" %}
 
@@ -608,7 +608,7 @@ people.forEach(print);
 Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
 this guideline doesn't apply.
 
-### DON'T use `List.from()` unless you intend to change the type of the result.
+### DON'T use `List.from()` unless you intend to change the type of the result
 
 Given an Iterable, there are two obvious ways to produce a new List that
 contains the same elements:
@@ -657,7 +657,7 @@ But if your goal is just to copy the iterable and preserve its original type, or
 you don't care about the type, then use `toList()`.
 
 
-### DO use `whereType()` to filter a collection by type.
+### DO use `whereType()` to filter a collection by type
 
 {% include linter-rule-mention.md rule="prefer_iterable_wheretype" %}
 
@@ -701,7 +701,7 @@ Using `whereType()` is concise, produces an [Iterable][] of the desired type,
 and has no unnecessary levels of wrapping.
 
 
-### DON'T use `cast()` when a nearby operation will do.
+### DON'T use `cast()` when a nearby operation will do
 
 Often when you're dealing with an iterable or stream, you perform several
 transformations on it. At the end, you want to produce an object with a certain
@@ -747,7 +747,7 @@ var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 {% endprettify %}
 
 
-### AVOID using `cast()`.
+### AVOID using `cast()`
 
 This is the softer generalization of the previous rule. Sometimes there is no
 nearby operation you can use to fix the type of some object. Even then, when
@@ -851,7 +851,7 @@ In Dart, even functions are objects. Here are some best practices
 involving functions.
 
 
-### DO use a function declaration to bind a function to a name.
+### DO use a function declaration to bind a function to a name
 
 {% include linter-rule-mention.md rule="prefer_function_declarations_over_variables" %}
 
@@ -883,7 +883,7 @@ void main() {
 }
 {% endprettify %}
 
-### DON'T create a lambda when a tear-off will do.
+### DON'T create a lambda when a tear-off will do
 
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
@@ -936,13 +936,13 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 {% endprettify %}
 
 
-### DO use `=` to separate a named parameter from its default value.
+### DO use `=` to separate a named parameter from its default value
 
 {% include linter-rule-mention.md rule="prefer_equal_for_default_values" %}
 
-For legacy reasons, Dart allows both `:` and `=` as the default value separator
-for named parameters. For consistency with optional positional parameters, use
-`=`.
+Before Dart 3, Dart allowed both `:` and `=` 
+as the default value separator for named parameters. 
+For consistency with optional positional parameters, use `=`.
 
 {:.good}
 <?code-excerpt "usage_good.dart (default-separator)"?>
@@ -951,7 +951,6 @@ void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (default-separator)"?>
 {% prettify dart tag=pre+code %}
 void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
@@ -961,7 +960,7 @@ void insert(Object item, {int at: 0}) { ... }
 
 The following best practices describe how to best use variables in Dart.
 
-### DO follow a consistent rule for `var` and `final` on local variables.
+### DO follow a consistent rule for `var` and `final` on local variables
 
 Most local variables shouldn't have type annotations and should be declared
 using just `var` or `final`. There are two rules in wide use for when to use one
@@ -979,7 +978,7 @@ your code. That way when a reader sees `var`, they know whether it means that
 the variable is assigned later in the function.
 
 
-### AVOID storing what you can calculate.
+### AVOID storing what you can calculate
 
 When designing a class, you often want to expose multiple views into the same
 underlying state. Often you see code that calculates all of those views in the
@@ -1071,7 +1070,7 @@ leave a comment explaining the optimization.
 In Dart, objects have members which can be functions (methods) or data (instance
 variables). The following best practices apply to an object's members.
 
-### DON'T wrap a field in a getter and setter unnecessarily.
+### DON'T wrap a field in a getter and setter unnecessarily
 
 {% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
 
@@ -1107,7 +1106,7 @@ class Box {
 {% endprettify %}
 
 
-### PREFER using a `final` field to make a read-only property.
+### PREFER using a `final` field to make a read-only property
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
@@ -1134,7 +1133,7 @@ constructor, you may need to do the "private field, public getter" pattern, but
 don't reach for that until you need to.
 
 
-### CONSIDER using `=>` for simple members.
+### CONSIDER using `=>` for simple members
 
 {% include linter-rule-mention.md rule="prefer_expression_function_bodies" %}
 
@@ -1189,7 +1188,7 @@ set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 
-### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing. {#dont-use-this-when-not-needed-to-avoid-shadowing}
+### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing {#dont-use-this-when-not-needed-to-avoid-shadowing}
 
 {% include linter-rule-mention.md rule="unnecessary_this" %}
 
@@ -1283,7 +1282,7 @@ This looks surprising, but works like you want. Fortunately, code like this is
 relatively rare thanks to initializing formals and super initializers.
 
 
-### DO initialize fields at their declaration when possible.
+### DO initialize fields at their declaration when possible
 
 If a field doesn't depend on any constructor parameters, it can and should be
 initialized at its declaration. It takes less code and avoids duplication when
@@ -1327,7 +1326,7 @@ differently by different constructors, then this guideline does not apply.
 
 The following best practices apply to declaring constructors for a class.
 
-### DO use initializing formals when possible.
+### DO use initializing formals when possible
 
 {% include linter-rule-mention.md rule="prefer_initializing_formals" %}
 
@@ -1361,11 +1360,11 @@ named parameter whose name doesn't match the name of the field you are
 initializing. But when you *can* use initializing formals, you *should*.
 
 
-### DON'T use `late` when a constructor initializer list will do.
+### DON'T use `late` when a constructor initializer list will do
 
-Sound null safety requires Dart to ensure that a non-nullable field is
-initialized before it can be read. Since fields can be read inside the
-constructor body, this means you get an error if you don't initialize a
+Dart requires you to initialize non-nullable fields before they can be read.
+Since fields can be read inside the constructor body, 
+this means you get an error if you don't initialize a
 non-nullable field before the body runs.
 
 You can make this error go away by marking the field `late`. That turns the
@@ -1403,7 +1402,7 @@ that's better than making the field `late` and losing some static safety and
 performance.
 
 
-### DO use `;` instead of `{}` for empty constructor bodies.
+### DO use `;` instead of `{}` for empty constructor bodies
 
 {% include linter-rule-mention.md rule="empty_constructor_bodies" %}
 
@@ -1428,7 +1427,7 @@ class Point {
 }
 {% endprettify %}
 
-### DON'T use `new`.
+### DON'T use `new`
 
 {% include linter-rule-mention.md rule="unnecessary_new" %}
 
@@ -1470,7 +1469,7 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 
-### DON'T use `const` redundantly.
+### DON'T use `const` redundantly
 
 {% include linter-rule-mention.md rule="unnecessary_const" %}
 
@@ -1516,7 +1515,7 @@ const primaryColors = [!const!] [
 Dart uses exceptions when an error occurs in your program. The following
 best practices apply to catching and throwing exceptions.
 
-### AVOID catches without `on` clauses.
+### AVOID catches without `on` clauses
 
 {% include linter-rule-mention.md rule="avoid_catches_without_on_clauses" %}
 
@@ -1540,14 +1539,14 @@ than to catch all types. Exception is the base class for all *runtime* errors
 and excludes errors that indicate *programmatic* bugs in the code.
 
 
-### DON'T discard errors from catches without `on` clauses.
+### DON'T discard errors from catches without `on` clauses
 
 If you really do feel you need to catch *everything* that can be thrown from a
 region of code, *do something* with what you catch. Log it, display it to the
 user or rethrow it, but do not silently discard it.
 
 
-### DO throw objects that implement `Error` only for programmatic errors.
+### DO throw objects that implement `Error` only for programmatic errors
 
 The [Error][] class is the base class for *programmatic* errors. When an object
 of that type or one of its subinterfaces like [ArgumentError][] is thrown, it
@@ -1559,7 +1558,7 @@ indicate a bug in the code, then throwing an Error is misleading. Instead, throw
 one of the core Exception classes or some other type.
 
 
-### DON'T explicitly catch `Error` or types that implement it.
+### DON'T explicitly catch `Error` or types that implement it
 
 {% include linter-rule-mention.md rule="avoid_catching_errors" %}
 
@@ -1572,7 +1571,7 @@ Catching errors of these types breaks that process and masks the bug. Instead of
 and fix the code that is causing it to be thrown in the first place.
 
 
-### DO use `rethrow` to rethrow a caught exception.
+### DO use `rethrow` to rethrow a caught exception
 
 {% include linter-rule-mention.md rule="use_rethrow_when_possible" %}
 
@@ -1609,7 +1608,7 @@ try {
 Dart has several language features to support asynchronous programming.
 The following best practices apply to asynchronous coding.
 
-### PREFER async/await over using raw futures.
+### PREFER async/await over using raw futures
 
 Asynchronous code is notoriously hard to read and debug, even when using a nice
 abstraction like futures. The `async`/`await` syntax improves readability and
@@ -1649,7 +1648,7 @@ Future<int> countActivePlayers(String teamName) {
 }
 {% endprettify %}
 
-### DON'T use `async` when it has no useful effect.
+### DON'T use `async` when it has no useful effect
 
 It's easy to get in the habit of using `async` on any function that does
 anything related to asynchrony. But in some cases, it's extraneous. If you can
@@ -1695,13 +1694,13 @@ Future<void> asyncError() async {
 Future<String> asyncValue() async => 'value';
 {% endprettify %}
 
-### CONSIDER using higher-order methods to transform a stream.
+### CONSIDER using higher-order methods to transform a stream
 
 This parallels the above suggestion on iterables. Streams support many of the
 same methods and also handle things like transmitting errors, closing, etc.
 correctly.
 
-### AVOID using Completer directly.
+### AVOID using Completer directly
 
 Many people new to asynchronous programming want to write code that produces a
 future. The constructors in Future don't seem to fit their need so they
@@ -1748,7 +1747,7 @@ Future<bool> fileContainsBear(String path) async {
 {% endprettify %}
 
 
-### DO test for `Future<T>` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
+### DO test for `Future<T>` when disambiguating a `FutureOr<T>` whose type argument could be `Object`
 
 Before you can do anything useful with a `FutureOr<T>`, you typically need to do
 an `is` check to see if you have a `Future<T>` or a bare `T`. If the type

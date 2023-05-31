@@ -1,7 +1,13 @@
 ---
 title: Enumerated types
 description: Learn about the enum type in Dart.
-short-title: Enum
+short-title: Enums
+prevpage:
+  url: /language/class-modifiers
+  title: Class modifiers
+nextpage:
+  url: /language/extension-methods
+  title: Extension methods
 ---
 
 Enumerated types, often called _enumerations_ or _enums_,
@@ -10,8 +16,8 @@ a fixed number of constant values.
 
 {{site.alert.note}}
   All enums automatically extend the [`Enum`][] class.
-  They are also sealed, 
-  meaning they cannot be subclassed, implemented, mixed in, 
+  They are also sealed,
+  meaning they cannot be subclassed, implemented, mixed in,
   or otherwise explicitly instantiated.
 
   Abstract classes and mixins can explicitly implement or extend `Enum`,
@@ -45,7 +51,7 @@ To declare an enhanced enum,
 follow a syntax similar to normal [classes][],
 but with a few extra requirements:
 
-* Instance variables must be `final`, 
+* Instance variables must be `final`,
   including those added by [mixins][].
 * All [generative constructors][] must be constant.
 * [Factory constructors][] can only return
@@ -58,9 +64,12 @@ but with a few extra requirements:
   in the beginning of the declaration,
   and there must be at least one instance declared.
 
+Instance methods in an enhanced enum can use `this` to
+reference the current enum value.
+
 Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
-a getter, and an implemented interface:
+getters, and an implemented interface:
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
 ```dart
@@ -80,6 +89,8 @@ enum Vehicle implements Comparable<Vehicle> {
   final int carbonPerKilometer;
 
   int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  bool get isTwoWheeled => this == Vehicle.bicycle;
 
   @override
   int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
@@ -152,6 +163,14 @@ use the `.name` property:
 print(Color.blue.name); // 'blue'
 ```
 
+You can access a member of an enum value
+like you would on a normal object:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (method-call)"?>
+```dart
+print(Vehicle.car.carbonFootprint);
+```
+
 [`Enum`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
 [trailing commas]: /language/collections#lists
 [classes]: /language/classes
@@ -160,4 +179,4 @@ print(Color.blue.name); // 'blue'
 [Factory constructors]: /language/constructors#factory-constructors
 [language version]: /guides/language/evolution#language-versioning
 [static variable]: /language/classes#class-variables-and-methods
-[switch statements]: /language/control-flow#switch-and-case
+[switch statements]: /language/branches#switch

@@ -31,9 +31,9 @@ welcomed distributed committers.
 
 ### Q. Isn't Dart a lot like Java?
 
-Dart has some similarities with Java. See the [Intro to Dart for Java
-Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
-codelab for examples of some of the differences between Dart and Java.
+Dart has some similarities with Java.
+Check out the code samples in the [Introduction to Dart](/language)
+for brief examples with familiar syntax.
 
 ### Q. How does Dart relate to Go?
 
@@ -175,7 +175,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [SDK issues]: https://github.com/dart-lang/sdk/issues
 [language issues]: https://github.com/dart-lang/language/issues
 [language funnel]: https://github.com/dart-lang/language/projects/1
-[language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
+[language process]: https://github.com/dart-lang/language/blob/main/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
 [announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /language

@@ -1,9 +1,10 @@
 ---
 title: Effective Dart
-description: Best practices for building consistent, maintainable, efficient Dart libraries.
-permalink: /guides/language/effective-dart
+description: >
+  Best practices for building consistent, maintainable,
+  and efficient Dart libraries.
 nextpage:
-  url: /guides/language/effective-dart/style
+  url: /effective-dart/style
   title: Style
 ---
 
@@ -38,8 +39,9 @@ write consistent, robust, fast code too. There are two overarching themes:
 We split the guidelines into a few separate pages for easy digestion:
 
   * **[Style Guide][]** &ndash; This defines the rules for laying out and
-    organizing code, or at least the parts that [dart format] doesn't handle for
-    you. The style guide also specifies how identifiers are formatted:
+    organizing code, or at least the parts
+    that [`dart format`][] doesn't handle for you. 
+    The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
@@ -58,11 +60,11 @@ We split the guidelines into a few separate pages for easy digestion:
 For links to all the guidelines, see the
 [summary](#summary-of-all-rules).
 
-[dart format]: /tools/dart-format
-[style guide]: /guides/language/effective-dart/style
-[documentation guide]: /guides/language/effective-dart/documentation
-[usage guide]: /guides/language/effective-dart/usage
-[design guide]: /guides/language/effective-dart/design
+[`dart format`]: /tools/dart-format
+[style guide]: /effective-dart/style
+[documentation guide]: /effective-dart/documentation
+[usage guide]: /effective-dart/usage
+[design guide]: /effective-dart/design
 
 ## How to read the guides
 

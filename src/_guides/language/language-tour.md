@@ -15,6 +15,18 @@ noindex: true
   check out [Introduction to the Dart language](/language).
 {{site.alert.end}}
 
+{% comment %}
+  !! NOTE:
+  
+  All new language content should go within the `/language` directory.
+  This file exists temporarily for legacy reasons so
+  links to the old language tour do not break.
+  
+  In the short term, if you move content that is referenced here,
+  update the text and link in this file, as well as
+  the redirection map in `src/assets/js/language-tour-redirector.js`.
+{% endcomment -%}
+
 ## A basic Dart program
 
 This content has moved to [Introduction to the Dart language](/language).
@@ -68,15 +80,15 @@ This content has moved to [Collections](/language/collections#lists).
 <a id="trailing-comma"></a>
 #### Trailing commas
 
-This content has moved to [Collections](/language/collections#trailing-commas).
+This content has moved to [Collections](/language/collections#trailing-comma).
 
 #### Spread operator
 
-This content has moved to [Collections](/language/collections#spread-operator).
+This content has moved to [Collections](/language/collections#spread-operators).
 
 #### Collection operators
 
-This content has moves to [Collections](/language/collections#collection-operators).
+This content has moves to [Collections](/language/collections#control-flow-operators).
 
 ### Sets
 
@@ -137,7 +149,7 @@ This content has moved to [Functions](/language/functions#lexical-closures).
 
 ### Testing functions for equality
 
-This content has moved to [Functions](/language/functions#testing-functions-for-inequality).
+This content has moved to [Functions](/language/functions#testing-functions-for-equality).
 
 ### Return values
 
@@ -186,31 +198,31 @@ This content has moved to [Operators](/language/operators#other-operators).
 
 ## Control flow statements
 
-This content has moved to [Control flow](/language/control-flow).
+This content has moved to [Control flow](/language/loops).
 
 ### If and else
 
-This content has moved to [Control flow](/language/control-flow#if-and-else).
+This content has moved to [Control flow](/language/branches#if).
 
 ### For loops
 
-This content has moved to [Control flow](/language/control-flow#for-loops).
+This content has moved to [Control flow](/language/loops#for-loops).
 
 ### While and do-while
 
-This content has moved to [Control flow](/language/control-flow#while-and-do-while).
+This content has moved to [Control flow](/language/loops#while-and-do-while).
 
 ### Break and continue
 
-This content has moved to [Control flow](/language/control-flow#break-and-continue).
+This content has moved to [Control flow](/language/loops#break-and-continue).
 
 ### Switch and case
 
-This content has moved to [Control flow](/language/control-flow#switch-and-case).
+This content has moved to [Control flow](/language/branches#switch).
 
 ### Assert
 
-This content has moved to [Control flow](/language/control-flow#assert).
+This content has moved to [Control flow](/language/error-handling#assert).
 
 ## Exceptions
 
@@ -321,7 +333,7 @@ This content has moved to [Methods](/language/methods#abstract-methods).
 
 ### Abstract classes
 
-This content has moved to [Classes](/language/classes#abstract-classes).
+This content has moved to [Classes](/language/class-modifiers#abstract).
 
 <a id="interfaces"></a>
 ### Implicit interfaces
@@ -348,19 +360,19 @@ This content has moved to [Extension methods](/language/extension-methods).
 <a id="enums"></a>
 ### Enumerated types
 
-This content has moved to [Enumerated types](/language/enum).
+This content has moved to [Enumerated types](/language/enums).
 
 #### Declaring simple enums
 
-This content has moved to [Enumerated types](/language/enum#declaring-simple-enums).
+This content has moved to [Enumerated types](/language/enums#declaring-simple-enums).
 
 #### Declaring enhanced enums
 
-This content has moved to [Enumerated types](/language/enum#declaring-enhanced-enums).
+This content has moved to [Enumerated types](/language/enums#declaring-enhanced-enums).
 
 #### Using enums
 
-This content has moved to [Enumerated types](/language/enum#using-enums).
+This content has moved to [Enumerated types](/language/enums#using-enums).
 
 <a id="mixins"></a>
 ### Adding features to a class: mixins
@@ -430,7 +442,7 @@ This content has moved to [Libraries & visibility](/language/libraries#lazily-lo
 
 #### The `library` directive {#library-directive}
 
-This content has moved to [Libraries & visibility](/language/libraries#the-library-directive).
+This content has moved to [Libraries & visibility](/language/libraries#library-directive).
 
 ### Implementing libraries
 
@@ -463,7 +475,7 @@ This content has moved to [Generators](/language/functions#generators).
 
 ## Callable classes
 
-This content has moved to [Callable classes](/language/callable-classes).
+This content has moved to [Callable objects](/language/callable-objects).
 
 ## Isolates
 

@@ -37,6 +37,22 @@ environment:
 
 ## Changes in each release
 
+### Dart 3.0
+_Released 10 May 2023_
+| [Dart 3.0 announcement](https://medium.com/dartlang/announcing-dart-3-53f065a10635)
+
+Dart 3.0 introduced several new major language features:
+
+* [Patterns][], a new category of grammar that lets you match and destructure values.
+* [Records][], a new type that lets you aggregate multiple values of different types
+  in a single function return.
+* [Class modifiers][], a new set of keywords that let you control how a class or
+  mixin can be used.
+
+[Patterns]: /language/patterns
+[Records]: /language/records
+[Class modifiers]: /language/class-modifiers
+
 ### Dart 2.19
 _Released 25 January 2023_
 
@@ -57,7 +73,7 @@ annotations, can and [should][] now be written without a name:
 library;
 ```
 
-[should]: /guides/language/effective-dart/style#dont-explicitly-name-libraries
+[should]: /effective-dart/style#dont-explicitly-name-libraries
 
 ### Dart 2.18
 _Released 30 August 2022_
@@ -116,7 +132,7 @@ To learn more about these features, check out:
 * [Super parameters][]
 * [Named parameters][]
 
-[Enhanced enums]: /language/enum#declaring-enhanced-enums
+[Enhanced enums]: /language/enums#declaring-enhanced-enums
 [Super parameters]: /language/constructors#super-parameters
 [Named parameters]: /language/functions#named-parameters
 
@@ -465,15 +481,15 @@ check out the [language versioning specification][].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
-[collection for]: /language/collections#collection-operators
-[collection if]: /language/collections#collection-operators
+[collection for]: /language/collections#control-flow-operators
+[collection if]: /language/collections#control-flow-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [Dart FFI]: /guides/libraries/c-interop
 [extension methods]: /language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
-[language versioning specification]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
+[language versioning specification]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md

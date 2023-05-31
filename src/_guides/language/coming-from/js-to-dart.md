@@ -7,7 +7,7 @@ body_class: highlight-languages
 This guide aims to leverage your JavaScript programming knowledge
 when learning Dart.
 It showcases key similarities and differences in both languages,
-and introduces Dart concepts that unsupported in JavaScript.
+and introduces Dart concepts that are unsupported in JavaScript.
 As a JavaScript developer, Dart should feel quite familiar,
 as both languages share many concepts.
 
@@ -71,7 +71,7 @@ JavaScript supports trailing commas in list and map literals only.
 
 [Customizing static analysis]: /guides/language/analysis-options
 [`dart fix`]: /tools/dart-fix
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 [Prettier]: https://prettier.io/
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
@@ -327,7 +327,7 @@ A Dart variable gets its type in one of two ways:
    By [convention][omit_local_variable_types], 
    use `var` or `final` when the analyzer can infer the type.
 
-[omit_local_variable_types]: /guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
+[omit_local_variable_types]: /effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
 
 ```js
 // Declare and initialize a variable at once
@@ -1178,7 +1178,7 @@ let visibility = isPublic ? "public" : "private";
 final visibility = isPublic ? 'public' : 'private';
 ```
 
-[if-else]: /language/control-flow#if-and-else
+[if-else]: /language/branches#if
 
 ### Assignment operators
 
@@ -2753,7 +2753,7 @@ int get length => ...
 ```
 
 [`dart doc`]: /tools/dart-doc
-[doc comments]: /guides/language/effective-dart/documentation#doc-comments
+[doc comments]: /effective-dart/documentation#doc-comments
 
 ## Next steps
 
@@ -2778,4 +2778,4 @@ Some possible next steps:
 [Language tour]:  /language
 [Library tour]:   /guides/libraries/library-tour
 [Dart codelabs]:  /codelabs
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart

@@ -1,6 +1,12 @@
 ---
 title: Extend a class
 description: Learn how to create subclasses from a superclass.
+prevpage:
+  url: /language/methods
+  title: Methods
+nextpage:
+  url: /language/mixins
+  title: Mixins
 ---
 
 Use `extends` to create a subclass, and `super` to refer to the
@@ -112,7 +118,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

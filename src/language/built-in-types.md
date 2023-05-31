@@ -1,6 +1,12 @@
 ---
 title: Built-in types
 description: Information on the types Dart supports.
+prevpage:
+  url: /language/keywords
+  title: Keywords
+nextpage:
+  url: /language/records
+  title: Records
 ---
 
 The Dart language has special support for the following:
@@ -8,6 +14,7 @@ The Dart language has special support for the following:
 - [Numbers](#numbers) (`int`, `double`)
 - [Strings](#strings) (`String`)
 - [Booleans](#booleans) (`bool`)
+- [Records][] (`(value1, value2)`)
 - [Lists][] (`List`, also known as *arrays*)
 - [Sets][] (`Set`)
 - [Maps][] (`Map`)
@@ -44,8 +51,8 @@ Some other types also have special roles in the Dart language:
 {% endcomment %}
 
 The `Object`, `Object?`, `Null`, and `Never` classes
-have special roles in the class hierarchy,
-as described in [Understanding null safety][].
+have special roles in the class hierarchy.
+Learn about these roles in [Understanding null safety][].
 
 {% comment %}
 If we decide to cover `dynamic` more,
@@ -396,6 +403,7 @@ Symbol literals are compile-time constants.
 
 
 
+[Records]: /language/records
 [Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps

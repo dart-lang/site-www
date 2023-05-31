@@ -2,6 +2,12 @@
 title: Typedefs
 description: Learn about type aliases in Dart.
 toc: false
+prevpage:
+  url: /language/generics
+  title: Generics
+nextpage:
+  url: /language/type-system
+  title: Type system
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -47,4 +53,4 @@ void main() {
 ```
 
 [language version]: /guides/language/evolution#language-versioning
-[inline function types]: /guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs
+[inline function types]: /effective-dart/design#prefer-inline-function-types-over-typedefs

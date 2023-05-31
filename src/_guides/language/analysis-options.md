@@ -58,7 +58,7 @@ var [!controller = StreamController<String>()!];
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - Close instances of `dart.core.Sink`. - close_sinks
+info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 </blockquote>
 
@@ -72,7 +72,7 @@ problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
 You can also configure linter rules,
 to ensure that your code complies with the
-[Dart Style Guide](/guides/language/effective-dart/style)
+[Dart Style Guide](/effective-dart/style)
 and other suggested guidelines in [Effective Dart][]. 
 Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
@@ -225,7 +225,7 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
+warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
 {{site.alert.info}}
@@ -236,7 +236,7 @@ info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_co
   for an exhaustive list of inference failure conditions.
 {{site.alert.end}}
 
-[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
@@ -257,7 +257,7 @@ for (final n in numbers) {
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
+warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
 ## Enabling and disabling linter rules {#enabling-linter-rules}
@@ -517,7 +517,7 @@ int x = ''; // ignore: invalid_assignment
 
 ## Customizing analysis rules
 
-Each [analyzer error code][analyzer error codes] and
+Each [analyzer diagnostic][analyzer diagnostics] and
 [linter rule][linter rules] has a default severity.
 You can use the analysis options file to change
 the severity of individual rules, or to always ignore some rules.
@@ -540,7 +540,7 @@ The analyzer supports three severity levels:
 
 ### Ignoring rules
 
-You can ignore specific [analyzer error codes][] and [linter rules][]
+You can ignore specific [analyzer diagnostics][] and [linter rules][]
 by using the `errors:` field.
 List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
 analysis options file instructs the analysis tools to ignore the TODO rule:
@@ -581,7 +581,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
-[analyzer error codes]: https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart
+[analyzer diagnostics]: /tools/diagnostic-messages
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
@@ -590,4 +590,4 @@ Use the following resources to learn more about static analysis in Dart:
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart

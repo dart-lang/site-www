@@ -2,7 +2,7 @@
 title: "Effective Dart: Design"
 description: Design consistent, usable libraries.
 prevpage:
-  url: /guides/language/effective-dart/usage
+  url: /effective-dart/usage
   title: Usage
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
@@ -16,7 +16,7 @@ Here are some guidelines for writing consistent, usable APIs for libraries.
 Naming is an important part of writing readable, maintainable code.
 The following best practices can help you achieve that goal.
 
-### DO use terms consistently.
+### DO use terms consistently
 
 Use the same name for the same thing, throughout your code. If a precedent
 already exists outside your API that users are likely to know, follow that
@@ -46,12 +46,12 @@ reduce the amount of new knowledge they have to acquire before they can be
 productive.
 
 
-### AVOID abbreviations.
+### AVOID abbreviations
 
 Unless the abbreviation is more common than the unabbreviated term, don't
 abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 
-[caps]: /guides/language/effective-dart/style#identifiers
+[caps]: /effective-dart/style#identifiers
 
 {:.good}
 {% prettify dart tag=pre+code %}
@@ -70,7 +70,7 @@ HypertextTransferProtocolRequest
 {% endprettify %}
 
 
-### PREFER putting the most descriptive noun last.
+### PREFER putting the most descriptive noun last
 
 The last word should be the most descriptive of what the thing is. You can
 prefix it with other words, such as adjectives, to further describe the thing.
@@ -91,7 +91,7 @@ RuleFontFaceCss           // Not a CSS.
 {% endprettify %}
 
 
-### CONSIDER making the code read like a sentence.
+### CONSIDER making the code read like a sentence
 
 When in doubt about naming, write some code that uses your API, and try to read
 it like a sentence.
@@ -135,7 +135,7 @@ monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 {% endprettify %}
 
 
-### PREFER a noun phrase for a non-boolean property or variable.
+### PREFER a noun phrase for a non-boolean property or variable
 
 The reader's focus is on *what* the property is. If the user cares more about
 *how* a property is determined, then it should probably be a method with a
@@ -154,7 +154,7 @@ list.deleteItems
 {% endprettify %}
 
 
-### PREFER a non-imperative verb phrase for a boolean property or variable.
+### PREFER a non-imperative verb phrase for a boolean property or variable
 
 Boolean names are often used as conditions in control flow, so you want a name
 that reads well there. Compare:
@@ -208,7 +208,7 @@ showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
 
-### CONSIDER omitting the verb for a named boolean *parameter*.
+### CONSIDER omitting the verb for a named boolean *parameter*
 
 This refines the previous rule. For named parameters that are boolean, the name
 is often just as clear without the verb, and the code reads better at the call
@@ -223,7 +223,7 @@ var regExp = RegExp(pattern, caseSensitive: false);
 {% endprettify %}
 
 
-### PREFER the "positive" name for a boolean property or variable.
+### PREFER the "positive" name for a boolean property or variable
 
 Most boolean names have conceptually "positive" and "negative" forms where the
 former feels like the fundamental concept and the latter is its
@@ -265,7 +265,7 @@ negate the property with `!` everywhere. Instead, it may be better to use the
 negative case for that property.
 
 
-### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
+### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect
 
 Callable members can return a result to the caller and perform other work or
 side effects. In an imperative language like Dart, members are often called
@@ -286,7 +286,7 @@ window.refresh();
 This way, an invocation reads like a command to do that work.
 
 
-### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.
+### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
 
 Other callable members have few side effects but return a useful result to the
 caller. If the member needs no parameters to do that, it should generally be a
@@ -311,7 +311,7 @@ has no side effects but is still simpler to name with a verb phrase like
 `list.take()` or `string.split()`.
 
 
-### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs.
+### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs
 
 When a member produces a result without any side effects, it should usually be a
 getter or a method with a noun phrase name describing the result it returns.
@@ -335,7 +335,7 @@ time, name your members based on *what* they do for the caller, not *how* they
 do it.
 
 
-### AVOID starting a method name with `get`.
+### AVOID starting a method name with `get`
 
 In most cases, the method should be a getter with `get` removed from the name.
 For example, instead of a method named `getBreakfastOrder()`, define a getter
@@ -357,7 +357,7 @@ previous guidelines state, either:
 [verb]: #consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs
 
 
-### PREFER naming a method `to___()` if it copies the object's state to a new object.
+### PREFER naming a method `to___()` if it copies the object's state to a new object
 
 {% include linter-rule-mention.md rule="use_to_and_as_if_applicable" %}
 
@@ -377,7 +377,7 @@ dateTime.toLocal();
 {% endprettify %}
 
 
-### PREFER naming a method `as___()` if it returns a different representation backed by the original object.
+### PREFER naming a method `as___()` if it returns a different representation backed by the original object
 
 {% include linter-rule-mention.md rule="use_to_and_as_if_applicable" %}
 
@@ -397,7 +397,7 @@ var future = subscription.asFuture();
 {% endprettify %}
 
 
-### AVOID describing the parameters in the function's or method's name.
+### AVOID describing the parameters in the function's or method's name
 
 The user will see the argument at the call site, so it usually doesn't help
 readability to also refer to it in the name itself.
@@ -426,7 +426,7 @@ map.containsValue(value);
 {% endprettify %}
 
 
-### DO follow existing mnemonic conventions when naming type parameters.
+### DO follow existing mnemonic conventions when naming type parameters
 
 Single letter names aren't exactly illuminating, but almost all generic types
 use them. Fortunately, they mostly use them in a consistent, mnemonic way.
@@ -508,7 +508,7 @@ In practice, the existing conventions cover most type parameters.
 A leading underscore character ( `_` ) indicates that a member is private to its
 library. This is not mere convention, but is built into the language itself.
 
-### PREFER making declarations private.
+### PREFER making declarations private
 
 A public declaration in a library—either top level or in a class—is
 a signal that other libraries can and should access that member. It is also a
@@ -522,7 +522,7 @@ can delete dead code. It can't do that if the member is public because it
 doesn't know if any code outside of its view is using it.
 
 
-### CONSIDER declaring multiple classes in the same library.
+### CONSIDER declaring multiple classes in the same library
 
 Some languages, such as Java, tie the organization of files to the organization of
 classes—each file may only define a single top level class. Dart does not
@@ -548,7 +548,7 @@ classes. But Dart does not require all code to be defined inside a
 class—you can define top-level variables, constants, and functions like
 you can in a procedural or functional language.
 
-### AVOID defining a one-member abstract class when a simple function will do.
+### AVOID defining a one-member abstract class when a simple function will do
 
 {% include linter-rule-mention.md rule="one_member_abstracts" %}
 
@@ -573,7 +573,7 @@ abstract class Predicate<E> {
 {% endprettify %}
 
 
-### AVOID defining a class that contains only static members.
+### AVOID defining a class that contains only static members
 
 {% include linter-rule-mention.md rule="avoid_classes_with_only_static_members" %}
 
@@ -635,7 +635,7 @@ class Color {
 {% endprettify %}
 
 
-### AVOID extending a class that isn't intended to be subclassed.
+### AVOID extending a class that isn't intended to be subclassed
 
 If a constructor is changed from a generative constructor to a factory
 constructor, any subclass constructor calling that constructor will break.
@@ -650,14 +650,14 @@ doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
 
-### DO document if your class supports being extended.
+### DO document if your class supports being extended
 
 This is the corollary to the above rule. If you want to allow subclasses of your
 class, state that. Suffix the class name with `Base`, or mention it in the
 class's doc comment.
 
 
-### AVOID implementing a class that isn't intended to be an interface.
+### AVOID implementing a class that isn't intended to be an interface
 
 Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
 contract of a class when it can be trivially inferred from the signatures of an
@@ -681,13 +681,13 @@ implicit interfaces except for classes that are clearly intended to be
 implemented. Otherwise, you may introduce a coupling that the author doesn't
 intend, and they may break your code without realizing it.
 
-### DO document if your class supports being used as an interface.
+### DO document if your class supports being used as an interface
 
 If your class can be used as an interface, mention that in the class's doc
 comment.
 
 
-### DO use `mixin` to define a mixin type.
+### DO use `mixin` to define a mixin type
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 
@@ -725,7 +725,7 @@ You might still encounter older code using `class` to define mixins, but the new
 syntax is preferred.
 
 
-### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
+### AVOID mixing in a type that isn't intended to be a mixin {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 
@@ -746,7 +746,7 @@ class and, optionally, an additional identifier. The latter are called *named
 constructors*.
 
 
-### CONSIDER making your constructor `const` if the class supports it.
+### CONSIDER making your constructor `const` if the class supports it
 
 If you have a class where all the fields are final, and the constructor does
 nothing but initialize them, you can make that constructor `const`. That lets
@@ -767,7 +767,7 @@ immutable value-like types.
 
 A member belongs to an object and can be either methods or instance variables.
 
-### PREFER making fields and top-level variables `final`.
+### PREFER making fields and top-level variables `final`
 
 {% include linter-rule-mention.md rule="prefer_final_fields" %}
 
@@ -784,9 +784,9 @@ may need to reference `this` or some other field on the instance. In cases like
 that, consider making the field `late final`. When you do, you may also be able
 to [initialize the field at its declaration][init at decl].
 
-[init at decl]: /guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
+[init at decl]: /effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
-### DO use getters for operations that conceptually access properties.
+### DO use getters for operations that conceptually access properties
 
 Deciding when a member should be a getter versus a method is a subtle but
 important part of good API design, hence this very long guideline.
@@ -884,7 +884,7 @@ dataSet.minimumValue;
 {% endprettify %}
 
 
-### DO use setters for operations that conceptually change properties.
+### DO use setters for operations that conceptually change properties
 
 {% include linter-rule-mention.md rule="use_setters_to_change_properties" %}
 
@@ -911,7 +911,7 @@ button.visible = false;
 {% endprettify %}
 
 
-### DON'T define a setter without a corresponding getter.
+### DON'T define a setter without a corresponding getter
 
 {% include linter-rule-mention.md rule="avoid_setters_without_getters" %}
 
@@ -926,7 +926,7 @@ to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
 
-### AVOID using runtime type tests to fake overloading.
+### AVOID using runtime type tests to fake overloading
 
 It's common for an API to support similar operations
 on different types of parameters.
@@ -957,7 +957,7 @@ then a single method where the parameter is a supertype
 of all of the supported types might be reasonable.
 
 
-### AVOID public `late final` fields without initializers.
+### AVOID public `late final` fields without initializers
 
 Unlike other `final` fields, a `late final` field without an initializer *does*
 define a setter. If that field is public, then the setter is public. This is
@@ -974,7 +974,7 @@ following solutions:
 * Use `late`, but make the `late` field private and define a public getter for it.
 
 
-### AVOID returning nullable `Future`, `Stream`, and collection types.
+### AVOID returning nullable `Future`, `Stream`, and collection types
 
 When an API returns a container type, it has two ways to indicate the absence of
 data: It can return an empty container or it can return `null`. Users generally
@@ -989,7 +989,7 @@ emit any values.
 empty container, it might make sense to use a nullable type.
 
 
-### AVOID returning `this` from methods just to enable a fluent interface.
+### AVOID returning `this` from methods just to enable a fluent interface
 
 {% include linter-rule-mention.md rule="avoid_returning_this" %}
 
@@ -1115,7 +1115,7 @@ various cases, but the rough summary is:
     makes the type obvious.
 
 
-### DO type annotate variables without initializers.
+### DO type annotate variables without initializers
 
 {% include linter-rule-mention.md rule="prefer_typing_uninitialized_variables" %}
 
@@ -1146,7 +1146,7 @@ if (node is Constructor) {
 {% endprettify %}
 
 
-### DO type annotate fields and top-level variables if the type isn't obvious.
+### DO type annotate fields and top-level variables if the type isn't obvious
 
 {% include linter-rule-mention.md rule="type_annotate_public_apis" %}
 
@@ -1201,7 +1201,7 @@ annotations on APIs help *users* of your code, types on private members help
 *maintainers*.
 
 
-### DON'T redundantly type annotate initialized local variables.
+### DON'T redundantly type annotate initialized local variables
 
 {% include linter-rule-mention.md rule="omit_local_variable_types" %}
 
@@ -1256,7 +1256,7 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 
-### DO annotate return types on function declarations.
+### DO annotate return types on function declarations
 
 Dart doesn't generally infer the return type of a function declaration from its body,
 unlike some other languages. That means you should write a type annotation for
@@ -1284,7 +1284,7 @@ expressions infer a return type from their body. In fact, the syntax doesn't
 even allow a return type annotation.
 
 
-### DO annotate parameter types on function declarations.
+### DO annotate parameter types on function declarations
 
 A function's parameter list determines its boundary to the outside world.
 Annotating parameter types makes that boundary well defined.
@@ -1311,10 +1311,11 @@ void sayRepeatedly(message, {count = 2}) {
 }
 {% endprettify %}
 
-**Exception:** Function expressions and initializing formals have different type annotation conventions, as described in the next two guidelines.
+**Exception:** Function expressions and initializing formals have
+different type annotation conventions, as described in the next two guidelines.
 
 
-### DON'T annotate inferred parameter types on function expressions.
+### DON'T annotate inferred parameter types on function expressions
 
 {% include linter-rule-mention.md rule="avoid_types_on_closure_parameters" %}
 
@@ -1347,7 +1348,7 @@ function's parameters. In those cases, you may need to annotate.
 
 [named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
-### DON'T type annotate initializing formals.
+### DON'T type annotate initializing formals
 
 {% include linter-rule-mention.md rule="type_init_formals" %}
 
@@ -1384,7 +1385,7 @@ class MyWidget extends StatelessWidget {
 {% endprettify %}
 
 
-### DO write type arguments on generic invocations that aren't inferred.
+### DO write type arguments on generic invocations that aren't inferred
 
 Dart is pretty smart about inferring type arguments in generic invocations. It
 looks at the expected type where the expression occurs and the types of
@@ -1430,7 +1431,7 @@ Annotating the variable also addresses this guideline because now the type
 arguments *are* inferred.
 
 
-### DON'T write type arguments on generic invocations that are inferred.
+### DON'T write type arguments on generic invocations that are inferred
 
 This is the converse of the previous rule. If an invocation's type argument list
 *is* correctly inferred with the types you want, then omit the types and let
@@ -1471,7 +1472,7 @@ Here, the types of the collection and instance can be inferred bottom-up from
 their elements and arguments.
 
 
-### AVOID writing incomplete generic types.
+### AVOID writing incomplete generic types
 
 The goal of writing a type annotation or type argument is to pin down a complete
 type. However, if you write the name of a generic type but omit its type
@@ -1503,7 +1504,7 @@ var completer = Completer<Map<String, int>>();
 {% endprettify %}
 
 
-### DO annotate with `dynamic` instead of letting inference fail.
+### DO annotate with `dynamic` instead of letting inference fail
 
 When inference doesn't fill in a type, it usually defaults to `dynamic`. If
 `dynamic` is the type you want, this is technically the most terse way to get
@@ -1561,7 +1562,7 @@ code did not specify one.
 
 **Exception**: Type annotations on unused parameters (`_`) can be omitted.
 
-### PREFER signatures in function type annotations.
+### PREFER signatures in function type annotations
 
 The identifier `Function` by itself without any return type or parameter
 signature refers to the special [Function][] type. This type is only
@@ -1610,7 +1611,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 {% endprettify %}
 
 
-### DON'T specify a return type for a setter.
+### DON'T specify a return type for a setter
 
 {% include linter-rule-mention.md rule="avoid_return_types_on_setters" %}
 
@@ -1629,7 +1630,7 @@ set foo(Foo value) { ... }
 {% endprettify %}
 
 
-### DON'T use the legacy typedef syntax.
+### DON'T use the legacy typedef syntax
 
 {% include linter-rule-mention.md rule="prefer_generic_function_type_aliases" %}
 
@@ -1691,7 +1692,7 @@ The old typedef syntax is still supported to avoid breaking existing code, but
 it's deprecated.
 
 
-### PREFER inline function types over typedefs.
+### PREFER inline function types over typedefs
 
 {% include linter-rule-mention.md rule="avoid_private_typedef_functions" %}
 
@@ -1728,7 +1729,7 @@ type actually is right where it's used, and the function type syntax gives them
 that clarity.
 
 
-### PREFER using function type syntax for parameters.
+### PREFER using function type syntax for parameters
 
 {% include linter-rule-mention.md rule="use_function_type_syntax_for_parameters" %}
 
@@ -1756,7 +1757,7 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### AVOID using `dynamic` unless you want to disable static checking.
+### AVOID using `dynamic` unless you want to disable static checking
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
@@ -1793,13 +1794,8 @@ The main exception to this rule is when working with existing APIs that use
 so, when using a value from one of these APIs, it's often a good idea to cast it
 to a more precise type before accessing members.
 
-{{site.alert.version-note}}
-In code that hasn't been migrated to null safety yet, use `Object` to accept
-values of all types, including `null`.
-{{site.alert.end}}
 
-
-### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
+### DO use `Future<void>` as the return type of asynchronous members that do not produce values
 
 When you have a synchronous function that doesn't return a value, you use `void`
 as the return type. The asynchronous equivalent for a method that doesn't
@@ -1816,7 +1812,7 @@ callers need to await the asynchronous work or handle an asynchronous failure,
 use a return type of `void`.
 
 
-### AVOID using `FutureOr<T>` as a return type.
+### AVOID using `FutureOr<T>` as a return type
 
 If a method accepts a `FutureOr<int>`, it is [generous in what it
 accepts][postel]. Users can call the method with either an `int` or a
@@ -1873,7 +1869,7 @@ Stream<S> asyncMap<T, S>(
 In Dart, optional parameters can be either positional or named, but not both.
 
 
-### AVOID positional boolean parameters.
+### AVOID positional boolean parameters
 
 {% include linter-rule-mention.md rule="avoid_positional_boolean_parameters" %}
 
@@ -1912,7 +1908,7 @@ button.isEnabled = false;
 {% endprettify %}
 
 
-### AVOID optional positional parameters if the user may want to omit earlier parameters.
+### AVOID optional positional parameters if the user may want to omit earlier parameters
 
 Optional positional parameters should have a logical progression such that
 earlier parameters are passed more often than later ones. Users should almost
@@ -1943,7 +1939,7 @@ Duration(
 {% endprettify %}
 
 
-### AVOID mandatory parameters that accept a special "no argument" value.
+### AVOID mandatory parameters that accept a special "no argument" value
 
 If the user is logically omitting a parameter, prefer letting them actually omit
 it by making the parameter optional instead of forcing them to pass `null`, an
@@ -1966,7 +1962,7 @@ var rest = string.substring(start, null);
 {% endprettify %}
 
 
-### DO use inclusive start and exclusive end parameters to accept a range.
+### DO use inclusive start and exclusive end parameters to accept a range
 
 If you are defining a method or function that lets a user select a range of
 elements or items from some integer-indexed sequence, take a start index, which
@@ -1994,7 +1990,7 @@ intuition about how equality works that your objects need to match, and
 collection types like hash tables have subtle contracts that they expect
 elements to follow.
 
-### DO override `hashCode` if you override `==`.
+### DO override `hashCode` if you override `==`
 
 {% include linter-rule-mention.md rule="hash_and_equals" %}
 
@@ -2007,7 +2003,7 @@ considered "equal" by your class. **Any two objects that are equal must have the
 same hash code.** Otherwise, maps and other hash-based collections will fail to
 recognize that the two objects are equivalent.
 
-### DO make your `==` operator obey the mathematical rules of equality.
+### DO make your `==` operator obey the mathematical rules of equality
 
 An equivalence relation should be:
 
@@ -2022,7 +2018,7 @@ Users and code that uses `==` expect all of these laws to be followed. If your
 class can't obey these rules, then `==` isn't the right name for the operation
 you're trying to express.
 
-### AVOID defining custom equality for mutable classes.
+### AVOID defining custom equality for mutable classes
 
 {% include linter-rule-mention.md rule="avoid_equals_and_hash_code_on_mutable_classes" %}
 
@@ -2034,7 +2030,7 @@ Most hash-based collections don't anticipate that—they assume an object's
 hash code will be the same forever and may behave unpredictably if that isn't
 true.
 
-### DON'T make the parameter to `==` nullable.
+### DON'T make the parameter to `==` nullable
 
 {% include linter-rule-mention.md rule="avoid_null_checks_in_equality_operators" %}
 
@@ -2064,9 +2060,3 @@ class Person {
 }
 {% endprettify %}
 
-{{site.alert.version-note}}
-In code that has not been migrated to null safety yet, the `Object` type
-annotation permits `null`. Even so, Dart will never call your `==` method and
-pass `null` to it, so you don't need to handle `null` inside the body of the
-method.
-{{site.alert.end}}

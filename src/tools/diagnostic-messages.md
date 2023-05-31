@@ -158,7 +158,7 @@ condition is `true` and the path in which the condition is `false`.
 For additional details, see the
 [specification of definite assignment][definiteAssignmentSpec].
 
-[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
+[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
 ### Mixin application
 
@@ -323,7 +323,7 @@ define a const constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
 }
 {% endprettify %}
 
@@ -334,7 +334,7 @@ a `const` constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   C();
 }
 {% endprettify %}
@@ -346,7 +346,7 @@ multiple constructors:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   const C.zero();
   const C.one();
 }
@@ -359,7 +359,7 @@ a field:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   final int i;
 
   const C(this.i);
@@ -373,7 +373,7 @@ type parameter:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class [!C!]<T> extends AbiSpecificInteger { // type parameters
+final class [!C!]<T> extends AbiSpecificInteger { // type parameters
   const C();
 }
 {% endprettify %}
@@ -387,7 +387,7 @@ parameters and a single member that is a `const` constructor:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -413,7 +413,7 @@ import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
 @[!AbiSpecificIntegerMapping!]({Abi.linuxX64 : Uint16()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -427,7 +427,7 @@ appropriate:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8(), Abi.linuxX64 : Uint16()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -451,7 +451,7 @@ The following code produces this diagnostic because there's no
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!C!] extends AbiSpecificInteger {
+final class [!C!] extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -464,7 +464,7 @@ Add an `AbiSpecificIntegerMapping` annotation to the class:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -497,7 +497,7 @@ entry is `Array<Uint8>`, which isn't a valid integer type:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : [!Array<Uint8>(4)!]})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -510,7 +510,7 @@ Use one of the valid types as a value in the map:
 import 'dart:ffi';
 
 @AbiSpecificIntegerMapping({Abi.macosX64 : Int8()})
-class C extends AbiSpecificInteger {
+final class C extends AbiSpecificInteger {
   const C();
 }
 {% endprettify %}
@@ -566,7 +566,8 @@ abstract class C {
 
 ### abstract_sealed_class
 
-_A class can't be declared both 'sealed' and 'abstract'._
+_A 'sealed' class can't be marked 'abstract' because it's already implicitly
+abstract._
 
 #### Description
 
@@ -951,7 +952,7 @@ annotation `@Double()`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Double()!]
   external Pointer<Int8> p;
 }
@@ -964,7 +965,7 @@ Remove the annotations from the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Int8> p;
 }
 {% endprettify %}
@@ -1314,7 +1315,7 @@ variable._
 
 The analyzer produces this diagnostic when the value of a function
 (including methods and getters) that is explicitly or implicitly marked by
-the `[doNotStore][meta-doNotStore]` annotation is stored in either a field
+the [`doNotStore`][meta-doNotStore] annotation is stored in either a field
 or top-level variable.
 
 #### Example
@@ -1645,7 +1646,7 @@ for-in loop:
 
 {% prettify dart tag=pre+code %}
 void f(list) {
-  await for (var e [!in!] list) {
+  [!await!] for (var e in list) {
     print(e);
   }
 }
@@ -2426,7 +2427,7 @@ implements `Finalizable`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!S!] extends Struct implements Finalizable {
+final class [!S!] extends Struct implements Finalizable {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -2438,7 +2439,7 @@ Try removing the implements clause from the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -3568,7 +3569,7 @@ instantiated using a generative constructor:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int a;
 }
@@ -3587,7 +3588,7 @@ If you need to allocate the structure described by the class, then use the
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int a;
 }
@@ -5294,7 +5295,7 @@ extends `Struct`, doesn't declare any fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!C!] extends Struct {}
+final class [!C!] extends Struct {}
 {% endprettify %}
 
 #### Common fixes
@@ -5304,7 +5305,7 @@ If the class is intended to be a struct, then declare one or more fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -5316,7 +5317,7 @@ make it a subclass of `Opaque`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Opaque {}
+final class C extends Opaque {}
 {% endprettify %}
 
 If the class isn't intended to be a struct, then remove or change the
@@ -6455,7 +6456,7 @@ annotations describing the native type of the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   [!@Int16()!]
   external int x;
@@ -6468,7 +6469,7 @@ Remove all but one of the annotations:
 
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -6571,7 +6572,7 @@ annotations that specify the size of the native array:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(4)
   [!@Array(8)!]
   external Array<Uint8> a0;
@@ -6585,7 +6586,7 @@ Remove all but one of the annotations:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -6787,7 +6788,7 @@ constructor with an initializer for the field `f`:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   int f;
 
@@ -6803,7 +6804,7 @@ Remove the field initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   int f;
 
@@ -7052,7 +7053,7 @@ initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   Pointer [!p!] = nullptr;
 }
 {% endprettify %}
@@ -7065,7 +7066,7 @@ Remove the initializer:
 // @dart = 2.9
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   Pointer p;
 }
 {% endprettify %}
@@ -7089,7 +7090,7 @@ marked as being `external`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int16()
   int [!a!];
 }
@@ -7102,7 +7103,7 @@ Add the required `external` modifier:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int16()
   external int a;
 }
@@ -7515,7 +7516,7 @@ the type parameter `T`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class [!S!]<T> extends Struct {
+final class [!S!]<T> extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -7527,7 +7528,7 @@ Remove the type parameters from the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer notEmpty;
 }
 {% endprettify %}
@@ -7620,7 +7621,8 @@ int f() => 0;
 
 ### illegal_async_return_type
 
-_Functions marked 'async' must have a return type assignable to 'Future'._
+_Functions marked 'async' must have a return type which is a supertype of
+'Future'._
 
 #### Description
 
@@ -9206,7 +9208,7 @@ _The member '{0}' can't be exported as a part of a package's public API._
 #### Description
 
 The analyzer produces this diagnostic when a [public library][] exports a
-declaration that is marked with the `[internal][meta-internal]`
+declaration that is marked with the [`internal`][meta-internal]
 annotation.
 
 #### Example
@@ -9247,7 +9249,7 @@ indirectly exported as part of the signature of '{1}'._
 
 The analyzer produces this diagnostic when a [public library][] exports a
 top-level function  with a return type or at least one parameter type that
-is marked with the `[internal][meta-internal]` annotation.
+is marked with the [`internal`][meta-internal] annotation.
 
 #### Example
 
@@ -9340,12 +9342,12 @@ _Factory method '{0}' must have a return type._
 #### Description
 
 The analyzer produces this diagnostic when a method that is annotated with
-the `[factory][meta-factory]` annotation has a return type of `void`.
+the [`factory`][meta-factory] annotation has a return type of `void`.
 
 #### Example
 
 The following code produces this diagnostic because the method `createC`
-is annotated with the `[factory][meta-factory]` annotation but doesn't
+is annotated with the [`factory`][meta-factory] annotation but doesn't
 return any value:
 
 {% prettify dart tag=pre+code %}
@@ -9381,7 +9383,7 @@ _Factory method '{0}' doesn't return a newly allocated object._
 #### Description
 
 The analyzer produces this diagnostic when a method that is annotated with
-the `[factory][meta-factory]` annotation doesn't return a newly allocated
+the [`factory`][meta-factory] annotation doesn't return a newly allocated
 object.
 
 #### Example
@@ -9584,7 +9586,7 @@ subclass of `Struct`:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!String!] s;
 
   @Int32()
@@ -9600,7 +9602,7 @@ Use one of the allowed types for the field:
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Utf8> s;
 
   @Int32()
@@ -9732,13 +9734,13 @@ internal._
 #### Description
 
 The analyzer produces this diagnostic when a declaration is annotated with
-the `[internal][meta-internal]` annotation and that declaration is either
+the [`internal`][meta-internal] annotation and that declaration is either
 in a [public library][] or has a private name.
 
 #### Example
 
 The following code, when in a [public library][], produces this diagnostic
-because the `[internal][meta-internal]` annotation can't be applied to
+because the [`internal`][meta-internal] annotation can't be applied to
 declarations in a [public library][]:
 
 {% prettify dart tag=pre+code %}
@@ -9749,7 +9751,7 @@ class C {}
 {% endprettify %}
 
 The following code, whether in a public or internal library, produces this
-diagnostic because the `[internal][meta-internal]` annotation can't be
+diagnostic because the [`internal`][meta-internal] annotation can't be
 applied to declarations with private names:
 
 {% prettify dart tag=pre+code %}
@@ -9840,7 +9842,7 @@ _Only const constructors can have the `@literal` annotation._
 
 #### Description
 
-The analyzer produces this diagnostic when the `[literal][[meta-literal]]`
+The analyzer produces this diagnostic when the [`literal`][meta-literal]
 annotation is applied to anything other than a const constructor.
 
 #### Examples
@@ -10790,13 +10792,13 @@ _The member '{0}' can only be used within its package._
 #### Description
 
 The analyzer produces this diagnostic when a reference to a declaration
-that is annotated with the `[internal][meta-internal]` annotation is found
+that is annotated with the [`internal`][meta-internal] annotation is found
 outside the package containing the declaration.
 
 #### Example
 
 Given a package `p` that defines a library containing a declaration marked
-with the `[internal][meta-internal]` annotation:
+with the [`internal`][meta-internal] annotation:
 
 {% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
@@ -10924,7 +10926,7 @@ _The member '{0}' can only be used for overriding._
 #### Description
 
 The analyzer produces this diagnostic when an instance member that is
-annotated with `[visibleForOverriding][meta-visibleForOverriding]` is
+annotated with [`visibleForOverriding`][meta-visibleForOverriding] is
 referenced outside the library in which it's declared for any reason other
 than to override it.
 
@@ -11022,7 +11024,7 @@ meaningful on declarations of public members._
 #### Description
 
 The analyzer produces this diagnostic when either the `visibleForTemplate`
-or `[visibleForTesting][meta-visibleForTesting]` annotation is applied to
+or [`visibleForTesting`][meta-visibleForTesting] annotation is applied to
 a non-public declaration.
 
 #### Example
@@ -11069,7 +11071,7 @@ member that can be overridden._
 
 The analyzer produces this diagnostic when anything other than a public
 instance member of a class is annotated with
-`[visibleForOverriding][meta-visibleForOverriding]`. Because only public
+[`visibleForOverriding`][meta-visibleForOverriding]. Because only public
 instance members can be overridden outside the defining library, there's
 no value to annotating any other declarations.
 
@@ -11833,7 +11835,7 @@ The following code produces this diagnostic because the annotation
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Double()!]
   external int x;
 }
@@ -11846,7 +11848,7 @@ If the type of the field is correct, then change the annotation to match:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int x;
 }
@@ -11857,7 +11859,7 @@ If the annotation is correct, then change the type of the field to match:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Double()
   external double x;
 }
@@ -11886,7 +11888,7 @@ have an annotation indicating the underlying width of the integer value:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!int!] x;
 }
 {% endprettify %}
@@ -11898,7 +11900,7 @@ Add an appropriate annotation to the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int64()
   external int x;
 }
@@ -12101,7 +12103,7 @@ doesn't have a type annotation:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external var [!str!];
 
   @Int32()
@@ -12117,7 +12119,7 @@ Explicitly specify the type of the field:
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Utf8> str;
 
   @Int32()
@@ -12404,7 +12406,7 @@ have an `Array` annotation:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   external [!Array<Uint8>!] a0;
 }
 {% endprettify %}
@@ -12416,7 +12418,7 @@ Ensure that there's exactly one `Array` annotation on the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -12939,7 +12941,7 @@ and any class mixing in this mixin must have '{0}' as a superclass._
 
 The analyzer produces this diagnostic when the superclass constraint of a
 mixin is a class from a different package that was marked as
-`[sealed][meta-sealed]`. Classes that are sealed can't be extended,
+[`sealed`][meta-sealed]. Classes that are sealed can't be extended,
 implemented, mixed in, or used as a superclass constraint.
 
 #### Example
@@ -13272,7 +13274,7 @@ _This class (or a class that this class inherits from) is marked as
 The analyzer produces this diagnostic when an immutable class defines one
 or more instance fields that aren't final. A class is immutable if it's
 marked as being immutable using the annotation
-`[immutable][meta-immutable]` or if it's a subclass of an immutable class.
+[`immutable`][meta-immutable] or if it's a subclass of an immutable class.
 
 #### Example
 
@@ -13326,7 +13328,7 @@ doesn't invoke the overridden method._
 #### Description
 
 The analyzer produces this diagnostic when a method that overrides a method
-that is annotated as `[mustCallSuper][meta-mustCallSuper]` doesn't invoke
+that is annotated as [`mustCallSuper`][meta-mustCallSuper] doesn't invoke
 the overridden method as required.
 
 #### Example
@@ -14208,7 +14210,7 @@ as '@literal'._
 #### Description
 
 The analyzer produces this diagnostic when a constructor that has the
-`[literal][meta-literal]` annotation is invoked without using the `const`
+[`literal`][meta-literal] annotation is invoked without using the `const`
 keyword, but all of the arguments to the constructor are constants. The
 annotation indicates that the constructor should be used to create a
 constant value whenever possible.
@@ -14625,7 +14627,7 @@ The following code produces this diagnostic because an array dimension of
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class MyStruct extends Struct {
+final class MyStruct extends Struct {
   @Array([!-8!])
   external Array<Uint8> a0;
 }
@@ -14638,7 +14640,7 @@ Change the dimension to be a positive integer:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class MyStruct extends Struct {
+final class MyStruct extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -14666,7 +14668,7 @@ The following code produces this diagnostic because the type argument to
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<[!Void!]> a0;
 }
@@ -14679,7 +14681,7 @@ Change the type argument to one of the valid types:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
 }
@@ -15837,7 +15839,7 @@ import 'dart:ffi';
 
 @Packed(1)
 [!@Packed(1)!]
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15850,7 +15852,7 @@ Remove all but one of the annotations:
 import 'dart:ffi';
 
 @Packed(1)
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15875,7 +15877,7 @@ The following code produces this diagnostic because the argument to the
 import 'dart:ffi';
 
 @Packed([!3!])
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -15888,7 +15890,7 @@ Change the alignment to be one of the allowed values:
 import 'dart:ffi';
 
 @Packed(4)
-class C extends Struct {
+final class C extends Struct {
   external Pointer<Uint8> notEmpty;
 }
 {% endprettify %}
@@ -17766,7 +17768,7 @@ also annotated._
 #### Description
 
 The analyzer produces this diagnostic when a value that is annotated with
-the `[doNotStore][meta-doNotStore]` annotation is returned from a method,
+the [`doNotStore`][meta-doNotStore] annotation is returned from a method,
 getter, or function that doesn't have the same annotation.
 
 #### Example
@@ -17787,7 +17789,7 @@ int g() => [!f()!];
 #### Common fixes
 
 If the value that shouldn't be stored is the correct value to return, then
-mark the function with the `[doNotStore][meta-doNotStore]` annotation:
+mark the function with the [`doNotStore`][meta-doNotStore] annotation:
 
 {% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
@@ -18623,7 +18625,7 @@ type with three nested arrays, but only two dimensions are given in the
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   [!@Array(8, 8)!]
   external Array<Array<Array<Uint8>>> a0;
 }
@@ -18637,7 +18639,7 @@ required number of dimensions:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8, 8, 4)
   external Array<Array<Array<Uint8>>> a0;
 }
@@ -18648,7 +18650,7 @@ If the type of the field is wrong, then fix the type of the field:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Array(8, 8)
   external Array<Array<Uint8>> a0;
 }
@@ -18876,7 +18878,7 @@ The following code produces this diagnostic because the class `C` extends
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends [!Double!] {}
+final class C extends [!Double!] {}
 {% endprettify %}
 
 #### Common fixes
@@ -18887,7 +18889,7 @@ declaration of the class:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class C extends Struct {
+final class C extends Struct {
   @Int32()
   external int i;
 }
@@ -18897,7 +18899,7 @@ If the class shouldn't extend either `Struct` or `Union`, then remove any
 references to FFI classes:
 
 {% prettify dart tag=pre+code %}
-class C {}
+final class C {}
 {% endprettify %}
 
 ### subtype_of_sealed_class
@@ -18908,7 +18910,7 @@ sealed._
 #### Description
 
 The analyzer produces this diagnostic when a sealed class (one that either
-has the `[sealed][meta-sealed]` annotation or inherits or mixes in a
+has the [`sealed`][meta-sealed] annotation or inherits or mixes in a
 sealed class) is referenced in either the `extends`, `implements`, or
 `with` clause of a class or mixin declaration if the declaration isn't in
 the same package as the sealed class.
@@ -18978,11 +18980,11 @@ The following code produces this diagnostic because the class `C` extends
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer f;
 }
 
-class C extends [!S!] {
+final class C extends [!S!] {
   external Pointer g;
 }
 {% endprettify %}
@@ -18996,11 +18998,11 @@ directly and copy the shared fields:
 {% prettify dart tag=pre+code %}
 import 'dart:ffi';
 
-class S extends Struct {
+final class S extends Struct {
   external Pointer f;
 }
 
-class C extends Struct {
+final class C extends Struct {
   external Pointer f;
 
   external Pointer g;
@@ -21026,7 +21028,7 @@ _The parameter '{0}' isn't defined by '{1}'._
 #### Description
 
 The analyzer produces this diagnostic when an annotation of the form
-`[UseResult][meta-UseResult].unless(parameterDefined: parameterName)`
+[`UseResult.unless(parameterDefined: parameterName)`][meta-UseResult]
 specifies a parameter name that isn't defined by the annotated function.
 
 #### Example
@@ -22110,7 +22112,7 @@ _The value of '{0}' should be used._
 #### Description
 
 The analyzer produces this diagnostic when a function annotated with
-`[useResult][meta-useResult]` is invoked, and the value returned by that
+[`useResult`][meta-useResult] is invoked, and the value returned by that
 function isn't used. The value is considered to be used if a member of the
 value is invoked, if the value is passed to another function, or if the
 value is assigned to a variable or field.
@@ -22119,7 +22121,7 @@ value is assigned to a variable or field.
 
 The following code produces this diagnostic because the invocation of
 `c.a()` isn't used, even though the method `a` is annotated with
-`[useResult][meta-useResult]`:
+[`useResult`][meta-useResult]:
 
 {% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
