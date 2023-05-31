@@ -81,15 +81,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion list
-    switch (obj) {
-      // Matches if obj is a list with two elements.
-      case [a, b]: // ...
-    }
-    // #enddocregion list
-  }
-
-  {
     // #docregion rest
     var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
     // Prints "1 2 6 7".
