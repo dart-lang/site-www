@@ -203,20 +203,12 @@ var s2 = """This is also a
 multi-line string.""";
 // #enddocregion triple-quotes
 
+// MOVE TO library tour?
 class SymbolExampleNotUsedYet {
   // #docregion symbols
-  // MOVE TO library tour?
-
   void main() {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
-    print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-    print(Function.apply(
-        int.parse, ['11a'], {#radix: 16, #onError: handleError}));
   }
-
-  int handleError(String source) {
-    return 0;
-  }
-// #enddocregion symbols
+  // #enddocregion symbols
 }
