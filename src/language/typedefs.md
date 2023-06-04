@@ -43,7 +43,7 @@ However, function typedefs can still be useful:
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
-typedef Compare<T> = int Function(T a, T b);
+typedef Compare<T> = T Function(T a, T b);
 
 int sort(int a, int b) => a - b;
 
