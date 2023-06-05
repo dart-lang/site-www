@@ -12,7 +12,7 @@ the [pub tool][].
 
 ## Application package
 
-A package that is not intended to be used as a library, unlike regular [packages][].
+A package that is not intended to be shared, unlike regular [packages][].
 Application packages may have [dependencies][] on other packages, but are never
 depended on themselves. They are usually meant to be run directly, either on the
 command line or in a browser. 
