@@ -59,7 +59,7 @@ The following table lists the words that the Dart language treats specially.
 [dynamic]: /language#important-concepts
 [else]: /language/branches#if
 [enum]: /language/enums
-[export]: /guides/libraries/create-library-packages
+[export]: /guides/libraries/create-packages
 [extends]: /language/extend
 [extension]: /language/extension-methods
 [external]: https://spec.dart.dev/DartLangSpecDraft.pdf#External%20Functions
@@ -85,7 +85,7 @@ The following table lists the words that the Dart language treats specially.
 [null]: /language/variables#default-value
 [on]: /language/error-handling#catch
 [operator]: /language/methods#operators
-[part]: /guides/libraries/create-library-packages#organizing-a-package
+[part]: /guides/libraries/create-packages#organizing-a-package
 [required]: /language/functions#named-parameters
 [rethrow]: /language/error-handling#catch
 [return]: /language/functions#return-values

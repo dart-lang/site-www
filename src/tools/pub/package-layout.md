@@ -240,7 +240,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 {{site.alert.end}}
 
 For more information on packages, see
-[Creating packages](/guides/libraries/create-library-packages).
+[Creating packages](/guides/libraries/create-packages).
 
 ### Public tools {#public-tools}
 

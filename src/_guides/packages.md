@@ -186,7 +186,7 @@ the pub package manager.
 
 ### How to
 
-* [Creating packages](/guides/libraries/create-library-packages)
+* [Creating packages](/guides/libraries/create-packages)
 * [Publishing packages](/tools/pub/publishing)
 
 ### Reference
