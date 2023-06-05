@@ -42,7 +42,7 @@ gets will use the same versions of those dependencies.
 Application packages should check in the lockfile to source control;
 this ensures the application will use the exact same versions
 of all dependencies for all developers and when deployed to production.
-Library packages should not check in the lockfile, though, since they're
+Regular packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
 If a lockfile already exists, `dart pub get` uses the versions of dependencies

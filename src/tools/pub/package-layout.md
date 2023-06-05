@@ -189,8 +189,7 @@ enchilada/
     tortilla.dart
 ```
 
-Many packages are [*library
-packages*](/tools/pub/glossary#library-package): they
+Many [packages](/tools/pub/glossary#package)
 define Dart libraries that other packages can import and use.
 These public Dart library files go inside a directory called `lib`.
 
@@ -240,7 +239,7 @@ resolve. Instead, your entrypoints should go in the appropriate
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 {{site.alert.end}}
 
-For more information on library packages, see
+For more information on packages, see
 [Creating packages](/guides/libraries/create-library-packages).
 
 ### Public tools {#public-tools}
@@ -271,7 +270,7 @@ enchilada/
     guacamole.css
 ```
 
-While most library packages exist to let you reuse Dart code, you can also
+While most packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
 [Bootstrap](https://getbootstrap.com/) might include a number of CSS files
 for consumers of the package to use.

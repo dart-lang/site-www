@@ -34,7 +34,7 @@ When `dart pub upgrade` upgrades dependency versions, it writes a lockfile to en
 dependencies. For application packages, check in the lockfile to
 source control; this ensures the application has the exact same
 versions of all dependencies for all developers and when deployed to
-production. For library packages, don't check in the lockfile,
+production. For regular packages, don't check in the lockfile,
 because libraries are expected to work with a range of dependency versions.
 
 If a lockfile already exists, `dart pub upgrade` ignores it and generates a new
