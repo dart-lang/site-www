@@ -57,5 +57,5 @@ class C extends D {} // C is a subtype AND a subclass of D.
 ```
 
 Everything in Dart is an object, so _subtype_ is also used to describe
-[variable types in any context](/language/built-in-types),
-not only explicitly declared class relationships.
+variable types in any context, not only explicitly declared class relationships. 
+To learn more, see [The Dart type system](/language/type-system).
