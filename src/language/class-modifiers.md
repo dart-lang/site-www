@@ -3,11 +3,11 @@ title: Class modifiers
 description: >
   Modifier keywords for class declarations to control external library access.
 prevpage:
-  url: /language/mixins
-  title: Mixins
+  url: /language/callable-objects
+  title: Callable objects
 nextpage:
-  url: /language/enums
-  title: Enums
+  url: /language/modifier-reference
+  title: Class modifier reference
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -312,6 +312,11 @@ otherwise mutually exclusive:
 [abstract](#abstract).
 * `interface`, `final` or `sealed` with `mixin`. These access modifiers
 prevent [mixing in][mixin].
+
+See the [Class modifiers reference][] for complete guidance.
+
+[Class modifiers reference]: /language/modifier-reference
+
 
 [language version]: /guides/language/evolution#language-versioning
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
