@@ -483,7 +483,7 @@ check out the [language versioning specification][].
 [calling native C code]: /guides/libraries/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
-[Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
+[Dart library]: /guides/libraries/create-library-packages#organizing-a-package
 [Dart FFI]: /guides/libraries/c-interop
 [extension methods]: /language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1

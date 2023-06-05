@@ -85,7 +85,7 @@ The following table lists the words that the Dart language treats specially.
 [null]: /language/variables#default-value
 [on]: /language/error-handling#catch
 [operator]: /language/methods#operators
-[part]: /guides/libraries/create-library-packages#organizing-a-library-package
+[part]: /guides/libraries/create-library-packages#organizing-a-package
 [required]: /language/functions#named-parameters
 [rethrow]: /language/error-handling#catch
 [return]: /language/functions#return-values

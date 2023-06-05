@@ -205,7 +205,7 @@ than the next major version. So if your library depended on the (fictional)
 `transmogrify` package and you tested it at version 1.2.1, your version
 constraint would be [`^1.2.1`][].
 
-[libraries]: /resources/glossary#library
+[libraries]: #library
 [pubspec.yaml]: /tools/pub/pubspec
 [public libraries]: /tools/pub/package-layout#public-libraries
 [application package]: #application-package
