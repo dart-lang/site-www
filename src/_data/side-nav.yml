@@ -91,7 +91,7 @@
         - title: Overview & usage
           permalink: /language/class-modifiers
         - title: Reference
-          permalink: language/modifier-reference
+          permalink: /language/modifier-reference
     - title: Concurrency
       children:
         - title: Asynchronous support
