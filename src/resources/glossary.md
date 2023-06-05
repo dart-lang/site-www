@@ -29,3 +29,33 @@ If not, the pattern _refutes_, or denies, the match.
 Refutable patterns appear in [_matching contexts_][].
 
 [_matching contexts_]: /language/patterns#matching
+
+## Subclass
+
+A _subclass_ is a class that inherits from another class using the 
+[`extends`](/language/extend) keyword.
+
+```dart
+class A extends B {} // A is a subclass of B; B is the superclass of A. 
+```
+
+Any subclass relation is also a [subtype](#subtype) relation,
+so you can use "subtype" to describe any subclass in Dart. 
+However, the inverse is not true. Not all subtypes are subclasses.
+See the [subtype](#subtype) entry for more information.
+
+## Subtype
+
+A _subtype_ is a class that implements another class
+([`implements`](/language/classes#implicit-interfaces)),
+or inherits from another class ([`extends`](/language/extend)).
+
+```dart
+class A implements B {} // A is a subtype of B, but NOT a subclass of B.
+
+class C extends D {} // C is a subtype AND a subclass of D.
+```
+
+Everything in Dart is an object, so _subtype_ is also used to describe
+[variable types in any context](/language/built-in-types),
+not only explicitly declared class relationships.
