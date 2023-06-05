@@ -31,17 +31,19 @@ Dependencies upgraded!
 
 When `dart pub upgrade` upgrades dependency versions, it writes a lockfile to ensure that
 [`dart pub get`](/tools/pub/cmd/pub-get) will use the same versions of those
-dependencies. For application packages, check in the lockfile to
+dependencies. For [application packages][], check in the lockfile to
 source control; this ensures the application has the exact same
 versions of all dependencies for all developers and when deployed to
 production. For regular packages, don't check in the lockfile,
-because libraries are expected to work with a range of dependency versions.
+because packages are expected to work with a range of dependency versions.
 
 If a lockfile already exists, `dart pub upgrade` ignores it and generates a new
 one from scratch, using the latest versions of all dependencies.
 
 See the [`dart pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
+
+[application packages]: /tools/pub/glossary#application-package
 
 ## Upgrading specific dependencies
 

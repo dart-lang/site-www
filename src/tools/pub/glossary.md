@@ -149,7 +149,7 @@ All other dependencies are [transitive dependencies](#transitive-dependency).
 A library is a single compilation unit, made up of a single primary file and any
 optional number of [parts][]. Libraries have their own private scope.
 
-[parts]: /language/libraries#importing-only-part-of-a-library
+[parts]: /effective-dart/usage#do-use-strings-in-part-of-directives
 
 ## Lockfile
 
@@ -168,7 +168,7 @@ or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
 Pub includes a [content hash][] for each package
 to check against during future resolutions.
 
-If your package is an application package, you will typically check this into
+If your package is an [application package][], you will typically check this into
 source control. For regular packages, you usually won't.
 
 [content hash]: #content-hashes

@@ -11,10 +11,10 @@ nextpage:
 ---
 
 The `import` and `library` directives can help you create a
-modular and shareable code base. [Libraries][] not only provide APIs, but
+modular and shareable code base. Libraries not only provide APIs, but
 are a unit of privacy: identifiers that start with an underscore (`_`)
-are visible only inside the library. *Every Dart app is a library*, even
-if it doesn’t use a [`library`](#library-directive) directive.
+are visible only inside the library. *Every Dart file (plus its parts) is a
+[library][]*, even if it doesn’t use a [`library`](#library-directive) directive.
 
 Libraries can be distributed using [packages](/guides/packages).
 
@@ -24,7 +24,7 @@ Libraries can be distributed using [packages](/guides/packages).
   [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
 {{site.alert.end}}
 
-[Libraries]: /tools/pub/glossary#library
+[library]: /tools/pub/glossary#library
 
 ## Using libraries
 
