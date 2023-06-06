@@ -15,7 +15,7 @@ on whether you're writing code for a Flutter app or another kind of Dart app.
 
 Flutter apps can choose from many officially supported plugins for
 popular Firebase products such as Analytics, Cloud Firestore,
-Cloud Functions, and Crashalytics.
+Cloud Functions, and Crashlytics.
 For a full list of these plugins, see [FlutterFire][].
 
 Other kinds of Dart apps can use
@@ -53,6 +53,6 @@ To find wrapper packages for Google client APIs, search for
 [`googleapis` package]: {{site.pub-pkg}}/googleapis
 [`gsheets` package]: {{site.pub-pkg}}/gsheets
 [gsheets-api-docs]: {{site.pub-api}}/gsheets/latest/gsheets/gsheets-library.html
-[gsheets-api-docs-gapi]: {{site.pub-api}}/googleapis/latest/sheets.v4/sheets.v4-library.html
+[gsheets-api-docs-gapi]: {{site.pub-api}}/googleapis/latest/sheets_v4/sheets_v4-library.html
 [flutter-google-apis]: https://flutter.dev/docs/development/data-and-backend/google-apis
 [server-sample]: https://github.com/dart-lang/samples/tree/main/server/google_apis
