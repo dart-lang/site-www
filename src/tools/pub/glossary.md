@@ -12,10 +12,12 @@ the [pub tool][].
 
 ## Application package
 
-A package that is not intended to be shared, unlike regular [packages][].
-Application packages may have [dependencies][] on other packages, but are never
-depended on themselves. They are usually meant to be run directly, either on the
-command line or in a browser. 
+A package that contains a program or app, with a main entrypoint in `/bin`. 
+Meant to be run directly, either on the command line or in a browser.
+
+Application packages may have [dependencies][] on other packages,
+but are never depended on themselves.
+Unlike regular [packages][], they are not intended to be shared.
 
 Application packages should check their [lockfiles][] into source
 control, so that everyone working on the application and every location the
