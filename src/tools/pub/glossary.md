@@ -12,7 +12,9 @@ the [pub tool][].
 
 ## Application package
 
-A package that contains a program or app, with a main entrypoint in `/bin`. 
+A package that contains a program or app, with a main entrypoint in 
+the `/bin` directory 
+(or in `/lib` for [Flutter apps][]). 
 Meant to be run directly, either on the command line or in a browser.
 
 Application packages may have [dependencies][] on other packages,
@@ -25,6 +27,7 @@ application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
 specify `any` for their dependencies' [version constraints][].
 
+[Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
 [dependencies]: #dependency
 [packages]: #package
 [lockfiles]: #lockfile
