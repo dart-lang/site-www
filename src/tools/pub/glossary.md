@@ -12,9 +12,7 @@ the [pub tool][].
 
 ## Application package
 
-A package that contains a program or app, with a main entrypoint in 
-the `/bin` directory 
-(or in `/lib` for [Flutter apps][]). 
+A package that contains a program or app, with a [main entrypoint][]. 
 Meant to be run directly, either on the command line or in a browser.
 
 Application packages may have [dependencies][] on other packages,
@@ -27,7 +25,7 @@ application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
 specify `any` for their dependencies' [version constraints][].
 
-[Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
+[main entrypoint]: #entrypoint
 [dependencies]: #dependency
 [packages]: #package
 [lockfiles]: #lockfile
@@ -140,8 +138,10 @@ A directory inside your package that is allowed to contain
 [Dart entrypoints](#entrypoint).
 
 Pub has a list of these directories: `benchmark`, `bin`, `example`,
-`test`, `tool`, and `web`. Any subdirectories of those (except `bin`) may also
-contain entrypoints.
+`test`, `tool`, and `web` (and `lib`, for [Flutter apps][]).
+Any subdirectories of those (except `bin`) may also contain entrypoints.
+
+[Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
 
 ## Immediate dependency
 
