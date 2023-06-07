@@ -83,6 +83,7 @@ input.gsc-search-button {
   margin-top: 70px;
   padding: 20px;
   min-height: calc(100vh);
+
   button {
     position: absolute;
     top: 20px;
@@ -90,6 +91,7 @@ input.gsc-search-button {
     font-size: 30px;
     cursor: pointer;
     z-index: 5;
+
     &:hover {
       color: $gray;
     }

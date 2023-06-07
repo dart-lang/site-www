@@ -24,7 +24,6 @@ $enable-deprecation-messages: false;
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
-@import 'site-overrides';
 
 
 // Extra variables (defined in terms of bootstrap and other defaults)
@@ -204,46 +203,39 @@ i.fa-external-link-alt {
   color: $site-color-header-text;
   display: flex;
   $mainnav-entry-spacing: 12px;
+
   ul {
     margin: auto;
     margin-right: 0;
     padding: 0;
     list-style: none;
-    &:not(.dropdown-menu) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
     li {
       padding: 0 $mainnav-entry-spacing;
+
       a {
         color: $site-color-header-text;
         display: inline-block;
         padding: 0 6px;
         font-size: $site-font-size-header;
         font-weight: 400;
+
         &:hover, &:active {
           color: $site-color-card-link;
         }
       }
+
       &.searchfield {
         position: relative;
       }
     }
   }
-  .dropdown-menu {
-    background-color: $site-color-header;
-    margin-left: -$mainnav-entry-spacing;
-    a:hover, a:focus { background-color: rgba(255, 255, 255, 0.05); }
-    a.active:after {
-      font-family: 'Font Awesome 5 Free';
-      content: '\f00c'; // fas fa-check
-      font-weight: 900;
-      padding-left: .5em;
-      // color: $brand-secondary;
-    }
-  }
+
   .brand {
     display: block;
     float: left;
@@ -412,7 +404,7 @@ main .content {
   box-sizing: border-box;
   background-color: #294058;
   border-radius: 0;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
   color: $site-color-card-text;
 
   h1, h2, h3, h4, h5, h6 {
@@ -439,7 +431,9 @@ main .content {
 }
 
 // Support for .card-grid formatted as a markdown unordered list
-ul.card-grid { padding-left: 0; }
+ul.card-grid {
+  padding-left: 0;
+}
 
 // Platform logos
 li.card {
@@ -455,31 +449,6 @@ li.card {
       color: inherit;
     }
   }
-}
-
-// Color Palette
-.slogan {
-  background-color: $brand-primary;
-  text-align: center;
-  h1, h2, h3 {
-    margin: 0;
-  }
-}
-
-.gray-dark {
- background-color: $gray-dark;
- color: $white-base;
- h1, h2, h3, h4, h5, h6 {
-   color: $white-base;
- }
-}
-
-.gray-light {
- background-color: $gray-light;
- color: $gray-dark;
- h1, h2, h3, h4, h5, h6 {
-   color: $gray-dark;
- }
 }
 
 @include dart-style-for(good, $alert-success-bg, $alert-success-fg, 'good');
@@ -515,27 +484,6 @@ li.card {
     }
   }
 }
-
-.code-notes {
-  list-style-type: none;
-  padding-left: 0;
-  display: table;
-  li {
-    counter-increment: code-note-counter;
-    display: table-row;
-    padding-left: 8px;
-    &:before {
-      font-family: $font-family-monospace;
-      content: '/*' counter(code-note-counter) '*/' ;
-      display: table-cell;
-      text-align: right;
-      color: $teal;
-      padding-right: $font-size-base * 0.5;
-      // background-color: lightyellow;
-    }
-  }
-}
-
 
 /* -----------------------------------------
   Bootstrap Overwrites
@@ -744,7 +692,7 @@ body.error {
     color: white;
     font-family: $site-font-family-gsans-display;
     font-size: 100px;
-    margin: 0px auto;
+    margin: 0 auto;
   }
 
   h2 {
@@ -766,7 +714,7 @@ body.error {
       line-height: 70px;
       width: 100%;
       max-width: 880px;
-      margin: 0px auto 88px;
+      margin: 0 auto 88px;
     }
   }
 
@@ -804,7 +752,6 @@ body.obsolete {
  ----------------------------------------- */
 
 @media(max-width: 1024px) {
-
   #menu-toggle {
     display: flex;
   }
@@ -891,23 +838,6 @@ body.obsolete {
       }
     }
   }
-}
-
-// FIXME: move into _code.scss once #2008 is merged
-.prettify-filename {
-  position: relative;
-  text-align: right;
-  margin-right: $font-size-base;
-  margin-top: -$font-size-base * 2.5;
-  margin-bottom: $font-size-base;
-  opacity: 0.5;
-}
-
-blockquote {
-  border: solid #b3b3b3;
-  border-width: 1px 0px;
-  margin: 20px;
-  padding: 10px 20px 0 20px;
 }
 
 @import 'overwrites';

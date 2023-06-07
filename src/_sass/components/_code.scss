@@ -83,6 +83,9 @@ pre.console-output {
   .nt { @extend .tag; } /* Name.Tag */
 }
 
+// Dart-site specific style overrides
+.highlight .gp { user-select: none; }
+
 pre {
   @include pre-defaults;
 
@@ -99,6 +102,15 @@ iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   min-height: 400px;
   resize: vertical;
   width: 100%;
+}
+
+.prettify-filename {
+  position: relative;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
 }
 
 @media screen {

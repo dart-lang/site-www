@@ -25,8 +25,8 @@
     position: relative;
     color: inherit;
 
-    &.disabled { 
-      opacity: 0.5; 
+    &.disabled {
+      opacity: 0.5;
     }
   }
 
@@ -108,8 +108,8 @@
 #sidenav {
   @include sidenav-top-position;
   position: fixed;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   width: 226px;
   border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
@@ -169,7 +169,7 @@
       &.collapsable::before {
         display: none;
       }
-      
+
 
       &.external {
         span.material-icons {
@@ -179,7 +179,7 @@
           color: inherit;
           opacity: 0.8;
         }
-      
+
         &::after {
           display:none;
         }

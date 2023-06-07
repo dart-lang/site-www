@@ -31,7 +31,7 @@
 // to follow both the header's bottom and the banner's bottom position.
 //
 // On page load this repositioning happens with a delay, which causes a "flash"
-// as it finally happens. The below rulesmatch the expected initial positions
+// as it finally happens. The below rules match the expected initial positions
 // to minimize the "flash".
 @mixin sidenav-top-position() {
   top: $site-header-height;
