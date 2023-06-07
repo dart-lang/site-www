@@ -25,7 +25,7 @@ and how they affect users of your libraries.
 ## The `mixin` modifier on classes
 
 The most important modifier to be aware of is `mixin`.
-Prior to Dart 3.0, any class can be used as a mixin in another class's `with`
+Language versions prior to Dart 3.0 allow any class to be used as a mixin in another class's `with`
 clause as long as it doesn't:
 
 *   Declare any non-factory constructors.
@@ -36,7 +36,7 @@ by adding a constructor or `extends` clause to a class
 without realizing that others were using the class in a `with` clause.
 
 In Dart 3.0, we no longer allow classes to be used as a mixin by default.
-Instead, you must explicitly opt in to that by declaring a `mixin class`:
+Instead, you must explicitly opt in to that behavior by declaring a `mixin class`:
 
 ```dart
 mixin class Both {}
@@ -47,34 +47,32 @@ class UseAsSuperclass extends Both {}
 
 If you update your package to Dart 3.0 and don't change any of your code,
 you may not see any errors.
-But you may have inadvertently broken users of your package
-if they were using some of your classes as mixins.
+But you may inadvertently break users of your package
+if they were using your classes as mixins.
 
 ### Migrating classes as mixins
 
-First of all, if the class already can't be used as a mixin,
-there's nothing to worry about and nothing to do.
 If the class has a non-factory constructor, an `extends` clause,
 or a `with` clause, then it already can't be used as a mixin.
-The Dart 3.0 behavior is unchanged.
+The Dart 3.0 behavior is unchanged. 
+There's nothing to worry about and nothing you need to do.
 
 In practice, this describes about 90% of existing classes.
 For the remaining classes that can be used as mixins,
 you have to decide what you want to support.
 
-Here are a few questions to help decide, first a pragmatic one, then a couple
-of design questions:
+Here are a few questions to help decide. The first is pragmatic:
 
-*   **Do you want to risk breaking any users?** If the answer is a hard no,
-    then simply place `mixin` before any class that could be used as a mixin.
+*   **Do you want to risk breaking any users?** If the answer is a hard "no",
+    then place `mixin` before any class that [could be used as a mixin](#the-mixin-modifier-on-classes).
     This exactly preserves the existing behavior of your API.
 
 On the other hand, if you want to take this opportunity to rethink the
 affordances your API offers, then you may want to *not* turn it into a `mixin
-class`. Consider these two questions:
+class`. Consider these two design questions:
 
 *   **Do you want users to be able to construct instances of it directly?**
-    In other words, is the class not abstract?
+    In other words, is the class deliberately not abstract?
 
 *   **Do you *want* people to be able to use the declaration as a mixin?**
     In other words, do you want them to be able to use it in `with` clauses?
@@ -84,7 +82,7 @@ the second is "no", then just leave it as a class. If the answer to the first
 is "no" and the second is "yes", then change it from a class to a mixin
 declaration.
 
-Note that the last two options, leaving it a class or turning it into a mixin,
+The last two options, leaving it a class or turning it into a pure mixin,
 are breaking API changes. You'll want to bump the major version of your package
 if you do this.
 
@@ -116,7 +114,7 @@ Even when the class *does* have non-abstract methods, you may want to prevent
 users from extending it.
 Inheritance is one of the deepest kinds of coupling in software.
 That coupling is powerful because it enables code reuse,
-but also [dangerous and fragile][].
+but is also [dangerous and fragile][].
 When inheritance crosses package boundaries,
 it can be hard to evolve the superclass without breaking subclasses.
 
@@ -135,10 +133,10 @@ and even other libraries within your own package.
 
 ## The `base` modifier
 
-The `base` modifier is sort of the opposite of `interface`:
-it allows you to use the class in an `extends` clause
-or use a mixin or mixin class in a `with` clause,
-but disallows code outside of the class's library
+The `base` modifier is somewhat the opposite of `interface`.
+It allows you to use the class in an `extends` clause,
+or use a mixin or mixin class in a `with` clause.
+But, it disallows code outside of the class's library
 from using the class or mixin in an `implements` clause.
 
 This ensures that every object that is an instance
@@ -180,8 +178,8 @@ main() {
 
 Adding the `base` modifier to the class can help prevent these runtime errors.
 As with `interface`, you can ignore this restriction
-in the same library where the `base` class or mixin is declared,
-and then subclasses in the same library
+in the same library where the `base` class or mixin is declared.
+Then subclasses in the same library
 will be reminded to implement the private methods.
 But note that the next section *does* apply:
 
@@ -191,12 +189,12 @@ The goal of marking a class `base` is to ensure that
 every instance of that type concretely inherits from it.
 To maintain this, the base restriction is "contagious".
 Every subtype of a type marked `base` -- *direct or indirect* --
-must also prevent being implemented too.
+must also prevent being implemented.
 That means it must be marked `base`
 (or `final` or `sealed`, which we'll get to next).
 
-Applying `base` to a type requires some care then,
-because it affects not just what users can do with your class or mixin,
+Applying `base` to a type requires some care, then.
+It affects not just what users can do with your class or mixin,
 but also the affordances *their* subclasses can offer.
 Once you've put `base` on a type, the whole hierarchy under it
 is prohibited from being implemented.
@@ -259,7 +257,7 @@ For this to be sound, the compiler enforces two restrictions:
 
 2.  Every direct subtype of the sealed type must be in the same library
     where the sealed type is declared.
-    This way the compiler can find them all and know that there aren't
+    This way, the compiler can find them all. It knows that there aren't
     other hidden subtypes floating around that would not match any of the cases.
 
 The second restriction is similar to `final`.
@@ -287,6 +285,8 @@ class OtherDusty implements Dusty {}
 Of course, if you *want* the subtypes of your sealed type
 to be restricted as well, you can get that by marking them
 using `interface`, `base`, `final`, or `sealed`.
+
+### `sealed` versus `final`
 
 If you have a class that you don't want users to be able to directly subtype,
 when should you use `sealed` versus `final`?
