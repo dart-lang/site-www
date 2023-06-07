@@ -36,7 +36,7 @@ a {
   /* Don't display navigation aids when printing */
   #page-header, #sidenav, #subnav, #page-footer, .banner,
   #toc, #site-toc--inline, #site-toc--side, #page-github-links {
-    display:none !important;
+    display: none !important;
   }
 
   #page-content {

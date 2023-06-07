@@ -24,7 +24,9 @@
 
     li {
       padding-left: $padding;
-    } // Indent subentries
+    }
+
+    // Indent subentries
   }
 }
 
@@ -42,8 +44,13 @@
     padding-top: $site-content-top-padding;
 
     @at-root {
-      #site-toc--inline { display: none; }
-      #site-toc--side { display: block; }
+      #site-toc--inline {
+        display: none;
+      }
+
+      #site-toc--side {
+        display: block;
+      }
     }
   }
 

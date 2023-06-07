@@ -4,8 +4,9 @@
   tbody {
     tr {
       @include transition();
+
       &.hidden {
-        display:none;
+        display: none;
       }
     }
   }

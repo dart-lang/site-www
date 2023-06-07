@@ -6,14 +6,14 @@ body {
 }
 
 section {
- position: relative;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
- font-family: $site-font-family-gsans;
- font-weight: 400;
- margin-top: 1.5em;
- color: $site-color-body;
+  font-family: $site-font-family-gsans;
+  font-weight: 400;
+  margin-top: 1.5em;
+  color: $site-color-body;
 }
 
 h1, .h1 {
@@ -23,11 +23,25 @@ h1, .h1 {
   margin-bottom: 0.67em;
 }
 
-h2, .h2 { font-size: $h2-font-size;}
-h3, .h3 { font-size: $h3-font-size;}
-h4, .h4 { font-size: $h4-font-size;}
-h5, .h5 { font-size: $h5-font-size;}
-h6, .h6 { font-size: $h6-font-size;}
+h2, .h2 {
+  font-size: $h2-font-size;
+}
+
+h3, .h3 {
+  font-size: $h3-font-size;
+}
+
+h4, .h4 {
+  font-size: $h4-font-size;
+}
+
+h5, .h5 {
+  font-size: $h5-font-size;
+}
+
+h6, .h6 {
+  font-size: $h6-font-size;
+}
 
 dt {
   a {
@@ -36,31 +50,31 @@ dt {
 }
 
 a, button {
- text-decoration: none;
- color: $brand-primary;
- font-family: $site-font-family-roboto;
- font-weight: 400;
+  text-decoration: none;
+  color: $brand-primary;
+  font-family: $site-font-family-roboto;
+  font-weight: 400;
 
- &:visited {
-   color: $brand-primary;
- }
-
- &:hover, &:focus, &:active {
-   color: lighten($brand-primary, 25%);
-   outline: none;
-   text-decoration: none;
- }
-
- &.external {
-  &:after {
-    @include md-icon-content("launch");
-    vertical-align: middle;
-    margin-left: 2px;
-    font-size: 10px;
-    color: inherit;
-    opacity: 0.5;
+  &:visited {
+    color: $brand-primary;
   }
- }
+
+  &:hover, &:focus, &:active {
+    color: lighten($brand-primary, 25%);
+    outline: none;
+    text-decoration: none;
+  }
+
+  &.external {
+    &:after {
+      @include md-icon-content("launch");
+      vertical-align: middle;
+      margin-left: 2px;
+      font-size: 10px;
+      color: inherit;
+      opacity: 0.5;
+    }
+  }
 }
 
 img {

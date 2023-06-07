@@ -77,13 +77,14 @@
 
         &.active {
           font-weight: $font-weight-bold;
+
           &:not(.collapsable) {
             color: $site-color-primary;
           }
         }
 
         &.collapsable {
-          &::before{
+          &::before {
             content: 'arrow_drop_down';
             font: $site-font-icon;
             left: -24px;
@@ -181,9 +182,9 @@
         }
 
         &::after {
-          display:none;
+          display: none;
         }
-    }
+      }
 
       &[data-toggle] {
         &:not(.collapsable) {

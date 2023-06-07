@@ -36,6 +36,7 @@ i.fa-external-link-alt {
   a.external & {
     display: none;
   }
+
   #sidenav & {
     display: none;
   }
@@ -47,11 +48,12 @@ i.fa-external-link-alt {
   ----------------------------------------- */
 
 #page-header {
-  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
   // override of shared/_header.scss
   .site-header {
     box-shadow: none;
+
     .navbar {
       .nav-link {
         &.active {
@@ -252,18 +254,22 @@ i.fa-external-link-alt {
   min-height: 32px;
   line-height: 32px;
   margin-bottom: 10px;
+
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+
     li {
       display: inline-block;
       width: 49%;
+
       a {
         display: block;
         padding-left: 5px;
         padding-right: 5px;
       }
+
       &.next {
         float: right;
         text-align: right;
@@ -351,6 +357,7 @@ main .content {
   column-count: 2;
   column-gap: 0;
   padding-left: $font-size-base * 0.5;
+
   li {
     page-break-inside: avoid;
     padding: $font-size-base * 0.5;
@@ -362,23 +369,28 @@ main .content {
   list-style: none;
   column-count: 3;
   column-gap: 0;
+
   li {
-   page-break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
 
 .break-50 {
   width: 50% !important;
 }
+
 .break-60 {
   width: 60% !important;
 }
+
 .break-70 {
   width: 70% !important;
 }
+
 .break-80 {
   width: 80% !important;
 }
+
 .break-90 {
   width: 90% !important;
 }
@@ -410,10 +422,12 @@ main .content {
   h1, h2, h3, h4, h5, h6 {
     font-family: $site-font-family-gsans;
     margin-top: 0;
+
     a {
       color: $site-color-card-text;
       font-family: $site-font-family-gsans;
     }
+
     .octicon-link {
       display: none !important;
     }
@@ -427,7 +441,9 @@ main .content {
     color: $site-color-card-link;
   }
 
-  &.narrow { width: 250px; }
+  &.narrow {
+    width: 250px;
+  }
 }
 
 // Support for .card-grid formatted as a markdown unordered list
@@ -440,10 +456,12 @@ li.card {
   color: inherit;
   background-color: transparent;
   box-shadow: none;
+
   .logo {
     display: block;
     padding-bottom: $font-size-base;
   }
+
   h1, h2, h3, h4, h5, h6 {
     a {
       color: inherit;
@@ -469,10 +487,12 @@ li.card {
   margin: 0;
   padding: 0;
   list-style-type: none;
+
   li {
     counter-increment: step-counter;
     margin-bottom: 10px;
     position: relative;
+
     &:before {
       content: counter(step-counter);
       position: absolute;
@@ -490,10 +510,10 @@ li.card {
  ----------------------------------------- */
 
 .container {
- position: relative;
- max-width: 100%;
- width: $live-content-width;
- margin: 0 auto;
+  position: relative;
+  max-width: 100%;
+  width: $live-content-width;
+  margin: 0 auto;
 }
 
 .mini-toc {
@@ -533,7 +553,9 @@ h3.popover-header {
 }
 
 @media (hover: hover) {
-  [data-toggle="popover"]:hover { border-color: $default-link !important; }
+  [data-toggle="popover"]:hover {
+    border-color: $default-link !important;
+  }
 }
 
 .table {
@@ -541,7 +563,9 @@ h3.popover-header {
   @extend .table-striped;
 
   // override .table-striped macro, remove top border
-  td { border-top: none; }
+  td {
+    border-top: none;
+  }
 }
 
 .table-wrapper {
@@ -566,22 +590,27 @@ h3.popover-header {
   p:last-child {
     margin-bottom: 0;
   }
+
   &.alert-success {
     width: auto;
     background-color: $alert-success-bg;
   }
+
   &.alert-info {
     width: auto;
     background-color: $alert-info-bg;
   }
+
   &.alert-warning {
     width: auto;
     background-color: $alert-warning-bg;
   }
+
   &.alert-danger {
     width: auto;
     background-color: $alert-danger-bg;
   }
+
   &.alert-obsolete {
     width: auto;
     background-color: $gray-dark;
@@ -607,6 +636,7 @@ h3.popover-header {
           @include md-icon-content($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
         }
       }
+
       &.active a {
         color: $breadcrumb-active-color;
         cursor: default;
@@ -618,8 +648,10 @@ h3.popover-header {
 ul.nav-list {
   list-style: none;
   padding: 0;
+
   li {
     border-bottom: 1px solid $gray-light;
+
     h2 {
       font-weight: 400;
       font-size: 20px;
@@ -630,12 +662,14 @@ ul.nav-list {
 
 #page-github-links {
   float: right;
+
   .btn {
     color: $site-color-body;
     $padding-x: $btn-padding-x * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
   }
+
   .fa-sm {
     font-size: 14px;
   }
@@ -646,23 +680,30 @@ ul.nav-list {
   Templates
  ----------------------------------------- */
 
- // Homepage
+// Homepage
 body.homepage {
   #sidenav {
     display: none;
   }
+
   #code-sample-section {
     padding-top: 30px;
-    h3 { margin-top: 0; }
+
+    h3 {
+      margin-top: 0;
+    }
   }
+
   section {
     padding: 0;
   }
+
   pre.prettyprint {
-   margin-top: 0;
-   height: 200px;
-   overflow: auto;
+    margin-top: 0;
+    height: 200px;
+    overflow: auto;
   }
+
   .card-grid {
     justify-content: center;
     margin-top: 30px;
@@ -730,14 +771,21 @@ body.top {
   #sidenav {
     display: none;
   }
-  #site-toc--inline { display: block; }
-  #site-toc--side { display: none; }
+
+  #site-toc--inline {
+    display: block;
+  }
+
+  #site-toc--side {
+    display: none;
+  }
 }
 
 body.obsolete {
   #page-header {
     .alert {
       margin: 0;
+
       h4 {
         margin-bottom: 0;
         margin-top: 0;
@@ -764,7 +812,7 @@ body.obsolete {
     max-width: calc(100vw - 60px);
     background: #fff;
     z-index: 100;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
     transform: translateX(-100%);
     transition: transform 0.4s ease-in-out;
 
@@ -782,15 +830,18 @@ body.obsolete {
       content: '';
       display: block;
       position: fixed;
-      top: 0; bottom: 0;
-      left: 0; right: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 100%;
       z-index: 5;
-      background-color: rgba($gray-base,0.5);
+      background-color: rgba($gray-base, 0.5);
       cursor: pointer;
       pointer-events: none;
       @include transition(0.5s);
     }
+
     #sidenav {
       display: block;
       left: 0 !important;
@@ -804,6 +855,7 @@ body.obsolete {
     ul {
       li {
         display: none;
+
         &.searchfield {
           display: block;
         }
