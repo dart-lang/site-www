@@ -3,8 +3,8 @@ title: Enumerated types
 description: Learn about the enum type in Dart.
 short-title: Enums
 prevpage:
-  url: /language/class-modifiers
-  title: Class modifiers
+  url: /language/mixins
+  title: Mixins
 nextpage:
   url: /language/extension-methods
   title: Extension methods

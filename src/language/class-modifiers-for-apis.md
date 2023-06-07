@@ -1,6 +1,14 @@
 ---
 title: Class modifiers for API maintainers
-description: How to use the class modifiers added in Dart 3.0 to make your package's API more robust and maintainable.
+description: >
+ How to use the class modifiers added in Dart 3.0
+ to make your package's API more robust and maintainable.
+prevpage:
+  url: /language/class-modifiers
+  title: Class modifiers
+nextpage:
+  url: /language/async
+  title: Asynchrony support
 ---
 
 Dart 3.0 adds a few [new modifiers][class modifiers]
@@ -203,7 +211,7 @@ That sounds intense, but it's how most other programming languages
 have always worked.
 Most don't have implicit interfaces at all,
 so when you declare a class in Java, C#, or other languages,
-you effectively have the same limitation.
+you effectively have the same constraint.
 
 ## The `final` modifier
 

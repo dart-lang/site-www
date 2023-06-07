@@ -3,11 +3,11 @@ title: Class modifiers
 description: >
   Modifier keywords for class declarations to control external library access.
 prevpage:
-  url: /language/mixins
-  title: Mixins
+  url: /language/callable-objects
+  title: Callable objects
 nextpage:
-  url: /language/enums
-  title: Enums
+  url: /language/class-modifiers-for-apis
+  title: Class modifiers for API maintainers
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -37,6 +37,12 @@ not apply to other declarations like `enum`, `typedef`, or `extension`.
 
 When deciding whether to use class modifiers, consider the intended uses of the
 class, and what behaviors the class needs to be able to rely on.
+
+{{site.alert.note}}
+  If you maintain a library, read the
+  [Class modifiers for API maintainers](/language/class-modifiers-for-apis)
+  page for guidance on how to navigate these changes for your libraries. 
+{{site.alert.end}}
 
 ## No modifier
 
