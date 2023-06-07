@@ -16,35 +16,36 @@ that you can place on class and [mixin declarations][mixin].
 If you are the author of a library package,
 these modifiers give you more control over what users are allowed to do
 with the types that your package exports.
-That control can make it easier to evolve your package
-and easier to tell if a change to your code may break users.
+This can make it easier to evolve your package,
+and easier to know if a change to your code may break users.
 
 [class modifiers]: /language/class-modifiers
 [mixin]: /language/mixins
 
-Dart 3.0 also includes a breaking change around using classes as mixins.
+Dart 3.0 also includes a [breaking change](/resources/dart-3-migration#mixin)
+around using classes as mixins.
 This change might not break *your* class,
 but it could break *users* of your class.
 
-This guide walks you through those changes
-to help you know how to use these new modifiers
+This guide walks you through these changes
+so you know how to use the new modifiers,
 and how they affect users of your libraries.
 
 ## The `mixin` modifier on classes
 
 The most important modifier to be aware of is `mixin`.
-Language versions prior to Dart 3.0 allow any class to be used as a mixin in another class's `with`
-clause as long as it doesn't:
+Language versions prior to Dart 3.0 allow any class to be used as a mixin
+in another class's `with` clause, _UNLESS_ the class:
 
-*   Declare any non-factory constructors.
-*   Extend any class other than `Object`.
+*   Declares any non-factory constructors.
+*   Extends any class other than `Object`.
 
-This makes it easy to accidentally break someone else's code
+This makes it easy to accidentally break someone else's code,
 by adding a constructor or `extends` clause to a class
-without realizing that others were using the class in a `with` clause.
+without realizing that others are using it in a `with` clause.
 
-In Dart 3.0, we no longer allow classes to be used as a mixin by default.
-Instead, you must explicitly opt in to that behavior by declaring a `mixin class`:
+Dart 3.0 no longer allows classes to be used as mixins by default.
+Instead, you must explicitly opt-in to that behavior by declaring a `mixin class`:
 
 ```dart
 mixin class Both {}
@@ -62,8 +63,8 @@ if they were using your classes as mixins.
 
 If the class has a non-factory constructor, an `extends` clause,
 or a `with` clause, then it already can't be used as a mixin.
-The Dart 3.0 behavior is unchanged. 
-There's nothing to worry about and nothing you need to do.
+Behavior won't change with Dart 3.0; 
+there's nothing to worry about and nothing you need to do.
 
 In practice, this describes about 90% of existing classes.
 For the remaining classes that can be used as mixins,
@@ -72,7 +73,8 @@ you have to decide what you want to support.
 Here are a few questions to help decide. The first is pragmatic:
 
 *   **Do you want to risk breaking any users?** If the answer is a hard "no",
-    then place `mixin` before any class that [could be used as a mixin](#the-mixin-modifier-on-classes).
+    then place `mixin` before any and all classes that
+    [could be used as a mixin](#the-mixin-modifier-on-classes).
     This exactly preserves the existing behavior of your API.
 
 On the other hand, if you want to take this opportunity to rethink the
@@ -114,22 +116,24 @@ When a user sees that class in your package's API,
 they may not know if it contains code they can reuse by extending the class,
 or whether it is instead meant to be used as an interface.
 
-You can clarify that by putting the `interface` modifier on the class.
+You can clarify that by putting the [`interface`](/language/class-modifiers#interface)
+modifier on the class.
 That allows the class to be used in an `implements` clause,
 but prevents it from being used in `extends`.
 
 Even when the class *does* have non-abstract methods, you may want to prevent
 users from extending it.
-Inheritance is one of the deepest kinds of coupling in software.
-That coupling is powerful because it enables code reuse,
-but is also [dangerous and fragile][].
+Inheritance is one of the most powerful kinds of coupling in software,
+because it enables code reuse.
+But that coupling is also [dangerous and fragile][].
 When inheritance crosses package boundaries,
 it can be hard to evolve the superclass without breaking subclasses.
 
 [dangerous and fragile]: https://en.wikipedia.org/wiki/Fragile_base_class
 
-Marking the class `interface` lets users construct it (unless it's also marked
-`abstract`) and implement the class's interface,
+Marking the class `interface` lets users construct it (unless it's [also marked
+`abstract`](/language/class-modifiers#abstract-interface))
+and implement the class's interface,
 but prevents them from reusing any of its code.
 
 When a class is marked `interface`, the restriction can be ignored within
@@ -141,7 +145,8 @@ and even other libraries within your own package.
 
 ## The `base` modifier
 
-The `base` modifier is somewhat the opposite of `interface`.
+The [`base`](/language/class-modifiers#base)
+modifier is somewhat the opposite of `interface`.
 It allows you to use the class in an `extends` clause,
 or use a mixin or mixin class in a `with` clause.
 But, it disallows code outside of the class's library
@@ -216,7 +221,7 @@ you effectively have the same constraint.
 ## The `final` modifier
 
 If you want all of the restrictions of both `interface` and `base`,
-you can mark a class or mixin class `final`.
+you can mark a class or mixin class [`final`](/language/class-modifiers#final).
 This prevents anyone outside of your library from creating
 any kind of subtype of it:
 no using it in `implements`, `extends`, `with`, or `on` clauses.
@@ -229,7 +234,7 @@ without worrying about breaking any downstream users.
 
 ## The `sealed` modifer
 
-The last modifier, `sealed`, is special.
+The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.
 It exists primarily to enable [exhaustiveness checking][] in pattern matching.
 If a switch has cases for every direct subtype of a type marked `sealed`,
 then the compiler knows the switch is exhaustive.
@@ -335,7 +340,7 @@ That default case will then be what is executed if you add more subtypes later.
 
 As an API designer,
 these new modifiers give you control over how users work with your code,
-and conversely how you are able to evolve your code without breaking them.
+and conversely how you are able to evolve your code without breaking theirs.
 
 But these options carry complexity with them:
 you now have more choices to make as an API designer.
@@ -343,11 +348,11 @@ Also, since these features are new,
 we still don't know what the best practices will be.
 Every language's ecosystem is different and has different needs.
 
-Fortunately, you don't need to figure it all out at once.
-We chose the defaults deliberately so that if you do nothing,
+Fortunately, you don't need to figure it out all at once.
+We chose the defaults deliberately so that even if you do nothing,
 your classes mostly have the same affordances they had before 3.0.
 If you just want to keep your API the way it was,
-put `mixin` on the classes that support that and you're done.
+put `mixin` on the classes that already supported that, and you're done.
 
 Over time, as you get a sense of where you want finer control,
 you can consider applying some of the other modifiers:

@@ -297,7 +297,8 @@ String getVehicleSound(Vehicle vehicle) {
 
 If you don’t want [exhaustive switching][exhaustive], 
 or want to be able to add subtypes later without breaking the API, 
-use the [`final`](#final) modifier.
+use the [`final`](#final) modifier. For a more in depth comparison,
+read [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
 
 ## Combining modifiers
 
