@@ -27,7 +27,7 @@ A variable with an `int` type can't store a number with a decimal place.
 Dart checks variable values against their types at
 [compile-time](#static-errors-and-warnings) and [runtime](#runtime-errors).
 
-you can't get into a situation where the value stored in a variable is
+You can't get into a situation where the value stored in a variable is
 different from the variable's static type. Like most modern statically
 typed languages, Dart accomplishes this with a combination of
 [static (compile-time)](#static-errors-and-warnings) and [dynamic (runtime)](#runtime-errors) checking.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Check for non-200 links in built Jekyll site using Firebase emulator
-set -eu -o pipefail 
+set -eu -o pipefail
 source $TOOL_DIR/utils.sh
 
 dart pub get
@@ -33,7 +33,7 @@ sleep 3
 if [[ -z "$emulator_status" ]]; then
   echo -e "$(red "Emulator did not start...")"
   exit 1
-else 
+else
   echo -e "$(blue "Emulator is running")"
 fi
 
