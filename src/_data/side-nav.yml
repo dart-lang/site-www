@@ -80,14 +80,18 @@
           permalink: /language/extend
         - title: Mixins
           permalink: /language/mixins
-        - title: Class modifiers
-          permalink: /language/class-modifiers
         - title: Enums
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
         - title: Callable objects
           permalink: /language/callable-objects
+    - title: Class modifiers
+      children: 
+        - title: Overview & usage
+          permalink: /language/class-modifiers
+        - title: Reference
+          permalink: /language/modifier-reference
     - title: Concurrency
       children:
         - title: Asynchronous support
@@ -186,9 +190,9 @@
       children:
         - title: C interop
           permalink: /guides/libraries/c-interop
-        - title: Objective-C and Swift interop
+        - title: Objective-C & Swift interop
           permalink: /guides/libraries/objective-c-interop
-        - title: Java and Kotlin interop
+        - title: Java & Kotlin interop
           permalink: /guides/libraries/java-interop
         - title: JavaScript interop
           permalink: /web/js-interop
@@ -209,7 +213,7 @@
           permalink: /tutorials/server/fetch-data
         - title: Write HTTP servers
           permalink: /tutorials/server/httpserver
-        - title: Libraries and packages
+        - title: Libraries & packages
           permalink: /server/libraries
         - title: Google Cloud
           permalink: /server/google-cloud
@@ -230,7 +234,7 @@
             permalink: /tutorials/web/low-level-html/remove-elements
         - title: Deployment
           permalink: /web/deployment
-        - title: Libraries and packages
+        - title: Libraries & packages
           permalink: /web/libraries
     - title: Environment declarations
       permalink: /guides/environment-declarations
