@@ -80,14 +80,18 @@
           permalink: /language/extend
         - title: Mixins
           permalink: /language/mixins
-        - title: Class modifiers
-          permalink: /language/class-modifiers
         - title: Enums
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
         - title: Callable objects
           permalink: /language/callable-objects
+    - title: Class modifiers
+      children: 
+        - title: Overview & usage
+          permalink: /language/class-modifiers
+        - title: Reference
+          permalink: /language/modifier-reference
     - title: Concurrency
       children:
         - title: Asynchronous support
