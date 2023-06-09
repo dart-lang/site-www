@@ -165,15 +165,15 @@ Most modern devices have multi-core CPUs.
 To take advantage of all those cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
-[error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
+[error prone](https://en.wikipedia.org/wiki/Race_condition#Data_race) and
 can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of isolates.
 Each isolate has its own memory heap,
 ensuring that none of the state in an isolate is accessible from
 any other isolate.
-Because there’s no shared memory, you don’t have to worry about
-[mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science)).
+As isolates don't share memory, you don’t have to worry about
+[mutual exclusions (mutexes) or locks](https://en.wikipedia.org/wiki/Lock_(computer_science)).
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
 using additional processor cores if they’re available.
@@ -198,14 +198,15 @@ as shown in the following figure:
 
 ![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/language/concurrency/images/basics-main-isolate.png)
 
-Even single-isolate programs can execute smoothly
-by using async-await to wait for asynchronous operations to complete
-before continuing to the next line of code.
+Even single-isolate programs can execute smoothly.
+Before continuing to the next line of code, these apps use
+[async-await][] to wait for asynchronous operations to complete.
 A well-behaved app starts quickly,
 getting to the event loop as soon as possible.
 The app then responds to each queued event promptly,
 using asynchronous operations as necessary.
 
+[async-await]: {{site.url}}/codelabs/async-await
 
 ### The isolate life cycle
 
