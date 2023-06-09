@@ -19,6 +19,8 @@
 @use 'dartvm';
 @use 'books';
 @use 'os-tabs';
+@use 'overwrites';
+@use 'dash';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: bootstrap.$body-color;
@@ -875,6 +877,3 @@ body.obsolete {
     }
   }
 }
-
-@import 'overwrites';
-@import 'dash';
