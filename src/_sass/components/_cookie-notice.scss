@@ -11,8 +11,12 @@
   z-index: 9999;
 
   @keyframes fadein {
-      0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   a.btn {
@@ -49,7 +53,6 @@
 }
 
 body.homepage, .error {
-
   #cookie-notice {
     background-color: $site-color-dark-background;
 

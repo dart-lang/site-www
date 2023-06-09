@@ -4,7 +4,7 @@
   display: none;
   right: 0;
 
-  .nav { 
+  .nav {
     display: block;
   }
 
@@ -22,9 +22,11 @@
   > ul > li {
     padding-bottom: $padding; // Extra space for top-level entries
 
-    li { 
-      padding-left: $padding; 
-    } // Indent subentries
+    li {
+      padding-left: $padding;
+    }
+
+    // Indent subentries
   }
 }
 
@@ -42,8 +44,13 @@
     padding-top: $site-content-top-padding;
 
     @at-root {
-      #site-toc--inline { display: none; }
-      #site-toc--side { display: block; }
+      #site-toc--inline {
+        display: none;
+      }
+
+      #site-toc--side {
+        display: block;
+      }
     }
   }
 
@@ -73,11 +80,6 @@
 
 
 // Overrides moved here from main.scss
-// TODO these should be merged with the above defaults
-.site-toc--button__toggle {
-  display: none;
-}
-
 #site-toc--inline {
   background: #f5f5f7;
   padding: 15px 30px;
