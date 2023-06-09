@@ -92,6 +92,8 @@
           permalink: /language/class-modifiers
         - title: Class modifiers for API maintainers
           permalink: /language/class-modifiers-for-apis
+        - title: Reference
+          permalink: /language/modifier-reference
     - title: Concurrency
       children:
         - title: Asynchronous support

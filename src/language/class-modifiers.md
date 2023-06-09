@@ -320,6 +320,11 @@ otherwise mutually exclusive:
 * `interface`, `final` or `sealed` with `mixin`. These access modifiers
 prevent [mixing in][mixin].
 
+See the [Class modifiers reference][] for complete guidance.
+
+[Class modifiers reference]: /language/modifier-reference
+
+
 [language version]: /guides/language/evolution#language-versioning
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mixin]: /language/mixins
