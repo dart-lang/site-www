@@ -383,18 +383,9 @@ The code from the following excerpt isn't actually what is being shown in the pa
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (symbols)"?>
 ```dart
-// MOVE TO library tour?
-
 void main() {
   print(Function.apply(int.parse, ['11']));
   print(Function.apply(int.parse, ['11'], {#radix: 16}));
-  print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-  print(Function.apply(
-      int.parse, ['11a'], {#radix: 16, #onError: handleError}));
-}
-
-int handleError(String source) {
-  return 0;
 }
 ```
 {% endcomment %}

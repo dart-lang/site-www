@@ -188,6 +188,8 @@
       { "source": "/language/control-flow", "destination": "/language/loops", "type": 301 },
       { "source": "/language/enum", "destination": "/language/enums", "type": 301 },
       { "source": "/language/generators", "destination": "/language/functions#generators", "type": 301 },
+      { "source": "/lint", "destination": "/tools/linter-rules", "type": 301 },
+      { "source": "/lint/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
       { "source": "/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },

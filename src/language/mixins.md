@@ -6,8 +6,8 @@ prevpage:
   url: /language/extend
   title: Extend a class
 nextpage:
-  url: /language/class-modifiers
-  title: Class modifiers
+  url: /language/enums
+  title: Enums
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
