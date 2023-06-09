@@ -6,8 +6,8 @@ prevpage:
   url: /language/callable-objects
   title: Callable objects
 nextpage:
-  url: /language/modifier-reference
-  title: Class modifier reference
+  url: /language/class-modifiers-for-apis
+  title: Class modifiers for API maintainers
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -37,6 +37,12 @@ not apply to other declarations like `enum`, `typedef`, or `extension`.
 
 When deciding whether to use class modifiers, consider the intended uses of the
 class, and what behaviors the class needs to be able to rely on.
+
+{{site.alert.note}}
+  If you maintain a library, read the
+  [Class modifiers for API maintainers](/language/class-modifiers-for-apis)
+  page for guidance on how to navigate these changes for your libraries. 
+{{site.alert.end}}
 
 ## No modifier
 
@@ -291,7 +297,8 @@ String getVehicleSound(Vehicle vehicle) {
 
 If you don’t want [exhaustive switching][exhaustive], 
 or want to be able to add subtypes later without breaking the API, 
-use the [`final`](#final) modifier.
+use the [`final`](#final) modifier. For a more in depth comparison,
+read [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
 
 ## Combining modifiers
 
