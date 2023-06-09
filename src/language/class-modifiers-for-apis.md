@@ -7,8 +7,8 @@ prevpage:
   url: /language/class-modifiers
   title: Class modifiers
 nextpage:
-  url: /language/async
-  title: Asynchrony support
+  url: /language/modifier-reference
+  title: Reference
 ---
 
 Dart 3.0 adds a few [new modifiers][class modifiers]
