@@ -2570,7 +2570,7 @@ By default, Dart limits access to private class members to code in the same file
 To expand the scope of a library beyond one file, add the `part` directive.
 When possible, [avoid using `part`][]. Reserve using `part` for code generators.
 
-[avoid using `part`]: /guides/libraries/create-library-packages#organizing-a-library-package
+[avoid using `part`]: /guides/libraries/create-packages#organizing-a-package
 
 ### Late variables
 

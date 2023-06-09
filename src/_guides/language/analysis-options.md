@@ -265,7 +265,7 @@ warning - The generic type 'List<dynamic>' should have explicit type arguments b
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
 nondenominational—rules don't have to agree with each other.
-For example, some rules are more appropriate for library packages
+For example, some rules are more appropriate for regular Dart packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 

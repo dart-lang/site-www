@@ -40,7 +40,7 @@ you're executing the `dart run` command
 from the directory that's at the top of a Dart package
 (the _current package_).
 For information on the directory structure of Dart packages, see
-[package layout conventions](/guides/libraries/create-library-packages).
+[package layout conventions](/guides/libraries/create-packages).
 
 ### In a depended-on package
 

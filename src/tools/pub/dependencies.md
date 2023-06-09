@@ -356,7 +356,7 @@ You can use `dependency_overrides` to temporarily override all references
 to a dependency.
 
 For example, perhaps you are updating a local copy of transmogrify, a
-published library package. Transmogrify is used by other packages in your
+published package. Transmogrify is used by other packages in your
 dependency graph, but you don't want to clone each package locally
 and change each pubspec to test your local copy of transmogrify.
 

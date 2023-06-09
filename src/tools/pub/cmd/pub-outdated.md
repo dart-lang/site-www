@@ -19,7 +19,7 @@ so you can get the latest bug fixes and improvements.
 
 Here's how you can use `dart pub outdated` to help you
 update the dependencies of a package that you own
-(whether it's an app or library package):
+(whether it's an app or regular package):
 
 1. If your package doesn't have a `pubspec.lock` file
    checked into source control,

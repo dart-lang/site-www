@@ -152,7 +152,7 @@
     - title: Commonly used packages
       permalink: /guides/libraries/useful-libraries
     - title: Creating packages
-      permalink: /guides/libraries/create-library-packages
+      permalink: /guides/libraries/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
