@@ -145,7 +145,7 @@ and stores next to your pubspec.
 It lists the specific versions of each dependency (immediate and transitive) 
 that your package uses.
 
-If your package is an application package,
+If your package is an [application package](/tools/pub/glossary#application-package)
 you should check this file into
 [source control](/guides/libraries/private-files).
 That way, everyone working on your app uses the same versions
@@ -186,7 +186,7 @@ the pub package manager.
 
 ### How to
 
-* [Creating packages](/guides/libraries/create-library-packages)
+* [Creating packages](/guides/libraries/create-packages)
 * [Publishing packages](/tools/pub/publishing)
 
 ### Reference

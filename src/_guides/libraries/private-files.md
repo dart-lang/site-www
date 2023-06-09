@@ -89,7 +89,7 @@ various Dart tools.
 The `pubspec.lock` file is a special case,
 similar to Ruby's `Gemfile.lock`.
 
-**For library packages**, **don't commit** the `pubspec.lock` file.
+**For regular packages**, **don't commit** the `pubspec.lock` file.
 Regenerating the `pubspec.lock` file lets you test your package
 against the latest compatible versions of its dependencies.
 

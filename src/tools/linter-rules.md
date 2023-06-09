@@ -20,7 +20,7 @@ how you might fix your code.
 {{site.alert.tip}}
   Linter rules (sometimes called _lints_) can have false positives,
   and they don’t all agree with each other.
-  For example, some rules are more appropriate for library packages,
+  For example, some rules are more appropriate for regular Dart packages,
   and others are designed for Flutter apps.
 {{site.alert.end}}
 
