@@ -7,8 +7,8 @@ prevpage:
   url: /language/extension-methods
   title: Extension methods
 nextpage:
-  url: /language/async
-  title: Async
+  url: /language/class-modifiers
+  title: Class modifiers
 ---
 
 To allow an instance of your Dart class to be called like a function,
