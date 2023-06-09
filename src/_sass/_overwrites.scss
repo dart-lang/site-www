@@ -1,5 +1,5 @@
-// Make all css changes here.
-// These change will get added into the current SCSS structure where applicable.
+@use 'core/variables' as *;
+@use 'core/bootstrap';
 
 /* Add space between definitions. */
 dd {
@@ -25,7 +25,7 @@ a {
 /* Effective Dart TOC */
 
 .effective_dart--summary_column {
-  @include media-breakpoint-up(md) {
+  @include bootstrap.media-breakpoint-up(md) {
     width: 50%;
     float: left;
     padding-right: 5%;
