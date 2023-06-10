@@ -3,8 +3,8 @@ title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 short-title: Async
 prevpage:
-  url: /language/class-modifiers-for-apis
-  title: Class modifiers for API maintainers
+  url: /language/modifier-reference
+  title: Class modifiers reference
 nextpage:
   url: /language/concurrency
   title: Concurrency
