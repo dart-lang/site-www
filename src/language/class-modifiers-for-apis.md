@@ -243,7 +243,7 @@ then the compiler knows the switch is exhaustive.
 
 ```dart
 // amigos.dart
-abstract class Amigo {}
+sealed class Amigo {}
 class Lucky extends Amigo {}
 class Dusty extends Amigo {}
 class Ned extends Amigo {}
@@ -280,7 +280,7 @@ But, unlike `base` and `final`, there is no *transitive* restriction:
 
 ```dart
 // amigo.dart
-abstract class Amigo {}
+sealed class Amigo {}
 class Lucky extends Amigo {}
 class Dusty extends Amigo {}
 class Ned extends Amigo {}
