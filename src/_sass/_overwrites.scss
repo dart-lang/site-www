@@ -6,6 +6,10 @@ dd {
   margin-bottom: 15px;
 }
 
+b, strong {
+  font-weight: bold;
+}
+
 a {
   code {
     color: $default-link;
