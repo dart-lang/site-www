@@ -1,5 +1,7 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
+
 import 'dart:async';
 import 'dart:html';
 import 'package:test/test.dart';
