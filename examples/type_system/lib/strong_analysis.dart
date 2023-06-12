@@ -43,7 +43,7 @@ void _miscDeclAnalyzedButNotTested() {
     Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
     // #enddocregion type-inference-1-orig
 
-    // ignore: stable, beta, dev, argument_type_not_assignable
+    // ignore: stable, beta, dev, argument_type_not_assignable, collection_methods_unrelated_type
     arguments[1] = null;
 
     // #docregion type-inference-2-orig
@@ -59,7 +59,7 @@ void _miscDeclAnalyzedButNotTested() {
     var arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
     // #enddocregion type-inference-1
 
-    // ignore: stable, beta, dev, argument_type_not_assignable
+    // ignore: stable, beta, dev, argument_type_not_assignable, collection_methods_unrelated_type
     arguments[1] = 100;
 
     // #docregion type-inference-2
