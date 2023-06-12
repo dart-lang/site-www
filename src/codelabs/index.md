@@ -33,8 +33,7 @@ write more readable and maintainable Dart code.
 
 ### [Null safety](/codelabs/null-safety)
 
-Use DartPad to learn about Dart's null-safe type system,
-which was introduced in Dart 2.12.
+Use DartPad to learn about Dart's null-safe type system.
 
 ## Flutter
 

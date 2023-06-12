@@ -6,8 +6,7 @@ description: Solutions for cases where you know more about a field's type than D
 This page has information to help you understand
 why type promotion failures occur,
 with tips on how to fix them.
-For background information,
-see [Working with nullable fields][ns-fields],
+To learn more, check out [Working with nullable fields][ns-fields],
 a section in [Understanding null safety][].
 
 [issue #2940]: https://github.com/dart-lang/site-www/issues/2940

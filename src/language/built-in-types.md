@@ -1,6 +1,12 @@
 ---
 title: Built-in types
 description: Information on the types Dart supports.
+prevpage:
+  url: /language/keywords
+  title: Keywords
+nextpage:
+  url: /language/records
+  title: Records
 ---
 
 The Dart language has special support for the following:
@@ -45,8 +51,8 @@ Some other types also have special roles in the Dart language:
 {% endcomment %}
 
 The `Object`, `Object?`, `Null`, and `Never` classes
-have special roles in the class hierarchy,
-as described in [Understanding null safety][].
+have special roles in the class hierarchy.
+Learn about these roles in [Understanding null safety][].
 
 {% comment %}
 If we decide to cover `dynamic` more,
@@ -377,18 +383,9 @@ The code from the following excerpt isn't actually what is being shown in the pa
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (symbols)"?>
 ```dart
-// MOVE TO library tour?
-
 void main() {
   print(Function.apply(int.parse, ['11']));
   print(Function.apply(int.parse, ['11'], {#radix: 16}));
-  print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-  print(Function.apply(
-      int.parse, ['11a'], {#radix: 16, #onError: handleError}));
-}
-
-int handleError(String source) {
-  return 0;
 }
 ```
 {% endcomment %}

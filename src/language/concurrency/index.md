@@ -1,6 +1,11 @@
 ---
 title: Concurrency in Dart
-description: Use isolates to enable parallel code execution on multiple processor cores.
+description: >
+  Use isolates to enable parallel code execution on multiple processor cores.
+short-title: Concurrency
+prevpage:
+  url: /language/async
+  title: Async
 ---
 
 <?code-excerpt path-base="concurrency"?>
@@ -315,17 +320,16 @@ setting up and managing worker isolates:
 
 {{site.alert.flutter-note}}
   If you're using Flutter,
-  consider using [Flutter's `compute()` function][]
+  you can use [Flutter's `compute` function][]
   instead of `Isolate.run()`.
-  The `compute` function
-  allows your code to work  on both
-  [native and non-native platforms][].
-  Use `Isolate.run()` when targeting native platforms only
+  On the [web](#web), the `compute` function falls back
+  to running the specified function on the current event loop.
+  Use `Isolate.run()` when targeting native platforms only,
   for a more ergonomic API.
 {{site.alert.end}}
 
 [native and non-native platforms]: /overview#platform
-[Flutter's `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute-constant.html
+[Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
 #### Running an existing method in a new isolate
 
@@ -489,6 +493,7 @@ is slower when isolates are in different groups.
   Flutter doesn't support `Isolate.spawnUri()`.
 {{site.alert.end}}
 
+<a id="web"></a>
 ## Concurrency on the web
 
 All Dart apps can use `async-await`, `Future`, and `Stream`

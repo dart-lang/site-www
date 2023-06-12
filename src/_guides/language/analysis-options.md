@@ -265,7 +265,7 @@ warning - The generic type 'List<dynamic>' should have explicit type arguments b
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
 nondenominational—rules don't have to agree with each other.
-For example, some rules are more appropriate for library packages
+For example, some rules are more appropriate for regular Dart packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
@@ -517,7 +517,7 @@ int x = ''; // ignore: invalid_assignment
 
 ## Customizing analysis rules
 
-Each [analyzer error code][analyzer error codes] and
+Each [analyzer diagnostic][analyzer diagnostics] and
 [linter rule][linter rules] has a default severity.
 You can use the analysis options file to change
 the severity of individual rules, or to always ignore some rules.
@@ -540,7 +540,7 @@ The analyzer supports three severity levels:
 
 ### Ignoring rules
 
-You can ignore specific [analyzer error codes][] and [linter rules][]
+You can ignore specific [analyzer diagnostics][] and [linter rules][]
 by using the `errors:` field.
 List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
 analysis options file instructs the analysis tools to ignore the TODO rule:
@@ -581,7 +581,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
-[analyzer error codes]: https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart
+[analyzer diagnostics]: /tools/diagnostic-messages
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment

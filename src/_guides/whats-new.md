@@ -240,8 +240,8 @@ we made the following changes to this site:
 [Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
 
 [Named parameters]: /language/functions#named-parameters
-[Enumerated types]: /language/enum
-[enhanced enums]: /language/enum#declaring-enhanced-enums
+[Enumerated types]: /language/enums
+[enhanced enums]: /language/enums#declaring-enhanced-enums
 [super-initializer parameters]: /language/constructors#super-parameters
 [signing]: /tools/dart-compile#signing
 [`dart create`]: /tools/dart-create

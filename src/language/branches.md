@@ -1,6 +1,12 @@
 ---
 title: Branches 
 description: Learn how to use branches to control the flow of your Dart code.
+prevpage:
+  url: /language/loops
+  title: Loops
+nextpage:
+  url: /language/error-handling
+  title: Error handling
 ---
 
 This page shows how you can control the flow of your Dart code using branches:
@@ -268,7 +274,7 @@ rather than exiting the entire switch.
 [conditional expressions]: /language/operators#conditional-expressions
 [boolean]: /language/built-in-types#booleans
 [pattern]: /language/patterns
-[enum]: /language/enum
+[enum]: /language/enums
 [`throw`]: /language/error-handling#throw
 [`return`]: /language/functions#return-values
 [wildcard `_`]: /language/pattern-types#wildcard

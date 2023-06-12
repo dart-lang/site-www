@@ -1,10 +1,8 @@
-$pre-bg: #F5F5F5;  // TODO #2859: use $site-color-codeblock-bg?
-
 @mixin pre-defaults {
-  background-color: $pre-bg;
+  background-color: $site-color-codeblock-bg;
   font-size: 0.875rem; // 14px
   font-weight: $font-weight-normal;
-  padding: 30px; // TODO #2859: 1.5rem;
+  padding: 1.875rem; // 30px
 }
 
 //
@@ -85,6 +83,9 @@ pre.console-output {
   .nt { @extend .tag; } /* Name.Tag */
 }
 
+// Dart-site specific style overrides
+.highlight .gp { user-select: none; }
+
 pre {
   @include pre-defaults;
 
@@ -103,9 +104,17 @@ iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   width: 100%;
 }
 
+.prettify-filename {
+  position: relative;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
+}
+
 @media screen {
   .com { color: #6E6E70; }
-  // TODO #2859: dropping the following overrides would allow us to be consistent with Flutter
   .kwd { color: #BC0056; }
   .pln { color: #7500A0; }
   .lit,

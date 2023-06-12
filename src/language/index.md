@@ -2,6 +2,9 @@
 title: Introduction to Dart
 description: A brief introduction to Dart programs and important concepts.
 short-title: Dart basics
+nextpage:
+  url: /language/variables
+  title: Variables
 ---
 
 This page provides a brief introduction to the Dart language
@@ -273,7 +276,7 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-[Read more](/language/enum) about enums in Dart,
+[Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 

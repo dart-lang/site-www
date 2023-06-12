@@ -1,6 +1,12 @@
 ---
 title: Records
 description: Summary of the record data structure in Dart.
+prevpage:
+  url: /language/built-in-types
+  title: Built-in types
+nextpage:
+  url: /language/collections
+  title: Collections
 ---
 
 {{site.alert.version-note}}

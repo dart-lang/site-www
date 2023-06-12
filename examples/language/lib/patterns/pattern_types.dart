@@ -81,15 +81,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion list
-    switch (obj) {
-      // Matches if obj is a list with two elements.
-      case [a, b]: // ...
-    }
-    // #enddocregion list
-  }
-
-  {
     // #docregion rest
     var [a, b, ..., c, d] = [1, 2, 3, 4, 5, 6, 7];
     // Prints "1 2 6 7".
@@ -262,5 +253,22 @@ void miscDeclAnalyzedButNotTested() {
         print('First field is int and second is String.');
     }
     // #enddocregion wildcard-typed
+  }
+
+  {
+    const x = true;
+    const y = true;
+    const z = false;
+    var result = true;
+
+    var token = switch (result) {
+      // #docregion parens
+      // ...
+      x || y && z => 'matches true',
+      (x || y) && z => 'matches false',
+      // ...
+      // #enddocregion parens
+      _ => throw FormatException('Invalid')
+    };
   }
 }

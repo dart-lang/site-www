@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:67f3fa2a532987ae6de626a964eaef9435803f1a5d17d8594b53bb57e37f40a5 as base
+FROM ruby:3.2-slim-bullseye@sha256:506427360ecafed78530865257378ce4a287bd004315e5cafdd64690bcb56efe as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="caab438213bffba5ab704d88155710327f0fc4326594224714271bf823dfdc70"; \
+        DART_SHA256="fed758732d742df884d39770756eb9bd9fdb24665c24c96502a09e03a745fca5"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="d05d9052fe8eba57d4838cea5a29577a34988d882ea9610096f137f256409d03"; \
+        DART_SHA256="d04dee8e097cdfe02f7aa2d51620104ac680291f9d3b772a7c788694e0934fc1"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="1edcf9e1c5be94633fa025614866d49c437322ab3cc759822645287ddb9bfd62"; \
+        DART_SHA256="b4d251e51da2b963eae82136b37b83a050f175be82fc8d691b609cb8e030c13b"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="63442bd94a4bcb043fccf9f3f22a5ca846fbb3a3933eea84dcfe8502f8f767de"; \
+        DART_SHA256="8c65c833fe84010670066450a404e81a9ee311b14cf560e8d6325fc9a351f8b4"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="b60573251ee22613164df137343156f9dc397ad86c90c24bc189a9727caa63ef"; \
+        DART_SHA256="14bef942c86e78166ba557cfcd4bc42123499dee89189de90c89d31e92d4b904"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="534f3ddaf3b4e7dfbd541bee4ce3de813371e01726869f490e21f0f56ceddb52"; \
+        DART_SHA256="6a642e19a9e2d3be2ae08e36a815d934160c4157fa6d84a88a15f000e211921a"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -125,7 +125,7 @@ EXPOSE 35729
 
 # Firebase emulator port
 # Airplay runs on :5000 by default now
-EXPOSE 5500 
+EXPOSE 5500
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog

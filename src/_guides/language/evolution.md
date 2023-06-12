@@ -132,7 +132,7 @@ To learn more about these features, check out:
 * [Super parameters][]
 * [Named parameters][]
 
-[Enhanced enums]: /language/enum#declaring-enhanced-enums
+[Enhanced enums]: /language/enums#declaring-enhanced-enums
 [Super parameters]: /language/constructors#super-parameters
 [Named parameters]: /language/functions#named-parameters
 
@@ -483,7 +483,7 @@ check out the [language versioning specification][].
 [calling native C code]: /guides/libraries/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
-[Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
+[Dart library]: /guides/libraries/create-packages#organizing-a-package
 [Dart FFI]: /guides/libraries/c-interop
 [extension methods]: /language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1

@@ -45,7 +45,6 @@ you might use the [`flutter` tool][] instead.
 | `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>[Learn more.][fix] | 
 | `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>[Learn more.][format] |
 | `info`    | `dart info`                             | Outputs Dart tooling diagnostic information.<br>[Learn more.][info] |
-| `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
 | `pub`     | `dart pub <PUB_COMMAND>`                | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub] | 
 | `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Replaces the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
 | `test`    | `dart test [<DIRECTORY|DART_FILE>]`     | Runs tests in this package.<br>Replaces `pub run test`.<br>[Learn more.][test] |
@@ -62,7 +61,6 @@ you might use the [`flutter` tool][] instead.
 [pub]: /tools/pub/cmd
 [run]: /tools/dart-run
 [test]: /tools/dart-test
-[migrate]: /null-safety/migration-guide#migration-tool
 
 To get help with any of the commands, enter `dart help <command>`.
 You can also get details on `pub` commands.
@@ -72,4 +70,3 @@ $ dart help pub outdated
 ```
 
 [`dartdoc`]: {{site.pub-pkg}}/dartdoc
-[null safety]: /null-safety
