@@ -341,12 +341,12 @@ linter:
     - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
+    - collection_methods_unrelated_type
+    - combinators_ordering
     - comment_references
-    - one_member_abstracts
-    - only_throw_errors
-    - package_api_docs
-    - prefer_final_in_for_each
-    - prefer_single_quotes
+    - dangling_library_doc_comments
+    - implicit_call_tearoffs
+    - invalid_case_patterns
 ```
 
 
