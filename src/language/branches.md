@@ -26,7 +26,7 @@ Dart supports `if` statements with optional `else` clauses.
 The condition in parentheses after `if` must be
 an expression that evaluates to a [boolean][]:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (if-else)"?>
+<?code-excerpt "language/lib/control_flow/branches.dart (if-else)"?>
 ```dart
 if (isRaining()) {
   you.bringRainCoat();
