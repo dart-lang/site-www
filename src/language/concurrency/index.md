@@ -167,7 +167,7 @@ visit the [asynchronous programming codelab][].
 ## How isolates work
 
 Most modern devices have multi-core CPUs.
-To take advantage of all those cores,
+To take advantage multiple cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
 [error prone](https://en.wikipedia.org/wiki/Race_condition#Data_race) and
@@ -177,8 +177,11 @@ Instead of threads, all Dart code runs inside of isolates.
 Each isolate has its own memory heap,
 ensuring that none of the state in an isolate is accessible from
 any other isolate.
-As isolates don't share memory, you don’t have to worry about
-[mutual exclusions (mutexes) or locks](https://en.wikipedia.org/wiki/Lock_(computer_science)).
+No shared state between isolates means concurrency complexities like 
+[mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science))
+and [data races](https://en.wikipedia.org/wiki/Race_condition#Data_race)
+will not occur in Dart (though, isolates do not prevent race conditions all together).
+
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
 using additional processor cores if they’re available.
