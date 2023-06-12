@@ -87,8 +87,9 @@
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
-      children: 
+      children:
         - title: Overview & usage
+          match-page-url-exactly: true
           permalink: /language/class-modifiers
         - title: Class modifiers for API maintainers
           permalink: /language/class-modifiers-for-apis
