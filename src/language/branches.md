@@ -22,8 +22,9 @@ You can also manipulate control flow in Dart using:
 
 ## If
 
-Dart supports `if` statements with optional `else` clauses. The condition in
-parentheses after `if` must be an expression that evaluates to a [boolean][]:
+Dart supports `if` statements with optional `else` clauses.
+The condition in parentheses after `if` must be
+an expression that evaluates to a [boolean][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (if-else)"?>
 ```dart
@@ -36,7 +37,8 @@ if (isRaining()) {
 }
 ```
 
-To learn how to use `if` in an expression context, see [Conditional expressions][]
+To learn how to use `if` in an expression context, 
+check out [Conditional expressions][].
 
 ### If-case
 
@@ -55,7 +57,8 @@ the list pattern `[int x, int y]` matches the value `pair`,
 so the branch `return Point(x, y)` executes with the variables that
 the pattern defined, `x` and `y`.
 
-Otherwise, control flow progresses to the `else` branch to execute, if there is one:
+Otherwise, control flow progresses to the `else` branch
+to execute, if there is one:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (if-case-else)"?>
 ```dart 
@@ -83,12 +86,13 @@ Each `case` clause is a [pattern][] for the value to match against.
 You can use [any kind of pattern][] for a case.
 
 When the value matches a case's pattern, the case body executes. 
-Non-empty `case` clauses jump to the end of the switch after completion. They do
-not require a `break` statement.
-Other valid ways to end a non-empty `case` clause are a [`continue`][break],
-[`throw`][], or [`return`][] statement.
+Non-empty `case` clauses jump to the end of the switch after completion.
+They do not require a `break` statement.
+Other valid ways to end a non-empty `case` clause are a
+[`continue`][break], [`throw`][], or [`return`][] statement.
 
-Use a `default` or [wildcard `_`][] clause to execute code when no `case` clause matches:
+Use a `default` or [wildcard `_`][] clause to
+execute code when no `case` clause matches:
 
 <?code-excerpt "language/lib/control_flow/branches.dart (switch)"?>
 ```dart
@@ -195,17 +199,18 @@ The syntax of a `switch` expression differs from `switch` statement syntax:
 - Default cases can _only_ use `_`, instead of allowing both `default` and `_`.
 
 {{site.alert.version-note}}
-    Switch expressions require a [language version][] of at least 3.0.
+  Switch expressions require a [language version][] of at least 3.0.
 {{site.alert.end}}
 
 ### Exhaustiveness checking
 
-Exhaustiveness checking is a feature that reports a compile-time
-error if it's possible for a value to enter a switch but not match any of the cases.
+Exhaustiveness checking is a feature that reports a
+compile-time error if it's possible for a value to enter a switch but
+not match any of the cases.
 
 <?code-excerpt "language/lib/control_flow/branches.dart (exh-bool)"?>
 ```dart
-// Non-exhaustive switch on bool?, missing case to match null possiblity:
+// Non-exhaustive switch on bool?, missing case to match null possibility:
 switch (nullableBool) {
   case true:
     print('yes');
@@ -214,12 +219,14 @@ switch (nullableBool) {
 }
 ```
 
-A default case (`default` or `_`) covers all possible values that can flow through
-a switch. This makes a switch on any type exhaustive.
+A default case (`default` or `_`) covers all possible values that
+can flow through a switch.
+This makes a switch on any type exhaustive.
 
-[Enums][enum] and [sealed types][sealed] are particularly useful for switches
-because, even without a default case, their possible values are known and fully
-enumerable. Use the [`sealed` modifier][sealed] on a class to enable
+[Enums][enum] and [sealed types][sealed] are particularly useful for
+switches because, even without a default case, 
+their possible values are known and fully enumerable. 
+Use the [`sealed` modifier][sealed] on a class to enable
 exhaustiveness checking when switching over subtypes of that class:
 
 <?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
@@ -242,8 +249,9 @@ double calculateArea(Shape shape) => switch (shape) {
     };
 ```
 
-If anyone were to add a new subclass of `Shape`, this `switch` expression would 
-be incomplete. Exhaustiveness checking would inform you of the missing subtype.
+If anyone were to add a new subclass of `Shape`, 
+this `switch` expression would be incomplete. 
+Exhaustiveness checking would inform you of the missing subtype.
 This allows you to use Dart in a somewhat 
 [functional algebraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
 
@@ -251,7 +259,8 @@ This allows you to use Dart in a somewhat
 ## Guard clause
 
 To set an optional guard clause after a `case` clause, use the keyword `when`.
-A guard clause can follow `if case`, and both `switch` statements and expressions.
+A guard clause can follow `if case`, and
+both `switch` statements and expressions.
 
 <?code-excerpt "language/lib/control_flow/branches.dart (guard)"?>
 ```dart
@@ -264,9 +273,11 @@ switch (pair) {
 ```
 
 Guards evaluate an arbitrary boolean expression _after_ matching.
-This allows you to add further constraints on whether a case body should execute.
-When the guard clause evaluates to false, execution proceeds to the next case
-rather than exiting the entire switch.
+This allows you to add further constraints on
+whether a case body should execute.
+When the guard clause evaluates to false, 
+execution proceeds to the next case rather
+than exiting the entire switch.
 
 [language version]: /guides/language/evolution#language-versioning
 [loops]: /language/loops
