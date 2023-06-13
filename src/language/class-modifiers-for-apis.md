@@ -8,7 +8,7 @@ prevpage:
   title: Class modifiers
 nextpage:
   url: /language/modifier-reference
-  title: Reference
+  title: Class modifiers reference
 ---
 
 Dart 3.0 adds a few [new modifiers][class modifiers]

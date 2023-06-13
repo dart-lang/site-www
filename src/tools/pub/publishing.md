@@ -14,6 +14,10 @@ command.
   as defined in the [pubspec][].
 {{site.alert.end}}
 
+Watch the following video for an overview of building and publishing packages.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8V_TLiWszK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Publishing is forever
 
 Keep in mind that publishing is forever. As soon as you publish your package,

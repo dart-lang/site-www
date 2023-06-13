@@ -1,10 +1,6 @@
 // ignore_for_file: unused_import, duplicate_import
-// #docregion
-library peg_parser.source_scanner;
-
 import 'foo/file_system.dart';
 import 'foo/slider_menu.dart';
-// #enddocregion
 
 //----------------------------------------------------------------------------
 
