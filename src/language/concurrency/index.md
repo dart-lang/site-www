@@ -170,7 +170,7 @@ Most modern devices have multi-core CPUs.
 To take advantage multiple cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
-[error prone](https://en.wikipedia.org/wiki/Race_condition#Data_race) and
+[error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
 can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of isolates.
