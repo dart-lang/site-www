@@ -33,7 +33,7 @@ You can also specify a constraint or constraint range:
 ```terminal
 $ dart pub add foo:2.0.0
 $ dart pub add foo:'^2.0.0'
-$ dart pub add foo:'>2.0.0 <3.0.1'
+$ dart pub add foo:'>=2.0.0 <3.0.1'
 ```
 
 If `dart pub add <package>:<constraint>` is an existing dependency,
