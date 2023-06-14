@@ -180,7 +180,8 @@ any other isolate.
 No shared state between isolates means concurrency complexities like 
 [mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science))
 and [data races](https://en.wikipedia.org/wiki/Race_condition#Data_race)
-will not occur in Dart (though, isolates do not prevent race conditions all together).
+won't occur in Dart. That said,
+isolates don't prevent race conditions all together.
 
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
