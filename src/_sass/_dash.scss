@@ -9,18 +9,6 @@ $dash-info-size: 512px;
 $dash-info-padding: 24px;
 $dash-max-width: 1330px;
 
-// Colors
-$dash-callout: #121a26;
-$dash-sub-grey: #8d9399;
-$dash-dark-grey: #82878c;
-$dash-off-white: #f8f9fa;
-$dash-dark-black: #4a4a4a;
-$dash-highlight: #1967d2;
-$dash-off-black: #12202f;
-$dark-darker-black: #0d1520;
-$dash-header-bg: #17212f;
-$dash-dartpad-border: #293542;
-
 .dash-align-right {
   display: block;
   margin-right: 0;
@@ -354,6 +342,10 @@ $dash-dartpad-border: #293542;
 
   a {
     color: $site-color-card-link;
+
+    &:hover, &:focus, &:active {
+      color: darken($site-color-card-link, 20%);
+    }
   }
 
   #dartpad-host {
@@ -367,23 +359,6 @@ $dash-dartpad-border: #293542;
       border: 1px solid $dash-dartpad-border;
     }
   }
-}
-
-.banner {
-  background-color: $dash_callout;
-
-  &__text {
-    color: white;
-
-    a {
-      color: $site-color-card-link;
-
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
-      }
-    }
-  }
-
 }
 
 #page-content {

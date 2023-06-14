@@ -2,7 +2,7 @@
 
 .banner {
   position: relative;
-  background-color: #e7f8ff;
+  background-color: $dash-callout;
   padding: 12px 0;
   text-align: center;
   z-index: 1000;
@@ -11,8 +11,19 @@
     font-family: $site-font-family-roboto;
     font-size: 16px;
     font-weight: 300;
+
+    color: white;
+
     margin-bottom: 0;
     padding-left: 1em;
     padding-right: 1em;
+
+    a {
+      color: $site-color-card-link;
+
+      &:hover, &:focus, &:active {
+        color: darken($site-color-card-link, 20%);
+      }
+    }
   }
 }
