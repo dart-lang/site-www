@@ -1,5 +1,6 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
 
 import 'package:create_libraries/hw_mp.dart';
 import 'package:test/test.dart';
