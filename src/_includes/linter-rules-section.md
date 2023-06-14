@@ -74,7 +74,7 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 
 To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your
-[`analysis_options.yaml`](https://dart.dev/guides/language/analysis-options)
+[`analysis_options.yaml`](/guides/language/analysis-options)
 file:
 
 ```yaml
