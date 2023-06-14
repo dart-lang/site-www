@@ -167,7 +167,7 @@ visit the [asynchronous programming codelab][].
 ## How isolates work
 
 Most modern devices have multi-core CPUs.
-To take advantage multiple cores,
+To take advantage of multiple cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
 [error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
