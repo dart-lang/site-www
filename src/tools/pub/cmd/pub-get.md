@@ -39,10 +39,10 @@ import 'package:test/test.dart';
 When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
-Application packages should check in the lockfile to source control;
+[Application packages][] should check in the lockfile to source control;
 this ensures the application will use the exact same versions
 of all dependencies for all developers and when deployed to production.
-Library packages should not check in the lockfile, though, since they're
+Regular packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
 If a lockfile already exists, `dart pub get` uses the versions of dependencies
@@ -52,6 +52,8 @@ constraints](/tools/pub/glossary#version-constraint).
 This is the primary difference between `dart pub get` and
 [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
+
+[Application packages]: /tools/pub/glossary#application-package
 
 ## Package resolution
 

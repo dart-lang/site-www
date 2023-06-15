@@ -1,5 +1,5 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable, dead_code
+// ignore_for_file: unused_element, unused_local_variable, dead_code, collection_methods_unrelated_type
 
 import 'package:examples_util/ellipsis.dart';
 

@@ -98,7 +98,7 @@ dev_dependencies:
 
 ## Name the package dependencies
 
-To use an external library package,
+To use an external package,
 you need to add the package to your
 app's list of dependencies
 in the pubspec.yaml file.

@@ -1,5 +1,7 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
+
 // #docregion dart-html-import
 import 'dart:html';
 // #enddocregion dart-html-import

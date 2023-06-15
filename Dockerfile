@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:506427360ecafed78530865257378ce4a287bd004315e5cafdd64690bcb56efe as base
+FROM ruby:3.2-slim-bullseye@sha256:0938796fcb5b175d06dba2b6897250d251e0021ac5fddab2831fa676e2a50c61 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,10 +33,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="fed758732d742df884d39770756eb9bd9fdb24665c24c96502a09e03a745fca5"; \
+        DART_SHA256="05fba372d64932dffce90bbd45116b76806bf9adc6203967b56faf5c64b2b66c"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="d04dee8e097cdfe02f7aa2d51620104ac680291f9d3b772a7c788694e0934fc1"; \
+        DART_SHA256="667b79593444cbe222a33c137ca943dced7a21ff2d61b8862f3b49e648c20533"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="b4d251e51da2b963eae82136b37b83a050f175be82fc8d691b609cb8e030c13b"; \
@@ -45,10 +45,10 @@ RUN set -eu; \
         DART_SHA256="8c65c833fe84010670066450a404e81a9ee311b14cf560e8d6325fc9a351f8b4"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="14bef942c86e78166ba557cfcd4bc42123499dee89189de90c89d31e92d4b904"; \
+        DART_SHA256="b7cbc357a975122ee317e565b953304f6c134084e04ee42031bbb4fb05b8a1e9"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="6a642e19a9e2d3be2ae08e36a815d934160c4157fa6d84a88a15f000e211921a"; \
+        DART_SHA256="bc3312a0b01501116c20d97af6e768791c9d4e62f9802aa43fd9533e978ce451"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
