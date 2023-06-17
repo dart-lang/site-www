@@ -115,20 +115,27 @@ To learn more, see [Quick fixes for analysis issues][].
 
 [Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
 
-## Error rules
+## Rules
+
+The following is an index of all linter rules and 
+a short description of their functionality.
+To learn more about each rule, 
+click on its name.
+
+### Error rules
 
 These rules identify possible errors and other mistakes in your code.
 
 {% include linter-rules-section.md type="errors" %}
 
-## Style rules
+### Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
 {% include linter-rules-section.md type="style" %}
 
-## Pub rules
+### Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
