@@ -124,7 +124,7 @@ These rules identify possible errors and other mistakes in your code.
 ## Style rules
 
 These rules identify opportunities for style improvements, 
-largely derived from the [Dart style guide](/effective-dart/style).
+largely derived from the [Dart style guide][].
 
 {% include linter-rules-section.md type="style" %}
 
