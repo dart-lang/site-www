@@ -24,7 +24,8 @@ how you might fix your code.
   and others are designed for Flutter apps.
 {{site.alert.end}}
 
-## Predefined rule sets
+<a id="predefined-rule-sets"></a>
+## Sets
 
 To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
@@ -57,13 +58,16 @@ which the following packages provide:
 [flutter_lints]: {{site.pub-pkg}}/flutter_lints
 
 To learn how to use a specific rule set,
-see the documentation for [enabling and disabling linter rules][].
+visit the documentation for [enabling and disabling linter rules][].
+
+To find more predefined rule sets,
+check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
 
 [enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 
-## Rule types
+## Types
 
-Each rule is in one of the following groups:
+Each rule belongs to one of the following groups:
 
 [Errors](#error-rules)
 : Possible errors or mistakes in your code.
@@ -74,23 +78,28 @@ Each rule is in one of the following groups:
 [Pub](#pub-rules)
 : Possible issues with [pub package setup](/guides/packages).
 
-## Maturity levels
+<a id="maturity-levels"></a>
+## Status
 
-Each rule also has a maturity level:
+Each rule has a status or maturity level:
 
-Stable
+**Stable**
 : These rules are safe to use and are verified as functional
   with the latest versions of the Dart language.
-  All rules are considered stable
-  unless they're marked as experimental or deprecated.
+  All rules are considered stable unless
+  they're marked as experimental, deprecated, or removed.
 
-Experimental
+**Experimental**
 : These rules are still under evaluation and might never be stabilized.
   Use these with caution and report any issues you come across.
 
-Deprecated
+**Deprecated**
 : These rules are no longer suggested for use
-  and might be removed in a future linter release.
+  and might be removed in a future Dart release.
+
+**Removed**
+: These rules have been already been removed in the
+  latest stable Dart release.
 
 ## Quick fixes
 
@@ -115,7 +124,7 @@ These rules identify possible errors and other mistakes in your code.
 ## Style rules
 
 These rules identify opportunities for style improvements, 
-largely derived from the [Dart style guide][].
+largely derived from the [Dart style guide](/effective-dart/style).
 
 {% include linter-rules-section.md type="style" %}
 
