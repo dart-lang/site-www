@@ -137,7 +137,7 @@
       { "source": "/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.dev", "type": 301 },
       { "source": "/glossary", "destination": "/resources/glossary", "type": 301 },
-      { "source": "/glossary/:entry", "destination": "/resources/glossary/:entry", "type": 301 },
+      { "source": "/glossary/:entry", "destination": "/resources/glossary#:entry", "type": 301 },
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html", "type": 301 },
       { "source": "/go/automated-publishing", "destination": "/tools/pub/automated-publishing", "type": 301 },
