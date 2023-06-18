@@ -22,7 +22,8 @@ module Jekyll
         @data = {
           'title' => basename,
           'layout' => 'linter-rule-standalone',
-          'lint' => lint
+          'lint' => lint,
+          'underscore_breaker_titles' => true
         }
 
       end
