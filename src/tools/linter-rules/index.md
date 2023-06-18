@@ -122,6 +122,10 @@ a short description of their functionality.
 To learn more about each rule, 
 click on its name.
 
+For an auto-generated list containing all linter rules
+in Dart `{{site.data.pkg-vers.SDK.vers}}`,
+check out [All linter rules](/tools/linter-rules/all).
+
 ### Error rules
 
 These rules identify possible errors and other mistakes in your code.
