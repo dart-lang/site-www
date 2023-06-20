@@ -224,7 +224,6 @@ with the following exceptions:
 
  * Any _hidden_ files or directories—that is, 
    files with names that begin with dot (`.`)
- * Any directories with the name `packages`
  * Files and directories ignored by a `.pubignore` or `.gitignore` file
 
 If you want different ignore rules for `git` and `dart pub publish`,
