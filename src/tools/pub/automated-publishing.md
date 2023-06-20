@@ -109,6 +109,8 @@ on:
 # Publish using the reusable workflow from dart-lang.
 jobs:
   publish:
+    permissions:
+      id-token: write # This is required for authentication using OIDC
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     # with:
     #   working-directory: path/to/package/within/repository
@@ -257,6 +259,8 @@ on:
 
 jobs:
   publish:
+    permissions:
+      id-token: write # This is required for authentication using OIDC
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     with:
       # Specify the github actions deployment environment
