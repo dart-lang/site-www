@@ -12,6 +12,14 @@ pre {
   &.prettyprint {
     @include pre-defaults;
     border: none;
+
+    .highlight-diagnostics & {
+      .highlight {
+        border-bottom: 2px $red-500 dashed;
+        background: inherit;
+        padding: 0;
+      }
+    }
   }
 
   .highlight {
