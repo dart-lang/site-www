@@ -32,7 +32,7 @@ generated documentation.
 {:.good}
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
 {% prettify dart tag=pre+code %}
-// Not if there is nothing before it.
+// Not if anything comes before it.
 if (_chunks.isEmpty) return false;
 {% endprettify %}
 
