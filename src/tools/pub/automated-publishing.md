@@ -110,7 +110,7 @@ on:
 jobs:
   publish:
     permissions:
-      id-token: write # This is required for authentication using OIDC
+      id-token: write # Required for authentication using OIDC
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     # with:
     #   working-directory: path/to/package/within/repository
@@ -148,7 +148,7 @@ on:
 jobs:
   publish:
     permissions:
-      id-token: write # This is required for authentication using OIDC
+      id-token: write # Required for authentication using OIDC
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -260,7 +260,7 @@ on:
 jobs:
   publish:
     permissions:
-      id-token: write # This is required for authentication using OIDC
+      id-token: write # Required for authentication using OIDC
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     with:
       # Specify the github actions deployment environment
