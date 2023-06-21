@@ -33,7 +33,7 @@ generated documentation.
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
 {% prettify dart tag=pre+code %}
 // Not if anything comes before it.
-if (_chunks.isEmpty) return false;
+if (_chunks.isNotEmpty) return false;
 {% endprettify %}
 
 Capitalize the first word unless it's a case-sensitive identifier. End it with a
