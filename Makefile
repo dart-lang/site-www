@@ -16,13 +16,12 @@ BUILD_NAME ?= dart_dev_build
 BUILD_TAG ?= dart-dev
 BUILD_TARGET ?= build
 DART_CHANNEL ?= stable
-DART_VERSION ?= latest
 FIREBASE_PROJECT ?= default
 FIREBASE_CHANNEL ?= dart
 JEKYLL_SITE_HOST ?= 0.0.0.0
 JEKYLL_SITE_PORT ?= 4000
 
-# Here so Docker Compose does not complain, add any env 
+# Here so Docker Compose does not complain, add any env
 # overrides to this file. Blank is okay, it's ignored.
 # For example, add a FIREBASE_PROJECT if staging
 .env:
@@ -54,7 +53,6 @@ setup:
 	-docker compose down
 	-docker rmi ${BUILD_TAG}:${DART_CHANNEL}
 	docker compose build --no-cache site \
-	 --build-arg DART_VERSION=${DART_VERSION} \
 	 --build-arg DART_CHANNEL=${DART_CHANNEL}
 
 # Serve the Jekyll site with livereload and incremental builds
@@ -72,7 +70,6 @@ test:
 	DOCKER_BUILDKIT=1 docker build \
 		-t dart-tests:${DART_CHANNEL} \
 		--target dart-tests \
-		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} .
 	docker run --rm -v ${PWD}:/app dart-tests:${DART_CHANNEL}
 
@@ -83,7 +80,6 @@ build-image:
 		-t ${BUILD_TAG}:${BUILD_COMMIT} \
 		--no-cache \
 		--target ${BUILD_TARGET} \
-		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} \
 		--build-arg BUILD_CONFIGS=${BUILD_CONFIGS} .
 
@@ -142,7 +138,6 @@ emulate:
 # This outputs a bash case format to be copied to Dockerfile
 fetch-sums:
 	tool/fetch-dart-sdk-sums.sh \
-		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
 	tool/fetch-node-ppa-sum.sh
 

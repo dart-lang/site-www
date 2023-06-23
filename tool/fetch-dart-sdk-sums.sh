@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Use this file locally to update Dart SDK checksum values in the Dockerfile
-# Prints output similar to cases in Dockerfile for easy composition 
+# Prints output similar to cases in Dockerfile for easy composition
 # when having to update checksum values for updates dart SDK.
 set -eu -o pipefail
 TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
@@ -43,13 +43,16 @@ for CHANNEL in $CHANNELS; do
       _arch='x64'
     fi
     _filename="dartsdk-linux-${_arch}-release.zip"
-    _url="$BASEURL/$CHANNEL/release/$VERSION/sdk/$_filename"
+    _urlNoFile="$BASEURL/$CHANNEL/release/$VERSION"
+    _version=$(curl -fsSL "$_urlNoFile/VERSION" | awk -F: '/version/{print $2}' | sed 's/[", ]//g')
+    _url="$_urlNoFile/sdk/$_filename"
     curl -fsSLO $_url
     _checksum=$(shasum -a 256 $_filename)
     read -a _fname_arr <<< "${_checksum}" # Read in string output as array
     _checkonly="${_fname_arr%:*}" # Remove filename portion of checksum output
     printf "$(yellow "  DART_SHA256=\"$_fname_arr\";") $ENDING"
-    printf "$(yellow "  SDK_ARCH=\"$_arch\";;") $ENDING"
+    printf "$(yellow "  SDK_ARCH=\"$_arch\";") $ENDING"
+    printf "$(yellow "  DART_VERSION=\"$_version\";;") $ENDING"
     rm $_filename
   done
 done

@@ -17,16 +17,10 @@ RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
 WORKDIR /root
 
 
-# google-chrome-stable
-
-
 # ============== DART ==============
 # See https://github.com/dart-lang/dart-docker
-# See https://github.com/dart-lang/setup-dart/blob/main/setup.sh
 FROM base as dart
-ARG DART_VERSION=latest
 ARG DART_CHANNEL=stable
-ENV DART_VERSION=$DART_VERSION
 ENV DART_CHANNEL=$DART_CHANNEL
 ENV DART_SDK=/usr/lib/dart
 ENV PATH=$DART_SDK/bin:$PATH
@@ -34,22 +28,28 @@ RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
         DART_SHA256="05fba372d64932dffce90bbd45116b76806bf9adc6203967b56faf5c64b2b66c"; \
-        SDK_ARCH="x64";; \
+        SDK_ARCH="x64"; \
+        DART_VERSION="3.0.5";; \
       arm64_stable) \
         DART_SHA256="667b79593444cbe222a33c137ca943dced7a21ff2d61b8862f3b49e648c20533"; \
-        SDK_ARCH="arm64";; \
+        SDK_ARCH="arm64"; \
+        DART_VERSION="3.0.5";; \
       amd64_beta) \
         DART_SHA256="b4d251e51da2b963eae82136b37b83a050f175be82fc8d691b609cb8e030c13b"; \
-        SDK_ARCH="x64";; \
+        SDK_ARCH="x64"; \
+        DART_VERSION="3.1.0-163.1.beta";; \
       arm64_beta) \
         DART_SHA256="8c65c833fe84010670066450a404e81a9ee311b14cf560e8d6325fc9a351f8b4"; \
-        SDK_ARCH="arm64";; \
+        SDK_ARCH="arm64"; \
+        DART_VERSION="3.1.0-163.1.beta";; \
       amd64_dev) \
-        DART_SHA256="b7cbc357a975122ee317e565b953304f6c134084e04ee42031bbb4fb05b8a1e9"; \
-        SDK_ARCH="x64";; \
+        DART_SHA256="6bc2bea37b6d874b110f7a65dd92a64abca7c85bd885045b3d166f9a2efc48aa"; \
+        SDK_ARCH="x64"; \
+        DART_VERSION="3.1.0-227.0.dev";; \
       arm64_dev) \
-        DART_SHA256="bc3312a0b01501116c20d97af6e768791c9d4e62f9802aa43fd9533e978ce451"; \
-        SDK_ARCH="arm64";; \
+        DART_SHA256="faba944bda6d7aafcdcda62ab2530cc179abf1ae3f3cf9585422f39aca1e4b00"; \
+        SDK_ARCH="arm64"; \
+        DART_VERSION="3.1.0-227.0.dev";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
     BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
