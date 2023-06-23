@@ -93,14 +93,14 @@ between an error forwarded _to_ `then()`, and an error generated _within_
 
 <?code-excerpt "futures/lib/simple.dart (throws-then-catch)"?>
 ```dart
-funcThatThrows().then(successCallback, onError: (e) {
+asyncErrorFunc().then(successCallback, onError: (e) {
   handleError(e); // Original error.
-  anotherFuncThatThrows(); // Oops, new error.
+  anotherAsyncErrorFunc(); // Oops, new error.
 }).catchError(handleError); // Error from within then() handled.
 ```
 
-In the example above, `funcThatThrows()`'s Future's error is handled with the
-`onError` callback; `anotherFuncThatThrows()` causes `then()`'s Future to
+In the example above, `asyncErrorFunc()`'s Future's error is handled with the
+`onError` callback; `anotherAsyncErrorFunc()` causes `then()`'s Future to
 complete with an error; this error is handled by `catchError()`.
 
 In general, implementing two different error handling strategies is not
@@ -208,7 +208,7 @@ In the code below, `then()`'s Future completes with an error, so
 <?code-excerpt "futures/lib/when_complete.dart (with-error)" replace="/withErrorMain/main/g; "?>
 ```dart
 void main() {
-  funcThatThrows()
+  asyncErrorFunc()
       // Future completes with an error:
       .then((_) => print("Won't reach here"))
       // Future completes with the same error:
@@ -227,7 +227,7 @@ handled by `catchError()`.  Because `catchError()`'s Future completes with
 <?code-excerpt "futures/lib/when_complete.dart (with-object)" replace="/ellipsis\(\)/.../g; /withObjectMain/main/g; "?>
 ```dart
 void main() {
-  funcThatThrows()
+  asyncErrorFunc()
       // Future completes with an error:
       .then((_) => ...)
       .catchError((e) {
@@ -246,7 +246,7 @@ completes with that error:
 <?code-excerpt "futures/lib/when_complete.dart (when-complete-error)" replace="/whenCompleteError/main/g; "?>
 ```dart
 void main() {
-  funcThatThrows()
+  asyncErrorFunc()
       // Future completes with a value:
       .catchError(handleError)
       // Future completes with an error:
@@ -267,9 +267,9 @@ this code:
 <?code-excerpt "futures/lib/early_error_handlers.dart (bad)" replace="/ellipsis\(\)/.../g; /mainBad/main/g;"?>
 ```dart
 void main() {
-  Future<Object> future = funcThatThrows();
+  Future<Object> future = asyncErrorFunc();
 
-  // BAD: Too late to handle funcThatThrows() exception.
+  // BAD: Too late to handle asyncErrorFunc() exception.
   Future.delayed(const Duration(milliseconds: 500), () {
     future.then(...).catchError(...);
   });
@@ -277,16 +277,16 @@ void main() {
 ```
 
 In the code above, `catchError()` is not registered until half a second after
-`funcThatThrows()` is called, and the error goes unhandled.
+`asyncErrorFunc()` is called, and the error goes unhandled.
 
-The problem goes away if `funcThatThrows()` is called within the
+The problem goes away if `asyncErrorFunc()` is called within the
 `Future.delayed()` callback:
 
 <?code-excerpt "futures/lib/early_error_handlers.dart (good)" replace="/ellipsis\(\)/.../g; /mainGood/main/g;"?>
 ```dart
 void main() {
   Future.delayed(const Duration(milliseconds: 500), () {
-    funcThatThrows().then(...).catchError(...); // We get here.
+    asyncErrorFunc().then(...).catchError(...); // We get here.
   });
 }
 ```
