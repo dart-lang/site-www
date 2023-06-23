@@ -44,6 +44,7 @@ for CHANNEL in $CHANNELS; do
     fi
     _filename="dartsdk-linux-${_arch}-release.zip"
     _urlNoFile="$BASEURL/$CHANNEL/release/$VERSION"
+    # Get the exact version from the json-formatted VERSION file:
     _version=$(curl -fsSL "$_urlNoFile/VERSION" | awk -F: '/version/{print $2}' | sed 's/[", ]//g')
     _url="$_urlNoFile/sdk/$_filename"
     curl -fsSLO $_url
