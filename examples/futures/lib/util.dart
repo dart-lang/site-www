@@ -2,7 +2,7 @@ String processValue(dynamic value) {
   return 'value';
 }
 
-Future<Object> asyncErrorFunc() async {
+Future<Object> asyncErrorFunction() async {
   throw Exception('Threw an exception');
 }
 

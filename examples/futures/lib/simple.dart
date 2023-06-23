@@ -24,9 +24,9 @@ void simpleCallbacks() {
 
   {
     // #docregion throws-then-catch
-    asyncErrorFunc().then(successCallback, onError: (e) {
+    asyncErrorFunction().then(successCallback, onError: (e) {
       handleError(e); // Original error.
-      anotherAsyncErrorFunc(); // Oops, new error.
+      anotherAsyncErrorFunction(); // Oops, new error.
     }).catchError(handleError); // Error from within then() handled.
     // #enddocregion throws-then-catch
   }
@@ -71,7 +71,7 @@ String doSomethingWith(dynamic value) {
   return 'value';
 }
 
-Future<Object> anotherAsyncErrorFunc() {
+Future<Object> anotherAsyncErrorFunction() {
   throw Exception('Also threw an exception');
 }
 
