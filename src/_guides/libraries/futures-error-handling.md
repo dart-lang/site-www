@@ -286,7 +286,9 @@ The problem goes away if `asyncErrorFunction()` is called within the
 ```dart
 void main() {
   Future.delayed(const Duration(milliseconds: 500), () {
-    asyncErrorFunction().then(...).catchError(...); // We get here.
+    asyncErrorFunction()
+        .then(...)
+        .catchError(...); // We get here.
   });
 }
 ```
