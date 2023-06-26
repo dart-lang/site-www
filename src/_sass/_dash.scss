@@ -64,6 +64,11 @@ $dash-max-width: 1330px;
     color: $dash-dark-grey;
     margin-top: 16px;
 
+    & svg {
+      width: 1em;
+      height: 1em;
+    }
+
     @include media-breakpoint-down(md) {
       font-size: 14px;
       margin-left: 30px;
@@ -72,6 +77,7 @@ $dash-max-width: 1330px;
 
     a {
       color: $dash-dark-grey;
+      vertical-align: bottom;
 
       &:hover, &:focus, &:active {
         color: $white-base;
