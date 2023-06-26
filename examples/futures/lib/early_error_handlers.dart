@@ -5,9 +5,9 @@ import 'package:futures_examples/util.dart';
 
 // #docregion bad
 void mainBad() {
-  Future<Object> future = funcThatThrows();
+  Future<Object> future = asyncErrorFunction();
 
-  // BAD: Too late to handle funcThatThrows() exception.
+  // BAD: Too late to handle asyncErrorFunction() exception.
   Future.delayed(const Duration(milliseconds: 500), () {
     future.then(ellipsis()).catchError(ellipsis());
   });
@@ -17,7 +17,9 @@ void mainBad() {
 // #docregion good
 void mainGood() {
   Future.delayed(const Duration(milliseconds: 500), () {
-    funcThatThrows().then(ellipsis()).catchError(ellipsis()); // We get here.
+    asyncErrorFunction()
+        .then(ellipsis())
+        .catchError(ellipsis()); // We get here.
   });
 }
 // #enddocregion good
