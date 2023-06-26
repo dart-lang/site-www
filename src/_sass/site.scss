@@ -1,34 +1,30 @@
-@import 'core/variables';
-@import 'core/colors';
-@import 'core/mixins';
-@import 'core/bootstrap-config';
+@use 'core/variables' as *;
+@use 'core/colors';
+@use 'core/mixins' as *;
 
-@import 'vendor/prettify';
-@import 'vendor/bootstrap';
+@use 'vendor/prettify';
 
-// NOTE Suppress any warning messages - we know we're behind the times
-$enable-deprecation-messages: false;
+@use 'core/bootstrap';
+@use 'core/base';
 
-@import 'core/bootstrap-adjust';
-@import 'core/base';
+@use 'components/banner';
+@use 'components/code';
+@use 'components/cookie-notice';
+@use 'components/form';
+@use 'components/header';
+@use 'components/search';
+@use 'components/sidebar';
+@use 'components/toc';
 
-@import 'components/banner';
-@import 'components/code';
-@import 'components/cookie-notice';
-@import 'components/form';
-@import 'components/header';
-@import 'components/search';
-@import 'components/sidebar';
-@import 'components/toc';
-
-@import 'dartvm';
-@import 'books';
-@import 'os-tabs';
-
+@use 'dartvm';
+@use 'books';
+@use 'os-tabs';
+@use 'overwrites';
+@use 'dash';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: $body-color;
-$font-weight-light-bold: ($font-weight-normal + $font-weight-bold) * 0.5;
+$font-color: bootstrap.$body-color;
+$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
 
 
 // Disable template-generated external links.
@@ -70,8 +66,7 @@ i.fa-external-link-alt {
   min-height: calc(100vh);
 
   body.homepage & {
-    padding: 0;
-    padding-bottom: 60px;
+    padding: 0 0 60px;
   }
 
   body.obsolete & {
@@ -207,8 +202,7 @@ i.fa-external-link-alt {
   $mainnav-entry-spacing: 12px;
 
   ul {
-    margin: auto;
-    margin-right: 0;
+    margin: auto 0 auto auto;
     padding: 0;
     list-style: none;
 
@@ -434,7 +428,7 @@ main .content {
   }
 
   h3 {
-    font-size: $h2-font-size;
+    font-size: bootstrap.$h2-font-size;
   }
 
   a {
@@ -624,7 +618,7 @@ h3.popover-header {
 }
 
 .breadcrumb { // Override BS
-  font-size: $font-size-sm;
+  font-size: bootstrap.$font-size-sm;
   background-color: transparent;
   padding: 0;
   @at-root {
@@ -632,13 +626,13 @@ h3.popover-header {
       + .breadcrumb-item {
         padding-left: 0; // Fix BS 4.1 padding issue: push left padding into ::before for balance
         &::before {
-          padding-left: $breadcrumb-item-padding;
-          @include md-icon-content($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
+          padding-left: bootstrap.$breadcrumb-item-padding;
+          @include md-icon-content(bootstrap.$breadcrumb-divider, 1rem + 2 * bootstrap.$breadcrumb-item-padding);
         }
       }
 
       &.active a {
-        color: $breadcrumb-active-color;
+        color: bootstrap.$breadcrumb-active-color;
         cursor: default;
       }
     }
@@ -665,7 +659,7 @@ ul.nav-list {
 
   .btn {
     color: $site-color-body;
-    $padding-x: $btn-padding-x * 0.5;
+    $padding-x: bootstrap.$btn-padding-x * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
   }
@@ -883,6 +877,3 @@ body.obsolete {
     }
   }
 }
-
-@import 'overwrites';
-@import 'dash';

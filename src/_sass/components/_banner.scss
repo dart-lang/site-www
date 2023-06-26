@@ -1,3 +1,5 @@
+@use '../core/variables' as *;
+
 .banner {
   position: relative;
   background-color: $dash-callout;
