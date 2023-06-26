@@ -16,8 +16,8 @@ class TestOn {
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
     // #docregion comments-like-sentences
-    // Not if there is nothing before it.
-    if (_chunks.isEmpty) return false;
+    // Not if anything comes before it.
+    if (_chunks.isNotEmpty) return false;
     // #enddocregion comments-like-sentences
     return true;
   };

@@ -1,5 +1,9 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../core/bootstrap';
+
 #site-toc--side {
-  $padding: map-get($spacers, 2);
+  $padding: map-get(bootstrap.$spacers, 2);
 
   display: none;
   right: 0;
@@ -11,10 +15,10 @@
   .nav-link {
     padding-bottom: $padding;
 
-    color: theme-color('primary');
+    color: bootstrap.theme-color('primary');
 
     &.active {
-      color: theme-color('secondary');
+      color: bootstrap.theme-color('secondary');
       font-weight: 500;
     }
   }
@@ -39,7 +43,7 @@
     list-style: none;
   }
 
-  @include media-breakpoint-up(xl) {
+  @include bootstrap.media-breakpoint-up(xl) {
     padding-bottom: $site-content-top-padding;
     padding-top: $site-content-top-padding;
 
@@ -55,7 +59,7 @@
   }
 
   .nav-item {
-    font-size: $font-size-sm;
+    font-size: bootstrap.$font-size-sm;
 
     .nav-link {
       color: $site-color-body-light !important;
@@ -66,8 +70,8 @@
 
   &__title {
     font-family: $site-font-family-alt;
-    font-size: $font-size-lg;
-    margin-bottom: bs-spacer(2);
+    font-size: bootstrap.$font-size-lg;
+    margin-bottom: bootstrap.bs-spacer(2);
   }
 }
 
