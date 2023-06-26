@@ -1,3 +1,6 @@
+@use 'core/variables' as *;
+@use 'core/bootstrap';
+
 // Homepage styles
 
 // Sizes
@@ -52,7 +55,7 @@ $dash-max-width: 1330px;
     font-size: 28px;
     color: white;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 17px;
       margin-left: 30px;
       margin-right: 30px;
@@ -69,7 +72,7 @@ $dash-max-width: 1330px;
       height: 1em;
     }
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 14px;
       margin-left: 30px;
       margin-right: 30px;
@@ -115,7 +118,7 @@ $dash-max-width: 1330px;
     text-align: center;
     width: 325px;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       width: 225px;
     }
   }
@@ -127,7 +130,7 @@ $dash-max-width: 1330px;
     margin-bottom: 20px;
     line-height: 33px;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 22px;
     }
   }
@@ -167,7 +170,7 @@ $dash-max-width: 1330px;
       padding: $dash-info-padding;
       max-width: $dash-info-size;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         position: relative;
         left: 0;
         top: 0;
@@ -176,7 +179,7 @@ $dash-max-width: 1330px;
         padding: 20px;
       }
 
-      @include media-breakpoint-down(sm) {
+      @include bootstrap.media-breakpoint-down(sm) {
         width: 100%;
       }
     }
@@ -187,7 +190,7 @@ $dash-max-width: 1330px;
       border-radius: 50%;
       margin-bottom: 18px;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         margin-bottom: 10px;
       }
     }
@@ -198,7 +201,7 @@ $dash-max-width: 1330px;
       line-height: 1.2;
       color: $dash-dark-black;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 24px;
       }
     }
@@ -224,7 +227,7 @@ $dash-max-width: 1330px;
         }
       }
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 14px;
       }
 
@@ -297,7 +300,7 @@ $dash-max-width: 1330px;
   max-width: $dash-max-width;
   margin-bottom: -10px;
 
-  @include media-breakpoint-down(md) {
+  @include bootstrap.media-breakpoint-down(md) {
     padding-top: 30px;
     padding-bottom: 30px;
   }
