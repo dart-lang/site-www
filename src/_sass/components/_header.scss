@@ -1,22 +1,25 @@
+@use '../core/variables' as *;
+@use '../core/bootstrap';
+
 .site-header {
   background-color: $site-color-white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   font-family: $site-font-family-alt;
   position: sticky;
   top: 0;
   z-index: $site-z-header;
 
   .navbar {
-    font-size: $font-size-lg;
+    font-size: bootstrap.$font-size-lg;
     min-height: $site-header-height;
 
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       font-size: $font-size-base;
     }
 
     .navbar-toggler {
       color: $site-color-body;
-      margin-right: bs-spacer(4);
+      margin-right: bootstrap.bs-spacer(4);
       padding: 0;
 
       .material-icons {
@@ -30,18 +33,18 @@
 
     .nav-link {
       color: $site-color-nav-links;
-      padding: bs-spacer(5) 0;
+      padding: bootstrap.bs-spacer(5) 0;
       position: relative;
 
-      @include media-breakpoint-up(md) {
-        padding: 0 bs-spacer(4);
+      @include bootstrap.media-breakpoint-up(md) {
+        padding: 0 bootstrap.bs-spacer(4);
       }
 
       &.active {
         color: $site-color-body;
         font-weight: 500;
 
-        @include media-breakpoint-up(md) {
+        @include bootstrap.media-breakpoint-up(md) {
           &:after {
             $nav-active-marker-thickness: 3px;
             background-color: $site-color-primary;
@@ -68,7 +71,7 @@
     transition-duration: 0s;
     z-index: $site-z-header;
 
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       pointer-events: none;
 
       &:not(.show) {
@@ -89,12 +92,12 @@
       }
 
       .navbar-nav {
-        margin-bottom: bs-spacer(5);
+        margin-bottom: bootstrap.bs-spacer(5);
         overflow-y: auto;
       }
     }
 
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       position: static;
     }
   }
@@ -102,7 +105,7 @@
   &__sheet {
     display: flex;
 
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       background: $site-color-white;
       bottom: 0;
       flex-direction: column;
@@ -118,7 +121,7 @@
       }
     }
 
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       align-items: center;
       flex-direction: row;
     }
@@ -127,7 +130,7 @@
   &__sheet-bg {
     cursor: pointer; // needed for iOS to recognize the div as clickable
 
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       background: rgba(0, 0, 0, .4);
       bottom: 0;
       left: 0;
@@ -140,10 +143,10 @@
   }
 
   &__cta {
-    margin-left: bs-spacer(2);
-    padding: bs-spacer(2) bs-spacer(4) !important;
+    margin-left: bootstrap.bs-spacer(2);
+    padding: bootstrap.bs-spacer(2) bootstrap.bs-spacer(4) !important;
 
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       display: none;
     }
   }
@@ -156,10 +159,10 @@
       font: $site-font-icon;
       pointer-events: none;
       position: absolute;
-      left: bs-spacer(1);
+      left: bootstrap.bs-spacer(1);
     }
 
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       border-bottom: 1px solid $site-color-light-grey;
       flex-shrink: 0;
       margin: 0;
@@ -171,23 +174,23 @@
       }
     }
 
-    @include media-breakpoint-up(md) {
-      margin-left: bs-spacer(4);
+    @include bootstrap.media-breakpoint-up(md) {
+      margin-left: bootstrap.bs-spacer(4);
     }
   }
 
   &__searchfield {
     border: 0;
-    font-size: $font-size-sm;
-    padding-left: bs-spacer(8);
+    font-size: bootstrap.$font-size-sm;
+    padding-left: bootstrap.bs-spacer(8);
 
-    @include media-breakpoint-down(sm) {
-      font-size: $font-size-lg;
+    @include bootstrap.media-breakpoint-down(sm) {
+      font-size: bootstrap.$font-size-lg;
       height: 66px;
       width: 100%;
     }
 
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       transition: width .35s ease-in-out;
       width: 24px !important;
 
@@ -199,10 +202,10 @@
 
   &__social {
     .nav-item.nav-link {
-      padding: 0 bs-spacer(2);
+      padding: 0 bootstrap.bs-spacer(2);
 
-      @include media-breakpoint-down(sm) {
-        padding: 0 bs-spacer(1);
+      @include bootstrap.media-breakpoint-down(sm) {
+        padding: 0 bootstrap.bs-spacer(1);
         font-size: smaller;
       }
     }
