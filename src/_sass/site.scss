@@ -663,6 +663,11 @@ ul.nav-list {
 #page-github-links {
   float: right;
 
+  // Hide page source button on generated pages
+  .generated-page & a:first-child {
+    display: none;
+  }
+
   .btn {
     color: $site-color-body;
     $padding-x: bootstrap.$btn-padding-x * 0.5;
