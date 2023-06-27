@@ -662,10 +662,20 @@ ul.nav-list {
     $padding-x: bootstrap.$btn-padding-x * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
+    border: none;
+    box-shadow: none;
+
+    &:hover, &:focus-visible {
+      color: $brand-primary;
+    }
+
+    &:active {
+      color: lighten($brand-primary, 25%);
+    }
   }
 
-  .fa-sm {
-    font-size: 14px;
+  .material-icons {
+    font-size: 18px;
   }
 }
 
