@@ -82,7 +82,7 @@ More information:
 
 ## 3. Get CLI tools or an IDE (or both)
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 If you like to use the command line, install [webdev][]:
 
 ```terminal
@@ -97,7 +97,7 @@ For a list of available IDEs, see the
 
 ## 4. Create a web app
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 To create a web app from the command line, use these commands:
 
 ```terminal
@@ -111,7 +111,7 @@ create a project using the template named **Bare-bones Web App**.
 
 ## 5. Run the app
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 ```terminal

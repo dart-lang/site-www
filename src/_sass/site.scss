@@ -573,6 +573,12 @@ h3.popover-header {
   margin-top: 1rem;
   padding: 30px 30px;
 
+  i.material-icons {
+    font-size: 20px;
+    user-select: none;
+    vertical-align: -4px;
+  }
+
   code {
     background-color: transparent;
   }
@@ -662,10 +668,20 @@ ul.nav-list {
     $padding-x: bootstrap.$btn-padding-x * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
+    border: none;
+    box-shadow: none;
+
+    &:hover, &:focus-visible {
+      color: $brand-primary;
+    }
+
+    &:active {
+      color: lighten($brand-primary, 25%);
+    }
   }
 
-  .fa-sm {
-    font-size: 14px;
+  .material-icons {
+    font-size: 18px;
   }
 }
 
