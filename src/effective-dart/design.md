@@ -687,57 +687,31 @@ If your class can be used as an interface, mention that in the class's doc
 comment.
 
 
-### DO use `mixin` to define a mixin type
+### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
+
+<a id="do-use-mixin-to-define-a-mixin-type"></a>
+
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 
-Dart originally didn't have a separate syntax for declaring a class intended to
-be mixed in to other classes. Instead, any class that met certain restrictions
-(no non-default constructor, no superclass, etc.) could be used as a mixin. This
-was confusing because the author of the class might not have intended it to be
-mixed in.
+Dart previously allowed any class that met certain restrictions
+(no non-default constructor, no superclass, etc.) to be mixed into other classes.
+This was confusing because the author of the class might not have intended it to
+be mixed in.
 
-Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
-created using that can *only* be used as mixins, and the language also ensures
-that your mixin stays within the restrictions. When defining a new type that you
-intend to be used as a mixin, use this syntax.
+Dart 3.0.0 now requires that any type intended to be mixed into other classes,
+as well as treated as a normal class, must be explicitly declared as such with
+the `mixin class` declaration.
 
-{:.good}
-<?code-excerpt "design_good.dart (mixin)"?>
-{% prettify dart tag=pre+code %}
-mixin ClickableMixin implements Control {
-  bool _isDown = false;
+Types that need to be both a mixin and a class should be a rare case, however.
+The `mixin class` declaration is mostly meant to help migrate pre-3.0.0 classes
+being used as mixins to a more explicit declaration. New code should clearly
+define the behavior and intention of its declarations by using only pure `mixin`
+or pure `class` declarations, and avoid the ambiguity of mixin classes.
 
-  void click();
-
-  void mouseDown() {
-    _isDown = true;
-  }
-
-  void mouseUp() {
-    if (_isDown) click();
-    _isDown = false;
-  }
-}
-{% endprettify %}
-
-You might still encounter older code using `class` to define mixins, but the new
-syntax is preferred.
-
-
-### AVOID mixing in a type that isn't intended to be a mixin {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
-
-{% include linter-rule-mention.md rule="prefer_mixin" %}
-
-For compatibility, Dart still allows you to mix in classes that aren't defined
-using `mixin`. However, that's risky. If the author of the class doesn't intend
-the class to be used as a mixin, they might change the class in a way that
-breaks the mixin restrictions. For example, if they add a constructor, your
-class will break.
-
-If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
-assume you cannot mix in the class if it isn't declared using `mixin`.
-
+Read [Migrating classes as mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
+for more guidance on `mixin` and `mixin class` declarations.
 
 ## Constructors
 
