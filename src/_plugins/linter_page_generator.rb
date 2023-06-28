@@ -23,7 +23,8 @@ module Jekyll
           'title' => basename,
           'layout' => 'linter-rule-standalone',
           'lint' => lint,
-          'underscore_breaker_titles' => true
+          'underscore_breaker_titles' => true,
+          'body_class' => 'generated-page'
         }
 
       end
