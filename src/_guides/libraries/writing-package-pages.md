@@ -384,7 +384,7 @@ Some additional tips include:
 *   Supply alt text for images.
 *   Be succinct. Don't say please.
 *   Keep the line length &lt;= 80 chars.
-*   Format code correctly (as `dart format` or `flutter format` would).
+*   Format code correctly (as `dart format` would).
 
 To learn more about good README practices,
 see these resources:
