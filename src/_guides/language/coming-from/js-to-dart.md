@@ -46,9 +46,10 @@ follow the [Customizing static analysis][] instructions.
 
 Dart provides [`dart fix`][] to find and fix errors.
 
-Dart also provides a code formatter similar to JavaScript tools like [Prettier][].
-To format code in any Dart project, run [`dart format`](/tools/dart-format) on
-your command line. In Flutter, use `flutter format`.
+Dart also provides a code formatter similar to
+JavaScript tools like [Prettier][].
+To format code in any Dart project, run
+[`dart format`](/tools/dart-format) on your command line.
 The IDE plugins for Dart and Flutter also provide this ability.
 
 Dart supports trailing commas for comma-separated lists of collections,
