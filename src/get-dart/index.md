@@ -119,7 +119,6 @@ using [a package manager][] or [Dart Docker image][], or
 by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [Dart Docker image]: https://hub.docker.com/_/dart
