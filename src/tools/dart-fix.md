@@ -45,7 +45,7 @@ The `dart fix` command only applies fixes
 when there is a "problem" identified by a diagnostic. 
 Some diagnostics, such as compilation errors, are implicitly enabled,
 while others, such as lints, must be explicitly enabled 
-in the [analysis options file](/tools/analyzer),
+in the [analysis options file](/tools/analysis),
 as individual preferences for these vary.
 
 You can sometimes increase the number of fixes that can be applied
@@ -112,7 +112,7 @@ lib/myapp.dart
 ```
 
 To learn more about customizing analysis results and behavior,
-see [Customizing static analysis](/tools/analyzer).
+see [Customizing static analysis](/tools/analysis).
 
 [`dart analyze`]: /tools/dart-analyze
 [language version]: /guides/language/evolution#language-versioning

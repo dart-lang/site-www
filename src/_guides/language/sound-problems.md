@@ -341,7 +341,7 @@ analyzer:
 ```
 
 To learn more about customizing the analyzer's behavior,
-see [Customizing static analysis](/tools/analyzer).
+see [Customizing static analysis](/tools/analysis).
 
 <hr>
 
@@ -640,6 +640,6 @@ also supported on setters and fields.
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/cast.html
 [Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[implicit casts]: /tools/analyzer#enabling-additional-type-checks
+[implicit casts]: /tools/analysis#enabling-additional-type-checks
 [List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [top type]: https://en.wikipedia.org/wiki/Top_type

@@ -9,8 +9,8 @@ or with the [`dart analyze`](/tools/dart-analyze) command.
 For information on how to enable and disable individual linter rules, see
 [individual rules sections][] of the [analyzer documentation][].
 
-[individual rules sections]: /tools/analyzer#individual-rules
-[analyzer documentation]: /tools/analyzer
+[individual rules sections]: /tools/analysis#individual-rules
+[analyzer documentation]: /tools/analysis
 
 This page lists all the linter rules,
 with details such as when you might want to use each rule,
@@ -63,7 +63,7 @@ visit the documentation for [enabling and disabling linter rules][].
 To find more predefined rule sets,
 check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
 
-[enabling and disabling linter rules]: /tools/analyzer#enabling-linter-rules
+[enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
 ## Types
 
@@ -146,5 +146,5 @@ These rules identify possible issues around
 
 {% include linter-rules-section.md type="pub" %}
 
-[Enabling and disabling linter rules]: /tools/analyzer#enabling-linter-rules
+[Enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 [Dart style guide]: /effective-dart/style

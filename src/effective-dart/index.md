@@ -111,7 +111,7 @@ To learn how to use the linter,
 see [Enabling linter rules][]
 and the list of [linter rules][lints].
 
-[Enabling linter rules]: /tools/analyzer#enabling-linter-rules
+[Enabling linter rules]: /tools/analysis#enabling-linter-rules
 [lints]: /tools/linter-rules
 
 ## Glossary
