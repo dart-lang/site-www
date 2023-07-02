@@ -8,10 +8,6 @@ localhost:(404\d|8080)
 https://github.com
 https://twitter.com
 
-# FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
-# https://github.com/dart-lang/site-www/issues/1107
-/assets/css/main.css
-
 fonts.gstatic.com
 fonts.googleapis.com
 
