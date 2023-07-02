@@ -315,7 +315,7 @@
   - title: Static analysis
     children:
       - title: Customizing static analysis
-        permalink: /guides/language/analysis-options
+        permalink: /tools/analyzer
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
       - title: Diagnostic messages

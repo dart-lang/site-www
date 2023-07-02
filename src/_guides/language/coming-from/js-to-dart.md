@@ -70,7 +70,7 @@ JavaScript supports trailing commas in list and map literals only.
   * Writing good Dart code, read [Effective Dart][].
 {{site.alert.end}}
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analyzer
 [`dart fix`]: /tools/dart-fix
 [Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules

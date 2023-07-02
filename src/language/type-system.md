@@ -516,7 +516,7 @@ The following resources have further information on sound Dart:
   using an analysis options file.
 
 
-[analysis]: /guides/language/analysis-options
+[analysis]: /tools/analyzer
 [dartdevc]: /tools/dartdevc
 [language version]: /guides/language/evolution#language-versioning
 [null safety]: /null-safety

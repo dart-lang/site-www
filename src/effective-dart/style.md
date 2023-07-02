@@ -78,7 +78,7 @@ const foo = Foo();
 class C { ... }
 {% endprettify %}
 
-[Linter rule]: /guides/language/analysis-options#the-analysis-options-file
+[Linter rule]: /tools/analyzer#the-analysis-options-file
 
 ### DO name extensions using `UpperCamelCase`
 
