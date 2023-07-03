@@ -317,7 +317,7 @@ you’d use these bitwise and shift operators with integers.
 | `>>>`                       | Unsigned shift right
 {:.table .table-striped}
 
-{{site.alert.end}}
+{{site.alert.note}}
   The behavior of bitwise operations with large or negative operands
   might differ between platforms.
   To learn more, check out
