@@ -22,7 +22,7 @@ $dash-max-width: 1330px;
 }
 
 .dash-header-callout {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   background-color: $dash-callout;
   text-align: center;
   padding: 64px 0 64px 0 !important;
@@ -108,7 +108,7 @@ $dash-max-width: 1330px;
 }
 
 .dash-dart-features {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   padding-bottom: 80px !important;
   background-color: $dark-darker-black;
 
@@ -207,7 +207,7 @@ $dash-max-width: 1330px;
     }
 
     .content-desc {
-      font-family: Roboto, Arial, sans-serif;
+      font-family: $site-font-family-base;
       font-weight: lighter;
       font-size: 17px;
       line-height: 24px;
@@ -372,7 +372,7 @@ $dash-max-width: 1330px;
 }
 
 .dart-dash-details {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
 
   a {
     text-decoration: underline;
