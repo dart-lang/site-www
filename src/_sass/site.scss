@@ -100,7 +100,7 @@ i.fa-external-link-alt {
 
   color: $site-color-light-grey;
   font-weight: 400;
-  font-family: $site-font-family-gsans;
+  font-family: $site-font-family-alt;
   font-size: $font-size-small;
 
   .footer-section {
@@ -173,6 +173,7 @@ i.fa-external-link-alt {
 
   a {
     color: $site-color-light-grey;
+    font-family: $site-font-family-alt;
 
     &:hover, &:focus, &:active {
       color: $site-color-white;
@@ -220,6 +221,7 @@ i.fa-external-link-alt {
         padding: 0 6px;
         font-size: $site-font-size-header;
         font-weight: 400;
+        font-family: $site-font-family-alt;
 
         &:hover, &:active {
           color: $site-color-card-link;
