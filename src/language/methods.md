@@ -135,7 +135,7 @@ wrapping them with methods, all without changing client code.
 
 Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
-Abstract methods can only exist in [abstract classes][].
+Abstract methods can only exist in [abstract classes][] or [mixins][].
 
 To make a method abstract, use a semicolon (;) instead of a method body:
 
@@ -156,3 +156,4 @@ class EffectiveDoer extends Doer {
 
 [operators]: /language/operators
 [abstract classes]: /language/class-modifiers#abstract
+[mixins]: /language/mixins
