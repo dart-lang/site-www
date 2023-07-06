@@ -146,5 +146,4 @@ These rules identify possible issues around
 
 {% include linter-rules-section.md type="pub" %}
 
-[Enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 [Dart style guide]: /effective-dart/style
