@@ -183,7 +183,7 @@ environment:
   an article that includes tips for updating your code and
   using Travis to perform continuous integration (CI) testing
 
-[analysis options file]: /guides/language/analysis-options#the-analysis-options-file
+[analysis options file]: /tools/analysis#the-analysis-options-file
 [`webdev` tool]: /tools/webdev
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
