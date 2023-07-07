@@ -1,6 +1,7 @@
 ---
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
+show_breadcrumbs: true
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
