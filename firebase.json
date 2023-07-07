@@ -76,6 +76,8 @@
       { "source": "/assets/dart-logo-for-shares*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
       { "source": "/assets/dart-logo-wordmark*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
       { "source": "/books", "destination": "/resources/books", "type": 301 },
+      { "source": "/bug", "destination": "https://dartbug.com", "type": 301 },
+      { "source": "/bug/:rest*", "destination": "https://dartbug.com/:rest*", "type": 301 },
       { "source": "/cloud{,/**}", "destination": "/server/google-cloud", "type": 301 },
       { "source": "/codelabs/server{,/**}", "destination": "/tutorials/server/httpserver", "type": 301 },
       { "source": "/code-of-conduct", "destination": "/community/code-of-conduct", "type": 301 },
