@@ -33,17 +33,18 @@ To visit the publisher page, click the publisher identity link
 
 To ensure that creating verified publishers is low cost and available to anyone,
 pub.dev relies on DNS (domain name system) domains as an identification token.
-We chose DNS because we believe that most package publishers
-already have a domain and a homepage for that domain.
+We chose DNS verification because many package authors
+already have a trusted domain and a homepage for that domain.
 During the [publisher creation process][publishing page],
 pub.dev verifies that the user creating the verified publisher has
-admin access to the associated domain, based on existing logic in the
-[Google Search Console.][]
+admin access to the associated ["Domain Property"][domain-prop],
+based on existing logic in the [Google Search Console.][search-console]
 
 ## Creating a verified publisher account
 
 If you publish packages and want to create a new verified publisher,
 see the instructions on the [publishing page][].
 
+[domain-prop]: https://support.google.com/webmasters/answer/34592
 [publishing page]: /tools/pub/publishing#create-verified-publisher
-[Google Search Console.]: https://search.google.com/search-console/about
+[search-console]: https://search.google.com/search-console/about

@@ -77,6 +77,8 @@
       { "source": "/assets/dart-logo-for-shares*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
       { "source": "/assets/dart-logo-wordmark*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
       { "source": "/books", "destination": "/resources/books", "type": 301 },
+      { "source": "/bug", "destination": "https://dartbug.com", "type": 301 },
+      { "source": "/bug/:rest*", "destination": "https://dartbug.com/:rest*", "type": 301 },
       { "source": "/cloud{,/**}", "destination": "/server/google-cloud", "type": 301 },
       { "source": "/codelabs/server{,/**}", "destination": "/tutorials/server/httpserver", "type": 301 },
       { "source": "/code-of-conduct", "destination": "/community/code-of-conduct", "type": 301 },
@@ -170,6 +172,7 @@
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
+      { "source": "/guides/language/analysis-options", "destination": "/tools/analysis", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
       { "source": "/guides/language/concurrency", "destination": "/language/concurrency", "type": 301 },
       { "source": "/guides/language/effective-dart", "destination": "/effective-dart", "type": 301 },

@@ -430,7 +430,7 @@ $ dart pub get
 $ dart analyze     # or `flutter analyze`
 ```
 
-[static analysis]: /guides/language/analysis-options
+[static analysis]: /tools/analysis
 
 
 ## 4. Test {#step4-test}
