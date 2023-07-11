@@ -120,6 +120,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
+  font-family: $site-font-family-alt;
 
   .open_menu & {
     z-index: 10000;
@@ -136,7 +137,7 @@
     }
 
     .nav-link {
-      font-family: $site-font-family-base;
+      font-family: $site-font-family-alt;
       font-weight: 400;
       color: $site-color-body;
       font-size: $font-size-small;

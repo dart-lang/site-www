@@ -378,7 +378,7 @@ _Released 22 February 2018_
 Dart 2.0 implemented a new **[sound type system][]**.
 Before Dart 2.0, types weren't fully sound, and
 Dart relied heavily on runtime type checking.
-Dart 1.x code had to be [migrated to Dart 2][].
+Dart 1.x code had to be migrated to Dart 2].
 
 ## Language versioning
 
@@ -490,7 +490,6 @@ check out the [language versioning specification][].
 [language specification]: /guides/language/spec
 [language documentation]: /language
 [language versioning specification]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
-[migrated to Dart 2]: /articles/archive/dart-2
 [null safety]: /null-safety
 [SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [set literals]: /language/collections#sets

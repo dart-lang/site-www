@@ -26,7 +26,7 @@ These two resources are popular with both beginning Dart developers and experts.
     Learn about Dart's sound type system.
   * [Fixing common type problems](/guides/language/sound-problems)<br>
     How to fix errors and warnings you may encounter.
-* [Customizing static analysis](/guides/language/analysis-options)<br>
+* [Customizing static analysis](/tools/analysis)<br>
     A guide to customizing the analyzer using an analysis options file.
 * Asynchronous programming
   * [Futures, async, await](/codelabs/async-await)<br>

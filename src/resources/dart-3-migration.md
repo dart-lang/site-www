@@ -550,7 +550,7 @@ Use Dart 2.19 to [migrate to null safety](/null-safety/migration-guide).
 The [analyzer configuration options][] for 
 enabling stricter checking have changed.
 
-[analyzer configuration options]: /guides/language/analysis-options#enabling-additional-type-checks
+[analyzer configuration options]: /tools/analysis#enabling-additional-type-checks
 
 #### Scope
 

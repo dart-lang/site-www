@@ -260,7 +260,7 @@ we made the following changes to this site:
 [`dart doc`]: /tools/dart-doc
 [`dart compile js`]: /tools/dart-compile#js
 
-[strict language modes]: /guides/language/analysis-options#enabling-additional-type-checks
+[strict language modes]: /tools/analysis#enabling-additional-type-checks
 [diagnostic messages]: /tools/diagnostic-messages
 [linter rules]: /tools/linter-rules
 
@@ -334,7 +334,7 @@ we made the following changes to this site:
 [easier contributions]: {{site.repo.this}}#getting-started
 [`dart doc`]: /tools/dart-doc
 [`platform` entry]: /tools/pub/pubspec#platforms
-[ignore all linter rules]: /guides/language/analysis-options#suppressing-rules-for-a-file
+[ignore all linter rules]: /tools/analysis#suppressing-rules-for-a-file
 [diagnostic messages]: /tools/diagnostic-messages
 [linter rules]: /tools/linter-rules
 [Dart SDK overview]: /tools/sdk
@@ -430,7 +430,7 @@ we made the following changes to this site:
 [`.pubignore` file]: /tools/pub/publishing#what-files-are-published
 [linter rule page]: /tools/linter-rules
 [dart-tool]: /tools/dart-tool
-[recommended linter rules]: /guides/language/analysis-options#lints
+[recommended linter rules]: /tools/analysis#lints
 [core libraries]: /guides/libraries
 [commonly used packages]: /guides/libraries/useful-libraries
 [dart.dev/jobs]: /jobs
