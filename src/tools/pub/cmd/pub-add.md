@@ -37,8 +37,9 @@ $ dart pub add foo:'^2.0.0'
 $ dart pub add foo:'>=2.0.0 <3.0.1'
 ```
 
-If `dart pub add <package>:<constraint>` is an existing dependency,
-it will instead update the existing constraint.
+If the specified package is an existing dependency in your `pubspec.yaml`,
+`dart pub add` updates the dependency's constraint
+to the one specified in the command.
 
 ## Dev dependency
 
