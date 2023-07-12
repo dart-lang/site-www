@@ -24,7 +24,8 @@ module Jekyll
           'layout' => 'linter-rule-standalone',
           'lint' => lint,
           'underscore_breaker_titles' => true,
-          'body_class' => 'generated-page'
+          'body_class' => 'generated-page',
+          'show_breadcrumbs' => true
         }
 
       end

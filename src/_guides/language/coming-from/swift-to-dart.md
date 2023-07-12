@@ -49,7 +49,7 @@ follow the [Customizing static analysis][] instructions.
 (Note that the IDE plugins for Dart and Flutter also
 provide this functionality.)
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analysis
 
 {{site.alert.secondary}}
   **Pro tip:** Dart provides [`dart fix`][],

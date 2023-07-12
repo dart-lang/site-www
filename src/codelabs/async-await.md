@@ -599,7 +599,7 @@ Remember: reportUserRole() needs to return a future!
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
-  [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
+  [info-level messages.](/tools/analysis#customizing-analysis-rules)
 {{site.alert.end}}
 
 ## Handling errors

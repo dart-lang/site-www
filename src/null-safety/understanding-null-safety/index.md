@@ -331,8 +331,11 @@ In practice, this means:
     since that type means "could be any possible value except this one weirdly
     prohibited value `null`".
 
-*   On the rare occasion that you need a bottom type, use `Never` instead of
-    `Null`. If you don't know if you need a bottom type, you probably don't.
+*   On the rare occasion that you need a bottom type, use
+    `Never` instead of `Null`.
+    This is particularly useful to indicate a function never returns
+    to [help reachability analysis](#never-for-unreachable-code).
+    If you don't know if you need a bottom type, you probably don't.
 
 ## Ensuring correctness
 
