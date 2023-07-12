@@ -47,10 +47,6 @@ The following table lists the words that the Dart language treats specially.
 [catch]: /language/error-handling#catch
 [class]: /language/classes#instance-variables
 [const]: /language/variables#final-and-const
-{% comment %}
-  [TODO #2950: Make sure that points to a place that talks about const constructors,
-  as well as const literals and variables.]
-{% endcomment %}
 [continue]: /language/loops#break-and-continue
 [covariant]: /guides/language/sound-problems#the-covariant-keyword
 [default]: /language/branches#switch
@@ -103,9 +99,6 @@ The following table lists the words that the Dart language treats specially.
 [typedef]: /language/typedefs
 [var]: /language/variables
 [void]: /language/built-in-types
-{% comment %}
-  TODO #2950: Add coverage of void to the language tour.
-{% endcomment %}
 [when]: /language/branches#when
 [with]: /language/mixins
 [while]: /language/loops#while-and-do-while
