@@ -24,14 +24,13 @@ be available in the corresponding [change log] entry.
 
 If you have questions or concerns about any of these breaking changes, please 
 [file an issue][]. To be notified about future breaking changes,
-join the groups [Flutter announce][] and [Dart announce][].
+join the [Dart announce][] group.
 
 [breaking change policy]: https://github.com/dart-lang/sdk/blob/master/docs/process/breaking-changes.md
 [change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [sdk]: /get-dart
 [pubspec]: /tools/pub/pubspec#sdk-constraints
 [file an issue]: https://github.com/dart-lang/sdk/issues/new
-[Flutter announce]: {{site.groups}}/forum/#!forum/flutter-announce
 [Dart announce]: https://groups.google.com/a/dartlang.org/g/announce
 
 ## Not yet released to stable
