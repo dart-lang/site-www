@@ -516,6 +516,7 @@ don't include the section header.
 
 
 [41100]: https://github.com/dart-lang/sdk/issues/41100
+[whatwg encoding standard]: https://encoding.spec.whatwg.org/#utf-8-decoder
 [42714]: https://github.com/dart-lang/sdk/issues/42714
 
 ## Released in 2.8.1
