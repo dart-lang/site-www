@@ -340,7 +340,7 @@ assert((value << 4) == 0x220); // Shift left
 assert((value >> 4) == 0x02); // Shift right
 
 // Shift right example that results in different behavior on web
-// due to negative operand:
+// because the operand value changes when masked to 32 bits:
 assert((-value >> 4) == -0x03);
 
 assert((value >>> 4) == 0x02); // Unsigned shift right
