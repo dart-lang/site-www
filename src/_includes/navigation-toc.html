@@ -26,5 +26,8 @@
     {% endif %}
   </header>
   {{toc}}
+  {% if collapsible %}
+    <span class="{{include.id}}__toggle toc-toggle-more-items"><i class="material-icons">more_horiz</i></span>
+  {% endif %}
 </div>
 {% endunless %}
