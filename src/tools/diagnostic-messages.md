@@ -2849,8 +2849,9 @@ The following code produces this diagnostic because the field `s` is
 initialized to a non-constant value:
 
 {% prettify dart tag=pre+code %}
+String x = '3';
 class C {
-  final String s = 3.toString();
+  final String s = x;
   [!const!] C();
 }
 {% endprettify %}
@@ -2871,8 +2872,9 @@ If the field can't be initialized to a constant value, then remove the
 keyword `const` from the constructor:
 
 {% prettify dart tag=pre+code %}
+String x = '3';
 class C {
-  final String s = 3.toString();
+  final String s = x;
   C();
 }
 {% endprettify %}
@@ -11096,6 +11098,70 @@ Remove the annotation:
 class C {}
 {% endprettify %}
 
+### invalid_visible_outside_template_annotation
+
+_The annotation 'visibleOutsideTemplate' can only be applied to a member of a
+class, enum, or mixin that is annotated with 'visibleForTemplate'._
+
+#### Description
+
+The analyzer produces this diagnostic when the `@visibleOutsideTemplate`
+annotation is used incorrectly. This annotation is only meant to annotate
+members of a class, enum, or mixin that has the `@visibleForTemplate`
+annotation, to opt those members out of the visibility restrictions that
+`@visibleForTemplate` imposes.
+
+#### Examples
+
+The following code produces this diagnostic because there is no
+`@visibleForTemplate` annotation at the class level:
+
+{% prettify dart tag=pre+code %}
+import 'package:angular_meta/angular_meta.dart';
+
+class C {
+  [!@visibleOutsideTemplate!]
+  int m() {
+    return 1;
+  }
+}
+{% endprettify %}
+
+The following code produces this diagnostic because the annotation is on
+a class declaration, not a member of a class, enum, or mixin:
+
+{% prettify dart tag=pre+code %}
+import 'package:angular_meta/angular_meta.dart';
+
+[!@visibleOutsideTemplate!]
+class C {}
+{% endprettify %}
+
+#### Common fixes
+
+If the class is only visible so that templates can reference it, then add
+the `@visibleForTemplate` annotation to the class:
+
+{% prettify dart tag=pre+code %}
+import 'package:angular_meta/angular_meta.dart';
+
+@visibleForTemplate
+class C {
+  @visibleOutsideTemplate
+  int m() {
+    return 1;
+  }
+}
+{% endprettify %}
+
+If the `@visibleOutsideTemplate` annotation is on anything other than a
+member of a class, enum, or mixin with the `@visibleForTemplate`
+annotation, remove the annotation:
+
+{% prettify dart tag=pre+code %}
+class C {}
+{% endprettify %}
+
 ### invocation_of_extension_without_call
 
 _The extension '{0}' doesn't define a 'call' method so the override can't be
@@ -13371,6 +13437,52 @@ class B extends A {
 }
 {% endprettify %}
 
+### must_return_void
+
+_The return type of the function passed to 'NativeCallable.listener' must be
+'void' rather than '{0}'._
+
+#### Description
+
+The analyzer produces this diagnostic when you pass a function
+that doesn't return `void` to the `NativeCallable.listener` constructor.
+
+`NativeCallable.listener` creates a native callable that can be invoked
+from any thread. The native code that invokes the callable sends a message
+back to the isolate that created the callable, and doesn't wait for a
+response. So it isn't possible to return a result from the callable.
+
+For more information about FFI, see [C interop using dart:ffi][ffi].
+
+#### Example
+
+The following code produces this diagnostic because the function
+`f` returns `int` rather than `void`.
+
+{% prettify dart tag=pre+code %}
+import 'dart:ffi';
+
+int f(int i) => i * 2;
+
+void g() {
+  NativeCallable<Int32 Function(Int32)>.listener([!f!]);
+}
+{% endprettify %}
+
+#### Common fixes
+
+Change the return type of the function to `void`.
+
+{% prettify dart tag=pre+code %}
+import 'dart:ffi';
+
+void f(int i) => print(i * 2);
+
+void g() {
+  NativeCallable<Void Function(Int32)>.listener(f);
+}
+{% endprettify %}
+
 ### name_not_string
 
 _The value of the 'name' field is required to be a string._
@@ -14307,7 +14419,7 @@ String f(E e) => [!switch!] (e) {
 
 #### Common fixes
 
-Add a case for each of the constants that aren't currently being matched:
+Add a case for each of the values missing a match:
 
 {% prettify dart tag=pre+code %}
 enum E { one, two, three }
@@ -14319,7 +14431,7 @@ String f(E e) => switch (e) {
   };
 {% endprettify %}
 
-If the missing values don't need to be matched, then add  a wildcard
+If the missing values don't need to be matched, then add a wildcard
 pattern:
 
 {% prettify dart tag=pre+code %}
@@ -14332,9 +14444,9 @@ String f(E e) => switch (e) {
   };
 {% endprettify %}
 
-But be aware that adding a wildcard pattern will cause any future values
-of the type to also be handled, so you will have lost the ability for the
-compiler to warn you if the `switch` needs to be updated.
+Be aware that a wildcard pattern will handle any values added to the type
+in the future. You will lose the ability to have the compiler warn you if
+the `switch` needs to be updated to account for newly added types.
 
 ### non_exhaustive_switch_statement
 
@@ -16322,15 +16434,15 @@ _Object patterns can only use named fields._
 #### Description
 
 The analyzer produces this diagnostic when an object pattern contains a
-field that doesn't have a getter name. The fields provide a pattern to
-match against the value returned by a getter, and not specifying the name
-of the getter means that there's no way to access the value that the
-pattern is intended to match against.
+field without specifying the getter name. Object pattern fields match
+against values that the object's getters return. Without a getter name
+specified, the pattern field can't access a value to attempt to match against. 
 
 #### Example
 
 The following code produces this diagnostic because the object pattern
-`String(1)` doesn't say which value to compare with `1`:
+`String(1)` doesn't specify which getter of `String` to access and compare 
+with the value `1`:
 
 {% prettify dart tag=pre+code %}
 void f(Object o) {
@@ -16340,8 +16452,8 @@ void f(Object o) {
 
 #### Common fixes
 
-Add both the name of the getter to use to access the value and a colon
-before the value:
+Add the getter name (same as the field name) to access the value, followed
+by a colon before the value to match against:
 
 {% prettify dart tag=pre+code %}
 void f(Object o) {
@@ -17581,14 +17693,14 @@ _A map pattern can't contain a rest pattern._
 #### Description
 
 The analyzer produces this diagnostic when a map pattern contains a rest
-pattern. The matching for map patterns already allows the map to have
-more keys than those explicitly given in the pattern, so a rest pattern
-wouldn't add anything.
+pattern. Map patterns will already match a map with more keys
+than those explicitly given in the pattern (as long as the given keys match),
+so a rest pattern is unnecesssary.
 
 #### Example
 
-The following code produces this diagnostic because there's a rest
-pattern in a map pattern:
+The following code produces this diagnostic because the map pattern contains
+a rest pattern:
 
 {% prettify dart tag=pre+code %}
 void f(Map<int, String> x) {
@@ -18711,6 +18823,10 @@ int f(C c) => c.b;
 {% endprettify %}
 
 ### subtype_of_base_or_final_is_not_base_final_or_sealed
+
+_The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
+
+_The mixin '{0}' must be 'base' because the supertype '{1}' is 'final'._
 
 _The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}'
 is 'base'._
