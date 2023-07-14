@@ -3,16 +3,17 @@ title: Breaking changes
 description: A list of breaking changes by release in Dart.
 ---
 
-This page lists all the breaking changes in Dart, organized by release and area.
+This page lists the breaking changes in Dart, organized by release and area.
+Complete release notes are available in the [Dart SDK change log][change log].
 
-According to our [breaking change policy], each listed item contains a link to more
+According to our [breaking change policy], each listed change contains a link to more
 information on the change, such as migration guidance, background, reasoning,
 caveats, and more.
 
 {{site.alert.note}}
-Changes prior to Dart 3.1.0 were not subject to our updated breaking change policy,
-so might not have links to additional information. More details per change might
-be available in the corresponding [change log] entry.
+Changes prior to Dart 3.1.0 and our updated breaking change policy 
+might not have links to additional information. More details on some of those
+changes might be available in their corresponding [change log] entry.
 {{site.alert.end}}
 
 **Dart has two types of breaking changes**:
