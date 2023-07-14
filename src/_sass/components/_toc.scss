@@ -108,12 +108,17 @@
       float: right;
     }
 
-    .toc-toggle-down {
+    .toc-toggle-down, .toc-toggle-more-items {
       display: none;
     }
 
-    .toc-toggle-up, .toc-toggle-down {
+    .toc-toggle-more-items {
+      float: unset;
+    }
+
+    .toc-toggle-up, .toc-toggle-down, .toc-toggle-more-items {
       user-select: none;
+      cursor: pointer;
     }
 
     &.toc-collapsed {
@@ -126,7 +131,7 @@
         display: none;
       }
 
-      .toc-toggle-down {
+      .toc-toggle-down, .toc-toggle-more-items {
         display: inline-block;
       }
     }
