@@ -441,8 +441,11 @@ for all files or
 
 ### Excluding files
 
-To exclude files from static analysis, use the `exclude:` analyzer option. You
-can list individual files, or use [glob]({{site.pub-pkg}}/glob) syntax:
+To exclude files from static analysis, use the `exclude:` analyzer option.
+You can list individual files, or 
+use [glob]({{site.pub-pkg}}/glob) pattern syntax.
+All usages of glob patterns should be relative to the
+directory containing the `analysis_options.yaml` file.
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml
