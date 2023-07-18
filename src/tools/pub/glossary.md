@@ -154,7 +154,7 @@ All other dependencies are [transitive dependencies](#transitive-dependency).
 A library is a single compilation unit, made up of a single primary file and any
 optional number of [parts][]. Libraries have their own private scope.
 
-[parts]: /effective-dart/usage#do-use-strings-in-part-of-directives
+[parts]: /resources/glossary#part-file
 
 ## Lockfile
 
