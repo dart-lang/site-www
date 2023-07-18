@@ -103,6 +103,8 @@ that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() {
   // Read some data.
   final fileData = _readFileSync();
@@ -123,6 +125,8 @@ Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
+const String filename = 'with_keys.json';
+
 void main() [!async!] {
   // Read some data.
   final fileData = [!await!] _readFileAsync();
@@ -341,6 +345,8 @@ The main isolate contains the code that spawns a new isolate:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
@@ -410,6 +416,8 @@ function literal, or closure, directly in the main isolate.
 
 <?code-excerpt "lib/simple_isolate_closure.dart (main)"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(() async {
