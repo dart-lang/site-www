@@ -237,7 +237,7 @@ supertype of all the other overridden methods.
 ## Part file
 
 A part file is a Dart source file that contains a `part of` directive.
-For usage guidance, see the [Effective Dart][part] entry.
+For usage guidance, visit the [Effective Dart][part] entry.
 
 [part]: /effective-dart/usage#do-use-strings-in-part-of-directives
 
