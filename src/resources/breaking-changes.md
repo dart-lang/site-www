@@ -6,14 +6,15 @@ description: A list of breaking changes by release in Dart.
 This page lists the breaking changes in Dart, organized by release and area.
 Complete release notes are available in the [Dart SDK change log][change log].
 
-According to our [breaking change policy], each listed change contains a link to more
+According to Dart's [breaking change policy][], each listed change contains a link to more
 information on the change, such as migration guidance, background, reasoning,
 caveats, and more.
 
 {{site.alert.note}}
-Changes prior to Dart 3.1.0 and our updated breaking change policy 
-might not have links to additional information. More details on some of those
-changes might be available in their corresponding [change log] entry.
+  Changes prior to Dart 3.1.0 and Dart's updated breaking change policy 
+  might not have links to additional information. 
+  More details on some of those changes might
+  be available in their corresponding [change log][] entry.
 {{site.alert.end}}
 
 **Dart has two types of breaking changes**:
@@ -27,11 +28,11 @@ If you have questions or concerns about any of these breaking changes, please
 [file an issue][]. To be notified about future breaking changes,
 join the [Dart announce][] group.
 
-[breaking change policy]: https://github.com/dart-lang/sdk/blob/master/docs/process/breaking-changes.md
+[breaking change policy]: https://github.com/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
 [change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [sdk]: /get-dart
 [pubspec]: /tools/pub/pubspec#sdk-constraints
-[file an issue]: https://github.com/dart-lang/sdk/issues/new
+[file an issue]: https://github.com/dart-lang/sdk/issues/new/choose
 [Dart announce]: https://groups.google.com/a/dartlang.org/g/announce
 
 ## Not yet released to stable
@@ -606,7 +607,7 @@ other.
   specification must now be wrapped with a call to `allowInterop`. 
 * Constructors in `@JS()` classes must be marked with `external`.
 
-#### `darat2js`
+#### `dart2js`
 
 * Corresponding type parameter bounds now only need to be mutual
   subtypes rather than structurally equal up to renaming of bound type variables
@@ -630,7 +631,7 @@ other.
 [40706]: https://github.com/dart-lang/sdk/issues/40706
 [40709]: https://github.com/dart-lang/sdk/issues/40709
 [ddc]: https://github.com/dart-lang/sdk/issues/38994
-[normalized]:https://github.com/dart-lang/language/blob/master/resources/type-system/normalization.md
+[normalized]: https://github.com/dart-lang/language/blob/main/resources/type-system/normalization.md
 
 ## Released in 2.7.1
 
@@ -824,5 +825,5 @@ other.
 * Replaced pub's transformer-based build system with a [new build system][build system].
 
 [30345]: https://github.com/dart-lang/sdk/issues/30345
-[strong mode]: https://dart.dev/guides/language/type-system
+[strong mode]: /guides/language/type-system
 [build system]: https://github.com/dart-lang/build
