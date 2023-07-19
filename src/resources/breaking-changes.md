@@ -4,7 +4,7 @@ description: A list of breaking changes by release in Dart.
 ---
 
 This page lists the breaking changes in Dart, organized by release and area.
-Complete release notes are available in the [Dart SDK change log][change log].
+Complete release notes are available in the [Dart SDK changelog][changelog].
 
 According to Dart's [breaking change policy][], each listed change contains a link to more
 information on the change, such as migration guidance, background, reasoning,
@@ -14,24 +14,23 @@ caveats, and more.
   Changes prior to Dart 3.1.0 and Dart's updated breaking change policy 
   might not have links to additional information. 
   More details on some of those changes might
-  be available in their corresponding [change log][] entry.
+  be available in their corresponding [changelog][] entry.
 {{site.alert.end}}
 
 **Dart has two types of breaking changes**:
 * **Standard**: Causes breaks as soon as you [upgrade your sdk version][sdk]. 
   *These are the majority of changes and are not specially marked in this list.*
-* **Language versioned**: Causes breaks only when you [upgrade the
-  language version of your library][pubspec] in its `pubspec.yaml`.
-  *These are marked "**Language versioned**"*.
+* **Language versioned**: Causes breaks only when you upgrade the
+  [language version] of your code. *These are marked "**Language versioned**"*.
 
 If you have questions or concerns about any of these breaking changes, please 
 [file an issue][]. To be notified about future breaking changes,
 join the [Dart announce][] group.
 
 [breaking change policy]: https://github.com/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
-[change log]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [sdk]: /get-dart
-[pubspec]: /tools/pub/pubspec#sdk-constraints
+[language version]: /guides/language/evolution#language-versioning
 [file an issue]: https://github.com/dart-lang/sdk/issues/new/choose
 [Dart announce]: https://groups.google.com/a/dartlang.org/g/announce
 
@@ -71,7 +70,6 @@ join the [Dart announce][] group.
 
 {% comment %}
 Create new section from these headers for each release.
-Copy entries from "Not yet released to stable". 
 If no changes exist in a section (e.g. Language, `dart:async`, etc.),
 don't include the section header.
 
@@ -92,6 +90,11 @@ don't include the section header.
 {% endcomment %}
 
 ## Released in 3.0.0
+
+{{site.alert.tip}}
+  The [Dart 3.0 migration guide][dart3] covers the complete details
+  on all the changes in this section.
+{{site.alert.end}}
 
 ### Language
 {: .no_toc}
@@ -123,23 +126,7 @@ don't include the section header.
 
 #### `dart:collection`
 
-* **Language versioned**: Changes to platform libraries.
-  * The following interface can no longer be extended, only implemented:
-    * `Queue`
-  * The following implementation classes can no longer be implemented:
-    * `LinkedList`
-    * `LinkedListEntry`
-  * The following implementation classes can no longer be implemented
-    or extended:
-    * `HasNextIterator` (Also deprecated.)
-    * `HashMap`
-    * `LinkedHashMap`
-    * `HashSet`
-    * `LinkedHashSet`
-    * `DoubleLinkedQueue`
-    * `ListQueue`
-    * `SplayTreeMap`
-    * `SplayTreeSet`
+* **Language versioned**: [Changes to platform libraries][collection].
 
 #### `dart:developer`
 
@@ -163,10 +150,12 @@ don't include the section header.
 * [Updated `NetworkProfiling`][51035] to accommodate new `String` ids that are
   introduced in vm_service:11.0.0
 
+[dart3]: /resources/dart-3-migration/
 [switch cases]: https://dart.dev/language/branches#switch
 [mixin class]: https://dart.dev/language/mixins#class-mixin-or-mixin-class
 [label]: https://dart.dev/language/branches#switch
 [50902]: https://github.com/dart-lang/sdk/issues/50902
+[collection]: /resources/dart-3-migration#dartcollection
 [49529]: https://github.com/dart-lang/sdk/issues/49529
 [`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
 [`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
