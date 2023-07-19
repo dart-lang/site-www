@@ -317,6 +317,13 @@ you’d use these bitwise and shift operators with integers.
 | `>>>`                       | Unsigned shift right
 {:.table .table-striped}
 
+{{site.alert.note}}
+  The behavior of bitwise operations with large or negative operands
+  might differ between platforms.
+  To learn more, check out
+  [Bitwise operations platform differences][].
+{{site.alert.end}}
+
 Here’s an example of using bitwise and shift operators:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-bitwise)"?>
@@ -328,10 +335,15 @@ assert((value & bitmask) == 0x02); // AND
 assert((value & ~bitmask) == 0x20); // AND NOT
 assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
+
 assert((value << 4) == 0x220); // Shift left
 assert((value >> 4) == 0x02); // Shift right
+
+// Shift right example that results in different behavior on web
+// because the operand value changes when masked to 32 bits:
+assert((-value >> 4) == -0x03);
+
 assert((value >>> 4) == 0x02); // Unsigned shift right
-assert((-value >> 4) == -0x03); // Shift right
 assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
@@ -340,6 +352,7 @@ assert((-value >>> 4) > 0); // Unsigned shift right
   requires a [language version][] of at least 2.14.
 {{site.alert.end}}
 
+[Bitwise operations platform differences]: /guides/language/numbers#bitwise-operations
 
 ## Conditional expressions
 
