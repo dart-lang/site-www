@@ -427,6 +427,19 @@ They have been applied to a number of classes in the core libraries.
 This is a [*versioned* change](#unversioned-vs-versioned-changes), 
 that only applies to language version 3.0 or later.
 
+#### `dart:async`
+
+* The following declarations can only be implemented, not extended:
+
+  - `StreamConsumer`
+  - `StreamIterator`
+  - `StreamTransformer`
+  - `MultiStreamController`
+
+  None of these declarations contained any implementation to inherit.
+  They are marked as `interface` to signify that
+  they are only intended as interfaces.
+
 #### `dart:core`
 
 * The `Function` type can no longer be implemented, extended or mixed in.
