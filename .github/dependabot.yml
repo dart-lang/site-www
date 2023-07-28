@@ -7,23 +7,40 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "infra.dependencies"
+      - "infra.bundler"
+      - "lang.ruby"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "infra.dependencies"
+      - "infra.docker"
+      - "lang.yaml"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
-      - autosubmit
+      - "infra.dependencies"
+      - "infra.github-action"
+      - "lang.yaml"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
     allow:
       - dependency-type: "production"
+    labels:
+      - "infra.dependencies"
+      - "infra.npm"
+      - "lang.javascript"
   - package-ecosystem: 'gitsubmodule'
     directory: '/'
     schedule:
       interval: 'daily'
+    labels:
+      - "infra.dependencies"
+      - "infra.submodules"
