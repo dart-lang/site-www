@@ -52,7 +52,7 @@ $ dart pub get
 
 ## Using built-in commands
 
-Here is an example of using the build_runner **build** command for both Flutter and Dart projects:
+Here is an example of using the build_runner **build** command:
 
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
