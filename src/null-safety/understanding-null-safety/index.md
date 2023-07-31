@@ -813,7 +813,7 @@ print(notAString?.length?.isEven);
 This is annoying, but, worse, it obscures important information. Consider:
 
 ```dart
-// Using null safety:
+// Without null safety:
 showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
