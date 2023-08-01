@@ -46,9 +46,10 @@ follow the [Customizing static analysis][] instructions.
 
 Dart provides [`dart fix`][] to find and fix errors.
 
-Dart also provides a code formatter similar to JavaScript tools like [Prettier][].
-To format code in any Dart project, run [`dart format`](/tools/dart-format) on
-your command line. In Flutter, use `flutter format`.
+Dart also provides a code formatter similar to
+JavaScript tools like [Prettier][].
+To format code in any Dart project, run
+[`dart format`](/tools/dart-format) on your command line.
 The IDE plugins for Dart and Flutter also provide this ability.
 
 Dart supports trailing commas for comma-separated lists of collections,
@@ -69,7 +70,7 @@ JavaScript supports trailing commas in list and map literals only.
   * Writing good Dart code, read [Effective Dart][].
 {{site.alert.end}}
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
 [Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
@@ -2570,7 +2571,7 @@ By default, Dart limits access to private class members to code in the same file
 To expand the scope of a library beyond one file, add the `part` directive.
 When possible, [avoid using `part`][]. Reserve using `part` for code generators.
 
-[avoid using `part`]: /guides/libraries/create-library-packages#organizing-a-library-package
+[avoid using `part`]: /guides/libraries/create-packages#organizing-a-package
 
 ### Late variables
 

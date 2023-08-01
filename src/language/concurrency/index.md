@@ -103,6 +103,8 @@ that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() {
   // Read some data.
   final fileData = _readFileSync();
@@ -123,6 +125,8 @@ Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
+const String filename = 'with_keys.json';
+
 void main() [!async!] {
   // Read some data.
   final fileData = [!await!] _readFileAsync();
@@ -167,7 +171,7 @@ visit the [asynchronous programming codelab][].
 ## How isolates work
 
 Most modern devices have multi-core CPUs.
-To take advantage of all those cores,
+To take advantage of multiple cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
 [error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
@@ -177,8 +181,12 @@ Instead of threads, all Dart code runs inside of isolates.
 Each isolate has its own memory heap,
 ensuring that none of the state in an isolate is accessible from
 any other isolate.
-Because there’s no shared memory, you don’t have to worry about
-[mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science)).
+No shared state between isolates means concurrency complexities like 
+[mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science))
+and [data races](https://en.wikipedia.org/wiki/Race_condition#Data_race)
+won't occur in Dart. That said,
+isolates don't prevent race conditions all together.
+
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
 using additional processor cores if they’re available.
@@ -203,14 +211,15 @@ as shown in the following figure:
 
 ![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/language/concurrency/images/basics-main-isolate.png)
 
-Even single-isolate programs can execute smoothly
-by using async-await to wait for asynchronous operations to complete
-before continuing to the next line of code.
+Even single-isolate programs can execute smoothly.
+Before continuing to the next line of code, these apps use
+[async-await][] to wait for asynchronous operations to complete.
 A well-behaved app starts quickly,
 getting to the event loop as soon as possible.
 The app then responds to each queued event promptly,
 using asynchronous operations as necessary.
 
+[async-await]: {{site.url}}/codelabs/async-await
 
 ### The isolate life cycle
 
@@ -336,6 +345,8 @@ The main isolate contains the code that spawns a new isolate:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
@@ -405,6 +416,8 @@ function literal, or closure, directly in the main isolate.
 
 <?code-excerpt "lib/simple_isolate_closure.dart (main)"?>
 ```dart
+const String filename = 'with_keys.json';
+
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(() async {

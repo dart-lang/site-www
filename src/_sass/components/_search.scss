@@ -1,3 +1,6 @@
+@use '../core/variables' as *;
+@use '../core/bootstrap';
+
 .site-header__search {
   &::before {
     color: $gray;
@@ -38,7 +41,7 @@
     font-size: $site-font-size-header;
 
     // Override of _header.scss
-    @include media-breakpoint-down(sm) {
+    @include bootstrap.media-breakpoint-down(sm) {
       font-size: inherit;
       height: inherit;
 
@@ -50,12 +53,12 @@
   }
 
   #sidenav & {
-    font-size: $font-size-lg;
+    font-size: bootstrap.$font-size-lg;
     height: 66px;
     width: 100%;
 
     // Override of _header.scss
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       width: 100% !important;
       &:focus {
         width: 100% !important;
@@ -83,6 +86,7 @@ input.gsc-search-button {
   margin-top: 70px;
   padding: 20px;
   min-height: calc(100vh);
+
   button {
     position: absolute;
     top: 20px;
@@ -90,6 +94,7 @@ input.gsc-search-button {
     font-size: 30px;
     cursor: pointer;
     z-index: 5;
+
     &:hover {
       color: $gray;
     }
@@ -99,6 +104,6 @@ input.gsc-search-button {
 .searchbar {
   > * {
     max-width: 640px;
-    width:100%
+    width: 100%
   }
 }

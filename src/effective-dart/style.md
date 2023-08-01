@@ -78,8 +78,6 @@ const foo = Foo();
 class C { ... }
 {% endprettify %}
 
-[Linter rule]: /guides/language/analysis-options#the-analysis-options-file
-
 ### DO name extensions using `UpperCamelCase`
 
 {% include linter-rule-mention.md rule="camel_case_extensions" %}
@@ -348,7 +346,7 @@ To keep the preamble of your file tidy, we have a prescribed order that
 directives should appear in. Each "section" should be separated by a blank line.
 
 A single linter rule handles all the ordering guidelines:
-[directives_ordering.](/tools/linter-rules#directives_ordering)
+[directives_ordering.](/tools/linter-rules/directives_ordering)
 
 
 ### DO place `dart:` imports before other imports

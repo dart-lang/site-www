@@ -1,6 +1,7 @@
 ---
 title: Customizing static analysis
-description: Use an analysis options file and code comments to customize static analysis.
+description: >
+  Use an analysis options file and code comments to customize static analysis.
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -265,7 +266,7 @@ warning - The generic type 'List<dynamic>' should have explicit type arguments b
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
 nondenominational—rules don't have to agree with each other.
-For example, some rules are more appropriate for library packages
+For example, some rules are more appropriate for regular Dart packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
@@ -341,12 +342,12 @@ linter:
     - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
+    - collection_methods_unrelated_type
+    - combinators_ordering
     - comment_references
-    - one_member_abstracts
-    - only_throw_errors
-    - package_api_docs
-    - prefer_final_in_for_each
-    - prefer_single_quotes
+    - dangling_library_doc_comments
+    - implicit_call_tearoffs
+    - invalid_case_patterns
 ```
 
 
@@ -440,8 +441,11 @@ for all files or
 
 ### Excluding files
 
-To exclude files from static analysis, use the `exclude:` analyzer option. You
-can list individual files, or use [glob]({{site.pub-pkg}}/glob) syntax:
+To exclude files from static analysis, use the `exclude:` analyzer option.
+You can list individual files, or 
+use [glob]({{site.pub-pkg}}/glob) pattern syntax.
+All usages of glob patterns should be relative to the
+directory containing the `analysis_options.yaml` file.
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml

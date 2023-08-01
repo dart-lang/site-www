@@ -3,8 +3,8 @@ title: Enumerated types
 description: Learn about the enum type in Dart.
 short-title: Enums
 prevpage:
-  url: /language/class-modifiers
-  title: Class modifiers
+  url: /language/mixins
+  title: Mixins
 nextpage:
   url: /language/extension-methods
   title: Extension methods
@@ -145,10 +145,8 @@ var aColor = Color.blue;
 switch (aColor) {
   case Color.red:
     print('Red as roses!');
-    break;
   case Color.green:
     print('Green as grass!');
-    break;
   default: // Without this, you see a WARNING.
     print(aColor); // 'Color.blue'
 }

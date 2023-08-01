@@ -1,6 +1,4 @@
-/* -----------------------------------------
-   Mixins
------------------------------------------ */
+@use '../core/variables' as *;
 
 @mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
   transition: $property $duration $effect;
@@ -24,14 +22,16 @@
 }
 
 @mixin md-icon-before($icon-name) {
-  &:before { @include md-icon-content($icon-name); }
+  &:before {
+    @include md-icon-content($icon-name);
+  }
 }
 
 // The left and right sidebar is dynamically repositioned as the user scrolls,
 // to follow both the header's bottom and the banner's bottom position.
 //
 // On page load this repositioning happens with a delay, which causes a "flash"
-// as it finally happens. The below rulesmatch the expected initial positions
+// as it finally happens. The below rules match the expected initial positions
 // to minimize the "flash".
 @mixin sidenav-top-position() {
   top: $site-header-height;
@@ -53,6 +53,7 @@
   .#{$kind} {
     background-color: $bg-color !important;
     position: relative;
+
     &:after {
       font-family: $font-family-monospace;
       font-size: 0.8125rem;

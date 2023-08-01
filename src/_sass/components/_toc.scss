@@ -1,20 +1,24 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../core/bootstrap';
+
 #site-toc--side {
-  $padding: map-get($spacers, 2);
+  $padding: map-get(bootstrap.$spacers, 2);
 
   display: none;
   right: 0;
 
-  .nav { 
+  .nav {
     display: block;
   }
 
   .nav-link {
     padding-bottom: $padding;
 
-    color: theme-color('primary');
+    color: bootstrap.theme-color('primary');
 
     &.active {
-      color: theme-color('secondary');
+      color: bootstrap.theme-color('secondary');
       font-weight: 500;
     }
   }
@@ -22,9 +26,11 @@
   > ul > li {
     padding-bottom: $padding; // Extra space for top-level entries
 
-    li { 
-      padding-left: $padding; 
-    } // Indent subentries
+    li {
+      padding-left: $padding;
+    }
+
+    // Indent subentries
   }
 }
 
@@ -37,18 +43,23 @@
     list-style: none;
   }
 
-  @include media-breakpoint-up(xl) {
+  @include bootstrap.media-breakpoint-up(xl) {
     padding-bottom: $site-content-top-padding;
     padding-top: $site-content-top-padding;
 
     @at-root {
-      #site-toc--inline { display: none; }
-      #site-toc--side { display: block; }
+      #site-toc--inline {
+        display: none;
+      }
+
+      #site-toc--side {
+        display: block;
+      }
     }
   }
 
   .nav-item {
-    font-size: $font-size-sm;
+    font-size: bootstrap.$font-size-sm;
 
     .nav-link {
       color: $site-color-body-light !important;
@@ -59,8 +70,8 @@
 
   &__title {
     font-family: $site-font-family-alt;
-    font-size: $font-size-lg;
-    margin-bottom: bs-spacer(2);
+    font-size: bootstrap.$font-size-lg;
+    margin-bottom: bootstrap.bs-spacer(2);
   }
 }
 
@@ -73,11 +84,6 @@
 
 
 // Overrides moved here from main.scss
-// TODO these should be merged with the above defaults
-.site-toc--button__toggle {
-  display: none;
-}
-
 #site-toc--inline {
   background: #f5f5f7;
   padding: 15px 30px;
@@ -102,12 +108,17 @@
       float: right;
     }
 
-    .toc-toggle-down {
+    .toc-toggle-down, .toc-toggle-more-items {
       display: none;
     }
 
-    .toc-toggle-up, .toc-toggle-down {
+    .toc-toggle-more-items {
+      float: unset;
+    }
+
+    .toc-toggle-up, .toc-toggle-down, .toc-toggle-more-items {
       user-select: none;
+      cursor: pointer;
     }
 
     &.toc-collapsed {
@@ -120,7 +131,7 @@
         display: none;
       }
 
-      .toc-toggle-down {
+      .toc-toggle-down, .toc-toggle-more-items {
         display: inline-block;
       }
     }

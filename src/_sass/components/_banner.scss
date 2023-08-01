@@ -1,27 +1,29 @@
+@use '../core/variables' as *;
+
 .banner {
   position: relative;
-  background-color: #e7f8ff;
+  background-color: $dash-callout;
   padding: 12px 0;
   text-align: center;
   z-index: 1000;
-}
 
-.banner__text {
-  font-family: $site-font-family-roboto;
-  font-size: 16px;
-  font-weight: 300;
-  margin-bottom: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-}
+  &__text {
+    font-family: $site-font-family-base;
+    font-size: 16px;
+    font-weight: 300;
 
-.banner__frontpage-row {
-  .content {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+    color: white;
 
-  .banner {
     margin-bottom: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    a {
+      color: $site-color-card-link;
+
+      &:hover, &:focus, &:active {
+        color: darken($site-color-card-link, 20%);
+      }
+    }
   }
 }

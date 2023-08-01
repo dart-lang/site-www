@@ -11,12 +11,16 @@
       <article>
         <div class="content">
           {% include navigation-sub.html %}
-          {% if page.show_breadcrumbs -%}
-            {% include shared/breadcrumbs.html %}
-          {% endif -%}
-          <div>
+          <div id="site-content-title">
             {% include shared/page-github-links.html %}
-            <h1>{{page.title}}</h1>
+            {% if page.underscore_breaker_titles -%}
+            <h1>{{page.title | underscore_breaker}}</h1>
+            {% else %}
+            <h1>{{page.title }}</h1>
+            {% endif -%}
+            {% if page.show_breadcrumbs -%}
+              {% include shared/breadcrumbs.html %}
+            {% endif -%}
           </div>
           {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
           {{ content | inject_anchors }}
@@ -25,6 +29,6 @@
       </article>
     </main>
     {% include page-footer.html %}
-   
+
   </body>
 </html>

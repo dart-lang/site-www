@@ -1,4 +1,4 @@
-// Copied from site-webdev/src/_assets/stylesheets/main.scss
+@use 'core/variables' as *;
 
 $tab-accent-color: $brand-primary;
 
@@ -16,18 +16,18 @@ ul.tabs__top-bar li {
   cursor: pointer;
 }
 
-ul.tabs__top-bar li.current{
+ul.tabs__top-bar li.current {
   background: $tab-accent-color;
   color: $white-base;
 }
 
-.tabs__content{
+.tabs__content {
   display: none;
   border: 2px solid $tab-accent-color;
   padding: 15px;
   margin-bottom: 15px;
 }
 
-.tabs__content.current{
+.tabs__content.current {
   display: inherit;
 }

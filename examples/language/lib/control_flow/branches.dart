@@ -11,6 +11,21 @@ dynamic miscDeclAnalyzedButNotTested() {
   var pair = [1, 2];
 
   {
+    bool isRaining() => true;
+    bool isSnowing() => true;
+    dynamic car, you;
+    // #docregion if-else
+    if (isRaining()) {
+      you.bringRainCoat();
+    } else if (isSnowing()) {
+      you.wearJacket();
+    } else {
+      car.putTopDown();
+    }
+    // #enddocregion if-else
+  }
+
+  {
     // #docregion if-case
     if (pair case [int x, int y]) return Point(x, y);
     // #enddocregion if-case
@@ -116,7 +131,7 @@ dynamic miscDeclAnalyzedButNotTested() {
   {
     bool? nullableBool = false;
     // #docregion exh-bool
-    // Non-exhaustive switch on bool?, missing case to match null possiblity:
+    // Non-exhaustive switch on bool?, missing case to match null possibility:
     switch (nullableBool) {
       case true:
         print('yes');

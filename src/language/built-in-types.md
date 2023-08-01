@@ -46,10 +46,6 @@ Some other types also have special roles in the Dart language:
 * `void`: Indicates that a value is never used.
   Often used as a return type.
 
-{% comment %}
-[TODO: move/add for-in coverage to language tour?]
-{% endcomment %}
-
 The `Object`, `Object?`, `Null`, and `Never` classes
 have special roles in the class hierarchy.
 Learn about these roles in [Understanding null safety][].

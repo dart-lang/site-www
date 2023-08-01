@@ -239,10 +239,6 @@ Besides invoking a superclass constructor, you can also initialize
 instance variables before the constructor body runs. Separate
 initializers with commas.
 
-{% comment %}
-[TODO #2950: Maybe change example or point to discussion of ! (in map section?).]
-{% endcomment %}
-
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
 ```dart
 // Initializer list sets instance variables before

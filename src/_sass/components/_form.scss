@@ -1,3 +1,6 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
 form {
   .muted {
     font-size: 75%;
@@ -15,8 +18,9 @@ form {
     appearance: none;
     min-width: 120px;
     padding: 0 30px 0 10px;
+
     &:focus {
-     outline: none;
+      outline: none;
     }
   }
 
@@ -49,6 +53,7 @@ input, select {
   cursor: pointer;
   background-color: $gray-light;
   color: $gray-dark;
+
   &:focus, &:active {
     outline-color: #fff;
   }

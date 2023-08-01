@@ -3,7 +3,7 @@ import 'package:futures_examples/util.dart';
 
 // #docregion with-error
 void withErrorMain() {
-  funcThatThrows()
+  asyncErrorFunction()
       // Future completes with an error:
       .then((_) => print("Won't reach here"))
       // Future completes with the same error:
@@ -17,7 +17,7 @@ void withErrorMain() {
 
 // #docregion with-object
 void withObjectMain() {
-  funcThatThrows()
+  asyncErrorFunction()
       // Future completes with an error:
       .then((_) => ellipsis())
       .catchError((e) {
@@ -30,7 +30,7 @@ void withObjectMain() {
 
 // #docregion when-complete-error
 void whenCompleteError() {
-  funcThatThrows()
+  asyncErrorFunction()
       // Future completes with a value:
       .catchError(handleError)
       // Future completes with an error:

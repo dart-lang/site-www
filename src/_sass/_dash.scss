@@ -1,3 +1,6 @@
+@use 'core/variables' as *;
+@use 'core/bootstrap';
+
 // Homepage styles
 
 // Sizes
@@ -5,18 +8,6 @@ $dash-row-height: 640px;
 $dash-info-size: 512px;
 $dash-info-padding: 24px;
 $dash-max-width: 1330px;
-
-// Colors
-$dash-callout: #121a26;
-$dash-sub-grey: #8d9399;
-$dash-dark-grey: #82878c;
-$dash-off-white: #f8f9fa;
-$dash-dark-black: #4a4a4a;
-$dash-highlight: #1967d2;
-$dash-off-black: #12202f;
-$dark-darker-black: #0d1520;
-$dash-header-bg: #17212f;
-$dash-dartpad-border: #293542;
 
 .dash-align-right {
   display: block;
@@ -31,7 +22,7 @@ $dash-dartpad-border: #293542;
 }
 
 .dash-header-callout {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   background-color: $dash-callout;
   text-align: center;
   padding: 64px 0 64px 0 !important;
@@ -41,16 +32,19 @@ $dash-dartpad-border: #293542;
     flex-direction: column;
     align-items: center;
     margin-top: 17px;
+
     > button {
       display: flex;
       flex-direction: row;
       text-decoration: none;
       align-items: center;
       color: $site-color-card-link;
+
       &:hover {
         text-decoration: none;
         color: darken($site-color-card-link, 20%);
       }
+
       > i {
         margin-right: 8px;
       }
@@ -61,10 +55,10 @@ $dash-dartpad-border: #293542;
     font-size: 28px;
     color: white;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 17px;
-      margin-left:30px;
-      margin-right:30px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
   }
 
@@ -73,14 +67,21 @@ $dash-dartpad-border: #293542;
     color: $dash-dark-grey;
     margin-top: 16px;
 
-    @include media-breakpoint-down(md) {
+    & svg {
+      width: 1em;
+      height: 1em;
+    }
+
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 14px;
-      margin-left:30px;
-      margin-right:30px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
 
     a {
       color: $dash-dark-grey;
+      vertical-align: bottom;
+
       &:hover, &:focus, &:active {
         color: $white-base;
       }
@@ -89,7 +90,7 @@ $dash-dartpad-border: #293542;
 
   .made-by {
     width: 180px;
-    margin-top:27px;
+    margin-top: 27px;
     opacity: 0.5;
   }
 }
@@ -107,7 +108,7 @@ $dash-dartpad-border: #293542;
 }
 
 .dash-dart-features {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   padding-bottom: 80px !important;
   background-color: $dark-darker-black;
 
@@ -117,17 +118,19 @@ $dash-dartpad-border: #293542;
     text-align: center;
     width: 325px;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       width: 225px;
     }
   }
+
   .feature-title {
     font-size: 28px;
     color: $dash-off-white;
     margin-top: 25px;
     margin-bottom: 20px;
     line-height: 33px;
-    @include media-breakpoint-down(md) {
+
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 22px;
     }
   }
@@ -154,7 +157,7 @@ $dash-dartpad-border: #293542;
   a, button {
     color: $dash-dark-black;
 
-    &:focus{
+    &:focus {
       outline: $dash-highlight auto 2px;
     }
   }
@@ -166,15 +169,17 @@ $dash-dartpad-border: #293542;
     .content-container {
       padding: $dash-info-padding;
       max-width: $dash-info-size;
-      @include media-breakpoint-down(md) {
+
+      @include bootstrap.media-breakpoint-down(md) {
         position: relative;
         left: 0;
         top: 0;
         margin: 20px auto 0;
         transform: none !important;
-        padding:20px;
+        padding: 20px;
       }
-      @include media-breakpoint-down(sm) {
+
+      @include bootstrap.media-breakpoint-down(sm) {
         width: 100%;
       }
     }
@@ -185,7 +190,7 @@ $dash-dartpad-border: #293542;
       border-radius: 50%;
       margin-bottom: 18px;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         margin-bottom: 10px;
       }
     }
@@ -195,13 +200,14 @@ $dash-dartpad-border: #293542;
       margin-bottom: 34px;
       line-height: 1.2;
       color: $dash-dark-black;
-      @include media-breakpoint-down(md) {
+
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 24px;
       }
     }
 
     .content-desc {
-      font-family: Roboto, Arial, sans-serif;
+      font-family: $site-font-family-base;
       font-weight: lighter;
       font-size: 17px;
       line-height: 24px;
@@ -215,19 +221,20 @@ $dash-dartpad-border: #293542;
           height: 25px;
           background-color: $dash-highlight;
         }
-      
+
         a, button {
           color: $dash-highlight;
         }
       }
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 14px;
       }
 
       ul li {
         margin-bottom: 10px;
         list-style: none;
+
         &:focus {
           outline: none;
         }
@@ -239,20 +246,20 @@ $dash-dartpad-border: #293542;
     }
   }
 
-  .animated-bullet{
-    background-color: $dark-darker-black; 
+  .animated-bullet {
+    background-color: $dark-darker-black;
     height: 10px;
     width: 5px;
     margin-top: 5px;
     transition: height 0.5s, background-color 0.5s;
   }
 
-  .bullet-container{
-    float: left; 
+  .bullet-container {
+    float: left;
     margin-right: 10px;
   }
 
-  .bullet-text{
+  .bullet-text {
     margin-left: 20px;
   }
 
@@ -268,13 +275,13 @@ $dash-dartpad-border: #293542;
       max-height: $dash-row-height;
     }
   }
-
 }
 
 .dash-try-dart {
   background-color: $dash-off-black;
   padding: 40px 80px !important;
   height: 745px;
+
   .title {
     color: $dash-off-white;
     font-size: 43px;
@@ -292,9 +299,10 @@ $dash-dartpad-border: #293542;
   width: 100%;
   max-width: $dash-max-width;
   margin-bottom: -10px;
-  @include media-breakpoint-down(md) {
-    padding-top:30px;
-    padding-bottom:30px;
+
+  @include bootstrap.media-breakpoint-down(md) {
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
@@ -330,14 +338,20 @@ $dash-dartpad-border: #293542;
   select {
     margin: 8px 0 8px 0;
     border-radius: 4px;
+
     &:focus, &:active {
       outline: none;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .08), 0 0 0 0.2rem rgba(255, 255, 255, 0.5)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .08),
+      0 0 0 0.2rem rgba(255, 255, 255, 0.5);
     }
   }
 
   a {
     color: $site-color-card-link;
+
+    &:hover, &:focus, &:active {
+      color: darken($site-color-card-link, 20%);
+    }
   }
 
   #dartpad-host {
@@ -353,41 +367,24 @@ $dash-dartpad-border: #293542;
   }
 }
 
-.banner {
-  background-color: $dash_callout;
-
-  .banner__text {
-    color: white;
-
-    a {
-      color: $site-color-card-link;
-
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
-      }
-    }
-  }
-
-}
-
 #page-content {
   padding-bottom: 0 !important;
 }
 
 .dart-dash-details {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
 
   a {
     text-decoration: underline;
   }
 
-  .selector{
+  .selector {
     margin-left: -30px;
   }
 }
 
-.nav-link{
-  &:focus{
+.nav-link {
+  &:focus {
     outline: $dash-highlight auto 2px;
   }
 }

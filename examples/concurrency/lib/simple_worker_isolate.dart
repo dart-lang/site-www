@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
+// #docregion main
 const String filename = 'with_keys.json';
 
-// #docregion main
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
