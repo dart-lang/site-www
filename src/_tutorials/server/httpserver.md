@@ -3,8 +3,8 @@ title: "Write HTTP servers"
 description: Communicate over the internet
 toc: false
 prevpage:
-  url: /tutorials/server/cmdline
-  title: "Write command-line apps"
+  url: /tutorials/server/fetch-data
+  title: Fetch data from the internet
 ---
 
 Here are some resources for writing servers using Dart:
