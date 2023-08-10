@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'activesupport', '~> 7.0.6'
+gem 'activesupport', '~> 7.0.7'
 gem 'jekyll', '4.3.2'
 gem 'jekyll-sass-converter', '~> 3.0.0'
 gem 'kramdown-parser-gfm'
