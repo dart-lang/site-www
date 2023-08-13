@@ -112,7 +112,7 @@ This adapter handles HttpRequest objects from `dart:io`.
 
 {{site.alert.tip}}
   For the best performance when developing with the
-  development JavaScript compiler with [`webdev serve`][],
+  development JavaScript compiler through [`webdev serve`][],
   put [implementation files](/tools/pub/package-layout#implementation-files) 
   under `/lib/src`, instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
