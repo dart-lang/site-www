@@ -517,6 +517,5 @@ The following resources have further information on sound Dart:
 
 
 [analysis]: /tools/analysis
-[dartdevc]: /tools/dartdevc
 [language version]: /guides/language/evolution#language-versioning
 [null safety]: /null-safety

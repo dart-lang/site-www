@@ -111,12 +111,14 @@ The shelf package also contains a mini library: shelf_io.
 This adapter handles HttpRequest objects from `dart:io`.
 
 {{site.alert.tip}}
-  For the best performance when developing with [dartdevc,](/tools/dartdevc)
+  For the best performance when developing with the
+  development JavaScript compiler with [`webdev serve`][],
   put [implementation files](/tools/pub/package-layout#implementation-files) 
   under `/lib/src`, instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 {{site.alert.end}}
 
+[`webdev serve`]: /tools/webdev#serve
 
 ## Importing library files
 
