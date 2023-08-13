@@ -36,7 +36,7 @@ jobs:
           - sdk: beta
             experimental: false
           - sdk: stable
-            experimental: true
+            experimental: false
     continue-on-error: ${{ matrix.experimental }}
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
