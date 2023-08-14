@@ -2089,6 +2089,9 @@ _Constant values from a deferred library can't be used as keys in a 'const' map
 literal._
 
 _Constant values from a deferred library can't be used as values in a 'const'
+constructor._
+
+_Constant values from a deferred library can't be used as values in a 'const'
 list literal._
 
 _Constant values from a deferred library can't be used as values in a 'const'
@@ -2330,7 +2333,7 @@ Rename either the member or the constructor.
 
 ### conflicting_generic_interfaces
 
-_The class '{0}' can't implement both '{1}' and '{2}' because the type arguments
+_The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments
 are different._
 
 #### Description
@@ -10157,6 +10160,50 @@ void f(Object? x) {
 }
 {% endprettify %}
 
+### invalid_platforms_field
+
+_The 'platforms' field must be a map with platforms as keys._
+
+#### Description
+
+The analyzer produces this diagnostic when a top-level `platforms`
+field is specified, but its value is not a map with keys.
+See the [documentation on platform declaration](https://dart.dev/tools/pub/pubspec#platforms)
+for details.
+
+#### Example
+
+The following `pubspec.yaml` produces this diagnostic because `platforms`
+should be a map.
+
+```yaml
+name: example
+platforms:
+  [!- android
+  - web
+  - ios!]
+```
+
+#### Common fixes
+
+If you can rely on automatic platform detection, then omit the
+top-level `platforms` field. 
+
+```yaml
+name: example
+```
+
+If you need to manually specify the list of supported platforms, then
+write the `platforms` field as a map with platform names as keys.
+
+```yaml
+name: example
+platforms:
+  android:
+  web:
+  ios:
+```
+
 ### invalid_reference_to_generative_enum_constructor
 
 _Generative enum constructors can only be used as targets of redirection._
@@ -10583,7 +10630,7 @@ The following code produces this diagnostic because `x` will always be
 
 {% prettify dart tag=pre+code %}
 int f(Null x) {
-  return [!x!].length;
+  return x.[!length!];
 }
 {% endprettify %}
 
@@ -11977,6 +12024,7 @@ variable._
 The analyzer produces this diagnostic when, within an object pattern, the
 specification of a property and the pattern used to match the property's
 value doesn't have either:
+
 - a getter name before the colon
 - a variable pattern from which the getter name can be inferred
 
@@ -16172,6 +16220,41 @@ void f(int x) {
 }
 {% endprettify %}
 
+### platform_value_disallowed
+
+_Keys in the `platforms` field can't have values._
+
+#### Description
+
+The analyzer produces this diagnostic when a key in the `platforms` map
+has a value.
+See the [documentation on platform declaration](https://dart.dev/tools/pub/pubspec#platforms)
+for details.
+
+#### Example
+
+The following `pubspec.yaml` produces this diagnostic because the key
+`web` has a value.
+
+```yaml
+name: example
+platforms:
+  web: [!"chrome"!]
+```
+
+#### Common fixes
+
+Omit the value and leave the key without a value:
+
+```yaml
+name: example
+platforms:
+  web:
+```
+
+Values for keys in the `platforms` field are currently reserved for
+potential future behavior.
+
 ### positional_field_in_object_pattern
 
 _Object patterns can only use named fields._
@@ -17440,7 +17523,7 @@ _A map pattern can't contain a rest pattern._
 The analyzer produces this diagnostic when a map pattern contains a rest
 pattern. Map patterns match a map with more keys
 than those explicitly given in the pattern (as long as the given keys match),
-so a rest pattern is unnecesssary.
+so a rest pattern is unnecessary.
 
 #### Example
 
@@ -17578,7 +17661,7 @@ generator and is using `return` to return a value:
 
 {% prettify dart tag=pre+code %}
 Iterable<int> f() sync* {
-  [!return 3!];
+  [!return!] 3;
 }
 {% endprettify %}
 
@@ -21042,6 +21125,52 @@ remove the `super.`.
 If the member isn't defined, then either add the member to one of the
 superclasses or remove the invocation.
 
+### unknown_platform
+
+_The platform '{0}' is not a recognized platform._
+
+#### Description
+
+The analyzer produces this diagnostic when an unknown platform name is
+used as a key in the `platforms` map.
+See the [documentation on platform declaration](https://dart.dev/tools/pub/pubspec#platforms)
+for details.
+
+#### Example
+
+The following `pubspec.yaml` produces this diagnostic because the platform
+`browser` is unknown.
+
+```yaml
+name: example
+platforms:
+  [!browser:!]
+```
+
+#### Common fixes
+
+If you can rely on automatic platform detection, then omit the
+top-level `platforms` key.
+
+```yaml
+name: example
+```
+
+If you need to manually specify the list of supported platforms, then
+write the `platforms` field as a map with known platform names as keys.
+
+```yaml
+name: example
+platforms:
+  # These are the known platforms
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+```
+
 ### unnecessary_cast
 
 _Unnecessary cast._
@@ -21665,7 +21794,7 @@ matched by an earlier `case` clause.
 #### Example
 
 The following code produces this diagnostic because the value `1` was
-matched in the preceeding case:
+matched in the preceding case:
 
 {% prettify dart tag=pre+code %}
 void f(int x) {
