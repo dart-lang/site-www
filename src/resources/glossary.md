@@ -130,7 +130,7 @@ condition is `true` and the path in which the condition is `false`.
 For additional details, see the
 [specification of definite assignment][definiteAssignmentSpec].
 
-[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
+[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
 ## Irrefutable pattern
 
@@ -237,6 +237,9 @@ supertype of all the other overridden methods.
 ## Part file
 
 A part file is a Dart source file that contains a `part of` directive.
+For usage guidance, visit the [Effective Dart][part] entry.
+
+[part]: /effective-dart/usage#do-use-strings-in-part-of-directives
 
 ## Potentially non-nullable
 

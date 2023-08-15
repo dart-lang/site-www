@@ -2,8 +2,8 @@
 title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
-  url: /tutorials/server/httpserver
-  title: Write HTTP servers
+  url: /tutorials/server/fetch-data
+  title: Fetch data from the internet
 prevpage:
   url: /tutorials/server/get-started
   title: "Get started: Command-line and server apps"
