@@ -1,7 +1,7 @@
 // #docregion import
 import 'dart:convert';
-import 'dart:typed_data';
 // #enddocregion import
+import 'dart:typed_data';
 import 'package:test/test.dart';
 
 void main() {
