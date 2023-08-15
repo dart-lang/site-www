@@ -1,37 +1,40 @@
 ---
-title: Breaking changes
+title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
 ---
 
-This page lists the breaking changes in Dart, organized by release and area.
-Complete release notes are available in the [Dart SDK changelog][changelog].
+This page lists all language and library breaking changes and deprecations in Dart,
+organized by release and area, to help Dart users understand and manage their
+impact. Complete release notes are available in the [Dart SDK changelog][changelog].
+The [breaking change policy][] document describes the policy and process
+around breaking changes and deprecations in Dart. 
 
-According to Dart's [breaking change policy][], each listed change contains a link to more
-information on the change, such as migration guidance, background, reasoning,
-caveats, and more.
-
-{{site.alert.note}}
-  Changes prior to Dart 3.1.0 and Dart's updated breaking change policy 
-  might not have links to additional information. 
-  More details on some of those changes might
-  be available in their corresponding [changelog][] entry.
-{{site.alert.end}}
-
-**Dart has two types of breaking changes**:
-* **Standard**: Causes breaks as soon as you [upgrade your sdk version][sdk]. 
+**This page includes two types of breaking changes, as well as deprecations**:
+* **Unversioned**: The compiler does not maintain backward compatibility, and
+  code may break as soon as you [upgrade your sdk version][sdk] if it relies on
+  the previous behavior.
+  
   *These are the majority of changes and are not specially marked in this list.*
-* **Language versioned**: Causes breaks only when you upgrade the
-  [language version] of your code. *These are marked "**Language versioned**"*.
+* **Language versioned**: The compiler maintains backward compatibility for
+  existing code, and the behavior change only takes effect (potentially breaking
+  code that relies on the previous behavior) when you upgrade the
+  [language version] of your code.
+  
+  *These are marked "**Language versioned**"*.
+* **Deprecations**: The compiler maintains compatibility for deprecated code,
+  with a warning. Deprecations are then completely removed in the release
+  following their deprecation, breaking any code that relies on the previous behavior.
+  
+  *These are marked "**Deprecated**" and "**Removed**", respectively*.
 
 If you have questions or concerns about any of these breaking changes, please 
-[file an issue][]. To be notified about future breaking changes,
-join the [Dart announce][] group.
+comment on the breaking change issue linked from the relevant entry.
+To be notified about future breaking changes, join the [Dart announce][] group.
 
 [breaking change policy]: https://github.com/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
 [changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [sdk]: /get-dart
 [language version]: /guides/language/evolution#language-versioning
-[file an issue]: https://github.com/dart-lang/sdk/issues/new/choose
 [Dart announce]: https://groups.google.com/a/dartlang.org/g/announce
 
 ## Not yet released to stable
@@ -118,11 +121,11 @@ don't include the section header.
 
 #### `dart:core`
 
-* [Deprecated APIs][49529].
+* **Deprecated**: [Deprecated APIs][49529].
 
 #### `dart:async`
 
-* [Removed the deprecated][49529] [`DeferredLibrary`][] class.
+* **Removed**: [Removed the deprecated][49529] [`DeferredLibrary`][] class.
 
 #### `dart:collection`
 
@@ -130,14 +133,14 @@ don't include the section header.
 
 #### `dart:developer`
 
-* [Removed the deprecated][49529] [`MAX_USER_TAGS`][] constant.
+* **Removed**: [Removed the deprecated][49529] [`MAX_USER_TAGS`][] constant.
   Use [`maxUserTags`][] instead.
-* [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
+* **Removed**: [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
 #### `dart:html`
 
-* [Removed the deprecated `registerElement` and `registerElement2`][49536]
+* **Removed**: [Removed the deprecated `registerElement` and `registerElement2`][49536]
   methods in `Document` and `HtmlDocument`.
 
 #### `dart:math`
@@ -185,12 +188,12 @@ don't include the section header.
 
 #### `dart:convert`
 
-* [The previously deprecated API][34233] [`DEFAULT_BUFFER_SIZE`] in `JsonUtf8Encoder`
+* **Removed**: [The previously deprecated API][34233] [`DEFAULT_BUFFER_SIZE`] in `JsonUtf8Encoder`
   has been removed.
 
 #### `dart:developer`
 
-* [Removed previously deprecated APIs][34233] `kInvalidParams`,
+* **Removed**: [Removed previously deprecated APIs][34233] `kInvalidParams`,
   `kExtensionError`, `kExtensionErrorMax`, and `kExtensionErrorMin` in
   [`ServiceExtensionResponse`].
 
@@ -304,9 +307,9 @@ don't include the section header.
 
 #### Dart command line
 
-* [Deprecated the standalone `dart2js` tool][46100].
-* [Deprecated the standalone `dartdevc` tool][46100].
-* [Removed the standalone `dartdoc` tool][46100].
+* **Deprecated**: [Deprecated the standalone `dart2js` tool][46100].
+* **Deprecated**: [Deprecated the standalone `dartdevc` tool][46100].
+* **Removed**: [Removed the standalone `dartdoc` tool][46100].
 
 [47887]: https://github.com/dart-lang/sdk/issues/47887
 [48093]: https://github.com/dart-lang/sdk/issues/48093
@@ -323,20 +326,20 @@ don't include the section header.
 
 * On Windows, [`Directory.rename` will no longer delete a directory][47653] if
   `newPath` specifies one. Instead, a `FileSystemException` will be thrown.
-* [Removed the `Platform.packageRoot` API][47769].
+* **Removed**: [Removed the `Platform.packageRoot` API][47769].
 
 #### `dart:isolate`
 
-* [Removed the `Isolate.packageRoot` API][47769].
+* **Removed**: [Removed the `Isolate.packageRoot` API][47769].
 
 ### Tools 
 {: .no_toc}
 
 #### Dart command line
 
-* [Deprecated the standalone `dartanalyzer` tool][46100].
-* [Deprecated the standalone `dartdoc` tool][46100].
-* [Removed the deprecated standalone `pub` tool][46100].
+* **Deprecated**: [Deprecated the standalone `dartanalyzer` tool][46100].
+* **Deprecated**: [Deprecated the standalone `dartdoc` tool][46100].
+* **Removed**: [Removed the deprecated standalone `pub` tool][46100].
 
 [47653]: https://github.com/dart-lang/sdk/issues/47653
 [47769]: https://github.com/dart-lang/sdk/issues/47769
