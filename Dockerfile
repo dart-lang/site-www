@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bookworm@sha256:2de48b02b2c3383799991fd5573462a7646a92a068b4afbb0e161ad166a3de9a as base
+FROM ruby:3.2-slim-bookworm@sha256:8551b194873f86434634525d91a28028a694f7130abf95020645ef9dab9825e5 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
