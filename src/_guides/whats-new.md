@@ -32,7 +32,7 @@ and the [SDK changelog][].
 {: .no_toc}
 
 In preparation for Dart 3, we split up and reorganized the
-constantly growing language tour into new conceptual categories.
+Language Tour into new conceptual categories.
 You can access the restructured language documentation
 under **Language** in the side navigation menu, or by
 visiting the updated [Introduction to Dart][].
@@ -56,13 +56,13 @@ and other changes, we also prepared the following updates:
 - Created a comprehensive [Dart 3 migration guide][].
 - Migrated all documentation and code examples
   to Dart 3, the latest tool releases, and the latest dependencies.
-- Clarified Dart's null-safe type system and 
-  how that always applies in Dart 3.
-- Updated and reorganized the [language evolution][] page
+- Clarified that Dart's type system is now always null-safe in Dart 3.
+- Updated and reorganized the [Language evolution][] page
   and its [language versioning][] discussion.
 - Removed remnants of Dart 1 and early Dart 2 docs, notes, and resources.
 
-In addition to all of that Dart 3 goodness and general site improvements,
+In addition to the new Dart 3 content and 
+corresponding updates across the site,
 we made the following changes:
 
 - Added a guide on configuring [compilation environment declarations][].
