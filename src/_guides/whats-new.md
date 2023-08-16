@@ -17,6 +17,117 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## May 10, 2023: 3.0 release
+
+This section lists notable changes made from January 26, 2023,
+through May 10, 2023.
+For details about the major 3.0 release,
+check out [Announcing Dart 3][],
+and the [SDK changelog][].
+
+[Announcing Dart 3]: https://medium.com/dartlang/announcing-dart-3-53f065a10635
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#300---2023-05-10
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In preparation for Dart 3, we split up and reorganized the
+Language Tour into new conceptual categories.
+You can access the restructured language documentation
+under **Language** in the side navigation menu, or by
+visiting the updated [Introduction to Dart][].
+
+Taking advantage of this new structure,
+we added documentation for each of Dart 3's major features:
+
+- [Pattern matching][] and the different [types of patterns][].
+- [Switch expressions][] with support for
+  patterns and [exhaustiveness checking][].
+- [If statements with case clauses][] to support pattern matching.
+- [Records][], a new anonymous, immutable, and aggregate type
+  that enables [multiple returns][].
+- [Class modifiers][] that give libraries more control over exported types.
+  As well as a [reference][class-modifier-reference] to
+  better understand how they combine.
+
+To help you transition to Dart 3's enforcement of [sound null safety][]
+and other changes, we also prepared the following updates:
+
+- Created a comprehensive [Dart 3 migration guide][].
+- Migrated all documentation and code examples
+  to Dart 3, the latest tool releases, and the latest dependencies.
+- Clarified that Dart's type system is now always null-safe in Dart 3.
+- Updated and reorganized the [Language evolution][] page
+  and its [language versioning][] discussion.
+- Removed remnants of Dart 1 and early Dart 2 docs, notes, and resources.
+
+In addition to the new Dart 3 content and 
+corresponding updates across the site,
+we made the following changes:
+
+- Added a guide on configuring [compilation environment declarations][].
+- Continued Dart's native interoperability work
+  by adding a guide on experimental support for [Java interop][].
+- Clarified the usage and limitations of [unnamed extensions][].
+- Added a page for the new [`dart info`][] command 
+  that helps with tooling diagnostics.
+- Overhauled the [`dart pub add`][] documentation
+  to cover its new [source descriptor][] syntax.
+- Surfaced preview Linux RISC-V (RV64GC) builds on the
+  beta channel in the [SDK archive][].
+- Began a new site-wide [glossary][] to contain 
+  common terms used throughout the site.
+- Highlighted experimental work on Dart's [JS static interop support][].
+- Documented the existence and current limitations of [analyzer plugins][].
+
+[Introduction to Dart]: /language
+[Pattern matching]: /language/patterns
+[types of patterns]: /language/pattern-types
+[If statements with case clauses]: /language/branches#if-case
+[Switch expressions]: /language/branches#switch-expressions
+[exhaustiveness checking]: /language/branches#exhaustiveness-checking
+[Records]: /language/records
+[multiple returns]: /language/records#multiple-returns
+[Class modifiers]: /language/class-modifiers
+[class-modifier-reference]: /language/modifier-reference
+[sound null safety]: /null-safety
+[Dart 3 migration guide]: /resources/dart-3-migration
+[language evolution]: /guides/language/evolution
+[language versioning]: /guides/language/evolution#language-versioning
+[compilation environment declarations]: /guides/environment-declarations
+[Java interop]: /guides/libraries/java-interop
+[unnamed extensions]: /language/extension-methods#unnamed-extensions
+[`dart info`]: /tools/dart-info
+[`dart pub add`]: /tools/pub/cmd/pub-add
+[source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
+[SDK archive]: /get-dart/archive
+[glossary]: /resources/glossary
+[JS static interop support]: /web/js-interop#next-generation-js-interop-preview
+[analyzer plugins]: /tools/analysis#plugins
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following article on the Dart blog:
+
+* [Introducing Realm for Dart & Flutter][blog-2-09-23]
+
+[blog-2-09-23]: https://medium.com/dartlang/introducing-realm-for-dart-flutter-e30cb05eb313
+
+### Videos released by the Dart team
+{: .no_toc}
+
+During Google I/O 2023, we released the following videos:
+
+* [What's new in Dart and Flutter][] ([American Sign Language version][])
+* [Rethinking Dart interoperability with Android][]
+* [How to build a package in Dart][]
+
+[What's new in Dart and Flutter]: https://www.youtube.com/watch?v=yRlwOdCK7Ho
+[American Sign Language version]: https://www.youtube.com/watch?v=QbMgjVB0XMI
+[Rethinking Dart interoperability with Android]: https://www.youtube.com/watch?v=ZWp2FJ2TuJs
+[How to build a package in Dart]: https://www.youtube.com/watch?v=8V_TLiWszK0
+
 ## January 25, 2023: 2.19 + 3.0 alpha releases
 
 This section lists notable changes made from August 31, 2022,
