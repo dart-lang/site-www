@@ -3,7 +3,7 @@ description: dart.dev example code.
 version: 0.0.1
 
 environment:
-  sdk: ^3.1.0-0
+  sdk: ^3.1.0
 
 dev_dependencies:
   lints: ^2.1.0
