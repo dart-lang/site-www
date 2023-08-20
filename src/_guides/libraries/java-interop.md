@@ -16,7 +16,7 @@ to call Java and Kotlin APIs.
 {{site.alert.end}}
 
 `package:jni` allows Dart code to interact
-with Java through [JNI]({{page.jnidoc}}).
+with Java through [JNI][jnidoc].
 However, doing so involves a lot of boilerplate code,
 so you can use `package:jnigen` to automatically generate
 the Dart bindings for a given Java API.
