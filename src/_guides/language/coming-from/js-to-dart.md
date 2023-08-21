@@ -1006,7 +1006,7 @@ assert(5 % 2 == 1); // Remainder
 
 a = 0;
 b = ++a; // Increment a before b gets its value.
-assert(++a); // 1 == 1
+assert(a == b); // 1 == 1
 
 a = 0;
 b = a++; // Increment a AFTER b gets its value.
