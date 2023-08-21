@@ -37,6 +37,12 @@ environment:
 
 ## Changes in each release
 
+### Dart 3.1
+_Released 16 August 2023_
+| [Dart 3.1 announcement](https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda)
+
+Dart 3.1 added no new features and made no changes to the language.
+
 ### Dart 3.0
 _Released 10 May 2023_
 | [Dart 3.0 announcement](https://medium.com/dartlang/announcing-dart-3-53f065a10635)
