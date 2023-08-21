@@ -17,16 +17,82 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## August 16, 2023: 3.1 release
+
+This section lists notable changes made from May 11, 2023,
+through August 16, 2023.
+For details about the 3.1 release,
+check out 
+[Dart 3.1 & a retrospective on functional style programming in Dart 3][]
+and the [SDK changelog][3-1-changelog].
+
+[Dart 3.1 & a retrospective on functional style programming in Dart 3]: https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda
+[3-1-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Overhauled the linter rule documentation to replace the old linter site:
+  * Moved each linter rule's documentation to its own page.
+    For example: [`avoid_dynamic_calls`][].
+  * Added an example `analysis_options.yaml` that enables
+    [all linter rules][] available in the latest Dart release.
+  * Updated the [index of all available linter rules][]
+    to enable easier lint discovery.
+* Augmented the [class modifiers][] documentation by adding a
+  [Class modifiers reference][] to outline how they interact with each other.
+* Introduced a [Class modifiers for API maintainers][] guide to help
+  developers best use class modifiers.
+* Rewrote the [switch expression][] documentation
+  to better account for its differences to switch statements.
+* Documented support for specifying [topics][] in your pubspec file
+  to categorize your package on the pub.dev site.
+* Clarified that [package screenshots][] are meant to
+  showcase package functionality, not the logo or icon of the package.
+* Added previous and next buttons to Dart's
+  [language documentation][] to enable a guided learning experience.
+* Continued expanding the new site-wide [glossary][].
+* Added a migration note about how the
+  [pub cache move][] on Windows was finalized in Dart 3.
+* Simplified and updated older docs now that
+  Dart's type system is always [null safe][].
+
+[class modifiers]: /language/class-modifiers
+[Class modifiers reference]: /language/modifier-reference
+[Class modifiers for API maintainers]: /language/class-modifiers-for-apis
+[`avoid_dynamic_calls`]: /tools/linter-rules/avoid_dynamic_calls
+[all linter rules]: /tools/linter-rules/all
+[index of all available linter rules]: /tools/linter-rules#rules
+[switch expression]: /language/branches#switch-expressions
+[topics]: /tools/pub/pubspec#topics
+[language documentation]: /language
+[package screenshots]: /tools/pub/pubspec#screenshots
+[glossary]: /resources/glossary
+[pub cache move]: /resources/dart-3-migration#other-tools-changes
+[null safe]: /null-safety
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following article on the Dart blog:
+
+* [Dart DevTools: Analyzing application performance with the CPU Profiler][blog-6-12-23]
+
+[blog-6-12-23]: https://medium.com/dartlang/dart-devtools-analyzing-application-performance-with-the-cpu-profiler-3e94a0ec06ae
+
 ## May 10, 2023: 3.0 release
 
 This section lists notable changes made from January 26, 2023,
 through May 10, 2023.
 For details about the major 3.0 release,
 check out [Announcing Dart 3][],
-and the [SDK changelog][].
+and the [SDK changelog][3-0-changelog].
 
 [Announcing Dart 3]: https://medium.com/dartlang/announcing-dart-3-53f065a10635
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#300---2023-05-10
+[3-0-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#300---2023-05-10
 
 ### Docs updated or added to dart.dev
 {: .no_toc}
@@ -47,8 +113,6 @@ we added documentation for each of Dart 3's major features:
 - [Records][], a new anonymous, immutable, and aggregate type
   that enables [multiple returns][].
 - [Class modifiers][] that give libraries more control over exported types.
-  As well as a [reference][class-modifier-reference] to
-  better understand how they combine.
 
 To help you transition to Dart 3's enforcement of [sound null safety][]
 and other changes, we also prepared the following updates:
@@ -134,10 +198,10 @@ This section lists notable changes made from August 31, 2022,
 through January 25, 2023.
 For details about the 2.19 + 3.0 alpha releases,
 see [Introducing Dart 3 alpha][],
-and the [SDK changelog][].
+and the [SDK changelog][2-19-changelog].
 
 [Introducing Dart 3 alpha]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#2190
+[2-19-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2190---2023-01-24
 
 ### Docs updated or added to dart.dev
 {: .no_toc}
@@ -236,10 +300,10 @@ This section lists notable changes made from May 12, 2022,
 through August 30, 2022.
 For details about the 2.18 release,
 see [Dart 2.18: Objective-C & Swift interop][],
-and the [SDK changelog][].
+and the [SDK changelog][2-18-changelog].
 
 [Dart 2.18: Objective-C & Swift interop]: https://medium.com/dartlang/dart-2-18-f4b3101f146c
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
+[2-18-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180---2022-08-30
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
