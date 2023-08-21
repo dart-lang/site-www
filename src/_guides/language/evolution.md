@@ -49,15 +49,41 @@ _Released 10 May 2023_
 
 Dart 3.0 introduced several new major language features:
 
-* [Patterns][], a new category of grammar that lets you match and destructure values.
-* [Records][], a new type that lets you aggregate multiple values of different types
-  in a single function return.
-* [Class modifiers][], a new set of keywords that let you control how a class or
-  mixin can be used.
+* [Patterns][], a new category of grammar that lets you
+  match and destructure values.
+* [Records][], a new type that lets you aggregate
+  multiple values of different types in a single function return.
+* [Class modifiers][], a new set of keywords that let you
+  control how a class or mixin can be used.
+* [Switch expressions][], a new form of multi-way branching
+  allowed where expressions are expected.
+* [If-case clauses][], a new conditional construct that matches a value
+  against a pattern and executes the then or else branch, depending
+  on whether the pattern matches.
+
+Dart 3.0 also introduced a few breaking language changes:
+
+* Class declarations without the [`mixin`][] class modifier
+  can no longer be applied as mixins.
+* It is now a compile time error if a colon (`:`) is used as the separator
+  before the default value of an optional named parameter.
+  Use an equal sign (`=`) instead.
+* It is now a compile-time error if a `continue` statement targets a
+  label that is not attached to a
+  loop statement (`for`, `do`, and `while`) or a `switch` member.
+
+{{site.alert.note}}
+  The 3.0 release of the Dart SDK dropped support for
+  [language versions][] before 2.12.
+{{site.alert.end}}
 
 [Patterns]: /language/patterns
 [Records]: /language/records
 [Class modifiers]: /language/class-modifiers
+[Switch expressions]: /language/branches#switch-expressions
+[If-case clauses]: /language/branches#if-case
+[`mixin`]: /language/mixins#class-mixin-or-mixin-class
+[language versions]: #language-versioning
 
 ### Dart 2.19
 _Released 25 January 2023_
