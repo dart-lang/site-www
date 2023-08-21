@@ -57,8 +57,8 @@ Dart 3.0 introduced several new major language features:
   control how a class or mixin can be used.
 * [Switch expressions][], a new form of multi-way branching
   allowed where expressions are expected.
-* [If-case causes][], a new conditional construct that matches a value
-  against a pattern and executes the then or else branch depending
+* [If-case clauses][], a new conditional construct that matches a value
+  against a pattern and executes the then or else branch, depending
   on whether the pattern matches.
 
 Dart 3.0 also introduced a few breaking language changes:
