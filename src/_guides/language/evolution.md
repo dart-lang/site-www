@@ -81,7 +81,7 @@ Dart 3.0 also introduced a few breaking language changes:
 [Records]: /language/records
 [Class modifiers]: /language/class-modifiers
 [Switch expressions]: /language/branches#switch-expressions
-[If-case causes]: /language/branches#if-case
+[If-case clauses]: /language/branches#if-case
 [`mixin`]: /language/mixins#class-mixin-or-mixin-class
 [language versions]: #language-versioning
 
