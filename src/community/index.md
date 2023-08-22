@@ -33,11 +33,11 @@ Get answers and connect with Dart developers.
 [StackOverflow](https://stackoverflow.com/tags/dart)
 : The best place for how-to questions.
 
+[The dart_community Discord](https://discord.gg/Qt6DgfAWWx)
+: Chat with and get help from other Dart developers.
+
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 : The subreddit for all things related to Dart.
-
-[The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
-: Chat with and get help from other Dart developers.
 
 #### Google Groups
 

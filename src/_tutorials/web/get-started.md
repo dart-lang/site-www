@@ -83,7 +83,7 @@ More information:
 ## 3. Get CLI tools or an IDE (or both)
 
 <i class="material-icons">terminal</i>
-If you like to use the command line, install [webdev][]:
+If you like to use the command line, install the [`webdev`][] package:
 
 ```terminal
 $ dart pub global activate webdev
@@ -112,7 +112,8 @@ create a project using the template named **Bare-bones Web App**.
 ## 5. Run the app
 
 <i class="material-icons">terminal</i>
-To run the app from the command line, use [webdev][] to build and serve the app:
+To run the app from the command line, 
+use [`webdev`][] to build and serve the app:
 
 ```terminal
 $ cd quickstart
@@ -124,12 +125,13 @@ Or run the app from your IDE.
 
 To view your app, use the Chrome browser
 to visit the app's URL—for example, 
-[localhost:8080](localhost:8080).
+[localhost:8080](http://localhost:8080).
 
 Whether you use an IDE or the command line,
-[webdev serve][] builds and serves your app
-using the Dart development compiler, [dartdevc][].
-Startup is slowest the first time dartdevc builds and serves your app.
+[`webdev serve`][] builds and serves your app
+using the development JavaScript compiler.
+Startup is slowest the first time the 
+development compiler builds and serves your app.
 After that, assets are cached on disk and incremental builds are much faster.
 
 Once your app has compiled, the browser should display
@@ -219,9 +221,8 @@ Check out these resources:
   * [IDEs](/tools#ides-and-editors)
   * [Web libraries and packages](/web/libraries)
 
-If you get stuck, find help at [Community and Support.](/community)
+If you get stuck, find help at [Community and support.](/community)
 
-[dartdevc]: /tools/dartdevc
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /language
 [Dart library tour]: /guides/libraries/library-tour
@@ -230,5 +231,5 @@ If you get stuck, find help at [Community and Support.](/community)
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [overview of editors & debuggers]: /tools#ides-and-editors
 [Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
-[webdev]: /tools/webdev
-[webdev serve]: /tools/webdev#serve
+[`webdev`]: /tools/webdev
+[`webdev serve`]: /tools/webdev#serve
