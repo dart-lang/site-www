@@ -39,6 +39,7 @@ Here are some examples of using string interpolation:
 | `'${3 + 2}'`                | | `'5'` |
 | `'${"word".toUpperCase()}'` | | `'WORD'` |
 | `'$myObject'`               | | The value of `myObject.toString()` |
+
 </div>
 
 ### Code example
