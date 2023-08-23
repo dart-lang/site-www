@@ -227,7 +227,7 @@ var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
 ```
 
-Another way to create a multi-line string: use a triple quote with
+To create a multi-line string, use a triple quote with
 either single or double quotation marks:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
