@@ -971,6 +971,7 @@ which has a constructor that takes a string.
 Another provided function is `isValidEmailAddress()`,
 which tests whether an email address is valid.
 
+<div class="table-wrapper" markdown="1">
 |-----------------------+------------------------------------------+---------------------------------------------------------|
 | Constructor/function  | Type signature                           | Description                                             |
 |-----------------------|------------------------------------------|---------------------------------------------------------|
@@ -978,6 +979,7 @@ which tests whether an email address is valid.
 | isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
 |-----------------------+------------------------------------------+---------------------------------------------------------|
 {:.table .table-striped}
+</div>
 
 Write the following code:
 

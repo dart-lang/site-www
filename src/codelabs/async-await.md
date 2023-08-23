@@ -415,11 +415,13 @@ You don't need to implement `main()`.
 To simulate asynchronous operations, call the following functions, 
 which are provided for you:
 
+<div class="table-wrapper" markdown="1">
 | Function           | Type signature                   | Description                                    |
 |--------------------|----------------------------------|------------------------------------------------|
 | fetchRole()        | `Future<String> fetchRole()`     | Gets a short description of the user's role.   |
 | fetchLoginAmount() | `Future<int> fetchLoginAmount()` | Gets the number of times a user has logged in. |
 {:.table .table-striped}
+</div>
 
 
 #### Part 1: `reportUserRole()`
@@ -657,11 +659,12 @@ The following exercise provides practice handling errors with asynchronous code,
 using the approach described in the previous section. To simulate asynchronous
 operations, your code will call the following function, which is provided for you:
 
-
+<div class="table-wrapper" markdown="1">
 | Function           | Type signature                      | Description                                                      |
 |--------------------|-------------------------------------|------------------------------------------------------------------|
 | fetchNewUsername() | `Future<String> fetchNewUsername()` | Returns the new username that you can use to replace an old one. |
 {:.table .table-striped}
+</div>
 
 Use `async` and `await` to implement an asynchronous `changeUsername()` function
 that does the following:
@@ -819,11 +822,13 @@ It's time to practice what you've learned in one final exercise.
 To simulate asynchronous operations, this exercise provides the asynchronous
 functions `fetchUsername()` and `logoutUser()`:
 
+<div class="table-wrapper" markdown="1">
 | Function        | Type signature                   | Description                                                                   |
 |-----------------|----------------------------------|-------------------------------------------------------------------------------|
 | fetchUsername() | `Future<String> fetchUsername()` | Returns the name associated with the current user.                            |
 | logoutUser()    | `Future<String> logoutUser()`    | Performs logout of current user and returns the username that was logged out. |
 {:.table .table-striped}
+</div>
 
 Write the following:
 
