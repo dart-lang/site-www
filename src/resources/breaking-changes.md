@@ -9,23 +9,30 @@ impact. Complete release notes are available in the [Dart SDK changelog][changel
 The [breaking change policy][] document describes the policy and process
 around breaking changes and deprecations in Dart. 
 
-**This page includes two types of breaking changes, as well as deprecations**:
-* **Unversioned**: The compiler does not maintain backward compatibility, and
+**This page includes the following types of breaking changes**:
+
+* **Unversioned**: The Dart SDK does not maintain backward compatibility, and
   code may break as soon as you [upgrade your sdk version][sdk] if it relies on
   the previous behavior.
   
   *These are the majority of changes and are not specially marked in this list.*
-* **Language versioned**: The compiler maintains backward compatibility for
+* **Language versioned**: The Dart SDK maintains backward compatibility for
   existing code, and the behavior change only takes effect (potentially breaking
   code that relies on the previous behavior) when you upgrade the
-  [language version] of your code.
+  [language version][] of your code.
   
   *These are marked "**Language versioned**"*.
-* **Deprecations**: The compiler maintains compatibility for deprecated code,
-  with a warning. Deprecations are then completely removed in the release
-  following their deprecation, breaking any code that relies on the previous behavior.
+* **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
+  with a warning. Deprecations are then completely removed in a subsequent release,
+  breaking any code that relies on the previous behavior.
   
   *These are marked "**Deprecated**" and "**Removed**", respectively*.
+* **Experimental**: Part of the release but not yet treated as stable in the SDK,
+  and can break from one version to another. Experimental changes do not
+  always have a corresponding breaking change issue, but may have more detail in
+  the [changelog].
+
+  *These are marked "**Experimental**", possibly in conjunction with another change type*
 
 If you have questions or concerns about any of these breaking changes, please 
 comment on the breaking change issue linked from the relevant entry.
@@ -35,9 +42,16 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [sdk]: /get-dart
 [language version]: /guides/language/evolution#language-versioning
-[Dart announce]: https://groups.google.com/a/dartlang.org/g/announce
+[Dart announce]: {{site.announce}}
 
 ## Not yet released to stable
+
+### Language
+{: .no_toc}
+
+* **Language versioned**: [Changed the split point for refutable patterns][53167]
+  to the top level pattern so type promotion in if-case statements is consistent
+  regardless of whether the scrutinee might throw an exception.
 
 ### Libraries
 {: .no_toc}
@@ -47,29 +61,34 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 * [Changed return types of `utf8.encode()` and `Utf8Codec.encode()`][52801]
  from `List<int>` to `Uint8List`.
 
-#### `dart:async`
+#### `dart:developer`
 
-* [Added `interface` modifier to purely abstract classes:][52334]
- `MultiStreamController`, `StreamConsumer`, `StreamIterator` and `StreamTransformer`.
+* **Deprecated**: The `Service.getIsolateID` method.
 
 #### `dart:io`
 
-* [Added `sameSite` to the `Cookie` class, and added the class `SameSite`][51486].
-* [`FileSystemEvent` is `sealed`][52027]. This means `FileSystemEvent` cannot be 
-  extended or implemented.
+* [Eliminated trailing whitespace from HTTP headers][53005].
 
-#### `package:js`
+#### `dart:js_interop`
 
-* `external` `@staticInterop` members and `external` extension members can no
-  longer be used as tear-offs. Declare a closure or a non-`external` method that
-  calls these members, and use that instead.
-* `external` `@staticInterop` members and `external` extension members will
-  generate slightly different JS code for methods that have optional parameters.
+* **Experimental** **Removed**: `JSNumber.toDart` in favor of `toDartDouble` and
+  `toDartInt`.
+* **Experimental** **Removed**: `Object.toJS` in favor of `Object.toJSBox.`
 
+### Tools
+{: .no_toc}
+
+#### Dart Dev Compiler (DDC) and Dart2js
+
+* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
+  they should no longer be used with `package:js` classes.
+
+
+[53167]: https://github.com/dart-lang/sdk/issues/53167
 [52801]: https://github.com/dart-lang/sdk/issues/52801
-[52334]: https://github.com/dart-lang/sdk/issues/52334
-[51486]: https://github.com/dart-lang/sdk/issues/51486
-[52027]: https://github.com/dart-lang/sdk/issues/52027
+[53005]: https://github.com/dart-lang/sdk/issues/53005
+[53106]: https://github.com/dart-lang/sdk/issues/53106
+
 
 {% comment %}
 Create new section from these headers for each release.
@@ -91,6 +110,39 @@ don't include the section header.
 
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
+
+## Released in 3.1.0
+
+### Libraries
+{: .no_toc}
+
+#### `dart:async`
+
+* [Added `interface` modifier to purely abstract classes:][52334]
+ `MultiStreamController`, `StreamConsumer`, `StreamIterator` and `StreamTransformer`.
+
+#### `dart:io`
+
+* [Added `sameSite` to the `Cookie` class, and added the class `SameSite`][51486].
+* [`FileSystemEvent` is `sealed`][52027]. This means `FileSystemEvent` cannot be 
+  extended or implemented.
+
+#### `dart:js_interop`
+
+* **Experimental** **Removed**: `ObjectLiteral`; create an object literal with
+  no named members using `{}.jsify()`.
+
+#### `package:js`
+
+* `external` `@staticInterop` members and `external` extension members can no
+  longer be used as tear-offs. Declare a closure or a non-`external` method that
+  calls these members, and use that instead.
+* `external` `@staticInterop` members and `external` extension members will
+  generate slightly different JS code for methods that have optional parameters.
+
+[52334]: https://github.com/dart-lang/sdk/issues/52334
+[51486]: https://github.com/dart-lang/sdk/issues/51486
+[52027]: https://github.com/dart-lang/sdk/issues/52027
 
 ## Released in 3.0.0
 
