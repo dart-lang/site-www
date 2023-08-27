@@ -3,19 +3,16 @@ title: Unsound null safety
 description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
 ---
 
+{{site.alert.version-note}}
+Dart 3 (onnwards) does not support code without
+null safety or with only unsound null safety: all code must be soundly null
+safe. To learn more, see the [Dart 3 sound null safety tracking issue][].
+{{site.alert.end}}
+
 A Dart program may contain some libraries that
 are [null safe][] and some that aren't.
 These **mixed-version programs**
 rely on **unsound null safety**.
-
-{{site.alert.warn}}
-Dart 3---planned for a mid-2023 release---requires sound null safety. 
-It will prevent code from running without
-null safety, or with unsound null safety.
-All existing code must be [migrated][] to sound null safety
-to be compatible with Dart 3.
-To learn more, see the [Dart 3 sound null safety tracking issue][].
-{{site.alert.end}}
 
 [null safe]: /null-safety
 [migrated]: /null-safety#migrate
