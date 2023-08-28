@@ -76,7 +76,7 @@ _choose one_ of the following submodule-cloning techniques:
 
 - Clone the repo and its submodule at the same time
   using the `--recurse-submodules` option:
-  ```bash
+  ```terminal
   $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
   ```
 
@@ -84,13 +84,13 @@ _choose one_ of the following submodule-cloning techniques:
   
 - If you've already cloned the repo without its submodule, 
   then run this command from the repo root:
-  ```bash
+  ```terminal
   $ git submodule update --init --recursive
   ```
 
 > **Note:** At any time during development 
 > you can use the `git submodule` command to refresh submodules:
-> ```bash
+> ```terminal
 > $ git pull; git submodule update --init --recursive
 > ```
 
@@ -99,7 +99,7 @@ _choose one_ of the following submodule-cloning techniques:
 
 1. _Optional:_ After cloning the repo and its submodules, 
    create a branch for your changes:
-   ```bash
+   ```terminal
    $ git checkout -b <BRANCH_NAME>
    ```
    
@@ -108,12 +108,12 @@ _choose one_ of the following submodule-cloning techniques:
    point (`!`), then update Docker Desktop before proceeding.
 
 3. Run the initial local setup command:
-   ```bash
+   ```terminal
    $ make setup
    ```
 
 4. Serve the site locally (via `docker-compose`):
-   ```bash
+   ```terminal
    $ make up
    ```
    The site is generated, and then the development server runs in the 
@@ -132,7 +132,7 @@ _choose one_ of the following submodule-cloning techniques:
    > **Tip:** If you aren't seeing the changes you expect (e.g. src/_data), 
    > `ctrl-C` out of your running dev server and rebuild the site from scratch 
    > using the following commands:
-   > ```bash
+   > ```terminal
    > $ make down && make clean && make up
    > ```
 
@@ -141,14 +141,14 @@ _choose one_ of the following submodule-cloning techniques:
    > See [Pre-push site checks](#pre-push-site-checks)
 
 8. When you've finished developing, shut down the Docker container:
-   ```bash
+   ```terminal
    $ make down
    ```
    
 > **Tip:** To find additional commands, read the [Makefile][]. 
 > For example, if you need to debug the Docker setup, 
 > you can run:
-> ```bash
+> ```terminal
 > $ make run
 > ```
 
@@ -160,7 +160,7 @@ _choose one_ of the following submodule-cloning techniques:
 If you've made changes to this site's documentation and/or example code, 
 and committed locally, then run the following command before pushing your work:
 
-```bash
+```terminal
 # Enter a running Docker container shell
 make run
 
@@ -187,18 +187,18 @@ personal Firebase hosting staging site as follows:
      and create your own Firebase project (for example, `dart-dev-staging`).
 
    - Head back to your local repo shell and verify that you are logged in.
-     ```bash
+     ```terminal
      $ firebase login
      ```
 
    - Ensure that your project exists and activate that project:
-     ```bash
+     ```terminal
      $ firebase projects:list
      $ firebase use <your-project>
      ```
    
 1. Build the site via Docker:
-   ```bash
+   ```terminal
    $ make build
    ```
 
@@ -206,7 +206,7 @@ personal Firebase hosting staging site as follows:
    If that directory previously existed, it will be replaced. 
 
 1. Deploy to your activated Firebase project's default hosting site:
-   ```bash
+   ```terminal
    $ FIREBASE_PROJECT=<your-project> make deploy
    ```
 
@@ -228,7 +228,7 @@ responsible for DartPad example code.
 Files that require DartPad HTML to be manually updated
 include instructions at the top that specify running: 
 
-```bash
+```terminal
 $ tool/create_code_with_tooltips.dart
 ```
 
@@ -239,7 +239,7 @@ Follow the instructions in those files to refresh the appropriate code.
 The DartPad example picker must be manually compiled if changes are made. 
 This will regenerate the associated JavaScript file in `src/assets/dash/js`:
 
-```bash
+```terminal
 $ tool/compile.sh
 ```
 
@@ -257,7 +257,7 @@ local checksums may fail and **This will break the Docker/Compose setup/build**.
 You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`. 
 When this happens, run the following command:
 
-```bash
+```terminal
 make fetch-sums
 ```
 

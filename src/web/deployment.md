@@ -76,7 +76,7 @@ To remove these files, you can run a command like the following:
 Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
 {% endcomment %}
 
-```bash
+```terminal
 # From the root directory of your app:
 find build -type f -name "*.js.map" -exec rm {} +
 ```
