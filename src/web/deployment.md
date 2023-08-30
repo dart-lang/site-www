@@ -36,7 +36,6 @@ reliable and responsive.
 * [Follow best practices for web apps](#follow-best-practices-for-web-apps)
 * [Remove unneeded build files](#remove-unneeded-build-files)
 
-
 #### Use the pwa package to make your app work offline
 
 The [pwa package]({{site.pub-pkg}}/pwa) simplifies the task of
@@ -44,14 +43,12 @@ making your app work with limited or no connectivity.
 To learn more about using this package, see
 [Making a Dart web app offline-capable: 3 lines of code.](https://medium.com/dartlang/making-a-dart-web-app-offline-capable-3-lines-of-code-e980010a7815)
 
-
 #### Use deferred loading to reduce your app's initial size
 
 You can use Dart's support for deferred loading to
 reduce your app's initial download size.
 For details, see the language tour's coverage of
 [deferred loading](/language/libraries#lazily-loading-a-library).
-
 
 #### Follow best practices for web apps
 
@@ -64,7 +61,6 @@ Here are a few resources:
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-
 #### Remove unneeded build files
 
 Web compilers can produce files that are useful during development,
@@ -76,9 +72,9 @@ To remove these files, you can run a command like the following:
 Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
 {% endcomment %}
 
-```bash
+```terminal
 # From the root directory of your app:
-find build -type f -name "*.js.map" -exec rm {} +
+$ find build -type f -name "*.js.map" -exec rm {} +
 ```
 
 ## Serving your app
@@ -100,7 +96,6 @@ is hosted using GitHub Pages.
 Its files are in the **gh-pages** branch of the
 [filiph/startup_namer repo](https://github.com/filiph/startup_namer)
 and were built using [peanut.][peanut]
-
 
 ### Firebase
 {% comment %}
