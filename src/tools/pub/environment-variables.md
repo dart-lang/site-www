@@ -22,7 +22,7 @@ Environment variables allow you to customize pub to suit your needs.
   To specify the location of a particular mirror server,
   use the `PUB_HOSTED_URL` environment variable. For example:
 
-```shell
+```conf
 PUB_HOSTED_URL = https://pub.example.com
 ```
 
