@@ -4,9 +4,10 @@ description: Mixing language versions lets you migrate to null safety at your ow
 ---
 
 {{site.alert.version-note}}
-Dart 3 (onnwards) does not support code without
-null safety or with only unsound null safety: all code must be soundly null
-safe. To learn more, see the [Dart 3 sound null safety tracking issue][].
+Dart 3 and later does not support code without
+null safety or with unsound null safety.
+All code must be soundly null safe.
+To learn more, check out the [Dart 3 sound null safety tracking issue][].
 {{site.alert.end}}
 
 A Dart program may contain some libraries that
