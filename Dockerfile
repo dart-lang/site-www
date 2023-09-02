@@ -39,16 +39,16 @@ RUN set -eu; \
         DART_SHA256="fd4fcc05f1d1c82fd618b83c7d877968460c5bd425774d89add438be12a20795"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="914791d2402bb641a30678ae089d1ce817a7f4722e148220e1aa00ab32b2cf85"; \
+        DART_SHA256="bd0311f604def7e49215c6fbed823dc01284586f83963b6891cc6dee36da2488"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="8bec6e02c2fcb8c27c5a0e270072bd24dc594178b5245b19edb3391d58810c1e"; \
+        DART_SHA256="02de2c59d14fe4fcbcc6da756457be6966cd399bee507b2980d0e3c76fa4a2e3"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="7d56e46c81b06d35d52070f25bd7f5845659ac9a0e9fd679c8b1a31da0fc284e"; \
+        DART_SHA256="60489653d89572ad950f5810579cd44edd523267e19996226865fe22bc308b9d"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="307d5368a0d4c6e2376a7cc04f48a7d6e4773792fe4a47e97cdb48c06cd3e71b"; \
+        DART_SHA256="d8abd3c6d74e104be5c4ac0dd190b9fe68bf3c7b4acfd4d97967571f19bc347e"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=4ef190086f051a5242b8f9e7dff891d94c72bd484672d4a962f7189556977994; \
+    NODE_SHA256=a8f294c1720c8e91eb24cb76a3415888800fb766cada44dc88f0745602216a32; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
