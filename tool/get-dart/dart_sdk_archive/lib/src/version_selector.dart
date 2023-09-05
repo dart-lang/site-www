@@ -178,15 +178,18 @@ class VersionSelector {
           }
         } else if (name == 'Windows') {
           if (platformVariant.architecture == 'ARM64') {
-            // No Windows arm64 SDK builds before 2.18.0-41.0.dev,
-            // and only want to surface for dev.
-            // TODO: After this is marked beta or stable in 2.x,
-            // adjust the beta or stable check respectively.
-            if (versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
+            // Dev builds start at 2.18.0-41.0.dev.
+            if (versionInfo.channel == 'dev' &&
+                versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
               continue;
             }
-
-            if (const {'stable', 'beta'}.contains(versionInfo.channel)) {
+            // Beta builds start at 3.2.0-42.2.beta.
+            if (versionInfo.channel == 'beta' &&
+                versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
+              continue;
+            }
+            // No stable builds yet.
+            if (versionInfo.channel == 'stable') {
               continue;
             }
           }
