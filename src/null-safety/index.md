@@ -57,7 +57,7 @@ int? aNullableInt = null;
 
 ## Null safety principles
 
-Dart supports null safety using the following three core design principles:
+Dart supports null safety using the following two core design principles:
 
 * **Non-nullable by default**. Unless you explicitly tell Dart that a variable
    can be null, it's considered non-nullable. This default was chosen
