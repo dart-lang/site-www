@@ -39,7 +39,7 @@ jobs:
             experimental: false
     continue-on-error: ${{ matrix.experimental }}
     steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
         with:
           submodules: recursive
       - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
@@ -63,7 +63,7 @@ jobs:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       FIREBASE_PROJECT: default
     steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
         with:
           submodules: recursive
       - run: make build
@@ -91,7 +91,7 @@ jobs:
     if: ${{ github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
         with:
           submodules: recursive
       - run: make build
