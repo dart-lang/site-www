@@ -220,7 +220,10 @@ extension NumberParsing on String {
 
 The members of an extension can be methods, getters, setters, or operators.
 Extensions can also have static fields and static helper methods.
-Make sure to use the Extension name for invoking them.
+To access static members outside the extension declaration, 
+invoke them through the declaration name like [class variables and methods][]. 
+
+[class variables and methods]: /language/classes#class-variables-and-methods
 
 ### Unnamed extensions
 
