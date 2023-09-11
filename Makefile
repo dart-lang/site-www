@@ -138,13 +138,12 @@ emulate:
 
 ################## UTILS ##################
 
-# Fetch SDK sums for current Dart SDKs by arch, Node PPA
+# Fetch SDK sums for current Dart SDKs by arch
 # This outputs a bash case format to be copied to Dockerfile
 fetch-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
-	tool/fetch-node-ppa-sum.sh
 
 # Test the dev container with pure docker
 test-builds:

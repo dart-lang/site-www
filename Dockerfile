@@ -7,6 +7,7 @@ RUN apt update && apt install -yq --no-install-recommends \
       ca-certificates \
       curl \
       git \
+      gnupg \
       lsof \
       make \
       unzip \
@@ -78,21 +79,13 @@ CMD ["./tool/test.sh"]
 
 # ============== NODEJS INSTALL ==============
 FROM dart as node
-RUN set -eu; \
-    NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=a8f294c1720c8e91eb24cb76a3415888800fb766cada44dc88f0745602216a32; \
-    curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
-    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
-        rm "$NODE_PPA" && \
-        exit 1 \
-    ); \
-    sh "$NODE_PPA" && rm "$NODE_PPA"; \
-    apt-get update -q && apt-get install -yq --no-install-recommends \
-      nodejs \
-    && rm -rf /var/lib/apt/lists/*
-# Ensure latest NPM
-RUN npm install -g npm
+
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update -yq \
+    && apt-get install nodejs -yq \
+    && npm install -g npm # Ensure latest npm
 
 
 # ============== DEV/JEKYLL SETUP ==============
