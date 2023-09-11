@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.7.2)
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -60,7 +60,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
     mini_portile2 (2.8.4)
-    minitest (5.19.0)
+    minitest (5.20.0)
     nokogiri (1.15.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -99,7 +99,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activesupport (~> 7.0.7)
+  activesupport (~> 7.0.8)
   jekyll (= 4.3.2)
   jekyll-sass-converter (~> 3.0.0)
   jekyll-toc (~> 0.18.0)
