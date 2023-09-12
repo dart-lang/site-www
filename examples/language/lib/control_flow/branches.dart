@@ -142,6 +142,7 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
+    final pair = (1, 2);
     // #docregion guard
     switch (pair) {
       case (int a, int b) when a > b:
