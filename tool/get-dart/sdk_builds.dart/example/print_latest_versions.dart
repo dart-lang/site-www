@@ -1,7 +1,6 @@
-// Copyright (c) 2015, <your name>. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
-library sdk_builds.example;
+// Copyright 2015 the Dart project authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
 
 import 'dart:async';
 
@@ -19,7 +18,7 @@ void main() async {
 }
 
 Future<void> latest(String channel) async {
-  var info = await _dd.fetchVersion(channel, 'latest');
+  final info = await _dd.fetchVersion(channel, 'latest');
 
   print('$channel\t${info.version}');
 }
