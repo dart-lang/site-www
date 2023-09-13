@@ -6,13 +6,13 @@ class SvnVersionGenerator {
   final _downloader = DartDownloads();
 
   Future<Map<String, String>> get svnVersions async {
-    var versionInfos = <String, VersionInfo>{};
+    final versionInfos = <String, VersionInfo>{};
     await Future.wait([
       _loadVersionInfo(versionInfos, 'stable'),
       _loadVersionInfo(versionInfos, 'beta'),
       _loadVersionInfo(versionInfos, 'dev'),
     ]);
-    var result = <String, String>{};
+    final result = <String, String>{};
     versionInfos.forEach((revision, version) {
       result[revision] = version.toString();
     });
@@ -23,7 +23,7 @@ class SvnVersionGenerator {
       Map<String, VersionInfo> versionInfos, String channel) async {
     final versionBaseNames = await _downloader
         .fetchVersionPaths(channel)
-        .map((s) => path.basename(s))
+        .map(path.basename)
         .toList();
 
     await Future.forEach<String>(versionBaseNames, (name) async {
@@ -31,7 +31,7 @@ class SvnVersionGenerator {
         return;
       }
 
-      var versionInfo = await _downloader.fetchVersion(channel, name);
+      final versionInfo = await _downloader.fetchVersion(channel, name);
       versionInfos[name] = versionInfo;
     });
   }
