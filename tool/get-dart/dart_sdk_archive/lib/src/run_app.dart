@@ -6,9 +6,9 @@ import 'package:http/browser_client.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
 Future<void> runApp() async {
-  var client = DartDownloads(client: BrowserClient());
+  final client = DartDownloads(client: BrowserClient());
 
-  var stableSelector = VersionSelector(
+  final stableSelector = VersionSelector(
     'stable',
     client,
     querySelector('#stable') as TableElement,
@@ -16,7 +16,7 @@ Future<void> runApp() async {
     querySelector('#stable-os') as SelectElement,
   );
 
-  var betaSelector = VersionSelector(
+  final betaSelector = VersionSelector(
     'beta',
     client,
     querySelector('#beta') as TableElement,
@@ -24,7 +24,7 @@ Future<void> runApp() async {
     querySelector('#beta-os') as SelectElement,
   );
 
-  var devSelector = VersionSelector(
+  final devSelector = VersionSelector(
     'dev',
     client,
     querySelector('#dev') as TableElement,
