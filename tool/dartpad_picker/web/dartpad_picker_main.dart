@@ -5,8 +5,6 @@
 import 'dart:html';
 import 'package:dartpad_picker/dartpad_picker.dart';
 
-const tryDartIdPrefix = 'try-dart';
-
 void main() {
   if (isMobile()) {
     querySelector('.dash-dartpad')?.style.display = 'none';
