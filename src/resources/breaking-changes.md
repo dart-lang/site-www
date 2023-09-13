@@ -32,7 +32,7 @@ around breaking changes and deprecations in Dart.
   always have a corresponding breaking change issue, but may have more detail in
   the [changelog].
 
-  *These are marked "**Experimental**", possibly in conjunction with another change type*
+  *These are marked "**Experimental**", possibly in conjunction with another change type*.
 
 If you have questions or concerns about any of these breaking changes, please 
 comment on the breaking change issue linked from the relevant entry.
