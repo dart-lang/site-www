@@ -15,24 +15,25 @@ around breaking changes and deprecations in Dart.
   code may break as soon as you [upgrade your sdk version][sdk] if it relies on
   the previous behavior.
   
-  *These are the majority of changes and are not specially marked in this list.*
+  _These are the majority of changes and are not specially marked in this list._
 * **Language versioned**: The Dart SDK maintains backward compatibility for
   existing code, and the behavior change only takes effect (potentially breaking
   code that relies on the previous behavior) when you upgrade the
   [language version][] of your code.
   
-  *These are marked "**Language versioned**"*.
+  
+  _These are marked "**Language versioned**"_.
 * **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
   with a warning. Deprecations are then completely removed in a subsequent release,
   breaking any code that relies on the previous behavior.
   
-  *These are marked "**Deprecated**" and "**Removed**", respectively*.
+  _These are marked "**Deprecated**" and "**Removed**", respectively_.
 * **Experimental**: Part of the release but not yet treated as stable in the SDK,
   and can break from one version to another. Experimental changes do not
   always have a corresponding breaking change issue, but may have more detail in
-  the [changelog].
+  the [SDK changelog][changelog].
 
-  *These are marked "**Experimental**", possibly in conjunction with another change type*.
+  _These are marked "**Experimental**", possibly in conjunction with another change type_.
 
 If you have questions or concerns about any of these breaking changes, please 
 comment on the breaking change issue linked from the relevant entry.
