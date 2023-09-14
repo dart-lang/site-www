@@ -62,7 +62,6 @@ void doSomething() {
 
 Metadata can appear before a library, class, typedef, type parameter,
 constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive. You can
-retrieve metadata at runtime using reflection.
+declaration and before an import or export directive.
 
 [Extending a class]: /language/extend
