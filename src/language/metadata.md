@@ -16,8 +16,8 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Three annotations are available to all Dart code: 
-`@Deprecated`, `@deprecated`, and `@override`. 
+Four annotations are available to all Dart code: 
+[`@Deprecated`][], [`@deprecated`][], [`@override`][], and [`@pragma`][]. 
 For examples of using `@override`,
 see [Extending a class][].
 Here’s an example of using the `@Deprecated` annotation:
@@ -36,6 +36,10 @@ class Television {
   // ···
 }
 {% endprettify %}
+
+You can use `@deprecated` if you don't want to specify a message.
+However, we [recommend][dep-lint] always
+specifying a message with `@Deprecated`.
 
 You can define your own metadata annotations. Here’s an example of
 defining a `@Todo` annotation that takes two arguments:
@@ -64,4 +68,9 @@ Metadata can appear before a library, class, typedef, type parameter,
 constructor, factory, function, field, parameter, or variable
 declaration and before an import or export directive.
 
+[`@Deprecated`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Deprecated-class.html
+[`@deprecated`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/deprecated-constant.html
+[`@override`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/override-constant.html
+[`@pragma`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/pragma-class.html
+[dep-lint]: /tools/linter-rules/provide_deprecation_message
 [Extending a class]: /language/extend
