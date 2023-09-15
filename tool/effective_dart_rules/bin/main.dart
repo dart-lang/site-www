@@ -83,7 +83,6 @@ void write(IOSink out, Section section) {
 }
 
 class Rule {
-  final String name;
   final String html;
   final String fragment;
 
@@ -113,10 +112,10 @@ class Rule {
 
     html += '.';
 
-    return Rule._(name, html, fragment);
+    return Rule._(html, fragment);
   }
 
-  Rule._(this.name, this.html, this.fragment);
+  Rule._(this.html, this.fragment);
 }
 
 class Section {

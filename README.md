@@ -256,7 +256,7 @@ $ tool/compile.sh
 
 ### Dart SDK and Node PPA Checksum values
 
-Since both the Dart SDK and Node PPA `curl` remote files,
+Since the Dart SDK setup fetches remote files,
 it's important to verify checksum values.
 Both installs use `latest` and `lts` respectively,
 so these files may be periodically updated.
@@ -269,7 +269,7 @@ When this happens, run the following command:
 $ make fetch-sums
 ```
 
-This command will output the updated checksum values for both Node and Dart,
+This command will output the updated checksum values for Dart,
 and that output will be formatted similar
 or the same as what is currently in the Dockerfile.
 Copy this output and replace the relevant install code in the Dockerfile,

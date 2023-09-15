@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bookworm@sha256:9654f1d43acae3032456fa89381076d3b997ea35d53259cf78a7db65b2e2121e as base
+FROM ruby:3.2-slim-bookworm@sha256:b86f08332ea5f9b73c427018f28af83628c139567cc72823270cac6ab056c4dc as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -7,6 +7,7 @@ RUN apt update && apt install -yq --no-install-recommends \
       ca-certificates \
       curl \
       git \
+      gnupg \
       lsof \
       make \
       unzip \
@@ -33,10 +34,10 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="7ce5c1560b1d8ea5ee0e6d44f1c3e7b804ddc5377b38d72fe4d43009a6c67e84"; \
+        DART_SHA256="be679ccef3a0b28f19e296dd5b6374ac60dd0deb06d4d663da9905190489d48b"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="fd4fcc05f1d1c82fd618b83c7d877968460c5bd425774d89add438be12a20795"; \
+        DART_SHA256="395180693ccc758e4e830d3b13c4879e6e96b6869763a56e91721bf9d4228250"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
         DART_SHA256="bd0311f604def7e49215c6fbed823dc01284586f83963b6891cc6dee36da2488"; \
@@ -45,10 +46,10 @@ RUN set -eu; \
         DART_SHA256="02de2c59d14fe4fcbcc6da756457be6966cd399bee507b2980d0e3c76fa4a2e3"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="60489653d89572ad950f5810579cd44edd523267e19996226865fe22bc308b9d"; \
+        DART_SHA256="4b411a63f3b20dcb2fa8ad81d7ec0caf3fa19deb13b7ae5fbd66acce99cb992b"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="d8abd3c6d74e104be5c4ac0dd190b9fe68bf3c7b4acfd4d97967571f19bc347e"; \
+        DART_SHA256="df63b26de4699be1738ddec36fcb98b98ac880e2223d1137caf40a529e8c0799"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -78,21 +79,13 @@ CMD ["./tool/test.sh"]
 
 # ============== NODEJS INSTALL ==============
 FROM dart as node
-RUN set -eu; \
-    NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=a8f294c1720c8e91eb24cb76a3415888800fb766cada44dc88f0745602216a32; \
-    curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
-    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
-        rm "$NODE_PPA" && \
-        exit 1 \
-    ); \
-    sh "$NODE_PPA" && rm "$NODE_PPA"; \
-    apt-get update -q && apt-get install -yq --no-install-recommends \
-      nodejs \
-    && rm -rf /var/lib/apt/lists/*
-# Ensure latest NPM
-RUN npm install -g npm
+
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update -yq \
+    && apt-get install nodejs -yq \
+    && npm install -g npm # Ensure latest npm
 
 
 # ============== DEV/JEKYLL SETUP ==============

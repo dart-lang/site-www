@@ -1,25 +1,23 @@
-library sdk_builds.test;
-
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 import 'package:test/test.dart';
 
-late DartDownloads _dd;
+late DartDownloads _dartDownloads;
 
 void main() async {
   setUp(() {
-    _dd = DartDownloads();
+    _dartDownloads = DartDownloads();
   });
 
   tearDown(() {
-    _dd.close();
+    _dartDownloads.close();
   });
 
   test('fetch version', () async {
     const revision = '31822';
     const channel = 'stable';
 
-    final version = await _dd.fetchVersion(channel, revision);
+    final version = await _dartDownloads.fetchVersion(channel, revision);
 
     expect(version.version, Version.parse('1.1.1'));
   });
@@ -27,7 +25,7 @@ void main() async {
   test('fetch version paths', () async {
     const channel = 'stable';
 
-    final paths = await _dd.fetchVersionPaths(channel).toList();
+    final paths = await _dartDownloads.fetchVersionPaths(channel).toList();
 
     expect(paths, contains('channels/stable/release/29803/'));
     expect(paths, contains('channels/stable/release/latest/'));
@@ -35,7 +33,7 @@ void main() async {
   });
 
   test('fetchVersions', () async {
-    final versions = await _dd.fetchVersions('stable');
+    final versions = await _dartDownloads.fetchVersions('stable');
 
     expect(versions.length, greaterThanOrEqualTo(27));
   });
@@ -45,8 +43,8 @@ void main() async {
       const channel = 'dev';
       const revision = '1.11.0-dev.5.2';
 
-      final content =
-          await _dd.fetchVersion(channel, revision) as GitVersionInfo;
+      final content = await _dartDownloads.fetchVersion(channel, revision)
+          as GitVersionInfo;
 
       expect(content.ref, '23736d3630da614c655d0569e1ba5af2021b1c61');
       expect(content.version, Version.parse('1.11.0-dev.5.2'));
@@ -57,8 +55,8 @@ void main() async {
       const channel = 'stable';
       const revision = '44672';
 
-      final content =
-          await _dd.fetchVersion(channel, revision) as SvnVersionInfo;
+      final content = await _dartDownloads.fetchVersion(channel, revision)
+          as SvnVersionInfo;
 
       expect(content.revision, 44672);
       expect(content.version, Version.parse('1.9.1'));
@@ -67,7 +65,8 @@ void main() async {
 
     test('old revision with old date format', () async {
       // dev/release/30039 - 0.8.10.8_r30039
-      final content = await _dd.fetchVersion('dev', '30039') as SvnVersionInfo;
+      final content =
+          await _dartDownloads.fetchVersion('dev', '30039') as SvnVersionInfo;
 
       expect(content.revision, 30039);
       expect(content.version, Version.parse('0.8.10-rev.8.30039'));
@@ -79,7 +78,7 @@ void main() async {
     const channel = 'stable';
     const revision = '44672';
 
-    final content = await _dd.createDownloadLink(
+    final content = await _dartDownloads.createDownloadLink(
         channel, revision, 'api-docs/dart-api-docs.zip');
     expect(content.pathSegments, [
       'download',
