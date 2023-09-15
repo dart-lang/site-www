@@ -1,0 +1,108 @@
+@use '../core/variables' as *;
+@use '../core/colors';
+
+// Import from NPM library directly
+@forward '../../../node_modules/bootstrap-scss/bootstrap' with (
+  // Color config
+  $primary: $site-color-primary,
+  $body-color: $site-color-body,
+
+  // Font config
+  $font-family-sans-serif: $site-font-family-base,
+  $font-family-monospace: $site-font-family-monospace,
+  $font-weight-base: $font-size-base-weight,
+  $font-weight-bold: 500,
+  $headings-font-family: $site-font-family-alt,
+  $headings-font-weight: $font-size-base-weight,
+  $dt-font-weight: $font-size-base-weight,
+
+  $h1-font-size: 48px,
+  $h2-font-size: 24px,
+  $h3-font-size: 21px,
+  $h4-font-size: 18px,
+  $h5-font-size: 15px,
+  $h6-font-size: 15px,
+
+  // Layout config
+  $container-max-widths: (
+          sm: 540px,
+          md: 720px,
+          lg: 960px,
+          xl: 1140px,
+          xxl: 1330px
+  ),
+
+  $grid-breakpoints: (
+        0: 0,
+        xxs: 320px,
+        xs: 480px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1440px
+  ),
+
+  $spacers: (
+          1: ($site-spacer * 0.25),
+          2: ($site-spacer * 0.5),
+          3: ($site-spacer * 0.75),
+          4: $site-spacer,
+          5: ($site-spacer * 1.25),
+          6: ($site-spacer * 1.5),
+          7: ($site-spacer * 1.75),
+          8: ($site-spacer * 2),
+          9: ($site-spacer * 2.25),
+          10: ($site-spacer * 2.5),
+          11: ($site-spacer * 2.75),
+          12: ($site-spacer * 3),
+  ),
+
+  // Component config
+
+  $alert-padding-y: $site-spacer * 1.5,
+  $alert-padding-x: $site-spacer * 1.5,
+
+  $border-radius: 0,
+  $border-radius-lg: 0,
+  $border-radius-sm: 0,
+
+  // Breadcrumbs
+  $breadcrumb-divider: 'chevron_right',
+  $breadcrumb-item-padding: .25rem,
+  $breadcrumb-bg: none,
+  $breadcrumb-padding-x: 0,
+
+  // Card
+  $card-border-radius: 4px,
+  $card-border-width: 0,
+  $card-group-margin: 0.5rem,
+
+  $grid-gutter-width: 50px,
+
+  $nav-tabs-link-active-color: $site-color-body,
+  $nav-tabs-link-active-border-color: transparent transparent $site-color-primary,
+
+  $tooltip-bg: colors.$grey-800,
+
+  $enable-shadows: true,
+
+  // Code
+  $code-color: #247777,
+  $code-font-size: 100%,
+  $kbd-font-size: 0.75rem,
+
+  // Dropdown
+  $dropdown-divider-bg: #bbbbbb,
+  $dropdown-link-active-color: transparent,
+  $dropdown-link-active-bg: transparent,
+
+  $popover-font-size: $font-size-base,
+  $popover-border-color: rgba(0, 0, 0, 0),
+);
+
+@use '../../../node_modules/bootstrap-scss/bootstrap';
+
+@function bs-spacer($key: 3) {
+  @return map-get(bootstrap.$spacers, $key);
+}

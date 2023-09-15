@@ -111,9 +111,6 @@ angle brackets (`<...>`) just after the class name. For example:
 var nameSet = Set<String>.from(names);
 ```
 
-{% comment %}[TODO #2950: It isn't idiomatic to use a constructor for an empty Map.
-Change to a class that doesn't have literal support.]{% endcomment %}
-
 The following code creates a map that has integer keys and values of
 type View:
 

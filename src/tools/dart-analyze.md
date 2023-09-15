@@ -55,7 +55,7 @@ For information on command-line options, use the `--help` flag:
 $ dart analyze --help
 ```
 
-[static analysis]: /guides/language/analysis-options
+[static analysis]: /tools/analysis
 
 {% comment %}
 ```

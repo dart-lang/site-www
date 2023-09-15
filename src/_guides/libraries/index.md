@@ -30,7 +30,7 @@ The following table lists the Dart core libraries that work on all
 | [`dart:async`][dart-async], [`package:async`][package-async]<br>Support for asynchronous programming, with classes such as `Future` and `Stream`.<br>`package:async` provides additional utilities around the `Future` and `Stream` types. | |
 | [`dart:collection`][dart-collection], [`package:collection`][package-collection]<br>Classes and utilities that supplement the collection support in `dart:core`.<br>`package:collection` provides further collection implementations and functions for working on and with collections. | |
 | [`dart:convert`][dart-convert], [`package:convert`][package-convert]<br>Encoders and decoders for converting between different data representations, including JSON and UTF-8.<br>`package:convert` provides additional encoders and decoders. ||
-| [`dart:developer`][dart-developer]<br>Interaction with developer tools such as the debugger and inspector. | [Native JIT][jit] and [dartdevc][] only |
+| [`dart:developer`][dart-developer]<br>Interaction with developer tools such as the debugger and inspector. | [Native JIT][jit] and the [development JavaScript compiler][] only |
 | [`dart:math`][dart-math]<br>Mathematical constants and functions, plus a random number generator. | |
 | [`dart:typed_data`][dart-typed_data], [`package:typed_data`][package-typed_data]<br>Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types.<br>`package:typed_data` provides further classes and functions working on typed data. | |
 {:.table .table-striped}
@@ -107,6 +107,6 @@ Web platform libraries
 <!---
 Misc
 -->
-[dartdevc]: /tools/dartdevc
+[development JavaScript compiler]: /tools/webdev#serve
 [jit]: /overview#native-platform
 [JavaScript interoperability]: /web/js-interop

@@ -1,6 +1,7 @@
 ---
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
+show_breadcrumbs: true
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -9,8 +10,8 @@ or with the [`dart analyze`](/tools/dart-analyze) command.
 For information on how to enable and disable individual linter rules, see
 [individual rules sections][] of the [analyzer documentation][].
 
-[individual rules sections]: /guides/language/analysis-options#individual-rules
-[analyzer documentation]: /guides/language/analysis-options
+[individual rules sections]: /tools/analysis#individual-rules
+[analyzer documentation]: /tools/analysis
 
 This page lists all the linter rules,
 with details such as when you might want to use each rule,
@@ -20,11 +21,12 @@ how you might fix your code.
 {{site.alert.tip}}
   Linter rules (sometimes called _lints_) can have false positives,
   and they don’t all agree with each other.
-  For example, some rules are more appropriate for library packages,
+  For example, some rules are more appropriate for regular Dart packages,
   and others are designed for Flutter apps.
 {{site.alert.end}}
 
-## Predefined rule sets
+<a id="predefined-rule-sets"></a>
+## Sets
 
 To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
@@ -57,13 +59,16 @@ which the following packages provide:
 [flutter_lints]: {{site.pub-pkg}}/flutter_lints
 
 To learn how to use a specific rule set,
-see the documentation for [enabling and disabling linter rules][].
+visit the documentation for [enabling and disabling linter rules][].
 
-[enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+To find more predefined rule sets,
+check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
 
-## Rule types
+[enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
-Each rule is in one of the following groups:
+## Types
+
+Each rule belongs to one of the following groups:
 
 [Errors](#error-rules)
 : Possible errors or mistakes in your code.
@@ -74,23 +79,28 @@ Each rule is in one of the following groups:
 [Pub](#pub-rules)
 : Possible issues with [pub package setup](/guides/packages).
 
-## Maturity levels
+<a id="maturity-levels"></a>
+## Status
 
-Each rule also has a maturity level:
+Each rule has a status or maturity level:
 
-Stable
+**Stable**
 : These rules are safe to use and are verified as functional
   with the latest versions of the Dart language.
-  All rules are considered stable
-  unless they're marked as experimental or deprecated.
+  All rules are considered stable unless
+  they're marked as experimental, deprecated, or removed.
 
-Experimental
+**Experimental**
 : These rules are still under evaluation and might never be stabilized.
   Use these with caution and report any issues you come across.
 
-Deprecated
+**Deprecated**
 : These rules are no longer suggested for use
-  and might be removed in a future linter release.
+  and might be removed in a future Dart release.
+
+**Removed**
+: These rules have been already been removed in the
+  latest stable Dart release.
 
 ## Quick fixes
 
@@ -106,25 +116,35 @@ To learn more, see [Quick fixes for analysis issues][].
 
 [Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
 
-## Error rules
+## Rules
+
+The following is an index of all linter rules and 
+a short description of their functionality.
+To learn more about each rule, 
+click on its name.
+
+For an auto-generated list containing all linter rules
+in Dart `{{site.data.pkg-vers.SDK.vers}}`,
+check out [All linter rules](/tools/linter-rules/all).
+
+### Error rules
 
 These rules identify possible errors and other mistakes in your code.
 
 {% include linter-rules-section.md type="errors" %}
 
-## Style rules
+### Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
 {% include linter-rules-section.md type="style" %}
 
-## Pub rules
+### Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
 
 {% include linter-rules-section.md type="pub" %}
 
-[Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Dart style guide]: /effective-dart/style

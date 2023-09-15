@@ -46,12 +46,6 @@ For information on Dart versions 2.12 and later,
 which have support for [null safety](/null-safety), 
 check out the in-progress [Dart 3 specification](#dart-3).
 
-{{site.alert.info}}
-  Dart 2 changed the Dart language in many ways, some of which are not
-  backward-compatible with Dart 1.x.
-  For details, see the [Dart 2 page](/dart-2).
-{{site.alert.end}}
-
 ## Dart 1.x
 
 The formal Dart 1.x language specification is available from

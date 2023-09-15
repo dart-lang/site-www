@@ -467,6 +467,5 @@ either of those lists results in a runtime exception.
 [package:js]: {{site.pub-pkg}}/js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
-[dartdevc]: /tools/dartdevc
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev

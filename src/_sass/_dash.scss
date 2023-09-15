@@ -1,3 +1,6 @@
+@use 'core/variables' as *;
+@use 'core/bootstrap';
+
 // Homepage styles
 
 // Sizes
@@ -5,18 +8,6 @@ $dash-row-height: 640px;
 $dash-info-size: 512px;
 $dash-info-padding: 24px;
 $dash-max-width: 1330px;
-
-// Colors
-$dash-callout: #121a26;
-$dash-sub-grey: #8d9399;
-$dash-dark-grey: #82878c;
-$dash-off-white: #f8f9fa;
-$dash-dark-black: #4a4a4a;
-$dash-highlight: #1967d2;
-$dash-off-black: #12202f;
-$dark-darker-black: #0d1520;
-$dash-header-bg: #17212f;
-$dash-dartpad-border: #293542;
 
 .dash-align-right {
   display: block;
@@ -31,7 +22,7 @@ $dash-dartpad-border: #293542;
 }
 
 .dash-header-callout {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   background-color: $dash-callout;
   text-align: center;
   padding: 64px 0 64px 0 !important;
@@ -64,7 +55,7 @@ $dash-dartpad-border: #293542;
     font-size: 28px;
     color: white;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 17px;
       margin-left: 30px;
       margin-right: 30px;
@@ -76,7 +67,12 @@ $dash-dartpad-border: #293542;
     color: $dash-dark-grey;
     margin-top: 16px;
 
-    @include media-breakpoint-down(md) {
+    & svg {
+      width: 1em;
+      height: 1em;
+    }
+
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 14px;
       margin-left: 30px;
       margin-right: 30px;
@@ -84,6 +80,7 @@ $dash-dartpad-border: #293542;
 
     a {
       color: $dash-dark-grey;
+      vertical-align: bottom;
 
       &:hover, &:focus, &:active {
         color: $white-base;
@@ -111,7 +108,7 @@ $dash-dartpad-border: #293542;
 }
 
 .dash-dart-features {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
   padding-bottom: 80px !important;
   background-color: $dark-darker-black;
 
@@ -121,7 +118,7 @@ $dash-dartpad-border: #293542;
     text-align: center;
     width: 325px;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       width: 225px;
     }
   }
@@ -133,7 +130,7 @@ $dash-dartpad-border: #293542;
     margin-bottom: 20px;
     line-height: 33px;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap.media-breakpoint-down(md) {
       font-size: 22px;
     }
   }
@@ -173,7 +170,7 @@ $dash-dartpad-border: #293542;
       padding: $dash-info-padding;
       max-width: $dash-info-size;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         position: relative;
         left: 0;
         top: 0;
@@ -182,7 +179,7 @@ $dash-dartpad-border: #293542;
         padding: 20px;
       }
 
-      @include media-breakpoint-down(sm) {
+      @include bootstrap.media-breakpoint-down(sm) {
         width: 100%;
       }
     }
@@ -193,7 +190,7 @@ $dash-dartpad-border: #293542;
       border-radius: 50%;
       margin-bottom: 18px;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         margin-bottom: 10px;
       }
     }
@@ -204,13 +201,13 @@ $dash-dartpad-border: #293542;
       line-height: 1.2;
       color: $dash-dark-black;
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 24px;
       }
     }
 
     .content-desc {
-      font-family: Roboto, Arial, sans-serif;
+      font-family: $site-font-family-base;
       font-weight: lighter;
       font-size: 17px;
       line-height: 24px;
@@ -230,7 +227,7 @@ $dash-dartpad-border: #293542;
         }
       }
 
-      @include media-breakpoint-down(md) {
+      @include bootstrap.media-breakpoint-down(md) {
         font-size: 14px;
       }
 
@@ -303,7 +300,7 @@ $dash-dartpad-border: #293542;
   max-width: $dash-max-width;
   margin-bottom: -10px;
 
-  @include media-breakpoint-down(md) {
+  @include bootstrap.media-breakpoint-down(md) {
     padding-top: 30px;
     padding-bottom: 30px;
   }
@@ -351,6 +348,10 @@ $dash-dartpad-border: #293542;
 
   a {
     color: $site-color-card-link;
+
+    &:hover, &:focus, &:active {
+      color: darken($site-color-card-link, 20%);
+    }
   }
 
   #dartpad-host {
@@ -366,29 +367,12 @@ $dash-dartpad-border: #293542;
   }
 }
 
-.banner {
-  background-color: $dash_callout;
-
-  &__text {
-    color: white;
-
-    a {
-      color: $site-color-card-link;
-
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
-      }
-    }
-  }
-
-}
-
 #page-content {
   padding-bottom: 0 !important;
 }
 
 .dart-dash-details {
-  font-family: "Google Sans", "Roboto", sans-serif;
+  font-family: $site-font-family-alt;
 
   a {
     text-decoration: underline;

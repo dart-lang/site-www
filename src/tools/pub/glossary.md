@@ -12,11 +12,12 @@ the [pub tool][].
 
 ## Application package
 
-A package that is not intended to be used as a library. Application packages may
-have [dependencies][] on other packages, but are never depended on
-themselves. They are usually meant to be run directly, either on the command
-line or in a browser. The opposite of an application package is a
-[library package][].
+A package that contains a program or app, with a [main entrypoint][]. 
+Meant to be run directly, either on the command line or in a browser.
+
+Application packages may have [dependencies][] on other packages,
+but are never depended on themselves.
+Unlike regular [packages][], they are not intended to be shared.
 
 Application packages should check their [lockfiles][] into source
 control, so that everyone working on the application and every location the
@@ -24,8 +25,9 @@ application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
 specify `any` for their dependencies' [version constraints][].
 
+[main entrypoint]: #entrypoint
 [dependencies]: #dependency
-[library package]: #library-package
+[packages]: #package
 [lockfiles]: #lockfile
 [version constraints]: #version-constraint
 
@@ -126,8 +128,8 @@ it's the entrypoint package. Every other package it depends on will not be an
 entrypoint in that context.
 
 A package can be an entrypoint in some contexts and not in others. Say your
-app uses a library package A. When you run your app, A is not the entrypoint
-package. However, if you go over to A and execute its tests, in that
+app uses a package `A`. When you run your app, `A` is not the entrypoint
+package. However, if you go over to `A` and execute its tests, in that
 context, it *is* the entrypoint since your app isn't involved.
 
 ## Entrypoint directory
@@ -136,8 +138,10 @@ A directory inside your package that is allowed to contain
 [Dart entrypoints](#entrypoint).
 
 Pub has a list of these directories: `benchmark`, `bin`, `example`,
-`test`, `tool`, and `web`. Any subdirectories of those (except `bin`) may also
-contain entrypoints.
+`test`, `tool`, and `web` (and `lib`, for [Flutter apps][]).
+Any subdirectories of those (except `bin`) may also contain entrypoints.
+
+[Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
 
 ## Immediate dependency
 
@@ -145,34 +149,12 @@ A [dependency](#dependency) that your package directly uses itself. The
 dependencies you list in your pubspec are your package's immediate dependencies.
 All other dependencies are [transitive dependencies](#transitive-dependency).
 
-## Library package
+## Library
 
-A package that other packages can depend on. Library packages can have
-[dependencies](#dependency) on other packages *and* can be dependencies
-themselves. They can also include scripts to be run directly. The
-opposite of a library package is an [application package][].
+A library is a single compilation unit, made up of a single primary file and any
+optional number of [parts][]. Libraries have their own private scope.
 
-[application package]: #application-package
-[lockfile]: #lockfile
-[version constraints]: #version-constraint
-[immediate dependencies]: #immediate-dependency
-
-Don't check the [lockfile][] of a library package into source
-control, since libraries should support a range of dependency versions. The
-[version constraints][] of a library package's
-[immediate dependencies][] should be as wide as possible while still
-ensuring that the dependencies will be compatible with the versions that were
-tested against.
-
-Since [semantic versioning](https://semver.org/spec/v2.0.0-rc.1.html) requires
-that libraries increment their major version numbers for any backwards
-incompatible changes, library packages will usually require their dependencies'
-versions to be greater than or equal to the versions that were tested and less
-than the next major version. So if your library depended on the (fictional)
-`transmogrify` package and you tested it at version 1.2.1, your version
-constraint would be [`^1.2.1`][].
-
-[`^1.2.1`]: /tools/pub/dependencies#caret-syntax
+[parts]: /resources/glossary#part-file
 
 ## Lockfile
 
@@ -191,10 +173,52 @@ or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
 Pub includes a [content hash][] for each package
 to check against during future resolutions.
 
-If your package is an application package, you will typically check this into
-source control. For library packages, you usually won't.
+If your package is an [application package][], you will typically check this into
+source control. For regular packages, you usually won't.
 
 [content hash]: #content-hashes
+
+<a id="library-package"></a>
+
+## Package
+
+A collection of [libraries] under a directory,
+with a [pubspec.yaml] in the root of that directory. 
+
+Packages can have [dependencies](#dependency) on other packages
+*and* can be dependencies themselves.
+A package's `/lib` directory contains the
+[public libraries][] that other packages can import and use.
+They can also include scripts to be run directly.
+A package that is not intended to be depended on by other packages is an
+[application package][].
+Shared packages are [published][] to pub.dev,
+but you can also have non-published packages.
+
+Don't check the [lockfile][] of a package into source
+control, since libraries should support a range of dependency versions. The
+[version constraints][] of a package's
+[immediate dependencies][] should be as wide as possible while still
+ensuring that the dependencies will be compatible with the versions that were
+tested against.
+
+Since [semantic versioning](https://semver.org/spec/v2.0.0-rc.1.html) requires
+that libraries increment their major version numbers for any backwards
+incompatible changes, packages will usually require their dependencies'
+versions to be greater than or equal to the versions that were tested and less
+than the next major version. So if your library depended on the (fictional)
+`transmogrify` package and you tested it at version 1.2.1, your version
+constraint would be [`^1.2.1`][].
+
+[libraries]: #library
+[pubspec.yaml]: /tools/pub/pubspec
+[public libraries]: /tools/pub/package-layout#public-libraries
+[application package]: #application-package
+[published]: /tools/pub/publishing
+[lockfile]: #lockfile
+[version constraints]: #version-constraint
+[immediate dependencies]: #immediate-dependency
+[`^1.2.1`]: /tools/pub/dependencies#caret-syntax
 
 ## SDK constraint
 
@@ -276,10 +300,10 @@ While `any` is also allowed, for performance reasons we don't recommend it.
 For more information, see
 [Version constraints](/tools/pub/dependencies#version-constraints).
 
-[Library packages](#library-package) should always specify version constraints
-for all of their dependencies, but [application packages](#application-package)
-should usually allow any version of their dependencies, since they use the
-[lockfile](#lockfile) to manage their dependency versions.
+[Packages](#package) should always specify version constraints
+for all of their dependencies. [Application packages](#application-package),
+on the other hand, should usually allow any version of their dependencies,
+since they use the [lockfile](#lockfile) to manage their dependency versions.
 
 For more information, see
 [Pub Versioning Philosophy](/tools/pub/versioning).

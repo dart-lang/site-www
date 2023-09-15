@@ -6,7 +6,7 @@ description: Use dart pub add to add a dependency.
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```nocode
-$ dart pub add [dev:]<package>[:<constraint>] [[dev:]<package>[:<constraint>]... ] [options]
+$ dart pub add [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...] [options]
 ```
 
 This command adds the specified packages to the `pubspec.yaml` as dependencies,
@@ -23,43 +23,23 @@ $ dart pub add http
 ## Version constraint
 
 By default, `dart pub add` uses the
-latest stable version of the package from the [pub.dev site]({{site.pub}}).
-For example, if 0.13.3 is the latest stable version of the `http` package,
-then `dart pub add http` adds
-`http: ^0.13.3` under `dependencies` in the pubspec.
+latest stable version of the package from the [pub.dev site]({{site.pub}})
+that is compatible with your SDK constraints and dependencies.
+For example, if `0.13.3` is the latest stable version of the `http` package,
+then `dart pub add http` adds `http: ^0.13.3`
+under `dependencies` in your `pubspec.yaml`.
 
 You can also specify a constraint or constraint range:
 
 ```terminal
 $ dart pub add foo:2.0.0
 $ dart pub add foo:'^2.0.0'
-$ dart pub add foo:'>2.0.0 <3.0.1'
+$ dart pub add foo:'>=2.0.0 <3.0.1'
 ```
 
-If `dart pub add <package>:<constraint>` is an existing dependency,
-it will update the constraint.
-
-## Dependency override
-
-To specify a [dependency override][], add the `override:` prefix and
-include a [source descriptor](#source-descriptor).
-
-[dependency override]: /tools/pub/dependencies#dependency-overrides
-
-**For example:** To override all references to `package:foo`
-to use version `1.0.0` of the package,
-run the following command:
-
-```terminal
-$ dart pub add override:foo:1.0.0
-```
-
-This adds the override to your `pubspec.yaml` file:
-
-```yaml
-dependency_overrides:
-  foo: 1.0.0
-```
+If the specified package is an existing dependency in your `pubspec.yaml`,
+`dart pub add` updates the dependency's constraint
+to the one specified in the command.
 
 ## Dev dependency
 
@@ -80,20 +60,46 @@ _Previously the `-d, --dev` option_:
 $ dart pub add --dev foo
 ```
 
+## Dependency override
+
+To specify a [dependency override][], add the `override:` prefix and
+include a [version constraint](#version-constraint) or
+[source descriptor](#source-descriptor).
+
+[dependency override]: /tools/pub/dependencies#dependency-overrides
+
+**For example:** To override all references to `package:foo`
+to use version `1.0.0` of the package,
+run the following command:
+
+```terminal
+$ dart pub add override:foo:1.0.0
+```
+
+This adds the override to your `pubspec.yaml` file:
+
+```yaml
+dependency_overrides:
+  foo: 1.0.0
+```
+
 ## Source descriptor
 
 {{site.alert.version-note}}
-  YAML-formatted descriptor syntax was added in Dart 2.19.
-  The descriptor replaces arguments like `--path`, `--sdk`, `--git-<option>`, etc.
-  We still support these arguments, but the recommended method is now
-  YAML-descriptor only.
+  The YAML-formatted descriptor syntax was added in Dart 2.19.
+  The descriptor replaces arguments like
+  `--path`, `--sdk`, `--git-<option>`, etc.
+  Pub still supports these arguments, but
+  the recommended method is now the YAML-descriptor.
+  The descriptor and the replaced arguments can't be used together.
 {{site.alert.end}}
 
-The YAML descriptor syntax allows you to add multiple packages from different
-sources, and apply different options and constraints to each.
+The YAML descriptor syntax allows you to add 
+multiple packages from different sources, and 
+apply different options and constraints to each.
 
 ```nocode
-$ dart pub add [options] [dev:]<package>[:descriptor] [[dev:]<package>[:descriptor] ...]
+$ dart pub add [options] [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...]
 ```
 
 The syntax reflects how dependencies are written in `pubspec.yaml`.
@@ -101,9 +107,6 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 ```nocode
 '<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
 ```
-
-The `descriptor` syntax cannot be used in conjunction with any of the optional
-arguments it replaces. Their new, corresponding YAML sources are listed below.
 
 ### `git`
 
@@ -148,7 +151,7 @@ _Previously the `--git-path=<directory_path>` option_.
 
 ### `hosted`
 
-Adds a hosted dependency that depends on
+Adds a [hosted dependency][] that depends on
 the package server at the specified URL.
 
 ```terminal
@@ -157,9 +160,11 @@ $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
 
 _Previously the `--hosted-url=<package_server_url>` option_.
 
+[hosted dependency]: /tools/pub/dependencies#hosted-packages
+
 ### `path`
 
-Adds a [path dependency]() on a locally stored package.
+Adds a [path dependency][] on a locally stored package.
 
 ```terminal
 $ dart pub add 'foo:{"path":"../foo"}'

@@ -49,7 +49,7 @@ follow the [Customizing static analysis][] instructions.
 (Note that the IDE plugins for Dart and Flutter also
 provide this functionality.)
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analysis
 
 {{site.alert.secondary}}
   **Pro tip:** Dart provides [`dart fix`][],
@@ -2816,9 +2816,9 @@ class Parrot extends _Animal {
 ```
 
 For more information, check out
-[creating library packages][].
+[creating packages][].
 
-[creating library packages]: /guides/libraries/create-library-packages#organizing-a-library-package
+[creating packages]: /guides/libraries/create-packages#organizing-a-package
 
 ## Next steps
 

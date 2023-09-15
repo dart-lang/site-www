@@ -8,7 +8,7 @@ prevpage:
   title: Class modifiers
 nextpage:
   url: /language/modifier-reference
-  title: Reference
+  title: Class modifiers reference
 ---
 
 Dart 3.0 adds a few [new modifiers][class modifiers]
@@ -243,7 +243,7 @@ then the compiler knows the switch is exhaustive.
 
 ```dart
 // amigos.dart
-abstract class Amigo {}
+sealed class Amigo {}
 class Lucky extends Amigo {}
 class Dusty extends Amigo {}
 class Ned extends Amigo {}
@@ -280,7 +280,7 @@ But, unlike `base` and `final`, there is no *transitive* restriction:
 
 ```dart
 // amigo.dart
-abstract class Amigo {}
+sealed class Amigo {}
 class Lucky extends Amigo {}
 class Dusty extends Amigo {}
 class Ned extends Amigo {}

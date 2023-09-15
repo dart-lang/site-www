@@ -6,10 +6,10 @@ import 'package:sdk_builds/sdk_builds.dart';
 final _downloader = DartDownloads();
 
 Future<List<Version>> fetchSdkVersions(String channel) async {
-  var versionPaths = await _downloader.fetchVersionPaths(channel).toList();
-  var versions = <Version>[];
-  for (var versionPath in versionPaths) {
-    var basename = path.basename(versionPath);
+  final versionPaths = await _downloader.fetchVersionPaths(channel).toList();
+  final versions = <Version>[];
+  for (final versionPath in versionPaths) {
+    final basename = path.basename(versionPath);
     if (basename == 'latest') {
       continue;
     }
@@ -25,7 +25,7 @@ Future<List<Version>> fetchSdkVersions(String channel) async {
 bool isSvnRevision(String s) => int.tryParse(s) != null;
 
 String? svnRevisionForVersion(String svnVersion) {
-  for (var key in svnVersions.keys) {
+  for (final key in svnVersions.keys) {
     if (svnVersions[key] == svnVersion) {
       return key;
     }

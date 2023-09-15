@@ -1,13 +1,13 @@
 ---
 title: "Get started: Command-line and server apps"
 description: Get Dart, run and compile a small app.
-nextpage:
-  url: /tutorials/server/cmdline
-  title: Write command-line apps
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+nextpage:
+  url: /tutorials/server/cmdline
+  title: Write command-line apps
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.

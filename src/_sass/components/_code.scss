@@ -1,7 +1,12 @@
+@use '../core/colors' as *;
+@use '../core/variables' as *;
+@use '../core/bootstrap';
+@use '../vendor/prettify';
+
 @mixin pre-defaults {
   background-color: $site-color-codeblock-bg;
   font-size: 0.875rem; // 14px
-  font-weight: $font-weight-normal;
+  font-weight: bootstrap.$font-weight-normal;
   padding: 1.875rem; // 30px
 }
 
@@ -12,6 +17,14 @@ pre {
   &.prettyprint {
     @include pre-defaults;
     border: none;
+
+    .highlight-diagnostics & {
+      .highlight {
+        border-bottom: 2px $red-500 dashed;
+        background: inherit;
+        padding: 0;
+      }
+    }
   }
 
   .highlight {

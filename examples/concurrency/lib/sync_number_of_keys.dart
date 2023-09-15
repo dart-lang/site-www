@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+// #docregion
 const String filename = 'with_keys.json';
 
-// #docregion
 void main() {
   // Read some data.
   final fileData = _readFileSync();

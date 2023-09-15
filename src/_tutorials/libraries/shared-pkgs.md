@@ -86,19 +86,19 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: ^3.0.0
+  sdk: ^3.1.0
 
 # dependencies:
 #   path: ^1.8.0
 
 dev_dependencies:
   lints: ^2.1.0
-  test: ^1.24.2
+  test: ^1.24.6
 ```
 
 ## Name the package dependencies
 
-To use an external library package,
+To use an external package,
 you need to add the package to your
 app's list of dependencies
 in the pubspec.yaml file.

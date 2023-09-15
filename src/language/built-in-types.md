@@ -46,10 +46,6 @@ Some other types also have special roles in the Dart language:
 * `void`: Indicates that a value is never used.
   Often used as a return type.
 
-{% comment %}
-[TODO: move/add for-in coverage to language tour?]
-{% endcomment %}
-
 The `Object`, `Object?`, `Null`, and `Never` classes
 have special roles in the class hierarchy.
 Learn about these roles in [Understanding null safety][].
@@ -231,7 +227,7 @@ var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
 ```
 
-Another way to create a multi-line string: use a triple quote with
+To create a multi-line string, use a triple quote with
 either single or double quotation marks:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>

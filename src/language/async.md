@@ -3,8 +3,8 @@ title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 short-title: Async
 prevpage:
-  url: /language/class-modifiers-for-apis
-  title: Class modifiers for API maintainers
+  url: /language/modifier-reference
+  title: Class modifiers reference
 nextpage:
   url: /language/concurrency
   title: Concurrency
@@ -216,4 +216,4 @@ section of the library tour.
 
 [`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[unawaited_futures linter rule]: /tools/linter-rules#unawaited_futures
+[unawaited_futures linter rule]: /tools/linter-rules/unawaited_futures

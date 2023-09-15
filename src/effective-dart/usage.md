@@ -23,6 +23,8 @@ to cover `import` and `export` directives. The guidelines apply equally to both.
 
 ### DO use strings in `part of` directives
 
+{% include linter-rule-mention.md rule="use_string_in_part_of_directives" %}
+
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
 `part` to split part of a library out into another file, Dart requires the other
@@ -659,7 +661,7 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type
 
-{% include linter-rule-mention.md rule="prefer_iterable_wheretype" %}
+{% include linter-rule-mention.md rule="prefer_iterable_whereType" %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:

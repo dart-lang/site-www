@@ -189,8 +189,7 @@ enchilada/
     tortilla.dart
 ```
 
-Many packages are [*library
-packages*](/tools/pub/glossary#library-package): they
+Many [packages](/tools/pub/glossary#package)
 define Dart libraries that other packages can import and use.
 These public Dart library files go inside a directory called `lib`.
 
@@ -240,8 +239,8 @@ resolve. Instead, your entrypoints should go in the appropriate
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 {{site.alert.end}}
 
-For more information on library packages, see
-[Creating packages](/guides/libraries/create-library-packages).
+For more information on packages, see
+[Creating packages](/guides/libraries/create-packages).
 
 ### Public tools {#public-tools}
 
@@ -271,7 +270,7 @@ enchilada/
     guacamole.css
 ```
 
-While most library packages exist to let you reuse Dart code, you can also
+While most packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
 [Bootstrap](https://getbootstrap.com/) might include a number of CSS files
 for consumers of the package to use.
@@ -311,7 +310,7 @@ depends on the locations of the libraries:
  * Otherwise, [prefer relative imports][].
  
  [reaching inside or outside `lib/`]: /effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
- [_avoid_relative_lib_imports_]: /tools/linter-rules#avoid_relative_lib_imports
+ [_avoid_relative_lib_imports_]: /tools/linter-rules/avoid_relative_lib_imports
  [prefer relative imports]: /effective-dart/usage#prefer-relative-import-paths
 
 For example:
@@ -516,7 +515,7 @@ This helps speed-up future re-runs of the build steps.
   * You are using a subdirectory named after a package you own
     (`.dart_tool/<my_tool_package_name>/`)
   * Your files don't belong under source control, 
-    as `.dart_tools` is generally listed in `.gitignore`
+    as `.dart_tool/` is generally listed in `.gitignore`
 {{site.alert.end}}
 
 

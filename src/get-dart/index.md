@@ -57,19 +57,13 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 
 * **Supported versions:** Windows 10 and 11.
 * **Supported architectures:** x64, IA32, ARM64.<br>
-  Support for ARM64 is experimental,
-  and is available only in the dev channel.
+  Support for ARM64 is in preview, and is available only in the dev and beta channels.
 
 ### Linux
 
 * **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
 * **Supported architectures:** x64, IA32, ARM64, ARM, RISC-V (RV64GC).<br>
   Support for RISC-V is in preview, and is available only in the dev and beta channels.
-
-{{site.alert.note}}
-  The arm support requires glibc 2.23 or newer due to a
-  [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
-{{site.alert.end}}
 
 ### macOS
 
@@ -119,7 +113,6 @@ using [a package manager][] or [Dart Docker image][], or
 by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [Dart Docker image]: https://hub.docker.com/_/dart

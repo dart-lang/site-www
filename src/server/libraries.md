@@ -54,6 +54,8 @@ and [general-purpose packages][] such as `logging`:
 | [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
 | [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC][], a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
 | [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
+| [dart_frog]({{site.pub-pkg}}/dart_frog) | A fast, minimalistic backend framework for Dart built on top of Shelf. |
+| [serverpod]({{site.pub-pkg}}/serverpod) | A scalable app server that supports code generation, authentication, real-time communication, databases, and caching. |
 {:.table .table-striped .nowrap}
 
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages

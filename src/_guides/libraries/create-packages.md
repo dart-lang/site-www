@@ -1,13 +1,12 @@
 ---
 title: Creating packages
-description: Learn how to create library packages in Dart.
+description: Learn how to create packages in Dart.
 ---
 
 The Dart ecosystem uses [packages](/guides/packages)
 to share software such as libraries and tools.
-This page tells you how to create a package,
-with a focus on the most common kind of package,
-[_library_ packages](/tools/pub/glossary#library-package).
+This page tells you how to create a standard shared 
+[package](/tools/pub/glossary#package).
 
 
 ## Creating a new package
@@ -24,10 +23,9 @@ $ dart create -t package <PACKAGE_NAME>
 TODO: Add coverage of packages that contain tools.
 {% endcomment %}
 
-## What makes a library package
+## What makes a package
 
-The following diagram shows the layout of the simplest
-library package:
+The following diagram shows the simplest layout of a package:
 
 <img 
   src="/assets/img/libraries/simple-lib2.png" 
@@ -37,7 +35,7 @@ The minimal requirements for a library are:
 
 pubspec file
 : The `pubspec.yaml` file for a library is the same
-  as for an application package—there is no special
+  as for an [application package][]—there is no special
   designation to indicate that the package is a library.
 
 lib directory
@@ -50,9 +48,11 @@ lib directory
   To make APIs under lib/src public, you can export lib/src files
   from a file that's directly under lib.
 
-## Organizing a library package
+[application package]: /tools/pub/glossary#application-package
 
-Library packages are easiest to maintain, extend, and test
+## Organizing a package
+
+Packages are easiest to maintain, extend, and test
 when you create small, individual libraries, referred to as
 _mini libraries_.
 In most cases, each class should be in its own mini library, unless
@@ -76,11 +76,10 @@ you create separate libraries that rely on `dart:io` or `dart:html`.
 Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
-Let's look at the organization of a real-world library package: shelf. The
+Let's look at the organization of a real-world package: shelf. The
 [shelf](https://github.com/dart-lang/shelf)
 package provides an easy way to create web servers using Dart,
-and is laid out in a structure that is commonly used for Dart
-library packages:
+and is laid out in a structure that is commonly used for Dart packages:
 
 <img 
   src="/assets/img/libraries/shelf.png"
@@ -112,12 +111,14 @@ The shelf package also contains a mini library: shelf_io.
 This adapter handles HttpRequest objects from `dart:io`.
 
 {{site.alert.tip}}
-  For the best performance when developing with [dartdevc,](/tools/dartdevc)
+  For the best performance when developing with the
+  development JavaScript compiler through [`webdev serve`][],
   put [implementation files](/tools/pub/package-layout#implementation-files) 
   under `/lib/src`, instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 {{site.alert.end}}
 
+[`webdev serve`]: /tools/webdev#serve
 
 ## Importing library files
 
@@ -219,7 +220,7 @@ void main() {
 
 ## Providing additional files
 
-A well-designed library package is easy to test.
+A well-designed package is easy to test.
 We recommend that you write tests using the
 [test](https://github.com/dart-lang/test) package,
 placing the test code in the `test` directory at the
@@ -301,7 +302,7 @@ follow these steps:
 
 ## Resources
 
-Use the following resources to learn more about library packages:
+Use the following resources to learn more about packages:
 
 * [Libraries and imports](/language/libraries) covers
   using library files.
@@ -309,7 +310,7 @@ Use the following resources to learn more about library packages:
   [package layout conventions](/tools/pub/package-layout).
 * [What not to commit](private-files)
   covers what should not be checked into a source code repository.
-* The newer library packages under the
+* The newer packages under the
   [dart-lang](https://github.com/dart-lang) organization tend
   to show best practices. Consider studying these examples:
   [dart_style,](https://github.com/dart-lang/dart_style)

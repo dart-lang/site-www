@@ -87,8 +87,9 @@
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
-      children: 
+      children:
         - title: Overview & usage
+          match-page-url-exactly: true
           permalink: /language/class-modifiers
         - title: Class modifiers for API maintainers
           permalink: /language/class-modifiers-for-apis
@@ -152,7 +153,7 @@
     - title: Commonly used packages
       permalink: /guides/libraries/useful-libraries
     - title: Creating packages
-      permalink: /guides/libraries/create-library-packages
+      permalink: /guides/libraries/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
@@ -314,7 +315,7 @@
   - title: Static analysis
     children:
       - title: Customizing static analysis
-        permalink: /guides/language/analysis-options
+        permalink: /tools/analysis
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
       - title: Diagnostic messages
@@ -346,6 +347,8 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: Swift to Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - title: Glossary
+      permalink: /resources/glossary
     - title: Books
       permalink: /resources/books
     - title: Videos
