@@ -334,6 +334,8 @@
   children:
     - title: FAQ
       permalink: /resources/faq
+    - title: Breaking changes
+      permalink: /resources/breaking-changes
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification
