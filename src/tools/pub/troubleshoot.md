@@ -1,5 +1,4 @@
 ---
-permalink: /tools/pub/troubleshoot
 title: Troubleshooting pub
 description: Common gotchas you might run into when using pub.
 ---
