@@ -51,7 +51,7 @@ with the leaves of the dependency graph being migrated first.
 For example, if package C depends on package B, which depends on package A,
 then A should be migrated to null safety first, then B, then C.
 
-![Illustration of C/B/A sentence](/null-safety/null-safety-migration-order.png){:width="454px"}<br>
+![Illustration of C/B/A sentence](/assets/img/null-safety/null-safety-migration-order.png){:width="454px"}<br>
 
 Although you [_can_ migrate][Unsound null safety]
 before your dependencies support null safety,
@@ -116,7 +116,7 @@ null-safe releases, if they exist.
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
 
-![Output of dart pub outdated](/null-safety/pub-outdated-output.png)
+![Output of dart pub outdated](/assets/img/null-safety/pub-outdated-output.png)
 
 The output shows that all of the package's dependencies
 have resolvable prereleases that support null safety.
@@ -203,7 +203,7 @@ Visit that URL in a Chrome browser
 to see an interactive UI
 where you can guide the migration process:
 
-![Screenshot of migration tool](/null-safety/migration-tool.png)
+![Screenshot of migration tool](/assets/img/null-safety/migration-tool.png)
 
 For every variable and type annotation,
 you can see what nullability the tool infers.
