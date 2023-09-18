@@ -18,7 +18,7 @@ const sources = [
   _SrcAndTipPaths(
     '$repoBase/examples/misc/bin/dcat/dcat.dart',
     '$repoBase/examples/misc/bin/dcat/dcat_tooltips.html',
-    '$repoBase/src/_tutorials/server/_dcat-example.html',
+    '$repoBase/src/tutorials/server/_dcat-example.html',
   ),
 ];
 

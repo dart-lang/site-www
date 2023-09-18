@@ -44,5 +44,4 @@ which are fundamental to most Dart programs.
 
 ## More tutorials
 
-See the [Flutter tutorials.](https://flutter.dev/tutorials)
-<!-- * [Dart Academy](https://dart.academy) -->
+Check out the [Flutter codelabs and tutorials]({{site.flutter-docs}}/codelabs).

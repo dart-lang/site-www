@@ -197,7 +197,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-lg-3">
-    <img class="scale-img-max" src="/tutorials/images/libraries-folder.png"
+    <img class="scale-img-max" src="/assets/img/tutorials/libraries/libraries-folder.png"
          alt="Dart libraries directory"/>
     </div>
     <div class="col-lg-7">
@@ -209,7 +209,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-lg-3">
-    <img class="scale-img-max" src="/tutorials/images/housekeeping-files.png"
+    <img class="scale-img-max" src="/assets/img/tutorials/libraries/housekeeping-files.png"
          alt="Housekeeping files"/>
     </div>
     <div class="col-lg-7">
@@ -230,7 +230,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-lg-3">
-    <img class="scale-img-max" src="/tutorials/images/other-folders.png"
+    <img class="scale-img-max" src="/assets/img/tutorials/libraries/other-folders.png"
          alt="Document, scripts, tests, and other resources"/>
     </div>
     <div class="col-lg-7">
