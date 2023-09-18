@@ -547,10 +547,10 @@ keep these facts and concepts in mind:
 
 ## Additional resources
 
-More code samples are in the the
+More code samples are in the
 [library tour](/guides/libraries/library-tour)
-and the [Dart API reference,]({{site.dart-api}}).
-This site’s code follows the conventions in the
+and the [Dart API reference]({{site.dart-api}}).
+This site's code follows the conventions in the
 [Dart style guide](/effective-dart/style).
 
 [Dart language specification]: /guides/language/spec
