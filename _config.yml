@@ -46,9 +46,6 @@ collections:
   articles:
     output: true
     permalink: /articles/:path
-  tutorials:
-    output: true
-    permalink: /tutorials/:path
   guides:
     output: true
     permalink: /guides/:path
