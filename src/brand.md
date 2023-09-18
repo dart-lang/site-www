@@ -1,5 +1,7 @@
 ---
 title: Dart brand guidelines
+description: >-
+  The guidelines governing the usage of the Dart trademarks and assets.
 ---
 
 The "Dart" name and logo are trademarks owned by Google.

@@ -1,6 +1,6 @@
 ---
 title: Class modifiers
-description: >
+description: >-
   Modifier keywords for class declarations to control external library access.
 prevpage:
   url: /language/callable-objects

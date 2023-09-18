@@ -1,6 +1,6 @@
 ---
 title: Customizing static analysis
-description: >
+description: >-
   Use an analysis options file and code comments to customize static analysis.
 ---
 

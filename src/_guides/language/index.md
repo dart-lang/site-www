@@ -2,6 +2,7 @@
 title: "Overview: The Dart language"
 short-title: Dart language
 toc: false
+description: Discover resources for learning the Dart programming language.
 ---
 
 These two resources are popular with both beginning Dart developers and experts.

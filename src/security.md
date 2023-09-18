@@ -1,5 +1,7 @@
 ---
 title: Security
+description: >-
+  An overview of the Dart team's philosophy and processes for security.
 ---
 
 The Dart team takes the security of Dart and the applications
