@@ -1,5 +1,4 @@
 ---
-permalink: /community
 title: Community and support
 description: Communities, mailing lists, and bug databases for the Dart project.
 group: https://groups.google.com/a/dartlang.org
