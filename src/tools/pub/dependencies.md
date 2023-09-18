@@ -4,9 +4,9 @@ description: Add other packages to your app. Specify package locations, version 
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].
-A _dependency_ is another package that your package needs in order to work.
+A _dependency_ is another package that your package needs to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only _immediate dependencies_—the
+You list only _immediate dependencies_: the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
@@ -21,9 +21,9 @@ and the _range of versions_ of that package that you allow.
 You can also specify the [_source_][].
 The source tells pub how to locate the package.
 
-[_source_]: {{site.url}}/tools/pub/glossary#source
+[_source_]: /tools/pub/glossary#source
 
-To specify a dependency:
+As an example, you specify a dependency in the following format:
 
 ```yaml
 dependencies:
@@ -78,7 +78,7 @@ you can use `hosted` to specify its URL.
 The following YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source:
 
-[own package repository]: {{site.url}}/tools/pub/custom-package-repositories
+[own package repository]: /tools/pub/custom-package-repositories
 
 {% prettify yaml tag=pre+code %}
 environment:
@@ -237,7 +237,7 @@ If it's an unknown identifier, the dependency is always considered unsatisfied.
 
 Let's say that your Package A depends upon Package B.
 How can you communicate to other developers which version of Package B
-has been verified with a given version of Package A?
+remains compatible with a given version of Package A?
 
 To let developers know version compatibility, specify version constraints.
 You want to allow the widest range of versions possible
@@ -269,7 +269,7 @@ dependencies:
 
 To learn more about pub's version system, see the [package versioning page][].
 
-[package versioning page]: {{site.url}}/tools/pub/versioning#semantic-versions
+[package versioning page]: /tools/pub/versioning#semantic-versions
 
 ### Traditional syntax
 
@@ -287,8 +287,9 @@ of the following values:
 {:.table}
 
 You can specify any combination of version values as their ranges intersect.
-For example, `'>=1.2.3 <2.0.0'` allows any version from `1.2.3` to
-`2.0.0` excluding `2.0.0` itself.
+For example, if you set the version value as `'>=1.2.3 <2.0.0'`,
+this combines the both limitations so the dependency can be any version
+from `1.2.3` to `2.0.0` excluding `2.0.0` itself.
 
 {{site.alert.warning}}
   If you include the greater than (**>**) character in the version constraint,
@@ -462,9 +463,9 @@ this flag only resolves new dependencies if:
 * `pubspec.lock` is not missing
 * The packages' [content hashes][] match
 
-[`--enforce-lockfile`]: {{site.url}}/tools/pub/cmd/pub-get#--enforce-lockfile
-[lockfile]: {{site.url}}/tools/pub/glossary#lockfile
-[content hashes]: {{site.url}}/tools/pub/glossary#content-hashes
+[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+[lockfile]: /tools/pub/glossary#lockfile
+[content hashes]: /tools/pub/glossary#content-hashes
 ---
 
 <aside id="fn:semver" class="footnote" markdown="1">
@@ -478,8 +479,8 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pub package manager]: /guides/packages
-[`dart pub get`]: {{site.url}}/tools/pub/cmd/pub-get
-[`dart pub outdated`]: {{site.url}}/tools/pub/cmd/pub-outdated
-[`dart pub upgrade`]: {{site.url}}/tools/pub/cmd/pub-upgrade
+[`dart pub get`]: /tools/pub/cmd/pub-get
+[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
+[`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [pubsite]: {{site.pub}}
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
