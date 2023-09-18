@@ -547,7 +547,7 @@ keep these facts and concepts in mind:
 
 ## Additional resources
 
-More code samples are in the
+You can find more documentation and code samples in the
 [library tour](/guides/libraries/library-tour)
 and the [Dart API reference]({{site.dart-api}}).
 This site's code follows the conventions in the
