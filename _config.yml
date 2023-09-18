@@ -38,6 +38,7 @@ pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages
 dartpad: https://dartpad.dev
 news: https://news.dartlang.org
+announce: https://groups.google.com/a/dartlang.org/g/announce
 
 show_banner: true
 
