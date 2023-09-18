@@ -174,7 +174,7 @@ using the element's `remove()` function
 is shorter and more concise than
 using functions from the `List` class.
 
-<img class="scale-img-max" src="/tutorials/web/images/remove-element.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/remove-element.png"
      alt="Use element.remove() to remove an element from the DOM">
 
 In the app,
@@ -186,7 +186,7 @@ When the user clicks that new element,
 its event handler causes the element to remove itself from the DOM
 with `remove()`.
 
-<img class="scale-img-max" src="/tutorials/web/images/remove-element-code.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/remove-element-code.png"
      alt="Registering an event handler to delete an item">
 
 When the element removes itself from the DOM,
@@ -198,7 +198,7 @@ and the item disappears from the to do list.
 When the user clicks the **Delete All** button,
 all elements are removed from the list.
 
-<img class="scale-img-max" src="/tutorials/web/images/remove-all-elements.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/remove-all-elements.png"
      alt="Use element.children.clear() to remove all of an element's children">
 
 In this case, using the `List` class's `clear()` function
@@ -219,7 +219,7 @@ that implements the **Delete All** button.
    the handler removes all of the child elements from the to do list.
    Here is all the Dart code related to the **Delete All** button.
 
-   <img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
+   <img class="scale-img-max" src="/assets/img/tutorials/web/remove-all-code.png"
    alt="Remove all child elements from an Element">
 
 ## About function expressions and =>
@@ -235,7 +235,7 @@ For more details,
 see the language tour's coverage of
 [functions](/language/functions).
 
-<img class="scale-img-max" src="/tutorials/web/images/event-listener-exp.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/event-listener-exp.png"
      alt="A one-line function definition">
 
 It is equivalent to writing this:

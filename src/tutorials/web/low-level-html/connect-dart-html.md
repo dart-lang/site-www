@@ -95,7 +95,7 @@ and displays the document in a window.
 The following diagram shows a simple HTML file and
 the resulting web browser page in Chrome.
 
-<img class="scale-img-max" src="/tutorials/web/images/simple-html.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/simple-html.png"
      alt="A simple HTML file and its resulting web page">
 
 HTML uses tags to describe the document.
@@ -117,7 +117,7 @@ For example, the tree has page elements,
 text nodes, and attribute nodes.
 Here is the DOM tree for the simple HTML file above.
 
-<img class="scale-img-max" src="/tutorials/web/images/simple-dom-tree.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/simple-dom-tree.png"
      alt="A Dart dynamically changing the DOM">
 
 Notice that some tags, such as the `<p>` paragraph tag,
@@ -136,7 +136,7 @@ by adding, deleting, and modifying the nodes in the DOM tree.
 When the DOM is changed,
 the browser immediately re-renders the window.
 
-<img class="scale-img-max" src="/tutorials/web/images/dynamic-dart.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/dynamic-dart.png"
      alt="A Dart program can dynamically change the DOM">
 
 The diagram shows a small Dart program that makes
@@ -337,7 +337,7 @@ the node containing the string
 "RipVanWinkle paragraph."
 is a text node.
 
-<img class="scale-img-max" src="/tutorials/web/images/paragraph-dom.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/paragraph-dom.png"
      alt="DOM tree for a paragraph element">
 
 More complex text,
@@ -387,7 +387,7 @@ In DartPad, the only visible connection between
 the Dart code and the HTML code
 is the `RipVanWinkle` ID.
 
-<img class="scale-img-max" src="/tutorials/web/images/dart-html-connect.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/dart-html-connect.png"
      alt="The RipVanWinkle ID is used by both Dart and HTML">
 
 To run your app outside DartPad,
@@ -496,7 +496,7 @@ Let's look at the CSS code for the mini app.
 The CSS file for the mini app has one CSS rule in it.
 A CSS rule has two main parts: a selector and a set of declarations.
 
-<img class="scale-img-max" src="/tutorials/web/images/css-rule-explained.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/css-rule-explained.png"
      alt="The parts of a CSS rule">
 
 In the mini app, the selector `#RipVanWinkle` is an ID selector,
@@ -518,7 +518,7 @@ for all matching elements.
 The style sheet is used to set the appearance
 of the matching element(s) on the web page.
 
-<img class="scale-img-max" src="/tutorials/web/images/css-property-value.png"
+<img class="scale-img-max" src="/assets/img/tutorials/web/css-property-value.png"
      alt="A declaration specifies an attribute and its value">
 
 The CSS rule for the `RipVanWinkle` paragraph
