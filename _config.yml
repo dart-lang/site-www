@@ -1,14 +1,15 @@
 # Site settings
 title: Dart
-description: Dart is a client-optimized language for developing fast apps on any platform.
+description: >-
+  Dart is a client-optimized language for developing fast apps on any platform.
 url: https://dart.dev
-dev-url: https://dartlang-org-dev.firebaseapp.com
 repo:
   this: https://github.com/dart-lang/site-www
-  shared: &repo-shared https://github.com/dart-lang/site-shared
+  shared: https://github.com/dart-lang/site-shared
 branch: main
 port: 4000
 source: src
+
 strict_front_matter: true
 liquid:
   error_mode: strict
@@ -16,7 +17,6 @@ liquid:
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 sass:
   sass_dir: _sass
-  cache: false
   style: compressed
   load_paths:
     - ../node_modules/bootstrap-scss
@@ -25,10 +25,9 @@ plugins:
 toc:
   min_level: 2
   max_level: 3
-  no_toc_section_class: no_toc_section # ignore if in no_toc_section element
+  no_toc_section_class: no_toc_section
 
 
-dart-site: ''
 flutter: https://flutter.dev
 flutter-docs: https://docs.flutter.dev
 dart-api: https://api.dart.dev
@@ -60,31 +59,6 @@ defaults:
   values:
     layout: default
     toc: true
-
-custom:
-  downloads:
-    dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
-    dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release
-    dartarchive-stable-url-prefix: https://storage.googleapis.com/dart-archive/channels/stable/release
-    binaries:
-      - os: windows
-        name: Windows
-        ext: zip
-        editor-ext: zip
-      - os: macos
-        name: Mac
-        ext: zip
-        editor-ext: zip
-      - os: linux
-        name: Linux
-        ext: zip
-        editor-ext: zip
-
-
-# `symlinked-sources` can refer to individual files or directories
-# under `src` that are symlinked to somewhere outside `src`, or it can
-# refer to the root folder of the symlinked content (like `site-shared/src`):
-# symlinked-sources: [site-shared/src]
 
 # Increment this global og:image URL version number (used as a query parameter)
 # when you update any og:image file. (Also increment the corresponding number
