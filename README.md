@@ -238,7 +238,7 @@ Files that require DartPad HTML to be manually updated
 include instructions at the top that specify running:
 
 ```terminal
-$ tool/create_code_with_tooltips.dart
+$ dart run tool/dart_tools/bin/create_code_with_tooltips.dart
 ```
 
 Follow the instructions in those files to refresh the appropriate code.
