@@ -30,6 +30,7 @@
       { "source": "/\\)", "destination": "/", "type": 301 },
       { "source": "/angular{,/**}", "destination": "https://github.com/angulardart", "type": 301 },
       { "source": "/api", "destination": "https://api.dart.dev", "type": 301 },
+      { "source": "/articles", "destination": "https://medium.com/dartlang", "type": 301 },
       { "source": "/articles/api-naming-guide{,/**}", "destination": "/effective-dart/design", "type": 301 },
       { "source": "/articles/archive/dart-2", "destination": "/guides/language/evolution#dart-20", "type": 301 },
       { "source": "/articles/archive/event-loop", "destination": "https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a", "type": 301 },
