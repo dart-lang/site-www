@@ -45,9 +45,6 @@ collections:
   articles:
     output: true
     permalink: /articles/:path
-  guides:
-    output: true
-    permalink: /guides/:path
 
 defaults:
 - scope:
