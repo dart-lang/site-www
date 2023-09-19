@@ -107,7 +107,7 @@ To learn more, check out [Built-in types][] in the [Dart Language Tour][].
 
 All non-`Null` types in Dart are subtypes of Object.
 All values are also objects.
-Dart doesn't use “primitive types” like JavaScript.
+Dart doesn't use "primitive types" like JavaScript.
 By contrast, Dart normalizes or _canonicalizes_ number, boolean
 and `null` values.
 This means only one `int` value with the numerical value `1` exists.
@@ -1589,8 +1589,8 @@ dictionaries immutable.
   be modified, use the `const` keyword:<br>
   `const fruits = <String>{'apple', 'orange', 'pear'};`
 * Assign the `Set` to a `final` field, meaning that
-  the `Set` itself doesn’t have to be a compile-time constant.
-  This ensures that the field can’t be overridden with
+  the `Set` itself doesn't have to be a compile-time constant.
+  This ensures that the field can't be overridden with
   another `Set`, but it still allows the size or the contents
   of the `Set` to be modified:<br>
   `final fruits = <String>{'apple', 'orange', 'pear'};`
@@ -1742,7 +1742,7 @@ Future<String> strFuture = Future<String>.value(str);
 #### Async/Await
 
 If you're familiar with promises in JavaScript,
-you’re likely also familiar with the `async`/`await` syntax.
+you're likely also familiar with the `async`/`await` syntax.
 This syntax is identical in Dart: functions are marked `async`,
 and `async` functions always return a `Future`.
 If the function returns a `String` and is marked `async`,
@@ -1782,7 +1782,7 @@ stringFuture.then((String str) {
 });
 ```
 
-Obtain a future’s value using the `await` keyword.
+Obtain a future's value using the `await` keyword.
 As in JavaScript, this removes the need to call `then`
 on the `Future` to obtain its value,
 and it allows you to write asynchronous code in a
@@ -1808,7 +1808,7 @@ To learn more about `Future`s and the
 
 ### Streams
 
-Another tool in Dart’s async toolbox is `Stream`s.
+Another tool in Dart's async toolbox is `Stream`s.
 While JavaScript has its own concept of streams,
 Dart's are more akin to `Observable`s,
 as found in the commonly used `rxjs` library.
@@ -1971,7 +1971,7 @@ classes are a standard feature of the language.
 This section covers defining and using classes in Dart
 and how they differ from JavaScript.
 
-### “this” context
+### "this" context
 
 The `this` keyword in Dart is more straightforward
 than in JavaScript. In Dart, you can't bind functions
@@ -2230,7 +2230,7 @@ animal.makeNoise(); // Meow
 
 ### Classes as interfaces
 
-Like JavaScript, Dart doesn’t have a
+Like JavaScript, Dart doesn't have a
 separate definition for interfaces. However,
 unlike JavaScript, all class definitions double
 as an interface; you can implement a class as
@@ -2624,7 +2624,7 @@ In the preceding example, the compiler does not know to assign
 
 ## Generics
 
-While JavaScript doesn’t offer generics,
+While JavaScript doesn't offer generics,
 Dart does to improve type safety and reduce code duplication.
 
 ### Generic methods
@@ -2633,7 +2633,7 @@ You can apply generics to methods.
 To define a generic type parameter, place it between angle brackets `< >`
 after the method name.
 You can then use this type within the method
-as the return type or within the method’s parameters:
+as the return type or within the method's parameters:
 
 ```dart
 Map<Object?, Object?> _cache = {};
@@ -2701,8 +2701,8 @@ This helps when Dart cannot infer the type or infer the type correctly.
 
 For example, the `List` class has a generic definition:
 `class List<E>`. The type parameter `E` refers to the type of
-the list’s contents. Normally, this type is automatically inferred,
-which is used in some `List` class’s member types.
+the list's contents. Normally, this type is automatically inferred,
+which is used in some `List` class's member types.
 (For example, its first getter returns a value of type `E`.)
 When defining a `List` literal,
 you can explicitly define the generic type as follows:

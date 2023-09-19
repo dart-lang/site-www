@@ -105,7 +105,7 @@ Coding tutorials are sometimes referred to as _codelabs._
 </div>
 </div>
 
-This guide doesn’t provide general technical writing information,
+This guide doesn't provide general technical writing information,
 which you can find in the following resources:
 
 * [Google Developer Documentation Style Guide:][gddsg]
@@ -116,7 +116,7 @@ which you can find in the following resources:
 * [Other editorial resources][]
 
 The guidance provided in this page is based on
-Google’s internal research and
+Google's internal research and
 related academic research about instructional design.
 This document will evolve as we learn more about what works.
 
@@ -127,8 +127,8 @@ This document will evolve as we learn more about what works.
 DartPad enhances a traditional tutorial through its ability to
 support [guided discovery learning,][guided discovery learning]
 a recognized learning approach that calls for a balance between
-the student’s freedom of exploration and
-the teacher’s scaffolding of the learning process.
+the student's freedom of exploration and
+the teacher's scaffolding of the learning process.
 
 Past research ([Mayer, Richard E., 2004][]) suggested that
 guided discovery learning was more effective than
@@ -166,7 +166,7 @@ engage learners in actively writing code.
 #### **Give just-in-time and just-enough help, and feedback**
 
 Offer precise, contextualized, and immediate feedback on
-learners’ progress without taking away learning opportunities.
+learners' progress without taking away learning opportunities.
 
 </div>
 <div class="col-md-3" markdown="1">
@@ -178,7 +178,7 @@ learners’ progress without taking away learning opportunities.
 
 #### **Facilitate reflection**
 
-Encourage meta-cognitive learning, the learners’ ability to
+Encourage meta-cognitive learning, the learners' ability to
 predict the outcomes of their learning and monitor their understanding.
 
 </div>
@@ -291,7 +291,7 @@ This is useful to evaluate whether the [transfer of learning][] happened.
 
 
 
-What’s the difference between exercise and quiz?
+What's the difference between exercise and quiz?
 There are two main differences:
 
 1. **Exercises provide more scaffolds.**
@@ -310,8 +310,8 @@ There are two main differences:
   and requires a real understanding of how to complete a task,
   instead of just copying and pasting code snippets.
   Until now, we might not have explicitly claimed "this is a quiz" because
-  we didn’t know how users would perceive the word _quiz,_
-  and we didn’t want to add too much pressure.
+  we didn't know how users would perceive the word _quiz,_
+  and we didn't want to add too much pressure.
 
 
 ---
@@ -322,7 +322,7 @@ So far you've learned about the guiding principles and
 ways of using DartPad for creating interactive tutorials.
 But how do you apply these principles when you're
 developing a real-world tutorial?
-We’ll explain that through a detailed case study.
+We'll explain that through a detailed case study.
 In the case study we used DartPad in the instructional design of
 a tutorial titled _[Asynchronous programming: futures, async, await][],_
 or _the Dart Futures codelab_ for short.
@@ -450,8 +450,8 @@ there are a few things you need to pay attention to.
 
 Learners look for clear direction on what to expect next.
 When an exercise is first presented to the learner,
-provide a brief description of the exercise’s workflow.
-In this case, it’s important to point out that
+provide a brief description of the exercise's workflow.
+In this case, it's important to point out that
 the goal is to modify the snippet, to make the unit test pass.
 
 For example, the following exercise starts with an introduction:
@@ -459,7 +459,7 @@ _The following exercise is a failing unit test that
 contains partially completed code snippets.
 Your task is to complete the exercise by writing code to make the tests pass._
 In addition to explaining what the exercise is about,
-the author also clearly communicates that learners don’t need to
+the author also clearly communicates that learners don't need to
 implement the hidden code that was provided, such as `main()` and
 two asynchronous functions, `getRole()` and `getLoginAmount()`.
 
@@ -480,8 +480,8 @@ a clear, visual distinction between demos and exercises help
 users quickly recognize the expected actions.
 When we used the same UIs for both demos and exercises,
 one of our study participants said,
-“I wasn't sure whether I should just code something or
-I'm supposed to just run it to see it.”
+"I wasn't sure whether I should just code something or
+I'm supposed to just run it to see it."
 
 In the published Futures codelab,
 all embedded DartPads are labeled with clear headings,
@@ -507,18 +507,18 @@ Interactive tutorials provide hands-on practice so that
 learners can accumulate knowledge as they tackle
 more and more sophisticated problems.
 However, learners can get frustrated if the tutorial
-doesn’t prepare them for bigger challenges.
+doesn't prepare them for bigger challenges.
 We learned four lessons from developing the Futures codelab.
 
 First, including demos and exercises for each concept before the final quiz
 can provide a gradual progression that novices can follow.
 An earlier draft of this codelab had a demo for handling errors,
-but didn’t have a corresponding exercise to
+but didn't have a corresponding exercise to
 practice the try-catch concept before the final quiz.
 One of our study participants who tried that version said,
-“When you have to do something for the first time during the test,
+"When you have to do something for the first time during the test,
 it doesn't feel good.
-Because I'm not confident that I'll get this part right.” 
+Because I'm not confident that I'll get this part right." 
 
 Second, exercises need to provide necessary scaffolds.
 When an exercise has multiple tasks,
@@ -544,10 +544,10 @@ they check the code examples less frequently.
 In the Futures codelab,
 all code examples and exercises are put on the same page.
 One of our study participants said,
-“I liked how I could be typing here but then also
-refer back to the examples to see where I should put stuff.”
+"I liked how I could be typing here but then also
+refer back to the examples to see where I should put stuff."
 
-Last, demos and exercises (or quizzes) shouldn’t be too similar,
+Last, demos and exercises (or quizzes) shouldn't be too similar,
 to avoid feeling redundant.
 Providing almost identical examples and exercises may confuse learners.
 Ultimately, they just copy and paste the code
@@ -555,9 +555,9 @@ instead of practicing on their own.
 In our initial prototype, the demos and the first exercise used
 a similar context and function names, `getUserOrder()` and `reportChange()`.
 One of our study participants said,
-“This exercise is slightly odd that they’re looking for
+"This exercise is slightly odd that they're looking for
 basically the exact same code as the example.
-I’m not sure what they’re asking me to do.”
+I'm not sure what they're asking me to do."
 We then improved this by changing the context of exercise to
 access control instead of ordering coffee.
 
@@ -578,9 +578,9 @@ and how to handle errors.
 Even though this section is not explicitly labeled as a quiz,
 learners may still consider it as a final assessment.
 As one of our study participants said,
-“Whenever you do like a tutorial and it's the final part,
+"Whenever you do like a tutorial and it's the final part,
 it's usually to me that means it's like a test of
-every single thing that you've written out and combining them.“
+every single thing that you've written out and combining them."
 
 <div class="col-md-9" markdown="1">
 <img 
@@ -596,7 +596,7 @@ every single thing that you've written out and combining them.“
 
 The problem in a quiz is usually a bit harder than
 the problem in an exercise and less guidance is provided.
-Compared to the previous “Exercise: Practice using async and await,”
+Compared to the previous "Exercise: Practice using async and await,"
 the partially completed code in the starting point for this quiz is minimized.
 Also, this quiz has no **Hint** button.
 
@@ -618,14 +618,14 @@ lower the learning curves, are easy to use, and are more engaging.
 If you write tutorials for Dart or Flutter,
 we encourage you to consider using DartPad to enhance your tutorial.
 
-“*Exercises are an excellent learning tool!!! Thank you!*”
+"*Exercises are an excellent learning tool!!! Thank you!*"
 
-“*I learn coding concepts the best when I have to
-think through the entire process versus just being handed the solution.*”
+"*I learn coding concepts the best when I have to
+think through the entire process versus just being handed the solution.*"
 
-“*I like the live coding parts are free form.
+"*I like the live coding parts are free form.
 As long as you get the return correct,
-being able to write how you write it is nice.*”
+being able to write how you write it is nice.*"
 
 [DartPad]: {{site.dartpad}}
 [new dp issue]: https://github.com/dart-lang/dart-pad/issues/new/choose

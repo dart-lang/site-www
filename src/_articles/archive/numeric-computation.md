@@ -30,7 +30,7 @@ Just following a few simple rules can give you 50-100% speed improvements.
 
 Follow the guidelines in this article
 to get the most performance from the Dart VM in numerical applications.
-You’ll learn about the four different number representations,
+You'll learn about the four different number representations,
 how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
@@ -153,7 +153,7 @@ b[2] = 34;
 
 The list `b` is an object list,
 meaning it can store any object—for example, a String object or null.
-This means that each entry in a List is as wide as the CPU’s pointer type.
+This means that each entry in a List is as wide as the CPU's pointer type.
 
 #### Typed lists
 
@@ -182,7 +182,7 @@ b[2] = 34;
 In both the object list and typed list examples,
 the lists named `a` are holding the same values.
 Same for the lists named `b`.
-What’s different is how the values are stored in memory
+What's different is how the values are stored in memory
 and how they are accessed.
 More on this later.
 
@@ -208,7 +208,7 @@ The first representation, smi,
 is the same size as a pointer on your platform, minus 1 bit.
 On a 32-bit machine, a smi holds a 31-bit signed integer.
 On a 64-bit machine, a smi holds a 63-bit signed integer.
-A smi doesn’t require a memory allocation to be created
+A smi doesn't require a memory allocation to be created
 and is stored directly in a field.
 The VM can do this by storing twice the numeric value,
 guaranteeing the low bit being 0.
@@ -257,7 +257,7 @@ Now consider this Dart code:
 entity.x = entity.x * entity.scale;
 ```
 
-It’s converted into the VM instructions shown in the following figure.
+It's converted into the VM instructions shown in the following figure.
 Each VM instruction can return a value
 shown as v1, v2, and so on.
 
@@ -314,7 +314,7 @@ a = (b << c) & 0x3FFFFFFF;
 ```
 
 The VM knows that the result can be stored in a smi,
-and it generates code that doesn’t check whether
+and it generates code that doesn't check whether
 a mint is needed to store the result.
 The constant 0x3FFFFFFF is the maximum positive smi on 32-bit architectures.
 0x3FFFFFFFFFFFFFFF is the equivalent constant on 64-bit architectures.
@@ -382,7 +382,7 @@ and better CPU cache performance:
 * Typed lists can be much more dense.
   For example, if you know you need only 8 bits of precision
   you can use an Int8List,
-  using much less memory and making better use of your CPU’s cache.
+  using much less memory and making better use of your CPU's cache.
 
 In general and specifically because of the above caveats,
 it is always a good idea to benchmark 
@@ -411,7 +411,7 @@ Thus, bigints are significantly more expensive than smis or mints.
 
 **Performance tip:**
 Avoid bigint whenever possible.
-The VM doesn’t optimize operations on bigint instances.
+The VM doesn't optimize operations on bigint instances.
 
 
 ### Doubles
@@ -522,7 +522,7 @@ Each entry in the array always holds the value directly.
 Typed lists can be much denser,
 providing better memory and CPU cache usage.
 Typed lists are also faster to process at garbage collection time
-because they don’t have to be scanned for object pointers.
+because they don't have to be scanned for object pointers.
 
 ![Illustration of a typed list's memory, containing the numbers 4, 1.0, and 2.0 (and no pointers)](images/10.png)
 

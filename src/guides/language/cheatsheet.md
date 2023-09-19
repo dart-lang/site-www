@@ -12,10 +12,10 @@ For an interactive guide to these features and more, see the
 
 ## Using literals
 
-### `‘Substitution ${val}’`
+### `'Substitution ${val}'`
 
 Puts the value of `val` into a string literal.
-Equivalent: `‘Substitution’ + val`
+Equivalent: `'Substitution' + val`
 
 ### `<type>[ ]`
 
@@ -109,7 +109,7 @@ factory Point(int x, int y) => ...;
 ```
 
 Use `factory` when implementing a constructor that
-doesn’t always create a new instance.
+doesn't always create a new instance.
 
 
 ### Named constructor
