@@ -345,7 +345,7 @@ as illustrated by the following screenshot,
 where the stable version is listed as
 `1.6.0` and the preview version is listed as `2.0.0`.
 
-![Illustration of a preview version](preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}<br>
 
 When Dart `3.0.0` stable is released,
 pub.dev updates the package listing to display
