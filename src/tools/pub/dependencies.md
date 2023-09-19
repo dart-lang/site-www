@@ -409,7 +409,7 @@ are ignored by all users of your package.
 
 ## Best practices
 
-It’s important to actively manage your dependencies and
+It's important to actively manage your dependencies and
 ensure that your packages use the freshest versions possible.
 If any dependency is stale,
 then you might have not only a stale version of that package,

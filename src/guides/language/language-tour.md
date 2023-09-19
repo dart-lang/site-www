@@ -274,7 +274,7 @@ This content has moved to [Constructors](/language/constructors#initializing-for
 
 This content has moved to [Constructors](/language/constructors#default-constructors).
 
-#### Constructors aren’t inherited
+#### Constructors aren't inherited
 
 This content has moved to [Constructors](/language/constructors#constructors-arent-inherited).
 

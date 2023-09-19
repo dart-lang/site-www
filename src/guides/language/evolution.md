@@ -225,7 +225,7 @@ _Released 3 March 2021_
 
 Dart 2.12 added support for **[sound null safety][]**.
 When you opt into null safety, types in your code are non-nullable by default,
-meaning that variables can’t contain null unless you say they can.
+meaning that variables can't contain null unless you say they can.
 With null safety, your runtime null-dereference errors
 turn into edit-time analysis errors.
 
@@ -256,7 +256,7 @@ _Released 11 December 2019_
 
 Dart 2.7 added support for **[extension methods][]**,
 enabling you to add functionality to any type
-—-even types you don’t control—-
+—-even types you don't control—-
 with the brevity and auto-complete experience of regular method calls.
 
 The following example extends the `String` class from

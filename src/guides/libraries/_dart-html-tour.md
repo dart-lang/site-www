@@ -6,7 +6,7 @@ Other common uses of dart:html are manipulating styles (*CSS*), getting
 data using HTTP requests, and exchanging data using
 [WebSockets](#sending-and-receiving-real-time-data-with-websockets).
 HTML5 (and dart:html) has many
-additional APIs that this section doesn’t cover. Only web apps can use
+additional APIs that this section doesn't cover. Only web apps can use
 dart:html, not command-line apps.
 
 {{site.alert.note}}
@@ -103,8 +103,8 @@ Consider this example of specifying an anchor element in HTML:
 
 This `<a>` tag specifies an element with an `href` attribute and a text
 node (accessible via a `text` property) that contains the string
-“link text”. To change the URL that the link goes to, you can use
-AnchorElement’s `href` property:
+"link text". To change the URL that the link goes to, you can use
+AnchorElement's `href` property:
 
 <?code-excerpt "html/test/html_test.dart (href)" plaster="none"?>
 ```dart
@@ -114,7 +114,7 @@ anchor.href = 'https://dart.dev';
 
 Often you need to set properties on multiple elements. For example, the
 following code sets the `hidden` property of all elements that have a
-class of “mac”, “win”, or “linux”. Setting the `hidden` property to true
+class of "mac", "win", or "linux". Setting the `hidden` property to true
 has the same effect as adding `display: none` to the CSS.
 
 <?code-excerpt "html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
@@ -148,12 +148,12 @@ for (final os in osList) {
 }
 ```
 
-When the right property isn’t available or convenient, you can use
-Element’s `attributes` property. This property is a
+When the right property isn't available or convenient, you can use
+Element's `attributes` property. This property is a
 `Map<String, String>`, where the keys are attribute names. For a list of
 attribute names and their meanings, see the [MDN Attributes
-page.](https://developer.mozilla.org/docs/Web/HTML/Attributes) Here’s an
-example of setting an attribute’s value:
+page.](https://developer.mozilla.org/docs/Web/HTML/Attributes) Here's an
+example of setting an attribute's value:
 
 <?code-excerpt "html/lib/html.dart (attributes)"?>
 ```dart
@@ -163,7 +163,7 @@ elem.attributes['someAttribute'] = 'someValue';
 #### Creating elements
 
 You can add to existing HTML pages by creating new elements and
-attaching them to the DOM. Here’s an example of creating a paragraph
+attaching them to the DOM. Here's an example of creating a paragraph
 (\<p\>) element:
 
 <?code-excerpt "html/lib/html.dart (creating-elements)"?>
@@ -185,7 +185,7 @@ var elem2 = Element.html(
 Note that `elem2` is a `ParagraphElement` in the preceding example.
 
 Attach the newly created element to the document by assigning a parent
-to the element. You can add an element to any existing element’s
+to the element. You can add an element to any existing element's
 children. In the following example, `body` is an element, and its child
 elements are accessible (as a `List<Element>`) from the `children` property.
 
@@ -241,7 +241,7 @@ var elem = querySelector('#message')!;
 elem.classes.add('warning');
 ```
 
-It’s often very efficient to find an element by ID. You can dynamically
+It's often very efficient to find an element by ID. You can dynamically
 set an element ID with the `id` property:
 
 <?code-excerpt "html/lib/html.dart (set-id)"?>
@@ -279,14 +279,14 @@ selections, add an event listener. You can add an event listener to any
 element on the page. Event dispatch and propagation is a complicated
 subject; [research the
 details](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
-if you’re new to web programming.
+if you're new to web programming.
 
 Add an event handler using
 <code><em>element</em>.on<em>Event</em>.listen(<em>function</em>)</code>,
 where <code><em>Event</em></code> is the event
 name and <code><em>function</em></code> is the event handler.
 
-For example, here’s how you can handle clicks on a button:
+For example, here's how you can handle clicks on a button:
 
 <?code-excerpt "html/lib/html.dart (onClick)"?>
 ```dart
@@ -357,7 +357,7 @@ try {
 
 If you need access to the HttpRequest, not just the text data it
 retrieves, you can use the `request()` static method instead of
-`getString()`. Here’s an example of reading XML data:
+`getString()`. Here's an example of reading XML data:
 
 <?code-excerpt "html/test/html_test.dart (request)" replace="/Future<\w+\W/void/g; /await.*;/[!$&!]/g"?>
 ```dart
@@ -482,12 +482,12 @@ ws.onMessage.listen((MessageEvent e) {
 ```
 
 The message event handler receives a [MessageEvent][] object.
-This object’s `data` field has the data from the server.
+This object's `data` field has the data from the server.
 
 #### Handling WebSocket events
 
 Your app can handle the following WebSocket events: open, close, error,
-and (as shown earlier) message. Here’s an example of a method that
+and (as shown earlier) message. Here's an example of a method that
 creates a WebSocket object and registers handlers for open, close,
 error, and message events:
 
