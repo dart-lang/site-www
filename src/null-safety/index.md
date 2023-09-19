@@ -63,8 +63,8 @@ Dart supports null safety using the following three core design principles:
    can be null, it's considered non-nullable. This default was chosen
    after research found that non-null was by far the most common choice in APIs.
 
-* **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
-  If the type system determines that something isn’t null, then that thing can _never_ be
+* **Fully sound**. Dart's null safety is sound, which enables compiler optimizations.
+  If the type system determines that something isn't null, then that thing can _never_ be
   null. Once you migrate your whole project
   and its dependencies to null safety, 
   you reap the full benefits of soundness—not only 

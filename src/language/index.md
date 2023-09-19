@@ -492,7 +492,7 @@ keep these facts and concepts in mind:
     is inferred to be of type `int`.
 
 -   If you enable [null safety][ns],
-    variables can’t contain `null` unless you say they can.
+    variables can't contain `null` unless you say they can.
     You can make a variable nullable by
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
@@ -521,8 +521,8 @@ keep these facts and concepts in mind:
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as *fields* or *properties*.
 
--   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
-    and `private`. If an identifier starts with an underscore (`_`), it’s
+-   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
+    and `private`. If an identifier starts with an underscore (`_`), it's
     private to its library. For details, see
     [Libraries and imports][].
 
@@ -539,7 +539,7 @@ keep these facts and concepts in mind:
 
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
-    they don’t prevent your program from executing. Errors can be either
+    they don't prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception][] being raised while the code executes.

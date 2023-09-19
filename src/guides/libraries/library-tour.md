@@ -6,8 +6,8 @@ short-title: Library tour
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This page shows you how to use the major features in Dart’s core libraries.
-It’s just an overview, and by no means comprehensive.
+This page shows you how to use the major features in Dart's core libraries.
+It's just an overview, and by no means comprehensive.
 Whenever you need more details about a class,
 consult the [Dart API reference.][Dart API]
 
@@ -251,8 +251,8 @@ assert('  '.isNotEmpty);
 #### Replacing part of a string
 
 Strings are immutable objects, which means you can create them but you
-can’t change them. If you look closely at the [String API reference,][String]
-you’ll notice that
+can't change them. If you look closely at the [String API reference,][String]
+you'll notice that
 none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
 original String:
@@ -269,7 +269,7 @@ assert(greeting != greetingTemplate);
 #### Building a string
 
 To programmatically generate a string, you can use StringBuffer. A
-StringBuffer doesn’t generate a new String object until `toString()` is
+StringBuffer doesn't generate a new String object until `toString()` is
 called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
@@ -452,7 +452,7 @@ Refer to the [List API reference][List] for a full list of methods.
 #### Sets
 
 A set in Dart is an unordered collection of unique items. Because a set
-is unordered, you can’t get a set’s items by index (position).
+is unordered, you can't get a set's items by index (position).
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
 ```dart
@@ -611,7 +611,7 @@ Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
 {{site.alert.note}}
-  Although Map doesn’t implement Iterable, you can get Iterables from it using
+  Although Map doesn't implement Iterable, you can get Iterables from it using
   the Map `keys` and `values` properties.
 {{site.alert.end}}
 
@@ -659,8 +659,8 @@ loudTeas.forEach(print);
 ```
 
 {{site.alert.note}}
-  The object returned by `map()` is an Iterable that’s *lazily evaluated*: your
-  function isn’t called until you ask for an item from the returned object.
+  The object returned by `map()` is an Iterable that's *lazily evaluated*: your
+  function isn't called until you ask for an item from the returned object.
 {{site.alert.end}}
 
 To force your function to be called immediately on each item, use
@@ -671,8 +671,8 @@ To force your function to be called immediately on each item, use
 var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
 ```
 
-Use Iterable’s `where()` method to get all the items that match a
-condition. Use Iterable’s `any()` and `every()` methods to check whether
+Use Iterable's `where()` method to get all the items that match a
+condition. Use Iterable's `any()` and `every()` methods to check whether
 some or all items match a condition.
 {% comment %}
 PENDING: Change example as suggested by floitsch to have (maybe)
@@ -739,7 +739,7 @@ Notice how only the space between `some` and `message` was encoded.
 
 #### Encoding and decoding URI components
 
-To encode and decode all of a string’s characters that have special
+To encode and decode all of a string's characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
@@ -843,7 +843,7 @@ var sameTimeLastYear = now.copyWith(year: now.year - 1);
   `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
 {{site.alert.end}}
 The `millisecondsSinceEpoch` property of a date returns the number of
-milliseconds since the “Unix epoch”—January 1, 1970, UTC:
+milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
 ```dart
@@ -923,7 +923,7 @@ Each object in Dart automatically provides an integer hash code, and
 thus can be used as a key in a map. However, you can override the
 `hashCode` getter to generate a custom hash code. If you do, you might
 also want to override the `==` operator. Objects that are equal (via
-`==`) must have identical hash codes. A hash code doesn’t have to be
+`==`) must have identical hash codes. A hash code doesn't have to be
 unique, but it should be well distributed.
 
 {{site.alert.tip}}
@@ -942,9 +942,9 @@ unique, but it should be well distributed.
 [`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
-Note: There’s disagreement over whether to include identical() in the ==
+Note: There's disagreement over whether to include identical() in the ==
 implementation. It might improve speed, at least when you need to
-compare many fields. They don’t do identical() automatically because, by
+compare many fields. They don't do identical() automatically because, by
 convention, NaN != NaN.
 {% endcomment %}
 
@@ -1023,7 +1023,7 @@ void main() {
 
 The Dart core library defines many common exceptions and errors.
 Exceptions are considered conditions that you can plan ahead for and
-catch. Errors are conditions that you don’t expect or plan for.
+catch. Errors are conditions that you don't expect or plan for.
 
 A couple of the most common errors are:
 
@@ -1786,7 +1786,7 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 ## Summary
 
 This page introduced you to the most commonly used functionality in
-Dart’s built-in libraries. It didn’t cover all the built-in
+Dart's built-in libraries. It didn't cover all the built-in
 libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
 as well as platform-specific libraries like the

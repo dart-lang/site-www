@@ -1,4 +1,4 @@
-Once you’re ready to move beyond DartPad and develop real apps,
+Once you're ready to move beyond DartPad and develop real apps,
 you need an SDK.
 You can either download the Dart SDK directly
 (as described below)

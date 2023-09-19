@@ -964,7 +964,7 @@ Use `map()` to create a String with the values of `user.name` and `user.age`.
 
 ## Exercise: Putting it all together
 
-It’s time to practice what you learned, in one final exercise.
+It's time to practice what you learned, in one final exercise.
 
 This exercise provides the class `EmailAddress`,
 which has a constructor that takes a string.

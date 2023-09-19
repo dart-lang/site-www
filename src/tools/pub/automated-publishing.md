@@ -119,7 +119,7 @@ jobs:
 ```
 
 Make sure to match the pattern in `on.push.tags` with the _tag pattern_
-specified on pub.dev. Otherwise, the GitHub Action workflow won’t work.
+specified on pub.dev. Otherwise, the GitHub Action workflow won't work.
 If publishing multiple packages from the same repository, 
 use a per-package _tag pattern_ like `my_package_name-v{{version}}`
 and create a separate workflow file for each package.

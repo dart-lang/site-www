@@ -1294,7 +1294,7 @@ all within a single chain using the cascade operator:
 
 ```dart
 Animal animal = Animal()
-  ..name = ‘Bob'
+  ..name = 'Bob'
   ..age = 5
   ..feed()
   ..walk();
@@ -1561,7 +1561,7 @@ retrieve a value from a `Map` using the `key` operator:
 
 ```dart
 final gifts = {'first': 'partridge'};
-final gift = gifts['first']; // ‘partridge'
+final gift = gifts['first']; // 'partridge'
 ```
 
 Use the `containsKey` method to check whether a
