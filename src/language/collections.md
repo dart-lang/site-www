@@ -51,7 +51,7 @@ var list = [
 
 Lists use zero-based indexing, where 0 is the index of the first value
 and `list.length - 1` is the index of the last value. 
-You can get a list’s length using the `.length` property
+You can get a list's length using the `.length` property
 and access a list's values using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
@@ -220,7 +220,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn’t in a map, you get `null` in return:
+If you look for a key that isn't in a map, you get `null` in return:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart

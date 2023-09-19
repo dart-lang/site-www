@@ -12,7 +12,7 @@ nextpage:
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 If you look at the API documentation for the basic array type,
-[`List`][], you’ll see that the
+[`List`][], you'll see that the
 type is actually `List<E>`. The \<...\> notation marks List as a
 *generic* (or *parameterized*) type—a type that has formal type
 parameters. [By convention][], most type variables have single-letter names,
@@ -27,9 +27,9 @@ than just allowing your code to run:
 * You can use generics to reduce code duplication.
 
 If you intend for a list to contain only strings, you can
-declare it as `List<String>` (read that as “list of string”). That way
+declare it as `List<String>` (read that as "list of string"). That way
 you, your fellow programmers, and your tools can detect that assigning a non-string to
-the list is probably a mistake. Here’s an example:
+the list is probably a mistake. Here's an example:
 
 {:.fails-sa}
 ```dart
@@ -77,14 +77,14 @@ abstract class Cache<T> {
 }
 ```
 
-In this code, T is the stand-in type. It’s a placeholder that you can
+In this code, T is the stand-in type. It's a placeholder that you can
 think of as a type that a developer will define later.
 
 
 ## Using collection literals
 
 List, set, and map literals can be parameterized. Parameterized literals are
-just like the literals you’ve already seen, except that you add
+just like the literals you've already seen, except that you add
 <code>&lt;<em>type</em>></code> (for lists and sets) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
 before the opening bracket. Here is an example of using typed literals:
@@ -136,7 +136,7 @@ print(names is List<String>); // true
 {{site.alert.note}}
   In contrast, generics in Java use *erasure*, which means that generic
   type parameters are removed at runtime. In Java, you can test whether
-  an object is a List, but you can’t test whether it’s a `List<String>`.
+  an object is a List, but you can't test whether it's a `List<String>`.
 {{site.alert.end}}
 
 

@@ -307,7 +307,7 @@ but shouldn't be used for several reasons:
 * Because it's not evidently `null` related, 
   it can easily be mistaken for the non-nullable case,
   where the equality operator is redundant and can be removed.
-  That’s only true when the boolean expression on the left
+  That's only true when the boolean expression on the left
   has no chance of producing null, but not when it can.
 
 * The boolean logic is confusing. If `nullableBool` is null, 
@@ -319,7 +319,7 @@ The logic is much clearer too;
 the result of the expression being `null` is the same as the boolean literal.
 
 Using a null-aware operator such as `??` on a variable inside a condition
-doesn’t promote the variable to a non-nullable type. 
+doesn't promote the variable to a non-nullable type. 
 If you want the variable to be promoted inside the body of the `if` statement,
 it's better to use an explicit `!= null` check instead of `??`. 
 

@@ -1,6 +1,6 @@
 ---
-title: What’s new
-description: A list of what’s new on dart.dev and related sites.
+title: What's new
+description: A list of what's new on dart.dev and related sites.
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -619,7 +619,7 @@ we made the following changes to this site:
 We published the following articles on the Dart blog:
 
 * [Experimenting with Dart and Wasm][blog-7-27-21]
-* [How Dart’s null safety helped me augment my projects][blog-6-23-21]
+* [How Dart's null safety helped me augment my projects][blog-6-23-21]
 * [Implementing structs by value in Dart FFI][blog-6/8-21]
 
 [blog-7-27-21]: https://medium.com/dartlang/experimenting-with-dart-and-wasm-ef7f1c065577
@@ -655,7 +655,7 @@ we made the following changes to this site:
     links to helpful documentation and samples.
   * The [command-line tutorial][] has been completely updated.
 * Published some other new pages:
-  * [Null safety codelab][] teaches you about Dart’s null-safe type system,
+  * [Null safety codelab][] teaches you about Dart's null-safe type system,
     which was introduced in Dart 2.12.
   * [Numbers in Dart][] has
     details about differences between native and web number implementations.
@@ -741,7 +741,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
   and [`dart format`][].
 * Created a page documenting the quality and support of [Dart team packages][].
 * Replaced the Platforms page with a new [Overview page][].
-* Created this page ("What’s new").
+* Created this page ("What's new").
 
 We also switched from Travis CI to GitHub Actions, and we made multiple CSS changes to improve site legibility.
 
@@ -777,7 +777,7 @@ We published the following articles on the Dart blog:
   generate faster, smaller code.
 * [Why nullable types?][blog-12-7-20]
   expanded on a discussion on the /r/dart_lang subreddit,
-  answering the question “Why not get rid of null completely?”
+  answering the question "Why not get rid of null completely?"
 * [Announcing Dart null safety beta][blog-11-19-20]
   invited developers to start planning their migration to null safety.
 

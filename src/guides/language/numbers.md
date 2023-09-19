@@ -60,7 +60,7 @@ The following table shows how Dart numbers are usually implemented:
     </tr>
     <tr>
       <td><a href="https://en.wikipedia.org/wiki/Two%27s_complement">
-        64-bit signed two’s complement</a>
+        64-bit signed two's complement</a>
       </td>
       <td>✅</td>
       <td></td>
@@ -270,7 +270,7 @@ the identity expressions are usually different.
 ### Types and type checking
 
 On the web, the underlying `int` type is like a subtype of `double`:
-it’s a double-precision value without a fractional part.
+it's a double-precision value without a fractional part.
 In fact, a type check on the web of the form `x is int`
 returns true if `x` is a number (`double`) with
 a zero-valued fractional part.

@@ -119,7 +119,7 @@ Often, a transforming method is all you need.
 However, if you need even more control over the transformation,
 you can specify a
 [StreamTransformer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)
-with `Stream`’s `transform()` method.
+with `Stream`'s `transform()` method.
 The platform libraries provide stream transformers for many common tasks.
 For example, the following code uses the `utf8.decoder` and `LineSplitter`
 transformers provided by the dart:convert library.
