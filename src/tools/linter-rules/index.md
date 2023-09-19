@@ -20,7 +20,7 @@ how you might fix your code.
 
 {{site.alert.tip}}
   Linter rules (sometimes called _lints_) can have false positives,
-  and they don’t all agree with each other.
+  and they don't all agree with each other.
   For example, some rules are more appropriate for regular Dart packages,
   and others are designed for Flutter apps.
 {{site.alert.end}}
@@ -41,7 +41,7 @@ which the following packages provide:
   Or, better yet, use the `recommended` rule set, 
   a superset of `core` that identifies additional issues
   and enforces style and format. 
-  If you’re writing Flutter code, 
+  If you're writing Flutter code, 
   use the rule set in the [`flutter_lints`](#flutter_lints) package,
   which builds on `lints`.
 

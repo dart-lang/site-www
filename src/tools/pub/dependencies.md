@@ -4,9 +4,9 @@ description: Add other packages to your app. Specify package locations, version 
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].
-A _dependency_ is another package that your package needs in order to work.
+A _dependency_ is another package that your package needs to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only _immediate dependencies_—the
+You list only _immediate dependencies_: the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
@@ -16,13 +16,14 @@ At the end is a list of
 
 ## Overview
 
-For each dependency, you specify the *name* of the package you depend on
-and the *range of versions* of that package that you allow.
-You can also specify the
-[*source*](/tools/pub/glossary#source),
-which tells pub how to locate the package.
+For each dependency, you specify the _name_ of the package you depend on
+and the _range of versions_ of that package that you allow.
+You can also specify the [_source_][].
+The source tells pub how to locate the package.
 
-Here's an example of specifying a dependency:
+[_source_]: /tools/pub/glossary#source
+
+As an example, you specify a dependency in the following format:
 
 ```yaml
 dependencies:
@@ -32,10 +33,10 @@ dependencies:
 This YAML code creates a dependency on the `transmogrify` package
 using the default package repository ([pub.dev]({{site.pub}})) and
 allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
-See the [version constraints](#version-constraints)
-section of this page for syntax details.
+To learn about this syntax, check out
+[version constraints](#version-constraints).
 
-To specify a source that isn't pub.dev,
+To specify a source other than pub.dev,
 use `sdk`, `hosted`, `git`, or `path`.
 For example, the following YAML code uses `path`
 to tell pub to get `transmogrify` from a local directory:
@@ -48,7 +49,6 @@ dependencies:
 
 The next section describes the format for each dependency source.
 
-
 ## Dependency sources
 
 Pub can use the following sources to locate packages:
@@ -58,11 +58,9 @@ Pub can use the following sources to locate packages:
 * [Git packages](#git-packages)
 * [Path packages](#path-packages)
 
-
-
 ### Hosted packages
 
-A *hosted* package is one that can be downloaded from the pub.dev site
+A _hosted_ package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
 of declaring a dependency on a hosted package:
 
@@ -83,8 +81,8 @@ using the `hosted` source:
 [own package repository]: /tools/pub/custom-package-repositories
 
 {% prettify yaml tag=pre+code %}
-environment: 
-  sdk: >=[!2.15.0!] < 3.0.0
+environment:
+  sdk: '>=[!2.15.0!] < 3.0.0'
 
 dependencies:
   transmogrify:
@@ -101,7 +99,7 @@ you must use a more verbose `hosted` format:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: >=[!2.14.0!] < 3.0.0
+  sdk: '>=[!2.14.0!] < 3.0.0'
 
 dependencies:
   transmogrify:
@@ -183,7 +181,7 @@ In those cases, during development you really want to depend on the _live_
 version of that package on your local file system. That way changes in one
 package are instantly picked up by the one that depends on it.
 
-To handle that, pub supports *path dependencies*.
+To handle that, pub supports _path dependencies_.
 
 ```yaml
 dependencies:
@@ -237,93 +235,102 @@ If it's an unknown identifier, the dependency is always considered unsatisfied.
 
 ## Version constraints
 
-Specifying version constraints lets people
-using your package know which versions of its dependencies they can rely on to
-be compatible with your library. Your goal is to allow a range of versions as
-wide as possible to give your users flexibility. But it should be narrow enough
-to exclude versions that you know don't work or haven't been tested.
+Let's say that your Package A depends upon Package B.
+How can you communicate to other developers which version of Package B
+remains compatible with a given version of Package A?
+
+To let developers know version compatibility, specify version constraints.
+You want to allow the widest range of versions possible
+to give your package users flexibility.
+The range should exclude versions that don't work or haven't been tested.
 
 The Dart community uses semantic versioning<sup id="fnref:semver"><a
-href="#fn:semver">1</a></sup>, which helps you know which versions should work.
-If you know that your package works fine with `1.2.3` of some dependency, then
-semantic versioning tells you that it should work with any subsequent
-stable release before `2.0.0`.
-For details on pub's version system,
-see the [package versioning page](/tools/pub/versioning#semantic-versions).
+href="#fn:semver">1</a></sup>.
 
-You can express version constraints using either
-_caret syntax_ (`^1.2.3`) or
-_traditional syntax_ (`'>=1.2.3 <2.0.0'`).
+You can express version constraints using either _traditional syntax_
+or _caret syntax_. Both syntaxes specify a range of compatible versions.
 
-### Caret syntax
-
-_Caret syntax_ is a compact way of expressing the most common
-sort of version constraint.
-`^version` means _the range of all versions guaranteed to be backwards
-compatible with the specified version_.
-
-For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
-`^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
-The following is an example of caret syntax:
+The traditional syntax provides an explicit range like `'>=1.2.3 <2.0.0'`.
+The caret syntax provides an explicit starting version`^1.2.3`
 
 ```yaml
+environment:
+  # This package must use a 2.x version of the Dart SDK starting with 2.14.
+  sdk: '>=2.14.0 < 3.0.0'
+
 dependencies:
-  path: ^1.3.0
-  collection: ^1.1.0
-  string_scanner: ^0.1.2
+  transmogrify:
+    hosted:
+      name: transmogrify
+      url: https://some-package-server.com
+    # This package must use a 1.x version of transmogrify starting with 1.4.
+    version: ^1.4.0
 ```
+
+To learn more about pub's version system, see the [package versioning page][].
+
+[package versioning page]: /tools/pub/versioning#semantic-versions
 
 ### Traditional syntax
 
-A version constraint that uses _traditional syntax_
-is a series of the following:
+A version constraint that uses the traditional syntax can use any
+of the following values:
 
-`any`
-: The string `any` allows any version. This is equivalent to an empty
-  version constraint, but is more explicit. **Although `any` is allowed,
-  we don't recommend it.**
+| **Value** |                **Allows**               | **Use?** |                                                                        **Notes**                                                                        |
+|:---------:|:----------------------------------------|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   `any`   | All versions                            |    No    | Serves as a explicit declaration of empty version constraint.                                                                                           |
+|  `1.2.3`  | Only the given version                  |    No    | Limits adoption of your package due the additional limits it places on apps that use your package.                                                      |
+| `>=1.2.3` | Given version or later                  |    Yes   |                                                                                                                                                         |
+|  `>1.2.3` | Versions later than the given version   |    No    |                                                                                                                                                         |
+| `<=1.2.3` | Given version or earlier                |    No    |                                                                                                                                                         |
+|  `<1.2.3` | Versions earlier than the given version |    No    | Use this when you know an upper bound version that _doesn't_ work with your package. This version might be the first to introduce some breaking change. |
+{:.table}
 
-`1.2.3`
-: A concrete version number pins the dependency to only allow that
-    <em>exact</em> version. Avoid using this when you can because it can cause
-    version lock for your users and make it hard for them to use your package
-    along with other packages that also depend on it.
-
-`>=1.2.3`
-: Allows the given version or any greater one. You'll typically use this.
-
-`>1.2.3`
-: Allows any version greater than the specified one but <em>not</em> that
-  version itself.
-
-`<=1.2.3`
-: Allows any version lower than or equal to the specified one. You
-  <em>won't</em> typically use this.
-
-`<1.2.3`
-: Allows any version lower than the specified one but <em>not</em> that
-  version itself. This is what you'll usually use because it lets you specify
-  the upper version that you know does <em>not</em> work with your package
-  (because it's the first version to introduce some breaking change).
-
-You can specify version parts as you want, and their ranges are intersected
-together. For example, `'>=1.2.3 <2.0.0'` allows any version from `1.2.3` to
-`2.0.0` excluding `2.0.0` itself. An easier way to express this range is
-by using [caret syntax](#caret-syntax), or `^1.2.3`.
+You can specify any combination of version values as their ranges intersect.
+For example, if you set the version value as `'>=1.2.3 <2.0.0'`,
+this combines the both limitations so the dependency can be any version
+from `1.2.3` to `2.0.0` excluding `2.0.0` itself.
 
 {{site.alert.warning}}
-  If the **`>`** character is in the version constraint,
-  be sure to **quote the constraint string**,
-  so the character isn't interpreted as YAML syntax.
-  For example, never use `>=1.2.3 <2.0.0`;
-  instead, use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
+  If you include the greater than (**>**) character in the version constraint,
+  **quote the entire constraint string**.
+  This prevents YAML from interpreting the character as YAML syntax.
+  For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
 {{site.alert.end}}
+
+### Caret syntax
+
+Caret syntax expresses the version constraint in a compact way.
+`^version` means _the range of all versions guaranteed to be backwards
+compatible with the given version_.
+This range would include all versions up to the next one to introduce a
+breaking change. As Dart uses semantic versioning, this would be the next
+major version for any package version 1.0 or later
+or the next minor version for any package version earlier than 1.0.
+
+| Version value | Range covers to | Caret Syntax | Traditional Syntax  |
+|:-------------:|:---------------:|:------------:|:-------------------:|
+| >=1.0         | Next major      | `^1.3.0`     | `'>=1.3.0 <2.0.0'`  |
+| <1.0          | Next minor      | `^0.1.2 `    | `'>=0.1.2 <0.2.0' ` |
+{:.table}
+
+The following example shows caret syntax:
+
+```yaml
+dependencies:
+  # Covers all versions from 1.3.0 to 1.y.z, not including 2.0.0
+  path: ^1.3.0
+  # Covers all versions from 1.1.0 to 1.y.z, not including 2.0.0
+  collection: ^1.1.0
+  # Covers all versions from 0.1.2 to 0.1.z, not including 0.2.0
+  string_scanner: ^0.1.2
+```
 
 ## Dev dependencies
 
-Pub supports two flavors of dependencies: regular dependencies and *dev
-dependencies.* Dev dependencies differ from regular dependencies in that *dev
-dependencies of packages you depend on are ignored*. Here's an example:
+Pub supports two flavors of dependencies: regular dependencies and _dev
+dependencies._ Dev dependencies differ from regular dependencies in that _dev
+dependencies of packages you depend on are ignored_. Here's an example:
 
 Say the `transmogrify` package uses the `test` package in its tests and only
 in its tests. If someone just wants to use `transmogrify`—import its
@@ -337,7 +344,7 @@ dev_dependencies:
 
 Pub gets every package that your package depends on, and everything *those*
 packages depend on, transitively. It also gets your package's dev dependencies,
-but it *ignores* the dev dependencies of any dependent packages. Pub only gets
+but it _ignores_ the dev dependencies of any dependent packages. Pub only gets
 *your* package's dev dependencies. So when your package depends on
 `transmogrify` it will get `transmogrify` but not `test`.
 
@@ -409,7 +416,7 @@ are ignored by all users of your package.
 
 ## Best practices
 
-It’s important to actively manage your dependencies and
+It's important to actively manage your dependencies and
 ensure that your packages use the freshest versions possible.
 If any dependency is stale,
 then you might have not only a stale version of that package,
@@ -420,16 +427,12 @@ the stability, performance, and quality of apps.
 
 We recommend the following best practices for package dependencies.
 
-### Use [caret syntax](#caret-syntax)
+### Use caret syntax
 
-Specifying dependencies with version ranges such as `^1.6.3`
-is a good practice because it allows the pub tool to
-select newer versions of the package when they become available.
-Also, it places an upper limit on the allowed version,
-based on an assumption that packages use [semantic versions][],
-where any version of path versioned `1.x` is compatible,
-but where a new version `2.x` would be a major upgrade
-that isn't semantically compatible with `1.x` versions. 
+Specify dependencies using the [caret syntax](#caret-syntax).
+This allows the pub tool to select newer versions of the package
+when they become available.
+Further, it places an upper bound on the allowed version.
 
 ### Depend on the latest stable package versions
 
@@ -479,9 +482,5 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [`dart pub get`]: /tools/pub/cmd/pub-get
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 [`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
-[PubGrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
 [pubsite]: {{site.pub}}
-[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
-[semantic versions]: /tools/pub/versioning#semantic-versions
-[What not to commit]: /guides/libraries/private-files

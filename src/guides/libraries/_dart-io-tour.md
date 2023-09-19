@@ -63,7 +63,7 @@ void main() async {
 
 The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
-when it’s available.
+when it's available.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 ```dart
@@ -240,7 +240,7 @@ server-side application. You can set headers, use HTTP methods, and read
 and write data. The HttpClient class does not work in browser-based
 apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
-Here’s an example of using HttpClient:
+Here's an example of using HttpClient:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future<\w+\W/void/g"?>
 ```dart

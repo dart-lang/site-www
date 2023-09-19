@@ -130,10 +130,10 @@ and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   collection: '>=2.3.5 <2.4.0'
-{% endprettify %}
+```
 
 Then we could pick version `2.3.7` for `collection` and then both `widgets`
 and `templates` have their constraints satisfied by a single concrete version.
@@ -154,10 +154,10 @@ If you trust them, then if you know your package works with `2.3.5` of theirs,
 you can rely on it working all the way up to `3.0.0`.
 You can set your range like:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   collection: ^2.3.5
-{% endprettify %}
+```
 
 {{site.alert.note}}
   This example uses _caret syntax_ to express a range of versions.
@@ -235,26 +235,26 @@ package._
 The following example shows what this means. Let's say we have
 two apps. Here are their pubspecs:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
 dependencies:
   widgets:
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: other_app
 dependencies:
   widgets:
   collection: '<1.5.0'
-{% endprettify %}
+```
 
 They both depend on `widgets`, whose pubspec is:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: widgets
 dependencies:
   collection: '>=1.0.0 <2.0.0'
-{% endprettify %}
+```
 
 The `other_app` package depends directly on `collection` itself. The
 interesting part is that it happens to have a different version constraint on
@@ -282,17 +282,17 @@ The `widgets` package, currently at 1.2.0, exports
 `collection` via `export 'package:collection/collection.dart'`, and is
 at 2.4.0. The pubspec files are as follows:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: bookshelf
 dependencies:
   widgets:  ^1.2.0
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: widgets
 dependencies:
   collection:  ^2.4.0
-{% endprettify %}
+```
 
 The `collection` package is then updated to 2.5.0.
 The 2.5.0 version of `collection` includes a new method called `sortBackwards()`.
@@ -313,17 +313,17 @@ it's recommended that the package's author keeps a tighter
 limit on the upper and lower bounds of a dependency.
 In this case, the range for the `widgets` package should be narrowed:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: bookshelf
 dependencies:
   widgets:  '>=1.2.0 <1.3.0'
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: widgets
 dependencies:
   collection:  '>=2.4.0 <2.5.0'
-{% endprettify %}
+```
 
 This translates to a lower bound of 1.2.0 for `widgets` and 2.4.0
 for `collection`.
@@ -409,32 +409,32 @@ go right back around in a circle.
 Sometimes this process never settles down into a stable solution.
 Gaze into the abyss:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
 version: 0.0.0
 dependencies:
   yin: '>=1.0.0'
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: yin
 version: 1.0.0
 dependencies:
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: yin
 version: 2.0.0
 dependencies:
   yang: '1.0.0'
-{% endprettify %}
+```
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: yang
 version: 1.0.0
 dependencies:
   yin: '1.0.0'
-{% endprettify %}
+```
 
 In all of these cases, there is no set of concrete versions that will work for
 your app, and when this happens pub reports an error and tells you what's

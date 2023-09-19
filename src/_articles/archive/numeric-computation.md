@@ -30,7 +30,7 @@ Just following a few simple rules can give you 50-100% speed improvements.
 
 Follow the guidelines in this article
 to get the most performance from the Dart VM in numerical applications.
-You’ll learn about the four different number representations,
+You'll learn about the four different number representations,
 how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
@@ -48,10 +48,12 @@ The former is an arbitrary-precision signed integer,
 and the latter is the IEEE-754 double-precision floating-point number.
 Examples:
 
-    int speed = 3232943523452345329384234242323523;
-    int hitPoints = 21;
-    double position = 32.43432;
-    double hp = hitPoints.toDouble();
+```dart
+int speed = 3232943523452345329384234242323523;
+int hitPoints = 21;
+double position = 32.43432;
+double hp = hitPoints.toDouble();
+```
 
 ### Integers
 
@@ -92,14 +94,16 @@ as numbers grow and shrink in range.
 Here is an example of how a single integer value in the VM
 graduates from smi to mint to bigint:
 
-    main() {
-      int hitPoints = 21; // starts as a smi
-      print(hitPoints);  // 21
-      hitPoints += potionOfSuperHealth.points; // becomes a mint
-      print(hitPoints); // 2133232342342423
-      hitPoints += spellOfNearlyInvinciblity.points; // becomes a bigint
-      print(hitPoints);  // 99999999999999999999999999999999999999999
-    }
+```dart
+void main() {
+  int hitPoints = 21; // starts as a smi
+  print(hitPoints);  // 21
+  hitPoints += potionOfSuperHealth.points; // becomes a mint
+  print(hitPoints); // 2133232342342423
+  hitPoints += spellOfNearlyInvinciblity.points; // becomes a bigint
+  print(hitPoints);  // 99999999999999999999999999999999999999999
+}
+```
 
 ### Floating-point numbers
 
@@ -139,15 +143,17 @@ _object lists_ and _typed lists_.
 A List stores a list of objects.
 Examples include:
 
-    var a = [ 1.0, 2.0, 3.0 ];
-    var b = new List(3); // Create a new list with a fixed length of 3.
-    b[0] = 5;
-    b[1] = 99;
-    b[2] = 34;
+```dart
+var a = [ 1.0, 2.0, 3.0 ];
+var b = new List(3); // Create a new list with a fixed length of 3.
+b[0] = 5;
+b[1] = 99;
+b[2] = 34;
+```
 
 The list `b` is an object list,
 meaning it can store any object—for example, a String object or null.
-This means that each entry in a List is as wide as the CPU’s pointer type.
+This means that each entry in a List is as wide as the CPU's pointer type.
 
 #### Typed lists
 
@@ -162,19 +168,21 @@ When working with numbers that are smaller than the pointer width,
 these lists can have considerable memory savings.
 Some examples:
 
-    var a = new Float64List(3);
-    a[0] = 1.0;
-    a[1] = 2.0;
-    a[2] = 3.0;
-    var b = new Int8List(3);
-    b[0] = 5;
-    b[1] = 99;
-    b[2] = 34;
+```dart
+var a = new Float64List(3);
+a[0] = 1.0;
+a[1] = 2.0;
+a[2] = 3.0;
+var b = new Int8List(3);
+b[0] = 5;
+b[1] = 99;
+b[2] = 34;
+```
 
 In both the object list and typed list examples,
 the lists named `a` are holding the same values.
 Same for the lists named `b`.
-What’s different is how the values are stored in memory
+What's different is how the values are stored in memory
 and how they are accessed.
 More on this later.
 
@@ -200,7 +208,7 @@ The first representation, smi,
 is the same size as a pointer on your platform, minus 1 bit.
 On a 32-bit machine, a smi holds a 31-bit signed integer.
 On a 64-bit machine, a smi holds a 63-bit signed integer.
-A smi doesn’t require a memory allocation to be created
+A smi doesn't require a memory allocation to be created
 and is stored directly in a field.
 The VM can do this by storing twice the numeric value,
 guaranteeing the low bit being 0.
@@ -223,37 +231,41 @@ addition—do not require the smi to be untagged.
 
 Consider an object called `entity`, defined as follows:
 
-    class Entity {
-      Entity() {
-        scale = 2;
-        x = 3;
-        y = 0x40000000;
-      }
-      int scale;
-      int x;
-      int y;
-    }
+```dart
+class Entity {
+  Entity() {
+    scale = 2;
+    x = 3;
+    y = 0x40000000;
+  }
+  int scale;
+  int x;
+  int y;
+}
 
-    Entity entity = new Entity();
+Entity entity = new Entity();
+```
 
 After the above code executes,
 in memory on a 32-bit machine the `entity` object looks like this:
 
-![x and scale are smis and thus stored directly; y is 2^30, so it requires a pointer to memory](images/1.png)
+![x and scale are smis and thus stored directly; y is 2^30, so it requires a pointer to memory](/assets/img/articles/numeric-computation/1.png)
 
 Now consider this Dart code:
 
-    entity.x = entity.x * entity.scale;
+```dart
+entity.x = entity.x * entity.scale;
+```
 
-It’s converted into the VM instructions shown in the following figure.
+It's converted into the VM instructions shown in the following figure.
 Each VM instruction can return a value
 shown as v1, v2, and so on.
 
-![3 values are needed (for x, scale, and the result)](images/2.png)
+![3 values are needed (for x, scale, and the result)](/assets/img/articles/numeric-computation/2.png)
 
 After that code executes, in memory the `entity` object looks like this:
 
-![Same memory illustration as before, except the value of x is now 24](images/3.png)
+![Same memory illustration as before, except the value of x is now 24](/assets/img/articles/numeric-computation/3.png)
 
 Now consider the second representation, mint,
 which holds a 64-bit signed integer.
@@ -265,13 +277,15 @@ before loading the actual value.
 
 The following Dart code is converted into the VM instructions shown below.
 
-    entity.y = entity.y + entity.x;
+```dart
+entity.y = entity.y + entity.x;
+```
 
-![6 values are needed (for y, x, unboxed y, unboxed x, the result, and the boxed result](images/4.png)
+![6 values are needed (for y, x, unboxed y, unboxed x, the result, and the boxed result](/assets/img/articles/numeric-computation/4.png)
 
 After that code executes, in memory the `entity` object looks like this:
 
-![y's previous memory is now garbage, and a new memory location holds y's new value](images/5.png)
+![y's previous memory is now garbage, and a new memory location holds y's new value](/assets/img/articles/numeric-computation/5.png)
 
 **Performance tip:**
 If you can, stay in smi range.
@@ -289,14 +303,18 @@ you must be careful that the values remain in smi range.
 The VM performs an optimization when it sees a left shift
 masked with a constant smi value:
 
-    result = (int1 << int2) & CONSTANT;  // CONSTANT within smi range
+```dart
+result = (int1 << int2) & CONSTANT;  // CONSTANT within smi range
+```
 
 For example:
 
-    a = (b << c) & 0x3FFFFFFF;
+```dart
+a = (b << c) & 0x3FFFFFFF;
+```
 
 The VM knows that the result can be stored in a smi,
-and it generates code that doesn’t check whether
+and it generates code that doesn't check whether
 a mint is needed to store the result.
 The constant 0x3FFFFFFF is the maximum positive smi on 32-bit architectures.
 0x3FFFFFFFFFFFFFFF is the equivalent constant on 64-bit architectures.
@@ -329,9 +347,11 @@ These operations can add overhead when working with typed lists.
 Consider the following code,
 assuming that all integer variables stay within the smi range:
 
-    for (int i = 0; i < list.length; i++) {
-      list[i] = list[i] + b;
-    }
+```dart
+for (int i = 0; i < list.length; i++) {
+  list[i] = list[i] + b;
+}
+```
 
 If `list` is an object list,
 no smi tagging or untagging occurs.
@@ -362,7 +382,7 @@ and better CPU cache performance:
 * Typed lists can be much more dense.
   For example, if you know you need only 8 bits of precision
   you can use an Int8List,
-  using much less memory and making better use of your CPU’s cache.
+  using much less memory and making better use of your CPU's cache.
 
 In general and specifically because of the above caveats,
 it is always a good idea to benchmark 
@@ -391,7 +411,7 @@ Thus, bigints are significantly more expensive than smis or mints.
 
 **Performance tip:**
 Avoid bigint whenever possible.
-The VM doesn’t optimize operations on bigint instances.
+The VM doesn't optimize operations on bigint instances.
 
 
 ### Doubles
@@ -451,7 +471,7 @@ The following operations can trigger a number to be boxed:
 Boxing requires a memory allocation and a store.
 Unboxing requires a load.
 
-![Illustration of boxing and unboxing 3.14159](images/6.png)
+![Illustration of boxing and unboxing 3.14159](/assets/img/articles/numeric-computation/6.png)
 
 
 ### Lists
@@ -471,7 +491,7 @@ When type checking is not enforced,
 object lists can hold objects of any type.
 Object lists can contain the null object.
 
-![Illustration of a list's memory, which contains a smi (4) and two points to doubles (1.0 and 2.0)](images/7.png)
+![Illustration of a list's memory, which contains a smi (4) and two points to doubles (1.0 and 2.0)](/assets/img/articles/numeric-computation/7.png)
 
 Loading a number from an object list works like this:
 
@@ -481,7 +501,7 @@ Loading a number from an object list works like this:
 2. The address of the number or the tagged smi is loaded from
    the list backing store.
 
-![Illustration of loading a number from an object list](images/8.png)
+![Illustration of loading a number from an object list](/assets/img/articles/numeric-computation/8.png)
 
 Storing a number into an object list works like this:
 
@@ -493,7 +513,7 @@ Storing a number into an object list works like this:
 3. The address of the number or the tagged smi value is stored in
    the list backing store.
 
-![Illustration of storing a number into an object list](images/9.png)
+![Illustration of storing a number into an object list](/assets/img/articles/numeric-computation/9.png)
 
 #### Typed lists
 
@@ -502,9 +522,9 @@ Each entry in the array always holds the value directly.
 Typed lists can be much denser,
 providing better memory and CPU cache usage.
 Typed lists are also faster to process at garbage collection time
-because they don’t have to be scanned for object pointers.
+because they don't have to be scanned for object pointers.
 
-![Illustration of a typed list's memory, containing the numbers 4, 1.0, and 2.0 (and no pointers)](images/10.png)
+![Illustration of a typed list's memory, containing the numbers 4, 1.0, and 2.0 (and no pointers)](/assets/img/articles/numeric-computation/10.png)
 
 Loading a double-precision number from a typed data list works like this:
 
@@ -513,7 +533,7 @@ Loading a double-precision number from a typed data list works like this:
    this includes a dependent load.)
 2. The value is loaded from the list backing store.
 
-![Illustration of loading a number from a typed list](images/11.png)
+![Illustration of loading a number from a typed list](/assets/img/articles/numeric-computation/11.png)
 
 Storing a double-precision number into a typed data list works like this:
 
@@ -522,7 +542,7 @@ Storing a double-precision number into a typed data list works like this:
    this includes a dependent load.)
 2. The double number is stored into the list backing store.
 
-![Illustration of storing a number into a typed list](images/12.png)
+![Illustration of storing a number into a typed list](/assets/img/articles/numeric-computation/12.png)
 
 Loading an integer number from a typed list can be more expensive than
 the double case in the following two cases:

@@ -33,7 +33,7 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-Closures inside of Dart’s `for` loops capture the _value_ of the index.
+Closures inside of Dart's `for` loops capture the _value_ of the index.
 This avoids a common pitfall found in JavaScript. For example, consider:
 
 <?code-excerpt "language/test/control_flow/loops_test.dart (for-and-closures)"?>
@@ -132,7 +132,7 @@ for (int i = 0; i < candidates.length; i++) {
 }
 ```
 
-If you’re using an [`Iterable`][] such as a list or set,
+If you're using an [`Iterable`][] such as a list or set,
 how you write the previous example might differ:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (where)"?>

@@ -1,5 +1,7 @@
 ---
 title: Dart brand guidelines
+description: >-
+  The guidelines governing the usage of the Dart trademarks and assets.
 ---
 
 The "Dart" name and logo are trademarks owned by Google.
@@ -50,9 +52,9 @@ rules governing the proper use of the Dart trademarks.
 
 **DO:**
 
-* Use the “Dart” name as an adjective and never as a verb or in the plural form.
-* When using “Dart” as an adjective, follow it with a generic term, 
-  for example, “the Dart SDK” or “the Dart platform.”
+* Use the "Dart" name as an adjective and never as a verb or in the plural form.
+* When using "Dart" as an adjective, follow it with a generic term, 
+  for example, "the Dart SDK" or "the Dart platform."
 * Distinguish the "Dart" name from the surrounding text in some way.
   Capitalize the first letter, capitalize or italicize the entire mark,
   place the mark in quotes, use a different type style or font for the mark.
@@ -73,7 +75,7 @@ rules governing the proper use of the Dart trademarks.
   This includes varying the spelling of the "Dart" name, or displaying
   the Dart logo with color variations or unapproved visual elements. 
 * Don't combine the Google name with the "Dart" name to form a unitary
-  brand (e.g., don’t use the phrases "Google Dart" or "Google’s Dart").
+  brand (e.g., don't use the phrases "Google Dart" or "Google's Dart").
   You may use the Google name in full text to accurately describe the
   Dart SDK (e.g., "The Dart SDK by Google").
 * Don't register the Dart trademarks or any trademarks, logos,

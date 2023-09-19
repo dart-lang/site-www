@@ -11,8 +11,8 @@ nextpage:
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
-First you’ll play with the Dart language in your browser, no download required.
-Then you’ll install the Dart SDK, write a small program, and run that program using the Dart VM.
+First you'll play with the Dart language in your browser, no download required.
+Then you'll install the Dart SDK, write a small program, and run that program using the Dart VM.
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 

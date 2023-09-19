@@ -1,6 +1,8 @@
 ---
 title: Zones
-description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
+description: >-
+  Manage your asynchronous code: handle uncaught errors, 
+  override behavior (such as printing and scheduling tasks), and more.
 date: 2014-03-03
 obsolete: true
 ---
@@ -67,8 +69,8 @@ Zones make the following tasks possible:
   or saving a stack trace.
 
 You might have encountered something similar to zones in other languages.
-_Domains_ in Node.js were an inspiration for Dart’s zones.
-Java’s _thread-local storage_
+_Domains_ in Node.js were an inspiration for Dart's zones.
+Java's _thread-local storage_
 also has some similarities.
 Closest of all is Brian Ford's JavaScript port of Dart zones,
 [zone.js](https://github.com/btford/zone.js/), which he describes in
@@ -116,7 +118,7 @@ qux(x) => <em><span class="zone1">...qux-body...</span></em>
 The following figure shows the code's execution order,
 as well as which zone the code executes in.
 
-![illustration of program execution](images/trace.png)
+![illustration of program execution](/assets/img/articles/zones/trace.png)
 
 Each call to `runZoned()` creates a new zone
 and executes code in that zone.
@@ -129,7 +131,7 @@ runs in
 even though it's attached to a future that itself runs in
 <span class="zone2">zone #2</span>.
 
-Child zones don’t completely replace their parent zone.
+Child zones don't completely replace their parent zone.
 Instead new zones are nested inside their surrounding zone.
 For example,
 <span class="zone2">zone #2</span> contains
@@ -357,7 +359,7 @@ runZoned(() {
 }, zoneValues: { #key: 499 });
 {% endprettify %}
 
-To read zone-local values, use the zone’s index operator and the value's key:
+To read zone-local values, use the zone's index operator and the value's key:
 <code>[<em>key</em>]</code>.
 Any object can be used as a key, as long as it has compatible
 `operator ==` and `hashCode` implementations.
@@ -378,7 +380,7 @@ runZoned(() {
 {% endprettify %}
 
 A zone inherits zone-local values from its parent zone,
-so adding nested zones doesn’t accidentally drop existing values.
+so adding nested zones doesn't accidentally drop existing values.
 Nested zones can, however, shadow parent values.
 
 {{site.alert.important}}
@@ -417,7 +419,7 @@ main() {
 {% endprettify %}
 
 This program works,
-but let’s assume that you now want to know
+but let's assume that you now want to know
 which file each line comes from,
 and that you can't just add a filename argument to `splitLinesStream()`.
 With zone-local values you can add the filename to the returned string

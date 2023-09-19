@@ -1,6 +1,6 @@
 ---
 title: Concurrency in Dart
-description: >
+description: >-
   Use isolates to enable parallel code execution on multiple processor cores.
 short-title: Concurrency
 prevpage:
@@ -38,7 +38,7 @@ is an implementation detail that this page doesn't discuss.
 
 ## Asynchrony types and syntax
 
-If you’re already familiar with `Future`, `Stream`, and async-await,
+If you're already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
 
 [isolates section]: #how-isolates-work
@@ -98,7 +98,7 @@ The `async` and `await` keywords provide
 a declarative way to define asynchronous functions
 and use their results.
 
-Here’s an example of some synchronous code
+Here's an example of some synchronous code
 that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
@@ -121,7 +121,7 @@ String _readFileSync() {
 }
 ```
 
-Here’s similar code, but with changes (highlighted) to make it asynchronous:
+Here's similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
@@ -162,7 +162,7 @@ Once `readAsString()` returns a value, Dart code execution resumes.
 
 ![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/assets/img/language/concurrency/basics-await.png)
 
-If you’d like to learn more about using `async`, `await`, and futures,
+If you'd like to learn more about using `async`, `await`, and futures,
 visit the [asynchronous programming codelab][].
 
 [asynchronous programming codelab]: /codelabs/async-await
@@ -189,7 +189,7 @@ isolates don't prevent race conditions all together.
 
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they’re available.
+using additional processor cores if they're available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
@@ -204,7 +204,7 @@ but each isolate has its own memory and a single thread running an event loop.
 
 ### The main isolate
 
-You often don’t need to think about isolates at all.
+You often don't need to think about isolates at all.
 Dart programs run in the main isolate by default.
 It's the thread where a program starts to run and execute, 
 as shown in the following figure:
@@ -237,7 +237,7 @@ After handling the events, the isolate exits.
 
 ### Event handling
 
-In a client app, the main isolate’s event queue might contain
+In a client app, the main isolate's event queue might contain
 repaint requests and notifications of tap and other UI events.
 For example, the following figure shows a repaint event,
 followed by a tap event, followed by two repaint events.
@@ -271,7 +271,7 @@ Worse, the UI might become completely unresponsive.
 
 ### Background workers
 
-If your app’s UI becomes unresponsive due to 
+If your app's UI becomes unresponsive due to 
 a time-consuming computation—[parsing a large JSON file][json], 
 for example—consider offloading that computation to a worker isolate,
 often called a _background worker._
@@ -285,7 +285,7 @@ The worker isolate returns its result in a message when the worker exits.
 ![A figure showing a main isolate and a simple worker isolate](/assets/img/language/concurrency/isolate-bg-worker.png)
 
 Each isolate message can deliver one object,
-which includes anything that’s transitively reachable from that object.
+which includes anything that's transitively reachable from that object.
 Not all object types are sendable, and
 the send fails if any transitively reachable object is unsendable.
 For example, you can send an object of type `List<Object>` only if
@@ -299,7 +299,7 @@ see the API reference documentation for the [`send()` method][].
 A worker isolate can perform I/O
 (reading and writing files, for example), set timers, and more.
 It has its own memory and
-doesn’t share any state with the main isolate.
+doesn't share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
@@ -439,7 +439,7 @@ Closures are less limited than typical named functions,
 both in how they function and how they're written into the code.
 In this example, `Isolate.run()` executes what looks like local code, concurrently.
 In that sense, you can imagine `run()` to work like a control flow operator
-for “run in parallel”.
+for "run in parallel".
 
 [closure]: /language/functions#anonymous-functions
 

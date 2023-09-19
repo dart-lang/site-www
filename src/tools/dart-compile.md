@@ -287,7 +287,7 @@ improve JavaScript performance:
   you pass into each function or method.
 
 {{site.alert.tip}}
-  Don’t worry about the size of your app’s included libraries. 
+  Don't worry about the size of your app's included libraries. 
   The production compiler performs tree shaking to omit
   unused classes, functions, methods, and so on.
   Import the libraries you think you'll need, 

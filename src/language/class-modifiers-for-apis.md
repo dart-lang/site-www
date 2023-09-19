@@ -1,6 +1,6 @@
 ---
 title: Class modifiers for API maintainers
-description: >
+description: >-
  How to use the class modifiers added in Dart 3.0
  to make your package's API more robust and maintainable.
 prevpage:
