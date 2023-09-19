@@ -239,7 +239,7 @@ Consider an object called `entity`, defined as follows:
 After the above code executes,
 in memory on a 32-bit machine the `entity` object looks like this:
 
-![x and scale are smis and thus stored directly; y is 2^30, so it requires a pointer to memory](images/1.png)
+![x and scale are smis and thus stored directly; y is 2^30, so it requires a pointer to memory](/assets/img/articles/numeric-computation/1.png)
 
 Now consider this Dart code:
 
@@ -249,11 +249,11 @@ It’s converted into the VM instructions shown in the following figure.
 Each VM instruction can return a value
 shown as v1, v2, and so on.
 
-![3 values are needed (for x, scale, and the result)](images/2.png)
+![3 values are needed (for x, scale, and the result)](/assets/img/articles/numeric-computation/2.png)
 
 After that code executes, in memory the `entity` object looks like this:
 
-![Same memory illustration as before, except the value of x is now 24](images/3.png)
+![Same memory illustration as before, except the value of x is now 24](/assets/img/articles/numeric-computation/3.png)
 
 Now consider the second representation, mint,
 which holds a 64-bit signed integer.
@@ -267,11 +267,11 @@ The following Dart code is converted into the VM instructions shown below.
 
     entity.y = entity.y + entity.x;
 
-![6 values are needed (for y, x, unboxed y, unboxed x, the result, and the boxed result](images/4.png)
+![6 values are needed (for y, x, unboxed y, unboxed x, the result, and the boxed result](/assets/img/articles/numeric-computation/4.png)
 
 After that code executes, in memory the `entity` object looks like this:
 
-![y's previous memory is now garbage, and a new memory location holds y's new value](images/5.png)
+![y's previous memory is now garbage, and a new memory location holds y's new value](/assets/img/articles/numeric-computation/5.png)
 
 **Performance tip:**
 If you can, stay in smi range.
@@ -451,7 +451,7 @@ The following operations can trigger a number to be boxed:
 Boxing requires a memory allocation and a store.
 Unboxing requires a load.
 
-![Illustration of boxing and unboxing 3.14159](images/6.png)
+![Illustration of boxing and unboxing 3.14159](/assets/img/articles/numeric-computation/6.png)
 
 
 ### Lists
@@ -471,7 +471,7 @@ When type checking is not enforced,
 object lists can hold objects of any type.
 Object lists can contain the null object.
 
-![Illustration of a list's memory, which contains a smi (4) and two points to doubles (1.0 and 2.0)](images/7.png)
+![Illustration of a list's memory, which contains a smi (4) and two points to doubles (1.0 and 2.0)](/assets/img/articles/numeric-computation/7.png)
 
 Loading a number from an object list works like this:
 
@@ -481,7 +481,7 @@ Loading a number from an object list works like this:
 2. The address of the number or the tagged smi is loaded from
    the list backing store.
 
-![Illustration of loading a number from an object list](images/8.png)
+![Illustration of loading a number from an object list](/assets/img/articles/numeric-computation/8.png)
 
 Storing a number into an object list works like this:
 
@@ -493,7 +493,7 @@ Storing a number into an object list works like this:
 3. The address of the number or the tagged smi value is stored in
    the list backing store.
 
-![Illustration of storing a number into an object list](images/9.png)
+![Illustration of storing a number into an object list](/assets/img/articles/numeric-computation/9.png)
 
 #### Typed lists
 
@@ -504,7 +504,7 @@ providing better memory and CPU cache usage.
 Typed lists are also faster to process at garbage collection time
 because they don’t have to be scanned for object pointers.
 
-![Illustration of a typed list's memory, containing the numbers 4, 1.0, and 2.0 (and no pointers)](images/10.png)
+![Illustration of a typed list's memory, containing the numbers 4, 1.0, and 2.0 (and no pointers)](/assets/img/articles/numeric-computation/10.png)
 
 Loading a double-precision number from a typed data list works like this:
 
@@ -513,7 +513,7 @@ Loading a double-precision number from a typed data list works like this:
    this includes a dependent load.)
 2. The value is loaded from the list backing store.
 
-![Illustration of loading a number from a typed list](images/11.png)
+![Illustration of loading a number from a typed list](/assets/img/articles/numeric-computation/11.png)
 
 Storing a double-precision number into a typed data list works like this:
 
@@ -522,7 +522,7 @@ Storing a double-precision number into a typed data list works like this:
    this includes a dependent load.)
 2. The double number is stored into the list backing store.
 
-![Illustration of storing a number into a typed list](images/12.png)
+![Illustration of storing a number into a typed list](/assets/img/articles/numeric-computation/12.png)
 
 Loading an integer number from a typed list can be more expensive than
 the double case in the following two cases:
