@@ -35,7 +35,7 @@ void main() async {
     }
   }
 
-  final outFile = File(path.join(dirPath, 'toc.md'));
+  final outFile = File(path.join(dirPath, '_toc.md'));
   IOSink? out;
   try {
     out = outFile.openWrite();
