@@ -12,8 +12,11 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
   <!-- End Google Tag Manager -->
-
-  {% assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
+  {% assign desc = page.description | strip_html | strip_newlines | truncate: 160 -%}
+  {% unless desc and desc != '' -%}
+    {% assign error = page.url | append: ' must have a description specified!' -%}
+    {{ error | throw_error }}
+  {% endunless %}
   <meta name="description" content="{{desc}}">
   <title>{% if page.short-title %}{{page.short-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
 

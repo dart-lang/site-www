@@ -1,6 +1,6 @@
 ---
 title: Effective Dart
-description: >
+description: >-
   Best practices for building consistent, maintainable,
   and efficient Dart libraries.
 nextpage:

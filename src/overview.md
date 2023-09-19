@@ -1,6 +1,6 @@
 ---
 title: Dart overview
-description: A short introduction to Dart
+description: A short introduction to Dart.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 

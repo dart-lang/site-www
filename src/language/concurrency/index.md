@@ -1,6 +1,6 @@
 ---
 title: Concurrency in Dart
-description: >
+description: >-
   Use isolates to enable parallel code execution on multiple processor cores.
 short-title: Concurrency
 prevpage:
