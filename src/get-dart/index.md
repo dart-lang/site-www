@@ -2,7 +2,7 @@
 title: Get the Dart SDK
 description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
 js:
-- url: /get-dart/archive/assets/install.js
+- url: /assets/js/get-dart/install.js
   defer: true
 ---
 
