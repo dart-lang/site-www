@@ -134,7 +134,7 @@ method is invoked with an output-
 sink as argument. The method then returns an input sink into which the caller
 puts data.
 
-![Chunked conversion](/articles/archive/images/chunked-conversion.png)
+![Chunked conversion](/assets/img/converters-and-codecs/chunked-conversion.png)
 
 **Note**: An asterisk (`*`) in the diagram represents optional multiple calls.
 
