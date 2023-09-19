@@ -20,18 +20,18 @@ that your IDE or code editor, the pub tool, and other tools generate.
 **Don't commit** the following files and directories
 created by pub:
 
-{% prettify none tag=pre+code %}
+```gitignore
 .dart_tool/
 build/
 pubspec.lock  # Except for application packages
-{% endprettify %}
+```
 
 **Don't commit** the API documentation directory
 created by [`dart doc`](/tools/dart-doc):
 
-{% prettify none tag=pre+code %}
+```gitignore
 doc/api/
-{% endprettify %}
+```
 
 **Don't commit** files and directories
 created by other development environments.
@@ -39,7 +39,7 @@ For example, if your development environment creates
 any of the following files,
 consider putting them in a global ignore file:
 
-{% prettify none tag=pre+code %}
+```gitignore
 # IntelliJ
 *.iml
 *.ipr
@@ -48,7 +48,7 @@ consider putting them in a global ignore file:
 
 # Mac
 .DS_Store
-{% endprettify %}
+```
 
 For more details, read on.
 

@@ -20,7 +20,7 @@ Four annotations are available to all Dart code:
 [`@Deprecated`][], [`@deprecated`][], [`@override`][], and [`@pragma`][]. 
 For examples of using `@override`,
 see [Extending a class][].
-Here’s an example of using the `@Deprecated` annotation:
+Here's an example of using the `@Deprecated` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -41,7 +41,7 @@ You can use `@deprecated` if you don't want to specify a message.
 However, we [recommend][dep-lint] always
 specifying a message with `@Deprecated`.
 
-You can define your own metadata annotations. Here’s an example of
+You can define your own metadata annotations. Here's an example of
 defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
@@ -54,7 +54,7 @@ class Todo {
 }
 ```
 
-And here’s an example of using that `@Todo` annotation:
+And here's an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart"?>
 ```dart

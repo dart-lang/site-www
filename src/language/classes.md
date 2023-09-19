@@ -27,7 +27,7 @@ add functionality to a class without changing the class or creating a subclass.
 
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
-it on an object: the method has access to that object’s functions and
+it on an object: the method has access to that object's functions and
 data.
 
 Use a dot (`.`) to refer to an instance variable or method:
@@ -156,7 +156,7 @@ The rest of this section shows how to _implement_ classes.
 
 ## Instance variables
 
-Here’s how you declare instance variables:
+Here's how you declare instance variables:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class)"?>
 ```dart
@@ -224,7 +224,7 @@ after the constructor body starts, you can use one of the following:
 
 Every class implicitly defines an interface containing all the instance
 members of the class and of any interfaces it implements. If you want to
-create a class A that supports class B’s API without inheriting B’s
+create a class A that supports class B's API without inheriting B's
 implementation, class A should implement the B interface.
 
 A class implements one or more interfaces by declaring them in an
@@ -260,7 +260,7 @@ void main() {
 }
 ```
 
-Here’s an example of specifying that a class implements multiple
+Here's an example of specifying that a class implements multiple
 interfaces:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
@@ -290,7 +290,7 @@ void main() {
 }
 ```
 
-Static variables aren’t initialized until they’re used.
+Static variables aren't initialized until they're used.
 
 {{site.alert.note}}
   This page follows the [style guide

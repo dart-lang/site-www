@@ -172,17 +172,17 @@ The following table lists the meanings of equality and relational operators.
 To test whether two objects x and y represent the same thing, use the
 `==` operator. (In the rare case where you need to know whether two
 objects are the exact same object, use the [identical()][]
-function instead.) Here’s how the `==` operator works:
+function instead.) Here's how the `==` operator works:
 
 1.  If *x* or *y* is null, return true if both are null, and false if only
     one is null.
 
 2.  Return the result of invoking the `==` method on *x* with the argument *y*.
-    (That’s right, operators such as `==` are methods that
+    (That's right, operators such as `==` are methods that
     are invoked on their first operand.
     For details, see [Operators][].)
 
-Here’s an example of using each of the equality and relational
+Here's an example of using each of the equality and relational
 operators:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (relational)"?>
@@ -231,13 +231,13 @@ if (employee is Person) {
 ```
 
 {{site.alert.note}}
-  The code isn’t equivalent. If `employee` is null or not a `Person`, the
+  The code isn't equivalent. If `employee` is null or not a `Person`, the
   first example throws an exception; the second does nothing.
 {{site.alert.end}}
 
 ## Assignment operators
 
-As you’ve already seen, you can assign values using the `=` operator.
+As you've already seen, you can assign values using the `=` operator.
 To assign only if the assigned-to variable is null,
 use the `??=` operator.
 
@@ -257,7 +257,7 @@ an operation with an assignment.
 | `-=` | `~/=` | `>>=`
 {:.table}
 
-Here’s how compound assignment operators work:
+Here's how compound assignment operators work:
 
 |-----------+----------------------+-----------------------|
 |           | Compound assignment  | Equivalent expression |
@@ -290,7 +290,7 @@ operators.
 | `&&`                        | logical AND
 {:.table .table-striped}
 
-Here’s an example of using the logical operators:
+Here's an example of using the logical operators:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (op-logical)"?>
 ```dart
@@ -303,7 +303,7 @@ if (!done && (col == 0 || col == 3)) {
 ## Bitwise and shift operators
 
 You can manipulate the individual bits of numbers in Dart. Usually,
-you’d use these bitwise and shift operators with integers.
+you'd use these bitwise and shift operators with integers.
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -324,7 +324,7 @@ you’d use these bitwise and shift operators with integers.
   [Bitwise operations platform differences][].
 {{site.alert.end}}
 
-Here’s an example of using bitwise and shift operators:
+Here's an example of using bitwise and shift operators:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-bitwise)"?>
 ```dart
