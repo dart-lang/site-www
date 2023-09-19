@@ -262,7 +262,7 @@ If your package looks promising, users might want to test your package.
 Include a "Get started" or "Usage" section that has
 at least one code sample that users can easily understand—and, 
 ideally, that they can copy and paste into their project.
-It’s even better if you can provide more examples with more details
+It's even better if you can provide more examples with more details
 to help users to understand your package. 
 
 Remember that not all users speak English, but they all speak Dart!
@@ -376,7 +376,7 @@ that has information for potential contributors:
 
 ## Learn more about good README authoring
 
-We’ve suggested seven tips for good README in this documentation.
+We've suggested seven tips for good README in this documentation.
 You can learn more about common recommendations for developer documentation
 from the [Google Developer Documentation Style Guide][style-guide].
 Some additional tips include:  
@@ -405,9 +405,9 @@ with a template and suggestions for a good README.
 
 The suggestions in this page and others might not work for all packages.
 Be creative!
-Put yourself into users’ shoes and
+Put yourself into users' shoes and
 imagine what the reader might want to read and know.
-You’re the only person who can provide the information that the reader needs.
+You're the only person who can provide the information that the reader needs.
 
 [Awesome README]: https://github.com/matiassingers/awesome-readme
 [Badges]: https://github.com/badges/shields#readme

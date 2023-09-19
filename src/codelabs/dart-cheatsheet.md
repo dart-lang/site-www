@@ -92,7 +92,7 @@ reference them inside single quotes, with a space in between.
 ## Nullable variables
 
 Dart enforces sound null safety.
-This means values can’t be null unless you say they can be.
+This means values can't be null unless you say they can be.
 In other words, types default to non-nullable.
 
 For example, consider the following code.
@@ -504,7 +504,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 });
 ```
 
-Here’s a simpler way to write that code:
+Here's a simpler way to write that code:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
@@ -1218,7 +1218,7 @@ This is a chance to get more practice with the ?? operator!
 
 ## Exceptions
 
-Dart code can throw and catch exceptions. In contrast to Java, all of Dart’s exceptions are unchecked
+Dart code can throw and catch exceptions. In contrast to Java, all of Dart's exceptions are unchecked
 exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
 any exceptions.
 
@@ -1984,9 +1984,9 @@ IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
 
 ## Redirecting constructors
 
-Sometimes a constructor’s only purpose is to redirect to
+Sometimes a constructor's only purpose is to redirect to
 another constructor in the same class.
-A redirecting constructor’s body is empty,
+A redirecting constructor's body is empty,
 with the constructor call appearing after a colon (`:`).
 
 <?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>
