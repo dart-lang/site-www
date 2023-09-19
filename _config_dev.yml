@@ -1,9 +1,6 @@
 # Site settings for development mode
-# url: https://dartlang-org-dev.firebaseapp.com
-# url: https://dartlang-org-staging-0.firebaseapp.com
 
 # Dev url inside Docker container
 url: http://0.0.0.0:4000
 sass:
-  cache: true
   style: extended
