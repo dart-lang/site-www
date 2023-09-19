@@ -48,10 +48,12 @@ The former is an arbitrary-precision signed integer,
 and the latter is the IEEE-754 double-precision floating-point number.
 Examples:
 
-    int speed = 3232943523452345329384234242323523;
-    int hitPoints = 21;
-    double position = 32.43432;
-    double hp = hitPoints.toDouble();
+```dart
+int speed = 3232943523452345329384234242323523;
+int hitPoints = 21;
+double position = 32.43432;
+double hp = hitPoints.toDouble();
+```
 
 ### Integers
 
@@ -92,14 +94,16 @@ as numbers grow and shrink in range.
 Here is an example of how a single integer value in the VM
 graduates from smi to mint to bigint:
 
-    main() {
-      int hitPoints = 21; // starts as a smi
-      print(hitPoints);  // 21
-      hitPoints += potionOfSuperHealth.points; // becomes a mint
-      print(hitPoints); // 2133232342342423
-      hitPoints += spellOfNearlyInvinciblity.points; // becomes a bigint
-      print(hitPoints);  // 99999999999999999999999999999999999999999
-    }
+```dart
+void main() {
+  int hitPoints = 21; // starts as a smi
+  print(hitPoints);  // 21
+  hitPoints += potionOfSuperHealth.points; // becomes a mint
+  print(hitPoints); // 2133232342342423
+  hitPoints += spellOfNearlyInvinciblity.points; // becomes a bigint
+  print(hitPoints);  // 99999999999999999999999999999999999999999
+}
+```
 
 ### Floating-point numbers
 
@@ -139,11 +143,13 @@ _object lists_ and _typed lists_.
 A List stores a list of objects.
 Examples include:
 
-    var a = [ 1.0, 2.0, 3.0 ];
-    var b = new List(3); // Create a new list with a fixed length of 3.
-    b[0] = 5;
-    b[1] = 99;
-    b[2] = 34;
+```dart
+var a = [ 1.0, 2.0, 3.0 ];
+var b = new List(3); // Create a new list with a fixed length of 3.
+b[0] = 5;
+b[1] = 99;
+b[2] = 34;
+```
 
 The list `b` is an object list,
 meaning it can store any object—for example, a String object or null.
@@ -162,14 +168,16 @@ When working with numbers that are smaller than the pointer width,
 these lists can have considerable memory savings.
 Some examples:
 
-    var a = new Float64List(3);
-    a[0] = 1.0;
-    a[1] = 2.0;
-    a[2] = 3.0;
-    var b = new Int8List(3);
-    b[0] = 5;
-    b[1] = 99;
-    b[2] = 34;
+```dart
+var a = new Float64List(3);
+a[0] = 1.0;
+a[1] = 2.0;
+a[2] = 3.0;
+var b = new Int8List(3);
+b[0] = 5;
+b[1] = 99;
+b[2] = 34;
+```
 
 In both the object list and typed list examples,
 the lists named `a` are holding the same values.
@@ -223,18 +231,20 @@ addition—do not require the smi to be untagged.
 
 Consider an object called `entity`, defined as follows:
 
-    class Entity {
-      Entity() {
-        scale = 2;
-        x = 3;
-        y = 0x40000000;
-      }
-      int scale;
-      int x;
-      int y;
-    }
+```dart
+class Entity {
+  Entity() {
+    scale = 2;
+    x = 3;
+    y = 0x40000000;
+  }
+  int scale;
+  int x;
+  int y;
+}
 
-    Entity entity = new Entity();
+Entity entity = new Entity();
+```
 
 After the above code executes,
 in memory on a 32-bit machine the `entity` object looks like this:
@@ -243,7 +253,9 @@ in memory on a 32-bit machine the `entity` object looks like this:
 
 Now consider this Dart code:
 
-    entity.x = entity.x * entity.scale;
+```dart
+entity.x = entity.x * entity.scale;
+```
 
 It’s converted into the VM instructions shown in the following figure.
 Each VM instruction can return a value
@@ -265,7 +277,9 @@ before loading the actual value.
 
 The following Dart code is converted into the VM instructions shown below.
 
-    entity.y = entity.y + entity.x;
+```dart
+entity.y = entity.y + entity.x;
+```
 
 ![6 values are needed (for y, x, unboxed y, unboxed x, the result, and the boxed result](images/4.png)
 
@@ -289,11 +303,15 @@ you must be careful that the values remain in smi range.
 The VM performs an optimization when it sees a left shift
 masked with a constant smi value:
 
-    result = (int1 << int2) & CONSTANT;  // CONSTANT within smi range
+```dart
+result = (int1 << int2) & CONSTANT;  // CONSTANT within smi range
+```
 
 For example:
 
-    a = (b << c) & 0x3FFFFFFF;
+```dart
+a = (b << c) & 0x3FFFFFFF;
+```
 
 The VM knows that the result can be stored in a smi,
 and it generates code that doesn’t check whether
@@ -329,9 +347,11 @@ These operations can add overhead when working with typed lists.
 Consider the following code,
 assuming that all integer variables stay within the smi range:
 
-    for (int i = 0; i < list.length; i++) {
-      list[i] = list[i] + b;
-    }
+```dart
+for (int i = 0; i < list.length; i++) {
+  list[i] = list[i] + b;
+}
+```
 
 If `list` is an object list,
 no smi tagging or untagging occurs.
