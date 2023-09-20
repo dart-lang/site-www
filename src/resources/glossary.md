@@ -61,7 +61,7 @@ places where a variable that can only be assigned a value one time is being
 assigned after it might already have been assigned a value.
 
 For example, in the following code the variable `s` is definitely unassigned
-when it’s passed as an argument to `print`:
+when it's passed as an argument to `print`:
 
 ```dart
 void f() {
@@ -83,7 +83,7 @@ Definite assignment analysis can even tell whether a variable is definitely
 assigned (or unassigned) when there are multiple possible execution paths. In
 the following code the `print` function is called if execution goes through
 either the true or the false branch of the `if` statement, but because `s` is
-assigned no matter which branch is taken, it’s definitely assigned before it’s
+assigned no matter which branch is taken, it's definitely assigned before it's
 passed to `print`:
 
 ```dart
@@ -100,9 +100,9 @@ void f(String name, bool casual) {
 
 In flow analysis, the end of the `if` statement is referred to as a _join_—a
 place where two or more execution paths merge back together. Where there's a
-join, the analysis says that a variable is definitely assigned if it’s
+join, the analysis says that a variable is definitely assigned if it's
 definitely assigned along all of the paths that are merging, and definitely
-unassigned if it’s definitely unassigned along all of the paths.
+unassigned if it's definitely unassigned along all of the paths.
 
 Sometimes a variable is assigned a value on one path but not on another, in
 which case the variable might or might not have been assigned a value. In the
@@ -119,7 +119,7 @@ void f(String name, bool casual) {
 }
 ```
 
-The same is true if there is a false branch that doesn’t assign a value to `s`.
+The same is true if there is a false branch that doesn't assign a value to `s`.
 
 The analysis of loops is a little more complicated, but it follows the same
 basic reasoning. For example, the condition in a `while` loop is always

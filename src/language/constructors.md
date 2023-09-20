@@ -69,14 +69,14 @@ are implicitly final and only in scope of the initializer list.
 
 ## Default constructors
 
-If you don’t declare a constructor, a default constructor is provided
+If you don't declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
 
-## Constructors aren’t inherited
+## Constructors aren't inherited
 
-Subclasses don’t inherit constructors from their superclass. A subclass
+Subclasses don't inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
 
@@ -105,14 +105,14 @@ class Point {
 {% endprettify %}
 
 Remember that constructors are not inherited, which means that a
-superclass’s named constructor is not inherited by a subclass. If you
+superclass's named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
 
 
 ## Invoking a non-default superclass constructor
 
-By default, a constructor in a subclass calls the superclass’s unnamed,
+By default, a constructor in a subclass calls the superclass's unnamed,
 no-argument constructor.
 The superclass's constructor is called at the beginning of the
 constructor body. If an [initializer list](#initializer-list)
@@ -123,7 +123,7 @@ In summary, the order of execution is as follows:
 1. superclass's no-arg constructor
 1. main class's no-arg constructor
 
-If the superclass doesn’t have an unnamed, no-argument constructor,
+If the superclass doesn't have an unnamed, no-argument constructor,
 then you must manually call one of the constructors in the
 superclass. Specify the superclass constructor after a colon (`:`), just
 before the constructor body (if any).
@@ -292,8 +292,8 @@ void main() {
 
 ## Redirecting constructors
 
-Sometimes a constructor’s only purpose is to redirect to another
-constructor in the same class. A redirecting constructor’s body is
+Sometimes a constructor's only purpose is to redirect to another
+constructor in the same class. A redirecting constructor's body is
 empty, with the constructor call
 (using `this` instead of the class name)
 appearing after a colon (:).
@@ -336,7 +336,7 @@ For details, see the section on
 
 ## Factory constructors
 
-Use the `factory` keyword when implementing a constructor that doesn’t
+Use the `factory` keyword when implementing a constructor that doesn't
 always create a new instance of its class. For example, a factory
 constructor might return an instance from a cache, or it might
 return an instance of a subtype.

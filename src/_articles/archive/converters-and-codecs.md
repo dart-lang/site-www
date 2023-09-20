@@ -18,13 +18,13 @@ core library that provides a set of converters
 and useful tools to build new converters.
 Examples of converters provided by the library include those
 for commonly used encodings such as JSON and UTF-8.
-In this document, we show how Dart’s
+In this document, we show how Dart's
 converters work and how you can create your own efficient converters
 that fit into the Dart world.
 
 ## Big picture
 
-Dart’s conversion architecture is
+Dart's conversion architecture is
 based on _converters_, which translate from one representation to another.
 When conversions are reversible, two converters are grouped together into a
 _codec_ (coder-decoder). The term codec is frequently used for audio and
@@ -67,7 +67,7 @@ The base implementation of
 [Codec]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Codec-class.html)
 for these two members
 provides a solid default implementation
-and implementers usually don’t need to worry about them.
+and implementers usually don't need to worry about them.
 
 The `encode()` and `decode()`
 methods, too, may be left untouched, but they can be extended for additional
@@ -112,7 +112,7 @@ the `convert()` method.
 
 Such a minimal converter works in synchronous settings, but
 does not work when used with chunks (either synchronously or asynchronously). In
-particular, such a simple converter doesn’t work as a transformer (one of the
+particular, such a simple converter doesn't work as a transformer (one of the
 nicer features of Converters). A fully implemented converter implements the
 [StreamTransformer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)
 interface and can thus be given to the `Stream.transform()` method.
@@ -128,13 +128,13 @@ File.openRead().transform(utf8.decoder).
 
 The concept of chunked conversions can be confusing, but at its core, it is
 relatively simple. When a chunked conversion (including a stream
-transformation) is started, the converter’s
+transformation) is started, the converter's
 [startChunkedConversion]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Converter/startChunkedConversion.html)
 method is invoked with an output-
 sink as argument. The method then returns an input sink into which the caller
 puts data.
 
-![Chunked conversion](/articles/archive/images/chunked-conversion.png)
+![Chunked conversion](/assets/img/converters-and-codecs/chunked-conversion.png)
 
 **Note**: An asterisk (`*`) in the diagram represents optional multiple calls.
 
@@ -278,7 +278,7 @@ not break the extended sinks._
 This section shows all the steps needed to create a simple encryption
 converter and how a custom ChunkedConversionSink can improve performance.
 
-Let’s start with the simple synchronous converter,
+Let's start with the simple synchronous converter,
 whose encryption routine simply rotates bytes by the given key:
 
 {% prettify dart tag=pre+code %}
@@ -389,7 +389,7 @@ main(args) {
 
 For many purposes, the current version of Rot is sufficient. That is, the
 benefit of improvements would be outweighed by the cost of more complex code
-and test requirements. Let’s assume, however,
+and test requirements. Let's assume, however,
 that the performance of the converter is critical
 (it's on the hot path and up on the profile).
 We furthermore assume that
@@ -399,7 +399,7 @@ the cost of allocating a new list for every chunk is killing performance
 We start by making the allocation cost cheaper: by using a
 [typed byte-list]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Uint8List-class.html)
 we can reduce the size of the allocated list by a factor of 8 (on 64-bit
-machines). This one line change doesn’t remove the allocation, but makes it much
+machines). This one line change doesn't remove the allocation, but makes it much
 cheaper.
 
 We can also avoid the allocation altogether if we overwrite the input. In
@@ -452,7 +452,7 @@ main() {
 In this small example, performance isn't visibly different,
 but internally the
 chunked conversion avoids allocating new lists for the individual chunks.
-For two small chunks, it doesn’t make a difference, but
+For two small chunks, it doesn't make a difference, but
 if we implement this for the stream transformer,
 encrypting a bigger file can be noticeably faster.
 
@@ -522,7 +522,7 @@ and benefit from it.
 
 But we are not done yet.
 
-Although we won’t make the cipher faster anymore,
+Although we won't make the cipher faster anymore,
 we can improve the output side of our Rot converter.
 Take, for instance, the fusion of two encryptions:
 
@@ -608,7 +608,7 @@ class _RotSink extends CipherSink {
 }
 {% endprettify %}
 
-With these changes our super secure, double cipher won’t allocate any new lists
+With these changes our super secure, double cipher won't allocate any new lists
 and our work is done.
 
 Thanks to Lasse Reichstein Holst Nielsen, Anders Johnsen, and Matias Meno who

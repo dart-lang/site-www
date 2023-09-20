@@ -1,6 +1,6 @@
 ---
 title: Customizing static analysis
-description: >
+description: >-
   Use an analysis options file and code comments to customize static analysis.
 ---
 
@@ -390,7 +390,7 @@ such as new diagnostics, quick fixes, and custom code completion.
 You can enable only one plugin per `analysis_options.yaml` file.
 Enabling an analyzer plugin increases how much memory the analyzer uses.
 
-Don’t use analyzer plugins if your situation meets
+Don't use analyzer plugins if your situation meets
 either of the following conditions:
 
 * You use a development machine with less than 16 GB of memory.
