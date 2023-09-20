@@ -33,7 +33,5 @@ These two resources are popular with both beginning Dart developers and experts.
     Learn about and practice writing asynchronous code, using DartPad.
   * [Streams](/tutorials/language/streams)<br>
     A beginner's guide to handling sequences of asynchronous events.
-* [Language articles](/articles)<br>
-  Articles about language features such as mixins and asynchrony support.
 * [Specification](/guides/language/spec)<br>
   A definitive, highly technical description of the Dart language.
