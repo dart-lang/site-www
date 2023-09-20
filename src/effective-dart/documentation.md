@@ -31,10 +31,10 @@ generated documentation.
 
 {:.good}
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Not if anything comes before it.
 if (_chunks.isNotEmpty) return false;
-{% endprettify %}
+```
 
 Capitalize the first word unless it's a case-sensitive identifier. End it with a
 period (or "!" or "?", I suppose). This is true for all comments: doc comments,
@@ -44,21 +44,21 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 
 {:.good}
 <?code-excerpt "docs_good.dart (block-comments)"?>
-{% prettify dart tag=pre+code %}
+```dart
 void greet(String name) {
   // Assume we have a valid name.
   print('Hi, $name!');
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (block-comments)"?>
-{% prettify dart tag=pre+code %}
+```dart
 void greet(String name) {
   /* Assume we have a valid name. */
   print('Hi, $name!');
 }
-{% endprettify %}
+```
 
 You can use a block comment (`/* ... */`) to temporarily comment out a section
 of code, but all other comments should use `//`.
@@ -83,17 +83,17 @@ and generate documentation for it.
 
 {:.good}
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// The number of characters in this chunk when unsplit.
 int get length => ...
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_good.dart (use-doc-comments)" replace="/^\///g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // The number of characters in this chunk when unsplit.
 int get length => ...
-{% endprettify %}
+```
 
 For historical reasons, `dart doc` supports two syntaxes of doc comments: `///`
 ("C# style") and `/** ... */` ("JavaDoc style"). We prefer `///` because it's
@@ -131,11 +131,11 @@ at the start of the file.
 
 {:.good}
 <?code-excerpt "docs_good.dart (library-doc)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// A really great test library.
 @TestOn('browser')
 library;
-{% endprettify %}
+```
 
 ### CONSIDER writing doc comments for private APIs
 
@@ -152,16 +152,16 @@ elsewhere for the solution to their problem.
 
 {:.good}
 <?code-excerpt "docs_good.dart (first-sentence)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Deletes the file at [path] from the file system.
 void delete(String path) {
   ...
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (first-sentence)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Depending on the state of the file system and the user's permissions,
 /// certain operations may or may not be possible. If there is no file at
 /// [path] or it can't be accessed, this function throws either [IOError]
@@ -169,7 +169,7 @@ void delete(String path) {
 void delete(String path) {
   ...
 }
-{% endprettify %}
+```
 
 ### DO separate the first sentence of a doc comment into its own paragraph
 
@@ -183,7 +183,7 @@ like lists of classes and members.
 
 {:.good}
 <?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Deletes the file at [path].
 ///
 /// Throws an [IOError] if the file could not be found. Throws a
@@ -191,18 +191,18 @@ like lists of classes and members.
 void delete(String path) {
   ...
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (first-sentence-a-paragraph)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
 /// be found. Throws a [PermissionError] if the file is present but could
 /// not be deleted.
 void delete(String path) {
   ...
 }
-{% endprettify %}
+```
 
 ### AVOID redundancy with the surrounding context
 
@@ -214,7 +214,7 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 
 {:.good}
 <?code-excerpt "docs_good.dart (redundant)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
@@ -222,11 +222,11 @@ class RadioButtonWidget extends Widget {
     ...
   }
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (redundant)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
@@ -234,7 +234,7 @@ class RadioButtonWidget extends Widget {
     ...
   }
 }
-{% endprettify %}
+```
 
 If you really don't have anything interesting to say
 that can't be inferred from the declaration itself,
@@ -249,7 +249,7 @@ The doc comment should focus on what the code *does*.
 
 {:.good}
 <?code-excerpt "docs_good.dart (third-person)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) => ...
 
@@ -257,7 +257,7 @@ bool all(bool predicate(T element)) => ...
 void start() {
   ...
 }
-{% endprettify %}
+```
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase
 
@@ -267,13 +267,13 @@ the *result* of that work, not the work itself.
 
 {:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// The current day of the week, where `0` is Sunday.
 int weekday;
 
 /// The number of checked buttons on the page.
 int get checkedCount => ...
-{% endprettify %}
+```
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
@@ -283,7 +283,7 @@ What the caller cares about is the *result* of that work, not the work itself.
 
 {:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Whether the modal is currently displayed to the user.
 bool isVisible;
 
@@ -292,7 +292,7 @@ bool get shouldConfirm => ...
 
 /// Whether resizing the current browser window will also resize the modal.
 bool get canResize => ...
-{% endprettify %}
+```
 
 {{site.alert.note}}
   This guideline intentionally doesn't include using "Whether or not". In many
@@ -309,23 +309,23 @@ and if both the getter and the setter have doc comments, then
 
 {:.good}
 <?code-excerpt "docs_good.dart (getter-and-setter)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// The pH level of the water in the pool.
 ///
 /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
 int get phLevel => ...
 set phLevel(int level) => ...
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (getter-and-setter)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// The depth of the water in the pool, in meters.
 int get waterDepth => ...
 
 /// Updates the water depth to a total of [meters] in height.
 set waterDepth(int meters) => ...
-{% endprettify %}
+```
 
 ### PREFER starting library or type comments with noun phrases
 
@@ -336,25 +336,25 @@ extra effort here can make all of the other members simpler to document.
 
 {:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
 class Chunk { ... }
-{% endprettify %}
+```
 
 ### CONSIDER including code samples in doc comments
 
 {:.good}
 <?code-excerpt "docs_good.dart (code-sample)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
 /// ```
 num min(num a, num b) => ...
-{% endprettify %}
+```
 
 Humans are great at generalizing from examples, so even a single code sample
 makes an API easier to learn.
@@ -370,28 +370,28 @@ but can make it clearer when you're referring to a method or constructor.
 
 {:.good}
 <?code-excerpt "docs_good.dart (identifiers)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Throws a [StateError] if ...
 /// similar to [anotherMethod()], but ...
-{% endprettify %}
+```
 
 To link to a member of a specific class, use the class name and member name,
 separated by a dot:
 
 {:.good}
 <?code-excerpt "docs_good.dart (member)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Similar to [Duration.inDays], but handles fractional days.
-{% endprettify %}
+```
 
 The dot syntax can also be used to refer to named constructors. For the unnamed
 constructor, use `.new` after the class name:
 
 {:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// To create a point, call [Point.new] or use [Point.polar] to ...
-{% endprettify %}
+```
 
 ### DO use prose to explain parameters, return values, and exceptions
 
@@ -400,7 +400,7 @@ and returns of a method are.
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (no-annotations)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Defines a flag with the given name and abbreviation.
 ///
 /// @param name The name of the flag.
@@ -409,38 +409,38 @@ and returns of a method are.
 /// @throws ArgumentError If there is already an option with
 ///     the given name or abbreviation.
 Flag addFlag(String name, String abbr) => ...
-{% endprettify %}
+```
 
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
 {:.good}
 <?code-excerpt "docs_good.dart (no-annotations)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Defines a flag.
 ///
 /// Throws an [ArgumentError] if there is already an option named [name] or
 /// there is already an option using abbreviation [abbr]. Returns the new flag.
 Flag addFlag(String name, String abbr) => ...
-{% endprettify %}
+```
 
 ### DO put doc comments before metadata annotations
 
 {:.good}
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// A button that can be flipped on and off.
 @Component(selector: 'toggle')
 class ToggleComponent {}
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 @Component(selector: 'toggle')
 /// A button that can be flipped on and off.
 class ToggleComponent {}
-{% endprettify %}
+```
 
 
 ## Markdown
@@ -456,7 +456,7 @@ universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
 <?code-excerpt "docs_good.dart (markdown)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// This is a paragraph of regular text.
 ///
 /// This sentence has *two* _emphasized_ words (italics) and **two**
@@ -507,7 +507,7 @@ a flavor of what's supported:
 /// ### A subsubheader
 ///
 /// #### If you need this many levels of headers, you're doing it wrong
-{% endprettify %}
+```
 
 ### AVOID using markdown excessively
 
@@ -532,22 +532,22 @@ The backtick syntax avoids those indentation woes, lets you indicate the code's
 language, and is consistent with using backticks for inline code.
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 /// You can use [CodeBlockExample] like this:
 ///
 /// ```dart
 /// var example = CodeBlockExample();
 /// print(example.isItGreat); // "Yes."
 /// ```
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 /// You can use [CodeBlockExample] like this:
 ///
 ///     var example = CodeBlockExample();
 ///     print(example.isItGreat); // "Yes."
-{% endprettify %}
+```
 
 ## Writing
 
@@ -577,7 +577,7 @@ object the member is being called on. Using "the" can be ambiguous.
 
 {:.good}
 <?code-excerpt "docs_good.dart (this)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Box {
   /// The value this wraps.
   Object? _value;
@@ -585,4 +585,4 @@ class Box {
   /// True if this box contains a value.
   bool get hasValue => _value != null;
 }
-{% endprettify %}
+```
