@@ -68,7 +68,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | append: cache_bust }}">
-  {% if css -%}
+  {% if page.css -%}
   {% for cssFile in page.css -%}
     <link href="{{cssFile}}" rel="stylesheet" type="text/css">
   {% endfor -%}
@@ -98,7 +98,7 @@
   <script src="{{ '/assets/js/utilities.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 
-  {% if js -%}
+  {% if page.js -%}
   {% for jsFile in page.js -%}
     <script {% if jsFile.defer %}defer{% endif %} src="{{jsFile.url | default: jsFile}}"></script>
   {% endfor -%}
