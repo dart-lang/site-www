@@ -1433,12 +1433,12 @@ class Point {
 
 {% include linter-rule-mention.md rule="unnecessary_new" %}
 
-Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
-clear because factory constructors mean a `new` invocation may still not
-actually return a new object.
+The `new` keyword is optional when calling a constructor.
+Its meaning is not clear because factory constructors mean a
+`new` invocation may not actually return a new object.
 
-The language still permits `new` in order to make migration less painful, but
-consider it deprecated and remove it from your code.
+The language still permits `new`, but consider
+it deprecated and avoid using it in your code.
 
 {:.good}
 <?code-excerpt "usage_good.dart (no-new)"?>
@@ -1490,7 +1490,7 @@ expression inside:
 may support non-const default values.)
 
 Basically, any place where it would be an error to write `new` instead of
-`const`, Dart 2 allows you to omit the `const`.
+`const`, Dart allows you to omit the `const`.
 
 {:.good}
 <?code-excerpt "usage_good.dart (no-const)"?>
