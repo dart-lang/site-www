@@ -94,7 +94,7 @@ print(a + b + c);
 
 You can nest [any kind of pattern][types] inside a destructuring pattern. 
 For example, this case pattern matches and destructures a two-element
-list whose first element is `a` or `b`:
+list whose first element is `'a'` or `'b'`:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (nested-pattern)"?>
 ```dart
