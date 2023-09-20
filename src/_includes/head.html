@@ -68,9 +68,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | append: cache_bust }}">
-  {% for css in page.css -%}
-    <link href="{{css}}" rel="stylesheet" type="text/css">
+  {% if page.css -%}
+  {% for cssFile in page.css -%}
+    <link href="{{cssFile}}" rel="stylesheet" type="text/css">
   {% endfor -%}
+  {% endif -%}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
           integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
@@ -96,9 +98,11 @@
   <script src="{{ '/assets/js/utilities.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 
-  {% for js in page.js -%}
-    <script {% if js.defer %}defer{% endif %} src="{{js.url | default: js}}"></script>
+  {% if page.js -%}
+  {% for jsFile in page.js -%}
+    <script {% if jsFile.defer %}defer{% endif %} src="{{jsFile.url | default: jsFile}}"></script>
   {% endfor -%}
+  {% endif -%}
 
   {% include analytics.html %}
  </head>
