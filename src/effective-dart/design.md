@@ -1696,9 +1696,10 @@ it's deprecated.
 
 {% include linter-rule-mention.md rule="avoid_private_typedef_functions" %}
 
-In Dart 1, if you wanted to use a function type for a field, variable, or
-generic type argument, you had to first define a typedef for it. Dart 2 supports
-a function type syntax that can be used anywhere a type annotation is allowed:
+In Dart, if you want to use a function type for a field, variable, or
+generic type argument, you can define a typedef for the function type.
+However, Dart supports an inline function type syntax that
+can be used anywhere a type annotation is allowed:
 
 {:.good}
 <?code-excerpt "design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
@@ -1742,7 +1743,7 @@ type and parameter signature:
 Iterable<T> where(bool predicate(T element)) => ...
 ```
 
-Before Dart 2 added function type syntax, this was the only way to give a
+Before Dart added function type syntax, this was the only way to give a
 parameter a function type without defining a typedef. Now that Dart has a
 general notation for function types, you can use it for function-typed
 parameters as well:
