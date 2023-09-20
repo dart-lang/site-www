@@ -41,11 +41,6 @@ announce: https://groups.google.com/a/dartlang.org/g/announce
 
 show_banner: true
 
-collections:
-  articles:
-    output: true
-    permalink: /articles/:path
-
 defaults:
 - scope:
     path: ''
