@@ -347,14 +347,14 @@ class Chunk { ... }
 
 {:.good}
 <?code-excerpt "docs_good.dart (code-sample)"?>
-```dart
+{% prettify dart tag=pre+code %}
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
 /// ```
 num min(num a, num b) => ...
-```
+{% endprettify %}
 
 Humans are great at generalizing from examples, so even a single code sample
 makes an API easier to learn.
@@ -456,7 +456,7 @@ universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
 <?code-excerpt "docs_good.dart (markdown)"?>
-```dart
+{% prettify dart tag=pre+code %}
 /// This is a paragraph of regular text.
 ///
 /// This sentence has *two* _emphasized_ words (italics) and **two**
@@ -507,7 +507,7 @@ a flavor of what's supported:
 /// ### A subsubheader
 ///
 /// #### If you need this many levels of headers, you're doing it wrong
-```
+{% endprettify %}
 
 ### AVOID using markdown excessively
 
