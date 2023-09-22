@@ -236,7 +236,7 @@ which are neither futures nor stream events.
 
 {:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
-{% prettify dart tag=pre+code %}
+```dart
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int? maxCount]) {
@@ -254,7 +254,7 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
   return controller.stream;
 }
-{% endprettify %}
+```
 
 As before, you can use the stream returned by `timedCounter()` like this:
 {% comment %}
