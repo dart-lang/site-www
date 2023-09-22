@@ -86,10 +86,10 @@ For example, consider the following code, which is **invalid**:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
-{% endprettify %}
+```
 
 If you read elements with `[]`,
 the compiler tells you that the operator `'[]'`
