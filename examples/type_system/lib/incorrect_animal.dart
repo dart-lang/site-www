@@ -1,3 +1,4 @@
+// ignore_for_file: unused_local_variable, unused_element
 import 'animal.dart';
 
 // #docregion chase-mouse
