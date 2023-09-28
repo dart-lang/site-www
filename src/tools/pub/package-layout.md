@@ -36,6 +36,8 @@ enchilada/
     getting_started.md
   example/
     main.dart
+  integration_test/
+    app_test.dart
   lib/
     enchilada.dart
     tortilla.dart
@@ -374,11 +376,25 @@ enchilada/
 ```
 
 Every package should have tests. With pub, the convention is
-that these go in a `test` directory (or some directory inside it if you like)
-and have `_test` at the end of their file names.
+that most of these go in a `test` directory (or some directory inside it if you
+like) and have `_test` at the end of their file names.
 
-Typically, these use the [test]({{site.pub-pkg}}/test)
-package.
+Typically, these use the [test]({{site.pub-pkg}}/test) package.
+
+```nocode
+enchilada/
+  integration_test/
+    app_test.dart
+```
+
+Flutter app packages may also have special integration tests, which use the
+[integration_test]({{site.flutter-docs}}/cookbook/testing/integration/introduction)
+package. These tests live in their own `integration_test` directory.
+
+Other packages may choose to follow a similar pattern, to separate their slower
+integration tests from their unit tests, but note that by default `dart test`
+will not run these tests. You will have to explicitly run them with
+`dart test integration_test`.
 
 ```nocode
 enchilada/
