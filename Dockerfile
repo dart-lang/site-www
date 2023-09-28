@@ -33,6 +33,7 @@ ENV DART_SDK=/usr/lib/dart
 ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
+      # BEGIN dart-sha
       amd64_stable) \
         DART_SHA256="be679ccef3a0b28f19e296dd5b6374ac60dd0deb06d4d663da9905190489d48b"; \
         SDK_ARCH="x64";; \
@@ -51,6 +52,7 @@ RUN set -eu; \
       arm64_dev) \
         DART_SHA256="df63b26de4699be1738ddec36fcb98b98ac880e2223d1137caf40a529e8c0799"; \
         SDK_ARCH="arm64";; \
+      # END dart-sha
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
     BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
