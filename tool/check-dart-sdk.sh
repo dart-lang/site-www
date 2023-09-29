@@ -26,11 +26,15 @@ while (( "$#" )); do
   esac
 done
 
+echo -e "\nPulling latest Dart SHA hashes.\n\nThis will take a moment.\n"
+
 BASEURL="https://storage.googleapis.com/dart-archive/channels"
 CHANNELS="stable beta dev"
 ARCHS="amd64 arm64"
 ENDING='\\\n'
-FILE='./new-dart-hashes.txt'
+FILE=$TOOL_DIR/new-dart-hashes.txt
+
+true > $FILE
 
 for CHANNEL in $CHANNELS; do
   for ARCH in $ARCHS; do
@@ -47,8 +51,34 @@ for CHANNEL in $CHANNELS; do
     _checkonly="${_fname_arr%:*}" # Remove filename portion of checksum output
     printf "        DART_SHA256=\"$_fname_arr\"; $ENDING" >> $FILE
     printf "        SDK_ARCH=\"$_arch\";; $ENDING" >> $FILE
+    echo "Pulled ${ARCH}_${CHANNEL}: $_fname_arr"
     rm $_filename
   done
 done
 
-echo "Pulled latest Dart SHA hashes and saved to $FILE."
+echo -e "\n\nPulled latest Dart SHA hashes and saved to $FILE.\n"
+
+lead='# BEGIN dart-sha$'
+tail='# END dart-sha$'
+new_file='tool/new-dart-hashes.txt'
+existing_file='Dockerfile'
+
+new_hash=$(sed -n -e '/DART_SHA/ p' -e '/DART_SHA/ q' $new_file)
+old_hash=$(sed -n -e '/DART_SHA/ p' -e '/DART_SHA/ q' $existing_file)
+
+echo -e "Old $old_hash"
+echo -e "New $new_hash"
+
+if test -f "$new_file"
+then
+    echo -e "Found replacement hashes at $new_file.\n"
+else
+    echo -e "No replacement hashes at this time.\n"
+fi
+if test -f "$existing_file"
+then
+    echo -e "Found Dockerfile at $existing_file.\n"
+    echo -e "Run tool/update-dart-sums.sh."
+else
+    echo -e "No Dockerfile found."
+fi
