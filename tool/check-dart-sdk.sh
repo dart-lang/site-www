@@ -69,16 +69,23 @@ old_hash=$(sed -n -e '/DART_SHA/ p' -e '/DART_SHA/ q' $existing_file)
 echo -e "Old $old_hash"
 echo -e "New $new_hash"
 
-if test -f "$new_file"
-then
-    echo -e "Found replacement hashes at $new_file.\n"
+# Compare the SHA hashes.
+if [[ "$new_hash" == "$old_hash" ]]; then
+  echo -e "Current SHA hashes are the latest hashes.\n"
+  echo -e "No update needed.\n"
+  rm $new_file
+  echo -e "Removed $new_file.\n"
+  echo -e "Re-run check-dart-sdk.sh to pull the current SHA hashes.\n"
 else
-    echo -e "No replacement hashes at this time.\n"
-fi
-if test -f "$existing_file"
-then
-    echo -e "Found Dockerfile at $existing_file.\n"
-    echo -e "Run tool/update-dart-sums.sh."
-else
-    echo -e "No Dockerfile found."
+  if [[ -f "$new_file" ]]; then
+    echo -e "Retrieved replacement hashes and saved to $new_file.\n"
+    if [[ -f "$existing_file" ]]; then
+      echo -e "Found Dockerfile at $existing_file.\n"
+      echo -e "Run tool/update-dart-sums.sh."
+    else
+      echo -e "No Dockerfile found."
+    fi
+  else
+    echo -e "No replacement hashes found at this time.\n"
+  fi
 fi
