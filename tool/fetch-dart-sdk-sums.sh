@@ -34,7 +34,6 @@ ENDING='\\\n'
 printf "\n$(blue "Copy the following output and replace the existing code in the Dockerfile")\n"
 printf "$(blue "inside the 'set -eu' run statement:")\n\n"
 
-
 for CHANNEL in $CHANNELS; do
   for ARCH in $ARCHS; do
     printf "$(yellow "${ARCH}_${CHANNEL})") $ENDING"
