@@ -145,6 +145,16 @@ fetch-sums:
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
 
+# Check Dart sums pulls the set of Dart SDK SHA256 hashes
+# and writes them to a temp file.
+check-sums:
+	tool/check-dart-sdk.sh
+
+# Update Dart sums replaces the Dart SDK SHA256 hashes
+# in the Dockerfile and deletes the temp file.
+update-sums:
+	tool/update-dart-sdk.sh
+
 # Test the dev container with pure docker
 test-builds:
 	docker build -t ${BUILD_TAG}:stable \
