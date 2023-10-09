@@ -7,7 +7,7 @@ description: How to move your existing Dart code to the world of null safety
   Dart 2.19 is the final release that supports null-safety migration,
   including the `dart migrate` tool.
   To migrate your package to null safety,
-  use the latest Dart 2.19 SDK.
+  use the   Dart 2.19 SDK.
   To learn more,
   see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
 {{site.alert.end}}
@@ -76,16 +76,16 @@ with the help of the `dart pub outdated` command in null-safety mode.
 The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
-<a id="switch-to-the-latest-stable-dart-release"></a>
-### Switch to the latest Dart 2.19 release
+<a id="switch-to-the- -stable-dart-release"></a>
+### Switch to the   Dart 2.19 release
 
-Switch to the latest **Dart 2.19 release** of the Dart SDK. 
+Switch to the   **Dart 2.19 release** of the Dart SDK. 
 This is included in the Flutter 3.7 SDK.
 
 Check that you have Dart 2.19:
 
 ```terminal
-$ dart --version
+$ dart --version 
 Dart SDK version: 2.19.6
 ```
 
@@ -133,7 +133,7 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Run `dart pub upgrade --null-safety` to upgrade to the latest versions
+1. Run `dart pub upgrade --null-safety` to upgrade to the   versions
    supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
@@ -179,7 +179,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest 2.19 release of the Dart SDK.
+* Use the   2.19 release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
