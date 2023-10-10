@@ -76,7 +76,7 @@ with the help of the `dart pub outdated` command in null-safety mode.
 The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
-<a id="switch-to-the- -stable-dart-release"></a>
+<a id="switch-to-the-latest-stable-dart-release"></a>
 ### Switch to the   Dart 2.19 release
 
 Switch to the   **Dart 2.19 release** of the Dart SDK. 
