@@ -133,7 +133,7 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Run `dart pub upgrade --null-safety` to upgrade to the   versions
+1. Run `dart pub upgrade --null-safety` to upgrade to the versions
    supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
