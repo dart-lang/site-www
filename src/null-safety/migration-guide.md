@@ -77,7 +77,7 @@ The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
 <a id="switch-to-the-latest-stable-dart-release"></a>
-### Switch to the   Dart 2.19 release
+### Switch to the Dart 2.19.6 release
 
 Switch to the   **Dart 2.19 release** of the Dart SDK. 
 This is included in the Flutter 3.7 SDK.
