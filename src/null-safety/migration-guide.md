@@ -82,7 +82,7 @@ so that you can easily undo any changes.
 Switch to the **2.19.6 release** of the Dart SDK. 
 This is included in the Flutter 3.7.12 SDK.
 
-Check that you have Dart 2.19:
+Check that you have Dart 2.19.6:
 
 ```terminal
 $ dart --version 
