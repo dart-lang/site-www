@@ -8,16 +8,15 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab—which is based on a
-[Dart language cheatsheet](/guides/language/cheatsheet)
-written by and for Google engineers—walks you through
+This codelab walks you through
 the most important of these language features.
 
 The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
 If you need help, click the **Hint** button.
-To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
+To run the code formatter ([`dart format`](/tools/dart-format)), 
+click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 

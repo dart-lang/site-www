@@ -184,6 +184,7 @@
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
       { "source": "/guides/language/analysis-options", "destination": "/tools/analysis", "type": 301 },
+      { "source": "/guides/language/cheatsheet", "destination": "/language", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
       { "source": "/guides/language/concurrency", "destination": "/language/concurrency", "type": 301 },
       { "source": "/guides/language/effective-dart", "destination": "/effective-dart", "type": 301 },
