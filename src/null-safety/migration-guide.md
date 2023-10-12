@@ -137,7 +137,7 @@ update its dependencies to null-safe versions:
    latest versions supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
-3. Run `dart pub get`.
+2. Run `dart pub get`.
 
 
 ## 2. Migrate {#step2-migrate}
