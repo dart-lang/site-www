@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@8a4b97ea2017cc079571daec46542f76189836b1
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: ${{ matrix.sdk }}
       - run: dart pub get
@@ -72,7 +72,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools@12.4.0
-      - uses: dart-lang/setup-dart@8a4b97ea2017cc079571daec46542f76189836b1
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
       - run: tool/check-links.sh
@@ -99,7 +99,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools@12.4.0
-      - uses: dart-lang/setup-dart@8a4b97ea2017cc079571daec46542f76189836b1
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
       - run: tool/check-links.sh
