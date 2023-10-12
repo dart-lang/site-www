@@ -3,22 +3,29 @@ title: Fixing type promotion failures
 description: Solutions for cases where you know more about a field's type than Dart can determine.
 ---
 
-This page has information to help you understand
-why type promotion failures occur,
-with tips on how to fix them.
-To learn more, check out [Working with nullable fields][ns-fields],
-a section in [Understanding null safety][].
+[Type promotion][] occurs when flow anlaysis can soundly confirm the value of 
+a nullable type is *not null*, and that its value can't change from that point on.
+Many circumstances can affect that certainty, causing type promotion to fail.
 
-[issue #2940]: https://github.com/dart-lang/site-www/issues/2940
-[ns-fields]: /null-safety/understanding-null-safety#working-with-nullable-fields
+This page lists reasons why type promotion failures occur,
+with tips on how to fix them.
+To learn more, check out the [Understanding null safety][] page.
+
+[Type promotion]: /null-safety/understanding-null-safety#type-promotion-on-null-checks
 [Understanding null safety]: /null-safety/understanding-null-safety
 
 
-## Only local variables can be promoted {#property-or-this}
+
+## Only local variables can be promoted in this version {#property}
+
+```nocode
+error - 'fieldName' refers to a field. It couldn’t be promoted because field promotion
+is only available in Dart 3.2 and above.
+```
 
 **The cause:**
-You're trying to promote a property or `this`,
-but only local variables can be promoted.
+You're trying to promote a property,
+but only local variables can be promoted in Dart 3.1 and earlier.
 
 Example:
 
@@ -79,6 +86,15 @@ implementing it would be difficult and not very useful.)
   That way, you can't accidentally update the local variable
   when you intend to update the field.
 {{site.alert.end}}
+
+
+## Unsupported `this` promotion {#this}
+
+**The cause:**
+You're trying to promote `this`,
+but type promotion for `this` is not yet supported.
+
+Example:
 
 
 ## Other causes and workarounds
