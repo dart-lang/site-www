@@ -85,7 +85,7 @@ This is included in the Flutter 3.7.12 SDK.
 Check that you have Dart 2.19.6:
 
 ```terminal
-$ dart --version 
+$ dart --version
 Dart SDK version: 2.19.6
 ```
 
@@ -133,11 +133,11 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Run `dart pub upgrade --null-safety` to upgrade to the versions
-   supporting null safety.
+1. Run `dart pub upgrade --null-safety` to upgrade to the
+   latest versions supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
-2. Run `dart pub get`.
+3. Run `dart pub get`.
 
 
 ## 2. Migrate {#step2-migrate}
