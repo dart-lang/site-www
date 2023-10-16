@@ -7,6 +7,8 @@ description: Solutions for cases where you know more about a field's type than D
 a nullable type is *not null*, and that its value can't change from that point on.
 Many circumstances can affect that certainty, causing type promotion to fail.
 
+**Only local variables and parameters, and private, final fields can be promoted**.
+
 This page lists reasons why type promotion failures occur,
 with tips on how to fix them.
 To learn more, check out the [Understanding null safety][] page.
@@ -18,11 +20,6 @@ To learn more, check out the [Understanding null safety][] page.
 
 ## Only local variables can be promoted in this version {#property}
 
-```nocode
-error - 'fieldName' refers to a field. It couldn’t be promoted because field promotion
-is only available in Dart 3.2 and above.
-```
-
 **The cause:**
 You're trying to promote a property,
 but only local variables can be promoted in Dart 3.1 and earlier.
@@ -32,18 +29,27 @@ Example:
 {:.bad}
 {% prettify dart tag=pre+code %}
 class C {
-  int? i;                  // (1)
+  int? i;                  // Context
   void f() {
     if (i == null) return;
-    print(i.isEven);       // (2) ERROR
+    print(i.isEven);       // Error
   }
 }
 {% endprettify %}
+
+Context message: 
+
+```nocode
+'fieldName' refers to a field. It couldn’t be promoted because field promotion
+is only available in Dart 3.2 and above.
+```
 
 The Dart compiler produces an error message for (2)
 that points to (1) and explains that
 `i` can't be promoted to a non-nullable type
 because it's a field.
+
+Solution: 
 
 The usual fix is either to use `i!`
 or to create a local variable
@@ -90,12 +96,116 @@ implementing it would be difficult and not very useful.)
 
 ## Unsupported `this` promotion {#this}
 
+Message: 
+
+```nocode
+error - The expression in question is `this`. It couldn't be promoted because
+promotion of `this` is not yet supported.
+```
+
 **The cause:**
 You're trying to promote `this`,
 but type promotion for `this` is not yet supported.
 
 Example:
 
+Solution:
+
+## Entity is a getter, not a field
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+
+Possible solution for abstract fields:
+
+## Field is not private
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+## Field is external
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+## Field is not final
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+## Conflict with getter elsewhere in library
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+Note about unrelated classes:
+
+## Conflict with non-promotable field elsewhere in library
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
+
+## Conflict with implicit noSuchMethod forwarder
+
+Message: 
+
+```nocode
+```
+
+The cause: 
+
+Example:
+
+Solution:
 
 ## Other causes and workarounds
 
