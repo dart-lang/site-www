@@ -252,7 +252,7 @@ executables:
   fvm:
 ```
 
-Once the package is activated using `pub global activate`,
+Once the package is activated using `dart pub global activate`,
 typing `slidy` executes `bin/main.dart`.
 Typing `fvm` executes `bin/fvm.dart`.
 If you don't specify the value, it is inferred from the key.
