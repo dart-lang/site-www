@@ -419,7 +419,7 @@ but we're working to make the common cases fast.
 
 ### Q. How can I write Dart code that compiles to performant JavaScript?
 
-See [Improving production web compiliation](/tools/dart-compile#helping-generate-efficient-code).
+See [Improving production web compilation](/tools/dart-compile#helping-generate-efficient-code).
 This information might change as the implementation of
 `dart compile js` changes.
 

@@ -228,11 +228,11 @@ JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
-Dart web contains two compiliation modes:
+Dart web contains two compilation modes:
 
 * An incremental development compiler enabling a fast developer cycle
 * An optimizing production compiler which compiles Dart code to fast,
-  compact, deployable JavaScript. These effeciencies come from
+  compact, deployable JavaScript. These efficiencies come from
   techniques such as dead-code elimination.
 
 More information:
