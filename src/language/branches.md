@@ -113,7 +113,9 @@ switch (command) {
 }
 ```
 
-Empty cases fall through to the next case. 
+<a id="switch-share"></a>
+
+Empty cases fall through to the next case, allowing cases to share a body. 
 For an empty case that does not fall through,
 use [`break`][break] for its body.
 For non-sequential fall-through,
@@ -262,13 +264,24 @@ To set an optional guard clause after a `case` clause, use the keyword `when`.
 A guard clause can follow `if case`, and
 both `switch` statements and expressions.
 
-<?code-excerpt "language/lib/control_flow/branches.dart (guard)"?>
 ```dart
-switch (pair) {
-  case (int a, int b) when a > b:
-    print('First element greater');
-  case (int a, int b):
-    print('First element not greater');
+// Switch statement:
+switch (something) {
+  case somePattern when some || boolean || expression:
+    //             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+    body;
+}
+
+// Switch expression:
+var value = switch (something) {
+  somePattern when some || boolean || expression => body,
+  //               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+}
+
+// If-case statement:
+if (something case somePattern when some || boolean || expression) {
+  //                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+  body;
 }
 ```
 
