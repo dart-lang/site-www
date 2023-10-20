@@ -169,11 +169,6 @@ It is possible to write the Dart bindings
 that integrate with C code using [_only_ the `dart:ffi` library](#interfacing-with-native-types),
 but for large API surfaces, this can be time-consuming.
 
-
-You can interface with native types to write the Dart bindings
-that integrate with C code using only the `dart:ffi` library.
-
-
 To reduce this burden,
 you can use the [`package:ffigen`][ffigen] binding generator
 to automatically create FFI wrappers from C header files.
