@@ -342,12 +342,12 @@ linter:
     - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
-    - collection_methods_unrelated_type
     - combinators_ordering
     - comment_references
-    - dangling_library_doc_comments
-    - implicit_call_tearoffs
     - invalid_case_patterns
+    - library_annotations
+    - one_member_abstracts
+    - only_throw_errors
 ```
 
 
