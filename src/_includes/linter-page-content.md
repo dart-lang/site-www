@@ -2,7 +2,7 @@
 
 {{lint.description}}
 
-{% if lint.sinceDartSdk == "Unreleased" %}
+{% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" %}
 _This rule is currently **experimental**
 and not yet available in a stable SDK._
 {% elsif lint.state == "removed" %}

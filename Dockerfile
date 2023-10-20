@@ -35,22 +35,22 @@ RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       # BEGIN dart-sha
       amd64_stable) \
-        DART_SHA256="0150dff731ac017646941ebfa46ca2a7bbe5c634be0928262d524420341fc739"; \
+        DART_SHA256="280fcd1edba1b59af8a2d4b578904d25428ccff6e865c44bbfb5434d5cc02ddb"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="2b2830001cd8732d356c4beee7be25c947e6cb6e8ca7b8ea748da47f6cc9d222"; \
+        DART_SHA256="7e65aa7084bd87f1d752b3070bb8c22fb85080fef12432db11eed8ed0cb0c99c"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="dc85f9d7a739b4002ddeda181ce53c4e2c653c01fbd3c8096676ee99930f61f6"; \
+        DART_SHA256="b3aa85b15bd13d619ba924524d5c7f082dc256a062ad34fe12ec824c9f05c2b3"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="a6166776794dd06f146877de94e09e688314a53b1c44429ed06ee03e29a6e5a8"; \
+        DART_SHA256="b7644435c8acf1e73da3f1ce16889b7222fbab37a75111aff225422a1cc61cab"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="33adbd575bd4ec9ee682404d305002fd816ae909fe8c1007777f20c67712ec32"; \
+        DART_SHA256="942d507e3aca412f8b54910f9e34c4f76e3ca61c1fffa46ff30bb6b926354fdc"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="4cffcd38f32ddf1ca6ce2b361113cb85e7eb1300932f41031c7cb45206f5b045"; \
+        DART_SHA256="93352d1ed979b864fa53fd67768cd4ab8ae0dd86b05d773f7e3f9fcfc0f70a2e"; \
         SDK_ARCH="arm64";; \
       # END dart-sha
     esac; \
@@ -84,7 +84,7 @@ FROM dart as node
 
 RUN mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
-    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
     && apt-get update -yq \
     && apt-get install nodejs -yq \
     && npm install -g npm # Ensure latest npm
