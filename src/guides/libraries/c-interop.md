@@ -16,6 +16,9 @@ _native interface_ and _language bindings._
 API documentation is available in the
 [`dart:ffi` API reference.]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
 
+NOTE: _Maybe add something here about how ffigen is the best way to do stuff (like objective c page),
+but you can still write things manually with just dart:ffi (link to section)_
+
 ## Examples
 
 The following examples show how to use the `dart:ffi` library:
@@ -29,6 +32,10 @@ The following examples show how to use the `dart:ffi` library:
 
 
 ## Walkthrough of hello_world
+
+NOTE: __
+
+NOTE: _Rename to something like quickstart, and/OR add explanation of how to set up your own file directory from scratch_
 
 The [hello_world example][hello_world] has the minimum necessary code
 for calling a C library.
@@ -87,19 +94,8 @@ Hello World
 
 ### Using dart:ffi
 
-The [`hello.dart` file]({{page.hw}}/hello.dart)
+The code in the [`hello.dart` file]({{page.hw}}/hello.dart)
 illustrates the steps for using `dart:ffi` to call a C function:
-
-1. Import `dart:ffi`.
-2. Import the path library that you'll use to store the path of dynamic library.
-3. Create a typedef with the FFI type signature of the C function.
-4. Create a typedef for the variable that you'll use when calling the C function.
-5. Create a variable to store the path of the dynamic library.
-6. Open the dynamic library that contains the C function.
-7. Get a reference to the C function, and put it into a variable.
-8. Call the C function.
-
-Here's the code for each step.
 
 1. Import `dart:ffi`.
 ```dart
@@ -162,17 +158,51 @@ Once you understand the hello_world example,
 you should be ready to look at the
 [other `dart:ffi` examples](#examples).
 
+## Generating FFI bindings with `package:ffigen`
 
-## Bundling and loading C libraries
+NOTE: _Or "interfacing with native types using package:ffigen"? / "Using `package:ffigen`"?_
 
-How you bundle (or _package_ or _distribute_)
-a C library with your package or app
-and then load that library
-depends on your platform and the type of library.
-For details, see the following:
+In almost all scenarios, you should use ffigen to generate the glue code
+between your Dart application and the underlying C artifacts.
 
-* Flutter `dart:ffi` pages: [Android][android], [iOS][ios], and [macOS][macos] 
-* [`dart:ffi` examples]({{page.samples}})
+It is possible to write the Dart bindings
+that integrate with C code using [_only_ the `dart:ffi` library](#interfacing-with-native-types),
+but for large API surfaces, this can be time-consuming.
+
+
+You can interface with native types to write the Dart bindings
+that integrate with C code using only the `dart:ffi` library.
+
+
+To reduce this burden,
+you can use the [`package:ffigen`][ffigen] binding generator
+to automatically create FFI wrappers from C header files.
+
+### Compile C code
+
+#### Header files (goes here)?
+
+### Generate bindings
+
+### Create a wrapper class
+
+### Managing memory (goes here?)
+
+## Interacting with different types
+
+NOTE: _or Using bindings / interacting with generated library / calling c functions from dart ?_
+
+### Booleans
+
+### Integers
+
+### Strings and arrays
+
+### Lists of strings
+
+### Structs
+
+### Opaque structs
 
 ## Interfacing with native types
 
@@ -245,13 +275,17 @@ a guideline on what types they map to on specific platforms:
 {:.table .table-striped }
 
 
-## Generating FFI bindings with `package:ffigen`
 
-For large API surfaces it can be time-consuming
-to write the Dart bindings that integrate with the C code.
-To reduce this burden,
-you can use the [`package:ffigen`][ffigen] binding generator
-to automatically create FFI wrappers from C header files.
+## Bundling and loading C libraries
+
+How you bundle (or _package_ or _distribute_)
+a C library with your package or app
+and then load that library
+depends on your platform and the type of library.
+For details, see the following:
+
+* Flutter `dart:ffi` pages: [Android][android], [iOS][ios], and [macOS][macos] 
+* [`dart:ffi` examples]({{page.samples}})
 
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
