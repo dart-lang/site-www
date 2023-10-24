@@ -18,18 +18,13 @@ class (plus, optionally, an additional identifier as described in
 The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
   double x = 0;
   double y = 0;
 
-  Point(double x, double y) {
-    // See initializing formal parameters for a better way
-    // to initialize instance variables.
-    this.x = x;
-    this.y = y;
-  }
+  Point(this.x, this.y);
 }
 ```
 
@@ -43,13 +38,28 @@ The `this` keyword refers to the current instance.
 
 ## Initializing formal parameters
 
-The pattern of assigning a constructor argument to an instance variable
-is so common, 
-Dart has initializing formal parameters to make it easy.
+Dart has *initializing formal parameters* to simplify the common pattern of
+assigning a constructor argument to an instance variable. 
+Instead of writing out the explicit assignments in the constructor body,
+like so:
 
-Initializing parameters can also be used to initialize
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
+```dart
+class Point {
+  double x = 0;
+  double y = 0;
+
+  Point(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+```
+
+You can use `this.name` for the properties directly in the constructor declaration,
+and omit the body. Initializing parameters also allow you to initialize
 non-nullable or `final` instance variables,
-which both must be initialized or provided a default value.
+which both must be initialized or provided a default value:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
@@ -57,9 +67,9 @@ class Point {
   final double x;
   final double y;
 
+  Point(this.x, this.y);
   // Sets the x and y instance variables
   // before the constructor body runs.
-  Point(this.x, this.y);
 }
 ```
 
@@ -96,11 +106,6 @@ class Point {
   final double y;
 
   Point(this.x, this.y);
-
-  // Named constructor
-  [!Point.origin()!]
-      : x = xOrigin,
-        y = yOrigin;
 }
 {% endprettify %}
 
