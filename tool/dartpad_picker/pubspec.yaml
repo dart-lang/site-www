@@ -8,4 +8,4 @@ dev_dependencies:
   analysis_defaults:
     path: ../../site-shared/packages/analysis_defaults
   build_runner: ^2.4.6
-  build_web_compilers: ^4.0.5
+  build_web_compilers: ^4.0.6
