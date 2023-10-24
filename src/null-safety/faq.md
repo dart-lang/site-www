@@ -59,7 +59,7 @@ type nullable.
 Some computations can be moved to the static initializer. Instead of:
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 // Initialized without values
 ListQueue _context;
 Float32List _buffer;
@@ -70,19 +70,19 @@ Vec2D(Map<String, dynamic> object) {
   _readObject = object['container'];
   _context = ListQueue<dynamic>();
 }
-{% endprettify %}
+```
 
 you can do:
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 // Initialized with values
 final ListQueue _context = ListQueue<dynamic>();
 final Float32List _buffer = Float32List.fromList([0.0, 0.0]);
 final dynamic _readObject;
 
 Vec2D(Map<String, dynamic> object) : _readObject = object['container'];
-{% endprettify %}
+```
 
 However, if a field is initialized by doing computation in the constructor, then
 it can't be `final`. With null safety, you'll find this also makes it harder for
@@ -125,7 +125,7 @@ throw an exception due to invalid input but instead ended up returning null.
 Instead of:
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
   factory StreamReader(dynamic data) {
     StreamReader reader;
     if (data is ByteData) {
@@ -135,12 +135,12 @@ Instead of:
     }
     return reader;
   }
-{% endprettify %}
+```
 
 Do:
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
   factory StreamReader(dynamic data) {
     if (data is ByteData) {
       // Move the readIndex forward for the binary reader.
@@ -151,7 +151,7 @@ Do:
       throw ArgumentError('Unexpected type for data');
     }
   }
-{% endprettify %}
+```
 
 
 If the intent of the factory was indeed to return null, then you can turn it
@@ -240,9 +240,9 @@ if (result != null) return result;
 It is typically a code smell to end up with nullable code like this:
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 List<Foo?> fooList; // fooList can contain null values
-{% endprettify %}
+```
 
 This implies `fooList` might contain null values. This might happen if you are
 initializing the list with length and filling it in via a loop.
@@ -253,37 +253,37 @@ use the
 constructor.
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 _jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
   _jellyCounts[i] = 0; // List initialized with the same value
 }
-{% endprettify %}
+```
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 _jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
-{% endprettify %}
+```
 
 If you are setting the elements of the list via an index, or you are populating
 each element of the list with a distinct value, you should instead use the
 list literal syntax to build the list.
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 _jellyPoints = List<Vec2D?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
   _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
 }
-{% endprettify %}
+```
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 _jellyPoints = [
   for (var i = 0; i <= jellyMax; i++)
     Vec2D() // Each list element is a distinct Vec2D
 ];
-{% endprettify %}
+```
 
 To generate a fixed-length list,
 use the [`List.generate`][] constructor
@@ -304,7 +304,7 @@ _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 
 You may encounter this error:
 
-```none
+```nocode
 The default 'List' constructor isn't available when null safety is enabled. #default_list_constructor
 ```
 

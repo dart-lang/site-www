@@ -242,9 +242,9 @@ from a synchronous to asynchronous function.
 First, add the `async` keyword before the function body:
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] { ··· }
-{% endprettify %}
+```
 
 If the function has a declared return type, 
 then update the type to be `Future<T>`, 
@@ -253,17 +253,17 @@ If the function doesn't explicitly return a value,
 then the return type is `Future<void>`:
 
 <?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!Future<void>!] main() async { ··· }
-{% endprettify %}
+```
 
 Now that you have an `async` function, 
 you can use the `await` keyword to wait for a future to complete:
 
 <?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 print([!await!] createOrderMessage());
-{% endprettify %}
+```
 
 As the following two examples show, the `async` and `await` keywords 
 result in asynchronous code that looks a lot like synchronous code.
@@ -307,7 +307,7 @@ Your order is: Instance of '_Future<String>'
 #### Example: asynchronous functions
 
 <?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
   return 'Your order is: $order';
@@ -325,7 +325,7 @@ Future<String> fetchUserOrder() =>
   print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
-{% endprettify %}
+```
 
 {:.console-output}
 ```nocode

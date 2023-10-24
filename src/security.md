@@ -1,5 +1,7 @@
 ---
 title: Security
+description: >-
+  An overview of the Dart team's philosophy and processes for security.
 ---
 
 The Dart team takes the security of Dart and the applications
@@ -35,7 +37,7 @@ The Google Security Team will respond within 5 working days of
 your report on g.co/vulnz.
 
 For more information about how Google handles security issues, see
-[Google’s security philosophy][].
+[Google's security philosophy][].
 
 ##  Flagging existing issues as security-related
 
@@ -75,7 +77,7 @@ mailing list.
   Check the [Dart changelog][]
   for security-related updates.
 
-* **Keep your application’s dependencies up to date.**
+* **Keep your application's dependencies up to date.**
   Make sure you [upgrade your package dependencies][]
   to keep the dependencies up to date.
   Avoid pinning to specific versions
@@ -85,7 +87,7 @@ mailing list.
 
 [Dart changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [GitHub security advisories]: https://docs.github.com/en/code-security/security-advisories
-[Google’s security philosophy]: https://www.google.com/about/appsecurity/
+[Google's security philosophy]: https://www.google.com/about/appsecurity/
 [https://g.co/vulnz]: https://g.co/vulnz
 [repos]: https://github.com/dart-lang/
 [upgrade your package dependencies]: /guides/packages#upgrading-a-dependency

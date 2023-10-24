@@ -109,7 +109,7 @@ To opt out files or directories, click the green checkbox.
 In the following screenshot,
 all files in the `bin` directory are opted out.
 
-![Screenshot of file viewer in migration tool](/null-safety/migration-tool-incremental.png)
+![Screenshot of file viewer in migration tool](/assets/img/null-safety/migration-tool-incremental.png)
 
 [migration tool]: /null-safety/migration-guide#step2-migrate
 

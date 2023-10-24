@@ -1,6 +1,6 @@
 ---
 title: Effective Dart
-description: >
+description: >-
   Best practices for building consistent, maintainable,
   and efficient Dart libraries.
 nextpage:
@@ -139,4 +139,4 @@ Dart constructs.
 
 ## Summary of all rules
 
-{% include_relative toc.md %}
+{% include_relative _toc.md %}

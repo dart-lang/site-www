@@ -4,7 +4,9 @@ module Jekyll
       linter_rules = site.data['linter_rules']
 
       linter_rules.each { |lint|
-        site.pages << LinterPage.new(site, lint)
+        unless lint['state'] == 'internal'
+          site.pages << LinterPage.new(site, lint)
+        end
       }
     end
   end
@@ -21,6 +23,7 @@ module Jekyll
 
         @data = {
           'title' => basename,
+          'description' => "#{basename} linter rule documentation.",
           'layout' => 'linter-rule-standalone',
           'lint' => lint,
           'underscore_breaker_titles' => true,

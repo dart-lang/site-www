@@ -726,7 +726,8 @@ The analyzer produces this diagnostic when an invocation of either
 argument whose value isn't a constant expression.
 
 The analyzer also produces this diagnostic when the value of the
-`exceptionalReturn` argument of `Pointer.fromFunction`.
+`exceptionalReturn` argument of `Pointer.fromFunction` or
+`NativeCallable.isolateLocal`.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
@@ -772,7 +773,7 @@ int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
 
 ### argument_type_not_assignable
 
-_The argument type '{0}' can't be assigned to the parameter type '{1}'._
+_The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 
 #### Description
 
@@ -8907,13 +8908,14 @@ dependencies:
 
 ### invalid_exception_value
 
-_The method 'Pointer.fromFunction' can't have an exceptional return value (the
-second argument) when the return type of the function is either 'void', 'Handle' or 'Pointer'._
+_The method {0} can't have an exceptional return value (the second argument)
+when the return type of the function is either 'void', 'Handle' or 'Pointer'._
 
 #### Description
 
 The analyzer produces this diagnostic when an invocation of the method
-`Pointer.fromFunction` has a second argument (the exceptional return
+`Pointer.fromFunction` or `NativeCallable.isolateLocal`
+has a second argument (the exceptional return
 value) and the type to be returned from the invocation is either `void`,
 `Handle` or `Pointer`.
 
@@ -10269,8 +10271,8 @@ _Invalid reference to 'this' expression._
 
 The analyzer produces this diagnostic when `this` is used outside of an
 instance method or a generative constructor. The reserved word `this` is
-only defined in the context of an instance method or a generative
-constructor.
+only defined in the context of an instance method, a generative
+constructor, or the initializer of a late instance field declaration.
 
 #### Example
 
@@ -11584,7 +11586,7 @@ The following code produces this diagnostic because the literal has a map
 entry even though it's a set literal:
 
 {% prettify dart tag=pre+code %}
-const collection = <String>{[!'a' : 'b'!]};
+var collection = <String>{[!'a' : 'b'!]};
 {% endprettify %}
 
 #### Common fixes
@@ -11594,7 +11596,7 @@ that it is a map. In the previous example, you could do this by adding
 another type argument:
 
 {% prettify dart tag=pre+code %}
-const collection = <String, String>{'a' : 'b'};
+var collection = <String, String>{'a' : 'b'};
 {% endprettify %}
 
 In other cases, you might need to change the explicit type from `Set` to
@@ -11605,7 +11607,7 @@ possibly by replacing the colon with a comma if both values should be
 included in the set:
 
 {% prettify dart tag=pre+code %}
-const collection = <String>{'a', 'b'};
+var collection = <String>{'a', 'b'};
 {% endprettify %}
 
 ### map_key_type_not_assignable
@@ -11834,6 +11836,39 @@ void f(int x) {}
 void g({required int x}) {}
 {% endprettify %}
 
+### missing_dependency
+
+_Missing a dependency on imported package '{0}'._
+
+#### Description
+
+The analyzer produces this diagnostic when there's a package that has been
+imported in the source but is not listed as a dependency of the
+importing package.
+
+#### Example
+
+The following code produces this diagnostic because the package `path` is
+not listed as a dependency, while there is an import statement
+with package `path` in the source code of package `example`:
+
+{% prettify yaml tag=pre+code %}
+name: example
+dependencies:
+  meta: ^1.0.2
+{% endprettify %}
+
+#### Common fixes
+
+Add the missing package `path` to the `dependencies` field:
+
+{% prettify yaml tag=pre+code %}
+name: example
+dependencies:
+  meta: ^1.0.2
+  path: any
+{% endprettify %}
+
 ### missing_enum_constant_in_switch
 
 _Missing case clause for '{0}'._
@@ -11898,13 +11933,14 @@ void f(E e) {
 
 ### missing_exception_value
 
-_The method 'Pointer.fromFunction' must have an exceptional return value (the
-second argument) when the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
+_The method {0} must have an exceptional return value (the second argument) when
+the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
 
 #### Description
 
 The analyzer produces this diagnostic when an invocation of the method
-`Pointer.fromFunction` doesn't have a second argument (the exceptional
+`Pointer.fromFunction` or `NativeCallable.isolateLocal`
+doesn't have a second argument (the exceptional
 return value) when the type to be returned from the invocation is neither
 `void`, `Handle`, nor `Pointer`.
 
@@ -13022,7 +13058,8 @@ _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._
 #### Description
 
 The analyzer produces this diagnostic when an invocation of either
-`Pointer.fromFunction` or `DynamicLibrary.lookupFunction` has a type
+`Pointer.fromFunction`, `DynamicLibrary.lookupFunction`,
+or a `NativeCallable` constructor, has a type
 argument(whether explicit or inferred) that isn't a native function type.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
@@ -13068,7 +13105,8 @@ _The type '{0}' must be a subtype of '{1}' for '{2}'._
 #### Description
 
 The analyzer produces this diagnostic in two cases:
-- In an invocation of `Pointer.fromFunction` where the type argument
+- In an invocation of `Pointer.fromFunction`, or a
+  `NativeCallable` constructor where the type argument
   (whether explicit or inferred) isn't a supertype of the type of the
   function passed as the first argument to the method.
 - In an invocation of `DynamicLibrary.lookupFunction` where the first type

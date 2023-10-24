@@ -232,17 +232,6 @@ Most of the code used to create [DartPad][] examples is hosted on GitHub.
 However, this repo also contains some `*.dart` files
 responsible for DartPad example code.
 
-# Refresh DartPad HTML tooltips
-
-Files that require DartPad HTML to be manually updated
-include instructions at the top that specify running:
-
-```terminal
-$ tool/create_code_with_tooltips.dart
-```
-
-Follow the instructions in those files to refresh the appropriate code.
-
 ### DartPad picker
 
 The DartPad example picker must be manually compiled if changes are made.

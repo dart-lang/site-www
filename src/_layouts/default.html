@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include head.html %}
-  <body class="{{page.layout}}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+  <body class="{{page.layout}}{% if page.toc and page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if page.body_class %} {{ page.body_class }}{% endif %}">
     {% include cookie-notice.html %}
     {% include gtags.html %}
     {% include page-header.html %}
@@ -12,14 +12,14 @@
         <div class="content">
           {% include navigation-sub.html %}
           <div id="site-content-title">
-            {% include shared/page-github-links.html %}
+            {% include page-github-links.html %}
             {% if page.underscore_breaker_titles -%}
             <h1>{{page.title | underscore_breaker}}</h1>
             {% else %}
             <h1>{{page.title }}</h1>
             {% endif -%}
             {% if page.show_breadcrumbs -%}
-              {% include shared/breadcrumbs.html %}
+              {% include breadcrumbs.html %}
             {% endif -%}
           </div>
           {% include navigation-toc.html id='site-toc--inline' collapsible=true %}

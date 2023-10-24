@@ -30,3 +30,8 @@ tmp
 # Misc
 trash
 /src/_data/ci.yaml
+
+# SHA Update
+# The script generates the .save file in case you need a rollback.
+*.save
+tool/new-dart-hashes.txt

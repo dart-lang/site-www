@@ -30,7 +30,7 @@ and `main()` creates a list and passes it to `printInts()`.
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -39,7 +39,7 @@ void main() {
   list.add('2');
   printInts([!list!]);
 }
-{% endprettify %}
+```
 
 The preceding code results in a type error on `list` (highlighted
 above) at the call of `printInts(list)`:
@@ -65,7 +65,7 @@ that passes static analysis and runs with no errors or warnings.
 
 {:.passes-sa}
 <?code-excerpt "test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -74,7 +74,7 @@ void main() {
   list.add([!2!]);
   printInts(list);
 }
-{% endprettify %}
+```
 
 [Try it in DartPad]({{site.dartpad}}/25074a51a00c71b4b000f33b688dedd0).
 
@@ -129,7 +129,7 @@ Here are some of the less obvious rules:
 Let's see these rules in detail, with examples that use the following
 type hierarchy:
 
-<img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
 ### Use sound return types when overriding methods
@@ -139,12 +139,12 @@ subtype of the return type of the method in the superclass.
 Consider the getter method in the `Animal` class:
 
 <?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Animal {
   void chase(Animal a) { ... }
   [!Animal get parent => ...!]
 }
-{% endprettify %}
+```
 
 The `parent` getter method returns an `Animal`. In the `HoneyBadger` subclass,
 you can replace the getter's return type with `HoneyBadger` 
@@ -152,7 +152,7 @@ you can replace the getter's return type with `HoneyBadger`
 
 {:.passes-sa}
 <?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class HoneyBadger extends Animal {
   @override
   void chase(Animal a) { ... }
@@ -160,18 +160,19 @@ class HoneyBadger extends Animal {
   @override
   [!HoneyBadger!] get parent => ...
 }
-{% endprettify %}
+```
 
 {:.fails-sa}
-{% prettify dart tag=pre+code %}
-class HoneyBadger extends Animal {
+<?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/HoneyBadger/[!Root!]/g"?>
+```dart
+class [!Root!] extends Animal {
   @override
   void chase(Animal a) { ... }
-  
+
   @override
   [!Root!] get parent => ...
 }
-{% endprettify %}
+```
 
 <a name="use-proper-param-types"></a>
 ### Use sound parameter types when overriding methods
@@ -189,19 +190,19 @@ subtype of the original parameter.
 Consider the `chase(Animal)` method for the `Animal` class:
 
 <?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Animal {
   [!void chase(Animal a) { ... }!]
   Animal get parent => ...
 }
-{% endprettify %}
+```
 
 The `chase()` method takes an `Animal`. A `HoneyBadger` chases anything.
 It's OK to override the `chase()` method to take anything (`Object`).
 
 {:.passes-sa}
 <?code-excerpt "lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class HoneyBadger extends Animal {
   @override
   void chase([!Object!] a) { ... }
@@ -209,28 +210,30 @@ class HoneyBadger extends Animal {
   @override
   Animal get parent => ...
 }
-{% endprettify %}
+```
 
 The following code tightens the parameter on the `chase()` method
 from `Animal` to `Mouse`, a subclass of `Animal`.
 
 {:.fails-sa}
-{% prettify dart tag=pre+code %}
-class Mouse extends Animal {...}
+<?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
+```dart
+class [!Mouse!] extends Animal { ... }
 
 class Cat extends Animal {
   @override
-  void chase([!Mouse!] x) { ... }
+  void chase([!Mouse!] a) { ... }
 }
-{% endprettify %}
+```
 
 This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "lib/incorrect_animal.dart (would-not-be-type-safe)" replace="/Alligator/[!$&!]/g"?>
+```dart
 Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe.
-{% endprettify %}
+```
 
 ### Don't use a dynamic list as a typed list
 
@@ -244,16 +247,13 @@ The following code creates a `dynamic` list of `Dog`, and assigns it to
 a list of type `Cat`, which generates an error during static analysis.
 
 {:.fails-sa}
-{% prettify dart tag=pre+code %}
-class Cat extends Animal { ... }
-
-class Dog extends Animal { ... }
-
+<?code-excerpt "lib/incorrect_animal.dart (invalid-dynamic-list)" replace="/(<dynamic\x3E)(.*?)Error/[!$1!]$2Error/g"?>
+```dart
 void main() {
   List<Cat> foo = [!<dynamic>!][Dog()]; // Error
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
 }
-{% endprettify %}
+```
 
 ## Runtime checks
 
@@ -265,12 +265,12 @@ because it's an error to cast a list of dogs to a list of cats:
 
 {:.runtime-fail}
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() {
   List<Animal> animals = [Dog()];
   List<Cat> cats = [!animals as List<Cat>!];
 }
-{% endprettify %}
+```
 
 
 ## Type inference
@@ -287,16 +287,16 @@ pairs string keys with values of various types.
 If you explicitly type the variable, you might write this:
 
 <?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
-{% endprettify %}
+```
 
 Alternatively, you can use `var` or `final` and let Dart infer the type:
 
 <?code-excerpt "lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
-{% endprettify %}
+```
 
 The map literal infers its type from its entries,
 and then the variable infers its type from the map literal's type.
@@ -331,17 +331,17 @@ If so, you can add a type annotation.
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var x = 3; // x is inferred as an int.
 x = 4.0;
-{% endprettify %}
+```
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-ok)"?>
-{% prettify dart tag=pre+code %}
+```dart
 num y = 3; // A num can be double or int.
 y = 4.0;
-{% endprettify %}
+```
 
 ### Type argument inference
 
@@ -354,7 +354,7 @@ you can always explicitly specify the type arguments.
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (type-arg-inference)"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
 
@@ -363,7 +363,7 @@ var listOfDouble = [3.0];
 
 // Inferred as Iterable<int>.
 var ints = listOfDouble.map((x) => x.toInt());
-{% endprettify %}
+```
 
 In the last example, `x` is inferred as `double` using downward information.
 The return type of the closure is inferred as `int` using upward information.
@@ -398,15 +398,15 @@ or a producer.
 
 Consider the following type hierarchy:
 
-<img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 Consider the following simple assignment where `Cat c` is a _consumer_
 and `Cat()` is a _producer_:
 
 <?code-excerpt "lib/strong_analysis.dart (Cat-Cat-ok)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Cat c = Cat();
-{% endprettify %}
+```
 
 In a consuming position, it's safe to replace something that consumes a
 specific type (`Cat`) with something that consumes anything (`Animal`),
@@ -415,9 +415,9 @@ a supertype of `Cat`.
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (Animal-Cat-ok)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Animal c = Cat();
-{% endprettify %}
+```
 
 But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
 superclass may provide a type of Cat with different behaviors, such
@@ -425,9 +425,9 @@ as `Lion`:
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
-{% prettify dart tag=pre+code %}
+```dart
 MaineCoon c = Cat();
-{% endprettify %}
+```
 
 In a producing position, it's safe to replace something that produces a
 type (`Cat`) with a more specific type (`MaineCoon`). So, the following
@@ -435,9 +435,9 @@ is allowed:
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Cat c = MaineCoon();
-{% endprettify %}
+```
 
 ### Generic type assignment
 
@@ -445,7 +445,7 @@ Are the rules the same for generic types? Yes. Consider the hierarchy
 of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 `Animal`, and a supertype of a `List` of `MaineCoon`:
 
-<img src="images/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
+<img src="/assets/img/language/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
 In the following example, 
 you can assign a `MaineCoon` list to `myCats`
@@ -453,20 +453,20 @@ because `List<MaineCoon>` is a subtype of `List<Cat>`:
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/<MaineCoon/<[!MaineCoon!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<[!MaineCoon!]> myMaineCoons = ...
 List<Cat> myCats = myMaineCoons;
-{% endprettify %}
+```
 
 What about going in the other direction? 
 Can you assign an `Animal` list to a `List<Cat>`?
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/<Animal/<[!Animal!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<[!Animal!]> myAnimals = ...
 List<Cat> myCats = myAnimals;
-{% endprettify %}
+```
 
 This assignment doesn't pass static analysis 
 because it creates an implicit downcast, 
@@ -476,10 +476,10 @@ To make this type of code pass static analysis,
 you can use an explicit cast. 
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<Animal> myAnimals = ...
 List<Cat> myCats = myAnimals [!as List<Cat>!];
-{% endprettify %}
+```
 
 An explicit cast might still fail at runtime, though,
 depending on the actual type of the list being cast (`myAnimals`).
@@ -489,7 +489,7 @@ depending on the actual type of the list being cast (`myAnimals`).
 When overriding a method, the producer and consumer rules still apply.
 For example:
 
-<img src="images/consumer-producer-methods.png" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
+<img src="/assets/img/language/consumer-producer-methods.png" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
 
 For a consumer (such as the `chase(Animal)` method), you can replace
 the parameter type with a supertype. For a producer (such as

@@ -71,13 +71,12 @@ To create a simple command-line app, use **New Pad**.
 
 3. Change the code. For example, change the `main()` function
    to contain this code:  
-   
-   <!-- library-tour/string-tests/bin/main.dart -->
-   {% prettify dart tag=pre+code %}
+
+   ```dart
    for (final char in 'hello'.split('')) {
      print(char);
    }
-   {% endprettify %}  
+   ``` 
    
    As you type, DartPad shows hints, documentation,
    and autocomplete suggestions.

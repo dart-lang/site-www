@@ -51,7 +51,9 @@
 
 @mixin dart-style-for($kind, $bg-color, $fg-color, $msg) {
   .#{$kind} {
-    background-color: $bg-color !important;
+    @if $bg-color != 'inherit' {
+      background-color: $bg-color !important;
+    }
     position: relative;
 
     &:after {
@@ -63,6 +65,12 @@
       top: 6px;
       left: 8px;
       color: $fg-color;
+    }
+  }
+
+  @if $bg-color != 'inherit' {
+    .#{$kind} pre {
+      background-color: $bg-color;
     }
   }
 }
