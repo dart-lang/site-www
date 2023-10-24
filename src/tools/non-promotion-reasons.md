@@ -4,7 +4,7 @@ description: Solutions for cases where you know more about a field's type than D
 ---
 
 [Type promotion][] occurs when flow anlaysis can soundly confirm the value of 
-a nullable type is *not null*, and that its value can't change from that point on.
+a [nullable type][] is *not null*, and that its value can't change from that point on.
 Many circumstances can affect that certainty, causing type promotion to fail.
 
 **Only local variables and parameters, and private, final fields can be promoted**.
@@ -14,42 +14,58 @@ with tips on how to fix them.
 To learn more, check out the [Understanding null safety][] page.
 
 [Type promotion]: /null-safety/understanding-null-safety#type-promotion-on-null-checks
+[nullable type]: /null-safety/understanding-null-safety#non-nullable-and-nullable-types
 [Understanding null safety]: /null-safety/understanding-null-safety
-
 
 
 ## Only local variables can be promoted in this version {#property}
 
 **The cause:**
+
 You're trying to promote a property,
 but only local variables can be promoted in Dart 3.1 and earlier.
 
-Example:
+**Example:**
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-class C {
-  int? i;                  // Context
-  void f() {
-    if (i == null) return;
-    print(i.isEven);       // Error
+// @dart=3.1
+
+class Example {
+  final int? _privateField; // CONTEXT
+  Example1(this._privateField);
+
+  f() {
+    if (_privateField != null) {
+      int i = _privateField; // ERROR
+    }
   }
 }
 {% endprettify %}
 
-Context message: 
+The Dart compiler produces an error message that points to a context message
+explaining that `privateField` can't be promoted to a non-nullable type because
+it is a field. 
 
 ```nocode
-'fieldName' refers to a field. It couldn’t be promoted because field promotion
-is only available in Dart 3.2 and above.
+'privateField' refers to a field. It couldn’t be promoted
+because field promotion is only available in Dart 3.2 and above.
 ```
 
-The Dart compiler produces an error message for (2)
-that points to (1) and explains that
-`i` can't be promoted to a non-nullable type
-because it's a field.
+**Solution:**
 
-Solution: 
+If you are using Dart 3.2:
+
+Field promotion is language versioned, meaning even if you are using the Dart 3.2
+SDK, your code might still be explicitly targeted for an earlier language version.
+
+This could happen either because the user’s `pubspec.yaml`` file declares an SDK
+constraint with a lower bound below 3.2, or because the user has a `// @dart=version`
+comment at the top of the file, where version is a number less than 3.2.
+
+If you are using Dart 3.1 or earlier:
+
+Upgrade to 3.2 
 
 The usual fix is either to use `i!`
 or to create a local variable
@@ -94,118 +110,103 @@ implementing it would be difficult and not very useful.)
 {{site.alert.end}}
 
 
-## Unsupported `this` promotion {#this}
 
-Message: 
 
-```nocode
-error - The expression in question is `this`. It couldn't be promoted because
-promotion of `this` is not yet supported.
-```
+### Entity is a getter, not a field
 
 **The cause:**
-You're trying to promote `this`,
-but type promotion for `this` is not yet supported.
 
-Example:
+**Example:**
 
-Solution:
-
-## Entity is a getter, not a field
-
-Message: 
+**Message:**
 
 ```nocode
 ```
 
-The cause: 
-
-Example:
-
-Solution:
+**Solution:**
 
 
 Possible solution for abstract fields:
 
-## Field is not private
+### Field is not private
 
-Message: 
+**The cause:**
 
-```nocode
-```
+**Example:**
 
-The cause: 
-
-Example:
-
-Solution:
-
-## Field is external
-
-Message: 
+**Message:**
 
 ```nocode
 ```
 
-The cause: 
+**Solution:**
 
-Example:
+### Field is external
 
-Solution:
+**The cause:**
 
-## Field is not final
+**Example:**
 
-Message: 
-
-```nocode
-```
-
-The cause: 
-
-Example:
-
-Solution:
-
-## Conflict with getter elsewhere in library
-
-Message: 
+**Message:**
 
 ```nocode
 ```
 
-The cause: 
+**Solution:**
 
-Example:
+### Field is not final
 
-Solution:
+**The cause:**
+
+**Example:**
+
+**Message:**
+
+```nocode
+```
+
+**Solution:**
+
+### Conflict with getter elsewhere in library
+
+**The cause:**
+
+**Example:**
+
+**Message:**
+
+```nocode
+```
+
+**Solution:**
 
 Note about unrelated classes:
 
-## Conflict with non-promotable field elsewhere in library
+### Conflict with non-promotable field elsewhere in library
 
-Message: 
+**The cause:**
 
-```nocode
-```
+**Example:**
 
-The cause: 
-
-Example:
-
-Solution:
-
-## Conflict with implicit noSuchMethod forwarder
-
-Message: 
+**Message:**
 
 ```nocode
 ```
 
-The cause: 
+**Solution:**
 
-Example:
+### Conflict with implicit noSuchMethod forwarder
 
-Solution:
+**The cause:**
+
+**Example:**
+
+**Message:**
+
+```nocode
+```
+
+**Solution:**
 
 ## Other causes and workarounds
 
@@ -236,6 +237,22 @@ one or more of the following:
   (which might introduce a bug if your reasoning is wrong).
 {{site.alert.end}}
 
+### Unsupported `this` promotion {#this}
+
+**The cause:**
+You're trying to promote `this`,
+but type promotion for `this` is not yet supported.
+
+**Example:**
+
+**Message:**
+
+```nocode
+The expression in question is `this`. It couldn't be promoted because
+promotion of `this` is not yet supported.
+```
+
+**Solution:**
 
 ### Possibly written after promotion {#write}
 
