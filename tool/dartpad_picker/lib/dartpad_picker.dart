@@ -54,7 +54,9 @@ class DartPadPicker {
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
-      ..src = iFrameSrc(theme: 'dark', mode: 'dart');
+      ..src = iFrameSrc(theme: 'dark', mode: 'dart')
+      ..attributes['loading'] = 'lazy';
+
     final id = frameId;
     if (id != null) {
       _iFrameElement.id = id;

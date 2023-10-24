@@ -1,6 +1,6 @@
 {% for lint in site.data.linter_rules %}
 
-{% if lint.group == include.type %}
+{% if lint.group == include.type and lint.state != "internal" %}
 
 {% assign badges = "" %}
 
