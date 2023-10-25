@@ -32,7 +32,7 @@ jobs:
       matrix:
         include:
 #          - sdk: dev
-#            experimental: true
+#            experimental: false
           - sdk: beta
             experimental: false
           - sdk: stable
