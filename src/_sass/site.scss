@@ -530,34 +530,6 @@ li.card {
   }
 }
 
-// Popovers
-
-h3.popover-header {
-  font-weight: $font-weight-light-bold;
-  margin-top: 0;
-}
-
-@mixin popover-open {
-  &.popover-open {
-    font-weight: 500;
-    border-color: $default-link;
-  }
-}
-
-[data-toggle="popover"] {
-  background: none;
-  border-bottom: 2px dotted $gray;
-  padding: 0;
-  cursor: pointer;
-  @include popover-open;
-}
-
-@media (hover: hover) {
-  [data-toggle="popover"]:hover {
-    border-color: $default-link !important;
-  }
-}
-
 .table {
   width: 100%;
   @extend .table-striped;

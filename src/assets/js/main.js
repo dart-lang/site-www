@@ -141,25 +141,6 @@ function createGallery() {
   }
 }
 
-function setPopovers(root, viewport) {
-  const openPopClass = 'popover-open';
-  const popSelector = '[data-toggle="popover"]';
-  const popovers = root.find(popSelector);
-  // console.log('>> setPopovers: ' + popovers.length + ', ' + viewport);
-  popovers.popover({
-    container: viewport === 'body' ? 'body' : root.find(viewport),
-    html: true,
-    placement: 'top',
-    trigger: 'focus',
-    viewport: viewport,
-  }).on('shown.bs.popover', function () {
-    // _After_ this popover has been shown, add 'popover-open' class.
-    $(this).addClass(openPopClass);
-  }).on('hide.bs.popover', function () {
-    $(this).removeClass(openPopClass);
-  });
-}
-
 /**
  * Activate the cookie notice footer
  */
@@ -196,11 +177,6 @@ $(function() {
   });
 
   adjustToc();
-
-  // Frontpage popovers inside the #code-sample should scroll with the enclosing <pre>.
-  setPopovers($('body.homepage #code-sample'), 'pre');
-  // All other popovers should scroll with the page.
-  setPopovers($(document.body), 'body');
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {

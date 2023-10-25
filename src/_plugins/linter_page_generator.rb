@@ -4,7 +4,9 @@ module Jekyll
       linter_rules = site.data['linter_rules']
 
       linter_rules.each { |lint|
-        site.pages << LinterPage.new(site, lint)
+        unless lint['state'] == 'internal'
+          site.pages << LinterPage.new(site, lint)
+        end
       }
     end
   end
