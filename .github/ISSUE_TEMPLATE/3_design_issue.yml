@@ -19,13 +19,14 @@ body:
   - type: dropdown
     id: platform
     attributes:
-      label: On which browsers did you experience this issue?
+      label: On which browser(s) did you experience this issue?
       multiple: true
       options:
         - Firefox
         - Chrome
         - Safari
         - Microsoft Edge
+        - Other
   - type: textarea
     id: additional-info
     attributes:
