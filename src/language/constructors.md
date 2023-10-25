@@ -40,24 +40,10 @@ The `this` keyword refers to the current instance.
 
 Dart has *initializing formal parameters* to simplify the common pattern of
 assigning a constructor argument to an instance variable. 
-Instead of writing out the explicit assignments in the constructor body,
-like so:
+Use `this.propertyName` directly in the constructor declaration,
+and omit the body. 
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
-```dart
-class Point {
-  double x = 0;
-  double y = 0;
-
-  Point(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
-}
-```
-
-You can use `this.name` for the properties directly in the constructor declaration,
-and omit the body. Initializing parameters also allow you to initialize
+Initializing parameters also allow you to initialize
 non-nullable or `final` instance variables,
 which both must be initialized or provided a default value:
 
@@ -75,6 +61,11 @@ class Point {
 
 The variables introduced by the initializing formals
 are implicitly final and only in scope of the initializer list.
+
+If you need to perform some logic that cannot be expressed in the initializer list,
+create a [factory constructor](#factory-constructors) 
+(or [static method][]) with that logic
+and then pass the computed values to a normal constructor.
 
 
 ## Default constructors
@@ -403,3 +394,4 @@ var loggerJson = Logger.fromJson(logMap);
 [language version]: /guides/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
+[static method]: /language/classes#static-methods

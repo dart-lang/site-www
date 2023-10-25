@@ -4,24 +4,13 @@
 /// - A constructor initializing fields in the body "the long way"
 /// - A named constructor with initializers, and a print statement in the body.
 ///
-// #docregion constructor-long-way, idiomatic-constructor
+// #docregion idiomatic-constructor
 class Point {
   double x = 0;
   double y = 0;
-  // #enddocregion constructor-long-way
 
   Point(this.x, this.y);
   // #enddocregion idiomatic-constructor
-
-  /* 
-  // #docregion constructor-long-way
-  
-  Point(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
-  // #enddocregion constructor-long-way
-  */
 
   // #docregion initializer-list
   // Initializer list sets instance variables before
@@ -41,5 +30,5 @@ class Point {
   }
   // #enddocregion initializer-list-with-assert
 
-// #docregion constructor-long-way, idiomatic-constructor
+// #docregion idiomatic-constructor
 }
