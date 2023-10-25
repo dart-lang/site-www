@@ -5,7 +5,7 @@ description: Use dart pub deps to print a dependency graph for a package.
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
 ```
 
@@ -29,7 +29,7 @@ dependencies:
 
 Here's an example of the `dart pub deps` output for markdown_converter:
 
-```terminal
+```console
 $ dart pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6
@@ -49,18 +49,21 @@ markdown_converter 0.0.0
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+{% comment %}
+TODO(parlough) - Fix inline code syntax not working correctly in headers?
 ### `--style=<style>` or `-s <style>`
+{% endcomment %}
 
 The specified style determines the output format:
 
-* `tree`
+`tree`
 : Prints dependency information as a tree. This is the 
 default format.
 
-* `list`
+`list`
 : Prints dependency information as a list.
 
-* `compact`
+`compact`
 : Prints dependency information as a compact list.
 
 ### `--[no-]dev`
@@ -77,7 +80,5 @@ Prints all available executables.
 
 Generates output in JSON format.
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+
+{% render 'pub-problems.md' %}

@@ -28,6 +28,6 @@
       </li>
     </ul>
 
-    {% include sidenav-level-1.html nav=site.data.side-nav %}
+    {% render 'sidenav-level-1.html', url:page.url, nav:side-nav %}
   </div>
 </div>

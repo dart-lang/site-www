@@ -48,11 +48,11 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-{{site.alert.note}}
-  Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-  the semicolon (;). For example, you can't put an [if statement][]
-  there, but you can use a [conditional expression][].
-{{site.alert.end}}
+:::note
+Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
+the semicolon (;). For example, you can't put an [if statement][]
+there, but you can use a [conditional expression][].
+:::
 
 ## Parameters
 
@@ -60,11 +60,11 @@ A function can have any number of *required positional* parameters. These can be
 followed either by *named* parameters or by *optional positional* parameters
 (but not both).
 
-{{site.alert.note}}
-  Some APIs—notably [Flutter][] widget constructors—use only named
-  parameters, even for parameters that are mandatory. See the next section for
-  details.
-{{site.alert.end}}
+:::note
+Some APIs—notably [Flutter][] widget constructors—use only named
+parameters, even for parameters that are mandatory. See the next section for
+details.
+:::
 
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
@@ -127,15 +127,14 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
-{{site.alert.note}}
-  A parameter marked as `required`
-  can still be nullable:
+:::note
+A parameter marked as `required` can still be nullable:
 
-  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
-  ```dart
-  const Scrollbar({super.key, required [!Widget?!] child});
-  ```
-{{site.alert.end}}
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
+```dart
+const Scrollbar({super.key, required [!Widget?!] child});
+```
+:::
 
 You might want to place positional arguments first,
 but Dart doesn't require it.
@@ -500,11 +499,11 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-[`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`Iterable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
 [record]: /language/records#multiple-returns
 
-[Function API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[Function API reference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
 [Callable objects]: /language/callable-objects
 [type annotations for public APIs]: /effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
 [if statement]: /language/branches#if

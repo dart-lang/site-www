@@ -11,12 +11,12 @@ this page can help. To learn more, read about
 [Dart's type system](/language/type-system),
 and see [these other resources](/language/type-system#other-resources).
 
-{{site.alert.info}}
-  **Help us improve this page!** If you encounter a warning or error that isn't
-  listed here, please file an issue by clicking the **bug icon** at the top
-  right. Include the **warning or error message** and, if possible, the code for
-  both a small reproducible case and its correct equivalent.
-{{site.alert.end}}
+:::note Help us improve this page!
+If you encounter a warning or error that isn't
+listed here, please file an issue by clicking the **bug icon** at the top
+right. Include the **warning or error message** and, if possible, the code for
+both a small reproducible case and its correct equivalent.
+:::
 
 ## Troubleshooting
 
@@ -35,10 +35,10 @@ typed languages, Dart accomplishes this with a combination of
 For example, the following type error is detected at compile-time:
 
 {:.fails-sa}
-{% prettify dart tag=pre+code %}
+```dart
 List<int> numbers = [1, 2, 3];
 List<String> [!string = numbers!];
-{% endprettify %}
+```
 
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. 
@@ -47,11 +47,11 @@ You can see other examples of static analysis errors,
 as well as other error types, in the following sections.
 
 
-## No type errors {#no-type-errors}
+## No type errors {:#no-type-errors}
 
 If you're not seeing expected errors or warnings,
 make sure that you're using the latest version of Dart
-and you have properly configured your [IDE or editor](/tools#ides-and-editors).
+and you have properly configured your [IDE or editor](/tools#editors).
 
 You can also run analysis on your program using the command line
 with the [`dart analyze`](/tools/dart-analyze) command.
@@ -61,15 +61,15 @@ try adding the following code to a Dart file.
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (static-analysis-enabled)"?>
-{% prettify dart tag=pre+code %}
+```dart
 bool b = [0][0];
-{% endprettify %}
+```
 
 If properly configured, the analyzer produces the following error:
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
 ```
 
@@ -86,7 +86,7 @@ see [Runtime errors](#common-errors-and-warnings).
 ### Undefined member
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/getter.*isn't defined for the type/" replace="/. Try.*.'context2D'. / /g; /getter/<member\x3E/g; /'\w+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The <member> '...' isn't defined for the type '...' - undefined_<member>
 ```
 
@@ -102,14 +102,14 @@ In the following code, the analyzer complains that `context2D` is undefined:
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-undefined)" replace="/context2D/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var canvas = querySelector('canvas')!;
 canvas.[!context2D!].lineTo(x, y);
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The getter 'context2D' isn't defined for the type 'Element'. Try importing the library that defines 'context2D', correcting the name to the name of an existing getter, or defining a getter or field named 'context2D'. - undefined_getter
 ```
 
@@ -126,19 +126,19 @@ You can fix this error with an explicit downcast:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var canvas = querySelector('canvas') [!as CanvasElement!];
 canvas.context2D.lineTo(x, y);
-{% endprettify %}
+```
 
 Otherwise, use `dynamic` in situations where you cannot use a single type:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!dynamic!] canvasOrImg = querySelector('canvas, img');
 var width = canvasOrImg.width;
-{% endprettify %}
+```
 
 #### Example 2: Omitted type parameters default to their type bounds
 
@@ -146,26 +146,26 @@ Consider the following **generic class** with a **bounded type parameter**
 that extends `Iterable`:
 
 <?code-excerpt "lib/bounded/my_collection.dart"?>
-{% prettify dart tag=pre+code %}
+```dart
 class C<T extends Iterable> {
   final T collection;
   C(this.collection);
 }
-{% endprettify %}
+```
 
 The following code creates a new instance of this class 
 (omitting the type argument) and accesses its `collection` member:
 
 {:.fails-sa}
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\.add\(2\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var c = C(Iterable.empty()).collection;
 [!c.add(2)!];
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/add.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
 ```
 
@@ -188,27 +188,27 @@ such as a list literal:
 
 {:.passes-sa}
 <?code-excerpt "test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var c = C[!<List>!]([![]!]).collection;
 c.add(2);
-{% endprettify %}
+```
 
 <hr>
 
 ### Invalid method override
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
-```nocode
+```plaintext
 error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
 These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
 
-{{site.alert.note}}
-  This issue can also occur when a generic subclass neglects to specify a type.
-  For more information, see [Missing type arguments](#missing-type-arguments).
-{{site.alert.end}}
+:::note
+This issue can also occur when a generic subclass neglects to specify a type.
+For more information, see [Missing type arguments](#missing-type-arguments).
+:::
 
 #### Example
 
@@ -217,7 +217,7 @@ a subtype of `num`, which is the parameter type used in the parent class.
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (invalid-method-override)" replace="/int(?= \w\b.*=)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 abstract class NumberAdder {
   num add(num a, num b);
 }
@@ -226,11 +226,11 @@ class MyAdder extends NumberAdder {
   @override
   num add([!int!] a, [!int!] b) => a + b;
 }
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
 ```
 
@@ -239,10 +239,10 @@ point values are passed to an `MyAdder`:
 
 {:.runtime-fail}
 <?code-excerpt "lib/common_fixes_analysis.dart (runtime-failure-if-int)" replace="/1.2/[!1.2!]/g/3.4/[!3.4!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 NumberAdder adder = MyAdder();
 adder.add([!1.2!], [!3.4!]);
-{% endprettify %}
+```
 
 If the override were allowed, the code would raise an error at runtime.
 
@@ -255,7 +255,7 @@ Fix the example by widening the types in the subclass:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (invalid-method-override)" replace="/int(?= \w\b.*=)/[!num!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 abstract class NumberAdder {
   num add(num a, num b);
 }
@@ -264,22 +264,22 @@ class MyAdder extends NumberAdder {
   @override
   num add([!num!] a, [!num!] b) => a + b;
 }
-{% endprettify %}
+```
 
 For more information, see 
 [Use proper input parameter types when overriding methods](/language/type-system#use-proper-param-types).
 
-{{site.alert.note}}
-  If you have a valid reason to use a subtype, you can use the
-  [covariant keyword](#the-covariant-keyword).
-{{site.alert.end}}
+:::note
+If you have a valid reason to use a subtype, you can use the
+[covariant keyword](#the-covariant-keyword).
+:::
 
 <hr>
 
 ### Missing type arguments
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/'\S+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
-```nocode
+```plaintext
 error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
@@ -291,7 +291,7 @@ which results in an invalid override error on `method(int)`.
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/int/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Superclass<T> {
   void method(T param) { ... }
 }
@@ -300,11 +300,11 @@ class Subclass extends Superclass {
   @override
   void method([!int!] param) { ... }
 }
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
 ```
 
@@ -318,7 +318,7 @@ You can fix the example by specifying the type on the subclass:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/Superclass /Superclass[!<int\x3E!] /g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Superclass<T> {
   void method(T param) { ... }
 }
@@ -327,7 +327,7 @@ class Subclass extends Superclass[!<int>!] {
   @override
   void method(int param) { ... }
 }
-{% endprettify %}
+```
 
 Consider using the analyzer in _strict raw types_ mode,
 which ensures that your code specifies generic type arguments.
@@ -349,7 +349,7 @@ see [Customizing static analysis](/tools/analysis).
 ### Unexpected collection element type
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'./" replace="/. Try.*'int'. / /g; /'\S+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type '...' can't be assigned to a variable of type '...' - invalid_assignment
 ```
 
@@ -366,15 +366,15 @@ When the code adds a (`String`, `double`) pair, the analyzer complains:
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (inferred-collection-types)" replace="/1.5/[!1.5!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Inferred as Map<String, int>
 var map = {'a': 1, 'b': 2, 'c': 3};
 map['d'] = [!1.5!];
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
 ```
 
@@ -385,10 +385,10 @@ the map's type to be `<String, num>`.
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (inferred-collection-types-ok)" replace="/<.*?\x3E/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var map = [!<String, num>!]{'a': 1, 'b': 2, 'c': 3};
 map['d'] = 1.5;
-{% endprettify %}
+```
 
 Alternatively, if you want this map to accept any value, 
 specify the type as `<String, dynamic>`.
@@ -399,7 +399,7 @@ specify the type as `<String, dynamic>`.
 ### Constructor initialization list super() call
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/Animal/.../g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The superconstructor call must be last in an initializer list: '...'. - super_invocation_not_last
 ```
 
@@ -410,15 +410,15 @@ initialization list.
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g; /_HoneyBadger/HoneyBadger/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 HoneyBadger(Eats food, String name)
     : [!super!](food),
       _name = name { ... }
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
 ```
 
@@ -431,11 +431,11 @@ Fix this error by moving the `super()` call:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last-ok)" replace="/super/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 HoneyBadger(Eats food, String name)
     : _name = name,
       [!super!](food) { ... }
-{% endprettify %}
+```
 
 <hr>
 
@@ -443,7 +443,7 @@ HoneyBadger(Eats food, String name)
 ### The argument type ... can't be assigned to the parameter type ...
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/'bool.*?\)'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type '...' can't be assigned to the parameter type '...'. - argument_type_not_assignable
 ```
 
@@ -460,14 +460,14 @@ type, such as `Object?`) results in a compile-time error.
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-fail)" replace="/String/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void filterValues(bool Function(dynamic) filter) {}
 filterValues(([!String!] x) => x.contains('Hello'));
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/-(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
 ```
 
@@ -477,19 +477,19 @@ When possible, avoid this error by adding type parameters:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void filterValues[!<T>!](bool Function(T) filter) {}
 filterValues[!<String>!]((x) => x.contains('Hello'));
-{% endprettify %}
+```
 
 Otherwise use casting:
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void filterValues(bool Function(dynamic) filter) {}
 filterValues((x) => (x [!as String!]).contains('Hello'));
-{% endprettify %}
+```
 
 <hr>
 
@@ -506,20 +506,20 @@ type inference will infer that `a` has a type of `Null`:
 
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var ints = [1, 2, 3];
 var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
-{% endprettify %}
+```
 
 #### Fix: Supply appropriate type as explicit type argument
 
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var ints = [1, 2, 3];
 var maximumOrNull =
     ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
-{% endprettify %}
+```
 
 <hr>
 
@@ -537,12 +537,12 @@ Consider the following `assumeStrings` method:
 
 {:.passes-sa}
 <?code-excerpt "test/strong_test.dart (downcast-check)" replace="/string = objects/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void assumeStrings(dynamic objects) {
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
 }
-{% endprettify %}
+```
 
 The assignment to `strings` is _downcasting_ the `dynamic` to `List<String>`
 implicitly (as if you wrote `as List<String>`), so if the value you pass in
@@ -552,13 +552,13 @@ Otherwise, the cast will fail at runtime:
 
 {:.runtime-fail}
 <?code-excerpt "test/strong_test.dart (fail-downcast-check)" replace="/\[.*\]/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 assumeStrings(<int>[![1, 2, 3]!]);
-{% endprettify %}
+```
 
 {:.console-output}
 <?code-excerpt "test/strong_test.dart (downcast-check-msg)" replace="/const msg = ./Exception: /g; /.;//g"?>
-```nocode
+```plaintext
 Exception: type 'List<int>' is not a subtype of type 'List<String>'
 ```
 
@@ -570,23 +570,23 @@ Adding an explicit type argument can help:
 
 {:.runtime-success}
 <?code-excerpt "test/strong_test.dart (typed-list-lit)" replace="/<String\x3E/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var list = [!<String>!][];
 list.add('a string');
 list.add('another');
 assumeStrings(list);
-{% endprettify %}
+```
 
 You can also more precisely type the local variable, and let inference help:
 
 {:.runtime-success}
 <?code-excerpt "test/strong_test.dart (typed-list)" replace="/<String\x3E/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 List[!<String>!] list = [];
 list.add('a string');
 list.add('another');
 assumeStrings(list);
-{% endprettify %}
+```
 
 In cases where you are working with a collection that you don't create, such
 as from JSON or an external data source, you can use the [cast()][] method 
@@ -596,11 +596,11 @@ Here's an example of the preferred solution: tightening the object's type.
 
 {:.runtime-success}
 <?code-excerpt "test/strong_test.dart (cast)" replace="/cast/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Map<String, dynamic> json = fetchFromExternalSource();
 var names = json['names'] as List;
 assumeStrings(names.[!cast!]<String>());
-{% endprettify %}
+```
 
 ## Appendix
 
@@ -617,7 +617,7 @@ The following shows how you might use `covariant`:
 
 {:.passes-sa}
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Animal {
   void chase(Animal x) { ... }
 }
@@ -628,7 +628,7 @@ class Cat extends Animal {
   @override
   void chase([!covariant!] Mouse x) { ... }
 }
-{% endprettify %}
+```
 
 Although this example shows using `covariant` in the subtype,
 the `covariant` keyword can be placed in either the superclass
@@ -638,7 +638,7 @@ The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
-[cast()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/cast.html
-[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[cast()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/cast.html
+[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[List]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
 [top type]: https://en.wikipedia.org/wiki/Top_type

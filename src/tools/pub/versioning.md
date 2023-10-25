@@ -159,13 +159,13 @@ dependencies:
   collection: ^2.3.5
 ```
 
-{{site.alert.note}}
-  This example uses _caret syntax_ to express a range of versions.
-  The string `^2.3.5` means 
-  "the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
-  For more information, 
-  see [Caret syntax](/tools/pub/dependencies#caret-syntax).
-{{site.alert.end}}
+:::note
+This example uses _caret syntax_ to express a range of versions.
+The string `^2.3.5` means 
+"the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
+For more information, 
+see [Caret syntax](/tools/pub/dependencies#caret-syntax).
+:::
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and
@@ -208,18 +208,22 @@ actual versions that have been released for that package and selects the best
 For example, let's say our dependency graph contains `collection`, and three
 packages depend on it. Their version constraints are:
 
-    >=1.7.0
-    ^1.4.0
-    <1.9.0
+```plaintext
+>=1.7.0
+^1.4.0
+<1.9.0
+```
 
 The developers of `collection` have released these versions of it:
 
-    1.7.0
-    1.7.1
-    1.8.0
-    1.8.1
-    1.8.2
-    1.9.0
+```plaintext
+1.7.0
+1.7.1
+1.8.0
+1.8.1
+1.8.2
+1.9.0
+```
 
 The highest version number that fits in all of those ranges is `1.8.2`, so pub
 picks that. That means your app _and every package your app uses_ will all use

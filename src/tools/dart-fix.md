@@ -14,28 +14,28 @@ finds and fixes two types of issues:
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{{site.alert.tip}}
-  To learn about `dart fix` in a video format,
-  check out this deep dive on **Decoding Flutter**:
+:::tip
+To learn about `dart fix` in a video format,
+check out this deep dive on **Decoding Flutter**:
 
-  <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
-{{site.alert.end}}  
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+:::
 
 ## Usage
 
 To preview proposed changes, use the `--dry-run` flag:
 
-```terminal
+```console
 $ dart fix --dry-run
 ```
 
 To apply the proposed changes, use the `--apply` flag:
 
-```terminal
+```console
 $ dart fix --apply
 ```
 
@@ -101,7 +101,7 @@ environment:
 
 You should then see the following when viewing the proposed changes:
 
-```terminal
+```console
 $ dart fix --dry-run
 Computing fixes in myapp (dry run)... 9.0s
 

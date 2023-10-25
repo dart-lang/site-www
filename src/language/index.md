@@ -31,6 +31,7 @@ void main() {
   print('Hello, World!');
 }
 ```
+
 Read more about [the `main()` function][] in Dart,
 including optional parameters for command-line arguments.
 
@@ -145,7 +146,7 @@ including how the documentation tooling works.
 To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
-```
+```dart
 // Importing core libraries
 import 'dart:math';
 
@@ -317,11 +318,11 @@ mixin Piloted {
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
 }
-{% endprettify %}
+```
 
 `PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
@@ -348,7 +349,7 @@ to be extended (or implemented) by a concrete class.
 Abstract classes can contain abstract methods (with empty bodies).
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!abstract!] class Describable {
   void describe();
 
@@ -358,7 +359,7 @@ Abstract classes can contain abstract methods (with empty bodies).
     print('=========');
   }
 }
-{% endprettify %}
+```
 
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
@@ -373,14 +374,14 @@ Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 const oneSecond = Duration(seconds: 1);
 // ···
 Future<void> printWithDelay(String message) [!async!] {
   await Future.delayed(oneSecond);
   print(message);
 }
-{% endprettify %}
+```
 
 The method above is equivalent to:
 
@@ -448,7 +449,7 @@ if (astronauts == 0) {
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 <?code-excerpt "misc/test/samples_test.dart (try)" replace="/on.*e\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> describeFlybyObjects(List<String> flybyObjects) async {
   try {
     for (final object in flybyObjects) {
@@ -461,7 +462,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
     flybyObjects.clear();
   }
 }
-{% endprettify %}
+```
 
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
@@ -482,10 +483,10 @@ keep these facts and concepts in mind:
     With the exception of `null` (if you enable [sound null safety][ns]),
     all objects inherit from the [`Object`][] class.
 
-    {{site.alert.version-note}}
-      [Null safety][ns] was introduced in Dart 2.12.
-      Using null safety requires a [language version][] of at least 2.12.
-    {{site.alert.end}}
+    :::version-note
+    [Null safety][ns] was introduced in Dart 2.12.
+    Using null safety requires a [language version][] of at least 2.12.
+    :::
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In `var number = 101`, `number`
@@ -559,7 +560,7 @@ This site's code follows the conventions in the
 [Strings]: /language/built-in-types#strings
 [The main() function]: /language/functions#the-main-function
 [ns]: /null-safety
-[`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[`Object`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
 [language version]: /guides/language/evolution#language-versioning
 [ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries

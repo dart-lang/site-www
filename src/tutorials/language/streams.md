@@ -4,15 +4,14 @@ description: Learn how to consume single-subscriber and broadcast streams.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * Streams provide an asynchronous sequence of data.
-  * Data sequences include user-generated events and data read from files.
-  * You can process a stream using either **await for** or `listen()` from the Stream API.
-  * Streams provide a way to respond to errors.
-  * There are two kinds of streams: single subscription or broadcast.
-</div>
+:::mini-toc What's the point?
+* Streams provide an asynchronous sequence of data.
+* Data sequences include user-generated events and data read from files.
+* You can process a stream using either **await for** or
+  `listen()` from the Stream API.
+* Streams provide a way to respond to errors.
+* There are two kinds of streams: single subscription or broadcast.
+:::
 
 Asynchronous programming in Dart is characterized by the
 [Future][] and [Stream][] classes.
@@ -36,7 +35,7 @@ iterates over the events of a stream like the **for loop** iterates
 over an [Iterable][]. For example:
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
   [!await for!] (final value in stream) {
@@ -44,7 +43,7 @@ Future<int> sumStream(Stream<int> stream) [!async!] {
   }
   return sum;
 }
-{% endprettify %}
+```
 
 This code simply receives each event of a stream of integer events,
 adds them up, and returns (a future of) the sum.
@@ -57,10 +56,10 @@ when using the **await for** loop.
 The following example tests the previous code by
 generating a simple stream of integers using an `async*` function:
 
-{{site.alert.note}}
-  This page uses embedded DartPads to display runnable examples.
-  {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display runnable examples.
+{% render 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
 ```dart:run-dartpad
@@ -85,9 +84,9 @@ void main() async {
 }
 ```
 
-{{site.alert.note}}
-  Click **Run** to see the result in the **Console**.
-{{site.alert.end}}
+:::note
+Click **Run** to see the result in the **Console**.
+:::
 
 ## Error events
 
@@ -144,9 +143,9 @@ void main() async {
 }
 ```
 
-{{site.alert.note}}
-  Click **Run** to see the result in the **Console**.
-{{site.alert.end}}
+:::note
+Click **Run** to see the result in the **Console**.
+:::
 
 
 ## Working with streams
@@ -163,11 +162,11 @@ Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
 ```
 
-## Two kinds of streams {#two-kinds-of-streams}
+## Two kinds of streams {:#two-kinds-of-streams}
 
 There are two kinds of streams.
 
-### Single subscription streams {#single-subscription-streams}
+### Single subscription streams {:#single-subscription-streams}
 
 The most common kind of stream contains a sequence of events that
 are parts of a larger whole.
@@ -182,7 +181,7 @@ and then the rest of the stream makes no sense.
 When you start listening,
 the data will be fetched and provided in chunks.
 
-### Broadcast streams {#broadcast-streams}
+### Broadcast streams {:#broadcast-streams}
 
 The other kind of stream is intended for individual messages that
 can be handled one at a time. This kind of stream can be used for
@@ -194,7 +193,7 @@ More than one listener can listen at the same time,
 and you can listen again later after canceling a previous
 subscription.
 
-## Methods that process a stream {#process-stream-methods}
+## Methods that process a stream {:#process-stream-methods}
 
 The following methods on [Stream\<T>][Stream] process the stream and return a
 result:
@@ -257,7 +256,7 @@ Future<String> join([String separator = '']) async =>
 (The actual implementations are slightly more complex,
 but mainly for historical reasons.)
 
-## Methods that modify a stream {#modify-stream-methods}
+## Methods that modify a stream {:#modify-stream-methods}
 
 The following methods on Stream return a new stream based
 on the original stream.
@@ -322,7 +321,7 @@ Stream<S> mapLogErrors<S, T>(
 }
 ```
 
-### The transform() function {#transform-function}
+### The transform() function {:#transform-function}
 
 The `transform()` function is not just for error handling;
 it is a more generalized "map" for streams.
@@ -334,7 +333,7 @@ For example, decoders like [Utf8Decoder][] are transformers.
 A transformer requires only one function, [bind()][], which can be
 easily implemented by an `async` function.
 
-### Reading and decoding a file {#reading-decoding-file}
+### Reading and decoding a file {:#reading-decoding-file}
 
 The following code reads a file and runs two transforms over the stream.
 It first converts the data from UTF8 and then runs it through
@@ -357,7 +356,7 @@ void main(List<String> args) async {
 }
 ```
 
-## The listen() method {#listen-method}
+## The listen() method {:#listen-method}
 
 The final method on Stream is `listen()`. This is a "low-level"
 method—all other stream functions are defined in terms of `listen()`.
@@ -398,13 +397,13 @@ and asynchronous programming in Dart.
   an article that explains how to handle errors using the Future API
 * [Asynchrony support](/language/async),
   a section in the [language tour](/language)
-* [Stream API reference]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
+* [Stream API reference]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html)
 
-[bind()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer/bind.html
-[LineSplitter]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html
-[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[Stream]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[StreamSubscription]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamSubscription-class.html
-[StreamTransformer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html
-[Utf8Decoder]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html
+[bind()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamTransformer/bind.html
+[LineSplitter]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/LineSplitter-class.html
+[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[StreamSubscription]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamSubscription-class.html
+[StreamTransformer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamTransformer-class.html
+[Utf8Decoder]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/Utf8Decoder-class.html

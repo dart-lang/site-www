@@ -20,10 +20,10 @@ click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
-{{site.alert.note}}
-  This page uses embedded DartPads to display runnable examples.
-  {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display runnable examples.
+{% render 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 ## String interpolation
 
@@ -32,17 +32,17 @@ If the expression is an identifier, you can omit the `{}`.
 
 Here are some examples of using string interpolation:
 
-<div class="table-wrapper" markdown="1">
-| String                      | | Result |
-|-----------------------------+-+ -------|
-| `'${3 + 2}'`                | | `'5'` |
-| `'${"word".toUpperCase()}'` | | `'WORD'` |
-| `'$myObject'`               | | The value of `myObject.toString()` |
+<div class="table-wrapper">
+
+| String                      | Result                             |
+|-----------------------------|------------------------------------|
+| `'${3 + 2}'`                | `'5'`                              |
+| `'${"word".toUpperCase()}'` | `'WORD'`                           |
+| `'$myObject'`               | The value of `myObject.toString()` |
 
 </div>
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
@@ -123,8 +123,7 @@ To learn more about null safety in Dart,
 read the [sound null safety guide](/null-safety).
 
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Try to declare two variables below:
 - A nullable `String` named `name` with the value `'Jane'`.
@@ -191,8 +190,7 @@ print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Try substituting in the `??=` and `??` operators
 to implement the described behavior in the following snippet.
@@ -287,8 +285,7 @@ The preceding code returns null (and never calls `someMethod()`) if either
 null.
 
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Try using conditional property access to finish the code snippet below.
 
@@ -384,8 +381,7 @@ but still want the list to be `List<BaseType>`:
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
@@ -510,8 +506,7 @@ Here's a simpler way to write that code:
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Try finishing the following statements, which use arrow syntax.
 
@@ -666,8 +661,7 @@ querySelector('#confirm')
   ..scrollIntoView();
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
@@ -811,8 +805,7 @@ class MyClass {
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Imagine you have a shopping cart class that keeps a private `List<double>`
 of prices.
@@ -966,18 +959,17 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
   print(newTotal); // <-- prints 15
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
-| Function call                   | | Returned value |
-|---------------------------------+-+----------------|
-| `joinWithCommas(1)`             | | `'1'`          |
-| `joinWithCommas(1, 2, 3)`       | | `'1,2,3'`      |
-| `joinWithCommas(1, 1, 1, 1, 1)` | | `'1,1,1,1,1'`  |
+| Function call                   | Returned value |
+|---------------------------------|----------------|
+| `joinWithCommas(1)`             | `'1'`          |
+| `joinWithCommas(1, 2, 3)`       | `'1,2,3'`      |
+| `joinWithCommas(1, 1, 1, 1, 1)` | `'1,1,1,1,1'`  |
 
 <br>
 
@@ -1099,8 +1091,7 @@ void printName(String firstName, String lastName, {String middleName[! = ''!]}) 
 A function can't have both optional positional and named parameters.
 
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named, nullable parameters:
@@ -1280,8 +1271,7 @@ try {
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
@@ -1491,8 +1481,7 @@ MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
@@ -1594,8 +1583,7 @@ NonNegativePoint(this.x, this.y)
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Complete the `FirstTwoLetters` constructor below.
 Use an initializer list to assign the first two characters in `word` to
@@ -1715,8 +1703,7 @@ To use a named constructor, invoke it using its full name:
 final myPoint = Point.origin();
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Give the `Color` class a constructor named `Color.black`
 that sets all three properties to zero.
@@ -1810,8 +1797,7 @@ class Shape {
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Fill in the factory constructor named `IntegerHolder.fromList`,
 making it do the following:
@@ -2006,8 +1992,7 @@ class Automobile {
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
@@ -2093,8 +2078,7 @@ class ImmutablePoint {
 }
 ```
 
-### Code example
-{: .no_toc}
+### Code example {:.no_toc}
 
 Modify the `Recipe` class so its instances can be constants,
 and create a constant constructor that does the following:

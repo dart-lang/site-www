@@ -9,7 +9,7 @@ that works with either the
 With either tool, add the `pub` command followed by
 a subcommand such as `get`:
 
-```terminal
+```console
 $ dart pub get    # Gets dependencies for a non-Flutter package
 $ flutter pub get # Gets dependencies for a Flutter package
 ```
@@ -25,13 +25,13 @@ on the [Flutter website]({{site.flutter}}).
 [flutter-cli]: {{site.flutter-docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
-{{site.alert.version-note}}
-  The `dart pub` command debuted in Dart 2.10.
-  Although you might still find examples of
-  using the standalone `pub` command instead of
-  `dart pub` or `flutter pub`,
-  the standalone `pub` command has been removed.
-{{site.alert.end}}
+:::version-note
+The `dart pub` command debuted in Dart 2.10.
+Although you might still find examples of
+using the standalone `pub` command instead of
+`dart pub` or `flutter pub`,
+the standalone `pub` command has been removed.
+:::
 
 If you encounter problems using the pub tool,
 see [Troubleshooting Pub](/tools/pub/troubleshoot).
@@ -41,13 +41,13 @@ see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Detailed documentation exists for each of the following pub subcommands:
 
-{% include pub-subcommands.md %}
+{% render 'pub-subcommands.md' %}
 
 ## Overview of subcommands
 
 Pub's subcommands fall into the following categories:
 
-* [Managing package dependencies](#managing-apps)
+* [Managing package dependencies](#managing-package-dependencies)
 * [Running command-line apps](#running-command-line-apps)
 * [Deploying packages and apps](#deploying-packages-and-apps)
 
@@ -150,7 +150,10 @@ Prints debugging information when an error occurs.
 
 Equivalent to `--verbosity=all`.
 
+{% comment %}
+TODO(parlough) - Fix inline code syntax not working correctly in headers?
 ### `--directory=<dir>` or `-C <dir>`
+{% endcomment %}
 
 Runs the command in the specified directory.
 

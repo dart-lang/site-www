@@ -71,11 +71,11 @@ A doc comment is any comment that appears before a declaration
 and uses the special `///` syntax that `dart doc` looks for.
 
 [`dart doc`]: /tools/dart-doc
-[docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
+[docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}
 
 ### DO use `///` doc comments to document members and types
 
-{% include linter-rule-mention.md rule="slash_for_doc_comments" %}
+{% render 'linter-rule-mention.md', rule:'slash_for_doc_comments' %}
 
 Using a doc comment instead of a regular comment enables 
 [`dart doc`][] to find it
@@ -106,7 +106,7 @@ up.
 
 ### PREFER writing doc comments for public APIs
 
-{% include linter-rule-mention.md rule1="package_api_docs" rule2="public_member_api_docs"%}
+{% render 'linter-rule-mention.md', rule1:'package_api_docs', rule2:'public_member_api_docs' %}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
@@ -294,11 +294,11 @@ bool get shouldConfirm => ...
 bool get canResize => ...
 ```
 
-{{site.alert.note}}
-  This guideline intentionally doesn't include using "Whether or not". In many
-  cases, usage of "or not" with "whether" is superfluous and can be omitted,
-  especially when used in this context.
-{{site.alert.end}}
+:::note
+This guideline intentionally doesn't include using "Whether or not". In many
+cases, usage of "or not" with "whether" is superfluous and can be omitted,
+especially when used in this context.
+:::
 
 ### DON'T write documentation for both the getter and setter of a property
 
@@ -346,22 +346,23 @@ class Chunk { ... }
 ### CONSIDER including code samples in doc comments
 
 {:.good}
-<?code-excerpt "docs_good.dart (code-sample)"?>
-{% prettify dart tag=pre+code %}
+<!-- TODO(parlough) fix excerpt updater - "docs_good.dart (code-sample)"?>
+
+```dart
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
 /// ```
 num min(num a, num b) => ...
-{% endprettify %}
+```
 
 Humans are great at generalizing from examples, so even a single code sample
 makes an API easier to learn.
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers
 
-{% include linter-rule-mention.md rule="comment_references" %}
+{% render 'linter-rule-mention.md', rule:'comment_references' %}
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
@@ -426,6 +427,7 @@ Flag addFlag(String name, String abbr) => ...
 
 ### DO put doc comments before metadata annotations
 
+
 {:.good}
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
 ```dart
@@ -455,8 +457,9 @@ There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
-<?code-excerpt "docs_good.dart (markdown)"?>
-{% prettify dart tag=pre+code %}
+<!-- TODO(parlough) fix excerpt updater - ?code-excerpt "docs_good.dart (markdown)"? -->
+
+````dart
 /// This is a paragraph of regular text.
 ///
 /// This sentence has *two* _emphasized_ words (italics) and **two**
@@ -507,7 +510,7 @@ a flavor of what's supported:
 /// ### A subsubheader
 ///
 /// #### If you need this many levels of headers, you're doing it wrong
-{% endprettify %}
+````
 
 ### AVOID using markdown excessively
 
@@ -575,9 +578,8 @@ think.
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
 
-{:.good}
 <?code-excerpt "docs_good.dart (this)"?>
-```dart
+```dart {"tag":{"class":"good","text":"good"}}
 class Box {
   /// The value this wraps.
   Object? _value;

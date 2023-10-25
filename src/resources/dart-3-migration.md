@@ -74,7 +74,7 @@ the code is affected by any other Dart 3 changes.
 To understand if your source code is impacted by any Dart 3 changes, 
 use these steps:
 
-```terminal
+```console
 $ dart --version    # Make sure this reports 3.0.0 or higher.
 $ dart pub get      # This should resolve without issues.
 $ dart analyze      # This should pass without errors.
@@ -83,19 +83,19 @@ $ dart analyze      # This should pass without errors.
 If the `pub get` step fails, try to upgrade your dependencies
 to see if more recent versions might support Dart 3:
 
-```terminal
+```console
 $ dart pub upgrade
 $ dart analyze      # This should pass without errors.
 ```
 
 Or, if needed, also include [major versions][] upgrades:
 
-```terminal
+```console
 $ dart pub upgrade --major-versions
 $ dart analyze      # This should pass without errors.
 ```
 
-[major versions]: /tools/pub/cmd/pub-upgrade#--major-versions
+[major versions]: /tools/pub/cmd/pub-upgrade#major-versions
 
 ## Dart 3 language changes
 
@@ -105,7 +105,7 @@ Dart 2.12 introduced null safety more than two years ago.
 In Dart 2.12, users needed to enable null safety [with a pubspec setting][].
 In Dart 3, null safety is built in; you cannot turn it off.
 
-[with a pubspec setting]: /null-safety/#enable-null-safety
+[with a pubspec setting]: /null-safety#enable-null-safety
 
 #### Scope
 
@@ -117,7 +117,7 @@ that applies to all Dart 3 code.
 Packages developed without null safety support will cause issues
 when resolving dependencies with `pub get`:
 
-```terminal
+```console
 $ dart pub get
 
 Because pkg1 doesn't support null safety, version solving failed.
@@ -128,7 +128,7 @@ Libraries that opt out of null safety with [language version comments][]
 that select any language version below `2.12` will
 cause analysis or compilation errors:
 
-```terminal
+```console
 $ dart analyze .
 Analyzing ....                         0.6s
 
@@ -137,7 +137,7 @@ Analyzing ....                         0.6s
   • illegal_language_version_override
 ```
 
-```terminal
+```console
 $ dart run bin/my_app.dart
 ../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
@@ -171,7 +171,7 @@ that only applies to language version 3.0 or later.
 
 Dart analysis produces errors like:
 
-```nocode
+```plaintext
 line 2 • Using a colon as a separator before a default value is no longer supported.
 ```
 
@@ -191,7 +191,7 @@ int someInt({int x = 0}) => x;
 
 This migration can be made manually, or automated with `dart fix`:
 
-```terminal
+```console
 $ dart fix --apply --code=obsolete_colon_for_default_value
 ```
 
@@ -215,7 +215,7 @@ that only applies to language version 3.0 or later.
 
 An analysis error like:
 
-```nocode
+```plaintext
 Mixin can only be applied to class.
 ```
 
@@ -278,7 +278,7 @@ that only applies to language version 3.0 or later.
 
 You will see an error like:
 
-```nocode
+```plaintext
 The label used in a 'continue' statement must be defined on either a loop or a switch member.
 ```
 
@@ -341,24 +341,24 @@ that applies to all Dart 3 code.
   Existing bidirectional iterators can still work, they just don't have
   a shared supertype locking them to a specific name for moving backwards.
 
-[`List.filled`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.filled.html
-[`int.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/parse.html
-[`double.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double/parse.html
-[`num.parse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/parse.html
-[`tryParse`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/tryParse.html
+[`List.filled`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.filled.html
+[`int.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int/parse.html
+[`double.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double/parse.html
+[`num.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/parse.html
+[`tryParse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/tryParse.html
 [`Deprecated.expires`]: {{site.dart-api}}/stable/2.19.6/dart-core/Deprecated/expires.html
-[`Deprecated.message`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Deprecated/message.html
+[`Deprecated.message`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Deprecated/message.html
 [`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
 [`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
 [`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
 [`NoSuchMethodError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NoSuchMethodError/NoSuchMethodError.html
-[`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
+[`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
 [`CyclicInitializationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CyclicInitializationError-class.html
 [`Provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/Provisional-class.html
 [`provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/provisional-constant.html
 [`proxy`]: {{site.dart-api}}/stable/2.19.6/dart-core/proxy-constant.html
 [`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
-[`TypeError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/TypeError-class.html
+[`TypeError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/TypeError-class.html
 [`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
 [`NullThrownError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NullThrownError-class.html
 [`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
@@ -381,7 +381,7 @@ that applies to all Dart 3 code.
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/2.19.6/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/UserTag/maxUserTags-constant.html
+[`maxUserTags`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/UserTag/maxUserTags-constant.html
 [`Metrics`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metrics-class.html
 [`Metric`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metric-class.html
 [`Counter`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Counter-class.html
@@ -408,7 +408,7 @@ that applies to all Dart 3 code.
 Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`)
 will fail with errors like:
 
-```nocode
+```plaintext
 error line 2 • Undefined class 'CyclicInitializationError'.
 ```
 
@@ -534,6 +534,7 @@ Use new sub-commands available in the `dart` tool:
 | `dartanalyzer`  | [`dart analyze`](/tools/dart-analyze)         | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
 | `dartdoc`       | [`dart doc`](/tools/dart-doc)                 | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
 | `pub`           | [`dart pub`](/tools/dart-pub)                 | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
+
 {:.table .table-striped .nowrap}
 
 ### Null safety migration tools
@@ -574,7 +575,7 @@ that applies to all Dart 3 code.
 
 The former configuration options will fail with a warning like:
 
-```nocode
+```plaintext
 The option 'implicit-casts' is no longer supported.
 Try using the new 'strict-casts' option.
 ```

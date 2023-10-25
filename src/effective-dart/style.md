@@ -35,7 +35,7 @@ Identifiers come in three flavors in Dart.
 
 ### DO name types using `UpperCamelCase`
 
-{% include linter-rule-mention.md rule="camel_case_types" %}
+{% render 'linter-rule-mention.md', rule:'camel_case_types' %}
 
 Classes, enum types, typedefs, and type parameters should capitalize the first
 letter of each word (including the first word), and use no separators.
@@ -80,7 +80,7 @@ class C { ... }
 
 ### DO name extensions using `UpperCamelCase`
 
-{% include linter-rule-mention.md rule="camel_case_extensions" %}
+{% render 'linter-rule-mention.md', rule:'camel_case_extensions' %}
 
 Like types, [extensions][] should capitalize the first letter of each word
 (including the first word),
@@ -97,11 +97,9 @@ extension SmartIterable<T> on Iterable<T> { ... }
 [extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
-### DO name packages, directories, and source files using `lowercase_with_underscores` {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
+### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-{% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
-<!-- source for rules (update these if you update the guideline):
-https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
+{% render 'linter-rule-mention.md', rule1:'file_names', rule2:'package_names' %}
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -128,7 +126,7 @@ mypackage
 
 ### DO name import prefixes using `lowercase_with_underscores`
 
-{% include linter-rule-mention.md rule="library_prefixes" %}
+{% render 'linter-rule-mention.md', rule:'library_prefixes' %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
@@ -149,7 +147,7 @@ import 'package:js/js.dart' as JS;
 
 ### DO name other identifiers using `lowerCamelCase`
 
-{% include linter-rule-mention.md rule="non_constant_identifier_names" %}
+{% render 'linter-rule-mention.md', rule:'non_constant_identifier_names' %}
 
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
@@ -170,7 +168,7 @@ void align(bool clearItems) {
 
 ### PREFER using `lowerCamelCase` for constant names
 
-{% include linter-rule-mention.md rule="constant_identifier_names" %}
+{% render 'linter-rule-mention.md', rule:'constant_identifier_names' %}
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 
@@ -205,17 +203,17 @@ as in the following cases:
 * When generating Dart code that's parallel to Java code—for example, 
   in enumerated types generated from [protobufs.][]
 
-{{site.alert.note}}
-  We initially used Java's `SCREAMING_CAPS` style for constants. We
-  changed for a few reasons:
+:::note
+We initially used Java's `SCREAMING_CAPS` style for constants. We
+changed for a few reasons:
 
-  *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-      things like CSS colors.
-  *   Constants are often changed to final non-const variables, which would
-      necessitate a name change.
-  *   The `values` property automatically defined on an enum type is const and
-      lowercase.
-{{site.alert.end}}
+*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
+    things like CSS colors.
+*   Constants are often changed to final non-const variables, which would
+    necessitate a name change.
+*   The `values` property automatically defined on an enum type is const and
+    lowercase.
+:::
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 
@@ -328,7 +326,6 @@ the main library file in question.
 {:.bad}
 <?code-excerpt "usage_bad.dart (library-dir)"?>
 ```dart
-
 library my_library;
 ```
 
@@ -351,7 +348,7 @@ A single linter rule handles all the ordering guidelines:
 
 ### DO place `dart:` imports before other imports
 
-{% include linter-rule-mention.md rule="directives_ordering" %}
+{% render 'linter-rule-mention.md', rule:'directives_ordering' %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
@@ -366,7 +363,7 @@ import 'package:foo/foo.dart';
 
 ### DO place `package:` imports before relative imports
 
-{% include linter-rule-mention.md rule="directives_ordering" %}
+{% render 'linter-rule-mention.md', rule:'directives_ordering' %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
@@ -380,7 +377,7 @@ import 'util.dart';
 
 ### DO specify exports in a separate section after all imports
 
-{% include linter-rule-mention.md rule="directives_ordering" %}
+{% render 'linter-rule-mention.md', rule:'directives_ordering' %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (export)"?>
@@ -402,7 +399,7 @@ import 'src/foo_bar.dart';
 
 ### DO sort sections alphabetically
 
-{% include linter-rule-mention.md rule="directives_ordering" %}
+{% render 'linter-rule-mention.md', rule:'directives_ordering' %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
@@ -463,7 +460,7 @@ to produce beautiful code.
 
 ### AVOID lines longer than 80 characters
 
-{% include linter-rule-mention.md rule="lines_longer_than_80_chars" %}
+{% render 'linter-rule-mention.md', rule:'lines_longer_than_80_chars' %}
 
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
@@ -487,9 +484,10 @@ an import or export), it may remain whole even if it causes the line to go over
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
-### DO use curly braces for all flow control statements {#do-use-curly-braces-for-all-flow-control-structures}
+<a id="do-use-curly-braces-for-all-flow-control-structures"></a>
+### DO use curly braces for all flow control statements
 
-{% include linter-rule-mention.md rule="curly_braces_in_flow_control_structures" %}
+{% render 'linter-rule-mention.md', rule:'curly_braces_in_flow_control_structures' %}
 
 Doing so avoids the [dangling else][] problem.
 

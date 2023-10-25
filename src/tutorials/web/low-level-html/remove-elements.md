@@ -8,20 +8,18 @@ prevpage:
   title: Add elements to the DOM
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * Use `element.remove()` to remove an element from the DOM.
-  * Remove all children from an element with `element.children.clear()`.
-  * Function expressions are a convenient way to define single-use functions.
-  * `=>` is a shorthand syntax for defining functions that contain just one expression.
-</div>
+:::mini-toc What's the point?
+* Use `element.remove()` to remove an element from the DOM.
+* Remove all children from an element with `element.children.clear()`.
+* Function expressions are a convenient way to define single-use functions.
+* `=>` is a shorthand syntax for defining functions that contain just one expression.
+:::
 
 
-{{site.alert.note}}
-    This page uses embedded DartPads to display runnable examples.
-    {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display runnable examples.
+{% render 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 This tutorial shows you how to delete elements from the DOM.
 A new and improved version of the todo app from
@@ -167,7 +165,7 @@ to keep the code simpler.
 An element is removed from
 the DOM when it is removed from its parent's list of children.
 The
-[`List`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}class provides functions for finding an item in the list
+[`List`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}class provides functions for finding an item in the list
 and removing it.
 But, in this case,
 using the element's `remove()` function

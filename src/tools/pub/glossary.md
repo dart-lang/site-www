@@ -50,7 +50,7 @@ If the locked hash doesn't match what's currently in the pub cache,
 pub redownloads the archive. If it still doesn't match, the lockfile
 updates and a warning is printed. For example:
 
-{% prettify nocode tag=pre+code %}
+```plaintext
 $ dart pub get
 Resolving dependencies...
 [!Cached version of foo-1.0.0 has wrong hash - redownloading.!]
@@ -67,7 +67,7 @@ For more information see:
 https://dart.dev/go/content-hashes
 
 Changed 1 dependency!
-{% endprettify %}
+```
 
 The updated content hash will show up in your version control diff,
 and should make you suspicious.
@@ -76,7 +76,7 @@ To make a discrepancy become an error instead of a warning, use
 [`dart pub get --enforce-lockfile`][]. It will cause the resolution to fail
 if it cannot find package archives with the same hashes, without updating the lockfile.
 
-{% prettify nocode tag=pre+code %}
+```plaintext
 $ dart pub get [!--enforce-lockfile!]
 Resolving dependencies...
 Cached version of foo-1.0.0 has wrong hash - redownloading.
@@ -95,11 +95,11 @@ Unable to satisfy `pubspec.yaml` using `pubspec.lock`.!]
 
 To update `pubspec.lock` run `dart pub get` without
 `--enforce-lockfile`.
-{% endprettify %}
+```
 
 [resolution]: /tools/pub/cmd/pub-get
 [lockfile]: #lockfile
-[`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+[`dart pub get --enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
 
 ## Dependency
 

@@ -1,4 +1,4 @@
-#### Options {#prod-compile-options}
+#### Options {:#prod-compile-options}
 
 The `dart compile js` command has multiple options
 to customize javascript code compilation.
@@ -30,22 +30,25 @@ Common options include:
   * `-O2`: Enables `-O1` optimizations, plus additional ones
     (such as minification) that respect the language semantics and
     are safe for all programs.
-    {{site.alert.note}}
-      With `-O2`, string representations of types are no longer the same as
-      those in the Dart VM when compiled with the development JavaScript compiler.
-    {{site.alert.end}}
+
+    :::note
+    With `-O2`, string representations of types are no longer the same as
+    those in the Dart VM when compiled with the development JavaScript compiler.
+    :::
   * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
-    {{site.alert.warning}}
-      Omitting type checks can cause your app to crash due to type errors.
-      Before using `-O3`, **test using `-O2`** to ensure that your app
-      **never** throws a subtype of `Error` (such as `TypeError`).
-    {{site.alert.end}}
+    
+    :::warning
+    Omitting type checks can cause your app to crash due to type errors.
+    Before using `-O3`, **test using `-O2`** to ensure that your app
+    **never** throws a subtype of `Error` (such as `TypeError`).
+    :::
   * `-O4`: Enables more aggressive optimizations than `-O3`,
     but with the same assumptions.
-    {{site.alert.warning}}
-      The `-O4` optimizations are susceptible to variations in input data.
-      Before relying on `-O4`, **test for edge cases in user input**.
-    {{site.alert.end}}
+    
+    :::warning
+    The `-O4` optimizations are susceptible to variations in input data.
+    Before relying on `-O4`, **test for edge cases in user input**.
+    :::
 
 `--no-source-maps`
 : Do not generate a source map file.
@@ -75,10 +78,10 @@ Some other handy options include:
 : Displays version information for `dart`.
 
 [Dart package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
-[`String.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
-[`int.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
-[`bool.fromEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html
-[`bool.hasEnvironment`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.hasEnvironment.html
+[`String.fromEnvironment`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String/String.fromEnvironment.html
+[`int.fromEnvironment`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int/int.fromEnvironment.html
+[`bool.fromEnvironment`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.fromEnvironment.html
+[`bool.hasEnvironment`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.hasEnvironment.html
 [Configuring apps with compilation environment declarations]: /guides/environment-declarations
 
 ###### Display options

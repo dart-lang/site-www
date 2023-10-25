@@ -30,19 +30,20 @@ made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
-{% prettify dart class="linenums:8 analyzer"%}
+```dart
 void increment() {
   if (count < 10) [!;!]
   count++;
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 If properly configured, the analyzer points to the semicolon and
 produces the following warning:
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
-```nocode
+```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 </blockquote>
@@ -52,13 +53,14 @@ For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
-{% prettify dart class="analyzer"%}
+```dart
 var [!controller = StreamController<String>()!];
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 </blockquote>
@@ -77,7 +79,7 @@ to ensure that your code complies with the
 and other suggested guidelines in [Effective Dart][]. 
 Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [IDEs and editors](/tools#ides-and-editors)
+and [IDEs and editors](/tools#editors)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
@@ -86,10 +88,10 @@ add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
 
-{{site.alert.note}}
-  To view various analyzer diagnostics with explanations and common fixes,
-  see [Diagnostic messages][diagnostics].
-{{site.alert.end}}
+:::note
+To view various analyzer diagnostics with explanations and common fixes,
+see [Diagnostic messages][diagnostics].
+:::
 
 ## The analysis options file
 
@@ -128,11 +130,11 @@ The sample illustrates the most common top-level entries:
   [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
 - Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
 
-{{site.alert.warn}}
-  **YAML is sensitive to whitespace.** 
-  Don't use tabs in a YAML file,
-  and use 2 spaces to denote each level of indentation.
-{{site.alert.end}}
+:::warning
+**YAML is sensitive to whitespace.** 
+Don't use tabs in a YAML file,
+and use 2 spaces to denote each level of indentation.
+:::
 
 If the analyzer can't find an analysis options file at the package root,
 it walks up the directory tree, looking for one.
@@ -149,7 +151,7 @@ and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Enabling stricter type checks {#enabling-additional-type-checks}
+## Enabling stricter type checks {:#enabling-additional-type-checks}
 
 If you want stricter static checks than
 the [Dart type system][type-system] requires,
@@ -178,7 +180,7 @@ You can use the modes together or separately; all default to `false`.
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 void foo(List<String> lines) {
   ...
 }
@@ -186,25 +188,26 @@ void foo(List<String> lines) {
 void bar(String jsonText) {
   foo([!jsonDecode(jsonText)!]); // Implicit cast
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
 ```
 
-{{site.alert.version-note}}
-  The `strict-casts` mode was introduced in Dart 2.16.
-  To enable similar checks with earlier SDK releases,
-  consider using the now deprecated `implicit-casts` option:
+:::version-note
+The `strict-casts` mode was introduced in Dart 2.16.
+To enable similar checks with earlier SDK releases,
+consider using the now deprecated `implicit-casts` option:
 
-  ```yaml
-  analyzer:
-    strong-mode:
-      implicit-casts: false
-  ```
-{{site.alert.end}}
+```yaml
+analyzer:
+  strong-mode:
+    implicit-casts: false
+```
+:::
 
 `strict-inference: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
@@ -215,27 +218,28 @@ error - The argument type 'dynamic' can't be assigned to the parameter type 'Lis
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 final lines = [!{}!]; // Inference failure
 lines['Dart'] = 10000;
 lines['C++'] = 'one thousand';
 lines['Go'] = 2000;
 print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
-{% endprettify %}
+```
+{:analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
-{{site.alert.info}}
-  The `strict-inference` mode can identify many situations
-  which result in an inference failure.
+:::tip
+The `strict-inference` mode can identify many situations
+which result in an inference failure.
 
-  See [Conditions for strict inference failure][] 
-  for an exhaustive list of inference failure conditions.
-{{site.alert.end}}
+See [Conditions for strict inference failure][] 
+for an exhaustive list of inference failure conditions.
+:::
 
 [Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
@@ -248,20 +252,21 @@ warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 [!List!] numbers = [1, 2, 3]; // List with raw type
 for (final n in numbers) {
   print(n.length); // Runtime error
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
-## Enabling and disabling linter rules {#enabling-linter-rules}
+## Enabling and disabling linter rules {:#enabling-linter-rules}
 
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
@@ -270,7 +275,7 @@ For example, some rules are more appropriate for regular Dart packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-### Enabling Dart team recommended linter rules {#lints}
+### Enabling Dart team recommended linter rules {:#lints}
 
 The Dart team provides two sets of recommended linter rules
 in the [lints package][]:
@@ -290,16 +295,16 @@ Recommended rules
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.
 
-{{site.alert.tip}}
-  If you're working on Flutter code, then instead of using the `lints` package, 
-  use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
-  which provides a superset of the recommended rules.
-{{site.alert.end}}
+:::tip
+If you're working on Flutter code, then instead of using the `lints` package, 
+use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
+which provides a superset of the recommended rules.
+:::
 
 To enable either set of lints,
 add the [lints package][] as a dev dependency:
 
-```terminal
+```console
 $ dart pub add --dev lints
 ```
 
@@ -316,17 +321,17 @@ For example, you can include the recommended rule set like this:
 include: package:lints/recommended.yaml
 ```
 
-{{site.alert.important}}
-  When a **new version of `lints`** is published,
-  code that previously passed analysis might **start failing analysis.**
-  We recommend updating your code to work with the new rules.
-  Other options are to explicitly enable individual linter rules 
-  or [disable individual rules][].
-{{site.alert.end}}
+:::important
+When a **new version of `lints`** is published,
+code that previously passed analysis might **start failing analysis.**
+We recommend updating your code to work with the new rules.
+Other options are to explicitly enable individual linter rules 
+or [disable individual rules][].
+:::
 
 [lints package]: {{site.pub-pkg}}/lints
 
-### Enabling individual rules {#individual-rules}
+### Enabling individual rules {:#individual-rules}
 
 To enable a single linter rule, add `linter:` to the analysis options file
 as a top-level key,
@@ -376,13 +381,13 @@ linter:
     await_only_futures: true
 ```
 
-{{site.alert.note}}
-  Due to YAML restrictions,
-  **you can't mix list and key-value syntax in the same `rules` entry.**
-  You can use the other syntax for rules in an included file.
-{{site.alert.end}}
+:::note
+Due to YAML restrictions,
+**you can't mix list and key-value syntax in the same `rules` entry.**
+You can use the other syntax for rules in an included file.
+:::
 
-## Enabling analyzer plugins (experimental) {#plugins}
+## Enabling analyzer plugins (experimental) {:#plugins}
 
 The analyzer has experimental support for plugins.
 These plugins integrate with the analyzer to add functionality
@@ -404,7 +409,7 @@ To enable a plugin:
 
  1. Add the package containing the plugin as a dev dependency.
 
-    ```terminal
+    ```console
     $ dart pub add --dev <your_favorite_analyzer_plugin_package>
     ```
 
@@ -484,9 +489,9 @@ To suppress all linter rules, add a `type=lint` specifier:
 // ignore_for_file: type=lint
 ```
 
-{{site.alert.version-note}}
-  Support for the `type=lint` specifier was added in Dart 2.15.
-{{site.alert.end}}
+:::version-note
+Support for the `type=lint` specifier was added in Dart 2.15.
+:::
 
 
 ### Suppressing rules for a line of code

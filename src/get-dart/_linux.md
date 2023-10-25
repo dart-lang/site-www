@@ -9,7 +9,7 @@ versions are released.
 
 Perform the following **one-time setup**:
 
-```terminal
+```console
 $ sudo apt-get update
 $ sudo apt-get install apt-transport-https
 $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
@@ -18,7 +18,7 @@ $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.
 
 Then install the Dart SDK:
 
-```terminal
+```console
 $ sudo apt-get update
 $ sudo apt-get install dart
 ```
@@ -33,12 +33,12 @@ in the `.deb` package format.
 After installing the SDK, **add its `bin` directory to your `PATH`**. For example,
 use the following command to change `PATH` in your active terminal session:
 
-```terminal
+```console
 $ export PATH="$PATH:/usr/lib/dart/bin"
 ```
 
 To change the PATH for future terminal sessions, use a command like this:
 
-```terminal
+```console
 $ echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> ~/.profile
 ```

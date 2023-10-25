@@ -13,21 +13,21 @@ This page has details about the differences
 between native and web number implementations,
 and how to write code so that those differences don't matter.
 
-{{site.alert.secondary}}
-  **Number implementations in Dart and other languages**
+:::secondary
+**Number implementations in Dart and other languages**
 
-  Dart has always allowed platform-specific representations
-  and semantics for numbers, for reasons of 
-  performance, code size, and platform interoperability.
+Dart has always allowed platform-specific representations
+and semantics for numbers, for reasons of 
+performance, code size, and platform interoperability.
 
-  Similarly, in C/C++ the commonly used `int` type for integer values is
-  platform-specific to best map to the native machine architecture
-  (16-, 32-, or 64-bit).
-  In Java, the `float` and `double` types for fractional values
-  were originally designed to strictly follow IEEE 754 on all platforms,
-  but this constraint was loosened almost immediately for efficiency reasons
-  (`strictfp` is required for exact coherence).
-{{site.alert.end}}
+Similarly, in C/C++ the commonly used `int` type for integer values is
+platform-specific to best map to the native machine architecture
+(16-, 32-, or 64-bit).
+In Java, the `float` and `double` types for fractional values
+were originally designed to strictly follow IEEE 754 on all platforms,
+but this constraint was loosened almost immediately for efficiency reasons
+(`strictfp` is required for exact coherence).
+:::
 
 
 ## Dart number representation
@@ -104,13 +104,13 @@ both `int` and `double`.
   alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
 
 
-{{site.alert.note}}
-  Dart represents `int` and `double` in
-  a few different ways for efficiency,
-  but these implementation classes (in blue, above) are hidden.
-  In general, you can ignore the platform-specific types,
-  and think of `int` and `double` as concrete types. 
-{{site.alert.end}}
+:::note
+Dart represents `int` and `double` in
+a few different ways for efficiency,
+but these implementation classes (in blue, above) are hidden.
+In general, you can ignore the platform-specific types,
+and think of `int` and `double` as concrete types. 
+:::
 
 An `int` on the web is represented as
 a double-precision floating-point value with no fractional part.
@@ -132,10 +132,10 @@ When arithmetic results differ, as described in this section,
 the behavior is **platform specific**
 and **subject to change**.
 
-{{site.alert.note}}
-  Any platform-specific behavior that this page describes might change to be
-  less surprising, more consistent, or more performant.
-{{site.alert.end}}
+:::note
+Any platform-specific behavior that this page describes might change to be
+less surprising, more consistent, or more performant.
+:::
 
 
 ### Precision
@@ -506,5 +506,5 @@ provides strict 64-bit signed numbers, even on the web.
 Use these types with care, though:
 they often result in significantly bigger and slower code.
 
-[`BigInt`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html
+[`BigInt`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/BigInt-class.html
 [`fixnum`]: {{site.pub-pkg}}/fixnum

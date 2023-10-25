@@ -8,7 +8,7 @@ The `dart create` command creates a Dart project,
 using one of several supported templates.
 The same functionality is available in IDEs.
 
-{% include tools/dart-tool-note.md %}
+{% render 'tools/dart-tool-note.md' %}
 
 When you run `dart create`, it first creates a directory with the project files. 
 Then it gets package dependencies (unless you specify the `--no-pub` flag).
@@ -16,25 +16,25 @@ Then it gets package dependencies (unless you specify the `--no-pub` flag).
 Here's an example of using `dart create` to create a directory named `my_cli` 
 that contains a simple console app (the default template):
 
-```terminal
+```console
 $ dart create my_cli
 ```
 
 To use a different template, such as `web`, add a template argument:
 
-```terminal
+```console
 $ dart create -t web my_web_app
 ```
 
 The following table shows the templates you can use:
 
-|------------------+------------------------------------------------------|
-| Template         | Description                                          |
-|------------------|------------------------------------------------------|
-| `console`        | A command-line application.                          |
-| `package`        | A package containing shared Dart libraries.         |
-| `server-shelf`   | A server built using [shelf][].                      |
-| `web`            | A web app built using core Dart libraries.           |
+| Template       | Description                                 |
+|----------------|---------------------------------------------|
+| `console`      | A command-line application.                 |
+| `package`      | A package containing shared Dart libraries. |
+| `server-shelf` | A server built using [shelf][].             |
+| `web`          | A web app built using core Dart libraries.  |
+
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
@@ -45,13 +45,13 @@ These templates result in a file structure that follows
 If the specified directory already exists, `dart create` fails. 
 You can force project generation with the `--force` flag:
 
-```terminal
+```console
 $ dart create --force <DIRECTORY>
 ```
 
 For further information on command-line options, use the `--help` flag:
 
-```terminal
+```console
 $ dart create --help
 ```
 

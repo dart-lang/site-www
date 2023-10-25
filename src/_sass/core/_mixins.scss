@@ -56,14 +56,18 @@
     }
     position: relative;
 
-    &:after {
-      font-family: $font-family-monospace;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      content: $msg;
-      position: absolute;
-      top: 6px;
-      left: 8px;
+    //&:after {
+    //  font-family: $font-family-monospace;
+    //  font-size: 0.8125rem;
+    //  font-weight: 500;
+    //  content: $msg;
+    //  position: absolute;
+    //  top: 6px;
+    //  left: 8px;
+    //  color: $fg-color;
+    //}
+    
+    .code-block-tag {
       color: $fg-color;
     }
   }

@@ -14,16 +14,16 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-{{site.alert.note}}
-  All enums automatically extend the [`Enum`][] class.
-  They are also sealed,
-  meaning they cannot be subclassed, implemented, mixed in,
-  or otherwise explicitly instantiated.
+:::note
+All enums automatically extend the [`Enum`][] class.
+They are also sealed,
+meaning they cannot be subclassed, implemented, mixed in,
+or otherwise explicitly instantiated.
 
-  Abstract classes and mixins can explicitly implement or extend `Enum`,
-  but unless they are then implemented by or mixed into an enum declaration,
-  no objects can actually implement the type of that class or mixin.
-{{site.alert.end}}
+Abstract classes and mixins can explicitly implement or extend `Enum`,
+but unless they are then implemented by or mixed into an enum declaration,
+no objects can actually implement the type of that class or mixin.
+:::
 
 ## Declaring simple enums
 
@@ -36,10 +36,10 @@ list the values you want to be enumerated:
 enum Color { red, green, blue }
 ```
 
-{{site.alert.tip}}
-  You can also use [trailing commas][] when declaring an enumerated type
-  to help prevent copy-paste errors.
-{{site.alert.end}}
+:::tip
+You can also use [trailing commas][] when declaring an enumerated type
+to help prevent copy-paste errors.
+:::
 
 ## Declaring enhanced enums
 
@@ -97,9 +97,9 @@ enum Vehicle implements Comparable<Vehicle> {
 }
 ```
 
-{{site.alert.version-note}}
-  Enhanced enums require a [language version][] of at least 2.17.
-{{site.alert.end}}
+:::version-note
+Enhanced enums require a [language version][] of at least 2.17.
+:::
 
 ## Using enums
 
@@ -169,7 +169,7 @@ like you would on a normal object:
 print(Vehicle.car.carbonFootprint);
 ```
 
-[`Enum`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
+[`Enum`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Enum-class.html
 [trailing commas]: /language/collections#lists
 [classes]: /language/classes
 [mixins]: /language/mixins

@@ -17,7 +17,7 @@ To update these cards, edit src/_data/docs_cards.yml.
 {% endcomment %}
 
 <div class="card-grid">
-{% for card in site.data.docs_cards -%}
+{% for card in docs_cards -%}
   {% capture index0Modulo3 %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
   {% capture indexModulo3 %}{{ forloop.index | modulo:3 }}{% endcapture %}
   <div class="card">

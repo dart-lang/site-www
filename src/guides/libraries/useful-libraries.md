@@ -19,6 +19,7 @@ Commonly used packages fall into three groups:
 The following packages are useful for a wide range of projects.
 
 | **Package** | **Description** | **Commonly used APIs** |
+|-------------|-----------------|------------------------|
 | [archive]({{site.pub-pkg}}/archive) | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
 | [characters]({{site.pub-pkg}}/characters) | String manipulation for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
 | [http]({{site.pub-pkg}}/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
@@ -32,19 +33,22 @@ The following packages are useful for a wide range of projects.
 | [stack_trace]({{site.pub-pkg}}/stack_trace) | Methods for parsing, inspecting, and manipulating stack traces produced by the underlying Dart implementation. Also provides functions to produce string representations of stack traces in a more readable format than the native StackTrace implementation. For more information, see [Unboxing Packages: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
 | [test]({{site.pub-pkg}}/test) | A standard way of writing and running tests in Dart. | expect(), group(), test() |
 | [yaml]({{site.pub-pkg}}/yaml) | A parser for YAML. | loadYaml(), loadYamlStream() |
+
 {:.table .table-striped .nowrap}
 
 
-## Packages that expand on Dart core libraries {#packages-that-correspond-to-sdk-libraries}
+## Packages that expand on Dart core libraries {:#packages-that-correspond-to-sdk-libraries}
 
 Each of the following packages builds upon a [core library](/guides/libraries),
 adding functionality and filling in missing features:
 
 | **Package** | **Description** | **Commonly used APIs** |
+|-------------|-----------------|------------------------|
 | [async]({{site.pub-pkg}}/async) | Expands on dart:async, adding utility classes to work with asynchronous computations. For more information, see [Unboxing Packages: async part 1]({{site.news}}/2016/03/unboxing-packages-async-part-1.html), [part 2]({{site.news}}/2016/03/unboxing-packages-async-part-2.html), and [part 3.]({{site.news}}/2016/04/unboxing-packages-async-part-3.html) | AsyncMemoizer, CancelableOperation, FutureGroup, LazyStream, Result, StreamCompleter, StreamGroup, StreamSplitter |
 | [collection]({{site.pub-pkg}}/collection) | Expands on dart:collection, adding utility functions and classes to make working with collections easier. For more information, see [Unboxing Packages: collection.]({{site.news}}/2016/01/unboxing-packages-collection.html) | Equality, CanonicalizedMap, MapKeySet, MapValueSet, PriorityQueue, QueueList |
 |[convert]({{site.pub-pkg}}/convert) | Expands on dart:convert, adding encoders and decoders for converting between different data representations. One of the data representations is _percent encoding_, also known as _URL encoding_. | HexDecoder, PercentDecoder |
 |[io]({{site.pub-pkg}}/io) | Contains two libraries, ansi and io, to simplify working with files, standard streams, and processes. Use the ansi library to customize terminal output. The io library has APIs for dealing with processes, stdin, and file duplication. |  copyPath(), isExecutable(), ExitCode, ProcessManager, sharedStdIn |
+
 {:.table .table-striped .nowrap}
 
 

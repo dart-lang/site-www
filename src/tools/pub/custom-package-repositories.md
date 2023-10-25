@@ -27,7 +27,7 @@ it just fetches a specific revision of the git repository.
 Therefore, when many people are collaborating
 it's often preferable to use a private package repository.
 
-## Authenticating with a custom package repository {#token-authentication}
+## Authenticating with a custom package repository {:#token-authentication}
 
 Most custom package repositories are
 private package repositories that require authentication.
@@ -40,7 +40,7 @@ To manually specify the secret token,
 use the `dart pub token add` command
 which prompts for the token:
 
-```terminal
+```console
 $ dart pub token add https://dart-packages.example.com
 Enter secret token: [enter secret token]
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token.
@@ -49,7 +49,7 @@ Requests to "https://dart-packages.example.com" will now be authenticated using 
 You can also tell `dart pub` to read the token from an environment variable,
 including in a CI environment, with the `--env-var` flag:
 
-```terminal
+```console
 $ dart pub token add https://dart-packages.example.com --env-var MY_SECRET_TOKEN
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token stored in the environment variable "MY_SECRET_TOKEN".
 ```
@@ -61,10 +61,10 @@ should read the secret from the environment variable `$MY_SECRET_TOKEN`.
 This reduces the risk that secrets are accidentally leaked
 if the execution environment is shared between CI jobs.
 
-{{site.alert.note}}
-  When the `dart pub` tool doesn't have a token for a given repository URL,
-  it attempts to make requests without authentication.
-{{site.alert.end}}
+:::note
+When the `dart pub` tool doesn't have a token for a given repository URL,
+it attempts to make requests without authentication.
+:::
 
 
 ## Retrieving dependencies from a custom package repository
@@ -90,7 +90,7 @@ for more information on how to authenticate your requests.
 You can also use the `dart pub add` command
 with the `--hosted` flag to add a dependency from a custom package repository:
 
-```terminal
+```console
 $ dart pub add example_package --hosted https://dart-packages.example.com
 ```
 
@@ -122,14 +122,14 @@ it's often necessary to mirror all dependencies
 and either update the `dependencies` section of each package, 
 or [override the default package repository](#default-override).
 
-{{site.alert.note}}
-  To ensure that public packages are usable to everyone, 
-  the official package repository, [pub.dev]({{site.pub}}),
-  doesn't allow publication of packages
-  with git-dependencies or hosted-dependencies from custom package repositories.
+:::note
+To ensure that public packages are usable to everyone, 
+the official package repository, [pub.dev]({{site.pub}}),
+doesn't allow publication of packages
+with git-dependencies or hosted-dependencies from custom package repositories.
 
-  However, such packages can be published to a custom package repository.
-{{site.alert.end}}
+However, such packages can be published to a custom package repository.
+:::
 
 
 ## Publishing to a custom package repository
@@ -142,11 +142,11 @@ If authentication is enabled,
 publishing uses the same [token authentication](#token-authentication)
 as retrieving packages.
 
-{{site.alert.note}}
-  To prevent accidental publication to [pub.dev]({{site.pub}})
-  when working on a private package, 
-  it's a good idea to specify this early in the development.
-{{site.alert.end}}
+:::note
+To prevent accidental publication to [pub.dev]({{site.pub}})
+when working on a private package, 
+it's a good idea to specify this early in the development.
+:::
 
 To prepare a package for publishing to `https://dart-packages.example.com`,
 your `pubspec.yaml` should look minimally like the following:
@@ -161,7 +161,7 @@ publish_to: https://dart-packages.example.com
 To then publish a new version of the package,
 use `dart pub publish`:
 
-```terminal
+```console
 $ dart pub publish
 Publishing example_package 1.0.0 to https://dart-packages.example.com
 |-- CHANGELOG.md
@@ -173,14 +173,14 @@ Publishing example_package 1.0.0 to https://dart-packages.example.com
 ...
 ```
 
-{{site.alert.note}}
-  Even if you aren't using a private repository, 
-  you can specify `publish_to: none` 
-  which stops any accidental publication.
-{{site.alert.end}}
+:::note
+Even if you aren't using a private repository, 
+you can specify `publish_to: none` 
+which stops any accidental publication.
+:::
 
 
-### Overriding the default package repository {#default-override}
+### Overriding the default package repository {:#default-override}
 
 By default, `dart pub` retrieves dependencies from and publishes packages
 to the [pub.dev site]({{site.pub}})

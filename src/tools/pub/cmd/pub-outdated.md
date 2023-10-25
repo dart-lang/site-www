@@ -5,7 +5,7 @@ description: Use dart pub outdated to help you update your package dependencies.
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub outdated [options]
 ```
 
@@ -55,7 +55,7 @@ As the following example shows,
 `dart pub outdated` colorizes the output by default
 when you run it on the command line.
 
-{% include_relative _pub-outdated-output.html %}
+{% render './_pub-outdated-output.html' %}
 
 The **Resolvable** column shows which versions you can upgrade to
 for each out-of-date dependency.
@@ -67,19 +67,19 @@ The `path` and `meta` packages aren't the latest versions,
 but are the most current _resolvable_ versions,
 considering all the other dependencies.
 
-{{site.alert.tip}}
-  To see what changed in the new version of a package
-  that's published on [pub.dev,]({{site.pub}})
-  look at the changelog in the package page.
-  For example, you can look at the **Changelog** tabs on the pages for the
-  [`args`][] and [`http`][] packages.
-{{site.alert.end}}
+:::tip
+To see what changed in the new version of a package
+that's published on [pub.dev,]({{site.pub}})
+look at the changelog in the package page.
+For example, you can look at the **Changelog** tabs on the pages for the
+[`args`][] and [`http`][] packages.
+:::
 
 To fix the first dependency (`args`),
 which is listed as upgradable,
 you just need to run `dart pub upgrade`:
 
-```terminal
+```console
 $ dart pub upgrade
 Resolving dependencies... 
 > args 1.6.0 (was 1.4.4)
@@ -107,7 +107,7 @@ you've made all necessary changes.
 In this example, the `path` and `meta` packages are still out-of-date,
 due to constraints determined by other dependencies:
 
-```terminal
+```console
 $ dart pub upgrade
 ...
 $ dart pub outdated
@@ -130,7 +130,7 @@ Newer versions, while available, are not mutually compatible.
 To see why these packages are out-of-date, you can run `dart pub deps`
 and look for dependencies on these packages:
 
-```terminal
+```console
 $ dart pub deps -s list
 ...
 dependencies:
@@ -147,10 +147,10 @@ which depends on old versions of `path` and `meta`.
 Once the `terminal_tools` package is updated,
 it should be possible to update this package.
 
-{{site.alert.important}}
-  Test your code to verify that it still works as expected
-  after updating the packages.
-{{site.alert.end}}
+:::important
+Test your code to verify that it still works as expected
+after updating the packages.
+:::
 
 
 ## Output columns
@@ -161,7 +161,7 @@ Here is the part of the [example](#example) output
 that shows the four version columns:
 Current, Upgradable, Resolvable, and Latest.
 
-{% include_relative _pub-outdated-output-columns.html %}
+{% render './_pub-outdated-output-columns.html' %}
 
 Current
 : The version used in your package, as recorded in `pubspec.lock`.
@@ -234,10 +234,7 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% render 'pub-problems.md' %}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

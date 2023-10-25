@@ -32,10 +32,10 @@ Map<String, List<String>> m1 = {}; // Verbose.
 ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 ```
 
-{{site.alert.version-note}}
-  Before 2.13, typedefs were restricted to function types.
-  Using the new typedefs requires a [language version][] of at least 2.13.
-{{site.alert.end}}
+:::version-note
+Before 2.13, typedefs were restricted to function types.
+Using the new typedefs requires a [language version][] of at least 2.13.
+:::
 
 We recommend using [inline function types][] instead of typedefs for functions,
 in most situations.

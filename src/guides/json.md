@@ -13,7 +13,7 @@ converting Dart objects to and from JSON.
 
 The following libraries and packages are useful across Dart platforms:
 
-* [dart:convert](/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)<br>
+* [dart:convert](/guides/libraries/library-tour#dart-convert)<br>
   Converters for both JSON and UTF-8
   (the character encoding that JSON requires).
 
@@ -38,7 +38,7 @@ The following libraries and packages are useful across Dart platforms:
 
 [Using HTTP resources with HttpRequest](/guides/libraries/library-tour#using-http-resources-with-httprequest)
 : Demonstrates how to use HttpRequest to exchange data with a web server.
-  Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
+  Part of the [dart:html library tour.](/guides/libraries/library-tour#dart-html)
 
 
 {% comment %}

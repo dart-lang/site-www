@@ -18,11 +18,11 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 
 Libraries can be distributed using [packages](/guides/packages).
 
-{{site.alert.info}}
-  If you're curious why Dart uses underscores instead of
-  access modifier keywords like `public` or `private`, see
-  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
-{{site.alert.end}}
+:::note
+If you're curious why Dart uses underscores instead of
+access modifier keywords like `public` or `private`, see
+[SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+:::
 
 [library]: /tools/pub/glossary#library
 
@@ -51,10 +51,10 @@ manager such as the pub tool. For example:
 import 'package:test/test.dart';
 ```
 
-{{site.alert.note}}
-  *URI* stands for uniform resource identifier.
-  *URLs* (uniform resource locators) are a common kind of URI.
-{{site.alert.end}}
+:::note
+*URI* stands for uniform resource identifier.
+*URLs* (uniform resource locators) are a common kind of URI.
+:::
 
 ### Specifying a library prefix
 
@@ -102,13 +102,13 @@ Here are some cases when you might use deferred loading:
   alternative implementations of an algorithm, for example.
 * To load rarely used functionality, such as optional screens and dialogs.
 
-{{site.alert.warn}}
-  **Only `dart compile js` supports deferred loading.**
-  Flutter and the Dart VM don't support deferred loading.
-  To learn more, see
-  [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
-  [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
-{{site.alert.end}}
+:::warning
+**Only `dart compile js` supports deferred loading.**
+Flutter and the Dart VM don't support deferred loading.
+To learn more, see
+[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
+[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+:::
 
 To lazily load a library, you must first
 import it using `deferred as`.
@@ -148,17 +148,17 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
 
-### The `library` directive {#library-directive}
+### The `library` directive {:#library-directive}
 
 To specify library-level [doc comments][] or [metadata annotations][],
 attach them to a `library` declaration at the start of the file.
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// A really great test library.
 @TestOn('browser')
 library;
-{% endprettify %}
+```
 
 ## Implementing libraries
 
@@ -172,6 +172,6 @@ for advice on how to implement a package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
+[dart:html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

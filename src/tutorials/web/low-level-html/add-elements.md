@@ -11,20 +11,18 @@ prevpage:
   title: Connect Dart and HTML
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
+:::mini-toc What's the point?
+* In Dart, page elements are of type `Element`.
+* An `Element` knows its parent.
+* An `Element` keeps its children in a `List<Element>`.
+* Change the DOM by adding or removing children of elements.
+* Respond to user input with an `EventListener`.
+:::
 
-  * In Dart, page elements are of type `Element`.
-  * An `Element` knows its parent.
-  * An `Element` keeps its children in a `List<Element>`.
-  * Change the DOM by adding or removing children of elements.
-  * Respond to user input with an `EventListener`.
-</div>
-
-{{site.alert.note}}
-  This page uses embedded DartPads to display runnable examples.
-  {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display runnable examples.
+{% render 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 As you learned in the previous tutorial,
 the DOM represents the structure
@@ -33,7 +31,7 @@ Each node in the tree represents an item on the page.
 Each node in the tree keeps track of both
 its parent and its children.
 In Dart, the
-[`Node`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html){:target="_blank" rel="noopener"}
+[`Node`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Node-class.html){:target="_blank" rel="noopener"}
 class contains the methods and properties
 that implement a node's tree functionality.
 
@@ -45,13 +43,13 @@ button elements, and so on.
 
 In Dart,
 elements are implemented by the
-[`Element`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html){:target="_blank" rel="noopener"}
+[`Element`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Element-class.html){:target="_blank" rel="noopener"}
 class, which is a subclass of `Node`.
 Because the nodes you care about most are usually elements,
 this tutorial focuses on `Element`,
 rather than on `Node`.
 
-## Running the Todo app {#try-app}
+## Running the Todo app {:#try-app}
 
 In this tutorial, you will be working with a sample web app
 that is a partial implementation of a todo list.
@@ -134,7 +132,7 @@ Right now, this app is for procrastinators only
 because the program can only add items to your to do list
 but not remove them.
 
-## About parent and child Elements in Dart {#tree-structure}
+## About parent and child Elements in Dart {:#tree-structure}
 
 The `Node` class implements the basic treeing behavior
 for nodes in the Dart DOM.
@@ -174,7 +172,7 @@ you would refer to its parent element with `anElement.parent`.
      alt="Dart code reference to anElement's parent">
 
 An `Element` object maintains references to its child elements in a list.
-[`List`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}is a class in the dart:core library
+[`List`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}is a class in the dart:core library
 that implements an indexable collection with a length.
 A list can be of fixed size or extendable.
 
@@ -189,6 +187,7 @@ For example:
 | `List<String>`   | List of strings  |
 | `List<int>`      | List of integers |
 | `List<Element>`  | List of elements |
+
 {: .table}
 
 An `Element` maintains references to its child element in a `List<Element>`,
@@ -210,7 +209,7 @@ When you change an `Element` or its child elements in your Dart program,
 you change the DOM and therefore the web page.
 The browser re-renders the page automatically.
 
-## Setting up the page in HTML {#html-code}
+## Setting up the page in HTML {:#html-code}
 
 Let's take a look at the todo app
 to see how it dynamically
@@ -239,7 +238,7 @@ containing the task items.
 Dart code adds elements to this list
 whenever the user enters text into the input element.
 
-## Getting an element from the DOM {#dart-code}
+## Getting an element from the DOM {:#dart-code}
 
 The following diagram shows
 the Dart code for the todo app.
@@ -268,12 +267,13 @@ This program uses three:
 
 | HTML tag  | Dart class                                                                                                                                |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `<input>` | [`InputElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
-| `<ul>`    | [`UListElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
-| `<li>`    | [`LIElement`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
+| `<input>` | [`InputElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
+| `<ul>`    | [`UListElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
+| `<li>`    | [`LIElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
+
 {: .table}
 
-## Registering an event handler {#event-handler}
+## Registering an event handler {:#event-handler}
 
 When a user enters text into the input field,
 a _change_ event fires,
@@ -297,11 +297,11 @@ that an input element can generate.
 For example, you can use `click` to handle mouse clicks,
 or `keyDown` for when the user presses a key on the keyboard.
 
-## About EventListener functions {#about-event-listeners}
+## About EventListener functions {:#about-event-listeners}
 
 The argument passed to the `listen()` method is a _callback function_
 of type
-[`EventListener`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/EventListener.html){:target="_blank" rel="noopener"}.
+[`EventListener`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/EventListener.html){:target="_blank" rel="noopener"}.
 `EventListener` is a typedef defined in the `dart:html` library as follows:
 
 ```dart
@@ -309,7 +309,7 @@ typedef void EventListener(Event event)
 ```
 
 As you can see, an EventListener returns no value (`void`) and takes an
-[`Event`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}object as an argument.
+[`Event`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}object as an argument.
 Any function with this signature is an `EventListener`.
 Based on its signature, the `addToDoItem()` function is an `EventListener`.
 
@@ -326,7 +326,7 @@ the `Event` object also knows where the event occurred.
 
 The `addToDoItem()` function ignores the Event object passed to it.
 
-## Adding an element to the DOM tree {#add-elem}
+## Adding an element to the DOM tree {:#add-elem}
 
 The change event handler has the following code:
 
@@ -343,7 +343,7 @@ When the DOM changes, the browser re-renders the browser page.
 The effect, in our todo app, is that a new bullet item appears
 in the to do list.
 
-## Styling the page elements {#about-css}
+## Styling the page elements {:#about-css}
 
 Let's take a look at the CSS file for this app.
 
@@ -365,7 +365,7 @@ This rule matches all `<li>` elements in the
 element with the ID `to-do-list`, thus styling
 each item in the to do list.
 
-## Moving elements within the DOM tree {#moving-elements}
+## Moving elements within the DOM tree {:#moving-elements}
 
 The Anagram app shows how to move an element within the DOM.
 
@@ -516,7 +516,7 @@ The `+=` operator is a compound assignment operator,
 which combines an operation (`+`) with an assignment.
 
 The `scrabbleValues` variable is a
-[`Map`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}—a
+[`Map`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}—a
 data structure that contains key/value pairs.
 Use the square bracket syntax to retrieve a value by its key
 and the `length` property to get the number of pairs it contains.

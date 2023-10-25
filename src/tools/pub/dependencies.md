@@ -80,7 +80,7 @@ using the `hosted` source:
 
 [own package repository]: /tools/pub/custom-package-repositories
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=[!2.15.0!] < 3.0.0'
 
@@ -88,16 +88,16 @@ dependencies:
   transmogrify:
     [!hosted: https://some-package-server.com!]
     version: ^1.4.0
-{% endprettify %}
+```
 
 The version constraint is optional but recommended. If no version constraint is
 given, `any` is assumed.
 
-{{site.alert.version-note}}
+:::version-note
 If your package has a [language version][] before 2.15,
 you must use a more verbose `hosted` format:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=[!2.14.0!] < 3.0.0'
 
@@ -107,8 +107,8 @@ dependencies:
       [!name: transmogrify!]
       [!url: https://some-package-server.com!]
     version: ^1.4.0
-{% endprettify %}
-{{site.alert.end}}
+```
+:::
 
 [language version]: /guides/language/evolution#language-versioning
 
@@ -284,6 +284,7 @@ of the following values:
 |  `>1.2.3` | Versions later than the given version   |    No    |                                                                                                                                                         |
 | `<=1.2.3` | Given version or earlier                |    No    |                                                                                                                                                         |
 |  `<1.2.3` | Versions earlier than the given version |    No    | Use this when you know an upper bound version that _doesn't_ work with your package. This version might be the first to introduce some breaking change. |
+
 {:.table}
 
 You can specify any combination of version values as their ranges intersect.
@@ -291,12 +292,12 @@ For example, if you set the version value as `'>=1.2.3 <2.0.0'`,
 this combines the both limitations so the dependency can be any version
 from `1.2.3` to `2.0.0` excluding `2.0.0` itself.
 
-{{site.alert.warning}}
-  If you include the greater than (**>**) character in the version constraint,
-  **quote the entire constraint string**.
-  This prevents YAML from interpreting the character as YAML syntax.
-  For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
-{{site.alert.end}}
+:::warning
+If you include the greater than (**>**) character in the version constraint,
+**quote the entire constraint string**.
+This prevents YAML from interpreting the character as YAML syntax.
+For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
+:::
 
 ### Caret syntax
 
@@ -312,6 +313,7 @@ or the next minor version for any package version earlier than 1.0.
 |:-------------:|:---------------:|:------------:|:-------------------:|
 | >=1.0         | Next major      | `^1.3.0`     | `'>=1.3.0 <2.0.0'`  |
 | <1.0          | Next minor      | `^0.1.2 `    | `'>=0.1.2 <0.2.0' ` |
+
 {:.table}
 
 The following example shows caret syntax:
@@ -398,13 +400,13 @@ dependency_overrides:
   transmogrify: '3.2.1'
 ```
 
-{{site.alert.warning}}
-  Using a dependency override involves some risk. For example,
-  using an override to specify a version outside the range that the
-  package claims to support, or using an override to specify
-  a local copy of a package that has unexpected behaviors,
-  may break your application.
-{{site.alert.end}}
+:::warning
+Using a dependency override involves some risk. For example,
+using an override to specify a version outside the range that the
+package claims to support, or using an override to specify
+a local copy of a package that has unexpected behaviors,
+may break your application.
+:::
 
 Only the dependency overrides in a **package's own pubspec**
 are considered during package resolution. 
@@ -463,7 +465,7 @@ this flag only resolves new dependencies if:
 * `pubspec.lock` is not missing
 * The packages' [content hashes][] match
 
-[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#--enforce-lockfile
+[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
 [lockfile]: /tools/pub/glossary#lockfile
 [content hashes]: /tools/pub/glossary#content-hashes
 ---

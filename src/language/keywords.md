@@ -15,26 +15,28 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
-<div class="table-wrapper" markdown="1">
-| [abstract][]{{bii}}   | [else][]                 | [import][]{{bii}}     | [show][]{{ckw}}    |
-| [as][]{{bii}}         | [enum][]                 | [in][]                | [static][]{{bii}}  |
-| [assert][]            | [export][]{{bii}}        | [interface][]{{bii}}  | [super][]          |
-| [async][]{{ckw}}      | [extends][]              | [is][]                | [switch][]         |
-| [await][]{{lrw}}      | [extension][]{{bii}}     | [late][]{{bii}}       | [sync][]{{ckw}}    |
-| [base][]{{bii}}       | [external][]{{bii}}      | [library][]{{bii}}    | [this][]           |
-| [break][]             | [factory][]{{bii}}       | [mixin][]{{bii}}      | [throw][]          |
-| [case][]              | [false][]                | [new][]               | [true][]           |
-| [catch][]             | [final (variable)][]     | [null][]              | [try][]            |
-| [class][]             | [final (class)][]{{bii}} | [on][]{{ckw}}         | [typedef][]{{bii}} |
-| [const][]             | [finally][]              | [operator][]{{bii}}   | [var][]            |
-| [continue][]          | [for][]                  | [part][]{{bii}}       | [void][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}      | [required][]{{bii}}   | [when][]           |
-| [default][]           | [get][]{{bii}}           | [rethrow][]           | [while][]          |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}          | [return][]            | [with][]           |
-| [do][]                | [if][]                   | [sealed][]{{bii}}     | [yield][]{{lrw}}   |
-| [dynamic][]{{bii}}    | [implements][]{{bii}}    | [set][]{{bii}}        |                    |
+
+|||||
+|-|-|-|-|
+| [abstract][]{{bii}} | [else][]              | [import][]{{bii}}  | [show][]{{ckw}} |
+| [as][]{{bii}}      | [enum][]              | [in][]             | [static][]{{bii}} |
+| [assert][]         | [export][]{{bii}}     | [interface][]{{bii}} | [super][]       |
+| [async][]{{ckw}}   | [extends][]           | [is][]             | [switch][]      |
+| [await][]{{lrw}}   | [extension][]{{bii}}  | [late][]{{bii}}    | [sync][]{{ckw}} |
+| [base][]{{bii}}    | [external][]{{bii}}   | [library][]{{bii}} | [this][]        |
+| [break][]          | [factory][]{{bii}}    | [mixin][]{{bii}}   | [throw][]       |
+| [case][]           | [false][]             | [new][]            | [true][]        |
+| [catch][]          | [final (variable)][]  | [null][]           | [try][]         |
+| [class][]          | [final (class)][]{{bii}} | [on][]{{ckw}}      | [typedef][]{{bii}} |
+| [const][]          | [finally][]           | [operator][]{{bii}} | [var][]         |
+| [continue][]       | [for][]               | [part][]{{bii}}    | [void][]        |
+| [covariant][]{{bii}} | [Function][]{{bii}}   | [required][]{{bii}} | [when][]        |
+| [default][]        | [get][]{{bii}}        | [rethrow][]        | [while][]       |
+| [deferred][]{{bii}} | [hide][]{{ckw}}       | [return][]         | [with][]        |
+| [do][]             | [if][]                | [sealed][]{{bii}}  | [yield][]{{lrw}} |
+| [dynamic][]{{bii}} | [implements][]{{bii}} | [set][]{{bii}}     |                 |
+
 {:.table .table-striped .nowrap}
-</div>
 
 [abstract]: /language/class-modifiers#abstract
 [as]: /language/operators#type-test-operators

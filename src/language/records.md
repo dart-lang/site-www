@@ -9,9 +9,9 @@ nextpage:
   title: Collections
 ---
 
-{{site.alert.version-note}}
-  Records require a [language version][] of at least 3.0.
-{{site.alert.end}}
+:::version-note
+Records require a [language version][] of at least 3.0.
+:::
 
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
 they let you bundle multiple objects into a single object. Unlike other collection 
@@ -206,11 +206,11 @@ but other methods come with downsides.
 For example, creating a class is much more verbose, and using other collection
 types like `List` or `Map` loses type safety. 
 
-{{site.alert.note}}
-  Records' multiple-return and heterogeneous-type characteristics enable
-  parallelization of futures of different types, which you can read about in the
-  [Library tour][].
-{{site.alert.end}}
+:::note
+Records' multiple-return and heterogeneous-type characteristics enable
+parallelization of futures of different types, which you can read about in the
+[Library tour][].
+:::
 
 [language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections

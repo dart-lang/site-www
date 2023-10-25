@@ -8,12 +8,12 @@ The `dart analyze` command
 performs the same [static analysis][]
 that you get when you use an IDE or editor that has Dart support.
 
-{% include tools/dart-tool-note.md %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of performing static analysis over all the Dart files
 under the current directory:
 
-```terminal
+```console
 $ dart analyze
 ```
 
@@ -25,25 +25,25 @@ You can customize this behavior using the
 For example, to make the analyzer fail when any issue is 
 the `--fatal-infos` flag:
 
-```terminal
+```console
 $ dart analyze --fatal-infos
 ```
 
 You can add a directory or a single file argument:
 
-```terminal
+```console
 $ dart analyze [<DIRECTORY> | <DART_FILE>]
 ```
 
 For example, here's the command to analyze the `bin` directory:
 
-```terminal
+```console
 $ dart analyze bin
 ```
 
-{{site.alert.version-note}}
-  Before Dart 2.13, `dart analyze` supported only directory arguments.
-{{site.alert.end}}
+:::version-note
+Before Dart 2.13, `dart analyze` supported only directory arguments.
+:::
 
 To customize the analysis, use an analysis options file
 or special comments in Dart source code,
@@ -51,7 +51,7 @@ as described in [Customizing static analysis][static analysis].
 
 For information on command-line options, use the `--help` flag:
 
-```terminal
+```console
 $ dart analyze --help
 ```
 

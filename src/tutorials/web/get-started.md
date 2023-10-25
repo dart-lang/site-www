@@ -26,9 +26,9 @@ the UI output appears to the right of the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. 
 
-{{site.alert.note}}
-  {% include dartpad-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+{% render 'dartpad-embedded-troubleshooting.md' %}
+:::
 
 ```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app
 {$ begin main.dart $}
@@ -78,14 +78,14 @@ More information:
 
 ## 2. Install Dart
 
-{% include get-sdk.md %}
+{% include 'get-sdk.md' %}
 
 ## 3. Get CLI tools or an IDE (or both)
 
 <i class="material-icons">terminal</i>
 If you like to use the command line, install the [`webdev`][] package:
 
-```terminal
+```console
 $ dart pub global activate webdev
 ```
 
@@ -100,7 +100,7 @@ For a list of available IDEs, see the
 <i class="material-icons">terminal</i>
 To create a web app from the command line, use these commands:
 
-```terminal
+```console
 $ dart create -t web quickstart
 ```
 
@@ -115,7 +115,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, 
 use [`webdev`][] to build and serve the app:
 
-```terminal
+```console
 $ cd quickstart
 $ webdev serve
 ```
@@ -150,18 +150,18 @@ Let's customize the app you just created.
  2. Add the `newLI()` function (as shown below).
     It creates a new `LIElement` containing the specified `String`.
 
-    {% prettify dart tag=pre+code %}
+    ```dart
     Iterable<String> thingsTodo() sync* { ... }
 
     [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
 
     void main() { ... }
-    {% endprettify %}
+    ```
 
  3. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
-    {% prettify dart tag=pre+code %}
+    ```dart
     Iterable<String> thingsTodo() sync* { ... }
 
     LIElement newLI(String itemText) => LIElement()..text = itemText;
@@ -169,7 +169,7 @@ Let's customize the app you just created.
     void main() {
       querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
     }
-    {% endprettify %}
+    ```
 
  4. Save your changes.
 
@@ -182,12 +182,12 @@ Let's customize the app you just created.
  6. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
-    {% prettify css tag=pre+code %}
+    ```css
     #output {
       padding: 20px;
       [!text-align: left;!]
     }
-    {% endprettify %}
+    ```
 
 
 ## 7. Use Dart DevTools to inspect the app
@@ -197,11 +197,11 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-{{site.alert.info}}
-  **Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
-  web programming that left out many details. For a gentler approach, try a
-  [low-level HTML tutorial for Dart][].
-{{site.alert.end}}
+:::note Feeling lost? Don't worry!
+This was a whirlwind introduction to Dart and
+web programming that left out many details. For a gentler approach, try a
+[low-level HTML tutorial for Dart][].
+:::
 
 
 ## What next?
@@ -218,7 +218,7 @@ Check out these resources:
 * Tools & libraries
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
-  * [IDEs](/tools#ides-and-editors)
+  * [IDEs](/tools#editors)
   * [Web libraries and packages](/web/libraries)
 
 If you get stuck, find help at [Community and support.](/community)
@@ -229,7 +229,7 @@ If you get stuck, find help at [Community and support.](/community)
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
-[overview of editors & debuggers]: /tools#ides-and-editors
+[overview of editors & debuggers]: /tools#editors
 [Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
 [`webdev`]: /tools/webdev
 [`webdev serve`]: /tools/webdev#serve

@@ -13,13 +13,13 @@ such as `then()`, `catchError()`, and `whenComplete()`.
 This page can help you avoid some common pitfalls
 when using those Future methods.
 
-{{site.alert.warning}}
-  You don't need this page if your code uses
-  the language's asynchrony support:
-  `async`, `await`, and error handling using try-catch.
-  For more information, see the
-  [asynchronous programming codelab](/codelabs/async-await).
-{{site.alert.end}}
+:::warning
+You don't need this page if your code uses
+the language's asynchrony support:
+`async`, `await`, and error handling using try-catch.
+For more information, see the
+[asynchronous programming codelab](/codelabs/async-await).
+:::
 
 
 ## The Future API and callbacks
@@ -407,4 +407,4 @@ also prevents errors from *accidentally* leaking out of your function.
 See the [Future API reference][Future class]
 for more information on Futures.
 
-[Future class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Future class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html

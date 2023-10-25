@@ -2,8 +2,6 @@
 @use 'core/colors';
 @use 'core/mixins' as *;
 
-@use 'vendor/prettify';
-
 @use 'core/bootstrap';
 @use 'core/base';
 
@@ -292,40 +290,34 @@ main .content {
   h4,
   h5,
   h6 {
-    .anchor {
-      float: left;
-      margin-left: -($icon-size + $anchor-padding);
-      padding-right: $anchor-padding;
+    // Push # link targets clear of page header.
+    &[id] {
+      scroll-margin: 60px;
+    }
+
+    .heading-link {
+      @include transition(.1s);
       overflow: hidden;
-
-      .octicon-link {
-        @include transition(.1s);
-
-        @include md-icon-before("tag");
-        font-style: italic;
-        font-size: 24px;
-        color: $site-color-body;
-        opacity: 0;
-
-        &:hover {
-          color: lighten($brand-primary, 25%);
-        }
+      color: #4a4a4a;
+      opacity: 0;
+      
+      &:hover {
+        color: lighten($brand-primary, 25%);
       }
 
-      &:focus .octicon-link {
+      &:focus {
         opacity: 1
+      }
+
+      &:active {
+        color: $brand-primary;
       }
     }
 
     &:hover {
-      .anchor .octicon-link {
+      .heading-link {
         opacity: 1
       }
-    }
-
-    // Push # link targets clear of page header.
-    &[id] {
-      scroll-margin: 60px;
     }
   }
 
@@ -426,10 +418,6 @@ main .content {
     a {
       color: $site-color-card-text;
       font-family: $site-font-family-gsans;
-    }
-
-    .octicon-link {
-      display: none !important;
     }
   }
 
@@ -540,6 +528,12 @@ li.card {
   }
 }
 
+// If table head has empty children, just hide it
+// since markdown-it-table doesn't support headless tables.
+thead:has(th:empty) {
+  display: none;
+}
+
 .table-wrapper {
   overflow-x: auto;
 }
@@ -549,7 +543,7 @@ li.card {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 1rem;
-  padding: 30px 30px;
+  padding: 1.75rem;
 
   i.material-icons {
     font-size: 20px;
@@ -593,6 +587,10 @@ li.card {
     width: auto;
     background-color: $gray-dark;
     color: $white-base;
+  }
+  
+  .alert-content {
+    margin-top: 0.25rem;
   }
 }
 

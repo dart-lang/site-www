@@ -1,4 +1,15 @@
-{% assign lint = include.lint -%}
+---
+pagination:
+  data: linter_rules
+  size: 1
+  alias: lint
+  addAllPagesToCollections: true
+permalink: "/tools/linter-rules/{{lint.name}}"
+show_breadcrumbs: true
+underscore_breaker_titles: true
+eleventyComputed:
+  title: "{{ lint.name }}"
+---
 
 {{lint.description}}
 

@@ -13,7 +13,7 @@ our [code of conduct](/community/code-of-conduct).
 
 ## Stay informed
 
-[Dart announce]({{page.group}}/d/forum/announce)
+[Dart announce]({{group}}/d/forum/announce)
 : Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
@@ -43,10 +43,10 @@ Get answers and connect with Dart developers.
 
 #### Google Groups
 
-[General discussions]({{page.group}}/d/forum/misc)
+[General discussions]({{group}}/d/forum/misc)
 : Discuss miscellaneous Dart topics.
 
-[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{group}}/d/forum/analyzer-discuss)
 : Get help understanding the [Dart analyzer](/tools/dart-analyze).
 
 ## Contribute
@@ -64,7 +64,7 @@ Learn how to
   * [This site](https://github.com/dart-lang/site-www/)
     ([issue tracker](https://github.com/dart-lang/site-www/issues/))
 
-[Dart reviews]({{page.group}}/d/forum/reviews)
+[Dart reviews]({{group}}/d/forum/reviews)
 : High-traffic list of all core SDK code reviews.
 
 ## Additional community resources

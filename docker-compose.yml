@@ -1,6 +1,5 @@
-version: "3"
+version: "3.9"
 services:
-
   site:
     image: dart-dev:stable
     build:
@@ -9,27 +8,20 @@ services:
     command: ["make", "serve"]
     env_file: .env
     environment:
-      - JEKYLL_ENV=development
-      - JEKYLL_SITE_HOST=0.0.0.0
-      - JEKYLL_SITE_PORT=4000
       - NODE_ENV=development
     ports:
       - "4000:4000"
-      - "35729:35729"
       - "5500:5500"
+      - "8080:8080"
     volumes:
-      - ./_config_dev.yml:/app/_config_dev.yml
-      - ./_config_test.yml:/app/_config_test.yml
-      - ./_config.yml:/app/_config.yml
+      - ./.eleventy.js:/app/.eleventy.js
+      - ./.eleventyignore:/app/.eleventyignore
       - ./_site:/app/_site
       - ./.firebaserc:/app/.firebaserc
       - ./analysis_options.yaml:/app/analysis_options.yaml
       - ./build.excerpt.yaml:/app/build.excerpt.yaml
-      - ./diagrams:/app/diagrams
       - ./examples:/app/examples
       - ./firebase.json:/app/firebase.json
-      - ./Gemfile:/app/Gemfile
-      - ./Gemfile.lock:/app/Gemfile.lock
       - ./Makefile:/app/Makefile
       - ./package-lock.json:/app/package-lock.json
       - ./package.json:/app/package.json

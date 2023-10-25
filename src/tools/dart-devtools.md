@@ -21,69 +21,71 @@ you can use with common Dart app types.
   assign b = '<span class="material-icons" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-<div class="table-wrapper" markdown="1">
-<table class="table table-striped" markdown="1">
+{% comment %}
+TODO(parlough): Update table for new syntax.
+<div class="table-wrapper">
+<table class="table table-striped">
   <thead>
-    <tr markdown="1">
+    <tr>
       <th>&nbsp;</th>
-      <th scope="col" markdown="1">[Flutter mobile or desktop][Flutter devtools]</th>
-      <th scope="col" markdown="1">[Flutter web][Flutter devtools]</th>
-      <th scope="col" markdown="1">[Other web][]</th>
-      <th scope="col" markdown="1">[Command-line][]</th>
+      <th scope="col">[Flutter mobile or desktop][Flutter devtools]</th>
+      <th scope="col">[Flutter web][Flutter devtools]</th>
+      <th scope="col">[Other web][]</th>
+      <th scope="col">[Command-line][]</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row" markdown="1">[Debugger][]</th>
+      <th scope="row">[Debugger][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{y}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Logging view][]</th>
+      <th scope="row">[Logging view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{y}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[App size tool][]</th>
+      <th scope="row">[App size tool][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[CPU profiler][]</th>
+      <th scope="row">[CPU profiler][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Memory view][]</th>
+      <th scope="row">[Memory view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Network view][]</th>
+      <th scope="row">[Network view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Performance view][]</th>
+      <th scope="row">[Performance view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Flutter inspector][]</th>
+      <th scope="row">[Flutter inspector][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
@@ -92,6 +94,7 @@ you can use with common Dart app types.
   </tbody>
 </table>
 </div>
+{% endcomment %}
 
 For information about using Dart DevTools with each app type
 (for example, command-line apps),
@@ -122,7 +125,7 @@ for the Dart command-line app that you want to debug or observe.
 Optionally add `--pause-isolates-on-start`,
 which automatically breaks execution at the start of the script.
 
-```terminal
+```console
 $ cd path/to/dart/app
 $ dart run --pause-isolates-on-start --observe main.dart
 
@@ -133,12 +136,12 @@ The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/a
 Note the **Dart DevTools debugger and profiler** URL.
 You'll need it in the next step.
 
-{{site.alert.important}}
-  This URL contains a security token and
-  is different for each run of your app.
-  If you stop your app and rerun it,
-  then you need to connect to DevTools with the new URL.
-{{site.alert.end}}
+:::important
+This URL contains a security token and
+is different for each run of your app.
+If you stop your app and rerun it,
+then you need to connect to DevTools with the new URL.
+:::
 
 ### 2. Open DevTools and connect to the target app
 
@@ -163,7 +166,7 @@ For details on using DevTools with a Flutter app for any platform
 To launch a web app so that you can use Dart DevTools,
 use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
 
-```terminal
+```console
 $ webdev serve --debug
 ```
 

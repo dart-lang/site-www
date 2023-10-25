@@ -47,11 +47,11 @@ Dart allows you to define operators with the following names:
 `-`  | `%`  | `>>` | `==`
 {:.table}
 
-{{site.alert.note}}
-  You may have noticed that some [operators][], like `!=`, aren't in
-  the list of names. That's because they're just syntactic sugar. For example,
-  the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
-{{site.alert.end}}
+:::note
+You may have noticed that some [operators][], like `!=`, aren't in
+the list of names. That's because they're just syntactic sugar. For example,
+the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+:::
 
 {%- comment %}
   Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
@@ -124,12 +124,12 @@ void main() {
 With getters and setters, you can start with instance variables, later
 wrapping them with methods, all without changing client code.
 
-{{site.alert.note}}
-  Operators such as increment (++) work in the expected way, whether or
-  not a getter is explicitly defined. To avoid any unexpected side
-  effects, the operator calls the getter exactly once, saving its value
-  in a temporary variable.
-{{site.alert.end}}
+:::note
+Operators such as increment (++) work in the expected way, whether or
+not a getter is explicitly defined. To avoid any unexpected side
+effects, the operator calls the getter exactly once, saving its value
+in a temporary variable.
+:::
 
 ## Abstract methods
 
@@ -137,7 +137,7 @@ Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
 Abstract methods can only exist in [abstract classes][] or [mixins][].
 
-To make a method abstract, use a semicolon (;) instead of a method body:
+To make a method abstract, use a semicolon (`;`) instead of a method body:
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart

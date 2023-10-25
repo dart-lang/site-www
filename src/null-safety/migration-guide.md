@@ -3,14 +3,14 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
-{{site.alert.version-note}}
-  Dart 2.19 is the final release that supports null-safety migration,
-  including the `dart migrate` tool.
-  To migrate your package to null safety,
-  use the Dart 2.19.6 SDK.
-  To learn more,
-  see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
-{{site.alert.end}}
+:::version-note
+Dart 2.19 is the final release that supports null-safety migration,
+including the `dart migrate` tool.
+To migrate your package to null safety,
+use the Dart 2.19.6 SDK.
+To learn more,
+see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
+:::
 
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
@@ -25,16 +25,16 @@ Here are the basic steps for migrating each package that you own:
    [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
-{{site.alert.tip}}
-  If your application or library is large, check out
-  [Gradual null safety migration for large Dart projects][].
-{{site.alert.end}}
+:::tip
+If your application or library is large, check out
+[Gradual null safety migration for large Dart projects][].
+:::
 
-{{site.alert.info}}
-  **Migrating an app is technically the same as migrating a package.**
-  Before migrating an app,
-  make sure that all of your dependencies are ready.
-{{site.alert.end}}
+:::note
+**Migrating an app is technically the same as migrating a package.**
+Before migrating an app,
+make sure that all of your dependencies are ready.
+:::
 
 For an informal look at the experience of using the migration tool, watch this video:
 
@@ -44,7 +44,7 @@ For an informal look at the experience of using the migration tool, watch this v
 [Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 
-## 1. Wait to migrate {#step1-wait}
+## 1. Wait to migrate {:#step1-wait}
 
 We strongly recommend migrating code in order, 
 with the leaves of the dependency graph being migrated first.
@@ -60,15 +60,15 @@ For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
-{{site.alert.info}}
-  **You can—and should—migrate your package before
-  packages that depend on it are migrated.**
-  Your null-safe package is usable by packages and apps that
-  don't use null safety yet,
-  as long as they use Dart 2.12 or later.
-  For example, the Dart and Flutter core libraries are null safe,
-  and they're still usable by apps that haven't migrated to null safety.
-{{site.alert.end}}
+:::note
+**You can—and should—migrate your package before
+packages that depend on it are migrated.**
+Your null-safe package is usable by packages and apps that
+don't use null safety yet,
+as long as they use Dart 2.12 or later.
+For example, the Dart and Flutter core libraries are null safe,
+and they're still usable by apps that haven't migrated to null safety.
+:::
 
 This section tells you how to
 check and update your package's dependencies,
@@ -84,7 +84,7 @@ This is included in the Flutter 3.7.12 SDK.
 
 Check that you have Dart 2.19.6:
 
-```terminal
+```console
 $ dart --version
 Dart SDK version: 2.19.6
 ```
@@ -94,7 +94,7 @@ Dart SDK version: 2.19.6
 Get the migration state of your package's dependencies,
 using the following command:
 
-```terminal
+```console
 $ dart pub outdated --mode=null-safety
 ```
 
@@ -103,15 +103,14 @@ then you can start migrating.
 Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
 
-{{site.alert.info}}
-  **Why do all dependencies need to support null safety?**
-  When all of an app's direct dependencies support null safety,
-  you can _run the app_ with sound null safety.
-  When all the dev dependencies support null safety,
-  you can _run tests_ with sound null safety.
-  You might also need null-safe dev dependencies for other reasons,
-  such as code generation.
-{{site.alert.end}}
+:::note Why do all dependencies need to support null safety?
+When all of an app's direct dependencies support null safety,
+you can _run the app_ with sound null safety.
+When all the dev dependencies support null safety,
+you can _run tests_ with sound null safety.
+You might also need null-safe dev dependencies for other reasons,
+such as code generation.
+:::
 
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
@@ -140,7 +139,7 @@ update its dependencies to null-safe versions:
 2. Run `dart pub get`.
 
 
-## 2. Migrate {#step2-migrate}
+## 2. Migrate {:#step2-migrate}
 
 Most of the changes that your code needs to be null safe
 are easily predictable.
@@ -156,10 +155,10 @@ You have two options for migrating:
   which can make most of the easily predictable changes for you.
 * [Migrate your code by hand.](#migrating-by-hand)
 
-{{site.alert.tip}}
-  For additional help while migrating code, check the
-  [null safety FAQ][].
-{{site.alert.end}}
+:::tip
+For additional help while migrating code, check out
+the [null safety FAQ][].
+:::
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
@@ -168,7 +167,7 @@ You have two options for migrating:
 [null safety FAQ]: /null-safety/faq
 
 
-### Using the migration tool {#migration-tool}
+### Using the migration tool {:#migration-tool}
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
@@ -186,14 +185,14 @@ Before starting the tool, make sure you're ready:
 Start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
-```terminal
+```console
 $ dart migrate
 ```
 
 If your package is ready to migrate,
 then the tool produces a line like the following:
 
-```terminal
+```plaintext
 View the migration suggestions by visiting:
 
   http://127.0.0.1:60278/Users/you/project/mypkg.console-simple?authToken=Xfz0jvpyeMI%3D
@@ -246,7 +245,7 @@ Because you know that `zero` can't be null,
 you can improve the migration result.
 
 
-#### Improving migration results {#hint-markers}
+#### Improving migration results {:#hint-markers}
 
 When analysis infers the wrong nullability,
 you can override its proposed edits by inserting temporary hint markers:
@@ -273,7 +272,6 @@ you can override its proposed edits by inserting temporary hint markers:
 The following table shows the hint markers that you can use
 to change the migration tool's proposed edits.
 
-|------------------+--------------------------------------------------------------------------|
 | Hint marker      | Effect on the migration tool                                             |
 |------------------|--------------------------------------------------------------------------|
 | <code><em>expression</em>&nbsp;/*!*/</code> | Adds a `!` to the migrated code, casting _expression_ to its underlying non-nullable type. |
@@ -282,6 +280,7 @@ to change the migration tool's proposed edits.
 | `/*late*/`       | Marks the variable declaration as `late`, indicating that it has late initialization. |
 | `/*late final*/` | Marks the variable declaration as `late final`, indicating that it has late, one-time initialization. |
 | `/*required*/`   | Marks the parameter as `required`.                                        |
+
 {:.table .table-striped}
 
 A single hint can have ripple effects elsewhere in the code.
@@ -392,7 +391,7 @@ To migrate a package by hand, follow these steps:
 
 2. Regenerate the [package configuration file][]:
 
-   ```terminal
+   ```console
    $ dart pub get
    ```
 
@@ -418,14 +417,14 @@ for more help on migrating code by hand.
 [Unsound null safety]: /null-safety/unsound-null-safety
 
 
-## 3. Analyze {#step3-analyze}
+## 3. Analyze {:#step3-analyze}
 
 Update your packages
 (using `dart pub get` in your IDE or on the command line).
 Then use your IDE or the command line
 to perform [static analysis][] on your code:
 
-```terminal
+```console
 $ dart pub get
 $ dart analyze     # or `flutter analyze`
 ```
@@ -433,11 +432,11 @@ $ dart analyze     # or `flutter analyze`
 [static analysis]: /tools/analysis
 
 
-## 4. Test {#step4-test}
+## 4. Test {:#step4-test}
 
 If your code passes analysis, run tests:
 
-```terminal
+```console
 $ dart test       # or `flutter test`
 ```
 
@@ -448,7 +447,7 @@ then you might need to remigrate it.
 If so, revert your code changes before using the migration tool again.
 
 
-## 5. Publish {#step5-publish}
+## 5. Publish {:#step5-publish}
 
 We encourage you to publish packages—possibly as prereleases—as 
 soon as you migrate:
@@ -461,7 +460,7 @@ soon as you migrate:
 
 [publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
-### Update the package version {#package-version}
+### Update the package version {:#package-version}
 
 Update the version of the package
 to indicate a breaking change:
@@ -494,7 +493,7 @@ If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
 You should see output like this when running or compiling your code:
 
-```terminal
+```console
 Compiling with sound null safety
 ```
 

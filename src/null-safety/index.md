@@ -81,7 +81,7 @@ check out the [Dart 3 migration guide](/resources/dart-3-migration).
 Packages developed without null safety support cause issues
 when resolving dependencies:
 
-```terminal
+```console
 $ dart pub get
 
 Because pkg1 doesn't support null safety, version solving failed.
@@ -91,7 +91,7 @@ The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable nu
 Libraries incompatible with Dart 3 cause analysis or compilation errors.
 
 
-```terminal
+```console
 $ dart analyze .
 Analyzing ....                         0.6s
 
@@ -100,7 +100,7 @@ Analyzing ....                         0.6s
   • illegal_language_version_override
 ```
 
-```terminal
+```console
 $ dart run bin/my_app.dart
 ../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
@@ -117,7 +117,7 @@ Dart 3 can be found in the stable channels for Dart and Flutter.
 To learn more, check out [the download page][] for details.
 To test your code for Dart 3 compatibility, use Dart 3 or later.
 
-```terminal
+```console
 $ dart --version                     # make sure this reports 3.0.0-417.1.beta or higher
 $ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
@@ -131,7 +131,7 @@ listed by the analyzer.
 [the download page]: /get-dart/archive
 [status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
-## Dart 2.x and null safety {#enable-null-safety}
+## Dart 2.x and null safety {:#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
 You cannot use null safety in SDK versions earlier than Dart 2.12.
@@ -149,22 +149,22 @@ environment:
 
 [language version]: /guides/language/evolution#language-versioning
 
-## Migrating existing code {#migrate}
+## Migrating existing code {:#migrate}
 
-{{site.alert.warning}}
-  Dart 3 removes the `dart migrate` tool.
-  If you need help migrating your code,
-  run the tool with the 2.19 SDK, then upgrade to Dart 3.
+:::warning
+Dart 3 removes the `dart migrate` tool.
+If you need help migrating your code,
+run the tool with the 2.19 SDK, then upgrade to Dart 3.
 
-  You can migrate without the tool, but it involves
-  hand editing code.
-{{site.alert.end}}
+You can migrate without the tool, but it involves
+hand editing code.
+:::
 
 Dart code written without null safety support can be migrated to use null
 safety. We recommend using the `dart migrate` tool, included in the Dart SDK
 versions 2.12 to 2.19.
 
-```terminal
+```console
 $ cd my_app
 $ dart migrate
 ```

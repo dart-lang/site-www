@@ -17,7 +17,7 @@ It has three subcommands: `add`, `list` and `remove`.
 If you try to `dart pub get` and have a [dependency](/tools/pub/dependencies) hosted
 on a private repository you _may_ be asked to provide credentials:
 
-```terminal
+```console
 $ dart pub get
 Resolving dependencies... 
 https://some-package-repo.com/my-org/my-repo package repository requested authentication! You can provide credential using:
@@ -34,22 +34,22 @@ Some servers might not provide such a message.
 To enter the credentials use `dart pub token add`, 
 and type the credential on stdin.
 
-```terminal
+```console
 $ dart pub token add https://some-package-repo.com/my-org/my-repo
 Enter secret token: <Type token on stdin>
  Requests to "https://some-package-repo.com/my-org/my-repo" will now be 
  authenticated using the secret token.
 ```
 
-{{site.alert.note}}
-  The token is input on stdin rather than as a command line option to avoid it
-  ending up in the shell history such as `~/.bash_history`.
-{{site.alert.end}}
+:::note
+The token is input on stdin rather than as a command line option to avoid it
+ending up in the shell history such as `~/.bash_history`.
+:::
 
 In a scripting situation you can store the secret in an environment variable and
- use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
+use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
 
-```terminal
+```console
 $ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
 Requests to "https://other-package-repo.com/" will now be authenticated using the secret token stored in the environment variable "TOKEN_VAR".
 ```
@@ -70,7 +70,7 @@ variable:
 
 To see a list of all active credentials use `dart pub token list`:
 
-```terminal
+```console
 $ dart pub token list
 You have secret tokens for 2 package repositories:
 https://some-package-repo.com/my-org/my-repo
@@ -81,20 +81,18 @@ https://other-package-repo.com/
 
 You can remove a single token with `dart pub token remove`:
 
-```terminal
+```console
 $ dart pub token remove https://other-package-repo.com
 Removed secret token for package repository: https://other-package-repo.com
 ```
 
 Or remove all with `remove --all`:
 
-```terminal
+```console
 $ dart pub token remove --all
 pub-tokens.json is deleted.
 Removed 1 secret tokens.
 ```
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+
+{% render 'pub-problems.md' %}

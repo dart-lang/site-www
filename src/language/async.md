@@ -49,21 +49,21 @@ To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
-{% endprettify %}
+```
 
-{{site.alert.note}}
-  Although an `async` function might perform time-consuming operations, 
-  it doesn't wait for those operations. 
-  Instead, the `async` function executes only
-  until it encounters its first `await` expression.
-  Then it returns a `Future` object,
-  resuming execution only after the `await` expression completes.
-{{site.alert.end}}
+:::note
+Although an `async` function might perform time-consuming operations, 
+it doesn't wait for those operations. 
+Instead, the `async` function executes only
+until it encounters its first `await` expression.
+Then it returns a `Future` object,
+resuming execution only after the `await` expression completes.
+:::
 
 Use `try`, `catch`, and `finally` to handle errors and cleanup
 in code that uses `await`:
@@ -101,20 +101,20 @@ For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
-{% endprettify %}
+```
 
-{{site.alert.note}}
-  The preceding example uses an `async` function (`checkVersion()`)
-  without waiting for a result—a practice that can cause problems
-  if the code assumes that the function has finished executing.
-  To avoid this problem,
-  use the [unawaited_futures linter rule][].
-{{site.alert.end}}
+:::note
+The preceding example uses an `async` function (`checkVersion()`)
+without waiting for a result—a practice that can cause problems
+if the code assumes that the function has finished executing.
+To avoid this problem,
+use the [unawaited_futures linter rule][].
+:::
 
 For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -165,12 +165,12 @@ you have two options:
 * Use the Stream API, as described
   [in the library tour](/guides/libraries/library-tour#stream).
 
-{{site.alert.note}}
-  Before using `await for`, be sure that it makes the code clearer and that you
-  really do want to wait for all of the stream's results. For example, you
-  usually should **not** use `await for` for UI event listeners, because UI
-  frameworks send endless streams of events.
-{{site.alert.end}}
+:::note
+Before using `await for`, be sure that it makes the code clearer and that you
+really do want to wait for all of the stream's results. For example, you
+usually should **not** use `await for` for UI event listeners, because UI
+frameworks send endless streams of events.
+:::
 
 An asynchronous for loop has the following form:
 
@@ -200,7 +200,7 @@ For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] {
   // ...
   [!await for!] (final request in requestServer) {
@@ -208,12 +208,12 @@ void main() [!async!] {
   }
   // ...
 }
-{% endprettify %}
+```
 
 For more information about asynchronous programming, in general, see the
-[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
+[dart:async](/guides/libraries/library-tour#dart-async)
 section of the library tour.
 
-[`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`Future`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
 [unawaited_futures linter rule]: /tools/linter-rules/unawaited_futures

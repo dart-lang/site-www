@@ -10,12 +10,12 @@ Many pages in this site—especially [codelabs](/codelabs)—have
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
-{{site.alert.tip}}
-  If you're in China, try [dartpad.cn.](https://dartpad.cn)
+:::tip
+If you're in China, try [dartpad.cn.](https://dartpad.cn)
 
-  If you have issues using DartPad, see the [DartPad troubleshooting
-  tips](/tools/dartpad/troubleshoot).
-{{site.alert.end}}
+If you have issues using DartPad, check out the
+[DartPad troubleshooting tips](/tools/dartpad/troubleshoot).
+:::
 
 Here's what DartPad looks like when configured to run Dart:
 
@@ -43,7 +43,7 @@ To get familiar with DartPad,
 try running some samples and creating a simple command-line app.
 
 
-### Open DartPad and run a sample {#step-1-open-and-run}
+### Open DartPad and run a sample {:#step-1-open-and-run}
 
 1. Go to [DartPad][]{:target="_blank" rel="noopener"}.  
    
@@ -57,7 +57,7 @@ try running some samples and creating a simple command-line app.
    The rendered output appears to the right.
 
 
-### Create a command-line app {#step-2-server}
+### Create a command-line app {:#step-2-server}
 
 To create a simple command-line app, use **New Pad**.
 
@@ -106,7 +106,7 @@ The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is currently using.
 You can find this SDK version at the bottom right of DartPad.
 
-## Embedding DartPad in web pages {#embedding}
+## Embedding DartPad in web pages {:#embedding}
 
 You can embed DartPad inside of web pages,
 customizing it to suit your use case.

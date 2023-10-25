@@ -5,7 +5,7 @@ import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart' as path;
 
 final _unescape = HtmlUnescape();
-final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
+final _anchorPattern = RegExp(r'(.+)\{:#([^#]+)\}');
 
 void main() async {
   const dirPath = 'src/effective-dart';
@@ -91,7 +91,7 @@ class Rule {
     var html = md.renderToHtml(element.children ?? const []);
     var fragment = _generateAnchorHash(name);
 
-    // Handle headers with an explicit "{#anchor-text}" anchor.
+    // Handle headers with an explicit "{:#anchor-text}" anchor.
     var match = _anchorPattern.firstMatch(name);
     if (match != null) {
       // Pull the anchor from the name.
@@ -145,9 +145,10 @@ class Subsection {
 String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
-    .replaceFirst(RegExp(r'^[^a-z]+'), '')
-    .replaceAll(RegExp(r'[^a-z0-9 _-]'), '')
-    .replaceAll(RegExp(r'\s'), '-');
+    .replaceAll(RegExp(r'[:.]'), '-')
+    .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    .replaceAll(RegExp(r'[\s-]+'), '-')
+    .replaceAll(RegExp(r'^-+|-+$'), '');
 
 /// Concatenates the text found in all the children of [element].
 String _concatenatedText(md.Element element) {

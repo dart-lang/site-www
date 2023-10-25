@@ -46,7 +46,7 @@ above) at the call of `printInts(list)`:
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/-(.*?):(.*?):(.*?)-/-/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
-```nocode
+```plaintext
 error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
 ```
 
@@ -182,10 +182,10 @@ or a supertype of the corresponding parameter in the superclass.
 Don't "tighten" the parameter type by replacing the type with a
 subtype of the original parameter.
 
-{{site.alert.note}}
-  If you have a valid reason to use a subtype, you can use the
-  [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
-{{site.alert.end}}
+:::note
+If you have a valid reason to use a subtype, you can use the
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+:::
 
 Consider the `chase(Animal)` method for the `Animal` class:
 

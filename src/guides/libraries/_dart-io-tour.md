@@ -4,10 +4,10 @@ The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
-{{site.alert.important}}
-  Only non-web [Flutter apps,]({{site.flutter}}) command-line scripts, 
-  and servers can import and use `dart:io`, not web apps.
-{{site.alert.end}}
+:::important
+Only non-web [Flutter apps]({{site.flutter}}), command-line scripts, 
+and servers can import and use `dart:io`, not web apps.
+:::
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it
@@ -267,13 +267,13 @@ For more information about server-side and command-line app development, see the
 
 
 [library tour]: /guides/libraries/library-tour
-[dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
-[Directory]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
-[File]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html
-[HttpClient]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
-[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[HttpServer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html
-[IOSink]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html
-[Process]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html
-[Socket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
-[WebSocket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/WebSocket-class.html
+[dart:io]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/dart-io-library.html
+[Directory]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Directory-class.html
+[File]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File-class.html
+[HttpClient]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/HttpClient-class.html
+[HttpRequest]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/HttpRequest-class.html
+[HttpServer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/HttpServer-class.html
+[IOSink]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/IOSink-class.html
+[Process]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Process-class.html
+[Socket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Socket-class.html
+[WebSocket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/WebSocket-class.html

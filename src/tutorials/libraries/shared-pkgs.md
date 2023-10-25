@@ -1,23 +1,23 @@
 ---
 title: Install shared packages
-description: Packages are bundles of source code, tools, and resources that help you to organize and share code
+description: >-
+  Packages are bundles of source code, tools, and
+  resources that help you to organize and share code.
 ---
 
-### Borrow and share code.
+## Borrow and share code
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
-    packages.
-  * Following a few conventions, such as having a valid pubspec.yaml file,
-    makes your app a package.
-  * If you're developing a web or server-side app,
-    use `dart create` to generate starting files.
-  * If you're developing a web or server-side app,
-    use `dart pub get` to download packages.
-  * If you're developing a mobile app, use Flutter's tools.
-</div>
+:::mini-toc What's the point?
+* The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
+  packages.
+* Following a few conventions, such as having a valid `pubspec.yaml` file,
+  makes your app a package.
+* If you're developing a web or server-side app,
+  use `dart create` to generate starting files.
+* If you're developing a web or server-side app,
+  use `dart pub get` to download packages.
+* If you're developing a mobile app, use Flutter's tools.
+:::
 
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
@@ -34,13 +34,13 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-{{site.alert.flutter-note}}
-  This page doesn't describe the tools you use with Flutter, but the
-  concepts are the same, and you can share packages between
-  your Flutter and web or server-side apps.
-  For more information, see the
-  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
-{{site.alert.end}}
+:::flutter-note
+This page doesn't describe the tools you use with Flutter, but the
+concepts are the same, and you can share packages between
+your Flutter and web or server-side apps.
+For more information, see the
+[Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
+:::
 
 
 ## About the pubspec.yaml file
@@ -58,7 +58,7 @@ such as IntelliJ or WebStorm.
 Run the `dart create` command with the `--help` flag
 to see what kinds of template files it can generate:
 
-```terminal
+```console
 $ dart create --help
 ```
 
@@ -68,7 +68,7 @@ One of the templates is named **console**.
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
 
-```terminal
+```console
 $ dart create -t console vector_victor 
 $ cd vector_victor
 ```
@@ -114,7 +114,7 @@ Run the [`dart pub add`](/tools/pub/cmd/pub-add) command
 and specify `vector_math`
 to add a dependency on the package:
 
-```terminal
+```console
 $ dart pub add vector_math
 Resolving dependencies... 
 + vector_math 2.1.4
@@ -156,7 +156,7 @@ it might automatically install the packages your app depends on.
 If not, do it yourself by running
 [dart pub get](/tools/pub/cmd/pub-get):
 
-```terminal
+```console
 $ dart pub get
 Resolving dependencies...
 + vector_math 2.1.4
@@ -277,10 +277,10 @@ use the `package:` prefix.
    docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
-   {{site.alert.note}}
-     You specify a filename, not a library name,
-     when you import a library from a package.
-   {{site.alert.end}}
+   :::note
+   You specify a filename, not a library name,
+   when you import a library from a package.
+   :::
 
 
 ## Other resources

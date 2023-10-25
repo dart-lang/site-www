@@ -11,12 +11,12 @@ Compilation environment declarations specify
 configuration options as key-value pairs
 that are accessed and evaluated at compile time.
 
-{{site.alert.note}}
-  This page uses "environment" to refer
-  to the Dart compilation environment. 
-  The common use of the term instead refers
-  to the operating system environment.
-{{site.alert.end}}
+:::note
+This page uses "environment" to refer
+to the Dart compilation environment. 
+The common use of the term instead refers
+to the operating system environment.
+:::
 
 Your app can use the values of environment declarations
 to change its functionality or behavior.
@@ -37,7 +37,7 @@ use the `--define` option or its abbreviation, `-D`.
 Specify the declaration key-value pair
 using a `<NAME>=<VALUE>` format:
 
-```terminal
+```console
 $ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
@@ -59,11 +59,11 @@ Use [`bool.fromEnvironment`][bool-from] for `true` or `false` values,
 [`int.fromEnvironment`][int-from] for integer values,
 and [`String.fromEnvironment`][string-from] for anything else.
 
-{{site.alert.note}}
-  The environment declaration constructors are only guaranteed
-  to work when invoked as `const`.
-  Most compilers must be able to evaluate their value at compile time.
-{{site.alert.end}}
+:::note
+The environment declaration constructors are only guaranteed
+to work when invoked as `const`.
+Most compilers must be able to evaluate their value at compile time.
+:::
 
 Each of the `fromEnvironment` constructors require the
 name or key of the environment declaration.
@@ -104,20 +104,20 @@ if (const bool.hasEnvironment('DEBUG')) {
 }
 ```
 
-[string-from]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String/String.fromEnvironment.html
-[int-from]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int/int.fromEnvironment.html
-[bool-from]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.fromEnvironment.html
-[bool-has]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/bool/bool.hasEnvironment.html
+[string-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String/String.fromEnvironment.html
+[int-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int/int.fromEnvironment.html
+[bool-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.fromEnvironment.html
+[bool-has]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.hasEnvironment.html
 
 ## Specifying environment declarations
 
-{{site.alert.warning}}
-  Dart tools and compilers currently do not
-  consistently handle environment declarations
-  with comma-separated values.
-  To track standardization of this handling,
-  reference [SDK issue 44995][].
-{{site.alert.end}}
+:::warning
+Dart tools and compilers currently do not
+consistently handle environment declarations
+with comma-separated values.
+To track standardization of this handling,
+reference [SDK issue 44995][].
+:::
 
 [SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
 
@@ -127,7 +127,7 @@ Both `dart run` and the `dart compile` subcommands accept
 any number of the `-D` or `--define` options
 to specify environment declaration values.
 
-```terminal
+```console
 $ dart run --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile exe --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile js --define=DEBUG=true -DFLAVOR=free main.dart
@@ -184,7 +184,7 @@ To learn more, check out JetBrains' documentation for
 To specify environment declarations to the Flutter tool,
 use the `--dart-define` option instead:
 
-```terminal
+```console
 $ flutter run --dart-define=DEBUG=true
 ```
 

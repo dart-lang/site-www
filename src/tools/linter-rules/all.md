@@ -6,15 +6,14 @@ show_breadcrumbs: true
 ---
 
 The following is an auto-generated list of all linter rules
-available in the Dart SDK as of version `{{site.data.pkg-vers.SDK.vers}}`.
+available in the Dart SDK as of version `{{site.sdkInfo.version}}`.
 Add them to your
 [`analysis_options.yaml`](/tools/analysis) file
 and adjust as you see fit.
 
-{% assign sorted_lints = site.data.linter_rules | sort: "name" %}
+{% assign sorted_lints = linter_rules | sort: "name" %}
 
-<?code-excerpt ?>
-```yaml
+```yaml {"title":"analysis_options.yaml"}
 linter:
   rules:
     {% for lint in sorted_lints %}
@@ -23,4 +22,3 @@ linter:
     {% endif -%}
     {% endfor -%}
 ```
-<div class="prettify-filename">analysis_options.yaml</div>

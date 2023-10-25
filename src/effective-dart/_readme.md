@@ -9,7 +9,7 @@ and commit the resulting generated file.
 
 To do so, run the following from the repository root directory:
 
-```terminal
+```console
 $ dart run tool/effective_dart_rules/bin/main.dart
 ```
 

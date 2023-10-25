@@ -10,10 +10,10 @@ This page explains how to use `build_runner`.
 To learn how to use build_runner with a specific package,
 see the documentation for that package.
 
-{{site.alert.info}}
-  **If you're a web developer**, use the [`webdev` tool][webdev] to
-  build and serve web apps.
-{{site.alert.end}}
+:::note
+If you're a web developer, use the [`webdev` tool][webdev] to
+build and serve web apps.
+:::
 
 The build_runner commands work with _builders_—packages
 that use the [Dart build system][build]
@@ -46,7 +46,7 @@ Depending on **build_test** is optional; do it if you'll be testing your code.
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
-```terminal
+```console
 $ dart pub get
 ```
 
@@ -54,7 +54,7 @@ $ dart pub get
 
 The following is an example of using the build_runner **build** command:
 
-```terminal
+```console
 $ # From a directory that contains a pubspec.yaml file:
 $ dart run build_runner build
 ```

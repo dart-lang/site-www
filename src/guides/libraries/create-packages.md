@@ -15,7 +15,7 @@ To create the initial directory and structure for a package,
 use the [`dart create`](/tools/dart-create) command
 and the `package` template:
 
-```terminal
+```console
 $ dart create -t package <PACKAGE_NAME>
 ```
 
@@ -58,11 +58,11 @@ _mini libraries_.
 In most cases, each class should be in its own mini library, unless
 you have a situation where two classes are tightly coupled.
 
-{{site.alert.note}}
-  You may have heard of the `part` directive, which allows
-  you to split a library into multiple Dart files. We recommend
-  that you avoid using `part` and create mini libraries instead.
-{{site.alert.end}}
+:::note
+You may have heard of the `part` directive, which allows
+you to split a library into multiple Dart files. We recommend
+that you avoid using `part` and create mini libraries instead.
+:::
 
 Create a "main" library file directly under lib,
 lib/_&lt;package-name&gt;_.dart, that
@@ -110,13 +110,13 @@ export 'src/server_handler.dart' show ServerHandler;
 The shelf package also contains a mini library: shelf_io.
 This adapter handles HttpRequest objects from `dart:io`.
 
-{{site.alert.tip}}
-  For the best performance when developing with the
-  development JavaScript compiler through [`webdev serve`][],
-  put [implementation files](/tools/pub/package-layout#implementation-files) 
-  under `/lib/src`, instead of elsewhere under `/lib`.
-  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{{site.alert.end}}
+:::tip
+For the best performance when developing with the
+development JavaScript compiler through [`webdev serve`][],
+put [implementation files](/tools/pub/package-layout#implementation-files) 
+under `/lib/src`, instead of elsewhere under `/lib`.
+Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+:::
 
 [`webdev serve`]: /tools/webdev#serve
 
@@ -154,12 +154,11 @@ Here's an example of conditional export code that
 checks for the presence of `dart:io` and `dart:html`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
-```dart
+```dart {"title":"lib/hw_mp.dart"}
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
     if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
 ```
-<div class="prettify-filename">lib/hw_mp.dart</div>
 
 Here's what that code does:
 
@@ -174,17 +173,17 @@ Here's what that code does:
 To conditionally import a file, use the same code as above,
 but change `export` to `import`.
 
-{{site.alert.note}}
-  The conditional import or export checks only whether the library is
-  _available for use_ on the current platform,
-  not whether it's actually imported or used.
-{{site.alert.end}}
+:::note
+The conditional import or export checks only whether the library is
+_available for use_ on the current platform,
+not whether it's actually imported or used.
+:::
 
 All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:
 
 <?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
-```dart
+```dart {"title":"lib/src/hw_io.dart"}
 import 'dart:io';
 
 void alarm([String? text]) {
@@ -193,18 +192,16 @@ void alarm([String? text]) {
 
 String get message => 'Hello World from the VM!';
 ```
-<div class="prettify-filename">lib/src/hw_io.dart</div>
 
 And here's the default implementation,
 which uses stubs that throw `UnsupportedError`:
 
 <?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
-```dart
+```dart {"title":"lib/src/hw_none.dart"}
 void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
 String get message => throw UnsupportedError('hw_none message');
 ```
-<div class="prettify-filename">lib/src/hw_none.dart</div>
 
 On any platform,
 you can import the library that has the conditional export code:
@@ -255,12 +252,12 @@ the [`dart doc`][] tool.
 [documentation comments](/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
-{% prettify dart tag=pre+code %}
+```dart
 /// The event handler responsible for updating the badge in the UI.
 void updateBadge() {
   ...
 }
-{% endprettify %}
+```
 
 For an example of generated docs, see the
 [shelf documentation.]({{site.pub-api}}/shelf/latest)
@@ -271,7 +268,7 @@ For the how-and-why of documenting libraries, see
 [Effective Dart: Documentation](/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
 
-## Distributing an open source library {#distributing-a-library}
+## Distributing an open source library {:#distributing-a-library}
 
 If your library is open source,
 we recommend sharing it on the [pub.dev site.]({{site.pub}})

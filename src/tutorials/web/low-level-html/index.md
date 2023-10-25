@@ -13,15 +13,15 @@ thus dynamically changing the web page.
 First, learn now to connect Dart and HTML.
 Then learn how to add, move, and remove DOM elements.
 
-{{site.alert.note}}
-  These tutorials cover basic, low-level web programming
-  with the dart:html library.
-  If you use a web framework,
-  the concepts in these tutorials might be useful,
-  but you might not need to use the dart:html library at all.
-  For information about frameworks for Dart web apps,
-  see the [web libraries overview](/web/libraries).
-{{site.alert.end}}
+:::note
+These tutorials cover basic, low-level web programming
+with the dart:html library.
+If you use a web framework,
+the concepts in these tutorials might be useful,
+but you might not need to use the dart:html library at all.
+For information about frameworks for Dart web apps,
+see the [web libraries overview](/web/libraries).
+:::
 
 <div class="card-grid">
   <div class="card">

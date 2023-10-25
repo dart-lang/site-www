@@ -39,7 +39,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/style#do-format-your-code-using-dart-format'>DO format your code using <code>dart format</code>.</a>
 * <a href='/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDER changing your code to make it more formatter-friendly.</a>
 * <a href='/effective-dart/style#avoid-lines-longer-than-80-characters'>AVOID lines longer than 80 characters.</a>
-* <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>DO use curly braces for all flow control statements.</a>
+* <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-statements'>DO use curly braces for all flow control statements.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>
@@ -55,7 +55,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 **Doc comments**
 
-* <a href='/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
+* <a href='/effective-dart/documentation#do-use-doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
 * <a href='/effective-dart/documentation#prefer-writing-doc-comments-for-public-apis'>PREFER writing doc comments for public APIs.</a>
 * <a href='/effective-dart/documentation#consider-writing-a-library-level-doc-comment'>CONSIDER writing a library-level doc comment.</a>
 * <a href='/effective-dart/documentation#consider-writing-doc-comments-for-private-apis'>CONSIDER writing doc comments for private APIs.</a>
@@ -68,12 +68,6 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/documentation#dont-write-documentation-for-both-the-getter-and-setter-of-a-property'>DON'T write documentation for both the getter and setter of a property.</a>
 * <a href='/effective-dart/documentation#prefer-starting-library-or-type-comments-with-noun-phrases'>PREFER starting library or type comments with noun phrases.</a>
 * <a href='/effective-dart/documentation#consider-including-code-samples-in-doc-comments'>CONSIDER including code samples in doc comments.</a>
-* <a href='/effective-dart/documentation#do-use-square-brackets-in-doc-comments-to-refer-to-in-scope-identifiers'>DO use square brackets in doc comments to refer to in-scope identifiers.</a>
-* <a href='/effective-dart/documentation#do-use-prose-to-explain-parameters-return-values-and-exceptions'>DO use prose to explain parameters, return values, and exceptions.</a>
-* <a href='/effective-dart/documentation#do-put-doc-comments-before-metadata-annotations'>DO put doc comments before metadata annotations.</a>
-
-**Markdown**
-
 * <a href='/effective-dart/documentation#avoid-using-markdown-excessively'>AVOID using markdown excessively.</a>
 * <a href='/effective-dart/documentation#avoid-using-html-for-formatting'>AVOID using HTML for formatting.</a>
 * <a href='/effective-dart/documentation#prefer-backtick-fences-for-code-blocks'>PREFER backtick fences for code blocks.</a>
@@ -117,8 +111,8 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#do-use-collection-literals-when-possible'>DO use collection literals when possible.</a>
 * <a href='/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>DON'T use <code>.length</code> to see if a collection is empty.</a>
-* <a href='/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
-* <a href='/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
+* <a href='/effective-dart/usage#avoid-using-iterable-foreach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
+* <a href='/effective-dart/usage#dont-use-list-from-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
 * <a href='/effective-dart/usage#dont-use-cast-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> when a nearby operation will do.</a>
 * <a href='/effective-dart/usage#avoid-using-cast'>AVOID using <code>cast()</code>.</a>
@@ -127,7 +121,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-* <a href='/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
+* <a href='/effective-dart/usage#do-use-to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
 
 **Variables**
 
@@ -138,7 +132,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily'>DON'T wrap a field in a getter and setter unnecessarily.</a>
 * <a href='/effective-dart/usage#prefer-using-a-final-field-to-make-a-read-only-property'>PREFER using a <code>final</code> field to make a read-only property.</a>
-* <a href='/effective-dart/usage#consider-using--for-simple-members'>CONSIDER using <code>=&gt;</code> for simple members.</a>
+* <a href='/effective-dart/usage#consider-using-for-simple-members'>CONSIDER using <code>=&gt;</code> for simple members.</a>
 * <a href='/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> except to redirect to a named constructor or to avoid shadowing.</a>
 * <a href='/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible'>DO initialize fields at their declaration when possible.</a>
 
@@ -146,7 +140,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
 * <a href='/effective-dart/usage#dont-use-late-when-a-constructor-initializer-list-will-do'>DON'T use <code>late</code> when a constructor initializer list will do.</a>
-* <a href='/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
+* <a href='/effective-dart/usage#do-use-instead-of-for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
 * <a href='/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
 * <a href='/effective-dart/usage#dont-use-const-redundantly'>DON'T use <code>const</code> redundantly.</a>
 
@@ -206,7 +200,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
 * <a href='/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
 * <a href='/effective-dart/design#do-use-mixin-to-define-a-mixin-type'>DO use <code>mixin</code> to define a mixin type.</a>
-* <a href='/effective-dart/design#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a type that isn't intended to be a mixin.</a>
+* <a href='/effective-dart/design#avoid-mixing-in-a-type-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a type that isn't intended to be a mixin.</a>
 
 **Constructors**
 
@@ -254,10 +248,10 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 **Equality**
 
-* <a href='/effective-dart/design#do-override-hashcode-if-you-override-'>DO override <code>hashCode</code> if you override <code>==</code>.</a>
-* <a href='/effective-dart/design#do-make-your--operator-obey-the-mathematical-rules-of-equality'>DO make your <code>==</code> operator obey the mathematical rules of equality.</a>
+* <a href='/effective-dart/design#do-override-hashcode-if-you-override'>DO override <code>hashCode</code> if you override <code>==</code>.</a>
+* <a href='/effective-dart/design#do-make-your-operator-obey-the-mathematical-rules-of-equality'>DO make your <code>==</code> operator obey the mathematical rules of equality.</a>
 * <a href='/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes'>AVOID defining custom equality for mutable classes.</a>
-* <a href='/effective-dart/design#dont-make-the-parameter-to--nullable'>DON'T make the parameter to <code>==</code> nullable.</a>
+* <a href='/effective-dart/design#dont-make-the-parameter-to-nullable'>DON'T make the parameter to <code>==</code> nullable.</a>
 
 </div>
 <div style='clear:both'></div>

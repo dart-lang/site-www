@@ -11,26 +11,26 @@ and project information if in a directory with a `pubspec.yaml`.
 The output information can be used for debugging tooling issues
 or reporting a bug.
 
-{% include tools/dart-tool-note.md %}
+{% render 'tools/dart-tool-note.md' %}
 
-{{site.alert.warning}}
-  If you are including the `dart info` output in a bug report,
-  please review the output to ensure it only
-  contains details you're comfortable posting publicly.
-{{site.alert.end}}
+:::warning
+If you are including the `dart info` output in a bug report,
+please review the output to ensure it only
+contains details you're comfortable posting publicly.
+:::
 
 To output general information related to your system
 and your Dart installation, including running Dart processes,
 run `dart info` from any directory:
 
-```terminal
+```console
 $ dart info
 ```
 
 For example, on macOS, 
 the output looks similar to the following:
 
-```nocode
+```markdown
 #### General info
 
 - Dart 2.19.2 (stable) (Tue Feb 7 18:37:17 2023 +0000) on "macos_arm64"
@@ -49,7 +49,7 @@ To include project information in the output,
 run `dart info` in a directory with a `pubspec.yaml` file.
 The resulting output includes an additional **Project info** section:
 
-```nocode
+```plaintext
 #### Project info
 
 - sdk constraint: '>=2.19.2 <3.0.0'
@@ -61,6 +61,6 @@ To include file paths and path dependencies in
 the displayed project and process info,
 add the `--no-remove-file-paths` option:
 
-```terminal
+```console
 $ dart info --no-remove-file-paths
 ```

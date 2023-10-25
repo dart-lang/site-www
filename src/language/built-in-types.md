@@ -205,11 +205,11 @@ assert('That deserves all caps. '
         'STRING INTERPOLATION is very handy!');
 ```
 
-{{site.alert.note}}
-  The `==` operator tests whether two objects are equivalent. Two
-  strings are equivalent if they contain the same sequence of code
-  units.
-{{site.alert.end}}
+:::note
+The `==` operator tests whether two objects are equivalent.
+Two strings are equivalent if they contain the
+same sequence of code units.
+:::
 
 You can concatenate strings using adjacent string literals or the `+`
 operator:
@@ -347,7 +347,7 @@ void main() {
 
 The output, depending on your environment, looks something like this:
 
-```terminal
+```console
 $ dart run bin/main.dart
 Hi 🇩🇰
 The end of the string: ???
@@ -369,7 +369,7 @@ names but not identifier symbols.
 To get the symbol for an identifier, use a symbol literal, which is just
 `#` followed by the identifier:
 
-```nocode
+```plaintext
 #radix
 #bar
 ```
@@ -398,16 +398,16 @@ Symbol literals are compile-time constants.
 [iteration]: /guides/libraries/library-tour#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom
-[`int`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[`double`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
-[`num`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
+[`int`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
+[`double`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
+[`num`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
+[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 [dart-numbers]: /guides/language/numbers
-[runes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
+[runes]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Runes-class.html
 [characters package]: {{site.pub-pkg}}/characters
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
-[`Symbol`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[`Symbol`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html

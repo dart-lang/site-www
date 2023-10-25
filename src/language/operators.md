@@ -19,9 +19,8 @@ and [operator precedence](#operator-precedence-example) from highest to lowest,
 which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members][].
 
-|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
 | Description                             | Operator                                                                                                                                                                                          | Associativity |
-|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | unary postfix                           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!`                                                                                       | None          |
 | unary prefix                            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None          |
 | multiplicative                          | `*`    `/`    `%`    `~/`                                                                                                                                                                         | Left          |
@@ -29,24 +28,25 @@ You can implement many of these [operators as class members][].
 | shift                                   | `<<`    `>>`    `>>>`                                                                                                                                                                             | Left          |
 | bitwise AND                             | `&`                                                                                                                                                                                               | Left          |
 | bitwise XOR                             | `^`                                                                                                                                                                                               | Left          |
-| bitwise OR                              | `|`                                                                                                                                                                                               | Left          |
+| bitwise OR                              | `| `             | Left          |
 | relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                                                                                                               | None          |
 | equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
 | logical AND                             | `&&`                                                                                                                                                                                              | Left          |
-| logical OR                              | `||`                                                                                                                                                                                              | Left          |
+| logical OR                              | `|               |`                                                                                                                                                                                              | Left          |
 | if null                                 | `??`                                                                                                                                                                                              | Left          |
 | conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
 | cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
+
 {:.table .table-striped}
 
-{{site.alert.warning}}
-  The previous table should only be used as a helpful guide.
-  The notion of operator precedence and associativity
-  is an approximation of the truth found in the language grammar.
-  You can find the authoritative behavior of Dart's operator relationships
-  in the grammar defined in the [Dart language specification][].
-{{site.alert.end}}
+:::warning
+The previous table should only be used as a helpful guide.
+The notion of operator precedence and associativity
+is an approximation of the truth found in the language grammar.
+You can find the authoritative behavior of Dart's operator relationships
+in the grammar defined in the [Dart language specification][].
+:::
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -80,27 +80,27 @@ if ((n % i == 0) && (d % i == 0)) ...
 if (n % i == 0 && d % i == 0) ...
 ```
 
-{{site.alert.warning}}
-  For operators that take two operands, the leftmost operand determines which
-  method is used. For example, if you have a `Vector` object and
-  a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
-{{site.alert.end}}
+:::warning
+For operators that take two operands, the leftmost operand determines which
+method is used. For example, if you have a `Vector` object and
+a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
+:::
 
 
 ## Arithmetic operators
 
 Dart supports the usual arithmetic operators, as shown in the following table.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| `+`                         | Add
-| `-`                         | Subtract
-| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression)
-| `*`                         | Multiply
-| `/`                         | Divide
-| `~/`                        | Divide, returning an integer result
-| `%`                         | Get the remainder of an integer division (modulo)
+| Operator                    | Meaning                                                                  |
+|-----------------------------|--------------------------------------------------------------------------|
+| `+`                         | Add                                                                      |
+| `-`                         | Subtract                                                                 |
+| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression) |
+| `*`                         | Multiply                                                                 |
+| `/`                         | Divide                                                                   |
+| `~/`                        | Divide, returning an integer result                                      |
+| `%`                         | Get the remainder of an integer division (modulo)                        |
+
 {:.table .table-striped}
 
 Example:
@@ -120,13 +120,13 @@ assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 Dart also supports both prefix and postfix increment and decrement
 operators.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)
+| Operator                    | Meaning                                                                                          |
+|-----------------------------|--------------------------------------------------------------------------------------------------|
+| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>) |
+| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)     |
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>) |
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)     |
+
 {:.table .table-striped}
 
 Example:
@@ -158,15 +158,16 @@ assert(a != b); // -1 != 0
 
 The following table lists the meanings of equality and relational operators.
 
-|-----------+-------------------------------------------|
-| Operator  | Meaning                                   |
-|-----------+-------------------------------------------|
-| `==`      |       Equal; see discussion below
-| `!=`      |       Not equal
-| `>`       |       Greater than
-| `<`       |       Less than
-| `>=`      |       Greater than or equal to
-| `<=`      |       Less than or equal to
+
+| Operator | Meaning                     |
+|----------|-----------------------------|
+| `==`     | Equal; see discussion below |
+| `!=`     | Not equal                   | 
+| `>`      | Greater than                |
+| `<`      | Less than                   |
+| `>=`     | Greater than or equal to    |
+| `<=`     | Less than or equal to       |
+
 {:.table .table-striped}
 
 To test whether two objects x and y represent the same thing, use the
@@ -201,12 +202,12 @@ assert(2 <= 3);
 The `as`, `is`, and `is!` operators are handy for checking types at
 runtime.
 
-|-----------+-------------------------------------------|
-| Operator  | Meaning                                   |
-|-----------+-------------------------------------------|
-| `as`      | Typecast (also used to specify [library prefixes][])
-| `is`      | True if the object has the specified type
-| `is!`     | True if the object doesn't have the specified type
+| Operator  | Meaning                                              |
+|-----------|------------------------------------------------------|
+| `as`      | Typecast (also used to specify [library prefixes][]) |
+| `is`      | True if the object has the specified type            |
+| `is!`     | True if the object doesn't have the specified type   |
+
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
@@ -222,6 +223,7 @@ you are sure that the object is of that type. Example:
 
 If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
+
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
 if (employee is Person) {
@@ -230,10 +232,10 @@ if (employee is Person) {
 }
 ```
 
-{{site.alert.note}}
-  The code isn't equivalent. If `employee` is null or not a `Person`, the
-  first example throws an exception; the second does nothing.
-{{site.alert.end}}
+:::note
+The code isn't equivalent. If `employee` is null or not a `Person`, the
+first example throws an exception; the second does nothing.
+:::
 
 ## Assignment operators
 
@@ -252,18 +254,21 @@ b ??= value;
 Compound assignment operators such as `+=` combine
 an operation with an assignment.
 
-| `=`  | `*=`  | `%=`  | `>>>=` | `^=`
-| `+=` | `/=`  | `<<=` | `&=`   | `|=`
-| `-=` | `~/=` | `>>=`
+|      |       |       |        |                      |
+|------|-------|-------|--------|----------------------|
+| `=`  | `*=`  | `%=`  | `>>>=` | `^=`                 |
+| `+=` | `/=`  | `<<=` | `&=`   | <code>&#124;=</code> |  
+| `-=` | `~/=` | `>>=` |        |                      |
+
 {:.table}
 
 Here's how compound assignment operators work:
 
-|-----------+----------------------+-----------------------|
-|           | Compound assignment  | Equivalent expression |
-|-----------+----------------------+-----------------------|
-|**For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
-|**Example:**                     |`a += b`                       | `a = a + b`
+|                                  | Compound assignment           | Equivalent expression            |
+|----------------------------------|-------------------------------|----------------------------------|
+| **For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code> |
+| **Example:**                     | `a += b`                      | `a = a + b`                      |
+
 {:.table}
 
 The following example uses assignment and compound assignment
@@ -282,12 +287,12 @@ assert(a == 6);
 You can invert or combine boolean expressions using the logical
 operators.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa)
-| `||`                        | logical OR
-| `&&`                        | logical AND
+| Operator                    | Meaning                                                                  |
+|-----------------------------|--------------------------------------------------------------------------|
+| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa) |
+| <code>&#124;&#124;</code>   | logical OR                                                               |
+| `&&`                        | logical AND                                                              |
+
 {:.table .table-striped}
 
 Here's an example of using the logical operators:
@@ -305,24 +310,24 @@ if (!done && (col == 0 || col == 3)) {
 You can manipulate the individual bits of numbers in Dart. Usually,
 you'd use these bitwise and shift operators with integers.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| `&`                         | AND
-| `|`                         | OR
-| `^`                         | XOR
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
-| `<<`                        | Shift left
-| `>>`                        | Shift right
-| `>>>`                       | Unsigned shift right
+| Operator                    | Meaning                                               |
+|-----------------------------|-------------------------------------------------------|
+| `&`                         | AND                                                   |
+| <code>&#124;</code>         | OR                                                    |
+| `^`                         | XOR                                                   |
+| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s) |
+| `<<`                        | Shift left                                            |
+| `>>`                        | Shift right                                           |
+| `>>>`                       | Unsigned shift right                                  |
+
 {:.table .table-striped}
 
-{{site.alert.note}}
-  The behavior of bitwise operations with large or negative operands
-  might differ between platforms.
-  To learn more, check out
-  [Bitwise operations platform differences][].
-{{site.alert.end}}
+:::note
+The behavior of bitwise operations with large or negative operands
+might differ between platforms.
+To learn more, check out
+[Bitwise operations platform differences][].
+:::
 
 Here's an example of using bitwise and shift operators:
 
@@ -347,10 +352,10 @@ assert((value >>> 4) == 0x02); // Unsigned shift right
 assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
-{{site.alert.version-note}}
-  The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
-  requires a [language version][] of at least 2.14.
-{{site.alert.end}}
+:::version-note
+The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
+requires a [language version][] of at least 2.14.
+:::
 
 [Bitwise operations platform differences]: /guides/language/numbers#bitwise-operations
 
@@ -450,9 +455,9 @@ querySelector('#confirm') // Get an object.
   ..scrollIntoView();
 ```
 
-{{site.alert.version-note}}
-  The `?..` syntax requires a [language version][] of at least 2.12.
-{{site.alert.end}}
+:::version-note
+The `?..` syntax requires a [language version][] of at least 2.12.
+:::
 
 The previous code is equivalent to the following:
 
@@ -492,24 +497,24 @@ sb.write('foo')
 The `sb.write()` call returns void,
 and you can't construct a cascade on `void`.
 
-{{site.alert.note}}
-  Strictly speaking, the "double dot" notation for cascades isn't an operator.
-  It's just part of the Dart syntax.
-{{site.alert.end}}
+:::note
+Strictly speaking, the "double dot" notation for cascades isn't an operator.
+It's just part of the Dart syntax.
+:::
 
 ## Other operators
 
 You've seen most of the remaining operators in other examples:
 
-|----------+------------------------------+--------------------|
-| Operator | Name                         | Meaning            |
-|----------+------------------------------+--------------------|
-| `()`     | Function application         | Represents a function call
-| `[]`     | Subscript access             | Represents a call to the overridable `[]` operator; example: `fooList[1]` passes the int `1` to `fooList` to access the element at index `1`
-| `?[]`    | Conditional subscript access | Like `[]`, but the leftmost operand can be null; example: `fooList?[1]` passes the int `1` to `fooList` to access the element at index `1` unless `fooList` is null (in which case the expression evaluates to null)
-| `.`      | Member access                | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`
-| `?.`     | Conditional member access    | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)
-| `!`      | Null assertion operator      | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null in which case a runtime exception is thrown
+| Operator | Name                         | Meaning                                                                                                                                                                                                                                                 |
+|----------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `()`     | Function application         | Represents a function call                                                                                                                                                                                                                              |
+| `[]`     | Subscript access             | Represents a call to the overridable `[]` operator; example: `fooList[1]` passes the int `1` to `fooList` to access the element at index `1`                                                                                                            |
+| `?[]`    | Conditional subscript access | Like `[]`, but the leftmost operand can be null; example: `fooList?[1]` passes the int `1` to `fooList` to access the element at index `1` unless `fooList` is null (in which case the expression evaluates to null)                                    |
+| `.`      | Member access                | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`                                                                                                                                                  |
+| `?.`     | Conditional member access    | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)                                                                   |
+| `!`      | Null assertion operator      | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null in which case a runtime exception is thrown |
+
 {:.table .table-striped}
 
 For more information about the `.`, `?.`, and `..` operators, see
@@ -518,7 +523,7 @@ For more information about the `.`, `?.`, and `..` operators, see
 
 [operators as class members]: /language/methods#operators
 [Dart language specification]: /guides/language/spec
-[identical()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
+[identical()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/branches#if

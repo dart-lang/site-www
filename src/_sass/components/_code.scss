@@ -1,46 +1,69 @@
 @use '../core/colors' as *;
 @use '../core/variables' as *;
 @use '../core/bootstrap';
-@use '../vendor/prettify';
 
 @mixin pre-defaults {
-  background-color: $site-color-codeblock-bg;
   font-size: 0.875rem; // 14px
   font-weight: bootstrap.$font-weight-normal;
-  padding: 1.875rem; // 30px
+  padding: 1.75rem;
 }
 
 //
 // Code-prettyprint overrides
 //
 pre {
-  &.prettyprint {
-    @include pre-defaults;
-    border: none;
-
-    .highlight-diagnostics & {
-      .highlight {
-        border-bottom: 2px $red-500 dashed;
-        background: inherit;
-        padding: 0;
-      }
-    }
-  }
-
+  margin-bottom: 1rem;
+  
   .highlight {
     background: #ffe600;
     padding: 2px;
   }
+
+  .highlight-diagnostics & {
+    .highlight {
+      border-bottom: 2px $red-500 dashed;
+      background: inherit;
+      padding: 0;
+    }
+  }
+  
+  &:focus {
+    outline: none;
+  }
 }
 
-.pln { color: #222 }  /* plain text */
-
-@media screen {
-  .str { color: #1b87c9 }  /* string content */
-  .kwd { color: #1FBAAC }  /* a keyword */
-  .com { color: #999999 }  /* a comment */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #222 }
+.code-block-wrapper {
+  margin-bottom: 1rem;
+  border: 1px solid $site-color-light-grey;
+  
+  .code-block-header {
+    background-color: #e9ecef;
+    border-bottom: 1px solid $site-color-light-grey;
+    font-size: .875rem;
+    font-weight: 500;
+    padding: 0.75rem 0.5rem 0.67rem 1rem;
+  }
+  
+  .code-block-body {
+    background-color: $site-color-codeblock-bg;
+    
+    .code-block-tag {
+      font-family: $font-family-monospace;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      position: absolute;
+      top: 6px;
+      left: 8px;
+    }
+  }
+  
+  &:has(:focus-visible) {
+    border-color: #1389FD;
+  }
+  
+  pre {
+    margin-bottom: 0;
+  }
 }
 
 //
@@ -67,35 +90,6 @@ pre.console-output {
   @include console-base($generic-output-color)
 }
 
-// `terminal` is like `console` with prompts and output colored differently
-.language-terminal .highlight {
-  @include console-base;
-  .gp { color: $grey-500; } /* Generic.Prompt */
-  .go { color: $generic-output-color; } /* Generic.Output */
-  .nb, .nt { color: #99BB00; } /* Name.Builtin, Name.Tag */
-  .nv { color: #03bbbb; }
-  .o { color: $grey-500; font-weight: bold; } /* Operator */
-  .s, .s1, .s2 { color: #00CCEE; } /* String, .Single, .Double quotes */
-  .sb { color: #f56b78; } /* String.Backtick */
-}
-
-// Match code-prettify classes to the extent possible.
-.highlight {
-  .s, .s1, .s2 { @extend .str; } /* Literal.String.* */
-  .k, .kc, .kd, .kn, .kp, .kr, .kt { @extend .kwd; } /* Keyword.* */
-  .p { @extend .pun; } /* Punctuation */
-  .c, .c1, .cm { @extend .com; } /* Comment */
-  .cp { @extend .typ; } /* Comment.Preproc */
-  .l, .m, .mb, .mf, .mh, .mi, .mo, .mx { @extend .lit; } /* Literal.* */
-  .o { @extend .opn; } /* Operator */
-  .n { @extend .typ; } /* Name */
-  .na { @extend .kwd; } /* Name.Attribute */
-  .nb { @extend .typ; } /* Name.Builtin */
-  .nl { @extend .kwd; } /* Name.Label */
-  .no { @extend .lit; } /* Name.Constant */
-  .nt { @extend .tag; } /* Name.Tag */
-}
-
 // Dart-site specific style overrides
 .highlight .gp { user-select: none; }
 
@@ -115,21 +109,4 @@ iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   min-height: 400px;
   resize: vertical;
   width: 100%;
-}
-
-.prettify-filename {
-  position: relative;
-  text-align: right;
-  margin-right: $font-size-base;
-  margin-top: -$font-size-base * 2.5;
-  margin-bottom: $font-size-base;
-  opacity: 0.5;
-}
-
-@media screen {
-  .com { color: #6E6E70; }
-  .kwd { color: #BC0056; }
-  .pln { color: #7500A0; }
-  .lit,
-  .str { color: #00677A; }
 }

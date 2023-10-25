@@ -6,34 +6,36 @@ description: The tools that support the Dart language.
 When you're ready to create an app, get the SDK and tools for your app
 type. If you aren't sure which tools you need, **get the Flutter SDK.**
 
-<div class="table-wrapper" markdown="1">
-|------------+-----------------------------------+--------------------------|
-| App type   | Get started instructions          | Tool information         |
-|------------|-----------------------------------|--------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide) |
-| Web app (non-Flutter) | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
-| Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
+<div class="table-wrapper">
+
+| App type                  | Get started instructions                                     | Tool information                                           |
+|---------------------------|--------------------------------------------------------------|------------------------------------------------------------|
+| Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide)           |
+| Web app (non-Flutter)     | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [web tools](#web)            |
+| Server or command line    | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [specialized tools](#server) |
+
 {:.table .table-striped}
 </div>
 
 [General-purpose tools]: #general-purpose-tools
 
-{{site.alert.note}}
+:::note
   The Flutter SDK includes the full Dart SDK.
-{{site.alert.end}}
+:::
 
 ## General-purpose tools
 
 The following tools support the Dart language on all platforms.
 
 * [DartPad](#dartpad)
-* [IDEs and editors](#ides-and-editors)
+* [IDEs and editors](#editors)
 * [Command-line tools](#cli)
 
 
 ### DartPad
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
+
 [DartPad](/tools/dartpad) is
 a great, no-download-required way to learn Dart syntax
 and to experiment with Dart language features.
@@ -41,7 +43,7 @@ It supports Dart's core libraries,
 except for VM libraries such as `dart:io`.
 
 
-### IDEs and editors
+### IDEs and editors {:#editors}
 
 Dart plugins exist for these commonly used IDEs.
 
@@ -86,7 +88,7 @@ A [Language Server Protocol implementation][LSP] is also available for
 [LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
-### Command-line tools {#cli}
+### Command-line tools {:#cli}
 
 The Dart SDK includes the following general-purpose `dart` tool:
 
@@ -102,14 +104,14 @@ The Dart SDK includes the following general-purpose `dart` tool:
 : A suite of debugging and performance tools.
 
 
-## Tool for developing web apps {#web}
+## Tool for developing web apps {:#web}
 
 The following tool supports developing web apps:
 
 [`webdev`](/tools/webdev)
 : A CLI to build and serve Dart web apps.
 
-## Tools for developing command-line apps and servers {#server}
+## Tools for developing command-line apps and servers {:#server}
 
 The following tools support developing or running
 command-line apps and servers:

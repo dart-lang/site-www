@@ -30,9 +30,9 @@ Review the techniques covered in
 [Futures and Error Handling](/guides/libraries/futures-error-handling)
 before reading this article.
 
-[dart:async]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
-[`runZoned()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html)
-[`runZonedGuarded()`]: ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html)
+[dart:async]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html)
+[`runZoned()`]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZoned.html)
+[`runZonedGuarded()`]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZonedGuarded.html)
 
 Zones make the following tasks possible:
 
@@ -42,14 +42,14 @@ Zones make the following tasks possible:
   a simple HTTP server
   might use the following asynchronous code:
 
-  {% prettify dart tag=pre+code %}
+  ```dart
   [!runZonedGuarded(() {!]
     HttpServer.bind('0.0.0.0', port).then((server) {
       server.listen(staticFiles.serveRequest);
     });
   [!},
   (error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
-  {% endprettify %}
+  ```
   
   Running the HTTP server in a zone
   enables the app to continue running despite uncaught (but non-fatal)
@@ -168,21 +168,21 @@ uncaught error handler of a new zone. This callback handles any
 synchronous errors that the call throws.
 
 <!-- run_zoned1.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 runZonedGuarded(() {
   Timer.run(() { throw 'Would normally kill the program'; });
 }, (error, stackTrace) {
   print('Uncaught error: $error');
 });
-{% endprettify %}
+```
 
 _Other zone APIs that facilitate uncaught error handling include
 [`Zone.fork`][], [`Zone.runGuarded`][]
 and [`ZoneSpecification.uncaughtErrorHandler`][]._
 
-[`Zone.fork`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/fork.html)
-[`Zone.runGuarded`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/Zone/runGuarded.html)
-[`ZoneSpecification.uncaughtErrorHandler`]:  ({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}dart-async/ZoneSpecification/handleUncaughtError.html)
+[`Zone.fork`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/Zone/fork.html)
+[`Zone.runGuarded`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/Zone/runGuarded.html)
+[`ZoneSpecification.uncaughtErrorHandler`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/ZoneSpecification/handleUncaughtError.html)
 
 The preceding code has an asynchronous callback
 (through `Timer.run()`) that throws an exception.
@@ -209,12 +209,11 @@ Errors on Future chains never cross the boundaries of error zones.
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
 
-{{site.alert.info}}
-  **API note:**
-  Handling uncaught errors doesn't *require* zones.
-  The isolate API [`Isolate.run()`][] also handles 
-  listening for uncaught errors.
-{{site.alert.end}}
+:::note API note
+Handling uncaught errors doesn't *require* zones.
+The isolate API [`Isolate.run()`][] also handles 
+listening for uncaught errors.
+:::
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
@@ -225,7 +224,7 @@ the error raised by the first line
 can't cross into an error zone.
 
 <!-- run_zoned2.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 var f = new Future.error(499);
 f = f.whenComplete(() { print('Outside of zones'); });
 runZoned(() {
@@ -234,24 +233,24 @@ runZoned(() {
 runZonedGuarded(() {
   f = f.whenComplete(() { print('Inside error zone (not called)'); });
 }, (error) { print(error); });
-{% endprettify %}
+```
 
 Here's the output you see if you run the example:
 
-{% prettify xml tag=pre+code %}
+```plaintext
 Outside of zones
 Inside non-error zone
 Uncaught Error: 499
 Unhandled exception:
 499
 ...stack trace...
-{% endprettify %}
+```
 
 If you remove the call to `runZoned()` or
 to `runZonedGuarded()`,
 you see this output:
 
-{% prettify xml tag=pre+code %}
+```plaintext
 Outside of zones
 Inside non-error zone
 [!Inside error zone (not called)!]
@@ -259,7 +258,7 @@ Uncaught Error: 499
 Unhandled exception:
 499
 ...stack trace...
-{% endprettify %}
+```
 
 Note how removing either the zone or error zone causes
 the error to propagate further.
@@ -277,7 +276,7 @@ Similarly, errors can't cross _out_ of error zones.
 Consider this example:
 
 <!-- run_zoned3.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 var completer = new Completer();
 var future = completer.future.then((x) => x + 1);
 var zoneFuture;
@@ -287,7 +286,7 @@ runZonedGuarded(() {
 
 zoneFuture.catchError((e) { print('Never reached'); });
 completer.complete(499);
-{% endprettify %}
+```
 
 Even though the future chain ends in a `catchError()`,
 the asynchronous error can't leave the error zone.
@@ -301,10 +300,10 @@ with a value, nor with an error.
 The rule for zones and streams
 is simpler than for futures:
 
-{{site.alert.note}}
-  Transformations and other callbacks execute in the zone
-  where the stream is listened to.
-{{site.alert.end}}
+:::note
+Transformations and other callbacks execute in the zone
+where the stream is listened to.
+:::
 
 This rule follows from the guideline that
 streams should have no side effect until listened to.
@@ -317,21 +316,21 @@ The following example sets up a stream with a callback,
 and then executes that stream in a new zone with `runZonedGuarded()`:
 
 <!-- stream.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 var stream = new File('stream.dart').openRead()
     .map((x) => throw 'Callback throws');
 
 runZonedGuarded(() { stream.listen(print); },
          (e) { print('Caught error: $e'); });
-{% endprettify %}
+```
 
 The error handler in `runZonedGuarded()`
 catches the error the callback throws.
 Here's the output:
 
-{% prettify xml tag=pre+code %}
+```plaintext
 Caught error: Callback throws
-{% endprettify %}
+```
 
 As the output shows,
 the callback is associated with the listening zone,
@@ -353,11 +352,11 @@ Use the `zoneValues` argument to `runZoned()` to
 store values in the newly created zone:
 
 <!-- value1.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 runZoned(() {
   print(Zone.current[#key]);
 }, zoneValues: { #key: 499 });
-{% endprettify %}
+```
 
 To read zone-local values, use the zone's index operator and the value's key:
 <code>[<em>key</em>]</code>.
@@ -372,21 +371,21 @@ For example, the following code
 adds an item to a zone-local list:
 
 <!-- value1_1.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 runZoned(() {
   Zone.current[#key].add(499);
   print(Zone.current[#key]); // [499]
 }, zoneValues: { #key: [] });
-{% endprettify %}
+```
 
 A zone inherits zone-local values from its parent zone,
 so adding nested zones doesn't accidentally drop existing values.
 Nested zones can, however, shadow parent values.
 
-{{site.alert.important}}
-  Try to use unique objects for keys,
-  so they're less likely to conflict with other libraries.
-{{site.alert.end}}
+:::important
+Try to use unique objects for keys,
+so they're less likely to conflict with other libraries.
+:::
 
 
 ### Example: Using a zone-local value for debug logs
@@ -396,7 +395,7 @@ and want to print all of their lines.
 The program might look like this:
 
 <!-- value2.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -416,7 +415,7 @@ main() {
                  (file) => splitLines(file)
                      .then((lines) { lines.forEach(print); }));
 }
-{% endprettify %}
+```
 
 This program works,
 but let's assume that you now want to know
@@ -426,7 +425,7 @@ With zone-local values you can add the filename to the returned string
 (new lines are highlighted):
 
 <!-- value3.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -450,7 +449,7 @@ main() {
                  (file) => splitLines(file)
                      .then((lines) { lines.forEach(print); }));
 }
-{% endprettify %}
+```
 
 Note that the new code doesn't modify the function signatures or
 pass the filename from `splitLines()` to `splitLinesStream()`.
@@ -464,7 +463,7 @@ that works in asynchronous contexts.
 Use the `zoneSpecification` argument to `runZoned()`
 to override functionality that is managed by zones.
 The argument's value is a
-[ZoneSpecification]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html) object,
+[ZoneSpecification]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneSpecification-class.html) object,
 with which you can override any of the following functionality:
 
 * Forking child zones
@@ -480,7 +479,7 @@ As a simple example of overriding functionality,
 here is a way to silence all prints inside a zone:
 
 <!-- specification1.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:async';
 
 main() {
@@ -491,7 +490,7 @@ main() {
       // Ignore message.
     }));
 }
-{% endprettify %}
+```
 
 Inside the forked zone,
 the `print()` function is overridden by the specified print interceptor,
@@ -555,7 +554,7 @@ for another interceptable method, `scheduleMicrotask()`:
 Here is an example that shows how to delegate to the parent zone:
 
 <!-- specification2.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:async';
 
 main() {
@@ -572,7 +571,7 @@ main() {
       parent.scheduleMicrotask(zone, task);
     }));
 }
-{% endprettify %}
+```
 
 
 ### Example: Executing code when entering and leaving a zone
@@ -586,14 +585,13 @@ and stopping the timer whenever the zone is left.
 Providing `run*` parameters to the ZoneSpecification
 lets you specify the code that the zone executes.
 
-{{site.alert.info}}
-  **API note:**
-  In the future, zones might provide a simpler alternative
-  for the common case of sandwiching zone code:
-  an onEnter/onLeave API.
-  See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
-  for details.
-{{site.alert.end}}
+:::note API note
+In the future, zones might provide a simpler alternative
+for the common case of sandwiching zone code:
+an onEnter/onLeave API.
+See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
+for details.
+:::
 
 The `run*` parameters—`run`, `runUnary`, and `runBinary`—specify
 code to execute every time the zone is asked to execute code.
@@ -605,7 +603,7 @@ that executes just after calling `runZoned()`.
 Here's an example of profiling code using `run*`:
 
 <!-- profile_run.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 final total = new Stopwatch();
 final user = new Stopwatch();
 
@@ -636,7 +634,7 @@ runZoned(() {
       print(user.elapsedMilliseconds);
     });
 }, zoneSpecification: specification);
-{% endprettify %}
+```
 
 In this code,
 each `run*` override just starts the user timer,
@@ -660,7 +658,7 @@ save a stack trace
 before the code disappears into an asynchronous context.
 
 <!-- debug.dart -->
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:async';
 
 get currentStackTrace {
@@ -708,7 +706,7 @@ main() {
     foo();
   }, zoneSpecification: specification);
 }
-{% endprettify %}
+```
 
 Go ahead and run the example.
 You'll see a "last stack" trace (`lastStackTrace`)
@@ -761,11 +759,11 @@ that you can use for functionality such as profiling.
 
 Zone-related API documentation
 : Read the docs for
-  [runZoned()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),
-  [runZonedGuarded()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZonedGuarded.html),
-  [Zone]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Zone-class.html),
-  [ZoneDelegate]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneDelegate-class.html), and
-  [ZoneSpecification]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html).
+  [runZoned()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZoned.html),
+  [runZonedGuarded()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZonedGuarded.html),
+  [Zone]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Zone-class.html),
+  [ZoneDelegate]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneDelegate-class.html), and
+  [ZoneSpecification]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneSpecification-class.html).
 
 stack_trace
 : With the stack_trace library's

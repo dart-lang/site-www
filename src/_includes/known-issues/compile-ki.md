@@ -14,7 +14,7 @@ No support for `dart:mirrors` and `dart:developer`
 [issue 28617]: https://github.com/dart-lang/sdk/issues/28617
 [issue 39106]: https://github.com/dart-lang/sdk/issues/39106
 
-{{site.alert.tip}}
-  If one of these issues is important to you,
-  let the Dart team know by adding a "thumbs up" to the issue.
-{{site.alert.end}}
+:::tip
+If one of these issues is important to you,
+let the Dart team know by adding a "thumbs up" to the issue.
+:::

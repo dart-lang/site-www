@@ -1,6 +1,6 @@
 {:.linter-rule}
-{% if include.rule %}
-Linter rule: [{{include.rule}}](/tools/linter-rules/{{include.rule}})
+{% if rule %}
+Linter rule: [{{rule}}](/tools/linter-rules/{{rule}})
 {% else %}
-Linter rules: [{{include.rule1}}](/tools/linter-rules/{{include.rule1}}), [{{include.rule2}}](/tools/linter-rules/{{include.rule2}})
+Linter rules: [{{rule1}}](/tools/linter-rules/{{rule1}}), [{{rule2}}](/tools/linter-rules/{{rule2}})
 {% endif %}

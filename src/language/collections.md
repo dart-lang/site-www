@@ -29,11 +29,11 @@ Here's a simple Dart list:
 var list = [1, 2, 3];
 ```
 
-{{site.alert.note}}
-  Dart infers that `list` has type `List<int>`. If you try to add non-integer
-  objects to this list, the analyzer or runtime raises an error. For more
-  information, read about [type inference][].
-{{site.alert.end}}
+:::note
+Dart infers that `list` has type `List<int>`. If you try to add non-integer
+objects to this list, the analyzer or runtime raises an error. For more
+information, read about [type inference][].
+:::
 
 <a id="trailing-comma"></a>
 You can add a comma after the last item in a Dart collection literal.
@@ -89,12 +89,12 @@ Here is a simple Dart set, created using a set literal:
 var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 ```
 
-{{site.alert.note}}
-  Dart infers that `halogens` has the type `Set<String>`. If you try to add the
-  wrong type of value to the set, the analyzer or runtime raises an error. For
-  more information, read about
-  [type inference.](/language/type-system#type-inference)
-{{site.alert.end}}
+:::note
+Dart infers that `halogens` has the type `Set<String>`. If you try to add the
+wrong type of value to the set, the analyzer or runtime raises an error. For
+more information, read about
+[type inference.](/language/type-system#type-inference)
+:::
 
 To create an empty set, use `{}` preceded by a type argument,
 or assign `{}` to a variable of type `Set`:
@@ -106,12 +106,12 @@ var names = <String>{};
 // var names = {}; // Creates a map, not a set.
 ```
 
-{{site.alert.info}}
-  **Set or map?** The syntax for map literals is similar to that for set
-  literals. Because map literals came first, `{}` defaults to the `Map` type. If
-  you forget the type annotation on `{}` or the variable it's assigned to, then
-  Dart creates an object of type `Map<dynamic, dynamic>`.
-{{site.alert.end}}
+:::note Set or map?
+The syntax for map literals is similar to that for set
+literals. Because map literals came first, `{}` defaults to the `Map` type. If
+you forget the type annotation on `{}` or the variable it's assigned to, then
+Dart creates an object of type `Map<dynamic, dynamic>`.
+:::
 
 Add items to an existing set using the `add()` or `addAll()` methods:
 
@@ -175,12 +175,12 @@ var nobleGases = {
 };
 ```
 
-{{site.alert.note}}
-  Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
-  has the type `Map<int, String>`. If you try to add the wrong type of value to
-  either map, the analyzer or runtime raises an error. For more information,
-  read about [type inference][].
-{{site.alert.end}}
+:::note
+Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
+has the type `Map<int, String>`. If you try to add the wrong type of value to
+either map, the analyzer or runtime raises an error. For more information,
+read about [type inference][].
+:::
 
 You can create the same objects using a Map constructor:
 
@@ -197,11 +197,11 @@ nobleGases[10] = 'neon';
 nobleGases[18] = 'argon';
 ```
 
-{{site.alert.note}}
-  If you come from a language like C# or Java, you might expect to see `new Map()` 
-  instead of just `Map()`. In Dart, the `new` keyword is optional.
-  For details, see [Using constructors][].
-{{site.alert.end}}
+:::note
+If you come from a language like C# or Java, you might expect to see `new Map()` 
+instead of just `Map()`. In Dart, the `new` keyword is optional.
+For details, see [Using constructors][].
+:::
 
 Add a new key-value pair to an existing map
 using the subscript assignment operator (`[]=`):
@@ -321,11 +321,11 @@ For more details and examples of using collection `if` and `for`, see the
 
 [collections]: /guides/libraries/library-tour#collections
 [type inference]: /language/type-system#type-inference
-[`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[`Map`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[`List`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
+[`Map`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
 [Using constructors]: /language/classes#using-constructors
 [collections proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
 [spread proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/spread-collections/feature-specification.md
 [generics]: /language/generics
-[`Set`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[`Set`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
 [if-case]: /language/branches#if-case

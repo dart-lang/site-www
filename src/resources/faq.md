@@ -71,7 +71,7 @@ literally on my first day of writing Dart code, I was productive in it."
 ### Q. Does Dart have reflection capabilities?
 
 For servers and command-line scripts, we have reflection support from the
-[mirrors API.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors)
+[mirrors API.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-mirrors)
 There is no support for mirrors when using Dart to write web or
 Flutter apps ([more info][Flutter no mirrors]).
 
@@ -180,7 +180,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /language
 [libs]: /guides/libraries/library-tour
-[JSON]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
+[JSON]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
 [Dart on the Server]: /server
 [Dart tools]: /tools/

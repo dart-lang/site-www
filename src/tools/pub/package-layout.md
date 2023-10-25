@@ -8,18 +8,18 @@ we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
 
-{{site.alert.flutter-note}}
-  Flutter apps can use custom directories for their assets.
-  For details, see
-  [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
-  on the [Flutter website.]({{site.flutter-docs}})
-{{site.alert.end}}
+:::flutter-note
+Flutter apps can use custom directories for their assets.
+For details, see
+[Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
+on the [Flutter website.]({{site.flutter-docs}})
+:::
 
 Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
 might look like:
 
-```nocode
+```plaintext
 enchilada/
   .dart_tool/ *
   pubspec.yaml
@@ -72,7 +72,7 @@ enchilada/
 
 ## The pubspec
 
-```nocode
+```plaintext
 enchilada/
   pubspec.yaml
   pubspec.lock
@@ -94,7 +94,7 @@ For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
-```nocode
+```plaintext
 enchilada/
   LICENSE
 ```
@@ -106,7 +106,7 @@ so that others can reuse your work.
 
 ## README.md
 
-```nocode
+```plaintext
 enchilada/
   README.md
 ```
@@ -122,7 +122,7 @@ For guidance on how to write a great README, see
 
 ## CHANGELOG.md
 
-```nocode
+```plaintext
 enchilada/
   CHANGELOG.md
 ```
@@ -180,11 +180,11 @@ Two directories in your package are public to other packages: `lib` and
 `bin`. You place [public libraries](#public-libraries) in `lib` and
 [public tools](#public-tools) in `bin`.
 
-### Public libraries {#public-libraries}
+### Public libraries {:#public-libraries}
 
 The following directory structure shows the `lib` portion of enchilada:
 
-```nocode
+```plaintext
 enchilada/
   lib/
     enchilada.dart
@@ -212,7 +212,7 @@ If you want to organize your public libraries, you can also create
 subdirectories inside `lib`. If you do that, users will specify that path
 when they import it. Say you have the following file hierarchy:
 
-```nocode
+```plaintext
 enchilada/
   lib/
     some/
@@ -233,18 +233,17 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-{{site.alert.info}}
-  **Tip for web apps:**
-  For the best performance when developing web apps,
-  put [implementation files](#implementation-files) under `/lib/src`,
-  instead of elsewhere under `/lib`.
-  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{{site.alert.end}}
+:::note Tip for web apps
+For the best performance when developing web apps,
+put [implementation files](#implementation-files) under `/lib/src`,
+instead of elsewhere under `/lib`.
+Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+:::
 
 For more information on packages, see
 [Creating packages](/guides/libraries/create-packages).
 
-### Public tools {#public-tools}
+### Public tools {:#public-tools}
 
 Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use
@@ -266,7 +265,7 @@ scripts in `bin`.
 
 ## Public assets
 
-```nocode
+```plaintext
 enchilada/
   lib/
     guacamole.css
@@ -283,7 +282,7 @@ in there and organize it with subdirectories however you like.
 
 ## Implementation files
 
-```nocode
+```plaintext
 enchilada/
   lib/
     src/
@@ -330,7 +329,7 @@ your package in its [pubspec](/tools/pub/pubspec).
 
 ## Web files
 
-```nocode
+```plaintext
 enchilada/
   web/
     index.html
@@ -351,7 +350,7 @@ such as images.
 
 ## Command-line apps
 
-```nocode
+```plaintext
 enchilada/
   bin/
     enchilada
@@ -368,7 +367,7 @@ using
 
 ## Tests and benchmarks
 
-```nocode
+```plaintext
 enchilada/
   test/
     enchilada_test.dart
@@ -381,7 +380,7 @@ like) and have `_test` at the end of their file names.
 
 Typically, these use the [test]({{site.pub-pkg}}/test) package.
 
-```nocode
+```plaintext
 enchilada/
   integration_test/
     app_test.dart
@@ -396,7 +395,7 @@ integration tests from their unit tests, but note that by default `dart test`
 will not run these tests. You will have to explicitly run them with
 `dart test integration_test`.
 
-```nocode
+```plaintext
 enchilada/
   benchmark/
     make_lunch.dart
@@ -408,7 +407,7 @@ other empirical metrics).
 
 ## Documentation
 
-```nocode
+```plaintext
 enchilada/
   doc/
     api/
@@ -429,7 +428,7 @@ that you author.  Use whatever markup format that you prefer.
 
 ## Examples
 
-```nocode
+```plaintext
 enchilada/
   example/
     main.dart
@@ -471,7 +470,7 @@ https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 
 ## Internal tools and scripts
 
-```nocode
+```plaintext
 enchilada/
   tool/
     generate_docs.dart
@@ -486,10 +485,10 @@ If you have any of these, place them in a directory called `tool`.
 
 ## Project-specific caching for tools
 
-{{site.alert.info}}
-  Do not check the `.dart_tool/` directory into source control.
-  Instead, keep `.dart_tool/` in `.gitignore`.
-{{site.alert.end}}
+:::note
+Do not check the `.dart_tool/` directory into source control.
+Instead, keep `.dart_tool/` in `.gitignore`.
+:::
 
 The `.dart_tool/` directory is created when you run `dart pub get`
 and might be deleted at any time. Various tools use this directory
@@ -524,15 +523,15 @@ framework for writing code generation steps.
 When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.
 
-{{site.alert.warning}}
-  When developing a tool that wants to cache files in `.dart_tool/`,
-  ensure the following:
+:::warning
+When developing a tool that wants to cache files in `.dart_tool/`,
+ensure the following:
   
-  * You are using a subdirectory named after a package you own
-    (`.dart_tool/<my_tool_package_name>/`)
-  * Your files don't belong under source control, 
-    as `.dart_tool/` is generally listed in `.gitignore`
-{{site.alert.end}}
+* You are using a subdirectory named after a package you own
+  (`.dart_tool/<my_tool_package_name>/`)
+* Your files don't belong under source control, 
+  as `.dart_tool/` is generally listed in `.gitignore`
+:::
 
 
 [Markdown]: {{site.pub-pkg}}/markdown

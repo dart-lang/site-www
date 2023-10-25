@@ -19,7 +19,7 @@ To use a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Musician extends Performer [!with Musical!] {
   // ···
 }
@@ -30,7 +30,7 @@ class Maestro extends Person [!with Musical, Aggressive, Demented!] {
     canConduct = true;
   }
 }
-{% endprettify %}
+```
 
 To define a mixin, use the `mixin` declaration. 
 In the rare case where you need to define both a mixin _and_ a class, you can use
@@ -87,9 +87,9 @@ Because `SingerDancer` extends `Musician`,
 
 ## `class`, `mixin`, or `mixin class`?
 
-{{site.alert.version-note}}
-  The `mixin class` declaration requires a [language version][] of at least 3.0.
-{{site.alert.end}}
+:::version-note
+The `mixin class` declaration requires a [language version][] of at least 3.0.
+:::
 
 A `mixin` declaration defines a mixin. A `class` declaration defines a [class][].
 A `mixin class` declaration defines a class that is usable as both a regular class

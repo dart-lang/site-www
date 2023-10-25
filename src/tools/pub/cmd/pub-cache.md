@@ -5,7 +5,7 @@ description: Use dart pub cache to manage your system cache.
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub cache add <package> [--version <constraint>] [--all]
 $ dart pub cache repair
 $ dart pub cache clean
@@ -18,7 +18,7 @@ The `dart pub cache` command works with the
 
 You can manually add a package to your system cache:
 
-```terminal
+```console
 $ dart pub cache add <package>
 ```
 
@@ -26,7 +26,7 @@ $ dart pub cache add <package>
 
 You can perform a clean reinstallation of all packages in your system cache:
 
-```terminal
+```console
 $ dart pub cache repair
 ```
 
@@ -42,15 +42,15 @@ and you might accidentally edit one of those files.
 You can empty the entire system cache
 to reclaim extra disk space or remove problematic packages:
 
-```terminal
+```console
 $ dart pub cache clean
 ```
 
-{{site.alert.version-note}}
-  The `clean` subcommand was introduced in Dart 2.14.
-  To clear your system cache with an older SDK,
-  you can manually delete the [`PUB_CACHE`][] folder.
-{{site.alert.end}}
+:::version-note
+The `clean` subcommand was introduced in Dart 2.14.
+To clear your system cache with an older SDK,
+you can manually delete the [`PUB_CACHE`][] folder.
+:::
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
@@ -70,13 +70,11 @@ Use with `dart pub cache add`
 to install the version best matching the specified constraint. 
 For example:
 
-```terminal
+```console
 $ dart pub cache add http --version "0.12.2"
 ```
 
 If `--version` is omitted, pub installs the best of all known versions.
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+
+{% render 'pub-problems.md' %}

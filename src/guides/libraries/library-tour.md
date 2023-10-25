@@ -12,25 +12,25 @@ Whenever you need more details about a class,
 consult the [Dart API reference.][Dart API]
 
 
-[dart:core](#dartcore---numbers-collections-strings-and-more)
+[dart:core](#dart-core)
 : Built-in types, collections, and other core functionality.
   This library is automatically imported into every Dart program.
 
-[dart:async](#dartasync---asynchronous-programming)
+[dart:async](#dart-async)
 : Support for asynchronous programming, with classes such as Future and Stream.
 
-[dart:math](#dartmath---math-and-random)
+[dart:math](#dart-math)
 : Mathematical constants and functions, plus a random number generator.
 
-[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
+[dart:convert](#dart-convert)
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
-[dart:html](#darthtml)
-: DOM and other APIs for browser-based apps.
-
-[dart:io](#dartio)
+[dart:io](#dart-io)
 : I/O for programs that can use the Dart VM,
   including Flutter apps, servers, and command-line scripts.
+
+[dart:html](#dart-html)
+: DOM and other APIs for browser-based apps.
 
 This page is just an overview;
 it covers only a few dart:* libraries
@@ -43,13 +43,13 @@ You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter]
 
-{{site.alert.info}}
-  **DartPad tip:** You can play with the code in this page by copying it into a
-  [DartPad.]({{site.dartpad}})
-{{site.alert.end}}
+:::note DartPad tip
+You can play with the code on this page by copying it into a
+[DartPad.]({{site.dartpad}})
+:::
 
 
-## dart:core - numbers, collections, strings, and more
+## dart:core - numbers, collections, strings, and more {:#dart-core}
 
 The dart:core library ([API reference][dart:core])
 provides a small but critical set of built-in functionality.
@@ -128,7 +128,7 @@ assert(double.parse('1.2e+2') == 120.0);
 
 For more information, see the API documentation for
 [int,][int] [double,][double] and [num.][num] Also see
-the [dart:math section](#dartmath---math-and-random).
+the [dart:math section](#dart-math).
 
 
 ### Strings and regular expressions
@@ -199,17 +199,17 @@ var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
-{{site.alert.note}}
-  In many cases, you want to work with
-  Unicode grapheme clusters
-  as opposed to pure code units.
-  These are characters as they are perceived
-  by the user (for example, "🇬🇧" is one
-  user-perceived character but several
-  UTF-16 code units).
-  For this, the Dart team provides the
-  [`characters` package.]({{site.pub-pkg}}/characters)
-{{site.alert.end}}
+:::note
+In many cases, you want to work with
+Unicode grapheme clusters
+as opposed to pure code units.
+These are characters as they are perceived
+by the user (for example, "🇬🇧" is one
+user-perceived character but several
+UTF-16 code units).
+For this, the Dart team provides the
+[`characters` package.]({{site.pub-pkg}}/characters)
+:::
 
 #### Converting to uppercase or lowercase
 
@@ -225,10 +225,10 @@ assert('web apps'.toUpperCase() == 'WEB APPS');
 assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
-{{site.alert.note}}
-  These methods don't work for every language. For example, the Turkish
-  alphabet's dotless *I* is converted incorrectly.
-{{site.alert.end}}
+:::note
+These methods don't work for every language. For example, the Turkish
+alphabet's dotless *I* is converted incorrectly.
+:::
 
 
 #### Trimming and empty strings
@@ -337,10 +337,10 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
-{{site.alert.tip}}
-  To practice using APIs that are available to both lists and sets,
-  follow the [Iterable collections codelab](/codelabs/iterables).
-{{site.alert.end}}
+:::tip
+To practice using APIs that are available to both lists and sets,
+follow the [Iterable collections codelab](/codelabs/iterables).
+:::
 
 #### Lists
 
@@ -430,22 +430,22 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
-{{site.alert.note}}
-  In many cases, you don't
-  need to explicitly specify generic
-  types, because Dart will
-  [infer](/language/type-system#type-inference)
-  them for you.
-  A list like `['Dash', 'Dart']` is understood
-  to be a `List<String>` (read: list of strings).
+:::note
+In many cases, you don't
+need to explicitly specify generic
+types, because Dart will
+[infer](/language/type-system#type-inference)
+them for you.
+A list like `['Dash', 'Dart']` is understood
+to be a `List<String>` (read: list of strings).
 
-  But there are times when you _should_ specify
-  the generic type. Like, for example, when Dart doesn't have
-  anything to infer from: `[]` could be a list of any
-  combination of things.
-  That's often not what you want, so you write `<String>[]`
-  or `<Person>[]` or something similar.
-{{site.alert.end}}
+But there are times when you _should_ specify
+the generic type. Like, for example, when Dart doesn't have
+anything to infer from: `[]` could be a list of any
+combination of things.
+That's often not what you want, so you write `<String>[]`
+or `<Person>[]` or something similar.
+:::
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -610,10 +610,10 @@ List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
-{{site.alert.note}}
-  Although Map doesn't implement Iterable, you can get Iterables from it using
-  the Map `keys` and `values` properties.
-{{site.alert.end}}
+:::note
+Although Map doesn't implement Iterable, you can get Iterables from it using
+the Map `keys` and `values` properties.
+:::
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
@@ -658,10 +658,10 @@ var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
 ```
 
-{{site.alert.note}}
-  The object returned by `map()` is an Iterable that's *lazily evaluated*: your
-  function isn't called until you ask for an item from the returned object.
-{{site.alert.end}}
+:::note
+The object returned by `map()` is an Iterable that's *lazily evaluated*: your
+function isn't called until you ask for an item from the returned object.
+:::
 
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
@@ -806,8 +806,8 @@ assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 ```
 
-[`Uri.http`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.http.html
-[`Uri.https`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.https.html
+[`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
+[`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
 
 ### Dates and times
 
@@ -839,9 +839,12 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 // Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
-{{site.alert.warning}}
-  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
-{{site.alert.end}}
+
+:::warning
+`DateTime` operations might give unexpected results related to 
+Daylight Savings Time and other non-standard time adjustments.  
+:::
+
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
@@ -878,11 +881,11 @@ var duration = y2001.difference(y2k);
 assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
-{{site.alert.warning}}
-  Using a Duration to shift a DateTime by days can be problematic, due to clock
-  shifts (to daylight saving time, for example). Use UTC dates if you must shift
-  days.
-{{site.alert.end}}
+:::warning
+Using a Duration to shift a DateTime by days can be problematic, due to
+clock shifts (to daylight saving time, for example). 
+Use UTC dates if you must shift days.
+:::
 
 For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
@@ -926,20 +929,20 @@ also want to override the `==` operator. Objects that are equal (via
 `==`) must have identical hash codes. A hash code doesn't have to be
 unique, but it should be well distributed.
 
-{{site.alert.tip}}
-  To consistently and easily implement the `hashCode` getter,
-  consider using the static hashing methods provided by the `Object` class.
+:::tip
+To consistently and easily implement the `hashCode` getter,
+consider using the static hashing methods provided by the `Object` class.
 
-  To generate a single hash code for multiple properties of an object,
-  you can use [`Object.hash()`][].
-  To generate a hash code for a collection,
-  you can use either [`Object.hashAll()`][] (if element order matters)
-  or [`Object.hashAllUnordered()`][].
-{{site.alert.end}}
+To generate a single hash code for multiple properties of an object,
+you can use [`Object.hash()`][].
+To generate a hash code for a collection,
+you can use either [`Object.hashAll()`][] (if element order matters)
+or [`Object.hashAllUnordered()`][].
+:::
 
-[`Object.hash()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
-[`Object.hashAll()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
-[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
+[`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
 Note: There's disagreement over whether to include identical() in the ==
@@ -1092,11 +1095,11 @@ When a local variable is Finalizable,
 it won't be garbage collected
 until the code block where it is declared has exited.
 
-{{site.alert.version-note}}
-  Support for weak references and finalizers was added in Dart 2.17.
-{{site.alert.end}}
+:::version-note
+Support for weak references and finalizers was added in Dart 2.17.
+:::
 
-## dart:async - asynchronous programming
+## dart:async - asynchronous programming {:#dart-async}
 
 Asynchronous programming often uses callback functions, but Dart
 provides alternatives: [Future][] and [Stream][] objects. A
@@ -1105,12 +1108,13 @@ future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
 dart:async library ([API reference][dart:async]).
 
-{{site.alert.note}}
-  You don't always need to use the Future or Stream APIs directly. The Dart
-  language supports asynchronous coding using keywords such as `async` and
-  `await`. See the [asynchronous programming codelab](/codelabs/async-await) for
-  details.
-{{site.alert.end}}
+:::note
+You don't always need to use the Future or Stream APIs directly. 
+The Dart language supports asynchronous coding using
+keywords such as `async` and `await`. 
+Check out the [asynchronous programming codelab](/codelabs/async-await)
+for details.
+:::
 
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
@@ -1120,10 +1124,10 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{{site.alert.tip}}
+:::tip
   You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
-{{site.alert.end}}
+:::
 
 ### Future
 
@@ -1179,11 +1183,11 @@ try {
 }
 ```
 
-{{site.alert.important}}
-  Async functions return Futures. If you don't want your function to return a
-  future, then use a different solution. For example, you might call an `async`
-  function from your function.
-{{site.alert.end}}
+:::important
+Async functions return Futures. If you don't want your function to return a
+future, then use a different solution. For example, you might call an `async`
+function from your function.
+:::
 
 For more information on using `await` and related Dart language features,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -1222,12 +1226,12 @@ HttpRequest.getString(url).then((String result) {
 The `then().catchError()` pattern is the asynchronous version of
 `try`-`catch`.
 
-{{site.alert.important}}
-  Be sure to invoke `catchError()` on the result of `then()`—not on the result
-  of the original Future. Otherwise, the `catchError()` can handle errors only
-  from the original Future's computation, but not from the handler registered by
-  `then()`.
-{{site.alert.end}}
+:::important
+Be sure to invoke `catchError()` on the result of `then()`—not on the result
+of the original Future. Otherwise, the `catchError()` can handle errors only
+from the original Future's computation, but not from the handler registered by
+`then()`.
+:::
 
 
 #### Chaining multiple asynchronous methods
@@ -1299,8 +1303,8 @@ or with an error if any of the provided futures fail.
 
 #### Handling errors for multiple futures
 
-You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureIterable/wait.html)
-or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
+You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureIterable/wait.html)
+or [record]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
 These extensions return a future with the resulting values of all provided
@@ -1380,14 +1384,14 @@ It uses Stream's `listen()` method
 to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)"?>
+```dart {"title": "test", "highlight": [{"target": "listen", "instances": [1]}]}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
     if (isDir) {
       final startingDir = Directory(searchPath);
-      startingDir.list().[!listen!]((entity) {
+      startingDir.list().listen((entity) {
         if (entity is File) {
           searchFile(entity, searchTerms);
         }
@@ -1397,14 +1401,14 @@ void main(List<String> arguments) {
     }
   });
 }
-{% endprettify %}
+```
 
 The equivalent code with await expressions,
 including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
@@ -1418,15 +1422,15 @@ void main(List<String> arguments) async {
     searchFile(File(searchPath), searchTerms);
   }
 }
-{% endprettify %}
+```
 
-{{site.alert.important}}
-  Before using `await for`, make sure that it makes the code clearer and that
-  you really do want to wait for all of the stream's results. For example, you
-  usually should **not** use `await for` for DOM event listeners, because the
-  DOM sends endless streams of events. If you use `await for` to register two
-  DOM event listeners in a row, then the second kind of event is never handled.
-{{site.alert.end}}
+:::important
+Before using `await for`, make sure that it makes the code clearer and that
+you really do want to wait for all of the stream's results. For example, you
+usually should **not** use `await for` for DOM event listeners, because the
+DOM sends endless streams of events. If you use `await for` to register two
+DOM event listeners in a row, then the second kind of event is never handled.
+:::
 
 For more information on using `await` and related
 Dart language features, see the
@@ -1439,13 +1443,13 @@ To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Add an event handler to a button.
 submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
-{% endprettify %}
+```
 
 In this example, the `onClick` property is a `Stream` object provided by
 the submit button.
@@ -1480,7 +1484,7 @@ This example uses two transformers. First it uses utf8.decoder to
 transform the stream of integers into a stream of strings. Then it uses
 a LineSplitter to transform the stream of strings into a stream of
 separate lines. These transformers are from the dart:convert library (see the
-[dart:convert section](#dartconvert---decoding-and-encoding-json-utf-8-and-more)).
+[dart:convert section](#dart-convert)).
 {% comment %}
   PENDING: add onDone and onError. (See "Streaming file contents".)
 {% endcomment %}
@@ -1498,7 +1502,7 @@ Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
@@ -1514,7 +1518,7 @@ Future<void> readFileAwaitFor() async {
     print(e);
   }
 }
-{% endprettify %}
+```
 
 If you use the Stream API,
 then handle errors by registering an `onError` listener.
@@ -1522,7 +1526,7 @@ Run code after the stream is closed by registering
 an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
@@ -1534,7 +1538,7 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 }, [!onError!]: (e) {
   print(e);
 });
-{% endprettify %}
+```
 
 
 ### More information
@@ -1550,7 +1554,7 @@ Also see these articles, codelabs, and tutorials:
 -   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
 
 
-## dart:math - math and random
+## dart:math - math and random {:#dart-math}
 
 The dart:math library ([API reference][dart:math])
 provides common functionality such as sine and cosine,
@@ -1583,9 +1587,9 @@ var sinOf30degrees = sin(radians);
 assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
-{{site.alert.note}}
-  These functions use radians, not degrees!
-{{site.alert.end}}
+:::note
+These functions use radians, not degrees!
+:::
 
 
 ### Maximum and minimum
@@ -1632,12 +1636,12 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
-{{site.alert.warning}}
-  The default implementation of `Random` supplies a stream of pseudorandom bits
-  that are unsuitable for cryptographic purposes.
-  To create a cryptographically secure random number generator,
-  use the [`Random.secure()`][] constructor.
-{{site.alert.end}}
+:::warning
+The default implementation of `Random` supplies a stream of pseudorandom bits
+that are unsuitable for cryptographic purposes.
+To create a cryptographically secure random number generator,
+use the [`Random.secure()`][] constructor.
+:::
 
 ### More information
 
@@ -1645,7 +1649,7 @@ Refer to the [Math API reference][dart:math] for a full list of methods.
 Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
 
-## dart:convert - decoding and encoding JSON, UTF-8, and more
+## dart:convert - decoding and encoding JSON, UTF-8, and more {:#dart-convert}
 
 The dart:convert library ([API reference][dart:convert])
 has converters for JSON and UTF-8, as well as support for creating
@@ -1741,7 +1745,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var lines = [!utf8.decoder!].bind(inputStream).transform(const LineSplitter());
 try {
   await for (final line in lines) {
@@ -1751,7 +1755,7 @@ try {
 } catch (e) {
   print(e);
 }
-{% endprettify %}
+```
 
 Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
@@ -1773,14 +1777,14 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
 
-## dart:html - browser-based apps {#darthtml}
+## dart:io - I/O for servers and command-line apps {:#dart-io}
 
-{% include_relative _dart-html-tour.md %}
+{% render './_dart-io-tour.md' %}
 
 
-## dart:io - I/O for servers and command-line apps {#dartio}
+## dart:html - browser-based apps {:#dart-html}
 
-{% include_relative _dart-io-tour.md %}
+{% render './_dart-html-tour.md' %}
 
 
 ## Summary
@@ -1804,57 +1808,57 @@ sampling of what you can install using pub.
 To learn more about the Dart language, see the
 [language tour][].
 
-[ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
+[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
 [Assert]: /language/error-handling#assert
-[Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
-[Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
-[DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
-[Duration]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html
-[Exception]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Expando]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Expando-class.html
-[Finalizable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
-[Finalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html
-[Future.wait()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/wait.html
-[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[Iterator]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[Comparable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Comparable-class.html
+[Dart API]: {{site.dart-api}}/{{site.sdkInfo.channel}}
+[DateTime]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/DateTime-class.html
+[Duration]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Duration-class.html
+[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
+[Expando]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Expando-class.html
+[Finalizable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Finalizable-class.html
+[Finalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Finalizer-class.html
+[Future.wait()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/wait.html
+[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[IndexedDB]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[Iterator]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterator-class.html
 [JSON]: https://www.json.org/
-[List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[Map]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
-[Match]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
-[NativeFinalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
-[NoSuchMethodError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
-[Object]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[`ParallelWaitError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ParallelWaitError-class.html
-[Pattern]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
-[Random]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
-[RegExp]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
-[Set]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
-[Stream]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[StringBuffer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringBuffer-class.html
-[String]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
-[Symbol]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[List]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
+[Map]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
+[Match]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Match-class.html
+[NativeFinalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
+[NoSuchMethodError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError-class.html
+[Object]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
+[`ParallelWaitError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ParallelWaitError-class.html
+[Pattern]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Pattern-class.html
+[Random]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random-class.html
+[RegExp]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/RegExp-class.html
+[Set]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
+[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[StringBuffer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StringBuffer-class.html
+[String]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String-class.html
+[Symbol]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
-[Uri]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[WeakReference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/WeakReference-class.html
-[`Random.secure()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
-[dart:async]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
-[dart:collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
-[dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[Uri]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri-class.html
+[WeakReference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/WeakReference-class.html
+[`Random.secure()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random/Random.secure.html
+[dart:async]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html
+[dart:collection]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-collection/dart-collection-library.html
+[dart:convert]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
+[dart:core]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
-[dart:io tour]: #dartio
-[dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart:io tour]: #dart-io
+[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/dart-math-library.html
+[dart:typed\_data]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-typed_data/dart-typed_data-library.html
 [docs.flutter]: {{site.flutter-api}}
-[double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
-[int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
+[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
 [language tour]: /language
-[num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
-[toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
+[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
+[toStringAsFixed()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsFixed.html
+[toStringAsPrecision()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsPrecision.html
 [weak reference]: https://en.wikipedia.org/wiki/Weak_reference
-[web audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
+[web audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
 [webdev libraries]: /web/libraries

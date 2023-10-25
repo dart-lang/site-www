@@ -143,12 +143,12 @@ which returns a [`Type`][] object.
 print('The type of a is ${a.runtimeType}');
 ```
 
-{{site.alert.warn}}
-  Use a [type test operator][] rather than `runtimeType`
-  to test an object's type.
-  In production environments, the test `object is Type` is more stable
-  than the test `object.runtimeType == Type`.
-{{site.alert.end}}
+:::warning
+Use a [type test operator][] rather than `runtimeType`
+to test an object's type.
+In production environments, the test `object is Type` is more stable
+than the test `object.runtimeType == Type`.
+:::
 
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
@@ -292,11 +292,11 @@ void main() {
 
 Static variables aren't initialized until they're used.
 
-{{site.alert.note}}
-  This page follows the [style guide
-  recommendation](/effective-dart/style#identifiers)
-  of preferring `lowerCamelCase` for constant names.
-{{site.alert.end}}
+:::note
+This page follows the
+[style guide recommendation](/effective-dart/style#identifiers)
+of preferring `lowerCamelCase` for constant names.
+:::
 
 ### Static methods
 
@@ -330,21 +330,21 @@ void main() {
 }
 ```
 
-{{site.alert.note}}
-  Consider using top-level functions, instead of static methods, for
-  common or widely used utilities and functionality.
-{{site.alert.end}}
+:::note
+Consider using top-level functions, instead of static methods, for
+common or widely used utilities and functionality.
+:::
 
 You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.
 
 
-[`Object`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[`Object`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [Extension methods]: /language/extension-methods
 [Class modifiers]: /language/class-modifiers
 [constant constructors]: /language/constructors#constant-constructors
-[`Type`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
+[`Type`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Type-class.html
 [type test operator]: /language/operators#type-test-operators
 [Getters and setters]: /language/methods#getters-and-setters
 [initializer list]: /language/constructors#initializer-list

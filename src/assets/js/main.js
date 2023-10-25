@@ -166,7 +166,6 @@ function initCookieNotice() {
 
 $(function() {
   fixNav(); // Adjust heights for navigation elements
-  prettyPrint(); // Initiate Syntax Highlighting
   setupOsTabs();
   initCookieNotice();
 

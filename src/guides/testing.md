@@ -102,7 +102,7 @@ debugging Dart applications.
 ### IDE
 
 When it comes to debugging, your first line of defense is your IDE.
-Dart plugins exist for many [commonly used IDEs](/tools/#ides-and-editors).
+Dart plugins exist for many [commonly used IDEs](/tools#editors).
 
 ### Dart DevTools
 

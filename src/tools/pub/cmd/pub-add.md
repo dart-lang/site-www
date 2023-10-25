@@ -5,7 +5,7 @@ description: Use dart pub add to add a dependency.
 
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub add [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...] [options]
 ```
 
@@ -16,7 +16,7 @@ The following example command is equivalent to
 editing `pubspec.yaml` to add the `http` package,
 and then calling `dart pub get`:
 
-```terminal
+```console
 $ dart pub add http
 ```
 
@@ -31,7 +31,7 @@ under `dependencies` in your `pubspec.yaml`.
 
 You can also specify a constraint or constraint range:
 
-```terminal
+```console
 $ dart pub add foo:2.0.0
 $ dart pub add foo:'^2.0.0'
 $ dart pub add foo:'>=2.0.0 <3.0.1'
@@ -48,7 +48,7 @@ instead of as a regular dependency.
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 
-```terminal
+```console
 $ dart pub add dev:foo           # adds newest compatible stable version of foo
 $ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
 $ dart pub add foo dev:bar       # adds regular dependency foo and dev dependency bar simultaneously
@@ -56,7 +56,7 @@ $ dart pub add foo dev:bar       # adds regular dependency foo and dev dependenc
 
 _Previously the `-d, --dev` option_:
 
-```terminal
+```console
 $ dart pub add --dev foo
 ```
 
@@ -72,7 +72,7 @@ include a [version constraint](#version-constraint) or
 to use version `1.0.0` of the package,
 run the following command:
 
-```terminal
+```console
 $ dart pub add override:foo:1.0.0
 ```
 
@@ -85,26 +85,26 @@ dependency_overrides:
 
 ## Source descriptor
 
-{{site.alert.version-note}}
-  The YAML-formatted descriptor syntax was added in Dart 2.19.
-  The descriptor replaces arguments like
-  `--path`, `--sdk`, `--git-<option>`, etc.
-  Pub still supports these arguments, but
-  the recommended method is now the YAML-descriptor.
-  The descriptor and the replaced arguments can't be used together.
-{{site.alert.end}}
+:::version-note
+The YAML-formatted descriptor syntax was added in Dart 2.19.
+The descriptor replaces arguments like
+`--path`, `--sdk`, `--git-<option>`, etc.
+Pub still supports these arguments, but
+the recommended method is now the YAML-descriptor.
+The descriptor and the replaced arguments can't be used together.
+:::
 
 The YAML descriptor syntax allows you to add 
 multiple packages from different sources, and 
 apply different options and constraints to each.
 
-```nocode
+```plaintext
 $ dart pub add [options] [{dev|override}:]<package>[:descriptor] [[{dev|override}:]<package>[:descriptor] ...]
 ```
 
 The syntax reflects how dependencies are written in `pubspec.yaml`.
 
-```nocode
+```plaintext
 '<package>:{"<source>":"<descriptor>"[,"<source>":"<descriptor>"],"version":"<constraint>"}'
 ```
 
@@ -112,14 +112,14 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 
 Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
-```terminal
+```console
 $ dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
 You can specify the repository, and the branch or commit, or exact location,
 within that repository:
 
-```terminal
+```console
 $ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
@@ -129,7 +129,7 @@ Depends on the package in the specified Git repository.
 
 _Previously the `--git-url=<git_repo_url>` option_:
 
-```terminal
+```console
 $ dart pub add http --git-url=https://github.com/my/http.git
 ```
 
@@ -139,7 +139,7 @@ With `url`, depends on the specified branch or commit of a Git repo.
 
 _Previously the `--git-ref=<branch_or_commit>` option_:
 
-```terminal
+```console
 $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
 ```
 
@@ -154,7 +154,7 @@ _Previously the `--git-path=<directory_path>` option_.
 Adds a [hosted dependency][] that depends on
 the package server at the specified URL.
 
-```terminal
+```console
 $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
 ```
 
@@ -166,7 +166,7 @@ _Previously the `--hosted-url=<package_server_url>` option_.
 
 Adds a [path dependency][] on a locally stored package.
 
-```terminal
+```console
 $ dart pub add 'foo:{"path":"../foo"}'
 ```
 
@@ -178,13 +178,13 @@ _Previously the `--path=<directory_path>` option_.
 
 Adds a package from the specified SDK source.
 
-```terminal
+```console
 $ dart pub add 'foo:{"sdk":"flutter"}'
 ```
 
 _Previously the `--sdk=<sdk_name>` option_:
 
-```terminal
+```console
 $ dart pub add foo --sdk=flutter
 ```
 
@@ -193,19 +193,19 @@ $ dart pub add foo --sdk=flutter
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-{{site.alert.note}}
-  The previous `pub add` syntax for options
-  (without YAML descriptors) applies the
-  specified options to all the packages
-  included in an invocation of the command.
-  For example, `dart pub add test http --dev`
-  will add both the `test` and `http` packages
-  as dev dependencies.
-{{site.alert.end}}
+:::note
+The previous `pub add` syntax for options
+(without YAML descriptors) applies the
+specified options to all the packages
+included in an invocation of the command.
+For example, `dart pub add test http --dev`
+will add both the `test` and `http` packages
+as dev dependencies.
+:::
 
 ### `--[no-]offline`
 
-{% include tools/pub-option-no-offline.md %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `-n, --dry-run`
 
@@ -218,7 +218,5 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+
+{% render 'pub-problems.md' %}

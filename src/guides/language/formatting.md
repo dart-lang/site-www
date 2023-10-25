@@ -17,7 +17,7 @@ perform most of the drudge work of formatting your code.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 
-```terminal
+```console
 $ dart format bin lib test
 ```
 
@@ -34,5 +34,5 @@ More information:
 [dart format]: /tools/dart-format
 [Effective Dart]: /effective-dart
 [formatting guidelines]: /effective-dart/style#formatting
-[ide]: /tools/#ides-and-editors
+[ide]: /tools#editors
 [style guidelines]: /effective-dart/style

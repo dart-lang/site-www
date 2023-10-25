@@ -43,11 +43,11 @@ Install a JetBrains IDE if you don't already have one. Choose one:
 [AS-Install]: https://developer.android.com/studio/install
 [Other]: https://www.jetbrains.com/products.html
 
-{{site.alert.note}}
-  The Community Edition of IntelliJ IDEA has limited functionality.
-  For example, it doesn't directly support debugging web apps.
-  It also has very little support for JavaScript, HTML, CSS, and YAML.
-{{site.alert.end}}
+:::note
+The Community Edition of IntelliJ IDEA has limited functionality.
+For example, it doesn't directly support debugging web apps.
+It also has very little support for JavaScript, HTML, CSS, and YAML.
+:::
 
 
 ### Downloading the Dart SDK
@@ -104,12 +104,12 @@ Here's one way to configure Dart support:
     <code><em>&lt;dart installation directory></em>/dart/dart-sdk</code>.
   </p>
 
-  {{site.alert.note}}
-    The **Dart SDK** specifies the directory that
-    contains the SDK's `bin` and `lib` directories;
-    the `bin` directory contains tools such as `dart` and `dartaotruntime`.
-    The IDE ensures that the path is valid.
-  {{site.alert.end}}
+  :::note
+  The **Dart SDK** specifies the directory that
+  contains the SDK's `bin` and `lib` directories;
+  the `bin` directory contains tools such as `dart` and `dartaotruntime`.
+  The IDE ensures that the path is valid.
+  :::
 </li>
 
 <li>
@@ -122,10 +122,10 @@ Here's one way to configure Dart support:
     <li>Pick your desired template.</li>
   </ol>
 
-  {{site.alert.info}}
-    The provided templates are supplied and created
-    by [`dart create`](/tools/dart-create).
-  {{site.alert.end}}
+  :::note
+  The provided templates are supplied and created
+  by [`dart create`](/tools/dart-create).
+  :::
 </li>
 
 <li>

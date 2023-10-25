@@ -20,14 +20,14 @@ Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,
 which are fundamental to most Dart programs.
 
-<div class="card-grid no_toc_section">
+<div class="card-grid">
   <div class="card">
-    <h3><a href="/tutorials/language/streams">Asynchronous programming:
+    <h3 class="no_toc"><a href="/tutorials/language/streams">Asynchronous programming:
        streams</a></h3>
     <p>Use streams to manage sequences of data.</p>
   </div>
   <div class="card">
-    <h3><a href="/tutorials/libraries/shared-pkgs">Install shared packages</a></h3>
+    <h3 class="no_toc"><a href="/tutorials/libraries/shared-pkgs">Install shared packages</a></h3>
     <p>Organize and share code at the
        <a href="{{site.pub}}">pub.dev site.</a></p>
   </div>
@@ -36,11 +36,11 @@ which are fundamental to most Dart programs.
 
 ## Server-side Dart tutorials
 
-{% include server-tutorials.md %}
+{% render 'server-tutorials.md' %}
 
 ## Web apps
 
-{% include web-tutorials.md %}
+{% include 'web-tutorials.md' %}
 
 ## More tutorials
 

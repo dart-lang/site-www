@@ -22,7 +22,7 @@ to start up the Dart development compiler.
 To enable Dart DevTools, add the `--debug` or `--debug-extension` option
 (at the command line or through your IDE):
 
-```terminal
+```console
 $ webdev serve --debug
 ```
 
@@ -56,7 +56,7 @@ to debug a Dart web app, you need the following software:
 
 [cl-tools]: #getting-command-line-tool-packages
 
-## Getting started with Dart DevTools {#using-dart-devtools}
+## Getting started with Dart DevTools {:#using-dart-devtools}
 
 <img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
 
@@ -75,7 +75,7 @@ but you'll need to adjust the instructions to match your app.
 
 1. In your app's top directory, run `dart pub get` to get its dependencies.
 
-   ```terminal
+   ```console
    $ cd example
    $ dart pub get
    ```
@@ -83,11 +83,11 @@ but you'll need to adjust the instructions to match your app.
 1. Compile and serve the app in debug mode,
    using either your IDE or `webdev` at the command line.
 
-   {{site.alert.note}}
-     The first compilation takes the longest,
-     because the entire app must be compiled.
-     After that, refreshes are much faster.
-   {{site.alert.end}}
+   :::note
+   The first compilation takes the longest,
+   because the entire app must be compiled.
+   After that, refreshes are much faster.
+   :::
 
    If you're using webdev at the command line,
    the command to use depends on whether you want (or need) to
@@ -96,7 +96,7 @@ but you'll need to adjust the instructions to match your app.
    * If you have [Dart Debug Extension][] installed and want to use
      an existing instance of Chrome to debug:
 
-     ```terminal
+     ```console
      $ webdev serve --debug-extension
      ```
 
@@ -104,7 +104,7 @@ but you'll need to adjust the instructions to match your app.
      which launches a new instance of Chrome
      and runs the app:
 
-     ```terminal
+     ```console
      $ webdev serve --debug
      ```
 
@@ -145,11 +145,11 @@ but you'll need to adjust the instructions to match your app.
 1. Try stepping through code line-by-line using the
    **Step In**, **Step Over**, and **Step Out** buttons.
 
-   {{site.alert.note}}
-     Dart DevTools doesn't step into SDK code.
-     For example, if you press **Step In** at a call to `print()`,
-     you go to the next line, not into the SDK code that implements `print()`.
-   {{site.alert.end}}
+   :::note
+   Dart DevTools doesn't step into SDK code.
+   For example, if you press **Step In** at a call to `print()`,
+   you go to the next line, not into the SDK code that implements `print()`.
+   :::
 
 1. Change your source code and reload the Chrome window that's running the app.
    The app quickly rebuilds and reloads.
@@ -165,14 +165,14 @@ If you're using the command line instead of an IDE or Dart-enabled editor,
 then you need the [webdev tool][webdev].
 Dart DevTools is provided by the SDK.
 
-```terminal
+```console
 $ dart pub global activate webdev
 ```
 
 If your PATH environment variable is set up correctly,
 you can now use these tools at the command line:
 
-```terminal
+```console
 $ webdev --help
 A tool to develop Dart web projects.
 ...
@@ -184,11 +184,11 @@ For information on setting PATH, see the
 Whenever you update the Dart SDK,
 update the tools by activating them again:
 
-```terminal
+```console
 $ dart pub global activate webdev     # update webdev
 ```
 
-{% include tools/debug-prod-js-code.md %}
+{% render 'tools/debug-prod-js-code.md' %}
 
 ## Resources
 
@@ -202,7 +202,7 @@ To learn more, see the following:
 [Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
-[IDE]: /tools#ides-and-editors
+[IDE]: /tools#editors
 [Dart SDK]: /get-dart
 [Dart web app]: /web
 [Google Chrome]: https://www.google.com/chrome

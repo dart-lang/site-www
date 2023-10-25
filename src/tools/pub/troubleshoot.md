@@ -3,12 +3,12 @@ title: Troubleshooting pub
 description: Common gotchas you might run into when using pub.
 ---
 
-## Getting a "403" error when publishing a package {#pub-publish-403}
+## Getting a "403" error when publishing a package {:#pub-publish-403}
 
 You receive the following error when running `pub publish`:
 
 {:.console-output}
-```nocode
+```plaintext
 HTTP error 403: Forbidden
 ...
 You aren't an uploader for package '<foo>'
@@ -20,54 +20,54 @@ publish a package, but the pub client registers you with another account.
 You can reset pub's authentication process
 by deleting the pub credentials file:
 
-#### Linux {#pub-credentials-linux}
+#### Linux {:#pub-credentials-linux}
 
 If `$XDG_CONFIG_HOME` is defined:
 
-```terminal
+```console
 $ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
 ```
 
 Otherwise:
 
-```terminal
+```console
 $ rm $HOME/.config/dart/pub-credentials.json
 ```
 
-#### macOS {#pub-credentials-mac}
+#### macOS {:#pub-credentials-mac}
 
-```terminal
+```console
 $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 ```
 
-#### Windows {#pub-credentials-windows}
+#### Windows {:#pub-credentials-windows}
 
 If you're using Command Prompt:
 
-```terminal
+```cmd
 $ del "%APPDATA%\dart\pub-credentials.json"
 ```
 
 If you're using PowerShell:
 
-```terminal
+```ps
 $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 ```
 
-{{site.alert.version-note}}
-  In Dart 2.14 or earlier,
-  you should instead delete the `credentials.json` file
-  found in the [`PUB_CACHE`][] folder.
-{{site.alert.end}}
+:::version-note
+In Dart 2.14 or earlier,
+you should instead delete the `credentials.json` file
+found in the [`PUB_CACHE`][] folder.
+:::
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
-## Getting an "UnauthorizedAccess" error when publishing a package {#pub-publish-unauthorized}
+## Getting an "UnauthorizedAccess" error when publishing a package {:#pub-publish-unauthorized}
 
 You receive the following error when running `pub publish`:
 
 {:.console-output}
-```nocode
+```plaintext
 UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'.
 ```
 
@@ -75,13 +75,13 @@ You will see this message if you are not on the list of people
 authorized to publish new versions of a package.
 See [Uploaders](/tools/pub/publishing#uploaders).
 
-## Pub build fails with HttpException error {#pub-get-fails}
+## Pub build fails with HttpException error {:#pub-get-fails}
 
 You receive an HttpException error similar to the following when
 running `pub build`:
 
 {:.console-output}
-```nocode
+```plaintext
 Pub build failed, [1] IsolateSpawnException: 'HttpException: Connection closed while receiving data,
 ...
 library handler failed
@@ -102,19 +102,19 @@ You can set the proxy server environment variable as follows.
 
 On Linux/macOS:
 
-```terminal
+```console
 $ export https_proxy=hostname:port
 ```
 
 On Windows Command Prompt:
 
-```terminal
+```cmd
 $ set https_proxy=hostname:port
 ```
 
 On Windows PowerShell:
 
-```terminal
+```ps
 $ $Env:https_proxy="hostname:port"
 ```
 
@@ -122,19 +122,19 @@ If the proxy requires credentials, you can set them as follows.
 
 On Linux/macOS:
 
-```terminal
+```console
 $ export https_proxy=username:password@hostname:port
 ```
 
 On Windows Command Prompt:
 
-```terminal
+```cmd
 $ set https_proxy=username:password@hostname:port
 ```
 
 On Windows PowerShell:
 
-```terminal
+```ps
 $ $Env:https_proxy="username:password@hostname:port"
 ```
 
@@ -159,18 +159,18 @@ Try this workaround, which uses the command line to complete sign-in:
    as the one where `dart pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
-   ```terminal
+   ```console
    $ curl 'http://localhost:<port>?code=...'
    ```
 
-## Getting a socket error trying to find a package {#pub-get-socket-error}
+## Getting a socket error trying to find a package {:#pub-get-socket-error}
 
 The following error might occur if
 you have no internet access, your ISP is blocking `pub.dev`,
 or security software is blocking internet access from `dart`.
 
 {:.console-output}
-```nocode
+```plaintext
 Got socket error trying to find package ... at https://pub.dev.
 pub get failed (server unavailable) -- attempting retry 1 in 1 second...
 ```

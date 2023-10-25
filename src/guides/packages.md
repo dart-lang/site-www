@@ -58,7 +58,7 @@ To update the `pubspec.yaml` file, without manual editing,
 you can run `dart pub add` command.
 The following example adds a dependency on `vector_math`.
 
-```terminal
+```console
 $ dart pub add vector_math
 Resolving dependencies... 
 + vector_math 2.1.3
@@ -75,7 +75,7 @@ and the documentation for the packages that you want to use.
 Once you have a pubspec, you can run [`dart pub get`][get] from the top 
 directory of your application:
 
-```terminal
+```console
 $ cd <path-to-my_app>
 $ dart pub get
 ```
@@ -116,7 +116,7 @@ your app.
 You can also use this style to import libraries from within your own package.
 Let's say that the `transmogrify` package is laid out as follows:
 
-```nocode
+```plaintext
 transmogrify/
   lib/
     transmogrify.dart
@@ -156,7 +156,7 @@ uses the same versions of code.
 When you're ready to upgrade your dependencies to the latest versions,
 use the [`dart pub upgrade`][upgrade] command:
 
-```terminal
+```console
 $ dart pub upgrade
 ```
 
@@ -165,7 +165,7 @@ using the newest available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-```terminal
+```console
 $ dart pub upgrade transmogrify
 ```
 
@@ -202,7 +202,7 @@ the pub package manager.
 
 The `dart pub` tool provides the following subcommands:
 
-{% include pub-subcommands.md %}
+{% render 'pub-subcommands.md' %}
 
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -212,7 +212,7 @@ see the [pub tool documentation](/tools/pub/cmd).
 [Troubleshooting pub](/tools/pub/troubleshoot) gives solutions to problems that
 you might encounter when using pub.
 
-[Dart-savvy IDEs]: /tools#ides-and-editors
+[Dart-savvy IDEs]: /tools#editors
 [get]: /tools/pub/cmd/pub-get
 [upgrade]: /tools/pub/cmd/pub-upgrade
 [outdated]: /tools/pub/cmd/pub-outdated

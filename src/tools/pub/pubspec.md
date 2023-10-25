@@ -96,11 +96,11 @@ A pubspec can have the following fields:
 
 Pub ignores all other fields.
 
-{{site.alert.flutter-note}}
-  Pubspecs for [Flutter apps]({{site.flutter}}) can have
-  [additional fields]({{site.flutter-docs}}/development/tools/pubspec)
-  for configuring the environment and managing assets.
-{{site.alert.end}}
+:::flutter-note
+Pubspecs for [Flutter apps]({{site.flutter}}) can have
+[additional fields]({{site.flutter-docs}}/development/tools/pubspec)
+for configuring the environment and managing assets.
+:::
 
 If you add a custom field, give it a unique name
 that won't clash with future pubspec fields.
@@ -240,7 +240,7 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-```nocode
+```plaintext
 <name-of-executable>: <Dart-script-from-bin>
 ```
 
@@ -294,14 +294,14 @@ platforms:
   macos:
 ```
 
-{{site.alert.flutter-note}}
-  Flutter plugins use [plugin declarations][]
-  instead of this field.
-{{site.alert.end}}
+:::flutter-note
+Flutter plugins use [plugin declarations][]
+instead of this field.
+:::
 
-{{site.alert.version-note}}
-  Support for the `platforms` entry was added in Dart 2.16.
-{{site.alert.end}}
+:::version-note
+Support for the `platforms` entry was added in Dart 2.16.
+:::
 
 [publish a package]: /tools/pub/publishing
 [plugin declarations]: {{site.flutter-docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
@@ -368,18 +368,18 @@ false_secrets:
 Starting a `gitignore` pattern with slash (`/`) ensures that
 the pattern is considered relative to the package's root directory.
 
-{{site.alert.warn}}
-  **Don't rely on leak detection.**
-  It uses a limited set of patterns
-  to detect common mistakes.
-  You're responsible for managing your credentials,
-  preventing accidental leaks, and
-  revoking credentials that are accidentally leaked.
-{{site.alert.end}}
+:::warning
+**Don't rely on leak detection.**
+It uses a limited set of patterns
+to detect common mistakes.
+You're responsible for managing your credentials,
+preventing accidental leaks, and
+revoking credentials that are accidentally leaked.
+:::
 
-{{site.alert.version-note}}
-  Dart 2.15 added support for the `false_secrets` field.
-{{site.alert.end}}
+:::version-note
+Dart 2.15 added support for the `false_secrets` field.
+:::
 
 ### Screenshots
 
@@ -458,12 +458,12 @@ and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies.
 
-{{site.alert.version-note}}
-  For a package to use a feature introduced after 2.0,
-  its pubspec must have a lower constraint that's at least
-  the version when the feature was introduced.
-  For details, check out [Language versioning][].
-{{site.alert.end}}
+:::version-note
+For a package to use a feature introduced after 2.0,
+its pubspec must have a lower constraint that's at least
+the version when the feature was introduced.
+For details, check out [Language versioning][].
+:::
 
 [Language versioning]: /guides/language/evolution#language-versioning
 
@@ -482,7 +482,7 @@ Omitting the SDK constraint is an error.
 When the pubspec has no SDK constraint,
 `dart pub get` fails with a message like the following:
 
-```
+```plaintext
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
@@ -492,13 +492,13 @@ environment:
 See https://dart.dev/go/sdk-constraint
 ```
 
-{{site.alert.version-note}}
-  Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
-  In earlier versions, provide a complete range,
-  such as `'>=2.12.0 <3.0.0'`.
-  For more information, check out
-  the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
-{{site.alert.end}}
+:::version-note
+Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
+In earlier versions, provide a complete range,
+such as `'>=2.12.0 <3.0.0'`.
+For more information, check out
+the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+:::
 
 
 #### Flutter SDK constraints

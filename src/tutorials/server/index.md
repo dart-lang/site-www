@@ -4,6 +4,6 @@ description: Tutorials for writing command-line apps and servers.
 toc: false
 ---
 
-{% include server-tutorials.md %}
+{% render 'server-tutorials.md' %}
 
 For more tutorials, see the [Dart tutorials page](/tutorials).

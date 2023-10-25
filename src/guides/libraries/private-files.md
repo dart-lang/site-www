@@ -8,19 +8,19 @@ When you put Dart source code in a repository—using the
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
-{{site.alert.note}}
-  Except where noted, this page discusses only source code repositories,
-  _not_ app deployment.
-  Some files that you wouldn't normally put in a repository
-  are useful or essential when you deploy an app.
-{{site.alert.end}}
+:::note
+Except where noted, this page discusses only source code repositories,
+_not_ app deployment.
+Some files that you wouldn't normally put in a repository
+are useful or essential when you deploy an app.
+:::
 
 ## The rules
 
 **Don't commit** the following files and directories
 created by pub:
 
-```gitignore
+```plaintext
 .dart_tool/
 build/
 pubspec.lock  # Except for application packages
@@ -29,7 +29,7 @@ pubspec.lock  # Except for application packages
 **Don't commit** the API documentation directory
 created by [`dart doc`](/tools/dart-doc):
 
-```gitignore
+```plaintext
 doc/api/
 ```
 
@@ -39,7 +39,7 @@ For example, if your development environment creates
 any of the following files,
 consider putting them in a global ignore file:
 
-```gitignore
+```plaintext
 # IntelliJ
 *.iml
 *.ipr

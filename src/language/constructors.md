@@ -35,10 +35,10 @@ class Point {
 
 The `this` keyword refers to the current instance.
 
-{{site.alert.note}}
-  Use `this` only when there is a name conflict. 
-  Otherwise, Dart style omits the `this`.
-{{site.alert.end}}
+:::note
+Use `this` only when there is a name conflict. 
+Otherwise, Dart style omits the `this`.
+:::
 
 
 ## Initializing formal parameters
@@ -87,7 +87,7 @@ Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
-{% prettify dart tag=pre+code %}
+```dart
 const double xOrigin = 0;
 const double yOrigin = 0;
 
@@ -102,7 +102,7 @@ class Point {
       : x = xOrigin,
         y = yOrigin;
 }
-{% endprettify %}
+```
 
 Remember that constructors are not inherited, which means that a
 superclass's named constructor is not inherited by a subclass. If you
@@ -171,10 +171,10 @@ class Employee extends Person {
 }
 ```
 
-{{site.alert.warning}}
-  Arguments to the superclass constructor don't have access to `this`. For
-  example, arguments can call static methods but not instance methods.
-{{site.alert.end}}
+:::warning
+Arguments to the superclass constructor don't have access to `this`. For
+example, arguments can call static methods but not instance methods.
+:::
 
 ### Super parameters
 
@@ -226,12 +226,12 @@ class Vector3d extends Vector2d {
 }
 ```
 
-{{site.alert.version-note}}
-  Using super-initializer parameters 
-  requires a [language version][] of at least 2.17.
-  If you're using an earlier language version,
-  you must manually pass in all super constructor parameters.
-{{site.alert.end}}
+:::version-note
+Using super-initializer parameters 
+requires a [language version][] of at least 2.17.
+If you're using an earlier language version,
+you must manually pass in all super constructor parameters.
+:::
 
 ## Initializer list
 
@@ -250,19 +250,19 @@ Point.fromJson(Map<String, double> json)
 }
 ```
 
-{{site.alert.warning}}
-  The right-hand side of an initializer doesn't have access to `this`.
-{{site.alert.end}}
+:::warning
+The right-hand side of an initializer doesn't have access to `this`.
+:::
 
 During development, you can validate inputs by using `assert` in the
 initializer list.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
 }
-{% endprettify %}
+```
 
 Initializer lists are handy when setting up final fields. The following example
 initializes three final fields in an initializer list. Click **Run** to execute
@@ -344,10 +344,10 @@ Another use case for factory constructors is
 initializing a final variable using
 logic that can't be handled in the initializer list.
 
-{{site.alert.tip}}
-  Another way to handle late initialization of a final variable
-  is to [use `late final` (carefully!)][late-final-ivar].
-{{site.alert.end}}
+:::tip
+Another way to handle late initialization of a final variable
+is to [use `late final` (carefully!)][late-final-ivar].
+:::
 
 In the following example,
 the `Logger` factory constructor returns objects from a cache,
@@ -380,9 +380,9 @@ class Logger {
 }
 ```
 
-{{site.alert.note}}
-  Factory constructors have no access to `this`.
-{{site.alert.end}}
+:::note
+Factory constructors have no access to `this`.
+:::
 
 Invoke a factory constructor just like you would any other constructor:
 

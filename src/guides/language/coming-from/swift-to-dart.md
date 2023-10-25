@@ -29,11 +29,11 @@ For more information, check out the [Dart overview][].
 
 [Dart overview]: /overview#native-platform
 
-{{site.alert.note}}
-  Flutter uses the Dart language,
-  so if you are coding Flutter, you might find
-  [Flutter for iOS developers][] to be useful.
-{{site.alert.end}}
+:::note
+Flutter uses the Dart language,
+so if you are coding Flutter, you might find
+[Flutter for iOS developers][] to be useful.
+:::
 
 [Flutter for iOS developers]: {{site.flutter-docs}}/get-started/flutter-for/ios-devs
 
@@ -51,10 +51,10 @@ provide this functionality.)
 
 [Customizing static analysis]: /tools/analysis
 
-{{site.alert.secondary}}
-  **Pro tip:** Dart provides [`dart fix`][],
-  which finds and fixes errors found by the analyzer.
-{{site.alert.end}}
+:::tip
+Dart provides [`dart fix`][],
+which finds and fixes errors found by the analyzer.
+:::
 
 [`dart fix`]: /tools/dart-fix
 
@@ -63,19 +63,19 @@ which can automatically format any Dart project when
 running `dart format` from the command line
 or through the IDE.
 
-{{site.alert.secondary}}
-  **Pro tip:** Dart supports optional trailing
-  commas for any comma-separated values,
-  such as function parameters or list items.
-  This forces the formatter to place each item
-  onto its own line, which helps with readability,
-  especially when you have a lot of nested code
-  (as can happen in Flutter layout code).
+:::tip
+Dart supports optional trailing
+commas for any comma-separated values,
+such as function parameters or list items.
+This forces the formatter to place each item
+onto its own line, which helps with readability,
+especially when you have a lot of nested code
+(as can happen in Flutter layout code).
 
-  For more information on using commas to make
-  your code more readable, check out
-  [Using trailing commas][] on docs.flutter.dev.
-{{site.alert.end}}
+For more information on using commas to make
+your code more readable, check out
+[Using trailing commas][] on docs.flutter.dev.
+:::
 
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
@@ -897,12 +897,12 @@ needs a return statement for any value to be returned.
 }).toList(); // [2, 4, 6]
 ```
 
-{{site.alert.note}}
-  As the map function used in the example returns
-  an `Iterable<T`> rather than a `List<T>`,
-  the `toList` function needs to be called on
-  the returned `Iterator` to turn it back into a `List`. 
-{{site.alert.end}}
+:::note
+As the map function used in the example returns
+an `Iterable<T`> rather than a `List<T>`,
+the `toList` function needs to be called on
+the returned `Iterator` to turn it back into a `List`. 
+:::
 
 ```swift
   // Swift equivalent anonymous function
@@ -1122,20 +1122,20 @@ In Dart, `int x = 5/2,` results in a value of
 use Dart's truncating division operator (`~/`). 
 
 
-{{site.alert.secondary}}
-  **Version note on the difference between web and mobile:**<br>
-  On the web, an `integer` is also a `double`
-  (because all numbers are),
-  but on the VM it's a pure floored `int 2`.
-  (_Floored_ meaning that the result is truncated
-  and not rounded.) For example:
+:::secondary
+**Note on the difference between web and VM:**<br>
+On the web, an `integer` is also a `double`
+(because all numbers are),
+but on the VM it's a pure floored `int 2`.
+(_Floored_ meaning that the result is truncated
+and not rounded.) For example:
 
-  ```dart
-  assert(25 == 50.4 ~/ 2);
-  assert(25 == 50.6 ~/ 2);
-  assert(25 == 51.6 ~/ 2);
-  ```
-{{site.alert.end}}
+```dart
+assert(25 == 50.4 ~/ 2);
+assert(25 == 50.6 ~/ 2);
+assert(25 == 51.6 ~/ 2);
+```
+:::
 
 While the `++` and `–` operators existed in
 earlier versions of Swift, they've been
@@ -1170,11 +1170,15 @@ different between the two languages.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+
 <div class="table-wrapper" markdown="1">
-| **Meaning** | **Dart operator** | **Swift equivalent** |
-| Typecast (description below)  | expr as T  | expr as! T<br>expr as? T |
-| True if the object has the specified type | expr is T | expr is T |
-| True if the object doesn't have the specified type | expr is! T | !(expr is T) |
+
+| **Meaning**                                        | **Dart operator** | **Swift equivalent**     |
+|----------------------------------------------------|-------------------|--------------------------|
+| Typecast (description below)                       | expr as T         | expr as! T<br>expr as? T |
+| True if the object has the specified type          | expr is T         | expr is T                |
+| True if the object doesn't have the specified type | expr is! T        | !(expr is T)             |
+
 {:.table .table-striped .nowrap}
 </div>
 
@@ -1235,15 +1239,15 @@ if (!done && (col == 0 || col == 3)) {
 
 #### Bitwise and shift operators
 
-{{site.alert.secondary}}
-  **Numbers on the web:** On the web,
-  Dart uses JavaScript bitwise operations
-  for better performance, but this can cause
-  different behavior between native and web
-  applications. For more information,
-  see [Bitwise operations][] in the
-  [Numbers in Dart][] page.
-{{site.alert.end}}
+:::secondary
+**Numbers on the web:** On the web,
+Dart uses JavaScript bitwise operations
+for better performance, but this can cause
+different behavior between native and web
+applications. For more information,
+see [Bitwise operations][] in the
+[Numbers in Dart][] page.
+:::
 
 [Bitwise operations]: /guides/language/numbers#bitwise-operations
 [Numbers in Dart]: /guides/language/numbers
@@ -1452,14 +1456,14 @@ a hash code, while in Swift you need to explicitly
 apply the `Hashable` protocol before the object
 can be stored in a `Set`.
 
-{{site.alert.note}}
-  In Dart, the `hashCode` inherited from the
-  `Object` class is only based on the object's identity.
-  If the `==` operator can make non-identical objects equal,
-  the `hashCode` getter needs to be overridden to match
-  the equality. For more information,
-  check out the API page for the [`hashCode` property][].
-{{site.alert.end}}
+:::note
+In Dart, the `hashCode` inherited from the
+`Object` class is only based on the object's identity.
+If the `==` operator can make non-identical objects equal,
+the `hashCode` getter needs to be overridden to match
+the equality. For more information,
+check out the API page for the [`hashCode` property][].
+:::
 
 The following code snippets show the differences
 between initializing a `Set` in Dart and Swift:
@@ -1512,14 +1516,14 @@ In Dart, every object contains a hash while in Swift
 you need to explicitly apply the `Hashable` protocol
 before the object can be stored in a `Dictionary`.
 
-{{site.alert.note}}
-  In Dart, the `hashCode` inherited from the `Object`
-  class is only based on the object's identity.
-  If the `==` operator can make non-identical objects equal,
-  the `hashCode` getter needs to be overridden
-  to match the equality. For more information,
-  check out the API page for the [`hashCode` property][].
-{{site.alert.end}}
+:::note
+In Dart, the `hashCode` inherited from the `Object`
+class is only based on the object's identity.
+If the `==` operator can make non-identical objects equal,
+the `hashCode` getter needs to be overridden
+to match the equality. For more information,
+check out the API page for the [`hashCode` property][].
+:::
 
 [`hashCode` property]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
@@ -2099,10 +2103,10 @@ mixin Walker {
 class Bat extends Walker {}
 ```
 
-{{site.alert.note}}
-  The `extends` keyword is covered further in
-  [Extending a class][] in the Dart language tour.
-{{site.alert.end}}
+:::note
+The `extends` keyword is covered further in
+[Extending a class][] in the Dart language tour.
+:::
 
 [Extending a class]: /language/generics#restricting-the-parameterized-type
 
@@ -2182,10 +2186,10 @@ overview.
 
 [Extension methods]: /language/extension-methods
 
-{{site.alert.note}}
-  Dart doesn't support extending an existing type
-  to make it adopt one or more protocols.
-{{site.alert.end}}
+:::note
+Dart doesn't support extending an existing type
+to make it adopt one or more protocols.
+:::
 
 #### Named extensions
 

@@ -7,7 +7,7 @@ Deploying a Dart web app works like deploying any other web app.
 This page describes how to compile your app, tips for making it smaller
 and faster, and points you to resources for serving the app.
 
-## Building your app {#compiling-to-javascript}
+## Building your app {:#compiling-to-javascript}
 
 Use the `webdev` tool to build your app. It compiles Dart to JavaScript
 and generates all the assets you need for deployment.
@@ -72,7 +72,7 @@ To remove these files, you can run a command like the following:
 Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
 {% endcomment %}
 
-```terminal
+```console
 # From the root directory of your app:
 $ find build -type f -name "*.js.map" -exec rm {} +
 ```

@@ -23,10 +23,10 @@ For help using the `js` package, see the following:
 
 ## Next-generation JS interop preview
 
-{{site.alert.note}}
-  This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/35084).
-{{site.alert.end}}
+:::note
+This interop feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/35084).
+:::
 
 Dart's JS interop story is currently evolving. 
 Many of the features that enable future JS interop
@@ -120,4 +120,4 @@ to optimize it in the same way as static interop.
 As a result, we highly recommend using static interop over
 `dart:js_util` whenever it's possible.
 
-[`dart:js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/dart-js_util-library.html

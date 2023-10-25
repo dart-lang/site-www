@@ -1,9 +1,10 @@
 ---
 title: Get the Dart SDK
-description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
+description: >-
+  Get the libraries and command-line tools that you need to develop 
+  Dart web, command-line, and server apps.
 js:
 - url: /assets/js/get-dart/install.js
-  defer: true
 ---
 
 This page describes how to download the Dart SDK.
@@ -11,7 +12,7 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
-## Installing the Dart SDK {#install}
+## Installing the Dart SDK {:#install}
 
 As the following instructions show,
 you can use a package manager
@@ -30,9 +31,9 @@ so it's easy to find (but not more tempting than package managers).
 and has Dart's [`dart`](/tools/dart-tool) command-line interface
 in its `bin` folder.
 
-{{site.alert.warn}}
-  {% include_relative archive/_sdk-terms.md %}
-{{site.alert.end}}
+:::warning Notice
+{% render './archive/_sdk-terms.md' %}
+:::
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -40,13 +41,19 @@ in its `bin` folder.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include_relative _windows.md %}
+
+{% render './_windows.md' %}
+
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include_relative _linux.md %}
+
+{% render './_linux.md' %}
+
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include_relative _mac.md %}
+
+{% render './_mac.md' %}
+
 </div>
 
 ## System requirements
@@ -74,7 +81,7 @@ Dart supports the following macOS versions as of November 2022:
   - macOS 13 (Ventura)
 * **Supported architectures:** x64, ARM64.
 
-## About release channels and version strings {#release-channels}
+## About release channels and version strings {:#release-channels}
 
 The Dart SDK has three release channels:
 
@@ -120,5 +127,5 @@ by [downloading the SDK as a zip file][].
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 [flutter]: https://flutter.dev/docs/get-started/install
-[site SDK version]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
+[site SDK version]: {{site.dart-api}}/{{site.sdkInfo.channel}}/{{site.sdkInfo.version}}/index.html
 [a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get

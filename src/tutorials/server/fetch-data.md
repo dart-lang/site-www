@@ -12,12 +12,12 @@ nextpage:
 
 <?code-excerpt path-base="fetch_data"?>
 
-{{site.why.learn}}
-  * The basics of what HTTP requests and URIs are and what they are used for.
-  * Making HTTP requests using `package:http`.
-  * Decoding JSON strings into Dart objects with `dart:convert`.
-  * Converting JSON objects into class-based structures.
-{{site.why.end}}
+:::mini-toc What you'll learn
+* The basics of what HTTP requests and URIs are and what they are used for.
+* Making HTTP requests using `package:http`.
+* Decoding JSON strings into Dart objects with `dart:convert`.
+* Converting JSON objects into class-based structures.
+:::
 
 Most applications require some form of communication or
 data retrieval from the internet.
@@ -139,7 +139,7 @@ To add a dependency on `package:http`,
 run the following [`dart pub add`][] command
 from the top of your repo:
 
-```terminal
+```console
 $ dart pub add http
 ```
 
@@ -205,14 +205,14 @@ retrieve the mock JSON-formatted information
 about `package:http` as a string,
 then prints it out:
 
-{{site.alert.note}}
-  Many functions in `package:http`, including `read`,
-  access the network and perform potentially time-consuming operations,
-  therefore they do so asynchronously and return a [`Future`][].
-  If you haven't encountered futures yet,
-  you can learn about them—as well as the `async` and `await` keywords—in the
-  [asynchronous programming codelab](/codelabs/async-await).
-{{site.alert.end}}
+:::note
+Many functions in `package:http`, including `read`,
+access the network and perform potentially time-consuming operations,
+therefore they do so asynchronously and return a [`Future`][].
+If you haven't encountered futures yet,
+you can learn about them—as well as the `async` and `await` keywords—in the
+[asynchronous programming codelab](/codelabs/async-await).
+:::
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g; /(http\.read)/[!$1!]/g"?>
 ```dart
@@ -283,7 +283,7 @@ await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
 [http-client-exc]: {{site.pub-api}}/http/latest/http/ClientException-class.html
 [mock-http-json]: /f/packages/http.json
-[`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[`Future`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
 [status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
 [http-get]: {{site.pub-api}}/http/latest/http/get.html
@@ -380,7 +380,7 @@ void main() async {
 }
 ```
 
-[decode-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/decode.html
+[decode-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/JsonCodec/decode.html
 
 ### Create a structured class to store the data
 
@@ -609,10 +609,10 @@ class PackageRetrievalException implements Exception {
 }
 ```
 
-{{site.alert.flutter-note}}
-  For another example that covers fetching then displaying data in Flutter,
-  see the [Fetching data from the internet][] Flutter recipe.
-{{site.alert.end}}
+:::flutter-note
+For another example that covers fetching then displaying data in Flutter,
+see the [Fetching data from the internet][] Flutter recipe.
+:::
 
 [web]: /web
 [Flutter]: {{site.flutter}}
@@ -633,6 +633,6 @@ to prevent your interface from becoming unresponsive.
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json
-[convert-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[convert-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
 [http-pub]: https://pub.dev/packages/http
 [http-docs]: https://pub.dev/documentation/http

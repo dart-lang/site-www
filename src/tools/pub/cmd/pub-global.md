@@ -15,7 +15,7 @@ your list of globally available packages.
 For example, say you want to use [webdev][] to serve
 your Dart web application from the command line.
 
-```terminal
+```console
 $ dart pub global activate webdev
 $ webdev serve
 ```
@@ -28,7 +28,7 @@ package that your package depends on, see [dart run](/tools/dart-run).
 
 ## Activating a package
 
-```nocode
+```plaintext
 dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
 ```
 
@@ -46,19 +46,19 @@ constraint.  See the [constraint](#options) flag for usage examples.
 
 ### Activating a package on the pub.dev site
 
-```terminal
+```console
 $ dart pub global activate <pub.dev package>
 ```
 
 Specify a package on the pub.dev site to activate it. For example:
 
-```terminal
+```console
 $ dart pub global activate markdown
 ```
 
 ### Activating a package with Git
 
-```terminal
+```console
 $ dart pub global activate --source git <Git URL>
 $ dart pub global activate -sgit <Git URL>
 ```
@@ -68,7 +68,7 @@ a package in a Git repository. The following examples,
 which activate the `async_await` package on
 [GitHub](https://github.com/), are equivalent:
 
-```terminal
+```console
 $ dart pub global activate --source git https://github.com/dart-lang/async_await.git
 $ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
@@ -78,13 +78,13 @@ To specify a different location,
 use the `--git-path` option with
 a path relative to the repository root:
 
-```terminal
+```console
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-path pkgs/http/
 ```
 
 ### Activating a package on your local machine
 
-```terminal
+```console
 $ dart pub global activate --source path <path>
 ```
 
@@ -92,7 +92,7 @@ Use `activate --source path <path>` to activate a package on your local machine.
 The following example activates the `stopwatch` package from the
 `~/dart` directory:
 
-```terminal
+```console
 $ dart pub global activate --source path ~/dart/stopwatch
 ```
 
@@ -115,7 +115,7 @@ directory to your `PATH` environment variable.
 For example, say you've activated the webdev package,
 but you still can't run the command:
 
-```terminal
+```console
 $ dart pub global activate webdev
 $ webdev serve
 -bash: webdev: command not found
@@ -124,7 +124,7 @@ $ webdev serve
 Verify that the `bin` directory for the system cache is in your path.
 The following `PATH` variable, on macOS, includes the system cache:
 
-```terminal
+```console
 $ echo $PATH
 /Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
 ```
@@ -132,11 +132,11 @@ $ echo $PATH
 If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
-|-------------------+---------------------------|
-|      Platform     |      Cache location       |
-|-------------------|---------------------------|
-| macOS or Linux | `$HOME/.pub-cache/bin`        |
+| Platform                             | Cache location                 |
+|--------------------------------------|--------------------------------|
+| macOS or Linux                       | `$HOME/.pub-cache/bin`         |
 | Windows<sup><strong>*</strong></sup> | `%LOCALAPPDATA%\Pub\Cache\bin` |
+
 {:.table .table-striped}
 
 <sup><strong>*</strong></sup> The exact location of the system cache
@@ -144,10 +144,10 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify nocode tag=pre+code %}
+```console
 $ cd web_project
 $ [!webdev serve!]
-{% endprettify %}
+```
 
 If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for
@@ -155,7 +155,7 @@ this feature. You can still run the script using `dart pub global run`.
 
 ### Running a script using `dart pub global run`
 
-```nocode
+```plaintext
 $ dart pub global run <package>:<executable> [args...]
 ```
 
@@ -164,7 +164,7 @@ you can still use `dart pub global run`.
 The following command runs the `bin/bar.dart` script from the
 `foo` package, passing in two arguments.
 
-```terminal
+```console
 $ dart pub global run foo:bar arg1 arg2
 ```
 
@@ -193,14 +193,14 @@ directly from the command line.
 
 ## Deactivating a package
 
-```terminal
+```console
 $ dart pub global deactivate <package>
 ```
 
 Use `deactivate` to remove a package from the list of available
 global packages. For example:
 
-```terminal
+```console
 $ dart pub global deactivate markdown
 ```
 
@@ -209,7 +209,7 @@ or at the command line.
 
 ## Listing active packages
 
-```terminal
+```console
 $ dart pub global list
 ```
 
@@ -227,14 +227,14 @@ to specify a specific version of the package.
 For example, the following command pulls
 the 0.6.0 version of the `markdown` package:
 
-```terminal
+```console
 $ dart pub global activate markdown 0.6.0
 ```
 
 If you specify a range, pub picks the best version that meets that
 constraint. For example:
 
-```terminal
+```console
 $ dart pub global activate foo <3.0.0
 ```
 
@@ -255,7 +255,7 @@ For example, the following command adds `bar` and `baz`,
 (but not any other executables that `foo` might define) 
 to your PATH.
 
-```terminal
+```console
 $ dart pub global activate foo -x bar -x baz
 ```
 
@@ -267,10 +267,7 @@ with the same name. If you don't specify this flag,
 the preexisting executable will not be replaced.
 
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% render 'pub-problems.md' %}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

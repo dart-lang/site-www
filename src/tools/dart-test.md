@@ -16,12 +16,12 @@ as described in [Testing Flutter apps][].
 [`test` package]: {{site.pub-pkg}}/test
 [Testing Flutter apps]: {{site.flutter-docs}}/testing
 
-{% include tools/dart-tool-note.md %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of using `dart test` to run all tests
 that are under the current project's `test` directory:
 
-```terminal
+```console
 $ cd my_app
 $ dart test
 ```
@@ -33,7 +33,7 @@ directories or files under the `test` directory:
   I ran these commands in site-www/misc
 {% endcomment %}
 
-```terminal
+```console
 $ dart test test/library_tour/io_test.dart
 00:00 +0: readAsString, readAsLines
 00:00 +1: readAsBytes
@@ -44,7 +44,7 @@ Another way to run a subset of tests is to use the `--name` (`-n`),
 `--tags` (`-t`), or `--exclude-tags` (`-x`) flag,
 adding part or all of the string to match:
 
-```terminal
+```console
 $ dart test --name String
 00:00 +0: test/library_tour/io_test.dart: readAsString, readAsLines
 00:00 +1: test/library_tour/core_test.dart: print: print(nonString)
@@ -56,7 +56,7 @@ $ dart test --name String
 When you use these flags more than once in the same command line,
 only the tests that match _all_ the conditions run:
 
-```terminal
+```console
 $ dart test --name String --name print
 00:00 +0: test/library_tour/core_test.dart: print: print(nonString)
 00:00 +1: test/library_tour/core_test.dart: print: print(String)
@@ -71,6 +71,6 @@ For further information on command-line options,
 see the [`test` package][] or
 use the `--help` flag:
 
-```terminal
+```console
 $ dart test --help
 ```

@@ -64,8 +64,8 @@ immediately returns an object of type `Future<String>`.
 At some point in the future,
 the `Future<String>` completes with either a string value or an error.
 
-[`readAsStringSync()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
-[`readAsString()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
+[`readAsStringSync()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File/readAsStringSync.html
+[`readAsString()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File/readAsString.html
 
 
 #### Why asynchronous code matters
@@ -124,7 +124,7 @@ String _readFileSync() {
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
-{% prettify dart tag=pre+code %}
+```dart
 const String filename = 'with_keys.json';
 
 void main() [!async!] {
@@ -141,7 +141,7 @@ void main() [!async!] {
   final contents = [!await!] file.[!readAsString()!];
   return contents.trim();
 }
-{% endprettify %}
+```
 
 The `main()` function uses the `await` keyword in front of `_readFileAsync()`
 to let other Dart code (such as event handlers) use the CPU
@@ -150,10 +150,10 @@ Using `await` also has the effect of
 converting the `Future<String>` returned by `_readFileAsync()` into a `String`.
 As a result, the `contents` variable has the implicit type `String`.
 
-{{site.alert.note}}
-  The `await` keyword works only in functions that
-  have `async` before the function body.
-{{site.alert.end}}
+:::note
+The `await` keyword works only in functions that
+have `async` before the function body.
+:::
 
 As the following figure shows,
 the Dart code pauses while `readAsString()` executes non-Dart code,
@@ -193,12 +193,11 @@ using additional processor cores if they're available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
-{{site.alert.info}}
-  **Platform note:**
-    Only the [Dart Native platform][] implements isolates.
-    To learn more about the Dart Web platform,
-    see the [Concurrency on the web](#concurrency-on-the-web) section.
-{{site.alert.end}}
+:::note Platform note
+Only the [Dart Native platform][] implements isolates.
+To learn more about the Dart Web platform,
+see the [Concurrency on the web](#concurrency-on-the-web) section.
+:::
 
 [Dart Native platform]: /overview#platform
 
@@ -302,7 +301,7 @@ It has its own memory and
 doesn't share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
-[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
 
 ## Code examples
 
@@ -326,15 +325,15 @@ setting up and managing worker isolates:
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-{{site.alert.flutter-note}}
-  If you're using Flutter,
-  you can use [Flutter's `compute` function][]
-  instead of `Isolate.run()`.
-  On the [web](#web), the `compute` function falls back
-  to running the specified function on the current event loop.
-  Use `Isolate.run()` when targeting native platforms only,
-  for a more ergonomic API.
-{{site.alert.end}}
+:::flutter-note
+If you're using Flutter,
+you can use [Flutter's `compute` function][]
+instead of `Isolate.run()`.
+On the [web](#web), the `compute` function falls back
+to running the specified function on the current event loop.
+Use `Isolate.run()` when targeting native platforms only,
+for a more ergonomic API.
+:::
 
 [native and non-native platforms]: /overview#platform
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
@@ -451,10 +450,10 @@ isolate-related API to simplify isolate management:
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
 
 You can use these primitives directly for more granular
 control over isolate functionality. For example, `run()` shuts
@@ -499,11 +498,11 @@ and the new isolate isn't in its spawner's isolate group.
 Another performance consequence is that message passing
 is slower when isolates are in different groups.
 
-[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawnUri.html
 
-{{site.alert.flutter-note}}
-  Flutter doesn't support `Isolate.spawnUri()`.
-{{site.alert.end}}
+:::flutter-note
+Flutter doesn't support `Isolate.spawnUri()`.
+:::
 
 <a id="web"></a>
 ## Concurrency on the web

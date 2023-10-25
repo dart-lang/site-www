@@ -1106,7 +1106,7 @@ but not optional.
 
 I visualize the various kinds of Dart parameters with this table:
 
-```
+```plaintext
              mandatory    optional
             +------------+------------+
 positional  | f(int x)   | f([int x]) |

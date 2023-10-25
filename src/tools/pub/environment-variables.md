@@ -22,20 +22,20 @@ Environment variables allow you to customize pub to suit your needs.
   To specify the location of a particular mirror server,
   use the `PUB_HOSTED_URL` environment variable. For example:
 
-```conf
+```bash
 PUB_HOSTED_URL = https://pub.example.com
 ```
 
 For more information about using a private package repository,
 see [Overriding the default package repository][].
 
-{{site.alert.note}}
-  If you are attempting to use `pub get` behind a corporate firewall
-  and it fails, 
-  please see [`pub get` fails from behind a corporate firewall][]
-  for information on how to set up the proxy environment variables
-  for your platform.
-{{site.alert.end}}
+:::note
+If you are attempting to use `pub get` behind a corporate firewall
+and it fails, 
+please see [`pub get` fails from behind a corporate firewall][]
+for information on how to set up the proxy environment variables
+for your platform.
+:::
 
 [`pub get` fails from behind a corporate firewall]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
 [Overriding the default package repository]: /tools/pub/custom-package-repositories#default-override

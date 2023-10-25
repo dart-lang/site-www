@@ -9,19 +9,19 @@ obsolete: true
 _Written by John Mccutchan <br>
 May 2013 (note added July 2018)_
 
-{{site.alert.warning}}
-  In Dart 2, arbitrary-precision integers were replaced with 64-bit
-  signed, wrapping integers. The smi and mint representations still exist,
-  but overflow now results in wrapping instead of automatic conversion to
-  bigint (`BigInt` objects). The [`BigInt` class][]
-  is now available as a separate type that doesn't implement `int`.
+:::warning
+In Dart 2, arbitrary-precision integers were replaced with 64-bit
+signed, wrapping integers. The smi and mint representations still exist,
+but overflow now results in wrapping instead of automatic conversion to
+bigint (`BigInt` objects). The [`BigInt` class][]
+is now available as a separate type that doesn't implement `int`.
 
-  Continue to avoid `BigInt` when possible. The VM has optimized code for
-  `BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
-  down to mints or smis that can be handled directly with CPU instructions. 
-{{site.alert.end}}
+Continue to avoid `BigInt` when possible. The VM has optimized code for
+`BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
+down to mints or smis that can be handled directly with CPU instructions. 
+:::
 
-[`BigInt` class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html
+[`BigInt` class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/BigInt-class.html
 
 Performance matters to everyone.
 It directly impacts your bottom line, conversion rates, and user satisfaction.
@@ -33,12 +33,12 @@ You'll learn about the four different number representations,
 how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
-{{site.alert.note}}
-  This article does not cover the SIMD types available in Dart,
-  which enable operating on four floating-point numbers in parallel.
-  To learn more, refer to the 
-  [`dart:typed_data` documentation][dart-typed_data].
-{{site.alert.end}}
+:::note
+This article does not cover the SIMD types available in Dart,
+which enable operating on four floating-point numbers in parallel.
+To learn more, refer to the 
+[`dart:typed_data` documentation][dart-typed_data].
+:::
 
 ## Overview
 
@@ -158,7 +158,7 @@ This means that each entry in a List is as wide as the CPU's pointer type.
 
 Dart offers typed lists that store only numbers.
 These lists are available in the
-[dart:typed_data library.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html)
+[dart:typed_data library.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-typed_data/dart-typed_data-library.html)
 Typed lists can store only numbers
 and cannot hold regular objects or have a null entry.
 The dart:typed_data library has a distinct list for each common integer size,
@@ -565,4 +565,4 @@ Flatten multiple-dimension lists into a single list,
 and compute the flattened index at runtime.
 This way you avoid the expense of dealing with a list of lists.
 
-[dart-typed_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart-typed_data]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-typed_data/dart-typed_data-library.html

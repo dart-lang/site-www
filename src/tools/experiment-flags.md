@@ -6,11 +6,11 @@ description: Using experiment flags with Dart tools.
 The Dart SDK often contains experimental features,
 which you can try by passing flags to Dart tools.
 
-{{site.alert.warning}}
-  Don't use experiments for production code.
-  Experiments might have breaking changes or be removed
-  without notice.
-{{site.alert.end}}
+:::warning
+Don't use experiments for production code.
+Experiments might have breaking changes or be removed
+without notice.
+:::
 
 
 ## Using experiment flags with command-line tools
@@ -21,7 +21,7 @@ For example, to enable the experiments
 `super-mixins` and `no-slow-checks`,
 add those flags to the `dart` command:
 
-```terminal
+```console
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 

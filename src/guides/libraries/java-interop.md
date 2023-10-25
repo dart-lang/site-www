@@ -10,10 +10,10 @@ Android, Windows, macOS, and Linux can use [`package:jni`][jni-pkg]
 and [`package:jnigen`][jnigen-pkg]
 to call Java and Kotlin APIs.
 
-{{site.alert.note}}
-  This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/49674).
-{{site.alert.end}}
+:::note
+This interop feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/49674).
+:::
 
 `package:jni` allows Dart code to interact
 with Java through [JNI][jnidoc].
@@ -30,7 +30,7 @@ to generate bindings for Kotlin as well.
 
 ## Simple Java example
 
-This guide walks you through [an example]({{page.example}})
+This guide walks you through [an example]({{example}})
 that uses `package:jnigen` to generate bindings for a simple class.
 
 ### Prerequisites
@@ -47,7 +47,7 @@ that uses `package:jnigen` to generate bindings for a simple class.
 First, add `package:jni` as a dependency and
 `package:jnigen` as a [dev dependency][].
 
-```terminal
+```console
 $ dart pub add jni dev:jnigen
 ```
 
@@ -93,12 +93,12 @@ public class Example {
 To generate the Dart (and C) bindings, run `jnigen` and
 specify the config file using the `--config` option:
 
-```terminal
+```console
 $ dart run jnigen --config jnigen.yaml
 ```
 
 In this example, this generates
-[lib/example.dart]({{page.example}}/lib/example.dart), just
+[lib/example.dart]({{example}}/lib/example.dart), just
 as you specified in `jnigen.yaml`.
 
 This file contains a class called `Example`, 
@@ -108,7 +108,7 @@ just like the Java file.
 ### Use the bindings
 
 Now you're ready to load and interact with the generated library.
-The example app, [bin/sum.dart]({{page.example}}/bin/sum.dart), gets 
+The example app, [bin/sum.dart]({{example}}/bin/sum.dart), gets 
 two numbers as arguments and prints their sum. 
 Using the `Example.sum` method is identical to Java.
 
@@ -123,14 +123,14 @@ Before running the example,
 you must build the dynamic libraries for `jni` and the generated C files. 
 The Java sources also must be compiled. To do so, run:
 
-```terminal
+```console
 $ dart run jni:setup -p jni -s src/example
 $ javac java/dev/dart/Example.java
 ```
 
 Now you can run the example:
 
-```terminal
+```console
 $ dart run jnigen_example:sum 17 25
 ```
 
@@ -145,6 +145,7 @@ The following are some more comprehensive examples of using `package:jnigen`:
 | [in_app_java][]         | Demonstrates how to include custom Java code in a Flutter application and call it use `jnigen`. |
 | [pdfbox_plugin][]       | Example of a Flutter plugin that provides bindings to the [Apache PDFBox][] library.            |
 | [notification_plugin][] | Example of a reusable Flutter plugin with custom Java code that uses Android libraries.         |
+
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies

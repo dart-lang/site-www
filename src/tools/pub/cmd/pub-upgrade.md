@@ -5,7 +5,7 @@ description: Use dart pub upgrade to get the latest versions of all dependencies
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub upgrade [options] [dependencies]
 ```
 
@@ -24,7 +24,7 @@ directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```terminal
+```console
 $ dart pub upgrade
 Dependencies upgraded!
 ```
@@ -51,9 +51,9 @@ You can tell `dart pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-```terminal
-  $ dart pub upgrade test args
-  Dependencies upgraded!
+```console
+$ dart pub upgrade test args
+Dependencies upgraded!
 ```
 
 Upgrading a dependency upgrades its transitive dependencies to their latest
@@ -109,7 +109,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include tools/pub-option-no-offline.md %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -132,10 +132,10 @@ ignoring any upper-bound constraint in the `pubspec.yaml` file.
 Also updates `pubspec.yaml` with the new constraints.
 This command is similar to `--major-versions`.
 
-{{site.alert.tip}}
-  Commit the `pubspec.yaml` file before running this command,
-  so that you can undo the changes if necessary.
-{{site.alert.end}}
+:::tip
+Commit the `pubspec.yaml` file before running this command,
+so that you can undo the changes if necessary.
+:::
 
 ### `--major-versions`
 
@@ -145,16 +145,13 @@ Also updates `pubspec.yaml` with the new constraints.
 
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 
-{{site.alert.tip}}
-  Commit the `pubspec.yaml` file before running this command,
-  so that you can undo the changes if necessary.
-{{site.alert.end}}
+:::tip
+Commit the `pubspec.yaml` file before running this command,
+so that you can undo the changes if necessary.
+:::
 
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% render 'pub-problems.md' %}

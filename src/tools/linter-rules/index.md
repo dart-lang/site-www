@@ -18,12 +18,12 @@ with details such as when you might want to use each rule,
 what code patterns trigger it, and
 how you might fix your code.
 
-{{site.alert.tip}}
-  Linter rules (sometimes called _lints_) can have false positives,
-  and they don't all agree with each other.
-  For example, some rules are more appropriate for regular Dart packages,
-  and others are designed for Flutter apps.
-{{site.alert.end}}
+:::tip
+Linter rules (sometimes called _lints_) can have false positives,
+and they don't all agree with each other.
+For example, some rules are more appropriate for regular Dart packages,
+and others are designed for Flutter apps.
+:::
 
 <a id="predefined-rule-sets"></a>
 ## Sets
@@ -111,7 +111,7 @@ reported by the linter rule.
 
 If the rule has a quick fix,
 it can be applied using [`dart fix`](/tools/dart-fix)
-or using your [editor with Dart support](/tools#ides-and-editors).
+or using your [editor with Dart support](/tools#editors).
 To learn more, see [Quick fixes for analysis issues][].
 
 [Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
@@ -124,27 +124,27 @@ To learn more about each rule,
 click on its name.
 
 For an auto-generated list containing all linter rules
-in Dart `{{site.data.pkg-vers.SDK.vers}}`,
+in Dart `{{site.sdkInfo.version}}`,
 check out [All linter rules](/tools/linter-rules/all).
 
 ### Error rules
 
 These rules identify possible errors and other mistakes in your code.
 
-{% include linter-rules-section.md type="errors" %}
+{% render 'linter-rules-section.md', type:'errors', linter_rules:linter_rules %}
 
 ### Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
-{% include linter-rules-section.md type="style" %}
+{% render 'linter-rules-section.md', type:'style', linter_rules:linter_rules %}
 
 ### Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
 
-{% include linter-rules-section.md type="pub" %}
+{% render 'linter-rules-section.md', type:'pub', linter_rules:linter_rules %}
 
 [Dart style guide]: /effective-dart/style

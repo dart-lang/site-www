@@ -281,7 +281,7 @@ For example, imagine the boolean constants `x`, `y`, and `z` are
 equal to `true`, `true`, and `false`, respectively:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
-``` dart
+```dart
 // ...
 x || y && z => 'matches true',
 (x || y) && z => 'matches false',

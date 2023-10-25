@@ -61,14 +61,14 @@ benefit alone.
 
 JavaScript supports trailing commas in list and map literals only.
 
-{{site.alert.secondary}}
-  To learn more about:
+:::secondary
+To learn more about:
 
-  * Using commas to make your code read more like HTML, read
-    [Using trailing commas][] on flutter.dev.
-  * Linting Dart, read [Linter rules][].
-  * Writing good Dart code, read [Effective Dart][].
-{{site.alert.end}}
+* Using commas to make your code read more like HTML, read
+  [Using trailing commas][] on flutter.dev.
+* Linting Dart, read [Linter rules][].
+* Writing good Dart code, read [Effective Dart][].
+:::
 
 [Customizing static analysis]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
@@ -112,15 +112,15 @@ By contrast, Dart normalizes or _canonicalizes_ number, boolean
 and `null` values.
 This means only one `int` value with the numerical value `1` exists.
 
-{{site.alert.note}}
-  JavaScript has two equality operators, `==` and `===`.
-  The `==` operator performs the equality test after doing any necessary
-  type conversions on or to primitive values.
-  The `===` operator doesn't perform type conversions.
-  Dart uses the `identical` function to check if two values are the
-  same object, and the `==` operator to check whether the objects
-  consider themselves as equal.
-{{site.alert.end}}
+:::note
+JavaScript has two equality operators, `==` and `===`.
+The `==` operator performs the equality test after doing any necessary
+type conversions on or to primitive values.
+The `===` operator doesn't perform type conversions.
+Dart uses the `identical` function to check if two values are the
+same object, and the `==` operator to check whether the objects
+consider themselves as equal.
+:::
 
 [Built-in types]: /language/built-in-types
 [Dart Language Tour]: /guides/language
@@ -208,11 +208,11 @@ final backslashEscape = 'The Dart string escape character is \\.';
 final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
 ```
 
-{{site.alert.note}}
-  You can use four-digit hexadecimal characters with or without curly braces.
-  To learn more about working with unicode characters,
-  see [Runes and grapheme clusters][].
-{{site.alert.end}}
+:::note
+You can use four-digit hexadecimal characters with or without curly braces.
+To learn more about working with unicode characters,
+see [Runes and grapheme clusters][].
+:::
 
 [Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
@@ -403,13 +403,13 @@ if (useNickname) {
 print(name); // Properly initialized here.
 ```
 
-{{site.alert.note}}
+:::note
 When you create an object, the class constructor must initialize the
 `final` instance variables.
 This ensures that these variables have a value before anyone can read them.
 
 Learn more in the [Classes](#classes) section.
-{{site.alert.end}}
+:::
 
 In Dart, _constant variables must contain constant values_.
 Non-constant variables can contain constant values that
@@ -793,20 +793,20 @@ var list2 = [1, 2, 3].map((e) {
 }).toList();
 ```
 
-{{site.alert.note}}
-  The `map` function in the previous examples returns
-  an `Iterable<T`>, rather than a `List<T>`.
-  The `toList` function converts the returned
-  `Iterable` back to a `List`.
+:::note
+The `map` function in the previous examples returns
+an `Iterable<T`>, rather than a `List<T>`.
+The `toList` function converts the returned
+`Iterable` back to a `List`.
 
-  A list literal could achieve the same goal.
+A list literal could achieve the same goal.
 
-  ```dart
-  // These two statements are equivalent:
-  print([for (var e in [1, 2, 3]) e + 3]);
-  print([1, 2, 3].map((e) => e + 3).toList());
-  ```
-{{site.alert.end}}
+```dart
+// These two statements are equivalent:
+print([for (var e in [1, 2, 3]) e + 3]);
+print([1, 2, 3].map((e) => e + 3).toList());
+```
+:::
 
 ### Generator functions
 
@@ -924,14 +924,14 @@ for (final element in list) {
 
 #### Switch
 
-{{site.alert.note}}
-  One key difference with the `switch` statement
-  in JavaScript and Dart: when a case has no `break`,
-  `continue`, or `return` statement,
-  JavaScript allows execution to fall through and continue
-  with the next statement. However,
-  Dart only allows this when a case's body is empty.
-{{site.alert.end}}
+:::note
+One key difference with the `switch` statement
+in JavaScript and Dart: when a case has no `break`,
+`continue`, or `return` statement,
+JavaScript allows execution to fall through and continue
+with the next statement. However,
+Dart only allows this when a case's body is empty.
+:::
 
 When using `continue` in a `switch` statement,
 you can combine it with a label that is put on a case:
@@ -992,6 +992,7 @@ are almost identical, as shown in the following table:
 | `x = x + 1` (expression value is `x`)             | `x++`               | `x++`         |
 | `x = x - 1` (expression value is `x - 1`)         | `--x`               | `--x`         |
 | `x = x - 1` (expression value is `x`)             | `x--`               | `x--`         |
+
 {:.table .table-striped}
 
 For example:
@@ -1046,6 +1047,7 @@ work in the same way:
 | Less than                 | `<`                 | `<`           |
 | Greater than or equal to  | `>=`                | `>=`          |
 | Less than or equal to     | `<=`                | `<=`          |
+
 {:.table .table-striped}
 
 The `==` and `!=` JavaScript operators have no equivalent.
@@ -1071,6 +1073,7 @@ different between the two languages:
 | Typecast                            |                     | `x as T`      |
 | True if object has specified type   | `x instanceof T`    | `x is T`      |
 | True if object lacks specified type | `!(x instanceof T)` | `x is! T`     |
+
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj`
@@ -1111,6 +1114,7 @@ of both languages are identical.
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
 | Logical OR                                                     | `||`                | `||`          |
 | Logical AND                                                    | `&&`                | `&&`          |
+
 {:.table .table-striped}
 
 JavaScript allows any value to be used where you need a Boolean value.
@@ -1142,6 +1146,7 @@ as shown in the following table:
 | Shift left                                            | `<<`                | `<<`          |
 | Shift right                                           | `>>`                | `>>`          |
 | Unsigned shift right                                  | `>>>`               | `>>>`         |
+
 {:.table .table-striped}
 
 For example:
@@ -1217,6 +1222,7 @@ The following table lists these assignment operators:
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
 | `|=`     | Bitwise OR assignment           |
+
 {:.table .table-striped}
 
 JavaScript does not support the `~/=` assignment operator.
@@ -1393,11 +1399,11 @@ Sets are unordered collections that only contain unique items.
 Dart enforces the uniqueness of these items using hash codes,
 meaning that objects need hash values to be stored in a `Set`.
 
-{{site.alert.note}}
-  In Dart, the hash value defaults to the instance of an object
-  but you can override it to use a set of properties.
-  To learn more, see the [`hashCode`][] property page.
-{{site.alert.end}}
+:::note
+In Dart, the hash value defaults to the instance of an object
+but you can override it to use a set of properties.
+To learn more, see the [`hashCode`][] property page.
+:::
 
 [`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
@@ -1477,12 +1483,12 @@ Dart bases the dictionary on a hash table.
 This means that keys need to be hashable.
 Every Dart object contains a hash.
 
-{{site.alert.note}}
+:::note
 In Dart, the hash value of an object defaults to a value derived from
 the object's identity, and being compatible with an equality where the
 object can only equal itself. To introduce an equality based on the
 _contents_ of the object, override `hashCode` and `operator==`.
-{{site.alert.end}}
+:::
 
 Consider these simple `Map` examples, created using literals:
 
@@ -1510,9 +1516,9 @@ final gifts = {'first': 'partridge'};
 final gift = gifts['first'];
 ```
 
-{{site.alert.note}}
+:::note
 If the map does not include the lookup key, the index operator returns `null`.
-{{site.alert.end}}
+:::
 
 Use the `containsKey` method to check if the `Map` includes a key.
 

@@ -26,10 +26,10 @@ This codelab covers the following material:
 
 Estimated time to complete this codelab: 40-60 minutes.
 
-{{site.alert.note}}
-  This page uses embedded DartPads to display examples and exercises.
-  {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display examples and exercises.
+{% render 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 ## Why asynchronous code matters
 
@@ -103,18 +103,18 @@ In the next sections you'll learn about futures and about working with futures
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
-{{site.alert.secondary}}
-  **Key terms:**
+:::secondary
+**Key terms:**
 
-  * **synchronous operation**: A synchronous operation blocks other operations
-    from executing until it completes.
-  * **synchronous function**: A synchronous function only performs synchronous
-    operations.
-  * **asynchronous operation**: Once initiated, an asynchronous operation allows
-    other operations to execute before it completes.
-  * **asynchronous function**: An asynchronous function performs at least one
-    asynchronous operation and can also perform _synchronous_ operations.
-{{site.alert.end}}
+* **synchronous operation**: A synchronous operation blocks other operations
+  from executing until it completes.
+* **synchronous function**: A synchronous function only performs synchronous
+  operations.
+* **asynchronous operation**: Once initiated, an asynchronous operation allows
+  other operations to execute before it completes.
+* **asynchronous function**: An asynchronous function performs at least one
+  asynchronous operation and can also perform _synchronous_ operations.
+:::
 
 
 ## What is a future?
@@ -124,10 +124,10 @@ of the [Future][] (capitalized "F") class.
 A future represents the result of an asynchronous operation, 
 and can have two states: uncompleted or completed.
 
-{{site.alert.note}}
-  _Uncompleted_ is a Dart term referring to the state of a future
-  before it has produced a value.
-{{site.alert.end}}
+:::note
+_Uncompleted_ is a Dart term referring to the state of a future
+before it has produced a value.
+:::
 
 ### Uncompleted
 
@@ -209,23 +209,23 @@ but how do you use the results of asynchronous functions?
 In the next section you'll learn how to get results
 with the `async` and `await` keywords.
 
-{{site.alert.secondary}}
-  **Quick review:**
+:::secondary
+**Quick review:**
 
-  * A [Future\<T\>][Future] instance produces a value of type `T`.
-  * If a future doesn't produce a usable value, 
-    then the future's type is `Future<void>`.
-  * A future can be in one of two states: uncompleted or completed.
-  * When you call a function that returns a future, 
-    the function queues up work to be done and returns an uncompleted future.
-  * When a future's operation finishes, 
-    the future completes with a value or with an error.
+* A [Future\<T\>][Future] instance produces a value of type `T`.
+* If a future doesn't produce a usable value, 
+  then the future's type is `Future<void>`.
+* A future can be in one of two states: uncompleted or completed.
+* When you call a function that returns a future, 
+  the function queues up work to be done and returns an uncompleted future.
+* When a future's operation finishes, 
+  the future completes with a value or with an error.
 
-  **Key terms:**
+**Key terms:**
 
-  * **Future**: the Dart [Future][] class.
-  * **future**: an instance of the Dart `Future` class.
-{{site.alert.end}}
+* **Future**: the Dart [Future][] class.
+* **future**: an instance of the Dart `Future` class.
+:::
 
 ## Working with futures: async and await
 
@@ -273,7 +273,8 @@ to the right of the synchronous example.
 
 <div class="container">
 <div class="row">
-<div class="col-sm" markdown="1">
+<div class="col-sm">
+
 #### Example: synchronous functions
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
@@ -298,12 +299,13 @@ void main() {
 ```
 
 {:.console-output}
-```nocode
+```plaintext
 Fetching user order...
 Your order is: Instance of '_Future<String>'
 ```
 </div>
-<div class="col-sm" markdown="1">
+<div class="col-sm">
+
 #### Example: asynchronous functions
 
 <?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
@@ -328,7 +330,7 @@ Future<String> fetchUserOrder() =>
 ```
 
 {:.console-output}
-```nocode
+```plaintext
 Fetching user order...
 Your order is: Large Latte
 ```
@@ -345,16 +347,16 @@ The asynchronous example is different in three ways:
 * The **`await`** keyword appears before calling the asynchronous functions
   `fetchUserOrder()` and `createOrderMessage()`.
 
-{{site.alert.secondary}}
-  **Key terms:**
+:::secondary
+**Key terms:**
 
-  * **async**: You can use the `async` keyword before a function's body to mark it as
-    asynchronous.
-  * **async function**:  An `async` function is a function labeled with the `async`
-    keyword.
-  * **await**: You can use the `await` keyword to get the completed result of an
-    asynchronous expression. The `await` keyword only works within an `async` function.
-{{site.alert.end}}
+* **async**: You can use the `async` keyword before a function's body to mark it as
+  asynchronous.
+* **async function**:  An `async` function is a function labeled with the `async`
+  keyword.
+* **await**: You can use the `await` keyword to get the completed result of an
+  asynchronous expression. The `await` keyword only works within an `async` function.
+:::
 
 ### Execution flow with async and await
 
@@ -415,11 +417,13 @@ You don't need to implement `main()`.
 To simulate asynchronous operations, call the following functions, 
 which are provided for you:
 
-<div class="table-wrapper" markdown="1">
+<div class="table-wrapper">
+
 | Function           | Type signature                   | Description                                    |
 |--------------------|----------------------------------|------------------------------------------------|
 | fetchRole()        | `Future<String> fetchRole()`     | Gets a short description of the user's role.   |
 | fetchLoginAmount() | `Future<int> fetchLoginAmount()` | Gets the number of times a user has logged in. |
+
 {:.table .table-striped}
 </div>
 
@@ -599,10 +603,10 @@ Did you remember to use the await keyword before invoking fetchRole()?
 Remember: reportUserRole() needs to return a future!
 ```
 
-{{site.alert.note}}
-  If your code passes the tests, you can ignore
-  [info-level messages.](/tools/analysis#customizing-analysis-rules)
-{{site.alert.end}}
+:::note
+If your code passes the tests, you can ignore
+[info-level messages.](/tools/analysis#customizing-analysis-rules)
+:::
 
 ## Handling errors
 
@@ -659,10 +663,12 @@ The following exercise provides practice handling errors with asynchronous code,
 using the approach described in the previous section. To simulate asynchronous
 operations, your code will call the following function, which is provided for you:
 
-<div class="table-wrapper" markdown="1">
+<div class="table-wrapper">
+
 | Function           | Type signature                      | Description                                                      |
 |--------------------|-------------------------------------|------------------------------------------------------------------|
 | fetchNewUsername() | `Future<String> fetchNewUsername()` | Returns the new username that you can use to replace an old one. |
+
 {:.table .table-striped}
 </div>
 
@@ -674,11 +680,11 @@ that does the following:
   * Example return value from `changeUsername()`: `"jane_smith_92"`
 * Catches any error that occurs and returns the string value of the error.
   * You can use the
-    [toString()]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError/toString.html)
+    [toString()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError/toString.html)
     method to stringify both
-    [Exceptions]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html) 
+    [Exceptions]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html) 
     and
-    [Errors.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
+    [Errors.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html)
 
 <?code-excerpt "async_await/lib/practice_errors/main.dart"?>
 ```dart:start-dartpad:theme-dark:height-380px:ga_id-practice_errors:file-main.dart
@@ -822,11 +828,13 @@ It's time to practice what you've learned in one final exercise.
 To simulate asynchronous operations, this exercise provides the asynchronous
 functions `fetchUsername()` and `logoutUser()`:
 
-<div class="table-wrapper" markdown="1">
+<div class="table-wrapper">
+
 | Function        | Type signature                   | Description                                                                   |
 |-----------------|----------------------------------|-------------------------------------------------------------------------------|
 | fetchUsername() | `Future<String> fetchUsername()` | Returns the name associated with the current user.                            |
 | logoutUser()    | `Future<String> logoutUser()`    | Performs logout of current user and returns the username that was logged out. |
+
 {:.table .table-striped}
 </div>
 
@@ -1101,7 +1109,7 @@ If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials]: /tools/dartpad/dartpad-best-practices
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
-[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
 [style guide]: /effective-dart/style
 [documentation guide]: /effective-dart/documentation
 [usage guide]: /effective-dart/usage
