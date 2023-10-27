@@ -39,7 +39,7 @@ For a glimpse into the next generation of JS interop,
 you can refactor your code to conform to
 the new syntax and semantics now. 
 Doing so will likely not prevent the need to refactor again
-once [Dart 3][] lands, as the features are still in development. 
+once these features stabilize, as the features are still in development. 
 However, the features available for preview are much closer
 to future JS interop than any pattern supported today.
 So, there are a few reasons to try them out now:
