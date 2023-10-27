@@ -346,16 +346,15 @@ class Chunk { ... }
 ### CONSIDER including code samples in doc comments
 
 {:.good}
-<!-- TODO(parlough) fix excerpt updater - "docs_good.dart (code-sample)"?>
-
-```dart
+<?code-excerpt "docs_good.dart (code-sample)"?>
+````dart
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
 /// ```
 num min(num a, num b) => ...
-```
+````
 
 Humans are great at generalizing from examples, so even a single code sample
 makes an API easier to learn.
@@ -457,8 +456,7 @@ There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
-<!-- TODO(parlough) fix excerpt updater - ?code-excerpt "docs_good.dart (markdown)"? -->
-
+<?code-excerpt "docs_good.dart (markdown)"?>
 ````dart
 /// This is a paragraph of regular text.
 ///
