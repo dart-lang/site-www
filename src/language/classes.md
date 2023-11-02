@@ -175,10 +175,10 @@ Non-final instance variables and
 an implicit *setter* method. For details,
 check out [Getters and setters][].
 
-If you initialize a non-`late` instance variable where it's declared,
+If you initialize a non-`late` `final` instance variable where it's declared,
 the value is set when the instance is created,
 which is before the constructor and its initializer list execute.
-As a result, non-`late` instance variable initializers can't access `this`.
+As a result, non-`late` `final` instance variable initializers can't access `this`.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
