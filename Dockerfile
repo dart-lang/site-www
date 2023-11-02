@@ -36,16 +36,16 @@ RUN set -eu; \
         DART_SHA256="0f0e19c276c99fa3efd6428ea4bef1502f742f2a1f9772959637eec775c10ba0"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="b3aa85b15bd13d619ba924524d5c7f082dc256a062ad34fe12ec824c9f05c2b3"; \
+        DART_SHA256="345fc18e2c2ab39db94fa9da34afb7d2f6bc7dff35cba66fc30429a68b4b52c4"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="b7644435c8acf1e73da3f1ce16889b7222fbab37a75111aff225422a1cc61cab"; \
+        DART_SHA256="f2592ee85cab72c74b20e0f138f3acc023e9dc0e04e6aede25dd97ed78311873"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ae283eec0aa6e044064a79fc524af3dffec0543c48488538fc1a01a1fae7567b"; \
+        DART_SHA256="b1f3c2088579400a2174d4f586f5827ba0703313e75c71d0c102307e3222a463"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="99153759fe1edbc5c1c6a8c5e5164fad11671eed8a8899bf127a17412b701172"; \
+        DART_SHA256="4b6b33bb90292c703f672add93d6503701e8ab13727ecfa77d8f3e7467453bc0"; \
         SDK_ARCH="arm64";; \
       # END dart-sha
     esac; \
