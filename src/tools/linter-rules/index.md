@@ -1,6 +1,7 @@
 ---
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
+show_breadcrumbs: true
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -9,8 +10,8 @@ or with the [`dart analyze`](/tools/dart-analyze) command.
 For information on how to enable and disable individual linter rules, see
 [individual rules sections][] of the [analyzer documentation][].
 
-[individual rules sections]: /guides/language/analysis-options#individual-rules
-[analyzer documentation]: /guides/language/analysis-options
+[individual rules sections]: /tools/analysis#individual-rules
+[analyzer documentation]: /tools/analysis
 
 This page lists all the linter rules,
 with details such as when you might want to use each rule,
@@ -19,7 +20,7 @@ how you might fix your code.
 
 {{site.alert.tip}}
   Linter rules (sometimes called _lints_) can have false positives,
-  and they don’t all agree with each other.
+  and they don't all agree with each other.
   For example, some rules are more appropriate for regular Dart packages,
   and others are designed for Flutter apps.
 {{site.alert.end}}
@@ -40,7 +41,7 @@ which the following packages provide:
   Or, better yet, use the `recommended` rule set, 
   a superset of `core` that identifies additional issues
   and enforces style and format. 
-  If you’re writing Flutter code, 
+  If you're writing Flutter code, 
   use the rule set in the [`flutter_lints`](#flutter_lints) package,
   which builds on `lints`.
 
@@ -63,7 +64,7 @@ visit the documentation for [enabling and disabling linter rules][].
 To find more predefined rule sets,
 check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
 
-[enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
 ## Types
 
@@ -146,5 +147,4 @@ These rules identify possible issues around
 
 {% include linter-rules-section.md type="pub" %}
 
-[Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Dart style guide]: /effective-dart/style

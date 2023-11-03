@@ -1,21 +1,12 @@
 ---
-title: Sitemap
-description: Human-readable sitemap
+title: Document index
+description: Human-readable sitemap of all pages on dart.dev.
 toc: false
-permalink: /map
 ---
 
 <ul>
 {% for document in site.pages %}
-  {% if document.url and document.url != '/404' %}
-  <li>
-    <a href="{{document.url}}">{{ document.title | xml_escape }}</a><br>
-    <small>{{document.url}}</small>
-  </li>
-  {% endif %}
-{% endfor %}
-{% for document in site.documents %}
-  {% if document.url %}
+  {% if document.url and document.url contains '.html' and document.url != '/404.html' %}
   <li>
     <a href="{{document.url}}">{{ document.title | xml_escape }}</a><br>
     <small>{{document.url}}</small>

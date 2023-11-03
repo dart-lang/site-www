@@ -1,6 +1,6 @@
 ---
 title: Class modifiers reference
-description: >
+description: >-
   The allowed and disallowed combinations of class modifiers.
 prevpage:
   url: /language/class-modifiers

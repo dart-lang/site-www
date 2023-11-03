@@ -427,6 +427,19 @@ They have been applied to a number of classes in the core libraries.
 This is a [*versioned* change](#unversioned-vs-versioned-changes), 
 that only applies to language version 3.0 or later.
 
+#### `dart:async`
+
+* The following declarations can only be implemented, not extended:
+
+  - `StreamConsumer`
+  - `StreamIterator`
+  - `StreamTransformer`
+  - `MultiStreamController`
+
+  None of these declarations contained any implementation to inherit.
+  They are marked as `interface` to signify that
+  they are only intended as interfaces.
+
 #### `dart:core`
 
 * The `Function` type can no longer be implemented, extended or mixed in.
@@ -550,7 +563,7 @@ Use Dart 2.19 to [migrate to null safety](/null-safety/migration-guide).
 The [analyzer configuration options][] for 
 enabling stricter checking have changed.
 
-[analyzer configuration options]: /guides/language/analysis-options#enabling-additional-type-checks
+[analyzer configuration options]: /tools/analysis#enabling-additional-type-checks
 
 #### Scope
 

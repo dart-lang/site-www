@@ -29,11 +29,11 @@ class VersionSelector {
     _osSelector.onChange.listen((Event event) {
       filterTable();
     });
-    var versions = (await fetchSdkVersions(channel)
+    final versions = (await fetchSdkVersions(channel)
           ..sort())
         .reversed
-        .toList();
-    for (var version in versions) {
+        .toList(growable: false);
+    for (final version in versions) {
       addVersion(version);
     }
 
@@ -54,12 +54,12 @@ class VersionSelector {
   }
 
   Future<void> populateTable() async {
-    var selectedVersion =
+    final selectedVersion =
         _versionSelector.selectedOptions.first.attributes['value'];
     if (selectedVersion == null) return;
     clearTable();
-    var svnRevision = svnRevisionForVersion(selectedVersion);
-    var versionInfo =
+    final svnRevision = svnRevisionForVersion(selectedVersion);
+    final versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     await findSystemLocale();
     await initializeDateFormatting(Intl.systemLocale);
@@ -72,18 +72,18 @@ class VersionSelector {
   }
 
   void clearTable() {
-    var rowsToRemove = List<TableRowElement>.from(_table.rows);
+    final rowsToRemove = List<TableRowElement>.from(_table.rows);
     // keep the header row
     rowsToRemove.removeAt(0);
-    for (var row in rowsToRemove) {
+    for (final row in rowsToRemove) {
       row.remove();
     }
   }
 
   void filterTable() {
-    var selectedVersion =
+    final selectedVersion =
         _versionSelector.selectedOptions[0].attributes['value'];
-    var selectedOs = _osSelector.selectedOptions[0].attributes['value'];
+    final selectedOs = _osSelector.selectedOptions[0].attributes['value'];
     if (selectedVersion == 'all' && selectedOs == 'all') {
       _table.querySelectorAll('tr[data-version]').classes.remove('hidden');
     } else {
@@ -129,16 +129,16 @@ class VersionSelector {
   }
 
   void addVersion(Version version) {
-    var option = OptionElement()
+    final option = OptionElement()
       ..text = version.toString()
       ..attributes['value'] = version.toString();
     _versionSelector.children.add(option);
   }
 
   void updateTable(VersionInfo versionInfo) {
-    for (var name in platforms.keys) {
-      var platformVariants = platforms[name] ?? const [];
-      for (var platformVariant in platformVariants) {
+    for (final name in platforms.keys) {
+      final platformVariants = platforms[name] ?? const [];
+      for (final platformVariant in platformVariants) {
         // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
         if (archiveMap[name] == 'linux') {
           if (platformVariant.architecture == 'ARMv7' &&
@@ -178,25 +178,29 @@ class VersionSelector {
           }
         } else if (name == 'Windows') {
           if (platformVariant.architecture == 'ARM64') {
-            // No Windows arm64 SDK builds before 2.18.0-41.0.dev,
-            // and only want to surface for dev.
-            // TODO: After this is marked beta or stable in 2.x,
-            // adjust the beta or stable check respectively.
-            if (versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
+            // Dev builds start at 2.18.0-41.0.dev.
+            if (versionInfo.channel == 'dev' &&
+                versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
               continue;
             }
-
-            if (const {'stable', 'beta'}.contains(versionInfo.channel)) {
+            // Beta builds start at 3.2.0-42.2.beta.
+            if (versionInfo.channel == 'beta' &&
+                versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
+              continue;
+            }
+            // No stable builds yet.
+            if (versionInfo.channel == 'stable') {
               continue;
             }
           }
         }
 
         // Build rows for all supported builds.
-        var row = _table.tBodies.first.addRow()
+        final row = _table.tBodies.first.addRow()
           ..attributes['data-version'] = versionInfo.version.toString()
           ..attributes['data-os'] = archiveMap[name] ?? '';
-        var versionCell = row.addCell()..text = versionInfo.version.toString();
+        final versionCell = row.addCell()
+          ..text = versionInfo.version.toString();
         versionCell.append(SpanElement()
           ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
@@ -206,7 +210,7 @@ class VersionSelector {
           ..text = platformVariant.architecture;
         _addReleaseDateCell(versionInfo, row);
         const possibleArchives = ['Dart SDK', 'Debian package'];
-        var c = row.addCell()..classes.add('archives');
+        final c = row.addCell()..classes.add('archives');
 
         for (final pa in possibleArchives) {
           if (platformVariant.archives.contains(pa)) {
@@ -252,10 +256,10 @@ class VersionSelector {
     }
 
     // Add DartDoc archive.
-    var row = _table.tBodies.first.addRow()
+    final row = _table.tBodies.first.addRow()
       ..attributes['data-version'] = versionInfo.version.toString()
       ..attributes['data-os'] = 'api';
-    var rev = SpanElement()
+    final rev = SpanElement()
       ..text = ' (${_prettyRevRef(versionInfo)})'
       ..classes.add('muted');
     row.addCell()
@@ -266,15 +270,15 @@ class VersionSelector {
 
     _addReleaseDateCell(versionInfo, row);
 
-    var c = row.addCell()..classes.add('archives');
-    var uri = '$_storageBase/channels/$channel/release/'
+    final c = row.addCell()..classes.add('archives');
+    final uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
     c.append(AnchorElement()
       ..text = 'API docs'
       ..attributes['href'] = uri);
 
-    var templateRows = _table.querySelectorAll('.template');
-    for (var row in templateRows) {
+    final templateRows = _table.querySelectorAll('.template');
+    for (final row in templateRows) {
       row.remove();
     }
   }

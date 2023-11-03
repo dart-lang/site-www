@@ -8,16 +8,15 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab—which is based on a
-[Dart language cheatsheet](/guides/language/cheatsheet)
-written by and for Google engineers—walks you through
+This codelab walks you through
 the most important of these language features.
 
 The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
 If you need help, click the **Hint** button.
-To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
+To run the code formatter ([`dart format`](/tools/dart-format)), 
+click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
@@ -33,11 +32,14 @@ If the expression is an identifier, you can omit the `{}`.
 
 Here are some examples of using string interpolation:
 
+<div class="table-wrapper" markdown="1">
 | String                      | | Result |
 |-----------------------------+-+ -------|
 | `'${3 + 2}'`                | | `'5'` |
 | `'${"word".toUpperCase()}'` | | `'WORD'` |
 | `'$myObject'`               | | The value of `myObject.toString()` |
+
+</div>
 
 ### Code example
 {: .no_toc}
@@ -89,7 +91,7 @@ reference them inside single quotes, with a space in between.
 ## Nullable variables
 
 Dart enforces sound null safety.
-This means values can’t be null unless you say they can be.
+This means values can't be null unless you say they can be.
 In other words, types default to non-nullable.
 
 For example, consider the following code.
@@ -501,7 +503,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 });
 ```
 
-Here’s a simpler way to write that code:
+Here's a simpler way to write that code:
 
 <?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
@@ -1215,7 +1217,7 @@ This is a chance to get more practice with the ?? operator!
 
 ## Exceptions
 
-Dart code can throw and catch exceptions. In contrast to Java, all of Dart’s exceptions are unchecked
+Dart code can throw and catch exceptions. In contrast to Java, all of Dart's exceptions are unchecked
 exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
 any exceptions.
 
@@ -1981,9 +1983,9 @@ IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
 
 ## Redirecting constructors
 
-Sometimes a constructor’s only purpose is to redirect to
+Sometimes a constructor's only purpose is to redirect to
 another constructor in the same class.
-A redirecting constructor’s body is empty,
+A redirecting constructor's body is empty,
 with the constructor call appearing after a colon (`:`).
 
 <?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>

@@ -315,7 +315,7 @@
   - title: Static analysis
     children:
       - title: Customizing static analysis
-        permalink: /guides/language/analysis-options
+        permalink: /tools/analysis
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
       - title: Diagnostic messages
@@ -334,6 +334,8 @@
   children:
     - title: FAQ
       permalink: /resources/faq
+    - title: Breaking changes
+      permalink: /resources/breaking-changes
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification
@@ -347,6 +349,8 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: Swift to Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - title: Glossary
+      permalink: /resources/glossary
     - title: Books
       permalink: /resources/books
     - title: Videos

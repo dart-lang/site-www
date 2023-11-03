@@ -62,30 +62,28 @@ $site-font-size-header: 16px;
 $site-color-primary: $brand-primary;
 $site-color-sidebar-active: #1389FD;
 
-// Typography
-$font-size-base:            1.0rem; // 16px
-$font-size-base-weight:     400;
-$font-family-base:          Roboto, sans-serif;
-$font-family-monospace:     "Google Sans Mono", "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-$google-font-family:        "Product Sans", $font-family-base;
-
 // Sidenav, toc, and footer
 $font-size-small:         14px;
 
 // Spacing
 $live-content-width:      1280px;
 $content-padding:         32px;
-$top-content-padding:     55px;
+$top-content-padding:     40px;
 
 // Fonts
-$site-font-family-roboto: 'Roboto', sans-serif;
 $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
-$site-font-family-base: $site-font-family-roboto;
+$site-font-family-base: 'Google Sans Text', 'Roboto', sans-serif;
 $site-font-family-alt: $site-font-family-gsans;
 $site-font-family-icon: 'Material Icons';
-$site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', monospace;
+$site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
 $site-font-icon: 24px/1 $site-font-family-icon;
+
+// Typography
+$font-size-base: 1.0rem; // 16px
+$font-size-base-weight: 400;
+$font-family-base: $site-font-family-base;
+$font-family-monospace: $site-font-family-monospace;
 
 // Layout
 $site-header-height: 50px;

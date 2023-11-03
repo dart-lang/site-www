@@ -16,11 +16,11 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Three annotations are available to all Dart code: 
-`@Deprecated`, `@deprecated`, and `@override`. 
+Four annotations are available to all Dart code: 
+[`@Deprecated`][], [`@deprecated`][], [`@override`][], and [`@pragma`][]. 
 For examples of using `@override`,
 see [Extending a class][].
-Here’s an example of using the `@Deprecated` annotation:
+Here's an example of using the `@Deprecated` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -37,7 +37,11 @@ class Television {
 }
 {% endprettify %}
 
-You can define your own metadata annotations. Here’s an example of
+You can use `@deprecated` if you don't want to specify a message.
+However, we [recommend][dep-lint] always
+specifying a message with `@Deprecated`.
+
+You can define your own metadata annotations. Here's an example of
 defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
@@ -50,7 +54,7 @@ class Todo {
 }
 ```
 
-And here’s an example of using that `@Todo` annotation:
+And here's an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart"?>
 ```dart
@@ -62,7 +66,11 @@ void doSomething() {
 
 Metadata can appear before a library, class, typedef, type parameter,
 constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive. You can
-retrieve metadata at runtime using reflection.
+declaration and before an import or export directive.
 
+[`@Deprecated`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Deprecated-class.html
+[`@deprecated`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/deprecated-constant.html
+[`@override`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/override-constant.html
+[`@pragma`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/pragma-class.html
+[dep-lint]: /tools/linter-rules/provide_deprecation_message
 [Extending a class]: /language/extend

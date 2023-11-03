@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, dead_code, unreachable_switch_case
 
 class Point {
   final int x;
@@ -142,9 +142,14 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
+    final pair = (1, 2);
     // #docregion guard
     switch (pair) {
+      case (int a, int b):
+        if (a > b) print('First element greater');
+      // If false, prints nothing and exits the switch.
       case (int a, int b) when a > b:
+        // If false, prints nothing but proceeds to next case.
         print('First element greater');
       case (int a, int b):
         print('First element not greater');

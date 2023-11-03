@@ -94,7 +94,7 @@ void main() {
 ## Getters and setters
 
 Getters and setters are special methods that provide read and write
-access to an object’s properties. Recall that each instance variable has
+access to an object's properties. Recall that each instance variable has
 an implicit getter, plus a setter if appropriate. You can create
 additional properties by implementing getters and setters, using the
 `get` and `set` keywords:
@@ -135,7 +135,7 @@ wrapping them with methods, all without changing client code.
 
 Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
-Abstract methods can only exist in [abstract classes][].
+Abstract methods can only exist in [abstract classes][] or [mixins][].
 
 To make a method abstract, use a semicolon (;) instead of a method body:
 
@@ -156,3 +156,4 @@ class EffectiveDoer extends Doer {
 
 [operators]: /language/operators
 [abstract classes]: /language/class-modifiers#abstract
+[mixins]: /language/mixins

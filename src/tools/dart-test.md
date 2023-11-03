@@ -68,16 +68,9 @@ which tests run,
 how they run (for example, concurrency and timeout), and
 where and how the output appears.
 For further information on command-line options,
-see the [`test` package] or
+see the [`test` package][] or
 use the `--help` flag:
 
 ```terminal
 $ dart test --help
 ```
-
-{{site.alert.version-note}}
-  The `dart test` command was introduced in Dart 2.10.
-  Its functionality was previously provided by
-  the `pub run test` command.
-{{site.alert.end}}
-

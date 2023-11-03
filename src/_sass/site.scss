@@ -92,6 +92,10 @@ i.fa-external-link-alt {
   }
 }
 
+#site-content-title {
+  margin-bottom: bootstrap.bs-spacer(6);
+}
+
 #page-footer {
   position: relative;
   z-index: 1000;
@@ -100,7 +104,7 @@ i.fa-external-link-alt {
 
   color: $site-color-light-grey;
   font-weight: 400;
-  font-family: $site-font-family-gsans;
+  font-family: $site-font-family-alt;
   font-size: $font-size-small;
 
   .footer-section {
@@ -173,6 +177,7 @@ i.fa-external-link-alt {
 
   a {
     color: $site-color-light-grey;
+    font-family: $site-font-family-alt;
 
     &:hover, &:focus, &:active {
       color: $site-color-white;
@@ -220,6 +225,7 @@ i.fa-external-link-alt {
         padding: 0 6px;
         font-size: $site-font-size-header;
         font-weight: 400;
+        font-family: $site-font-family-alt;
 
         &:hover, &:active {
           color: $site-color-card-link;
@@ -524,34 +530,6 @@ li.card {
   }
 }
 
-// Popovers
-
-h3.popover-header {
-  font-weight: $font-weight-light-bold;
-  margin-top: 0;
-}
-
-@mixin popover-open {
-  &.popover-open {
-    font-weight: 500;
-    border-color: $default-link;
-  }
-}
-
-[data-toggle="popover"] {
-  background: none;
-  border-bottom: 2px dotted $gray;
-  padding: 0;
-  cursor: pointer;
-  @include popover-open;
-}
-
-@media (hover: hover) {
-  [data-toggle="popover"]:hover {
-    border-color: $default-link !important;
-  }
-}
-
 .table {
   width: 100%;
   @extend .table-striped;
@@ -623,25 +601,24 @@ h3.popover-header {
   vertical-align: bottom;
 }
 
-.breadcrumb { // Override BS
-  font-size: bootstrap.$font-size-sm;
-  background-color: transparent;
-  padding: 0;
-  @at-root {
-    .breadcrumb-item {
-      + .breadcrumb-item {
-        padding-left: 0; // Fix BS 4.1 padding issue: push left padding into ::before for balance
-        &::before {
-          padding-left: bootstrap.$breadcrumb-item-padding;
-          @include md-icon-content(bootstrap.$breadcrumb-divider, 1rem + 2 * bootstrap.$breadcrumb-item-padding);
-        }
-      }
+// Overwrite bootstrap's breadcrumbs
+.breadcrumb {
+  align-items: center;
+}
 
-      &.active a {
-        color: bootstrap.$breadcrumb-active-color;
-        cursor: default;
-      }
+.breadcrumb-item {
+  align-items: center;
+  display: flex;
+
+  + .breadcrumb-item {
+    &::before {
+      font: $site-font-icon;
     }
+  }
+
+  &.active a {
+    color: bootstrap.$breadcrumb-active-color;
+    cursor: default; // Disable interactive cursor if already active
   }
 }
 
@@ -662,6 +639,11 @@ ul.nav-list {
 
 #page-github-links {
   float: right;
+
+  // Hide page source button on generated pages
+  .generated-page & a:first-child {
+    display: none;
+  }
 
   .btn {
     color: $site-color-body;

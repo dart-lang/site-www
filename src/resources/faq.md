@@ -125,7 +125,7 @@ convenience by having covariant generics.
 The only other reasonable default variance would be invariance. While having
 only invariant generics would definitely prevent more errors, it would also
 prevent a lot of valid programs or require conversion every time you have a list
-of “apples”, and someone just wants “fruits”.
+of "apples", and someone just wants "fruits".
 
 We are familiar with a variety of ways that languages try to mark or infer
 variance. We feel that variance inference systems add too much complexity for
@@ -360,7 +360,7 @@ may like Dart's static type annotations.
 TypeScript and Dart have similar goals; they make building large-scale web
 apps easier. However, their approaches are fairly different. TypeScript
 maintains backwards compatability with JavaScript, whereas Dart purposely made a
-break from certain parts of JavaScript’s syntax and semantics in order to
+break from certain parts of JavaScript's syntax and semantics in order to
 eradicate large classes of bugs and to improve performance. The web has suffered
 from too little choice for too long, and we think that both Dart and TypeScript
 are pointing to a brighter future for web developers. You can read a
@@ -419,7 +419,7 @@ but we're working to make the common cases fast.
 
 ### Q. How can I write Dart code that compiles to performant JavaScript?
 
-See [Improving production web compiliation](/tools/dart-compile#helping-generate-efficient-code).
+See [Improving production web compilation](/tools/dart-compile#helping-generate-efficient-code).
 This information might change as the implementation of
 `dart compile js` changes.
 
@@ -456,7 +456,7 @@ staying within smi range is still good practice.
 
 ### Q. How are typed lists handled when compiled to JavaScript?
 
-JavaScript offers typed arrays compatible with Dart’s typed lists.
+JavaScript offers typed arrays compatible with Dart's typed lists.
 The mapping is trivial: `Float32List` becomes a `Float32Array`.
 One exception exists: the production JavaScript compiler does not support
 64-bit integers: `Int64List` or `Uint64List`. Compiling Dart code with
@@ -467,6 +467,5 @@ either of those lists results in a runtime exception.
 [package:js]: {{site.pub-pkg}}/js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
-[dartdevc]: /tools/dartdevc
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev

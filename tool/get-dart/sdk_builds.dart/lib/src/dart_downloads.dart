@@ -1,5 +1,3 @@
-library sdk_builds.dart_downloads;
-
 import 'dart:convert';
 
 import 'package:googleapis/storage/v1.dart' as storage;
@@ -17,8 +15,11 @@ const storageBaseUrl = 'https://storage.googleapis.com/';
 const _dartChannel = 'dart-archive';
 const _flavor = 'release';
 
-String _revisionPath(String channel, String revision,
-        [List<String> extra = const []]) =>
+String _revisionPath(
+  String channel,
+  String revision, [
+  List<String> extra = const [],
+]) =>
     p.joinAll(['channels', channel, _flavor, revision, ...extra]);
 
 class DartDownloads {
@@ -94,7 +95,7 @@ class DartDownloads {
         continue;
       }
 
-      for (var item in prefixes) {
+      for (final item in prefixes) {
         yield item;
       }
     } while (nextToken != null);
@@ -102,16 +103,20 @@ class DartDownloads {
 
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
     final media = await _fetchFile(channel, revision, 'VERSION');
-    final creationTime = (await _fetchMetadata(channel, revision, 'VERSION'))
-        .timeCreated as DateTime?;
+    final creationTime =
+        (await _fetchMetadata(channel, revision, 'VERSION')).timeCreated;
 
     final json = await _jsonAsciiDecoder
         .bind(media.stream)
-        .cast<Map<String, dynamic>>()
+        .cast<Map<String, Object?>>()
         .first;
 
-    return VersionInfo.parse(channel, revision, json,
-        creationTime: creationTime);
+    return VersionInfo.parse(
+      channel,
+      revision,
+      json,
+      creationTime: creationTime,
+    );
   }
 
   void close() => _client.close();
@@ -119,14 +124,18 @@ class DartDownloads {
   Future<storage.Media> _fetchFile(
           String channel, String revision, String path) async =>
       await _api.objects.get(
-          _dartChannel, _revisionPath(channel, revision, [path]),
-          downloadOptions: storage.DownloadOptions.fullMedia) as storage.Media;
+        _dartChannel,
+        _revisionPath(channel, revision, [path]),
+        downloadOptions: storage.DownloadOptions.fullMedia,
+      ) as storage.Media;
 
-  Future<dynamic> _fetchMetadata(
+  Future<storage.Object> _fetchMetadata(
           String channel, String revision, String path) async =>
       await _api.objects.get(
-          _dartChannel, _revisionPath(channel, revision, [path]),
-          downloadOptions: storage.DownloadOptions.metadata);
+        _dartChannel,
+        _revisionPath(channel, revision, [path]),
+        downloadOptions: storage.DownloadOptions.metadata,
+      ) as storage.Object;
 }
 
 final _jsonAsciiDecoder = json.fuse(ascii).decoder;

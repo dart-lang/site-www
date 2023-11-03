@@ -3,7 +3,7 @@
 @use '../core/bootstrap';
 
 body {
-  font-family: $font-family-base;
+  font-family: $site-font-family-base;
   font-size: $font-size-base;
   font-weight: 400;
   color: $site-color-body;
@@ -24,7 +24,7 @@ h1, .h1 {
   font-family: $site-font-family-gsans-display;
   font-size: bootstrap.$h1-font-size;
   margin-top: 0;
-  margin-bottom: 0.67em;
+  margin-bottom: 0;
 }
 
 h2, .h2 {
@@ -56,7 +56,7 @@ dt {
 a, button {
   text-decoration: none;
   color: $brand-primary;
-  font-family: $site-font-family-roboto;
+  font-family: $site-font-family-base;
   font-weight: 400;
 
   &:visited {

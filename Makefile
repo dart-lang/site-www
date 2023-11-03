@@ -138,13 +138,22 @@ emulate:
 
 ################## UTILS ##################
 
-# Fetch SDK sums for current Dart SDKs by arch, Node PPA
+# Fetch SDK sums for current Dart SDKs by arch
 # This outputs a bash case format to be copied to Dockerfile
 fetch-sums:
 	tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
-	tool/fetch-node-ppa-sum.sh
+
+# Check Dart sums pulls the set of Dart SDK SHA256 hashes
+# and writes them to a temp file.
+check-sums:
+	tool/check-dart-sdk.sh
+
+# Update Dart sums replaces the Dart SDK SHA256 hashes
+# in the Dockerfile and deletes the temp file.
+update-sums:
+	tool/update-dart-sdk.sh
 
 # Test the dev container with pure docker
 test-builds:

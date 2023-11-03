@@ -1,6 +1,6 @@
 ---
 title: Effective Dart
-description: >
+description: >-
   Best practices for building consistent, maintainable,
   and efficient Dart libraries.
 nextpage:
@@ -111,7 +111,7 @@ To learn how to use the linter,
 see [Enabling linter rules][]
 and the list of [linter rules][lints].
 
-[Enabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[Enabling linter rules]: /tools/analysis#enabling-linter-rules
 [lints]: /tools/linter-rules
 
 ## Glossary
@@ -139,4 +139,4 @@ Dart constructs.
 
 ## Summary of all rules
 
-{% include_relative toc.md %}
+{% include_relative _toc.md %}

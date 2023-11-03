@@ -86,10 +86,10 @@ For example, consider the following code, which is **invalid**:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
-{% endprettify %}
+```
 
 If you read elements with `[]`,
 the compiler tells you that the operator `'[]'`
@@ -964,13 +964,14 @@ Use `map()` to create a String with the values of `user.name` and `user.age`.
 
 ## Exercise: Putting it all together
 
-It’s time to practice what you learned, in one final exercise.
+It's time to practice what you learned, in one final exercise.
 
 This exercise provides the class `EmailAddress`,
 which has a constructor that takes a string.
 Another provided function is `isValidEmailAddress()`,
 which tests whether an email address is valid.
 
+<div class="table-wrapper" markdown="1">
 |-----------------------+------------------------------------------+---------------------------------------------------------|
 | Constructor/function  | Type signature                           | Description                                             |
 |-----------------------|------------------------------------------|---------------------------------------------------------|
@@ -978,6 +979,7 @@ which tests whether an email address is valid.
 | isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
 |-----------------------+------------------------------------------+---------------------------------------------------------|
 {:.table .table-striped}
+</div>
 
 Write the following code:
 

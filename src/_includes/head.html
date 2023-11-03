@@ -12,8 +12,11 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
   <!-- End Google Tag Manager -->
-
-  {% assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
+  {% assign desc = page.description | strip_html | strip_newlines | truncate: 160 -%}
+  {% unless desc and desc != '' -%}
+    {% assign error = page.url | append: ' must have a description specified!' -%}
+    {{ error | throw_error }}
+  {% endunless %}
   <meta name="description" content="{{desc}}">
   <title>{% if page.short-title %}{{page.short-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
 
@@ -61,20 +64,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | append: cache_bust }}">
-  {% for css in page.css -%}
-    <link href="{{css}}" rel="stylesheet" type="text/css">
+  {% if page.css -%}
+  {% for cssFile in page.css -%}
+    <link href="{{cssFile}}" rel="stylesheet" type="text/css">
   {% endfor -%}
+  {% endif -%}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
           integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
-          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
           crossorigin="anonymous"
           referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"
@@ -93,9 +94,11 @@
   <script src="{{ '/assets/js/utilities.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 
-  {% for js in page.js -%}
-    <script {% if js.defer %}defer{% endif %} src="{{js.url | default: js}}"></script>
+  {% if page.js -%}
+  {% for jsFile in page.js -%}
+    <script {% if jsFile.defer %}defer{% endif %} src="{{jsFile.url | default: jsFile}}"></script>
   {% endfor -%}
+  {% endif -%}
 
   {% include analytics.html %}
  </head>

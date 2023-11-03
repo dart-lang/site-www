@@ -38,8 +38,8 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.1
-  build_test: ^2.1.7
+  build_runner: ^2.4.6
+  build_test: ^2.2.0
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -52,14 +52,11 @@ $ dart pub get
 
 ## Using built-in commands
 
-How you use the build_runner commands depends on whether you're using
-the Dart SDK or the Flutter SDK.
-Here are examples of using the build_runner **build** command:
+The following is an example of using the build_runner **build** command:
 
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
-$ dart run build_runner build  # Dart SDK
-$ flutter pub run build_runner build  # Flutter SDK
+$ dart run build_runner build
 ```
 
 The build_runner package includes the following commands:

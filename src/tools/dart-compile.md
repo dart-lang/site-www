@@ -275,7 +275,7 @@ $ dart compile js -O2 -o out/main.js web/main.dart
 ```
 
 
-#### Improving production web compiliation {#helping-generate-efficient-code}
+#### Improving production web compilation {#helping-generate-efficient-code}
 
 Follow these practices to improve type inference, reduce file size, and
 improve JavaScript performance:
@@ -287,7 +287,7 @@ improve JavaScript performance:
   you pass into each function or method.
 
 {{site.alert.tip}}
-  Don’t worry about the size of your app’s included libraries. 
+  Don't worry about the size of your app's included libraries. 
   The production compiler performs tree shaking to omit
   unused classes, functions, methods, and so on.
   Import the libraries you think you'll need, 

@@ -1,11 +1,14 @@
 name: dart_tools
-description: Dart-based tools for site-www
+description: Dart-based tools for site-www.
+publish_to: none
 
 environment:
-  sdk: ^2.19.4
+  sdk: ^3.1.0
 
 dependencies:
-  path: ^1.8.0
+  logging: ^1.2.0
+  path: ^1.8.3
 
 dev_dependencies:
-  lints: ^2.1.0
+  analysis_defaults:
+    path: ../../site-shared/packages/analysis_defaults

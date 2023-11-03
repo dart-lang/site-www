@@ -18,7 +18,7 @@ If you find another Dart book that might be helpful,
 {{site.alert.end}}
 
 
-{% for book in site.data.books-dart-null-safe %}
+{% for book in site.data.books-dart %}
 
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">

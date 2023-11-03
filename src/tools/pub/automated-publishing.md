@@ -4,9 +4,9 @@ description: Publish Dart packages to pub.dev directly from GitHub Actions.
 ---
 
 You can automate publishing from:
- * [GitHub Actions](https://github.com/features/actions),
- * [Google Cloud Build][9] or,
- * Anywhere else using a [GCP service account][2].
+* [GitHub Actions](https://github.com/features/actions),
+* [Google Cloud Build][9] or,
+* Anywhere else using a [GCP service account][2].
 
 The following sections explain how automated publishing is configured, and
 how you can customize publishing flows in line with your preferences.
@@ -27,15 +27,17 @@ to use in some environments, but also pose a larger risk if accidentally leaked.
   `dart pub publish`.
 {{site.alert.end}}
 
-
 ## Publishing packages using GitHub Actions
 
 You can configure automated publishing using GitHub Actions. This involves:
- * Enabling automated publishing on pub.dev, specifying:
-   * The GitHub repository and,
-   * A _tag-pattern_ that must match to allow publishing.
- * Creating a GitHub Actions _workflow_ for publishing to pub.dev.
- * Pushing a _git tag_ for the version to be published.
+
+* Enabling automated publishing on pub.dev, specifying:
+
+  * The GitHub repository and,
+  * A _tag-pattern_ that must match to allow publishing.
+
+* Creating a GitHub Actions _workflow_ for publishing to pub.dev.
+* Pushing a _git tag_ for the version to be published.
 
 The following sections outline how to complete these steps.
 
@@ -47,12 +49,12 @@ The following sections outline how to complete these steps.
   never trigger publishing.
 {{site.alert.end}}
 
-
 ### Configuring automated publishing from GitHub Actions on pub.dev
 
 To enable automated publication from GitHub Actions to `pub.dev`, you must be:
- * An _uploader_ on the package, or,
- * An _admin_ of the publisher (if the package is owned by a publisher).
+
+* An _uploader_ on the package, or,
+* An _admin_ of the publisher (if the package is owned by a publisher).
 
 If you have sufficient permission, you can enable automated publishing by:
 
@@ -60,6 +62,7 @@ If you have sufficient permission, you can enable automated publishing by:
 1. Find the **Automated publishing** section.
 1. Click **Enable publishing from GitHub Actions**, this prompts you to
    specify:
+
    * A repository (`<organization>/<repository>`, example: `dart-lang/pana`),
    * A _tag-pattern_ (a string containing `{% raw %}{{version}}{% endraw %}`).
 
@@ -72,7 +75,7 @@ The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% endraw %
 Only GitHub Actions triggered by a push of a tag that matches this
 _tag pattern_ will be allowed to publish your package.
 
-![Configuration of publishing from GitHub Actions on pub.dev](pub-dev-gh-setup.png)
+![Configuration of publishing from GitHub Actions on pub.dev](/assets/img/tools/pub/pub-dev-gh-setup.png)
 
 **Example:** a _tag pattern_ like `v{% raw %}{{version}}{% endraw %}` allows
 GitHub Actions (triggered by `git tag v1.2.3 && git push v1.2.3`) to publish
@@ -83,7 +86,6 @@ If your repository contains multiple packages, give each a separate
 _tag-pattern_. Consider using a _tag-pattern_ like
 `my_package_name-v{% raw %}{{version}}{% endraw %}` for a package
 named `my_package_name`.
-
 
 ### Configuring a GitHub Action workflow for publishing to pub.dev
 
@@ -117,7 +119,7 @@ jobs:
 ```
 
 Make sure to match the pattern in `on.push.tags` with the _tag pattern_
-specified on pub.dev. Otherwise, the GitHub Action workflow won’t work.
+specified on pub.dev. Otherwise, the GitHub Action workflow won't work.
 If publishing multiple packages from the same repository, 
 use a per-package _tag pattern_ like `my_package_name-v{{version}}`
 and create a separate workflow file for each package.
@@ -175,7 +177,6 @@ To publish to pub.dev, subsequent steps can run `dart pub publish --force`.
 [sec-gh-tag-protection]: #hardening-security-with-tag-protection-rules-on-github
 [sec-gh-environment]: #hardening-security-with-github-deployment-environments
 
-
 ### Triggering automated publishing from GitHub Actions
 
 After you've configured automated publishing on `pub.dev` and created a
@@ -184,11 +185,16 @@ To publish, push a _git tag_ matching the configured _tag pattern_.
 
 ```terminal
 $ cat pubspec.yaml
+```
+
+```yaml
 package: my_package_name
 version: 1.2.3            # must match the version number used in the git tag
 environment:
   sdk: ^2.19.0
+```
 
+```terminal
 $ git tag v1.2.3          # assuming my tag pattern is: 'v{{version}}'
 $ git push origin v1.2.3  # triggers the action that publishes my package.
 ```
@@ -205,12 +211,11 @@ Once published, you can see the publication event in the `audit-log` on
 The `audit-log` entry should contain a link to the GitHub Action run that
 published the package version.
 
-![Audit log after publishing from GitHub Actions](audit-log-pub-gh.png)
+![Audit log after publishing from GitHub Actions](/assets/img/tools/pub/audit-log-pub-gh.png)
 
 If you don't like using the `git` CLI to create tags, you can create _releases_
 on GitHub from `https://github.com/<organization>/<repository>/releases/new`.
 To learn more, check out [managing releases in a repository][4] from GitHub.
-
 
 ### Hardening security with tag protection rules on GitHub
 
@@ -226,7 +231,6 @@ At this time, the [tag protection rules][5] lack flexibility. You might want to
 restrict who can trigger publishing using GitHub Deployment Environments,
 as outlined in the next section.
 
-
 ### Hardening security with GitHub Deployment Environments
 
 When configuring automated publishing from GitHub Actions on pub.dev, you can 
@@ -238,7 +242,7 @@ To require a _GitHub Actions environment_ for publishing you must:
 1. Click **Require GitHub Actions environment**.
 1. Specify an **Environment** name, (`pub.dev` is typically a good name)
 
-![Configure pub.dev to require a GitHub deployment environment](pub-dev-gh-env-setup.png)
+![Configure pub.dev to require a GitHub deployment environment](/assets/img/tools/pub/pub-dev-gh-env-setup.png)
 
 When an environment is required on pub.dev, GitHub Actions won't be able to
 publish unless they have `environment: pub.dev`. Thus, you must:
@@ -278,23 +282,23 @@ configure _required reviewers_. If you configure this option, GitHub prevents
 actions with the environment from running until one of the
 _required reviewers_ have approved the run.
 
-![GitHub Action waiting for deployment review](gh-pending-review.png)
-
+![GitHub Action waiting for deployment review](/assets/img/tools/pub/gh-pending-review.png)
 
 ## Publishing from Google Cloud Build
 
 You can configure automated publishing from [Google Cloud Build][9]. This
 involves:
- * Register a Google Cloud Project (or using an existing project),
- * Create a [service account][10] for publishing to pub.dev,
- * Enable automated publishing in the admin tab for the package on pub.dev,
-   specifying the email of the service account created for publishing.
- * Grant the default Cloud Build service account permission to impersonate the
-   service account created for publishing.
- * Create a `cloudbuild.yaml` file that obtains a temporary OIDC `id_token`
-   and uses it for publishing to pub.dev
- * Configure a Cloud Build trigger, for running the steps in `cloudbuild.yaml`
-   in your project on Google Cloud Build.
+
+* Register a Google Cloud Project (or using an existing project),
+* Create a [service account][10] for publishing to pub.dev,
+* Enable automated publishing in the admin tab for the package on pub.dev,
+  specifying the email of the service account created for publishing.
+* Grant the default Cloud Build service account permission to impersonate the
+  service account created for publishing.
+* Create a `cloudbuild.yaml` file that obtains a temporary OIDC `id_token`
+  and uses it for publishing to pub.dev
+* Configure a Cloud Build trigger, for running the steps in `cloudbuild.yaml`
+  in your project on Google Cloud Build.
 
 The following sections outline how to complete these steps.
 
@@ -306,7 +310,6 @@ The following sections outline how to complete these steps.
   To learn more, check out [managing service account impersonation][11].
 {{site.alert.end}}
 
-
 ### Creating a service account for publishing
 
 For publishing to pub.dev you are going to create a _service account_ that is
@@ -316,8 +319,8 @@ grant Cloud Build permission to impersonate this service account.
 1. [Create a cloud project][12], if you don't have an existing project.
 1. Create a _service account_ as follows:
 
-    ```sh
-    gcloud iam service-accounts create pub-dev \
+    ```terminal
+    $ gcloud iam service-accounts create pub-dev \
       --description='Service account to be impersonated when publishing to pub.dev' \
       --display-name='pub-dev'
     ```
@@ -336,7 +339,7 @@ grant Cloud Build permission to impersonate this service account.
       You created this account in the previous step:
       `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
 
-![Configuration that allows service account to publish on pub.dev](pub-dev-gcb-config.png)
+![Configuration that allows service account to publish on pub.dev](/assets/img/tools/pub/pub-dev-gcb-config.png)
 
 With this procedure complete, anyone who can impersonate the service account can
 publish new versions of the package. Make sure to review who has permissions to
@@ -349,7 +352,6 @@ needed.
   refer to [enabling service account impersonation across projects][27].
 {{site.alert.end}}
 
-
 ### Granting Cloud Build permission to publish
 
 To publish from Cloud Build you must give the
@@ -359,23 +361,23 @@ the service account created for publishing in the previous section.
 1. Enable the [IAM Service Account Credentials API][14] in the cloud project.
    Attempts to impersonate a service account will fail without this API.
 
-   ```sh
+   ```terminal
    # Enable IAM Service Account Credentials API
-   gcloud services enable iamcredentials.googleapis.com
+   $ gcloud services enable iamcredentials.googleapis.com
    ```
 
 1. Find the project number.
 
-   ```sh
+   ```terminal
    # The PROJECT_NUMBER can be obtained as follows:
-   gcloud projects describe $PROJECT_ID --format='value(projectNumber)'
+   $ gcloud projects describe $PROJECT_ID --format='value(projectNumber)'
    ```
 
 1. Grant the permission to impersonate the publishing service account.
 
-   ```sh
+   ```terminal
    # Grant default cloud
-   gcloud iam service-accounts add-iam-policy-binding \
+   $ gcloud iam service-accounts add-iam-policy-binding \
      pub-dev@$PROJECT_ID.iam.gserviceaccount.com \
      --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
      --role=roles/iam.serviceAccountTokenCreator
@@ -384,9 +386,10 @@ the service account created for publishing in the previous section.
 ### Writing a Cloud Build configuration file
 
 To publish from Cloud Build, you must specify steps for Cloud Build to:
- * Impersonate the service account to obtain a temporary OIDC token.
- * Provide the temporary OIDC token to `dart pub` for use when publishing.
- * Calling `dart pub publish` to publish the package.
+
+* Impersonate the service account to obtain a temporary OIDC token.
+* Provide the temporary OIDC token to `dart pub` for use when publishing.
+* Calling `dart pub publish` to publish the package.
 
 Steps for Google Cloud Build are provided in a `cloudbuild.yaml` file, see
 [build configuration file schema][15] for full documentation of the format.
@@ -432,7 +435,6 @@ repository from which you wish to publish is checked out.
 Not using `/workspace` for storing the token reduces the risk that you
 accidentally include it in your package when publishing.
 
-
 ### Creating a Cloud Build trigger
 
 With service accounts configured and a `cloudbuild.yaml` file in the repository
@@ -450,7 +452,7 @@ repository in the `/cloudbuild.yaml` file.
 Do **not** specify a _service account_ for the build to be triggered with.
 Instead you'll want to use the default service account for Cloud Build.
 
-![Configuration for trigger](gcb-trigger-configuration.png)
+![Configuration for trigger](/assets/img/tools/pub/gcb-trigger-configuration.png)
 
 {{site.alert.note}}
   You can configure the Cloud Build trigger to run under a custom
@@ -459,7 +461,7 @@ Instead you'll want to use the default service account for Cloud Build.
   the `pub-dev@$PROJECT_ID.iam.gserviceaccount.com` account, which can
   publish to pub.dev.
 
- The configuration of the `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
+  The configuration of the `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
   _service account_ allowed the default Cloud Build service account,
   `$PROJECT_NUMBER@cloudbuild.gserviceaccount.com`, to impersonate the 
   `pub-dev@$PROJECT_ID.iam.gserviceaccount.com` service account.
@@ -475,7 +477,6 @@ build. _Because triggering a build might publish a new version of your package_.
 Consider only allowing manual builds or use
 [Cloud Build approvals][17] to gate builds as outlined in next section.
 
-
 ### Hardening security with Cloud Build Approvals
 
 When configuring a Cloud Build trigger, you can select
@@ -484,16 +485,15 @@ requires approval, it won't run when triggered. Instead, it'll wait for
 approval.
 This can be used to limit who can publish new versions of your package.
 
-![Enabling approvals in configuration of the Cloud Build trigger](gcb-approval-checkbox.png)
+![Enabling approvals in configuration of the Cloud Build trigger](/assets/img/tools/pub/gcb-approval-checkbox.png)
 
 Only a user with the **Cloud Build Approver** role can give approval.
 When giving a approval, the approver can specify a URL and comment.
 
-![Cloud Build run waiting for approval to run](gcp-waiting-for-approval.png)
+![Cloud Build run waiting for approval to run](/assets/img/tools/pub/gcp-waiting-for-approval.png)
 
 You can also configure notifications for pending approvals.
 To learn more, check out [gate build on approval][17].
-
 
 ## Publish from anywhere using a Service Account
 
@@ -501,6 +501,7 @@ To allow automated publishing outside of GitHub Actions, you might
 authenticate using service accounts in way similar to _Cloud Build_.
 
 This usually involves:
+
 * [Create a service account for publishing][create-svc],
 * Impersonate the publishing service account in one of two ways:
   * Workload Identity Federation
@@ -512,7 +513,6 @@ This should provide a service account, such as
 `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`.
 
 [create-svc]: #creating-a-service-account-for-publishing
-
 
 ### Publish using Workload Identity Federation
 
@@ -528,7 +528,6 @@ service account.
 To learn how to configure these flows, check out
 [workload identity federation][25].
 
-
 ### Publish using Exported Service Account Keys
 
 When running on a custom system without identity services, you
@@ -541,8 +540,8 @@ To learn more, check out how to
 
 1. Create exported service account keys for an existing service account.
 
-    ```sh
-    gcloud iam service-accounts keys create key-file.json \
+    ```terminal
+    $ gcloud iam service-accounts keys create key-file.json \
       --iam-account=pub-dev@$PROJECT_ID.iam.gserviceaccount.com
     ```
 
@@ -554,23 +553,22 @@ To learn more, check out how to
   and publish your package.
 {{site.alert.end}}
 
-
 #### Publish packages using exported service account keys
 
 To publish a package using exported service account keys:
 
 1. Setup gcloud to authenticate using `key-file.json` (created in the previous step)
 
-    ```sh
-    gcloud auth activate-service-account --key-file=key-file.json
+    ```terminal
+    $ gcloud auth activate-service-account --key-file=key-file.json
     ```
 
 1. Create a temporary token for pub.dev and pass it to
    `dart pub token add https://pub.dev`.
    To impersonate service account, include the `--include-email` option.
 
-    ```sh
-    gcloud auth print-identity-token \
+    ```terminal
+    $ gcloud auth print-identity-token \
       --audiences=https://pub.dev \
       | dart pub token add https://pub.dev
     ```
@@ -578,8 +576,8 @@ To publish a package using exported service account keys:
 1. Publish using the temporary token.
    Add the `--force` option to skip the `yes/no` prompt.
 
-    ```sh
-    dart pub publish --force
+    ```terminal
+    $ dart pub publish --force
     ```
 
 {{site.alert.note}}
@@ -589,7 +587,6 @@ To publish a package using exported service account keys:
   Short-lived secrets greatly reduces the security risks if accidentally leaked
   in logs or similar ways.
 {{site.alert.end}}
-
 
 [1]: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
 [2]: https://cloud.google.com/iam/docs/service-accounts

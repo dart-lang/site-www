@@ -33,7 +33,7 @@ use the `enable-experiment` key in the [analysis options file][].
 Here's an example of enabling the experiments
 `super-mixins` and `no-slow-checks` in `analysis_options.yaml`:
 
-[analysis options file]: /guides/language/analysis-options#the-analysis-options-file
+[analysis options file]: /tools/analysis#the-analysis-options-file
 
 ```yaml
 analyzer:

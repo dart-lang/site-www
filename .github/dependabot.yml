@@ -7,23 +7,39 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "auto.dependencies"
+      - "auto.bundler"
+      - "lang.ruby"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "auto.dependencies"
+      - "auto.docker"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
-      - autosubmit
+      - "auto.dependencies"
+      - "auto.github-action"
+      - "lang.yaml"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
     allow:
       - dependency-type: "production"
+    labels:
+      - "auto.dependencies"
+      - "auto.npm"
+      - "lang.javascript"
   - package-ecosystem: 'gitsubmodule'
     directory: '/'
     schedule:
       interval: 'daily'
+    labels:
+      - "auto.dependencies"
+      - "auto.submodules"

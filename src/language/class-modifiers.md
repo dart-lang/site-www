@@ -1,6 +1,6 @@
 ---
 title: Class modifiers
-description: >
+description: >-
   Modifier keywords for class declarations to control external library access.
 prevpage:
   url: /language/callable-objects
@@ -295,7 +295,7 @@ String getVehicleSound(Vehicle vehicle) {
 }
 ```
 
-If you don’t want [exhaustive switching][exhaustive], 
+If you don't want [exhaustive switching][exhaustive], 
 or want to be able to add subtypes later without breaking the API, 
 use the [`final`](#final) modifier. For a more in depth comparison,
 read [`sealed` versus `final`](/language/class-modifiers-for-apis#sealed-versus-final).
@@ -336,4 +336,4 @@ See the [Class modifiers reference][] for complete guidance.
 [factory constructor]: /language/constructors#factory-constructors
 [exhaustive]: /language/branches#exhaustiveness-checking
 [abstract methods]: /language/methods#abstract-methods
-[syntax specification]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/class-modifiers/feature-specification.md#syntax
+[syntax specification]: https://github.com/dart-lang/language/blob/main/accepted/3.0/class-modifiers/feature-specification.md#syntax

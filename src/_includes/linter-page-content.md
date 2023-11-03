@@ -2,7 +2,7 @@
 
 {{lint.description}}
 
-{% if lint.sinceDartSdk == "Unreleased" %}
+{% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" %}
 _This rule is currently **experimental**
 and not yet available in a stable SDK._
 {% elsif lint.state == "removed" %}
@@ -70,7 +70,7 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 
 To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your
-[`analysis_options.yaml`](/guides/language/analysis-options)
+[`analysis_options.yaml`](/tools/analysis)
 file:
 
 ```yaml

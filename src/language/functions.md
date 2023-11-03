@@ -16,7 +16,7 @@ This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable objects][].
 
-Here’s an example of implementing a function:
+Here's an example of implementing a function:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
 ```dart
@@ -50,7 +50,7 @@ is sometimes referred to as _arrow_ syntax.
 
 {{site.alert.note}}
   Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-  the semicolon (;). For example, you can’t put an [if statement][]
+  the semicolon (;). For example, you can't put an [if statement][]
   there, but you can use a [conditional expression][].
 {{site.alert.end}}
 
@@ -168,7 +168,7 @@ String say(String from, String msg, [String? device]) {
 }
 ```
 
-Here’s an example of calling this function
+Here's an example of calling this function
 without the optional parameter:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
@@ -176,7 +176,7 @@ without the optional parameter:
 assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 ```
 
-And here’s an example of calling this function with the third parameter:
+And here's an example of calling this function with the third parameter:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
@@ -329,7 +329,7 @@ list
 
 Dart is a lexically scoped language, which means that the scope of
 variables is determined statically, simply by the layout of the code.
-You can “follow the curly braces outwards” to see if a variable is in
+You can "follow the curly braces outwards" to see if a variable is in
 scope.
 
 Here is an example of nested functions with variables at each scope

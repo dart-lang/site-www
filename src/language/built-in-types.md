@@ -46,10 +46,6 @@ Some other types also have special roles in the Dart language:
 * `void`: Indicates that a value is never used.
   Often used as a return type.
 
-{% comment %}
-[TODO: move/add for-in coverage to language tour?]
-{% endcomment %}
-
 The `Object`, `Object?`, `Null`, and `Never` classes
 have special roles in the class hierarchy.
 Learn about these roles in [Understanding null safety][].
@@ -86,10 +82,10 @@ Dart numbers come in two flavors:
 
 Both `int` and `double` are subtypes of [`num`][].
 The num type includes basic operators such as +, -, /, and \*,
-and is also where you’ll find `abs()`,` ceil()`,
+and is also where you'll find `abs()`,` ceil()`,
 and `floor()`, among other methods.
 (Bitwise operators, such as \>\>, are defined in the `int` class.)
-If num and its subtypes don’t have what you’re looking for, the
+If num and its subtypes don't have what you're looking for, the
 [dart:math][] library might.
 
 Integers are numbers without a decimal point. Here are some examples of
@@ -126,7 +122,7 @@ Integer literals are automatically converted to doubles when necessary:
 double z = 1; // Equivalent to double z = 1.0.
 ```
 
-Here’s how you turn a string into a number, or vice versa:
+Here's how you turn a string into a number, or vice versa:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (number-conversion)"?>
 ```dart
@@ -194,7 +190,7 @@ var s4 = "It's even easier to use the other delimiter.";
 You can put the value of an expression inside a string by using
 `${`*`expression`*`}`. If the expression is an identifier, you can skip
 the {}. To get the string corresponding to an object, Dart calls the
-object’s `toString()` method.
+object's `toString()` method.
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
 ```dart
@@ -231,7 +227,7 @@ var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
 ```
 
-Another way to create a multi-line string: use a triple quote with
+To create a multi-line string, use a triple quote with
 either single or double quotation marks:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
@@ -245,7 +241,7 @@ var s2 = """This is also a
 multi-line string.""";
 ```
 
-You can create a “raw” string by prefixing it with `r`:
+You can create a "raw" string by prefixing it with `r`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 ```dart

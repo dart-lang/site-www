@@ -242,9 +242,9 @@ from a synchronous to asynchronous function.
 First, add the `async` keyword before the function body:
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] { ··· }
-{% endprettify %}
+```
 
 If the function has a declared return type, 
 then update the type to be `Future<T>`, 
@@ -253,17 +253,17 @@ If the function doesn't explicitly return a value,
 then the return type is `Future<void>`:
 
 <?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!Future<void>!] main() async { ··· }
-{% endprettify %}
+```
 
 Now that you have an `async` function, 
 you can use the `await` keyword to wait for a future to complete:
 
 <?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 print([!await!] createOrderMessage());
-{% endprettify %}
+```
 
 As the following two examples show, the `async` and `await` keywords 
 result in asynchronous code that looks a lot like synchronous code.
@@ -307,7 +307,7 @@ Your order is: Instance of '_Future<String>'
 #### Example: asynchronous functions
 
 <?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
   return 'Your order is: $order';
@@ -325,7 +325,7 @@ Future<String> fetchUserOrder() =>
   print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
-{% endprettify %}
+```
 
 {:.console-output}
 ```nocode
@@ -415,11 +415,13 @@ You don't need to implement `main()`.
 To simulate asynchronous operations, call the following functions, 
 which are provided for you:
 
+<div class="table-wrapper" markdown="1">
 | Function           | Type signature                   | Description                                    |
 |--------------------|----------------------------------|------------------------------------------------|
 | fetchRole()        | `Future<String> fetchRole()`     | Gets a short description of the user's role.   |
 | fetchLoginAmount() | `Future<int> fetchLoginAmount()` | Gets the number of times a user has logged in. |
 {:.table .table-striped}
+</div>
 
 
 #### Part 1: `reportUserRole()`
@@ -599,7 +601,7 @@ Remember: reportUserRole() needs to return a future!
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
-  [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
+  [info-level messages.](/tools/analysis#customizing-analysis-rules)
 {{site.alert.end}}
 
 ## Handling errors
@@ -657,11 +659,12 @@ The following exercise provides practice handling errors with asynchronous code,
 using the approach described in the previous section. To simulate asynchronous
 operations, your code will call the following function, which is provided for you:
 
-
+<div class="table-wrapper" markdown="1">
 | Function           | Type signature                      | Description                                                      |
 |--------------------|-------------------------------------|------------------------------------------------------------------|
 | fetchNewUsername() | `Future<String> fetchNewUsername()` | Returns the new username that you can use to replace an old one. |
 {:.table .table-striped}
+</div>
 
 Use `async` and `await` to implement an asynchronous `changeUsername()` function
 that does the following:
@@ -819,11 +822,13 @@ It's time to practice what you've learned in one final exercise.
 To simulate asynchronous operations, this exercise provides the asynchronous
 functions `fetchUsername()` and `logoutUser()`:
 
+<div class="table-wrapper" markdown="1">
 | Function        | Type signature                   | Description                                                                   |
 |-----------------|----------------------------------|-------------------------------------------------------------------------------|
 | fetchUsername() | `Future<String> fetchUsername()` | Returns the name associated with the current user.                            |
 | logoutUser()    | `Future<String> logoutUser()`    | Performs logout of current user and returns the username that was logged out. |
 {:.table .table-striped}
+</div>
 
 Write the following:
 

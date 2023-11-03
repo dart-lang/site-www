@@ -1,6 +1,5 @@
 ---
 title: Terms of use
-permalink: /terms
 description: The terms of use for dart.dev.
 toc: false
 ---

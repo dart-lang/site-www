@@ -11,7 +11,7 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-Here’s an example of creating a variable and initializing it:
+Here's an example of creating a variable and initializing it:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 ```dart
@@ -19,7 +19,7 @@ var name = 'Bob';
 ```
 
 Variables store references. The variable called `name` contains a
-reference to a `String` object with a value of “Bob”.
+reference to a `String` object with a value of "Bob".
 
 The type of the `name` variable is inferred to be `String`,
 but you can change that type by specifying it.
@@ -251,7 +251,7 @@ const baz = []; // Equivalent to `const []`
 ```
 
 You can omit `const` from the initializing expression of a `const` declaration,
-like for `baz` above. For details, see [DON’T use const redundantly][].
+like for `baz` above. For details, see [DON'T use const redundantly][].
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
@@ -295,7 +295,7 @@ For more information on using `const` to create constant values, see
 
 [Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
-[DON’T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly
+[DON'T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly
 [type checks and casts]: /language/operators#type-test-operators
 [collection `if`]: /language/collections#control-flow-operators
 [spread operators]: /language/collections#spread-operators

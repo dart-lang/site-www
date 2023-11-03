@@ -3,10 +3,10 @@ description: Fetch data example
 version: 0.0.1
 
 environment:
-  sdk: ^3.0.0
+  sdk: ^3.1.0
 
 dependencies:
-  http: ^0.13.5
+  http: ^1.1.0
 
 dev_dependencies:
-  lints: ^2.1.0
+  lints: ^3.0.0

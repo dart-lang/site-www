@@ -1,5 +1,4 @@
 ---
-permalink: /community
 title: Community and support
 description: Communities, mailing lists, and bug databases for the Dart project.
 group: https://groups.google.com/a/dartlang.org
@@ -19,7 +18,7 @@ our [code of conduct](/community/code-of-conduct).
   and other important news. Recommended!
 
 [@dart_lang](https://twitter.com/dart_lang)
-: The official Twitter account.
+: The official X (Twitter) account.
 
 [Dart blog](https://medium.com/dartlang)
 : The latest news and insights from a diverse group of Dart users.
@@ -33,11 +32,14 @@ Get answers and connect with Dart developers.
 [StackOverflow](https://stackoverflow.com/tags/dart)
 : The best place for how-to questions.
 
+[The dart_community Discord](https://discord.gg/Qt6DgfAWWx)
+: Chat with and get help from other Dart developers.
+
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 : The subreddit for all things related to Dart.
 
-[The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
-: Chat with and get help from other Dart developers.
+[Flutter communities]({{site.flutter}}/community#community-grid)
+: Discuss and get help with Flutter.
 
 #### Google Groups
 
@@ -72,6 +74,3 @@ Our wonderful community has provided these resources:
 * [Korean version of this site (한국어)](https://dart-ko.dev/)
 * [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
 * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
-
-Also see the [Flutter community page.]({{site.flutter}}/community)
-
