@@ -18,6 +18,8 @@ class Point {
   // before the constructor body runs.
   // #enddocregion class-with-distanceTo, constructor-initializer
 
+  // #docregion named-constructor
+
   // Named constructor
   Point.origin()
       : x = xOrigin,

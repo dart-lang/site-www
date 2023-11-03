@@ -14,9 +14,11 @@ nextpage:
 
 Declare a constructor by creating a function with the same name as its
 class (plus, optionally, an additional identifier as described in
-[Named constructors](#named-constructors)).
-The most common form of constructor, the generative constructor, creates
-a new instance of a class:
+[Named constructors](#named-constructors)). 
+
+Use the most common constructor, the generative constructor, to create a new
+instance of a class, and [initializing formal parameters](#initializing-formal-parameters)
+to instantiate any instance variables, if necessary:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
@@ -24,6 +26,7 @@ class Point {
   double x = 0;
   double y = 0;
 
+  // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
 }
 ```
@@ -97,6 +100,11 @@ class Point {
   final double y;
 
   Point(this.x, this.y);
+
+  // Named constructor
+  [!Point.origin()!]
+      : x = xOrigin,
+        y = yOrigin;
 }
 {% endprettify %}
 
