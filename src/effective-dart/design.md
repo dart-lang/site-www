@@ -695,7 +695,8 @@ comment.
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 
-Dart previously allowed any class that met certain restrictions
+Dart previously (language version [2.12](/guides/language/evolution#dart-212)
+to [2.19](/guides/language/evolution#dart-219)) allowed any class that met certain restrictions
 (no non-default constructor, no superclass, etc.) to be mixed into other classes.
 This was confusing because the author of the class might not have intended it to
 be mixed in.
