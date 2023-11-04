@@ -35,8 +35,8 @@ jobs:
 #            experimental: false
           - sdk: beta
             experimental: false
-          - sdk: stable
-            experimental: false
+#          - sdk: stable
+#            experimental: false
     continue-on-error: ${{ matrix.experimental }}
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
@@ -74,7 +74,7 @@ jobs:
       - run: npm install -g firebase-tools@12.4.0
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
-          sdk: stable
+          sdk: beta
       - run: tool/check-links.sh
       - uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2
         with:
@@ -101,7 +101,7 @@ jobs:
       - run: npm install -g firebase-tools@12.4.0
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
-          sdk: stable
+          sdk: beta
       - run: tool/check-links.sh
       - name: Stage site on Firebase
         if: ${{ 
