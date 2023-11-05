@@ -308,7 +308,11 @@ main .content {
         opacity: 0;
 
         &:hover {
-          color: lighten($brand-primary, 25%);
+          color: $brand-primary;
+        }
+
+        &:active {
+          color: $flutter-color-blue-700;
         }
       }
 
@@ -658,7 +662,7 @@ ul.nav-list {
     }
 
     &:active {
-      color: lighten($brand-primary, 25%);
+      color: $flutter-color-blue-700;
     }
   }
 

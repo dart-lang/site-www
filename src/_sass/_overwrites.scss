@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use 'core/variables' as *;
 @use 'core/bootstrap';
 
@@ -17,7 +19,7 @@ a {
 
   &:hover, &:focus, &:active {
     code {
-      color: lighten($default-link, 25%);
+      color: color.scale($default-link, $lightness: -15%, $saturation: 15%);
     }
   }
 }
