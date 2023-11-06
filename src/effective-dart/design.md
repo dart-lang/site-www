@@ -376,7 +376,6 @@ stackTrace.toString();
 dateTime.toLocal();
 ```
 
-{% comment %}TODO(parlough) - Fix slug of URL in toc tool or site{% endcomment %}
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object
 
 {% render 'linter-rule-mention.md', rule:'use_to_and_as_if_applicable' %}
@@ -693,8 +692,8 @@ comment.
 
 {% render 'linter-rule-mention.md', rule:'prefer_mixin' %}
 
-Dart previously (language version [2.12](/guides/language/evolution#dart-212)
-to [2.19](/guides/language/evolution#dart-219)) allowed any class that
+Dart previously (language version [2.12](/guides/language/evolution#dart-2-12)
+to [2.19](/guides/language/evolution#dart-2-19)) allowed any class that
 met certain restrictions (no non-default constructor, no superclass, etc.)
 to be mixed into other classes.
 This was confusing because the author of the class
