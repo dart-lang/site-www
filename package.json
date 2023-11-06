@@ -16,10 +16,9 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@sindresorhus/slugify": "^1.1.2",
     "domutils": "^3.1.0",
     "eleventy-sass": "^2.2.3",
-    "firebase-tools": "^12.7.0",
+    "firebase-tools": "^12.8.0",
     "hast-util-to-html": "^9.0.0",
     "hast-util-to-text": "^4.0.0",
     "htmlparser2": "^9.0.0",
@@ -30,6 +29,6 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-table": "^4.1.1",
-    "shikiji": "^0.6.10"
+    "shikiji": "^0.6.12"
   }
 }
