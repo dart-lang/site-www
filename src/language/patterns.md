@@ -264,11 +264,11 @@ for (var MapEntry(:key, value: count) in hist.entries) {
 }
 ```
 
-## Uses cases for patterns
+## Use cases for patterns
 
 The [previous section](#places-patterns-can-appear)
 describes _how_ patterns fit into other Dart code constructs. 
-You saw some interesting uses cases as examples, like [swapping](#variable-assignment)
+You saw some interesting use cases as examples, like [swapping](#variable-assignment)
 the values of two variables, or
 [destructuring key-value pairs](#for-and-for-in-loops)
 in a map. This section describes even more use cases, answering:
