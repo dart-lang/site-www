@@ -13,7 +13,7 @@ and interact with tools such as IDEs, `dart run`, and `webdev`.
 The following table shows which tools
 you can use with common Dart app types.
 
-{% assign y = '<span class="material-icons" title="supported">done</span>' %}
+{% assign y = '<span class="material-icons user-select-none" title="Supported" aria-label="Supported">done</span>' %}
 {% assign b = '&nbsp;' %}
 {% assign na = '&nbsp;' %}
 {% comment %}
@@ -21,80 +21,18 @@ you can use with common Dart app types.
   assign b = '<span class="material-icons" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-{% comment %}
-TODO(parlough): Update table for new syntax.
-<div class="table-wrapper">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th scope="col">[Flutter mobile or desktop][Flutter devtools]</th>
-      <th scope="col">[Flutter web][Flutter devtools]</th>
-      <th scope="col">[Other web][]</th>
-      <th scope="col">[Command-line][]</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">[Debugger][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{y}}</td> <!-- fwa -->
-      <td>{{y}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[Logging view][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{y}}</td> <!-- fwa -->
-      <td>{{y}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[App size tool][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{b}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[CPU profiler][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{b}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[Memory view][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{b}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[Network view][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{b}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[Performance view][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{b}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{y}}</td> <!-- cla -->
-    </tr>
-    <tr>
-      <th scope="row">[Flutter inspector][]</th>
-      <td>{{y}}</td> <!-- fma -->
-      <td>{{y}}</td> <!-- fwa -->
-      <td>{{b}}</td> <!-- owa -->
-      <td>{{na}}</td> <!-- cla -->
-    </tr>
-  </tbody>
-</table>
-</div>
-{% endcomment %}
+| Tool                  | [Flutter mobile or desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Other web][] | [Command-line][] |
+|-----------------------|:---------------------------------------------:|:-------------------------------:|:-------------:|:----------------:|
+| [Debugger][]          |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
+| [Logging view]        |                     {{y}}                     |              {{y}}              |     {{y}}     |      {{y}}       |
+| [App size tool][]     |                     {{y}}                     |                                 |               |      {{y}}       |
+| [CPU profiler][]      |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Memory view][]       |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Network view][]      |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Performance view][]  |                     {{y}}                     |                                 |               |      {{y}}       |
+| [Flutter inspector][] |                     {{y}}                     |              {{y}}              |               |                  |
+
+{:.table .table-striped .nowrap}
 
 For information about using Dart DevTools with each app type
 (for example, command-line apps),
@@ -172,17 +110,17 @@ $ webdev serve --debug
 
 For more information, see [Debugging Dart web apps][].
 
-[App size tool]: {{site.flutter-docs}}/development/tools/devtools/app-size
+[App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
 [Command-line]: #using-devtools-with-a-command-line-app
-[CPU profiler]: {{site.flutter-docs}}/development/tools/devtools/cpu-profiler
-[Debugger]: {{site.flutter-docs}}/development/tools/devtools/debugger
+[CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
+[Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
-[Flutter inspector]: {{site.flutter-docs}}/development/tools/devtools/inspector
-[Flutter devtools]: {{site.flutter-docs}}/development/tools/devtools/overview
-[Logging view]: {{site.flutter-docs}}/development/tools/devtools/logging
-[Memory view]: {{site.flutter-docs}}/development/tools/devtools/memory
-[Network view]: {{site.flutter-docs}}/development/tools/devtools/network
+[Flutter inspector]: {{site.flutter-docs}}/tools/devtools/inspector
+[Flutter devtools]: {{site.flutter-docs}}/tools/devtools/overview
+[Logging view]: {{site.flutter-docs}}/tools/devtools/logging
+[Memory view]: {{site.flutter-docs}}/tools/devtools/memory
+[Network view]: {{site.flutter-docs}}/tools/devtools/network
 [Other web]: #using-devtools-with-a-non-flutter-web-app
-[Performance view]: {{site.flutter-docs}}/development/tools/devtools/performance
-[Timeline view]: {{site.flutter-docs}}/development/tools/devtools/timeline
+[Performance view]: {{site.flutter-docs}}/tools/devtools/performance
+[Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline
