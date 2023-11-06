@@ -543,7 +543,10 @@ thead:has(th:empty) {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 1rem;
-  padding: 1.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 
   i.material-icons {
     font-size: 20px;
@@ -587,10 +590,6 @@ thead:has(th:empty) {
     width: auto;
     background-color: $gray-dark;
     color: $white-base;
-  }
-  
-  .alert-content {
-    margin-top: 0.25rem;
   }
 }
 

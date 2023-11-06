@@ -38,10 +38,11 @@ function _registerAside(markdown, id, defaultTitle, icon, style) {
     render: function (tokens, index) {
       if (tokens[index].nesting === 1) {
         const parsedArgs = /\s+(.*)/.exec(tokens[index].info);
+        
         const title = parsedArgs?.[1] ?? defaultTitle;
         return `<aside class="alert ${style}">
-${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : ''}${title !== null ? ` <strong>${title}</strong>` : ''}
-<div class="alert-content">
+${icon !== null ? `<div class="alert-start"><i class="material-icons" aria-hidden="true">${icon}</i></div>` : ''}
+<div class="alert-content">${title !== null ? `<strong>${title}</strong>` : ''}
 `;
       } else {
         return '</div></aside>\n';

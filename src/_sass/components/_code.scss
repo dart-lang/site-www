@@ -3,9 +3,10 @@
 @use '../core/bootstrap';
 
 @mixin pre-defaults {
-  font-size: 0.875rem; // 14px
+  font-size: 0.9375rem; // 15px
+  line-height: 1.6;
   font-weight: bootstrap.$font-weight-normal;
-  padding: 1.75rem;
+  padding: 1.25rem;
 }
 
 //
@@ -39,7 +40,7 @@ pre {
   .code-block-header {
     background-color: #e9ecef;
     border-bottom: 1px solid $site-color-light-grey;
-    font-size: .875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
   }
