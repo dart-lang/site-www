@@ -2,6 +2,8 @@
 # Run all tests for validating code examples
 set -u
 
+# Set default value of TOOL_DIR if not set.
+TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
 
 EXIT_STATUS=0

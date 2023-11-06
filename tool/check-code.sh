@@ -2,7 +2,10 @@
 # Local development tool for checking formatting issues 
 # then refreshing code, with cache.
 
-set -eu -o pipefail
+set -eu -o 
+
+# Set default value of TOOL_DIR if not set.
+TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
 
 # Validate formatting in files. This will exit if there are 

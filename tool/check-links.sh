@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Check for non-200 links in built Jekyll site using Firebase emulator
 set -eu -o pipefail
+
+# Set default value of TOOL_DIR if not set.
+TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
 
 dart pub get

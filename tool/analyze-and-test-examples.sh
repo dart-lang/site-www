@@ -3,6 +3,9 @@
 # Final exit code reflects whether errors were encountered during tests
 # Ignore script errors, so don't exit on errors/pipefail
 set -u
+
+# Set default value of TOOL_DIR if not set.
+TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
 
 

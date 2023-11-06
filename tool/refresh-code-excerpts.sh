@@ -2,6 +2,9 @@
 # Refresh all code excerpts
 
 set -eu -o pipefail
+
+# Set default value of TOOL_DIR if not set.
+TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
 
 
