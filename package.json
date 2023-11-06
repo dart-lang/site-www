@@ -11,6 +11,11 @@
     "serve": "PRODUCTION=false npx @11ty/eleventy --serve --incremental",
     "build": "PRODUCTION=true npx @11ty/eleventy"
   },
+  "engines": {
+    "node": ">=20.9.0",
+    "pnpm": ">=8.10.2"
+  },
+  "packageManager": "pnpm@8.10.2",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },

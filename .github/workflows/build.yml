@@ -69,8 +69,13 @@ jobs:
       - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install
-      - run: npm run build
+      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598
+      - run: pnpm install
+      - run: pnpm run build
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
@@ -96,8 +101,10 @@ jobs:
       - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install
-      - run: npm run build
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598
+      - run: pnpm install
+      - run: pnpm run build
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
