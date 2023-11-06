@@ -691,7 +691,7 @@ comment.
 <a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
 ### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
-{% include linter-rule-mention.md rule="prefer_mixin" %}
+{% render 'linter-rule-mention.md', rule:'prefer_mixin' %}
 
 Dart previously (language version [2.12](/guides/language/evolution#dart-212)
 to [2.19](/guides/language/evolution#dart-219)) allowed any class that
