@@ -66,14 +66,11 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
-      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598
       - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598
       - run: pnpm install
       - run: pnpm run build
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
@@ -98,11 +95,11 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
+      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598    
       - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598
       - run: pnpm install
       - run: pnpm run build
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
