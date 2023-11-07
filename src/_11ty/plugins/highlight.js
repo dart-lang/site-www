@@ -3,7 +3,7 @@ async function configureHighlighting(markdown) {
   const {toHtml} = await import('hast-util-to-html');
   const {toText} = await import('hast-util-to-text');
   const highlighter = await getHighlighter({
-    langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml', 'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console', 'cmd'],
+    langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml', 'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console', 'cmd', 'plaintext'],
     themes: ['min-light'],
   });
 
