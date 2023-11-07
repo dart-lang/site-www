@@ -1,6 +1,4 @@
-const htmlParser = require('htmlparser2');
-const {findAll, innerText} = require('domutils');
-const getPage = require('./utils/get-page');
+const getPageInfo = require('./utils/get-page-info');
 
 function regexReplace(input, regex, replacement = '') {
   return input.toString().replace(new RegExp(regex), replacement);
@@ -85,27 +83,31 @@ function underscoreBreaker(stringToBreak, inAnchor = false) {
   return stringToBreak.replaceAll('_', '_<wbr>');
 }
 
-function generateToc(contents) {
-  const dom = htmlParser.parseDocument(contents);
-  const headers = findAll((e) => e.tagName === 'h2' || e.tagName === 'h3', dom.children);
+async function generateToc(contents) {
+  const {fromHtml} = await import('hast-util-from-html');
+  const {selectAll} = await import('hast-util-select');
+  const {toText} = await import('hast-util-to-text');
+  
+  const dom = fromHtml(contents);
+  const headers = selectAll('h2, h3', dom);
   let currentH2 = null;
   const builtToc = [];
   let count = 0;
   for (const header of headers) {
-    const id = header.attribs.id;
+    const id = header.properties['id'];
     // Header can't be linked to without an ID.
-    if (id === null || id === '') {
+    if (!id || id === '') {
       continue;
     }
 
     // Don't include if no_toc is specified.
-    if (header.attribs.class?.includes('no_toc')) {
+    if (header.properties['class']?.includes('no_toc')) {
       continue;
     }
 
     // Remove the # added by markdown-it-anchor.
     // We don't want it showing up in the TOC.
-    const text = innerText(header)
+    const text = toText(header)
         .replace(/#$/, '').trim();
 
     if (header.tagName === 'h2') {
@@ -149,7 +151,7 @@ function breadcrumbsForPage(page) {
       // Combine everything but the current segment to find the parent URL.
       const parentUrl = `/${urlSegments.slice(0, -1).join('/')}/`;
       // Search for a parent page with the specified URL.
-      const parentPage = getPage(data.collections.all, parentUrl);
+      const parentPage = getPageInfo(data.collections.all, parentUrl);
       
       // Store the page information and other data of the parent page.
       // If no parent page exists, the breadcrumb loop won't continue.

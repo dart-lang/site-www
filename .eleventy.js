@@ -41,7 +41,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('array_to_sentence_string', arrayToSentenceString);
   eleventyConfig.addFilter('underscore_breaker', underscoreBreaker);
   eleventyConfig.addFilter('throw_error', function (error) { throw new Error(error); });
-  eleventyConfig.addFilter('generate_toc', generateToc);
+  eleventyConfig.addAsyncFilter('generate_toc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
   eleventyConfig.addPlugin(eleventySass, {
@@ -63,7 +63,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/guides/language/specifications');
 
   eleventyConfig.setQuietMode(true);
-  eleventyConfig.addPlugin(directoryOutputPlugin);
   
   eleventyConfig.setServerOptions({
     port: 4000,
