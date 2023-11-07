@@ -125,7 +125,7 @@ class C {
 
 This example features an instance field,
 but it could instead use an instance getter, a static field or getter,
-a top-level variable or getter, or [`this`](#cant-promote-this-this).
+a top-level variable or getter, or [`this`](#this).
 
 {{site.alert.tip}}
   When creating a local variable to hold a field's value,
@@ -211,7 +211,7 @@ You're trying to promote a field, but the field is not private.
 
 It’s possible for other libraries in your program
 to override public fields with a getter. Because
-[getters might not return a stable value](#getters-cant-be-promoted-not-field),
+[getters might not return a stable value](#not-field),
 and the compiler can't know what other libraries are doing,
 non-private fields cannot be promoted.
 
