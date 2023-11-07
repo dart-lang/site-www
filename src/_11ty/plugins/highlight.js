@@ -31,9 +31,36 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
 
   const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
   
-  const tree = highlighter.codeToHast(content, {lang: language, theme: 'min-light'});
+  const lineNumbers = attributes['lineNumbers'];
+  if (lineNumbers && typeof lineNumbers !== 'number') {
+    throw new Error('lineNumbers must be a number!');
+  }
+
+  const highlightLines = attributes['highlightLines'];
+  const linesToHighlight = highlightLines ?
+      _parseNumbersAndRanges(highlightLines) : null;
+  
+  const tree = highlighter.codeToHast(content, {
+    lang: language, 
+    theme: 'min-light',
+    transforms: {
+      line(node, line) {
+        if (lineNumbers) {
+          node.properties['data-line'] = lineNumbers + line - 1;
+        }
+        
+        if (linesToHighlight?.has(line)) {
+          node.properties['class'] += ' highlighted-line';
+        }
+      },
+    },
+  });
 
   const pre = tree.children[0];
+  
+  if (lineNumbers) {
+    pre.properties['class'] += ' show-line-numbers';
+  }
 
   // Remove hard coded background color and text color if present.
   pre.properties['style'] = '';
@@ -101,6 +128,35 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
   tree.children = [wrapper];
 
   return toHtml(tree);
+}
+
+function _parseNumbersAndRanges(input) {
+  const elements = input.split(',');
+  const combinedNumbers = new Set();
+
+  for (const element of elements) {
+    const rangeParts = element.split('-');
+
+    // If it includes a dash, it is (hopefully) a range between two numbers.
+    if (rangeParts.length > 1) {
+      // Split by the dash, and turn each string into a number.
+      // Assume the user only included one dash.
+      const [start, end] = rangeParts.map(Number);
+      if (!Number.isNaN(start) && !Number.isNaN(end)) {
+        for (let i = start; i <= end; i++) {
+          combinedNumbers.add(i);
+        }
+      }
+    } else {
+      // It's (hopefully) just a single number.
+      const number = Number(element);
+      if (!Number.isNaN(number)) {
+        combinedNumbers.add(number);
+      }
+    }
+  }
+  
+  return combinedNumbers;
 }
 
 module.exports = {

@@ -1,19 +1,23 @@
+@use 'sass:color';
+
 @use '../core/colors' as *;
 @use '../core/variables' as *;
 @use '../core/bootstrap';
-
-@mixin pre-defaults {
-  font-size: 0.9375rem; // 15px
-  line-height: 1.6;
-  font-weight: bootstrap.$font-weight-normal;
-  padding: 1.25rem;
-}
 
 //
 // Code-prettyprint overrides
 //
 pre {
   margin-bottom: 1rem;
+  font-size: 0.9375rem; // 15px
+  line-height: 1.8;
+  font-weight: bootstrap.$font-weight-normal;
+  padding: 1.25rem 0;
+
+  a {
+    font-family: inherit;
+    font-weight: inherit;
+  }
   
   .highlight {
     background: #ffe600;
@@ -30,6 +34,32 @@ pre {
   
   &:focus {
     outline: none;
+  }
+  
+  span.line {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+    display: inline-block;
+    
+    &.highlighted-line {
+      background: color.change($brand-primary, $alpha: 0.1);
+    }
+  }
+  
+  &.show-line-numbers code {
+    span.line {
+      padding-left: 0.5rem;
+      
+      &[data-line]::before {
+        display: inline-block;
+        content: attr(data-line) "";
+        width: 2em;
+        margin-right: 0.5rem;
+        text-align: right;
+        color: $dash-sub-grey;
+      }
+    }
   }
 }
 
@@ -93,15 +123,6 @@ pre.console-output {
 
 // Dart-site specific style overrides
 .highlight .gp { user-select: none; }
-
-pre {
-  @include pre-defaults;
-
-  a {
-    font-family: inherit;
-    font-weight: inherit;
-  }
-}
 
 // Border and resizability for dartpad
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {

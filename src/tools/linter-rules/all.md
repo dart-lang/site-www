@@ -13,12 +13,12 @@ and adjust as you see fit.
 
 {% assign sorted_lints = linter_rules | sort: "name" %}
 
-```yaml {"title":"analysis_options.yaml"}
+```yaml {"title":"analysis_options.yaml", "lineNumbers":5, "highlightLines":"1-3, 7"}
 linter:
   rules:
     {% for lint in sorted_lints %}
     {%- if lint.sinceDartSdk != "Unreleased" and lint.state != "removed" and lint.state != "internal" -%}
     - {{lint.name}}
     {% endif -%}
-    {% endfor -%}
+    {%- endfor %}
 ```
