@@ -8,8 +8,8 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "serve": "PRODUCTION=false npx @11ty/eleventy --serve --incremental",
-    "build": "PRODUCTION=true npx @11ty/eleventy"
+    "serve": "eleventy --serve --incremental",
+    "build": "eleventy"
   },
   "engines": {
     "node": ">=20.9.0",
