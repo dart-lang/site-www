@@ -223,7 +223,7 @@ main() {
 
 This program is not safe and we shouldn't allow it. However, Dart has always had
 this thing called *implicit downcasts*. If you, for example, pass a value of
-type `Object` to a function expecting an `String`, the type checker allows it:
+type `Object` to a function expecting a `String`, the type checker allows it:
 
 ```dart
 // Without null safety:
