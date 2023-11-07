@@ -1,11 +1,13 @@
 
 // Colors
-$flutter-color-teal: #1CDAC5;
+$flutter-color-blue: #043875;
+$flutter-color-teal: #158477;
+$flutter-color-dark-blue: #042B59;
 $flutter-color-blue-500: #0468D7;
 $flutter-color-blue-600: #0553B1;
-$flutter-color-blue-700: #043875;
-$flutter-color-blue-800: #042B59;
-$flutter-color-fuchsia: #FF2B5B;
+$flutter-color-blue-700: $flutter-color-blue;
+$flutter-color-blue-800: $flutter-color-dark-blue;
+$flutter-color-fuchsia: #E64637;
 $flutter-color-light-blue: #E7F8FF;
 $flutter-color-yellow: #FFF275;
 $flutter-color-grey-500: #E8EAED;
@@ -13,9 +15,9 @@ $site-color-dark-background: #1C2834;
 $site-color-black: #000;
 $site-color-white: #FFF;
 $site-color-codeblock-bg: #F8F9FA;
-$site-color-light-grey: #D8D8D8;
+$site-color-light-grey: #DADCE0;
 $site-color-nav-links: #6E7274;
-$site-color-body: #4A4A4A;
+$site-color-body: #212121;
 $site-color-body-light: $site-color-body;
 $site-color-footer: $site-color-dark-background;
 $site-color-primary: $flutter-color-blue-500;
