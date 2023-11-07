@@ -63,7 +63,8 @@ class Point {
 ```
 
 The variables introduced by the initializing formals
-are implicitly final and only in scope of the initializer list.
+are implicitly final and only in scope of the
+[initializer list](/language/constructors#initializer-list).
 
 If you need to perform some logic that cannot be expressed in the initializer list,
 create a [factory constructor](#factory-constructors) 
