@@ -8,8 +8,8 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "serve": "eleventy --serve --incremental",
-    "build": "eleventy"
+    "serve": "PRODUCTION=false eleventy --serve --incremental",
+    "build": "PRODUCTION=true eleventy"
   },
   "engines": {
     "node": ">=20.9.0",
@@ -17,7 +17,8 @@
   },
   "packageManager": "pnpm@8.10.2",
   "dependencies": {
-    "bootstrap-scss": "^4.6.2"
+    "bootstrap-scss": "^4.6.2",
+    "html-minifier-terser": "^7.2.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

@@ -28,6 +28,8 @@ With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
+{% comment %}
+TODO(parlough): Update to use new code highlighting
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 ```dart
@@ -64,6 +66,7 @@ var [!controller = StreamController<String>()!];
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 </blockquote>
+{% endcomment %}
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the

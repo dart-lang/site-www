@@ -12,6 +12,7 @@ const {configureHighlighting} = require('./src/_11ty/plugins/highlight');
 
 const yaml = require('js-yaml');
 const eleventySass = require('eleventy-sass');
+const minifier = require('html-minifier-terser');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.on('eleventy.before', async () => {
@@ -61,6 +62,24 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/f', {expand: true, filter: /^(?!_).+/});
   eleventyConfig.addPassthroughCopy('src/guides/language/specifications');
 
+  if (_isProduction()) {
+    // If building for production, minify/optimize the HTML output.
+    // Doing so during serving isn't worth the extra build time.
+    eleventyConfig.addTransform('minify-html', async function (content) {
+      if (this.page.outputPath && this.page.outputPath.endsWith('.html')) {
+        // Minify the page's content if it's an HTML file.
+        // Other options can be enabled, but each should be tested.
+        return await minifier.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true,
+        });
+      }
+
+      return content;
+    });
+  }
+  
   eleventyConfig.setQuietMode(true);
   
   eleventyConfig.setServerOptions({
