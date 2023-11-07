@@ -131,20 +131,20 @@ check out [All linter rules](/tools/linter-rules/all).
 
 These rules identify possible errors and other mistakes in your code.
 
-{% render 'linter-rules-section.md', type:'errors', linter_rules:linter_rules %}
+{% include 'linter-rules-section.md', type:'errors', linter_rules:linter_rules %}
 
 ### Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
-{% render 'linter-rules-section.md', type:'style', linter_rules:linter_rules %}
+{% include 'linter-rules-section.md', type:'style', linter_rules:linter_rules %}
 
 ### Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
 
-{% render 'linter-rules-section.md', type:'pub', linter_rules:linter_rules %}
+{% include 'linter-rules-section.md', type:'pub', linter_rules:linter_rules %}
 
 [Dart style guide]: /effective-dart/style

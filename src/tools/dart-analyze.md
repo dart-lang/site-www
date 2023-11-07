@@ -8,7 +8,7 @@ The `dart analyze` command
 performs the same [static analysis][]
 that you get when you use an IDE or editor that has Dart support.
 
-{% render 'tools/dart-tool-note.md' %}
+{% include 'tools/dart-tool-note.md' %}
 
 Here's an example of performing static analysis over all the Dart files
 under the current directory:

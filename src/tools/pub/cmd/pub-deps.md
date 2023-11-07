@@ -81,4 +81,4 @@ Prints all available executables.
 Generates output in JSON format.
 
 
-{% render 'pub-problems.md' %}
+{% include 'pub-problems.md' %}

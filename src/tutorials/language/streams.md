@@ -58,7 +58,7 @@ generating a simple stream of integers using an `async*` function:
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% render 'dartpads-embedded-troubleshooting.md' %}
+{% include 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>

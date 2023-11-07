@@ -109,7 +109,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% render 'tools/pub-option-no-offline.md' %}
+{% include 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -154,4 +154,4 @@ To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
 
-{% render 'pub-problems.md' %}
+{% include 'pub-problems.md' %}

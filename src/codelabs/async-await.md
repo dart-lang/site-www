@@ -28,7 +28,7 @@ Estimated time to complete this codelab: 40-60 minutes.
 
 :::note
 This page uses embedded DartPads to display examples and exercises.
-{% render 'dartpads-embedded-troubleshooting.md' %}
+{% include 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 ## Why asynchronous code matters

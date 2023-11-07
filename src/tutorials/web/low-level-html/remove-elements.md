@@ -18,7 +18,7 @@ prevpage:
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% render 'dartpads-embedded-troubleshooting.md' %}
+{% include 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 This tutorial shows you how to delete elements from the DOM.

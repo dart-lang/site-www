@@ -133,7 +133,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% render 'tools/pub-option-no-offline.md' %}
+{% include 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -153,4 +153,4 @@ Refuses to resolve dependencies with an error message
 if the `pubspec.lock` file deviates or is missing.
 
 
-{% render 'pub-problems.md' %}
+{% include 'pub-problems.md' %}

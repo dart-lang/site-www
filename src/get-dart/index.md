@@ -32,7 +32,7 @@ and has Dart's [`dart`](/tools/dart-tool) command-line interface
 in its `bin` folder.
 
 :::warning Notice
-{% render './archive/_sdk-terms.md' %}
+{% include './archive/_sdk-terms.md' %}
 :::
 
 <ul class="tabs__top-bar">
@@ -42,17 +42,17 @@ in its `bin` folder.
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
 
-{% render './_windows.md' %}
+{% include './_windows.md' %}
 
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
 
-{% render './_linux.md' %}
+{% include './_linux.md' %}
 
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
 
-{% render './_mac.md' %}
+{% include './_mac.md' %}
 
 </div>
 

@@ -23,7 +23,7 @@ to cover `import` and `export` directives. The guidelines apply equally to both.
 
 ### DO use strings in `part of` directives
 
-{% render 'linter-rule-mention.md', rule:'use_string_in_part_of_directives' %}
+{% include 'linter-rule-mention.md', rule:'use_string_in_part_of_directives' %}
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
@@ -66,7 +66,7 @@ part of my_library;
 
 ### DON'T import libraries that are inside the `src` directory of another package
 
-{% render 'linter-rule-mention.md', rule:'implementation_imports' %}
+{% include 'linter-rule-mention.md', rule:'implementation_imports' %}
 
 The `src` directory under `lib` [is specified][package guide] to contain
 libraries private to the package's own implementation. The way package
@@ -82,7 +82,7 @@ theoretically non-breaking point release of that package could break your code.
 
 ### DON'T allow an import path to reach into or out of `lib`
 
-{% render 'linter-rule-mention.md', rule:'avoid_relative_lib_imports' %}
+{% include 'linter-rule-mention.md', rule:'avoid_relative_lib_imports' %}
 
 A `package:` import lets you access
 a library inside a package's `lib` directory
@@ -135,7 +135,7 @@ import libraries from other places in the package.
 
 ### PREFER relative import paths
 
-{% render 'linter-rule-mention.md', rule:'prefer_relative_imports' %}
+{% include 'linter-rule-mention.md', rule:'prefer_relative_imports' %}
 
 Whenever the previous rule doesn't come into play, follow this one.
 When an import does *not* reach across `lib`, prefer using relative imports.
@@ -187,7 +187,7 @@ import 'test_utils.dart'; // Relative within 'test' is fine.
 
 ### DON'T explicitly initialize variables to `null`
 
-{% render 'linter-rule-mention.md', rule:'avoid_init_to_null' %}
+{% include 'linter-rule-mention.md', rule:'avoid_init_to_null' %}
 
 If a variable has a non-nullable type, Dart reports a compile error if you try
 to use it before it has been definitely initialized. If the variable is
@@ -230,7 +230,7 @@ Item? bestDeal(List<Item> cart) {
 
 ### DON'T use an explicit default value of `null`
 
-{% render 'linter-rule-mention.md', rule:'avoid_init_to_null' %}
+{% include 'linter-rule-mention.md', rule:'avoid_init_to_null' %}
 
 If you make a nullable parameter optional but don't give it a default value, the
 language implicitly uses `null` as the default, so there's no need to write it.
@@ -415,7 +415,7 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 ### DO use adjacent strings to concatenate string literals
 
-{% render 'linter-rule-mention.md', rule:'prefer_adjacent_string_concatenation' %}
+{% include 'linter-rule-mention.md', rule:'prefer_adjacent_string_concatenation' %}
 
 If you have two string literals—not values, but the actual quoted literal
 form—you do not need to use `+` to concatenate them. Just like in C and
@@ -438,7 +438,7 @@ raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
 
 ### PREFER using interpolation to compose strings and values
 
-{% render 'linter-rule-mention.md', rule:'prefer_interpolation_to_compose_strings' %}
+{% include 'linter-rule-mention.md', rule:'prefer_interpolation_to_compose_strings' %}
 
 If you're coming from other languages, you're used to using long chains of `+`
 to build a string out of literals and other values. That does work in Dart, but
@@ -461,7 +461,7 @@ It's fine to use `.toString()` when converting only a single object to a string.
 
 ### AVOID using curly braces in interpolation when not needed
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_brace_in_string_interps' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_brace_in_string_interps' %}
 
 If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
@@ -485,7 +485,7 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible
 
-{% render 'linter-rule-mention.md', rule:'prefer_collection_literals' %}
+{% include 'linter-rule-mention.md', rule:'prefer_collection_literals' %}
 
 Dart has three core collection types: List, Map, and Set. The Map and Set
 classes have unnamed constructors like most classes do. But because these
@@ -548,7 +548,7 @@ arguments.addAll(filePaths
 
 ### DON'T use `.length` to see if a collection is empty
 
-{% render 'linter-rule-mention.md', rule1:'prefer_is_empty', rule2:'prefer_is_not_empty' %}
+{% include 'linter-rule-mention.md', rule1:'prefer_is_empty', rule2:'prefer_is_not_empty' %}
 
 The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
@@ -576,7 +576,7 @@ if (!words.isEmpty) return words.join(' ');
 
 ### AVOID using `Iterable.forEach()` with a function literal
 
-{% render 'linter-rule-mention.md', rule:'avoid_function_literals_in_foreach_calls' %}
+{% include 'linter-rule-mention.md', rule:'avoid_function_literals_in_foreach_calls' %}
 
 `forEach()` functions are widely used in JavaScript because the built in
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
@@ -661,7 +661,7 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type
 
-{% render 'linter-rule-mention.md', rule:'prefer_iterable_whereType' %}
+{% include 'linter-rule-mention.md', rule:'prefer_iterable_whereType' %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
@@ -855,7 +855,7 @@ involving functions.
 
 ### DO use a function declaration to bind a function to a name
 
-{% render 'linter-rule-mention.md', rule:'prefer_function_declarations_over_variables' %}
+{% include 'linter-rule-mention.md', rule:'prefer_function_declarations_over_variables' %}
 
 Modern languages have realized how useful local nested functions and closures
 are. It's common to have a function defined inside another one. In many cases,
@@ -887,7 +887,7 @@ void main() {
 
 ### DON'T create a lambda when a tear-off will do
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_lambdas' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_lambdas' %}
 
 When you refer to a function, method, or named constructor but omit the
 parentheses, Dart creates a _tear-off_—a closure that takes the same
@@ -940,7 +940,7 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 
 ### DO use `=` to separate a named parameter from its default value
 
-{% render 'linter-rule-mention.md', rule:'prefer_equal_for_default_values' %}
+{% include 'linter-rule-mention.md', rule:'prefer_equal_for_default_values' %}
 
 Before Dart 3, Dart allowed both `:` and `=` 
 as the default value separator for named parameters. 
@@ -1074,7 +1074,7 @@ variables). The following best practices apply to an object's members.
 
 ### DON'T wrap a field in a getter and setter unnecessarily
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_getters_setters' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_getters_setters' %}
 
 In Java and C#, it's common to hide all fields behind getters and setters (or
 properties in C#), even if the implementation just forwards to the field. That
@@ -1137,7 +1137,7 @@ don't reach for that until you need to.
 
 ### CONSIDER using `=>` for simple members
 
-{% render 'linter-rule-mention.md', rule:'prefer_expression_function_bodies' %}
+{% include 'linter-rule-mention.md', rule:'prefer_expression_function_bodies' %}
 
 In addition to using `=>` for function expressions, Dart also lets you define
 members with it. That style is a good fit for simple members that just calculate
@@ -1192,7 +1192,7 @@ set x(num value) => center = Point(value, center.y);
 
 ### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing {:#dont-use-this-when-not-needed-to-avoid-shadowing}
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_this' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_this' %}
 
 JavaScript requires an explicit `this.` to refer to members on the object whose
 method is currently being executed, but Dart—like C++, Java, and
@@ -1330,7 +1330,7 @@ The following best practices apply to declaring constructors for a class.
 
 ### DO use initializing formals when possible
 
-{% render 'linter-rule-mention.md', rule:'prefer_initializing_formals' %}
+{% include 'linter-rule-mention.md', rule:'prefer_initializing_formals' %}
 
 Many fields are initialized directly from a constructor parameter, like:
 
@@ -1406,7 +1406,7 @@ performance.
 
 ### DO use `;` instead of `{}` for empty constructor bodies
 
-{% render 'linter-rule-mention.md', rule:'empty_constructor_bodies' %}
+{% include 'linter-rule-mention.md', rule:'empty_constructor_bodies' %}
 
 In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
@@ -1431,7 +1431,7 @@ class Point {
 
 ### DON'T use `new`
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_new' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_new' %}
 
 The `new` keyword is optional when calling a constructor.
 Its meaning is not clear because factory constructors mean a
@@ -1473,7 +1473,7 @@ Widget build(BuildContext context) {
 
 ### DON'T use `const` redundantly
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_const' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_const' %}
 
 In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
@@ -1519,7 +1519,7 @@ best practices apply to catching and throwing exceptions.
 
 ### AVOID catches without `on` clauses
 
-{% render 'linter-rule-mention.md', rule:'avoid_catches_without_on_clauses' %}
+{% include 'linter-rule-mention.md', rule:'avoid_catches_without_on_clauses' %}
 
 A catch clause with no `on` qualifier catches *anything* thrown by the code in
 the try block. [Pokémon exception handling][pokemon] is very likely not what you
@@ -1562,7 +1562,7 @@ one of the core Exception classes or some other type.
 
 ### DON'T explicitly catch `Error` or types that implement it
 
-{% render 'linter-rule-mention.md', rule:'avoid_catching_errors' %}
+{% include 'linter-rule-mention.md', rule:'avoid_catching_errors' %}
 
 This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
@@ -1575,7 +1575,7 @@ and fix the code that is causing it to be thrown in the first place.
 
 ### DO use `rethrow` to rethrow a caught exception
 
-{% render 'linter-rule-mention.md', rule:'use_rethrow_when_possible' %}
+{% include 'linter-rule-mention.md', rule:'use_rethrow_when_possible' %}
 
 If you decide to rethrow an exception, prefer using the `rethrow` statement
 instead of throwing the same exception object using `throw`.

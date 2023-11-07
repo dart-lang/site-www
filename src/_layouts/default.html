@@ -2,14 +2,14 @@
 <html lang="en">
   {% include 'head.html' %}
   <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
-    {% render 'cookie-notice.html' %}
-    {% render 'gtags.html' %}
+    {% include 'cookie-notice.html' %}
+    {% include 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
     {% include 'navigation-side.html' %}
     <main id="page-content">
       {% if toc != false -%}
       {% assign tocContents = content | generate_toc %}
-      {% render 'navigation-toc-side.html', tocContents:tocContents %}
+      {% include 'navigation-toc-side.html', tocContents:tocContents %}
       {% endif -%}
       <article>
         <div class="content">
@@ -26,13 +26,13 @@
             {% endif -%}
           </div>
           {% if toc != false -%}
-          {% render 'navigation-toc-top.html', tocContents:tocContents %}
+          {% include 'navigation-toc-top.html', tocContents:tocContents %}
           {% endif -%}
           {{ content }}
           {% include 'navigation-sub.html' %}
         </div>
       </article>
     </main>
-    {% render 'page-footer.html' %}
+    {% include 'page-footer.html' %}
   </body>
 </html>

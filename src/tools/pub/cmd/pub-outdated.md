@@ -55,7 +55,7 @@ As the following example shows,
 `dart pub outdated` colorizes the output by default
 when you run it on the command line.
 
-{% render './_pub-outdated-output.html' %}
+{% include './_pub-outdated-output.html' %}
 
 The **Resolvable** column shows which versions you can upgrade to
 for each out-of-date dependency.
@@ -161,7 +161,7 @@ Here is the part of the [example](#example) output
 that shows the four version columns:
 Current, Upgradable, Resolvable, and Latest.
 
-{% render './_pub-outdated-output-columns.html' %}
+{% include './_pub-outdated-output-columns.html' %}
 
 Current
 : The version used in your package, as recorded in `pubspec.lock`.
@@ -234,7 +234,7 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-{% render 'pub-problems.md' %}
+{% include 'pub-problems.md' %}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

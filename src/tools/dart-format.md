@@ -10,7 +10,7 @@ with formatting that follows
 This is the same formatting that you can get
 when using an IDE or editor that has Dart support.
 
-{% render 'tools/dart-tool-note.md' %}
+{% include 'tools/dart-tool-note.md' %}
 
 Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files

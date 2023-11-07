@@ -105,7 +105,7 @@ that can help you follow a guideline
 then the guideline links to those rules.
 The links use the following format:
 
-{% render 'linter-rule-mention.md', rule:'unnecessary_getters_setters' %}
+{% include 'linter-rule-mention.md', rule:'unnecessary_getters_setters' %}
 
 To learn how to use the linter,
 see [Enabling linter rules][]
@@ -139,4 +139,4 @@ Dart constructs.
 
 ## Summary of all rules
 
-{% render './_toc.md' %}
+{% include './_toc.md' %}

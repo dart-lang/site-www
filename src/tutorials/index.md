@@ -36,7 +36,7 @@ which are fundamental to most Dart programs.
 
 ## Server-side Dart tutorials
 
-{% render 'server-tutorials.md' %}
+{% include 'server-tutorials.md' %}
 
 ## Web apps
 

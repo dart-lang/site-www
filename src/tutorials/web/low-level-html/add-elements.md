@@ -21,7 +21,7 @@ prevpage:
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% render 'dartpads-embedded-troubleshooting.md' %}
+{% include 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 As you learned in the previous tutorial,
