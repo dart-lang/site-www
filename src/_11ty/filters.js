@@ -100,8 +100,8 @@ async function generateToc(contents) {
       continue;
     }
 
-    // Don't include if no_toc is specified.
-    if (header.properties['class']?.includes('no_toc')) {
+    // Don't include if no_toc is specified as a class on the header.
+    if (header.properties['className']?.includes('no_toc')) {
       continue;
     }
 
