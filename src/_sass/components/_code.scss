@@ -10,9 +10,8 @@
 pre {
   margin-bottom: 1rem;
   font-size: 0.9375rem; // 15px
-  line-height: 1.8;
   font-weight: bootstrap.$font-weight-normal;
-  padding: 1.25rem 0;
+  padding: 1.25rem;
 
   a {
     font-family: inherit;
@@ -65,11 +64,11 @@ pre {
 
 .code-block-wrapper {
   margin-bottom: 1rem;
-  border: 1px solid $site-color-light-grey;
+  border: 1px solid $flutter-color-grey-600;
   
   .code-block-header {
     background-color: #e9ecef;
-    border-bottom: 1px solid $site-color-light-grey;
+    border-bottom: 1px solid $flutter-color-grey-600;
     font-size: 0.9375rem;
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
@@ -94,6 +93,12 @@ pre {
   
   pre {
     margin-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    
+    &:not([lang="console"]) {
+      line-height: 1.8;
+    }
   }
 }
 

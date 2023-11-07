@@ -40,7 +40,7 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
   const linesToHighlight = highlightLines ?
       _parseNumbersAndRanges(highlightLines) : null;
   
-  const tree = highlighter.codeToHast(content, {
+  const tree = highlighter.codeToHast(content.trim(), {
     lang: language, 
     theme: 'min-light',
     transforms: {
