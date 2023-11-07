@@ -17,6 +17,7 @@
   },
   "packageManager": "pnpm@8.10.2",
   "dependencies": {
+    "@11ty/eleventy-plugin-directory-output": "^1.0.1",
     "bootstrap-scss": "^4.6.2"
   },
   "devDependencies": {

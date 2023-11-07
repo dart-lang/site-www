@@ -4,74 +4,70 @@ pagination:
   size: 1
   alias: lint
   addAllPagesToCollections: true
-permalink: "/tools/linter-rules/{{lint.name}}"
+permalink: "/tools/linter-rules/{{lint.name}}.html"
 show_breadcrumbs: true
 underscore_breaker_titles: true
 eleventyComputed:
   title: "{{ lint.name }}"
+  description: "Learn more about the {{ lint.name }} linter rule."
 ---
 
 {{lint.description}}
 
-{% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" %}
+{% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" -%}
 _This rule is currently **experimental**
 and not yet available in a stable SDK._
-{% elsif lint.state == "removed" %}
+{% elsif lint.state == "removed" -%}
 _This rule has been removed as of the latest Dart releases._
-{% elsif lint.state != "stable" %}
+{% elsif lint.state != "stable" -%}
 _This rule is currently **{{lint.state}}**
 and available as of Dart {{lint.sinceDartSdk}}._
-{% else %}
+{% else -%}
 _This rule is available as of Dart {{lint.sinceDartSdk}}._
-{% endif %}
+{% endif -%}
 
-{% if lint.sets != empty %}
+{% if lint.sets != empty -%}
 
-{% assign rule_sets = "" %}
+{% assign rule_sets = "" -%}
 
-{% for set in lint.sets %}
+{% for set in lint.sets -%}
 
-{% if set == "core" or set == "recommended" %}
+{% if set == "core" or set == "recommended" -%}
 {% assign set_link = "lints" %}
-{% elsif set == "flutter" %}
+{% elsif set == "flutter" -%}
 {% assign set_link = "flutter_lints" %}
-{% else %}
+{% else -%}
 {% assign set_link = set %}
-{% endif %}
+{% endif -%}
 
 {%- capture rule_set -%}
 [{{set}}](/tools/linter-rules#{{set_link}}){% if forloop.last == false %},{% endif %}
-{% endcapture %}
+{% endcapture -%}
 
 {%- assign rule_sets = rule_sets | append: rule_set -%}
-
-{% endfor %}
+{% endfor -%}
 
 <em>Rule sets: {{ rule_sets }}</em>
-
-{% endif %}
+{% endif -%}
 
 {% if lint.fixStatus == "hasFix" %}
-<em>This rule has a [quick fix](/tools/linter-rules#quick-fixes) available.</em>
+_This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
 {% endif %}
 
-{% if lint.incompatible != empty %}
+{% if lint.incompatible != empty -%}
+{% assign incompatible_rules = "" -%}
 
-{% assign incompatible_rules = "" %}
-
-{% for incompatible in lint.incompatible %}
+{% for incompatible in lint.incompatible -%}
 
 {%- capture incompatible_rule -%}
 [{{incompatible}}](/tools/linter-rules/{{incompatible}}){% if forloop.last == false %},{% endif %}
-{% endcapture %}
+{% endcapture -%}
 
-{% assign incompatible_rules = incompatible_rules | append: incompatible_rule %}
-
-{% endfor %}
+{% assign incompatible_rules = incompatible_rules | append: incompatible_rule -%}
+{% endfor -%}
 
 <em>Incompatible rules: {{ incompatible_rules }}</em>
-
-{% endif %}
+{% endif -%}
 
 ## Details
 
@@ -81,8 +77,7 @@ _This rule is available as of Dart {{lint.sinceDartSdk}}._
 
 To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your
-[`analysis_options.yaml`](/tools/analysis)
-file:
+[`analysis_options.yaml`](/tools/analysis) file:
 
 ```yaml
 linter:

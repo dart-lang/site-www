@@ -12,6 +12,7 @@ const {configureHighlighting} = require('./src/_11ty/plugins/highlight');
 
 const yaml = require('js-yaml');
 const eleventySass = require('eleventy-sass');
+const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.on('eleventy.before', async () => {
@@ -62,6 +63,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/guides/language/specifications');
 
   eleventyConfig.setQuietMode(true);
+  eleventyConfig.addPlugin(directoryOutputPlugin);
   
   eleventyConfig.setServerOptions({
     port: 4000,

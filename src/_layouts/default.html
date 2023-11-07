@@ -13,23 +13,23 @@
       {% endif -%}
       <article>
         <div class="content">
-          {% include 'navigation-sub.html' %}
+          {% include 'navigation-sub.html' -%}
           <div id="site-content-title">
-            {% include 'page-github-links.html' %}
+            {% include 'page-github-links.html' -%}
             {% if underscore_breaker_titles -%}
             <h1>{{title | underscore_breaker}}</h1>
             {% else %}
             <h1>{{title }}</h1>
             {% endif -%}
             {% if show_breadcrumbs == true -%}
-              {% include 'breadcrumbs.html' %}
+              {% include 'breadcrumbs.html' -%}
             {% endif -%}
           </div>
           {% if toc != false -%}
-          {% include 'navigation-toc-top.html', tocContents:tocContents %}
+          {% include 'navigation-toc-top.html', tocContents:tocContents -%}
           {% endif -%}
           {{ content }}
-          {% include 'navigation-sub.html' %}
+          {% include 'navigation-sub.html' -%}
         </div>
       </article>
     </main>
