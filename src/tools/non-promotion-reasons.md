@@ -125,7 +125,7 @@ class C {
 
 This example features an instance field,
 but it could instead use an instance getter, a static field or getter,
-a top-level variable or getter, or [`this`](#trying-to-promote-this-this).
+a top-level variable or getter, or [`this`](#cant-promote-this-this).
 
 {{site.alert.tip}}
   When creating a local variable to hold a field's value,
