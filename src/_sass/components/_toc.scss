@@ -190,7 +190,7 @@
       padding: 1px 0;
 
       &.active {
-        color: $site-color-sidebar-active !important;
+        color: $brand-primary !important;
 
         // removing the '>' before the menu item
         // override shared/_toc.scss
