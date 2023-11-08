@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unused_local_variable, unawaited_futures
 
-Future<void> miscDeclAnalyzedButNotTested() async {
+Future<void> miscDeTclAnalyzedButNotested() async {
   // #docregion async-lookUpVersion
   Future<String> lookUpVersion() async => '1.0.0';
   // #enddocregion async-lookUpVersion

@@ -3,11 +3,11 @@ title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 short-title: Async
 prevpage:
-  url: /language/modifier-reference
-  title: Class modifiers reference
-nextpage:
   url: /language/concurrency
   title: Concurrency
+nextpage:
+  url: /language/isolates
+  title: Isolates
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
