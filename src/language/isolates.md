@@ -10,82 +10,18 @@ nextpage:
   title: Null safety
 ---
 
+<?code-excerpt path-base="concurrency"?>
 
+<style>
+  article img {
+    padding: 15px 0;
+  }
+</style>
 
-## How isolates work
+This page discusses some examples that use the `Isolate` API to implement 
+isolates.
 
-Most modern devices have multi-core CPUs.
-To take advantage of multiple cores,
-developers sometimes use shared-memory threads running concurrently.
-However, shared-state concurrency is
-[error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
-can lead to complicated code.
-
-Instead of threads, all Dart code runs inside of isolates.
-Each isolate has its own memory heap,
-ensuring that none of the state in an isolate is accessible from
-any other isolate.
-
-
-
-Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they're available.
-Isolates are like threads or processes,
-but each isolate has its own memory and a single thread running an event loop.
-
-
-
-
-### The main isolate
-
-You often don't need to think about isolates at all.
-Dart programs run in the main isolate by default.
-It's the thread where a program starts to run and execute,
-as shown in the following figure:
-
-![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/assets/img/language/concurrency/basics-main-isolate.png)
-
-Even single-isolate programs can execute smoothly.
-Before continuing to the next line of code, these apps use
-[async-await][] to wait for asynchronous operations to complete.
-A well-behaved app starts quickly,
-getting to the event loop as soon as possible.
-The app then responds to each queued event promptly,
-using asynchronous operations as necessary.
-
-[async-await]: {{site.url}}/codelabs/async-await
-
-
-
-### Event handling
-
-
-
-
-
-Each isolate message can deliver one object,
-which includes anything that's transitively reachable from that object.
-Not all object types are sendable, and
-the send fails if any transitively reachable object is unsendable.
-For example, you can send an object of type `List<Object>` only if
-none of the objects in the list is unsendable.
-If one of the objects is, say, a `Socket`, then
-the send fails because sockets are unsendable.
-
-For information on the kinds of objects that you can send in messages,
-see the API reference documentation for the [`send()` method][].
-
-
-
-[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
-
-## Code examples
-
-This section discusses some examples
-that use the `Isolate` API
-to implement isolates.
-
-### Implementing a simple worker isolate
+## Implementing a simple worker isolate
 
 These examples implement a main isolate
 that spawns a simple worker isolate.
@@ -101,20 +37,14 @@ setting up and managing worker isolates:
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-{{site.alert.flutter-note}}
-If you're using Flutter,
-you can use [Flutter's `compute` function][]
+{{site.alert.flutter-note}} 
+If you're using Flutter, you can use [Flutter's `compute` function][]
 instead of `Isolate.run()`.
-On the [web](#web), the `compute` function falls back
-to running the specified function on the current event loop.
-Use `Isolate.run()` when targeting native platforms only,
-for a more ergonomic API.
 {{site.alert.end}}
 
-[native and non-native platforms]: /overview#platform
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
-#### Running an existing method in a new isolate
+### Running an existing method in a new isolate
 
 The main isolate contains the code that spawns a new isolate:
 
@@ -173,7 +103,7 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
-#### Sending closures with isolates
+### Sending closures with isolates
 
 You can also create a simple worker isolate with `run()` using a
 function literal, or closure, directly in the main isolate.
@@ -207,18 +137,87 @@ for "run in parallel".
 
 [closure]: /language/functions#anonymous-functions
 
-### Sending multiple messages between isolates
+## Sending multiple messages between isolates with ports
 
 `Isolate.run()` abstracts a handful of lower-level,
 isolate-related API to simplify isolate management:
 
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
+* [`SendPort.send()` method][]
 
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
+/dart-isolate/SendPort/send.html
+
+### ReceivePorts and SendPorts
+
+This long-lived communication between isolates is set up with two classes (in addition to Isolate): ReceivePort and SendPort. These ports are the only way isolates can communicate with each other.
+
+Ports behave similarly to Streams, in which the StreamController or Sink is 
+created in one isolate, and the listener is set up in the other isolate. In 
+this analogy, the StreamConroller is called a SendPort, and you can “add” 
+messages with the [`send()` method][]. ReceivePorts are the listeners, and 
+when these listeners receive a new message, they call a provided callback with the message as an argument.
+
+[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
+/dart-isolate/SendPort/send.html
+
+#### Setting up ports
+
+Setting up a port requires a few steps, which must be done in a specific order. The following figure shows the conceptual steps required to spawn a new isolate and establish 2-way communication between it and the main isolate.
+
+{{site.alert.note}}
+This diagram, and the following diagram, are high-level and intended to convey the concepts necessary to use isolates, but actual implementation requires a bit more code. A full code example is shown later on this page.  
+{{site.alert.end}}
+
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/port-setup.png)
+
+#### Passing messages using the ports
+
+Along with creating the ports and setting up communication, you’ll also need to tell the ports what to do when they receive messages. This is done using the listen method on each of the respective ReceivePorts.
+
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/port-passing-messages.png)
+
+### Ports example
+
+This example demonstrates how you can set up a long-lived worker isolate 
+with 2-way communication between it and the main isolate. The goal of this 
+code is to make an HTTP request to [Typicode][https://jsonplaceholder.typicode.com] for photo data, and convert the JSON response into a List of Photo objects. This work will be done in the worker isolate. To communicate with the isolate, the main isolate will send strings to the worker isolate that define which endpoint to request data from (for example, “photos”). The isolate will send back a message of type List<Photo>. The class also contains a very simple public interface to trigger messages to the isolate, and to read resulting data from the worker isolate.
+
+#### 1: Define the outline of the BackgroundWorker class
+
+```dart
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:isolate';
+
+import 'package:http/http.dart' as http;
+
+import 'main.dart';
+
+class BackgroundWorker {
+  BackgroundWorker() {}
+
+  late Isolate _isolate;
+
+  // This method will create the worker isolate
+  Future<void> _initIsolate() async {}
+  
+  // This method will handle messages that are sent from the worker isolate back to the main isolate
+  void _handleMessageToMainIsolate(dynamic message) {}
+
+  // This method will handle messages that are sent from the main isolate to the worker
+  static void _workerIsolateEntryPoint(dynamic message) {}
+}
+
+```
+
+
 
 You can use these primitives directly for more granular
 control over isolate functionality. For example, `run()` shuts

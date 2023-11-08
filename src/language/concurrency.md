@@ -161,8 +161,10 @@ file I/O) executes. Using `await` also has the effect of converting
 the `Future<String>` returned by `_readFileAsync()` into a `String`. As a
 result, the `contents` variable has the implicit type `String`.
 
-{{site.alert.note}} The `await` keyword works only in functions that
-have `async` before the function body. {{site.alert.end}}
+{{site.alert.note}} 
+The `await` keyword works only in functions that have `async` before the 
+function body. 
+{{site.alert.end}}
 
 As the following figure shows, the Dart code pauses while `readAsString()`
 executes non-Dart code, in either the Dart virtual machine (VM) or the operating
@@ -525,4 +527,7 @@ as the spawning isolate. Web workers don't have an equivalent API.
     - [`ReceivePort`][]
     - [`SendPort`][]
 
-  
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
