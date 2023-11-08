@@ -14,22 +14,20 @@ nextpage:
 
 Declare a constructor by creating a function with the same name as its
 class (plus, optionally, an additional identifier as described in
-[Named constructors](#named-constructors)).
-The most common form of constructor, the generative constructor, creates
-a new instance of a class:
+[Named constructors](#named-constructors)). 
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
+Use the most common constructor, the generative constructor, to create a new
+instance of a class, and [initializing formal parameters](#initializing-formal-parameters)
+to instantiate any instance variables, if necessary:
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
   double x = 0;
   double y = 0;
 
-  Point(double x, double y) {
-    // See initializing formal parameters for a better way
-    // to initialize instance variables.
-    this.x = x;
-    this.y = y;
-  }
+  // Generative constructor with initializing formal parameters:
+  Point(this.x, this.y);
 }
 ```
 
@@ -43,13 +41,14 @@ The `this` keyword refers to the current instance.
 
 ## Initializing formal parameters
 
-The pattern of assigning a constructor argument to an instance variable
-is so common, 
-Dart has initializing formal parameters to make it easy.
+Dart has *initializing formal parameters* to simplify the common pattern of
+assigning a constructor argument to an instance variable. 
+Use `this.propertyName` directly in the constructor declaration,
+and omit the body. 
 
-Initializing parameters can also be used to initialize
+Initializing parameters also allow you to initialize
 non-nullable or `final` instance variables,
-which both must be initialized or provided a default value.
+which both must be initialized or provided a default value:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
@@ -57,14 +56,20 @@ class Point {
   final double x;
   final double y;
 
+  Point(this.x, this.y);
   // Sets the x and y instance variables
   // before the constructor body runs.
-  Point(this.x, this.y);
 }
 ```
 
 The variables introduced by the initializing formals
-are implicitly final and only in scope of the initializer list.
+are implicitly final and only in scope of the
+[initializer list](/language/constructors#initializer-list).
+
+If you need to perform some logic that cannot be expressed in the initializer list,
+create a [factory constructor](#factory-constructors) 
+(or [static method][]) with that logic
+and then pass the computed values to a normal constructor.
 
 
 ## Default constructors
@@ -398,3 +403,4 @@ var loggerJson = Logger.fromJson(logMap);
 [language version]: /guides/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
+[static method]: /language/classes#static-methods
