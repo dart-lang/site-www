@@ -19,7 +19,7 @@ pre {
   }
   
   .highlight {
-    background: #ffe600;
+    background: $flutter-color-yellow;
     padding: 2px;
   }
 
@@ -64,11 +64,11 @@ pre {
 
 .code-block-wrapper {
   margin-bottom: 1rem;
-  border: 1px solid $flutter-color-grey-600;
+  border: 1px solid $flutter-color-grey-500;
   
   .code-block-header {
     background-color: #e9ecef;
-    border-bottom: 1px solid $flutter-color-grey-600;
+    border-bottom: 1px solid $flutter-color-grey-500;
     font-size: 0.9375rem;
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;

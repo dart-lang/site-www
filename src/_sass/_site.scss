@@ -302,7 +302,7 @@ main .content {
       opacity: 0;
       
       &:hover {
-        color: lighten($brand-primary, 25%);
+        color: $brand-primary;
       }
 
       &:focus {
@@ -310,7 +310,7 @@ main .content {
       }
 
       &:active {
-        color: $brand-primary;
+        color: $flutter-color-blue-700;
       }
     }
 
@@ -576,6 +576,11 @@ thead:has(th:empty) {
     background-color: $alert-info-bg;
   }
 
+  &.alert-secondary {
+    width: auto;
+    background-color: $flutter-color-grey-500;
+  }
+
   &.alert-warning {
     width: auto;
     background-color: $alert-warning-bg;
@@ -655,7 +660,7 @@ ul.nav-list {
     }
 
     &:active {
-      color: lighten($brand-primary, 25%);
+      color: $flutter-color-blue-700;
     }
   }
 
