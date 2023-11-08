@@ -648,7 +648,7 @@ crashing.
 But if the value isn't `null`, it would be good to be able to move it over to
 the non-nullable side so you can call methods on it. Flow analysis is one of the
 primary ways to do this for local variables and parameters
-(and private, final fields, as of Dart 3.2). We've extended type
+(and private final fields, as of Dart 3.2). We've extended type
 promotion to also look at `== null` and `!= null` expressions.
 
 If you check a local variable with nullable type to see if it is not `null`, 
@@ -698,7 +698,7 @@ reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
 Note that type promotion originally only worked on local variables,
-and now also works on private, final fields as of Dart 3.2.
+and now also works on private final fields as of Dart 3.2.
 For more information about working with non-local variables,
 see [Working with nullable fields](#working-with-nullable-fields).
 
@@ -757,7 +757,7 @@ We've now corralled `null` into the set of nullable types. With flow analysis,
 we can safely let some non-`null` values hop over the fence to the non-nullable
 side where we can use them. That's a big step, but if we stop here, the
 resulting system is still painfully restrictive. Flow analysis only helps with
-locals, parameters, and private, final fields.
+locals, parameters, and private final fields.
 
 To try to regain as much of the flexibility that Dart had before null
 safety—and to go beyond it in some places—we have a handful of other
@@ -1534,7 +1534,7 @@ The core points to take away are:
     nullable operand to the underlying non-nullable type.
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
-    (and private, final fields, as of Dart 3.2)
+    (and private final fields, as of Dart 3.2)
     into usable non-nullable ones. The new flow analysis also has smarter rules
     for type promotion, missing returns, unreachable code, and variable
     initialization.
