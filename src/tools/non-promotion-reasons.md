@@ -34,7 +34,7 @@ This can happen either because:
 // @dart=3.1
 
 class C {
-  final int? _i; // CONTEXT 
+  final int? _i;
   C(this._i);
 
   void f() {
@@ -71,7 +71,7 @@ and you are using a version earlier than 3.2.
 {:.bad}
 ```dart
 class C {
-  int? i;                  // CONTEXT
+  int? i;
   void f() {
     if (i == null) return;
     print(i.isEven);       // ERROR
@@ -90,15 +90,15 @@ class C {
 If you are using Dart 3.1 or earlier, [upgrade to 3.2][upgrade].
 
 If you need to keep using an older version,
-see [Other causes and workarounds](#other-causes-and-workarounds)
+read [Other causes and workarounds](#other-causes-and-workarounds)
 
 ## Other causes and workarounds
 
-The remaining examples on this page document more reasons for promotion failures,
+The remaining examples on this page document reasons for promotion failures
+unrelated to version inconsistencies,
 for both field and local variable failures, with examples and workarounds.
 
 In general, the usual fixes for promotion failures
-unrelated to version inconsistencies
 are one or more of the following:
 
 * Assign the property's value to a local variable of the non-nullable type you need.
@@ -178,8 +178,8 @@ you'd want to do a null check to see whether `this` is null:
 {:.bad}
 ```dart
 extension E on int? {
-  int? get i {
-    return this != null;
+  int get valueOrZero {
+    return this == null ? 0 : this; // ERROR
   }
 }
 ```
@@ -197,9 +197,9 @@ Create a local variable to hold the value of `this`, then perform the null check
 {:.good}
 ```dart
 extension E on int? {
-  int? get i {
+  int get valueOrZero {
     final self = this;
-    return self != null;
+    return self == null ? 0 : self;
   }
 }
 ```
@@ -220,7 +220,7 @@ non-private fields cannot be promoted.
 {:.bad}
 ```dart
 class C {
-  final int? n; // CONTEXT
+  final int? n;
   C(this.n);
 }
 
@@ -230,10 +230,6 @@ test(C c) {
   }
 }
 ```
-
-Here, the compiler produces an error message
-explaining that the `+` operator can't be called on `n`
-because it is potentially null.
 
 **Message:**
 
@@ -250,12 +246,12 @@ could possibly override its value, so it's safe to promote.
 ```dart
 class C {
   final int? _n;
-  C(this.n);
+  C(this._n);
 }
 
 test(C c) {
-  if (c.n != null) {
-    print(c.n + 1); // OK
+  if (c._n != null) {
+    print(c._n + 1); // OK
   }
 }
 ```
@@ -276,7 +272,7 @@ to a non-nullable type.
 {:.bad}
 ```dart
 class C {
-  int? _mutablePrivateField; // CONTEXT
+  int? _mutablePrivateField;
   Example(this._mutablePrivateField);
 
   f() {
@@ -295,16 +291,16 @@ class C {
 
 **Solution:**
 
-Make the field `final`
+Make the field `final`:
 
 {:.good}
 ```dart
 class Example {
-  int? final _immutablePrivateField; 
+  final int? _immutablePrivateField; 
   Example(this._immutablePrivateField);
 
   f() {
-    if (_mutablePrivateField != null) {
+    if (_immutablePrivateField != null) {
       int i = _immutablePrivateField; // OK
     }
   }
@@ -314,7 +310,7 @@ class Example {
 ### Getters can't be promoted {#not-field}
 
 **The cause:** You're trying to promote a getter,
-but only instance fields can be promoted, not getters. 
+but only instance *fields* can be promoted, not instance getters. 
 
 The compiler has no way to guarantee that a getter returns the same result every time.
 Because their stability can't be confirmed, getters are not safe to promote.
@@ -323,19 +319,15 @@ Because their stability can't be confirmed, getters are not safe to promote.
 
 {:.bad}
 ```dart
+import 'dart:math';
+
 abstract class C {
-  int? get _i; // CONTEXT
+  int? get _i => Random().nextBool() ? 123 : null;
 }
 
-class Derived extends Base {
-  @override
-  final int? _i;
-  Derived(this._i);
-}
-
-f(Base b) {
-  if (b._i != null) {
-    int i = b._i; // ERROR
+f(C c) {
+  if (c._i != null) {
+    print(c._i.isEven); // ERROR
   }
 }
 ```
@@ -352,66 +344,29 @@ Assign the getter to a local variable:
 
 {:.good}
 ```dart
-f(Base b) {
-  final j = b._i;
+import 'dart:math';
+
+abstract class C {
+  int? get _i => Random().nextBool() ? 123 : null;
+}
+
+f(C c) {
+  final i = c._i;
   if (i != null) {
-    int i = j; // OK
-  }
-}
-```
-
-#### Note about abstract fields
-
-If the getter in question is [abstract][], you might be able to enable field
-promotion and avoid the error by replacing the abstract getter with an [abstract field][].
-
-For example, this code produces an error because the getter `_i` can't be promoted
-and assigned to a non-nullable type:
-
-{:.bad}
-```dart
-abstract class Base {
-  int? get _i; // CONTEXT
-}
-
-class Derived extends Base {
-  @override
-  final int? _i;
-  Derived(this._i);
-}
-
-f(Base b) {
-  if (b._i != null) {
-    int i = b._i; // ERROR
-  }
-}
-```
-
-Changing the getter to an abstract field enables type promotion, removing the error:
-
-{:.good}
-```dart
-abstract class Base {
-  abstract final int? _i;
-}
-
-class Derived extends Base {
-  @override
-  final int? _i;
-  Derived(this._i);
-}
-
-f(Base b) {
-  if (b._i != null) {
-    int i = b._i; // OK
+    print(i.isEven); // OK
   }
 }
 ```
 
 {{site.alert.note}}
-Abstract fields are syntactically identical to abstract getters.
-The only behavior difference is in field promotion. 
+There is a [known bug] (as of 3.2) where flow analysis doesn't consider `abstract`
+getters stable enough to allow type promotion (though they technically are).
+This will be fixed in a future release.
+In the meantime, replacing an abstract getter with an [abstract field][]
+will allow you to workaround this bug.
 {{site.alert.end}}
+
+[known bug]: https://github.com/dart-lang/language/issues/3328#issuecomment-1792511446
 
 ### External fields can't be promoted {#external}
 
@@ -428,12 +383,12 @@ will return the same value each time it’s called.
 {:.bad}
 ```dart
 class C {
-  external final int? _externalField; // CONTEXT
+  external final int? _externalField;
   C(this._externalField);
 
   f() {
     if (_externalField != null) {
-      int i = _externalField; // ERROR
+      print(_externalField.isEven); // ERROR
     }
   }
 }
@@ -456,9 +411,9 @@ class C {
   C(this._externalField);
 
   f() {
-    final j = this._externalField;
-    if (j != null) {
-      int i = j; // OK
+    final i = this._externalField;
+    if (i != null) {
+      print(i.isEven); // OK
     }
   }
 }
@@ -484,12 +439,12 @@ class Example {
 
 class Override implements Example {
   @override
-  int? get _overridden => Random().nextBool() ? 1 : null; // CONTEXT
+  int? get _overridden => Random().nextBool() ? 1 : null;
 }
 
 f(Example x) {
   if (x._overridden != null) {
-    int i = x._overridden; // ERROR
+    print(x._overridden.isEven); // ERROR
   }
 }
 ```
@@ -502,11 +457,31 @@ f(Example x) {
 
 **Solution**:
 
-*// what is the solution here? would you be able to rename them if they ARE related, too?*
+If the getter and field are related and need to share their name 
+(like when one of them overrides the other, as in the example above),
+then you can enable type promotion by assigning the value to a local variable:
+
 
 {:.good}
 ```dart
+import 'dart:math';
 
+class Example {
+  final int? _overridden;
+  Example(this._overridden);
+}
+
+class Override implements Example {
+  @override
+  int? get _overridden => Random().nextBool() ? 1 : null;
+}
+
+f(Example x) {
+  final i = x._overridden;
+  if (i != null) {
+    print(i.isEven); // OK
+  }
+}
 ```
 
 #### Note about unrelated classes
@@ -527,7 +502,7 @@ class Example {
 }
 
 class Unrelated {
-  int? get _i => Random().nextBool() ? 1 : null; // CONTEXT
+  int? get _i => Random().nextBool() ? 1 : null;
 }
 
 f(Example x) {
@@ -553,7 +528,7 @@ main() {
 
 **Solution:**
 
-If the field and the conflicting getter are truly unrelated,
+If the field and the conflicting entity are truly unrelated,
 you can work around the problem by giving them different names:
 
 {:.good}
@@ -592,21 +567,18 @@ class Example {
 
 class Override implements Example {
   @override
-  int? _overridden; // CONTEXT
+  int? _overridden;
 }
 
 f(Example x) {
   if (x._overridden != null) {
-    int i = x._overridden; // ERROR
+    print(x._overridden.isEven); // ERROR
   }
 }
 ```
 
 This example fails because at runtime, `x` might actually be an
 instance of `Override`, so promotion would not be sound.
-
-The failure could also occur between fields in
-[unrelated clasess](#note-about-unrelated-classes).
 
 **Message:**
 
@@ -616,12 +588,33 @@ The failure could also occur between fields in
 
 **Solution:**
 
-*// Try renaming one of the conflicting fields? What if they ARE related?*
+If the fields are actually related and need to share a name, then you can
+enable type promotion by assigning the value to a final local variable to promote:
 
 {:.good}
 ```dart
+class Example {
+  final int? _overridden;
+  Example(this._overridden);
+}
 
+class Override implements Example {
+  @override
+  int? _overridden;
+}
+
+f(Example x) {
+  final i = x._overridden;
+  if (i != null) {
+    print(i.isEven); // ERROR
+  }
+}
 ```
+
+If the fields are unrelated, then simply rename one of the fields so they don't
+conflict.
+Read the [Note about unrelated clasess](#note-about-unrelated-classes). 
+
 
 ### Conflict with implicit `noSuchMethod` forwarder {#nosuchmethod}
 
@@ -645,7 +638,7 @@ class Example {
   Example(this._i);
 }
 
-class MockExample extends Mock implements Example {} // CONTEXT
+class MockExample extends Mock implements Example {}
 
 f(Example x) {
   if (x._i != null) {
@@ -661,8 +654,9 @@ inside `MockExample`.
 The compiler creates this implicit implementation of `_i` because
 `MockExample` promises to support a getter for `_i` when it implements
 `Example` in its declaration, but doesn't fulfill that promise. 
-So, the undefined getter implementation is handled by `Mock`'s `noSuchMethod`
-definition, which creates an implicit `noSuchMethod` forwarder of the same name.
+So, the undefined getter implementation is handled by [`Mock`'s `noSuchMethod`
+definition](https://pub.dev/documentation/mockito/latest/mockito/Mock/noSuchMethod.html),
+which creates an implicit `noSuchMethod` forwarder of the same name.
 
 The failure can also occur between fields in
 [unrelated clasess](#note-about-unrelated-classes).
@@ -675,10 +669,36 @@ The failure can also occur between fields in
 
 **Solution:**
 
-*// Is there a solution here? Maybe explicitly supporting/defining the getter in `MockExample` would fix it?*
+Define the getter in question so that `noSuchMethod` doesn't have
+to implicitly handle its implementation:
+
+{:.good}
+```dart
+import 'package:mockito/mockito.dart';
+
+class Example {
+  final int? _i;
+  Example(this._i);
+}
+
+class MockExample extends Mock implements Example {
+  @override
+  late final int? _i; // Add a definition for Example's _i getter.
+}
+
+f(Example x) {
+  if (x._i != null) {
+    int i = x._i; // OK
+  }
+}
+```
+
+The getter is declared `late` to be consistent with how mocks are generally used;
+it's not necessary to declare the getter `late` to solve this type promotion
+failure in scenarios not involving mocks.
 
 {{site.alert.note}}
-The example above uses mocks simply because
+The example above uses [mocks](https://pub.dev/packages/mockito) simply because
 `Mock` already contains a `noSuchMethod` definition,
 so we don't have to define an arbitrary one
 and can keep the example code short. 
@@ -1118,6 +1138,8 @@ void f(int? i, int? j) {
 }
 ```
 
+**Example:**
+
 A particularly nasty case looks like this:
 
 {:.bad}
@@ -1136,6 +1158,8 @@ happens before `foo` is ever created.
 But [flow analysis isn't that smart][1536].
 
 [1536]: https://github.com/dart-lang/language/issues/1536
+
+**Solution**:
 
 Again, a solution is to create a local variable:
 
