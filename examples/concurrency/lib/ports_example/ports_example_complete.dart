@@ -74,7 +74,7 @@ class BackgroundWorker {
   // spawned, and it will be passed as an argument the second argument passed
   // to Isolate.spawn()
   // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the sendport from the main
+  //   - It needs to handle the initial message -- the send port from the main
   //   isolate
   //   - It needs to create another Port, one that can continue to receive
   //   messages from the main isolate. And, it needs to send the

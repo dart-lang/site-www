@@ -515,18 +515,21 @@ as the spawning isolate. Web workers don't have an equivalent API.
 ## Additional Resources
 
 - If you’re using many isolates, consider
-  the [IsolateNameServer][https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html] class
+  the [IsolateNameServer][]
   in Flutter, or
-  the [pub package][https://pub.dev/packages/isolate_name_server] that clones
+  the [pub package][] that clones
   the functionality for Dart applications not using Flutter.
 - Dart’s Isolates are an implementation of
-  the [Actor model](https://en.wikipedia.org/wiki/Actor_model).
+  the [Actor model][].
 - Additional documentation on Isolate APIs
     - [`Isolate.exit()`][]
     - [`Isolate.spawn()`][]
     - [`ReceivePort`][]
     - [`SendPort`][]
 
+[IsolateNameServer]: https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html
+[pub package]: https://pub.dev/packages/isolate_name_server
+[Actor model]: https://en.wikipedia.org/wiki/Actor_model
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html

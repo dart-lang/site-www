@@ -9,4 +9,4 @@ Future<String> _readFileAsync(String filename) {
     return contents.trim();
   });
 }
-// #enddocregion
+// #enddocregion main

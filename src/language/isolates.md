@@ -103,6 +103,8 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
+[send_and_receive.dart]: https://github.com/dart-lang/samples/blob/main/isolates/bin/send_and_receive.dart
+
 ### Sending closures with isolates
 
 You can also create a simple worker isolate with `run()` using a
@@ -186,7 +188,9 @@ Along with creating the ports and setting up communication, you’ll also need t
 
 This example demonstrates how you can set up a long-lived worker isolate 
 with 2-way communication between it and the main isolate. The goal of this 
-code is to make an HTTP request to [Typicode][https://jsonplaceholder.typicode.com] for photo data, and convert the JSON response into a List of Photo objects. This work will be done in the worker isolate. To communicate with the isolate, the main isolate will send strings to the worker isolate that define which endpoint to request data from (for example, “photos”). The isolate will send back a message of type List<Photo>. The class also contains a very simple public interface to trigger messages to the isolate, and to read resulting data from the worker isolate.
+code is to make an HTTP request to [Typicode][] for photo data, and convert the JSON response into a List of Photo objects. This work will be done in the worker isolate. To communicate with the isolate, the main isolate will send strings to the worker isolate that define which endpoint to request data from (for example, “photos”). The isolate will send back a message of type List<Photo>. The class also contains a very simple public interface to trigger messages to the isolate, and to read resulting data from the worker isolate.
+
+[Typicode]: https://jsonplaceholder.typicode.com
 
 #### 1: Define the outline of the BackgroundWorker class
 
