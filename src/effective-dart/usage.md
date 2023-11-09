@@ -352,16 +352,17 @@ Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
 to functions expecting a non-nullable type.
 
-Type promotion is only sound, however, for local variables, parameters, and
-private final fields. Instances that are open to manipulation, whether
-explicitly, like top-level variables, or implicitly, like fields with a concrete
+Type promotion is only supported, however, for local variables, parameters, and
+private final fields. Values that are open to manipulation, whether
+directly, like top-level variables, or indirectly, like fields with a concrete
 getter of the same name in the same library, cannot be type promoted.
 Read [Fixing type promotion failures][] for a full list of non-promotion reasons.
 
-Declaring members [private] and [final], as we generally recommend, bypasses
-these limitations, but that's not always an option. One pattern to work around
-this is to assign the field's value to a local variable. Null checks on that
-variable will promote, so you can safely treat it as non-nullable.
+Declaring members [private] and [final], as we generally recommend, is often
+enough to bypass these limitations. But, that's not always an option.
+One pattern to work around this is to assign the field's value
+to a local variable. Null checks on that variable will promote,
+so you can safely treat it as non-nullable.
 
 {:.good}
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
@@ -385,7 +386,7 @@ class UploadException {
 ```
 
 Assigning to a local variable can be cleaner and safer than using `!` every
-place the instance is used:
+place the value is used:
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
