@@ -5,9 +5,6 @@ short-title: Isolates
 prevpage:
   url: /language/async
   title: Asynchronous support
-nextpage:
-  url: /language/null-safety
-  title: Null safety
 ---
 
 <?code-excerpt path-base="concurrency"?>
@@ -176,13 +173,13 @@ Setting up a port requires a few steps, which must be done in a specific order. 
 This diagram, and the following diagram, are high-level and intended to convey the concepts necessary to use isolates, but actual implementation requires a bit more code. A full code example is shown later on this page.  
 {{site.alert.end}}
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/port-setup.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
 
 #### Passing messages using the ports
 
 Along with creating the ports and setting up communication, you’ll also need to tell the ports what to do when they receive messages. This is done using the listen method on each of the respective ReceivePorts.
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/port-passing-messages.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
 
 ### Ports example
 

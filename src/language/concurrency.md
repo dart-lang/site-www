@@ -86,7 +86,7 @@ asynchronous events in Dart, such as [`Streams`][].
 If you're already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
 
-[isolates section]: #how-isolates-work
+[isolates section]: #Isolates
 
 ### Future type syntax
 
@@ -281,8 +281,6 @@ Event handling happens on the main isolate after `main()` exits. In the
 following figure, after `main()` exits, the main isolate handles the first
 repaint event. After that, the main isolate handles the tap event, followed by a
 repaint event.
-
-![A figure showing the main isolate executing event handlers, one by one](/assets/img/language/concurrency/event-handling.png)
 
 If a synchronous operation takes too much processing time, the app can become
 unresponsive. In the following figure, the tap-handling code takes too long, so

@@ -223,7 +223,7 @@ the arguments to `assert` aren't evaluated.
 [`dart run`]: /tools/dart-run
 [`dart compile js`]: /tools/dart-compile#js
 
-[isolate]: /language/concurrency#how-isolates-work
+[isolate]: /language/concurrency#Isolate
 [`Error`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [`Exception`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [`StackTrace`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
