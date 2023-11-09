@@ -47,49 +47,21 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 
 ## Not yet released to stable
 
-### Language
-{: .no_toc}
-
-* **Language versioned**: [Changed the split point for refutable patterns][53167]
-  to the top level pattern so type promotion in if-case statements is consistent
-  regardless of whether the scrutinee might throw an exception.
-
 ### Libraries
 {: .no_toc}
 
-#### `dart:convert`
+#### `dart:nativewrappers`
 
-* [Changed return types of `utf8.encode()` and `Utf8Codec.encode()`][52801]
- from `List<int>` to `Uint8List`.
+* [Marked classes belonging to `NativeWrapperClass` as `base`][51896] so that
+  none of their subtypes can be implemented.
 
-#### `dart:developer`
+#### `dart:typed_data`
 
-* **Deprecated**: The `Service.getIsolateID` method.
-
-#### `dart:io`
-
-* [Eliminated trailing whitespace from HTTP headers][53005].
-
-#### `dart:js_interop`
-
-* **Experimental** **Removed**: `JSNumber.toDart` in favor of `toDartDouble` and
-  `toDartInt`.
-* **Experimental** **Removed**: `Object.toJS` in favor of `Object.toJSBox.`
-
-### Tools
-{: .no_toc}
-
-#### Dart Dev Compiler (DDC) and Dart2js
-
-* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
-  they should no longer be used with `package:js` classes.
+* **Deprecated**: [Unmodifiable view classes for typed data][53218].
 
 
-[53167]: https://github.com/dart-lang/sdk/issues/53167
-[52801]: https://github.com/dart-lang/sdk/issues/52801
-[53005]: https://github.com/dart-lang/sdk/issues/53005
-[53106]: https://github.com/dart-lang/sdk/issues/53106
-
+[51896]: https://github.com/dart-lang/sdk/issues/51896
+[53218]: https://github.com/dart-lang/sdk/issues/53218
 
 {% comment %}
 Create new section from these headers for each release.
@@ -111,6 +83,70 @@ don't include the section header.
 
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
+
+## Released in 3.2.0
+
+### Language
+{: .no_toc}
+
+* **Language versioned**: [Changed the split point for refutable patterns][53167]
+  to the top level pattern so type promotion in if-case statements is consistent
+  regardless of whether the scrutinee might throw an exception.
+
+### Libraries
+{: .no_toc}
+
+#### `dart:convert`
+
+* [Changed return types of `utf8.encode()` and `Utf8Codec.encode()`][52801]
+ from `List<int>` to `Uint8List`.
+
+#### `dart:developer`
+
+* **Deprecated**: The `Service.getIsolateID` method.
+
+#### `dart:ffi`
+
+* [Changed NativeCallable.nativeFunction so calls now throw an error if
+  the receiver is already closed][53311], instead of returning `nullptr`.
+
+#### `dart:io`
+
+* [Eliminated trailing whitespace from HTTP headers][53005].
+* [Inserted a space at the fold point of folded header values][53227]
+  that `HttpClientResponse.headers` and `HttpRequest.headers` return.
+
+#### `dart:js_interop`
+
+* **Experimental** **Removed**: `JSNumber.toDart` in favor of `toDartDouble` and
+  `toDartInt`.
+* **Experimental** **Removed**: `Object.toJS` in favor of `Object.toJSBox.`
+* **Experimental**: Restricted external JS interop APIs using `dart:js_interop`
+  to a set of allowed types.
+* **Experimental**: Prohibited use of `isNull` and `isUndefined` on dart2wasm.
+* **Experimental**: Changed `typeofEquals` and `instanceof` APIs to both return
+  bool instead of `JSBoolean`.
+  Also, `typeofEquals` now takes `String` instead of `JSString`.
+* **Experimental**: Changed `JSAny` and `JSObject` types to only implementable,
+  not extendable, by user `@staticInterop` types.
+* **Experimental**: Changed `JSArray.withLength` to take `int` instead of `JSNumber`.
+
+### Tools
+{: .no_toc}
+
+#### Dart Dev Compiler (DDC) and Dart2js
+
+* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
+  they should no longer be used with `package:js` classes.
+
+
+[53167]: https://github.com/dart-lang/sdk/issues/53167
+[52801]: https://github.com/dart-lang/sdk/issues/52801
+[53311]: https://github.com/dart-lang/sdk/issues/53311
+[53005]: https://github.com/dart-lang/sdk/issues/53005
+[53227]: https://github.com/dart-lang/sdk/issues/53227
+[53106]: https://github.com/dart-lang/sdk/issues/53106
+
 
 ## Released in 3.1.0
 
