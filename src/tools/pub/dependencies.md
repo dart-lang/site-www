@@ -251,7 +251,7 @@ You can express version constraints using either _traditional syntax_
 or _caret syntax_. Both syntaxes specify a range of compatible versions.
 
 The traditional syntax provides an explicit range like `'>=1.2.3 <2.0.0'`.
-The caret syntax provides an explicit starting version`^1.2.3`
+The caret syntax provides an explicit starting version `^1.2.3`
 
 ```yaml
 environment:

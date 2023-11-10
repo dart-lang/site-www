@@ -1,4 +1,4 @@
-const _highlightingTheme = 'min-light';
+const _highlightingTheme = 'dash-light';
 
 /**
  * Replaces the markdown-it code block renderer with our own that:
@@ -21,6 +21,7 @@ async function configureHighlighting(markdown) {
   // we want to remain a CommonJS module for now.
   const {getHighlighter} = await import('shikiji');
   const {toHtml} = await import('hast-util-to-html');
+  
   const highlighter = await getHighlighter({
     langs: [
       'dart',
@@ -42,13 +43,11 @@ async function configureHighlighting(markdown) {
       'cmd',
       'plaintext',
     ],
-    themes: [_highlightingTheme],
   });
-
-  // TODO(parlough): Implement custom dash light theme
-  // await highlighter.loadTheme(import('../dash-light.json', {
-  //   assert: {type: 'json'}
-  // }));
+  
+  await highlighter.loadTheme(import('../syntax/dash-light.json', {
+    assert: {type: 'json'}
+  }));
 
   markdown.renderer.rules.fence = function (tokens, index) {
     const token = tokens[index];

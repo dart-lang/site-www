@@ -1962,8 +1962,7 @@ protocol Animal {
    func makeNoise()
 }
 
-class Dog: Animal
-{
+class Dog: Animal {
   func getLegs() -> Int {
     return 4;
   }
@@ -2271,8 +2270,7 @@ class Animal {
   }
 }
 
-class Dog: Animal
-{
+class Dog: Animal {
   override func makeNoise() {
     print("Woof woof"); 
   }
