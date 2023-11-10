@@ -86,7 +86,7 @@ asynchronous events in Dart, such as [`Streams`][].
 If you're already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
 
-[isolates section]: #Isolates
+[isolates section]: #isolates
 
 ### Future type syntax
 
