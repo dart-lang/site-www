@@ -9,7 +9,7 @@ const _highlightingTheme = 'min-light';
  * - Wraps the code block in a custom structure for title formatting,
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
- *   using the shiki/shikiji plugin that uses TextMate grammars
+ *   using the shiki/shikiji package that uses TextMate grammars
  *   and Code -OSS themes.
  * 
  * @param {import('markdown-it')} markdown The markdown-it instance to
@@ -120,7 +120,7 @@ ${markdown.utils.escapeHtml(content)}
   // with any extra whitespace trimmed off the end.
   content = updatedText.trimEnd();
 
-  const tree = highlighter.codeToHast(content, {
+  return highlighter.codeToHtml(content, {
     lang: language,
     theme: _highlightingTheme,
     transforms: {
@@ -131,6 +131,67 @@ ${markdown.utils.escapeHtml(content)}
         if (lineNumbers) {
           preElement.properties['class'] += ' show-line-numbers';
         }
+
+        // Create a div container to wrap the pre element.
+        const blockBody = {
+          type: 'element',
+          tagName: 'div',
+          children: [preElement],
+          properties: {
+            class: 'code-block-body',
+          },
+        };
+
+        // // TODO: Don't support arbitrary tag, require a list
+        // // Also support special "language" tag
+        // const extraTag = attributes['tag'];
+        // if (extraTag) {
+        //   blockBody.properties['class'] += ` ${extraTag.class}`;
+        //
+        //   if (extraTag.text) {
+        //     const extraTagContent = {
+        //       type: 'element',
+        //       tagName: 'span',
+        //       children: [{type: 'text', value: extraTag.text}],
+        //       properties: {
+        //         class: 'code-block-tag',
+        //       },
+        //     };
+        //
+        //     blockBody.children.unshift(extraTagContent);
+        //   }
+        // }
+        
+        const wrapperChildren = [];
+
+        const title = attributes['title'];
+        if (title && title !== '') {
+          const titleElement = {
+            type: 'element',
+            tagName: 'div',
+            children: [{type: 'text', value: title}],
+            properties: {
+              class: 'code-block-header',
+            },
+          };
+
+          wrapperChildren.push(titleElement);
+        }
+        
+        wrapperChildren.push(blockBody);
+
+        // Create a div to wrap everything including the title/filename bar.
+        const wrapper = {
+          type: 'element',
+          tagName: 'div',
+          children: wrapperChildren,
+          properties: {
+            class: `code-block-wrapper language-${language}`,
+          },
+        };
+        
+        // Replace the pre element with our own wrapper.
+        return wrapper;
       },
       line(lineElement, line) {
         if (lineNumbers) {
@@ -143,70 +204,15 @@ ${markdown.utils.escapeHtml(content)}
 
         const highlightRange = linesToMarkedRanges[line];
         if (highlightRange) {
-          lineElement.children = _wrapMarkedText(lineElement.children, highlightRange);
+          // If this line has ranges to mark/highlight, do so.
+          lineElement.children = _wrapMarkedText(
+              lineElement.children,
+              highlightRange,
+          );
         }
       },
     },
   });
-
-  const pre = tree.children[0];
-
-  const blockBody = {
-    type: 'element',
-    tagName: 'div',
-    children: [pre],
-    properties: {
-      class: 'code-block-body',
-    },
-  };
-
-  const wrapper = {
-    type: 'element',
-    tagName: 'div',
-    children: [blockBody],
-    properties: {
-      class: `code-block-wrapper language-${language}`,
-    },
-  };
-
-  // TODO: Don't support arbitrary tag, require a list
-  // Also support special "language" tag
-  const extraTag = attributes['tag'];
-  if (extraTag) {
-    blockBody.properties['class'] += ` ${extraTag.class}`;
-
-    if (extraTag.text) {
-      const extraTagContent = {
-        type: 'element',
-        tagName: 'span',
-        children: [{type: 'text', value: extraTag.text}],
-        properties: {
-          class: 'code-block-tag',
-        },
-      };
-
-      blockBody.children.unshift(extraTagContent);
-    }
-  }
-
-  const title = attributes['title'];
-  if (title && title !== '') {
-    const titleElement = {
-      type: 'element',
-      tagName: 'div',
-      children: [{type: 'text', value: title}],
-      properties: {
-        class: 'code-block-header',
-      },
-    };
-
-    wrapper.children.unshift(titleElement);
-  }
-
-  // Replace the code block tree with our own wrapper.
-  tree.children = [wrapper];
-
-  return toHtml(tree);
 }
 
 /**
@@ -255,7 +261,7 @@ function _parseNumbersAndRanges(input) {
  *
  * @param {{children: [{type: string, value: string}], type: 'element', tagName: 'span', properties: Object.<string, string>}[]} spans
  *   The list of spans to wrap the text of.
- * @param {Object.<number,{startIndex: number, endIndex: number}[]>} ranges
+ * @param {{startIndex: number, endIndex: number}[]} ranges
  *   The ranges in the text to mark.
  * @returns {{children: [{type: string, value: string}], type: 'element', tagName: 'span', properties: Object.<string, string>}[]}
  *   A new list of spans with <mark> tags added around the specified ranges.
@@ -313,9 +319,7 @@ function _wrapMarkedText(spans, ranges) {
     // than modifying the entire array with `shift`.
     while (currentRangeIndex < ranges.length && indexInCurrentSpan < text.length) {
       const {
-        /** @type {number} */
         startIndex: rangeStartIndex,
-        /** @type {number} */
         endIndex: rangeEndIndex,
       } = ranges[currentRangeIndex];
 
