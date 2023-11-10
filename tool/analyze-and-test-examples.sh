@@ -4,9 +4,10 @@
 # Ignore script errors, so don't exit on errors/pipefail
 set -u
 
-# Set default value of TOOL_DIR if not set.
+# Set default value of TOOL_DIR and BASE_DIR if not set.
 TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
+BASE_DIR="${BASE_DIR:=$(absolute_path "$TOOL_DIR/..")}"
 
 
 export PUB_ALLOW_PRERELEASE_SDK=quiet

@@ -3,10 +3,10 @@
 
 set -eu -o pipefail
 
-# Set default value of TOOL_DIR if not set.
+# Set default value of TOOL_DIR and BASE_DIR if not set.
 TOOL_DIR="${TOOL_DIR:=$(dirname "$0")}"
 source $TOOL_DIR/utils.sh
-
+BASE_DIR="${BASE_DIR:=$(absolute_path "$TOOL_DIR/..")}"
 
 EXAMPLES="$BASE_DIR/examples"
 TMP="$BASE_DIR/tmp"

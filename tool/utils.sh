@@ -19,6 +19,10 @@ function yellow() {
   echo -e "$YELLOW$1$END"
 }
 
+function absolute_path() {
+  echo $(cd $1; pwd)
+}
+
 function base_dir() {
   echo $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 }
