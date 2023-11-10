@@ -90,8 +90,8 @@ This indicates one of:
 
 For more information see:
 https://dart.dev/go/content-hashes
-[!Would change 1 dependency.
-Unable to satisfy `pubspec.yaml` using `pubspec.lock`.!]
+[!Would change 1 dependency.!]
+[!Unable to satisfy `pubspec.yaml` using `pubspec.lock`.!]
 
 To update `pubspec.lock` run `dart pub get` without
 `--enforce-lockfile`.

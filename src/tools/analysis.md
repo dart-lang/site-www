@@ -7,12 +7,7 @@ description: >-
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 <style>
-li.L0, li.L1, li.L2, li.L3,
-li.L5, li.L6, li.L7, li.L8, li.L9 {
-  background: none;
-  list-style-type: decimal;
-}
-pre.prettyprint.analyzer .highlight {
+pre .highlight {
     border-bottom: 2px red dashed;
     background: inherit;
     padding-bottom: 1px;
@@ -28,45 +23,43 @@ With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
-{% comment %}
-TODO(parlough): Update to use new code highlighting
-<blockquote class="ml-3" markdown="1">
+
+<blockquote class="ml-3">
+
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
-```dart
+```dart {"showLineNumbers": 8}
 void increment() {
   if (count < 10) [!;!]
   count++;
 }
 ```
-{:.analyzer}
 
 If properly configured, the analyzer points to the semicolon and
 produces the following warning:
 
-{:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
+
 </blockquote>
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
-<blockquote class="ml-3" markdown="1">
+<blockquote class="ml-3">
+
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 ```dart
 var [!controller = StreamController<String>()!];
 ```
-{:.analyzer}
 
-{:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
+
 </blockquote>
-{% endcomment %}
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
@@ -192,9 +185,7 @@ void bar(String jsonText) {
   foo([!jsonDecode(jsonText)!]); // Implicit cast
 }
 ```
-{:.analyzer}
 
-{:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
@@ -230,7 +221,6 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 ```
 {:analyzer}
 
-{:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
@@ -261,9 +251,7 @@ for (final n in numbers) {
   print(n.length); // Runtime error
 }
 ```
-{:.analyzer}
 
-{:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type

@@ -3471,8 +3471,8 @@ The following code produces this diagnostic:
 void f() {
   try {
   } catch (e) {
-  } [!on String {
-  }!]
+  } [!on String {!]
+[!  }!]
 }
 ```
 
@@ -3522,8 +3522,8 @@ The following code produces this diagnostic:
 void f() {
   try {
   } on num {
-  } [!on int {
-  }!]
+  } [!on int {!]
+[!  }!]
 }
 ```
 
@@ -10182,9 +10182,9 @@ should be a map.
 ```yaml
 name: example
 platforms:
-  [!- android
-  - web
-  - ios!]
+  [!- android!]
+  [!- web!]
+  [!- ios!]
 ```
 
 #### Common fixes

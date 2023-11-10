@@ -1,9 +1,27 @@
 async function configureHighlighting(markdown) {
-  const {getHighlighter} = await import('shikiji')
+  const {getHighlighter} = await import('shikiji');
   const {toHtml} = await import('hast-util-to-html');
-  const {toText} = await import('hast-util-to-text');
   const highlighter = await getHighlighter({
-    langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml', 'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console', 'cmd', 'plaintext'],
+    langs: [
+      'dart',
+      'yaml',
+      'json',
+      'swift',
+      'css',
+      'html',
+      'xml',
+      'js',
+      'objc',
+      'bash',
+      'kotlin',
+      'java',
+      'md',
+      'diff',
+      'ps',
+      'console',
+      'cmd',
+      'plaintext',
+    ],
     themes: ['min-light'],
   });
 
@@ -12,82 +30,104 @@ async function configureHighlighting(markdown) {
   //   assert: {type: 'json'}
   // }));
 
-  markdown.renderer.rules.fence = function (tokens, index, options, env, self) {
+  markdown.renderer.rules.fence = function (tokens, index) {
     const token = tokens[index];
 
     const splitTokenInfo = token.info.match(/(\S+)\s?(.*?)$/m);
     const language = splitTokenInfo.length > 1 ? splitTokenInfo[1] : '';
     const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
 
-    return _highlight(markdown, highlighter, toHtml, toText, token.content, language, attributes);
+    return _highlight(
+        markdown,
+        highlighter,
+        toHtml,
+        token.content,
+        language,
+        attributes,
+    );
   };
 }
 
-function _highlight(markdown, highlighter, toHtml, toText, content, language, attributeString) {
-  // Manually render DartPad snippets so that inject_embed can convert them.
+function _highlight(
+    markdown,
+    highlighter,
+    toHtml,
+    content,
+    language,
+    attributeString,
+) {
+  // Don't customize or highlight DartPad snippets
+  // so that inject_embed can convert them.
   if (language.includes('-dartpad') || language.includes('file-')) {
-    return `<pre><code class="language-${language}">${markdown.utils.escapeHtml(content)}</code></pre>`;
+    return `<pre><code class="language-${language}">
+${markdown.utils.escapeHtml(content)}
+</code></pre>`;
   }
 
   const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
-  
-  const lineNumbers = attributes['lineNumbers'];
+
+  const lineNumbers = attributes['showLineNumbers'];
   if (lineNumbers && typeof lineNumbers !== 'number') {
-    throw new Error('lineNumbers must be a number!');
+    throw new Error('showLineNumbers must be a number!');
   }
 
   const highlightLines = attributes['highlightLines'];
-  const linesToHighlight = highlightLines ?
-      _parseNumbersAndRanges(highlightLines) : null;
-  
-  const tree = highlighter.codeToHast(content.trim(), {
-    lang: language, 
+  const linesToHighlight = highlightLines
+      ? _parseNumbersAndRanges(highlightLines)
+      : null;
+
+  const {updatedText, linesToMarkedRanges} = _findMarkedTextAndUpdate(content);
+
+  // Update the content with the markers removed and
+  // with any extra whitespace trimmed off the end.
+  content = updatedText.trimEnd();
+
+  const tree = highlighter.codeToHast(content, {
+    lang: language,
     theme: 'min-light',
     transforms: {
-      line(node, line) {
+      pre(preElement) {
+        // Remove hard coded background color and text color if present.
+        preElement.properties['style'] = '';
+
         if (lineNumbers) {
-          node.properties['data-line'] = lineNumbers + line - 1;
+          preElement.properties['class'] += ' show-line-numbers';
         }
-        
+      },
+      line(lineElement, line) {
+        if (lineNumbers) {
+          lineElement.properties['data-line'] = lineNumbers + line - 1;
+        }
+
         if (linesToHighlight?.has(line)) {
-          node.properties['class'] += ' highlighted-line';
+          lineElement.properties['class'] += ' highlighted-line';
+        }
+
+        const highlightRange = linesToMarkedRanges[line];
+        if (highlightRange) {
+          lineElement.children = _wrapMarkedText(lineElement.children, highlightRange);
         }
       },
     },
   });
 
   const pre = tree.children[0];
-  
-  if (lineNumbers) {
-    pre.properties['class'] += ' show-line-numbers';
-  }
-
-  // Remove hard coded background color and text color if present.
-  pre.properties['style'] = '';
-
-  // TODO(parlough): Add support for highlighting words/ranges/something.
-  // const highlightEntries = attributes['highlight'];
-  // if (highlightEntries) {
-  //   for (const highlight of highlightEntries) {
-  //     _wrapTargetWord(tree, highlight, toText);
-  //   }
-  // }
 
   const blockBody = {
     type: 'element',
-    tagName: 'div', 
-    children: [pre], 
+    tagName: 'div',
+    children: [pre],
     properties: {
-      'class': 'code-block-body'
-    }
+      class: 'code-block-body',
+    },
   };
 
   const wrapper = {
-    type: 'element', 
-    tagName: 'div', 
-    children: [blockBody,], 
+    type: 'element',
+    tagName: 'div',
+    children: [blockBody],
     properties: {
-      'class': `code-block-wrapper language-${language}`
+      class: `code-block-wrapper language-${language}`,
     },
   };
 
@@ -100,10 +140,10 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
     if (extraTag.text) {
       const extraTagContent = {
         type: 'element',
-        tagName: 'span', 
-        children: [{type: 'text', value: extraTag.text}], 
+        tagName: 'span',
+        children: [{type: 'text', value: extraTag.text}],
         properties: {
-          'class': 'code-block-tag'
+          class: 'code-block-tag',
         },
       };
 
@@ -118,7 +158,7 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
       tagName: 'div',
       children: [{type: 'text', value: title}],
       properties: {
-        'class': 'code-block-header'
+        class: 'code-block-header',
       },
     };
 
@@ -130,8 +170,16 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
   return toHtml(tree);
 }
 
+/**
+ * Parses a comma-separated list of numbers and ranges into a set of numbers.
+ *
+ * @param {string} input A comma-separated list of numbers and ranges.
+ * @returns {Set<number>} All unique numbers specified in the input.
+ * @private
+ */
 function _parseNumbersAndRanges(input) {
   const elements = input.split(',');
+  /** @type {Set<number>} */
   const combinedNumbers = new Set();
 
   for (const element of elements) {
@@ -141,7 +189,7 @@ function _parseNumbersAndRanges(input) {
     if (rangeParts.length > 1) {
       // Split by the dash, and turn each string into a number.
       // Assume the user only included one dash.
-      const [start, end] = rangeParts.map(Number);
+      const [start, end] = rangeParts.map(Number.parseInt);
       if (!Number.isNaN(start) && !Number.isNaN(end)) {
         for (let i = start; i <= end; i++) {
           combinedNumbers.add(i);
@@ -149,14 +197,296 @@ function _parseNumbersAndRanges(input) {
       }
     } else {
       // It's (hopefully) just a single number.
-      const number = Number(element);
+      const number = Number.parseInt(element);
       if (!Number.isNaN(number)) {
         combinedNumbers.add(number);
       }
     }
   }
-  
+
   return combinedNumbers;
+}
+
+/**
+ * Wraps the text within the given list of {@link spans} with `<mark>` tags
+ * based on the provided {@link ranges}.
+ *
+ * The spans and ranges should be
+ * ordered corresponding to the source line of text.
+ *
+ * @param {{children: [{type: string, value: string}], type: 'element', tagName: 'span', properties: Object.<string, string>}[]} spans
+ *   The list of spans to wrap the text of.
+ * @param {Object.<number,{startIndex: number, endIndex: number}[]>} ranges
+ *   The ranges in the text to mark.
+ * @returns {{children: [{type: string, value: string}], type: 'element', tagName: 'span', properties: Object.<string, string>}[]}
+ *   A new list of spans with <mark> tags added around the specified ranges.
+ */
+function _wrapMarkedText(spans, ranges) {
+  /**
+   * The current index in the text across all spans.
+   * @type {number}
+   */
+  let currentIndexInLine = 0;
+
+  /**
+   * The index of the current range being marked.
+   * @type {number}
+   */
+  let currentRangeIndex = 0;
+
+  /**
+   * The new collection of spans to replace the original.
+   * @type {{children: [{type: string, value: string}], type: 'element', tagName: 'span', properties: Object.<string, string>}[]}
+   * */
+  const updatedSpans = [];
+
+  /**
+   * The mark that will wrap the current range.
+   * @type {{children: {type: string, value}[], type: string, tagName: string, properties: Object<string, string>}}
+   */
+  let markElement = _createEmptyMarkElement();
+
+  for (const span of spans) {
+    const [child, ...otherChildren] = span.children;
+    if (otherChildren.length > 0 || child.type !== 'text') {
+      throw Error('Each span should have exactly one text child.');
+    }
+
+    /** The text within the current span. */
+    const text = child.value;
+
+    /**
+     * The properties that all potentially created children should have too.
+     * @type {Object.<string, string>}
+     */
+    const spanProperties = span.properties ?? {};
+
+    /**
+     * The current index within the current span.
+     * @type {number}
+     */
+    let indexInCurrentSpan = 0;
+
+    // Multiple ranges can occur within the same collection of spans,
+    // or even within the same span.
+    // So we need to keep track of which range we're currently searching for.
+    // Use indices to loop through the ranges as it's cheaper
+    // than modifying the entire array with `shift`.
+    while (currentRangeIndex < ranges.length && indexInCurrentSpan < text.length) {
+      const {
+        /** @type {number} */
+        startIndex: rangeStartIndex,
+        /** @type {number} */
+        endIndex: rangeEndIndex,
+      } = ranges[currentRangeIndex];
+
+      /**
+       * The index in relation to the start of the current span
+       * where the current range starts or the index in the current span if
+       * the range starts before the current index.
+       * @type {number}
+       */
+      const relativeRangeStartIndex = Math.max(
+          rangeStartIndex - currentIndexInLine,
+          indexInCurrentSpan,
+      );
+
+      /**
+       * The index in relation to the start of the current span
+       * where the current range ends or the ending index of the current span if
+       * the range ends after the current index.
+       * @type {number}
+       */
+      const relativeEndIndex = Math.min(
+          rangeEndIndex - currentIndexInLine,
+          text.length,
+      );
+
+      // If `indexInCurrentSpan` is less than `relativeRangeStartIndex`,
+      // all text between the two should not be marked.
+      if (indexInCurrentSpan < relativeRangeStartIndex) {
+        updatedSpans.push(
+            _createSpanWithText(
+                text.slice(indexInCurrentSpan, relativeRangeStartIndex),
+                spanProperties,
+            ),
+        );
+      }
+
+      // If `relativeRangeStartIndex` is less than `relativeEndIndex`,
+      // the text within that range should be marked.
+      if (relativeRangeStartIndex < relativeEndIndex) {
+        markElement.children.push(
+            _createSpanWithText(
+                text.slice(relativeRangeStartIndex, relativeEndIndex),
+                spanProperties,
+            ),
+        );
+      }
+
+      /**
+       * The index in the whole line of the end of the current range if
+       * it has all been marked, otherwise the index in the whole line
+       * of the end of the current span.
+       * @type {number}
+       */
+      const rangeOrSpanEndIndexInLine = currentIndexInLine + relativeEndIndex;
+
+      // If `rangeOrSpanEndIndexInLine` is greater than `rangeEndIndex`,
+      // the end of the current range was in this span,
+      // so it's mark element is complete.
+      if (rangeOrSpanEndIndexInLine >= rangeEndIndex) {
+        // Add the completed mark element for the range,
+        // then move to the next range.
+        updatedSpans.push(markElement);
+        markElement = _createEmptyMarkElement();
+        currentRangeIndex++;
+      }
+
+      // Move to the end of the current range if it was in the current span,
+      // otherwise to the end of the span.
+      indexInCurrentSpan = relativeEndIndex;
+    }
+
+    // If the entire span hasn't been included yet,
+    // add the rest of it.
+    if (indexInCurrentSpan < text.length) {
+      updatedSpans.push(
+          _createSpanWithText(text.slice(indexInCurrentSpan), spanProperties),
+      );
+    }
+
+    // Move to the next span by adding the current span's
+    // text length to the current index.
+    currentIndexInLine += text.length;
+  }
+
+  return updatedSpans;
+}
+
+/**
+ * Creates a new mark element with the `highlight` class and no children.
+ *
+ * @returns {{children: [{type: string, value}], type: string, tagName: string, properties: Object.<string, string>}}
+ *  The created hast HTML element.
+ * @private
+ */
+function _createEmptyMarkElement() {
+  return {
+    type: 'element',
+    tagName: 'mark',
+    children: [],
+    properties: {
+      class: 'highlight',
+    },
+  };
+}
+
+/**
+ * Creates a new hast span element with the specified
+ * inline {@link text}, and {@link properties}.
+ *
+ * @param {string} text The text to include in the HTML element.
+ * @param {Object.<string, string>} [properties = {}] The properties to specify
+ *   for the HTML element, such as class.
+ * @returns {{children: [{type: string, value}], type: string, tagName: string, properties: Object.<string, string>}}
+ *  The created hast HTML element.
+ * @private
+ */
+function _createSpanWithText(text, properties = {}) {
+  return {
+    type: 'element',
+    tagName: 'span',
+    children: [{type: 'text', value: text}],
+    properties: properties,
+  };
+}
+
+/**
+ * Searches through the specified {@link text} and finds all instances of
+ * text marked with a `[!` and `!]`.
+ * Returns the start and end indices of each instance of marked text,
+ * as well as the updated text with all the open and close markers removed.
+ *
+ * @param {string} text The text to search through and potentially update.
+ * @returns {{updatedText: string, linesToMarkedRanges: Object.<number, {startIndex: number, endIndex: number}[]>}}
+ *   The updated text and the indices of marked text in each line.
+ * @private
+ */
+function _findMarkedTextAndUpdate(text) {
+  const lines = text.split('\n');
+
+  /** @type {Object.<number,{startIndex: number, endIndex: number}[]>} */
+  const linesToMarkedRanges = {};
+  /** @type string[] */
+  const textWithMarksRemoved = [];
+
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+    const line = lines[lineIndex];
+    let currentIndexInLine = 0;
+
+    /**
+     * The updated line with the marks (`[!` and `!]`) removed.
+     * @type {string}
+     */
+    let updatedLine = '';
+
+    /**
+     * The ranges of marked text in the current line.
+     * @type {{startIndex: number, endIndex: number}[]}
+     */
+    let markedRanges = [];
+
+    while (currentIndexInLine < line.length) {
+      const startIndex = line.indexOf('[!', currentIndexInLine);
+
+      // If there are no more opening markers, add the rest of the line.
+      if (startIndex === -1) {
+        updatedLine += line.slice(currentIndexInLine);
+        break;
+      }
+
+      const endIndex = line.indexOf('!]', startIndex);
+      if (endIndex === -1) {
+        throw new Error(`Invalid syntax in line ${lineIndex + 1}: ${line}. 
+        An opening marker was found, but no closing marker was found.`);
+      }
+
+      // Add text before marker to the updated line.
+      updatedLine += line.slice(currentIndexInLine, startIndex);
+
+      // Track the marked text range.
+      markedRanges.push({
+        // We haven't added the marker to the updated line yet,
+        // so the start index is the length of the updated line.
+        startIndex: updatedLine.length,
+        // Subtract the start index from the end index to
+        // get the length of the marked text,
+        // then subtract 2 to account for the length of the  included marker.
+        endIndex: updatedLine.length + (endIndex - startIndex - 2),
+      });
+
+      // Skip the marker and add the marked text to the updated line.
+      updatedLine += line.slice(startIndex + 2, endIndex);
+
+      // Update the search start index to continue searching after the marker.
+      currentIndexInLine = endIndex + 2;
+    }
+
+    // If there were marked ranges in the current line, track them.
+    if (markedRanges.length > 0) {
+      // Point the line number to the marked ranges.
+      // Add 1 to the line index because lines start at 1, not 0.
+      linesToMarkedRanges[lineIndex + 1] = markedRanges;
+    }
+
+    textWithMarksRemoved.push(updatedLine);
+  }
+
+  return {
+    linesToMarkedRanges: linesToMarkedRanges,
+    updatedText: textWithMarksRemoved.join('\n'),
+  };
 }
 
 module.exports = {

@@ -47,8 +47,8 @@ Zones make the following tasks possible:
     HttpServer.bind('0.0.0.0', port).then((server) {
       server.listen(staticFiles.serveRequest);
     });
-  [!},
-  (error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
+  [!},!]
+  [!(error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
   ```
   
   Running the HTTP server in a zone
