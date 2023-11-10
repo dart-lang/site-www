@@ -1,4 +1,24 @@
+const _highlightingTheme = 'min-light';
+
+/**
+ * Replaces the markdown-it code block renderer with our own that:
+ * 
+ * - Parses arguments on the code block meta string.
+ * - Uses passed arguments to add a title, show line numbers, 
+ *   highlight lines, etc.
+ * - Wraps the code block in a custom structure for title formatting,
+ *   copy buttons, etc.
+ * - Syntax highlights the contents according to the specified language
+ *   using the shiki/shikiji plugin that uses TextMate grammars
+ *   and Code -OSS themes.
+ * 
+ * @param {import('markdown-it')} markdown The markdown-it instance to
+ *   configure syntax highlighting for.
+ */
 async function configureHighlighting(markdown) {
+  // The following must be imported inline since
+  // they are published as ES modules, but
+  // we want to remain a CommonJS module for now.
   const {getHighlighter} = await import('shikiji');
   const {toHtml} = await import('hast-util-to-html');
   const highlighter = await getHighlighter({
@@ -22,7 +42,7 @@ async function configureHighlighting(markdown) {
       'cmd',
       'plaintext',
     ],
-    themes: ['min-light'],
+    themes: [_highlightingTheme],
   });
 
   // TODO(parlough): Implement custom dash light theme
@@ -48,6 +68,22 @@ async function configureHighlighting(markdown) {
   };
 }
 
+/**
+ * Highlights the specified {@link content} string, makes replacements,
+ * and makes modifications to the output structure based on the
+ * passed in {@link attributeString}.
+ * 
+ * @param {import('markdown-it')} markdown The markdown-it instance.
+ * @param {import('shikiji').Highlighter} highlighter The shikiji highlighter
+ *   configured with the correct theme(s) and languages.
+ * @param {import('hast-util-to-html').toHtml} toHtml The utility function
+ *   to convert the hast tree to an HTML string.
+ * @param {string} content The content to syntax highlight.
+ * @param {string} language The language of the content.
+ * @param {string} attributeString The string containing configuration.
+ * @returns {string} The processed/highlighted content rendered as HTML.
+ * @private
+ */
 function _highlight(
     markdown,
     highlighter,
@@ -76,6 +112,8 @@ ${markdown.utils.escapeHtml(content)}
       ? _parseNumbersAndRanges(highlightLines)
       : null;
 
+  // Find the spans enclosed in `[!` and `!]` that we should mark
+  // and remove them from the text.
   const {updatedText, linesToMarkedRanges} = _findMarkedTextAndUpdate(content);
 
   // Update the content with the markers removed and
@@ -84,7 +122,7 @@ ${markdown.utils.escapeHtml(content)}
 
   const tree = highlighter.codeToHast(content, {
     lang: language,
-    theme: 'min-light',
+    theme: _highlightingTheme,
     transforms: {
       pre(preElement) {
         // Remove hard coded background color and text color if present.
@@ -165,6 +203,7 @@ ${markdown.utils.escapeHtml(content)}
     wrapper.children.unshift(titleElement);
   }
 
+  // Replace the code block tree with our own wrapper.
   tree.children = [wrapper];
 
   return toHtml(tree);
@@ -448,7 +487,7 @@ function _findMarkedTextAndUpdate(text) {
 
       const endIndex = line.indexOf('!]', startIndex);
       if (endIndex === -1) {
-        throw new Error(`Invalid syntax in line ${lineIndex + 1}: ${line}. 
+        throw new Error(`Invalid syntax in line ${lineIndex + 1}. 
         An opening marker was found, but no closing marker was found.`);
       }
 
@@ -462,7 +501,7 @@ function _findMarkedTextAndUpdate(text) {
         startIndex: updatedLine.length,
         // Subtract the start index from the end index to
         // get the length of the marked text,
-        // then subtract 2 to account for the length of the  included marker.
+        // then subtract 2 to account for the length of the included marker.
         endIndex: updatedLine.length + (endIndex - startIndex - 2),
       });
 
