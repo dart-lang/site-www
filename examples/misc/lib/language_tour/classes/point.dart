@@ -11,12 +11,14 @@ class Point {
   final double x;
   final double y;
 
+  // #docregion class-with-distanceTo, named-constructor
+  Point(this.x, this.y);
   // #enddocregion class-with-distanceTo, named-constructor
   // Sets the x and y instance variables
   // before the constructor body runs.
-  // #docregion class-with-distanceTo, named-constructor
-  Point(this.x, this.y);
   // #enddocregion class-with-distanceTo, constructor-initializer
+
+  // #docregion named-constructor
 
   // Named constructor
   Point.origin()

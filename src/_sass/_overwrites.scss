@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use 'core/variables' as *;
 @use 'core/bootstrap';
 
@@ -17,7 +19,7 @@ a {
 
   &:hover, &:focus, &:active {
     code {
-      color: lighten($default-link, 25%);
+      color: color.scale($default-link, $lightness: -15%, $saturation: 15%);
     }
   }
 }
@@ -39,7 +41,7 @@ a {
 @media print {
   /* Don't display navigation aids when printing */
   #page-header, #sidenav, #subnav, #page-footer, .banner,
-  #toc, #site-toc--inline, #site-toc--side, #page-github-links {
+  #site-toc--inline, #site-toc--side, #page-github-links {
     display: none !important;
   }
 

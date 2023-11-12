@@ -523,27 +523,6 @@ class Graph1<Node, Edge> {
 
 //----------------------------------------------------------------------------
 
-class Control {}
-
-// #docregion mixin
-mixin ClickableMixin implements Control {
-  bool _isDown = false;
-
-  void click();
-
-  void mouseDown() {
-    _isDown = true;
-  }
-
-  void mouseUp() {
-    if (_isDown) click();
-    _isDown = false;
-  }
-}
-// #enddocregion mixin
-
-//----------------------------------------------------------------------------
-
 // #docregion one-member-abstract-class
 typedef Predicate<E> = bool Function(E element);
 // #enddocregion one-member-abstract-class
