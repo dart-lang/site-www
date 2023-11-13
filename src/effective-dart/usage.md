@@ -353,10 +353,8 @@ to a non-nullable type. That lets you access members on the variable and pass it
 to functions expecting a non-nullable type.
 
 Type promotion is only supported, however, for local variables, parameters, and
-private final fields. Values that are open to manipulation, whether
-directly, like top-level variables, or indirectly, like fields with a concrete
-getter of the same name in the same library, can't be type promoted.
-Read [Fixing type promotion failures][] for a full list of non-promotion reasons.
+private final fields. Values that are open to manipulation
+[can't be type promoted][].
 
 Declaring members [private][] and [final][], as we generally recommend, is often
 enough to bypass these limitations. But, that's not always an option.
@@ -414,7 +412,7 @@ local variable [`final`][] can prevent such mistakes.) Also, if the field might
 change while the local is still in scope, then the local might have a stale
 value. Sometimes it's best to simply [use `!`][] on the field.
 
-[Fixing type promotion failures]: /tools/non-promotion-reasons
+[can't be type promoted]: /tools/non-promotion-reasons
 [private]: /effective-dart/design#prefer-making-declarations-private
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
