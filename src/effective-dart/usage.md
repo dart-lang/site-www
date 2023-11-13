@@ -355,10 +355,10 @@ to functions expecting a non-nullable type.
 Type promotion is only supported, however, for local variables, parameters, and
 private final fields. Values that are open to manipulation, whether
 directly, like top-level variables, or indirectly, like fields with a concrete
-getter of the same name in the same library, cannot be type promoted.
+getter of the same name in the same library, can't be type promoted.
 Read [Fixing type promotion failures][] for a full list of non-promotion reasons.
 
-Declaring members [private] and [final], as we generally recommend, is often
+Declaring members [private][] and [final][], as we generally recommend, is often
 enough to bypass these limitations. But, that's not always an option.
 One pattern to work around this is to assign the field's value
 to a local variable. Null checks on that variable will promote,
@@ -386,7 +386,7 @@ class UploadException {
 ```
 
 Assigning to a local variable can be cleaner and safer than using `!` every
-place the value is used:
+time you need to treat the value as non-null:
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
@@ -410,13 +410,13 @@ class UploadException {
 
 Be careful when using a local variable. If you need to write back to the field,
 make sure that you don't write back to the local variable instead. (Making the
-local variable [`final`] can prevent such mistakes.) Also, if the field might
+local variable [`final`][] can prevent such mistakes.) Also, if the field might
 change while the local is still in scope, then the local might have a stale
-value. Sometimes it's best to simply [use `!`] on the field.
+value. Sometimes it's best to simply [use `!`][] on the field.
 
 [Fixing type promotion failures]: /tools/non-promotion-reasons
-[private]: design#prefer-making-declarations-private
-[final]: design#prefer-making-fields-and-top-level-variables-final
+[private]: /effective-dart/design#prefer-making-declarations-private
+[final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
 [use `!`]: /null-safety/understanding-null-safety#null-assertion-operator
 
