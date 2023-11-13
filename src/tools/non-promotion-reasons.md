@@ -3,7 +3,7 @@ title: Fixing type promotion failures
 description: Solutions for cases where you know more about a field's type than Dart can determine.
 ---
 
-[Type promotion][] occurs when flow anlaysis can soundly confirm the value of 
+[Type promotion][] occurs when flow analysis can soundly confirm the value of 
 a [nullable type][] is *not null*, and that its value will not change from that point on.
 Many circumstances can weaken a type's soundness, causing type promotion to fail.
 
