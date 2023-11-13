@@ -17,6 +17,33 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## November 15, 2023: 3.2 release
+
+This section lists notable changes made from August 17, 2023,
+through November 15, 2023.
+For details about the 3.2 release,
+check out [3.2 blog post][] and the and the [SDK changelog][3-2-changelog].
+
+[3.2 blog post]: /
+[3-2-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#320
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Updated [Fixing type promotion failures][no-promo] to account for new promotion feature,
+  private final field promotion.
+  * 
+  * 
+  * 
+* Added documentation for new lint [annotate_redeclares][] and updated lint
+  docs for [][]....
+* Lots of clean up/reorganiztion  of site infrastructure in preparation
+  to move off of jekyll for build
+
+[annotate_redeclares]: https://dart.dev/tools/linter-rules/annotate_redeclares 
 ## August 16, 2023: 3.1 release
 
 This section lists notable changes made from May 11, 2023,
