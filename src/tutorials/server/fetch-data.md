@@ -629,7 +629,7 @@ to another [isolate][] as a background worker
 to prevent your interface from becoming unresponsive.
 
 [Concurrency in Dart]: /language/concurrency
-[isolate]: /language/concurrency#how-isolates-work
+[isolate]: /language/concurrency#isolates
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json
