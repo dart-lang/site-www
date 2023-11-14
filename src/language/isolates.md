@@ -158,7 +158,7 @@ This long-lived communication between isolates is set up with two classes (in ad
 
 Ports behave similarly to Streams, in which the StreamController or Sink is 
 created in one isolate, and the listener is set up in the other isolate. In 
-this analogy, the StreamConroller is called a SendPort, and you can “add” 
+this analogy, the StreamController is called a SendPort, and you can “add” 
 messages with the [`send()` method][]. ReceivePorts are the listeners, and 
 when these listeners receive a new message, they call a provided callback with the message as an argument.
 
@@ -408,9 +408,9 @@ class BackgroundWorker {
             }).toList();
             sendPortToMainApp.send(photos);
           case 'comments':
-          // TODO: add support for fetching comments
+          // T0D0: add support for fetching comments
           default:
-            // TODO: add support for other resources.
+            // T0D0: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
                 'unexpected type. The options are: photos, albums, todos, and'
                 ' users');
@@ -506,7 +506,7 @@ class BackgroundWorker {
       // Subsequent messages will be data that has been fetched from
       // the network, and decoded into Dart objects
     } else if (message is List<Photo>) {
-      // TODO: handle successful Photo fetch
+      // T0D0: handle successful Photo fetch
     } else {
       throw const SocketException(
               'Unexpected message type coming from the spawned isolate');
@@ -573,9 +573,9 @@ class BackgroundWorker {
             }).toList();
             sendPortToMainApp.send(photos);
           case 'comments':
-          // TODO: add support for fetching comments
+          // T0D0: add support for fetching comments
           default:
-          // TODO: add support for other resources.
+          // T0D0: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
                     'unexpected type. The options are: photos, albums, todos, and'
                     ' users');
@@ -672,7 +672,7 @@ class BackgroundWorker {
       // Subsequent messages will be data that has been fetched from
       // the network, and decoded into Dart objects
     } else if (message is List<Photo>) {
-      // TODO: handle successful Photo fetch
+      // T0D0: handle successful Photo fetch
     } else {
       throw const SocketException(
               'Unexpected message type coming from the spawned isolate');
@@ -739,9 +739,9 @@ class BackgroundWorker {
             }).toList();
             sendPortToMainApp.send(photos);
           case 'comments':
-          // TODO: add support for fetching comments
+          // T0D0: add support for fetching comments
           default:
-          // TODO: add support for other resources.
+          // T0D0: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
                     'unexpected type. The options are: photos, albums, todos, and'
                     ' users');
