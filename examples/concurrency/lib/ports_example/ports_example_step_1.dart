@@ -1,5 +1,6 @@
 // ignore_for_file: unused_field, unused_element
-// #docredgion main
+
+// #docregion main
 import 'dart:async';
 import 'dart:isolate';
 
@@ -17,4 +18,4 @@ class BackgroundWorker {
   // This method will handle messages that are sent from the main isolate to the worker
   static void _workerIsolateEntryPoint(dynamic message) {}
 }
-// #enddocredgion main
+// #enddocregion main
