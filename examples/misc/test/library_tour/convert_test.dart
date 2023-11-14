@@ -1,7 +1,9 @@
 // #docregion import
 import 'dart:convert';
 // #enddocregion import
+// #docregion utf8-encode
 import 'dart:typed_data';
+// #enddocregion utf8-encode
 import 'package:test/test.dart';
 
 void main() {
@@ -57,6 +59,7 @@ void main() {
     assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
     // #enddocregion utf8-decode
     // #docregion utf8-encode
+
     Uint8List encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
     assert(encoded.length == utf8Bytes.length);
