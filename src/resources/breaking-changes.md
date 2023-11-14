@@ -96,6 +96,10 @@ don't include the section header.
 ### Libraries
 {: .no_toc}
 
+#### `dart:cli`
+
+* **Experimental** **Deprecated**: [The `waitFor` function.][52121]
+
 #### `dart:convert`
 
 * [Changed return types of `utf8.encode()` and `Utf8Codec.encode()`][52801]
@@ -134,13 +138,18 @@ don't include the section header.
 ### Tools
 {: .no_toc}
 
-#### Dart Dev Compiler (DDC) and Dart2js
+#### Development JavaScript compiler (DDC)
 
 * [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
   they should no longer be used with `package:js` classes.
 
+#### Production JavaScript compiler (dart2js)
+
+* [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
+  they should no longer be used with `package:js` classes.
 
 [53167]: https://github.com/dart-lang/sdk/issues/53167
+[52121]: https://github.com/dart-lang/sdk/issues/52121
 [52801]: https://github.com/dart-lang/sdk/issues/52801
 [53311]: https://github.com/dart-lang/sdk/issues/53311
 [53005]: https://github.com/dart-lang/sdk/issues/53005
