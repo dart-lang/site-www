@@ -412,7 +412,7 @@ class BackgroundWorker {
           default:
             // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, todos, and'
+                'unexpected type. The options are: photos, albums, TODOs, and'
                 ' users');
         }
       } else {
@@ -577,7 +577,7 @@ class BackgroundWorker {
           default:
             // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, todos, and'
+                'unexpected type. The options are: photos, albums, TODOs, and'
                 ' users');
         }
       } else {
@@ -743,7 +743,7 @@ class BackgroundWorker {
           default:
             // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, todos, and'
+                'unexpected type. The options are: photos, albums, TODOs, and'
                 ' users');
         }
       } else {
