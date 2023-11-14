@@ -255,6 +255,11 @@ to automatically create FFI wrappers from C header files.
 
 ## Building and bundling native assets with Dart packages
 
+{{site.alert.note}}
+  The native assets feature is **experimental**,
+  and [in active development](https://github.com/dart-lang/sdk/issues/50565).
+{{site.alert.end}}
+
 Packages containing native code which must be built before the package
 can be used, can include a `build.dart` script for building the native code.
 
@@ -262,17 +267,12 @@ Secondly, packages using native code need to access the bundled code at runtime.
 To abstract over the bundle format, native code can be accessed via an
 _asset id_. Assets can be declared via a `build.dart` script.
 
-{{site.alert.note}}
-  The native assets feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/50565).
-{{site.alert.end}}
-
 ### Walkthrough of native_add_library
 
 The [native_add_library] example has the minimum necessary code for building
 and bundling C code in a dart package.
 
-The native_add_library example has the following files:
+The example has the following files:
 
 | **Source file**                                                                                                                                                        | **Description**                                                                                                                                   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -315,6 +315,6 @@ please refer to the tracking issues:
 [ffigen]: {{site.pub-pkg}}/ffigen
 [native_add_library]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
 [native_add_app]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
-[`Native``]: https://api.dart.dev/dev/dart-ffi/Native-class.html
-[`DefaultAsset``]: https://api.dart.dev/dev/dart-ffi/DefaultAsset-class.html
+[`Native`]: https://api.dart.dev/dev/dart-ffi/Native-class.html
+[`DefaultAsset`]: https://api.dart.dev/dev/dart-ffi/DefaultAsset-class.html
 [native_assets_cli's API reference]: https://pub.dev/documentation/native_assets_cli/latest/
