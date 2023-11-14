@@ -21,7 +21,7 @@ API documentation is available in the
 The following examples show how to use the `dart:ffi` library:
 
 | **Example**     | **Description**                                                                                         |
-|-----------------|---------------------------------------------------------------------------------------------------------|
+| --------------- | ------------------------------------------------------------------------------------------------------- |
 | [hello_world][] | How to call a C function with no arguments and no return value.                                         |
 | [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.            |
 | [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
@@ -38,7 +38,7 @@ for calling a C library.
 The hello_world example has the following files:
 
 | **Source file**                                                          | **Description**                                                                                  |
-|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | [hello.dart]({{page.hw}}/hello.dart)                                     | A Dart file that uses the `hello_world()` function from a C library.                             |
 | [pubspec.yaml]({{page.hw}}/pubspec.yaml)                                 | The Dart [pubspec](/tools/pub/pubspec) file, with a lower bounds on the SDK that's at least 2.6. |
 | [hello_library/hello.h]({{page.hw}}/hello_library/hello.h)               | Declares the `hello_world()` function.                                                           |
@@ -189,7 +189,7 @@ The following native types can be used as markers in type signatures
 and they (or their subtypes) can be instantiated in Dart code:
 
 | **Dart type**                                                                               | **Description**                                                  |
-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | [Array]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Pointer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
 | [Struct]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
@@ -203,7 +203,7 @@ that are used only as markers in type signatures,
 and can't be instantiated in Dart code:
 
 | **Dart type**                                                                                             | **Description**                                   |
-|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | [Bool]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Bool-class.html)                     | Represents a native bool in C.                    |
 | [Double]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Double-class.html)                 | Represents a native 64 bit double in C.           |
 | [Float]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Float-class.html)                   | Represents a native 32 bit float in C.            |
@@ -226,7 +226,7 @@ Refer to their linked API documentation for more information and
 a guideline on what types they map to on specific platforms:
 
 | **Dart type**                                                                                                 | **Description**                                                 |
-|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | [AbiSpecificInteger][]                                                                                        | The supertype of all ABI-specific integer types.                |
 | [Int]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int-class.html)                           | Represents the `int` type in C.                                 |
 | [IntPtr]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/IntPtr-class.html)                     | Represents the `intptr_t` type in C.                            |
@@ -253,6 +253,53 @@ To reduce this burden,
 you can use the [`package:ffigen`][ffigen] binding generator
 to automatically create FFI wrappers from C header files.
 
+## Building and bundling native assets with Dart packages
+
+Packages containing native code which must be built before the package
+can be used, can include a `build.dart` script for building the native code.
+
+Secondly, packages using native code need to access the bundled code at runtime.
+To abstract over the bundle format, native code can be accessed via an
+_asset id_. Assets can be declared via a `build.dart` script.
+
+{{site.alert.note}}
+  The native assets feature is **experimental**,
+  and [in active development](https://github.com/dart-lang/sdk/issues/50565).
+{{site.alert.end}}
+
+### Walkthrough of native_add_library
+
+The [native_add_library] example has the minimum necessary code for building
+and bundling C code in a dart package.
+
+The native_add_library example has the following files:
+
+| **Source file**                                                                                                                                                        | **Description**                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [src/native_add_library.c](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                         |
+| [lib/native_add_library.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI.                        |
+| [test/native_add_library_test.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                |
+| [build.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`. |
+{:.table .table-striped }
+
+When `package:native_add_library` is being depended on in a Dart or Flutter
+project, the `build.dart` will automatically be invoked on `run`, `build`, and
+`test` commands. The [native_add_app] example shows use of `native_add_library`.
+
+API documentation for the native assets in Dart FFI is available in
+the `dart:ffi` API reference for [`Native`] and [`DefaultAsset`].
+API documentation for the `build.dart` script is available on
+[native_assets_cli's API reference].
+
+### Experiment opt-in
+
+For more information on how to enable the experiment and provide feedback,
+please refer to the tracking issues:
+
+* [Dart native assets](https://github.com/dart-lang/sdk/issues/50565)
+* [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
+
+
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
 [ios]: {{site.flutter-docs}}/development/platform-integration/ios/c-interop
@@ -266,3 +313,8 @@ to automatically create FFI wrappers from C header files.
 [mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [`NativeType`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeType-class.html
 [ffigen]: {{site.pub-pkg}}/ffigen
+[native_add_library]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
+[native_add_app]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
+[`Native``]: https://api.dart.dev/dev/dart-ffi/Native-class.html
+[`DefaultAsset``]: https://api.dart.dev/dev/dart-ffi/DefaultAsset-class.html
+[native_assets_cli's API reference]: https://pub.dev/documentation/native_assets_cli/latest/
