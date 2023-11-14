@@ -105,11 +105,11 @@ class BackgroundWorker {
             }).toList();
             sendPortToMainApp.send(photos);
           case 'comments':
-          // T0D0: add support for fetching comments
+          // TODO: add support for fetching comments
           default:
-            // T0D0: add support for other resources.
+            // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, T0D0s, and'
+                'unexpected type. The options are: photos, albums, TODOs, and'
                 ' users');
         }
       } else {
