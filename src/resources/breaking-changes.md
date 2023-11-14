@@ -148,6 +148,31 @@ don't include the section header.
 * [Added interceptors for JavaScript `Symbol` and `BigInt` types][53106];
   they should no longer be used with `package:js` classes.
 
+#### Analyzer
+
+* **Language versioned**: [Private final field promotion][2020] might cause the following
+  analyzer warnings to trigger on existing code that previously passed analysis:
+  
+  * [`unnecessary_non_null_assertion`](/tools/diagnostic-messages#unnecessary_non_null_assertion)
+  * [`invalid_null_aware_operator`](/tools/diagnostic-messages#invalid_null_aware_operator)
+  * [`unnecessary_cast`](/tools/diagnostic-messages#unnecessary_cast)
+
+  ```dart
+  class C {
+    final num? _x = null;
+
+    void test() {
+      if (_x != null) {
+        print(_x! * 2); // unnecessary_non_null_assertion
+        print(_x?.abs()); // invalid_null_aware_operator
+      }
+      if (_x is int) {
+        print((_x as int).bitLength); // unnecessary_cast
+      }
+    }
+  }
+  ```
+
 [53167]: https://github.com/dart-lang/sdk/issues/53167
 [52121]: https://github.com/dart-lang/sdk/issues/52121
 [52801]: https://github.com/dart-lang/sdk/issues/52801
@@ -155,6 +180,7 @@ don't include the section header.
 [53005]: https://github.com/dart-lang/sdk/issues/53005
 [53227]: https://github.com/dart-lang/sdk/issues/53227
 [53106]: https://github.com/dart-lang/sdk/issues/53106
+[2020]: https://github.com/dart-lang/language/issues/2020
 
 
 ## Released in 3.1.0
