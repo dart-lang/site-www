@@ -94,7 +94,7 @@ which are very large.
 If bindings are generated without any filters,
 the resulting file can be millions of lines long.
 To solve this problem,
-the ffigen config has fields that enables you to filter out
+the ffigen config has fields that enable you to filter out
 all the functions, structs, enums, etc., that you're not interested in.
 For this example, we're only interested in `AVAudioPlayer`,
 so you can exclude everything else:
