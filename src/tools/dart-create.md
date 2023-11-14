@@ -31,7 +31,7 @@ The following table shows the templates you can use:
 |------------------+---------------------------------------------------------|
 | Template         | Description                                             |
 |------------------|---------------------------------------------------------|
-| `cli`            | A command-line application with basic argument parsing using [`package:args`](https://pub.dev/packages/args).|
+| `cli`            | A command-line application with basic argument parsing using [`package:args`]({{site.pub-pkg}}/args). |
 | `console`        | A command-line application.                             |
 | `package`        | A package containing shared Dart libraries.             |
 | `server-shelf`   | A server built using [shelf][].                         |
