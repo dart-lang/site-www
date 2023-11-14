@@ -107,7 +107,7 @@ don't include the section header.
 
 #### `dart:ffi`
 
-* [Changed NativeCallable.nativeFunction so calls now throw an error if
+* [Changed `NativeCallable.nativeFunction` so calls now throw an error if
   the receiver is already closed][53311], instead of returning `nullptr`.
 
 #### `dart:io`
