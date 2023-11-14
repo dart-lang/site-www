@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element
 import 'dart:io';
 
-// #docregion main
+// #docregion
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 
@@ -10,4 +10,4 @@ Future<String> _readFileAsync(String filename) {
     return contents.trim();
   });
 }
-// #enddocregion main
+// #enddocregion

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
-// #docregion main
+// #docregion
 class BackgroundWorker {
   late Isolate _isolate;
   late SendPort workerIsolateSendPort;
@@ -55,4 +55,4 @@ class BackgroundWorker {
 void startProcessInBackground(String jsonBlob) {
   BackgroundWorker().workerIsolateSendPort.send(jsonBlob);
 }
-// #enddocregion main
+// #enddocregion

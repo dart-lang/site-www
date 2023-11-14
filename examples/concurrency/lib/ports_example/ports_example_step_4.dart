@@ -1,6 +1,6 @@
 // ignore_for_file: unused_field
 
-// #docregion main
+// #docregion
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -136,7 +136,7 @@ class BackgroundWorker {
     });
   }
 }
-// #enddocregion main
+// #enddocregion
 
 class Photo {
   final int albumId;

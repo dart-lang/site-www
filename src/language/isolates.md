@@ -107,7 +107,7 @@ For the complete program, check out the [send_and_receive.dart][] sample.
 You can also create a simple worker isolate with `run()` using a
 function literal, or closure, directly in the main isolate.
 
-<?code-excerpt "lib/simple_isolate_closure.dart (main)"?>
+<?code-excerpt "lib/simple_isolate_closure.dart"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -509,7 +509,7 @@ class BackgroundWorker {
       // T0D0: handle successful Photo fetch
     } else {
       throw const SocketException(
-              'Unexpected message type coming from the spawned isolate');
+          'Unexpected message type coming from the spawned isolate');
     }
   }
 
@@ -575,14 +575,14 @@ class BackgroundWorker {
           case 'comments':
           // T0D0: add support for fetching comments
           default:
-          // T0D0: add support for other resources.
+            // T0D0: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                    'unexpected type. The options are: photos, albums, todos, and'
-                    ' users');
+                'unexpected type. The options are: photos, albums, todos, and'
+                ' users');
         }
       } else {
         throw const SocketException(
-                'Message sent to isolate port has an unexpected type');
+            'Message sent to isolate port has an unexpected type');
       }
     });
   }
@@ -626,7 +626,7 @@ class BackgroundWorker {
   late SendPort _sendPortToWorkerIsolate;
   final Completer<void> _isolateReady = Completer<void>();
   final StreamController<List<Photo>> _outboundStreamController =
-  StreamController();
+      StreamController();
   Stream<List<Photo>> get photos => _outboundStreamController.stream;
 
   void fetchTypicodeDataFromNetwork(String resource) async {
@@ -675,7 +675,7 @@ class BackgroundWorker {
       // T0D0: handle successful Photo fetch
     } else {
       throw const SocketException(
-              'Unexpected message type coming from the spawned isolate');
+          'Unexpected message type coming from the spawned isolate');
     }
   }
 
@@ -741,14 +741,14 @@ class BackgroundWorker {
           case 'comments':
           // T0D0: add support for fetching comments
           default:
-          // T0D0: add support for other resources.
+            // T0D0: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                    'unexpected type. The options are: photos, albums, todos, and'
-                    ' users');
+                'unexpected type. The options are: photos, albums, todos, and'
+                ' users');
         }
       } else {
         throw const SocketException(
-                'Message sent to isolate port has an unexpected type');
+            'Message sent to isolate port has an unexpected type');
       }
     });
   }
