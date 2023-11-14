@@ -393,7 +393,7 @@ class BackgroundWorker {
         sendPortToMainApp.send(dartObjects);
       } else {
         throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
+                'Message sent to isolate port has an unexpected type');
       }
     });
   }

@@ -1,8 +1,7 @@
 // ignore_for_file: unused_element
-
-// #docregion main
 import 'dart:io';
 
+// #docregion main
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 

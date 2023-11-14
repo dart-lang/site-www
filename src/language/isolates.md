@@ -304,6 +304,13 @@ The `_initIsolate` method has been updated to…
 
 <?code-excerpt "lib/ports_example/ports_example_step_3.dart"?>
 ```dart
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:isolate';
+
+import 'package:http/http.dart' as http;
+
 class BackgroundWorker {
   BackgroundWorker() {
     _initIsolate();
@@ -348,7 +355,7 @@ class BackgroundWorker {
   // spawned, and it will be passed as an argument the second argument passed
   // to Isolate.spawn()
   // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the sendport from the main
+  //   - It needs to handle the initial message -- the send port from the main
   //   isolate
   //   - It needs to create another Port, one that can continue to receive
   //   messages from the main isolate. And, it needs to send the
@@ -445,6 +452,13 @@ This snippet adds the completed code for the method `_handleMessageToMainIsolate
 
 <?code-excerpt "lib/ports_example/ports_example_step_4.dart"?>
 ```dart
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:isolate';
+
+import 'package:http/http.dart' as http;
+
 class BackgroundWorker {
   BackgroundWorker() {
     _initIsolate();
@@ -495,7 +509,7 @@ class BackgroundWorker {
       // TODO: handle successful Photo fetch
     } else {
       throw const SocketException(
-          'Unexpected message type coming from the spawned isolate');
+              'Unexpected message type coming from the spawned isolate');
     }
   }
 
@@ -506,7 +520,7 @@ class BackgroundWorker {
   // spawned, and it will be passed as an argument the second argument passed
   // to Isolate.spawn()
   // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the sendport from the main
+  //   - It needs to handle the initial message -- the send port from the main
   //   isolate
   //   - It needs to create another Port, one that can continue to receive
   //   messages from the main isolate. And, it needs to send the
@@ -561,14 +575,14 @@ class BackgroundWorker {
           case 'comments':
           // TODO: add support for fetching comments
           default:
-            // TODO: add support for other resources.
+          // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, todos, and'
-                ' users');
+                    'unexpected type. The options are: photos, albums, todos, and'
+                    ' users');
         }
       } else {
         throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
+                'Message sent to isolate port has an unexpected type');
       }
     });
   }
@@ -612,7 +626,7 @@ class BackgroundWorker {
   late SendPort _sendPortToWorkerIsolate;
   final Completer<void> _isolateReady = Completer<void>();
   final StreamController<List<Photo>> _outboundStreamController =
-      StreamController();
+  StreamController();
   Stream<List<Photo>> get photos => _outboundStreamController.stream;
 
   void fetchTypicodeDataFromNetwork(String resource) async {
@@ -661,7 +675,7 @@ class BackgroundWorker {
       // TODO: handle successful Photo fetch
     } else {
       throw const SocketException(
-          'Unexpected message type coming from the spawned isolate');
+              'Unexpected message type coming from the spawned isolate');
     }
   }
 
@@ -672,7 +686,7 @@ class BackgroundWorker {
   // spawned, and it will be passed as an argument the second argument passed
   // to Isolate.spawn()
   // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the sendport from the main
+  //   - It needs to handle the initial message -- the send port from the main
   //   isolate
   //   - It needs to create another Port, one that can continue to receive
   //   messages from the main isolate. And, it needs to send the
@@ -727,14 +741,14 @@ class BackgroundWorker {
           case 'comments':
           // TODO: add support for fetching comments
           default:
-            // TODO: add support for other resources.
+          // TODO: add support for other resources.
             throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, todos, and'
-                ' users');
+                    'unexpected type. The options are: photos, albums, todos, and'
+                    ' users');
         }
       } else {
         throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
+                'Message sent to isolate port has an unexpected type');
       }
     });
   }
@@ -767,5 +781,4 @@ class Photo {
     );
   }
 }
-
 ```

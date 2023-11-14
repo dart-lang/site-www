@@ -1,5 +1,6 @@
 // ignore_for_file: unused_field
 
+// #docregion main
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -7,7 +8,6 @@ import 'dart:isolate';
 
 import 'package:http/http.dart' as http;
 
-// #docregion main
 class BackgroundWorker {
   BackgroundWorker() {
     _initIsolate();
