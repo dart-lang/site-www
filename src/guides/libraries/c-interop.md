@@ -287,9 +287,9 @@ project, the `build.dart` will automatically be invoked on `run`, `build`, and
 `test` commands. The [native_add_app] example shows use of `native_add_library`.
 
 API documentation for the native assets in Dart FFI is available in
-the `dart:ffi` API reference for [`Native`] and [`DefaultAsset`].
+the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
 API documentation for the `build.dart` script is available on
-[native_assets_cli's API reference].
+[native_assets_cli's API reference][].
 
 ### Experiment opt-in
 
