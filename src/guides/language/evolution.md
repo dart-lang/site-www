@@ -55,20 +55,21 @@ Dart 3.2 added enhancements to flow analysis, including:
 
   ```dart
   class Example {
-  final int? _privateField;
-  Example1(this._privateField);
-
-  f() {
-    if (_privateField != null) {
-      // _privateField has now been promoted; you can use it without
-      // null checking it.
-      int i = _privateField; // OK
+    final int? _privateField;
+  
+    Example(this._privateField);
+  
+    void f() {
+      if (_privateField != null) {
+        // _privateField has now been promoted; you can use it without
+        // null checking it.
+        int i = _privateField; // OK
       }
     }
   }
-
+  
   // Private field promotions also work from outside of the class:
-  f(Example1 x) {
+  void f(Example x) {
     if (x._privateField != null) {
       int i = x._privateField; // OK
     }
