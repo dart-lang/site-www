@@ -613,7 +613,7 @@ f(Example x) {
 
 If the fields are unrelated, then simply rename one of the fields so they don't
 conflict.
-Read the [Note about unrelated clasess](#note-about-unrelated-classes). 
+Read the [Note about unrelated classes](#note-about-unrelated-classes). 
 
 
 ### Conflict with implicit `noSuchMethod` forwarder {#nosuchmethod}
@@ -659,7 +659,7 @@ definition](https://pub.dev/documentation/mockito/latest/mockito/Mock/noSuchMeth
 which creates an implicit `noSuchMethod` forwarder of the same name.
 
 The failure can also occur between fields in
-[unrelated clasess](#note-about-unrelated-classes).
+[unrelated classes](#note-about-unrelated-classes).
 
 **Message:**
 

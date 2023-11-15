@@ -163,7 +163,7 @@
       { "source": "/go/non-promo-conflicting-non-promotable-field", "destination": "/tools/non-promotion-reasons#field-name", "type": 301 },
       { "source": "/go/non-promo-conflicting-noSuchMethod-forwarder", "destination": "/tools/non-promotion-reasons#nosuchmethod", "type": 301 },
       { "source": "/go/non-promo-external-field", "destination": "/tools/non-promotion-reasons#external", "type": 301 },
-      { "source": "/go/non-promo-field-promotion-unavailable", "destination": "/tools/non-promotion-reasons##language-version", "type": 301 },
+      { "source": "/go/non-promo-field-promotion-unavailable", "destination": "/tools/non-promotion-reasons#language-version", "type": 301 },
       { "source": "/go/non-promo-non-field", "destination": "/tools/non-promotion-reasons#not-field", "type": 301 },
       { "source": "/go/non-promo-non-final-field", "destination": "/tools/non-promotion-reasons#final", "type": 301 },
       { "source": "/go/non-promo-property", "destination": "/tools/non-promotion-reasons#property", "type": 301 },
