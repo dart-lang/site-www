@@ -22,9 +22,9 @@ and follow the [Dart blog][].
 This section lists notable changes made from August 17, 2023,
 through November 15, 2023.
 For details about the 3.2 release,
-check out [3.2 blog post][] and the and the [SDK changelog][3-2-changelog].
+check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
 
-[3.2 blog post]: /
+[3.2 blog post]: https://medium.com/dartlang/dart-3-2-c8de8fe1b91f
 [3-2-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#320
 
 ### Docs updated or added to dart.dev
@@ -34,7 +34,7 @@ In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
 * Updated the [Fixing type promotion failures][no-promo] page
-  for a new type promotion feature, private final field promotion.
+  for a new type promotion feature: private final field promotion.
   * Made minor related adjustments to the Effective Dart entry on
     [type promotion][], the [Understanding Null Safety][] page, and other various
     places across the site.
@@ -50,7 +50,7 @@ we made the following changes to this site:
 * Improved contents of the [Package dependencies][] page to be more actionable
   and easier to follow.
 * Elaborated on static members in the [Extension methods][] page.
-* Changed the [Objective C][] multithreading limitations content to account
+* Changed the [Objective-C][] multithreading limitations content to account
   for the new `NativeCallable` API.
 * Added new annotations and mentioned deprecations on the [Metadata][] page.
 * Improved contrast by adjusting text colors and highlighting across
@@ -70,7 +70,7 @@ we made the following changes to this site:
 [Constructors]: /language/constructors
 [Package dependencies]: /tools/pub/dependencies
 [Extension methods]: /language/extension-methods
-[Objective C]: /guides/libraries/objective-c-interop#callbacks-and-multithreading-limitations
+[Objective-C]: /guides/libraries/objective-c-interop#callbacks-and-multithreading-limitations
 [Metadata]: /language/metadata
 [move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
 
