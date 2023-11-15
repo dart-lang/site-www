@@ -262,16 +262,20 @@ to automatically create FFI wrappers from C header files.
 
 The Native Assets feature aims to resolve a number of issues associated with the
 distribution of Dart packages that depend on native code. It does so by
-providing uniform hooks for integrating with various build systems involved
-in building Flutter and standalone Dart applications.
+providing uniform hooks for integrating with various build systems involved in
+building Flutter and standalone Dart applications.
 
-With native assets, you can now include a `build.dart` script as part of your
-package. This script builds the native code contained in the package that needs
-to be built before the package can be used. Then, the `build.dart` script
-communicates the built [`Asset`]s to the Dart or Flutter build. Subsequently,
-the native assets are bundled with Flutter and Dart standalone applications and
-can now be accssed at runtime via the [`assetId`][] provided in the `build.dart`
-script to identify them.
+The Native Assets feature aims to make it seamless for Dart packages to depend
+on and use native code:
+
+* It builds (if needed) the native code or obtains the binaries via a package's
+  `build.dart` script.
+* It bundles the native [`Asset`][]s reported by the `build.dart` script.
+* It makes the native assets available at runtime via declarative `@Native<>()
+  extern` functions using the [`assetId`][].
+
+The `flutter run` / `flutter build` and `dart` / `dart build` tools will now
+build and bundle native code when [opted in](#experiment-opt-in) to the native experiment.
 
 ### Walkthrough of `native_add_library`
 
