@@ -33,17 +33,47 @@ check out [3.2 blog post][] and the and the [SDK changelog][3-2-changelog].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Updated [Fixing type promotion failures][no-promo] to account for new promotion feature,
-  private final field promotion.
-  * 
-  * 
-  * 
-* Added documentation for new lint [annotate_redeclares][] and updated lint
-  docs for [][]....
-* Lots of clean up/reorganiztion  of site infrastructure in preparation
-  to move off of jekyll for build
+* Updated the [Fixing type promotion failures][no-promo] page
+  for a new type promotion feature, private final field promotion.
+  * Made minor related adjustments to the Effective Dart entry on
+    [type promotion][], the [Understanding Null Safety][] page, and other various
+    places across the site.
+* Introduced documentation on the experimental native assets feature
+  to the [C interop][] page.
+* Created a new page dedicated to documenting [Breaking changes][].
+* Accounted for new and updated [lints][] and [diagnostics][] in their
+  respective doc pages.
+* Added documentation for the new `--tighten ` flag to the [`pub upgrade`] page.
+* Removed the cheatsheet in favor of the [Language overview][] page.
+* Clarified the relationship between [guard clauses and patterns][].
+* Adjusted the [Constructors][] page to better represent best practices.
+* Improved contents of the [Package dependencies][] page to be more actionable
+  and easier to follow.
+* Elaborated on static members in the [Extension methods][] page.
+* Changed the [Objective C][] multithreading limitations content to account
+  for the new `NativeCallable` API.
+* Added new annotations and mentioned deprecations on the [Metadata][] page.
+* Improved contrast by adjusting text colors and highlighting across
+  in code samples across the site.
+* Reorganized and simplified site infrastructure across the board, in preparation
+  to [move away from using Jekyll][].
 
-[annotate_redeclares]: https://dart.dev/tools/linter-rules/annotate_redeclares 
+[type promotion]: /effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion
+[Understanding Null Safety]: /null-safety/understanding-null-safety
+[C interop]: /guides/libraries/c-interop#native-assets
+[Breaking changes]: /resources/breaking-changes
+[lints]: /tools/linter-rules
+[diagnostics]: /tools/diagnostic-messages
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade#--tighten
+[Language overview]: /language
+[guard clauses and patterns]: /language/patterns#switch-statements-and-expressions
+[Constructors]: /language/constructors
+[Package dependencies]: /tools/pub/dependencies
+[Extension methods]: /language/extension-methods
+[Objective C]: /guides/libraries/objective-c-interop#callbacks-and-multithreading-limitations
+[Metadata]: /language/metadata
+[move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
+
 ## August 16, 2023: 3.1 release
 
 This section lists notable changes made from May 11, 2023,
