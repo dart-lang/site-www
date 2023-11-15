@@ -3,7 +3,7 @@ description: Utilities for accessing builds of the Dart SDK.
 publish_to: none
 
 environment:
-  sdk: ^3.1.0
+  sdk: ^3.2.0
 
 dependencies:
   googleapis: ^11.4.0

@@ -35,22 +35,22 @@ RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       # BEGIN dart-sha
       amd64_stable) \
-        DART_SHA256="4342ba274a4e9f8057079cf9de43b1c7bdb002016ad538313e8ebe942b61bba8"; \
+        DART_SHA256="4ee368d9d359a6bd02fd0b617c31cc038373878260fd58e5575a29bfaff47773"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="0f0e19c276c99fa3efd6428ea4bef1502f742f2a1f9772959637eec775c10ba0"; \
+        DART_SHA256="6051c47c73ebbfef227348635c53147cf234a4df43731c10e74b72297ff95b14"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="b3aa85b15bd13d619ba924524d5c7f082dc256a062ad34fe12ec824c9f05c2b3"; \
+        DART_SHA256="4ee368d9d359a6bd02fd0b617c31cc038373878260fd58e5575a29bfaff47773"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="b7644435c8acf1e73da3f1ce16889b7222fbab37a75111aff225422a1cc61cab"; \
+        DART_SHA256="6051c47c73ebbfef227348635c53147cf234a4df43731c10e74b72297ff95b14"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ae283eec0aa6e044064a79fc524af3dffec0543c48488538fc1a01a1fae7567b"; \
+        DART_SHA256="5509ebae275a05813365a66bf7bd24c8bc6c1221b9dec7f2eb5919c5906b1f60"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="99153759fe1edbc5c1c6a8c5e5164fad11671eed8a8899bf127a17412b701172"; \
+        DART_SHA256="f048a5e06eb84ca9d9f01a5e282cad72e1734603b0ee1a94aa2e8a546a16c663"; \
         SDK_ARCH="arm64";; \
       # END dart-sha
     esac; \
@@ -101,7 +101,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@12.4.0
+RUN npm install -g firebase-tools@12.8.1
 RUN npm install
 
 COPY ./ ./
@@ -159,7 +159,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@12.4.0
+RUN npm install -g firebase-tools@12.8.1
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default
