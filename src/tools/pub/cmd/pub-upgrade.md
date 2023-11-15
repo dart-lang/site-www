@@ -156,7 +156,7 @@ you can use `dart pub upgrade --major-versions --dry-run`.
 ### `--tighten`
 
 Updates the lower bounds of dependencies in `pubspec.yaml` to match the
-current version, and returns a list of the changed constraints. 
+resolved versions, and returns a list of the changed constraints. 
 Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
 
 
