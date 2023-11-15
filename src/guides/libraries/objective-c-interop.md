@@ -323,13 +323,10 @@ or no isolate at all.
 Depending on the type of callback you are using,
 this could cause your app to crash.
 Callbacks created using
-[`Pointer.fromFunction`]({{site.dart-api}}/dart-ffi/Pointer/fromFunction.html)
-or
-[`NativeCallable.isolateLocal`]({{site.dart-api}}/dart-ffi/NativeCallable/isolateLocal.html)
+[`Pointer.fromFunction`][] or [`NativeCallable.isolateLocal`][]
 must be invoked on the owner isolate's thread,
 otherwise they will crash.
-Callbacks created using
-[`NativeCallable.listener`]({{site.dart-api}}/dart-ffi/NativeCallable/listener.html)
+Callbacks created using [`NativeCallable.listener`][]
 can be safely invoked from any thread.
 
 The third point means that directly calling some Apple APIs
@@ -350,6 +347,10 @@ and doesn't have constraints about which thread it's called from.
 
 You can safely interact with Objective-C code,
 as long as you keep these limitations in mind.
+
+[`Pointer.fromFunction`]: {{site.dart-api}}/dart-ffi/Pointer/fromFunction.html
+[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/isolateLocal.html
+[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/listener.html
 
 ## Swift example
 
