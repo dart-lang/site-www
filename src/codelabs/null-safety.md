@@ -353,8 +353,8 @@ as providing an alternative value if the left-hand side is `null`.
 
 Dart's [flow analysis](/null-safety/understanding-null-safety#flow-analysis)
 accounts for nullability.
-Dart treats nullable variables with no ability to contain null values
-as non-nullable variables.
+Dart treats nullable variables and fields
+with no ability to contain null values as non-nullable.
 We call this behavior
 [type promotion](/null-safety/understanding-null-safety#type-promotion-on-null-checks).
 
@@ -544,9 +544,9 @@ void main() {
 Congratulations, you've finished the codelab!
 To learn more, check out some suggestions for where to go next:
 
-- Learn more about null safety
-  -[Overview of null safety](/null-safety).
-  -[Deep dive into understanding null safety](/null-safety/understanding-null-safety).
-- If you want to improve this codelab, check out [issue #3093][].
+* Learn more about null safety
+  * [Overview of null safety](/null-safety).
+  * [Deep dive into understanding null safety](/null-safety/understanding-null-safety).
+* If you want to improve this codelab, check out [issue #3093][].
 
 [issue #3093]: https://github.com/dart-lang/site-www/issues/3093
