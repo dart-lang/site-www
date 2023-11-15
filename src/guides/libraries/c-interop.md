@@ -327,8 +327,8 @@ please refer to the tracking issues:
 [ffigen]: {{site.pub-pkg}}/ffigen
 [`native_add_library`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
 [`native_add_app`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
-[`Native`]: {{site.dart-api}}/dev/dart-ffi/Native-class.html
-[`DefaultAsset`]: {{site.dart-api}}/dev/dart-ffi/DefaultAsset-class.html
+[`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
+[`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
 [`package:native_assets_cli` API reference]: {{site.pub-api}}/native_assets_cli/latest/
-[`assetId`]: {{site.dart-api}}/dev/dart-ffi/Native/assetId.html
+[`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 [`Asset`]: {{site.pub-api}}/native_assets_cli/latest/native_assets_cli/Asset-class.html
