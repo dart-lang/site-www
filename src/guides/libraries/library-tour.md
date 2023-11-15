@@ -1758,7 +1758,7 @@ bytes:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
 ```dart
-List<int> encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
+Uint8List encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
 assert(encoded.length == utf8Bytes.length);
 for (int i = 0; i < encoded.length; i++) {

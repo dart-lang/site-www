@@ -1,7 +1,8 @@
-import 'package:dart_sdk_archive/src/svn_versions.dart';
 import 'package:path/path.dart' as path;
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
+
+import 'svn_versions.dart';
 
 final _downloader = DartDownloads();
 
