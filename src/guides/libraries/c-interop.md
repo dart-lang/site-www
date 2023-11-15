@@ -261,46 +261,48 @@ to automatically create FFI wrappers from C header files.
   and [in active development](https://github.com/dart-lang/sdk/issues/50565).
 {{site.alert.end}}
 
-The Native Assets feature aims to resolve a number of issues associated with the
-distribution of Dart packages that depend on native code. It does so by
-providing uniform hooks for integrating with various build systems involved in
-building Flutter and standalone Dart applications.
+The Native Assets feature aims to resolve a number of issues associated with
+the distribution of Dart packages that depend on native code.
+It does so by providing uniform hooks for integrating with various
+build systems involved in building Flutter and standalone Dart applications.
 
-The Native Assets feature aims to make it seamless for Dart packages to depend
-on and use native code:
+The Native Assets feature aims to make it seamless for
+Dart packages to depend on and use native code:
 
-* It builds (if needed) the native code or obtains the binaries via a package's
-  `build.dart` script.
-* It bundles the native [`Asset`][]s reported by the `build.dart` script.
-* It makes the native assets available at runtime via declarative `@Native<>()
-  extern` functions using the [`assetId`][].
+* It builds (if needed) the native code or
+  obtains the binaries using a package's `build.dart` script.
+* It bundles the native [`Asset`][] reported by the `build.dart` script.
+* It makes the native assets available at runtime through
+  declarative `@Native<>() extern` functions using the [`assetId`][].
 
-The `flutter run` / `flutter build` and `dart` / `dart build` tools will now
-build and bundle native code when [opted in](#experiment-opt-in) to the native experiment.
+The `flutter run` / `flutter build` and `dart` / `dart build` tools
+will now build and bundle native code when
+[opted in](#experiment-opt-in) to the native experiment.
 
 ### Walkthrough of `native_add_library`
 
-The [`native_add_library`][] example has the minimum necessary code for building
-and bundling C code in a dart package.
+The [`native_add_library`][] example has the minimum necessary code for
+building and bundling C code in a Dart package.
 
 The example has the following files:
 
-| **Source file**                                                                                                                                                        | **Description**                                                                                                                                                                |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [src/native_add_library.c](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
-| [lib/native_add_library.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
-| [test/native_add_library_test.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
-| [build.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+| **Source file**                                                                                                                                                          | **Description**                                                                                                                                                                |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`src/native_add_library.c`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
+| [`lib/native_add_library.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
+| [`test/native_add_library_test.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
+| [`build.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
 {:.table .table-striped }
 
 When a Dart or Flutter project depends on `package:native_add_library`,
-the `build.dart` script will automatically be invoked on `run`, `build`, and
-`test` commands. The [`native_add_app`][] example shows use of `native_add_library`.
+the `build.dart` script will automatically be
+invoked on `run`, `build`, and `test` commands.
+The [`native_add_app`][] example showcases a use of `native_add_library`.
 
 API documentation for the native assets in Dart FFI is available in
 the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
-API documentation for the `build.dart` script is available on
-[native_assets_cli's API reference][].
+API documentation for the `build.dart` script is available
+on the [`package:native_assets_cli` API reference][].
 
 ### Experiment opt-in
 
@@ -327,6 +329,6 @@ please refer to the tracking issues:
 [`native_add_app`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
 [`Native`]: https://api.dart.dev/dev/dart-ffi/Native-class.html
 [`DefaultAsset`]: https://api.dart.dev/dev/dart-ffi/DefaultAsset-class.html
-[native_assets_cli's API reference]: https://pub.dev/documentation/native_assets_cli/latest/
+[`package:native_assets_cli` API reference]: https://pub.dev/documentation/native_assets_cli/latest/
 [`assetId`]: https://api.dart.dev/dev/dart-ffi/Native/assetId.html
 [`Asset`]: https://pub.dev/documentation/native_assets_cli/latest/native_assets_cli/Asset-class.html
