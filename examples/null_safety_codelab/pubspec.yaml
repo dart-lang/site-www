@@ -2,7 +2,7 @@ name: null_safety_codelab_examples
 description: dart.dev example code for null safety codelab
 
 environment:
-  sdk: ^3.1.0
+  sdk: ^3.2.0
 
 dev_dependencies:
   examples_util: {path: ../util}
