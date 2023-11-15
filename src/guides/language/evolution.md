@@ -77,7 +77,7 @@ Dart 3.2 added enhancements to flow analysis, including:
   For more information on when private final fields can and can't promote, check
   out [Fixing type promotion failures](/tools/non-promotion-reasons).
 
-* Corrected inconsistencies in type promotion behvaior of
+* Corrected inconsistencies in type promotion behavior of
   [if-case](/language/branches#if-case) statements
   where the scrutinee throws an exception.
 
