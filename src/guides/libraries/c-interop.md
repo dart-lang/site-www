@@ -275,7 +275,7 @@ Dart packages to depend on and use native code:
 * It makes the native assets available at runtime through
   declarative `@Native<>() extern` functions using the [`assetId`][].
 
-The `flutter run` / `flutter build` and `dart` / `dart build` tools
+The `flutter run` / `flutter build` and `dart run` / `dart build` tools
 will now build and bundle native code when
 [opted in](#experiment-opt-in) to the native experiment.
 
