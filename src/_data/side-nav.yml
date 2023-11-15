@@ -316,12 +316,14 @@
     children:
       - title: Customizing static analysis
         permalink: /tools/analysis
-      - title: Fixing common type problems
-        permalink: /guides/language/sound-problems
       - title: Diagnostic messages
         permalink: /tools/diagnostic-messages
       - title: Linter rules
         permalink: /tools/linter-rules
+      - title: Fixing common type problems
+        permalink: /guides/language/sound-problems
+      - title: Fixing type promotion failures
+        permalink: /tools/non-promotion-reasons
   - title: Testing & optimization
     children:
       - title: Testing
