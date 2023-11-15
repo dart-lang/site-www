@@ -17,7 +17,7 @@ to call Objective-C and Swift APIs.
   and [in active development](https://github.com/dart-lang/sdk/issues/49673).
 {{site.alert.end}}
 
-`dart:ffi` allows Dart code to interact with native C APIs.
+`dart:ffi` enables Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
 so it is possible to interact with Objective-C APIs using only `dart:ffi`.
 However, doing so involves a lot of boilerplate code,
@@ -27,7 +27,7 @@ To learn more about FFI and interfacing with C code directly,
 see the [C interop guide](/guides/libraries/c-interop).
 
 You can generate Objective-C headers for Swift APIs,
-allowing `dart:ffi` and `package:ffigen` to interact with Swift.
+enabling `dart:ffi` and `package:ffigen` to interact with Swift.
 
 ## Objective-C Example
 
@@ -94,7 +94,7 @@ which are very large.
 If bindings are generated without any filters,
 the resulting file can be millions of lines long.
 To solve this problem,
-the ffigen config has fields that allow you to filter out
+the ffigen config has fields that enable you to filter out
 all the functions, structs, enums, etc., that you're not interested in.
 For this example, we're only interested in `AVAudioPlayer`,
 so you can exclude everything else:
@@ -306,7 +306,7 @@ and the way Apple's APIs handle multithreading:
   but aren't guaranteed to run on any particular thread,
   and the VM might change which thread an isolate is running on
   without warning.
-  There is an [open feature request][] to allow isolates to be
+  There is an [open feature request][] to enable isolates to be
   pinned to specific threads.
 * While `ffigen` supports converting
   Dart functions to Objective-C blocks,
