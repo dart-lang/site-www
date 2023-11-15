@@ -282,9 +282,9 @@ The example has the following files:
 | [build.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
 {:.table .table-striped }
 
-When `package:native_add_library` is being depended on in a Dart or Flutter
-project, the `build.dart` will automatically be invoked on `run`, `build`, and
-`test` commands. The [native_add_app] example shows use of `native_add_library`.
+When a Dart or Flutter project depends on `package:native_add_library`,
+the `build.dart` script will automatically be invoked on `run`, `build`, and
+`test` commands. The [native_add_app][] example shows use of `native_add_library`.
 
 API documentation for the native assets in Dart FFI is available in
 the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
