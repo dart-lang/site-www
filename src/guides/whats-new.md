@@ -17,6 +17,63 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## November 15, 2023: 3.2 release
+
+This section lists notable changes made from August 17, 2023,
+through November 15, 2023.
+For details about the 3.2 release,
+check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
+
+[3.2 blog post]: https://medium.com/dartlang/dart-3-2-c8de8fe1b91f
+[3-2-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#320
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Updated the [Fixing type promotion failures][no-promo] page
+  for a new type promotion feature: private final field promotion.
+  * Made minor related adjustments to the Effective Dart entry on
+    [type promotion][], the [Understanding Null Safety][] page, and other various
+    places across the site.
+* Introduced documentation on the experimental native assets feature
+  to the [C interop][] page.
+* Created a new page dedicated to documenting [Breaking changes][].
+* Accounted for new and updated [lints][] and [diagnostics][] in their
+  respective doc pages.
+* Added documentation for the new `--tighten ` flag to the [`pub upgrade`] page.
+* Removed the cheatsheet in favor of the [Language overview][] page.
+* Clarified the relationship between [guard clauses and patterns][].
+* Adjusted the [Constructors][] page to better represent best practices.
+* Improved contents of the [Package dependencies][] page to be more actionable
+  and easier to follow.
+* Elaborated on static members in the [Extension methods][] page.
+* Changed the [Objective-C][] multithreading limitations content to account
+  for the new `NativeCallable` API.
+* Added new annotations and mentioned deprecations on the [Metadata][] page.
+* Improved contrast by adjusting text colors and highlighting across
+  in code samples across the site.
+* Reorganized and simplified site infrastructure across the board, in preparation
+  to [move away from using Jekyll][].
+
+[type promotion]: /effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion
+[Understanding Null Safety]: /null-safety/understanding-null-safety
+[C interop]: /guides/libraries/c-interop#native-assets
+[Breaking changes]: /resources/breaking-changes
+[lints]: /tools/linter-rules
+[diagnostics]: /tools/diagnostic-messages
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade#--tighten
+[Language overview]: /language
+[guard clauses and patterns]: /language/patterns#switch-statements-and-expressions
+[Constructors]: /language/constructors
+[Package dependencies]: /tools/pub/dependencies
+[Extension methods]: /language/extension-methods
+[Objective-C]: /guides/libraries/objective-c-interop#callbacks-and-multithreading-limitations
+[Metadata]: /language/metadata
+[move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
+
 ## August 16, 2023: 3.1 release
 
 This section lists notable changes made from May 11, 2023,
