@@ -260,12 +260,18 @@ to automatically create FFI wrappers from C header files.
   and [in active development](https://github.com/dart-lang/sdk/issues/50565).
 {{site.alert.end}}
 
-Packages containing native code which must be built before the package
-can be used, can include a `build.dart` script for building the native code.
+The Native Assets feature aims to resolve a number of issues associated with the
+distribution of Dart packages that depend on native code. It does so by
+providing uniform hooks for integrating with various build systems involved
+in building Flutter and standalone Dart applications.
 
-Secondly, packages using native code need to access the bundled code at runtime.
-To abstract over the bundle format, native code can be accessed via an
-_asset id_. Native assets are declared via a `build.dart` script.
+With native assets, you can now include a `build.dart` script as part of your
+package. This script builds the native code contained in the package that needs
+to be built before the package can be used. Then, the `build.dart` script
+communicates the built [`Asset`]s to the Dart or Flutter build. Subsequently,
+the native assets are bundled with Flutter and Dart standalone applications and
+can now be accssed at runtime via the [`assetId`][] provided in the `build.dart`
+script to identify them.
 
 ### Walkthrough of `native_add_library`
 
@@ -284,7 +290,7 @@ The example has the following files:
 
 When a Dart or Flutter project depends on `package:native_add_library`,
 the `build.dart` script will automatically be invoked on `run`, `build`, and
-`test` commands. The [native_add_app][] example shows use of `native_add_library`.
+`test` commands. The [`native_add_app`][] example shows use of `native_add_library`.
 
 API documentation for the native assets in Dart FFI is available in
 the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
@@ -299,7 +305,6 @@ please refer to the tracking issues:
 * [Dart native assets](https://github.com/dart-lang/sdk/issues/50565)
 * [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
 
-
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
 [ios]: {{site.flutter-docs}}/development/platform-integration/ios/c-interop
@@ -313,8 +318,10 @@ please refer to the tracking issues:
 [mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [`NativeType`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeType-class.html
 [ffigen]: {{site.pub-pkg}}/ffigen
-[native_add_library]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
-[native_add_app]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
+[`native_add_library`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
+[`native_add_app`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
 [`Native`]: https://api.dart.dev/dev/dart-ffi/Native-class.html
 [`DefaultAsset`]: https://api.dart.dev/dev/dart-ffi/DefaultAsset-class.html
 [native_assets_cli's API reference]: https://pub.dev/documentation/native_assets_cli/latest/
+[`assetId`]: https://api.dart.dev/dev/dart-ffi/Native/assetId.html
+[`Asset`]: https://pub.dev/documentation/native_assets_cli/latest/native_assets_cli/Asset-class.html
