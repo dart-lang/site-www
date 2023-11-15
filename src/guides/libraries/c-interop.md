@@ -267,7 +267,7 @@ Secondly, packages using native code need to access the bundled code at runtime.
 To abstract over the bundle format, native code can be accessed via an
 _asset id_. Native assets are declared via a `build.dart` script.
 
-### Walkthrough of native_add_library
+### Walkthrough of `native_add_library`
 
 The [`native_add_library`][] example has the minimum necessary code for building
 and bundling C code in a dart package.
