@@ -253,6 +253,7 @@ To reduce this burden,
 you can use the [`package:ffigen`][ffigen] binding generator
 to automatically create FFI wrappers from C header files.
 
+<a id="native-assets"></a>
 ## Building and bundling native assets
 
 {{site.alert.note}}
@@ -285,7 +286,7 @@ and bundling C code in a dart package.
 The example has the following files:
 
 | **Source file**                                                                                                                                                        | **Description**                                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [src/native_add_library.c](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
 | [lib/native_add_library.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
 | [test/native_add_library_test.dart](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
