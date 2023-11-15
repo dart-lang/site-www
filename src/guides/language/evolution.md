@@ -43,6 +43,7 @@ environment:
 
 ### Dart 3.2
 _Released 15 November 2023_
+| [Dart 3.2 announcement](https://medium.com/dartlang/dart-3-2-c8de8fe1b91f)
 
 Dart 3.2 added enhancements to flow analysis, including:
 
@@ -81,8 +82,6 @@ Dart 3.2 added enhancements to flow analysis, including:
 * Corrected inconsistencies in type promotion behavior of
   [if-case](/language/branches#if-case) statements
   where the value being matched against throws an exception.
-
-
 
 
 ### Dart 3.1
