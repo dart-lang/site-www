@@ -269,7 +269,7 @@ _asset id_. Native assets are declared via a `build.dart` script.
 
 ### Walkthrough of native_add_library
 
-The [native_add_library] example has the minimum necessary code for building
+The [`native_add_library`][] example has the minimum necessary code for building
 and bundling C code in a dart package.
 
 The example has the following files:
