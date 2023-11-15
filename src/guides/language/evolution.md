@@ -10,7 +10,8 @@ Dart programming language.
 * To learn specific details about the most recent supported language version,
   check out the [language documentation][] or the [language specification][].
 * For a full history of changes to the Dart SDK, see the [SDK changelog][].
-* For a full history of breaking changes, including [language versioned] changes,
+* For a full history of breaking changes,
+  including [language versioned][] changes,
   check out the [Breaking changes][] page.
 
 To use a language feature introduced after 2.0,
