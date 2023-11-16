@@ -320,13 +320,14 @@ and the way Apple's APIs handle multithreading:
 The first two points mean that a callback created in one isolate
 might be invoked on a thread running a different isolate,
 or no isolate at all.
-This will cause your app to crash.
-You can work around this limitation by writing some
-Objective-C code that intercepts your callback and
-forwards it over a [`Dart_Port`]({{site.dart-api}}/dart-ffi/NativePort.html)
-to the correct isolate.
-For an example of this,
-see the implementation of [`package:cupertino_http`][].
+Depending on the type of callback you are using,
+this could cause your app to crash.
+Callbacks created using
+[`Pointer.fromFunction`][] or [`NativeCallable.isolateLocal`][]
+must be invoked on the owner isolate's thread,
+otherwise they will crash.
+Callbacks created using [`NativeCallable.listener`][]
+can be safely invoked from any thread.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
@@ -346,6 +347,10 @@ and doesn't have constraints about which thread it's called from.
 
 You can safely interact with Objective-C code,
 as long as you keep these limitations in mind.
+
+[`Pointer.fromFunction`]: {{site.dart-api}}/dart-ffi/Pointer/fromFunction.html
+[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.isolateLocal.html
+[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.listener.html
 
 ## Swift example
 
