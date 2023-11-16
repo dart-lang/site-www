@@ -349,8 +349,8 @@ You can safely interact with Objective-C code,
 as long as you keep these limitations in mind.
 
 [`Pointer.fromFunction`]: {{site.dart-api}}/dart-ffi/Pointer/fromFunction.html
-[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/isolateLocal.html
-[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/listener.html
+[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.isolateLocal.html
+[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.listener.html
 
 ## Swift example
 
