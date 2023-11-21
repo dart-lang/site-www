@@ -189,16 +189,6 @@
       permalink: /guides/json
     - title: Number representation
       permalink: /guides/language/numbers
-    - title: Interoperability
-      children:
-        - title: C interop
-          permalink: /guides/libraries/c-interop
-        - title: Objective-C & Swift interop
-          permalink: /guides/libraries/objective-c-interop
-        - title: Java & Kotlin interop
-          permalink: /guides/libraries/java-interop
-        - title: JavaScript interop
-          permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
     - title: Multi-platform apps
@@ -242,6 +232,17 @@
     - title: Environment declarations
       permalink: /guides/environment-declarations
 
+- title: Interoperability
+  expanded: false
+  children:
+  - title: JavaScript interop
+    permalink: /web/js-interop
+  - title: C interop
+    permalink: /guides/libraries/c-interop
+  - title: Objective-C & Swift interop
+    permalink: /guides/libraries/objective-c-interop
+  - title: Java & Kotlin interop
+    permalink: /guides/libraries/java-interop
 
 - title: Tools & techniques
   expanded: false
