@@ -299,7 +299,7 @@ To learn more, see
 
 Although Dart and JavaScript are completely separate languages with
 separate VMs, they can interoperate. For more information, see
-[JavaScript and TypeScript interop](/web/js-interop).
+[JavaScript and TypeScript interop](/interop/js-interop).
 
 ### Q. I have a large JavaScript codebase. How can I migrate it to Dart?
 
