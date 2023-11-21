@@ -28,13 +28,14 @@ $ dart create -t web my_web_app
 
 The following table shows the templates you can use:
 
-|------------------+------------------------------------------------------|
-| Template         | Description                                          |
-|------------------|------------------------------------------------------|
-| `console`        | A command-line application.                          |
-| `package`        | A package containing shared Dart libraries.         |
-| `server-shelf`   | A server built using [shelf][].                      |
-| `web`            | A web app built using core Dart libraries.           |
+|------------------+---------------------------------------------------------|
+| Template         | Description                                             |
+|------------------|---------------------------------------------------------|
+| `cli`            | A command-line application with basic argument parsing using [`package:args`]({{site.pub-pkg}}/args). |
+| `console`        | A command-line application.                             |
+| `package`        | A package containing shared Dart libraries.             |
+| `server-shelf`   | A server built using [shelf][].                         |
+| `web`            | A web app built using core Dart libraries.              |
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
