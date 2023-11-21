@@ -39,4 +39,4 @@ and other web app frameworks for Dart are powered by the Dart web platform.
 [DOM]: /tutorials/web/low-level-html/connect-dart-html
 [Flutter]: {{site.flutter}}
 [Flutter web]: {{site.flutter}}/web
-[interop]: /web/js-interop
+[interop]: /interop/js-interop

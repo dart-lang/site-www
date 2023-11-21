@@ -559,11 +559,11 @@ To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
-[calling native C code]: /guides/libraries/c-interop
+[calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
 [Dart library]: /guides/libraries/create-packages#organizing-a-package
-[Dart FFI]: /guides/libraries/c-interop
+[Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
