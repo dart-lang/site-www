@@ -431,7 +431,7 @@ command will get the lowest version of `<package>` matching the dependency
 constraint in the `pubspec.yaml` file. The following `upgrade` command will then
 get the newest non-retracted version available.
 
-The second way is by editting the `pubspec.lock` file manually. Delete the
+The second way is by editing the `pubspec.lock` file manually. Delete the
 entire package entry for the package with the retracted version and then run
 `dart pub get`.
 
