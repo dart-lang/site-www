@@ -236,13 +236,13 @@
   expanded: false
   children:
   - title: JavaScript interop
-    permalink: /web/js-interop
+    permalink: /interop/js-interop
   - title: C interop
-    permalink: /guides/libraries/c-interop
+    permalink: /interop/c-interop
   - title: Objective-C & Swift interop
-    permalink: /guides/libraries/objective-c-interop
+    permalink: /interop/objective-c-interop
   - title: Java & Kotlin interop
-    permalink: /guides/libraries/java-interop
+    permalink: /interop/java-interop
 
 - title: Tools & techniques
   expanded: false

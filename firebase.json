@@ -197,6 +197,9 @@
       { "source": "/guides/language/sound-faq", "destination": "/language/type-system", "type": 301 },
       { "source": "/guides/language/type-system", "destination": "/language/type-system", "type": 301 },
       { "source": "/guides/libraries/create-library-packages", "destination": "/guides/libraries/create-packages", "type": 301 },
+      { "source": "/guides/libraries/java-interop", "destination": "/interop/java-interop", "type": 301 },
+      { "source": "/guides/libraries/objective-c-interop", "destination": "/interop/objective-c-interop", "type": 301 },
+      { "source": "/guides/libraries/c-interop", "destination": "/interop/c-interop", "type": 301 },      
       { "source": "/guides/platforms", "destination": "/overview#platform", "type": 301 },
       { "source": "/install", "destination": "/get-dart", "type": 301 },
       { "source": "/install/**", "destination": "/get-dart", "type": 301 },
@@ -285,6 +288,7 @@
       { "source": "/tutorials/web/fetch-data", "destination": "/tutorials/server/fetch-data", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/web/dart-2?(.html)", "destination": "/tools/webdev", "type": 301 },
+      { "source": "/web/js-interop", "destination": "/interop/js-interop", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 }
     ]
   },
