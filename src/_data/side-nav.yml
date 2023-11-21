@@ -137,13 +137,23 @@
   children:
     - title: Overview
       match-page-url-exactly: true
-      permalink: /guides/libraries
-    - title: Tour
-      permalink: /guides/libraries/library-tour
-    - title: Articles
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
       children:
+        - title: Overview
+          permalink: /libraries/dart-async
         - title: Creating streams
           permalink: /articles/libraries/creating-streams
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:html
+      permalink: /libraries/dart-html
+    - title: dart:io
+      permalink: /libraries/dart-io
 
 - title: Packages
   expanded: false

@@ -6,48 +6,6 @@ short-title: Library tour
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This page shows you how to use the major features in Dart's core libraries.
-It's just an overview, and by no means comprehensive.
-Whenever you need more details about a class,
-consult the [Dart API reference.][Dart API]
-
-
-[dart:core](#dartcore---numbers-collections-strings-and-more)
-: Built-in types, collections, and other core functionality.
-  This library is automatically imported into every Dart program.
-
-[dart:async](#dartasync---asynchronous-programming)
-: Support for asynchronous programming, with classes such as Future and Stream.
-
-[dart:math](#dartmath---math-and-random)
-: Mathematical constants and functions, plus a random number generator.
-
-[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
-: Encoders and decoders for converting between different data representations, including JSON and UTF-8.
-
-[dart:html](#darthtml)
-: DOM and other APIs for browser-based apps.
-
-[dart:io](#dartio)
-: I/O for programs that can use the Dart VM,
-  including Flutter apps, servers, and command-line scripts.
-
-This page is just an overview;
-it covers only a few dart:* libraries
-and no third-party libraries.
-
-Other places to find library information are the
-[pub.dev site]({{site.pub}}) and the
-[Dart web developer library guide][webdev libraries].
-You can find API documentation for all dart:* libraries in the
-[Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.][docs.flutter]
-
-{{site.alert.info}}
-  **DartPad tip:** You can play with the code in this page by copying it into a
-  [DartPad.]({{site.dartpad}})
-{{site.alert.end}}
-
 
 ## dart:core - numbers, collections, strings, and more
 
@@ -1775,34 +1733,11 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 ## dart:html - browser-based apps {#darthtml}
 
-{% include_relative _dart-html-tour.md %}
 
 
 ## dart:io - I/O for servers and command-line apps {#dartio}
 
-{% include_relative _dart-io-tour.md %}
 
-
-## Summary
-
-This page introduced you to the most commonly used functionality in
-Dart's built-in libraries. It didn't cover all the built-in
-libraries, however. Others that you might want to look into include
-[dart:collection][] and [dart:typed\_data,][dart:typed\_data]
-as well as platform-specific libraries like the
-[Dart web development libraries][webdev libraries]
-and the [Flutter libraries.][docs.flutter]
-
-You can get yet more libraries by using the [pub package manager](/guides/packages). The
-[collection,]({{site.pub-pkg}}/collection)
-[crypto,]({{site.pub-pkg}}/crypto)
-[http,]({{site.pub-pkg}}/http)
-[intl,]({{site.pub-pkg}}/intl) and
-[test]({{site.pub-pkg}}/test) libraries are just a
-sampling of what you can install using pub.
-
-To learn more about the Dart language, see the
-[language tour][].
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Assert]: /language/error-handling#assert
