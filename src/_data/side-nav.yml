@@ -235,14 +235,14 @@
 - title: Interoperability
   expanded: false
   children:
-  - title: JavaScript interop
-    permalink: /interop/js-interop
   - title: C interop
     permalink: /interop/c-interop
   - title: Objective-C & Swift interop
     permalink: /interop/objective-c-interop
   - title: Java & Kotlin interop
     permalink: /interop/java-interop
+  - title: JavaScript interop
+    permalink: /interop/js-interop
 
 - title: Tools & techniques
   expanded: false
