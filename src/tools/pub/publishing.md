@@ -425,15 +425,19 @@ version. In this case run `dart pub upgrade <package>`.
 If there is no newer version available, the best action might be to downgrade to
 the newest non-retracted version. There are two ways to get this version.
 
-The first way is by using [pub tool](/tools/pub/cmd) commands: Run `dart pub
-downgrade <package>` and then run `dart pub upgrade <package>`. The `downgrade`
-command will get the lowest version of `<package>` matching the dependency
-constraint in the `pubspec.yaml` file. The following `upgrade` command will then
-get the newest non-retracted version available.
+The first way is by using [pub tool](/tools/pub/cmd) commands:
 
-The second way is by editing the `pubspec.lock` file manually. Delete the
-entire package entry for the package with the retracted version and then run
-`dart pub get`.
+1. Run `dart pub downgrade <package>` to
+   get the lowest version  of the specified package that
+   matches the constraints in the `pubspec.yaml` file.
+2. Run `dart pub upgrade <package>` to get the
+   newest compatible and non-retracted version available.
+
+The second way is by editing the `pubspec.lock` file manually:
+
+1. Delete the entire package entry for the package with the retracted version.
+2. Run `dart pub get` to get the
+   newest compatible and non-retracted version available.
 
 It is also possible to completely delete the `pubspec.lock` file and then run
 `dart pub get`. However, this might also result in version changes for other
