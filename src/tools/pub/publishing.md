@@ -411,19 +411,21 @@ the dependent package must pin the version in the
 
 ### How to migrate away from a retracted package version
 
-When a package depends on a package version that is retracted, there are
-different ways to migrate away from this version depending on what other
-versions are available.
+When a package depends on a package version that is retracted,
+there are different ways to migrate away from this version depending
+on what other versions are available.
 
 #### Upgrade to a newer version
 
-In most cases a newer version has been published to replace the retracted
-version. In this case run `dart pub upgrade <package>`.
+In most cases a newer version has been published to
+replace the retracted version.
+In this case run `dart pub upgrade <package>`.
 
 #### Downgrade to the newest non-retracted version
 
-If there is no newer version available, the best action might be to downgrade to
-the newest non-retracted version. There are two ways to get this version.
+If there is no newer version available, the best action
+might be to downgrade to the newest non-retracted version.
+There are two ways to get this version.
 
 The first way is by using [pub tool](/tools/pub/cmd) commands:
 
@@ -439,15 +441,15 @@ The second way is by editing the `pubspec.lock` file manually:
 2. Run `dart pub get` to get the
    newest compatible and non-retracted version available.
 
-It is also possible to completely delete the `pubspec.lock` file and then run
-`dart pub get`. However, this might also result in version changes for other
-dependencies.
+It is also possible to completely delete the `pubspec.lock` file and
+then run `dart pub get`. However, this might also
+result in version changes for other dependencies.
 
 #### Upgrade or downgrade to a version outside the specified version constraint
 
-If there is no alternative version available which satisfies the current version
-constraint, edit the version constraint in the `pubspec.yaml` file and run
-`dart pub upgrade`.
+If there is no alternative version available that satisfies the
+current version constraint, edit the version constraint
+in the `pubspec.yaml` file and run `dart pub upgrade`.
 
 
 ### How to retract or restore a package version
