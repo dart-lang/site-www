@@ -523,7 +523,8 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 {{site.alert.version-note}}
-  Since Flutter 2.0, enforcing of the Flutter SDK constraint upper bound is disabled. 
+  Since Flutter 2.0,
+  enforcing of the Flutter SDK constraint upper bound is disabled. 
   For more information, check out
   this [Issue](https://github.com/flutter/flutter/issues/95472).
 {{site.alert.end}}
