@@ -60,7 +60,7 @@ we made the following changes to this site:
 
 [type promotion]: /effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion
 [Understanding Null Safety]: /null-safety/understanding-null-safety
-[C interop]: /guides/libraries/c-interop#native-assets
+[C interop]: /interop/c-interop#native-assets
 [Breaking changes]: /resources/breaking-changes
 [lints]: /tools/linter-rules
 [diagnostics]: /tools/diagnostic-messages
@@ -70,7 +70,7 @@ we made the following changes to this site:
 [Constructors]: /language/constructors
 [Package dependencies]: /tools/pub/dependencies
 [Extension methods]: /language/extension-methods
-[Objective-C]: /guides/libraries/objective-c-interop#callbacks-and-multithreading-limitations
+[Objective-C]: /interop/objective-c-interop#callbacks-and-multithreading-limitations
 [Metadata]: /language/metadata
 [move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
 
@@ -216,14 +216,14 @@ we made the following changes:
 [language evolution]: /guides/language/evolution
 [language versioning]: /guides/language/evolution#language-versioning
 [compilation environment declarations]: /guides/environment-declarations
-[Java interop]: /guides/libraries/java-interop
+[Java interop]: /interop/java-interop
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
 [`dart info`]: /tools/dart-info
 [`dart pub add`]: /tools/pub/cmd/pub-add
 [source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
 [SDK archive]: /get-dart/archive
 [glossary]: /resources/glossary
-[JS static interop support]: /web/js-interop#next-generation-js-interop-preview
+[JS static interop support]: /interop/js-interop#next-generation-js-interop-preview
 [analyzer plugins]: /tools/analysis#plugins
 
 ### Articles added to the Dart blog
@@ -382,7 +382,7 @@ we made the following changes to this site:
 * Updated the [Library tour][] to include information on weak references and finalizers.
 * Added a section on customizing [`dart fix`][].
 
-[Objective-C and Swift interop]: /guides/libraries/objective-c-interop
+[Objective-C and Swift interop]: /interop/objective-c-interop
 [Fixing common type problems]: /guides/language/sound-problems
 [What not to commit]: /guides/libraries/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
@@ -503,7 +503,7 @@ we made the following changes to this site:
 [Other operators]: /language/operators#other-operators
 [Low-level HTML tutorials]: /tutorials/web/low-level-html
 
-[native types]: /guides/libraries/c-interop#interfacing-with-native-types
+[native types]: /interop/c-interop#interfacing-with-native-types
 [initializing formal parameters]: /language/constructors#initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await

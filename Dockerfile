@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bookworm@sha256:adc7f93df5b83c8627b3fadcc974ce452ef9999603f65f637e32b8acec096ae1 as base
+FROM ruby:3.2-slim-bookworm@sha256:02a091c83d1aa1070c0f6fefcbd2aff58ddd3430e2d5661c6ef2142b1383349b as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -35,22 +35,22 @@ RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       # BEGIN dart-sha
       amd64_stable) \
-        DART_SHA256="4ee368d9d359a6bd02fd0b617c31cc038373878260fd58e5575a29bfaff47773"; \
+        DART_SHA256="5fbdb0b5a2c2917b48f9cc433942580796630cfa807b25829015d52c60cbb13d"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="6051c47c73ebbfef227348635c53147cf234a4df43731c10e74b72297ff95b14"; \
+        DART_SHA256="3db9be1fc744cae98e45b67418e8cc16e845c0d37351665c6f21f992d9dbc6d8"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="4ee368d9d359a6bd02fd0b617c31cc038373878260fd58e5575a29bfaff47773"; \
+        DART_SHA256="5fbdb0b5a2c2917b48f9cc433942580796630cfa807b25829015d52c60cbb13d"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="6051c47c73ebbfef227348635c53147cf234a4df43731c10e74b72297ff95b14"; \
+        DART_SHA256="3db9be1fc744cae98e45b67418e8cc16e845c0d37351665c6f21f992d9dbc6d8"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="5509ebae275a05813365a66bf7bd24c8bc6c1221b9dec7f2eb5919c5906b1f60"; \
+        DART_SHA256="2c251e482bce1010edfd93be819098ba0687397b0f2be323aaf5871bbdcb1710"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="f048a5e06eb84ca9d9f01a5e282cad72e1734603b0ee1a94aa2e8a546a16c663"; \
+        DART_SHA256="bd7f8da2a0289ad31005376bf113ad1bc866d86738e61139eb4394e08c04d8e8"; \
         SDK_ARCH="arm64";; \
       # END dart-sha
     esac; \
