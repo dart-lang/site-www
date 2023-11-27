@@ -20,27 +20,31 @@ nextpage:
 </style>
 
 Concurrent programming in Dart refers to both asynchronous APIs, like `Future`
-and `Stream`, and `isolates`, which allow you to move processes to separate
+and `Stream`, and *isolates*, which allow you to move processes to separate
 cores. All Dart code runs in isolates.
 
 An isolate is like a small space on your machine that has its own isolated
-memory. If you’re coming from another language that supports multiple threads,
-you’ll find that isolates are similar, but are crucially different in that
-isolates can’t share memory. Most Dart apps run all their code in a single
-isolate, the main isolate, but you can create more isolates if you need them.
-When you spawn a new isolate, it will have its own isolated memory heap, and it
-will have its own event loop. The event loop is what makes asynchronous and
+memory. If you’re familiar with languages that supports multiple threads,
+you’ll find that isolates are similar. The crucial difference, though,
+is that isolates can’t share memory. 
+
+All Dart apps start by running all their code in a single isolate, 
+the main isolate. You can then create more isolates if you need them.
+When you spawn a new isolate, it has its own isolated memory heap,
+and its own event loop. The event loop is what makes asynchronous and
 concurrent programming possible in Dart.
 
 ## Event Loop
 
-Dart’s runtime model is based on an event loop. This event loop is responsible
-for executing the code of your program, collecting and processing events,
-running garbage collection processes, and more. As your application runs, all
-events are added to a queue, called the event queue. Events can be anything from
-requests to repaint the UI, to user taps and keystrokes, to i/o from the disk.
-Because your app can’t predict what order these events will happen, it runs this
-event loop that processes events in the order they're queued, one at a time.
+Dart’s runtime model is based on an event loop. 
+The event loop is responsible for executing your program's code,
+collecting and processing events, running garbage collection processes, and more.
+
+As your application runs, all events are added to a queue,
+called the *event queue*. Events can be anything from requests to repaint the UI,
+to user taps and keystrokes, to I/O from the disk.
+Because your app can’t predict what order events will happen, 
+the event loop processes events in the order they're queued, one at a time.
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png)
 
@@ -56,7 +60,7 @@ Even though this event loop is synchronous and runs on a single thread, most
 Dart applications need to do more than one thing at a time. For example, a
 client application might need to execute an HTTP request, while also listening
 for a user to tap a button. To handle this, Dart offers many async APIs, like
-Futures, Streams, and async-await. These APIs are built around this event loop.
+[Futures, Streams, and async-await](/language/async). These APIs are built around this event loop.
 
 For example, consider making a network request:
 ```dart
@@ -67,16 +71,16 @@ http.get('https://example.com').then((response) {
 }
 ```
 
-When this code is processed by the event loop, it will immediately call the
-first clause - `http.get`, and return a `Future`. It will also tell the event
-loop to take note that sometime in the future, a specific event will happen (
-which is in this case an HTTP response), and when that event happens, it should
+When this code reaches the event loop, it immediately calls the
+first clause -- `http.get`, and returns a `Future`. It also tells the event
+loop to take note that sometime in the future, a specific event will happen
+(in this case, an HTTP response), and when that event happens, it should
 execute the callback passed to `then`.
 
 ![Figure showing async events being added to an event loop and holding onto 
 a callback to execute later.](/assets/img/language/concurrency/async-event-loop.png)
 
-This same model is basically how the event loop handles all other 
+This same model is generally how the event loop handles all other 
 asynchronous events in Dart, such as [`Streams`][].
 
 [`Streams`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
@@ -91,7 +95,7 @@ then you can skip ahead to the [isolates section][].
 ### Future type syntax
 
 A promise to eventually provide a string value is typed as `Future<String>`.
-This is an example of a function that returns a Future:
+This is an example of a function that returns a `Future`:
 
 <?code-excerpt "lib/future_syntax.dart"?>
 ```dart
@@ -110,8 +114,8 @@ Future<String> _readFileAsync(String filename) {
 The `async` and `await` keywords provide a declarative way to define
 asynchronous functions and use their results.
 
-Here's an example of some synchronous code that blocks while waiting for file
-I/O:
+Here's an example of some synchronous code
+that blocks while waiting for file I/O:
 
 <?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
@@ -156,8 +160,8 @@ void main() [!async!] {
 {% endprettify %}
 
 The `main()` function uses the `await` keyword in front of `_readFileAsync()`
-to let other Dart code (such as event handlers) use the CPU while native code (
-file I/O) executes. Using `await` also has the effect of converting
+to let other Dart code (such as event handlers) use the CPU while native code
+(file I/O) executes. Using `await` also has the effect of converting
 the `Future<String>` returned by `_readFileAsync()` into a `String`. As a
 result, the `contents` variable has the implicit type `String`.
 
@@ -174,11 +178,12 @@ system (OS). Once `readAsString()` returns a value, Dart code execution resumes.
 
 ### Stream syntax
 
-Dart also supports asynchronous code in the form of streams. Streams are used to
+Dart also supports asynchronous code in the form of streams. Streams
 provide values in the future and repeatedly over time. A promise to provide a
 series of `int` values over time has the type `Stream<int>`.
 
-This example will return a new int value every second.
+This example will return a new `int` value every second.
+
 <?code-excerpt "lib/stream_syntax.dart"?>
 ```dart
 Stream<int> stream = Stream.periodic(const Duration(seconds: 1), (i) => i * i);
@@ -189,8 +194,8 @@ Stream<int> stream = Stream.periodic(const Duration(seconds: 1), (i) => i * i);
 Await-for is a type of for loop that executes each subsequent iteration of the
 loop as new values are provided. In other words, it’s used to “loop over”
 streams. In this example, a new value will be returned from the function
-sumStream as new values are emitted from the stream that’s provided as an
-argument. The yield keyword is used rather than return in functions that return
+`sumStream` as new values are emitted from the stream that’s provided as an
+argument. The `yield` keyword is used rather than `return` in functions that return
 streams of values. 
 
 <?code-excerpt "lib/await_for_syntax.dart"?>
@@ -268,7 +273,7 @@ After handling the events, the isolate exits.
 ![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png)
 
 
-### Event Handling
+### Event handling
 
 In a client app, the main isolate's event queue might contain repaint requests
 and notifications of tap and other UI events. For example, the following figure
@@ -315,8 +320,7 @@ block without affecting other isolates.
 
 ## Isolate syntax
 
-There are two recommended ways to work with isolates in Dart: [`Isolate.run()`][] and
-[`Isolate.spawn()`][]. Which method you use depends on the use-case.
+There are two ways to work with isolates in Dart, depending on the use-case: 
 
 For doing a single computation on a separate thread, use the static
 method `Isolate.run`. When you need to create an isolate that will handle
@@ -326,10 +330,10 @@ method.
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/spawn.html
 
-### Isolate.run
+### `Isolate.run()`
 
-The static Isolate.run method requires one argument: a callback that will be 
-ran on the newly spawned isolate.
+The static `Isolate.run()` method requires one argument: a callback that will be 
+run on the newly spawned isolate.
 
 <?code-excerpt "lib/isolate_run_syntax.dart"?>
 ```dart
@@ -347,7 +351,7 @@ In most cases, `Isolate.run` is the recommended API to run processes in the back
 
 ### Isolate.spawn
 
-Creating background worker isolates requires some work to set up 2-way 
+Creating [background worker](#background-workers) isolates requires setting up two-way 
 communication between the main isolate and the worker isolate. This code 
 snippet shows the bare-minimum needed to create a long-lived isolate. You 
 can see a more detailed code example and explanation on the [Isolates][] page.
@@ -428,31 +432,32 @@ passing is slower when isolates are in different groups.
 
 ## Limitations of isolates
 
-Isolates are most commonly used in Flutter applications, when you need to do
-large computations that would cause the UI to become unresponsive, but they’re
-also useful in many server-side applications. In general, isolates are useful
+Isolates are most commonly used in Flutter applications, when you need to perform
+large computations that might otherwise cause the UI to become unresponsive.
+They’re also useful in many server-side applications. In general, you should use isolates
 whenever your application is handling computations that are large enough to
 temporarily block other computations.
 
-While there isn’t one hard-and-fast rule about when to use isolates, there are
-common situations in which you can consider using isolates. The most common uses
-for isolates are:
+While there aren't any rules about when you _must_ isolates, here are
+common situations in which you can consider using isolates:
 
-- Parsing and decoding exceptionally large JSON blobs
-- Processing and compressing photos, audio and video
-- Converting audio and video files
+- Parsing and decoding exceptionally large JSON blobs.
+- Processing and compressing photos, audio and video.
+- Converting audio and video files.
 - Performing complex searching and filtering on large lists or within
-  filesystems
-- Performing I/O, such as communicating with a database
-- Handling a large volume of network requests
+  filesystems.
+- Performing I/O, such as communicating with a database.
+- Handling a large volume of network requests.
 
 ### Isolates aren't threads
 
 If you’re coming to Dart from a language with multithreading, it’d be reasonable
-to expect isolates to behave like threads, but that isn’t the case. Isolates
-have their own memory heaps, ensuring that none of the state in an isolate is
+to expect isolates to behave like threads, but that isn’t the case. Each isolate
+has its own memory heap, ensuring that none of the state in an isolate is
 accessible from any other isolate. Therefore, isolates are limited by their
-access to their own memory. For example, if you have an application with a
+access to their own memory. 
+
+For example, if you have an application with a
 global mutable variable called `configuration`, that variable will be a separate
 variable in your spawned isolate. If you mutate that variable in the spawned
 isolate, it will remain untouched in the main isolate. This is how isolates are
@@ -461,7 +466,7 @@ using isolates.
 
 ### Message types
 
-`message`s sent via SendPort can be almost any type of Dart object, but there
+Messages sent via [`SendPort`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html) can be almost any type of Dart object, but there
 are a few exceptions:
 
 - Objects with native resources (subclasses of e.g. NativeFieldWrapperClass1). A
@@ -479,8 +484,8 @@ are a few exceptions:
   ('vm:isolate-unsendable'), extend or implement such classes cannot be sent
   through the ports.
 
-Apart from those exceptions any object can be sent. See documentation for
-  [`SendPort`][] for more information.
+Apart from those exceptions, any object can be sent. 
+Check out the [`SendPort`][] documentation for more information.
 
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
@@ -511,16 +516,16 @@ as the spawning isolate. Web workers don't have an equivalent API.
 [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
 
 
-## Additional Resources
+## Additional resources
 
 - If you’re using many isolates, consider
   the [IsolateNameServer][]
   in Flutter, or
   the [pub package][] that clones
   the functionality for Dart applications not using Flutter.
-- Dart’s Isolates are an implementation of
+- Dart’s isolates are an implementation of
   the [Actor model][].
-- Additional documentation on Isolate APIs
+- Additional documentation on `Isolate` APIs:
     - [`Isolate.exit()`][]
     - [`Isolate.spawn()`][]
     - [`ReceivePort`][]
