@@ -18,6 +18,24 @@ prevpage:
 This page discusses some examples that use the `Isolate` API to implement 
 isolates.
 
+Isolates are most commonly used in Flutter applications, when you 
+need to perform large computations that might otherwise cause the 
+UI to become unresponsive.
+They’re also useful in many server-side applications. In general, 
+you should use isolates whenever your application is handling computations that 
+are large enough to temporarily block other computations.
+
+While there aren't any rules about when you _must_ use isolates, here are
+common situations in which you can consider using isolates:
+
+- Parsing and decoding exceptionally large JSON blobs.
+- Processing and compressing photos, audio and video.
+- Converting audio and video files.
+- Performing complex searching and filtering on large lists or within
+  filesystems.
+- Performing I/O, such as communicating with a database.
+- Handling a large volume of network requests.
+
 ## Implementing a simple worker isolate
 
 These examples implement a main isolate
