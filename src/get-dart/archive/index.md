@@ -88,13 +88,13 @@ The latest main channel build
 is available at URLs like the following:
 
 {% prettify none tag=pre+code %}
-https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
+https://storage.googleapis.com/dart-archive/channels/main/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 {% endprettify %}
 
 Example:
 
 {% prettify none tag=pre+code %}
-https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
+https://storage.googleapis.com/dart-archive/channels/main/raw/latest/sdk/dartsdk-windows-x64-release.zip
 {% endprettify %}
 
 {{site.alert.note}}
