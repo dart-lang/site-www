@@ -517,8 +517,8 @@ context of the `flutter` executable, and the Flutter SDK's
 `version` file meets the version constraint's lower bound. Otherwise,
 the package will not be selected.
 
-{{site.alert.version-note}}
-  Note: The Flutter SDK only enforces the lower bound.
+{{site.alert.note}}
+  Note: The Flutter SDK only enforces the lower bound of the flutter constraint.
   To learn more, check out
   [issue #95472](https://github.com/flutter/flutter/issues/95472)
   in the `flutter` repository.
