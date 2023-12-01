@@ -127,7 +127,6 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-* <a href='/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
 
 **Variables**
 
@@ -205,8 +204,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
 * <a href='/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
 * <a href='/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
-* <a href='/effective-dart/design#do-use-mixin-to-define-a-mixin-type'>DO use <code>mixin</code> to define a mixin type.</a>
-* <a href='/effective-dart/design#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a type that isn't intended to be a mixin.</a>
+* <a href='/effective-dart/design#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class'>PREFER defining a pure <code>mixin</code> or pure <code>class</code> to a <code>mixin class</code>.</a>
 
 **Constructors**
 
