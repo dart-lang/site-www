@@ -63,9 +63,9 @@ $ dart help format
 {{site.alert.tip}}
   To avoid making changes that might be unsafe,
   `dart format` only affects whitespace.
-  However, there's a lot more to writing readable and
-  consistent code than just whitespace.
-
+  
+  There's a lot more to writing readable and
+  consistent code than just whitespace, though.
   To learn more about best practices for writing and styling Dart code,
   check out the [Dart style guide][].
 {{site.alert.end}}
