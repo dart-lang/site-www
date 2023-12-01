@@ -1,6 +1,7 @@
-import 'package:dart_sdk_archive/src/util.dart';
 import 'package:path/path.dart' as path;
 import 'package:sdk_builds/sdk_builds.dart';
+
+import 'util.dart';
 
 class SvnVersionGenerator {
   final _downloader = DartDownloads();

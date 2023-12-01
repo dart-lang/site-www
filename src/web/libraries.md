@@ -55,7 +55,7 @@ Here are a few packages that are web-specific:
 [flutter]: {{site.flutter}}
 [flutter-web]: {{site.flutter}}/web
 [js]: {{site.pub-pkg}}/js
-[JavaScript interoperability]: /web/js-interop
+[JavaScript interoperability]: /interop/js-interop
 [mdc_web]: {{site.pub-pkg}}/mdc_web
 [mustache_template]: {{site.pub-pkg}}/mustache_template
 [react]: {{site.pub-pkg}}/react

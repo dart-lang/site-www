@@ -4,7 +4,7 @@ publish_to: none
 homepage: https://dart.dev
 
 environment:
-  sdk: ^3.1.0
+  sdk: ^3.2.0
 
 dev_dependencies:
   build_runner: ^2.4.6

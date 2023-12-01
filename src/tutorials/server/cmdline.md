@@ -631,7 +631,7 @@ that help with parsing and using command-line arguments:
 For more classes, functions, and properties,
 consult the API docs for
 [`dart:io`]({{ioAPI}}/dart-io-library.html),
-[`dart:convert`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html),
+[`dart:convert`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html),
 and [`package:args`]({{argsAPI}}/args-library.html).
 
 For another example of a command line app, 

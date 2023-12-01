@@ -28,7 +28,7 @@ The analyzer produces the following diagnostics for code that
 doesn't conform to the language specification or
 that might work in unexpected ways.
 
-[ffi]: https://dart.dev/guides/libraries/c-interop
+[ffi]: https://dart.dev/interop/c-interop
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
 [irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
@@ -725,9 +725,9 @@ The analyzer produces this diagnostic when an invocation of either
 `Pointer.asFunction` or `DynamicLibrary.lookupFunction` has an `isLeaf`
 argument whose value isn't a constant expression.
 
-The analyzer also produces this diagnostic when the value of the
-`exceptionalReturn` argument of `Pointer.fromFunction` or
-`NativeCallable.isolateLocal`.
+The analyzer also produces this diagnostic when an invocation of either
+`Pointer.fromFunction` or `NativeCallable.isolateLocal` has an
+`exceptionalReturn` argument whose value isn't a constant expression.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
@@ -773,7 +773,7 @@ int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
 
 ### argument_type_not_assignable
 
-_The argument type '{0}' can't be assigned to the parameter type '{1}'._
+_The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 
 #### Description
 
@@ -1473,6 +1473,55 @@ Future<int> f() async {
 }
 ```
 
+### await_of_extension_type_not_future
+
+_The 'await' expression can't be used for an expression with an extension type
+that is not a subtype of 'Future'._
+
+#### Description
+
+The analyzer produces this diagnostic when the type of the expression in
+an `await` expression is an extension type, and the extension type isn't a
+subclass of `Future`.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `E`
+isn't a subclass of `Future`:
+
+```dart
+extension type E(int i) {}
+
+void f(E e) async {
+  [!await!] e;
+}
+```
+
+#### Common fixes
+
+If the extension type is correctly defined, then remove the `await`:
+
+```dart
+extension type E(int i) {}
+
+void f(E e) {
+  e;
+}
+```
+
+If the extension type is intended to be awaitable, then add `Future` (or a
+subtype of `Future`) to the `implements` clause (adding an `implements`
+clause if there isn't one already), and make the representation type
+match:
+
+```dart
+extension type E(Future<int> i) implements Future<int> {}
+
+void f(E e) async {
+  await e;
+}
+```
+
 ### body_might_complete_normally
 
 _The body might complete normally, causing 'null' to be returned, but the return
@@ -1727,6 +1776,8 @@ _The built-in identifier '{0}' can't be used as a type parameter name._
 _The built-in identifier '{0}' can't be used as a typedef name._
 
 _The built-in identifier '{0}' can't be used as an extension name._
+
+_The built-in identifier '{0}' can't be used as an extension type name._
 
 #### Description
 
@@ -3471,8 +3522,8 @@ The following code produces this diagnostic:
 void f() {
   try {
   } catch (e) {
-  } [!on String {!]
-[!  }!]
+  } [!on String {
+  }!]
 }
 ```
 
@@ -3522,8 +3573,8 @@ The following code produces this diagnostic:
 void f() {
   try {
   } on num {
-  } [!on int {!]
-[!  }!]
+  } [!on int {
+  }!]
 }
 ```
 
@@ -6136,6 +6187,409 @@ f() {
 
 If there are multiple cascaded accesses, you'll need to duplicate the
 extension override for each one.
+
+### extension_type_constructor_with_super_formal_parameter
+
+_Extension type constructors can't declare super formal parameters._
+
+#### Description
+
+The analyzer produces this diagnostic when a constructor in an extension
+type has a super parameter. Super parameters aren't valid because
+extension types don't have a superclass.
+
+#### Example
+
+The following code produces this diagnostic because the named constructor
+`n` contains a super parameter:
+
+```dart
+extension type E(int i) {
+  E.n(this.i, [!super!].foo);
+}
+```
+
+#### Common fixes
+
+If you need the parameter, replace the super parameter with a normal
+parameter:
+
+```dart
+extension type E(int i) {
+  E.n(this.i, String foo);
+}
+```
+
+If you don't need the parameter, remove the super parameter:
+
+```dart
+extension type E(int i) {
+  E.n(this.i);
+}
+```
+
+### extension_type_constructor_with_super_invocation
+
+_Extension type constructors can't include super initializers._
+
+#### Description
+
+The analyzer produces this diagnostic when a constructor in an extension
+type includes an invocation of a super constructor in the initializer
+list. Because extension types don't have a superclass, there's no
+constructor to invoke.
+
+#### Example
+
+The following code produces this diagnostic because the constructor `E.n`
+invokes a super constructor in its initializer list:
+
+```dart
+extension type E(int i) {
+  E.n() : i = 0, [!super!].n();
+}
+```
+
+#### Common fixes
+
+Remove the invocation of the super constructor:
+
+```dart
+extension type E(int i) {
+  E.n() : i = 0;
+}
+```
+
+### extension_type_declares_instance_field
+
+_Extension types can't declare instance fields._
+
+#### Description
+
+The analyzer produces this diagnostic when there's a field declaration in
+the body of an extension type declaration.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `E`
+declares a field named `f`:
+
+```dart
+extension type E(int i) {
+  final int [!f!] = 0;
+}
+```
+
+#### Common fixes
+
+If you don't need the field, then remove it or replace it with a getter
+and/or setter:
+
+```dart
+extension type E(int i) {
+  int get f => 0;
+}
+```
+
+If you need the field, then convert the extension type into a class:
+
+```dart
+class E {
+  final int i;
+
+  final int f = 0;
+
+  E(this.i);
+}
+```
+
+### extension_type_declares_member_of_object
+
+_Extension types can't declare members with the same name as a member declared
+by 'Object'._
+
+#### Description
+
+The analyzer produces this diagnostic when the body of an extension type
+declaration contains a member with the same name as one of the members
+declared by `Object`.
+
+#### Example
+
+The following code produces this diagnostic because the class `Object`
+already defines a member named `hashCode`:
+
+```dart
+extension type E(int i) {
+  int get [!hashCode!] => 0;
+}
+```
+
+#### Common fixes
+
+If you need a member with the implemented semantics, then rename the
+member:
+
+```dart
+extension type E(int i) {
+  int get myHashCode => 0;
+}
+```
+
+If you don't need a member with the implemented semantics, then remove the
+member:
+
+```dart
+extension type E(int i) {}
+```
+
+### extension_type_implements_disallowed_type
+
+_Extension types can't implement '{0}'._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type implements a
+type that it isn't allowed to implement.
+
+#### Example
+
+The following code produces this diagnostic because extension types can't
+implement the type `dynamic`:
+
+```dart
+extension type A(int i) implements [!dynamic!] {}
+```
+
+#### Common fixes
+
+Remove the disallowed type from the implements clause:
+
+```dart
+extension type A(int i) {}
+```
+
+### extension_type_implements_itself
+
+_The extension type can't implement itself._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type implements
+itself, either directly or indirectly.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `A`
+directly implements itself:
+
+```dart
+extension type [!A!](int i) implements A {}
+```
+
+The following code produces this diagnostic because the extension type `A`
+indirectly implements itself (through `B`):
+
+```dart
+extension type [!A!](int i) implements B {}
+
+extension type [!B!](int i) implements A {}
+```
+
+#### Common fixes
+
+Break the cycle by removing a type from the implements clause of at least
+one of the types involved in the cycle:
+
+```dart
+extension type A(int i) implements B {}
+
+extension type B(int i) {}
+```
+
+### extension_type_implements_not_supertype
+
+_'{0}' is not a supertype of '{1}', the representation type._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type implements a
+type that isn't a supertype of the representation type.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `A`
+implements `String`, but `String` isn't a supertype of the representation
+type `int`:
+
+```dart
+extension type A(int i) implements [!String!] {}
+```
+
+#### Common fixes
+
+If the representation type is correct, then remove or replace the type in
+the implements clause:
+
+```dart
+extension type A(int i) {}
+```
+
+If the representation type isn't correct, then replace it with the correct
+type:
+
+```dart
+extension type A(String s) implements String {}
+```
+
+### extension_type_implements_representation_not_supertype
+
+_'{0}', the representation type of '{1}', is not a supertype of '{2}', the
+representation type of '{3}'._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type implements
+another extension type, and the representation type of the implemented
+extension type isn't a subtype of the representation type of the implementing
+extension type.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `B`
+implements `A`, but the representation type of `A` (`num`) isn't a
+subtype of the representation type of `B` (`String`):
+
+```dart
+extension type A(num i) {}
+
+extension type B(String s) implements [!A!] {}
+```
+
+#### Common fixes
+
+Either change the representation types of the two extension types so that
+the representation type of the implemented type is a supertype of the
+representation type of the implementing type:
+
+```dart
+extension type A(num i) {}
+
+extension type B(int n) implements A {}
+```
+
+Or remove the implemented type from the implements clause:
+
+```dart
+extension type A(num i) {}
+
+extension type B(String s) {}
+```
+
+### extension_type_inherited_member_conflict
+
+_The extension type '{0}' has more than one distinct member named '{1}' from
+implemented types._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type implements
+two or more other types, and at least two of those types declare a member
+with the same name.
+
+#### Example
+
+The following code produces this diagnostic because the extension type `C`
+implements both `A` and `B`, and both declare a member named `m`:
+
+```dart
+class A {
+  void m() {}
+}
+
+extension type B(A a) {
+  void m() {}
+}
+
+extension type [!C!](A a) implements A, B {}
+```
+
+#### Common fixes
+
+If the extension type doesn't need to implement all of the listed types,
+then remove all but one of the types introducing the conflicting members:
+
+```dart
+class A {
+  void m() {}
+}
+
+extension type B(A a) {
+  void m() {}
+}
+
+extension type C(A a) implements A {}
+```
+
+If the extension type needs to implement all of the listed types but you
+can rename the members in those types, then give the conflicting members
+unique names:
+
+```dart
+class A {
+  void m() {}
+}
+
+extension type B(A a) {
+  void n() {}
+}
+
+extension type C(A a) implements A, B {}
+```
+
+### extension_type_representation_depends_on_itself
+
+_The extension type representation can't depend on itself._
+
+#### Description
+
+The analyzer produces this diagnostic when an extension type has a
+representation type that depends on the extension type itself, either
+directly or indirectly.
+
+#### Example
+
+The following code produces this diagnostic because the representation
+type of the extension type `A` depends on `A` directly:
+
+```dart
+extension type [!A!](A a) {}
+```
+
+The following two code examples produce this diagnostic because the
+representation type of the extension type `A` depends on `A`
+indirectly through the extension type `B`:
+
+```dart
+extension type [!A!](B b) {}
+
+extension type [!B!](A a) {}
+```
+
+```dart
+extension type [!A!](List<B> b) {}
+
+extension type [!B!](List<A> a) {}
+```
+
+#### Common fixes
+
+Remove the dependency by choosing a different representation type for at
+least one of the types in the cycle:
+
+```dart
+extension type A(String s) {}
+```
 
 ### external_with_initializer
 
@@ -8864,46 +9318,40 @@ _Publishable packages can't have '{0}' dependencies._
 
 #### Description
 
-The analyzer produces this diagnostic when a package under either
-`dependencies` or `dev_dependencies` isn't a pub, `git`, or `path` based
-dependency.
+The analyzer produces this diagnostic when a publishable package
+includes a package in the `dependencies` list of its `pubspec.yaml` file
+that isn't a pub-hosted dependency.
 
-See [Package dependencies](https://dart.dev/tools/pub/dependencies) for
-more information about the kind of dependencies that are supported.
+To learn more about the different types of dependency sources,
+check out [Package dependencies](https://dart.dev/tools/pub/dependencies).
 
 #### Example
 
-The following code produces this diagnostic because the dependency on the
-package `transmogrify` isn't a pub, `git`, or `path` based dependency:
+The following code produces this diagnostic because the dependency on
+the package `transmogrify` isn't a pub-hosted dependency.
 
 ```yaml
 name: example
 dependencies:
   transmogrify:
-    hosted:
-      name: transmogrify
-      url: http://your-package-server.com
-    version: ^1.4.0
+    [!path!]: ../transmogrify
 ```
 
 #### Common fixes
 
-If you want to publish your package to `pub.dev`, then change the
-dependencies to ones that are supported by `pub`.
+If you want to publish the package to `pub.dev`, then change
+the dependency to a hosted package that is published on `pub.dev`.
 
-If you don't want to publish your package to `pub.dev`, then add a
-`publish_to: none` entry to mark the package as one that isn't intended to
-be published:
+If the package isn't intended to be published on `pub.dev`, then
+add a `publish_to: none` entry to its `pubspec.yaml` file to
+mark it as not intended to be published:
 
 ```yaml
 name: example
 publish_to: none
 dependencies:
   transmogrify:
-    hosted:
-      name: transmogrify
-      url: http://your-package-server.com
-    version: ^1.4.0
+    path: ../transmogrify
 ```
 
 ### invalid_exception_value
@@ -10182,15 +10630,15 @@ should be a map.
 ```yaml
 name: example
 platforms:
-  [!- android!]
-  [!- web!]
-  [!- ios!]
+  [!- android
+  - web
+  - ios!]
 ```
 
 #### Common fixes
 
 If you can rely on automatic platform detection, then omit the
-top-level `platforms` field. 
+top-level `platforms` field.
 
 ```yaml
 name: example
@@ -11304,7 +11752,7 @@ argument in an invocation of either `Pointer.asFunction` or
 returned would have a return type of `Handle`.
 
 The analyzer also produces this diagnostic when the value of the `isLeaf`
-argument in an `FfiNative` annotation is `true` and the type argument on
+argument in an `Native` annotation is `true` and the type argument on
 the annotation is a function type whose return type is `Handle`.
 
 In all of these cases, leaf calls are only supported for the types `bool`,
@@ -11586,7 +12034,7 @@ The following code produces this diagnostic because the literal has a map
 entry even though it's a set literal:
 
 ```dart
-const collection = <String>{[!'a' : 'b'!]};
+var collection = <String>{[!'a' : 'b'!]};
 ```
 
 #### Common fixes
@@ -11596,7 +12044,7 @@ that it is a map. In the previous example, you could do this by adding
 another type argument:
 
 ```dart
-const collection = <String, String>{'a' : 'b'};
+var collection = <String, String>{'a' : 'b'};
 ```
 
 In other cases, you might need to change the explicit type from `Set` to
@@ -11607,7 +12055,7 @@ possibly by replacing the colon with a comma if both values should be
 included in the set:
 
 ```dart
-const collection = <String>{'a', 'b'};
+var collection = <String>{'a', 'b'};
 ```
 
 ### map_key_type_not_assignable
@@ -11834,6 +12282,39 @@ or make the parameter a required parameter:
 ```dart
 void f(int x) {}
 void g({required int x}) {}
+```
+
+### missing_dependency
+
+_Missing a dependency on imported package '{0}'._
+
+#### Description
+
+The analyzer produces this diagnostic when there's a package that has been
+imported in the source but is not listed as a dependency of the
+importing package.
+
+#### Example
+
+The following code produces this diagnostic because the package `path` is
+not listed as a dependency, while there is an import statement
+with package `path` in the source code of package `example`:
+
+```yaml
+name: example
+dependencies:
+  meta: ^1.0.2
+```
+
+#### Common fixes
+
+Add the missing package `path` to the `dependencies` field:
+
+```yaml
+name: example
+dependencies:
+  meta: ^1.0.2
+  path: any
 ```
 
 ### missing_enum_constant_in_switch
@@ -14188,6 +14669,35 @@ enum E {
 
   const E();
 }
+```
+
+### non_covariant_type_parameter_position_in_representation_type
+
+_An extension type parameter can't be used in a non-covariant position of its
+representation type._
+
+#### Description
+
+The analyzer produces this diagnostic when a type parameter of an
+extension type is used in a non-covariant position in the representation
+type of that extension type.
+
+#### Example
+
+The following code produces this diagnostic because the type parameter `T`
+is used as a parameter type in the function type `void Function(T)`, and
+parameters are not covariant:
+
+```dart
+extension type A<[!T!]>(void Function(T) f) {}
+```
+
+#### Common fixes
+
+Remove the use of the type parameter:
+
+```dart
+extension type A(void Function(String) f) {}
 ```
 
 ### non_exhaustive_switch_expression
@@ -16861,6 +17371,66 @@ class B implements A {}
 #### Common fixes
 
 Change the type hierarchy so that there's no circularity.
+
+### redeclare_on_non_redeclaring_member
+
+_The {0} doesn't redeclare a {0} declared in a superinterface._
+
+#### Description
+
+The analyzer produces this diagnostic when a member of an extension type
+is annotated with `@redeclare`, but none of the implemented interfaces
+has a member with the same name.
+
+#### Example
+
+The following code produces this diagnostic because the member `n`
+declared by the extension type `E` is annotated with `@redeclare`, but `C`
+doesn't have a member named `n`:
+
+```dart
+import 'package:meta/meta.dart';
+
+class C {
+  void m() {}
+}
+
+extension type E(C c) implements C {
+  @redeclare
+  void [!n!]() {}
+}
+```
+
+#### Common fixes
+
+If the annotated member has the right name, then remove the annotation:
+
+```dart
+class C {
+  void m() {}
+}
+
+extension type E(C c) implements C {
+  void n() {}
+}
+```
+
+If the annotated member is suppose to replace a member from the
+implemented interfaces, then change the name of the annotated member to
+match the member being replaced:
+
+```dart
+import 'package:meta/meta.dart';
+
+class C {
+  void m() {}
+}
+
+extension type E(C c) implements C {
+  @redeclare
+  void m() {}
+}
+```
 
 ### redirect_generative_to_missing_constructor
 

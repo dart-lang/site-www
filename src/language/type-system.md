@@ -163,9 +163,9 @@ class HoneyBadger extends Animal {
 ```
 
 {:.fails-sa}
-<?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/HoneyBadger/[!Root!]/g"?>
+<?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/HoneyBadger get/[!Root!] get/g"?>
 ```dart
-class [!Root!] extends Animal {
+class HoneyBadger extends Animal {
   @override
   void chase(Animal a) { ... }
 

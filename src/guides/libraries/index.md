@@ -97,5 +97,5 @@ The following table lists the Dart core libraries that work on the
 [dart-web_audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
 [dart-web_gl]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_gl/dart-web_gl-library.html
 
-[JavaScript interoperability]: /web/js-interop
+[JavaScript interoperability]: /interop/js-interop
 [jit]: /overview#native-platform

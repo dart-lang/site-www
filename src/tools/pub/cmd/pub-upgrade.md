@@ -153,5 +153,11 @@ so that you can undo the changes if necessary.
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
+### `--tighten`
+
+Updates the lower bounds of dependencies in `pubspec.yaml` to match the
+resolved versions, and returns a list of the changed constraints. 
+Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
+
 
 {% include 'pub-problems.md' %}

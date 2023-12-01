@@ -350,13 +350,17 @@ then it probably does make sense to have a separate boolean field.
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
-to functions expecting a non-nullable type. Unfortunately, promotion is only
-sound for local variables and parameters, so fields and top-level variables
-aren't promoted.
+to functions expecting a non-nullable type.
 
-One pattern to work around this is to assign the field's value to a local
-variable. Null checks on that variable do promote, so you can safely treat
-it as non-nullable.
+Type promotion is only supported, however, for local variables, parameters, and
+private final fields. Values that are open to manipulation
+[can't be type promoted][].
+
+Declaring members [private][] and [final][], as we generally recommend, is often
+enough to bypass these limitations. But, that's not always an option.
+One pattern to work around this is to assign the field's value
+to a local variable. Null checks on that variable will promote,
+so you can safely treat it as non-nullable.
 
 {:.good}
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
@@ -380,7 +384,7 @@ class UploadException {
 ```
 
 Assigning to a local variable can be cleaner and safer than using `!` every
-place the field or top-level variable is used:
+time you need to treat the value as non-null:
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
@@ -404,10 +408,15 @@ class UploadException {
 
 Be careful when using a local variable. If you need to write back to the field,
 make sure that you don't write back to the local variable instead. (Making the
-local variable `final` can prevent such mistakes.) Also, if the field might
+local variable [`final`][] can prevent such mistakes.) Also, if the field might
 change while the local is still in scope, then the local might have a stale
-value. Sometimes it's best to simply use `!` on the field.
+value. Sometimes it's best to simply [use `!`][] on the field.
 
+[can't be type promoted]: /tools/non-promotion-reasons
+[private]: /effective-dart/design#prefer-making-declarations-private
+[final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
+[`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
+[use `!`]: /null-safety/understanding-null-safety#null-assertion-operator
 
 ## Strings
 
@@ -935,26 +944,6 @@ var strings = charCodes.map((code) => String.fromCharCode(code));
 
 // Unnamed constructor:
 var buffers = charCodes.map((code) => StringBuffer(code));
-```
-
-
-### DO use `=` to separate a named parameter from its default value
-
-{% include 'linter-rule-mention.md', rule:'prefer_equal_for_default_values' %}
-
-Before Dart 3, Dart allowed both `:` and `=` 
-as the default value separator for named parameters. 
-For consistency with optional positional parameters, use `=`.
-
-{:.good}
-<?code-excerpt "usage_good.dart (default-separator)"?>
-```dart
-void insert(Object item, {int at = 0}) { ... }
-```
-
-{:.bad}
-```dart
-void insert(Object item, {int at: 0}) { ... }
 ```
 
 

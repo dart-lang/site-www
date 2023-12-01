@@ -223,7 +223,7 @@ main() {
 
 This program is not safe and we shouldn't allow it. However, Dart has always had
 this thing called *implicit downcasts*. If you, for example, pass a value of
-type `Object` to a function expecting an `String`, the type checker allows it:
+type `Object` to a function expecting a `String`, the type checker allows it:
 
 ```dart
 // Without null safety:
@@ -647,7 +647,8 @@ crashing.
 
 But if the value isn't `null`, it would be good to be able to move it over to
 the non-nullable side so you can call methods on it. Flow analysis is one of the
-primary ways to do this for local variables and parameters. We've extended type
+primary ways to do this for local variables and parameters
+(and private final fields, as of Dart 3.2). We've extended type
 promotion to also look at `== null` and `!= null` expressions.
 
 If you check a local variable with nullable type to see if it is not `null`, 
@@ -690,13 +691,14 @@ String makeCommand(String executable, [List<String>? arguments]) {
 
 The language is also smarter about what kinds of expressions cause promotion. An
 explicit `== null` or `!= null` of course works. But explicit casts using `as`,
-or assignments, or the postfix `!` operator we'll get to soon also cause
+or assignments, or the postfix `!` operator
+(which we'll cover [later on](#null-assertion-operator)) also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
-Note that type promotion only works on local variables,
-not on fields or top-level variables.
+Note that type promotion originally only worked on local variables,
+and now also works on private final fields as of Dart 3.2.
 For more information about working with non-local variables,
 see [Working with nullable fields](#working-with-nullable-fields).
 
@@ -755,10 +757,10 @@ We've now corralled `null` into the set of nullable types. With flow analysis,
 we can safely let some non-`null` values hop over the fence to the non-nullable
 side where we can use them. That's a big step, but if we stop here, the
 resulting system is still painfully restrictive. Flow analysis only helps with
-locals and parameters.
+locals, parameters, and private final fields.
 
 To try to regain as much of the flexibility that Dart had before null
-safety—and to go beyond it on some places—we have a handful of other
+safety—and to go beyond it in some places—we have a handful of other
 new features.
 
 ### Smarter null-aware methods
@@ -1193,7 +1195,12 @@ non-nullable, you're golden. But in many cases you need to *check* to see if the
 field has a value, and that requires making it nullable so you can observe the
 `null`.
 
-You might expect this to work:
+Nullable fields that are both private and final are able to type promote
+(barring [some particular reasons](/tools/non-promotion-reasons)).
+If you can't make a field private and final
+for whatever reason, you'll still need a workaround. 
+
+For example, you might expect this to work:
 
 ```dart
 // Using null safety, incorrectly:
@@ -1215,16 +1222,17 @@ class Coffee {
 
 Inside `checkTemp()`, we check to see if `_temperature` is `null`. If not, we
 access it and end up calling `+` on it. Unfortunately, this is not allowed.
-Flow-based type promotion does not apply to fields because the static analysis
-cannot *prove* that the field's value doesn't change between the point that you
-check for `null` and the point that you use it. (Consider that in pathological
-cases, the field itself could be overridden by a getter in a subclass that
-returns `null` the second time it is called.)
 
-So, since we care about soundness, fields don't promote and the above method
-does not compile. This is annoying. In simple cases like here, your best bet is
-to slap a `!` on the use of the field. It seems redundant, but that's more or
-less how Dart behaves today.
+Flow-based type promotion can only apply to fields that are *both private and final*.
+Otherwise, static analysis cannot *prove* that the field's value doesn't
+change between the point that you check for `null` and the point that you use it.
+(Consider that in pathological cases, the field itself could be overridden by a
+getter in a subclass that returns `null` the second time it is called.)
+
+So, since we care about soundness, public and/or non-final fields don't promote,
+and the above method does not compile. This is annoying.
+In simple cases like here, your best bet is to slap a `!` on the use of the field.
+It seems redundant, but that's more or less how Dart behaves today.
 
 Another pattern that helps is to copy the field to a local variable first and
 then use that instead:
@@ -1526,6 +1534,7 @@ The core points to take away are:
     nullable operand to the underlying non-nullable type.
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
+    (and private final fields, as of Dart 3.2)
     into usable non-nullable ones. The new flow analysis also has smarter rules
     for type promotion, missing returns, unreachable code, and variable
     initialization.
