@@ -55,8 +55,8 @@ because field promotion is only available in Dart 3.2 and above.
 **Solution:**
 
 Ensure your library isn't using a [language version][] earlier than 3.2.
-Check the top of your file for an outdated `//@dart=version` comment
-or your `pubspec.yaml` for a [SDK constraint lower-bound][] that's too low.
+Check the top of your file for an outdated `//@dart=version` comment,
+or your `pubspec.yaml` for an outdated [SDK constraint lower-bound][].
 
 [SDK constraint lower-bound]: /tools/pub/pubspec#sdk-constraints
 
