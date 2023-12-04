@@ -53,7 +53,7 @@ the event loop processes events in the order they're queued, one at a time.
 ![A figure showing events being fed, one by one, into the
 event loop](/assets/img/language/concurrency/event-loop.png)
 
-The functioning of the event loop resembles this:
+The way the event loop functions resembles this code:
 
 ```dart
 while (eventQueue.waitForEvent()) {
@@ -61,14 +61,15 @@ while (eventQueue.waitForEvent()) {
 }
 ```
 
-Even though this event loop is synchronous and runs on a single thread, most
-Dart applications need to do more than one thing at a time. For example, a
+This example event loop is synchronous and runs on a single thread.
+However, most Dart applications need to do more than one thing at a time. For example, a
 client application might need to execute an HTTP request, while also listening
 for a user to tap a button. To handle this, Dart offers many async APIs, like
 [Futures, Streams, and async-await](/language/async). 
 These APIs are built around this event loop.
 
 For example, consider making a network request:
+
 ```dart
 http.get('https://example.com').then((response) {
   if (response.statusCode == 200) {
@@ -335,10 +336,9 @@ block without affecting other isolates.
 
 There are two ways to work with isolates in Dart, depending on the use-case: 
 
-For doing a single computation on a separate thread, use the static
-method `Isolate.run`. When you need to create an isolate that will handle
-multiple messages over time, or a background worker, use the `Isolate.spawn`
-method.
+* Use [`Isolate.run()`][] to perform a single computation on a separate thread.
+* Use [`Isolate.spawn()`][] to create an isolate that will handle
+  multiple messages over time, or a background worker.
 
 In most cases, `Isolate.run` is the recommended 
 API to run processes in the background.
