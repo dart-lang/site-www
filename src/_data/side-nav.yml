@@ -148,7 +148,7 @@
           permalink: /library/regular-expressions
         - title: Runtime behavior
           permalink: /library/regular-expressions/behavior
-        - title: Reference
+        - title: Language reference
           permalink: /library/regular-expressions/reference
           children:
             - title: Overview
