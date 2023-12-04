@@ -1,49 +1,67 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:isolate';
 
 // #docregion
 class BackgroundWorker {
-  late Isolate _isolate;
-  late SendPort workerIsolateSendPort;
+  final Isolate _isolate;
+  final SendPort _workerIsolateSendPort;
 
-  Future<void> initIsolate() async {
-    // Create a recieve port to recieve messages from spawned isolate
+  static Future<BackgroundWorker> initialize() async {
     final mainIsolateReceivePort = ReceivePort();
-    mainIsolateReceivePort.listen((dynamic message) {
+    late SendPort workerIsolateSendPort;
+
+    await mainIsolateReceivePort.forEach((dynamic message) {
       if (message is SendPort) {
         workerIsolateSendPort = message;
       } else if (message is String) {
+        /// Receive messages from the worker isolate
+        /// Domain specific code goes here
         print(message);
       }
     });
 
-    _isolate = await Isolate.spawn(
+    var isolate = await Isolate.spawn<SendPort>(
       _workerIsolateEntryPoint,
       mainIsolateReceivePort.sendPort,
     );
+
+    return BackgroundWorker._(
+      isolate,
+      workerIsolateSendPort,
+    );
   }
 
-  static void _workerIsolateEntryPoint(dynamic message) {
+  void send(String message) {
+    _workerIsolateSendPort.send(message);
+  }
+
+  BackgroundWorker._(
+    this._isolate,
+    this._workerIsolateSendPort,
+  );
+
+  static Future<void> _workerIsolateEntryPoint(
+    SendPort sendPortToMainApp,
+  ) async {
     final receivePortInSpawnedIsolate = ReceivePort();
-    late SendPort sendPortToMainApp;
+    sendPortToMainApp.send(receivePortInSpawnedIsolate.sendPort);
 
-    if (message is SendPort) {
-      sendPortToMainApp = message;
-      sendPortToMainApp.send(receivePortInSpawnedIsolate.sendPort);
-    }
-
-// This listener callback will be called each time a subsequent message
-// is sent from the main isolate to the worker isolate
-    receivePortInSpawnedIsolate.listen((dynamic message) async {
+    await for (var message in receivePortInSpawnedIsolate) {
       if (message is String) {
         final dartObjects = jsonDecode(message);
         sendPortToMainApp.send(dartObjects);
-      } else {
-        throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
       }
-    });
+      if (message == null) {
+        // Protocol for exiting.
+        receivePortInSpawnedIsolate.close();
+        break;
+      } else {
+        // Will terminate isolate.
+        throw UnsupportedError(
+            'Message sent to isolate port has an unexpected type: $message');
+      }
+    }
   }
 
   void dispose() {
@@ -52,7 +70,8 @@ class BackgroundWorker {
 }
 
 // Elsewhere in app
-void startProcessInBackground(String jsonBlob) {
-  BackgroundWorker().workerIsolateSendPort.send(jsonBlob);
+void startProcessInBackground(String jsonBlob) async {
+  var backgroundWorker = await BackgroundWorker.initialize();
+  backgroundWorker.send(jsonBlob);
 }
 // #enddocregion
