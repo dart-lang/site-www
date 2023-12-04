@@ -409,6 +409,49 @@ the dependent package must pin the version in the
 `dependency_overrides` section of the `pubspec.yaml` file.
 
 
+### How to migrate away from a retracted package version
+
+When a package depends on a package version that is retracted,
+there are different ways to migrate away from this version depending
+on what other versions are available.
+
+#### Upgrade to a newer version
+
+In most cases a newer version has been published to
+replace the retracted version.
+In this case run `dart pub upgrade <package>`.
+
+#### Downgrade to the newest non-retracted version
+
+If there is no newer version available, the best action
+might be to downgrade to the newest non-retracted version.
+There are two ways to get this version.
+
+The first way is by using [pub tool](/tools/pub/cmd) commands:
+
+1. Run `dart pub downgrade <package>` to
+   get the lowest version  of the specified package that
+   matches the constraints in the `pubspec.yaml` file.
+2. Run `dart pub upgrade <package>` to get the
+   newest compatible and non-retracted version available.
+
+The second way is by editing the `pubspec.lock` file manually:
+
+1. Delete the entire package entry for the package with the retracted version.
+2. Run `dart pub get` to get the
+   newest compatible and non-retracted version available.
+
+It is also possible to completely delete the `pubspec.lock` file and
+then run `dart pub get`. However, this might also
+result in version changes for other dependencies.
+
+#### Upgrade or downgrade to a version outside the specified version constraint
+
+If there is no alternative version available that satisfies the
+current version constraint, edit the version constraint
+in the `pubspec.yaml` file and run `dart pub upgrade`.
+
+
 ### How to retract or restore a package version
 
 To retract or restore a package version,

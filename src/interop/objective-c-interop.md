@@ -24,7 +24,7 @@ However, doing so involves a lot of boilerplate code,
 so you can use `package:ffigen` to automatically generate
 the Dart FFI bindings for a given Objective-C API.
 To learn more about FFI and interfacing with C code directly,
-see the [C interop guide](/guides/libraries/c-interop).
+see the [C interop guide](/interop/c-interop).
 
 You can generate Objective-C headers for Swift APIs,
 enabling `dart:ffi` and `package:ffigen` to interact with Swift.
