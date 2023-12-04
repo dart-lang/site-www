@@ -40,8 +40,7 @@ concurrent programming possible in Dart.
 
 Dart’s runtime model is based on an event loop. 
 The event loop is responsible for executing your program's code,
-collecting and processing events, 
-running garbage collection processes, and more.
+collecting and processing events, and more.
 
 As your application runs, all events are added to a queue,
 called the *event queue*. 
