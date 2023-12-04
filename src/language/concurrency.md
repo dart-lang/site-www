@@ -367,7 +367,7 @@ This code snippet shows the bare-minimum needed to
 create a long-lived isolate. You can see a more detailed code example and 
 explanation on the [Isolates][] page.
 
-[Isolates]: /language/isolates#Sending-multiple-messages-between-isolates-with-ports
+[Isolates]: /language/isolates#sending-multiple-messages-between-isolates-with-ports
 
 <?code-excerpt "lib/isolate_spawn_syntax.dart"?>
 ```dart
