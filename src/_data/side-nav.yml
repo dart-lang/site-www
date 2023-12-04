@@ -140,6 +140,46 @@
       permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
+    - title: Regular expressions
+      permalink: /libraries/regular-expressions
+      children:
+        - title: Overview
+          match-page-url-exactly: true
+          permalink: /libraries/regular-expressions
+        - title: Runtime behavior
+          permalink: /libraries/regular-expressions/behavior
+        - title: Reference
+          permalink: /libraries/regular-expressions/reference
+          children:
+            - title: Overview
+              match-page-url-exactly: true
+              permalink: /libraries/regular-expressions/reference
+            - title: Literals
+              permalink: /libraries/regular-expressions/reference/literals
+            - title: Character classes
+              permalink: /libraries/regular-expressions/reference/character-classes
+            - title: Character escapes
+              permalink: /libraries/regular-expressions/reference/character-escapes
+            - title: Anchors
+              permalink: /libraries/regular-expressions/reference/anchors
+            - title: Boundaries
+              permalink: /libraries/regular-expressions/reference/boundaries
+            - title: Groups
+              permalink: /libraries/regular-expressions/reference/groups
+            - title: Quantifiers
+              permalink: /libraries/regular-expressions/reference/quantifiers
+            - title: Backreferences
+              permalink: /libraries/regular-expressions/reference/backreferences
+            - title: Lookahead assertions
+              permalink: /libraries/regular-expressions/reference/lookahead
+            - title: Lookbehind assertions
+              permalink: /libraries/regular-expressions/reference/lookahead
+            - title: Disjunctions
+              permalink: /libraries/regular-expressions/reference/disjunctions
+        - title: Best practices
+          permalink: /libraries/regular-expressions/best-practices
+        - title: API reference
+          permalink: https://api.dart.dev/stable/dart-core/RegExp-class.html
     - title: Articles
       children:
         - title: Creating streams
