@@ -147,8 +147,7 @@ String _readFileSync() {
 
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
-<?code-excerpt "lib/async_number_of_keys.dart" 
-replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
+<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
 const String filename = 'with_keys.json';
 
