@@ -25,6 +25,10 @@ restores the editor to its original state.
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
+## The `main` method
+
+
+
 ## String interpolation
 
 To put the value of an expression inside a string, use `${expression}`.
@@ -53,40 +57,31 @@ For example, `stringify(2, 3)` should return `'2 3'`.
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-String stringify(int x, int y) {
-  return '$x $y';
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
 
 void main() {
-  try {
-    final str = stringify(2, 3); 
-
-    if (str == '2 3') {
-      _result(true);
-    } else if (str == '23') {
-      _result(false, ['Test failed. It looks like you forgot the space!']);
-    } else {
-      _result(false, ['That\'s not quite right. Keep trying!']);
-    }
-  } on UnimplementedError {
-    _result(false, ['Test failed. Did you implement the method?']);
-  } catch (e) {
-    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
-  }
+  print(stringify(2, 3));
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Both x and y are simple values,
-and Dart's string interpolation will handle
-converting them to string representations.
-All you need to do is use the $ operator to
-reference them inside single quotes, with a space in between.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for string interpolation example</b>
+  </summary>
+
+  Both `x` and `y` are simple values,
+  and Dart's string interpolation will handle
+  converting them to string representations.
+  All you need to do is use the `$` operator to
+  reference them inside single quotes, with a space in between:
+
+  ```dart
+  String stringify(int x, int y) {
+    return '$x $y';
+  }
+  ```
+</details>
+
 
 ## Nullable variables
 
@@ -130,38 +125,30 @@ Try to declare two variables below:
 - A nullable `String` named `name` with the value `'Jane'`.
 - A nullable `String` named `address` with the value `null`.
 
-Ignore all initial errors in the DartPad.
-
 ```dart:run-dartpad:ga_id-nullable_variables
 {$ begin main.dart $}
 // Declare the two variables here
-{$ end main.dart $}
-{$ begin solution.dart $}
-String? name = 'Jane';
-String? address;
-{$ end solution.dart $}
-{$ begin test.dart $}
 
 void main() {
-  try {
-    if (name == 'Jane' && address == null) {
-      // verify that "name" is nullable
-      name = null;
-      _result(true);
-    } else {
-      _result(false, ['That\'s not quite right. Keep trying!']);
-    }
-  } catch (e) {
-    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
-  }
+  assert(name == 'Jane' && address == null);
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Declare the two variables as "String" followed by "?".
-Then, assign "Jane" to "name"
-and leave "address" uninitialized.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for nullable variables example</b>
+  </summary>
+
+  Declare the two variables as `String` followed by `?`.
+  Then, assign `'Jane'` to `name`
+  and leave `address` uninitialized:
+
+  ```dart
+  String? name = 'Jane';
+  String? address;
+  ```
+</details>
 
 
 ## Null-aware operators
@@ -211,11 +198,25 @@ void updateSomeVars() {
   // Substitute an operator that makes 'a string' be assigned to bar.
   bar /* TODO */ 'a string';
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-String? foo = 'a string';
-String? bar; // = null
 
+void main() {
+  updateSomeVars();
+  assert(baz == 'a string' && bar == 'a string');
+ }
+{$ end main.dart $}
+```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for null-aware operators example</b>
+  </summary>
+
+  All you need to do in this exercise is
+  replace the `TODO` comments with either `??` or `??=`.
+  Read the codelab text to make sure you understand both,
+  and then give it a try:
+
+  ```dart
 // Substitute an operator that makes 'a string' be assigned to baz.
 String? baz = foo ?? bar;
 
@@ -223,39 +224,8 @@ void updateSomeVars() {
   // Substitute an operator that makes 'a string' be assigned to bar.
   bar ??= 'a string';
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
-void main() {
-  final errs = <String>[];
-  
-  try {
-    updateSomeVars();
-    
-    if (foo != 'a string') {
-      errs.add('Looks like foo somehow ended up with the wrong value.');
-    } else if (bar != 'a string') {
-      errs.add('Looks like bar ended up with the wrong value.');
-    } else if (baz != 'a string') {
-      errs.add('Looks like baz ended up with the wrong value.');
-    }
-  } catch (e) {
-    errs.add('Tried calling updateSomeVars and received an exception: ${e.runtimeType}.');
-  }
-  
-  if (errs.isEmpty) {
-   _result(true);
-  } else {
-    _result(false, errs);
-  }
-}
-{$ end test.dart $}
-{$ begin hint.txt $}
-All you need to do in this exercise is
-replace the TODO comments with either ?? or ??=.
-Read the codelab text to make sure you understand both,
-and then give it a try.
-{$ end hint.txt $}
-```
+  ```
+</details>
 
 
 ## Conditional property access
@@ -299,53 +269,28 @@ Try using conditional property access to finish the code snippet below.
 String? upperCaseIt(String? str) {
   // Try conditionally accessing the `toUpperCase` method here.
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-// This method should return the uppercase version of `str`
-// or null if `str` is null.
-String? upperCaseIt(String? str) {
-  return str?.toUpperCase();
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+
 void main() {
-  final errs = <String>[];
-  
-  try {
-    String? one = upperCaseIt(null);
-
-    if (one != null) {
-      errs.add('Looks like you\'re not returning null for null inputs.');
-    }
-  } catch (e) {
-    errs.add('Tried calling upperCaseIt(null) and got an exception: ${e.runtimeType}.');
-  }
-  
-  try {
-    String? two = upperCaseIt('asdf');
-
-    if (two == null) {
-      errs.add('Looks like you\'re returning null even when str has a value.');
-    } else if (two != 'ASDF') {
-      errs.add('Tried upperCaseIt(\'asdf\'), but didn\'t get \'ASDF\' in response.');
-    }
-  } catch (e) {
-    errs.add('Tried calling upperCaseIt(\'asdf\') and got an exception: ${e.runtimeType}.');
-  }
-  
-  if (errs.isEmpty) {
-   _result(true);
-  } else {
-   _result(false, errs);
-  }  
+  print(upperCaseIt('a string'));
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-If this exercise wanted you to conditionally lowercase a string,
-you could do it like this: str?.toLowerCase()
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for conditional property access example</b>
+  </summary>
+
+  If this exercise wanted you to conditionally lowercase a string,
+  you could do it like this: `str?.toLowerCase()`. Use the equivalent
+  method to uppercase a string!
+
+  ```dart
+  String? upperCaseIt(String? str) {
+    return str?.toUpperCase();
+  }
+  ```
+</details>
 
 ## Collection literals
 
@@ -408,84 +353,47 @@ final anEmptySetOfString = null;
 
 // Assign this an empty Map of double to int:
 final anEmptyMapOfDoublesToInts = null;
-{$ end main.dart $}
-{$ begin solution.dart $}
-// Assign this a list containing 'a', 'b', and 'c' in that order:
-final aListOfStrings = ['a', 'b', 'c'];
 
-// Assign this a set containing 3, 4, and 5:
-final aSetOfInts = {3, 4, 5};
-
-// Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
-final aMapOfStringsToInts = {'myKey': 12};
-
-// Assign this an empty List<double>:
-final anEmptyListOfDouble = <double>[];
-
-// Assign this an empty Set<String>:
-final anEmptySetOfString = <String>{};
-
-// Assign this an empty Map of double to int:
-final anEmptyMapOfDoublesToInts = <double, int>{};
-{$ end solution.dart $}
-{$ begin test.dart $}
 void main() {
-  final errs = <String>[];
-  
-  if (aListOfStrings is! List<String>) {
-    errs.add('aListOfStrings should have the type List<String>.');
-  } else if (aListOfStrings.length != 3) {
-    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, rather than the expected 3.');
-  } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
-    errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
-  }
-
-  if (aSetOfInts is! Set<int>) {
-    errs.add('aSetOfInts should have the type Set<int>.');
-  } else if (aSetOfInts.length != 3) {
-    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, rather than the expected 3.');
-  } else if (!aSetOfInts.contains(3) || !aSetOfInts.contains(4) || !aSetOfInts.contains(5)) {
-    errs.add('aSetOfInts doesn\'t contain the correct values (3, 4, 5).');
-  }
-
-  if (aMapOfStringsToInts is! Map<String, int>) {
-    errs.add('aMapOfStringsToInts should have the type Map<String, int>.');
-  } else if (aMapOfStringsToInts['myKey'] != 12) {
-    errs.add('aMapOfStringsToInts doesn\'t contain the correct values (\'myKey\': 12).');
-  }
-
-  if (anEmptyListOfDouble is! List<double>) {
-    errs.add('anEmptyListOfDouble should have the type List<double>.');
-  } else if (anEmptyListOfDouble.isNotEmpty) {
-    errs.add('anEmptyListOfDouble should be empty.');
-  }
-
-  if (anEmptySetOfString is! Set<String>) {
-    errs.add('anEmptySetOfString should have the type Set<String>.');
-  } else if (anEmptySetOfString.isNotEmpty) {
-    errs.add('anEmptySetOfString should be empty.');
-  }
-
-  if (anEmptyMapOfDoublesToInts is! Map<double, int>) {
-    errs.add('anEmptyMapOfDoublesToInts should have the type Map<double, int>.');
-  } else if (anEmptyMapOfDoublesToInts.isNotEmpty) {
-    errs.add('anEmptyMapOfDoublesToInts should be empty.');
-  }
-
-  if (errs.isEmpty) {
-    _result(true);
-  } else {
-    _result(false, errs);
-  }
+  assert(aListOfStrings is List<String> &&
+    aSetOfInts is Set<int> &&
+    aMapOfStringsToInts is Map<String, int> &&
+    anEmptyListOfDouble is List<double> &&
+    anEmptySetOfString is Set<String> &&
+    anEmptyMapOfDoublesToInts is Map<double, int>);
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-This exercise is fairly straightforward.
-Just add a list, set, or map literal after each equals sign.
-See the codelab text for the correct syntax to use.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for collection literals example</b>
+  </summary>
+
+  This exercise is fairly straightforward.
+  Just add a list, set, or map literal after each equals sign.
+  See the codelab text for the correct syntax to use.
+
+  ```dart
+  // Assign this a list containing 'a', 'b', and 'c' in that order:
+  final aListOfStrings = ['a', 'b', 'c'];
+
+  // Assign this a set containing 3, 4, and 5:
+  final aSetOfInts = {3, 4, 5};
+
+  // Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+  final aMapOfStringsToInts = {'myKey': 12};
+
+  // Assign this an empty List<double>:
+  final anEmptyListOfDouble = <double>[];
+
+  // Assign this an empty Set<String>:
+  final anEmptySetOfString = <String>{};
+
+  // Assign this an empty Map of double to int:
+  final anEmptyMapOfDoublesToInts = <double, int>{};
+  ```
+</details>
 
 ## Arrow syntax
 
@@ -532,84 +440,47 @@ class MyClass {
   // list, separated by commas (e.g. 'a,b,c'): 
   String joinWithCommas(List<String> strings) => TODO();
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class MyClass {
-  int value1 = 2;
-  int value2 = 3;
-  int value3 = 5;
 
-  // Returns the product of the above values:
-  int get product => value1 * value2 * value3;
-  
-  // Adds 1 to value1:
-  void incrementValue1() => value1++; 
-  
-  // Returns a string containing each item in the
-  // list, separated by commas (e.g. 'a,b,c'): 
-  String joinWithCommas(List<String> strings) => strings.join(',');
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
 void main() {
   final obj = MyClass();
-  final errs = <String>[];
-  
-  try {
-    final product = obj.product;
-    
-    if (product != 30) {
-      errs.add('The product property returned $product instead of the expected value (30).'); 
-    } 
-  } on UnimplementedError {
-    _result(false, ['Tried to use MyClass.product but failed. Did you implement the method?']);
-    return;
-  } catch (e) {
-    _result(false, ['Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.']);
-    return;
-  }
 
-  try {
-    obj.incrementValue1();
-    
-    if (obj.value1 != 3) {
-      errs.add('After calling incrementValue, value1 was ${obj.value1} instead of the expected value (3).'); 
-    } 
-  } on UnimplementedError {
-    _result(false, ['Tried to use MyClass.incrementValue1 but failed. Did you implement the method?']);
-    return;
-  } catch (e) {
-    _result(false, ['Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.']);
-    return;
-  }
+  obj.incrementValue1();
+  final joined = obj.joinWithCommas(['one', 'two', 'three']);
 
-  try {
-    final joined = obj.joinWithCommas(['one', 'two', 'three']);
-    
-    if (joined != 'one,two,three') {
-      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
-    } 
-  } on UnimplementedError {
-    _result(false, ['Tried to use MyClass.joinWithCommas but failed. Did you implement the method?']);
-    return;
-  } catch (e) {
-    _result(false, ['Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.']);
-    return;
-  }
-
-  if (errs.isEmpty) {
-    _result(true);
-  } else {
-    _result(false, errs);
-  }
+  assert(obj.product == 30 &&
+    obj.value1 == 3 &&
+    joined == 'one,two,three');
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-For the product, you can just multiply the three values together.
-For incrementValue1, you can use the increment operator (++).
-For joinWithCommas, try using the join method found in the List class.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for arrow syntax example</b>
+  </summary>
+
+  For the product, you can just multiply the three values together.
+  For `incrementValue1`, you can use the increment operator (`++`).
+  For `joinWithCommas`, try using the `join` method found in the `List` class.
+
+  ```dart
+  class MyClass {
+    int value1 = 2;
+    int value2 = 3;
+    int value3 = 5;
+
+    // Returns the product of the above values:
+    int get product => value1 * value2 * value3;
+    
+    // Adds 1 to value1:
+    void incrementValue1() => value1++; 
+    
+    // Returns a string containing each item in the
+    // list, separated by commas (e.g. 'a,b,c'): 
+    String joinWithCommas(List<String> strings) => strings.join(',');
+  }
+  ```
+</details>
 
 
 ## Cascades
@@ -691,83 +562,42 @@ BigObject fillBigObject(BigObject obj) {
   // Create a single statement that will update and return obj:
   return TODO('obj..');
 }
+
+void main() {}
 {$ end main.dart $}
-{$ begin solution.dart $}
-class BigObject {
-  int anInt = 0;
-  String aString = '';
-  List<double> aList = [];
-  bool _done = false;
-  
-  void allDone() {
-    _done = true;
-  }
-}
+```
 
-BigObject fillBigObject(BigObject obj) {
-  return obj
-    ..anInt = 1
-    ..aString = 'String!'
-    ..aList.add(3)
-    ..allDone();
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-void main() {
-  BigObject obj;
+<details markdown="1">
+ <summary>
+   <b>Solution for cascades example</b>
+  </summary>
 
-  try {
-    obj = fillBigObject(BigObject());
-  } on UnimplementedError {
-    _result(false, ['Tried to call fillBigObject but failed. Did you implement the method?']);
-    return;
-  } catch (e) {
-    _result(false, [
-      'Caught an exception of type ${e.runtimeType} while running fillBigObject'
-    ]);
-    return;
-  }
+  The best solution for this exercise starts with `obj..` and
+  has four assignment operations chained together.
+  Try starting with `return obj..anInt = 1`,
+  then add another cascade (`..`) and start the next assignment.
 
-  final errs = <String>[];
-
-  if (obj.anInt != 1) {
-    errs.add(
-        'The value of anInt was ${obj.anInt} rather than the expected (1).');
-  }
-
-  if (obj.aString != 'String!') {
-    errs.add(
-        'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
-  }
-
-  if (obj.aList.length != 1) {
-    errs.add(
-        'The length of aList was ${obj.aList.length} rather than the expected value (1).');
-  } else {
-    if (obj.aList[0] != 3.0) {
-      errs.add(
-          'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
+  ```dart
+  class BigObject {
+    int anInt = 0;
+    String aString = '';
+    List<double> aList = [];
+    bool _done = false;
+    
+    void allDone() {
+      _done = true;
     }
   }
-  
-  if (!obj._done) {
-    errs.add('It looks like allDone() wasn\'t called.');
-  }
 
-  if (errs.isEmpty) {
-    _result(true);
-  } else {
-    _result(false, errs);
+  BigObject fillBigObject(BigObject obj) {
+    return obj
+      ..anInt = 1
+      ..aString = 'String!'
+      ..aList.add(3)
+      ..allDone();
   }
-}
-{$ end test.dart $}
-{$ begin hint.txt $}
-The best solution for this exercise starts with obj.. and
-has four assignment operations chained together.
-Try starting with `return obj..anInt = 1`,
-then add another cascade (..) and start the next assignment.
-{$ end hint.txt $}
-```
+  ```
+</details>
 
 
 ## Getters and setters
