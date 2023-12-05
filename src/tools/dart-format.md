@@ -60,15 +60,14 @@ use the `dart help` command or see the documentation for the
 $ dart help format
 ```
 
-{% comment %}
-[PENDING: Add info on commonly used options.]
+{{site.alert.tip}}
+  To avoid making changes that might be unsafe,
+  `dart format` only affects whitespace.
+  
+  There's a lot more to writing readable and
+  consistent code than just whitespace, though.
+  To learn more about best practices for writing and styling Dart code,
+  check out the [Dart style guide][].
+{{site.alert.end}}
 
-[PENDING: Advocate using this! Perhaps steal the first paragraph from
-dart_style's readme:
-
-The dart_style package defines an automatic, opinionated formatter
-for Dart code. It replaces the whitespace in your program with what
-it deems to be the best formatting for it. Resulting code should
-follow the Dart style guide and, more importantly, should look nice
-to most human readers, most of the time.]
-{% endcomment %}
+[Dart style guide]: /effective-dart/style
