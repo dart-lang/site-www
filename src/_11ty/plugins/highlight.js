@@ -2,16 +2,16 @@ const _highlightingTheme = 'dash-light';
 
 /**
  * Replaces the markdown-it code block renderer with our own that:
- * 
+ *
  * - Parses arguments on the code block meta string.
- * - Uses passed arguments to add a title, show line numbers, 
+ * - Uses passed arguments to add a title, show line numbers,
  *   highlight lines, etc.
  * - Wraps the code block in a custom structure for title formatting,
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
  *   using the shiki/shikiji package that uses TextMate grammars
  *   and Code -OSS themes.
- * 
+ *
  * @param {import('markdown-it')} markdown The markdown-it instance to
  *   configure syntax highlighting for.
  */
@@ -21,7 +21,7 @@ async function configureHighlighting(markdown) {
   // we want to remain a CommonJS module for now.
   const {getHighlighter} = await import('shikiji');
   const {toHtml} = await import('hast-util-to-html');
-  
+
   const highlighter = await getHighlighter({
     langs: [
       'dart',
@@ -44,7 +44,7 @@ async function configureHighlighting(markdown) {
       'plaintext',
     ],
   });
-  
+
   await highlighter.loadTheme(import('../syntax/dash-light.json', {
     assert: {type: 'json'}
   }));
@@ -71,7 +71,7 @@ async function configureHighlighting(markdown) {
  * Highlights the specified {@link content} string, makes replacements,
  * and makes modifications to the output structure based on the
  * passed in {@link attributeString}.
- * 
+ *
  * @param {import('markdown-it')} markdown The markdown-it instance.
  * @param {import('shikiji').Highlighter} highlighter The shikiji highlighter
  *   configured with the correct theme(s) and languages.
@@ -122,95 +122,97 @@ ${markdown.utils.escapeHtml(content)}
   return highlighter.codeToHtml(content, {
     lang: language,
     theme: _highlightingTheme,
-    transforms: {
-      pre(preElement) {
-        // Remove hard coded background color and text color if present.
-        preElement.properties['style'] = '';
+    transformers: [
+      {
+        pre(preElement) {
+          // Remove hard coded background color and text color if present.
+          preElement.properties['style'] = '';
 
-        if (lineNumbers) {
-          preElement.properties['class'] += ' show-line-numbers';
-        }
+          if (lineNumbers) {
+            preElement.properties['class'] += ' show-line-numbers';
+          }
 
-        // Create a div container to wrap the pre element.
-        const blockBody = {
-          type: 'element',
-          tagName: 'div',
-          children: [preElement],
-          properties: {
-            class: 'code-block-body',
-          },
-        };
-
-        // // TODO: Don't support arbitrary tag, require a list
-        // // Also support special "language" tag
-        // const extraTag = attributes['tag'];
-        // if (extraTag) {
-        //   blockBody.properties['class'] += ` ${extraTag.class}`;
-        //
-        //   if (extraTag.text) {
-        //     const extraTagContent = {
-        //       type: 'element',
-        //       tagName: 'span',
-        //       children: [{type: 'text', value: extraTag.text}],
-        //       properties: {
-        //         class: 'code-block-tag',
-        //       },
-        //     };
-        //
-        //     blockBody.children.unshift(extraTagContent);
-        //   }
-        // }
-        
-        const wrapperChildren = [];
-
-        const title = attributes['title'];
-        if (title && title !== '') {
-          const titleElement = {
+          // Create a div container to wrap the pre element.
+          const blockBody = {
             type: 'element',
             tagName: 'div',
-            children: [{type: 'text', value: title}],
+            children: [preElement],
             properties: {
-              class: 'code-block-header',
+              class: 'code-block-body',
             },
           };
 
-          wrapperChildren.push(titleElement);
-        }
-        
-        wrapperChildren.push(blockBody);
+          // // TODO: Don't support arbitrary tag, require a list
+          // // Also support special "language" tag
+          // const extraTag = attributes['tag'];
+          // if (extraTag) {
+          //   blockBody.properties['class'] += ` ${extraTag.class}`;
+          //
+          //   if (extraTag.text) {
+          //     const extraTagContent = {
+          //       type: 'element',
+          //       tagName: 'span',
+          //       children: [{type: 'text', value: extraTag.text}],
+          //       properties: {
+          //         class: 'code-block-tag',
+          //       },
+          //     };
+          //
+          //     blockBody.children.unshift(extraTagContent);
+          //   }
+          // }
 
-        // Create a div to wrap everything including the title/filename bar.
-        const wrapper = {
-          type: 'element',
-          tagName: 'div',
-          children: wrapperChildren,
-          properties: {
-            class: `code-block-wrapper language-${language}`,
-          },
-        };
-        
-        // Replace the pre element with our own wrapper.
-        return wrapper;
+          const wrapperChildren = [];
+
+          const title = attributes['title'];
+          if (title && title !== '') {
+            const titleElement = {
+              type: 'element',
+              tagName: 'div',
+              children: [{type: 'text', value: title}],
+              properties: {
+                class: 'code-block-header',
+              },
+            };
+
+            wrapperChildren.push(titleElement);
+          }
+
+          wrapperChildren.push(blockBody);
+
+          // Create a div to wrap everything including the title/filename bar.
+          const wrapper = {
+            type: 'element',
+            tagName: 'div',
+            children: wrapperChildren,
+            properties: {
+              class: `code-block-wrapper language-${language}`,
+            },
+          };
+
+          // Replace the pre element with our own wrapper.
+          return wrapper;
+        },
+        line(lineElement, line) {
+          if (lineNumbers) {
+            lineElement.properties['data-line'] = lineNumbers + line - 1;
+          }
+
+          if (linesToHighlight?.has(line)) {
+            lineElement.properties['class'] += ' highlighted-line';
+          }
+
+          const highlightRange = linesToMarkedRanges[line];
+          if (highlightRange) {
+            // If this line has ranges to mark/highlight, do so.
+            lineElement.children = _wrapMarkedText(
+                lineElement.children,
+                highlightRange,
+            );
+          }
+        },
       },
-      line(lineElement, line) {
-        if (lineNumbers) {
-          lineElement.properties['data-line'] = lineNumbers + line - 1;
-        }
-
-        if (linesToHighlight?.has(line)) {
-          lineElement.properties['class'] += ' highlighted-line';
-        }
-
-        const highlightRange = linesToMarkedRanges[line];
-        if (highlightRange) {
-          // If this line has ranges to mark/highlight, do so.
-          lineElement.children = _wrapMarkedText(
-              lineElement.children,
-              highlightRange,
-          );
-        }
-      },
-    },
+    ],
   });
 }
 
