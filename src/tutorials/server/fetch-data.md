@@ -133,6 +133,11 @@ see [What is a URL?][] on the mdn web docs.
 for making composable HTTP requests,
 with optional fine-grained control.
 
+{{site.alert.note}}
+  You should avoid directly using `dart:io` or `dart:html` to make HTTP
+  requests. Those libraries are platform-dependent and tied to a single implementation.
+{{site.alert.end}}
+
 To add a dependency on `package:http`,
 run the following [`dart pub add`][] command
 from the top of your repo:
@@ -155,12 +160,6 @@ and its [API documentation][http-docs].
 
 [`dart pub add`]: /tools/pub/cmd/pub-add
 [specify a library prefix]: /language/libraries#specifying-a-library-prefix
-
-{{site.alert.note}}
-  You should avoid directly using `dart:io` or `dart:html`
-  to make HTTP requests. Those libraries are platform dependant and
-  tied to a single implementation.
-{{site.alert.end}}
 
 ## Build a URL
 
