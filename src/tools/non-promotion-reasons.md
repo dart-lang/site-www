@@ -47,7 +47,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' refers to a field. It couldn’t be promoted
 because field promotion is only available in Dart 3.2 and above.
 ```
@@ -82,7 +82,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'i' refers to a property so it couldn't be promoted.
 ```
 
@@ -187,7 +187,7 @@ extension E on int? {
 
 **Message:**
 
-```nocode
+```plaintext
 `this` can't be promoted. 
 ```
 
@@ -234,7 +234,7 @@ test(C c) {
 
 **Message:**
 
-```nocode
+```plaintext
 'n' refers to a public field so it couldn’t be promoted.
 ```
 
@@ -286,7 +286,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'mutablePrivateField' refers to a non-final field so it couldn’t be promoted.
 ```
 
@@ -335,7 +335,7 @@ f(C c) {
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' refers to a getter so it couldn’t be promoted.
 ```
 
@@ -397,7 +397,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'externalField' refers to an external field so it couldn’t be promoted.
 ```
 
@@ -452,7 +452,7 @@ f(Example x) {
 
 **Message:**
 
-```nocode
+```plaintext
 'overriden' couldn’t be promoted because there is a conflicting getter in class 'Override'
 ```
 
@@ -583,7 +583,7 @@ instance of `Override`, so promotion would not be sound.
 
 **Message:**
 
-```nocode
+```plaintext
 'overridden' couldn’t be promoted because there is a conflicting non-promotable field in class 'Override'.
 ```
 
@@ -664,7 +664,7 @@ The failure can also occur between fields in
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' couldn’t be promoted because there is a conflicting noSuchMethod forwarder in class 'MockExample'.
 ```
 

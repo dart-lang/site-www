@@ -64,7 +64,7 @@ including a dynamic library file named
 
 Here's an example of building the dynamic library and executing the Dart app:
 
-```terminal
+```console
 $ cd hello_library
 $ cmake .
 ...
