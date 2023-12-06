@@ -54,10 +54,11 @@ because field promotion is only available in Dart 3.2 and above.
 
 **Solution:**
 
-Ensure your code isn't targeting
-a previous [language version][] of Dart. 
-Check the top of your file for a `//@dart=version` comment,
-or the `version` field of your `pubspec.yaml`.
+Ensure your library isn't using a [language version][] earlier than 3.2.
+Check the top of your file for an outdated `//@dart=version` comment,
+or your `pubspec.yaml` for an outdated [SDK constraint lower-bound][].
+
+[SDK constraint lower-bound]: /tools/pub/pubspec#sdk-constraints
 
 ## Only local variables can be promoted (before Dart 3.2) {#property}
 

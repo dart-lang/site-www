@@ -41,10 +41,10 @@ RUN set -eu; \
         DART_SHA256="c7703bca5bba8cb17c4469e75a8bf125f97ad62cc9e4b6e4f738cfa9f450eb24"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="2d83ce115bfb588b4ad7d64e31ff7b12578516fc021194104e23fc627f67b32b"; \
+        DART_SHA256="c5754545391bc9ff5bbfb3dd2ea573f0297821162d39e23eb9f58fc4445abe39"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="c7703bca5bba8cb17c4469e75a8bf125f97ad62cc9e4b6e4f738cfa9f450eb24"; \
+        DART_SHA256="cbcbf25a8216d59b4f3f97b9d80e78e553453bdcc3e8e71812369449a6ec12a1"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
         DART_SHA256="7c9b01cbb8e23caae72596a341168b312973ff86481bfb36e890768336ae15c0"; \
