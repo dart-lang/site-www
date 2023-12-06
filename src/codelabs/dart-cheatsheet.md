@@ -58,8 +58,12 @@ String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
 
+
+// Tests your solution (Don't edit!): 
 void main() {
-  print(stringify(2, 3));
+  assert(stringify(2, 3) == '2 3',
+      "Your stringify method returned '${stringify(2, 3)}' instead of '2 3'");
+  print('Success!');
 }
 {$ end main.dart $}
 ```
@@ -125,12 +129,26 @@ Try to declare two variables below:
 - A nullable `String` named `name` with the value `'Jane'`.
 - A nullable `String` named `address` with the value `null`.
 
+Ignore all initial errors in the DartPad.
+
 ```dart:run-dartpad:ga_id-nullable_variables
 {$ begin main.dart $}
-// Declare the two variables here
+// TODO: Declare the two variables here
 
+
+// Tests your solution (Don't edit!): 
 void main() {
-  assert(name == 'Jane' && address == null);
+  try {
+    if (name == 'Jane' && address == null) {
+      // verify that "name" is nullable
+      name = null;
+      print('Success!');
+    } else {
+      print('Not quite right, try again!');
+    }
+  } catch (e) {
+    print('Exception: ${e.runtimeType}');
+  }
 }
 {$ end main.dart $}
 ```
@@ -199,10 +217,26 @@ void updateSomeVars() {
   bar /* TODO */ 'a string';
 }
 
+
+// Tests your solution (Don't edit!):
 void main() {
-  updateSomeVars();
-  assert(baz == 'a string' && bar == 'a string');
- }
+  try {
+    updateSomeVars();
+    
+    if (foo != 'a string') {
+      print('Looks like foo somehow ended up with the wrong value.');
+    } else if (bar != 'a string') {
+      print('Looks like bar ended up with the wrong value.');
+    } else if (baz != 'a string') {
+      print('Looks like baz ended up with the wrong value.');
+    } else {
+      print('Success!');
+    }
+  } catch (e) {
+    print('Exception: ${e.runtimeType}.');
+  }
+  
+}
 {$ end main.dart $}
 ```
 
@@ -260,18 +294,42 @@ null.
 ### Code example
 {: .no_toc}
 
-Try using conditional property access to finish the code snippet below.
+The following function takes a nullable string as a parameter. 
+Try using conditional property access to make it
+return the uppercase version of `str`, or `null` if `str` is `null`.
 
 ```dart:run-dartpad:ga_id-conditional-property_access
 {$ begin main.dart $}
-// This method should return the uppercase version of `str`
-// or null if `str` is null.
 String? upperCaseIt(String? str) {
-  // Try conditionally accessing the `toUpperCase` method here.
+  // TODO: Try conditionally accessing the `toUpperCase` method here.
 }
 
+
+// Tests your solution (Don't edit!):
 void main() {
-  print(upperCaseIt('a string'));
+  try {
+    String? one = upperCaseIt(null);
+    if (one != null) {
+      print('Looks like you\'re not returning null for null inputs.');
+    } else {
+      print('Success when str is null!');
+    }
+  } catch (e) {
+    print('Tried calling upperCaseIt(null) and got an exception: ${e.runtimeType}.');
+  }
+  
+  try {
+    String? two = upperCaseIt('a string');
+    if (two == null) {
+      print('Looks like you\'re returning null even when str has a value.');
+    } else if (two != 'A STRING') {
+      print('Tried upperCaseIt(\'a string\'), but didn\'t get \'A STRING\' in response.');
+    } else {
+      print('Success when str is not null!');
+    }
+  } catch (e) {
+    print('Tried calling upperCaseIt(\'a string\') and got an exception: ${e.runtimeType}.');
+  }
 }
 {$ end main.dart $}
 ```
@@ -354,13 +412,58 @@ final anEmptySetOfString = null;
 // Assign this an empty Map of double to int:
 final anEmptyMapOfDoublesToInts = null;
 
+
+// Tests your solution (Don't edit!):
 void main() {
-  assert(aListOfStrings is List<String> &&
-    aSetOfInts is Set<int> &&
-    aMapOfStringsToInts is Map<String, int> &&
-    anEmptyListOfDouble is List<double> &&
-    anEmptySetOfString is Set<String> &&
-    anEmptyMapOfDoublesToInts is Map<double, int>);
+  final errs = <String>[];
+  
+  if (aListOfStrings is! List<String>) {
+    errs.add('aListOfStrings should have the type List<String>.');
+  } else if (aListOfStrings.length != 3) {
+    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, rather than the expected 3.');
+  } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
+    errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
+  }
+
+  if (aSetOfInts is! Set<int>) {
+    errs.add('aSetOfInts should have the type Set<int>.');
+  } else if (aSetOfInts.length != 3) {
+    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, rather than the expected 3.');
+  } else if (!aSetOfInts.contains(3) || !aSetOfInts.contains(4) || !aSetOfInts.contains(5)) {
+    errs.add('aSetOfInts doesn\'t contain the correct values (3, 4, 5).');
+  }
+
+  if (aMapOfStringsToInts is! Map<String, int>) {
+    errs.add('aMapOfStringsToInts should have the type Map<String, int>.');
+  } else if (aMapOfStringsToInts['myKey'] != 12) {
+    errs.add('aMapOfStringsToInts doesn\'t contain the correct values (\'myKey\': 12).');
+  }
+
+  if (anEmptyListOfDouble is! List<double>) {
+    errs.add('anEmptyListOfDouble should have the type List<double>.');
+  } else if (anEmptyListOfDouble.isNotEmpty) {
+    errs.add('anEmptyListOfDouble should be empty.');
+  }
+
+  if (anEmptySetOfString is! Set<String>) {
+    errs.add('anEmptySetOfString should have the type Set<String>.');
+  } else if (anEmptySetOfString.isNotEmpty) {
+    errs.add('anEmptySetOfString should be empty.');
+  }
+
+  if (anEmptyMapOfDoublesToInts is! Map<double, int>) {
+    errs.add('anEmptyMapOfDoublesToInts should have the type Map<double, int>.');
+  } else if (anEmptyMapOfDoublesToInts.isNotEmpty) {
+    errs.add('anEmptyMapOfDoublesToInts should be empty.');
+  }
+
+  if (errs.isEmpty) {
+    print('Success!');
+  } else {
+    errs.forEach(print);
+  }
+
+  // ignore_for_file: unnecessary_type_check
 }
 {$ end main.dart $}
 ```
@@ -441,15 +544,50 @@ class MyClass {
   String joinWithCommas(List<String> strings) => TODO();
 }
 
+
+// Tests your solution (Don't edit!):
 void main() {
   final obj = MyClass();
+  final errs = <String>[];
+  
+  try {
+    final product = obj.product;
+    
+    if (product != 30) {
+      errs.add('The product property returned $product instead of the expected value (30).'); 
+    } 
+  } catch (e) {
+    print('Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.');
+    return;
+  }
 
-  obj.incrementValue1();
-  final joined = obj.joinWithCommas(['one', 'two', 'three']);
+  try {
+    obj.incrementValue1();
+    
+    if (obj.value1 != 3) {
+      errs.add('After calling incrementValue, value1 was ${obj.value1} instead of the expected value (3).'); 
+    } 
+  } catch (e) {
+    print('Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.');
+    return;
+  }
 
-  assert(obj.product == 30 &&
-    obj.value1 == 3 &&
-    joined == 'one,two,three');
+  try {
+    final joined = obj.joinWithCommas(['one', 'two', 'three']);
+    
+    if (joined != 'one,two,three') {
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
+    } 
+  } catch (e) {
+    print('Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.');
+    return;
+  }
+
+  if (errs.isEmpty) {
+    print('Success!');
+  } else {
+    errs.forEach(print);
+  }
 }
 {$ end main.dart $}
 ```
@@ -563,7 +701,50 @@ BigObject fillBigObject(BigObject obj) {
   return TODO('obj..');
 }
 
-void main() {}
+
+// Tests your solution (Don't edit!):
+void main() {
+  BigObject obj;
+
+  try {
+    obj = fillBigObject(BigObject());
+  } catch (e) {
+    print('Caught an exception of type ${e.runtimeType} while running fillBigObject');
+    return;
+  }
+
+  final errs = <String>[];
+
+  if (obj.anInt != 1) {
+    errs.add(
+        'The value of anInt was ${obj.anInt} rather than the expected (1).');
+  }
+
+  if (obj.aString != 'String!') {
+    errs.add(
+        'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
+  }
+
+  if (obj.aList.length != 1) {
+    errs.add(
+        'The length of aList was ${obj.aList.length} rather than the expected value (1).');
+  } else {
+    if (obj.aList[0] != 3.0) {
+      errs.add(
+          'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
+    }
+  }
+  
+  if (!obj._done) {
+    errs.add('It looks like allDone() wasn\'t called.');
+  }
+
+  if (errs.isEmpty) {
+    print('Success!');
+  } else {
+    errs.forEach(print);
+  }
+}
 {$ end main.dart $}
 ```
 
