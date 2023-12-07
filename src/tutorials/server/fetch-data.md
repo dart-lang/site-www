@@ -129,7 +129,7 @@ see [What is a URL?][] on the mdn web docs.
 
 ## Retrieve the necessary dependencies
 
-`package:http` provides a cross-platform library
+The `package:http` library provides a cross-platform solution
 for making composable HTTP requests,
 with optional fine-grained control.
 
