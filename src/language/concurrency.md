@@ -147,8 +147,7 @@ String _readFileSync() {
 
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
-<?code-excerpt "lib/async_number_of_keys.dart" 
-replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
+<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
 const String filename = 'with_keys.json';
 
@@ -368,7 +367,7 @@ This code snippet shows the bare-minimum needed to
 create a long-lived isolate. You can see a more detailed code example and 
 explanation on the [Isolates][] page.
 
-[Isolates]: /language/isolates#Sending-multiple-messages-between-isolates-with-ports
+[Isolates]: /language/isolates#sending-multiple-messages-between-isolates-with-ports
 
 <?code-excerpt "lib/isolate_spawn_syntax.dart"?>
 ```dart
@@ -480,8 +479,7 @@ using isolates.
 
 #### Message types
 
-Messages sent via 
-[`SendPort`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html) 
+Messages sent via [`SendPort`][]
 can be almost any type of Dart object, but there are a few exceptions:
 
 - Objects with native resources, such as [`Socket`][].
@@ -500,6 +498,7 @@ Apart from those exceptions, any object can be sent.
 Check out the [`SendPort`][] documentation for more information.
 
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Socket`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
 [`DynamicLibrary`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/DynamicLibrary-class.html
 [`Finalizable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
 [`Finalizer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html

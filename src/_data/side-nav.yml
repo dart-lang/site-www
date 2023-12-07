@@ -309,12 +309,6 @@
           permalink: /tools/build_runner
         - title: webdev
           permalink: /tools/webdev
-  - title: Managing source code
-    children:
-      - title: Formatting code
-        permalink: /guides/language/formatting
-      - title: What not to commit
-        permalink: /guides/libraries/private-files
   - title: Static analysis
     children:
       - title: Customizing static analysis
@@ -333,6 +327,8 @@
         permalink: /guides/testing
       - title: Debugging web apps
         permalink: /web/debugging
+  - title: What not to commit
+    permalink: /guides/libraries/private-files
 
 - title: Resources
   expanded: false
