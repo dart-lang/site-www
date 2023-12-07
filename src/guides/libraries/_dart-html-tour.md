@@ -440,7 +440,7 @@ For more information about Dart web libraries, see the
 [AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [Dart Library Tour]: /guides/libraries/library-tour
-[Fetch data from the internet]: /tutorials/server/cmdline
+[Fetch data from the internet]: /tutorials/server/fetch-data
 [Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
 [HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
