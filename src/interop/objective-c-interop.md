@@ -17,17 +17,17 @@ to call Objective-C and Swift APIs.
   and [in active development](https://github.com/dart-lang/sdk/issues/49673).
 {{site.alert.end}}
 
-`dart:ffi` allows Dart code to interact with native C APIs.
+`dart:ffi` enables Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
 so it is possible to interact with Objective-C APIs using only `dart:ffi`.
 However, doing so involves a lot of boilerplate code,
 so you can use `package:ffigen` to automatically generate
 the Dart FFI bindings for a given Objective-C API.
 To learn more about FFI and interfacing with C code directly,
-see the [C interop guide](/guides/libraries/c-interop).
+see the [C interop guide](/interop/c-interop).
 
 You can generate Objective-C headers for Swift APIs,
-allowing `dart:ffi` and `package:ffigen` to interact with Swift.
+enabling `dart:ffi` and `package:ffigen` to interact with Swift.
 
 ## Objective-C Example
 
@@ -94,7 +94,7 @@ which are very large.
 If bindings are generated without any filters,
 the resulting file can be millions of lines long.
 To solve this problem,
-the ffigen config has fields that allow you to filter out
+the ffigen config has fields that enable you to filter out
 all the functions, structs, enums, etc., that you're not interested in.
 For this example, we're only interested in `AVAudioPlayer`,
 so you can exclude everything else:
@@ -306,7 +306,7 @@ and the way Apple's APIs handle multithreading:
   but aren't guaranteed to run on any particular thread,
   and the VM might change which thread an isolate is running on
   without warning.
-  There is an [open feature request][] to allow isolates to be
+  There is an [open feature request][] to enable isolates to be
   pinned to specific threads.
 * While `ffigen` supports converting
   Dart functions to Objective-C blocks,
@@ -320,13 +320,14 @@ and the way Apple's APIs handle multithreading:
 The first two points mean that a callback created in one isolate
 might be invoked on a thread running a different isolate,
 or no isolate at all.
-This will cause your app to crash.
-You can work around this limitation by writing some
-Objective-C code that intercepts your callback and
-forwards it over a [`Dart_Port`]({{site.dart-api}}/dart-ffi/NativePort.html)
-to the correct isolate.
-For an example of this,
-see the implementation of [`package:cupertino_http`][].
+Depending on the type of callback you are using,
+this could cause your app to crash.
+Callbacks created using
+[`Pointer.fromFunction`][] or [`NativeCallable.isolateLocal`][]
+must be invoked on the owner isolate's thread,
+otherwise they will crash.
+Callbacks created using [`NativeCallable.listener`][]
+can be safely invoked from any thread.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
@@ -346,6 +347,10 @@ and doesn't have constraints about which thread it's called from.
 
 You can safely interact with Objective-C code,
 as long as you keep these limitations in mind.
+
+[`Pointer.fromFunction`]: {{site.dart-api}}/dart-ffi/Pointer/fromFunction.html
+[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.isolateLocal.html
+[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.listener.html
 
 ## Swift example
 
