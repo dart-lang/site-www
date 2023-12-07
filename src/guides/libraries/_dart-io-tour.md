@@ -242,6 +242,10 @@ Use a higher-level library like:
 -  [`package:http`](https://pub.dev/packages/http)
 -  [`package:dio`](https://pub.dev/packages/dio)
 
+The [Fetch data from the internet][] tutorial
+explains how to make HTTP requests
+using `package:http`.
+
 ### More information
 
 This page showed how to use the major features of the [dart:io][] library.
@@ -255,6 +259,7 @@ For more information about server-side and command-line app development, see the
 [library tour]: /guides/libraries/library-tour
 [dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [Directory]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
+[Fetch data from the internet]: /tutorials/server/cmdline
 [File]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html
 [HttpClient]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
 [HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html

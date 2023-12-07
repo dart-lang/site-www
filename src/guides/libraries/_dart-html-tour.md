@@ -330,6 +330,10 @@ Use a higher-level library like:
 -  [`package:http`](https://pub.dev/packages/http)
 -  [`package:dio`](https://pub.dev/packages/dio)
 
+The [Fetch data from the internet][] tutorial
+explains how to make HTTP requests
+using `package:http`.
+
 ### Sending and receiving real-time data with WebSockets
 
 A WebSocket allows your web app to exchange data with a server
@@ -436,6 +440,7 @@ For more information about Dart web libraries, see the
 [AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [Dart Library Tour]: /guides/libraries/library-tour
+[Fetch data from the internet]: /tutorials/server/cmdline
 [Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
 [HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
