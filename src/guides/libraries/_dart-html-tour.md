@@ -323,7 +323,7 @@ subclasses. Some common events include:
 ### Using HTTP resources with HttpRequest
 
 You should avoid directly using `dart:html` to make HTTP requests.
-The [HttpRequest][] class is platform-dependent
+The [HttpRequest][] class in `dart:html` is platform-dependent
 and tied to a single implementation.
 Use a higher-level library like:
 
