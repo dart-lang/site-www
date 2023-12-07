@@ -171,17 +171,26 @@ isolate-related API to simplify isolate management:
 ### `ReceivePort` and `SendPort`
 
 This long-lived communication between isolates is set up with 
-two classes (in addition to Isolate): ReceivePort and SendPort. 
+two classes (in addition to Isolate): `ReceivePort` and `SendPort`. 
 These ports are the only way isolates can communicate with each other.
 
-Ports behave similarly to Streams, in which the StreamController or Sink is 
-created in one isolate, and the listener is set up in the other isolate. In 
-this analogy, the StreamController is called a SendPort, and you can “add” 
-messages with the [`send()` method][]. ReceivePorts are the listeners, and 
-when these listeners receive a new message, 
-they call a provided callback with the message as an argument.
+A `ReceivePort` is an object that handles messages that are sent from other 
+isolates, and those messages are sent via a `SendPort`. 
+
+
+Ports behave similarly to streams. You can think of sendport and receiveport like stream's StreamController and listeners, respecitively. A sendport is like a StreamController because... A Receiveport is like a stream listener because...
+
+Ports behave similarly to [`Stream`][], You can think of a `SendPort` and 
+`RecievePort` like Stream's `StreamController` and listeners, respectively. 
+A `SendPort` is like a `StreamController` because you "add" messages to them 
+with the [`send()` method][], and those messages are handled by a listener, 
+in this case the `ReceivePort`. Additionally, handling messages received by 
+the `RecievePort` is done by calling a provided callback with the message as 
+an argument. 
+
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[Streams]: /guides/libraries/library-tour#stream
 
 #### Setting up ports
 
@@ -211,13 +220,29 @@ which you will find [later on this page](link-to-ports-example-section).
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
 
-#### Passing messages using the ports
+1. Create a `ReceivePort` in the main isolate. The `SendPort` is created 
+   automatically as a property on the `ReceivePort`.
+2. Spawn the worker isolate with `Isolate.spawn(...)`
+3. Pass a reference to `ReveivePort.sendPort` as the first message to the 
+   worker isolate.
+4. Create another new `ReceivePort` in the worker isolate.
+5. Pass a reference to the worker isolate's `ReceivePort.sendPort` as the 
+   first message _back_ to the main isolate.
 
 Along with creating the ports and setting up communication, you’ll also need 
 to tell the ports what to do when they receive messages. This is done using 
 the listen method on each of the respective ReceivePorts.
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
+
+1. Send a message via the main isolates reference to the worker isolate's 
+`SendPort`.
+2. Receive and handle the message via a listener on the worker isolate's 
+   `ReceivePort`. This is where the computation you want to move off the 
+   main isolate is executed.
+3. Send a return message via the worker isolate's reference the main 
+   isolate's `SendPort`.
+4. Receive the message via a listener on the main isolate's `ReceivePort`. 
 
 ### Ports example
 
