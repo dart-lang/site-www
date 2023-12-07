@@ -234,27 +234,13 @@ void processRequest(HttpRequest request) {
 
 #### HTTP client
 
-The [HttpClient][] class
-helps you connect to HTTP resources from your Dart command-line or
-server-side application. You can set headers, use HTTP methods, and read
-and write data. The HttpClient class does not work in browser-based
-apps. When programming in the browser, use the
-[dart:html HttpRequest class.][HttpRequest]
-Here's an example of using HttpClient:
+You should avoid directly using `dart:io` to make HTTP requests.
+The [HttpClient][] class is platform-dependent
+and tied to a single implementation.
+Use a higher-level library like:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)" replace="/Future<\w+\W/void/g"?>
-```dart
-void main() async {
-  var url = Uri.parse('http://localhost:8888/dart');
-  var httpClient = HttpClient();
-  var request = await httpClient.getUrl(url);
-  var response = await request.close();
-  var data = await utf8.decoder.bind(response).toList();
-  print('Response ${response.statusCode}: $data');
-  httpClient.close();
-}
-```
-
+-  [`package:http`](https://pub.dev/packages/http)
+-  [`package:dio`](https://pub.dev/packages/dio)
 
 ### More information
 
