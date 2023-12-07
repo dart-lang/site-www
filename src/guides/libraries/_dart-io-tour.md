@@ -235,7 +235,7 @@ void processRequest(HttpRequest request) {
 #### HTTP client
 
 You should avoid directly using `dart:io` to make HTTP requests.
-The [HttpClient][] class is platform-dependent
+The [HttpClient][] class in `dart:io` is platform-dependent
 and tied to a single implementation.
 Use a higher-level library like:
 
