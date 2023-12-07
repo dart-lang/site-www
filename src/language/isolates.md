@@ -18,21 +18,20 @@ prevpage:
 This page discusses some examples that use the `Isolate` API to implement 
 isolates.
 
-Isolates are most commonly used in Flutter applications, when you 
+You should use isolates whenever your application is handling computations that 
+are large enough to temporarily block other computations.
+The most common example is in [Flutter](url) applications, when you 
 need to perform large computations that might otherwise cause the 
 UI to become unresponsive.
-They’re also useful in many server-side applications. In general, 
-you should use isolates whenever your application is handling computations that 
-are large enough to temporarily block other computations.
 
-While there aren't any rules about when you _must_ use isolates, here are
-common situations in which you can consider using isolates:
+There aren't any rules about when you _must_ use isolates, 
+but here are some more situations where they can be useful:
 
 - Parsing and decoding exceptionally large JSON blobs.
 - Processing and compressing photos, audio and video.
 - Converting audio and video files.
 - Performing complex searching and filtering on large lists or within
-  filesystems.
+  file systems.
 - Performing I/O, such as communicating with a database.
 - Handling a large volume of network requests.
 
@@ -43,12 +42,12 @@ that spawns a simple worker isolate.
 [`Isolate.run()`][] simplifies the steps behind
 setting up and managing worker isolates:
 
-1. Spawns (starts and creates) an isolate
-2. Runs a function on the spawned isolate
-3. Captures the result
-4. Returns the result to the main isolate
-5. Terminates the isolate once work is complete
-6. Checks, captures, and throws exceptions and errors back to the main isolate
+1. Spawns (starts and creates) an isolate.
+2. Runs a function on the spawned isolate.
+3. Captures the result.
+4. Returns the result to the main isolate.
+5. Terminates the isolate once work is complete.
+6. Checks, captures, and throws exceptions and errors back to the main isolate.
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
@@ -61,14 +60,15 @@ instead of `Isolate.run()`.
 
 ### Running an existing method in a new isolate
 
-The main isolate contains the code that spawns a new isolate:
+1. Call `run()` to spawn a new isolate (a [background worker][]),
+   directly in the [main isolate][] while `main()` waits for the result:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Read some data.
+  // Spawn a new isolate to read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
 
   // Use that data.
@@ -76,8 +76,8 @@ void main() async {
 }
 ```
 
-The spawned isolate executes the function
-passed as the first argument, `_readAndParseJson`:
+2. Pass the worker isolate the function you want it to execute
+   as its first argument. In this example, it's the existing function `_readAndParseJson()`:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
@@ -88,13 +88,7 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
 }
 ```
 
-1. `Isolate.run()` spawns an isolate, the background worker,
-   while `main()` waits for the result.
-
-2. The spawned isolate executes the argument passed to `run()`:
-   the function `_readAndParseJson()`.
-
-3. `Isolate.run()` takes the result from `return`
+3. `Isolate.run()` takes the result `_readAndParseJson()` returns
    and sends the value back to the main isolate,
    shutting down the worker isolate.
 
@@ -119,6 +113,8 @@ main isolate, because it's running concurrently either way.
 For the complete program, check out the [send_and_receive.dart][] sample.
 
 [send_and_receive.dart]: https://github.com/dart-lang/samples/blob/main/isolates/bin/send_and_receive.dart
+[background worker]: /language/concurrency#background-workers
+[main isolate]: /language/concurrency#the-main-isolate
 
 ### Sending closures with isolates
 
@@ -130,7 +126,7 @@ function literal, or closure, directly in the main isolate.
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Read some data.
+  // Spawn a new isolate to read some data.
   final jsonData = await Isolate.run(() async {
     final fileData = await File(filename).readAsString();
     final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
@@ -167,10 +163,9 @@ isolate-related API to simplify isolate management:
 [`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
-[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
-/dart-isolate/SendPort/send.html
+[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
-### ReceivePorts and SendPorts
+### `ReceivePort` and `SendPort`
 
 This long-lived communication between isolates is set up with two classes (in addition to Isolate): ReceivePort and SendPort. These ports are the only way isolates can communicate with each other.
 
@@ -180,15 +175,16 @@ this analogy, the StreamController is called a SendPort, and you can “add”
 messages with the [`send()` method][]. ReceivePorts are the listeners, and 
 when these listeners receive a new message, they call a provided callback with the message as an argument.
 
-[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
-/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
 #### Setting up ports
 
 Setting up a port requires a few steps, which must be done in a specific order. The following figure shows the conceptual steps required to spawn a new isolate and establish 2-way communication between it and the main isolate.
 
 {{site.alert.note}}
-This diagram, and the following diagram, are high-level and intended to convey the concepts necessary to use isolates, but actual implementation requires a bit more code. A full code example is shown later on this page.  
+The diagrams in this section are high-level and intended to convey the concept of
+using ports for isolates. Actual implementation requires a bit more code,
+which you will find [later on this page](link-to-ports-example-section).  
 {{site.alert.end}}
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
