@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:isolate';
 
 import 'package:http/http.dart' as http;
@@ -62,12 +61,11 @@ class BackgroundWorker {
     } else if (message is List<Photo>) {
       // TODO: handle successful Photo fetch
     } else {
-      throw const SocketException(
+      throw UnsupportedError(
           'Unexpected message type coming from the spawned isolate');
     }
   }
 
-  // This method must be static
   // This method is the your one and only chance to communicate with the
   // worker isolate.
   // This is the only code that will be run, exactly once, when the isolate is
@@ -111,7 +109,7 @@ class BackgroundWorker {
     // is sent from the main isolate to the worker isolate
     receivePortInSpawnedIsolate.listen((dynamic message) async {
       if (message is String) {
-        // This code makes a network request, and will receive a JSON blob
+        // This code makes a network request, and will receive JSON
         final client = http.Client();
         final uri = Uri.parse('https://jsonplaceholder.typicode.com/$message');
         final response = await client.get(uri);
@@ -130,12 +128,13 @@ class BackgroundWorker {
           // TODO: add support for fetching comments
           default:
             // TODO: add support for other resources.
-            throw Exception('Resource endpoint sent to isolate port has an '
+            throw UnsupportedError(
+                'Resource endpoint sent to isolate port has an '
                 'unexpected type. The options are: photos, albums, TODOs, and'
                 ' users');
         }
       } else {
-        throw const SocketException(
+        throw UnsupportedError(
             'Message sent to isolate port has an unexpected type');
       }
     });

@@ -5,15 +5,18 @@ import 'dart:isolate';
 // #docregion
 class BackgroundWorker {
   final Isolate _isolate;
+  final ReceivePort _mainIsolateReceivePort;
   final SendPort _workerIsolateSendPort;
 
-  static Future<BackgroundWorker> initialize() async {
+  /// Initialize the background worker isolate, and define how to handle
+  /// future messages received from that isolate
+  static Future<(Isolate, ReceivePort, SendPort)> _startWorker() async {
     final mainIsolateReceivePort = ReceivePort();
-    late SendPort workerIsolateSendPort;
+    final connection = Completer<SendPort>();
 
-    await mainIsolateReceivePort.forEach((dynamic message) {
+    mainIsolateReceivePort.listen((dynamic message) {
       if (message is SendPort) {
-        workerIsolateSendPort = message;
+        connection.complete(message);
       } else if (message is String) {
         /// Receive messages from the worker isolate
         /// Domain specific code goes here
@@ -21,26 +24,28 @@ class BackgroundWorker {
       }
     });
 
-    var isolate = await Isolate.spawn<SendPort>(
-      _workerIsolateEntryPoint,
-      mainIsolateReceivePort.sendPort,
-    );
+    final Isolate isolate;
+    try {
+      isolate = await Isolate.spawn<SendPort>(
+        _workerIsolateEntryPoint,
+        mainIsolateReceivePort.sendPort,
+      );
+    } on Object {
+      mainIsolateReceivePort.close();
+      rethrow;
+    }
 
-    return BackgroundWorker._(
-      isolate,
-      workerIsolateSendPort,
-    );
-  }
-
-  void send(String message) {
-    _workerIsolateSendPort.send(message);
+    final workerIsolateSendPort = await connection.future;
+    return (isolate, mainIsolateReceivePort, workerIsolateSendPort);
   }
 
   BackgroundWorker._(
     this._isolate,
+    this._mainIsolateReceivePort,
     this._workerIsolateSendPort,
   );
 
+  /// Code executed on the spawned isolate
   static Future<void> _workerIsolateEntryPoint(
     SendPort sendPortToMainApp,
   ) async {
@@ -51,9 +56,7 @@ class BackgroundWorker {
       if (message is String) {
         final dartObjects = jsonDecode(message);
         sendPortToMainApp.send(dartObjects);
-      }
-      if (message == null) {
-        // Protocol for exiting.
+      } else if (message == null) {
         receivePortInSpawnedIsolate.close();
         break;
       } else {
@@ -64,14 +67,36 @@ class BackgroundWorker {
     }
   }
 
-  void dispose() {
-    _isolate.kill();
+  /*
+      Public facing API
+   */
+  /// Public factory constructor
+  static Future<BackgroundWorker> spawn() async {
+    final (isolate, receivePort, sendPort) = await _startWorker();
+    return BackgroundWorker._(
+      isolate,
+      receivePort,
+      sendPort,
+    );
+  }
+
+  Future<void> parse(String message) async {
+    _workerIsolateSendPort.send(message);
+  }
+
+  void close() {
+    _mainIsolateReceivePort.close();
   }
 }
 
 // Elsewhere in app
-void startProcessInBackground(String jsonBlob) async {
-  var backgroundWorker = await BackgroundWorker.initialize();
-  backgroundWorker.send(jsonBlob);
+void parseJsonInBackground() async {
+  var backgroundWorker = await BackgroundWorker.spawn();
+  await backgroundWorker.parse('{"key": "value"}');
+  backgroundWorker.close();
 }
 // #enddocregion
+
+void main() {
+  parseJsonInBackground();
+}

@@ -5,6 +5,9 @@ short-title: Isolates
 prevpage:
   url: /language/async
   title: Asynchronous support
+nextpage:
+  url: /null-safety
+  title: Sound Null Safety
 ---
 
 <?code-excerpt path-base="concurrency"?>
@@ -172,30 +175,53 @@ isolate-related API to simplify isolate management:
 
 ### ReceivePorts and SendPorts
 
-This long-lived communication between isolates is set up with two classes (in addition to Isolate): ReceivePort and SendPort. These ports are the only way isolates can communicate with each other.
+This long-lived communication between isolates is set up with 
+two classes (in addition to Isolate): ReceivePort and SendPort. 
+These ports are the only way isolates can communicate with each other.
 
 Ports behave similarly to Streams, in which the StreamController or Sink is 
 created in one isolate, and the listener is set up in the other isolate. In 
 this analogy, the StreamController is called a SendPort, and you can “add” 
 messages with the [`send()` method][]. ReceivePorts are the listeners, and 
-when these listeners receive a new message, they call a provided callback with the message as an argument.
+when these listeners receive a new message, 
+they call a provided callback with the message as an argument.
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 /dart-isolate/SendPort/send.html
 
 #### Setting up ports
 
-Setting up a port requires a few steps, which must be done in a specific order. The following figure shows the conceptual steps required to spawn a new isolate and establish 2-way communication between it and the main isolate.
+Setting up a port requires a few steps, which must be done in a specific 
+order. The following figure shows the conceptual steps required to spawn a 
+new isolate and establish 2-way communication between it and the main isolate.
+
+A newly spawned isolate only has the information it got through the 
+`Isolate.spawn` call.  If the main isolate needs to communicate with the new 
+isolate, you must give it a way to reach out to you,
+because you can't reach into it. 
+That's where the "isolate" in the name comes from.
+
+The traditional way to do that is to first create a [`ReceivePort`][], 
+then pass its [`SendPort`][] to the new isolate when spawning it.
+The new isolate then creates its own `ReceivePort`, and sends its `SendPort` 
+back on the send port it was given.
+The original isolate receives this send port, which concludes the set-up.
+Now both sides has both a way to send and receive messages, and the real 
+communication can start.
 
 {{site.alert.note}}
-This diagram, and the following diagram, are high-level and intended to convey the concepts necessary to use isolates, but actual implementation requires a bit more code. A full code example is shown later on this page.  
+This diagram, and the following diagram, are high-level and intended to 
+convey the concepts necessary to use isolates, but actual implementation 
+requires a bit more code. A full code example is shown later on this page.  
 {{site.alert.end}}
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
 
 #### Passing messages using the ports
 
-Along with creating the ports and setting up communication, you’ll also need to tell the ports what to do when they receive messages. This is done using the listen method on each of the respective ReceivePorts.
+Along with creating the ports and setting up communication, you’ll also need 
+to tell the ports what to do when they receive messages. This is done using 
+the listen method on each of the respective ReceivePorts.
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
 
