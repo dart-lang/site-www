@@ -2,17 +2,10 @@
 title: Customizing static analysis
 description: >-
   Use an analysis options file and code comments to customize static analysis.
+body_class: highlight-diagnostics
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
-
-<style>
-pre .highlight {
-    border-bottom: 2px red dashed;
-    background: inherit;
-    padding-bottom: 1px;
-}
-</style>
 
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
