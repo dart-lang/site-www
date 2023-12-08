@@ -263,8 +263,6 @@
           - title: Overview
             match-page-url-exactly: true
             permalink: /tools/dartpad
-          - title: DartPad in tutorials
-            permalink: /tools/dartpad/dartpad-best-practices
           - title: Troubleshooting DartPad
             permalink: /tools/dartpad/troubleshoot
   - title: Command-line tools
