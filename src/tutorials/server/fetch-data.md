@@ -235,7 +235,7 @@ which can also be seen in your browser at
 ```json
 {
   "name": "http",
-  "latestVersion": "1.1.0",
+  "latestVersion": "1.1.2",
   "description": "A composable, multi-platform, Future-based API for HTTP requests.",
   "publisher": "dart.dev",
   "repository": "https://github.com/dart-lang/http"

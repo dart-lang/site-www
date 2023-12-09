@@ -237,10 +237,8 @@ void processRequest(HttpRequest request) {
 You should avoid directly using `dart:io` to make HTTP requests.
 The [HttpClient][] class in `dart:io` is platform-dependent
 and tied to a single implementation.
-Instead, use a higher-level library like:
-
--  [`package:http`](https://pub.dev/packages/http)
--  [`package:dio`](https://pub.dev/packages/dio)
+Instead, use a higher-level library like
+[`package:http`](https://pub.dev/packages/http).
 
 The [Fetch data from the internet][] tutorial
 explains how to make HTTP requests
