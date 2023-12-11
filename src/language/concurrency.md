@@ -21,9 +21,8 @@ nextpage:
 
 This page contains a conceptual overview of how concurrent programming works in
 Dart. It explains the event-loop, async language features, and isolates from
-a high-level. For more practical code examples of using async features and
-isolates, read the [Asynchrony support](/language/async) and
-[Isolates](/language/isolates) pages.
+a high-level. For more practical code examples of using async features,
+read the [Asynchrony support](/language/async).
 
 Concurrent programming in Dart refers to both asynchronous APIs, like `Future`
 and `Stream`, and *isolates*, which allow you to move processes to separate
