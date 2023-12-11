@@ -91,7 +91,7 @@ holding onto a callback to execute later
 This same model is generally how the event loop handles all other
 asynchronous events in Dart, such as [`Stream`][] objects.
 
-[`Streams`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 
 ## Types and syntax for asynchronous programming
 
