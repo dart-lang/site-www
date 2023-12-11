@@ -326,7 +326,7 @@ You should avoid directly using `dart:html` to make HTTP requests.
 The [`HttpRequest`][] class in `dart:html` is platform-dependent
 and tied to a single implementation.
 Instead, use a higher-level library like
-[`package:http`](({{site.pub-pkg}}/http)).
+[`package:http`]({{site.pub-pkg}}/http).
 
 The [Fetch data from the internet][] tutorial
 explains how to make HTTP requests
