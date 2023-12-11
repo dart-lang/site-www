@@ -415,8 +415,7 @@ Check out the [`SendPort.send`][] documentation for more information.
 Note that `Isolate.spawn()` and `Isolate.exit()` abstract over `SendPort` 
 objects, so they're subject to the same limitations.
 
-[`SendPort.send`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/
-dart-isolate/SendPort/send.html
+[`SendPort.send`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 [`Socket`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
 [`DynamicLibrary`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/DynamicLibrary-class.html
 [`Finalizable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
