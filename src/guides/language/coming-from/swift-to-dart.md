@@ -2407,7 +2407,7 @@ and won't be covered here.
 Each isolate has its own event loop.
 For more information, see [How isolates work][].
 
-[How isolates work]: /language/concurrency#how-isolates-work
+[How isolates work]: /language/concurrency
 
 ### Futures
 
