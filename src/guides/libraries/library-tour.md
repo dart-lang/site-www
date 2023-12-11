@@ -1806,7 +1806,7 @@ To learn more about the Dart language, see the
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Assert]: /language/error-handling#assert
-[`Client.read()`]: https://pub.dev/documentation/http/latest/http/Client/read.html
+[`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html

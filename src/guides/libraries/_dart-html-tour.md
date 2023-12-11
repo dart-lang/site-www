@@ -323,10 +323,10 @@ subclasses. Some common events include:
 ### Using HTTP resources with HttpRequest
 
 You should avoid directly using `dart:html` to make HTTP requests.
-The [HttpRequest][] class in `dart:html` is platform-dependent
+The [`HttpRequest`][] class in `dart:html` is platform-dependent
 and tied to a single implementation.
 Instead, use a higher-level library like
-[`package:http`](https://pub.dev/packages/http).
+[`package:http`](({{site.pub-pkg}}/http)).
 
 The [Fetch data from the internet][] tutorial
 explains how to make HTTP requests
@@ -441,7 +441,7 @@ For more information about Dart web libraries, see the
 [Fetch data from the internet]: /tutorials/server/fetch-data
 [Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
-[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[`HttpRequest`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
 [IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
 [MessageEvent]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
 [Nodes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
