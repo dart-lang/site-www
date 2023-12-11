@@ -12,11 +12,6 @@ Check out the following Dart language resources:
     <h3><a href="/resources/books">Books</a></h3>
     <p>A collection of books about Dart.</p>
   </div>
-  
-  <div class="card">
-    <h3><a href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a></h3>
-    <p>A guide to using embedded DartPads in educational content for Dart and Flutter users.</p>
-  </div>
 
   <div class="card">
     <h3><a href="/code-of-conduct">Code of conduct</a></h3>
