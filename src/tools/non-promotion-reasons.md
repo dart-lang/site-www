@@ -235,7 +235,7 @@ test(C c) {
 **Message:**
 
 ```nocode
-'n' refers to a public field so it couldn’t be promoted.
+'n' refers to a public property so it couldn’t be promoted.
 ```
 
 **Solution:**
