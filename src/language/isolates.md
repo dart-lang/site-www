@@ -23,7 +23,7 @@ isolates.
 
 You should use isolates whenever your application is handling computations that 
 are large enough to temporarily block other computations.
-The most common example is in [Flutter](url) applications, when you 
+The most common example is in [Flutter][] applications, when you 
 need to perform large computations that might otherwise cause the 
 UI to become unresponsive.
 
@@ -37,6 +37,8 @@ but here are some more situations where they can be useful:
   file systems.
 - Performing I/O, such as communicating with a database.
 - Handling a large volume of network requests.
+
+[Flutter]: {{site.flutter}}/perf/isolates
 
 ## Implementing a simple worker isolate
 
@@ -175,10 +177,7 @@ two classes (in addition to Isolate): `ReceivePort` and `SendPort`.
 These ports are the only way isolates can communicate with each other.
 
 A `ReceivePort` is an object that handles messages that are sent from other 
-isolates, and those messages are sent via a `SendPort`. 
-
-
-Ports behave similarly to streams. You can think of sendport and receiveport like stream's StreamController and listeners, respecitively. A sendport is like a StreamController because... A Receiveport is like a stream listener because...
+isolates, and those messages are sent via a `SendPort`.
 
 Ports behave similarly to [`Stream`][], You can think of a `SendPort` and 
 `RecievePort` like Stream's `StreamController` and listeners, respectively. 
