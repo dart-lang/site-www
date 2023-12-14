@@ -229,7 +229,7 @@ If you'd like to learn more about using `async`, `await`, `Stream`s and
 
 ## Isolates
 
-Dart supports concurrency via isolates, in addition to [asynchronous APIs](#types-and-syntax-for-asynchronous-programming).
+Dart supports concurrency via isolates, in addition to [asynchronous APIs](#asynchronous-programming).
 Most modern devices have multi-core
 CPUs. To take advantage of multiple cores, developers sometimes use
 shared-memory threads running concurrently. However, shared-state concurrency is
