@@ -1,6 +1,12 @@
 ---
 title: dart:io
 description: Learn about the major features in Dart's dart:io library.
+prevpage:
+  url: /libraries/dart-convert
+  title: dart:convert
+nextpage:
+  url: /libraries/dart-html
+  title: dart:html
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>

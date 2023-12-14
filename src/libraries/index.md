@@ -2,6 +2,9 @@
 title: Dart's core libraries
 description: Learn about Dart's core libraries and APIs.
 short-title: Core libraries
+nextpage:
+  url: /libraries/dart-core
+  title: dart:core
 ---
 
 <style>
@@ -39,12 +42,12 @@ consult the [Dart API reference.][Dart API]
 : Encoders and decoders for converting between different data representations,
   including JSON and UTF-8.
 
-[dart:html](/libraries/dart-html)
-: DOM and other APIs for browser-based apps.
-
 [dart:io](/libraries/dart-io)
 : I/O for programs that can use the Dart VM,
   including Flutter apps, servers, and command-line scripts.
+
+[dart:html](/libraries/dart-html)
+: DOM and other APIs for browser-based apps.
 
 
 As mentioned, these pages are just an overview;

@@ -141,8 +141,10 @@
     - title: dart:core
       permalink: /libraries/dart-core
     - title: dart:async
+      permalink: /libraries/dart-async
       children:
         - title: Overview
+          match-page-url-exactly: true
           permalink: /libraries/dart-async
         - title: Creating streams
           permalink: /articles/libraries/creating-streams
@@ -150,10 +152,10 @@
       permalink: /libraries/dart-math
     - title: dart:convert
       permalink: /libraries/dart-convert
-    - title: dart:html
-      permalink: /libraries/dart-html
     - title: dart:io
       permalink: /libraries/dart-io
+    - title: dart:html
+      permalink: /libraries/dart-html
 
 - title: Packages
   expanded: false

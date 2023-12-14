@@ -1,6 +1,12 @@
 ---
 title: dart:convert
 description: Learn about the major features in Dart's dart:convert library.
+prevpage:
+  url: /libraries/dart-math
+  title: dart:math
+nextpage:
+  url: /libraries/dart-io
+  title: dart:io
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>

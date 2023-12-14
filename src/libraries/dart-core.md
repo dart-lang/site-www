@@ -1,6 +1,12 @@
 ---
 title: dart:core
 description: Learn about the major features in Dart's dart:core library.
+prevpage:
+  url: /libraries
+  title: Core libraries
+nextpage:
+  url: /libraries/dart-async
+  title: dart:async
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
