@@ -97,10 +97,10 @@
           permalink: /language/modifier-reference
     - title: Concurrency
       children:
+        - title: Overview
+          permalink: /language/concurrency
         - title: Asynchronous support
           permalink: /language/async
-        - title: Isolates
-          permalink: /language/concurrency
     - title: Null safety
       expanded: false
       children:
