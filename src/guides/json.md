@@ -13,7 +13,7 @@ converting Dart objects to and from JSON.
 
 The following libraries and packages are useful across Dart platforms:
 
-* [dart:convert](/libraries/dart-convert#dartconvert---decoding-and-encoding-json-utf-8-and-more)<br>
+* [dart:convert](/libraries/dart-convert)<br>
   Converters for both JSON and UTF-8
   (the character encoding that JSON requires).
 

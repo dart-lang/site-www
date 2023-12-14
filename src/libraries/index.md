@@ -1,6 +1,7 @@
 ---
-title: Core libraries
+title: Dart's core libraries
 description: Learn about Dart's core libraries and APIs.
+short-title: Core libraries
 ---
 
 <style>
@@ -17,28 +18,31 @@ and encoding/decoding data (`dart:convert`).
 Additional APIs are available in
 [commonly used packages](/guides/libraries/useful-libraries).
 
-The library tour covers how to use major features of Dart's core libraries.
-It's just an overview, and by no means comprehensive.
-Whenever you need more details about a class,
+## Library tour
+
+The following guides cover how to use major features of Dart's core libraries.
+They provide just an overview, and are by no means comprehensive.
+Whenever you need more details about a library or its members,
 consult the [Dart API reference.][Dart API]
 
-[dart:core](#dartcore---numbers-collections-strings-and-more)
+[dart:core](/libraries/dart-core)
 : Built-in types, collections, and other core functionality.
   This library is automatically imported into every Dart program.
 
-[dart:async](#dartasync---asynchronous-programming)
+[dart:async](/libraries/dart-async)
 : Support for asynchronous programming, with classes such as Future and Stream.
 
-[dart:math](#dartmath---math-and-random)
+[dart:math](/libraries/dart-math)
 : Mathematical constants and functions, plus a random number generator.
 
-[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
-: Encoders and decoders for converting between different data representations, including JSON and UTF-8.
+[dart:convert](/libraries/dart-convert)
+: Encoders and decoders for converting between different data representations,
+  including JSON and UTF-8.
 
-[dart:html](#darthtml)
+[dart:html](/libraries/dart-html)
 : DOM and other APIs for browser-based apps.
 
-[dart:io](#dartio)
+[dart:io](/libraries/dart-io)
 : I/O for programs that can use the Dart VM,
   including Flutter apps, servers, and command-line scripts.
 
@@ -47,21 +51,24 @@ As mentioned, these pages are just an overview;
 they cover only a few dart:* libraries
 and no third-party libraries.
 
+For an overview of all libraries that Dart supports on different platforms,
+check out the [Multi-platform libraries](#multi-platform-libraries),
+[Native platform libraries](#native-platform-libraries), and
+[Web platform libraries](#web-platform-libraries) lists below.
+
 Other places to find library information are the
 [pub.dev site]({{site.pub}}) and the
 [Dart web developer library guide][webdev libraries].
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.][docs.flutter]
+the [Flutter API reference][api-flutter].
 
-{{site.alert.info}}
-  **DartPad tip:** You can play with the code in this page by copying it into a
-  [DartPad.]({{site.dartpad}})
-{{site.alert.end}}
+To learn more about the Dart language,
+check out the [language documentation and samples](/language).
 
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [webdev libraries]: /web/libraries
-[docs.flutter]: {{site.flutter-api}}
+[api-flutter]: {{site.flutter-api}}
 
 ## Multi-platform libraries
 
@@ -110,31 +117,6 @@ The following table lists the Dart core libraries that work on the
 | [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser. | |
 {:.table .table-striped}
 
-
-## Summary
-
-This page introduced you to the most commonly used functionality in
-Dart's built-in libraries. It didn't cover all the built-in
-libraries, however. Others that you might want to look into include
-[dart:collection][] and [dart:typed\_data,][dart:typed\_data]
-as well as platform-specific libraries like the
-[Dart web development libraries][webdev libraries]
-and the [Flutter libraries.][docs.flutter]
-
-You can get yet more libraries by using the [pub package manager](/guides/packages). The
-[collection,]({{site.pub-pkg}}/collection)
-[crypto,]({{site.pub-pkg}}/crypto)
-[http,]({{site.pub-pkg}}/http)
-[intl,]({{site.pub-pkg}}/intl) and
-[test]({{site.pub-pkg}}/test) libraries are just a
-sampling of what you can install using pub.
-
-To learn more about the Dart language, see the
-[language tour][].
-
-[dart:collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
-[dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
-[language tour]: /language
 
 <!---
 Multi-platform libraries

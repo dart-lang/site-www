@@ -7,7 +7,7 @@ description: Learn about the major features in Dart's dart:convert library.
 <?code-excerpt plaster="none"?>
 
 
-## dart:convert - decoding and encoding JSON, UTF-8, and more
+## decoding and encoding JSON, UTF-8, and more
 
 The dart:convert library ([API reference][dart:convert])
 has converters for JSON and UTF-8, as well as support for creating
@@ -174,7 +174,6 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 [dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
-[dart:io tour]: #dartio
 [dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [docs.flutter]: {{site.flutter-api}}

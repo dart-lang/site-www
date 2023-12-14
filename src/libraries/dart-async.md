@@ -451,14 +451,14 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 ### More information
 
 For some examples of using Future and Stream in command-line apps,
-see the [dart:io tour][dart:io tour].
+check out the [dart:io documentation][].
 Also see these articles, codelabs, and tutorials:
 
 -   [Asynchronous programming: futures, async, await](/codelabs/async-await)
 -   [Futures and error handling](/guides/libraries/futures-error-handling)
 -   [Asynchronous programming: streams](/tutorials/language/streams)
 -   [Creating streams in Dart](/articles/libraries/creating-streams)
--   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
+-   [Dart asynchronous programming: Isolates and event loops](/language/concurrency)
 
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
@@ -501,7 +501,7 @@ Also see these articles, codelabs, and tutorials:
 [dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
-[dart:io tour]: #dartio
+[dart:io documentation]: /libraries/dart-io
 [dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [docs.flutter]: {{site.flutter-api}}
