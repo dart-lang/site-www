@@ -109,18 +109,14 @@ see the [asynchronous programming codelab](/codelabs/async-await).
 
 #### Basic usage
 
-{% comment %}
-[PENDING: Delete much of the following content in favor of the tutorial coverage?]
-{% endcomment %}
-
 You can use `then()` to schedule code that runs when the future completes. For
-example, `HttpRequest.getString()` returns a Future, since HTTP requests
+example, [`Client.read()`][] returns a Future, since HTTP requests
 can take a while. Using `then()` lets you run some code when that Future
 has completed and the promised string value is available:
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
 ```dart
-HttpRequest.getString(url).then((String result) {
+httpClient.read(url).then((String result) {
   print(result);
 });
 ```
@@ -130,7 +126,7 @@ object might throw.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
 ```dart
-HttpRequest.getString(url).then((String result) {
+httpClient.read(url).then((String result) {
   print(result);
 }).catchError((e) {
   // Handle or ignore the error.
@@ -147,6 +143,7 @@ The `then().catchError()` pattern is the asynchronous version of
   `then()`.
 {{site.alert.end}}
 
+[`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 
 #### Chaining multiple asynchronous methods
 
