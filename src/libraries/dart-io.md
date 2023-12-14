@@ -104,7 +104,7 @@ void main() async {
 #### Streaming file contents
 
 Use a Stream to read a file, a little at a time.
-You can use either the [Stream API](/guides/libraries/library-tour#stream)
+You can use either the [Stream API](/libraries/dart-async#stream)
 or `await for`, part of Dart's
 [asynchrony support.](/language/async)
 
@@ -261,7 +261,6 @@ For more information about server-side and command-line app development, see the
 [server-side Dart overview.](/server)
 
 
-[library tour]: /guides/libraries/library-tour
 [dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [Directory]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
 [Fetch data from the internet]: /tutorials/server/fetch-data

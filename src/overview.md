@@ -170,7 +170,7 @@ publish thousands of packages, with support for features like these:
 * [compression]({{site.pub-pkg}}/archive)
 
 To see a series of working examples featuring the Dart core libraries,
-take the [library tour](/guides/libraries/library-tour).
+read the [core library documentation](/libraries).
 To find additional APIs, see the
 [commonly used packages page](/guides/libraries/useful-libraries).
 

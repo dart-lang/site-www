@@ -273,7 +273,7 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 ```
 
 For more information on using strings, check out
-[Strings and regular expressions](/guides/libraries/library-tour#strings-and-regular-expressions).
+[Strings and regular expressions](/libraries/dart-core#strings-and-regular-expressions).
 
 
 ## Booleans
@@ -395,7 +395,7 @@ Symbol literals are compile-time constants.
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
 [asynchrony support]: /language/async
-[iteration]: /guides/libraries/library-tour#iteration
+[iteration]: /libraries/dart-core#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom
 [`int`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
