@@ -142,12 +142,6 @@
       permalink: /libraries/dart-core
     - title: dart:async
       permalink: /libraries/dart-async
-      children:
-        - title: Overview
-          match-page-url-exactly: true
-          permalink: /libraries/dart-async
-        - title: Creating streams
-          permalink: /articles/libraries/creating-streams
     - title: dart:math
       permalink: /libraries/dart-math
     - title: dart:convert
@@ -156,6 +150,13 @@
       permalink: /libraries/dart-io
     - title: dart:html
       permalink: /libraries/dart-html
+    - divider
+    - title: Guides
+      children:
+        - title: Creating streams
+          permalink: /articles/libraries/creating-streams
+        - title: Futures and error handling
+          permalink: /articles/libraries/futures-error-handling
 
 - title: Packages
   expanded: false
