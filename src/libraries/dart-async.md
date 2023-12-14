@@ -1,5 +1,6 @@
 ---
-title: dart:async
+title: "dart:async - Asynchronous programming libraries"
+short-title: dart:async
 description: Learn about the major features in Dart's dart:async library.
 prevpage:
   url: /libraries/dart-core

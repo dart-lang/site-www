@@ -1,5 +1,6 @@
 ---
-title: dart:io
+title: "dart:io - I/O for server and command-line apps"
+short-title: dart:io
 description: Learn about the major features in Dart's dart:io library.
 prevpage:
   url: /libraries/dart-convert

@@ -1,5 +1,6 @@
 ---
-title: dart:convert
+title: "dart:convert - Decoding and encoding APIs"
+short-title: dart:convert
 description: Learn about the major features in Dart's dart:convert library.
 prevpage:
   url: /libraries/dart-math

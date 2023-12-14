@@ -1,5 +1,6 @@
 ---
-title: dart:core
+title: "dart:core - APIs for numbers, strings, collections, and more"
+short-title: dart:core
 description: Learn about the major features in Dart's dart:core library.
 prevpage:
   url: /libraries
@@ -11,8 +12,6 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-
-## dart:core - numbers, collections, strings, and more
 
 The dart:core library ([API reference][dart:core])
 provides a small but critical set of built-in functionality.

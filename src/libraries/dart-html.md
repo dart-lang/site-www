@@ -1,5 +1,6 @@
 ---
-title: dart:html
+title: "dart:html - Web and DOM libraries"
+short-title: dart:html
 description: Learn about the major features in Dart's dart:html library.
 prevpage:
   url: /libraries/dart-io

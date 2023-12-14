@@ -1,5 +1,6 @@
 ---
-title: dart:math
+title: "dart:math - Mathematical utilities and random numbers"
+short-title: dart:math
 description: Learn about the major features in Dart's dart:math library.
 prevpage:
   url: /libraries/dart-async
@@ -11,9 +12,6 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-
-
-## dart:math - math and random
 
 The dart:math library ([API reference][dart:math])
 provides common functionality such as sine and cosine,
