@@ -947,26 +947,6 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
 
-### DO use `=` to separate a named parameter from its default value
-
-{% include linter-rule-mention.md rule="prefer_equal_for_default_values" %}
-
-Before Dart 3, Dart allowed both `:` and `=` 
-as the default value separator for named parameters. 
-For consistency with optional positional parameters, use `=`.
-
-{:.good}
-<?code-excerpt "usage_good.dart (default-separator)"?>
-```dart
-void insert(Object item, {int at = 0}) { ... }
-```
-
-{:.bad}
-```dart
-void insert(Object item, {int at: 0}) { ... }
-```
-
-
 ## Variables
 
 The following best practices describe how to best use variables in Dart.

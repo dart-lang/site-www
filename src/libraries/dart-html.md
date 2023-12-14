@@ -330,119 +330,15 @@ subclasses. Some common events include:
 
 ### Using HTTP resources with HttpRequest
 
-Formerly known as XMLHttpRequest, the [HttpRequest][] class
-gives you access to HTTP resources from within your browser-based app.
-Traditionally, AJAX-style apps make heavy use of HttpRequest. Use
-HttpRequest to dynamically load JSON data or any other resource from a
-web server. You can also dynamically send data to a web server.
+You should avoid directly using `dart:html` to make HTTP requests.
+The [`HttpRequest`][] class in `dart:html` is platform-dependent
+and tied to a single implementation.
+Instead, use a higher-level library like
+[`package:http`]({{site.pub-pkg}}/http).
 
-
-#### Getting data from the server
-
-The HttpRequest static method `getString()` is an easy way to get data
-from a web server. Use `await` with the `getString()` call
-to ensure that you have the data before continuing execution.
-
-<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g; /Future<\w+\W/void/g"?>
-{% prettify dart tag=pre+code %}
-void main() async {
-  String pageHtml = [!await HttpRequest.getString(url);!]
-  // Do something with pageHtml...
-}
-{% endprettify %}
-
-Use try-catch to specify an error handler:
-
-<?code-excerpt "html/lib/html.dart (try-getString)"?>
-```dart
-try {
-  var data = await HttpRequest.getString(jsonUri);
-  // Process data...
-} catch (e) {
-  // Handle exception...
-}
-```
-
-If you need access to the HttpRequest, not just the text data it
-retrieves, you can use the `request()` static method instead of
-`getString()`. Here's an example of reading XML data:
-
-<?code-excerpt "html/test/html_test.dart (request)" replace="/Future<\w+\W/void/g; /await.*;/[!$&!]/g"?>
-```dart
-void main() async {
-  HttpRequest req = await HttpRequest.request(
-    url,
-    method: 'HEAD',
-  );
-  if (req.status == 200) {
-    // Successful URL access...
-  }
-  // ···
-}
-```
-
-You can also use the full API to handle more interesting cases. For
-example, you can set arbitrary headers.
-
-The general flow for using the full API of HttpRequest is as follows:
-
-1.  Create the HttpRequest object.
-2.  Open the URL with either `GET` or `POST`.
-3.  Attach event handlers.
-4.  Send the request.
-
-For example:
-
-<?code-excerpt "html/lib/html.dart (new-HttpRequest)"?>
-```dart
-var request = HttpRequest();
-request
-  ..open('POST', url)
-  ..onLoadEnd.listen((e) => requestComplete(request))
-  ..send(encodedData);
-```
-
-#### Sending data to the server
-
-HttpRequest can send data to the server using the HTTP method POST. For
-example, you might want to dynamically submit data to a form handler.
-Sending JSON data to a RESTful web service is another common example.
-
-Submitting data to a form handler requires you to provide name-value
-pairs as URI-encoded strings. (Information about the URI class is in
-the [URIs section][URIs] of the [Dart Library Tour.][Dart Library Tour])
-You must also set the `Content-type` header to
-`application/x-www-form-urlencoded` if you wish to send data to a form
-handler.
-
-<?code-excerpt "html/test/html_test.dart (POST)"?>
-```dart
-String encodeMap(Map<String, String> data) => data.entries
-    .map((e) =>
-        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-    .join('&');
-
-void main() async {
-  const data = {'dart': 'fun', 'angular': 'productive'};
-
-  var request = HttpRequest();
-  request
-    ..open('POST', url)
-    ..setRequestHeader(
-      'Content-type',
-      'application/x-www-form-urlencoded',
-    )
-    ..send(encodeMap(data));
-
-  await request.onLoadEnd.first;
-
-  if (request.status == 200) {
-    // Successful URL access...
-  }
-  // ···
-}
-```
-
+The [Fetch data from the internet][] tutorial
+explains how to make HTTP requests
+using `package:http`.
 
 ### Sending and receiving real-time data with WebSockets
 
@@ -550,9 +446,10 @@ For more information about Dart web libraries, see the
 [AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [Dart Library Tour]: /guides/libraries/library-tour
+[Fetch data from the internet]: /tutorials/server/fetch-data
 [Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
-[HttpRequest]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[`HttpRequest`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
 [IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
 [MessageEvent]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
 [Nodes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html

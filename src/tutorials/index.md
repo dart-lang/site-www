@@ -27,7 +27,7 @@ which are fundamental to most Dart programs.
     <p>Use streams to manage sequences of data.</p>
   </div>
   <div class="card">
-    <h3><a href="/tutorials/libraries/shared-pkgs">Install shared packages</a></h3>
+    <h3><a href="/guides/packages">How to use packages</a></h3>
     <p>Organize and share code at the
        <a href="{{site.pub}}">pub.dev site.</a></p>
   </div>

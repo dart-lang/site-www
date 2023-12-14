@@ -1154,13 +1154,13 @@ see the [asynchronous programming codelab](/codelabs/async-await).
 {% endcomment %}
 
 You can use `then()` to schedule code that runs when the future completes. For
-example, `HttpRequest.getString()` returns a Future, since HTTP requests
+example, [`Client.read()`][] returns a Future, since HTTP requests
 can take a while. Using `then()` lets you run some code when that Future
 has completed and the promised string value is available:
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
 ```dart
-HttpRequest.getString(url).then((String result) {
+httpClient.read(url).then((String result) {
   print(result);
 });
 ```
@@ -1170,7 +1170,7 @@ object might throw.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
 ```dart
-HttpRequest.getString(url).then((String result) {
+httpClient.read(url).then((String result) {
   print(result);
 }).catchError((e) {
   // Handle or ignore the error.
@@ -1741,6 +1741,7 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Assert]: /language/error-handling#assert
+[`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
@@ -1778,7 +1779,7 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 [dart:collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
-[dart:ffi]: /guides/libraries/c-interop
+[dart:ffi]: /interop/c-interop
 [dart:io tour]: #dartio
 [dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
