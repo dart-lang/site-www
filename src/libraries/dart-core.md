@@ -1023,14 +1023,14 @@ For more information, see
 Dart is a [garbage-collected][] language,
 which means that any Dart object
 that isn't referenced
-can be disposed by the garbage collector. 
+can be disposed by the garbage collector.
 This default behavior might not be desirable in
-some scenarios involving native resources or 
+some scenarios involving native resources or
 if the target object can't be modified.
 
 A [WeakReference][]
 stores a reference to the target object
-that does not affect how it is 
+that does not affect how it is
 collected by the garbage collector.
 Another option is to use an [Expando][]
 to add properties to an object.
@@ -1050,7 +1050,7 @@ such as a database connection or open files.
 To ensure that an object won't be
 garbage collected and finalized too early,
 classes can implement the [Finalizable][] interface.
-When a local variable is Finalizable, 
+When a local variable is Finalizable,
 it won't be garbage collected
 until the code block where it is declared has exited.
 
