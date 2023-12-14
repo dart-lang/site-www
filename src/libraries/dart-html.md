@@ -6,9 +6,6 @@ prevpage:
   title: dart:io
 ---
 
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
-<?code-excerpt plaster="none"?>
-
 Use the [dart:html][] library to program the browser, manipulate objects and
 elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
 Model*, which describes the hierarchy of an HTML page.
