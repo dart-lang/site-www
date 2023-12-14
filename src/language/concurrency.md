@@ -45,7 +45,7 @@ As your application runs, all events are added to a queue,
 called the *event queue*.
 Events can be anything from requests to repaint the UI,
 to user taps and keystrokes, to I/O from the disk.
-Because your app can’t predict in what order events will happen,
+Because your app can’t predict what order events will happen,
 the event loop processes events in the order they're queued, one at a time.
 
 ![A figure showing events being fed, one by one, into the
@@ -92,8 +92,9 @@ asynchronous events in Dart, such as [`Stream`][] objects.
 
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 
-## Types and syntax for asynchronous programming
+## Asynchronous programming
 
+This section summarizes the different types and syntaxes of asynchronous programming in Dart.
 If you're already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
 
@@ -112,7 +113,7 @@ promise to eventually provide a `String` value (or error).
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 
-  // .readAsString() returns a Future
+  // .readAsString() returns a Future.
   // .then() registers a callback to be executed when `readAsString` resolves.
   return file.readAsString().then((contents) {
     return contents.trim();
@@ -182,7 +183,7 @@ function body.
 {{site.alert.end}}
 
 As the following figure shows, the Dart code pauses while `readAsString()`
-executes non-Dart code, in either the Dart runtime or the operating. 
+executes non-Dart code, in either the Dart runtime or the operating system. 
 Once `readAsString()` returns a value, Dart code execution resumes.
 
 ![Flowchart-like figure showing app code executing from start to exit, waiting
@@ -228,14 +229,20 @@ If you'd like to learn more about using `async`, `await`, `Stream`s and
 
 ## Isolates
 
-Dart also supports concurrency via isolates. Most modern devices have multi-core
+Dart supports concurrency via isolates, in addition to [asynchronous APIs](#types-and-syntax-for-asynchronous-programming).
+Most modern devices have multi-core
 CPUs. To take advantage of multiple cores, developers sometimes use
 shared-memory threads running concurrently. However, shared-state concurrency is
 [error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and can
 lead to complicated code.
 
-Instead of threads, all Dart code runs inside isolates. Each isolate has its
-own global fields, ensuring that none of the state in an isolate is accessible
+Instead of threads, all Dart code runs inside isolates.
+Using isolates, your Dart code can perform multiple independent tasks at once.
+Isolates are like threads or processes, but each isolate has its own memory
+and a single thread running an event loop.
+
+Each isolate has its own global fields,
+ensuring that none of the state in an isolate is accessible
 from any other isolate. Isolates can only communicate to each other via message
 passing. No shared state between isolates means concurrency complexities like
 [mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science))
@@ -322,7 +329,7 @@ computation—[parsing a large JSON file][json], for example—consider offloadi
 that computation to a worker isolate, often called a _background worker._
 A common case, shown in the following figure, is spawning a simple worker
 isolate that performs a computation and then exits. The worker isolate returns
-its result in a message when the worker exits.
+its result in a message when it exits.
 
 [json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
