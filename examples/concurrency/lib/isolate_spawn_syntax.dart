@@ -3,100 +3,50 @@ import 'dart:convert';
 import 'dart:isolate';
 
 // #docregion
-class BackgroundWorker {
-  final Isolate _isolate;
-  final ReceivePort _mainIsolateReceivePort;
-  final SendPort _workerIsolateSendPort;
+class Worker {
+  late SendPort _sendPort;
+  final Completer<void> _isolateReady = Completer.sync();
 
-  /// Initialize the background worker isolate, and define how to handle
-  /// future messages received from that isolate
-  static Future<(Isolate, ReceivePort, SendPort)> _startWorker() async {
-    final mainIsolateReceivePort = ReceivePort();
-    final connection = Completer<SendPort>();
+  Future<void> parseJson(String message) async {
+    await _isolateReady.future;
+    _sendPort.send(message);
+  }
 
-    mainIsolateReceivePort.listen((dynamic message) {
+  Future<void> spawn(Function(Map<String, dynamic>) onReceiveMessage) async {
+    final receivePort = ReceivePort();
+    receivePort.listen((message) {
       if (message is SendPort) {
-        connection.complete(message);
-      } else if (message is String) {
-        /// Receive messages from the worker isolate
-        /// Domain specific code goes here
-        print(message);
+        _sendPort = message;
+        _isolateReady.complete();
+      } else if (message is Map<String, dynamic>) {
+        onReceiveMessage(message);
       }
     });
-
-    final Isolate isolate;
-    try {
-      isolate = await Isolate.spawn<SendPort>(
-        _workerIsolateEntryPoint,
-        mainIsolateReceivePort.sendPort,
-      );
-    } on Object {
-      mainIsolateReceivePort.close();
-      rethrow;
-    }
-
-    final workerIsolateSendPort = await connection.future;
-    return (isolate, mainIsolateReceivePort, workerIsolateSendPort);
+    await Isolate.spawn(_readAndComputeOnIsolate, receivePort.sendPort);
   }
 
-  BackgroundWorker._(
-    this._isolate,
-    this._mainIsolateReceivePort,
-    this._workerIsolateSendPort,
-  );
+  static void _readAndComputeOnIsolate(SendPort port) {
+    final receivePort = ReceivePort();
+    port.send(receivePort.sendPort);
 
-  /// Code executed on the spawned isolate
-  static Future<void> _workerIsolateEntryPoint(
-    SendPort sendPortToMainApp,
-  ) async {
-    final receivePortInSpawnedIsolate = ReceivePort();
-    sendPortToMainApp.send(receivePortInSpawnedIsolate.sendPort);
-
-    await for (var message in receivePortInSpawnedIsolate) {
+    receivePort.listen((dynamic message) async {
       if (message is String) {
-        final dartObjects = jsonDecode(message);
-        sendPortToMainApp.send(dartObjects);
-      } else if (message == null) {
-        receivePortInSpawnedIsolate.close();
-        break;
-      } else {
-        // Will terminate isolate.
-        throw UnsupportedError(
-            'Message sent to isolate port has an unexpected type: $message');
+        final decoded = jsonDecode(message);
+        port.send(decoded);
       }
-    }
+    });
   }
-
-  /*
-      Public facing API
-   */
-  /// Public factory constructor
-  static Future<BackgroundWorker> spawn() async {
-    final (isolate, receivePort, sendPort) = await _startWorker();
-    return BackgroundWorker._(
-      isolate,
-      receivePort,
-      sendPort,
-    );
-  }
-
-  Future<void> parse(String message) async {
-    _workerIsolateSendPort.send(message);
-  }
-
-  void close() {
-    _mainIsolateReceivePort.close();
-  }
-}
-
-// Elsewhere in app
-void parseJsonInBackground() async {
-  var backgroundWorker = await BackgroundWorker.spawn();
-  await backgroundWorker.parse('{"key": "value"}');
-  backgroundWorker.close();
 }
 // #enddocregion
 
-void main() {
-  parseJsonInBackground();
+// This method represents your app-specific functionality.
+// After the Isolate decodes a large bit of json, it will be received here
+void onReceiveMessage(Map<String, dynamic> message) {
+  print(message);
+}
+
+void main() async {
+  final worker = Worker();
+  await worker.spawn(onReceiveMessage);
+  await worker.parseJson('{"key":"value"}');
 }

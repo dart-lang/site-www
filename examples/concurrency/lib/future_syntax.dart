@@ -5,7 +5,7 @@ import 'dart:io';
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
 
-  // .readAsString() returns a Future
+  // .readAsString() returns a Future.
   // .then() registers a callback to be executed when `readAsString` resolves.
   return file.readAsString().then((contents) {
     return contents.trim();
