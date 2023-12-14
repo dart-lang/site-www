@@ -4,6 +4,8 @@ description: Command-line tool for applying analysis fixes and migrating API usa
 toc: false
 ---
 
+{% include yt_shims.liquid %}
+
 The `dart fix` command
 finds and fixes two types of issues:
 
@@ -16,14 +18,17 @@ finds and fixes two types of issues:
 
 {{site.alert.tip}}
   To learn about `dart fix` in a video format,
-  check out this deep dive on **Decoding Flutter**:
+  check out this [deep dive][] on **Decoding Flutter**:
 
-  <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
+  <iframe
+    {{yt-std-size}}
+    src="{{yt-embed}}/OBIuSrg_Quo"
+    title="Learn how to use 'dart fix'"
+    {{yt-set}}>
+  </iframe>
 {{site.alert.end}}  
+
+[deep dive]" {{yt-watch}}/OBIuSrg_Quo
 
 ## Usage
 
