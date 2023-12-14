@@ -82,6 +82,13 @@ a path relative to the repository root:
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-path pkgs/http/
 ```
 
+Pub uses the default branch of the Git repository. To specify a
+different branch or commit, use the `--git-ref` option:
+
+```terminal
+$ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-ref 36f98e900347335af2338a0e087538009b7de2f9
+```
+
 ### Activating a package on your local machine
 
 ```terminal
