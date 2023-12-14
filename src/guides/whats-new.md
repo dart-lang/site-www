@@ -663,7 +663,7 @@ we made the following changes to this site:
 [linter rule page]: /tools/linter-rules
 [dart-tool]: /tools/dart-tool
 [recommended linter rules]: /tools/analysis#lints
-[core libraries]: /guides/libraries
+[core libraries]: /libraries
 [commonly used packages]: /guides/libraries/useful-libraries
 [dart.dev/jobs]: /jobs
 [no-promo]: /tools/non-promotion-reasons

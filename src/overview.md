@@ -117,7 +117,7 @@ class Point {
 
 ## Dart: The libraries {#libraries}
 
-Dart has [a rich set of core libraries](/guides/libraries),
+Dart has [a rich set of core libraries](/libraries),
 providing essentials for many everyday programming tasks:
 
 * Built-in types, collections, and other core functionality for
@@ -131,14 +131,14 @@ providing essentials for many everyday programming tasks:
   (`dart:convert`)
 * Mathematical constants and functions, and random number generation
   (`dart:math`)
-* File, socket, HTTP, and other I/O support for non-web applications
-  (`dart:io`)
 * Support for asynchronous programming,
   with classes such as `Future` and `Stream`
   (`dart:async`)
 * Lists that efficiently handle fixed-sized data
   (for example, unsigned 8-byte integers) and SIMD numeric types
   (`dart:typed_data`)
+* File, socket, HTTP, and other I/O support for non-web applications
+  (`dart:io`)
 * Foreign function interfaces for interoperability with
   other code that presents a C-style interface
   (`dart:ffi`)
