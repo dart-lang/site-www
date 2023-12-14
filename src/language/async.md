@@ -33,7 +33,7 @@ you have two options:
 * Use `async` and `await`, as described here and in the
   [asynchronous programming codelab](/codelabs/async-await).
 * Use the Future API, as described in the
-  [`dart:async` documentation](/libraries#future).
+  [`dart:async` documentation](/libraries/dart-async#future).
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
@@ -163,7 +163,7 @@ you have two options:
 
 * Use `async` and an _asynchronous for loop_ (`await for`).
 * Use the Stream API, as described in the
-  [`dart:async` documentation](/libraries#stream).
+  [`dart:async` documentation](/libraries/dart-async#stream).
 
 {{site.alert.note}}
   Before using `await for`, be sure that it makes the code clearer and that you
