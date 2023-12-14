@@ -1,6 +1,5 @@
 ---
-title: "dart:convert - Decoding and encoding APIs"
-short-title: dart:convert
+title: dart:convert
 description: Learn about the major features in Dart's dart:convert library.
 prevpage:
   url: /libraries/dart-math
@@ -12,9 +11,6 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-
-
-## decoding and encoding JSON, UTF-8, and more
 
 The dart:convert library ([API reference][dart:convert])
 has converters for JSON and UTF-8, as well as support for creating

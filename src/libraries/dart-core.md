@@ -1,6 +1,5 @@
 ---
-title: "dart:core - APIs for numbers, strings, collections, and more"
-short-title: dart:core
+title: dart:core
 description: Learn about the major features in Dart's dart:core library.
 prevpage:
   url: /libraries

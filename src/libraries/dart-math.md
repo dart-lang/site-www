@@ -1,6 +1,5 @@
 ---
-title: "dart:math - Mathematical utilities and random numbers"
-short-title: dart:math
+title: dart:math
 description: Learn about the major features in Dart's dart:math library.
 prevpage:
   url: /libraries/dart-async

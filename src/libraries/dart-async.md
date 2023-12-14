@@ -1,6 +1,5 @@
 ---
-title: "dart:async - Asynchronous programming libraries"
-short-title: dart:async
+title: dart:async
 description: Learn about the major features in Dart's dart:async library.
 prevpage:
   url: /libraries/dart-core
@@ -12,9 +11,6 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-
-
-## dart:async - asynchronous programming
 
 Asynchronous programming often uses callback functions, but Dart
 provides alternatives: [Future][] and [Stream][] objects. A
