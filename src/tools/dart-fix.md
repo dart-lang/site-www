@@ -26,9 +26,9 @@ finds and fixes two types of issues:
     title="Learn how to use 'dart fix'"
     {{yt-set}}>
   </iframe>
-{{site.alert.end}}  
+{{site.alert.end}}
 
-[deep dive]" {{yt-watch}}/OBIuSrg_Quo
+[deep dive]: {{yt-watch}}/OBIuSrg_Quo
 
 ## Usage
 
@@ -46,15 +46,15 @@ $ dart fix --apply
 
 ## Customization
 
-The `dart fix` command only applies fixes 
-when there is a "problem" identified by a diagnostic. 
+The `dart fix` command only applies fixes
+when there is a "problem" identified by a diagnostic.
 Some diagnostics, such as compilation errors, are implicitly enabled,
-while others, such as lints, must be explicitly enabled 
+while others, such as lints, must be explicitly enabled
 in the [analysis options file](/tools/analysis),
 as individual preferences for these vary.
 
 You can sometimes increase the number of fixes that can be applied
-by enabling additional lints. 
+by enabling additional lints.
 Note that not all diagnostics have associated fixes.
 
 ### Example
@@ -73,7 +73,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-Dart 2.17 introduced a new language feature called super initializers, 
+Dart 2.17 introduced a new language feature called super initializers,
 which allows you to write the constructor of `Vector3d`
 with a more compact style:
 
