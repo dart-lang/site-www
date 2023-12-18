@@ -114,7 +114,7 @@ by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: /guides/libraries/library-tour
+[Dart libraries]: /libraries
 [Dart Docker image]: https://hub.docker.com/_/dart
 [downloading the SDK as a zip file]: /get-dart/archive
 [Debian stable]: https://www.debian.org/releases

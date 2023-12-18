@@ -192,10 +192,10 @@ Uri.https('dart.dev', '/f/packages/http.json');
 ```
 
 To learn about other ways of building and interacting with URIs,
-see the [library tour's discussion about URIs][library-tour-uri].
+see the [`URI` documentation][].
 
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
-[library-tour-uri]: /guides/libraries/library-tour#uris
+[`URI` documentation]: /libraries/dart-core#uris
 
 ## Make a network request
 

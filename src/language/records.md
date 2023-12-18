@@ -209,11 +209,11 @@ types like `List` or `Map` loses type safety.
 {{site.alert.note}}
   Records' multiple-return and heterogeneous-type characteristics enable
   parallelization of futures of different types, which you can read about in the
-  [Library tour][].
+  [`dart:async` documentation][].
 {{site.alert.end}}
 
 [language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
-[Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
+[`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
 [parameters and arguments]: /language/functions#parameters

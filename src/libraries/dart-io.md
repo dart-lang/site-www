@@ -1,3 +1,14 @@
+---
+title: dart:io
+description: Learn about the major features in Dart's dart:io library.
+prevpage:
+  url: /libraries/dart-convert
+  title: dart:convert
+nextpage:
+  url: /libraries/dart-html
+  title: dart:html
+---
+
 <?code-excerpt plaster="none"?>
 
 The [dart:io][] library provides APIs to deal with
@@ -97,7 +108,7 @@ void main() async {
 #### Streaming file contents
 
 Use a Stream to read a file, a little at a time.
-You can use either the [Stream API](/guides/libraries/library-tour#stream)
+You can use either the [Stream API](/libraries/dart-async#stream)
 or `await for`, part of Dart's
 [asynchrony support.](/language/async)
 
@@ -181,10 +192,10 @@ void main() async {
 The File and Directory classes contain other functionality, including
 but not limited to:
 
--   Creating a file or directory: `create()` in File and Directory
--   Deleting a file or directory: `delete()` in File and Directory
--   Getting the length of a file: `length()` in File
--   Getting random access to a file: `open()` in File
+- Creating a file or directory: `create()` in File and Directory
+- Deleting a file or directory: `delete()` in File and Directory
+- Getting the length of a file: `length()` in File
+- Getting random access to a file: `open()` in File
 
 Refer to the API docs for [File][] and [Directory][] for a full
 list of methods.
@@ -254,7 +265,6 @@ For more information about server-side and command-line app development, see the
 [server-side Dart overview.](/server)
 
 
-[library tour]: /guides/libraries/library-tour
 [dart:io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [Directory]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
 [Fetch data from the internet]: /tutorials/server/fetch-data

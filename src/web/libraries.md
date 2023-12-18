@@ -24,7 +24,7 @@ that provide low-level web APIs.
   These tutorials feature interactive examples in
   [DartPad.]({{site.dartpad}})
 
-[The dart:html section](/guides/libraries/library-tour) of the library tour
+[The dart:html documentation](/libraries/dart-html)
 : An example-driven tour of using the dart:html library.
   Topics include manipulating the DOM programmatically,
   making HTTP requests, and using WebSockets.
