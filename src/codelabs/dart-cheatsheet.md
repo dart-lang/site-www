@@ -13,8 +13,12 @@ the most important of these language features.
 
 The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
-clicking the **Run** button.
-If you need help, click the **Hint** button.
+clicking the **Run** button. The editors also contain thorough test code;
+**don't edit the test code**, but feel free to study it to learn about testing. 
+
+
+If you need help, expand the **Solution for...** dropdown beneath each DartPad
+for an explanation and the answer. 
 To run the code formatter ([`dart format`](/tools/dart-format)), 
 click **Format**.
 The **Reset** button erases your work and
@@ -24,10 +28,6 @@ restores the editor to its original state.
   This page uses embedded DartPads to display runnable examples.
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
-
-## The `main` method
-
-
 
 ## String interpolation
 
@@ -315,7 +315,7 @@ void main() {
       print('Success when str is null!');
     }
   } catch (e) {
-    print('Tried calling upperCaseIt(null) and got an exception: ${e.runtimeType}.');
+    print('Tried calling upperCaseIt(null) and got an exception: \n ${e.runtimeType}.');
   }
   
   try {
@@ -328,7 +328,7 @@ void main() {
       print('Success when str is not null!');
     }
   } catch (e) {
-    print('Tried calling upperCaseIt(\'a string\') and got an exception: ${e.runtimeType}.');
+    print('Tried calling upperCaseIt(\'a string\') and got an exception: \n ${e.runtimeType}.');
   }
 }
 {$ end main.dart $}
@@ -420,7 +420,7 @@ void main() {
   if (aListOfStrings is! List<String>) {
     errs.add('aListOfStrings should have the type List<String>.');
   } else if (aListOfStrings.length != 3) {
-    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, rather than the expected 3.');
+    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, \n rather than the expected 3.');
   } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
     errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
   }
@@ -428,7 +428,7 @@ void main() {
   if (aSetOfInts is! Set<int>) {
     errs.add('aSetOfInts should have the type Set<int>.');
   } else if (aSetOfInts.length != 3) {
-    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, rather than the expected 3.');
+    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, \n rather than the expected 3.');
   } else if (!aSetOfInts.contains(3) || !aSetOfInts.contains(4) || !aSetOfInts.contains(5)) {
     errs.add('aSetOfInts doesn\'t contain the correct values (3, 4, 5).');
   }
@@ -554,10 +554,10 @@ void main() {
     final product = obj.product;
     
     if (product != 30) {
-      errs.add('The product property returned $product instead of the expected value (30).'); 
+      errs.add('The product property returned $product \n instead of the expected value (30).'); 
     } 
   } catch (e) {
-    print('Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.');
+    print('Tried to use MyClass.product, but encountered an exception: \n ${e.runtimeType}.');
     return;
   }
 
@@ -565,10 +565,10 @@ void main() {
     obj.incrementValue1();
     
     if (obj.value1 != 3) {
-      errs.add('After calling incrementValue, value1 was ${obj.value1} instead of the expected value (3).'); 
+      errs.add('After calling incrementValue, value1 was ${obj.value1} \n instead of the expected value (3).'); 
     } 
   } catch (e) {
-    print('Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.');
+    print('Tried to use MyClass.incrementValue1, but encountered an exception: \n ${e.runtimeType}.');
     return;
   }
 
@@ -576,10 +576,10 @@ void main() {
     final joined = obj.joinWithCommas(['one', 'two', 'three']);
     
     if (joined != 'one,two,three') {
-      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) \n and received $joined instead of the expected value (\'one,two,three\').'); 
     } 
   } catch (e) {
-    print('Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.');
+    print('Tried to use MyClass.joinWithCommas, but encountered an exception: \n ${e.runtimeType}.');
     return;
   }
 
@@ -709,7 +709,7 @@ void main() {
   try {
     obj = fillBigObject(BigObject());
   } catch (e) {
-    print('Caught an exception of type ${e.runtimeType} while running fillBigObject');
+    print('Caught an exception of type ${e.runtimeType} \n while running fillBigObject');
     return;
   }
 
@@ -717,21 +717,21 @@ void main() {
 
   if (obj.anInt != 1) {
     errs.add(
-        'The value of anInt was ${obj.anInt} rather than the expected (1).');
+        'The value of anInt was ${obj.anInt} \n rather than the expected (1).');
   }
 
   if (obj.aString != 'String!') {
     errs.add(
-        'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
+        'The value of aString was \'${obj.aString}\' \n rather than the expected (\'String!\').');
   }
 
   if (obj.aList.length != 1) {
     errs.add(
-        'The length of aList was ${obj.aList.length} rather than the expected value (1).');
+        'The length of aList was ${obj.aList.length} \n rather than the expected value (1).');
   } else {
     if (obj.aList[0] != 3.0) {
       errs.add(
-          'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
+          'The value found in aList was ${obj.aList[0]} \n rather than the expected (3.0).');
     }
   }
   
@@ -759,17 +759,6 @@ void main() {
   then add another cascade (`..`) and start the next assignment.
 
   ```dart
-  class BigObject {
-    int anInt = 0;
-    String aString = '';
-    List<double> aList = [];
-    bool _done = false;
-    
-    void allDone() {
-      _done = true;
-    }
-  }
-
   BigObject fillBigObject(BigObject obj) {
     return obj
       ..anInt = 1
@@ -843,29 +832,13 @@ class InvalidPriceException {}
 class ShoppingCart {
   List<double> _prices = [];
   
-  // Add a "total" getter here:
+  // TODO: Add a "total" getter here:
 
-  // Add a "prices" setter here:
+  // TODO: Add a "prices" setter here:
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class InvalidPriceException {}
 
-class ShoppingCart {
-  List<double> _prices = [];
-  
-  double get total => _prices.fold(0, (e, t) => e + t);
-  
-  set prices(List<double> value) {
-    if (value.any((p) => p < 0)) {
-      throw InvalidPriceException();
-    }
-    
-    _prices = value;
-  }
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+// Tests your solution (Don't edit!):
 void main() {
   var foundException = false;
   
@@ -875,12 +848,12 @@ void main() {
   } on InvalidPriceException {
     foundException = true;
   } catch (e) {
-    _result(false, ['Tried setting a negative price and received a ${e.runtimeType} instead of an InvalidPriceException.']);
+    print('Tried setting a negative price and received a ${e.runtimeType} \n instead of an InvalidPriceException.');
     return;
   }
   
   if (!foundException) {
-    _result(false, ['Tried setting a negative price and didn\'t get an InvalidPriceException.']);
+    print('Tried setting a negative price \n and didn\'t get an InvalidPriceException.');
     return;
   }
   
@@ -889,18 +862,18 @@ void main() {
   try {
     secondCart.prices = [1.0, 2.0, 3.0];
   } catch(e) {
-    _result(false, ['Tried setting prices with a valid list, but received an exception: ${e.runtimeType}.']);
+    print('Tried setting prices with a valid list, \n but received an exception: ${e.runtimeType}.');
     return;
   }
   
   if (secondCart._prices.length != 3) {
-    _result(false, ['Tried setting prices with a list of three values, but _prices ended up having length ${secondCart._prices.length}.']);
+    print('Tried setting prices with a list of three values, \n but _prices ended up having length ${secondCart._prices.length}.');
     return;
   }
 
   if (secondCart._prices[0] != 1.0 || secondCart._prices[1] != 2.0 || secondCart._prices[2] != 3.0) {
     final vals = secondCart._prices.map((p) => p.toString()).join(', ');
-    _result(false, ['Tried setting prices with a list of three values (1, 2, 3), but incorrect ones ended up in the price list ($vals) .']);
+    print('Tried setting prices with a list of three values (1, 2, 3), \n but incorrect ones ended up in the price list ($vals) .');
     return;
   }
   
@@ -909,27 +882,45 @@ void main() {
   try {
     sum = secondCart.total;
   } catch (e) {
-    _result(false, ['Tried to get total, but received an exception: ${e.runtimeType}.']);
+    print('Tried to get total, but received an exception: ${e.runtimeType}.');
     return;
   }
   
   if (sum != 6.0) {
-    _result(false, ['After setting prices to (1, 2, 3), total returned $sum instead of 6.']);
+    print('After setting prices to (1, 2, 3), total returned $sum instead of 6.');
     return;
   }
   
-  _result(true);
+  print('Success!');
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Two functions are handy for this exercise. 
-One is `fold`, which can reduce a list to a single value
-(try it to calculate the total).
-The other is `any`, which can check each item in a list
-with a function you give it
-(try using it to check if there are any negative prices in the prices setter).
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for getters and setters example</b>
+  </summary>
+  Two functions are handy for this exercise. 
+  One is `fold`, which can reduce a list to a single value
+  (try it to calculate the total).
+  The other is `any`, which can check each item in a list
+  with a function you give it
+  (try using it to check if there are any negative prices in the prices setter).
+
+  ```dart
+  // Add a "total" getter here:
+  double get total => _prices.fold(0, (e, t) => e + t);
+
+  // Add a "prices" setter here:
+  set prices(List<double> value) {
+    if (value.any((p) => p < 0)) {
+      throw InvalidPriceException();
+    }
+    
+    _prices = value;
+  }
+  ```
+</details>
 
 
 ## Optional positional parameters
@@ -997,18 +988,9 @@ Here are some examples of function calls and returned values:
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
-  var total = '$a';
-  if (b != null) total = '$total,$b';
-  if (c != null) total = '$total,$c';
-  if (d != null) total = '$total,$d';
-  if (e != null) total = '$total,$e';
-  return total;
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
   
@@ -1016,13 +998,13 @@ void main() {
     final value = joinWithCommas(1);
     
     if (value != '1') {
-      errs.add('Tried calling joinWithCommas(1) and got $value instead of the expected (\'1\').'); 
+      errs.add('Tried calling joinWithCommas(1) \n and got $value instead of the expected (\'1\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
     return;
   } catch (e) {
-    _result(false, ['Tried calling joinWithCommas(1), but encountered an exception: ${e.runtimeType}.']);
+    _result(false, ['Tried calling joinWithCommas(1), \n but encountered an exception: ${e.runtimeType}.']);
     return;
   }
 
@@ -1030,13 +1012,13 @@ void main() {
     final value = joinWithCommas(1, 2, 3);
     
     if (value != '1,2,3') {
-      errs.add('Tried calling joinWithCommas(1, 2, 3) and got $value instead of the expected (\'1,2,3\').'); 
+      errs.add('Tried calling joinWithCommas(1, 2, 3) \n and got $value instead of the expected (\'1,2,3\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
     return;
   } catch (e) {
-    _result(false, ['Tried calling joinWithCommas(1, 2 ,3), but encountered an exception: ${e.runtimeType}.']);
+    _result(false, ['Tried calling joinWithCommas(1, 2 ,3), \n but encountered an exception: ${e.runtimeType}.']);
     return;
   }
 
@@ -1044,29 +1026,44 @@ void main() {
     final value = joinWithCommas(1, 2, 3, 4, 5);
     
     if (value != '1,2,3,4,5') {
-      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) and got $value instead of the expected (\'1,2,3,4,5\').'); 
+      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) \n and got $value instead of the expected (\'1,2,3,4,5\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
     return;
   } catch (e) {
-    _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), but encountered an exception: ${e.runtimeType}.']);
+    _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), \n but encountered an exception: ${e.runtimeType}.']);
     return;
   }
 
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-The b, c, d, and e parameters are null if they aren't provided by caller.
-The important thing, then, is to check whether those arguments are null
-before you add them to the final string.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for positional parameters example</b>
+  </summary>
+  The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
+  caller. The important thing, then, is to check whether those arguments are null
+  before you add them to the final string.
+
+  ```dart
+  String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
+    var total = '$a';
+    if (b != null) total = '$total,$b';
+    if (c != null) total = '$total,$c';
+    if (d != null) total = '$total,$d';
+    if (e != null) total = '$total,$e';
+    return total;
+  }
+  ```
+</details>
 
 <a id="optional-named-parameters"></a>
 ## Named parameters
@@ -1142,31 +1139,11 @@ class MyDataObject {
      this.aDouble = 2.0,
   });
 
-  // Add your copyWith method here:
+  // TODO: Add your copyWith method here:
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class MyDataObject {
-  final int anInt;
-  final String aString;
-  final double aDouble;
 
-  MyDataObject({
-     this.anInt = 1,
-     this.aString = 'Old!',
-     this.aDouble = 2.0,
-  });
 
-  MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
-    return MyDataObject(
-      anInt: newInt ?? this.anInt,
-      aString: newString ?? this.aString,
-      aDouble: newDouble ?? this.aDouble,
-    );
-  }
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+// Tests your solution (Don't edit!):
 void main() {
   final source = MyDataObject();
   final errs = <String>[];
@@ -1175,55 +1152,69 @@ void main() {
     final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
     
     if (copy.anInt != 12) {
-      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
     }
     
     if (copy.aString != 'New!') {
-      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
     }
     
     if (copy.aDouble != 3) {
-      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
     }
   } catch (e) {
-    _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and got an exception: ${e.runtimeType}']);
+    _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) \n and got an exception: ${e.runtimeType}']);
   }
   
   try {
     final copy = source.copyWith();
     
     if (copy.anInt != 1) {
-      errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} rather than the expected value (1).');
+      errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} \n rather than the expected value (1).');
     }
     
     if (copy.aString != 'Old!') {
-      errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} rather than the expected value (\'Old!\').');
+      errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} \n rather than the expected value (\'Old!\').');
     }
     
     if (copy.aDouble != 2) {
-      errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (2).');
+      errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} \n rather than the expected value (2).');
     }
   } catch (e) {
     _result(false, ['Called copyWith() and got an exception: ${e.runtimeType}']);
   }
   
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-The copyWith method shows up in a lot of classes and libraries.
-Yours should do a few things:
-use optional named parameters,
-create a new instance of MyDataObject,
-and use the data from the parameters to fill it
-(or the data from the current instance if the parameters are null).
-This is a chance to get more practice with the ?? operator!
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for named parameters example</b>
+  </summary>
+  The `copyWith` method shows up in a lot of classes and libraries.
+  Yours should do a few things:
+  use optional named parameters,
+  create a new instance of `MyDataObject`,
+  and use the data from the parameters to fill it
+  (or the data from the current instance if the parameters are null).
+  This is a chance to get more practice with the `??` operator!
+
+  ```dart
+    MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
+      return MyDataObject(
+        anInt: newInt ?? this.anInt,
+        aString: newString ?? this.aString,
+        aDouble: newDouble ?? this.aDouble,
+      );
+    }
+  ```
+</details>
 
 
 ## Exceptions
@@ -1323,37 +1314,13 @@ abstract class Logger {
 }
 
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
-  // Invoking this method might cause an exception. Catch and handle
-  // them using try-on-catch-finally.
+  // Invoking this method might cause an exception. 
+  // TODO: Catch and handle them using try-on-catch-finally.
   untrustworthy();
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-typedef VoidFunction = void Function();
 
-class ExceptionWithMessage {
-  final String message;
-  const ExceptionWithMessage(this.message);
-}
 
-abstract class Logger {
-  void logException(Type t, [String? msg]);
-  void doneLogging();
-}
-
-void tryFunction(VoidFunction untrustworthy, Logger logger) {
-  try {
-    untrustworthy();
-  } on ExceptionWithMessage catch (e) {
-    logger.logException(e.runtimeType, e.message);
-  } on Exception {
-    logger.logException(Exception);
-  } finally {
-    logger.doneLogging();
-  }
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+// Tests your solution (Don't edit!):
 class MyLogger extends Logger {
   Type? lastType;
   String lastMessage = '';
@@ -1375,18 +1342,18 @@ void main() {
     tryFunction(() => throw Exception(), logger);
   
     if ('${logger.lastType}' != 'Exception' && '${logger.lastType}' != '_Exception') {
-      errs.add('Untrustworthy threw an Exception, but a different type was logged: ${logger.lastType}.');
+      errs.add('Untrustworthy threw an Exception, but a different type was logged: \n ${logger.lastType}.');
     }
     
     if (logger.lastMessage != '') {
-      errs.add('Untrustworthy threw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+      errs.add('Untrustworthy threw an Exception with no message, but a message \n was logged anyway: \'${logger.lastMessage}\'.');
     }
     
     if (!logger.done) {
-      errs.add('Untrustworthy threw an Exception, and doneLogging() wasn\'t called afterward.');
+      errs.add('Untrustworthy threw an Exception, \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy threw an exception, and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+    _result(false, ['Untrustworthy threw an exception, and an exception of type \n ${e.runtimeType} was unhandled by tryFunction.']);
   }
   
   logger = MyLogger();
@@ -1395,18 +1362,18 @@ void main() {
     tryFunction(() => throw ExceptionWithMessage('Hey!'), logger);
   
     if (logger.lastType != ExceptionWithMessage) {
-      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different type was logged: ${logger.lastType}.');
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a \n different type was logged: ${logger.lastType}.');
     }
     
     if (logger.lastMessage != 'Hey!') {
-      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different message was logged: \'${logger.lastMessage}\'.');
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a \n different message was logged: \'${logger.lastMessage}\'.');
     }
     
     if (!logger.done) {
-      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and doneLogging() wasn\'t called afterward.');
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+    _result(false, ['Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
   }
   
   logger = MyLogger();
@@ -1428,34 +1395,52 @@ void main() {
     tryFunction(() {}, logger);
   
     if (logger.lastType != null) {
-      errs.add('Untrustworthy didn\'t throw an Exception, but one was logged anyway: ${logger.lastType}.');
+      errs.add('Untrustworthy didn\'t throw an Exception, \n but one was logged anyway: ${logger.lastType}.');
     }
     
     if (logger.lastMessage != '') {
-      errs.add('Untrustworthy didn\'t throw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+      errs.add('Untrustworthy didn\'t throw an Exception with no message, \n but a message was logged anyway: \'${logger.lastMessage}\'.');
     }
     
     if (!logger.done) {
-      errs.add('Untrustworthy didn\'t throw an Exception, but doneLogging() wasn\'t called afterward.');
+      errs.add('Untrustworthy didn\'t throw an Exception, \n but doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy didn\'t throw an exception, but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.']);
+    _result(false, ['Untrustworthy didn\'t throw an exception, \n but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.']);
   }
   
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-This exercise looks tricky, but it's really one big `try` statement.
-Just call `untrustworthy` inside the `try`, and
-then use `on`, `catch`, and `finally` to catch exceptions and
-call methods on the logger.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for exceptions example</b>
+  </summary>
+  This exercise looks tricky, but it's really one big `try` statement.
+  Just call `untrustworthy` inside the `try`, and
+  then use `on`, `catch`, and `finally` to catch exceptions and
+  call methods on the logger.
+
+  ```dart
+  void tryFunction(VoidFunction untrustworthy, Logger logger) {
+    try {
+      untrustworthy();
+    } on ExceptionWithMessage catch (e) {
+      logger.logException(e.runtimeType, e.message);
+    } on Exception {
+      logger.logException(Exception);
+    } finally {
+      logger.doneLogging();
+    }
+  }
+  ```
+</details>
 
 
 ## Using `this` in a constructor
@@ -1518,19 +1503,11 @@ class MyClass {
   final String aString;
   final double aDouble;
   
-  // Create a constructor here.
+  // TODO: Create a constructor here.
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class MyClass {
-  final int anInt;
-  final String aString;
-  final double aDouble;
-  
-  MyClass(this.anInt, this.aString, this.aDouble);
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
   
@@ -1538,34 +1515,42 @@ void main() {
     final obj = MyClass(1, 'two', 3);
     
     if (obj.anInt != 1) {
-      errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} instead of the expected value (1).');
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} \n instead of the expected value (1).');
     }
 
     if (obj.anInt != 1) {
-      errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' instead of the expected value (\'two\').');
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' \n instead of the expected value (\'two\').');
     }
 
     if (obj.anInt != 1) {
-      errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} instead of the expected value (3).');
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} \n instead of the expected value (3).');
     }
   } catch (e) {
-    _result(false, ['Called MyClass(1, \'two\', 3) and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called MyClass(1, \'two\', 3) and got an exception \n of type ${e.runtimeType}.']);
   }
   
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-This exercise has a one-line solution.
-Just declare the constructor with
-`this.anInt`, `this.aString`, and `this.aDouble`
-as its parameters in that order.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for `this` example</b>
+  </summary>
+  This exercise has a one-line solution.
+  Just declare the constructor with
+  `this.anInt`, `this.aString`, and `this.aDouble`
+  as its parameters in that order.
+
+  ```dart    
+    MyClass(this.anInt, this.aString, this.aDouble);
+  ```
+</details>
 
 {% comment %}
 This one seems super easy compared to previous ones.
@@ -1635,23 +1620,13 @@ class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
 
-  // Create a constructor with an initializer list here:
+  // TODO: Create a constructor with an initializer list here:
   FirstTwoLetters(String word)
-    ...
-}
-{$ end main.dart $}
-{$ begin solution.dart $}
-class FirstTwoLetters {
-  final String letterOne;
-  final String letterTwo;
 
-  FirstTwoLetters(String word)
-      : assert(word.length >= 2),
-        letterOne = word[0],
-        letterTwo = word[1];
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
 
@@ -1659,14 +1634,14 @@ void main() {
     final result = FirstTwoLetters('My String');
     
     if (result.letterOne != 'M') {
-      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with \n letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
     }
 
     if (result.letterTwo != 'y') {
-      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with \n letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
     }
   } catch (e) {
-    errs.add('Called FirstTwoLetters(\'My String\') and got an exception of type ${e.runtimeType}.');
+    errs.add('Called FirstTwoLetters(\'My String\') and got an exception \n of type ${e.runtimeType}.');
   }
 
   bool caughtException = false;
@@ -1678,22 +1653,32 @@ void main() {
   }
   
   if (!caughtException) {
-    errs.add('Called FirstTwoLetters(\'\') and didn\'t get an exception from the failed assertion.');
+    errs.add('Called FirstTwoLetters(\'\') and didn\'t get an exception \n from the failed assertion.');
   }
   
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Two assignments need to happen:
-letterOne should be word[0], and letterTwo should be word[1].
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for initializer lists example</b>
+  </summary>
+  Two assignments need to happen:
+  `letterOne` should be `word[0]`, and `letterTwo` should be `word[1]`.
+
+  ```dart    
+    FirstTwoLetters(String word)
+        : assert(word.length >= 2),
+          letterOne = word[0],
+          letterTwo = word[1];
+  ```
+</details>
 
 ## Named constructors
 
@@ -1743,24 +1728,12 @@ class Color {
   
   Color(this.red, this.green, this.blue);
 
-  // Create a named constructor called "Color.black" here:
-}
-{$ end main.dart $}
-{$ begin solution.dart $}
-class Color {
-  int red;
-  int green;
-  int blue;
-  
-  Color(this.red, this.green, this.blue);
+  // TODO: Create a named constructor called "Color.black" here:
 
-  Color.black()
-      : red = 0,
-        green = 0,
-        blue = 0;
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
 
@@ -1768,34 +1741,44 @@ void main() {
     final result = Color.black();
     
     if (result.red != 0) {
-      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+      errs.add('Called Color.black() and got a Color with red equal to \n ${result.red} instead of the expected value (0).');
     }
 
     if (result.green != 0) {
-      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+      errs.add('Called Color.black() and got a Color with green equal to \n ${result.green} instead of the expected value (0).');
     }
 
     if (result.blue != 0) {
-  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+  errs.add('Called Color.black() and got a Color with blue equal to \n ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
-    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called Color.black() and got an exception of type \n ${e.runtimeType}.']);
     return;
   }
 
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-The declaration for your constructor should be `Color.black() {}`.
-Inside the braces, set red, green, and blue to zero.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for named constructors example</b>
+  </summary>
+  The declaration for your constructor should be `Color.black() {}`.
+  Inside the braces, set `red`, `green`, and `blue` to zero.
+
+  ```dart    
+    Color.black()
+        : red = 0,
+          green = 0,
+          blue = 0;
+  ```
+</details>
 
 ## Factory constructors
 
@@ -1863,43 +1846,9 @@ class IntegerTriple extends IntegerHolder {
   final int c;
   IntegerTriple(this.a, this.b, this.c); 
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class IntegerHolder {
-  IntegerHolder();
-  
-  factory IntegerHolder.fromList(List<int> list) {
-    if (list.length == 1) {
-      return IntegerSingle(list[0]);
-    } else if (list.length == 2) {
-      return IntegerDouble(list[0], list[1]);
-    } else if (list.length == 3) {
-      return IntegerTriple(list[0], list[1], list[2]);
-    } else {
-      throw Error();
-    } 
-  }
-}
 
-class IntegerSingle extends IntegerHolder {
-  final int a;
-  IntegerSingle(this.a); 
-}
 
-class IntegerDouble extends IntegerHolder {
-  final int a;
-  final int b;
-  IntegerDouble(this.a, this.b); 
-}
-
-class IntegerTriple extends IntegerHolder {
-  final int a;
-  final int b;
-  final int c;
-  IntegerTriple(this.a, this.b, this.c); 
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
 
@@ -1912,7 +1861,7 @@ void main() {
   } on Error {
     _throwed = true;
   } catch (e) {
-    _result(false, ['Called IntegerSingle.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called IntegerSingle.fromList([]) and got an exception of \n type ${e.runtimeType}.']);
     return;
   }
   
@@ -1924,14 +1873,14 @@ void main() {
     final obj = IntegerHolder.fromList([1]);
     
     if (obj is! IntegerSingle) {
-      errs.add('Called IntegerHolder.fromList([1]) and got an object of type ${obj.runtimeType} instead of IntegerSingle.');
+      errs.add('Called IntegerHolder.fromList([1]) and got an object of type \n ${obj.runtimeType} instead of IntegerSingle.');
     } else {
       if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with an \'a\' value of ${obj.a} instead of the expected (1).');
+        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with \n  an \'a\' value of ${obj.a} instead of the expected (1).');
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called IntegerHolder.fromList([]) and got an exception of \n type ${e.runtimeType}.']);
     return;
   }
 
@@ -1939,18 +1888,18 @@ void main() {
     final obj = IntegerHolder.fromList([1, 2]);
     
     if (obj is! IntegerDouble) {
-      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type ${obj.runtimeType} instead of IntegerDouble.');
+      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type \n ${obj.runtimeType} instead of IntegerDouble.');
     } else {
       if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'a\' value of ${obj.a} instead of the expected (1).');
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'a\' value of ${obj.a} instead of the expected (1).');
       }
       
       if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'b\' value of ${obj.b} instead of the expected (2).');
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'b\' value of ${obj.b} instead of the expected (2).');
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([1, 2]) and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called IntegerHolder.fromList([1, 2]) and got an exception \n of type ${e.runtimeType}.']);
     return;
   }
 
@@ -1958,39 +1907,56 @@ void main() {
     final obj = IntegerHolder.fromList([1, 2, 3]);
     
     if (obj is! IntegerTriple) {
-      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type ${obj.runtimeType} instead of IntegerTriple.');
+      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type \n ${obj.runtimeType} instead of IntegerTriple.');
     } else {
       if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.a} instead of the expected (1).');
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.a} instead of the expected (1).');
       }
       
       if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
       }
 
       if (obj.c != 3) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([1, 2, 3]) and got an exception of type ${e.runtimeType}.']);
+    _result(false, ['Called IntegerHolder.fromList([1, 2, 3]) and got an exception \n of type ${e.runtimeType}.']);
     return;
   }
 
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Inside the factory constructor,
-check the length of the list and create an
-IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for factory constructors example</b>
+  </summary>
+  Inside the factory constructor,
+  check the length of the list and create an
+  `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
+
+  ```dart    
+    factory IntegerHolder.fromList(List<int> list) {
+      if (list.length == 1) {
+        return IntegerSingle(list[0]);
+      } else if (list.length == 2) {
+        return IntegerDouble(list[0], list[1]);
+      } else if (list.length == 3) {
+        return IntegerTriple(list[0], list[1], list[2]);
+      } else {
+        throw Error();
+      } 
+    }
+  ```
+</details>
 
 ## Redirecting constructors
 
@@ -2035,22 +2001,12 @@ class Color {
   
   Color(this.red, this.green, this.blue);
 
-  // Create a named constructor called "black" here and redirect it
-  // to call the existing constructor
+  // TODO: Create a named constructor called "black" here
+  // and redirect it to call the existing constructor
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-class Color {
-  int red;
-  int green;
-  int blue;
-  
-  Color(this.red, this.green, this.blue);
 
-  Color.black() : this(0, 0, 0);
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
 
@@ -2058,15 +2014,15 @@ void main() {
     final result = Color.black();
     
     if (result.red != 0) {
-      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+      errs.add('Called Color.black() and got a Color with red equal to \n ${result.red} instead of the expected value (0).');
     }
 
     if (result.green != 0) {
-      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+      errs.add('Called Color.black() and got a Color with green equal to \n ${result.green} instead of the expected value (0).');
     }
 
     if (result.blue != 0) {
-  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+  errs.add('Called Color.black() and got a Color with blue equal to \n ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
     _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
@@ -2074,17 +2030,24 @@ void main() {
   }
 
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Your constructor should redirect to `this(0, 0, 0)`.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
 
+<details markdown="1">
+ <summary>
+   <b>Solution for redirecting constructors example</b>
+  </summary>
+  Your constructor should redirect to `this(0, 0, 0)`.
+
+  ```dart
+    Color.black() : this(0, 0, 0);
+  ```
+</details>
 
 ## Const constructors
 
@@ -2125,18 +2088,13 @@ class Recipe {
   List<String> ingredients;
   int calories;
   double milligramsOfSodium;
-}
-{$ end main.dart $}
-{$ begin solution.dart $}
-class Recipe {
-  final List<String> ingredients;
-  final int calories;
-  final double milligramsOfSodium;
 
-  const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
+  // TODO: Create a const constructor here"
+
 }
-{$ end solution.dart $}
-{$ begin test.dart $}
+
+
+// Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
 
@@ -2144,31 +2102,45 @@ void main() {
     const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
     
     if (obj.ingredients.length != 3) {
-      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with ingredient list of length ${obj.ingredients.length} rather than the expected length (3).');
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with ingredient list of length ${obj.ingredients.length} rather than the expected length (3).');
     }
     
     if (obj.calories != 120) {
-      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
     }
     
     if (obj.milligramsOfSodium != 200) {
-      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
     }
   } catch (e) {
-    _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.']);
+    _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and received a null.']);
   }
-  
+
   if (errs.isEmpty) {
-    _result(true);
+    print('Success!');
   } else {
-    _result(false, errs);
+    errs.forEach(print);
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-To make the constructor const, you'll need to make all the properties final.
-{$ end hint.txt $}
+{$ end main.dart $}
 ```
+
+<details markdown="1">
+ <summary>
+   <b>Solution for const constructors example</b>
+  </summary>
+  To make the constructor const, you'll need to make all the properties final.
+
+  ```dart
+  class Recipe {
+    final List<String> ingredients;
+    final int calories;
+    final double milligramsOfSodium;
+
+    const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
+  }
+  ```
+</details>
 
 ## What's next?
 
