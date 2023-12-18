@@ -85,8 +85,8 @@ For details, see the
 
 {{site.alert.warning}}
   If you override `==`, you should also override Object's `hashCode` getter.
-  For an example of overriding `==` and `hashCode`, see
-  [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
+  For an example of overriding `==` and `hashCode`, check out
+  [Implementing map keys](/libraries/dart-core#implementing-map-keys).
 {{site.alert.end}}
 
 ## noSuchMethod()

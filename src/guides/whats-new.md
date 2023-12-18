@@ -326,7 +326,7 @@ we made the following changes to this site:
 [Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
 [`dart run` page]: /tools/dart-run#debugging
 [operator precedence and associativity]: /language/operators
-[Building URIs]: /guides/libraries/library-tour#building-uris
+[Building URIs]: /libraries/dart-core#building-uris
 [pub's transition to pub.dev]: /tools/pub/troubleshoot#pub-get-socket-error
 [package screenshots]: /tools/pub/pubspec#screenshots
 [explicit downcast section]: /language/type-system#generic-type-assignment
@@ -389,7 +389,7 @@ we made the following changes to this site:
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging
 [Dart SDK archive]: /get-dart/archive
-[Library tour]: /guides/libraries/library-tour#weak-references-and-finalizers
+[Library tour]: /libraries/dart-core#weak-references-and-finalizers
 [`dart fix`]: /tools/dart-fix#customizing-dart-fix
 
 ## May 11, 2022: 2.17 release
@@ -663,7 +663,7 @@ we made the following changes to this site:
 [linter rule page]: /tools/linter-rules
 [dart-tool]: /tools/dart-tool
 [recommended linter rules]: /tools/analysis#lints
-[core libraries]: /guides/libraries
+[core libraries]: /libraries
 [commonly used packages]: /guides/libraries/useful-libraries
 [dart.dev/jobs]: /jobs
 [no-promo]: /tools/non-promotion-reasons
@@ -811,7 +811,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [Effective Dart]: /effective-dart
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
-[library tour]: /guides/libraries/library-tour
+[library tour]: /libraries
 [codelabs]: /codelabs
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze

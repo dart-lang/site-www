@@ -26,8 +26,8 @@ Here's what DartPad looks like when configured to run Dart:
 
 ## Library support
 
-DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
-multi-platform and web platform. When writing Flutter apps,
+DartPad supports `dart:*` [core libraries](/libraries) marked as
+[multi-platform][] and [web platform][]. When writing Flutter apps,
 DartPad also supports the `package:flutter`
 and `dart:ui` libraries.
 
@@ -35,6 +35,8 @@ DartPad doesn't support [deferred loading][]
 or using packages from the [pub.dev]({{site.pub}}) package repository
 besides the [currently supported packages][].
 
+[multi-platform]: /libraries#multi-platform-libraries
+[web platform]: /libraries#web-platform-libraries
 [currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 ## Getting started

@@ -1,3 +1,11 @@
+---
+title: dart:html
+description: Learn about the major features in Dart's dart:html library.
+prevpage:
+  url: /libraries/dart-io
+  title: dart:io
+---
+
 Use the [dart:html][] library to program the browser, manipulate objects and
 elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
 Model*, which describes the hierarchy of an HTML page.
@@ -15,10 +23,6 @@ dart:html, not command-line apps.
 {{site.alert.end}}
 
 To use the HTML library in your web app, import dart:html:
-
-{% comment %}
-  TODO: Consider helping users run these examples in DartPad.
-{% endcomment -%}
 
 <?code-excerpt "html/lib/html.dart (import)"?>
 ```dart
@@ -437,7 +441,6 @@ For more information about Dart web libraries, see the
 
 [AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[Dart Library Tour]: /guides/libraries/library-tour
 [Fetch data from the internet]: /tutorials/server/fetch-data
 [Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
@@ -445,7 +448,6 @@ For more information about Dart web libraries, see the
 [IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
 [MessageEvent]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
 [Nodes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
-[URIs]: /guides/libraries/library-tour#uris
 [web audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [WebGL]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
 [WebSocket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html

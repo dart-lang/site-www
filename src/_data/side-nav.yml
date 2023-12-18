@@ -137,13 +137,26 @@
   children:
     - title: Overview
       match-page-url-exactly: true
-      permalink: /guides/libraries
-    - title: Tour
-      permalink: /guides/libraries/library-tour
-    - title: Articles
-      children:
-        - title: Creating streams
-          permalink: /articles/libraries/creating-streams
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
+      permalink: /libraries/dart-async
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:io
+      permalink: /libraries/dart-io
+    - title: dart:html
+      permalink: /libraries/dart-html
+    - divider
+    - title: Using streams
+      permalink: /tutorials/language/streams
+    - title: Creating streams
+      permalink: /articles/libraries/creating-streams
+    - title: Futures and error handling
+      permalink: /guides/libraries/futures-error-handling
 
 - title: Packages
   expanded: false
@@ -183,8 +196,6 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
-    - title: Streams
-      permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
     - title: Number representation
