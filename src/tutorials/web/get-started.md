@@ -1,7 +1,6 @@
 ---
 title: "Get started: Web apps"
 description: A guide to get you quickly writing web apps in Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using Dart to develop **web-only** apps.
