@@ -151,6 +151,8 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
+    - title: Using streams
+      permalink: /tutorials/language/streams
     - title: Creating streams
       permalink: /articles/libraries/creating-streams
     - title: Futures and error handling
@@ -194,8 +196,6 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
-    - title: Streams
-      permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
     - title: Number representation
