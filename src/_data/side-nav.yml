@@ -151,12 +151,10 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
-    - title: Guides
-      children:
-        - title: Creating streams
-          permalink: /articles/libraries/creating-streams
-        - title: Futures and error handling
-          permalink: /guides/libraries/futures-error-handling
+    - title: Creating streams
+      permalink: /articles/libraries/creating-streams
+    - title: Futures and error handling
+      permalink: /guides/libraries/futures-error-handling
 
 - title: Packages
   expanded: false
