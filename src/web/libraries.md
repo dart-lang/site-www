@@ -38,8 +38,9 @@ in addition to mobile, desktop, and embedded device support.
 To find more libraries that support writing web apps, 
 search pub.dev for [web packages][].
 
-Your Dart code also interact with existing JavaScript libraries
-with Dart's [JavaScript interoperability][] support.
+Your Dart code can also interact with existing
+JavaScript or TypeScript libraries
+using Dart's [JavaScript interoperability][] support.
 
 [flutter]: {{site.flutter}}
 [flutter-web]: {{site.flutter}}/web
