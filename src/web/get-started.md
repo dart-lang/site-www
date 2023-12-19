@@ -170,7 +170,7 @@ Check out these resources:
 
 * Dart language, libraries, and conventions
   * [Language tour](/language)
-  * [Core library documentation](/libraries)
+  * [Core library walkthrough](/libraries)
   * [Effective Dart](/effective-dart)
 * Web development
   * [JavaScript interoperability](/interop/js-interop)
