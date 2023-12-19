@@ -40,7 +40,10 @@ which are fundamental to most Dart programs.
 
 ## Web apps
 
-{% include web-tutorials.md %}
+<div class="card">
+  <h3><a href="/web/get-started">Build a web app with Dart</a></h3>
+  <p>Get started writing web apps in Dart.</p>
+</div>
 
 ## More tutorials
 

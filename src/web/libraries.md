@@ -17,12 +17,10 @@ You can supplement or replace these APIs using web packages.
 The Dart SDK contains dart:html and other libraries
 that provide low-level web APIs.
 
-[Low-level web tutorials](/tutorials/web/low-level-html)
+[Build a web app with Dart](/web/get-started)
 : An overview of DOM, CSS, and HTML concepts, with information on
   how to include a Dart script in an HTML page and
   how to add and remove elements from a web page.
-  These tutorials feature interactive examples in
-  [DartPad.]({{site.dartpad}})
 
 [The dart:html documentation](/libraries/dart-html)
 : An example-driven tour of using the dart:html library.

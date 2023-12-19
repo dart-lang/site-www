@@ -70,10 +70,8 @@ void main() {
 
 More information:
 
-* [DartPad documentation][]
 * [Dart language tour][]
 * [Dart core library documentation][]
-* [Tutorial introduction to using Dart for basic web programming][]
 
 ## 2. Install Dart
 
@@ -196,12 +194,6 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-{{site.alert.info}}
-**Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
-web programming that left out many details. For a gentler approach, try a
-[low-level HTML tutorial for Dart][].
-{{site.alert.end}}
-
 
 ## What next?
 
@@ -227,9 +219,7 @@ If you get stuck, find help at [Community and support.](/community)
 [Dart core library documentation]: /libraries
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
-[low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [overview of editors & debuggers]: /tools#ides-and-editors
-[Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
 [`webdev`]: /tools/webdev
 [`webdev serve`]: /tools/webdev#serve
 
