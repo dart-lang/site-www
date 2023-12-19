@@ -11,7 +11,7 @@ and the quality and support levels for packages under each publisher.
 
 | Publisher          | Package&nbsp;contents | Quality and completeness | Community&nbsp;engagement (issues, PRs) |
 |--------------------|------------------|--------------------------|------------------------------------|
-| [dart.dev][]       | **Core packages.** Foundational packages that complement the [core libraries](/guides/libraries). | High | **High.** Triaged on a regular basis. |
+| [dart.dev][]       | **Core packages.** Foundational packages that complement the [core libraries](/libraries). | High | **High.** Triaged on a regular basis. |
 | [tools.dart.dev][] | **Tooling packages.** Used by the Dart team to build various Dart tools. Can be used for building other tools, but the support commitment is lower than for core packages. | Medium | **Medium-low.** Triaged occasionally; unable to respond to all issues. |
 | [labs.dart.dev][]  | **Experimental packages.** Shared for early feedback. Some will likely be discontinued. | Low/incomplete | **Varying.** No promises; maintained on a best-effort basis. |
 {:.table .table-striped .nowrap}    

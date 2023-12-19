@@ -45,6 +45,6 @@ To see existing issues or create a new one,
 go to [the SDK issue tracker](https://github.com/dart-lang/sdk/issues).
 
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: /guides/libraries/library-tour
+[Dart libraries]: /libraries
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html

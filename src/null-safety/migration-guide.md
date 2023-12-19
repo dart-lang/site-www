@@ -3,6 +3,8 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
+{% include yt_shims.liquid %}
+
 {{site.alert.version-note}}
   Dart 2.19 is the final release that supports null-safety migration,
   including the `dart migrate` tool.
@@ -36,9 +38,15 @@ Here are the basic steps for migrating each package that you own:
   make sure that all of your dependencies are ready.
 {{site.alert.end}}
 
-For an informal look at the experience of using the migration tool, watch this video:
+To get an informal look at the experience of using the migration tool,
+watch this video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eBr5tlumwlg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  {{yt-std-size}}
+  title="Learn about the null-safety migration tool"
+  src="{{yt-embed}}/eBr5tlumwlg"
+  {{yt-set}}>
+</iframe>
 
 [null safety]: /null-safety
 [Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
