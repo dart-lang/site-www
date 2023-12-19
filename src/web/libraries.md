@@ -35,29 +35,14 @@ Many [packages](/guides/packages) support web development with Dart.
 In particular, the [Flutter framework][flutter] has [web support][flutter-web],
 in addition to mobile, desktop, and embedded device support.
 
-Here are a few packages that are web-specific:
+To find more libraries that support writing web apps, 
+search pub.dev for [web packages][].
 
-|--------------------+---------------------------------+--------------------------|
-| Library            | Package                         | Notes                    |
-|--------------------|---------------------------------|--------------------------|
-| JavaScript interop | [js][]                          | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
-| Material Design    | [mdc_web][]                     | Bindings for Material Components for the web. |
-| Mustache templates | [mustache_template][]           | Support for the Mustache templating language. |
-| React              | [react][]                       | Bindings for the ReactJS library. |
-{:.table .table-striped}
+Your Dart code also interact with existing JavaScript libraries
+with Dart's [JavaScript interoperability][] support.
 
-
-[angular]: {{site.pub-pkg}}/angular
 [flutter]: {{site.flutter}}
 [flutter-web]: {{site.flutter}}/web
 [js]: {{site.pub-pkg}}/js
 [JavaScript interoperability]: /interop/js-interop
-[mdc_web]: {{site.pub-pkg}}/mdc_web
-[mustache_template]: {{site.pub-pkg}}/mustache_template
-[react]: {{site.pub-pkg}}/react
-
-To find more libraries that support writing web apps, search pub.dev for
-[web packages][].
-
-
 [web packages]: {{site.pub}}/web
