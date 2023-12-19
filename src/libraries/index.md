@@ -1,6 +1,10 @@
 ---
-title: Core libraries
+title: Dart's core libraries
 description: Learn about Dart's core libraries and APIs.
+short-title: Core libraries
+nextpage:
+  url: /libraries/dart-core
+  title: dart:core
 ---
 
 <style>
@@ -17,13 +21,63 @@ and encoding/decoding data (`dart:convert`).
 Additional APIs are available in
 [commonly used packages](/guides/libraries/useful-libraries).
 
+## Library tour
+
+The following guides cover how to use major features of Dart's core libraries.
+They provide just an overview, and are by no means comprehensive.
+Whenever you need more details about a library or its members,
+consult the [Dart API reference.][Dart API]
+
+[dart:core](/libraries/dart-core)
+: Built-in types, collections, and other core functionality.
+  This library is automatically imported into every Dart program.
+
+[dart:async](/libraries/dart-async)
+: Support for asynchronous programming, with classes such as Future and Stream.
+
+[dart:math](/libraries/dart-math)
+: Mathematical constants and functions, plus a random number generator.
+
+[dart:convert](/libraries/dart-convert)
+: Encoders and decoders for converting between different data representations,
+  including JSON and UTF-8.
+
+[dart:io](/libraries/dart-io)
+: I/O for programs that can use the Dart VM,
+  including Flutter apps, servers, and command-line scripts.
+
+[dart:html](/libraries/dart-html)
+: DOM and other APIs for browser-based apps.
+
+
+As mentioned, these pages are just an overview;
+they cover only a few dart:* libraries
+and no third-party libraries.
+
+For an overview of all libraries that Dart supports on different platforms,
+check out the [Multi-platform libraries](#multi-platform-libraries),
+[Native platform libraries](#native-platform-libraries), and
+[Web platform libraries](#web-platform-libraries) lists below.
+
+Other places to find library information are the
+[pub.dev site]({{site.pub}}) and the
+[Dart web developer library guide][webdev libraries].
+You can find API documentation for all dart:* libraries in the
+[Dart API reference][Dart API] or, if you're using Flutter,
+the [Flutter API reference][api-flutter].
+
+To learn more about the Dart language,
+check out the [language documentation and samples](/language).
+
+[Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
+[webdev libraries]: /web/libraries
+[api-flutter]: {{site.flutter-api}}
 
 ## Multi-platform libraries
 
 The following table lists the Dart core libraries that work on all
 [Dart platforms](/overview#platform).
 
-|-----------------------------------------------+-------------------------------|
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
 | [`dart:core`][dart-core]<br>Built-in types, collections, and other core functionality for every Dart program. | |
@@ -40,7 +94,6 @@ The following table lists the Dart core libraries that work on all
 The following table lists the Dart core libraries that work on the
 [Dart native platform](/overview#native-platform) (AOT- and JIT-compiled code).
 
-|-----------------------------------------------+-------------------------------|
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
 | [`dart:ffi`][dart-ffi], [`package:ffi`][package-ffi]<br>A foreign function interface that lets Dart code use native C APIs.<br>`package:ffi` contains utilities incl. support for converting Dart strings and C strings. | |
@@ -54,16 +107,16 @@ The following table lists the Dart core libraries that work on the
 The following table lists the Dart core libraries that work on the
 [Dart web platform](/overview#web-platform) (code compiled to JavaScript).
 
-|-----------------------------------------------+-------------------------------|
-| Library                                       | Notes                         |
-|-----------------------------------------------|-------------------------------|
-| [`dart:html`][dart-html]<br>HTML elements and other resources for web-based applications. | |
-| [`dart:indexed_db`][dart-indexed_db]<br>Client-side key-value store with support for indexes. | |
-| [`dart:js`][dart-js], [`dart:js_util`][dart-js_util], [`package:js`][package-js]<br>`dart:js_util` provides low-level primitives for interoperability; typically the higher-level annotations in `package:js` are recommended, as they help express interoperability more succinctly. For more details see [JavaScript interoperability][].<br>_Don't use `dart:js` directly; direct use of those legacy APIs is deprecated_. | |
-| [`dart:svg`][dart-svg]<br>Scalable Vector Graphics. | |
-| [`dart:web_audio`][dart-web_audio]<br>High-fidelity audio programming in the browser. | |
-| [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser. | |
+| Library                                                                                                                                                                                                                                                                                                                                                                                                                           | Notes                         |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| [`dart:html`][dart-html]<br>HTML elements and other resources for web-based applications.                                                                                                                                                                                                                                                                                                                                         | |
+| [`dart:indexed_db`][dart-indexed_db]<br>Client-side key-value store with support for indexes.                                                                                                                                                                                                                                                                                                                                     | |
+| ~~[`dart:js`][dart-js]~~, [`dart:js_util`][dart-js_util], [`package:js`][package-js]<br>`dart:js_util` provides low-level primitives for interoperability; typically the higher-level annotations in `package:js` are recommended, as they help express interoperability more succinctly. For more details see [JavaScript interoperability][].<br>_Don't use `dart:js` directly; direct use of those legacy APIs is deprecated_. | |
+| [`dart:svg`][dart-svg]<br>Scalable Vector Graphics.                                                                                                                                                                                                                                                                                                                                                                               | |
+| [`dart:web_audio`][dart-web_audio]<br>High-fidelity audio programming in the browser.                                                                                                                                                                                                                                                                                                                                             | |
+| [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser.                                                                                                                                                                                                                                                                                                                                                                    | |
 {:.table .table-striped}
+
 
 <!---
 Multi-platform libraries
@@ -85,11 +138,9 @@ Native platform libraries
 -->
 [dart-ffi]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
 [package-ffi]: {{site.pub-pkg}}/ffi
-[dart-cli]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-cli/dart-cli-library.html
 [dart-io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [package-io]: {{site.pub-pkg}}/io
 [dart-isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
-[package-isolate]: {{site.pub-pkg}}/isolate
 [dart-mirrors]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html
 
 <!---
@@ -109,4 +160,4 @@ Misc
 -->
 [development JavaScript compiler]: /tools/webdev#serve
 [jit]: /overview#native-platform
-[JavaScript interoperability]: /interop/js-interop
+[JavaScript interoperability]: /web/js-interop

@@ -4,6 +4,8 @@ description: Command-line tool for applying analysis fixes and migrating API usa
 toc: false
 ---
 
+{% include yt_shims.liquid %}
+
 The `dart fix` command
 finds and fixes two types of issues:
 
@@ -16,14 +18,17 @@ finds and fixes two types of issues:
 
 {{site.alert.tip}}
   To learn about `dart fix` in a video format,
-  check out this deep dive on **Decoding Flutter**:
+  check out this [deep dive][] on **Decoding Flutter**:
 
-  <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
-{{site.alert.end}}  
+  <iframe
+    {{yt-std-size}}
+    src="{{yt-embed}}/OBIuSrg_Quo"
+    title="Learn how to use 'dart fix'"
+    {{yt-set}}>
+  </iframe>
+{{site.alert.end}}
+
+[deep dive]: {{yt-watch}}/OBIuSrg_Quo
 
 ## Usage
 
@@ -41,15 +46,15 @@ $ dart fix --apply
 
 ## Customization
 
-The `dart fix` command only applies fixes 
-when there is a "problem" identified by a diagnostic. 
+The `dart fix` command only applies fixes
+when there is a "problem" identified by a diagnostic.
 Some diagnostics, such as compilation errors, are implicitly enabled,
-while others, such as lints, must be explicitly enabled 
+while others, such as lints, must be explicitly enabled
 in the [analysis options file](/tools/analysis),
 as individual preferences for these vary.
 
 You can sometimes increase the number of fixes that can be applied
-by enabling additional lints. 
+by enabling additional lints.
 Note that not all diagnostics have associated fixes.
 
 ### Example
@@ -68,7 +73,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-Dart 2.17 introduced a new language feature called super initializers, 
+Dart 2.17 introduced a new language feature called super initializers,
 which allows you to write the constructor of `Vector3d`
 with a more compact style:
 
