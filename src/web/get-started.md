@@ -1,83 +1,23 @@
 ---
 title: Build a web app with Dart
 description: Get started writing web apps in Dart.
-toc: false
 ---
 
 Follow these steps to start using Dart to develop **web-only** apps.
 If you want to write a **multi-platform** app, then
 [try Flutter.]({{site.flutter}}/web)
 
-Still here?
-First you'll play with Dart in your browser, no download required.
-Then you'll install Dart and build a small web app.
+If you haven't yet, first learn the basics of Dart,
+by following the [Introduction to Dart](/language).
 
-## 1. Play with a web app in DartPad
+Once you feel comfortable with the basics, you can
+follow the steps below to create a small web app with Dart.
 
-With [DartPad][DartPad documentation]
-you can experiment with the Dart language and APIs,
-no download necessary.
-
-For example, here's an embedded DartPad that lets you play with
-the code for a todo-list generator.
-Click **Run** to run the app;
-the UI output appears to the right of the code.
-Try editing the source code—perhaps you'd like to add "horses"
-to the list of pets.
-
-{{site.alert.note}}
-{% include dartpad-embedded-troubleshooting.md %}
-{{site.alert.end}}
-
-```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app
-{$ begin main.dart $}
-import 'dart:html';
-
-Iterable<String> thingsTodo() sync* {
-  const actions = ['Walk', 'Wash', 'Feed'];
-  const pets = ['cats', 'dogs'];
-
-  for (final action in actions) {
-    for (final pet in pets) {
-      if (pet != 'cats' || action == 'Feed') {
-        yield '$action the $pet';
-      }
-    }
-  }
-}
-
-void addTodoItem(String item) {
-  final listElement = LIElement()..text = item;
-  todoList.children.add(listElement);
-}
-
-final UListElement todoList = querySelector('#todolist') as UListElement;
-
-void main() {
-  thingsTodo().forEach(addTodoItem);
-}
-
-{$ end main.dart $}
-{$ begin index.html $}
-<h2>A Simple To-Do List</h2>
-
-<p>Things to do:</p>
-
-<ul id="todolist">
-</ul>
-{$ end index.html $}
-```
-
-More information:
-
-* [Dart language tour][]
-* [Dart core library documentation][]
-
-## 2. Install Dart
+## 1. Install Dart {#install-dart}
 
 {% include get-sdk.md %}
 
-## 3. Get CLI tools or an IDE (or both)
+## 2. Get CLI tools or an IDE (or both) {#tools}
 
 <i class="material-icons">terminal</i>
 If you like to use the command line, install the [`webdev`][] package:
@@ -91,11 +31,13 @@ Although using an IDE is optional, we highly recommend using one.
 For a list of available IDEs, see the
 [overview of editors & debuggers][].
 
+[overview of editors & debuggers]: /tools#ides-and-editors
 
-## 4. Create a web app
+## 3. Create a web app {#create}
 
 <i class="material-icons">terminal</i>
-To create a web app from the command line, use these commands:
+To create a web app from the command line,
+use the [`dart create`][] command with the `web` template:
 
 ```terminal
 $ dart create -t web quickstart
@@ -105,8 +47,9 @@ $ dart create -t web quickstart
 To create the same web app from an IDE that has Dart integration,
 create a project using the template named **Bare-bones Web App**.
 
+[`dart create`]: /tools/dart-create
 
-## 5. Run the app
+## 4. Run the app {#run}
 
 <i class="material-icons">terminal</i>
 To run the app from the command line,
@@ -122,7 +65,7 @@ Or run the app from your IDE.
 
 To view your app, use the Chrome browser
 to visit the app's URL—for example,
-[localhost:8080](http://localhost:8080).
+[`localhost:8080`](http://localhost:8080).
 
 Whether you use an IDE or the command line,
 [`webdev serve`][] builds and serves your app
@@ -136,13 +79,29 @@ Once your app has compiled, the browser should display
 
 ![Launched bare-bones app](/assets/img/bare-bones-web-app.png){:width="500"}
 
+[`webdev serve`]: /tools/webdev#serve
 
-## 6. Add custom code to the app
+## 5. Add custom code to the app {#add-code}
 
 Let's customize the app you just created.
 
-1. Copy the `thingsTodo()` function from the DartPad above
-   to the `web/main.dart` file.
+1. Copy the `thingsTodo()` function from the following snippet
+   to the `web/main.dart` file:
+
+   ```dart
+   Iterable<String> thingsTodo() sync* {
+     const actions = ['Walk', 'Wash', 'Feed'];
+     const pets = ['cats', 'dogs'];
+   
+     for (final action in actions) {
+       for (final pet in pets) {
+         if (pet != 'cats' || action == 'Feed') {
+           yield '$action the $pet';
+         }
+       }
+     }
+   }
+   ```
 
 2. Add the `newLI()` function (as shown below).
    It creates a new `LIElement` containing the specified `String`.
@@ -164,13 +123,13 @@ Let's customize the app you just created.
    LIElement newLI(String itemText) => LIElement()..text = itemText;
 
    void main() {
-   querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
+     querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
    }
    {% endprettify %}
 
 4. Save your changes.
 
-5. The webdev tool automatically rebuilds your app.
+5. The `webdev` tool automatically rebuilds your app.
    Refresh the app's browser window.
    Now your simple Dart app has a todo list!
    It should look something like this:<br>
@@ -181,45 +140,49 @@ Let's customize the app you just created.
 
    {% prettify css tag=pre+code %}
    #output {
-   padding: 20px;
-   [!text-align: left;!]
+     padding: 20px;
+     [!text-align: left;!]
    }
    {% endprettify %}
 
 
-## 7. Use Dart DevTools to inspect the app
+## 6. Use Dart DevTools to inspect the app {#devtools}
 
 Use Dart DevTools to set breakpoints, view values and types,
 and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
+[Debugging Dart Web Apps]: /web/debugging
+
+## 7. Build and deploy your web app {#deploy}
+
+To run your web app outside your development environment,
+you'll need to build and deploy it.
+To learn more about deploying Dart web apps,
+check out [Web deployment][].
+
+[Web deployment]: /web/deployment
 
 ## What next?
 
 Check out these resources:
 
-* Tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
-  * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
   * [Core library documentation](/libraries)
   * [Effective Dart](/effective-dart)
-* Tools & libraries
-  * [Dart SDK](/tools/sdk)
-  * [Dart tools](/tools)
-  * [IDEs](/tools#ides-and-editors)
+* Web development
+  * [JavaScript interoperability](/interop/js-interop)
   * [Web libraries and packages](/web/libraries)
+  * [`dart:html` overview](/libraries/dart-html)
+  * [Introduction to the DOM][]
+* Tutorials and codelabs for Dart
+  * [Tutorials](/tutorials)
+  * [Codelabs](/codelabs)
 
 If you get stuck, find help at [Community and support.](/community)
 
-[DartPad documentation]: /tools/dartpad
-[Dart language tour]: /language
-[Dart core library documentation]: /libraries
-[Dart tools]: /tools
-[Debugging Dart Web Apps]: /web/debugging
-[overview of editors & debuggers]: /tools#ides-and-editors
-[`webdev`]: /tools/webdev
-[`webdev serve`]: /tools/webdev#serve
+[Introduction to the DOM]: https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction
 
+[`webdev`]: /tools/webdev
