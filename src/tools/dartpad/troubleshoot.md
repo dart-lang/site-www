@@ -74,8 +74,6 @@ Here are some possible causes and fixes:
   make sure you have the proper project setup.
   For example, the `HTML` tab doesn't show
   all the necessary markup to run Dart code.
-  To learn about connecting Dart code to the web,
-  see [Build a web app with Dart][].
   To get started creating web apps with Dart,
   check out [Build a web app with Dart](/web/get-started).
 
@@ -121,4 +119,3 @@ If you have any other problems when using DartPad,
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
 [null safety]: /null-safety
-[Build a web app with Dart]: /web/get-started
