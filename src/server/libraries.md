@@ -15,7 +15,7 @@ that provide low-level command-line & server APIs.
 The Dart SDK contains dart:io and other libraries
 that provide low-level web APIs.
 
-[The dart:io section](/guides/libraries/library-tour#dartio) of the library tour
+[The dart:io documentation](/libraries/dart-io)
 : An example-driven tour of using the dart:io library.
   Topics include working with files & directories, and making & handling 
   HTTP requests.

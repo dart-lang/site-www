@@ -73,7 +73,7 @@ More information:
 
 * [DartPad documentation][]
 * [Dart language tour][]
-* [Dart library tour][]
+* [Dart core library documentation][]
 * [Tutorial introduction to using Dart for basic web programming][]
 
 ## 2. Install Dart
@@ -213,7 +213,7 @@ Check out these resources:
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
-  * [Library tour](/guides/libraries/library-tour)
+  * [Core library documentation](/libraries)
   * [Effective Dart](/effective-dart)
 * Tools & libraries
   * [Dart SDK](/tools/sdk)
@@ -225,7 +225,7 @@ If you get stuck, find help at [Community and support.](/community)
 
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /language
-[Dart library tour]: /guides/libraries/library-tour
+[Dart core library documentation]: /libraries
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html

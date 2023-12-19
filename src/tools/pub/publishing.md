@@ -3,6 +3,8 @@ title: Publishing packages
 description: Learn how to publish a Dart package to pub.dev.
 ---
 
+{% include yt_shims.liquid %}
+
 [The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `dart pub publish`
@@ -16,7 +18,12 @@ command.
 
 Watch the following video for an overview of building and publishing packages.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8V_TLiWszK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe
+  {{yt-std-size}}
+  src="{{yt-embed}}/8V_TLiWszK0"
+  title="Learn how to build and publish Dart packages"
+  {{yt-set}}>
+</iframe>
 
 ## Publishing is forever
 
