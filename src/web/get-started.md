@@ -3,14 +3,12 @@ title: Build a web app with Dart
 description: Get started writing web apps in Dart.
 ---
 
-Follow these steps to start using Dart to develop **web-only** apps.
+This page describes the steps to start developing **web-only** apps with Dart.
 If you want to write a **multi-platform** app, then
 [try Flutter.]({{site.flutter}}/web)
 
-If you haven't yet, first learn the basics of Dart,
-by following the [Introduction to Dart](/language).
-
-Once you feel comfortable with the basics, you can
+Before you begin, ensure you're comfortable with Dart basics
+by reading the [Introduction to Dart](/language). Then you can
 follow the steps below to create a small web app with Dart.
 
 ## 1. Install Dart {#install-dart}
