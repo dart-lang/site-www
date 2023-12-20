@@ -8,8 +8,8 @@ If you want to write a **multi-platform** app, then
 [try Flutter.]({{site.flutter}}/web)
 
 Before you begin, ensure you're comfortable with Dart basics
-by reading the [Introduction to Dart](/language). Then you can
-follow the steps below to create a small web app with Dart.
+by reading the [Introduction to Dart](/language).
+Then follow the steps below to create a small web app with Dart.
 
 ## 1. Install Dart {#install-dart}
 
