@@ -501,7 +501,7 @@ we made the following changes to this site:
 [`webdev`]: /tools/webdev
 
 [Other operators]: /language/operators#other-operators
-[Low-level HTML tutorials]: /tutorials/web/low-level-html
+[Low-level HTML tutorials]: /web/get-started
 
 [native types]: /interop/c-interop#interfacing-with-native-types
 [initializing formal parameters]: /language/constructors#initializing-formal-parameters
