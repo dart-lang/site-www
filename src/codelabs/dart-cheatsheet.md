@@ -53,7 +53,6 @@ Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
 ```dart:run-dartpad:ga_id-string_interpolation
-{$ begin main.dart $}
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
@@ -65,7 +64,6 @@ void main() {
       "Your stringify method returned '${stringify(2, 3)}' instead of '2 3'");
   print('Success!');
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -132,7 +130,6 @@ Try to declare two variables below:
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:ga_id-nullable_variables
-{$ begin main.dart $}
 // TODO: Declare the two variables here
 
 
@@ -150,7 +147,6 @@ void main() {
     print('Exception: ${e.runtimeType}');
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -205,7 +201,6 @@ to implement the described behavior in the following snippet.
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-255px:ga_id-null_aware
-{$ begin main.dart $}
 String? foo = 'a string';
 String? bar; // = null
 
@@ -237,7 +232,6 @@ void main() {
   }
   
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -247,7 +241,7 @@ void main() {
 
   All you need to do in this exercise is
   replace the `TODO` comments with either `??` or `??=`.
-  Read the codelab text to make sure you understand both,
+  Read the text above to make sure you understand both,
   and then give it a try:
 
   ```dart
@@ -299,7 +293,6 @@ Try using conditional property access to make it
 return the uppercase version of `str`, or `null` if `str` is `null`.
 
 ```dart:run-dartpad:ga_id-conditional-property_access
-{$ begin main.dart $}
 String? upperCaseIt(String? str) {
   // TODO: Try conditionally accessing the `toUpperCase` method here.
 }
@@ -331,7 +324,6 @@ void main() {
     print('Tried calling upperCaseIt(\'a string\') and got an exception: \n ${e.runtimeType}.');
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -393,7 +385,6 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 Try setting the following variables to the indicated values. Replace the existing null values.
 
 ```dart:run-dartpad:height-400px:ga_id-collection_literals
-{$ begin main.dart $}
 // Assign this a list containing 'a', 'b', and 'c' in that order:
 final aListOfStrings = null;
 
@@ -465,7 +456,6 @@ void main() {
 
   // ignore_for_file: unnecessary_type_check
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -473,9 +463,9 @@ void main() {
    <b>Solution for collection literals example</b>
   </summary>
 
-  This exercise is fairly straightforward.
-  Just add a list, set, or map literal after each equals sign.
-  See the codelab text for the correct syntax to use.
+  Add a list, set, or map literal after each equals sign.
+  Remember to specify the types for the empty declarations,
+  since they can't be inferred.
 
   ```dart
   // Assign this a list containing 'a', 'b', and 'c' in that order:
@@ -527,7 +517,6 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 Try finishing the following statements, which use arrow syntax.
 
 ```dart:run-dartpad:height-345px:ga_id-arrow_syntax
-{$ begin main.dart $}
 class MyClass {
   int value1 = 2;
   int value2 = 3;
@@ -589,7 +578,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -597,9 +585,9 @@ void main() {
    <b>Solution for arrow syntax example</b>
   </summary>
 
-  For the product, you can just multiply the three values together.
+  For the product, you can use `*` to multiply the three values together.
   For `incrementValue1`, you can use the increment operator (`++`).
-  For `joinWithCommas`, try using the `join` method found in the `List` class.
+  For `joinWithCommas`, use the `join` method found in the `List` class.
 
   ```dart
   class MyClass {
@@ -684,7 +672,6 @@ to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
 ```dart:run-dartpad:height-345px:ga_id-cascades
-{$ begin main.dart $}
 class BigObject {
   int anInt = 0;
   String aString = '';
@@ -745,7 +732,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -755,7 +741,7 @@ void main() {
 
   The best solution for this exercise starts with `obj..` and
   has four assignment operations chained together.
-  Try starting with `return obj..anInt = 1`,
+  Start with `return obj..anInt = 1`,
   then add another cascade (`..`) and start the next assignment.
 
   ```dart
@@ -826,7 +812,6 @@ Add the following:
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-240px:ga_id-getters_setters
-{$ begin main.dart $}
 class InvalidPriceException {}
 
 class ShoppingCart {
@@ -893,7 +878,6 @@ void main() {
   
   print('Success!');
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -902,10 +886,10 @@ void main() {
   </summary>
   Two functions are handy for this exercise. 
   One is `fold`, which can reduce a list to a single value
-  (try it to calculate the total).
+  (use it to calculate the total).
   The other is `any`, which can check each item in a list
   with a function you give it
-  (try using it to check if there are any negative prices in the prices setter).
+  (use it to check if there are any negative prices in the prices setter).
 
   ```dart
   // Add a "total" getter here:
@@ -984,7 +968,6 @@ Here are some examples of function calls and returned values:
 <br>
 
 ```dart:run-dartpad:ga_id-optional_positional_parameters
-{$ begin main.dart $}
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
@@ -1001,10 +984,10 @@ void main() {
       errs.add('Tried calling joinWithCommas(1) \n and got $value instead of the expected (\'1\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
+    print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
   } catch (e) {
-    _result(false, ['Tried calling joinWithCommas(1), \n but encountered an exception: ${e.runtimeType}.']);
+    print('Tried calling joinWithCommas(1), \n but encountered an exception: ${e.runtimeType}.');
     return;
   }
 
@@ -1015,10 +998,10 @@ void main() {
       errs.add('Tried calling joinWithCommas(1, 2, 3) \n and got $value instead of the expected (\'1,2,3\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
+    print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
   } catch (e) {
-    _result(false, ['Tried calling joinWithCommas(1, 2 ,3), \n but encountered an exception: ${e.runtimeType}.']);
+    print('Tried calling joinWithCommas(1, 2 ,3), \n but encountered an exception: ${e.runtimeType}.');
     return;
   }
 
@@ -1029,10 +1012,10 @@ void main() {
       errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) \n and got $value instead of the expected (\'1,2,3,4,5\').'); 
     } 
   } on UnimplementedError {
-    _result(false, ['Tried to call joinWithCommas but failed. \n Did you implement the method?']);
+    print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
   } catch (e) {
-    _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), \n but encountered an exception: ${e.runtimeType}.']);
+    print('Tried calling stringify(1, 2, 3, 4 ,5), \n but encountered an exception: ${e.runtimeType}.');
     return;
   }
 
@@ -1042,7 +1025,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1050,7 +1032,7 @@ void main() {
    <b>Solution for positional parameters example</b>
   </summary>
   The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
-  caller. The important thing, then, is to check whether those arguments are null
+  caller. The important thing, then, is to check whether those arguments are `null`
   before you add them to the final string.
 
   ```dart
@@ -1127,7 +1109,6 @@ then copy its value into `anInt`.
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-310px:ga_id-optional_named_parameters
-{$ begin main.dart $}
 class MyDataObject {
   final int anInt;
   final String aString;
@@ -1163,7 +1144,7 @@ void main() {
       errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
     }
   } catch (e) {
-    _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) \n and got an exception: ${e.runtimeType}']);
+    print('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) \n and got an exception: ${e.runtimeType}');
   }
   
   try {
@@ -1181,7 +1162,7 @@ void main() {
       errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} \n rather than the expected value (2).');
     }
   } catch (e) {
-    _result(false, ['Called copyWith() and got an exception: ${e.runtimeType}']);
+    print('Called copyWith() and got an exception: ${e.runtimeType}');
   }
   
   if (errs.isEmpty) {
@@ -1190,7 +1171,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1299,7 +1279,6 @@ then do the following:
   (try using `finally`).
 
 ```dart:run-dartpad:height-420px:ga_id-exceptions
-{$ begin main.dart $}
 typedef VoidFunction = void Function();
 
 class ExceptionWithMessage {
@@ -1353,7 +1332,7 @@ void main() {
       errs.add('Untrustworthy threw an Exception, \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy threw an exception, and an exception of type \n ${e.runtimeType} was unhandled by tryFunction.']);
+    print('Untrustworthy threw an exception, and an exception of type \n ${e.runtimeType} was unhandled by tryFunction.');
   }
   
   logger = MyLogger();
@@ -1373,7 +1352,7 @@ void main() {
       errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+    print('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and an exception of type ${e.runtimeType} was unhandled by tryFunction.');
   }
   
   logger = MyLogger();
@@ -1406,7 +1385,7 @@ void main() {
       errs.add('Untrustworthy didn\'t throw an Exception, \n but doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
-    _result(false, ['Untrustworthy didn\'t throw an exception, \n but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.']);
+    print('Untrustworthy didn\'t throw an exception, \n but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.');
   }
   
   if (errs.isEmpty) {
@@ -1415,7 +1394,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1423,7 +1401,7 @@ void main() {
    <b>Solution for exceptions example</b>
   </summary>
   This exercise looks tricky, but it's really one big `try` statement.
-  Just call `untrustworthy` inside the `try`, and
+  Call `untrustworthy` inside the `try`, and
   then use `on`, `catch`, and `finally` to catch exceptions and
   call methods on the logger.
 
@@ -1497,13 +1475,12 @@ all three properties of the class.
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:ga_id-this_constructor
-{$ begin main.dart $}
 class MyClass {
   final int anInt;
   final String aString;
   final double aDouble;
   
-  // TODO: Create a constructor here.
+  // TODO: Create the constructor here.
 }
 
 
@@ -1526,7 +1503,7 @@ void main() {
       errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} \n instead of the expected value (3).');
     }
   } catch (e) {
-    _result(false, ['Called MyClass(1, \'two\', 3) and got an exception \n of type ${e.runtimeType}.']);
+    print('Called MyClass(1, \'two\', 3) and got an exception \n of type ${e.runtimeType}.');
   }
   
   if (errs.isEmpty) {
@@ -1535,7 +1512,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1543,12 +1519,12 @@ void main() {
    <b>Solution for `this` example</b>
   </summary>
   This exercise has a one-line solution.
-  Just declare the constructor with
+  Declare the constructor with
   `this.anInt`, `this.aString`, and `this.aDouble`
   as its parameters in that order.
 
   ```dart    
-    MyClass(this.anInt, this.aString, this.aDouble);
+  MyClass(this.anInt, this.aString, this.aDouble);
   ```
 </details>
 
@@ -1615,7 +1591,6 @@ if this is a user-entered string.
 {% endcomment %}
 
 ```dart:run-dartpad:ga_id-initializer_lists
-{$ begin main.dart $}
 class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
@@ -1662,7 +1637,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1670,7 +1644,8 @@ void main() {
    <b>Solution for initializer lists example</b>
   </summary>
   Two assignments need to happen:
-  `letterOne` should be `word[0]`, and `letterTwo` should be `word[1]`.
+  `letterOne` should be assigned `word[0]`,
+  and `letterTwo` should be assigned `word[1]`.
 
   ```dart    
     FirstTwoLetters(String word)
@@ -1720,7 +1695,6 @@ that sets all three properties to zero.
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-240px:ga_id-named_constructors
-{$ begin main.dart $}
 class Color {
   int red;
   int green;
@@ -1752,7 +1726,7 @@ void main() {
   errs.add('Called Color.black() and got a Color with blue equal to \n ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
-    _result(false, ['Called Color.black() and got an exception of type \n ${e.runtimeType}.']);
+    print('Called Color.black() and got an exception of type \n ${e.runtimeType}.');
     return;
   }
 
@@ -1762,15 +1736,14 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
  <summary>
    <b>Solution for named constructors example</b>
   </summary>
-  The declaration for your constructor should be `Color.black() {}`.
-  Inside the braces, set `red`, `green`, and `blue` to zero.
+  The declaration for your constructor should begin with `Color.black(): `.
+  In the initializer list (after the colon), set `red`, `green`, and `blue` to `0`.
 
   ```dart    
     Color.black()
@@ -1819,7 +1792,6 @@ making it do the following:
 * Otherwise, throw an `Error`.
 
 ```dart:run-dartpad:height-415px:ga_id-factory_constructors
-{$ begin main.dart $}
 class IntegerHolder {
   IntegerHolder();
   
@@ -1856,12 +1828,12 @@ void main() {
   try {
     IntegerHolder.fromList([]);
   } on UnimplementedError {
-    _result(false, ['Test failed. Did you implement the method?']);
+    print('Test failed. Did you implement the method?');
     return;
   } on Error {
     _throwed = true;
   } catch (e) {
-    _result(false, ['Called IntegerSingle.fromList([]) and got an exception of \n type ${e.runtimeType}.']);
+    print('Called IntegerSingle.fromList([]) and got an exception of \n type ${e.runtimeType}.');
     return;
   }
   
@@ -1880,7 +1852,7 @@ void main() {
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([]) and got an exception of \n type ${e.runtimeType}.']);
+    print('Called IntegerHolder.fromList([]) and got an exception of \n type ${e.runtimeType}.');
     return;
   }
 
@@ -1899,7 +1871,7 @@ void main() {
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([1, 2]) and got an exception \n of type ${e.runtimeType}.']);
+    print('Called IntegerHolder.fromList([1, 2]) and got an exception \n of type ${e.runtimeType}.');
     return;
   }
 
@@ -1922,7 +1894,7 @@ void main() {
       }
     }
   } catch (e) {
-    _result(false, ['Called IntegerHolder.fromList([1, 2, 3]) and got an exception \n of type ${e.runtimeType}.']);
+    print('Called IntegerHolder.fromList([1, 2, 3]) and got an exception \n of type ${e.runtimeType}.');
     return;
   }
 
@@ -1932,7 +1904,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -1940,7 +1911,7 @@ void main() {
    <b>Solution for factory constructors example</b>
   </summary>
   Inside the factory constructor,
-  check the length of the list and create an
+  check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
 
   ```dart    
@@ -1993,7 +1964,6 @@ default constructor with zeros as the arguments.
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-255px:ga_id-redirecting_constructors
-{$ begin main.dart $}
 class Color {
   int red;
   int green;
@@ -2025,7 +1995,7 @@ void main() {
   errs.add('Called Color.black() and got a Color with blue equal to \n ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
-    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    print('Called Color.black() and got an exception of type ${e.runtimeType}.');
     return;
   }
 
@@ -2035,7 +2005,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
@@ -2083,7 +2052,6 @@ and create a constant constructor that does the following:
 Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:ga_id-const_constructors
-{$ begin main.dart $}
 class Recipe {
   List<String> ingredients;
   int calories;
@@ -2113,7 +2081,7 @@ void main() {
       errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
     }
   } catch (e) {
-    _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and received a null.']);
+    print('Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and received a null.');
   }
 
   if (errs.isEmpty) {
@@ -2122,7 +2090,6 @@ void main() {
     errs.forEach(print);
   }
 }
-{$ end main.dart $}
 ```
 
 <details markdown="1">
