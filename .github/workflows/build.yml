@@ -71,7 +71,7 @@ jobs:
       - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@12.8.1
+      - run: npm install -g firebase-tools@13.0.2
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
@@ -98,7 +98,7 @@ jobs:
       - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@12.8.1
+      - run: npm install -g firebase-tools@13.0.2
       - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
         with:
           sdk: stable
