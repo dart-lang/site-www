@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bookworm@sha256:75f884a28c1337d744a42b006d864d3ba161c6b1980d2414910e660d2034b14e as base
+FROM ruby:3.3.0-rc1-slim-bookworm@sha256:2b3e4f039cb496d663e23b392c85e30db6eab182804ab6dbf96f5910b1d69bdc as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -11,7 +11,6 @@ RUN apt update && apt install -yq --no-install-recommends \
       lsof \
       make \
       unzip \
-      vim-nox \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
@@ -95,6 +94,7 @@ FROM node as dev
 WORKDIR /app
 
 ENV JEKYLL_ENV=development
+ENV RUBY_YJIT_ENABLE=1
 COPY Gemfile Gemfile.lock ./
 RUN gem update --system && gem install bundler
 RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
@@ -137,6 +137,7 @@ FROM node AS build
 WORKDIR /app
 
 ENV JEKYLL_ENV=production
+ENV RUBY_YJIT_ENABLE=1
 COPY Gemfile Gemfile.lock ./
 RUN gem update --system && gem install bundler
 RUN BUNDLE_WITHOUT="test development" bundle install --jobs=4 --retry=2 --quiet
