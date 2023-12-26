@@ -418,12 +418,9 @@ are ignored by all users of your package.
 
 ## Best practices
 
-It's important to actively manage your dependencies and
-ensure that your packages use the freshest versions possible.
-If any dependency is stale,
-then you might have not only a stale version of that package,
-but also stale versions of other packages in your dependency graph that
-depend on that package.
+Be proactive in managing your dependencies.
+Ensure that your packages use the freshest versions possible.
+Any stale dependencies could themselves depend on other stale packages.
 These stale versions can have a negative impact on
 the stability, performance, and quality of apps.
 
