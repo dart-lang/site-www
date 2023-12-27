@@ -78,33 +78,47 @@ Dart supports the following macOS versions as of November 2023:
 
 The Dart SDK has three release channels:
 
-* **Stable** channel: **stable releases**, updated roughly every three months;
-  currently `[calculating]`{:.build-rev-stable}.
-  
-  Stable releases are suitable for production use.
-  
-* **Beta** channel: **preview releases**, usually updated every month;
-  currently `[calculating]`{:.build-rev-beta}.
-  
-  Beta channel builds are preview builds for the stable channel. We recommend
-  testing, but not releasing, your apps against beta to preview new features or
-  test compatibility with future releases.
-  
-* **Dev** channel: **prereleases**, usually updated twice a week;
-  currently `[calculating]`{:.build-rev-dev}.
-  
-  Dev channel releases are the most current with latest changes, may be broken,
-  are unsupported, and may contain unvetted breaking changes.
+### Stable channel
+Dart deploys a release to the _stable_ channel about every three months.
+The current stable version is  `[calculating]`{:.build-rev-stable}.
 
-**Stable** channel releases of the Dart SDK have `x.y.z` version strings like
-`1.24.3` and `2.1.0`. They consist of dot-separated integers, with no hyphens or
-letters, where `x` is the major version, `y` is the minor version, and `z` is
-the patch version.
+Use stable channel releases for production environments.
 
-**Beta** and **dev** channel releases of the Dart SDK (non-stable releases) have
-`x.y.z-a.b.<beta|dev>` versions like `2.8.0-20.11.beta`. The part before the
-hyphen follows the stable version scheme, `a` and `b` after the hyphen are the
-prerelease and prerelease patch versions, and `beta` or `dev` is the channel.
+Versioning for releases in stable channel of the Dart SDK follows a `x.y.z` format.
+The version strings resemble `1.24.3` and `2.1.0`.
+This format consists of three dot-separated integers without hyphens or letters.
+The versions include the major version (`x`), 
+then the minor version (`y`), and then the patch version (`z`).
+
+### Beta channel
+Dart releases a build to the _preview_ channel about every month.
+The current beta version is  `[calculating]`{:.build-rev-beta}.
+
+These beta channel releases preview features intended for the stable channel.
+Use releases in the beta channel to test new features or
+test compatibility with future releases.
+Don’t use beta releases for production environments. 
+
+Versioning for releases in the **beta** channel of the Dart SDK
+follows the `x.y.z-a.b.beta` format.
+Version strings resemble `2.8.0-20.11.beta`.
+The part before the hyphen follows the stable version format.
+The part after the hyphen adds the pre-release version (`a`),
+then the pre-release patch version (`b`), and then the channel (`beta`).
+
+### Dev
+Dart releases a build to the **dev** channel about twice a week.
+The current dev version is  `[calculating]`{:.build-rev-dev}.
+
+These dev channel builds include the most recent codebase with latest changes.
+These builds may be broken, have no support,
+and may contain unvetted breaking changes.
+
+Versioning for releases in the **dev** channel of the Dart SDK
+follows the `x.y.z-a.b.dev` format.
+Version strings resemble `2.8.0-20.11.dev`.
+
+## How to get different channel releases
 
 You can get stable channel releases using
 the [instructions above](#install), or you can
