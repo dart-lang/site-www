@@ -32,7 +32,7 @@ GEM
     http_parser.rb (0.8.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    jekyll (4.3.2)
+    jekyll (4.3.3)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -106,7 +106,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 7.1.2)
-  jekyll (= 4.3.2)
+  jekyll (= 4.3.3)
   jekyll-sass-converter (~> 3.0.0)
   jekyll-toc (~> 0.18.0)
   kramdown-parser-gfm
