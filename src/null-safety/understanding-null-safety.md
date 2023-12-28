@@ -692,7 +692,7 @@ String makeCommand(String executable, [List<String>? arguments]) {
 The language is also smarter about what kinds of expressions cause promotion. An
 explicit `== null` or `!= null` of course works. But explicit casts using `as`,
 or assignments, or the postfix `!` operator
-(which we'll cover [later on](#null-assertion-operator)) also cause
+(which we'll cover [later on](#non-null-assertion-operator)) also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
@@ -873,7 +873,8 @@ There isn't a null-aware function call operator, but you can write:
 function?.call(arg1, arg2);
 ```
 
-### Null assertion operator
+<a id="null-assertion-operator"></a>
+### Non-null assertion operator
 
 The great thing about using flow analysis to move a nullable variable to the
 non-nullable side of the world is that doing so is provably safe. You get to
