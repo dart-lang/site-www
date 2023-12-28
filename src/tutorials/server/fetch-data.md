@@ -129,11 +129,16 @@ see [What is a URL?][] on the mdn web docs.
 
 ## Retrieve the necessary dependencies
 
-You can directly use `dart:io` or `dart:html` to make HTTP requests,
-however those libraries are platform dependent.
-`package:http` provides a cross-platform library
+The `package:http` library provides a cross-platform solution
 for making composable HTTP requests,
 with optional fine-grained control.
+
+{{site.alert.note}}
+  You should avoid directly using `dart:io` or `dart:html`
+  to make HTTP requests.
+  Those libraries are platform-dependent
+  and tied to a single implementation.
+{{site.alert.end}}
 
 To add a dependency on `package:http`,
 run the following [`dart pub add`][] command
@@ -187,10 +192,10 @@ Uri.https('dart.dev', '/f/packages/http.json');
 ```
 
 To learn about other ways of building and interacting with URIs,
-see the [library tour's discussion about URIs][library-tour-uri].
+see the [`URI` documentation][].
 
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
-[library-tour-uri]: /guides/libraries/library-tour#uris
+[`URI` documentation]: /libraries/dart-core#uris
 
 ## Make a network request
 
@@ -230,7 +235,7 @@ which can also be seen in your browser at
 ```json
 {
   "name": "http",
-  "latestVersion": "0.13.5",
+  "latestVersion": "1.1.2",
   "description": "A composable, multi-platform, Future-based API for HTTP requests.",
   "publisher": "dart.dev",
   "repository": "https://github.com/dart-lang/http"
@@ -629,7 +634,7 @@ to another [isolate][] as a background worker
 to prevent your interface from becoming unresponsive.
 
 [Concurrency in Dart]: /language/concurrency
-[isolate]: /language/concurrency#how-isolates-work
+[isolate]: /language/concurrency
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json

@@ -146,7 +146,8 @@ Keep in mind the following when you use deferred loading:
   both the deferred library and the importing file.
 * Dart implicitly inserts `loadLibrary()` into the namespace that you define
   using <code>deferred as <em>namespace</em></code>.
-  The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
+  The `loadLibrary()` function returns
+  a [`Future`](/libraries/dart-async#future).
 
 ### The `library` directive {#library-directive}
 

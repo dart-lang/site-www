@@ -10,6 +10,9 @@ Dart programming language.
 * To learn specific details about the most recent supported language version,
   check out the [language documentation][] or the [language specification][].
 * For a full history of changes to the Dart SDK, see the [SDK changelog][].
+* For a full history of breaking changes,
+  including [language versioned][] changes,
+  check out the [Breaking changes][] page.
 
 To use a language feature introduced after 2.0,
 set an [SDK constraint][] no lower than
@@ -25,7 +28,8 @@ environment:
 
 [2.12]: #dart-212
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
-[language versioning section]: #language-versioning
+[language versioned]: #language-versioning
+[Breaking changes]: /resources/breaking-changes
 
 {{site.alert.tip}}
   To review the features being discussed, investigated, and
@@ -36,6 +40,49 @@ environment:
 
 
 ## Changes in each release
+
+### Dart 3.2
+_Released 15 November 2023_
+| [Dart 3.2 announcement](https://medium.com/dartlang/dart-3-2-c8de8fe1b91f)
+
+Dart 3.2 added enhancements to flow analysis, including:
+
+* Expanded [type promotion](/null-safety/understanding-null-safety#type-promotion-on-null-checks)
+  to work on private final fields. Previously only available for
+  local variables and parameters, now private final fields can promote to
+  non-nullable types through null checks and `is` tests. For example,
+  the following code is now sound:
+
+  ```dart
+  class Example {
+    final int? _privateField;
+  
+    Example(this._privateField);
+  
+    void f() {
+      if (_privateField != null) {
+        // _privateField has now been promoted; you can use it without
+        // null checking it.
+        int i = _privateField; // OK
+      }
+    }
+  }
+  
+  // Private field promotions also work from outside of the class:
+  void f(Example x) {
+    if (x._privateField != null) {
+      int i = x._privateField; // OK
+    }
+  }
+  ```
+  
+  For more information on when private final fields can and can't promote, check
+  out [Fixing type promotion failures](/tools/non-promotion-reasons).
+
+* Corrected inconsistencies in type promotion behavior of
+  [if-case](/language/branches#if-case) statements
+  where the value being matched against throws an exception.
+
 
 ### Dart 3.1
 _Released 16 August 2023_
@@ -512,11 +559,11 @@ To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
-[calling native C code]: /guides/libraries/c-interop
+[calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
 [Dart library]: /guides/libraries/create-packages#organizing-a-package
-[Dart FFI]: /guides/libraries/c-interop
+[Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec

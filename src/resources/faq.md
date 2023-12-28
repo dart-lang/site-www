@@ -179,7 +179,6 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [pub]: {{site.pub}}
 [announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /language
-[libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
 [Dart on the Server]: /server
@@ -299,7 +298,7 @@ To learn more, see
 
 Although Dart and JavaScript are completely separate languages with
 separate VMs, they can interoperate. For more information, see
-[JavaScript and TypeScript interop](/web/js-interop).
+[JavaScript and TypeScript interop](/interop/js-interop).
 
 ### Q. I have a large JavaScript codebase. How can I migrate it to Dart?
 

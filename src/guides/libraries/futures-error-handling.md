@@ -1,6 +1,8 @@
 ---
 title: Futures and error handling
-description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code. And then some.
+description: >-
+  Everything you wanted to know about handling errors and exceptions
+  when writing asynchronous code. And then some.
 ---
 
 The Dart language has native

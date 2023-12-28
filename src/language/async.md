@@ -3,11 +3,11 @@ title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 short-title: Async
 prevpage:
-  url: /language/modifier-reference
-  title: Class modifiers reference
-nextpage:
   url: /language/concurrency
   title: Concurrency
+nextpage:
+  url: /null-safety
+
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -32,8 +32,8 @@ you have two options:
 
 * Use `async` and `await`, as described here and in the
   [asynchronous programming codelab](/codelabs/async-await).
-* Use the Future API, as described
-  [in the library tour](/guides/libraries/library-tour#future).
+* Use the Future API, as described in the
+  [`dart:async` documentation](/libraries/dart-async#future).
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
@@ -162,8 +162,8 @@ When you need to get values from a Stream,
 you have two options:
 
 * Use `async` and an _asynchronous for loop_ (`await for`).
-* Use the Stream API, as described
-  [in the library tour](/guides/libraries/library-tour#stream).
+* Use the Stream API, as described in the
+  [`dart:async` documentation](/libraries/dart-async#stream).
 
 {{site.alert.note}}
   Before using `await for`, be sure that it makes the code clearer and that you
@@ -210,9 +210,8 @@ void main() [!async!] {
 }
 {% endprettify %}
 
-For more information about asynchronous programming, in general, see the
-[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
-section of the library tour.
+For more information about Dart's asynchronous programming support,
+check out the [`dart:async`](/libraries/dart-async) library documentation.
 
 [`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html

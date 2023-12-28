@@ -1,6 +1,5 @@
 import 'dart:html';
 
-import 'package:dart_sdk_archive/src/util.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
@@ -8,6 +7,7 @@ import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
 import 'operating_system.dart';
+import 'util.dart';
 
 const _storageBase = '${storageBaseUrl}dart-archive';
 

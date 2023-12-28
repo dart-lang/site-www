@@ -68,10 +68,10 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 ### macOS
 
 * **Supported versions:** Latest three major versions.
-Dart supports the following macOS versions as of November 2022:
-  - macOS 11 (Big Sur)
+Dart supports the following macOS versions as of November 2023:
   - macOS 12 (Monterey)
   - macOS 13 (Ventura)
+  - macOS 14 (Sonoma)
 * **Supported architectures:** x64, ARM64.
 
 ## About release channels and version strings {#release-channels}
@@ -114,7 +114,7 @@ by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: /guides/libraries/library-tour
+[Dart libraries]: /libraries
 [Dart Docker image]: https://hub.docker.com/_/dart
 [downloading the SDK as a zip file]: /get-dart/archive
 [Debian stable]: https://www.debian.org/releases

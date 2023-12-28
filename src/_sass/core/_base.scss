@@ -64,9 +64,13 @@ a, button {
   }
 
   &:hover, &:focus, &:active {
-    color: lighten($brand-primary, 25%);
+    color: $flutter-color-blue-700;
     outline: none;
     text-decoration: none;
+  }
+
+  &:active {
+    color: $flutter-color-blue-800;
   }
 
   &.external {
