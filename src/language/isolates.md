@@ -202,7 +202,7 @@ but a single `ReceivePort` can have many `SendPorts`.
 The `ReceivePort` creates a `SendPort` when it is created itself.
 You can create new `SendPorts` that
 can send messages to an existing `ReceivePort`.
-{{site.alert.note}}
+{{site.alert.end}}
 
 Ports behave similarly to [`Stream`][] objects 
 (in fact, receive ports implement `Stream`!)
@@ -283,7 +283,7 @@ and message sequencing.
 
 The [robust ports example][] in the next section covers this functionality and
 discusses some of the issues that can arise without it.
-{{site.alert.warn}}
+{{site.alert.end}}
 
 [robust ports example]: #robust-ports-example
 
@@ -522,9 +522,11 @@ long-lived worker isolate that has these additional features and more, and
 follows better design patterns. Although this code has similarities to the first
 example, it is not an extension of that example.
 
-{{site.alert.note}} This example assumes that you are already familiar with
+{{site.alert.note}} 
+This example assumes that you are already familiar with
 establishing communication between isolates with `Isolate.spawn` and ports,
-which was covered in the [previous example][]. {{site.alert.note}}
+which was covered in the [previous example][]. 
+{{site.alert.end}}
 
 #### Step 1: Define the worker class
 
@@ -575,11 +577,13 @@ class Worker {
 }
 ```
 
-{{site.alert.note}} In this example, `SendPort` and `ReceivePort` instances
+{{site.alert.note}} 
+In this example, `SendPort` and `ReceivePort` instances
 follow a best practice naming convention, in which they are named in relation to
 the main isolate. The messages sent through the `SendPort` from the main isolate
 to the worker isolate are called _commands_, and the messages sent back to the
-main isolate are called _responses_. {{site.alert.note}}
+main isolate are called _responses_. 
+{{site.alert.end}}
 
 #### Step 2: Create a `RawReceivePort` in the `Worker.spawn` method
 
