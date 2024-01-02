@@ -38,6 +38,7 @@ class Worker {
     return Worker._(receivePort, sendPort);
   }
 
+  // #docregion parse-json
   Future<Object?> parseJson(String message) async {
     if (_closed) throw StateError('Closed'); // New
     final completer = Completer<Object?>.sync();
@@ -46,6 +47,7 @@ class Worker {
     _commands.send((id, message));
     return await completer.future;
   }
+  // #enddocregion parse-json
 
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
@@ -82,7 +84,7 @@ class Worker {
       }
     });
   }
-  // #docregion handle-commands
+  // #enddocregion handle-commands
 
   static void _startRemoteIsolate(SendPort sendPort) {
     final receivePort = ReceivePort();

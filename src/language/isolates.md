@@ -73,7 +73,7 @@ instead of `Isolate.run()`.
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Spawn a new isolate to read some data.
+  // Read some data.
   final jsonData = await Isolate.run(_readAndParseJson);
 
   // Use that data.
@@ -131,7 +131,7 @@ function literal, or closure, directly in the main isolate.
 const String filename = 'with_keys.json';
 
 void main() async {
-  // Spawn a new isolate to read some data.
+  // Read some data.
   final jsonData = await Isolate.run(() async {
     final fileData = await File(filename).readAsString();
     final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
@@ -307,20 +307,20 @@ one-by-one.
 ```dart
 class Worker {
   Future<void> spawn() async {
-  // TODO: Add functionality to spawn a worker isolate.
- }
+    // TODO: Add functionality to spawn a worker isolate.
+  }
 
   void _handleResponsesFromIsolate(dynamic message) {
     // TODO: Define code that should be executed on the worker isolate.
-}
+  }
 
   static void _startRemoteIsolate(SendPort port) {
     // TODO: Handle messages sent back from the worker isolate.
   }
 
   Future<void> parseJson(String message) async {
-   // TODO: Define a public method that can 
- // be used to send messages to the worker isolate.
+    // TODO: Define a public method that can
+    // be used to send messages to the worker isolate.
   }
 }
 ```
@@ -342,10 +342,10 @@ worker isolate and ensuring it can receive and send messages.
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (spawn)"?>
 ```dart
-  Future<void> spawn() async {
-    final receivePort = ReceivePort();
-    receivePort.listen(_handleResponsesFromIsolate);
-    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
+Future<void> spawn() async {
+  final receivePort = ReceivePort();
+  receivePort.listen(_handleResponsesFromIsolate);
+  await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
 }
 ```
 
@@ -368,15 +368,17 @@ method for the worker isolate.
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (startRemoteIsolate)"?>
 ```dart
-  static void _startRemoteIsolate(SendPort port) {
-    final receivePort = ReceivePort();
-    port.send(receivePort.sendPort);
+static void _startRemoteIsolate(SendPort port) {
+  final receivePort = ReceivePort();
+  port.send(receivePort.sendPort);
 
-    receivePort.listen((dynamic message) async {
-      final decoded = jsonDecode(message as String);
-      port.send(decoded);
-    }); 
-  }
+  receivePort.listen((dynamic message) async {
+    if (message is String) {
+      final transformed = jsonDecode(message);
+      port.send(transformed);
+    }
+  });
+}
 ```
 
 The listener on the worker’s `ReceivePort` decodes the JSON passed from the main
@@ -396,10 +398,10 @@ in [step 2](#step-2-spawn-a-worker-isolate):
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (spawn)"?>
 ```dart
-  Future<void> spawn() async {
-    final receivePort = ReceivePort();
-    receivePort.listen(_handleResponsesFromIsolate);
-    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
+Future<void> spawn() async {
+  final receivePort = ReceivePort();
+  receivePort.listen(_handleResponsesFromIsolate);
+  await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
 }
 ```
 
@@ -416,17 +418,14 @@ decoded JSON).
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (handleResponses)"?>
 ```dart
-class Worker {
-  late SendPort _sendPort;
-  final Completer<void> _isolateReady = Completer.sync();
-  void _handleResponsesFromIsolate(dynamic message) {
-    if (message is SendPort) {
-      _sendPort = message;
-      _isolateReady.complete();
-    } else if (message is Map<String, dynamic>) {
-      print(message);
-    }
+void _handleResponsesFromIsolate(dynamic message) {
+  if (message is SendPort) {
+    _sendPort = message;
+    _isolateReady.complete();
+  } else if (message is Map<String, dynamic>) {
+    print(message);
   }
+}
 ```
 
 #### Step 5: Add a completer to ensure your isolate is set-up
@@ -448,13 +447,10 @@ this by using a [`Completer`][].
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (parseJson)"?>
 ```dart
-class Worker {
-  late SendPort _sendPort;
-  final Completer<void> _isolateReady = Completer.sync();
-  Future<void> parseJson(String message) async {
-    await _isolateReady.future;
-    _sendPort.send(message);
-  }
+Future<void> parseJson(String message) async {
+  await _isolateReady.future;
+  _sendPort.send(message);
+}
 ```
 
 #### Complete example
@@ -556,7 +552,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // TODO: Add functionality to create a new Worker object with a 
+    // TODO: Add functionality to create a new Worker object with a
     //  connection to a spawned isolate
     throw UnimplementedError();
   }
@@ -628,6 +624,7 @@ class Worker {
         commandPort,
       ));
     };
+// ···
   }
 ```
 
@@ -685,7 +682,7 @@ class Worker {
     }
 
     final (ReceivePort receivePort, SendPort sendPort) =
-    await connection.future;
+        await connection.future;
 
     return Worker._(sendPort, receivePort);
   }
@@ -715,7 +712,7 @@ called `_handleResponsesFromIsolate`.
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-  
+// ···
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
@@ -734,11 +731,11 @@ be passed the main isolate’s `SendPort` as an argument.
 
 <?code-excerpt "lib/robust_ports_example/step_4.dart (start-isolate)"?>
 ```dart
-  static void _startRemoteIsolate(SendPort sendPort) {
-    final receivePort = ReceivePort();
-    sendPort.send(receivePort.sendPort);
-    _handleCommandsToIsolate(receivePort, sendPort);
-  }
+static void _startRemoteIsolate(SendPort sendPort) {
+  final receivePort = ReceivePort();
+  sendPort.send(receivePort.sendPort);
+  _handleCommandsToIsolate(receivePort, sendPort);
+}
 ```
 
 Next, add the `_handleCommandsToIsolate` method, which is responsible for
@@ -753,16 +750,17 @@ and sending the decoded json back as a response.
 
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-commands)"?>
 ```dart
-  static void _handleCommandsToIsolate(ReceivePort receivePort, SendPort sendPort) {
-    receivePort.listen((message) {
-      try {
-        final jsonData = jsonDecode(message as String);
-        sendPort.send(jsonData);
-      } catch (e) {
-        sendPort.send(RemoteError(e.toString(), ''));
-      }
-    });
-  }
+static void _handleCommandsToIsolate(
+    ReceivePort receivePort, SendPort sendPort) {
+  receivePort.listen((message) {
+    try {
+      final jsonData = jsonDecode(message as String);
+      sendPort.send(jsonData);
+    } catch (e) {
+      sendPort.send(RemoteError(e.toString(), ''));
+    }
+  });
+}
 ```
 
 Next, add the code for the `_handleResponsesFromIsolate` method.
@@ -774,13 +772,13 @@ Next, add the code for the `_handleResponsesFromIsolate` method.
 
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-response)"?>
 ```dart
-  void _handleResponsesFromIsolate(dynamic message) {
-    if (message is RemoteError) {
-      throw message;
-    } else {
-      print(message);
-    }
+void _handleResponsesFromIsolate(dynamic message) {
+  if (message is RemoteError) {
+    throw message;
+  } else {
+    print(message);
   }
+}
 ```
 
 Finally, add the `parseJson` method, which is a public method that allows
@@ -788,9 +786,9 @@ outside code to send JSON to the worker isolate to be decoded.
 
 <?code-excerpt "lib/robust_ports_example/step_4.dart (parse-json)"?>
 ```dart
-  Future<Object?> parseJson(String message) async {
-    _commands.send(message);
-  }
+Future<Object?> parseJson(String message) async {
+  _commands.send(message);
+}
 ```
 
 This method will be updated in the next step.
@@ -840,13 +838,13 @@ messages to the worker isolate.
 
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (parse-json)"?>
 ```dart
-  Future<Object?> parseJson(String message) async {
-    final completer = Completer<Object?>.sync();
-    final id = _idCounter++;
-    _activeRequests[id] = completer;
-    _commands.send((id, message));
-    return await completer.future;
-  }
+Future<Object?> parseJson(String message) async {
+  final completer = Completer<Object?>.sync();
+  final id = _idCounter++;
+  _activeRequests[id] = completer;
+  _commands.send((id, message));
+  return await completer.future;
+}
 ```
 
 You also need to update `_handleResponsesFromIsolate`
@@ -861,18 +859,18 @@ the id and the decoded json back to the main isolate, again using a record.
 
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-commands)"?>
 ```dart
-  static void _handleCommandsToIsolate(
-      ReceivePort receivePort, SendPort sendPort) {
-    receivePort.listen((message) {
-      final (int id, String jsonText) = message as (int, String); // New
-      try {
-        final jsonData = jsonDecode(jsonText);
-        sendPort.send((id, jsonData)); // Updated
-      } catch (e) {
-        sendPort.send((id, RemoteError(e.toString(), '')));
-      }
-    });
-  }
+static void _handleCommandsToIsolate(
+    ReceivePort receivePort, SendPort sendPort) {
+  receivePort.listen((message) {
+    final (int id, String jsonText) = message as (int, String); // New
+    try {
+      final jsonData = jsonDecode(jsonText);
+      sendPort.send((id, jsonData)); // Updated
+    } catch (e) {
+      sendPort.send((id, RemoteError(e.toString(), '')));
+    }
+  });
+}
 ```
 
 Finally, update the `_handleResponsesFromIsolate`.
@@ -886,16 +884,16 @@ Finally, update the `_handleResponsesFromIsolate`.
 
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-response)"?>
 ```dart
-  void _handleResponsesFromIsolate(dynamic message) {
-    final (int id, Object? response) = message as (int, Object?); // New
-    final completer = _activeRequests.remove(id)!; // New
+void _handleResponsesFromIsolate(dynamic message) {
+  final (int id, Object? response) = message as (int, Object?); // New
+  final completer = _activeRequests.remove(id)!; // New
 
-    if (response is RemoteError) {
-      completer.completeError(response); // Updated
-    } else {
-      completer.complete(response); // Updated
-    }
+  if (response is RemoteError) {
+    completer.completeError(response); // Updated
+  } else {
+    completer.complete(response); // Updated
   }
+}
 ```
 
 #### Step 6: Add functionality to close the ports
@@ -916,7 +914,7 @@ isolate’s `ReceivePort` called `_responses`
 ```dart
 class Worker {
   bool _closed = false;
-
+// ···
   void close() {
     if (!_closed) {
       _closed = true;
@@ -925,7 +923,6 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-}
 ```
 
 Next, you need to handle the “shutdown” message in the worker isolate. Add the
@@ -935,25 +932,25 @@ worker isolate’s `ReceivePort`, and return.
 
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (handle-commands)"?>
 ```dart
-  static void _handleCommandsToIsolate(
-    ReceivePort receivePort,
-    SendPort sendPort,
-  ) {
-    receivePort.listen((message) {
-      // New if-block
-      if (message == 'shutdown') {
-        receivePort.close();
-        return;
-      }
-      final (int id, String jsonText) = message as (int, String);
-      try {
-        final jsonData = jsonDecode(jsonText);
-        sendPort.send((id, jsonData));
-      } catch (e) {
-        sendPort.send((id, RemoteError(e.toString(), '')));
-      }
-    });
-  }
+static void _handleCommandsToIsolate(
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
+  receivePort.listen((message) {
+    // New if-block
+    if (message == 'shutdown') {
+      receivePort.close();
+      return;
+    }
+    final (int id, String jsonText) = message as (int, String);
+    try {
+      final jsonData = jsonDecode(jsonText);
+      sendPort.send((id, jsonData));
+    } catch (e) {
+      sendPort.send((id, RemoteError(e.toString(), '')));
+    }
+  });
+}
 ```
 
 Finally, you should add code to check if the ports are closed before trying to
@@ -961,14 +958,14 @@ send messages. Add one line in the `Worker.parseJson` method.
 
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (parse-json)"?>
 ```dart
-  Future<Object?> parseJson(String message) async {
-    if (_closed) throw StateError('Closed'); // New
-    final completer = Completer<Object?>.sync();
-    final id = _idCounter++;
-    _activeRequests[id] = completer;
-    _commands.send((id, message));
-    return await completer.future;
-  }
+Future<Object?> parseJson(String message) async {
+  if (_closed) throw StateError('Closed'); // New
+  final completer = Completer<Object?>.sync();
+  final id = _idCounter++;
+  _activeRequests[id] = completer;
+  _commands.send((id, message));
+  return await completer.future;
+}
 ```
 
 #### Complete example
@@ -992,11 +989,9 @@ void main() async {
   worker.close();
 }
 
-// #docregion constructor
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// #enddocregion constructor
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
   bool _closed = false;
@@ -1087,7 +1082,6 @@ class Worker {
     }
   }
 }
-
 ```
 
 </details>
