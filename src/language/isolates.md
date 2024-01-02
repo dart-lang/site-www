@@ -149,698 +149,379 @@ A new isolate spawns, computes something, and sends back the result.
 However, now the isolate sends a [closure][].
 Closures are less limited than typical named functions,
 both in how they function and how they're written into the code.
-In this example, `Isolate.run()` executes what looks like local code, concurrently.
-In that sense, you can imagine `run()` to work like a control flow operator
-for "run in parallel".
+In this example, `Isolate.run()` executes what looks like local code, 
+concurrently. In that sense, you can imagine `run()` to work like a 
+control flow operator for "run in parallel".
 
 [closure]: /language/functions#anonymous-functions
 
 ## Sending multiple messages between isolates with ports
 
-`Isolate.run()` abstracts a handful of lower-level,
-isolate-related API to simplify isolate management:
+Short-lived isolates are convenient to use,
+but require performance overhead to spawn new isolates
+and to copy objects from one isolate to another.
+If your code relies on repeatedly running the same computation 
+using `Isolate.run`, you might improve performance by instead creating
+long-lived isolates that don’t exit immediately.
+
+To do this, you can use some of the low-level isolate APIs that 
+`Isolate.run` abstracts:
 
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
 * [`SendPort.send()` method][]
+
+
+This section goes over the steps required to spawn a
+new isolate and establish 2-way communication between it and 
+the [main isolate][].
+The first example introduces the process at a high-level, 
+and the second example gradually adds more practical, 
+real-world functionality to the first.
 
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
 [`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 [`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[main isolate]: /language/concurrency#isolates
+
 
 ### `ReceivePort` and `SendPort`
 
-This long-lived communication between isolates is set up with 
-two classes (in addition to Isolate): `ReceivePort` and `SendPort`. 
+Setting up long-lived communication between isolates requires
+two classes (in addition to `Isolate`): `ReceivePort` and `SendPort`.
 These ports are the only way isolates can communicate with each other.
 
-A `ReceivePort` is an object that handles messages that are sent from other 
-isolates, and those messages are sent via a `SendPort`.
+A `ReceivePort` is an object that handles messages that are sent from other
+isolates. Those messages are sent via a `SendPort`.
 
-Ports behave similarly to [`Stream`][], You can think of a `SendPort` and 
-`RecievePort` like Stream's `StreamController` and listeners, respectively. 
-A `SendPort` is like a `StreamController` because you "add" messages to them 
-with the [`send()` method][], and those messages are handled by a listener, 
-in this case the `ReceivePort`. Additionally, handling messages received by 
-the `RecievePort` is done by calling a provided callback with the message as 
-an argument. 
+{{site.alert.note}}
+`SendPort` objects are associated with exactly one `ReceivePort`,
+but a single `ReceivePort` can have many `SendPorts`.
+The `ReceivePort` creates a `SendPort` when it is created itself.
+You can create new `SendPorts` that
+can send messages to an existing `ReceivePort`.
+{{site.alert.note}}
 
-
-[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
-[Streams]: /guides/libraries/library-tour#stream
+Ports behave similarly to [`Stream`][] objects 
+(in fact, receive ports implement `Stream`!)
+You can think of a `SendPort` and `ReceivePort` like
+Stream's `StreamController` and listeners, respectively.
+A `SendPort` is like a `StreamController` because you "add" messages to them
+with the [`send()` method][], and those messages are handled by a listener,
+in this case the `ReceivePort`. Handling messages received by
+the `RecievePort` is done by calling a provided callback with the message as
+an argument.
 
 #### Setting up ports
 
-Setting up a port requires a few steps, which must be done in a specific 
-order. The following figure shows the conceptual steps required to spawn a 
-new isolate and establish 2-way communication between it and the main isolate.
+A newly spawned isolate only has the information it receives through the
+`Isolate.spawn` call. If you need the main isolate to continue to communicate
+with a spawned isolate past its initial creation, you must set up a 
+communication channel where the spawned isolate can send messages to the 
+main isolate. Isolates can only communicate via message passing. 
+They can’t “see”  inside each others’ memory, 
+which is where the name “isolate” comes from.
 
-A newly spawned isolate only has the information it got through the 
-`Isolate.spawn` call.  If the main isolate needs to communicate with the new 
-isolate, you must give it a way to reach out to you,
-because you can't reach into it. 
-That's where the "isolate" in the name comes from.
-
-The traditional way to do that is to first create a [`ReceivePort`][], 
-then pass its [`SendPort`][] to the new isolate when spawning it.
-The new isolate then creates its own `ReceivePort`, and sends its `SendPort` 
-back on the send port it was given.
-The original isolate receives this send port, which concludes the set-up.
-Now both sides has both a way to send and receive messages, and the real 
-communication can start.
+To set up this 2-way communication, first create a [`ReceivePort`][] 
+in the main isolate, then pass its [`SendPort`][] as an argument to the 
+new isolate when spawning it with `Isolate.spawn`.
+The new isolate then creates its own `ReceivePort`, and sends _its_ `SendPort`
+back on the `SendPort` it was passed by the main isolate.
+The main isolate receives this `SendPort`, and
+now both sides have an open channel to send and receive messages.
 
 {{site.alert.note}}
-The diagrams in this section are high-level and intended to convey the concept of
-using ports for isolates. Actual implementation requires a bit more code,
-which you will find [later on this page](link-to-ports-example-section).  
+The diagrams in this section are high-level and intended to convey the 
+_concept_ of using ports for isolates. Actual implementation requires 
+a bit more code, which you will find 
+[later on this page](#basic-ports-example).  
 {{site.alert.end}}
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
 
-1. Create a `ReceivePort` in the main isolate. The `SendPort` is created 
+1. Create a `ReceivePort` in the main isolate. The `SendPort` is created
    automatically as a property on the `ReceivePort`.
-2. Spawn the worker isolate with `Isolate.spawn(...)`
-3. Pass a reference to `ReveivePort.sendPort` as the first message to the 
+2. Spawn the worker isolate with `Isolate.spawn()`
+3. Pass a reference to `ReceivePort.sendPort` as the first message to the
    worker isolate.
 4. Create another new `ReceivePort` in the worker isolate.
-5. Pass a reference to the worker isolate's `ReceivePort.sendPort` as the 
+5. Pass a reference to the worker isolate's `ReceivePort.sendPort` as the
    first message _back_ to the main isolate.
 
-Along with creating the ports and setting up communication, you’ll also need 
-to tell the ports what to do when they receive messages. This is done using 
-the listen method on each of the respective ReceivePorts.
+Along with creating the ports and setting up communication, you’ll also need
+to tell the ports what to do when they receive messages. This is done using
+the `listen` method on each respective `ReceivePort`.
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
 
-1. Send a message via the main isolates reference to the worker isolate's 
-`SendPort`.
-2. Receive and handle the message via a listener on the worker isolate's 
-   `ReceivePort`. This is where the computation you want to move off the 
+1. Send a message via the main isolate’s reference to the worker isolate's
+   `SendPort`.
+2. Receive and handle the message via a listener on the worker isolate's
+   `ReceivePort`. This is where the computation you want to move off the
    main isolate is executed.
-3. Send a return message via the worker isolate's reference the main 
+3. Send a return message via the worker isolate's reference to the main
    isolate's `SendPort`.
-4. Receive the message via a listener on the main isolate's `ReceivePort`. 
+4. Receive the message via a listener on the main isolate's `ReceivePort`.
 
-### Ports example
+### Basic ports example
 
-This example demonstrates how you can set up a long-lived worker isolate 
-with 2-way communication between it and the main isolate. The goal of this 
-code is to make an HTTP request to [Typicode][] for photo data, and convert the JSON response into a List of Photo objects. This work will be done in the worker isolate. To communicate with the isolate, the main isolate will send strings to the worker isolate that define which endpoint to request data from (for example, “photos”). The isolate will send back a message of type List<Photo>. The class also contains a very simple public interface to trigger messages to the isolate, and to read resulting data from the worker isolate.
+This example demonstrates how you can set up a long-lived worker isolate
+with 2-way communication between it and the main isolate.
+The code uses the example of sending JSON text to a new isolate,
+where the JSON will be parsed and decoded,
+before being sent back to the main isolate.
 
-[Typicode]: https://jsonplaceholder.typicode.com
+{{site.alert.warn}}
+This example is meant to teach the _bare minimum_ needed to
+spawn a new isolate that can send and receive multiple messages over time.
 
-#### 1: Define the outline of the BackgroundWorker class
+It does not cover important pieces of functionality that are expected
+in production software, like error handling, shutting down ports,
+and message sequencing.
 
-<?code-excerpt "lib/ports_example/ports_example_step_1.dart"?>
+The [Robust ports example][] in the next section covers this functionality and
+discusses some of the issues that can arise without it.
+{{site.alert.warn}}
+
+#### Step 1: Define the worker class
+
+First, create a class for your background worker isolate. 
+This class contains all the functionality you need to:
+
+- Spawn an isolate.
+- Send messages to that isolate.
+- Have the isolate decode some JSON.
+- Send the decoded JSON back to the main isolate.
+
+The class will expose two public methods: one that will spawn the worker 
+isolate, and one that will handle sending messages to that worker isolate.
+
+After this code snippet, the remaining snippets will fill in the class methods, 
+one-by-one.
+
+<?code-excerpt "lib/basic_ports_example/start.dart"?>
 ```dart
-import 'dart:async';
-import 'dart:isolate';
+class Worker {
+  Future<void> spawn() async {
+  // TODO: Add functionality to spawn a worker isolate.
+ }
 
-class BackgroundWorker {
-  BackgroundWorker();
+  void _handleResponsesFromIsolate(dynamic message) {
+    // TODO: Define code that should be executed on the worker isolate.
+}
 
-  late Isolate _isolate;
+  static void _startRemoteIsolate(SendPort port) {
+    // TODO: Handle messages sent back from the worker isolate.
+  }
 
-  // This method will create the worker isolate
-  Future<void> _initIsolate() async {}
-
-  // This method will handle messages that are sent from the worker isolate back to the main isolate
-  void _handleMessageToMainIsolate(dynamic message) {}
-
-  // This method will handle messages that are sent from the main isolate to the worker
-  static void _workerIsolateEntryPoint(dynamic message) {}
+  Future parseJson(String message) async {
+   // TODO: Define a public method that can 
+ // be used to send messages to the worker isolate.
+  }
 }
 ```
 
-The three methods stubbed here will contain all the functionality for this
-worker.
+#### Step 2: Spawn a worker isolate
 
-- `Future<void> _initIsolate() async` is the method that will spawn the worker
-  isolate. It will also create the ReceivePort (and consequently, the SendPort)
-  associated with the main isolate
-- `_handleMessageToMainIsolate(dynamic message)` is the method that will be
-  called whenever a message is received in the main isolate’s ReceivePort, via
-  the SendPort.send() method. This method is responsible for receiving the
-  worker isolate’s SendPort as its first message, and assigning it to a local
-  variable. All subsequent messages will be Dart Objects stuffed with data from
-  Typicode.
-- Similarly, `static void _workerIsolateEntryPoint(dynamic message)` is the
-  entry point to the isolate. This method will be called exactly once on the
-  worker isolate when it initially spawns. This is the only opportunity you’ll
-  have to set up other code that needs to be run on the worker isolate in the
-  future. You can think of this method as the “main” function for the worker
-  isolate.
+The `Worker.spawn` method is where you will group the code for creating the 
+worker isolate and ensuring it can receive and send messages.
 
-#### 2: Spawn the new isolate
+- First, create a `ReceivePort`. This allows the main isolate to receive
+  messages sent from the newly spawned worker isolate.
+- Next, add a listener to the receive port to handle messages the worker isolate
+  will send back. The callback passed to the
+  listener, `_handleMessagesFromIsolate`, will be covered
+  in [step 4](#step-4-handle-messages-on-the-main-isolate).
+- Finally, spawn the worker isolate with `Isolate.spawn`. It expects two
+  arguments: a function to be executed on the worker isolate (covered in step
+  3), and the `sendPort` property of the receive port.
 
-**Note:** The code needed to spawn a worker long-lived isolate is not linear. 
-Much of the code in this snippet relies on code that is not yet written.
-
-<?code-excerpt "lib/ports_example/ports_example_step_2.dart"?>
+<?code-excerpt "lib/basic_ports_example/spawn.dart"?>
 ```dart
-import 'dart:async';
-import 'dart:isolate';
-
-class BackgroundWorker {
-  BackgroundWorker() {
-    _initIsolate();
-  }
-
-  late Isolate _isolate;
-
-  Future<void> _initIsolate() async {
-    // This receive port will receive messages from the spawned worker
-    // isolate that are put into the [sendPortToMainIsolate].
-    final mainIsolateReceivePort = ReceivePort();
-
-    // This send port is sent to the spawned isolate, so the isolate can put
-    // messages in, which will emit from the [receivePortFromIsolate].
-    final sendPortToMainIsolate = mainIsolateReceivePort.sendPort;
-
-    // When a message is passed from the worker isolate to the
-    // [mainIsolateReceivePort], the [_handleMessageToMainIsolate] callback
-    // is called with the message as an argument.
-    mainIsolateReceivePort.listen(_handleMessageToMainIsolate);
-
-    // Spawn the worker isolate.
-    // The first argument passed to Isolate.spawn is a callback, which will
-    // be called whenever a message is sent from the main isolate to the
-    // worker isolate, via the [SendPort.send] method.
-    // The second argument passed is the message that will be sent via
-    // [SendPort.send]. In this case, I'm sending the sendPort that the
-    // worker isolate will need to send messages back to the main isolate
-    _isolate = await Isolate.spawn(
-      _workerIsolateEntryPoint,
-      sendPortToMainIsolate,
-    );
-  }
-
-// This method will handle messages that are sent from the worker isolate back to the main isolate
-  void _handleMessageToMainIsolate(dynamic message) {}
-
-// This method will handle messages that are sent from the main isolate to the worker
-  static void _workerIsolateEntryPoint(dynamic message) {}
+  Future<void> spawn() async {
+    final receivePort = ReceivePort();
+    receivePort.listen(_handleResponsesFromIsolate);
+    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
 }
-``` 
+```
 
-The `_initIsolate` method has been updated to…
+The `receivePort.sendPort` argument will be passed to the
+callback (`_handleMessagesFromIsolate`) as an argument when it’s called on the
+worker isolate. This is the first step in ensuring that the worker isolate has a
+way to send messages back to the main isolate.
 
-- create a ReceivePort, and assign it to `sendPortToMainIsolate`. This port is
-  where messages are emitted when sent from the worker isolate.
-- create a variable for the `ReceivePort.sendPort`. This is purely to make the
-  code more readable for this example. This variable will not be used outside
-  this method.
-- add a listener to the receive port. Now, when a new message is emitted to this
-  isolate, the method `_handleMessageToMainIsolate` will be called with the
-  message as an argument.
-- spawn the worker isolate via `Isolate.spawn`. This method requires two
-  arguments. The first argument is a callback that will be called when the
-  isolate spawns. The second argument required by `Isolate.spawn` is what will
-  be passed to the callback when the isolate runs it. So, when the isolate runs,
-  the first thing it will do is
-  call `_workerIsolateEntryPoint(sendPortToMainIsolate)`.
+#### Step 3: Execute code on the worker isolate
 
-#### 3: Complete the isolate entry point method
+In this step, you define the method `_isolateEntryPoint` that is sent to the
+worker isolate to be executed when it spawns. This method is like the “main”
+method for the worker isolate.
 
-<?code-excerpt "lib/ports_example/ports_example_step_3.dart"?>
+- First, create another new `ReceivePort`. This port will be used to receive
+  future messages from the main isolate.
+- Next, send that port’s  `SendPort` back to the main isolate.
+- Finally, add a listener to the new `ReceivePort`. This listener handles
+  messages the main isolate sends to the worker isolate.
+
+<?code-excerpt "lib/basic_ports_example/start_remote_isolate.dart"?>
 ```dart
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:isolate';
+  static void _startRemoteIsolate(SendPort port) {
+    final receivePort = ReceivePort();
+    port.send(receivePort.sendPort);
 
-import 'package:http/http.dart' as http;
-
-class BackgroundWorker {
-  BackgroundWorker() {
-    _initIsolate();
+    receivePort.listen((dynamic message) async {
+      final decoded = jsonDecode(message as String);
+      port.send(decoded);
+    }); 
   }
+```
 
-  late Isolate _isolate;
+The listener on the worker’s `ReceivePort` decodes the JSON passed from the main
+isolate, and then sends the decoded JSON back to the main isolate.
 
-  Future<void> _initIsolate() async {
-    // This receive port will receive messages from the spawned worker
-    // isolate that are put into the [sendPortToMainIsolate].
-    final mainIsolateReceivePort = ReceivePort();
+This listener is the entry point for messages sent from the main isolate to the
+worker isolate. **This is the only chance you have to tell the isolate what code
+to execute in the future.**
 
-    // This send port is sent to the spawned isolate, so the isolate can put
-    // messages in, which will emit from the [receivePortFromIsolate].
-    final sendPortToMainIsolate = mainIsolateReceivePort.sendPort;
+#### Step 4: Handle messages on the main isolate
 
-    // When a message is passed from the worker isolate to the
-    // [mainIsolateReceivePort], the [_handleMessageToMainIsolate] callback
-    // is called with the message as an argument.
-    mainIsolateReceivePort.listen(_handleMessageToMainIsolate);
+Finally, you need to tell the main isolate how to handle messages sent from the
+worker isolate back to the main isolate. To do so, you need to fill in
+the `_handleResponsesFromIsolate` method. Recall that this method is passed to
+the `Worker.spawn` method, as described
+in [step 2](#step-2-spawn-a-worker-isolate):
 
-    // Spawn the worker isolate.
-    // The first argument passed to Isolate.spawn is a callback, which will
-    // be called whenever a message is sent from the main isolate to the
-    // worker isolate, via the [SendPort.send] method.
-    // The second argument passed is the message that will be sent via
-    // [SendPort.send]. In this case, I'm sending the sendPort that the
-    // worker isolate will need to send messages back to the main isolate
-    _isolate = await Isolate.spawn(
-      _workerIsolateEntryPoint,
-      sendPortToMainIsolate,
-    );
-  }
+<?code-excerpt "lib/basic_ports_example/spawn.dart"?>
+```dart
+  Future<void> spawn() async {
+    final receivePort = ReceivePort();
+    receivePort.listen(_handleResponsesFromIsolate);
+    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
+}
+```
 
-  // This method will handle messages that are sent from the worker isolate back to the main isolate
-  void _handleMessageToMainIsolate(dynamic message) {}
+Also recall that you sent a `SendPort` back to the main isolate
+in [step 3](step-3-execute-code-on-worker-isolate). This method handles the
+receipt of that `SendPort`, as well as handling future messages (which will be
+decoded JSON).
 
-  // This method must be static
-  // This method is the your one and only chance to communicate with the
-  // worker isolate.
-  // This is the only code that will be run, exactly once, when the isolate is
-  // spawned, and it will be passed as an argument the second argument passed
-  // to Isolate.spawn()
-  // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the send port from the main
-  //   isolate
-  //   - It needs to create another Port, one that can continue to receive
-  //   messages from the main isolate. And, it needs to send the
-  //   corresponding sendPort back to the main isolate.
-  //   - It needs to add a listener to the new Port, so it can handle
-  //   messages that the main isolate sends to the worker over time.
-  static void _workerIsolateEntryPoint(dynamic message) {
-    // This [ReceivePort] will allow the spawned worker isolate to receive
-    // future methods from the main app isolate
-    final receivePortInSpawnedIsolate = ReceivePort();
+- First, check if the message is a `SendPort`. If so, assign that port to the
+  classes `_sendPort` property so it can be used to send messages later.
+- Next, check if the message is of type `Map<String, dynamic>`, the expected
+  type of decoded JSON. If so, handle that message with your
+  application-specific logic. In this example, the message is printed. 
 
-    // This [SendPort] will be passed back to the main isolate, which allows the
-    // main app isolate to send future messages to the worker isolate
-    final sendPortToSpawnedIsolate = receivePortInSpawnedIsolate.sendPort;
+<?code-excerpt "lib/basic_ports_example/handle_response_from_isolate.dart"?>
+```dart
+class Worker {
+  late SendPort _sendPort;
 
-    // This [SendPort] will come from the main app isolate as the initial
-    // message, and allow this isolate to pass messages back to the main app.
-    late SendPort sendPortToMainApp;
+  // spawn method
 
-    // The initial message will always be a SendPort, because that's the
-    // second argument passed to Isolate.spawn.
-    // With that SendPort, this isolate can send the
-    // [sendPortToSpawnedIsolate] back to the main app isolate,
-    // which will allow the main app to send more messages
-    // to this isolate in the future.
-    // Thus, completing the logic needed to set up 2-way communication
-    // between the main isolate and a worker isolate
+  void _handleResponsesFromIsolate(dynamic message) {
     if (message is SendPort) {
-      sendPortToMainApp = message;
-      sendPortToMainApp.send(sendPortToSpawnedIsolate);
+      _sendPort = message;
+    } else if (message is Map<String, dynamic>) {
+      print(message);
     }
-
-    // This listener callback will be called each time a subsequent message
-    // is sent from the main isolate to the worker isolate
-    receivePortInSpawnedIsolate.listen((dynamic message) async {
-      if (message is String) {
-        // This code makes a network request, and will receive a JSON blob
-        final client = http.Client();
-        final uri = Uri.parse('https://jsonplaceholder.typicode.com/$message');
-        final response = await client.get(uri);
-
-        // returns a list of Maps that represent individual json objects
-        final dynamic jsonData = jsonDecode(response.body) as List<dynamic>;
-
-        switch (message) {
-          case 'photos':
-            final photos = jsonData.map((dynamic element) {
-              final data = element as Map<String, dynamic>;
-              return Photo.fromJson(data);
-            }).toList();
-            sendPortToMainApp.send(photos);
-          case 'comments':
-          // TODO: add support for fetching comments
-          default:
-            // TODO: add support for other resources.
-            throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, TODOs, and'
-                ' users');
-        }
-      } else {
-        throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
-      }
-    });
   }
-}
+
+// rest of class..
 ```
 
-The `_workerIsolateEntryPoint` method has been updated to…
+#### Step 5: Add a completer to ensure your isolate is set-up
 
-- create a ReceivePort, which will be listened to for messages that are emitted
-  from the main isolate. This first message sent, which is the send port passed
-  to Isolate.spawn, is not sent via the ports you’re setting up, so this
-  listener will not be triggered when this method is invoked.
-  The `receivePortInSpawnedIsolate.listen` callback will be called on each
-  subsequent message sent to the worker isolate.
-- create a variable called `sendPortToSpawnedIsolate` and assigns the newly
-  created ReceivePort’s send port to it. This send port will be sent back to the
+To complete the class, define a public method called `parseJson`, which is
+responsible for sending messages to the worker isolate. It also needs to ensure
+that messages can be sent before the isolate is fully set up. You will handle
+this by using a [`Completer`][].
+
+- First, add a class-level property called a `Completer` and name
+  it `_isolateReady`.
+- Next, add a call to `complete()` on the completer in
+  the `_handleResponsesFromIsolate` method (created in step 4) if the message is
+  a `SendPort`.
+- Finally, in the `parseJson` method, add `await _isolateReady.future` before
+  adding `_sendPort.send`. This ensures that no message can be sent to the
+  worker isolate until it is spawned _and_ has sent its `SendPort` back to the
   main isolate.
-- check to see if the message being sent via Isolate.spawn is a SendPort, which
-  it should be. If it is, it assigns that SendPort to a local variable, so that
-  this isolate can send messages back to the main isolate in the future. Within
-  this if-clause, the worker isolate is also sending its own SendPort back to
-  the main isolate. (This completes the set up of 2-way communication.)
-- add a listener callback to the worker isolate’s ReceivePort. This callback is
-  what will be called on all subsequent messages sent to the isolate. For this
-  example, that means this callback will be making the HTTP request to Typicode,
-  decoding json, and sending the List of Photos objects back to the main
-  isolate.
 
-#### 4: Complete the isolate entry point method
-
-This snippet adds the completed code for the method `_handleMessageToMainIsolate`, as well as needed variables for the class `_sendPortToWorkerIsolate` and a completer called `_isolateReady`.
-
-<?code-excerpt "lib/ports_example/ports_example_step_4.dart"?>
+<?code-excerpt "lib/basic_ports_example/parse_json.dart"?>
 ```dart
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:isolate';
+class Worker {
+  late SendPort _sendPort;
+  final Completer _isolateReady = Completer.sync(); // New
 
-import 'package:http/http.dart' as http;
-
-class BackgroundWorker {
-  BackgroundWorker() {
-    _initIsolate();
-  }
-
-  late Isolate _isolate;
-  late SendPort _sendPortToWorkerIsolate;
-  final Completer<void> _isolateReady = Completer<void>();
-
-  Future<void> _initIsolate() async {
-    // This receive port will receive messages from the spawned worker
-    // isolate that are put into the [sendPortToMainIsolate].
-    final mainIsolateReceivePort = ReceivePort();
-
-    // This send port is sent to the spawned isolate, so the isolate can put
-    // messages in, which will emit from the [receivePortFromIsolate].
-    final sendPortToMainIsolate = mainIsolateReceivePort.sendPort;
-
-    // When a message is passed from the worker isolate to the
-    // [mainIsolateReceivePort], the [_handleMessageToMainIsolate] callback
-    // is called with the message as an argument.
-    mainIsolateReceivePort.listen(_handleMessageToMainIsolate);
-
-    // Spawn the worker isolate.
-    // The first argument passed to Isolate.spawn is a callback, which will
-    // be called whenever a message is sent from the main isolate to the
-    // worker isolate, via the [SendPort.send] method.
-    // The second argument passed is the message that will be sent via
-    // [SendPort.send]. In this case, I'm sending the sendPort that the
-    // worker isolate will need to send messages back to the main isolate
-    _isolate = await Isolate.spawn(
-      _workerIsolateEntryPoint,
-      sendPortToMainIsolate,
-    );
-  }
-
-  // This method will be called whenever [sendPortToMainIsolate.send] is used
-  // to send a message from the worker isolate back to the main isolate
-  void _handleMessageToMainIsolate(dynamic message) {
-    // The initial message will be a send port, which allows us to send
-    // future messages to the worker isolate
+  void _handleResponsesFromIsolate(dynamic message) {
     if (message is SendPort) {
-      _sendPortToWorkerIsolate = message;
-      _isolateReady.complete();
-      // Subsequent messages will be data that has been fetched from
-      // the network, and decoded into Dart objects
-    } else if (message is List<Photo>) {
-      // TODO: handle successful Photo fetch
-    } else {
-      throw const SocketException(
-          'Unexpected message type coming from the spawned isolate');
+      _sendPort = message;
+      _isolateReady.complete(); // New
+    } else if (message is Map<String, dynamic>) {
+      print(message);
     }
   }
 
-  // This method must be static
-  // This method is the your one and only chance to communicate with the
-  // worker isolate.
-  // This is the only code that will be run, exactly once, when the isolate is
-  // spawned, and it will be passed as an argument the second argument passed
-  // to Isolate.spawn()
-  // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the send port from the main
-  //   isolate
-  //   - It needs to create another Port, one that can continue to receive
-  //   messages from the main isolate. And, it needs to send the
-  //   corresponding sendPort back to the main isolate.
-  //   - It needs to add a listener to the new Port, so it can handle
-  //   messages that the main isolate sends to the worker over time.
-  static void _workerIsolateEntryPoint(dynamic message) {
-    // This [ReceivePort] will allow the spawned worker isolate to receive
-    // future methods from the main app isolate
-    final receivePortInSpawnedIsolate = ReceivePort();
-
-    // This [SendPort] will be passed back to the main isolate, which allows the
-    // main app isolate to send future messages to the worker isolate
-    final sendPortToSpawnedIsolate = receivePortInSpawnedIsolate.sendPort;
-
-    // This [SendPort] will come from the main app isolate as the initial
-    // message, and allow this isolate to pass messages back to the main app.
-    late SendPort sendPortToMainApp;
-
-    // The initial message will always be a SendPort, because that's the
-    // second argument passed to Isolate.spawn.
-    // With that SendPort, this isolate can send the
-    // [sendPortToSpawnedIsolate] back to the main app isolate,
-    // which will allow the main app to send more messages
-    // to this isolate in the future.
-    // Thus, completing the logic needed to set up 2-way communication
-    // between the main isolate and a worker isolate
-    if (message is SendPort) {
-      sendPortToMainApp = message;
-      sendPortToMainApp.send(sendPortToSpawnedIsolate);
-    }
-
-    // This listener callback will be called each time a subsequent message
-    // is sent from the main isolate to the worker isolate
-    receivePortInSpawnedIsolate.listen((dynamic message) async {
-      if (message is String) {
-        // This code makes a network request, and will receive a JSON blob
-        final client = http.Client();
-        final uri = Uri.parse('https://jsonplaceholder.typicode.com/$message');
-        final response = await client.get(uri);
-
-        // returns a list of Maps that represent individual json objects
-        final dynamic jsonData = jsonDecode(response.body) as List<dynamic>;
-
-        switch (message) {
-          case 'photos':
-            final photos = jsonData.map((dynamic element) {
-              final data = element as Map<String, dynamic>;
-              return Photo.fromJson(data);
-            }).toList();
-            sendPortToMainApp.send(photos);
-          case 'comments':
-          // TODO: add support for fetching comments
-          default:
-            // TODO: add support for other resources.
-            throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, TODOs, and'
-                ' users');
-        }
-      } else {
-        throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
-      }
-    });
-  }
-}
-```
-The `_handleMessageToMainIsolate` has been updated to handle the two possible
-messages that our isolate could send back to the main isolate.
-
-First, it will send back a SendPort as the first message, and this method will
-assign that port to a local variable, and then it will complete the _
-isolateReady completer. This completer will stop the consumers of this class
-from requesting work from the worker isolate until the 2-way communication is
-established. In the next snippet, you can see how that completer is being used.
-
-Secondly, the `_handleMessageToMainIsolate` method will handle messages from the
-worker isolate that are of type `List<Photo>`. In this case, it will add those
-photos to a StreamController, which is shown in the next snippet.
-
-As a reminder, this method is given to the `ReceivePort.listener` in
-the `_initIsolate` method.
-
-### Complete code example
-
-This final snippet adds code that is needed to make this class compile, but it’s not needed to understand or use isolates. The new code adds the public facing API for this class.
-
-<?code-excerpt "lib/ports_example/ports_example_complete.dart"?>
-```dart
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:isolate';
-
-import 'package:http/http.dart' as http;
-
-class BackgroundWorker {
-  BackgroundWorker() {
-    _initIsolate();
-  }
-
-  late Isolate _isolate;
-  late SendPort _sendPortToWorkerIsolate;
-  final Completer<void> _isolateReady = Completer<void>();
-  final StreamController<List<Photo>> _outboundStreamController =
-      StreamController();
-  Stream<List<Photo>> get photos => _outboundStreamController.stream;
-
-  void fetchTypicodeDataFromNetwork(String resource) async {
+  // New
+  Future parseJson(String message) async {
     await _isolateReady.future;
-    _sendPortToWorkerIsolate.send(resource);
+    _sendPort.send(message);
+  }
+// rest of class..
+```
+
+#### Complete example
+
+<details>
+<summary>Expand to see complete example</summary>
+
+<?code-excerpt "lib/basic_ports_example/complete.dart"?>
+```dart
+import 'dart:async';
+import 'dart:convert';
+import 'dart:isolate';
+
+void main() async {
+  final worker = Worker();
+  await worker.spawn();
+  await worker.parseJson('{"key":"value"}');
+}
+
+class Worker {
+  late SendPort _sendPort;
+  final Completer<void> _isolateReady = Completer.sync();
+
+  Future<void> spawn() async {
+    final receivePort = ReceivePort();
+    receivePort.listen(_handleResponsesFromIsolate);
+    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
   }
 
-  Future<void> _initIsolate() async {
-    // This receive port will receive messages from the spawned worker
-    // isolate that are put into the [sendPortToMainIsolate].
-    final mainIsolateReceivePort = ReceivePort();
-
-    // This send port is sent to the spawned isolate, so the isolate can put
-    // messages in, which will emit from the [receivePortFromIsolate].
-    final sendPortToMainIsolate = mainIsolateReceivePort.sendPort;
-
-    // When a message is passed from the worker isolate to the
-    // [mainIsolateReceivePort], the [_handleMessageToMainIsolate] callback
-    // is called with the message as an argument.
-    mainIsolateReceivePort.listen(_handleMessageToMainIsolate);
-
-    // Spawn the worker isolate.
-    // The first argument passed to Isolate.spawn is a callback, which will
-    // be called whenever a message is sent from the main isolate to the
-    // worker isolate, via the [SendPort.send] method.
-    // The second argument passed is the message that will be sent via
-    // [SendPort.send]. In this case, I'm sending the sendPort that the
-    // worker isolate will need to send messages back to the main isolate
-    _isolate = await Isolate.spawn(
-      _workerIsolateEntryPoint,
-      sendPortToMainIsolate,
-    );
-  }
-
-  // This method will be called whenever [sendPortToMainIsolate.send] is used
-  // to send a message from the worker isolate back to the main isolate
-  void _handleMessageToMainIsolate(dynamic message) {
-    // The initial message will be a send port, which allows us to send
-    // future messages to the worker isolate
+  void _handleResponsesFromIsolate(dynamic message) {
     if (message is SendPort) {
-      _sendPortToWorkerIsolate = message;
+      _sendPort = message;
       _isolateReady.complete();
-      // Subsequent messages will be data that has been fetched from
-      // the network, and decoded into Dart objects
-    } else if (message is List<Photo>) {
-      // TODO: handle successful Photo fetch
-    } else {
-      throw const SocketException(
-          'Unexpected message type coming from the spawned isolate');
+    } else if (message is Map<String, dynamic>) {
+      print(message);
     }
   }
 
-  // This method must be static
-  // This method is the your one and only chance to communicate with the
-  // worker isolate.
-  // This is the only code that will be run, exactly once, when the isolate is
-  // spawned, and it will be passed as an argument the second argument passed
-  // to Isolate.spawn()
-  // This method needs to accomplish several goals:
-  //   - It needs to handle the initial message -- the send port from the main
-  //   isolate
-  //   - It needs to create another Port, one that can continue to receive
-  //   messages from the main isolate. And, it needs to send the
-  //   corresponding sendPort back to the main isolate.
-  //   - It needs to add a listener to the new Port, so it can handle
-  //   messages that the main isolate sends to the worker over time.
-  static void _workerIsolateEntryPoint(dynamic message) {
-    // This [ReceivePort] will allow the spawned worker isolate to receive
-    // future methods from the main app isolate
-    final receivePortInSpawnedIsolate = ReceivePort();
+  static void _startRemoteIsolate(SendPort port) {
+    final receivePort = ReceivePort();
+    port.send(receivePort.sendPort);
 
-    // This [SendPort] will be passed back to the main isolate, which allows the
-    // main app isolate to send future messages to the worker isolate
-    final sendPortToSpawnedIsolate = receivePortInSpawnedIsolate.sendPort;
-
-    // This [SendPort] will come from the main app isolate as the initial
-    // message, and allow this isolate to pass messages back to the main app.
-    late SendPort sendPortToMainApp;
-
-    // The initial message will always be a SendPort, because that's the
-    // second argument passed to Isolate.spawn.
-    // With that SendPort, this isolate can send the
-    // [sendPortToSpawnedIsolate] back to the main app isolate,
-    // which will allow the main app to send more messages
-    // to this isolate in the future.
-    // Thus, completing the logic needed to set up 2-way communication
-    // between the main isolate and a worker isolate
-    if (message is SendPort) {
-      sendPortToMainApp = message;
-      sendPortToMainApp.send(sendPortToSpawnedIsolate);
-    }
-
-    // This listener callback will be called each time a subsequent message
-    // is sent from the main isolate to the worker isolate
-    receivePortInSpawnedIsolate.listen((dynamic message) async {
+    receivePort.listen((dynamic message) async {
       if (message is String) {
-        // This code makes a network request, and will receive a JSON blob
-        final client = http.Client();
-        final uri = Uri.parse('https://jsonplaceholder.typicode.com/$message');
-        final response = await client.get(uri);
-
-        // returns a list of Maps that represent individual json objects
-        final dynamic jsonData = jsonDecode(response.body) as List<dynamic>;
-
-        switch (message) {
-          case 'photos':
-            final photos = jsonData.map((dynamic element) {
-              final data = element as Map<String, dynamic>;
-              return Photo.fromJson(data);
-            }).toList();
-            sendPortToMainApp.send(photos);
-          case 'comments':
-          // TODO: add support for fetching comments
-          default:
-            // TODO: add support for other resources.
-            throw Exception('Resource endpoint sent to isolate port has an '
-                'unexpected type. The options are: photos, albums, TODOs, and'
-                ' users');
-        }
-      } else {
-        throw const SocketException(
-            'Message sent to isolate port has an unexpected type');
+        final transformed = jsonDecode(message);
+        port.send(transformed);
       }
     });
   }
 
-  void dispose() {
-    _outboundStreamController.close();
-    _isolate.kill();
-  }
-}
-
-class Photo {
-  final int albumId;
-  final int id;
-  final String title;
-  final String thumbnailUrl;
-
-  Photo({
-    required this.albumId,
-    required this.id,
-    required this.title,
-    required this.thumbnailUrl,
-  });
-
-  factory Photo.fromJson(Map<String, dynamic> data) {
-    return Photo(
-      albumId: data['albumId'] as int,
-      id: data['id'] as int,
-      title: data['title'] as String,
-      thumbnailUrl: data['thumbnailUrl'] as String,
-    );
+  Future<void> parseJson(String message) async {
+    await _isolateReady.future;
+    _sendPort.send(message);
   }
 }
 ```
+</details>
