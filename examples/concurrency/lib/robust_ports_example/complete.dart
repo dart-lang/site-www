@@ -43,9 +43,8 @@ class Worker {
     };
 
     // Spawn the isolate
-    final Isolate isolate;
     try {
-      isolate = await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
+      await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
       initPort.close();
       rethrow;
@@ -102,7 +101,7 @@ class Worker {
   void close() {
     if (!_closed) {
       _closed = true;
-      _commands.send("shutdown");
+      _commands.send('shutdown');
       if (_activeRequests.isEmpty) _responses.close();
       print('--- port closed --- ');
     }

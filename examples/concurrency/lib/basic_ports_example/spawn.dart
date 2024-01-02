@@ -20,7 +20,7 @@ class Worker {
     // TODO: Handle messages sent back from the worker isolate.
   }
 
-  Future parseJson(String message) async {
+  Future<void> parseJson(String message) async {
     // TODO: Define a public method that can
     // be used to send messages to the worker isolate.
   }

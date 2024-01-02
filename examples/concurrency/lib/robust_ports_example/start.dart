@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, body_might_complete_normally_nullable, unused_element
+
 import 'dart:isolate';
 
 // #docregion

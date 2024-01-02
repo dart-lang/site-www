@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, body_might_complete_normally_nullable, unused_element
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -19,9 +21,8 @@ class Worker {
       ));
     };
     // Spawn the isolate
-    final Isolate isolate;
     try {
-      isolate = await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
+      await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
       initPort.close();
       rethrow;
