@@ -167,8 +167,8 @@ class Point {
 }
 ```
 
-Uninitialized instance variables declared with
-[nullable types][] have the value `null`.
+An uninitialized instance variable declared with a
+[nullable type][] has the value `null`.
 Non-nullable instance variables [must be initialized][] at declaration.
 
 All instance variables generate an implicit *getter* method.
@@ -370,5 +370,5 @@ can pass a static method as a parameter to a constant constructor.
 [initializer list]: /language/constructors#initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
-[nullable types]: /null-safety/understanding-null-safety#using-nullable-types
+[nullable type]: /null-safety/understanding-null-safety#using-nullable-types
 [must be initialized]: /null-safety/understanding-null-safety#uninitialized-variables

@@ -11,6 +11,6 @@ class Point {
   // OK, can access `this` in `late` initializer.
 
   Point(this.x, this.y);
-  // OK, not an initializing expression, can access `this`.
+  // OK, `this.someName` is a parameter declaration, not an expression.
 }
 // #enddocregion this-late
