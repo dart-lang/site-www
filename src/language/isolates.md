@@ -406,7 +406,7 @@ Future<void> spawn() async {
 ```
 
 Also recall that you sent a `SendPort` back to the main isolate
-in [step 3](step-3-execute-code-on-worker-isolate). This method handles the
+in [step 3](#step-3-execute-code-on-the-worker-isolate). This method handles the
 receipt of that `SendPort`, as well as handling future messages (which will be
 decoded JSON).
 
@@ -720,7 +720,7 @@ class Worker {
 
 Next, add the code to `_startRemoteIsolate` that is responsible for initializing
 the ports on the worker
-isolate. [Recall](#step-3-spawn-a-new-isolate-with-isolate-spawn) that this
+isolate. [Recall](#step-3-spawn-a-worker-isolate-with-isolatespawn) that this
 method was passed to `Isolate.spawn` in the `Worker.spawn` method, and it will
 be passed the main isolate’s `SendPort` as an argument.
 
