@@ -318,7 +318,7 @@ class Worker {
     // TODO: Handle messages sent back from the worker isolate.
   }
 
-  Future parseJson(String message) async {
+  Future<void> parseJson(String message) async {
    // TODO: Define a public method that can 
  // be used to send messages to the worker isolate.
   }
@@ -672,14 +672,13 @@ class Worker {
     initPort.handler = (initialMessage) {
       final commandPort = initialMessage as SendPort;
       connection.complete((
-      ReceivePort.fromRawReceivePort(initPort),
-      commandPort,
+        ReceivePort.fromRawReceivePort(initPort),
+        commandPort,
       ));
     };
     // Spawn the isolate
-    final Isolate isolate;
     try {
-      isolate = await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
+      await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
       initPort.close();
       rethrow;
@@ -1024,9 +1023,8 @@ class Worker {
     };
 
     // Spawn the isolate
-    final Isolate isolate;
     try {
-      isolate = await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
+      await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
       initPort.close();
       rethrow;
@@ -1083,7 +1081,7 @@ class Worker {
   void close() {
     if (!_closed) {
       _closed = true;
-      _commands.send("shutdown");
+      _commands.send('shutdown');
       if (_activeRequests.isEmpty) _responses.close();
       print('--- port closed --- ');
     }

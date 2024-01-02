@@ -7,7 +7,7 @@ import 'dart:isolate';
 // #docregion
 class Worker {
   late SendPort _sendPort;
-  final Completer _isolateReady = Completer.sync(); // New
+  final Completer<void> _isolateReady = Completer.sync(); // New
 
   void _handleResponsesFromIsolate(dynamic message) {
     if (message is SendPort) {
