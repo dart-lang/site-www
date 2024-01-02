@@ -14,8 +14,9 @@ To learn more about the Dart language,
 visit the in-depth, individual topic pages
 listed under **Language** in the left side menu.
 
-For coverage of Dart's core libraries, check out the [library tour](/guides/libraries/library-tour).
-You can also visit the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
+For coverage of Dart's core libraries,
+check out the [core library documentation](/libraries).
+You can also try the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
 for a more hands-on introduction.
 
 
@@ -548,7 +549,7 @@ keep these facts and concepts in mind:
 ## Additional resources
 
 You can find more documentation and code samples in the
-[library tour](/guides/libraries/library-tour)
+[core library documentation](/libraries/dart-core)
 and the [Dart API reference]({{site.dart-api}}).
 This site's code follows the conventions in the
 [Dart style guide](/effective-dart/style).

@@ -166,9 +166,8 @@ try {
 }
 ```
 
-Learn more by reading the
-[Exceptions](/guides/libraries/library-tour#exceptions)
-section of the library tour.
+To learn more, check out the
+[core library exception docs](/libraries/dart-core#exceptions).
 
 ## Assert
 

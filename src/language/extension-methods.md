@@ -9,19 +9,22 @@ nextpage:
   title: Callable objects
 ---
 
+{% include yt_shims.liquid %}
+
 Extension methods add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/D3j0OSfT9ZI"
-frameborder="0"
-allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen>
+If watching videos helps you learn,
+check out this overview of extension methods.
+
+<iframe
+  {{yt-std-size}}
+  title="Learn about extension methods in Dart"
+  src="{{yt-embed}}/D3j0OSfT9ZI"
+  {{yt-set}}>
 </iframe>
-_If you like to learn by watching videos,
-here's a good overview of extension methods._
 
 ## Overview
 

@@ -23,7 +23,7 @@ Flutter web support
 and other web app frameworks for Dart are powered by the Dart web platform.
 
 <p class="text-center">
-  <a href="/tutorials/web/get-started" class="btn btn-primary btn-lg">Get started</a>
+  <a href="/web/get-started" class="btn btn-primary btn-lg">Build a web app with Dart</a>
 </p>
 
 <p class="text-center">
@@ -35,8 +35,8 @@ and other web app frameworks for Dart are powered by the Dart web platform.
   <em>Flutter Gallery, running in a web browser</em>
 </p>
 
-[core libraries]: /guides/libraries#web-platform-libraries
-[DOM]: /tutorials/web/low-level-html/connect-dart-html
+[core libraries]: /libraries#web-platform-libraries
+[DOM]: /web/get-started
 [Flutter]: {{site.flutter}}
 [Flutter web]: {{site.flutter}}/web
 [interop]: /interop/js-interop

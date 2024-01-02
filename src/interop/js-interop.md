@@ -30,7 +30,7 @@ For help using the `js` package, see the following:
 
 Dart's JS interop story is currently evolving. 
 Many of the features that enable future JS interop
-are ready to experiment with as of Dart version 2.19.
+are ready to experiment with as of Dart version 3.2.
 These features support the existing production
 and development web compilers, 
 as well as Dart's in-progress Wasm compiler ([`dart2wasm`][]).
@@ -44,7 +44,7 @@ However, the features available for preview are much closer
 to future JS interop than any pattern supported today.
 So, there are a few reasons to try them out now:
 
-* New JS interop developers can learn and build with future JS interop
+* New JS interop developers can learn and build with future JS interop,
   so they won't have to unlearn obsolete patterns in a few months.
 * Existing JS interop developers eager to experiment with
   the latest features in JS interop 
@@ -57,18 +57,16 @@ expected to work across compilers for JS interop.
 
 *Requirements:*
 
-* Dart SDK constraint: `>= 2.19`
-* [`package:js`][] constraint: `>= 0.6.6`
+* Dart SDK constraint: `>= 3.2`
 
 [`dart2wasm`]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm#running-dart2wasm
-[Dart 3]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
-[`package:js`]: {{site.pub-pkg}}/js
 
-### `package:js`
+### `dart:js_interop`
 
-The key feature of next-generation JS interop is [static interop][].
-We recommend using static interop as the default for `package:js`,
-as it is more declarative, more likely to be optimized,
+The key feature of next-generation JS interop is static interop.
+We recommend using static interop through [`dart:js_interop`][]
+as the default choice for interoping with JavaScript.
+It is more declarative and explicit, more likely to be optimized,
 more likely to perform better, and required for `dart2wasm`.
 Static interop addresses several gaps in the existing JS interop story:
 
@@ -85,10 +83,10 @@ Static interop addresses several gaps in the existing JS interop story:
   and making the boundary between the two languages more visible.
   For example, it enforces that JS classes are not meant to be mixed with Dart
   (dynamic calls aren't allowed, 
-  and JS interop types cannot be implemented as a Dart class).
+  and JS interop types can't be implemented by a Dart class).
 
 You can implement static interop using
-the `package:js` annotation [`@staticInterop`][].
+the `dart:js_interop` annotation [`@staticInterop`][].
 The set of features for future static interop currently includes:
 
 * `@staticInterop` interfaces
@@ -100,24 +98,26 @@ The set of features for future static interop currently includes:
 * Top-level external members
 * [`@JSExport`][] for mocking and exports
 
-To learn how to implement static interop and see examples,
-visit the [static interop][] specification.
+For examples that showcase how to use static interop,
+check out the [implementation of `package:web`][package-web],
+which provides bindings to browser APIs using static interop.
 
-[`@staticInterop`]: {{site.pub-api}}/js/latest/js/staticInterop-constant.html
-[static interop]: {{site.pub-pkg}}/js#staticinterop
-[`@JSExport`]: {{site.pub-pkg}}/js#jsexport-and-js_utilcreatedartexport
+[`@staticInterop`]: {{site.dart-api}}/dart-js_interop/staticInterop-constant.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/dart-js_interop-library.html
+[`@JSExport`]: {{site.pub-pkg}}/dart-js_interop/JSExport-class.html
+[package-web]: https://github.com/dart-lang/web
 
-### `dart:js_util`
+### `dart:js_interop_unsafe`
 
-[`dart:js_util`][] provides low-level interop API
+[`dart:js_interop_unsafe`][] provides low-level interop API
 and is supported by the JS and `dart2wasm` backends.
-`dart:js_util` can provide more flexibility,
+`dart:js_interop_unsafe` can provide more flexibility,
 for example, in potential, rare edge cases we haven't yet
 accounted for where static interop is not expressive enough.
 
 However, it is not as ergonomic, and we do not plan
 to optimize it in the same way as static interop.
 As a result, we highly recommend using static interop over
-`dart:js_util` whenever it's possible.
+`dart:js_interop_unsafe` whenever it's possible.
 
-[`dart:js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html

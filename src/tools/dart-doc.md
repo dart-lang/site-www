@@ -46,7 +46,7 @@ $ dart help doc
 ```
 
 [documentation comments]: /language/comments#documentation-comments
-[effective doc]: /effective-dart/usage#do-use-strings-in-part-of-directives
+[effective doc]: /effective-dart/documentation#doc-comments
 [Markdown]: {{site.pub-pkg}}/markdown
 
 {% comment %}

@@ -89,10 +89,11 @@ void main() {
 }
 ```
 
-## The null assertion operator (!)
+<a id="the-null-assertion-operator-"></a>
+## The non-null assertion operator (!)
 
 If you're sure an expression with a nullable type doesn't equal `null`,
-you can use the [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+you can use the [non-null assertion operator][]
 (`!`) to make Dart treat it as non-nullable.
 By adding `!` after the expression,
 you assert two conditions to Dart about the expression:
@@ -105,6 +106,8 @@ you assert two conditions to Dart about the expression:
   This makes the `!` operator _unsafe_.
   Don't use it unless you have no doubt the expression can't equal `null`.
 {{site.alert.end}}
+
+[non-null assertion operator]: /null-safety/understanding-null-safety#non-null-assertion-operator
 
 ### Exercise: Null assertion
 
@@ -139,7 +142,7 @@ You can also use null-aware operators to handle nullable values.
 Sometimes the flow of the program tells you that the value of an
 expression cannot be `null`.
 To force Dart to treat that expression as non-nullable,
-add the [null assertion operator](#the-null-assertion-operator-) (`!`).
+add the [non-null assertion operator](#the-non-null-assertion-operator-) (`!`).
 If the value does equal `null`, using this operator throws an exception.
 
 To handle potential `null` values, use the conditional property access
