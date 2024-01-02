@@ -209,7 +209,7 @@ Ports behave similarly to [`Stream`][] objects
 You can think of a `SendPort` and `ReceivePort` like
 Stream's `StreamController` and listeners, respectively.
 A `SendPort` is like a `StreamController` because you "add" messages to them
-with the [`send()` method][], and those messages are handled by a listener,
+with the [`SendPort.send()` method][], and those messages are handled by a listener,
 in this case the `ReceivePort`. Handling messages received by
 the `RecievePort` is done by calling a provided callback with the message as
 an argument.
@@ -281,9 +281,11 @@ It does not cover important pieces of functionality that are expected
 in production software, like error handling, shutting down ports,
 and message sequencing.
 
-The [Robust ports example][] in the next section covers this functionality and
+The [robust ports example][] in the next section covers this functionality and
 discusses some of the issues that can arise without it.
 {{site.alert.warn}}
+
+[robust ports example]: #robust-ports-example
 
 #### Step 1: Define the worker class
 
@@ -1092,6 +1094,14 @@ class Worker {
 
 </details>
 
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[main isolate]: /language/concurrency#isolates
+[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`BroadcastStream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/BroadcastStream-class.html
 [`Completer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Completer-class.html
 [`RawReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/RawReceivePort-class.html
 [record]: /language/patterns
