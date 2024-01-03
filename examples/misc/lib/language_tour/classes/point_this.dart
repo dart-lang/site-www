@@ -1,5 +1,4 @@
 // ignore_for_file: invalid_reference_to_this, unnecessary_this
-// #docregion this-late
 double initialX = 1.5;
 
 class Point {
@@ -15,4 +14,3 @@ class Point {
   // OK, `this.fieldName` is a parameter declaration, not an expression:
   Point(this.x, this.y);
 }
-// #enddocregion this-late

@@ -198,7 +198,7 @@ before the constructor and its initializer list execute.
 As a result, the initializing expression (after the `=`)
 of a non-`late` instance variable can't access `this`.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_this.dart (this-late)"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_this.dart"?>
 ```dart
 double initialX = 1.5;
 
