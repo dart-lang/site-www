@@ -101,6 +101,8 @@
           permalink: /language/concurrency
         - title: Asynchronous support
           permalink: /language/async
+        - title: Isolates
+          permalink: /language/isolates
     - title: Null safety
       expanded: false
       children:
