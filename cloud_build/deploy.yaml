@@ -9,6 +9,7 @@ steps:
         set -e
         echo "Building the website using a makefile..."
         make build
+        make write-prod-robots
   - name: gcr.io/flutter-dev-230821/firebase-ghcli
     entrypoint: '/bin/bash'
     args:
