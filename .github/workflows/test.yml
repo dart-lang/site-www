@@ -1,0 +1,66 @@
+name: test
+
+on:
+  # Run on PRs and pushes to the default branch.
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 0"
+
+# Declare default permissions as read only.
+permissions: read-all
+
+env:
+  # Keep for Dart SDK reporting
+  PUB_ENVIRONMENT: bot.github
+  # LTS
+  NODE_VERSION: '20'
+  # Tool location
+  BASE_DIR: ${{ github.workspace }}
+  TOOL_DIR: ${{ github.workspace }}/tool
+
+jobs:
+  test:
+    name: Check excerpts and run tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sdk: beta
+            experimental: false
+          - sdk: stable
+            experimental: false
+    continue-on-error: ${{ matrix.experimental }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
+        with:
+          sdk: ${{ matrix.sdk }}
+      - run: dart pub get
+      - run: tool/test.sh
+        env:
+          DART_CHANNEL: ${{ matrix.sdk }}
+
+  linkcheck:
+    name: Build site and check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - run: make build
+      - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm install -g firebase-tools@13.0.2
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
+        with:
+          sdk: stable
+      - run: tool/check-links.sh
