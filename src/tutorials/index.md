@@ -38,10 +38,6 @@ which are fundamental to most Dart programs.
 
 {% include server-tutorials.md %}
 
-## Web apps
-
-{% include web-tutorials.md %}
-
 ## More tutorials
 
 Check out the [Flutter codelabs and tutorials]({{site.flutter-docs}}/codelabs).

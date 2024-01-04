@@ -236,7 +236,8 @@ Dart web contains two compilation modes:
   techniques such as dead-code elimination.
 
 More information:
-* [Get started: Web apps](/tutorials/web/get-started)
+
+* [Build a web app with Dart](/web/get-started)
 * [`dart compile js`](/tools/dart-compile#js)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
