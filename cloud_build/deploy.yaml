@@ -15,3 +15,5 @@ steps:
       - '-c'
       - |-
         cloud_build/scripts/check_links_and_publish.sh
+options:
+  logging: CLOUD_LOGGING_ONLY
