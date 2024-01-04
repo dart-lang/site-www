@@ -1,3 +1,6 @@
+# This GitHub workflow has been disabled and is no longer used. 
+# Website deploys are now done through Cloud Build. 
+# See https://github.com/dart-lang/site-www/pull/5447
 name: deploy
 
 on:
