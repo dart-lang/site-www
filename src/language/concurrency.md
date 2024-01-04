@@ -21,8 +21,9 @@ nextpage:
 
 This page contains a conceptual overview of how concurrent programming works in
 Dart. It explains the event-loop, async language features, and isolates from
-a high-level. For more practical code examples of using async features,
-read the [Asynchrony support](/language/async).
+a high-level. For more practical code examples of using concurrency in Dart,
+read the [Asynchrony support](/language/async) page and 
+[Isolates](/language/isolates) page.
 
 Concurrent programming in Dart refers to both asynchronous APIs, like `Future`
 and `Stream`, and *isolates*, which allow you to move processes to separate
@@ -345,8 +346,9 @@ block without affecting other isolates.
 There are two ways to work with isolates in Dart, depending on the use-case:
 
 * Use [`Isolate.run()`][] to perform a single computation on a separate thread.
-* Use [`Isolate.spawn()`][] to create an isolate that will handle
-  multiple messages over time, or a background worker.
+* Use [`Isolate.spawn()`][] to create an isolate that will handle multiple
+  messages over time, or a background worker. For more information on working
+  with long-lived isolates, read the [Isolates](/language/isolates) page.
 
 In most cases, `Isolate.run` is the recommended
 API to run processes in the background.
