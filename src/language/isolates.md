@@ -438,7 +438,7 @@ To handle this, use a [`Completer`][].
 - First, add a class-level property called a `Completer` and name
   it `_isolateReady`.
 - Next, add a call to `complete()` on the completer in
-  the `_handleResponsesFromIsolate` method (created in step 4) if the message is
+  the `_handleResponsesFromIsolate` method (created in [step 4](#step-4-handle-messages-on-the-main-isolate)) if the message is
   a `SendPort`.
 - Finally, in the `parseJson` method, add `await _isolateReady.future` before
   adding `_sendPort.send`. This ensures that no message can be sent to the
@@ -549,18 +549,18 @@ class Worker {
   final ReceivePort _responses;
 
   Future<Object?> parseJson(String message) async {
-    // TODO: ensure the port is still open
+    // TODO: Ensure the port is still open.
     _commands.send(message);
   }
 
   static Future<Worker> spawn() async {
     // TODO: Add functionality to create a new Worker object with a
-    //  connection to a spawned isolate
+    //  connection to a spawned isolate.
     throw UnimplementedError();
   }
 
   Worker._(this._commands, this._responses) {
-    // TODO: initialize main isolate receive port listener
+    // TODO: Initialize main isolate receive port listener.
   }
 
   void _handleResponsesFromIsolate(dynamic message) {
@@ -572,7 +572,7 @@ class Worker {
   }
 
   static void _startRemoteIsolate(SendPort sp) {
-    // TODO: Initialize worker isolate's ports
+    // TODO: Initialize worker isolate's ports.
   }
 }
 ```
@@ -618,7 +618,7 @@ class Worker {
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add it's initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -643,7 +643,7 @@ logic that handles receiving messages after setting up communication is
 complete. This benefit will become more obvious as the logic in the other
 methods grows.
 
-#### Step 3: Spawn a worker isolate with `Isolate.spawn`.
+#### Step 3: Spawn a worker isolate with `Isolate.spawn`
 
 This step continues to fill in the `Worker.spawn` method. You’ll add the code
 needed to spawn an isolate, and return an instance of `Worker` from this class.
@@ -667,7 +667,7 @@ class Worker {
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add it's initial message handler
+    // Create a receive port and add its initial message handler
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -677,7 +677,7 @@ class Worker {
         commandPort,
       ));
     };
-    // Spawn the isolate
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
@@ -943,7 +943,7 @@ static void _handleCommandsToIsolate(
   SendPort sendPort,
 ) {
   receivePort.listen((message) {
-    // New if-block
+    // New if-block.
     if (message == 'shutdown') {
       receivePort.close();
       return;
@@ -1023,7 +1023,7 @@ class Worker {
       ));
     };
 
-    // Spawn the isolate
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {

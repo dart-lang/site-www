@@ -42,7 +42,7 @@ class Worker {
       ));
     };
 
-    // Spawn the isolate
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {

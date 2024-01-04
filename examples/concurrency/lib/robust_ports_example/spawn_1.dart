@@ -9,7 +9,7 @@ class Worker {
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add it's initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -26,12 +26,12 @@ class Worker {
 // #enddocregion
 
   Future<Object?> parseJson(String message) async {
-    // TODO: ensure the port is still open
+    // TODO: Ensure the port is still open.
     _commands.send(message);
   }
 
   Worker._(this._commands, this._responses) {
-    // TODO: initialize main isolate receive port listener
+    // TODO: Initialize main isolate receive port listener.
   }
 
   void _handleResponsesFromIsolate(dynamic message) {
@@ -43,6 +43,6 @@ class Worker {
   }
 
   static void _startRemoteIsolate(SendPort sp) {
-    // TODO: Initialize worker isolate's ports
+    // TODO: Initialize worker isolate's ports.
   }
 }

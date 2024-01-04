@@ -24,7 +24,7 @@ class Worker {
         commandPort,
       ));
     };
-    // Spawn the isolate
+    // Spawn the isolate.
     try {
       await Isolate.spawn(_startRemoteIsolate, (initPort.sendPort));
     } on Object {
@@ -70,7 +70,7 @@ class Worker {
     SendPort sendPort,
   ) {
     receivePort.listen((message) {
-      // New if-block
+      // New if-block.
       if (message == 'shutdown') {
         receivePort.close();
         return;
