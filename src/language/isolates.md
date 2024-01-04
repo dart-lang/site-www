@@ -172,12 +172,12 @@ To do this, you can use some of the low-level isolate APIs that
 * [`SendPort.send()` method][]
 
 
-This section goes over the steps required to spawn a
-new isolate and establish 2-way communication between it and 
-the [main isolate][].
-The first example introduces the process at a high-level, 
-and the second example gradually adds more practical, 
-real-world functionality to the first.
+This section goes over the steps required to establish
+2-way communication between a newly spawned isolate
+and the [main isolate][].
+The first example, [Basic ports](#basic-ports-example), introduces the process
+at a high-level. The second example, [Robust ports](#robust-ports-example),
+gradually adds more practical, real-world functionality to the first.
 
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
@@ -197,10 +197,10 @@ A `ReceivePort` is an object that handles messages that are sent from other
 isolates. Those messages are sent via a `SendPort`.
 
 {{site.alert.note}}
-`SendPort` objects are associated with exactly one `ReceivePort`,
+A `SendPort` object is associated with exactly one `ReceivePort`,
 but a single `ReceivePort` can have many `SendPorts`.
-The `ReceivePort` creates a `SendPort` when it is created itself.
-You can create new `SendPorts` that
+When you create a `ReceivePort`, it creates a `SendPort` for itself.
+You can create additional `SendPorts` that
 can send messages to an existing `ReceivePort`.
 {{site.alert.end}}
 
@@ -210,9 +210,8 @@ You can think of a `SendPort` and `ReceivePort` like
 Stream's `StreamController` and listeners, respectively.
 A `SendPort` is like a `StreamController` because you "add" messages to them
 with the [`SendPort.send()` method][], and those messages are handled by a listener,
-in this case the `ReceivePort`. Handling messages received by
-the `RecievePort` is done by calling a provided callback with the message as
-an argument.
+in this case the `ReceivePort`. The `RecievePort` then handles the messages it
+receives by passing them as arguments to a callback that you provide. 
 
 #### Setting up ports
 
@@ -281,7 +280,7 @@ It does not cover important pieces of functionality that are expected
 in production software, like error handling, shutting down ports,
 and message sequencing.
 
-The [robust ports example][] in the next section covers this functionality and
+The [Robust ports example][] in the next section covers this functionality and
 discusses some of the issues that can arise without it.
 {{site.alert.end}}
 
@@ -297,11 +296,11 @@ This class contains all the functionality you need to:
 - Have the isolate decode some JSON.
 - Send the decoded JSON back to the main isolate.
 
-The class will expose two public methods: one that will spawn the worker 
-isolate, and one that will handle sending messages to that worker isolate.
+The class exposes two public methods: one that spawns the worker 
+isolate, and one that handles sending messages to that worker isolate.
 
-After this code snippet, the remaining snippets will fill in the class methods, 
-one-by-one.
+The remaining sections in this example will show you
+how to fill in the class methods, one-by-one.
 
 <?code-excerpt "lib/basic_ports_example/start.dart"?>
 ```dart
@@ -337,8 +336,9 @@ worker isolate and ensuring it can receive and send messages.
   listener, `_handleMessagesFromIsolate`, will be covered
   in [step 4](#step-4-handle-messages-on-the-main-isolate).
 - Finally, spawn the worker isolate with `Isolate.spawn`. It expects two
-  arguments: a function to be executed on the worker isolate (covered in step
-  3), and the `sendPort` property of the receive port.
+  arguments: a function to be executed on the worker isolate
+  (covered in [step 3](#step-3-execute-code-on-the-worker-isolate)),
+  and the `sendPort` property of the receive port.
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (spawn)"?>
 ```dart
@@ -360,7 +360,7 @@ In this step, you define the method `_isolateEntryPoint` that is sent to the
 worker isolate to be executed when it spawns. This method is like the “main”
 method for the worker isolate.
 
-- First, create another new `ReceivePort`. This port will be used to receive
+- First, create another new `ReceivePort`. This port receives
   future messages from the main isolate.
 - Next, send that port’s  `SendPort` back to the main isolate.
 - Finally, add a listener to the new `ReceivePort`. This listener handles
@@ -385,7 +385,7 @@ The listener on the worker’s `ReceivePort` decodes the JSON passed from the ma
 isolate, and then sends the decoded JSON back to the main isolate.
 
 This listener is the entry point for messages sent from the main isolate to the
-worker isolate. **This is the only chance you have to tell the isolate what code
+worker isolate. **This is the only chance you have to tell the worker isolate what code
 to execute in the future.**
 
 #### Step 4: Handle messages on the main isolate
@@ -411,7 +411,7 @@ receipt of that `SendPort`, as well as handling future messages (which will be
 decoded JSON).
 
 - First, check if the message is a `SendPort`. If so, assign that port to the
-  classes `_sendPort` property so it can be used to send messages later.
+  class's `_sendPort` property so it can be used to send messages later.
 - Next, check if the message is of type `Map<String, dynamic>`, the expected
   type of decoded JSON. If so, handle that message with your
   application-specific logic. In this example, the message is printed. 
@@ -432,8 +432,8 @@ void _handleResponsesFromIsolate(dynamic message) {
 
 To complete the class, define a public method called `parseJson`, which is
 responsible for sending messages to the worker isolate. It also needs to ensure
-that messages can be sent before the isolate is fully set up. You will handle
-this by using a [`Completer`][].
+that messages can be sent before the isolate is fully set up.
+To handle this, use a [`Completer`][].
 
 - First, add a class-level property called a `Completer` and name
   it `_isolateReady`.
@@ -456,7 +456,7 @@ Future<void> parseJson(String message) async {
 #### Complete example
 
 <details>
-<summary>Expand to see complete example</summary>
+<summary>Expand to see the complete example</summary>
 
 <?code-excerpt "lib/basic_ports_example/complete.dart"?>
 ```dart
@@ -513,7 +513,7 @@ class Worker {
 
 The [previous example][] explained the basic building blocks needed to set up a
 long-lived isolate with two-way communication. As mentioned, that example lacks
-some important features, such as error handling and the ability to close the
+some important features, such as error handling, the ability to close the
 ports when they’re no longer in use, and inconsistencies around message ordering
 in some situations.
 
@@ -538,8 +538,8 @@ all the functionality you need to:
 - Have the isolate decode some JSON.
 - Send the decoded JSON back to the main isolate.
 
-The class will expose three public methods: one that will create the worker
-isolate, one that will handle sending messages to that worker isolate, and one
+The class exposes three public methods: one that creates the worker
+isolate, one that handles sending messages to that worker isolate, and one
 that can shut down the ports when they’re no longer in use.
 
 <?code-excerpt "lib/robust_ports_example/start.dart"?>
@@ -606,8 +606,8 @@ In the `Worker.spawn` method:
 - Within the handler function, call `isolateReady.complete()`. This expects
   a [record][] with a `ReceivePort` and a `SendPort` as an argument.
   The `SendPort` is the initial message sent from the worker isolate, which will
-  be assigned in the next step to the class level `SendPort` called `_commands`.
-  For the `ReceivePort`, create a new `ReceivePort` with
+  be assigned in the next step to the class level `SendPort` named `_commands`.
+- Then, create a new `ReceivePort` with
   the `ReceivePort.fromRawReceivePort` constructor, and pass in
   the `startupPort`.
 
@@ -695,13 +695,14 @@ class Worker {
 Note that in this example (compared to the [previous example][]), `Worker.spawn`
 acts as an asynchronous static constructor for this class and is the only way to
 create an instance of `Worker`. This simplifies the API, making the code that
-will create an instance of Worker cleaner.
+creates an instance of `Worker` cleaner.
 
 #### Step 4: Complete the isolate setup process
 
 In this step, you will complete the basic isolate setup process. This correlates
 almost entirely to the [previous example][], and there are no new concepts.
 There is a slight change in that the code is broken into more methods, which
+is a design practice that
 sets you up for adding more functionality through the remainder of this example.
 For an in-depth walkthrough of the basic process of setting up an isolate, see
 the [basic ports example](#basic-ports-example).
@@ -795,7 +796,7 @@ Future<Object?> parseJson(String message) async {
 }
 ```
 
-This method will be updated in the next step.
+You will update this method in the next step.
 
 #### Step 5: Handle multiple messages at the same time
 
@@ -822,7 +823,7 @@ class Worker {
   int _idCounter = 0;
 ```
 
-The `_activeRequests` map will associate a message sent to the worker isolate
+The `_activeRequests` map associates a message sent to the worker isolate
 with a `Completer`. The keys used in `_activeRequests` are taken
 from `_idCounter`, which will be increased as more messages are sent.
 
@@ -836,7 +837,7 @@ messages to the worker isolate.
   number of `_idCounter`, and the completer is the value.
 - Send the message to the worker isolate, along with the id. Because you can
   only send one value through the `SendPort`, wrap the id and message in a
-  record.
+  [record][].
 - Finally, return the completer’s future, which will eventually contain the
   response from the worker isolate.
 
@@ -905,14 +906,15 @@ void _handleResponsesFromIsolate(dynamic message) {
 When the isolate is no longer being used by your code, you should close the
 ports on the main isolate and the worker isolate.
 
-First, add a class-level boolean that tracks if the ports are closed.
-
-Then, add the `Worker.close` method. Within this method:
-Update `_closed` to be true. Send a final message to the worker isolate. This
-message is a `String` that reads “shutdown”. This isn’t a specific string, and
-it could be any object you’d like. It will be used in the next code snippet.
-Finally, check if `_activeRequests` is empty. If it is, close down the main
-isolate’s `ReceivePort` called `_responses`
+- First, add a class-level boolean that tracks if the ports are closed.
+- Then, add the `Worker.close` method. Within this method:
+  - Update `_closed` to be true.
+  - Send a final message to the worker isolate.
+    This message is a `String` that reads “shutdown”,
+    but it could be any object you’d like.
+    You will use it in the next code snippet.
+- Finally, check if `_activeRequests` is empty. If it is, close down the main
+  isolate’s `ReceivePort` named `_responses`.
 
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (close)"?>
 ```dart
@@ -929,10 +931,10 @@ class Worker {
   }
 ```
 
-Next, you need to handle the “shutdown” message in the worker isolate. Add the
-following code to the `_handleCommandsToIsolate` method. This code will check if
-the message is a `String` that reads “shutdown”. If it is, it will close the
-worker isolate’s `ReceivePort`, and return.
+- Next, you need to handle the “shutdown” message in the worker isolate. Add the
+  following code to the `_handleCommandsToIsolate` method. This code will check if
+  the message is a `String` that reads “shutdown”. If it is, it will close the
+  worker isolate’s `ReceivePort`, and return.
 
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (handle-commands)"?>
 ```dart
@@ -957,8 +959,8 @@ static void _handleCommandsToIsolate(
 }
 ```
 
-Finally, you should add code to check if the ports are closed before trying to
-send messages. Add one line in the `Worker.parseJson` method.
+- Finally, you should add code to check if the ports are closed before trying to
+  send messages. Add one line in the `Worker.parseJson` method.
 
 <?code-excerpt "lib/robust_ports_example/step_6_close_ports.dart (parse-json)"?>
 ```dart
@@ -975,7 +977,7 @@ Future<Object?> parseJson(String message) async {
 #### Complete example
 
 <details>
-  <summary>Expand here to see full example</summary>
+  <summary>Expand here to see the full example</summary>
 
 <?code-excerpt "lib/robust_ports_example/complete.dart"?>
 ```dart
@@ -1100,7 +1102,7 @@ class Worker {
 [`BroadcastStream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/BroadcastStream-class.html
 [`Completer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Completer-class.html
 [`RawReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/RawReceivePort-class.html
-[record]: /language/patterns
+[record]: /language/records
 [previous example]: #basic-ports-example
 [`try`/`catch` block]: /language/error-handling#catch
 [`RemoteError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/RemoteError-class.html
