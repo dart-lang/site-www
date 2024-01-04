@@ -14,6 +14,6 @@ steps:
     args:
       - '-c'
       - |-
-        firebase deploy --project=flutter-website-staging-349021 --only=hosting
+        firebase deploy --project=dart-dev --only=hosting
 options:
   logging: CLOUD_LOGGING_ONLY
