@@ -47,7 +47,7 @@ jobs:
         with:
           sdk: stable
       - uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2
-        with:
+        with: # TODO(khanhnwin/drewroen): Migrate deploy to Cloud Build
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
           projectId: dart-dev
