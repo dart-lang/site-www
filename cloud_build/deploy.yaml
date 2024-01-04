@@ -14,4 +14,4 @@ steps:
     args:
       - '-c'
       - |-
-        cloud_build/scripts/stage_site_and_comment_on_github.sh
+        cloud_build/scripts/check_links_and_publish.sh
