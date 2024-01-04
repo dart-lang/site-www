@@ -49,6 +49,7 @@ jobs:
           DART_CHANNEL: ${{ matrix.sdk }}
 
   linkcheck:
+    name: Build site and check links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11

@@ -22,6 +22,7 @@ env:
 
 jobs:
   deploy:
+    name: Deploy production site to Firebase hosting
     permissions:
       checks: write
       pull-requests: write
