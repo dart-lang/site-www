@@ -62,7 +62,7 @@ the method (or methods) that it overrides in several ways:
 
 * The return type must be the same type as (or a subtype of)
   the overridden method's return type.
-* Argument types must be the same type as (or a supertype of)
+* Parameter types must be the same type as (or a supertype of)
   the overridden method's argument types.
   In the preceding example, the `contrast` setter of `SmartTelevision`
   changes the argument type from `int` to a supertype, `num`.
