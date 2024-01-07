@@ -272,14 +272,14 @@ void miscDeclAnalyzedButNotTested() {
 
 // #docregion this-dot-constructor
 class ShadeOfGray {
-  final int brightness;
-
   ShadeOfGray(int val) : brightness = val;
 
   ShadeOfGray.black() : this(0);
 
   // This won't parse or compile!
   // ShadeOfGray.alsoBlack() : black();
+
+  final int brightness;
 }
 // #enddocregion this-dot-constructor
 
@@ -330,9 +330,9 @@ Item? bestDeal(List<Item> cart) {
 
 // #docregion shadow-nullable-field
 class UploadException {
-  final Response? response;
-
   UploadException([this.response]);
+
+  final Response? response;
 
   @override
   String toString() {
@@ -350,14 +350,14 @@ class UploadException {
 
 // #docregion calc-vs-store1
 class Circle1 {
-  double radius;
-  double area;
-  double circumference;
-
   Circle1(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
+
+  double radius;
+  double area;
+  double circumference;
 }
 // #enddocregion calc-vs-store1
 
@@ -365,6 +365,10 @@ class Circle1 {
 
 // #docregion calc-vs-store2
 class Circle2 {
+  Circle2(this._radius) {
+    _recalculate();
+  }
+
   double _radius;
   double get radius => _radius;
   set radius(double value) {
@@ -377,10 +381,6 @@ class Circle2 {
 
   double _circumference = 0.0;
   double get circumference => _circumference;
-
-  Circle2(this._radius) {
-    _recalculate();
-  }
 
   void _recalculate() {
     _area = pi * _radius * _radius;
@@ -430,13 +430,13 @@ class Box2 {
 
 // #docregion field-init-at-decl
 class ProfileMark {
-  final String name;
-  final DateTime start;
-
   ProfileMark(this.name) : start = DateTime.now();
   ProfileMark.unnamed()
       : name = '',
         start = DateTime.now();
+
+  final String name;
+  final DateTime start;
 }
 // #enddocregion field-init-at-decl
 
@@ -444,10 +444,11 @@ class ProfileMark {
 
 // #docregion field-init-as-param
 class Point0 {
-  double x, y;
   Point0(double x, double y)
       : x = x,
         y = y;
+
+  double x, y;
 }
 // #enddocregion field-init-as-param
 
@@ -455,11 +456,12 @@ class Point0 {
 
 // #docregion late-init-list
 class Point1 {
-  late double x, y;
   Point1.polar(double theta, double radius) {
     x = cos(theta) * radius;
     y = sin(theta) * radius;
   }
+
+  late double x, y;
 }
 // #enddocregion late-init-list
 

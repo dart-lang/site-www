@@ -359,9 +359,9 @@ class Response {
 
 // #docregion shadow-nullable-field
 class UploadException {
-  final Response? response;
-
   UploadException([this.response]);
+
+  final Response? response;
 
   @override
   String toString() {
@@ -380,9 +380,9 @@ class UploadException {
 
 // #docregion calc-vs-store
 class Circle {
-  double radius;
-
   Circle(this.radius);
+
+  double radius;
 
   double get area => pi * radius * radius;
   double get circumference => pi * 2.0 * radius;
@@ -466,14 +466,14 @@ class Box2 {
 
 // #docregion this-dot-constructor
 class ShadeOfGray {
-  final int brightness;
-
   ShadeOfGray(int val) : brightness = val;
 
   ShadeOfGray.black() : this(0);
 
   // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
+
+  final int brightness;
 }
 // #enddocregion this-dot-constructor
 
@@ -485,11 +485,11 @@ class BaseBox {
 
 // #docregion param-dont-shadow-field-ctr-init
 class Box3 extends BaseBox {
-  Object? value;
-
   Box3(Object? value)
       : value = value,
         super(value);
+
+  Object? value;
 }
 // #enddocregion param-dont-shadow-field-ctr-init
 
@@ -499,11 +499,11 @@ class Document {}
 
 // #docregion field-init-at-decl
 class ProfileMark {
-  final String name;
-  final DateTime start = DateTime.now();
-
   ProfileMark(this.name);
   ProfileMark.unnamed() : name = '';
+
+  final String name;
+  final DateTime start = DateTime.now();
 }
 // #enddocregion field-init-at-decl
 
@@ -511,8 +511,9 @@ class ProfileMark {
 
 // #docregion field-init-as-param
 class Point0 {
-  double x, y;
   Point0(this.x, this.y);
+
+  double x, y;
 }
 // #enddocregion field-init-as-param
 
@@ -520,10 +521,11 @@ class Point0 {
 
 // #docregion late-init-list
 class Point1 {
-  double x, y;
   Point1.polar(double theta, double radius)
       : x = cos(theta) * radius,
         y = sin(theta) * radius;
+
+  double x, y;
 }
 // #enddocregion late-init-list
 
@@ -531,8 +533,8 @@ class Point1 {
 
 // #docregion semicolon-for-empty-body
 class Point2 {
-  double x, y;
   Point2(this.x, this.y);
+  double x, y;
 }
 // #enddocregion semicolon-for-empty-body
 
