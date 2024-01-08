@@ -63,9 +63,9 @@ the method (or methods) that it overrides in several ways:
 * The return type must be the same type as (or a subtype of)
   the overridden method's return type.
 * Parameter types must be the same type as (or a supertype of)
-  the overridden method's argument types.
+  the overridden method's parameter types.
   In the preceding example, the `contrast` setter of `SmartTelevision`
-  changes the argument type from `int` to a supertype, `num`.
+  changes the parameter type from `int` to a supertype, `num`.
 * If the overridden method accepts _n_ positional parameters,
   then the overriding method must also accept _n_ positional parameters.
 * A [generic method][] can't override a non-generic one,
