@@ -81,7 +81,7 @@ you just need to run `dart pub upgrade`:
 
 ```terminal
 $ dart pub upgrade
-Resolving dependencies... 
+Resolving dependencies...
 > args 1.6.0 (was 1.4.4)
   ...
 Changed 1 dependency!
@@ -111,15 +111,15 @@ due to constraints determined by other dependencies:
 $ dart pub upgrade
 ...
 $ dart pub outdated
-Package Name  Current  Upgradable  Resolvable  Latest 
+Package Name  Current  Upgradable  Resolvable  Latest
 
 direct dependencies:
-path          1.6.2    1.6.2       1.6.2       1.7.0   
+path          1.6.2    1.6.2       1.6.2       1.7.0
 
 dev_dependencies: all up-to-date
 
 transitive dependencies:
-meta          1.1.6    1.1.6       1.1.6       1.1.8   
+meta          1.1.6    1.1.6       1.1.6       1.1.8
 
 transitive dev_dependencies: all up-to-date
 

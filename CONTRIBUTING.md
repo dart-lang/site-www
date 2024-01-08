@@ -53,7 +53,7 @@ More info:
 
 ## Updating code samples
 
-If your PR changes Dart code within a page, 
+If your PR changes Dart code within a page,
 you'll probably need to change the code in two places:
 
 1. In a `.md` file for the page.
