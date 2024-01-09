@@ -7661,7 +7661,7 @@ p.RE()
 case 1:return A.y(q,r)}})
 return A.D($async$aU,r)},
 Ur(){var s,r=this.c.rows
-for(s=1;s<r.length;++s)r.item(s).remove()},
+for(s=r.length-1;s>0;--s)r.item(s).remove()},
 RE(){var s,r=this.d.selectedOptions.item(0).getAttribute("value"),q=this.e.selectedOptions.item(0).getAttribute("value"),p=this.c,o=p.querySelectorAll("tr[data-version]"),n=r==="all"
 if(n&&q==="all")A.F4(o,new A.aU())
 else{A.F4(o,new A.Yy())

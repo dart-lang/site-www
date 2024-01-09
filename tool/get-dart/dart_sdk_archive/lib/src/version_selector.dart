@@ -84,7 +84,7 @@ class VersionSelector {
     final rowsToRemove = _table.rows;
 
     // Remove all rows but the header row.
-    for (var rowIndex = 1; rowIndex < rowsToRemove.length; rowIndex += 1) {
+    for (var rowIndex = rowsToRemove.length - 1; rowIndex > 0; rowIndex -= 1) {
       rowsToRemove.item(rowIndex)!.remove();
     }
   }
