@@ -7636,8 +7636,7 @@ var $async$aU=A.l(function(a,b){if(a===1)return A.f(b,r)
 while(true)switch(s){case 0:m=p.d.selectedOptions.item(0)
 l=m==null?null:m.getAttribute("value")
 if(l==null){s=1
-break}p.Ur()
-o=A.Oi(l)
+break}o=A.Oi(l)
 m=o==null?l:o
 s=3
 return A.j(p.b.Ec(p.a,m),$async$aU)
@@ -7651,7 +7650,8 @@ case 4:if($.UF() instanceof A.kH){$.yj=A.oX()
 $.OY=$.pg=null}if($.S9() instanceof A.kH)$.rf=A.Iz()
 s=5
 return A.j(A.iv(null,t.H),$async$aU)
-case 5:p.PS(n)
+case 5:p.Ur()
+p.PS(n)
 if(!p.f){m=$.iJ()
 if(m===B.Hn)p.e.options.selectedIndex=1
 else if(m===B.Wx||m===B.pi)p.e.options.selectedIndex=2

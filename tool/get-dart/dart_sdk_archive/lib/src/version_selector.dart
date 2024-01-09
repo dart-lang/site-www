@@ -66,12 +66,12 @@ class VersionSelector {
     final selectedVersion =
         _versionSelector.selectedOptions.item(0)?.getAttribute('value');
     if (selectedVersion == null) return;
-    clearTable();
     final svnRevision = svnRevisionForVersion(selectedVersion);
     final versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     await findSystemLocale();
     await initializeDateFormatting(Intl.systemLocale);
+    clearTable();
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
