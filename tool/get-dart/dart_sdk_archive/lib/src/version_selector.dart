@@ -151,7 +151,7 @@ class VersionSelector {
   }
 
   void addVersion(Version version) {
-    final option = HTMLOptionElement()
+    final option = (document.createElement('option') as HTMLOptionElement)
       ..text = version.toString()
       ..setAttribute('value', version.toString());
     _versionSelector.appendChild(option);
@@ -224,9 +224,10 @@ class VersionSelector {
               ..setAttribute('data-os', archiveMap[name] ?? '');
         final versionCell = row.insertCell()
           ..textContent = versionInfo.version.toString();
-        versionCell.appendChild(HTMLSpanElement()
-          ..textContent = ' (${_prettyRevRef(versionInfo)})'
-          ..classList.add('muted'));
+        versionCell
+            .appendChild((document.createElement('span') as HTMLSpanElement)
+              ..textContent = ' (${_prettyRevRef(versionInfo)})'
+              ..classList.add('muted'));
         row.insertCell().textContent = name;
         row.insertCell()
           ..classList.add('nowrap')
@@ -259,7 +260,7 @@ class VersionSelector {
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
 
-            c.appendChild(HTMLAnchorElement()
+            c.appendChild((document.createElement('a') as HTMLAnchorElement)
               ..text = pa
               ..setAttribute('href', uri));
             final svnRevisionInfo = _svnRevision(versionInfo);
@@ -267,12 +268,12 @@ class VersionSelector {
                 pa != 'Debian package' &&
                 (svnRevisionInfo == null || svnRevisionInfo > 38976)) {
               c.append(' '.toJS);
-              c.appendChild(HTMLAnchorElement()
+              c.appendChild((document.createElement('a') as HTMLAnchorElement)
                 ..textContent = '(SHA-256)'
                 ..setAttribute('href', '$uri.sha256sum')
                 ..classList.add('sha'));
             }
-            c.appendChild(HTMLBRElement());
+            c.appendChild(document.createElement('br'));
           }
         }
       }
@@ -282,7 +283,7 @@ class VersionSelector {
     final row = (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
       ..setAttribute('data-version', versionInfo.version.toString())
       ..setAttribute('data-os', 'api');
-    final rev = HTMLSpanElement()
+    final rev = (document.createElement('span') as HTMLSpanElement)
       ..textContent = ' (${_prettyRevRef(versionInfo)})'
       ..classList.add('muted');
     row.insertCell()
@@ -296,7 +297,7 @@ class VersionSelector {
     final c = row.insertCell()..classList.add('archives');
     final uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
-    c.appendChild(HTMLAnchorElement()
+    c.appendChild((document.createElement('a') as HTMLAnchorElement)
       ..textContent = 'API docs'
       ..setAttribute('href', uri));
 

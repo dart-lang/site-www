@@ -7623,7 +7623,7 @@ p.Jd(k)
 o=p.gJS(k)
 for(k=o.$ti,p=new A.a7(o,o.gB(0),k.C("a7<aL.E>")),k=k.C("aL.E");p.V();){n=p.d
 if(n==null)n=k.a(n)
-m=new self.HTMLOptionElement()
+m=self.document.createElement("option")
 n=n.f
 m.text=n
 m.setAttribute("value",n)
@@ -7694,7 +7694,7 @@ a1.setAttribute("data-os",a)
 a2=a1.insertCell()
 a2.textContent=o
 a=self
-a0=new a.HTMLSpanElement()
+a0=a.document.createElement("span")
 a0.textContent=" ("+A.d(A.yl(b4))+")"
 a0.classList.add("muted")
 a2.appendChild(a0)
@@ -7713,7 +7713,7 @@ a8=a6==="Debian package"
 if(a8)if(p.iM(0,A.jm(2,0,0,null))<0)continue
 else a7="dart_"+A.C5(b4)
 a9=q+A.C5(b4)+"/"+A.d(B.t0.q(0,a6))+"/"+a7+A.d(B.dB.q(0,a6))
-b0=new a.HTMLAnchorElement()
+b0=a.document.createElement("a")
 b0.text=a6
 b0.setAttribute("href",a9)
 a4.appendChild(b0)
@@ -7721,17 +7721,17 @@ b1=A.En(b4)
 if(!a8)a8=b1==null||b1>38976
 else a8=!1
 if(a8){a4.append.apply(a4,[" "])
-a8=new a.HTMLAnchorElement()
+a8=a.document.createElement("a")
 a8.textContent="(SHA-256)"
 a8.setAttribute("href",a9+".sha256sum")
 a8.classList.add("sha")
-a4.appendChild(a8)}a4.appendChild(new a.HTMLBRElement())}}}}s=n.tBodies.item(0)
+a4.appendChild(a8)}a4.appendChild(a.document.createElement("br"))}}}}s=n.tBodies.item(0)
 if(s==null)s=i.a(s)
 a1=s.insertRow()
 a1.setAttribute("data-version",o)
 a1.setAttribute("data-os","api")
 s=self
-b2=new s.HTMLSpanElement()
+b2=s.document.createElement("span")
 b2.textContent=" ("+A.d(A.yl(b4))+")"
 b2.classList.add("muted")
 r=a1.insertCell()
@@ -7743,7 +7743,7 @@ b3.SY(b4,a1)
 a4=a1.insertCell()
 a4.classList.add("archives")
 p=p["["](0)
-s=new s.HTMLAnchorElement()
+s=s.document.createElement("a")
 s.textContent="API docs"
 s.setAttribute("href",q+p+"/api-docs/dartdocs-gen-api.zip")
 a4.appendChild(s)
