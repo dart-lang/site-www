@@ -26,7 +26,7 @@ doesn't already contain the dependencies, `dart pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
-this command creates a `package_config.json` file 
+this command creates a `package_config.json` file
 in the `.dart_tool/` directory.
 
 Once the dependencies are acquired, they may be referenced in Dart code.
@@ -63,7 +63,7 @@ in the `.dart_tool/` directory that maps from package names to location URIs.
 {{site.alert.note}}
   Don't check the generated `.dart_tool/` directory into your repo;
   add it to your repo's `.gitignore` file.
-  For more information, 
+  For more information,
   see [What not to commit](/guides/libraries/private-files).
 {{site.alert.end}}
 

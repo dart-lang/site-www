@@ -74,7 +74,7 @@ $ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
 Pub expects to find the package in the root of the Git repository.
-To specify a different location, 
+To specify a different location,
 use the `--git-path` option with
 a path relative to the repository root:
 
@@ -229,8 +229,8 @@ For options that apply to all pub commands, see
 
 ### `[version-constraint]`
 
-Use `dart pub global activate <package> [version-constraint]` 
-to specify a specific version of the package. 
+Use `dart pub global activate <package> [version-constraint]`
+to specify a specific version of the package.
 For example, the following command pulls
 the 0.6.0 version of the `markdown` package:
 
@@ -259,7 +259,7 @@ to add the specified executable to your PATH.
 You can pass more than one of these flags.
 
 For example, the following command adds `bar` and `baz`,
-(but not any other executables that `foo` might define) 
+(but not any other executables that `foo` might define)
 to your PATH.
 
 ```terminal
