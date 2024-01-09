@@ -2,7 +2,7 @@ import 'package:pub_semver/pub_semver.dart';
 
 final _oldRevisionPostfix = RegExp(r'(\d+\.\d+\.\d+)\.(\d+)_r(\d+)');
 
-abstract class VersionInfo implements Comparable<VersionInfo> {
+sealed class VersionInfo implements Comparable<VersionInfo> {
   final Version version;
   final DateTime date;
   final String channel;
@@ -77,7 +77,7 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
   int compareTo(VersionInfo vi) => version.compareTo(vi.version);
 }
 
-class SvnVersionInfo extends VersionInfo {
+final class SvnVersionInfo extends VersionInfo {
   final int revision;
 
   SvnVersionInfo(
@@ -90,7 +90,7 @@ class SvnVersionInfo extends VersionInfo {
   });
 }
 
-class GitVersionInfo extends VersionInfo {
+final class GitVersionInfo extends VersionInfo {
   final String ref;
 
   GitVersionInfo(
