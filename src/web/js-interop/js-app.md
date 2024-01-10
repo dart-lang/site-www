@@ -1,6 +1,6 @@
 ---
 title: How to interop with JavaScript libraries and apps
-description: 
+description: placeholder description
 ---
 
 {{site.why.learn}}

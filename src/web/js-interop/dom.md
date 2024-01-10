@@ -1,6 +1,6 @@
 ---
 title: How to interop with DOM APIs
-description: 
+description: How to use package:web to communicate with the browser in Dart.
 ---
 
 {{site.why.learn}}
