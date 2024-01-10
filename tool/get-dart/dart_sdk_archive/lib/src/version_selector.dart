@@ -1,10 +1,11 @@
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
+import 'package:web/web.dart';
 
 import 'operating_system.dart';
 import 'util.dart';
@@ -14,55 +15,63 @@ const _storageBase = '${storageBaseUrl}dart-archive';
 class VersionSelector {
   final String channel;
   final DartDownloads _client;
-  final TableElement _table;
-  final SelectElement _versionSelector;
-  final SelectElement _osSelector;
+  final HTMLTableElement _table;
+  final HTMLSelectElement _versionSelector;
+  final HTMLSelectElement _osSelector;
   bool _hasPopulatedTable = false;
 
-  VersionSelector(this.channel, this._client, this._table,
-      this._versionSelector, this._osSelector);
+  VersionSelector(
+    this.channel,
+    this._client,
+    this._table,
+    this._versionSelector,
+    this._osSelector,
+  );
 
   Future<void> init() async {
-    _versionSelector.onChange.listen((Event event) {
-      populateTable();
-    });
-    _osSelector.onChange.listen((Event event) {
-      filterTable();
-    });
+    _versionSelector.addEventListener(
+        'change',
+        (Event event) {
+          populateTable();
+        }.toJS);
+    _osSelector.addEventListener(
+        'change',
+        (Event event) {
+          filterTable();
+        }.toJS);
     final versions = (await fetchSdkVersions(channel)
           ..sort())
-        .reversed
-        .toList(growable: false);
+        .reversed;
     for (final version in versions) {
       addVersion(version);
     }
 
-    _versionSelector.options.first.selected = true;
+    _versionSelector.options.selectedIndex = 0;
     _versionSelector.dispatchEvent(Event('change'));
   }
 
   void _selectOsDropdown() {
     if (OperatingSystem.current.isMac) {
-      _osSelector.options[1].selected = true;
+      _osSelector.options.selectedIndex = 1;
     } else if (OperatingSystem.current.isLinux ||
         OperatingSystem.current.isUnix) {
-      _osSelector.options[2].selected = true;
+      _osSelector.options.selectedIndex = 2;
     } else if (OperatingSystem.current.isWindows) {
-      _osSelector.options[3].selected = true;
+      _osSelector.options.selectedIndex = 3;
     }
     _osSelector.dispatchEvent(Event('change'));
   }
 
   Future<void> populateTable() async {
     final selectedVersion =
-        _versionSelector.selectedOptions.first.attributes['value'];
+        _versionSelector.selectedOptions.item(0)?.getAttribute('value');
     if (selectedVersion == null) return;
-    clearTable();
     final svnRevision = svnRevisionForVersion(selectedVersion);
     final versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     await findSystemLocale();
     await initializeDateFormatting(Intl.systemLocale);
+    clearTable();
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
@@ -72,34 +81,47 @@ class VersionSelector {
   }
 
   void clearTable() {
-    final rowsToRemove = List<TableRowElement>.from(_table.rows);
-    // keep the header row
-    rowsToRemove.removeAt(0);
-    for (final row in rowsToRemove) {
-      row.remove();
+    final rowsToRemove = _table.rows;
+
+    // Remove all rows but the header row.
+    for (var rowIndex = rowsToRemove.length - 1; rowIndex > 0; rowIndex -= 1) {
+      rowsToRemove.item(rowIndex)!.remove();
     }
   }
 
   void filterTable() {
     final selectedVersion =
-        _versionSelector.selectedOptions[0].attributes['value'];
-    final selectedOs = _osSelector.selectedOptions[0].attributes['value'];
+        _versionSelector.selectedOptions.item(0)!.getAttribute('value');
+    final selectedOs =
+        _osSelector.selectedOptions.item(0)!.getAttribute('value');
+
+    final tableVersionRows = _table.querySelectorAll('tr[data-version]');
     if (selectedVersion == 'all' && selectedOs == 'all') {
-      _table.querySelectorAll('tr[data-version]').classes.remove('hidden');
+      tableVersionRows.forEachElement((element) {
+        element.classList.remove('hidden');
+      });
     } else {
-      _table.querySelectorAll('tr[data-version]').classes.add('hidden');
+      tableVersionRows.forEachElement((element) {
+        element.classList.add('hidden');
+      });
       var selector = 'tr';
       if (selectedVersion != 'all') {
         selector += '[data-version="$selectedVersion"]';
       }
-      _table
-          .querySelectorAll('$selector[data-os="api"]')
-          .classes
-          .remove('hidden');
+
+      final tableOsSelectors =
+          _table.querySelectorAll('$selector[data-os="api"]');
+      tableOsSelectors.forEachElement((element) {
+        element.classList.remove('hidden');
+      });
+
       if (selectedOs != 'all') {
         selector += '[data-os="$selectedOs"]';
       }
-      _table.querySelectorAll(selector).classes.remove('hidden');
+      final tableSelectors = _table.querySelectorAll(selector);
+      tableSelectors.forEachElement((element) {
+        element.classList.remove('hidden');
+      });
     }
   }
 
@@ -129,10 +151,10 @@ class VersionSelector {
   }
 
   void addVersion(Version version) {
-    final option = OptionElement()
+    final option = (document.createElement('option') as HTMLOptionElement)
       ..text = version.toString()
-      ..attributes['value'] = version.toString();
-    _versionSelector.children.add(option);
+      ..setAttribute('value', version.toString());
+    _versionSelector.appendChild(option);
   }
 
   void updateTable(VersionInfo versionInfo) {
@@ -196,21 +218,23 @@ class VersionSelector {
         }
 
         // Build rows for all supported builds.
-        final row = _table.tBodies.first.addRow()
-          ..attributes['data-version'] = versionInfo.version.toString()
-          ..attributes['data-os'] = archiveMap[name] ?? '';
-        final versionCell = row.addCell()
-          ..text = versionInfo.version.toString();
-        versionCell.append(SpanElement()
-          ..text = ' (${_prettyRevRef(versionInfo)})'
-          ..classes.add('muted'));
-        row.addCell().text = name;
-        row.addCell()
-          ..classes.add('nowrap')
-          ..text = platformVariant.architecture;
+        final row =
+            (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
+              ..setAttribute('data-version', versionInfo.version.toString())
+              ..setAttribute('data-os', archiveMap[name] ?? '');
+        final versionCell = row.insertCell()
+          ..textContent = versionInfo.version.toString();
+        versionCell
+            .appendChild((document.createElement('span') as HTMLSpanElement)
+              ..textContent = ' (${_prettyRevRef(versionInfo)})'
+              ..classList.add('muted'));
+        row.insertCell().textContent = name;
+        row.insertCell()
+          ..classList.add('nowrap')
+          ..textContent = platformVariant.architecture;
         _addReleaseDateCell(versionInfo, row);
         const possibleArchives = ['Dart SDK', 'Debian package'];
-        final c = row.addCell()..classes.add('archives');
+        final c = row.insertCell()..classList.add('archives');
 
         for (final pa in possibleArchives) {
           if (platformVariant.archives.contains(pa)) {
@@ -236,60 +260,69 @@ class VersionSelector {
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
 
-            c.append(AnchorElement()
+            c.appendChild((document.createElement('a') as HTMLAnchorElement)
               ..text = pa
-              ..attributes['href'] = uri);
+              ..setAttribute('href', uri));
             final svnRevisionInfo = _svnRevision(versionInfo);
             if (pa != 'Dart Editor' &&
                 pa != 'Debian package' &&
                 (svnRevisionInfo == null || svnRevisionInfo > 38976)) {
-              c.appendText(' ');
-              c.append(AnchorElement()
-                ..text = '(SHA-256)'
-                ..attributes['href'] = '$uri.sha256sum'
-                ..classes.add('sha'));
+              c.append(' '.toJS);
+              c.appendChild((document.createElement('a') as HTMLAnchorElement)
+                ..textContent = '(SHA-256)'
+                ..setAttribute('href', '$uri.sha256sum')
+                ..classList.add('sha'));
             }
-            c.append(Element.br());
+            c.appendChild(document.createElement('br'));
           }
         }
       }
     }
 
     // Add DartDoc archive.
-    final row = _table.tBodies.first.addRow()
-      ..attributes['data-version'] = versionInfo.version.toString()
-      ..attributes['data-os'] = 'api';
-    final rev = SpanElement()
-      ..text = ' (${_prettyRevRef(versionInfo)})'
-      ..classes.add('muted');
-    row.addCell()
-      ..text = versionInfo.version.toString()
-      ..append(rev);
-    row.addCell().text = '---';
-    row.addCell().text = '---';
+    final row = (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
+      ..setAttribute('data-version', versionInfo.version.toString())
+      ..setAttribute('data-os', 'api');
+    final rev = (document.createElement('span') as HTMLSpanElement)
+      ..textContent = ' (${_prettyRevRef(versionInfo)})'
+      ..classList.add('muted');
+    row.insertCell()
+      ..textContent = versionInfo.version.toString()
+      ..appendChild(rev);
+    row.insertCell().textContent = '---';
+    row.insertCell().textContent = '---';
 
     _addReleaseDateCell(versionInfo, row);
 
-    final c = row.addCell()..classes.add('archives');
+    final c = row.insertCell()..classList.add('archives');
     final uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
-    c.append(AnchorElement()
-      ..text = 'API docs'
-      ..attributes['href'] = uri);
+    c.appendChild((document.createElement('a') as HTMLAnchorElement)
+      ..textContent = 'API docs'
+      ..setAttribute('href', uri));
 
     final templateRows = _table.querySelectorAll('.template');
-    for (final row in templateRows) {
-      row.remove();
-    }
+    templateRows.forEachElement((element) {
+      element.remove();
+    });
   }
 
-  void _addReleaseDateCell(VersionInfo versionInfo, TableRowElement row) {
+  void _addReleaseDateCell(VersionInfo versionInfo, HTMLTableRowElement row) {
     final creationDate = versionInfo.creationTime;
-    final dateRow = row.addCell();
+    final dateRow = row.insertCell();
     if (creationDate == null) {
-      dateRow.text = '---';
+      dateRow.textContent = '---';
     } else {
-      dateRow.text = DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
+      dateRow.textContent =
+          DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
+    }
+  }
+}
+
+extension on NodeList {
+  void forEachElement(void Function(HTMLElement element) action) {
+    for (var index = 0; index < length; index += 1) {
+      action(item(index) as HTMLElement);
     }
   }
 }
