@@ -14,7 +14,7 @@ description: placeholder description
 The following sections provide some extra background and information
 around the technologies and concepts used in the tutorial.
 To skip directly to the tutorial content,
-go to [Steps](#steps).
+go to [Steps](#).
 
 ### Topic/concept 1
 
