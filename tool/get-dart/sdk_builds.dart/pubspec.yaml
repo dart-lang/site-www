@@ -6,12 +6,12 @@ environment:
   sdk: ^3.2.0
 
 dependencies:
-  googleapis: ^11.4.0
-  http: ^1.1.0
-  path: ^1.8.3
+  googleapis: ^12.0.0
+  http: ^1.1.2
+  path: ^1.9.0
   pub_semver: ^2.1.4
 
 dev_dependencies:
   analysis_defaults:
     path: ../../../site-shared/packages/analysis_defaults
-  test: ^1.24.6
+  test: ^1.25.0
