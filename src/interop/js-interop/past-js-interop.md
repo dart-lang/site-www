@@ -42,7 +42,7 @@ For the same reason, `package:js` can not interop with [DOM APIs][].
 [**`package:js` API docs**]: {{site.pub-pkg}}/js
 [`@JS`]: /interop/js-interop/reference#js
 [`@Anonymous`]: /interop/js-interop/reference
-[`@staticInterop`]: /interop/js-interop/referenc
+[`@staticInterop`]: /interop/js-interop/reference
 [DOM APIs]: /interop/js-interop/dom
 
 ## `dart:js` 
