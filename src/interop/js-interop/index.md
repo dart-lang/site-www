@@ -115,11 +115,11 @@ For information on other iterations of JS interop in Dart:
 
 
 [inline classes]: /
-[static interop reference]: /web/js-interop/reference
-[How to interop with DOM APIs]: /web/js-interop/dom
-[How to interop with JavaScript libraries and apps]: /web/js-interop/js-app
-[How to test and mock JavaScript interop in Dart]: /web/js-interop/test-and-mock
+[static interop reference]: /js-interop/reference
+[How to interop with DOM APIs]: /js-interop/dom
+[How to interop with JavaScript libraries and apps]: /js-interop/js-app
+[How to test and mock JavaScript interop in Dart]: /js-interop/test-and-mock
 [pub.dev site page]: /
 [API reference]: /
-[`dart:js_util`]: /web/js-interop/js-util
-[Past JS interop]: /web/js-interop/past-js-interop
+[`dart:js_util`]: /js-interop/js-util
+[Past JS interop]: /js-interop/past-js-interop

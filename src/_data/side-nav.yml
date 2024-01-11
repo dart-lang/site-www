@@ -247,7 +247,18 @@
   - title: Java & Kotlin interop
     permalink: /interop/java-interop
   - title: JavaScript interop
-    permalink: /interop/js-interop
+    children:
+      - title: Overview
+        permalink: /interop/js-interop
+      - title: JS types
+        permalink: /interop/js-interop/reference
+      - title: Tutorials
+        permalink: /interop/js-interop/tutorials
+      - title: Past JS interop
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: Web interop
+        permalink: /interop/js-interop/dom
 
 - title: Tools & techniques
   expanded: false
