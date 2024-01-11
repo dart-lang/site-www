@@ -40,7 +40,7 @@ and expanding to new interop types
 Static interop addresses all of the shortcomings of Dart's previous JS interop solutions.
 Check out the [Features](#features) section for a summary of improvements. 
 
-[previous iterations of JS interop]: /web/js-interop/past-js-interop
+[previous iterations of JS interop]: /interop/js-interop/past-js-interop
 
 ## Usage
 
@@ -115,11 +115,11 @@ For information on other iterations of JS interop in Dart:
 
 
 [inline classes]: /
-[static interop reference]: /js-interop/reference
-[How to interop with DOM APIs]: /js-interop/dom
-[How to interop with JavaScript libraries and apps]: /js-interop/js-app
-[How to test and mock JavaScript interop in Dart]: /js-interop/test-and-mock
+[static interop reference]: /interop/js-interop/reference
+[How to interop with DOM APIs]: /interop/js-interop/dom
+[How to interop with JavaScript libraries and apps]: /interop/js-interop/js-app
+[How to test and mock JavaScript interop in Dart]: /interop/js-interop/test-and-mock
 [pub.dev site page]: /
 [API reference]: /
-[`dart:js_util`]: /js-interop/js-util
-[Past JS interop]: /js-interop/past-js-interop
+[`dart:js_util`]: /interop/js-interop/js-util
+[Past JS interop]: /interop/js-interop/past-js-interop

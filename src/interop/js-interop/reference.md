@@ -140,7 +140,7 @@ is what makes static interop possible.
 The `@JS` annotation was also a member of one of Dart's past JS interop solutions,
 `package:js`. You can read more about that on the [Past JS interop][] page.
 
-[Past JS interop]: /js-interop/past-js-interop
+[Past JS interop]: /interop/js-interop/past-js-interop
 
 ### `@staticInterop`
 

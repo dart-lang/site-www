@@ -16,7 +16,7 @@ and will continue to be supported and developed.
 If you are just starting out with JS interop in Dart,
 please start with the static interop library, [`js_interop`][].
 
-[static interop]: /js-interop
+[static interop]: /interop/js-interop
 [`js_interop`]: {{site.dart-api}}/js_interop
 
 ## `package:js`
@@ -40,10 +40,10 @@ much more limited than static interop, and therefore cannot be fully sound.
 For the same reason, `package:js` can not interop with [DOM APIs][]. 
 
 [**`package:js` API docs**]: {{site.pub-pkg}}/js
-[`@JS`]: /js-interop/reference#js
-[`@Anonymous`]: /web/js-interop/reference#others
-[`@staticInterop`]: /js-interop/reference#staticinterop
-[DOM APIs]: /js-interop/dom
+[`@JS`]: /interop/js-interop/reference#js
+[`@Anonymous`]: /interop/js-interop/reference#others
+[`@staticInterop`]: /interop/js-interop/reference#staticinterop
+[DOM APIs]: /interop/js-interop/dom
 
 ## `dart:js` 
 

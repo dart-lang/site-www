@@ -160,4 +160,4 @@ Misc
 -->
 [development JavaScript compiler]: /tools/webdev#serve
 [jit]: /overview#native-platform
-[JavaScript interoperability]: /web/js-interop
+[JavaScript interoperability]: /interop/js-interop

@@ -24,6 +24,6 @@ Exporting Dart objects with `@JSExport` creates a mock of the object at the JS l
 This tutorial will walk through both cases: simply exporting Dart objects to JS,
 and then using that same functionality to test JS interop code. 
 
-[How to interop with DOM APIs]: /js-interop/dom
-[How to interop with JavaScript libraries and apps]: /js-interop/js-app
-[How to test and mock JavaScript interop in Dart]: /js-interop/test-and-mock
+[How to interop with DOM APIs]: /interop/js-interop/dom
+[How to interop with JavaScript libraries and apps]: /interop/js-interop/js-app
+[How to test and mock JavaScript interop in Dart]: /interop/js-interop/test-and-mock

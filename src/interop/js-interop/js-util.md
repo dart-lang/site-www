@@ -46,5 +46,5 @@ a use case that `js_interop` cannot address
 (and please [let us know][] if you encounter such a use case).
 
 [**`dart:js_util` API docs**]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
-[`external`]: /web/js-interop/reference#external
+[`external`]: /interop/js-interop/reference#external
 [let us know]: https://github.com/dart-lang/sdk/issues/new?assignees=&labels=web-js-interop&template=1_issue_template.md&title=Create+an+issue
