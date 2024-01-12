@@ -419,10 +419,12 @@ are ignored by all users of your package.
 ## Best practices
 
 Be proactive in managing your dependencies.
-Ensure that your packages use the freshest versions possible.
-Any stale dependencies could themselves depend on other stale packages.
-These stale versions can have a negative impact on
-the stability, performance, and quality of apps.
+Ensure that your packages depend on the freshest versions of packages
+when possible.
+If your package depends on a stale package,
+that stale package may depend on other stale packages in its dependency tree.
+Stale versions of packages can have a negative impact on
+the stability, performance, and quality of your app.
 
 We recommend the following best practices for package dependencies.
 
