@@ -251,7 +251,7 @@
       - title: Overview
         permalink: /interop/js-interop
       - title: JS types
-        permalink: /interop/js-interop/reference
+        permalink: /interop/js-interop/js-types
       - title: Tutorials
         permalink: /interop/js-interop/tutorials
       - title: Past JS interop
