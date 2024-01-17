@@ -232,6 +232,7 @@ In return, you have the fewest restrictions as the class maintainer.
 You can add new methods, turn constructors into factory constructors, etc.
 without worrying about breaking any downstream users.
 
+<a id="the-sealed-modifer"></a>
 ## The `sealed` modifier
 
 The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.
