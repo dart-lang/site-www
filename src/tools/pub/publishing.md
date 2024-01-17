@@ -128,6 +128,11 @@ To create a verified publisher, follow these steps:
    * When the verification flow is complete, return to step 4.
 
 
+{{site.alert.note}} We strongly recommend you invite other members of your
+  organization as members to the verified publisher. This ensures that your
+  organization retains access to the publisher when you are not available.
+  {{site.alert.end}}
+
 ## Publishing your package
 
 Use the [`dart pub publish`][] command to publish your package for the first time,
