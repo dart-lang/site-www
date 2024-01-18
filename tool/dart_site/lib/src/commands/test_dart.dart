@@ -67,7 +67,7 @@ int _testDart({
       final errorOutput = dartTestOutput.stderr.toString();
 
       // It's ok if the test directory is not found.
-      if (!errorOutput.contains('No test files were') &&
+      if (!errorOutput.contains('No test') &&
           !normalOutput.contains('Could not find package `test`') &&
           !normalOutput.contains('No tests were')) {
         stderr.write(normalOutput);

@@ -103,7 +103,7 @@ int _verifyFirebaseJson() {
 
       if (sources.contains(source)) {
         stderr.writeln(
-          "ERROR: Multiple redirects share the '$source' source.",
+          "Error: Multiple redirects share the '$source' source.",
         );
         duplicatesFound += 1;
       }

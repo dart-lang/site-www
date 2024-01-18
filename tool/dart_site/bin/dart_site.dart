@@ -13,7 +13,7 @@ void main(List<String> args) async {
   // Verify that we are running from the root of the website repository.
   if (!Directory(path.join('tool', 'dart_site')).existsSync()) {
     throw Exception(
-      'ERROR: Wrong directory, run from root of the repository.',
+      'Error: Wrong directory, run from root of the repository.',
     );
   }
 
