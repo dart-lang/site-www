@@ -68,7 +68,8 @@ int _testDart({
 
       // It's ok if the test directory is not found.
       if (!errorOutput.contains('No test files were') &&
-          !normalOutput.contains('Could not find package `test`')) {
+          !normalOutput.contains('Could not find package `test`') &&
+          !normalOutput.contains('No tests were')) {
         stderr.write(normalOutput);
         stderr.writeln('Error: Tests in $directory failed:');
         stderr.write(errorOutput);
