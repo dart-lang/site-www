@@ -171,7 +171,7 @@ and committed locally, then run the following commands before pushing your work:
 $ make run
 
 # Check/validate example code
-$ dart_site check-all
+$ dart run dart_site check-all
 ```
 
 If these scripts report errors or warnings,
