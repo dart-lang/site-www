@@ -1,6 +1,5 @@
 name: site_www
 publish_to: none
-
 homepage: https://dart.dev
 
 environment:
@@ -12,5 +11,6 @@ dev_dependencies:
     path: site-shared/packages/code_excerpt_updater
   code_excerpter:
     path: site-shared/packages/code_excerpter
-  linkcheck: ^3.0.0
+  dart_site:
+    path: tool/dart_site
   lints: ^3.0.0

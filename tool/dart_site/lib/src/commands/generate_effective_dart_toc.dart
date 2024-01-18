@@ -1,23 +1,51 @@
 import 'dart:io';
 
+import 'package:args/command_runner.dart';
 import 'package:html_unescape/html_unescape_small.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart' as path;
 
-final _unescape = HtmlUnescape();
-final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
+import '../utils.dart';
 
-void main() async {
+final HtmlUnescape _unescape = HtmlUnescape();
+final RegExp _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
+
+final class GenerateEffectiveDartToc extends Command<int> {
+  static const String _checkFlag = 'check';
+
+  GenerateEffectiveDartToc() {
+    argParser.addFlag(
+      _checkFlag,
+      defaultsTo: false,
+      help: 'Just check if the TOC is up to date, do not update.',
+    );
+  }
+
+  @override
+  String get description => 'Generate or check up-to-date status of the '
+      'Effective Dart table of contents.';
+
+  @override
+  String get name => 'effective-dart';
+
+  @override
+  Future<int> run() async => await _generateToc(
+        justCheck: argResults.get<bool>(_checkFlag, false),
+      );
+}
+
+Future<int> _generateToc({bool justCheck = false}) async {
   const dirPath = 'src/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
   final sections =
-      filenames.map((name) => Section(dirPath, name)).toList(growable: false);
+      filenames.map((name) => _Section(dirPath, name)).toList(growable: false);
 
   for (final section in sections) {
-    var lines = section.file.readAsLinesSync();
-    // Ignore the YAML front matter (can lead to false H3 elements).
-    lines = lines
+    // Read the lines, but skip the YAML front matter,
+    // as it can lead to incorrect h3 elements.
+    final lines = section.file
+        .readAsLinesSync()
         .skip(1)
         .skipWhile((line) => line.trim() != '---')
         .toList(growable: false);
@@ -26,52 +54,76 @@ void main() async {
     final nodes = document.parseLines(lines);
     for (final element in nodes.whereType<md.Element>()) {
       if (element.tag == 'h2') {
-        final subsection = Subsection(element);
+        final subsection = _Subsection(element);
         section.subsections.add(subsection);
       } else if (element.tag == 'h3') {
-        final rule = Rule(element);
+        final rule = _Rule(element);
         section.subsections.last.rules.add(rule);
       }
     }
   }
 
-  final outFile = File(path.join(dirPath, '_toc.md'));
-  IOSink? out;
-  try {
-    out = outFile.openWrite();
-
-    out.writeln(r'''
+  final newOutput = StringBuffer();
+  newOutput.writeln(r'''
 {% comment %}
 This file is generated from the other files in this directory.
 To re-generate it, please run the following command from root of
 the project:
 
 ```
-$ dart run tool/effective_dart_rules/bin/main.dart
+$ dart run dart_site effective-dart
 ```
 {% endcomment %}
     ''');
 
-    out.writeln(r"<div class='effective_dart--summary_column' markdown='1'>");
-    for (var i = 0; i < sections.length; i++) {
-      final section = sections[i];
-      if (i > 0) {
-        if (i.isEven) {
-          out.writeln("<div style='clear:both'></div>");
-        }
-        out.writeln(
-            "<div class='effective_dart--summary_column' markdown='1'>\n");
+  newOutput.writeln(
+    r"<div class='effective_dart--summary_column' markdown='1'>",
+  );
+
+  for (var sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
+    final section = sections[sectionIndex];
+    if (sectionIndex > 0) {
+      if (sectionIndex.isEven) {
+        newOutput.writeln("<div style='clear:both'></div>");
       }
-      write(out, section);
-      out.writeln('\n</div>');
+      newOutput.writeln(
+        "<div class='effective_dart--summary_column' markdown='1'>\n",
+      );
     }
-    out.writeln("<div style='clear:both'></div>");
-  } finally {
-    await out?.close();
+    _writeSection(newOutput, section);
+    newOutput.writeln('\n</div>');
   }
+
+  newOutput.writeln("<div style='clear:both'></div>");
+
+  final tocFile = File(path.join(dirPath, '_toc.md'));
+  try {
+    final oldContents = tocFile.readAsStringSync();
+
+    if (oldContents != newOutput.toString()) {
+      if (justCheck) {
+        stderr.writeln(
+          'Error: The Effective Dart TOC needs to be regenerated!',
+        );
+        return 1;
+      } else {
+        tocFile.writeAsStringSync(newOutput.toString());
+        print('Successfully updated the Effective Dart TOC.');
+      }
+    } else {
+      print('The Effective Dart TOC is up to date!');
+    }
+  } catch (e, stackTrace) {
+    stderr.writeln('Error: Failed to read or write the TOC file.');
+    stderr.writeln(e);
+    stderr.writeln(stackTrace);
+    return 1;
+  }
+
+  return 0;
 }
 
-void write(IOSink out, Section section) {
+void _writeSection(StringSink out, _Section section) {
   out.writeln('\n### ${section.name}\n');
   for (final subsection in section.subsections) {
     out.writeln('\n**${subsection.name}**\n');
@@ -82,17 +134,18 @@ void write(IOSink out, Section section) {
   }
 }
 
-class Rule {
+class _Rule {
   final String html;
   final String fragment;
 
-  factory Rule(md.Element element) {
+  factory _Rule(md.Element element) {
     var name = _concatenatedText(element);
     var html = md.renderToHtml(element.children ?? const []);
-    var fragment = _generateAnchorHash(name);
 
     // Handle headers with an explicit "{#anchor-text}" anchor.
     var match = _anchorPattern.firstMatch(name);
+
+    final String fragment;
     if (match != null) {
       // Pull the anchor from the name.
       name = (match[1] ?? '').trim();
@@ -103,40 +156,43 @@ class Rule {
       if (match != null) {
         html = (match[1] ?? '').trim();
       }
+    } else {
+      fragment = _generateAnchorHash(name);
     }
 
     if (html.endsWith('.')) {
       throw Exception(
-          "Effective Dart rule '$name' ends with a period when it shouldn't.");
+        "Effective Dart rule '$name' ends with a period when it shouldn't.",
+      );
     }
 
     html += '.';
 
-    return Rule._(html, fragment);
+    return _Rule._(html, fragment);
   }
 
-  Rule._(this.html, this.fragment);
+  _Rule._(this.html, this.fragment);
 }
 
-class Section {
+class _Section {
   final Uri uri;
   final File file;
   final String name;
-  final List<Subsection> subsections = [];
+  final List<_Subsection> subsections = [];
 
-  Section(String dirPath, String filename)
+  _Section(String dirPath, String filename)
       : file = File(path.join(dirPath, filename)),
         uri = Uri.parse('/effective-dart/').resolve(filename.split('.').first),
         name = '${filename[0].toUpperCase()}'
             "${filename.substring(1).split('.').first}";
 }
 
-class Subsection {
+class _Subsection {
   final String name;
   final String fragment;
-  final List<Rule> rules = [];
+  final List<_Rule> rules = [];
 
-  Subsection(md.Element element)
+  _Subsection(md.Element element)
       : name = _concatenatedText(element),
         fragment = _generateAnchorHash(_concatenatedText(element));
 }
