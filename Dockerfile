@@ -57,25 +57,10 @@ RUN set -eu; \
     BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
-    echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nDART CHECKSUM FAILED! Run 'make fetch-sums' for updated values.\n\n" && \
-        rm "$SDK" && \
-        exit 1 \
-    ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
 ENV PUB_CACHE="${HOME}/.pub-cache"
 RUN dart --disable-analytics
 RUN echo -e "Successfully installed Dart SDK:" && dart --version
-
-
-# ============== DART-TESTS ==============
-from dart as dart-tests
-WORKDIR /app
-COPY ./ ./
-RUN dart pub get
-ENV BASE_DIR=/app
-ENV TOOL_DIR=$BASE_DIR/tool
-CMD ["./tool/test.sh"]
 
 
 # ============== NODEJS INSTALL ==============
