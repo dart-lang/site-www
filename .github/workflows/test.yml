@@ -76,6 +76,6 @@ jobs:
       - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm install -g firebase-tools@13.0.2
+      - run: npm install -g firebase-tools@13.0.3
       - name: Check internal site links are functional
         run: dart run dart_site check-links
