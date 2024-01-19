@@ -1,20 +1,16 @@
 steps:
   - name: gcr.io/cloud-builders/git
     args: ['submodule', 'update', '--init', '--recursive']
-  - name: gcr.io/cloud-builders/docker
-    entrypoint: '/bin/bash'
-    args:
-      - '-c'
-      - |-
-        set -e
-
-        echo "Building the website using a makefile..."
-        make build
   - name: gcr.io/flutter-dev-230821/firebase-ghcli
     entrypoint: '/bin/bash'
     args:
       - '-c'
       - |-
+        set -e
+        
+        npm install
+        npm run build
+        
         cloud_build/scripts/stage_site_and_comment_on_github.sh
     secretEnv: ['GH_PAT_TOKEN']
     env:
