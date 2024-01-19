@@ -243,13 +243,13 @@ void main() {
   and then give it a try:
 
   ```dart
-// Substitute an operator that makes 'a string' be assigned to baz.
-String? baz = foo ?? bar;
-
-void updateSomeVars() {
-  // Substitute an operator that makes 'a string' be assigned to bar.
-  bar ??= 'a string';
-}
+  // Substitute an operator that makes 'a string' be assigned to baz.
+  String? baz = foo ?? bar;
+  
+  void updateSomeVars() {
+    // Substitute an operator that makes 'a string' be assigned to bar.
+    bar ??= 'a string';
+  }
   ```
 </details>
 

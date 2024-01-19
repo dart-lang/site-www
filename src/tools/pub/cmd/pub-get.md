@@ -6,7 +6,7 @@ description: >-
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```plaintext
 $ dart pub get [options]
 ```
 

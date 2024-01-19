@@ -838,7 +838,6 @@ function* naturalsTo(n) {
 for (let value of naturalsTo(5)) {
   console.log(value);
 }
-
 ```
 
 

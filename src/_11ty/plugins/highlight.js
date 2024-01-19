@@ -99,7 +99,7 @@ ${markdown.utils.escapeHtml(content)}
 </code></pre>`;
   }
 
-  const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
+  const attributes = attributeString === '' ? {} : {}; //TODO: JSON.parse(attributeString);
 
   const lineNumbers = attributes['showLineNumbers'];
   if (lineNumbers && typeof lineNumbers !== 'number') {

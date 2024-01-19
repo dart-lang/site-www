@@ -287,20 +287,20 @@ the `in_app_purchase` package:
 ### 5. Use Dart code formatting {:#tip5}
 
 When adding code examples,
-use three backticks plus `dart` (<code>```dart</code>) instead of
-three backticks (<code>```</code>).
+use three backticks plus `dart` (<code>&#96;&#96;&#96;dart</code>) instead of
+three backticks (<code>&#96;&#96;&#96;</code>).
 As the following examples show,
 adding `dart` tells pub.dev to use Dart syntax highlighting:
 
 <table width="100%">
 <tr>
-<th> <b>Formatted with just <code>```</code></b> </th>
-<th> <b>Formatted with <code>```dart</code></b> </th>
+<th> <b>Formatted with just <code>&#96;&#96;&#96;</code></b> </th>
+<th> <b>Formatted with <code>&#96;&#96;&#96;dart</code></b> </th>
 </tr>
 <tr>
 <td>
 
-```
+```plaintext
 final like = 'this';
 ```
 
