@@ -97,10 +97,12 @@
           permalink: /language/modifier-reference
     - title: Concurrency
       children:
+        - title: Overview
+          permalink: /language/concurrency
         - title: Asynchronous support
           permalink: /language/async
         - title: Isolates
-          permalink: /language/concurrency
+          permalink: /language/isolates
     - title: Null safety
       expanded: false
       children:
@@ -137,13 +139,26 @@
   children:
     - title: Overview
       match-page-url-exactly: true
-      permalink: /guides/libraries
-    - title: Tour
-      permalink: /guides/libraries/library-tour
-    - title: Articles
-      children:
-        - title: Creating streams
-          permalink: /articles/libraries/creating-streams
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
+      permalink: /libraries/dart-async
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:io
+      permalink: /libraries/dart-io
+    - title: dart:html
+      permalink: /libraries/dart-html
+    - divider
+    - title: Using streams
+      permalink: /tutorials/language/streams
+    - title: Creating streams
+      permalink: /articles/libraries/creating-streams
+    - title: Futures and error handling
+      permalink: /guides/libraries/futures-error-handling
 
 - title: Packages
   expanded: false
@@ -183,8 +198,6 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
-    - title: Streams
-      permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
     - title: Number representation
@@ -216,15 +229,7 @@
           match-page-url-exactly: true
           permalink: /web
         - title: Get started
-          permalink: /tutorials/web/get-started
-        - title: Low-level web programming
-          children:
-          - title: Connect Dart & HTML
-            permalink: /tutorials/web/low-level-html/connect-dart-html
-          - title: Add elements to the DOM
-            permalink: /tutorials/web/low-level-html/add-elements
-          - title: Remove DOM elements
-            permalink: /tutorials/web/low-level-html/remove-elements
+          permalink: /web/get-started
         - title: Deployment
           permalink: /web/deployment
         - title: Libraries & packages
@@ -263,8 +268,6 @@
           - title: Overview
             match-page-url-exactly: true
             permalink: /tools/dartpad
-          - title: DartPad in tutorials
-            permalink: /tools/dartpad/dartpad-best-practices
           - title: Troubleshooting DartPad
             permalink: /tools/dartpad/troubleshoot
   - title: Command-line tools

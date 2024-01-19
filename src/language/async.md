@@ -3,11 +3,11 @@ title: Asynchrony support
 description: Information on writing asynchronous code in Dart.
 short-title: Async
 prevpage:
-  url: /language/modifier-reference
-  title: Class modifiers reference
-nextpage:
   url: /language/concurrency
   title: Concurrency
+nextpage:
+  url: /language/isolates
+  title: Isolates
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -32,8 +32,8 @@ you have two options:
 
 * Use `async` and `await`, as described here and in the
   [asynchronous programming codelab](/codelabs/async-await).
-* Use the Future API, as described
-  [in the library tour](/guides/libraries/library-tour#future).
+* Use the Future API, as described in the
+  [`dart:async` documentation](/libraries/dart-async#future).
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
@@ -49,21 +49,21 @@ To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
-```
+{% endprettify %}
 
-:::note
-Although an `async` function might perform time-consuming operations, 
-it doesn't wait for those operations. 
-Instead, the `async` function executes only
-until it encounters its first `await` expression.
-Then it returns a `Future` object,
-resuming execution only after the `await` expression completes.
-:::
+{{site.alert.note}}
+  Although an `async` function might perform time-consuming operations, 
+  it doesn't wait for those operations. 
+  Instead, the `async` function executes only
+  until it encounters its first `await` expression.
+  Then it returns a `Future` object,
+  resuming execution only after the `await` expression completes.
+{{site.alert.end}}
 
 Use `try`, `catch`, and `finally` to handle errors and cleanup
 in code that uses `await`:
@@ -101,20 +101,20 @@ For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
-```
+{% endprettify %}
 
-:::note
-The preceding example uses an `async` function (`checkVersion()`)
-without waiting for a result—a practice that can cause problems
-if the code assumes that the function has finished executing.
-To avoid this problem,
-use the [unawaited_futures linter rule][].
-:::
+{{site.alert.note}}
+  The preceding example uses an `async` function (`checkVersion()`)
+  without waiting for a result—a practice that can cause problems
+  if the code assumes that the function has finished executing.
+  To avoid this problem,
+  use the [unawaited_futures linter rule][].
+{{site.alert.end}}
 
 For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -162,15 +162,15 @@ When you need to get values from a Stream,
 you have two options:
 
 * Use `async` and an _asynchronous for loop_ (`await for`).
-* Use the Stream API, as described
-  [in the library tour](/guides/libraries/library-tour#stream).
+* Use the Stream API, as described in the
+  [`dart:async` documentation](/libraries/dart-async#stream).
 
-:::note
-Before using `await for`, be sure that it makes the code clearer and that you
-really do want to wait for all of the stream's results. For example, you
-usually should **not** use `await for` for UI event listeners, because UI
-frameworks send endless streams of events.
-:::
+{{site.alert.note}}
+  Before using `await for`, be sure that it makes the code clearer and that you
+  really do want to wait for all of the stream's results. For example, you
+  usually should **not** use `await for` for UI event listeners, because UI
+  frameworks send endless streams of events.
+{{site.alert.end}}
 
 An asynchronous for loop has the following form:
 
@@ -200,7 +200,7 @@ For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 void main() [!async!] {
   // ...
   [!await for!] (final request in requestServer) {
@@ -208,12 +208,11 @@ void main() [!async!] {
   }
   // ...
 }
-```
+{% endprettify %}
 
-For more information about asynchronous programming, in general, see the
-[dart:async](/guides/libraries/library-tour#dart-async)
-section of the library tour.
+For more information about Dart's asynchronous programming support,
+check out the [`dart:async`](/libraries/dart-async) library documentation.
 
-[`Future`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
-[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [unawaited_futures linter rule]: /tools/linter-rules/unawaited_futures

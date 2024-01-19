@@ -26,9 +26,9 @@ small Hello World program. Click **Run** to run the app; output appears in the
 console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
-:::note
-{% include 'dartpad-embedded-troubleshooting.md' %}
-:::
+{{site.alert.note}}
+  {% include dartpad-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
@@ -41,18 +41,18 @@ More information:
 
 * [DartPad documentation][]
 * [Dart language tour][]
-* [Dart library tour][]
+* [Dart core library documentation][]
 
 ## 2. Install Dart
 
-{% include 'get-sdk.md' %}
+{% include get-sdk.md %}
 
 ## 3. Create a small app
 
 Use the [`dart create`](/tools/dart-create) command
 and the `console` template to create a command-line app:
 
-```console
+```terminal
 $ dart create -t console cli
 ```
 
@@ -66,12 +66,12 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-:::note
-Under the hood, `dart create` runs [`dart pub get`][], which
-scans the generated pubspec file and downloads dependencies.
-If you add other dependencies to your pubspec file,
-then run `dart pub get` to download them.
-:::
+{{site.alert.note}}
+  Under the hood, `dart create` runs [`dart pub get`][], which
+  scans the generated pubspec file and downloads dependencies.
+  If you add other dependencies to your pubspec file,
+  then run `dart pub get` to download them.
+{{site.alert.end}}
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
@@ -80,7 +80,7 @@ then run `dart pub get` to download them.
 To run the app from the command line, use the Dart VM by running the
 [`dart run`](/tools/dart-run) command in the app's top directory:
 
-```console
+```terminal
 $ cd cli
 $ dart run
 Hello world: 42!
@@ -97,17 +97,17 @@ Let's customize the app you just created.
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
-    ```dart
+    {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];
     }
-    ```
+    {% endprettify %}
 
  1. Save your changes.
 
  1. Rerun the main entrypoint of your app:
 
-    ```console
+    ```terminal
     $ dart run
     Hello world: 21!
     ```
@@ -124,12 +124,12 @@ it's time to AOT compile your Dart code to optimized native machine code.
 
 Use the `dart compile` tool to AOT compile the program to machine code:
 
-```console
+```terminal
 $ dart compile exe bin/cli.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
-```console
+```terminal
 $ time bin/cli.exe
 Hello world: 21!
 
@@ -147,12 +147,12 @@ Check out these resources:
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
-  * [Library tour](/guides/libraries/library-tour)
+  * [Dart core library documentation](/libraries)
   * [Effective Dart](/effective-dart)
 * Tools and libraries
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
-  * [IDEs](/tools#editors)
+  * [IDEs](/tools#ides-and-editors)
 * Other examples of natively compiled apps
   * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
 
@@ -161,6 +161,6 @@ If you get stuck, find help at [Community and support.](/community)
 [Arithmetic operators]: /language/operators#arithmetic-operators
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /language
-[Dart library tour]: /guides/libraries/library-tour
-[ide]: /tools#editors
+[Dart core library documentation]: /libraries
+[ide]: /tools#ides-and-editors
 

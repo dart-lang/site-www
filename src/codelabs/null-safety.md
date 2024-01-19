@@ -24,10 +24,10 @@ Using embedded DartPad editors, you can test your knowledge by
 completing and running exercises. To get the most out of
 this codelab, you should have some knowledge of [basic Dart syntax](/language).
 
-:::note
-This page uses embedded DartPads to display exercises.
-{% include 'dartpads-embedded-troubleshooting.md' %}
-:::
+{{site.alert.note}}
+  This page uses embedded DartPads to display exercises.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
 
 ## Nullable and non-nullable types
@@ -89,10 +89,11 @@ void main() {
 }
 ```
 
-## The null assertion operator (!)
+<a id="the-null-assertion-operator-"></a>
+## The non-null assertion operator (!)
 
 If you're sure an expression with a nullable type doesn't equal `null`,
-you can use the [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+you can use the [non-null assertion operator][]
 (`!`) to make Dart treat it as non-nullable.
 By adding `!` after the expression,
 you assert two conditions to Dart about the expression:
@@ -100,11 +101,13 @@ you assert two conditions to Dart about the expression:
 1. Its value doesn't equal `null`
 2. Dart can assign the value to a non-nullable variable
 
-:::warning
-If the expression does equal `null`, **Dart throws an exception at run-time**.
-This makes the `!` operator _unsafe_.
-Don't use it unless you have no doubt the expression can't equal `null`.
-:::
+{{site.alert.warn}}
+  If the expression does equal `null`, **Dart throws an exception at run-time**.
+  This makes the `!` operator _unsafe_.
+  Don't use it unless you have no doubt the expression can't equal `null`.
+{{site.alert.end}}
+
+[non-null assertion operator]: /null-safety/understanding-null-safety#non-null-assertion-operator
 
 ### Exercise: Null assertion
 
@@ -139,7 +142,7 @@ You can also use null-aware operators to handle nullable values.
 Sometimes the flow of the program tells you that the value of an
 expression cannot be `null`.
 To force Dart to treat that expression as non-nullable,
-add the [null assertion operator](#the-null-assertion-operator) (`!`).
+add the [non-null assertion operator](#the-non-null-assertion-operator-) (`!`).
 If the value does equal `null`, using this operator throws an exception.
 
 To handle potential `null` values, use the conditional property access
@@ -529,13 +532,14 @@ void main() {
 }
 ```
 
-:::note Fun fact
-After you add `late` to the declaration of `_cache`,
-if you move the   `_computeValue` function into the
-`CachedValueProvider` class, the code still works!
-Initialization expressions for `late` fields can use instance
-methods in their initializers.
-:::
+{{site.alert.info}}
+  **Fun fact:**
+  After you add `late` to the declaration of `_cache`,
+  if you move the   `_computeValue` function into the
+  `CachedValueProvider` class, the code still works!
+  Initialization expressions for `late` fields can use instance
+  methods in their initializers.
+{{site.alert.end}}
 
 
 ## What's next?

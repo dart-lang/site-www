@@ -19,11 +19,11 @@ that can help you develop command-line and server apps.
 : Handy for both beginners and experts,
   DartPad lets you try out language features and dart:* APIs.
 
-  :::note
-  DartPad does **not** support using VM libraries, such as `dart:io`,
-  or importing libraries from packages
-  besides the [currently supported packages][].
-  :::
+  {{site.alert.note}}
+    DartPad does **not** support using VM libraries, such as `dart:io`,
+    or importing libraries from packages
+    besides the [currently supported packages][].
+  {{site.alert.end}}
 
 [currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
@@ -66,10 +66,10 @@ You might find the following tutorials helpful.
 
 ## More resources
 
-[Dart API]({{site.dart-api}}/{{site.sdkInfo.channel}})
+[Dart API]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}})
 : API reference for dart:* libraries.
 
-[dart:io section of the library tour](/guides/libraries/library-tour#dart-io)
+[dart:io documentation](/libraries/dart-io)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   non-web [Flutter apps.]({{site.flutter}})

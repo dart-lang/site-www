@@ -13,7 +13,7 @@ Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 class Television {
   void turnOn() {
     _illuminateDisplay();
@@ -31,7 +31,7 @@ class SmartTelevision [!extends!] Television {
   }
   // ···
 }
-```
+{% endprettify %}
 
 For another usage of `extends`, see the discussion of
 [parameterized types][] on the Generics page.
@@ -44,7 +44,7 @@ You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 class Television {
   // ···
   set contrast(int value) {...}
@@ -55,17 +55,17 @@ class SmartTelevision extends Television {
   set contrast(num value) {...}
   // ···
 }
-```
+{% endprettify %}
 
 An overriding method declaration must match
 the method (or methods) that it overrides in several ways:
 
 * The return type must be the same type as (or a subtype of)
   the overridden method's return type.
-* Argument types must be the same type as (or a supertype of)
-  the overridden method's argument types.
+* Parameter types must be the same type as (or a supertype of)
+  the overridden method's parameter types.
   In the preceding example, the `contrast` setter of `SmartTelevision`
-  changes the argument type from `int` to a supertype, `num`.
+  changes the parameter type from `int` to a supertype, `num`.
 * If the overridden method accepts _n_ positional parameters,
   then the overriding method must also accept _n_ positional parameters.
 * A [generic method][] can't override a non-generic one,
@@ -77,17 +77,17 @@ This violates the normal rules, and
 it's similar to a downcast in that it can cause a type error at runtime.
 Still, narrowing the type is possible
 if the code can guarantee that a type error won't occur.
-In this case, you can use the 
+In this case, you can use the
 [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
 in a parameter declaration.
-For details, see the 
+For details, see the
 [Dart language specification][].
 
-:::warning
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-:::
+{{site.alert.warning}}
+  If you override `==`, you should also override Object's `hashCode` getter.
+  For an example of overriding `==` and `hashCode`, check out
+  [Implementing map keys](/libraries/dart-core#implementing-map-keys).
+{{site.alert.end}}
 
 ## noSuchMethod()
 
@@ -95,7 +95,7 @@ To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
@@ -105,7 +105,7 @@ class A {
         '${invocation.memberName}');
   }
 }
-```
+{% endprettify %}
 
 You **can't invoke** an unimplemented method unless
 **one** of the following is true:

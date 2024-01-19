@@ -167,18 +167,15 @@ class Point {
 }
 ```
 
-All uninitialized instance variables have the value `null`.
+An uninitialized instance variable declared with a
+[nullable type][] has the value `null`.
+Non-nullable instance variables [must be initialized][] at declaration.
 
 All instance variables generate an implicit *getter* method.
 Non-final instance variables and
 `late final` instance variables without initializers also generate
 an implicit *setter* method. For details,
 check out [Getters and setters][].
-
-If you initialize a non-`late` instance variable where it's declared,
-the value is set when the instance is created,
-which is before the constructor and its initializer list execute.
-As a result, non-`late` instance variable initializers can't access `this`.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
@@ -192,6 +189,31 @@ void main() {
   point.x = 4; // Use the setter method for x.
   assert(point.x == 4); // Use the getter method for x.
   assert(point.y == null); // Values default to null.
+}
+```
+
+Initializing a non-`late` instance variable where it's declared
+sets the value when the instance is created,
+before the constructor and its initializer list execute.
+As a result, the initializing expression (after the `=`)
+of a non-`late` instance variable can't access `this`.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_this.dart"?>
+```dart
+double initialX = 1.5;
+
+class Point {
+  // OK, can access declarations that do not depend on `this`:
+  double? x = initialX;
+
+  // ERROR, can't access `this` in non-`late` initializer:
+  double? y = this.x;
+
+  // OK, can access `this` in `late` initializer:
+  late double? z = this.x;
+
+  // OK, `this.fieldName` is a parameter declaration, not an expression:
+  Point(this.x, this.y);
 }
 ```
 
@@ -350,3 +372,5 @@ can pass a static method as a parameter to a constant constructor.
 [initializer list]: /language/constructors#initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
+[nullable type]: /null-safety/understanding-null-safety#using-nullable-types
+[must be initialized]: /null-safety/understanding-null-safety#uninitialized-variables

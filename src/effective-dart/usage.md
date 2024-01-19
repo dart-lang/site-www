@@ -416,7 +416,7 @@ value. Sometimes it's best to simply [use `!`][] on the field.
 [private]: /effective-dart/design#prefer-making-declarations-private
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
-[use `!`]: /null-safety/understanding-null-safety#null-assertion-operator
+[use `!`]: /null-safety/understanding-null-safety#non-null-assertion-operator
 
 ## Strings
 

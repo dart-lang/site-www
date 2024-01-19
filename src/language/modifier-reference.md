@@ -6,8 +6,8 @@ prevpage:
   url: /language/class-modifiers
   title: Class modifiers
 nextpage:
-  url: /language/async
-  title: Asynchronous support
+  url: /language/concurrency
+  title: Concurrency in Dart
 ---
 
 This page contains reference information for

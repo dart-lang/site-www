@@ -41,10 +41,10 @@ You can also throw arbitrary objects:
 throw 'Out of llamas!';
 ```
 
-:::note
-Production-quality code usually throws types that 
-implement [`Error`][] or [`Exception`][].
-:::
+{{site.alert.note}}
+  Production-quality code usually throws types that implement [`Error`][] or
+  [`Exception`][].
+{{site.alert.end}}
 
 Because throwing an exception is an expression, you can throw exceptions
 in =\> statements, as well as anywhere else that allows expressions:
@@ -100,7 +100,7 @@ The first is the exception that was thrown,
 and the second is the stack trace (a [`StackTrace`][] object).
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 try {
   // ···
 } on Exception catch [!(e)!] {
@@ -109,14 +109,14 @@ try {
   print('Exception details:\n $e');
   print('Stack trace:\n $s');
 }
-```
+{% endprettify %}
 
 To partially handle an exception,
 while allowing it to propagate,
 use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
-```dart
+{% prettify dart tag=pre+code %}
 void misbehave() {
   try {
     dynamic foo = true;
@@ -134,7 +134,7 @@ void main() {
     print('main() finished handling ${e.runtimeType}.');
   }
 }
-```
+{% endprettify %}
 
 
 ### Finally
@@ -166,9 +166,8 @@ try {
 }
 ```
 
-Learn more by reading the
-[Exceptions](/guides/libraries/library-tour#exceptions)
-section of the library tour.
+To learn more, check out the
+[core library exception docs](/libraries/dart-core#exceptions).
 
 ## Assert
 
@@ -217,13 +216,13 @@ In production code, assertions are ignored, and
 the arguments to `assert` aren't evaluated.
 
 [trailing comma]: /language/collections#trailing-comma
-[`AssertionError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/AssertionError-class.html
+[`AssertionError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [`webdev serve`]: /tools/webdev#serve
 [`dart run`]: /tools/dart-run
 [`dart compile js`]: /tools/dart-compile#js
 
-[isolate]: /language/concurrency#how-isolates-work
-[`Error`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html
-[`Exception`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
-[`StackTrace`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StackTrace-class.html
+[isolate]: /language/concurrency#isolates
+[`Error`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
+[`Exception`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[`StackTrace`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html

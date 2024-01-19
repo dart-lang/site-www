@@ -8,15 +8,16 @@ class SvnVersionGenerator {
 
   Future<Map<String, String>> get svnVersions async {
     final versionInfos = <String, VersionInfo>{};
-    await Future.wait([
+    await (
       _loadVersionInfo(versionInfos, 'stable'),
       _loadVersionInfo(versionInfos, 'beta'),
       _loadVersionInfo(versionInfos, 'dev'),
-    ]);
-    final result = <String, String>{};
-    versionInfos.forEach((revision, version) {
-      result[revision] = version.toString();
-    });
+    ).wait;
+    final result = <String, String>{
+      for (final MapEntry(key: revision, value: version)
+          in versionInfos.entries)
+        revision: version.toString()
+    };
     return result;
   }
 

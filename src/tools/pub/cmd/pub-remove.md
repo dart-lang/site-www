@@ -30,7 +30,7 @@ For options that apply to all pub commands, see
 
 ### `-n, --dry-run`
 
-Reports which dependencies would change, 
+Reports which dependencies would change,
 but doesn't change any.
 
 ### `--[no-]precompile`

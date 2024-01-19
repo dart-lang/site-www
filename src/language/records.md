@@ -9,9 +9,9 @@ nextpage:
   title: Collections
 ---
 
-:::version-note
-Records require a [language version][] of at least 3.0.
-:::
+{{site.alert.version-note}}
+  Records require a [language version][] of at least 3.0.
+{{site.alert.end}}
 
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
 they let you bundle multiple objects into a single object. Unlike other collection 
@@ -206,14 +206,14 @@ but other methods come with downsides.
 For example, creating a class is much more verbose, and using other collection
 types like `List` or `Map` loses type safety. 
 
-:::note
-Records' multiple-return and heterogeneous-type characteristics enable
-parallelization of futures of different types, which you can read about in the
-[Library tour][].
-:::
+{{site.alert.note}}
+  Records' multiple-return and heterogeneous-type characteristics enable
+  parallelization of futures of different types, which you can read about in the
+  [`dart:async` documentation][].
+{{site.alert.end}}
 
 [language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
-[Library tour]: /guides/libraries/library-tour#handling-errors-for-multiple-futures
+[`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
 [parameters and arguments]: /language/functions#parameters

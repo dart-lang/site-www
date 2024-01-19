@@ -31,17 +31,9 @@ with `webdev build`.
 The following steps are optional. They can help make your app more
 reliable and responsive.
 
-* [Use the pwa package to make your app work offline](#use-the-pwa-package-to-make-your-app-work-offline)
 * [Use deferred loading to reduce your app's initial size](#use-deferred-loading-to-reduce-your-apps-initial-size)
 * [Follow best practices for web apps](#follow-best-practices-for-web-apps)
 * [Remove unneeded build files](#remove-unneeded-build-files)
-
-#### Use the pwa package to make your app work offline
-
-The [pwa package]({{site.pub-pkg}}/pwa) simplifies the task of
-making your app work with limited or no connectivity.
-To learn more about using this package, see
-[Making a Dart web app offline-capable: 3 lines of code.](https://medium.com/dartlang/making-a-dart-web-app-offline-capable-3-lines-of-code-e980010a7815)
 
 #### Use deferred loading to reduce your app's initial size
 
