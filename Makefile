@@ -2,9 +2,8 @@
 -include .env
 
 
-all: clean up down debug shell serve test-build test-run setup \
-	serve emulate stage test build-image build deploy deploy-ci \
-	fetch-sums test-builds test-run
+all: clean up down shell serve test-build test-run run setup \
+	serve emulate stage test build-image build deploy deploy-ci
 
 .PHONY: all
 .DEFAULT_GOAL := up
@@ -67,15 +66,6 @@ serve:
 		--incremental \
 		--trace
 
-# Run all tests inside a built container
-test:
-	DOCKER_BUILDKIT=1 docker build \
-		-t dart-tests:${DART_CHANNEL} \
-		--target dart-tests \
-		--build-arg DART_VERSION=${DART_VERSION} \
-		--build-arg DART_CHANNEL=${DART_CHANNEL} .
-	docker run --rm -v ${PWD}:/app dart-tests:${DART_CHANNEL}
-
 # Build docker image with optional target
 # Usage: `make build-image [BUILD_CONFIGS=<config1,[config2,]>]`
 build-image:
@@ -133,38 +123,3 @@ emulate:
 	npx firebase emulators:start \
 		--only hosting \
 		--project ${FIREBASE_PROJECT}
-
-
-
-################## UTILS ##################
-
-# Fetch SDK sums for current Dart SDKs by arch
-# This outputs a bash case format to be copied to Dockerfile
-fetch-sums:
-	tool/fetch-dart-sdk-sums.sh \
-		--version ${DART_VERSION} \
-		--channel ${DART_CHANNEL}
-
-# Check Dart sums pulls the set of Dart SDK SHA256 hashes
-# and writes them to a temp file.
-check-sums:
-	tool/check-dart-sdk.sh
-
-# Update Dart sums replaces the Dart SDK SHA256 hashes
-# in the Dockerfile and deletes the temp file.
-update-sums:
-	tool/update-dart-sdk.sh
-
-# Test the dev container with pure docker
-test-builds:
-	docker build -t ${BUILD_TAG}:stable \
-		--no-cache --target=dart-tests .
-	docker build -t ${BUILD_TAG}:beta \
-		--no-cache --target=dart-tests --build-arg DART_CHANNEL=beta .
-	docker build -t ${BUILD_TAG}:dev \
-		--no-cache --target=dart-tests --build-arg DART_CHANNEL=dev .
-
-# Test stable run with volume
-TEST_CHANNEL =? stable
-test-run:
-	docker run --rm -it -v ${PWD}:/app ${BUILD_TAG}:${TEST_CHANNEL} bash
