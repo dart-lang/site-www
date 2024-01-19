@@ -66,7 +66,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for string interpolation example</b>
   </summary>
@@ -148,7 +148,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for nullable variables example</b>
   </summary>
@@ -232,7 +232,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for null-aware operators example</b>
   </summary>
@@ -323,7 +323,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for conditional property access example</b>
   </summary>
@@ -454,7 +454,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for collection literals example</b>
   </summary>
@@ -575,7 +575,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for arrow syntax example</b>
   </summary>
@@ -728,7 +728,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for cascades example</b>
   </summary>
@@ -873,7 +873,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for getters and setters example</b>
   </summary>
@@ -1019,7 +1019,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for positional parameters example</b>
   </summary>
@@ -1164,7 +1164,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for named parameters example</b>
   </summary>
@@ -1386,7 +1386,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for exceptions example</b>
   </summary>
@@ -1503,7 +1503,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for `this` example</b>
   </summary>
@@ -1627,7 +1627,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for initializer lists example</b>
   </summary>
@@ -1725,7 +1725,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for named constructors example</b>
   </summary>
@@ -1892,7 +1892,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for factory constructors example</b>
   </summary>
@@ -1992,7 +1992,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for redirecting constructors example</b>
   </summary>
@@ -2076,7 +2076,7 @@ void main() {
 }
 ```
 
-<details markdown="1">
+<details>
  <summary>
    <b>Solution for const constructors example</b>
   </summary>

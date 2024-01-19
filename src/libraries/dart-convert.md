@@ -106,7 +106,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var lines = [!utf8.decoder!].bind(inputStream).transform(const LineSplitter());
 try {
   await for (final line in lines) {
@@ -116,7 +116,7 @@ try {
 } catch (e) {
   print(e);
 }
-{% endprettify %}
+```
 
 Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
@@ -139,4 +139,4 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 [JSON]: https://www.json.org/
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
-[dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart:convert]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html

@@ -11,16 +11,16 @@ Before you begin, ensure you're comfortable with Dart basics
 by reading the [Introduction to Dart](/language).
 Then follow the steps below to create a small web app with Dart.
 
-## 1. Install Dart {#install-dart}
+## 1. Install Dart {:#install-dart}
 
-{% include get-sdk.md %}
+{% include 'get-sdk.md' %}
 
-## 2. Get CLI tools or an IDE (or both) {#tools}
+## 2. Get CLI tools or an IDE (or both) {:#tools}
 
 <i class="material-icons">terminal</i>
 If you like to use the command line, install the [`webdev`][] package:
 
-```terminal
+```console
 $ dart pub global activate webdev
 ```
 
@@ -31,13 +31,13 @@ For a list of available IDEs, see the
 
 [overview of editors & debuggers]: /tools#ides-and-editors
 
-## 3. Create a web app {#create}
+## 3. Create a web app {:#create}
 
 <i class="material-icons">terminal</i>
 To create a web app from the command line,
 use the [`dart create`][] command with the `web` template:
 
-```terminal
+```console
 $ dart create -t web quickstart
 ```
 
@@ -47,13 +47,13 @@ create a project using the template named **Bare-bones Web App**.
 
 [`dart create`]: /tools/dart-create
 
-## 4. Run the app {#run}
+## 4. Run the app {:#run}
 
 <i class="material-icons">terminal</i>
 To run the app from the command line,
 use [`webdev`][] to build and serve the app:
 
-```terminal
+```console
 $ cd quickstart
 $ webdev serve
 ```
@@ -79,7 +79,7 @@ Once your app has compiled, the browser should display
 
 [`webdev serve`]: /tools/webdev#serve
 
-## 5. Add custom code to the app {#add-code}
+## 5. Add custom code to the app {:#add-code}
 
 Let's customize the app you just created.
 
@@ -104,18 +104,18 @@ Let's customize the app you just created.
 2. Add the `newLI()` function (as shown below).
    It creates a new `LIElement` containing the specified `String`.
 
-   {% prettify dart tag=pre+code %}
+   ```dart
    Iterable<String> thingsTodo() sync* { ... }
 
    [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
 
    void main() { ... }
-   {% endprettify %}
+   ```
 
 3. In the `main()` function, initialize the `output` element using
    `thingsTodo()`:
 
-   {% prettify dart tag=pre+code %}
+   ```dart
    Iterable<String> thingsTodo() sync* { ... }
 
    LIElement newLI(String itemText) => LIElement()..text = itemText;
@@ -123,7 +123,7 @@ Let's customize the app you just created.
    void main() {
      querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
    }
-   {% endprettify %}
+   ```
 
 4. Save your changes.
 
@@ -136,15 +136,15 @@ Let's customize the app you just created.
 6. Optionally, improve the formatting by editing `web/styles.css`,
    then reload the app to check your changes.
 
-   {% prettify css tag=pre+code %}
+   ```css
    #output {
      padding: 20px;
      [!text-align: left;!]
    }
-   {% endprettify %}
+   ```
 
 
-## 6. Use Dart DevTools to inspect the app {#devtools}
+## 6. Use Dart DevTools to inspect the app {:#devtools}
 
 Use Dart DevTools to set breakpoints, view values and types,
 and step through your app's Dart code.
@@ -153,7 +153,7 @@ For setup details and a walkthrough, see
 
 [Debugging Dart Web Apps]: /web/debugging
 
-## 7. Build and deploy your web app {#deploy}
+## 7. Build and deploy your web app {:#deploy}
 
 To run your web app outside your development environment,
 you'll need to build and deploy it.

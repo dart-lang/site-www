@@ -9,8 +9,6 @@ nextpage:
   title: Callable objects
 ---
 
-{% include yt_shims.liquid %}
-
 Extension methods add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
@@ -20,10 +18,10 @@ If watching videos helps you learn,
 check out this overview of extension methods.
 
 <iframe
-  {{yt-std-size}}
+  {{yt.std-size}}
   title="Learn about extension methods in Dart"
-  src="{{yt-embed}}/D3j0OSfT9ZI"
-  {{yt-set}}>
+  src="{{yt.embed}}/D3j0OSfT9ZI"
+  {{yt.set}}>
 </iframe>
 
 ## Overview

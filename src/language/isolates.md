@@ -56,10 +56,10 @@ setting up and managing worker isolates:
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-{{site.alert.flutter-note}} 
+:::flutter-note
 If you're using Flutter, you can use [Flutter's `compute` function][]
 instead of `Isolate.run()`.
-{{site.alert.end}}
+:::
 
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
@@ -179,11 +179,11 @@ The first example, [Basic ports](#basic-ports-example), introduces the process
 at a high-level. The second example, [Robust ports](#robust-ports-example),
 gradually adds more practical, real-world functionality to the first.
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
-[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
 
 
@@ -196,13 +196,13 @@ These ports are the only way isolates can communicate with each other.
 A `ReceivePort` is an object that handles messages that are sent from other
 isolates. Those messages are sent via a `SendPort`.
 
-{{site.alert.note}}
+:::note
 A `SendPort` object is associated with exactly one `ReceivePort`,
 but a single `ReceivePort` can have many `SendPorts`.
 When you create a `ReceivePort`, it creates a `SendPort` for itself.
 You can create additional `SendPorts` that
 can send messages to an existing `ReceivePort`.
-{{site.alert.end}}
+:::
 
 Ports behave similarly to [`Stream`][] objects 
 (in fact, receive ports implement `Stream`!)
@@ -231,12 +231,12 @@ back on the `SendPort` it was passed by the main isolate.
 The main isolate receives this `SendPort`, and
 now both sides have an open channel to send and receive messages.
 
-{{site.alert.note}}
+:::note
 The diagrams in this section are high-level and intended to convey the 
 _concept_ of using ports for isolates. Actual implementation requires 
 a bit more code, which you will find 
 [later on this page](#basic-ports-example).  
-{{site.alert.end}}
+:::
 
 ![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
 
@@ -272,7 +272,7 @@ The code uses the example of sending JSON text to a new isolate,
 where the JSON will be parsed and decoded,
 before being sent back to the main isolate.
 
-{{site.alert.warn}}
+:::warning
 This example is meant to teach the _bare minimum_ needed to
 spawn a new isolate that can send and receive multiple messages over time.
 
@@ -282,7 +282,7 @@ and message sequencing.
 
 The [Robust ports example][] in the next section covers this functionality and
 discusses some of the issues that can arise without it.
-{{site.alert.end}}
+:::
 
 [robust ports example]: #robust-ports-example
 
@@ -522,11 +522,11 @@ long-lived worker isolate that has these additional features and more, and
 follows better design patterns. Although this code has similarities to the first
 example, it is not an extension of that example.
 
-{{site.alert.note}} 
+:::note
 This example assumes that you are already familiar with
 establishing communication between isolates with `Isolate.spawn` and ports,
 which was covered in the [previous example][]. 
-{{site.alert.end}}
+:::
 
 #### Step 1: Define the worker class
 
@@ -577,13 +577,13 @@ class Worker {
 }
 ```
 
-{{site.alert.note}} 
+:::note
 In this example, `SendPort` and `ReceivePort` instances
 follow a best practice naming convention, in which they are named in relation to
 the main isolate. The messages sent through the `SendPort` from the main isolate
 to the worker isolate are called _commands_, and the messages sent back to the
-main isolate are called _responses_. 
-{{site.alert.end}}
+main isolate are called _responses_.
+:::
 
 #### Step 2: Create a `RawReceivePort` in the `Worker.spawn` method
 
@@ -1092,17 +1092,17 @@ class Worker {
 
 </details>
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
-[`SendPort.send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
-[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[`BroadcastStream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/BroadcastStream-class.html
-[`Completer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Completer-class.html
-[`RawReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/RawReceivePort-class.html
+[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[`BroadcastStream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/BroadcastStream-class.html
+[`Completer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Completer-class.html
+[`RawReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/RawReceivePort-class.html
 [record]: /language/records
 [previous example]: #basic-ports-example
 [`try`/`catch` block]: /language/error-handling#catch
-[`RemoteError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/RemoteError-class.html
+[`RemoteError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/RemoteError-class.html

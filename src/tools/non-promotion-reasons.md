@@ -12,7 +12,7 @@ with tips on how to fix them.
 To learn more, check out the [Understanding null safety][] page.
 
 
-## Unsupported language version for field promotion {#language-version}
+## Unsupported language version for field promotion {:#language-version}
 
 **The cause:** 
 You're trying to promote a field, but field promotion is language versioned,
@@ -47,7 +47,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' refers to a field. It couldn’t be promoted
 because field promotion is only available in Dart 3.2 and above.
 ```
@@ -60,7 +60,7 @@ or your `pubspec.yaml` for an outdated [SDK constraint lower-bound][].
 
 [SDK constraint lower-bound]: /tools/pub/pubspec#sdk-constraints
 
-## Only local variables can be promoted (before Dart 3.2) {#property}
+## Only local variables can be promoted (before Dart 3.2) {:#property}
 
 **The cause:**
 You're trying to promote a property,
@@ -82,7 +82,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'i' refers to a property so it couldn't be promoted.
 ```
 
@@ -128,12 +128,12 @@ This example features an instance field,
 but it could instead use an instance getter, a static field or getter,
 a top-level variable or getter, or [`this`](#this).
 
-{{site.alert.tip}}
-  When creating a local variable to hold a field's value,
-  **make the variable `final`**.
-  That way, you can't accidentally update the local variable
-  when you intend to update the field.
-{{site.alert.end}}
+:::tip
+When creating a local variable to hold a field's value,
+**make the variable `final`**.
+That way, you can't accidentally update the local variable
+when you intend to update the field.
+:::
 
 And here's an example of using `i!`:
 
@@ -145,26 +145,26 @@ print(i[!!!].isEven);
 
 
 <a id="redundant-check"></a>
-{{site.alert.note}} 
-  You can work around all of these non-promotion examples by adding
-  a _redundant check_—code that confirms a
-  condition that's already been checked.
-  If the promotion that's failing is a null check, use `!`;
-  if it's a type check, you can use `as`.
+:::note
+You can work around all of these non-promotion examples by adding
+a _redundant check_—code that confirms a
+condition that's already been checked.
+If the promotion that's failing is a null check, use `!`;
+if it's a type check, you can use `as`.
 
-  Redundant checks are an easy but error-prone solution
-  to type promotion failures.
-  Because they overrule the compiler,
-  they can lead to mistakes in a way that other solutions don't.
+Redundant checks are an easy but error-prone solution
+to type promotion failures.
+Because they overrule the compiler,
+they can lead to mistakes in a way that other solutions don't.
 
-  It's up to you whether to do the extra work to get types to promote 
-  (giving you confidence that the code is correct)
-  or to do a redundant check
-  (which might introduce a bug if your reasoning is wrong).
-{{site.alert.end}}
+It's up to you whether to do the extra work to get types to promote 
+(giving you confidence that the code is correct)
+or to do a redundant check
+(which might introduce a bug if your reasoning is wrong).
+:::
 
 
-### Can't promote `this` {#this}
+### Can't promote `this` {:#this}
 
 **The cause:**
 You're trying to promote `this`,
@@ -187,7 +187,7 @@ extension E on int? {
 
 **Message:**
 
-```nocode
+```plaintext
 `this` can't be promoted. 
 ```
 
@@ -205,7 +205,7 @@ extension E on int? {
 }
 ```
 
-### Only private fields can be promoted {#private}
+### Only private fields can be promoted {:#private}
 
 **The cause:**
 You're trying to promote a field, but the field is not private.
@@ -234,7 +234,7 @@ test(C c) {
 
 **Message:**
 
-```nocode
+```plaintext
 'n' refers to a public property so it couldn’t be promoted.
 ```
 
@@ -257,7 +257,7 @@ test(C c) {
 }
 ```
 
-### Only final fields can be promoted {#final}
+### Only final fields can be promoted {:#final}
 
 **The cause:**
 You're trying to promote a field, but the field is not final.
@@ -286,7 +286,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'mutablePrivateField' refers to a non-final field so it couldn’t be promoted.
 ```
 
@@ -308,7 +308,7 @@ class Example {
 }
 ```
 
-### Getters can't be promoted {#not-field}
+### Getters can't be promoted {:#not-field}
 
 **The cause:** You're trying to promote a getter,
 but only instance *fields* can be promoted, not instance getters. 
@@ -335,7 +335,7 @@ f(C c) {
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' refers to a getter so it couldn’t be promoted.
 ```
 
@@ -359,17 +359,18 @@ f(C c) {
 }
 ```
 
-{{site.alert.note}}
-There is a [known bug] (as of 3.2) where flow analysis doesn't consider `abstract`
-getters stable enough to allow type promotion (though they technically are).
+:::note
+There is a [known bug] (as of Dart 3.2) where flow analysis doesn't
+consider `abstract` getters stable enough to allow type promotion
+(though they technically are).
 This will be fixed in a future release.
 In the meantime, replacing an abstract getter with an [abstract field][]
-will allow you to workaround this bug.
-{{site.alert.end}}
+will allow you to work around this bug.
+:::
 
 [known bug]: https://github.com/dart-lang/language/issues/3328#issuecomment-1792511446
 
-### External fields can't be promoted {#external}
+### External fields can't be promoted {:#external}
 
 **The cause:**
 You're trying to promote a field, but the field is marked `external`.
@@ -397,7 +398,7 @@ class C {
 
 **Message:**
 
-```nocode
+```plaintext
 'externalField' refers to an external field so it couldn’t be promoted.
 ```
 
@@ -420,7 +421,7 @@ class C {
 }
 ```
 
-### Conflict with getter elsewhere in library {#getter-name}
+### Conflict with getter elsewhere in library {:#getter-name}
 
 **The cause:**
 You're trying to promote a field,
@@ -452,7 +453,7 @@ f(Example x) {
 
 **Message:**
 
-```nocode
+```plaintext
 'overriden' couldn’t be promoted because there is a conflicting getter in class 'Override'
 ```
 
@@ -550,7 +551,7 @@ f(Example x) {
 }
 ```
 
-### Conflict with non-promotable field elsewhere in library {#field-name}
+### Conflict with non-promotable field elsewhere in library {:#field-name}
 
 **The cause:**
 You're trying to promote a field, but another class in the same library contains
@@ -583,7 +584,7 @@ instance of `Override`, so promotion would not be sound.
 
 **Message:**
 
-```nocode
+```plaintext
 'overridden' couldn’t be promoted because there is a conflicting non-promotable field in class 'Override'.
 ```
 
@@ -617,7 +618,7 @@ conflict.
 Read the [Note about unrelated classes](#note-about-unrelated-classes). 
 
 
-### Conflict with implicit `noSuchMethod` forwarder {#nosuchmethod}
+### Conflict with implicit `noSuchMethod` forwarder {:#nosuchmethod}
 
 **The cause:**
 You're trying to promote a field that is private and final,
@@ -664,7 +665,7 @@ The failure can also occur between fields in
 
 **Message:**
 
-```nocode
+```plaintext
 '_i' couldn’t be promoted because there is a conflicting noSuchMethod forwarder in class 'MockExample'.
 ```
 
@@ -698,7 +699,7 @@ The getter is declared `late` to be consistent with how mocks are generally used
 it's not necessary to declare the getter `late` to solve this type promotion
 failure in scenarios not involving mocks.
 
-{{site.alert.note}}
+:::note
 The example above uses [mocks](https://pub.dev/packages/mockito) simply because
 `Mock` already contains a `noSuchMethod` definition,
 so we don't have to define an arbitrary one
@@ -711,10 +712,10 @@ When the classes in question are declared in different libraries,
 private names aren’t forwarded to `noSuchMethod`
 (because that would violate privacy expectations),
 so it’s still safe to promote the field.
-{{site.alert.end}}
+:::
 
 
-### Possibly written after promotion {#write}
+### Possibly written after promotion {:#write}
 
 **The cause:**
 You're trying to promote a variable that might have been
@@ -780,7 +781,7 @@ void f(bool b, int? i, [!int j!]) {
 }
 ```
 
-### Possibly written in a previous loop iteration {#loop-or-switch}
+### Possibly written in a previous loop iteration {:#loop-or-switch}
 
 **The cause:**
 You're trying to promote something that
@@ -859,7 +860,7 @@ void f(int i, int? j, int? k) {
 }
 ```
 
-### In catch after possible write in try {#catch}
+### In catch after possible write in try {:#catch}
 
 **The cause:**
 The variable might have been written to in a `try` block,
@@ -1016,7 +1017,7 @@ void f(Object o) {
 ```
 
 
-### Write captured by a local function {#captured-local}
+### Write captured by a local function {:#captured-local}
 
 **The cause:**
 The variable has been write captured by
@@ -1095,7 +1096,7 @@ void f(int? i, int? j) {
 ```
 
 
-### Written outside of the current closure or function expression {#write-outer}
+### Written outside of the current closure or function expression {:#write-outer}
 
 **The cause:**
 The variable is written to outside of a closure or function expression,
@@ -1182,7 +1183,7 @@ whether or not it's assigned later,
 `j` can never have a non-null value.
 
 
-### Write captured outside of the current closure or function expression {#captured-outer}
+### Write captured outside of the current closure or function expression {:#captured-outer}
 
 **The cause:**
 The variable you're trying to promote is write captured

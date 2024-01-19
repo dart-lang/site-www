@@ -8,7 +8,7 @@ toc: false
 
 <div class="container">
 <div class="row">
-<div class="col-sm-6" markdown="1">
+<div class="col-sm-6">
 
 We recommend the [Flutter framework][] for developing multi-platform native apps
 for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.

@@ -159,17 +159,17 @@ var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
-{{site.alert.note}}
-  In many cases, you want to work with
-  Unicode grapheme clusters
-  as opposed to pure code units.
-  These are characters as they are perceived
-  by the user (for example, "🇬🇧" is one
-  user-perceived character but several
-  UTF-16 code units).
-  For this, the Dart team provides the
-  [`characters` package.]({{site.pub-pkg}}/characters)
-{{site.alert.end}}
+:::
+In many cases, you want to work with
+Unicode grapheme clusters
+as opposed to pure code units.
+These are characters as they are perceived
+by the user (for example, "🇬🇧" is one
+user-perceived character but several
+UTF-16 code units).
+For this, the Dart team provides the
+[`characters` package.]({{site.pub-pkg}}/characters)
+:::
 
 #### Converting to uppercase or lowercase
 
@@ -185,10 +185,10 @@ assert('web apps'.toUpperCase() == 'WEB APPS');
 assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
-{{site.alert.note}}
-  These methods don't work for every language. For example, the Turkish
-  alphabet's dotless *I* is converted incorrectly.
-{{site.alert.end}}
+:::note
+These methods don't work for every language. For example, the Turkish
+alphabet's dotless *I* is converted incorrectly.
+:::
 
 
 #### Trimming and empty strings
@@ -297,10 +297,10 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
-{{site.alert.tip}}
-  To practice using APIs that are available to both lists and sets,
-  follow the [Iterable collections codelab](/codelabs/iterables).
-{{site.alert.end}}
+:::tip
+To practice using APIs that are available to both lists and sets,
+follow the [Iterable collections codelab](/codelabs/iterables).
+:::
 
 #### Lists
 
@@ -390,22 +390,22 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
-{{site.alert.note}}
-  In many cases, you don't
-  need to explicitly specify generic
-  types, because Dart will
-  [infer](/language/type-system#type-inference)
-  them for you.
-  A list like `['Dash', 'Dart']` is understood
-  to be a `List<String>` (read: list of strings).
+:::note
+In many cases, you don't
+need to explicitly specify generic
+types, because Dart will
+[infer](/language/type-system#type-inference)
+them for you.
+A list like `['Dash', 'Dart']` is understood
+to be a `List<String>` (read: list of strings).
 
-  But there are times when you _should_ specify
-  the generic type. Like, for example, when Dart doesn't have
-  anything to infer from: `[]` could be a list of any
-  combination of things.
-  That's often not what you want, so you write `<String>[]`
-  or `<Person>[]` or something similar.
-{{site.alert.end}}
+But there are times when you _should_ specify
+the generic type. Like, for example, when Dart doesn't have
+anything to infer from: `[]` could be a list of any
+combination of things.
+That's often not what you want, so you write `<String>[]`
+or `<Person>[]` or something similar.
+:::
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -570,10 +570,10 @@ List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
-{{site.alert.note}}
+:::note
   Although Map doesn't implement Iterable, you can get Iterables from it using
   the Map `keys` and `values` properties.
-{{site.alert.end}}
+:::
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
@@ -618,10 +618,10 @@ var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
 ```
 
-{{site.alert.note}}
-  The object returned by `map()` is an Iterable that's *lazily evaluated*: your
-  function isn't called until you ask for an item from the returned object.
-{{site.alert.end}}
+:::note
+The object returned by `map()` is an Iterable that's *lazily evaluated*: your
+function isn't called until you ask for an item from the returned object.
+:::
 
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
@@ -766,8 +766,8 @@ assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 ```
 
-[`Uri.http`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.http.html
-[`Uri.https`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.https.html
+[`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
+[`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
 
 ### Dates and times
 
@@ -799,9 +799,12 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 // Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
-{{site.alert.warning}}
-  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
-{{site.alert.end}}
+
+:::warning
+`DateTime` operations might give unexpected results related to
+Daylight Savings Time and other non-standard time adjustments.  
+:::
+
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
@@ -838,11 +841,11 @@ var duration = y2001.difference(y2k);
 assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
-{{site.alert.warning}}
-  Using a Duration to shift a DateTime by days can be problematic, due to clock
-  shifts (to daylight saving time, for example). Use UTC dates if you must shift
-  days.
-{{site.alert.end}}
+:::warning
+Using a `Duration` to shift a `DateTime` by days can be problematic, due to
+clock shifts (to daylight saving time, for example).
+Use UTC dates if you must shift days.
+:::
 
 For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
@@ -886,20 +889,20 @@ also want to override the `==` operator. Objects that are equal (via
 `==`) must have identical hash codes. A hash code doesn't have to be
 unique, but it should be well distributed.
 
-{{site.alert.tip}}
-  To consistently and easily implement the `hashCode` getter,
-  consider using the static hashing methods provided by the `Object` class.
+:::tip
+To consistently and easily implement the `hashCode` getter,
+consider using the static hashing methods provided by the `Object` class.
 
-  To generate a single hash code for multiple properties of an object,
-  you can use [`Object.hash()`][].
-  To generate a hash code for a collection,
-  you can use either [`Object.hashAll()`][] (if element order matters)
-  or [`Object.hashAllUnordered()`][].
-{{site.alert.end}}
+To generate a single hash code for multiple properties of an object,
+you can use [`Object.hash()`][].
+To generate a hash code for a collection,
+you can use either [`Object.hashAll()`][] (if element order matters)
+or [`Object.hashAllUnordered()`][].
+:::
 
-[`Object.hash()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
-[`Object.hashAll()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
-[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
+[`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
 Note: There's disagreement over whether to include identical() in the ==
@@ -1052,38 +1055,38 @@ When a local variable is Finalizable,
 it won't be garbage collected
 until the code block where it is declared has exited.
 
-{{site.alert.version-note}}
-  Support for weak references and finalizers was added in Dart 2.17.
-{{site.alert.end}}
+:::version-note
+Support for weak references and finalizers was added in Dart 2.17.
+:::
 
 
-[ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
-[DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
-[Duration]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html
-[Exception]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Expando]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Expando-class.html
-[Finalizable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
-[Finalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html
-[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[Iterator]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
-[List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[Map]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
-[Match]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
-[NativeFinalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
-[NoSuchMethodError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
-[Pattern]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
-[RegExp]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
-[Set]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
-[StringBuffer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringBuffer-class.html
-[String]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
-[Uri]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[WeakReference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/WeakReference-class.html
-[dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
+[Comparable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Comparable-class.html
+[DateTime]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/DateTime-class.html
+[Duration]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Duration-class.html
+[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
+[Expando]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Expando-class.html
+[Finalizable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Finalizable-class.html
+[Finalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Finalizer-class.html
+[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[Iterator]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterator-class.html
+[List]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
+[Map]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
+[Match]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Match-class.html
+[NativeFinalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
+[NoSuchMethodError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError-class.html
+[Pattern]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Pattern-class.html
+[RegExp]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/RegExp-class.html
+[Set]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
+[StringBuffer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StringBuffer-class.html
+[String]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String-class.html
+[Uri]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri-class.html
+[WeakReference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/WeakReference-class.html
+[dart:core]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
-[double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
-[int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
-[toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
+[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
+[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
+[toStringAsFixed()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsFixed.html
+[toStringAsPrecision()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsPrecision.html

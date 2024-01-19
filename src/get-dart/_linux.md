@@ -9,7 +9,7 @@ versions are released.
 
 Perform the following **one-time setup**:
 
-```terminal
+```console
 $ sudo apt-get update
 $ sudo apt-get install apt-transport-https
 $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
@@ -18,7 +18,7 @@ $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.
 
 Then install the Dart SDK:
 
-```terminal
+```console
 $ sudo apt-get update
 $ sudo apt-get install dart
 ```

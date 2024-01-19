@@ -8,13 +8,13 @@ canonical: https://dart.dev/libraries
 noindex: true
 ---
 
-{{site.alert.warning}}
-  The Dart library tour's content has been split across
-  several different pages in the left side navigation under **Library**.
-  To learning about Dart's core libraries,
-  check out the [Core libraries overview](/libraries) and
-  the [Dart API reference docs]({{site.dart-api}}).
-{{site.alert.end}}
+:::warning
+The Dart library tour's content has been split across
+several different pages in the left side navigation under **Library**.
+To learning about Dart's core libraries,
+check out the [Core libraries overview](/libraries) and
+the [Dart API reference docs]({{site.dart-api}}).
+:::
 
 {% comment %}
   !! NOTE:
@@ -225,7 +225,7 @@ This content has moved to [](/library/dart-convert#decoding-and-encoding-utf-8-c
 
 This content has moved to [](/library/dart-convert#other-functionality).
 
-## dart:html - browser-based apps {#darthtml}
+## dart:html - browser-based apps {:#darthtml}
 
 This content has moved to [](/library/dart-html).
 
@@ -277,7 +277,7 @@ This content has moved to [](/library/dart-html#receiving-data).
 
 This content has moved to [](/library/dart-html#handling-websocket-events).
 
-## dart:io - I/O for servers and command-line apps {#dartio}
+## dart:io - I/O for servers and command-line apps {:#dartio}
 
 This content has moved to [](/library/dart-io).
 

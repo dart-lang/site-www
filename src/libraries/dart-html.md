@@ -17,10 +17,10 @@ HTML5 (and dart:html) has many
 additional APIs that this section doesn't cover. Only web apps can use
 dart:html, not command-line apps.
 
-{{site.alert.note}}
-  For larger applications or if you already have a Flutter application,
-  consider using [Flutter for web.]({{site.flutter}}/web)
-{{site.alert.end}}
+:::note
+For larger applications or if you already have a Flutter application,
+consider using [Flutter for web.]({{site.flutter}}/web)
+:::
 
 To use the HTML library in your web app, import dart:html:
 
@@ -439,17 +439,17 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
-[AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
-[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[AnchorElement]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/AnchorElement-class.html
+[dart:html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [Fetch data from the internet]: /tutorials/server/fetch-data
-[Document]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
-[Element]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
-[`HttpRequest`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[MessageEvent]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
-[Nodes]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
-[web audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
-[WebGL]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
-[WebSocket]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html
+[Document]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Document-class.html
+[Element]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Element-class.html
+[`HttpRequest`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/HttpRequest-class.html
+[IndexedDB]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[MessageEvent]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/MessageEvent-class.html
+[Nodes]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Node-class.html
+[web audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
+[WebGL]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_gl/dart-web_gl-library.html
+[WebSocket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/WebSocket-class.html
 [web library overview]: /web/libraries
-[Window]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Window-class.html
+[Window]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Window-class.html

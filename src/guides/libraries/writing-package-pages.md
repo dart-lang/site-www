@@ -297,16 +297,20 @@ adding `dart` tells pub.dev to use Dart syntax highlighting:
 <th> <b>Formatted with just <code>```</code></b> </th>
 <th> <b>Formatted with <code>```dart</code></b> </th>
 </tr>
-<tr markdown="1">
-<td markdown="1">
+<tr>
+<td>
+
 ```
 final like = 'this';
 ```
+
 </td>
-<td markdown="1">
+<td>
+
 ```dart
 final like = 'this';
 ```
+
 </td>
 </tr>
 </table>

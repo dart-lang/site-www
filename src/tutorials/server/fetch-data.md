@@ -133,12 +133,12 @@ The `package:http` library provides a cross-platform solution
 for making composable HTTP requests,
 with optional fine-grained control.
 
-{{site.alert.note}}
-  You should avoid directly using `dart:io` or `dart:html`
-  to make HTTP requests.
-  Those libraries are platform-dependent
-  and tied to a single implementation.
-{{site.alert.end}}
+:::note
+You should avoid directly using `dart:io` or `dart:html`
+to make HTTP requests.
+Those libraries are platform-dependent
+and tied to a single implementation.
+:::
 
 To add a dependency on `package:http`,
 run the following [`dart pub add`][] command

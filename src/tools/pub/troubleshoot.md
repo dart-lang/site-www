@@ -179,10 +179,11 @@ Check your internet connection, and
 verify that you don't have a firewall or other security software
 that blocks internet access from `dart`.
 
-<details markdown="1">
+<details>
  <summary>
    <b>Detailed instructions for Kaspersky Internet Security</b>
   </summary>
+
    When you have turned off _Kaspersky Internet Security_ protection
    from the menu bar,
    the VPN application filter `sysextctrld`
@@ -201,4 +202,5 @@ that blocks internet access from `dart`.
    7. Click the **+** button, and add the URL `https://pub.dev`.
    8. Click **OK**.
    9. Repeat the previous two steps for `https://pub.dartlang.org`
+
 </details>

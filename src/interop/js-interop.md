@@ -23,10 +23,10 @@ For help using the `js` package, see the following:
 
 ## Next-generation JS interop preview
 
-{{site.alert.note}}
-  This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/35084).
-{{site.alert.end}}
+:::note
+This interop feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/35084).
+:::
 
 Dart's JS interop story is currently evolving. 
 Many of the features that enable future JS interop
@@ -103,7 +103,7 @@ check out the [implementation of `package:web`][package-web],
 which provides bindings to browser APIs using static interop.
 
 [`@staticInterop`]: {{site.dart-api}}/dart-js_interop/staticInterop-constant.html
-[`dart:js_interop`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
 [`@JSExport`]: {{site.pub-pkg}}/dart-js_interop/JSExport-class.html
 [package-web]: https://github.com/dart-lang/web
 
@@ -120,4 +120,4 @@ to optimize it in the same way as static interop.
 As a result, we highly recommend using static interop over
 `dart:js_interop_unsafe` whenever it's possible.
 
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html

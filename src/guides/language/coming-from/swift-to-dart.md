@@ -1171,7 +1171,7 @@ different between the two languages.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 
-<div class="table-wrapper" markdown="1">
+<div class="table-wrapper">
 
 | **Meaning**                                        | **Dart operator** | **Swift equivalent**     |
 |----------------------------------------------------|-------------------|--------------------------|

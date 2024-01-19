@@ -16,10 +16,10 @@ To produce AOT snapshots, use the `aot-snapshot` subcommand of the
 To run AOT programs, use the `dartaotruntime` command.
 This tool supports Windows, macOS, and Linux.
 
-{{site.alert.note}}
-  To run use the `dartaotruntime` command,
-  add the path to your Dart `bin` directory to your `PATH` environment variable.
-{{site.alert.end}}
+:::note
+To run use the `dartaotruntime` command,
+add the path to your Dart `bin` directory to your `PATH` environment variable.
+:::
 
 [dart compile]: /tools/dart-compile
 
@@ -31,11 +31,11 @@ Here's an example of creating and running an AOT snapshot:
 $ dart compile aot-snapshot bin/myapp.dart
 ```
 
-```terminal
+```console
 Generated: /Users/me/simpleapp/bin/myapp.aot
 ```
 
-```terminal
+```console
 $ dartaotruntime bin/simpleapp.aot
 ```
 

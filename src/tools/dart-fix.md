@@ -4,8 +4,6 @@ description: Command-line tool for applying analysis fixes and migrating API usa
 toc: false
 ---
 
-{% include yt_shims.liquid %}
-
 The `dart fix` command
 finds and fixes two types of issues:
 
@@ -16,31 +14,31 @@ finds and fixes two types of issues:
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{{site.alert.tip}}
-  To learn about `dart fix` in a video format,
-  check out this [deep dive][] on **Decoding Flutter**:
+:::tip
+To learn about `dart fix` in a video format,
+check out this [deep dive][] on **Decoding Flutter**:
 
-  <iframe
-    {{yt-std-size}}
-    src="{{yt-embed}}/OBIuSrg_Quo"
-    title="Learn how to use 'dart fix'"
-    {{yt-set}}>
-  </iframe>
-{{site.alert.end}}
+<iframe
+  {{yt.std-size}}
+  src="{{yt.embed}}/OBIuSrg_Quo"
+  title="Learn how to use 'dart fix'"
+  {{yt.set}}>
+</iframe>
+:::
 
-[deep dive]: {{yt-watch}}/OBIuSrg_Quo
+[deep dive]: {{yt.watch}}/OBIuSrg_Quo
 
 ## Usage
 
 To preview proposed changes, use the `--dry-run` flag:
 
-```terminal
+```console
 $ dart fix --dry-run
 ```
 
 To apply the proposed changes, use the `--apply` flag:
 
-```terminal
+```console
 $ dart fix --apply
 ```
 
@@ -106,7 +104,7 @@ environment:
 
 You should then see the following when viewing the proposed changes:
 
-```terminal
+```console
 $ dart fix --dry-run
 Computing fixes in myapp (dry run)... 9.0s
 

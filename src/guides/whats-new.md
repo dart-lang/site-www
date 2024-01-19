@@ -27,8 +27,7 @@ check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
 [3.2 blog post]: https://medium.com/dartlang/dart-3-2-c8de8fe1b91f
 [3-2-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#320
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -86,8 +85,7 @@ and the [SDK changelog][3-1-changelog].
 [Dart 3.1 & a retrospective on functional style programming in Dart 3]: https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda
 [3-1-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -131,8 +129,7 @@ we made the following changes to this site:
 [pub cache move]: /resources/dart-3-migration#other-tools-changes
 [null safe]: /null-safety
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following article on the Dart blog:
 
@@ -151,8 +148,7 @@ and the [SDK changelog][3-0-changelog].
 [Announcing Dart 3]: https://medium.com/dartlang/announcing-dart-3-53f065a10635
 [3-0-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#300---2023-05-10
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In preparation for Dart 3, we split up and reorganized the
 Language Tour into new conceptual categories.
@@ -226,8 +222,7 @@ we made the following changes:
 [JS static interop support]: /interop/js-interop#next-generation-js-interop-preview
 [analyzer plugins]: /tools/analysis#plugins
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following article on the Dart blog:
 
@@ -235,8 +230,7 @@ We published the following article on the Dart blog:
 
 [blog-2-09-23]: https://medium.com/dartlang/introducing-realm-for-dart-flutter-e30cb05eb313
 
-### Videos released by the Dart team
-{: .no_toc}
+### Videos released by the Dart team {:.no_toc}
 
 During Google I/O 2023, we released the following videos:
 
@@ -260,8 +254,7 @@ and the [SDK changelog][2-19-changelog].
 [Introducing Dart 3 alpha]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
 [2-19-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2190---2023-01-24
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -333,8 +326,7 @@ we made the following changes to this site:
 [analyzer]: /tools/diagnostic-messages
 [lint]: /tools/linter-rules
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the Dart blog:
 
@@ -401,8 +393,7 @@ see [Dart 2.17: Productivity and integration][].
 
 [Dart 2.17: Productivity and integration]: https://medium.com/dartlang/dart-2-17-b216bfc80c5d
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -511,8 +502,7 @@ we made the following changes to this site:
 [security]: /security
 
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the Dart blog:
 
@@ -539,8 +529,7 @@ see [Dart 2.16: Improved tooling and platform handling][].
 
 [Dart 2.16: Improved tooling and platform handling]: https://medium.com/dartlang/dart-2-16-improved-tooling-and-platform-handling-dd87abd6bad1
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 We [updated the website infrastructure][] to a Docker-based setup
 to enable [easier contributions][] and more closely align with
@@ -582,8 +571,7 @@ For details about the 2.15 release, see [Announcing Dart 2.15][].
 
 [Announcing Dart 2.15]: https://medium.com/dartlang/dart-2-15-7e7a598e508a
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -630,8 +618,7 @@ For details about the 2.14 release, see [Announcing Dart 2.14][].
 
 [Announcing Dart 2.14]: https://medium.com/dartlang/announcing-dart-2-14-b48b9bb2fb67
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -670,8 +657,7 @@ we made the following changes to this site:
 [`dart create`]: /tools/dart-create
 [`dart test`]: /tools/dart-test
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the Dart blog:
 
@@ -692,8 +678,7 @@ For details about the 2.13 release, see [Announcing Dart 2.13][].
 
 [Announcing Dart 2.13]: https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -750,8 +735,7 @@ we made the following changes to this site:
 [Writing package pages]: /guides/libraries/writing-package-pages
 
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the Dart blog:
 
@@ -771,8 +755,7 @@ through March 3, 2021.
 For details about the 2.12 release, see [Announcing Dart 2.12][].
 
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and incremental improvements, we made the following changes to this site:
 
@@ -821,8 +804,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [Dart team packages]: /resources/dart-team-packages
 
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the Dart blog:
 
@@ -851,10 +833,9 @@ For details about the 2.10 release, see [Announcing Dart 2.10.][210-ann]
 
 [210-ann]: https://medium.com/dartlang/announcing-dart-2-10-350823952bd5
 
-<div class="no_toc_section" markdown="1">
+<div class="no_toc_section">
 
-### Docs updated or added to dart.dev
-{: .no_toc}
+### Docs updated or added to dart.dev {:.no_toc}
 
 In addition to bug fixes and small improvements,
 we made the following changes to this site:
@@ -903,8 +884,7 @@ we made the following changes to this site:
 [changelog-docs]: /tools/pub/package-layout#changelogmd
 [spec]: /guides/language/spec
 
-### Articles added to the Dart blog
-{: .no_toc}
+### Articles added to the Dart blog {:.no_toc}
 
 We published the following articles on the [Dart blog:][Dart blog]
 
@@ -920,9 +900,9 @@ We published the following articles on the [Dart blog:][Dart blog]
 We also improved the blog navigation,
 adding **announcement** and **archive** tabs, plus a link to dart.dev.
 
-{{site.alert.tip}}
-  All articles in the Dart blog are free to read.
-{{site.alert.end}}
+:::tip
+All articles in the Dart blog are free to read.
+:::
 
 </div>
 

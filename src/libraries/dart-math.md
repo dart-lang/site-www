@@ -43,9 +43,9 @@ var sinOf30degrees = sin(radians);
 assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
-{{site.alert.note}}
-  These functions use radians, not degrees!
-{{site.alert.end}}
+:::note
+These functions use radians, not degrees!
+:::
 
 
 ### Maximum and minimum
@@ -92,21 +92,21 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
-{{site.alert.warning}}
-  The default implementation of `Random` supplies a stream of pseudorandom bits
-  that are unsuitable for cryptographic purposes.
-  To create a cryptographically secure random number generator,
-  use the [`Random.secure()`][] constructor.
-{{site.alert.end}}
+:::warning
+The default implementation of `Random` supplies a stream of pseudorandom bits
+that are unsuitable for cryptographic purposes.
+To create a cryptographically secure random number generator,
+use the [`Random.secure()`][] constructor.
+:::
 
 ### More information
 
 Refer to the [Math API reference][dart:math] for a full list of methods.
 Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
-[Random]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
-[`Random.secure()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
-[dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
-[int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
+[Random]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random-class.html
+[`Random.secure()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random/Random.secure.html
+[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/dart-math-library.html
+[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
+[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
+[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html

@@ -60,14 +60,14 @@ use the `dart help` command or see the documentation for the
 $ dart help format
 ```
 
-{{site.alert.tip}}
-  To avoid making changes that might be unsafe,
-  `dart format` only affects whitespace.
-  
-  There's a lot more to writing readable and
-  consistent code than just whitespace, though.
-  To learn more about best practices for writing and styling Dart code,
-  check out the [Dart style guide][].
-{{site.alert.end}}
+:::tip
+To avoid making changes that might be unsafe,
+`dart format` only affects whitespace.
+
+There's a lot more to writing readable and
+consistent code than just whitespace, though.
+To learn more about best practices for writing and styling Dart code,
+check out the [Dart style guide][].
+:::
 
 [Dart style guide]: /effective-dart/style

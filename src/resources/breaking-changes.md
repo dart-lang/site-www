@@ -47,8 +47,7 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 
 ## Not yet released to stable
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:nativewrappers`
 
@@ -70,31 +69,26 @@ don't include the section header.
 
 ## Released in x.x.x
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### (`dart:core`, `package:js`, etc)
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
 ## Released in 3.2.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * **Language versioned**: [Changed the split point for refutable patterns][53167]
   to the top level pattern so type promotion in if-case statements is consistent
   regardless of whether the scrutinee might throw an exception.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:cli`
 
@@ -135,8 +129,7 @@ don't include the section header.
   not extendable, by user `@staticInterop` types.
 * **Experimental**: Changed `JSArray.withLength` to take `int` instead of `JSNumber`.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Development JavaScript compiler (DDC)
 
@@ -185,8 +178,7 @@ don't include the section header.
 
 ## Released in 3.1.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:async`
 
@@ -218,13 +210,12 @@ don't include the section header.
 
 ## Released in 3.0.0
 
-{{site.alert.tip}}
-  The [Dart 3.0 migration guide][dart3] covers the complete details
-  on all the changes in this section.
-{{site.alert.end}}
+:::tip
+The [Dart 3.0 migration guide][dart3] covers the complete details
+on all the changes in this section.
+:::
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * **Language versioned**: Changed interpretation of [switch cases] from constant
   expressions to patterns.
@@ -236,8 +227,7 @@ don't include the section header.
   a [label] that is not a loop (`for`, `do` and `while` statements) or a `switch`
   member.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 * The following existing classes have been made mixin classes:
   `Iterable`, `IterableMixin`, `IterableBase`, `ListMixin`, `SetMixin`, `MapMixin`,
@@ -299,16 +289,14 @@ don't include the section header.
 
 ## Released in 2.19.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Flagged additional code as unreachable][49635] due to types `Null` and `Never`.
 * [Don't delegate inaccessible private names to `noSuchMethod`][49687].
 * [Report a compile-time error][50383] for all cyclic dependencies during
   top-level type inference.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:convert`
 
@@ -379,13 +367,11 @@ don't include the section header.
 
 ## Released in 2.18.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Removed support for mixin of classes that don't extend `Object`][48167].
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -395,8 +381,7 @@ don't include the section header.
 * [The Dart VM no longer automatically restores the initial terminal settings][45630]
   upon exit.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 * [Fully discontinued the `.packages` file][48272]. 
 
@@ -414,8 +399,7 @@ don't include the section header.
 
 ## Released in 2.17.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -426,8 +410,7 @@ don't include the section header.
 * [Added a new `allowLegacyUnsafeRenegotiation` property to `SecurityContext`][48513],
   which allows TLS renegotiation for client secure sockets.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart command line
 
@@ -443,8 +426,7 @@ don't include the section header.
 
 ## Released in 2.16.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -456,8 +438,7 @@ don't include the section header.
 
 * **Removed**: [Removed the `Isolate.packageRoot` API][47769].
 
-### Tools 
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart command line
 
@@ -471,8 +452,7 @@ don't include the section header.
 
 ## Released in 2.15.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -487,8 +467,7 @@ don't include the section header.
 
 * [Removed `window.openDatabase`][46316] (related to `dart:web_sql` deletion above).
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart command line
 
@@ -508,8 +487,7 @@ don't include the section header.
 
 ## Released in 2.14.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -521,8 +499,7 @@ don't include the section header.
 * Most types exposed by this library [can no longer be extended, implemented or
   mixed-in][45115].
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart VM
 
@@ -552,8 +529,7 @@ don't include the section header.
 
 ## Released in 2.13.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `package:js`
 
@@ -564,16 +540,14 @@ don't include the section header.
 
 ## Released in 2.12.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Null safety] is now enabled by default in all code that
   has not opted out.
 * [Fixed an implementation bug][44660] where `this` would sometimes undergo type
   promotion in extensions.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:ffi`
 
@@ -584,8 +558,7 @@ don't include the section header.
   able to invoke `sizeOf<T>` generically.
 * [Deprecated subtypes of `Struct` without any native member][44622].
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart VM
 
@@ -607,8 +580,7 @@ don't include the section header.
 
 ## Released in 2.10.0
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart VM
 
@@ -618,8 +590,7 @@ don't include the section header.
 
 ## Released in 2.9.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:convert`
 
@@ -640,8 +611,7 @@ don't include the section header.
 * [Web compilers (dart2js and DDC) now produce a compile-time error][42714] if
   `dart:mirrors` is imported.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart VM
 
@@ -658,8 +628,7 @@ don't include the section header.
 
 ## Released in 2.8.1
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Fixed an implementation bug][40675] where local variable inference would
   incorrectly use the promoted type of a type variable.
@@ -667,8 +636,7 @@ don't include the section header.
   `implements Function`, `extends Function`, or `with Function` no longer having
   an effect since Dart 2.0.0.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:async`
 
@@ -709,8 +677,7 @@ don't include the section header.
   `changed`, and `modified` getters.
 * [The `HeaderValue` class now parses more strictly][40709] in two invalid edge cases.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart Dev Compiler (DDC)
 
@@ -757,13 +724,11 @@ other.
 
 ## Released in 2.7.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Static extension members are accessible when imported with a prefix][671].
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -772,15 +737,13 @@ other.
 
 ## Released in 2.6.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Changed inference when using `Null` values in a `FutureOr` context][37985].
   Namely, constraints of the forms similar to `Null` <: `FutureOr<T>` now yield
   `Null` as the solution for `T`.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:ffi`
 
@@ -793,8 +756,7 @@ other.
 
 ## Released in 2.5.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 * Various methods and properties across various core libraries, which used
   to declare a return type of `List<int>`, were [updated to declare a return type
@@ -807,8 +769,7 @@ other.
 * [The `Cookie` class's `name` and `value` setters now validate][37192]
   that the strings are made from the allowed character set and are not null.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Pub
 
@@ -822,13 +783,11 @@ other.
 
 ## Released in 2.4.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * [Covariance of type variables used in super-interfaces is now enforced][35097]. 
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:isolate`
 
@@ -845,8 +804,7 @@ other.
 
 ## Released in 2.2.0
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `package:kernel`
 
@@ -859,8 +817,7 @@ other.
 
 ## Released in 2.1.1
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 #### `dart:io`
 
@@ -868,8 +825,7 @@ other.
 
 [29554]: https://github.com/dart-lang/sdk/issues/29554
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Dart VM
 
@@ -881,8 +837,7 @@ other.
 
 ## Released in 2.1.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * A number of static errors that should have been detected
   and reported were not supported in 2.0.0. These are reported now, which means
@@ -897,8 +852,7 @@ other.
   * [Constant constructors cannot redirect to non-constant constructors][34161].
   * [Setters with the same name as the enclosing class aren't allowed][34225].
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### `dart2js`
 
@@ -916,16 +870,14 @@ other.
 
 ## Released in 2.0.0
 
-### Language
-{: .no_toc}
+### Language {:.no_toc}
 
 * Replaced the unsound optional static type system with a sound static type
   system using type inference and runtime checks, formerly called [strong mode].
 * [Functions marked `async` now run synchronously][30345] until the first
   `await` statement.
 
-### Libraries
-{: .no_toc}
+### Libraries {:.no_toc}
 
 * Renamed constants in the core libraries from `SCREAMING_CAPS` to `lowerCamelCase`.
 * Added many new methods to core library classes that will need to be implemented
@@ -933,8 +885,7 @@ other.
 * `dart:isolate` and `dart:mirrors` are no longer supported when
   using Dart for the web.
 
-### Tools
-{: .no_toc}
+### Tools {:.no_toc}
 
 #### Pub
 

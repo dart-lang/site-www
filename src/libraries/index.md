@@ -69,7 +69,7 @@ the [Flutter API reference][api-flutter].
 To learn more about the Dart language,
 check out the [language documentation and samples](/language).
 
-[Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
+[Dart API]: {{site.dart-api}}/{{site.sdkInfo.channel}}
 [webdev libraries]: /web/libraries
 [api-flutter]: {{site.flutter-api}}
 
@@ -87,6 +87,7 @@ The following table lists the Dart core libraries that work on all
 | [`dart:developer`][dart-developer]<br>Interaction with developer tools such as the debugger and inspector. | [Native JIT][jit] and the [development JavaScript compiler][] only |
 | [`dart:math`][dart-math]<br>Mathematical constants and functions, plus a random number generator. | |
 | [`dart:typed_data`][dart-typed_data], [`package:typed_data`][package-typed_data]<br>Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types.<br>`package:typed_data` provides further classes and functions working on typed data. | |
+
 {:.table .table-striped}
 
 ## Native platform libraries
@@ -100,6 +101,7 @@ The following table lists the Dart core libraries that work on the
 | [`dart:io`][dart-io], [`package:io`][package-io]<br>File, socket, HTTP, and other I/O support for non-web applications.<br>`package:io` provides functionality including support for ANSI colors, file copying, and standard exit codes. | |
 | [`dart:isolate`][dart-isolate]<br> Concurrent programming using isolates: independent workers similar to threads. | |
 | [`dart:mirrors`][dart-mirrors]<br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>[Native JIT][jit] only (_not_&nbsp;Flutter) |
+
 {:.table .table-striped}
 
 ## Web platform libraries
@@ -115,45 +117,46 @@ The following table lists the Dart core libraries that work on the
 | [`dart:svg`][dart-svg]<br>Scalable Vector Graphics.                                                                                                                                                                                                                                                                                                                                                                               | |
 | [`dart:web_audio`][dart-web_audio]<br>High-fidelity audio programming in the browser.                                                                                                                                                                                                                                                                                                                                             | |
 | [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser.                                                                                                                                                                                                                                                                                                                                                                    | |
+
 {:.table .table-striped}
 
 
 <!---
 Multi-platform libraries
 -->
-[dart-core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
-[dart-async]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
+[dart-core]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/dart-core-library.html
+[dart-async]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html
 [package-async]: {{site.pub-pkg}}/async
-[dart-collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
+[dart-collection]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-collection/dart-collection-library.html
 [package-collection]: {{site.pub-pkg}}/collection
-[dart-convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart-convert]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
 [package-convert]: {{site.pub-pkg}}/convert
-[dart-developer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
-[dart-math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[dart-typed_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart-developer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/dart-developer-library.html
+[dart-math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/dart-math-library.html
+[dart-typed_data]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-typed_data/dart-typed_data-library.html
 [package-typed_data]: {{site.pub-pkg}}/typed_data
 
 <!---
 Native platform libraries
 -->
-[dart-ffi]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
+[dart-ffi]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/dart-ffi-library.html
 [package-ffi]: {{site.pub-pkg}}/ffi
-[dart-io]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[dart-io]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/dart-io-library.html
 [package-io]: {{site.pub-pkg}}/io
-[dart-isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
-[dart-mirrors]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html
+[dart-isolate]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/dart-isolate-library.html
+[dart-mirrors]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-mirrors/dart-mirrors-library.html
 
 <!---
 Web platform libraries
 -->
-[dart-html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[dart-indexed_db]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[dart-js]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/dart-js-library.html
+[dart-html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
+[dart-indexed_db]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[dart-js]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js/dart-js-library.html
 [package-js]: {{site.pub-pkg}}/js
-[dart-js_util]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
-[dart-svg]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
-[dart-web_audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
-[dart-web_gl]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
+[dart-js_util]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/dart-js_util-library.html
+[dart-svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
+[dart-web_audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
+[dart-web_gl]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_gl/dart-web_gl-library.html
 
 <!---
 Misc

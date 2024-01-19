@@ -24,10 +24,10 @@ Using embedded DartPad editors, you can test your knowledge by
 completing and running exercises. To get the most out of
 this codelab, you should have some knowledge of [basic Dart syntax](/language).
 
-{{site.alert.note}}
-  This page uses embedded DartPads to display exercises.
-  {% include dartpads-embedded-troubleshooting.md %}
-{{site.alert.end}}
+:::note
+This page uses embedded DartPads to display exercises.
+{% include 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 
 ## Nullable and non-nullable types
@@ -101,11 +101,11 @@ you assert two conditions to Dart about the expression:
 1. Its value doesn't equal `null`
 2. Dart can assign the value to a non-nullable variable
 
-{{site.alert.warn}}
-  If the expression does equal `null`, **Dart throws an exception at run-time**.
-  This makes the `!` operator _unsafe_.
-  Don't use it unless you have no doubt the expression can't equal `null`.
-{{site.alert.end}}
+:::warning
+If the expression does equal `null`, **Dart throws an exception at run-time**.
+This makes the `!` operator _unsafe_.
+Don't use it unless you have no doubt the expression can't equal `null`.
+:::
 
 [non-null assertion operator]: /null-safety/understanding-null-safety#non-null-assertion-operator
 
@@ -532,14 +532,13 @@ void main() {
 }
 ```
 
-{{site.alert.info}}
-  **Fun fact:**
-  After you add `late` to the declaration of `_cache`,
-  if you move the   `_computeValue` function into the
-  `CachedValueProvider` class, the code still works!
-  Initialization expressions for `late` fields can use instance
-  methods in their initializers.
-{{site.alert.end}}
+:::note Fun fact
+After you add `late` to the declaration of `_cache`,
+if you move the   `_computeValue` function into the
+`CachedValueProvider` class, the code still works!
+Initialization expressions for `late` fields can use instance
+methods in their initializers.
+:::
 
 
 ## What's next?

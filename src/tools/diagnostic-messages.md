@@ -1937,7 +1937,7 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 The following code produces this diagnostic because the parameter type
 of `g` is a typed data.
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 import 'dart:typed_data';
 
@@ -1946,13 +1946,13 @@ void f(Uint8List i) {}
 void g() {
   Pointer.fromFunction<Void Function(Pointer<Uint8>)>([!f!]);
 }
-{% endprettify %}
+```
 
 #### Common fixes
 
 Use the `Pointer` type instead:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 void f(Pointer<Uint8> i) {}
@@ -1960,7 +1960,7 @@ void f(Pointer<Uint8> i) {}
 void g() {
   Pointer.fromFunction<Void Function(Pointer<Uint8>)>(f);
 }
-{% endprettify %}
+```
 
 ### call_must_not_return_typed_data
 
@@ -1981,26 +1981,26 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 The following code produces this diagnostic because the dart function
 signature contains a typed data, but the `isLeaf` argument is `false`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 import 'dart:typed_data';
 
 void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
   p.asFunction<[!Uint8List Function()!]>();
 }
-{% endprettify %}
+```
 
 #### Common fixes
 
 Use the `Pointer` type instead:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
   p.asFunction<Pointer<Uint8> Function()>();
 }
-{% endprettify %}
+```
 
 ### case_block_not_terminated
 
@@ -14084,23 +14084,23 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 The following code produces this diagnostic because the field `f` uses an
 unsupported type, `Array`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 @Native()
 external Array<Int> [!f!];
-{% endprettify %}
+```
 
 #### Common fixes
 
 For array fields, use a pointer instead:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 @Native()
 external Pointer<Int> f;
-{% endprettify %}
+```
 
 ### native_field_missing_type
 
@@ -14123,12 +14123,12 @@ The following code produces this diagnostic because the field `f` has
 the type `int` (for which multiple native representations exist), but no
 explicit type parameter on the `Native` annotation:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 @Native()
 external int [!f!];
-{% endprettify %}
+```
 
 #### Common fixes
 
@@ -14137,12 +14137,12 @@ the native declaration of the field. Then, add the corresponding type to
 the annotation. For instance, if `f` was declared as an `uint8_t` in C,
 the Dart field should be declared as:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 @Native<Uint8>()
 external int f;
-{% endprettify %}
+```
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
@@ -14165,32 +14165,32 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 The following code produces this diagnostic because the field `f` in the
 class `C` is `@Native`, but not `static`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 class C {
   @Native<Int>()
   external int [!f!];
 }
-{% endprettify %}
+```
 
 #### Common fixes
 
 Either make the field static:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 class C {
   @Native<Int>()
   external static int f;
 }
-{% endprettify %}
+```
 
 Or move it out of a class, in which case no explicit `static` modifier is
 required:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 class C {
@@ -14198,19 +14198,19 @@ class C {
 
 @Native<Int>()
 external int f;
-{% endprettify %}
+```
 
 If you meant to annotate an instance field that should be part of a
 struct, omit the `@Native` annotation:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 
 final class C extends Struct {
   @Int()
   external int f;
 }
-{% endprettify %}
+```
 
 ### new_with_undefined_constructor_default
 
@@ -15424,28 +15424,28 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 The following code produces this diagnostic because the dart function
 signature contains a typed data, but the `isLeaf` argument is `false`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 import 'dart:typed_data';
 
 void f(Pointer<NativeFunction<Void Function(Pointer<Uint8>)>> p) {
   p.asFunction<[!void Function(Uint8List)!]>();
 }
-{% endprettify %}
+```
 
 #### Common fixes
 
 If the function has at least one typed data parameter, then add
 the `isLeaf` argument:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'dart:ffi';
 import 'dart:typed_data';
 
 void f(Pointer<NativeFunction<Void Function(Pointer<Uint8>)>> p) {
   p.asFunction<void Function(Uint8List)>(isLeaf: true);
 }
-{% endprettify %}
+```
 
 If the function also uses `Handle`s, then it must be non-leaf. In That
 case use `Pointer`s instead of typed data.

@@ -91,7 +91,7 @@ holding onto a callback to execute later
 This same model is generally how the event loop handles all other
 asynchronous events in Dart, such as [`Stream`][] objects.
 
-[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
 
 ## Asynchronous programming
 
@@ -153,7 +153,7 @@ String _readFileSync() {
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
-{% prettify dart tag=pre+code %}
+```dart
 const String filename = 'with_keys.json';
 
 void main() [!async!] {
@@ -170,7 +170,7 @@ void main() [!async!] {
   final contents = [!await!] file.[!readAsString()!];
   return contents.trim();
 }
-{% endprettify %}
+```
 
 The `main()` function uses the `await` keyword in front of `_readFileAsync()`
 to let other Dart code (such as event handlers) use the CPU while native code
@@ -178,10 +178,10 @@ to let other Dart code (such as event handlers) use the CPU while native code
 the `Future<String>` returned by `_readFileAsync()` into a `String`. As a
 result, the `contents` variable has the implicit type `String`.
 
-{{site.alert.note}}
+:::note
 The `await` keyword works only in functions that have `async` before the
 function body.
-{{site.alert.end}}
+:::
 
 As the following figure shows, the Dart code pauses while `readAsString()`
 executes non-Dart code, in either the Dart runtime or the operating system. 
@@ -257,12 +257,11 @@ using additional processor cores if they're available. Isolates are like threads
 or processes, but each isolate has its own memory and a single thread running an
 event loop. 
 
-{{site.alert.info}}
-**Platform note:**
+:::note Platform note
 Only the [Dart Native platform][] implements isolates.
 To learn more about the Dart Web platform,
 see the [Concurrency on the web](#concurrency-on-the-web) section.
-{{site.alert.end}}
+:::
 
 [Dart Native platform]: /overview#platform
 
@@ -383,7 +382,7 @@ However, `spawnUri()` is much slower than `spawn()`, and the new isolate isn't
 in its spawner's isolate group. Another performance consequence is that message
 passing is slower when isolates are in different groups.
 
-[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawnUri.html
 
 ### Limitations of isolates
 
@@ -423,14 +422,14 @@ Check out the [`SendPort.send`][] documentation for more information.
 Note that `Isolate.spawn()` and `Isolate.exit()` abstract over `SendPort` 
 objects, so they're subject to the same limitations.
 
-[`SendPort.send`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
-[`Socket`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html
-[`DynamicLibrary`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/DynamicLibrary-class.html
-[`Finalizable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
-[`Finalizer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html
-[`NativeFinalizer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
-[`Pointer`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Pointer-class.html
-[`UserTag`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/UserTag-class.html
+[`SendPort.send`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
+[`Socket`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Socket-class.html
+[`DynamicLibrary`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/DynamicLibrary-class.html
+[`Finalizable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Finalizable-class.html
+[`Finalizer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Finalizer-class.html
+[`NativeFinalizer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
+[`Pointer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Pointer-class.html
+[`UserTag`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/UserTag-class.html
 
 <a id="web"></a>
 ## Concurrency on the web
@@ -476,8 +475,8 @@ as the spawning isolate. Web workers don't have an equivalent API.
 [`IsolateNameServer`]: https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html
 [`package:isolate_name_server`]: https://pub.dev/packages/isolate_name_server
 [Actor model]: https://en.wikipedia.org/wiki/Actor_model
-[`Isolate.run()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/run.html
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html

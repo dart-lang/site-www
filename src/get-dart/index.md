@@ -40,17 +40,17 @@ in its `bin` folder.
   <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
-<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+<div id="tab-sdk-install-windows" class="tabs__content current">
 
 {% include './_windows.md' %}
 
 </div>
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-linux" class="tabs__content">
 
 {% include './_linux.md' %}
 
 </div>
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-mac" class="tabs__content">
 
 {% include './_mac.md' %}
 

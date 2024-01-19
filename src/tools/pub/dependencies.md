@@ -470,7 +470,7 @@ this flag only resolves new dependencies if:
 [content hashes]: /tools/pub/glossary#content-hashes
 ---
 
-<aside id="fn:semver" class="footnote" markdown="1">
+<aside id="fn:semver" class="footnote">
 
 [1] Pub follows version `2.0.0-rc.1` of the
 [semantic versioning specification][]

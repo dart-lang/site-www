@@ -1,6 +1,7 @@
 ---
 title: dart pub get
-description: Use dart pub get to retrieve the dependencies used by your Dart application.
+description: >-
+  Use dart pub get to retrieve the dependencies used by your Dart application.
 ---
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -15,7 +16,7 @@ directory, as well as their
 [transitive dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```terminal
+```console
 $ dart pub get
 Resolving dependencies...
 Got dependencies!
@@ -60,12 +61,12 @@ get the latest versions of all dependencies.
 By default, pub creates a `package_config.json` file
 in the `.dart_tool/` directory that maps from package names to location URIs.
 
-{{site.alert.note}}
-  Don't check the generated `.dart_tool/` directory into your repo;
-  add it to your repo's `.gitignore` file.
-  For more information,
-  see [What not to commit](/guides/libraries/private-files).
-{{site.alert.end}}
+:::note
+Don't check the generated `.dart_tool/` directory into your repo;
+add it to your repo's `.gitignore` file.
+For more information,
+see [What not to commit](/guides/libraries/private-files).
+:::
 
 
 ## Getting a new dependency
@@ -133,7 +134,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include tools/pub-option-no-offline.md %}
+{% include 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -153,7 +154,4 @@ Refuses to resolve dependencies with an error message
 if the `pubspec.lock` file deviates or is missing.
 
 
-{{site.alert.info}}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% include 'pub-problems.md' %}

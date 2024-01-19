@@ -85,7 +85,7 @@ $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-pat
 Pub uses the default branch of the Git repository. To specify a
 different branch or commit, use the `--git-ref` option:
 
-```terminal
+```console
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 

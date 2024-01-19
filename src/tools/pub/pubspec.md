@@ -517,12 +517,12 @@ context of the `flutter` executable, and the Flutter SDK's
 `version` file meets the version constraint's lower bound. Otherwise,
 the package won't be selected.
 
-{{site.alert.note}}
-  Note: The Flutter SDK only enforces the lower bound of the flutter constraint.
-  To learn more, check out
-  [issue #95472](https://github.com/flutter/flutter/issues/95472)
-  in the `flutter/flutter` repository.
-{{site.alert.end}}
+:::note
+The Flutter SDK only enforces the lower bound of the flutter constraint.
+To learn more, check out
+[issue #95472](https://github.com/flutter/flutter/issues/95472)
+in the `flutter/flutter` repository.
+:::
 
 To publish a package with a Flutter SDK constraint,
 you must specify a Dart SDK constraint with a minimum version of

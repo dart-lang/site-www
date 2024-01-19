@@ -250,9 +250,9 @@ In JavaScript, you can define multiline strings
 using template literals.
 Dart has two ways to define multiline strings.
 
-<ol markdown="1">
-<li markdown="1"> Using implicit string concatenation:
-    Dart concantenates any neighboring string literals,
+<ol>
+<li> Using implicit string concatenation:
+    Dart concatenates any neighboring string literals,
     even when spread over multiple lines:
 
 ```dart
@@ -262,7 +262,7 @@ final s1 = 'String '
 ```
 </li>
 
-<li markdown="1"> Using a multi line string literal:
+<li> Using a multi line string literal:
 When using three quotation marks (either single or double)
 on either side of the string, the literal can span multiple lines.
 

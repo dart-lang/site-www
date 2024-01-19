@@ -19,12 +19,13 @@ future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
 dart:async library ([API reference][dart:async]).
 
-{{site.alert.note}}
-  You don't always need to use the Future or Stream APIs directly. The Dart
-  language supports asynchronous coding using keywords such as `async` and
-  `await`. See the [asynchronous programming codelab](/codelabs/async-await) for
-  details.
-{{site.alert.end}}
+:::note
+You don't always need to use the Future or Stream APIs directly.
+The Dart language supports asynchronous coding using
+keywords such as `async` and `await`.
+Check out the [asynchronous programming codelab](/codelabs/async-await)
+for details.
+:::
 
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
@@ -34,10 +35,10 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{{site.alert.tip}}
-  You don't need to import dart:async to use the Future and
-  Stream APIs, because dart:core exports those classes.
-{{site.alert.end}}
+:::tip
+You don't need to import dart:async to use the Future and
+Stream APIs, because dart:core exports those classes.
+:::
 
 ### Future
 
@@ -93,11 +94,11 @@ try {
 }
 ```
 
-{{site.alert.important}}
-  Async functions return Futures. If you don't want your function to return a
-  future, then use a different solution. For example, you might call an `async`
-  function from your function.
-{{site.alert.end}}
+:::important
+Async functions return Futures. If you don't want your function to return a
+future, then use a different solution. For example, you might call an `async`
+function from your function.
+:::
 
 For more information on using `await` and related Dart language features,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -132,12 +133,12 @@ httpClient.read(url).then((String result) {
 The `then().catchError()` pattern is the asynchronous version of
 `try`-`catch`.
 
-{{site.alert.important}}
-  Be sure to invoke `catchError()` on the result of `then()`—not on the result
-  of the original Future. Otherwise, the `catchError()` can handle errors only
-  from the original Future's computation, but not from the handler registered by
-  `then()`.
-{{site.alert.end}}
+:::important
+Be sure to invoke `catchError()` on the result of `then()`—not on
+the result of the original `Future`. Otherwise, the
+`catchError()` can handle errors only from the original Future's computation,
+but not from the handler registered by `then()`.
+:::
 
 [`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 
@@ -210,8 +211,8 @@ or with an error if any of the provided futures fail.
 
 #### Handling errors for multiple futures
 
-You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureIterable/wait.html)
-or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
+You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureIterable/wait.html)
+or [record]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
 These extensions return a future with the resulting values of all provided
@@ -292,7 +293,7 @@ to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
@@ -308,14 +309,14 @@ void main(List<String> arguments) {
     }
   });
 }
-{% endprettify %}
+```
 
 The equivalent code with await expressions,
 including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
@@ -329,15 +330,15 @@ void main(List<String> arguments) async {
     searchFile(File(searchPath), searchTerms);
   }
 }
-{% endprettify %}
+```
 
-{{site.alert.important}}
-  Before using `await for`, make sure that it makes the code clearer and that
-  you really do want to wait for all of the stream's results. For example, you
-  usually should **not** use `await for` for DOM event listeners, because the
-  DOM sends endless streams of events. If you use `await for` to register two
-  DOM event listeners in a row, then the second kind of event is never handled.
-{{site.alert.end}}
+:::important
+Before using `await for`, make sure that it makes the code clearer and that
+you really do want to wait for all of the stream's results. For example, you
+usually should **not** use `await for` for DOM event listeners, because the
+DOM sends endless streams of events. If you use `await for` to register two
+DOM event listeners in a row, then the second kind of event is never handled.
+:::
 
 For more information on using `await` and related
 Dart language features, see the
@@ -350,13 +351,13 @@ To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Add an event handler to a button.
 submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
-{% endprettify %}
+```
 
 In this example, the `onClick` property is a `Stream` object provided by
 the submit button.
@@ -409,7 +410,7 @@ Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
@@ -425,7 +426,7 @@ Future<void> readFileAwaitFor() async {
     print(e);
   }
 }
-{% endprettify %}
+```
 
 If you use the Stream API,
 then handle errors by registering an `onError` listener.
@@ -433,7 +434,7 @@ Run code after the stream is closed by registering
 an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
@@ -445,7 +446,7 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 }, [!onError!]: (e) {
   print(e);
 });
-{% endprettify %}
+```
 
 
 ### More information
@@ -461,9 +462,9 @@ Also see these articles, codelabs, and tutorials:
 - [Dart asynchronous programming: Isolates and event loops](/language/concurrency)
 
 
-[Future.wait()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/wait.html
-[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[`ParallelWaitError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ParallelWaitError-class.html
-[Stream]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[dart:async]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
+[Future.wait()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/wait.html
+[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[`ParallelWaitError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ParallelWaitError-class.html
+[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[dart:async]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html
 [dart:io documentation]: /libraries/dart-io

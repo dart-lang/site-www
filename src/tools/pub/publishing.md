@@ -3,8 +3,6 @@ title: Publishing packages
 description: Learn how to publish a Dart package to pub.dev.
 ---
 
-{% include yt_shims.liquid %}
-
 [The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `dart pub publish`
@@ -19,10 +17,10 @@ as defined in the [pubspec][].
 Watch the following video for an overview of building and publishing packages.
 
 <iframe
-  {{yt-std-size}}
-  src="{{yt-embed}}/8V_TLiWszK0"
+  {{yt.std-size}}
+  src="{{yt.embed}}/8V_TLiWszK0"
   title="Learn how to build and publish Dart packages"
-  {{yt-set}}>
+  {{yt.set}}>
 </iframe>
 
 ## Publishing is forever
@@ -128,12 +126,12 @@ To create a verified publisher, follow these steps:
    * When the verification flow is complete, return to step 4.
 
 
-{{site.alert.tip}}
-  We strongly recommend you invite other members of your
-  organization to be members of the verified publisher.
-  This helps ensure that your organization retains access to
-  the publisher when you are not available.
-{{site.alert.end}}
+:::tip
+We strongly recommend you invite other members of your
+organization to be members of the verified publisher.
+This helps ensure that your organization retains access to
+the publisher when you are not available.
+:::
 
 ## Publishing your package
 

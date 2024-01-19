@@ -76,12 +76,12 @@ $ dart run hello.dart
 Hello World
 ```
 
-{{site.alert.info}}
-  **On macOS,** executables, including the Dart VM (`dart`),
-  can load only **signed libraries.**
-  For more information on signing libraries, 
-  see Apple's [Code Signing Guide.][codesign]
-{{site.alert.end}}
+:::note
+**On macOS,** executables, including the Dart VM (`dart`),
+can load only **signed libraries.**
+For more information on signing libraries, 
+see Apple's [Code Signing Guide.][codesign]
+:::
 
 [codesign]: https://developer.apple.com/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
   
@@ -260,10 +260,10 @@ to automatically create FFI wrappers from C header files.
 <a id="native-assets"></a>
 ## Building and bundling native assets
 
-{{site.alert.note}}
-  The native assets feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/50565).
-{{site.alert.end}}
+:::note
+The native assets feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/50565).
+:::
 
 The Native Assets feature aims to resolve a number of issues associated with
 the distribution of Dart packages that depend on native code.

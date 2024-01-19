@@ -13,7 +13,7 @@ Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Television {
   void turnOn() {
     _illuminateDisplay();
@@ -31,7 +31,7 @@ class SmartTelevision [!extends!] Television {
   }
   // ···
 }
-{% endprettify %}
+```
 
 For another usage of `extends`, see the discussion of
 [parameterized types][] on the Generics page.
@@ -44,7 +44,7 @@ You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Television {
   // ···
   set contrast(int value) {...}
@@ -55,7 +55,7 @@ class SmartTelevision extends Television {
   set contrast(num value) {...}
   // ···
 }
-{% endprettify %}
+```
 
 An overriding method declaration must match
 the method (or methods) that it overrides in several ways:
@@ -83,11 +83,11 @@ in a parameter declaration.
 For details, see the
 [Dart language specification][].
 
-{{site.alert.warning}}
-  If you override `==`, you should also override Object's `hashCode` getter.
-  For an example of overriding `==` and `hashCode`, check out
-  [Implementing map keys](/libraries/dart-core#implementing-map-keys).
-{{site.alert.end}}
+:::warning
+If you override `==`, you should also override Object's `hashCode` getter.
+For an example of overriding `==` and `hashCode`, check out
+[Implementing map keys](/libraries/dart-core#implementing-map-keys).
+:::
 
 ## noSuchMethod()
 
@@ -95,7 +95,7 @@ To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
@@ -105,7 +105,7 @@ class A {
         '${invocation.memberName}');
   }
 }
-{% endprettify %}
+```
 
 You **can't invoke** an unimplemented method unless
 **one** of the following is true:
