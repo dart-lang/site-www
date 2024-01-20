@@ -1,4 +1,4 @@
-{
+export default {
   "name": "dash-light",
   "colors": {
     "editor.background": "#F8F9FA",

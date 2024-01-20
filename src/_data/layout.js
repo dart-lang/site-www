@@ -1,1 +1,1 @@
-module.exports = 'default.html';
+export default 'default.html';

@@ -5,7 +5,7 @@
  * @param text {string} The text to convert
  * @returns {string} The converted text
  */
-function slugify(text) {
+export function slugify(text) {
   if (!text || text.length === 0) {
     return text;
   }
@@ -18,5 +18,3 @@ function slugify(text) {
       .replace(/[\s-]+/g, '-')
       .replace(/^-+|-+$/g, '');
 }
-
-module.exports = slugify;

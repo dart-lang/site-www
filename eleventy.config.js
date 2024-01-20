@@ -1,20 +1,26 @@
-const {
+import {
+  activeNavEntryIndexArray,
+  arrayToSentenceString, breadcrumbsForPage, generateToc,
   regexReplace,
   toISOString,
-  activeNavEntryIndexArray,
-  arrayToSentenceString,
-  underscoreBreaker,
-  generateToc,
-  breadcrumbsForPage,
-} = require('./src/_11ty/filters');
-const markdown = require('./src/_11ty/plugins/markdown');
-const {configureHighlighting} = require('./src/_11ty/plugins/highlight');
+  underscoreBreaker
+} from './src/_11ty/filters.js';
 
-const yaml = require('js-yaml');
-const eleventySass = require('eleventy-sass');
-const minifier = require('html-minifier-terser');
+import yaml from 'js-yaml';
 
-module.exports = function (eleventyConfig) {
+import {markdown} from './src/_11ty/plugins/markdown.js';
+
+import {configureHighlighting} from './src/_11ty/plugins/highlight.js';
+
+import minifier from 'html-minifier-terser';
+import * as path from 'node:path';
+import * as sass from 'sass';
+
+/**
+ * @typedef {import('11ty/eleventy/UserConfig')} EleventyConfig
+ * @param {EleventyConfig} eleventyConfig
+ */
+export default function (eleventyConfig) {
   eleventyConfig.on('eleventy.before', async () => {
     await configureHighlighting(markdown);
   });
@@ -44,15 +50,46 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addAsyncFilter('generate_toc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
-  eleventyConfig.addPlugin(eleventySass, {
-    sass: {
-      style: _isProduction() ? 'compressed' : 'expanded',
-      sourceMap: !_isProduction(),
-      quietDeps: true
+  // eleventyConfig.addPlugin(eleventySass, {
+  //   sass: {
+  //     style: _isProduction() ? 'compressed' : 'expanded',
+  //     sourceMap: !_isProduction(),
+  //     quietDeps: true
+  //   },
+  //   compileOptions: {
+  //     cache: !_isProduction(),
+  //   },
+  // });
+
+  eleventyConfig.addExtension('scss', {
+    read: false,
+    getData: async function (inputPath) {
+      const data = {
+        eleventyExcludeFromCollections: true
+      };
+
+      if (path.basename(inputPath).startsWith('_')) {
+        return data;
+      }
+      const { css } = sass.compile(inputPath, {
+        style: _isProduction() ? 'compressed' : 'expanded',
+        sourceMap: !_isProduction(),
+        quietDeps: true,
+      });
+      data._content = css;
+      return data;
     },
     compileOptions: {
       cache: !_isProduction(),
+      permalink: function (permalink, inputPath) {
+        if (path.basename(inputPath).startsWith('_')) {
+          return false;
+        }
+
+        return data => `${data.page.filePathStem}.css`;
+      }
     },
+    compile: () => data => data._content
   });
 
   eleventyConfig.addPassthroughCopy('src/assets/dash');

@@ -1,10 +1,10 @@
-const getPageInfo = require('./utils/get-page-info');
+import {getPageInfo} from './utils/get-page-info.js';
 
-function regexReplace(input, regex, replacement = '') {
+export function regexReplace(input, regex, replacement = '') {
   return input.toString().replace(new RegExp(regex), replacement);
 }
 
-function toISOString(input) {
+export function toISOString(input) {
   if (input instanceof Date) {
     return input.toISOString();
   } else {
@@ -13,12 +13,12 @@ function toISOString(input) {
   }
 }
 
-function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
+export function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
   const activeEntryIndexes = _getActiveNavEntries(navEntryTree, pageUrlPath);
   return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
 }
 
-function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
+export function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
   // TODO: Cleanup and document logic
   for (let i = 0; i < navEntryTree.length; i++) {
     const entry = navEntryTree[i];
@@ -42,7 +42,7 @@ function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
   return [];
 }
 
-function arrayToSentenceString(list, joiner = 'and') {
+export function arrayToSentenceString(list, joiner = 'and') {
   if (!list || list.length === 0) {
     return '';
   }
@@ -65,7 +65,7 @@ function arrayToSentenceString(list, joiner = 'and') {
   return result;
 }
 
-function underscoreBreaker(stringToBreak, inAnchor = false) {
+export function underscoreBreaker(stringToBreak, inAnchor = false) {
   // Only consider text which has underscores in it to keep this simpler.
   if (!stringToBreak.includes('_')) {
     return stringToBreak;
@@ -83,7 +83,7 @@ function underscoreBreaker(stringToBreak, inAnchor = false) {
   return stringToBreak.replaceAll('_', '_<wbr>');
 }
 
-async function generateToc(contents) {
+export async function generateToc(contents) {
   const {fromHtml} = await import('hast-util-from-html');
   const {selectAll} = await import('hast-util-select');
   const {toText} = await import('hast-util-to-text');
@@ -130,7 +130,7 @@ async function generateToc(contents) {
   };
 }
 
-function breadcrumbsForPage(page) {
+export function breadcrumbsForPage(page) {
   const breadcrumbs = [];
 
   // Retrieve the liquid data for this page.
@@ -164,13 +164,3 @@ function breadcrumbsForPage(page) {
   // so reverse since the last ancestor should be to the left.
   return breadcrumbs.reverse();
 }
-
-module.exports = {
-  regexReplace,
-  toISOString,
-  activeNavEntryIndexArray,
-  arrayToSentenceString,
-  underscoreBreaker,
-  generateToc,
-  breadcrumbsForPage,
-};

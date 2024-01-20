@@ -1,12 +1,12 @@
-const markdownIt = require('markdown-it');
-const markdownItContainer = require('markdown-it-container');
-const {markdownItTable} = require('markdown-it-table');
-const markdownItDefinitionList = require('markdown-it-deflist');
-const markdownItAttrs = require('markdown-it-attrs');
-const markdownItAnchor = require('markdown-it-anchor');
-const slugify = require('../utils/slugify');
+import markdownIt from 'markdown-it';
+import markdownItContainer from 'markdown-it-container';
+import {markdownItTable} from 'markdown-it-table';
+import markdownItDefinitionList from 'markdown-it-deflist';
+import markdownItAttrs from 'markdown-it-attrs';
+import markdownItAnchor from 'markdown-it-anchor';
+import {slugify} from '../utils/slugify.js';
 
-const markdown = (() => {
+export const markdown = (() => {
   const markdown = markdownIt({html: true})
       .use(markdownItTable)
       .use(markdownItDefinitionList)
@@ -77,5 +77,3 @@ function _registerContainers(markdown) {
     }
   });
 }
-
-module.exports = markdown;

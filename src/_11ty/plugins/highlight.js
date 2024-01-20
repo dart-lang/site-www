@@ -1,3 +1,7 @@
+import {getHighlighter} from 'shikiji';
+import {toHtml} from 'hast-util-to-html';
+import dashLightTheme from '../syntax/dash-light.js';
+
 const _highlightingTheme = 'dash-light';
 
 /**
@@ -9,19 +13,13 @@ const _highlightingTheme = 'dash-light';
  * - Wraps the code block in a custom structure for title formatting,
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
- *   using the shiki/shikiji package that uses TextMate grammars
+ *   using the shikiji package that uses TextMate grammars
  *   and Code -OSS themes.
  *
  * @param {import('markdown-it')} markdown The markdown-it instance to
  *   configure syntax highlighting for.
  */
-async function configureHighlighting(markdown) {
-  // The following must be imported inline since
-  // they are published as ES modules, but
-  // we want to remain a CommonJS module for now.
-  const {getHighlighter} = await import('shikiji');
-  const {toHtml} = await import('hast-util-to-html');
-
+export async function configureHighlighting(markdown) {
   const highlighter = await getHighlighter({
     langs: [
       'dart',
@@ -45,9 +43,7 @@ async function configureHighlighting(markdown) {
     ],
   });
 
-  await highlighter.loadTheme(import('../syntax/dash-light.json', {
-    assert: {type: 'json'}
-  }));
+  await highlighter.loadTheme(dashLightTheme);
 
   markdown.renderer.rules.fence = function (tokens, index) {
     const token = tokens[index];
@@ -532,7 +528,3 @@ function _findMarkedTextAndUpdate(text) {
     updatedText: textWithMarksRemoved.join('\n'),
   };
 }
-
-module.exports = {
-  configureHighlighting,
-};
