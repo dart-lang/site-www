@@ -544,7 +544,10 @@ thead:has(th:empty) {
 
   .alert-header {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
+    font-family: $site-font-family-gsans;
+    font-size: 1.125rem;
     font-weight: 500;
   }
 
@@ -553,9 +556,8 @@ thead:has(th:empty) {
   }
 
   i.material-icons {
-    font-size: 20px;
+    font-size: 1.25em;
     user-select: none;
-    vertical-align: -4px;
   }
 
   code {
