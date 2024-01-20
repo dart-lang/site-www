@@ -463,9 +463,6 @@ li.card {
 @include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
 @include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
 @include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
-@include dart-style-for('highlight-languages .language-dart:not(.no-lang)', inherit, $brand-primary, 'Dart');
-@include dart-style-for('highlight-languages .language-js:not(.no-lang)', inherit, #f1a85a, 'JavaScript');
-@include dart-style-for('highlight-languages .language-swift:not(.no-lang)', inherit, #f05137, 'Swift');
 
 .muted {
   color: $gray;
@@ -544,9 +541,16 @@ thead:has(th:empty) {
   color: $site-color-body;
   margin-top: 1rem;
   padding: 1.25rem;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+
+  .alert-header {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 500;
+  }
+
+  .alert-content {
+    margin-top: 0.5rem;
+  }
 
   i.material-icons {
     font-size: 20px;
@@ -556,10 +560,6 @@ thead:has(th:empty) {
 
   code {
     background-color: transparent;
-  }
-
-  pre {
-    background-color: #00000010;
   }
 
   p:last-child {

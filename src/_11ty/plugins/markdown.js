@@ -6,6 +6,7 @@ import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
 import {slugify} from '../utils/slugify.js';
 
+/** @type {import('markdown-it/lib').MarkdownIt} */
 export const markdown = (() => {
   const markdown = markdownIt({html: true})
       .use(markdownItTable)
@@ -33,6 +34,16 @@ export const markdown = (() => {
   return markdown;
 })();
 
+/**
+ * Register a custom aside/admonition.
+ *
+ * @param {import('markdown-it/lib').MarkdownIt} markdown
+ * @param id The name to use in Markdown to create the aside.
+ * @param defaultTitle The title to use if no title is specified in Markdown.
+ * @param icon The material icon to use in the aside.
+ * @param style The classes to add to the aside.
+ * @private
+ */
 function _registerAside(markdown, id, defaultTitle, icon, style) {
   markdown.use(markdownItContainer, id, {
     render: function (tokens, index) {
@@ -41,8 +52,11 @@ function _registerAside(markdown, id, defaultTitle, icon, style) {
         
         const title = parsedArgs?.[1] ?? defaultTitle;
         return `<aside class="alert ${style}">
-${icon !== null ? `<div class="alert-start"><i class="material-icons" aria-hidden="true">${icon}</i></div>` : ''}
-<div class="alert-content">${title !== null ? `<strong>${title}</strong>` : ''}
+<div class="alert-header">
+${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : ''}
+<span>${title ?? ''}</span>
+</div>
+<div class="alert-content">
 `;
       } else {
         return '</div></aside>\n';
@@ -51,6 +65,12 @@ ${icon !== null ? `<div class="alert-start"><i class="material-icons" aria-hidde
   });
 }
 
+/**
+ * Registers the custom asides/admonitions used on the site.
+ *
+ * @param {import('markdown-it/lib').MarkdownIt} markdown
+ * @private
+ */
 function _registerAsides(markdown) {
   _registerAside(markdown, 'note', 'Note', 'info', 'alert-info');
   _registerAside(markdown, 'flutter-note', 'Flutter note', 'smartphone', 'alert-info');
@@ -62,6 +82,12 @@ function _registerAsides(markdown) {
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
 }
 
+/**
+ * Registers custom containers used on the site.
+ *
+ * @param {import('markdown-it/lib').MarkdownIt} markdown
+ * @private
+ */
 function _registerContainers(markdown) {
   // TODO(parlough): Consider a function to make this easier.
   markdown.use(markdownItContainer, 'mini-toc', {

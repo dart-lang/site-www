@@ -13,9 +13,7 @@ This page has details about the differences
 between native and web number implementations,
 and how to write code so that those differences don't matter.
 
-:::secondary
-**Number implementations in Dart and other languages**
-
+:::secondary Number implementations in Dart and other languages
 Dart has always allowed platform-specific representations
 and semantics for numbers, for reasons of 
 performance, code size, and platform interoperability.

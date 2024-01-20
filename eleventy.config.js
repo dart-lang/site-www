@@ -50,17 +50,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addAsyncFilter('generate_toc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
-  // eleventyConfig.addPlugin(eleventySass, {
-  //   sass: {
-  //     style: _isProduction() ? 'compressed' : 'expanded',
-  //     sourceMap: !_isProduction(),
-  //     quietDeps: true
-  //   },
-  //   compileOptions: {
-  //     cache: !_isProduction(),
-  //   },
-  // });
-
   eleventyConfig.addExtension('scss', {
     read: false,
     getData: async function (inputPath) {

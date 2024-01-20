@@ -16,7 +16,7 @@ const _highlightingTheme = 'dash-light';
  *   using the shikiji package that uses TextMate grammars
  *   and Code -OSS themes.
  *
- * @param {import('markdown-it')} markdown The markdown-it instance to
+ * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance to
  *   configure syntax highlighting for.
  */
 export async function configureHighlighting(markdown) {
@@ -68,7 +68,7 @@ export async function configureHighlighting(markdown) {
  * and makes modifications to the output structure based on the
  * passed in {@link attributeString}.
  *
- * @param {import('markdown-it')} markdown The markdown-it instance.
+ * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance.
  * @param {import('shikiji').Highlighter} highlighter The shikiji highlighter
  *   configured with the correct theme(s) and languages.
  * @param {import('hast-util-to-html').toHtml} toHtml The utility function
@@ -128,11 +128,28 @@ ${markdown.utils.escapeHtml(content)}
             preElement.properties['class'] += ' show-line-numbers';
           }
 
+          const bodyChildren = [preElement];
+
+          if (language !== 'plaintext' &&
+              language !== 'console' &&
+              language !== 'ps') {
+            const languageText = {
+              type: 'element',
+              tagName:'span',
+              children: [{type: 'text', value: language}],
+              properties: {
+                class: 'code-block-language',
+                title: `Language ${language}`,
+              }
+            }
+            bodyChildren.unshift(languageText);
+          }
+
           // Create a div container to wrap the pre element.
           const blockBody = {
             type: 'element',
             tagName: 'div',
-            children: [preElement],
+            children: bodyChildren,
             properties: {
               class: 'code-block-body',
             },

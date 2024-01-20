@@ -103,9 +103,7 @@ In the next sections you'll learn about futures and about working with futures
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
-:::secondary
-**Key terms:**
-
+:::secondary Key terms
 * **synchronous operation**: A synchronous operation blocks other operations
   from executing until it completes.
 * **synchronous function**: A synchronous function only performs synchronous
@@ -209,9 +207,7 @@ but how do you use the results of asynchronous functions?
 In the next section you'll learn how to get results
 with the `async` and `await` keywords.
 
-:::secondary
-**Quick review:**
-
+:::secondary Quick review
 * A [Future\<T\>][Future] instance produces a value of type `T`.
 * If a future doesn't produce a usable value, 
   then the future's type is `Future<void>`.
@@ -347,9 +343,7 @@ The asynchronous example is different in three ways:
 * The **`await`** keyword appears before calling the asynchronous functions
   `fetchUserOrder()` and `createOrderMessage()`.
 
-:::secondary
-**Key terms:**
-
+:::secondary Key terms
 * **async**: You can use the `async` keyword before a function's body to mark it as
   asynchronous.
 * **async function**:  An `async` function is a function labeled with the `async`

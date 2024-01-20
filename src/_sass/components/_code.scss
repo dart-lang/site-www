@@ -39,8 +39,7 @@ pre {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     width: 100%;
-    display: inline-block;
-    
+
     &.highlighted-line {
       background: color.change($brand-primary, $alpha: 0.1);
     }
@@ -62,6 +61,38 @@ pre {
   }
 }
 
+.code-block-language {
+  user-select: none;
+  font-size: 0.8125rem;
+  color: #6E6E70;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  z-index: 5;
+
+  .language-dart & {
+    color: $brand-primary;
+  }
+
+  .language-js & {
+    color: #f1a85a;
+  }
+
+  .language-swift & {
+    color: #f05137;
+  }
+
+  .highlight-languages & {
+    font-size: 0.875rem;
+    top: 3px;
+    left: 6px;
+    right: unset;
+  }
+}
+
 .code-block-wrapper {
   margin-bottom: 1rem;
   border: 1px solid $flutter-color-grey-500;
@@ -75,6 +106,7 @@ pre {
   }
   
   .code-block-body {
+    position: relative;
     background-color: $site-color-codeblock-bg;
     
     .code-block-tag {
@@ -84,6 +116,12 @@ pre {
       position: absolute;
       top: 6px;
       left: 8px;
+    }
+
+    &:hover {
+      .code-block-language {
+        opacity: 0;
+      }
     }
   }
   
@@ -102,14 +140,6 @@ pre {
   }
 }
 
-//
-// Rouge / pygments classes -- https://github.com/jneen/rouge
-//
-// For CSS class names, see
-// - https://github.com/rouge-ruby/rouge/blob/master/lib/rouge/token.rb
-// - https://github.com/rouge-ruby/rouge/wiki/List-of-tokens, doc page,
-//   but doesn't seem to be as complete as token.rb.
-//
 $generic-output-color: white;
 
 @mixin console-base($color: $light-green-A700) {

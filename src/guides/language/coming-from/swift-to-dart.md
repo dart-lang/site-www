@@ -1122,8 +1122,7 @@ In Dart, `int x = 5/2,` results in a value of
 use Dart's truncating division operator (`~/`). 
 
 
-:::secondary
-**Note on the difference between web and VM:**<br>
+:::secondary Difference between web and VM
 On the web, an `integer` is also a `double`
 (because all numbers are),
 but on the VM it's a pure floored `int 2`.
@@ -1239,8 +1238,8 @@ if (!done && (col == 0 || col == 3)) {
 
 #### Bitwise and shift operators
 
-:::secondary
-**Numbers on the web:** On the web,
+:::secondary Numbers on the web
+On the web,
 Dart uses JavaScript bitwise operations
 for better performance, but this can cause
 different behavior between native and web

@@ -61,9 +61,7 @@ benefit alone.
 
 JavaScript supports trailing commas in list and map literals only.
 
-:::secondary
-To learn more about:
-
+:::secondary To learn more about:
 * Using commas to make your code read more like HTML, read
   [Using trailing commas][] on flutter.dev.
 * Linting Dart, read [Linter rules][].
@@ -2195,8 +2193,8 @@ class Animal {
     print('???');
   }
 }
+
 class Cat extends Animal {
- 
   Cat(): super(2);
 
   @override

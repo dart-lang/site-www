@@ -135,8 +135,7 @@ because `for-in` is easier to read and understand,
 and is less prone to errors.
 :::
 
-:::secondary
-**Key terms:**
+:::secondary Key terms
 * **Iterable**: The Dart [Iterable][iterable class] class.
 * **Iterator**: An object used by `for-in` to read elements from
   an `Iterable` object.
@@ -262,8 +261,7 @@ the `orElse` parameter isn't provided,
 then `firstWhere()` throws a [StateError.][StateError class]
 :::
 
-:::secondary
-**Quick review:**
+:::secondary Quick review
 * The elements of an `Iterable` must be accessed sequentially.
 * The easiest way to iterate through all the elements is
   using a `for-in` loop.
@@ -593,8 +591,7 @@ Use the methods `any()` and `every()` to compare the user age.
 {$ end hint.txt $}
 ```
 
-:::secondary
-**Quick review:**
+:::secondary Quick review
 * Although you can use `for-in` loops to check conditions,
   there are better ways to do that.
 * The method `any()` enables you to check whether
@@ -821,8 +818,7 @@ Use the `where()` method to implement the filters.
 {$ end hint.txt $}
 ```
 
-:::secondary
-**Quick review:**
+:::secondary Quick review
 * Filter the elements of an `Iterable` with `where()`.
 * The output of `where()` is another `Iterable`.
 * Use `takeWhile()` and `skipWhile()` to obtain elements until or after
@@ -955,9 +951,7 @@ Use `map()` to create a String with the values of `user.name` and `user.age`.
 {$ end hint.txt $}
 ```
 
-:::secondary
-**Quick review:**
-
+:::secondary Quick review
 * `map()` applies a function to all the elements of an `Iterable`.
 * The output of `map()` is another `Iterable`.
 * The function isn't evaluated until the `Iterable` is iterated.
