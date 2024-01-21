@@ -4,11 +4,11 @@ To re-generate it, please run the following command from root of
 the project:
 
 ```
-$ dart run tool/effective_dart_rules/bin/main.dart
+$ dart run dart_site effective-dart
 ```
 {% endcomment %}
     
-<div class='effective_dart--summary_column' markdown='1'>
+<div class='effective_dart--summary_column'>
 
 ### Style
 
@@ -42,7 +42,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-statements'>DO use curly braces for all flow control statements.</a>
 
 </div>
-<div class='effective_dart--summary_column' markdown='1'>
+<div class='effective_dart--summary_column'>
 
 
 ### Documentation
@@ -86,7 +86,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 </div>
 <div style='clear:both'></div>
-<div class='effective_dart--summary_column' markdown='1'>
+<div class='effective_dart--summary_column'>
 
 
 ### Usage
@@ -127,7 +127,6 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 
 * <a href='/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-* <a href='/effective-dart/usage#do-use-to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
 
 **Variables**
 
@@ -167,7 +166,7 @@ $ dart run tool/effective_dart_rules/bin/main.dart
 * <a href='/effective-dart/usage#do-test-for-futuret-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future&lt;T&gt;</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
 
 </div>
-<div class='effective_dart--summary_column' markdown='1'>
+<div class='effective_dart--summary_column'>
 
 
 ### Design

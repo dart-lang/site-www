@@ -13,7 +13,7 @@ and adjust as you see fit.
 
 {% assign sorted_lints = linter_rules | sort: "name" %}
 
-```yaml {"title":"analysis_options.yaml"}
+```yaml title="analysis_options.yaml"
 linter:
   rules:
     {% for lint in sorted_lints %}

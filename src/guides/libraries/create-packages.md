@@ -154,7 +154,7 @@ Here's an example of conditional export code that
 checks for the presence of `dart:io` and `dart:html`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
-```dart {"title":"lib/hw_mp.dart"}
+```dart title="lib/hw_mp.dart"
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
     if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
@@ -183,7 +183,7 @@ All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:
 
 <?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
-```dart {"title":"lib/src/hw_io.dart"}
+```dart title="lib/src/hw_io.dart"
 import 'dart:io';
 
 void alarm([String? text]) {
@@ -197,7 +197,7 @@ And here's the default implementation,
 which uses stubs that throw `UnsupportedError`:
 
 <?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
-```dart {"title":"lib/src/hw_none.dart"}
+```dart title="lib/src/hw_none.dart"
 void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
 String get message => throw UnsupportedError('hw_none message');

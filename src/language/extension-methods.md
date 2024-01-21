@@ -61,7 +61,7 @@ Here's how you might implement the extension method `parseInt()`,
 using an extension (named `NumberParsing`) that operates on strings:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
-```dart {"title":"lib/string_apis.dart"}
+```dart title="lib/string_apis.dart"
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
@@ -205,7 +205,7 @@ extension <extension name>? on <type> {
 For example, here's how you might implement an extension on the `String` class:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart"?>
-```dart {"title":"lib/string_apis.dart"}
+```dart title="lib/string_apis.dart"
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);

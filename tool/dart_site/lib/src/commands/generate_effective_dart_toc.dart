@@ -12,7 +12,7 @@ import 'package:path/path.dart' as path;
 import '../utils.dart';
 
 final HtmlUnescape _unescape = HtmlUnescape();
-final RegExp _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
+final RegExp _anchorPattern = RegExp(r'(.+)\{:#([^#]+)\}');
 
 final class GenerateEffectiveDartToc extends Command<int> {
   static const String _checkFlag = 'check';
@@ -81,7 +81,7 @@ $ dart run dart_site effective-dart
     ''');
 
   newOutput.writeln(
-    r"<div class='effective_dart--summary_column' markdown='1'>",
+    r"<div class='effective_dart--summary_column'>",
   );
 
   for (var sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
@@ -91,7 +91,7 @@ $ dart run dart_site effective-dart
         newOutput.writeln("<div style='clear:both'></div>");
       }
       newOutput.writeln(
-        "<div class='effective_dart--summary_column' markdown='1'>\n",
+        "<div class='effective_dart--summary_column'>\n",
       );
     }
     _writeSection(newOutput, section);
@@ -146,7 +146,7 @@ class _Rule {
     var name = _concatenatedText(element);
     var html = md.renderToHtml(element.children ?? const []);
 
-    // Handle headers with an explicit "{#anchor-text}" anchor.
+    // Handle headers with an explicit "{:#anchor-text}" anchor.
     var match = _anchorPattern.firstMatch(name);
 
     final String fragment;
@@ -205,9 +205,10 @@ class _Subsection {
 String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
-    .replaceFirst(RegExp(r'^[^a-z]+'), '')
-    .replaceAll(RegExp(r'[^a-z0-9 _-]'), '')
-    .replaceAll(RegExp(r'\s'), '-');
+    .replaceAll(RegExp(r'[:.]'), '-')
+    .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    .replaceAll(RegExp(r'[\s-]+'), '-')
+    .replaceAll(RegExp(r'^-+|-+$'), '');
 
 /// Concatenates the text found in all the children of [element].
 String _concatenatedText(md.Element element) {
