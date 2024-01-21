@@ -29,8 +29,7 @@ This can happen either because:
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 // @dart=3.1
 
 class C {
@@ -69,8 +68,7 @@ and you are using a version earlier than 3.2.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 class C {
   int? i;
   void f() {
@@ -111,9 +109,8 @@ Here's an example of creating a local variable
 (which can be named `i`)
 that holds the value of `i`:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
-```dart
+```dart tag=good
 class C {
   int? i;
   void f() {
@@ -137,9 +134,8 @@ when you intend to update the field.
 
 And here's an example of using `i!`:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
-```dart
+```dart tag=good
 print(i[!!!].isEven);
 ```
 
@@ -176,8 +172,7 @@ you'd want to do a null check to see whether `this` is null:
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 extension E on int? {
   int get valueOrZero {
     return this == null ? 0 : this; // ERROR
@@ -195,8 +190,7 @@ extension E on int? {
 
 Create a local variable to hold the value of `this`, then perform the null check.
 
-{:.good}
-```dart
+```dart tag=good
 extension E on int? {
   int get valueOrZero {
     final self = this;
@@ -218,8 +212,7 @@ non-private fields cannot be promoted.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 class C {
   final int? n;
   C(this.n);
@@ -243,8 +236,7 @@ test(C c) {
 Making the field private lets the compiler be sure that no outside libraries
 could possibly override its value, so it's safe to promote.
 
-{:.good}
-```dart
+```dart tag=good
 class C {
   final int? _n;
   C(this._n);
@@ -270,8 +262,7 @@ to a non-nullable type.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 class C {
   int? _mutablePrivateField;
   Example(this._mutablePrivateField);
@@ -294,8 +285,7 @@ class C {
 
 Make the field `final`:
 
-{:.good}
-```dart
+```dart tag=good
 class Example {
   final int? _immutablePrivateField; 
   Example(this._immutablePrivateField);
@@ -318,8 +308,7 @@ Because their stability can't be confirmed, getters are not safe to promote.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 import 'dart:math';
 
 abstract class C {
@@ -343,8 +332,7 @@ f(C c) {
 
 Assign the getter to a local variable:
 
-{:.good}
-```dart
+```dart tag=good
 import 'dart:math';
 
 abstract class C {
@@ -382,8 +370,7 @@ will return the same value each time it’s called.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 class C {
   external final int? _externalField;
   C(this._externalField);
@@ -406,8 +393,7 @@ class C {
 
 Assign the external field's value to a local variable:
 
-{:.good}
-```dart
+```dart tag=good
 class C {
   external final int? _externalField;
   C(this._externalField);
@@ -430,8 +416,7 @@ a concrete getter with the same name.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 import 'dart:math';
 
 class Example {
@@ -463,9 +448,7 @@ If the getter and field are related and need to share their name
 (like when one of them overrides the other, as in the example above),
 then you can enable type promotion by assigning the value to a local variable:
 
-
-{:.good}
-```dart
+```dart tag=good
 import 'dart:math';
 
 class Example {
@@ -494,8 +477,7 @@ because there’s an override relationship between the field and the getter.
 However, a conflicting getter will prevent field promotion
 even if the classes are unrelated. For example:
 
-{:.bad}
-```dart
+```dart tag=bad
 import 'dart:math';
 
 class Example {
@@ -519,8 +501,7 @@ classes together into the same class hierarchy,
 which would cause the reference in function `f` to `x._i` to
 get dispatched to `Unrelated._i`. For example:
 
-{:.bad}
-```dart
+```dart tag=bad
 class Surprise extends Unrelated implements Example {}
 
 main() {
@@ -533,8 +514,7 @@ main() {
 If the field and the conflicting entity are truly unrelated,
 you can work around the problem by giving them different names:
 
-{:.good}
-```dart
+```dart tag=good
 class Example {
   final int? _i;
   Example(this._i);
@@ -560,8 +540,7 @@ a field with the same name that isn't promotable
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 class Example {
   final int? _overridden;
   Example(this._overridden);
@@ -593,8 +572,7 @@ instance of `Override`, so promotion would not be sound.
 If the fields are actually related and need to share a name, then you can
 enable type promotion by assigning the value to a final local variable to promote:
 
-{:.good}
-```dart
+```dart tag=good
 class Example {
   final int? _overridden;
   Example(this._overridden);
@@ -631,8 +609,7 @@ will return a stable value from one invocation to the next.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 import 'package:mockito/mockito.dart';
 
 class Example {
@@ -674,8 +651,7 @@ The failure can also occur between fields in
 Define the getter in question so that `noSuchMethod` doesn't have
 to implicitly handle its implementation:
 
-{:.good}
-```dart
+```dart tag=good
 import 'package:mockito/mockito.dart';
 
 class Example {
@@ -723,8 +699,7 @@ written to since it was promoted.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(bool b, int? i, int? j) {
   if (i == null) return;
   if (b) {
@@ -748,9 +723,8 @@ conditions in separate `if` statements.
 
 You might fix the problem by combining the two `if` statements:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
-```dart
+```dart tag=good
 void f(bool b, int? i, int? j) {
   if (i == null) return;
   if (b) {
@@ -767,9 +741,8 @@ when deciding whether to demote.
 As a result, another way to fix this code is
 to change the type of `j` to `int`.
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
-```dart
+```dart tag=good
 void f(bool b, int? i, [!int j!]) {
   if (i == null) return;
   if (b) {
@@ -790,8 +763,7 @@ and so the promotion was invalidated.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(Link? p) {
   if (p != null) return;
   while (true) {    // (1)
@@ -814,9 +786,8 @@ To be safe, it invalidates the promotion.
 
 You can fix this problem by moving the null check to the top of the loop:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
-```dart
+```dart tag=good
 void f(Link? p) {
   while ([!p != null!]) {
     print(p.value);
@@ -829,8 +800,7 @@ This situation can also arise in `switch` statements if
 a `case` block has a label,
 because you can use labeled `switch` statements to construct loops:
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int i, int? j, int? k) {
   if (j == null) return;
   switch (i) {
@@ -845,9 +815,8 @@ void f(int i, int? j, int? k) {
 
 Again, you can fix the problem by moving the null check to the top of the loop:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
-```dart
+```dart tag=good
 void f(int i, int? j, int? k) {
   switch (i) {
     label:
@@ -868,8 +837,7 @@ and execution is now in a `catch` block.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int? i, int? j) {
   if (i == null) return;
   try {
@@ -905,9 +873,8 @@ possibly when `i` is null.
 
 The safest solution is to add a null check inside the `catch` block:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
-```dart
+```dart tag=good
 // ···
 } catch (e) {
   [!if (i != null) {!]
@@ -938,8 +905,7 @@ the variable's current promoted type
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(Object o) {
   if (o is Comparable /* (1) */) {
     if (o is Pattern /* (2) */) {
@@ -987,9 +953,8 @@ which brings back the problem of the object not being promotable to `Pattern`.
 
 A redundant type check might be a better solution:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
-```dart
+```dart tag=good
 void f(Object o) {
   if (o is Comparable /* (1) */) {
     if (o is Pattern /* (2) */) {
@@ -1004,9 +969,8 @@ If line 3 cares only about strings,
 then you can use `String` in your type check.
 Because `String` is a subtype of `Comparable`, the promotion works:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-String)" replace="/is String/is [!String!]/g"?>
-```dart
+```dart tag=good
 void f(Object o) {
   if (o is Comparable /* (1) */) {
     if (o is [!String!] /* (2) */) {
@@ -1025,8 +989,7 @@ a local function or function expression.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int? i, int? j) {
   var foo = () {
     i = j;
@@ -1049,9 +1012,8 @@ the type of the right hand side of the assignment.
 Sometimes it's possible to restructure the logic so that
 the promotion is before the write capture:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-reorder)" replace="/(  )((var foo|  i = j|\}\;|\/\/ ... Use foo).*)/$1[!$2!]/g"?>
-```dart
+```dart tag=good
 void f(int? i, int? j) {
   if (i == null) return; // (1)
   // ... Additional code ...
@@ -1065,9 +1027,8 @@ void f(int? i, int? j) {
 
 Another option is to create a local variable, so it isn't write captured:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-copy)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!$1!]$2/g"?>
-```dart
+```dart tag=good
 void f(int? i, int? j) {
   var foo = () {
     i = j;
@@ -1105,8 +1066,7 @@ inside the closure or function expression.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int? i, int? j) {
   if (i == null) return;
   var foo = () {
@@ -1127,9 +1087,8 @@ the right hand side of the assignment.
 
 A solution is to create a local variable:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var i2.*/[!$&!]/g;/i2\./[!i2!]./g"?>
-```dart
+```dart tag=good
 void f(int? i, int? j) {
   if (i == null) return;
   [!var i2 = i;!]
@@ -1144,8 +1103,7 @@ void f(int? i, int? j) {
 
 A particularly nasty case looks like this:
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int? i) {
   i ??= 0;
   var foo = () {
@@ -1165,9 +1123,8 @@ But [flow analysis isn't that smart][1536].
 
 Again, a solution is to create a local variable:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var2)" replace="/var j.*/[!$&!]/g;/j\./[!j!]./g"?>
-```dart
+```dart tag=good
 void f(int? i) {
   [!var j = i ?? 0;!]
   var foo = () {
@@ -1193,8 +1150,7 @@ that's trying to promote it.
 
 **Example:**
 
-{:.bad}
-```dart
+```dart tag=bad
 void f(int? i, int? j) {
   var foo = () {
     if (i == null) return;
@@ -1216,9 +1172,8 @@ So it isn't safe to promote `i` at all inside `foo`.
 
 The best solution is probably to create a local variable:
 
-{:.good}
 <?code-excerpt "non_promotion/lib/non_promotion.dart (closure-write-capture)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!i2!]$2/g"?>
-```dart
+```dart tag=good
 void f(int? i, int? j) {
   var foo = () {
     [!var i2 = i;!]

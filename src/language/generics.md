@@ -31,8 +31,7 @@ declare it as `List<String>` (read that as "list of string"). That way
 you, your fellow programmers, and your tools can detect that assigning a non-string to
 the list is probably a mistake. Here's an example:
 
-{:.fails-sa}
-```dart
+```dart tag=fails-sa
 var names = <String>[];
 names.addAll(['Seth', 'Kathy', 'Lars']);
 names.add(42); // Error
@@ -190,8 +189,7 @@ print(foo); // Instance of 'Foo<SomeBaseClass>'
 
 Specifying any non-`SomeBaseClass` type results in an error:
 
-{:.fails-sa}
-```dart
+```dart tag=fails-sa
 var foo = [!Foo<Object>!]();
 ```
 

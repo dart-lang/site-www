@@ -22,8 +22,7 @@ Use the same name for the same thing, throughout your code. If a precedent
 already exists outside your API that users are likely to know, follow that
 precedent.
 
-{:.good}
-```dart
+```dart tag=good
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
 toSomething()     // Consistent with Iterable's toList().
@@ -31,8 +30,7 @@ asSomething()     // Consistent with List's asMap().
 Point             // A familiar concept.
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
 wrappedAsSomething() // Inconsistent with asX() precedent.
@@ -53,16 +51,14 @@ abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 
 [caps]: /effective-dart/style#identifiers
 
-{:.good}
-```dart
+```dart tag=good
 pageCount
 buildRectangles
 IOStream
 HttpRequest
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 numPages    // "Num" is an abbreviation of "number (of)".
 buildRects
 InputOutputStream
@@ -75,16 +71,14 @@ HypertextTransferProtocolRequest
 The last word should be the most descriptive of what the thing is. You can
 prefix it with other words, such as adjectives, to further describe the thing.
 
-{:.good}
-```dart
+```dart tag=good
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
 ChunkedConversionSink // A ConversionSink that's chunked.
 CssFontFaceRule       // A rule for font faces in CSS.
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
 RuleFontFaceCss           // Not a CSS.
@@ -96,9 +90,8 @@ RuleFontFaceCss           // Not a CSS.
 When in doubt about naming, write some code that uses your API, and try to read
 it like a sentence.
 
-{:.good}
 <?code-excerpt "design_good.dart (code-like-prose)"?>
-```dart
+```dart tag=good
 // "If errors is empty..."
 if (errors.isEmpty) ...
 
@@ -109,9 +102,8 @@ subscription.cancel();
 monsters.where((monster) => monster.hasClaws);
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
-```dart
+```dart tag=bad
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
 
@@ -126,9 +118,8 @@ It's helpful to try out your API and see how it "reads" when used in code, but
 you can go too far. It's not helpful to add articles and other parts of speech
 to force your names to *literally* read like a grammatically correct sentence.
 
-{:.bad}
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
-```dart
+```dart tag=bad
 if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
@@ -141,15 +132,13 @@ The reader's focus is on *what* the property is. If the user cares more about
 *how* a property is determined, then it should probably be a method with a
 verb phrase name.
 
-{:.good}
-```dart
+```dart tag=good
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 list.deleteItems
 ```
 
@@ -187,8 +176,7 @@ object to do something, because accessing a property doesn't change the object.
 (If the property *does* modify the object in a meaningful way, it should be a
 method.)
 
-{:.good}
-```dart
+```dart tag=good
 isEmpty
 hasElements
 canClose
@@ -197,8 +185,7 @@ canShowPopup
 hasShownPopup
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
 closeable     // Sounds like an interface.
@@ -214,9 +201,8 @@ This refines the previous rule. For named parameters that are boolean, the name
 is often just as clear without the verb, and the code reads better at the call
 site.
 
-{:.good}
 <?code-excerpt "design_good.dart (omit-verb-for-bool-param)"?>
-```dart
+```dart tag=good
 Isolate.spawn(entryPoint, message, paused: false);
 var copy = List.from(elements, growable: true);
 var regExp = RegExp(pattern, caseSensitive: false);
@@ -238,17 +224,15 @@ including negation operators. If your property itself reads like a negation,
 it's harder for the reader to mentally perform the double negation and
 understand what the code means.
 
-{:.good}
 <?code-excerpt "design_good.dart (positive)"?>
-```dart
+```dart tag=good
 if (socket.isConnected && database.hasData) {
   socket.write(database.read());
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (positive)"?>
-```dart
+```dart tag=bad
 if (!socket.isDisconnected && !database.isEmpty) {
   socket.write(database.read());
 }
@@ -275,9 +259,8 @@ produce some output, or talk to the outside world.
 Those kinds of members should be named using an imperative verb phrase that
 clarifies the work the member performs.
 
-{:.good}
 <?code-excerpt "design_good.dart (verb-for-func-with-side-effect)"?>
-```dart
+```dart tag=good
 list.add('element');
 queue.removeFirst();
 window.refresh();
@@ -298,9 +281,8 @@ This means the member is *syntactically* a method, but *conceptually* it is a
 property, and should be named as such using a phrase that describes *what* the
 member returns.
 
-{:.good}
 <?code-excerpt "design_good.dart (noun-for-func-returning-value)"?>
-```dart
+```dart tag=good
 var element = list.elementAt(3);
 var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
@@ -321,9 +303,8 @@ file I/O. In cases like this, where you want the caller to think about the work
 the member is doing, give the member a verb phrase name that describes that
 work.
 
-{:.good}
 <?code-excerpt "design_good.dart (verb-for-func-with-work)"?>
-```dart
+```dart tag=good
 var table = database.downloadData();
 var packageVersions = packageGraph.solveConstraints();
 ```
@@ -368,9 +349,8 @@ named starting with `to` followed by the kind of result.
 
 If you define a conversion method, it's helpful to follow that convention.
 
-{:.good}
 <?code-excerpt "design_good.dart (to___)"?>
-```dart
+```dart tag=good
 list.toSet();
 stackTrace.toString();
 dateTime.toLocal();
@@ -387,9 +367,8 @@ original. Later changes to the original object are reflected in the view.
 
 The core library convention for you to follow is `as___()`.
 
-{:.good}
 <?code-excerpt "design_good.dart (as___)"?>
-```dart
+```dart tag=good
 var map = table.asMap();
 var list = bytes.asFloat32List();
 var future = subscription.asFuture();
@@ -401,15 +380,13 @@ var future = subscription.asFuture();
 The user will see the argument at the call site, so it usually doesn't help
 readability to also refer to it in the name itself.
 
-{:.good}
 <?code-excerpt "design_good.dart (avoid-desc-param-in-func)"?>
-```dart
+```dart tag=good
 list.add(element);
 map.remove(key);
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 list.addElement(element)
 map.removeKey(key)
 ```
@@ -417,9 +394,8 @@ map.removeKey(key)
 However, it can be useful to mention a parameter to disambiguate it from other
 similarly-named methods that take different types:
 
-{:.good}
 <?code-excerpt "design_good.dart (desc-param-in-func-ok)"?>
-```dart
+```dart tag=good
 map.containsKey(key);
 map.containsValue(value);
 ```
@@ -433,9 +409,8 @@ The conventions are:
 
 *   `E` for the **element** type in a collection:
 
-    {:.good}
     <?code-excerpt "design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
-    ```dart
+    ```dart tag=good
     class IterableBase<E> {}
     class List<E> {}
     class HashSet<E> {}
@@ -445,9 +420,8 @@ The conventions are:
 *   `K` and `V` for the **key** and **value** types in an associative
     collection:
 
-    {:.good}
     <?code-excerpt "design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
-    ```dart
+    ```dart tag=good
     class Map<K, V> {}
     class Multimap<K, V> {}
     class MapEntry<K, V> {}
@@ -457,9 +431,8 @@ The conventions are:
     methods. This isn't common, but appears in typedefs sometimes and in classes
     that implement the visitor pattern:
 
-    {:.good}
     <?code-excerpt "design_good.dart (type-parameter-r)"?>
-    ```dart
+    ```dart tag=good
     abstract class ExpressionVisitor<R> {
       R visitBinary(BinaryExpression node);
       R visitLiteral(LiteralExpression node);
@@ -472,9 +445,8 @@ The conventions are:
     are multiple letters here to allow nesting without shadowing a surrounding
     name. For example:
 
-    {:.good}
     <?code-excerpt "design_good.dart (type-parameter-t)"?>
-    ```dart
+    ```dart tag=good
     class Future<T> {
       Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
     }
@@ -486,9 +458,8 @@ The conventions are:
 If none of the above cases are a good fit, then either another single-letter
 mnemonic name or a descriptive name is fine:
 
-{:.good}
 <?code-excerpt "design_good.dart (type-parameter-graph)"?>
-```dart
+```dart tag=good
 class Graph<N, E> {
   final List<N> nodes = [];
   final List<E> edges = [];
@@ -557,15 +528,13 @@ function. If you're defining a class and it only has a single abstract member
 with a meaningless name like `call` or `invoke`, there is a good chance you
 just want a function.
 
-{:.good}
 <?code-excerpt "design_good.dart (one-member-abstract-class)"?>
-```dart
+```dart tag=good
 typedef Predicate<E> = bool Function(E element);
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (one-member-abstract-class)"?>
-```dart
+```dart tag=bad
 abstract class Predicate<E> {
   bool test(E element);
 }
@@ -591,9 +560,8 @@ If a function or variable isn't logically tied to a class, put it at the top
 level. If you're worried about name collisions, give it a more precise name or
 move it to a separate library that can be imported with a prefix.
 
-{:.good}
 <?code-excerpt "design_good.dart (class-only-static)"?>
-```dart
+```dart tag=good
 DateTime mostRecent(List<DateTime> dates) {
   return dates.reduce((a, b) => a.isAfter(b) ? a : b);
 }
@@ -601,9 +569,8 @@ DateTime mostRecent(List<DateTime> dates) {
 const _favoriteMammal = 'weasel';
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (class-only-static)"?>
-```dart
+```dart tag=bad
 class DateUtils {
   static DateTime mostRecent(List<DateTime> dates) {
     return dates.reduce((a, b) => a.isAfter(b) ? a : b);
@@ -621,9 +588,8 @@ instantiated is a code smell.
 However, this isn't a hard rule. For example, with constants and enum-like types,
 it may be natural to group them in a class.
 
-{:.good}
 <?code-excerpt "design_bad.dart (class-only-static-exception)"?>
-```dart
+```dart tag=good
 class Color {
   static const red = '#f00';
   static const green = '#0f0';
@@ -792,8 +758,7 @@ as the caller knows. That implies:
     of work, you may want to draw their attention to that by making it a method
     whose name is a verb describing what it does.
 
-    {:.bad}
-    ```dart
+    ```dart tag=bad
     connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
     ```
@@ -808,8 +773,7 @@ as the caller knows. That implies:
     store their result, write to a cache, log stuff, etc. As long as the caller
     doesn't *care* about the side effect, it's probably fine.
 
-    {:.bad}
-    ```dart
+    ```dart tag=bad
     stdout.newline; // Produces output.
     list.clear; // Modifies object.
     ```
@@ -830,8 +794,7 @@ as the caller knows. That implies:
     In other words, the result value should be the same *in the aspects that the
     caller cares about.*
 
-    {:.bad}
-    ```dart
+    ```dart tag=bad
     DateTime.now; // New result each time.
     ```
 
@@ -848,8 +811,7 @@ like few members would survive that gauntlet, but surprisingly many do. Many
 operations just do some computation on some state and most of those can and
 should be getters.
 
-{:.good}
-```dart
+```dart tag=good
 rectangle.area;
 collection.isEmpty;
 button.canShow;
@@ -877,8 +839,7 @@ For a setter, "field-like" means:
     That's fine. But from the caller's perspective, it appears that the second
     call does nothing.
 
-{:.good}
-```dart
+```dart tag=good
 rectangle.width = 3;
 button.visible = false;
 ```
@@ -968,18 +929,16 @@ empty container, it might make sense to use a nullable type.
 
 Method cascades are a better solution for chaining method calls.
 
-{:.good}
 <?code-excerpt "design_good.dart (cascades)"?>
-```dart
+```dart tag=good
 var buffer = StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (cascades)"?>
-```dart
+```dart tag=bad
 var buffer = StringBuffer()
     .write('one')
     .write('two')
@@ -1096,9 +1055,8 @@ The type of a variable—top-level, local, static field, or instance
 field—can often be inferred from its initializer. However, if there is no
 initializer, inference fails.
 
-{:.good}
 <?code-excerpt "design_good.dart (uninitialized-local)"?>
-```dart
+```dart tag=good
 List<AstNode> parameters;
 if (node is Constructor) {
   parameters = node.signature;
@@ -1107,9 +1065,8 @@ if (node is Constructor) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (uninitialized-local)"?>
-```dart
+```dart tag=bad
 var parameters;
 if (node is Constructor) {
   parameters = node.signature;
@@ -1127,26 +1084,23 @@ Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
 type error. Consider:
 
-{:.bad}
 <?code-excerpt "design_bad.dart (type_annotate_public_apis)"?>
-```dart
+```dart tag=bad
 install(id, destination) => ...
 ```
 
 Here, it's unclear what `id` is. A string? And what is `destination`? A string
 or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 
-{:.good}
 <?code-excerpt "design_good.dart (type_annotate_public_apis)"?>
-```dart
+```dart tag=good
 Future<bool> install(PackageId id, String destination) => ...
 ```
 
 In some cases, though, the type is so obvious that writing it is pointless:
 
-{:.good}
 <?code-excerpt "design_good.dart (inferred)"?>
-```dart
+```dart tag=good
 const screenWidth = 640; // Inferred as int.
 ```
 
@@ -1182,9 +1136,8 @@ Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
 more important *name* of the variable and its initialized value.
 
-{:.good}
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
-```dart
+```dart tag=good
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   var desserts = <List<Ingredient>>[];
   for (final recipe in cookbook) {
@@ -1197,9 +1150,8 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (omit-types-on-locals)"?>
-```dart
+```dart tag=bad
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   List<List<Ingredient>> desserts = <List<Ingredient>>[];
   for (final List<Ingredient> recipe in cookbook) {
@@ -1216,9 +1168,8 @@ Sometimes the inferred type is not the type you want the variable to have. For
 example, you may intend to assign values of other types later. In that case,
 annotate the variable with the type you want.
 
-{:.good}
 <?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
-```dart
+```dart tag=good
 Widget build(BuildContext context) {
   [!Widget!] result = Text('You won!');
   if (applyPadding) {
@@ -1235,17 +1186,15 @@ Dart doesn't generally infer the return type of a function declaration from its 
 unlike some other languages. That means you should write a type annotation for
 the return type yourself.
 
-{:.good}
 <?code-excerpt "design_good.dart (annotate-return-types)"?>
-```dart
+```dart tag=good
 String makeGreeting(String who) {
   return 'Hello, $who!';
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (annotate-return-types)"?>
-```dart
+```dart tag=bad
 makeGreeting(String who) {
   return 'Hello, $who!';
 }
@@ -1264,9 +1213,8 @@ Annotating parameter types makes that boundary well defined.
 Note that even though default parameter values look like variable initializers,
 Dart doesn't infer an optional parameter's type from its default value.
 
-{:.good}
 <?code-excerpt "design_good.dart (annotate-parameters)"?>
-```dart
+```dart tag=good
 void sayRepeatedly(String message, {int count = 2}) {
   for (var i = 0; i < count; i++) {
     print(message);
@@ -1274,9 +1222,8 @@ void sayRepeatedly(String message, {int count = 2}) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (annotate-parameters)" replace="/\(count as num\)/count/g"?>
-```dart
+```dart tag=bad
 void sayRepeatedly(message, {count = 2}) {
   for (var i = 0; i < count; i++) {
     print(message);
@@ -1300,15 +1247,13 @@ For example, when you pass a function expression to `Iterable.map()`, your
 function's parameter type is inferred based on the type of callback that `map()`
 expects:
 
-{:.good}
 <?code-excerpt "design_good.dart (func-expr-no-param-type)"?>
-```dart
+```dart tag=good
 var names = people.map((person) => person.name);
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (func-expr-no-param-type)"?>
-```dart
+```dart tag=bad
 var names = people.map((Person person) => person.name);
 ```
 
@@ -1331,9 +1276,8 @@ then the type of the parameter
 is inferred to have the same type as 
 the field or super-constructor parameter respectively.
 
-{:.good}
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
-```dart
+```dart tag=good
 class Point {
   double x, y;
   Point(this.x, this.y);
@@ -1344,9 +1288,8 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (dont-type-init-formals)"?>
-```dart
+```dart tag=bad
 class Point {
   double x, y;
   Point(double this.x, double this.y);
@@ -1366,16 +1309,14 @@ values being passed to the invocation. However, sometimes those aren't enough to
 fully determine a type argument. In that case, write the entire type argument
 list explicitly.
 
-{:.good}
 <?code-excerpt "design_good.dart (non-inferred-type-args)"?>
-```dart
+```dart tag=good
 var playerScores = <String, int>{};
 final events = StreamController<Event>();
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (non-inferred-type-args)"?>
-```dart
+```dart tag=bad
 var playerScores = {};
 final events = StreamController();
 ```
@@ -1384,17 +1325,15 @@ Sometimes the invocation occurs as the initializer to a variable declaration. If
 the variable is *not* local, then instead of writing the type argument list on the
 invocation itself, you may put a type annotation on the declaration:
 
-{:.good}
 <?code-excerpt "design_good.dart (inferred-type-args)"?>
-```dart
+```dart tag=good
 class Downloader {
   final Completer<String> response = Completer();
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (inferred-type-args)"?>
-```dart
+```dart tag=bad
 class Downloader {
   final response = Completer();
 }
@@ -1410,17 +1349,15 @@ This is the converse of the previous rule. If an invocation's type argument list
 *is* correctly inferred with the types you want, then omit the types and let
 Dart do the work for you.
 
-{:.good}
 <?code-excerpt "design_good.dart (redundant)"?>
-```dart
+```dart tag=good
 class Downloader {
   final Completer<String> response = Completer();
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (redundant)"?>
-```dart
+```dart tag=bad
 class Downloader {
   final Completer<String> response = Completer<String>();
 }
@@ -1429,15 +1366,13 @@ class Downloader {
 Here, the type annotation on the field provides a surrounding context to infer
 the type argument of constructor call in the initializer.
 
-{:.good}
 <?code-excerpt "design_good.dart (explicit)"?>
-```dart
+```dart tag=good
 var items = Future.value([1, 2, 3]);
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (explicit)"?>
-```dart
+```dart tag=bad
 var items = Future<List<int>>.value(<int>[1, 2, 3]);
 ```
 
@@ -1452,9 +1387,8 @@ type. However, if you write the name of a generic type but omit its type
 arguments, you haven't fully specified the type. In Java, these are called "raw
 types". For example:
 
-{:.bad}
 <?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
-```dart
+```dart tag=bad
 [!List!] numbers = [1, 2, 3];
 var completer = Completer<[!Map!]>();
 ```
@@ -1469,9 +1403,8 @@ class has one). That's rarely what you want.
 Instead, if you're writing a generic type either in a type annotation or as a type
 argument inside some invocation, make sure to write a complete type:
 
-{:.good}
 <?code-excerpt "design_good.dart (incomplete-generic)"?>
-```dart
+```dart tag=good
 List<num> numbers = [1, 2, 3];
 var completer = Completer<Map<String, int>>();
 ```
@@ -1489,23 +1422,20 @@ write the annotation.
 When `dynamic` is the type you want, write that explicitly to make your intent
 clear and highlight that this code has less static safety.
 
-{:.good}
 <?code-excerpt "design_good.dart (prefer-dynamic)"?>
-```dart
+```dart tag=good
 dynamic mergeJson(dynamic original, dynamic changes) => ...
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (prefer-dynamic)"?>
-```dart
+```dart tag=bad
 mergeJson(original, changes) => ...
 ```
 
 Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
 
-{:.good}
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
-```dart
+```dart tag=good
 Map<String, dynamic> readJson() => ...
 
 void printUsers() {
@@ -1543,15 +1473,13 @@ function.
 
 [Function]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
 
-{:.good}
 <?code-excerpt "design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
-```dart
+```dart tag=good
 bool isValid(String value, [!bool Function(String)!] test) => ...
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
-```dart
+```dart tag=bad
 bool isValid(String value, [!Function!] test) => ...
 ```
 
@@ -1563,9 +1491,8 @@ parameter or a function that takes two. Since we don't have union types, there's
 no way to precisely type that and you'd normally have to use `dynamic`.
 `Function` is at least a little more helpful than that:
 
-{:.good}
 <?code-excerpt "design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
-```dart
+```dart tag=good
 void handleError([!void Function()!] operation, [!Function!] errorHandler) {
   try {
     operation();
@@ -1588,15 +1515,13 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 Setters always return `void` in Dart. Writing the word is pointless.
 
-{:.bad}
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
-```dart
+```dart tag=bad
 void set foo(Foo value) { ... }
 ```
 
-{:.good}
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
-```dart
+```dart tag=good
 set foo(Foo value) { ... }
 ```
 
@@ -1608,9 +1533,8 @@ set foo(Foo value) { ... }
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
 
-{:.bad}
 <?code-excerpt "design_bad.dart (old-typedef)"?>
-```dart
+```dart tag=bad
 typedef int Comparison<T>(T a, T b);
 ```
 
@@ -1625,9 +1549,8 @@ That syntax has a couple of problems:
 *   A single identifier in a parameter is interpreted as the parameter's *name*,
     not its *type*. Given:
 
-    {:.bad}
     <?code-excerpt "design_bad.dart (typedef-param)"?>
-    ```dart
+    ```dart tag=bad
     typedef bool TestNumber(num);
     ```
 
@@ -1639,17 +1562,15 @@ That syntax has a couple of problems:
 
 The new syntax looks like this:
 
-{:.good}
 <?code-excerpt "design_good.dart (new-typedef)"?>
-```dart
+```dart tag=good
 typedef Comparison<T> = int Function(T, T);
 ```
 
 If you want to include a parameter's name, you can do that too:
 
-{:.good}
 <?code-excerpt "design_good.dart (new-typedef-param-name)"?>
-```dart
+```dart tag=good
 typedef Comparison<T> = int Function(T a, T b);
 ```
 
@@ -1672,9 +1593,8 @@ generic type argument, you can define a typedef for the function type.
 However, Dart supports an inline function type syntax that
 can be used anywhere a type annotation is allowed:
 
-{:.good}
 <?code-excerpt "design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
-```dart
+```dart tag=good
 class FilteredObservable {
   final [!bool Function(Event)!] _predicate;
   final List<[!void Function(Event)!]> _observers;
@@ -1719,9 +1639,8 @@ parameter a function type without defining a typedef. Now that Dart has a
 general notation for function types, you can use it for function-typed
 parameters as well:
 
-{:.good}
 <?code-excerpt "design_good.dart (function-type-param)"?>
-```dart
+```dart tag=good
 Iterable<T> where(bool Function(T) predicate) => ...
 ```
 
@@ -1748,9 +1667,8 @@ promotion to
 ensure that the value's runtime type supports the member you want to access
 before you access it.
 
-{:.good}
 <?code-excerpt "design_good.dart (Object-vs-dynamic)"?>
-```dart
+```dart tag=good
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.
 bool convertToBool(Object arg) {
@@ -1800,15 +1718,13 @@ the value, effectively always treating it as a `Future`.) Just return a
 is either always asynchronous or always synchronous, but a function that can be
 either is hard to use correctly.
 
-{:.good}
 <?code-excerpt "design_good.dart (future-or)"?>
-```dart
+```dart tag=good
 Future<int> triple(FutureOr<int> value) async => (await value) * 3;
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (future-or)"?>
-```dart
+```dart tag=bad
 FutureOr<int> triple(FutureOr<int> value) {
   if (value is int) return value * 3;
   return value.then((v) => v * 3);
@@ -1824,9 +1740,8 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 [contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
 
-{:.good}
 <?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
-```dart
+```dart tag=good
 Stream<S> asyncMap<T, S>(
     Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
   for (final element in iterable) {
@@ -1850,8 +1765,7 @@ numbers are usually wrapped in named constants, but we typically pass around
 `true` and `false` directly. That can make call sites unreadable if it isn't
 clear what the boolean represents:
 
-{:.bad}
-```dart
+```dart tag=bad
 new Task(true);
 new Task(false);
 new ListBox(false, true, true);
@@ -1861,9 +1775,8 @@ new Button(false);
 Instead, prefer using named arguments, named constructors, or named constants
 to clarify what the call is doing.
 
-{:.good}
 <?code-excerpt "design_good.dart (avoid-positional-bool-param)"?>
-```dart
+```dart tag=good
 Task.oneShot();
 Task.repeating();
 ListBox(scroll: true, showScrollbars: true);
@@ -1873,8 +1786,7 @@ Button(ButtonState.enabled);
 Note that this doesn't apply to setters, where the name makes it clear what the
 value represents:
 
-{:.good}
-```dart
+```dart tag=good
 listBox.canScroll = true;
 button.isEnabled = false;
 ```
@@ -1887,9 +1799,8 @@ earlier parameters are passed more often than later ones. Users should almost
 never need to explicitly pass a "hole" to omit an earlier positional argument to
 pass later one. You're better off using named arguments for that.
 
-{:.good}
 <?code-excerpt "design_good.dart (omit-optional-positional)"?>
-```dart
+```dart tag=good
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
 DateTime(int year,
@@ -1921,15 +1832,13 @@ Omitting the parameter is more terse and helps prevent bugs where a sentinel
 value like `null` is accidentally passed when the user thought they were
 providing a real value.
 
-{:.good}
 <?code-excerpt "design_good.dart (avoid-mandatory-param)"?>
-```dart
+```dart tag=good
 var rest = string.substring(start);
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (avoid-mandatory-param)"?>
-```dart
+```dart tag=bad
 var rest = string.substring(start, null);
 ```
 
@@ -1943,9 +1852,8 @@ than the index of the last item.
 
 This is consistent with core libraries that do the same thing.
 
-{:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
-```dart
+```dart tag=good
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
 'abcd'.substring(1, 3) // 'bc'
 ```
@@ -2009,9 +1917,8 @@ true.
 The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
 
-{:.good}
 <?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster?>
-```dart
+```dart tag=good
 class Person {
   final String name;
   // ···
@@ -2020,9 +1927,8 @@ class Person {
 }
 ```
 
-{:.bad}
 <?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster?>
-```dart
+```dart tag=bad
 class Person {
   final String name;
   // ···

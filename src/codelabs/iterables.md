@@ -84,9 +84,8 @@ you can't guarantee that reading elements by index will be efficient.
 
 For example, consider the following code, which is **invalid**:
 
-{:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
-```dart
+```dart tag=bad
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
 ```
@@ -376,9 +375,8 @@ all the elements of a collection satisfy some condition.
 
 You might be tempted to write a solution using a `for-in` loop like this one:
 
-{:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
-```dart
+```dart tag=bad
 for (final item in items) {
   if (item.length < 5) {
     return false;

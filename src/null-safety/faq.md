@@ -58,8 +58,7 @@ type nullable.
 
 Some computations can be moved to the static initializer. Instead of:
 
-{:.bad}
-```dart
+```dart tag=bad
 // Initialized without values
 ListQueue _context;
 Float32List _buffer;
@@ -74,8 +73,7 @@ Vec2D(Map<String, dynamic> object) {
 
 you can do:
 
-{:.good}
-```dart
+```dart tag=good
 // Initialized with values
 final ListQueue _context = ListQueue<dynamic>();
 final Float32List _buffer = Float32List.fromList([0.0, 0.0]);
@@ -124,8 +122,7 @@ throw an exception due to invalid input but instead ended up returning null.
 
 Instead of:
 
-{:.bad}
-```dart
+```dart tag=bad
   factory StreamReader(dynamic data) {
     StreamReader reader;
     if (data is ByteData) {
@@ -139,8 +136,7 @@ Instead of:
 
 Do:
 
-{:.good}
-```dart
+```dart tag=good
   factory StreamReader(dynamic data) {
     if (data is ByteData) {
       // Move the readIndex forward for the binary reader.
@@ -239,8 +235,7 @@ if (result != null) return result;
 
 It is typically a code smell to end up with nullable code like this:
 
-{:.bad}
-```dart
+```dart tag=bad
 List<Foo?> fooList; // fooList can contain null values
 ```
 
@@ -252,16 +247,14 @@ use the
 [`filled`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.filled.html) 
 constructor.
 
-{:.bad}
-```dart
+```dart tag=bad
 _jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
   _jellyCounts[i] = 0; // List initialized with the same value
 }
 ```
 
-{:.good}
-```dart
+```dart tag=good
 _jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
 ```
 
@@ -269,16 +262,14 @@ If you are setting the elements of the list via an index, or you are populating
 each element of the list with a distinct value, you should instead use the
 list literal syntax to build the list.
 
-{:.bad}
-```dart
+```dart tag=bad
 _jellyPoints = List<Vec2D?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
   _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
 }
 ```
 
-{:.good}
-```dart
+```dart tag=good
 _jellyPoints = [
   for (var i = 0; i <= jellyMax; i++)
     Vec2D() // Each list element is a distinct Vec2D

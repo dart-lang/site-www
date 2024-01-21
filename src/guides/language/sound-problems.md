@@ -34,8 +34,7 @@ typed languages, Dart accomplishes this with a combination of
 
 For example, the following type error is detected at compile-time:
 
-{:.fails-sa}
-```dart
+```dart tag=fails-sa
 List<int> numbers = [1, 2, 3];
 List<String> [!string = numbers!];
 ```
@@ -59,9 +58,8 @@ with the [`dart analyze`](/tools/dart-analyze) command.
 To verify that analysis is working as expected,
 try adding the following code to a Dart file.
 
-{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (static-analysis-enabled)"?>
-```dart
+```dart tag=fails-sa
 bool b = [0][0];
 ```
 
@@ -99,9 +97,8 @@ These errors can appear under the following conditions:
 
 In the following code, the analyzer complains that `context2D` is undefined:
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-undefined)" replace="/context2D/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 var canvas = querySelector('canvas')!;
 canvas.[!context2D!].lineTo(x, y);
 ```
@@ -122,18 +119,16 @@ which allows Dart to infer `canvas` to be an `Element`.
 
 You can fix this error with an explicit downcast:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 var canvas = querySelector('canvas') [!as CanvasElement!];
 canvas.context2D.lineTo(x, y);
 ```
 
 Otherwise, use `dynamic` in situations where you cannot use a single type:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 [!dynamic!] canvasOrImg = querySelector('canvas, img');
 var width = canvasOrImg.width;
 ```
@@ -154,9 +149,8 @@ class C<T extends Iterable> {
 The following code creates a new instance of this class 
 (omitting the type argument) and accesses its `collection` member:
 
-{:.fails-sa}
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\.add\(2\)/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 var c = C(Iterable.empty()).collection;
 [!c.add(2)!];
 ```
@@ -183,9 +177,8 @@ argument, the analyzer can detect the type mismatch in the constructor argument.
 Fix the error by providing a constructor argument of the appropriate type,
 such as a list literal:
 
-{:.passes-sa}
 <?code-excerpt "test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 var c = C[!<List>!]([![]!]).collection;
 c.add(2);
 ```
@@ -212,9 +205,8 @@ For more information, see [Missing type arguments](#missing-type-arguments).
 In the following example, the parameters to the `add()` method are of type `int`,
 a subtype of `num`, which is the parameter type used in the parent class.
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (invalid-method-override)" replace="/int(?= \w\b.*=)/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 abstract class NumberAdder {
   num add(num a, num b);
 }
@@ -233,9 +225,8 @@ error - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'Numb
 Consider the following scenario where floating
 point values are passed to an `MyAdder`:
 
-{:.runtime-fail}
 <?code-excerpt "lib/common_fixes_analysis.dart (runtime-failure-if-int)" replace="/1.2/[!1.2!]/g/3.4/[!3.4!]/g"?>
-```dart
+```dart tag=runtime-fail
 NumberAdder adder = MyAdder();
 adder.add([!1.2!], [!3.4!]);
 ```
@@ -249,9 +240,8 @@ object that the superclass's method takes.
 
 Fix the example by widening the types in the subclass:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (invalid-method-override)" replace="/int(?= \w\b.*=)/[!num!]/g"?>
-```dart
+```dart tag=passes-sa
 abstract class NumberAdder {
   num add(num a, num b);
 }
@@ -285,9 +275,8 @@ In the following example, `Subclass` extends `Superclass<T>` but doesn't
 specify a type argument. The analyzer infers `Subclass<dynamic>`,
 which results in an invalid override error on `method(int)`.
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/int/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 class Superclass<T> {
   void method(T param) { ... }
 }
@@ -311,9 +300,8 @@ errors.
 
 You can fix the example by specifying the type on the subclass:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/Superclass /Superclass[!<int\x3E!] /g"?>
-```dart
+```dart tag=passes-sa
 class Superclass<T> {
   void method(T param) { ... }
 }
@@ -359,9 +347,8 @@ The following code initializes a map with several
 but the code seems to assume either `<String, dynamic>` or `<String, num>`.
 When the code adds a (`String`, `double`) pair, the analyzer complains:
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (inferred-collection-types)" replace="/1.5/[!1.5!]/g"?>
-```dart
+```dart tag=fails-sa
 // Inferred as Map<String, int>
 var map = {'a': 1, 'b': 2, 'c': 3};
 map['d'] = [!1.5!];
@@ -377,9 +364,8 @@ error - A value of type 'double' can't be assigned to a variable of type 'int'. 
 The example can be fixed by explicitly defining
 the map's type to be `<String, num>`.
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (inferred-collection-types-ok)" replace="/<.*?\x3E/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 var map = [!<String, num>!]{'a': 1, 'b': 2, 'c': 3};
 map['d'] = 1.5;
 ```
@@ -402,9 +388,8 @@ initialization list.
 
 #### Example
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g; /_HoneyBadger/HoneyBadger/g"?>
-```dart
+```dart tag=fails-sa
 HoneyBadger(Eats food, String name)
     : [!super!](food),
       _name = name { ... }
@@ -422,9 +407,8 @@ The compiler can generate simpler code if it relies on the
 
 Fix this error by moving the `super()` call:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last-ok)" replace="/super/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 HoneyBadger(Eats food, String name)
     : _name = name,
       [!super!](food) { ... }
@@ -451,9 +435,8 @@ type, such as `Object?`) results in a compile-time error.
 
 #### Example
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-fail)" replace="/String/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 void filterValues(bool Function(dynamic) filter) {}
 filterValues(([!String!] x) => x.contains('Hello'));
 ```
@@ -467,18 +450,16 @@ error - The argument type 'bool Function(String)' can't be assigned to the param
 
 When possible, avoid this error by adding type parameters:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 void filterValues[!<T>!](bool Function(T) filter) {}
 filterValues[!<String>!]((x) => x.contains('Hello'));
 ```
 
 Otherwise use casting:
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 void filterValues(bool Function(dynamic) filter) {}
 filterValues((x) => (x [!as String!]).contains('Hello'));
 ```
@@ -496,18 +477,16 @@ This primarily affects `Iterable.fold`.
 In the following code,
 type inference will infer that `a` has a type of `Null`:
 
-{:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
-```dart
+```dart tag=fails-sa
 var ints = [1, 2, 3];
 var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 ```
 
 #### Fix: Supply appropriate type as explicit type argument
 
-{:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
-```dart
+```dart tag=passes-sa
 var ints = [1, 2, 3];
 var maximumOrNull =
     ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
@@ -527,9 +506,8 @@ The errors discussed in this section are reported at
 To ensure type safety, Dart needs to insert _runtime_ checks in some cases. 
 Consider the following `assumeStrings` method:
 
-{:.passes-sa}
 <?code-excerpt "test/strong_test.dart (downcast-check)" replace="/string = objects/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 void assumeStrings(dynamic objects) {
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
@@ -542,9 +520,8 @@ implicitly (as if you wrote `as List<String>`), so if the value you pass in
 
 Otherwise, the cast will fail at runtime:
 
-{:.runtime-fail}
 <?code-excerpt "test/strong_test.dart (fail-downcast-check)" replace="/\[.*\]/[!$&!]/g"?>
-```dart
+```dart tag=runtime-fail
 assumeStrings(<int>[![1, 2, 3]!]);
 ```
 
@@ -559,9 +536,8 @@ Sometimes, lack of a type, especially with empty collections, means that
 a `<dynamic>` collection is created, instead of the typed one you intended. 
 Adding an explicit type argument can help:
 
-{:.runtime-success}
 <?code-excerpt "test/strong_test.dart (typed-list-lit)" replace="/<String\x3E/[!$&!]/g"?>
-```dart
+```dart tag=runtime-success
 var list = [!<String>!][];
 list.add('a string');
 list.add('another');
@@ -570,9 +546,8 @@ assumeStrings(list);
 
 You can also more precisely type the local variable, and let inference help:
 
-{:.runtime-success}
 <?code-excerpt "test/strong_test.dart (typed-list)" replace="/<String\x3E/[!$&!]/g"?>
-```dart
+```dart tag=runtime-success
 List[!<String>!] list = [];
 list.add('a string');
 list.add('another');
@@ -585,9 +560,8 @@ provided by `Iterable` implementations, such as `List`.
 
 Here's an example of the preferred solution: tightening the object's type.
 
-{:.runtime-success}
 <?code-excerpt "test/strong_test.dart (cast)" replace="/cast/[!$&!]/g"?>
-```dart
+```dart tag=runtime-success
 Map<String, dynamic> json = fetchFromExternalSource();
 var names = json['names'] as List;
 assumeStrings(names.[!cast!]<String>());
@@ -606,9 +580,8 @@ argument type at runtime.
 
 The following shows how you might use `covariant`:
 
-{:.passes-sa}
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 class Animal {
   void chase(Animal x) { ... }
 }

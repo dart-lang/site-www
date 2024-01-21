@@ -50,17 +50,15 @@ part 'some/other/file.dart';
 
 Then the part file should use the library file's URI string:
 
-{:.good}
 <?code-excerpt "some/other/file.dart"?>
-```dart
+```dart tag=good
 part of '../../my_library.dart';
 ```
 
 Not the library name:
 
-{:.bad}
 <?code-excerpt "some/other/file_2.dart"?>
-```dart
+```dart tag=bad
 part of my_library;
 ```
 
@@ -107,8 +105,7 @@ my_package
 
 And say `api_test.dart` imports `api.dart` in two ways:
 
-{:.bad}
-```dart title="api_test.dart"
+```dart title="api_test.dart" tag=bad
 import 'package:my_package/api.dart';
 import '../lib/api.dart';
 ```
@@ -124,8 +121,7 @@ Instead, when you need to reach into a package's `lib` directory
 or any other top-level directory),
 use a `package:` import.
 
-{:.good}
-```dart title="api_test.dart"
+```dart title="api_test.dart" tag=good
 import 'package:my_package/api.dart';
 ```
 
@@ -156,20 +152,17 @@ my_package
 
 Here is how the various libraries should import each other:
 
-{:.good}
-```dart title="lib/api.dart"
+```dart title="lib/api.dart" tag=good
 import 'src/stuff.dart';
 import 'src/utils.dart';
 ```
 
-{:.good}
-```dart title="lib/src/utils.dart"
+```dart title="lib/src/utils.dart" tag=good
 import '../api.dart';
 import 'stuff.dart';
 ```
 
-{:.good}
-```dart title="test/api_test.dart"
+```dart title="test/api_test.dart" tag=good
 import 'package:my_package/api.dart'; // Don't reach into 'lib'.
 
 import 'test_utils.dart'; // Relative within 'test' is fine.
@@ -189,9 +182,8 @@ nullable, then it is implicitly initialized to `null` for you. There's no
 concept of "uninitialized memory" in Dart and no need to explicitly initialize a
 variable to `null` to be "safe".
 
-{:.good}
 <?code-excerpt "usage_good.dart (no-null-init)"?>
-```dart
+```dart tag=good
 Item? bestDeal(List<Item> cart) {
   Item? bestItem;
 
@@ -205,9 +197,8 @@ Item? bestDeal(List<Item> cart) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (no-null-init)" replace="/ = null/[!$&!]/g"?>
-```dart
+```dart tag=bad
 Item? bestDeal(List<Item> cart) {
   Item? bestItem[! = null!];
 
@@ -229,17 +220,15 @@ Item? bestDeal(List<Item> cart) {
 If you make a nullable parameter optional but don't give it a default value, the
 language implicitly uses `null` as the default, so there's no need to write it.
 
-{:.good}
 <?code-excerpt "usage_good.dart (default-value-null)"?>
-```dart
+```dart tag=good
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (default-value-null)"?>
-```dart
+```dart tag=bad
 void error([String? message = null]) {
   stderr.write(message ?? '\n');
 }
@@ -253,17 +242,15 @@ against a boolean literal is redundant.
 It's always simpler to eliminate the equality operator, 
 and use the unary negation operator `!` if necessary:
 
-{:.good}
 <?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
-```dart
+```dart tag=good
 if (nonNullableBool) { ... }
 
 if (!nonNullableBool) { ... }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (non-null-boolean-expression)"?>
-```dart
+```dart tag=bad
 if (nonNullableBool == true) { ... }
 
 if (nonNullableBool == false) { ... }
@@ -272,9 +259,8 @@ if (nonNullableBool == false) { ... }
 To evaluate a boolean expression that *is nullable*, you should use `??`
 or an explicit `!= null` check.
 
-{:.good}
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
-```dart
+```dart tag=good
 // If you want null to result in false:
 if (nullableBool ?? false) { ... }
 
@@ -283,9 +269,8 @@ if (nullableBool ?? false) { ... }
 if (nullableBool != null && nullableBool) { ... }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
-```dart
+```dart tag=bad
 // Static error if null:
 if (nullableBool) { ... }
 
@@ -356,9 +341,8 @@ One pattern to work around this is to assign the field's value
 to a local variable. Null checks on that variable will promote,
 so you can safely treat it as non-nullable.
 
-{:.good}
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
-```dart
+```dart tag=good
 class UploadException {
   final Response? response;
 
@@ -380,9 +364,8 @@ class UploadException {
 Assigning to a local variable can be cleaner and safer than using `!` every
 time you need to treat the value as non-null:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
-```dart
+```dart tag=bad
 class UploadException {
   final Response? response;
 
@@ -425,16 +408,14 @@ form—you do not need to use `+` to concatenate them. Just like in C and
 C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
-{:.good}
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
-```dart
+```dart tag=good
 raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
-```dart
+```dart tag=bad
 raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
     'parts are overrun by martians. Unclear which are which.');
 ```
@@ -447,15 +428,13 @@ If you're coming from other languages, you're used to using long chains of `+`
 to build a string out of literals and other values. That does work in Dart, but
 it's almost always cleaner and shorter to use interpolation:
 
-{:.good}
 <?code-excerpt "usage_good.dart (string-interpolation)"?>
-```dart
+```dart tag=good
 'Hello, $name! You are ${year - birth} years old.';
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (string-interpolation)"?>
-```dart
+```dart tag=bad
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 ```
 
@@ -469,15 +448,13 @@ It's fine to use `.toString()` when converting only a single object to a string.
 If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
 
-{:.good}
 <?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
-```dart
+```dart tag=good
 var greeting = 'Hi, $name! I love your ${decade}s costume.';
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
-```dart
+```dart tag=bad
 var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
 ```
 
@@ -495,17 +472,15 @@ classes have unnamed constructors like most classes do. But because these
 collections are used so frequently, Dart has nicer built-in syntax for creating
 them:
 
-{:.good}
 <?code-excerpt "usage_good.dart (collection-literals)"?>
-```dart
+```dart tag=good
 var points = <Point>[];
 var addresses = <String, Address>{};
 var counts = <int>{};
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (collection-literals)"?>
-```dart
+```dart tag=bad
 var addresses = Map<String, Address>();
 var counts = Set<int>();
 ```
@@ -524,9 +499,8 @@ building the contents:
 [spread]: /language/collections#spread-operators
 [control]: /language/collections#control-flow-operators
 
-{:.good}
 <?code-excerpt "usage_good.dart (spread-etc)"?>
-```dart
+```dart tag=good
 var arguments = [
   ...options,
   command,
@@ -536,9 +510,8 @@ var arguments = [
 ];
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (spread-etc)"?>
-```dart
+```dart tag=bad
 var arguments = <String>[];
 arguments.addAll(options);
 arguments.add(command);
@@ -562,16 +535,14 @@ collection contains *anything* can be painfully slow.
 Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
 
-{:.good}
 <?code-excerpt "usage_good.dart (dont-use-length)"?>
-```dart
+```dart tag=good
 if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (dont-use-length)"?>
-```dart
+```dart tag=bad
 if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
 ```
@@ -585,17 +556,15 @@ if (!words.isEmpty) return words.join(' ');
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
 over a sequence, the idiomatic way to do that is using a loop.
 
-{:.good}
 <?code-excerpt "usage_good.dart (avoid-forEach)"?>
-```dart
+```dart tag=good
 for (final person in people) {
   ...
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (avoid-forEach)"?>
-```dart
+```dart tag=bad
 people.forEach((person) {
   ...
 });
@@ -604,9 +573,8 @@ people.forEach((person) {
 Note that this guideline specifically says "function *literal*". If you want to
 invoke some *already existing* function on each element, `forEach()` is fine.
 
-{:.good}
 <?code-excerpt "usage_good.dart (forEach-over-func)"?>
-```dart
+```dart tag=good
 people.forEach(print);
 ```
 
@@ -628,9 +596,8 @@ The obvious difference is that the first one is shorter. The *important*
 difference is that the first one preserves the type argument of the original
 object:
 
-{:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-good)"?>
-```dart
+```dart tag=good
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
@@ -638,9 +605,8 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 ```
 
-{:.bad}
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-bad)"?>
-```dart
+```dart tag=bad
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
@@ -650,9 +616,8 @@ print(List.from(iterable).runtimeType);
 
 If you *want* to change the type, then calling `List.from()` is useful:
 
-{:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (list-from-3)"?>
-```dart
+```dart tag=good
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
 var ints = List<int>.from(numbers);
@@ -669,9 +634,8 @@ you don't care about the type, then use `toList()`.
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (where-type)"?>
-```dart
+```dart tag=bad
 var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int);
 ```
@@ -682,9 +646,8 @@ you likely want an `Iterable<int>` since that's the type you're filtering it to.
 
 Sometimes you see code that "corrects" the above error by adding `cast()`:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (where-type-2)"?>
-```dart
+```dart tag=bad
 var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int).cast<int>();
 ```
@@ -695,9 +658,8 @@ the [`whereType()`][where-type] method for this exact use case:
 
 [where-type]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/whereType.html
 
-{:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
-```dart
+```dart tag=good
 var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 ```
@@ -718,16 +680,14 @@ If you're already calling `toList()`, replace that with a call to
 
 [list-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.from.html
 
-{:.good}
 <?code-excerpt "usage_good.dart (cast-list)"?>
-```dart
+```dart tag=good
 var stuff = <dynamic>[1, 2];
 var ints = List<int>.from(stuff);
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (cast-list)"?>
-```dart
+```dart tag=bad
 var stuff = <dynamic>[1, 2];
 var ints = stuff.toList().cast<int>();
 ```
@@ -737,16 +697,14 @@ produces an iterable of the desired type. Type inference often picks the correct
 type for you based on the function you pass to `map()`, but sometimes you need
 to be explicit.
 
-{:.good}
 <?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
-```dart
+```dart tag=good
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map<double>((n) => 1 / n);
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
-```dart
+```dart tag=bad
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 ```
@@ -777,9 +735,8 @@ Prefer any of these options instead:
 
 Here is an example of **creating it with the right type:**
 
-{:.good}
 <?code-excerpt "usage_good.dart (cast-at-create)"?>
-```dart
+```dart tag=good
 List<int> singletonList(int value) {
   var list = <int>[];
   list.add(value);
@@ -787,9 +744,8 @@ List<int> singletonList(int value) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (cast-at-create)"?>
-```dart
+```dart tag=bad
 List<int> singletonList(int value) {
   var list = []; // List<dynamic>.
   list.add(value);
@@ -799,9 +755,8 @@ List<int> singletonList(int value) {
 
 Here is **casting each element on access:**
 
-{:.good}
 <?code-excerpt "usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
-```dart
+```dart tag=good
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
   for (final n in objects) {
@@ -810,9 +765,8 @@ void printEvens(List<Object> objects) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (cast-iterate)"?>
-```dart
+```dart tag=bad
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
   for (final n in objects.cast<int>()) {
@@ -823,9 +777,8 @@ void printEvens(List<Object> objects) {
 
 Here is **casting eagerly using `List.from()`:**
 
-{:.good}
 <?code-excerpt "usage_good.dart (cast-from)"?>
-```dart
+```dart tag=good
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
   var ints = List<int>.from(objects);
@@ -834,9 +787,8 @@ int median(List<Object> objects) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (cast-from)"?>
-```dart
+```dart tag=bad
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
   var ints = objects.cast<int>();
@@ -868,9 +820,8 @@ function expression is great for that.
 But, if you do need to give it a name, use a function declaration statement
 instead of binding a lambda to a variable.
 
-{:.good}
 <?code-excerpt "usage_good.dart (func-decl)"?>
-```dart
+```dart tag=good
 void main() {
   void localFunction() {
     ...
@@ -878,9 +829,8 @@ void main() {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (func-decl)"?>
-```dart
+```dart tag=bad
 void main() {
   var localFunction = () {
     ...
@@ -898,9 +848,8 @@ parameters as the function and invokes the underlying function when you call it.
 If all you need is a closure that invokes a named function with the same
 parameters as the closure accepts, don't manually wrap the call in a lambda.
 
-{:.good}
 <?code-excerpt "usage_good.dart (use-tear-off)"?>
-```dart
+```dart tag=good
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
@@ -917,9 +866,8 @@ var strings = charCodes.map(String.fromCharCode);
 var buffers = charCodes.map(StringBuffer.new);
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (use-tear-off)"?>
-```dart
+```dart tag=bad
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 
@@ -969,9 +917,8 @@ When designing a class, you often want to expose multiple views into the same
 underlying state. Often you see code that calculates all of those views in the
 constructor and then stores them:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (calc-vs-store1)"?>
-```dart
+```dart tag=bad
 class Circle {
   double radius;
   double area;
@@ -997,9 +944,8 @@ the `area` and `circumference` will retain their previous, now incorrect values.
 
 To correctly handle cache invalidation, we would need to do this:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (calc-vs-store2)"?>
-```dart
+```dart tag=bad
 class Circle {
   double _radius;
   double get radius => _radius;
@@ -1028,9 +974,8 @@ class Circle {
 That's an awful lot of code to write, maintain, debug, and read. Instead, your
 first implementation should be:
 
-{:.good}
 <?code-excerpt "usage_good.dart (calc-vs-store)"?>
-```dart
+```dart tag=good
 class Circle {
   double radius;
 
@@ -1070,17 +1015,15 @@ Dart doesn't have this limitation. Fields and getters/setters are completely
 indistinguishable. You can expose a field in a class and later wrap it in a
 getter and setter without having to touch any code that uses that field.
 
-{:.good}
 <?code-excerpt "usage_good.dart (dont-wrap-field)"?>
-```dart
+```dart tag=good
 class Box {
   Object? contents;
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (dont-wrap-field)"?>
-```dart
+```dart tag=bad
 class Box {
   Object? _contents;
   Object? get contents => _contents;
@@ -1096,17 +1039,15 @@ class Box {
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
 
-{:.good}
 <?code-excerpt "usage_good.dart (final)"?>
-```dart
+```dart tag=good
 class Box {
   final contents = [];
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (final)"?>
-```dart
+```dart tag=bad
 class Box {
   Object? _contents;
   Object? get contents => _contents;
@@ -1126,9 +1067,8 @@ In addition to using `=>` for function expressions, Dart also lets you define
 members with it. That style is a good fit for simple members that just calculate
 and return a value.
 
-{:.good}
 <?code-excerpt "usage_good.dart (use-arrow)"?>
-```dart
+```dart tag=good
 double get area => (right - left) * (bottom - top);
 
 String capitalize(String name) =>
@@ -1141,9 +1081,8 @@ lines or contains deeply nested expressions—cascades and conditional
 operators are common offenders—do yourself and everyone who has to read
 your code a favor and use a block body and some statements.
 
-{:.good}
 <?code-excerpt "usage_good.dart (arrow-long)"?>
-```dart
+```dart tag=good
 Treasure? openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
 
@@ -1154,9 +1093,8 @@ Treasure? openChest(Chest chest, Point where) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
-```dart
+```dart tag=bad
 Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
     ? null
     : _opened[chest] = (Treasure(where)..addAll(chest.contents));
@@ -1165,9 +1103,8 @@ Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
 You can also use `=>` on members that don't return a value. This is idiomatic
 when a setter is small and has a corresponding getter that uses `=>`.
 
-{:.good}
 <?code-excerpt "usage_good.dart (arrow-setter)"?>
-```dart
+```dart tag=good
 num get x => center.x;
 set x(num value) => center = Point(value, center.y);
 ```
@@ -1184,9 +1121,8 @@ C#—doesn't have that limitation.
 There are only two times you need to use `this.`. One is when a local variable
 with the same name shadows the member you want to access:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (this-dot)"?>
-```dart
+```dart tag=bad
 class Box {
   Object? value;
 
@@ -1200,9 +1136,8 @@ class Box {
 }
 ```
 
-{:.good}
 <?code-excerpt "usage_good.dart (this-dot)"?>
-```dart
+```dart tag=good
 class Box {
   Object? value;
 
@@ -1218,9 +1153,8 @@ class Box {
 
 The other time to use `this.` is when redirecting to a named constructor:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (this-dot-constructor)"?>
-```dart
+```dart tag=bad
 class ShadeOfGray {
   final int brightness;
 
@@ -1233,9 +1167,8 @@ class ShadeOfGray {
 }
 ```
 
-{:.good}
 <?code-excerpt "usage_good.dart (this-dot-constructor)"?>
-```dart
+```dart tag=good
 class ShadeOfGray {
   final int brightness;
 
@@ -1251,9 +1184,8 @@ class ShadeOfGray {
 Note that constructor parameters never shadow fields in constructor initializer
 lists:
 
-{:.good}
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
-```dart
+```dart tag=good
 class Box extends BaseBox {
   Object? value;
 
@@ -1273,9 +1205,8 @@ If a field doesn't depend on any constructor parameters, it can and should be
 initialized at its declaration. It takes less code and avoids duplication when
 the class has multiple constructors.
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
-```dart
+```dart tag=bad
 class ProfileMark {
   final String name;
   final DateTime start;
@@ -1287,9 +1218,8 @@ class ProfileMark {
 }
 ```
 
-{:.good}
 <?code-excerpt "usage_good.dart (field-init-at-decl)"?>
-```dart
+```dart tag=good
 class ProfileMark {
   final String name;
   final DateTime start = DateTime.now();
@@ -1317,9 +1247,8 @@ The following best practices apply to declaring constructors for a class.
 
 Many fields are initialized directly from a constructor parameter, like:
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (field-init-as-param)"?>
-```dart
+```dart tag=bad
 class Point {
   double x, y;
   Point(double x, double y)
@@ -1330,9 +1259,8 @@ class Point {
 
 We've got to type `x` _four_ times here to define a field. We can do better:
 
-{:.good}
 <?code-excerpt "usage_good.dart (field-init-as-param)"?>
-```dart
+```dart tag=good
 class Point {
   double x, y;
   Point(this.x, this.y);
@@ -1357,9 +1285,8 @@ compile-time error into a *runtime* error if you access the field before it is
 initialized. That's what you need in some cases, but often the right fix is to
 initialize the field in the constructor initializer list:
 
-{:.good}
 <?code-excerpt "usage_good.dart (late-init-list)"?>
-```dart
+```dart tag=good
 class Point {
   double x, y;
   Point.polar(double theta, double radius)
@@ -1368,9 +1295,8 @@ class Point {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (late-init-list)"?>
-```dart
+```dart tag=bad
 class Point {
   late double x, y;
   Point.polar(double theta, double radius) {
@@ -1394,18 +1320,16 @@ performance.
 In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
 
-{:.good}
 <?code-excerpt "usage_good.dart (semicolon-for-empty-body)"?>
-```dart
+```dart tag=good
 class Point {
   double x, y;
   Point(this.x, this.y);
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (semicolon-for-empty-body)"?>
-```dart
+```dart tag=bad
 class Point {
   double x, y;
   Point(this.x, this.y) {}
@@ -1423,9 +1347,8 @@ Its meaning is not clear because factory constructors mean a
 The language still permits `new`, but consider
 it deprecated and avoid using it in your code.
 
-{:.good}
 <?code-excerpt "usage_good.dart (no-new)"?>
-```dart
+```dart tag=good
 Widget build(BuildContext context) {
   return Row(
     children: [
@@ -1438,9 +1361,8 @@ Widget build(BuildContext context) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
-```dart
+```dart tag=bad
 Widget build(BuildContext context) {
   return [!new!] Row(
     children: [
@@ -1475,9 +1397,8 @@ may support non-const default values.)
 Basically, any place where it would be an error to write `new` instead of
 `const`, Dart allows you to omit the `const`.
 
-{:.good}
 <?code-excerpt "usage_good.dart (no-const)"?>
-```dart
+```dart tag=good
 const primaryColors = [
   Color('red', [255, 0, 0]),
   Color('green', [0, 255, 0]),
@@ -1485,9 +1406,8 @@ const primaryColors = [
 ];
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
-```dart
+```dart tag=bad
 const primaryColors = [!const!] [
   [!const!] Color('red', [!const!] [255, 0, 0]),
   [!const!] Color('green', [!const!] [0, 255, 0]),
@@ -1565,9 +1485,8 @@ instead of throwing the same exception object using `throw`.
 `rethrow` preserves the original stack trace of the exception. `throw` on the
 other hand resets the stack trace to the last thrown position.
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (rethrow)"?>
-```dart
+```dart tag=bad
 try {
   somethingRisky();
 } catch (e) {
@@ -1576,9 +1495,8 @@ try {
 }
 ```
 
-{:.good}
 <?code-excerpt "usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
-```dart
+```dart tag=good
 try {
   somethingRisky();
 } catch (e) {
@@ -1599,9 +1517,8 @@ Asynchronous code is notoriously hard to read and debug, even when using a nice
 abstraction like futures. The `async`/`await` syntax improves readability and
 lets you use all of the Dart control flow structures within your async code.
 
-{:.good}
 <?code-excerpt "usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
-```dart
+```dart tag=good
 Future<int> countActivePlayers(String teamName) [!async!] {
   try {
     var team = [!await!] downloadTeam(teamName);
@@ -1616,9 +1533,8 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (async-await)"?>
-```dart
+```dart tag=bad
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
     if (team == null) return Future.value(0);
@@ -1639,17 +1555,15 @@ It's easy to get in the habit of using `async` on any function that does
 anything related to asynchrony. But in some cases, it's extraneous. If you can
 omit the `async` without changing the behavior of the function, do so.
 
-{:.good}
 <?code-excerpt "usage_good.dart (unnecessary-async)"?>
-```dart
+```dart tag=good
 Future<int> fastestBranch(Future<int> left, Future<int> right) {
   return Future.any([left, right]);
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (unnecessary-async)"?>
-```dart
+```dart tag=bad
 Future<int> fastestBranch(Future<int> left, Future<int> right) async {
   return Future.any([left, right]);
 }
@@ -1665,9 +1579,8 @@ Cases where `async` *is* useful include:
 * You are returning a value and you want it implicitly wrapped in a future.
   `async` is shorter than `Future.value(...)`.
 
-{:.good}
 <?code-excerpt "usage_good.dart (async)"?>
-```dart
+```dart tag=good
 Future<void> usesAwait(Future<String> later) async {
   print(await later);
 }
@@ -1691,9 +1604,8 @@ Many people new to asynchronous programming want to write code that produces a
 future. The constructors in Future don't seem to fit their need so they
 eventually find the Completer class and use that.
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (avoid-completer)"?>
-```dart
+```dart tag=bad
 Future<bool> fileContainsBear(String path) {
   var completer = Completer<bool>();
 
@@ -1712,9 +1624,8 @@ they're clearer and make error handling easier.
 
 [then]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/then.html
 
-{:.good}
 <?code-excerpt "usage_good.dart (avoid-completer)"?>
-```dart
+```dart tag=good
 Future<bool> fileContainsBear(String path) {
   return File(path).readAsString().then((contents) {
     return contents.contains('bear');
@@ -1722,9 +1633,8 @@ Future<bool> fileContainsBear(String path) {
 }
 ```
 
-{:.good}
 <?code-excerpt "usage_good.dart (avoid-completer-alt)"?>
-```dart
+```dart tag=good
 Future<bool> fileContainsBear(String path) async {
   var contents = await File(path).readAsString();
   return contents.contains('bear');
@@ -1746,9 +1656,8 @@ itself implements `Object`, so `is Object` or `is T` where `T` is some type
 parameter that could be instantiated with `Object` returns true even when the
 object is a future. Instead, explicitly test for the `Future` case:
 
-{:.good}
 <?code-excerpt "usage_good.dart (test-future-or)"?>
-```dart
+```dart tag=good
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is Future<T>) {
     var result = await value;
@@ -1761,9 +1670,8 @@ Future<T> logValue<T>(FutureOr<T> value) async {
 }
 ```
 
-{:.bad}
 <?code-excerpt "usage_bad.dart (test-future-or)"?>
-```dart
+```dart tag=bad
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is T) {
     print(value);

@@ -384,9 +384,8 @@ var fruit = fruits[0];
 assert(fruit is String);
 ```
 
-{:.fails-sa}
 <?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
-```dart
+```dart tag=fails-sa
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 

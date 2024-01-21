@@ -1229,7 +1229,6 @@ The logical operators (such as AND (`&&`),
 OR (`||`) and NOT (`!`)) are identical
 in both languages. For example:
 
-{:.no-lang}
 ```dart
 if (!done && (col == 0 || col == 3)) {
   // ...Do something...

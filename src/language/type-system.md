@@ -28,9 +28,8 @@ classes. The most common generic classes are the collection types
 For example, in the following code the `printInts()` function prints an integer list,
 and `main()` creates a list and passes it to `printInts()`.
 
-{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -62,9 +61,8 @@ a string argument can't be assigned to an `int` parameter.
 Removing the quotes in `list.add('2')` results in code
 that passes static analysis and runs with no errors or warnings.
 
-{:.passes-sa}
 <?code-excerpt "test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -149,9 +147,8 @@ The `parent` getter method returns an `Animal`. In the `HoneyBadger` subclass,
 you can replace the getter's return type with `HoneyBadger` 
 (or any other subtype of `Animal`), but an unrelated type is not allowed.
 
-{:.passes-sa}
 <?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
   void chase(Animal a) { ... }
@@ -161,9 +158,8 @@ class HoneyBadger extends Animal {
 }
 ```
 
-{:.fails-sa}
 <?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/HoneyBadger get/[!Root!] get/g"?>
-```dart
+```dart tag=fails-sa
 class HoneyBadger extends Animal {
   @override
   void chase(Animal a) { ... }
@@ -199,9 +195,8 @@ class Animal {
 The `chase()` method takes an `Animal`. A `HoneyBadger` chases anything.
 It's OK to override the `chase()` method to take anything (`Object`).
 
-{:.passes-sa}
 <?code-excerpt "lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
-```dart
+```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
   void chase([!Object!] a) { ... }
@@ -214,9 +209,8 @@ class HoneyBadger extends Animal {
 The following code tightens the parameter on the `chase()` method
 from `Animal` to `Mouse`, a subclass of `Animal`.
 
-{:.fails-sa}
 <?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 class [!Mouse!] extends Animal { ... }
 
 class Cat extends Animal {
@@ -245,9 +239,8 @@ This rule also applies to instances of generic types.
 The following code creates a `dynamic` list of `Dog`, and assigns it to
 a list of type `Cat`, which generates an error during static analysis.
 
-{:.fails-sa}
 <?code-excerpt "lib/incorrect_animal.dart (invalid-dynamic-list)" replace="/(<dynamic\x3E)(.*?)Error/[!$1!]$2Error/g"?>
-```dart
+```dart tag=fails-sa
 void main() {
   List<Cat> foo = [!<dynamic>!][Dog()]; // Error
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
@@ -262,9 +255,8 @@ that can't be detected at compile time.
 For example, the following code throws an exception at runtime
 because it's an error to cast a list of dogs to a list of cats:
 
-{:.runtime-fail}
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
-```dart
+```dart tag=runtime-fail
 void main() {
   List<Animal> animals = [Dog()];
   List<Cat> cats = [!animals as List<Cat>!];
@@ -328,16 +320,14 @@ Subsequent assignments are not taken into account.
 This may mean that too precise a type may be inferred.
 If so, you can add a type annotation.
 
-{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
-```dart
+```dart tag=fails-sa
 var x = 3; // x is inferred as an int.
 x = 4.0;
 ```
 
-{:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-ok)"?>
-```dart
+```dart tag=passes-sa
 num y = 3; // A num can be double or int.
 y = 4.0;
 ```
@@ -351,9 +341,8 @@ of occurrence, and upward information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
 you can always explicitly specify the type arguments.
 
-{:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (type-arg-inference)"?>
-```dart
+```dart tag=passes-sa
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
 
@@ -412,9 +401,8 @@ specific type (`Cat`) with something that consumes anything (`Animal`),
 so replacing `Cat c` with `Animal c` is allowed, because `Animal` is
 a supertype of `Cat`.
 
-{:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (Animal-Cat-ok)"?>
-```dart
+```dart tag=passes-sa
 Animal c = Cat();
 ```
 
@@ -422,9 +410,8 @@ But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
 superclass may provide a type of Cat with different behaviors, such
 as `Lion`:
 
-{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
-```dart
+```dart tag=fails-sa
 MaineCoon c = Cat();
 ```
 
@@ -432,9 +419,8 @@ In a producing position, it's safe to replace something that produces a
 type (`Cat`) with a more specific type (`MaineCoon`). So, the following
 is allowed:
 
-{:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
-```dart
+```dart tag=passes-sa
 Cat c = MaineCoon();
 ```
 
@@ -450,9 +436,8 @@ In the following example,
 you can assign a `MaineCoon` list to `myCats`
 because `List<MaineCoon>` is a subtype of `List<Cat>`:
 
-{:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/<MaineCoon/<[!MaineCoon!]/g"?>
-```dart
+```dart tag=passes-sa
 List<[!MaineCoon!]> myMaineCoons = ...
 List<Cat> myCats = myMaineCoons;
 ```
@@ -460,9 +445,8 @@ List<Cat> myCats = myMaineCoons;
 What about going in the other direction? 
 Can you assign an `Animal` list to a `List<Cat>`?
 
-{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/<Animal/<[!Animal!]/g"?>
-```dart
+```dart tag=fails-sa
 List<[!Animal!]> myAnimals = ...
 List<Cat> myCats = myAnimals;
 ```

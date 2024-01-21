@@ -59,6 +59,7 @@ pre {
 }
 
 .code-block-language {
+  font-family: $font-family-monospace;
   user-select: none;
   font-size: 0.8125rem;
   color: #6E6E70;
@@ -66,8 +67,8 @@ pre {
   transition: opacity 0.3s;
 
   position: absolute;
-  top: 5px;
-  right: 8px;
+  top: 3px;
+  right: 6px;
   z-index: 5;
 
   .highlight-languages .language-dart & {
@@ -82,11 +83,27 @@ pre {
     color: #f05137;
   }
 
-  .highlight-languages & {
+  .highlight-languages :not(.has-tag) & {
     font-size: 0.875rem;
-    top: 3px;
     left: 6px;
     right: unset;
+  }
+}
+
+.code-block-tag {
+  font-family: $font-family-monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  position: absolute;
+  top: 3px;
+  left: 6px;
+
+  .tag-good &, .tag-passes-sa &, .tag-runtime-success & {
+    color: $alert-success-fg;
+  }
+
+  .tag-bad &, .tag-fails-sa &, .tag-runtime-fail & {
+    color: $alert-danger-fg;
   }
 }
 
@@ -105,20 +122,19 @@ pre {
   .code-block-body {
     position: relative;
     background-color: $site-color-codeblock-bg;
-    
-    .code-block-tag {
-      font-family: $font-family-monospace;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      position: absolute;
-      top: 6px;
-      left: 8px;
-    }
 
     &:hover {
       .code-block-language {
         opacity: 0;
       }
+    }
+
+    &.tag-good, &.tag-passes-sa, &.tag-runtime-success {
+      background-color: $alert-success-bg;
+    }
+
+    &.tag-bad, &.tag-fails-sa, &.tag-runtime-fail {
+      background-color: $alert-danger-bg;
     }
   }
   

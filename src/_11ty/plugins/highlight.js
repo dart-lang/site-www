@@ -148,9 +148,19 @@ ${markdown.utils.escapeHtml(content)}
             bodyChildren.unshift(languageText);
           }
 
+          // Create a div container to wrap the pre element.
+          const blockBody = {
+            type: 'element',
+            tagName: 'div',
+            children: bodyChildren,
+            properties: {
+              class: 'code-block-body',
+            },
+          };
+
           const extraTag = attributes['tag'];
           if (extraTag) {
-            blockBody.properties['class'] += `has-tag tag-${extraTag}`;
+            blockBody.properties['class'] += ` has-tag tag-${extraTag}`;
 
             const tagText = {
               'good': 'good',
@@ -170,16 +180,6 @@ ${markdown.utils.escapeHtml(content)}
 
             bodyChildren.unshift(extraTagContent);
           }
-
-          // Create a div container to wrap the pre element.
-          const blockBody = {
-            type: 'element',
-            tagName: 'div',
-            children: bodyChildren,
-            properties: {
-              class: 'code-block-body',
-            },
-          };
 
           const wrapperChildren = [];
 

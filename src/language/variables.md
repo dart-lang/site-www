@@ -220,9 +220,8 @@ final String nickname = 'Bobby';
 
 You can't change the value of a `final` variable:
 
-{:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
-```dart
+```dart tag=fails-sa
 name = 'Alice'; // Error: a final variable can only be set once.
 ```
 
@@ -263,9 +262,8 @@ foo = [1, 2, 3]; // Was const []
 
 You can't change the value of a `const` variable:
 
-{:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
-```dart
+```dart tag=fails-sa
 baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
 

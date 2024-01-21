@@ -234,9 +234,8 @@ which are neither futures nor stream events.
 
 [stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
-{:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
-```dart
+```dart tag=bad
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int? maxCount]) {

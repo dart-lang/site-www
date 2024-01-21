@@ -167,9 +167,8 @@ You can use the modes together or separately; all default to `false`.
   This mode reports the potential error, 
   requiring you to add an explicit cast or otherwise adjust your code.
 
-{:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 void foo(List<String> lines) {
   ...
 }
@@ -203,9 +202,8 @@ analyzer:
   whose type argument cannot be inferred, 
   resulting in an inference failure hint by this mode:
 
-{:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
-```dart
+```dart tag=fails-sa
 final lines = [!{}!]; // Inference failure
 lines['Dart'] = 10000;
 lines['C++'] = 'one thousand';
@@ -236,9 +234,8 @@ for an exhaustive list of inference failure conditions.
   The following valid Dart code has a `List` variable with a raw type,
   resulting in a raw type hint by this mode:
 
-{:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
-```dart
+```dart tag=fails-sa
 [!List!] numbers = [1, 2, 3]; // List with raw type
 for (final n in numbers) {
   print(n.length); // Runtime error

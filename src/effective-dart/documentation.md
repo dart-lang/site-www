@@ -29,9 +29,8 @@ generated documentation.
 
 ### DO format comments like sentences
 
-{:.good}
 <?code-excerpt "docs_good.dart (comments-like-sentences)"?>
-```dart
+```dart tag=good
 // Not if anything comes before it.
 if (_chunks.isNotEmpty) return false;
 ```
@@ -42,18 +41,16 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 
 ### DON'T use block comments for documentation
 
-{:.good}
 <?code-excerpt "docs_good.dart (block-comments)"?>
-```dart
+```dart tag=good
 void greet(String name) {
   // Assume we have a valid name.
   print('Hi, $name!');
 }
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (block-comments)"?>
-```dart
+```dart tag=bad
 void greet(String name) {
   /* Assume we have a valid name. */
   print('Hi, $name!');
@@ -81,16 +78,14 @@ Using a doc comment instead of a regular comment enables
 [`dart doc`][] to find it
 and generate documentation for it.
 
-{:.good}
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
-```dart
+```dart tag=good
 /// The number of characters in this chunk when unsplit.
 int get length => ...
 ```
 
-{:.bad}
 <?code-excerpt "docs_good.dart (use-doc-comments)" replace="/^\///g"?>
-```dart
+```dart tag=bad
 // The number of characters in this chunk when unsplit.
 int get length => ...
 ```
@@ -129,9 +124,8 @@ To document a library, place a doc comment before
 the `library` directive and any annotations that might be attached
 at the start of the file.
 
-{:.good}
 <?code-excerpt "docs_good.dart (library-doc)"?>
-```dart
+```dart tag=good
 /// A really great test library.
 @TestOn('browser')
 library;
@@ -150,18 +144,16 @@ period. A sentence fragment is often sufficient. Provide just enough context for
 the reader to orient themselves and decide if they should keep reading or look
 elsewhere for the solution to their problem.
 
-{:.good}
 <?code-excerpt "docs_good.dart (first-sentence)"?>
-```dart
+```dart tag=good
 /// Deletes the file at [path] from the file system.
 void delete(String path) {
   ...
 }
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (first-sentence)"?>
-```dart
+```dart tag=bad
 /// Depending on the state of the file system and the user's permissions,
 /// certain operations may or may not be possible. If there is no file at
 /// [path] or it can't be accessed, this function throws either [IOError]
@@ -181,9 +173,8 @@ This helps you write a tight first sentence that summarizes the documentation.
 Also, tools like `dart doc` use the first paragraph as a short summary in places
 like lists of classes and members.
 
-{:.good}
 <?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
-```dart
+```dart tag=good
 /// Deletes the file at [path].
 ///
 /// Throws an [IOError] if the file could not be found. Throws a
@@ -193,9 +184,8 @@ void delete(String path) {
 }
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (first-sentence-a-paragraph)"?>
-```dart
+```dart tag=bad
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
 /// be found. Throws a [PermissionError] if the file is present but could
 /// not be deleted.
@@ -212,9 +202,8 @@ right there, and the enclosing class is obvious. None of that needs to be
 spelled out in the doc comment. Instead, focus on explaining what the reader
 *doesn't* already know.
 
-{:.good}
 <?code-excerpt "docs_good.dart (redundant)"?>
-```dart
+```dart tag=good
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
@@ -224,9 +213,8 @@ class RadioButtonWidget extends Widget {
 }
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (redundant)"?>
-```dart
+```dart tag=bad
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
@@ -247,9 +235,8 @@ than waste a reader's time telling them something they already know.
 
 The doc comment should focus on what the code *does*.
 
-{:.good}
 <?code-excerpt "docs_good.dart (third-person)"?>
-```dart
+```dart tag=good
 /// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) => ...
 
@@ -265,9 +252,8 @@ The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
 the *result* of that work, not the work itself.
 
-{:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
-```dart
+```dart tag=good
 /// The current day of the week, where `0` is Sunday.
 int weekday;
 
@@ -281,9 +267,8 @@ The doc comment should clarify the states this variable represents.
 This is true even for getters which may do calculation or other work. 
 What the caller cares about is the *result* of that work, not the work itself.
 
-{:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
-```dart
+```dart tag=good
 /// Whether the modal is currently displayed to the user.
 bool isVisible;
 
@@ -307,9 +292,8 @@ only one of them. `dart doc` treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
 `dart doc` discards the setter's doc comment.
 
-{:.good}
 <?code-excerpt "docs_good.dart (getter-and-setter)"?>
-```dart
+```dart tag=good
 /// The pH level of the water in the pool.
 ///
 /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
@@ -317,9 +301,8 @@ int get phLevel => ...
 set phLevel(int level) => ...
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (getter-and-setter)"?>
-```dart
+```dart tag=bad
 /// The depth of the water in the pool, in meters.
 int get waterDepth => ...
 
@@ -334,9 +317,8 @@ program. They describe the type's invariants, establish the terminology it uses,
 and provide context to the other doc comments for the class's members. A little
 extra effort here can make all of the other members simpler to document.
 
-{:.good}
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
-```dart
+```dart tag=good
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
@@ -345,9 +327,8 @@ class Chunk { ... }
 
 ### CONSIDER including code samples in doc comments
 
-{:.good}
 <?code-excerpt "docs_good.dart (code-sample)"?>
-````dart
+````dart tag=good
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
@@ -368,9 +349,8 @@ then `dart doc` looks up the name and links to the relevant API docs.
 Parentheses are optional, 
 but can make it clearer when you're referring to a method or constructor.
 
-{:.good}
 <?code-excerpt "docs_good.dart (identifiers)"?>
-```dart
+```dart tag=good
 /// Throws a [StateError] if ...
 /// similar to [anotherMethod()], but ...
 ```
@@ -378,18 +358,16 @@ but can make it clearer when you're referring to a method or constructor.
 To link to a member of a specific class, use the class name and member name,
 separated by a dot:
 
-{:.good}
 <?code-excerpt "docs_good.dart (member)"?>
-```dart
+```dart tag=good
 /// Similar to [Duration.inDays], but handles fractional days.
 ```
 
 The dot syntax can also be used to refer to named constructors. For the unnamed
 constructor, use `.new` after the class name:
 
-{:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>
-```dart
+```dart tag=good
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
@@ -398,9 +376,8 @@ constructor, use `.new` after the class name:
 Other languages use verbose tags and sections to describe what the parameters
 and returns of a method are.
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (no-annotations)"?>
-```dart
+```dart tag=bad
 /// Defines a flag with the given name and abbreviation.
 ///
 /// @param name The name of the flag.
@@ -414,9 +391,8 @@ Flag addFlag(String name, String abbr) => ...
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
-{:.good}
 <?code-excerpt "docs_good.dart (no-annotations)"?>
-```dart
+```dart tag=good
 /// Defines a flag.
 ///
 /// Throws an [ArgumentError] if there is already an option named [name] or
@@ -426,18 +402,15 @@ Flag addFlag(String name, String abbr) => ...
 
 ### DO put doc comments before metadata annotations
 
-
-{:.good}
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
-```dart
+```dart tag=good
 /// A button that can be flipped on and off.
 @Component(selector: 'toggle')
 class ToggleComponent {}
 ```
 
-{:.bad}
 <?code-excerpt "docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
-```dart
+```dart tag=bad
 @Component(selector: 'toggle')
 /// A button that can be flipped on and off.
 class ToggleComponent {}
@@ -532,8 +505,7 @@ indented code.
 The backtick syntax avoids those indentation woes, lets you indicate the code's
 language, and is consistent with using backticks for inline code.
 
-{:.good}
-```dart
+```dart tag=good
 /// You can use [CodeBlockExample] like this:
 ///
 /// ```dart
@@ -542,8 +514,7 @@ language, and is consistent with using backticks for inline code.
 /// ```
 ```
 
-{:.bad}
-```dart
+```dart tag=bad
 /// You can use [CodeBlockExample] like this:
 ///
 ///     var example = CodeBlockExample();
