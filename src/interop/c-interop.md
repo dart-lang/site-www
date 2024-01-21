@@ -102,62 +102,70 @@ illustrates the steps for using `dart:ffi` to call a C function:
 
 Here's the code for each step.
 
-1. Import `dart:ffi`.
-```dart
-import 'dart:ffi' as ffi;
-```
-
-2. Import the path library that you'll use to store the path of dynamic library.
-```dart
-import 'dart:io' show Platform, Directory;
-import 'package:path/path.dart' as path;
-```
-
-3. Create a typedef with the FFI type signature of the C function. <br>
-   See [Interfacing with native types](#interfacing-with-native-types)
-   for commonly used types defined by `dart:ffi` library.
-```dart
-typedef hello_world_func = ffi.Void Function();
-```
-
-4. Create a typedef for the variable that you'll use
-   when calling the C function.
-```dart
-typedef HelloWorld = void Function();
-```
-
-5. Create a variable to store the path of the dynamic library.
-```dart
-var libraryPath = path.join(Directory.current.path, 'hello_library',
-    'libhello.so');
-if (Platform.isMacOS) { 
-  libraryPath = path.join(Directory.current.path, 'hello_library', 
-      'libhello.dylib');
-} else if (Platform.isWindows) { 
-  libraryPath = path.join(Directory.current.path, 'hello_library', 
-      'Debug', 'hello.dll');
-} 
-```
-
-6. Open the dynamic library that contains the C function.
-```dart
-  final dylib = ffi.DynamicLibrary.open(libraryPath);
-```
-
-7. Get a reference to the C function, 
-   and put it into a variable.
-   This code uses the typedefs defined in steps 2 and 3, 
-   along with the dynamic library variable from step 4.
-```dart
-  final HelloWorld hello = dylib
-      .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
-      .asFunction();
-```
-
-8. Call the C function.
-```dart
-  hello();
-```
+ 1. Import `dart:ffi`.
+ 
+    ```dart
+    import 'dart:ffi' as ffi;
+    ```
+ 
+ 2. Import the path library that you'll use to store the path of dynamic library.
+ 
+    ```dart
+    import 'dart:io' show Platform, Directory;
+    import 'package:path/path.dart' as path;
+    ```
+ 
+ 3. Create a typedef with the FFI type signature of the C function. <br>
+    See [Interfacing with native types](#interfacing-with-native-types)
+    for commonly used types defined by `dart:ffi` library.
+ 
+    ```dart
+    typedef hello_world_func = ffi.Void Function();
+    ```
+ 
+ 4. Create a typedef for the variable that you'll use
+    when calling the C function.
+ 
+    ```dart
+    typedef HelloWorld = void Function();
+    ```
+ 
+ 5. Create a variable to store the path of the dynamic library.
+ 
+    ```dart
+    var libraryPath = path.join(Directory.current.path, 'hello_library',
+        'libhello.so');
+    if (Platform.isMacOS) { 
+      libraryPath = path.join(Directory.current.path, 'hello_library', 
+          'libhello.dylib');
+    } else if (Platform.isWindows) { 
+      libraryPath = path.join(Directory.current.path, 'hello_library', 
+          'Debug', 'hello.dll');
+    } 
+    ```
+ 
+ 6. Open the dynamic library that contains the C function.
+ 
+    ```dart
+    final dylib = ffi.DynamicLibrary.open(libraryPath);
+    ```
+ 
+ 7. Get a reference to the C function, 
+    and put it into a variable.
+    This code uses the typedefs defined in steps 2 and 3, 
+    along with the dynamic library variable from step 4.
+    
+    ```dart
+    final HelloWorld hello = dylib
+        .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
+        .asFunction();
+    ```
+ 
+ 8. Call the C function.
+ 
+    ```dart
+    hello();
+    ```
 
 Once you understand the hello_world example, 
 you should be ready to look at the

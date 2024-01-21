@@ -21,11 +21,13 @@ import * as sass from 'sass';
  * @param {EleventyConfig} eleventyConfig
  */
 export default function (eleventyConfig) {
+  const isProduction = process.env.PRODUCTION === 'true';
+
   eleventyConfig.on('eleventy.before', async () => {
     await configureHighlighting(markdown);
   });
   
-  eleventyConfig.addGlobalData('isProduction', _isProduction());
+  eleventyConfig.addGlobalData('isProduction', isProduction);
 
   eleventyConfig.setLibrary('md', markdown);
 
@@ -39,8 +41,6 @@ export default function (eleventyConfig) {
     lenientIf: true
   });
 
-  eleventyConfig.addTemplateFormats('scss');
-
   eleventyConfig.addFilter('regex_replace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('active_nav_entry_index_array', activeNavEntryIndexArray);
@@ -50,35 +50,29 @@ export default function (eleventyConfig) {
   eleventyConfig.addAsyncFilter('generate_toc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
+  eleventyConfig.addTemplateFormats('scss');
   eleventyConfig.addExtension('scss', {
-    read: false,
-    getData: async function (inputPath) {
-      const data = {
-        eleventyExcludeFromCollections: true
-      };
-
-      if (path.basename(inputPath).startsWith('_')) {
-        return data;
+    outputFileExtension: 'css',
+    compile: function (inputContent, inputPath) {
+      const parsedPath = path.parse(inputPath);
+      if (parsedPath.name.startsWith('_')) {
+        return;
       }
-      const { css } = sass.compile(inputPath, {
-        style: _isProduction() ? 'compressed' : 'expanded',
-        sourceMap: !_isProduction(),
+
+      const result = sass.compileString(inputContent, {
+        style: isProduction ? 'compressed' : 'expanded',
         quietDeps: true,
+        loadPaths: [parsedPath.dir, '_sass'],
       });
-      data._content = css;
-      return data;
-    },
-    compileOptions: {
-      cache: !_isProduction(),
-      permalink: function (permalink, inputPath) {
-        if (path.basename(inputPath).startsWith('_')) {
-          return false;
-        }
 
-        return data => `${data.page.filePathStem}.css`;
-      }
+      const dependencies = result.loadedUrls
+          .filter(loadedUrl => loadedUrl.protocol === 'file:' && loadedUrl.pathname !== '')
+          .map(url => path.relative('.', url.pathname));
+
+      this.addDependencies(inputPath, dependencies);
+
+      return () => result.css;
     },
-    compile: () => data => data._content
   });
 
   eleventyConfig.addPassthroughCopy('src/assets/dash');
@@ -88,7 +82,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/f', {expand: true, filter: /^(?!_).+/});
   eleventyConfig.addPassthroughCopy('src/guides/language/specifications');
 
-  if (_isProduction()) {
+  if (isProduction) {
     // If building for production, minify/optimize the HTML output.
     // Doing so during serving isn't worth the extra build time.
     eleventyConfig.addTransform('minify-html', async function (content) {
@@ -108,7 +102,7 @@ export default function (eleventyConfig) {
   }
   
   eleventyConfig.setQuietMode(true);
-  
+
   eleventyConfig.setServerOptions({
     port: 4000,
   });
@@ -122,7 +116,3 @@ export default function (eleventyConfig) {
     }
   }
 };
-
-function _isProduction() {
-  return process.env.PRODUCTION === 'true'
-}

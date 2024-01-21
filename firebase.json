@@ -199,6 +199,7 @@
       { "source": "/guides/language/library-tour", "destination": "/libraries", "type": 301 },
       { "source": "/guides/language/sound-dart", "destination": "/language/type-system", "type": 301 },
       { "source": "/guides/language/sound-faq", "destination": "/language/type-system", "type": 301 },
+      { "source": "/guides/language/specifications/DartLangSpec-v2.2.pdf", "destination": "https://github.com/dart-lang/site-www/blob/a7f170389e210adc2aef810cc9a6fdbfa78059a5/src/guides/language/specifications/DartLangSpec-v2.2.pdf", "type": 301 },
       { "source": "/guides/language/type-system", "destination": "/language/type-system", "type": 301 },
       { "source": "/guides/libraries", "destination": "/libraries", "type": 301 },
       { "source": "/guides/libraries/create-library-packages", "destination": "/guides/libraries/create-packages", "type": 301 },
