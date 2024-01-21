@@ -10,7 +10,8 @@
   },
   "scripts": {
     "serve": "PRODUCTION=false eleventy --serve --incremental",
-    "build": "PRODUCTION=true eleventy"
+    "build": "PRODUCTION=false eleventy",
+    "prod": "PRODUCTION=true eleventy"
   },
   "engines": {
     "node": ">=20.10.0",
