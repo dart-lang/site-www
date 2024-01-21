@@ -78,7 +78,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
   eleventyConfig.addPassthroughCopy('src/content/assets/img', {expand: true});
-  eleventyConfig.addPassthroughCopy('src/content/assets/shared', {expand: true, filter: /^(?!_).+/});
   eleventyConfig.addPassthroughCopy('src/content/f', {expand: true, filter: /^(?!_).+/});
   eleventyConfig.addPassthroughCopy('src/content/guides/language/specifications');
 

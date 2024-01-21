@@ -27,7 +27,7 @@ fast production code for any platform.
 
 <p class="text-center"> 
   <a href="{{site.flutter-docs}}/get-started" class="btn btn-primary btn-lg">
-    <img src="/assets/img/shared/flutter/icon/64.png" width="32px" alt="Flutter">
+    <img src="/assets/img/logo/flutter-64.png" width="32px" alt="Flutter">
     Get started
   </a>
 </p>

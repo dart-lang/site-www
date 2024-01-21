@@ -118,7 +118,7 @@ but you'll need to adjust the instructions to match your app.
    * If Dart Debug Extension is installed and
      you used the `--debug-extension` flag to `webdev`,
      click the Dart logo
-     <img src="/assets/shared/dart/icon/64.png" width="16" alt="Dart logo" class="align-baseline">
+     <img src="/assets/img/logo/dart-64.png" width="16" alt="Dart logo" class="align-baseline">
      at the top right of the browser window.
      
    * If you used the `--debug` flag to `webdev`,
