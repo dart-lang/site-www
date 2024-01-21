@@ -97,7 +97,7 @@ Doing either leads to confusing errors and broken programs.
 
 For example, say your directory structure looks like this:
 
-```text
+```plaintext
 my_package
 └─ lib
    └─ api.dart
@@ -142,7 +142,7 @@ When an import does *not* reach across `lib`, prefer using relative imports.
 They're shorter.
 For example, say your directory structure looks like this:
 
-```text
+```plaintext
 my_package
 └─ lib
    ├─ src

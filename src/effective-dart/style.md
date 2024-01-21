@@ -108,7 +108,7 @@ a valid Dart identifier, which may be helpful if the language later supports
 symbolic imports.
 
 {:.good}
-```text
+```plaintext
 my_package
 └─ lib
    └─ file_system.dart
@@ -116,7 +116,7 @@ my_package
 ```
 
 {:.bad}
-```text
+```plaintext
 mypackage
 └─ lib
    └─ file-system.dart

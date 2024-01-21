@@ -22,7 +22,7 @@ and new developer tools.
 {% for book in books-dart %}
 
 <div class="book-img-with-details row">
-<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3">
   <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
 </a>
 <div class="details col-sm-9">

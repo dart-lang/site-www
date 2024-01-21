@@ -4,12 +4,9 @@
 @use '../core/variables' as *;
 @use '../core/bootstrap';
 
-//
-// Code-prettyprint overrides
-//
 pre {
   margin-bottom: 1rem;
-  font-size: 0.9375rem; // 15px
+  font-size: 0.9375rem;
   font-weight: bootstrap.$font-weight-normal;
   padding: 1.25rem;
 
@@ -73,15 +70,15 @@ pre {
   right: 8px;
   z-index: 5;
 
-  .language-dart & {
+  .highlight-languages .language-dart & {
     color: $brand-primary;
   }
 
-  .language-js & {
+  .highlight-languages .language-js & {
     color: #f1a85a;
   }
 
-  .language-swift & {
+  .highlight-languages .language-swift & {
     color: #f05137;
   }
 
@@ -139,25 +136,6 @@ pre {
     }
   }
 }
-
-$generic-output-color: white;
-
-@mixin console-base($color: $light-green-A700) {
-  background: $grey-900;
-  color: $color;
-}
-
-.language-console .highlight {
-  @include console-base;
-  .go { color: $generic-output-color; } /* Generic.Output */
-}
-
-pre.console-output {
-  @include console-base($generic-output-color)
-}
-
-// Dart-site specific style overrides
-.highlight .gp { user-select: none; }
 
 // Border and resizability for dartpad
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {

@@ -14,7 +14,7 @@ the [Dart tools](/tools) page.
 :::version-note
 This site's documentation and examples use
 {% if site.sdkInfo.channel == 'dev' %} the **dev channel** {% endif -%}
-version [{{site.sdkInfo.version}}][site SDK version]{:.no-automatic-external}
+version [{{site.sdkInfo.version}}][site SDK version]
 of the **Dart SDK**.
 :::
 

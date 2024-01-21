@@ -70,15 +70,15 @@ thanks to the Dart community.
 <ul class="col2">
 <li>
 <img src="/assets/img/tools/emacs.png" alt="Emacs logo">
-<a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
+<a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
 <img src="/assets/img/tools/vim.png" alt="Vim logo">
-<a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+<a href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
 <img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
-<a class="no-automatic-external" href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
+<a href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
 </li>
 </ul>
 

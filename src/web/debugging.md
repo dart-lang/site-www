@@ -111,7 +111,7 @@ but you'll need to adjust the instructions to match your app.
 1. If your app isn't already running, open it in a Chrome browser window.
    <br>
    For example, if you use `webdev serve --debug-extension` with no arguments,
-   open [http://127.0.0.1:8080](http://http://127.0.0.1:8080){: .no-automatic-external}.
+   open [http://127.0.0.1:8080](http://http://127.0.0.1:8080).
 
 1. Open Dart DevTools to debug the app that's running in the current window.
 

@@ -367,26 +367,6 @@ main .content {
   }
 }
 
-.break-50 {
-  width: 50% !important;
-}
-
-.break-60 {
-  width: 60% !important;
-}
-
-.break-70 {
-  width: 70% !important;
-}
-
-.break-80 {
-  width: 80% !important;
-}
-
-.break-90 {
-  width: 90% !important;
-}
-
 .card-grid {
   display: flex;
   flex-direction: row;
@@ -456,13 +436,6 @@ li.card {
     }
   }
 }
-
-@include dart-style-for(good, $alert-success-bg, $alert-success-fg, 'good');
-@include dart-style-for(bad, $alert-danger-bg, $alert-danger-fg, 'bad');
-@include dart-style-for(passes-sa, $alert-success-bg, $alert-success-fg, '\2714  static analysis: success');
-@include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
-@include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
-@include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
 
 .muted {
   color: $gray;
@@ -686,12 +659,6 @@ body.homepage {
     padding: 0;
   }
 
-  pre.prettyprint {
-    margin-top: 0;
-    height: 200px;
-    overflow: auto;
-  }
-
   .card-grid {
     justify-content: center;
     margin-top: 30px;
@@ -855,13 +822,6 @@ body.obsolete {
 @media(max-width: 600px) {
   .card {
     width: 100%;
-  }
-  .break-50,
-  .break-60,
-  .break-70,
-  .break-80,
-  .break-90 {
-    width: 100% !important;
   }
 }
 

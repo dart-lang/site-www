@@ -67,7 +67,6 @@ bool b = [0][0];
 
 If properly configured, the analyzer produces the following error:
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
@@ -107,7 +106,6 @@ var canvas = querySelector('canvas')!;
 canvas.[!context2D!].lineTo(x, y);
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - The getter 'context2D' isn't defined for the type 'Element'. Try importing the library that defines 'context2D', correcting the name to the name of an existing getter, or defining a getter or field named 'context2D'. - undefined_getter
@@ -163,7 +161,6 @@ var c = C(Iterable.empty()).collection;
 [!c.add(2)!];
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/add.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
@@ -228,7 +225,6 @@ class MyAdder extends NumberAdder {
 }
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
@@ -302,7 +298,6 @@ class Subclass extends Superclass {
 }
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
@@ -372,7 +367,6 @@ var map = {'a': 1, 'b': 2, 'c': 3};
 map['d'] = [!1.5!];
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
@@ -416,7 +410,6 @@ HoneyBadger(Eats food, String name)
       _name = name { ... }
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```plaintext
 error - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
@@ -465,7 +458,6 @@ void filterValues(bool Function(dynamic) filter) {}
 filterValues(([!String!] x) => x.contains('Hello'));
 ```
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/-(.*?)-/-/g"?>
 ```plaintext
 error - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
@@ -556,7 +548,6 @@ Otherwise, the cast will fail at runtime:
 assumeStrings(<int>[![1, 2, 3]!]);
 ```
 
-{:.console-output}
 <?code-excerpt "test/strong_test.dart (downcast-check-msg)" replace="/const msg = ./Exception: /g; /.;//g"?>
 ```plaintext
 Exception: type 'List<int>' is not a subtype of type 'List<String>'

@@ -7,7 +7,6 @@ description: Common gotchas you might run into when using pub.
 
 You receive the following error when running `pub publish`:
 
-{:.console-output}
 ```plaintext
 HTTP error 403: Forbidden
 ...
@@ -66,7 +65,6 @@ found in the [`PUB_CACHE`][] folder.
 
 You receive the following error when running `pub publish`:
 
-{:.console-output}
 ```plaintext
 UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'.
 ```
@@ -80,7 +78,6 @@ See [Uploaders](/tools/pub/publishing#uploaders).
 You receive an HttpException error similar to the following when
 running `pub build`:
 
-{:.console-output}
 ```plaintext
 Pub build failed, [1] IsolateSpawnException: 'HttpException: Connection closed while receiving data,
 ...
@@ -169,7 +166,6 @@ The following error might occur if
 you have no internet access, your ISP is blocking `pub.dev`,
 or security software is blocking internet access from `dart`.
 
-{:.console-output}
 ```plaintext
 Got socket error trying to find package ... at https://pub.dev.
 pub get failed (server unavailable) -- attempting retry 1 in 1 second...

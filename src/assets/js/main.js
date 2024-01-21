@@ -203,12 +203,6 @@ $(function() {
   $(window).smartresize(fixNav);
   scrollSidebarIntoView();
 
-  // Add external link indicators
-  $('a[href^="http"], a[target="_blank"]')
-      .not('.no-automatic-external')
-      .not('a[href^="https://dart.dev"]')
-      .addClass('external');
-
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {
     var root = $("#site-toc--inline");

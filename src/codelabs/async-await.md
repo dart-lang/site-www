@@ -294,11 +294,11 @@ void main() {
 }
 ```
 
-{:.console-output}
 ```plaintext
 Fetching user order...
 Your order is: Instance of '_Future<String>'
 ```
+
 </div>
 <div class="col-sm">
 
@@ -325,11 +325,11 @@ Future<String> fetchUserOrder() =>
 }
 ```
 
-{:.console-output}
 ```plaintext
 Fetching user order...
 Your order is: Large Latte
 ```
+
 </div>
 </div>
 </div>

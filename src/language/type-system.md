@@ -44,7 +44,6 @@ void main() {
 The preceding code results in a type error on `list` (highlighted
 above) at the call of `printInts(list)`:
 
-{:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/-(.*?):(.*?):(.*?)-/-/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```plaintext
 error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
