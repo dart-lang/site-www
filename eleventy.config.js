@@ -37,7 +37,6 @@ export default function (eleventyConfig) {
   eleventyConfig.setLiquidOptions({
     cache: true,
     strictFilters: true,
-    // strictVariables: true, TODO(parlough): Enable
     lenientIf: true
   });
 
@@ -51,6 +50,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
   eleventyConfig.addTemplateFormats('scss');
+  eleventyConfig.addWatchTarget('src/_sass');
   eleventyConfig.addExtension('scss', {
     outputFileExtension: 'css',
     compile: function (inputContent, inputPath) {
@@ -62,7 +62,7 @@ export default function (eleventyConfig) {
       const result = sass.compileString(inputContent, {
         style: isProduction ? 'compressed' : 'expanded',
         quietDeps: true,
-        loadPaths: [parsedPath.dir, '_sass'],
+        loadPaths: [parsedPath.dir, 'src/_sass'],
       });
 
       const dependencies = result.loadedUrls
@@ -75,12 +75,12 @@ export default function (eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPassthroughCopy('src/assets/dash');
-  eleventyConfig.addPassthroughCopy('src/assets/js');
-  eleventyConfig.addPassthroughCopy('src/assets/img', {expand: true});
-  eleventyConfig.addPassthroughCopy('src/assets/shared', {expand: true, filter: /^(?!_).+/});
-  eleventyConfig.addPassthroughCopy('src/f', {expand: true, filter: /^(?!_).+/});
-  eleventyConfig.addPassthroughCopy('src/guides/language/specifications');
+  eleventyConfig.addPassthroughCopy('src/content/assets/dash');
+  eleventyConfig.addPassthroughCopy('src/content/assets/js');
+  eleventyConfig.addPassthroughCopy('src/content/assets/img', {expand: true});
+  eleventyConfig.addPassthroughCopy('src/content/assets/shared', {expand: true, filter: /^(?!_).+/});
+  eleventyConfig.addPassthroughCopy('src/content/f', {expand: true, filter: /^(?!_).+/});
+  eleventyConfig.addPassthroughCopy('src/content/guides/language/specifications');
 
   if (isProduction) {
     // If building for production, minify/optimize the HTML output.
@@ -105,14 +105,17 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setServerOptions({
     port: 4000,
+    watch: ['src/_sass'],
   });
   
   return {
     htmlTemplateEngine: 'liquid',
     dir: {
-      input: 'src',
+      input: 'src/content',
       output: '_site',
-      layouts: '_layouts'
+      layouts: '../_layouts',
+      includes: '../_includes',
+      data: '../_data',
     }
   }
 };

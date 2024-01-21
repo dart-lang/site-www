@@ -89,7 +89,6 @@ function _registerAsides(markdown) {
  * @private
  */
 function _registerContainers(markdown) {
-  // TODO(parlough): Consider a function to make this easier.
   markdown.use(markdownItContainer, 'mini-toc', {
     render: function (tokens, index) {
       if (tokens[index].nesting === 1) {
