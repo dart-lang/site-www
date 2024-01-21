@@ -342,7 +342,7 @@ depends on a feature in Dart `3.0.0-417.1.beta`,
 where Dart SDK version `3.0.0` stable hasn't been released yet.
 The pubspec might look like this:
 
-```yaml
+```yaml title="pubspec.yaml"
 name: args
 version: 2.0.0
 

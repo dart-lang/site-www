@@ -2789,8 +2789,7 @@ library and gain access to possibly sensitive data.
 In other words,
 private objects aren't shared across libraries.
 
-**animal.dart**
-```dart
+```dart title="animal.dart"
 library animals;
 
 part 'parrot.dart';
@@ -2802,8 +2801,7 @@ class _Animal {
 }
 ```
 
-**parrot.dart**
-```dart
+```dart title="parrot.dart"
 part of animals;
 
 class Parrot extends _Animal {

@@ -2,8 +2,6 @@ import {getHighlighter} from 'shikiji';
 import {toHtml} from 'hast-util-to-html';
 import dashLightTheme from '../syntax/dash-light.js';
 
-const _highlightingTheme = 'dash-light';
-
 /**
  * Replaces the markdown-it code block renderer with our own that:
  *
@@ -95,11 +93,18 @@ ${markdown.utils.escapeHtml(content)}
 </code></pre>`;
   }
 
-  const attributes = attributeString === '' ? {} : {}; //TODO: JSON.parse(attributeString);
+  const attributes = _parseAttributes(attributeString);
 
-  const lineNumbers = attributes['showLineNumbers'];
-  if (lineNumbers && typeof lineNumbers !== 'number') {
-    throw new Error('showLineNumbers must be a number!');
+  const showLineNumbers = 'showLineNumbers' in attributes;
+  let startingLineNumber = 0;
+  if (showLineNumbers) {
+    const specifiedLineNumber = attributes['showLineNumbers'];
+    if (specifiedLineNumber != null) {
+      startingLineNumber = parseInt(specifiedLineNumber, 10);
+      if (isNaN(startingLineNumber)) {
+        throw new Error('showLineNumbers must equal a number!');
+      }
+    }
   }
 
   const highlightLines = attributes['highlightLines'];
@@ -117,14 +122,14 @@ ${markdown.utils.escapeHtml(content)}
 
   return highlighter.codeToHtml(content, {
     lang: language,
-    theme: _highlightingTheme,
+    theme: 'dash-light',
     transformers: [
       {
         pre(preElement) {
           // Remove hard coded background color and text color if present.
-          preElement.properties['style'] = '';
+          delete preElement.properties['style'];
 
-          if (lineNumbers) {
+          if (showLineNumbers) {
             preElement.properties['class'] += ' show-line-numbers';
           }
 
@@ -133,16 +138,37 @@ ${markdown.utils.escapeHtml(content)}
           if (language !== 'plaintext' &&
               language !== 'console' &&
               language !== 'ps') {
-            const languageText = {
-              type: 'element',
-              tagName:'span',
-              children: [{type: 'text', value: language}],
-              properties: {
-                class: 'code-block-language',
-                title: `Language ${language}`,
-              }
-            }
+            const languageText = _createSpanWithText(
+                language,
+                {
+                  class: 'code-block-language',
+                  title: `Language ${language}`,
+                },
+            );
             bodyChildren.unshift(languageText);
+          }
+
+          const extraTag = attributes['tag'];
+          if (extraTag) {
+            blockBody.properties['class'] += `has-tag tag-${extraTag}`;
+
+            const tagText = {
+              'good': 'good',
+              'bad': 'bad',
+              'passes-sa': '\u2714  static analysis: success',
+              'fails-sa': '\u2717  static analysis: failure',
+              'runtime-sa': '\u2714  runtime: success',
+              'runtime-fail': '\u2717  runtime: failure',
+            }[extraTag] ?? extraTag;
+
+            const extraTagContent = _createSpanWithText(
+                tagText,
+                {
+                  class: 'code-block-tag',
+                },
+            );
+
+            bodyChildren.unshift(extraTagContent);
           }
 
           // Create a div container to wrap the pre element.
@@ -154,26 +180,6 @@ ${markdown.utils.escapeHtml(content)}
               class: 'code-block-body',
             },
           };
-
-          // // TODO: Don't support arbitrary tag, require a list
-          // // Also support special "language" tag
-          // const extraTag = attributes['tag'];
-          // if (extraTag) {
-          //   blockBody.properties['class'] += ` ${extraTag.class}`;
-          //
-          //   if (extraTag.text) {
-          //     const extraTagContent = {
-          //       type: 'element',
-          //       tagName: 'span',
-          //       children: [{type: 'text', value: extraTag.text}],
-          //       properties: {
-          //         class: 'code-block-tag',
-          //       },
-          //     };
-          //
-          //     blockBody.children.unshift(extraTagContent);
-          //   }
-          // }
 
           const wrapperChildren = [];
 
@@ -207,8 +213,8 @@ ${markdown.utils.escapeHtml(content)}
           return wrapper;
         },
         line(lineElement, line) {
-          if (lineNumbers) {
-            lineElement.properties['data-line'] = lineNumbers + line - 1;
+          if (showLineNumbers) {
+            lineElement.properties['data-line'] = startingLineNumber + line - 1;
           }
 
           if (linesToHighlight?.has(line)) {
@@ -227,6 +233,29 @@ ${markdown.utils.escapeHtml(content)}
       },
     ],
   });
+}
+
+const _attributesPattern = /([^\s=]+)(?:="([^"]*)"|=(\S+))?/g;
+
+/**
+ * Parse a space-separated attribute string, where spaces in a string literal
+ * are ignored.
+ *
+ * @param {string} attributeString The string containing configuration.
+ * @return {Object.<string, ?string>} The parsed attributes.
+ * @private
+ */
+function _parseAttributes(attributeString) {
+  const attributes = {};
+  if (attributeString === '') return attributes;
+
+  let match;
+  while ((match = _attributesPattern.exec(attributeString))) {
+    const key = match[1];
+    attributes[key] = match[2] ?? match[3] ?? null;
+  }
+
+  return attributes;
 }
 
 /**

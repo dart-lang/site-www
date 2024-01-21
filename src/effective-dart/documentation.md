@@ -577,7 +577,7 @@ When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
 
 <?code-excerpt "docs_good.dart (this)"?>
-```dart {"tag":{"class":"good","text":"good"}}
+```dart
 class Box {
   /// The value this wraps.
   Object? _value;

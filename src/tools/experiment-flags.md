@@ -33,14 +33,14 @@ use the `enable-experiment` key in the [analysis options file][].
 Here's an example of enabling the experiments
 `super-mixins` and `no-slow-checks` in `analysis_options.yaml`:
 
-[analysis options file]: /tools/analysis#the-analysis-options-file
-
-```yaml
+```yaml title="analysis_options.yaml"
 analyzer:
   enable-experiment:
     - super-mixins
     - no-slow-checks
 ```
+
+[analysis options file]: /tools/analysis#the-analysis-options-file
 
 
 ## Using experiment flags with IDEs
@@ -54,7 +54,7 @@ In `launch.json` under `configurations`,
 add a new `toolArgs` key containing the desired flags.
 Example:
 
-```json
+```json title="launch.json"
  "configurations": [
         {
             "name": "Dart",

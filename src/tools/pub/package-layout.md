@@ -1,6 +1,8 @@
 ---
 title: Package layout conventions
-description: Learn more about the directory structure used by Dart's package management tool, pub.
+description: >-
+  Learn more about the directory structure used by
+  Dart's package management tool, pub.
 ---
 
 When you build a [pub package](/guides/packages),
@@ -180,7 +182,7 @@ Two directories in your package are public to other packages: `lib` and
 `bin`. You place [public libraries](#public-libraries) in `lib` and
 [public tools](#public-tools) in `bin`.
 
-### Public libraries {:#public-libraries}
+### Public libraries
 
 The following directory structure shows the `lib` portion of enchilada:
 
@@ -243,7 +245,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 For more information on packages, see
 [Creating packages](/guides/libraries/create-packages).
 
-### Public tools {:#public-tools}
+### Public tools
 
 Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use
@@ -316,11 +318,13 @@ depends on the locations of the libraries:
 
 For example:
 
-```dart
-// When importing from lib/beans.dart
+```dart title="lib/beans.dart"
+// When importing from within lib:
 import 'src/beans.dart';
+```
 
-// When importing from test/beans_test.dart
+```dart title="test/beans_test.dart"
+// When importing from outside lib:
 import 'package:enchilada/src/beans.dart';
 ```
 

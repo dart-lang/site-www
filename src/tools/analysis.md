@@ -20,7 +20,7 @@ made its way into an `if` statement:
 <blockquote class="ml-3">
 
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
-```dart {"showLineNumbers": 8}
+```dart showLineNumbers=8
 void increment() {
   if (count < 10) [!;!]
   count++;
@@ -90,7 +90,7 @@ at the root of the package, in the same directory as the pubspec file.
 Here's a sample analysis options file:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
-```yaml
+```yaml title="analysis_options.yaml"
 include: package:lints/recommended.yaml
 
 analyzer:
@@ -148,7 +148,7 @@ consider enabling the
 `strict-casts`, `strict-inference`, and `strict-raw-types` language modes:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="strict-raw-types" remove="exclude"?>
-```yaml
+```yaml title="analysis_options.yaml"
 analyzer:
   language:
     strict-casts: true
@@ -356,7 +356,7 @@ except `avoid_shadowing_type_parameters`.
 It also enables the lint `await_only_futures`:
 
 <?code-excerpt "analysis_alt/analysis_options_linter.yaml"?>
-```yaml
+```yaml title="analysis_options.yaml"
 include: package:lints/recommended.yaml
 
 linter:
@@ -569,7 +569,6 @@ analyzer:
 Use the following resources to learn more about static analysis in Dart:
 
 * [Dart's type system][type-system]
-* [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 

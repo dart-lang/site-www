@@ -160,8 +160,7 @@ This can help prevent runtime errors that might otherwise occur.
 
 Consider this library:
 
-```dart
-// a.dart
+```dart title="a.dart"
 class A {
   void _privateMethod() {
     print('I inherited from A');
@@ -176,8 +175,7 @@ void callPrivateMethod(A a) {
 This code seems fine on its own,
 but there's nothing preventing a user from creating another library like this:
 
-```dart
-// b.dart
+```dart title="b.dart"
 import 'a.dart';
 
 class B implements A {
@@ -243,8 +241,7 @@ then the compiler knows the switch is exhaustive.
 [exhaustiveness checking]: /language/branches#exhaustiveness-checking
 
 <?code-excerpt "language/lib/class_modifiers/sealed_exhaustiveness.dart"?>
-```dart
-// amigos.dart
+```dart title="amigos.dart"
 sealed class Amigo {}
 
 class Lucky extends Amigo {}
@@ -282,15 +279,14 @@ Like `final`, it means that a class marked `sealed` can't be directly
 extended, implemented, or mixed in outside of the library where it's declared.
 But, unlike `base` and `final`, there is no *transitive* restriction:
 
-```dart
-// amigo.dart
+```dart title="amigo.dart"
 sealed class Amigo {}
 class Lucky extends Amigo {}
 class Dusty extends Amigo {}
 class Ned extends Amigo {}
+```
 
-// other.dart
-
+```dart title="other.dart"
 // This is an error:
 class Bad extends Amigo {}
 

@@ -42,7 +42,7 @@ directly to the library file.
 If you have some library, `my_library.dart`, that contains:
 
 <?code-excerpt "my_library.dart"?>
-```dart
+```dart title="my_library.dart"
 library my_library;
 
 part 'some/other/file.dart';
@@ -108,7 +108,7 @@ my_package
 And say `api_test.dart` imports `api.dart` in two ways:
 
 {:.bad}
-```dart
+```dart title="api_test.dart"
 import 'package:my_package/api.dart';
 import '../lib/api.dart';
 ```
@@ -125,7 +125,7 @@ or any other top-level directory),
 use a `package:` import.
 
 {:.good}
-```dart
+```dart title="api_test.dart"
 import 'package:my_package/api.dart';
 ```
 
@@ -156,26 +156,20 @@ my_package
 
 Here is how the various libraries should import each other:
 
-**lib/api.dart:**
-
 {:.good}
-```dart
+```dart title="lib/api.dart"
 import 'src/stuff.dart';
 import 'src/utils.dart';
 ```
 
-**lib/src/utils.dart:**
-
 {:.good}
-```dart
+```dart title="lib/src/utils.dart"
 import '../api.dart';
 import 'stuff.dart';
 ```
 
-**test/api_test.dart:**
-
 {:.good}
-```dart
+```dart title="test/api_test.dart"
 import 'package:my_package/api.dart'; // Don't reach into 'lib'.
 
 import 'test_utils.dart'; // Relative within 'test' is fine.

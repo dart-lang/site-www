@@ -79,7 +79,7 @@ To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your
 [`analysis_options.yaml`](/tools/analysis) file:
 
-```yaml
+```yaml title="analysis_options.yaml"
 linter:
   rules:
     - {{lint.name}}

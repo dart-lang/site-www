@@ -92,7 +92,7 @@ to give developers an overview of the entire
 public API of the package—`shelf.dart` 
 uses `show` to specify exactly which symbols to export:
 
-```dart
+```dart title="lib/shelf.dart"
 export 'src/cascade.dart' show Cascade;
 export 'src/handler.dart' show Handler;
 export 'src/hijack_exception.dart' show HijackException;

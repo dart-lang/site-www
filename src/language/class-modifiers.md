@@ -63,16 +63,14 @@ Abstract classes cannot be constructed from any library, whether its own or
 an outside library. Abstract classes often have [abstract methods][].
 
 <?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
-```dart
-// Library a.dart
+```dart title="a.dart"
 abstract class Vehicle {
   void moveForward(int meters);
 }
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
-```dart
-// Library b.dart
+```dart title="b.dart"
 import 'a.dart';
 
 // Error: Cannot be constructed
@@ -114,8 +112,7 @@ You must mark any class which implements or extends a base class as
 breaking the base class guarantees.
 
 <?code-excerpt "language/lib/class_modifiers/ex2/a.dart"?>
-```dart
-// Library a.dart
+```dart title="a.dart"
 base class Vehicle {
   void moveForward(int meters) {
     // ...
@@ -124,8 +121,7 @@ base class Vehicle {
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex2/b.dart"?>
-```dart
-// Library b.dart
+```dart title="b.dart"
 import 'a.dart';
 
 // Can be constructed
@@ -159,8 +155,7 @@ class's own methods might later call in unexpected ways.
 This reduces the [fragile base class problem][].
 
 <?code-excerpt "language/lib/class_modifiers/ex3/a.dart"?>
-```dart
-// Library a.dart
+```dart title="a.dart"
 interface class Vehicle {
   void moveForward(int meters) {
     // ...
@@ -169,8 +164,7 @@ interface class Vehicle {
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex3/b.dart"?>
-```dart
-// Library b.dart
+```dart title="b.dart"
 import 'a.dart';
 
 // Can be constructed
@@ -217,8 +211,7 @@ same library. The `final` modifier encompasses the effects of `base`, and
 therefore any subclasses must also be marked `base`, `final`, or `sealed`.
 
 <?code-excerpt "language/lib/class_modifiers/ex4/a.dart"?>
-```dart
-// Library a.dart
+```dart title="a.dart"
 final class Vehicle {
   void moveForward(int meters) {
     // ...
@@ -227,8 +220,7 @@ final class Vehicle {
 ```
 
 <?code-excerpt "language/lib/class_modifiers/ex4/b.dart"?>
-```dart
-// Library b.dart
+```dart title="b.dart"
 import 'a.dart';
 
 // Can be constructed
