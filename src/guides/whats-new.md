@@ -63,7 +63,7 @@ we made the following changes to this site:
 [Breaking changes]: /resources/breaking-changes
 [lints]: /tools/linter-rules
 [diagnostics]: /tools/diagnostic-messages
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade#--tighten
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade#tighten
 [Language overview]: /language
 [guard clauses and patterns]: /language/patterns#switch-statements-and-expressions
 [Constructors]: /language/constructors
@@ -382,7 +382,7 @@ we made the following changes to this site:
 [Debugging Dart web apps]: /web/debugging
 [Dart SDK archive]: /get-dart/archive
 [Library tour]: /libraries/dart-core#weak-references-and-finalizers
-[`dart fix`]: /tools/dart-fix#customizing-dart-fix
+[`dart fix`]: /tools/dart-fix#customize
 
 ## May 11, 2022: 2.17 release
 
@@ -881,7 +881,7 @@ we made the following changes to this site:
 [Understanding null safety]: /null-safety/understanding-null-safety
 [sound null safety]: /null-safety
 [diagnostics]: /tools/diagnostic-messages
-[changelog-docs]: /tools/pub/package-layout#changelogmd
+[changelog-docs]: /tools/pub/package-layout#changelog
 [spec]: /guides/language/spec
 
 ### Articles added to the Dart blog {:.no_toc}

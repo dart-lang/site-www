@@ -725,7 +725,7 @@ class Worker {
 
 Next, add the code to `_startRemoteIsolate` that is responsible for initializing
 the ports on the worker
-isolate. [Recall](#step-3-spawn-a-worker-isolate-with-isolatespawn) that this
+isolate. [Recall](#step-3-spawn-a-worker-isolate-with-isolate-spawn) that this
 method was passed to `Isolate.spawn` in the `Worker.spawn` method, and it will
 be passed the main isolate’s `SendPort` as an argument.
 

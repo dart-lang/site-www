@@ -142,7 +142,7 @@ You can also use null-aware operators to handle nullable values.
 Sometimes the flow of the program tells you that the value of an
 expression cannot be `null`.
 To force Dart to treat that expression as non-nullable,
-add the [non-null assertion operator](#the-non-null-assertion-operator-) (`!`).
+add the [non-null assertion operator](#the-non-null-assertion-operator) (`!`).
 If the value does equal `null`, using this operator throws an exception.
 
 To handle potential `null` values, use the conditional property access

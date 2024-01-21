@@ -152,7 +152,7 @@ Check out these resources:
 * Tools and libraries
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
-  * [IDEs](/tools#ides-and-editors)
+  * [IDEs](/tools#editors)
 * Other examples of natively compiled apps
   * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
 
@@ -162,5 +162,5 @@ If you get stuck, find help at [Community and support.](/community)
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /language
 [Dart core library documentation]: /libraries
-[ide]: /tools#ides-and-editors
+[ide]: /tools#editors
 

@@ -1,7 +1,6 @@
 ---
 title: dart fix
 description: Command-line tool for applying analysis fixes and migrating API usages.
-toc: false
 ---
 
 The `dart fix` command
@@ -28,7 +27,8 @@ check out this [deep dive][] on **Decoding Flutter**:
 
 [deep dive]: {{yt.watch}}/OBIuSrg_Quo
 
-## Usage
+<a id="usage"></a>
+## Apply fixes
 
 To preview proposed changes, use the `--dry-run` flag:
 
@@ -42,7 +42,8 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
-## Customization
+<a id="customization"></a>
+## Customize behavior {:#customize}
 
 The `dart fix` command only applies fixes
 when there is a "problem" identified by a diagnostic.
@@ -120,7 +121,7 @@ see [Customizing static analysis](/tools/analysis).
 [`dart analyze`]: /tools/dart-analyze
 [language version]: /guides/language/evolution#language-versioning
 
-## VS Code
+## VS Code support
 
 When you open a project in VS Code,
 the Dart plugin scans the project for issues that `dart fix` can repair.

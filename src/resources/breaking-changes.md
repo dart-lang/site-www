@@ -272,7 +272,7 @@ on all the changes in this section.
 [mixin class]: https://dart.dev/language/mixins#class-mixin-or-mixin-class
 [label]: https://dart.dev/language/branches#switch
 [50902]: https://github.com/dart-lang/sdk/issues/50902
-[collection]: /resources/dart-3-migration#dartcollection
+[collection]: /resources/dart-3-migration#dart-collection
 [49529]: https://github.com/dart-lang/sdk/issues/49529
 [`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
 [`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading

@@ -43,6 +43,7 @@ It supports Dart's core libraries,
 except for VM libraries such as `dart:io`.
 
 
+<a id="ides-and-editors"></a>
 ### IDEs and editors {:#editors}
 
 Dart plugins exist for these commonly used IDEs.

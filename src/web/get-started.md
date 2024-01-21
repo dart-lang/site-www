@@ -29,7 +29,7 @@ Although using an IDE is optional, we highly recommend using one.
 For a list of available IDEs, see the
 [overview of editors & debuggers][].
 
-[overview of editors & debuggers]: /tools#ides-and-editors
+[overview of editors & debuggers]: /tools#editors
 
 ## 3. Create a web app {:#create}
 
