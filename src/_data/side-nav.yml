@@ -336,8 +336,6 @@
 - title: Resources
   expanded: false
   children:
-    - title: FAQ
-      permalink: /resources/faq
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
