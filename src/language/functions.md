@@ -520,8 +520,6 @@ and to make them usable in Dart. Implementation and usage is
 heavily platform specific, so check out the interop docs on, for example,
 [C][] or [JavaScript][] to learn more.
 
-
-
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [record]: /language/records#multiple-returns
