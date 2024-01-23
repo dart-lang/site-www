@@ -4,12 +4,13 @@ description: Dart libraries and command-line tools.
 ---
 
 The Dart SDK has the libraries and command-line tools that you need to develop
-Dart web, command-line, and server apps. To get the Dart SDK, see [Get Dart](/get-dart).
-If you're developing Flutter apps,
-then you don't need to separately download the Dart SDK; just [install Flutter.][flutter]
+Dart web, command-line, and server apps.
+To install the Dart SDK, see [Get Dart](/get-dart).
+If you're developing Flutter apps, [install the Flutter SDK][flutter].
+The Flutter SDK includes the Dart SDK.
 
-To learn about other tools you can use for Dart development, see
-the [Dart tools](/tools) page.
+To learn about other tools you can use for Dart development,
+check out the [Dart tools](/tools) page.
 
 {{site.alert.version-note}}
   This site's documentation and examples use
@@ -26,25 +27,29 @@ the [Dart tools](/tools) page.
 
 ## What's in the Dart SDK
 
-The Dart SDK includes a `lib` directory for the [Dart libraries][] and a `bin`
-directory that has these command-line tools:
+The Dart SDK includes two directories:
+
+* `lib` contains the [Dart libraries][].
+* `bin` contains the following command-line tools.
 
 [`dart`](/tools/dart-tool)
-: The command-line interface for creating, formatting, analyzing, testing,
-  documenting, compiling, and running Dart code.
+: The command-line interface to create, format, analyze, test,
+  document, compile, and run Dart code.
   
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
 
-For more information about the SDK, see its
-[README file.](https://github.com/dart-lang/sdk/blob/main/README.dart-sdk)
+{% include tools/utf-8.md %}
+
+To learn more about the SDK, check out its [README file][readme].
 
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
-go to [the SDK issue tracker](https://github.com/dart-lang/sdk/issues).
+go to [the SDK issue tracker][sdk-issues].
 
-[build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /libraries
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
+[readme]: ({{site.gh-dart.sdk}}/blob/main/README.dart-sdk)
+[sdk-issues]: ({{site.gh-dart.sdk}}/issues)
