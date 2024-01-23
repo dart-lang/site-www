@@ -500,6 +500,28 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
+## External functions {#external}
+
+Declare a function `external` if its body is defined separately from its
+declaration in your Dart program. 
+
+```dart
+external void someFunc(int i);
+```
+
+External functions can be top-level functions, [instance methods][],
+[getters or setters][], or [non-redirecting constructors][].
+[Instance variables][] can be `external` too,
+and essentially equate to a getter or setter on the external value. 
+
+The `external` keyword usually appears in interop contexts,
+to introduce type information for foreign functions or values,
+and to make them usable in Dart. Implementation and usage is
+heavily platform specific, so check out the interop docs on, for example,
+[C][] or [JavaScript][] to learn more.
+
+
+
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [record]: /language/records#multiple-returns
@@ -511,3 +533,10 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
+
+[instance methods]: /language/methods#instance-methods
+[getters or setters]: /language/methods#getters-and-setters
+[non-redirecting constructors]: /language/constructors#redirecting-constructors
+[Instance variables]: /language/classes#instance-variables
+[C]: /interop/c-interop
+[JavaScript]: /interop/js-interop
