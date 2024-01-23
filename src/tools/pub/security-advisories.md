@@ -1,5 +1,5 @@
 ---
-title: Security Advisories
+title: Security advisories
 description: Use security advisories to inform and be informed about security vulnerabilities.
 ---
 
@@ -34,9 +34,9 @@ should strongly consider upgrading to another version of your dependency.
 
 
 ### Ignoring security advisories
-If a security advisory is not relevant for your package, you can choose to
-add the advisory to the list of `ignored_advisories` in the `pubspec.yaml` of
-your package in order to suppress the warning in the output. For example:
+If a security advisory is not relevant for your package, you can suppress the
+warning by adding the advisory to the list of `ignored_advisories` in the
+`pubspec.yaml` of your package. For example:
 
 ```
 name: myapp
@@ -46,6 +46,5 @@ ignored_advisories:
  - GHSA-4rgh-jx4f-qfcq
 ```
 
-Adding a security advisory to the `ignored_advisories` list only affects your
-package. I.e, it has no transitive effect on packages that depend on your
-package.
+The list of `ignored_advisories` only affects the root package. I.e, ignored
+advisories in your dependencies will have no effect on your resolution.
