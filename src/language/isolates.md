@@ -210,7 +210,7 @@ You can think of a `SendPort` and `ReceivePort` like
 Stream's `StreamController` and listeners, respectively.
 A `SendPort` is like a `StreamController` because you "add" messages to them
 with the [`SendPort.send()` method][], and those messages are handled by a listener,
-in this case the `ReceivePort`. The `RecievePort` then handles the messages it
+in this case the `ReceivePort`. The `ReceivePort` then handles the messages it
 receives by passing them as arguments to a callback that you provide. 
 
 #### Setting up ports
@@ -333,7 +333,7 @@ worker isolate and ensuring it can receive and send messages.
   messages sent from the newly spawned worker isolate.
 - Next, add a listener to the receive port to handle messages the worker isolate
   will send back. The callback passed to the
-  listener, `_handleMessagesFromIsolate`, will be covered
+  listener, `_handleResponsesFromIsolate`, will be covered
   in [step 4](#step-4-handle-messages-on-the-main-isolate).
 - Finally, spawn the worker isolate with `Isolate.spawn`. It expects two
   arguments: a function to be executed on the worker isolate
@@ -350,13 +350,13 @@ Future<void> spawn() async {
 ```
 
 The `receivePort.sendPort` argument will be passed to the
-callback (`_handleMessagesFromIsolate`) as an argument when it’s called on the
+callback (`_startRemoteIsolate`) as an argument when it’s called on the
 worker isolate. This is the first step in ensuring that the worker isolate has a
 way to send messages back to the main isolate.
 
 #### Step 3: Execute code on the worker isolate
 
-In this step, you define the method `_isolateEntryPoint` that is sent to the
+In this step, you define the method `_startRemoteIsolate` that is sent to the
 worker isolate to be executed when it spawns. This method is like the “main”
 method for the worker isolate.
 
@@ -393,7 +393,7 @@ to execute in the future.**
 Finally, you need to tell the main isolate how to handle messages sent from the
 worker isolate back to the main isolate. To do so, you need to fill in
 the `_handleResponsesFromIsolate` method. Recall that this method is passed to
-the `Worker.spawn` method, as described
+the `receivePort.listen` method, as described
 in [step 2](#step-2-spawn-a-worker-isolate):
 
 <?code-excerpt "lib/basic_ports_example/complete.dart (spawn)"?>
@@ -603,13 +603,13 @@ In the `Worker.spawn` method:
 - Next, define the `RawReceivePort.handler` property. This property is
   a `Function?` that behaves like `ReceivePort.listener`. The function is called
   when a message is received by this port.
-- Within the handler function, call `isolateReady.complete()`. This expects
+- Within the handler function, call `connection.complete()`. This method expects
   a [record][] with a `ReceivePort` and a `SendPort` as an argument.
   The `SendPort` is the initial message sent from the worker isolate, which will
   be assigned in the next step to the class level `SendPort` named `_commands`.
 - Then, create a new `ReceivePort` with
   the `ReceivePort.fromRawReceivePort` constructor, and pass in
-  the `startupPort`.
+  the `initPort`.
 
 <?code-excerpt "lib/robust_ports_example/spawn_1.dart"?>
 ```dart
@@ -649,13 +649,13 @@ This step continues to fill in the `Worker.spawn` method. You’ll add the code
 needed to spawn an isolate, and return an instance of `Worker` from this class.
 In this example, the call to `Isolate.spawn` is wrapped in
 a [`try`/`catch` block][], which ensures that, if the isolate fails to start up,
-the `startupPort` will be closed, and the `Worker` object won’t be created.
+the `initPort` will be closed, and the `Worker` object won’t be created.
 
-- First, declare a variable called `isolate`, and attempt to spawn a worker
-  isolate in a `try`/`catch` block. If spawning a worker isolate fails, close
-  the receive port that was created in the previous step. The method passed
-  to `Isolate.spawn` will be covered in a later step.
-- Next, await the `isolateReady.future`, and destructure the send port and
+- First, attempt to spawn a worker isolate in a `try`/`catch` block. If spawning
+  a worker isolate fails, close the receive port that was created in the
+  previous step. The method passed to `Isolate.spawn` will be covered in a later
+  step.
+- Next, await the `connection.future`, and destructure the send port and
   receive port from the record it returns.
 - Finally, return an instance of `Worker` by calling its private constructor,
   and passing in the ports from that completer.

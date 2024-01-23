@@ -232,7 +232,8 @@ In return, you have the fewest restrictions as the class maintainer.
 You can add new methods, turn constructors into factory constructors, etc.
 without worrying about breaking any downstream users.
 
-## The `sealed` modifer
+<a id="the-sealed-modifer"></a>
+## The `sealed` modifier
 
 The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.
 It exists primarily to enable [exhaustiveness checking][] in pattern matching.
@@ -241,19 +242,22 @@ then the compiler knows the switch is exhaustive.
 
 [exhaustiveness checking]: /language/branches#exhaustiveness-checking
 
+<?code-excerpt "language/lib/class_modifiers/sealed_exhaustiveness.dart"?>
 ```dart
 // amigos.dart
 sealed class Amigo {}
+
 class Lucky extends Amigo {}
+
 class Dusty extends Amigo {}
+
 class Ned extends Amigo {}
 
-String lastName(Amigo amigo) =>
-    switch (amigo) {
-      case Lucky _ => 'Day';
-      case Dusty _ => 'Bottoms';
-      case Ned _   => 'Nederlander';
-    }
+String lastName(Amigo amigo) => switch (amigo) {
+      Lucky _ => 'Day',
+      Dusty _ => 'Bottoms',
+      Ned _ => 'Nederlander',
+    };
 ```
 
 This switch has a case for each of the subtypes of `Amigo`.
