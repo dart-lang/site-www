@@ -38,7 +38,7 @@ If a security advisory is not relevant for your application, you can suppress th
 warning by adding the advisory to the list of `ignored_advisories` in the
 `pubspec.yaml` of your package. For example:
 
-```
+```yaml
 name: myapp
 dependencies:
   foo: ^1.0.0
