@@ -48,3 +48,7 @@ ignored_advisories:
 
 The list of `ignored_advisories` only affects the root package. I.e, ignored
 advisories in your dependencies will have no effect on your resolution.
+
+[Github Advisory Database]: [https://github.com/advisories]
+[here]: https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/creating-a-repository-security-advisory
+
