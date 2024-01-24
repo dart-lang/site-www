@@ -95,7 +95,7 @@ A pubspec can have the following fields:
   [_Learn more._](#topics)
 
 `ignored_advisories`
-: Optional. List of explicitly ignored security advisories.
+: Optional. List of ignored security advisories.
   [_Learn more._](/tools/pub/security-advisories)
 
 Pub ignores all other fields.
