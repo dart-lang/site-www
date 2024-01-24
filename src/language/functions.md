@@ -502,8 +502,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 
 ## External functions {#external}
 
-Declare a function `external` if its body is defined separately from its
-declaration in your Dart program. 
+An external function is a function whose body is provided separately from its declaration.
 
 ```dart
 external void someFunc(int i);
