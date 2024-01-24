@@ -94,6 +94,10 @@ A pubspec can have the following fields:
 : Optional. List of topics for the package.
   [_Learn more._](#topics)
 
+`ignored_advisories`
+: Optional. List of ignored security advisories.
+  [_Learn more._](/tools/pub/security-advisories)
+
 Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
