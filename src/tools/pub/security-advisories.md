@@ -33,6 +33,7 @@ should strongly consider upgrading to another version of your dependency.
 
 
 ### Ignoring security advisories
+
 If a security advisory is not relevant for your application, you can suppress the
 warning by adding the advisory to the list of `ignored_advisories` in the
 `pubspec.yaml` of your package. For example:
