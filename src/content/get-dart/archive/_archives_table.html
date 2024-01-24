@@ -1,0 +1,41 @@
+<form class="form-inline">
+  <div class="form-group select">
+    <label for="{{channel}}-versions">Version:</label>
+    <select id="{{channel}}-versions"></select>
+  </div>
+  <div class="form-group select">
+    <label for="{{channel}}-os">OS:</label>
+    <select id="{{channel}}-os">
+      <option value="all">All</option>
+      <option value="macos" id="{{channel}}-macos" class="macos-option">macOS</option>
+      <option value="linux" id="{{channel}}-linux" class="linux-option">Linux</option>
+      <option value="windows" id="{{channel}}-windows" class="windows-option">Windows</option>
+    </select>
+  </div>
+</form>
+<table id="{{channel}}" class="table">
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>OS</th>
+      <th>Architecture</th>
+      <th>Release date</th>
+      <th>Downloads</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="template">
+      {% if channel == 'stable' %}
+      <td>0.0.0 (rev 00000)</td>
+      {% else if channel == 'beta' %}
+      <td>0.0.0-0.0.beta (rev 00000)</td>
+      {% else %}
+      <td>0.0.0-0.0.dev (rev 00000)</td>
+      {% endif %}
+      <td>Windows</td>
+      <td>64-width</td>
+      <td>01/01/1970</td>
+      <td>JSON-formatted API documentation</td>
+    </tr>
+  </tbody>
+</table>

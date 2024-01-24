@@ -178,14 +178,6 @@
 
 
       &.external {
-        span.material-icons {
-          vertical-align: middle;
-          margin-left: 4px;
-          font-size: 12px;
-          color: inherit;
-          opacity: 0.8;
-        }
-
         &::after {
           display: none;
         }

@@ -1,8 +1,0 @@
-{
-  "SDK": {
-    "doc-path": "install",
-    "channel": "stable",
-    "prev-vers": "2.19.6",
-    "vers": "3.2.5"
-  }
-}
