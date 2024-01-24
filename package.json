@@ -15,9 +15,9 @@
   },
   "engines": {
     "node": ">=20.10.0",
-    "pnpm": ">=8.14.1"
+    "pnpm": ">=8.14.0"
   },
-  "packageManager": "pnpm@8.14.1",
+  "packageManager": "pnpm@8.14.3",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
@@ -37,6 +37,6 @@
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-table": "^4.1.1",
     "sass": "^1.70.0",
-    "shikiji": "^0.9.19"
+    "shikiji": "^0.10.0"
   }
 }

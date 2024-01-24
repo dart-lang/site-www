@@ -8,7 +8,7 @@ built with [Eleventy][] and hosted on [Firebase][].
 
 We welcome contributions of all kinds!
 To set up the site locally, follow the
-below guidelines on [Building the site](#building-the-site).
+below guidelines on [Building the site](#build-the-site).
 To learn more about contributing to this repository,
 check out the [Contributing guidelines](CONTRIBUTING.md).
 
@@ -35,13 +35,13 @@ do consider building and test your work before submitting.
 
 If you want or need to build the site, follow the steps below.
 
-## Building the site
+## Build the site
 
 For changes beyond simple text and CSS tweaks,
 we recommend running the site locally to
 enable an edit-refresh cycle. 
 
-### 1. Get the prerequisites
+### Get the prerequisites
 
 Install the following tools, if you don't have them already:
 
@@ -60,7 +60,7 @@ Install the following tools, if you don't have them already:
 [Get the Dart SDK]: https://dart.dev/get-dart
 [Node.js download archive]: https://nodejs.org/en/download/
 
-### 2. Clone this repo _and_ its submodules
+### Clone this repo and its submodules
 
 > [!NOTE]
 > This repository has git _submodules_, which affects how you clone it.
@@ -98,7 +98,7 @@ _choose one_ of the following submodule-cloning techniques:
 > git pull && git submodule update --init --recursive
 > ```
 
-## Setting up your local environment and serve changes
+## Set up your local environment and serve changes
 
 1. _Optional:_ After cloning the repo and its submodules,
    create a branch for your changes:
@@ -108,13 +108,25 @@ _choose one_ of the following submodule-cloning techniques:
    ```
 
 2. From the root directory of the repository,
-   fetch both Dart and npm dependencies.
+   fetch the site's Dart dependencies.
 
    ```terminal
-   dart pub get && pnpm install
+   dart pub get
    ```
 
-3. From the root directory, serve the site locally.
+3. From the root directory of the repository,
+   enable `corepack` to set up `pnpm`, then
+   fetch the site's npm dependencies.
+   If you already have `pnpm` installed,
+   you can skip the `corepack` commands.
+
+   ```terminal
+   corepack enable
+   corepack install
+   pnpm install
+   ```
+
+4. From the root directory, serve the site locally.
 
    ```terminal
    dart run dart_site serve
@@ -123,31 +135,31 @@ _choose one_ of the following submodule-cloning techniques:
    This command generates and serves the site on a
    local port that's printed to your terminal.
 
-4. View your changes in the browser by navigating to `http://localhost:4000`.
+5. View your changes in the browser by navigating to `http://localhost:4000`.
 
    The port might be different if `4000` is taken.
    If you need to view the generated fields,
    they can be found in the `_site` directory.
 
-5. Make your changes to the local repo.
+6. Make your changes to the local repo.
 
    The site should automatically rebuild on most changes, but if
    something doesn't update, exit the process and rerun the command.
    Improvements to this functionality are planned.
 
-6. Commit your changes to the branch and submit your PR.
+7. Commit your changes to the branch and submit your PR.
 
-   If your change is large, or you'd like to test it locally,
-   check out the various [pre-push site checks](#pre-push-site-checks)
-   you can run to verify before pushing.
+   If your change is large, or you'd like to test it,
+   consider [validating your changes](#validate-your-changes) and
+   [deploying to a staging site](#deploy-to-a-staging-site).
 
 > [!TIP]
 > To find additional commands that you can run,
-> run `dart run dart_site --help` from the root directory.
+> run `dart run dart_site --help` from the repository's root directory.
 
 ## Validate your changes
 
-### Checking documentation and example code
+### Check documentation and example code
 
 If you've made changes to the code in the `/examples` or `/tool` directories,
 commit your work, then run the following command to
