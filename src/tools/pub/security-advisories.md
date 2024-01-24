@@ -15,6 +15,7 @@ Github and ingested into the central database.
 
 
 ## Security advisories in the pub client
+
 The pub client surfaces security advisories at dependency resolution.
 For instance, when running `dart pub get` you will get the following output:
 
