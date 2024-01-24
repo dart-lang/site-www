@@ -7,9 +7,8 @@ Security advisories are a means to report information about security
 vulnerabilities. Pub uses the [Github Advisory Database][]
 for publishing security advisories for Dart and Flutter packages. 
 
-To create an advisory in your Github repository use Github's security advisory
-reporting mechanism as explained
-[here][https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/creating-a-repository-security-advisory].
+To create an advisory in your Github repository, use Github's security advisory
+reporting mechanism as explained [here][].
 First you create a draft security advisory, which will then be reviewed by
 Github and ingested into the central database.
 
