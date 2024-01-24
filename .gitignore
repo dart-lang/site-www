@@ -21,6 +21,7 @@ build
 firebase-debug.log
 node_modules
 pubspec.lock
+package-lock.json
 tmp
 
 # Misc
