@@ -46,7 +46,7 @@ ignored_advisories:
  - GHSA-4rgh-jx4f-qfcq
 ```
 
-The list of `ignored_advisories` only affects the root package. I.e, ignored
+The list of `ignored_advisories` only affects the root package. Ignored
 advisories in your dependencies will have no effect on your resolution.
 
 [Github Advisory Database]: [https://github.com/advisories]
