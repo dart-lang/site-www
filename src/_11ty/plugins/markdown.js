@@ -1,32 +1,32 @@
 import markdownIt from 'markdown-it';
 import markdownItContainer from 'markdown-it-container';
-import {markdownItTable} from 'markdown-it-table';
+import { markdownItTable } from 'markdown-it-table';
 import markdownItDefinitionList from 'markdown-it-deflist';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
-import {slugify} from '../utils/slugify.js';
+import { slugify } from '../utils/slugify.js';
 
 /** @type {import('markdown-it/lib').MarkdownIt} */
 export const markdown = (() => {
-  const markdown = markdownIt({html: true})
-      .use(markdownItTable)
-      .use(markdownItDefinitionList)
-      .use(markdownItAttrs, {
-        leftDelimiter: '{:',
-        rightDelimiter: '}',
-        allowedAttributes: ['id', 'class', /^data-.*$/],
-      })
-      .use(markdownItAnchor, {
-        slugify: s => slugify(s),
-        level: 2,
-        tabIndex: false,
-        permalink: markdownItAnchor.permalink.ariaHidden({
-          space: true,
-          placement: 'after',
-          symbol: '#',
-          class: 'heading-link',
-        }),
-      });
+  const markdown = markdownIt({ html: true })
+    .use(markdownItTable)
+    .use(markdownItDefinitionList)
+    .use(markdownItAttrs, {
+      leftDelimiter: '{:',
+      rightDelimiter: '}',
+      allowedAttributes: ['id', 'class', /^data-.*$/],
+    })
+    .use(markdownItAnchor, {
+      slugify: (s) => slugify(s),
+      level: 2,
+      tabIndex: false,
+      permalink: markdownItAnchor.permalink.ariaHidden({
+        space: true,
+        placement: 'after',
+        symbol: '#',
+        class: 'heading-link',
+      }),
+    });
 
   _registerAsides(markdown);
   _registerContainers(markdown);
@@ -49,7 +49,7 @@ function _registerAside(markdown, id, defaultTitle, icon, style) {
     render: function (tokens, index) {
       if (tokens[index].nesting === 1) {
         const parsedArgs = /\s+(.*)/.exec(tokens[index].info);
-        
+
         const title = parsedArgs?.[1] ?? defaultTitle;
         return `<aside class="alert ${style}">
 <div class="alert-header">
@@ -61,7 +61,7 @@ ${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : '
       } else {
         return '</div></aside>\n';
       }
-    }
+    },
   });
 }
 
@@ -73,11 +73,29 @@ ${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : '
  */
 function _registerAsides(markdown) {
   _registerAside(markdown, 'note', 'Note', 'info', 'alert-info');
-  _registerAside(markdown, 'flutter-note', 'Flutter note', 'smartphone', 'alert-info');
-  _registerAside(markdown, 'version-note', 'Version note', 'merge_type', 'alert-info');
+  _registerAside(
+    markdown,
+    'flutter-note',
+    'Flutter note',
+    'smartphone',
+    'alert-info',
+  );
+  _registerAside(
+    markdown,
+    'version-note',
+    'Version note',
+    'merge_type',
+    'alert-info',
+  );
   _registerAside(markdown, 'tip', 'Tip', 'tips_and_updates', 'alert-success');
   _registerAside(markdown, 'important', 'Important', 'error', 'alert-warning');
-  _registerAside(markdown, 'warning', 'Warning', 'report_problem', 'alert-warning');
+  _registerAside(
+    markdown,
+    'warning',
+    'Warning',
+    'report_problem',
+    'alert-warning',
+  );
 
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
 }
@@ -89,6 +107,7 @@ function _registerAsides(markdown) {
  * @private
  */
 function _registerContainers(markdown) {
+  // TODO(parlough): Consider removing all usages of mini-toc.
   markdown.use(markdownItContainer, 'mini-toc', {
     render: function (tokens, index) {
       if (tokens[index].nesting === 1) {
@@ -99,6 +118,6 @@ function _registerContainers(markdown) {
       } else {
         return '</div>\n';
       }
-    }
+    },
   });
 }

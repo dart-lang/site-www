@@ -1,4 +1,8 @@
-import {getPageInfo} from './utils/get-page-info.js';
+import { getPageInfo } from './utils/get-page-info.js';
+import { fromHtml } from 'hast-util-from-html';
+import { selectAll } from 'hast-util-select';
+import { toText } from 'hast-util-to-text';
+import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
 
 export function regexReplace(input, regex, replacement = '') {
   return input.toString().replace(new RegExp(regex), replacement);
@@ -19,19 +23,24 @@ export function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
 }
 
 export function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
-  // TODO: Cleanup and document logic
+  // TODO(parlough): Simplify once standardizing with the Flutter site.
   for (let i = 0; i < navEntryTree.length; i++) {
     const entry = navEntryTree[i];
 
     if (entry.children) {
-      const descendantIndexes = _getActiveNavEntries(entry.children, pageUrlPath);
+      const descendantIndexes = _getActiveNavEntries(
+        entry.children,
+        pageUrlPath,
+      );
       if (descendantIndexes.length > 0) {
         return [i + 1, ...descendantIndexes];
       }
     }
 
     if (entry.permalink) {
-      const isMatch = entry['match-page-url-exactly'] ? pageUrlPath === entry.permalink : pageUrlPath.includes(entry.permalink);
+      const isMatch = entry['match-page-url-exactly']
+        ? pageUrlPath === entry.permalink
+        : pageUrlPath.includes(entry.permalink);
 
       if (isMatch) {
         return [i + 1];
@@ -83,13 +92,16 @@ export function underscoreBreaker(stringToBreak, inAnchor = false) {
   return stringToBreak.replaceAll('_', '_<wbr>');
 }
 
-export async function generateToc(contents) {
-  const {fromHtml} = await import('hast-util-from-html');
-  const {selectAll} = await import('hast-util-select');
-  const {toText} = await import('hast-util-to-text');
-  
+export function generateToc(contents) {
+  // TODO(parlough): Speed this up.
+  //   Perhaps do the processing before HTML rendering?
+  //   Maybe shouldn't be a filter.
   const dom = fromHtml(contents);
   const headers = selectAll('h2, h3', dom);
+  if (headers < 1) {
+    // If there is only one header, there is no point of a TOC.
+    return null;
+  }
   let currentH2 = null;
   const builtToc = [];
   let count = 0;
@@ -105,13 +117,13 @@ export async function generateToc(contents) {
       continue;
     }
 
-    // Remove the # added by markdown-it-anchor.
-    // We don't want it showing up in the TOC.
-    const text = toText(header)
-        .replace(/#$/, '').trim();
+    // Remove the # added by markdown-it-anchor,
+    // as that's not needed in the TOC.
+    // Also escape any HTML, such as arrow brackets.
+    const text = escapeHtml(toText(header).replace(/#$/, '').trim());
 
     if (header.tagName === 'h2') {
-      currentH2 = {text: text, id: `#${id}`, children: []};
+      currentH2 = { text: text, id: `#${id}`, children: [] };
       builtToc.push(currentH2);
       count += 1;
     } else if (header.tagName === 'h3') {
@@ -120,13 +132,14 @@ export async function generateToc(contents) {
         continue;
       }
 
-      currentH2.children.push({text: text, id: `#${id}`});
+      currentH2.children.push({ text: text, id: `#${id}` });
       count += 1;
     }
   }
 
   return {
-    toc: builtToc, count: count
+    toc: builtToc,
+    count: count,
   };
 }
 
@@ -137,10 +150,13 @@ export function breadcrumbsForPage(page) {
   let data = this.context.environments;
 
   while (page) {
-    const urlSegments = page.url.split('/').filter(segment => segment.length > 0);
+    const urlSegments = page.url
+      .split('/')
+      .filter((segment) => segment.length > 0);
 
     breadcrumbs.push({
-      title: data['breadcrumb'] ?? data['short-title'] ?? data.title, url: page.url,
+      title: data['breadcrumb'] ?? data['short-title'] ?? data.title,
+      url: page.url,
     });
 
     if (urlSegments.length <= 1) {
@@ -152,7 +168,7 @@ export function breadcrumbsForPage(page) {
       const parentUrl = `/${urlSegments.slice(0, -1).join('/')}/`;
       // Search for a parent page with the specified URL.
       const parentPage = getPageInfo(data.collections.all, parentUrl);
-      
+
       // Store the page information and other data of the parent page.
       // If no parent page exists, the breadcrumb loop won't continue.
       page = parentPage?.page;

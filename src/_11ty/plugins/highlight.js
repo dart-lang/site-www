@@ -1,5 +1,5 @@
-import {getHighlighter} from 'shikiji';
-import {toHtml} from 'hast-util-to-html';
+import { getHighlighter } from 'shikiji';
+import { toHtml } from 'hast-util-to-html';
 import dashLightTheme from '../syntax/dash-light.js';
 
 /**
@@ -51,12 +51,12 @@ export async function configureHighlighting(markdown) {
     const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
 
     return _highlight(
-        markdown,
-        highlighter,
-        toHtml,
-        token.content,
-        language,
-        attributes,
+      markdown,
+      highlighter,
+      toHtml,
+      token.content,
+      language,
+      attributes,
     );
   };
 }
@@ -78,12 +78,12 @@ export async function configureHighlighting(markdown) {
  * @private
  */
 function _highlight(
-    markdown,
-    highlighter,
-    toHtml,
-    content,
-    language,
-    attributeString,
+  markdown,
+  highlighter,
+  toHtml,
+  content,
+  language,
+  attributeString,
 ) {
   // Don't customize or highlight DartPad snippets
   // so that inject_embed can convert them.
@@ -109,12 +109,13 @@ ${markdown.utils.escapeHtml(content)}
 
   const highlightLines = attributes['highlightLines'];
   const linesToHighlight = highlightLines
-      ? _parseNumbersAndRanges(highlightLines)
-      : null;
+    ? _parseNumbersAndRanges(highlightLines)
+    : null;
 
   // Find the spans enclosed in `[!` and `!]` that we should mark
   // and remove them from the text.
-  const {updatedText, linesToMarkedRanges} = _findMarkedTextAndUpdate(content);
+  const { updatedText, linesToMarkedRanges } =
+    _findMarkedTextAndUpdate(content);
 
   // Update the content with the markers removed and
   // with any extra whitespace trimmed off the end.
@@ -135,16 +136,15 @@ ${markdown.utils.escapeHtml(content)}
 
           const bodyChildren = [preElement];
 
-          if (language !== 'plaintext' &&
-              language !== 'console' &&
-              language !== 'ps') {
-            const languageText = _createSpanWithText(
-                language,
-                {
-                  class: 'code-block-language',
-                  title: `Language ${language}`,
-                },
-            );
+          if (
+            language !== 'plaintext' &&
+            language !== 'console' &&
+            language !== 'ps'
+          ) {
+            const languageText = _createSpanWithText(language, {
+              class: 'code-block-language',
+              title: `Language ${language}`,
+            });
             bodyChildren.unshift(languageText);
           }
 
@@ -158,37 +158,38 @@ ${markdown.utils.escapeHtml(content)}
             },
           };
 
+          // Add a tag class and element if a tag is specified,
+          // such as `good` or `bad` in Effective Dart.
           const extraTag = attributes['tag'];
           if (extraTag) {
             blockBody.properties['class'] += ` has-tag tag-${extraTag}`;
 
-            const tagText = {
-              'good': 'good',
-              'bad': 'bad',
-              'passes-sa': '\u2714  static analysis: success',
-              'fails-sa': '\u2717  static analysis: failure',
-              'runtime-sa': '\u2714  runtime: success',
-              'runtime-fail': '\u2717  runtime: failure',
-            }[extraTag] ?? extraTag;
+            const tagText =
+              {
+                good: 'good',
+                bad: 'bad',
+                'passes-sa': '\u2714  static analysis: success',
+                'fails-sa': '\u2717  static analysis: failure',
+                'runtime-sa': '\u2714  runtime: success',
+                'runtime-fail': '\u2717  runtime: failure',
+              }[extraTag] ?? extraTag;
 
-            const extraTagContent = _createSpanWithText(
-                tagText,
-                {
-                  class: 'code-block-tag',
-                },
-            );
+            const extraTagContent = _createSpanWithText(tagText, {
+              class: 'code-block-tag',
+            });
 
             bodyChildren.unshift(extraTagContent);
           }
 
           const wrapperChildren = [];
 
+          // Add a title if specified, often used for filenames.
           const title = attributes['title'];
           if (title && title !== '') {
             const titleElement = {
               type: 'element',
               tagName: 'div',
-              children: [{type: 'text', value: title}],
+              children: [{ type: 'text', value: title }],
               properties: {
                 class: 'code-block-header',
               },
@@ -225,8 +226,8 @@ ${markdown.utils.escapeHtml(content)}
           if (highlightRange) {
             // If this line has ranges to mark/highlight, do so.
             lineElement.children = _wrapMarkedText(
-                lineElement.children,
-                highlightRange,
+              lineElement.children,
+              highlightRange,
             );
           }
         },
@@ -235,6 +236,7 @@ ${markdown.utils.escapeHtml(content)}
   });
 }
 
+// TODO(parlough): Replace this with simpler logic.
 const _attributesPattern = /([^\s=]+)(?:="([^"]*)"|=(\S+))?/g;
 
 /**
@@ -360,11 +362,12 @@ function _wrapMarkedText(spans, ranges) {
     // So we need to keep track of which range we're currently searching for.
     // Use indices to loop through the ranges as it's cheaper
     // than modifying the entire array with `shift`.
-    while (currentRangeIndex < ranges.length && indexInCurrentSpan < text.length) {
-      const {
-        startIndex: rangeStartIndex,
-        endIndex: rangeEndIndex,
-      } = ranges[currentRangeIndex];
+    while (
+      currentRangeIndex < ranges.length &&
+      indexInCurrentSpan < text.length
+    ) {
+      const { startIndex: rangeStartIndex, endIndex: rangeEndIndex } =
+        ranges[currentRangeIndex];
 
       /**
        * The index in relation to the start of the current span
@@ -373,8 +376,8 @@ function _wrapMarkedText(spans, ranges) {
        * @type {number}
        */
       const relativeRangeStartIndex = Math.max(
-          rangeStartIndex - currentIndexInLine,
-          indexInCurrentSpan,
+        rangeStartIndex - currentIndexInLine,
+        indexInCurrentSpan,
       );
 
       /**
@@ -384,18 +387,18 @@ function _wrapMarkedText(spans, ranges) {
        * @type {number}
        */
       const relativeEndIndex = Math.min(
-          rangeEndIndex - currentIndexInLine,
-          text.length,
+        rangeEndIndex - currentIndexInLine,
+        text.length,
       );
 
       // If `indexInCurrentSpan` is less than `relativeRangeStartIndex`,
       // all text between the two should not be marked.
       if (indexInCurrentSpan < relativeRangeStartIndex) {
         updatedSpans.push(
-            _createSpanWithText(
-                text.slice(indexInCurrentSpan, relativeRangeStartIndex),
-                spanProperties,
-            ),
+          _createSpanWithText(
+            text.slice(indexInCurrentSpan, relativeRangeStartIndex),
+            spanProperties,
+          ),
         );
       }
 
@@ -403,10 +406,10 @@ function _wrapMarkedText(spans, ranges) {
       // the text within that range should be marked.
       if (relativeRangeStartIndex < relativeEndIndex) {
         markElement.children.push(
-            _createSpanWithText(
-                text.slice(relativeRangeStartIndex, relativeEndIndex),
-                spanProperties,
-            ),
+          _createSpanWithText(
+            text.slice(relativeRangeStartIndex, relativeEndIndex),
+            spanProperties,
+          ),
         );
       }
 
@@ -438,7 +441,7 @@ function _wrapMarkedText(spans, ranges) {
     // add the rest of it.
     if (indexInCurrentSpan < text.length) {
       updatedSpans.push(
-          _createSpanWithText(text.slice(indexInCurrentSpan), spanProperties),
+        _createSpanWithText(text.slice(indexInCurrentSpan), spanProperties),
       );
     }
 
@@ -483,7 +486,7 @@ function _createSpanWithText(text, properties = {}) {
   return {
     type: 'element',
     tagName: 'span',
-    children: [{type: 'text', value: text}],
+    children: [{ type: 'text', value: text }],
     properties: properties,
   };
 }

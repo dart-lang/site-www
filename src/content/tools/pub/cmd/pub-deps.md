@@ -49,16 +49,13 @@ markdown_converter 0.0.0
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-{% comment %}
-TODO(parlough) - Fix inline code syntax not working correctly in headers?
 ### `--style=<style>` or `-s <style>`
-{% endcomment %}
 
 The specified style determines the output format:
 
 `tree`
 : Prints dependency information as a tree. This is the 
-default format.
+  default format.
 
 `list`
 : Prints dependency information as a list.

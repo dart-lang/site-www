@@ -9,7 +9,7 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "serve": "PRODUCTION=false eleventy --serve --incremental",
+    "serve": "PRODUCTION=false eleventy --serve",
     "build": "PRODUCTION=false eleventy",
     "prod": "PRODUCTION=true eleventy"
   },

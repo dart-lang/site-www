@@ -1,21 +1,22 @@
 import {
   activeNavEntryIndexArray,
-  arrayToSentenceString, breadcrumbsForPage, generateToc,
+  arrayToSentenceString,
+  breadcrumbsForPage,
+  generateToc,
   regexReplace,
   toISOString,
-  underscoreBreaker
+  underscoreBreaker,
 } from './src/_11ty/filters.js';
-
-import yaml from 'js-yaml';
-
-import {markdown} from './src/_11ty/plugins/markdown.js';
-
-import {configureHighlighting} from './src/_11ty/plugins/highlight.js';
+import { markdown } from './src/_11ty/plugins/markdown.js';
+import { configureHighlighting } from './src/_11ty/plugins/highlight.js';
 
 import minifier from 'html-minifier-terser';
+import yaml from 'js-yaml';
+
 import * as path from 'node:path';
 import * as sass from 'sass';
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * @typedef {import('11ty/eleventy/UserConfig')} EleventyConfig
  * @param {EleventyConfig} eleventyConfig
@@ -26,27 +27,33 @@ export default function (eleventyConfig) {
   eleventyConfig.on('eleventy.before', async () => {
     await configureHighlighting(markdown);
   });
-  
+
   eleventyConfig.addGlobalData('isProduction', isProduction);
 
   eleventyConfig.setLibrary('md', markdown);
 
-  eleventyConfig.addDataExtension('yml,yaml',
-      contents => yaml.load(contents));
+  eleventyConfig.addDataExtension('yml,yaml', (contents) =>
+    yaml.load(contents),
+  );
 
   eleventyConfig.setLiquidOptions({
     cache: true,
     strictFilters: true,
-    lenientIf: true
+    lenientIf: true,
   });
 
   eleventyConfig.addFilter('regex_replace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
-  eleventyConfig.addFilter('active_nav_entry_index_array', activeNavEntryIndexArray);
+  eleventyConfig.addFilter(
+    'active_nav_entry_index_array',
+    activeNavEntryIndexArray,
+  );
   eleventyConfig.addFilter('array_to_sentence_string', arrayToSentenceString);
   eleventyConfig.addFilter('underscore_breaker', underscoreBreaker);
-  eleventyConfig.addFilter('throw_error', function (error) { throw new Error(error); });
-  eleventyConfig.addAsyncFilter('generate_toc', generateToc);
+  eleventyConfig.addFilter('throw_error', function (error) {
+    throw new Error(error);
+  });
+  eleventyConfig.addFilter('generate_toc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 
   eleventyConfig.addTemplateFormats('scss');
@@ -66,8 +73,11 @@ export default function (eleventyConfig) {
       });
 
       const dependencies = result.loadedUrls
-          .filter(loadedUrl => loadedUrl.protocol === 'file:' && loadedUrl.pathname !== '')
-          .map(url => path.relative('.', url.pathname));
+        .filter(
+          (loadedUrl) =>
+            loadedUrl.protocol === 'file:' && loadedUrl.pathname !== '',
+        )
+        .map((url) => path.relative('.', url.pathname));
 
       this.addDependencies(inputPath, dependencies);
 
@@ -77,9 +87,14 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
-  eleventyConfig.addPassthroughCopy('src/content/assets/img', {expand: true});
-  eleventyConfig.addPassthroughCopy('src/content/f', {expand: true, filter: /^(?!_).+/});
-  eleventyConfig.addPassthroughCopy('src/content/guides/language/specifications');
+  eleventyConfig.addPassthroughCopy('src/content/assets/img', { expand: true });
+  eleventyConfig.addPassthroughCopy('src/content/f', {
+    expand: true,
+    filter: /^(?!_).+/,
+  });
+  eleventyConfig.addPassthroughCopy(
+    'src/content/guides/language/specifications',
+  );
 
   if (isProduction) {
     // If building for production, minify/optimize the HTML output.
@@ -99,14 +114,14 @@ export default function (eleventyConfig) {
       return content;
     });
   }
-  
+
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.setServerOptions({
     port: 4000,
     watch: ['src/_sass'],
   });
-  
+
   return {
     htmlTemplateEngine: 'liquid',
     dir: {
@@ -115,6 +130,6 @@ export default function (eleventyConfig) {
       layouts: '../_layouts',
       includes: '../_includes',
       data: '../_data',
-    }
-  }
-};
+    },
+  };
+}

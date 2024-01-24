@@ -12,4 +12,5 @@ export function getPageInfo(pages, url) {
   }
 }
 
+// TODO(parlough): Replace this functionality or document it.
 const _cachedPages = new Map();

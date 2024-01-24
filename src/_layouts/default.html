@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include 'head.html' %}
+  {% if toc != false -%}
+    {% assign tocContents = content | generate_toc %}
+    {% if tocContents == null or tocContents == '' -%}
+      {% assign toc = false %}
+    {% endif -%}
+  {% endif -%}
   <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
     {% include 'cookie-notice.html' %}
     {% include 'gtags.html' %}
@@ -8,7 +14,6 @@
     {% include 'navigation-side.html' %}
     <main id="page-content">
       {% if toc != false -%}
-      {% assign tocContents = content | generate_toc %}
       {% include 'navigation-toc-side.html', tocContents:tocContents %}
       {% endif -%}
       <article>

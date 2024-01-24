@@ -150,10 +150,7 @@ Prints debugging information when an error occurs.
 
 Equivalent to `--verbosity=all`.
 
-{% comment %}
-TODO(parlough) - Fix inline code syntax not working correctly in headers?
 ### `--directory=<dir>` or `-C <dir>`
-{% endcomment %}
 
 Runs the command in the specified directory.
 
