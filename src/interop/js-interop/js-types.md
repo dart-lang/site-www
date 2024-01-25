@@ -30,7 +30,7 @@ JS types form a natural type hierarchy:
     - `JSPromise`
     - `JSDataView`
     - `JSTypedArray`
-      - JS typed arrays e.g. `JSUint8Array`
+      - JS typed arrays like `JSUint8Array`
     - `JSBoxedDartObject`, which allows users to box and pass Dart values
       opaquely within the same Dart runtime
 
@@ -43,35 +43,58 @@ TODO (srujzs): Should we add a tree diagram instead for JS types?
 
 ## Conversions
 
-Since there are two separate domains, you will likely want to *convert* values
-between one domain to the other. For example, you may want to convert a Dart
-`String` into a JS string, which is represented by the JS type `JSString`. To do
-this, Dart supplies a number of `extension` members on various Dart types that
-will do the conversion for you, usually labeled as or prefixed with `toJS`.
-Similarly, you can convert JS values to Dart types. Dart supplies a number of
-members on various JS types to enable this conversion, usually labeled as or
-prefixed with `toDart`. They are often marked `external`, and their
-implementation is usually platform-dependent. Note that not all JS types have a
-conversion, and not all Dart types have a conversion.
+To use a value from one domain to another, you will likely want to *convert* the
+value to the corresponding type of the other domain. For example, you might want
+to convert a Dart `List<JSString>` into a JS array of strings, which is
+represented by the JS type `JSArray<JSString>`, so that you can pass the array
+to a JS interop API.
 
-In general, the conversion table looks like the following:
+Dart supplies a number of `extension` members on various Dart types and JS types
+to convert the values between the domains for you.
 
+Members that convert values from Dart to JS are usually labeled-as or
+prefixed-with `toJS`:
+
+```dart
+String str = 'hello world';
+JSString jsStr = str.toJS;
+```
+
+Members that convert values from JS to Dart are usually labeled-as or
+prefixed-with `toDart`:
+
+```dart
+JSNumber jsNum = ...;
+int integer = jsNum.toDartInt;
+```
+
+These conversion functions are often marked `external`, but aren't interop
+members. Their implementation is provided in the compiler instead.
+
+Not all JS types have a conversion, and not all Dart types have a conversion.
+Generally, the conversion table looks like the following:
+
+<div class="table-wrapper" markdown="1">
 | JS type                             | Dart type                                |
 | ----------------------------------- | ---------------------------------------- |
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
 | `JSExportedFunction`                | `Function`                               |
 | `JSArray<T extends JSAny?>`         | `List<T extends JSAny?>`                 |
 | `JSPromise<T extends JSAny?>`       | `Future<T extends JSAny?>`               |
-| Typed arrays e.g. `JSUint8Array`    | `dart:typed_data`                        |
+| Typed arrays like `JSUint8Array`    | `dart:typed_data`                        |
 | `JSBoxedDartObject`                 | Opaque Dart value                        |
+{:.table .table-striped}
+</div>
 
-**Important**: Conversions may have different costs depending on the compiler.
-Prefer to only convert when you need to. Furthermore, conversions may or may not
-produce a new value. This doesn’t matter for immutable values like numbers, but
-does matter for types like `List`s. A conversion to a `JSArray` may produce a
-new value by copying or may not, so do not rely on modifications to the
-`JSArray` to affect the `List`. Typed array conversions have a similar
-limitation. Look at the specific conversion function for more details.
+{{site.alert.warn}}
+Conversions might have different costs depending on the compiler, so prefer to
+only convert values if you need to. Conversions also may or may not produce a
+new value. This doesn’t matter for immutable values like numbers, but does
+matter for types like `List`. A conversion to a `JSArray` may produce a new
+value by copying or may not, so do not rely on modifications to the `JSArray` to
+affect the `List`. Typed array conversions have a similar limitation. Look up
+the specific conversion function for more details.
+{{site.alert.end}}
 
 ## Requirements on `external` declarations and `Function.toJS`
 
@@ -101,7 +124,7 @@ extension type InteropType(JSObject _) {}
 external InteropType get interopType;
 ```
 
-whereas these would return an error:
+Whereas these would return an error:
 
 {:.bad}
 ```dart
@@ -119,21 +142,18 @@ These same requirements exist when you use [`Function.toJS`] to make a Dart
 function callable in JS. The values that flow into and out of this callback must
 be a compatible interop type or a primitive.
 
-If you use a Dart primitive e.g. `String`, an implicit conversion happens in the
+If you use a Dart primitive like `String`, an implicit conversion happens in the
 compiler to convert that value from a JS value to a Dart value. If performance
 is critical and you don’t need to examine the contents of the string, then using
-`JSString` instead to avoid the conversion cost may make sense.
+`JSString` instead to avoid the conversion cost might make sense like in the
+second example.
 
 ## Compatibility, type checks, and casts
 
-As mentioned above, the representation type of JS types may differ based on the
-compiler. This affects runtime type-checking and casts. Therefore, almost always
-avoid `is` checks where the value is an interop type or where the target type is
-an interop type. Avoid casts between Dart types and interop types. In order to
-type-check a JS value, use an interop member like [`typeofEquals`] or
-[`instanceOfString`] that examines the JS value itself.
-
-Bad:
+The representation type of JS types may differ based on the compiler. This
+affects runtime type-checking and casts. Therefore, almost always avoid `is`
+checks where the value is an interop type or where the target type is an interop
+type:
 
 {:.bad}
 ```dart
@@ -141,13 +161,14 @@ void f(JSAny a) {
   if (a is String) { … }
 }
 ```
-
 {:.bad}
 ```dart
 void f(JSObject o) {
   if (o is JSObject) { … }
 }
 ```
+
+Also, avoid casts between Dart types and interop types:
 
 {:.bad}
 ```dart
@@ -156,7 +177,8 @@ void f(JSString s) {
 }
 ```
 
-Okay:
+To type-check a JS value, use an interop member like [`typeofEquals`] or
+[`instanceOfString`] that examines the JS value itself:
 
 {:.good}
 ```dart
@@ -168,35 +190,42 @@ void f(JSAny a) {
 }
 ```
 
-Dart may add lints to make runtime checks with JS interop types easier to avoid.
+{% comment %}
+TODO: Add a link to and an example using `isA` once it's in a dev release. Users
+should prefer that method if it's available.
+{% endcomment %}
+
+Dart might add lints to make runtime checks with JS interop types easier to
+avoid. See issue [#4841] for more details.
 
 ## `null` vs `undefined`
 
 JS has both a `null` and an `undefined` value. This is in contrast with Dart,
 which only has `null`. In order to make JS values more ergonomic to use, if an
 interop member were to return either JS `null` or `undefined`, the compiler maps
-these values to Dart `null`. Therefore a member like:
+these values to Dart `null`. Therefore a member like `value` in the following example
+can be interpreted as returning a JS object, JS `null`, or `undefined`:
 
 ```dart
 @JS()
 external JSObject? get value;
 ```
 
-can be interpreted as returning a JS object, JS `null`, or `undefined`.
-
-**Important**: There is a subtle inconsistency with regards to `undefined`
-between compiling to JS and Wasm. While compiling to JS *treats* `undefined`
-values as if they were Dart `null`, it doesn’t actually *change* the value
-itself. If an interop member returns `undefined` and you pass that value back
-into JS, JS will see `undefined` and not `null` when compiling to JS.
-However, when compiling to Wasm, this is not the case and the value will be
-`null` in JS. This is because the compiler *converts* the value to Dart `null`
-when compiling to Wasm, thereby losing information on whether the original value
-was JS `null` or `undefined`. Avoid writing code where this distinction matters
-by explicitly passing Dart `null` instead to an interop member. Currently,
-there's no platform-consistent way to provide `undefined` to interop members or
-distinguish between JS `null` and `undefined` values, but this will likely
-change in the future.
+{{site.alert.warn}}
+There is a subtle inconsistency with regards to `undefined` between compiling to
+JS and Wasm. While compiling to JS *treats* `undefined` values as if they were
+Dart `null`, it doesn’t actually *change* the value itself. If an interop member
+returns `undefined` and you pass that value back into JS, JS will see
+`undefined`, *not* `null`, when compiling to JS. However, when compiling to
+Wasm, this is not the case and the value will be `null` in JS. This is because
+the compiler implicitly *converts* the value to Dart `null` when compiling to
+Wasm, thereby losing information on whether the original value was JS `null` or
+`undefined`. Avoid writing code where this distinction matters by explicitly
+passing Dart `null` instead to an interop member. Currently, there's no
+platform-consistent way to provide `undefined` to interop members or distinguish
+between JS `null` and `undefined` values, but this will likely change in the
+future. See [#54025] for more details.
+{{site.alert.end}}
 
 {% comment %}
 TODO: add links (with stable) when ready:
@@ -210,3 +239,5 @@ TODO: add links (with stable) when ready:
 [`dart:js_interop` API docs]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
+[#4841]: https://github.com/dart-lang/linter/issues/4841
+[#54025]: https://github.com/dart-lang/sdk/issues/54025
