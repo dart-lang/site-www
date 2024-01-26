@@ -451,11 +451,14 @@ are relevant. Tagging with existing topics helps users discover your package.
 
 ### Ignored_advisories
 
-If a package has a dependency which is affected by a security advisory, the pub
-client will warn about the advisory at dependency resolution. Package authors
-can use the 'ignored_advisories' property to allowlist an advisory that is not
-relevant for the package. To suppress the warning about an advisory, add the
-advisory identifier to the 'ignored_advisories' list. For example:
+If a package has a dependency that is affected by a security advisory,
+pub warns about the advisory during dependency resolution.
+Package authors can use the `ignored_advisories` field as an allowlist
+of triggered advisories that are not relevant for the package.
+
+To suppress the warning about an advisory,
+add the advisory identifier to the `ignored_advisories` list.
+For example:
 
 ```yaml
 name: myapp
