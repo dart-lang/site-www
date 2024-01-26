@@ -37,7 +37,6 @@ JS types form a natural type hierarchy:
 You can find the definition of each type in the [`dart:js_interop` API docs].
 
 {% comment %}
-TODO (srujzs): Refer to this in the "interop type" section in syntax.
 TODO (srujzs): Should we add a tree diagram instead for JS types?
 {% endcomment %}
 
