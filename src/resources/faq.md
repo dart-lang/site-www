@@ -7,23 +7,43 @@ description: You have questions about Dart, we have answers.
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced.
 
-
 ## General
 
 ### Q. Is there a specification for Dart?
 
-Yes. Dart 1 has a formal specification owned by [Ecma TC52][tc52].
+Yes. EMCA-408 covers the Dart Programming Language Specification.
 
-Dart 2.x is currently being specified; the specification is available from the
-[Dart language specification](/guides/language/spec) page.
+Five versions have been published.
+The latest in-progress version covers to Dart 2.13-dev.
+
+| Edition       | Published         | Approved      | Covers to version |
+|---------------|-------------------|---------------|-------------------|
+| [6th][6th-ed] | January 24, 2024  |               | 2.13-dev          |
+| [5th][5th-ed] | April 9, 2021     |               | 2.10              |
+| [4th][4th-ed] | August 19, 2015   | December 2015 | 1.11              |
+| [3rd][3rd-ed] | April 15, 2015    | June 2015     | 1.9               |
+| [2nd][2nd-ed] | November 21, 2014 | December 2014 | 1.6               |
+| [1st][1st-ed] | March 27, 2014    | June 2014     | 1.3               |
+
+To learn more about the specification,
+review the [Dart language specification](/guides/language/spec) page.
+
+[1st-ed]: https://ecma-international.org/wp-content/uploads/ECMA-408_1st_edition_june_2014.pdf
+[2nd-ed]: https://ecma-international.org/wp-content/uploads/ECMA-408_2nd_edition_december_2014.pdf
+[3rd-ed]: https://ecma-international.org/wp-content/uploads/ECMA-408_3rd_edition_june_2015.pdf
+[4th-ed]: https://ecma-international.org/wp-content/uploads/ECMA-408_4th_edition_december_2015.pdf
+[5th-ed]: https://dart.dev/guides/language/specifications/DartLangSpec-v2.10.pdf
+[6th-ed]: https://spec.dart.dev/DartLangSpecDraft.pdf
 
 ### Q. How are you taking input on changes to Dart?
 
-We listen to feedback and [issues,][SDK issues] and we review patches from contributors.
-A contributor with a good track record can become a committer to the repository.
-Google engineers will also be working in the public repository, making visible
-changes. The project is lucky to have received many external patches and has
-welcomed distributed committers.
+The team listens to feedback, reads [issues][SDK issues],
+and reviews patches from contributors.
+A contributor with a good track record can be granted
+write permission to the repository.
+Google engineers also work in the public repository, making visible changes.
+The project has received many external patches
+and welcomes distributed committers.
 
 ---
 
@@ -32,70 +52,72 @@ welcomed distributed committers.
 ### Q. Isn't Dart a lot like Java?
 
 Dart has some similarities with Java.
-Check out the code samples in the [Introduction to Dart](/language)
-for brief examples with familiar syntax.
+To review brief examples with familiar syntax,
+reviewed the code samples in the [Introduction to Dart](/language).
 
 ### Q. How does Dart relate to Go?
 
-Dart and Go are both language projects started at Google, but they
-are independent and have different goals. As a result,
-they make different choices, and the languages have very different
-natures, even while we all try to learn from each others' work.
+Google started the Dart and Go language projects.
+These independent projects have different goals.
+As a result, they make different choices.
+The languages have very different natures,
+but team members learn from each others' work.
 
 ### Q. Why isn't Dart more like Haskell / Smalltalk / Python / Scala / other language?
 
-Various reasons, depending on the language being asked about.
+Various reasons that depend on the comparison language.
 
-For languages that are quite different from JavaScript: it's important for Dart
-to compile to efficient JavaScript.  Our experience in GWT is that if the source
-language is too different from JavaScript, it creates some cases where complex
-output code is needed to emulate the source language's behavior. This can cause
-performance to vary in ways that are not transparent to the programmer.
+Languages differ from JavaScript
+  Dart must compile to efficient JavaScript.
+  Source languages that differ too much from JavaScript can generate complex
+  output code to emulate the source language's behavior.
+  This can cause performance to vary in non-obvious ways to the programmer.
 
-For languages that are compiled to native code: it's important that Dart
-compiles efficiently to machine code, and thus it shares a number of aspects
-with other compiled languages.
+Languages that compile to native code
+  Dart prioritizes efficient compliation to machine code.
+  Therefore, it shares some aspects with other compiled languages.
 
-For languages that are "more dynamic" than Dart: Dart deliberately trades off
-some of this arbitrary runtime modification for the goal of better performance
-and more productive tools.
+Languages that are considered "more dynamic" than Dart
+  Dart chooses to trade off some of this arbitrary runtime modification
+  to achieve better performance and more productive tools.
 
 ### Q. Why isn't Dart syntax more exciting?
 
-We did throw in some nice syntactic features such as `this.` constructor args
-and `=>` for one-line functions, but we'd agree that Dart chooses
-familiarity over excitement. One team member's personal testimonial:
-"I wish it had a little more razzle dazzle but I can't deny that
-literally on my first day of writing Dart code, I was productive in it."
+Some nice syntactic features exist, like the `this.` constructor args and `=>`
+for one-line functions.
+Dart chooses familiarity over excitement.
 
 ### Q. Does Dart have reflection capabilities?
 
-For servers and command-line scripts, we have reflection support from the
-[mirrors API.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors)
-There is no support for mirrors when using Dart to write web or
-Flutter apps ([more info][Flutter no mirrors]).
+Servers and command-line scripts
+  Yes, Dart supports reflection from the [mirrors API][dart-mirror].
+Web or Flutter apps
+  No, Dart doesn't support write ([web or Flutter apps][Flutter no mirrors]).
 
-### Q. Can Dart add tuples, pattern matching, partial evaluation, optional semicolons, ...?
+### Q. Can Dart add tuples, pattern matching, ...?
 
-Future releases might be able to include (some of) those features, although
-we can't include everything. Some features don't fit the basic nature of the
-language, and some don't play well with other features. Simplicity is the single
-most important gift we can give to future programmers.
+Future releases might include some of those features.
+Some features don't fit the nature of the language.
+Some don't play well with other features.
+Simplicity is the most important gift we can give to future programmers.
 
-Please look at the [language funnel][language funnel] and
-[language issues list][language issues] to see if your request is already there.
-If it is, let us know that you care and give it a thumbs up. Otherwise, go ahead
+To check if your request has been filed,
+review at the [language funnel][language funnel] and
+[language issues list][language issues].
+If it is, give it a thumbs up.
+Otherwise, go ahead
 and add a new request issue (see the [language evolution process][language process]
-for details).  Make a thoughtful argument for your feature. Sample code with and
+for details).
+Make a thoughtful argument for your feature. Sample code with and
 without your feature is good evidence; a sizeable codebase that shows the need
 is even better evidence.
 
 Don't be surprised if the Dart language team says "no" by default.
 It's far more painful to remove a language feature than to add it, so
 Dart is likely to add the most obvious features first, and then revisit the next
-tier later.  And there simply are more possible language features in the world
-that can fit into any single language without making a total hash of it.   But
-we do very much appreciate suggestions and evidence.  We hope you'll see our
+tier later. And there simply are more possible language features in the world
+that can fit into any single language without making a total hash of it.  But
+we do very much appreciate suggestions and evidence. We hope you'll see our
 appreciation through careful design choices and fair communication about them.
 
 ---
@@ -104,12 +126,11 @@ appreciation through careful design choices and fair communication about them.
 
 ### Q. Is Dart a statically typed language?
 
-Yes, Dart 2 is statically typed. For more information,
-read about [Dart's type system][].
+Yes, Dart uses static typing. To learn more, review [Dart's type system][].
 
-With its combination of static and runtime checks, Dart has a sound type system,
-which guarantees that an expression of one type cannot produce a value of another type.
-No surprises!
+With its combination of static and runtime checks, Dart has a sound type system.
+This guarantees that an expression of one type cannot produce a value
+of another type.
 
 Even with type-safe Dart, you can annotate any variable with `dynamic` if you need the flexibility of a dynamic language.
 The `dynamic` type itself is static, but can contain any type at runtime.
@@ -139,36 +160,36 @@ Again, we're trying to be pragmatic, and we think the outcome is reasonable.
 
 ### Q. Does Dart support JSON?
 
-Yes.  See the [JSON] converters in the dart:convert library.
+Yes. To learn more, review the [JSON] converters in the dart:convert library.
 
 ### Q. Can Dart run on the server?
 
-Yes. See [Dart on the Server] for details.
+Yes. To learn more, review [Dart on the Server].
 
 ### Q. How do I use third party code, or share code?
 
-You can find many packages on the [pub.dev site][pub] a service for hosting
-packages of Dart code. Use the `pub` command to package your code and upload
-to the site.
+Search for packages on the [pub.dev site][pub],
+the package-hosting service for Dart and Flutter.
+Use the [`pub` command][pub-cmd] to package your code and upload to the site.
 
 ### Q. Do I need to use a particular editor or IDE to write Dart code?
 
-Nope. You can try out Dart code with [DartPad,][DartPad] and then use your favorite
+No. You can try out Dart code with [DartPad,][DartPad] and then use your favorite
 editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA,
 WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins
 also exist for a number of editors. For more information, see the [Dart tools][].
 
 ### Q. Can I build an Android app with Dart?
 
-Yes! You can build an Android app that also works on iOS from a single codebase
-using [Flutter][Flutter], which is powered by the Dart platform.
+Yes! You can build an Android app using the [Flutter][Flutter] framework
+and the Dart language.
+Any Flutter app you write will also work on iOS, the web, and desktop platforms.
 
 ### Q. What are some real-world production deployments of Dart?
 
-Google Ads, AdSense, AdMob, and the Google Assistant all use Dart.
+Google Ads, AdSense, AdMob, and the Google Assistant use Dart.
 A significant portion of Google's revenue flows through these apps.
 Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
-
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
@@ -243,7 +264,6 @@ long enough for runtime optimizations to be applied.
 
 ---
 
-
 ## Web: general
 
 ### Q. What browsers do you support as JavaScript compilation targets?
@@ -273,14 +293,14 @@ For setup details and a walkthrough, see [Debugging Dart Web Apps](/web/debuggin
 You can use the low-level HTML API that core libraries define like `dart:html`, or you can choose from many [web packages](/web/libraries#web-packages).
 You can also use the [Flutter framework]({{site.flutter}}), which has [web support]({{site.flutter}}/web)
 
-### Q. Will the Dart VM get into Chrome?
+### Q. Will Chrome add the Dart VM?
 
 [No.]({{site.news}}/2015/03/dart-for-entire-web.html)
-Dart is designed to compile to JavaScript to run across the modern web.
+Dart compiles to JavaScript to run across the modern web.
 
 ### Q. Is Dart single-threaded on the web?
 
-Dart is *mostly* single-threaded on the web,
+Dart is _mostly_ single-threaded on the web,
 since web apps cannot use isolates.
 To run code concurrently, web apps use [web workers][] instead.
 Web workers lack the ease and efficiency of isolates,
@@ -296,20 +316,19 @@ To learn more, see
 
 ### Q. How does Dart code interoperate with JavaScript libraries?
 
-Although Dart and JavaScript are completely separate languages with
-separate VMs, they can interoperate. For more information, see
+Dart and JavaScript exist as separate languages with separate VMs,
+though they can interoperate. To learn more, review
 [JavaScript and TypeScript interop](/interop/js-interop).
 
-### Q. I have a large JavaScript codebase. How can I migrate it to Dart?
+### Q. How can I migrate my JavaScript codebase to Dart?
 
-Try migrating one major feature at a time, and use the
-[JavaScript interoperability library][package:js]
-only when necessary.
+Migrate one major feature at a time.
+Use the [JavaScript interoperability library][package:js] when necessary.
 
 ### Q. How does Dart compare with using the Closure compiler on JavaScript?
 
-The idea of optional type annotations is similar.
-Dart's are nicer syntactically.
+Optional type annotations work in a similar way.
+Dart's syntax reads better.
 
 Compare the following Closure compiler code:
 
@@ -341,18 +360,18 @@ String makeGreeting(String name) {
 
 ### Q. How does Dart compare with CoffeeScript?
 
-Both Dart and CoffeeScript are inspired by JavaScript, and both can be
-translated back to it.  They make different choices, particularly in the flavor
-of their syntax.  As a language we think it's fair to say that Dart differs
-semantically from JavaScript more than CoffeeScript does; that may result in a
-less line-for-line translation, but we believe Dart-generated JavaScript can
-have excellent size and speed.
+JavaScript inspired both Dart and CoffeeScript and both translate to JavaScript.
+They make different choices in the flavor of their syntax.
+As a language,
+Dart's semantics differ from JavaScript more than CoffeeScript's do.
+This might result in a less line-for-line translation.
+Dart-generated JavaScript can have excellent size and speed.
 
 Dart introduces new semantics, while CoffeeScript retains the semantics
 of JavaScript.
 
-If you like CoffeeScript for its more structured feel than raw JavaScript, you
-may like Dart's static type annotations.
+If you like CoffeeScript for its more structured feel than raw JavaScript,
+you may like Dart's static type annotations.
 
 ### Q. What does Google think of TypeScript?
 
@@ -383,7 +402,7 @@ a talk from Dart Developer Summit 2016.
 
 ### Q. Will any valid Dart code compile to JavaScript, or are there limitations?
 
-We intend for any valid Dart code to compile to JavaScript.  Of course,
+We intend for any valid Dart code to compile to JavaScript. Of course,
 some libraries only run on the server or in Flutter.
 For example, the `dart:io` library
 provides access to operating system files and directories with APIs not
@@ -461,10 +480,12 @@ One exception exists: the production JavaScript compiler does not support
 64-bit integers: `Int64List` or `Uint64List`. Compiling Dart code with
 either of those lists results in a runtime exception.
 
-
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
 [package:js]: {{site.pub-pkg}}/js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
+
+[dart-mirror]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors
+[pub-cmd]: https://dart.dev/tools/pub/cmd
