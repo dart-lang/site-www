@@ -468,7 +468,8 @@ ignored_advisories:
  - GHSA-4rgh-jx4f-qfcq
 ```
 
-For more information, see [Security advisories](/tools/pub/security-advisories).
+For more information, check out
+[Security advisories](/tools/pub/security-advisories).
 
 ### SDK constraints
 
