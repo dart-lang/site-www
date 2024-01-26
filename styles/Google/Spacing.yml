@@ -3,6 +3,8 @@ message: "'%s' should have one space."
 link: 'https://developers.google.com/style/sentence-spacing'
 level: error
 nonword: true
+action:
+  name: remove
 tokens:
   - '[a-z][.?!] {2,}[A-Z]'
   - '[a-z][.?!][A-Z]'

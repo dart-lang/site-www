@@ -1,6 +1,6 @@
 extends: existence
 message: With lowercase letters, the periods are standard.
-ignorecase: true
+ignorecase: false
 level: error
 nonword: true
 tokens:
