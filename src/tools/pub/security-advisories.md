@@ -44,7 +44,7 @@ If a security advisory is not relevant for your application,
 you can suppress the warning by adding the advisory identifier to
 the `ignored_advisories` list in the `pubspec.yaml` of your package.
 For example, the following ignores the advisory
-with the CVE identifier `GHSA-4rgh-jx4f-qfcq`:
+with the GHSA identifier `GHSA-4rgh-jx4f-qfcq`:
 
 ```yaml
 name: myapp
@@ -56,4 +56,4 @@ ignored_advisories:
 
 The `ignored_advisories` list only affects the root package. Ignored
 advisories in your dependencies will have no effect on package resolution
-for your own packages.
+for your own package.
