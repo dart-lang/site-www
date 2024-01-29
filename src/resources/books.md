@@ -7,7 +7,7 @@ This page covers a collection of books about the Dart language.
 Many [Flutter books](https://flutter.dev/docs/resources/books)
 also cover Dart.
 If you find another Dart book that might be helpful,
-[let us know.](https://github.com/dart-lang/site-www/issues)
+[let us know.](https://github.com/dart-lang/website/issues)
 
 {{site.alert.warning}}
   If you find a Dart book not listed on this page,

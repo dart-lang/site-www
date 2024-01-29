@@ -9,13 +9,13 @@ https://github.com
 https://twitter.com
 
 # FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
-# https://github.com/dart-lang/site-www/issues/1107
+# https://github.com/dart-lang/website/issues/1107
 /assets/css/main.css
 
 fonts.gstatic.com
 fonts.googleapis.com
 
-github.com/dart-lang/site-www/issues/new
+github.com/dart-lang/website/issues/new
 
 # Redirects from firebase.json
 /jobs

@@ -72,7 +72,7 @@ we made the following changes to this site:
 [Extension methods]: /language/extension-methods
 [Objective-C]: /interop/objective-c-interop#callbacks-and-multithreading-limitations
 [Metadata]: /language/metadata
-[move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
+[move away from using Jekyll]: https://github.com/dart-lang/website/issues/5177
 
 ## August 16, 2023: 3.1 release
 
@@ -562,7 +562,7 @@ we made the following changes to this site:
   [PREFER using interpolation to compose strings and values][]
   Effective Dart guideline.
 
-[updated the website infrastructure]: https://github.com/dart-lang/site-www/pull/3765
+[updated the website infrastructure]: https://github.com/dart-lang/website/pull/3765
 [easier contributions]: {{site.repo.this}}#getting-started
 [`dart doc`]: /tools/dart-doc
 [`platform` entry]: /tools/pub/pubspec#platforms

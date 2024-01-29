@@ -5,7 +5,7 @@
   "description": "Source code for https://dart.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dart-lang/site-www.git"
+    "url": "https://github.com/dart-lang/website.git"
   },
   "dependencies": {
     "bootstrap-scss": "^4.6.2"

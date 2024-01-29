@@ -61,8 +61,8 @@ Learn how to
     ([issue tracker](https://github.com/dart-lang/sdk/issues/))
   * [The Dart Language](https://github.com/dart-lang/language)
     ([issue tracker](https://github.com/dart-lang/language/issues))
-  * [This site](https://github.com/dart-lang/site-www/)
-    ([issue tracker](https://github.com/dart-lang/site-www/issues/))
+  * [This site](https://github.com/dart-lang/website/)
+    ([issue tracker](https://github.com/dart-lang/website/issues/))
 
 [Dart reviews]({{page.group}}/d/forum/reviews)
 : High-traffic list of all core SDK code reviews.

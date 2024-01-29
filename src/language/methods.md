@@ -54,7 +54,7 @@ Dart allows you to define operators with the following names:
 {{site.alert.end}}
 
 {%- comment %}
-  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
+  Internal note from https://github.com/dart-lang/website/pull/2691#discussion_r506184100:
   -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
   - `!` is probably excluded for historical reasons
 {% endcomment %}

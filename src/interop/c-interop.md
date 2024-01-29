@@ -49,7 +49,7 @@ The hello_world example has the following files:
 
 {% comment %}
 [PENDING: say something about other files, like setup.sh?]
-[TODO (https://github.com/dart-lang/site-www/issues/2219): Fix build instructions.]
+[TODO (https://github.com/dart-lang/website/issues/2219): Fix build instructions.]
 {% endcomment %}
 
 Building the C library creates several files,

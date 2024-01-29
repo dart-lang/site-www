@@ -4,7 +4,7 @@ description: >-
   Dart is a client-optimized language for developing fast apps on any platform.
 url: https://dart.dev
 repo:
-  this: https://github.com/dart-lang/site-www
+  this: https://github.com/dart-lang/website
   shared: https://github.com/dart-lang/site-shared
 branch: main
 port: 4000
@@ -14,7 +14,7 @@ strict_front_matter: true
 liquid:
   error_mode: strict
   strict_filters: true
-future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+future: true # In support of https://github.com/dart-lang/website/issues/1111
 sass:
   sass_dir: _sass
   style: compressed

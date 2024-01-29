@@ -22,7 +22,7 @@ check out the [Dart tools](/tools) page.
 {% comment %}
   IMPORTANT: After each release, EDIT src/_data/pkg-vers.json
   to update the SDK version number.
-  More info: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
+  More info: https://github.com/dart-lang/website/wiki/Updating-to-new-SDK-releases
 {% endcomment %}
 
 ## What's in the Dart SDK

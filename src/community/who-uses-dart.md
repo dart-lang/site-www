@@ -22,5 +22,5 @@ as described in [this announcement.][flutter-io19]
 [flutter-io19]: https://developers.googleblog.com/2019/05/Flutter-io19.html
 
 {% comment %}
-[IDEAS FOR IMPROVEMENT: https://github.com/dart-lang/site-www/issues/679]
+[IDEAS FOR IMPROVEMENT: https://github.com/dart-lang/website/issues/679]
 {% endcomment %}

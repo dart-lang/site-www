@@ -11,7 +11,7 @@ and we're [first-timer friendly][first-timers]!
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
+Start by looking for an [issue](https://github.com/dart-lang/website/issues)
 that catches your interest, or create an issue with your proposed change.
 Ask for the issue to be assigned to you.
 
@@ -30,8 +30,8 @@ If you want or need to build, follow the steps below.
 > **Help us improve these instructions!**
 > If you have any problems getting set up to build or performing the
 > actual build, please
-> [edit this README](https://github.com/dart-lang/site-www/edit/main/README.md)
-> or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
+> [edit this README](https://github.com/dart-lang/website/edit/main/README.md)
+> or [file an issue](https://github.com/dart-lang/website/issues/new?title=README%20issue)
 > (or both).
 
 ## Before you build this site
@@ -77,7 +77,7 @@ _choose one_ of the following submodule-cloning techniques:
   using the `--recurse-submodules` option:
 
   ```terminal
-  $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+  $ git clone --recurse-submodules https://github.com/dart-lang/website.git
   ```
 
   *OR*
@@ -223,9 +223,9 @@ personal Firebase hosting staging site as follows:
   the staged version, the names of your reviewers, and so on.
 
 
-[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
-[Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
+[Build Status SVG]: https://github.com/dart-lang/website/workflows/build/badge.svg
+[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/website/badge
+[Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fwebsite
 [cloning]: https://help.github.com/articles/cloning-a-repository
 [DartPad]: https://dartpad.dev
 [Firebase]: https://firebase.google.com/
@@ -233,8 +233,8 @@ personal Firebase hosting staging site as follows:
 [first-timers]: https://www.firsttimersonly.com/
 [forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Jekyll]: https://jekyllrb.com
-[Makefile]: (https://github.com/dart-lang/site-www/blob/main/Makefile)
-[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
-[site-www]: https://github.com/dart-lang/site-www
-[Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
+[Makefile]: (https://github.com/dart-lang/website/blob/main/Makefile)
+[Repo on GitHub Actions]: https://github.com/dart-lang/website/actions?query=workflow%3Abuild+branch%3Amain
+[website]: https://github.com/dart-lang/website
+[Troubleshooting wiki page]: https://github.com/dart-lang/website/wiki/Troubleshooting
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/install

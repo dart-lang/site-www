@@ -3,7 +3,7 @@
 The example code in this folder is organized following the conventions
 documented in the [Examples][] page of the [site-shared docs][]. Consult that
 page for general information about project file organization, testing, [CI][],
-and more. Site-www specific information is given below.
+and more. `dart-lang/website` specific information is given below.
 
 ## How do I run the analyzer on an example?
 

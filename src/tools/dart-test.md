@@ -30,7 +30,7 @@ To control which tests run, you can add the paths to
 directories or files under the `test` directory:
 
 {% comment %}
-  I ran these commands in site-www/misc
+  I ran these commands in /examples/misc
 {% endcomment %}
 
 ```terminal

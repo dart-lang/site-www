@@ -37,15 +37,15 @@ More info:
 * For more ways to contribute to Dart, see the
   [dart-lang/sdk Contributing page][].
 
-[beginner]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
+[beginner]: https://github.com/dart-lang/website/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
 [dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md
 [GitHub pull request]: https://docs.github.com/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [Google Developer Documentation Style Guide]: https://developers.google.com/style/
-[help wanted]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
+[help wanted]: https://github.com/dart-lang/website/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
 [in the site-shared repo]: https://github.com/dart-lang/site-shared/blob/main/doc
-[issue tracker]: https://github.com/dart-lang/site-www/issues
+[issue tracker]: https://github.com/dart-lang/website/issues
 [on Flutter's Discord server]: https://github.com/flutter/flutter/wiki/Chat
-[Report issues]: https://github.com/dart-lang/site-www/issues/new/choose
+[Report issues]: https://github.com/dart-lang/website/issues/new/choose
 [semantic line breaks]: https://github.com/dart-lang/site-shared/blob/main/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
 [sign the CLA]: https://developers.google.com/open-source/cla/individual
 [www]: https://dart.dev
@@ -81,8 +81,8 @@ the [GitHub Actions][] CI build will fail.
 Just update the PR, and GitHub Actions will run again.
 
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
-[/src/language/variables.md]: https://github.com/dart-lang/site-www/blob/main/src/language/variables.md
-[/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/language_tour/variables.dart
+[/src/language/variables.md]: https://github.com/dart-lang/website/blob/main/src/language/variables.md
+[/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/website/blob/main/examples/misc/lib/language_tour/variables.dart
 
 ## A word about conduct
 
