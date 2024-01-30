@@ -510,8 +510,9 @@ external void someFunc(int i);
 
 External functions can be top-level functions, [instance methods][],
 [getters or setters][], or [non-redirecting constructors][].
-[Instance variables][] can be `external` too,
-and essentially equate to a getter or setter on the external value. 
+An [instance variable][] can be `external` too,
+which is equivalent to an external getter and (if the variable
+is not `final`) an external setter.
 
 The `external` keyword usually appears in interop contexts,
 to introduce type information for foreign functions or values,
@@ -534,6 +535,6 @@ heavily platform specific, so check out the interop docs on, for example,
 [instance methods]: /language/methods#instance-methods
 [getters or setters]: /language/methods#getters-and-setters
 [non-redirecting constructors]: /language/constructors#redirecting-constructors
-[Instance variables]: /language/classes#instance-variables
+[instance variable]: /language/classes#instance-variables
 [C]: /interop/c-interop
 [JavaScript]: /interop/js-interop
