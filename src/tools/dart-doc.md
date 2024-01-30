@@ -1,7 +1,7 @@
 ---
 title: dart doc
-description: API reference generation tool.
-toc: false
+description: >-
+   Learn how to generate HTML-reference documentation for public Dart libraries.
 ---
 
 The `dart doc` command generates HTML reference documentation
@@ -122,7 +122,7 @@ in the info box on the right side of the page.
 For example, you can find the API docs for `package:http`
 at [pub.dev/documentation/http]({{site.pub-api}}/http).
 
-### Dart SDK documentation {#view-sdk}
+### Dart core libraries {#view-sdk}
 
 `dart doc` is also used to generate the API reference documentation for
 the Dart core libraries.
@@ -145,7 +145,8 @@ that corresponds to the Dart release channel you are developing with.
 ## Troubleshoot
 
 The following are some common issues experienced with
-generated documentation, as well as suggestions to resolve them:
+documentation generated using `dart doc`,
+as well as suggestions to resolve them.
 
 ### Search bar failed to load {#troubleshoot-search}
 
