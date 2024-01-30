@@ -190,6 +190,8 @@
           permalink: /tools/pub/troubleshoot
         - title: Verified publishers
           permalink: /tools/pub/verified-publishers
+        - title: Security advisories
+          permalink: /tools/pub/security-advisories
         - title: Versioning
           permalink: /tools/pub/versioning
 
