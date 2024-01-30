@@ -201,7 +201,7 @@ one of the following scenarios is possible:
 
 If you see text instead of icons like the menu and theme buttons,
 it likely means that the Material Symbols font failed to load.
-To resolve this, you can:
+Some options to solve this include:
 
 - Update the generated pages to use a local version of the font.
 - Use a proxy that enables access to the Google Fonts servers.
