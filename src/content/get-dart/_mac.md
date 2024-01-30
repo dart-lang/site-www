@@ -1,30 +1,3 @@
-
-### System requirements
-{: .no_toc}
-
-Dart supports the following hardware architectures and platform versions
-to develop and run Dart code on macOS.
-
-#### Hardware architecture
-{: .no_toc}
-
-Dart supports the following CPU architectures.
-
-| Platform | x86 | x64 | ARM | ARM64 | RISC-V |
-|----------|-----|-----|-----|-------|--------|
-| macOS    | No  | Yes | No  | Yes   | No     |
-{:.table .table-striped}
-
-#### Operating system
-{: .no_toc}
-
-Dart supports the latest three major versions of macOS.
-
-| Platform | OS Versions                              |
-|----------|------------------------------------------|
-| macOS    | {% for version in site.data.macos %}{% if version.eol != false %}{% break %}{%- else -%}{{version.cycle}} ({{version.codename}}){% endif %}, {% endfor %} |
-{:.table .table-striped}
-
 ### Install using Homebrew
 {: .no_toc}
 

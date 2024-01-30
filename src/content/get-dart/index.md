@@ -101,9 +101,9 @@ Use **stable channel releases** for **production** environments.
 Examples of {{chnl}} channel version strings include {{examples}}.
 
 To install a {{chnl}} channel release,
-{% if chnl != 'stable' %}
+{%- if chnl != 'stable' %}
 download the [SDK as a zip file][dl-sdk].
-{% else %}
+{%- else %}
 follow the [instructions on this page](#install)
 {% endif %}
 
