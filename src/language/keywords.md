@@ -58,7 +58,7 @@ The following table lists the words that the Dart language treats specially.
 [export]: /guides/libraries/create-packages
 [extends]: /language/extend
 [extension]: /language/extension-methods
-[external]: https://spec.dart.dev/DartLangSpecDraft.pdf#External%20Functions
+[external]: /language/functions#external
 [factory]: /language/constructors#factory-constructors
 [false]: /language/built-in-types#booleans
 [final (variable)]: /language/variables#final-and-const
