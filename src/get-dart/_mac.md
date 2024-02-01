@@ -4,11 +4,10 @@
 
 To install the Dart SDK, use [Homebrew][].
 
-Install Homebrew, then run the following commands.
+Install Homebrew, then run the following command.
 
 ```terminal
-$ brew tap dart-lang/dart
-$ brew install dart
+$ brew install dart-sdk
 ```
 
 ### Verify PATH includes Homebrew
