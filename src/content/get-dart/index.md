@@ -1,11 +1,10 @@
 ---
 title: Get the Dart SDK
-description: >-
-  Get the libraries and command-line tools that you need to develop 
-  Dart web, command-line, and server apps.
+description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
 channel-list: [Stable, Beta, Dev]
 js:
 - url: /assets/js/get-dart/install.js
+  defer: true
 ---
 
 This page describes how to download the Dart SDK.
@@ -13,52 +12,79 @@ The Dart SDK includes the libraries and command-line tools that you need to deve
 
 To learn more about the Dart SDK, see the [Dart SDK overview](/tools/sdk).
 
+## System requirements
+
+Dart supports the following hardware architectures and platform versions
+to develop and run Dart code.
+
+{% assign yes = '<span class="material-icons" style="color: #158477;">verified</span>' %}
+{% assign no = '<span class="material-icons" style="color: #D43324">dangerous</span>' %}
+{% assign beta = '<span class="material-icons" style="color: #13C2AD">gpp_maybe</span>' %}
+{% assign na = '<span class="material-icons" style="color: #DADCE0">do_not_disturb_on</span>' %}
+{% assign macversions = '' %}
+{% for version in site.data.macos limit:3 %}
+{%- if version.eol == false -%}
+{% capture maclinkversion -%}
+[{{version.cycle}}]({{version.link}}) ({{version.codename}})
+{%- endcapture -%}
+{% assign macversions = macversions | append: maclinkversion %}
+{%- unless forloop.last -%}{% assign macversions = macversions | append: ', ' %}{% endunless -%}
+{%- endif %}
+{% endfor %}
+
+| Platform |   x86   |   x64   |  ARM32  |   ARM64   | RISC-V    | OS Versions                              |
+|----------|---------|---------|---------|-----------|-----------|------------------------------------------|
+| Windows  | {{yes}} | {{yes}} | {{no}}  | {{beta}} | {{no}}    | [10] (32-bit, 64-bit), [11][]                                   |
+| Linux    | {{yes}} | {{yes}} | {{yes}} | {{yes}}   | {{beta}} | [Debian stable][], [Ubuntu LTS][]        |
+| macOS    | {{no}}  | {{yes}} | {{na}}  | {{yes}}   | {{na}}    | {{macversions}} |
+{:.table .table-striped}
+
+{{yes}} Supported in all channels.  
+{{no}} Unsupported in all channels.  
+{{beta}} Supported in Dev, Beta channels only.  
+{{na}} No version exists.
+
 ## Choose an install option
 
 To install and update the Dart SDK from the stable channel,
 choose one of the following options:
 
 1. [Use a package manager](#install) (Recommended).
-1. [Build the SDK from source][build-source]
 1. Use a [Dart Docker image][dart-docker]
+1. Download from the [SDK Archive](/get-dart/archive)
+1. [Build the SDK from source][build-source]
 
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-*Note*: The Flutter SDK includes the full Dart SDK,
-and has Dart's [`dart`](/tools/dart-tool) command-line interface
-in its `bin` folder.
+{{site.alert.warn}}
+{% include_relative archive/_sdk-terms.md %}
+{{site.alert.end}}
 
-:::warning Notice
-{% include './archive/_sdk-terms.md' %}
-:::
-
-## Install the Dart SDK {#install}
-
-The Flutter SDK includes the full Dart SDK including the
+If you've installed or plan to
+[install the Flutter SDK][install-flutter],
+it includes the full Dart SDK. The Flutter SDK includes the
 [`dart`](/tools/dart-tool) CLI tool in Flutter's `bin` folder.
+
+## Install the Dart SDK using a package manager {#install}
+
+Install the Dart SDK using the package manager for your platform.
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
   <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
-<div id="tab-sdk-install-windows" class="tabs__content current">
-
-{% include './_windows.md' %}
-
+<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+{% include_relative _windows.md %}
 </div>
-<div id="tab-sdk-install-linux" class="tabs__content">
-
-{% include './_linux.md' %}
-
+<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+{% include_relative _linux.md %}
 </div>
-<div id="tab-sdk-install-mac" class="tabs__content">
-
-{% include './_mac.md' %}
-
+<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+{% include_relative _mac.md %}
 </div>
 
 ## About release channels and version strings {#release-channels}
@@ -109,11 +135,9 @@ follow the [instructions on this page](#install)
 
 {% endfor -%}
 
-[SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [build-source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: /libraries
 [dart-docker]: https://hub.docker.com/_/dart
 [dl-sdk]: /get-dart/archive
-[flutter]: https://flutter.dev/docs/get-started/install
-[site SDK version]: {{site.dart-api}}/{{site.sdkInfo.channel}}/{{site.sdkInfo.version}}/index.html
-[a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get
+[install-flutter]: {{site.flutter-docs}}/get-started/install
+[10]: https://www.microsoft.com/en-us/software-download/windows10%20
+[11]: https://www.microsoft.com/en-us/software-download/windows11
