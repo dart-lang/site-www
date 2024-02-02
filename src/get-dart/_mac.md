@@ -4,11 +4,20 @@
 
 To install the Dart SDK, use [Homebrew][].
 
-Install Homebrew, then run the following command.
+1. Install Homebrew if needed.
 
-```terminal
-$ brew install dart-sdk
-```
+1. Add the [official tap][tap].
+
+   ```terminal
+   $ brew tap dart-lang/dart
+   ```
+
+1. Install the Dart SDK.
+
+   ```terminal
+   $ brew install dart
+   ```
+
 
 ### Verify PATH includes Homebrew
 {: .no_toc}
@@ -57,4 +66,5 @@ $ brew info dart
 ```
 
 [Homebrew]: https://brew.sh
-[Homebrew FAQ]: https://docs.brew.sh/FAQ
+[tap]: {{site.gh-dart.org}}/homebrew-dart
+[Homebrew FAQ]: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-homebrew-utilities
