@@ -4,19 +4,19 @@
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 [![first-timers SVG][]][first-timers]
 
-The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
+The [Dart](https://dart.dev) site, built with [Jekyll][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md),
-and we're [first-timer friendly][first-timers]!
+[The Flutter team welcomes contributions](CONTRIBUTING.md),
+and [first-time contributors][first-timers]!
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
+To start, look for an [issue](https://github.com/dart-lang/site-www/issues)
 that catches your interest, or create an issue with your proposed change.
-Ask for the issue to be assigned to you.
+Ask someone to assign the issue to you.
 
 To update this site, fork the repo, make your changes, and generate a pull
-request. For simple changes (such as to CSS and text), you probably don't need
+request. For simple changes like CSS and text, you shouldn't need
 to build this site. Often you can make changes using the GitHub UI.
 
 > **NOTE:** If you clone this repo locally,
@@ -49,17 +49,17 @@ Install the following tools, if you don't have them already:
 
 - **GNU Make**.
   On Windows the easiest way to install Make is `choco install make`
-  using command prompt or powershell as an admin.
+  using command prompt or PowerShell as an admin.
   Other options include using a [subsystem][wsl].
 
 - **Docker**.
-  We use Docker for local dev, tests, and building the site.
+  To develop, test, and build the site, use Docker.
   Install it from https://docs.docker.com/get-docker/.
 
 - **Firebase CLI**, for hosting the site locally.
-  One way to get this is to run `npm install -g firebase-tools`.
+  Run `npm install -g firebase-tools`.
   For full setup details,
-  read the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
+  check out the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
 
 ### 2. Clone this repo _and_ its submodules
 
@@ -105,7 +105,7 @@ _choose one_ of the following submodule-cloning techniques:
    $ git checkout -b <BRANCH_NAME>
    ```
 
-2. If the Docker Desktop application isn't already running on your machine,
+2. If the Docker Desktop app isn't already running on your machine,
    start it. Look for the Docker status icon: if it has an exclamation
    point (`!`), then update Docker Desktop before proceeding.
 
@@ -127,12 +127,12 @@ _choose one_ of the following submodule-cloning techniques:
 
 5. View your changes in the browser by navigating to `http://localhost:4000`.
    > **Note:** Unless you're editing files under `site-shared`,
-   > you can safely ignore `ERROR: directory is already being watched` messages.
+   > you can ignore `ERROR: directory is already being watched` messages.
    > For details, see [#1363](https://github.com/flutter/website/issues/1363).
 
 6. Make your changes to the local repo.
 
-   The site will rebuild and the browser will autoreload to reflect the changes.
+   The site rebuilds and the browser reloads to reflect the changes.
 
    > **Tip:** If you aren't seeing the changes you expect (e.g. src/_data),
    > <kbd>Ctrl</kbd> + <kbd>C</kbd> out of your running dev server and rebuild the site from scratch
@@ -151,7 +151,7 @@ _choose one_ of the following submodule-cloning techniques:
    $ make down
    ```
 
-> **Tip:** To find additional commands, read the [Makefile][].
+> **Tip:** To find more commands, read the [Makefile][].
 > For example, if you need to debug the Docker setup,
 > you can run:
 >
@@ -207,8 +207,8 @@ personal Firebase hosting staging site as follows:
    $ make build
    ```
 
-   This will build the site and copy it to your local `_site` directory.
-   If that directory previously existed, it will be replaced.
+   This command builds the site and copy it to your local `_site` directory.
+   If that directory existed, the command replaces it.
 
 1. Deploy to your activated Firebase project's default hosting site:
 
@@ -216,8 +216,8 @@ personal Firebase hosting staging site as follows:
    $ FIREBASE_PROJECT=<your-project> make deploy
    ```
 
-   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file
-   > and it will overwrite the default every time you deploy without specifying.
+   > **Tip:** Add your `FIREBASE_PROJECT` env var to your `.env` file
+   > and it overwrites the default every time you deploy without specifying.
 
 1. Navigate to your PR on GitHub and update it with the location of
   the staged version, the names of your reviewers, and so on.
