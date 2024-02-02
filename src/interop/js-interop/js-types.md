@@ -6,13 +6,15 @@ description: Usage information about the core types in JS interop.
 Dart values and JS values belong to separate language domains. When compiling to
 Wasm, they execute in separate *runtimes* as well. As such, you should treat JS
 values as foreign types. To provide Dart types for JS values,
-[`dart:js_interop`] exposes a set of [extension types] prefixed with `JS` called
-"JS types".
+[`dart:js_interop`] exposes a set of types prefixed with `JS` called "JS types".
+These types are used to distinguish between Dart values and JS values at
+compile-time.
 
-Importantly, these types have compiler-specific [representation types]. This
-means that their runtime type will differ based on whether code is compiled to
-Wasm or JS. In order to interact with and examine these JS values, you should
-use [`external`] interop members.
+Importantly, these types are reified differently based on whether you compile to
+Wasm or JS. This means that their runtime type will differ, and therefore you
+[can't use `is` checks and `as` casts](#compatibility-type-checks-and-casts).
+In order to interact with and examine these JS values, you should use
+[`external`] interop members or [conversions](#conversions).
 
 ## Type hierarchy
 
@@ -48,27 +50,22 @@ to convert a Dart `List<JSString>` into a JS array of strings, which is
 represented by the JS type `JSArray<JSString>`, so that you can pass the array
 to a JS interop API.
 
-Dart supplies a number of `extension` members on various Dart types and JS types
+Dart supplies a number of conversion members on various Dart types and JS types
 to convert the values between the domains for you.
 
-Members that convert values from Dart to JS are usually labeled-as or
-prefixed-with `toJS`:
+Members that convert values from Dart to JS usually start with `toJS`:
 
 ```dart
 String str = 'hello world';
 JSString jsStr = str.toJS;
 ```
 
-Members that convert values from JS to Dart are usually labeled-as or
-prefixed-with `toDart`:
+Members that convert values from JS to Dart usually start with `toDart`:
 
 ```dart
 JSNumber jsNum = ...;
 int integer = jsNum.toDartInt;
 ```
-
-These conversion functions are often marked `external`, but aren't interop
-members. Their implementation is provided in the compiler instead.
 
 Not all JS types have a conversion, and not all Dart types have a conversion.
 Generally, the conversion table looks like the following:
@@ -149,10 +146,9 @@ second example.
 
 ## Compatibility, type checks, and casts
 
-The representation type of JS types may differ based on the compiler. This
-affects runtime type-checking and casts. Therefore, almost always avoid `is`
-checks where the value is an interop type or where the target type is an interop
-type:
+The runtime type of JS types may differ based on the compiler. This affects
+runtime type-checking and casts. Therefore, almost always avoid `is` checks
+where the value is an interop type or where the target type is an interop type:
 
 {:.bad}
 ```dart
@@ -160,10 +156,11 @@ void f(JSAny a) {
   if (a is String) { … }
 }
 ```
+
 {:.bad}
 ```dart
-void f(JSObject o) {
-  if (o is JSObject) { … }
+void f(JSAny a) {
+  if (a is JSObject) { … }
 }
 ```
 
@@ -202,13 +199,16 @@ avoid. See issue [#4841] for more details.
 JS has both a `null` and an `undefined` value. This is in contrast with Dart,
 which only has `null`. In order to make JS values more ergonomic to use, if an
 interop member were to return either JS `null` or `undefined`, the compiler maps
-these values to Dart `null`. Therefore a member like `value` in the following example
-can be interpreted as returning a JS object, JS `null`, or `undefined`:
+these values to Dart `null`. Therefore a member like `value` in the following
+example can be interpreted as returning a JS object, JS `null`, or `undefined`:
 
 ```dart
 @JS()
 external JSObject? get value;
 ```
+
+If the return type was not declared as nullable, then the compiler will throw an
+error if the value returned was JS `null` or `undefined` to ensure soundness.
 
 {{site.alert.warn}}
 There is a subtle inconsistency with regards to `undefined` between compiling to
@@ -231,8 +231,6 @@ TODO: add links (with stable) when ready:
 {% endcomment %}
 
 [`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
-[extension types]: /
-[representation types]: /
 [`external`]: https://dart.dev/language/keywords
 [`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`dart:js_interop` API docs]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html#extension-types

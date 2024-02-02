@@ -351,7 +351,7 @@ TODO: How do you link to a subsection of another section?
 ["JS types"]: /interop/js-interop/js-types
 [extension types]: /
 [`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
-[restrictions]: /
+[restrictions]: /interop/js-interop/js-types.md#restrictions
 [`Date`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 [property accessors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [utility functions]: https://api.dart.dev/dev/dart-js_interop/JSAnyOperatorExtension.html
