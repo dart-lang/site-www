@@ -505,7 +505,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 [`Iterable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
 
-## External functions {#external}
+## External functions {:#external}
 
 An external function is a function whose body is implemented separately from its
 declaration. Include the `external` keyword before a function declaration, like so:
