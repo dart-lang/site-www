@@ -68,7 +68,7 @@ don't include the section header.
 
 ## 3.4.0
 
-**Tentative**
+**Tentative**<br>
 The following changes are expected to be included in the 3.4.0 stable release,
 but the final list will likely change before then.
 To reduce the potential impact of these changes, consider
@@ -140,7 +140,7 @@ accounting for them before the 3.4.0 release.
 
 ## 3.3.0
 
-**Tentative**
+**Tentative**<br>
 The following changes are expected to be included in the 3.3.0 stable release,
 but the final list might change before then.
 To reduce any potential impact of these changes, consider
@@ -181,8 +181,9 @@ accounting for them before the 3.3.0 release.
 * **Deprecated**: [The `elementAt` pointer arithmetic methods
   on `Pointer` types are deprecated][54250].
   Migrate to the `-` and `+` operators instead.
-* **Experimental** **Removed**: The previously deprecated `FfiNative` annotation
-  has been removed. Usages should be updated to use the `Native` annotation.
+* **Experimental** **Removed**: The previously deprecated
+  `@FfiNative` annotation has been removed. Usages should be
+  updated to use the `@Native` annotation.
 
 [54250]: https://github.com/dart-lang/sdk/issues/54250
 
@@ -457,8 +458,8 @@ accounting for them before the 3.3.0 release.
 
 #### `dart:ffi`
 
-* **Experimental** **Deprecated**: The `FfiNative` annotation is now deprecated.
-  Usages should be replaced with the `Native` annotation.
+* **Experimental** **Deprecated**: The `@FfiNative` annotation is
+  now deprecated. Usages should be updated to use the `@Native` annotation.
 
 #### `dart:html`
 
