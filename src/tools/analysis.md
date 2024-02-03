@@ -456,10 +456,10 @@ analyzer:
     - test/_data/**
 ```
 
+<a id="suppressing-rules-for-a-file"></a>
+### Suppressing diagnostics for a file
 
-### Suppressing rules for a file
-
-To ignore a specific non-error rule for a specific file,
+To ignore a specific non-error diagnostic for a specific file,
 add an `ignore_for_file` comment to the file:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
@@ -470,7 +470,7 @@ add an `ignore_for_file` comment to the file:
 This acts for the whole file, before or after the comment, and is
 particularly useful for generated code.
 
-To suppress more than one rule, use a comma-separated list:
+To suppress more than one diagnostic, use a comma-separated list:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
@@ -488,12 +488,11 @@ To suppress all linter rules, add a `type=lint` specifier:
   Support for the `type=lint` specifier was added in Dart 2.15.
 {{site.alert.end}}
 
+<a id="suppressing-rules-for-a-line-of-code"></a>
+### Suppressing diagnostics for a line of code
 
-### Suppressing rules for a line of code
-
-To suppress a specific non-error rule on a specific line of code,
-put an `ignore` comment
-above the line of code. 
+To suppress a specific non-error diagnostic on a specific line of Dart code,
+put an `ignore` comment above the line of code. 
 Here's an example of ignoring code that causes a runtime error, 
 as you might do in a language test:
 
@@ -503,7 +502,7 @@ as you might do in a language test:
 int x = '';
 ```
 
-To suppress more than one rule, supply a comma-separated list:
+To suppress more than one diagnostic, supply a comma-separated list:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
 ```dart
@@ -511,13 +510,37 @@ To suppress more than one rule, supply a comma-separated list:
 const x = y;
 ```
 
-Alternatively, append the ignore rule to the line that it applies to:
+Alternatively, append the ignore comment to the line that it applies to:
 
 <?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
 ```dart
 int x = ''; // ignore: invalid_assignment
 ```
 
+### Suppressing diagnostics in a pubspec file
+
+If you need to suppress a non-error diagnostic from the analyzer
+in a `pubspec.yaml` file, add an `ignore` comment above the affected line.
+
+The following example ignores the [`sort_pub_dependencies`][] lint
+as it wants to put the `flutter` dependency first:
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ignore: sort_pub_dependencies
+  collection: ^1.18.0
+```
+
+{{site.alert.version-note}}
+  Support for ignore comments in `pubspec.yaml` files was added in Dart 3.3.
+  If you are using Dart 3.2 or earlier,
+  the ignored diagnostic will still be triggered.
+{{site.alert.end}}
+
+[`sort_pub_dependencies`]: /tools/linter-rules/sort_pub_dependencies
 
 ## Customizing analysis rules
 
