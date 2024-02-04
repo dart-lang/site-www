@@ -1586,7 +1586,7 @@ it's deprecated.
 
 ### PREFER inline function types over typedefs
 
-{% include 'linter-rule-mention.md', rules'avoid_private_typedef_functions' %}
+{% include 'linter-rule-mention.md', rules:'avoid_private_typedef_functions' %}
 
 In Dart, if you want to use a function type for a field, variable, or
 generic type argument, you can define a typedef for the function type.
