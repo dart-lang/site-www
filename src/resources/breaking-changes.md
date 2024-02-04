@@ -92,10 +92,11 @@ accounting for them before the 3.4.0 release.
 
 [52121]: https://github.com/dart-lang/sdk/issues/52121
 
-#### `dart:html`
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
 
-- This library is now marked as legacy and will see less support in the future.
-  New projects should prefer to use [`package:web`][].
+- These libraries are now marked as legacy and
+  will see less support in the future.
+  New projects should prefer to use [`package:web`][] and `dart:js_interop`.
 
 [`package:web`]: {{site.pub-pkg}}/web
 
