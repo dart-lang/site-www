@@ -135,11 +135,13 @@ _choose one_ of the following submodule-cloning techniques:
    This command generates and serves the site on a
    local port that's printed to your terminal.
 
-5. View your changes in the browser by navigating to `http://localhost:4000`.
+5. View your changes in the browser by navigating to <http://localhost:4000>.
 
-   The port might be different if `4000` is taken.
-   If you need to view the generated fields,
-   they can be found in the `_site` directory.
+   > [!NOTE]
+   > The port might be different if `4000` is taken.
+   
+   To instead view the source of generated site files,
+   check the `_site` directory.
 
 6. Make your changes to the local repo.
 
