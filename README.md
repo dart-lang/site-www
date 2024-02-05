@@ -115,18 +115,26 @@ _choose one_ of the following submodule-cloning techniques:
    ```
 
 3. From the root directory of the repository,
-   enable `corepack` to set up `pnpm`, then
-   fetch the site's npm dependencies.
-   If you already have `pnpm` installed,
+   enable [`corepack`][] to set up [`pnpm`][].
+   `corepack` comes bundled with Node and `pnpm`
+   is an alternative, efficient package manager for npm packages.
+   If you already have `pnpm` installed or installed it a different way,
    you can skip the `corepack` commands.
 
    ```terminal
    corepack enable
    corepack install
+   ```
+
+4. Once you have `pnpm` installed and setup,
+   fetch the site's npm dependencies.
+   We recommend you use `pnpm`, but you can also use `npm`.
+
+   ```terminal
    pnpm install
    ```
 
-4. From the root directory, serve the site locally.
+5. From the root directory, serve the site locally.
 
    ```terminal
    dart run dart_site serve
@@ -135,7 +143,7 @@ _choose one_ of the following submodule-cloning techniques:
    This command generates and serves the site on a
    local port that's printed to your terminal.
 
-5. View your changes in the browser by navigating to <http://localhost:4000>.
+6. View your changes in the browser by navigating to <http://localhost:4000>.
 
    > [!NOTE]
    > The port might be different if `4000` is taken.
@@ -143,13 +151,14 @@ _choose one_ of the following submodule-cloning techniques:
    To instead view the source of generated site files,
    check the `_site` directory.
 
-6. Make your changes to the local repo.
+7. Make your changes to the local repo.
 
    The site should automatically rebuild on most changes, but if
    something doesn't update, exit the process and rerun the command.
    Improvements to this functionality are planned.
+   Please open a new issue to track the issue if this occurs.
 
-7. Commit your changes to the branch and submit your PR.
+8. Commit your changes to the branch and submit your PR.
 
    If your change is large, or you'd like to test it,
    consider [validating your changes](#validate-your-changes) and
@@ -158,6 +167,9 @@ _choose one_ of the following submodule-cloning techniques:
 > [!TIP]
 > To find additional commands that you can run,
 > run `dart run dart_site --help` from the repository's root directory.
+
+[`corepack`]: https://nodejs.org/api/corepack.html
+[`pnpm`]: https://pnpm.io/
 
 ## Validate your changes
 
@@ -173,7 +185,12 @@ dart run dart_site check-all
 
 If this script reports any errors or warnings,
 then address those issues and rerun the command.
-If you have any issues, reach out for help.
+If you have any issues, leave a comment on your issue or pull request,
+and we'll try our best to help you.
+You can also chat with us on the `#hackers-devrel` channel
+on the [Flutter contributors Discord][]!
+
+[Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
 
 ## Deploy to a staging site
 

@@ -11,7 +11,7 @@ final class BuildSiteCommand extends Command<int> {
     argParser.addFlag(
       _releaseFlag,
       defaultsTo: false,
-      help: 'Build a release build for dart.dev.',
+      help: 'Build a release build for dart.dev. Optimizes site resources.',
     );
   }
 

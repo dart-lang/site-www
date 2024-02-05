@@ -1,3 +1,7 @@
+// This file is the entry point for all 11ty configuration.
+// It configures the core 11ty behavior and registers
+// plugins and customization that live in `/src/_11ty`.
+
 import {
   activeNavEntryIndexArray,
   arrayToSentenceString,
