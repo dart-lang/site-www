@@ -81,8 +81,6 @@ follow the update instructions for how you originally installed it.
 [Node.js download archive]: https://nodejs.org/en/download/
 [nvm]: https://github.com/nvm-sh/nvm
 
-### Install the prerequisites
-
 ### Clone this repo and its submodules
 
 > [!NOTE]
@@ -122,6 +120,10 @@ _choose one_ of the following submodule-cloning techniques:
 > ```
 
 ## Set up your local environment and serve changes
+
+Before you continue setting up the site infrastructure,
+verify the correct versions of Dart and Node.js are set up and available by
+following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 1. _Optional:_ After cloning the repo and its submodules,
    create a branch for your changes:
