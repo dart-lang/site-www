@@ -4,10 +4,27 @@ import { selectAll } from 'hast-util-select';
 import { toText } from 'hast-util-to-text';
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
 
+/**
+ * Replace text in {@link input} that matches the specified {@link regex}
+ * with the specified {@link replacement}.
+ *
+ * @param {string} input
+ * @param {RegExp} regex
+ * @param {string} replacement
+ * @return {string} The resulting string with the replacement made.
+ */
 export function regexReplace(input, regex, replacement = '') {
   return input.toString().replace(new RegExp(regex), replacement);
 }
 
+/**
+ * Convert a {@link Date} to an ISO string.
+ *
+ * Used to add date information to the sitemap.
+ *
+ * @param {string|Date} input The date to convert
+ * @return {string} The ISO string
+ */
 export function toISOString(input) {
   if (input instanceof Date) {
     return input.toISOString();
