@@ -124,6 +124,19 @@ function adjustToc() {
   $(document.body).scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
+function adjustHeadingAnchors() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const headingAnchors = document.querySelectorAll('a.anchor[aria-hidden]');
+    // const headingAnchors = document.querySelectorAll('span.octicon-link');
+    // const headingAnchors = document.querySelectorAll('h2[id]');
+    console.log(headingAnchors)
+    headingAnchors.forEach(element => {
+      // element.setAttribute('aria-disabled', 'true');
+      element.setAttribute('tabindex', '-1');
+    });
+  });
+}
+
 function createGallery() {
   for (let i = 0; i < arguments.length; i++) {
     const galleryName = arguments[i];
@@ -234,4 +247,7 @@ $(function() {
     }
   });
 
+  
 });
+
+adjustHeadingAnchors(); // Disable ARIA for copyable anchor links
