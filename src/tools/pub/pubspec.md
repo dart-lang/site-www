@@ -94,6 +94,10 @@ A pubspec can have the following fields:
 : Optional. List of topics for the package.
   [_Learn more._](#topics)
 
+`ignored_advisories`
+: Optional. List of ignored security advisories.
+  [_Learn more._](#ignored_advisories)
+
 Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
@@ -444,6 +448,28 @@ Pub.dev requires topics to follow these specifications:
 
 When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
+
+### Ignored_advisories
+
+If a package has a dependency that is affected by a security advisory,
+pub warns about the advisory during dependency resolution.
+Package authors can use the `ignored_advisories` field as an allowlist
+of triggered advisories that are not relevant for the package.
+
+To suppress the warning about an advisory,
+add the advisory identifier to the `ignored_advisories` list.
+For example:
+
+```yaml
+name: myapp
+dependencies:
+  foo: ^1.0.0
+ignored_advisories:
+ - GHSA-4rgh-jx4f-qfcq
+```
+
+For more information, check out
+[Security advisories](/tools/pub/security-advisories).
 
 ### SDK constraints
 

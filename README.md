@@ -164,17 +164,14 @@ _choose one_ of the following submodule-cloning techniques:
 ### Checking documentation and example code
 
 If you've made changes to this site's documentation and/or example code,
-and committed locally, then run the following command before pushing your work:
+and committed locally, then run the following commands before pushing your work:
 
 ```terminal
 # Enter a running Docker container shell
 $ make run
 
 # Check/validate example code
-$ tool/test.sh
-
-# Check links for 404 errors
-$ tool/check-links.sh
+$ dart run dart_site check-all
 ```
 
 If these scripts report errors or warnings,
@@ -225,44 +222,6 @@ personal Firebase hosting staging site as follows:
 1. Navigate to your PR on GitHub and update it with the location of
   the staged version, the names of your reviewers, and so on.
 
-
-## Creating and/or editing DartPad example code
-
-Most of the code used to create [DartPad][] examples is hosted on GitHub.
-However, this repo also contains some `*.dart` files
-responsible for DartPad example code.
-
-### DartPad picker
-
-The DartPad example picker must be manually compiled if changes are made.
-This will regenerate the associated JavaScript file in `src/assets/dash/js`:
-
-```terminal
-$ tool/compile.sh
-```
-
-## Dockerfile Maintenance
-
-### Dart SDK and Node PPA Checksum values
-
-Since the Dart SDK setup fetches remote files,
-it's important to verify checksum values.
-Both installs use `latest` and `lts` respectively,
-so these files may be periodically updated.
-When this happens,
-local checksums may fail and **This will break the Docker/Compose setup/build**.
-You will see the relevant output in your shell e.g. `DART CHECKSUM FAILED!...`.
-When this happens, run the following command:
-
-```terminal
-$ make fetch-sums
-```
-
-This command will output the updated checksum values for Dart,
-and that output will be formatted similar
-or the same as what is currently in the Dockerfile.
-Copy this output and replace the relevant install code in the Dockerfile,
-then rerun your setup/build again.
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
