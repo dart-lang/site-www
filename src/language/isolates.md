@@ -310,11 +310,11 @@ class Worker {
   }
 
   void _handleResponsesFromIsolate(dynamic message) {
-    // TODO: Define code that should be executed on the worker isolate.
+    // TODO: Handle messages sent back from the worker isolate.
   }
 
   static void _startRemoteIsolate(SendPort port) {
-    // TODO: Handle messages sent back from the worker isolate.
+    // TODO: Define code that should be executed on the worker isolate.
   }
 
   Future<void> parseJson(String message) async {
