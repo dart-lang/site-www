@@ -207,7 +207,8 @@ void testE() {
 Then you can invoke members on the object as you would with a class object.
 Any attempt to treat the extension type object as an object
 of the representation type, or vice versa, will result in compile time errors
-(unless the extension type is [transparent](#transparency)).
+(unless that behavior is explicitly defined for the extension type,
+or it is [transparent](#transparency)).
 For example:
 
 ```dart
@@ -216,10 +217,10 @@ void testE() {
   int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
   
   num.isValid(); // Ok: Extension member invocation.
-  num.isNegative(); // Error: 'NumberE' does not define int member 'isNegative'.
+  num.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
   
   var sum = num + num; // Ok: 'NumberE' defines '+'.
-  var diff = num - num; // Error: 'NumberE' does not define int member '-'.
+  var diff = num - num; // Error: 'NumberE' does not define 'int' member '-'.
   var diff2 = num.value - 2; // Ok: Can access representation object with reference.
   var sum2 = num + 2; // Error: Can't assign 'int' to parameter type 'NumberE'. 
   
@@ -243,20 +244,18 @@ only the members declared in the extension type body are available to it
 ```dart
 extension type NumberT(int value) 
   implements int {
-  // Doesn't explicitly include any members of 'int'.
+  // Doesn't explicitly declare any members of 'int'.
   NumberT get i => NumberT(value);
 }
 
 void main () {
   var num = NumberT(1);
+  
   // All OK: Representation type interface is available to extension type:
   int numT = NumberT(2);
-
-  num.i - num;
-  numT + num;
-  num - 1;
-  2 + num;
-  // Error: Extension type member not defined for representation type:
+  num.i - num; numT + num; num - 1; 2 + num;
+  
+  // Error: Extension type interface is not available to representation type:
   numT.i;
 }
 ```
@@ -265,16 +264,18 @@ Transparency is a conceptual decision for the extension type creator to consider
 A transparent extension type provides an *extended* interface to an existing type.
 You can invoke all the members of the representation type,
 plus any auxillary members you declare. The new interface is available
-to instances of the extension type. 
-The inverse option is restricting all members of the representation, providing
-a totally *different* interface to an existing type by not implementing the
-representation and not declaring any of its members in the extension type definition.
+to instances of the extension type.
+
+The inverse to transparency is restricting all members of the representation,
+providing a totally *different* interface to an existing type.
+This means simply not including it in the extension type's implements clause,
+and not declaring any of its members in its definition.
 This is as close as you can get to the complete protection of a wrapper class.
 
 ## Type considerations
 
 Extension types are a compile-time wrapping construct.
-At runtime, there is absolutely no trace of the extension type.
+So, at runtime, there is absolutely no trace of the extension type.
 Any type query or similar runtime expression works on the representation type.
 
 This makes extension types an *unsafe* abstraction,
