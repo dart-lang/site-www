@@ -7,23 +7,33 @@ prevpage:
   title: Fetch data from the internet
 ---
 
-Here are some resources for writing servers using Dart:
+Dart resources for writing HTTP servers include:
 
-* Documentation
-  * [Using Google Cloud][] has information on Google Cloud products
-    that Dart servers can use, such as Cloud Run.
-  * [Using Google APIs][] points to resources to help you
-    use Firebase and Google client APIs from a Dart app.
-* Samples
-  * [A simple Dart HTTP server][simple-sample]
-    * Uses the [`shelf`][] package.
-    * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
-    * Is deployable on Cloud Run.
-  * [A Dart HTTP server that uses Cloud Firestore][cloud-sample]
-    * Uses the Cloud Firestore features in the [`googleapis`][] package.
-    * Also uses the [`googleapis_auth`][], [`shelf`][], and
-      [`shelf_router`][] packages.
-    * Is deployable on Cloud Run.
+## Packages
+
+* [cronet_http]({{site.pub-pkg}}/cronet_http)
+  Provides access to the Android [Cronet][] HTTP client.
+* [cupertino_http]({{site.pub-pkg}}/cupertino_http)
+  Provides access to Apple's [Foundation URL Loading System][furl].
+
+## Documentation
+
+* [Using Google Cloud][] has information on Google Cloud products
+  that Dart servers can use, such as Cloud Run.
+* [Using Google APIs][] points to resources to help you
+  use Firebase and Google client APIs from a Dart app.
+
+## Samples
+
+* [A simple Dart HTTP server][simple-sample]
+  * Uses the [`shelf`][] package.
+  * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
+  * Is deployable on Cloud Run.
+* [A Dart HTTP server that uses Cloud Firestore][cloud-sample]
+  * Uses the Cloud Firestore features in the [`googleapis`][] package.
+  * Also uses the [`googleapis_auth`][], [`shelf`][], and
+    [`shelf_router`][] packages.
+  * Is deployable on Cloud Run.
 
 [cloud-sample]: https://github.com/dart-lang/samples/tree/main/server/google_apis
 [`googleapis`]: {{site.pub-pkg}}/googleapis
@@ -34,3 +44,6 @@ Here are some resources for writing servers using Dart:
 [simple-sample]: https://github.com/dart-lang/samples/tree/main/server/simple
 [Using Google APIs]: /guides/google-apis
 [Using Google Cloud]: /server/google-cloud
+
+[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system

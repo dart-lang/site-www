@@ -16,13 +16,15 @@ Commonly used packages fall into three groups:
 
 ## General-purpose packages
 
-The following packages are useful for a wide range of projects.
+Use these packages for a wide range of projects.
 
 | **Package** | **Description** | **Commonly used APIs** |
 |-------------|-----------------|------------------------|
 | [archive]({{site.pub-pkg}}/archive) | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
-| [characters]({{site.pub-pkg}}/characters) | String manipulation for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
-| [http]({{site.pub-pkg}}/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
+| [characters]({{site.pub-pkg}}/characters) | Manipulates strings for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
+| [cronet_http]({{site.pub-pkg}}/cronet_http) | Provides access to the Android [Cronet](https://developer.android.com/guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary) HTTP client. | |
+| [cupertino_http]({{site.pub-pkg}}/cupertino_http) | Provides access to Apple's [Foundation URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system). | |
+| [http]({{site.pub-pkg}}/http) | Provides set of high-level functions and classes to simplify consuming HTTP resources. | delete(), get(), post(), read() |
 | [intl]({{site.pub-pkg}}/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [json_serializable]({{site.pub-pkg}}/json_serializable) | An easy-to-use code generation package. For more information, see [JSON Support](/guides/json). | @JsonSerializable |
 | [logging]({{site.pub-pkg}}/logging) | A configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
@@ -50,7 +52,6 @@ adding functionality and filling in missing features:
 |[io]({{site.pub-pkg}}/io) | Contains two libraries, ansi and io, to simplify working with files, standard streams, and processes. Use the ansi library to customize terminal output. The io library has APIs for dealing with processes, stdin, and file duplication. |  copyPath(), isExecutable(), ExitCode, ProcessManager, sharedStdIn |
 
 {:.table .table-striped .nowrap}
-
 
 ## Specialized packages
 
