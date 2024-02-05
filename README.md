@@ -43,22 +43,45 @@ enable an edit-refresh cycle.
 
 ### Get the prerequisites
 
-Install the following tools, if you don't have them already:
+Install the following tools to build and develop the site:
 
-- **Dart**
-  The latest stable release of Dart is required to build the site
-  and run its tooling. This can be the Dart included in the Flutter SDK.
-  If you don't have Dart or need to update, follow the
-  instructions at [Get the Dart SDK][].
+#### Dart
 
-- **Node.js**
-  The latest stable LTS release of Node.js is required to build the site.
-  If you don't have Node.js or need to update, download your
-  computer's corresponding version and follow the instructions
-  from the [Node.js download archive][].
+The latest stable release of Dart is required to build the site
+and run its tooling. This can be the Dart included in the Flutter SDK.
+If you don't have Dart or need to update, follow the
+instructions at [Get the Dart SDK][].
+
+If you already have Dart installed, verify it's on your path
+and already the latest stable version:
+
+```terminal
+dart --version
+```
+
+#### Node.js
+
+The latest stable LTS release of Node.js is required to build the site.
+If you don't have Node.js or need to update, download your
+computer's corresponding version and follow the instructions
+from the [Node.js download archive][].
+If you prefer, you can use a version manager such as [nvm][].
+
+If you already have Node installed, verify it's available on your path
+and already the latest stable version _(`20` or later)_:
+
+```terminal
+node --version
+```
+
+If your version is out of date,
+follow the update instructions for how you originally installed it.
 
 [Get the Dart SDK]: https://dart.dev/get-dart
 [Node.js download archive]: https://nodejs.org/en/download/
+[nvm]: https://github.com/nvm-sh/nvm
+
+### Install the prerequisites
 
 ### Clone this repo and its submodules
 
@@ -161,8 +184,7 @@ _choose one_ of the following submodule-cloning techniques:
 8. Commit your changes to the branch and submit your PR.
 
    If your change is large, or you'd like to test it,
-   consider [validating your changes](#validate-your-changes) and
-   [deploying to a staging site](#deploy-to-a-staging-site).
+   consider [validating your changes](#validate-your-changes).
 
 > [!TIP]
 > To find additional commands that you can run,
@@ -192,7 +214,7 @@ on the [Flutter contributors Discord][]!
 
 [Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
 
-## Deploy to a staging site
+## [Optional] Deploy to a staging site
 
 Submitted pull requests can be automatically staged
 by a site maintainer.

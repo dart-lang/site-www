@@ -16,6 +16,9 @@ import 'src/commands/serve.dart';
 import 'src/commands/test_dart.dart';
 import 'src/commands/verify_firebase_json.dart';
 
+/// The root command runner of the `dart_site` command.
+/// To learn about it and its subcommands,
+/// run `dart run dart_site --help`.
 final class DartSiteCommandRunner extends CommandRunner<int> {
   DartSiteCommandRunner()
       : super(
