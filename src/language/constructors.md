@@ -23,11 +23,11 @@ to instantiate any instance variables, if necessary:
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
-
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
+  
+  double x = 0;
+  double y = 0;
 }
 ```
 
@@ -53,12 +53,12 @@ which both must be initialized or provided a default value:
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  final double x;
-  final double y;
-
   Point(this.x, this.y);
   // Sets the x and y instance variables
   // before the constructor body runs.
+
+  final double x;
+  final double y;
 }
 ```
 
@@ -97,15 +97,15 @@ const double xOrigin = 0;
 const double yOrigin = 0;
 
 class Point {
-  final double x;
-  final double y;
-
   Point(this.x, this.y);
 
   // Named constructor
   [!Point.origin()!]
       : x = xOrigin,
         y = yOrigin;
+
+  final double x;
+  final double y;
 }
 {% endprettify %}
 
@@ -139,11 +139,11 @@ constructor for its superclass, Person. Click **Run** to execute the code.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (super)" plaster="none"?>
 ```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
 class Person {
-  String? firstName;
-
   Person.fromJson(Map data) {
     print('in Person');
   }
+  
+  String? firstName;
 }
 
 class Employee extends Person {
@@ -194,18 +194,18 @@ Super-initializer parameters have similar syntax and semantics to
 <?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
 ```dart
 class Vector2d {
+  Vector2d(this.x, this.y);
+  
   final double x;
   final double y;
-
-  Vector2d(this.x, this.y);
 }
 
 class Vector3d extends Vector2d {
-  final double z;
-
   // Forward the x and y parameters to the default super constructor like:
   // Vector3d(final double x, final double y, this.z) : super(x, y);
   Vector3d(super.x, super.y, this.z);
+  
+  final double z;
 }
 ```
 
@@ -278,14 +278,14 @@ the code.
 import 'dart:math';
 
 class Point {
-  final double x;
-  final double y;
-  final double distanceFromOrigin;
-
   Point(double x, double y)
       : x = x,
         y = y,
         distanceFromOrigin = sqrt(x * x + y * y);
+        
+  final double x;
+  final double y;
+  final double distanceFromOrigin;
 }
 
 void main() {
@@ -306,13 +306,13 @@ appearing after a colon (:).
 <?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
 ```dart
 class Point {
-  double x, y;
-
   // The main constructor for this class.
   Point(this.x, this.y);
 
   // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
+  
+  double x, y;
 }
 ```
 
@@ -326,11 +326,11 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
+  const ImmutablePoint(this.x, this.y);
+  
   static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final double x, y;
-
-  const ImmutablePoint(this.x, this.y);
 }
 ```
 
@@ -362,13 +362,6 @@ initializes a final variable from a JSON object.
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
 ```dart
 class Logger {
-  final String name;
-  bool mute = false;
-
-  // _cache is library-private, thanks to
-  // the _ in front of its name.
-  static final Map<String, Logger> _cache = <String, Logger>{};
-
   factory Logger(String name) {
     return _cache.putIfAbsent(name, () => Logger._internal(name));
   }
@@ -378,6 +371,13 @@ class Logger {
   }
 
   Logger._internal(this.name);
+
+  final String name;
+  bool mute = false;
+
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
+  static final Map<String, Logger> _cache = <String, Logger>{};
 
   void log(String msg) {
     if (!mute) print(msg);

@@ -6,9 +6,6 @@
 ///
 // #docregion idiomatic-constructor
 class Point {
-  double x = 0;
-  double y = 0;
-
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
   // #enddocregion idiomatic-constructor
@@ -32,4 +29,7 @@ class Point {
   // #enddocregion initializer-list-with-assert
 
 // #docregion idiomatic-constructor
+
+  double x = 0;
+  double y = 0;
 }

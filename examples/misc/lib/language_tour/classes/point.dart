@@ -8,9 +8,6 @@ const double yOrigin = 0;
 
 // #docregion class-with-distanceTo, constructor-initializer
 class Point {
-  final double x;
-  final double y;
-
   // #docregion class-with-distanceTo, named-constructor
   Point(this.x, this.y);
   // #enddocregion class-with-distanceTo, named-constructor
@@ -39,4 +36,7 @@ class Point {
     return sqrt(dx * dx + dy * dy);
   }
   // #docregion constructor-initializer, named-constructor
+
+  final double x;
+  final double y;
 }

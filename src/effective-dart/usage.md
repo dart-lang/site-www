@@ -366,9 +366,9 @@ so you can safely treat it as non-nullable.
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
 ```dart
 class UploadException {
-  final Response? response;
-
   UploadException([this.response]);
+
+  final Response? response;
 
   @override
   String toString() {
@@ -390,9 +390,9 @@ time you need to treat the value as non-null:
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 ```dart
 class UploadException {
-  final Response? response;
-
   UploadException([this.response]);
+
+  final Response? response;
 
   @override
   String toString() {
@@ -979,14 +979,14 @@ constructor and then stores them:
 <?code-excerpt "usage_bad.dart (calc-vs-store1)"?>
 ```dart
 class Circle {
-  double radius;
-  double area;
-  double circumference;
-
   Circle(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
+
+  double radius;
+  double area;
+  double circumference;
 }
 ```
 
@@ -1007,6 +1007,10 @@ To correctly handle cache invalidation, we would need to do this:
 <?code-excerpt "usage_bad.dart (calc-vs-store2)"?>
 ```dart
 class Circle {
+  Circle(this._radius) {
+    _recalculate();
+  }
+
   double _radius;
   double get radius => _radius;
   set radius(double value) {
@@ -1019,10 +1023,6 @@ class Circle {
 
   double _circumference = 0.0;
   double get circumference => _circumference;
-
-  Circle(this._radius) {
-    _recalculate();
-  }
 
   void _recalculate() {
     _area = pi * _radius * _radius;
@@ -1038,9 +1038,9 @@ first implementation should be:
 <?code-excerpt "usage_good.dart (calc-vs-store)"?>
 ```dart
 class Circle {
-  double radius;
-
   Circle(this.radius);
+
+  double radius;
 
   double get area => pi * radius * radius;
   double get circumference => pi * 2.0 * radius;
@@ -1228,14 +1228,14 @@ The other time to use `this.` is when redirecting to a named constructor:
 <?code-excerpt "usage_bad.dart (this-dot-constructor)"?>
 ```dart
 class ShadeOfGray {
-  final int brightness;
-
   ShadeOfGray(int val) : brightness = val;
 
   ShadeOfGray.black() : this(0);
 
   // This won't parse or compile!
   // ShadeOfGray.alsoBlack() : black();
+
+  final int brightness;
 }
 ```
 
@@ -1243,14 +1243,14 @@ class ShadeOfGray {
 <?code-excerpt "usage_good.dart (this-dot-constructor)"?>
 ```dart
 class ShadeOfGray {
-  final int brightness;
-
   ShadeOfGray(int val) : brightness = val;
 
   ShadeOfGray.black() : this(0);
 
   // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
+
+  final int brightness;
 }
 ```
 
@@ -1261,11 +1261,11 @@ lists:
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 ```dart
 class Box extends BaseBox {
-  Object? value;
-
   Box(Object? value)
       : value = value,
         super(value);
+
+  Object? value;
 }
 ```
 
@@ -1283,13 +1283,13 @@ the class has multiple constructors.
 <?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
 ```dart
 class ProfileMark {
-  final String name;
-  final DateTime start;
-
   ProfileMark(this.name) : start = DateTime.now();
   ProfileMark.unnamed()
       : name = '',
         start = DateTime.now();
+
+  final String name;
+  final DateTime start;
 }
 ```
 
@@ -1297,11 +1297,11 @@ class ProfileMark {
 <?code-excerpt "usage_good.dart (field-init-at-decl)"?>
 ```dart
 class ProfileMark {
-  final String name;
-  final DateTime start = DateTime.now();
-
   ProfileMark(this.name);
   ProfileMark.unnamed() : name = '';
+
+  final String name;
+  final DateTime start = DateTime.now();
 }
 ```
 
@@ -1327,10 +1327,11 @@ Many fields are initialized directly from a constructor parameter, like:
 <?code-excerpt "usage_bad.dart (field-init-as-param)"?>
 ```dart
 class Point {
-  double x, y;
   Point(double x, double y)
       : x = x,
         y = y;
+
+  double x, y;
 }
 ```
 
@@ -1340,8 +1341,9 @@ We've got to type `x` _four_ times here to define a field. We can do better:
 <?code-excerpt "usage_good.dart (field-init-as-param)"?>
 ```dart
 class Point {
-  double x, y;
   Point(this.x, this.y);
+
+  double x, y;
 }
 ```
 
@@ -1367,10 +1369,11 @@ initialize the field in the constructor initializer list:
 <?code-excerpt "usage_good.dart (late-init-list)"?>
 ```dart
 class Point {
-  double x, y;
   Point.polar(double theta, double radius)
       : x = cos(theta) * radius,
         y = sin(theta) * radius;
+
+  double x, y;
 }
 ```
 
@@ -1378,11 +1381,12 @@ class Point {
 <?code-excerpt "usage_bad.dart (late-init-list)"?>
 ```dart
 class Point {
-  late double x, y;
   Point.polar(double theta, double radius) {
     x = cos(theta) * radius;
     y = sin(theta) * radius;
   }
+
+  late double x, y;
 }
 ```
 
@@ -1404,8 +1408,8 @@ semicolon. (In fact, it's required for const constructors.)
 <?code-excerpt "usage_good.dart (semicolon-for-empty-body)"?>
 ```dart
 class Point {
-  double x, y;
   Point(this.x, this.y);
+  double x, y;
 }
 ```
 
@@ -1413,8 +1417,8 @@ class Point {
 <?code-excerpt "usage_bad.dart (semicolon-for-empty-body)"?>
 ```dart
 class Point {
-  double x, y;
   Point(this.x, this.y) {}
+  double x, y;
 }
 ```
 

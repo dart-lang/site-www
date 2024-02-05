@@ -1,12 +1,5 @@
 // #docregion
 class Logger {
-  final String name;
-  bool mute = false;
-
-  // _cache is library-private, thanks to
-  // the _ in front of its name.
-  static final Map<String, Logger> _cache = <String, Logger>{};
-
   factory Logger(String name) {
     return _cache.putIfAbsent(name, () => Logger._internal(name));
   }
@@ -16,6 +9,13 @@ class Logger {
   }
 
   Logger._internal(this.name);
+
+  final String name;
+  bool mute = false;
+
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
+  static final Map<String, Logger> _cache = <String, Logger>{};
 
   void log(String msg) {
     if (!mute) print(msg);

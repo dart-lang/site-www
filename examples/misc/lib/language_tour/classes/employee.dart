@@ -4,11 +4,11 @@ Map fetchDefaultData() => {}; // stub
 
 // #docregion super
 class Person {
-  String? firstName;
-
   Person.fromJson(Map data) {
     print('in Person');
   }
+
+  String? firstName;
 }
 
 // #docregion method-then-constructor
