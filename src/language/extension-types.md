@@ -53,7 +53,7 @@ of its underlying type. Extension types are the opposite;
 an extension type's interface only applies to objects
 declared with the extension type,
 and is distinct from the interface of its underlying type by default. 
-Read the [Transparency](#transparency) section for more details. 
+Read the [Transparency](#transparency) section for more details.
 {{site.alert.end}}
 
 ## Syntax
@@ -262,158 +262,14 @@ void main () {
 ```
 
 Transparency is a conceptual decision for the extension type creator to consider.
-The section [Provide an *extended* interface](#provide-an-extended-interface-to-an-existing-type)
-explains the transparent extension type use case, and the
-[Provide a *different* interface](#provide-a-different-interface-to-an-existing-type)
-section explains non-transparent extension types types. 
-
-## Use cases for extension types
-
-### Interop with other languages
-
-Extension types enable interoperability between Dart and JavaScript.
-
-Using a JS type, usually `JSObject`, as the representation type and implementing
-that type to export its interface lets the compiler know that
-any `external` members declared in that extension type are native JavaScript members.
-
-```dart
-@JS('Set')
-extension type ES6Set._(JSObject _)
-    implements JSObject { 
-  external ES6Set();
-
-  external ES6Set add(JSAny element);
-  external void clear();
-  external bool delete(JSAny element);
-  external void forEach(
-      JSFunction callback);
-  external bool has(JSAny element);
-}
-```
-
-A client using this extension type will have a full implemenation
-of the interface of that JS object, and will not need to call any low-level
-functions (like `js_util`) to get the same functionality. 
-
-{% comment %}
-TODO: Link to JS interop pages when published.
-{% endcomment %}
-
-### Provide a *different* interface to an existing type
-
-You can use an extension type to replace the interface of an existing type.
-This allows you to model something that benefits from the performance
-and convenience of a pre-defined type,
-while ensuring that none of the representation type's interface is available to the new type
-(similar to the `newtype` mechanism in Haskell and Rust),
-and without the cost of wrapping
-
-To provide a different interface for an existing type, so that at compile time
-it is distinct-from and incompatible-with the representation type,
-declare an extension type WITHOUT implementing the representation type in the declaration,
-and without calling any of its members in the extension type member declarations:
-
-```dart
-// use int to represent length in inches
-extension type Inch(int value) {
-  Inch operator +(Inch other) =>
-      Inch(value + other.value);
-}
-
-// use int to represent length in centimeters
-extension type Cm(int value) {
-  Cm operator +(Cm other) => 
-      Cm(value + other.value);
-}
-
-void main() {
-  // Despite sharing a representation type, 'Inch' and 'Cm' are
-  // incompatible with each other and with their underlying type.
-  List<Inch> inches = [
-    Inch(1), // OK.
-    1 as Inch, // OK.
-    1 as Cm, // Compile-time error.
-    1, // Compile-time error.
-  ];
-  // All errors:
-  1 + 1.inch; 1.inch + 1; 1.cm + 1.inch;
-}
-```
-
-This ensures it can't access anything from the representation type that you don't want it to.
-This is as close as you can get to the complete protection of a wrapper class
-without the cost. 
-
-Keep in mind this distinction is only *somewhat* protected
-from the representation type. Read [Type considerations](#type-considerations)
-for more information.
-
-### Provide an *extended* interface to an existing type
-
-One use for extension types is adding new methods to an existing type.
-This allows you to get all the functionality of the underlying type,
-plus whatever additional functionality you want on top.
-The new extended interface applies only to instances of the extension type,
-not instances of the underlying type.
-
-To extend the interface of an existing type, use it as the representation type
-*and* implement it in the extension type declaration:
-
-```dart
-extension type WidgetMap<K, V extends Widget>(Map<K, V> map)
-  implements Map<K, V> {
-  // Auxiliary members.
-}
-```
-
-This example declaration exports all the members of the `Map`,
-so you can invoke any `Map` methods on instances of the `WidgetMap` extension type,
-in addition to any auxillary members you define.
-The relationship is not inverse, though: auxillary members of `WidgetMap`
-are not available to instance of `Map`.
-
-It's also possible to statically extend an existing type's interface with extension *methods*.
-However, extension type methods are always visible if the type is accessible
-without importing,
-and only to visible to objects with access to the extension type (direct instances and subtype instances?)
-whereas  regular extensions are only visible if the client imports them. 
-Once imported, an extension method then becomes available to every object that
-has the same type as the extension method's `on` type, bleeding all over the type.
-
-### Reuse code
-
-Extension types can offer something *like* multiple inheritance when one
-implements one or more other extension types, allowing you to reuse 
-extension type code.
-
-like extension methods, when you have a receiver that has the more special type, then all the extension methods that are defined for the super type are also invokable on the subtype 
-
-Like extension members, extension type members can be applied to any subtype. 
-
-```dart
-class const Point1d(int x);
-class const Point2d(super.x, int y) 
-    extends Point1d;
-
-int abs(int i) => i < 0 ? -i : i;
-
-extension type P1(Point1d it) {
-  bool get remote => abs(it.x) > 10;
-  bool get onYAxis => it.x == 0;
-}
-
-extension type P2(Point2d it) implements P1 {
-  bool get remote =>
-      P1(it).remote || abs(it.y) > 10;
-}
-
-void main() {
-  var p = P2(Point2d(1, 100));
-  print(p.remote); // 'true'.
-  print(p.onYAxis); // 'false'.
-}
-```
+A transparent extension type provides an *extended* interface to an existing type.
+You can invoke all the members of the representation type,
+plus any auxillary members you declare. The new interface is available
+to instances of the extension type. 
+The inverse option is restricting all members of the representation, providing
+a totally *different* interface to an existing type by not implementing the
+representation and not declaring any of its members in the extension type definition.
+This is as close as you can get to the complete protection of a wrapper class.
 
 ## Type considerations
 
