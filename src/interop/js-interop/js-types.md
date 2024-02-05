@@ -207,7 +207,7 @@ example can be interpreted as returning a JS object, JS `null`, or `undefined`:
 external JSObject? get value;
 ```
 
-If the return type was not declared as nullable, then the compiler will throw an
+If the return type was not declared as nullable, then the program will throw an
 error if the value returned was JS `null` or `undefined` to ensure soundness.
 
 {{site.alert.warn}}
