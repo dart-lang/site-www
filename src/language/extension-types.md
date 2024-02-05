@@ -138,8 +138,8 @@ in the extension type definition, like the `operator +` in `NumberE`.
 You also can define new members unrelated to the representation type,
 like the `i` getter and `isValid` method.
 
-Extension types can't declare instance fields (unless [`external`](#interop)),
-or [abstract members]().
+Extension types can't declare instance fields (unless [`external`][]),
+or [abstract members][].
 
 ### Implements
 
@@ -309,5 +309,6 @@ is their lightweight implementation, which can greatly improve performance in so
 [extension methods]: /language/extension-methods
 [applicability]: https://github.com/dart-lang/language/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
 [more specific]: https://github.com/dart-lang/language/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#specificity
+[`external`]: /language/functions#external
 [abstract members]: /language/methods#abstract-methods
 [`is` or `as` check]: /language/operators#type-test-operators
