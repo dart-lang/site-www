@@ -278,9 +278,6 @@ we made the following changes to this site:
   * New library directive section in [The language tour][]
 * Improved clarity surrounding Dart's single-threaded or multi-threaded status:
   * Removed the outdated `dart:io` page.
-  * Added two sections to the FAQ:
-    * [Is Dart single-threaded?][]
-    * [Is Dart single-threaded on the web?][]
   * Expanded on [Dart's web concurrency capabilities][].
 * Rearranged and clarified [discussion][] of default values for optional and positional parameters.
 * Updated [Concurrency in Dart][] to default to new `Isolate.run()` function.
@@ -300,7 +297,6 @@ we made the following changes to this site:
 [Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
 [community resources section]: /community#additional-community-resources
 [migration guide]: /null-safety/migration-guide
-[Sound null safety]: /null-safety#dart-3-and-null-safety
 [unsound null safety]: /null-safety/unsound-null-safety
 [Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
