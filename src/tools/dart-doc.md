@@ -9,9 +9,8 @@ for Dart source code.
 
 ## Write documentation {#write}
 
-You can add reference text and examples to the generated documentation
-by using [documentation comments][],
-which can contain [Markdown][] formatting.
+To add reference text and examples to the generated documentation,
+use [documentation comments][] with [Markdown][] formatting.
 For guidance on writing doc comments,
 check out the [Effective Dart: Documentation][] guide.
 
@@ -42,9 +41,9 @@ Documenting my_package...
 Success! Docs generated into /Users/me/projects/my_package/doc/api
 ```
 
-By default, the generated documentation and supporting files are
-placed in the `doc/api` directory.
-To configure the output directory, specify
+By default, `dart doc` places the generated documentation
+and supporting files in the `doc/api` directory.
+To change the output directory, specify
 a path with the `--output` flag:
 
 ```terminal
@@ -62,8 +61,8 @@ $ dart doc --dry-run .
 
 ### Configure generation {#configure}
 
-To configure how `dart doc` generates documentation, create
-a file named `dartdoc_options.yaml` in the root directory of your package.
+To configure how `dart doc` generates documentation,
+create a file named `dartdoc_options.yaml` in the root directory of your package.
 
 To learn more about the file's format and supported configuration options,
 check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
@@ -78,14 +77,13 @@ TODO: Document the long-term supported options here.
 
 You can view docs generated with `dart doc` in a variety of ways.
 
-### Locally {#view-local}
+### View docs on local machine {#view-local}
 
 To view API docs you generated with `dart doc` or downloaded from online,
 you must load them with an HTTP server.
 
-You can use any HTTP server to serve the files.
-A common option is to use [`package:dhttpd`][] from pub.dev
-to quickly serve the files.
+To serve the files, use any HTTP server.
+Consider using [`package:dhttpd`][] from pub.dev.
 
 To use `package:dhttpd`, activate it globally, then run it
 and specify the path of your generated docs.
@@ -102,7 +100,7 @@ open the link that `dhttpd` outputs, usually `http://localhost:8080`.
 
 [`package:dhttpd`]: https://pub.dev/packages/dhttpd
 
-### Hosted {#view-hosted}
+### View docs on hosted service {#view-hosted}
 
 You can also host your generated API docs online
 using any hosting service that supports static web content.
@@ -113,7 +111,7 @@ Two common options are [Firebase hosting][] and [GitHub pages][].
 
 ### Pub packages {#view-pub}
 
-The [pub.dev site]({{site.pub}}) automatically generates and hosts
+The [pub.dev site]({{site.pub}}) generates and hosts
 documentation for a package's public libraries.
 
 To view a package's generation docs,
