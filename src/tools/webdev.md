@@ -112,7 +112,8 @@ assets on disk. This makes later builds compile faster.
   The development compiler supports **only Chrome.**
   To view your app in another browser,
   use the production compiler.
-  For a list of supported browsers, [see the FAQ][supported browsers].
+  The production compiler supports the latest two versions of Chrome,
+  Edge, Firefox, and Safari.
 {{site.alert.end}}
 
 To enable [Dart DevTools][], add the `--debug` flag:
@@ -188,7 +189,6 @@ test package runner, use this command:
 $ dart test -h
 ```
 
-
 ## More information
 
 For a complete list of `webdev` options, run `webdev --help` or see the
@@ -205,11 +205,8 @@ Also see the following pages:
   [compiler options](/tools/dart-compile#js).
 
 [build_runner]: /tools/build_runner
-[build_runner test]: #test
 [build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
 [Dart DevTools]: /tools/dart-devtools
 [dev_dependencies]: /tools/pub/dependencies#dev-dependencies
-[PATH]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
-[supported browsers]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev

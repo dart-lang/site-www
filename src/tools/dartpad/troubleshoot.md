@@ -16,7 +16,8 @@ The dart.dev homepage and many codelabs have embedded DartPads.
 If these DartPads don't appear at all,
 then try the following:
 
-* Make sure you're using a [supported browser][browser].
+* Make sure you're using one of the latest two versions of Chrome,
+  Edge, Firefox, or Safari.
   DartPad might not work in other browsers, and is known not to work in
   the default configuration of the Brave browser.
 
