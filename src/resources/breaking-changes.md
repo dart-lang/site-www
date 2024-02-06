@@ -129,8 +129,8 @@ accounting for them before the 3.4.0 release.
 
 #### Production JavaScript compiler (dart2js)
 
-* **Deprecated**: You should now specify a format to the `--dump-info` flag
-  of either `binary` or `json`.
+* **Experimental** **Deprecated**: You should now specify a format to
+  the `--dump-info` CLI option of either `binary` or `json`.
   The `json` format is deprecated and might be removed in a future Dart release.
 
 #### Wasm compiler (dart2wasm)
@@ -150,7 +150,9 @@ accounting for them before the 3.3.0 release.
 ### SDK
 {: .no_toc}
 
-* **Experimental** **Removed**: The following experiments are now retired as they were released in Dart 3.
+* **Experimental** **Removed**: The following experiments are now retired as
+  they were released in Dart 3 and are no longer necessary with
+  a language version of 3.0 or greater.
   Configuration of them should be removed from
   analysis options, CLI commands, and IDE configurations.
 
