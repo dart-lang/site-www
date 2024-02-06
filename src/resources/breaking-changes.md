@@ -118,7 +118,7 @@ accounting for them before the 3.4.0 release.
 
 #### `dart:typed_data`
 
-* [The unmodifiable view classes for typed data are deprecated][53128].
+* **Deprecated**: [The unmodifiable view classes for typed data are deprecated][53128].
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
 
@@ -129,14 +129,14 @@ accounting for them before the 3.4.0 release.
 
 #### Production JavaScript compiler (dart2js)
 
-* You should now specify a format to the `--dump-info` flag
+* **Deprecated**: You should now specify a format to the `--dump-info` flag
   of either `binary` or `json`.
   The `json` format is deprecated and might be removed in a future Dart release.
 
 #### Wasm compiler (dart2wasm)
 
 * **Experimental**: Various `dart compile wasm` CLI arguments have
-  been updated, removed, or replace.
+  been updated, removed, or replaced.
   To learn more, run `dart compile wasm --verbose --help`.
 
 ## 3.3.0
@@ -150,7 +150,7 @@ accounting for them before the 3.3.0 release.
 ### SDK
 {: .no_toc}
 
-* The following experiments are now retired as they were released in Dart 3.
+* **Experimental** **Removed**: The following experiments are now retired as they were released in Dart 3.
   Configuration of them should be removed from
   analysis options, CLI commands, and IDE configurations.
 
