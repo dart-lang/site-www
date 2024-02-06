@@ -59,9 +59,9 @@ NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-{{site.alert.warn}}
-{% include_relative archive/_sdk-terms.md %}
-{{site.alert.end}}
+:::warning Notice
+{% include './archive/_sdk-terms.md' %}
+:::
 
 If you've installed or plan to
 [install the Flutter SDK][install-flutter],
@@ -78,13 +78,13 @@ Install the Dart SDK using the package manager for your platform.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include_relative _windows.md %}
+{% include '_windows.md' %}
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include_relative _linux.md %}
+{% include '_linux.md' %}
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include_relative _mac.md %}
+{% include '_mac.md' %}
 </div>
 
 ## About release channels and version strings {#release-channels}
