@@ -289,6 +289,13 @@ To allow or disallow other people to upload versions, either:
 * Transfer the package to a [verified publisher][];
   all members of a publisher are authorized to upload.
 
+{{site.alert.tip}}
+  We strongly recommend you invite other members of your team
+  to become uploaders of the package.
+  This helps ensure that your team retains access to
+  the package when you are not available.
+{{site.alert.end}}
+
 ## Locating the package publisher
 
 If a package has a verified publisher,
