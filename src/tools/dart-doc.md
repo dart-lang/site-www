@@ -61,8 +61,8 @@ $ dart doc --dry-run .
 
 ### Configure generation {#configure}
 
-To configure how `dart doc` generates documentation,
-create a file named `dartdoc_options.yaml` in the root directory of your package.
+To configure how `dart doc` generates documentation, create a
+file named `dartdoc_options.yaml` in the root directory of your package.
 
 To learn more about the file's format and supported configuration options,
 check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
@@ -77,7 +77,7 @@ TODO: Document the long-term supported options here.
 
 You can view docs generated with `dart doc` in a variety of ways.
 
-### View docs on local machine {#view-local}
+### View local docs {#view-local}
 
 To view API docs you generated with `dart doc` or downloaded from online,
 you must load them with an HTTP server.
@@ -100,7 +100,7 @@ open the link that `dhttpd` outputs, usually `http://localhost:8080`.
 
 [`package:dhttpd`]: https://pub.dev/packages/dhttpd
 
-### View docs on hosted service {#view-hosted}
+### View hosted docs {#view-hosted}
 
 You can also host your generated API docs online
 using any hosting service that supports static web content.
@@ -109,42 +109,38 @@ Two common options are [Firebase hosting][] and [GitHub pages][].
 [Firebase hosting]: https://firebase.google.com/docs/hosting
 [GitHub pages]: https://pages.github.com/
 
-### Pub packages {#view-pub}
+### View package docs {#view-pub}
 
 The [pub.dev site]({{site.pub}}) generates and hosts
-documentation for a package's public libraries.
+documentation for an uploaded package's public libraries.
 
-To view a package's generation docs,
+To view a package's generated docs,
 navigate to its page and open the **API reference** link
 in the info box on the right side of the page.
 For example, you can find the API docs for `package:http`
 at [pub.dev/documentation/http]({{site.pub-api}}/http).
 
-### Dart core libraries {#view-sdk}
+### View core library docs {#view-sdk}
 
 `dart doc` is also used to generate the API reference documentation for
 the Dart core libraries.
 
 To view the Dart SDK reference docs, visit the api.dart.dev link
-that corresponds to the Dart release channel you are developing with.
+that corresponds to the Dart release channel you are developing with:
 
-`stable`
-: [api.dart.dev/stable]({{site.dart-api}})
+| Branch   | Generated docs                              |
+|----------|---------------------------------------------|
+| `stable` | [api.dart.dev/stable]({{site.dart-api}})    |
+| `beta`   | [api.dart.dev/beta]({{site.dart-api}}/beta) |
+| `dev`    | [api.dart.dev/dev]({{site.dart-api}}/dev)   |
+| `main`   | [api.dart.dev/main]({{site.dart-api}}/main) |
 
-`beta`
-: [api.dart.dev/beta]({{site.dart-api}}/beta)
-
-`dev`
-: [api.dart.dev/dev]({{site.dart-api}}/dev)
-
-`main`
-: [api.dart.dev/main]({{site.dart-api}}/main)
+{:.table .table-striped}
 
 ## Troubleshoot
 
-The following are some common issues experienced with
-documentation generated using `dart doc`,
-as well as suggestions to resolve them.
+To identify and resolve common issues with docs generated with `dart doc`,
+consult the following possibilities.
 
 ### Search bar failed to load {#troubleshoot-search}
 
@@ -169,7 +165,7 @@ one of the following scenarios is possible:
 1. You are accessing the docs from your own file system,
    but they aren't being served and loaded with an HTTP server.
    To learn how to serve local API docs,
-   check out [how to view docs locally](#view-local).
+   check out [how to view local docs](#view-local).
 2. You configured the generated docs' base-href behavior.
    This configuration option is deprecated and set for removal.
    Try removing the option and using the default behavior of `dart doc`.
