@@ -72,17 +72,6 @@ a, button {
   &:active {
     color: $flutter-color-blue-800;
   }
-
-  &.external {
-    &:after {
-      @include md-icon-content("launch");
-      vertical-align: middle;
-      margin-left: 2px;
-      font-size: 10px;
-      color: inherit;
-      opacity: 0.5;
-    }
-  }
 }
 
 img {

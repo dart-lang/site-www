@@ -316,14 +316,12 @@
     children:
       - title: Customizing static analysis
         permalink: /tools/analysis
-      - title: Diagnostic messages
-        permalink: /tools/diagnostic-messages
-      - title: Linter rules
-        permalink: /tools/linter-rules
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
       - title: Fixing type promotion failures
         permalink: /tools/non-promotion-reasons
+      - title: Linter rules
+        permalink: /tools/linter-rules
   - title: Testing & optimization
     children:
       - title: Testing
@@ -336,8 +334,6 @@
 - title: Resources
   expanded: false
   children:
-    - title: FAQ
-      permalink: /resources/faq
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
@@ -353,6 +349,8 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: Swift to Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - title: FAQ
+      permalink: /resources/faq
     - title: Glossary
       permalink: /resources/glossary
     - title: Books
