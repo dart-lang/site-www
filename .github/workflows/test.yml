@@ -73,7 +73,7 @@ jobs:
         run: dart run dart_site check-link-references
       - name: Validate the firebase.json file
         run: dart run dart_site verify-firebase-json
-      - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm install -g firebase-tools@13.0.2
