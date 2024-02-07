@@ -44,6 +44,8 @@ int runPubGetIfNecessary(String directory) {
 }
 
 extension ArgResultExtensions on ArgResults? {
+  /// Assuming its type is [T], get the value specified for
+  /// the argument named [key], or the [defaultValue] if not specified.
   T get<T>(String key, T defaultValue) => this?[key] as T? ?? defaultValue;
 }
 

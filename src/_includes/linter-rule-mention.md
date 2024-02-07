@@ -1,6 +1,6 @@
+{%- assign split_rules = rules | split: ', ' -%}
+Linter rule{% if split_rules.size > 1 %}s{% endif %}:
+{%- for rule in split_rules %}
+  [{{rule}}](/tools/linter-rules/{{rule}}){%- unless forloop.last %}, {% endunless %}
+{%- endfor %}
 {:.linter-rule}
-{% if include.rule %}
-Linter rule: [{{include.rule}}](/tools/linter-rules/{{include.rule}})
-{% else %}
-Linter rules: [{{include.rule1}}](/tools/linter-rules/{{include.rule1}}), [{{include.rule2}}](/tools/linter-rules/{{include.rule2}})
-{% endif %}
