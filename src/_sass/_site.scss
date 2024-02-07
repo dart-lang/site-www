@@ -514,6 +514,14 @@ thead:has(th:empty) {
   color: $site-color-body;
   margin-top: 1rem;
   padding: 1.5rem;
+<<<<<<< HEAD
+=======
+
+  i.material-icons {
+    font-size: 1.25em;
+    user-select: none;
+  }
+>>>>>>> a9d6c41c (Updated for 11ty)
 
   .alert-header {
     display: flex;
@@ -875,4 +883,8 @@ div h4:first-child,
 div h5:first-child,
 div h6:first-child {
   margin-top: 0rem;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a9d6c41c (Updated for 11ty)
