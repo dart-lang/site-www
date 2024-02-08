@@ -520,11 +520,11 @@ dependencies:
   collection: ^1.18.0
 ```
 
-{{site.alert.version-note}}
-  Support for ignore comments in `pubspec.yaml` files was added in Dart 3.3.
-  If you are using Dart 3.2 or earlier,
-  the ignored diagnostic will still be triggered.
-{{site.alert.end}}
+:::version-note
+Support for ignore comments in `pubspec.yaml` files was added in Dart 3.3.
+If you are using Dart 3.2 or earlier,
+the ignored diagnostic will still be triggered.
+:::
 
 [`sort_pub_dependencies`]: /tools/linter-rules/sort_pub_dependencies
 
