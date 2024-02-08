@@ -45,29 +45,12 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [language version]: /guides/language/evolution#language-versioning
 [Dart announce]: {{site.announce}}
 
-## Not yet released to stable
-
-### Libraries {:.no_toc}
-
-#### `dart:nativewrappers`
-
-* [Marked classes belonging to `NativeWrapperClass` as `base`][51896] so that
-  none of their subtypes can be implemented.
-
-#### `dart:typed_data`
-
-* **Deprecated**: [Unmodifiable view classes for typed data][53218].
-
-
-[51896]: https://github.com/dart-lang/sdk/issues/51896
-[53218]: https://github.com/dart-lang/sdk/issues/53218
-
 {% comment %}
 Create new section from these headers for each release.
 If no changes exist in a section (e.g. Language, `dart:async`, etc.),
 don't include the section header.
 
-## Released in x.x.x
+## x.x.x
 
 ### Language {:.no_toc}
 
@@ -80,7 +63,215 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
-## Released in 3.2.0
+## 3.4.0
+
+**Tentative**<br>
+The following changes are expected to be included in the 3.4.0 stable release,
+but the final list will likely change before then.
+To reduce the potential impact of these changes, consider
+accounting for them before the 3.4.0 release.
+
+### Language {:.no_toc}
+
+* [The pattern context type schema for cast patterns
+  is now `_` (the unknown type) instead of `Object?`][54640].
+
+[54640]: https://github.com/dart-lang/sdk/issues/54640
+
+### Libraries {:.no_toc}
+
+#### `dart:cli`
+
+* **Experimental** **Removed**: [The `waitFor` function][52121]
+  is set to be removed.
+
+[52121]: https://github.com/dart-lang/sdk/issues/52121
+
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
+
+- These libraries are now marked as legacy and
+  will see less support in the future.
+  New projects should prefer to use [`package:web`][] and `dart:js_interop`.
+
+[`package:web`]: {{site.pub-pkg}}/web
+
+#### `dart:js`
+
+- This library is now marked as legacy and will see less support in the future.
+  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+  To learn more, check out [`/go/next-gen-js-interop`][].
+
+[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+
+#### `dart:js_util`
+
+- This library is now marked as legacy and will see less support in the future.
+  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+  To learn more, check out [`/go/next-gen-js-interop`][].
+
+[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+
+#### `dart:typed_data`
+
+* **Deprecated**: [The unmodifiable view classes for typed data are deprecated][53128].
+  Instead of using the constructors of these classes, use
+  the new `asUnmodifiableView` methods on typed data lists.
+
+[53128]: https://github.com/dart-lang/sdk/issues/53218
+
+### Tools {:.no_toc}
+
+#### Production JavaScript compiler (dart2js)
+
+* **Experimental** **Deprecated**: You should now specify a format to
+  the `--dump-info` CLI option of either `binary` or `json`.
+  The `json` format is deprecated and might be removed in a future Dart release.
+
+#### Wasm compiler (dart2wasm)
+
+* **Experimental**: Various `dart compile wasm` CLI arguments have
+  been updated, removed, or replaced.
+  To learn more, run `dart compile wasm --verbose --help`.
+
+## 3.3.0
+
+**Tentative**<br>
+The following changes are expected to be included in the 3.3.0 stable release,
+but the final list might change before then.
+To reduce any potential impact of these changes, consider
+accounting for them before the 3.3.0 release.
+
+### SDK {:.no_toc}
+
+* **Experimental** **Removed**: The following experiments are now retired as
+  they were released in Dart 3 and are no longer necessary with
+  a language version of 3.0 or greater.
+  Configuration of them should be removed from
+  analysis options, CLI commands, and IDE configurations.
+
+  * `patterns`
+  * `records`
+  * `class-modifers`
+  * `sealed-class`
+
+### Language {:.no_toc}
+
+* [An abstract getter is now considered promotable if
+  there are no conflicting declarations][54056].
+
+[54056]: https://github.com/dart-lang/sdk/issues/54056
+
+### Libraries {:.no_toc}
+
+#### `dart:cli`
+
+* **Experimental** **Deprecated**: [The `waitFor` function][52121]
+  remains deprecated for another release and is set for removal in Dart 3.4.
+
+[52121]: https://github.com/dart-lang/sdk/issues/52121
+
+#### `dart:ffi`
+
+* **Deprecated**: [The `elementAt` pointer arithmetic methods
+  on `Pointer` types are deprecated][54250].
+  Migrate to the `-` and `+` operators instead.
+* **Experimental** **Removed**: The previously deprecated
+  `@FfiNative` annotation has been removed. Usages should be
+  updated to use the `@Native` annotation.
+
+[54250]: https://github.com/dart-lang/sdk/issues/54250
+
+#### `dart:html`
+
+* Instead of using `HttpRequest` directly,
+  it is now recommended to use [`package:http`][].
+
+[`package:http`]: {{site.pub-pkg}}/http
+
+#### `dart:io`
+
+* Instead of using `HttpClient` directly,
+  it is now recommended to use [`package:http`][].
+
+[`package:http`]: {{site.pub-pkg}}/http
+
+#### `dart:js_interop`
+
+* **Experimental**: JS types like `JSAny` have
+  [new compiler-specific representation types][52687].
+* **Experimental**: User-defined `@staticInterop` classes can
+  [no longer implement `JSAny` or `JSObject`][52687].
+  Usages should be migrated to `JSObject.fromInteropObject` or
+  be defined as extension types.
+* **Experimental**: `JSArray` and `JSPromise` now have generic parameters.
+* **Experimental**: Various extension members were moved or renamed.
+  To learn about the updated extensions, reference
+  `JSAnyUtilityExtension` and `JSAnyOperatorExtension`.
+
+[52687]: https://github.com/dart-lang/sdk/issues/52687
+
+#### `dart:typed_data`
+
+* [The unmodifiable view classes for typed data will
+  be deprecated in Dart 3.4][53128].
+  Instead of using the constructors of these classes, use
+  the new `asUnmodifiableView` methods on typed data lists.
+
+[53128]: https://github.com/dart-lang/sdk/issues/53218
+
+#### `dart:nativewrappers`
+
+* **Experimental**: [All native wrapper classes are now marked `base`][51896]
+  so that none of their subtypes can be implemented.
+
+[51896]: https://github.com/dart-lang/sdk/issues/51896
+
+### Tools {:.no_toc}
+
+#### Production JavaScript compiler (dart2js)
+
+* [The `Invocation` that is passed to `noSuchMethod` no longer
+  has a minified `memberName`][54201], even when compiled with `--minify`.
+
+[54201]: https://github.com/dart-lang/sdk/issues/54201
+
+#### Wasm compiler (dart2wasm)
+
+* **Experimental**: [Disallow importing legacy JS interop libraries][54004].
+  Prefer using `dart:js_interop` and `dart:js_interop_unsafe` instead.
+
+[54004]: https://github.com/dart-lang/sdk/issues/54004
+
+#### Analyzer
+
+* **Experimental**: Invalid `dart doc` comment directives are
+  now reported by the analyzer.
+* Due to [improvements in type promotion][54056], the following analyzer
+  diagnostics might trigger on existing code that previously passed analysis:
+
+  * `unnecessary_non_null_assertion`
+  * `unnecessary_cast`
+  * `invalid_null_aware_operator`
+
+[54056]: https://github.com/dart-lang/sdk/issues/54056
+
+#### Linter
+
+* The `iterable_contains_unrelated_type` and
+  `list_remove_unrelated_type` lints were removed.
+  Consider migrating to the expanded
+  [`collection_methods_unrelated_type`][] lint.
+* The following lints are removed due to no longer being
+  necessary with sound null safety. You should remove configuration of them
+  from your `analysis_options.yaml` files and any ignore comments.
+  
+  * `always_require_non_null_named_parameters`
+  * `avoid_returning_null`
+  * `avoid_returning_null_for_future`
+
+[`collection_methods_unrelated_type`]: /tools/linter-rules/collection_methods_unrelated_type
+
+## 3.2.0
 
 ### Language {:.no_toc}
 
@@ -176,7 +367,7 @@ don't include the section header.
 [2020]: https://github.com/dart-lang/language/issues/2020
 
 
-## Released in 3.1.0
+## 3.1.0
 
 ### Libraries {:.no_toc}
 
@@ -208,7 +399,7 @@ don't include the section header.
 [51486]: https://github.com/dart-lang/sdk/issues/51486
 [52027]: https://github.com/dart-lang/sdk/issues/52027
 
-## Released in 3.0.0
+## 3.0.0
 
 :::tip
 The [Dart 3.0 migration guide][dart3] covers the complete details
@@ -252,6 +443,11 @@ on all the changes in this section.
 * **Removed**: [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
+#### `dart:ffi`
+
+* **Experimental** **Deprecated**: The `@FfiNative` annotation is
+  now deprecated. Usages should be updated to use the `@Native` annotation.
+
 #### `dart:html`
 
 * **Removed**: [Removed the deprecated `registerElement` and `registerElement2`][49536]
@@ -287,7 +483,7 @@ on all the changes in this section.
 [51035]: https://github.com/dart-lang/sdk/issues/51035
 
 
-## Released in 2.19.0
+## 2.19.0
 
 ### Language {:.no_toc}
 
@@ -365,7 +561,7 @@ on all the changes in this section.
 [49350]: https://github.com/dart-lang/sdk/issues/49350
 
 
-## Released in 2.18.0
+## 2.18.0
 
 ### Language {:.no_toc}
 
@@ -397,7 +593,7 @@ on all the changes in this section.
 [48272]: https://github.com/dart-lang/sdk/issues/48272
 [46100]: https://github.com/dart-lang/sdk/issues/46100
 
-## Released in 2.17.0
+## 2.17.0
 
 ### Libraries {:.no_toc}
 
@@ -424,7 +620,7 @@ on all the changes in this section.
 [48513]: https://github.com/dart-lang/sdk/issues/48513
 [46100]: https://github.com/dart-lang/sdk/issues/46100
 
-## Released in 2.16.0
+## 2.16.0
 
 ### Libraries {:.no_toc}
 
@@ -450,7 +646,7 @@ on all the changes in this section.
 [47769]: https://github.com/dart-lang/sdk/issues/47769
 [46100]: https://github.com/dart-lang/sdk/issues/46100
 
-## Released in 2.15.0
+## 2.15.0
 
 ### Libraries {:.no_toc}
 
@@ -485,7 +681,7 @@ on all the changes in this section.
 [45451]: https://github.com/dart-lang/sdk/issues/45451
 [46754]: https://github.com/dart-lang/sdk/issues/46754
 
-## Released in 2.14.0
+## 2.14.0
 
 ### Libraries {:.no_toc}
 
@@ -527,7 +723,7 @@ on all the changes in this section.
 [44154]: https://github.com/dart-lang/sdk/issues/44154
 
 
-## Released in 2.13.0
+## 2.13.0
 
 ### Libraries {:.no_toc}
 
@@ -538,7 +734,7 @@ on all the changes in this section.
 
 [44211]: https://github.com/dart-lang/sdk/issues/44211
 
-## Released in 2.12.0
+## 2.12.0
 
 ### Language {:.no_toc}
 
@@ -578,7 +774,7 @@ on all the changes in this section.
 [44622]: https://github.com/dart-lang/sdk/issues/44622
 [44072]: https://github.com/dart-lang/sdk/issues/44072
 
-## Released in 2.10.0
+## 2.10.0
 
 ### Tools {:.no_toc}
 
@@ -588,7 +784,7 @@ on all the changes in this section.
 
 [42982]: https://github.com/dart-lang/sdk/issues/42982
 
-## Released in 2.9.0
+## 2.9.0
 
 ### Libraries {:.no_toc}
 
@@ -626,7 +822,7 @@ on all the changes in this section.
 [whatwg encoding standard]: https://encoding.spec.whatwg.org/#utf-8-decoder
 [42714]: https://github.com/dart-lang/sdk/issues/42714
 
-## Released in 2.8.1
+## 2.8.1
 
 ### Language {:.no_toc}
 
@@ -716,13 +912,13 @@ other.
 [ddc]: https://github.com/dart-lang/sdk/issues/38994
 [normalized]: https://github.com/dart-lang/language/blob/main/resources/type-system/normalization.md
 
-## Released in 2.7.1
+## 2.7.1
 
 * [The Dart SDK for macOS is now only available for x64][39810].
 
 [39810]: https://github.com/dart-lang/sdk/issues/39810
 
-## Released in 2.7.0
+## 2.7.0
 
 ### Language {:.no_toc}
 
@@ -735,7 +931,7 @@ other.
 * Added `IOOverrides.serverSocketBind` to aid in writing tests that wish to mock
   `ServerSocket.bind`.
 
-## Released in 2.6.0
+## 2.6.0
 
 ### Language {:.no_toc}
 
@@ -754,7 +950,7 @@ other.
 [671]: https://github.com/dart-lang/language/issues/671
 [37985]: https://github.com/dart-lang/sdk/issues/37985
 
-## Released in 2.5.0
+## 2.5.0
 
 ### Libraries {:.no_toc}
 
@@ -781,7 +977,7 @@ other.
 [37192]: https://github.com/dart-lang/sdk/issues/37192
 [36765]: https://github.com/dart-lang/sdk/issues/36765
 
-## Released in 2.4.0
+## 2.4.0
 
 ### Language {:.no_toc}
 
@@ -802,7 +998,7 @@ other.
 [35097]: https://github.com/dart-lang/sdk/issues/35097
 [36382]: https://github.com/dart-lang/sdk/issues/36382
 
-## Released in 2.2.0
+## 2.2.0
 
 ### Libraries {:.no_toc}
 
@@ -815,7 +1011,7 @@ other.
 
 [33966]: https://github.com/dart-lang/sdk/issues/33966
 
-## Released in 2.1.1
+## 2.1.1
 
 ### Libraries {:.no_toc}
 
@@ -835,7 +1031,7 @@ other.
 [29554]: https://github.com/dart-lang/sdk/issues/29554
 [35611]: https://github.com/dart-lang/sdk/issues/35611
 
-## Released in 2.1.0
+## 2.1.0
 
 ### Language {:.no_toc}
 
@@ -868,7 +1064,7 @@ other.
 [34498]: https://github.com/dart-lang/sdk/issues/34498
 [34532]: https://github.com/dart-lang/sdk/issues/34532
 
-## Released in 2.0.0
+## 2.0.0
 
 ### Language {:.no_toc}
 
