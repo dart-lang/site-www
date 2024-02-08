@@ -15,7 +15,7 @@
   },
   "engines": {
     "node": ">=20.10.0",
-    "pnpm": ">=8.14.0"
+    "pnpm": ">=8.14.1"
   },
   "packageManager": "pnpm@8.14.3",
   "dependencies": {
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "3.0.0-alpha.4",
-    "firebase-tools": "^13.0.3",
+    "firebase-tools": "^13.2.1",
     "hast-util-from-html": "^2.0.1",
     "hast-util-select": "^6.0.2",
     "hast-util-to-html": "^9.0.0",
@@ -37,6 +37,6 @@
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-table": "^4.1.1",
     "sass": "^1.70.0",
-    "shikiji": "^0.10.0"
+    "shikiji": "^0.10.2"
   }
 }
