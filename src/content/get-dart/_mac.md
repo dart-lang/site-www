@@ -1,5 +1,5 @@
-### Install using Homebrew
-{: .no_toc}
+
+### Install using Homebrew  {:.no_toc}
 
 To install the Dart SDK, use [Homebrew][].
 
@@ -17,18 +17,15 @@ To install the Dart SDK, use [Homebrew][].
    $ brew install dart
    ```
 
+### Verify PATH includes Homebrew  {:.no_toc}
 
-### Verify PATH includes Homebrew
-{: .no_toc}
-
-Verify that your `PATH` includes the **Homebrew `bin`.
+Verify that your `PATH` includes the **Homebrew `bin`**.
 Setting up the path correctly makes it easier to use Dart SDK commands
 such as `dart run` and `dart format`.
 For help configuring your path,
 consult the [Homebrew FAQ.](https://docs.brew.sh/FAQ)
 
-### Upgrade using Homebrew
-{: .no_toc}
+### Upgrade using Homebrew  {:.no_toc}
 
 To upgrade when a new release of Dart is available:
 
@@ -36,8 +33,7 @@ To upgrade when a new release of Dart is available:
 $ brew upgrade dart
 ```
 
-### Switch Dart versions
-{: .no_toc}
+### Switch Dart versions  {:.no_toc}
 
 To switch between locally installed Dart releases:
 
@@ -56,8 +52,7 @@ To switch between locally installed Dart releases:
    $ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
    ```
 
-### List installed Dart versions
-{: .no_toc}
+### List installed Dart versions  {:.no_toc}
 
 To see which versions of Dart you've installed:
 
@@ -66,3 +61,4 @@ $ brew info dart
 ```
 
 [Homebrew]: https://brew.sh
+[tap]: {{site.gh-dart.org}}/homebrew-dart

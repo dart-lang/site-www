@@ -2,9 +2,7 @@
 title: Get the Dart SDK
 description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
 channel-list: [Stable, Beta, Dev]
-js:
-- url: /assets/js/get-dart/install.js
-  defer: true
+js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
 This page describes how to download the Dart SDK.
@@ -22,7 +20,7 @@ to develop and run Dart code.
 {% assign beta = '<span class="material-icons" style="color: #13C2AD">gpp_maybe</span>' %}
 {% assign na = '<span class="material-icons" style="color: #DADCE0">do_not_disturb_on</span>' %}
 {% assign macversions = '' %}
-{% for version in site.data.macos limit:3 %}
+{% for version in macos limit:3 %}
 {%- if version.eol == false -%}
 {% capture maclinkversion -%}
 [{{version.cycle}}]({{version.link}}) ({{version.codename}})
@@ -32,11 +30,12 @@ to develop and run Dart code.
 {%- endif %}
 {% endfor %}
 
-| Platform |   x86   |   x64   |  ARM32  |   ARM64   | RISC-V    | OS Versions                              |
-|----------|---------|---------|---------|-----------|-----------|------------------------------------------|
-| Windows  | {{yes}} | {{yes}} | {{no}}  | {{beta}} | {{no}}    | [10] (32-bit, 64-bit), [11][]                                   |
-| Linux    | {{yes}} | {{yes}} | {{yes}} | {{yes}}   | {{beta}} | [Debian stable][], [Ubuntu LTS][]        |
-| macOS    | {{no}}  | {{yes}} | {{na}}  | {{yes}}   | {{na}}    | {{macversions}} |
+| Platform |   x86   |   x64   |  ARM32  |   ARM64   | RISC-V   | OS Versions                       |
+|----------|---------|---------|---------|-----------|----------|-----------------------------------|
+| Windows  | {{yes}} | {{yes}} | {{no}}  | {{beta}}  | {{no}}   | [10] (32-bit, 64-bit), [11][]     |
+| Linux    | {{yes}} | {{yes}} | {{yes}} | {{yes}}   | {{beta}} | [Debian stable][], [Ubuntu LTS][] |
+| macOS    | {{no}}  | {{yes}} | {{na}}  | {{yes}}   | {{na}}   | {{macversions}}                   |
+
 {:.table .table-striped}
 
 {{yes}} Supported in all channels.  
@@ -63,12 +62,11 @@ so it's easy to find (but not more tempting than package managers).
 {% include './archive/_sdk-terms.md' %}
 :::
 
-If you've installed or plan to
-[install the Flutter SDK][install-flutter],
+If you've installed or plan to [install the Flutter SDK][install-flutter],
 it includes the full Dart SDK. The Flutter SDK includes the
 [`dart`](/tools/dart-tool) CLI tool in Flutter's `bin` folder.
 
-## Install the Dart SDK using a package manager {#install}
+## Install the Dart SDK using a package manager {:#install}
 
 Install the Dart SDK using the package manager for your platform.
 
@@ -78,20 +76,19 @@ Install the Dart SDK using the package manager for your platform.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include './get-dart/_windows.md' %}
+{% include './_windows.md' %}
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include './get-dart/_linux.md' %}
+{% include './_linux.md' %}
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include './get-dart/_mac.md' %}
+{% include './_mac.md' %}
 </div>
 
-## About release channels and version strings {#release-channels}
+## Use release channels and version strings {:#release-channels}
 
-{% for channel in page.channel-list %}
+{% for channel in channel-list %}
 {% assign chnl = channel | downcase -%}
-
 {% assign current="`[calculating]`{:.build-rev-" | append: chnl | append: "}" %}
 {% case chnl %}
 {% when 'stable' %}
@@ -141,3 +138,5 @@ follow the [instructions on this page](#install)
 [install-flutter]: {{site.flutter-docs}}/get-started/install
 [10]: https://www.microsoft.com/en-us/software-download/windows10%20
 [11]: https://www.microsoft.com/en-us/software-download/windows11
+[Debian stable]: https://www.debian.org/releases
+[Ubuntu LTS]: https://wiki.ubuntu.com/Releases

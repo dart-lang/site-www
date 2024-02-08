@@ -1,5 +1,5 @@
-### Install using Chocolatey
-{: .no_toc}
+
+### Install using Chocolatey {:.no_toc}
 
 To install the Dart SDK, use [Chocolatey][Chocolatey].
 Chocolatey requires [elevated permissions].
@@ -10,15 +10,13 @@ Install Chocolatey, then run a [command prompt] with elevated permissions.
 C:\> choco install dart-sdk
 ```
 
-### Change default install path
-{: .no_toc}
+### Change default install path {:.no_toc}
 
 By default, Chocolatey installs the SDK at `C:\tools\dart-sdk`.
 To change that location, set the [`ChocolateyToolsLocation`][]
 environment variable to your desired installation directory.
 
-### Verify your PATH includes Dart
-{: .no_toc}
+### Verify your PATH includes Dart {:.no_toc}
 
 Verify you can run Dart.
 
@@ -38,8 +36,7 @@ add the SDK location to your PATH:
 6. In each window that you just opened,
    click **Apply** or **OK** to dismiss it and apply the path change.
 
-### Upgrade using Chocolatey
-{: .no_toc}
+### Upgrade using Chocolatey {:.no_toc}
 
 To upgrade the Dart SDK:
 

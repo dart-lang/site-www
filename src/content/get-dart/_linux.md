@@ -1,13 +1,12 @@
-### Install using package manager
-{: .no_toc}
+
+### Install using package manager {:.no_toc}
 
 Choose to install either using [apt-get](#install-using-apt-get)
 or downloading a [`.deb`](#install-a-debian-package) package.
 
 Both methods trigger an SDK update whenever Dart releases a new version.
 
-#### Install using `apt-get`
-{: .no_toc}
+#### Install using `apt-get` {:.no_toc}
 
 Perform the following steps for the first install only.
 
@@ -52,5 +51,3 @@ To install the Dart SDK as a Debian package (`*.deb`).
      ```
 
 [sudo]: https://www.sudo.ws/
-[Debian stable]: https://www.debian.org/releases
-[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
