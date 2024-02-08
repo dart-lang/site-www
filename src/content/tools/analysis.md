@@ -511,7 +511,7 @@ in a `pubspec.yaml` file, add an `ignore` comment above the affected line.
 The following example ignores the [`sort_pub_dependencies`][] lint
 as it wants to put the `flutter` dependency first:
 
-```yaml
+```yaml title="pubspec.yaml".
 dependencies:
   flutter:
     sdk: flutter
