@@ -528,7 +528,7 @@ thead:has(th:empty) {
     margin-top: 0.5rem;
   }
 
-  i.material-icons {
+  i.material-symbols {
     font-size: 1.25em;
     user-select: none;
   }
@@ -573,8 +573,24 @@ thead:has(th:empty) {
   }
 }
 
+.material-symbols {
+  font-family: $site-font-family-icon;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Used for inlined icon markers, usually at the start of a paragraph */
-.content > p > i.material-icons {
+.content > p > i.material-symbols {
   vertical-align: bottom;
 }
 
@@ -639,7 +655,7 @@ ul.nav-list {
     }
   }
 
-  .material-icons {
+  .material-symbols {
     font-size: 18px;
   }
 }
