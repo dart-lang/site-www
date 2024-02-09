@@ -59,7 +59,7 @@ Use these packages for a wide range of projects.
 [Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 
-## Packages that expand on Dart core libraries {#packages-that-correspond-to-sdk-libraries}
+## Packages that expand on Dart core libraries {:#packages-that-correspond-to-sdk-libraries}
 
 Each of the following packages builds upon a [core library](/libraries),
 adding functionality and filling in missing features:
