@@ -69,6 +69,20 @@ For more information about the JSON format, see [Introducing JSON][].
 To learn more about working with JSON in Dart,
 see the [Using JSON][] guide.
 
+:::secondary
+Two other packages exist with platform-specific implementations for mobile.
+
+* [cronet_http]({{site.pub-pkg}}/cronet_http)
+  provides access to the Android [Cronet][] HTTP client.
+* [cupertino_http]({{site.pub-pkg}}/cupertino_http)
+  provides access to Apple's [Foundation URL Loading System][furl].
+
+To learn more about their capabilities,
+consult the package documentation.
+:::
+
+[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 
 ### HTTP requests
