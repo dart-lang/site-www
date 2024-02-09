@@ -89,7 +89,7 @@ import 'package:lib1/lib1.dart' show foo;
 import 'package:lib2/lib2.dart' hide foo;
 ```
 
-#### Lazily loading a library {:#deferred-loading}
+#### Lazily loading a library {:#lazily-loading-a-library}
 
 *Deferred loading* (also called *lazy loading*)
 allows a web app to load a library on demand,
