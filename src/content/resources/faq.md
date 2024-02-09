@@ -4,7 +4,7 @@ short-title: FAQ
 description: You have questions about Dart, we have answers.
 ---
 
-{% assign pdf = '<i style="vertical-align: text-top" class="material-icons">picture_as_pdf</i>' %}
+{% assign pdf = '<i style="vertical-align: text-top" class="material-symbols">picture_as_pdf</i>' %}
 {% assign site-repo = site.gh-dart.site %}
 {% assign sdk-repo = site.gh-dart.sdk %}
 {% assign lang-repo = site.gh-dart.lang %}

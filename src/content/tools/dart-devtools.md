@@ -13,12 +13,12 @@ and interact with tools such as IDEs, `dart run`, and `webdev`.
 The following table shows which tools
 you can use with common Dart app types.
 
-{% assign y = '<span class="material-icons user-select-none" title="Supported" aria-label="Supported">done</span>' %}
+{% assign y = '<span class="material-symbols user-select-none" title="Supported" aria-label="Supported">done</span>' %}
 {% assign b = '&nbsp;' %}
 {% assign na = '&nbsp;' %}
 {% comment %}
   Considered using this instead:
-  assign b = '<span class="material-icons" title="use browser tools instead">web</span>'
+  assign b = '<span class="material-symbols" title="use browser tools instead">web</span>'
 {% endcomment %}
 
 | Tool                  | [Flutter mobile or desktop][Flutter devtools] | [Flutter web][Flutter devtools] | [Other web][] | [Command-line][] |
