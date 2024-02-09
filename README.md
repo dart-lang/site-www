@@ -21,7 +21,7 @@ feel free to ask any questions you have on the same issue.
 
 To update this site, fork the repo, make your changes,
 and generate a pull request.
-For simple changes (such as style and typo fixes),
+For small, contained changes (such as style and typo fixes),
 you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 We can stage the changes automatically in your pull request.
@@ -95,21 +95,19 @@ and then submit a PR from that fork.
 Once you have a fork (or you're a Dart org member),
 _choose one_ of the following submodule-cloning techniques:
 
-- Clone the repo and its submodule at the same time
-  using the `--recurse-submodules` option:
+1. Clone the repo and its submodule at the same time
+   using the `--recurse-submodules` option:
 
-  ```terminal
-  git clone --recurse-submodules https://github.com/dart-lang/site-www.git
-  ```
+   ```terminal
+   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+   ```
 
-  *OR*
+2. If you've already cloned the repo without its submodule,
+   then run this command from the root of the repository:
 
-- If you've already cloned the repo without its submodule,
-  then run this command from the repo root:
-
-  ```terminal
-  git submodule update --init --recursive
-  ```
+   ```terminal
+   git submodule update --init --recursive
+   ```
 
 > [!NOTE]
 > At any time during development
@@ -170,8 +168,7 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 6. View your changes in the browser by navigating to <http://localhost:4000>.
 
-   > [!NOTE]
-   > The port might be different if `4000` is taken.
+   Note the port might be different if `4000` is taken.
    
    To instead view the source of generated site files,
    check the `_site` directory.
