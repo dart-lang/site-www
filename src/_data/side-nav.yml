@@ -257,8 +257,8 @@
       - title: Past JS interop
         permalink: /interop/js-interop/past-js-interop
       - divider
-  - title: Web interop
-    permalink: /interop/js-interop/package-web
+      - title: Web interop
+        permalink: /interop/js-interop/package-web
 
 - title: Tools & techniques
   expanded: false

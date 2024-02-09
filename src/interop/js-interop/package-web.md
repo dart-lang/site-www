@@ -65,7 +65,7 @@ between `dart:html` and `package:web`.
 After changing the import, any renamed objects will be new "undefined" errors.
 You can adress these either:
 - From the CLI by running `dart fix --dry-run`.
-- In your IDE, select the `dart fix`: **Rename to '<package:web name>'**.
+- In your IDE, select the `dart fix`: **Rename to '`package:web name`'**.
 
 {% comment %}
 Maybe a pic here of menu selection in IDE?
@@ -88,7 +88,7 @@ It's common for `dart:html` code to utilize runtime `is` checks
 to confirm whether an object actually maps to its JS type.
 In constrast, the types that represent browser bindings in `package:web`
 are not reified. This means a runtime `is` check can't confirm the interop type,
-but only that the underlying type is JS `Object`.
+only that the underlying type is JS `Object`.
 
 To be able to perform type checks, migrate any `dart:html` code
 using `is` type tests to use [interop methods][] like `instanceOf`.
@@ -117,7 +117,7 @@ Generally, you can spot which methods need to migrate because they'll be flagged
 with some variation of the exception:
 
 ```nocode
-A value of type 'Null Function(dynamic)' can't be assigned to a variable of type 'JSFunction?'
+A value of type '...' can't be assigned to a variable of type 'JSFunction?'
 ```
 
 Also important to note that methods are [statically dispatched][static interop]
@@ -134,7 +134,7 @@ In `dart:html`, calls are automatically zoned.
 This is not the case in `package:web`. There is no
 automatic binding of async callbacks in the current zone.
 
-To migrate, you can still continue to use zones,
+To migrate, you can still to use zones,
 but you will have to [write them yourself][zones].
 There is no [helper](#helper-layer) available yet.
 
