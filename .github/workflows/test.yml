@@ -66,7 +66,7 @@ jobs:
           sdk: stable
       - name: Fetch Dart packages
         run: dart pub get
-      - uses: pnpm/action-setup@ebcfd6995dade4b0104ac774445cef8b3b4635b0
+      - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d
         with:
           version: 8
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
