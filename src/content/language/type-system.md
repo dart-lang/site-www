@@ -259,7 +259,7 @@ because it's an error to cast a list of dogs to a list of cats:
 ```dart tag=runtime-fail
 void main() {
   List<Animal> animals = [Dog()];
-  List<Cat> cats = [!animals as List<Cat>!];
+  List<Cat> cats = [!animals as List<Dog>!];
 }
 ```
 
