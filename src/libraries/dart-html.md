@@ -6,6 +6,12 @@ prevpage:
   title: dart:io
 ---
 
+{{site.alert.warning}}
+  `dart:html` is being replaced with [`package:web`][]. Package maintainers
+  should migrate to `package:web` as soon as possible to be compatible with
+  WASM. Read the [Web interop with package:web][] page for migration information.
+{{site.alert.end}}
+
 Use the [dart:html][] library to program the browser, manipulate objects and
 elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
 Model*, which describes the hierarchy of an HTML page.
@@ -439,6 +445,8 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
+[`package:web`]: {{site.pub-pkg}}/web
+[Web interop with package:web]: /interop/js-interop/package-web#migrating-from-darthtml
 [AnchorElement]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [Fetch data from the internet]: /tutorials/server/fetch-data
