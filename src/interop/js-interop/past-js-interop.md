@@ -106,18 +106,18 @@ TODO: add links (with stable) when ready:
 TODO: Link to `package:web` section
 {% endcomment %}
 
-[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop
-[`dart:html`]: https://api.dart.dev/dev/dart-html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop
+[`dart:html`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [`package:web`]: /
-[`dart:js`]: https://api.dart.dev/dev/dart-js
-[`object wrapper`]: https://api.dart.dev/dev/dart-js/JsObject-class.html
-[`allowInterop`]: https://api.dart.dev/dev/dart-js_util/allowInterop.html
+[`dart:js`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js
+[`object wrapper`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/JsObject-class.html
+[`allowInterop`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/allowInterop.html
 [`package:js`]: https://pub.dev/packages/js
-[`JSObject`]: https://api.dart.dev/dev/dart-js_interop/JSObject-extension-type.html
+[`JSObject`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/JSObject-extension-type.html
 [`@JS`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L11
 [tutorial for mocking]: /interop/js-interop/test-and-mock
 [`@anonymous`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L48
-[`dart:js_util`]: https://api.dart.dev/dev/dart-js_util
-[`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop_unsafe`]: https://api.dart.dev/dev/dart-js_interop_unsafe
+[`dart:js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util
+[`Function.toJS`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop_unsafe
