@@ -15,10 +15,10 @@ To learn more about the Dart SDK, see the [Dart SDK overview](/tools/sdk).
 Dart supports the following hardware architectures and platform versions
 to develop and run Dart code.
 
-{% assign yes = '<span class="material-icons" style="color: #158477;">verified</span>' %}
-{% assign no = '<span class="material-icons" style="color: #D43324">dangerous</span>' %}
-{% assign beta = '<span class="material-icons" style="color: #13C2AD">gpp_maybe</span>' %}
-{% assign na = '<span class="material-icons" style="color: #DADCE0">do_not_disturb_on</span>' %}
+{% assign yes = '<span class="material-symbols" style="color: #158477;">verified</span>' %}
+{% assign no = '<span class="material-symbols" style="color: #D43324">dangerous</span>' %}
+{% assign beta = '<span class="material-symbols" style="color: #13C2AD">gpp_maybe</span>' %}
+{% assign na = '<span class="material-symbols" style="color: #DADCE0">do_not_disturb_on</span>' %}
 {% assign macversions = '' %}
 {% for version in macos limit:3 %}
 {%- if version.eol == false -%}
