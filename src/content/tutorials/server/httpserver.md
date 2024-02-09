@@ -9,13 +9,6 @@ prevpage:
 
 Dart resources for writing HTTP servers include:
 
-## Packages
-
-* [cronet_http]({{site.pub-pkg}}/cronet_http)
-  Provides access to the Android [Cronet][] HTTP client.
-* [cupertino_http]({{site.pub-pkg}}/cupertino_http)
-  Provides access to Apple's [Foundation URL Loading System][furl].
-
 ## Documentation
 
 * [Using Google Cloud][] has information on Google Cloud products
@@ -44,6 +37,3 @@ Dart resources for writing HTTP servers include:
 [simple-sample]: https://github.com/dart-lang/samples/tree/main/server/simple
 [Using Google APIs]: /guides/google-apis
 [Using Google Cloud]: /server/google-cloud
-
-[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
-[furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
