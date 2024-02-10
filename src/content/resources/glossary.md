@@ -132,6 +132,15 @@ For additional details, see the
 
 [definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
+## Function
+
+Unless noted otherwise, the term *function* refers to top-level functions, local functions, static
+methods, and instance methods.
+
+For additional details, see the documentation on [Functions][_functions_].
+
+[_functions_]: /language/functions
+
 ## Irrefutable pattern
 
 _Irrefutable patterns_ are patterns that always match. 
