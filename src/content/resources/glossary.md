@@ -134,7 +134,7 @@ For additional details, see the
 
 ## Function
 
-"Function" refers to top-level functions, local functions, static
+Unless noted otherwise, the term *function* refers to top-level functions, local functions, static
 methods, and instance methods.
 
 For additional details, see the documentation on [Functions][_functions_].
