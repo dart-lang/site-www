@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
+// #docregion
 const String filename = 'with_keys.json';
 
-// #docregion main
 void main() async {
   // Read some data.
   final jsonData = await Isolate.run(() async {
@@ -16,4 +16,4 @@ void main() async {
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
-// #enddocregion main
+// #enddocregion

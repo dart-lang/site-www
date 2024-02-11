@@ -97,10 +97,12 @@
           permalink: /language/modifier-reference
     - title: Concurrency
       children:
+        - title: Overview
+          permalink: /language/concurrency
         - title: Asynchronous support
           permalink: /language/async
         - title: Isolates
-          permalink: /language/concurrency
+          permalink: /language/isolates
     - title: Null safety
       expanded: false
       children:
@@ -137,13 +139,26 @@
   children:
     - title: Overview
       match-page-url-exactly: true
-      permalink: /guides/libraries
-    - title: Tour
-      permalink: /guides/libraries/library-tour
-    - title: Articles
-      children:
-        - title: Creating streams
-          permalink: /articles/libraries/creating-streams
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
+      permalink: /libraries/dart-async
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:io
+      permalink: /libraries/dart-io
+    - title: dart:html
+      permalink: /libraries/dart-html
+    - divider
+    - title: Using streams
+      permalink: /tutorials/language/streams
+    - title: Creating streams
+      permalink: /articles/libraries/creating-streams
+    - title: Futures and error handling
+      permalink: /guides/libraries/futures-error-handling
 
 - title: Packages
   expanded: false
@@ -175,6 +190,8 @@
           permalink: /tools/pub/troubleshoot
         - title: Verified publishers
           permalink: /tools/pub/verified-publishers
+        - title: Security advisories
+          permalink: /tools/pub/security-advisories
         - title: Versioning
           permalink: /tools/pub/versioning
 
@@ -183,22 +200,10 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
-    - title: Streams
-      permalink: /tutorials/language/streams
     - title: JSON
       permalink: /guides/json
     - title: Number representation
       permalink: /guides/language/numbers
-    - title: Interoperability
-      children:
-        - title: C interop
-          permalink: /guides/libraries/c-interop
-        - title: Objective-C & Swift interop
-          permalink: /guides/libraries/objective-c-interop
-        - title: Java & Kotlin interop
-          permalink: /guides/libraries/java-interop
-        - title: JavaScript interop
-          permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
     - title: Multi-platform apps
@@ -226,15 +231,7 @@
           match-page-url-exactly: true
           permalink: /web
         - title: Get started
-          permalink: /tutorials/web/get-started
-        - title: Low-level web programming
-          children:
-          - title: Connect Dart & HTML
-            permalink: /tutorials/web/low-level-html/connect-dart-html
-          - title: Add elements to the DOM
-            permalink: /tutorials/web/low-level-html/add-elements
-          - title: Remove DOM elements
-            permalink: /tutorials/web/low-level-html/remove-elements
+          permalink: /web/get-started
         - title: Deployment
           permalink: /web/deployment
         - title: Libraries & packages
@@ -242,6 +239,17 @@
     - title: Environment declarations
       permalink: /guides/environment-declarations
 
+- title: Interoperability
+  expanded: false
+  children:
+  - title: C interop
+    permalink: /interop/c-interop
+  - title: Objective-C & Swift interop
+    permalink: /interop/objective-c-interop
+  - title: Java & Kotlin interop
+    permalink: /interop/java-interop
+  - title: JavaScript interop
+    permalink: /interop/js-interop
 
 - title: Tools & techniques
   expanded: false
@@ -262,8 +270,6 @@
           - title: Overview
             match-page-url-exactly: true
             permalink: /tools/dartpad
-          - title: DartPad in tutorials
-            permalink: /tools/dartpad/dartpad-best-practices
           - title: Troubleshooting DartPad
             permalink: /tools/dartpad/troubleshoot
   - title: Command-line tools
@@ -306,20 +312,14 @@
           permalink: /tools/build_runner
         - title: webdev
           permalink: /tools/webdev
-  - title: Managing source code
-    children:
-      - title: Formatting code
-        permalink: /guides/language/formatting
-      - title: What not to commit
-        permalink: /guides/libraries/private-files
   - title: Static analysis
     children:
       - title: Customizing static analysis
-        permalink: /guides/language/analysis-options
+        permalink: /tools/analysis
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
-      - title: Diagnostic messages
-        permalink: /tools/diagnostic-messages
+      - title: Fixing type promotion failures
+        permalink: /tools/non-promotion-reasons
       - title: Linter rules
         permalink: /tools/linter-rules
   - title: Testing & optimization
@@ -328,12 +328,14 @@
         permalink: /guides/testing
       - title: Debugging web apps
         permalink: /web/debugging
+  - title: What not to commit
+    permalink: /guides/libraries/private-files
 
 - title: Resources
   expanded: false
   children:
-    - title: FAQ
-      permalink: /resources/faq
+    - title: Breaking changes
+      permalink: /resources/breaking-changes
     - title: Language evolution
       permalink: /guides/language/evolution
     - title: Language specification
@@ -347,6 +349,10 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: Swift to Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - title: FAQ
+      permalink: /resources/faq
+    - title: Glossary
+      permalink: /resources/glossary
     - title: Books
       permalink: /resources/books
     - title: Videos

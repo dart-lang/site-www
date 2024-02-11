@@ -1,16 +1,16 @@
-import 'dart:html';
+import 'package:web/web.dart';
 
-class OperatingSystem {
+final class OperatingSystem {
   static final OperatingSystem current =
       [_chrome, _mac, _windows, _linux, _unix].firstWhere(
-    (system) => system._matchesNavigator(window.navigator),
-    orElse: () => OperatingSystem('Unknown', (n) => false),
+    (system) => window.navigator.appVersion.contains(system._navigatorName),
+    orElse: () => const OperatingSystem('Unknown', 'Unknown'),
   );
 
   final String name;
-  final bool Function(Navigator) _matchesNavigator;
+  final String _navigatorName;
 
-  OperatingSystem(this.name, this._matchesNavigator);
+  const OperatingSystem(this.name, this._navigatorName);
 
   bool get isLinux => this == _linux;
   bool get isMac => this == _mac;
@@ -18,27 +18,27 @@ class OperatingSystem {
   bool get isWindows => this == _windows;
 }
 
-final _linux = OperatingSystem(
+const _linux = OperatingSystem(
   'Linux',
-  (Navigator navigator) => navigator.appVersion.contains('Linux'),
+  'Linux',
 );
 
-final _mac = OperatingSystem(
+const _mac = OperatingSystem(
   'Mac',
-  (Navigator navigator) => navigator.appVersion.contains('Mac'),
+  'Mac',
 );
 
-final _unix = OperatingSystem(
+const _unix = OperatingSystem(
   'Unix',
-  (Navigator navigator) => navigator.appVersion.contains('X11'),
+  'X11',
 );
 
-final _windows = OperatingSystem(
+const _windows = OperatingSystem(
   'Windows',
-  (Navigator navigator) => navigator.appVersion.contains('Win'),
+  'Win',
 );
 
-final _chrome = OperatingSystem(
+const _chrome = OperatingSystem(
   'ChromeOS',
-  (Navigator navigator) => navigator.appVersion.contains('CrOS'),
+  'CrOS',
 );

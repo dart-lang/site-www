@@ -1,21 +1,23 @@
-import 'package:dart_sdk_archive/src/util.dart';
 import 'package:path/path.dart' as path;
 import 'package:sdk_builds/sdk_builds.dart';
+
+import 'util.dart';
 
 class SvnVersionGenerator {
   final _downloader = DartDownloads();
 
   Future<Map<String, String>> get svnVersions async {
-    var versionInfos = <String, VersionInfo>{};
-    await Future.wait([
+    final versionInfos = <String, VersionInfo>{};
+    await (
       _loadVersionInfo(versionInfos, 'stable'),
       _loadVersionInfo(versionInfos, 'beta'),
       _loadVersionInfo(versionInfos, 'dev'),
-    ]);
-    var result = <String, String>{};
-    versionInfos.forEach((revision, version) {
-      result[revision] = version.toString();
-    });
+    ).wait;
+    final result = <String, String>{
+      for (final MapEntry(key: revision, value: version)
+          in versionInfos.entries)
+        revision: version.toString()
+    };
     return result;
   }
 
@@ -23,7 +25,7 @@ class SvnVersionGenerator {
       Map<String, VersionInfo> versionInfos, String channel) async {
     final versionBaseNames = await _downloader
         .fetchVersionPaths(channel)
-        .map((s) => path.basename(s))
+        .map(path.basename)
         .toList();
 
     await Future.forEach<String>(versionBaseNames, (name) async {
@@ -31,7 +33,7 @@ class SvnVersionGenerator {
         return;
       }
 
-      var versionInfo = await _downloader.fetchVersion(channel, name);
+      final versionInfo = await _downloader.fetchVersion(channel, name);
       versionInfos[name] = versionInfo;
     });
   }

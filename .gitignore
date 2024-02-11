@@ -1,5 +1,3 @@
-_asset_bundler_cache
-_bookhtml
 _cache/
 _site/
 .*-cache
@@ -10,8 +8,6 @@ _site/
 .env*
 .firebase
 .idea
-.packages
-.pub
 .spelling
 .vscode
 *.cache
@@ -25,8 +21,14 @@ build
 firebase-debug.log
 node_modules
 pubspec.lock
+package-lock.json
 tmp
 
 # Misc
 trash
 /src/_data/ci.yaml
+
+# SHA Update
+# The script generates the .save file in case you need a rollback.
+*.save
+tool/new-dart-hashes.txt

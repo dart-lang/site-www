@@ -1,0 +1,18 @@
+name: dart_site
+description: Dart-based tools for building dart.dev.
+publish_to: none
+
+environment:
+  sdk: ^3.2.0
+
+dependencies:
+  args: ^2.4.2
+  html_unescape: ^2.0.0
+  io: ^1.0.4
+  linkcheck: ^3.0.0
+  markdown: ^7.2.0
+  path: ^1.9.0
+
+dev_dependencies:
+  analysis_defaults:
+    path: ../../site-shared/packages/analysis_defaults

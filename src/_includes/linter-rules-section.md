@@ -1,87 +1,52 @@
-{% for lint in site.data.linter_rules %}
+{% for lint in linter_rules %}
 
-{% if lint.group == include.type %}
+{% if lint.group == type and lint.state != "internal" %}
 
-### {{lint.name}}
-
-{{lint.description}}
-
-{% if lint.sinceDartSdk == "Unreleased" %}
-_This rule is currently **experimental**
-and not yet available in a stable SDK._
-{% elsif lint.state == "removed" %}
-_This rule has been removed as of the latest Dart releases._
-{% elsif lint.state != "stable" %}
-_This rule is currently **{{lint.state}}**
-and available as of Dart {{lint.sinceDartSdk}}._
-{% else %}
-_This rule is available as of Dart {{lint.sinceDartSdk}}._
-{% endif %}
+{% assign badges = "" %}
 
 {% if lint.sets != empty %}
-
-{% assign rule_sets = "" %}
 
 {% for set in lint.sets %}
 
 {% if set == "core" or set == "recommended" %}
-  {% assign set_link = "lints" %}
-{% elsif set == "flutter" %} 
-  {% assign set_link = "flutter_lints" %}
+{% assign set_link = "lints" %}
+{% elsif set == "flutter" %}
+{% assign set_link = "flutter_lints" %}
 {% else %}
-  {% assign set_link = set %}
+{% assign set_link = set %}
 {% endif %}
 
 {%- capture rule_set -%}
-[{{set}}](#{{set_link}}){% if forloop.last == false %},{% endif %}
+<a href="/tools/linter-rules#{{set_link}}">
+    <img src="/assets/img/tools/linter/style-{{set}}.svg" alt="{{set}} rule set">
+</a>
 {% endcapture %}
 
-{%- assign rule_sets = rule_sets | append: rule_set -%}
+{%- assign badges = badges | append: rule_set -%}
 
 {% endfor %}
-
-<em>Rule sets: {{ rule_sets }}</em>
 
 {% endif %}
 
 {% if lint.fixStatus == "hasFix" %}
-<em>This rule has a [quick fix](#quick-fixes) available.</em>
-{% endif %}
-
-{% if lint.incompatible != empty %}
-
-{% assign incompatible_rules = "" %}
-
-{% for incompatible in lint.incompatible %}
-
-{%- capture incompatible_rule -%}
-[{{incompatible}}](#{{incompatible}}){% if forloop.last == false %},{% endif %}
+{%- capture has_fix -%}
+<a href="/tools/linter-rules#quick-fixes">
+<img src="/assets/img/tools/linter/has-fix.svg" alt="Has a quick fix">
+</a>
 {% endcapture %}
 
-{% assign incompatible_rules = incompatible_rules | append: incompatible_rule %}
-
-{% endfor %}
-
-<em>Incompatible rules: {{ incompatible_rules }}</em>
-
+{%- assign badges = badges | append: has_fix -%}
 {% endif %}
 
-#### Details
-
-{{lint.details}}
-
-#### Usage
-
-To enable the `{{lint.name}}` rule,
-add `{{lint.name}}` under **linter > rules** in your
-[`analysis_options.yaml`](/guides/language/analysis-options)
-file:
-
-```yaml
-linter:
-  rules:
-    - {{lint.name}}
-```
+<a id="{{lint.name}}"></a>
+{% if lint.sinceDartSdk contains "wip" %}
+[`{{lint.name}}`](/tools/linter-rules/{{lint.name}}) _(Unreleased)_
+{% elsif lint.state != "stable" %}
+[`{{lint.name}}`](/tools/linter-rules/{{lint.name}}) _({{lint.state | capitalize}})_
+{% else %}
+[`{{lint.name}}`](/tools/linter-rules/{{lint.name}})
+{% endif -%}
+{% if badges != empty %}<br>{{ badges }}{% endif -%}<br>{{lint.description}}
 
 {% endif %}
 

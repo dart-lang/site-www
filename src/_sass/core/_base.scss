@@ -1,5 +1,9 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../core/bootstrap';
+
 body {
-  font-family: $font-family-base;
+  font-family: $site-font-family-base;
   font-size: $font-size-base;
   font-weight: 400;
   color: $site-color-body;
@@ -18,41 +22,41 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, .h1 {
   font-family: $site-font-family-gsans-display;
-  font-size: $h1-font-size;
+  font-size: bootstrap.$h1-font-size;
   margin-top: 0;
-  margin-bottom: 0.67em;
+  margin-bottom: 0;
 }
 
 h2, .h2 {
-  font-size: $h2-font-size;
+  font-size: bootstrap.$h2-font-size;
 }
 
 h3, .h3 {
-  font-size: $h3-font-size;
+  font-size: bootstrap.$h3-font-size;
 }
 
 h4, .h4 {
-  font-size: $h4-font-size;
+  font-size: bootstrap.$h4-font-size;
 }
 
 h5, .h5 {
-  font-size: $h5-font-size;
+  font-size: bootstrap.$h5-font-size;
 }
 
 h6, .h6 {
-  font-size: $h6-font-size;
+  font-size: bootstrap.$h6-font-size;
 }
 
 dt {
   a {
-    font-weight: $font-weight-bold
+    font-weight: bootstrap.$font-weight-bold
   }
 }
 
 a, button {
   text-decoration: none;
   color: $brand-primary;
-  font-family: $site-font-family-roboto;
+  font-family: $site-font-family-base;
   font-weight: 400;
 
   &:visited {
@@ -60,20 +64,13 @@ a, button {
   }
 
   &:hover, &:focus, &:active {
-    color: lighten($brand-primary, 25%);
+    color: $flutter-color-blue-700;
     outline: none;
     text-decoration: none;
   }
 
-  &.external {
-    &:after {
-      @include md-icon-content("launch");
-      vertical-align: middle;
-      margin-left: 2px;
-      font-size: 10px;
-      color: inherit;
-      opacity: 0.5;
-    }
+  &:active {
+    color: $flutter-color-blue-800;
   }
 }
 
@@ -84,7 +81,7 @@ img {
 
 blockquote {
   border: solid #b3b3b3;
-  border-width: 1px 0px;
+  border-width: 1px 0;
   margin: 20px;
   padding: 10px 20px 0 20px;
 }

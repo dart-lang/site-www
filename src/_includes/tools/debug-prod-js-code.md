@@ -1,13 +1,13 @@
-## Debugging production code {#debugging}
+## Debugging production code {:#debugging}
 
 This section gives tips for debugging production-compiled code
 in Chrome, Firefox, and Safari. You can only debug JavaScript code in
 browsers that support source maps such as Chrome.
 
-{{site.alert.tip}}
-  Whenever possible, instead of debugging production code,
-  debug code using a development server such as provided by [`webdev`][].
-{{site.alert.end}}
+:::tip
+Whenever possible, instead of debugging production code,
+debug code using a development server such as provided by [`webdev`][].
+:::
 
 [`webdev`]: /tools/webdev
 
@@ -19,7 +19,7 @@ we recommend pausing on all exceptions.
 [debugging web apps]: /web/debugging
 
 
-### Chrome {#dart2js-debugging-chrome}
+### Chrome {:#dart2js-debugging-chrome}
 
 To debug in Chrome:
 
@@ -32,7 +32,7 @@ To debug in Chrome:
    [How to set breakpoints.](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
 4. Reload your app.
 
-### Edge {#dart2js-debugging-ie}
+### Edge {:#dart2js-debugging-ie}
 
 To debug in Edge:
 
@@ -42,7 +42,7 @@ To debug in Edge:
 4. Exception behavior can be controlled through **Ctrl+Shift+E**;
    the default is **Break on unhandled exceptions**.
 
-### Firefox {#dart2js-debugging-firefox}
+### Firefox {:#dart2js-debugging-firefox}
 
 To debug in Firefox:
 
@@ -54,7 +54,7 @@ To debug in Firefox:
    
 3. Reload the app. The **Debugger** tab shows source-mapped files.
 
-### Safari {#dart2js-debugging-safari}
+### Safari {:#dart2js-debugging-safari}
 
 To debug in Safari:
 

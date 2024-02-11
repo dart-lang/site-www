@@ -1,0 +1,98 @@
+name: test
+
+on:
+  # Run on PRs and pushes to the default branch.
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 0"
+
+# Declare default permissions as read only.
+permissions: read-all
+
+env:
+  # Keep for Dart SDK reporting
+  PUB_ENVIRONMENT: bot.github
+  # LTS
+  NODE_VERSION: '20'
+  # Tool location
+  BASE_DIR: ${{ github.workspace }}
+  TOOL_DIR: ${{ github.workspace }}/tool
+
+jobs:
+  test:
+    name: Check excerpts and run tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sdk: beta
+            experimental: false
+          - sdk: stable
+            experimental: false
+    continue-on-error: ${{ matrix.experimental }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+        with:
+          sdk: ${{ matrix.sdk }}
+      - name: Fetch Dart packages
+        run: dart pub get
+      - name: Check Dart code formatting
+        run: dart run dart_site format-dart --check
+      - name: Analyze Dart code
+        run: dart run dart_site analyze-dart
+      - name: Run Dart tests
+        run: dart run dart_site test-dart
+      - name: Check if excerpts are up to date
+        run: dart run dart_site refresh-excerpts --fail-on-update
+
+  linkcheck:
+    name: Build site and check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
+      - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d
+        with:
+          version: 8
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: Install node dependencies
+        run: pnpm install
+      - name: Build site
+        run: dart run dart_site build
+      - name: Check for broken Markdown links
+        run: dart run dart_site check-link-references
+      - name: Check internal site links are functional
+        run: dart run dart_site check-links
+
+  firebase-validate:
+    name: Validate Firebase configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
+      - name: Validate the firebase.json file
+        run: dart run dart_site verify-firebase-json

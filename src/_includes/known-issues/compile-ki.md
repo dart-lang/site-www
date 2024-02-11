@@ -8,13 +8,13 @@ No cross-compilation support ([issue 28617][])
 
 No support for `dart:mirrors` and `dart:developer`
 : For a complete list of the core libraries you can use,
-  see the **All** and **AOT** entries in the
-  [table of core Dart libraries](/guides/libraries).
+  see the [Multi-platform][] and [Native platform][] library tables.
 
+[Multi-platform]: /libraries#multi-platform-libraries
+[Native platform]: /libraries#native-platform-libraries
 [issue 28617]: https://github.com/dart-lang/sdk/issues/28617
-[issue 39106]: https://github.com/dart-lang/sdk/issues/39106
 
-{{site.alert.tip}}
-  If one of these issues is important to you,
-  let the Dart team know by adding a "thumbs up" to the issue.
-{{site.alert.end}}
+:::tip
+If one of these issues is important to you,
+let the Dart team know by adding a "thumbs up" to the issue.
+:::

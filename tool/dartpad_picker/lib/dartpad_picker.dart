@@ -20,15 +20,20 @@ class DartPadPicker {
   late final IFrameElement _iFrameElement;
   int _selected = 0;
 
-  DartPadPicker(this.iFrameHost, this.selectElement, this.snippets,
-      {this.dartPadUrl = 'https://dartpad.dev', this.frameId}) {
+  DartPadPicker(
+    this.iFrameHost,
+    this.selectElement,
+    this.snippets, {
+    this.dartPadUrl = 'https://dartpad.dev',
+    this.frameId,
+  }) {
     _initSelectElement();
     _initDartPad();
   }
 
   Snippet get _selectedSnippet => snippets[_selected];
 
-  Map<String, dynamic> get _sourceCodeMessage => {
+  Map<String, Object> get _sourceCodeMessage => {
         'sourceCode': {
           'main.dart': _selectedSnippet.sourceCode,
         },
@@ -49,7 +54,9 @@ class DartPadPicker {
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
-      ..src = iFrameSrc(theme: 'dark', mode: 'dart');
+      ..src = iFrameSrc(theme: 'dark', mode: 'dart')
+      ..attributes['loading'] = 'lazy';
+
     final id = frameId;
     if (id != null) {
       _iFrameElement.id = id;

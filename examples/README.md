@@ -10,7 +10,7 @@ and more. Site-www specific information is given below.
 Change directory into the example's folder and run Dart commands there. For
 example:
 
-```console
+```terminal
 $ cd examples/misc
 $ dart pub get
 $ dart analyze .
@@ -21,7 +21,7 @@ $ dart analyze .
 Change directory into the example's folder and run Dart commands there. For
 example:
 
-```console
+```terminal
 $ cd examples/misc
 $ dart pub get
 $ dart test  # Run VM tests
