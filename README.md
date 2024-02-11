@@ -2,69 +2,91 @@
 
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
-[![first-timers SVG][]][first-timers]
 
-The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
+The documentation site for the [Dart programming language](https://dart.dev), 
+built with [Eleventy][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md),
-and we're [first-timer friendly][first-timers]!
+We welcome contributions of all kinds!
+To set up the site locally, follow the
+below guidelines on [Building the site](#build-the-site).
+To learn more about contributing to this repository,
+check out the [Contributing guidelines](CONTRIBUTING.md).
 
 ## Getting started
 
 Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
 that catches your interest, or create an issue with your proposed change.
-Ask for the issue to be assigned to you.
+Consider adding a comment to let everyone know that you're working on it, and
+feel free to ask any questions you have on the same issue.
 
-To update this site, fork the repo, make your changes, and generate a pull
-request. For simple changes (such as to CSS and text), you probably don't need
-to build this site. Often you can make changes using the GitHub UI.
+To update this site, fork the repo, make your changes,
+and generate a pull request.
+For small, contained changes (such as style and typo fixes),
+you probably don't need to build this site.
+Often you can make changes using the GitHub UI.
+We can stage the changes automatically in your pull request.
 
-> **NOTE:** If you clone this repo locally,
-> see the instructions below on cloning with its submodule.
+> [!IMPORTANT]  
+> If you are cloning this repository locally,
+> follow the below instruction on cloning with its submodule.
 
 If your change involves code samples, adds/removes pages, or affects navigation,
-you'll need to build and test your work before submitting.
+do consider building and test your work before submitting.
 
-If you want or need to build, follow the steps below.
+If you want or need to build the site, follow the steps below.
 
-> **Help us improve these instructions!**
-> If you have any problems getting set up to build or performing the
-> actual build, please
-> [edit this README](https://github.com/dart-lang/site-www/edit/main/README.md)
-> or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
-> (or both).
-
-## Before you build this site
+## Build the site
 
 For changes beyond simple text and CSS tweaks,
-we recommend building the site.
+we recommend running the site locally to
+enable an edit-refresh cycle. 
 
-### 1. Get the prerequisites
+### Get the prerequisites
 
-Install the following tools, if you don't have them already:
+Install the following tools to build and develop the site:
 
-- **bash**, the Bourne shell.
-  These instructions assume you're using `bash`,
-  and setup might not work if you use another shell.
+#### Dart
 
-- **GNU Make**.
-  On Windows the easiest way to install Make is `choco install make`
-  using command prompt or powershell as an admin.
-  Other options include using a [subsystem][wsl].
+The latest stable release of Dart is required to build the site
+and run its tooling. This can be the Dart included in the Flutter SDK.
+If you don't have Dart or need to update, follow the
+instructions at [Get the Dart SDK][].
 
-- **Docker**.
-  We use Docker for local dev, tests, and building the site.
-  Install it from https://docs.docker.com/get-docker/.
+If you already have Dart installed, verify it's on your path
+and already the latest stable version:
 
-- **Firebase CLI**, for hosting the site locally.
-  One way to get this is to run `npm install -g firebase-tools`.
-  For full setup details,
-  read the [Firebase CLI documentation](https://firebase.google.com/docs/cli).
+```terminal
+dart --version
+```
 
-### 2. Clone this repo _and_ its submodules
+#### Node.js
 
-> **Note:** This repo has git _submodules_, which affects how you clone it.
-> The GitHub documentation has general help on [forking][] and [cloning][] repos.
+The latest stable LTS release of Node.js is required to build the site.
+If you don't have Node.js or need to update, download your
+computer's corresponding version and follow the instructions
+from the [Node.js download archive][].
+If you prefer, you can use a version manager such as [nvm][].
+
+If you already have Node installed, verify it's available on your path
+and already the latest stable version _(`20` or later)_:
+
+```terminal
+node --version
+```
+
+If your version is out of date,
+follow the update instructions for how you originally installed it.
+
+[Get the Dart SDK]: https://dart.dev/get-dart
+[Node.js download archive]: https://nodejs.org/en/download/
+[nvm]: https://github.com/nvm-sh/nvm
+
+### Clone this repo and its submodules
+
+> [!NOTE]
+> This repository has git _submodules_, which affects how you clone it.
+> The GitHub documentation has general help on
+> [forking][] and [cloning][] repos.
 
 If you're not a member of the Dart organization,
 we recommend you **create a fork** of this repo under your own account,
@@ -73,168 +95,174 @@ and then submit a PR from that fork.
 Once you have a fork (or you're a Dart org member),
 _choose one_ of the following submodule-cloning techniques:
 
-- Clone the repo and its submodule at the same time
-  using the `--recurse-submodules` option:
+1. Clone the repo and its submodule at the same time
+   using the `--recurse-submodules` option:
 
-  ```terminal
-  $ git clone --recurse-submodules https://github.com/dart-lang/site-www.git
-  ```
+   ```terminal
+   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+   ```
 
-  *OR*
+2. If you've already cloned the repo without its submodule,
+   then run this command from the root of the repository:
 
-- If you've already cloned the repo without its submodule,
-  then run this command from the repo root:
+   ```terminal
+   git submodule update --init --recursive
+   ```
 
-  ```terminal
-  $ git submodule update --init --recursive
-  ```
-
-> **Note:** At any time during development
+> [!NOTE]
+> At any time during development
 > you can use the `git submodule` command to refresh submodules:
 >
 > ```terminal
-> $ git pull; git submodule update --init --recursive
+> git pull && git submodule update --init --recursive
 > ```
 
-## Setting up your local environment and serve changes
+## Set up your local environment and serve changes
+
+Before you continue setting up the site infrastructure,
+verify the correct versions of Dart and Node.js are set up and available by
+following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 1. _Optional:_ After cloning the repo and its submodules,
    create a branch for your changes:
 
    ```terminal
-   $ git checkout -b <BRANCH_NAME>
+   git checkout -b <BRANCH_NAME>
    ```
 
-2. If the Docker Desktop application isn't already running on your machine,
-   start it. Look for the Docker status icon: if it has an exclamation
-   point (`!`), then update Docker Desktop before proceeding.
-
-3. Run the initial local setup command:
+2. From the root directory of the repository,
+   fetch the site's Dart dependencies.
 
    ```terminal
-   $ make setup
+   dart pub get
    ```
 
-4. Serve the site locally (via `docker-compose`):
+3. From the root directory of the repository,
+   enable [`corepack`][] to set up [`pnpm`][].
+   `corepack` comes bundled with Node and `pnpm`
+   is an alternative, efficient package manager for npm packages.
+   If you already have `pnpm` installed or installed it a different way,
+   you can skip the `corepack` commands.
 
    ```terminal
-   $ make up
+   corepack enable
+   corepack install
    ```
 
-   The site is generated, and then the development server runs in the
-   Docker container, with the generated `_site` directory visible locally
-   as a mirrored volume from inside the container.
-
-5. View your changes in the browser by navigating to `http://localhost:4000`.
-   > **Note:** Unless you're editing files under `site-shared`,
-   > you can safely ignore `ERROR: directory is already being watched` messages.
-   > For details, see [#1363](https://github.com/flutter/website/issues/1363).
-
-6. Make your changes to the local repo.
-
-   The site will rebuild and the browser will autoreload to reflect the changes.
-
-   > **Tip:** If you aren't seeing the changes you expect (e.g. src/_data),
-   > <kbd>Ctrl</kbd> + <kbd>C</kbd> out of your running dev server and rebuild the site from scratch
-   > using the following commands:
-   >
-   > ```terminal
-   > $ make down && make clean && make up
-   > ```
-
-7. Commit your changes to the branch and submit your PR.
-   > See [Pre-push site checks](#pre-push-site-checks)
-
-8. When you've finished developing, shut down the Docker container:
+4. Once you have `pnpm` installed and setup,
+   fetch the site's npm dependencies.
+   We recommend you use `pnpm`, but you can also use `npm`.
 
    ```terminal
-   $ make down
+   pnpm install
    ```
 
-> **Tip:** To find additional commands, read the [Makefile][].
-> For example, if you need to debug the Docker setup,
-> you can run:
->
-> ```terminal
-> $ make run
-> ```
+5. From the root directory, serve the site locally.
 
-## Pre-push site checks
+   ```terminal
+   dart run dart_site serve
+   ```
 
-### Checking documentation and example code
+   This command generates and serves the site on a
+   local port that's printed to your terminal.
 
-If you've made changes to this site's documentation and/or example code,
-and committed locally, then run the following commands before pushing your work:
+6. View your changes in the browser by navigating to <http://localhost:4000>.
+
+   Note the port might be different if `4000` is taken.
+   
+   To instead view the source of generated site files,
+   check the `_site` directory.
+
+7. Make your changes to the local repo.
+
+   The site should automatically rebuild on most changes, but if
+   something doesn't update, exit the process and rerun the command.
+   Improvements to this functionality are planned.
+   Please open a new issue to track the issue if this occurs.
+
+8. Commit your changes to the branch and submit your PR.
+
+   If your change is large, or you'd like to test it,
+   consider [validating your changes](#validate-your-changes).
+
+> [!TIP]
+> To find additional commands that you can run,
+> run `dart run dart_site --help` from the repository's root directory.
+
+[`corepack`]: https://nodejs.org/api/corepack.html
+[`pnpm`]: https://pnpm.io/
+
+## Validate your changes
+
+### Check documentation and example code
+
+If you've made changes to the code in the `/examples` or `/tool` directories,
+commit your work, then run the following command to
+verify it is up to date and matches the site standards.
 
 ```terminal
-# Enter a running Docker container shell
-$ make run
-
-# Check/validate example code
-$ dart run dart_site check-all
+dart run dart_site check-all
 ```
 
-If these scripts report errors or warnings,
-then address those issues and rerun the above commands.
-Otherwise, you can push your changes.
+If this script reports any errors or warnings,
+then address those issues and rerun the command.
+If you have any issues, leave a comment on your issue or pull request,
+and we'll try our best to help you.
+You can also chat with us on the `#hackers-devrel` channel
+on the [Flutter contributors Discord][]!
 
-## Deploying to a staging site
+[Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
 
-You can deploy your local edits to a
-personal Firebase hosting staging site as follows:
+## [Optional] Deploy to a staging site
+
+Submitted pull requests can be automatically staged
+by a site maintainer.
+If you'd like to stage the site yourself though,
+you can build a full version and upload it to Firebase.
 
 1. If you don't already have a Firebase project,
 
    - Navigate to the [Firebase Console](https://console.firebase.google.com)
      and create your own Firebase project (for example, `dart-dev-staging`).
 
-   - Head back to your local repo shell and verify that you are logged in.
+   - Head back to your local terminal and verify that you are logged in.
 
      ```terminal
-     $ firebase login
+     firebase login
      ```
 
    - Ensure that your project exists and activate that project:
 
      ```terminal
-     $ firebase projects:list
-     $ firebase use <your-project>
+     firebase projects:list
+     firebase use <your-project>
      ```
 
-1. Build the site via Docker:
+2. From the root directory of the repository, build the site:
 
    ```terminal
-   $ make build
+   dart run dart_site build
    ```
 
    This will build the site and copy it to your local `_site` directory.
    If that directory previously existed, it will be replaced.
 
-1. Deploy to your activated Firebase project's default hosting site:
+3. Deploy to your activated Firebase project's default hosting site:
 
    ```terminal
-   $ FIREBASE_PROJECT=<your-project> make deploy
+   firebase deploy --only hosting
    ```
 
-   > **TIP:** Add your `FIREBASE_PROJECT` env var to your `.env` file
-   > and it will overwrite the default every time you deploy without specifying.
-
-1. Navigate to your PR on GitHub and update it with the location of
-  the staged version, the names of your reviewers, and so on.
+4. Navigate to your PR on GitHub and include the link of the staged version.
+   Do consider adding a reference to the commit you staged,
+   so that reviewers know if any further changes have been made.
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
-[cloning]: https://help.github.com/articles/cloning-a-repository
-[DartPad]: https://dartpad.dev
+[cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
+[Eleventy]: https://www.11ty.dev/
 [Firebase]: https://firebase.google.com/
-[first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
-[first-timers]: https://www.firsttimersonly.com/
-[forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[Jekyll]: https://jekyllrb.com
-[Makefile]: (https://github.com/dart-lang/site-www/blob/main/Makefile)
+[forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
-[site-www]: https://github.com/dart-lang/site-www
-[Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
-[wsl]: https://docs.microsoft.com/en-us/windows/wsl/install

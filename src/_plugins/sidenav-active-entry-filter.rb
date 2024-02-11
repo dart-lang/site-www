@@ -1,1 +1,0 @@
-../_shared/_plugins/sidenav-active-entry-filter.rb

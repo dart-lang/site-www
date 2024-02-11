@@ -1,110 +1,155 @@
+@use 'sass:color';
+
 @use '../core/colors' as *;
 @use '../core/variables' as *;
 @use '../core/bootstrap';
-@use '../vendor/prettify';
 
-@mixin pre-defaults {
-  background-color: $site-color-codeblock-bg;
-  font-size: 0.875rem; // 14px
+pre {
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
   font-weight: bootstrap.$font-weight-normal;
-  padding: 1.875rem; // 30px
-}
-
-//
-// Code-prettyprint overrides
-//
-pre {
-  &.prettyprint {
-    @include pre-defaults;
-    border: none;
-
-    .highlight-diagnostics & {
-      .highlight {
-        border-bottom: 2px $red-500 dashed;
-        background: inherit;
-        padding: 0;
-      }
-    }
-  }
-
-  .highlight {
-    background: $flutter-color-yellow;
-    padding: 2px;
-  }
-}
-
-.pln { color: #222 }  /* plain text */
-
-@media screen {
-  .str { color: #1b87c9 }  /* string content */
-  .kwd { color: #1FBAAC }  /* a keyword */
-  .com { color: #999999 }  /* a comment */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #222 }
-}
-
-//
-// Rouge / pygments classes -- https://github.com/jneen/rouge
-//
-// For CSS class names, see
-// - https://github.com/rouge-ruby/rouge/blob/master/lib/rouge/token.rb
-// - https://github.com/rouge-ruby/rouge/wiki/List-of-tokens, doc page,
-//   but doesn't seem to be as complete as token.rb.
-//
-$generic-output-color: white;
-
-@mixin console-base($color: $light-green-A700) {
-  background: $grey-900;
-  color: $color;
-}
-
-.language-console .highlight {
-  @include console-base;
-  .go { color: $generic-output-color; } /* Generic.Output */
-}
-
-pre.console-output {
-  @include console-base($generic-output-color)
-}
-
-// `terminal` is like `console` with prompts and output colored differently
-.language-terminal .highlight {
-  @include console-base;
-  .gp { color: $grey-500; } /* Generic.Prompt */
-  .go { color: $generic-output-color; } /* Generic.Output */
-  .nb, .nt { color: #99BB00; } /* Name.Builtin, Name.Tag */
-  .nv { color: #03bbbb; }
-  .o { color: $grey-500; font-weight: bold; } /* Operator */
-  .s, .s1, .s2 { color: #00CCEE; } /* String, .Single, .Double quotes */
-  .sb { color: #f56b78; } /* String.Backtick */
-}
-
-// Match code-prettify classes to the extent possible.
-.highlight {
-  .s, .s1, .s2 { @extend .str; } /* Literal.String.* */
-  .k, .kc, .kd, .kn, .kp, .kr, .kt { @extend .kwd; } /* Keyword.* */
-  .p { @extend .pun; } /* Punctuation */
-  .c, .c1, .cm { @extend .com; } /* Comment */
-  .cp { @extend .typ; } /* Comment.Preproc */
-  .l, .m, .mb, .mf, .mh, .mi, .mo, .mx { @extend .lit; } /* Literal.* */
-  .o { @extend .opn; } /* Operator */
-  .n { @extend .typ; } /* Name */
-  .na { @extend .kwd; } /* Name.Attribute */
-  .nb { @extend .typ; } /* Name.Builtin */
-  .nl { @extend .kwd; } /* Name.Label */
-  .no { @extend .lit; } /* Name.Constant */
-  .nt { @extend .tag; } /* Name.Tag */
-}
-
-// Dart-site specific style overrides
-.highlight .gp { user-select: none; }
-
-pre {
-  @include pre-defaults;
+  padding: 1.25rem;
 
   a {
     font-family: inherit;
     font-weight: inherit;
+  }
+  
+  .highlight {
+    background: $flutter-color-yellow-300;
+    padding: 0.1em;
+  }
+
+  .highlight-diagnostics & {
+    .highlight {
+      border-bottom: 2px $red-500 dashed;
+      background: inherit;
+      padding: 0;
+    }
+  }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  span.line {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+
+    &.highlighted-line {
+      background: color.change($brand-primary, $alpha: 0.1);
+    }
+  }
+  
+  &.show-line-numbers code {
+    span.line {
+      padding-left: 0.5rem;
+      
+      &[data-line]::before {
+        display: inline-block;
+        content: attr(data-line) "";
+        width: 2em;
+        margin-right: 0.5rem;
+        text-align: right;
+        color: $dash-sub-grey;
+      }
+    }
+  }
+}
+
+.code-block-language {
+  font-family: $font-family-monospace;
+  user-select: none;
+  font-size: 0.8125rem;
+  color: #6E6E70;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  z-index: 5;
+
+  .highlight-languages .language-dart & {
+    color: $brand-primary;
+  }
+
+  .highlight-languages .language-js & {
+    color: #f1a85a;
+  }
+
+  .highlight-languages .language-swift & {
+    color: #f05137;
+  }
+
+  .highlight-languages :not(.has-tag) & {
+    font-size: 0.875rem;
+    left: 6px;
+    right: unset;
+  }
+}
+
+.code-block-tag {
+  font-family: $font-family-monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  position: absolute;
+  top: 3px;
+  left: 6px;
+
+  .tag-good &, .tag-passes-sa &, .tag-runtime-success & {
+    color: $alert-success-fg;
+  }
+
+  .tag-bad &, .tag-fails-sa &, .tag-runtime-fail & {
+    color: $alert-danger-fg;
+  }
+}
+
+.code-block-wrapper {
+  margin-bottom: 1rem;
+  border: 1px solid $flutter-color-grey-500;
+  
+  .code-block-header {
+    background-color: #e9ecef;
+    border-bottom: 1px solid $flutter-color-grey-500;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.75rem 0.5rem 0.67rem 1rem;
+  }
+  
+  .code-block-body {
+    position: relative;
+    background-color: $site-color-codeblock-bg;
+
+    &:hover {
+      .code-block-language {
+        opacity: 0;
+      }
+    }
+
+    &.tag-good, &.tag-passes-sa, &.tag-runtime-success {
+      background-color: $alert-success-bg;
+    }
+
+    &.tag-bad, &.tag-fails-sa, &.tag-runtime-fail {
+      background-color: $alert-danger-bg;
+    }
+  }
+  
+  &:has(:focus-visible) {
+    border-color: #1389FD;
+  }
+  
+  pre {
+    margin-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    
+    &:not([lang="console"]) {
+      line-height: 1.8;
+    }
   }
 }
 
@@ -115,21 +160,4 @@ iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   min-height: 400px;
   resize: vertical;
   width: 100%;
-}
-
-.prettify-filename {
-  position: relative;
-  text-align: right;
-  margin-right: $font-size-base;
-  margin-top: -$font-size-base * 2.5;
-  margin-bottom: $font-size-base;
-  opacity: 0.5;
-}
-
-@media screen {
-  .com { color: #6E6E70; }
-  .kwd { color: #BC0056; }
-  .pln { color: #7500A0; }
-  .lit,
-  .str { color: #00677A; }
 }

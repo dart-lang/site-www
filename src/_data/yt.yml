@@ -1,0 +1,11 @@
+# These properties can be accessed as global data for
+# linking to or embedding YouTube.
+# You can access these values in Liquid templates like `{{yt.embed}}`.
+set: 'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"'
+set-short: 'frameborder="0" allowfullscreen loading="lazy"'
+watch: 'https://www.youtube.com/watch'
+embed: 'https://www.youtube.com/embed'
+embed-playlist: 'https://www.youtube.com/embed/playlist?list='
+embed-series: 'https://www.youtube.com/embed/videoseries?list='
+playlist: 'https://www.youtube.com/playlist?list='
+std-size: 'width="560" height="315"'
