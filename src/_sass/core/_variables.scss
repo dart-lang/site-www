@@ -10,6 +10,7 @@ $flutter-color-blue-800: $flutter-color-dark-blue;
 $flutter-color-fuchsia: #E64637;
 $flutter-color-light-blue: #E7F8FF;
 $flutter-color-yellow: #FFF275;
+$flutter-color-yellow-300: #FFF59C;
 $flutter-color-grey-500: #E8EAED;
 $site-color-dark-background: #1C2834;
 $site-color-black: #000;
@@ -80,7 +81,7 @@ $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-base: 'Google Sans Text', 'Roboto', sans-serif;
 $site-font-family-alt: $site-font-family-gsans;
-$site-font-family-icon: 'Material Icons';
+$site-font-family-icon: 'Material Symbols Outlined';
 $site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
 $site-font-icon: 24px/1 $site-font-family-icon;
 
@@ -104,11 +105,11 @@ $site-snackbar-padding: 20px;
 $site-spacer: 1rem;
 
 // Alerts
-$alert-success-bg:        #ecfaf7;
+$alert-success-bg:        #f1fbf9;
 $alert-success-fg:        #155723;
 $alert-info-bg:           #e7f8ff;
 $alert-warning-bg:        #fcf8e3;
-$alert-danger-bg:         #fde9ee;
+$alert-danger-bg:         #fef3f6;
 $alert-danger-fg:         #cb1425;
 
 // Dash colors

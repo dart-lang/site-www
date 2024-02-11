@@ -18,6 +18,7 @@ form {
     appearance: none;
     min-width: 120px;
     padding: 0 30px 0 10px;
+    margin: 0 .25rem;
 
     &:focus {
       outline: none;
@@ -25,17 +26,18 @@ form {
   }
 
   &:after {
-    @include md-icon-content("chevron_left");
+    font: $site-font-icon;
+    content: 'expand_more';
+    vertical-align: bottom;
     display: block;
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: .5rem;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    font-size: 16px;
+    font-size: 20px;
     color: $gray-dark;
     pointer-events: none;
     @include transition();
