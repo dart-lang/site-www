@@ -6,7 +6,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dart-lang/site-www.git"
+    "url": "https://github.com/dart-lang/website.git"
   },
   "scripts": {
     "serve": "PRODUCTION=false eleventy --serve",

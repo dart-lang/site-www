@@ -14,7 +14,7 @@ check out the [Contributing guidelines](CONTRIBUTING.md).
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
+Start by looking for an [issue](https://github.com/dart-lang/website/issues)
 that catches your interest, or create an issue with your proposed change.
 Consider adding a comment to let everyone know that you're working on it, and
 feel free to ask any questions you have on the same issue.
@@ -99,7 +99,7 @@ _choose one_ of the following submodule-cloning techniques:
    using the `--recurse-submodules` option:
 
    ```terminal
-   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
+   git clone --recurse-submodules https://github.com/dart-lang/website.git
    ```
 
 2. If you've already cloned the repo without its submodule,
@@ -258,11 +258,11 @@ you can build a full version and upload it to Firebase.
    so that reviewers know if any further changes have been made.
 
 
-[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
-[Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
+[Build Status SVG]: https://github.com/dart-lang/website/workflows/build/badge.svg
+[OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/website/badge
+[Scorecard Results]: https://securityscorecards.dev/viewer/?platform=github.com&org=dart-lang&repo=website
 [cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [Eleventy]: https://www.11ty.dev/
 [Firebase]: https://firebase.google.com/
 [forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
+[Repo on GitHub Actions]: https://github.com/dart-lang/website/actions?query=workflow%3Abuild+branch%3Amain
