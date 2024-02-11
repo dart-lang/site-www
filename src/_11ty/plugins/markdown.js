@@ -53,7 +53,7 @@ function _registerAside(markdown, id, defaultTitle, icon, style) {
         const title = parsedArgs?.[1] ?? defaultTitle;
         return `<aside class="alert ${style}">
 <div class="alert-header">
-${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : ''}
+${icon !== null ? `<i class="material-symbols" aria-hidden="true">${icon}</i>` : ''}
 <span>${title ?? ''}</span>
 </div>
 <div class="alert-content">
@@ -77,7 +77,7 @@ function _registerAsides(markdown) {
     markdown,
     'flutter-note',
     'Flutter note',
-    'smartphone',
+    'flutter',
     'alert-info',
   );
   _registerAside(
@@ -87,13 +87,13 @@ function _registerAsides(markdown) {
     'merge_type',
     'alert-info',
   );
-  _registerAside(markdown, 'tip', 'Tip', 'tips_and_updates', 'alert-success');
+  _registerAside(markdown, 'tip', 'Tip', 'lightbulb', 'alert-success');
   _registerAside(markdown, 'important', 'Important', 'error', 'alert-warning');
   _registerAside(
     markdown,
     'warning',
     'Warning',
-    'report_problem',
+    'warning',
     'alert-warning',
   );
 

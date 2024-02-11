@@ -17,14 +17,14 @@ Then follow the steps below to create a small web app with Dart.
 
 ## 2. Get CLI tools or an IDE (or both) {:#tools}
 
-<i class="material-icons">terminal</i>
+<i class="material-symbols">terminal</i>
 If you like to use the command line, install the [`webdev`][] package:
 
 ```console
 $ dart pub global activate webdev
 ```
 
-<i class="material-icons">web</i>
+<i class="material-symbols">web</i>
 Although using an IDE is optional, we highly recommend using one.
 For a list of available IDEs, see the
 [overview of editors & debuggers][].
@@ -33,7 +33,7 @@ For a list of available IDEs, see the
 
 ## 3. Create a web app {:#create}
 
-<i class="material-icons">terminal</i>
+<i class="material-symbols">terminal</i>
 To create a web app from the command line,
 use the [`dart create`][] command with the `web` template:
 
@@ -41,7 +41,7 @@ use the [`dart create`][] command with the `web` template:
 $ dart create -t web quickstart
 ```
 
-<i class="material-icons">web</i>
+<i class="material-symbols">web</i>
 To create the same web app from an IDE that has Dart integration,
 create a project using the template named **Bare-bones Web App**.
 
@@ -49,7 +49,7 @@ create a project using the template named **Bare-bones Web App**.
 
 ## 4. Run the app {:#run}
 
-<i class="material-icons">terminal</i>
+<i class="material-symbols">terminal</i>
 To run the app from the command line,
 use [`webdev`][] to build and serve the app:
 
@@ -58,7 +58,7 @@ $ cd quickstart
 $ webdev serve
 ```
 
-<i class="material-icons">web</i>
+<i class="material-symbols">web</i>
 Or run the app from your IDE.
 
 To view your app, use the Chrome browser
