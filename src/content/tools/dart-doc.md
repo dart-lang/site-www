@@ -32,7 +32,7 @@ run `dart doc .` from the package's root directory.
 For example, generating the API docs for a `my_package` package
 could look like the following:
 
-```terminal
+```console
 $ cd my_package
 $ dart pub get
 $ dart doc .
@@ -46,7 +46,7 @@ and supporting files in the `doc/api` directory.
 To change the output directory, specify
 a path with the `--output` flag:
 
-```terminal
+```console
 $ dart doc --output=api_docs .
 ```
 
@@ -55,7 +55,7 @@ If there are any issues with your package setup or documentation comments,
 If you just want to test for issues without saving the generated documentation,
 add the `--dry-run` flag:
 
-```terminal
+```console
 $ dart doc --dry-run .
 ```
 
@@ -90,7 +90,7 @@ and specify the path of your generated docs.
 The following commands activate the package,
 then runs it to serve the API docs located at `doc/api`:
 
-```terminal
+```console
 $ dart pub global activate dhttpd
 $ dart pub global run dhttpd --path doc/api
 ```
