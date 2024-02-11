@@ -43,6 +43,8 @@
       content: 'keyboard_arrow_down';
       font: $site-font-icon;
       transition: transform .25s ease-in-out;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
     }
 
     &:not(.collapsed) {
@@ -178,14 +180,6 @@
 
 
       &.external {
-        span.material-icons {
-          vertical-align: middle;
-          margin-left: 4px;
-          font-size: 12px;
-          color: inherit;
-          opacity: 0.8;
-        }
-
         &::after {
           display: none;
         }
