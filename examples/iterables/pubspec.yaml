@@ -2,7 +2,7 @@ name: iterables_examples
 description: dart.dev example code.
 
 environment:
-  sdk: ^3.1.0
+  sdk: ^3.2.0
 
 dev_dependencies:
   examples_util: {path: ../util}

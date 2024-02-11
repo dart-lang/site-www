@@ -1,9 +1,10 @@
 import 'dart:async';
-import 'dart:html';
 
-import 'package:dart_sdk_archive/src/version_selector.dart';
 import 'package:http/browser_client.dart';
 import 'package:sdk_builds/sdk_builds.dart';
+import 'package:web/web.dart';
+
+import 'version_selector.dart';
 
 Future<void> runApp() async {
   final client = DartDownloads(client: BrowserClient());
@@ -11,25 +12,25 @@ Future<void> runApp() async {
   final stableSelector = VersionSelector(
     'stable',
     client,
-    querySelector('#stable') as TableElement,
-    querySelector('#stable-versions') as SelectElement,
-    querySelector('#stable-os') as SelectElement,
+    document.getElementById('stable') as HTMLTableElement,
+    document.getElementById('stable-versions') as HTMLSelectElement,
+    document.getElementById('stable-os') as HTMLSelectElement,
   );
 
   final betaSelector = VersionSelector(
     'beta',
     client,
-    querySelector('#beta') as TableElement,
-    querySelector('#beta-versions') as SelectElement,
-    querySelector('#beta-os') as SelectElement,
+    document.getElementById('beta') as HTMLTableElement,
+    document.getElementById('beta-versions') as HTMLSelectElement,
+    document.getElementById('beta-os') as HTMLSelectElement,
   );
 
   final devSelector = VersionSelector(
     'dev',
     client,
-    querySelector('#dev') as TableElement,
-    querySelector('#dev-versions') as SelectElement,
-    querySelector('#dev-os') as SelectElement,
+    document.getElementById('dev') as HTMLTableElement,
+    document.getElementById('dev-versions') as HTMLSelectElement,
+    document.getElementById('dev-os') as HTMLSelectElement,
   );
 
   unawaited(stableSelector.init());

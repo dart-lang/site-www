@@ -88,7 +88,7 @@
   $enable-shadows: true,
 
   // Code
-  $code-color: #247777,
+  $code-color: #11796d,
   $code-font-size: 100%,
   $kbd-font-size: 0.75rem,
 
@@ -96,9 +96,6 @@
   $dropdown-divider-bg: #bbbbbb,
   $dropdown-link-active-color: transparent,
   $dropdown-link-active-bg: transparent,
-
-  $popover-font-size: $font-size-base,
-  $popover-border-color: rgba(0, 0, 0, 0),
 );
 
 @use '../../../node_modules/bootstrap-scss/bootstrap';

@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include head.html %}
-  <body class="{{page.layout}}{% if page.toc and page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if page.body_class %} {{ page.body_class }}{% endif %}">
-    {% include cookie-notice.html %}
-    {% include gtags.html %}
-    {% include page-header.html %}
-    {% include navigation-side.html %}
+  {% include 'head.html' %}
+  {% if toc != false -%}
+    {% assign tocContents = content | generate_toc %}
+    {% if tocContents == null or tocContents == '' -%}
+      {% assign toc = false %}
+    {% endif -%}
+  {% endif -%}
+  <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
+    {% include 'cookie-notice.html' %}
+    {% include 'gtags.html' %}
+    {% include 'page-header.html', obsolete:obsolete %}
+    {% include 'navigation-side.html' %}
     <main id="page-content">
-      {% include navigation-toc.html id='site-toc--side' extendToc=true %}
+      {% if toc != false -%}
+      {% include 'navigation-toc-side.html', tocContents:tocContents %}
+      {% endif -%}
       <article>
         <div class="content">
-          {% include navigation-sub.html %}
+          {% include 'navigation-sub.html' -%}
           <div id="site-content-title">
-            {% include page-github-links.html %}
-            {% if page.underscore_breaker_titles -%}
-            <h1>{{page.title | underscore_breaker}}</h1>
+            {% include 'page-github-links.html' -%}
+            {% if underscore_breaker_titles -%}
+            <h1>{{title | underscore_breaker}}</h1>
             {% else %}
-            <h1>{{page.title }}</h1>
+            <h1>{{title }}</h1>
             {% endif -%}
-            {% if page.show_breadcrumbs -%}
-              {% include breadcrumbs.html %}
+            {% if show_breadcrumbs == true -%}
+              {% include 'breadcrumbs.html' -%}
             {% endif -%}
           </div>
-          {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
-          {{ content | inject_anchors }}
-          {% include navigation-sub.html %}
+          {% if toc != false -%}
+          {% include 'navigation-toc-top.html', tocContents:tocContents -%}
+          {% endif -%}
+          {{ content }}
+          {% include 'navigation-sub.html' -%}
         </div>
       </article>
     </main>
-    {% include page-footer.html %}
-
+    {% include 'page-footer.html' %}
   </body>
 </html>

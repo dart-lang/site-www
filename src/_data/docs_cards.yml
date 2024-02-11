@@ -4,9 +4,9 @@
 - name: Effective Dart
   description: Best practices for building consistent, maintainable, efficient Dart code.
   url: /effective-dart
-- name: Library tour
+- name: Library documentation
   description: An example-based introduction to the major features in the Dart SDK's core libraries.
-  url: /guides/libraries/library-tour
+  url: /libraries
 - name: Dart SDK
   description: What's in the SDK, and how to install it.
   url: /tools/sdk

@@ -64,20 +64,13 @@ a, button {
   }
 
   &:hover, &:focus, &:active {
-    color: lighten($brand-primary, 25%);
+    color: $flutter-color-blue-700;
     outline: none;
     text-decoration: none;
   }
 
-  &.external {
-    &:after {
-      @include md-icon-content("launch");
-      vertical-align: middle;
-      margin-left: 2px;
-      font-size: 10px;
-      color: inherit;
-      opacity: 0.5;
-    }
+  &:active {
+    color: $flutter-color-blue-800;
   }
 }
 
