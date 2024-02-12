@@ -10,35 +10,35 @@ from them using an explicit, idiomatic syntax.
 Typically, you access a JavaScript API by making it available somewhere within
 the [global JS scope]. To call and receive JS values from this API, you use
 [`external` interop members](#interop-members). In order to construct and
-provide types for JS values, you use and declare [interop types]
-(#interop-types), which also contain interop members. To pass Dart values like
-`List`s or `Function` to interop members or convert from JS values to Dart
-values, you will use [conversion functions] unless the interop member is
-[declared with a primitive].
+provide types for JS values, you use and declare
+[interop types](#interop-types), which also contain interop members. To pass
+Dart values like `List`s or `Function` to interop members or convert from JS
+values to Dart values, you use [conversion functions] unless the interop member
+[contains a primitive type].
 
 ## Interop types
 
 When interacting with a JS value, you need to provide a Dart type for it. You
 can do this by either using or declaring an interop type. Interop types are
 either a ["JS type"] provided by Dart or an [extension type] wrapping an interop
-type. Interop types allow you to provide an interface for a JS value and lets
-you declare interop APIs for its members. They are also used in the signature
-of other interop APIs.
+type.
+
+Interop types allow you to provide an interface for a JS value and lets you
+declare interop APIs for its members. They are also used in the signature of
+other interop APIs.
 
 ```dart
 extension type Window(JSObject _) implements JSObject {}
 ```
 
-`Window` here is an interop type for an arbitrary `JSObject`. There is no
-runtime guarantee that `Window` is actually a JS [`Window`]. See
-[the extension types documentation] for more info on the runtime semantics of
-extension types. There also is no conflict with any other interop interface
-that is defined for the same value. If you do want to check that `Window` is
-actually a JS `Window`, you can [check the type of the JS value through
-interop].
+`Window` is an interop type for an arbitrary `JSObject`. There is no [runtime
+guarantee] that `Window` is actually a JS [`Window`]. There also is no conflict
+with any other interop interface that is defined for the same value. If you want
+to check that `Window` is actually a JS `Window`, you can
+[check the type of the JS value through interop].
 
 You can also declare your own interop type for the JS types Dart provides by
-wrapping them or an interop type they implement with no conflict:
+wrapping them:
 
 ```dart
 extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
@@ -51,16 +51,16 @@ In most cases, you will likely declare an interop type using `JSObject` as the
 don't have an interop type provided by Dart.
 
 Interop types should also generally [implement] their representation type so
-that they can be used where the representation type is expected, like in
-[`package:web`].
+that they can be used where the representation type is expected, like in many
+APIs in [`package:web`].
 
 ## Interop members
 
 [`external`] interop members provide an idiomatic syntax for JS members. They
-allow you to write a Dart type signature for any arguments and return value.
-The types that can be used in the signature of these members have
-[restrictions]. The JS API they correspond to is determined by a combination of
-where they're declared, their name, what kind of Dart member they are, and any
+allow you to write a Dart type signature for its arguments and return value. The
+types that can be written in the signature of these members have [restrictions].
+The JS API the interop member corresponds to is determined by a combination of
+where it's declared, its name, what kind of Dart member it is, and any
 [renames](#js).
 
 ### Top-level interop members
@@ -92,7 +92,7 @@ exposed in the global scope. To access them, you use top-level interop members.
 To get and set `name`, you declare and use an interop getter and setter with the
 same name. To use `isNameEmpty`, you declare and call an interop function with
 the same name. You can declare top-level interop getters, setters, methods, and
-fields, which is the same as a getter and setter pair.
+fields. Interop fields are equivalent to getter and setter pairs.
 
 Top-level interop members must be declared with a [`@JS()`](#js) annotation to
 distinguish them from other `external` top-level members, like those that can be
@@ -161,23 +161,20 @@ Within an interop type, you can declare several different types of
 `external` interop members:
 
 - **Constructors**. When called, constructors with only positional parameters
-  construct a new JS object whose constructor is defined by the name of the
+  create a new JS object whose constructor is defined by the name of the
   extension type using `new`. For example, calling `Time(0, 0)` in Dart will
   generate a JS invocation that looks like `new Time(0, 0)`. Similarly, calling
   `Time.onlyHours(0)` will generate a JS invocation that looks like
   `new Time(0)`. Note that the JS invocations of the two constructors follow the
-  same semantics, regardless of whether they're given a name in Dart or if they
-  are a factory.
+  same semantics, regardless of whether they're given a Dart name or if they are
+  a factory.
 
   - **Object literal constructors**. It is useful sometimes to create a JS
     [object literal] that simply contains a number of properties and their
     values. In order to do this, you declare a constructor with only named
-    parameters, as you're creating an object that is defined by the names of
-    its properties:
+    parameters, where the names of the parameters will be the property names:
 
     ```dart
-    import ‘dart:js_interop’;
-
     extension type Options._(JSObject o) {
       external Options({int a, int b});
       external int get a;
@@ -186,14 +183,13 @@ Within an interop type, you can declare several different types of
     ```
 
     A call to `Options(a: 0, b: 1)` will result in creating the JS object
-    `{a: 0, b: 1}`. The object is defined by the invocation, so calling
-    `Options(a: 0)` would result in `{a: 0}`. You can get or set the properties
-    of the resulting object through `external` instance members.
+    `{a: 0, b: 1}`. The object is defined by the invocation arguments, so
+    calling `Options(a: 0)` would result in `{a: 0}`. You can get or set the
+    properties of the object through `external` instance members.
 
     :::warning
     There's a bug that currently requires object literal constructors to have an
-    [`@JS`](#js) annotation on the library, empty or otherwise. See [#54801] for
-    more details.
+    [`@JS`](#js) annotation on the library. See [#54801] for more details.
     :::
 
 - **`static` members**. Like constructors, these members use the name of the
@@ -286,8 +282,10 @@ one written. For example, if you want to write two `external` APIs that point to
 the same JS property, you’d need to write a different name for at least one of
 them. Similarly, if you want to define multiple interop types that refer to the
 same JS interface, you need to rename at least one of them. Another example is
-if the JS name is unusable in Dart e.g. `$a`. In order to do this, you can use
-the [`@JS()`] annotation with a constant string value. For example:
+if the JS name cannot be written in Dart e.g. `$a`.
+
+In order to do this, you can use the [`@JS()`] annotation with a constant
+string value. For example:
 
 ```dart
 extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
@@ -387,7 +385,8 @@ occur.
 as a JS interop member or type. It is required (with or without a value) for all
 top-level members to distinguish them from other `external` top-level members,
 but can often be elided on and within interop types and on extension members as
-the compiler can tell from the representation type and on-type.
+the compiler can tell it is a JS interop type from the representation type and
+on-type.
 
 ## `dart:js_interop` and `dart:js_interop_unsafe`
 
@@ -395,16 +394,18 @@ the compiler can tell from the representation type and on-type.
 including `@JS`, JS types, conversion functions, and various utility functions.
 Utility functions include:
 
-- [`globalContext`], which represents the global namespace that the compilers
-  use to generate JS invocations.
+- [`globalContext`], which represents the global scope that the compilers use to
+  find interop members and types.
 - [Helpers to inspect the type of JS values]
 - JS operators
 - [`dartify`] and [`jsify`], which check the type of certain JS values and
   convert them to Dart values and vice versa. Prefer using the specific
-  conversion when you know the type of the JS value.
-- [`importModule`] to import modules dynamically as `JSObject`s.
+  conversion when you know the type of the JS value, as the extra type-checking
+  may be expensive.
+- [`importModule`], which allows you to import modules dynamically as
+  `JSObject`s.
 
-More utilities might be added to this library in the future.
+More utilities may be added to this library in the future.
 
 [`dart:js_interop_unsafe`] contains members that allow you to look up properties
 dynamically. For example:
@@ -419,22 +420,25 @@ dynamically get, set, and call properties.
 
 :::tip
 Avoid using `dart:js_interop_unsafe` if possible. It makes security compliance
-more difficult to guarantee and may lead to violations.
+more difficult to guarantee and may lead to violations, which is why it can be
+"unsafe".
 :::
 
 {% comment %}
 TODO: Add links when ready
 
 [extension type]: /language/extension-types
-[the extension types documentation]: /language/extension-types#type-considerations
+[runtime guarantee]: /language/extension-types#type-considerations
 [representation type]: /language/extension-types#declaration
 [implement]: /language/extension-types#implements
 [non-`external` members]: /language/extension-types#members
+
+TODO: Some of these are not available on stable. How do we link to dev?
 {% endcomment %}
 
 [global JS scope]: https://developer.mozilla.org/en-US/docs/Glossary/Global_scope
 [conversion functions]: /interop/js-interop/js-types#conversions
-[declared with a primitive]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
+[contains a primitive type]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 ["JS type"]: /interop/js-interop/js-types
 [`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
 [check the type of the JS value through interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts

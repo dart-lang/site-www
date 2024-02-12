@@ -45,7 +45,7 @@ TODO (srujzs): Should we add a tree diagram instead for JS types?
 ## Conversions
 
 To use a value from one domain to another, you will likely want to *convert* the
-value to the corresponding type of the other domain. For example, you might want
+value to the corresponding type of the other domain. For example, you may want
 to convert a Dart `List<JSString>` into a JS array of strings, which is
 represented by the JS type `JSArray<JSString>`, so that you can pass the array
 to a JS interop API.
@@ -75,10 +75,10 @@ Generally, the conversion table looks like the following:
 | JS type                             | Dart type                                |
 |-------------------------------------|------------------------------------------|
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
-| `JSExportedFunction`                | `Function`                               |
+| `JSExportedDartFunction`            | `Function`                               |
 | `JSArray<T extends JSAny?>`         | `List<T extends JSAny?>`                 |
 | `JSPromise<T extends JSAny?>`       | `Future<T extends JSAny?>`               |
-| Typed arrays like `JSUint8Array`    | Typed arrays from `dart:typed_data`      |
+| Typed arrays like `JSUint8Array`    | Typed lists from `dart:typed_data`       |
 | `JSBoxedDartObject`                 | Opaque Dart value                        |
 
 {:.table .table-striped}
@@ -86,7 +86,7 @@ Generally, the conversion table looks like the following:
 
 :::warning
 There can be inconsistencies in both performance and semantics for conversions
-when compiling to JavaScript vs Wasm. Conversions might have different costs
+when compiling to JavaScript vs Wasm. Conversions may have different costs
 depending on the compiler, so prefer to only convert values if you need to.
 Conversions also may or may not produce a new value. This doesn’t matter for
 immutable values like numbers, but does matter for types like `List`. Depending
@@ -102,8 +102,8 @@ specific conversion function for more details.
 In order to ensure type safety and consistency, the compiler places requirements
 on what types can flow into and out of JS. Passing arbitrary Dart values into JS
 is not allowed. Instead, the compiler requires users to use a compatible interop
-type like a JS type or a primitive, which would then be implicitly converted by
-the compiler. For example, these would be allowed:
+type or a primitive, which would then be implicitly converted by the compiler.
+For example, these would be allowed:
 
 ```dart tag=good
 @JS()
@@ -141,7 +141,7 @@ be a compatible interop type or a primitive.
 If you use a Dart primitive like `String`, an implicit conversion happens in the
 compiler to convert that value from a JS value to a Dart value. If performance
 is critical and you don’t need to examine the contents of the string, then using
-`JSString` instead to avoid the conversion cost might make sense like in the
+`JSString` instead to avoid the conversion cost may make sense like in the
 second example.
 
 ## Compatibility, type checks, and casts
@@ -201,8 +201,8 @@ TODO: Add a link to and an example using `isA` once it's in a dev release. Users
 should prefer that method if it's available.
 {% endcomment %}
 
-Dart might add lints to make runtime checks with JS interop types easier to
-avoid. See issue [#4841] for more details.
+Dart may add lints to make runtime checks with JS interop types easier to avoid.
+See issue [#4841] for more details.
 
 ## `null` vs `undefined`
 
