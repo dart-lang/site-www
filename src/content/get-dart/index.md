@@ -8,22 +8,22 @@ js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 This page describes how to download the Dart SDK.
 The Dart SDK includes the libraries and command-line tools that you need to develop Dart command-line, server, and non-Flutter web apps.
 
-To learn more about the Dart SDK, see the [Dart SDK overview](/tools/sdk).
+To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
 ## System requirements
 
 Dart supports the following hardware architectures and platform versions
-to develop and run Dart code.
+to develop and run Dart code.q
 
 {% assign yes = '<span class="material-symbols" style="color: #158477;">verified</span>' %}
 {% assign no = '<span class="material-symbols" style="color: #D43324">dangerous</span>' %}
 {% assign beta = '<span class="material-symbols" style="color: #13C2AD">gpp_maybe</span>' %}
 {% assign na = '<span class="material-symbols" style="color: #DADCE0">do_not_disturb_on</span>' %}
-{% assign macversions = '' %}
+{% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
 {%- if version.eol == false -%}
 {% capture maclinkversion -%}
-[{{version.cycle}}]({{version.link}}) ({{version.codename}})
+[{{version.codename}}]({{version.link}}) ({{version.cycle}})
 {%- endcapture -%}
 {% assign macversions = macversions | append: maclinkversion %}
 {%- unless forloop.last -%}{% assign macversions = macversions | append: ', ' %}{% endunless -%}

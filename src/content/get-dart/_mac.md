@@ -1,38 +1,6 @@
 
-<<<<<<< HEAD
-### Install using Homebrew  {:.no_toc}
+### Install using Homebrew {:.no_toc}
 
-=======
-### System requirements
-{: .no_toc}
-
-Dart supports the following hardware architectures and platform versions
-to develop and run Dart code on macOS.
-
-#### Hardware architecture
-{: .no_toc}
-
-Dart supports the following CPU architectures.
-
-| Platform | x86 | x64 | ARM | ARM64 | RISC-V |
-|----------|-----|-----|-----|-------|--------|
-| macOS    | No  | Yes | No  | Yes   | No     |
-{:.table .table-striped}
-
-#### Operating system
-{: .no_toc}
-
-Dart supports the latest three major versions of macOS.
-
-| Platform | OS Versions                              |
-|----------|------------------------------------------|
-| macOS    | {% for version in site.data.macos %}{% if version.eol != false %}{% break %}{%- else -%}{{version.cycle}} ({{version.codename}}){% endif %}, {% endfor %} |
-{:.table .table-striped}
-
-### Install using Homebrew
-{: .no_toc}
-
->>>>>>> a9d6c41c (Updated for 11ty)
 To install the Dart SDK, use [Homebrew][].
 
 1. Install Homebrew if needed.
@@ -49,28 +17,14 @@ To install the Dart SDK, use [Homebrew][].
    $ brew install dart
    ```
 
-<<<<<<< HEAD
-### Verify PATH includes Homebrew  {:.no_toc}
+### Verify PATH includes Homebrew {:.no_toc}
 
-Verify that your `PATH` includes the **Homebrew `bin`**.
-=======
-
-### Verify PATH includes Homebrew
-{: .no_toc}
-
-Verify that your `PATH` includes the **Homebrew `bin`.
->>>>>>> a9d6c41c (Updated for 11ty)
-Setting up the path correctly makes it easier to use Dart SDK commands
+Verify that your `PATH` includes the **Homebrew `bin` directory**.
+Setting up the correct path simplifies using Dart SDK commands
 such as `dart run` and `dart format`.
-For help configuring your path,
-consult the [Homebrew FAQ.](https://docs.brew.sh/FAQ)
+To get help configuring your `PATH`, consult the [Homebrew FAQ][].
 
-<<<<<<< HEAD
-### Upgrade using Homebrew  {:.no_toc}
-=======
-### Upgrade using Homebrew
-{: .no_toc}
->>>>>>> a9d6c41c (Updated for 11ty)
+### Upgrade using Homebrew {:.no_toc}
 
 To upgrade when a new release of Dart is available:
 
@@ -78,12 +32,7 @@ To upgrade when a new release of Dart is available:
 $ brew upgrade dart
 ```
 
-<<<<<<< HEAD
-### Switch Dart versions  {:.no_toc}
-=======
-### Switch Dart versions
-{: .no_toc}
->>>>>>> a9d6c41c (Updated for 11ty)
+### Switch Dart versions {:.no_toc}
 
 To switch between locally installed Dart releases:
 
@@ -102,12 +51,7 @@ To switch between locally installed Dart releases:
    $ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
    ```
 
-<<<<<<< HEAD
-### List installed Dart versions  {:.no_toc}
-=======
-### List installed Dart versions
-{: .no_toc}
->>>>>>> a9d6c41c (Updated for 11ty)
+### List installed Dart versions {:.no_toc}
 
 To see which versions of Dart you've installed:
 
@@ -116,7 +60,5 @@ $ brew info dart
 ```
 
 [Homebrew]: https://brew.sh
-<<<<<<< HEAD
 [tap]: {{site.gh-dart.org}}/homebrew-dart
-=======
->>>>>>> a9d6c41c (Updated for 11ty)
+[Homebrew FAQ]: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-homebrew-utilities
