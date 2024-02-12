@@ -434,13 +434,13 @@ TODO: Add links when ready
 
 [global JS scope]: https://developer.mozilla.org/en-US/docs/Glossary/Global_scope
 [conversion functions]: /interop/js-interop/js-types#conversions
-[declared with a primitive]: /interop/js-interop/js-types#restrictions
+[declared with a primitive]: /interop/js-interop/js-types#requirements-on-external-declarations-and-functiontojs
 ["JS type"]: /interop/js-interop/js-types
 [`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
 [check the type of the JS value through interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [`package:web`]: /
 [`external`]: /language/functions#external
-[restrictions]: /interop/js-interop/js-types#restrictions
+[restrictions]: /interop/js-interop/js-types#requirements-on-external-declarations-and-functiontojs
 [object literal]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
 [#54801]: https://github.com/dart-lang/sdk/issues/54801
 [property accessors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
