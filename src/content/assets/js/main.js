@@ -126,7 +126,7 @@ function adjustToc() {
 
 function adjustHeadingAnchors() {
   document.addEventListener('DOMContentLoaded', function() {
-    const headingAnchors = document.querySelectorAll('a.anchor[aria-hidden]');
+    const headingAnchors = document.querySelectorAll('a.heading-link[aria-hidden]');
     // const headingAnchors = document.querySelectorAll('span.octicon-link');
     // const headingAnchors = document.querySelectorAll('h2[id]');
     console.log(headingAnchors)
