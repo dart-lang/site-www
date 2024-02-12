@@ -423,29 +423,28 @@ more difficult to guarantee and may lead to violations.
 :::
 
 {% comment %}
-TODO: add links (with stable) when ready:
-TODO: How do you link to a subsection of another section?
+TODO: Add links when ready
+
+[extension type]: /language/extension-types
+[the extension types documentation]: /language/extension-types#type-considerations
+[representation type]: /language/extension-types#declaration
+[implement]: /language/extension-types#implements
+[non-`external` members]: /language/extension-types#members
 {% endcomment %}
 
 [global JS scope]: https://developer.mozilla.org/en-US/docs/Glossary/Global_scope
-[conversion functions]: /interop/js-interop/js-types.md#conversions
-[declared with a primitive]: /interop/js-interop/js-types.md#restrictions
+[conversion functions]: /interop/js-interop/js-types#conversions
+[declared with a primitive]: /interop/js-interop/js-types#restrictions
 ["JS type"]: /interop/js-interop/js-types
-[extension type]: /language/extension-types
 [`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
-[the extension types documentation]: /language/extension-types#type-considerations
-[check the type of the JS value through interop]: /interop/js-interop/js-types.md#compatibility-type-checks-and-casts
-[representation type]: /language/extension-types#declaration
-[implement]: /language/extension-types#implements
+[check the type of the JS value through interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [`package:web`]: /
 [`external`]: /language/functions#external
-[restrictions]: /interop/js-interop/js-types.md#restrictions
+[restrictions]: /interop/js-interop/js-types#restrictions
 [object literal]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
 [#54801]: https://github.com/dart-lang/sdk/issues/54801
 [property accessors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [utility functions]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyOperatorExtension.html
-[non-`external` members]: /language/extension-types#members
-[extensions]: /language/extension-methods
 [`@JS()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JS-class.html
 [`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
 [`globalContext`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/globalContext.html
@@ -454,3 +453,4 @@ TODO: How do you link to a subsection of another section?
 [`jsify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/NullableObjectUtilExtension.html
 [`importModule`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/importModule.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe
+[extensions]: /language/extension-methods

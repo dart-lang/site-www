@@ -13,7 +13,7 @@ future. Therefore, prefer using [`dart:js_interop`] going forwards and migrate
 usages of old interop libraries when possible. While [`dart:html`] and other web
 libraries are closely related, they're covered in the [`package:web`] page.
 
-## `dart:js` 
+## `dart:js`
 
 [`dart:js`] exposed a concrete [`object wrapper`] to interop with JS objects.
 This wrapper contained String-based methods to dynamically get, set, and call
@@ -115,7 +115,7 @@ TODO: Link to `package:web` section
 [`package:js`]: https://pub.dev/packages/js
 [`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSObject-extension-type.html
 [`@JS`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L11
-[tutorial for mocking]: /interop/js-interop/test-and-mock
+[tutorial on mocking]: /interop/js-interop/mock
 [`@anonymous`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L48
 [`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util
