@@ -95,7 +95,8 @@ the same name. You can declare top-level interop getters, setters, methods, and
 fields, which is the same as a getter and setter pair.
 
 Top-level interop members must be declared with a [`@JS()`](#js) annotation to
-distinguish them from other `external` top-level members.
+distinguish them from other `external` top-level members, like those that can be
+written using `dart:ffi`.
 
 ### Interop type members
 
@@ -234,8 +235,8 @@ Within an interop type, you can declare several different types of
   ```
 
   Calling `array[i]` gets the value in the `i`th slot of `array`, and
-  `array[i]=` sets the value in that slot to `i.toJS`. Other JS operators are
-  exposed through [utility functions] in `dart:js_interop`.
+  `array[i] = i.toJS` sets the value in that slot to `i.toJS`. Other JS
+  operators are exposed through [utility functions] in `dart:js_interop`.
 
 Lastly, like any other extension type, you're allowed to declare any
 [non-`external` members] in the interop type. `isMidnight` is one such example.
@@ -252,11 +253,12 @@ extension on Array {
 ```
 
 The semantics of calling `push` are identical to what it would have been if it
-was in the definition of `Array` instead. The only `external` members you can
-write in such an extension are instance members and the allowed operators. Like
-with interop types, you can write any non-`external` members in the extension.
-These extensions are useful for when an interop type doesn't expose the
-`external` member you need and you don't want to create a new interop type.
+was in the definition of `Array` instead. Extensions can have `external`
+instance members and operators, but cannot have `external` `static` members or
+constructors. Like with interop types, you can write any non-`external` members
+in the extension. These extensions are useful for when an interop type doesn't
+expose the `external` member you need and you don't want to create a new interop
+type.
 
 ### Parameters
 

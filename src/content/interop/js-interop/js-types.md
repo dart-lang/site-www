@@ -78,20 +78,23 @@ Generally, the conversion table looks like the following:
 | `JSExportedFunction`                | `Function`                               |
 | `JSArray<T extends JSAny?>`         | `List<T extends JSAny?>`                 |
 | `JSPromise<T extends JSAny?>`       | `Future<T extends JSAny?>`               |
-| Typed arrays like `JSUint8Array`    | `dart:typed_data`                        |
+| Typed arrays like `JSUint8Array`    | Typed arrays from `dart:typed_data`      |
 | `JSBoxedDartObject`                 | Opaque Dart value                        |
 
 {:.table .table-striped}
 </div>
 
 :::warning
-Conversions might have different costs depending on the compiler, so prefer to
-only convert values if you need to. Conversions also may or may not produce a
-new value. This doesn’t matter for immutable values like numbers, but does
-matter for types like `List`. A conversion to a `JSArray` may produce a new
-value by copying or may not, so do not rely on modifications to the `JSArray` to
-affect the `List`. Typed array conversions have a similar limitation. Look up
-the specific conversion function for more details.
+There can be inconsistencies in both performance and semantics for conversions
+when compiling to JavaScript vs Wasm. Conversions might have different costs
+depending on the compiler, so prefer to only convert values if you need to.
+Conversions also may or may not produce a new value. This doesn’t matter for
+immutable values like numbers, but does matter for types like `List`. Depending
+on the implementation, a conversion to `JSArray` may return a reference, a
+proxy, or a clone of the original list. To avoid this, do not rely on any
+relation between the `List` and `JSArray` and only rely on their contents being
+the same. Typed array conversions have a similar limitation. Look up the
+specific conversion function for more details.
 :::
 
 ## Requirements on `external` declarations and `Function.toJS`
@@ -179,6 +182,20 @@ void f(JSAny a) {
 }
 ```
 
+From Dart 3.4 onwards, you can use the [`isA`] helper function to check whether
+a value is any interop type:
+
+```dart tag=good
+void f(JSAny a) {
+  if (a.isA<JSString>()) {} // `typeofEquals('string')`
+  if (a.isA<JSArray>()) {} // `instanceOfString('Array')`
+  if (a.isA<CustomInteropType>()) {} // `instanceOfString('CustomInteropType')`
+}
+```
+
+Depending on the type parameter, it'll transform the call into the appropriate
+type-check for that type.
+
 {% comment %}
 TODO: Add a link to and an example using `isA` once it's in a dev release. Users
 should prefer that method if it's available.
@@ -229,5 +246,6 @@ TODO: add links (with stable) when ready:
 [`dart:js_interop` API docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
+[`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025

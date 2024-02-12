@@ -253,6 +253,8 @@
       - title: Overview
         permalink: /interop/js-interop
         match-page-url-exactly: true
+      - title: Usage
+        permalink: /interop/js-interop/usage
       - title: JS types
         permalink: /interop/js-interop/js-types
       - title: Tutorials
