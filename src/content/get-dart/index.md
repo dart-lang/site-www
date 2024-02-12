@@ -13,7 +13,7 @@ To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 ## System requirements
 
 Dart supports the following hardware architectures and platform versions
-to develop and run Dart code.q
+to develop and run Dart code.
 
 {% assign yes = '<span class="material-symbols" style="color: #158477;">verified</span>' %}
 {% assign no = '<span class="material-symbols" style="color: #D43324">dangerous</span>' %}
