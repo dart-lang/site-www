@@ -295,12 +295,30 @@ main .content {
       scroll-margin: 60px;
     }
 
+    // Let the wrapper set the bottom margin.
+    margin-bottom: 0;
+  }
+
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
+  }
+
+  .header-wrapper {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+
     .heading-link {
+      margin-left: 0.4rem;
+      font-size: 1.3rem;
+      line-height: 1;
       @include transition(.1s);
       overflow: hidden;
       color: #4a4a4a;
       opacity: 0;
-      
+
       &:hover {
         color: $brand-primary;
       }
@@ -319,11 +337,6 @@ main .content {
         opacity: 1
       }
     }
-  }
-
-  // Push # link targets clear of page header.
-  a[id] {
-    scroll-margin: 60px;
   }
 }
 
@@ -870,14 +883,11 @@ dd {
 }
 
 /* -----------------------------------------
-  Headings in boxes
+  Headings in tab boxes
  ----------------------------------------- */
 
-div h1:first-child,
-div h2:first-child,
-div h3:first-child,
-div h4:first-child,
-div h5:first-child,
-div h6:first-child {
-  margin-top: 0rem;
+div.tabs__content h1, h2, h3, h4, h5, h6 {
+  &:first-child {
+    margin-top: 0;
+  }
 }
