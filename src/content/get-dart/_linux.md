@@ -1,29 +1,53 @@
-If you're using Debian/Ubuntu on AMD64 (64-bit Intel), you can choose one of the
-following options, both of which can update the SDK automatically when new
-versions are released.
 
-* [Install using apt-get](#install-using-apt-get)
-* [Install a Debian package](#install-a-debian-package)
+### Install using package manager {:.no_toc}
 
-#### Install using apt-get
+Choose to install either using [apt-get](#install-using-apt-get)
+or downloading a [`.deb`](#install-a-debian-package) package.
 
-Perform the following **one-time setup**:
+Both methods trigger an SDK update whenever Dart releases a new version.
+
+#### Install using `apt-get` {:.no_toc}
+
+Perform the following steps for the first install only.
+
+1. Update the package index files and install the secure HTTP package.
+
+   ```console
+   $ sudo apt-get update && sudo apt-get install apt-transport-https
+   ```
+
+1. Download and add the Google Linux GPG public key.
+
+   ```console
+   $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg  --dearmor -o /usr/share/keyrings/dart.gpg
+   ```
+
+1. Add the Dart package repository to your Linux system.
+
+   ```console
+   $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
+   ```
+
+Install the Dart SDK using [`sudo`][sudo].
 
 ```console
-$ sudo apt-get update
-$ sudo apt-get install apt-transport-https
-$ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
-$ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
-```
-
-Then install the Dart SDK:
-
-```console
-$ sudo apt-get update
-$ sudo apt-get install dart
+$ sudo apt-get update && sudo apt-get install dart
 ```
 
 #### Install a Debian package
 
-Alternatively, download Dart SDK [as a Debian package](#){:.debian-link-stable}
-in the `.deb` package format.
+To install the Dart SDK as a Debian package (`*.deb`).
+
+1. Download the Dart SDK as a [Debian package](#){:.debian-link-stable}.
+
+1. Install the `*.deb` package using one of two methods:
+
+   * From a GUI, double-click the `.deb` file.
+
+   * From a terminal, run the following command:
+
+     ```console
+     $ sudo dpkg -i dart_3.2.6-1_amd64.deb
+     ```
+
+[sudo]: https://www.sudo.ws/

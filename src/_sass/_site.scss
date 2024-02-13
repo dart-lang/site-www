@@ -513,7 +513,12 @@ thead:has(th:empty) {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 1rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
+
+  i.material-icons {
+    font-size: 1.25em;
+    user-select: none;
+  }
 
   .alert-header {
     display: flex;
@@ -537,7 +542,11 @@ thead:has(th:empty) {
     background-color: transparent;
   }
 
-  p:last-child {
+  pre {
+    background-color: #00000010;
+  }
+
+  p:last-child, li:last-child, ul:last-child, ol:last-child {
     margin-bottom: 0;
   }
 
@@ -858,4 +867,17 @@ body.obsolete {
 
 dd {
   margin-left: 1rem;
+}
+
+/* -----------------------------------------
+  Headings in boxes
+ ----------------------------------------- */
+
+div h1:first-child,
+div h2:first-child,
+div h3:first-child,
+div h4:first-child,
+div h5:first-child,
+div h6:first-child {
+  margin-top: 0rem;
 }
