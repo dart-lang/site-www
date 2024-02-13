@@ -3,9 +3,9 @@ title: Migrate to package:web
 description: How to migrate web interop code from dart:html to package:web.
 ---
 
-[`package:web`][] exposes access to browser binding APIs,
+Dart's [`package:web`][] exposes access to browser APIs,
 enabling interop between Dart applications and the web.
-Use `package:web` to program the browser and
+Use `package:web` to interact with the browser and
 manipulate objects and elements in the DOM.
 
 ```dart
@@ -17,15 +17,19 @@ void main() {
 }
 ```
 
-`package:web` is generated automatically from [Web IDL][@webref/idl] declarations,
-and implemented exclusively using [static interop][].
-Packages will only be compatible with [Wasm][] if they use static interop,
-which is why `package:web` is replacing Dart's previous web interop solution,
-[`dart:html`][html] (and similar libraries like `dart:svg` and `dart:web_gl`).
+`package:web` uses the [Web IDL][idl] to automatically generate
+[interop members][js] and [interop extension types][static]
+for each declaration in the IDL.
+
+Packages using [JS interop][js] will only be compatible with [Wasm][]
+if they use [dart:js_interop][] and [dart:js_interop_unsafe][].
+Therefore, `package:web` will be replacing Dart's web libraries,
+like [dart:html][html] and [dart:svg][],
+which aren't supported when compiling to Wasm.
 
 :::important
 If you maintain a public Flutter package that uses `dart:html`,
-**you need to migrate to `package:web` as soon as possible**.
+**you should migrate to `package:web` as soon as possible**.
 :::
 
 ## Migrating from `dart:html`
@@ -41,7 +45,7 @@ Add `web` to the `dependencies` in your pubspec:
 
 ```yaml
 dependencies:
-  web: ^0.4.2
+  web: ^0.5.0
 ```
 
 The following sections cover the current available methods of migration
@@ -63,7 +67,7 @@ A `dart fix` is available to convert symbols that have been renamed
 between `dart:html` and `package:web`. 
 
 After changing the import, any renamed objects will be new "undefined" errors.
-You can adress these either:
+You can address these either:
 - From the CLI by running `dart fix --dry-run`.
 - In your IDE, select the `dart fix`: **Rename to '`package:web name`'**.
 
@@ -120,7 +124,7 @@ with some variation of the exception:
 A value of type '...' can't be assigned to a variable of type 'JSFunction?'
 ```
 
-Also important to note that methods are [statically dispatched][static interop]
+Also important to note that methods are [statically dispatched][static]
 in `package:web`. So, unlike `dart:html`, there is no support for
 dynamic dispatch like virtual methods, overriding members, or mocks.
 
@@ -140,15 +144,16 @@ There is no [helper](#helper-layer) available yet.
 
 ## Helper layer
 
-The core of `package:web` provides direct interop with external
-members from the IDL, but does not provide solutions for some other
+The core of `package:web` contains `external` members
+to directly interop with the web,
+but does not provide solutions for some other
 functionality that `dart:html` handled by default.
 To mitigate these differences,
-`package:web` provides a [`helpers`][helpers] library for additional support
-in handling a number of use cases that aren't directly
-available through the core interop.
-The helper library contains classes, typedefs, and extension methods
-with legacy features to opt in old behavior as needed.
+`package:web` provides a [`helpers`][helpers] library
+for additional support in handling a number of use cases
+that aren't directly available through the core interop.
+The helper library contains various types and members
+to expose some legacy features from the Dart web libraries.
 
 For example, `package:web` doesn't have any core functionality to handle
 event listeners. Instead, you can use
@@ -181,8 +186,11 @@ Do we have any other package migrations?
 [`package:web`]: {{site.pub-pkg}}/web
 [Wasm]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/README.md
 [html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
-[@webref/idl]: https://www.npmjs.com/package/@webref/idl
-[static interop]: /interop/js-interop
+[svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
+[dart:js_interop]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[dart:js_interop_unsafe]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[idl]: https://www.npmjs.com/package/@webref/idl
+[js]: /interop/js-interop
 [dart-lang/web]: https://github.com/dart-lang/web
 [issue]: https://github.com/dart-lang/web/issues/new
 [helpers]: https://github.com/dart-lang/web/tree/main/lib/src/helpers
@@ -193,3 +201,4 @@ Do we have any other package migrations?
 [pub-helpers]: {{site.pub-pkg}}/web
 [Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/compare/main...johnpryan:wasm/url-launcher
 [stream helpers]: https://github.com/dart-lang/web/blob/main/lib/src/helpers/events/streams.dart
+[static]: /language/extension-types
