@@ -22,7 +22,7 @@
     "bootstrap-scss": "^4.6.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0-alpha.4",
+    "@11ty/eleventy": "3.0.0-alpha.5",
     "firebase-tools": "^13.2.1",
     "hast-util-from-html": "^2.0.1",
     "hast-util-select": "^6.0.2",
