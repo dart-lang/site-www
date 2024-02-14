@@ -60,5 +60,5 @@ $ brew info dart
 ```
 
 [Homebrew]: https://brew.sh
-[tap]: {{site.gh-dart.org}}/homebrew-dart
+[tap]: {{site.repo.dart.org}}/homebrew-dart
 [Homebrew FAQ]: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-homebrew-utilities
