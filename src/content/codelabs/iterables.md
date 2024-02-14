@@ -306,67 +306,74 @@ All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
 ```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
-{$ begin main.dart $}
 // Implement the predicate of singleWhere
 // with the following conditions
 // * The element contains the character `'a'`
 // * The element starts with the character `'M'`
 String singleWhere(Iterable<String> items) {
-  return items.singleWhere(TODO('Implement predicate'));
+  return items.singleWhere(TODO('Implement the outlined predicate.'));
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-String singleWhere(Iterable<String> items) {
-  return items.singleWhere(
-      (element) => element.startsWith('M') && element.contains('a'));
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-const items = [
-  'Salad',
-  'Popcorn',
-  'Milk',
-  'Toast',
-  'Sugar',
-  'Mozzarella',
-  'Tomato',
-  'Egg',
-  'Water',
-];
 
+// The following code is used to provide feedback on your solution.
+// Try your best first and do not modify.
 void main() {
+  const items = [
+    'Salad',
+    'Popcorn',
+    'Milk',
+    'Toast',
+    'Sugar',
+    'Mozzarella',
+    'Tomato',
+    'Egg',
+    'Water',
+  ];
+
   try {
     final str = singleWhere(items);
     if (str == 'Mozzarella') {
-      _result(true);
+      print('Success. All tests passed!');
     } else {
-      _result(false, [
-        'Tried calling singleWhere, but received $str instead of the expected '
-            'value \'Mozzarella\''
-      ]);
+      print(
+        'Tried calling singleWhere, but received $str instead of '
+        'the expected value \'Mozzarella\'',
+      );
     }
   } on StateError catch (stateError) {
-    _result(false, [
+    print(
       'Tried calling singleWhere, but received a StateError: ${stateError.message}. '
-          'singleWhere will fail if 0 or many elements match the '
-          'predicate'
-    ]);
+      'singleWhere will fail if 0 or many elements match the predicate.',
+    );
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `singleWhere`, but received an error. Did you implement the method?'
-    ]);
-    return;
+    print(
+      'Tried running `singleWhere`, but received an error. '
+      'Did you implement the function?',
+    );
   } catch (e) {
-    _result(false, [
-      'Tried calling singleWhere, but received an exception: $e'
-    ]);
+    print('Tried calling singleWhere, but received an exception: $e');
   }
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Use the methods `contains()` and `startsWith()` from the `String` class.
-{$ end hint.txt $}
 ```
+
+<details>
+  <summary title="Expand for a hint on the predicate exercise.">Hint</summary>
+
+  Your solution might make use of the `contains` and `startsWith`
+  methods from the `String` class.
+
+</details>
+
+<details>
+  <summary title="Expand for the solution of the predicate exercise.">Solution</summary>
+
+  ```dart
+  String singleWhere(Iterable<String> items) {
+    return items.singleWhere(
+            (element) => element.startsWith('M') && element.contains('a'));
+  }
+  ```
+
+</details>
 
 ## Checking conditions
 
@@ -456,138 +463,146 @@ Use `any()` and `every()` to implement two functions:
   * Return `true` if all users are 14 or older.
 
 ```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
-{$ begin main.dart $}
 bool anyUserUnder18(Iterable<User> users) {
-  TODO('Implement this method');
+  TODO('Implement the anyUserUnder18 function.');
 }
 
 bool everyUserOver13(Iterable<User> users) {
-  TODO('Implement this method');
+  TODO('Implement the everyUserOver13 function.');
 }
 
 class User {
-  String name;
-  int age;
+  final String name;
+  final int age;
 
   User(
     this.name,
     this.age,
   );
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-bool anyUserUnder18(Iterable<User> users) {
-  return users.any((user) => user.age < 18);
-}
 
-bool everyUserOver13(Iterable<User> users) {
-  return users.every((user) => user.age > 13);
-}
-
-class User {
-  String name;
-  int age;
-
-  User(
-    this.name,
-    this.age,
-  );
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-var users = [
-  User('Alice', 21),
-  User('Bob', 17),
-  User('Claire', 52),
-  User('David', 14),
-];
-
+// The following code is used to provide feedback on your solution.
+// Try your best first and do not modify.
 void main() {
+  final users = [
+    User('Alice', 21),
+    User('Bob', 17),
+    User('Claire', 52),
+    User('David', 14),
+  ];
+
   try {
-    var out = anyUserUnder18(users);
+    final out = anyUserUnder18(users);
     if (!out) {
-      _result(false, ['Looks like `anyUserUnder18` is wrong. Keep trying!']);
+      print('Looks like `anyUserUnder18` is wrong. Keep trying!');
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `anyUserUnder18`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `anyUserUnder18`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false,
-        ['Tried running `anyUserUnder18`, but received an exception: $e']);
+    print('Tried running `anyUserUnder18`, but received an exception: $e');
     return;
   }
 
   try {
     // with only one user older than 18, should be false
-    var out = anyUserUnder18([User('Alice', 21)]);
+    final out = anyUserUnder18([User('Alice', 21)]);
     if (out) {
-      _result(false, [
-        'Looks like `anyUserUnder18` is wrong. What if all users are over 18?'
-      ]);
+      print(
+          'Looks like `anyUserUnder18` is wrong. What if all users are over 18?');
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `anyUserUnder18`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `anyUserUnder18`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `anyUserUnder18([User("Alice", 21)])`, but received an exception: $e'
-    ]);
+    print(
+      'Tried running `anyUserUnder18([User("Alice", 21)])`, '
+      'but received an exception: $e',
+    );
     return;
   }
 
   try {
-    var out = everyUserOver13(users);
+    final out = everyUserOver13(users);
     if (!out) {
-      _result(false, [
-        'Looks like `everyUserOver13` is wrong. There are no users under 13!'
-      ]);
+      print(
+        'Looks like `everyUserOver13` is wrong. '
+        'There are no users under 13!',
+      );
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `everyUserOver13`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `everyUserOver13`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `everyUserOver13`, but received an exception: $e'
-    ]);
+    print(
+      'Tried running `everyUserOver13`, '
+      'but received an exception: $e',
+    );
     return;
   }
 
   try {
-    var out = everyUserOver13([User('Dan', 12)]);
+    final out = everyUserOver13([User('Dan', 12)]);
     if (out) {
-      _result(false, [
-        'Looks like `everyUserOver13` is wrong. There is at least one user under 13!'
-      ]);
+      print(
+        'Looks like `everyUserOver13` is wrong. '
+        'There is at least one user under 13!',
+      );
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `everyUserOver13`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `everyUserOver13`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `everyUserOver13([User(\'Dan\', 12)])`, but received an exception: $e'
-    ]);
+    print(
+      'Tried running `everyUserOver13([User(\'Dan\', 12)])`, '
+      'but received an exception: $e',
+    );
     return;
   }
 
-  _result(true);
+  print('Success. All tests passed!');
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Use the methods `any()` and `every()` to compare the user age.
-{$ end hint.txt $}
 ```
+
+<details>
+  <summary title="Expand for a hint on the conditional filtering exercise.">Hint</summary>
+
+  Remember to use the `any` and `every` methods from the `Iterable` class.
+  For help and examples using these methods, refer to
+  the [earlier discussion of them](#example-using-any-and-every).
+
+</details>
+
+<details>
+  <summary title="Expand for the solution of the conditional filtering exercise.">Solution</summary>
+
+  ```dart
+  bool anyUserUnder18(Iterable<User> users) {
+    return users.any((user) => user.age < 18);
+  }
+  
+  bool everyUserOver13(Iterable<User> users) {
+    return users.every((user) => user.age > 13);
+  }
+  ```
+
+</details>
 
 :::secondary Quick review
 * Although you can use `for-in` loops to check conditions,
@@ -725,96 +740,107 @@ Use `where()` to implement two functions:
     names of length 3 or less.
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
-{$ begin main.dart $}
 Iterable<User> filterOutUnder21(Iterable<User> users) {
-  TODO('Implement this method');
+  TODO('Implement the filterOutUnder21 function.');
 }
 
 Iterable<User> findShortNamed(Iterable<User> users) {
-  TODO('Implement this method');
+  TODO('Implement the findShortNamed function.');
 }
 
 class User {
-  String name;
-  int age;
+  final String name;
+  final int age;
 
   User(
     this.name,
     this.age,
   );
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-Iterable<User> filterOutUnder21(Iterable<User> users) {
-  return users.where((user) => user.age >= 21);
-}
 
-Iterable<User> findShortNamed(Iterable<User> users) {
-  return users.where((user) => user.name.length <= 3);
-}
-
-class User {
-  String name;
-  int age;
-
-  User(
-    this.name,
-    this.age,
-  );
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-var users = [
-  User('Alice', 21),
-  User('Bob', 17),
-  User('Claire', 52),
-  User('Dan', 12),
-];
-
+// The following code is used to provide feedback on your solution.
+// Try your best first and do not modify.
 void main() {
+  final users = [
+    User('Alice', 21),
+    User('Bob', 17),
+    User('Claire', 52),
+    User('Dan', 12),
+  ];
+
   try {
-    var out = filterOutUnder21(users);
+    final out = filterOutUnder21(users);
     if (out.any((user) => user.age < 21) || out.length != 2) {
-      _result(false, ['Looks like `filterOutUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
+      print(
+        'Looks like `filterOutUnder21` is wrong, there are '
+        'exactly two users with age under 21. Keep trying!',
+      );
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `filterOutUnder21`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `filterOutUnder21`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `filterOutUnder21`, but received an exception: ${e.runtimeType}'
-    ]);
+    print(
+      'Tried running `filterOutUnder21`, '
+      'but received an exception: ${e.runtimeType}',
+    );
     return;
   }
 
   try {
-    var out = findShortNamed(users);
+    final out = findShortNamed(users);
     if (out.any((user) => user.name.length > 3) || out.length != 2) {
-      _result(false, ['Looks like `findShortNamed` is wrong, there are exactly two users with a three letter name. Keep trying!']);
+      print(
+        'Looks like `findShortNamed` is wrong, there are '
+        'exactly two users with a three letter name. Keep trying!',
+      );
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `findShortNamed`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `findShortNamed`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `findShortNamed`, but received an exception: ${e.runtimeType}'
-    ]);
+    print(
+      'Tried running `findShortNamed`, '
+      'but received an exception: ${e.runtimeType}',
+    );
     return;
+  }
+
+  print('Success. All tests passed!');
+}
+```
+
+<details>
+  <summary title="Expand for a hint on the filtering elements exercise.">Hint</summary>
+
+  Remember to take advantage of the `where` method from the `Iterable` class.
+  For help and examples using `where`, refer to
+  the [earlier discussion of it](#example-using-where).
+
+</details>
+
+<details>
+  <summary title="Expand for the solution of the filtering elements exercise.">Solution</summary>
+
+  ```dart
+  Iterable<User> filterOutUnder21(Iterable<User> users) {
+    return users.where((user) => user.age >= 21);
   }
   
-  _result(true);
-}
-{$ end test.dart $}
-{$ begin hint.txt $}
-Use the `where()` method to implement the filters.
-{$ end hint.txt $}
-```
+  Iterable<User> findShortNamed(Iterable<User> users) {
+    return users.where((user) => user.name.length <= 3);
+  }
+  ```
+
+</details>
 
 :::secondary Quick review
 * Filter the elements of an `Iterable` with `where()`.
@@ -880,74 +906,84 @@ Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
 ```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
-{$ begin main.dart $}
 Iterable<String> getNameAndAges(Iterable<User> users) {
-  TODO('Implement this method');
+  TODO('Implement the getNameAndAges function.');
 }
 
 class User {
-  String name;
-  int age;
+  final String name;
+  final int age;
 
   User(
     this.name,
     this.age,
   );
 }
-{$ end main.dart $}
-{$ begin solution.dart $}
-Iterable<String> getNameAndAges(Iterable<User> users) {
-  return users.map((user) => '${user.name} is ${user.age}');
-}
 
-class User {
-  String name;
-  int age;
-
-  User(
-    this.name,
-    this.age,
-  );
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-var users = [
-  User('Alice', 21),
-  User('Bob', 17),
-  User('Claire', 52),
-];
-
+// The following code is used to provide feedback on your solution.
+// Try your best first and do not modify.
 void main() {
+  final users = [
+    User('Alice', 21),
+    User('Bob', 17),
+    User('Claire', 52),
+  ];
+
   try {
     final out = getNameAndAges(users).toList();
     if (!_listEquals(out, ['Alice is 21', 'Bob is 17', 'Claire is 52'])) {
-      _result(false, ['Looks like `getNameAndAges` is wrong. Keep trying! The output was $out']);
+      print(
+        'Looks like `getNameAndAges` is wrong. Keep trying! '
+        'The output was: $out',
+      );
       return;
     }
-    _result(true);
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `getNameAndAges`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `getNameAndAges`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, ['Tried running the method, but received an exception: $e']);
+    print('Tried running the function, but received an exception: $e');
+    return;
   }
+
+  print('Success. All tests passed!');
 }
 
 bool _listEquals<T>(List<T>? a, List<T>? b) {
   if (a == null) return b == null;
   if (b == null || a.length != b.length) return false;
-  for (int index = 0; index < a.length; index += 1) {
+  for (var index = 0; index < a.length; index += 1) {
     if (a[index] != b[index]) return false;
   }
   return true;
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Use `map()` to create a String with the values of `user.name` and `user.age`.
-{$ end hint.txt $}
 ```
+
+<details>
+  <summary title="Expand for a hint on the mapping elements exercise.">Hint</summary>
+
+  Remember to take advantage of the `map` method from the `Iterable` class.
+  For help and examples using `map`, refer to
+  the [earlier discussion of it](#example-using-map-to-change-elements).
+
+  To concatenate multiple values into a single string, consider
+  using [string interpolation](/language/built-in-types#string-interpolation).
+
+</details>
+
+<details>
+  <summary title="Expand for the solution of the mapping elements exercise.">Solution</summary>
+
+  ```dart
+  Iterable<String> getNameAndAges(Iterable<User> users) {
+    return users.map((user) => '${user.name} is ${user.age}');
+  }
+  ```
+
+</details>
 
 :::secondary Quick review
 * `map()` applies a function to all the elements of an `Iterable`.
@@ -1000,17 +1036,16 @@ Part 3: Implement `validEmailAddresses()`.
   an `EmailAddress` is valid.
 
 ```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
-{$ begin main.dart $}
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
-  TODO('Implement this method');
+  TODO('Implement the parseEmailAddresses function.');
 }
 
 bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
-  TODO('Implement this method');
+  TODO('Implement the anyInvalidEmailAddress function.');
 }
 
 Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
-  TODO('Implement this method');
+  TODO('Implement the validEmailAddresses function.');
 }
 
 class EmailAddress {
@@ -1021,75 +1056,44 @@ class EmailAddress {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is EmailAddress &&
-              address == other.address;
+      other is EmailAddress && address == other.address;
 
   @override
   int get hashCode => address.hashCode;
 
   @override
-  String toString() {
-    return 'EmailAddress{address: $address}';
-  }
-}
-{$ end main.dart $}
-{$ begin solution.dart $}
-Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
-  return strings.map((s) => EmailAddress(s));
+  String toString() => 'EmailAddress{address: $address}';
 }
 
-bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
-  return emails.any((email) => !isValidEmailAddress(email));
-}
-
-Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
-  return emails.where((email) => isValidEmailAddress(email));
-}
-
-class EmailAddress {
-  final String address;
-
-  EmailAddress(this.address);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is EmailAddress &&
-              runtimeType == other.runtimeType &&
-              address == other.address;
-
-  @override
-  int get hashCode => address.hashCode;
-
-  @override
-  String toString() {
-    return 'EmailAddress{address: $address}';
-  }
-}
-{$ end solution.dart $}
-{$ begin test.dart $}
-const input = [
-  'ali@gmail.com',
-  'bobgmail.com',
-  'cal@gmail.com',
-];
-
-const correctInput = ['dash@gmail.com', 'sparky@gmail.com'];
-
-bool isValidEmailAddress(EmailAddress email) {
-  return email.address.contains('@');
-}
-
+// The following code is used to provide feedback on your solution.
+// Try your best first and do not modify.
 void main() {
-  Iterable<EmailAddress> emails;
-  Iterable<EmailAddress> correctEmails;
+  const input = [
+    'ali@gmail.com',
+    'bobgmail.com',
+    'cal@gmail.com',
+  ];
+
+  const correctInput = ['dash@gmail.com', 'sparky@gmail.com'];
+
+  bool _listEquals<T>(List<T>? a, List<T>? b) {
+    if (a == null) return b == null;
+    if (b == null || a.length != b.length) return false;
+    for (var index = 0; index < a.length; index += 1) {
+      if (a[index] != b[index]) return false;
+    }
+    return true;
+  }
+
+  final Iterable<EmailAddress> emails;
+  final Iterable<EmailAddress> correctEmails;
   try {
     emails = parseEmailAddresses(input);
     correctEmails = parseEmailAddresses(correctInput);
     if (emails.isEmpty) {
-      _result(false, [
-        'Tried running `parseEmailAddresses`, but received an empty list.'
-      ]);
+      print(
+        'Tried running `parseEmailAddresses`, but received an empty list.',
+      );
       return;
     }
     if (!_listEquals(emails.toList(), [
@@ -1097,91 +1101,105 @@ void main() {
       EmailAddress('bobgmail.com'),
       EmailAddress('cal@gmail.com'),
     ])) {
-      _result(false, ['Looks like `parseEmailAddresses` is wrong. Keep trying!']);
+      print('Looks like `parseEmailAddresses` is wrong. Keep trying!');
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `parseEmailAddresses`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `parseEmailAddresses`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `parseEmailAddresses`, but received an exception: $e'
-    ]);
+    print(
+      'Tried running `parseEmailAddresses`, '
+      'but received an exception: $e',
+    );
     return;
   }
 
   try {
     final out = anyInvalidEmailAddress(emails);
     if (!out) {
-      _result(false, [
-        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with at least one invalid address.'
-      ]);
+      print(
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! '
+        'The result should be false with at least one invalid address.',
+      );
       return;
     }
     final falseOut = anyInvalidEmailAddress(correctEmails);
     if (falseOut) {
-      _result(false, [
-        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with all valid addresses.'
-      ]);
+      print(
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! '
+        'The result should be false with all valid addresses.',
+      );
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `anyInvalidEmailAddress`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `anyInvalidEmailAddress`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running `anyInvalidEmailAddress`, but received an exception: $e'
-    ]);
+    print(
+        'Tried running `anyInvalidEmailAddress`, but received an exception: $e');
     return;
   }
 
   try {
     final valid = validEmailAddresses(emails);
     if (emails.isEmpty) {
-      _result(false, [
-        'Tried running `validEmailAddresses`, but received an empty list.'
-      ]);
+      print('Tried running `validEmailAddresses`, but received an empty list.');
       return;
     }
     if (!_listEquals(valid.toList(), [
       EmailAddress('ali@gmail.com'),
       EmailAddress('cal@gmail.com'),
     ])) {
-      _result(false, ['Looks like `validEmailAddresses` is wrong. Keep trying!']);
+      print('Looks like `validEmailAddresses` is wrong. Keep trying!');
       return;
     }
   } on UnimplementedError {
-    _result(false, [
-      'Tried running `validEmailAddresses`, but received an error. Did you implement the method?'
-    ]);
+    print(
+      'Tried running `validEmailAddresses`, but received an error. '
+      'Did you implement the function?',
+    );
     return;
   } catch (e) {
-    _result(false, [
-      'Tried running the `validEmailAddresses`, but received an exception: $e'
-    ]);
+    print(
+      'Tried running the `validEmailAddresses`, '
+      'but received an exception: $e',
+    );
     return;
   }
 
-  _result(true);
+  print('Success. All tests passed!');
 }
 
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (a == null) return b == null;
-  if (b == null || a.length != b.length) return false;
-  for (int index = 0; index < a.length; index += 1) {
-    if (a[index] != b[index]) return false;
-  }
-  return true;
+bool isValidEmailAddress(EmailAddress email) {
+  return email.address.contains('@');
 }
-{$ end test.dart $}
-{$ begin hint.txt $}
-Use the methods `map()`, `any()`, and `where()` to solve the exercise.
-{$ end hint.txt $}
 ```
+
+<details>
+  <summary title="Expand for the solution of the 'Putting it all together' exercise.">Solution</summary>
+
+  ```dart
+  Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
+    return strings.map((s) => EmailAddress(s));
+  }
+  
+  bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
+    return emails.any((email) => !isValidEmailAddress(email));
+  }
+  
+  Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
+    return emails.where((email) => isValidEmailAddress(email));
+  }
+  ```
+
+</details>
 
 ## What's next
 

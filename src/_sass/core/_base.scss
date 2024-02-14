@@ -16,7 +16,6 @@ section {
 h1, h2, h3, h4, h5, h6 {
   font-family: $site-font-family-gsans;
   font-weight: 400;
-  margin-top: 1.5em;
   color: $site-color-body;
 }
 
@@ -84,4 +83,30 @@ blockquote {
   border-width: 1px 0;
   margin: 20px;
   padding: 10px 20px 0 20px;
+}
+
+details {
+  margin-bottom: 0.75rem;
+
+  > summary {
+    font-weight: 500;
+    user-select: none;
+
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+
+  &[open] {
+    margin-bottom: unset;
+
+    > summary {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  > :not(:first-child) {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
 }

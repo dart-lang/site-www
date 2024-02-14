@@ -17,12 +17,12 @@
     "node": ">=20.10.0",
     "pnpm": ">=8.14.1"
   },
-  "packageManager": "pnpm@8.14.3",
+  "packageManager": "pnpm@8.15.1",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0-alpha.4",
+    "@11ty/eleventy": "3.0.0-alpha.5",
     "firebase-tools": "^13.2.1",
     "hast-util-from-html": "^2.0.1",
     "hast-util-select": "^6.0.2",
