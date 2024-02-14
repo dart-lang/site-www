@@ -464,7 +464,7 @@ reportLogins() {}
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the async-await exercise.">Hint</summary>
 
   Did you remember to add the `async` keyword to the `reportUserRole` function?
   
@@ -475,7 +475,7 @@ reportLogins() {}
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the async-await exercise.">Solution</summary>
 
   ```dart
   Future<String> reportUserRole() async {
@@ -576,7 +576,7 @@ changeUsername() {}
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the error-handling exercise.">Hint</summary>
 
   Implement `changeUsername` to return the string from `fetchNewUsername` or,
   if that fails, the string value of any error that occurs.
@@ -587,7 +587,7 @@ changeUsername() {}
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the error-handling exercise.">Solution</summary>
 
   ```dart
   Future<String> changeUsername() async {
@@ -663,7 +663,7 @@ sayGoodbye() {}
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the 'Putting it all together' exercise.">Hint</summary>
 
   The `greetUser` and `sayGoodbye` functions should be asynchronous,
   while `addHello` should be a normal, synchronous function.
@@ -674,7 +674,7 @@ sayGoodbye() {}
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the 'Putting it all together' exercise.">Solution</summary>
 
   ```dart
   String addHello(String user) => 'Hello $user';
