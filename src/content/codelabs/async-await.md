@@ -463,6 +463,34 @@ Future<String> reportUserRole() async {
 reportLogins() {}
 ```
 
+<details>
+  <summary>Hint</summary>
+
+  Did you remember to add the `async` keyword to the `reportUserRole` function?
+  
+  Did you remember to use the `await` keyword before invoking `fetchRole()`?
+  
+  Remember: `reportUserRole` needs to return a `Future`.
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  Future<String> reportUserRole() async {
+    final username = await fetchRole();
+    return 'User role: $username';
+  }
+  
+  Future<String> reportLogins() async {
+    final logins = await fetchLoginAmount();
+    return 'Total number of logins: $logins';
+  }
+  ```
+
+</details>
+
 ## Handling errors
 
 To handle errors in an `async` function, use try-catch:
@@ -547,6 +575,32 @@ that does the following:
 changeUsername() {}
 ```
 
+<details>
+  <summary>Hint</summary>
+
+  Implement `changeUsername` to return the string from `fetchNewUsername` or,
+  if that fails, the string value of any error that occurs.
+  
+  Remember: You can use a [try-catch statement](/language/error-handling#catch)
+  to catch and handle errors.
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  Future<String> changeUsername() async {
+    try {
+      return await fetchNewUsername();
+    } catch (err) {
+      return err.toString();
+    }
+  }
+  ```
+
+</details>
+
 ## Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise.
@@ -608,26 +662,59 @@ greetUser() {}
 sayGoodbye() {}
 ```
 
+<details>
+  <summary>Hint</summary>
+
+  The `greetUser` and `sayGoodbye` functions should be asynchronous,
+  while `addHello` should be a normal, synchronous function.
+
+  Remember: You can use a [try-catch statement](/language/error-handling#catch)
+  to catch and handle errors.
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  String addHello(String user) => 'Hello $user';
+  
+  Future<String> greetUser() async {
+    final username = await fetchUsername();
+    return addHello(username);
+  }
+  
+  Future<String> sayGoodbye() async {
+    try {
+      final result = await logoutUser();
+      return '$result Thanks, see you next time';
+    } catch (e) {
+      return 'Failed to logout user: $e';
+    }
+  }
+  ```
+
+</details>
+
 ## What's next?
 
 Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
 
-- Play with [DartPad.]({{site.dartpad}})
+- Play with [DartPad]({{site.dartpad}}).
 - Try another [codelab](/codelabs).
 - Learn more about futures and asynchronous code in Dart:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.
-  - [Concurrency in Dart](/language/concurrency)
+  - [Concurrency in Dart](/language/concurrency):
     Understand and learn how to implement concurrency in Dart.
-  - [Dart videos from Google:][Dart videos]
+  - [Asynchrony support](/language/async):
+    Dive in to Dart's language and library support for asynchronous coding.
+  - [Dart videos from Google][Dart videos]:
     Watch one or more of the videos about asynchronous coding.
-    Or, if you prefer, read the articles that are based on these videos.
-    (Start with [isolates and event loops.][article])
-- [Get the Dart SDK.](/get-dart)
+- Get the [Dart SDK](/get-dart)!
 
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
-[article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
 [style guide]: /effective-dart/style
 [documentation guide]: /effective-dart/documentation
