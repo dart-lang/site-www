@@ -316,7 +316,7 @@ String singleWhere(Iterable<String> items) {
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the predicate exercise.">Hint</summary>
 
   Your solution might make use of the `contains` and `startsWith`
   methods from the `String` class.
@@ -324,7 +324,7 @@ String singleWhere(Iterable<String> items) {
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the predicate exercise.">Solution</summary>
 
   ```dart
   String singleWhere(Iterable<String> items) {
@@ -443,7 +443,7 @@ class User {
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the conditional filtering exercise.">Hint</summary>
 
   Remember to use the `any` and `every` methods from the `Iterable` class.
   For help and examples using these methods, refer to
@@ -452,7 +452,7 @@ class User {
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the conditional filtering exercise.">Solution</summary>
 
   ```dart
   bool anyUserUnder18(Iterable<User> users) {
@@ -622,7 +622,7 @@ class User {
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the filtering elements exercise.">Hint</summary>
 
   Remember to take advantage of the `where` method from the `Iterable` class.
   For help and examples using `where`, refer to
@@ -631,7 +631,7 @@ class User {
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the filtering elements exercise.">Solution</summary>
 
   ```dart
   Iterable<User> filterOutUnder21(Iterable<User> users) {
@@ -725,7 +725,7 @@ class User {
 ```
 
 <details>
-  <summary>Hint</summary>
+  <summary title="Expand for a hint on the mapping elements exercise.">Hint</summary>
 
   Remember to take advantage of the `map` method from the `Iterable` class.
   For help and examples using `map`, refer to
@@ -737,7 +737,7 @@ class User {
 </details>
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the mapping elements exercise.">Solution</summary>
 
   ```dart
   Iterable<String> getNameAndAges(Iterable<User> users) {
@@ -832,7 +832,7 @@ class EmailAddress {
 ```
 
 <details>
-  <summary>Solution</summary>
+  <summary title="Expand for the solution of the 'Putting it all together' exercise.">Solution</summary>
 
   ```dart
   Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
