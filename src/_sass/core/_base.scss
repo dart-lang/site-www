@@ -86,13 +86,22 @@ blockquote {
 }
 
 details {
-  summary {
+  margin-bottom: 0.75rem;
+
+  > summary {
     font-weight: 500;
     user-select: none;
-    margin-bottom: 0.75rem;
 
     &:hover {
       color: $brand-primary;
+    }
+  }
+
+  &[open] {
+    margin-bottom: unset;
+
+    > summary {
+      margin-bottom: 0.75rem;
     }
   }
 
