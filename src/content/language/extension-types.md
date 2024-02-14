@@ -11,7 +11,10 @@ nextpage:
 
 An extension type is a compile-time abstraction that "wraps"
 an existing type with a different, static-only interface.
-They are implemented in Dart specifically to enable [static JS interop][].
+They are a major component of [static JS interop][] because 
+they can easily modify an existing type's interface
+(crucial for any kind of interop)
+without incurring the cost of an actual wrapper.
 
 Extension types enforce discipline on the set of operations (or interface)
 available to objects of an underlying type,
