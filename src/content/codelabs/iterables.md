@@ -315,7 +315,7 @@ String singleWhere(Iterable<String> items) {
 }
 
 // The following code is used to provide feedback on your solution.
-// Try your best first and do not modify.
+// There is no need to read or modify it.
 void main() {
   const items = [
     'Salad',
@@ -464,11 +464,11 @@ Use `any()` and `every()` to implement two functions:
 
 ```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
 bool anyUserUnder18(Iterable<User> users) {
-  TODO('Implement the anyUserUnder18 function.');
+  // TODO: Implement the anyUserUnder18 function.
 }
 
 bool everyUserOver13(Iterable<User> users) {
-  TODO('Implement the everyUserOver13 function.');
+  // TODO: Implement the everyUserOver13 function.
 }
 
 class User {
@@ -482,7 +482,7 @@ class User {
 }
 
 // The following code is used to provide feedback on your solution.
-// Try your best first and do not modify.
+// There is no need to read or modify it.
 void main() {
   final users = [
     User('Alice', 21),
@@ -741,11 +741,11 @@ Use `where()` to implement two functions:
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
 Iterable<User> filterOutUnder21(Iterable<User> users) {
-  TODO('Implement the filterOutUnder21 function.');
+  // TODO: Implement the filterOutUnder21 function.
 }
 
 Iterable<User> findShortNamed(Iterable<User> users) {
-  TODO('Implement the findShortNamed function.');
+  // TODO: Implement the findShortNamed function.
 }
 
 class User {
@@ -759,7 +759,7 @@ class User {
 }
 
 // The following code is used to provide feedback on your solution.
-// Try your best first and do not modify.
+// There is no need to read or modify it.
 void main() {
   final users = [
     User('Alice', 21),
@@ -907,7 +907,7 @@ Each string in the `Iterable` must follow this format:
 
 ```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
 Iterable<String> getNameAndAges(Iterable<User> users) {
-  TODO('Implement the getNameAndAges function.');
+  // TODO: Implement the getNameAndAges function.
 }
 
 class User {
@@ -921,7 +921,7 @@ class User {
 }
 
 // The following code is used to provide feedback on your solution.
-// Try your best first and do not modify.
+// There is no need to read or modify it.
 void main() {
   final users = [
     User('Alice', 21),
@@ -1037,15 +1037,15 @@ Part 3: Implement `validEmailAddresses()`.
 
 ```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
-  TODO('Implement the parseEmailAddresses function.');
+  // TODO: Implement the parseEmailAddresses function.
 }
 
 bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
-  TODO('Implement the anyInvalidEmailAddress function.');
+  // TODO: Implement the anyInvalidEmailAddress function.
 }
 
 Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
-  TODO('Implement the validEmailAddresses function.');
+  // TODO: Implement the validEmailAddresses function.
 }
 
 class EmailAddress {
@@ -1066,7 +1066,7 @@ class EmailAddress {
 }
 
 // The following code is used to provide feedback on your solution.
-// Try your best first and do not modify.
+// There is no need to read or modify it.
 void main() {
   const input = [
     'ali@gmail.com',
