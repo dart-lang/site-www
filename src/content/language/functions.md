@@ -219,7 +219,7 @@ takes arguments:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 ```dart
-// Run the app like this: dart run args.dart 1 test
+// Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
 
