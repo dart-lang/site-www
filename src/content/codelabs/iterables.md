@@ -353,9 +353,6 @@ void main() {
     print('Tried calling singleWhere, but received an exception: $e');
   }
 }
-
-// ignore: non_constant_identifier_names
-// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -581,9 +578,6 @@ void main() {
 
   print('Success. All tests passed!');
 }
-
-// ignore: non_constant_identifier_names
-// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -822,9 +816,6 @@ void main() {
 
   print('Success. All tests passed!');
 }
-
-// ignore: non_constant_identifier_names
-// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -969,9 +960,6 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
   }
   return true;
 }
-
-// ignore: non_constant_identifier_names
-// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -1192,9 +1180,6 @@ void main() {
 bool isValidEmailAddress(EmailAddress email) {
   return email.address.contains('@');
 }
-
-// ignore: non_constant_identifier_names
-// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
