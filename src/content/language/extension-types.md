@@ -52,15 +52,14 @@ which can get expensive when you need to wrap lots of objects.
 Because extension types are static-only and compiled away at run time,
 they are essentially zero cost.
 
-[**Extension methods**]() (also called just "extensions")
+[**Extension methods**][ext] (also known just as "extensions")
 are a static abstraction similar to extension types.
 However, an extension method adds functionality *directly*
 to every instance of its underlying type.
 Extension types are different;
 an extension type's interface *only* applies to expressions
 whose static type is that extension type.
-They are distinct from the interface of their underlying type by default. 
-Read the [Transparency](#transparency) section for more details.
+They are distinct from the interface of their underlying type by default.
 :::
 
 ## Syntax
@@ -81,7 +80,7 @@ the underlying type of extension type `E` is `int`,
 and that the reference to the *representation object* is named `i`.
 The declaration also introduces:
 - An implicit getter for the representation object
-  with the representation type as return type: `E get i`.
+  with the representation type as the return type: `E get i`.
 - An implicit constructor: `E(int i) : i = i`.
 
 The representation object gives the extension type access to an object
@@ -89,9 +88,8 @@ at the underlying type.
 The object is in scope in the extension type body, and
 you can access it using its name as a getter:
 
-- Within the extension type body: `i` or `this.i` in a
-  [constructor](#constructors).
-- Outside with a property extraction: `e.i`
+- Within the extension type body using `i` (or `this.i` in a constructor).
+- Outside with a property extraction using `e.i`
   (where `e` has the extension type as its static type). 
 
 Extension type declarations can also include [type parameters](generics)
@@ -141,15 +139,28 @@ void main2() {
 }
 ```
 
+You can also completely hide the constructor, instead of just defining a new one,
+using the same private constructor syntax for classes, `_`. For example,
+if you only want clients constructing `E` with a `String`, even though
+the underlying type is `int`:
+
+```dart
+extension type E._(int i) {
+  E.fromString(String foo) : i = int.parse(foo);
+}
+```
+
 You can also declare forwarding generative constructors,
 or [factory constructors][factory]
 (which can also forward to constructors of sub-extension types).
 
 ### Members
 
-Declare members in the body of an extension type to define its interface. 
-Extension type member declarations are identical to class members.
-Members can be methods, getters, setters, or operators:
+Declare members in the body of an extension type to define its interface
+the same way you would for class members.
+Extension type members can be methods, getters, setters, or operators
+(non-[`external`][] [instance variables][] and [abstract members][]
+are not allowed):
 
 ```dart
 extension type NumberE(int value) {
@@ -164,15 +175,12 @@ extension type NumberE(int value) {
 ```
 
 Interface members of the representation type are not interface members
-of the extension type by default.
-For a single member of the representation type to be available
+of the extension type [by default](#transparency).
+To make a single member of the representation type available
 on the extension type, you must write a declaration for it
 in the extension type definition, like the `operator +` in `NumberE`.
 You also can define new members unrelated to the representation type,
 like the `i` getter and `isValid` method.
-
-Extension types can't declare [instance variables][] (unless [`external`][]),
-or [abstract members][].
 
 ### Implements
 
@@ -180,8 +188,8 @@ You can optionally use the `implements` clause to:
 - Introduce a subtype relationship on an extension type, AND
 - Add the members of the representation object to the extension type interface.
 
-For extension types, the `implements` clause introduces an [applicability][]
-relationship like the one between an extension method and its `on` type.
+The `implements` clause introduces an [applicability][]
+relationship like the one between an [extension method][ext] and its `on` type.
 Members that are applicable to the supertype are applicable to the
 subtype as well, unless the subtype has a declaration with the same
 member name.
@@ -206,18 +214,18 @@ An extension type can only implement:
   
   ```dart
   extension type Sequence<T>(List<T> _) implements Iterable<T> {
-    // Better operations than List!
+    // Better operations than List.
   }
   
   extension type Id(int _id) implements Object {
-    // Makes the extension type non-nullable!
+    // Makes the extension type non-nullable.
     static Id? tryParse(String source) => int.tryParse(source) as Id?;
   }
   ```
   
 - **Another extension type** that is valid on the same representation type.
-  This makes it easy to more granularly control the operations available,
-  and reuse operations across multiple new types for different scenarios.
+  This allows you to reuse operations across multiple extension types
+  (similar to multiple inheritance).
   
   ```dart
   extension type const Opt<T>._(({T value})? _) { 
@@ -233,14 +241,14 @@ An extension type can only implement:
   }
   ```
 
-Read the [Usage](#usage) to learn more about the effect of `implements`
+Read the [Usage](#usage) section to learn more about the effect of `implements`
 in different scenarios.
 
 #### `@redeclare`
 
-Declaring a member that shares a name with a member of a supertype
-is *not* an override relationship for extension types like it is between
-classes, but a *redeclaration*. An extension type member declaration
+Declaring an extension type member that shares a name with a member of a supertype
+is *not* an override relationship like it is between classes,
+but rather a *redeclaration*. An extension type member declaration
 *completely replaces* any supertype member with the same name. 
 It's not possible to provide an alternative implementation
 for the same function.
@@ -258,14 +266,14 @@ extension type MyString(String _) implements String {
 }
 ```
 
-You can also enable the lint [annotate_redeclares][lint]
+You can also enable the lint [`annotate_redeclares`][lint]
 to get a warning if you declare an extension type method
 that hides a superinterface member and *isn't* annotated with `@redeclare`.
 
 ## Usage
 
-To use an extension type, create an instance the same as you would with a class
--- by calling a constructor:
+To use an extension type, create an instance the same as you would with a class:
+by calling a constructor:
 
 ```dart
 extension type NumberE(int value) {
@@ -283,13 +291,14 @@ void testE() {
 
 Then, you can invoke members on the object as you would with a class object.
 
-There are two equally valid, but substantially different main ways
-to use an extension type:
-1. To add to the interface of an existing type.
-2. To create an unrelated type with an unrelated interface.
+There are two equally valid, but substantially different core use cases
+for extension types:
+
+1. Providing an *extended* interface to an existing type.
+2. Providing a *different* interface to an existing type.
 
 :::note
-In either case, the representation type of an extension type is never its subtype,
+In any case, the representation type of an extension type is never its subtype,
 so a representation type can't be used interchangeably where the extension type is needed.
 :::
 
@@ -308,9 +317,9 @@ This creates a new, *extended* interface for an existing type.
 The new interface is available to expressions
 whose static type is the extension type.
 
-This means (unlike a
-[non-transparent](#2-provide-a-different-interface-to-an-existing-type)
-extension type), you *can* invoke members of the representation type, like so:
+This means you *can* invoke members of the representation type
+(unlike a [non-transparent](#2-provide-a-different-interface-to-an-existing-type)
+extension type), like so:
 
 ```dart
 extension type NumberT(int value) 
@@ -320,7 +329,7 @@ extension type NumberT(int value)
 }
 
 void main () {
-  // All OK: `implements int` allows using `int` members on the extension type:
+  // All OK: Transparency allows invoking `int` members on the extension type:
   var v1 = NumberT(1); // v1 type: NumberT
   int v2 = NumberT(2); // v2 type: int
   var v3 = v1.i - v1;  // v3 type: int
@@ -334,13 +343,13 @@ void main () {
 You can also have a "mostly-transparent" extension type
 that adds new members and adapts others by redeclaring a given member name
 from the supertype.
-This would allow you to use stricter types on some parameters of a method
+This would allow you to use stricter types on some parameters of a method,
 or different default values, for example.
 
 Another mostly-transparent extension type approach is to implement
 a type that is a supertype of the representation type.
 For example, if the representation type is private but its supertype
-defines the part of the interface you wish to provide to clients.
+defines the part of the interface that matters for clients.
 
 ### 2. Provide a *different* interface to an existing type
 
@@ -348,7 +357,7 @@ An extension type that is not [transparent](#transparency)
 (that does not [`implement`](#implements) its representation type)
 is statically treated as a completely new type,
 distinct from its representation type.
-You can't assign a non-transparent extension type to its representation type,
+You can't assign it to its representation type,
 and it doesn't expose its representation type's members.
 
 For example, take the `NumberE` extension type we declared under [Usage](#usage):
@@ -376,7 +385,8 @@ void testE() {
 
 You can use an extension type this way to *replace* the interface
 of an existing type. This allows you to model an interface that is
-suitable for the constraints of your new type, while also benefitting from
+makes sense for the constraints of your new type
+(like the `IdNumber` example in the introduction), while also benefitting from
 the performance and convenience of a simple pre-defined type, like `int`.
 
 This use case is as close as you can get to the complete encapsulation
@@ -387,7 +397,7 @@ of a wrapper class (but is realistically only a
 
 Extension types are a compile-time wrapping construct.
 At run time, there is absolutely no trace of the extension type.
-Any type query or similar run-time operations works on the representation type.
+Any type query or similar run-time operations work on the representation type.
 
 This makes extension types an *unsafe* abstraction,
 because you can always find out the representation type at run time
@@ -435,7 +445,7 @@ The trade off for using an extension type over a more-secure real object (wrappe
 is their lightweight implementation, which can greatly improve performance in some scenarios.
 
 [static JS interop]: /go/next-gen-js-interop
-[extension methods]: /language/extension-methods
+[ext]: /language/extension-methods
 [generics]: /language/generics
 [constructors]: /language/constructors
 [factory]: /language/constructors#factory-constructors
