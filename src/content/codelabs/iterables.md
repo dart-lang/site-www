@@ -355,7 +355,7 @@ void main() {
 }
 
 // ignore: non_constant_identifier_names
-Never TODO([String? message]) => throw UnimplementedError('$message');
+// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -583,7 +583,7 @@ void main() {
 }
 
 // ignore: non_constant_identifier_names
-Never TODO([String? message]) => throw UnimplementedError('$message');
+// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -824,7 +824,7 @@ void main() {
 }
 
 // ignore: non_constant_identifier_names
-Never TODO([String? message]) => throw UnimplementedError('$message');
+// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -971,7 +971,7 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
 }
 
 // ignore: non_constant_identifier_names
-Never TODO([String? message]) => throw UnimplementedError('$message');
+// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
@@ -1194,7 +1194,7 @@ bool isValidEmailAddress(EmailAddress email) {
 }
 
 // ignore: non_constant_identifier_names
-Never TODO([String? message]) => throw UnimplementedError('$message');
+// Never TODO([String? message]) => throw UnimplementedError('$message');
 ```
 
 <details>
