@@ -17,20 +17,62 @@ void main() {
 }
 ```
 
-`package:web` uses the [Web IDL][idl] to automatically generate
-[interop members][js] and [interop extension types][static]
-for each declaration in the IDL.
-
-Packages using [JS interop][js] will only be compatible with [Wasm][]
-if they use [dart:js_interop][] and [dart:js_interop_unsafe][].
-Therefore, `package:web` will be replacing Dart's web libraries,
-like [dart:html][html] and [dart:svg][],
-which aren't supported when compiling to Wasm.
-
 :::important
 If you maintain a public Flutter package that uses `dart:html`,
 **you should migrate to `package:web` as soon as possible**.
+`package:web` is replacing `dart:html` and other web libraries
+as Dart's web interop solution.
+Read [`package:web` vs `dart:html`](#packageweb-vs-darthtml)
+for more information.
 :::
+
+## `package:web` vs `dart:html`
+
+The goal of `package:web` is revamping Dart's bindings API
+by addressing several concerns with the previous solution,
+namely, `dart:html`.
+
+1. **Wasm compatibility.**
+
+Packages will only be compatible with [Wasm][]
+if they use [`dart:js_interop`][] and [`dart:js_interop_unsafe`][].
+`package:web` is built around the new JS interop libraries
+specifically for this reason.
+It's methods are statically dispatched,
+so by default supported on `dart2wasm`.
+
+Web libraries that were previously the default for Dart Web interop,
+like [`dart:html`][html] and [`dart:svg`][svg],
+are **not supported** when comiling to Wasm.
+
+2. **Web compatibility.**
+
+`package:web` uses the [Web IDL][idl] to automatically generate
+[interop members][js] and [interop extension types][static]
+for each declaration in the IDL.
+Generating references directly,
+as opposed to the light abstractions in `dart:html`,
+makes `package:web` leaner, easier to maintain, more consistent,
+and more able to stay up-to-date with the future of Web developments.
+
+3. **Delivered as a package.**
+
+Delivering bindings as a package means `package:web` can be versioned
+more easily than a library like `dart:html`.
+This makes it a lower entry for contributions,
+and less exclusive. Developers can customize it
+or [create alternative bindings][] of their own
+and use them together with `package:web` without conflict. 
+
+---
+
+These improvements naturally result in some
+implementation differences between `package:web` and `dart:html`.
+The changes that affect existing packages the most,
+like [renaming](#renames) members to match IDL references, or
+[converting](#type-checks) dynamic expressions
+to be static-dispatch friendly,
+are addressed in the migration sections that follow. 
 
 ## Migrating from `dart:html`
 
@@ -187,8 +229,8 @@ Do we have any other package migrations?
 [Wasm]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/README.md
 [html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
-[dart:js_interop]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
-[dart:js_interop_unsafe]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [idl]: https://www.npmjs.com/package/@webref/idl
 [js]: /interop/js-interop
 [dart-lang/web]: https://github.com/dart-lang/web
@@ -197,6 +239,7 @@ Do we have any other package migrations?
 [zones]: /articles/archive/zones
 [Conversions]: /interop/js-interop/js-types#conversions
 [interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
+[create alternative bindings]: https://github.com/dart-lang/web/blob/main/tool/generator/README.md
 [Compatibility, type checks, and casts]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [pub-helpers]: {{site.pub-pkg}}/web
 [Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/compare/main...johnpryan:wasm/url-launcher
