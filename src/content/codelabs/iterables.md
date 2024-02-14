@@ -315,6 +315,26 @@ String singleWhere(Iterable<String> items) {
 }
 ```
 
+<details>
+  <summary>Hint</summary>
+
+  Your solution might make use of the `contains` and `startsWith`
+  methods from the `String` class.
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  String singleWhere(Iterable<String> items) {
+    return items.singleWhere(
+            (element) => element.startsWith('M') && element.contains('a'));
+  }
+  ```
+
+</details>
+
 ## Checking conditions
 
 When working with `Iterable`, sometimes you need to verify that
@@ -421,6 +441,30 @@ class User {
   );
 }
 ```
+
+<details>
+  <summary>Hint</summary>
+
+  Remember to use the `any` and `every` methods from the `Iterable` class.
+  For help and examples using these methods, refer to
+  the [earlier discussion of them](#example-using-any-and-every).
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  bool anyUserUnder18(Iterable<User> users) {
+    return users.any((user) => user.age < 18);
+  }
+  
+  bool everyUserOver13(Iterable<User> users) {
+    return users.every((user) => user.age > 13);
+  }
+  ```
+
+</details>
 
 :::secondary Quick review
 * Although you can use `for-in` loops to check conditions,
@@ -577,6 +621,30 @@ class User {
 }
 ```
 
+<details>
+  <summary>Hint</summary>
+
+  Remember to take advantage of the `where` method from the `Iterable` class.
+  For help and examples using `where`, refer to
+  the [earlier discussion of it](#example-using-where).
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  Iterable<User> filterOutUnder21(Iterable<User> users) {
+    return users.where((user) => user.age >= 21);
+  }
+  
+  Iterable<User> findShortNamed(Iterable<User> users) {
+    return users.where((user) => user.name.length <= 3);
+  }
+  ```
+
+</details>
+
 :::secondary Quick review
 * Filter the elements of an `Iterable` with `where()`.
 * The output of `where()` is another `Iterable`.
@@ -655,6 +723,29 @@ class User {
   );
 }
 ```
+
+<details>
+  <summary>Hint</summary>
+
+  Remember to take advantage of the `map` method from the `Iterable` class.
+  For help and examples using `map`, refer to
+  the [earlier discussion of it](#example-using-map-to-change-elements).
+
+  To concatenate multiple values into a single string, consider
+  using [string interpolation](/language/built-in-types#string-interpolation).
+
+</details>
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  Iterable<String> getNameAndAges(Iterable<User> users) {
+    return users.map((user) => '${user.name} is ${user.age}');
+  }
+  ```
+
+</details>
 
 :::secondary Quick review
 * `map()` applies a function to all the elements of an `Iterable`.
@@ -739,6 +830,25 @@ class EmailAddress {
   }
 }
 ```
+
+<details>
+  <summary>Solution</summary>
+
+  ```dart
+  Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
+    return strings.map((s) => EmailAddress(s));
+  }
+  
+  bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
+    return emails.any((email) => !isValidEmailAddress(email));
+  }
+  
+  Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
+    return emails.where((email) => isValidEmailAddress(email));
+  }
+  ```
+
+</details>
 
 ## What's next
 
