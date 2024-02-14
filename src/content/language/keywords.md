@@ -20,23 +20,23 @@ The following table lists the words that the Dart language treats specially.
 
 |||||
 |-|-|-|-|
-| [abstract][]{{bii}}   | [else][]                  | [implements][]{{bii}} | [set][]{{bii}}     |
-| [as][]{{bii}}         | [enum][]                  | [import][]{{bii}}     | [show][]{{ckw}}    |
-| [assert][]            | [export][]{{bii}}         | [in][]                | [static][]{{bii}}  |
-| [async][]{{ckw}}      | [extends][]               | [interface][]{{bii}}  | [super][]          |
-| [await][]{{lrw}}      | [extension][]{{bii}}      | [is][]                | [switch][]         |
-| [base][]{{bii}}       | [extension type][]{{bii}} | [late][]{{bii}}       | [sync][]{{ckw}}    |
-| [break][]             | [external][]{{bii}}       | [library][]{{bii}}    | [this][]           |
-| [case][]              | [factory][]{{bii}}        | [mixin][]{{bii}}      | [throw][]          |
-| [catch][]             | [false][]                 | [new][]               | [true][]           |
-| [class][]             | [final (variable)][]      | [null][]              | [try][]            |
-| [const][]             | [final (class)][]{{bii}}  | [on][]{{ckw}}         | [typedef][]{{bii}} |
-| [continue][]          | [finally][]               | [operator][]{{bii}}   | [var][]            |
-| [covariant][]{{bii}}  | [for][]                   | [part][]{{bii}}       | [void][]           |
-| [default][]           | [Function][]{{bii}}       | [required][]{{bii}}   | [when][]           |
-| [deferred][]{{bii}}   | [get][]{{bii}}            | [rethrow][]           | [while][]          |
-| [do][]                | [hide][]{{ckw}}           | [return][]            | [with][]           |
-| [dynamic][]{{bii}}    | [if][]                    | [sealed][]{{bii}}     | [yield][]{{lrw}}   |
+| [abstract][]{{bii}}   | [else][]                 | [import][]{{bii}}     | [show][]{{ckw}}    |
+| [as][]{{bii}}         | [enum][]                 | [in][]                | [static][]{{bii}}  |
+| [assert][]            | [export][]{{bii}}        | [interface][]{{bii}}  | [super][]          |
+| [async][]{{ckw}}      | [extends][]              | [is][]                | [switch][]         |
+| [await][]{{lrw}}      | [extension][]{{bii}}     | [late][]{{bii}}       | [sync][]{{ckw}}    |
+| [base][]{{bii}}       | [external][]{{bii}}      | [library][]{{bii}}    | [this][]           |
+| [break][]             | [factory][]{{bii}}       | [mixin][]{{bii}}      | [throw][]          |
+| [case][]              | [false][]                | [new][]               | [true][]           |
+| [catch][]             | [final (variable)][]     | [null][]              | [try][]            |
+| [class][]             | [final (class)][]{{bii}} | [on][]{{ckw}}         | [type][]{{lrw}}    |
+| [const][]             | [finally][]              | [operator][]{{bii}}   | [typedef][]{{bii}} |
+| [continue][]          | [for][]                  | [part][]{{bii}}       | [var][]            |
+| [covariant][]{{bii}}  | [Function][]{{bii}}      | [required][]{{bii}}   | [void][]           |
+| [default][]           | [get][]{{bii}}           | [rethrow][]           | [when][]           |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}          | [return][]            | [while][]          |
+| [do][]                | [if][]                   | [sealed][]{{bii}}     | [with][]           |
+| [dynamic][]{{bii}}    | [implements][]{{bii}}    | [set][]{{bii}}        | [yield][]{{lrw}}   |
 
 {:.table .table-striped .nowrap}
 </div>
@@ -63,7 +63,6 @@ The following table lists the words that the Dart language treats specially.
 [export]: /guides/libraries/create-packages
 [extends]: /language/extend
 [extension]: /language/extension-methods
-[extension type]: /language/extension-types
 [external]: /language/functions#external
 [factory]: /language/constructors#factory-constructors
 [false]: /language/built-in-types#booleans
@@ -102,6 +101,7 @@ The following table lists the words that the Dart language treats specially.
 [throw]: /language/error-handling#throw
 [true]: /language/built-in-types#booleans
 [try]: /language/error-handling#catch
+[type]: /language/extension-types
 [typedef]: /language/typedefs
 [var]: /language/variables
 [void]: /language/built-in-types
