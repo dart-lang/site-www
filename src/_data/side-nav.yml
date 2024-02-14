@@ -84,8 +84,6 @@
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
-        - title: Extension types
-          permalink: /language/extension-types
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
