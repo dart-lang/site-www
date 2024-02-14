@@ -84,3 +84,20 @@ blockquote {
   margin: 20px;
   padding: 10px 20px 0 20px;
 }
+
+details {
+  summary {
+    font-weight: 500;
+    user-select: none;
+    margin-bottom: 0.75rem;
+
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+
+  > :not(:first-child) {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+}
