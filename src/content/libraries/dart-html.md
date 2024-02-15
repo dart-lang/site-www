@@ -37,7 +37,7 @@ import 'dart:html';
 ```
 
 [`package:web`]: {{site.pub-pkg}}/web
-[Migrate to package:web]: /interop/js-interop/package-web#migrating-from-darthtml
+[Migrate to package:web]: /interop/js-interop/package-web
 
 ### Manipulating the DOM
 

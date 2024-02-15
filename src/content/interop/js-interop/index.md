@@ -10,9 +10,9 @@ JavaScript apps and libraries, as well as browser APIs, using `dart:js_interop`.
 Web developers can benefit from using external JS libraries in their Dart code,
 without having to rewrite anything in Dart.
 
+{% comment %}
 ## Why use JS interop?
 
-{% comment %}
 TODO: Should we have a paragraph here explaining the benefits of using interop?
 {% endcomment %}
 

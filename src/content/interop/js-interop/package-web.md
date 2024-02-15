@@ -66,7 +66,7 @@ These improvements naturally result in some
 implementation differences between `package:web` and `dart:html`.
 The changes that affect existing packages the most,
 like IDL [renames](#renames) and
-[type tests](#type-checks),
+[type tests](#type-tests),
 are addressed in the migration sections that follow. While we only refer to
 `dart:html` for brevity, the same migration patterns apply to any other Dart
 core web library like `dart:svg`.

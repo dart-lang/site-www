@@ -246,6 +246,6 @@ TODO: add links (with stable) when ready:
 [`dart:js_interop` API docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
-[`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025
