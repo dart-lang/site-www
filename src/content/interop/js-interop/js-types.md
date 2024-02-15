@@ -85,9 +85,10 @@ Generally, the conversion table looks like the following:
 </div>
 
 :::warning
-There can be inconsistencies in both performance and semantics for conversions
-when compiling to JavaScript vs Wasm. Conversions may have different costs
+Compiling to JavaScript vs Wasm can introduce inconsistencies in both
+performance and semantics for conversions. Conversions may have different costs
 depending on the compiler, so prefer to only convert values if you need to.
+
 Conversions also may or may not produce a new value. This doesn’t matter for
 immutable values like numbers, but does matter for types like `List`. Depending
 on the implementation, a conversion to `JSArray` may return a reference, a
@@ -225,15 +226,18 @@ There is a subtle inconsistency with regards to `undefined` between compiling to
 JS and Wasm. While compiling to JS *treats* `undefined` values as if they were
 Dart `null`, it doesn’t actually *change* the value itself. If an interop member
 returns `undefined` and you pass that value back into JS, JS will see
-`undefined`, *not* `null`, when compiling to JS. However, when compiling to
-Wasm, this is not the case and the value will be `null` in JS. This is because
+`undefined`, *not* `null`, when compiling to JS.
+
+However, when compiling to Wasm, this is not the case,
+and the value will be `null` in JS. This is because
 the compiler implicitly *converts* the value to Dart `null` when compiling to
 Wasm, thereby losing information on whether the original value was JS `null` or
 `undefined`. Avoid writing code where this distinction matters by explicitly
-passing Dart `null` instead to an interop member. Currently, there's no
-platform-consistent way to provide `undefined` to interop members or distinguish
-between JS `null` and `undefined` values, but this will likely change in the
-future. See [#54025] for more details.
+passing Dart `null` instead to an interop member.
+
+Currently, there's no platform-consistent way to provide `undefined`
+to interop members or distinguish between JS `null` and `undefined` values,
+but this will likely change in the future. See [#54025] for more details.
 :::
 
 {% comment %}

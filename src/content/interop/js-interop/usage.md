@@ -32,7 +32,7 @@ extension type Window(JSObject _) implements JSObject {}
 ```
 
 `Window` is an interop type for an arbitrary `JSObject`. There is no [runtime
-guarantee] that `Window` is actually a JS [`Window`]. There also is no conflict
+guarantee][] that `Window` is actually a JS [`Window`]. There also is no conflict
 with any other interop interface that is defined for the same value. If you want
 to check that `Window` is actually a JS `Window`, you can
 [check the type of the JS value through interop].
