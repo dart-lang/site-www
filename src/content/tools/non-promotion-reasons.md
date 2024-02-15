@@ -348,12 +348,8 @@ f(C c) {
 ```
 
 :::note
-There is a [known bug] (as of Dart 3.2) where flow analysis doesn't
-consider `abstract` getters stable enough to allow type promotion
-(though they technically are).
-This will be fixed in a future release.
-In the meantime, replacing an abstract getter with an [abstract field][]
-will allow you to work around this bug.
+Flow analysis considers `abstract` getters stable enough to allow type promotion,
+as long as there are no conflicting declarations.
 :::
 
 [known bug]: https://github.com/dart-lang/language/issues/3328#issuecomment-1792511446
