@@ -31,11 +31,12 @@ then try the following:
   such as in the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet) or the
   [implicit animations codelab]({{site.flutter-docs}}/codelabs/implicit-animations),
   you might need to allow cookies for the embedding site domain, as well
-  (in these cases, **dart.dev** and **flutter.dev**, respectively).
+  (in these cases, **dart.dev** and **docs.flutter.dev**, respectively).
 
 * If you repeatedly reload a page that contains embedded DartPads, 
   then you might run into [GitHub rate limiting.][]
-  Within 60 minutes, you should be able to reload the page and see code in the embedded DartPads.
+  Within 60 minutes, you should be able to reload the page and 
+  see code in the embedded DartPads.
 
 Although DartPad doesn't use cookies, it does rely on local storage,
 which browsers usually disable when cookies are disabled.
@@ -54,14 +55,11 @@ Here are some possible causes and fixes:
   To see the packages that DartPad includes, 
   go to [dartpad.dev]({{site.dartpad}}) 
   and click the **i** icon at the bottom right of the window.
-  To learn more about adding package dependencies,
+  To learn more about adding package dependencies to your own project,
   see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
 
 * If Dart can't find certain methods or properties,
-  check the code included with the tests.
-  For instructional and brevity purposes, 
-  some code is not included in the primary code editing window,
-  but instead implemented separately alongside the tests.
+  check the code included provided alongside the exercise.
 
 * If the code has other compilation errors,
   make sure you're using the latest stable version of the Dart SDK.
@@ -73,21 +71,9 @@ Here are some possible causes and fixes:
 
 * If you're creating a web app,
   make sure you have the proper project setup.
-  For example, the `HTML` tab doesn't show
-  all the necessary markup to run Dart code.
+  DartPad doesn't show all the necessary markup to run Dart code.
   To get started creating web apps with Dart,
   check out [Build a web app with Dart](/web/get-started).
-
-
-## Analysis issues and compilation results don't match displayed code
-
-DartPad only compiles and analyzes code in the primary **Dart** tab.
-
-If the listed analysis issues and compilation results
-don't match the code being displayed, 
-verify you are editing the code in the **Dart** tab,
-not **Solution** or **Tests**.
-
 
 ## Previously working code now has errors
 
@@ -95,20 +81,16 @@ If the code is using language or library features no longer supported
 in the latest stable release of Dart,
 the code may no longer analyze or run without errors.
 
-* If the code worked in the previous Dart release,
-  consider switching to the **old channel**
-  with the **channel** dropdown at the bottom left of the playground.
-  If possible, update the code to work with the latest release,
-  as the **old channel** only supports the previous stable release.
-
-* If the code doesn't support [null safety][], update your code.
-  DartPad no longer supports non-nullable Dart code.
-
+* If possible, update the code to work with the latest Dart release,
+  as DartPad only supports the **stable** and **beta** channels.
+* If the code worked in an earlier Dart release,
+  you can use that version of Dart locally.
+  To learn how to install a specific version of Dart,
+  check out [Get the Dart SDK](/get-dart).
 
 ## DartPad doesn't work in China
   
 Try [dartpad.cn.](https://dartpad.cn)
-
 
 ## Other issues
 
@@ -119,4 +101,3 @@ If you have any other problems when using DartPad,
 [browser]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
-[null safety]: /null-safety

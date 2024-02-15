@@ -31,6 +31,14 @@ This page uses embedded DartPads to display examples and exercises.
 {% include 'dartpads-embedded-troubleshooting.md' %}
 :::
 
+The exercises in this codelab have partially completed code snippets.
+You can use DartPad to test your knowledge by completing the code and
+clicking the **Run** button.
+**Don't edit the test code in the `main` function or below**.
+
+If you need help, expand the **Hint** or **Solution** dropdown
+after each exercise.
+
 ## Why asynchronous code matters
 
 Asynchronous operations let your program complete work
@@ -447,7 +455,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
 // Part 1
 // Call the provided async function fetchRole()
 // to return the user role.
@@ -683,7 +691,7 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html)
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
 // TODO: Implement changeUsername here.
 changeUsername() {}
 
@@ -851,7 +859,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:file-main.dart
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
 // Part 1
 addHello(String user) {}
 
