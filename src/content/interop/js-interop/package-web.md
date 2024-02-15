@@ -66,8 +66,8 @@ and use them together with `package:web` without conflict.
 These improvements naturally result in some
 implementation differences between `package:web` and `dart:html`.
 The changes that affect existing packages the most,
-like [renaming](#renames) members to match IDL references or
-[type checking](#type-checks),
+like IDL [renames](#renames) and
+[type tests](#type-checks),
 are addressed in the migration sections that follow. While we only refer to
 `dart:html` for brevity, the same migration patterns apply to any other Dart
 core web library like `dart:svg`.
@@ -121,7 +121,7 @@ The `dart fix` covers many of the common type renames.
 If you come across a `dart:html` type without a built-in fix, let us know by
 filing an [issue][].
 You can manually discover the `package:web` type name
-by looking up the class' `@Native` annotation.
+by looking up the `dart:html` class' `@Native` annotation.
 You can do this by either:
 
 - Ctrl or cmd clicking the name in the IDE and choosing **Go to Definition**.
