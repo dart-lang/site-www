@@ -116,7 +116,7 @@ external JSArray jsTypes(JSObject _, JSString __);
 ```
 
 ```dart tag=good
-extension type InteropType(JSObject _) {}
+extension type InteropType(JSObject _) implements JSObject {}
 
 @JS()
 external InteropType get interopType;
@@ -241,7 +241,7 @@ TODO: add links (with stable) when ready:
 {% endcomment %}
 
 [`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
-[`external`]: https://dart.dev/language/keywords
+[`external`]: https://dart.dev/language/functions#external
 [`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`dart:js_interop` API docs]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html

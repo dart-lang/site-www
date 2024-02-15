@@ -175,7 +175,7 @@ Within an interop type, you can declare several different types of
     parameters, where the names of the parameters will be the property names:
 
     ```dart
-    extension type Options._(JSObject o) {
+    extension type Options._(JSObject o) implements JSObject {
       external Options({int a, int b});
       external int get a;
       external int get b;
@@ -325,7 +325,7 @@ import 'dart:js_interop';
 @JS()
 external void method();
 
-extension type JSType(JSObject _) implements JSObject {
+extension type JSType._(JSObject _) implements JSObject {
   external JSType();
 
   external static int get staticMember;
@@ -366,7 +366,7 @@ import 'dart:js_interop';
 external void method();
 
 @JS('library3.JSType')
-extension type JSType(JSObject _) implements JSObject {
+extension type JSType._(JSObject _) implements JSObject {
   external JSType();
 }
 ```
