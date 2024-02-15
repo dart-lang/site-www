@@ -83,7 +83,7 @@ the underlying type of extension type `E` is `int`,
 and that the reference to the *representation object* is named `i`.
 The declaration also introduces:
 - An implicit getter for the representation object
-  with the representation type as the return type: `E get i`.
+  with the representation type as the return type: `int get i`.
 - An implicit constructor: `E(int i) : i = i`.
 
 The representation object gives the extension type access to an object
