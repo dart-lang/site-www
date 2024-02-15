@@ -11,6 +11,7 @@
 ## Table of Contents
 
 - [Getting Started](#getting-started)
+- [Contributions](#contributions)
 - [Build the Site](#build-the-site)
 - [Validate Your Changes](#validate-your-changes)
 - [Set Up Your Local Environment](#set-up-your-local-environment-and-serve-changes)
@@ -19,9 +20,12 @@
 
 Dart is a modern, open-source programming language developed by Google. It is designed for building high-performance, scalable web, mobile, and desktop applications. Additionally, Dart offers a unique combination of productivity, performance, and flexibility, making it suitable for a wide range of development tasks.
 
+With Dart, developers can create seamless user experiences across multiple platforms, thanks to its ability to compile to efficient, native code for mobile, web, and server applications. The Dart programming language embraces modern development practices and technologies, including features like asynchronous programming, mixins, and extension methods.
+
 The documentation site for the [Dart programming language](https://dart.dev), 
 built with [Eleventy][] and hosted on [Firebase][].
 
+## Contributions
 We welcome contributions of all kinds!
 To set up the site locally, follow the
 below guidelines on [Building the site](#build-the-site).
