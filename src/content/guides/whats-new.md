@@ -17,6 +17,66 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## February 15, 2024: 3.3 release
+
+This section lists notable changes made from November 16, 2023,
+through February 15, 2024.
+For details about the 3.3 release,
+check out [3.3 blog post][] and the [SDK changelog][3-3-changelog].
+
+[3.3 blog post]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
+[3-3-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#330
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Changed the site infrastructure to [run on 11ty][] instead of Jekyll.
+* Added a page covering the new language feature [extension types][].
+* Added a new set of documentation on [JavaScript interop][]:
+  * [Usage][]
+  * [JS types][]
+  * [Tutorials][], the first of which is on [Mocks][]
+  * [Past JS interop][]
+* Updated [Concurrency][] overview, plus a new practical page on using [Isolates][]
+* Added a section about [`external`][] to the [Functions][] page.
+* Removed [Dartpad][] from many pages to accomodate the new version of Dartpad
+* Included a definition for "Function" in the [Glossary][].
+* Deconstructed the [Library tour][] into individual pages for each library.
+* Updated the [Breaking changes][] page for 3.3
+* Removed outdated [FAQ][].
+
+
+* Updated supported platform language https://github.com/dart-lang/site-www/pull/5497
+* Expanded documentation on `dart doc` https://github.com/dart-lang/site-www/pull/5494/files
+
+* Consolidated formatting pages https://github.com/dart-lang/site-www/pull/5387
+* move away from recommending html and io https://github.com/dart-lang/site-www/pull/5391/files
+* Documented ignoring diagnostics in pubspec files: https://github.com/dart-lang/site-www/pull/5504
+  * ignored_advisories? https://github.com/dart-lang/site-www/pull/5487/files
+  * security advisories? https://github.com/dart-lang/site-www/pull/5480
+* how to migrate away from a retracted version https://github.com/dart-lang/site-www/pull/5361
+
+[run on 11ty]: https://github.com/dart-lang/site-www/pull/5483
+[Extension types]: /language/extension-types
+[JavaScript interop]: /interop/js-interop
+[Usage]:
+[JS types]:
+[Tutorials]:
+[Mocks]:
+[Past JS interop]:
+[Concurrency]:
+[Isolates]:
+[`external`]:
+[Functions]:
+[Dartpad]:
+[Glossary]:
+[Library tour]: /libraries
+[Breaking changes]: 
+[FAQ]: https://github.com/dart-lang/site-www/pull/5479
+
+
 ## November 15, 2023: 3.2 release
 
 This section lists notable changes made from August 17, 2023,
