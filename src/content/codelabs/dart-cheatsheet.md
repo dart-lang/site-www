@@ -18,11 +18,7 @@ clicking the **Run** button. The editors also contain thorough test code;
 
 
 If you need help, expand the **Solution for...** dropdown beneath each DartPad
-for an explanation and the answer. 
-To run the code formatter ([`dart format`](/tools/dart-format)), 
-click **Format**.
-The **Reset** button erases your work and
-restores the editor to its original state.
+for an explanation and the answer.
 
 :::note
 This page uses embedded DartPads to display runnable examples.
