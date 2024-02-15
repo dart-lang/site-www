@@ -3,6 +3,15 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Build the Site](#build-the-site)
+- [Validate Your Changes](#validate-your-changes)
+- [Set Up Your Local Environment](#set-up-your-local-environment-and-serve-changes)
+
+
+
 The documentation site for the [Dart programming language](https://dart.dev), 
 built with [Eleventy][] and hosted on [Firebase][].
 
