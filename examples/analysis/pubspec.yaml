@@ -2,7 +2,7 @@ name: examples
 description: dart.dev example code.
 
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.3.0
 
 dependencies:
   examples_util: {path: ../util}
