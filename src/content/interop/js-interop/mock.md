@@ -2,10 +2,8 @@
 title: How to mock JavaScript interop objects
 ---
 
-{{site.why.learn}}
-  * In this tutorial, you'll learn how to mock JS objects so that you can test
-    interop instance members without having to use a real implementation.
-{{site.why.end}}
+In this tutorial, you'll learn how to mock JS objects so that you can test
+interop instance members without having to use a real implementation.
 
 ## Background and motivation
 

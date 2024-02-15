@@ -40,5 +40,5 @@ For additional documentation on JavaScript interop:
 [`package:web` and migration]: /interop/js-interop/package-web
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 [Past JS interop]: /interop/js-interop/past-js-interop
-[`dart:js_interop` API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop
-[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop_unsafe
+[`dart:js_interop` API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
