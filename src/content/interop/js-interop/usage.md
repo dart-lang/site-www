@@ -425,14 +425,6 @@ more difficult to guarantee and may lead to violations, which is why it can be
 :::
 
 {% comment %}
-TODO: Add links when ready
-
-[extension type]: /language/extension-types
-[runtime guarantee]: /language/extension-types#type-considerations
-[representation type]: /language/extension-types#declaration
-[implement]: /language/extension-types#implements
-[non-`external` members]: /language/extension-types#members
-
 TODO: Some of these are not available on stable. How do we link to dev?
 {% endcomment %}
 
@@ -458,3 +450,8 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [`importModule`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/importModule.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe
 [extensions]: /language/extension-methods
+[extension type]: /language/extension-types
+[runtime guarantee]: /language/extension-types#type-considerations
+[representation type]: /language/extension-types#declaration
+[implement]: /language/extension-types#implements
+[non-`external` members]: /language/extension-types#members

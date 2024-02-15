@@ -108,7 +108,7 @@ TODO: Link to `package:web` section
 
 [`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
 [`dart:html`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html
-[`package:web`]: /
+[`package:web`]: /interop/js-interop/package-web
 [`dart:js`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js
 [`object wrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/allowInterop.html

@@ -113,15 +113,12 @@ provide a JS interface for an arbitrary Dart object, allowing you to essentially
 *export* Dart objects to JS with a predefined interface.
 
 {% comment %}
-TODO: Add more documentation in the dartdoc for `@JSExport`.
 TODO: Should we add a section on general testing? We can't really mock
 non-instance members unless the user explicitly replaces the real API in JS.
-
-TODO: Expose this once the link works:
-[extension types]: /language/extension-types
 {% endcomment %}
 
 [Usage]: /interop/js-interop/usage
 [`createJSInteropWrapper`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/createJSInteropWrapper.html
 [`@JSExport`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_interop/JSExport-class.html
 [limitation is true for extension members]: https://github.com/dart-lang/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
+[extension types]: /language/extension-types
