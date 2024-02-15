@@ -443,9 +443,10 @@ void main() {
 ```
 
 It's important to be aware of this quality when using extension types,
-and never rely on them in scenarios where the representation type must be concealed. 
-The trade off for using an extension type over a more-secure real object (wrapper class)
-is their lightweight implementation, which can greatly improve performance in some scenarios.
+and never rely on them in scenarios where the representation type must be
+concealed. The trade off for using an extension type over a more-secure real
+object (wrapper class) is their lightweight implementation, which can greatly
+improve performance in some scenarios.
 
 [static JS interop]: /go/next-gen-js-interop
 [ext]: /language/extension-methods
