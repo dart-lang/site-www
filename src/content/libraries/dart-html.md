@@ -6,6 +6,13 @@ prevpage:
   title: dart:io
 ---
 
+:::warning
+`dart:html` is being replaced with [`package:web`][].
+Package maintainers should migrate to `package:web` as
+soon as possible to be compatible with Wasm.
+Read the [Migrate to package:web][] page for guidance.
+:::
+
 Use the [dart:html][] library to program the browser, manipulate objects and
 elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
 Model*, which describes the hierarchy of an HTML page.
@@ -28,6 +35,9 @@ To use the HTML library in your web app, import dart:html:
 ```dart
 import 'dart:html';
 ```
+
+[`package:web`]: {{site.pub-pkg}}/web
+[Migrate to package:web]: /interop/js-interop/package-web
 
 ### Manipulating the DOM
 

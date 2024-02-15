@@ -82,6 +82,8 @@
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
+        - title: Extension types
+          permalink: /language/extension-types
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
@@ -247,7 +249,21 @@
   - title: Java & Kotlin interop
     permalink: /interop/java-interop
   - title: JavaScript interop
-    permalink: /interop/js-interop
+    children:
+      - title: Overview
+        permalink: /interop/js-interop
+        match-page-url-exactly: true
+      - title: Usage
+        permalink: /interop/js-interop/usage
+      - title: JS types
+        permalink: /interop/js-interop/js-types
+      - title: Tutorials
+        permalink: /interop/js-interop/tutorials
+      - title: Past JS interop
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: Web interop
+        permalink: /interop/js-interop/package-web
 
 - title: Tools & techniques
   expanded: false

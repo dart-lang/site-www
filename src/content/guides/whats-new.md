@@ -219,7 +219,7 @@ we made the following changes:
 [source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
 [SDK archive]: /get-dart/archive
 [glossary]: /resources/glossary
-[JS static interop support]: /interop/js-interop#next-generation-js-interop-preview
+[JS static interop support]: /interop/js-interop
 [analyzer plugins]: /tools/analysis#plugins
 
 ### Articles added to the Dart blog {:.no_toc}

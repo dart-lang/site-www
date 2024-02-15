@@ -72,7 +72,7 @@ by importing a single file.
 
 The lib directory might also include other importable, non-src, libraries.
 For example, perhaps your main library works across platforms, but
-you create separate libraries that rely on `dart:io` or `dart:html`.
+you create separate libraries that rely on `dart:io` or `dart:js_interop`.
 Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
@@ -151,13 +151,13 @@ A common use case is a library that supports both web and native platforms.
 To conditionally import or export,
 you need to check for the presence of `dart:*` libraries.
 Here's an example of conditional export code that
-checks for the presence of `dart:io` and `dart:html`:
+checks for the presence of `dart:io` and `dart:js_interop`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart title="lib/hw_mp.dart"
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
-    if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
+    if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
 
 Here's what that code does:
@@ -165,9 +165,9 @@ Here's what that code does:
 * In an app that can use `dart:io`
   (for example, a command-line app),
   export `src/hw_io.dart`.
-* In an app that can use `dart:html`
+* In an app that can use `dart:js_interop`
   (a web app),
-  export `src/hw_html.dart`.
+  export `src/hw_web.dart`.
 * Otherwise, export `src/hw_none.dart`.
 
 To conditionally import a file, use the same code as above,

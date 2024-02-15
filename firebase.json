@@ -172,11 +172,11 @@
       { "source": "/go/non-promo-this", "destination": "/tools/non-promotion-reasons#this", "type": 301 },
       { "source": "/go/non-promo-write", "destination": "/tools/non-promotion-reasons#write", "type": 301 },
 
-      { "source": "/go/next-gen-js-interop", "destination": "/interop/js-interop#next-generation-js-interop-preview", "type": 301 },
+      { "source": "/go/next-gen-js-interop", "destination": "/interop/js-interop", "type": 301 },
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
       { "source": "/go/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
-      { "source": "/go/package-web", "destination": "https://pub.dev/packages/web", "type": 301 },
+      { "source": "/go/package-web", "destination": "/interop/js-interop/package-web", "type": 301 },
       { "source": "/go/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
       { "source": "/go/pubignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
       { "source": "/go/publishing-from-github", "destination": "/tools/pub/automated-publishing#publishing-packages-using-github-actions", "type": 301 },
