@@ -1,7 +1,7 @@
 ---
 title: Dart cheatsheet codelab
 description: Interactively learn (or relearn) some of Dart's unique features.
-js: [{url: 'https://old-dartpad.web.app/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 

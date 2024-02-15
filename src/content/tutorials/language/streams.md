@@ -1,7 +1,7 @@
 ---
 title: "Asynchronous programming: Streams"
 description: Learn how to consume single-subscriber and broadcast streams.
-js: [{url: 'https://old-dartpad.web.app/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 ---
 
 :::mini-toc What's the point?
