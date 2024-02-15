@@ -142,16 +142,16 @@ void main2() {
 }
 ```
 
-You can also completely hide the constructor, instead of just defining a new one,
-using the same private constructor syntax for classes, `_`. For example,
-if you only want clients constructing `E` with a `String`, even though
-the underlying type is `int`:
+  You can also completely hide the constructor, instead of just defining a new one,
+  using the same private constructor syntax for classes, `_`. For example,
+  if you only want clients constructing `E` with a `String`, even though
+  the underlying type is `int`:
 
-```dart
-extension type E._(int i) {
-  E.fromString(String foo) : i = int.parse(foo);
-}
-```
+  ```dart
+  extension type E._(int i) {
+    E.fromString(String foo) : i = int.parse(foo);
+  }
+  ```
 
 You can also declare forwarding generative constructors,
 or [factory constructors][factory]
@@ -185,67 +185,67 @@ in the extension type definition, like the `operator +` in `NumberE`.
 You also can define new members unrelated to the representation type,
 like the `i` getter and `isValid` method.
 
-### Implements
+  ### Implements
 
-You can optionally use the `implements` clause to:
-- Introduce a subtype relationship on an extension type, AND
-- Add the members of the representation object to the extension type interface.
+  You can optionally use the `implements` clause to:
+  - Introduce a subtype relationship on an extension type, AND
+  - Add the members of the representation object to the extension type interface.
 
-The `implements` clause introduces an [applicability][]
-relationship like the one between an [extension method][ext] and its `on` type.
-Members that are applicable to the supertype are applicable to the
-subtype as well, unless the subtype has a declaration with the same
-member name.
+  The `implements` clause introduces an [applicability][]
+  relationship like the one between an [extension method][ext] and its `on` type.
+  Members that are applicable to the supertype are applicable to the
+  subtype as well, unless the subtype has a declaration with the same
+  member name.
 
-An extension type can only implement:
+  An extension type can only implement:
 
-- **Its representation type**.
-  This makes all members of the representation type implicitly available
-  to the extension type.
-  
-  ```dart
-  extension type NumberI(int i) 
-    implements int{
-    // 'NumberI' can invoke all members of 'int',
-    // plus anything else it declares here.
-  }
-  ```
-  
-- **A supertype of its representation type**.
-  This makes the members of the supertype available,
-  while not necessarily all the members of representation type.
-  
-  ```dart
-  extension type Sequence<T>(List<T> _) implements Iterable<T> {
-    // Better operations than List.
-  }
-  
-  extension type Id(int _id) implements Object {
-    // Makes the extension type non-nullable.
-    static Id? tryParse(String source) => int.tryParse(source) as Id?;
-  }
-  ```
-  
-- **Another extension type** that is valid on the same representation type.
-  This allows you to reuse operations across multiple extension types
-  (similar to multiple inheritance).
-  
-  ```dart
-  extension type const Opt<T>._(({T value})? _) { 
-    const factory Opt(T value) = Val<T>;
-    const factory Opt.none() = Non<T>;
-  }
-  extension type const Val<T>._(({T value}) _) implements Opt<T> { 
-    const Val(T value) : this._((value: value));
-    T get value => _.value;
-  }
-  extension type const Non<T>._(Null _) implements Opt<Never> {
-    const Non() : this._(null);
-  }
-  ```
+  - **Its representation type**.
+    This makes all members of the representation type implicitly available
+    to the extension type.
+    
+    ```dart
+    extension type NumberI(int i) 
+      implements int{
+      // 'NumberI' can invoke all members of 'int',
+      // plus anything else it declares here.
+    }
+    ```
+    
+  - **A supertype of its representation type**.
+    This makes the members of the supertype available,
+    while not necessarily all the members of representation type.
+    
+    ```dart
+    extension type Sequence<T>(List<T> _) implements Iterable<T> {
+      // Better operations than List.
+    }
+    
+    extension type Id(int _id) implements Object {
+      // Makes the extension type non-nullable.
+      static Id? tryParse(String source) => int.tryParse(source) as Id?;
+    }
+    ```
+    
+  - **Another extension type** that is valid on the same representation type.
+    This allows you to reuse operations across multiple extension types
+    (similar to multiple inheritance).
+    
+    ```dart
+    extension type const Opt<T>._(({T value})? _) { 
+      const factory Opt(T value) = Val<T>;
+      const factory Opt.none() = Non<T>;
+    }
+    extension type const Val<T>._(({T value}) _) implements Opt<T> { 
+      const Val(T value) : this._((value: value));
+      T get value => _.value;
+    }
+    extension type const Non<T>._(Null _) implements Opt<Never> {
+      const Non() : this._(null);
+    }
+    ```
 
-Read the [Usage](#usage) section to learn more about the effect of `implements`
-in different scenarios.
+  Read the [Usage](#usage) section to learn more about the effect of `implements`
+  in different scenarios.
 
 #### `@redeclare`
 
@@ -273,128 +273,128 @@ You can also enable the lint [`annotate_redeclares`][lint]
 to get a warning if you declare an extension type method
 that hides a superinterface member and *isn't* annotated with `@redeclare`.
 
-## Usage
+  ## Usage
 
-To use an extension type, create an instance the same as you would with a class:
-by calling a constructor:
+  To use an extension type, create an instance the same as you would with a class:
+  by calling a constructor:
 
-```dart
-extension type NumberE(int value) {
-  NumberE operator +(NumberE other) =>
-      NumberE(value + other.value);
+  ```dart
+  extension type NumberE(int value) {
+    NumberE operator +(NumberE other) =>
+        NumberE(value + other.value);
 
-  NumberE get next => NumberE(value + 1);
-  bool isValid() => !value.isNegative;
-}
+    NumberE get next => NumberE(value + 1);
+    bool isValid() => !value.isNegative;
+  }
 
-void testE() { 
-  var num = NumberE(1);
-}
-```
+  void testE() { 
+    var num = NumberE(1);
+  }
+  ```
 
-Then, you can invoke members on the object as you would with a class object.
+  Then, you can invoke members on the object as you would with a class object.
 
-There are two equally valid, but substantially different core use cases
-for extension types:
+  There are two equally valid, but substantially different core use cases
+  for extension types:
 
-1. Providing an *extended* interface to an existing type.
-2. Providing a *different* interface to an existing type.
+  1. Providing an *extended* interface to an existing type.
+  2. Providing a *different* interface to an existing type.
 
-:::note
-In any case, the representation type of an extension type is never its subtype,
-so a representation type can't be used interchangeably where the extension type is needed.
-:::
+  :::note
+  In any case, the representation type of an extension type is never its subtype,
+  so a representation type can't be used interchangeably where the extension type is needed.
+  :::
 
-<a id="transparency"></a>
+  <a id="transparency"></a>
 
-### 1. Provide an *extended* interface to an existing type
+  ### 1. Provide an *extended* interface to an existing type
 
-When an extension type [implements](#implements) its representation type,
-you can consider it "transparent", because it allows the extension type
-to "see" the underlying type.
+  When an extension type [implements](#implements) its representation type,
+  you can consider it "transparent", because it allows the extension type
+  to "see" the underlying type.
 
-A transparent extension type can invoke all members of the
-representation type (that aren't [redeclared](#redeclare)),
-plus any auxillary members it defines. 
-This creates a new, *extended* interface for an existing type.
-The new interface is available to expressions
-whose static type is the extension type.
+  A transparent extension type can invoke all members of the
+  representation type (that aren't [redeclared](#redeclare)),
+  plus any auxillary members it defines. 
+  This creates a new, *extended* interface for an existing type.
+  The new interface is available to expressions
+  whose static type is the extension type.
 
-This means you *can* invoke members of the representation type
-(unlike a [non-transparent](#2-provide-a-different-interface-to-an-existing-type)
-extension type), like so:
+  This means you *can* invoke members of the representation type
+  (unlike a [non-transparent](#2-provide-a-different-interface-to-an-existing-type)
+  extension type), like so:
 
-```dart
-extension type NumberT(int value) 
-  implements int {
-  // Doesn't explicitly declare any members of 'int'.
-  NumberT get i => this;
-}
+  ```dart
+  extension type NumberT(int value) 
+    implements int {
+    // Doesn't explicitly declare any members of 'int'.
+    NumberT get i => this;
+  }
 
-void main () {
-  // All OK: Transparency allows invoking `int` members on the extension type:
-  var v1 = NumberT(1); // v1 type: NumberT
-  int v2 = NumberT(2); // v2 type: int
-  var v3 = v1.i - v1;  // v3 type: int
-  var v4 = v2 + v1; // v4 type: int
-  var v5 = 2 + v1; // v5 type: int
-  // Error: Extension type interface is not available to representation type
-  v2.i;
-}
-```
+  void main () {
+    // All OK: Transparency allows invoking `int` members on the extension type:
+    var v1 = NumberT(1); // v1 type: NumberT
+    int v2 = NumberT(2); // v2 type: int
+    var v3 = v1.i - v1;  // v3 type: int
+    var v4 = v2 + v1; // v4 type: int
+    var v5 = 2 + v1; // v5 type: int
+    // Error: Extension type interface is not available to representation type
+    v2.i;
+  }
+  ```
 
-You can also have a "mostly-transparent" extension type
-that adds new members and adapts others by redeclaring a given member name
-from the supertype.
-This would allow you to use stricter types on some parameters of a method,
-or different default values, for example.
+  You can also have a "mostly-transparent" extension type
+  that adds new members and adapts others by redeclaring a given member name
+  from the supertype.
+  This would allow you to use stricter types on some parameters of a method,
+  or different default values, for example.
 
-Another mostly-transparent extension type approach is to implement
-a type that is a supertype of the representation type.
-For example, if the representation type is private but its supertype
-defines the part of the interface that matters for clients.
+  Another mostly-transparent extension type approach is to implement
+  a type that is a supertype of the representation type.
+  For example, if the representation type is private but its supertype
+  defines the part of the interface that matters for clients.
 
-### 2. Provide a *different* interface to an existing type
+  ### 2. Provide a *different* interface to an existing type
 
-An extension type that is not [transparent](#transparency)
-(that does not [`implement`](#implements) its representation type)
-is statically treated as a completely new type,
-distinct from its representation type.
-You can't assign it to its representation type,
-and it doesn't expose its representation type's members.
+  An extension type that is not [transparent](#transparency)
+  (that does not [`implement`](#implements) its representation type)
+  is statically treated as a completely new type,
+  distinct from its representation type.
+  You can't assign it to its representation type,
+  and it doesn't expose its representation type's members.
 
-For example, take the `NumberE` extension type we declared under [Usage](#usage):
+  For example, take the `NumberE` extension type we declared under [Usage](#usage):
 
-```dart
-void testE() { 
-  var num1 = NumberE(1);
-  int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
-  
-  num.isValid(); // OK: Extension member invocation.
-  num.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
-  
-  var sum1 = num1 + num1; // OK: 'NumberE' defines '+'.
-  var diff1 = num1 - num1; // Error: 'NumberE' does not define 'int' member '-'.
-  var diff2 = num1.value - 2; // OK: Can access representation object with reference.
-  var sum2 = num1 + 2; // Error: Can't assign 'int' to parameter type 'NumberE'. 
-  
-  List<NumberE> numbers = [
-    NumberE(1), 
-    num1.next, // OK: 'i' getter returns type 'NumberE'.
-    1, // Error: Can't assign 'int' element to list type 'NumberE'.
-  ];
-}
-```
+  ```dart
+  void testE() { 
+    var num1 = NumberE(1);
+    int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
+    
+    num.isValid(); // OK: Extension member invocation.
+    num.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
+    
+    var sum1 = num1 + num1; // OK: 'NumberE' defines '+'.
+    var diff1 = num1 - num1; // Error: 'NumberE' does not define 'int' member '-'.
+    var diff2 = num1.value - 2; // OK: Can access representation object with reference.
+    var sum2 = num1 + 2; // Error: Can't assign 'int' to parameter type 'NumberE'. 
+    
+    List<NumberE> numbers = [
+      NumberE(1), 
+      num1.next, // OK: 'i' getter returns type 'NumberE'.
+      1, // Error: Can't assign 'int' element to list type 'NumberE'.
+    ];
+  }
+  ```
 
-You can use an extension type this way to *replace* the interface
-of an existing type. This allows you to model an interface that is
-makes sense for the constraints of your new type
-(like the `IdNumber` example in the introduction), while also benefitting from
-the performance and convenience of a simple pre-defined type, like `int`.
+  You can use an extension type this way to *replace* the interface
+  of an existing type. This allows you to model an interface that is
+  makes sense for the constraints of your new type
+  (like the `IdNumber` example in the introduction), while also benefitting from
+  the performance and convenience of a simple pre-defined type, like `int`.
 
-This use case is as close as you can get to the complete encapsulation
-of a wrapper class (but is realistically only a
-[*somewhat* protected](#type-considerations) abstraction).
+  This use case is as close as you can get to the complete encapsulation
+  of a wrapper class (but is realistically only a
+  [*somewhat* protected](#type-considerations) abstraction).
 
 ## Type considerations
 
