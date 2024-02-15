@@ -154,7 +154,7 @@ pre {
 }
 
 // Border and resizability for dartpad
-iframe[src^="https://dartpad"]:not(#try-dart-pad) {
+iframe[src^="https://dartpad"]:not(#try-dart-pad), iframe[src^="https://old-dartpad.web.app"] {
   border: 1px solid #ccc;
   margin-bottom: 1rem;
   min-height: 400px;

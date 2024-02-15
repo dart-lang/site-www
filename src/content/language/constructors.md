@@ -1,7 +1,7 @@
 ---
 title: Constructors
 description: Everything about using constructors in Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad.web.app/inject_embed.dart.js', defer: true}]
 prevpage:
   url: /language/classes
   title: Classes
