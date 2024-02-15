@@ -434,7 +434,7 @@ TODO: Some of these are not available on stable. How do we link to dev?
 ["JS type"]: /interop/js-interop/js-types
 [`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
 [check the type of the JS value through interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
-[`package:web`]: /
+[`package:web`]: {{site.pub-pkg}}/web
 [`external`]: /language/functions#external
 [restrictions]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [object literal]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
@@ -446,7 +446,7 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [`globalContext`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/globalContext.html
 [Helpers to inspect the type of JS values]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html
 [`dartify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
-[`jsify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/NullableObjectUtilExtension.html
+[`jsify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
 [`importModule`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/importModule.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe
 [extensions]: /language/extension-methods
