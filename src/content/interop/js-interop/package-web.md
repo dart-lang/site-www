@@ -283,8 +283,8 @@ Do we have any other package migrations to show off here?
 [Wasm]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/README.md
 [html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
-[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe`]: https://api.dart.dev/dev/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [idl]: https://www.npmjs.com/package/@webref/idl
 [interop members]: /interop/js-interop/usage#interop-members
 [interop types]: /interop/js-interop/usage#interop-types

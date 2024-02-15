@@ -240,12 +240,12 @@ future. See [#54025] for more details.
 TODO: add links (with stable) when ready:
 {% endcomment %}
 
-[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
 [`external`]: https://dart.dev/language/keywords
-[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop` API docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html#extension-types
-[`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
-[`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
+[`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`dart:js_interop` API docs]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html#extension-types
+[`typeofEquals`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
+[`instanceOfString`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
 [`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025

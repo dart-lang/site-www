@@ -106,18 +106,18 @@ TODO: add links (with stable) when ready:
 TODO: Link to `package:web` section
 {% endcomment %}
 
-[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
+[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop
 [`dart:html`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html
 [`package:web`]: /interop/js-interop/package-web
 [`dart:js`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js
 [`object wrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/allowInterop.html
 [`package:js`]: https://pub.dev/packages/js
-[`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSObject-extension-type.html
+[`JSObject`]: https://api.dart.dev/dev/dart-js_interop/JSObject-extension-type.html
 [`@JS`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L11
 [tutorial on mocking]: /interop/js-interop/mock
 [`@anonymous`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L48
 [`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util
-[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe
+[`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`dart:js_interop_unsafe`]: https://api.dart.dev/dev/dart-js_interop_unsafe
