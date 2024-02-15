@@ -1,6 +1,12 @@
 // ignore_for_file: expected_executable, missing_statement
 // ignore_for_file: unused_local_variable, unused_element
 // ignore_for_file: prefer_function_declarations_over_variables
+// #docregion not-field, getter-name
+import 'dart:math';
+// #enddocregion not-field, getter-name
+// #docregion mock
+import 'package:mockito/mockito.dart';
+// #enddocregion mock
 
 class C1 {
   int? i;
@@ -84,8 +90,6 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-null-check
-      // #enddocregion catch-null-check
       if (i == null) return;
       try {
         i = j; // (1)
@@ -93,6 +97,7 @@ void miscDeclAnalyzedButNotTested() {
         if (i == null) return; // (2)
         // ... Additional code ...
         // #docregion catch-null-check
+        // ...
       } catch (e) {
         if (i != null) {
           print(i.isEven); // (3) OK due to the null check in the line above.
@@ -106,8 +111,6 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-bang
-      // #enddocregion catch-bang
       if (i == null) return;
       try {
         i = j; // (1)
@@ -115,6 +118,7 @@ void miscDeclAnalyzedButNotTested() {
         if (i == null) return; // (2)
         // ... Additional code ...
         // #docregion catch-bang
+        // ...
       } catch (e) {
         print(i!.isEven); // (3) OK because of the `!`.
       }
@@ -242,3 +246,114 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion closure-write-capture
   }
 }
+
+// #docregion this
+extension Ext on int? {
+  int get valueOrZero {
+    final self = this;
+    return self == null ? 0 : self;
+  }
+}
+// #enddocregion this
+
+// #docregion private, unrelated, mock
+class Example {
+  final int? _i;
+  Example(this._i);
+}
+// #enddocregion unrelated, mock
+
+void test(Example x) {
+  if (x._i != null) {
+    print(x._i + 1); // OK
+  }
+}
+// #enddocregion private
+
+// #docregion final
+class A {
+  final int? _immutablePrivateField;
+  A(this._immutablePrivateField);
+
+  void f() {
+    if (_immutablePrivateField != null) {
+      int i = _immutablePrivateField; // OK
+    }
+  }
+}
+// #enddocregion final
+
+// #docregion not-field
+abstract class B {
+  int? get _i => Random().nextBool() ? 123 : null;
+}
+
+void testB(B b) {
+  final i = b._i;
+  if (i != null) {
+    print(i.isEven); // OK
+  }
+}
+// #enddocregion not-field
+
+// #docregion external
+class E {
+  external final int? _externalField;
+
+  void f() {
+    final i = _externalField;
+    if (i != null) {
+      print(i.isEven); // OK
+    }
+  }
+}
+// #enddocregion external
+
+// #docregion getter-name, field-name
+class D {
+  final int? _overridden;
+  D(this._overridden);
+}
+// #enddocregion field-name
+
+class Override implements D {
+  @override
+  int? get _overridden => Random().nextBool() ? 1 : null;
+}
+// #enddocregion getter-name
+
+// #docregion field-name
+class Override2 implements D {
+  @override
+  int? _overridden;
+}
+// #enddocregion field-name
+
+// #docregion getter-name, field-name
+void testD(D d) {
+  final i = d._overridden;
+  if (i != null) {
+    print(i.isEven); // OK
+  }
+}
+// #enddocregion getter-name, field-name
+
+// #docregion unrelated
+class Unrelated {
+  int? get _j => Random().nextBool() ? 1 : null;
+}
+// #enddocregion unrelated
+
+// #docregion mock
+class MockExample extends Mock implements Example {
+  @override
+  late final int? _i;
+}
+
+// #docregion unrelated
+void f(Example x) {
+  if (x._i != null) {
+    int i = x._i; // OK
+  }
+}
+// #enddocregion mock, unrelated
