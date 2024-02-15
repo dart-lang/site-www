@@ -23,8 +23,7 @@ other Dart SDK web libraries,
 **you should migrate to `package:web` as soon as possible**.
 `package:web` is replacing `dart:html` and other web libraries
 as Dart's web interop solution long-term.
-Read [`package:web` vs `dart:html`](#packageweb-vs-darthtml)
-for more information.
+Read the **`package:web` vs `dart:html`** section for more information.
 :::
 
 ## `package:web` vs `dart:html`
@@ -34,32 +33,32 @@ by addressing several concerns with the existing Dart web libraries:
 
 1. **Wasm compatibility**
 
-Packages can only be compatible with [Wasm][]
-if they use [`dart:js_interop`][] and [`dart:js_interop_unsafe`][].
-`package:web` is based on `dart:js_interop`,
-so by default, it's supported on `dart2wasm`.
-
-Dart core web libraries, like [`dart:html`][html] and [`dart:svg`][svg],
-are **not supported** when compiling to Wasm.
+   Packages can only be compatible with [Wasm][]
+   if they use [`dart:js_interop`][] and [`dart:js_interop_unsafe`][].
+   `package:web` is based on `dart:js_interop`,
+   so by default, it's supported on `dart2wasm`.
+   
+   Dart core web libraries, like [`dart:html`][html] and [`dart:svg`][svg],
+   are **not supported** when compiling to Wasm.
 
 2. **Staying modern**
-
-`package:web` uses the [Web IDL][idl] to automatically generate
-[interop members][js] and [interop types][js]
-for each declaration in the IDL.
-Generating references directly,
-as opposed to the additional members and abstractions in `dart:html`,
-allows `package:web` to be more concise, easier to understand, more consistent,
-and more able to stay up-to-date with the future of Web developments.
+   
+   `package:web` uses the [Web IDL][idl] to automatically generate
+   [interop members][] and [interop types][]
+   for each declaration in the IDL.
+   Generating references directly,
+   as opposed to the additional members and abstractions in `dart:html`,
+   allows `package:web` to be more concise, easier to understand, more consistent,
+   and more able to stay up-to-date with the future of Web developments.
 
 3. **Versioning**
 
-Because it's a package, `package:web` can be versioned
-more easily than a library like `dart:html` and avoid breaking user code as it
-evolves.
-It also makes the code less exclusive and more open to contributions.
-Developers can create [alternative interop declarations][] of their own
-and use them together with `package:web` without conflict.
+   Because it's a package, `package:web` can be versioned
+   more easily than a library like `dart:html` and avoid breaking user code as it
+   evolves.
+   It also makes the code less exclusive and more open to contributions.
+   Developers can create [alternative interop declarations][] of their own
+   and use them together with `package:web` without conflict.
 
 ---
 
@@ -227,7 +226,7 @@ implementation. These members may or may not exist in the `package:web`
 implementation, you may be able to copy the necessary code.
 However, if you think that's not tractable or if that code would be beneficial
 for other users as well, consider filing an issue or uploading a pull request to
-[`package:web`] to support that member.
+[`package:web`][dart-lang/web] to support that member.
 
 ### Zones
 
@@ -238,7 +237,7 @@ callbacks in the current zone.
 If this matters for your application, you can still use zones, but you will have
 to [write them yourself][zones] by binding the callback. See [#54507] for more
 details.
-There is no [conversion API] or [helper](#helpers) available yet to
+There is no conversion API or [helper](#helpers) available yet to
 automatically do this.
 
 ## Helpers
@@ -287,23 +286,21 @@ Do we have any other package migrations to show off here?
 [`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [idl]: https://www.npmjs.com/package/@webref/idl
-[js]: /interop/js-interop/usage
+[interop members]: /interop/js-interop/usage#interop-members
+[interop types]: /interop/js-interop/usage#interop-types
 [dart-lang/web]: https://github.com/dart-lang/web
 [issue]: https://github.com/dart-lang/web/issues/new
 [helpers]: https://github.com/dart-lang/web/tree/main/lib/src/helpers
 [zones]: /articles/archive/zones
 [Conversions]: /interop/js-interop/js-types#conversions
-[interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
+[interop methods]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage
 [Compatibility, type checks, and casts]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
-[pub-helpers]: {{site.pub-pkg}}/web
 [Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/compare/main...johnpryan:wasm/url-launcher
 [stream helpers]: https://github.com/dart-lang/web/blob/main/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
-[`@JS`]: /interop/js-interop/usage#js
-[`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop//JSObject-extension-type.html
-[`isA`]: https://api.dart.dev/dev/3.4.0-140.0.dev/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`JSObject`]: https://api.dart.dev/dev/dart-js_interop/JSObject-extension-type.html
+[`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: https://github.com/dart-lang/sdk/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
-[conversion API]: /
