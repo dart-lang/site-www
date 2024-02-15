@@ -14,8 +14,8 @@ devDependencies:
     specifier: 3.0.0-alpha.5
     version: 3.0.0-alpha.5
   firebase-tools:
-    specifier: ^13.2.1
-    version: 13.2.1
+    specifier: ^13.3.0
+    version: 13.3.0
   hast-util-from-html:
     specifier: ^2.0.1
     version: 2.0.1
@@ -2156,8 +2156,8 @@ packages:
       - supports-color
     dev: true
 
-  /firebase-tools@13.2.1:
-    resolution: {integrity: sha512-Dx0h9P4m0T1wWz6Yjk+VOZA/Fef1iM09gpbAxBl+2GAO3KcN3kQf8fvhlzkisCqAnVxB8U2rYRI6ZR1JwY+cqQ==}
+  /firebase-tools@13.3.0:
+    resolution: {integrity: sha512-WooMk02Wucre63XGHNOopwRp/FFCL/zjq1Jz0itZ6fDeytdTxZabhlcvnX+HMCyccPhuwbs3extIEh/T6SFWtA==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
