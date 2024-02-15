@@ -1,18 +1,30 @@
-[Install Homebrew,](https://brew.sh)
-and then run the following commands:
 
-```console
-$ brew tap dart-lang/dart
-$ brew install dart
-```
+### Install using Homebrew {:.no_toc}
 
-:::important
-Make sure the **Homebrew `bin` directory is in your `PATH`**. 
-Setting up the path correctly makes it easier to use Dart SDK commands
-such as `dart run` and `dart format`. 
-For help configuring your path, 
-consult the [Homebrew FAQ.](https://docs.brew.sh/FAQ)
-:::
+To install the Dart SDK, use [Homebrew][].
+
+1. Install Homebrew if needed.
+
+1. Add the [official tap][tap].
+
+   ```console
+   $ brew tap dart-lang/dart
+   ```
+
+1. Install the Dart SDK.
+
+   ```console
+   $ brew install dart
+   ```
+
+### Verify PATH includes Homebrew {:.no_toc}
+
+Verify that your `PATH` includes the **Homebrew `bin` directory**.
+Setting up the correct path simplifies using Dart SDK commands
+such as `dart run` and `dart format`.
+To get help configuring your `PATH`, consult the [Homebrew FAQ][].
+
+### Upgrade using Homebrew {:.no_toc}
 
 To upgrade when a new release of Dart is available:
 
@@ -20,23 +32,33 @@ To upgrade when a new release of Dart is available:
 $ brew upgrade dart
 ```
 
-To switch between locally installed Dart releases, 
-first install the version you want to switch to if you haven't.
-For example, to install Dart 2.12:
+### Switch Dart versions {:.no_toc}
 
-```console
-$ brew install dart@2.12
-```
+To switch between locally installed Dart releases:
 
-Then to switch between versions, 
-unlink the current version and link the desired version.
+1. Install the version to which you want to switch.
 
-```console
-$ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
-```
+   For example, to install Dart 3.1:
+
+   ```console
+   $ brew install dart@3.1
+   ```
+
+1. To switch between versions,
+   unlink the current version and link the desired version.
+
+   ```console
+   $ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
+   ```
+
+### List installed Dart versions {:.no_toc}
 
 To see which versions of Dart you've installed:
 
 ```console
 $ brew info dart
 ```
+
+[Homebrew]: https://brew.sh
+[tap]: {{site.repo.dart.org}}/homebrew-dart
+[Homebrew FAQ]: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-homebrew-utilities

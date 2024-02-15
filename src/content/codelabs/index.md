@@ -31,10 +31,6 @@ Discover Dart 3's new records and patterns features.
 Learn how you can use them in a Flutter app to help you
 write more readable and maintainable Dart code.
 
-### [Null safety](/codelabs/null-safety)
-
-Use DartPad to learn about Dart's null-safe type system.
-
 ## Flutter
 
 To learn about Flutter, try one of the

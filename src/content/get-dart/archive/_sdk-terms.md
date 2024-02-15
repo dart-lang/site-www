@@ -1,11 +1,11 @@
-Dart tools may send usage metrics and crash reports to Google.
-By downloading the Dart SDK, you agree to the
+Dart tools might send usage metrics and crash reports to Google.
+If you download the Dart SDK, you agree to the
 [Google Terms of Service.](https://policies.google.com/terms)
-Note: The [Google Privacy Policy](https://policies.google.com/privacy)
-describes how data is handled in this service.
+To learn how Dart handles this data,
+consult the [Google Privacy Policy](https://policies.google.com/privacy).
 
-To control the submission of metrics, use the following options on the
+To toggle data collection, use the following options on the
 [`dart` tool](/tools/dart-tool):
 
-* `--enable-analytics`: Enables anonymous analytics.
-* `--disable-analytics`: Disables anonymous analytics.
+* To enable anonymous analytics, run `dart --enable-analytics`.
+* To disable anonymous analytics, run `dart --disable-analytics`.

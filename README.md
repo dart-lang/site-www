@@ -65,7 +65,8 @@ The latest stable LTS release of Node.js is required to build the site.
 If you don't have Node.js or need to update, download your
 computer's corresponding version and follow the instructions
 from the [Node.js download archive][].
-If you prefer, you can use a version manager such as [nvm][].
+If you prefer, you can use a version manager such as [nvm][],
+and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
 and already the latest stable version _(`20` or later)_:
@@ -137,12 +138,16 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    dart pub get
    ```
 
-3. From the root directory of the repository,
-   enable [`corepack`][] to set up [`pnpm`][].
-   `corepack` comes bundled with Node and `pnpm`
-   is an alternative, efficient package manager for npm packages.
-   If you already have `pnpm` installed or installed it a different way,
-   you can skip the `corepack` commands.
+3. Install [`pnpm`][] using your preferred [installation method][pnpm-install].
+   `pnpm` is an alternative, efficient package manager for npm packages.
+   If you already have `pnpm`, verify you have the latest stable version.
+   We recommend using [`corepack`][] to install and manage `pnpm` versions,
+   since it is bundled with most installations of Node.
+   
+   If you haven't used `corepack` before, you'll need to
+   first enable it with `corepack enable`.
+   Then, to install the correct `pnpm` version, from the
+   root directory of the repository, run `corepack install`:
 
    ```terminal
    corepack enable
@@ -150,8 +155,8 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    ```
 
 4. Once you have `pnpm` installed and setup,
-   fetch the site's npm dependencies.
-   We recommend you use `pnpm`, but you can also use `npm`.
+   fetch the site's npm dependencies using `pnpm install`.
+   We highly recommend you use `pnpm`, but you can also use `npm`.
 
    ```terminal
    pnpm install
@@ -191,6 +196,7 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 [`corepack`]: https://nodejs.org/api/corepack.html
 [`pnpm`]: https://pnpm.io/
+[pnpm-install]: https://pnpm.io/installation
 
 ## Validate your changes
 
