@@ -50,5 +50,5 @@ go to [the SDK issue tracker][sdk-issues].
 [Dart libraries]: /libraries
 [flutter]: {{site.flutter-docs}}/get-started/install
 [site SDK version]: {{site.dart-api}}/{{site.sdkInfo.channel}}/{{site.sdkInfo.version}}/index.html
-[readme]: ({{site.gh-dart.sdk}}/blob/main/README.dart-sdk)
-[sdk-issues]: ({{site.gh-dart.sdk}}/issues)
+[readme]: ({{site.repo.dart.sdk}}/blob/main/README.dart-sdk)
+[sdk-issues]: ({{site.repo.dart.sdk}}/issues)

@@ -20,11 +20,12 @@ export const markdown = (() => {
       slugify: (s) => slugify(s),
       level: 2,
       tabIndex: false,
-      permalink: markdownItAnchor.permalink.ariaHidden({
-        space: true,
-        placement: 'after',
+      permalink: markdownItAnchor.permalink.linkAfterHeader({
+        style: 'aria-label',
+        assistiveText: title => `Link to '${title}' section`,
         symbol: '#',
         class: 'heading-link',
+        wrapper: ['<div class="header-wrapper">', '</div>']
       }),
     });
 

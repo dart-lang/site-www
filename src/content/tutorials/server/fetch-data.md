@@ -81,7 +81,7 @@ To learn more about their capabilities,
 consult the package documentation.
 :::
 
-[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[Cronet]: {{site.android-dev}}/develop/connectivity/cronet
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 

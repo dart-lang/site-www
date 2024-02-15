@@ -295,12 +295,30 @@ main .content {
       scroll-margin: 60px;
     }
 
+    // Let the wrapper set the bottom margin.
+    margin-bottom: 0;
+  }
+
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
+  }
+
+  .header-wrapper {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+
     .heading-link {
+      margin-left: 0.4rem;
+      font-size: 1.3rem;
+      line-height: 1;
       @include transition(.1s);
       overflow: hidden;
       color: #4a4a4a;
       opacity: 0;
-      
+
       &:hover {
         color: $brand-primary;
       }
@@ -319,11 +337,6 @@ main .content {
         opacity: 1
       }
     }
-  }
-
-  // Push # link targets clear of page header.
-  a[id] {
-    scroll-margin: 60px;
   }
 }
 
@@ -513,7 +526,12 @@ thead:has(th:empty) {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 1rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
+
+  i.material-icons {
+    font-size: 1.25em;
+    user-select: none;
+  }
 
   .alert-header {
     display: flex;
@@ -537,7 +555,11 @@ thead:has(th:empty) {
     background-color: transparent;
   }
 
-  p:last-child {
+  pre {
+    background-color: #00000010;
+  }
+
+  p:last-child, li:last-child, ul:last-child, ol:last-child {
     margin-bottom: 0;
   }
 
@@ -858,4 +880,14 @@ body.obsolete {
 
 dd {
   margin-left: 1rem;
+}
+
+/* -----------------------------------------
+  Headings in tab boxes
+ ----------------------------------------- */
+
+div.tabs__content h1, h2, h3, h4, h5, h6 {
+  &:first-child {
+    margin-top: 0;
+  }
 }
