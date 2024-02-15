@@ -2,6 +2,11 @@
 
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
+![Contributors](https://img.shields.io/github/contributors/dart-lang/site-www)
+![Forks](https://img.shields.io/github/forks/dart-lang/site-www)
+[![Join our Reddit community](https://img.shields.io/reddit/subreddit-subscribers/dartlang?label=Join%20our%20Reddit%20community&style=social)](https://www.reddit.com/r/dartlang/)
+
+
 
 ## Table of Contents
 
