@@ -191,7 +191,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.2.0
+7   sdk: ^3.3.0
 8 
 9 # Add regular dependencies here.
 10 dependencies:
@@ -199,7 +199,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 12   # path: ^1.8.0
 13 
 14 dev_dependencies:
-15   lints: ^2.1.0
+15   lints: ^3.0.0
 16   test: ^1.24.0
 ```
 
