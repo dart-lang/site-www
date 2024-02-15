@@ -134,22 +134,22 @@ as the class that it annotates.
 Similarly, if you find an API with the keyword `native` in `dart:html` that
 doesn't have an equivalent in `package:web`, check to see if there was a rename
 with the `@JSName` annotation.
-The annotation tells the compiler to use the value in the annotation instead of
-the member name, much like [`@JS`] does.
 `native` is an internal keyword that means the same as `external` in this
 context.
 
-### Type checks
+### Type tests
 
 It's common for code that uses `dart:html` to utilize runtime checks like `is`.
 When used with a `dart:html` object, `is` and `as` verify that the object is
 the JS type within the `@Native` annotation.
 In contrast, all `package:web` types are reified to [`JSObject`][]. This means a
-runtime type check will result in different behavior between `dart:html` and
+runtime type test will result in different behavior between `dart:html` and
 `package:web` types.
 
-To be able to perform type checks, migrate any `dart:html` code
-using `is` type tests to use [interop methods][] like `instanceOfString`.
+To be able to perform type tests, migrate any `dart:html` code
+using `is` type tests to use [interop methods][] like `instanceOfString`
+or the more convenient and typed [`isA`][] helper
+(available from Dart 3.4 onward).
 The [Compatibility, type checks, and casts][]
 section of the JS types page covers alternatives in detail.
 
@@ -207,10 +207,11 @@ export 'src/hw_none.dart'
 
 ### Virtual dispatch and mocking
 
-`dart:html` classes supported virtual dispatch, whereas because JS interop uses
+`dart:html` classes supported virtual dispatch, but because JS interop uses
 extension types, virtual dispatch is [not possible]. Similarly, `dynamic` calls
-with `package:web` types won't work as expected as their members are only
-available statically. Migrate all code that relies on virtual dispatch to
+with `package:web` types won't work as expected (or, they might continue to work
+just by chance, but will stop when `dart:html` is removed), as their members are
+only available statically. Migrate all code that relies on virtual dispatch to
 avoid this issue.
 
 One use case of virtual dispatch is mocking. If you have a mocking class that
@@ -301,6 +302,7 @@ Do we have any other package migrations to show off here?
 [not possible]: /language/extension-types
 [`@JS`]: /interop/js-interop/usage#js
 [`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop//JSObject-extension-type.html
+[`isA`]: https://api.dart.dev/dev/3.4.0-140.0.dev/dart-js_interop/JSAnyUtilityExtension/isA.html
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: https://github.com/dart-lang/sdk/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
