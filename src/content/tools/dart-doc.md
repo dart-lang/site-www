@@ -30,7 +30,7 @@ without errors.
 To generate the documentation for your package,
 run `dart doc .` from the package's root directory.
 For example, generating the API docs for a `my_package` package
-could look like the following:
+could resemble the following:
 
 ```console
 $ cd my_package
