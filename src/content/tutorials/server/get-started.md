@@ -1,7 +1,7 @@
 ---
 title: "Get started: Command-line and server apps"
 description: Get Dart, run and compile a small app.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials

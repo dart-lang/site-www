@@ -3,10 +3,10 @@ description: An absolute bare-bones web app.
 publish_to: none
 
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.3.0
 
 dependencies:
-  http: ^1.1.2
+  http: ^1.2.0
   intl: ^0.19.0
   path: ^1.9.0
   pub_semver: ^2.1.4
@@ -17,8 +17,8 @@ dependencies:
 dev_dependencies:
   analysis_defaults:
     path: ../../../site-shared/packages/analysis_defaults
-  build_runner: ^2.4.7
-  build_web_compilers: ^4.0.8
+  build_runner: ^2.4.8
+  build_web_compilers: ^4.0.9
   dart_style: ^2.3.4
   grinder: ^0.9.5
-  test: ^1.25.0
+  test: ^1.25.2

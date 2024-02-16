@@ -5,9 +5,9 @@ description: You have questions about Dart, we have answers.
 ---
 
 {% assign pdf = '<i style="vertical-align: text-top" class="material-symbols">picture_as_pdf</i>' %}
-{% assign site-repo = site.gh-dart.site %}
-{% assign sdk-repo = site.gh-dart.sdk %}
-{% assign lang-repo = site.gh-dart.lang %}
+{% assign site-repo = site.repo.this %}
+{% assign sdk-repo = site.repo.dart.sdk %}
+{% assign lang-repo = site.repo.dart.lang %}
 {% assign ecma-pdf = 'https://ecma-international.org/wp-content/uploads' %}
 
 This page collects some of the top questions from the community.
@@ -350,8 +350,7 @@ either of those lists results in a runtime exception.
 [package:js]: {{site.pub-pkg}}/js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
-[typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
 
-[dart-mirror]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors
+[dart-mirror]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-mirrors
 [pub-cmd]: https://dart.dev/tools/pub/cmd

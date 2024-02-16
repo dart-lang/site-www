@@ -1,11 +1,11 @@
 ---
 title: Callable objects
 description: Learn how to create and use callable objects in Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 toc: false
 prevpage:
-  url: /language/extension-methods
-  title: Extension methods
+  url: /language/extension-types
+  title: Extension types
 nextpage:
   url: /language/class-modifiers
   title: Class modifiers

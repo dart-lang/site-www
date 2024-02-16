@@ -1,7 +1,7 @@
 ---
 title: Fetch data from the internet
 description: Fetch data over the internet using the http package.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
@@ -81,7 +81,7 @@ To learn more about their capabilities,
 consult the package documentation.
 :::
 
-[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[Cronet]: {{site.android-dev}}/develop/connectivity/cronet
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 

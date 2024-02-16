@@ -5,8 +5,8 @@ prevpage:
   url: /language/enums
   title: Enums
 nextpage:
-  url: /language/callable-objects
-  title: Callable objects
+  url: /language/extension-types
+  title: Extension types
 ---
 
 Extension methods add functionality to existing libraries.

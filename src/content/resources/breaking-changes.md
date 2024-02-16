@@ -135,12 +135,6 @@ accounting for them before the 3.4.0 release.
 
 ## 3.3.0
 
-**Tentative**<br>
-The following changes are expected to be included in the 3.3.0 stable release,
-but the final list might change before then.
-To reduce any potential impact of these changes, consider
-accounting for them before the 3.3.0 release.
-
 ### SDK {:.no_toc}
 
 * **Experimental** **Removed**: The following experiments are now retired as

@@ -219,7 +219,7 @@ we made the following changes:
 [source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
 [SDK archive]: /get-dart/archive
 [glossary]: /resources/glossary
-[JS static interop support]: /interop/js-interop#next-generation-js-interop-preview
+[JS static interop support]: /interop/js-interop
 [analyzer plugins]: /tools/analysis#plugins
 
 ### Articles added to the Dart blog {:.no_toc}
@@ -693,7 +693,7 @@ we made the following changes to this site:
     links to helpful documentation and samples.
   * The [command-line tutorial][] has been completely updated.
 * Published some other new pages:
-  * [Null safety codelab][] teaches you about Dart's null-safe type system,
+  * Null safety codelab that teaches you about Dart's null-safe type system,
     which was introduced in Dart 2.12.
   * [Numbers in Dart][] has
     details about differences between native and web number implementations.
@@ -722,7 +722,6 @@ we made the following changes to this site:
 [get Dart]: /get-dart
 [HTTP server tutorial]: /tutorials/server/httpserver
 [`lints`]: {{site.pub-pkg}}/lints
-[Null safety codelab]: /codelabs/null-safety
 [Numbers in Dart]: /guides/language/numbers
 [streams tutorial]: /tutorials/language/streams
 [typedef section]: /language/typedefs

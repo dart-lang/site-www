@@ -8,6 +8,10 @@ url: https://dart.dev
 repo:
   this: https://github.com/dart-lang/site-www
   shared: https://github.com/dart-lang/site-shared
+  dart:
+    org: https://github.com/dart-lang
+    sdk: https://github.com/dart-lang/sdk
+    lang: https://github.com/dart-lang/language
 branch: main
 
 flutter: https://flutter.dev
@@ -20,12 +24,6 @@ pub-pkg: https://pub.dev/packages
 dartpad: https://dartpad.dev
 news: https://news.dartlang.org
 announce: https://groups.google.com/a/dartlang.org/g/announce
-gh: https://github.com
-gh-dart:
-  org: https://github.com/dart-lang
-  sdk: https://github.com/dart-lang/sdk
-  lang: https://github.com/dart-lang/language
-  site: https://github.com/dart-lang/site-www
 android-dev: https://developer.android.com
 apple-dev: https://developer.apple.com
 
@@ -38,4 +36,4 @@ og_image_vers: "?2"
 
 sdkInfo:
   channel: stable
-  version: 3.1.5
+  version: 3.3.0

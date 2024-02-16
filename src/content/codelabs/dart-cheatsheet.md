@@ -1,7 +1,7 @@
 ---
 title: Dart cheatsheet codelab
 description: Interactively learn (or relearn) some of Dart's unique features.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
@@ -18,11 +18,7 @@ clicking the **Run** button. The editors also contain thorough test code;
 
 
 If you need help, expand the **Solution for...** dropdown beneath each DartPad
-for an explanation and the answer. 
-To run the code formatter ([`dart format`](/tools/dart-format)), 
-click **Format**.
-The **Reset** button erases your work and
-restores the editor to its original state.
+for an explanation and the answer.
 
 :::note
 This page uses embedded DartPads to display runnable examples.
@@ -67,9 +63,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for string interpolation example</b>
-  </summary>
+  <summary>Solution for string interpolation example</summary>
 
   Both `x` and `y` are simple values,
   and Dart's string interpolation will handle
@@ -82,6 +76,7 @@ void main() {
     return '$x $y';
   }
   ```
+
 </details>
 
 
@@ -149,9 +144,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for nullable variables example</b>
-  </summary>
+  <summary>Solution for nullable variables example</summary>
 
   Declare the two variables as `String` followed by `?`.
   Then, assign `'Jane'` to `name`
@@ -161,6 +154,7 @@ void main() {
   String? name = 'Jane';
   String? address;
   ```
+
 </details>
 
 
@@ -233,9 +227,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for null-aware operators example</b>
-  </summary>
+  <summary>Solution for null-aware operators example</summary>
 
   All you need to do in this exercise is
   replace the `TODO` comments with either `??` or `??=`.
@@ -251,6 +243,7 @@ void main() {
     bar ??= 'a string';
   }
   ```
+
 </details>
 
 
@@ -324,9 +317,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for conditional property access example</b>
-  </summary>
+  <summary>Solution for conditional property access example</summary>
 
   If this exercise wanted you to conditionally lowercase a string,
   you could do it like this: `str?.toLowerCase()`. Use the equivalent
@@ -337,6 +328,7 @@ void main() {
     return str?.toUpperCase();
   }
   ```
+
 </details>
 
 ## Collection literals
@@ -455,9 +447,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for collection literals example</b>
-  </summary>
+  <summary>Solution for collection literals example</summary>
 
   Add a list, set, or map literal after each equals sign.
   Remember to specify the types for the empty declarations,
@@ -482,6 +472,7 @@ void main() {
   // Assign this an empty Map of double to int:
   final anEmptyMapOfDoublesToInts = <double, int>{};
   ```
+
 </details>
 
 ## Arrow syntax
@@ -576,9 +567,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for arrow syntax example</b>
-  </summary>
+  <summary>Solution for arrow syntax example</summary>
 
   For the product, you can use `*` to multiply the three values together.
   For `incrementValue1`, you can use the increment operator (`++`).
@@ -729,9 +718,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for cascades example</b>
-  </summary>
+  <summary>Solution for cascades example</summary>
 
   The best solution for this exercise starts with `obj..` and
   has four assignment operations chained together.
@@ -874,9 +861,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for getters and setters example</b>
-  </summary>
+  <summary>Solution for getters and setters example</summary>
+
   Two functions are handy for this exercise. 
   One is `fold`, which can reduce a list to a single value
   (use it to calculate the total).
@@ -897,6 +883,7 @@ void main() {
     _prices = value;
   }
   ```
+
 </details>
 
 
@@ -1020,9 +1007,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for positional parameters example</b>
-  </summary>
+  <summary>Solution for positional parameters example</summary>
+
   The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
   caller. The important thing, then, is to check whether those arguments are `null`
   before you add them to the final string.
@@ -1037,6 +1023,7 @@ void main() {
     return total;
   }
   ```
+
 </details>
 
 <a id="optional-named-parameters"></a>
@@ -1165,9 +1152,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for named parameters example</b>
-  </summary>
+  <summary>Solution for named parameters example</summary>
+
   The `copyWith` method shows up in a lot of classes and libraries.
   Yours should do a few things:
   use optional named parameters,
@@ -1387,9 +1373,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for exceptions example</b>
-  </summary>
+  <summary>Solution for exceptions example</summary>
+
   This exercise looks tricky, but it's really one big `try` statement.
   Call `untrustworthy` inside the `try`, and
   then use `on`, `catch`, and `finally` to catch exceptions and
@@ -1408,6 +1393,7 @@ void main() {
     }
   }
   ```
+
 </details>
 
 
@@ -1504,9 +1490,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for `this` example</b>
-  </summary>
+  <summary>Solution for `this` example</summary>
+
   This exercise has a one-line solution.
   Declare the constructor with
   `this.anInt`, `this.aString`, and `this.aDouble`
@@ -1515,6 +1500,7 @@ void main() {
   ```dart    
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
+
 </details>
 
 {% comment %}
@@ -1628,9 +1614,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for initializer lists example</b>
-  </summary>
+  <summary>Solution for initializer lists example</summary>
+
   Two assignments need to happen:
   `letterOne` should be assigned `word[0]`,
   and `letterTwo` should be assigned `word[1]`.
@@ -1726,9 +1711,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for named constructors example</b>
-  </summary>
+  <summary>Solution for named constructors example</summary>
+
   The declaration for your constructor should begin with `Color.black(): `.
   In the initializer list (after the colon), set `red`, `green`, and `blue` to `0`.
 
@@ -1738,6 +1722,7 @@ void main() {
           green = 0,
           blue = 0;
   ```
+
 </details>
 
 ## Factory constructors
@@ -1893,9 +1878,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for factory constructors example</b>
-  </summary>
+  <summary>Solution for factory constructors example</summary>
+
   Inside the factory constructor,
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
@@ -1913,6 +1897,7 @@ void main() {
       } 
     }
   ```
+
 </details>
 
 ## Redirecting constructors
@@ -1993,14 +1978,14 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for redirecting constructors example</b>
-  </summary>
+  <summary>Solution for redirecting constructors example</summary>
+
   Your constructor should redirect to `this(0, 0, 0)`.
 
   ```dart
     Color.black() : this(0, 0, 0);
   ```
+
 </details>
 
 ## Const constructors
@@ -2077,9 +2062,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for const constructors example</b>
-  </summary>
+  <summary>Solution for const constructors example</summary>
+
   To make the constructor const, you'll need to make all the properties final.
 
   ```dart
@@ -2091,6 +2075,7 @@ void main() {
     const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
   }
   ```
+
 </details>
 
 ## What's next?

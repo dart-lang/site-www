@@ -56,7 +56,7 @@ Use these packages for a wide range of projects.
 [stack_trace]: {{pubpkg}}/stack_trace
 [test]: {{pubpkg}}/test
 [yaml]: {{pubpkg}}/yaml
-[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[Cronet]: {{site.android-dev}}/develop/connectivity/cronet
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 
 ## Packages that expand on Dart core libraries {:#packages-that-correspond-to-sdk-libraries}

@@ -258,7 +258,7 @@ because it's an error to cast a list of dogs to a list of cats:
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
 ```dart tag=runtime-fail
 void main() {
-  List<Animal> animals = [Dog()];
+  List<Animal> animals = <Dog>[Dog()];
   List<Cat> cats = [!animals as List<Cat>!];
 }
 ```
