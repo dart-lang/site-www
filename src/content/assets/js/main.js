@@ -168,6 +168,10 @@ function initCookieNotice() {
 const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
 
 function setupCopyButtons() {
+  if (!navigator.clipboard) {
+    return;
+  }
+
   const codeBlocks =
       document.querySelectorAll('.code-block-body');
 
