@@ -48,7 +48,7 @@ _Released 15 February 2024_
 Dart 3.3 added some enchancements to the language:
 
 * [Extension types][] are a new feature in Dart that allow zero-cost wrapping
-  of an existing type. They are similar to wrapper classes and to extension methods,
+  of an existing type. They are similar to wrapper classes and extension methods,
   but with implementation differences and different tradeoffs.
 
   ```dart
