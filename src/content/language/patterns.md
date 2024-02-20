@@ -408,7 +408,7 @@ This case pattern simultaneously validates that:
 - `json` contains a key `user`.
 - The key `user` pairs with a list of two values.
 - The types of the list values are `String` and `int`.
-- The new local variables to hold the values are `String` and `int`. 
+- The new local variables to hold the values are `name` and `age`. 
 
 
 [language version]: /guides/language/evolution#language-versioning
