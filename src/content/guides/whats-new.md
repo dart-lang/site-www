@@ -39,19 +39,20 @@ we made the following changes to this site:
   * [JS types][]
   * [Tutorials][], the first of which is on [Mocks][]
   * [Past JS interop][]
-* Updated [Concurrency][] overview, plus a new practical page on using [Isolates][]
+* Updated [Concurrency][] overview, plus a new practical page on using [Isolates][].
 * Added a section about [`external`][] to the [Functions][] page.
-* Removed Dartpad from many pages to accomodate the new version of [Dartpad][].
+* Removed embedded DartPad from a few pages to accommodate
+  the new version of [DartPad][].
 * Included a definition for "Function" in the [Glossary][].
 * Deconstructed the [Library tour][] into individual pages for each library.
-* Updated the [Breaking changes][] page for 3.3
-* Removed outdated FAQ page.
+* Updated the [Breaking changes][] page for 3.3.
+* Updated a few outdated entries on the [FAQ](/resources/faq) page.
 * Expanded documentation on [`dart doc`][].
 * Updated and simplified [supported platforms][] content.
 * Consolidated multiples of [`dart format`][] content.
 * Moved away from recommending [`dart:html`][] and [`dart:io`][].
 * Documented [suppressing diagnostics in a pubspec file][].
-* Added content on [creating][] and [ignoring][] security advisories in the pubspec.
+* Added content on [creating][] and [ignoring][] security advisories in a pubspec file.
 * Documented [how to migrate away from a retracted package version][retract].
 
 [run on 11ty]: https://github.com/dart-lang/site-www/pull/5483
