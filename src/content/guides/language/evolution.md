@@ -65,8 +65,9 @@ Dart 3.3 added some enchancements to the language:
     assert(identical(m, m.value)); // Succeeds.
   }
   ```
-* Abstract getters are now promotable under the rules of [private final field
-  promotion][], if there are no conflicting declarations.
+
+* Abstract getters are now promotable under the rules of
+  [private final field promotion][], if there are no conflicting declarations.
 
 ### Dart 3.2
 _Released 15 November 2023_
