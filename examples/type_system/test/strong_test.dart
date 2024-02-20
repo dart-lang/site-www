@@ -32,7 +32,7 @@ void main() {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
-        List<Animal> animals = [Dog()];
+        List<Animal> animals = <Dog>[Dog()];
         List<Cat> cats = animals as List<Cat>;
       }
       // #enddocregion runtime-checks
