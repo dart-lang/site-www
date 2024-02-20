@@ -39,7 +39,7 @@ void main() {
 
   test('main-args', () {
     // #docregion main-args
-    // Run the app like this: dart args.dart 1 test
+    // Run the app like this: dart run args.dart 1 test
     void main(List<String> arguments) {
       print(arguments);
 
