@@ -69,7 +69,7 @@ we made the following changes to this site:
 [Isolates]: /language/isolates
 [`external`]: /language/functions#external
 [Functions]: /language/functions
-[Dartpad]: https://dartpad.dev/
+[DartPad]: {{site.dartpad}}
 [Glossary]: /resources/glossary#function
 [Library tour]: /libraries
 [Breaking changes]: /resources/breaking-changes#3-3-0
