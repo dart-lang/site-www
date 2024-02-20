@@ -76,6 +76,7 @@
       { "source": "/articles/zones", "destination": "/articles/archive/zones", "type": 301 },
       { "source": "/assets/dart-logo-for-shares*.png", "destination": "/assets/img/logo/dart-logo-for-shares.png", "type": 301 },
       { "source": "/assets/dart-logo-wordmark*.png", "destination": "/assets/img/logo/dart-logo-for-shares.png", "type": 301 },
+      { "source": "/assets/shared/dart/icon/64.png", "destination": "/assets/img/logo/dart-64.png", "type": 301 },
       { "source": "/books", "destination": "/resources/books", "type": 301 },
       { "source": "/bug", "destination": "https://dartbug.com", "type": 301 },
       { "source": "/bug/:rest*", "destination": "https://dartbug.com/:rest*", "type": 301 },
