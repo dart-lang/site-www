@@ -380,7 +380,7 @@ void testE() {
   
   List<NumberE> numbers = [
     NumberE(1), 
-    num1.next, // OK: 'i' getter returns type 'NumberE'.
+    num1.next, // OK: 'next' getter returns type 'NumberE'.
     1, // Error: Can't assign 'int' element to list type 'NumberE'.
   ];
 }
