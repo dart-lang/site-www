@@ -50,7 +50,9 @@ we made the following changes to this site:
 * Expanded documentation on [`dart doc`][].
 * Updated and simplified [supported platforms][] content.
 * Consolidated multiples of [`dart format`][] content.
-* Moved away from recommending [`dart:html`][] and [`dart:io`][].
+* Updated various locations to suggest [`package:web`][] instead of `dart:html`.
+* Moved away from recommending [`dart:html`][] and [`dart:io`][]
+  for making HTTP requests, in favor of `package:http`.
 * Documented [suppressing diagnostics in a pubspec file][].
 * Added content on [creating][] and [ignoring][] security advisories in a pubspec file.
 * Documented [how to migrate away from a retracted package version][retract].
@@ -75,6 +77,7 @@ we made the following changes to this site:
 [`dart doc`]: /tools/dart-doc
 [supported platforms]: /get-dart
 [`dart format`]: /tools/dart-format
+[`package:web`]: /interop/js-interop/package-web
 [`dart:html`]: /libraries/dart-html#using-http-resources-with-httprequest
 [`dart:io`]: /libraries/dart-io#http-client
 [suppressing diagnostics in a pubspec file]: /tools/analysis#suppressing-diagnostics-in-a-pubspec-file
