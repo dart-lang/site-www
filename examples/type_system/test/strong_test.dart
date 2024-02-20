@@ -37,7 +37,7 @@ void main() {
       }
       // #enddocregion runtime-checks
 
-      const msg = "type 'List<Animal>' is not a subtype of type 'List<Cat>'";
+      const msg = "type 'List<Dog>' is not a subtype of type 'List<Cat>'";
       expect(main, _throwsA<TypeError>(msg));
     });
 
