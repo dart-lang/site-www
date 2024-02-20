@@ -1,4 +1,3 @@
-// amigos.dart
 sealed class Amigo {}
 
 class Lucky extends Amigo {}
