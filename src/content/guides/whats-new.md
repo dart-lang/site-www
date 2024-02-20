@@ -34,47 +34,52 @@ we made the following changes to this site:
 
 * Changed the site infrastructure to [run on 11ty][] instead of Jekyll.
 * Added a page covering the new language feature [extension types][].
-* Added a new set of documentation on [JavaScript interop][]:
+* Added a new documentation set on [JavaScript interop][]:
   * [Usage][]
   * [JS types][]
   * [Tutorials][], the first of which is on [Mocks][]
   * [Past JS interop][]
 * Updated [Concurrency][] overview, plus a new practical page on using [Isolates][]
 * Added a section about [`external`][] to the [Functions][] page.
-* Removed [Dartpad][] from many pages to accomodate the new version of Dartpad
+* Removed Dartpad from many pages to accomodate the new version of [Dartpad][].
 * Included a definition for "Function" in the [Glossary][].
 * Deconstructed the [Library tour][] into individual pages for each library.
 * Updated the [Breaking changes][] page for 3.3
-* Removed outdated [FAQ][].
-
-
-* Updated supported platform language https://github.com/dart-lang/site-www/pull/5497
-* Expanded documentation on `dart doc` https://github.com/dart-lang/site-www/pull/5494/files
-
-* Consolidated formatting pages https://github.com/dart-lang/site-www/pull/5387
-* move away from recommending html and io https://github.com/dart-lang/site-www/pull/5391/files
-* Documented ignoring diagnostics in pubspec files: https://github.com/dart-lang/site-www/pull/5504
-  * ignored_advisories? https://github.com/dart-lang/site-www/pull/5487/files
-  * security advisories? https://github.com/dart-lang/site-www/pull/5480
-* how to migrate away from a retracted version https://github.com/dart-lang/site-www/pull/5361
+* Removed outdated FAQ page.
+* Expanded documentation on [`dart doc`][].
+* Updated and simplified [supported platforms][] content.
+* Consolidated multiples of [`dart format`][] content.
+* Moved away from recommending [`dart:html`][] and [`dart:io`][].
+* Documented [suppressing diagnostics in a pubspec file][].
+* Added content on [creating][] and [ignoring][] security advisories in the pubspec.
+* Documented [how to migrate away from a retracted package version][retract].
 
 [run on 11ty]: https://github.com/dart-lang/site-www/pull/5483
 [Extension types]: /language/extension-types
 [JavaScript interop]: /interop/js-interop
-[Usage]:
-[JS types]:
-[Tutorials]:
-[Mocks]:
-[Past JS interop]:
-[Concurrency]:
-[Isolates]:
-[`external`]:
-[Functions]:
-[Dartpad]:
-[Glossary]:
+[Usage]: /interop/js-interop/usage
+[JS types]: /interop/js-interop/js-types
+[Tutorials]: /interop/js-interop/tutorials
+[Mocks]: /interop/js-interop/mock
+[Past JS interop]: /interop/js-interop/past-js-interop
+[Concurrency]: /language/concurrency
+[Isolates]: /language/isolates
+[`external`]: /language/functions#external
+[Functions]: /language/functions
+[Dartpad]: https://dartpad.dev/
+[Glossary]: /resources/glossary#function
 [Library tour]: /libraries
-[Breaking changes]: 
+[Breaking changes]: /resources/breaking-changes#3-3-0
 [FAQ]: https://github.com/dart-lang/site-www/pull/5479
+[`dart doc`]: /tools/dart-doc
+[supported platforms]: /get-dart
+[`dart format`]: /tools/dart-format
+[`dart:html`]: /libraries/dart-html#using-http-resources-with-httprequest
+[`dart:io`]: /libraries/dart-io#http-client
+[suppressing diagnostics in a pubspec file]: /tools/analysis#suppressing-diagnostics-in-a-pubspec-file
+[ignoring]: /tools/pub/pubspec#ignored_advisories
+[creating]: /tools/pub/security-advisories
+[retract]: /tools/pub/publishing#how-to-migrate-away-from-a-retracted-package-version
 
 
 ## November 15, 2023: 3.2 release
