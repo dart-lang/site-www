@@ -33,8 +33,8 @@ The full set of modifiers that can appear before a class declaration include:
 - [`mixin`][class, mixin, or mixin class]
 
 Only the `base` modifier can appear before a mixin declaration.
-The modifiers do not apply to other declarations
-like `enum`, `typedef`, or `extension`.
+The modifiers do not apply to other declarations like
+`enum`, `typedef`, `extension`, or `extension type`.
 
 When deciding whether to use class modifiers, consider the intended uses of
 the class, and what behaviors the class needs to be able to rely on.
