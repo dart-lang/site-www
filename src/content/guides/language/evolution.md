@@ -49,7 +49,7 @@ Dart 3.3 added some enchancements to the language:
 
 * [Extension types][] are a new feature in Dart that allow zero-cost wrapping
   of existing type. They are similar to wrapper classes and to extension methods,
-  but with implementation difference and benefits over each.
+  but with implementation differences and different tradeoffs.
 
   ```dart
   extension type Meters(int value) {
