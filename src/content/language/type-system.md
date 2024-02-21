@@ -73,7 +73,7 @@ void main() {
 }
 ```
 
-[Try it in DartPad]({{site.dartpad}}/25074a51a00c71b4b000f33b688dedd0).
+[Try it in DartPad]({{site.dartpad}}/?id=25074a51a00c71b4b000f33b688dedd0).
 
 ## What is soundness?
 
