@@ -38,6 +38,8 @@ enchilada/
     getting_started.md
   example/
     main.dart
+  hook/
+    build.dart
   integration_test/
     app_test.dart
   lib/
@@ -487,6 +489,22 @@ documentation generators, or other bits of automation.
 
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
+
+## Hooks
+
+```plaintext
+enchilada/
+  hook/
+    build.dart
+```
+
+Packages can define hooks to be invoked by the Dart and Flutter SDK.
+These hooks have a predefined CLI, and will be invoked by the SDK tools if present.
+
+:::note
+Because these hooks are invoked by the SDKs on runs and builds, the dependencies
+of these hooks must be normal dependencies and not dev dependencies.
+:::
 
 ## Project-specific caching for tools
 
