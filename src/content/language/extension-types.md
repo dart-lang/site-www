@@ -442,10 +442,20 @@ void main() {
 }
 ```
 
-It's important to be aware of this quality when using extension types,
-and never rely on them in scenarios where the representation type must be concealed. 
-The trade off for using an extension type over a more-secure real object (wrapper class)
-is their lightweight implementation, which can greatly improve performance in some scenarios.
+It's important to be aware of this quality when using extension types.
+Always keep in mind that an extension type exists and matters at compile time,
+but gets erased _during_ compilation.
+
+An expression with the extension type `E` and the representation type `R`
+as its static type will be an object with type `R` at run time.
+Even the type itself is erased;
+`List<E>` is exactly the same thing as `List<R>` at run time.
+
+In other words, a real wrapper class can encapsulate a wrapped object,
+whereas an extension type is just a compile-time view on the wrapped object.
+While a real wrapper is safer, the trade-off is extension types
+give you the option to avoid wrapper objects, which can greatly
+improve performance in some scenarios.
 
 [static JS interop]: /go/next-gen-js-interop
 [ext]: /language/extension-methods
