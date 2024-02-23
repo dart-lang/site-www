@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unused_local_variable, unawaited_futures
 
 Future<void> miscDeclAnalyzedButNotTested() async {
-  // #docregion async-lookUpVersion
+  // #docregion async-look-up-version
   Future<String> lookUpVersion() async => '1.0.0';
-  // #enddocregion async-lookUpVersion
+  // #enddocregion async-look-up-version
 
   {
-    // #docregion await-lookUpVersion
+    // #docregion await-look-up-version
     await lookUpVersion();
-    // #enddocregion await-lookUpVersion
+    // #enddocregion await-look-up-version
   }
 
   {
@@ -32,9 +32,9 @@ Future<void> miscDeclAnalyzedButNotTested() async {
   }
 
   {
-    // #docregion sync-lookUpVersion
+    // #docregion sync-look-up-version
     String lookUpVersion() => '1.0.0';
-    // #enddocregion sync-lookUpVersion
+    // #enddocregion sync-look-up-version
   }
 
   {
@@ -62,7 +62,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
   {
     Stream<dynamic> requestServer = Stream.empty();
     Future<dynamic> handleRequest(_) async => Never;
-    // #docregion number_thinker
+    // #docregion number-thinker
     void main() async {
       // ...
       await for (final request in requestServer) {
@@ -70,7 +70,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       }
       // ...
     }
-    // #enddocregion number_thinker
+    // #enddocregion number-thinker
   }
 
   <varOrType>(Stream<varOrType> expression) async {

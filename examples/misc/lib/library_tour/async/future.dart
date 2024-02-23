@@ -10,25 +10,25 @@ void miscDeclAnalyzedButNotTested() {
   Future<int> flushThenExit(int exitCode) async => 0;
 
   {
-    // #docregion runUsingFuture
+    // #docregion run-using-future
     void runUsingFuture() {
       // ...
       findEntryPoint().then((entryPoint) {
         return runExecutable(entryPoint, args);
       }).then(flushThenExit);
     }
-    // #enddocregion runUsingFuture
+    // #enddocregion run-using-future
   }
 
   {
-    // #docregion runUsingAsyncAwait
+    // #docregion run-using-async-await
     Future<void> runUsingAsyncAwait() async {
       // ...
       var entryPoint = await findEntryPoint();
       var exitCode = await runExecutable(entryPoint, args);
       await flushThenExit(exitCode);
     }
-    // #enddocregion runUsingAsyncAwait
+    // #enddocregion run-using-async-await
   }
 
   {

@@ -295,7 +295,7 @@ The following code from the `dcat` app
 writes the line numbers to `stdout` (if the `-n` option is specified)
 followed by the contents of the line from the file.
 
-<?code-excerpt "cli/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
+<?code-excerpt "cli/bin/dcat.dart (show-line-numbers)" replace="/stdout\..*/[!$&!]/g"?>
 ```dart
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
@@ -489,7 +489,7 @@ The easiest way to write text to a file is to create a
 [`File`]({{ioAPI}}/File-class.html)
 object and use the `writeAsString()` method:
 
-<?code-excerpt "cli/lib/cmdline.dart (write quote)"?>
+<?code-excerpt "cli/lib/cmdline.dart (write-quote)"?>
 ```dart
 final quotes = File('quotes.txt');
 const stronger = 'That which does not kill us makes us stronger. -Nietzsche';

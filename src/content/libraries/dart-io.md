@@ -54,7 +54,7 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-as-string)" replace="/\btest_data\///g"?>
 ```dart
 void main() async {
   var config = File('config.txt');
@@ -76,7 +76,7 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it's available.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-as-bytes)" replace="/\btest_data\///g"?>
 ```dart
 void main() async {
   var config = File('config.txt');

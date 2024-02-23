@@ -34,7 +34,7 @@ for loop_ (commonly just called **await for**)
 iterates over the events of a stream like the **for loop** iterates
 over an [Iterable][]. For example:
 
-<?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
+<?code-excerpt "misc/lib/tutorial/sum_stream.dart (sum-stream)" replace="/async|await for/[!$&!]/g"?>
 ```dart
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
@@ -156,7 +156,7 @@ similar to the methods on an [Iterable.][Iterable]
 For example, you can find the last positive integer in a stream using
 `lastWhere()` from the Stream API.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (lastPositive)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (last-positive)"?>
 ```dart
 Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
@@ -308,7 +308,7 @@ There is no recovering from that.
 The following code shows how to use `handleError()` to remove errors
 from a stream before using it in an **await for** loop.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)"?>
 ```dart
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,

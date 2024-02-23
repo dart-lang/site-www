@@ -149,7 +149,7 @@ class C<T extends Iterable> {
 The following code creates a new instance of this class 
 (omitting the type argument) and accesses its `collection` member:
 
-<?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\.add\(2\)/[!$&!]/g"?>
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined-method)" replace="/c\.add\(2\)/[!$&!]/g"?>
 ```dart tag=fails-sa
 var c = C(Iterable.empty()).collection;
 [!c.add(2)!];
@@ -485,7 +485,7 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 
 #### Fix: Supply appropriate type as explicit type argument
 
-<?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
+<?code-excerpt "lib/common_fixes_analysis.dart (type-inf-fix)"?>
 ```dart tag=passes-sa
 var ints = [1, 2, 3];
 var maximumOrNull =

@@ -349,7 +349,7 @@ named starting with `to` followed by the kind of result.
 
 If you define a conversion method, it's helpful to follow that convention.
 
-<?code-excerpt "design_good.dart (to___)"?>
+<?code-excerpt "design_good.dart (to-misc)"?>
 ```dart tag=good
 list.toSet();
 stackTrace.toString();
@@ -367,7 +367,7 @@ original. Later changes to the original object are reflected in the view.
 
 The core library convention for you to follow is `as___()`.
 
-<?code-excerpt "design_good.dart (as___)"?>
+<?code-excerpt "design_good.dart (as-misc)"?>
 ```dart tag=good
 var map = table.asMap();
 var list = bytes.asFloat32List();
@@ -1473,12 +1473,12 @@ function.
 
 [Function]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
 
-<?code-excerpt "design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
+<?code-excerpt "design_good.dart (avoid-function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 ```dart tag=good
 bool isValid(String value, [!bool Function(String)!] test) => ...
 ```
 
-<?code-excerpt "design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
+<?code-excerpt "design_bad.dart (avoid-function)" replace="/Function/[!$&!]/g"?>
 ```dart tag=bad
 bool isValid(String value, [!Function!] test) => ...
 ```
@@ -1667,7 +1667,7 @@ promotion to
 ensure that the value's runtime type supports the member you want to access
 before you access it.
 
-<?code-excerpt "design_good.dart (Object-vs-dynamic)"?>
+<?code-excerpt "design_good.dart (object-vs-dynamic)"?>
 ```dart tag=good
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.

@@ -77,7 +77,7 @@ The `querySelector()` function returns the first element that matches
 the selector, while `querySelectorAll()`returns a collection of elements
 that match the selector.
 
-<?code-excerpt "html/lib/html.dart (querySelector)"?>
+<?code-excerpt "html/lib/html.dart (query-selector)"?>
 ```dart
 // Find an element by id (an-id).
 Element idElement = querySelector('#an-id')!;
@@ -226,7 +226,7 @@ querySelector('#inputs')!.nodes.add(elem);
 
 To replace a node, use the Node `replaceWith()` method:
 
-<?code-excerpt "html/lib/html.dart (replaceWith)"?>
+<?code-excerpt "html/lib/html.dart (replace-with)"?>
 ```dart
 querySelector('#status')!.replaceWith(elem);
 ```
@@ -302,7 +302,7 @@ name and <code><em>function</em></code> is the event handler.
 
 For example, here's how you can handle clicks on a button:
 
-<?code-excerpt "html/lib/html.dart (onClick)"?>
+<?code-excerpt "html/lib/html.dart (on-click)"?>
 ```dart
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo')!.onClick.listen((e) {

@@ -78,9 +78,9 @@ void main() {
       assert(identical(a, b)); // They are the same instance!
       // #enddocregion identical
 
-      // #docregion runtimeType
+      // #docregion runtime-type
       print('The type of a is ${a.runtimeType}');
-      // #enddocregion runtimeType
+      // #enddocregion runtime-type
     }
 
     expect(checkIdentical, m.prints('The type of a is ImmutablePoint'));

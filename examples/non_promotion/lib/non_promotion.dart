@@ -6,13 +6,13 @@ class C1 {
   int? i;
   void f() {
     if (i == null) return;
-    // #docregion property_bang
+    // #docregion property-bang
     print(i!.isEven);
-    // #enddocregion property_bang
+    // #enddocregion property-bang
   }
 }
 
-// #docregion property_copy
+// #docregion property-copy
 class C {
   int? i;
   void f() {
@@ -21,7 +21,7 @@ class C {
     print(i.isEven);
   }
 }
-// #enddocregion property_copy
+// #enddocregion property-copy
 
 class Link {
   final value = 0;
@@ -30,7 +30,7 @@ class Link {
 
 void miscDeclAnalyzedButNotTested() {
   {
-    // #docregion write_combine_ifs
+    // #docregion write-combine-ifs
     void f(bool b, int? i, int? j) {
       if (i == null) return;
       if (b) {
@@ -39,11 +39,11 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
-    // #enddocregion write_combine_ifs
+    // #enddocregion write-combine-ifs
   }
 
   {
-    // #docregion write_change_type
+    // #docregion write-change-type
     void f(bool b, int? i, int j) {
       if (i == null) return;
       if (b) {
@@ -53,7 +53,7 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
-    // #enddocregion write_change_type
+    // #enddocregion write-change-type
   }
 
   {
@@ -149,7 +149,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion subtype-String
+    // #docregion subtype-string
     void f(Object o) {
       if (o is Comparable /* (1) */) {
         if (o is String /* (2) */) {
@@ -157,7 +157,7 @@ void miscDeclAnalyzedButNotTested() {
         }
       }
     }
-    // #enddocregion subtype-String
+    // #enddocregion subtype-string
   }
 
   {

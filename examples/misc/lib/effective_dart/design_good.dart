@@ -88,20 +88,20 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (stackTrace) {
-    // #docregion to___
+    // #docregion to-misc
     list.toSet();
     stackTrace.toString();
     dateTime.toLocal();
-    // #enddocregion to___
+    // #enddocregion to-misc
   };
 
   () {
     dynamic table;
-    // #docregion as___
+    // #docregion as-misc
     var map = table.asMap();
     var list = bytes.asFloat32List();
     var future = subscription.asFuture();
-    // #enddocregion as___
+    // #enddocregion as-misc
   };
 
   () {
@@ -288,9 +288,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion infer-dynamic
   }
 
-  // #docregion avoid-Function
+  // #docregion avoid-function
   bool isValid(String value, bool Function(String) test) => ellipsis();
-  // #enddocregion avoid-Function
+  // #enddocregion avoid-function
 
   // #docregion function-arity
   void handleError(void Function() operation, Function errorHandler) {
@@ -309,7 +309,7 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion function-arity
 
   () {
-    // #docregion Object-vs-dynamic
+    // #docregion object-vs-dynamic
     /// Returns a Boolean representation for [arg], which must
     /// be a String or bool.
     bool convertToBool(Object arg) {
@@ -317,7 +317,7 @@ void miscDeclAnalyzedButNotTested() {
       if (arg is String) return arg.toLowerCase() == 'true';
       throw ArgumentError('Cannot convert $arg to a bool.');
     }
-    // #enddocregion Object-vs-dynamic
+    // #enddocregion object-vs-dynamic
   };
 
   // #docregion future-or
