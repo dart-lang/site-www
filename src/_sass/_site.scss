@@ -612,8 +612,10 @@ thead:has(th:empty) {
 }
 
 /* Used for inlined icon markers, usually at the start of a paragraph */
-.content > p > i.material-symbols {
-  vertical-align: bottom;
+.content > p {
+  > i.material-symbols, > span.material-symbols {
+    vertical-align: bottom;
+  }
 }
 
 // Overwrite bootstrap's breadcrumbs
