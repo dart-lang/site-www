@@ -505,9 +505,15 @@ Because these hooks are invoked by the
 `dart` and `flutter` tools on runs and builds, the dependencies
 of these hooks must be normal dependencies and not `dev_dependencies`.
 
-Hooks are currently an experimental feature.
-For more information see the
-[build.dart hook documentation](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/README.md).
+:::note
+Hook support is **experimental** and in active development.
+
+To learn more about how to define hooks and their current status,
+refer to the [`build.dart` hook documentation][].
+:::
+
+
+[`build.dart` hook documentation]: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/README.md
 
 ## Project-specific caching for tools
 
