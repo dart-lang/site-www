@@ -501,7 +501,8 @@ enchilada/
 Packages can define hooks to be invoked by the Dart and Flutter SDK.
 These hooks have a predefined CLI, and will be invoked by the SDK tools if present.
 
-Because these hooks are invoked by the SDKs on runs and builds, the dependencies
+Because these hooks are invoked by the
+`dart` and `flutter` tools on runs and builds, the dependencies
 of these hooks must be normal dependencies and not `dev_dependencies`.
 
 Hooks are currently an experimental feature.
