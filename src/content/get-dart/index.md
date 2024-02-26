@@ -1,12 +1,15 @@
 ---
 title: Get the Dart SDK
-description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
+description: >-
+  Get the libraries and command-line tools that you need to develop
+  Dart web, command-line, and server apps.
 channel-list: [Stable, Beta, Dev]
 js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
 This page describes how to download the Dart SDK.
-The Dart SDK includes the libraries and command-line tools that you need to develop Dart command-line, server, and non-Flutter web apps.
+The Dart SDK includes the libraries and command-line tools that
+you need to develop Dart command-line, server, and web apps.
 
 To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
@@ -30,20 +33,20 @@ to develop and run Dart code.
 {%- endif %}
 {% endfor %}
 
-| Platform |   x86   |   x64   |  ARM32  |   ARM64   | RISC-V   | OS Versions                       |
-|----------|---------|---------|---------|-----------|----------|-----------------------------------|
-| Windows  | {{yes}} | {{yes}} | {{no}}  | {{beta}}  | {{no}}   | [10] (32-bit, 64-bit), [11][]     |
-| Linux    | {{yes}} | {{yes}} | {{yes}} | {{yes}}   | {{beta}} | [Debian stable][], [Ubuntu LTS][] |
-| macOS    | {{no}}  | {{yes}} | {{na}}  | {{yes}}   | {{na}}   | {{macversions}}                   |
+| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                       |
+|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-----------------------------------|
+| Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10] (32-bit, 64-bit), [11][]     |
+| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][], [Ubuntu LTS][] |
+| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                   |
 
 {:.table .table-striped}
 
-{{yes}} Supported in all channels.  
-{{no}} Unsupported in all channels.  
-{{beta}} Supported in Dev, Beta channels only.  
-{{na}} No version exists.
+{{yes}} Supported on all channels.<br>
+{{no}} Unsupported on all channels.<br>
+{{beta}} Supported on the `beta`, `dev`, and `main` channels only.<br>
+{{na}} Unsupported by the operating system.<br>
 
-## Choose an install option
+## Choose an installation option
 
 To install and update the Dart SDK from the stable channel,
 choose one of the following options:
@@ -76,16 +79,24 @@ Install the Dart SDK using the package manager for your platform.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+
 {% include './_windows.md' %}
-</div>
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include './_linux.md' %}
-</div>
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include './_mac.md' %}
+
 </div>
 
-## Use release channels and version strings {:#release-channels}
+<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+
+{% include './_linux.md' %}
+
+</div>
+
+<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+
+{% include './_mac.md' %}
+
+</div>
+
+## Release channel reference {:#release-channels}
 
 {% for channel in channel-list %}
 {% assign chnl = channel | downcase -%}
@@ -94,22 +105,28 @@ Install the Dart SDK using the package manager for your platform.
 {% when 'stable' %}
 {% assign verstring = "`x.y.z`" %}
 {% assign examples = "`1.24.3` and `2.1.0`" %}
+{% assign schedule = "every three months" %}
+{% assign version-use = "building and deploying production apps" %}
 {% when 'beta' %}
 {% assign verstring = "`x.y.z-a.b.beta`" %}
 {% assign examples = "`2.8.0-20.11.beta` and `3.3.0-205.1.beta`" %}
 {% assign verdesc = "pre-release" %}
+{% assign schedule = "once a month" %}
+{% assign version-use = "testing your app's compatibility with future stable versions" %}
 {% when 'dev' %}
 {% assign verstring = "`x.y.z-a.b.dev`" %}
 {% assign examples = "`2.8.0-20.11.dev` and `3.2.12-15.33.dev`" %}
 {% assign verdesc = "development" %}
+{% assign schedule = "twice a week" %}
+{% assign version-use = "testing recent fixes and experimental features" %}
 {% endcase %}
 
 ### {{channel}} channel
 
-Dart publishes a new release to the *{{chnl}}* channel about every three months.
+Dart publishes a new release to the *{{chnl}}* channel about {{schedule}}.
 The current {{chnl}} version is {{current}}.
 
-Use **stable channel releases** for **production** environments.
+Use **{{chnl}}** channel releases for {{version-use}}.
 
 **{{channel}}** channel release version strings follow a {{verstring}} format:
 
@@ -127,7 +144,7 @@ To install a {{chnl}} channel release,
 {%- if chnl != 'stable' %}
 download the [SDK as a zip file][dl-sdk].
 {%- else %}
-follow the [instructions on this page](#install)
+follow the [instructions on this page](#install).
 {% endif %}
 
 {% endfor -%}

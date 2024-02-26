@@ -16,6 +16,7 @@
           permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await
+
 - title: Language
   expanded: false
   children:
@@ -118,22 +119,6 @@
         - title: FAQ
           permalink: /null-safety/faq
 
-- title: Effective Dart
-  expanded: false
-  permalink: /effective-dart
-  children:
-    - title: Overview
-      match-page-url-exactly: true
-      permalink: /effective-dart
-    - title: Style
-      permalink: /effective-dart/style
-    - title: Documentation
-      permalink: /effective-dart/documentation
-    - title: Usage
-      permalink: /effective-dart/usage
-    - title: Design
-      permalink: /effective-dart/design
-
 - title: Core libraries
   expanded: false
   children:
@@ -159,6 +144,22 @@
       permalink: /articles/libraries/creating-streams
     - title: Futures and error handling
       permalink: /guides/libraries/futures-error-handling
+
+- title: Effective Dart
+  expanded: false
+  permalink: /effective-dart
+  children:
+    - title: Overview
+      match-page-url-exactly: true
+      permalink: /effective-dart
+    - title: Style
+      permalink: /effective-dart/style
+    - title: Documentation
+      permalink: /effective-dart/documentation
+    - title: Usage
+      permalink: /effective-dart/usage
+    - title: Design
+      permalink: /effective-dart/design
 
 - title: Packages
   expanded: false
@@ -345,6 +346,8 @@
   - title: What not to commit
     permalink: /guides/libraries/private-files
 
+
+- divider
 - title: Resources
   expanded: false
   children:
@@ -363,6 +366,7 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: Swift to Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - divider
     - title: FAQ
       permalink: /resources/faq
     - title: Glossary
