@@ -25,39 +25,12 @@ $font-color: bootstrap.$body-color;
 $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
 
 
-// Disable template-generated external links.
-i.fa-external-link-alt {
-  a.external & {
-    display: none;
-  }
-
-  #sidenav & {
-    display: none;
-  }
-}
-
-
 /* -----------------------------------------
   DOM
   ----------------------------------------- */
 
 #page-header {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-
-  // override of shared/_header.scss
-  .site-header {
-    box-shadow: none;
-
-    .navbar {
-      .nav-link {
-        &.active {
-          &:after {
-            background-color: $site-color-card-link;
-          }
-        }
-      }
-    }
-  }
 }
 
 #page-content {
@@ -612,8 +585,10 @@ thead:has(th:empty) {
 }
 
 /* Used for inlined icon markers, usually at the start of a paragraph */
-.content > p > i.material-symbols {
-  vertical-align: bottom;
+.content > p {
+  > i.material-symbols, > span.material-symbols {
+    vertical-align: bottom;
+  }
 }
 
 // Overwrite bootstrap's breadcrumbs
@@ -867,6 +842,7 @@ body.obsolete {
   #menu-toggle {
     order: 2;
   }
+
   #mainnav {
     ul {
       li {

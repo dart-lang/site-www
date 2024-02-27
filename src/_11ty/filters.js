@@ -146,7 +146,7 @@ export function generateToc(contents) {
     } else if (header.tagName === 'h3') {
       // A level-3 header must be under a level-2 header.
       if (currentH2 === null) {
-        continue;
+        throw new Error(`The h3 header "${id}" must be under an h2.`);
       }
 
       currentH2.children.push({ text: text, id: `#${id}` });

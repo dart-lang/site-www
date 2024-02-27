@@ -61,7 +61,7 @@ dart --version
 
 #### Node.js
 
-The latest stable LTS release of Node.js is required to build the site.
+The **latest** stable LTS release of Node.js is required to build the site.
 If you don't have Node.js or need to update, download your
 computer's corresponding version and follow the instructions
 from the [Node.js download archive][].
@@ -69,7 +69,7 @@ If you prefer, you can use a version manager such as [nvm][],
 and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
-and already the latest stable version _(`20` or later)_:
+and already the latest stable version _(currently `20.10` or later)_:
 
 ```terminal
 node --version
@@ -175,8 +175,8 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
    Note the port might be different if `4000` is taken.
    
-   To instead view the source of generated site files,
-   check the `_site` directory.
+   If you want to check the raw, generated HTML output and structure,
+   view the `_site` directory in a file explorer or an IDE.
 
 7. Make your changes to the local repo.
 

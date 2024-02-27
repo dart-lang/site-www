@@ -7,25 +7,21 @@
   <div class="site-sidebar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="/overview" class="nav-link
-          {%- if page_url_path contains '/*/overview/' %} active {%- endif -%}">Overview</a>
+        <a href="/overview" class="nav-link">Overview</a>
       </li>
       <li class="nav-item">
-        <a href="/community" class="nav-link
-          {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
+        <a href="/community" class="nav-link">Community</a>
       </li>
       <li class="nav-item">
-        <a href="https://dartpad.dev" class="nav-link
-          {%- if page_url_path contains '/*/#dartpad' %} active {%- endif -%}">Try Dart</a>
+        <a href="https://dartpad.dev" class="nav-link">Try Dart</a>
       </li>
       <li class="nav-item">
-        <a href="/get-dart" class="nav-link
-          {%- if page_url_path contains '/*/get-dart' %} active {%- endif -%}">Get Dart</a>
+        <a href="/get-dart" class="nav-link">Get Dart</a>
       </li>
       <li class="nav-item">
-        <a href="/guides" class="nav-link
-          {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}">Docs</a>
+        <a href="/guides" class="nav-link">Docs</a>
       </li>
+      <li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
     </ul>
 
     {% render 'sidenav-level-1.html', url:page.url, nav:side-nav %}

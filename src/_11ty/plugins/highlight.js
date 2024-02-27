@@ -339,7 +339,7 @@ function _wrapMarkedText(spans, ranges) {
   for (const span of spans) {
     const [child, ...otherChildren] = span.children;
     if (otherChildren.length > 0 || child.type !== 'text') {
-      throw Error('Each span should have exactly one text child.');
+      throw new Error('Each span should have exactly one text child.');
     }
 
     /** The text within the current span. */

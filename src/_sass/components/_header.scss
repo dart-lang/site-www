@@ -3,7 +3,6 @@
 
 .site-header {
   background-color: $site-color-white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   font-family: $site-font-family-alt;
   position: sticky;
   top: 0;
@@ -47,7 +46,7 @@
         @include bootstrap.media-breakpoint-up(md) {
           &:after {
             $nav-active-marker-thickness: 3px;
-            background-color: $site-color-primary;
+            background-color: $site-color-card-link;
             content: '';
             display: block;
             height: $nav-active-marker-thickness;
@@ -94,6 +93,7 @@
       .navbar-nav {
         margin-bottom: bootstrap.bs-spacer(5);
         overflow-y: auto;
+        overscroll-behavior: contain;
       }
     }
 

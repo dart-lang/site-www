@@ -17,7 +17,7 @@ provides a small but critical set of built-in functionality.
 This library is automatically imported into every Dart program.
 
 
-### Printing to the console
+## Printing to the console
 
 The top-level `print()` method takes a single argument (any Object)
 and displays that object's string value (as returned by `toString()`)
@@ -33,7 +33,7 @@ For more information on basic strings and `toString()`, see
 [Strings](/language/built-in-types#strings) in the language tour.
 
 
-### Numbers
+## Numbers
 
 The dart:core library defines the num, int, and double classes, which
 have some basic utilities for working with numbers.
@@ -91,7 +91,7 @@ For more information, see the API documentation for
 [int,][int] [double,][double] and [num.][num] Also see
 the [dart:math section](/libraries/dart-math)
 
-### Strings and regular expressions
+## Strings and regular expressions
 
 A string in Dart is an immutable sequence of UTF-16 code units.
 The language tour has more information about
@@ -103,7 +103,7 @@ replace parts of strings.
 The String class defines such methods as `split()`, `contains()`,
 `startsWith()`, `endsWith()`, and more.
 
-#### Searching inside a string
+### Searching inside a string
 
 You can find particular locations within a string, as well as check
 whether a string begins with or ends with a particular pattern. For
@@ -124,7 +124,7 @@ assert('Never odd or even'.endsWith('even'));
 assert('Never odd or even'.indexOf('odd') == 6);
 ```
 
-#### Extracting data from a string
+### Extracting data from a string
 
 You can get the individual characters from a string as Strings or ints,
 respectively. To be precise, you actually get individual UTF-16 code
@@ -171,7 +171,7 @@ For this, the Dart team provides the
 [`characters` package.]({{site.pub-pkg}}/characters)
 :::
 
-#### Converting to uppercase or lowercase
+### Converting to uppercase or lowercase
 
 You can easily convert strings to their uppercase and lowercase
 variants:
@@ -191,7 +191,7 @@ alphabet's dotless *I* is converted incorrectly.
 :::
 
 
-#### Trimming and empty strings
+### Trimming and empty strings
 
 Remove all leading and trailing white space with `trim()`. To check
 whether a string is empty (length is zero), use `isEmpty`.
@@ -208,7 +208,7 @@ assert(''.isEmpty);
 assert('  '.isNotEmpty);
 ```
 
-#### Replacing part of a string
+### Replacing part of a string
 
 Strings are immutable objects, which means you can create them but you
 can't change them. If you look closely at the [String API reference,][String]
@@ -226,7 +226,7 @@ var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 assert(greeting != greetingTemplate);
 ```
 
-#### Building a string
+### Building a string
 
 To programmatically generate a string, you can use StringBuffer. A
 StringBuffer doesn't generate a new String object until `toString()` is
@@ -246,7 +246,7 @@ var fullString = sb.toString();
 assert(fullString == 'Use a StringBuffer for efficient string creation.');
 ```
 
-#### Regular expressions
+### Regular expressions
 
 The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
@@ -286,13 +286,13 @@ for (final match in numbers.allMatches(someDigits)) {
 }
 ```
 
-#### More information
+### More information
 
 Refer to the [String API reference][String] for a full list of
 methods. Also see the API reference for [StringBuffer,][StringBuffer]
 [Pattern,][Pattern] [RegExp,][RegExp] and [Match.][Match]
 
-### Collections
+## Collections
 
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
@@ -302,7 +302,7 @@ To practice using APIs that are available to both lists and sets,
 follow the [Iterable collections codelab](/codelabs/iterables).
 :::
 
-#### Lists
+### Lists
 
 As the language tour shows, you can use literals to create and
 initialize [lists](/language/collections#lists). Alternatively, use one of the List
@@ -408,7 +408,7 @@ or `<Person>[]` or something similar.
 
 Refer to the [List API reference][List] for a full list of methods.
 
-#### Sets
+### Sets
 
 A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can't get a set's items by index (position).
@@ -466,7 +466,7 @@ assert(intersection.contains('xenon'));
 
 Refer to the [Set API reference][Set] for a full list of methods.
 
-#### Maps
+### Maps
 
 A map, commonly known as a *dictionary* or *hash*, is an unordered
 collection of key-value pairs. Maps associate a key to some value for
@@ -563,7 +563,7 @@ assert(teamAssignments['Catcher'] != null);
 
 Refer to the [Map API reference][Map] for a full list of methods.
 
-#### Common collection methods
+### Common collection methods
 
 List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
@@ -664,7 +664,7 @@ For a full list of methods, refer to the [Iterable API reference,][Iterable]
 as well as those for [List,][List] [Set,][Set] and [Map.][Map]
 
 
-### URIs
+## URIs
 
 The [Uri class][Uri] provides
 functions to encode and decode strings for use in URIs (which you might
@@ -676,7 +676,7 @@ components of a URI—host, port, scheme, and so on.
 constructors: Uri.http, Uri.https, Uri.file, per floitsch's suggestion}
 {% endcomment %}
 
-#### Encoding and decoding fully qualified URIs
+### Encoding and decoding fully qualified URIs
 
 To encode and decode characters *except* those with special meaning in a
 URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
@@ -696,7 +696,7 @@ assert(uri == decoded);
 
 Notice how only the space between `some` and `message` was encoded.
 
-#### Encoding and decoding URI components
+### Encoding and decoding URI components
 
 To encode and decode all of a string's characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
@@ -717,7 +717,7 @@ assert(uri == decoded);
 Notice how every special character is encoded. For example, `/` is
 encoded to `%2F`.
 
-#### Parsing URIs
+### Parsing URIs
 
 If you have a Uri object or a URI string, you can get its parts using
 Uri fields such as `path`. To create a Uri from a string, use the
@@ -736,7 +736,7 @@ assert(uri.origin == 'https://example.org:8080');
 
 See the [Uri API reference][Uri] for more URI components that you can get.
 
-#### Building URIs
+### Building URIs
 
 You can build up a URI from individual parts using the `Uri()`
 constructor:
@@ -768,7 +768,7 @@ assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 [`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
 [`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
 
-### Dates and times
+## Dates and times
 
 A DateTime object is a point in time. The time zone is either UTC or the
 local time zone.
@@ -850,12 +850,12 @@ For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
 
 
-### Utility classes
+## Utility classes
 
 The core library contains various utility classes, useful for sorting,
 mapping values, and iterating.
 
-#### Comparing objects
+### Comparing objects
 
 Implement the [Comparable][]
 interface to indicate that an object can be compared to another object,
@@ -879,7 +879,7 @@ void main() {
 }
 ```
 
-#### Implementing map keys
+### Implementing map keys
 
 Each object in Dart automatically provides an integer hash code, and
 thus can be used as a key in a map. However, you can override the
@@ -942,7 +942,7 @@ void main() {
 }
 ```
 
-#### Iteration
+### Iteration
 
 The [Iterable][] and [Iterator][] classes
 support sequential access to a collection of values.
@@ -981,7 +981,7 @@ void main() {
 }
 ```
 
-### Exceptions
+## Exceptions
 
 The Dart core library defines many common exceptions and errors.
 Exceptions are considered conditions that you can plan ahead for and
@@ -1018,7 +1018,7 @@ For more information, see
 [Exceptions](/language/error-handling#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
-### Weak references and finalizers
+## Weak references and finalizers
 
 Dart is a [garbage-collected][] language,
 which means that any Dart object
