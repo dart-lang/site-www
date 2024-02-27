@@ -77,7 +77,7 @@ print(sqrt2); // 1.4142135623730951
 Generate random numbers with the [Random][] class. You can
 optionally provide a seed to the Random constructor.
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (random)"?>
 ```dart
 var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
@@ -86,7 +86,7 @@ random.nextInt(10); // Between 0 and 9.
 
 You can even generate random booleans:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (random-bool)"?>
 ```dart
 var random = Random();
 random.nextBool(); // true or false

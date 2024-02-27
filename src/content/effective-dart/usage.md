@@ -556,14 +556,14 @@ if (!words.isEmpty) return words.join(' ');
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
 over a sequence, the idiomatic way to do that is using a loop.
 
-<?code-excerpt "usage_good.dart (avoid-forEach)"?>
+<?code-excerpt "usage_good.dart (avoid-for-each)"?>
 ```dart tag=good
 for (final person in people) {
   ...
 }
 ```
 
-<?code-excerpt "usage_bad.dart (avoid-forEach)"?>
+<?code-excerpt "usage_bad.dart (avoid-for-each)"?>
 ```dart tag=bad
 people.forEach((person) {
   ...
@@ -658,7 +658,7 @@ the [`whereType()`][where-type] method for this exact use case:
 
 [where-type]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/whereType.html
 
-<?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (where-type)"?>
 ```dart tag=good
 var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();

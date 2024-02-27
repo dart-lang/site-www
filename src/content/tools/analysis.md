@@ -490,7 +490,7 @@ int x = '';
 
 To suppress more than one diagnostic, supply a comma-separated list:
 
-<?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore-more)"?>
 ```dart
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;

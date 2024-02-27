@@ -134,19 +134,12 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion cast-from
 
-  (Iterable<Animal> animals) {
-    // #docregion use-higher-order-func
-    var aquaticNames = animals
-        .where((animal) => animal.isAquatic)
-        .map((animal) => animal.name);
-  };
-
   (Iterable people) {
-    // #docregion avoid-forEach
+    // #docregion avoid-for-each
     for (final person in people) {
       /*...*/
     }
-    // #enddocregion avoid-forEach
+    // #enddocregion avoid-for-each
     // #docregion forEach-over-func
     people.forEach(print);
     // #enddocregion forEach-over-func

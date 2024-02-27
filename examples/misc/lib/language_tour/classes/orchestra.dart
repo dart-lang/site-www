@@ -1,4 +1,4 @@
-// #docregion Musical
+// #docregion musical
 mixin Musical {
   bool canPlayPiano = false;
   bool canCompose = false;
@@ -14,7 +14,7 @@ mixin Musical {
     }
   }
 }
-// #enddocregion Musical
+// #enddocregion musical
 
 mixin Aggressive {
   bool passive = false;
@@ -35,11 +35,11 @@ abstract class Performer {
   String? name;
 }
 
-// #docregion Musician-and-Maestro
+// #docregion musician-and-maestro
 class Musician extends Performer with Musical {
-  // #enddocregion Musician-and-Maestro
+  // #enddocregion musician-and-maestro
   Musician(super.name);
-  // #docregion Musician-and-Maestro
+  // #docregion musician-and-maestro
 }
 
 class Maestro extends Person with Musical, Aggressive, Demented {
@@ -48,7 +48,7 @@ class Maestro extends Person with Musical, Aggressive, Demented {
     canConduct = true;
   }
 }
-// #enddocregion Musician-and-Maestro
+// #enddocregion musician-and-maestro
 
 // Musician2 was a workaround for https://github.com/dart-lang/sdk/issues/35011,
 // which has been marked as fixed.

@@ -8,21 +8,19 @@ void main() async {
   await worker.parseJson('{"key":"value"}');
 }
 
-// #docregion handleResponses parseJson
 class Worker {
   late SendPort _sendPort;
   final Completer<void> _isolateReady = Completer.sync();
-// #enddocregion handleResponses parseJson
 
-// #docregion spawn
+  // #docregion spawn
   Future<void> spawn() async {
     final receivePort = ReceivePort();
     receivePort.listen(_handleResponsesFromIsolate);
     await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
   }
-// #enddocregion spawn
+  // #enddocregion spawn
 
-// #docregion handleResponses
+  // #docregion handle-responses
   void _handleResponsesFromIsolate(dynamic message) {
     if (message is SendPort) {
       _sendPort = message;
@@ -31,9 +29,9 @@ class Worker {
       print(message);
     }
   }
-// #enddocregion handleResponses
+  // #enddocregion handle-responses
 
-// #docregion startRemoteIsolate
+  // #docregion start-remote-isolate
   static void _startRemoteIsolate(SendPort port) {
     final receivePort = ReceivePort();
     port.send(receivePort.sendPort);
@@ -45,12 +43,12 @@ class Worker {
       }
     });
   }
-// #enddocregion startRemoteIsolate
+  // #enddocregion start-remote-isolate
 
-// #docregion parseJson
+  // #docregion parse-json
   Future<void> parseJson(String message) async {
     await _isolateReady.future;
     _sendPort.send(message);
   }
-// #enddocregion parseJson
+  // #enddocregion parse-json
 }

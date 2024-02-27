@@ -215,14 +215,14 @@ specified by `T`. For example, `obj is Object?` is always true.
 Use the `as` operator to cast an object to a particular type if and only if
 you are sure that the object is of that type. Example:
 
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp-as-person)"?>
 ```dart
 (employee as Person).firstName = 'Bob';
 ```
 
 If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp-is-person)"?>
 ```dart
 if (employee is Person) {
   // Type check

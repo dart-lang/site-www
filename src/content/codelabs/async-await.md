@@ -196,9 +196,11 @@ A bit later you'll learn how to handle the error.
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
 ```dart:run-dartpad:height-300px:ga_id-completing_with_error
 Future<void> fetchUserOrder() {
-// Imagine that this function is fetching user info but encounters a bug
-  return Future.delayed(const Duration(seconds: 2),
-      () => throw Exception('Logout failed: user ID is invalid'));
+  // Imagine that this function is fetching user info but encounters a bug.
+  return Future.delayed(
+    const Duration(seconds: 2),
+    () => throw Exception('Logout failed: user ID is invalid'),
+  );
 }
 
 void main() {

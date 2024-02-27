@@ -41,7 +41,7 @@ have some basic utilities for working with numbers.
 You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (int-double-parse)"?>
 ```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -71,7 +71,7 @@ of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
 number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (to-string)"?>
 ```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -176,7 +176,7 @@ For this, the Dart team provides the
 You can easily convert strings to their uppercase and lowercase
 variants:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (case-conversions)"?>
 ```dart
 // Convert to uppercase.
 assert('web apps'.toUpperCase() == 'WEB APPS');
@@ -233,7 +233,7 @@ StringBuffer doesn't generate a new String object until `toString()` is
 called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (string-buffer)"?>
 ```dart
 var sb = StringBuffer();
 sb
@@ -252,7 +252,7 @@ The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
 var numbers = RegExp(r'\d+');
@@ -309,7 +309,7 @@ initialize [lists](/language/collections#lists). Alternatively, use one of the L
 constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list)"?>
 ```dart
 // Create an empty list of strings.
 var grains = <String>[];
@@ -343,7 +343,7 @@ assert(vegetables.every((v) => v == 'broccoli'));
 
 Use `indexOf()` to find the index of an object in a list:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (index-of)"?>
 ```dart
 var fruits = ['apples', 'oranges'];
 
@@ -360,7 +360,7 @@ function that compares two objects. This sorting function must return \<
 example uses `compareTo()`, which is defined by
 [Comparable][] and implemented by String.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (compare-to)"?>
 ```dart
 var fruits = ['bananas', 'apples', 'oranges'];
 
@@ -374,7 +374,7 @@ Lists are parameterized types
 so you can specify the type that a list
 should contain:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-of-string)"?>
 ```dart
 // This list should contain only strings.
 var fruits = <String>[];
@@ -384,7 +384,7 @@ var fruit = fruits[0];
 assert(fruit is String);
 ```
 
-<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+<?code-excerpt "misc/lib/library_tour/core/collections.dart (list-of-string)"?>
 ```dart tag=fails-sa
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
@@ -413,7 +413,7 @@ Refer to the [List API reference][List] for a full list of methods.
 A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can't get a set's items by index (position).
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (set)"?>
 ```dart
 // Create an empty set of strings.
 var ingredients = <String>{};
@@ -475,7 +475,7 @@ easy retrieval. Unlike in JavaScript, Dart objects are not maps.
 You can declare a map using a terse literal syntax, or you can use a
 traditional constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (map)"?>
 ```dart
 // Maps often use strings as keys.
 var hawaiianBeaches = {
@@ -538,7 +538,7 @@ To check whether a map contains a key, use `containsKey()`. Because map
 values can be null, you cannot rely on simply getting the value for the
 key and checking for null to determine the existence of a key.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (contains-key)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -554,7 +554,7 @@ Use the `putIfAbsent()` method when you want to assign a value to a key
 if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (put-if-absent)"?>
 ```dart
 var teamAssignments = <String, String>{};
 teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
@@ -576,7 +576,7 @@ which List and Set implement.
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (is-empty)"?>
 ```dart
 var coffees = <String>[];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
@@ -587,7 +587,7 @@ assert(teas.isNotEmpty);
 To apply a function to each item in a list, set, or map, you can use
 `forEach()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-for-each)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -597,7 +597,7 @@ teas.forEach((tea) => print('I drink $tea'));
 When you invoke `forEach()` on a map, your function must take two
 arguments (the key and value):
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (map-for-each)"?>
 ```dart
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
@@ -609,7 +609,7 @@ hawaiianBeaches.forEach((k, v) {
 Iterables provide the `map()` method, which gives you all the results in
 a single object:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-map)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -625,7 +625,7 @@ function isn't called until you ask for an item from the returned object.
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (to-list)"?>
 ```dart
 var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
 ```
@@ -683,7 +683,7 @@ URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
 `decodeFull()` methods. These methods are good for encoding or decoding
 a fully qualified URI, leaving intact special URI characters.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encode-full)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -702,7 +702,7 @@ To encode and decode all of a string's characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encode-component)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -723,7 +723,7 @@ If you have a Uri object or a URI string, you can get its parts using
 Uri fields such as `path`. To create a Uri from a string, use the
 `parse()` static method:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri-parse)"?>
 ```dart
 var uri = Uri.parse('https://example.org:8080/foo/bar#frag');
 
@@ -741,7 +741,7 @@ See the [Uri API reference][Uri] for more URI components that you can get.
 You can build up a URI from individual parts using the `Uri()`
 constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri)"?>
 ```dart
 var uri = Uri(
     scheme: 'https',
@@ -756,7 +756,7 @@ If you don't need to specify a fragment,
 to create a URI with a http or https scheme,
 you can instead use the [`Uri.http`][] or [`Uri.https`][] factory constructors:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri-http)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri-http)"?>
 ```dart
 var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
 var httpsUri = Uri.https('example.org', '/foo/bar', {'lang': 'dart'});
@@ -775,7 +775,7 @@ local time zone.
 
 You can create DateTime objects using several constructors and methods:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (date-time)"?>
 ```dart
 // Get the current date and time.
 var now = DateTime.now();
@@ -807,7 +807,7 @@ Daylight Savings Time and other non-standard time adjustments.
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (milliseconds-since-epoch)"?>
 ```dart
 // 1/1/2000, UTC
 var y2k = DateTime.utc(2000);
@@ -821,7 +821,7 @@ assert(unixEpoch.millisecondsSinceEpoch == 0);
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (duration)"?>
 ```dart
 var y2k = DateTime.utc(2000);
 

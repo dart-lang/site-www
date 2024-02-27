@@ -49,7 +49,7 @@ The most general approach is to create a new stream that
 waits for events on the original stream and then
 outputs new events. Example:
 
-<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split-into-lines)"?>
 ```dart
 /// Splits a stream of consecutive strings into lines.
 ///
@@ -80,7 +80,7 @@ For example, assume you have a stream, `counterStream`,
 that emits an increasing counter every second.
 Here's how it might be implemented:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-usage)"?>
 ```dart
 var counterStream =
     Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
@@ -88,7 +88,7 @@ var counterStream =
 
 To quickly see the events, you can use code like this:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-for-each)"?>
 ```dart
 counterStream.forEach(print); // Print an integer every second, 15 times.
 ```
@@ -234,7 +234,7 @@ which are neither futures nor stream events.
 
 [stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed-stream)"?>
 ```dart tag=bad
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
@@ -260,7 +260,7 @@ As before, you can use the stream returned by `timedCounter()` like this:
 **[PENDING: Did we show this before?]**
 {% endcomment %}
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using-stream)"?>
 ```dart
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // Print an integer every second, 15 times.
@@ -291,7 +291,7 @@ if the stream never gets a subscriber.
 
 Try changing the code that uses the stream to the following:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe-problem)"?>
 ```dart
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
@@ -337,7 +337,7 @@ then the work spent creating the buffer is wasted.
 To see what happens without pause support,
 try changing the code that uses the stream to the following:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause-problem)"?>
 ```dart
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
@@ -368,7 +368,7 @@ on the `StreamController`.
 
 [stream_controller.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better-stream)"?>
 ```dart
 Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   late StreamController<int> controller;

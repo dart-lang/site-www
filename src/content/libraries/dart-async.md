@@ -57,7 +57,7 @@ Consider the following function.  It uses Future's `then()` method
 to execute three asynchronous functions in a row,
 waiting for each one to complete before executing the next one.
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (run-using-future)"?>
 ```dart
 void runUsingFuture() {
   // ...
@@ -70,7 +70,7 @@ void runUsingFuture() {
 The equivalent code with await expressions
 looks more like synchronous code:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (run-using-async-await)"?>
 ```dart
 Future<void> runUsingAsyncAwait() async {
   // ...
@@ -121,7 +121,7 @@ httpClient.read(url).then((String result) {
 Use `catchError()` to handle any errors or exceptions that a Future
 object might throw.
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
+<?code-excerpt "misc/lib/library_tour/async/basic.dart (catch-error)"?>
 ```dart
 httpClient.read(url).then((String result) {
   print(result);
@@ -409,7 +409,7 @@ then use try-catch to handle errors.
 Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (read-file-await-for)" replace="/try|catch/[!$&!]/g"?>
 ```dart
 Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
@@ -433,7 +433,7 @@ then handle errors by registering an `onError` listener.
 Run code after the stream is closed by registering
 an `onDone` listener.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (on-done)" replace="/onDone|onError/[!$&!]/g"?>
 ```dart
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();

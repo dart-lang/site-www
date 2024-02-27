@@ -331,7 +331,7 @@ the different type definitions.
 Instead of implementing the operation as an instance method for every type,
 keep the operation's variations in a single function that switches over the subtypes:
 
-<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic-datatypes)"?>
 ```dart
 sealed class Shape {}
 
