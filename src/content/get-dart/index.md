@@ -21,7 +21,6 @@ to develop and run Dart code.
 {% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported">verified</span>' %}
 {% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported">dangerous</span>' %}
 {% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated">error</span>' %}
-{% assign beta = '<span class="material-symbols system-support" style="color: #11796d" aria-label="Supported on the beta and dev channels">gpp_maybe</span>' %}
 {% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Platform combination does not exist">do_not_disturb_on</span>' %}
 {% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
@@ -45,7 +44,6 @@ to develop and run Dart code.
 {{yes}} Supported on all channels.<br>
 {{dep}} Support is deprecated and might be dropped in a future Dart release.<br>
 {{no}} Unsupported on all channels.<br>
-{{beta}} Supported on the `beta`, `dev`, and `main` channels only.<br>
 {{na}} Unsupported by the operating system.<br>
 
 ## Choose an installation option
