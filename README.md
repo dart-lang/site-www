@@ -162,37 +162,44 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    pnpm install
    ```
 
-5. From the root directory, serve the site locally.
+5. From the root directory, run the `dash_site` tool to
+   validate your setup and learn about the available commands.
 
    ```terminal
-   dart run dart_site serve
+   ./dash_site --help
+   ```
+
+6. From the root directory, serve the site locally.
+
+   ```terminal
+   ./dash_site serve
    ```
 
    This command generates and serves the site on a
    local port that's printed to your terminal.
 
-6. View your changes in the browser by navigating to <http://localhost:4000>.
+7. View your changes in the browser by navigating to <http://localhost:4000>.
 
    Note the port might be different if `4000` is taken.
    
    If you want to check the raw, generated HTML output and structure,
    view the `_site` directory in a file explorer or an IDE.
 
-7. Make your changes to the local repo.
+8. Make your changes to the local repo.
 
    The site should automatically rebuild on most changes, but if
    something doesn't update, exit the process and rerun the command.
    Improvements to this functionality are planned.
    Please open a new issue to track the issue if this occurs.
 
-8. Commit your changes to the branch and submit your PR.
+9. Commit your changes to the branch and submit your PR.
 
    If your change is large, or you'd like to test it,
    consider [validating your changes](#validate-your-changes).
 
 > [!TIP]
 > To find additional commands that you can run,
-> run `dart run dart_site --help` from the repository's root directory.
+> run `./dash_site --help` from the repository's root directory.
 
 [`corepack`]: https://nodejs.org/api/corepack.html
 [`pnpm`]: https://pnpm.io/
@@ -207,7 +214,7 @@ commit your work, then run the following command to
 verify it is up to date and matches the site standards.
 
 ```terminal
-dart run dart_site check-all
+./dash_site check-all
 ```
 
 If this script reports any errors or warnings,
@@ -247,7 +254,7 @@ you can build a full version and upload it to Firebase.
 2. From the root directory of the repository, build the site:
 
    ```terminal
-   dart run dart_site build
+   ./dash_site build
    ```
 
    This will build the site and copy it to your local `_site` directory.
