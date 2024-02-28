@@ -18,10 +18,11 @@ To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 Dart supports the following hardware architectures and platform versions
 to develop and run Dart code.
 
-{% assign yes = '<span class="material-symbols" style="color: #158477;">verified</span>' %}
-{% assign no = '<span class="material-symbols" style="color: #D43324">dangerous</span>' %}
-{% assign beta = '<span class="material-symbols" style="color: #13C2AD">gpp_maybe</span>' %}
-{% assign na = '<span class="material-symbols" style="color: #DADCE0">do_not_disturb_on</span>' %}
+{% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported">verified</span>' %}
+{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported">dangerous</span>' %}
+{% assign dep = '<span class="material-symbols system-support" style="color: #E64A19" aria-label="Deprecated">warning</span>' %}
+{% assign beta = '<span class="material-symbols system-support" style="color: #11796d" aria-label="Supported on the beta and dev channels">gpp_maybe</span>' %}
+{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Platform combination does not exist">do_not_disturb_on</span>' %}
 {% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
 {%- if version.eol == false -%}
@@ -35,8 +36,8 @@ to develop and run Dart code.
 
 | Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                       |
 |----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-----------------------------------|
-| Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10] (32-bit, 64-bit), [11][]     |
-| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][], [Ubuntu LTS][] |
+| Windows  |  {{dep}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                      |
+| Linux    |  {{dep}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][], [Ubuntu LTS][] |
 | macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                   |
 
 {:.table .table-striped}
