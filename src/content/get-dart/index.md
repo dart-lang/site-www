@@ -43,6 +43,7 @@ to develop and run Dart code.
 {:.table .table-striped}
 
 {{yes}} Supported on all channels.<br>
+{{dep}} Support is deprecated and might be dropped in a future Dart release.<br>
 {{no}} Unsupported on all channels.<br>
 {{beta}} Supported on the `beta`, `dev`, and `main` channels only.<br>
 {{na}} Unsupported by the operating system.<br>
