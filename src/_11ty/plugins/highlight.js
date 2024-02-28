@@ -1,5 +1,4 @@
-import { getHighlighter } from 'shikiji';
-import { toHtml } from 'hast-util-to-html';
+import { getHighlighter } from 'shiki';
 import dashLightTheme from '../syntax/dash-light.js';
 
 /**
@@ -11,7 +10,7 @@ import dashLightTheme from '../syntax/dash-light.js';
  * - Wraps the code block in a custom structure for title formatting,
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
- *   using the shikiji package that uses TextMate grammars
+ *   using the shiki package that uses TextMate grammars
  *   and Code -OSS themes.
  *
  * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance to
@@ -53,7 +52,6 @@ export async function configureHighlighting(markdown) {
     return _highlight(
       markdown,
       highlighter,
-      toHtml,
       token.content,
       language,
       attributes,
@@ -67,10 +65,8 @@ export async function configureHighlighting(markdown) {
  * passed in {@link attributeString}.
  *
  * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance.
- * @param {import('shikiji').Highlighter} highlighter The shikiji highlighter
+ * @param {import('shiki').Highlighter} highlighter The shiki highlighter
  *   configured with the correct theme(s) and languages.
- * @param {import('hast-util-to-html').toHtml} toHtml The utility function
- *   to convert the hast tree to an HTML string.
  * @param {string} content The content to syntax highlight.
  * @param {string} language The language of the content.
  * @param {string} attributeString The string containing configuration.
@@ -80,7 +76,6 @@ export async function configureHighlighting(markdown) {
 function _highlight(
   markdown,
   highlighter,
-  toHtml,
   content,
   language,
   attributeString,
