@@ -18,10 +18,10 @@ To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 Dart supports the following hardware architectures and platform versions
 to develop and run Dart code.
 
-{% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported">verified</span>' %}
-{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported">dangerous</span>' %}
-{% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated">error</span>' %}
-{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Platform combination does not exist">do_not_disturb_on</span>' %}
+{% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported" title="Supported">verified</span>' %}
+{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported" title="Not supported">dangerous</span>' %}
+{% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
+{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
 {% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
 {%- if version.eol == false -%}
