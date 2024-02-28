@@ -25,7 +25,7 @@ env:
 
 jobs:
   test:
-    name: Check excerpts and run tests
+    name: Analyze and test code examples
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
