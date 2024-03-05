@@ -1728,7 +1728,7 @@ void main() {
 ## Factory constructors
 
 Dart supports factory constructors,
-which can return subtypes or even null.
+which can return instances of a class or even subtypes.
 To create a factory constructor, use the `factory` keyword:
 
 <?code-excerpt "misc/lib/cheatsheet/factory_constructors.dart"?>
