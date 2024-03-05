@@ -244,7 +244,7 @@ void main() async {
 
 This results in the following JSON-formatted output,
 which can also be seen in your browser at
-[{{site.url}}/f/packages/http.json][mock-http-json].
+[`/f/packages/http.json`][mock-http-json].
 
 ```json
 {
