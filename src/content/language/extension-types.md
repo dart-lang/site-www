@@ -446,8 +446,9 @@ It's important to be aware of this quality when using extension types.
 Always keep in mind that an extension type exists and matters at compile time,
 but gets erased _during_ compilation.
 
-An expression with the extension type `E` and the representation type `R`
-as its static type will be an object with type `R` at run time.
+For example, consider an expression `e` whose static type is the
+extension type `E`, and the representation type of `E` is `R`.
+Then, the run-time type of the value of `e` is a subtype of `R`.
 Even the type itself is erased;
 `List<E>` is exactly the same thing as `List<R>` at run time.
 
