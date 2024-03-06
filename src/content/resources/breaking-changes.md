@@ -83,7 +83,7 @@ accounting for them before the 3.4.0 release.
 #### `dart:cli`
 
 * **Experimental** **Removed**: [The `waitFor` function][52121]
-  is set to be removed.
+  has been removed.
 
 [52121]: https://github.com/dart-lang/sdk/issues/52121
 

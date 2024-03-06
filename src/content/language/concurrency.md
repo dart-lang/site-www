@@ -280,7 +280,7 @@ complete. A well-behaved app starts quickly, getting to the event loop as soon
 as possible. The app then responds to each queued event promptly, using
 asynchronous operations as necessary.
 
-[async-await]: {{site.url}}/codelabs/async-await
+[async-await]: /codelabs/async-await
 
 ### The isolate life cycle
 
