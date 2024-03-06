@@ -115,7 +115,7 @@ void main() {
   test('record-multiple-returns', () {
     // #docregion record-multiple-returns
     // Returns multiple values in a record:
-    (String, int) userInfo(Map<String, dynamic> json) {
+    (String name, int age) userInfo(Map<String, dynamic> json) {
       return (json['name'] as String, json['age'] as int);
     }
 
@@ -125,7 +125,7 @@ void main() {
       'color': 'blue',
     };
 
-    // Destructures using a record pattern:
+    // Destructures using a record pattern with positional fields:
     var (name, age) = userInfo(json);
 
     /* Equivalent to:
@@ -134,6 +134,27 @@ void main() {
       var age  = info.$2;
     */
     // #enddocregion record-multiple-returns
+    name;
+    age;
+  });
+
+  test('record-name-destructure', () {
+    // #docregion record-name-destructure
+    ({String name, int age}) userInfo(Map<String, dynamic> json)
+    // #enddocregion record-name-destructure
+    {
+      return (name: json['name'] as String, age: json['age'] as int);
+    }
+
+    final json = <String, dynamic>{
+      'name': 'Dash',
+      'age': 10,
+      'color': 'blue',
+    };
+    // #docregion record-name-destructure
+    // Destructures using a record pattern with named fields:
+    final (:name, :age) = userInfo(json);
+    // #enddocregion record-name-destructure
     name;
     age;
   });

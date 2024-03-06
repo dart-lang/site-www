@@ -176,12 +176,12 @@ of their fields.
 
 Records allow functions to return multiple values bundled together.
 To retrieve record values from a return,
-destructure the values into local variables using [pattern matching][pattern].
+[destructure][] the values into local variables using [pattern matching][pattern].
 
 <?code-excerpt "language/test/records_test.dart (record-multiple-returns)"?>
 ```dart
 // Returns multiple values in a record:
-(String, int) userInfo(Map<String, dynamic> json) {
+(String name, int age) userInfo(Map<String, dynamic> json) {
   return (json['name'] as String, json['age'] as int);
 }
 
@@ -191,7 +191,7 @@ final json = <String, dynamic>{
   'color': 'blue',
 };
 
-// Destructures using a record pattern:
+// Destructures using a record pattern with positional fields:
 var (name, age) = userInfo(json);
 
 /* Equivalent to:
@@ -199,6 +199,18 @@ var (name, age) = userInfo(json);
   var name = info.$1;
   var age  = info.$2;
 */
+```
+
+You can also destructure a record using its [named fields](#record-fields),
+using the colon `:` syntax, which you can read more about on the
+[Pattern types][] page:
+
+<?code-excerpt "language/test/records_test.dart (record-name-destructure)"?>
+```dart
+({String name, int age}) userInfo(Map<String, dynamic> json)
+// ···
+// Destructures using a record pattern with named fields:
+final (:name, :age) = userInfo(json);
 ```
 
 You can return multiple values from a function without records,
@@ -217,3 +229,5 @@ parallelization of futures of different types, which you can read about in the
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
 [parameters and arguments]: /language/functions#parameters
+[destructure]: /language/patterns#destructuring
+[Pattern types]: /language/pattern-types#record
