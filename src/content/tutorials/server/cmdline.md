@@ -15,7 +15,7 @@ prevpage:
 
 <?code-excerpt replace="/ ?\/\/!tip.*//g"?>
 
-:::mini-toc What's the point?
+:::secondary What's the point?
 * Command-line applications need to do input and output.
 * The `dart:io` library provides I/O functionality.
 * The args package helps define and parse command-line arguments.
