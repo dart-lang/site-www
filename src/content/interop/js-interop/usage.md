@@ -189,7 +189,7 @@ Within an interop type, you can declare several different types of
 
     :::warning
     Before Dart 3.3.1, object literal constructors required a
-    [`@JS`](#js) annotation on the library.
+    [`@JS`](#js) annotation on the library to compile.
     To learn more, check out [`dart-lang/sdk#54801`][54801].
     :::
 
