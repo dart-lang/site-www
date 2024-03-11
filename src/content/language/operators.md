@@ -19,25 +19,25 @@ and [operator precedence](#operator-precedence-example) from highest to lowest,
 which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members][].
 
-| Description                             | Operator                                                                                                                                                                                          | Associativity |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| unary postfix                           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!`                                                                                       | None          |
-| unary prefix                            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None          |
-| multiplicative                          | `*`    `/`    `%`    `~/`                                                                                                                                                                         | Left          |
-| additive                                | `+`    `-`                                                                                                                                                                                        | Left          |
-| shift                                   | `<<`    `>>`    `>>>`                                                                                                                                                                             | Left          |
-| bitwise AND                             | `&`                                                                                                                                                                                               | Left          |
-| bitwise XOR                             | `^`                                                                                                                                                                                               | Left          |
-| bitwise OR                              | <code>&#124;</code>             | Left          |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                                                                                                               | None          |
-| equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
-| logical AND                             | `&&`                                                                                                                                                                                              | Left          |
-| logical OR                              | <code>&#124;&#124;</code>                                                                                                                                                                                             | Left          |
-| if-null                                 | `??`                                                                                                                                                                                              | Left          |
-| conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
-| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Left          |
-| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
-| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                                                             | Left         |
+| Description                             | Operator                                                                                           | Associativity |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------|---------------|
+| unary postfix                           | *`expr`*`++`    *`expr`*`--`    `()`    `[]`    `?[]`    `.`    `?.`    `!`                        | None          |
+| unary prefix                            | `-`*`expr`*    `!`*`expr`*    `~`*`expr`*    `++`*`expr`*    `--`*`expr`*      `await` *`expr`*    | None          |
+| multiplicative                          | `*`    `/`    `%`    `~/`                                                                          | Left          |
+| additive                                | `+`    `-`                                                                                         | Left          |
+| shift                                   | `<<`    `>>`    `>>>`                                                                              | Left          |
+| bitwise AND                             | `&`                                                                                                | Left          |
+| bitwise XOR                             | `^`                                                                                                | Left          |
+| bitwise OR                              | <code>&#124;</code>                                                                                | Left          |
+| relational and type test                | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                | None          |
+| equality                                | `==`    `!=`                                                                                       | None          |
+| logical AND                             | `&&`                                                                                               | Left          |
+| logical OR                              | <code>&#124;&#124;</code>                                                                          | Left          |
+| if null                                 | `??`                                                                                               | Left          |
+| conditional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
+| cascade                                 | `..`    `?..`                                                                                      | Left          |
+| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
+| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                    | Left          |
 
 {:.table .table-striped}
 
@@ -92,15 +92,15 @@ a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 
 Dart supports the usual arithmetic operators, as shown in the following table.
 
-| Operator                    | Meaning                                                                  |
-|-----------------------------|--------------------------------------------------------------------------|
-| `+`                         | Add                                                                      |
-| `-`                         | Subtract                                                                 |
-| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression) |
-| `*`                         | Multiply                                                                 |
-| `/`                         | Divide                                                                   |
-| `~/`                        | Divide, returning an integer result                                      |
-| `%`                         | Get the remainder of an integer division (modulo)                        |
+| Operator    | Meaning                                                                  |
+|-------------|--------------------------------------------------------------------------|
+| `+`         | Add                                                                      |
+| `-`         | Subtract                                                                 |
+| `-`*`expr`* | Unary minus, also known as negation (reverse the sign of the expression) |
+| `*`         | Multiply                                                                 |
+| `/`         | Divide                                                                   |
+| `~/`        | Divide, returning an integer result                                      |
+| `%`         | Get the remainder of an integer division (modulo)                        |
 
 {:.table .table-striped}
 
@@ -121,12 +121,12 @@ assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 Dart also supports both prefix and postfix increment and decrement
 operators.
 
-| Operator                    | Meaning                                                                                          |
-|-----------------------------|--------------------------------------------------------------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>) |
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)     |
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>) |
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)     |
+| Operator                    | Meaning                                            |
+|-----------------------------|----------------------------------------------------|
+| `++`*`var`* | *`var`*  `=`  *`var `*  `+ 1` (expression value is *`var`* ` + 1`) |
+| *`var`*`++` | *`var`*  `=`  *`var `*  `+ 1` (expression value is *`var`*)        |
+| `--`*`var`* | *`var`*  `=`  *`var `*  `- 1` (expression value is *`var`* ` - 1`) |
+| *`var`*`--` | *`var`*  `=`  *`var `*  `- 1` (expression value is *`var`*)       |
 
 {:.table .table-striped}
 
@@ -263,10 +263,10 @@ an operation with an assignment.
 
 Here's how compound assignment operators work:
 
-|                                  | Compound assignment           | Equivalent expression            |
-|----------------------------------|-------------------------------|----------------------------------|
-| **For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code> |
-| **Example:**                     | `a += b`                      | `a = a + b`                      |
+|                           | Compound assignment | Equivalent expression |
+|---------------------------|---------------------|-----------------------|
+| **For an operator *op*:** | `a `  *`op`*`= b`   | `a = a ` *`op `* `b`  |
+| **Example:**              | `a += b`            | `a = a + b`           |
 
 {:.table}
 
@@ -286,11 +286,11 @@ assert(a == 6);
 You can invert or combine boolean expressions using the logical
 operators.
 
-| Operator                    | Meaning                                                                  |
-|-----------------------------|--------------------------------------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa) |
-| <code>&#124;&#124;</code>   | logical OR                                                               |
-| `&&`                        | logical AND                                                              |
+| Operator                   | Meaning                                                                  |
+|----------------------------|--------------------------------------------------------------------------|
+| `!`*`expr`*                | inverts the following expression (changes false to true, and vice versa) |
+| <code>&#124;&#124;</code>  | logical OR                                                               |
+| `&&`                       | logical AND                                                              |
 
 {:.table .table-striped}
 
@@ -309,15 +309,15 @@ if (!done && (col == 0 || col == 3)) {
 You can manipulate the individual bits of numbers in Dart. Usually,
 you'd use these bitwise and shift operators with integers.
 
-| Operator                    | Meaning                                               |
-|-----------------------------|-------------------------------------------------------|
-| `&`                         | AND                                                   |
-| <code>&#124;</code>         | OR                                                    |
-| `^`                         | XOR                                                   |
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s) |
-| `<<`                        | Shift left                                            |
-| `>>`                        | Shift right                                           |
-| `>>>`                       | Unsigned shift right                                  |
+| Operator            | Meaning                                               |
+|---------------------|-------------------------------------------------------|
+| `&`                 | AND                                                   |
+| <code>&#124;</code> | OR                                                    |
+| `^`                 | XOR                                                   |
+| `~`*`expr`*         | Unary bitwise complement (0s become 1s; 1s become 0s) |
+| `<<`                | Shift left                                            |
+| `>>`                | Shift right                                           |
+| `>>>`               | Unsigned shift right                                  |
 
 {:.table .table-striped}
 
@@ -363,11 +363,11 @@ requires a [language version][] of at least 2.14.
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else][] statements:
 
-<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em></code>
+*`condition `* `? ` *`expr1 `* `: ` *`expr2`*
 : If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
-<code><em>expr1</em> ?? <em>expr2</em></code>
+ *`expr1 `* `?? ` *`expr2`*
 : If _expr1_ is non-null, returns its value;
   otherwise, evaluates and returns the value of _expr2_.
 
