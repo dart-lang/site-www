@@ -33,10 +33,11 @@ You can implement many of these [operators as class members][].
 | equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
 | logical AND                             | `&&`                                                                                                                                                                                              | Left          |
 | logical OR                              | <code>&#124;&#124;</code>                                                                                                                                                                                             | Left          |
-| if null                                 | `??`                                                                                                                                                                                              | Left          |
+| if-null                                 | `??`                                                                                                                                                                                              | Left          |
 | conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
 | cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
+| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                                                             | Left         |
 
 {:.table .table-striped}
 
@@ -499,6 +500,25 @@ and you can't construct a cascade on `void`.
 Strictly speaking, the "double dot" notation for cascades isn't an operator.
 It's just part of the Dart syntax.
 :::
+
+## Spread operators
+
+The spread operator evaluates an expression that yields a collection,
+unpacks the resulting values, and inserts them into another collection.
+
+**The spread operator isn't actually an operator expression**.
+The `...`/`...?` syntax is part of the collection literal itself.
+So, you can learn more about spread operators on the
+[Collections](/language/collections#spread-operators) page.
+
+Because it isn't an operator, the syntax doesn't
+have any "[operator precedence](#operators)".
+Effectively, it has the lowest "precedence" &mdash;
+any kind of expression is valid as the spread target, such as:
+
+```dart
+[...a + b]
+```
 
 ## Other operators
 
