@@ -264,7 +264,7 @@ Here's how compound assignment operators work:
 
 |                           | Compound assignment | Equivalent expression |
 |---------------------------|---------------------|-----------------------|
-| **For an operator *op*:** | `a `  *`op`*  `= b` | `a = a ` *`op `* `b`  |
+| **For an operator *op*:** | `a `  *`op`*`= b`   | `a = a ` *`op `* `b`  |
 | **Example:**              | `a += b`            | `a = a + b`           |
 
 {:.table}
