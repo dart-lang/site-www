@@ -370,8 +370,8 @@ void testE() {
   var num1 = NumberE(1);
   int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
   
-  num.isValid(); // OK: Extension member invocation.
-  num.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
+  num1.isValid(); // OK: Extension member invocation.
+  num1.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
   
   var sum1 = num1 + num1; // OK: 'NumberE' defines '+'.
   var diff1 = num1 - num1; // Error: 'NumberE' does not define 'int' member '-'.
