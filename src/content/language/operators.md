@@ -37,7 +37,7 @@ You can implement many of these [operators as class members][].
 | conditional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
 | cascade                                 | `..`    `?..`                                                                                      | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
-| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                    | Left          |
+| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                    | None          |
 
 {:.table .table-striped}
 
@@ -503,7 +503,7 @@ It's just part of the Dart syntax.
 
 ## Spread operators
 
-The spread operator evaluates an expression that yields a collection,
+Spread operators evaluate an expression that yields a collection,
 unpacks the resulting values, and inserts them into another collection.
 
 **The spread operator isn't actually an operator expression**.
