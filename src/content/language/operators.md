@@ -19,24 +19,25 @@ and [operator precedence](#operator-precedence-example) from highest to lowest,
 which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members][].
 
-| Description              | Operator                                                                                           | Associativity |
-|--------------------------|----------------------------------------------------------------------------------------------------|---------------|
-| unary postfix            | *`expr`*`++`    *`expr`*`--`    `()`    `[]`    `?[]`    `.`    `?.`    `!`                        | None          |
-| unary prefix             | `-`*`expr`*    `!`*`expr`*    `~`*`expr`*    `++`*`expr`*    `--`*`expr`*      `await` *`expr`*    | None          |
-| multiplicative           | `*`    `/`    `%`    `~/`                                                                          | Left          |
-| additive                 | `+`    `-`                                                                                         | Left          |
-| shift                    | `<<`    `>>`    `>>>`                                                                              | Left          |
-| bitwise AND              | `&`                                                                                                | Left          |
-| bitwise XOR              | `^`                                                                                                | Left          |
-| bitwise OR               | <code>&#124;</code>                                                                                | Left          |
-| relational and type test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                | None          |
-| equality                 | `==`    `!=`                                                                                       | None          |
-| logical AND              | `&&`                                                                                               | Left          |
-| logical OR               | <code>&#124;&#124;</code>                                                                          | Left          |
-| if null                  | `??`                                                                                               | Left          |
-| conditional              | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
-| cascade                  | `..`    `?..`                                                                                      | Left          |
-| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
+| Description                             | Operator                                                                                           | Associativity |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------|---------------|
+| unary postfix                           | *`expr`*`++`    *`expr`*`--`    `()`    `[]`    `?[]`    `.`    `?.`    `!`                        | None          |
+| unary prefix                            | `-`*`expr`*    `!`*`expr`*    `~`*`expr`*    `++`*`expr`*    `--`*`expr`*      `await` *`expr`*    | None          |
+| multiplicative                          | `*`    `/`    `%`    `~/`                                                                          | Left          |
+| additive                                | `+`    `-`                                                                                         | Left          |
+| shift                                   | `<<`    `>>`    `>>>`                                                                              | Left          |
+| bitwise AND                             | `&`                                                                                                | Left          |
+| bitwise XOR                             | `^`                                                                                                | Left          |
+| bitwise OR                              | <code>&#124;</code>                                                                                | Left          |
+| relational and type test                | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                | None          |
+| equality                                | `==`    `!=`                                                                                       | None          |
+| logical AND                             | `&&`                                                                                               | Left          |
+| logical OR                              | <code>&#124;&#124;</code>                                                                          | Left          |
+| if null                                 | `??`                                                                                               | Left          |
+| conditional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
+| cascade                                 | `..`    `?..`                                                                                      | Left          |
+| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
+| spread  ([See note](#spread-operators)) | `...`    `...?`                                                                                    | None          |
 
 {:.table .table-striped}
 
@@ -499,6 +500,25 @@ and you can't construct a cascade on `void`.
 Strictly speaking, the "double dot" notation for cascades isn't an operator.
 It's just part of the Dart syntax.
 :::
+
+## Spread operators
+
+Spread operators evaluate an expression that yields a collection,
+unpacks the resulting values, and inserts them into another collection.
+
+**The spread operator isn't actually an operator expression**.
+The `...`/`...?` syntax is part of the collection literal itself.
+So, you can learn more about spread operators on the
+[Collections](/language/collections#spread-operators) page.
+
+Because it isn't an operator, the syntax doesn't
+have any "[operator precedence](#operators)".
+Effectively, it has the lowest "precedence" &mdash;
+any kind of expression is valid as the spread target, such as:
+
+```dart
+[...a + b]
+```
 
 ## Other operators
 
