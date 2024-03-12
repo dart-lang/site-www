@@ -22,8 +22,8 @@ their past counterparts:
 
 <div class="table-wrapper" markdown="1">
 
-| New static interop libraries        | Previous libraries                       |
-|-------------------------------------|------------------------------------------|
+| New interop libraries        | Previous libraries                       |
+|------------------------------|------------------------------------------|
 | [`package:web`][] | [`dart:html`][] <br> [`dart:indexed_db`][] <br> [`dart:svg`][] <br> [`dart:web_audio`][] <br> [`dart:web_gl`][] |
 | [`dart:js_interop`][] <br> [`dart:js_interop_unsafe`][] | [`package:js`][] <br> [`dart:js`][] <br> [`dart:js_util`][] |
 
