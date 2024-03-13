@@ -1109,7 +1109,7 @@ of both languages are identical.
 | Meaning                                                        | JavaScript operator | Dart operator |
 |----------------------------------------------------------------|---------------------|---------------|
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
-| Logical OR                                                     | `||`                | `||`          |
+| Logical OR                                                     | `\|\|`              | `\|\|`        |
 | Logical AND                                                    | `&&`                | `&&`          |
 
 {:.table .table-striped}
