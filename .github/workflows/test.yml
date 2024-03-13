@@ -37,7 +37,7 @@ jobs:
             experimental: false
     continue-on-error: ${{ matrix.experimental }}
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
         with:
           submodules: recursive
       - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
@@ -56,7 +56,7 @@ jobs:
     name: Check if code excerpts are up to date
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
         with:
           submodules: recursive
       - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
@@ -71,7 +71,7 @@ jobs:
     name: Build site and check links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
         with:
           submodules: recursive
       - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
@@ -99,7 +99,7 @@ jobs:
     name: Validate Firebase configuration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
         with:
           submodules: recursive
       - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
