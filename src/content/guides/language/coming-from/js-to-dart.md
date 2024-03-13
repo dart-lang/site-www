@@ -1218,7 +1218,7 @@ The following table lists these assignment operators:
 | `<<=`    | Left shift assignment           |
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
-| `|=`     | Bitwise OR assignment           |
+| `\|=`    | Bitwise OR assignment           |
 
 {:.table .table-striped}
 
