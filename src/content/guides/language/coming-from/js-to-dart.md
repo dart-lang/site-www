@@ -1137,7 +1137,7 @@ as shown in the following table:
 | Meaning                                               | JavaScript operator | Dart operator |
 |-------------------------------------------------------|---------------------|---------------|
 | Bitwise AND                                           | `&`                 | `&`           |
-| Bitwise OR                                            | `|`                 | `|`           |
+| Bitwise OR                                            | `\|`                | `\|`          |
 | Bitwise XOR                                           | `^`                 | `^`           |
 | Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr`             | `~expr`       |
 | Shift left                                            | `<<`                | `<<`          |
