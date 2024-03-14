@@ -1109,7 +1109,7 @@ of both languages are identical.
 | Meaning                                                        | JavaScript operator | Dart operator |
 |----------------------------------------------------------------|---------------------|---------------|
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
-| Logical OR                                                     | `||`                | `||`          |
+| Logical OR                                                     | `\|\|`              | `\|\|`        |
 | Logical AND                                                    | `&&`                | `&&`          |
 
 {:.table .table-striped}
@@ -1137,7 +1137,7 @@ as shown in the following table:
 | Meaning                                               | JavaScript operator | Dart operator |
 |-------------------------------------------------------|---------------------|---------------|
 | Bitwise AND                                           | `&`                 | `&`           |
-| Bitwise OR                                            | `|`                 | `|`           |
+| Bitwise OR                                            | `\|`                | `\|`          |
 | Bitwise XOR                                           | `^`                 | `^`           |
 | Unary bitwise complement (0s become 1s; 1s become 0s) | `~expr`             | `~expr`       |
 | Shift left                                            | `<<`                | `<<`          |
@@ -1218,7 +1218,7 @@ The following table lists these assignment operators:
 | `<<=`    | Left shift assignment           |
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
-| `|=`     | Bitwise OR assignment           |
+| `\|=`    | Bitwise OR assignment           |
 
 {:.table .table-striped}
 

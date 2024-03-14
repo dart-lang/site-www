@@ -4,7 +4,7 @@ description: Learn how to consume single-subscriber and broadcast streams.
 js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
 ---
 
-:::mini-toc What's the point?
+:::secondary What's the point?
 * Streams provide an asynchronous sequence of data.
 * Data sequences include user-generated events and data read from files.
 * You can process a stream using either **await for** or
