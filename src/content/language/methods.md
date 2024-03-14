@@ -42,11 +42,11 @@ class Point {
 Operators are instance methods with special names.
 Dart allows you to define operators with the following names:
 
-`<`  | `+`  | `|`  | `>>>`
-`>`  | `/`  | `^`  | `[]`
-`<=` | `~/` | `&`  | `[]=`
-`>=` | `*`  | `<<` | `~`
-`-`  | `%`  | `>>` | `==`
+`<`  | `+`  | `\|`  | `>>>`
+`>`  | `/`  | `^`   | `[]`
+`<=` | `~/` | `&`   | `[]=`
+`>=` | `*`  | `<<`  | `~`
+`-`  | `%`  | `>>`  | `==`
 
 {:.table}
 
