@@ -33,11 +33,11 @@ to develop and run Dart code.
 {%- endif %}
 {% endfor %}
 
-| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                       |
-|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-----------------------------------|
-| Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10] (32-bit, 64-bit), [11][]     |
-| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][], [Ubuntu LTS][] |
-| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                   |
+| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                              |
+|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|----------------------------------------------------------|
+| Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                             |
+| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS in standard support][] |
+| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                          |
 
 {:.table .table-striped}
 
