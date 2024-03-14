@@ -36,7 +36,7 @@ to develop and run Dart code.
 | Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
 |----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
 | Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS under standard support][] |
+| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
 | macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
 
 {:.table .table-striped}
