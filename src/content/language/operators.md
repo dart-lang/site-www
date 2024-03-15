@@ -33,7 +33,7 @@ You can implement many of these [operators as class members][].
 | equality                                | `==`    `!=`                                                                                       | None          |
 | logical AND                             | `&&`                                                                                               | Left          |
 | logical OR                              | <code>&#124;&#124;</code>                                                                          | Left          |
-| if null                                 | `??`                                                                                               | Left          |
+| if-null                                 | `??`                                                                                               | Left          |
 | conditional                             | *`expr1`*    `?`    *`expr2`*    `:`    *`expr3`*                                                  | Right         |
 | cascade                                 | `..`    `?..`                                                                                      | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    *etc.*                                      | Right         |
@@ -373,7 +373,7 @@ that might otherwise require [if-else][] statements:
 
 When you need to assign a value
 based on a boolean expression,
-consider using `?` and `:`.
+consider using the conditional operator `?` and `:`.
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 ```dart
@@ -381,7 +381,8 @@ var visibility = isPublic ? 'public' : 'private';
 ```
 
 If the boolean expression tests for null,
-consider using `??`.
+consider using the if-null operator `??`
+(also known as the null-coalescing operator).
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)"?>
 ```dart
