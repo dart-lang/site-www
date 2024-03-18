@@ -4,7 +4,7 @@ Style the button pair using the `#page-github-links` selector.
 {% endcomment -%}
 
 {% assign repo = repo | default: site.repo.this -%}
-{% capture path -%} {{repo}}/tree/{{site.branch}}/{{page.inputPath}} {%- endcapture -%}
+{% capture path -%} {{repo}}/tree/{{site.branch}}/{{page.inputPath | regex_replace: '^./'}} {%- endcapture -%}
 {% assign siteTitle = title | default: page.url -%}
 {% assign url = site.url | append: page.url -%}
 
