@@ -277,8 +277,8 @@ Like parenthesized expressions, parentheses in a pattern let you control
 [pattern precedence](#pattern-precedence) and insert a lower-precedence
 pattern where a higher precedence one is expected.
 
-For example, imagine the boolean constants `x`, `y`, and `z` are 
-equal to `true`, `true`, and `false`, respectively:
+For example, imagine the boolean constants `x`, `y`, and `z`
+equal `true`, `true`, and `false`, respectively:
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
 ```dart
@@ -288,11 +288,10 @@ x || y && z => 'matches true',
 // ...
 ```
 
-In the first case, the logical-and pattern `y && z` evaluates first because
-logical-and patterns have higher precedence than logical-or.
-In the next case, the logical-or pattern is parenthesized. It evaluates first,
-which results in a different match.
-
+Dart evaluates `x || y && z` as `x || (y && z)`,
+therefore the first expression matches `true`.
+As the parenthetical subpattern matches first,
+the second expression matches `false`.
 
 ## List
 
