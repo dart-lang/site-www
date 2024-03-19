@@ -51,6 +51,7 @@ choose one of the following options:
 1. [Use a package manager](#install) (Recommended).
 1. Use a [Dart Docker image][dart-docker]
 1. Download from the [SDK Archive](/get-dart/archive)
+1. [Install Flutter][install-flutter]
 1. [Build the SDK from source][build-source]
 
 {% comment %}
