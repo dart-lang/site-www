@@ -574,7 +574,13 @@ thead:has(th:empty) {
 .content > p {
   > i.material-symbols, > span.material-symbols {
     vertical-align: bottom;
+    user-select: none;
   }
+}
+
+// Make icons used in system requirements table unselectable.
+.system-support {
+  user-select: none;
 }
 
 // Overwrite bootstrap's breadcrumbs
