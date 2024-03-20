@@ -27,7 +27,7 @@ import 'dart:convert';
 ```
 
 
-### Decoding and encoding JSON
+## Decoding and encoding JSON
 
 Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
 
@@ -83,7 +83,7 @@ For more examples and links to JSON-related packages, see
 [Using JSON](/guides/json).
 
 
-### Decoding and encoding UTF-8 characters
+## Decoding and encoding UTF-8 characters
 
 Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
@@ -132,7 +132,7 @@ for (int i = 0; i < encoded.length; i++) {
 ```
 
 
-### Other functionality
+## Other functionality
 
 The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]

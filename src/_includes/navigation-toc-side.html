@@ -5,13 +5,13 @@
   </header>
   <ul class="section-nav">
     {% for topLevel in tocContents.toc %}
-    <li class="toc-entry nav-item toc-h2">
-      <a class="nav-link" href="{{topLevel.id}}">{{topLevel.text}}</a>
+    <li class="toc-entry nav-item">
+      <a class="nav-link" href="{{topLevel.id}}">{{topLevel.text | underscore_breaker}}</a>
       {% if topLevel.children and topLevel.children.size > 0 %}
       <ul class="nav">
         {% for child in topLevel.children %}
-        <li class="toc-entry nav-item toc-h3">
-          <a class="nav-link" href="{{child.id}}">{{child.text}}</a>
+        <li class="toc-entry nav-item">
+          <a class="nav-link" href="{{child.id}}">{{child.text | underscore_breaker}}</a>
         </li>
         {% endfor -%}
       </ul>

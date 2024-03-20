@@ -109,7 +109,7 @@ Here's an example of creating a local variable
 (which can be named `i`)
 that holds the value of `i`:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property-copy)" replace="/final.*/[!$&!]/g"?>
 ```dart tag=good
 class C {
   int? i;
@@ -134,7 +134,7 @@ when you intend to update the field.
 
 And here's an example of using `i!`:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property-bang)" replace="/!/[!!!]/g"?>
 ```dart tag=good
 print(i[!!!].isEven);
 ```
@@ -719,7 +719,7 @@ conditions in separate `if` statements.
 
 You might fix the problem by combining the two `if` statements:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write-combine-ifs)" replace="/else/[!$&!]/g"?>
 ```dart tag=good
 void f(bool b, int? i, int? j) {
   if (i == null) return;
@@ -737,7 +737,7 @@ when deciding whether to demote.
 As a result, another way to fix this code is
 to change the type of `j` to `int`.
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write-change-type)" replace="/int j/[!$&!]/g"?>
 ```dart tag=good
 void f(bool b, int? i, [!int j!]) {
   if (i == null) return;
@@ -927,8 +927,6 @@ One possible solution is to create a new local variable so that
 the original variable is promoted to `Comparable`, and
 the new variable is promoted to `Pattern`:
 
-<!-- code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var o2.*/[!$&!]/g;/o2\./[!o2!]./g"?>-->
-
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 ```dart
 void f(Object o) {
@@ -965,7 +963,7 @@ If line 3 cares only about strings,
 then you can use `String` in your type check.
 Because `String` is a subtype of `Comparable`, the promotion works:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-String)" replace="/is String/is [!String!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-string)" replace="/is String/is [!String!]/g"?>
 ```dart tag=good
 void f(Object o) {
   if (o is Comparable /* (1) */) {

@@ -366,7 +366,7 @@ method for the worker isolate.
 - Finally, add a listener to the new `ReceivePort`. This listener handles
   messages the main isolate sends to the worker isolate.
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (startRemoteIsolate)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (start-remote-isolate)"?>
 ```dart
 static void _startRemoteIsolate(SendPort port) {
   final receivePort = ReceivePort();
@@ -416,7 +416,7 @@ decoded JSON).
   type of decoded JSON. If so, handle that message with your
   application-specific logic. In this example, the message is printed. 
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (handleResponses)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (handle-responses)"?>
 ```dart
 void _handleResponsesFromIsolate(dynamic message) {
   if (message is SendPort) {
@@ -445,7 +445,7 @@ To handle this, use a [`Completer`][].
   worker isolate until it is spawned _and_ has sent its `SendPort` back to the
   main isolate.
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (parseJson)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (parse-json)"?>
 ```dart
 Future<void> parseJson(String message) async {
   await _isolateReady.future;

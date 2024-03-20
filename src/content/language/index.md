@@ -209,7 +209,7 @@ including string interpolation, literals, expressions, and the `toString()` meth
 
 You might use the `Spacecraft` class like this:
 
-<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (use-class)" plaster="none"?>
 ```dart
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
@@ -269,7 +269,7 @@ enum Planet {
 
 You might use the `Planet` enum like this:
 
-<?code-excerpt "misc/test/samples_test.dart (use enum)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (use-enum)" plaster="none"?>
 ```dart
 final yourPlanet = Planet.earth;
 
@@ -386,7 +386,7 @@ Future<void> printWithDelay(String message) [!async!] {
 
 The method above is equivalent to:
 
-<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
+<?code-excerpt "misc/test/samples_test.dart (future-then)"?>
 ```dart
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
@@ -421,7 +421,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
-<?code-excerpt "misc/test/samples_test.dart (async*)"?>
+<?code-excerpt "misc/test/samples_test.dart (async-star)"?>
 ```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (final object in objects) {

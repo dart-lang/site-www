@@ -12,7 +12,7 @@ import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('readAsString, readAsLines', () async {
-    // #docregion readAsString
+    // #docregion read-as-string
     void main() async {
       var config = File('test_data/config.txt');
 
@@ -24,7 +24,7 @@ void main() {
       var lines = await config.readAsLines();
       print('The file is ${lines.length} lines long.');
     }
-    // #enddocregion readAsString
+    // #enddocregion read-as-string
 
     expect(
         main,
@@ -33,14 +33,14 @@ void main() {
   });
 
   test('readAsBytes', () {
-    // #docregion readAsBytes
+    // #docregion read-as-bytes
     void main() async {
       var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
       print('The file is ${contents.length} bytes long.');
     }
-    // #enddocregion readAsBytes
+    // #enddocregion read-as-bytes
 
     expect(main, m.prints('The file is 58 bytes long.'));
   });

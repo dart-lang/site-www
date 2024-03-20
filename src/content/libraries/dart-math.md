@@ -25,7 +25,7 @@ import 'dart:math';
 ```
 
 
-### Trigonometry
+## Trigonometry
 
 The Math library provides basic trigonometric functions:
 
@@ -48,7 +48,7 @@ These functions use radians, not degrees!
 :::
 
 
-### Maximum and minimum
+## Maximum and minimum
 
 The Math library provides `max()` and `min()` methods:
 
@@ -59,7 +59,7 @@ assert(min(1, -1000) == -1000);
 ```
 
 
-### Math constants
+## Math constants
 
 Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
@@ -72,12 +72,12 @@ print(sqrt2); // 1.4142135623730951
 ```
 
 
-### Random numbers
+## Random numbers
 
 Generate random numbers with the [Random][] class. You can
 optionally provide a seed to the Random constructor.
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (random)"?>
 ```dart
 var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
@@ -86,7 +86,7 @@ random.nextInt(10); // Between 0 and 9.
 
 You can even generate random booleans:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (random-bool)"?>
 ```dart
 var random = Random();
 random.nextBool(); // true or false
@@ -99,7 +99,7 @@ To create a cryptographically secure random number generator,
 use the [`Random.secure()`][] constructor.
 :::
 
-### More information
+## More information
 
 Refer to the [Math API reference][dart:math] for a full list of methods.
 Also see the API reference for [num,][num] [int,][int] and [double.][double]

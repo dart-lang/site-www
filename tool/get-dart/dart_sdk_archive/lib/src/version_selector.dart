@@ -181,8 +181,9 @@ class VersionSelector {
                 versionInfo.version < Version(3, 0, 0, pre: '290.2.beta')) {
               continue;
             }
-            // No stable builds yet.
-            if (versionInfo.channel == 'stable') {
+            // Stable builds start at 3.2.3, but only show starting at 3.3
+            if (versionInfo.channel == 'stable' &&
+                versionInfo.version < Version(3, 3, 0)) {
               continue;
             }
           }
@@ -210,8 +211,9 @@ class VersionSelector {
                 versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
               continue;
             }
-            // No stable builds yet.
-            if (versionInfo.channel == 'stable') {
+            // Stable builds start at 3.2.3, but only show starting at 3.3
+            if (versionInfo.channel == 'stable' &&
+                versionInfo.version < Version(3, 3, 0)) {
               continue;
             }
           }

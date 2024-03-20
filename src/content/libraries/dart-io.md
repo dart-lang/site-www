@@ -36,7 +36,7 @@ To use the dart:io library you must import it:
 import 'dart:io';
 ```
 
-### Files and directories
+## Files and directories
 
 The I/O library enables command-line apps to read and write files and
 browse directories. You have two choices for reading the contents of a
@@ -46,7 +46,7 @@ large or you want to process it while reading it, you should use a
 Stream, as described in
 [Streaming file contents](#streaming-file-contents).
 
-#### Reading a file as text
+### Reading a file as text
 
 When reading a text file encoded using UTF-8, you can read the entire
 file contents with `readAsString()`. When the individual lines are
@@ -54,7 +54,7 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-as-string)" replace="/\btest_data\///g"?>
 ```dart
 void main() async {
   var config = File('config.txt');
@@ -70,13 +70,13 @@ void main() async {
 ```
 
 
-#### Reading a file as binary
+### Reading a file as binary
 
 The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it's available.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-as-bytes)" replace="/\btest_data\///g"?>
 ```dart
 void main() async {
   var config = File('config.txt');
@@ -86,7 +86,7 @@ void main() async {
 }
 ```
 
-#### Handling errors
+### Handling errors
 
 To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
@@ -105,7 +105,7 @@ void main() async {
 }
 ```
 
-#### Streaming file contents
+### Streaming file contents
 
 Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](/libraries/dart-async#stream)
@@ -133,7 +133,7 @@ void main() async {
 }
 ```
 
-#### Writing file contents
+### Writing file contents
 
 You can use an [IOSink][] to
 write data to a file. Use the File `openWrite()` method to get an IOSink
@@ -160,7 +160,7 @@ var sink = logFile.openWrite(mode: FileMode.append);
 To write binary data, use `add(List<int> data)`.
 
 
-#### Listing files in a directory
+### Listing files in a directory
 
 Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
@@ -187,7 +187,7 @@ void main() async {
 ```
 
 
-#### Other common functionality
+### Other common functionality
 
 The File and Directory classes contain other functionality, including
 but not limited to:
@@ -201,12 +201,12 @@ Refer to the API docs for [File][] and [Directory][] for a full
 list of methods.
 
 
-### HTTP clients and servers
+## HTTP clients and servers
 
 The dart:io library provides classes that command-line apps can use for
 accessing HTTP resources, as well as running HTTP servers.
 
-#### HTTP server
+### HTTP server
 
 The [HttpServer][] class
 provides the low-level functionality for building web servers. You can
@@ -243,7 +243,7 @@ void processRequest(HttpRequest request) {
 }
 ```
 
-#### HTTP client
+### HTTP client
 
 You should avoid directly using `dart:io` to make HTTP requests.
 The [HttpClient][] class in `dart:io` is platform-dependent
@@ -255,7 +255,7 @@ The [Fetch data from the internet][] tutorial
 explains how to make HTTP requests
 using `package:http`.
 
-### More information
+## More information
 
 This page showed how to use the major features of the [dart:io][] library.
 Besides the APIs discussed in this section, the dart:io library also

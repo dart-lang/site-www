@@ -17,7 +17,7 @@ provides a small but critical set of built-in functionality.
 This library is automatically imported into every Dart program.
 
 
-### Printing to the console
+## Printing to the console
 
 The top-level `print()` method takes a single argument (any Object)
 and displays that object's string value (as returned by `toString()`)
@@ -33,7 +33,7 @@ For more information on basic strings and `toString()`, see
 [Strings](/language/built-in-types#strings) in the language tour.
 
 
-### Numbers
+## Numbers
 
 The dart:core library defines the num, int, and double classes, which
 have some basic utilities for working with numbers.
@@ -41,7 +41,7 @@ have some basic utilities for working with numbers.
 You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (int-double-parse)"?>
 ```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -71,7 +71,7 @@ of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
 number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (to-string)"?>
 ```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -91,7 +91,7 @@ For more information, see the API documentation for
 [int,][int] [double,][double] and [num.][num] Also see
 the [dart:math section](/libraries/dart-math)
 
-### Strings and regular expressions
+## Strings and regular expressions
 
 A string in Dart is an immutable sequence of UTF-16 code units.
 The language tour has more information about
@@ -103,7 +103,7 @@ replace parts of strings.
 The String class defines such methods as `split()`, `contains()`,
 `startsWith()`, `endsWith()`, and more.
 
-#### Searching inside a string
+### Searching inside a string
 
 You can find particular locations within a string, as well as check
 whether a string begins with or ends with a particular pattern. For
@@ -124,7 +124,7 @@ assert('Never odd or even'.endsWith('even'));
 assert('Never odd or even'.indexOf('odd') == 6);
 ```
 
-#### Extracting data from a string
+### Extracting data from a string
 
 You can get the individual characters from a string as Strings or ints,
 respectively. To be precise, you actually get individual UTF-16 code
@@ -171,12 +171,12 @@ For this, the Dart team provides the
 [`characters` package.]({{site.pub-pkg}}/characters)
 :::
 
-#### Converting to uppercase or lowercase
+### Converting to uppercase or lowercase
 
 You can easily convert strings to their uppercase and lowercase
 variants:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (case-conversions)"?>
 ```dart
 // Convert to uppercase.
 assert('web apps'.toUpperCase() == 'WEB APPS');
@@ -191,7 +191,7 @@ alphabet's dotless *I* is converted incorrectly.
 :::
 
 
-#### Trimming and empty strings
+### Trimming and empty strings
 
 Remove all leading and trailing white space with `trim()`. To check
 whether a string is empty (length is zero), use `isEmpty`.
@@ -208,7 +208,7 @@ assert(''.isEmpty);
 assert('  '.isNotEmpty);
 ```
 
-#### Replacing part of a string
+### Replacing part of a string
 
 Strings are immutable objects, which means you can create them but you
 can't change them. If you look closely at the [String API reference,][String]
@@ -226,14 +226,14 @@ var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 assert(greeting != greetingTemplate);
 ```
 
-#### Building a string
+### Building a string
 
 To programmatically generate a string, you can use StringBuffer. A
 StringBuffer doesn't generate a new String object until `toString()` is
 called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (string-buffer)"?>
 ```dart
 var sb = StringBuffer();
 sb
@@ -246,13 +246,13 @@ var fullString = sb.toString();
 assert(fullString == 'Use a StringBuffer for efficient string creation.');
 ```
 
-#### Regular expressions
+### Regular expressions
 
 The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
 var numbers = RegExp(r'\d+');
@@ -286,13 +286,13 @@ for (final match in numbers.allMatches(someDigits)) {
 }
 ```
 
-#### More information
+### More information
 
 Refer to the [String API reference][String] for a full list of
 methods. Also see the API reference for [StringBuffer,][StringBuffer]
 [Pattern,][Pattern] [RegExp,][RegExp] and [Match.][Match]
 
-### Collections
+## Collections
 
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
@@ -302,14 +302,14 @@ To practice using APIs that are available to both lists and sets,
 follow the [Iterable collections codelab](/codelabs/iterables).
 :::
 
-#### Lists
+### Lists
 
 As the language tour shows, you can use literals to create and
 initialize [lists](/language/collections#lists). Alternatively, use one of the List
 constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list)"?>
 ```dart
 // Create an empty list of strings.
 var grains = <String>[];
@@ -343,7 +343,7 @@ assert(vegetables.every((v) => v == 'broccoli'));
 
 Use `indexOf()` to find the index of an object in a list:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (index-of)"?>
 ```dart
 var fruits = ['apples', 'oranges'];
 
@@ -360,7 +360,7 @@ function that compares two objects. This sorting function must return \<
 example uses `compareTo()`, which is defined by
 [Comparable][] and implemented by String.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (compare-to)"?>
 ```dart
 var fruits = ['bananas', 'apples', 'oranges'];
 
@@ -374,7 +374,7 @@ Lists are parameterized types
 so you can specify the type that a list
 should contain:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-of-string)"?>
 ```dart
 // This list should contain only strings.
 var fruits = <String>[];
@@ -384,7 +384,7 @@ var fruit = fruits[0];
 assert(fruit is String);
 ```
 
-<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+<?code-excerpt "misc/lib/library_tour/core/collections.dart (list-of-string)"?>
 ```dart tag=fails-sa
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
@@ -408,12 +408,12 @@ or `<Person>[]` or something similar.
 
 Refer to the [List API reference][List] for a full list of methods.
 
-#### Sets
+### Sets
 
 A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can't get a set's items by index (position).
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (set)"?>
 ```dart
 // Create an empty set of strings.
 var ingredients = <String>{};
@@ -466,7 +466,7 @@ assert(intersection.contains('xenon'));
 
 Refer to the [Set API reference][Set] for a full list of methods.
 
-#### Maps
+### Maps
 
 A map, commonly known as a *dictionary* or *hash*, is an unordered
 collection of key-value pairs. Maps associate a key to some value for
@@ -475,7 +475,7 @@ easy retrieval. Unlike in JavaScript, Dart objects are not maps.
 You can declare a map using a terse literal syntax, or you can use a
 traditional constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (map)"?>
 ```dart
 // Maps often use strings as keys.
 var hawaiianBeaches = {
@@ -538,7 +538,7 @@ To check whether a map contains a key, use `containsKey()`. Because map
 values can be null, you cannot rely on simply getting the value for the
 key and checking for null to determine the existence of a key.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (contains-key)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -554,7 +554,7 @@ Use the `putIfAbsent()` method when you want to assign a value to a key
 if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (put-if-absent)"?>
 ```dart
 var teamAssignments = <String, String>{};
 teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
@@ -563,7 +563,7 @@ assert(teamAssignments['Catcher'] != null);
 
 Refer to the [Map API reference][Map] for a full list of methods.
 
-#### Common collection methods
+### Common collection methods
 
 List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
@@ -576,7 +576,7 @@ which List and Set implement.
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (is-empty)"?>
 ```dart
 var coffees = <String>[];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
@@ -587,7 +587,7 @@ assert(teas.isNotEmpty);
 To apply a function to each item in a list, set, or map, you can use
 `forEach()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-for-each)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -597,7 +597,7 @@ teas.forEach((tea) => print('I drink $tea'));
 When you invoke `forEach()` on a map, your function must take two
 arguments (the key and value):
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (map-for-each)"?>
 ```dart
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
@@ -609,7 +609,7 @@ hawaiianBeaches.forEach((k, v) {
 Iterables provide the `map()` method, which gives you all the results in
 a single object:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (list-map)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -625,7 +625,7 @@ function isn't called until you ask for an item from the returned object.
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (to-list)"?>
 ```dart
 var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
 ```
@@ -664,7 +664,7 @@ For a full list of methods, refer to the [Iterable API reference,][Iterable]
 as well as those for [List,][List] [Set,][Set] and [Map.][Map]
 
 
-### URIs
+## URIs
 
 The [Uri class][Uri] provides
 functions to encode and decode strings for use in URIs (which you might
@@ -676,14 +676,14 @@ components of a URI—host, port, scheme, and so on.
 constructors: Uri.http, Uri.https, Uri.file, per floitsch's suggestion}
 {% endcomment %}
 
-#### Encoding and decoding fully qualified URIs
+### Encoding and decoding fully qualified URIs
 
 To encode and decode characters *except* those with special meaning in a
 URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
 `decodeFull()` methods. These methods are good for encoding or decoding
 a fully qualified URI, leaving intact special URI characters.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encode-full)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -696,13 +696,13 @@ assert(uri == decoded);
 
 Notice how only the space between `some` and `message` was encoded.
 
-#### Encoding and decoding URI components
+### Encoding and decoding URI components
 
 To encode and decode all of a string's characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encode-component)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -717,13 +717,13 @@ assert(uri == decoded);
 Notice how every special character is encoded. For example, `/` is
 encoded to `%2F`.
 
-#### Parsing URIs
+### Parsing URIs
 
 If you have a Uri object or a URI string, you can get its parts using
 Uri fields such as `path`. To create a Uri from a string, use the
 `parse()` static method:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri-parse)"?>
 ```dart
 var uri = Uri.parse('https://example.org:8080/foo/bar#frag');
 
@@ -736,12 +736,12 @@ assert(uri.origin == 'https://example.org:8080');
 
 See the [Uri API reference][Uri] for more URI components that you can get.
 
-#### Building URIs
+### Building URIs
 
 You can build up a URI from individual parts using the `Uri()`
 constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri)"?>
 ```dart
 var uri = Uri(
     scheme: 'https',
@@ -756,7 +756,7 @@ If you don't need to specify a fragment,
 to create a URI with a http or https scheme,
 you can instead use the [`Uri.http`][] or [`Uri.https`][] factory constructors:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri-http)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (uri-http)"?>
 ```dart
 var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
 var httpsUri = Uri.https('example.org', '/foo/bar', {'lang': 'dart'});
@@ -768,14 +768,14 @@ assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 [`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
 [`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
 
-### Dates and times
+## Dates and times
 
 A DateTime object is a point in time. The time zone is either UTC or the
 local time zone.
 
 You can create DateTime objects using several constructors and methods:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (date-time)"?>
 ```dart
 // Get the current date and time.
 var now = DateTime.now();
@@ -807,7 +807,7 @@ Daylight Savings Time and other non-standard time adjustments.
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (milliseconds-since-epoch)"?>
 ```dart
 // 1/1/2000, UTC
 var y2k = DateTime.utc(2000);
@@ -821,7 +821,7 @@ assert(unixEpoch.millisecondsSinceEpoch == 0);
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (duration)"?>
 ```dart
 var y2k = DateTime.utc(2000);
 
@@ -850,12 +850,12 @@ For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
 
 
-### Utility classes
+## Utility classes
 
 The core library contains various utility classes, useful for sorting,
 mapping values, and iterating.
 
-#### Comparing objects
+### Comparing objects
 
 Implement the [Comparable][]
 interface to indicate that an object can be compared to another object,
@@ -879,7 +879,7 @@ void main() {
 }
 ```
 
-#### Implementing map keys
+### Implementing map keys
 
 Each object in Dart automatically provides an integer hash code, and
 thus can be used as a key in a map. However, you can override the
@@ -942,7 +942,7 @@ void main() {
 }
 ```
 
-#### Iteration
+### Iteration
 
 The [Iterable][] and [Iterator][] classes
 support sequential access to a collection of values.
@@ -981,7 +981,7 @@ void main() {
 }
 ```
 
-### Exceptions
+## Exceptions
 
 The Dart core library defines many common exceptions and errors.
 Exceptions are considered conditions that you can plan ahead for and
@@ -1018,7 +1018,7 @@ For more information, see
 [Exceptions](/language/error-handling#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
-### Weak references and finalizers
+## Weak references and finalizers
 
 Dart is a [garbage-collected][] language,
 which means that any Dart object

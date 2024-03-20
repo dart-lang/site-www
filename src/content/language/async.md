@@ -40,7 +40,7 @@ but it looks a lot like synchronous code.
 For example, here's some code that uses `await`
 to wait for the result of an asynchronous function:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (await-lookUpVersion)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (await-look-up-version)"?>
 ```dart
 await lookUpVersion();
 ```
@@ -129,7 +129,7 @@ Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
 which returns a String:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (sync-lookUpVersion)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (sync-look-up-version)"?>
 ```dart
 String lookUpVersion() => '1.0.0';
 ```
@@ -138,7 +138,7 @@ If you change it to be an `async` function—for example,
 because a future implementation will be time consuming—the
 returned value is a Future:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (async-lookUpVersion)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (async-look-up-version)"?>
 ```dart
 Future<String> lookUpVersion() async => '1.0.0';
 ```
@@ -199,7 +199,7 @@ make sure the `await for` is in an `async` function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (number-thinker)" replace="/async|await for/[!$&!]/g"?>
 ```dart
 void main() [!async!] {
   // ...

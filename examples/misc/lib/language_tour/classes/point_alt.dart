@@ -33,3 +33,4 @@ class Point {
 
 // #docregion idiomatic-constructor
 }
+// #enddocregion idiomatic-constructor

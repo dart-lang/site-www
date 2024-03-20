@@ -279,8 +279,8 @@ in a map. This section describes even more use cases, answering:
 
 ### Destructuring multiple returns
 
-[Records][] allow aggregating and returning multiple values from a single function
-call. Patterns add the ability to destructure a record's fields
+Records allow aggregating and [returning multiple values][] from a single
+function call. Patterns add the ability to destructure a record's fields
 directly into local variables, inline with the function call.
 
 Instead of individually declaring new local variables for each record field,
@@ -295,7 +295,8 @@ var age = info.$2;
 
 You can destructure the fields of a record that a function returns into local
 variables using a [variable declaration](#variable-declaration) or
-[assigment pattern](#variable-assignment), and a record pattern as its subpattern:
+[assigment pattern](#variable-assignment), and a [record pattern][record]
+as its subpattern:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-2)"?>
 ```dart
@@ -331,7 +332,7 @@ the different type definitions.
 Instead of implementing the operation as an instance method for every type,
 keep the operation's variations in a single function that switches over the subtypes:
 
-<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic-datatypes)"?>
 ```dart
 sealed class Shape {}
 
@@ -424,7 +425,7 @@ This case pattern simultaneously validates that:
 [collection literals]: /language/collections#control-flow-operators
 [null-assert pattern]: /language/pattern-types#null-assert
 [record]: /language/pattern-types#record
-[Records]: /language/records
+[returning multiple values]: /language/records#multiple-returns
 [refutable]: /resources/glossary#refutable-pattern
 [constant]: /language/pattern-types#constant
 [list]: /language/pattern-types#list
