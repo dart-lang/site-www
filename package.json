@@ -29,7 +29,7 @@
     "hast-util-to-text": "^4.0.0",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
-    "markdown-it": "^14.0.0",
+    "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
     "markdown-it-container": "^4.0.0",
