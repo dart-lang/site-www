@@ -91,6 +91,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
+  eleventyConfig.addPassthroughCopy({'site-shared/packages/inject_dartpad/lib/inject_dartpad.js': 'assets/js/inject_dartpad.js'});
   eleventyConfig.addPassthroughCopy('src/content/assets/img', { expand: true });
   eleventyConfig.addPassthroughCopy('src/content/f', {
     expand: true,

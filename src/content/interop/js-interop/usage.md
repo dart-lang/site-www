@@ -188,8 +188,9 @@ Within an interop type, you can declare several different types of
     properties of the object through `external` instance members.
 
     :::warning
-    There's a bug that currently requires object literal constructors to have an
-    [`@JS`](#js) annotation on the library. See [#54801] for more details.
+    Before Dart 3.3.1, object literal constructors required a
+    [`@JS`](#js) annotation on the library to compile.
+    To learn more, check out [`dart-lang/sdk#54801`][54801].
     :::
 
 - **`static` members**. Like constructors, these members use the name of the
@@ -438,7 +439,7 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [`external`]: /language/functions#external
 [restrictions]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [object literal]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
-[#54801]: https://github.com/dart-lang/sdk/issues/54801
+[54801]: https://github.com/dart-lang/sdk/issues/54801
 [property accessors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [utility functions]: https://api.dart.dev/dev/dart-js_interop/JSAnyOperatorExtension.html
 [`@JS()`]: https://api.dart.dev/dev/dart-js_interop/JS-class.html

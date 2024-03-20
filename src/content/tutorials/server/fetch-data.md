@@ -1,7 +1,7 @@
 ---
 title: Fetch data from the internet
 description: Fetch data over the internet using the http package.
-js: [{url: 'https://old-dartpad-3ce3f.web.app/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
@@ -12,7 +12,7 @@ nextpage:
 
 <?code-excerpt path-base="fetch_data"?>
 
-:::mini-toc What you'll learn
+:::secondary What you'll learn
 * The basics of what HTTP requests and URIs are and what they are used for.
 * Making HTTP requests using `package:http`.
 * Decoding JSON strings into Dart objects with `dart:convert`.

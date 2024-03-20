@@ -18,10 +18,10 @@ To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 Dart supports the following hardware architectures and platform versions
 to develop and run Dart code.
 
-{% assign yes = '<span class="material-symbols" style="color: #158477;">verified</span>' %}
-{% assign no = '<span class="material-symbols" style="color: #D43324">dangerous</span>' %}
-{% assign beta = '<span class="material-symbols" style="color: #13C2AD">gpp_maybe</span>' %}
-{% assign na = '<span class="material-symbols" style="color: #DADCE0">do_not_disturb_on</span>' %}
+{% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported" title="Supported">verified</span>' %}
+{% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported" title="Not supported">dangerous</span>' %}
+{% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
+{% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
 {% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
 {%- if version.eol == false -%}
@@ -33,17 +33,17 @@ to develop and run Dart code.
 {%- endif %}
 {% endfor %}
 
-| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                       |
-|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-----------------------------------|
-| Windows  |  {{yes}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10] (32-bit, 64-bit), [11][]     |
-| Linux    |  {{yes}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][], [Ubuntu LTS][] |
-| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                   |
+| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
+|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
+| Windows  |  {{dep}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
+| Linux    |  {{dep}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
+| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
 
 {:.table .table-striped}
 
 {{yes}} Supported on all channels.<br>
+{{dep}} Support is deprecated and might be dropped in a future Dart release.<br>
 {{no}} Unsupported on all channels.<br>
-{{beta}} Supported on the `beta`, `dev`, and `main` channels only.<br>
 {{na}} Unsupported by the operating system.<br>
 
 ## Choose an installation option
@@ -54,6 +54,7 @@ choose one of the following options:
 1. [Use a package manager](#install) (Recommended).
 1. Use a [Dart Docker image][dart-docker]
 1. Download from the [SDK Archive](/get-dart/archive)
+1. [Install Flutter][install-flutter]
 1. [Build the SDK from source][build-source]
 
 {% comment %}

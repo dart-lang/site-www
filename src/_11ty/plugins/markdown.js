@@ -30,7 +30,6 @@ export const markdown = (() => {
     });
 
   _registerAsides(markdown);
-  _registerContainers(markdown);
 
   return markdown;
 })();
@@ -99,26 +98,4 @@ function _registerAsides(markdown) {
   );
 
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
-}
-
-/**
- * Registers custom containers used on the site.
- *
- * @param {import('markdown-it/lib').MarkdownIt} markdown
- * @private
- */
-function _registerContainers(markdown) {
-  // TODO(parlough): Consider removing all usages of mini-toc.
-  markdown.use(markdownItContainer, 'mini-toc', {
-    render: function (tokens, index) {
-      if (tokens[index].nesting === 1) {
-        const header = /\s+(.*)/.exec(tokens[index].info)[1];
-        return `<div class="mini-toc">
-<h4 class="no_toc">${header}</h4>
-`;
-      } else {
-        return '</div>\n';
-      }
-    },
-  });
 }

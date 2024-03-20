@@ -313,7 +313,7 @@ You can't combine some modifiers because they are
 contradictory, redundant, or otherwise mutually exclusive:
 
 * `abstract` with `sealed`. A [sealed](#sealed) class is
-   implicitly[abstract](#abstract).
+  implicitly [abstract](#abstract).
 * `interface`, `final` or `sealed` with `mixin`. These access modifiers
   prevent [mixing in][mixin].
 
