@@ -7,10 +7,10 @@ class Truck implements Vehicle {}
 
 class Bicycle extends Vehicle {}
 
-// ERROR: Cannot be instantiated
+// ERROR: Can't be instantiated.
 Vehicle myVehicle = Vehicle();
 
-// Subclasses can be instantiated
+// Subclasses can be instantiated.
 Vehicle myCar = Car();
 
 String getVehicleSound(Vehicle vehicle) {

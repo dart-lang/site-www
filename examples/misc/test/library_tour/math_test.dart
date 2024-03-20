@@ -39,17 +39,17 @@ void main() {
   });
 
   test('Random', () {
-    // #docregion Random
+    // #docregion random
     var random = Random();
     random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
     random.nextInt(10); // Between 0 and 9.
-    // #enddocregion Random
+    // #enddocregion random
   });
 
   test('Random-bool', () {
-    // #docregion Random-bool
+    // #docregion random-bool
     var random = Random();
     random.nextBool(); // true or false
-    // #enddocregion Random-bool
+    // #enddocregion random-bool
   });
 }

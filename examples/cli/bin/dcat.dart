@@ -43,12 +43,12 @@ Future<void> dcat(List<String> paths, {bool showLineNumbers = false}) async {
           .transform(const LineSplitter());
       try {
         await for (final line in lines) {
-          // #docregion showLineNumbers
+          // #docregion show-line-numbers
           if (showLineNumbers) {
             stdout.write('${lineNumber++} ');
           }
           stdout.writeln(line);
-          // #enddocregion showLineNumbers
+          // #enddocregion show-line-numbers
         }
       } catch (_) {
         await _handleError(path);

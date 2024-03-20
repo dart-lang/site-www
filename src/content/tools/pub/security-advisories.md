@@ -42,7 +42,7 @@ should strongly consider upgrading to a non-affected version of the dependency.
 
 If a security advisory is not relevant for your application,
 you can suppress the warning by adding the advisory identifier to
-the `ignored_advisories` list in the `pubspec.yaml` of your package.
+the [`ignored_advisories`][] list in the `pubspec.yaml` of your package.
 For example, the following ignores the advisory
 with the GHSA identifier `GHSA-4rgh-jx4f-qfcq`:
 
@@ -57,3 +57,5 @@ ignored_advisories:
 The `ignored_advisories` list only affects the root package. Ignored
 advisories in your dependencies will have no effect on package resolution
 for your own package.
+
+[`ignored_advisories`]: /tools/pub/pubspec#ignored_advisories

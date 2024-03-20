@@ -814,7 +814,7 @@ Another approach is to add explicit type tests and fallback code:
 
 ```dart
 String f(String x) => x;
-String g(num y) => f(y is String ? y : '');
+String g(Object y) => f(y is String ? y : '');
 ```
 
 If you believe that the runtime type of the argument will always be the
@@ -1592,7 +1592,7 @@ Future<int> f() async {
 }
 ```
 
-### await_of_extension_type_not_future
+### await_of_incompatible_type
 
 _The 'await' expression can't be used for an expression with an extension type
 that is not a subtype of 'Future'._
@@ -1926,7 +1926,7 @@ _FFI callbacks can't take typed data arguments or return value._
 
 The analyzer produces this diagnostic when an invocation of
 `Pointer.fromFunction`, one of`NativeCallable`'s constructors has a
-typed data argument or return value."
+typed data argument or return value.
 
 Typed data unwrapping is only supported on arguments for leaf FFI calls.
 
@@ -2634,6 +2634,9 @@ variable is defined._
 _'{0}' can't be used to name both a type variable and the extension in which the
 type variable is defined._
 
+_'{0}' can't be used to name both a type variable and the extension type in
+which the type variable is defined._
+
 _'{0}' can't be used to name both a type variable and the mixin in which the
 type variable is defined._
 
@@ -2665,6 +2668,9 @@ class C<T> {}
 _'{0}' can't be used to name both a type variable and a member in this class._
 
 _'{0}' can't be used to name both a type variable and a member in this enum._
+
+_'{0}' can't be used to name both a type variable and a member in this extension
+type._
 
 _'{0}' can't be used to name both a type variable and a member in this
 extension._
@@ -3349,7 +3355,7 @@ The following code produces this diagnostic because the value of `list1` is
 `null`, which is neither a list nor a set:
 
 ```dart
-const List<int> list1 = null;
+const dynamic list1 = 42;
 const List<int> list2 = [...[!list1!]];
 ```
 
@@ -3359,7 +3365,7 @@ Change the expression to something that evaluates to either a constant list
 or a constant set:
 
 ```dart
-const List<int> list1 = [];
+const dynamic list1 = [42];
 const List<int> list2 = [...list1];
 ```
 
@@ -3378,7 +3384,7 @@ The following code produces this diagnostic because the value of `map1` is
 `null`, which isn't a map:
 
 ```dart
-const Map<String, int> map1 = null;
+const dynamic map1 = 42;
 const Map<String, int> map2 = {...[!map1!]};
 ```
 
@@ -3387,7 +3393,7 @@ const Map<String, int> map2 = {...[!map1!]};
 Change the expression to something that evaluates to a constant map:
 
 ```dart
-const Map<String, int> map1 = {};
+const dynamic map1 = {'answer': 42};
 const Map<String, int> map2 = {...map1};
 ```
 
@@ -3726,7 +3732,7 @@ void f() {
   try {
   } catch (e) {
   } [!on String {!]
-  [!}!]
+  [!]}!]
 }
 ```
 
@@ -3777,7 +3783,7 @@ void f() {
   try {
   } on num {
   } [!on int {!]
-  [!}!]
+  [!]}!]
 }
 ```
 
@@ -4845,7 +4851,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -4859,7 +4865,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -4871,7 +4877,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -7000,7 +7006,7 @@ positional parameters but has a named parameter that could be used for the
 third argument:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2, [!3!]);
 }
@@ -7012,7 +7018,7 @@ If some of the arguments should be values for named parameters, then add
 the names before the arguments:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2, c: 3);
 }
@@ -7022,7 +7028,7 @@ Otherwise, remove the arguments that don't correspond to positional
 parameters:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2);
 }
@@ -8718,11 +8724,11 @@ the signature of `m` that's inherited from `B`:
 
 ```dart
 class A {
-  void m({int a}) {}
+  void m({int? a}) {}
 }
 
 class B {
-  void m({int b}) {}
+  void m({int? b}) {}
 }
 
 class [!C!] extends A implements B {
@@ -8736,15 +8742,15 @@ signatures:
 
 ```dart
 class A {
-  void m({int a}) {}
+  void m({int? a}) {}
 }
 
 class B {
-  void m({int b}) {}
+  void m({int? b}) {}
 }
 
 class C extends A implements B {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -8885,7 +8891,7 @@ initializing `x`, but `x` isn't a field in the class:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C() : [!x = 0!];
 }
@@ -8898,7 +8904,7 @@ name of the field:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C() : y = 0;
 }
@@ -8908,8 +8914,8 @@ If the field must be declared, then add a declaration:
 
 ```dart
 class C {
-  int x;
-  int y;
+  int? x;
+  int? y;
 
   C() : x = 0;
 }
@@ -8990,7 +8996,7 @@ defined:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C([!this.x!]);
 }
@@ -9003,7 +9009,7 @@ field:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C(this.y);
 }
@@ -9014,8 +9020,8 @@ field:
 
 ```dart
 class C {
-  int x;
-  int y;
+  int? x;
+  int? y;
 
   C(this.x);
 }
@@ -9036,7 +9042,7 @@ If the parameter isn't needed, then remove it:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C();
 }
@@ -9139,7 +9145,7 @@ is being referenced in a static method:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   static int m() {
     return [!x!];
@@ -9154,7 +9160,7 @@ so remove the keyword:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   int m() {
     return x;
@@ -9167,7 +9173,7 @@ that an instance of the class can be passed in:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   static int m(C c) {
     return c.x;
@@ -10611,12 +10617,12 @@ _The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
 The analyzer produces this diagnostic when a member of a class is found
 that overrides a member from a supertype and the override isn't valid. An
 override is valid if all of these are true:
-* It allows all of the arguments allowed by the overridden member.
-* It doesn't require any arguments that aren't required by the overridden
+- It allows all of the arguments allowed by the overridden member.
+- It doesn't require any arguments that aren't required by the overridden
   member.
-* The type of every parameter of the overridden member is assignable to the
+- The type of every parameter of the overridden member is assignable to the
   corresponding parameter of the override.
-* The return type of the override is assignable to the return type of the
+- The return type of the override is assignable to the return type of the
   overridden member.
 
 #### Example
@@ -12950,7 +12956,7 @@ is required:
 ```dart
 import 'package:meta/meta.dart';
 
-void f({@required int x}) {}
+void f({@required int? x}) {}
 
 void g() {
   [!f!]();
@@ -12964,7 +12970,7 @@ Provide the required value:
 ```dart
 import 'package:meta/meta.dart';
 
-void f({@required int x}) {}
+void f({@required int? x}) {}
 
 void g() {
   f(x: 2);
@@ -14062,44 +14068,57 @@ name: example
 ### native_field_invalid_type
 
 _'{0}' is an unsupported type for native fields. Native fields only support
-pointers or numeric and compound types._
+pointers, arrays or numeric and compound types._
 
 #### Description
 
 The analyzer produces this diagnostic when an `@Native`-annotated field
 has a type not supported for native fields.
 
-Array fields are unsupported because there currently is no size
-annotation for native fields. It is possible to represent global array
-variables as pointers though, as they have an identical representation in
-memory.
+Native fields support pointers, arrays, numeric types and subtypes of
+`Compound` (i.e., structs or unions). Other subtypes of `NativeType`,
+such as `Handle` or `NativeFunction` are not allowed as native fields.
+
+Native functions should be used with external functions instead of
+external fields.
 
 Handles are unsupported because there is no way to transparently load and
-store Dart object into pointers.
+store Dart objects into pointers.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
 #### Example
 
-The following code produces this diagnostic because the field `f` uses an
-unsupported type, `Array`:
+The following code produces this diagnostic because the field `free` uses
+an unsupported native type, `NativeFunction`:
 
 ```dart
 import 'dart:ffi';
 
-@Native()
-external Array<Int> [!f!];
+@Native<NativeFunction<Void Function()>>()
+external void Function() [!free!];
 ```
 
 #### Common fixes
 
-For array fields, use a pointer instead:
+If you meant to bind to an existing native function with a
+`NativeFunction` field, use `@Native` methods instead:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Pointer<Void>)>()
+external void free(Pointer<Void> ptr);
+```
+
+To bind to a field storing a function pointer in C, use a pointer type
+for the Dart field:
 
 ```dart
 import 'dart:ffi';
 
 @Native()
-external Pointer<Int> f;
+external Pointer<NativeFunction<Void Function(Pointer<Void>)>> free;
 ```
 
 ### native_field_missing_type
@@ -14649,7 +14668,7 @@ value inside the function:
 ```dart
 var defaultValue = 3;
 
-void f([int value]) {
+void f([int? value]) {
   value ??= defaultValue;
 }
 ```
@@ -16380,12 +16399,13 @@ class B extends A {}
 
 ### nullable_type_in_implements_clause
 
-_A class or mixin can't implement a nullable type._
+_A class, mixin, or extension type can't implement a nullable type._
 
 #### Description
 
-The analyzer produces this diagnostic when a class or mixin declaration has
-an `implements` clause, and an interface is followed by a `?`.
+The analyzer produces this diagnostic when a class, mixin, or
+extension type declaration has an `implements` clause, and an
+interface is followed by a `?`.
 
 It isn't valid to specify a nullable interface because doing so would have
 no meaning; it wouldn't change the interface being inherited by the class
@@ -19659,9 +19679,9 @@ field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f() => C.[!b!];
@@ -19674,9 +19694,9 @@ to an existing static field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f() => C.a;
@@ -19687,9 +19707,9 @@ class to access the field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f(C c) => c.b;
@@ -21930,7 +21950,7 @@ named parameter named `a`:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 void f(C c) {
@@ -21945,7 +21965,7 @@ The example above can be fixed by changing `a` to `b`:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 void f(C c) {
@@ -21958,11 +21978,11 @@ receiver to the subclass:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 class D extends C {
-  m({int a, int b}) {}
+  m({int? a, int? b}) {}
 }
 
 void f(C c) {
@@ -21974,7 +21994,7 @@ If the parameter should be added to the function, then add it:
 
 ```dart
 class C {
-  m({int a, int b}) {}
+  m({int? a, int? b}) {}
 }
 
 void f(C c) {
@@ -23018,7 +23038,7 @@ invocation of `_m`, the following code produces this diagnostic:
 
 ```dart
 class C {
-  void _m(int x, [int [!y!]]) {}
+  void _m(int x, [int? [!y!]]) {}
 
   void n() => _m(0);
 }
@@ -23506,7 +23526,7 @@ The following code produces this diagnostic because the value of `x` is an
 `int`, which can't be assigned to `y` because an `int` isn't a `String`:
 
 ```dart
-const Object x = 0;
+const dynamic x = 0;
 const String y = [!x!];
 ```
 
@@ -23516,7 +23536,7 @@ If the declaration of the constant is correct, then change the value being
 assigned to be of the correct type:
 
 ```dart
-const Object x = 0;
+const dynamic x = 0;
 const String y = '$x';
 ```
 
@@ -23524,7 +23544,7 @@ If the assigned value is correct, then change the declaration to have the
 correct type:
 
 ```dart
-const Object x = 0;
+const int x = 0;
 const int y = x;
 ```
 
@@ -23585,7 +23605,7 @@ one optional parameter:
 
 ```dart
 class C {
-  set [!s!]([int x]) {}
+  set [!s!]([int? x]) {}
 }
 ```
 

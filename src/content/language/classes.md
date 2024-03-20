@@ -138,7 +138,7 @@ To get an object's type at runtime,
 you can use the `Object` property `runtimeType`,
 which returns a [`Type`][] object.
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (runtimeType)"?>
+<?code-excerpt "misc/test/language_tour/classes_test.dart (runtime-type)"?>
 ```dart
 print('The type of a is ${a.runtimeType}');
 ```
@@ -177,7 +177,7 @@ Non-final instance variables and
 an implicit *setter* method. For details,
 check out [Getters and setters][].
 
-<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class-main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
   double? x; // Declare instance variable x, initially null.
@@ -285,7 +285,7 @@ void main() {
 Here's an example of specifying that a class implements multiple
 interfaces:
 
-<?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
+<?code-excerpt "misc/lib/language_tour/classes/misc.dart (point-interfaces)"?>
 ```dart
 class Point implements Comparable, Location {...}
 ```

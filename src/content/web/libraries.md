@@ -4,46 +4,44 @@ short-title: Web libraries
 description: Libraries and packages that can help you write Dart web apps.
 ---
 
-The [Dart SDK][] contains [dart:html][] and other libraries
-that provide low-level web APIs.
-You can supplement or replace these APIs using web packages.
+Dart provides several packages and libraries to support
+web app development, the recommended option being [`package:web`][web].
+The [Dart SDK][] also contains other libraries that provide low-level web APIs.
 
-[Dart SDK]: /tools/sdk
-[dart:html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
+## Web solutions
 
+[Migrate to `package:web`][migrate]
+: Learn how to migrate to `package:web`
+  from Dart's previous web library solutions, like [`dart:html`][html].
 
-## SDK libraries
+[`package:web` API reference][web]
+: Dart's recommended web interop solution `package:web` exposes browser
+  APIs with lightweight bindings built around static JS interop. 
 
-The Dart SDK contains dart:html and other libraries
-that provide low-level web APIs.
+[JavaScript interoperability documentation][js]
+: Learn how to interact with existing JavaScript or TypeScript libraries
+  using Dart's JS interop support.
+
+[`dart:js_interop` API reference][js_interop]
+: Dart's web library `dart:js_interop` provides all the necessary members to
+  facilitate sound interop between JavaScript and Dart types. 
+
+[Flutter web support][flutter-web]
+: The [Flutter framework][flutter] supports web development with Dart,
+  in addition to mobile, desktop, and embedded device support.
 
 [Build a web app with Dart](/web/get-started)
 : A quick overview of how to build, run, and debug a web app with Dart.
 
-[The dart:html documentation](/libraries/dart-html)
-: An example-driven tour of using the dart:html library.
-  Topics include manipulating the DOM programmatically,
-  making HTTP requests, and using WebSockets.
-
-[dart:html API reference][dart:html]
-: Complete reference documentation for the dart:html library.
-
-
-## Web packages
-
-Many [packages](/guides/packages) support web development with Dart.
-In particular, the [Flutter framework][flutter] has [web support][flutter-web],
-in addition to mobile, desktop, and embedded device support.
-
-To find more libraries that support writing web apps, 
+To find other libraries that support the web platform,
 search pub.dev for [web packages][].
 
-Your Dart code can also interact with existing
-JavaScript or TypeScript libraries
-using Dart's [JavaScript interoperability][] support.
-
+[web]: {{site.pub-pkg}}/web
+[Dart SDK]: {{site.dart-api}}/{{site.sdkInfo.channel}}
+[migrate]: /interop/js-interop/package-web
+[js_interop]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[flutter-web]: {{site.flutter-docs}}/platform-integration/web
 [flutter]: {{site.flutter}}
-[flutter-web]: {{site.flutter}}/web
-[js]: {{site.pub-pkg}}/js
-[JavaScript interoperability]: /interop/js-interop
 [web packages]: {{site.pub}}/web
+[html]: /libraries/dart-html
+[js]: /interop/js-interop

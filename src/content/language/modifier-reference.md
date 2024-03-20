@@ -60,7 +60,8 @@ of modifiers are not allowed:
 | `sealed` with `base`, `interface`, or `final` | `sealed` types already cannot be mixed in, extended or implemented from another library, so are redundant to combine with the listed modifiers. |
 | `mixin` and `abstract`                        | Neither can be constructed, so are redundant together.                                                                                          |
 | `mixin` and `interface`, `final`, or `sealed` | A `mixin` or `mixin class` declaration is intended to be mixed in, which the listed modifiers prevent.                                          |
-| `enum` and any modifiers                      | `enum` declarations cannot be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.    |
+| `enum` and any modifiers                      | `enum` declarations can't be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.     |
+| `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
 
 {:.table .table-striped .nowrap}
 </div>

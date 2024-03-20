@@ -63,18 +63,18 @@ void main() {
 
   test('getString', skip: 'httpbin timing out', () async {
     final url = 'https://httpbin.org';
-    // #docregion getString
+    // #docregion get-string
     Future<void> main() async {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
-      // #enddocregion getString
+      // #enddocregion get-string
       expect(
         pageHtml.substring(0, 250),
         contains('<title>httpbin'),
       );
-      // #docregion getString
+      // #docregion get-string
     }
-    // #enddocregion getString
+    // #enddocregion get-string
 
     await main();
   });

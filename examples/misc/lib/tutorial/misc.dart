@@ -21,27 +21,17 @@ void futuresTutorial() {
       .then((bValue) => expensiveC())
       .then((cValue) => doSomethingWith(cValue));
   // #enddocregion chaining
-
-  void handleError(dynamic) {}
-  void chooseBestResponse(List responses, bool anotherArg) => responses[0];
-  bool moreInfo = true;
-
-  // #docregion Future-wait
-  Future.wait([expensiveA(), expensiveB(), expensiveC()])
-      .then((List responses) => chooseBestResponse(responses, moreInfo))
-      .catchError(handleError);
-  // #enddocregion Future-wait
 }
 
 void streamsTutorial() {
-  // #docregion lastPositive
+  // #docregion last-positive
   Future<int> lastPositive(Stream<int> stream) =>
       stream.lastWhere((x) => x >= 0);
-  // #enddocregion lastPositive
+  // #enddocregion last-positive
 
   void log(e) {}
 
-  // #docregion mapLogErrors
+  // #docregion map-log-errors
   Stream<S> mapLogErrors<S, T>(
     Stream<T> stream,
     S Function(T event) convert,
@@ -51,7 +41,7 @@ void streamsTutorial() {
       yield convert(event);
     }
   }
-  // #enddocregion mapLogErrors
+  // #enddocregion map-log-errors
 }
 
 abstract class MyStream<T> extends Stream<T> {

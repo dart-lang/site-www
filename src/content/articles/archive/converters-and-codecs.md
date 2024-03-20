@@ -6,8 +6,6 @@ date: 2015-03-17
 obsolete: true
 ---
 
-### **_How to write efficient conversions_**
-
 _Written by Florian Loitsch <br>
 February 2014 (updated March 2015)_
 

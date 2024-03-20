@@ -260,7 +260,7 @@ InputElement htmlInput = InputElement();
 await htmlInput.onBlur.first;
 
 // package:web version
-HTMLInputElement webInput = document.createElementById('input');
+HTMLInputElement webInput = document.createElement('input') as HTMLInputElement;
 await webInput.onBlur.first;
 ```
 
@@ -296,7 +296,7 @@ Do we have any other package migrations to show off here?
 [interop methods]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage
 [Compatibility, type checks, and casts]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
-[Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/compare/main...johnpryan:wasm/url-launcher
+[Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/pull/5451/files
 [stream helpers]: https://github.com/dart-lang/web/blob/main/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
 [`JSObject`]: https://api.dart.dev/dev/dart-js_interop/JSObject-extension-type.html

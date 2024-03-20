@@ -121,7 +121,7 @@ import 'package:greetings/hello.dart' deferred as hello;
 When you need the library, invoke
 `loadLibrary()` using the library's identifier.
 
-<?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
+<?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (load-library)"?>
 ```dart
 Future<void> greet() async {
   await hello.loadLibrary();

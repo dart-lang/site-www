@@ -21,7 +21,7 @@ obsolete: true
 }
 </style>
 
-### Asynchronous dynamic extents
+## Asynchronous dynamic extents
 
 This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]

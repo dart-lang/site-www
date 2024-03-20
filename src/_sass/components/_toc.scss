@@ -2,108 +2,94 @@
 @use '../core/mixins' as *;
 @use '../core/bootstrap';
 
-#site-toc--side {
-  $padding: map-get(bootstrap.$spacers, 2);
-
-  display: none;
-  right: 0;
-
-  .nav {
-    display: block;
-  }
-
-  .nav-link {
-    padding-bottom: $padding;
-
-    color: bootstrap.theme-color('primary');
-
-    &.active {
-      color: bootstrap.theme-color('secondary');
-      font-weight: 500;
-    }
-  }
-
-  > ul > li {
-    padding-bottom: $padding; // Extra space for top-level entries
-
-    li {
-      padding-left: $padding;
-    }
-
-    // Indent subentries
-  }
-}
-
 .site-toc {
-  $line-height: normal;
-
   ul {
     padding-left: 0;
     margin-left: 0;
     list-style: none;
   }
 
-  @include bootstrap.media-breakpoint-up(xl) {
-    padding-bottom: $site-content-top-padding;
-    padding-top: $site-content-top-padding;
-
-    @at-root {
-      #site-toc--inline {
-        display: none;
-      }
-
-      #site-toc--side {
-        display: block;
-      }
-    }
-  }
-
-  .nav-item {
-    font-size: bootstrap.$font-size-sm;
-
-    .nav-link {
-      color: $site-color-body-light !important;
-      line-height: $line-height;
-      padding: 0;
-    }
-  }
-
   &__title {
     font-family: $site-font-family-alt;
-    font-size: bootstrap.$font-size-lg;
+    font-size: 18px;
     margin-bottom: bootstrap.bs-spacer(2);
   }
 }
 
-.toc-entry.toc-h1,
-.toc-entry.toc-h4,
-.toc-entry.toc-h5,
-.toc-entry.toc-h6 {
+#site-toc--side {
+  padding: $top-content-padding 20px $content-padding 28px;
+
+  @include sidenav-top-position;
   display: none;
-}
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 246px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  z-index: 5;
 
-
-// Overrides moved here from main.scss
-#site-toc--inline {
-  background: #f5f5f7;
-  padding: 15px 30px;
-  margin-bottom: 1rem;
-
-  .site-toc__title {
-    font-size: 18px;
+  @include bootstrap.media-breakpoint-up(xl) {
+    display: block;
   }
 
-  ul {
-    list-style: none;
+  .toc-entry {
+    padding-bottom: bootstrap.bs-spacer(2);
+    font-size: bootstrap.$font-size-sm;
+
+    // Indent subsequent lines.
+    margin-left: 1rem;
+    text-indent: -1rem;
+
+    .nav {
+      padding-top: 0.5rem;
+      display: block;
+    }
+  }
+
+  .nav-link {
+    color: $site-color-body;
+    font-size: $font-size-small;
+    line-height: normal;
+    padding: 1px 0;
+
+    &:hover {
+      color: $brand-primary;
+    }
+
+    &.active {
+      color: $brand-primary;
+
+      &:hover {
+        color: $flutter-color-dark-blue;
+      }
+    }
+  }
+
+  body.hide_toc & {
+    display: none;
+  }
+}
+
+#site-toc--inline {
+  background: #f5f5f7;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+
+  @include bootstrap.media-breakpoint-up(xl) {
+    display: none;
+  }
+
+  .toc-entry ul {
     padding-left: 1rem;
   }
 
-  &.toc-collapsible {
-    > .section-nav {
-      margin-bottom: 0;
-      padding-left: 0;
-    }
+  > .section-nav {
+    margin-bottom: 0.25rem;
+  }
 
+  &.toc-collapsible {
     .site-toc--inline__toggle {
       float: right;
     }
@@ -135,73 +121,5 @@
         display: inline-block;
       }
     }
-  }
-}
-
-// The table-of-content section on the right side of the screen.
-#site-toc--side {
-  @include sidenav-top-position;
-
-  position: fixed;
-  bottom: 0;
-  min-width: 226px;
-  max-width: 246px;
-  right: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overflow-wrap: break-word;
-  z-index: 5;
-
-  // override shared/_toc.scss
-  &.site-toc {
-    padding: $top-content-padding 20px $content-padding 30px;
-  }
-
-  // Override BS defaults for .nav, etc.
-  .site-toc__title {
-    color: $site-color-body;
-    font-size: 18px;
-  }
-
-  .toc-entry {
-    padding-bottom: 0.5rem;
-
-    // Indent subsequent lines
-    margin-left: 1rem;
-    text-indent: -1rem;
-
-    & .toc-entry {
-      margin-left: 0;
-    }
-
-    .nav {
-      padding-top: 0.5rem;
-    }
-  }
-
-  .section-nav {
-    display: block;
-    padding-top: 0.5rem;
-
-    .nav-link {
-      color: $site-color-body !important;
-      font-size: $font-size-small;
-      font-weight: 400;
-      padding: 1px 0;
-
-      &.active {
-        color: $brand-primary !important;
-
-        // removing the '>' before the menu item
-        // override shared/_toc.scss
-        &:before {
-          display: none;
-        }
-      }
-    }
-  }
-
-  body.hide_toc & {
-    display: none;
   }
 }

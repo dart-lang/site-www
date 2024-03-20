@@ -52,7 +52,7 @@ void main() {
     });
 
     test('toString()', () {
-      // #docregion toString-
+      // #docregion to-string
       // Convert an int to a string.
       assert(42.toString() == '42');
 
@@ -65,7 +65,7 @@ void main() {
       // Specify the number of significant figures.
       assert(123.456.toStringAsPrecision(2) == '1.2e+2');
       assert(double.parse('1.2e+2') == 120.0);
-      // #enddocregion toString-
+      // #enddocregion to-string
     });
   });
 
@@ -117,13 +117,13 @@ void main() {
     });
 
     test('change case', () {
-      // #docregion toUpperCase-toLowerCase
+      // #docregion case-conversions
       // Convert to uppercase.
       assert('web apps'.toUpperCase() == 'WEB APPS');
 
       // Convert to lowercase.
       assert('WEB APPS'.toLowerCase() == 'web apps');
-      // #enddocregion toUpperCase-toLowerCase
+      // #enddocregion case-conversions
     });
 
     test('trim-etc', () {
@@ -150,7 +150,7 @@ void main() {
     });
 
     test('StringBuffer', () {
-      // #docregion StringBuffer
+      // #docregion string-buffer
       var sb = StringBuffer();
       sb
         ..write('Use a StringBuffer for ')
@@ -160,11 +160,11 @@ void main() {
       var fullString = sb.toString();
 
       assert(fullString == 'Use a StringBuffer for efficient string creation.');
-      // #enddocregion StringBuffer
+      // #enddocregion string-buffer
     });
 
     test('RegExp', () {
-      // #docregion RegExp
+      // #docregion regexp
       // Here's a regular expression for one or more digits.
       var numbers = RegExp(r'\d+');
 
@@ -178,7 +178,7 @@ void main() {
       // Replace every match with another string.
       var exedOut = someDigits.replaceAll(numbers, 'XX');
       assert(exedOut == 'llamas live XX to XX years');
-      // #enddocregion RegExp
+      // #enddocregion regexp
     });
 
     test('match', () {
@@ -203,7 +203,7 @@ void main() {
 
   group('Collections: List:', () {
     test('constructor', () {
-      // #docregion List
+      // #docregion list
       // Create an empty list of strings.
       var grains = <String>[];
       assert(grains.isEmpty);
@@ -232,11 +232,11 @@ void main() {
       // You can also create a List using one of the constructors.
       var vegetables = List.filled(99, 'broccoli');
       assert(vegetables.every((v) => v == 'broccoli'));
-      // #enddocregion List
+      // #enddocregion list
     });
 
     test('indexOf', () {
-      // #docregion indexOf
+      // #docregion index-of
       var fruits = ['apples', 'oranges'];
 
       // Access a list item by index.
@@ -244,21 +244,21 @@ void main() {
 
       // Find an item in a list.
       assert(fruits.indexOf('apples') == 0);
-      // #enddocregion indexOf
+      // #enddocregion index-of
     });
 
     test('compareTo', () {
-      // #docregion compareTo
+      // #docregion compare-to
       var fruits = ['bananas', 'apples', 'oranges'];
 
       // Sort a list.
       fruits.sort((a, b) => a.compareTo(b));
       assert(fruits[0] == 'apples');
-      // #enddocregion compareTo
+      // #enddocregion compare-to
     });
 
     test('List-of-String', () {
-      // #docregion List-of-String
+      // #docregion list-of-string
       // This list should contain only strings.
       var fruits = <String>[];
 
@@ -266,13 +266,13 @@ void main() {
       var fruit = fruits[0];
       // ignore: unnecessary_type_check
       assert(fruit is String);
-      // #enddocregion List-of-String
+      // #enddocregion list-of-string
     });
   });
 
   group('Collections: Set', () {
     test('constructor', () {
-      // #docregion Set
+      // #docregion set
       // Create an empty set of strings.
       var ingredients = <String>{};
 
@@ -291,7 +291,7 @@ void main() {
       // You can also create sets using
       // one of the constructors.
       var atomicNumbers = Set.from([79, 22, 54]);
-      // #enddocregion Set
+      // #enddocregion set
       expect(ingredients, isNot(contains('gold')));
       expect(atomicNumbers, isNotEmpty);
     });
@@ -325,7 +325,7 @@ void main() {
 
   group('Collections: Map', () {
     test('constructor', () {
-      // #docregion Map
+      // #docregion map
       // Maps often use strings as keys.
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -339,7 +339,7 @@ void main() {
       // Maps are parameterized types; you can specify what
       // types the key and value should be.
       var nobleGases = Map<int, String>();
-      // #enddocregion Map
+      // #enddocregion map
       assert(hawaiianBeaches.isNotEmpty);
       assert(searchTerms.isEmpty);
       assert(nobleGases.isEmpty);
@@ -385,7 +385,7 @@ void main() {
     });
 
     test('containsKey', () {
-      // #docregion containsKey
+      // #docregion contains-key
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
@@ -394,16 +394,16 @@ void main() {
 
       assert(hawaiianBeaches.containsKey('Oahu'));
       assert(!hawaiianBeaches.containsKey('Florida'));
-      // #enddocregion containsKey
+      // #enddocregion contains-key
     });
 
     test('putIfAbsent', () {
       String pickToughestKid() => 'Rock';
-      // #docregion putIfAbsent
+      // #docregion put-if-absent
       var teamAssignments = <String, String>{};
       teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
       assert(teamAssignments['Catcher'] != null);
-      // #enddocregion putIfAbsent
+      // #enddocregion put-if-absent
     });
   });
 
@@ -415,22 +415,22 @@ void main() {
     final teasCheck = ['green', 'black', 'chamomile', 'earl grey'];
 
     test('isEmpty', () {
-      // #docregion isEmpty
+      // #docregion is-empty
       var coffees = <String>[];
       var teas = ['green', 'black', 'chamomile', 'earl grey'];
       assert(coffees.isEmpty);
       assert(teas.isNotEmpty);
-      // #enddocregion isEmpty
+      // #enddocregion is-empty
       expect(teas, teasCheck);
     });
 
     test('List.forEach()', () {
       void testForEach() {
-        // #docregion List-forEach
+        // #docregion list-for-each
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
         teas.forEach((tea) => print('I drink $tea'));
-        // #enddocregion List-forEach
+        // #enddocregion list-for-each
         expect(teas, teasCheck);
       }
 
@@ -440,13 +440,13 @@ void main() {
     test('Map.forEach()', () {
       void testForEach() {
         final hawaiianBeaches = {'Honolulu': 'Hanauma Bay'};
-        // #docregion Map-forEach
+        // #docregion map-for-each
         hawaiianBeaches.forEach((k, v) {
           print('I want to visit $k and swim at $v');
           // I want to visit Oahu and swim at
           // [Waikiki, Kailua, Waimanalo], etc.
         });
-        // #enddocregion Map-forEach
+        // #enddocregion map-for-each
       }
 
       expect(testForEach,
@@ -455,12 +455,12 @@ void main() {
 
     test('List.map()', () {
       void testListMap() {
-        // #docregion List-map
+        // #docregion list-map
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
         var loudTeas = teas.map((tea) => tea.toUpperCase());
         loudTeas.forEach(print);
-        // #enddocregion List-map
+        // #enddocregion list-map
         expect(teas, teasCheck);
       }
 
@@ -469,9 +469,9 @@ void main() {
 
     test('toList()', () {
       var teas = <String>[];
-      // #docregion toList
+      // #docregion to-list
       var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
-      // #enddocregion toList
+      // #enddocregion to-list
       // ignore: unnecessary_type_check
       expect(loudTeas is List, isTrue);
     });
@@ -502,7 +502,7 @@ void main() {
 
   group('URIs', () {
     test('encodeFull', () {
-      // #docregion encodeFull
+      // #docregion encode-full
       var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeFull(uri);
@@ -510,11 +510,11 @@ void main() {
 
       var decoded = Uri.decodeFull(encoded);
       assert(uri == decoded);
-      // #enddocregion encodeFull
+      // #enddocregion encode-full
     });
 
     test('encodeComponent', () {
-      // #docregion encodeComponent
+      // #docregion encode-component
       var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeComponent(uri);
@@ -523,11 +523,11 @@ void main() {
 
       var decoded = Uri.decodeComponent(encoded);
       assert(uri == decoded);
-      // #enddocregion encodeComponent
+      // #enddocregion encode-component
     });
 
     test('Uri.parse', () {
-      // #docregion Uri-parse
+      // #docregion uri-parse
       var uri = Uri.parse('https://example.org:8080/foo/bar#frag');
 
       assert(uri.scheme == 'https');
@@ -535,11 +535,11 @@ void main() {
       assert(uri.path == '/foo/bar');
       assert(uri.fragment == 'frag');
       assert(uri.origin == 'https://example.org:8080');
-      // #enddocregion Uri-parse
+      // #enddocregion uri-parse
     });
 
     test('constructor', () {
-      // #docregion Uri
+      // #docregion uri
       var uri = Uri(
           scheme: 'https',
           host: 'example.org',
@@ -547,23 +547,23 @@ void main() {
           fragment: 'frag',
           queryParameters: {'lang': 'dart'});
       assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
-      // #enddocregion Uri
+      // #enddocregion uri
     });
 
     test('http constructors', () {
-      // #docregion Uri-http
+      // #docregion uri-http
       var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
       var httpsUri = Uri.https('example.org', '/foo/bar', {'lang': 'dart'});
 
       assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
       assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
-      // #enddocregion Uri-http
+      // #enddocregion uri-http
     });
   });
 
   group('DateTime:', () {
     test('DateTime', () {
-      // #docregion DateTime
+      // #docregion date-time
       // Get the current date and time.
       var now = DateTime.now();
 
@@ -584,14 +584,14 @@ void main() {
 
       // Create a new DateTime from an existing one, adjusting just some properties:
       var sameTimeLastYear = now.copyWith(year: now.year - 1);
-      // #enddocregion DateTime
+      // #enddocregion date-time
       assert(2016 < now.year, 'Time travel is verboten!');
       expect(y2k.year, 2000);
       expect(sameTimeLastYear.year, now.year - 1);
     });
 
     test('millisecondsSinceEpoch', () {
-      // #docregion millisecondsSinceEpoch
+      // #docregion milliseconds-since-epoch
       // 1/1/2000, UTC
       var y2k = DateTime.utc(2000);
       assert(y2k.millisecondsSinceEpoch == 946684800000);
@@ -599,11 +599,11 @@ void main() {
       // 1/1/1970, UTC
       var unixEpoch = DateTime.utc(1970);
       assert(unixEpoch.millisecondsSinceEpoch == 0);
-      // #enddocregion millisecondsSinceEpoch
+      // #enddocregion milliseconds-since-epoch
     });
 
     test('Duration', () {
-      // #docregion Duration
+      // #docregion duration
       var y2k = DateTime.utc(2000);
 
       // Add one year.
@@ -619,7 +619,7 @@ void main() {
       // Returns a Duration object.
       var duration = y2001.difference(y2k);
       assert(duration.inDays == 366); // y2k was a leap year.
-      // #enddocregion Duration
+      // #enddocregion duration
     });
   });
 

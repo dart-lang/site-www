@@ -18,3 +18,4 @@ void main() {
   // ignore: unnecessary_type_check
   assert(sort is Compare<int>); // True!
 }
+// #enddocregion compare

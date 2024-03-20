@@ -164,6 +164,50 @@ function initCookieNotice() {
   });
 }
 
+// A pattern to remove terminal command markers when copying code blocks.
+const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
+
+function setupCopyButtons() {
+  if (!navigator.clipboard) {
+    return;
+  }
+
+  const codeBlocks =
+      document.querySelectorAll('.code-block-body');
+
+  codeBlocks.forEach(codeBlock => {
+    if (codeBlock.querySelector('pre')) {
+      const copyButton = document.createElement('button');
+      const innerIcon = document.createElement('span');
+
+      copyButton.classList.add('code-copy-button');
+      copyButton.title = 'Copy to clipboard';
+
+      innerIcon.textContent = 'content_copy';
+      innerIcon.ariaHidden = 'true';
+      innerIcon.classList.add('material-symbols');
+
+      copyButton.addEventListener('click', async (e) => {
+        const codeBlockBody = e.currentTarget.parentElement;
+        if (codeBlockBody) {
+          const codePre = codeBlock.querySelector('pre');
+          if (codePre) {
+            const contentToCopy = codePre.textContent
+                .replace(terminalReplacementPattern, '');
+            if (contentToCopy && contentToCopy.length !== 0) {
+              await navigator.clipboard.writeText(contentToCopy);
+            }
+            e.preventDefault();
+          }
+        }
+      });
+
+      copyButton.appendChild(innerIcon);
+      codeBlock.appendChild(copyButton);
+    }
+  });
+}
+
 $(function() {
   fixNav(); // Adjust heights for navigation elements
   setupOsTabs();
@@ -234,4 +278,5 @@ $(function() {
     }
   });
 
+  setupCopyButtons();
 });

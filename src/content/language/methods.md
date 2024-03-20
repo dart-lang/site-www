@@ -17,7 +17,7 @@ Instance methods on objects can access instance variables and `this`.
 The `distanceTo()` method in the following sample is an example of an
 instance method:
 
-<?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distanceTo)" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distance-to)" plaster="none"?>
 ```dart
 import 'dart:math';
 
@@ -25,6 +25,8 @@ class Point {
   final double x;
   final double y;
 
+  // Sets the x and y instance variables
+  // before the constructor body runs.
   Point(this.x, this.y);
 
   double distanceTo(Point other) {
@@ -40,11 +42,14 @@ class Point {
 Operators are instance methods with special names.
 Dart allows you to define operators with the following names:
 
-`<`  | `+`  | `|`  | `>>>`
-`>`  | `/`  | `^`  | `[]`
-`<=` | `~/` | `&`  | `[]=`
-`>=` | `*`  | `<<` | `~`
-`-`  | `%`  | `>>` | `==`
+|      |      |      |       |
+|------|------|------|-------|
+| `<`  | `+`  | `\|` | `>>>` |
+| `>`  | `/`  | `^`  | `[]`  |
+| `<=` | `~/` | `&`  | `[]=` |
+| `>=` | `*`  | `<<` | `~`   |
+| `-`  | `%`  | `>>` | `==`  |
+
 {:.table}
 
 :::note

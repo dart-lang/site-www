@@ -40,14 +40,14 @@ You don't need to import dart:async to use the Future and
 Stream APIs, because dart:core exports those classes.
 :::
 
-### Future
+## Future
 
 Future objects appear throughout the Dart libraries, often as the object
 returned by an asynchronous method. When a future *completes*, its value
 is ready to use.
 
 
-#### Using await
+### Using await
 
 Before you directly use the Future API, consider using `await` instead.
 Code that uses `await` expressions can be easier to understand
@@ -57,7 +57,7 @@ Consider the following function.  It uses Future's `then()` method
 to execute three asynchronous functions in a row,
 waiting for each one to complete before executing the next one.
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (run-using-future)"?>
 ```dart
 void runUsingFuture() {
   // ...
@@ -70,7 +70,7 @@ void runUsingFuture() {
 The equivalent code with await expressions
 looks more like synchronous code:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (run-using-async-await)"?>
 ```dart
 Future<void> runUsingAsyncAwait() async {
   // ...
@@ -104,7 +104,7 @@ For more information on using `await` and related Dart language features,
 see the [asynchronous programming codelab](/codelabs/async-await).
 
 
-#### Basic usage
+### Basic usage
 
 You can use `then()` to schedule code that runs when the future completes. For
 example, [`Client.read()`][] returns a Future, since HTTP requests
@@ -121,7 +121,7 @@ httpClient.read(url).then((String result) {
 Use `catchError()` to handle any errors or exceptions that a Future
 object might throw.
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
+<?code-excerpt "misc/lib/library_tour/async/basic.dart (catch-error)"?>
 ```dart
 httpClient.read(url).then((String result) {
   print(result);
@@ -142,7 +142,7 @@ but not from the handler registered by `then()`.
 
 [`Client.read()`]: {{site.pub-api}}/http/latest/http/Client/read.html
 
-#### Chaining multiple asynchronous methods
+### Chaining multiple asynchronous methods
 
 The `then()` method returns a Future, providing a useful way to run
 multiple asynchronous functions in a certain order. 
@@ -185,7 +185,7 @@ try {
 ```
 
 
-#### Waiting for multiple futures
+### Waiting for multiple futures
 
 Sometimes your algorithm needs to invoke many asynchronous functions and
 wait for them all to complete before continuing. Use the [Future.wait()][]
@@ -209,7 +209,7 @@ print('Done with all the long steps!');
 futures have completed. It completes either with their results,
 or with an error if any of the provided futures fail. 
 
-#### Handling errors for multiple futures
+### Handling errors for multiple futures
 
 You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureIterable/wait.html)
 or [record]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureRecord2/wait.html)
@@ -275,14 +275,14 @@ void main() async {
 }
 ```
 
-### Stream
+## Stream
 
 Stream objects appear throughout Dart APIs, representing sequences of
 data. For example, HTML events such as button clicks are delivered using
 streams. You can also read a file as a stream.
 
 
-#### Using an asynchronous for loop
+### Using an asynchronous for loop
 
 Sometimes you can use an asynchronous for loop (`await for`)
 instead of using the Stream API.
@@ -345,7 +345,7 @@ Dart language features, see the
 [asynchronous programming codelab](/codelabs/async-await).
 
 
-#### Listening for stream data
+### Listening for stream data
 
 To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
@@ -376,7 +376,7 @@ If you care about a subset of events, you can use methods such as
 {% endcomment %}
 
 
-#### Transforming stream data
+### Transforming stream data
 
 Often, you need to change the format of a stream's data before you can
 use it. Use the `transform()` method to produce a stream with a
@@ -398,7 +398,7 @@ separate lines. These transformers are from the dart:convert library (see the
 {% endcomment %}
 
 
-#### Handling errors and completion
+### Handling errors and completion
 
 How you specify error and completion handling code
 depends on whether you use an asynchronous for loop (`await for`)
@@ -409,7 +409,7 @@ then use try-catch to handle errors.
 Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (read-file-await-for)" replace="/try|catch/[!$&!]/g"?>
 ```dart
 Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
@@ -433,7 +433,7 @@ then handle errors by registering an `onError` listener.
 Run code after the stream is closed by registering
 an `onDone` listener.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (on-done)" replace="/onDone|onError/[!$&!]/g"?>
 ```dart
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
@@ -449,7 +449,7 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 ```
 
 
-### More information
+## More information
 
 For some examples of using Future and Stream in command-line apps,
 check out the [dart:io documentation][].

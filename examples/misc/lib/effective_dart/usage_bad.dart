@@ -96,12 +96,12 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (Iterable people) {
-    // #docregion avoid-forEach
+    // #docregion avoid-for-each
     people.forEach((person) {
       /*...*/
     });
 
-    // #enddocregion avoid-forEach
+    // #enddocregion avoid-for-each
   };
 
   {

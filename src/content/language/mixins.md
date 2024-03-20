@@ -18,7 +18,7 @@ They are intended to provide member implementations en masse.
 To use a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (musician-and-maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
 ```dart
 class Musician extends Performer [!with Musical!] {
   // ···
@@ -41,7 +41,7 @@ and must not declare any generative constructors.
 
 For example:
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musical)"?>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (musical)"?>
 ```dart
 mixin Musical {
   bool canPlayPiano = false;

@@ -138,9 +138,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion prefer-dynamic
   }
 
-  // #docregion avoid-Function
+  // #docregion avoid-function
   bool isValid(String value, Function test) => ellipsis();
-  // #enddocregion avoid-Function
+  // #enddocregion avoid-function
 
   // #docregion future-or
   FutureOr<int> triple(FutureOr<int> value) {

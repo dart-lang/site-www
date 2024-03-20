@@ -32,12 +32,12 @@ void main() {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
-        List<Animal> animals = [Dog()];
+        List<Animal> animals = <Dog>[Dog()];
         List<Cat> cats = animals as List<Cat>;
       }
       // #enddocregion runtime-checks
 
-      const msg = "type 'List<Animal>' is not a subtype of type 'List<Cat>'";
+      const msg = "type 'List<Dog>' is not a subtype of type 'List<Cat>'";
       expect(main, _throwsA<TypeError>(msg));
     });
 
