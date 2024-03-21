@@ -287,7 +287,7 @@ the example matches patterns.
 // ...
 x || y => 'matches true',
 x || y && z => 'matches true',
-x || (y && z) => 'matches true',
+x || (y && z) => 'matches true', // `x || y && z` is the same thing as `x || (y && z)`.
 (x || y) && z => 'matches nothing',
 // ...
 ```
