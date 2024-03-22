@@ -277,22 +277,36 @@ Like parenthesized expressions, parentheses in a pattern let you control
 [pattern precedence](#pattern-precedence) and insert a lower-precedence
 pattern where a higher precedence one is expected.
 
-For example, imagine the boolean constants `x`, `y`, and `z` are 
-equal to `true`, `true`, and `false`, respectively:
+For example, imagine the boolean constants `x`, `y`, and `z`
+equal `true`, `true`, and `false`, respectively.
+Though the following example resembles boolean expression evaulation,
+the example matches patterns.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
 ```dart
 // ...
+x || y => 'matches true',
 x || y && z => 'matches true',
-(x || y) && z => 'matches false',
+x || (y && z) => 'matches true',
+// `x || y && z` is the same thing as `x || (y && z)`.
+(x || y) && z => 'matches nothing',
 // ...
 ```
 
-In the first case, the logical-and pattern `y && z` evaluates first because
-logical-and patterns have higher precedence than logical-or.
-In the next case, the logical-or pattern is parenthesized. It evaluates first,
-which results in a different match.
+Dart starts matching the pattern from left to right.
 
+1. The first pattern matches `true` as `x` matches `true`.
+1. The second pattern matches `true` as `x` matches `true`.
+1. The third pattern matches `true` as `x` matches `true`.
+1. The fourth pattern `(x || y) && z` has no match.
+
+   * The `x` matches `true`, so Dart doesn't try to match `y`.
+   * Though `(x || y)` matches `true`, `z` doesn't match `true`
+   * Therefore, pattern `(x || y) && z` doesn't match `true`.
+   * The subpattern `(x || y)` doesn't match `false`,
+     so Dart doesn't try to match `z`.
+   * Therefore, pattern `(x || y) && z` doesn't match `false`.
+   * As a conclusion, `(x || y) && z` has no match.
 
 ## List
 

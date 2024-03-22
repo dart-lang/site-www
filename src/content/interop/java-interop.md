@@ -149,7 +149,7 @@ The following are some more comprehensive examples of using `package:jnigen`:
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[in_app_java]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/in_app_java
-[notification_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/notification_plugin
-[pdfbox_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/pdfbox_plugin
+[in_app_java]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/in_app_java
+[notification_plugin]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/notification_plugin
+[pdfbox_plugin]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
 [Apache PDFBox]: https://pdfbox.apache.org/

@@ -264,8 +264,11 @@ void miscDeclAnalyzedButNotTested() {
     var token = switch (result) {
       // #docregion parens
       // ...
+      x || y => 'matches true',
       x || y && z => 'matches true',
-      (x || y) && z => 'matches false',
+      x || (y && z) => 'matches true',
+      // `x || y && z` is the same thing as `x || (y && z)`.
+      (x || y) && z => 'matches nothing',
       // ...
       // #enddocregion parens
       _ => throw FormatException('Invalid')

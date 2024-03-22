@@ -160,7 +160,8 @@
       { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
       { "source": "/go/ffi", "destination": "/interop/c-interop", "type": 301 },
       { "source": "/go/flutter-upper-bound-deprecation", "destination": "https://github.com/flutter/flutter/issues/68143", "type": 301 },
-      
+      { "source": "/go/pub-workspaces", "destination": "https://flutter.dev/go/pub-workspace", "type": 301 },
+
       { "source": "/go/non-promo-conflicting-getter", "destination": "/tools/non-promotion-reasons#getter-name", "type": 301 },
       { "source": "/go/non-promo-conflicting-non-promotable-field", "destination": "/tools/non-promotion-reasons#field-name", "type": 301 },
       { "source": "/go/non-promo-conflicting-noSuchMethod-forwarder", "destination": "/tools/non-promotion-reasons#nosuchmethod", "type": 301 },
