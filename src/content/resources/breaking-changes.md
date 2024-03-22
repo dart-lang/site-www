@@ -465,7 +465,7 @@ on all the changes in this section.
 [collection]: /resources/dart-3-migration#dart-collection
 [49529]: https://github.com/dart-lang/sdk/issues/49529
 [`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
-[`deferred as`]: https://dart.dev/guides/language/language-tour#deferred-loading
+[`deferred as`]: https://dart.dev/guides/language/language-tour#lazily-loading-a-library
 [`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
 [`maxUserTags`]: https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
 [50231]: https://github.com/dart-lang/sdk/issues/50231
