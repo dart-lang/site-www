@@ -19,8 +19,8 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 Libraries can be distributed using [packages](/guides/packages).
 
 :::note
-If you're curious why Dart uses underscores instead of
-access modifier keywords like `public` or `private`, see
+To learn why Dart uses underscores instead of access modifier keywords
+like `public` or `private`, consult
 [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
 :::
 
@@ -96,15 +96,20 @@ allows a web app to load a library on demand,
 if and when the library is needed.
 Use deferred loading when you want to meet one or more of the following needs.
 
-* Reduce an Android or web app's initial startup time.
+* Reduce a web app's initial startup time.
 * Perform A/B testing—trying out
   alternative implementations of an algorithm, for example.
 * Load rarely used functionality, such as optional screens and dialogs.
 
-The Android and JavaScript deferred loading differ.
-The Android app bundles all deferred components into the APK at compile time.
-That doesn't mean it loads them all at start time.
+That doesn't mean Dart loads all the deferred components at start time.
 The web app can download deferred components via the web when needed.
+
+The `dart` tool doesn't support deferred loading for targets other than web.
+If you're building a Flutter app,
+consult its implementation of deferred loading in the Flutter guide on
+[deferred components][flutter-deferred].
+
+[flutter-deferred]: https://docs.flutter.dev/perf/deferred-components
 
 To lazily load a library, first import it using `deferred as`.
 
