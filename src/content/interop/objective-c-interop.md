@@ -2,7 +2,7 @@
 title: "Objective-C and Swift interop using package:ffigen"
 description: "To use Objective-C and Swift code in your Dart program, use package:ffigen."
 ffigen: "https://pub.dev/packages/ffigen"
-example: "https://github.com/dart-lang/ffigen/tree/master/example/objective_c"
+example: "https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/objective_c"
 appledoc: "https://developer.apple.com/documentation"
 ---
 
@@ -545,4 +545,4 @@ $ dart run example.dart
 [`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
 [not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
 [Objective-C dispatch documentation]: {{appledoc}}/dispatch?language=objc
-[swift_example]: https://github.com/dart-lang/ffigen/tree/main/example/swift
+[swift_example]: https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/swift
