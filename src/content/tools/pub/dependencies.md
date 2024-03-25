@@ -461,8 +461,7 @@ dev_dependencies:
   test: ^1.25.1
 ```
 
-This YAML sets the `dependencies` to the major version and the
-`dev_dependencies` to a specific patch version.
+This YAML sets the `dev_dependencies` to the latest patch versions.
 
 [dev-dep]: /tools/pub/dependencies#dev-dependencies
 
