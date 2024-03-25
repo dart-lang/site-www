@@ -429,27 +429,27 @@ more difficult to guarantee and may lead to violations, which is why it can be
 TODO: Some of these are not available on stable. How do we link to dev?
 {% endcomment %}
 
-[global JS scope]: https://developer.mozilla.org/en-US/docs/Glossary/Global_scope
+[global JS scope]: https://developer.mozilla.org/docs/Glossary/Global_scope
 [conversion functions]: /interop/js-interop/js-types#conversions
 [contains a primitive type]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 ["JS type"]: /interop/js-interop/js-types
-[`Window`]: https://developer.mozilla.org/en-US/docs/Web/API/Window
+[`Window`]: https://developer.mozilla.org/docs/Web/API/Window
 [check the type of the JS value through interop]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [`package:web`]: {{site.pub-pkg}}/web
 [`external`]: /language/functions#external
 [restrictions]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
-[object literal]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
+[object literal]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Object_initializer
 [54801]: https://github.com/dart-lang/sdk/issues/54801
-[property accessors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
-[utility functions]: https://api.dart.dev/dev/dart-js_interop/JSAnyOperatorExtension.html
-[`@JS()`]: https://api.dart.dev/dev/dart-js_interop/JS-class.html
-[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop
-[`globalContext`]: https://api.dart.dev/dev/dart-js_interop/globalContext.html
-[Helpers to inspect the type of JS values]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension.html
-[`dartify`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/dartify.html
-[`jsify`]: https://api.dart.dev/dev/dart-js_interop/NullableObjectUtilExtension/jsify.html
-[`importModule`]: https://api.dart.dev/dev/dart-js_interop/importModule.html
-[`dart:js_interop_unsafe`]: https://api.dart.dev/dev/dart-js_interop_unsafe
+[property accessors]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
+[utility functions]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyOperatorExtension.html
+[`@JS()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JS-class.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
+[`globalContext`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/globalContext.html
+[Helpers to inspect the type of JS values]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html
+[`dartify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
+[`jsify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
+[`importModule`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/importModule.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [extensions]: /language/extension-methods
 [extension type]: /language/extension-types
 [runtime guarantee]: /language/extension-types#type-considerations

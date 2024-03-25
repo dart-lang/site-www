@@ -283,8 +283,8 @@ Do we have any other package migrations to show off here?
 [Wasm]: https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/README.md
 [html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
-[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
-[`dart:js_interop_unsafe`]: https://api.dart.dev/dev/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [idl]: https://www.npmjs.com/package/@webref/idl
 [interop members]: /interop/js-interop/usage#interop-members
 [interop types]: /interop/js-interop/usage#interop-types
@@ -293,14 +293,14 @@ Do we have any other package migrations to show off here?
 [helpers]: https://github.com/dart-lang/web/tree/main/lib/src/helpers
 [zones]: /articles/archive/zones
 [Conversions]: /interop/js-interop/js-types#conversions
-[interop methods]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
+[interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage
 [Compatibility, type checks, and casts]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/pull/5451/files
 [stream helpers]: https://github.com/dart-lang/web/blob/main/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
-[`JSObject`]: https://api.dart.dev/dev/dart-js_interop/JSObject-extension-type.html
-[`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSObject-extension-type.html
+[`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: https://github.com/dart-lang/sdk/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
