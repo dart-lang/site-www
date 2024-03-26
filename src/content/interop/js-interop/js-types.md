@@ -38,6 +38,15 @@ JS types form a natural type hierarchy:
 
 You can find the definition of each type in the [`dart:js_interop` API docs].
 
+From Dart 3.4 onwards, there also exists one type in `dart:js_interop` that can
+be used but is *not* a JS type called `ExternalDartReference`.
+
+Both `JSBoxedDartObject` and `ExternalDartReference` pass opaque references to
+Dart `Object`s through JavaScript. However, `JSBoxedDartObject` wraps the opaque
+reference in a JavaScript object, while `ExternalDartReference` is the reference
+itself and therefore is not a JS type. Use `ExternalDartReference` where
+performance is needed and `JSBoxedDartObject` where a JS type is needed.
+
 {% comment %}
 TODO (srujzs): Should we add a tree diagram instead for JS types?
 {% endcomment %}
@@ -73,7 +82,7 @@ Generally, the conversion table looks like the following:
 <div class="table-wrapper" markdown="1">
 
 | JS type                             | Dart type                                |
-|-------------------------------------|------------------------------------------|
+| ----------------------------------- | ---------------------------------------- |
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
 | `JSExportedDartFunction`            | `Function`                               |
 | `JSArray<T extends JSAny?>`         | `List<T extends JSAny?>`                 |
@@ -103,8 +112,8 @@ specific conversion function for more details.
 In order to ensure type safety and consistency, the compiler places requirements
 on what types can flow into and out of JS. Passing arbitrary Dart values into JS
 is not allowed. Instead, the compiler requires users to use a compatible interop
-type or a primitive, which would then be implicitly converted by the compiler.
-For example, these would be allowed:
+type, `ExternalDartReference`, or a primitive, which would then be implicitly
+converted by the compiler. For example, these would be allowed:
 
 ```dart tag=good
 @JS()
@@ -121,6 +130,11 @@ extension type InteropType(JSObject _) implements JSObject {}
 
 @JS()
 external InteropType get interopType;
+```
+
+```dart tag=good
+@JS()
+external void externalDartReference(ExternalDartReference _);
 ```
 
 Whereas these would return an error:
