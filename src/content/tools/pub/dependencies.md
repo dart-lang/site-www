@@ -418,14 +418,13 @@ are ignored by all users of your package.
 
 ## Best practices
 
-It's important to actively manage your dependencies and
-ensure that your packages use the freshest versions possible.
-If any dependency is stale,
-then you might have not only a stale version of that package,
-but also stale versions of other packages in your dependency graph that
-depend on that package.
-These stale versions can have a negative impact on
-the stability, performance, and quality of apps.
+Be proactive in managing your dependencies.
+Ensure that your packages depend on the freshest versions of packages
+when possible.
+If your package depends on a stale package,
+that stale package may depend on other stale packages in its dependency tree.
+Stale versions of packages can have a negative impact on
+the stability, performance, and quality of your app.
 
 We recommend the following best practices for package dependencies.
 
@@ -443,6 +442,28 @@ that your pubspec allows.
 To identify dependencies in your app or package that
 aren't on the latest stable versions,
 use [`dart pub outdated`][].
+
+### Tighten version constraints for dev dependencies
+
+A dev dependency defines a package that you need only when developing.
+A finished app won't need these packages.
+Examples of these packages include tests or code generation tooling.
+Set the version constraints of packages in [`dev_dependencies`][dev-dep]
+to have a lower bound of the latest version on which your package depends.
+
+Tightening the version constraints of your dev dependencies might
+resemble the following:
+
+```yaml
+dev_dependencies:
+  build_runner: ^2.4.8
+  lints: ^2.1.1
+  test: ^1.25.1
+```
+
+This YAML sets the `dev_dependencies` to the latest patch versions.
+
+[dev-dep]: /tools/pub/dependencies#dev-dependencies
 
 ### Test whenever you update package dependencies
 
