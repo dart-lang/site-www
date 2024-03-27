@@ -37,17 +37,18 @@ iterations.
 [recently]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
 [Wasm]: {{site.flutter-docs}}/platform-integration/web/wasm
 [`package:web`]: {{site.pub-pkg}}/web
-[`dart:html`]: {{site.dart-api}}/dev/dart-html/dart-html-library.html
-[`dart:svg`]: {{site.dart-api}}/dev/dart-svg/dart-svg-library.html
-[`dart:indexed_db`]: {{site.dart-api}}/dev/dart-indexed_db/dart-indexed_db-library.html
-[`dart:web_audio`]: {{site.dart-api}}/dev/dart-web_audio/dart-web_audio-library.html
-[`dart:web_gl`]: {{site.dart-api}}/dev/dart-web_gl/dart-web_gl-library.html
-[`dart:js_interop`]: {{site.dart-api}}/dev/dart-js_interop/dart-js_interop-library.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dev/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
+[`dart:svg`]: {{site.dart-api}}/dart-svg/dart-svg-library.html
+[`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/dart-indexed_db-library.html
+[`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/dart-web_audio-library.html
+[`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/dart-web_gl-library.html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [`package:js`]: {{site.pub-api}}/js
-[`dart:js`]: {{site.dart-api}}/dev/dart-js/dart-js-library.html
-[`dart:js_util`]: {{site.dart-api}}/dev/dart-js_util/dart-js_util-library.html
+[`dart:js`]: {{site.dart-api}}/dart-js/dart-js-library.html
+[`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
 [Past JS interop]: /interop/js-interop/past-js-interop/
+
 ## Overview
 
 For information on how to write and use JavaScript interop:
@@ -72,5 +73,5 @@ For additional documentation on JavaScript interop:
 [`package:web` and migration]: /interop/js-interop/package-web
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 [Past JS interop]: /interop/js-interop/past-js-interop
-[`dart:js_interop` API reference]: {{site.dart-api}}/dev/dart-js_interop/dart-js_interop-library.html
-[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/dev/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop` API reference]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
