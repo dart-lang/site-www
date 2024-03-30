@@ -35,17 +35,12 @@ JS types form a natural type hierarchy:
       - JS typed arrays like `JSUint8Array`
     - `JSBoxedDartObject`, which allows users to box and pass Dart values
       opaquely within the same Dart runtime
+      - From Dart 3.4 onwards, the type `ExternalDartReference` in
+      `dart:js_interop` also allows users to pass Dart values opaquely, but is
+      *not* a JS type. Learn more about the tradeoffs between each option
+      [here](#jsboxeddartobject-vs-externaldartreference).
 
 You can find the definition of each type in the [`dart:js_interop` API docs].
-
-From Dart 3.4 onwards, there also exists one type in `dart:js_interop` that can
-be used but is *not* a JS type called `ExternalDartReference`.
-
-Both `JSBoxedDartObject` and `ExternalDartReference` pass opaque references to
-Dart `Object`s through JavaScript. However, `JSBoxedDartObject` wraps the opaque
-reference in a JavaScript object, while `ExternalDartReference` is the reference
-itself and therefore is not a JS type. Use `ExternalDartReference` where
-performance is needed and `JSBoxedDartObject` where a JS type is needed.
 
 {% comment %}
 TODO (srujzs): Should we add a tree diagram instead for JS types?
@@ -81,7 +76,7 @@ Generally, the conversion table looks like the following:
 
 <div class="table-wrapper" markdown="1">
 
-| JS type                             | Dart type                                |
+| Interop type                        | Dart type                                |
 | ----------------------------------- | ---------------------------------------- |
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
 | `JSExportedDartFunction`            | `Function`                               |
@@ -89,6 +84,7 @@ Generally, the conversion table looks like the following:
 | `JSPromise<T extends JSAny?>`       | `Future<T extends JSAny?>`               |
 | Typed arrays like `JSUint8Array`    | Typed lists from `dart:typed_data`       |
 | `JSBoxedDartObject`                 | Opaque Dart value                        |
+| `ExternalDartReference`             | Opaque Dart value                        |
 
 {:.table .table-striped}
 </div>
@@ -254,9 +250,22 @@ to interop members or distinguish between JS `null` and `undefined` values,
 but this will likely change in the future. See [#54025] for more details.
 :::
 
-{% comment %}
-TODO: add links (with stable) when ready:
-{% endcomment %}
+## `JSBoxedDartObject` vs `ExternalDartReference`
+
+From Dart 3.4 onwards, both [`JSBoxedDartObject`] and [`ExternalDartReference`]
+can be used to pass opaque references to Dart `Object`s through JavaScript.
+However, `JSBoxedDartObject` wraps the opaque reference in a JavaScript object,
+while `ExternalDartReference` is the reference itself and therefore is not a JS
+type.
+
+Use `JSBoxedDartObject` if you need a JS type or if you need extra checks to
+make sure Dart values don't get passed to another Dart runtime. For example, if
+the Dart object needs to be placed in a `JSArray` or passed to an API that
+accepts a `JSAny`, use `JSBoxedDartObject`. Use `ExternalDartReference`
+otherwise as it will be faster.
+
+See [`toExternalReference`] and [`toDartObject`] to convert to and from an
+`ExternalDartReference`.
 
 [`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
 [`external`]: https://dart.dev/language/functions#external
@@ -267,3 +276,7 @@ TODO: add links (with stable) when ready:
 [`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025
+[`JSBoxedDartObject`]: https://api.dart.dev/main/dart-js_interop/JSBoxedDartObject-extension-type.html
+[`ExternalDartReference`]: https://api.dart.dev/main/dart-js_interop/ExternalDartReference-extension-type.html
+[`toExternalReference`]: https://api.dart.dev/main/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
+[`toDartObject`]: https://api.dart.dev/main/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
