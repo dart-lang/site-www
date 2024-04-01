@@ -143,7 +143,8 @@ try either of the following methods:
 Similarly, you might find an undefined `package:web` API whose corresponding
 `dart:html` member's definition uses the keyword `native`.
 Check if the definition uses the `@JSName` annotation for a rename;
-the value of the annotation will tell you the name th member uses in `package:web`:
+the value of the annotation will tell you the name the member uses in
+`package:web`:
 
 ```dart
 @JSName('appendChild')
