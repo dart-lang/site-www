@@ -234,7 +234,7 @@ error if the value returned was JS `null` or `undefined` to ensure soundness.
 :::warning
 There is a subtle inconsistency with regards to `undefined` between compiling to
 JS and Wasm. While compiling to JS *treats* `undefined` values as if they were
-Dart `null`, it doesn’t actually *change* the value itself. If an interop member
+Dart `null`, it doesn't actually *change* the value itself. If an interop member
 returns `undefined` and you pass that value back into JS, JS will see
 `undefined`, *not* `null`, when compiling to JS.
 
@@ -267,13 +267,13 @@ otherwise as it will be faster.
 See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 `ExternalDartReference`.
 
-[`dart:js_interop`]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html
-[`external`]: https://dart.dev/language/functions#external
-[`Function.toJS`]: https://api.dart.dev/dev/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop` API docs]: https://api.dart.dev/dev/dart-js_interop/dart-js_interop-library.html#extension-types
-[`typeofEquals`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
-[`instanceOfString`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
-[`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[`external`]: /language/functions#external
+[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`dart:js_interop` API docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html#extension-types
+[`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
+[`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
+[`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025
 [`JSBoxedDartObject`]: https://api.dart.dev/main/dart-js_interop/JSBoxedDartObject-extension-type.html
