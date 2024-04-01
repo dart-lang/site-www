@@ -76,7 +76,7 @@ Generally, the conversion table looks like the following:
 
 <div class="table-wrapper" markdown="1">
 
-| Interop type                        | Dart type                                |
+| `dart:js_interop` type              | Dart type                                |
 | ----------------------------------- | ---------------------------------------- |
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
 | `JSExportedDartFunction`            | `Function`                               |
@@ -276,7 +276,7 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: https://github.com/dart-lang/linter/issues/4841
 [#54025]: https://github.com/dart-lang/sdk/issues/54025
-[`JSBoxedDartObject`]: https://api.dart.dev/main/dart-js_interop/JSBoxedDartObject-extension-type.html
-[`ExternalDartReference`]: https://api.dart.dev/main/dart-js_interop/ExternalDartReference-extension-type.html
-[`toExternalReference`]: https://api.dart.dev/main/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
-[`toDartObject`]: https://api.dart.dev/main/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
+[`JSBoxedDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSBoxedDartObject-extension-type.html
+[`ExternalDartReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReference-extension-type.html
+[`toExternalReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
+[`toDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
