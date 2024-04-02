@@ -12,5 +12,5 @@ dependencies:
 dev_dependencies:
   analysis_defaults:
     path: ../../../site-shared/packages/analysis_defaults
-  build_runner: ^2.4.8
-  build_web_compilers: ^4.0.9
+  build_runner: ^2.4.9
+  build_web_compilers: ^4.0.10

@@ -111,28 +111,46 @@ You can address these either:
 - In your IDE, by selecting the `dart fix`: **Rename to '`package:web name`'**.
 
 {% comment %}
-Maybe a pic here of menu selection in IDE?
 TODO: Update this documentation to refer to symbols instead of just types once
 we have a dart fix for that.
 {% endcomment -%}
 
 The `dart fix` covers many of the common type renames.
-If you come across a `dart:html` type without a built-in fix, let us know by
-filing an [issue][].
-You can manually discover the `package:web` type name
-by looking up the `dart:html` class' `@Native` annotation.
-You can do this by either:
+If you come across a `dart:html` type without a `dart fix` to rename it,
+first let us know by filing an [issue][].
 
-- Ctrl or cmd clicking the name in the IDE and choosing **Go to Definition**.
-- Searching for the name in the [`dart:html` API docs][html]
-  and checking its page under *Annotations*.
+Then, you can try manually discovering the `package:web` type name of an
+existing `dart:html` member by looking up its definition.
+The value of the `@Native` annotation on a `dart:html` member definition
+tells the compiler to treat any JS object of that type as the Dart class
+that it annotates. For example, the `@Native` annotation tells us that the
+native JS name of `dart:html`'s `HtmlElement` member is `HTMLElement`,
+so the `package:web` name will also be `HTMLElement`:
 
-The `@Native` annotation tells the compiler to treat any JS object of that type
-as the class that it annotates.
+```dart
+@Native("HTMLElement")
+class HtmlElement extends Element implements NoncedElement { }
+```
 
-Similarly, if you find an API with the keyword `native` in `dart:html` that
-doesn't have an equivalent in `package:web`, check to see if there was a rename
-with the `@JSName` annotation.
+To find the `dart:html` definition for an undefined member in `package:web`, 
+try either of the following methods:
+
+- Ctrl or command click the undefined name in the IDE and choose
+  **Go to Definition**.
+- Search for the name in the [`dart:html` API docs][html]
+  and check its page under *Annotations*.
+
+Similarly, you might find an undefined `package:web` API whose corresponding
+`dart:html` member's definition uses the keyword `native`.
+Check if the definition uses the `@JSName` annotation for a rename;
+the value of the annotation will tell you the name the member uses in
+`package:web`:
+
+```dart
+@JSName('appendChild')
+Node append(Node node) native;
+```
+
 `native` is an internal keyword that means the same as `external` in this
 context.
 
