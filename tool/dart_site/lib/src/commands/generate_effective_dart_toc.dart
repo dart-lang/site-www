@@ -39,7 +39,7 @@ final class GenerateEffectiveDartToc extends Command<int> {
 }
 
 Future<int> _generateToc({bool justCheck = false}) async {
-  const dirPath = 'src/effective-dart';
+  const dirPath = 'src/content/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
   final sections =
@@ -75,7 +75,7 @@ To re-generate it, please run the following command from root of
 the project:
 
 ```
-$ dart run dart_site effective-dart
+./dash_site effective-dart
 ```
 {% endcomment %}
     ''');
