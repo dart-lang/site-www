@@ -48,7 +48,7 @@ except for VM libraries such as `dart:io`.
 
 Dart plugins exist for these commonly used IDEs.
 
-<ul class="col2">
+<ul class="cols2">
 <li>
 <img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
@@ -68,7 +68,7 @@ Dart plugins exist for these commonly used IDEs.
 The following Dart plugins are also available,
 thanks to the Dart community.
 
-<ul class="col2">
+<ul class="cols2">
 <li>
 <img src="/assets/img/tools/emacs.png" alt="Emacs logo">
 <a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
