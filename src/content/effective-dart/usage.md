@@ -326,7 +326,6 @@ then it probably does make sense to have a separate boolean field.
 
 
 ### CONSIDER work arounds to bypass type promotion limitations
-(or, "...to enable type promotion")
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
@@ -356,7 +355,7 @@ class UploadException {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-
+// ···
     return 'Could not upload (no response).';
   }
 }
@@ -375,12 +374,12 @@ class UploadException {
 
   @override
   String toString() {
+    // ···
     final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-
     return 'Could not upload (no response).';
   }
 }

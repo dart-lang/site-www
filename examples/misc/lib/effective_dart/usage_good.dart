@@ -358,22 +358,23 @@ class UploadException {
 
   @override
   String toString() {
-    // #enddocregion null-check-promo
+    // #enddocregion shadow-nullable-field
+    if (this.response case var response?) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+// #enddocregion null-check-promo
+// #docregion shadow-nullable-field
     final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
     // #docregion null-check-promo
-    if (this.response case var response?) {
-      return 'Could not complete upload to ${response.url} '
-          '(error code ${response.errorCode}): ${response.reason}.';
-    }
-
     return 'Could not upload (no response).';
   }
 }
-// #enddocregion shadow-nullable-field
+// #enddocregion shadow-nullable-field, null-check-promo
 
 //----------------------------------------------------------------------------
 
