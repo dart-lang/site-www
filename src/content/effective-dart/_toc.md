@@ -4,7 +4,7 @@ To re-generate it, please run the following command from root of
 the project:
 
 ```
-$ dart run dart_site effective-dart
+./dash_site effective-dart
 ```
 {% endcomment %}
     
