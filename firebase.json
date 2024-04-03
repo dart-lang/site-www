@@ -225,6 +225,7 @@
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
       { "source": "/lints/:lint*", "destination": "/tools/linter-rules/:lint", "type": 301 },
       { "source": "/logos", "destination": "/brand", "type": 301 },
+      { "source": "/macros", "destination": "https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md", "type": 301 },
       { "source": "/mailing-list", "destination": "https://groups.google.com/a/dartlang.org/forum/#!forum/misc", "type": 301 },
       { "source": "/mobile", "destination": "/multiplatform-apps", "type": 301 },
       { "source": "/news{,/**}", "destination": "https://medium.com/dartlang", "type": 301 },
