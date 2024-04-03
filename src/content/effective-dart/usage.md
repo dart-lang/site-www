@@ -326,7 +326,7 @@ Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
 
-### CONSIDER work arounds to enable type promotion for nullable fields
+### CONSIDER type promotion or null-check patterns for using nullable types
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
