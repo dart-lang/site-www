@@ -107,22 +107,27 @@ Let's customize the app you just created.
    ```dart
    Iterable<String> thingsTodo() sync* { ... }
 
-   [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
-
+   [!HTMLLIElement newLI(String itemText) =>
+    (document.createElement('li') as HTMLLIElement)..text = itemText;!]
+    
    void main() { ... }
    ```
 
-3. In the `main()` function, initialize the `output` element using
+3. In the `main()` function, append content to the `output` element using
    `thingsTodo()`:
 
    ```dart
    Iterable<String> thingsTodo() sync* { ... }
 
-   LIElement newLI(String itemText) => LIElement()..text = itemText;
+   HTMLLIElement newLI(String itemText) =>
+    (document.createElement('li') as HTMLLIElement)..text = itemText;
 
    void main() {
-     querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
-   }
+    final output = querySelector('#output');
+    [!for (final item in thingsTodo()) {
+      output?.appendChild(newLI(item));
+    }!]
+  }
    ```
 
 4. Save your changes.
