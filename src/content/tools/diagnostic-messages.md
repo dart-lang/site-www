@@ -11313,7 +11313,7 @@ _Uses of '{0}' should not be submitted to source control._
 #### Description
 
 The analyzer produces this diagnostic when a member that is annotated with
-[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
+`@doNotSubmit` from `package:meta` is referenced outside of a member
 declaration that is also annotated with `@doNotSubmit`.
 
 #### Example
