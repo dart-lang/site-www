@@ -14,8 +14,8 @@ devDependencies:
     specifier: 3.0.0-alpha.5
     version: 3.0.0-alpha.5
   firebase-tools:
-    specifier: ^13.6.1
-    version: 13.6.1
+    specifier: ^13.7.0
+    version: 13.7.0
   hast-util-from-html:
     specifier: ^2.0.1
     version: 2.0.1
@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^4.1.1
     version: 4.1.1
   sass:
-    specifier: ^1.72.0
-    version: 1.72.0
+    specifier: ^1.74.1
+    version: 1.74.1
   shiki:
     specifier: ^1.2.4
     version: 1.2.4
@@ -2119,8 +2119,8 @@ packages:
       - supports-color
     dev: true
 
-  /firebase-tools@13.6.1:
-    resolution: {integrity: sha512-Jq9eGavkqBHayi/2onmMs7S7AM4VvqlcrQ4no48XLZ56B/9ACe5NkS1CxU3IPTnqMdnBblzbq0QHOl814Xp0UQ==}
+  /firebase-tools@13.7.0:
+    resolution: {integrity: sha512-yXnSLu/dT0wI6BebMAfTTR14SrHmsNppecaYAmuudgZ37FgkmYGnO2eXXpxWW/XA7Hv6ov4hPHFc/d+TDOCHQg==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -4744,8 +4744,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass@1.72.0:
-    resolution: {integrity: sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==}
+  /sass@1.74.1:
+    resolution: {integrity: sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
