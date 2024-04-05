@@ -136,7 +136,6 @@ of the type in the `on` clause.
 If the mixin depends on members in the superclass,
 this ensures those members are available where the mixin is used:
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)" plaster="none" replace="/on Musician2/[!on Musician!]/g" ?>
 ```dart
 class Musician {
   musicianMethod() {
