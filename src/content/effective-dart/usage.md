@@ -340,8 +340,9 @@ Declaring members [private][] and [final][], as we generally recommend, is often
 enough to bypass these limitations. But, that's not always an option.
 
 One pattern to work around type promotion limitations is to use a
-[null-check pattern][] to simultaneously confirm the member's value is not null,
-and bind that value to a new non-nullable variable of the same base type.
+[null-check pattern][]. This simultaneously confirms the member's value
+is not null, and binds that value to a new non-nullable variable of
+the same base type.
 
 <?code-excerpt "usage_good.dart (null-check-promo)"?>
 ```dart tag=good
