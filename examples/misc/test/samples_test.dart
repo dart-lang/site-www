@@ -31,8 +31,8 @@ void main() {
     void main() {
       print('Hello, World!');
     }
-
     // #enddocregion hello-world
+
     expect(main, prints('Hello, World!\n'));
   });
 
@@ -196,8 +196,8 @@ void main() {
         print(message);
       });
     }
-
     // #enddocregion future-then
+
     expect(() => printWithDelay('Hi'), prints('Hi\n'));
   });
 

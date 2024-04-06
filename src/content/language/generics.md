@@ -161,7 +161,7 @@ You can use `extends` with other types besides `Object`.
 Here's an example of extending `SomeBaseClass`,
 so that members of `SomeBaseClass` can be called on objects of type `T`:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (generic)" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 ```dart
 class Foo<T [!extends SomeBaseClass!]> {
   // Implementation goes here...

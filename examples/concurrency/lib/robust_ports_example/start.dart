@@ -2,7 +2,7 @@
 
 import 'dart:isolate';
 
-// #docregion
+// #docregion worker
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -34,4 +34,4 @@ class Worker {
     // TODO: Initialize worker isolate's ports.
   }
 }
-// #enddocregion
+// #enddocregion worker

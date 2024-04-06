@@ -57,7 +57,7 @@ part of '../../my_library.dart';
 
 Not the library name:
 
-<?code-excerpt "some/other/file_2.dart"?>
+<?code-excerpt "some/other/file_2.dart (part-of)"?>
 ```dart tag=bad
 part of my_library;
 ```

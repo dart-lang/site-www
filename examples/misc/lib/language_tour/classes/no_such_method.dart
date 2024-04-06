@@ -3,7 +3,7 @@ void main() {
   a.foo();
 }
 
-// #docregion
+// #docregion no-such-method-impl
 class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
@@ -13,3 +13,4 @@ class A {
         '${invocation.memberName}');
   }
 }
+// #enddocregion no-such-method-impl
