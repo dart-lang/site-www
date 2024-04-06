@@ -6,11 +6,6 @@ environment:
   sdk: ^3.3.0
 
 dev_dependencies:
-  build_runner: ^2.4.8
-  code_excerpt_updater:
-    path: site-shared/packages/code_excerpt_updater
-  code_excerpter:
-    path: site-shared/packages/code_excerpter
   dart_site:
     path: tool/dart_site
   lints: ^3.0.0
