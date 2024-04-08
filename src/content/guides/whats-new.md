@@ -126,7 +126,7 @@ we made the following changes to this site:
 * Reorganized and simplified site infrastructure across the board, in preparation
   to [move away from using Jekyll][].
 
-[type promotion]: /effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion
+[type promotion]: /effective-dart/usage#consider-type-promotion-or-null-check-patterns-for-using-nullable-types
 [Understanding Null Safety]: /null-safety/understanding-null-safety
 [C interop]: /interop/c-interop#native-assets
 [Breaking changes]: /resources/breaking-changes
