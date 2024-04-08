@@ -1,5 +1,4 @@
 // ignore_for_file: one_member_abstracts, annotate_overrides
-// #docregion
 abstract class Doer {
   // Define instance variables and methods...
 

@@ -56,8 +56,8 @@ void main() {
         print(e);
       }
     }
-
     // #enddocregion try-catch
+
     expect(main, prints(contains('Cannot open file')));
   });
 
@@ -104,8 +104,8 @@ void main() {
         print(e.toString());
       }
     }
-
     // #enddocregion list-dir
+
     expect(main, prints(contains('Found file')));
   });
 

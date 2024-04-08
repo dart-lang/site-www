@@ -26,7 +26,7 @@ void _miscDeclAnalyzedButNotTested() {
       list.add(1);
       list.add('2');
       // ignore: stable, beta, dev, argument_type_not_assignable
-      printInts(list); //!analysis-issue
+      printInts(list);
     }
     // #enddocregion opening-example
 
@@ -82,7 +82,7 @@ void _miscDeclAnalyzedButNotTested() {
     // #docregion local-var-type-inference-error
     var x = 3; // x is inferred as an int.
     // ignore: stable, beta, dev, stable, dev, invalid_assignment
-    x = 4.0; //!analysis-issue
+    x = 4.0;
     // #enddocregion local-var-type-inference-error
   }
 
