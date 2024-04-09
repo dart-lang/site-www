@@ -105,29 +105,29 @@ Let's customize the app you just created.
    It creates a new `LIElement` containing the specified `String`.
 
    ```dart
-   Iterable<String> thingsTodo() sync* { ... }
+   Iterable<String> thingsTodo() sync* { /* ... */ }
 
    [!HTMLLIElement newLI(String itemText) =>!]
      [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
     
-   void main() { ... }
+   void main() { /* ... */ }
    ```
 
-3. In the `main()` function, append content to the `output` element using
-   `thingsTodo()`:
+3. In the `main()` function, append content to the `output` element
+   using `appendChild` and the values from `thingsTodo()`:
 
    ```dart
-   Iterable<String> thingsTodo() sync* { ... }
+   Iterable<String> thingsTodo() sync* { /* ... */ }
 
    HTMLLIElement newLI(String itemText) =>
-    (document.createElement('li') as HTMLLIElement)..text = itemText;
+     (document.createElement('li') as HTMLLIElement)..text = itemText;
 
    void main() {
     final output = querySelector('#output');
     [!for (final item in thingsTodo()) {!]
       [!output?.appendChild(newLI(item));!]
     [!}!]
-  }
+   }
    ```
 
 4. Save your changes.
