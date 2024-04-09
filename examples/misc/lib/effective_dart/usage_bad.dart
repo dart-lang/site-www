@@ -100,7 +100,6 @@ void miscDeclAnalyzedButNotTested() {
     people.forEach((person) {
       /*...*/
     });
-
     // #enddocregion avoid-for-each
   };
 

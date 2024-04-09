@@ -1,4 +1,3 @@
-// #docregion
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {

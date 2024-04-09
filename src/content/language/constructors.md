@@ -361,7 +361,7 @@ the `Logger` factory constructor returns objects from a cache,
 and the `Logger.fromJson` factory constructor
 initializes a final variable from a JSON object.
 
-<?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
+<?code-excerpt "misc/lib/language_tour/classes/logger.dart (constructors)"?>
 ```dart
 class Logger {
   final String name;

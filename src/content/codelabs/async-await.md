@@ -169,7 +169,7 @@ Before you run the example,
 try to predict which will print first: 
 "Large Latte" or "Fetching user order...".
 
-<?code-excerpt "async_await/bin/futures_intro.dart"?>
+<?code-excerpt "async_await/bin/futures_intro.dart (no-error)"?>
 ```dart:run-dartpad:height-300px:ga_id-introducting_futures
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.

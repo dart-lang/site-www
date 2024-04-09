@@ -8,6 +8,7 @@ prevpage:
   url: /effective-dart/documentation
   title: Documentation
 ---
+<?code-excerpt plaster="none"?>
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt path-base="misc/lib/effective_dart"?>
 
@@ -57,7 +58,7 @@ part of '../../my_library.dart';
 
 Not the library name:
 
-<?code-excerpt "some/other/file_2.dart"?>
+<?code-excerpt "some/other/file_2.dart (part-of)"?>
 ```dart tag=bad
 part of my_library;
 ```
@@ -325,7 +326,7 @@ Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
 
-### CONSIDER assigning a nullable field to a local variable to enable type promotion
+### CONSIDER type promotion or null-check patterns for using nullable types
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
@@ -337,7 +338,31 @@ private final fields. Values that are open to manipulation
 
 Declaring members [private][] and [final][], as we generally recommend, is often
 enough to bypass these limitations. But, that's not always an option.
-One pattern to work around this is to assign the field's value
+
+One pattern to work around type promotion limitations is to use a
+[null-check pattern][]. This simultaneously confirms the member's value
+is not null, and binds that value to a new non-nullable variable of
+the same base type.
+
+<?code-excerpt "usage_good.dart (null-check-promo)"?>
+```dart tag=good
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    if (this.response case var response?) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+    return 'Could not upload (no response).';
+  }
+}
+```
+
+Another work around is to assign the field's value
 to a local variable. Null checks on that variable will promote,
 so you can safely treat it as non-nullable.
 
@@ -355,14 +380,21 @@ class UploadException {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-
     return 'Could not upload (no response).';
   }
 }
 ```
 
-Assigning to a local variable can be cleaner and safer than using `!` every
-time you need to treat the value as non-null:
+Be careful when using a local variable. If you need to write back to the field,
+make sure that you don't write back to the local variable instead. (Making the
+local variable [`final`][] can prevent such mistakes.) Also, if the field might
+change while the local is still in scope, then the local might have a stale
+value. 
+
+Sometimes it's best to simply [use `!`][] on the field. 
+In some cases, though, using either a local variable or a null-check pattern 
+can be cleaner and safer than using `!` every time you need to treat the value
+as non-null:
 
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 ```dart tag=bad
@@ -383,15 +415,10 @@ class UploadException {
 }
 ```
 
-Be careful when using a local variable. If you need to write back to the field,
-make sure that you don't write back to the local variable instead. (Making the
-local variable [`final`][] can prevent such mistakes.) Also, if the field might
-change while the local is still in scope, then the local might have a stale
-value. Sometimes it's best to simply [use `!`][] on the field.
-
 [can't be type promoted]: /tools/non-promotion-reasons
 [private]: /effective-dart/design#prefer-making-declarations-private
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
+[null-check pattern]: /language/pattern-types#null-check
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
 [use `!`]: /null-safety/understanding-null-safety#non-null-assertion-operator
 

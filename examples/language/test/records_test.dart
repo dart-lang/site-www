@@ -19,8 +19,8 @@ void main() {
       var (a, b) = record;
       return (b, a);
     }
-
     // #enddocregion record-type-annotation
+
     expect(swap((1, 2)), (2, 1));
   });
 

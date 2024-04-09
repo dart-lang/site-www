@@ -922,10 +922,10 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart (sum-no-impl)"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-// ···
+  // ···
 }
 // ···
   int newTotal = sumUpToFive(1);

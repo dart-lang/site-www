@@ -9,6 +9,8 @@ nextpage:
   title: Extend a class
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+
 Methods are functions that provide behavior for an object.
 
 ## Instance methods

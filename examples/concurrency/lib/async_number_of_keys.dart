@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-// #docregion
+// #docregion non-blocking
 const String filename = 'with_keys.json';
 
 void main() async {
@@ -18,4 +18,4 @@ Future<String> _readFileAsync() async {
   final contents = await file.readAsString();
   return contents.trim();
 }
-// #enddocregion
+// #enddocregion non-blocking
