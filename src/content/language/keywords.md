@@ -15,7 +15,9 @@ nextpage:
 
 The following table lists the words
 that the Dart language reserves for its own use.
-Don't use these terms as identifiers unless the term notes an exception.
+These words can't be used as identifiers unless otherwise noted.
+Even when allowed, using keywords as identifiers can confuse other
+developers reading your code and should be avoided.
 To learn more about identifier usage, click on the term.
 
 <table class="table table-striped">
@@ -29,9 +31,10 @@ To learn more about identifier usage, click on the term.
 {% endtablerow %}
 </table>
 
-{{ckw}} These keywords can be used as an identifier
+{{ckw}} This keyword can be used as an identifier
         depending on **context**.
 
-{{bii}} These keywords can't be used as class names, type names,
-        or import prefixes. They can be used as identifiers in all other
-        circumstances.
+{{bii}} This keyword can't be used as the name of a type
+        (a class, a mixin, an enum, an extension type, or a type alias),
+        the name of an extension, or as an import prefix.
+        It can be used as an identifier in all other circumstances.
