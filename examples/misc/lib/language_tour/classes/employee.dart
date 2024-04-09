@@ -22,7 +22,7 @@ class Employee extends Person {
   Employee.fromJson(super.data) : super.fromJson() {
     print('in Employee');
   }
-// #docregion method-then-constructor
+  // #docregion method-then-constructor
 }
 // #enddocregion method-then-constructor
 

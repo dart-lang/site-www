@@ -84,10 +84,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-null-check
-      // #enddocregion catch-null-check
       if (i == null) return;
+      // #docregion catch-null-check
       try {
+        // #enddocregion catch-null-check
         i = j; // (1)
         // ... Additional code ...
         if (i == null) return; // (2)
@@ -106,10 +106,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-bang
-      // #enddocregion catch-bang
       if (i == null) return;
+      // #docregion catch-bang
       try {
+        // #enddocregion catch-bang
         i = j; // (1)
         // ... Additional code ...
         if (i == null) return; // (2)
