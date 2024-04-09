@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field, unused_element
 import 'dart:isolate';
 
-// #docregion
+// #docregion worker
 class Worker {
   Future<void> spawn() async {
     // TODO: Add functionality to spawn a worker isolate.
@@ -20,4 +20,4 @@ class Worker {
     // be used to send messages to the worker isolate.
   }
 }
-// #enddocregion
+// #enddocregion worker

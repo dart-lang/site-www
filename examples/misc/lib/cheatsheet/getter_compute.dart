@@ -1,4 +1,3 @@
-// #docregion
 class MyClass {
   final List<int> _values = [];
 
@@ -11,4 +10,3 @@ class MyClass {
     return _values.length;
   }
 }
-// #enddocregion

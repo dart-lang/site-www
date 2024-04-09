@@ -71,6 +71,7 @@ by using the `on` keyword to specify the required superclass:
 class Musician {
   // ...
 }
+
 mixin MusicalPerformer [!on Musician!] {
   // ...
 }

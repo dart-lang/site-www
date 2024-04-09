@@ -80,7 +80,7 @@ lib2.Element element2 = lib2.Element();
 If you want to use only part of a library, you can selectively import
 the library. For example:
 
-<?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
+<?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart (imports)" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
 // Import only foo.
 import 'package:lib1/lib1.dart' show foo;

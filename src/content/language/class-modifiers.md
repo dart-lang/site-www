@@ -70,7 +70,7 @@ abstract class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex1/b.dart (abstract-usages)"?>
 ```dart title="b.dart"
 import 'a.dart';
 

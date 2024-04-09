@@ -257,6 +257,7 @@ class C<Foo> {
 // #docregion eq-dont-check-for-null
 class Person1 {
   final String name;
+
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();
