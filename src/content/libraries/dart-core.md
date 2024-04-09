@@ -953,7 +953,7 @@ If you create a class that can provide Iterators for use in for-in loops,
 extend (if possible) or implement Iterable.
 Implement Iterator to define the actual iteration ability.
 
-<?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
+<?code-excerpt "misc/lib/library_tour/core/iterator.dart (structure)"?>
 ```dart
 class Process {
   // Represents a process...
@@ -990,13 +990,11 @@ catch. Errors are conditions that you don't expect or plan for.
 A couple of the most common errors are:
 
 [NoSuchMethodError][]
-
-:   Thrown when a receiving object (which might be null) does not
-    implement a method.
+: Thrown when a receiving object (which might be `null`) does not
+  implement a method.
 
 [ArgumentError][]
-
-:   Can be thrown by a method that encounters an unexpected argument.
+: Can be thrown by a method that encounters an unexpected argument.
 
 Throwing an application-specific exception is a common way to indicate
 that an error has occurred. You can define a custom exception by
