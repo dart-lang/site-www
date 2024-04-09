@@ -107,8 +107,8 @@ Let's customize the app you just created.
    ```dart
    Iterable<String> thingsTodo() sync* { ... }
 
-   [!HTMLLIElement newLI(String itemText) =>
-    (document.createElement('li') as HTMLLIElement)..text = itemText;!]
+   [!HTMLLIElement newLI(String itemText) =>!]
+     [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
     
    void main() { ... }
    ```
