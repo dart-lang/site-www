@@ -15,8 +15,8 @@ void main() {
       }
       return result;
     }
-
     // #enddocregion optional-positional-parameters
+
     // #docregion call-without-optional-param
     assert(say('Bob', 'Howdy') == 'Bob says Howdy');
     // #enddocregion call-without-optional-param
@@ -47,8 +47,8 @@ void main() {
       assert(int.parse(arguments[0]) == 1);
       assert(arguments[1] == 'test');
     }
-
     // #enddocregion main-args
+
     final args = ['1', 'test'];
     expect(() => main(args), m.prints('[1, test]'));
   });
@@ -140,8 +140,8 @@ ORANGES: 7
       assert(add2(3) == 5);
       assert(add4(3) == 7);
     }
-
     // #enddocregion function-closure
+
     main();
   });
 

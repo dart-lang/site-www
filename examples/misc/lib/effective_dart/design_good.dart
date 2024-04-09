@@ -576,6 +576,7 @@ class Duration0 {
 // #docregion eq-dont-check-for-null
 class Person {
   final String name;
+
   // #enddocregion eq-dont-check-for-null
   int get hashCode => name.hashCode;
   Person(this.name);
