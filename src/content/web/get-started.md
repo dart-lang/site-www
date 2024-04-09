@@ -124,9 +124,9 @@ Let's customize the app you just created.
 
    void main() {
     final output = querySelector('#output');
-    [!for (final item in thingsTodo()) {
-      output?.appendChild(newLI(item));
-    }!]
+    [!for (final item in thingsTodo()) {!]
+      [!output?.appendChild(newLI(item));!]
+    [!}!]
   }
    ```
 
