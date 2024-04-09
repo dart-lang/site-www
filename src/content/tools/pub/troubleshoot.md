@@ -186,7 +186,7 @@ that blocks internet access from `dart`.
    still runs in the background.
    This filter causes a failure to connect to `pub.dev`.
    To resolve this issue, 
-   add both `https://pub.dev` and `https://pub.dartlang.org`
+   add both `{{site.pub}}` and `https://pub.dartlang.org`
    to the trusted zone:
 
    1. Open Kaspersky Internet Security.
@@ -195,7 +195,7 @@ that blocks internet access from `dart`.
    4. In the top icon bar, select **Threats**.
    5. Under **Threats**, click **Trusted Zone**.
    6. Select the **Trusted web addresses** tab.
-   7. Click the **+** button, and add the URL `https://pub.dev`.
+   7. Click the **+** button, and add the URL `{{site.pub}}`.
    8. Click **OK**.
    9. Repeat the previous two steps for `https://pub.dartlang.org`
 

@@ -68,7 +68,7 @@ If you have sufficient permission, you can enable automated publishing by:
 
 The _repository_ is the `<organization>/<repository>` on GitHub.
 For example, if your repository is
-`https://github.com/dart-lang/pana` you must specify `dart-lang/pana` in the
+`{{site.repo.dart.org}}/pana` you must specify `dart-lang/pana` in the
 repository field.
 
 The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% endraw %}`.
@@ -565,7 +565,7 @@ To publish a package using exported service account keys:
     ```
 
 1. Create a temporary token for pub.dev and pass it to
-   `dart pub token add https://pub.dev`.
+   `dart pub token add {{site.pub}}`.
    To impersonate service account, include the `--include-email` option.
 
     ```console

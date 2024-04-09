@@ -61,7 +61,7 @@ Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
 followed by examples of running the app.
 
-[native_app]: https://github.com/dart-lang/samples/tree/main/native_app
+[native_app]: {{site.repo.dart.org}}/samples/tree/main/native_app
 [dart-run]: /tools/dart-run
 
 ## Subcommands
@@ -104,7 +104,7 @@ The following table shows the subcommands of `dart compile`.
     <td> <code>kernel</code> </td>
     <td> Kernel module </td>
     <td> A portable,
-      <a href="https://github.com/dart-lang/sdk/blob/main/pkg/kernel/binary.md">intermediate representation</a>
+      <a href="{{site.repo.dart.sdk}}/blob/main/pkg/kernel/binary.md">intermediate representation</a>
       of the source code.
       <br><em><a href="#kernel">Learn more.</a></em>
     </td>
@@ -168,7 +168,7 @@ see the platform documentation for those operating systems:
 * [Apple Code Signing guide][]
 
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
-[Apple Code Signing guide]: https://developer.apple.com/support/code-signing/
+[Apple Code Signing guide]: {{site.apple-dev}}/support/code-signing/
 
 #### Known limitations
 
@@ -248,7 +248,7 @@ $ dart run bin/myapp.dill
 Although kernel modules have reduced startup time compared to Dart code,
 they can have much slower startup than architecture-specific AOT output formats.
 
-[Kernel AST]: https://github.com/dart-lang/sdk/blob/main/pkg/kernel/README.md
+[Kernel AST]: {{site.repo.dart.sdk}}/blob/main/pkg/kernel/README.md
 
 
 ### JavaScript (js) {:#js}

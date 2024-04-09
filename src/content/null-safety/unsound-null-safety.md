@@ -17,7 +17,7 @@ rely on **unsound null safety**.
 
 [null safe]: /null-safety
 [migrated]: /null-safety#migrate
-[Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
+[Dart 3 sound null safety tracking issue]: {{site.repo.dart.sdk}}/issues/49530
 
 The ability to mix [language versions][]
 frees package maintainers to migrate their code,
@@ -137,7 +137,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
+   [package configuration file]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of

@@ -118,7 +118,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

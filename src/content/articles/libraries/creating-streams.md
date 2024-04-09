@@ -232,7 +232,7 @@ This code creates a stream to return,
 and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
-[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
+[stream_controller_bad.dart]: {{site.repo.this}}/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed-stream)"?>
 ```dart tag=bad
@@ -366,7 +366,7 @@ implements pause by using the
 `onListen`, `onPause`, `onResume`, and `onCancel` callbacks
 on the `StreamController`.
 
-[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
+[stream_controller.dart]: {{site.repo.this}}/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better-stream)"?>
 ```dart

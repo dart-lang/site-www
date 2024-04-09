@@ -352,7 +352,7 @@ Flow analysis considers `abstract` getters stable enough to allow type promotion
 as long as there are no conflicting declarations.
 :::
 
-[known bug]: https://github.com/dart-lang/language/issues/3328#issuecomment-1792511446
+[known bug]: {{site.repo.dart.lang}}/issues/3328#issuecomment-1792511446
 
 ### External fields can't be promoted {:#external}
 
@@ -630,7 +630,7 @@ The compiler creates this implicit implementation of `_i` because
 `MockExample` promises to support a getter for `_i` when it implements
 `Example` in its declaration, but doesn't fulfill that promise. 
 So, the undefined getter implementation is handled by [`Mock`'s `noSuchMethod`
-definition](https://pub.dev/documentation/mockito/latest/mockito/Mock/noSuchMethod.html),
+definition]({{site.pub-api}}/mockito/latest/mockito/Mock/noSuchMethod.html),
 which creates an implicit `noSuchMethod` forwarder of the same name.
 
 The failure can also occur between fields in
@@ -672,7 +672,7 @@ it's not necessary to declare the getter `late` to solve this type promotion
 failure in scenarios not involving mocks.
 
 :::note
-The example above uses [mocks](https://pub.dev/packages/mockito) simply because
+The example above uses [mocks]({{site.pub-pkg}}/mockito) simply because
 `Mock` already contains a `noSuchMethod` definition,
 so we don't have to define an arbitrary one
 and can keep the example code short. 
@@ -1111,7 +1111,7 @@ the only write to `i` uses a non-null value and
 happens before `foo` is ever created.
 But [flow analysis isn't that smart][1536].
 
-[1536]: https://github.com/dart-lang/language/issues/1536
+[1536]: {{site.repo.dart.lang}}/issues/1536
 
 **Solution**:
 

@@ -13,4 +13,4 @@ To do so, run the following from the repository root directory:
 $ dart run tool/effective_dart_rules/bin/main.dart
 ```
 
-[Summary of all rules]: https://dart.dev/effective-dart#summary-of-all-rules
+[Summary of all rules]: {{site.url}}/effective-dart#summary-of-all-rules

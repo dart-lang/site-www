@@ -118,5 +118,5 @@ non-instance members unless the user explicitly replaces the real API in JS.
 [Usage]: /interop/js-interop/usage
 [`createJSInteropWrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/createJSInteropWrapper.html
 [`@JSExport`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSExport-class.html
-[limitation is true for extension members]: https://github.com/dart-lang/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
+[limitation is true for extension members]: {{site.repo.dart.org}}/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
 [extension types]: /language/extension-types

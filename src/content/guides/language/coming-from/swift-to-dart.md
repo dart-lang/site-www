@@ -682,7 +682,7 @@ can be returned that contains these values.
 More on this can be found in the sections on
 [collections](#collections) and [classes](#classes).
 
-[several tuple packages]: {{site.pub}}/packages?q=tuples
+[several tuple packages]: {{site.pub-pkg}}?q=tuples
 
 ### Exception and error handling
 

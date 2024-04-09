@@ -39,8 +39,8 @@ If you have questions or concerns about any of these breaking changes, please
 comment on the breaking change issue linked from the relevant entry.
 To be notified about future breaking changes, join the [Dart announce][] group.
 
-[breaking change policy]: https://github.com/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
-[changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
+[changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
 [sdk]: /get-dart
 [language version]: /guides/language/evolution#language-versioning
 [Dart announce]: {{site.announce}}
@@ -76,7 +76,7 @@ accounting for them before the 3.4.0 release.
 * [The pattern context type schema for cast patterns
   is now `_` (the unknown type) instead of `Object?`][54640].
 
-[54640]: https://github.com/dart-lang/sdk/issues/54640
+[54640]: {{site.repo.dart.sdk}}/issues/54640
 
 ### Libraries {:.no_toc}
 
@@ -85,7 +85,7 @@ accounting for them before the 3.4.0 release.
 * **Experimental** **Removed**: [The `waitFor` function][52121]
   has been removed.
 
-[52121]: https://github.com/dart-lang/sdk/issues/52121
+[52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
 
@@ -101,7 +101,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.url}}/go/next-gen-js-interop
 
 #### `dart:js_util`
 
@@ -109,7 +109,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.url}}/go/next-gen-js-interop
 
 #### `dart:typed_data`
 
@@ -117,7 +117,7 @@ accounting for them before the 3.4.0 release.
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
 
-[53128]: https://github.com/dart-lang/sdk/issues/53218
+[53128]: {{site.repo.dart.sdk}}/issues/53218
 
 ### Tools {:.no_toc}
 
@@ -153,7 +153,7 @@ accounting for them before the 3.4.0 release.
 * [An abstract getter is now considered promotable if
   there are no conflicting declarations][54056].
 
-[54056]: https://github.com/dart-lang/sdk/issues/54056
+[54056]: {{site.repo.dart.sdk}}/issues/54056
 
 ### Libraries {:.no_toc}
 
@@ -162,7 +162,7 @@ accounting for them before the 3.4.0 release.
 * **Experimental** **Deprecated**: [The `waitFor` function][52121]
   remains deprecated for another release and is set for removal in Dart 3.4.
 
-[52121]: https://github.com/dart-lang/sdk/issues/52121
+[52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:ffi`
 
@@ -173,7 +173,7 @@ accounting for them before the 3.4.0 release.
   `@FfiNative` annotation has been removed. Usages should be
   updated to use the `@Native` annotation.
 
-[54250]: https://github.com/dart-lang/sdk/issues/54250
+[54250]: {{site.repo.dart.sdk}}/issues/54250
 
 #### `dart:html`
 
@@ -202,7 +202,7 @@ accounting for them before the 3.4.0 release.
   To learn about the updated extensions, reference
   `JSAnyUtilityExtension` and `JSAnyOperatorExtension`.
 
-[52687]: https://github.com/dart-lang/sdk/issues/52687
+[52687]: {{site.repo.dart.sdk}}/issues/52687
 
 #### `dart:typed_data`
 
@@ -211,14 +211,14 @@ accounting for them before the 3.4.0 release.
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
 
-[53128]: https://github.com/dart-lang/sdk/issues/53218
+[53128]: {{site.repo.dart.sdk}}/issues/53218
 
 #### `dart:nativewrappers`
 
 * **Experimental**: [All native wrapper classes are now marked `base`][51896]
   so that none of their subtypes can be implemented.
 
-[51896]: https://github.com/dart-lang/sdk/issues/51896
+[51896]: {{site.repo.dart.sdk}}/issues/51896
 
 ### Tools {:.no_toc}
 
@@ -227,14 +227,14 @@ accounting for them before the 3.4.0 release.
 * [The `Invocation` that is passed to `noSuchMethod` no longer
   has a minified `memberName`][54201], even when compiled with `--minify`.
 
-[54201]: https://github.com/dart-lang/sdk/issues/54201
+[54201]: {{site.repo.dart.sdk}}/issues/54201
 
 #### Wasm compiler (dart2wasm)
 
 * **Experimental**: [Disallow importing legacy JS interop libraries][54004].
   Prefer using `dart:js_interop` and `dart:js_interop_unsafe` instead.
 
-[54004]: https://github.com/dart-lang/sdk/issues/54004
+[54004]: {{site.repo.dart.sdk}}/issues/54004
 
 #### Analyzer
 
@@ -247,7 +247,7 @@ accounting for them before the 3.4.0 release.
   * `unnecessary_cast`
   * `invalid_null_aware_operator`
 
-[54056]: https://github.com/dart-lang/sdk/issues/54056
+[54056]: {{site.repo.dart.sdk}}/issues/54056
 
 #### Linter
 
@@ -351,14 +351,14 @@ accounting for them before the 3.4.0 release.
   }
   ```
 
-[53167]: https://github.com/dart-lang/sdk/issues/53167
-[52121]: https://github.com/dart-lang/sdk/issues/52121
-[52801]: https://github.com/dart-lang/sdk/issues/52801
-[53311]: https://github.com/dart-lang/sdk/issues/53311
-[53005]: https://github.com/dart-lang/sdk/issues/53005
-[53227]: https://github.com/dart-lang/sdk/issues/53227
-[53106]: https://github.com/dart-lang/sdk/issues/53106
-[2020]: https://github.com/dart-lang/language/issues/2020
+[53167]: {{site.repo.dart.sdk}}/issues/53167
+[52121]: {{site.repo.dart.sdk}}/issues/52121
+[52801]: {{site.repo.dart.sdk}}/issues/52801
+[53311]: {{site.repo.dart.sdk}}/issues/53311
+[53005]: {{site.repo.dart.sdk}}/issues/53005
+[53227]: {{site.repo.dart.sdk}}/issues/53227
+[53106]: {{site.repo.dart.sdk}}/issues/53106
+[2020]: {{site.repo.dart.lang}}/issues/2020
 
 
 ## 3.1.0
@@ -389,9 +389,9 @@ accounting for them before the 3.4.0 release.
 * `external` `@staticInterop` members and `external` extension members will
   generate slightly different JS code for methods that have optional parameters.
 
-[52334]: https://github.com/dart-lang/sdk/issues/52334
-[51486]: https://github.com/dart-lang/sdk/issues/51486
-[52027]: https://github.com/dart-lang/sdk/issues/52027
+[52334]: {{site.repo.dart.sdk}}/issues/52334
+[51486]: {{site.repo.dart.sdk}}/issues/51486
+[52027]: {{site.repo.dart.sdk}}/issues/52027
 
 ## 3.0.0
 
@@ -458,23 +458,23 @@ on all the changes in this section.
   introduced in vm_service:11.0.0
 
 [dart3]: /resources/dart-3-migration/
-[switch cases]: https://dart.dev/language/branches#switch
-[mixin class]: https://dart.dev/language/mixins#class-mixin-or-mixin-class
-[label]: https://dart.dev/language/branches#switch
-[50902]: https://github.com/dart-lang/sdk/issues/50902
+[switch cases]: {{site.url}}/language/branches#switch
+[mixin class]: {{site.url}}/language/mixins#class-mixin-or-mixin-class
+[label]: {{site.url}}/language/branches#switch
+[50902]: {{site.repo.dart.sdk}}/issues/50902
 [collection]: /resources/dart-3-migration#dart-collection
-[49529]: https://github.com/dart-lang/sdk/issues/49529
-[`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
-[`deferred as`]: https://dart.dev/guides/language/language-tour#lazily-loading-a-library
-[`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
-[50231]: https://github.com/dart-lang/sdk/issues/50231
-[`Metrics`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html
-[`Metric`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html
-[`Counter`]: https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html
-[`Gauge`]: https://api.dart.dev/stable/2.18.2/dart-developer/Gauge-class.html
-[49536]: https://github.com/dart-lang/sdk/issues/49536
-[51035]: https://github.com/dart-lang/sdk/issues/51035
+[49529]: {{site.repo.dart.sdk}}/issues/49529
+[`DeferredLibrary`]: {{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html
+[`deferred as`]: {{site.url}}/guides/language/language-tour#lazily-loading-a-library
+[`MAX_USER_TAGS`]: {{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
+[`maxUserTags`]: {{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
+[50231]: {{site.repo.dart.sdk}}/issues/50231
+[`Metrics`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metrics-class.html
+[`Metric`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metric-class.html
+[`Counter`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Counter-class.html
+[`Gauge`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Gauge-class.html
+[49536]: {{site.repo.dart.sdk}}/issues/49536
+[51035]: {{site.repo.dart.sdk}}/issues/51035
 
 
 ## 2.19.0
@@ -538,21 +538,21 @@ on all the changes in this section.
 
 * [`dart2js` no longer supports HTTP URIs as inputs][49473].
 
-[49635]: https://github.com/dart-lang/sdk/issues/49635
-[49687]: https://github.com/dart-lang/sdk/issues/49687
-[50383]: https://github.com/dart-lang/sdk/issues/50383
-[34233]: https://github.com/dart-lang/sdk/issues/34233
-[`ServiceExtensionResponse`]: https://api.dart.dev/stable/2.17.6/dart-developer/ServiceExtensionResponse-class.html#constants
-[49935]: https://github.com/dart-lang/sdk/issues/49935
-[49305]: https://github.com/dart-lang/sdk/issues/49305
-[49647]: https://github.com/dart-lang/sdk/issues/49647
-[49878]: https://github.com/dart-lang/sdk/issues/49878
-[`SendPort.send`]: https://api.dart.dev/stable/dart-isolate/SendPort/send.html
-[34233]: https://github.com/dart-lang/sdk/issues/34233
-[49473]: https://github.com/dart-lang/sdk/issues/49473
-[48730]: https://github.com/dart-lang/sdk/issues/48730
-[49941]: https://github.com/dart-lang/sdk/issues/49941
-[49350]: https://github.com/dart-lang/sdk/issues/49350
+[49635]: {{site.repo.dart.sdk}}/issues/49635
+[49687]: {{site.repo.dart.sdk}}/issues/49687
+[50383]: {{site.repo.dart.sdk}}/issues/50383
+[34233]: {{site.repo.dart.sdk}}/issues/34233
+[`ServiceExtensionResponse`]: {{site.dart-api}}/stable/2.17.6/dart-developer/ServiceExtensionResponse-class.html#constants
+[49935]: {{site.repo.dart.sdk}}/issues/49935
+[49305]: {{site.repo.dart.sdk}}/issues/49305
+[49647]: {{site.repo.dart.sdk}}/issues/49647
+[49878]: {{site.repo.dart.sdk}}/issues/49878
+[`SendPort.send`]: {{site.dart-api}}/stable/dart-isolate/SendPort/send.html
+[34233]: {{site.repo.dart.sdk}}/issues/34233
+[49473]: {{site.repo.dart.sdk}}/issues/49473
+[48730]: {{site.repo.dart.sdk}}/issues/48730
+[49941]: {{site.repo.dart.sdk}}/issues/49941
+[49350]: {{site.repo.dart.sdk}}/issues/49350
 
 
 ## 2.18.0
@@ -580,12 +580,12 @@ on all the changes in this section.
 * [Removed the standalone `dart2js` and `dartdevc` tools][46100].
 * [Removed the standalone `dartanalyzer` tool][46100].
 
-[48167]: https://github.com/dart-lang/sdk/issues/48167
-[49045]: https://github.com/dart-lang/sdk/issues/49045
-[34218]: https://github.com/dart-lang/sdk/issues/34218
-[45630]: https://github.com/dart-lang/sdk/issues/45630
-[48272]: https://github.com/dart-lang/sdk/issues/48272
-[46100]: https://github.com/dart-lang/sdk/issues/46100
+[48167]: {{site.repo.dart.sdk}}/issues/48167
+[49045]: {{site.repo.dart.sdk}}/issues/49045
+[34218]: {{site.repo.dart.sdk}}/issues/34218
+[45630]: {{site.repo.dart.sdk}}/issues/45630
+[48272]: {{site.repo.dart.sdk}}/issues/48272
+[46100]: {{site.repo.dart.sdk}}/issues/46100
 
 ## 2.17.0
 
@@ -608,11 +608,11 @@ on all the changes in this section.
 * **Deprecated**: [Deprecated the standalone `dartdevc` tool][46100].
 * **Removed**: [Removed the standalone `dartdoc` tool][46100].
 
-[47887]: https://github.com/dart-lang/sdk/issues/47887
-[48093]: https://github.com/dart-lang/sdk/issues/48093
-[34218]: https://github.com/dart-lang/sdk/issues/34218
-[48513]: https://github.com/dart-lang/sdk/issues/48513
-[46100]: https://github.com/dart-lang/sdk/issues/46100
+[47887]: {{site.repo.dart.sdk}}/issues/47887
+[48093]: {{site.repo.dart.sdk}}/issues/48093
+[34218]: {{site.repo.dart.sdk}}/issues/34218
+[48513]: {{site.repo.dart.sdk}}/issues/48513
+[46100]: {{site.repo.dart.sdk}}/issues/46100
 
 ## 2.16.0
 
@@ -636,9 +636,9 @@ on all the changes in this section.
 * **Deprecated**: [Deprecated the standalone `dartdoc` tool][46100].
 * **Removed**: [Removed the deprecated standalone `pub` tool][46100].
 
-[47653]: https://github.com/dart-lang/sdk/issues/47653
-[47769]: https://github.com/dart-lang/sdk/issues/47769
-[46100]: https://github.com/dart-lang/sdk/issues/46100
+[47653]: {{site.repo.dart.sdk}}/issues/47653
+[47769]: {{site.repo.dart.sdk}}/issues/47769
+[46100]: {{site.repo.dart.sdk}}/issues/46100
 
 ## 2.15.0
 
@@ -670,10 +670,10 @@ on all the changes in this section.
 * [Grouped isolates spawned via the `Isolate.spawn()` API][46754] to operate on the
   same managed heap, and therefore share various VM-internal data structures.
 
-[46875]: https://github.com/dart-lang/sdk/issues/46875
-[46316]: https://github.com/dart-lang/sdk/issues/46316
-[45451]: https://github.com/dart-lang/sdk/issues/45451
-[46754]: https://github.com/dart-lang/sdk/issues/46754
+[46875]: {{site.repo.dart.sdk}}/issues/46875
+[46316]: {{site.repo.dart.sdk}}/issues/46316
+[45451]: {{site.repo.dart.sdk}}/issues/45451
+[46754]: {{site.repo.dart.sdk}}/issues/46754
 
 ## 2.14.0
 
@@ -711,10 +711,10 @@ on all the changes in this section.
 * [Changed subtyping relations of `package:js` classes][44154] to be more correct and
   consistent with Dart2JS.
 
-[45115]: https://github.com/dart-lang/sdk/issues/45115
-[45071]: https://github.com/dart-lang/sdk/issues/45071
-[46545]: https://github.com/dart-lang/sdk/issues/46545
-[44154]: https://github.com/dart-lang/sdk/issues/44154
+[45115]: {{site.repo.dart.sdk}}/issues/45115
+[45071]: {{site.repo.dart.sdk}}/issues/45071
+[46545]: {{site.repo.dart.sdk}}/issues/46545
+[44154]: {{site.repo.dart.sdk}}/issues/44154
 
 
 ## 2.13.0
@@ -726,7 +726,7 @@ on all the changes in this section.
 * [No longer valid][44211] to use a `String` that matches an `@Native` annotation
   in an `@JS()` annotation for a non-anonymous JS interop class.
 
-[44211]: https://github.com/dart-lang/sdk/issues/44211
+[44211]: {{site.repo.dart.sdk}}/issues/44211
 
 ## 2.12.0
 
@@ -761,12 +761,12 @@ on all the changes in this section.
 
 * [The Dart SDK constraint is now **required** in `pubspec.yaml`][44072].
 
-[Null safety]: https://dart.dev/null-safety/understanding-null-safety
-[44660]: https://github.com/dart-lang/sdk/issues/44660
-[44621]: https://github.com/dart-lang/sdk/issues/44621
-[42312]: https://github.com/dart-lang/sdk/issues/42312
-[44622]: https://github.com/dart-lang/sdk/issues/44622
-[44072]: https://github.com/dart-lang/sdk/issues/44072
+[Null safety]: {{site.url}}/null-safety/understanding-null-safety
+[44660]: {{site.repo.dart.sdk}}/issues/44660
+[44621]: {{site.repo.dart.sdk}}/issues/44621
+[42312]: {{site.repo.dart.sdk}}/issues/42312
+[44622]: {{site.repo.dart.sdk}}/issues/44622
+[44072]: {{site.repo.dart.sdk}}/issues/44072
 
 ## 2.10.0
 
@@ -776,7 +776,7 @@ on all the changes in this section.
 
 * [Renamed `dart_api_dl.cc` to `dart_api_dl.c`][42982] and changed to a pure C file.
 
-[42982]: https://github.com/dart-lang/sdk/issues/42982
+[42982]: {{site.repo.dart.sdk}}/issues/42982
 
 ## 2.9.0
 
@@ -812,9 +812,9 @@ on all the changes in this section.
   surrogates into replacement characters][41100].
 
 
-[41100]: https://github.com/dart-lang/sdk/issues/41100
+[41100]: {{site.repo.dart.sdk}}/issues/41100
 [whatwg encoding standard]: https://encoding.spec.whatwg.org/#utf-8-decoder
-[42714]: https://github.com/dart-lang/sdk/issues/42714
+[42714]: {{site.repo.dart.sdk}}/issues/42714
 
 ## 2.8.1
 
@@ -890,27 +890,27 @@ other.
 * Completely removed the `--package-root` flag, which was hidden and disabled
   in Dart 2.0.0.
 
-[40675]: https://github.com/dart-lang/sdk/issues/40675
-[41362]: https://github.com/dart-lang/sdk/issues/41362
-[40676]: https://github.com/dart-lang/sdk/issues/40676
-[40681]: https://github.com/dart-lang/sdk/issues/40681
-[40683]: https://github.com/dart-lang/sdk/issues/40683
-[40130]: https://github.com/dart-lang/sdk/issues/40130
-[40674]: https://github.com/dart-lang/sdk/issues/40674
-[40678]: https://github.com/dart-lang/sdk/issues/40678
-[33501]: https://github.com/dart-lang/sdk/issues/33501
-[40702]: https://github.com/dart-lang/sdk/issues/40702
-[40483]: https://github.com/dart-lang/sdk/issues/40483
-[40706]: https://github.com/dart-lang/sdk/issues/40706
-[40709]: https://github.com/dart-lang/sdk/issues/40709
-[ddc]: https://github.com/dart-lang/sdk/issues/38994
-[normalized]: https://github.com/dart-lang/language/blob/main/resources/type-system/normalization.md
+[40675]: {{site.repo.dart.sdk}}/issues/40675
+[41362]: {{site.repo.dart.sdk}}/issues/41362
+[40676]: {{site.repo.dart.sdk}}/issues/40676
+[40681]: {{site.repo.dart.sdk}}/issues/40681
+[40683]: {{site.repo.dart.sdk}}/issues/40683
+[40130]: {{site.repo.dart.sdk}}/issues/40130
+[40674]: {{site.repo.dart.sdk}}/issues/40674
+[40678]: {{site.repo.dart.sdk}}/issues/40678
+[33501]: {{site.repo.dart.sdk}}/issues/33501
+[40702]: {{site.repo.dart.sdk}}/issues/40702
+[40483]: {{site.repo.dart.sdk}}/issues/40483
+[40706]: {{site.repo.dart.sdk}}/issues/40706
+[40709]: {{site.repo.dart.sdk}}/issues/40709
+[ddc]: {{site.repo.dart.sdk}}/issues/38994
+[normalized]: {{site.repo.dart.lang}}/blob/main/resources/type-system/normalization.md
 
 ## 2.7.1
 
 * [The Dart SDK for macOS is now only available for x64][39810].
 
-[39810]: https://github.com/dart-lang/sdk/issues/39810
+[39810]: {{site.repo.dart.sdk}}/issues/39810
 
 ## 2.7.0
 
@@ -941,8 +941,8 @@ other.
 * Removed memory management `Pointer.allocate` and `Pointer.free`.
 * `Pointer.offsetBy` was removed, use `cast` and `elementAt` instead.
 
-[671]: https://github.com/dart-lang/language/issues/671
-[37985]: https://github.com/dart-lang/sdk/issues/37985
+[671]: {{site.repo.dart.lang}}/issues/671
+[37985]: {{site.repo.dart.sdk}}/issues/37985
 
 ## 2.5.0
 
@@ -963,13 +963,13 @@ other.
 
 #### Pub
 
-* Packages published to [pub.dev](https://pub.dev) [can no longer contain git
+* Packages published to [pub.dev]({{site.pub}}) [can no longer contain git
   dependencies][36765].
 
-[36900]: https://github.com/dart-lang/sdk/issues/36900
-[37192]: https://github.com/dart-lang/sdk/issues/37192
-[37192]: https://github.com/dart-lang/sdk/issues/37192
-[36765]: https://github.com/dart-lang/sdk/issues/36765
+[36900]: {{site.repo.dart.sdk}}/issues/36900
+[37192]: {{site.repo.dart.sdk}}/issues/37192
+[37192]: {{site.repo.dart.sdk}}/issues/37192
+[36765]: {{site.repo.dart.sdk}}/issues/36765
 
 ## 2.4.0
 
@@ -989,8 +989,8 @@ other.
 * [Fixed a bug in the `StreamIterator` class][36382] where `await for` allowed
   `null` as a stream.
 
-[35097]: https://github.com/dart-lang/sdk/issues/35097
-[36382]: https://github.com/dart-lang/sdk/issues/36382
+[35097]: {{site.repo.dart.sdk}}/issues/35097
+[36382]: {{site.repo.dart.sdk}}/issues/36382
 
 ## 2.2.0
 
@@ -1003,7 +1003,7 @@ other.
 * [Updated `Link` implementation][33966] to utilize true symbolic
   links instead of junctions on Windows.
 
-[33966]: https://github.com/dart-lang/sdk/issues/33966
+[33966]: {{site.repo.dart.sdk}}/issues/33966
 
 ## 2.1.1
 
@@ -1013,7 +1013,7 @@ other.
 
 * [Added to a closed `IOSink` now throws a `StateError`][29554].
 
-[29554]: https://github.com/dart-lang/sdk/issues/29554
+[29554]: {{site.repo.dart.sdk}}/issues/29554
 
 ### Tools {:.no_toc}
 
@@ -1022,8 +1022,8 @@ other.
 * [Fixed a soundness hole when using `dart:mirrors`][35611] to reflectively
   invoke a method in an incorrect way that violates its static types.
 
-[29554]: https://github.com/dart-lang/sdk/issues/29554
-[35611]: https://github.com/dart-lang/sdk/issues/35611
+[29554]: {{site.repo.dart.sdk}}/issues/29554
+[35611]: {{site.repo.dart.sdk}}/issues/35611
 
 ## 2.1.0
 
@@ -1048,15 +1048,15 @@ other.
 
 * Duplicate keys in a const map are not allowed and produce a compile-time error.
 
-[32014]: https://github.com/dart-lang/sdk/issues/32014
-[33308]: https://github.com/dart-lang/sdk/issues/33308
-[33744]: https://github.com/dart-lang/sdk/issues/33744
-[34161]: https://github.com/dart-lang/sdk/issues/34161
-[34225]: https://github.com/dart-lang/sdk/issues/34225
-[34235]: https://github.com/dart-lang/sdk/issues/34235
-[34403]: https://github.com/dart-lang/sdk/issues/34403
-[34498]: https://github.com/dart-lang/sdk/issues/34498
-[34532]: https://github.com/dart-lang/sdk/issues/34532
+[32014]: {{site.repo.dart.sdk}}/issues/32014
+[33308]: {{site.repo.dart.sdk}}/issues/33308
+[33744]: {{site.repo.dart.sdk}}/issues/33744
+[34161]: {{site.repo.dart.sdk}}/issues/34161
+[34225]: {{site.repo.dart.sdk}}/issues/34225
+[34235]: {{site.repo.dart.sdk}}/issues/34235
+[34403]: {{site.repo.dart.sdk}}/issues/34403
+[34498]: {{site.repo.dart.sdk}}/issues/34498
+[34532]: {{site.repo.dart.sdk}}/issues/34532
 
 ## 2.0.0
 
@@ -1081,6 +1081,6 @@ other.
 
 * Replaced pub's transformer-based build system with a [new build system][build system].
 
-[30345]: https://github.com/dart-lang/sdk/issues/30345
+[30345]: {{site.repo.dart.sdk}}/issues/30345
 [strong mode]: /guides/language/type-system
-[build system]: https://github.com/dart-lang/build
+[build system]: {{site.repo.dart.org}}/build

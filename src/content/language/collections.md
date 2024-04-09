@@ -324,8 +324,8 @@ For more details and examples of using collection `if` and `for`, see the
 [`List`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
 [Using constructors]: /language/classes#using-constructors
-[collections proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
-[spread proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/spread-collections/feature-specification.md
+[collections proposal]: {{site.repo.dart.lang}}/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
+[spread proposal]: {{site.repo.dart.lang}}/blob/main/accepted/2.3/spread-collections/feature-specification.md
 [generics]: /language/generics
 [`Set`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
 [if-case]: /language/branches#if-case

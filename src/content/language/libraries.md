@@ -21,7 +21,7 @@ Libraries can be distributed using [packages](/guides/packages).
 :::note
 To learn why Dart uses underscores instead of access modifier keywords
 like `public` or `private`, consult
-[SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
 :::
 
 [library]: /tools/pub/glossary#library
@@ -109,7 +109,7 @@ If you're building a Flutter app,
 consult its implementation of deferred loading in the Flutter guide on
 [deferred components][flutter-deferred].
 
-[flutter-deferred]: https://docs.flutter.dev/perf/deferred-components
+[flutter-deferred]: {{site.flutter-docs}}/perf/deferred-components
 
 To lazily load a library, first import it using `deferred as`.
 

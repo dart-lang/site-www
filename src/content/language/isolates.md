@@ -117,7 +117,7 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
-[send_and_receive.dart]: https://github.com/dart-lang/samples/blob/main/isolates/bin/send_and_receive.dart
+[send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 

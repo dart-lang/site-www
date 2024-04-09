@@ -302,7 +302,7 @@ behaved like `break`.
 to remove APIs that have been deprecated for several years. 
 The following APIs no longer exist in the Dart core libraries.
 
-[#49529]: https://github.com/dart-lang/sdk/issues/49529
+[#49529]: {{site.repo.dart.sdk}}/issues/49529
 
 #### Scope
 
@@ -391,7 +391,7 @@ that applies to all Dart 3 code.
 
 - As previously announced, the deprecated `registerElement`
   and `registerElement2` methods in `Document` and `HtmlDocument` have been
-  removed.  See [#49536](https://github.com/dart-lang/sdk/issues/49536) for
+  removed.  See [#49536]({{site.repo.dart.sdk}}/issues/49536) for
   details.
 
 #### `dart:math`
@@ -526,14 +526,14 @@ Use new sub-commands available in the `dart` tool:
 
 | Historical tool | `dart` replacement                            | Deprecation | Discontinuation |
 |-----------------|-----------------------------------------------|-------------|-----------------|
-| `stagehand`     | [`dart create`](/tools/dart-create)           | [2.14](https://github.com/dart-lang/stagehand/issues/671)        | 2.14*  |
-| `dartfmt`       | [`dart format`](/tools/dart-format)           | [2.14](https://github.com/dart-lang/dart_style/issues/986)        | [2.15](https://github.com/dart-lang/dart_style/issues/986)            |
-| `dart2native`   | [`dart compile exe`](/tools/dart-compile#exe) | [2.14](https://github.com/dart-lang/sdk/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15](https://github.com/dart-lang/sdk/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
-| `dart2js`       | [`dart compile js`](/tools/dart-compile)      | [2.17](https://github.com/dart-lang/sdk/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
-| `dartdevc`      | [`webdev`](/tools/webdev)                     | [2.17](https://github.com/dart-lang/sdk/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18](https://github.com/dart-lang/sdk/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
-| `dartanalyzer`  | [`dart analyze`](/tools/dart-analyze)         | [2.16](https://github.com/dart-lang/sdk/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18](https://github.com/dart-lang/sdk/issues/48457)             |
-| `dartdoc`       | [`dart doc`](/tools/dart-doc)                 | [2.16](https://github.com/dart-lang/sdk/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
-| `pub`           | [`dart pub`](/tools/dart-pub)                 | [2.15](https://github.com/dart-lang/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
+| `stagehand`     | [`dart create`](/tools/dart-create)           | [2.14]({{site.repo.dart.org}}/stagehand/issues/671)        | 2.14*  |
+| `dartfmt`       | [`dart format`](/tools/dart-format)           | [2.14]({{site.repo.dart.org}}/dart_style/issues/986)        | [2.15]({{site.repo.dart.org}}/dart_style/issues/986)            |
+| `dart2native`   | [`dart compile exe`](/tools/dart-compile#exe) | [2.14]({{site.repo.dart.sdk}}/commit/cac00e9d956a6f7ef28628989912d971f6b908d4)        | [2.15]({{site.repo.dart.sdk}}/commit/6c5fb84716b1f257b170351efe8096fe2af2809b)            |
+| `dart2js`       | [`dart compile js`](/tools/dart-compile)      | [2.17]({{site.repo.dart.sdk}}/commit/8415b70e75b1d5bbe8251fa6a9eab2d970cf9eec)         | [2.18]({{site.repo.dart.sdk}}/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartdevc`      | [`webdev`](/tools/webdev)                     | [2.17]({{site.repo.dart.sdk}}/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18]({{site.repo.dart.sdk}}/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
+| `dartanalyzer`  | [`dart analyze`](/tools/dart-analyze)         | [2.16]({{site.repo.dart.sdk}}/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18]({{site.repo.dart.sdk}}/issues/48457)             |
+| `dartdoc`       | [`dart doc`](/tools/dart-doc)                 | [2.16]({{site.repo.dart.sdk}}/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
+| `pub`           | [`dart pub`](/tools/dart-pub)                 | [2.15]({{site.repo.dart.org}}/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
 
 {:.table .table-striped .nowrap}
 
@@ -605,11 +605,11 @@ analyzer:
 * The deprecated Observatory has been hidden by default. 
   We recommend using [DevTools](/tools/dart-devtools).
 * The command `dart format fix` has been replaced by `dart fix`
-  [#1153](https://github.com/dart-lang/dart_style/issues/1153).
+  [#1153]({{site.repo.dart.org}}/dart_style/issues/1153).
 * The snapshot files bundled in the SDK for the Dart web compiler
-  have been cleaned up [#50700](https://github.com/dart-lang/sdk/issues/50700).
+  have been cleaned up [#50700]({{site.repo.dart.sdk}}/issues/50700).
 * The output of `dart format` changed a bit for
-  [some code](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#formatter).
+  [some code]({{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#formatter).
 * Ending backwards compatibility for the old location of pub-cache on Windows.
   Prior to Dart 3 `%APPDATA%\Pub\Cache` was a fallback location for pub-cache.
   Starting with Dart 3, the default pub-cache is located at

@@ -417,7 +417,7 @@ The remaining formatting guidelines are for the few things `dart format` cannot 
 for you.
 
 [`dart format`]: /tools/dart-format
-[dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
+[dart format docs]: {{site.repo.dart.org}}/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly
 

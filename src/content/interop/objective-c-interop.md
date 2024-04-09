@@ -13,7 +13,7 @@ to call Objective-C and Swift APIs.
 
 :::note
 This interop feature is **experimental**,
-and [in active development](https://github.com/dart-lang/sdk/issues/49673).
+and [in active development]({{site.repo.dart.sdk}}/issues/49673).
 :::
 
 `dart:ffi` enables Dart code to interact with native C APIs.
@@ -541,8 +541,8 @@ $ dart run example.dart
 [`duration`]: {{appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
 [`play`]: {{appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
 [Swift documentation]: {{appledoc}}/swift/importing-swift-into-objective-c
-[open feature request]: https://github.com/dart-lang/sdk/issues/46943
-[`package:cupertino_http`]: https://github.com/dart-lang/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
-[not thread safe]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
+[open feature request]: {{site.repo.dart.sdk}}/issues/46943
+[`package:cupertino_http`]: {{site.repo.dart.org}}/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
+[not thread safe]: {{site.apple-dev}}/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
 [Objective-C dispatch documentation]: {{appledoc}}/dispatch?language=objc
-[swift_example]: https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/swift
+[swift_example]: {{site.repo.dart.org}}/native/tree/main/pkgs/ffigen/example/swift

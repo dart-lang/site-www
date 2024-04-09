@@ -32,11 +32,11 @@ in the following screenshot:
 For details about other parts of the package page,
 follow these links:
 
-1. [Package layout ](https://dart.dev/tools/pub/package-layout)
-2. [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites)
+1. [Package layout ]({{site.url}}/tools/pub/package-layout)
+2. [Flutter Favorite]({{site.flutter}}/docs/development/packages-and-plugins/favorites)
 3. [Package scoring]({{site.pub}}/help/scoring)
-4. [Verified publishers](https://dart.dev/tools/pub/verified-publishers)
-5. [Pubspec file](https://dart.dev/tools/pub/pubspec)
+4. [Verified publishers]({{site.url}}/tools/pub/verified-publishers)
+5. [Pubspec file]({{site.url}}/tools/pub/pubspec)
 
 
 ## Writing a good README is important

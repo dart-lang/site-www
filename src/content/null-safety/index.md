@@ -183,11 +183,11 @@ To learn more about null safety, check out the following resources:
 * [Null safety FAQ][]
 * [Null safety sample code][calculate_lix]
 
-[calculate_lix]: https://github.com/dart-lang/samples/tree/main/null_safety/calculate_lix
+[calculate_lix]: {{site.repo.dart.org}}/samples/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Understanding null safety]: /null-safety/understanding-null-safety
-[#34233]: https://github.com/dart-lang/sdk/issues/34233
-[#49529]: https://github.com/dart-lang/sdk/issues/49529
-[#2357]: https://github.com/dart-lang/language/issues/2357
+[#34233]: {{site.repo.dart.sdk}}/issues/34233
+[#49529]: {{site.repo.dart.sdk}}/issues/49529
+[#2357]: {{site.repo.dart.lang}}/issues/2357
 

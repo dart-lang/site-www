@@ -64,7 +64,7 @@ To learn how to use a specific rule set,
 visit the documentation for [enabling and disabling linter rules][].
 
 To find more predefined rule sets,
-check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
+check out the [`#lints` topic]({{site.pub-pkg}}?q=topic:lints) on pub.dev.
 
 [enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
