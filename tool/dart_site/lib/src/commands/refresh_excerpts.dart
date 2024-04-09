@@ -94,8 +94,10 @@ Future<int> _refreshExcerpts({
   final errors = updateResult.errors;
   final errorCount = errors.length;
 
-  if (verboseLogging) {
-    if (warningCount > 0 || errorCount > 0) {
+  final hadErrors = errorCount > 0;
+
+  if (verboseLogging || hadErrors) {
+    if (hadErrors || warningCount > 0) {
       for (final error in errors) {
         print('  error - $error');
       }
@@ -106,11 +108,12 @@ Future<int> _refreshExcerpts({
     }
   }
 
-  if (errorCount > 0) {
-    stderr.writeln('Error: There were errors when updating excerpts!');
+  if (hadErrors) {
+    stderr.writeln('\nError: There were errors when updating excerpts!');
     return 0;
   } else if (failOnUpdate && updateResult.excerptsNeedingUpdates > 0) {
     stderr.writeln('Error: Some code excerpts needed to be updated!');
+    stderr.writeln('  Run `./dash_site refresh-excerpts` to update.');
     return 0;
   }
 
