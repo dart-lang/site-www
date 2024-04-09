@@ -2,26 +2,26 @@ import 'dart:collection';
 
 final Iterator<Process> _it = [Process(), Process(), Process()].iterator;
 
-// #docregion
+// #docregion structure
 class Process {
   // Represents a process...
-  // #enddocregion
+  // #enddocregion structure
   static int _nextId = 0;
   final int id = _nextId++;
-  // #docregion
+  // #docregion structure
 }
 
 class ProcessIterator implements Iterator<Process> {
   @override
   Process get current => /*...*/
-      // #enddocregion
+      // #enddocregion structure
       _it.current;
-  // #docregion
+  // #docregion structure
   @override
   bool moveNext() => /*...*/
-      // #enddocregion
+      // #enddocregion structure
       _it.moveNext();
-  // #docregion
+  // #docregion structure
 }
 
 // A mythical class that lets you iterate through all
@@ -35,8 +35,9 @@ void main() {
   // Iterable objects can be used with for-in.
   for (final process in Processes()) {
     // Do something with the process.
-    // #enddocregion
+    // #enddocregion structure
     print(process.id);
-    // #docregion
+    // #docregion structure
   }
 }
+// #enddocregion structure

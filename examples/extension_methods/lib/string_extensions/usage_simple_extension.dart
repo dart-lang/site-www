@@ -11,11 +11,11 @@ void main() {
   print(double.parse('42'));
 
   // WITH extension methods.
-  // #docregion import-and-use
+// #docregion import-and-use
   print('42'.padLeft(5)); // Use a String method.
-  // #docregion basic
+// #docregion basic
   print('42'.parseInt()); // Use an extension method.
-  // #enddocregion basic, import-and-use
+// #enddocregion basic, import-and-use
   print('42'.parseDouble());
 
   // var vs. dynamic.
