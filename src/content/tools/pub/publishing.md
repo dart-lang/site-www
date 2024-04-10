@@ -23,70 +23,77 @@ Watch the following video for an overview of building and publishing packages.
   {{yt.set}}>
 </iframe>
 
-## Publish is forever
+## Remember: Publishing is forever
 
-Keep in mind that publishing is forever. As soon as you publish your package,
-users can depend on it. Once they start doing that, removing
-the package would break theirs. To avoid that, the [pub.dev policy][policy]
+Keep in mind that a published package lasts forever.
+As soon as you publish your package, users can depend on it.
+Once they start depending on it, removing the package would break theirs.
+To avoid that, the [pub.dev policy][policy]
 disallows unpublishing packages except for very few cases.
 
-You can always upload new versions of your package, but
-old ones will continue to be available for users that aren't ready to
-upgrade yet.
+You can always upload new versions of your package,
+but old ones remain available for users that can't upgrade yet.
 
-For already published packages that are no longer relevant or being maintained,
-you can [mark them as discontinued](#discontinue).
+For published packages that have lost relevance or lack maintainance,
+[mark them as discontinued](#discontinue).
 
-## Prepare to publish
+## Prepare your package for publication
 
-When publishing a package, follow the [pubspec format][pubspec] and
-[package layout conventions][].
-Some of these are required for others to use your package.
-Others are suggestions to simplify concepts other users to understand and work
-with your package. In both cases, pub points out what changes help make your package play nicer with the Dart ecosystem.
-Beyond these conditions, follow these additional requirements
-to upload your package:
+When publishing a package, follow the conventions found in the
+[pubspec format][pubspec] and [package layout][pkg-layout] structure.
+To simplify using your package, Dart requires these conventions.
+These conventions contain some exceptions noted on the linked guides.
+When invoked, `pub` points out what changes you can make so your package
+works better within the Dart ecosystem.
 
-* You must include a `LICENSE` file.
+Beyond these conventions, you must follow these requirements:
+
+* Include a `LICENSE` file in your package.
   We recommend the [BSD 3-clause license][],
   which the Dart and Flutter teams typically use.
-  However, you can use any license that's appropriate for your package.
-  You must also have the legal right to
-  redistribute anything that you upload as part of your package.
+  However, you can use any license appropriate for your package.
 
-* Your package must be smaller than 100 MB after gzip compression. If
-  it's too large, consider splitting it into multiple packages, using a
-  `.pubignore` file to remove unnecessary content, or cutting down
-  on the number of included resources or examples.
+* Verify that you have the legal right to redistribute anything that
+  you upload as part of your package.
 
-* Your package should depend only on hosted dependencies (from the default pub
-  package server) and SDK dependencies (`sdk: flutter`). These restrictions
-  ensure that dependencies of your packages cannot become unavailable in the
-  future.
+* Keep package size to less than 100 MB after gzip compression.
+  If it's too large, consider splitting it into multiple packages,
+  using a `.pubignore` file to remove unnecessary content,
+  or cutting down on the number of included resources or examples.
 
-* You must have a [Google Account][],
-  which pub uses to manage package upload permissions.
-  Your Google Account can be associated with a Gmail address or
-  with any other email address.
+* Have your package depend only on hosted dependencies
+  from the default pub package server and SDK dependencies
+  (`sdk: flutter`).
+  These restrictions ensure that dependencies of your packages
+  can be found and accessed in the future.
 
-### Important files
+* Own a [Google Account][]. Pub uses a Google account to manage package
+  upload permissions. Your Google Account can be associated with
+  a Gmail address or any other email address.
+
+### Populate your pub.dev web page
 
 Pub uses the contents of a few files to create a page for your
-package at `pub.dev/packages/<your_package>`. Here are the files that
-affect how your package's page looks:
+package at `pub.dev/packages/<your_package>`.
+The following files affect the contents of your package's web page.
 
-* **README.md:** The `README.md` file
-  is the main content featured in your package's page.
-  The file's contents are rendered as [Markdown.][Markdown]
-  For guidance on how to write a great README, see
+**`README.md`**
+  : This file contains the main content featured in
+  your package's web page.
+  The file's contents should be marked up using [Markdown][].
+  To learn how to write a great README, see
   [Writing package pages](/guides/libraries/writing-package-pages).
-* **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
-  is also featured in a tab on your package's page,
-  so that developers can read it right from pub.dev.
-  The file's contents are rendered as [Markdown.][Markdown]
-* **The pubspec:** Your package's `pubspec.yaml` file is used to fill out
-  details about your package on the right side of your package's page, like its
-  description, homepage, etc.
+
+**`CHANGELOG.md`**
+  : If found, this file populates its own tab on your package's web page.
+  Developers can read your changes right from pub.dev.
+  The file's contents should be marked up using [Markdown][].
+
+**`pubspec.yaml`**
+  : This file populates details about your package
+  on the right side of your package's web page.
+  The file's contents should follow YAML conventions.
+  These details include description, homepage, and the like.
 
 ### Advantages of using a verified publisher {:#verified-publisher}
 
@@ -137,103 +144,7 @@ the publisher when you are not available.
 Use the [`dart pub publish`][] command to publish your package
 for the first time or to update it to a new version.
 
-### Test publishing your package
-
-To test how `dart pub publish` will work, you can perform a dry run:
-
-```console
-$ dart pub publish --dry-run
-```
-
-With this command, `dart pub` performs the following tasks:
-
-1. Verifies that your package follows the [pubspec format][pubspec] and
-   [package layout conventions][].
-1. Shows all of the files it intends to publish.
-
-The following example shows the publishing a package named `transmogrify`:
-
-```plaintext
-Publishing transmogrify 1.0.0
-    .gitignore
-    CHANGELOG.md
-    README.md
-    lib
-        transmogrify.dart
-        src
-            transmogrifier.dart
-            transmogrification.dart
-    pubspec.yaml
-    test
-        transmogrify_test.dart
-
-Package has 0 warnings.
-```
-
-### Publish to pub.dev
-
-To publish your package when it's ready, remove the `--dry-run` argument:
-
-```console
-$ dart pub publish
-```
-
-With this command, `dart pub` performs the following tasks:
-
-1. Verifies that your package follows the [pubspec format][pubspec] and
-   [package layout conventions][].
-1. Shows all of the files it intends to publish.
-1. Uploads your package to [pub.dev]({{site.pub}}).
-
-:::note
-The pub command doesn't support direct publishing a new package to a
-verified publisher. As a temporary workaround, publish new packages to a Google Account,
-and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
-
-Once a package has been transferred to a publisher,
-you can update the package using `dart pub publish`.
-:::
-
-After your package succeeded in uploading to pub.dev, any pub user can
-download it or depend on it in their projects.
-
-For example, if you just published version 1.0.0 of your `transmogrify` package,
-then another Dart developer can add it as a dependency in their `pubspec.yaml`:
-
-```yaml
-dependencies:
-  transmogrify: ^1.0.0
-```
-
-### Automate publishing
-
-Once you have published the first version of a package,
-you can configure automated publishing
-through GitHub Actions or Google Cloud service accounts.
-To learn more about automated publishing, consult
-[Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
-
-### Transfer a package to a verified publisher
-
-To transfer a package to a verified publisher,
-you must be an [uploader](#uploaders) for the package
-and an admin for the verified publisher.
-
-:::important
-_You can't reverse this process._ Once you transfer a package to a publisher,
-you can't transfer it back to an individual account.
-:::
-
-To transfer a package to a verified publisher:
-
-1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
-   an uploader of the package.
-1. Go to the package details page (for example,
-   `{{site.pub-pkg}}/http`).
-1. Select the **Admin** tab.
-1. Enter the name of the publisher, and click **Transfer to Publisher**.
-
-## What files are published?
+### What files are published?
 
 The published package includes **all files** under the package root directory,
 with the following exceptions:
@@ -266,46 +177,97 @@ To learn more about useful scenarios for this,
 consult this [StackOverflow answer][pubignore-when].
 :::
 
-## Detect supported platforms
+### Test publishing your package
+
+To test how `dart pub publish` will work, you can perform a dry run:
+
+```console
+$ dart pub publish --dry-run
+```
+
+With this command, `dart pub` performs the following tasks:
+
+1. Verifies that your package follows the [pubspec format][pubspec] and
+   [package layout conventions][pkg-layout].
+
+1. Shows all of the files it intends to publish.
+
+The following example shows the publishing a package named `transmogrify`:
+
+```plaintext
+Publishing transmogrify 1.0.0
+    .gitignore
+    CHANGELOG.md
+    README.md
+    lib
+        transmogrify.dart
+        src
+            transmogrifier.dart
+            transmogrification.dart
+    pubspec.yaml
+    test
+        transmogrify_test.dart
+
+Package has 0 warnings.
+```
+
+### Publish to pub.dev
+
+To publish your package when it's ready, remove the `--dry-run` argument:
+
+```console
+$ dart pub publish
+```
+
+With this command, `dart pub` performs the following tasks:
+
+1. Verifies that your package follows the [pubspec format][pubspec] and
+   [package layout conventions][pkg-layout].
+
+1. Shows all of the files it intends to publish.
+
+1. Uploads your package to [pub.dev]({{site.pub}}).
+
+:::note
+The pub command doesn't support direct publishing a new package to a
+verified publisher. As a temporary workaround, publish new packages to a Google Account,
+and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
+
+Once a package has been transferred to a publisher,
+you can update the package using `dart pub publish`.
+:::
+
+After your package succeeded in uploading to pub.dev, any pub user can
+download it or depend on it in their projects.
+
+For example, if you just published version 1.0.0 of your `transmogrify` package,
+then another Dart developer can add it as a dependency in their `pubspec.yaml`:
+
+```yaml
+dependencies:
+  transmogrify: ^1.0.0
+```
+
+### Detect supported platforms
 
 The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
 displaying these platforms on the package page.
 Users of pub.dev can filter searches by platform.
 
 To change the generated list of supported platforms,
-[specify supported platforms][] in the `pubspec/yaml` file.
+[specify supported platforms][] in the `pubspec.yaml` file.
 
 [specify supported platforms]: /tools/pub/pubspec#platforms
 
-## Manage package uploaders
+### Automate publishing
 
-Whoever publishes the first version of a package becomes
-the first and _only_ person authorized to upload additional
-versions of that package.
+Once you have published the first version of a package,
+you can configure automated publishing
+through GitHub Actions or Google Cloud service accounts.
+To learn more about automated publishing, consult
+[Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
 
-To allow or disallow other people to upload versions, either:
-
-* Manage authorized uploaders on the admin page for the package:
-  `https://pub.dev/packages/<package>/admin`.
-
-* Transfer the package to a [verified publisher][];
-  all members of a publisher are authorized to upload.
-
-:::tip
-Invite other members of your team to become uploaders of the package.
-This ensures that your team can access to the package when you aren't available.
-:::
-
-## Locate the package publisher
-
-If a package has a verified publisher,
-the pub.dev page for that package displays the publisher domain.
-
-For packages published without a publisher,
-pub.dev doesn't disclose the publisher for privacy reasons.
-The **Publisher** field displays "unverified uploader".
-
-## Publish prereleases
+### Publish prerelease versions
 
 As you work on a package, consider publishing it as a prerelease.
 Prereleases can be useful when _any_ of the following are true:
@@ -336,7 +298,7 @@ the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package `README.md` and documentation.
 
-## Publish previews
+### Publish preview versions
 
 Previews can be useful when _all_ of the following are true:
 
@@ -378,7 +340,61 @@ ignore the following warning from `dart pub publish`:
    version 3.0.0-0, consider publishing the package as a pre-release
    instead."_
 
-## Retract a package version {:#retract}
+## Manage publishing permissions
+
+### Locate the package publisher
+
+If a package has a verified publisher,
+the pub.dev page for that package displays the publisher domain.
+
+For packages published without a publisher,
+pub.dev doesn't disclose the publisher for privacy reasons.
+The **Publisher** field displays "unverified uploader".
+
+### Manage package uploaders
+
+Whoever publishes the first version of a package becomes
+the first and _only_ person authorized to upload additional
+versions of that package.
+
+To allow or disallow other people to upload versions, either:
+
+* Manage authorized uploaders on the admin page for the package:
+  `https://pub.dev/packages/<package>/admin`.
+* Transfer the package to a [verified publisher][];
+  all members of a publisher are authorized to upload.
+
+:::tip
+Invite other members of your team to become uploaders of the package.
+This ensures that your team can access to the package when you aren't available.
+:::
+
+### Transfer a package to a verified publisher
+
+To transfer a package to a verified publisher,
+you must be an [uploader](#uploaders) for the package
+and an admin for the verified publisher.
+
+:::important
+_You can't reverse this process._ Once you transfer a package to a publisher,
+you can't transfer it back to an individual account.
+:::
+
+To transfer a package to a verified publisher:
+
+1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
+   an uploader of the package.
+
+1. Go to the package details page (for example,
+   `{{site.pub-pkg}}/http`).
+
+1. Select the **Admin** tab.
+
+1. Enter the name of the publisher, and click **Transfer to Publisher**.
+
+## Manage your package
+
+### Retract a package version {:#retract}
 
 To prevent new package consumers from adopting a published version
 of your package within a seven-day window,
@@ -415,7 +431,7 @@ Package retraction was introduced in Dart 2.15.
 In pre-2.15 SDKs, the pub version solver ignores the retracted status.
 :::
 
-### How to use a retracted version of a package
+#### How to use a retracted version of a package
 
 If a package depends on a package version that later is retracted,
 it can still use that version as long as that version is in
@@ -424,7 +440,7 @@ To depend on a specific version that's already retracted,
 the dependent package must pin the version in the
 `dependency_overrides` section of the `pubspec.yaml` file.
 
-### How to migrate away from a retracted package version
+#### How to migrate away from a retracted package version
 
 When a package depends on a retracted package version,
 you have choices in how you migrate away from this version depending
@@ -447,6 +463,7 @@ You can do this in one of two ways.
    1. Run `dart pub downgrade <package>` to
       get the lowest version  of the specified package that
       matches the constraints in the `pubspec.yaml` file.
+
    1. Run `dart pub upgrade <package>` to get the
       newest compatible and non-retracted version available.
 
@@ -454,6 +471,7 @@ You can do this in one of two ways.
 
    1. Delete the entire package entry for the package
       with the retracted version.
+
    1. Run `dart pub get` to get the
       newest compatible and non-retracted version available.
 
@@ -467,7 +485,7 @@ If there is no alternative version available that satisfies the
 current version constraint, edit the version constraint
 in the `pubspec.yaml` file and run `dart pub upgrade`.
 
-### How to retract or restore a package version
+#### How to retract or restore a package version
 
 To retract or restore a package version,
 first sign in to pub.dev using a Google Account
@@ -475,7 +493,7 @@ that's either an uploader or a [verified publisher][] admin for the package.
 Then go to the package's **Admin** tab,
 where you can retract or restore recent package versions.
 
-## Mark a package as discontinued {:#discontinue}
+### Discontinue a package {:#discontinue}
 
 Although packages remain published, you can signal to
 developers that a package receives no active maintenance.
@@ -492,13 +510,16 @@ To mark a package as discontinued:
 
 1. Sign in to pub.dev using a Google Account with uploader or
    [verified publisher][]permissions for the package.
+
 1. Navigate to the package's **Admin** tab.
+
 1. To discontinue a package, select **Mark "discontinued"**.
 
 You can also recommend a replacement package.
 
 1. In the field under **Suggested replacement**,
    type the name of another package.
+
 1. Click **Update "Suggested Replacement"**.
 
 If you change your mind, you can remove the discontinued mark at any time.
@@ -507,7 +528,7 @@ If you change your mind, you can remove the discontinued mark at any time.
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
-[package layout conventions]: /tools/pub/package-layout
+[pkg-layout]: /tools/pub/package-layout
 [policy]: {{site.pub}}/policy
 [pub]: /guides/packages
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
