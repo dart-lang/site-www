@@ -28,23 +28,23 @@ The analyzer produces the following diagnostics for code that
 doesn't conform to the language specification or
 that might work in unexpected ways.
 
-[bottom type]: {{site.url}}/null-safety/understanding-null-safety#top-and-bottom
-[ffi]: {{site.url}}/guides/libraries/c-interop
+[bottom type]: https://dart.dev/null-safety/understanding-null-safety#top-and-bottom
+[ffi]: https://dart.dev/guides/libraries/c-interop
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
-[irrefutable pattern]: {{site.url}}/resources/glossary#irrefutable-pattern
-[meta-doNotStore]: {{site.pub-api}}/meta/latest/meta/doNotStore-constant.html
-[meta-factory]: {{site.pub-api}}/meta/latest/meta/factory-constant.html
-[meta-immutable]: {{site.pub-api}}/meta/latest/meta/immutable-constant.html
-[meta-internal]: {{site.pub-api}}/meta/latest/meta/internal-constant.html
-[meta-literal]: {{site.pub-api}}/meta/latest/meta/literal-constant.html
-[meta-mustCallSuper]: {{site.pub-api}}/meta/latest/meta/mustCallSuper-constant.html
-[meta-optionalTypeArgs]: {{site.pub-api}}/meta/latest/meta/optionalTypeArgs-constant.html
-[meta-sealed]: {{site.pub-api}}/meta/latest/meta/sealed-constant.html
-[meta-useResult]: {{site.pub-api}}/meta/latest/meta/useResult-constant.html
-[meta-UseResult]: {{site.pub-api}}/meta/latest/meta/UseResult-class.html
-[meta-visibleForOverriding]: {{site.pub-api}}/meta/latest/meta/visibleForOverriding-constant.html
-[meta-visibleForTesting]: {{site.pub-api}}/meta/latest/meta/visibleForTesting-constant.html
-[refutable pattern]: {{site.url}}/resources/glossary#refutable-pattern
+[irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
+[meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
+[meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
+[meta-immutable]: https://pub.dev/documentation/meta/latest/meta/immutable-constant.html
+[meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
+[meta-literal]: https://pub.dev/documentation/meta/latest/meta/literal-constant.html
+[meta-mustCallSuper]: https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html
+[meta-optionalTypeArgs]: https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html
+[meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html
+[meta-useResult]: https://pub.dev/documentation/meta/latest/meta/useResult-constant.html
+[meta-UseResult]: https://pub.dev/documentation/meta/latest/meta/UseResult-class.html
+[meta-visibleForOverriding]: https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html
+[meta-visibleForTesting]: https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html
+[refutable pattern]: https://dart.dev/resources/glossary#refutable-pattern
 
 ### abi_specific_integer_invalid
 
@@ -2365,7 +2365,7 @@ deferred import. Constants are evaluated at compile time, and values from
 deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -3017,7 +3017,7 @@ Constants are evaluated at compile time, and classes from deferred
 libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -3101,7 +3101,7 @@ a deferred import. Constants are evaluated at compile time, and values from
 deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -4060,7 +4060,7 @@ library. Extension methods are resolved at compile time, and extensions
 from deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -8557,7 +8557,7 @@ function is used to load the contents of the deferred library, and the
 implicit function hides the explicit declaration in the deferred library.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -9435,7 +9435,7 @@ of an annotation. Annotations are evaluated at compile time, and values
 from deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -9486,7 +9486,7 @@ are evaluated at compile time, and constants from deferred libraries aren't
 available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -9599,7 +9599,7 @@ includes a package in the `dependencies` list of its `pubspec.yaml` file
 that isn't a pub-hosted dependency.
 
 To learn more about the different types of dependency sources,
-check out [Package dependencies]({{site.url}}/tools/pub/dependencies).
+check out [Package dependencies](https://dart.dev/tools/pub/dependencies).
 
 #### Example
 
@@ -10292,7 +10292,7 @@ directive._
 The analyzer produces this diagnostic when a comment that appears to be an
 attempt to specify a language version override doesn't conform to the
 requirements for such a comment. For more information, see
-[Per-library language version selection]({{site.url}}/guides/language/evolution#per-library-language-version-selection).
+[Per-library language version selection](https://dart.dev/guides/language/evolution#per-library-language-version-selection).
 
 #### Example
 
@@ -10896,7 +10896,7 @@ _The 'platforms' field must be a map with platforms as keys._
 The analyzer produces this diagnostic when a top-level `platforms`
 field is specified, but its value is not a map with keys.
 To learn more about specifying your package's supported platforms,
-check out the [documentation on platform declarations]({{site.url}}/tools/pub/pubspec#platforms).
+check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
 
 #### Example
 
@@ -14615,7 +14615,7 @@ constants referenced in case clauses need to be available at compile time,
 and constants from deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -14739,7 +14739,7 @@ Default values need to be available at compile time, and constants from
 deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -17162,7 +17162,7 @@ deferred import. Constants are evaluated at compile time, but values from
 deferred libraries aren't available at compile time.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -17321,7 +17321,7 @@ _Keys in the `platforms` field can't have values._
 The analyzer produces this diagnostic when a key in the `platforms` map
 has a value.
 To learn more about specifying your package's supported platforms,
-check out the [documentation on platform declarations]({{site.url}}/tools/pub/pubspec#platforms).
+check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
 
 #### Example
 
@@ -19857,7 +19857,7 @@ classes from deferred libraries aren't compiled until the library is
 loaded.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -20872,7 +20872,7 @@ is a type declared in a library that is imported using a deferred import.
 These types are required to be available at compile time, but aren't.
 
 For more information, check out
-[Lazily loading a library]({{site.url}}/language/libraries#lazily-loading-a-library).
+[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).
 
 #### Example
 
@@ -22321,7 +22321,7 @@ _The platform '{0}' is not a recognized platform._
 The analyzer produces this diagnostic when an unknown platform name is
 used as a key in the `platforms` map.
 To learn more about specifying your package's supported platforms,
-check out the [documentation on platform declarations]({{site.url}}/tools/pub/pubspec#platforms).
+check out the [documentation on platform declarations](https://dart.dev/tools/pub/pubspec#platforms).
 
 #### Example
 

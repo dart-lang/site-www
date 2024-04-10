@@ -1,1 +1,5 @@
 include: package:analysis_defaults/analysis.yaml
+
+linter:
+  rules:
+    - omit_local_variable_types

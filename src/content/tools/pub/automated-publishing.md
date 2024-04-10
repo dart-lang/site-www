@@ -68,7 +68,7 @@ If you have sufficient permission, you can enable automated publishing by:
 
 The _repository_ is the `<organization>/<repository>` on GitHub.
 For example, if your repository is
-`{{site.repo.dart.org}}/pana` you must specify `dart-lang/pana` in the
+`https://github.com/dart-lang/pana` you must specify `dart-lang/pana` in the
 repository field.
 
 The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% endraw %}`.

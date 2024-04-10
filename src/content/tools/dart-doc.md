@@ -71,7 +71,7 @@ check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
 TODO: Document the long-term supported options here.
 {% endcomment -%}
 
-[dartdoc-options]: {{site.url}}/go/dartdoc-options-file
+[dartdoc-options]: {{site.redirect.go}}/dartdoc-options-file
 
 ## View generated docs {:#view}
 

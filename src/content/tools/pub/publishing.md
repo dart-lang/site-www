@@ -281,7 +281,7 @@ the first and only person authorized to upload additional versions of that packa
 To allow or disallow other people to upload versions, either:
 
 * Manage authorized uploaders on the admin page for the package:
-  `{{site.pub-pkg}}/<package>/admin`.
+  `https://pub.dev/packages/<package>/admin`.
 
 * Transfer the package to a [verified publisher][];
   all members of a publisher are authorized to upload.

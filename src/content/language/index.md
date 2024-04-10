@@ -40,7 +40,7 @@ including optional parameters for command-line arguments.
 
 ## Variables
 
-Even in [type-safe]({{site.url}}/language/type-system) Dart code,
+Even in [type-safe](/language/type-system) Dart code,
 you can declare most variables without explicitly specifying their type using `var`. 
 Thanks to type inference, these variables' types are determined by their initial values: 
 

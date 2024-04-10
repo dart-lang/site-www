@@ -1,3 +1,7 @@
+// Copyright (c) 2024, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -11,7 +15,7 @@ final class CheckSiteVariableCommand extends Command<int> {
   CheckSiteVariableCommand() {
     argParser.addOption(
       _printModeFlag,
-      help: 'Console Print Mode.',
+      help: 'Configure the amount of information output.',
       allowed: ['none', 'detail', 'stats', 'detailAndStats'],
       allowedHelp: {
         'none': 'No content.',
@@ -32,10 +36,10 @@ final class CheckSiteVariableCommand extends Command<int> {
 
   @override
   Future<int> run() async {
-    final String printMode = argResults.get<String>(_printModeFlag, 'detail');
+    final printMode = argResults.get<String>(_printModeFlag, 'detail');
 
     try {
-      final List<CheckResult> checkResultAll = await YamlVariableScanner.run(
+      final checkResultAll = await YamlVariableScanner.run(
         './tool/config/site_variable_scanner.yaml',
         stdout,
         printMode: PrintMode.values.byName(printMode),

@@ -101,7 +101,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: {{site.url}}/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:js_util`
 
@@ -109,7 +109,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: {{site.url}}/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:typed_data`
 
@@ -458,14 +458,14 @@ on all the changes in this section.
   introduced in vm_service:11.0.0
 
 [dart3]: /resources/dart-3-migration/
-[switch cases]: {{site.url}}/language/branches#switch
-[mixin class]: {{site.url}}/language/mixins#class-mixin-or-mixin-class
-[label]: {{site.url}}/language/branches#switch
+[switch cases]: /language/branches#switch
+[mixin class]: /language/mixins#class-mixin-or-mixin-class
+[label]: /language/branches#switch
 [50902]: {{site.repo.dart.sdk}}/issues/50902
 [collection]: /resources/dart-3-migration#dart-collection
 [49529]: {{site.repo.dart.sdk}}/issues/49529
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html
-[`deferred as`]: {{site.url}}/guides/language/language-tour#lazily-loading-a-library
+[`deferred as`]: /guides/language/language-tour#lazily-loading-a-library
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
 [`maxUserTags`]: {{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
 [50231]: {{site.repo.dart.sdk}}/issues/50231
@@ -761,7 +761,7 @@ on all the changes in this section.
 
 * [The Dart SDK constraint is now **required** in `pubspec.yaml`][44072].
 
-[Null safety]: {{site.url}}/null-safety/understanding-null-safety
+[Null safety]: /null-safety/understanding-null-safety
 [44660]: {{site.repo.dart.sdk}}/issues/44660
 [44621]: {{site.repo.dart.sdk}}/issues/44621
 [42312]: {{site.repo.dart.sdk}}/issues/42312

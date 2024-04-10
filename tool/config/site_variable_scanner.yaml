@@ -20,6 +20,7 @@ yaml_variable_scanner:
   ignoreYamlKey:
     - ^site\.title$
     - ^site\.description$
+    - ^site\.url$
     - ^site\.branch$
     - ^site\.show_banner$
     - ^site\.og_image_vers$
@@ -36,6 +37,7 @@ yaml_variable_scanner:
   #
   # (Glob Syntax)
   ignoreCheckFilePath:
+    - "src/content/tools/diagnostic-messages.md"
 
   # Ignore text that doesn't need to match
   #
@@ -60,3 +62,6 @@ yaml_variable_scanner:
 
     # ``` xxx ```
     - ^\s*```([\s\S]*?)```$
+
+    # ` xxx `
+    - ^\s*`([\s\S]*?)`$
