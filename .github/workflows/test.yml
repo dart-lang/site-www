@@ -65,7 +65,7 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
-        run: dart run dart_site refresh-excerpts --fail-on-update
+        run: dart run dart_site refresh-excerpts --fail-on-update --dry-run
 
   linkcheck:
     name: Build site and check links
