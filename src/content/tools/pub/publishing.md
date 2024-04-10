@@ -267,7 +267,7 @@ through GitHub Actions or Google Cloud service accounts.
 To learn more about automated publishing, consult
 [Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
 
-### Publish prerelease versions
+### Publish prerelease versions {:#publishing-prereleases}
 
 As you work on a package, consider publishing it as a prerelease.
 Prereleases can be useful when _any_ of the following are true:
@@ -351,7 +351,7 @@ For packages published without a publisher,
 pub.dev doesn't disclose the publisher for privacy reasons.
 The **Publisher** field displays "unverified uploader".
 
-### Manage package uploaders
+### Manage package uploaders {:#uploaders}
 
 Whoever publishes the first version of a package becomes
 the first and _only_ person authorized to upload additional
@@ -369,7 +369,7 @@ Invite other members of your team to become uploaders of the package.
 This ensures that your team can access to the package when you aren't available.
 :::
 
-### Transfer a package to a verified publisher
+### Transfer a package to a verified publisher {:#transferring-a-package-to-a-verified-publisher}
 
 To transfer a package to a verified publisher,
 you must be an [uploader](#uploaders) for the package
