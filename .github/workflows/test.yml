@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@65c82982aa686933bf10d50aced7a27b2b63f2a6
         with:
           sdk: ${{ matrix.sdk }}
       - name: Fetch Dart packages
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@65c82982aa686933bf10d50aced7a27b2b63f2a6
         with:
           sdk: stable
       - name: Fetch Dart packages
@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@65c82982aa686933bf10d50aced7a27b2b63f2a6
         with:
           sdk: stable
       - name: Fetch Dart packages
@@ -102,7 +102,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@65c82982aa686933bf10d50aced7a27b2b63f2a6
         with:
           sdk: stable
       - name: Fetch Dart packages
