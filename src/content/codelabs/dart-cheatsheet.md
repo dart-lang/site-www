@@ -897,7 +897,7 @@ Positional parameters are the kind you're likely familiar with:
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
-// ···
+  // ···
   int total = sumUp(1, 2, 3);
 ```
 
@@ -913,7 +913,7 @@ int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   if (e != null) sum += e;
   return sum;
 }
-// ···
+  // ···
   int total = sumUpToFive(1, 2);
   int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 ```
@@ -927,9 +927,11 @@ Their default value is null unless you provide another default value:
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
   // ···
 }
-// ···
+
+void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
+}
 ```
 
 ### Code example {:.no_toc}
@@ -1040,11 +1042,13 @@ unless they're explicitly marked as `required`.
 void printName(String firstName, String lastName, {String? middleName}) {
   print('$firstName ${middleName ?? ''} $lastName');
 }
-// ···
+
+void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
   // Named arguments can be placed anywhere in the argument list
   printName('John', middleName: 'Who', 'Smith');
+}
 ```
 
 As you might expect,
