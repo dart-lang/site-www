@@ -513,7 +513,7 @@ refer to the [`build.dart` hook documentation][].
 :::
 
 
-[`build.dart` hook documentation]: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/README.md
+[`build.dart` hook documentation]: {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/README.md
 
 ## Project-specific caching for tools
 
@@ -550,7 +550,7 @@ If your tool isn't distributed through the [pub.dev site,]({{site.pub}})
 you might consider publishing a placeholder package in order to 
 reserve the unique name.
 
-**Example:** [`package:build`](https://pub.dev/packages/build) provides a
+**Example:** [`package:build`]({{site.pub-pkg}}/build) provides a
 framework for writing code generation steps.
 When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.

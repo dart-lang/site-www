@@ -77,7 +77,7 @@ Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
 Let's look at the organization of a real-world package: shelf. The
-[shelf](https://github.com/dart-lang/shelf)
+[shelf]({{site.repo.dart.org}}/shelf)
 package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart packages:
 
@@ -219,7 +219,7 @@ void main() {
 
 A well-designed package is easy to test.
 We recommend that you write tests using the
-[test](https://github.com/dart-lang/test) package,
+[test]({{site.repo.dart.org}}/test) package,
 placing the test code in the `test` directory at the
 top of the package.
 
@@ -308,12 +308,12 @@ Use the following resources to learn more about packages:
 * [What not to commit](private-files)
   covers what should not be checked into a source code repository.
 * The newer packages under the
-  [dart-lang](https://github.com/dart-lang) organization tend
+  [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:
-  [dart_style,](https://github.com/dart-lang/dart_style)
-  [path,](https://github.com/dart-lang/path)
-  [shelf,](https://github.com/dart-lang/shelf)
-  [source_gen,](https://github.com/dart-lang/source_gen) and
-  [test.](https://github.com/dart-lang/test)
+  [dart_style,]({{site.repo.dart.org}}/dart_style)
+  [path,]({{site.repo.dart.org}}/path)
+  [shelf,]({{site.repo.dart.org}}/shelf)
+  [source_gen,]({{site.repo.dart.org}}/source_gen) and
+  [test.]({{site.repo.dart.org}}/test)
 
 [`dart doc`]: /tools/dart-doc

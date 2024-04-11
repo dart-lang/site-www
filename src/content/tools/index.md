@@ -75,7 +75,7 @@ thanks to the Dart community.
 </li>
 <li>
 <img src="/assets/img/tools/vim.png" alt="Vim logo">
-<a href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+<a href="{{site.repo.dart.org}}/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
 <img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
@@ -86,7 +86,7 @@ thanks to the Dart community.
 A [Language Server Protocol implementation][LSP] is also available for
 [LSP-capable editors][] that don't have specific Dart extensions.
 
-[LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
+[LSP]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ### Command-line tools {:#cli}

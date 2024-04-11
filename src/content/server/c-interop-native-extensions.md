@@ -19,5 +19,5 @@ For examples of how to use the Dart Embedding API, see
 [these examples maintained by the community][examples].
 :::
 
-[`include/dart_api.h`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api.h
+[`include/dart_api.h`]: {{site.repo.dart.sdk}}/blob/main/runtime/include/dart_api.h
 [examples]: https://github.com/fuzzybinary/dart_shared_libray

@@ -18,7 +18,7 @@ and find more information when you need it.
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
 [WebStorm]: https://www.jetbrains.com/webstorm/
-[Android Studio]: https://developer.android.com/studio
+[Android Studio]: {{site.android-dev}}/studio
 
 ## Getting started
 
@@ -40,7 +40,7 @@ Install a JetBrains IDE if you don't already have one. Choose one:
 [IDEA-Install]: https://www.jetbrains.com/idea/download/
 [IDEA-EAP-Install]: https://www.jetbrains.com/idea/nextversion/
 [WS-Install]: https://www.jetbrains.com/webstorm/download/
-[AS-Install]: https://developer.android.com/studio/install
+[AS-Install]: {{site.android-dev}}/studio/install
 [Other]: https://www.jetbrains.com/products.html
 
 :::note

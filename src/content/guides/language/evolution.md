@@ -355,7 +355,7 @@ _Released 5 November 2019_
 | [Dart 2.6 announcement](https://medium.com/dartlang/dart2native-a76c815e6baf)
 
 Dart 2.6 introduced a
-[breaking change (dart-lang/sdk#37985)](https://github.com/dart-lang/sdk/issues/37985).
+[breaking change (dart-lang/sdk#37985)]({{site.repo.dart.sdk}}/issues/37985).
 Constraints where `Null` serves as a subtype of `FutureOr<T>`
 now yield `Null` as the solution for `T`.
 
@@ -384,7 +384,7 @@ _Released 27 June 2019_
 
 
 Dart 2.4 introduces a breaking change
-[dart-lang/sdk#35097](https://github.com/dart-lang/sdk/issues/35097).
+[dart-lang/sdk#35097]({{site.repo.dart.sdk}}/issues/35097).
 
 Dart now enforces covariance of type variables used in super-interfaces.
 For example: Prior to this release Dart accepted, but now rejects,
@@ -586,7 +586,7 @@ other comments can appear before the `@dart` comment.
 To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
-[2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
+[2.8 breaking changes]: {{site.repo.dart.sdk}}/issues/40686
 [calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
@@ -594,13 +594,13 @@ check out the [language versioning specification][].
 [Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [Extension types]: /language/extension-types
-[language funnel]: https://github.com/dart-lang/language/projects/1
+[language funnel]: {{site.repo.dart.lang}}/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
-[language versioning specification]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
+[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety
 [private final field promotion]: /tools/non-promotion-reasons
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[SDK changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
 [set literals]: /language/collections#sets
 [sound null safety]: /null-safety
 [sound type system]: /language/type-system

@@ -19,4 +19,4 @@ This data is used to help improve Dart and Flutter tools over time.
 
 Learn more about Google's [privacy
 policy.](https://policies.google.com/privacy) We look forward to your
-[feedback.](https://github.com/dart-lang/dart-pad/issues)
+[feedback.]({{site.repo.dart.org}}/dart-pad/issues)

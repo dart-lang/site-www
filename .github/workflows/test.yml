@@ -95,6 +95,21 @@ jobs:
       - name: Check internal site links are functional
         run: dart run dart_site check-links
 
+  site-variable-scanner:
+    name: Check if text can be replaced with site variables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
+      - name: Check if text can be replaced with site variables
+        run: dart run dart_site check-site-variable
+
   firebase-validate:
     name: Validate Firebase configuration
     runs-on: ubuntu-latest

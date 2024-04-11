@@ -12,7 +12,7 @@ to call Java and Kotlin APIs.
 
 :::note
 This interop feature is **experimental**,
-and [in active development](https://github.com/dart-lang/sdk/issues/49674).
+and [in active development]({{site.repo.dart.sdk}}/issues/49674).
 :::
 
 `package:jni` allows Dart code to interact
@@ -149,7 +149,7 @@ The following are some more comprehensive examples of using `package:jnigen`:
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[in_app_java]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/in_app_java
-[notification_plugin]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/notification_plugin
-[pdfbox_plugin]: https://github.com/dart-lang/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
+[in_app_java]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
+[notification_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
+[pdfbox_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
 [Apache PDFBox]: https://pdfbox.apache.org/

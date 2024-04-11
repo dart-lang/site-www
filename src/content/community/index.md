@@ -53,16 +53,16 @@ Get answers and connect with Dart developers.
 
 Dart is open source.
 Learn how to
-[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md)
+[contribute to the core SDK.]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)
 
-[Dart GitHub repositories](https://github.com/dart-lang/)
+[Dart GitHub repositories]({{site.repo.dart.org}}/)
 : Track new changes and contribute to various Dart projects.
-  * [Core SDK](https://github.com/dart-lang/sdk/)
-    ([issue tracker](https://github.com/dart-lang/sdk/issues/))
-  * [The Dart Language](https://github.com/dart-lang/language)
-    ([issue tracker](https://github.com/dart-lang/language/issues))
-  * [This site](https://github.com/dart-lang/site-www/)
-    ([issue tracker](https://github.com/dart-lang/site-www/issues/))
+  * [Core SDK]({{site.repo.dart.sdk}}/)
+    ([issue tracker]({{site.repo.dart.sdk}}/issues/))
+  * [The Dart Language]({{site.repo.dart.lang}})
+    ([issue tracker]({{site.repo.dart.lang}}/issues))
+  * [This site]({{site.repo.this}}/)
+    ([issue tracker]({{site.repo.this}}/issues/))
 
 [Dart reviews]({{group}}/d/forum/reviews)
 : High-traffic list of all core SDK code reviews.

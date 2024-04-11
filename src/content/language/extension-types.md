@@ -463,8 +463,8 @@ improve performance in some scenarios.
 [generics]: /language/generics
 [constructors]: /language/constructors
 [factory]: /language/constructors#factory-constructors
-[applicability]: https://github.com/dart-lang/language/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
-[more specific]: https://github.com/dart-lang/language/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#specificity
+[applicability]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
+[more specific]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#specificity
 [lint]: /tools/linter-rules/annotate_redeclares
 [instance variables]: /language/classes#instance-variables
 [`external`]: /language/functions#external

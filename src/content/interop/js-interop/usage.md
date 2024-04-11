@@ -439,7 +439,7 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [`external`]: /language/functions#external
 [restrictions]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [object literal]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Object_initializer
-[54801]: https://github.com/dart-lang/sdk/issues/54801
+[54801]: {{site.repo.dart.sdk}}/issues/54801
 [property accessors]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [utility functions]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyOperatorExtension.html
 [`@JS()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JS-class.html

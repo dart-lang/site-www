@@ -83,7 +83,7 @@ For more information on signing libraries,
 see Apple's [Code Signing Guide.][codesign]
 :::
 
-[codesign]: https://developer.apple.com/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
+[codesign]: {{site.apple-dev}}/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
   
 
 ### Using dart:ffi
@@ -270,7 +270,7 @@ to automatically create FFI wrappers from C header files.
 
 :::note
 The native assets feature is **experimental**,
-and [in active development](https://github.com/dart-lang/sdk/issues/50565).
+and [in active development]({{site.repo.dart.sdk}}/issues/50565).
 :::
 
 The Native Assets feature aims to resolve a number of issues associated with
@@ -300,10 +300,10 @@ The example has the following files:
 
 | **Source file**                                                                                                                                                          | **Description**                                                                                                                                                                |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`src/native_add_library.c`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
-| [`lib/native_add_library.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
-| [`test/native_add_library_test.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
-| [`build.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+| [`src/native_add_library.c`]({{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
+| [`lib/native_add_library.dart`]({{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
+| [`test/native_add_library_test.dart`]({{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
+| [`build.dart`]({{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
 
 {:.table .table-striped }
 
@@ -322,7 +322,7 @@ on the [`package:native_assets_cli` API reference][].
 For more information on how to enable the experiment and provide feedback,
 please refer to the tracking issues:
 
-* [Dart native assets](https://github.com/dart-lang/sdk/issues/50565)
+* [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
 * [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
 
 [ABI]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Abi-class.html
@@ -334,12 +334,12 @@ please refer to the tracking issues:
 [hello_world]: {{hw}}
 [primitives]: {{samples}}/primitives
 [structs]: {{samples}}/structs
-[sqlite]: https://github.com/dart-lang/sdk/tree/main/samples/ffi/sqlite
-[mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
+[sqlite]: {{site.repo.dart.sdk}}/tree/main/samples/ffi/sqlite
+[mini tutorial.]: {{site.repo.dart.sdk}}/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [`NativeType`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeType-class.html
 [ffigen]: {{site.pub-pkg}}/ffigen
-[`native_add_library`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
-[`native_add_app`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
+[`native_add_library`]: {{site.repo.dart.org}}/native/tree/main/pkgs/native_assets_cli/example/native_add_library
+[`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/native_assets_cli/example/native_add_app
 [`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
 [`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
 [`package:native_assets_cli` API reference]: {{site.pub-api}}/native_assets_cli/latest/
