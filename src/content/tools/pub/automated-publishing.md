@@ -565,7 +565,7 @@ To publish a package using exported service account keys:
     ```
 
 1. Create a temporary token for pub.dev and pass it to
-   `dart pub token add {{site.pub}}`.
+   `dart pub token add https://pub.dev`.
    To impersonate service account, include the `--include-email` option.
 
     ```console
