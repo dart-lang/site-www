@@ -871,7 +871,8 @@ The safest solution is to add a null check inside the `catch` block:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
 ```dart tag=good
-// ···
+try {
+  // ···
 } catch (e) {
   [!if (i != null) {!]
     print(i.isEven); // (3) OK due to the null check in the line above.
@@ -886,7 +887,8 @@ just use the `!` operator:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (catch-bang)" replace="/i!/i[!!!]/g"?>
 ```dart
-// ···
+try {
+  // ···
 } catch (e) {
   print(i[!!!].isEven); // (3) OK because of the `!`.
 }

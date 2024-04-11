@@ -1,4 +1,4 @@
-import 'package:examples/cheatsheet/named_parameters.dart';
+import 'package:examples/cheatsheet/named_parameters.dart' as named_parameters;
 import 'package:examples/cheatsheet/optional_positional_args.dart'
     as optional_args;
 import 'package:examples/cheatsheet/optional_positional_args2.dart'
@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 void main() {
   test('print_name', () {
     expect(() {
-      printNameTest();
+      named_parameters.main();
     }, prints('Dash  Dartisan\nJohn Who Smith\nJohn Who Smith\n'));
   });
 
@@ -38,7 +38,7 @@ void main() {
 
   test('optional_positional_args_defaulted', () {
     expect(() {
-      defaulted_args.mainTest();
+      defaulted_args.main();
     }, prints('15\n'));
 
     expect(defaulted_args.sumUpToFive(1, 1), equals(14));

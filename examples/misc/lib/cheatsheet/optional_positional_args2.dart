@@ -4,11 +4,9 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
   return a + b + c + d + e;
   // #docregion sum-no-impl
 }
-// #enddocregion sum-no-impl
 
-void mainTest() {
-  // #docregion sum-no-impl
+void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
-  // #enddocregion sum-no-impl
 }
+// #enddocregion sum-no-impl
