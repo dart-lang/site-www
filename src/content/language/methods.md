@@ -44,21 +44,22 @@ class Point {
 Operators are instance methods with special names.
 Dart allows you to define operators with the following names:
 
-|      |      |      |       |
-|------|------|------|-------|
-| `<`  | `+`  | `\|` | `>>>` |
-| `>`  | `/`  | `^`  | `[]`  |
-| `<=` | `~/` | `&`  | `[]=` |
-| `>=` | `*`  | `<<` | `~`   |
-| `-`  | `%`  | `>>` | `==`  |
+|       |      |      |      |       |      |
+|-------|------|------|------|-------|------|
+| `<`   | `>`  | `<=` | `>=` | `==`  | `~`  |
+| `-`   | `+`  | `/`  | `~/` | `*`   | `%`  |
+| `\|`  | `ˆ`  | `&`  | `<<` | `>>>` | `>>` |
+| `[]=` | `[]` |      |      |       |      |
 
 {:.table}
 
 :::note
 You may have noticed that some [operators][], like `!=`, aren't in
-the list of names. That's because they're just syntactic sugar. For example,
-the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+the list of names. That's because they're just [syntactic sugar][sugar].
+For example, the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
 :::
+
+[sugar]: https://en.wikipedia.org/wiki/Syntactic_sugar
 
 {%- comment %}
   Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
@@ -66,7 +67,7 @@ the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
   - `!` is probably excluded for historical reasons
 {% endcomment %}
 
-An operator declaration is identified using the built-in identifier `operator`.
+To identify an operator declaration, use the built-in identifier `operator`.
 The following example defines vector 
 addition (`+`), subtraction (`-`), and equality (`==`):
 
