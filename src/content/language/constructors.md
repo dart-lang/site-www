@@ -23,11 +23,11 @@ to instantiate any instance variables, if necessary:
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  // Generative constructor with initializing formal parameters:
-  Point(this.x, this.y);
-
   double x = 0;
   double y = 0;
+
+  // Generative constructor with initializing formal parameters:
+  Point(this.x, this.y);
 }
 ```
 
@@ -54,9 +54,6 @@ which both must be initialized or provided a default value:
 ```dart
 class Point {
   Point(this.x, this.y);
-
-  final double x;
-  final double y;
 }
 ```
 
@@ -98,9 +95,6 @@ class Point {
   [!Point.origin()!]
       : x = xOrigin,
         y = yOrigin;
-
-  final double x;
-  final double y;
 }
 ```
 
@@ -188,10 +182,10 @@ Super-initializer parameters have similar syntax and semantics to
 <?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
 ```dart
 class Vector2d {
+  Vector2d(this.x, this.y);
+
   final double x;
   final double y;
-
-  Vector2d(this.x, this.y);
 }
 
 class Vector3d extends Vector2d {
@@ -298,10 +292,10 @@ class Point {
   // The main constructor for this class.
   Point(this.x, this.y);
 
+  double x, y;
+
   // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
-
-  double x, y;
 }
 ```
 
