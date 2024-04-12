@@ -8,11 +8,6 @@ const double yOrigin = 0;
 
 // #docregion class-with-distance-to, constructor-initializer
 class Point {
-  final double x;
-  final double y;
-
-  // Sets the x and y instance variables
-  // before the constructor body runs.
   // #docregion class-with-distance-to, named-constructor
   Point(this.x, this.y);
   // #enddocregion class-with-distance-to, constructor-initializer
@@ -23,6 +18,9 @@ class Point {
       : x = xOrigin,
         y = yOrigin;
   // #enddocregion named-constructor
+
+  final double x;
+  final double y;
 
   // Initializer list sets instance variables before
   // the constructor body runs.

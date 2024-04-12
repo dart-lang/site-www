@@ -1,5 +1,7 @@
 // #docregion constructors
 class Logger {
+  Logger._internal(this.name);
+
   final String name;
   bool mute = false;
 
@@ -14,8 +16,6 @@ class Logger {
   factory Logger.fromJson(Map<String, Object> json) {
     return Logger(json['name'].toString());
   }
-
-  Logger._internal(this.name);
 
   void log(String msg) {
     if (!mute) print(msg);

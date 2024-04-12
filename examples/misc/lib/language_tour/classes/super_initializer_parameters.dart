@@ -5,10 +5,10 @@ class Vector2d {
 
   // #enddocregion named
   // #docregion positional
+  Vector2d(this.x, this.y);
+
   final double x;
   final double y;
-
-  Vector2d(this.x, this.y);
   // #enddocregion positional
 
   // #docregion named
