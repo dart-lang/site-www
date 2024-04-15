@@ -23,11 +23,11 @@ to instantiate any instance variables, if necessary:
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
-
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
+
+  double x = 0;
+  double y = 0;
 }
 ```
 
@@ -37,7 +37,6 @@ The `this` keyword refers to the current instance.
 Use `this` only when there is a name conflict.
 Otherwise, Dart style omits the `this`.
 :::
-
 
 ## Initializing formal parameters
 

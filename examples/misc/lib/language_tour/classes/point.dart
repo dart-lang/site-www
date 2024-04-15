@@ -19,6 +19,8 @@ class Point {
         y = yOrigin;
   // #enddocregion named-constructor
 
+  // Sets the x and y instance variables
+  // before the constructor body runs.
   final double x;
   final double y;
 
