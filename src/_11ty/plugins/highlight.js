@@ -128,11 +128,7 @@ function _highlight(
 
           const bodyChildren = [preElement];
 
-          if (
-            language !== 'plaintext' &&
-            language !== 'console' &&
-            language !== 'ps'
-          ) {
+          if (!['plaintext', 'console', 'ps', 'diff'].includes(language)) {
             const languageText = _createSpanWithText(language, {
               class: 'code-block-language',
               title: `Language ${language}`,
