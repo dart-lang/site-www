@@ -1,0 +1,67 @@
+yaml_variable_scanner:
+
+  # File path for YAML variables
+  yamlFilePath:
+    - path: "src/_data/site.yml" # YAML path (Glob syntax)
+      variablePrefix: "site." # Variable prefix. e.g. `a.` -> `a.x.xx`
+    - path: "src/_data/yt.yml"
+      variablePrefix: "yt."
+
+  # Ignore YAML file path
+  #
+  # (Glob Syntax)
+  ignoreYamlFilePath:
+
+  # Ignore YAML Key
+  #
+  # e.g. "^a\.bb$"
+  #
+  # (RegExp Syntax)
+  ignoreYamlKey:
+    - ^site\.title$
+    - ^site\.description$
+    - ^site\.url$
+    - ^site\.branch$
+    - ^site\.show_banner$
+    - ^site\.og_image_vers$
+    - ^site\.sdkInfo\.
+  
+  # File path for check file contents
+  #
+  # (Glob Syntax)
+  checkFilePath:
+    - "src/content/**/*.md"
+    - "src/_includes/**/*.md"
+
+  # Ignore file paths to check
+  #
+  # (Glob Syntax)
+  ignoreCheckFilePath:
+    - "src/content/tools/diagnostic-messages.md"
+
+  # Ignore text that doesn't need to match
+  #
+  # e.g. 
+  # - `r"^\s*---([\s\S]*?)---$"`
+  # - `r"^\s*{%-?\s*comment\s*-?%}([\s\S]*?){%-?\s*endcomment\s*-?%}$"`
+  # - `r"^\s*<!---?\s*([\s\S]*?)\s*-?-->$"`
+  #
+  # (RegExp Syntax)
+  ignoreCheckText:
+    # <!-- ignore-variable-check --> xxx <!-- end-ignore-variable-check -->
+    - ^\s*<!---?\s*ignore-variable-check\s*-?-->([\s\S]*?)<!---?\s*end-ignore-variable-check\s*-?-->$
+
+    # --- xxx ---
+    - ^\s*---([\s\S]*?)---$
+
+    # {%- comment %} xxx {% endcomment -%}
+    - ^\s*{%-?\s*comment\s*-?%}([\s\S]*?){%-?\s*endcomment\s*-?%}$
+
+    # <!-- xxx -->
+    - ^\s*<!---?\s*([\s\S]*?)\s*-?-->$
+
+    # ``` xxx ```
+    - ^\s*```([\s\S]*?)```$
+
+    # ` xxx `
+    - '`([^`]*)`'

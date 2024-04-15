@@ -92,7 +92,7 @@ Example:
 For more information, consult the instructions for
 [Android Studio run/debug configurations.][AS instructions]
 
-[AS instructions]: https://developer.android.com/studio/run/rundebugconfig
+[AS instructions]: {{site.android-dev}}/studio/run/rundebugconfig
 
 
 ## More information
@@ -103,6 +103,6 @@ For more information, consult the instructions for
   see the documentation of the
   [process for changes that are behind experimental flags.][flags]
 
-[`experimental_features.yaml`.]: https://github.com/dart-lang/sdk/blob/main/tools/experimental_features.yaml
-[flags]: https://github.com/dart-lang/sdk/blob/main/docs/process/experimental-flags.md
+[`experimental_features.yaml`.]: {{site.repo.dart.sdk}}/blob/main/tools/experimental_features.yaml
+[flags]: {{site.repo.dart.sdk}}/blob/main/docs/process/experimental-flags.md
 

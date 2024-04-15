@@ -150,7 +150,7 @@ follow the [instructions on this page](#install).
 
 {% endfor -%}
 
-[build-source]: https://github.com/dart-lang/sdk/wiki/Building
+[build-source]: {{site.repo.dart.sdk}}/wiki/Building
 [dart-docker]: https://hub.docker.com/_/dart
 [dl-sdk]: /get-dart/archive
 [install-flutter]: {{site.flutter-docs}}/get-started/install

@@ -10,7 +10,7 @@ against third-party servers when [publishing](pub-lish) packages and
 [retrieving](pub-get) dependencies.
 
 The tokens are stored in a
-[user-wide config dir](https://github.com/dart-lang/cli_util/blob/71ba36e2554f7b7717f3f12b5ddd33751a4e3ddd/lib/cli_util.dart#L88-L118). 
+[user-wide config dir]({{site.repo.dart.org}}/cli_util/blob/71ba36e2554f7b7717f3f12b5ddd33751a4e3ddd/lib/cli_util.dart#L88-L118). 
 
 It has three subcommands: `add`, `list` and `remove`.
 

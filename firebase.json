@@ -160,6 +160,7 @@
       { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
       { "source": "/go/ffi", "destination": "/interop/c-interop", "type": 301 },
       { "source": "/go/flutter-upper-bound-deprecation", "destination": "https://github.com/flutter/flutter/issues/68143", "type": 301 },
+      { "source": "/go/macros", "destination": "https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md", "type": 301 },
       { "source": "/go/pub-workspaces", "destination": "https://flutter.dev/go/pub-workspace", "type": 301 },
 
       { "source": "/go/non-promo-conflicting-getter", "destination": "/tools/non-promotion-reasons#getter-name", "type": 301 },
@@ -225,7 +226,6 @@
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
       { "source": "/lints/:lint*", "destination": "/tools/linter-rules/:lint", "type": 301 },
       { "source": "/logos", "destination": "/brand", "type": 301 },
-      { "source": "/macros", "destination": "https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md", "type": 301 },
       { "source": "/mailing-list", "destination": "https://groups.google.com/a/dartlang.org/forum/#!forum/misc", "type": 301 },
       { "source": "/mobile", "destination": "/multiplatform-apps", "type": 301 },
       { "source": "/news{,/**}", "destination": "https://medium.com/dartlang", "type": 301 },

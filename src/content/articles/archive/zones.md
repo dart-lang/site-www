@@ -74,7 +74,7 @@ Java's _thread-local storage_
 also has some similarities.
 Closest of all is Brian Ford's JavaScript port of Dart zones,
 [zone.js](https://github.com/btford/zone.js/), which he describes in
-[this video](https://www.youtube.com/watch?v=3IqtmUscE_U).
+[this video]({{yt.watch}}?v=3IqtmUscE_U).
 
 
 ## Zone basics
@@ -589,7 +589,7 @@ lets you specify the code that the zone executes.
 In the future, zones might provide a simpler alternative
 for the common case of sandwiching zone code:
 an onEnter/onLeave API.
-See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
+See [issue 17532]({{site.repo.dart.sdk}}/issues/17532)
 for details.
 :::
 
@@ -790,15 +790,15 @@ The source code for the stack_trace package
   for debugging asynchronous code.
   Zone features used include error handling, zone-local values, and callbacks.
   You can find the stack_trace source code in the
-  [stack_trace GitHub project](https://github.com/dart-lang/stack_trace).
+  [stack_trace GitHub project]({{site.repo.dart.org}}/stack_trace).
 
 The source code for dart:html and dart:async
 : These two SDK libraries implement APIs featuring asynchronous callbacks,
   and thus they deal with zones.
   You can browse or download their source code under the
-  [sdk/lib directory](https://github.com/dart-lang/sdk/tree/main/sdk/lib)
+  [sdk/lib directory]({{site.repo.dart.sdk}}/tree/main/sdk/lib)
   of the
-  [Dart GitHub project](https://github.com/dart-lang/sdk).
+  [Dart GitHub project]({{site.repo.dart.sdk}}).
 
 
 _Thanks to Anders Johnsen and Lasse Reichstein Nielsen

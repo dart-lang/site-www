@@ -169,7 +169,7 @@ Before you run the example,
 try to predict which will print first: 
 "Large Latte" or "Fetching user order...".
 
-<?code-excerpt "async_await/bin/futures_intro.dart"?>
+<?code-excerpt "async_await/bin/futures_intro.dart (no-error)"?>
 ```dart:run-dartpad:height-300px:ga_id-introducting_futures
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
@@ -1094,7 +1094,7 @@ are some suggestions for where to go next:
     Watch one or more of the videos about asynchronous coding.
 - Get the [Dart SDK](/get-dart)!
 
-[Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
+[Dart videos]: {{yt.playlist}}PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
 [style guide]: /effective-dart/style
 [documentation guide]: /effective-dart/documentation

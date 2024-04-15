@@ -64,6 +64,7 @@ class Musician2 extends Performer with Musical {
 class Musician {
   // ...
 }
+
 // #enddocregion mixin-on
 */
 

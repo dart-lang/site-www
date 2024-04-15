@@ -11,6 +11,8 @@ nextpage:
   title: Class modifiers
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+
 To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 

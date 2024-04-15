@@ -528,7 +528,7 @@ reached when `object` is a list.
 For null safety, we've taken this limited analysis and made it [much more
 powerful in several ways.][flow analysis]
 
-[flow analysis]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
+[flow analysis]: {{site.repo.dart.lang}}/blob/main/resources/type-system/flow-analysis.md
 
 ### Reachability analysis
 
@@ -537,7 +537,7 @@ isn't smart about early returns and other unreachable code paths. When analyzing
 a function, it now takes into account `return`, `break`, `throw`, and any other
 way execution might terminate early in a function. Under null safety, this function:
 
-[18921]: https://github.com/dart-lang/sdk/issues/18921
+[18921]: {{site.repo.dart.sdk}}/issues/18921
 
 ```dart
 // Using null safety:

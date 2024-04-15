@@ -1,13 +1,13 @@
 import 'dart:io';
 
 int stopAfter = 10;
-// #docregion
+// #docregion process-requests
 Future<void> main() async {
   final requests = await HttpServer.bind('localhost', 8888);
-  // #enddocregion
+  // #enddocregion process-requests
   // ignore: no_leading_underscores_for_local_identifiers
   final _requests = requests.take(stopAfter);
-  // #docregion
+  // #docregion process-requests
   await for (final request in _requests) {
     processRequest(request);
   }
@@ -28,3 +28,4 @@ void processRequest(HttpRequest request) {
   }
   response.close();
 }
+// #enddocregion process-requests

@@ -13,7 +13,7 @@ void _samplesFromCommonProblemsPage() {
     // #docregion canvas-undefined
     var canvas = querySelector('canvas')!;
     // ignore: stable, beta, dev, undefined_getter
-    canvas.context2D.lineTo(x, y); //!analysis-issue
+    canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-undefined
   }
 
@@ -36,7 +36,7 @@ void _samplesFromCommonProblemsPage() {
     // Inferred as Map<String, int>
     var map = {'a': 1, 'b': 2, 'c': 3};
     // ignore: stable, beta, dev, invalid_assignment
-    map['d'] = 1.5; //!analysis-issue
+    map['d'] = 1.5;
     // #enddocregion inferred-collection-types
   }
 

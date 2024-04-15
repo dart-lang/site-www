@@ -70,7 +70,7 @@ abstract class Vehicle {
 }
 ```
 
-<?code-excerpt "language/lib/class_modifiers/ex1/b.dart"?>
+<?code-excerpt "language/lib/class_modifiers/ex1/b.dart (abstract-usages)"?>
 ```dart title="b.dart"
 import 'a.dart';
 
@@ -334,4 +334,4 @@ check out the [Class modifiers reference][].
 [factory constructor]: /language/constructors#factory-constructors
 [exhaustive]: /language/branches#exhaustiveness-checking
 [abstract methods]: /language/methods#abstract-methods
-[syntax specification]: https://github.com/dart-lang/language/blob/main/accepted/3.0/class-modifiers/feature-specification.md#syntax
+[syntax specification]: {{site.repo.dart.lang}}/blob/main/accepted/3.0/class-modifiers/feature-specification.md#syntax

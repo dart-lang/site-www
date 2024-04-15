@@ -109,7 +109,7 @@ eventually complete with a value or an error.
 In this sample code, the return type of `Future<String>` represents a 
 promise to eventually provide a `String` value (or error).
 
-<?code-excerpt "lib/future_syntax.dart"?>
+<?code-excerpt "lib/future_syntax.dart (read-async)"?>
 ```dart
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
@@ -130,7 +130,7 @@ asynchronous functions and use their results.
 Here's an example of some synchronous code
 that blocks while waiting for file I/O:
 
-<?code-excerpt "lib/sync_number_of_keys.dart"?>
+<?code-excerpt "lib/sync_number_of_keys.dart (blocking)"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -152,7 +152,7 @@ String _readFileSync() {
 
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
-<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
+<?code-excerpt "lib/async_number_of_keys.dart (non-blocking)" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -357,7 +357,7 @@ API to run processes in the background.
 The static `Isolate.run()` method requires one argument: a callback that will be
 run on the newly spawned isolate.
 
-<?code-excerpt "lib/isolate_run_syntax.dart"?>
+<?code-excerpt "lib/isolate_run_syntax.dart (slow)"?>
 ```dart
 int slowFib(int n) => n <= 1 ? 1 : slowFib(n - 1) + slowFib(n - 2);
 
@@ -472,8 +472,8 @@ as the spawning isolate. Web workers don't have an equivalent API.
     - [`ReceivePort`][]
     - [`SendPort`][]
 
-[`IsolateNameServer`]: https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html
-[`package:isolate_name_server`]: https://pub.dev/packages/isolate_name_server
+[`IsolateNameServer`]: {{site.flutter-api}}/flutter/dart-ui/IsolateNameServer-class.html
+[`package:isolate_name_server`]: {{site.pub-pkg}}/isolate_name_server
 [Actor model]: https://en.wikipedia.org/wiki/Actor_model
 [`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html

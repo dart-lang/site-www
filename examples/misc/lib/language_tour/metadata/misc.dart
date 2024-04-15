@@ -1,8 +1,8 @@
 import 'todo.dart';
 
-// #docregion
+// #docregion usage
 @Todo('Dash', 'Implement this function')
 void doSomething() {
   print('Do something');
 }
-// #enddocregion
+// #enddocregion usage

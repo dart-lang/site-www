@@ -653,5 +653,5 @@ to prevent your interface from becoming unresponsive.
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json
 [convert-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
-[http-pub]: https://pub.dev/packages/http
-[http-docs]: https://pub.dev/documentation/http
+[http-pub]: {{site.pub-pkg}}/http
+[http-docs]: {{site.pub-api}}/http

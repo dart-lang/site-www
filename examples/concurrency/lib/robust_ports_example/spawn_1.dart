@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'dart:isolate';
 
-// #docregion
+// #docregion worker-spawn
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -19,11 +19,11 @@ class Worker {
         commandPort,
       ));
     };
-// #enddocregion
+// #enddocregion worker-spawn
     throw UnimplementedError();
-// #docregion
+// #docregion worker-spawn
   }
-// #enddocregion
+// #enddocregion worker-spawn
 
   Future<Object?> parseJson(String message) async {
     // TODO: Ensure the port is still open.

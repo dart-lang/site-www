@@ -1917,20 +1917,22 @@ true.
 The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
 
-<?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster?>
+<?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster="// ···"?>
 ```dart tag=good
 class Person {
   final String name;
+
   // ···
 
   bool operator ==(Object other) => other is Person && name == other.name;
 }
 ```
 
-<?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster?>
+<?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster="// ···"?>
 ```dart tag=bad
 class Person {
   final String name;
+
   // ···
 
   bool operator ==([!Object?!] other) =>
