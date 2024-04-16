@@ -117,7 +117,7 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
-[send_and_receive.dart]: https://github.com/dart-lang/samples/blob/main/isolates/bin/send_and_receive.dart
+[send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 
@@ -463,23 +463,23 @@ Future<void> parseJson(String message) async {
   import 'dart:async';
   import 'dart:convert';
   import 'dart:isolate';
-
+  
   void main() async {
     final worker = Worker();
     await worker.spawn();
     await worker.parseJson('{"key":"value"}');
   }
-
+  
   class Worker {
     late SendPort _sendPort;
     final Completer<void> _isolateReady = Completer.sync();
-
+  
     Future<void> spawn() async {
       final receivePort = ReceivePort();
       receivePort.listen(_handleResponsesFromIsolate);
       await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
     }
-
+  
     void _handleResponsesFromIsolate(dynamic message) {
       if (message is SendPort) {
         _sendPort = message;
@@ -488,11 +488,11 @@ Future<void> parseJson(String message) async {
         print(message);
       }
     }
-
+  
     static void _startRemoteIsolate(SendPort port) {
       final receivePort = ReceivePort();
       port.send(receivePort.sendPort);
-
+  
       receivePort.listen((dynamic message) async {
         if (message is String) {
           final transformed = jsonDecode(message);
@@ -500,7 +500,7 @@ Future<void> parseJson(String message) async {
         }
       });
     }
-
+  
     Future<void> parseJson(String message) async {
       await _isolateReady.future;
       _sendPort.send(message);

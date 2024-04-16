@@ -25,7 +25,7 @@ For details about the 3.3 release,
 check out [3.3 blog post][] and the [SDK changelog][3-3-changelog].
 
 [3.3 blog post]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
-[3-3-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#330
+[3-3-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#330
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -57,7 +57,7 @@ we made the following changes to this site:
 * Added content on [creating][] and [ignoring][] security advisories in a pubspec file.
 * Documented [how to migrate away from a retracted package version][retract].
 
-[run on 11ty]: https://github.com/dart-lang/site-www/pull/5483
+[run on 11ty]: {{site.repo.this}}/pull/5483
 [Extension types]: /language/extension-types
 [JavaScript interop]: /interop/js-interop
 [Usage]: /interop/js-interop/usage
@@ -73,7 +73,7 @@ we made the following changes to this site:
 [Glossary]: /resources/glossary#function
 [Library tour]: /libraries
 [Breaking changes]: /resources/breaking-changes#3-3-0
-[FAQ]: https://github.com/dart-lang/site-www/pull/5479
+[FAQ]: {{site.repo.this}}/pull/5479
 [`dart doc`]: /tools/dart-doc
 [supported platforms]: /get-dart
 [`dart format`]: /tools/dart-format
@@ -94,7 +94,7 @@ For details about the 3.2 release,
 check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
 
 [3.2 blog post]: https://medium.com/dartlang/dart-3-2-c8de8fe1b91f
-[3-2-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#320
+[3-2-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#320
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -140,7 +140,7 @@ we made the following changes to this site:
 [Extension methods]: /language/extension-methods
 [Objective-C]: /interop/objective-c-interop#callbacks-and-multithreading-limitations
 [Metadata]: /language/metadata
-[move away from using Jekyll]: https://github.com/dart-lang/site-www/issues/5177
+[move away from using Jekyll]: {{site.repo.this}}/issues/5177
 
 ## August 16, 2023: 3.1 release
 
@@ -152,7 +152,7 @@ check out
 and the [SDK changelog][3-1-changelog].
 
 [Dart 3.1 & a retrospective on functional style programming in Dart 3]: https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda
-[3-1-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310
+[3-1-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#310
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -215,7 +215,7 @@ check out [Announcing Dart 3][],
 and the [SDK changelog][3-0-changelog].
 
 [Announcing Dart 3]: https://medium.com/dartlang/announcing-dart-3-53f065a10635
-[3-0-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#300---2023-05-10
+[3-0-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#300---2023-05-10
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -307,10 +307,10 @@ During Google I/O 2023, we released the following videos:
 * [Rethinking Dart interoperability with Android][]
 * [How to build a package in Dart][]
 
-[What's new in Dart and Flutter]: https://www.youtube.com/watch?v=yRlwOdCK7Ho
-[American Sign Language version]: https://www.youtube.com/watch?v=QbMgjVB0XMI
-[Rethinking Dart interoperability with Android]: https://www.youtube.com/watch?v=ZWp2FJ2TuJs
-[How to build a package in Dart]: https://www.youtube.com/watch?v=8V_TLiWszK0
+[What's new in Dart and Flutter]: {{yt.watch}}?v=yRlwOdCK7Ho
+[American Sign Language version]: {{yt.watch}}?v=QbMgjVB0XMI
+[Rethinking Dart interoperability with Android]: {{yt.watch}}?v=ZWp2FJ2TuJs
+[How to build a package in Dart]: {{yt.watch}}?v=8V_TLiWszK0
 
 ## January 25, 2023: 2.19 + 3.0 alpha releases
 
@@ -321,7 +321,7 @@ see [Introducing Dart 3 alpha][],
 and the [SDK changelog][2-19-changelog].
 
 [Introducing Dart 3 alpha]: https://medium.com/dartlang/dart-3-alpha-f1458fb9d232
-[2-19-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2190---2023-01-24
+[2-19-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#2190---2023-01-24
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -417,7 +417,7 @@ see [Dart 2.18: Objective-C & Swift interop][],
 and the [SDK changelog][2-18-changelog].
 
 [Dart 2.18: Objective-C & Swift interop]: https://medium.com/dartlang/dart-2-18-f4b3101f146c
-[2-18-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180---2022-08-30
+[2-18-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#2180---2022-08-30
 
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
@@ -616,7 +616,7 @@ we made the following changes to this site:
   [PREFER using interpolation to compose strings and values][]
   Effective Dart guideline.
 
-[updated the website infrastructure]: https://github.com/dart-lang/site-www/pull/3765
+[updated the website infrastructure]: {{site.repo.this}}/pull/3765
 [easier contributions]: {{site.repo.this}}#getting-started
 [`dart doc`]: /tools/dart-doc
 [`platform` entry]: /tools/pub/pubspec#platforms

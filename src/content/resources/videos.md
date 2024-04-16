@@ -7,7 +7,7 @@ dart-playlist-id: PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 Here are some videos about the Dart language and core libraries.
 For more videos, see the [Flutter video page.]({{site.flutter-docs}}/resources/videos)
 If you'd like other videos to be listed on this page,
-[let us know.](https://github.com/dart-lang/site-www/issues)
+[let us know.]({{site.repo.this}}/issues)
 
 {% comment %}
 TODO: If the list of videos grows, consider automating this like book.md.

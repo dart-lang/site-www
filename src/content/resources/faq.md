@@ -50,7 +50,7 @@ and welcomes distributed committers.
 [2nd-ed]: {{ecma-pdf}}/ECMA-408_2nd_edition_december_2014.pdf
 [3rd-ed]: {{ecma-pdf}}/ECMA-408_3rd_edition_june_2015.pdf
 [4th-ed]: {{ecma-pdf}}/ECMA-408_4th_edition_december_2015.pdf
-[5th-ed]: https://dart.dev/guides/language/specifications/DartLangSpec-v2.10.pdf
+[5th-ed]: /guides/language/specifications/DartLangSpec-v2.10.pdf
 [6th-ed]: https://spec.dart.dev/DartLangSpecDraft.pdf
 
 ---
@@ -353,4 +353,4 @@ either of those lists results in a runtime exception.
 [webdev]: /tools/webdev
 
 [dart-mirror]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-mirrors
-[pub-cmd]: https://dart.dev/tools/pub/cmd
+[pub-cmd]: /tools/pub/cmd

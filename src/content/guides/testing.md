@@ -75,8 +75,8 @@ following packages are useful across Dart platforms:
   expected ways.
   For an example that uses both package:test and package:mockito,
   see the [International Space Station API library and its unit
-  tests](https://github.com/dart-lang/mockito/tree/master/example/iss)
-  in the [mockito package](https://github.com/dart-lang/mockito).
+  tests]({{site.repo.dart.org}}/mockito/tree/master/example/iss)
+  in the [mockito package]({{site.repo.dart.org}}/mockito).
 
 ## Flutter testing
 
@@ -127,8 +127,8 @@ Learn more about GitHub Actions:
   For an example, see
   [`test-package.yml`][markdown-ci] in the markdown package's repo.
   To see how that repo migrated from Travis CI to GitHub Actions,
-  look at [PR #353](https://github.com/dart-lang/markdown/pull/353).
+  look at [PR #353]({{site.repo.dart.org}}/markdown/pull/353).
 
 [gha-article]: https://poetryincode.dev/testing-dart-packages-with-github-actions
-[markdown-ci]: https://github.com/dart-lang/markdown/blob/master/.github/workflows/test-package.yml
+[markdown-ci]: {{site.repo.dart.org}}/markdown/blob/master/.github/workflows/test-package.yml
 

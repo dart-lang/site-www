@@ -119,7 +119,7 @@ To track standardization of this handling,
 reference [SDK issue 44995][].
 :::
 
-[SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
+[SDK issue 44995]: {{site.repo.dart.sdk}}/issues/44995
 
 ### Dart CLI
 

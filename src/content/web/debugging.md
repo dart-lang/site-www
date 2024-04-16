@@ -210,5 +210,5 @@ To learn more, see the following:
 [JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
 [dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
-[webdev repo,]: https://github.com/dart-lang/webdev
+[webdev repo,]: {{site.repo.dart.org}}/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev

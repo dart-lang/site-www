@@ -274,8 +274,8 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
 [`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
-[#4841]: https://github.com/dart-lang/linter/issues/4841
-[#54025]: https://github.com/dart-lang/sdk/issues/54025
+[#4841]: {{site.repo.dart.org}}/linter/issues/4841
+[#54025]: {{site.repo.dart.sdk}}/issues/54025
 [`JSBoxedDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSBoxedDartObject-extension-type.html
 [`ExternalDartReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReference-extension-type.html
 [`toExternalReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html

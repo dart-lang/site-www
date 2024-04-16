@@ -472,8 +472,8 @@ as the spawning isolate. Web workers don't have an equivalent API.
     - [`ReceivePort`][]
     - [`SendPort`][]
 
-[`IsolateNameServer`]: https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html
-[`package:isolate_name_server`]: https://pub.dev/packages/isolate_name_server
+[`IsolateNameServer`]: {{site.flutter-api}}/flutter/dart-ui/IsolateNameServer-class.html
+[`package:isolate_name_server`]: {{site.pub-pkg}}/isolate_name_server
 [Actor model]: https://en.wikipedia.org/wiki/Actor_model
 [`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html

@@ -114,10 +114,10 @@ TODO: Link to `package:web` section
 [`allowInterop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/allowInterop.html
 [`package:js`]: {{site.pub-pkg}}/js
 [`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSObject-extension-type.html
-[`@JS`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L11
+[`@JS`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L11
 [tutorial on mocking]: /interop/js-interop/mock
-[`@anonymous`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L40
-[`@staticInterop`]: https://github.com/dart-lang/sdk/blob/main/sdk/lib/js/_js_annotations.dart#L48
+[`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
+[`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
 [`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util
 [`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe

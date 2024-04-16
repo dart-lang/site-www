@@ -226,6 +226,23 @@ on the [Flutter contributors Discord][]!
 
 [Flutter contributors Discord]: https://github.com/flutter/flutter/wiki/Chat
 
+### Refresh code excerpts
+
+A build that fails with the error
+`Error: Some code excerpts needed to be updated!`
+means that one or more code excerpts in the site Markdown files
+aren't identical to the code regions declared
+in the corresponding `.dart` files.
+
+To resolve this error,
+from the root of the `site-www` directory,
+run `./dash_site refresh-excerpts`.
+
+To learn more about creating, editing, and using code excerpts,
+check out the [excerpt updater package documentation][].
+
+[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+
 ## [Optional] Deploy to a staging site
 
 Submitted pull requests can be automatically staged
