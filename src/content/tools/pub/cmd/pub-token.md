@@ -9,9 +9,9 @@ and [retrieving](pub-get) dependencies.
 
 It stores these tokens in a [user-wide config directory][config-dir].
 
-It has three subcommands: `add`, `list` and `remove`.
+This command consists of three subcommands: `add`, `list` and `remove`.
 
-Consider a scenario when you have a [dependency](/tools/pub/dependencies)
+Consider a scenario where you have a [dependency](/tools/pub/dependencies)
 hosted on a private repository.
 When you invoke `dart pub get`, the command _might_ return a prompt
 to provide credentials:
@@ -25,16 +25,18 @@ https://some-package-repo.com/my-org/my-repo package repository requested authen
 Go to https://some-package-repo.com and log in to obtain your token. 
 ```
 
-In this last message, the final line gives you the server that can help you
-obtain a token. Not all servers provide such this message.
+The server might include a message in the final line of the prompt
+to help you obtain a token.
+This message is displayed in the previous example.
+Not all servers provide this message.
 
 ## Add a new credential
 
-To create a new credential, invoke `dart pub token add`.
+To add a new credential, run the command `dart pub token add`.
 
 ### Add a credential for the current session
 
-At the prompt, type the credential on the command line (`stdin`).
+At the prompt, type the credential on the command line.
 
 ```console
 $ dart pub token add https://some-package-repo.com/my-org/my-repo
@@ -44,7 +46,7 @@ Enter secret token: <Type token on stdin>
 ```
 
 :::note
-The token takes input on `stdin` rather than as a command line option
+The token takes input over `stdin` rather than as a command line option
 to keep the token out of the shell history.
 :::
 
@@ -52,37 +54,26 @@ to keep the token out of the shell history.
 
 In a script, you can store the secret in an environment variable.
 
-If you choose to store your secret in an environment variable,
-find a way to hide the secret from your shell history.
-To explore one way of doing this, consult [this post on Medium][zsh-post].
-If you add a local environment variable, you need to restart any open
+If you choose to store your token in an environment variable,
+[find a way][zsh-post] to hide the token from your shell history.
+If you add an environment variable, you need to restart any open
 consoles to enable that new variable.
 
-Most CI environments can inject secrets into an environment variable.
-To learn how, consult documentation for [GitHub Actions][]] or
+Most CI environments can inject tokens into an environment variable.
+To learn how, consult documentation for [GitHub Actions][] or
 [GitLab][] as examples.
 
 [GitHub Actions]: https://docs.github.com/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow
 [GitLab]: https://docs.gitlab.com/ee/ci/secrets/
 [zsh-post]: https://medium.com/@prasincs/hiding-secret-keys-from-shell-history-part-1-5875eb5556cc
 
-To use an environment variable as a token, invoke:
 
-```console
-dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>
-```
 
-This causes `dart pub get` to read the data stored in `$TOKEN_VAR` then
-use it as the authentication token.
 
-```console
-$ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
-Requests to "https://other-package-repo.com/" will now be authenticated using the secret token stored in the environment variable "TOKEN_VAR".
-```
 
 ## Return a list of credentials
 
-To see a list of all active credentials, invoke `dart pub token list`:
+To see a list of all active credentials, run the command `dart pub token list`:
 
 ```console
 $ dart pub token list
@@ -93,14 +84,15 @@ https://other-package-repo.com/
 
 ## Remove one or more credentials
 
-To remove a single token, invoke `dart pub token remove`:
+To remove a single token, run the command `dart pub token remove`:
 
 ```console
 $ dart pub token remove https://other-package-repo.com
 Removed secret token for package repository: https://other-package-repo.com
 ```
 
-To remove all tokens, invoke the command with the `remove --all` option:
+To remove all tokens,
+run the same command and append the `--all` option:
 
 ```console
 $ dart pub token remove --all
