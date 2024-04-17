@@ -65,7 +65,7 @@ Their behavior is built in to Dart.
   - `!` is probably excluded for historical reasons
 {% endcomment %}
 
-To declare an operator declaration, use the built-in identifier
+To declare an operator, use the built-in identifier
 `operator` then the operator you are defining.
 The following example defines vector addition (`+`), subtraction (`-`),
 and equality (`==`):
