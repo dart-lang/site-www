@@ -14,8 +14,8 @@ devDependencies:
     specifier: 3.0.0-alpha.6
     version: 3.0.0-alpha.6
   firebase-tools:
-    specifier: ^13.7.2
-    version: 13.7.2
+    specifier: ^13.7.3
+    version: 13.7.3
   hast-util-from-html:
     specifier: ^2.0.1
     version: 2.0.1
@@ -23,8 +23,8 @@ devDependencies:
     specifier: ^6.0.2
     version: 6.0.2
   hast-util-to-text:
-    specifier: ^4.0.1
-    version: 4.0.1
+    specifier: ^4.0.2
+    version: 4.0.2
   html-minifier-terser:
     specifier: ^7.2.0
     version: 7.2.0
@@ -2035,8 +2035,8 @@ packages:
       - supports-color
     dev: true
 
-  /firebase-tools@13.7.2:
-    resolution: {integrity: sha512-sq1AZCOt/xjpP7FYNRXPEjSZtplAhEFd/LKqTaKsCtFo64h/ykEAYXHzAJCSl6J1EWh6tf0h1DYT2mIaW+d5cw==}
+  /firebase-tools@13.7.3:
+    resolution: {integrity: sha512-3OkD5GX+KBZPDHOZc0TzgBwDFmCCwqhMFRbUAau+ExzsNbiIPHe6CxXSCiojqYzXGDvlW8kn/9HWMn7idOiQIQ==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -2068,7 +2068,6 @@ packages:
       google-auth-library: 7.14.1
       inquirer: 8.2.6
       inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
-      js-yaml: 3.14.1
       jsonwebtoken: 9.0.2
       leven: 3.1.0
       libsodium-wrappers: 0.7.13
@@ -2102,6 +2101,7 @@ packages:
       winston: 3.13.0
       winston-transport: 4.7.0
       ws: 7.5.9
+      yaml: 2.4.1
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -2564,8 +2564,8 @@ packages:
       '@types/hast': 3.0.4
     dev: true
 
-  /hast-util-to-text@4.0.1:
-    resolution: {integrity: sha512-RHL7Vo2n06ZocCFWqmbyhZ1pCYX/mSKdywt9YD5U6Hquu5syV+dImCXFKLFt02JoK5QxkQFS0PoVdFdPXuPffQ==}
+  /hast-util-to-text@4.0.2:
+    resolution: {integrity: sha512-KK6y/BN8lbaq654j7JgBydev7wuNMcID54lkRav1P0CaE1e47P72AWWPiGKXTJU271ooYzcvTAn/Zt0REnvc7A==}
     dependencies:
       '@types/hast': 3.0.4
       '@types/unist': 3.0.2
