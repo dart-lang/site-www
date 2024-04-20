@@ -9,7 +9,7 @@ and [retrieving](pub-get) dependencies.
 
 It stores these tokens in a [user-wide config directory][config-dir].
 
-This command consists of three subcommands: `add`, `list` and `remove`.
+This command has three subcommands: `add`, `list`, and `remove`.
 
 Consider a scenario where you have a [dependency](/tools/pub/dependencies)
 hosted on a private repository.
