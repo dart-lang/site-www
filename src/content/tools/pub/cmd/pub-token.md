@@ -87,7 +87,7 @@ store the token in an environment variable.
    ```
 
 Most CI environments can inject tokens into an environment variable.
-To learn how, consult documentation for [GitHub Actions][]] or
+To learn how, consult documentation for [GitHub Actions][] or
 [GitLab][] as examples.
 
 [GitHub Actions]: https://docs.github.com/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow
