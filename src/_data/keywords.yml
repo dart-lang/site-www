@@ -9,13 +9,13 @@
   type: reserved
 - term: 'async'
   link: /language/async
-  type: nothing
+  type: unrestricted
 - term: 'await'
   link: /language/async
   type: context
 - term: 'base'
   link: /language/class-modifiers#base
-  type: nothing
+  type: unrestricted
 - term: 'break'
   link: /language/loops#break-and-continue
   type: reserved
@@ -93,7 +93,7 @@
   type: bit
 - term: 'hide'
   link: /language/libraries#importing-only-part-of-a-library
-  type: nothing
+  type: unrestricted
 - term: 'if'
   link: /language/branches#if
   type: reserved
@@ -129,10 +129,10 @@
   type: reserved
 - term: 'of'
   link: /guides/libraries/create-packages#organizing-a-package
-  type: nothing
+  type: unrestricted
 - term: 'on'
   link: /language/error-handling#catch
-  type: nothing
+  type: unrestricted
 - term: 'operator'
   link: /language/methods#operators
   type: bit
@@ -150,13 +150,13 @@
   type: reserved
 - term: 'sealed'
   link: /language/class-modifiers#sealed
-  type: nothing
+  type: unrestricted
 - term: 'set'
   link: /language/methods#getters-and-setters
   type: bit
 - term: 'show'
   link: /language/libraries#importing-only-part-of-a-library
-  type: nothing
+  type: unrestricted
 - term: 'static'
   link: /language/classes#class-variables-and-methods
   type: bit
@@ -168,7 +168,7 @@
   type: reserved
 - term: 'sync'
   link: /language/functions#generators
-  type: nothing
+  type: unrestricted
 - term: 'this'
   link: /language/constructors
   type: reserved
@@ -195,7 +195,7 @@
   type: reserved
 - term: 'when'
   link: /language/branches#when
-  type: nothing
+  type: unrestricted
 - term: 'with'
   link: /language/mixins
   type: reserved
