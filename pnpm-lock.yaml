@@ -11,8 +11,8 @@ dependencies:
 
 devDependencies:
   '@11ty/eleventy':
-    specifier: 3.0.0-alpha.6
-    version: 3.0.0-alpha.6
+    specifier: 3.0.0-alpha.9
+    version: 3.0.0-alpha.9
   firebase-tools:
     specifier: ^13.7.4
     version: 13.7.4
@@ -73,9 +73,9 @@ packages:
       '@11ty/eleventy-utils': 1.0.2
     dev: true
 
-  /@11ty/eleventy-dev-server@1.0.4:
-    resolution: {integrity: sha512-qVBmV2G1KF/0o5B/3fITlrrDHy4bONUI2YuN3/WJ3BNw4NU1d/we8XhKrlgq13nNvHoBx5czYp3LZt8qRG53Fg==}
-    engines: {node: '>=14'}
+  /@11ty/eleventy-dev-server@2.0.0:
+    resolution: {integrity: sha512-hqxQV92Bos0uyZa3P+BAX0nQqjQQMi4vCSxcQHNYEB/jjGV6CnurLBSn63U1VoixGAL4SpHm9OdTa2oVOTUx6Q==}
+    engines: {node: '>=18'}
     hasBin: true
     dependencies:
       '@11ty/eleventy-utils': 1.0.2
@@ -87,7 +87,9 @@ packages:
       minimist: 1.2.8
       morphdom: 2.7.2
       please-upgrade-node: 3.2.0
-      ssri: 8.0.1
+      send: 0.18.0
+      ssri: 10.0.5
+      urlpattern-polyfill: 10.0.0
       ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
@@ -102,14 +104,14 @@ packages:
       normalize-path: 3.0.0
     dev: true
 
-  /@11ty/eleventy@3.0.0-alpha.6:
-    resolution: {integrity: sha512-wllqMiM3A9qRt1mUA6iETQfhRtpFfUnzCT7v4RK/5RFqX/Bjwmqe18v7dfStHSO+V2zv5hE32skdM23HigG+eg==}
+  /@11ty/eleventy@3.0.0-alpha.9:
+    resolution: {integrity: sha512-q5tBKD7/AHyYN3R733GeKGgR8mPVTtmaRerqrhgmK2qyGS404QMZncB1knBPx6//vtwLEI954Caofu1A8M7Lrw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       '@11ty/dependency-tree': 3.0.0
       '@11ty/dependency-tree-esm': 1.0.0
-      '@11ty/eleventy-dev-server': 1.0.4
+      '@11ty/eleventy-dev-server': 2.0.0
       '@11ty/eleventy-utils': 1.0.2
       '@11ty/lodash-custom': 4.17.21
       '@11ty/posthtml-urls': 1.0.0
@@ -125,14 +127,14 @@ packages:
       is-glob: 4.0.3
       iso-639-1: 3.1.2
       kleur: 4.1.5
-      liquidjs: 10.10.2
+      liquidjs: 10.11.1
       luxon: 3.4.4
       markdown-it: 14.1.0
       micromatch: 4.0.5
       minimist: 1.2.8
       moo: 0.5.2
       multimatch: 7.0.0
-      node-retrieve-globals: 5.0.0
+      node-retrieve-globals: 6.0.0
       normalize-path: 3.0.0
       nunjucks: 3.2.4(chokidar@3.6.0)
       please-upgrade-node: 3.2.0
@@ -3175,8 +3177,8 @@ packages:
       uc.micro: 2.1.0
     dev: true
 
-  /liquidjs@10.10.2:
-    resolution: {integrity: sha512-UcuTUexKg/8CmX6I5KNghk13pl3c8Rqhm+WSWqrc17pQP9LjpYPpOLDKG9OMBeHDBQ70yyn/GOqyZ/EKJ4z5yg==}
+  /liquidjs@10.11.1:
+    resolution: {integrity: sha512-ORlMi7Okt311anHyvuYTRijrdX9He4lbeGEfugSLeHuSYREnFM2M0ppG1/zQHR/k5KSvMP/d4DfUDIFdS8MtqQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -3741,8 +3743,8 @@ packages:
     dev: true
     optional: true
 
-  /node-retrieve-globals@5.0.0:
-    resolution: {integrity: sha512-C4R0rtPEoxJaeo8RnLWx3VMvFgs0fAePFvI6WHBS2BS/aNxuHwL9IK922UBOjHnD5UKVfY1Xef9qk/BkmLrWiw==}
+  /node-retrieve-globals@6.0.0:
+    resolution: {integrity: sha512-VoEp6WMN/JcbBrJr6LnFE11kdzpKiBKNPFrHCEK2GgFWtiYpeL85WgcZpZFFnWxAU0O65+b+ipQAy4Oxy/+Pdg==}
     dependencies:
       acorn: 8.11.3
       acorn-walk: 8.3.2
@@ -4686,14 +4688,6 @@ packages:
     dependencies:
       minipass: 7.0.4
     dev: true
-    optional: true
-
-  /ssri@8.0.1:
-    resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
-    engines: {node: '>= 8'}
-    dependencies:
-      minipass: 3.3.6
-    dev: true
 
   /stack-trace@0.0.10:
     resolution: {integrity: sha512-KGzahc7puUKkzyMt+IqAep+TVNbKP+k2Lmwhub39m1AsTSkaDutx56aDCo+HLDzf/D26BIHTJWNiTG1KAJiQCg==}
@@ -5092,6 +5086,10 @@ packages:
 
   /url-join@0.0.1:
     resolution: {integrity: sha512-H6dnQ/yPAAVzMQRvEvyz01hhfQL5qRWSEt7BX8t9DqnPw9BjMb64fjIRq76Uvf1hkHp+mTZvEVJ5guXOT0Xqaw==}
+    dev: true
+
+  /urlpattern-polyfill@10.0.0:
+    resolution: {integrity: sha512-H/A06tKD7sS1O1X2SshBVeA5FLycRpjqiBeqGKmBwBDBy28EnRjORxTNe269KSSr5un5qyWi1iL61wLxpd+ZOg==}
     dev: true
 
   /util-deprecate@1.0.2:
