@@ -24,157 +24,6 @@ Constructors create instances of classes.
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-## Constructor inheritance
-
-Subclasses don't inherit constructors from their superclass.
-Parameters of a superclass can be inherited.
-These are called [Super parameters](#super-parameters)
-A subclass without constructor declarations can only use
-a [default constructor](#default-constructors).
-
-## Parameter initialization
-
-Dart can initialize parameters in a constructor in three ways.
-
-### Initialize parameters when declaring variables
-
-Initialize the constructor parameters when you declare variables.
-
-```dart
-class PointA {
-  double x = 1.0;
-  double y = 2.0;
-
-  // The parameterless constructor is not even be needed to set to (1.0,2.0)
-  PointA();
-
-  @override
-  String toString() {
-    return "PointA($x,$y)";
-  }
-}
-```
-
-### Use initializing formal parameters
-
-To simplify the common pattern of assigning a constructor argument
-to an instance variable,
-Dart has *initializing formal parameters*.
-
-In the constructor declaration, include `this.<propertyName>`
-and omit the body. The `this` keyword refers to the current instance.
-
-When the name conflict exists, use `this`.
-Otherwise, Dart style omits the `this`.
-An exception exists for the generative constructor:
-you must prefix the initializing formal parameter name with `this`.
-
-Certain constructors and parts of constructors can't access `this`:
-
-* Factory constructors
-* The right-hand side of an initializer list
-* Arguments to a superclass constructor
-
-Initializing formal parameters also allow you to initialize
-non-nullable or `final` instance variables.
-Both of these types of variables require initialization or a default value.
-
-```dart
-class PointB {
-  double x; // must be set in constructor
-  double y; // must be set in constructor
-
-  // Generative constructor with initializing formal parameters
-  PointB(this.x, this.y);
-
-  @override
-  String toString() {
-    return "PointB($x,$y)";
-  }
-}
-```
-
-All variables introduced from initializing formal parameters are both
-final and only in scope of the initialized variables.
-
-To perform logic that you can't express in the initializer list,
-create a [factory constructor](#factory-constructors)
-or [static method][] with that logic.
-You can then pass the computed values to a normal constructor.
-
-The constructor parameters could be set as nullable and not be initialized.
-
-```dart
-class PointC {
-  double? x; // null if not set in constructor
-  double? y; // null if not set in constructor
-
-  // Generative constructor with initializing formal parameters
-  PointC(this.x, this.y);
-
-  @override
-  String toString() {
-    return "PointC($x,$y)";
-  }
-}
-```
-
-### Use an initializer list
-
-Before the constructor body runs, you can initialize instance variables.
-Separate initializers with commas.
-
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
-```dart
-// Initializer list sets instance variables before
-// the constructor body runs.
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
-  print('In Point.fromJson(): ($x, $y)');
-}
-```
-
-:::warning
-The right-hand side of an initializer list can't access `this`.
-:::
-
-To validate inputs during development,
-use `assert` in the initializer list.
-
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
-```dart
-Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
-  print('In Point.withAssert(): ($x, $y)');
-}
-```
-
-Initializer lists help set up `final` fields.
-
-The following example initializes three `final` fields in an initializer list.
-To execute the code, click **Run**.
-
-<?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
-```dart:run-dartpad:height-340px:ga_id-initializer_list
-import 'dart:math';
-
-class Point {
-  final double x;
-  final double y;
-  final double distanceFromOrigin;
-
-  Point(double x, double y)
-      : x = x,
-        y = y,
-        distanceFromOrigin = sqrt(x * x + y * y);
-}
-
-void main() {
-  var p = Point(2, 3);
-  print(p.distanceFromOrigin);
-}
-```
-
 ## Types of constructors
 
 ### Default constructors
@@ -272,8 +121,8 @@ void main() {
 }
 ```
 
-As Dart evaluates the arguments to the superclass constructor before
-invoking the constructor, an argument can be an expression such as a
+As Dart evaluates the arguments to the superclass constructor *before*
+invoking the constructor, an argument can be an expression like a
 function call.
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
@@ -286,8 +135,23 @@ class Employee extends Person {
 
 :::warning
 Arguments to the superclass constructor can't access `this`.
-For example, arguments can call static methods but not instance methods.
+For example, arguments can call *static* methods
+but not *instance* methods.
 :::
+
+#### Constructor inheritance
+
+Subclasses don't inherit *constructors* from their superclass.
+Parameters of a superclass can be inherited.
+These are called [super parameters](#super-parameters)
+A subclass without constructor declarations can only use
+a [default constructor](#default-constructors).
+
+Constructors work in a somewhat similar way to
+how you call a chain of static methods.
+Each subclass can make a direct call its superclass's constructor to
+perform necessary initialization, like a subclass can make a direct to
+a superclass's static method. This process doesn't involve any "inheritance".
 
 #### Super parameters
 
@@ -297,7 +161,17 @@ to the specified or default superclass constructor.
 You can't use this feature with
 [redirecting constructors](#redirecting-constructors).
 Super-initializer parameters have syntax and semantics like
-[initializing formal parameters](#use-initializing-formal-parameters):
+[initializing formal parameters](#use-initializing-formal-parameters).
+
+:::version-note
+Using super-initializer parameters
+requires a [language version][] of at least 2.17.
+If you're using an earlier language version,
+you must manually pass in all super constructor parameters.
+:::
+
+If the super-constructor invocation includes positional arguments,
+super-initializer parameters can't be positional.
 
 <?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
 ```dart
@@ -311,15 +185,29 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Forward the x and y parameters to the default super constructor like:
-  // Vector3d(final double x, final double y, this.z) : super(x, y);
-  Vector3d(super.x, super.y, this.z);
+  // Conflicts with the super constructor Vector2d(this.x, this.y)
+  Vector3d(super.y, this.z);
 }
 ```
 
-If the super-constructor invocation includes positional arguments,
-super-initializer parameters cannot be positional.
-They can be named.
+To further illustrate, consider the following example.
+
+```dart
+  // If you invoke the super constructor (`super(0)`) with any
+  // positional arguments, using a super parameter (`super.x`)
+  // returns an error.
+  Vector3d.xAxisError(super.x): z = 0, super(0); // BAD
+```
+
+This named constructor tries to set the `x` value twice:
+once in the super constructor and once as a
+positional super parameter.
+As both address the `x` positional parameter, this returns an error.
+
+When the super constructor has named arguments, you can split them
+between named super parameters (`super.y` in the next example)
+and named arguments to the super constructor invocation
+(`super.named(x: 0)`).
 
 <?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
 ```dart
@@ -338,13 +226,6 @@ class Vector3d extends Vector2d {
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
 }
 ```
-
-:::version-note
-Using super-initializer parameters
-requires a [language version][] of at least 2.17.
-If you're using an earlier language version,
-you must manually pass in all super constructor parameters.
-:::
 
 ### Redirecting constructors
 
@@ -454,6 +335,179 @@ logger.log('Button clicked');
 
 var logMap = {'name': 'UI'};
 var loggerJson = Logger.fromJson(logMap);
+```
+
+## Parameter initialization
+
+Dart can initialize parameters in a constructor in three ways.
+
+### Initialize parameters when declaring variables
+
+Initialize the constructor parameters when you declare variables.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-declaration)" plaster="none"?>
+```dart
+class PointA {
+  [!double x = 1.0;!]
+  [!double y = 2.0;!]
+
+  // The parameterless constructor is not even be needed to set to (1.0,2.0)
+  PointA();
+
+  @override
+  String toString() {
+    return 'PointA($x,$y)';
+  }
+}
+```
+
+### Use initializing formal parameters
+
+To simplify the common pattern of assigning a constructor argument
+to an instance variable,
+Dart has *initializing formal parameters*.
+
+In the constructor declaration, include `this.<propertyName>`
+and omit the body. The `this` keyword refers to the current instance.
+
+When the name conflict exists, use `this`.
+Otherwise, Dart style omits the `this`.
+An exception exists for the generative constructor:
+you must prefix the initializing formal parameter name with `this`.
+
+Certain constructors and parts of constructors can't access `this`:
+
+* Factory constructors
+* The right-hand side of an initializer list
+* Arguments to a superclass constructor
+
+Initializing formal parameters also allow you to initialize
+non-nullable or `final` instance variables.
+Both of these types of variables require initialization or a default value.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-formal)" plaster="none"?>
+```dart
+class PointB {
+  final double x;
+  final double y;
+
+  // Sets the x and y instance variables
+  // before the constructor body runs.
+  PointB(this.x, this.y);
+
+  // Initializing formal parameters can also be optional.
+  PointB.optional([this.x = 0.0, this.y = 0.0]);
+  PointB.named({required this.x, required this.y});
+
+  // Private fields cannot be used as named initializing formals.
+  PointB.namedPrivate({required double x, required double y})
+      : _x = x,
+        _y = y;
+}
+```
+
+This also works with named variables.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-named)" plaster="none"?>
+```dart
+class PointC {
+  double x; // must be set in constructor
+  double y; // must be set in constructor
+
+  // Generative constructor with initializing formal parameters
+  // with default values
+  [!PointC({this.x = 1.0, this.y = 1.0});!]
+
+  @override
+  String toString() {
+    return 'PointC($x,$y)';
+  }
+}
+
+// Constructor using named variables.
+[!final pointC = PointC(x: 2.0, y: 2.0);!]
+```
+
+All variables introduced from initializing formal parameters are both
+final and only in scope of the initialized variables.
+
+To perform logic that you can't express in the initializer list,
+create a [factory constructor](#factory-constructors)
+or [static method][] with that logic.
+You can then pass the computed values to a normal constructor.
+
+The constructor parameters could be set as nullable and not be initialized.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-null)" plaster="none"?>
+```dart
+class PointD {
+  [!double? x;!] // null if not set in constructor
+  [!double? y;!] // null if not set in constructor
+
+  // Generative constructor with initializing formal parameters
+  PointD(this.x, this.y);
+
+  @override
+  String toString() {
+    return 'PointD($x,$y)';
+  }
+}
+```
+
+### Use an initializer list
+
+Before the constructor body runs, you can initialize instance variables.
+Separate initializers with commas.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
+```dart
+// Initializer list sets instance variables before
+// the constructor body runs.
+Point.fromJson(Map<String, double> json)
+    : x = json['x']!,
+      y = json['y']! {
+  print('In Point.fromJson(): ($x, $y)');
+}
+```
+
+:::warning
+The right-hand side of an initializer list can't access `this`.
+:::
+
+To validate inputs during development,
+use `assert` in the initializer list.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
+```dart
+Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
+  print('In Point.withAssert(): ($x, $y)');
+}
+```
+
+Initializer lists help set up `final` fields.
+
+The following example initializes three `final` fields in an initializer list.
+To execute the code, click **Run**.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
+```dart:run-dartpad:height-340px:ga_id-initializer_list
+import 'dart:math';
+
+class Point {
+  final double x;
+  final double y;
+  final double distanceFromOrigin;
+
+  Point(double x, double y)
+      : x = x,
+        y = y,
+        distanceFromOrigin = sqrt(x * x + y * y);
+}
+
+void main() {
+  var p = Point(2, 3);
+  print(p.distanceFromOrigin);
+}
 ```
 
 [language version]: /guides/language/evolution#language-versioning
