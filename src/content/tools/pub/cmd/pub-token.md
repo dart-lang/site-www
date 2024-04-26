@@ -22,7 +22,7 @@ and _secret token_ to be interchangable.
 
 Consider a scenario when you have a [dependency](/tools/pub/dependencies)
 hosted on a private repository.
-When you invoke `dart pub get`, the command _might_ return a prompt
+When you use the `dart pub get` command, it _might_ return a prompt
 to provide credentials:
 
 ```console
@@ -38,7 +38,8 @@ to how you can obtain a token.
 
 ## Add a new credential
 
-To create a new credential, invoke `dart pub token add`.
+To create a new credential,
+use the `dart pub token add` command.
 
 ### Add a credential for the current session
 
@@ -70,7 +71,8 @@ store the token in an environment variable.
 1. To enable any environment variables that you add,
    restart any open consoles.
 
-1. To use an environment variable as a token, run the following command:
+1. To use an environment variable as a token,
+   use the `dart pub token add` command:
 
    ```console
    $ dart pub token add <hosted-url> --env-var <TOKEN_VAR>
@@ -96,7 +98,7 @@ To learn how, consult documentation for [GitHub Actions][] or
 
 ## Return a list of credentials
 
-To see a list of all active credentials, invoke `dart pub token list`:
+To see a list of all active credentials, use the `dart pub token list` command:
 
 ```console
 $ dart pub token list
@@ -107,14 +109,14 @@ https://other-package-repo.com/
 
 ## Remove one or more credentials
 
-To remove a single token, invoke `dart pub token remove`:
+To remove a single token, use the `dart pub token remove` command:
 
 ```console
 $ dart pub token remove https://other-package-repo.com
 Removed secret token for package repository: https://other-package-repo.com
 ```
 
-To remove all tokens, invoke the command with the `remove --all` option:
+To remove all tokens, use the preceding command with the `remove --all` option:
 
 ```console
 $ dart pub token remove --all
