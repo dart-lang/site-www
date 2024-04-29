@@ -92,8 +92,8 @@ Before the constructor body (if any),
 specify the superclass constructor after a colon (`:`).
 
 In the following example,
-the constructor for the `Employee` class calls the named constructor
-for its superclass, `Person`. Click **Run** to execute the code.
+the `Employee` class constructor calls the named constructor
+for its superclass, `Person`. To execute the following code, click **Run**.
 
 <?code-excerpt "employee.dart (super)" plaster="none"?>
 ```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
@@ -187,8 +187,9 @@ class Vector2d {
 class Vector3d extends Vector2d {
   final double z;
 
-  // Conflicts with the super constructor Vector2d(this.x, this.y)
-  Vector3d(super.y, this.z);
+  // Forward the x and y parameters to the default super constructor like:
+  // Vector3d(final double x, final double y, this.z) : super(x, y);
+  Vector3d(super.x, super.y, this.z);
 }
 ```
 
@@ -215,12 +216,11 @@ and named arguments to the super constructor invocation
 ```dart
 class Vector2d {
   // ...
-
   Vector2d.named({required this.x, required this.y});
 }
 
 class Vector3d extends Vector2d {
-  // ...
+  final double z;
 
   // Forward the y parameter to the named super constructor like:
   // Vector3d.yzPlane({required double y, required this.z})
@@ -228,6 +228,27 @@ class Vector3d extends Vector2d {
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
 }
 ```
+
+### Constant constructors
+
+If your class produces unchanging objects, make these
+objects compile-time constants. 
+To make objects compile-time constants, define a `const` constructor
+with all instance variables set as `final`.
+
+<?code-excerpt "immutable_point.dart"?>
+```dart
+class ImmutablePoint {
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+
+  final double x, y;
+
+  const ImmutablePoint(this.x, this.y);
+}
+```
+
+Constant constructors don't always create constants.
+To learn more, consult the section on [using constructors][].
 
 ### Redirecting constructors
 
@@ -247,26 +268,6 @@ class Point {
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
-
-### Constant constructors
-
-If your class produces objects that never change, you can make these
-objects compile-time constants. To do this, define a `const` constructor
-and make sure that all instance variables are `final`.
-
-<?code-excerpt "immutable_point.dart"?>
-```dart
-class ImmutablePoint {
-  static const ImmutablePoint origin = ImmutablePoint(0, 0);
-
-  final double x, y;
-
-  const ImmutablePoint(this.x, this.y);
-}
-```
-
-Constant constructors don't always create constants.
-To learn more, consult the section on [using constructors][].
 
 ### Factory constructors
 
@@ -336,6 +337,25 @@ var logMap = {'name': 'UI'};
 var loggerJson = Logger.fromJson(logMap);
 ```
 
+### Redirecting factory constructors
+
+A redirecting factory constructor specifies a call to a constructor of another
+class to use whenever someone makes a call to the redirecting constructor.
+
+```dart
+factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
+```
+
+It might appear that ordinary factory constructors
+could create and return instances of other classes.
+This would make redirecting factories unnecessary.
+Redirecting factories have several advantages:
+
+* An abstract class might provide a constant constructor
+  that uses the constant constructor of another class.
+* A redirecting factory constructor avoids the need for forwarders
+  to repeat the formal parameters and their default values.
+
 ## Parameter initialization
 
 Dart can initialize parameters in a constructor in three ways.
@@ -347,8 +367,8 @@ Initialize the constructor parameters when you declare variables.
 <?code-excerpt "point_alt.dart (initialize-declaration)" plaster="none"?>
 ```dart
 class PointA {
-  [!double x = 1.0;!]
-  [!double y = 2.0;!]
+  double x = 1.0;
+  double y = 2.0;
 
   // The parameterless constructor is not even be needed to set to (1.0,2.0)
   PointA();
@@ -415,7 +435,7 @@ class PointC {
 
   // Generative constructor with initializing formal parameters
   // with default values
-  [!PointC({this.x = 1.0, this.y = 1.0});!]
+  PointC({this.x = 1.0, this.y = 1.0});
 
   @override
   String toString() {
@@ -424,7 +444,7 @@ class PointC {
 }
 
 // Constructor using named variables.
-[!final pointC = PointC(x: 2.0, y: 2.0);!]
+final pointC = PointC(x: 2.0, y: 2.0);
 ```
 
 All variables introduced from initializing formal parameters are both
@@ -440,8 +460,8 @@ The constructor parameters could be set as nullable and not be initialized.
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
 class PointD {
-  [!double? x;!] // null if not set in constructor
-  [!double? y;!] // null if not set in constructor
+  double? x; // null if not set in constructor
+  double? y; // null if not set in constructor
 
   // Generative constructor with initializing formal parameters
   PointD(this.x, this.y);
