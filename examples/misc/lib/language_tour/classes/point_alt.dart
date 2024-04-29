@@ -62,11 +62,6 @@ class PointB {
   // Initializing formal parameters can also be optional.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
   PointB.named({required this.x, required this.y});
-
-  // Private fields cannot be used as named initializing formals.
-  PointB.namedPrivate({required double x, required double y})
-      : _x = x,
-        _y = y;
 }
 // #enddocregion initialize-formal
 

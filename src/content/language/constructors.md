@@ -420,11 +420,24 @@ class PointB {
   // Initializing formal parameters can also be optional.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
   PointB.named({required this.x, required this.y});
+}
+```
 
-  // Private fields cannot be used as named initializing formals.
+Private fields can't be used as named initializing formals.
+
+{% comment %}
+Don't attach the following example to a code excerpt.
+It doesn't work on purpose and will cause errors in CI.
+{% endcomment %}
+```dart
+class PointB {
+// ...
+
   PointB.namedPrivate({required double x, required double y})
       : _x = x,
         _y = y;
+
+// ...
 }
 ```
 
