@@ -28,11 +28,28 @@ Constructors create instances of classes.
 
 ## Types of constructors
 
+### Constructor inheritance
+
+_Subclasses_, or child classes, don't inherit *constructors*
+from their _superclass_, or immediate parent class.
+If a class doesn't declare a constructor, it can only use the
+[default constructor](#default-constructors).
+
+A class can inherit the _parameters_ of a superclass.
+These are called [super parameters](#super-parameters)
+A subclass without constructor declarations can only use
+a [default constructor](#default-constructors).
+
+Constructors work in a somewhat similar way to
+how you call a chain of static methods.
+Each subclass can call its superclass's constructor to initialize an instance,
+like a subclass can call a superclass's static method.
+This process doesn't involve any "inheritance".
+
 ### Default constructors
 
-If you don't declare a constructor, a default constructor is provided.
-The default constructor has no arguments and invokes the
-no-argument constructor in the superclass.
+If you don't declare a constructor, Dart uses the default constructor.
+The default constructor has no arguments and no name.
 
 ### Generative constructors
 
@@ -140,20 +157,6 @@ Arguments to the superclass constructor can't access `this`.
 For example, arguments can call *static* methods
 but not *instance* methods.
 :::
-
-#### Constructor inheritance
-
-Subclasses don't inherit *constructors* from their superclass.
-Parameters of a superclass can be inherited.
-These are called [super parameters](#super-parameters)
-A subclass without constructor declarations can only use
-a [default constructor](#default-constructors).
-
-Constructors work in a somewhat similar way to
-how you call a chain of static methods.
-Each subclass can make a direct call its superclass's constructor to
-perform necessary initialization, like a subclass can make a direct to
-a superclass's static method. This process doesn't involve any "inheritance".
 
 #### Super parameters
 
