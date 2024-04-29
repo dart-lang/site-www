@@ -175,7 +175,7 @@ you must manually pass in all super constructor parameters.
 If the super-constructor invocation includes positional arguments,
 super-initializer parameters can't be positional.
 
-<?code-excerpt "super_initializer_parameters.dart (positional)" plaster="none"?>
+<?code-excerpt "super_initializer_positional_parameters.dart (positional)" plaster="none"?>
 ```dart
 class Vector2d {
   final double x;
@@ -211,7 +211,7 @@ between named super parameters (`super.y` in the next example)
 and named arguments to the super constructor invocation
 (`super.named(x: 0)`).
 
-<?code-excerpt "super_initializer_parameters.dart (named)" plaster="none"?>
+<?code-excerpt "super_initializer_named_parameters.dart (named)" plaster="none"?>
 ```dart
 class Vector2d {
   // ...
@@ -231,11 +231,9 @@ class Vector3d extends Vector2d {
 
 ### Redirecting constructors
 
-Sometimes a constructor's only serves to redirect to another
-constructor in the same class. A redirecting constructor's body is
-empty, with the constructor call
-(using `this` instead of the class name)
-appearing after a colon (:).
+A constructor might redirect to another constructor in the same class.
+A redirecting constructor has an empty body.
+The constructor uses `this` instead of the class name after a colon (:).
 
 <?code-excerpt "point_redirecting.dart"?>
 ```dart
@@ -268,8 +266,7 @@ class ImmutablePoint {
 ```
 
 Constant constructors don't always create constants.
-For details, see the section on
-[using constructors][].
+To learn more, consult the section on [using constructors][].
 
 ### Factory constructors
 
@@ -292,10 +289,10 @@ You can also handle late initialization of a final variable
 with [`late final`][late-final-ivar] (carefully!).
 :::
 
-In the following example includes two factory constructors.
+The following example includes two factory constructors.
 
 * `Logger` factory constructor returns objects from a cache.
-* The `Logger.fromJson` factory constructor initializes a final variable
+* `Logger.fromJson` factory constructor initializes a final variable
   from a JSON object.
 
 <?code-excerpt "logger.dart (constructors)"?>
@@ -325,10 +322,10 @@ class Logger {
 ```
 
 :::warning
-Factory constructors can't access to `this`.
+Factory constructors can't access `this`.
 :::
 
-Invoke a factory constructor just like you would any other constructor:
+Use a factory constructor as any other constructor:
 
 <?code-excerpt "logger.dart (logger)"?>
 ```dart
@@ -366,18 +363,18 @@ class PointA {
 ### Use initializing formal parameters
 
 To simplify the common pattern of assigning a constructor argument
-to an instance variable,
-Dart has *initializing formal parameters*.
+to an instance variable, Dart has *initializing formal parameters*.
 
 In the constructor declaration, include `this.<propertyName>`
 and omit the body. The `this` keyword refers to the current instance.
 
 When the name conflict exists, use `this`.
 Otherwise, Dart style omits the `this`.
-An exception exists for the generative constructor:
+An exception exists for the generative constructor where
 you must prefix the initializing formal parameter name with `this`.
 
-Certain constructors and parts of constructors can't access `this`:
+As noted earlier in this guide, certain constructors
+and certain parts of constructors can't access `this`. These include:
 
 * Factory constructors
 * The right-hand side of an initializer list
