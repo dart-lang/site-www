@@ -22,6 +22,8 @@ Constructors create instances of classes.
 * To instantiate any instance variables,
   [initialize formal parameters](#parameter-initialization).
 
+<?code-excerpt path-base="misc/lib/language_tour/classes"?>
+
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 ## Types of constructors
@@ -36,7 +38,7 @@ no-argument constructor in the superclass.
 
 To instantiate a class, use the generative constructor.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
+<?code-excerpt "point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
   double x = 0;
@@ -52,7 +54,7 @@ class Point {
 Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
-<?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
+<?code-excerpt "point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 ```dart
 const double xOrigin = 0;
 const double yOrigin = 0;
@@ -93,7 +95,7 @@ In the following example,
 the constructor for the `Employee` class calls the named constructor
 for its superclass, `Person`. Click **Run** to execute the code.
 
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (super)" plaster="none"?>
+<?code-excerpt "employee.dart (super)" plaster="none"?>
 ```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
 class Person {
   String? firstName;
@@ -125,7 +127,7 @@ As Dart evaluates the arguments to the superclass constructor *before*
 invoking the constructor, an argument can be an expression like a
 function call.
 
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
+<?code-excerpt "employee.dart (method-then-constructor)"?>
 ```dart
 class Employee extends Person {
   Employee() : super.fromJson(fetchDefaultData());
@@ -173,7 +175,7 @@ you must manually pass in all super constructor parameters.
 If the super-constructor invocation includes positional arguments,
 super-initializer parameters can't be positional.
 
-<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
+<?code-excerpt "super_initializer_parameters.dart (positional)" plaster="none"?>
 ```dart
 class Vector2d {
   final double x;
@@ -209,7 +211,7 @@ between named super parameters (`super.y` in the next example)
 and named arguments to the super constructor invocation
 (`super.named(x: 0)`).
 
-<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
+<?code-excerpt "super_initializer_parameters.dart (named)" plaster="none"?>
 ```dart
 class Vector2d {
   // ...
@@ -235,7 +237,7 @@ empty, with the constructor call
 (using `this` instead of the class name)
 appearing after a colon (:).
 
-<?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
+<?code-excerpt "point_redirecting.dart"?>
 ```dart
 class Point {
   double x, y;
@@ -254,7 +256,7 @@ If your class produces objects that never change, you can make these
 objects compile-time constants. To do this, define a `const` constructor
 and make sure that all instance variables are `final`.
 
-<?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
+<?code-excerpt "immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
   static const ImmutablePoint origin = ImmutablePoint(0, 0);
@@ -296,7 +298,7 @@ In the following example includes two factory constructors.
 * The `Logger.fromJson` factory constructor initializes a final variable
   from a JSON object.
 
-<?code-excerpt "misc/lib/language_tour/classes/logger.dart (constructors)"?>
+<?code-excerpt "logger.dart (constructors)"?>
 ```dart
 class Logger {
   final String name;
@@ -328,7 +330,7 @@ Factory constructors can't access to `this`.
 
 Invoke a factory constructor just like you would any other constructor:
 
-<?code-excerpt "misc/lib/language_tour/classes/logger.dart (logger)"?>
+<?code-excerpt "logger.dart (logger)"?>
 ```dart
 var logger = Logger('UI');
 logger.log('Button clicked');
@@ -345,7 +347,7 @@ Dart can initialize parameters in a constructor in three ways.
 
 Initialize the constructor parameters when you declare variables.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-declaration)" plaster="none"?>
+<?code-excerpt "point_alt.dart (initialize-declaration)" plaster="none"?>
 ```dart
 class PointA {
   [!double x = 1.0;!]
@@ -385,7 +387,7 @@ Initializing formal parameters also allow you to initialize
 non-nullable or `final` instance variables.
 Both of these types of variables require initialization or a default value.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-formal)" plaster="none"?>
+<?code-excerpt "point_alt.dart (initialize-formal)" plaster="none"?>
 ```dart
 class PointB {
   final double x;
@@ -408,7 +410,7 @@ class PointB {
 
 This also works with named variables.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-named)" plaster="none"?>
+<?code-excerpt "point_alt.dart (initialize-named)" plaster="none"?>
 ```dart
 class PointC {
   double x; // must be set in constructor
@@ -438,7 +440,7 @@ You can then pass the computed values to a normal constructor.
 
 The constructor parameters could be set as nullable and not be initialized.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initialize-null)" plaster="none"?>
+<?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
 class PointD {
   [!double? x;!] // null if not set in constructor
@@ -459,7 +461,7 @@ class PointD {
 Before the constructor body runs, you can initialize instance variables.
 Separate initializers with commas.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
+<?code-excerpt "point_alt.dart (initializer-list)"?>
 ```dart
 // Initializer list sets instance variables before
 // the constructor body runs.
@@ -477,7 +479,7 @@ The right-hand side of an initializer list can't access `this`.
 To validate inputs during development,
 use `assert` in the initializer list.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
+<?code-excerpt "point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 ```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
@@ -489,7 +491,7 @@ Initializer lists help set up `final` fields.
 The following example initializes three `final` fields in an initializer list.
 To execute the code, click **Run**.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
+<?code-excerpt "point_with_distance_field.dart"?>
 ```dart:run-dartpad:height-340px:ga_id-initializer_list
 import 'dart:math';
 
