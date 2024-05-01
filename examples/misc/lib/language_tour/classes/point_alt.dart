@@ -6,8 +6,9 @@
 ///
 // #docregion idiomatic-constructor
 class Point {
-  double x = 0;
-  double y = 0;
+  // Initializer list of variables and values
+  double x = 2.0;
+  double y = 2.0;
 
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
@@ -40,8 +41,8 @@ class PointA {
   double x = 1.0;
   double y = 2.0;
 
-  // The parameterless constructor is not even be needed to set to (1.0,2.0)
-  PointA();
+  // The implicit default constructor sets these variables to (1.0,2.0)
+  // PointA();
 
   @override
   String toString() {
@@ -61,7 +62,6 @@ class PointB {
 
   // Initializing formal parameters can also be optional.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
-  PointB.named({required this.x, required this.y});
 }
 // #enddocregion initialize-formal
 
@@ -72,16 +72,16 @@ class PointC {
 
   // Generative constructor with initializing formal parameters
   // with default values
-  PointC({this.x = 1.0, this.y = 1.0});
+  PointC.named({this.x = 1.0, this.y = 1.0});
 
   @override
   String toString() {
-    return 'PointC($x,$y)';
+    return 'PointC.named($x,$y)';
   }
 }
 
 // Constructor using named variables.
-final pointC = PointC(x: 2.0, y: 2.0);
+final pointC = PointC.named(x: 2.0, y: 2.0);
 // #enddocregion initialize-named
 
 // #docregion initialize-null

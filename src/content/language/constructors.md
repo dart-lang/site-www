@@ -10,17 +10,33 @@ nextpage:
   title: Methods
 ---
 
-Constructors create instances of classes.
+Constructors are special functions that create instances of classes.
 
-* To declare a constructor, create a function named the same as its class.
-  You can add an optional additional identifier as described in
-  [Named constructors](#named-constructors).
+Dart implements many types of constructors.
+Except for default constructors,
+these functions use the same name as their class.
 
-* To instantiate a class, use the
-  [generative constructor](#generative-constructors).
+* [Generative constructors][generative]: Creates new instances and
+      initializes instance variables.
+* [Default constructors][default]: Used to create a new instance when a
+     constructor hasn't been specified. It doesn't take arguments and
+     isn't named.
+* [Named constructors][named]: Clarifies the purpose of
+      a constructor or allows the creation of multiple constructors for
+      the same class.
+* [Constant constructors][constant]: Creates instances as compile-type
+      constants.
+* [Factory constructors][factory]: Either creates a new instance of a
+      subtype or returns an existing instance from cache.
+* [Redirecting constructor][redirecting]: Forwards calls to another
+      constructor in the same class.
 
-* To instantiate any instance variables,
-  [initialize formal parameters](#parameter-initialization).
+[default]: #default-constructors
+[generative]: #generative-constructors
+[named]: #named-constructors
+[constant]: #constant-constructors
+[factory]: #factory-constructors
+[redirecting]: #redirecting-constructors
 
 <?code-excerpt path-base="misc/lib/language_tour/classes"?>
 
@@ -28,43 +44,26 @@ Constructors create instances of classes.
 
 ## Types of constructors
 
-### Constructor inheritance
-
-_Subclasses_, or child classes, don't inherit *constructors*
-from their _superclass_, or immediate parent class.
-If a class doesn't declare a constructor, it can only use the
-[default constructor](#default-constructors).
-
-A class can inherit the _parameters_ of a superclass.
-These are called [super parameters](#super-parameters)
-A subclass without constructor declarations can only use
-a [default constructor](#default-constructors).
-
-Constructors work in a somewhat similar way to
-how you call a chain of static methods.
-Each subclass can call its superclass's constructor to initialize an instance,
-like a subclass can call a superclass's static method.
-This process doesn't involve any "inheritance".
-
-### Default constructors
-
-If you don't declare a constructor, Dart uses the default constructor.
-The default constructor has no arguments and no name.
-
 ### Generative constructors
 
-To instantiate a class, use the generative constructor.
+To instantiate a class, use a generative constructor.
 
 <?code-excerpt "point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
+  // Initializer list of variables and values
+  double x = 2.0;
+  double y = 2.0;
 
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
 }
 ```
+
+### Default constructors
+
+If you don't declare a constructor, Dart uses the default constructor.
+The default constructor is a generative constructor without arguments or name.
 
 ### Named constructors
 
@@ -201,14 +200,14 @@ To further illustrate, consider the following example.
 ```dart
   // If you invoke the super constructor (`super(0)`) with any
   // positional arguments, using a super parameter (`super.x`)
-  // returns an error.
+  // results in an error.
   Vector3d.xAxisError(super.x): z = 0, super(0); // BAD
 ```
 
 This named constructor tries to set the `x` value twice:
 once in the super constructor and once as a
 positional super parameter.
-As both address the `x` positional parameter, this returns an error.
+As both address the `x` positional parameter, this results in an error.
 
 When the super constructor has named arguments, you can split them
 between named super parameters (`super.y` in the next example)
@@ -251,6 +250,7 @@ class ImmutablePoint {
 ```
 
 Constant constructors don't always create constants.
+They might be invoked in a non-`const` context.
 To learn more, consult the section on [using constructors][].
 
 ### Redirecting constructors
@@ -274,7 +274,7 @@ class Point {
 
 ### Factory constructors
 
-When encountering one of two cases of implementing a constructor,
+When encountering one of following two cases of implementing a constructor,
 use the `factory` keyword:
 
 * The constructor doesn't always create a new instance of its class.
@@ -359,13 +359,29 @@ Redirecting factories have several advantages:
 * A redirecting factory constructor avoids the need for forwarders
   to repeat the formal parameters and their default values.
 
-## Parameter initialization
+## Constructor inheritance
 
-Dart can initialize parameters in a constructor in three ways.
+_Subclasses_, or child classes, don't inherit *constructors*
+from their _superclass_, or immediate parent class.
+If a class doesn't declare a constructor, it can only use the
+[default constructor](#default-constructors).
 
-### Initialize parameters when declaring variables
+A class can inherit the _parameters_ of a superclass.
+These are called [super parameters](#super-parameters)
 
-Initialize the constructor parameters when you declare variables.
+Constructors work in a somewhat similar way to
+how you call a chain of static methods.
+Each subclass can call its superclass's constructor to initialize an instance,
+like a subclass can call a superclass's static method.
+This process doesn't "inherit" constructor bodies or signatures.
+
+## Instance Variable Initialization
+
+Dart can initialize variables in three ways.
+
+### Initialize instance variables in the declaration
+
+Initialize the instance variables when you declare the variables.
 
 <?code-excerpt "point_alt.dart (initialize-declaration)" plaster="none"?>
 ```dart
@@ -373,8 +389,8 @@ class PointA {
   double x = 1.0;
   double y = 2.0;
 
-  // The parameterless constructor is not even be needed to set to (1.0,2.0)
-  PointA();
+  // The implicit default constructor sets these variables to (1.0,2.0)
+  // PointA();
 
   @override
   String toString() {
@@ -419,7 +435,6 @@ class PointB {
 
   // Initializing formal parameters can also be optional.
   PointB.optional([this.x = 0.0, this.y = 0.0]);
-  PointB.named({required this.x, required this.y});
 }
 ```
 
@@ -451,16 +466,16 @@ class PointC {
 
   // Generative constructor with initializing formal parameters
   // with default values
-  PointC({this.x = 1.0, this.y = 1.0});
+  PointC.named({this.x = 1.0, this.y = 1.0});
 
   @override
   String toString() {
-    return 'PointC($x,$y)';
+    return 'PointC.named($x,$y)';
   }
 }
 
 // Constructor using named variables.
-final pointC = PointC(x: 2.0, y: 2.0);
+final pointC = PointC.named(x: 2.0, y: 2.0);
 ```
 
 All variables introduced from initializing formal parameters are both
