@@ -167,13 +167,13 @@
     - title: How to use packages
       permalink: /guides/packages
     - title: Commonly used packages
-      permalink: /guides/libraries/useful-libraries
+      permalink: /resources/useful-packages
     - title: Creating packages
       permalink: /guides/libraries/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
-      permalink: /guides/libraries/writing-package-pages
+      permalink: /tools/pub/writing-package-pages
     - title: Package reference
       expanded: false
       children:
@@ -206,7 +206,7 @@
     - title: Number representation
       permalink: /guides/language/numbers
     - title: Google APIs
-      permalink: /guides/google-apis
+      permalink: /resources/google-apis
     - title: Multi-platform apps
       permalink: /multiplatform-apps
     - title: Command-line & server apps

@@ -192,6 +192,7 @@
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
+      { "source": "/guides/google-apis", "destination": "/resources/google-apis", "type": 301 },
       { "source": "/guides/language/analysis-options", "destination": "/tools/analysis", "type": 301 },
       { "source": "/guides/language/cheatsheet", "destination": "/language", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
@@ -209,7 +210,9 @@
       { "source": "/guides/libraries/create-library-packages", "destination": "/guides/libraries/create-packages", "type": 301 },
       { "source": "/guides/libraries/java-interop", "destination": "/interop/java-interop", "type": 301 },
       { "source": "/guides/libraries/objective-c-interop", "destination": "/interop/objective-c-interop", "type": 301 },
-      { "source": "/guides/libraries/c-interop", "destination": "/interop/c-interop", "type": 301 },      
+      { "source": "/guides/libraries/c-interop", "destination": "/interop/c-interop", "type": 301 },
+      { "source": "/guides/libraries/writing-package-pages", "destination": "/tools/pub/writing-package-pages", "type": 301 },
+      { "source": "/guides/libraries/useful-libraries", "destination": "/resources/useful-packages", "type": 301 },
       { "source": "/guides/platforms", "destination": "/overview#platform", "type": 301 },
       { "source": "/install", "destination": "/get-dart", "type": 301 },
       { "source": "/install/**", "destination": "/get-dart", "type": 301 },

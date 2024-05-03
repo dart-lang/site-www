@@ -716,7 +716,7 @@ we made the following changes to this site:
 [dart-tool]: /tools/dart-tool
 [recommended linter rules]: /tools/analysis#lints
 [core libraries]: /libraries
-[commonly used packages]: /guides/libraries/useful-libraries
+[commonly used packages]: /resources/useful-packages
 [dart.dev/jobs]: /jobs
 [no-promo]: /tools/non-promotion-reasons
 [`dart create`]: /tools/dart-create
@@ -794,9 +794,9 @@ we made the following changes to this site:
 [Numbers in Dart]: /guides/language/numbers
 [streams tutorial]: /tutorials/language/streams
 [typedef section]: /language/typedefs
-[Using Google APIs]: /guides/google-apis
+[Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud
-[Writing package pages]: /guides/libraries/writing-package-pages
+[Writing package pages]: /tools/pub/writing-package-pages
 
 
 ### Articles added to the Dart blog {:.no_toc}
