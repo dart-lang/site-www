@@ -71,7 +71,13 @@ _This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
 
 ## Details
 
+{% assign fullDocs = lintDocs["LintCode"][lint.name]["documentation"] -%}
+
+{% if fullDocs -%}
+{{fullDocs}}
+{% else -%}
 {{lint.details}}
+{% endif -%}
 
 ## Usage
 
