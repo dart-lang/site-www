@@ -456,9 +456,9 @@ check out the [dart:io documentation][].
 Also see these articles, codelabs, and tutorials:
 
 - [Asynchronous programming: futures, async, await](/codelabs/async-await)
-- [Futures and error handling](/guides/libraries/futures-error-handling)
+- [Futures and error handling](/libraries/async/futures-error-handling)
 - [Asynchronous programming: streams](/tutorials/language/streams)
-- [Creating streams in Dart](/articles/libraries/creating-streams)
+- [Creating streams in Dart](/libraries/async/creating-streams)
 - [Dart asynchronous programming: Isolates and event loops](/language/concurrency)
 
 
