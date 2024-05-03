@@ -365,9 +365,9 @@
       expanded: false
       children:
         - title: JavaScript to Dart
-          permalink: /guides/language/coming-from/js-to-dart
+          permalink: /resources/coming-from/js-to-dart
         - title: Swift to Dart
-          permalink: /guides/language/coming-from/swift-to-dart
+          permalink: /resources/coming-from/swift-to-dart
     - divider
     - title: FAQ
       permalink: /resources/faq

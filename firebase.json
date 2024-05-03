@@ -195,6 +195,8 @@
       { "source": "/guides/google-apis", "destination": "/resources/google-apis", "type": 301 },
       { "source": "/guides/language/analysis-options", "destination": "/tools/analysis", "type": 301 },
       { "source": "/guides/language/cheatsheet", "destination": "/language", "type": 301 },
+      { "source": "/guides/language/coming-from/js-to-dart", "destination": "/resources/coming-from/js-to-dart", "type": 301 },
+      { "source": "/guides/language/coming-from/swift-to-dart", "destination": "/resources/coming-from/swift-to-dart", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
       { "source": "/guides/language/concurrency", "destination": "/language/concurrency", "type": 301 },
       { "source": "/guides/language/effective-dart", "destination": "/effective-dart", "type": 301 },
