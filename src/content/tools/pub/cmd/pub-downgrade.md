@@ -105,11 +105,11 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
 Reports what dependencies would change but doesn't change any.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

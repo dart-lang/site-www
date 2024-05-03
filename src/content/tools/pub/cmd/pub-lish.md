@@ -37,4 +37,4 @@ To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

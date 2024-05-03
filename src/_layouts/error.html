@@ -2,8 +2,8 @@
 <html lang="en">
   {% include 'head.html' %}
   <body class="{{layout}} hide_toc">
-    {% include 'cookie-notice.html' %}
-    {% include 'gtags.html' %}
+    {% render 'cookie-notice.html' %}
+    {% render 'gtags.html' %}
     {% include 'page-header.html' %}
     {% include 'navigation-side.html' %}
     <main id="page-content">
@@ -11,6 +11,6 @@
         {{content}}
       </div>
     </main>
-    {% include 'page-footer.html' %}
+    {% render 'page-footer.html' %}
   </body>
 </html>

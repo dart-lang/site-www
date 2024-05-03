@@ -26,7 +26,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `-n, --dry-run`
 
@@ -40,4 +40,4 @@ in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
