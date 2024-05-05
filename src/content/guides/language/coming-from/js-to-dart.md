@@ -793,7 +793,7 @@ var list2 = [1, 2, 3].map((e) {
 
 :::note
 The `map` function in the previous examples returns
-an `Iterable<T`>, rather than a `List<T>`.
+an `Iterable<T>`, rather than a `List<T>`.
 The `toList` function converts the returned
 `Iterable` back to a `List`.
 
