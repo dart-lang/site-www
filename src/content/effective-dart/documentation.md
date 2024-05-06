@@ -72,7 +72,7 @@ and uses the special `///` syntax that `dart doc` looks for.
 
 ### DO use `///` doc comments to document members and types
 
-{% include 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
+{% render 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
 
 Using a doc comment instead of a regular comment enables 
 [`dart doc`][] to find it
@@ -101,7 +101,7 @@ up.
 
 ### PREFER writing doc comments for public APIs
 
-{% include 'linter-rule-mention.md', rules:'package_api_docs, public_member_api_docs' %}
+{% render 'linter-rule-mention.md', rules:'package_api_docs, public_member_api_docs' %}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
@@ -342,7 +342,7 @@ makes an API easier to learn.
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers
 
-{% include 'linter-rule-mention.md', rules:'comment_references' %}
+{% render 'linter-rule-mention.md', rules:'comment_references' %}
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.

@@ -124,6 +124,6 @@ pub-tokens.json is deleted.
 Removed 1 secret tokens.
 ```
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
 
 [config-dir]: {{site.repo.dart.org}}/cli_util/blob/71ba36e2554f7b7717f3f12b5ddd33751a4e3ddd/lib/cli_util.dart#L88-L118

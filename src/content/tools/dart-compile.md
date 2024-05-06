@@ -9,7 +9,7 @@ The output—which you specify using a subcommand—can
 either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of using the `exe` subcommand
 to produce a self-contained executable file (`myapp.exe`):
