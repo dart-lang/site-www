@@ -27,7 +27,7 @@ This article discusses zone-related APIs in the [dart:async][] library,
 with a focus on the top-level [`runZoned()`][]
 and [`runZonedGuarded()`][] functions.
 Review the techniques covered in
-[Futures and Error Handling](/guides/libraries/futures-error-handling)
+[Futures and Error Handling](/libraries/async/futures-error-handling)
 before reading this article.
 
 [dart:async]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html)

@@ -391,9 +391,9 @@ error event, and when the stream is closed.
 Read the following documentation for more details on using streams
 and asynchronous programming in Dart.
 
-* [Creating Streams in Dart](/articles/libraries/creating-streams),
+* [Creating Streams in Dart](/libraries/async/creating-streams),
   an article about creating your own streams
-* [Futures and Error Handling](/guides/libraries/futures-error-handling),
+* [Futures and Error Handling](/libraries/async/futures-error-handling),
   an article that explains how to handle errors using the Future API
 * [Asynchrony support](/language/async),
   a section in the [language tour](/language)
