@@ -41,7 +41,7 @@ see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Detailed documentation exists for each of the following pub subcommands:
 
-{% include 'pub-subcommands.md' %}
+{% render 'pub-subcommands.md' %}
 
 ## Overview of subcommands
 

@@ -105,7 +105,7 @@ that can help you follow a guideline
 then the guideline links to those rules.
 The links use the following format:
 
-{% include 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
+{% render 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
 
 To learn how to use the linter,
 see [Enabling linter rules][]

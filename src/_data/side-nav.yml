@@ -139,11 +139,11 @@
       permalink: /libraries/dart-html
     - divider
     - title: Using streams
-      permalink: /tutorials/language/streams
+      permalink: /libraries/async/using-streams
     - title: Creating streams
-      permalink: /articles/libraries/creating-streams
+      permalink: /libraries/async/creating-streams
     - title: Futures and error handling
-      permalink: /guides/libraries/futures-error-handling
+      permalink: /libraries/async/futures-error-handling
 
 - title: Effective Dart
   expanded: false
