@@ -36,7 +36,7 @@ This article shows the code for each approach
 and gives tips to help you implement your stream correctly.
 
 For help on using streams, see
-[Asynchronous Programming: Streams](/tutorials/language/streams).
+[Asynchronous Programming: Streams](/libraries/async/using-streams).
 
 
 ## Transforming an existing stream
