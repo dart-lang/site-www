@@ -82,7 +82,7 @@ The following files affect the contents of your package's web page.
   your package's web page.
   The file's contents should be marked up using [Markdown][].
   To learn how to write a great README, see
-  [Writing package pages](/guides/libraries/writing-package-pages).
+  [Writing package pages](/tools/pub/writing-package-pages).
 
 **`CHANGELOG.md`**
   : If found, this file populates its own tab on your package's web page.
