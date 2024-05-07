@@ -47,8 +47,8 @@ To create the same web app from an IDE that has Dart integration,
 using the template named **Bare-bones Web App**.
 
 The web app template imports [`package:web`][], Dart's powerful and concise web
-interop solution built for the modern web. You can learn more about it
-[here](/interop/js-interop/package-web).
+interop solution built for the modern web. To learn more about it, check out the
+[web interop overview](/interop/js-interop/package-web).
 
 [`dart create`]: /tools/dart-create
 [`package:web`]: {{site.pub-pkg}}/web
