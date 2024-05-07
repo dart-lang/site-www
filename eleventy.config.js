@@ -19,6 +19,7 @@ import yaml from 'js-yaml';
 
 import * as path from 'node:path';
 import * as sass from 'sass';
+import {eleventyImageTransformPlugin} from '@11ty/eleventy-img';
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -92,7 +93,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
   eleventyConfig.addPassthroughCopy({'site-shared/packages/inject_dartpad/lib/inject_dartpad.js': 'assets/js/inject_dartpad.js'});
-  eleventyConfig.addPassthroughCopy('src/content/assets/img', { expand: true });
+  eleventyConfig.addPassthroughCopy('src/content/assets/img/404-bg-pattern.jpg');
+  eleventyConfig.addPassthroughCopy('src/content/assets/img/logo');
+  eleventyConfig.addPassthroughCopy('src/content/assets/img/social');
   eleventyConfig.addPassthroughCopy('src/content/f', {
     expand: true,
     filter: /^(?!_).+/,
@@ -117,6 +120,37 @@ export default function (eleventyConfig) {
       }
 
       return content;
+    });
+
+    // Optimize all images, generate an avif, webp, and png version,
+    // and indicate they should be lazily loaded.
+    // Save in `_site/assets/img` and update links to there.
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+      extensions: 'html',
+      formats: ['avif', 'webp', 'png', 'svg'],
+      svgShortCircuit: true,
+      widths: ['auto'],
+      defaultAttributes: {
+        loading: 'lazy',
+        decoding: 'async',
+      },
+      urlPath: '/assets/img/',
+      outputDir: '_site/assets/img/',
+    });
+  } else {
+    // To be more consistent with the production build,
+    // don't optimize images but still indicate they should be lazily loaded.
+    // Then save in `_site/assets/img` and update links to there.
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+      extensions: 'html',
+      formats: ['auto'],
+      widths: ['auto'],
+      defaultAttributes: {
+        loading: 'lazy',
+        decoding: 'async',
+      },
+      urlPath: '/assets/img/',
+      outputDir: '_site/assets/img/',
     });
   }
 

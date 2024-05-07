@@ -5,9 +5,16 @@
     "trailingSlash": false,
     "headers": [
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
+        "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
         "headers": [
           { "key": "Cache-Control", "value": "max-age=28800" },
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
+        ]
+      },
+      {
+        "source": "/assets/img/*.@(jpg|jpeg|png|webp|avif)",
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=604800" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       },
