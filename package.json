@@ -10,8 +10,8 @@
   },
   "scripts": {
     "serve": "PRODUCTION=false eleventy --serve",
-    "build-site-for-staging": "PRODUCTION=false eleventy",
-    "build-site-for-production": "PRODUCTION=true eleventy"
+    "build-site-for-staging": "PRODUCTION=false OPTIMIZE=true eleventy",
+    "build-site-for-production": "PRODUCTION=true OPTIMIZE=true eleventy"
   },
   "engines": {
     "node": ">=20.10.0",
