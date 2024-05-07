@@ -49,6 +49,8 @@ with the same syntax as `dart pub add`.
 To learn more about source descriptors and their syntax, check out
 the [source descriptor][] documentation for `dart pub add`.
 
+[source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
+
 ## Options
 
 For options that apply to all pub commands, check out
