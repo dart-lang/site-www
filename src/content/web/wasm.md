@@ -5,7 +5,7 @@ description: Learn how to compile your Dart web app to WebAssembly.
 
 The Dart team is excited to add
 [WebAssembly](https://webassembly.org/) as a compilation target when building
-Dart and [Flutter](https://flutter.dev/wasm) applications for the web.
+Dart and [Flutter]({{site.flutter}}/wasm) applications for the web.
 
 Development of WebAssembly support remains ongoing,
 which will potentially result in frequent changes. 
@@ -28,7 +28,7 @@ restrictions:
 1. The compiled Wasm output currently targets JavaScript environments
    (such as browsers), and thus currently doesn't support execution in standard
    Wasm run-times like wasmtime and wasmer. For details, see
-   [issue #53884](https://github.com/dart-lang/sdk/issues/53884)
+   [issue #53884]({{site.repo.dart.sdk}}/issues/53884)
 
 1. Only Dart's
    [next-gen JS interop mechanism](/interop/js-interop/)
