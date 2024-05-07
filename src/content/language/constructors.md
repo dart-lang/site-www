@@ -94,143 +94,6 @@ A subclass doesn't inherit a superclass's named constructor.
 To create a subclass with a named constructor defined in the superclass,
 implement that constructor in the subclass.
 
-### Non-default superclass constructors
-
-Dart executes constructors in the following order:
-
-1. [initializer list](#use-an-initializer-list)
-1. superclass's unnamed, no-arg constructor
-1. main class's no-arg constructor
-
-If the superclass lacks an unnamed, no-argument constructor,
-call one of the constructors in the superclass.
-Before the constructor body (if any),
-specify the superclass constructor after a colon (`:`).
-
-In the following example,
-the `Employee` class constructor calls the named constructor
-for its superclass, `Person`. To execute the following code, click **Run**.
-
-<?code-excerpt "employee.dart (super)" plaster="none"?>
-```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
-class Person {
-  String? firstName;
-
-  Person.fromJson(Map data) {
-    print('in Person');
-  }
-}
-
-class Employee extends Person {
-  // Person does not have a default constructor;
-  // you must call super.fromJson().
-  Employee.fromJson(super.data) : super.fromJson() {
-    print('in Employee');
-  }
-}
-
-void main() {
-  var employee = Employee.fromJson({});
-  print(employee);
-  // Prints:
-  // in Person
-  // in Employee
-  // Instance of 'Employee'
-}
-```
-
-As Dart evaluates the arguments to the superclass constructor *before*
-invoking the constructor, an argument can be an expression like a
-function call.
-
-<?code-excerpt "employee.dart (method-then-constructor)"?>
-```dart
-class Employee extends Person {
-  Employee() : super.fromJson(fetchDefaultData());
-  // ···
-}
-```
-
-:::warning
-Arguments to the superclass constructor can't access `this`.
-For example, arguments can call *static* methods
-but not *instance* methods.
-:::
-
-#### Super parameters
-
-To avoid passing each parameter into the super invocation of a constructor,
-use super-initializer parameters to forward parameters
-to the specified or default superclass constructor.
-You can't use this feature with
-[redirecting constructors](#redirecting-constructors).
-Super-initializer parameters have syntax and semantics like
-[initializing formal parameters](#use-initializing-formal-parameters).
-
-:::version-note
-Using super-initializer parameters
-requires a [language version][] of at least 2.17.
-If you're using an earlier language version,
-you must manually pass in all super constructor parameters.
-:::
-
-If the super-constructor invocation includes positional arguments,
-super-initializer parameters can't be positional.
-
-<?code-excerpt "super_initializer_positional_parameters.dart (positional)" plaster="none"?>
-```dart
-class Vector2d {
-  final double x;
-  final double y;
-
-  Vector2d(this.x, this.y);
-}
-
-class Vector3d extends Vector2d {
-  final double z;
-
-  // Forward the x and y parameters to the default super constructor like:
-  // Vector3d(final double x, final double y, this.z) : super(x, y);
-  Vector3d(super.x, super.y, this.z);
-}
-```
-
-To further illustrate, consider the following example.
-
-```dart
-  // If you invoke the super constructor (`super(0)`) with any
-  // positional arguments, using a super parameter (`super.x`)
-  // results in an error.
-  Vector3d.xAxisError(super.x): z = 0, super(0); // BAD
-```
-
-This named constructor tries to set the `x` value twice:
-once in the super constructor and once as a
-positional super parameter.
-As both address the `x` positional parameter, this results in an error.
-
-When the super constructor has named arguments, you can split them
-between named super parameters (`super.y` in the next example)
-and named arguments to the super constructor invocation
-(`super.named(x: 0)`).
-
-<?code-excerpt "super_initializer_named_parameters.dart (named)" plaster="none"?>
-```dart
-class Vector2d {
-  // ...
-  Vector2d.named({required this.x, required this.y});
-}
-
-class Vector3d extends Vector2d {
-  final double z;
-
-  // Forward the y parameter to the named super constructor like:
-  // Vector3d.yzPlane({required double y, required this.z})
-  //       : super.named(x: 0, y: y);
-  Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
-}
-```
-
 ### Constant constructors
 
 If your class produces unchanging objects, make these
@@ -359,22 +222,6 @@ Redirecting factories have several advantages:
 * A redirecting factory constructor avoids the need for forwarders
   to repeat the formal parameters and their default values.
 
-## Constructor inheritance
-
-_Subclasses_, or child classes, don't inherit *constructors*
-from their _superclass_, or immediate parent class.
-If a class doesn't declare a constructor, it can only use the
-[default constructor](#default-constructors).
-
-A class can inherit the _parameters_ of a superclass.
-These are called [super parameters](#super-parameters)
-
-Constructors work in a somewhat similar way to
-how you call a chain of static methods.
-Each subclass can call its superclass's constructor to initialize an instance,
-like a subclass can call a superclass's static method.
-This process doesn't "inherit" constructor bodies or signatures.
-
 ## Instance Variable Initialization
 
 Dart can initialize variables in three ways.
@@ -444,6 +291,7 @@ Private fields can't be used as named initializing formals.
 Don't attach the following example to a code excerpt.
 It doesn't work on purpose and will cause errors in CI.
 {% endcomment %}
+
 ```dart
 class PointB {
 // ...
@@ -557,6 +405,159 @@ class Point {
 void main() {
   var p = Point(2, 3);
   print(p.distanceFromOrigin);
+}
+```
+
+## Constructor inheritance
+
+_Subclasses_, or child classes, don't inherit *constructors*
+from their _superclass_, or immediate parent class.
+If a class doesn't declare a constructor, it can only use the
+[default constructor](#default-constructors).
+
+A class can inherit the _parameters_ of a superclass.
+These are called [super parameters](#super-parameters)
+
+Constructors work in a somewhat similar way to
+how you call a chain of static methods.
+Each subclass can call its superclass's constructor to initialize an instance,
+like a subclass can call a superclass's static method.
+This process doesn't "inherit" constructor bodies or signatures.
+
+### Non-default superclass constructors
+
+Dart executes constructors in the following order:
+
+1. [initializer list](#use-an-initializer-list)
+1. superclass's unnamed, no-arg constructor
+1. main class's no-arg constructor
+
+If the superclass lacks an unnamed, no-argument constructor,
+call one of the constructors in the superclass.
+Before the constructor body (if any),
+specify the superclass constructor after a colon (`:`).
+
+In the following example,
+the `Employee` class constructor calls the named constructor
+for its superclass, `Person`. To execute the following code, click **Run**.
+
+<?code-excerpt "employee.dart (super)" plaster="none"?>
+```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
+class Person {
+  String? firstName;
+
+  Person.fromJson(Map data) {
+    print('in Person');
+  }
+}
+
+class Employee extends Person {
+  // Person does not have a default constructor;
+  // you must call super.fromJson().
+  Employee.fromJson(super.data) : super.fromJson() {
+    print('in Employee');
+  }
+}
+
+void main() {
+  var employee = Employee.fromJson({});
+  print(employee);
+  // Prints:
+  // in Person
+  // in Employee
+  // Instance of 'Employee'
+}
+```
+
+As Dart evaluates the arguments to the superclass constructor *before*
+invoking the constructor, an argument can be an expression like a
+function call.
+
+<?code-excerpt "employee.dart (method-then-constructor)"?>
+```dart
+class Employee extends Person {
+  Employee() : super.fromJson(fetchDefaultData());
+  // ···
+}
+```
+
+:::warning
+Arguments to the superclass constructor can't access `this`.
+For example, arguments can call *static* methods
+but not *instance* methods.
+:::
+
+### Super parameters
+
+To avoid passing each parameter into the super invocation of a constructor,
+use super-initializer parameters to forward parameters
+to the specified or default superclass constructor.
+You can't use this feature with
+[redirecting constructors](#redirecting-constructors).
+Super-initializer parameters have syntax and semantics like
+[initializing formal parameters](#use-initializing-formal-parameters).
+
+:::version-note
+Using super-initializer parameters
+requires a [language version][] of at least 2.17.
+If you're using an earlier language version,
+you must manually pass in all super constructor parameters.
+:::
+
+If the super-constructor invocation includes positional arguments,
+super-initializer parameters can't be positional.
+
+<?code-excerpt "super_initializer_positional_parameters.dart (positional)" plaster="none"?>
+```dart
+class Vector2d {
+  final double x;
+  final double y;
+
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  // Forward the x and y parameters to the default super constructor like:
+  // Vector3d(final double x, final double y, this.z) : super(x, y);
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+To further illustrate, consider the following example.
+
+```dart
+  // If you invoke the super constructor (`super(0)`) with any
+  // positional arguments, using a super parameter (`super.x`)
+  // results in an error.
+  Vector3d.xAxisError(super.x): z = 0, super(0); // BAD
+```
+
+This named constructor tries to set the `x` value twice:
+once in the super constructor and once as a
+positional super parameter.
+As both address the `x` positional parameter, this results in an error.
+
+When the super constructor has named arguments, you can split them
+between named super parameters (`super.y` in the next example)
+and named arguments to the super constructor invocation
+(`super.named(x: 0)`).
+
+<?code-excerpt "super_initializer_named_parameters.dart (named)" plaster="none"?>
+```dart
+class Vector2d {
+  // ...
+  Vector2d.named({required this.x, required this.y});
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  // Forward the y parameter to the named super constructor like:
+  // Vector3d.yzPlane({required double y, required this.z})
+  //       : super.named(x: 0, y: y);
+  Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
 }
 ```
 
