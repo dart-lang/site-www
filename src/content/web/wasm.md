@@ -5,17 +5,17 @@ description: Learn how to compile your Dart web app to WebAssembly.
 
 The Dart team is excited to add
 [WebAssembly](https://webassembly.org/) as a compilation target when building
-Dart and [Flutter]({{site.flutter}}/wasm) applications for the web.
+Dart and [Flutter][] applications for the web.
 
 Development of WebAssembly support remains ongoing,
 which will potentially result in frequent changes. 
 Revisit this page for the latest updates.
 
 :::note
-**Support for Wasm is now in beta!**
+**Support for Wasm is now in stable!**
 
 WebAssembly support for Dart web is available on the Dart 
-*beta* and *main* [channels](/get-dart#release-channels).
+*stable* [channel](/get-dart#release-channels).
 :::
 
 ## WebAssembly support
@@ -37,11 +37,11 @@ restrictions:
 ## Compiling your web app to Wasm {:#compiling-to-wasm}
 
 We've landed support in the `dart` CLI for invoking the
-`dart2wasm` compiler in the Dart and Flutter `main` channels:
+Wasm compiler in Dart and [Flutter][]:
 
 ```console
 $ dart help compile wasm
-Compile Dart to a WebAssembly/WasmGC module (EXPERIMENTAL).
+Compile Dart to a WebAssembly/WasmGC module.
 
 Usage: dart compile wasm [arguments] <dart entry point>
 -h, --help                  Print this usage information.
@@ -54,7 +54,10 @@ Usage: dart compile wasm [arguments] <dart entry point>
                             For example: dart compile wasm -Da=1,b=2 main.dart
 ```
 
-To try Wasm today from the `main` channel:
+Wasm compilation is available in stable, but still in preview.
+While we continue optimizing tooling to improve developer experience,
+you can try compiling Dart to Wasm today
+by following the temporary steps outlined here:
 
 1. Start with a web app: `dart create -t web mywebapp`
 
@@ -64,10 +67,22 @@ To try Wasm today from the `main` channel:
 
 1. Compile with Wasm: `mywebapp$ dart compile wasm web/main.dart`
 
+1. Create a new directory for the built web app: `mkdir site`
+
+1. Copy over Dart code: `cp web/main.* site/`
+
+1. Copy over the web files: `cp web/index.html web/styles.css site/`
+
+1. Create a JS bootstrap file to load the Wasm code:
+   
+   Add a new file `site/main.dart.js` and fill it with the contents of
+   this [`main.dart.js` sample](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
+
 1. Serve the output: `dart pub global run ` [`dhttpd`]
 
 You can also check out this small example [here](https://github.com/mit-mit/sandbox).
 
+[Flutter]: {{site.flutter}}/wasm
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop 
 [migrated]: /interop/js-interop/package-web/
