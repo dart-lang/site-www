@@ -43,9 +43,15 @@ $ dart create -t web quickstart
 
 <i class="material-symbols">web</i>
 To create the same web app from an IDE that has Dart integration,
-create a project using the template named **Bare-bones Web App**.
+[create a project]({{site.flutter}}/tools/vs-code#creating-a-new-project)
+using the template named **Bare-bones Web App**.
+
+The web app template imports [`package:web`][], Dart's powerful and concise web
+interop solution built for the modern web. To learn more about it, check out the
+[web interop overview](/interop/js-interop/package-web).
 
 [`dart create`]: /tools/dart-create
+[`package:web`]: {{site.pub-pkg}}/web
 
 ## 4. Run the app {:#run}
 
@@ -178,7 +184,7 @@ Check out these resources:
 * Web development
   * [JavaScript interoperability](/interop/js-interop)
   * [Web libraries and packages](/web/libraries)
-  * [`dart:html` overview](/libraries/dart-html)
+  * [`package:web` overview](/interop/js-interop/package-web)
   * [Introduction to the DOM][]
 * Tutorials and codelabs for Dart
   * [Tutorials](/tutorials)
