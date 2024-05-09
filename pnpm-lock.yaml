@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^1.77.0
     version: 1.77.0
   shiki:
-    specifier: ^1.4.0
-    version: 1.4.0
+    specifier: ^1.5.1
+    version: 1.5.1
 
 packages:
 
@@ -507,8 +507,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: true
 
-  /@shikijs/core@1.4.0:
-    resolution: {integrity: sha512-CxpKLntAi64h3j+TwWqVIQObPTED0FyXLHTTh3MKXtqiQNn2JGcMQQ362LftDbc9kYbDtrksNMNoVmVXzKFYUQ==}
+  /@shikijs/core@1.5.1:
+    resolution: {integrity: sha512-xjV63pRUBvxA1LsxOUhRKLPh0uUjwBLzAKLdEuYSLIylo71sYuwDcttqNP01Ib1TZlLfO840CXHPlgUUsYFjzg==}
     dev: true
 
   /@sindresorhus/slugify@2.2.1:
@@ -4731,10 +4731,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki@1.4.0:
-    resolution: {integrity: sha512-5WIn0OL8PWm7JhnTwRWXniy6eEDY234mRrERVlFa646V2ErQqwIFd2UML7e0Pq9eqSKLoMa3Ke+xbsF+DAuy+Q==}
+  /shiki@1.5.1:
+    resolution: {integrity: sha512-vx4Ds3M3B9ZEmLeSXqBAB85osBWV8ErZfP69kuFQZozPgHc33m7spLTCUkcjwEjFm3gk3F9IdXMv8kX+v9xDHA==}
     dependencies:
-      '@shikijs/core': 1.4.0
+      '@shikijs/core': 1.5.1
     dev: true
 
   /side-channel@1.0.6:
