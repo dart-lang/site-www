@@ -369,7 +369,7 @@ can pass a static method as a parameter to a constant constructor.
 [`Type`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Type-class.html
 [type test operator]: /language/operators#type-test-operators
 [Getters and setters]: /language/methods#getters-and-setters
-[initializer list]: /language/constructors#initializer-list
+[initializer list]: /language/constructors#use-an-initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [nullable type]: /null-safety/understanding-null-safety#using-nullable-types

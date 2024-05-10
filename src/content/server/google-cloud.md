@@ -13,7 +13,7 @@ For information about creating HTTP servers with Dart, see the
 
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
-see the [Google APIs page](/guides/google-apis).
+see the [Google APIs page](/resources/google-apis).
 
 ## Recommended solutions
 

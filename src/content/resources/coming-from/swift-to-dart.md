@@ -2689,7 +2689,7 @@ You can also create a stream using the
 `StreamController` API. For more information,
 see [Using a StreamController][].
 
-[Using a StreamController]: /articles/libraries/creating-streams#using-a-streamcontroller
+[Using a StreamController]: /libraries/async/creating-streams#using-a-streamcontroller
 
 ## Doc comments
 

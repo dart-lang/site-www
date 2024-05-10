@@ -27,7 +27,7 @@ console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 :::note
-{% include 'dartpad-embedded-troubleshooting.md' %}
+{% render 'dartpad-embedded-troubleshooting.md' %}
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>

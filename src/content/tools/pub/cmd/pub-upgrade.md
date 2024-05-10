@@ -109,7 +109,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -160,4 +160,4 @@ resolved versions, and returns a list of the changed constraints.
 Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

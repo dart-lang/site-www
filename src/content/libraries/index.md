@@ -19,7 +19,7 @@ working on collections of objects (`dart:collection`),
 making calculations (`dart:math`), 
 and encoding/decoding data (`dart:convert`). 
 Additional APIs are available in
-[commonly used packages](/guides/libraries/useful-libraries).
+[commonly used packages](/resources/useful-packages).
 
 ## Library tour
 

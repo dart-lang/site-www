@@ -171,8 +171,8 @@ publish thousands of packages, with support for features like these:
 
 To see a series of working examples featuring the Dart core libraries,
 read the [core library documentation](/libraries).
-To find additional APIs, see the
-[commonly used packages page](/guides/libraries/useful-libraries).
+To find additional APIs, check out the
+[commonly used packages page](/resources/useful-packages).
 
 
 ## Dart: The platforms {:#platform}

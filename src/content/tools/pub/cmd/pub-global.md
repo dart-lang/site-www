@@ -274,7 +274,7 @@ with the same name. If you don't specify this flag,
 the preexisting executable will not be replaced.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

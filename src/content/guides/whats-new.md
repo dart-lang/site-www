@@ -367,7 +367,7 @@ we made the following changes to this site:
 [community resources section]: /community#additional-community-resources
 [migration guide]: /null-safety/migration-guide
 [unsound null safety]: /null-safety/unsound-null-safety
-[Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
+[Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
 [Zones]: /articles/archive/zones
@@ -381,7 +381,7 @@ we made the following changes to this site:
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency
 [`pub global` page]: /tools/pub/cmd/pub-global
-[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 [`dart run` page]: /tools/dart-run#debugging
 [operator precedence and associativity]: /language/operators
 [Building URIs]: /libraries/dart-core#building-uris
@@ -525,7 +525,7 @@ we made the following changes to this site:
   * Updated the [security][] page to match our current security practices.
   * Added a key binding (`/`) to automatically focus the search bar.
 
-[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 
 [Named parameters]: /language/functions#named-parameters
 [Enumerated types]: /language/enums
@@ -560,7 +560,7 @@ we made the following changes to this site:
 [Low-level HTML tutorials]: /web/get-started
 
 [native types]: /interop/c-interop#interfacing-with-native-types
-[initializing formal parameters]: /language/constructors#initializing-formal-parameters
+[initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await
 [why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
@@ -716,7 +716,7 @@ we made the following changes to this site:
 [dart-tool]: /tools/dart-tool
 [recommended linter rules]: /tools/analysis#lints
 [core libraries]: /libraries
-[commonly used packages]: /guides/libraries/useful-libraries
+[commonly used packages]: /resources/useful-packages
 [dart.dev/jobs]: /jobs
 [no-promo]: /tools/non-promotion-reasons
 [`dart create`]: /tools/dart-create
@@ -794,9 +794,9 @@ we made the following changes to this site:
 [Numbers in Dart]: /guides/language/numbers
 [streams tutorial]: /tutorials/language/streams
 [typedef section]: /language/typedefs
-[Using Google APIs]: /guides/google-apis
+[Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud
-[Writing package pages]: /guides/libraries/writing-package-pages
+[Writing package pages]: /tools/pub/writing-package-pages
 
 
 ### Articles added to the Dart blog {:.no_toc}
