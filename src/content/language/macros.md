@@ -24,8 +24,8 @@ Why we're adding macros to Dart, motivating use cases,
 benefits over existing code gen solutions,
 and a cursory overview of how writing macros works.
 
-[spec]: https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md
-[motivation]: https://github.com/dart-lang/language/blob/main/working/macros/motivation.md
+[spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
+[motivation]: {{site.repo.dart.lang}}/language/blob/main/working/macros/motivation.md
 
 ## The `JsonCodable` macro
 
@@ -40,7 +40,7 @@ It generates two members, a `toJson` serialization method,
 and a `fromJson` deserialization constructor.
 
 [experiment flag]: /tools/experiment-flags
-[`JsonCodable`]: https://github.com/dart-lang/sdk/tree/main/pkg/json
+[`JsonCodable`]: {{site.repo.dart.sdk}}/tree/main/pkg/json
 
 ### Set up the experiment
 
@@ -137,7 +137,7 @@ You can search "`DiagnosticMessage`" in the [the definition of `JsonCodable`][js
 for other errors the macro will throw. For example, extending a class that isn't
 also serializable, or if field names don't exactly match the key names in the given JSON.
 
-[the definition of `JsonCodable`]: https://github.com/dart-lang/sdk/blob/master/pkg/json/lib/json.dart
+[the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
 
 ## The macros language feature
 
@@ -197,8 +197,8 @@ Some common examples are:
  complex `build` method to generates smaller widget classes,
  greatly improving productivity and quality of Flutter code.
 
-[json_serializable]: https://pub.dev/packages/json_serializable
-[most requested]: https://github.com/dart-lang/language/issues/314
+[json_serializable]: {{site.pub-pkg}}/json_serializable
+[most requested]: {{site.repo.dart.lang}}/issues/314
 
 ### How macros work
 
@@ -252,10 +252,10 @@ the best guidance is to take a look at the implementation of exisiting macros:
 - Check out the [definition][json] of the `JsonCodable` macro,
 - Or any of the [examples][] available in the language repo.
 
-[types]: https://github.com/dart-lang/sdk/blob/main/pkg/_macros/lib/src/api/macros.dart
-[json]: https://github.com/dart-lang/sdk/blob/master/pkg/json/lib/json.dart
-[augmentation]: https://github.com/dart-lang/language/blob/main/working/augmentation-libraries/feature-specification.md
-[examples]: https://github.com/dart-lang/language/tree/main/working/macros/example
+[types]: {{site.repo.dart.sdk}}/blob/main/pkg/_macros/lib/src/api/macros.dart
+[json]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
+[augmentation]: {{site.repo.dart.lang}}/blob/main/working/augmentation-libraries/feature-specification.md
+[examples]: {{site.repo.dart.lang}}/tree/main/working/macros/example
 
 ## Timeline
 
@@ -276,6 +276,6 @@ We are working towards a stable release of the [`JsonCodable`][] macro
 later this year (2024), and a stable release of the full language feature
 (namely, writing your own macros) early next year (2025).
 
-[introspection]: https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md#introspection
-[ordering]: https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md#ordering-in-metaprogramming
-[phases]: https://github.com/dart-lang/language/blob/main/working/macros/feature-specification.md#phases
+[introspection]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md#introspection
+[ordering]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md#ordering-in-metaprogramming
+[phases]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md#phases
