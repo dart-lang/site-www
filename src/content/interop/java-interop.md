@@ -39,7 +39,6 @@ that uses `package:jnigen` to generate bindings for a simple class.
 - [Maven][]
 
 [Maven]: https://maven.apache.org/
-[`clang-format`]: https://clang.llvm.org/docs/ClangFormat.html
 
 ### Configure `jnigen`
 
