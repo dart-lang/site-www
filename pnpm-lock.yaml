@@ -14,8 +14,8 @@ devDependencies:
     specifier: 3.0.0-alpha.10
     version: 3.0.0-alpha.10
   firebase-tools:
-    specifier: ^13.8.0
-    version: 13.8.0
+    specifier: ^13.8.1
+    version: 13.8.1
   hast-util-from-html:
     specifier: ^2.0.1
     version: 2.0.1
@@ -50,11 +50,11 @@ devDependencies:
     specifier: ^4.1.1
     version: 4.1.1
   sass:
-    specifier: ^1.76.0
-    version: 1.76.0
+    specifier: ^1.77.0
+    version: 1.77.0
   shiki:
-    specifier: ^1.4.0
-    version: 1.4.0
+    specifier: ^1.5.1
+    version: 1.5.1
 
 packages:
 
@@ -507,8 +507,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: true
 
-  /@shikijs/core@1.4.0:
-    resolution: {integrity: sha512-CxpKLntAi64h3j+TwWqVIQObPTED0FyXLHTTh3MKXtqiQNn2JGcMQQ362LftDbc9kYbDtrksNMNoVmVXzKFYUQ==}
+  /@shikijs/core@1.5.1:
+    resolution: {integrity: sha512-xjV63pRUBvxA1LsxOUhRKLPh0uUjwBLzAKLdEuYSLIylo71sYuwDcttqNP01Ib1TZlLfO840CXHPlgUUsYFjzg==}
     dev: true
 
   /@sindresorhus/slugify@2.2.1:
@@ -2063,8 +2063,8 @@ packages:
       - supports-color
     dev: true
 
-  /firebase-tools@13.8.0:
-    resolution: {integrity: sha512-8fIQt87Uo6sN/4imCLNQCsmHzh1VXDu27mSGOUj4w+z5JQG/k40JHVwqOwW5LUsIlfDJgNOyf7Tu64x0iESHLA==}
+  /firebase-tools@13.8.1:
+    resolution: {integrity: sha512-DX6QhPh1A7ctNvrIP3zhu59YAu9AdzvUW7A9D2FkfjmS6XCmNct6tTGhMW0N3tcbPUvlnqZzzePFDy7+JUWsUQ==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -4231,7 +4231,7 @@ packages:
     resolution: {integrity: sha512-AwAuY4g9nxx0u52DnSMkqqgyLHaW/XaPLtaAo3y/ZCfeaQB/g4YDH4kb8Wc/mWzWvu0YjOznVnfn373MVZZrgw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      protobufjs: 7.2.4
+      protobufjs: 7.2.6
     dev: true
 
   /protobufjs-cli@1.1.1(protobufjs@7.2.4):
@@ -4611,8 +4611,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass@1.76.0:
-    resolution: {integrity: sha512-nc3LeqvF2FNW5xGF1zxZifdW3ffIz5aBb7I7tSvOoNu7z1RQ6pFt9MBuiPtjgaI62YWrM/txjWlOCFiGtf2xpw==}
+  /sass@1.77.0:
+    resolution: {integrity: sha512-eGj4HNfXqBWtSnvItNkn7B6icqH14i3CiCGbzMKs3BAPTq62pp9NBYsBgyN4cA+qssqo9r26lW4JSvlaUUWbgw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -4731,10 +4731,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki@1.4.0:
-    resolution: {integrity: sha512-5WIn0OL8PWm7JhnTwRWXniy6eEDY234mRrERVlFa646V2ErQqwIFd2UML7e0Pq9eqSKLoMa3Ke+xbsF+DAuy+Q==}
+  /shiki@1.5.1:
+    resolution: {integrity: sha512-vx4Ds3M3B9ZEmLeSXqBAB85osBWV8ErZfP69kuFQZozPgHc33m7spLTCUkcjwEjFm3gk3F9IdXMv8kX+v9xDHA==}
     dependencies:
-      '@shikijs/core': 1.4.0
+      '@shikijs/core': 1.5.1
     dev: true
 
   /side-channel@1.0.6:
