@@ -137,7 +137,13 @@ You can search "`DiagnosticMessage`" in the [the definition of `JsonCodable`][js
 for other errors the macro will throw. For example, extending a class that isn't
 also serializable, or if field names don't exactly match the key names in the given JSON.
 
+:::note
+To learn more about using the `JsonCodable` macro, like supported field types,
+treatment of null and generics, and more, check out [the README][].
+:::
+
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
+[the README]: https://github.com/dart-lang/sdk/blob/main/pkg/json/README.md
 
 ## The macros language feature
 
