@@ -8,4 +8,4 @@ environment:
 dev_dependencies:
   dart_site:
     path: tool/dart_site
-  lints: ^3.0.0
+  lints: ^4.0.0
