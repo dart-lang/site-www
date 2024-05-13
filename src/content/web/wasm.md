@@ -78,13 +78,15 @@ by following the temporary steps outlined here:
    Add a new file `site/main.dart.js` and fill it with the contents of
    this [`main.dart.js` sample](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
 
-1. Serve the output: `dart pub global run ` [`dhttpd`]
+1. Serve the output: `dart pub global run dhttpd` ([docs][dhttpd])
 
-You can also check out this small example [here](https://github.com/mit-mit/sandbox).
+You can also try out this small example [here](https://github.com/mit-mit/sandbox).
+To learn more about Wasm compilation in Dart, check out the [README][].
 
 [WasmGC]: https://developer.chrome.com/blog/wasmgc/
 [Flutter]: {{site.flutter}}/wasm
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop 
 [migrated]: /interop/js-interop/package-web/
-[`dhttpd`]: {{site.pub-pkg}}/dhttpd
+[dhttpd]: {{site.pub-pkg}}/dhttpd
+[README]: {{site.repo.dart.sdk}}/blob/main/pkg/dart2wasm/README.md
