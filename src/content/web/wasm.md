@@ -67,11 +67,7 @@ by following the temporary steps outlined here:
     which is necessary to run Wasm.
     Make sure your web apps are [migrated][] from `dart:html` to `package:web`.
 
-1. Compile with Wasm: `mywebapp$ dart compile wasm web/main.dart`
-
-1. Create a new directory for the built web app: `mkdir site`
-
-1. Copy over Dart code: `cp web/main.* site/`
+1. Compile with Wasm to a new `site` output directory: `mywebapp$ dart compile wasm web/main.dart -o site/main.wasm`
 
 1. Copy over the web files: `cp web/index.html web/styles.css site/`
 
