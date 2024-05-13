@@ -38,7 +38,7 @@ either don't use `--force`, or use `--dry-run` first.
 
 ### `--skip-validation`
 
-Publishes without going through the validation process or resolving dependencies.
+Publishes without going through the client-side validation process or resolving dependencies.
 This is useful for advanced users who knows why the validation might fail and wishes to side step a particularly issues.
 
 **Example:** When publishing to pub.dev it may take a few minutes for a newly published package to become available.
