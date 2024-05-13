@@ -111,5 +111,10 @@ For options that apply to all pub commands, see
 
 Reports what dependencies would change but doesn't change any.
 
+### `--tighten`
+
+Updates the lower bounds of dependencies in `pubspec.yaml` to match the
+resolved versions, and returns a list of the changed constraints. 
+Can be applied to [specific dependencies](#downgrading-specific-dependencies).  
 
 {% render 'pub-problems.md' %}
