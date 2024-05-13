@@ -45,7 +45,7 @@ and a `fromJson` deserialization constructor.
 [experiment flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
 {{site.repo.dart.sdk}}/tree/main/pkg/json
-[channel]: /get-dart/#release-channels
+[channel]: https://dart.dev/get-dart#release-channels
 
 ### Set up the experiment
 
