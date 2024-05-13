@@ -182,7 +182,7 @@ implemented three different ways:
 
 Macros provide reusable mechanisms to address patterns characterized by tedious
 boilerplate, and often times the need to iterate over the fields of a class.
-Some common examples are:
+Some common examples that we hope to solve with macros in the future are:
 
 - **Json serialization.** The extra tooling required to serialize JSON,
  like the [json_serializable][] package, isn't as efficient as it should be.
@@ -202,9 +202,12 @@ Some common examples are:
  users. Macros could potentially provide a solution that iterates over a
  complex `build` method to generates smaller widget classes,
  greatly improving productivity and quality of Flutter code.
+ You can check out one exploration into this topic in this
+ [proposal][stateful-macro] from the Flutter team.
 
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [most requested]: {{site.repo.dart.lang}}/issues/314
+[stateful-macro]: {{site.flutter-docs}}/go/stateful-macro
 
 ### How macros work
 
