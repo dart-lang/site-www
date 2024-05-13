@@ -23,7 +23,9 @@ WebAssembly support for Dart web is available on the Dart
 The current version of Dart compilation to WebAssembly has a number of
 restrictions:
 
-1. It targets WebAssembly with Garbage Collection ([WasmGC][]), so...
+1. It targets WebAssembly with Garbage Collection ([WasmGC][]),
+   so not all browsers are currently supported.
+   The current list of browsers is available in the [Flutter documentation][Flutter].
 
 1. The compiled Wasm output currently targets JavaScript environments
    (such as browsers), and thus currently doesn't support execution in standard
@@ -81,7 +83,6 @@ by following the temporary steps outlined here:
 1. Serve the output: `dart pub global run dhttpd` ([docs][dhttpd])
 
 You can also try out this small example [here](https://github.com/mit-mit/sandbox).
-To learn more about Wasm compilation in Dart, check out the [README][].
 
 [WasmGC]: https://developer.chrome.com/blog/wasmgc/
 [Flutter]: {{site.flutter}}/wasm
@@ -89,4 +90,3 @@ To learn more about Wasm compilation in Dart, check out the [README][].
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop 
 [migrated]: /interop/js-interop/package-web/
 [dhttpd]: {{site.pub-pkg}}/dhttpd
-[README]: {{site.repo.dart.sdk}}/blob/main/pkg/dart2wasm/README.md
