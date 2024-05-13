@@ -43,7 +43,8 @@ It generates two members, a `toJson` serialization method,
 and a `fromJson` deserialization constructor.
 
 [experiment flag]: /tools/experiment-flags
-[`JsonCodable`]: {{site.repo.dart.sdk}}/tree/main/pkg/json
+[`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
+{{site.repo.dart.sdk}}/tree/main/pkg/json
 [channel]: /get-dart/#release-channels
 
 ### Set up the experiment
@@ -151,7 +152,7 @@ treatment of null and generics, and more, check out [the README][].
 :::
 
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
-[the README]: {{site.repo.dart.sdk}}/blob/main/pkg/json/README.md
+[the README]: {{site.pub-pkg}}/json/versions/0.20.0
 
 ## The macros language feature
 
