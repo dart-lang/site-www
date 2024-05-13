@@ -36,5 +36,14 @@ In the event of warnings, your package *is* uploaded.
 To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
 
+### `--skip-validation`
+
+Publishes without going through the validation process or resolving dependencies.
+This is useful for advanced users who knows why the validation might fail and wishes to side step a particularly issues.
+
+**Example:** When publishing to pub.dev it may take a few minutes for a newly published package to become available.
+Hence, if you are publishing two dependent packages, where the second depends on the first.
+You can either wait a few minutes in between publishing the first and the second, or use `--skip-validation`
+to publish the second package immediately, by side-stepping client-side valiation.
 
 {% render 'pub-problems.md' %}
