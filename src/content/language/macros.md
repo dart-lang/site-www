@@ -8,10 +8,10 @@ description: Learn about the experimental macros feature as it develops.
 [static meta-programming][motivation] to the Dart language.
 
 A Dart macro is a user-defineable piece of code that takes in other code as parameters
-and operates on it during compile time to create, modify, or add declarations.
+and operates on it in real-time to create, modify, or add declarations.
 
 You can think about the macro system in two parts: using macros and writing macros.
-This page covers each (at a high level, as ***the feature is still under development***)
+This page covers each (at a high level, as ***the feature is still in preview***)
 in the following sections:
 
 - [**The `JsonCodable` macro**](#the-jsoncodable-macro):
@@ -22,7 +22,8 @@ common issue of tedious JSON serialization in Dart.
 - [**The macros feature in general**](#the-macros-language-feature):
 Why we're adding macros to Dart, motivating use cases,
 benefits over existing code gen solutions,
-and a cursory overview of how writing macros works.
+and a cursory overview of how writing macros will work in the future once
+the feature is complete.
 
 [spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
 [motivation]: {{site.repo.dart.lang}}/language/blob/main/working/macros/motivation.md
@@ -31,6 +32,8 @@ and a cursory overview of how writing macros works.
 
 :::important
 The `JsonCodable` macro is not stable and currently behind an [experiment flag][].
+It only works with the [dev channel][channel] releases of Dart 3.5.0 and later.
+
 Functionality is subject to change.
 :::
 
@@ -41,12 +44,15 @@ and a `fromJson` deserialization constructor.
 
 [experiment flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.repo.dart.sdk}}/tree/main/pkg/json
+[channel]: /get-dart/#release-channels
 
 ### Set up the experiment
 
-1. [Add the package][] to your pubspec and retrieve
+1. Switch to the [dev channel][channel] and upgrade to at least 3.5.0.
+
+2. [Add the package][] to your pubspec and retrieve
   its dependencies.
-2. [Add the experiment][] to the `analysis_options.yaml`
+3. [Add the experiment][] to the `analysis_options.yaml`
   file at the root of your project:
 
    ```yaml
@@ -54,24 +60,24 @@ and a `fromJson` deserialization constructor.
     enable-experiment:
       - macros
    ```
-3. Import it in the file you plan to use it:
+4. Import it in the file you plan to use it:
 
-  ```dart
-  import 'package:json/json.dart';
-  ```
+   ```dart
+   import 'package:json/json.dart';
+   ```
 
-4. Run your project with the experiment flag:
+5. Run your project with the experiment flag:
 
-  ```console
-  dart --enable-experiment=macros run bin/my_app.dart
-  ```
+   ```console
+   dart --enable-experiment=macros run bin/my_app.dart
+   ```
 
 [Add the package]: /guides/packages
 [Add the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
 ### Use the macro
 
-To use the `JsonCodable` macro, append the annotation to the class you want to serialize:
+To use the `JsonCodable` macro, attach the annotation to the class you want to serialize:
 
 ```dart
 import 'package:json/json.dart';
@@ -108,7 +114,9 @@ void main() {
 
 ### View the generated code
 
-You can optionally view the generated code.
+Sometimes it can be useful to view the generated code to better understand
+how a macros works, or to inspect the details of what it offers.
+
 Click on the "**Go to Augmentation**" link that appears under the annotation
 in your IDE (supported in VSCode and IntelliJ)
 to see how the macro generates `toJson` and `fromJson`.
@@ -149,11 +157,12 @@ treatment of null and generics, and more, check out [the README][].
 
 Dart macros are a *static* metaprogramming, or code generation, solution.
 Unlike *runtime* code generation solutions (like [build_runner][]),
-macros are fully integrated into the Dart language and executed by the compiler.
+macros are fully integrated into the Dart language
+and executed automatically in the background by Dart tools.
 This makes macros much more efficient than relying on an secondary tool:
 
 - **Nothing extra to run**;
- simply call `dart ` / `flutter run <your app>` and the macro builds with your code.
+ macros build in real-time as you write your code.
 - **No duplicated work** or constant recompiling hurting performance;
  all the building and code generation happen directly in the compiler,
  automatically.
@@ -166,12 +175,14 @@ This makes macros much more efficient than relying on an secondary tool:
 And also far more efficient, and far less error prone, than manually
 writing solutions to these types of problems yourself.
 
+{% comment %}
 Check out these examples showing the same JSON serialization
 implemented three different ways:
 
 - Using the [`JsonCodable` macro][].
 - Using the [`json_serializable` code gen package][].
 - Manually, [with `dart:convert`][].
+{% endcomment %}
 
 [build_runner]: /tools/build_runner
 [`JsonCodable` macro]: https://github.com/mit-mit/sandbox/blob/main/explorations/json/dart_jsoncodable/bin/main.dart
@@ -227,7 +238,6 @@ would implement the `ClassDeclarationsMacro` interface:
 ```dart
 macro class MyMacro implements ClassDeclarationsMacro {
    const MyMacro();
-
 
    // ...
 }
