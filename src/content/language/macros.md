@@ -77,7 +77,7 @@ and a `fromJson` deserialization constructor.
 6. Run your project with the experiment flag:
 
    ```console
-   dart --enable-experiment=macros run bin/my_app.dart
+   dart run --enable-experiment=macros bin/my_app.dart
    ```
 
 [Add the package]: /guides/packages
@@ -126,7 +126,7 @@ Sometimes it can be useful to view the generated code to better understand
 how a macros works, or to inspect the details of what it offers.
 
 Click on the "**Go to Augmentation**" link that appears under the annotation
-in your IDE (supported in VSCode, and in IntelliJ soon)
+in your IDE (supported in VSCode)
 to see how the macro generates `toJson` and `fromJson`.
 
 If you change anything in the annotated class, you can watch the generated augmentation
