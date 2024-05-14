@@ -17,7 +17,7 @@ in the following sections:
 - [**The `JsonCodable` macro**](#the-jsoncodable-macro):
 A ready-made macro you can try out today (behind an experiment flag)
 that offers a seamless solution to the
-common issue of tedious JSON serialization in Dart.
+common issue of tedious JSON serialization and deserialization in Dart.
 
 - [**The macros feature in general**](#the-macros-language-feature):
 Why we're adding macros to Dart, motivating use cases,
@@ -32,7 +32,9 @@ the feature is complete.
 
 :::important
 The `JsonCodable` macro is not stable and currently behind an [experiment flag][].
-It only works with the [dev channel][channel] releases of Dart 3.5.0 and later.
+It only works with Dart `3.5.0-152` or later. 
+This is available from the [Dart dev channel][channel] 
+or from the [Flutter master channel][flutter-channel].
 
 Functionality is subject to change.
 :::
@@ -45,14 +47,19 @@ and a `fromJson` deserialization constructor.
 [experiment flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
 [channel]: https://dart.dev/get-dart#release-channels
+[flutter-channel]: https://docs.flutter.dev/release/upgrade#other-channels
 
 ### Set up the experiment
 
-1. Switch to the [dev channel][channel] and upgrade to at least 3.5.0.
+1. Switch to the [Dart dev channel][channel] or the
+  [Flutter master channel][flutter-channel].
 
-2. [Add the package][] to your pubspec and retrieve
+2. Run `dart --version` and make sure you have Dart version `3.5.0-152` or later.
+
+3. [Add the package][] to your pubspec and retrieve
   its dependencies.
-3. [Add the experiment][] to the `analysis_options.yaml`
+
+4. [Add the experiment][] to the `analysis_options.yaml`
   file at the root of your project:
 
    ```yaml
@@ -60,13 +67,14 @@ and a `fromJson` deserialization constructor.
     enable-experiment:
       - macros
    ```
-4. Import it in the file you plan to use it:
+
+5. Import the package in the file you plan to use it:
 
    ```dart
    import 'package:json/json.dart';
    ```
 
-5. Run your project with the experiment flag:
+6. Run your project with the experiment flag:
 
    ```console
    dart --enable-experiment=macros run bin/my_app.dart
@@ -118,7 +126,7 @@ Sometimes it can be useful to view the generated code to better understand
 how a macros works, or to inspect the details of what it offers.
 
 Click on the "**Go to Augmentation**" link that appears under the annotation
-in your IDE (supported in VSCode and IntelliJ)
+in your IDE (supported in VSCode, and in IntelliJ soon)
 to see how the macro generates `toJson` and `fromJson`.
 
 If you change anything in the annotated class, you can watch the generated augmentation
