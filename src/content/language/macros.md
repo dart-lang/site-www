@@ -47,7 +47,7 @@ and a `fromJson` deserialization constructor.
 [experiment flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
 [channel]: https://dart.dev/get-dart#release-channels
-[flutter-channel]: https://docs.flutter.dev/release/upgrade#other-channels
+[flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
 
 ### Set up the experiment
 
