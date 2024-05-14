@@ -7,7 +7,7 @@ description: Learn about the experimental macros feature as it develops.
 ***currently under development*** which adds support for
 [static meta-programming][motivation] to the Dart language.
 
-A Dart macro is a user-defineable piece of code that takes in other code as parameters
+A Dart macro is a user-definable piece of code that takes in other code as parameters
 and operates on it in real-time to create, modify, or add declarations.
 
 You can think about the macro system in two parts: using macros and writing macros.
@@ -15,7 +15,7 @@ This page covers each (at a high level, as ***the feature is still in preview***
 in the following sections:
 
 - [**The `JsonCodable` macro**](#the-jsoncodable-macro):
-A ready-made macro you can try out today (behind an experiment flag)
+A ready-made macro you can try out today (behind an experimental flag)
 that offers a seamless solution to the
 common issue of tedious JSON serialization and deserialization in Dart.
 
@@ -31,7 +31,7 @@ the feature is complete.
 ## The `JsonCodable` macro
 
 :::important
-The `JsonCodable` macro is not stable and currently behind an [experiment flag][].
+The `JsonCodable` macro is not stable and currently behind an [experimental flag][].
 It only works with Dart `3.5.0-152` or later. 
 This is available from the [Dart dev channel][channel] 
 or from the [Flutter master channel][flutter-channel].
@@ -44,7 +44,7 @@ user-defined Dart classes to JSON maps of type `Map<String, Object?>`.
 It generates two members, a `toJson` serialization method,
 and a `fromJson` deserialization constructor.
 
-[experiment flag]: /tools/experiment-flags
+[experimental flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
 [channel]: https://dart.dev/get-dart#release-channels
 [flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
@@ -56,10 +56,11 @@ and a `fromJson` deserialization constructor.
 
 2. Run `dart --version` and make sure you have Dart version `3.5.0-152` or later.
 
-3. [Add the package][] to your pubspec and retrieve
-  its dependencies.
+3. Edit the [SDK constraint][] in your pubspec to require the Dart version: `sdk: ^3.5.0-152`.
 
-4. [Add the experiment][] to the `analysis_options.yaml`
+4. [Add the package][] `json` to `dependencies`: `dart pub add json`.
+
+5. [Enable the experiment][] in your package's `analysis_options.yaml` file.
   file at the root of your project:
 
    ```yaml
@@ -68,20 +69,21 @@ and a `fromJson` deserialization constructor.
       - macros
    ```
 
-5. Import the package in the file you plan to use it:
+6. Import the package in the file you plan to use it:
 
    ```dart
    import 'package:json/json.dart';
    ```
 
-6. Run your project with the experiment flag:
+7. Run your project with the experimental flag:
 
    ```console
    dart run --enable-experiment=macros bin/my_app.dart
    ```
 
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [Add the package]: /guides/packages
-[Add the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
+[Enable the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
 ### Use the macro
 
@@ -136,7 +138,7 @@ adjust in real time alongside your application code:
 
 ### Trigger custom diagnostics
 
-The `JsonCodable` macro has built-in diagnostics that are emmitted just like
+The `JsonCodable` macro has built-in diagnostics that are emitted just like
 diagnostics from the language itself. For example, if you try to manually
 declare a `toJson` method where the macro is applied, the analyzer will emit
 the error:
@@ -231,8 +233,9 @@ Some common examples that we hope to solve with macros in the future are:
 ### How macros work
 
 :::important
-The macros language feature is not stable and currently behind an [experiment flag][].
-Functionality is highly subject to change. This section will remain very high-level until stable.
+The macros language feature is not stable and currently behind an
+[experimental flag][]. Functionality is highly subject to change.
+This section will remain very high-level until stable.
 :::
 
 To create a macro, you write a macro declaration similar to a class,
@@ -273,7 +276,7 @@ properties. The macro gathers this information through deep [introspection][] of
 the program.
 
 Macros are still under development, so that's as much detail we can go into for now.
-If you're curious, or would like to try it yourself behind an experiment flag,
+If you're curious, or would like to try it yourself behind an experimental flag,
 the best guidance is to take a look at the implementation of exisiting macros:
 
 - Check out the [definition][json] of the `JsonCodable` macro,
