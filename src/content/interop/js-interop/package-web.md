@@ -309,7 +309,7 @@ Do we have any other package migrations to show off here?
 [dart-lang/web]: {{site.repo.dart.org}}/web
 [issue]: {{site.repo.dart.org}}/web/issues/new
 [helpers]: {{site.repo.dart.org}}/web/tree/main/lib/src/helpers
-[zones]: /articles/archive/zones
+[zones]: /libraries/async/zones
 [Conversions]: /interop/js-interop/js-types#conversions
 [interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage
