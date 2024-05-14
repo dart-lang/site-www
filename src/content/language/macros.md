@@ -159,7 +159,7 @@ treatment of null and generics, and more, check out [the README][].
 :::
 
 [the definition of `JsonCodable`]: {{site.repo.dart.sdk}}/blob/master/pkg/json/lib/json.dart
-[the README]: {{site.pub-pkg}}/json/versions/0.20.0
+[the README]: {{site.pub-pkg}}/json
 
 ## The macros language feature
 
