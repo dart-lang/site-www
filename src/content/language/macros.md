@@ -56,11 +56,11 @@ and a `fromJson` deserialization constructor.
 
 2. Run `dart --version` and make sure you have Dart version `3.5.0-152` or later.
 
-3. Edit the [SDK constraint][] in your pubspec to require that Dart version: `sdk: ^3.5.0-152`
+3. Edit the [SDK constraint][] in your pubspec to require the Dart version: `sdk: ^3.5.0-152`.
 
-4. [Add the package][] `json` to `dependencies` in your pubspec and run `pub get`.
+4. [Add the package][] `json` to `dependencies`: `dart pub add json`.
 
-5. [Add the experiment][] to the `analysis_options.yaml`
+5. [Enable the experiment][] in your package's `analysis_options.yaml` file.
   file at the root of your project:
 
    ```yaml
@@ -83,7 +83,7 @@ and a `fromJson` deserialization constructor.
 
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [Add the package]: /guides/packages
-[Add the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
+[Enable the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
 ### Use the macro
 
