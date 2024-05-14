@@ -15,7 +15,7 @@ This page covers each (at a high level, as ***the feature is still in preview***
 in the following sections:
 
 - [**The `JsonCodable` macro**](#the-jsoncodable-macro):
-A ready-made macro you can try out today (behind an experiment flag)
+A ready-made macro you can try out today (behind an experimental flag)
 that offers a seamless solution to the
 common issue of tedious JSON serialization and deserialization in Dart.
 
@@ -31,7 +31,7 @@ the feature is complete.
 ## The `JsonCodable` macro
 
 :::important
-The `JsonCodable` macro is not stable and currently behind an [experiment flag][].
+The `JsonCodable` macro is not stable and currently behind an [experimental flag][].
 It only works with Dart `3.5.0-152` or later. 
 This is available from the [Dart dev channel][channel] 
 or from the [Flutter master channel][flutter-channel].
@@ -44,7 +44,7 @@ user-defined Dart classes to JSON maps of type `Map<String, Object?>`.
 It generates two members, a `toJson` serialization method,
 and a `fromJson` deserialization constructor.
 
-[experiment flag]: /tools/experiment-flags
+[experimental flag]: /tools/experiment-flags
 [`JsonCodable`]: {{site.pub-pkg}}/json/versions/0.20.0
 [channel]: https://dart.dev/get-dart#release-channels
 [flutter-channel]: {{site.flutter-docs}}/release/upgrade#other-channels
@@ -74,7 +74,7 @@ and a `fromJson` deserialization constructor.
    import 'package:json/json.dart';
    ```
 
-6. Run your project with the experiment flag:
+6. Run your project with the experimental flag:
 
    ```console
    dart run --enable-experiment=macros bin/my_app.dart
@@ -231,7 +231,7 @@ Some common examples that we hope to solve with macros in the future are:
 ### How macros work
 
 :::important
-The macros language feature is not stable and currently behind an [experiment flag][].
+The macros language feature is not stable and currently behind an [experimental flag][].
 Functionality is highly subject to change. This section will remain very high-level until stable.
 :::
 
@@ -273,7 +273,7 @@ properties. The macro gathers this information through deep [introspection][] of
 the program.
 
 Macros are still under development, so that's as much detail we can go into for now.
-If you're curious, or would like to try it yourself behind an experiment flag,
+If you're curious, or would like to try it yourself behind an experimental flag,
 the best guidance is to take a look at the implementation of exisiting macros:
 
 - Check out the [definition][json] of the `JsonCodable` macro,
