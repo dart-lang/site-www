@@ -395,14 +395,14 @@ see these resources:
 
 [README Checklist][]
 : A checklist for writing a README that
-helps readers feel confident about your project.
+  helps readers feel confident about your project.
 
 [Awesome README][]
 : A curated, annotated list of great READMEs.
 
 [Make a README][]
 : An introduction to READMEs,
-with a template and suggestions for a good README.
+  with a template and suggestions for a good README.
 
 [How to write a great README for your GitHub project][]
 : Key elements of a good README, and a template.

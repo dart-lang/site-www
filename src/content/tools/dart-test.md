@@ -16,7 +16,7 @@ as described in [Testing Flutter apps][].
 [`test` package]: {{site.pub-pkg}}/test
 [Testing Flutter apps]: {{site.flutter-docs}}/testing
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of using `dart test` to run all tests
 that are under the current project's `test` directory:

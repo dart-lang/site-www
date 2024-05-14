@@ -38,7 +38,7 @@ The Dart SDK includes two directories:
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
 
-{% include 'tools/utf-8.md' %}
+{% render 'tools/utf-8.md' %}
 
 To learn more about the SDK, check out its [README file][readme].
 

@@ -9,7 +9,7 @@ The output—which you specify using a subcommand—can
 either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of using the `exe` subcommand
 to produce a self-contained executable file (`myapp.exe`):
@@ -115,6 +115,14 @@ The following table shows the subcommands of `dart compile`.
     <td> A deployable JavaScript file, 
       compiled from the source code.
       <br><em><a href="#js">Learn more.</a></em>
+    </td>
+  </tr>
+  <tr>
+    <td> <code>wasm</code> </td>
+    <td> WebAssembly </td>
+    <td> A portable, binary instruction format for a stack-based virtual machine.
+         Currently under development.
+      <br><em><a href="/web/wasm">Learn more.</a></em>
     </td>
   </tr>
 </table>

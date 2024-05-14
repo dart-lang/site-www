@@ -41,6 +41,18 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.4
+_Released 14 May 2024_
+| [Dart 3.4 announcement](https://medium.com/dartlang/dart-3-4-bd8d23b4462a)
+
+Dart 3.4 made several improvements related to type analysis. These include:
+
+* Improvements to the type analysis of conditional expressions,
+  if-null expressions and assignments, and switch expressions.
+* Aligning the pattern context type schema for cast patterns with the spec.
+* Making the type schema for the null-aware spread operator (`...?`) nullable for maps
+  and set literals, to match the behavior of list literals.
+
 ### Dart 3.3
 _Released 15 February 2024_
 | [Dart 3.3 announcement](https://medium.com/dartlang/dart-3-3-325bf2bf6c13)
