@@ -7,7 +7,7 @@ description: Learn about the experimental macros feature as it develops.
 ***currently under development*** which adds support for
 [static meta-programming][motivation] to the Dart language.
 
-A Dart macro is a user-defineable piece of code that takes in other code as parameters
+A Dart macro is a user-definable piece of code that takes in other code as parameters
 and operates on it in real-time to create, modify, or add declarations.
 
 You can think about the macro system in two parts: using macros and writing macros.
@@ -56,10 +56,11 @@ and a `fromJson` deserialization constructor.
 
 2. Run `dart --version` and make sure you have Dart version `3.5.0-152` or later.
 
-3. [Add the package][] to your pubspec and retrieve
-  its dependencies.
+3. Edit the [SDK constraint][] in your pubspec to require that Dart version: `sdk: ^3.5.0-152`
 
-4. [Add the experiment][] to the `analysis_options.yaml`
+4. [Add the package][] `json` to `dependencies` in your pubspec and run `pub get`.
+
+5. [Add the experiment][] to the `analysis_options.yaml`
   file at the root of your project:
 
    ```yaml
@@ -68,18 +69,19 @@ and a `fromJson` deserialization constructor.
       - macros
    ```
 
-5. Import the package in the file you plan to use it:
+6. Import the package in the file you plan to use it:
 
    ```dart
    import 'package:json/json.dart';
    ```
 
-6. Run your project with the experiment flag:
+7. Run your project with the experiment flag:
 
    ```console
    dart run --enable-experiment=macros bin/my_app.dart
    ```
 
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [Add the package]: /guides/packages
 [Add the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
@@ -136,7 +138,7 @@ adjust in real time alongside your application code:
 
 ### Trigger custom diagnostics
 
-The `JsonCodable` macro has built-in diagnostics that are emmitted just like
+The `JsonCodable` macro has built-in diagnostics that are emitted just like
 diagnostics from the language itself. For example, if you try to manually
 declare a `toJson` method where the macro is applied, the analyzer will emit
 the error:
