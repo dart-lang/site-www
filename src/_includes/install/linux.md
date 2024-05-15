@@ -3,8 +3,8 @@
 
 You have two options to install the Dart SDK on Ubuntu or Debian:
 
-* Use the [apt-get](#install-using-apt-get) command.
-* Download a [`.deb`](#install-a-debian-package) package
+* Use the [apt-get](#install-using-the-apt-get-package-manager) command.
+* Download a [`.deb`](#install-from-a-debian-package) package
   and run the `dpkg` command.
 
 ### Install using the `apt-get` package manager {:.no_toc}

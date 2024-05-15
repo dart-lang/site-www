@@ -79,5 +79,5 @@ To uninstall the Dart SDK, use [Homebrew][].
    ```
 
 [Homebrew]: https://brew.sh
-[tap]: {{site.repo.dart.org}}/homebrew-dart
+[tap]: https://github.com/dart-lang/homebrew-dart
 [Homebrew FAQ]: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-homebrew-utilities
