@@ -4,11 +4,13 @@
 To install the Dart SDK, use [Chocolatey][Chocolatey].
 Chocolatey requires [elevated permissions].
 
-Install Chocolatey, then run a [command prompt] with elevated permissions.
+1. Install Chocolatey.
 
-```ps
-C:\> choco install dart-sdk
-```
+1. Launch [Powershell] with elevated permissions.
+
+   ```ps
+   C:\> choco install dart-sdk
+   ```
 
 ### Change default install path {:.no_toc}
 
@@ -44,7 +46,27 @@ To upgrade the Dart SDK:
 C:\> choco upgrade dart-sdk
 ```
 
+### Uninstall using Chocolatey {:.no_toc}
+
+To uninstall the Dart SDK, use [Chocolatey][Chocolatey].
+Chocolatey requires [elevated permissions].
+
+1. Launch [Powershell][] with elevated permissions.
+
+1. Use the following command.
+
+   ```ps
+   C:\> choco uninstall dart-sdk
+   ```
+
+1. Remove the Dart configuration files from your home directory.
+
+   ```dart
+   C:\> Remove-Item -Recurse -Force ^
+        -Path $env:LOCALAPPDATA\.dartServer,$env:APPDATA\.dart,$env:APPDATA\.dart-tool
+   ```
+
 [elevated permissions]: https://www.thewindowsclub.com/elevated-privileges-windows
-[command prompt]: https://www.thewindowsclub.com/how-to-run-command-prompt-as-an-administrator
+[Powershell]: https://www.thewindowsclub.com/how-to-open-an-elevated-powershell-prompt-in-windows-10
 [Chocolatey]: https://chocolatey.org
 [`ChocolateyToolsLocation`]: https://stackoverflow.com/questions/19752533/how-do-i-set-chocolatey-to-install-applications-onto-another-drive/68314437#68314437

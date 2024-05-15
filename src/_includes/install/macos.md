@@ -22,6 +22,7 @@ To install the Dart SDK, use [Homebrew][].
 Verify that your `PATH` includes the **Homebrew `bin` directory**.
 Setting up the correct path simplifies using Dart SDK commands
 such as `dart run` and `dart format`.
+
 To get help configuring your `PATH`, consult the [Homebrew FAQ][].
 
 ### Upgrade using Homebrew {:.no_toc}
@@ -48,7 +49,9 @@ To switch between locally installed Dart releases:
    unlink the current version and link the desired version.
 
    ```console
-   $ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
+   $ brew unlink dart@<old> \
+     && brew unlink dart@<new> \
+     && brew link dart@<new>
    ```
 
 ### List installed Dart versions {:.no_toc}
@@ -58,6 +61,22 @@ To see which versions of Dart you've installed:
 ```console
 $ brew info dart
 ```
+
+### Uninstall using Homebrew {:.no_toc}
+
+To uninstall the Dart SDK, use [Homebrew][].
+
+1. Uninstall the Dart SDK.
+
+   ```console
+   $ brew uninstall dart
+   ```
+
+1. Remove the Dart configuration files from your home directory.
+
+   ```dart
+   rm -rf  ~/.dart*
+   ```
 
 [Homebrew]: https://brew.sh
 [tap]: {{site.repo.dart.org}}/homebrew-dart
