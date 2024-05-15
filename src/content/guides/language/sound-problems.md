@@ -497,8 +497,9 @@ var maximumOrNull =
 ### Conflicting Superinterfaces
 
 A class which `implements` more than one superinterface must be able to
-implement valid overrides so each member requires compatible signatures across
-the superinterfaces.
+implement valid overrides for every member.
+Each member with a given name requires compatible signatures across the
+superinterfaces.
 
 Superinterfaces must not include conflicting generics.
 A class cannot implement both `C<A>` and `C<B>`, including indirect
