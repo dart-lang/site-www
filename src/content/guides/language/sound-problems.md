@@ -494,6 +494,34 @@ var maximumOrNull =
 
 <hr>
 
+### Conflicting Superinterfaces
+
+A class which `implements` more than one superinterface must be able to
+implement valid overrides so each member requires compatible signatures across
+the superinterfaces.
+
+Superinterfaces must not include conflicting generics.
+A class cannot implement both `C<A>` and `C<B>`, including indirect
+superinterfaces.
+
+#### Example
+
+In the following code,
+class `C` will have conflicting generic interfaces and it will be impossible to
+define valide overrides for some members.
+
+<?code-excerpt "TODO"?>
+```dart tag=fails-sa
+abstract class C implements List<int>, Iterable<num> {}
+```
+
+#### Fix: Use consistent generics or avoid repeating transitive interfaces
+
+<?code-excerpt "TODO"?>
+```dart tag=passes-sa
+abstract class C implements List<int> {}
+```
+
 <a id="common-errors-and-warnings"></a>
 
 ## Runtime errors
