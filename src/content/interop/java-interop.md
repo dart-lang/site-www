@@ -85,7 +85,7 @@ public class Example {
 
 ### Generate the Dart bindings
 
-To generate the Dart (and C) bindings, run `jnigen` and
+To generate the Dart bindings, run `jnigen` and
 specify the config file using the `--config` option:
 
 ```console
@@ -115,7 +115,7 @@ print(Example.sum(a, b));
 ### Run the example
 
 Before running the example, 
-you must build the dynamic libraries for `jni` and the generated C files. 
+you must build the dynamic library for `jni`.
 The Java sources also must be compiled. To do so, run:
 
 ```console
