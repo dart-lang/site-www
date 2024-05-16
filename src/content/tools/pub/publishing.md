@@ -291,7 +291,7 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 :::note
 While `pub` prefers stable releases the same way it prefers newer versions,
 the version solver does not attempt all solutions and may pick a prerelease,
-even when a resolution that doesn't use prelreases exists.
+even when a resolution that doesn't use prereleases exists.
 Though this rarely happens in practice.
 :::
 
