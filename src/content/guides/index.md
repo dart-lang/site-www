@@ -21,7 +21,7 @@ To update these cards, edit src/_data/docs_cards.yml.
   {% capture index0Modulo3 %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
   {% capture indexModulo3 %}{{ forloop.index | modulo:3 }}{% endcapture %}
   <div class="card">
-    <h3><a href="{{card.url}}">{{card.name}}</a></h3>
+    <h2><a href="{{card.url}}">{{card.name}}</a></h2>
     <p>{{card.description}}</p>
   </div>
 {% endfor -%}
