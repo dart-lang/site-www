@@ -26,7 +26,7 @@ and a cursory overview of how writing macros will work in the future once
 the feature is complete.
 
 [spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
-[motivation]: {{site.repo.dart.lang}}/language/blob/main/working/macros/motivation.md
+[motivation]: {{site.repo.dart.lang}}/blob/main/working/macros/motivation.md
 
 ## The `JsonCodable` macro
 
