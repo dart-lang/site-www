@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^14.1.0
     version: 14.1.0
   markdown-it-anchor:
-    specifier: ^8.6.7
-    version: 8.6.7(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
+    specifier: ^9.0.0
+    version: 9.0.0(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
   markdown-it-attrs:
     specifier: ^4.1.6
     version: 4.1.6(markdown-it@14.1.0)
@@ -3376,6 +3376,16 @@ packages:
 
   /markdown-it-anchor@8.6.7(@types/markdown-it@14.1.1)(markdown-it@14.1.0):
     resolution: {integrity: sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      '@types/markdown-it': 14.1.1
+      markdown-it: 14.1.0
+    dev: true
+
+  /markdown-it-anchor@9.0.0(@types/markdown-it@14.1.1)(markdown-it@14.1.0):
+    resolution: {integrity: sha512-gf3mP2g4YZ2WhJrYYOCgU6CyyczVAncjkafan0ONM0AtXTTgIeXMw7M+VjDt4EWODxC2GROpAClUuo2iz5+p3A==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
