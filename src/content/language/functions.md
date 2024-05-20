@@ -261,31 +261,30 @@ More about those in the next section.
 
 ## Anonymous functions
 
-Most functions are named, such as `main()` or `printElement()`.
-You can also create a nameless function
-called an _anonymous function_, or sometimes a _lambda_ or _closure_.
-You might assign an anonymous function to a variable so that,
-for example, you can add or remove it from a collection.
+Though you name most functions, such as `main()` or `printElement()`.
+you can create nameless functions.
+These functions are called _anonymous function_, _lambda_, or _closure_.
 
-An anonymous function looks similar
-to a named function—zero or more parameters, separated by commas
-and optional type annotations, between parentheses.
+An anonymous function resembles a named function:
 
-The code block that follows contains the function's body:
+* Zero or more parameters, comma-separated
+* Optional type annotations between parentheses.
 
-<code>
-([[<em>Type</em>] <em>param1</em>[, …]]) { <br>
-&nbsp;&nbsp;<em>codeBlock</em>; <br>
-}; <br>
-</code>
+The following code block contains the function's body:
+
+```dart
+([[Type]] param1[, ...]]) {
+  codeBlock;
+}
+```
 
 The following example defines an anonymous function
-with an untyped parameter, `item`,
-and passes it to the `map` function.
-The function, invoked for each item in the list,
+with an untyped parameter, `item`.
+The anonymous function passes it to the `map` function.
+The `map` function, invoked for each item in the list,
 converts each string to uppercase.
-Then in the anonymous function passed to `forEach`,
-each converted string is printed out alongside its length.
+Then, the anonymous function passed to `forEach`,
+prints each converted string with its length.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart

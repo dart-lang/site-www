@@ -222,6 +222,48 @@ Redirecting factories have several advantages:
 * A redirecting factory constructor avoids the need for forwarders
   to repeat the formal parameters and their default values.
 
+### Constructor tear-offs
+
+Dart allows you to supply a constructor as a parameter without calling it.
+Called a _tear-off_ (as you _tear off_ the parentheses)
+serves as a closure that invokes the constructor with the same parameters.
+
+If the tear-off is a constructor with the same signature and return type
+as the method accepts, you can use the tear-off as a parameter or variable.
+
+Tear-offs differ from lambdas or anonymous functions.
+Lambdas serve as a wrapper for the constructor whereas a tear-off
+is the constructor.
+
+**Use Tear-Offs**
+
+```dart tag=good
+// Use a tear-off for a named constructor: 
+var strings = charCodes.map(String.fromCharCode);  
+
+// Use a tear-off for an unnamed constructor: 
+var buffers = charCodes.map(StringBuffer.new); 
+```
+
+**Not Lambdas**
+
+```dart tag=bad
+// Instead of a lambda for a named constructor:
+var strings = charCodes.map ((code) => String.fromCharCode (code));
+
+// Instead of a lambda for an unnamed constructor:
+var buffers = charCodes.map ((code) => StringBuffer (code));
+```
+
+For visual learners, watch this Decoding Flutter video on tear-offs.
+
+<iframe
+  {{yt.std-size}}
+  title="Learn about tear-offs in Dart"
+  src="{{yt.embed}}/OmCaloD7sis"
+  {{yt.set}}>
+</iframe>
+
 ## Instance Variable Initialization
 
 Dart can initialize variables in three ways.
