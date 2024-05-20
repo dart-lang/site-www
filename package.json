@@ -30,12 +30,12 @@
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
-    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-anchor": "^9.0.1",
     "markdown-it-attrs": "^4.1.6",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-table": "^4.1.1",
-    "sass": "^1.77.1",
-    "shiki": "^1.5.2"
+    "sass": "^1.77.2",
+    "shiki": "^1.6.0"
   }
 }

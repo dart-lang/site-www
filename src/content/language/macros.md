@@ -26,7 +26,7 @@ and a cursory overview of how writing macros will work in the future once
 the feature is complete.
 
 [spec]: {{site.repo.dart.lang}}/blob/main/working/macros/feature-specification.md
-[motivation]: {{site.repo.dart.lang}}/language/blob/main/working/macros/motivation.md
+[motivation]: {{site.repo.dart.lang}}/blob/main/working/macros/motivation.md
 
 ## The `JsonCodable` macro
 
@@ -270,7 +270,7 @@ Within the body of the macro declaration is where you define the code you want
 the macro to [generate](#view-the-generated-code), as well as any
 [diagnostics](#trigger-custom-diagnostics) you want the macro to emit.
 
-At a very high-level, writing macros essentially work by using builder methods
+At a very high-level, writing macros essentially works by using builder methods
 to piece together the *properties* of a declaration with *identifiers* on those
 properties. The macro gathers this information through deep [introspection][] of
 the program.
