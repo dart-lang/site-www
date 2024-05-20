@@ -3,7 +3,7 @@ description: dart.dev non-promotion examples.
 version: 0.0.1
 
 environment:
-  sdk: ^3.3.0
+  sdk: ^3.4.0
 
 dev_dependencies:
-  lints: ^3.0.0
+  lints: ^4.0.0

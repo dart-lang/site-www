@@ -370,7 +370,7 @@ we made the following changes to this site:
 [Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
-[Zones]: /articles/archive/zones
+[Zones]: /libraries/async/zones
 [Documentation]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives

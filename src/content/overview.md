@@ -184,8 +184,8 @@ Dart's compiler technology lets you run code in different ways:
   an ahead-of-time (AOT) compiler for producing machine code.
 
 * **Web platform**: For apps targeting the web, Dart can compile for
-  development or production purposes. Its web compiler translates Dart
-  into JavaScript.
+  development or production purposes. Its web compilers translate Dart
+  into JavaScript or WebAssembly.
 
 <img 
   src="/assets/img/Dart-platforms.svg" 
@@ -221,19 +221,23 @@ More information:
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP servers](/tutorials/server/httpserver)
 
-#### Dart Web (JavaScript dev & prod) {:#web-platform}
+#### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
+Alternatively, Dart code can be compiled to WebAssembly.
 
-Dart web contains two compilation modes:
+Dart web contains three compilation modes:
 
-* An incremental development compiler enabling a fast developer cycle
-* An optimizing production compiler which compiles Dart code to fast,
-  compact, deployable JavaScript. These efficiencies come from
-  techniques such as dead-code elimination.
+* An incremental JavaScript development compiler enabling a fast developer 
+  cycle.
+* An optimizing JavaScript production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These efficiencies come from techniques such
+  as dead-code elimination.
+* An optimizing WebAssembly (WasmGC) production compiler which compiles Dart
+  code to super-fast, deployable WebAssembly GC code.
 
 More information:
 
@@ -241,6 +245,7 @@ More information:
 * [`dart compile js`](/tools/dart-compile#js)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
+* [WebAssembly compilation](/web/wasm)
 
 #### The Dart runtime {:#runtime}
 
