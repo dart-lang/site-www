@@ -123,20 +123,6 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-### `--null-safety`
-
-Gets the packages that
-[`dart pub outdated --mode=null-safety`][`dart pub outdated`]
-lists as _resolvable_,
-ignoring any upper-bound constraint in the `pubspec.yaml` file.
-Also updates `pubspec.yaml` with the new constraints.
-This command is similar to `--major-versions`.
-
-:::tip
-Commit the `pubspec.yaml` file before running this command,
-so that you can undo the changes if necessary.
-:::
-
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,

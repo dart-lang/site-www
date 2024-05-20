@@ -4,7 +4,7 @@ description: Usage information about the core types in JS interop.
 ---
 
 Dart values and JS values belong to separate language domains. When compiling to
-Wasm, they execute in separate *runtimes* as well. As such, you should treat JS
+[Wasm][], they execute in separate *runtimes* as well. As such, you should treat JS
 values as foreign types. To provide Dart types for JS values,
 [`dart:js_interop`] exposes a set of types prefixed with `JS` called "JS types".
 These types are used to distinguish between Dart values and JS values at
@@ -90,7 +90,7 @@ Generally, the conversion table looks like the following:
 </div>
 
 :::warning
-Compiling to JavaScript vs Wasm can introduce inconsistencies in both
+Compiling to JavaScript vs [Wasm][] can introduce inconsistencies in both
 performance and semantics for conversions. Conversions may have different costs
 depending on the compiler, so prefer to only convert values if you need to.
 
@@ -233,7 +233,7 @@ error if the value returned was JS `null` or `undefined` to ensure soundness.
 
 :::warning
 There is a subtle inconsistency with regards to `undefined` between compiling to
-JS and Wasm. While compiling to JS *treats* `undefined` values as if they were
+JS and [Wasm][]. While compiling to JS *treats* `undefined` values as if they were
 Dart `null`, it doesn't actually *change* the value itself. If an interop member
 returns `undefined` and you pass that value back into JS, JS will see
 `undefined`, *not* `null`, when compiling to JS.
@@ -280,3 +280,4 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`ExternalDartReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReference-extension-type.html
 [`toExternalReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
 [`toDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
+[Wasm]: /web/wasm

@@ -298,7 +298,7 @@ Do we have any other package migrations to show off here?
 {% endcomment -%}
 
 [`package:web`]: {{site.pub-pkg}}/web
-[Wasm]: {{site.repo.dart.sdk}}/blob/main/pkg/dart2wasm/README.md
+[Wasm]: /web/wasm
 [html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [svg]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-svg/dart-svg-library.html
 [`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
@@ -309,7 +309,7 @@ Do we have any other package migrations to show off here?
 [dart-lang/web]: {{site.repo.dart.org}}/web
 [issue]: {{site.repo.dart.org}}/web/issues/new
 [helpers]: {{site.repo.dart.org}}/web/tree/main/lib/src/helpers
-[zones]: /articles/archive/zones
+[zones]: /libraries/async/zones
 [Conversions]: /interop/js-interop/js-types#conversions
 [interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage

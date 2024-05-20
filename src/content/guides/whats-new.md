@@ -370,7 +370,7 @@ we made the following changes to this site:
 [Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
-[Zones]: /articles/archive/zones
+[Zones]: /libraries/async/zones
 [Documentation]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives
@@ -560,7 +560,7 @@ we made the following changes to this site:
 [Low-level HTML tutorials]: /web/get-started
 
 [native types]: /interop/c-interop#interfacing-with-native-types
-[initializing formal parameters]: /language/constructors#initializing-formal-parameters
+[initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await
 [why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
