@@ -72,11 +72,11 @@ of a mixin defines any members the mixin's behavior depends on.
 
 ### Define abstract members in the mixin
 
-By declaring the mixin as abstract, you force any type that uses
-it to define the abstract method upon which its behavior depends. 
+Declaring an abstract method in a mixin forces any type that uses
+the mixin to define the abstract method upon which its behavior depends. 
 
 ```dart
-abstract mixin Musician {
+mixin Musician {
   void playInstrument(String instrumentName); // Abstract method.
 
   void playPiano() {
@@ -123,7 +123,23 @@ mixin while not actually implementing the interface will also ensure any member
 dependencies are defined for the mixin.
 
 ```dart
-?
+abstract interface class Tuner {
+  void tuneInstrument();
+}
+
+mixin Guitarist implements Tuner {
+  void playSong() {
+    tuneInstrument();
+
+    print('Strums guitar majestically.');
+  }
+}
+
+class PunkRocker with Guitarist {
+  void tuneInstrument() {
+    print("Don't bother, being out of tune is punk rock.");
+  }
+}
 ```
 
 ### Use the `on` clause to declare a superclass
