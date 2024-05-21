@@ -6,7 +6,7 @@ description: Downloads a package and unpacks its contents in place.
 :::version-note
 The `unpack` subcommand was introduced in Dart 3.4.
 To download the archive of a package with an earlier SDK,
-visit the **Versions** tab of a package on the pub.dev site.
+visit the **Versions** tab of a package on the [pub.dev site]({{site.pub}}).
 :::
 
 _Unpack_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -15,8 +15,7 @@ _Unpack_ is one of the commands of the [pub tool](/tools/pub/cmd).
 $ dart pub unpack <package>[:descriptor] [--[no-]resolve] [--output=<output directory>] [--[no-]force] [other options]
 ```
 
-This command downloads the specified `<package>`
-according to the specified descriptor then
+This command downloads the specified `<package>` and
 extracts its contents to a `<package>-<version>` directory.
 
 For example, the following command downloads and extracts the
@@ -27,13 +26,6 @@ to the current directory:
 $ dart pub unpack http
 ```
 
-By default, pub runs `dart pub get` after the package is extracted
-to resolve the package's dependencies.
-To disable the automatic resolution, pass the `--no-resolve` option:
-
-```console
-$ dart pub unpack http --no-resolve
-```
 
 To change the source or version of the downloaded package,
 add a source descriptor after the package name and a colon.
@@ -61,7 +53,7 @@ For options that apply to all pub commands, check out
 Overwrite existing folders that conflict
 with the package folder or its contents during extraction.
 
-### `--[no-]resolve {:#resolve-option}
+### `--[no-]resolve` {:#resolve-option}
 
 By default, `dart pub get` runs automatically to complete package resolution
 after downloading and unpacking a package.
@@ -75,7 +67,7 @@ $ dart pub unpack http --no-resolve
 ### `--output=<dir>` or `-o <dir>` {:#output-option}
 
 By default, extract the package to the current directory (`.`).
-To change the directory the package are extracted to,
+To change the directory the package is extracted to,
 specify the desired output directory with the `--output` option.
 
 For example, the following commands unpacks the
