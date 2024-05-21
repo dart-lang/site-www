@@ -290,9 +290,11 @@ prints each converted string with its length.
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
 
-var uppercaseList = list.map((item) => item.toUpperCase()).toList(); 
+var uppercaseList = list.map((item) {
+  return item.toUpperCase();
+}).toList();
 // Convert to list after mapping
- 
+
 for (var item in uppercaseList) {
   print('$item: ${item.length}');
 }
@@ -306,10 +308,10 @@ void main() {
   const list = ['apples', 'bananas', 'oranges'];
 
   var uppercaseList = list.map((item) {
-    return item.toUpperCase(); 
+    return item.toUpperCase();
   }).toList();
   // Convert to list after mapping
-  
+
   for (var item in uppercaseList) {
     print('$item: ${item.length}');
   }
@@ -323,8 +325,8 @@ to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-  var uppercaseList = list.map((item) => item.toUpperCase()).toList();
-  uppercaseList.forEach((item) => print('$item: ${item.length}')); 
+var uppercaseList = list.map((item) => item.toUpperCase()).toList();
+uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
 
 ## Lexical scope
@@ -398,13 +400,13 @@ If your code needs a closure that invokes a named function with the same
 parameters as the closure accepts, don't wrap the call in a lambda.
 Use a tear-off.
 
-<?code-excerpt "misc/lib/language_tour/tear-offs.dart (variables)" ?>
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (variables)" ?>
 ```dart
 var charCodes = [68, 97, 114, 116];
 var buffer = StringBuffer();
 ```
 
-<?code-excerpt "misc/lib/language_tour/tear-offs.dart (good-example)" ?>
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (good-example)" ?>
 ```dart tag=good
 // Function tear-off
 charCodes.forEach(print);
@@ -413,7 +415,7 @@ charCodes.forEach(print);
 charCodes.forEach(buffer.write);
 ```
 
-<?code-excerpt "misc/lib/language_tour/tear-offs.dart (bad-example)" ?>
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (bad-example)" ?>
 ```dart tag=bad
 // Function lambda
 charCodes.forEach((code) {

@@ -249,10 +249,10 @@ var buffers = charCodes.map(StringBuffer.new);
 
 ```dart tag=bad
 // Instead of a lambda for a named constructor:
-var strings = charCodes.map ((code) => String.fromCharCode (code));
+var strings = charCodes.map((code) => String.fromCharCode(code));
 
 // Instead of a lambda for an unnamed constructor:
-var buffers = charCodes.map ((code) => StringBuffer (code));
+var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
 For visual learners, watch this Decoding Flutter video on tear-offs.
