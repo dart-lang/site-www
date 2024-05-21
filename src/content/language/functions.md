@@ -262,10 +262,10 @@ More about those in the next section.
 ## Anonymous functions
 
 Though you name most functions, such as `main()` or `printElement()`.
-you can create nameless functions.
-These functions are called _anonymous function_, _lambda_, or _closure_.
+you can also create functions without names.
+These functions are called _anonymous functions_, _lambdas_, or _closures_.
 
-An anonymous function resembles a named function:
+An anonymous function resembles a named function as it has:
 
 * Zero or more parameters, comma-separated
 * Optional type annotations between parentheses.
@@ -289,11 +289,13 @@ prints each converted string with its length.
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
-list.map((item) {
-  return item.toUpperCase();
-}).forEach((item) {
+
+var uppercaseList = list.map((item) => item.toUpperCase()).toList(); 
+// Convert to list after mapping
+ 
+for (var item in uppercaseList) {
   print('$item: ${item.length}');
-});
+}
 ```
 
 Click **Run** to execute the code.
@@ -302,36 +304,36 @@ Click **Run** to execute the code.
 ```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
-  list.map((item) {
-    return item.toUpperCase();
-  }).forEach((item) {
+
+  var uppercaseList = list.map((item) {
+    return item.toUpperCase(); 
+  }).toList();
+  // Convert to list after mapping
+  
+  for (var item in uppercaseList) {
     print('$item: ${item.length}');
-  });
+  }
 }
 ```
 
 If the function contains only a single expression or return statement,
-you can shorten it using arrow notation. 
+you can shorten it using arrow notation.
 Paste the following line into DartPad and click **Run**
 to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list
-    .map((item) => item.toUpperCase())
-    .forEach((item) => print('$item: ${item.length}'));
+  var uppercaseList = list.map((item) => item.toUpperCase()).toList();
+  uppercaseList.forEach((item) => print('$item: ${item.length}')); 
 ```
-
 
 ## Lexical scope
 
-Dart is a lexically scoped language, which means that the scope of
-variables is determined statically, simply by the layout of the code.
-You can "follow the curly braces outwards" to see if a variable is in
-scope.
+Dart determines the scope of variables based on the layout of its code.
+A programming language with this feature is termed a lexically scoped language.
+You can "follow the curly braces outwards" to see if a variable is in scope.
 
-Here is an example of nested functions with variables at each scope
-level:
+**Example:** A series of nested functions with variables at each scope level:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (nested-functions)"?>
 ```dart
@@ -355,15 +357,13 @@ void main() {
 }
 ```
 
-Notice how `nestedFunction()` can use variables from every level, all
-the way up to the top level.
-
+The `nestedFunction()` method can use variables from every level,
+all the way up to the top level.
 
 ## Lexical closures
 
-A *closure* is a function object that has access to variables in its
-lexical scope, even when the function is used outside of its original
-scope.
+A function object that can access variables in its lexical scope
+when the function sits outside that scope is called a _closure_.
 
 Functions can close over variables defined in surrounding scopes. In the
 following example, `makeAdder()` captures the variable `addBy`. Wherever the
@@ -389,6 +389,42 @@ void main() {
 }
 ```
 
+## Tear-offs
+
+When you refer to a function, method, or named constructor without parentheses,
+Dart creates a _tear-off_. This is a closure that takes the same
+parameters as the function and invokes the underlying function when you call it.
+If your code needs a closure that invokes a named function with the same
+parameters as the closure accepts, don't wrap the call in a lambda.
+Use a tear-off.
+
+<?code-excerpt "misc/lib/language_tour/tear-offs.dart (variables)" ?>
+```dart
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+```
+
+<?code-excerpt "misc/lib/language_tour/tear-offs.dart (good-example)" ?>
+```dart tag=good
+// Function tear-off
+charCodes.forEach(print);
+
+// Method tear-off
+charCodes.forEach(buffer.write);
+```
+
+<?code-excerpt "misc/lib/language_tour/tear-offs.dart (bad-example)" ?>
+```dart tag=bad
+// Function lambda
+charCodes.forEach((code) {
+  print(code);
+});
+
+// Method lambda
+charCodes.forEach((code) {
+  buffer.write(code);
+});
+```
 
 ## Testing functions for equality
 

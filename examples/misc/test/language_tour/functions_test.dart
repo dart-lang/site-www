@@ -71,11 +71,15 @@ ORANGES: 7
       void main() {
         // #docregion anonymous-function
         const list = ['apples', 'bananas', 'oranges'];
-        list.map((item) {
+
+        var uppercaseList = list.map((item) {
           return item.toUpperCase();
-        }).forEach((item) {
+        }).toList();
+        // Convert to list after mapping
+
+        for (var item in uppercaseList) {
           print('$item: ${item.length}');
-        });
+        }
         // #enddocregion anonymous-function
       }
       // #enddocregion anonymous-function-main
@@ -90,9 +94,8 @@ ORANGES: 7
     void testAnonymousFunction() {
       const list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
-      list
-          .map((item) => item.toUpperCase())
-          .forEach((item) => print('$item: ${item.length}'));
+      var uppercaseList = list.map((item) => item.toUpperCase()).toList();
+      uppercaseList.forEach((item) => print('$item: ${item.length}'));
       // #enddocregion anon-func
     }
 
