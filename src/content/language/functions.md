@@ -49,9 +49,13 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 is sometimes referred to as _arrow_ syntax.
 
 :::note
-Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-the semicolon (;). For example, you can't put an [if statement][]
-there, but you can use a [conditional expression][].
+Only _expressions_ can appear between the arrow (=\>) and the semicolon (;).
+Expressions return values.
+This means that you can't write code in a place that expects a value.
+In the previous example,
+`_nobleGases[atomicNumber] != null;` returns a boolean value.
+The function then returns a value if the `atomicNumber` falls into
+the noble gas range. The function does nothing but return a value.
 :::
 
 ## Parameters
