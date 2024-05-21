@@ -26,7 +26,6 @@ to the current directory:
 $ dart pub unpack http
 ```
 
-
 To change the source or version of the downloaded package,
 add a source descriptor after the package name and a colon.
 For example, the following command downloads the `1.2.0` release
@@ -55,8 +54,8 @@ with the package folder or its contents during extraction.
 
 ### `--[no-]resolve` {:#resolve-option}
 
-By default, `dart pub get` runs automatically to complete package resolution
-after downloading and unpacking a package.
+By default, `dart pub get` runs automatically to complete
+package resolution after downloading and unpacking a package.
 To disable automatic resolution,
 specify the `--no-resolve` flag:
 
