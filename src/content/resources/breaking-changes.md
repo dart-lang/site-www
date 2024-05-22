@@ -63,26 +63,60 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
-## 3.4.0
+## 3.5.0
 
 **Tentative**<br>
-The following changes are expected to be included in the 3.4.0 stable release,
+The following changes are expected to be included in the 3.5.0 stable release,
 but the final list will likely change before then.
 To reduce the potential impact of these changes, consider
-accounting for them before the 3.4.0 release.
+accounting for them before the 3.5.0 release.
 
 ### Language {:.no_toc}
 
-* [The pattern context type schema for cast patterns
+- [The context used by the compiler to perform type inference on
+  the operand of an `await` expression has been changed to
+  match the behavior of the analyzer.][55418]
+- [The context used by the compiler to perform type inference on
+  the right hand side of an "if-null" expression (`e1 ?? e2`) has been
+  changed to match the behavior of the analyzer.][55436]
+  The old behavior can be restored by supplying explicit types.
+
+[55418]: {{site.repo.dart.sdk}}/issues/55418
+[55436]: {{site.repo.dart.sdk}}/issues/55436
+
+#### `dart:typed_data`
+
+- **Removed**:
+  [The unmodifiable view classes for typed data have been removed][53128].
+  Instead of using the constructors of these classes, use
+  the new `asUnmodifiableView` methods on typed data lists.
+
+### Runtime {:.no_toc}
+
+- **Removed** The Dart VM no longer supports unsound null safety.
+  - The `--no-sound-null-safety` CLI option has been removed.
+  - The `Dart_NewListOf` and `Dart_IsLegacyType` functions have been removed
+    from the C API.
+
+## 3.4.0
+
+### Language {:.no_toc}
+
+- [The pattern context type schema for cast patterns
   is now `_` (the unknown type) instead of `Object?`][54640].
+- [The type schema used by the Dart compilers to
+  perform type inference on the operand of a null-aware spread operator (`...?`)
+  in map and set literals has been made nullable, to
+  match what currently happens in list literals.][54828]
 
 [54640]: {{site.repo.dart.sdk}}/issues/54640
+[54828]: {{site.repo.dart.sdk}}/issues/54828
 
 ### Libraries {:.no_toc}
 
 #### `dart:cli`
 
-* **Experimental** **Removed**: [The `waitFor` function][52121]
+- **Experimental** **Removed**: [The `waitFor` function][52121]
   has been removed.
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
@@ -92,8 +126,10 @@ accounting for them before the 3.4.0 release.
 - These libraries are now marked as legacy and
   will see less support in the future.
   New projects should prefer to use [`package:web`][] and `dart:js_interop`.
+  To learn more, check out [Migrate to package:web][].
 
 [`package:web`]: {{site.pub-pkg}}/web
+[Migrate to package:web]: /interop/js-interop/package-web
 
 #### `dart:js`
 
@@ -111,9 +147,21 @@ accounting for them before the 3.4.0 release.
 
 [`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
+#### `dart:io`
+
+- [`Stdout` has a new field `lineTerminator`, which allows
+  developers to control the line ending used by `stdout` and `stderr`.][53863]
+  Classes that implement `Stdout` must define the `lineTerminator` field.
+  The default semantics of `stdout` and `stderr` are not changed.
+- **Deprecated**: The `FileSystemDeleteEvent.isDirectory` property. 
+  It always returns `false`.
+
+[53863]: {{site.repo.dart.sdk}}/issues/53863
+
 #### `dart:typed_data`
 
-* **Deprecated**: [The unmodifiable view classes for typed data are deprecated][53128].
+- **Deprecated**:
+  [The unmodifiable view classes for typed data are deprecated][53128].
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
 
@@ -123,15 +171,21 @@ accounting for them before the 3.4.0 release.
 
 #### Production JavaScript compiler (dart2js)
 
-* **Experimental** **Deprecated**: You should now specify a format to
+-  **Experimental** **Deprecated**: You should now specify a format to
   the `--dump-info` CLI option of either `binary` or `json`.
   The `json` format is deprecated and might be removed in a future Dart release.
 
 #### Wasm compiler (dart2wasm)
 
-* **Experimental**: Various `dart compile wasm` CLI arguments have
+- **Experimental**: Various `dart compile wasm` CLI arguments have
   been updated, removed, or replaced.
   To learn more, run `dart compile wasm --verbose --help`.
+
+### Runtime {:.no_toc}
+
+- **Removed** The Dart VM longer supports external strings.
+  As a result, the `Dart_IsExternalString`, `Dart_NewExternalLatin1String`, and
+  `Dart_NewExternalUTF16String` functions have been removed from the Dart C API.
 
 ## 3.3.0
 
