@@ -12,7 +12,7 @@ The `dart pub token` subcommand has three subcommands:
 [`add`][], [`list`][] and [`remove`][].
 
 The `dart pub` command considers the terms _credential_, _token_, _secret_,
-and _secret token_ to be interchangable.
+and _secret token_ to be interchangeable.
 
 [`add`]: #add-a-new-credential
 [`list`]: #return-a-list-of-credentials
