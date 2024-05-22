@@ -1216,7 +1216,7 @@ If you want to learn more,
 here are some suggestions for where to go next:
 
 * Play with [DartPad.]({{site.dartpad}})
-* Try another [codelab](/codelabs).
+* Try another [tutorial](/tutorials).
 * Read the [Iterable API reference][iterable class]
   to learn about methods not covered by this codelab.
 

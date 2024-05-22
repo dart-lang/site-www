@@ -1,22 +1,3 @@
-- title: Tutorials & codelabs
-  expanded: false
-  children:
-    - title: Tutorials
-      match-page-url-exactly: true
-      permalink: /tutorials
-    - title: Codelabs
-      expanded: true
-      children:
-        - title: List of Dart codelabs
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Language cheatsheet
-          permalink: /codelabs/dart-cheatsheet
-        - title: Iterable collections
-          permalink: /codelabs/iterables
-        - title: Asynchronous programming
-          permalink: /codelabs/async-await
-
 - title: Language
   expanded: false
   children:
@@ -138,6 +119,8 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
+    - title: Iterable collections
+      permalink: /codelabs/iterables
     - title: Using streams
       permalink: /libraries/async/using-streams
     - title: Creating streams
@@ -363,6 +346,8 @@
       permalink: /guides/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
+    - title: Language cheatsheet
+      permalink: /codelabs/dart-cheatsheet
     - title: Coming from ...
       expanded: false
       children:
@@ -379,6 +364,9 @@
       permalink: /resources/books
     - title: Videos
       permalink: /resources/videos
+    - title: Tutorials
+      match-page-url-exactly: true
+      permalink: /tutorials
 
 - title: Related sites
   expanded: true

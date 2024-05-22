@@ -1082,7 +1082,7 @@ Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
 
 - Play with [DartPad]({{site.dartpad}}).
-- Try another [codelab](/codelabs).
+- Try another [tutorial](/tutorials).
 - Learn more about futures and asynchronous code in Dart:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.

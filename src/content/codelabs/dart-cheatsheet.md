@@ -2088,7 +2088,7 @@ We hope you enjoyed using this codelab to learn or test your knowledge of
 some of the most interesting features of the Dart language.
 Here are some suggestions for what to do now:
 
-* Try [other Dart codelabs](/codelabs).
+* Try [other Dart tutorials](/tutorials).
 * Read the [Dart language tour](/language).
 * Play with [DartPad.]({{site.dartpad}})
 * [Get the Dart SDK](/get-dart).
