@@ -197,8 +197,8 @@ to avoid a name conflict when invoking an extension explicitly.
 Use the following syntax to create an extension:
 
 ```plaintext
-extension <extension name> on <type> { // extension-name is optional
-  (<member definition>) // can provide one or more member-definitions
+extension <extension name>? on <type> { // <extension-name> is optional
+  (<member definition>)* // Can provide one or more <member definition>.
 }
 ```
 
