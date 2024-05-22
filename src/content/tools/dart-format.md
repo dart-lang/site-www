@@ -68,7 +68,6 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 ## Use trailing commas
 
-Dart code often involves building fairly deep tree-shaped data structures.
 Use optional trailing commas for better automatic formatting.
 Add a trailing comma at the end of parameter lists in functions, methods,
 and constructors.
