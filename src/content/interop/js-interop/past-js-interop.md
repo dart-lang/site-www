@@ -4,7 +4,7 @@ description: Archive of past JS interop implementations.
 ---
 
 :::warning
-None of these legacy interop libraries are supported when compiling to Wasm.
+None of these legacy interop libraries are supported when compiling to [Wasm][].
 :::
 
 This page addresses previous iterations of JS interop for Dart that are
@@ -121,3 +121,4 @@ TODO: Link to `package:web` section
 [`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util
 [`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe
+[Wasm]: /web/wasm

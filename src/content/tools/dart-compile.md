@@ -117,6 +117,14 @@ The following table shows the subcommands of `dart compile`.
       <br><em><a href="#js">Learn more.</a></em>
     </td>
   </tr>
+  <tr>
+    <td> <code>wasm</code> </td>
+    <td> WebAssembly </td>
+    <td> A portable, binary instruction format for a stack-based virtual machine.
+         Currently under development.
+      <br><em><a href="/web/wasm">Learn more.</a></em>
+    </td>
+  </tr>
 </table>
 
 

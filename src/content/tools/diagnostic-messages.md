@@ -29,14 +29,18 @@ doesn't conform to the language specification or
 that might work in unexpected ways.
 
 [bottom type]: https://dart.dev/null-safety/understanding-null-safety#top-and-bottom
+[debugPrint]: https://api.flutter.dev/flutter/foundation/debugPrint.html
 [ffi]: https://dart.dev/guides/libraries/c-interop
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
 [irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
+[kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
+[meta-doNotSubmit]: https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html
 [meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
 [meta-immutable]: https://pub.dev/documentation/meta/latest/meta/immutable-constant.html
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
 [meta-literal]: https://pub.dev/documentation/meta/latest/meta/literal-constant.html
+[meta-mustBeConst]: https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html
 [meta-mustCallSuper]: https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html
 [meta-optionalTypeArgs]: https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html
 [meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html
@@ -44,6 +48,7 @@ that might work in unexpected ways.
 [meta-UseResult]: https://pub.dev/documentation/meta/latest/meta/UseResult-class.html
 [meta-visibleForOverriding]: https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html
 [meta-visibleForTesting]: https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html
+[package-logging]: https://pub.dev/packages/logging
 [refutable pattern]: https://dart.dev/resources/glossary#refutable-pattern
 
 ### abi_specific_integer_invalid
@@ -769,6 +774,74 @@ import 'dart:ffi';
 
 int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
   return p.asFunction(isLeaf: true);
+}
+```
+
+### argument_must_be_native
+
+_Argument to 'Native.addressOf' must be annotated with @Native_
+
+#### Description
+
+The analyzer produces this diagnostic when the argument passed to
+`Native.addressOf` isn't annotated with the `Native` annotation.
+
+#### Examples
+
+The following code produces this diagnostic because the argument to
+`addressOf` is a string, not a field, and strings can't be annotated:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf([!'f'!]));
+}
+```
+
+The following code produces this diagnostic because the function `f` is
+being passed to `addressOf` but isn't annotated as being `Native`:
+
+```dart
+import 'dart:ffi';
+
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>([!f!]));
+}
+```
+
+#### Common fixes
+
+If the argument isn't either a field or a function, then replace the
+argument with a field or function that's annotated with `Native`:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>(f));
+}
+```
+
+If the argument is either a field or a function, then annotate the field
+of function with `Native`:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>(f));
 }
 ```
 
@@ -1917,90 +1990,6 @@ extension [!mixin!] on int {}
 #### Common fixes
 
 Choose a different name for the declaration.
-
-### callback_must_not_use_typed_data
-
-_FFI callbacks can't take typed data arguments or return value._
-
-#### Description
-
-The analyzer produces this diagnostic when an invocation of
-`Pointer.fromFunction`, one of`NativeCallable`'s constructors has a
-typed data argument or return value.
-
-Typed data unwrapping is only supported on arguments for leaf FFI calls.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the parameter type
-of `g` is a typed data.
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Uint8List i) {}
-
-void g() {
-  Pointer.fromFunction<Void Function(Pointer<Uint8>)>([!f!]);
-}
-```
-
-#### Common fixes
-
-Use the `Pointer` type instead:
-
-```dart
-import 'dart:ffi';
-
-void f(Pointer<Uint8> i) {}
-
-void g() {
-  Pointer.fromFunction<Void Function(Pointer<Uint8>)>(f);
-}
-```
-
-### call_must_not_return_typed_data
-
-_FFI calls can't return typed data._
-
-#### Description
-
-The analyzer produces this diagnostic when the return type of
-`Pointer.asFunction`, `DynamicLibrary.lookupFunction`, or
-`@Native` is a typed data.
-
-Typed data unwrapping is only supported on arguments for leaf FFI calls.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the dart function
-signature contains a typed data, but the `isLeaf` argument is `false`:
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
-  p.asFunction<[!Uint8List Function()!]>();
-}
-```
-
-#### Common fixes
-
-Use the `Pointer` type instead:
-
-```dart
-import 'dart:ffi';
-
-void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
-  p.asFunction<Pointer<Uint8> Function()>();
-}
-```
 
 ### case_block_not_terminated
 
@@ -7074,6 +7063,191 @@ final class C extends Struct {
 }
 ```
 
+### ffi_native_invalid_duplicate_default_asset
+
+_There may be at most one @DefaultAsset annotation on a library._
+
+#### Description
+
+The analyzer produces this diagnostic when a library directive has more
+than one `DefaultAsset` annotation associated with it.
+
+#### Example
+
+The following code produces this diagnostic because the library directive
+has two `DefaultAsset` annotations associated with it:
+
+```dart
+@DefaultAsset('a')
+@[!DefaultAsset!]('b')
+library;
+
+import 'dart:ffi';
+```
+
+#### Common fixes
+
+Remove all but one of the `DefaultAsset` annotations:
+
+```dart
+@DefaultAsset('a')
+library;
+
+import 'dart:ffi';
+```
+
+### ffi_native_invalid_multiple_annotations
+
+_Native functions and fields must have exactly one `@Native` annotation._
+
+#### Description
+
+The analyzer produces this diagnostic when there is more than one `Native`
+annotation on a single declaration.
+
+#### Example
+
+The following code produces this diagnostic because the function `f` has
+two `Native` annotations associated with it:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function(Int32)>()
+@[!Native!]<Int32 Function(Int32)>(isLeaf: true)
+external int f(int v);
+```
+
+#### Common fixes
+
+Remove all but one of the annotations:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function(Int32)>(isLeaf: true)
+external int f(int v);
+```
+
+### ffi_native_must_be_external
+
+_Native functions must be declared external._
+
+#### Description
+
+The analyzer produces this diagnostic when a function annotated as being
+`@Native` isn't marked as `external`.
+
+#### Example
+
+The following code produces this diagnostic because the function `free` is
+annotated as being `@Native`, but the function isn't marked as `external`:
+
+```dart
+import 'dart:ffi';
+
+[!@Native<Void Function(Pointer<Void>)>()!]
+[!void free(Pointer<Void> ptr) {}!]
+```
+
+#### Common fixes
+
+If the function is a native function, then add the modifier `external`
+before the return type:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Pointer<Void>)>()
+external void free(Pointer<Void> ptr);
+```
+
+### ffi_native_unexpected_number_of_parameters
+
+_Unexpected number of Native annotation parameters. Expected {0} but has {1}._
+
+#### Description
+
+The analyzer produces this diagnostic when the number of parameters in the
+function type used as a type argument for the `@Native` annotation doesn't
+match the number of parameters in the function being annotated.
+
+#### Example
+
+The following code produces this diagnostic because the function type used
+as a type argument for the `@Native` annotation (`Void Function(Double)`)
+has one argument and the type of the annotated function
+(`void f(double, double)`) has two arguments:
+
+```dart
+import 'dart:ffi';
+
+[!@Native<Void Function(Double)>(symbol: 'f')!]
+[!external void f(double x, double y);!]
+```
+
+#### Common fixes
+
+If the annotated function is correct, then update the function type in the
+`@Native` annotation to match:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Double, Double)>(symbol: 'f')
+external void f(double x, double y);
+```
+
+If the function type in the `@Native` annotation is correct, then update
+the annotated function to match:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Double)>(symbol: 'f')
+external void f(double x);
+```
+
+### ffi_native_unexpected_number_of_parameters_with_receiver
+
+_Unexpected number of Native annotation parameters. Expected {0} but has {1}.
+Native instance method annotation must have receiver as first argument._
+
+#### Description
+
+The analyzer produces this diagnostic when the type argument used on the
+`@Native` annotation of a native method doesn't include a type for the
+receiver of the method.
+
+#### Example
+
+The following code produces this diagnostic because the type argument on
+the `@Native` annotation (`Void Function(Double)`) doesn't include a type
+for the receiver of the method:
+
+```dart
+import 'dart:ffi';
+
+class C {
+  [!@Native<Void Function(Double)>()!]
+  [!external void f(double x);!]
+}
+```
+
+#### Common fixes
+
+Add an initial parameter whose type is the same as the class in which the
+native method is being declared:
+
+```dart
+import 'dart:ffi';
+
+class C {
+  @Native<Void Function(C, Double)>()
+  external void f(double x);
+}
+```
+
 ### field_initialized_by_multiple_initializers
 
 _The field '{0}' can't be initialized twice in the same constructor._
@@ -11306,59 +11480,6 @@ extension E on String {
 }
 ```
 
-### invalid_use_of_do_not_submit_member
-
-_Uses of '{0}' should not be submitted to source control._
-
-#### Description
-
-The analyzer produces this diagnostic when a member that is annotated with
-`@doNotSubmit` is referenced outside of a member
-declaration that is also annotated with `@doNotSubmit`.
-
-#### Example
-
-Given a file `a.dart` containing the following declaration:
-
-```dart
-import 'package:meta/meta.dart';
-
-@doNotSubmit
-void emulateCrash() { /* ... */ }
-```
-
-The following code produces this diagnostic because the declaration is
-being referenced outside of a member that is also annotated with
-`@doNotSubmit`:
-
-```dart
-import 'a.dart';
-
-void f() {
-  [!emulateCrash!]();
-}
-```
-
-#### Common fixes
-
-Most commonly, when complete with local testing, the reference to the
-member should be removed.
-
-If building additional functionality on top of the member, annotate the
-newly added member with `@doNotSubmit` as well:
-
-```dart
-import 'package:meta/meta.dart';
-
-import 'a.dart';
-
-@doNotSubmit
-void emulateCrashWithOtherFunctionality() {
-  emulateCrash();
-  // do other things.
-}
-```
-
 ### invalid_use_of_internal_member
 
 _The member '{0}' can only be used within its package._
@@ -15096,8 +15217,8 @@ _Argument '{0}' must be a constant._
 #### Description
 
 The analyzer produces this diagnostic when a parameter is
-annotated with the `@mustBeConst` annotation and the
-corresponding argument is not a constant expression.
+annotated with the [`mustBeConst`][meta-mustBeConst] annotation and
+the corresponding argument is not a constant expression.
 
 #### Example
 
@@ -15107,7 +15228,9 @@ function `g` isn't a constant:
 
 ```dart
 import 'package:meta/meta.dart' show mustBeConst;
+
 int f(int value) => g([!value!]);
+
 int g(@mustBeConst int value) => value + 1;
 ```
 
@@ -15118,8 +15241,11 @@ with a constant:
 
 ```dart
 import 'package:meta/meta.dart' show mustBeConst;
+
 const v = 3;
+
 int f() => g(v);
+
 int g(@mustBeConst int value) => value + 1;
 ```
 
@@ -24025,5 +24151,58 @@ type of the function to allow it:
 ```dart
 Iterable<String> get zero sync* {
   yield '0';
+}
+```
+
+### invalid_use_of_do_not_submit_member
+
+_Uses of '{0}' should not be submitted to source control._
+
+#### Description
+
+The analyzer produces this diagnostic when a member that is annotated with
+[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
+declaration that is also annotated with `@doNotSubmit`.
+
+#### Example
+
+Given a file `a.dart` containing the following declaration:
+
+```dart
+import 'package:meta/meta.dart';
+
+@doNotSubmit
+void emulateCrash() { /* ... */ }
+```
+
+The following code produces this diagnostic because the declaration is
+being referenced outside of a member that is also annotated with
+`@doNotSubmit`:
+
+```dart
+import 'a.dart';
+
+void f() {
+  [!emulateCrash!]();
+}
+```
+
+#### Common fixes
+
+Most commonly, when complete with local testing, the reference to the
+member should be removed.
+
+If building additional functionality on top of the member, annotate the
+newly added member with `@doNotSubmit` as well:
+
+```dart
+import 'package:meta/meta.dart';
+
+import 'a.dart';
+
+@doNotSubmit
+void emulateCrashWithOtherFunctionality() {
+  emulateCrash();
+  // do other things.
 }
 ```

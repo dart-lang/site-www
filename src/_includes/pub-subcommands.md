@@ -8,4 +8,5 @@
 * [`publish`](/tools/pub/cmd/pub-lish)
 * [`remove`](/tools/pub/cmd/pub-remove)
 * [`token`](/tools/pub/cmd/pub-token)
+* [`unpack`](/tools/pub/cmd/pub-unpack)
 * [`upgrade`](/tools/pub/cmd/pub-upgrade)

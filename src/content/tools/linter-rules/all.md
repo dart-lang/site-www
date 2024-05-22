@@ -17,7 +17,7 @@ and adjust as you see fit.
 linter:
   rules:
     {% for lint in sorted_lints %}
-    {%- if lint.sinceDartSdk != "Unreleased" and lint.state != "removed" and lint.state != "internal" -%}
+    {%- if lint.sinceDartSdk != "Unreleased" and lint.sinceDartSdk not contains "-wip" and lint.state != "removed" and lint.state != "internal" -%}
     - {{lint.name}}
     {% endif -%}
     {%- endfor %}
