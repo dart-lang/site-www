@@ -497,19 +497,19 @@ var maximumOrNull =
 ### Conflicting Superinterfaces
 
 A class which `implements` more than one superinterface must be able to
-implement valid overrides for every member.
+implement valid overrides for every member of every superinterface.
 Each member with a given name requires compatible signatures across the
 superinterfaces.
 
 Superinterfaces must not include conflicting generics.
-A class cannot implement both `C<A>` and `C<B>`, including indirect
+A class can't implement both `C<A>` and `C<B>`, including indirect
 superinterfaces.
 
 #### Example
 
 In the following code,
-class `C` will have conflicting generic interfaces and it will be impossible to
-define valide overrides for some members.
+class `C` has conflicting generic interfaces.
+Definitions of valid overrides for some members would be impossible.
 
 <?code-excerpt "TODO"?>
 ```dart tag=fails-sa
