@@ -21,6 +21,13 @@
   cover: data-structures-algorithms-dart.webp
   link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
   desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
+- title: "The Art of Dart: Master the Dart Programming Language"
+  authors:
+   - Kenneth Choi
+  publisher: 
+  cover: art-of-dart.webp
+  link: "https://www.amazon.com/Art-Dart-Master-Programming-Language/dp/B0CRGKQX6W"
+  desc: "The Art of Dart is a comprehensive guide to mastering the Dart programming language! It caters to all skill levels, making it perfect for beginners and experienced coders. Inside, you'll find elegant coding practices, explore both foundational and complex programming concepts, and gain confidence in solving coding challenges. With a clear and concise approach, The Art of Dart transforms coding into a creative endeavor."
 - title: "O guia de Dart"
   authors:
     - Julio Bitencourt
