@@ -117,12 +117,12 @@ The latest, recommended tools are **bolded**, and legacy tools are *italicized*
 | [**`package:web`**][pkg-web] <br>Lightweight browser API bindings built around JS interop | Replaces all `dart:*` web libraries. Read the [migration guide][html-web]. |
 | [**`dart:js_interop`**][js-interop] <br>Interop with JavaScript and browser APIs. | Replaces `package:js`. |
 | [**`dart:js_interop_unsafe`**][js-interop-unsafe] <br>Utility methods to manipulate JavaScript objects dynamically. | Replaces `dart:js_util`. |
-| [*`dart:html`*][dart-html]<br>HTML elements and other resources for web-based applications. | Use `package:web` instead. |
-| [*`dart:indexed_db`*][dart-indexed_db]<br>Client-side key-value store with support for indexes.  | Use `package:web` instead. |
-| [*`dart:js`*][dart-js], [*`dart:js_util`*][dart-js_util], [*`package:js`*][package-js]<br>Low-level primitives and higher-level annotations for JS interop. | Use `dart:js_interop` or `dart:js_interop_unsafe` instead. |
-| [*`dart:svg`*][dart-svg]<br>Scalable Vector Graphics.  | Use `package:web` instead. |
-| [*`dart:web_audio`*][dart-web_audio]<br>High-fidelity audio programming in the browser. | Use `package:web` instead. |
-| [*`dart:web_gl`*][dart-web_gl]<br>3D programming in the browser. | Use `package:web` instead. |
+| [*`dart:html`*][dart-html] *(legacy)* <br>HTML elements and other resources for web-based applications. | Use `package:web` instead. |
+| [*`dart:indexed_db`*][dart-indexed_db] *(legacy)* <br>Client-side key-value store with support for indexes.  | Use `package:web` instead. |
+| [*`dart:js`*][dart-js], [*`dart:js_util`*][dart-js_util], [*`package:js`*][package-js] *(legacy)* <br>Low-level primitives and higher-level annotations for JS interop. | Use `dart:js_interop` or `dart:js_interop_unsafe` instead. |
+| [*`dart:svg`*][dart-svg] *(legacy)* <br>Scalable Vector Graphics.  | Use `package:web` instead. |
+| [*`dart:web_audio`*][dart-web_audio] *(legacy)* <br>High-fidelity audio programming in the browser. | Use `package:web` instead. |
+| [*`dart:web_gl`*][dart-web_gl] *(legacy)* <br>3D programming in the browser. | Use `package:web` instead. |
 
 {:.table .table-striped}
 
