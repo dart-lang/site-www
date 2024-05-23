@@ -11,7 +11,7 @@ and project information if in a directory with a `pubspec.yaml`.
 The output information can be used for debugging tooling issues
 or reporting a bug.
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 :::warning
 If you are including the `dart info` output in a bug report,

@@ -12,6 +12,7 @@ nextpage:
 
 {% assign ckw = '&nbsp;<sup>1</sup>' %}
 {% assign bii = '&nbsp;<sup>2</sup>' %}
+{% assign unr = '&nbsp;<sup>3</sup>' %}
 
 The following table lists the words
 that the Dart language reserves for its own use.
@@ -27,6 +28,7 @@ To learn more about identifier usage, click on the term.
 {%- case keyword.type %}
 {% when 'bit' %}{{bii}}
 {% when 'context' %}{{ckw}}
+{% when 'unrestricted' %}{{unr}}
 {% endcase %}
 {% endtablerow %}
 </table>
@@ -38,3 +40,5 @@ To learn more about identifier usage, click on the term.
         (a class, a mixin, an enum, an extension type, or a type alias),
         the name of an extension, or as an import prefix.
         It can be used as an identifier in all other circumstances.
+
+{{unr}} This keyword can be used as an identifier without restriction.

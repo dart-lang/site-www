@@ -22,7 +22,7 @@ for an explanation and the answer.
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 ## String interpolation

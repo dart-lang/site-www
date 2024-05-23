@@ -77,4 +77,4 @@ $ dart pub cache add http --version "0.12.2"
 If `--version` is omitted, pub installs the best of all known versions.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

@@ -33,7 +33,7 @@ Estimated time to complete this codelab: 60 minutes.
 
 :::note
 This page uses embedded DartPads to display examples and exercises.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 The exercises in this codelab have partially completed code snippets.

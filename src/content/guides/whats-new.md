@@ -17,6 +17,65 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## May 14, 2024: 3.4 release
+
+This section lists notable changes made from February 16, 2024,
+through May 14, 2024.
+For details about the 3.4 release,
+check out [3.4 blog post][] and the [SDK changelog][3-4-changelog].
+
+[3.4 blog post]: https://medium.com/dartlang/dart-3-4-bd8d23b4462a
+[3-4-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#340
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Added a page documenting the experimental [Macros][] language feature.
+* Added a page to track [Wasm][] developments for Dart.
+* Refactored the [Constructors][] page.
+* Clarified the instructions in the [Renames][] section of the `package:web`
+  migration page.
+* Adjusted the Effective Dart entry on [enabling type promotion][] to recommend
+  the null-check pattern before other idioms.
+* Revised the [Web libraries and packages][] list to better represent the
+  recommended solutions.
+* Explained how to destructure named fields on the [Records][] and [Patterns][]
+  pages.
+* Included a [before-and-after table][] of web solutions on the JS interop page.
+* Added a section explaining [spread operators][] to the Operators page.
+* Clarified ordering of [parenthetical patterns][] on the Pattern types page.
+* Added docs for [`ExternalDartReference`][] to the JS types page.
+* Updated the site for new [linter rules][] and [diagnostic messages][],
+  for example adding docs for the new [`@mustBeConst`][] annotation diagnostic.
+
+[Macros]: /language/macros
+[Wasm]: /web/wasm
+[Constructors]: /language/constructors/
+[Renames]: /interop/js-interop/package-web/#renames
+[enabling type promotion]: /effective-dart/usage/#consider-type-promotion-or-null-check-patterns-for-using-nullable-types
+[linter rules]: /tools/linter-rules/
+[diagnostic messages]: /tools/diagnostic-messages/
+[`@mustBeConst`]: /tools/diagnostic-messages/#non_const_argument_for_const_parameter
+[Web libraries and packages]: /web/libraries/
+[Records]: /language/records/#multiple-returns
+[Patterns]: /language/patterns/#destructuring-multiple-returns
+[before-and-after table]: /interop/js-interop/#next-generation-js-interop
+[spread operators]: /language/operators/#spread-operators
+[parenthetical patterns]: /language/pattern-types/#parenthesized
+[`ExternalDartReference`]: /interop/js-interop/js-types/#jsboxeddartobject-vs-externaldartreference
+
+### Articles added to the Dart blog {:.no_toc}
+
+We published the following article on the Dart blog:
+
+* [History of JS interop in Dart][blog-3-28-24]
+* [Dart in Google Summer of Code 2024][blog-3-5-24]
+
+[blog-3-28-24]: https://medium.com/dartlang/history-of-js-interop-in-dart-98b06991158f
+[blog-3-5-24]: https://medium.com/dartlang/dart-in-google-summer-of-code-2024-8ca45fb6dc4e
+
 ## February 15, 2024: 3.3 release
 
 This section lists notable changes made from November 16, 2023,
@@ -367,10 +426,10 @@ we made the following changes to this site:
 [community resources section]: /community#additional-community-resources
 [migration guide]: /null-safety/migration-guide
 [unsound null safety]: /null-safety/unsound-null-safety
-[Learning Dart as a Swift developer]: /guides/language/coming-from/swift-to-dart
+[Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /tools/pub/glossary#content-hashes
-[Zones]: /articles/archive/zones
+[Zones]: /libraries/async/zones
 [Documentation]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [Style]: /effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives
@@ -381,7 +440,7 @@ we made the following changes to this site:
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency
 [`pub global` page]: /tools/pub/cmd/pub-global
-[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 [`dart run` page]: /tools/dart-run#debugging
 [operator precedence and associativity]: /language/operators
 [Building URIs]: /libraries/dart-core#building-uris
@@ -525,7 +584,7 @@ we made the following changes to this site:
   * Updated the [security][] page to match our current security practices.
   * Added a key binding (`/`) to automatically focus the search bar.
 
-[Learning Dart as a JavaScript developer]: /guides/language/coming-from/js-to-dart
+[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 
 [Named parameters]: /language/functions#named-parameters
 [Enumerated types]: /language/enums
@@ -560,7 +619,7 @@ we made the following changes to this site:
 [Low-level HTML tutorials]: /web/get-started
 
 [native types]: /interop/c-interop#interfacing-with-native-types
-[initializing formal parameters]: /language/constructors#initializing-formal-parameters
+[initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await
 [why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
@@ -716,7 +775,7 @@ we made the following changes to this site:
 [dart-tool]: /tools/dart-tool
 [recommended linter rules]: /tools/analysis#lints
 [core libraries]: /libraries
-[commonly used packages]: /guides/libraries/useful-libraries
+[commonly used packages]: /resources/useful-packages
 [dart.dev/jobs]: /jobs
 [no-promo]: /tools/non-promotion-reasons
 [`dart create`]: /tools/dart-create
@@ -794,9 +853,9 @@ we made the following changes to this site:
 [Numbers in Dart]: /guides/language/numbers
 [streams tutorial]: /tutorials/language/streams
 [typedef section]: /language/typedefs
-[Using Google APIs]: /guides/google-apis
+[Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud
-[Writing package pages]: /guides/libraries/writing-package-pages
+[Writing package pages]: /tools/pub/writing-package-pages
 
 
 ### Articles added to the Dart blog {:.no_toc}

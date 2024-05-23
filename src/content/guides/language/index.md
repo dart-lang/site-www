@@ -9,11 +9,11 @@ These two resources are popular with both beginning Dart developers and experts.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/language">Language tour</a></h3>
+    <h2><a href="/language">Language tour</a></h2>
     <p>A walk through all of the major features of the Dart language.</p>
   </div>
   <div class="card">
-    <h3><a href="/effective-dart">Effective Dart</a></h3>
+    <h2><a href="/effective-dart">Effective Dart</a></h2>
     <p>A set of guides on how to write the best Dart code
     possible. Guidelines cover style, documentation, usage,
     and design.</p>

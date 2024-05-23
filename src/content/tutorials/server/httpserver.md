@@ -35,5 +35,5 @@ Dart resources for writing HTTP servers include:
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static
 [simple-sample]: {{site.repo.dart.org}}/samples/tree/main/server/simple
-[Using Google APIs]: /guides/google-apis
+[Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud

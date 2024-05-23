@@ -1,6 +1,7 @@
 ---
 title: Commonly used packages
-description: Some of the most useful and popular packages, and where you can learn more.
+description: >-
+  Some of the most useful and popular packages, and where you can learn more.
 ---
 
 {% assign pub = site.pub %}
