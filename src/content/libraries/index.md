@@ -48,6 +48,7 @@ consult the [Dart API reference.][Dart API]
 
 [dart:html](/libraries/dart-html)
 : DOM and other APIs for browser-based apps.
+  We now recommend using `package:web` over `dart:html`.
 
 
 As mentioned, these pages are just an overview;
@@ -108,15 +109,20 @@ The following table lists the Dart core libraries that work on the
 
 The following table lists the Dart core libraries that work on the
 [Dart web platform](/overview#web-platform) (code compiled to JavaScript).
+The latest, recommended tools are **bolded**, and legacy tools are *italicized*
+(visit [Javascript interoperability][] for more information).
 
-| Library                                                                                                                                                                                                                                                                                                                                                                                                                           | Notes                         |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
-| [`dart:html`][dart-html]<br>HTML elements and other resources for web-based applications.                                                                                                                                                                                                                                                                                                                                         | |
-| [`dart:indexed_db`][dart-indexed_db]<br>Client-side key-value store with support for indexes.                                                                                                                                                                                                                                                                                                                                     | |
-| ~~[`dart:js`][dart-js]~~, [`dart:js_util`][dart-js_util], [`package:js`][package-js]<br>`dart:js_util` provides low-level primitives for interoperability; typically the higher-level annotations in `package:js` are recommended, as they help express interoperability more succinctly. For more details see [JavaScript interoperability][].<br>_Don't use `dart:js` directly; direct use of those legacy APIs is deprecated_. | |
-| [`dart:svg`][dart-svg]<br>Scalable Vector Graphics.                                                                                                                                                                                                                                                                                                                                                                               | |
-| [`dart:web_audio`][dart-web_audio]<br>High-fidelity audio programming in the browser.                                                                                                                                                                                                                                                                                                                                             | |
-| [`dart:web_gl`][dart-web_gl]<br>3D programming in the browser.                                                                                                                                                                                                                                                                                                                                                                    | |
+| Library                                       | Notes                         |
+|-----------------------------------------------|-------------------------------|
+| [**`package:web`**][pkg-web] <br>Lightweight browser API bindings built around JS interop | Replaces all `dart:*` web libraries. Read the [migration guide][html-web]. |
+| [**`dart:js_interop`**][js-interop] <br>Interop with JavaScript and browser APIs. | Replaces `package:js`. |
+| [**`dart:js_interop_unsafe`**][js-interop-unsafe] <br>Utility methods to manipulate JavaScript objects dynamically. | Replaces `dart:js_util`. |
+| [*`dart:html`*][dart-html]<br>HTML elements and other resources for web-based applications. | Use `package:web` instead. |
+| [*`dart:indexed_db`*][dart-indexed_db]<br>Client-side key-value store with support for indexes.  | Use `package:web` instead. |
+| [*`dart:js`*][dart-js], [*`dart:js_util`*][dart-js_util], [*`package:js`*][package-js]<br>Low-level primitives and higher-level annotations for JS interop. | Use `dart:js_interop` or `dart:js_interop_unsafe` instead. |
+| [*`dart:svg`*][dart-svg]<br>Scalable Vector Graphics.  | Use `package:web` instead. |
+| [*`dart:web_audio`*][dart-web_audio]<br>High-fidelity audio programming in the browser. | Use `package:web` instead. |
+| [*`dart:web_gl`*][dart-web_gl]<br>3D programming in the browser. | Use `package:web` instead. |
 
 {:.table .table-striped}
 
@@ -149,6 +155,9 @@ Native platform libraries
 <!---
 Web platform libraries
 -->
+[pkg-web]: {{site.pub-pkg}}/web
+[js-interop]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[js-interop-unsafe]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [dart-html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
 [dart-indexed_db]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
 [dart-js]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js/dart-js-library.html
@@ -164,3 +173,4 @@ Misc
 [development JavaScript compiler]: /tools/webdev#serve
 [jit]: /overview#native-platform
 [JavaScript interoperability]: /interop/js-interop
+[html-web]: /interop/js-interop/package-web
