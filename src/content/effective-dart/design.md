@@ -687,6 +687,8 @@ constructors*.
 
 ### CONSIDER making your constructor `const` if the class supports it
 
+{% render 'linter-rule-mention.md', rules:'prefer_const_constructors' %}
+
 If you have a class where all the fields are final, and the constructor does
 nothing but initialize them, you can make that constructor `const`. That lets
 users create instances of your class in places where constants are
