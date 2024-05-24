@@ -3,13 +3,14 @@ title: Package versioning
 description: "How Dart's package management tool, pub, handles versioning of packages."
 ---
 
-One of the main jobs of the [pub package manager](/guides/packages)
-is helping you work with versioning.
-This document explains a bit about the history of versioning and pub's
+The [pub package manager][pub] helps you work with versioning.
+This guide explains a bit about the history of versioning and pub's
 approach to it.
-Consider this to be advanced information. If you want a better picture of _why_
-pub was designed the way it was, read on. If you just want to _use_ pub,
-the [other docs](/guides/packages) will serve you better.
+
+Consider this to be advanced information.
+
+To learn _why_ pub was designed the way it was, keep reading.
+If you want to _use_ pub, consult the [other docs][pub].
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the
@@ -42,6 +43,11 @@ When you _do_ want to get those changes, you can always point your app to a
 newer version of `widgets` and you don't have to coordinate with those
 developers to do it. However, that doesn't entirely solve the problem.
 
+The version numbers discussed in this guide might differ from the
+version number set in the package filename.
+They might include `-0` or `-beta`.
+These notations don't affect dependency resolution.
+
 ## Resolving shared dependencies
 
 Depending on specific versions works fine when your dependency
@@ -49,7 +55,7 @@ _graph_ is really just a dependency _tree_. If your app depends on a bunch of
 packages, and those things in turn have their own dependencies and so on, that
 all works fine as long as none of those dependencies _overlap_.
 
-But consider the following example:
+Consider the following example:
 
 <img src="/assets/img/tools/pub/PubConstraintsDiagram.png" alt="dependency graph">
 
@@ -83,8 +89,6 @@ annotation in the receiving library. Oops.
 Because of this (and because of the headaches of trying to debug an app that
 has multiple versions of things with the same name), we've decided npm's model
 isn't a good fit.
-
-[npm]: https://npmjs.org/
 
 ### Version lock (the dead end approach)
 
@@ -125,7 +129,7 @@ wiggle room to move our dependencies forward to newer versions. As long as there
 is overlap in their ranges, we can still find a single version that makes them
 both happy.
 
-This is the model that [bundler](https://bundler.io/) follows,
+This is the model that [bundler][] follows,
 and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:
@@ -135,8 +139,9 @@ dependencies:
   collection: '>=2.3.5 <2.4.0'
 ```
 
-Then we could pick version `2.3.7` for `collection` and then both `widgets`
-and `templates` have their constraints satisfied by a single concrete version.
+You could pick version `2.3.7` for `collection`.
+A single concrete version would satisfy constraints for
+both the `widgets` and `templates` packages.
 
 ## Semantic versions
 
@@ -161,15 +166,14 @@ dependencies:
 
 :::note
 This example uses _caret syntax_ to express a range of versions.
-The string `^2.3.5` means 
-"the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
-For more information, 
-see [Caret syntax](/tools/pub/dependencies#caret-syntax).
+The string `^2.3.5` means "the range of all versions from 2.3.5 to 3.0.0,
+not including 3.0.0."
+To learn more, consult the [caret syntax][caret-syntax] section.
 :::
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and
-named it [*semantic versioning*](https://semver.org/spec/v2.0.0-rc.1.html).
+named it _[semantic versioning][semver]_.
 
 That describes the format of a version number, and the exact API behavioral
 differences when you increment to a later version number. Pub requires versions
@@ -192,18 +196,18 @@ evolution now. Let's see how they play together and what pub does.
 ## Constraint solving
 
 When you define your package, you list its
-[**immediate dependencies**](/tools/pub/glossary#immediate-dependency)—the
-packages it itself uses. For each one, you specify the range of versions it
-allows. Each of those dependent packages may in turn have their own
-dependencies (called
-[**transitive dependencies**](/tools/pub/glossary#transitive-dependency). Pub
-traverses these and builds up the entire deep dependency graph for your app.
+[immediate dependencies][immediate-dep].
+These are packages that your package uses.
+For each of these package, you specify the range of versions your package allows.
+Each of those dependent packages might thenhave their own dependencies.
+These are called [transitive dependencies][transitive-dep].
+Pub traverses these and builds the entire dependency graph for your app.
 
-For each package in the graph, pub looks at everything that depends on it. It
-gathers together all of their version constraints and tries to simultaneously
-solve them. (Basically, it intersects their ranges.) Then it looks at the
-actual versions that have been released for that package and selects the best
-(most recent) one that meets all of those constraints.
+For each package in the graph, pub looks at everything that depends on it.
+It gathers together all of their version constraints and
+tries to simultaneously solve them. Basically, it intersects their ranges.
+Then pub looks at the actual versions that have been released for that
+package and selects the most recent one that meets all of those constraints.
 
 For example, let's say our dependency graph contains `collection`, and three
 packages depend on it. Their version constraints are:
@@ -270,8 +274,7 @@ on the context. In `my_app`, `widgets` will use `collection 1.9.9`. But
 in `other_app`, `widgets` will get saddled with `collection 1.4.9` because of
 the _other_ constraint that `otherapp` places on it.
 
-This is why each app gets its own `package_config.json` file: 
-The concrete version selected for each package depends on
+This is why each app gets its own `package_config.json` file: The concrete version selected for each package depends on
 the entire dependency graph of the containing app.
 
 ## Constraint solving for exported dependencies
@@ -289,13 +292,13 @@ at 2.4.0. The pubspec files are as follows:
 ```yaml
 name: bookshelf
 dependencies:
-  widgets:  ^1.2.0
+  widgets: ^1.2.0
 ```
 
 ```yaml
 name: widgets
 dependencies:
-  collection:  ^2.4.0
+  collection: ^2.4.0
 ```
 
 The `collection` package is then updated to 2.5.0.
@@ -320,20 +323,20 @@ In this case, the range for the `widgets` package should be narrowed:
 ```yaml
 name: bookshelf
 dependencies:
-  widgets:  '>=1.2.0 <1.3.0'
+  widgets: '>=1.2.0 <1.3.0'
 ```
 
 ```yaml
 name: widgets
 dependencies:
-  collection:  '>=2.4.0 <2.5.0'
+  collection: '>=2.4.0 <2.5.0'
 ```
 
-This translates to a lower bound of 1.2.0 for `widgets` and 2.4.0
-for `collection`.
-When the 2.5.0 version of `collection` is released,
-then `widgets` is also updated to 1.3.0 and the corresponding constraints
-are also updated.
+This translates to a lower bound of 1.2.0 for `widgets`
+and 2.4.0 for `collection`.
+When someone releases the 2.5.0 version of `collection`,
+pub updates `widgets` to 1.3.0 and updates the corresponding constraints
+as well.
 
 Using this convention ensures that users have the correct version of
 both packages, even if one is not a direct dependency.
@@ -347,12 +350,8 @@ your app's constraints.
 
 For each package, pub takes that information,
 computes a [content hash][] from it,
-and writes both to a [**lockfile**][]
-in your app's directory called `pubspec.lock`. 
-When pub builds the `.dart_tool/package_config.json` file for your app, 
-it uses the lockfile to know what versions of each package to refer to. 
-(And if you're curious to see what versions it selected, 
-you can read the lockfile to find out.)
+and writes both to a _[lockfile][]_
+in your app's directory called `pubspec.lock`. When pub builds the `.dart_tool/package_config.json` file for your app, it uses the lockfile to know what versions of each package to refer to. (And if you're curious to see what versions it selected, you can read the lockfile to find out.)
 
 The next important thing pub does is it _stops touching the lockfile_. Once
 you've got a lockfile for your app, pub won't touch it until you tell it to.
@@ -365,9 +364,6 @@ control system!_ That way, everyone on your team will be using
 the exact same versions of every dependency when they build your app. You'll
 also use this when you deploy your app so you can ensure that your production
 servers are using the exact same packages that you're developing with.
-
-[**lockfile**]: /tools/pub/glossary#lockfile
-[content hash]: /tools/pub/glossary#content-hashes
 
 ## When things go wrong
 
@@ -388,12 +384,12 @@ possible version that would work.
 
 ### You can have ranges that don't contain a released version
 
-Let's say after
-putting all of the constraints on a shared dependency together, you're
-left with the narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
-If there was a version `1.2.4` of the dependency, you'd be golden. But maybe
-they never released that and instead went straight from `1.2.3` to `1.3.0`.
-You've got a range but nothing exists inside it.
+Let's say after putting all of the constraints on a shared dependency together,
+you have a narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
+If there was a version `1.2.4` of the dependency, you'd be golden.
+But maybe they never released that version.
+Instead, they went straight from `1.2.3` to `1.3.0`.
+You've got a range with nothing inside it.
 
 ### You can have an unstable graph
 
@@ -447,19 +443,32 @@ think things can work but won't.
 
 ## Summary
 
-That was a lot of information, but here are the key points:
+In summary:
 
- *  Code reuse is great, but in order to let developers move quickly, packages
-    need to be able to evolve independently.
- *  Versioning is how you enable that. But depending on single concrete versions
-    is too precise and with shared dependencies leads to version lock.
- *  To cope with that, you depend on _ranges_ of versions. Pub then walks
-    your dependency graph and picks the best versions for you. If it can't, it
-    tells you.
- *  Once your app has a solid set of versions for its dependencies, that gets
-    pinned down in a _lockfile_. That ensures that every machine your app is
-    on is using the same versions of all of its dependencies.
+* Though code reuse has advantages,
+  packages require the ability to evolve independently.
+* Versioning enables that independence.
+  Depending on single concrete versions lacks flexibility.
+  Coupled with shared dependencies, it leads to version lock.
+* To cope with version lock,
+  your package should depend on a _range_ of versions.
+  Pub then walks your dependency graph and picks the best versions for you.
+  If it can't pick an appropriate version, pub alerts you.
+* Once your app has a solid set of versions for its dependencies,
+  that set gets pinned down in a _lockfile_.
+  That ensures that every machine running your app uses the same versions
+  of all of its dependencies.
 
-If you'd like to know more about pub's version solving algorithm,
-see the article
-[PubGrub: Next-Generation Version Solving.](https://medium.com/@nex3/pubgrub-2fb6470504f)
+To learn more about pub's version solving algorithm,
+consult the [PubGrub][pubgrub] article on Medium.
+
+[immediate-dep]: /tools/pub/glossary#immediate-dependency
+[transitive-dep]: /tools/pub/glossary#transitive-dependency
+[pub]: /guides/packages
+[npm]: https://npmjs.org/
+[bundler]: https://bundler.io
+[caret-syntax]: /tools/pub/dependencies#caret-syntax
+[semver]: https://semver.org/spec/v2.0.0-rc.1.html
+[lockfile]: /tools/pub/glossary#lockfile
+[content hash]: /tools/pub/glossary#content-hashes
+[pubgrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
