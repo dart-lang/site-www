@@ -57,7 +57,7 @@ you could use a [conditional expression][] but not an [if statement][].
 In the previous example,
 `_nobleGases[atomicNumber] != null;` returns a boolean value.
 The function then returns a boolean value
-if the `atomicNumber` falls into the noble gas range.
+that indicates whether the `atomicNumber` falls into the noble gas range.
 :::
 
 ## Parameters
