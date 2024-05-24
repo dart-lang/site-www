@@ -49,9 +49,15 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 is sometimes referred to as _arrow_ syntax.
 
 :::note
-Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-the semicolon (;). For example, you can't put an [if statement][]
-there, but you can use a [conditional expression][].
+Only _expressions_ can appear between the arrow (`=\>`) and the semicolon (`;`).
+Expressions evaluate to values.
+This means that you can't write a statement where Dart expects a value.
+For example,
+you could use a [conditional expression][] but not an [if statement][].
+In the previous example,
+`_nobleGases[atomicNumber] != null;` returns a boolean value.
+The function then returns a boolean value
+that indicates whether the `atomicNumber` falls into the noble gas range.
 :::
 
 ## Parameters
