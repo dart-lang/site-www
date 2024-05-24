@@ -128,7 +128,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
    ```yaml
    environment:
-     sdk: '>=2.12.0 <3.0.0'
+     sdk: '^2.12.0'
    ```
 
 2. Regenerate the [package configuration file][]:
@@ -141,7 +141,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
    Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
-   every library in the package to 2.12,
+   every library in the package to 2.12.0,
    opting them all in to null safety.
 
 3. Open the package in your IDE. <br>

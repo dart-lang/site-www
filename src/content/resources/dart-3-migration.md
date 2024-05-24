@@ -31,18 +31,17 @@ The potentially breaking changes listed below fall into one of two categories:
 
   ```yaml
   environment:
-    sdk: '>=2.14.0 <3.0.0'
+    sdk: '^2.14.0'
   ```
   
   But an SDK constraint like this does:
 
   ```yaml
   environment:
-    sdk: '>=3.0.0 <4.0.0'
+    sdk: '^3.0.0'
   ```
 
-To use the new Dart 3 features you have to
-update the language version to 3.0. 
+To use the new Dart 3 features, update the language version to 3.0.
 This gets you the Dart 3 versioned changes at the same time.
 
 ### Dart 3 backwards compatibility
@@ -61,7 +60,7 @@ when the lower constraint is `2.12` or higher:
 
 ```yaml
 environment:
-  sdk: '>=2.14.0 <3.0.0'           # This is interpreted as '>=2.14.0 <4.0.0'
+  sdk: '^2.14.0'           # This is interpreted as '>=2.14.0 <3.0.0'
 ```
 
 This allows developers to use Dart 3 sound null safety with packages

@@ -19150,7 +19150,7 @@ bound of less than 2.1.0:
 
 ```yaml
 environment:
-  sdk: '>=2.0.0 <2.4.0'
+  sdk: '^2.0.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19167,7 +19167,7 @@ increase the SDK constraint to allow the classes to be referenced:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 If you need to support older versions of the SDK, then import the
@@ -19199,7 +19199,7 @@ bound of less than 2.3.2:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -19217,7 +19217,7 @@ increase the SDK constraint to allow the expression to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.3.2 <2.4.0'
+  sdk: '^2.3.2'
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
@@ -19238,7 +19238,7 @@ supported until version 2.3.2, but this code is required to be able to run on ea
 
 The analyzer produces this diagnostic when any use of the `&`, `|`, or `^`
 operators on the class `bool` inside a [constant context][] is found in
-code that has an SDK constraint whose lower bound is less than 2.3.2. Using
+code that has an SDK constraint whose lower bound is less than 3.2.2. Using
 these operators in a [constant context][] wasn't supported in earlier
 versions, so this code won't be able to run against earlier versions of the
 SDK.
@@ -19250,7 +19250,7 @@ bound of less than 2.3.2:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19269,7 +19269,7 @@ increase the SDK constraint to allow the operators to be used:
 
 ```yaml
 environment:
- sdk: '>=2.3.2 <2.4.0'
+ sdk: '^2.3.2'
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
@@ -19290,18 +19290,18 @@ feature._
 #### Description
 
 The analyzer produces this diagnostic when a constructor tear-off is found
-in code that has an SDK constraint whose lower bound is less than 2.15.
+in code that has an SDK constraint whose lower bound is less than 2.15.z.
 Constructor tear-offs weren't supported in earlier versions, so this code
 won't be able to run against earlier versions of the SDK.
 
 #### Example
 
 Here's an example of a pubspec that defines an SDK constraint with a lower
-bound of less than 2.15:
+bound of less than 2.15.z:
 
 ```yaml
 environment:
-  sdk: '>=2.9.0 <2.15.0'
+  sdk: '^2.9.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19318,7 +19318,7 @@ increase the SDK constraint to allow the operator to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.15.0 <2.16.0'
+  sdk: '^2.15.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to
@@ -19348,7 +19348,7 @@ bound of less than 2.3.2:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19368,7 +19368,7 @@ increase the SDK constraint to allow the operator to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.3.2 <2.4.0'
+  sdk: '^2.3.2'
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
@@ -19402,7 +19402,7 @@ bound of less than 2.6.0:
 
 ```yaml
 environment:
- sdk: '>=2.4.0 <2.7.0'
+ sdk: '^2.4.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -19423,7 +19423,7 @@ increase the SDK constraint to allow the syntax to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.6.0 <2.7.0'
+  sdk: '^2.6.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to
@@ -19456,7 +19456,7 @@ bound of less than 2.14.0:
 
 ```yaml
 environment:
- sdk: '>=2.0.0 <2.15.0'
+ sdk: '^2.0.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19473,7 +19473,7 @@ increase the SDK constraint to allow the operator to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.14.0 <2.15.0'
+  sdk: '^2.14.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to
@@ -19511,7 +19511,7 @@ bound of less than 2.3.2:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -19529,13 +19529,12 @@ increase the SDK constraint to allow the expression to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.3.2 <2.4.0'
+  sdk: '^2.3.2'
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
 code to not use the `is` operator, or, if that isn't possible, change the
-code so that the `is` expression isn't in a
-[constant context][]:
+code so that the `is` expression isn't in a [constant context][]:
 
 ```dart
 const Object x = 4;
@@ -19561,7 +19560,7 @@ bound of less than 2.12.0:
 
 ```yaml
 environment:
-  sdk: '>=2.5.0 <2.6.0'
+  sdk: '^2.5.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19578,7 +19577,7 @@ increase the SDK constraint to allow the type to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0 <2.13.0'
+  sdk: '^2.12.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to
@@ -19607,7 +19606,7 @@ bound of less than 2.2.0:
 
 ```yaml
 environment:
-  sdk: '>=2.1.0 <2.4.0'
+  sdk: '^2.1.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
@@ -19624,7 +19623,7 @@ increase the SDK constraint to allow the syntax to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.2.0 <2.4.0'
+  sdk: '^2.2.0'
 ```
 
 If you do need to support older versions of the SDK, then replace the set
@@ -19654,7 +19653,7 @@ bound of less than 2.3.0:
 
 ```yaml
 environment:
-  sdk: '>=2.2.0 <2.4.0'
+  sdk: '^2.2.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -19671,7 +19670,7 @@ increase the SDK constraint to allow the syntax to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.3.0 <2.4.0'
+  sdk: '^2.3.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to
@@ -19709,7 +19708,7 @@ bound of less than 2.5.0:
 
 ```yaml
 environment:
-  sdk: '>=2.4.0 <2.6.0'
+  sdk: '^2.4.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -19727,7 +19726,7 @@ increase the SDK constraint to allow the syntax to be used:
 
 ```yaml
 environment:
-  sdk: '>=2.5.0 <2.6.0'
+  sdk: '^2.5.0'
 ```
 
 If you need to support older versions of the SDK, then rewrite the code to

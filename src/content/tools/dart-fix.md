@@ -100,7 +100,7 @@ in the lower SDK constraint:
 
 ```yaml
 environment:
-  sdk: ">=2.17.0 <4.0.0"
+  sdk: '[!^2.17.0!]'
 ```
 
 You should then see the following when viewing the proposed changes:

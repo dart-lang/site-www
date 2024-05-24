@@ -23,7 +23,7 @@ set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
 
 ```yaml
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '^2.12.0'
 ```
 
 [2.12]: #dart-2-12
@@ -530,7 +530,7 @@ indicates that this package defaults to the Dart 2.18 language version.
 
 ```yaml
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '^2.18.0'
 ```
 
 ### Language version numbers

@@ -82,7 +82,7 @@ using the `hosted` source:
 
 ```yaml
 environment:
-  sdk: '>=[!2.15.0!] < 3.0.0'
+  sdk: '^[!2.19.0!]'
 
 dependencies:
   transmogrify:
@@ -99,7 +99,7 @@ you must use a more verbose `hosted` format:
 
 ```yaml
 environment:
-  sdk: '>=[!2.14.0!] < 3.0.0'
+  sdk: '^[!2.14.0!]'
 
 dependencies:
   transmogrify:
@@ -255,8 +255,8 @@ The caret syntax provides an explicit starting version `^1.2.3`
 
 ```yaml
 environment:
-  # This package must use a 2.x version of the Dart SDK starting with 2.14.
-  sdk: '>=2.14.0 < 3.0.0'
+  # This package must use a 2.x version of the Dart SDK starting with 2.19.
+  sdk: '^2.19.0'
 
 dependencies:
   transmogrify:
