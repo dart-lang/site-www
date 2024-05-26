@@ -716,8 +716,8 @@ void main() {
 ```
 
 In this example, `takeWhile()` returns an `Iterable` that
-contains all the elements before the one that
-satisfies the predicate.
+contains all the elements before the first one that
+_doesn't_ satisfy the predicate.
 On the other hand, `skipWhile()` returns an `Iterable` 
 that contains all elements after and including the first one
 that _doesn't_ satisfy the predicate.
