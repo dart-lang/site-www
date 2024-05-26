@@ -35,3 +35,10 @@
   cover: o-guia-de-dart.webp
   link: "https://www.casadocodigo.com.br/products/livro-dart"
   desc: "Fundamentos, prática, conceitos avançados e tudo mais. Embarque neste livro que te guiará no aprendizado de Dart.<br>Fundamentals, practice, the concepts and everything. Embark on a journey of learning Dart in Portuguese."
+- title: "Основы Dart"
+  authors:
+    - Stanislav Chernyshev
+  publisher: Издательский дом «Питер»
+  cover: basics-dart.webp
+  link: "https://www.piter.com/collection/biblioteka-programmista/product/osnovy-dart"
+  desc: "Книга «Основы Dart» адресована тем, кто интересуется этим удивительным языком программирования. Вы узнаете об истории создания, синтаксисе и особенностях языка, таких как встроенные типы данных, и многом другом. В главе 2 вас ждет проект, который будет изменяться и расти вместе с вашими знаниями и навыками, а к главе 6 преобразится в полноценное клиент-серверное приложение. После каждой новой итерации проекта, вас будут ждать предложения по внесению изменений в его кодовую базу, что позволит прокачать свои hard-скиллы. Исходный код рассматриваемых в книге примеров можно найти в GitHub-репозитории автора (весь код в книге соответствует Dart 3.4)."
