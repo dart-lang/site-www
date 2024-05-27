@@ -17,6 +17,65 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## May 14, 2024: 3.4 release
+
+This section lists notable changes made from February 16, 2024,
+through May 14, 2024.
+For details about the 3.4 release,
+check out [3.4 blog post][] and the [SDK changelog][3-4-changelog].
+
+[3.4 blog post]: https://medium.com/dartlang/dart-3-4-bd8d23b4462a
+[3-4-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#340
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Added a page documenting the experimental [Macros][] language feature.
+* Added a page to track [Wasm][] developments for Dart.
+* Refactored the [Constructors][] page.
+* Clarified the instructions in the [Renames][] section of the `package:web`
+  migration page.
+* Adjusted the Effective Dart entry on [enabling type promotion][] to recommend
+  the null-check pattern before other idioms.
+* Revised the [Web libraries and packages][] list to better represent the
+  recommended solutions.
+* Explained how to destructure named fields on the [Records][] and [Patterns][]
+  pages.
+* Included a [before-and-after table][] of web solutions on the JS interop page.
+* Added a section explaining [spread operators][] to the Operators page.
+* Clarified ordering of [parenthetical patterns][] on the Pattern types page.
+* Added docs for [`ExternalDartReference`][] to the JS types page.
+* Updated the site for new [linter rules][] and [diagnostic messages][],
+  for example adding docs for the new [`@mustBeConst`][] annotation diagnostic.
+
+[Macros]: /language/macros
+[Wasm]: /web/wasm
+[Constructors]: /language/constructors/
+[Renames]: /interop/js-interop/package-web/#renames
+[enabling type promotion]: /effective-dart/usage/#consider-type-promotion-or-null-check-patterns-for-using-nullable-types
+[linter rules]: /tools/linter-rules/
+[diagnostic messages]: /tools/diagnostic-messages/
+[`@mustBeConst`]: /tools/diagnostic-messages/#non_const_argument_for_const_parameter
+[Web libraries and packages]: /web/libraries/
+[Records]: /language/records/#multiple-returns
+[Patterns]: /language/patterns/#destructuring-multiple-returns
+[before-and-after table]: /interop/js-interop/#next-generation-js-interop
+[spread operators]: /language/operators/#spread-operators
+[parenthetical patterns]: /language/pattern-types/#parenthesized
+[`ExternalDartReference`]: /interop/js-interop/js-types/#jsboxeddartobject-vs-externaldartreference
+
+### Articles added to the Dart blog {:.no_toc}
+
+We published the following article on the Dart blog:
+
+* [History of JS interop in Dart][blog-3-28-24]
+* [Dart in Google Summer of Code 2024][blog-3-5-24]
+
+[blog-3-28-24]: https://medium.com/dartlang/history-of-js-interop-in-dart-98b06991158f
+[blog-3-5-24]: https://medium.com/dartlang/dart-in-google-summer-of-code-2024-8ca45fb6dc4e
+
 ## February 15, 2024: 3.3 release
 
 This section lists notable changes made from November 16, 2023,

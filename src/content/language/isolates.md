@@ -560,7 +560,7 @@ class Worker {
     throw UnimplementedError();
   }
 
-  Worker._(this._commands, this._responses) {
+  Worker._(this._responses, this._commands) {
     // TODO: Initialize main isolate receive port listener.
   }
 
@@ -689,7 +689,7 @@ class Worker {
     final (ReceivePort receivePort, SendPort sendPort) =
         await connection.future;
 
-    return Worker._(sendPort, receivePort);
+    return Worker._(receivePort, sendPort);
   }
 ```
 

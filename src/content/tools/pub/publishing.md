@@ -270,7 +270,7 @@ To learn more about automated publishing, consult
 ### Publish prerelease versions {:#publishing-prereleases}
 
 As you work on a package, consider publishing it as a prerelease.
-Prereleases can be useful when _any_ of the following are true:
+Prereleases can be useful when:
 
 * You're actively developing the next major version of the package.
 * You want beta testers for the next release candidate of the package.
@@ -285,12 +285,14 @@ Later, when you release version `2.0.0`, it takes precedence over all
 
 As pub prefers stable releases when available, users of a prerelease package
 might need to change their dependency constraints.
-For example, if a user wants to test prereleases of version 2.1, then
+For example, if a user wants to test prereleases of version `2.1.0`, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 :::note
-If a stable package in the dependency graph depends on a prerelease,
-then pub chooses that prerelease instead of a stable release.
+While `pub` prefers stable releases the same way it prefers newer versions,
+the version solver does not attempt all solutions and may pick a prerelease,
+even when a resolution that doesn't use prereleases exists.
+Though this rarely happens in practice.
 :::
 
 When you publish a prerelease to pub.dev,
