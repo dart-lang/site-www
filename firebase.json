@@ -184,6 +184,7 @@
 
       { "source": "/go/next-gen-js-interop", "destination": "/interop/js-interop", "type": 301 },
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
+      { "source": "/go/downgrade-testing", "destination": "/tools/pub/dependencies#test-with-downgraded-dependencies", "type": 301 },
       { "source": "/go/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/go/package-web", "destination": "/interop/js-interop/package-web", "type": 301 },
@@ -196,7 +197,7 @@
       { "source": "/go/pub-security-advisories", "destination": "/tools/pub/security-advisories", "type": 301 },
       { "source": "/go/test-docs/:page*", "destination": "https://github.com/dart-lang/test/blob/master/pkgs/test/doc/:page*", "type": 301 },
       { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 },
-
+      
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
       { "source": "/guides/google-apis", "destination": "/resources/google-apis", "type": 301 },
