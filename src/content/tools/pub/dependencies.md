@@ -476,7 +476,7 @@ so you need to test even more thoroughly.
 
 ### Test with downgraded dependencies
 
-When developing packages for publication, it is often preferable to allow as a wide dependency constraints as possible.
+When developing packages for publication, it is often preferable to allow as wide dependency constraints as possible.
 A wide dependency constraint reduces the likelihood that package consumers face a version resolution conflict.
 
 Hence, if you have a dependency on `foo: ^1.2.3` and version `1.3.0` of `foo` is released, it may be reasonable to keep the existing dependency constraint (`^1.2.3`).
@@ -491,8 +491,8 @@ Test against downgraded dependencies by running:
  * `dart analyze`, and possibly,
  * `dart test`.
 
-Testing with downgraded dependencies should happen alongside normals tests with latest dependencies.
-Should you ever find that your dependency constraints needs to be bumped, you can so using `dart pub upgrade --tighten`.
+Testing with downgraded dependencies should happen alongside normal tests with latest dependencies.
+If dependency constraints needs to be bumped, change them yourself or use `dart pub upgrade --tighten` to update dependencies to the latest versions.
 
 :::note
 Testing with `dart pub downgrade` enables you to find incompatibilities that you might not otherwise have discovered.
