@@ -303,6 +303,13 @@ as its subpattern:
 var (name, age) = userInfo(json);
 ```
 
+To destructure a record with named fields using a pattern:
+
+<?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-3)"?>
+```dart
+final (:name, :age) = getData(); // e.g. return (name: 'doug', age: 25);
+```
+
 ### Destructuring class instances
 
 [Object patterns][object] match against named object types, allowing

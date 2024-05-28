@@ -42,6 +42,10 @@ void main() {
       return ('doug', 25);
     }
 
+    ({String name, int age}) getData() {
+      return (name: 'doug', age: 25);
+    }
+
     var json = <String, dynamic>{};
 
     {
@@ -56,6 +60,12 @@ void main() {
       // #docregion destructure-multiple-returns-2
       var (name, age) = userInfo(json);
       // #enddocregion destructure-multiple-returns-2
+    }
+
+    {
+      // #docregion destructure-multiple-returns-3
+      final (:name, :age) = getData();
+      // #enddocregion destructure-multiple-returns-3
     }
   }
   {
