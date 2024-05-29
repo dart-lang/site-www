@@ -90,12 +90,22 @@ dependencies:
     version: ^1.4.0
 ```
 
-The version constraint is optional but recommended. If no version constraint is
-given, `any` is assumed.
+The version constraint is optional but recommended.
+If no version constraint is given, `any` is assumed.
 
 :::version-note
-If your package has a [language version][] before 2.15,
-you must use a more verbose `hosted` format:
+If your package has a [SDK version][] earlier than 2.19,
+you must use the lower and upper bound format for SDK versions.
+The SDK constraint validator in those versions doesn't support
+the caret syntax.
+
+```yaml
+environment:
+  sdk: [!'>=2.14.0 < 3.0.0'!]
+```
+
+If your package has a [SDK version][] earlier than 2.15,
+you must use a more verbose `hosted` format.
 
 ```yaml
 environment:
@@ -110,7 +120,7 @@ dependencies:
 ```
 :::
 
-[language version]: /guides/language/evolution#language-versioning
+[SDK version]: /guides/language/evolution#language-versioning
 
 ### Git packages
 
