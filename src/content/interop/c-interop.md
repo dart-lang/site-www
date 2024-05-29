@@ -113,7 +113,7 @@ This section explains the contents of this file.
 
 3. Create a typedef with the FFI type signature of the C function.  
    To learn about the most used types according to the `dart:ffi` library
-   consult [Interfacing with native types](#interfacing-with-native-types).
+   consult [Interfacing with native types](#interface-with-native-types).
 
    ```dart
    typedef hello_world_func = ffi.Void Function();
@@ -162,7 +162,7 @@ This section explains the contents of this file.
    ```
 
 Once you understand the `hello_world` example,
-consult the [other `dart:ffi` examples](#examples).
+consult the [other `dart:ffi` examples](#download-example-files).
 
 ## Bundle and load C libraries
 
