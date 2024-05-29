@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^4.0.2
     version: 4.0.2
   firebase-tools:
-    specifier: ^13.10.0
-    version: 13.10.0
+    specifier: ^13.10.2
+    version: 13.10.2
   hast-util-from-html:
     specifier: ^2.0.1
     version: 2.0.1
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^1.77.2
     version: 1.77.2
   shiki:
-    specifier: ^1.6.0
-    version: 1.6.0
+    specifier: ^1.6.1
+    version: 1.6.1
 
 packages:
 
@@ -703,8 +703,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: true
 
-  /@shikijs/core@1.6.0:
-    resolution: {integrity: sha512-NIEAi5U5R7BLkbW1pG/ZKu3eb1lzc3/+jD0lFsuxMT7zjaf9bbNwdNyMr7zh/Zl8EXQtQ+MYBAt5G+JLu+5DlA==}
+  /@shikijs/core@1.6.1:
+    resolution: {integrity: sha512-CqYyepN4SnBopaoXYwng4NO8riB5ask/LTCkhOFq+GNGtr2X+aKeD767eYdqYukeixEUvv4bXdyTYVaogj7KBw==}
     dev: true
 
   /@sindresorhus/slugify@2.2.1:
@@ -2221,8 +2221,8 @@ packages:
       - supports-color
     dev: true
 
-  /firebase-tools@13.10.0:
-    resolution: {integrity: sha512-5FbNYo45JUHKy/CptY10Ke63K0ka62i2u5ATwzkYN+A1k0AlmOMtPKDxtVaDTOyu+RrHR1dLoRSsRPSMTg9B1A==}
+  /firebase-tools@13.10.2:
+    resolution: {integrity: sha512-vdD2//pncVg0jf2Wxo4jNJVxOiS4yJE7lx60H0xONkVW4P+hg4xe7y0O+RxOzajw4hbrUq4geyRZDQK1VlIKuw==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -2504,6 +2504,7 @@ packages:
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -2875,6 +2876,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -4608,6 +4610,7 @@ packages:
 
   /rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -4812,10 +4815,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki@1.6.0:
-    resolution: {integrity: sha512-P31ROeXcVgW/k3Z+vUUErcxoTah7ZRaimctOpzGuqAntqnnSmx1HOsvnbAB8Z2qfXPRhw61yptAzCsuKOhTHwQ==}
+  /shiki@1.6.1:
+    resolution: {integrity: sha512-1Pu/A1rtsG6HZvQm4W0NExQ45e02og+rPog7PDaFDiMumZgOYnZIu4JtGQeAIfMwdbKSjJQoCUr79vDLKUUxWA==}
     dependencies:
-      '@shikijs/core': 1.6.0
+      '@shikijs/core': 1.6.1
     dev: true
 
   /side-channel@1.0.6:
