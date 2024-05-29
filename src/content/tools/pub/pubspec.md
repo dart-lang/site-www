@@ -498,7 +498,7 @@ works with any Dart SDK that's version 3.0.0 or higher:
 
 ```yaml
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.0.0
 ```
 
 Pub tries to find the latest version of a package whose SDK constraint works
@@ -534,8 +534,8 @@ under the `environment:` field:
 
 ```yaml
 environment:
-  sdk: '^3.2.0'
-  flutter: ^0.1.2
+  sdk: ^3.2.0
+  flutter: '>= 3.22.0'
 ```
 
 A Flutter SDK constraint is satisfied only if pub is running in the

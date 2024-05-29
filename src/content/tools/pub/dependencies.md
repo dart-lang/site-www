@@ -94,7 +94,7 @@ The version constraint is optional but recommended.
 If no version constraint is given, `any` is assumed.
 
 :::version-note
-If your package has a [SDK version][] earlier than 2.19,
+If your package has a [SDK constraints][SDK version] earlier than 2.19,
 you must use the lower and upper bound format for SDK versions.
 The SDK constraint validator in those versions doesn't support
 the caret syntax.
@@ -266,8 +266,8 @@ The caret syntax provides an explicit starting version `^1.2.3`
 
 ```yaml
 environment:
-  # This package must use a 2.x version of the Dart SDK starting with 2.19.
-  sdk: '^2.19.0'
+  # This package must use a 3.x version of the Dart SDK starting with 3.2.
+  sdk: ^3.2.0
 
 dependencies:
   transmogrify:
@@ -489,7 +489,7 @@ so you need to test even more thoroughly.
 
 When retrieving new dependencies,
 use the [`--enforce-lockfile`][enforce-lock] option to ensure
-the extracted package content matches the contents of the original archive.
+the extracted package contents match the contents of the original archive.
 Without modifying the [lockfile][],
 this flag only resolves new dependencies if:
 
