@@ -36,6 +36,11 @@ restrictions:
    [next-gen JS interop mechanism](/interop/js-interop/)
    is supported when compiling to Wasm.
 
+1. There is currently no support in the `webdev` tool for running
+   (`webdev serve`) or building (`webdev build`). The steps below
+   contain a temporary workaround. For details, see
+   [webdev issue 2206](https://github.com/dart-lang/webdev/issues/2296).
+
 ## Compiling your web app to Wasm {:#compiling-to-wasm}
 
 We've landed support in the `dart` CLI for invoking the
