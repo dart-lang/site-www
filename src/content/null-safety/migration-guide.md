@@ -396,7 +396,7 @@ To migrate a package by hand, follow these steps:
 
    ```yaml
    environment:
-     sdk: '^2.12.0'
+     sdk: '>=2.12.0 <3.0.0'
    ```
 
 2. Regenerate the [package configuration file][]:
