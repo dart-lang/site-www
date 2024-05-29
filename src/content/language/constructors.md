@@ -430,7 +430,7 @@ The following example initializes three `final` fields in an initializer list.
 To execute the code, click **Run**.
 
 <?code-excerpt "point_with_distance_field.dart"?>
-```dart:run-dartpad:height-340px:ga_id-initializer_list
+```dartpad
 import 'dart:math';
 
 class Point {
@@ -484,7 +484,7 @@ the `Employee` class constructor calls the named constructor
 for its superclass, `Person`. To execute the following code, click **Run**.
 
 <?code-excerpt "employee.dart (super)" plaster="none"?>
-```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
+```dartpad
 class Person {
   String? firstName;
 

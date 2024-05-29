@@ -309,7 +309,7 @@ for (var item in uppercaseList) {
 Click **Run** to execute the code.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
-```dart:run-dartpad:height-400px:ga_id-anonymous_functions
+```dartpad
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
 
