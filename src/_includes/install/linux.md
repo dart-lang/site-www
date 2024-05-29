@@ -4,7 +4,7 @@
 You have two options to install the Dart SDK on Ubuntu or Debian:
 
 * Use the [apt-get](#install-using-the-apt-get-package-manager) command.
-* Download a [`.deb`](#install-from-a-debian-package) package
+* Download a [`.deb`](#install-as-a-debian-package) package
   and run the `dpkg` command.
 
 ### Install using the `apt-get` package manager {:.no_toc}
@@ -32,23 +32,26 @@ You need steps 1 to 3 only for the first install.
      | sudo tee /etc/apt/sources.list.d/dart_stable.list
    ```
 
-1. Use the `apt-get` command with [`sudo`][sudo] privileges.
+1. Use the following `sudo apt-get` commands.
 
    ```console
    $ sudo apt-get update && sudo apt-get install dart
    ```
 
-### Install from a Debian package {:.no_toc}
+### Install as a Debian package {:.no_toc}
 
-To install the Dart SDK from a Debian package (`*.deb`).
+To install the Dart SDK as a Debian package (`*.deb`),
+perform the following steps.
 
 1. Download the Dart SDK [Debian package](#){:.debian-link-stable}.
 
-1. Install the `*.deb` package with `dpkg` with [`sudo`][sudo] privileges.
+1. Use the `sudo dpkg` command to install the `*.deb` package.
 
    ```console
-   $ sudo dpkg -i dart_3.2.6-1_amd64.deb
+   $ sudo dpkg -i dart_3.4.0-1_amd64.deb
    ```
+
+   Substitute `dart_3.4.0-1_amd64.deb` with the current filename.
 
 ## Upgrade the Dart SDK {:.no_toc}
 
@@ -57,7 +60,7 @@ Use the same command that you used to install the SDK.
 ### Upgrade using `apt-get` {:.no_toc}
 
 If you installed the Dart SDK with `apt-get`,
-use the `apt-get` command with [`sudo`][sudo] privileges to upgrade.
+use the following `sudo apt-get` commands.
 
 ```console
 $ sudo apt-get update && sudo apt-get install dart
@@ -66,20 +69,22 @@ $ sudo apt-get update && sudo apt-get install dart
 ### Upgrade using `dpkg` {:.no_toc}
 
 If you installed the Dart SDK with `dpkg`,
-use the `dpkg` command with [`sudo`][sudo] privileges to upgrade.
+use the `sudo dpkg` command.
 
 ```console
 $ sudo dpkg -i dart_3.2.6-1_amd64.deb
 ```
+
+Substitute `dart_3.4.0-1_amd64.deb` with the new upgrade's filename.
 
 ## Uninstall the Dart SDK {:.no_toc}
 
 ### Uninstall using `apt-get` {:.no_toc}
 
 If you installed the Dart SDK with `apt-get`,
-use the `apt-get` command with [`sudo`][sudo] privileges to uninstall.
+use the `sudo apt-get remove` command.
 
-1. Use the `apt-get remove` command.
+1. Use the `sudo apt-get remove` command.
 
    ```console
    $ sudo apt-get remove -y dart
@@ -94,9 +99,9 @@ use the `apt-get` command with [`sudo`][sudo] privileges to uninstall.
 ### Uninstall using `dpkg` {:.no_toc}
 
 If you installed the Dart SDK with `dpkg`,
-use the `dpkg --purge` command with [`sudo`][sudo] privileges to uninstall.
+use the `sudo dpkg --purge` command.
 
-1. Use the `dpkg --purge` command.
+1. Use the `sudo dpkg --purge` command.
 
    ```console
    $ sudo dpkg --purge dart

@@ -64,6 +64,10 @@ choose one of the following options:
 
 1. [Build the SDK from source][build-source].
 
+:::warning Notice
+{% include './archive/_sdk-terms.md' %}
+:::
+
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
@@ -93,10 +97,6 @@ run the same command to install the Dart SDK from your package manager.
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
 {% include 'install/macos.md' %}
 </div>
-
-:::warning Notice
-{% include './archive/_sdk-terms.md' %}
-:::
 
 ## Release channel reference {:#release-channels}
 
