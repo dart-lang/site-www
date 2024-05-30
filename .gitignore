@@ -1,5 +1,6 @@
 _cache/
 _site/
+.cache
 .*-cache
 .*-metadata
 .buildlog

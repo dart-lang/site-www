@@ -466,7 +466,7 @@ Future<String> reportUserRole() async {
 }
 
 // Part 2
-// TODO: Implement the reportUserRole function here.
+// TODO: Implement the reportLogins function here.
 // Call the provided async function fetchLoginAmount()
 // to return the number of times that the user has logged in.
 reportLogins() {}
