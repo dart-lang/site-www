@@ -273,7 +273,7 @@ This feature should simplify how Dart packages depend on and use native code.
 Native Assets should provide the following benefits:
 
 * Build the native code or obtains the binaries
-  using a package's `build.dart` script.
+  using a package's `hook/build.dart` build hook.
 * Bundle the native [`Asset`][] that the `build.dart` build hook reports.
 * Make native assets available at runtime through
   declarative `@Native<>() extern` functions using the [`assetId`][].
@@ -308,7 +308,7 @@ The example includes the following files:
 [`hook/build.dart`]: {{native-assets}}/hook/build.dart
 
 When a Dart or Flutter project depends on `package:native_add_library`,
-it invokes the `hook/build.dart` script on `run`, `build`, and `test` commands.
+it invokes the `hook/build.dart` build hook on `run`, `build`, and `test` commands.
 The [`native_add_app`][] example showcases a use of `native_add_library`.
 
 ### Review Native Asset API documentation
