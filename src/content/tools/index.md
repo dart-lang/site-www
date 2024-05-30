@@ -50,17 +50,16 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="cols2">
 <li>
-<img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
+<img src="/assets/img/tools/android_studio.svg" class="list-image" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/intellij-idea.svg" width="48" alt="IntelliJ logo">
+<img src="/assets/img/tools/intellij-idea.svg" class="list-image" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/vscode.svg"
-     width="48" alt="Visual Studio Code logo">
+<img src="/assets/img/tools/vscode.svg" class="list-image" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
@@ -70,15 +69,15 @@ thanks to the Dart community.
 
 <ul class="cols2">
 <li>
-<img src="/assets/img/tools/emacs.png" alt="Emacs logo">
+<img src="/assets/img/tools/emacs.png" alt="Emacs logo" class="list-image">
 <a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/vim.png" alt="Vim logo">
+<img src="/assets/img/tools/vim.png" alt="Vim logo" class="list-image">
 <a href="{{site.repo.dart.org}}/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
+<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo" class="list-image">
 <a href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
 </li>
 </ul>
