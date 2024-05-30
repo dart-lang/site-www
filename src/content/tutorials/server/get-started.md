@@ -31,7 +31,7 @@ greeting to use another language.
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad:ga_id-hello_world
+```dartpad
 void main() {
   print('Hello, World!');
 }

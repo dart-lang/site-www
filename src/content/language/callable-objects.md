@@ -25,7 +25,7 @@ that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/callable_objects.dart"?>
-```dart:run-dartpad:height-350px:ga_id-callable_objects
+```dartpad
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }
