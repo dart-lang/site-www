@@ -11,6 +11,6 @@ class Point {
   // OK, can access `this` in `late` initializer:
   late double? z = this.x;
 
-  // OK, `this.fieldName` is a parameter declaration, not an expression:
+  // OK, `this.x` and `this.y` are parameter declarations, not expressions:
   Point(this.x, this.y);
 }
