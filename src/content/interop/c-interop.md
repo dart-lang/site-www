@@ -94,7 +94,7 @@ consult Apple's [Code Signing Guide.][codesign]
 
 #### Leverage dart:ffi
 
-To learn how to call a C function using the `dart:ffi` package,
+To learn how to call a C function using the `dart:ffi` library,
 review the [`hello.dart` file]({{hw}}/hello.dart).
 This section explains the contents of this file.
 
@@ -274,7 +274,7 @@ Native Assets should provide the following benefits:
 
 * Build the native code or obtains the binaries
   using a package's `build.dart` script.
-* Bundle the native [`Asset`][] that the `build.dart` script reports.
+* Bundle the native [`Asset`][] that the `build.dart` build hook reports.
 * Make native assets available at runtime through
   declarative `@Native<>() extern` functions using the [`assetId`][].
 
@@ -298,7 +298,7 @@ The example includes the following files:
 | [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
 | [`lib/native_add_library.dart`][]       | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
 | [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
-| [`hook/build.dart`][]                   | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
 
 {:.table .table-striped }
 
@@ -308,7 +308,7 @@ The example includes the following files:
 [`hook/build.dart`]: {{native-assets}}/hook/build.dart
 
 When a Dart or Flutter project depends on `package:native_add_library`,
-it invokes the `build.dart` script on `run`, `build`, and `test` commands.
+it invokes the `hook/build.dart` script on `run`, `build`, and `test` commands.
 The [`native_add_app`][] example showcases a use of `native_add_library`.
 
 ### Review Native Asset API documentation
@@ -317,7 +317,7 @@ API documentation can be found for the following packages:
 
 * To learn about native assets in Dart FFI,
   consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
-* To learn about the `build.dart` script,
+* To learn about the `hook/build.dart` build hook,
   consult the [`package:native_assets_cli` API reference][].
 
 ### Opt-in to the experiment
