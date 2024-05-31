@@ -530,7 +530,7 @@ that requests, decodes, then displays
 the mock information about the `http` and `path` packages:
 
 <?code-excerpt "bin/fetch_http_package.dart"?>
-```dart:run-dartpad:height-600px:ga_id-fetch-data-complete
+```dartpad
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
