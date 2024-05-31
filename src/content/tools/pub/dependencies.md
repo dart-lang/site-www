@@ -82,7 +82,7 @@ using the `hosted` source:
 
 ```yaml
 environment:
-  sdk: '>=[!2.15.0!] < 3.0.0'
+  sdk: '^[!2.19.0!]'
 
 dependencies:
   transmogrify:
@@ -90,16 +90,26 @@ dependencies:
     version: ^1.4.0
 ```
 
-The version constraint is optional but recommended. If no version constraint is
-given, `any` is assumed.
+The version constraint is optional but recommended.
+If no version constraint is given, `any` is assumed.
 
 :::version-note
-If your package has a [language version][] before 2.15,
-you must use a more verbose `hosted` format:
+If your package has a [SDK constraints][SDK version] earlier than 2.19,
+you must use the lower and upper bound format for SDK versions.
+The SDK constraint validator in those versions doesn't support
+the caret syntax.
 
 ```yaml
 environment:
-  sdk: '>=[!2.14.0!] < 3.0.0'
+  sdk: [!'>=2.14.0 < 3.0.0'!]
+```
+
+If your package has a [SDK version][] earlier than 2.15,
+you must use a more verbose `hosted` format.
+
+```yaml
+environment:
+  sdk: [!'>=2.14.0 < 3.0.0'!]
 
 dependencies:
   transmogrify:
@@ -110,7 +120,7 @@ dependencies:
 ```
 :::
 
-[language version]: /guides/language/evolution#language-versioning
+[SDK version]: /guides/language/evolution#language-versioning
 
 ### Git packages
 
@@ -248,15 +258,16 @@ The Dart community uses semantic versioning<sup id="fnref:semver"><a
 href="#fn:semver">1</a></sup>.
 
 You can express version constraints using either _traditional syntax_
-or _caret syntax_. Both syntaxes specify a range of compatible versions.
+or _caret syntax_ starting with Dart 2.19.
+Both syntaxes specify a range of compatible versions.
 
 The traditional syntax provides an explicit range like `'>=1.2.3 <2.0.0'`.
 The caret syntax provides an explicit starting version `^1.2.3`
 
 ```yaml
 environment:
-  # This package must use a 2.x version of the Dart SDK starting with 2.14.
-  sdk: '>=2.14.0 < 3.0.0'
+  # This package must use a 3.x version of the Dart SDK starting with 3.2.
+  sdk: ^3.2.0
 
 dependencies:
   transmogrify:
@@ -312,7 +323,7 @@ or the next minor version for any package version earlier than 1.0.
 | Version value | Range covers to | Caret Syntax | Traditional Syntax  |
 |:-------------:|:---------------:|:------------:|:-------------------:|
 | >=1.0         | Next major      | `^1.3.0`     | `'>=1.3.0 <2.0.0'`  |
-| <1.0          | Next minor      | `^0.1.2 `    | `'>=0.1.2 <0.2.0' ` |
+| <1.0          | Next minor      | `^0.1.2`     | `'>=0.1.2 <0.2.0'`  |
 
 {:.table}
 
@@ -341,13 +352,13 @@ libraries—it doesn't actually need `test`. In this case, it specifies
 
 ```yaml
 dev_dependencies:
-  test: '>=0.5.0 <0.12.0'
+  test: ^1.20.0
 ```
 
-Pub gets every package that your package depends on, and everything *those*
+Pub gets every package that your package depends on, and everything _those_
 packages depend on, transitively. It also gets your package's dev dependencies,
 but it _ignores_ the dev dependencies of any dependent packages. Pub only gets
-*your* package's dev dependencies. So when your package depends on
+_your_ package's dev dependencies. So when your package depends on
 `transmogrify` it will get `transmogrify` but not `test`.
 
 The rule for deciding between a regular or dev dependency is simple: If
@@ -522,9 +533,9 @@ packages themselves or from your `dev_dependencies`.
 
 ### Verify the integrity of downloaded packages
 
-When retrieving new dependencies, use the [`--enforce-lockfile`][]
-option to ensure the extracted package content matches
-the contents of the original archive.
+When retrieving new dependencies,
+use the [`--enforce-lockfile`][enforce-lock] option to ensure
+the extracted package contents match the contents of the original archive.
 Without modifying the [lockfile][],
 this flag only resolves new dependencies if:
 
@@ -532,7 +543,7 @@ this flag only resolves new dependencies if:
 * `pubspec.lock` is not missing
 * The packages' [content hashes][] match
 
-[`--enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
+[enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
 [lockfile]: /tools/pub/glossary#lockfile
 [content hashes]: /tools/pub/glossary#content-hashes
 ---

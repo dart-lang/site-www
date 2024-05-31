@@ -16,7 +16,8 @@ Mixins are a way of defining code that can be reused in multiple class hierarchi
 They are intended to provide member implementations en masse. 
 
 To use a mixin, use the `with` keyword followed by one or more mixin
-names. The following example shows two classes that use mixins:
+names. The following example shows two classes that use (or, are subclasses of)
+mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (musician-and-maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
 ```dart
@@ -60,30 +61,120 @@ mixin Musical {
 }
 ```
 
-Sometimes you might want to restrict the types that can use a mixin.
-For example, the mixin might depend on being able to invoke a method
-that the mixin doesn't define.
-As the following example shows, you can restrict a mixin's use
-by using the `on` keyword to specify the required superclass:
+## Specify members a mixin can call on itself
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)" plaster="none" replace="/on Musician2/[!on Musician!]/g"?>
+Sometimes a mixin depends on being able to invoke a method or access fields,
+but can't define those members itself (because mixins can't use constructor
+parameters to instantiate their own fields).
+
+The following sections cover different strategies for ensuring any subclass
+of a mixin defines any members the mixin's behavior depends on. 
+
+### Define abstract members in the mixin
+
+Declaring an abstract method in a mixin forces any type that uses
+the mixin to define the abstract method upon which its behavior depends. 
+
 ```dart
-class Musician {
-  // ...
+mixin Musician {
+  void playInstrument(String instrumentName); // Abstract method.
+
+  void playPiano() {
+    playInstrument('Piano');
+  }
+  void playFlute() {
+    playInstrument('Flute');
+  }
 }
 
-mixin MusicalPerformer [!on Musician!] {
-  // ...
+class Virtuoso with Musician { 
+  void playInstrument(String instrumentName) { // Subclass must define.
+    print('Plays the $instrumentName beautifully');
+  }  
+} 
+```
+
+#### Access state in the mixin's subclass
+
+Declaring abstract memebers also allows you to access state on the subclass
+of a mixin, by calling getters which are defined as abstract on the mixin:
+
+```dart
+/// Can be applied to any type with a [name] property and provides an
+/// implementation of [hashCode] and operator `==` in terms of it.
+mixin NameIdentity {
+  String get name;
+
+  int get hashCode => name.hashCode;
+  bool operator ==(other) => other is NameIdentity && name == other.name;
 }
-class SingerDancer extends Musician with MusicalPerformer {
-  // ...
+
+class Person with NameIdentity {
+  final String name;
+
+  Person(this.name);
 }
 ```
 
-In the preceding code,
-only classes that extend or implement the `Musician` class
-can use the mixin `MusicalPerformer`.
-Because `SingerDancer` extends `Musician`,
+### Implement an interface
+
+Similar to declaring the mixin abstract, putting an `implements` clause on the
+mixin while not actually implementing the interface will also ensure any member
+dependencies are defined for the mixin.
+
+```dart
+abstract interface class Tuner {
+  void tuneInstrument();
+}
+
+mixin Guitarist implements Tuner {
+  void playSong() {
+    tuneInstrument();
+
+    print('Strums guitar majestically.');
+  }
+}
+
+class PunkRocker with Guitarist {
+  void tuneInstrument() {
+    print("Don't bother, being out of tune is punk rock.");
+  }
+}
+```
+
+### Use the `on` clause to declare a superclass
+
+The `on` clause exists to define the type that `super` calls are resolved against.
+So, you should only use it if you need to have a `super` call inside a mixin. 
+
+The `on` clause forces any class that uses a mixin to also be a subclass
+of the type in the `on` clause.
+If the mixin depends on members in the superclass,
+this ensures those members are available where the mixin is used:
+
+```dart
+class Musician {
+  musicianMethod() {
+    print('Playing music!');
+  }
+}
+
+mixin MusicalPerformer [!on Musician!] {
+  perfomerMethod() {
+    print('Performing music!');
+    super.musicianMethod();
+  }
+}
+
+class SingerDancer extends Musician with MusicalPerformer { }
+
+main() {
+  SingerDance().performerMethod();
+}
+```
+
+In this example, only classes that extend or implement the `Musician` class
+can use the mixin `MusicalPerformer`. Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
 
 ## `class`, `mixin`, or `mixin class`?
@@ -96,49 +187,24 @@ A `mixin` declaration defines a mixin. A `class` declaration defines a [class][]
 A `mixin class` declaration defines a class that is usable as both a regular class
 and a mixin, with the same name and the same type.
 
+```dart
+mixin class Musician {
+  // ...
+}
+
+class Novice with Musician { // Use Musician as a mixin
+  // ...
+}
+
+class Novice extends Musician { // Use Musician as a class
+  // ...
+}
+```
+
 Any restrictions that apply to classes or mixins also apply to mixin classes:
 
 - Mixins can't have `extends` or `with` clauses, so neither can a `mixin class`.
-- Classes can't have an `on` clause, so neither can a `mixin class`. 
-
-### `abstract mixin class`
-
-You can achieve similar behavior to the `on` directive for a mixin class. 
-Make the mixin class `abstract` and define the abstract methods its behavior 
-depends on:
-
-```dart
-abstract mixin class Musician {
-  // No 'on' clause, but an abstract method that other types must define if 
-  // they want to use (mix in or extend) Musician: 
-  void playInstrument(String instrumentName);
-
-  void playPiano() {
-    playInstrument('Piano');
-  }
-  void playFlute() {
-    playInstrument('Flute');
-  }
-}
-
-class Virtuoso with Musician { // Use Musician as a mixin
-  void playInstrument(String instrumentName) {
-    print('Plays the $instrumentName beautifully');
-  }  
-} 
-
-class Novice extends Musician { // Use Musician as a class
-  void playInstrument(String instrumentName) {
-    print('Plays the $instrumentName poorly');
-  }  
-} 
-```
-
-By declaring the `Musician` mixin as abstract, you force any type that uses
-it to define the abstract method upon which its behavior depends. 
-
-This is similar to how the `on` directive ensures a mixin has access to any
-interfaces it depends on by specifying the superclass of that interface.
+- Classes can't have an `on` clause, so neither can a `mixin class`.
 
 [language version]: /guides/language/evolution#language-versioning
 [class]: /language/classes
