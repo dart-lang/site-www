@@ -145,7 +145,7 @@ Please report issues and feedback via the official
 Include details of the expected behavior, the actual behavior,
 and screenshots if appropriate.
 
-[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues/WEB?q=Subsystem:%20Dart
+[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
 
 ## More information
 

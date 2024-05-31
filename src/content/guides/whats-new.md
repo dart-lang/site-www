@@ -618,7 +618,7 @@ we made the following changes to this site:
 [Other operators]: /language/operators#other-operators
 [Low-level HTML tutorials]: /web/get-started
 
-[native types]: /interop/c-interop#interfacing-with-native-types
+[native types]: /interop/c-interop#interface-with-native-types
 [initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
 [asynchronous programming codelab]: /codelabs/async-await
