@@ -8,7 +8,6 @@ This guide explains a bit about the history of versioning and pub's
 approach to it.
 
 Consider this to be advanced information.
-
 To learn _why_ pub was designed the way it was, keep reading.
 If you want to _use_ pub, consult the [other docs][pub].
 
@@ -199,7 +198,7 @@ When you define your package, you list its
 [immediate dependencies][immediate-dep].
 These are packages that your package uses.
 For each of these package, you specify the range of versions your package allows.
-Each of those dependent packages might thenhave their own dependencies.
+Each of those dependent packages might then have their own dependencies.
 These are called [transitive dependencies][transitive-dep].
 Pub traverses these and builds the entire dependency graph for your app.
 
