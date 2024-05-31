@@ -485,6 +485,52 @@ If you modify the pubspec and update to a new major version,
 then you might encounter breaking changes,
 so you need to test even more thoroughly.
 
+### Test with downgraded dependencies
+
+When developing packages for publication, it is often preferable to
+allow the widest dependency constraints possible.
+A wide dependency constraint reduces the likelihood that
+package consumers face a version resolution conflict.
+
+For example, if you have a dependency on `foo: ^1.2.3` and
+version `1.3.0` of `foo` is released, it might be reasonable to
+keep the existing dependency constraint (`^1.2.3`).
+But if your package starts using features that were added in `1.3.0`, then
+you'll need to bump your constraint to `^1.3.0`.
+
+However, it's easy to forget to bump a
+dependency constraint when it becomes necessary.
+Therefore, it's a best practice to test your package
+against downgraded dependencies before publishing.
+
+To test against downgraded dependencies, run [`dart pub downgrade`][] and
+verify your package still analyzes without errors and passes all tests:
+
+```console
+dart pub downgrade
+dart analyze
+dart test
+```
+
+Testing with downgraded dependencies should
+happen alongside normal tests with latest dependencies.
+If dependency constraints need to be bumped, change them yourself or
+use `dart pub upgrade --tighten` to update dependencies to the latest versions.
+
+:::note
+Testing with `dart pub downgrade` enables you to find incompatibilities that
+you might not otherwise have discovered.
+But it doesn't exclude the possibility of incompatibilities.
+
+There are often so many different combinations of versions that
+testing them all is infeasible.
+There might also be older versions allowed by your dependency constraints that
+can't be resolved due to mutually incompatible version constraints from
+packages themselves or from your `dev_dependencies`.
+:::
+
+[`dart pub downgrade`]: /tools/pub/cmd/pub-downgrade
+
 ### Verify the integrity of downloaded packages
 
 When retrieving new dependencies,
