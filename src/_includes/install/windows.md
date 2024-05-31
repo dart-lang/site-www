@@ -60,7 +60,7 @@ To uninstall the Dart SDK, perform the following steps.
 
 1. Remove the Dart configuration files from your home directory.
 
-   ```dart
+   ```ps
    PS C:\> Remove-Item -Recurse -Force ^
         -Path $env:LOCALAPPDATA\.dartServer,$env:APPDATA\.dart,$env:APPDATA\.dart-tool
    ```
