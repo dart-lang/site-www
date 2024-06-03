@@ -1,6 +1,6 @@
 ---
-title: Dart cheatsheet codelab
-description: Interactively learn (or relearn) some of Dart's unique features.
+title: Dart cheatsheet
+description: Learn some of Dart's unique features through DartPad
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
@@ -11,7 +11,7 @@ but it has a few unique features.
 This codelab walks you through
 the most important of these language features.
 
-The embedded editors in this codelab have partially completed code snippets.
+The embedded editors in this cheatsheet have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button. The editors also contain thorough test code;
 **don't edit the test code**, but feel free to study it to learn about testing. 
@@ -114,12 +114,12 @@ int? a; // The initial value of a is null.
 To learn more about null safety in Dart,
 read the [sound null safety guide](/null-safety).
 
-
 ### Code example {:.no_toc}
 
-Try to declare two variables below:
-- A nullable `String` named `name` with the value `'Jane'`.
-- A nullable `String` named `address` with the value `null`.
+Declare two variables in this DartPad:
+
+* A nullable `String` named `name` with the value `'Jane'`.
+* A nullable `String` named `address` with the value `null`.
 
 Ignore all initial errors in the DartPad.
 
@@ -156,7 +156,6 @@ void main() {
   ```
 
 </details>
-
 
 ## Null-aware operators
 
@@ -1778,106 +1777,139 @@ class IntegerHolder {
 
 class IntegerSingle extends IntegerHolder {
   final int a;
-  IntegerSingle(this.a); 
+
+  IntegerSingle(this.a);
 }
 
 class IntegerDouble extends IntegerHolder {
   final int a;
   final int b;
-  IntegerDouble(this.a, this.b); 
+
+  IntegerDouble(this.a, this.b);
 }
 
 class IntegerTriple extends IntegerHolder {
   final int a;
   final int b;
   final int c;
-  IntegerTriple(this.a, this.b, this.c); 
+
+  IntegerTriple(this.a, this.b, this.c);
 }
 
-
-// Tests your solution (Don't edit!):
+// Tests your solution (Don't edit from this point to end of file):
 void main() {
   final errs = <String>[];
 
-  bool _throwed = false;
-  try {
-    IntegerHolder.fromList([]);
-  } on UnimplementedError {
-    print('Test failed. Did you implement the method?');
-    return;
-  } on Error {
-    _throwed = true;
-  } catch (e) {
-    print('Called IntegerSingle.fromList([]) and got an exception of \n type ${e.runtimeType}.');
-    return;
-  }
-  
-  if (!_throwed) {
-    errs.add('Called IntegerSingle.fromList([]) and didn\'t throw Error.');
-  } 
-
-  try {
-    final obj = IntegerHolder.fromList([1]);
-    
-    if (obj is! IntegerSingle) {
-      errs.add('Called IntegerHolder.fromList([1]) and got an object of type \n ${obj.runtimeType} instead of IntegerSingle.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with \n  an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([]) and got an exception of \n type ${e.runtimeType}.');
-    return;
-  }
-
-  try {
-    final obj = IntegerHolder.fromList([1, 2]);
-    
-    if (obj is! IntegerDouble) {
-      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type \n ${obj.runtimeType} instead of IntegerDouble.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-      
-      if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'b\' value of ${obj.b} instead of the expected (2).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([1, 2]) and got an exception \n of type ${e.runtimeType}.');
-    return;
-  }
-
-  try {
-    final obj = IntegerHolder.fromList([1, 2, 3]);
-    
-    if (obj is! IntegerTriple) {
-      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type \n ${obj.runtimeType} instead of IntegerTriple.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-      
-      if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
-      }
-
-      if (obj.c != 3) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([1, 2, 3]) and got an exception \n of type ${e.runtimeType}.');
-    return;
-  }
+  if (!testBadNumberOfArgs(errs, 0)) return;
+  if (!testGoodNumberOfArgs(errs, 1)) return;
+  if (!testGoodNumberOfArgs(errs, 2)) return;
+  if (!testGoodNumberOfArgs(errs, 3)) return;
+  if (!testBadNumberOfArgs(errs, 4)) return;
 
   if (errs.isEmpty) {
     print('Success!');
   } else {
     errs.forEach(print);
   }
+}
+
+bool testGoodNumberOfArgs(List<String> errs, int count) {
+  assert(1 <= count && count <= 3);
+  String callTxt = '???';
+  IntegerHolder? obj;
+  Type? expected;
+  try {
+    switch (count) {
+      case 1:
+        callTxt = 'IntegerHolder.fromList([1])';
+        obj = IntegerHolder.fromList([1]);
+        expected = IntegerSingle;
+      case 2:
+        callTxt = 'IntegerHolder.fromList([1, 2])';
+        obj = IntegerHolder.fromList([1, 2]);
+        expected = IntegerDouble;
+      case 3:
+        callTxt = 'IntegerHolder.fromList([1, 2, 3])';
+        obj = IntegerHolder.fromList([1, 2, 3]);
+        expected = IntegerTriple;
+    }
+    if (obj.runtimeType != expected) {
+      errs.add(
+          'Called $callTxt and got an object of type \n ${obj.runtimeType} instead of $expected.');
+    } else {
+      if (obj is IntegerSingle) {
+        testValueOfA(errs,[1],obj,callTxt);
+      } else if (obj is IntegerDouble) {
+        testValueOfAB(errs,[1,2],obj,callTxt);
+      } else if (obj is IntegerTriple) {
+        testValueOfABC(errs,[1,2,3],obj,callTxt);
+      } else {
+        // Can't happen
+      }
+    }
+  } catch (e) {
+    print(
+        'Called ${callTxt} and got an exception of \n type ${e.runtimeType}.');
+    return false;
+  }
+  return true;
+}
+
+testValueOfA(
+    List<String> errs, List<int> ex, IntegerSingle o, String callTxt) {
+  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerSingle);
+}
+
+testValueOfAB(List<String> errs, List<int> ex, IntegerDouble o, String callTxt) {
+  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerDouble);
+  testValueOfX(errs, o.b, ex[1], 'b', callTxt, IntegerDouble);
+}
+
+testValueOfABC(
+    List<String> errs, List<int> ex, IntegerTriple o, String callTxt) {
+  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerTriple);
+  testValueOfX(errs, o.b, ex[1], 'b', callTxt, IntegerTriple);
+  testValueOfX(errs, o.c, ex[2], 'c', callTxt, IntegerTriple);
+}
+
+testValueOfX(List<String> errs, int found, int ex, String name,
+    String callTxt, Type type) {
+  if (ex != found) {
+    errs.add(
+        'Called $callTxt and got a $type with \n a \'$name\' value of $found instead of the expected ($ex).');
+  }
+}
+
+bool testBadNumberOfArgs(List<String> errs, int count) {
+  assert(count == 0 || count == 4);
+  String callTxt = '???';
+  bool _threw = false;
+  try {
+    switch (count) {
+      case 0:
+        callTxt = 'IntegerHolder.fromList([])';
+        // This next statement should throw
+        IntegerHolder.fromList([]);
+      case 4:
+        callTxt = 'IntegerHolder.fromList([1,2,3,4])';
+        // This next statement should throw
+        IntegerHolder.fromList([1, 2, 3, 4]);
+    }
+  } on UnimplementedError {
+    print('Test failed. Did you implement the method?');
+    return false;
+  } on Error {
+    _threw = true;
+  } catch (e) {
+    print(
+        'Called ${callTxt} and got an exception of \n type ${e.runtimeType}.');
+    return false;
+  }
+  // An Error must have been thrown to pass this test!
+  if (!_threw) {
+    errs.add('Called ${callTxt} and it didn\'t throw any Error.');
+  }
+  return true;
 }
 ```
 
@@ -1888,18 +1920,19 @@ void main() {
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
 
-  ```dart    
-    factory IntegerHolder.fromList(List<int> list) {
-      if (list.length == 1) {
-        return IntegerSingle(list[0]);
-      } else if (list.length == 2) {
-        return IntegerDouble(list[0], list[1]);
-      } else if (list.length == 3) {
-        return IntegerTriple(list[0], list[1], list[2]);
-      } else {
-        throw Error();
-      } 
+  ```dart
+  // Implement this factory constructor.
+  factory IntegerHolder.fromList(List<int> list) {
+    if (list.length == 1) {
+      return IntegerSingle(list[0]);
+    } else if (list.length == 2) {
+      return IntegerDouble(list[0], list[1]);
+    } else if (list.length == 3) {
+      return IntegerTriple(list[0], list[1], list[2]);
+    } else {
+      throw ArgumentError("List too long or too short: ${list.length}");
     }
+  }
   ```
 
 </details>
@@ -2084,9 +2117,10 @@ void main() {
 
 ## What's next?
 
-We hope you enjoyed using this codelab to learn or test your knowledge of
+We hope you enjoyed using this cheatsheet to learn
 some of the most interesting features of the Dart language.
-Here are some suggestions for what to do now:
+
+What you can try next includes:
 
 * Try [other Dart codelabs](/codelabs).
 * Read the [Dart language tour](/language).
