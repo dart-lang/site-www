@@ -307,7 +307,8 @@ To destructure a record with named fields using a pattern:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-3)"?>
 ```dart
-final (:name, :age) = getData(); // For example, return (name: 'doug', age: 25);
+final (:name, :age) =
+    getData(); // For example, return (name: 'doug', age: 25);
 ```
 
 ### Destructuring class instances
