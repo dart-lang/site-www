@@ -232,8 +232,6 @@ Ave // "avenue"
 // Two letters, capitalized in English, so capitalized in an identifier:
 ID // "identifier"
 TV // "television"
-DB // "database"
-IO // "input/output"
 UI // "user interface"
 
 // Two letters, not capitalized in English, so like a word in an identifier:
@@ -249,10 +247,8 @@ URI // "uniform resource locator"
 esq // "esquire"
 Ave // "avenue"
 
-Id // "identifier", capitalized as "ID"
+Id // "identifier"
 Tv // "television"
-Db // "database", originally an acronym from "data base"
-Io // "input/output"
 Ui // "user interface"
 
 MR // "mister"
