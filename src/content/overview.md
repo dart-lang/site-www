@@ -59,7 +59,7 @@ To learn more about the language,
 check out the [Dart language tour](/language).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
-```dart:run-dartpad:ga_id-overview
+```dartpad
 import 'dart:math' show Random;
 
 void main() async {

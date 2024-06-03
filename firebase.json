@@ -5,9 +5,16 @@
     "trailingSlash": false,
     "headers": [
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
+        "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
         "headers": [
           { "key": "Cache-Control", "value": "max-age=28800" },
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
+        ]
+      },
+      {
+        "source": "/assets/img/*.@(jpg|jpeg|png|webp|avif)",
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=604800" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       },
@@ -184,6 +191,7 @@
 
       { "source": "/go/next-gen-js-interop", "destination": "/interop/js-interop", "type": 301 },
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
+      { "source": "/go/downgrade-testing", "destination": "/tools/pub/dependencies#test-with-downgraded-dependencies", "type": 301 },
       { "source": "/go/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/go/package-web", "destination": "/interop/js-interop/package-web", "type": 301 },
