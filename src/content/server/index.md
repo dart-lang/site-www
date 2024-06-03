@@ -25,7 +25,7 @@ that can help you develop command-line and server apps.
   besides the [currently supported packages][].
   :::
 
-[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/get-dart) to get the core Dart
@@ -46,7 +46,7 @@ More tools
 : The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
 
-For additional options, see [#server packages on pub.dev]({{site.pub}}/packages?q=topic%3Aserver).
+For additional options, see [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
 
 ## Tutorials
 

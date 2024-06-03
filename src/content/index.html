@@ -4,9 +4,6 @@ title: Dart programming language
 description: >-
   Dart is an approachable, portable, and productive language for
   high-quality apps on any platform.
-js:
-- url: /assets/dash/js/dartpad_picker_main.dart.js
-  defer: true
 ---
 <!-- Hero animation -->
 <div class="d-none d-sm-none d-md-block">
@@ -156,7 +153,7 @@ js:
                                 </div>
                                 <div class="bullet-text">
                                     Make changes to your source code iteratively, using
-                                    <a href="https://flutter.dev/docs/development/tools/hot-reload">hot
+                                    <a href="https://docs.flutter.dev/tools/hot-reload">hot
                                         reload</a>
                                     to instantly see the effect in the running app.
                                 </div>
@@ -179,9 +176,9 @@ js:
                                     <div class="animated-bullet"></div>
                                 </div>
                                 <div class="bullet-text">
-                                    Do <a href="https://flutter.dev/docs/development/tools/devtools/performance">profiling</a>,
-                                    <a href="https://flutter.dev/docs/development/tools/devtools/logging">logging</a>,
-                                    and <a href="https://flutter.dev/docs/development/tools/devtools/debugger">debugging</a>
+                                    Do <a href="https://docs.flutter.dev/tools/devtools/performance">profiling</a>,
+                                    <a href="https://docs.flutter.dev/tools/devtools/logging">logging</a>,
+                                    and <a href="https://docs.flutter.dev/tools/devtools/debugger">debugging</a>
                                     with your code editor of choice.
                                 </div>
                             </div>
@@ -314,7 +311,7 @@ js:
                                 </div>
                                 <div class="bullet-text">
                                     Make changes to your source code iteratively, using
-                                    <a href="https://flutter.dev/docs/development/tools/hot-reload">hot reload</a>
+                                    <a href="https://docs.flutter.dev/tools/hot-reload">hot reload</a>
                                     to instantly see the effect in the running app.
                                 </div>
                             </div>
@@ -336,9 +333,9 @@ js:
                                     <div class="animated-bullet"></div>
                                 </div>
                                 <div class="bullet-text">
-                                    Do <a href="https://flutter.dev/docs/development/tools/devtools/performance">profiling</a>,
-                                    <a href="https://flutter.dev/docs/development/tools/devtools/logging">logging</a>,
-                                    and <a href="https://flutter.dev/docs/development/tools/devtools/debugger">debugging</a>
+                                    Do <a href="https://docs.flutter.dev/tools/devtools/performance">profiling</a>,
+                                    <a href="https://docs.flutter.dev/tools/devtools/logging">logging</a>,
+                                    and <a href="https://docs.flutter.dev/tools/devtools/debugger">debugging</a>
                                     with your code editor of choice.
                                 </div>
                             </div>
@@ -404,9 +401,9 @@ js:
         <div class="dash-dartpad">
             <a id="try-dart" class="frontanchor"></a>
             <h2>Try Dart in your browser</h2>
-            <label for="dartpad-select" class="sr-only">Select an example:</label>
-            <select id="dartpad-select"></select>
-            <div id="dartpad-host"></div>
+            <div id="dartpad-host">
+                <iframe src="https://dartpad.dev?theme=dark" loading="lazy"></iframe>
+            </div>
             <h3>Want more practice? <a href="/language">Learn the language</a>,
                 explore the <a href="/libraries">core libraries</a>,
                 or <a href="/tutorials/server/get-started">build a command-line app</a>.</h3>

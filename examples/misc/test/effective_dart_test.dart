@@ -58,10 +58,10 @@ void main() {
   });
 
   test('whereType usage_good', () {
-    // #docregion whereType
+    // #docregion where-type
     var objects = [1, 'a', 2, 'b', 3];
     var ints = objects.whereType<int>();
-    // #enddocregion whereType
+    // #enddocregion where-type
     expect(ints, TypeMatcher<Iterable<int>>());
     expect(ints, [1, 2, 3]);
   });

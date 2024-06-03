@@ -138,7 +138,7 @@ To get an object's type at runtime,
 you can use the `Object` property `runtimeType`,
 which returns a [`Type`][] object.
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (runtimeType)"?>
+<?code-excerpt "misc/test/language_tour/classes_test.dart (runtime-type)"?>
 ```dart
 print('The type of a is ${a.runtimeType}');
 ```
@@ -177,7 +177,7 @@ Non-final instance variables and
 an implicit *setter* method. For details,
 check out [Getters and setters][].
 
-<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class-main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
   double? x; // Declare instance variable x, initially null.
@@ -212,7 +212,7 @@ class Point {
   // OK, can access `this` in `late` initializer:
   late double? z = this.x;
 
-  // OK, `this.fieldName` is a parameter declaration, not an expression:
+  // OK, `this.x` and `this.y` are parameter declarations, not expressions:
   Point(this.x, this.y);
 }
 ```
@@ -285,7 +285,7 @@ void main() {
 Here's an example of specifying that a class implements multiple
 interfaces:
 
-<?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
+<?code-excerpt "misc/lib/language_tour/classes/misc.dart (point-interfaces)"?>
 ```dart
 class Point implements Comparable, Location {...}
 ```
@@ -369,7 +369,7 @@ can pass a static method as a parameter to a constant constructor.
 [`Type`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Type-class.html
 [type test operator]: /language/operators#type-test-operators
 [Getters and setters]: /language/methods#getters-and-setters
-[initializer list]: /language/constructors#initializer-list
+[initializer list]: /language/constructors#use-an-initializer-list
 [factory constructor]: /language/constructors#factory-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [nullable type]: /null-safety/understanding-null-safety#using-nullable-types

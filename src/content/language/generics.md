@@ -43,7 +43,7 @@ many types, while still taking advantage of static
 analysis. For example, say you create an interface for
 caching an object:
 
-<?code-excerpt "misc/lib/language_tour/generics/cache.dart (ObjectCache)"?>
+<?code-excerpt "misc/lib/language_tour/generics/cache.dart (object-cache)"?>
 ```dart
 abstract class ObjectCache {
   Object getByKey(String key);
@@ -54,7 +54,7 @@ abstract class ObjectCache {
 You discover that you want a string-specific version of this interface,
 so you create another interface:
 
-<?code-excerpt "misc/lib/language_tour/generics/cache.dart (StringCache)"?>
+<?code-excerpt "misc/lib/language_tour/generics/cache.dart (string-cache)"?>
 ```dart
 abstract class StringCache {
   String getByKey(String key);
@@ -68,7 +68,7 @@ interface... You get the idea.
 Generic types can save you the trouble of creating all these interfaces.
 Instead, you can create a single interface that takes a type parameter:
 
-<?code-excerpt "misc/lib/language_tour/generics/cache.dart (Cache)"?>
+<?code-excerpt "misc/lib/language_tour/generics/cache.dart (cache)"?>
 ```dart
 abstract class Cache<T> {
   T getByKey(String key);
@@ -161,7 +161,7 @@ You can use `extends` with other types besides `Object`.
 Here's an example of extending `SomeBaseClass`,
 so that members of `SomeBaseClass` can be called on objects of type `T`:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (generic)" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 ```dart
 class Foo<T [!extends SomeBaseClass!]> {
   // Implementation goes here...

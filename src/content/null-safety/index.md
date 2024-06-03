@@ -28,7 +28,8 @@ flag if a non-nullable variable has either:
 
 * Not been initialized with a non-null value
 * Been assigned a `null` value.
-These checks allows you to fix these errors _before_ deploying your app.
+
+These checks allow you to fix these errors _before_ deploying your app.
 
 ## Introduction through examples
 
@@ -49,9 +50,10 @@ just add `?` to its type declaration:
 int? aNullableInt = null;
 ```
 
-- To try an interactive example,
-  see the [null safety codelab][Null safety codelab].
-- To learn more about this topic, see
+- To try some interactive examples,
+  try out some of the null-safety orientated examples in the
+  [Dart cheatsheet](/codelabs/dart-cheatsheet).
+- To learn more about null safety, check out
   [Understanding null safety](/null-safety/understanding-null-safety).
 
 
@@ -176,18 +178,16 @@ check out the [migration guide][].
 
 To learn more about null safety, check out the following resources:
 
-* [Null safety codelab][]
 * [Understanding null safety][]
 * [Migration guide for existing code][migration guide]
 * [Null safety FAQ][]
 * [Null safety sample code][calculate_lix]
 
-[calculate_lix]: https://github.com/dart-lang/samples/tree/main/null_safety/calculate_lix
+[calculate_lix]: {{site.repo.dart.org}}/samples/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
-[Null safety codelab]: /codelabs/null-safety
 [Understanding null safety]: /null-safety/understanding-null-safety
-[#34233]: https://github.com/dart-lang/sdk/issues/34233
-[#49529]: https://github.com/dart-lang/sdk/issues/49529
-[#2357]: https://github.com/dart-lang/language/issues/2357
+[#34233]: {{site.repo.dart.sdk}}/issues/34233
+[#49529]: {{site.repo.dart.sdk}}/issues/49529
+[#2357]: {{site.repo.dart.lang}}/issues/2357
 

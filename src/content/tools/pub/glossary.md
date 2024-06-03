@@ -141,7 +141,7 @@ Pub has a list of these directories: `benchmark`, `bin`, `example`,
 `test`, `tool`, and `web` (and `lib`, for [Flutter apps][]).
 Any subdirectories of those (except `bin`) may also contain entrypoints.
 
-[Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
+[Flutter apps]: {{site.flutter-docs}}/packages-and-plugins/developing-packages
 
 ## Immediate dependency
 

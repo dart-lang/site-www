@@ -75,7 +75,7 @@ This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
+[Analysis Server API Specification.](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)
 
 :::note
 To view various analyzer diagnostics with explanations and common fixes,
@@ -225,7 +225,7 @@ See [Conditions for strict inference failure][]
 for an exhaustive list of inference failure conditions.
 :::
 
-[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Conditions for strict inference failure]: {{site.repo.dart.lang}}/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
@@ -490,7 +490,7 @@ int x = '';
 
 To suppress more than one diagnostic, supply a comma-separated list:
 
-<?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore-more)"?>
 ```dart
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;

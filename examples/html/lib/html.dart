@@ -5,7 +5,7 @@ import 'dart:html';
 
 void miscDeclAnalyzedButNotTested() {
   {
-    // #docregion querySelector
+    // #docregion query-selector
     // Find an element by id (an-id).
     Element idElement = querySelector('#an-id')!;
 
@@ -24,7 +24,7 @@ void miscDeclAnalyzedButNotTested() {
     // inside of a <p> that is inside an element with
     // the ID 'id'.
     List<Element> specialParagraphElements = querySelectorAll('#id p.class');
-    // #enddocregion querySelector
+    // #enddocregion query-selector
   }
 
   {
@@ -54,9 +54,9 @@ void miscDeclAnalyzedButNotTested() {
     querySelector('#inputs')!.nodes.add(elem);
     // #enddocregion nodes-add
 
-    // #docregion replaceWith
+    // #docregion replace-with
     querySelector('#status')!.replaceWith(elem);
-    // #enddocregion replaceWith
+    // #enddocregion replace-with
 
     // #docregion remove
     // Find a node by ID, and remove it from the DOM if it is found.
@@ -91,13 +91,13 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion set-style
 
     void submitData() {}
-    // #docregion onClick
+    // #docregion on-click
     // Find a button by ID and add an event handler.
     querySelector('#submitInfo')!.onClick.listen((e) {
       // When the button is clicked, it runs this code.
       submitData();
     });
-    // #enddocregion onClick
+    // #enddocregion on-click
 
     // #docregion target
     document.body!.onClick.listen((e) {
@@ -109,14 +109,14 @@ void miscDeclAnalyzedButNotTested() {
 
   Future<void> tryGetString() async {
     String jsonUri = 'data.json';
-    // #docregion try-getString
+    // #docregion try-get-string
     try {
       var data = await HttpRequest.getString(jsonUri);
       // Process data...
     } catch (e) {
       // Handle exception...
     }
-    // #enddocregion try-getString
+    // #enddocregion try-get-string
   }
 
   {

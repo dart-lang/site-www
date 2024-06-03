@@ -29,11 +29,11 @@
   {% endif -%}
 
   <!-- Favicon / Touch Icons -->
-  <link rel="icon" sizes="64x64" href="/assets/img/logo/dart-64.png">
-  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
-  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
-  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
-  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+  <link rel="icon" sizes="64x64" href="/assets/img/logo/dart-64.png" eleventy:ignore>
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon" eleventy:ignore>
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152" eleventy:ignore>
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180" eleventy:ignore>
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167" eleventy:ignore>
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
   {% assign og_image_start = og_image_path | slice: 0 -%}
   {% unless og_image_start == '/' %}{% capture og_image_path %}{{page.url}}/{{og_image_path}}{% endcapture %}{% endunless -%}
 
-  <meta property="og:image" content="{{og_image_path | url}}{{site.og_image_vers}}">
+  <meta property="og:image" content="{{og_image_path | url}}{{site.og_image_vers}}" eleventy:ignore>
 
   {% if og_type -%}
     <meta property="og:type" content="{{og_type}}">
@@ -97,5 +97,5 @@
   {% endfor -%}
   {% endif -%}
 
-  {% include 'analytics.html' -%}
+  {% render 'analytics.html' -%}
  </head>

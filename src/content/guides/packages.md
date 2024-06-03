@@ -202,7 +202,7 @@ the pub package manager.
 
 The `dart pub` tool provides the following subcommands:
 
-{% include 'pub-subcommands.md' %}
+{% render 'pub-subcommands.md' %}
 
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).

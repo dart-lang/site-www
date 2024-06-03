@@ -1,7 +1,7 @@
 ---
 title: Dart overview
 description: A short introduction to Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 
 <img 
@@ -59,7 +59,7 @@ To learn more about the language,
 check out the [Dart language tour](/language).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
-```dart:run-dartpad:ga_id-overview
+```dartpad
 import 'dart:math' show Random;
 
 void main() async {
@@ -110,7 +110,7 @@ class Point {
 :::note
 This example is running in an embedded [DartPad](/tools/dartpad).
 You can also
-<a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"
+<a href="{{site.dartpad}}/?id=bc63d212c3252e44058ff76f34ef5730"
 target="_blank" rel="noopener">open this example in its own window</a>.
 :::
 
@@ -171,8 +171,8 @@ publish thousands of packages, with support for features like these:
 
 To see a series of working examples featuring the Dart core libraries,
 read the [core library documentation](/libraries).
-To find additional APIs, see the
-[commonly used packages page](/guides/libraries/useful-libraries).
+To find additional APIs, check out the
+[commonly used packages page](/resources/useful-packages).
 
 
 ## Dart: The platforms {:#platform}
@@ -184,8 +184,8 @@ Dart's compiler technology lets you run code in different ways:
   an ahead-of-time (AOT) compiler for producing machine code.
 
 * **Web platform**: For apps targeting the web, Dart can compile for
-  development or production purposes. Its web compiler translates Dart
-  into JavaScript.
+  development or production purposes. Its web compilers translate Dart
+  into JavaScript or WebAssembly.
 
 <img 
   src="/assets/img/Dart-platforms.svg" 
@@ -221,19 +221,23 @@ More information:
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP servers](/tutorials/server/httpserver)
 
-#### Dart Web (JavaScript dev & prod) {:#web-platform}
+#### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
+Alternatively, Dart code can be compiled to WebAssembly.
 
-Dart web contains two compilation modes:
+Dart web contains three compilation modes:
 
-* An incremental development compiler enabling a fast developer cycle
-* An optimizing production compiler which compiles Dart code to fast,
-  compact, deployable JavaScript. These efficiencies come from
-  techniques such as dead-code elimination.
+* An incremental JavaScript development compiler enabling a fast developer 
+  cycle.
+* An optimizing JavaScript production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These efficiencies come from techniques such
+  as dead-code elimination.
+* An optimizing WebAssembly (WasmGC) production compiler which compiles Dart
+  code to super-fast, deployable WebAssembly GC code.
 
 More information:
 
@@ -241,6 +245,7 @@ More information:
 * [`dart compile js`](/tools/dart-compile#js)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
+* [WebAssembly compilation](/web/wasm)
 
 #### The Dart runtime {:#runtime}
 

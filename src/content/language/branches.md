@@ -231,7 +231,7 @@ their possible values are known and fully enumerable.
 Use the [`sealed` modifier][sealed] on a class to enable
 exhaustiveness checking when switching over subtypes of that class:
 
-<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic_datatypes)"?>
+<?code-excerpt "language/lib/patterns/algebraic_datatypes.dart (algebraic-datatypes)"?>
 ```dart
 sealed class Shape {}
 

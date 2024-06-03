@@ -31,8 +31,8 @@ void main() {
     void main() {
       print('Hello, World!');
     }
-
     // #enddocregion hello-world
+
     expect(main, prints('Hello, World!\n'));
   });
 
@@ -190,14 +190,14 @@ void main() {
   });
 
   test('Future.then', () {
-    // #docregion Future-then
+    // #docregion future-then
     Future<void> printWithDelay(String message) {
       return Future.delayed(oneSecond).then((_) {
         print(message);
       });
     }
+    // #enddocregion future-then
 
-    // #enddocregion Future-then
     expect(() => printWithDelay('Hi'), prints('Hi\n'));
   });
 
@@ -251,14 +251,14 @@ void main() {
     var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
     var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 
-    // #docregion async-
+    // #docregion async-star
     Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
       for (final object in objects) {
         await Future.delayed(oneSecond);
         yield '${craft.name} flies by $object';
       }
     }
-    // #enddocregion async-
+    // #enddocregion async-star
 
     final messages = flybyObjects.map((o) => 'Voyager I flies by $o');
     expect(await report(voyager, flybyObjects).toList(), messages);

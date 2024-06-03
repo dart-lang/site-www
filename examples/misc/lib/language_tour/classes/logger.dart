@@ -1,4 +1,4 @@
-// #docregion
+// #docregion constructors
 class Logger {
   final String name;
   bool mute = false;
@@ -21,7 +21,7 @@ class Logger {
     if (!mute) print(msg);
   }
 }
-// #enddocregion
+// #enddocregion constructors
 
 void main() {
   // #docregion logger

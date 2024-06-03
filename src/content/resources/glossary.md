@@ -130,7 +130,7 @@ condition is `true` and the path in which the condition is `false`.
 For additional details, see the
 [specification of definite assignment][definiteAssignmentSpec].
 
-[definiteAssignmentSpec]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
+[definiteAssignmentSpec]: {{site.repo.dart.lang}}/blob/main/resources/type-system/flow-analysis.md
 
 ## Function
 

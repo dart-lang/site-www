@@ -13,9 +13,9 @@ class Comparable {}
 
 class Location {}
 
-// #docregion point_interfaces
+// #docregion point-interfaces
 class Point implements Comparable, Location {/*...*/}
-// #enddocregion point_interfaces
+// #enddocregion point-interfaces
 
 // #docregion static-field
 class Queue {

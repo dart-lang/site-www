@@ -29,14 +29,18 @@ doesn't conform to the language specification or
 that might work in unexpected ways.
 
 [bottom type]: https://dart.dev/null-safety/understanding-null-safety#top-and-bottom
+[debugPrint]: https://api.flutter.dev/flutter/foundation/debugPrint.html
 [ffi]: https://dart.dev/guides/libraries/c-interop
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
 [irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
+[kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
+[meta-doNotSubmit]: https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html
 [meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
 [meta-immutable]: https://pub.dev/documentation/meta/latest/meta/immutable-constant.html
 [meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
 [meta-literal]: https://pub.dev/documentation/meta/latest/meta/literal-constant.html
+[meta-mustBeConst]: https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html
 [meta-mustCallSuper]: https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html
 [meta-optionalTypeArgs]: https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html
 [meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html
@@ -44,6 +48,7 @@ that might work in unexpected ways.
 [meta-UseResult]: https://pub.dev/documentation/meta/latest/meta/UseResult-class.html
 [meta-visibleForOverriding]: https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html
 [meta-visibleForTesting]: https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html
+[package-logging]: https://pub.dev/packages/logging
 [refutable pattern]: https://dart.dev/resources/glossary#refutable-pattern
 
 ### abi_specific_integer_invalid
@@ -772,6 +777,74 @@ int Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {
 }
 ```
 
+### argument_must_be_native
+
+_Argument to 'Native.addressOf' must be annotated with @Native_
+
+#### Description
+
+The analyzer produces this diagnostic when the argument passed to
+`Native.addressOf` isn't annotated with the `Native` annotation.
+
+#### Examples
+
+The following code produces this diagnostic because the argument to
+`addressOf` is a string, not a field, and strings can't be annotated:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf([!'f'!]));
+}
+```
+
+The following code produces this diagnostic because the function `f` is
+being passed to `addressOf` but isn't annotated as being `Native`:
+
+```dart
+import 'dart:ffi';
+
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>([!f!]));
+}
+```
+
+#### Common fixes
+
+If the argument isn't either a field or a function, then replace the
+argument with a field or function that's annotated with `Native`:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>(f));
+}
+```
+
+If the argument is either a field or a function, then annotate the field
+of function with `Native`:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function()>()
+external void f();
+
+void g() {
+  print(Native.addressOf<NativeFunction<Void Function()>>(f));
+}
+```
+
 ### argument_type_not_assignable
 
 _The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
@@ -814,7 +887,7 @@ Another approach is to add explicit type tests and fallback code:
 
 ```dart
 String f(String x) => x;
-String g(num y) => f(y is String ? y : '');
+String g(Object y) => f(y is String ? y : '');
 ```
 
 If you believe that the runtime type of the argument will always be the
@@ -1592,7 +1665,7 @@ Future<int> f() async {
 }
 ```
 
-### await_of_extension_type_not_future
+### await_of_incompatible_type
 
 _The 'await' expression can't be used for an expression with an extension type
 that is not a subtype of 'Future'._
@@ -1917,90 +1990,6 @@ extension [!mixin!] on int {}
 #### Common fixes
 
 Choose a different name for the declaration.
-
-### callback_must_not_use_typed_data
-
-_FFI callbacks can't take typed data arguments or return value._
-
-#### Description
-
-The analyzer produces this diagnostic when an invocation of
-`Pointer.fromFunction`, one of`NativeCallable`'s constructors has a
-typed data argument or return value."
-
-Typed data unwrapping is only supported on arguments for leaf FFI calls.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the parameter type
-of `g` is a typed data.
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Uint8List i) {}
-
-void g() {
-  Pointer.fromFunction<Void Function(Pointer<Uint8>)>([!f!]);
-}
-```
-
-#### Common fixes
-
-Use the `Pointer` type instead:
-
-```dart
-import 'dart:ffi';
-
-void f(Pointer<Uint8> i) {}
-
-void g() {
-  Pointer.fromFunction<Void Function(Pointer<Uint8>)>(f);
-}
-```
-
-### call_must_not_return_typed_data
-
-_FFI calls can't return typed data._
-
-#### Description
-
-The analyzer produces this diagnostic when the return type of
-`Pointer.asFunction`, `DynamicLibrary.lookupFunction`, or
-`@Native` is a typed data.
-
-Typed data unwrapping is only supported on arguments for leaf FFI calls.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the dart function
-signature contains a typed data, but the `isLeaf` argument is `false`:
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
-  p.asFunction<[!Uint8List Function()!]>();
-}
-```
-
-#### Common fixes
-
-Use the `Pointer` type instead:
-
-```dart
-import 'dart:ffi';
-
-void f(Pointer<NativeFunction<Pointer<Uint8> Function()>> p) {
-  p.asFunction<Pointer<Uint8> Function()>();
-}
-```
 
 ### case_block_not_terminated
 
@@ -2634,6 +2623,9 @@ variable is defined._
 _'{0}' can't be used to name both a type variable and the extension in which the
 type variable is defined._
 
+_'{0}' can't be used to name both a type variable and the extension type in
+which the type variable is defined._
+
 _'{0}' can't be used to name both a type variable and the mixin in which the
 type variable is defined._
 
@@ -2665,6 +2657,9 @@ class C<T> {}
 _'{0}' can't be used to name both a type variable and a member in this class._
 
 _'{0}' can't be used to name both a type variable and a member in this enum._
+
+_'{0}' can't be used to name both a type variable and a member in this extension
+type._
 
 _'{0}' can't be used to name both a type variable and a member in this
 extension._
@@ -3349,7 +3344,7 @@ The following code produces this diagnostic because the value of `list1` is
 `null`, which is neither a list nor a set:
 
 ```dart
-const List<int> list1 = null;
+const dynamic list1 = 42;
 const List<int> list2 = [...[!list1!]];
 ```
 
@@ -3359,7 +3354,7 @@ Change the expression to something that evaluates to either a constant list
 or a constant set:
 
 ```dart
-const List<int> list1 = [];
+const dynamic list1 = [42];
 const List<int> list2 = [...list1];
 ```
 
@@ -3378,7 +3373,7 @@ The following code produces this diagnostic because the value of `map1` is
 `null`, which isn't a map:
 
 ```dart
-const Map<String, int> map1 = null;
+const dynamic map1 = 42;
 const Map<String, int> map2 = {...[!map1!]};
 ```
 
@@ -3387,7 +3382,7 @@ const Map<String, int> map2 = {...[!map1!]};
 Change the expression to something that evaluates to a constant map:
 
 ```dart
-const Map<String, int> map1 = {};
+const dynamic map1 = {'answer': 42};
 const Map<String, int> map2 = {...map1};
 ```
 
@@ -3726,7 +3721,7 @@ void f() {
   try {
   } catch (e) {
   } [!on String {!]
-  [!}!]
+  [!]}!]
 }
 ```
 
@@ -3777,7 +3772,7 @@ void f() {
   try {
   } on num {
   } [!on int {!]
-  [!}!]
+  [!]}!]
 }
 ```
 
@@ -4489,7 +4484,7 @@ The following code produces this diagnostic because the result of dividing
 `x` and `y` is converted to an integer using `toInt`:
 
 ```dart
-int divide(num x, num y) => [!(x / y).toInt()!];
+int divide(int x, int y) => [!(x / y).toInt()!];
 ```
 
 #### Common fixes
@@ -4497,7 +4492,7 @@ int divide(num x, num y) => [!(x / y).toInt()!];
 Use the integer division operator (`~/`):
 
 ```dart
-int divide(num x, num y) => x ~/ y;
+int divide(int x, int y) => x ~/ y;
 ```
 
 ### duplicate_constructor
@@ -4845,7 +4840,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -4859,7 +4854,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -4871,7 +4866,7 @@ void f(C c) {
 }
 
 class C {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -5335,17 +5330,17 @@ class C {}
 
 ### enum_constant_same_name_as_enclosing
 
-_The name of the enum constant can't be the same as the enum's name._
+_The name of the enum value can't be the same as the enum's name._
 
 #### Description
 
-The analyzer produces this diagnostic when an enum constant has the same
-name as the enum in which it's declared.
+The analyzer produces this diagnostic when an enum value has the same name
+as the enum in which it's declared.
 
 #### Example
 
-The following code produces this diagnostic because the enum constant `E`
-has the same name as the enclosing enum `E`:
+The following code produces this diagnostic because the enum value `E` has
+the same name as the enclosing enum `E`:
 
 ```dart
 enum E {
@@ -5377,14 +5372,14 @@ _The invoked constructor isn't a 'const' constructor._
 
 #### Description
 
-The analyzer produces this diagnostic when an enum constant is being
-created using either a factory constructor or a generative constructor
-that isn't marked as being `const`.
+The analyzer produces this diagnostic when an enum value is being created
+using either a factory constructor or a generative constructor that isn't
+marked as being `const`.
 
 #### Example
 
-The following code produces this diagnostic because the enum constant `e`
-is being initialized by a factory constructor:
+The following code produces this diagnostic because the enum value `e` is
+being initialized by a factory constructor:
 
 ```dart
 enum E {
@@ -5416,8 +5411,8 @@ _Mixins applied to enums can't have instance variables._
 
 The analyzer produces this diagnostic when a mixin that's applied to an
 enum declares one or more instance variables. This isn't allowed because
-the enum constants are constant, and there isn't any way for the
-constructor in the enum to initialize any of the mixin's fields.
+the enum values are constant, and there isn't any way for the constructor
+in the enum to initialize any of the mixin's fields.
 
 #### Example
 
@@ -7000,7 +6995,7 @@ positional parameters but has a named parameter that could be used for the
 third argument:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2, [!3!]);
 }
@@ -7012,7 +7007,7 @@ If some of the arguments should be values for named parameters, then add
 the names before the arguments:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2, c: 3);
 }
@@ -7022,7 +7017,7 @@ Otherwise, remove the arguments that don't correspond to positional
 parameters:
 
 ```dart
-void f(int a, int b, {int c}) {}
+void f(int a, int b, {int? c}) {}
 void g() {
   f(1, 2);
 }
@@ -7065,6 +7060,191 @@ import 'dart:ffi';
 final class C extends Struct {
   @Array(8)
   external Array<Uint8> a0;
+}
+```
+
+### ffi_native_invalid_duplicate_default_asset
+
+_There may be at most one @DefaultAsset annotation on a library._
+
+#### Description
+
+The analyzer produces this diagnostic when a library directive has more
+than one `DefaultAsset` annotation associated with it.
+
+#### Example
+
+The following code produces this diagnostic because the library directive
+has two `DefaultAsset` annotations associated with it:
+
+```dart
+@DefaultAsset('a')
+@[!DefaultAsset!]('b')
+library;
+
+import 'dart:ffi';
+```
+
+#### Common fixes
+
+Remove all but one of the `DefaultAsset` annotations:
+
+```dart
+@DefaultAsset('a')
+library;
+
+import 'dart:ffi';
+```
+
+### ffi_native_invalid_multiple_annotations
+
+_Native functions and fields must have exactly one `@Native` annotation._
+
+#### Description
+
+The analyzer produces this diagnostic when there is more than one `Native`
+annotation on a single declaration.
+
+#### Example
+
+The following code produces this diagnostic because the function `f` has
+two `Native` annotations associated with it:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function(Int32)>()
+@[!Native!]<Int32 Function(Int32)>(isLeaf: true)
+external int f(int v);
+```
+
+#### Common fixes
+
+Remove all but one of the annotations:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function(Int32)>(isLeaf: true)
+external int f(int v);
+```
+
+### ffi_native_must_be_external
+
+_Native functions must be declared external._
+
+#### Description
+
+The analyzer produces this diagnostic when a function annotated as being
+`@Native` isn't marked as `external`.
+
+#### Example
+
+The following code produces this diagnostic because the function `free` is
+annotated as being `@Native`, but the function isn't marked as `external`:
+
+```dart
+import 'dart:ffi';
+
+[!@Native<Void Function(Pointer<Void>)>()!]
+[!void free(Pointer<Void> ptr) {}!]
+```
+
+#### Common fixes
+
+If the function is a native function, then add the modifier `external`
+before the return type:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Pointer<Void>)>()
+external void free(Pointer<Void> ptr);
+```
+
+### ffi_native_unexpected_number_of_parameters
+
+_Unexpected number of Native annotation parameters. Expected {0} but has {1}._
+
+#### Description
+
+The analyzer produces this diagnostic when the number of parameters in the
+function type used as a type argument for the `@Native` annotation doesn't
+match the number of parameters in the function being annotated.
+
+#### Example
+
+The following code produces this diagnostic because the function type used
+as a type argument for the `@Native` annotation (`Void Function(Double)`)
+has one argument and the type of the annotated function
+(`void f(double, double)`) has two arguments:
+
+```dart
+import 'dart:ffi';
+
+[!@Native<Void Function(Double)>(symbol: 'f')!]
+[!external void f(double x, double y);!]
+```
+
+#### Common fixes
+
+If the annotated function is correct, then update the function type in the
+`@Native` annotation to match:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Double, Double)>(symbol: 'f')
+external void f(double x, double y);
+```
+
+If the function type in the `@Native` annotation is correct, then update
+the annotated function to match:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Double)>(symbol: 'f')
+external void f(double x);
+```
+
+### ffi_native_unexpected_number_of_parameters_with_receiver
+
+_Unexpected number of Native annotation parameters. Expected {0} but has {1}.
+Native instance method annotation must have receiver as first argument._
+
+#### Description
+
+The analyzer produces this diagnostic when the type argument used on the
+`@Native` annotation of a native method doesn't include a type for the
+receiver of the method.
+
+#### Example
+
+The following code produces this diagnostic because the type argument on
+the `@Native` annotation (`Void Function(Double)`) doesn't include a type
+for the receiver of the method:
+
+```dart
+import 'dart:ffi';
+
+class C {
+  [!@Native<Void Function(Double)>()!]
+  [!external void f(double x);!]
+}
+```
+
+#### Common fixes
+
+Add an initial parameter whose type is the same as the class in which the
+native method is being declared:
+
+```dart
+import 'dart:ffi';
+
+class C {
+  @Native<Void Function(C, Double)>()
+  external void f(double x);
 }
 ```
 
@@ -8718,11 +8898,11 @@ the signature of `m` that's inherited from `B`:
 
 ```dart
 class A {
-  void m({int a}) {}
+  void m({int? a}) {}
 }
 
 class B {
-  void m({int b}) {}
+  void m({int? b}) {}
 }
 
 class [!C!] extends A implements B {
@@ -8736,15 +8916,15 @@ signatures:
 
 ```dart
 class A {
-  void m({int a}) {}
+  void m({int? a}) {}
 }
 
 class B {
-  void m({int b}) {}
+  void m({int? b}) {}
 }
 
 class C extends A implements B {
-  void m({int a, int b}) {}
+  void m({int? a, int? b}) {}
 }
 ```
 
@@ -8885,7 +9065,7 @@ initializing `x`, but `x` isn't a field in the class:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C() : [!x = 0!];
 }
@@ -8898,7 +9078,7 @@ name of the field:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C() : y = 0;
 }
@@ -8908,8 +9088,8 @@ If the field must be declared, then add a declaration:
 
 ```dart
 class C {
-  int x;
-  int y;
+  int? x;
+  int? y;
 
   C() : x = 0;
 }
@@ -8990,7 +9170,7 @@ defined:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C([!this.x!]);
 }
@@ -9003,7 +9183,7 @@ field:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C(this.y);
 }
@@ -9014,8 +9194,8 @@ field:
 
 ```dart
 class C {
-  int x;
-  int y;
+  int? x;
+  int? y;
 
   C(this.x);
 }
@@ -9036,7 +9216,7 @@ If the parameter isn't needed, then remove it:
 
 ```dart
 class C {
-  int y;
+  int? y;
 
   C();
 }
@@ -9139,7 +9319,7 @@ is being referenced in a static method:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   static int m() {
     return [!x!];
@@ -9154,7 +9334,7 @@ so remove the keyword:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   int m() {
     return x;
@@ -9167,7 +9347,7 @@ that an instance of the class can be passed in:
 
 ```dart
 class C {
-  int x;
+  int x = 0;
 
   static int m(C c) {
     return c.x;
@@ -10217,7 +10397,7 @@ declarations in a [public library][]:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@internal!]
+@[!internal!]
 class C {}
 ```
 
@@ -10228,7 +10408,7 @@ applied to declarations with private names:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@internal!]
+@[!internal!]
 class _C {}
 
 void f(_C c) {}
@@ -10325,7 +10505,7 @@ a `const` constructor:
 import 'package:meta/meta.dart';
 
 class C {
-  [!@literal!]
+  @[!literal!]
   C();
 }
 ```
@@ -10336,7 +10516,7 @@ constructor:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@literal!]
+@[!literal!]
 var x;
 ```
 
@@ -10466,7 +10646,7 @@ class declaration rather than a member inside the class:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@nonVirtual!]
+@[!nonVirtual!]
 class C {}
 ```
 
@@ -10477,7 +10657,7 @@ abstract method:
 import 'package:meta/meta.dart';
 
 abstract class C {
-  [!@nonVirtual!]
+  @[!nonVirtual!]
   void m();
 }
 ```
@@ -10489,7 +10669,7 @@ static method:
 import 'package:meta/meta.dart';
 
 abstract class C {
-  [!@nonVirtual!]
+  @[!nonVirtual!]
   static void m() {}
 }
 ```
@@ -10611,12 +10791,12 @@ _The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
 The analyzer produces this diagnostic when a member of a class is found
 that overrides a member from a supertype and the override isn't valid. An
 override is valid if all of these are true:
-* It allows all of the arguments allowed by the overridden member.
-* It doesn't require any arguments that aren't required by the overridden
+- It allows all of the arguments allowed by the overridden member.
+- It doesn't require any arguments that aren't required by the overridden
   member.
-* The type of every parameter of the overridden member is assignable to the
+- The type of every parameter of the overridden member is assignable to the
   corresponding parameter of the override.
-* The return type of the override is assignable to the return type of the
+- The return type of the override is assignable to the return type of the
   overridden member.
 
 #### Example
@@ -10953,7 +11133,7 @@ E f() => const [!E!](2);
 
 #### Common fixes
 
-If there's an enum constant with the same value, or if you add such a
+If there's an enum value with the same value, or if you add such a
 constant, then reference the constant directly:
 
 ```dart
@@ -11090,7 +11270,7 @@ annotation is on a method declaration:
 import 'package:meta/meta.dart';
 
 class A {
-  [!@sealed!]
+  @[!sealed!]
   void m() {}
 }
 ```
@@ -11549,7 +11729,7 @@ The following code produces this diagnostic:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@visibleForTesting!]
+@[!visibleForTesting!]
 void _someFunction() {}
 
 void f() => _someFunction();
@@ -11598,7 +11778,7 @@ class, and classes can't be overridden:
 ```dart
 import 'package:meta/meta.dart';
 
-[!@visibleForOverriding!]
+@[!visibleForOverriding!]
 class C {}
 ```
 
@@ -11632,7 +11812,7 @@ The following code produces this diagnostic because there is no
 import 'package:angular_meta/angular_meta.dart';
 
 class C {
-  [!@visibleOutsideTemplate!]
+  @[!visibleOutsideTemplate!]
   int m() {
     return 1;
   }
@@ -11645,7 +11825,7 @@ a class declaration, not a member of a class, enum, or mixin:
 ```dart
 import 'package:angular_meta/angular_meta.dart';
 
-[!@visibleOutsideTemplate!]
+@[!visibleOutsideTemplate!]
 class C {}
 ```
 
@@ -12601,7 +12781,7 @@ must be handled.
 
 #### Example
 
-The following code produces this diagnostic because the enum constant `e2`
+The following code produces this diagnostic because the enum value `e2`
 isn't handled:
 
 ```dart
@@ -12950,7 +13130,7 @@ is required:
 ```dart
 import 'package:meta/meta.dart';
 
-void f({@required int x}) {}
+void f({@required int? x}) {}
 
 void g() {
   [!f!]();
@@ -12964,7 +13144,7 @@ Provide the required value:
 ```dart
 import 'package:meta/meta.dart';
 
-void f({@required int x}) {}
+void f({@required int? x}) {}
 
 void g() {
   f(x: 2);
@@ -14062,44 +14242,57 @@ name: example
 ### native_field_invalid_type
 
 _'{0}' is an unsupported type for native fields. Native fields only support
-pointers or numeric and compound types._
+pointers, arrays or numeric and compound types._
 
 #### Description
 
 The analyzer produces this diagnostic when an `@Native`-annotated field
 has a type not supported for native fields.
 
-Array fields are unsupported because there currently is no size
-annotation for native fields. It is possible to represent global array
-variables as pointers though, as they have an identical representation in
-memory.
+Native fields support pointers, arrays, numeric types and subtypes of
+`Compound` (i.e., structs or unions). Other subtypes of `NativeType`,
+such as `Handle` or `NativeFunction` are not allowed as native fields.
+
+Native functions should be used with external functions instead of
+external fields.
 
 Handles are unsupported because there is no way to transparently load and
-store Dart object into pointers.
+store Dart objects into pointers.
 
 For more information about FFI, see [C interop using dart:ffi][ffi].
 
 #### Example
 
-The following code produces this diagnostic because the field `f` uses an
-unsupported type, `Array`:
+The following code produces this diagnostic because the field `free` uses
+an unsupported native type, `NativeFunction`:
 
 ```dart
 import 'dart:ffi';
 
-@Native()
-external Array<Int> [!f!];
+@Native<NativeFunction<Void Function()>>()
+external void Function() [!free!];
 ```
 
 #### Common fixes
 
-For array fields, use a pointer instead:
+If you meant to bind to an existing native function with a
+`NativeFunction` field, use `@Native` methods instead:
+
+```dart
+import 'dart:ffi';
+
+@Native<Void Function(Pointer<Void>)>()
+external void free(Pointer<Void> ptr);
+```
+
+To bind to a field storing a function pointer in C, use a pointer type
+for the Dart field:
 
 ```dart
 import 'dart:ffi';
 
 @Native()
-external Pointer<Int> f;
+external Pointer<NativeFunction<Void Function(Pointer<Void>)>> free;
 ```
 
 ### native_field_missing_type
@@ -14649,7 +14842,7 @@ value inside the function:
 ```dart
 var defaultValue = 3;
 
-void f([int value]) {
+void f([int? value]) {
   value ??= defaultValue;
 }
 ```
@@ -15015,6 +15208,45 @@ class C {
     p.asFunction<int Function(int)>();
   }
 }
+```
+
+### non_const_argument_for_const_parameter
+
+_Argument '{0}' must be a constant._
+
+#### Description
+
+The analyzer produces this diagnostic when a parameter is
+annotated with the [`mustBeConst`][meta-mustBeConst] annotation and
+the corresponding argument is not a constant expression.
+
+#### Example
+
+The following code produces this diagnostic on the invocation of
+the function `f` because the value of the argument passed to the
+function `g` isn't a constant:
+
+```dart
+import 'package:meta/meta.dart' show mustBeConst;
+
+int f(int value) => g([!value!]);
+
+int g(@mustBeConst int value) => value + 1;
+```
+
+#### Common fixes
+
+If a suitable constant is available to use, then replace the argument
+with a constant:
+
+```dart
+import 'package:meta/meta.dart' show mustBeConst;
+
+const v = 3;
+
+int f() => g(v);
+
+int g(@mustBeConst int value) => value + 1;
 ```
 
 ### non_const_call_to_literal_constructor
@@ -16380,12 +16612,13 @@ class B extends A {}
 
 ### nullable_type_in_implements_clause
 
-_A class or mixin can't implement a nullable type._
+_A class, mixin, or extension type can't implement a nullable type._
 
 #### Description
 
-The analyzer produces this diagnostic when a class or mixin declaration has
-an `implements` clause, and an interface is followed by a `?`.
+The analyzer produces this diagnostic when a class, mixin, or
+extension type declaration has an `implements` clause, and an
+interface is followed by a `?`.
 
 It isn't valid to specify a nullable interface because doing so would have
 no meaning; it wouldn't change the interface being inherited by the class
@@ -19659,9 +19892,9 @@ field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f() => C.[!b!];
@@ -19674,9 +19907,9 @@ to an existing static field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f() => C.a;
@@ -19687,9 +19920,9 @@ class to access the field:
 
 ```dart
 class C {
-  static int a;
+  static int a = 0;
 
-  int b;
+  int b = 0;
 }
 
 int f(C c) => c.b;
@@ -21269,8 +21502,8 @@ _There's no constant named '{0}' in '{1}'._
 
 #### Description
 
-The analyzer produces this diagnostic when it encounters an identifier that
-appears to be the name of an enum constant, and the name either isn't
+The analyzer produces this diagnostic when it encounters an identifier
+that appears to be the name of an enum value, and the name either isn't
 defined or isn't visible in the scope in which it's being referenced.
 
 #### Example
@@ -21313,11 +21546,11 @@ _The enum doesn't have an unnamed constructor._
 #### Description
 
 The analyzer produces this diagnostic when the constructor invoked to
-initialize an enum constant doesn't exist.
+initialize an enum value doesn't exist.
 
 #### Examples
 
-The following code produces this diagnostic because the enum constant `c`
+The following code produces this diagnostic because the enum value `c`
 is being initialized by the unnamed constructor, but there's no unnamed
 constructor defined in `E`:
 
@@ -21329,9 +21562,9 @@ enum E {
 }
 ```
 
-The following code produces this diagnostic because the enum constant `c`
-is being initialized by the constructor named `x`, but there's no
-constructor named `x` defined in `E`:
+The following code produces this diagnostic because the enum value `c` is
+being initialized by the constructor named `x`, but there's no constructor
+named `x` defined in `E`:
 
 ```dart
 enum E {
@@ -21343,9 +21576,9 @@ enum E {
 
 #### Common fixes
 
-If the enum constant is being initialized by the unnamed constructor and
-one of the named constructors should have been used, then add the name of
-the constructor:
+If the enum value is being initialized by the unnamed constructor and one
+of the named constructors should have been used, then add the name of the
+constructor:
 
 ```dart
 enum E {
@@ -21355,8 +21588,8 @@ enum E {
 }
 ```
 
-If the enum constant is being initialized by the unnamed constructor and
-none of the named constructors are appropriate, then define the unnamed
+If the enum value is being initialized by the unnamed constructor and none
+of the named constructors are appropriate, then define the unnamed
 constructor:
 
 ```dart
@@ -21367,9 +21600,9 @@ enum E {
 }
 ```
 
-If the enum constant is being initialized by a named constructor and one
-of the existing constructors should have been used, then change the name
-of the constructor being invoked (or remove it if the unnamed constructor
+If the enum value is being initialized by a named constructor and one of
+the existing constructors should have been used, then change the name of
+the constructor being invoked (or remove it if the unnamed constructor
 should be used):
 
 ```dart
@@ -21381,9 +21614,9 @@ enum E {
 }
 ```
 
-If the enum constant is being initialized by a named constructor and none
-of the existing constructors should have been used, then define a
-constructor with the name that was used:
+If the enum value is being initialized by a named constructor and none of
+the existing constructors should have been used, then define a constructor
+with the name that was used:
 
 ```dart
 enum E {
@@ -21930,7 +22163,7 @@ named parameter named `a`:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 void f(C c) {
@@ -21945,7 +22178,7 @@ The example above can be fixed by changing `a` to `b`:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 void f(C c) {
@@ -21958,11 +22191,11 @@ receiver to the subclass:
 
 ```dart
 class C {
-  m({int b}) {}
+  m({int? b}) {}
 }
 
 class D extends C {
-  m({int a, int b}) {}
+  m({int? a, int? b}) {}
 }
 
 void f(C c) {
@@ -21974,7 +22207,7 @@ If the parameter should be added to the function, then add it:
 
 ```dart
 class C {
-  m({int a, int b}) {}
+  m({int? a, int? b}) {}
 }
 
 void f(C c) {
@@ -23018,7 +23251,7 @@ invocation of `_m`, the following code produces this diagnostic:
 
 ```dart
 class C {
-  void _m(int x, [int [!y!]]) {}
+  void _m(int x, [int? [!y!]]) {}
 
   void n() => _m(0);
 }
@@ -23428,7 +23661,7 @@ _A member named 'values' can't be declared in an enum._
 #### Description
 
 The analyzer produces this diagnostic when an enum declaration defines a
-member named `values`, whether the member is an enum constant, an instance
+member named `values`, whether the member is an enum value, an instance
 member, or a static member.
 
 Any such member conflicts with the implicit declaration of the static
@@ -23506,7 +23739,7 @@ The following code produces this diagnostic because the value of `x` is an
 `int`, which can't be assigned to `y` because an `int` isn't a `String`:
 
 ```dart
-const Object x = 0;
+const dynamic x = 0;
 const String y = [!x!];
 ```
 
@@ -23516,7 +23749,7 @@ If the declaration of the constant is correct, then change the value being
 assigned to be of the correct type:
 
 ```dart
-const Object x = 0;
+const dynamic x = 0;
 const String y = '$x';
 ```
 
@@ -23524,7 +23757,7 @@ If the assigned value is correct, then change the declaration to have the
 correct type:
 
 ```dart
-const Object x = 0;
+const int x = 0;
 const int y = x;
 ```
 
@@ -23585,7 +23818,7 @@ one optional parameter:
 
 ```dart
 class C {
-  set [!s!]([int x]) {}
+  set [!s!]([int? x]) {}
 }
 ```
 
@@ -23701,14 +23934,14 @@ given._
 
 #### Description
 
-The analyzer produces this diagnostic when an enum constant in an enum
-that has type parameters is instantiated and type arguments are provided,
-but the number of type arguments isn't the same as the number of type
+The analyzer produces this diagnostic when an enum value in an enum that
+has type parameters is instantiated and type arguments are provided, but
+the number of type arguments isn't the same as the number of type
 parameters.
 
 #### Example
 
-The following code produces this diagnostic because the enum constant `c`
+The following code produces this diagnostic because the enum value `c`
 provides one type argument even though the enum `E` is declared to have
 two type parameters:
 
@@ -23918,5 +24151,58 @@ type of the function to allow it:
 ```dart
 Iterable<String> get zero sync* {
   yield '0';
+}
+```
+
+### invalid_use_of_do_not_submit_member
+
+_Uses of '{0}' should not be submitted to source control._
+
+#### Description
+
+The analyzer produces this diagnostic when a member that is annotated with
+[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
+declaration that is also annotated with `@doNotSubmit`.
+
+#### Example
+
+Given a file `a.dart` containing the following declaration:
+
+```dart
+import 'package:meta/meta.dart';
+
+@doNotSubmit
+void emulateCrash() { /* ... */ }
+```
+
+The following code produces this diagnostic because the declaration is
+being referenced outside of a member that is also annotated with
+`@doNotSubmit`:
+
+```dart
+import 'a.dart';
+
+void f() {
+  [!emulateCrash!]();
+}
+```
+
+#### Common fixes
+
+Most commonly, when complete with local testing, the reference to the
+member should be removed.
+
+If building additional functionality on top of the member, annotate the
+newly added member with `@doNotSubmit` as well:
+
+```dart
+import 'package:meta/meta.dart';
+
+import 'a.dart';
+
+@doNotSubmit
+void emulateCrashWithOtherFunctionality() {
+  emulateCrash();
+  // do other things.
 }
 ```

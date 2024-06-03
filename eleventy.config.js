@@ -19,6 +19,7 @@ import yaml from 'js-yaml';
 
 import * as path from 'node:path';
 import * as sass from 'sass';
+import {eleventyImageTransformPlugin} from '@11ty/eleventy-img';
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -27,6 +28,7 @@ import * as sass from 'sass';
  */
 export default function (eleventyConfig) {
   const isProduction = process.env.PRODUCTION === 'true';
+  const shouldOptimize = process.env.OPTIMIZE === 'true';
 
   eleventyConfig.on('eleventy.before', async () => {
     await configureHighlighting(markdown);
@@ -71,7 +73,7 @@ export default function (eleventyConfig) {
       }
 
       const result = sass.compileString(inputContent, {
-        style: isProduction ? 'compressed' : 'expanded',
+        style: shouldOptimize ? 'compressed' : 'expanded',
         quietDeps: true,
         loadPaths: [parsedPath.dir, 'src/_sass'],
       });
@@ -91,6 +93,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
+  eleventyConfig.addPassthroughCopy({'site-shared/packages/inject_dartpad/lib/inject_dartpad.js': 'assets/js/inject_dartpad.js'});
   eleventyConfig.addPassthroughCopy('src/content/assets/img', { expand: true });
   eleventyConfig.addPassthroughCopy('src/content/f', {
     expand: true,
@@ -100,7 +103,7 @@ export default function (eleventyConfig) {
     'src/content/guides/language/specifications',
   );
 
-  if (isProduction) {
+  if (shouldOptimize) {
     // If building for production, minify/optimize the HTML output.
     // Doing so during serving isn't worth the extra build time.
     eleventyConfig.addTransform('minify-html', async function (content) {
@@ -116,6 +119,37 @@ export default function (eleventyConfig) {
       }
 
       return content;
+    });
+
+    // Optimize all images, generate an avif, webp, and png version,
+    // and indicate they should be lazily loaded.
+    // Save in `_site/assets/img` and update links to there.
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+      extensions: 'html',
+      formats: ['avif', 'webp', 'png', 'svg'],
+      svgShortCircuit: true,
+      widths: ['auto'],
+      defaultAttributes: {
+        loading: 'lazy',
+        decoding: 'async',
+      },
+      urlPath: '/assets/img/',
+      outputDir: '_site/assets/img/',
+    });
+  } else {
+    // To be more consistent with the production build,
+    // don't optimize images but still indicate they should be lazily loaded.
+    // Then save in `_site/assets/img` and update links to there.
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+      extensions: 'html',
+      formats: ['auto'],
+      widths: ['auto'],
+      defaultAttributes: {
+        loading: 'lazy',
+        decoding: 'async',
+      },
+      urlPath: '/assets/img/',
+      outputDir: '_site/assets/img/',
     });
   }
 

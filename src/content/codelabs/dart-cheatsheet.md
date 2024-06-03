@@ -1,7 +1,7 @@
 ---
 title: Dart cheatsheet codelab
 description: Interactively learn (or relearn) some of Dart's unique features.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
@@ -18,15 +18,11 @@ clicking the **Run** button. The editors also contain thorough test code;
 
 
 If you need help, expand the **Solution for...** dropdown beneath each DartPad
-for an explanation and the answer. 
-To run the code formatter ([`dart format`](/tools/dart-format)), 
-click **Format**.
-The **Reset** button erases your work and
-restores the editor to its original state.
+for an explanation and the answer.
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 ## String interpolation
@@ -52,7 +48,7 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-```dart:run-dartpad:ga_id-string_interpolation
+```dartpad
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
@@ -67,9 +63,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for string interpolation example</b>
-  </summary>
+  <summary>Solution for string interpolation example</summary>
 
   Both `x` and `y` are simple values,
   and Dart's string interpolation will handle
@@ -82,6 +76,7 @@ void main() {
     return '$x $y';
   }
   ```
+
 </details>
 
 
@@ -128,7 +123,7 @@ Try to declare two variables below:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-nullable_variables
+```dartpad
 // TODO: Declare the two variables here
 
 
@@ -149,9 +144,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for nullable variables example</b>
-  </summary>
+  <summary>Solution for nullable variables example</summary>
 
   Declare the two variables as `String` followed by `?`.
   Then, assign `'Jane'` to `name`
@@ -161,6 +154,7 @@ void main() {
   String? name = 'Jane';
   String? address;
   ```
+
 </details>
 
 
@@ -198,7 +192,7 @@ to implement the described behavior in the following snippet.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-255px:ga_id-null_aware
+```dartpad
 String? foo = 'a string';
 String? bar; // = null
 
@@ -233,9 +227,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for null-aware operators example</b>
-  </summary>
+  <summary>Solution for null-aware operators example</summary>
 
   All you need to do in this exercise is
   replace the `TODO` comments with either `??` or `??=`.
@@ -251,6 +243,7 @@ void main() {
     bar ??= 'a string';
   }
   ```
+
 </details>
 
 
@@ -289,7 +282,7 @@ The following function takes a nullable string as a parameter.
 Try using conditional property access to make it
 return the uppercase version of `str`, or `null` if `str` is `null`.
 
-```dart:run-dartpad:ga_id-conditional-property_access
+```dartpad
 String? upperCaseIt(String? str) {
   // TODO: Try conditionally accessing the `toUpperCase` method here.
 }
@@ -324,9 +317,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for conditional property access example</b>
-  </summary>
+  <summary>Solution for conditional property access example</summary>
 
   If this exercise wanted you to conditionally lowercase a string,
   you could do it like this: `str?.toLowerCase()`. Use the equivalent
@@ -337,6 +328,7 @@ void main() {
     return str?.toUpperCase();
   }
   ```
+
 </details>
 
 ## Collection literals
@@ -380,7 +372,7 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
-```dart:run-dartpad:height-400px:ga_id-collection_literals
+```dartpad
 // Assign this a list containing 'a', 'b', and 'c' in that order:
 final aListOfStrings = null;
 
@@ -455,9 +447,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for collection literals example</b>
-  </summary>
+  <summary>Solution for collection literals example</summary>
 
   Add a list, set, or map literal after each equals sign.
   Remember to specify the types for the empty declarations,
@@ -482,6 +472,7 @@ void main() {
   // Assign this an empty Map of double to int:
   final anEmptyMapOfDoublesToInts = <double, int>{};
   ```
+
 </details>
 
 ## Arrow syntax
@@ -511,7 +502,7 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 Try finishing the following statements, which use arrow syntax.
 
-```dart:run-dartpad:height-345px:ga_id-arrow_syntax
+```dartpad
 class MyClass {
   int value1 = 2;
   int value2 = 3;
@@ -576,9 +567,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for arrow syntax example</b>
-  </summary>
+  <summary>Solution for arrow syntax example</summary>
 
   For the product, you can use `*` to multiply the three values together.
   For `incrementValue1`, you can use the increment operator (`++`).
@@ -665,7 +654,7 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-```dart:run-dartpad:height-345px:ga_id-cascades
+```dartpad
 class BigObject {
   int anInt = 0;
   String aString = '';
@@ -729,9 +718,7 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for cascades example</b>
-  </summary>
+  <summary>Solution for cascades example</summary>
 
   The best solution for this exercise starts with `obj..` and
   has four assignment operations chained together.
@@ -804,7 +791,7 @@ Add the following:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-240px:ga_id-getters_setters
+```dartpad
 class InvalidPriceException {}
 
 class ShoppingCart {
@@ -874,9 +861,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for getters and setters example</b>
-  </summary>
+  <summary>Solution for getters and setters example</summary>
+
   Two functions are handy for this exercise. 
   One is `fold`, which can reduce a list to a single value
   (use it to calculate the total).
@@ -897,6 +883,7 @@ void main() {
     _prices = value;
   }
   ```
+
 </details>
 
 
@@ -910,7 +897,7 @@ Positional parameters are the kind you're likely familiar with:
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
-// ···
+  // ···
   int total = sumUp(1, 2, 3);
 ```
 
@@ -926,7 +913,7 @@ int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   if (e != null) sum += e;
   return sum;
 }
-// ···
+  // ···
   int total = sumUpToFive(1, 2);
   int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 ```
@@ -935,14 +922,16 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart (sum-no-impl)"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-// ···
+  // ···
 }
-// ···
+
+void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
+}
 ```
 
 ### Code example {:.no_toc}
@@ -959,7 +948,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-```dart:run-dartpad:ga_id-optional_positional_parameters
+```dartpad
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
@@ -1020,9 +1009,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for positional parameters example</b>
-  </summary>
+  <summary>Solution for positional parameters example</summary>
+
   The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
   caller. The important thing, then, is to check whether those arguments are `null`
   before you add them to the final string.
@@ -1037,6 +1025,7 @@ void main() {
     return total;
   }
   ```
+
 </details>
 
 <a id="optional-named-parameters"></a>
@@ -1053,11 +1042,13 @@ unless they're explicitly marked as `required`.
 void printName(String firstName, String lastName, {String? middleName}) {
   print('$firstName ${middleName ?? ''} $lastName');
 }
-// ···
+
+void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
   // Named arguments can be placed anywhere in the argument list
   printName('John', middleName: 'Who', 'Smith');
+}
 ```
 
 As you might expect,
@@ -1099,7 +1090,7 @@ then copy its value into `anInt`.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-310px:ga_id-optional_named_parameters
+```dartpad
 class MyDataObject {
   final int anInt;
   final String aString;
@@ -1165,9 +1156,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for named parameters example</b>
-  </summary>
+  <summary>Solution for named parameters example</summary>
+
   The `copyWith` method shows up in a lot of classes and libraries.
   Yours should do a few things:
   use optional named parameters,
@@ -1268,7 +1258,7 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-```dart:run-dartpad:height-420px:ga_id-exceptions
+```dartpad
 typedef VoidFunction = void Function();
 
 class ExceptionWithMessage {
@@ -1387,9 +1377,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for exceptions example</b>
-  </summary>
+  <summary>Solution for exceptions example</summary>
+
   This exercise looks tricky, but it's really one big `try` statement.
   Call `untrustworthy` inside the `try`, and
   then use `on`, `catch`, and `finally` to catch exceptions and
@@ -1408,6 +1397,7 @@ void main() {
     }
   }
   ```
+
 </details>
 
 
@@ -1463,7 +1453,7 @@ all three properties of the class.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-this_constructor
+```dartpad
 class MyClass {
   final int anInt;
   final String aString;
@@ -1504,9 +1494,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for `this` example</b>
-  </summary>
+  <summary>Solution for `this` example</summary>
+
   This exercise has a one-line solution.
   Declare the constructor with
   `this.anInt`, `this.aString`, and `this.aDouble`
@@ -1515,6 +1504,7 @@ void main() {
   ```dart    
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
+
 </details>
 
 {% comment %}
@@ -1578,7 +1568,7 @@ FINALLY: Suggest using https://pub.dev/packages/characters
 if this is a user-entered string.
 {% endcomment %}
 
-```dart:run-dartpad:ga_id-initializer_lists
+```dartpad
 class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
@@ -1628,9 +1618,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for initializer lists example</b>
-  </summary>
+  <summary>Solution for initializer lists example</summary>
+
   Two assignments need to happen:
   `letterOne` should be assigned `word[0]`,
   and `letterTwo` should be assigned `word[1]`.
@@ -1681,7 +1670,7 @@ that sets all three properties to zero.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-240px:ga_id-named_constructors
+```dartpad
 class Color {
   int red;
   int green;
@@ -1726,9 +1715,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for named constructors example</b>
-  </summary>
+  <summary>Solution for named constructors example</summary>
+
   The declaration for your constructor should begin with `Color.black(): `.
   In the initializer list (after the colon), set `red`, `green`, and `blue` to `0`.
 
@@ -1738,6 +1726,7 @@ void main() {
           green = 0,
           blue = 0;
   ```
+
 </details>
 
 ## Factory constructors
@@ -1777,7 +1766,7 @@ making it do the following:
   create an `IntegerTriple` with the values in order.
 * Otherwise, throw an `Error`.
 
-```dart:run-dartpad:height-415px:ga_id-factory_constructors
+```dartpad
 class IntegerHolder {
   IntegerHolder();
   
@@ -1893,9 +1882,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for factory constructors example</b>
-  </summary>
+  <summary>Solution for factory constructors example</summary>
+
   Inside the factory constructor,
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
@@ -1913,6 +1901,7 @@ void main() {
       } 
     }
   ```
+
 </details>
 
 ## Redirecting constructors
@@ -1948,7 +1937,7 @@ default constructor with zeros as the arguments.
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:height-255px:ga_id-redirecting_constructors
+```dartpad
 class Color {
   int red;
   int green;
@@ -1993,14 +1982,14 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for redirecting constructors example</b>
-  </summary>
+  <summary>Solution for redirecting constructors example</summary>
+
   Your constructor should redirect to `this(0, 0, 0)`.
 
   ```dart
     Color.black() : this(0, 0, 0);
   ```
+
 </details>
 
 ## Const constructors
@@ -2035,7 +2024,7 @@ and create a constant constructor that does the following:
 
 Ignore all initial errors in the DartPad.
 
-```dart:run-dartpad:ga_id-const_constructors
+```dartpad
 class Recipe {
   List<String> ingredients;
   int calories;
@@ -2077,9 +2066,8 @@ void main() {
 ```
 
 <details>
- <summary>
-   <b>Solution for const constructors example</b>
-  </summary>
+  <summary>Solution for const constructors example</summary>
+
   To make the constructor const, you'll need to make all the properties final.
 
   ```dart
@@ -2091,6 +2079,7 @@ void main() {
     const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
   }
   ```
+
 </details>
 
 ## What's next?

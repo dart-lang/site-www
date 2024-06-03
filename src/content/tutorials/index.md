@@ -22,7 +22,7 @@ which are fundamental to most Dart programs.
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="/tutorials/language/streams">Asynchronous programming:
+    <h3><a href="/libraries/async/using-streams">Asynchronous programming:
        streams</a></h3>
     <p>Use streams to manage sequences of data.</p>
   </div>

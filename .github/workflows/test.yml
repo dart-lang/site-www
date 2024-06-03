@@ -25,7 +25,7 @@ env:
 
 jobs:
   test:
-    name: Check excerpts and run tests
+    name: Analyze and test code examples
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -37,10 +37,10 @@ jobs:
             experimental: false
     continue-on-error: ${{ matrix.experimental }}
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
         with:
           sdk: ${{ matrix.sdk }}
       - name: Fetch Dart packages
@@ -51,24 +51,35 @@ jobs:
         run: dart run dart_site analyze-dart
       - name: Run Dart tests
         run: dart run dart_site test-dart
+
+  excerpts:
+    name: Check if code excerpts are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
       - name: Check if excerpts are up to date
-        run: dart run dart_site refresh-excerpts --fail-on-update
+        run: dart run dart_site refresh-excerpts --fail-on-update --dry-run
 
   linkcheck:
     name: Build site and check links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
         with:
           sdk: stable
       - name: Fetch Dart packages
         run: dart pub get
-      - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d
-        with:
-          version: 8
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -82,14 +93,29 @@ jobs:
       - name: Check internal site links are functional
         run: dart run dart_site check-links
 
+  site-variable-scanner:
+    name: Check if text can be replaced with site variables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
+      - name: Check if text can be replaced with site variables
+        run: dart run dart_site check-site-variable
+
   firebase-validate:
     name: Validate Firebase configuration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3
+      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
         with:
           sdk: stable
       - name: Fetch Dart packages

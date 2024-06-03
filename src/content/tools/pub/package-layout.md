@@ -38,6 +38,8 @@ enchilada/
     getting_started.md
   example/
     main.dart
+  hook/
+    build.dart
   integration_test/
     app_test.dart
   lib/
@@ -120,7 +122,7 @@ is shown—rendered as [Markdown][]—on the page for your package.
 This is the perfect place to introduce people to your code.
 
 For guidance on how to write a great README, see
-[Writing package pages](/guides/libraries/writing-package-pages).
+[Writing package pages](/tools/pub/writing-package-pages).
 
 <a id="changelogmd"></a>
 ## CHANGELOG.md {:#changelog}
@@ -488,6 +490,31 @@ documentation generators, or other bits of automation.
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
 
+## Hooks
+
+```plaintext
+enchilada/
+  hook/
+    build.dart
+```
+
+Packages can define hooks to be invoked by the Dart and Flutter SDK.
+These hooks have a predefined CLI, and will be invoked by the SDK tools if present.
+
+Because these hooks are invoked by the
+`dart` and `flutter` tools on runs and builds, the dependencies
+of these hooks must be normal dependencies and not `dev_dependencies`.
+
+:::note
+Hook support is **experimental** and in active development.
+
+To learn more about how to define hooks and their current status,
+refer to the [`build.dart` hook documentation][].
+:::
+
+
+[`build.dart` hook documentation]: {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/README.md
+
 ## Project-specific caching for tools
 
 :::note
@@ -523,7 +550,7 @@ If your tool isn't distributed through the [pub.dev site,]({{site.pub}})
 you might consider publishing a placeholder package in order to 
 reserve the unique name.
 
-**Example:** [`package:build`](https://pub.dev/packages/build) provides a
+**Example:** [`package:build`]({{site.pub-pkg}}/build) provides a
 framework for writing code generation steps.
 When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.

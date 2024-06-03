@@ -207,24 +207,24 @@ with support for token authentication by multiple vendors,
 alleviating you from the overhead of hosting and maintaining
 your own custom package repository:
 
-<ul class="col2">
+<ul class="cols2">
 <li>
-  <img src="/assets/img/tools/cloudsmith.svg" width="48" alt="Cloudsmith logo">
+  <img src="/assets/img/tools/cloudsmith.svg" class="list-image" alt="Cloudsmith logo">
   <a href="https://help.cloudsmith.io/docs/dart-repository"><b>Cloudsmith</b></a>
 </li>
 <li>
-  <img src="/assets/img/tools/jetbrains-space.svg" width="48" alt="JetBrains Space logo">
+  <img src="/assets/img/tools/jetbrains-space.svg" class="list-image" alt="JetBrains Space logo">
   <a href="https://www.jetbrains.com/help/space/dart-package-repository.html"><b>JetBrains Space</b></a>
 </li>
 <li>
-  <img src="/assets/img/tools/jfrog.svg" width="48" alt="JFrog logo">
+  <img src="/assets/img/tools/jfrog.svg" class="list-image" alt="JFrog logo">
   <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories"><b>JFrog Artifactory</b></a>
 </li>
 <li>
-  <img src="/assets/img/tools/onepub.svg" width="48" alt="OnePub logo">
+  <img src="/assets/img/tools/onepub.svg" class="list-image" alt="OnePub logo">
   <a href="https://onepub.dev"><b>OnePub Dart Repository</b></a>
 </li>
 </ul>
 
 
-[repository-spec-v2.md]: https://github.com/dart-lang/pub/blob/master/doc/repository-spec-v2.md
+[repository-spec-v2.md]: {{site.repo.dart.org}}/pub/blob/master/doc/repository-spec-v2.md

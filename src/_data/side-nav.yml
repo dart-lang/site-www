@@ -16,8 +16,7 @@
           permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await
-        - title: Null safety
-          permalink: /codelabs/null-safety
+
 - title: Language
   expanded: false
   children:
@@ -84,6 +83,8 @@
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
+        - title: Extension types
+          permalink: /language/extension-types
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
@@ -118,22 +119,6 @@
         - title: FAQ
           permalink: /null-safety/faq
 
-- title: Effective Dart
-  expanded: false
-  permalink: /effective-dart
-  children:
-    - title: Overview
-      match-page-url-exactly: true
-      permalink: /effective-dart
-    - title: Style
-      permalink: /effective-dart/style
-    - title: Documentation
-      permalink: /effective-dart/documentation
-    - title: Usage
-      permalink: /effective-dart/usage
-    - title: Design
-      permalink: /effective-dart/design
-
 - title: Core libraries
   expanded: false
   children:
@@ -154,11 +139,27 @@
       permalink: /libraries/dart-html
     - divider
     - title: Using streams
-      permalink: /tutorials/language/streams
+      permalink: /libraries/async/using-streams
     - title: Creating streams
-      permalink: /articles/libraries/creating-streams
+      permalink: /libraries/async/creating-streams
     - title: Futures and error handling
-      permalink: /guides/libraries/futures-error-handling
+      permalink: /libraries/async/futures-error-handling
+
+- title: Effective Dart
+  expanded: false
+  permalink: /effective-dart
+  children:
+    - title: Overview
+      match-page-url-exactly: true
+      permalink: /effective-dart
+    - title: Style
+      permalink: /effective-dart/style
+    - title: Documentation
+      permalink: /effective-dart/documentation
+    - title: Usage
+      permalink: /effective-dart/usage
+    - title: Design
+      permalink: /effective-dart/design
 
 - title: Packages
   expanded: false
@@ -166,13 +167,13 @@
     - title: How to use packages
       permalink: /guides/packages
     - title: Commonly used packages
-      permalink: /guides/libraries/useful-libraries
+      permalink: /resources/useful-packages
     - title: Creating packages
       permalink: /guides/libraries/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
-      permalink: /guides/libraries/writing-package-pages
+      permalink: /tools/pub/writing-package-pages
     - title: Package reference
       expanded: false
       children:
@@ -205,7 +206,7 @@
     - title: Number representation
       permalink: /guides/language/numbers
     - title: Google APIs
-      permalink: /guides/google-apis
+      permalink: /resources/google-apis
     - title: Multi-platform apps
       permalink: /multiplatform-apps
     - title: Command-line & server apps
@@ -236,6 +237,8 @@
           permalink: /web/deployment
         - title: Libraries & packages
           permalink: /web/libraries
+        - title: Wasm compilation
+          permalink: /web/wasm
     - title: Environment declarations
       permalink: /guides/environment-declarations
 
@@ -249,7 +252,21 @@
   - title: Java & Kotlin interop
     permalink: /interop/java-interop
   - title: JavaScript interop
-    permalink: /interop/js-interop
+    children:
+      - title: Overview
+        permalink: /interop/js-interop
+        match-page-url-exactly: true
+      - title: Usage
+        permalink: /interop/js-interop/usage
+      - title: JS types
+        permalink: /interop/js-interop/js-types
+      - title: Tutorials
+        permalink: /interop/js-interop/tutorials
+      - title: Past JS interop
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: Web interop
+        permalink: /interop/js-interop/package-web
 
 - title: Tools & techniques
   expanded: false
@@ -322,6 +339,8 @@
         permalink: /tools/non-promotion-reasons
       - title: Linter rules
         permalink: /tools/linter-rules
+      - title: Diagnostic messages
+        permalink: /tools/diagnostic-messages
   - title: Testing & optimization
     children:
       - title: Testing
@@ -331,6 +350,8 @@
   - title: What not to commit
     permalink: /guides/libraries/private-files
 
+
+- divider
 - title: Resources
   expanded: false
   children:
@@ -346,9 +367,10 @@
       expanded: false
       children:
         - title: JavaScript to Dart
-          permalink: /guides/language/coming-from/js-to-dart
+          permalink: /resources/coming-from/js-to-dart
         - title: Swift to Dart
-          permalink: /guides/language/coming-from/swift-to-dart
+          permalink: /resources/coming-from/swift-to-dart
+    - divider
     - title: FAQ
       permalink: /resources/faq
     - title: Glossary

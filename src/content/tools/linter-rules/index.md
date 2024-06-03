@@ -33,6 +33,7 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 <a id="lints"></a>
+
 [lints][]
 : Contains two rule sets curated by the Dart team. 
   We recommend using at least the `core` rule set, 
@@ -46,6 +47,7 @@ which the following packages provide:
   which builds on `lints`.
 
 <a id="flutter_lints"></a>
+
 [flutter_lints][]
 : Contains the `flutter` rule set,
   which the Flutter team encourages you to use
@@ -62,7 +64,7 @@ To learn how to use a specific rule set,
 visit the documentation for [enabling and disabling linter rules][].
 
 To find more predefined rule sets,
-check out the [`#lints` topic]({{site.pub}}/packages?q=topic:lints) on pub.dev.
+check out the [`#lints` topic]({{site.pub-pkg}}?q=topic:lints) on pub.dev.
 
 [enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 

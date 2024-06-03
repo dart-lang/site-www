@@ -134,19 +134,12 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion cast-from
 
-  (Iterable<Animal> animals) {
-    // #docregion use-higher-order-func
-    var aquaticNames = animals
-        .where((animal) => animal.isAquatic)
-        .map((animal) => animal.name);
-  };
-
   (Iterable people) {
-    // #docregion avoid-forEach
+    // #docregion avoid-for-each
     for (final person in people) {
       /*...*/
     }
-    // #enddocregion avoid-forEach
+    // #enddocregion avoid-for-each
     // #docregion forEach-over-func
     people.forEach(print);
     // #enddocregion forEach-over-func
@@ -357,7 +350,7 @@ class Response {
   String get reason => '';
 }
 
-// #docregion shadow-nullable-field
+// #docregion shadow-nullable-field, null-check-promo
 class UploadException {
   final Response? response;
 
@@ -365,16 +358,23 @@ class UploadException {
 
   @override
   String toString() {
+    // #enddocregion shadow-nullable-field
+    if (this.response case var response?) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+// #enddocregion null-check-promo
+// #docregion shadow-nullable-field
     final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-
+    // #docregion null-check-promo
     return 'Could not upload (no response).';
   }
 }
-// #enddocregion shadow-nullable-field
+// #enddocregion shadow-nullable-field, null-check-promo
 
 //----------------------------------------------------------------------------
 

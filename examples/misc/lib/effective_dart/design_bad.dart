@@ -138,9 +138,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion prefer-dynamic
   }
 
-  // #docregion avoid-Function
+  // #docregion avoid-function
   bool isValid(String value, Function test) => ellipsis();
-  // #enddocregion avoid-Function
+  // #enddocregion avoid-function
 
   // #docregion future-or
   FutureOr<int> triple(FutureOr<int> value) {
@@ -257,6 +257,7 @@ class C<Foo> {
 // #docregion eq-dont-check-for-null
 class Person1 {
   final String name;
+
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();

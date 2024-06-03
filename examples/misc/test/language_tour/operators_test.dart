@@ -189,8 +189,8 @@ void main() {
         return 'Guest';
       }
     }
-
     // #enddocregion if-null-alt
+
     final funcs = [playerName1, playerName2, playerName3];
     expect(funcs.map((f) => f(null)), List.filled(3, 'Guest'));
     expect(funcs.map((f) => f('Alice')), List.filled(3, 'Alice'));
