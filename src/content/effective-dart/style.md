@@ -230,9 +230,9 @@ Esq // "esquire"
 Ave // "avenue"
 
 // Two letters, capitalized in English, so capitalized in an identifier:
-ID // "identifier", capitalized as "ID"
+ID // "identifier"
 TV // "television"
-DB // "database", originally an acronym from "data base"
+DB // "database"
 IO // "input/output"
 UI // "user interface"
 
