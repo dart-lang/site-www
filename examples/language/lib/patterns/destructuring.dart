@@ -64,7 +64,7 @@ void main() {
 
     {
       // #docregion destructure-multiple-returns-3
-      final (:name, :age) = getData();
+      final (:name, :age) = getData(); // For example, return (name: 'doug', age: 25);
       // #enddocregion destructure-multiple-returns-3
     }
   }
