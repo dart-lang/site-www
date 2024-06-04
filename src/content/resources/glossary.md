@@ -282,30 +282,46 @@ Refutable patterns appear in [_matching contexts_][].
 
 ## Subclass
 
-A _subclass_ is a class that inherits from another class using the
-[`extends`](/language/extend) keyword.
+A _subclass_ is a class that inherits the implementation of another class by using the
+[`extends`](/language/extend) keyword, or by [mixin application](#mixin-application).
 
 ```dart
 class A extends B {} // A is a subclass of B; B is the superclass of A. 
+
+class B1 with M {} // B1 is a subclass of M.
 ```
 
-Any subclass relation is also a [subtype](#subtype) relation,
-so you can use "subtype" to describe any subclass in Dart.
-However, the inverse is not true. Not all subtypes are subclasses.
+Subclassing is fundamentally about code reuse.
+
+A subclass relation also implies an associated [subtype](#subtype) relation.
+For example, the declaration `class Foo` implicitly defines
+an associated type `Foo` which instances of the class `Foo` inhabit.
+
+The Dart documentation occasionally uses "subtype"
+to describe subclass relations for this reason.
+However, the converse is not true: not all subtypes are subclasses.
 See the [subtype](#subtype) entry for more information.
 
 ## Subtype
 
-A _subtype_ is a class that implements another class
-([`implements`](/language/classes#implicit-interfaces)),
-or inherits from another class ([`extends`](/language/extend)).
+A _subtype_ relation is when a type is fully substitutable for another type.
+A subtype supports all of the operations of its supertype
+(and possibly some extra operations).
+In practice, this means that the value of a subtype can be assigned
+to any location expecting the supertype,
+and all of the methods of the supertype are available on the subtype.
+
+Some subtype relations are based solely on the structure of the type,
+like with nullable types (for example, `int` is a subtype of `int?`)
+and function types
+(for example, `String Function()` is a subtype of `void Function()`).
+
+Subtypes can also be introduced for classes by
+[implementation](/language/classes#implicit-interfaces)
+or [inheritance](/language/extend) (direct or indirect):
 
 ```dart
 class A implements B {} // A is a subtype of B, but NOT a subclass of B.
 
 class C extends D {} // C is a subtype AND a subclass of D.
 ```
-
-Everything in Dart is an object, so _subtype_ is also used to describe
-variable types in any context, not only explicitly declared class relationships.
-To learn more, see [The Dart type system](/language/type-system).
