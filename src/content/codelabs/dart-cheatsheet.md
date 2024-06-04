@@ -1819,20 +1819,12 @@ bool testGoodNumberOfArgs(List<String> errs, int count) {
   IntegerHolder? obj;
   Type? expected;
   try {
-    switch (count) {
-      case 1:
-        callTxt = 'IntegerHolder.fromList([1])';
-        obj = IntegerHolder.fromList([1]);
-        expected = IntegerSingle;
-      case 2:
-        callTxt = 'IntegerHolder.fromList([1, 2])';
-        obj = IntegerHolder.fromList([1, 2]);
-        expected = IntegerDouble;
-      case 3:
-        callTxt = 'IntegerHolder.fromList([1, 2, 3])';
-        obj = IntegerHolder.fromList([1, 2, 3]);
-        expected = IntegerTriple;
-    }
+    (callTxt, obj, expected) = switch (count) {
+      1 => ('IntegerHolder.fromList([1])', IntegerHolder.fromList([1]), IntegerSingle),
+      2 => ('IntegerHolder.fromList([1, 2])', IntegerHolder.fromList([1, 2]), IntegerDouble),
+      3 => ('IntegerHolder.fromList([1, 2, 3])', IntegerHolder.fromList([1, 2, 3]), IntegerTriple),
+      _ => (null, null, null), // Default case if count doesn't match 1, 2, or 3
+    };
     if (obj.runtimeType != expected) {
       errs.add(
           'Called $callTxt and got an object of type \n ${obj.runtimeType} instead of $expected.');
@@ -1923,13 +1915,14 @@ bool testBadNumberOfArgs(List<String> errs, int count) {
   ```dart
   // Implement this factory constructor.
   factory IntegerHolder.fromList(List<int> list) {
-    if (list.length == 1) {
+    switch(list.length) {
+    case 1:
       return IntegerSingle(list[0]);
-    } else if (list.length == 2) {
+    case 2:
       return IntegerDouble(list[0], list[1]);
-    } else if (list.length == 3) {
+    case 3:
       return IntegerTriple(list[0], list[1], list[2]);
-    } else {
+    default:
       throw ArgumentError("List too long or too short: ${list.length}");
     }
   }
