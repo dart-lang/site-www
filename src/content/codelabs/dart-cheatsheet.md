@@ -1179,9 +1179,10 @@ void main() {
 
 ## Exceptions
 
-Dart code can throw and catch exceptions. In contrast to Java, all of Dart's exceptions are unchecked
-exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
-any exceptions.
+Dart code can throw and catch exceptions.
+In contrast to Java, all of Dart's exceptions are unchecked.
+Methods don't declare which exceptions they might throw and
+you aren't required to catch any exceptions.
 
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
@@ -1272,11 +1273,16 @@ abstract class Logger {
 }
 
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
-  // Invoking this method might cause an exception. 
-  // TODO: Catch and handle them using try-on-catch-finally.
-  untrustworthy();
+  try {
+    untrustworthy();
+  } on ExceptionWithMessage catch (e) {
+    logger.logException(e.runtimeType, e.message); 
+  } on Exception catch (e) {
+    logger.logException(e.runtimeType);
+  } finally {
+    logger.doneLogging();
+  }
 }
-
 
 // Tests your solution (Don't edit!):
 class MyLogger extends Logger {
