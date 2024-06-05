@@ -1754,16 +1754,18 @@ class Shape {
 
 ### Code example {:.no_toc}
 
-Fill in the factory constructor named `IntegerHolder.fromList`,
-making it do the following:
+Replace the line `TODO();` in the factory constructor
+named `IntegerHolder.fromList` to return the following:
 
 * If the list has **one** value,
-  create an `IntegerSingle` with that value.
+  create an `IntegerSingle` instance using that value.
 * If the list has **two** values,
-  create an `IntegerDouble` with the values in order.
+  create an `IntegerDouble` instance using the values in order.
 * If the list has **three** values,
-  create an `IntegerTriple` with the values in order.
+  create an `IntegerTriple` instance using the values in order.
 * Otherwise, throw an `Error`.
+
+If you succeed, the console should display `Success!`.
 
 ```dartpad
 class IntegerHolder {
@@ -1800,12 +1802,16 @@ class IntegerTriple extends IntegerHolder {
 void main() {
   final errs = <String>[];
 
-  if (!testBadNumberOfArgs(errs, 0)) return;
-  if (!testGoodNumberOfArgs(errs, 1)) return;
-  if (!testGoodNumberOfArgs(errs, 2)) return;
-  if (!testGoodNumberOfArgs(errs, 3)) return;
-  if (!testBadNumberOfArgs(errs, 4)) return;
+  // Run 5 tests to see which values have valid integer holders
+  for (var tests = 0; tests < 5; tests++) {
+    if (!testNumberOfArgs(errs, tests)) return;
+  }
 
+  // The goal is no errors with values 1 to 3,
+  // but have errors with values 0 and 4.
+  // The testNumberOfArgs method adds to the errs array if
+  // the values 1 to 3 have an error and
+  // the values 0 and 4 don't have an error
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -1813,96 +1819,59 @@ void main() {
   }
 }
 
-bool testGoodNumberOfArgs(List<String> errs, int count) {
-  assert(1 <= count && count <= 3);
-  String callTxt = '???';
-  IntegerHolder? obj;
-  Type? expected;
-  try {
-    (callTxt, obj, expected) = switch (count) {
-      1 => ('IntegerHolder.fromList([1])', IntegerHolder.fromList([1]), IntegerSingle),
-      2 => ('IntegerHolder.fromList([1, 2])', IntegerHolder.fromList([1, 2]), IntegerDouble),
-      3 => ('IntegerHolder.fromList([1, 2, 3])', IntegerHolder.fromList([1, 2, 3]), IntegerTriple),
-      _ => (null, null, null), // Default case if count doesn't match 1, 2, or 3
-    };
-    if (obj.runtimeType != expected) {
-      errs.add(
-          'Called $callTxt and got an object of type \n ${obj.runtimeType} instead of $expected.');
-    } else {
-      if (obj is IntegerSingle) {
-        testValueOfA(errs,[1],obj,callTxt);
-      } else if (obj is IntegerDouble) {
-        testValueOfAB(errs,[1,2],obj,callTxt);
-      } else if (obj is IntegerTriple) {
-        testValueOfABC(errs,[1,2,3],obj,callTxt);
-      } else {
-        // Can't happen
-      }
-    }
-  } catch (e) {
-    print(
-        'Called ${callTxt} and got an exception of \n type ${e.runtimeType}.');
-    return false;
-  }
-  return true;
-}
-
-testValueOfA(
-    List<String> errs, List<int> ex, IntegerSingle o, String callTxt) {
-  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerSingle);
-}
-
-testValueOfAB(List<String> errs, List<int> ex, IntegerDouble o, String callTxt) {
-  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerDouble);
-  testValueOfX(errs, o.b, ex[1], 'b', callTxt, IntegerDouble);
-}
-
-testValueOfABC(
-    List<String> errs, List<int> ex, IntegerTriple o, String callTxt) {
-  testValueOfX(errs, o.a, ex[0], 'a', callTxt, IntegerTriple);
-  testValueOfX(errs, o.b, ex[1], 'b', callTxt, IntegerTriple);
-  testValueOfX(errs, o.c, ex[2], 'c', callTxt, IntegerTriple);
-}
-
-testValueOfX(List<String> errs, int found, int ex, String name,
-    String callTxt, Type type) {
-  if (ex != found) {
-    errs.add(
-        'Called $callTxt and got a $type with \n a \'$name\' value of $found instead of the expected ($ex).');
-  }
-}
-
-bool testBadNumberOfArgs(List<String> errs, int count) {
-  assert(count == 0 || count == 4);
-  String callTxt = '???';
+bool testNumberOfArgs(List<String> errs, int count) {
   bool _threw = false;
+  final ex = List.generate(count, (index) => index + 1);
+  final callTxt = "IntegerHolder.fromList(${ex})";
   try {
-    switch (count) {
-      case 0:
-        callTxt = 'IntegerHolder.fromList([])';
-        // This next statement should throw
-        IntegerHolder.fromList([]);
-      case 4:
-        callTxt = 'IntegerHolder.fromList([1,2,3,4])';
-        // This next statement should throw
-        IntegerHolder.fromList([1, 2, 3, 4]);
-    }
-  } on UnimplementedError {
-    print('Test failed. Did you implement the method?');
-    return false;
+    final obj = IntegerHolder.fromList(ex);
+    final String vals = count == 1 ? "value" : "values";
+    // Uncomment the next line if you want to see the results realtime
+    // print("Testing with ${count} ${vals} using ${obj.runtimeType}.");
+    testValues(errs, ex, obj, callTxt);
   } on Error {
     _threw = true;
   } catch (e) {
-    print(
-        'Called ${callTxt} and got an exception of \n type ${e.runtimeType}.');
-    return false;
-  }
-  // An Error must have been thrown to pass this test!
-  if (!_threw) {
-    errs.add('Called ${callTxt} and it didn\'t throw any Error.');
+    switch (count) {
+      case (< 1 && > 3):
+        if (!_threw) {
+          errs.add('Called ${callTxt} and it didn\'t throw an Error.');
+        }
+      default:
+        errs.add('Called $callTxt and received an Error.');
+    }
   }
   return true;
 }
+
+void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
+    String callText) {
+  for (var i = 0; i < expectedValues.length; i++) {
+    int found;
+    if (obj is IntegerSingle) {
+      found = obj.a;
+    } else if (obj is IntegerDouble) {
+      found = i == 0 ? obj.a : obj.b;
+    } else if (obj is IntegerTriple) {
+      found = i == 0
+          ? obj.a
+          : i == 1
+              ? obj.b
+              : obj.c;
+    } else {
+      throw ArgumentError(
+          "This IntegerHolder type (${obj.runtimeType}) is unsupported.");
+    }
+
+    if (found != expectedValues[i]) {
+      errs.add(
+          "Called $callText and got a ${obj.runtimeType} " + 
+          "with a property at index $i value of $found " +
+          "instead of the expected (${expectedValues[i]}).");
+    }
+  }
+}
+
 ```
 
 <details>
@@ -1912,20 +1881,19 @@ bool testBadNumberOfArgs(List<String> errs, int count) {
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
 
+  Replace `TODO();` with the following code block.
+
   ```dart
-  // Implement this factory constructor.
-  factory IntegerHolder.fromList(List<int> list) {
-    switch(list.length) {
-    case 1:
-      return IntegerSingle(list[0]);
-    case 2:
-      return IntegerDouble(list[0], list[1]);
-    case 3:
-      return IntegerTriple(list[0], list[1], list[2]);
-    default:
-      throw ArgumentError("List too long or too short: ${list.length}");
+    switch (list.length) {
+      case 1:
+        return IntegerSingle(list[0]);
+      case 2:
+        return IntegerDouble(list[0], list[1]);
+      case 3:
+        return IntegerTriple(list[0], list[1], list[2]);
+      default:
+        throw ArgumentError("List must between 1 and 3 items. This list was ${list.length} items.");
     }
-  }
   ```
 
 </details>
