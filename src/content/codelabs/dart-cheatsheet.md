@@ -1,6 +1,6 @@
 ---
-title: Dart cheatsheet codelab
-description: Interactively learn (or relearn) some of Dart's unique features.
+title: Dart cheatsheet
+description: Learn some of Dart's unique features through DartPad
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
@@ -11,7 +11,7 @@ but it has a few unique features.
 This codelab walks you through
 the most important of these language features.
 
-The embedded editors in this codelab have partially completed code snippets.
+The embedded editors in this cheatsheet have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button. The editors also contain thorough test code;
 **don't edit the test code**, but feel free to study it to learn about testing. 
@@ -114,12 +114,12 @@ int? a; // The initial value of a is null.
 To learn more about null safety in Dart,
 read the [sound null safety guide](/null-safety).
 
-
 ### Code example {:.no_toc}
 
-Try to declare two variables below:
-- A nullable `String` named `name` with the value `'Jane'`.
-- A nullable `String` named `address` with the value `null`.
+Declare two variables in this DartPad:
+
+* A nullable `String` named `name` with the value `'Jane'`.
+* A nullable `String` named `address` with the value `null`.
 
 Ignore all initial errors in the DartPad.
 
@@ -156,7 +156,6 @@ void main() {
   ```
 
 </details>
-
 
 ## Null-aware operators
 
@@ -1180,9 +1179,10 @@ void main() {
 
 ## Exceptions
 
-Dart code can throw and catch exceptions. In contrast to Java, all of Dart's exceptions are unchecked
-exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
-any exceptions.
+Dart code can throw and catch exceptions.
+In contrast to Java, all of Dart's exceptions are unchecked.
+Methods don't declare which exceptions they might throw and
+you aren't required to catch any exceptions.
 
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
@@ -1273,11 +1273,16 @@ abstract class Logger {
 }
 
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
-  // Invoking this method might cause an exception. 
-  // TODO: Catch and handle them using try-on-catch-finally.
-  untrustworthy();
+  try {
+    untrustworthy();
+  } on ExceptionWithMessage catch (e) {
+    logger.logException(e.runtimeType, e.message); 
+  } on Exception catch (e) {
+    logger.logException(e.runtimeType);
+  } finally {
+    logger.doneLogging();
+  }
 }
-
 
 // Tests your solution (Don't edit!):
 class MyLogger extends Logger {
@@ -1755,16 +1760,18 @@ class Shape {
 
 ### Code example {:.no_toc}
 
-Fill in the factory constructor named `IntegerHolder.fromList`,
-making it do the following:
+Replace the line `TODO();` in the factory constructor
+named `IntegerHolder.fromList` to return the following:
 
 * If the list has **one** value,
-  create an `IntegerSingle` with that value.
+  create an `IntegerSingle` instance using that value.
 * If the list has **two** values,
-  create an `IntegerDouble` with the values in order.
+  create an `IntegerDouble` instance using the values in order.
 * If the list has **three** values,
-  create an `IntegerTriple` with the values in order.
+  create an `IntegerTriple` instance using the values in order.
 * Otherwise, throw an `Error`.
+
+If you succeed, the console should display `Success!`.
 
 ```dartpad
 class IntegerHolder {
@@ -1778,107 +1785,99 @@ class IntegerHolder {
 
 class IntegerSingle extends IntegerHolder {
   final int a;
-  IntegerSingle(this.a); 
+
+  IntegerSingle(this.a);
 }
 
 class IntegerDouble extends IntegerHolder {
   final int a;
   final int b;
-  IntegerDouble(this.a, this.b); 
+
+  IntegerDouble(this.a, this.b);
 }
 
 class IntegerTriple extends IntegerHolder {
   final int a;
   final int b;
   final int c;
-  IntegerTriple(this.a, this.b, this.c); 
+
+  IntegerTriple(this.a, this.b, this.c);
 }
 
-
-// Tests your solution (Don't edit!):
+// Tests your solution (Don't edit from this point to end of file):
 void main() {
   final errs = <String>[];
 
-  bool _throwed = false;
-  try {
-    IntegerHolder.fromList([]);
-  } on UnimplementedError {
-    print('Test failed. Did you implement the method?');
-    return;
-  } on Error {
-    _throwed = true;
-  } catch (e) {
-    print('Called IntegerSingle.fromList([]) and got an exception of \n type ${e.runtimeType}.');
-    return;
-  }
-  
-  if (!_throwed) {
-    errs.add('Called IntegerSingle.fromList([]) and didn\'t throw Error.');
-  } 
-
-  try {
-    final obj = IntegerHolder.fromList([1]);
-    
-    if (obj is! IntegerSingle) {
-      errs.add('Called IntegerHolder.fromList([1]) and got an object of type \n ${obj.runtimeType} instead of IntegerSingle.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with \n  an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([]) and got an exception of \n type ${e.runtimeType}.');
-    return;
+  // Run 5 tests to see which values have valid integer holders
+  for (var tests = 0; tests < 5; tests++) {
+    if (!testNumberOfArgs(errs, tests)) return;
   }
 
-  try {
-    final obj = IntegerHolder.fromList([1, 2]);
-    
-    if (obj is! IntegerDouble) {
-      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type \n ${obj.runtimeType} instead of IntegerDouble.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-      
-      if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble \n with an \'b\' value of ${obj.b} instead of the expected (2).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([1, 2]) and got an exception \n of type ${e.runtimeType}.');
-    return;
-  }
-
-  try {
-    final obj = IntegerHolder.fromList([1, 2, 3]);
-    
-    if (obj is! IntegerTriple) {
-      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type \n ${obj.runtimeType} instead of IntegerTriple.');
-    } else {
-      if (obj.a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.a} instead of the expected (1).');
-      }
-      
-      if (obj.b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
-      }
-
-      if (obj.c != 3) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple \n with an \'a\' value of ${obj.b} instead of the expected (2).');
-      }
-    }
-  } catch (e) {
-    print('Called IntegerHolder.fromList([1, 2, 3]) and got an exception \n of type ${e.runtimeType}.');
-    return;
-  }
-
+  // The goal is no errors with values 1 to 3,
+  // but have errors with values 0 and 4.
+  // The testNumberOfArgs method adds to the errs array if
+  // the values 1 to 3 have an error and
+  // the values 0 and 4 don't have an error
   if (errs.isEmpty) {
     print('Success!');
   } else {
     errs.forEach(print);
   }
 }
+
+bool testNumberOfArgs(List<String> errs, int count) {
+  bool _threw = false;
+  final ex = List.generate(count, (index) => index + 1);
+  final callTxt = "IntegerHolder.fromList(${ex})";
+  try {
+    final obj = IntegerHolder.fromList(ex);
+    final String vals = count == 1 ? "value" : "values";
+    // Uncomment the next line if you want to see the results realtime
+    // print("Testing with ${count} ${vals} using ${obj.runtimeType}.");
+    testValues(errs, ex, obj, callTxt);
+  } on Error {
+    _threw = true;
+  } catch (e) {
+    switch (count) {
+      case (< 1 && > 3):
+        if (!_threw) {
+          errs.add('Called ${callTxt} and it didn\'t throw an Error.');
+        }
+      default:
+        errs.add('Called $callTxt and received an Error.');
+    }
+  }
+  return true;
+}
+
+void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
+    String callText) {
+  for (var i = 0; i < expectedValues.length; i++) {
+    int found;
+    if (obj is IntegerSingle) {
+      found = obj.a;
+    } else if (obj is IntegerDouble) {
+      found = i == 0 ? obj.a : obj.b;
+    } else if (obj is IntegerTriple) {
+      found = i == 0
+          ? obj.a
+          : i == 1
+              ? obj.b
+              : obj.c;
+    } else {
+      throw ArgumentError(
+          "This IntegerHolder type (${obj.runtimeType}) is unsupported.");
+    }
+
+    if (found != expectedValues[i]) {
+      errs.add(
+          "Called $callText and got a ${obj.runtimeType} " + 
+          "with a property at index $i value of $found " +
+          "instead of the expected (${expectedValues[i]}).");
+    }
+  }
+}
+
 ```
 
 <details>
@@ -1888,17 +1887,18 @@ void main() {
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
 
-  ```dart    
-    factory IntegerHolder.fromList(List<int> list) {
-      if (list.length == 1) {
+  Replace `TODO();` with the following code block.
+
+  ```dart
+    switch (list.length) {
+      case 1:
         return IntegerSingle(list[0]);
-      } else if (list.length == 2) {
+      case 2:
         return IntegerDouble(list[0], list[1]);
-      } else if (list.length == 3) {
+      case 3:
         return IntegerTriple(list[0], list[1], list[2]);
-      } else {
-        throw Error();
-      } 
+      default:
+        throw ArgumentError("List must between 1 and 3 items. This list was ${list.length} items.");
     }
   ```
 
@@ -2084,9 +2084,10 @@ void main() {
 
 ## What's next?
 
-We hope you enjoyed using this codelab to learn or test your knowledge of
+We hope you enjoyed using this cheatsheet to learn
 some of the most interesting features of the Dart language.
-Here are some suggestions for what to do now:
+
+What you can try next includes:
 
 * Try [other Dart codelabs](/codelabs).
 * Read the [Dart language tour](/language).
