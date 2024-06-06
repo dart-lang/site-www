@@ -322,7 +322,7 @@ This is true at least statically.
 A specific API might not allow the substitution at run time,
 depending on its operations. 
 
-Some subtype relations are based solely on the structure of the type,
+Some subtype relations are based on the structure of the type,
 like with nullable types (for example, `int` is a subtype of `int?`)
 and function types
 (for example, `String Function()` is a subtype of `void Function()`).
