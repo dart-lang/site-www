@@ -143,8 +143,7 @@ sys	0m0.006s
 
 Check out these resources:
 
-* Additional tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
+* Dart [tutorials](/tutorials)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
   * [Dart core library documentation](/libraries)

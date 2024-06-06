@@ -1,5 +1,5 @@
 ---
-title: Dart cheatsheet codelab
+title: Dart cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
@@ -8,10 +8,10 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab walks you through
+This tutorial walks you through
 the most important of these language features.
 
-The embedded editors in this codelab have partially completed code snippets.
+The embedded editors in this tutorial have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button. The editors also contain thorough test code;
 **don't edit the test code**, but feel free to study it to learn about testing. 
@@ -2084,7 +2084,7 @@ void main() {
 
 ## What's next?
 
-We hope you enjoyed using this codelab to learn or test your knowledge of
+We hope you enjoyed using this tutorial to learn or test your knowledge of
 some of the most interesting features of the Dart language.
 Here are some suggestions for what to do now:
 

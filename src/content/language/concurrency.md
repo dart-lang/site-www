@@ -224,9 +224,9 @@ Stream<int> sumStream(Stream<int> stream) async* {
 ```
 
 If you'd like to learn more about using `async`, `await`, `Stream`s and
-`Future`s,  visit the [asynchronous programming codelab][].
+`Future`s, check out the [asynchronous programming tutorial][].
 
-[asynchronous programming codelab]: /codelabs/async-await
+[asynchronous programming tutorial]: /codelabs/async-await
 
 ## Isolates
 

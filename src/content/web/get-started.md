@@ -186,8 +186,7 @@ Check out these resources:
   * [Web libraries and packages](/web/libraries)
   * [`package:web` overview](/interop/js-interop/package-web)
   * [Introduction to the DOM][]
-* Tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
+* Dart [tutorials](/tutorials)
 
 If you get stuck, find help at [Community and support.](/community)
 

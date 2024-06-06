@@ -1805,7 +1805,7 @@ Future<void> asyncFunction() async {
 
 To learn more about `Future`s and the
 `async`/`await` syntax, see the
-[Asynchronous programming][] codelab.
+[Asynchronous programming][] tutorial.
 
 [Asynchronous programming]: /codelabs/async-await
 
@@ -2775,12 +2775,12 @@ Some possible next steps:
 
 * [Language tour][] to learn more about the Dart language
 * [Core library documentation][] to learn about Dart's core libraries
-* [Dart codelabs and tutorials][] for hands-on experience
+* [Dart tutorials][] for hands-on experience
   learning a variety of topics
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
 [Language tour]: /language
 [Core library documentation]: /libraries
-[Dart codelabs and tutorials]: /tutorials
+[Dart tutorials]: /tutorials
 [Effective Dart]: /effective-dart

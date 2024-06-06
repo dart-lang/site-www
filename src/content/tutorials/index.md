@@ -9,10 +9,9 @@ language, tools, and APIs to build applications.
 ## Learn the basics {:#basics}
 
 The following tours assume a basic familiarity with the Dart language,
-which you can get from skimming the
-[language tour](/language).
-Next, learn about futures by following the
-[asynchronous programming codelab](/codelabs/async-await).
+which you can get from skimming the [language tour](/language).
+Next, to learn about futures, try the
+[asynchronous programming tutorial](/codelabs/async-await).
 
 Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,
@@ -40,8 +39,8 @@ which are fundamental to most Dart programs.
 <a id="more-tutorials" aria-hidden="true"></a>
 ## Keep learning
 
-Follow more tutorials and codelabs to get more hands-on experience
-learning and developing with Dart! 
+To get more hands-on experience developing with Dart,
+try more of the available tutorials and codelabs!
 
 <div class="card-grid no_toc_section">
   <div class="card">

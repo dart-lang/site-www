@@ -579,7 +579,7 @@ we made the following changes to this site:
   * Introduced a new section to the language tour documenting
     [initializing formal parameters][].
   * Documented DartPad's [support for packages][].
-  * Fixed formatting in the [asynchronous programming codelab][]
+  * Fixed formatting in the [asynchronous programming tutorial][]
     and elaborated on [why asynchronous code matters][].
   * Updated the [security][] page to match our current security practices.
   * Added a key binding (`/`) to automatically focus the search bar.
@@ -621,7 +621,7 @@ we made the following changes to this site:
 [native types]: /interop/c-interop#interface-with-native-types
 [initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
-[asynchronous programming codelab]: /codelabs/async-await
+[asynchronous programming tutorial]: /codelabs/async-await
 [why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
 [security]: /security
 
