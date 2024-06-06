@@ -96,7 +96,7 @@ class Virtuoso with Musician {
 
 #### Access state in the mixin's subclass
 
-Declaring abstract memebers also allows you to access state on the subclass
+Declaring abstract members also allows you to access state on the subclass
 of a mixin, by calling getters which are defined as abstract on the mixin:
 
 ```dart
