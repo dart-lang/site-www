@@ -49,7 +49,7 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 is sometimes referred to as _arrow_ syntax.
 
 :::note
-Only _expressions_ can appear between the arrow (`=\>`) and the semicolon (`;`).
+Only _expressions_ can appear between the arrow (`=>`) and the semicolon (`;`).
 Expressions evaluate to values.
 This means that you can't write a statement where Dart expects a value.
 For example,
