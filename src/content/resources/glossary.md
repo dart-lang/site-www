@@ -301,20 +301,20 @@ So, `class A extends B` declares not just that the class
 Subclass relations are a subset of subtype relations.
 When the documentation says "`S` must be a subtype of `T`",
 it's fine for `S` to be a subclass of `T`.
-
 However, the converse is not true: not all subtypes are subclasses.
 See the [subtype](#subtype) entry for more information.
 
 ## Subtype
 
-A _subtype_ relation is where a value of a certain type can be substituted
-where the value of another type is expected.
-For example, if `S` is a subtype of `T`, then a *value* of type `S` can be
-substituted where a value of type `T` is expected. 
+A _subtype_ relation is where a value of a certain type is substitutable
+where the value of another type, the supertype, is expected.
+For example, if `S` is a subtype of `T`,
+then you can substitute a value of type `S`
+where a value of type `T` is expected. 
 
 A subtype supports all of the operations of its supertype
 (and possibly some extra operations).
-In practice, this means that the value of a subtype can be assigned
+In practice, this means you can assign the value of a subtype
 to any location expecting the supertype,
 and all of the methods of the supertype are available on the subtype.
 
