@@ -279,3 +279,60 @@ If not, the pattern _refutes_, or denies, the match.
 Refutable patterns appear in [_matching contexts_][].
 
 [_matching contexts_]: /language/patterns#matching
+
+## Subclass
+
+A _subclass_ is a class that inherits the implementation of another class by using the
+[`extends`](/language/extend) keyword, or by [mixin application](#mixin-application).
+
+```dart
+class A extends B {} // A is a subclass of B; B is the superclass of A. 
+
+class B1 extends A with M {} // B1 has the superclass `A with M`, which has the superclass A.
+```
+
+A subclass relation also implies an associated [subtype](#subtype) relation.
+For example, `class A` implicitly defines an associated type `A`
+which instances of the class `A` inhabit.
+So, `class A extends B` declares not just that the class
+`A` is a subclass of `B`, but also establishes that the *type* `A` is a 
+*subtype* of the type `B`.
+
+Subclass relations are a subset of subtype relations.
+When the documentation says "`S` must be a subtype of `T`",
+it's fine for `S` to be a subclass of `T`.
+However, the converse is not true: not all subtypes are subclasses.
+See the [subtype](#subtype) entry for more information.
+
+## Subtype
+
+A _subtype_ relation is where a value of a certain type is substitutable
+where the value of another type, the supertype, is expected.
+For example, if `S` is a subtype of `T`,
+then you can substitute a value of type `S`
+where a value of type `T` is expected. 
+
+A subtype supports all of the operations of its supertype
+(and possibly some extra operations).
+In practice, this means you can assign the value of a subtype
+to any location expecting the supertype,
+and all of the methods of the supertype are available on the subtype.
+
+This is true at least statically.
+A specific API might not allow the substitution at run time,
+depending on its operations. 
+
+Some subtype relations are based on the structure of the type,
+like with nullable types (for example, `int` is a subtype of `int?`)
+and function types
+(for example, `String Function()` is a subtype of `void Function()`).
+
+Subtypes can also be introduced for classes by
+[implementation](/language/classes#implicit-interfaces)
+or [inheritance](/language/extend) (direct or indirect):
+
+```dart
+class A implements B {} // A is a subtype of B, but NOT a subclass of B.
+
+class C extends D {} // C is a subtype AND a subclass of D.
+```

@@ -22,16 +22,14 @@ code.
 
 Identifiers come in three flavors in Dart.
 
-*   `UpperCamelCase` names capitalize the first letter of each word, including
-    the first.
+* `UpperCamelCase` names capitalize the first letter of each word, including
+  the first.
 
-*   `lowerCamelCase` names capitalize the first letter of each word, *except*
-    the first which is always lowercase, even if it's an acronym.
+* `lowerCamelCase` names capitalize the first letter of each word, *except*
+  the first which is always lowercase, even if it's an acronym.
 
-*   `lowercase_with_underscores` names use only lowercase letters,
-    even for acronyms,
-    and separate words with `_`.
-
+* `lowercase_with_underscores` names use only lowercase letters,
+  even for acronyms, and separate words with `_`.
 
 ### DO name types using `UpperCamelCase`
 
@@ -196,12 +194,12 @@ as in the following cases:
 We initially used Java's `SCREAMING_CAPS` style for constants. We
 changed for a few reasons:
 
-*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-    things like CSS colors.
-*   Constants are often changed to final non-const variables, which would
-    necessitate a name change.
-*   The `values` property automatically defined on an enum type is const and
-    lowercase.
+* `SCREAMING_CAPS` looks bad for many cases,
+  particularly enum values for things like CSS colors.
+* Constants are often changed to final non-const variables,
+  which would necessitate a name change.
+* The `values` property defined on an enum type is const and lowercase.
+
 :::
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
@@ -209,41 +207,63 @@ changed for a few reasons:
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words
 
-Capitalized acronyms can be hard to read, and
-multiple adjacent acronyms can lead to ambiguous names.
-For example, given a name that starts with `HTTPSFTP`, there's no way
-to tell if it's referring to HTTPS FTP or HTTP SFTP.
+Capitalized acronyms can be hard to read,
+and multiple adjacent acronyms can lead to ambiguous names.
+For example, given an identifier `HTTPSFTP`,
+the reader can't tell if it refers to `HTTPS` `FTP` or `HTTP` `SFTP`.
+To avoid this,
+capitalize most acronyms and abbreviations like regular words.
+This identifier would be `HttpsFtp` if referring to the former
+or `HttpSftp` for the latter.
 
-To avoid this, acronyms and abbreviations are capitalized like regular words.
-
-**Exception:** Two-letter *acronyms* like IO (input/output) are fully
-capitalized: `IO`. On the other hand, two-letter *abbreviations* like
-ID (identification) are still capitalized like regular words: `Id`.
+Two-letter abbreviations and acronyms are the exception.
+If both letters are capitalized in English,
+then they should both stay capitalized when used in an identifer.
+Otherwise, capitalize it like a word.
 
 ```dart tag=good
-class HttpConnection {}
-class DBIOPort {}
-class TVVcr {}
-class MrRogers {}
+// Longer than two letters, so always like a word:
+Http // "hypertext transfer protocol"
+Nasa // "national aeronautics and space administration"
+Uri // "uniform resource locator"
+Esq // "esquire"
+Ave // "avenue"
 
-var httpRequest = ...
-var uiHandler = ...
-var userId = ...
-Id id;
+// Two letters, capitalized in English, so capitalized in an identifier:
+ID // "identifier"
+TV // "television"
+UI // "user interface"
+
+// Two letters, not capitalized in English, so like a word in an identifier:
+Mr // "mister"
+St // "street"
+Rd // "road"
 ```
 
 ```dart tag=bad
-class HTTPConnection {}
-class DbIoPort {}
-class TvVcr {}
-class MRRogers {}
+HTTP // "hypertext transfer protocol"
+NASA // "national aeronautics and space administration"
+URI // "uniform resource locator"
+esq // "esquire"
+Ave // "avenue"
 
-var hTTPRequest = ...
-var uIHandler = ...
-var userID = ...
-ID iD;
+Id // "identifier"
+Tv // "television"
+Ui // "user interface"
+
+MR // "mister"
+ST // "street"
+RD // "road"
 ```
 
+When any form of abbreviation comes at the beginning
+of a lowerCamelCase identifier, lowercase the identifer:
+
+```dart
+var httpConnection = connect();
+var tvSet = Television();
+var mrRogers = 'hello, neighbor';
+```
 
 ### PREFER using `_`, `__`, etc. for unused callback parameters
 

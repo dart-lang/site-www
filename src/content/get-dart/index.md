@@ -52,27 +52,34 @@ To install and update the Dart SDK from the stable channel,
 choose one of the following options:
 
 1. [Use a package manager](#install) (Recommended).
-1. Use a [Dart Docker image][dart-docker]
-1. Download from the [SDK Archive](/get-dart/archive)
-1. [Install Flutter][install-flutter]
-1. [Build the SDK from source][build-source]
+
+1. Use a [Dart Docker image][dart-docker].
+
+1. [Install Flutter][install-flutter].  
+   If you've installed or plan to [install the Flutter SDK][install-flutter],
+   it includes the full Dart SDK. The Flutter SDK includes the
+   [`dart`](/tools/dart-tool) CLI tool in Flutter's `bin` folder.
+
+1. Download a ZIP archive from the [SDK Archive](/get-dart/archive).
+
+1. [Build the SDK from source][build-source].
+
+:::warning Notice
+{% include './archive/_sdk-terms.md' %}
+:::
 
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-:::warning Notice
-{% include './archive/_sdk-terms.md' %}
-:::
+## Install the Dart SDK {:#install}
 
-If you've installed or plan to [install the Flutter SDK][install-flutter],
-it includes the full Dart SDK. The Flutter SDK includes the
-[`dart`](/tools/dart-tool) CLI tool in Flutter's `bin` folder.
+To install the Dart SDK,
+use the appropriate package manager for your development platform.
 
-## Install the Dart SDK using a package manager {:#install}
-
-Install the Dart SDK using the package manager for your platform.
+To upgrade the Dart SDK,
+run the same command to install the Dart SDK from your package manager.
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -80,21 +87,15 @@ Install the Dart SDK using the package manager for your platform.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-
-{% include './_windows.md' %}
-
+{% include 'install/windows.md' %}
 </div>
 
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-
-{% include './_linux.md' %}
-
+{% include 'install/linux.md' %}
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-
-{% include './_mac.md' %}
-
+{% include 'install/macos.md' %}
 </div>
 
 ## Release channel reference {:#release-channels}
