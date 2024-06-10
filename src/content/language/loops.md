@@ -74,7 +74,7 @@ for (final Candidate(:name, :yearsExperience) in candidates) {
 
 :::tip
 To practice using `for-in`, follow the
-[Iterable collections tutorial](/codelabs/iterables).
+[Iterable collections tutorial](/libraries/collections/iterables).
 :::
 
 Iterable classes also have a [forEach()][] method as another option:

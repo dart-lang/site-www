@@ -52,7 +52,7 @@ int? aNullableInt = null;
 
 - To try some interactive examples,
   try out some of the null-safety orientated examples in the
-  [Dart cheatsheet](/codelabs/dart-cheatsheet).
+  [Dart cheatsheet](/resources/dart-cheatsheet).
 - To learn more about null safety, check out
   [Understanding null safety](/null-safety/understanding-null-safety).
 

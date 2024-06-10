@@ -11,7 +11,7 @@ language, tools, and APIs to build applications.
 The following tours assume a basic familiarity with the Dart language,
 which you can get from skimming the [language tour](/language).
 Next, to learn about futures, try the
-[asynchronous programming tutorial](/codelabs/async-await).
+[asynchronous programming tutorial](/libraries/async/async-await).
 
 Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,

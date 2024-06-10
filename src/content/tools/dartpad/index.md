@@ -115,4 +115,4 @@ For technical details on embedding DartPads, see the
 [DartPad]: {{site.dartpad}}
 [DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /language/libraries#lazily-loading-a-library
-[futures tutorial]: /codelabs/async-await
+[futures tutorial]: /libraries/async/async-await

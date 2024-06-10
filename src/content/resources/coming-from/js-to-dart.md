@@ -1807,7 +1807,7 @@ To learn more about `Future`s and the
 `async`/`await` syntax, see the
 [Asynchronous programming][] tutorial.
 
-[Asynchronous programming]: /codelabs/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
 ### Streams
 

@@ -230,7 +230,7 @@ access the network and perform potentially time-consuming operations,
 therefore they do so asynchronously and return a [`Future`][].
 If you haven't encountered futures yet,
 you can learn about them—as well as the `async` and `await` keywords—in the
-[asynchronous programming tutorial](/codelabs/async-await).
+[asynchronous programming tutorial](/libraries/async/async-await).
 :::
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g; /(http\.read)/[!$1!]/g"?>

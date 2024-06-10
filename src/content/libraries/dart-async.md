@@ -23,7 +23,7 @@ dart:async library ([API reference][dart:async]).
 You don't always need to use the Future or Stream APIs directly.
 The Dart language supports asynchronous coding using
 keywords such as `async` and `await`.
-Check out the [asynchronous programming tutorial](/codelabs/async-await)
+Check out the [asynchronous programming tutorial](/libraries/async/async-await)
 for details.
 :::
 
@@ -101,7 +101,7 @@ function from your function.
 :::
 
 For more information on using `await` and related Dart language features,
-see the [asynchronous programming tutorial](/codelabs/async-await).
+see the [asynchronous programming tutorial](/libraries/async/async-await).
 
 
 ### Basic usage
@@ -342,7 +342,7 @@ DOM event listeners in a row, then the second kind of event is never handled.
 
 For more information on using `await` and related
 Dart language features, see the
-[asynchronous programming tutorial](/codelabs/async-await).
+[asynchronous programming tutorial](/libraries/async/async-await).
 
 
 ### Listening for stream data
@@ -455,7 +455,7 @@ For some examples of using Future and Stream in command-line apps,
 check out the [dart:io documentation][].
 Also see these articles and tutorials:
 
-- [Asynchronous programming: futures, async, await](/codelabs/async-await)
+- [Asynchronous programming: futures, async, await](/libraries/async/async-await)
 - [Futures and error handling](/libraries/async/futures-error-handling)
 - [Asynchronous programming: streams](/libraries/async/using-streams)
 - [Creating streams in Dart](/libraries/async/creating-streams)

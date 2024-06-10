@@ -29,7 +29,7 @@ These two resources are popular with both beginning Dart developers and experts.
 * [Customizing static analysis](/tools/analysis)<br>
     A guide to customizing the analyzer using an analysis options file.
 * Asynchronous programming
-  * [Futures, async, await](/codelabs/async-await)<br>
+  * [Futures, async, await](/libraries/async/async-await)<br>
     Learn about and practice writing asynchronous code, using DartPad.
   * [Streams](/libraries/async/using-streams)<br>
     A beginner's guide to handling sequences of asynchronous events.

@@ -20,7 +20,7 @@ You don't need this page if your code uses
 the language's asynchrony support:
 `async`, `await`, and error handling using try-catch.
 For more information, see the
-[asynchronous programming tutorial](/codelabs/async-await).
+[asynchronous programming tutorial](/libraries/async/async-await).
 :::
 
 

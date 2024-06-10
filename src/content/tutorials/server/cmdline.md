@@ -31,7 +31,7 @@ the [`Future`]({{_api}}/dart-async/Future-class.html) and
 [`Stream`]({{_api}}/dart-async/Stream-class.html)
 classes for asynchronous support.
 To learn more about these features, see the
-[asynchronous programming tutorial](/codelabs/async-await) and the
+[asynchronous programming tutorial](/libraries/async/async-await) and the
 [streams tutorial](/libraries/async/using-streams).
 :::
 
