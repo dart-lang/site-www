@@ -38,6 +38,8 @@
           permalink: /language/patterns
         - title: Pattern types
           permalink: /language/pattern-types
+        - title: Hands-on tutorial
+          permalink: https://codelabs.developers.google.com/codelabs/dart-patterns-records
     - title: Functions
       permalink: /language/functions
     - title: Control flow

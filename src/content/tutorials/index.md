@@ -14,7 +14,7 @@ Next, to learn about futures, try the
 [asynchronous programming tutorial](/libraries/async/async-await).
 
 Once you're familiar with the language and futures,
-learn about _streams_ and _packages_,
+learn about _iterables_, _streams_, and _packages_,
 which are fundamental to most Dart programs.
 
 <div class="card-grid no_toc_section">
@@ -40,12 +40,20 @@ which are fundamental to most Dart programs.
 ## Keep learning
 
 To get more hands-on experience developing with Dart,
-try more of the available tutorials and codelabs!
+try more of the available tutorials!
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="https://codelabs.developers.google.com/codelabs/dart-patterns-records">Records and Patterns in Dart 3</a></h3>
-    <p>Discover Dart 3's new records and patterns features.</p>
+    <h3><a href="/resources/dart-cheatsheet">Dart cheatsheet</a></h3>
+    <p>Quickly try out some of Dart's unique language features.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://codelabs.developers.google.com/codelabs/dart-patterns-records">Records and Patterns</a></h3>
+    <p>Discover Dart's support for records and patterns.</p>
+  </div>
+  <div class="card">
+    <h3><a href="{{site.flutter-docs}}/codelabs">Iterable collections</a></h3>
+    <p>Learn to analyze and manipulate data stored in collections.</p>
   </div>
   <div class="card">
     <h3><a href="{{site.flutter-docs}}/codelabs">Flutter codelabs and tutorials</a></h3>
