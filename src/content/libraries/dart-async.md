@@ -457,7 +457,7 @@ Also see these articles and tutorials:
 
 - [Asynchronous programming: futures, async, await](/codelabs/async-await)
 - [Futures and error handling](/libraries/async/futures-error-handling)
-- [Asynchronous programming: streams](/tutorials/language/streams)
+- [Asynchronous programming: streams](/libraries/async/using-streams)
 - [Creating streams in Dart](/libraries/async/creating-streams)
 - [Dart asynchronous programming: Isolates and event loops](/language/concurrency)
 

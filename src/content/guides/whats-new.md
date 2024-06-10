@@ -851,7 +851,7 @@ we made the following changes to this site:
 [HTTP server tutorial]: /tutorials/server/httpserver
 [`lints`]: {{site.pub-pkg}}/lints
 [Numbers in Dart]: /guides/language/numbers
-[streams tutorial]: /tutorials/language/streams
+[streams tutorial]: /libraries/async/using-streams
 [typedef section]: /language/typedefs
 [Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud

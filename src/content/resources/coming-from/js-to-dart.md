@@ -1963,7 +1963,7 @@ Learn more about futures, streams,
 and other asynchronous functionality in the
 [asynchronous programming][] docs.
 
-[asynchronous programming]: /tutorials/language/streams
+[asynchronous programming]: /libraries/async/using-streams
 
 ## Classes
 

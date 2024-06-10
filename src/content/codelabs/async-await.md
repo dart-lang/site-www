@@ -1084,7 +1084,7 @@ are some suggestions for where to go next:
 - Play with [DartPad]({{site.dartpad}}).
 - Try another [tutorial](/tutorials).
 - Learn more about futures and asynchronous code in Dart:
-  - [Streams tutorial](/tutorials/language/streams):
+  - [Streams tutorial](/libraries/async/using-streams):
     Learn how to work with a sequence of asynchronous events.
   - [Concurrency in Dart](/language/concurrency):
     Understand and learn how to implement concurrency in Dart.
