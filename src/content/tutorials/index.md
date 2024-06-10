@@ -39,7 +39,7 @@ which are fundamental to most Dart programs.
 <a id="more-tutorials" aria-hidden="true"></a>
 ## Keep learning
 
-To get more hands-on experience developing with Dart,
+To get more experience developing with Dart,
 try more of the available tutorials!
 
 <div class="card-grid no_toc_section">

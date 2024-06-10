@@ -2775,8 +2775,7 @@ Some possible next steps:
 
 * [Language tour][] to learn more about the Dart language
 * [Core library documentation][] to learn about Dart's core libraries
-* [Dart tutorials][] for hands-on experience
-  learning a variety of topics
+* [Dart tutorials][] for applied practice covering a variety of topics
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 

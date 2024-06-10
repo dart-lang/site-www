@@ -2558,7 +2558,7 @@ Future<void> asyncFunction() async {
 }
 ```
 
-For more information and some hands-on practice,
+For more information and interactive practice,
 check out the [Asynchronous programming][] tutorial.
 
 [Asynchronous programming]: /libraries/async/async-await
