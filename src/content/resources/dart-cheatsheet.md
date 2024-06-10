@@ -1,6 +1,6 @@
 ---
 title: Dart cheatsheet
-description: Learn some of Dart's unique features through DartPad
+description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
@@ -8,10 +8,10 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab walks you through
+This tutorial walks you through
 the most important of these language features.
 
-The embedded editors in this cheatsheet have partially completed code snippets.
+The embedded editors in this tutorial have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button. The editors also contain thorough test code;
 **don't edit the test code**, but feel free to study it to learn about testing. 
@@ -2084,12 +2084,12 @@ void main() {
 
 ## What's next?
 
-We hope you enjoyed using this cheatsheet to learn
+We hope you enjoyed using this tutorial to learn or test your knowledge of
 some of the most interesting features of the Dart language.
 
 What you can try next includes:
 
-* Try [other Dart codelabs](/codelabs).
+* Try [other Dart tutorials](/tutorials).
 * Read the [Dart language tour](/language).
 * Play with [DartPad.]({{site.dartpad}})
 * [Get the Dart SDK](/get-dart).

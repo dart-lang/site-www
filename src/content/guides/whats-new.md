@@ -579,7 +579,7 @@ we made the following changes to this site:
   * Introduced a new section to the language tour documenting
     [initializing formal parameters][].
   * Documented DartPad's [support for packages][].
-  * Fixed formatting in the [asynchronous programming codelab][]
+  * Fixed formatting in the [asynchronous programming tutorial][]
     and elaborated on [why asynchronous code matters][].
   * Updated the [security][] page to match our current security practices.
   * Added a key binding (`/`) to automatically focus the search bar.
@@ -621,8 +621,8 @@ we made the following changes to this site:
 [native types]: /interop/c-interop#interface-with-native-types
 [initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
 [support for packages]: /tools/dartpad#library-support
-[asynchronous programming codelab]: /codelabs/async-await
-[why asynchronous code matters]: /codelabs/async-await#why-asynchronous-code-matters
+[asynchronous programming tutorial]: /libraries/async/async-await
+[why asynchronous code matters]: /libraries/async/async-await#why-asynchronous-code-matters
 [security]: /security
 
 
@@ -851,7 +851,7 @@ we made the following changes to this site:
 [HTTP server tutorial]: /tutorials/server/httpserver
 [`lints`]: {{site.pub-pkg}}/lints
 [Numbers in Dart]: /guides/language/numbers
-[streams tutorial]: /tutorials/language/streams
+[streams tutorial]: /libraries/async/using-streams
 [typedef section]: /language/typedefs
 [Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud
@@ -895,7 +895,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Updated the [language evolution page][evolution]
   to add information about language versioning
   and to reflect Dart 2.12.
-* Updated the [library tour][] and [codelabs][]
+* Updated the [library tour][] and [tutorials][]
   to reflect sound null safety.
 * Updated pages across the site to use [the `dart` tool][]
   instead of deprecated commands.
@@ -918,7 +918,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /libraries
-[codelabs]: /codelabs
+[tutorials]: /tutorials
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze
 [`dart compile`]: /tools/dart-compile

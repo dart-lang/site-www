@@ -2558,10 +2558,10 @@ Future<void> asyncFunction() async {
 }
 ```
 
-For more information and some hands-on practice,
-check out the [Asynchronous programming][] codelab.
+For more information and interactive practice,
+check out the [Asynchronous programming][] tutorial.
 
-[Asynchronous programming]: /codelabs/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
 ### Streams
 

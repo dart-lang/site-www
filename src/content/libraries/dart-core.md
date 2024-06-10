@@ -299,7 +299,7 @@ lists, sets, and maps.
 
 :::tip
 To practice using APIs that are available to both lists and sets,
-follow the [Iterable collections codelab](/codelabs/iterables).
+follow the [Iterable collections tutorial](/libraries/collections/iterables).
 :::
 
 ### Lists
@@ -947,7 +947,7 @@ void main() {
 The [Iterable][] and [Iterator][] classes
 support sequential access to a collection of values.
 To practice using these collections,
-follow the [Iterable collections codelab](/codelabs/iterables).
+follow the [Iterable collections tutorial](/libraries/collections/iterables).
 
 If you create a class that can provide Iterators for use in for-in loops,
 extend (if possible) or implement Iterable.

@@ -1,22 +1,3 @@
-- title: Tutorials & codelabs
-  expanded: false
-  children:
-    - title: Tutorials
-      match-page-url-exactly: true
-      permalink: /tutorials
-    - title: Codelabs
-      expanded: true
-      children:
-        - title: List of Dart codelabs
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Language cheatsheet
-          permalink: /codelabs/dart-cheatsheet
-        - title: Iterable collections
-          permalink: /codelabs/iterables
-        - title: Asynchronous programming
-          permalink: /codelabs/async-await
-
 - title: Language
   expanded: false
   children:
@@ -57,6 +38,8 @@
           permalink: /language/patterns
         - title: Pattern types
           permalink: /language/pattern-types
+        - title: Applied tutorial
+          permalink: https://codelabs.developers.google.com/codelabs/dart-patterns-records
     - title: Functions
       permalink: /language/functions
     - title: Control flow
@@ -138,12 +121,18 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
-    - title: Using streams
-      permalink: /libraries/async/using-streams
-    - title: Creating streams
-      permalink: /libraries/async/creating-streams
-    - title: Futures and error handling
-      permalink: /libraries/async/futures-error-handling
+    - title: Iterable collections
+      permalink: /libraries/collections/iterables
+    - title: Asynchronous programming
+      children:
+        - title: Tutorial
+          permalink: /libraries/async/async-await
+        - title: Futures and error handling
+          permalink: /libraries/async/futures-error-handling
+        - title: Using streams
+          permalink: /libraries/async/using-streams
+        - title: Creating streams
+          permalink: /libraries/async/creating-streams
 
 - title: Effective Dart
   expanded: false
@@ -199,8 +188,6 @@
 - title: Development
   expanded: false
   children:
-    - title: Futures, async, await
-      permalink: /codelabs/async-await
     - title: JSON
       permalink: /guides/json
     - title: Number representation
@@ -355,6 +342,8 @@
 - title: Resources
   expanded: false
   children:
+    - title: Language cheatsheet
+      permalink: /resources/dart-cheatsheet
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
@@ -379,6 +368,9 @@
       permalink: /resources/books
     - title: Videos
       permalink: /resources/videos
+    - title: Tutorials
+      match-page-url-exactly: true
+      permalink: /tutorials
 
 - title: Related sites
   expanded: true
