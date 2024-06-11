@@ -13,8 +13,8 @@ importers:
         version: 4.6.2
     devDependencies:
       '@11ty/eleventy':
-        specifier: 3.0.0-alpha.10
-        version: 3.0.0-alpha.10
+        specifier: 3.0.0-alpha.11
+        version: 3.0.0-alpha.11
       '@11ty/eleventy-img':
         specifier: 5.0.0-beta.4
         version: 5.0.0-beta.4(encoding@0.1.13)
@@ -69,8 +69,8 @@ packages:
   '@11ty/dependency-tree@3.0.0':
     resolution: {integrity: sha512-+M+/KdAptDTK4USkI124CKoScvt2y0v1EoLBjS2rUi9zydjWgEC7+EJJ7Eu1DXuObe0JmY09LORjdBGKNPxgtg==}
 
-  '@11ty/eleventy-dev-server@2.0.0':
-    resolution: {integrity: sha512-hqxQV92Bos0uyZa3P+BAX0nQqjQQMi4vCSxcQHNYEB/jjGV6CnurLBSn63U1VoixGAL4SpHm9OdTa2oVOTUx6Q==}
+  '@11ty/eleventy-dev-server@2.0.1':
+    resolution: {integrity: sha512-G92KbOx5vg2G3mlQQ1B0+L+Ni7pcn1yeMgQdnT8b2G20ZnbGNtuGYEPehbQV4Xqr2iAtoBfbihNskbLDoVtNOg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -90,8 +90,12 @@ packages:
     resolution: {integrity: sha512-Zy2leMK1DQR6Q6ZPSagv7QpJaAz9uVbb+RmVetYFp3foMeQtOSZx7w2u5daRFmP+PeNq9vO9H4xtBToYFWZwHA==}
     engines: {node: '>=12'}
 
-  '@11ty/eleventy@3.0.0-alpha.10':
-    resolution: {integrity: sha512-lnymV2KjhxPNs+e4otrjwr/kh7AEE/yTAwgVRtpdo8BA+zSDHaw+aeq/2L+h2nhQ9Z1a4ExIjQqk7K51E40tlA==}
+  '@11ty/eleventy-utils@1.0.3':
+    resolution: {integrity: sha512-nULO91om7vQw4Y/UBjM8i7nJ1xl+/nyK4rImZ41lFxiY2d+XUz7ChAj1CDYFjrLZeu0utAYJTZ45LlcHTkUG4g==}
+    engines: {node: '>=12'}
+
+  '@11ty/eleventy@3.0.0-alpha.11':
+    resolution: {integrity: sha512-NNhx2rySlFWfij2YQ87eU+03yLOhBNPRqGDTK/gjvsi/bY/OSAbb3sQLrycQpM6V5XtMlIqh6C1adxT0CMz3Rg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -925,6 +929,15 @@ packages:
 
   debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.3.5:
+    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -2978,20 +2991,20 @@ snapshots:
 
   '@11ty/dependency-tree-esm@1.0.0':
     dependencies:
-      '@11ty/eleventy-utils': 1.0.2
+      '@11ty/eleventy-utils': 1.0.3
       acorn: 8.11.3
       dependency-graph: 0.11.0
       normalize-path: 3.0.0
 
   '@11ty/dependency-tree@3.0.0':
     dependencies:
-      '@11ty/eleventy-utils': 1.0.2
+      '@11ty/eleventy-utils': 1.0.3
 
-  '@11ty/eleventy-dev-server@2.0.0':
+  '@11ty/eleventy-dev-server@2.0.1':
     dependencies:
-      '@11ty/eleventy-utils': 1.0.2
+      '@11ty/eleventy-utils': 1.0.3
       chokidar: 3.6.0
-      debug: 4.3.4
+      debug: 4.3.5
       dev-ip: 1.0.1
       finalhandler: 1.2.0
       mime: 3.0.0
@@ -3033,7 +3046,7 @@ snapshots:
 
   '@11ty/eleventy-plugin-bundle@2.0.2':
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
 
@@ -3041,20 +3054,24 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
 
-  '@11ty/eleventy@3.0.0-alpha.10':
+  '@11ty/eleventy-utils@1.0.3':
+    dependencies:
+      normalize-path: 3.0.0
+
+  '@11ty/eleventy@3.0.0-alpha.11':
     dependencies:
       '@11ty/dependency-tree': 3.0.0
       '@11ty/dependency-tree-esm': 1.0.0
-      '@11ty/eleventy-dev-server': 2.0.0
+      '@11ty/eleventy-dev-server': 2.0.1
       '@11ty/eleventy-plugin-bundle': 2.0.2
-      '@11ty/eleventy-utils': 1.0.2
+      '@11ty/eleventy-utils': 1.0.3
       '@11ty/lodash-custom': 4.17.21
       '@11ty/posthtml-urls': 1.0.0
       '@sindresorhus/slugify': 2.2.1
       bcp-47-normalize: 2.3.0
       chokidar: 3.6.0
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.5
       dependency-graph: 1.0.0
       fast-glob: 3.3.2
       graceful-fs: 4.2.11
@@ -3929,6 +3946,10 @@ snapshots:
       ms: 2.1.2
 
   debug@4.3.4:
+    dependencies:
+      ms: 2.1.2
+
+  debug@4.3.5:
     dependencies:
       ms: 2.1.2
 
