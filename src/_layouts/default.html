@@ -8,6 +8,7 @@
     {% endif -%}
   {% endif -%}
   <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
+    <a id="skip" href="#site-content-title">Skip to main content</a>
     {% render 'cookie-notice.html' %}
     {% render 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
