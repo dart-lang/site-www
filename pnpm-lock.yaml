@@ -13,8 +13,8 @@ importers:
         version: 4.6.2
     devDependencies:
       '@11ty/eleventy':
-        specifier: 3.0.0-alpha.12
-        version: 3.0.0-alpha.12
+        specifier: 3.0.0-alpha.13
+        version: 3.0.0-alpha.13
       '@11ty/eleventy-img':
         specifier: 5.0.0-beta.4
         version: 5.0.0-beta.4(encoding@0.1.13)
@@ -94,8 +94,8 @@ packages:
     resolution: {integrity: sha512-nULO91om7vQw4Y/UBjM8i7nJ1xl+/nyK4rImZ41lFxiY2d+XUz7ChAj1CDYFjrLZeu0utAYJTZ45LlcHTkUG4g==}
     engines: {node: '>=12'}
 
-  '@11ty/eleventy@3.0.0-alpha.12':
-    resolution: {integrity: sha512-dtBcjyAeUDKzYgrJ6/wTqZIUXCgEWGjlBhRT/5jX8GJ4yTkDxtmTzCbkaWOwvmqpYB5+OuZdnee9wAmm1pRDsQ==}
+  '@11ty/eleventy@3.0.0-alpha.13':
+    resolution: {integrity: sha512-LZ1mI2JoB/vu6eIzeh9Eim0istAmKiJ0C5LEYG8HigvGgVsADd7OGHpOeOpDgKjotPSO+DTVh48gQj/cW2mRNw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3058,7 +3058,7 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
 
-  '@11ty/eleventy@3.0.0-alpha.12':
+  '@11ty/eleventy@3.0.0-alpha.13':
     dependencies:
       '@11ty/dependency-tree': 3.0.0
       '@11ty/dependency-tree-esm': 1.0.0
