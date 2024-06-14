@@ -534,7 +534,6 @@ function _findMarkedTextAndUpdate(text) {
 
       const endIndex = line.indexOf('!]', startIndex);
       if (endIndex === -1) {
-        console.error(line);
         throw new Error(`Invalid syntax in line ${lineIndex + 1}. 
         An opening marker was found, but no closing marker was found.`);
       }
