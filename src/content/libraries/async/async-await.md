@@ -309,7 +309,9 @@ complete the following steps.
 
    <?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
    ```dart
-   print([!await!] createOrderMessage());
+   var msg = [!await!] createOrderMessage(); // DO AWAIT
+   print("Type of 'msg' is ${msg.runtimeType}");
+   print(msg);
    ```
 
 As shown in following two examples,
@@ -326,7 +328,8 @@ Future<String> createOrderMessage() async {
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is more complex and slow.
+    // Imagine that this function is
+    // more complex and slow.
     Future.delayed(const Duration(seconds: 2), () {
       print("Future completes!");
       return 'Large Latte';
@@ -359,13 +362,14 @@ Type of 'order' is String
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is more complex and slow.
+    // Imagine that this function is
+    // more complex and slow.
     Future.delayed(const Duration(seconds: 2), () {
       print("Future completes!");
       return 'Large Latte';
     });
 
-[!Future<void>!] main() async {
+[!Future<void>!] main() [!async!] {
   print('Fetching user order...');
   var msg = [!await!] createOrderMessage(); // DO AWAIT
   print("Type of 'msg' is ${msg.runtimeType}");
@@ -421,8 +425,7 @@ void main() async {
   countSeconds(4);
   if (doAwait) {
     await printOrderMessage();
-  }
-  else {
+  } else {
     printOrderMessage();
   }
   print("Exiting main()");
