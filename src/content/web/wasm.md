@@ -43,8 +43,8 @@ restrictions:
 
 ### Supported packages
 
-You can find packages that are compatible with Wasm by using the [`wasm-ready`][]
-filter on [pub.dev][].
+To find Wasm-compatible packages,
+use the [`wasm-ready`][] filter on [pub.dev][].
 
 A package is "wasm-ready" if it doesn't import non-Wasm compliant libraries
 like `dart:html`, `dart:js`, etc. You can find the full list of unallowed
