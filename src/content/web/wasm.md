@@ -41,6 +41,18 @@ restrictions:
    contain a temporary workaround. For details, see
    [webdev issue 2206]({{site.repo.dart.org}}/webdev/issues/2296).
 
+### Supported packages
+
+You can find packages that are compatible with Wasm by using the [`wasm-ready`][]
+filter on [pub.dev][].
+
+A package is "wasm-ready" if it doesn't import non-Wasm compliant libraries
+like `dart:html`, `dart:js`, etc. You can find the full list of unallowed
+libraries on the [JS interop page](/interop/js-interop/#next-generation-js-interop).
+
+[`wasm-ready`]: {{site.pub}}/packages?q=is%3Awasm-ready
+[pub.dev]: {{site.pub}}
+
 ## Compiling your web app to Wasm {:#compiling-to-wasm}
 
 We've landed support in the `dart` CLI for invoking the
