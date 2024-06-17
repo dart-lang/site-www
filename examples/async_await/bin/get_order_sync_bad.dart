@@ -8,15 +8,16 @@ String createOrderMessage() {
 
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () {
+      print('Future completes!');
+      return 'Large Latte';
+    });
 
 // #docregion main-sig
 void main() {
   // #enddocregion main-sig
   print('Fetching user order...');
   print(createOrderMessage());
+  print('Exiting main()');
 }
 // #enddocregion no-warning

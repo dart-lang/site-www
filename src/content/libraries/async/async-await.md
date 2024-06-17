@@ -7,17 +7,17 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 <?code-excerpt plaster="none"?>
 
 This tutorial explains how to write asynchronous code using
-futures and the `async` and `await` keywords.
+futures and the `async` keyword and the `await` operator.
 It uses embedded copies of the DartPad IDE.
 To test your knowledge,
 complete the exercises in these embedded DartPads then run example code.
 
 :::secondary What you'll learn
 
-* How and when to use the `async` and `await` keywords.
+* How and when to use `async` and `await`.
 * How using `async` and `await` affects execution order.
 * How to handle errors from an asynchronous call
-  using `try-catch` expressions in `async` functions.
+  using `try`-`catch` expressions in `async` functions.
 
 :::
 
@@ -78,8 +78,9 @@ after each exercise.
 : An `async` function is a function labeled with the `async` keyword.
 
 **await**
-: You can use the `await` keyword to get the completed result of an
-  asynchronous expression. The `await` keyword only works within an `async` function.
+: You can use the `await` operator to get the completed result of an
+  asynchronous expression.
+  The `await` operator only works within an `async` function.
 
 ## Why does asynchronous code matter?
 
@@ -98,7 +99,7 @@ To accommodate that initial asynchrony,
 other plain Dart functions also need to become asynchronous.
 
 To interact with these asynchronous results,
-you can use the `async` and `await` keywords.
+you can use the `async` keyword and the `await` operator.
 Most asynchronous functions are just async Dart functions
 that depend, possibly deep down,
 on an inherently asynchronous computation.
@@ -122,13 +123,14 @@ String createOrderMessage() {
 
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () {
+      print('Future completes!');
+      return 'Large Latte';
+    });
 
 void main() {
   print(createOrderMessage());
+  print('Exiting main()');
 }
 ```
 
@@ -147,7 +149,15 @@ that `fetchUserOrder()` should produce:
    done: an _uncompleted future_.
 1. As `createOrderMessage()` fails to get the value describing the user's
    order, the example fails to print "Large Latte" to the console.
-   It instead prints `Your order is: Instance of '_Future\<String\>'`.
+   It instead prints `Your order is: Instance of 'Future\<String\>'`.
+
+The response should resemble the following:
+
+```console
+Your order is: Instance of '_Future<String>'
+Exiting main()
+Future completes!
+```
 
 In the next sections,
 you'll learn about futures and use `async` and `await` to work with futures.
@@ -246,7 +256,7 @@ with an error indicating that the user ID is invalid.
 You've learned about futures and how they complete,
 but how do you use the results of asynchronous functions?
 In the next section,
-you'll learn how to get results with the `async` and `await` keywords.
+you'll learn how to get results using `async` and `await`.
 
 :::secondary Quick review
 
@@ -263,15 +273,15 @@ you'll learn how to get results with the `async` and `await` keywords.
 
 ## How do you use futures?
 
-### Use `async` and `await` keywords
+### Use `async` keyword and the `await` operator
 
 To define asynchronous functions and use their results,
-use the `async` and `await` keywords.
+use the `async` keyword and the `await` operator.
 
 To use `async` and `await`:
 
 * _To define an async function, prepend `async` to the function body._
-* _The `await` keyword works only within `async` functions._
+* _The `await` operator works only within `async` functions._
 
 To convert `main()` from a synchronous to asynchronous function,
 complete the following steps.
@@ -295,7 +305,7 @@ complete the following steps.
    ```
 
 1. As the code now has an `async` function,
-   add the `await` keyword to wait for a future to complete.
+   add the `await` operator to wait for a future to complete.
 
    <?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
    ```dart
@@ -303,35 +313,39 @@ complete the following steps.
    ```
 
 As shown in following two examples,
-the `async` and `await` keywords result in asynchronous code that
 resembles synchronous code.
 
 #### Example: Use synchronous functions
 
-<?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
+<?code-excerpt "async_await/bin/get_order_sync_no_await.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
 ```dart
-String createOrderMessage() {
-  var order = fetchUserOrder();
+Future<String> createOrderMessage() async {
+  var order = await fetchUserOrder();
+  print("Type of 'order' is ${order.runtimeType}");
   return 'Your order is: $order';
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    // Imagine that this function is more complex and slow.
+    Future.delayed(const Duration(seconds: 2), () {
+      print("Future completes!");
+      return 'Large Latte';
+    });
 
-void main() {
+Future<void> main() async {
   print('Fetching user order...');
-  print(createOrderMessage());
+  var msg = createOrderMessage(); // DO NOT AWAIT
+  print("Type of 'msg' is ${msg.runtimeType}");
+  print(msg);
 }
 ```
 
 ```plaintext
 Fetching user order...
-Your order is: Instance of '_Future<String>'
+Type of 'msg' is Future<String>
+Instance of 'Future<String>'
+Future completes!
+Type of 'order' is String
 ```
 
 #### Example: Use asynchronous functions
@@ -340,25 +354,30 @@ Your order is: Instance of '_Future<String>'
 ```dart
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
+  print("Type of 'order' is ${order.runtimeType}");
   return 'Your order is: $order';
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    // Imagine that this function is more complex and slow.
+    Future.delayed(const Duration(seconds: 2), () {
+      print("Future completes!");
+      return 'Large Latte';
+    });
 
-[!Future<void>!] main() [!async!] {
+[!Future<void>!] main() async {
   print('Fetching user order...');
-  print([!await!] createOrderMessage());
+  var msg = [!await!] createOrderMessage(); // DO AWAIT
+  print("Type of 'msg' is ${msg.runtimeType}");
+  print(msg);
 }
 ```
 
 ```plaintext
 Fetching user order...
+Future completes!
+Type of 'order' is String
+Type of 'msg' is String
 Your order is: Large Latte
 ```
 
@@ -371,11 +390,11 @@ The asynchronous example differs in three ways:
 1. The **`await`** keyword appears before calling the asynchronous functions
    `fetchUserOrder()` and `createOrderMessage()`.
 
-### How do execution flow work with async and await?
+### Review the execution flow with async and await
 
-An `async` function runs _synchronously_ until the first `await` keyword.
+An `async` function runs _synchronously_ until the first `await` operator.
 This means that within an `async` function body,
-all synchronous code before the first `await` keyword executes immediately.
+all synchronous code before the first `await` operator executes immediately.
 
 #### Example: Execution within async functions
 
@@ -396,9 +415,17 @@ Future<String> fetchUserOrder() {
   return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
+const bool doAwait = true;
+
 void main() async {
   countSeconds(4);
-  await printOrderMessage();
+  if (doAwait) {
+    await printOrderMessage();
+  }
+  else {
+    printOrderMessage();
+  }
+  print("Exiting main()");
 }
 
 // You can ignore this function - it's here to visualize delay time in this example.
@@ -409,16 +436,42 @@ void countSeconds(int s) {
 }
 ```
 
-After running the code in the preceding example, try reversing lines 2 and 3:
+The response should resemble the following:
 
-<?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
-```dart
-var order = await fetchUserOrder();
-print('Awaiting user order...');
+```console
+Awaiting user order...
+1
+2
+3
+4
+Your order is: Large Latte
+Exiting main()
 ```
 
-Notice that timing of the output shifts, now that `print('Awaiting user order')`
-appears after the first `await` keyword in `printOrderMessage()`.
+After running the code in the preceding example,
+set `doAwait` to `false`.
+This changes the example to not use `await`.
+
+<?code-excerpt "async_await/bin/async_example.dart (awaiting)" replace="/\/\/ (print)/$1/g"?>
+```dart
+const bool doAwait = true;
+```
+
+The response should resemble the following:
+
+```console
+Awaiting user order...
+Exiting main()
+1
+2
+3
+4
+Your order is: Large Latte
+```
+
+Notice that timing of the output shifts.
+`Exiting main()` comes after `Awaiting user order...` rather than
+after `Your order is: Large Latte`.
 
 #### Exercise: Practice using async and await
 
@@ -596,7 +649,7 @@ Future<String> _asyncEquals({
 
 * Did you remember to add the `async` keyword to the `reportUserRole` function?
 
-* Did you remember to use the `await` keyword before invoking `fetchRole()`?
+* Did you remember to use the `await` operator before invoking `fetchRole()`?
 
 * Remember: `reportUserRole` needs to return a `Future`.
 

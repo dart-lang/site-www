@@ -11,13 +11,9 @@ Future<String> fetchUserOrder() =>
       return 'Large Latte';
     });
 
-// #docregion main-sig
 Future<void> main() async {
-  // #enddocregion main-sig
   print('Fetching user order...');
-  // #docregion print-order
-  var msg = await createOrderMessage(); // DO AWAIT
+  var msg = createOrderMessage(); // DO NOT AWAIT
   print("Type of 'msg' is ${msg.runtimeType}");
   print(msg);
-  // #enddocregion print-order
 }

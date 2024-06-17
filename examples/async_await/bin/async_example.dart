@@ -1,9 +1,6 @@
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
-  // #docregion swap-stmts
   var order = await fetchUserOrder();
-  // print('Awaiting user order...');
-  // #enddocregion swap-stmts
   print('Your order is: $order');
 }
 
@@ -12,9 +9,18 @@ Future<String> fetchUserOrder() {
   return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
+// #docregion awaiting
+const bool doAwait = true;
+// #enddocregion awaiting
+
 void main() async {
   countSeconds(4);
-  await printOrderMessage();
+  if (doAwait) {
+    await printOrderMessage();
+  } else {
+    printOrderMessage();
+  }
+  print("Exiting main()");
 }
 
 // You can ignore this function - it's here to visualize delay time in this example.
