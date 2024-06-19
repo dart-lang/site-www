@@ -137,7 +137,6 @@ export default function (eleventyConfig) {
       outputDir: '_site/assets/img/',
       sharpOptions: {
         animated: true,
-        limitInputPixels: false,
       },
     });
   } else {
@@ -156,7 +155,6 @@ export default function (eleventyConfig) {
       outputDir: '_site/assets/img/',
       sharpOptions: {
         animated: true,
-        limitInputPixels: false,
       },
     });
   }
