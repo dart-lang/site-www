@@ -3,6 +3,11 @@ title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
 ---
 
+{% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
+{% assign deprecated = '<span class="tag-label deprecated-tag">Deprecated</span>' %}
+{% assign removed = '<span class="tag-label removed-tag">Removed</span>' %}
+{% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
+
 This page lists all language and library breaking changes and deprecations in Dart,
 organized by release and area, to help Dart users understand and manage their
 impact. Complete release notes are available in the [Dart SDK changelog][changelog].
@@ -22,18 +27,18 @@ around breaking changes and deprecations in Dart.
   [language version][] of your code.
   
   
-  _These are marked "**Language versioned**"_.
+  _These are marked as:_ {{versioned}}
 * **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
   with a warning. Deprecations are then completely removed in a subsequent release,
   breaking any code that relies on the previous behavior.
-  
-  _These are marked "**Deprecated**" and "**Removed**", respectively_.
+
+  _These are marked as:_ {{deprecated}} / {{removed}}
 * **Experimental**: Part of the release but not yet treated as stable in the SDK,
   and can break from one version to another. Experimental changes do not
   always have a corresponding breaking change issue, but may have more detail in
   the [SDK changelog][changelog].
 
-  _These are marked "**Experimental**", possibly in conjunction with another change type_.
+  These are marked: {{experimental}}
 
 If you have questions or concerns about any of these breaking changes, please 
 comment on the breaking change issue linked from the relevant entry.
@@ -86,14 +91,14 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:typed_data`
 
-- **Removed**:
+- {{removed}}
   [The unmodifiable view classes for typed data have been removed][53128].
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
 
 ### Runtime {:.no_toc}
 
-- **Removed** The Dart VM no longer supports unsound null safety.
+- {{removed}} The Dart VM no longer supports unsound null safety.
   - The `--no-sound-null-safety` CLI option has been removed.
   - The `Dart_NewListOf` and `Dart_IsLegacyType` functions have been removed
     from the C API.
@@ -116,14 +121,14 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:cli`
 
-- **Experimental** **Removed**: [The `waitFor` function][52121]
+- {{experimental}} {{removed}} [The `waitFor` function][52121]
   has been removed.
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
 
-- These libraries are now marked as legacy and
+- {{deprecated}} These libraries are now marked as legacy and
   will see less support in the future.
   New projects should prefer to use [`package:web`][] and `dart:js_interop`.
   To learn more, check out [Migrate to package:web][].
@@ -133,7 +138,8 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:js`
 
-- This library is now marked as legacy and will see less support in the future.
+- {{deprecated}}
+  This library is now marked as legacy and will see less support in the future.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
@@ -141,7 +147,8 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:js_util`
 
-- This library is now marked as legacy and will see less support in the future.
+- {{deprecated}}
+  This library is now marked as legacy and will see less support in the future.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
@@ -153,14 +160,14 @@ accounting for them before the 3.5.0 release.
   developers to control the line ending used by `stdout` and `stderr`.][53863]
   Classes that implement `Stdout` must define the `lineTerminator` field.
   The default semantics of `stdout` and `stderr` are not changed.
-- **Deprecated**: The `FileSystemDeleteEvent.isDirectory` property. 
+- {{deprecated}} The `FileSystemDeleteEvent.isDirectory` property. 
   It always returns `false`.
 
 [53863]: {{site.repo.dart.sdk}}/issues/53863
 
 #### `dart:typed_data`
 
-- **Deprecated**:
+- {{deprecated}}
   [The unmodifiable view classes for typed data are deprecated][53128].
   Instead of using the constructors of these classes, use
   the new `asUnmodifiableView` methods on typed data lists.
@@ -171,19 +178,19 @@ accounting for them before the 3.5.0 release.
 
 #### Production JavaScript compiler (dart2js)
 
--  **Experimental** **Deprecated**: You should now specify a format to
+- {{experimental}} {{deprecated}} You should now specify a format to
   the `--dump-info` CLI option of either `binary` or `json`.
   The `json` format is deprecated and might be removed in a future Dart release.
 
 #### Wasm compiler (dart2wasm)
 
-- **Experimental**: Various `dart compile wasm` CLI arguments have
+- {{experimental}} Various `dart compile wasm` CLI arguments have
   been updated, removed, or replaced.
   To learn more, run `dart compile wasm --verbose --help`.
 
 ### Runtime {:.no_toc}
 
-- **Removed** The Dart VM longer supports external strings.
+- {{removed}} The Dart VM longer supports external strings.
   As a result, the `Dart_IsExternalString`, `Dart_NewExternalLatin1String`, and
   `Dart_NewExternalUTF16String` functions have been removed from the Dart C API.
 
@@ -191,7 +198,7 @@ accounting for them before the 3.5.0 release.
 
 ### SDK {:.no_toc}
 
-* **Experimental** **Removed**: The following experiments are now retired as
+* {{experimental}} {{removed}} The following experiments are now retired as
   they were released in Dart 3 and are no longer necessary with
   a language version of 3.0 or greater.
   Configuration of them should be removed from
@@ -213,17 +220,17 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:cli`
 
-* **Experimental** **Deprecated**: [The `waitFor` function][52121]
+* {{experimental}} {{deprecated}} [The `waitFor` function][52121]
   remains deprecated for another release and is set for removal in Dart 3.4.
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
 #### `dart:ffi`
 
-* **Deprecated**: [The `elementAt` pointer arithmetic methods
+* {{deprecated}} [The `elementAt` pointer arithmetic methods
   on `Pointer` types are deprecated][54250].
   Migrate to the `-` and `+` operators instead.
-* **Experimental** **Removed**: The previously deprecated
+* {{experimental}} {{removed}} The previously deprecated
   `@FfiNative` annotation has been removed. Usages should be
   updated to use the `@Native` annotation.
 
@@ -245,14 +252,14 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:js_interop`
 
-* **Experimental**: JS types like `JSAny` have
+* {{experimental}} JS types like `JSAny` have
   [new compiler-specific representation types][52687].
-* **Experimental**: User-defined `@staticInterop` classes can
+* {{experimental}} User-defined `@staticInterop` classes can
   [no longer implement `JSAny` or `JSObject`][52687].
   Usages should be migrated to `JSObject.fromInteropObject` or
   be defined as extension types.
-* **Experimental**: `JSArray` and `JSPromise` now have generic parameters.
-* **Experimental**: Various extension members were moved or renamed.
+* {{experimental}} `JSArray` and `JSPromise` now have generic parameters.
+* {{experimental}} Various extension members were moved or renamed.
   To learn about the updated extensions, reference
   `JSAnyUtilityExtension` and `JSAnyOperatorExtension`.
 
@@ -269,7 +276,7 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:nativewrappers`
 
-* **Experimental**: [All native wrapper classes are now marked `base`][51896]
+* {{experimental}} [All native wrapper classes are now marked `base`][51896]
   so that none of their subtypes can be implemented.
 
 [51896]: {{site.repo.dart.sdk}}/issues/51896
@@ -285,14 +292,14 @@ accounting for them before the 3.5.0 release.
 
 #### Wasm compiler (dart2wasm)
 
-* **Experimental**: [Disallow importing legacy JS interop libraries][54004].
+* {{experimental}} [Disallow importing legacy JS interop libraries][54004].
   Prefer using `dart:js_interop` and `dart:js_interop_unsafe` instead.
 
 [54004]: {{site.repo.dart.sdk}}/issues/54004
 
 #### Analyzer
 
-* **Experimental**: Invalid `dart doc` comment directives are
+* {{experimental}} Invalid `dart doc` comment directives are
   now reported by the analyzer.
 * Due to [improvements in type promotion][54056], the following analyzer
   diagnostics might trigger on existing code that previously passed analysis:
@@ -323,7 +330,7 @@ accounting for them before the 3.5.0 release.
 
 ### Language {:.no_toc}
 
-* **Language versioned**: [Changed the split point for refutable patterns][53167]
+* {{versioned}} [Changed the split point for refutable patterns][53167]
   to the top level pattern so type promotion in if-case statements is consistent
   regardless of whether the scrutinee might throw an exception.
 
@@ -331,7 +338,7 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:cli`
 
-* **Experimental** **Deprecated**: [The `waitFor` function.][52121]
+* {{experimental}} {{deprecated}} [The `waitFor` function.][52121]
 
 #### `dart:convert`
 
@@ -340,7 +347,7 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:developer`
 
-* **Deprecated**: The `Service.getIsolateID` method.
+* {{deprecated}} The `Service.getIsolateID` method.
 
 #### `dart:ffi`
 
@@ -355,18 +362,18 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:js_interop`
 
-* **Experimental** **Removed**: `JSNumber.toDart` in favor of `toDartDouble` and
+* {{experimental}} {{removed}} `JSNumber.toDart` in favor of `toDartDouble` and
   `toDartInt`.
-* **Experimental** **Removed**: `Object.toJS` in favor of `Object.toJSBox.`
-* **Experimental**: Restricted external JS interop APIs using `dart:js_interop`
+* {{experimental}} {{removed}} `Object.toJS` in favor of `Object.toJSBox.`
+* {{experimental}} Restricted external JS interop APIs using `dart:js_interop`
   to a set of allowed types.
-* **Experimental**: Prohibited use of `isNull` and `isUndefined` on dart2wasm.
-* **Experimental**: Changed `typeofEquals` and `instanceof` APIs to both return
+* {{experimental}} Prohibited use of `isNull` and `isUndefined` on dart2wasm.
+* {{experimental}} Changed `typeofEquals` and `instanceof` APIs to both return
   bool instead of `JSBoolean`.
   Also, `typeofEquals` now takes `String` instead of `JSString`.
-* **Experimental**: Changed `JSAny` and `JSObject` types to only implementable,
+* {{experimental}} Changed `JSAny` and `JSObject` types to only implementable,
   not extendable, by user `@staticInterop` types.
-* **Experimental**: Changed `JSArray.withLength` to take `int` instead of `JSNumber`.
+* {{experimental}} Changed `JSArray.withLength` to take `int` instead of `JSNumber`.
 
 ### Tools {:.no_toc}
 
@@ -382,7 +389,7 @@ accounting for them before the 3.5.0 release.
 
 #### Analyzer
 
-* **Language versioned**: [Private final field promotion][2020] might cause the following
+* {{versioned}} [Private final field promotion][2020] might cause the following
   analyzer warnings to trigger on existing code that previously passed analysis:
   
   * [`unnecessary_non_null_assertion`](/tools/diagnostic-messages#unnecessary_non_null_assertion)
@@ -432,7 +439,7 @@ accounting for them before the 3.5.0 release.
 
 #### `dart:js_interop`
 
-* **Experimental** **Removed**: `ObjectLiteral`; create an object literal with
+* {{experimental}} {{removed}} `ObjectLiteral`; create an object literal with
   no named members using `{}.jsify()`.
 
 #### `package:js`
@@ -456,10 +463,10 @@ on all the changes in this section.
 
 ### Language {:.no_toc}
 
-* **Language versioned**: Changed interpretation of [switch cases] from constant
+* {{versioned}} Changed interpretation of [switch cases] from constant
   expressions to patterns.
 
-* **Language versioned**: Class declarations from libraries that have been upgraded
+* {{versioned}} Class declarations from libraries that have been upgraded
   to Dart 3.0 [can no longer be used as mixins by default][mixin class].
 
 * [Dart reports a compile-time error][50902] if a `continue` statement targets
@@ -474,36 +481,36 @@ on all the changes in this section.
 
 #### `dart:core`
 
-* **Deprecated**: [Deprecated APIs][49529].
+* {{deprecated}} [Deprecated APIs][49529].
 
 #### `dart:async`
 
-* **Removed**: [Removed the deprecated][49529] [`DeferredLibrary`][] class.
+* {{removed}} [Removed the deprecated][49529] [`DeferredLibrary`][] class.
 
 #### `dart:collection`
 
-* **Language versioned**: [Changes to platform libraries][collection].
+* {{versioned}} [Changes to platform libraries][collection].
 
 #### `dart:developer`
 
-* **Removed**: [Removed the deprecated][49529] [`MAX_USER_TAGS`][] constant.
+* {{removed}} [Removed the deprecated][49529] [`MAX_USER_TAGS`][] constant.
   Use [`maxUserTags`][] instead.
-* **Removed**: [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
+* {{removed}} [Removed the deprecated][50231] [`Metrics`][], [`Metric`][], [`Counter`][],
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
 #### `dart:ffi`
 
-* **Experimental** **Deprecated**: The `@FfiNative` annotation is
+* {{experimental}} {{deprecated}} The `@FfiNative` annotation is
   now deprecated. Usages should be updated to use the `@Native` annotation.
 
 #### `dart:html`
 
-* **Removed**: [Removed the deprecated `registerElement` and `registerElement2`][49536]
+* {{removed}} [Removed the deprecated `registerElement` and `registerElement2`][49536]
   methods in `Document` and `HtmlDocument`.
 
 #### `dart:math`
 
-* **Language versioned**: The `Random` interface can only be implemented,
+* {{versioned}} The `Random` interface can only be implemented,
   not extended.
 
 #### `dart:io`
@@ -544,12 +551,12 @@ on all the changes in this section.
 
 #### `dart:convert`
 
-* **Removed**: [The previously deprecated API][34233] [`DEFAULT_BUFFER_SIZE`] in `JsonUtf8Encoder`
+* {{removed}} [The previously deprecated API][34233] [`DEFAULT_BUFFER_SIZE`] in `JsonUtf8Encoder`
   has been removed.
 
 #### `dart:developer`
 
-* **Removed**: [Removed previously deprecated APIs][34233] `kInvalidParams`,
+* {{removed}} [Removed previously deprecated APIs][34233] `kInvalidParams`,
   `kExtensionError`, `kExtensionErrorMax`, and `kExtensionErrorMin` in
   [`ServiceExtensionResponse`].
 
@@ -575,7 +582,7 @@ on all the changes in this section.
 
 #### `dart:mirrors`
 
-* [Removed APIs][34233] [`MirrorsUsed`] and [`Comment`].
+* {{removed}} [Removed APIs][34233] `MirrorsUsed` and `Comment`.
 
 #### `package:js`
 
@@ -658,9 +665,9 @@ on all the changes in this section.
 
 #### Dart command line
 
-* **Deprecated**: [Deprecated the standalone `dart2js` tool][46100].
-* **Deprecated**: [Deprecated the standalone `dartdevc` tool][46100].
-* **Removed**: [Removed the standalone `dartdoc` tool][46100].
+* {{deprecated}} [Deprecated the standalone `dart2js` tool][46100].
+* {{deprecated}} [Deprecated the standalone `dartdevc` tool][46100].
+* {{removed}} [Removed the standalone `dartdoc` tool][46100].
 
 [47887]: {{site.repo.dart.sdk}}/issues/47887
 [48093]: {{site.repo.dart.sdk}}/issues/48093
@@ -676,19 +683,19 @@ on all the changes in this section.
 
 * On Windows, [`Directory.rename` will no longer delete a directory][47653] if
   `newPath` specifies one. Instead, a `FileSystemException` will be thrown.
-* **Removed**: [Removed the `Platform.packageRoot` API][47769].
+* {{removed}} [Removed the `Platform.packageRoot` API][47769].
 
 #### `dart:isolate`
 
-* **Removed**: [Removed the `Isolate.packageRoot` API][47769].
+* {{removed}} [Removed the `Isolate.packageRoot` API][47769].
 
 ### Tools {:.no_toc}
 
 #### Dart command line
 
-* **Deprecated**: [Deprecated the standalone `dartanalyzer` tool][46100].
-* **Deprecated**: [Deprecated the standalone `dartdoc` tool][46100].
-* **Removed**: [Removed the deprecated standalone `pub` tool][46100].
+* {{deprecated}} [Deprecated the standalone `dartanalyzer` tool][46100].
+* {{deprecated}} [Deprecated the standalone `dartdoc` tool][46100].
+* {{removed}} [Removed the deprecated standalone `pub` tool][46100].
 
 [47653]: {{site.repo.dart.sdk}}/issues/47653
 [47769]: {{site.repo.dart.sdk}}/issues/47769
