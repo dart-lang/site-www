@@ -66,7 +66,7 @@ an outside library. Abstract classes often have [abstract methods][].
 <?code-excerpt "language/lib/class_modifiers/ex1/a.dart"?>
 ```dart title="a.dart"
 abstract class Vehicle {
-  void moveForward(int meters);
+  void moveForward(int meters){}
 }
 ```
 
