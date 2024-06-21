@@ -25,8 +25,7 @@ around breaking changes and deprecations in Dart.
   existing code, and the behavior change only takes effect (potentially breaking
   code that relies on the previous behavior) when you upgrade the
   [language version][] of your code.
-  
-  
+
   _These are marked as:_ {{versioned}}
 * **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
   with a warning. Deprecations are then completely removed in a subsequent release,
