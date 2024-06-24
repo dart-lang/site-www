@@ -12,6 +12,7 @@
 @use 'components/header';
 @use 'components/search';
 @use 'components/sidebar';
+@use 'components/tags';
 @use 'components/toc';
 
 @use 'dartvm';
@@ -873,4 +874,15 @@ div.tabs__content h1, h2, h3, h4, h5, h6 {
   &:first-child {
     margin-top: 0;
   }
+}
+
+#skip {
+  position: absolute;
+  top: -1000%;
+  left: -1000%;
+}
+
+#skip:focus {
+  top: 10px;
+  left: 10px;
 }

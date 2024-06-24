@@ -185,7 +185,7 @@ you'd want to do a null check to see whether `this` is `null`:
 **Example:**
 
 ```dart tag=bad
-extension E on int? {
+extension on int? {
   int get valueOrZero {
     return this == null ? 0 : this; // ERROR
   }
@@ -203,10 +203,11 @@ extension E on int? {
 Create a local variable to hold the value of `this`,
 then perform the null check.
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (this)" replace="/final.*/[!$&!]/g"?>
 ```dart tag=good
-extension E on int? {
+extension on int? {
   int get valueOrZero {
-    final self = this;
+    [!final self = this;!]
     return self == null ? 0 : self;
   }
 }
@@ -229,14 +230,14 @@ non-private fields cannot be promoted.
 **Example:**
 
 ```dart tag=bad
-class C {
-  final int? n;
-  C(this.n);
+class Example {
+  final int? value;
+  Example(this.value);
 }
 
-test(C c) {
-  if (c.n != null) {
-    print(c.n + 1); // ERROR
+void test(Example x) {
+  if (x.value != null) {
+    print(x.value + 1); // ERROR
   }
 }
 ```
@@ -244,7 +245,7 @@ test(C c) {
 **Message:**
 
 ```plaintext
-'n' refers to a public property so it couldn't be promoted.
+'value' refers to a public property so it couldn't be promoted.
 ```
 
 **Solution:**
@@ -252,15 +253,16 @@ test(C c) {
 Making the field private lets the compiler be sure that no outside libraries
 could possibly override its value, so it's safe to promote.
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (private)" replace="/_val/_value/g; /_value;/[!_value!];/g; /PrivateFieldExample/Example/g;"?>
 ```dart tag=good
-class C {
-  final int? _n;
-  C(this._n);
+class Example {
+  final int? [!_value!];
+  Example(this._value);
 }
 
-test(C c) {
-  if (c._n != null) {
-    print(c._n + 1); // OK
+void test(Example x) {
+  if (x._value != null) {
+    print(x._value + 1);
   }
 }
 ```
@@ -279,7 +281,7 @@ to a non-nullable type.
 **Example:**
 
 ```dart tag=bad
-class C {
+class Example {
   int? _mutablePrivateField;
   Example(this._mutablePrivateField);
 
@@ -301,9 +303,10 @@ class C {
 
 Make the field `final`:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (final)" replace="/final/[!$&!]/g; /FinalExample/Example/g;"?>
 ```dart tag=good
 class Example {
-  final int? _immutablePrivateField; 
+  [!final!] int? _immutablePrivateField;
   Example(this._immutablePrivateField);
 
   void f() {
@@ -319,21 +322,23 @@ class Example {
 **The cause:** You're trying to promote a getter,
 but only instance *fields* can be promoted, not instance getters. 
 
-The compiler has no way to guarantee that a getter returns the same result every time.
-Because their stability can't be confirmed, getters are not safe to promote.
+The compiler has no way to guarantee that
+a getter returns the same result every time.
+Because their stability can't be confirmed,
+getters are not safe to promote.
 
 **Example:**
 
 ```dart tag=bad
 import 'dart:math';
 
-abstract class C {
-  int? get _i => Random().nextBool() ? 123 : null;
+abstract class Example {
+  int? get _value => Random().nextBool() ? 123 : null;
 }
 
-void f(C c) {
-  if (c._i != null) {
-    print(c._i.isEven); // ERROR
+void f(Example x) {
+  if (x._value != null) {
+    print(x._value.isEven); // ERROR
   }
 }
 ```
@@ -341,24 +346,25 @@ void f(C c) {
 **Message:**
 
 ```plaintext
-'_i' refers to a getter so it couldn't be promoted.
+'_value' refers to a getter so it couldn't be promoted.
 ```
 
 **Solution:**
 
 Assign the getter to a local variable:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (not-field)" plaster="" replace="/final.*/[!$&!]/g; /NotFieldExample/Example/g;"?>
 ```dart tag=good
 import 'dart:math';
 
-abstract class C {
-  int? get _i => Random().nextBool() ? 123 : null;
+abstract class Example {
+  int? get _value => Random().nextBool() ? 123 : null;
 }
 
-void C c) {
-  final i = c._i;
-  if (i != null) {
-    print(i.isEven); // OK
+void f(Example x) {
+  [!final value = x._value;!]
+  if (value != null) {
+    print(value.isEven); // OK
   }
 }
 ```
@@ -381,9 +387,8 @@ will return the same value each time it's called.
 **Example:**
 
 ```dart tag=bad
-class C {
+class Example {
   external final int? _externalField;
-  C(this._externalField);
 
   void f() {
     if (_externalField != null) {
@@ -396,20 +401,20 @@ class C {
 **Message:**
 
 ```plaintext
-'externalField' refers to an external field so it couldn't be promoted.
+'_externalField' refers to an external field so it couldn't be promoted.
 ```
 
 **Solution:**
 
 Assign the external field's value to a local variable:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (external)" replace="/final i =.*/[!$&!]/g; /ExternalExample/Example/g;"?>
 ```dart tag=good
-class C {
+class Example {
   external final int? _externalField;
-  C(this._externalField);
 
   void f() {
-    final i = this._externalField;
+    [!final i = _externalField;!]
     if (i != null) {
       print(i.isEven); // OK
     }
@@ -439,7 +444,7 @@ class Override implements Example {
   int? get _overridden => Random().nextBool() ? 1 : null;
 }
 
-void f(Example x) {
+void testParity(Example x) {
   if (x._overridden != null) {
     print(x._overridden.isEven); // ERROR
   }
@@ -449,7 +454,7 @@ void f(Example x) {
 **Message:**
 
 ```plaintext
-'overriden' couldn't be promoted because there is a conflicting getter in class 'Override'
+'_overriden' couldn't be promoted because there is a conflicting getter in class 'Override'.
 ```
 
 **Solution**:
@@ -458,6 +463,7 @@ If the getter and field are related and need to share their name
 (like when one of them overrides the other, as in the example above),
 then you can enable type promotion by assigning the value to a local variable:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (conflicting-getter)" plaster="" replace="/final i =.*/[!$&!]/g; /GetterExample/Example/g;"?>
 ```dart tag=good
 import 'dart:math';
 
@@ -471,8 +477,8 @@ class Override implements Example {
   int? get _overridden => Random().nextBool() ? 1 : null;
 }
 
-void f(Example x) {
-  final i = x._overridden;
+void testParity(Example x) {
+  [!final i = x._overridden;!]
   if (i != null) {
     print(i.isEven); // OK
   }
@@ -524,6 +530,7 @@ void main() {
 If the field and the conflicting entity are truly unrelated,
 you can work around the problem by giving them different names:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (unrelated)" replace="/get _j/[!$&!]/g; /UnrelatedExample/Example/g; /f2/f/g;"?>
 ```dart tag=good
 class Example {
   final int? _i;
@@ -531,7 +538,7 @@ class Example {
 }
 
 class Unrelated {
-  int? get _j => Random().nextBool() ? 1 : null;
+  int? [!get _j!] => Random().nextBool() ? 1 : null;
 }
 
 void f(Example x) {
@@ -583,6 +590,7 @@ If the fields are actually related and need to share a name, then
 you can enable type promotion by assigning the value to a
 final local variable to promote:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (conflicting-field)" replace="/final i =.*/[!$&!]/g; /FieldExample/Example/g; /f3/f/g; /Override2/Override/g;"?>
 ```dart tag=good
 class Example {
   final int? _overridden;
@@ -595,9 +603,9 @@ class Override implements Example {
 }
 
 void f(Example x) {
-  final i = x._overridden;
+  [!final i = x._overridden;!]
   if (i != null) {
-    print(i.isEven); // ERROR
+    print(i.isEven); // OK
   }
 }
 ```
@@ -662,6 +670,7 @@ The failure can also occur between fields in
 Define the getter in question so that `noSuchMethod` doesn't have
 to implicitly handle its implementation:
 
+<?code-excerpt "non_promotion/lib/non_promotion.dart (mock)" plaster="" replace="/late.*/[!$&!]/g; /MockingExample/Example/g; /f4/f/g;"?>
 ```dart tag=good
 import 'package:mockito/mockito.dart';
 
@@ -672,7 +681,7 @@ class Example {
 
 class MockExample extends Mock implements Example {
   @override
-  late final int? _i; // Add a definition for Example's _i getter.
+  [!late final int? _i;!]
 }
 
 void f(Example x) {
