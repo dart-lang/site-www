@@ -24,7 +24,6 @@ node_modules
 pubspec.lock
 package-lock.json
 tmp
-.vscode
 
 # Misc
 trash
