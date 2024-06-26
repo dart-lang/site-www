@@ -204,8 +204,9 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
+<a id="the-main-function" aria-hidden="true"></a>
 
-## The main() function
+## The main() function {:#main}
 
 Every app must have a top-level `main()` function, which serves as the
 entrypoint to the app. The `main()` function returns `void` and has an
