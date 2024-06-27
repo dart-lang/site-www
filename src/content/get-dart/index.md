@@ -15,7 +15,7 @@ To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
 :::tip
 If you've installed or plan to [install the Flutter SDK][install-flutter], it
-includes the full Dart SDK and you do not need to install Dart separately.
+includes the full Dart SDK. You don't need to install Dart separately and can skip this guide.
 :::
 
 ## System requirements
