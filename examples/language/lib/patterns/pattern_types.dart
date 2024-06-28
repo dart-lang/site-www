@@ -249,7 +249,7 @@ void miscDeclAnalyzedButNotTested() {
     var record = (1, 'one');
     // #docregion wildcard-typed
     switch (record) {
-      case (int _, String _):
+      case (int(), String()):
         print('First field is int and second is String.');
     }
     // #enddocregion wildcard-typed
