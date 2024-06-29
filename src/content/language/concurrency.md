@@ -253,9 +253,7 @@ together. For more information on this concurrency model, read about
 the [Actor model](https://en.wikipedia.org/wiki/Actor_model).
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they're available. Isolates are like threads
-or processes, but each isolate has its own memory and a single thread running an
-event loop. 
+using additional processor cores if they're available.
 
 :::note Platform note
 Only the [Dart Native platform][] implements isolates.
