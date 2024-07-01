@@ -431,14 +431,9 @@ which are provided for you:
 {:.table .table-striped}
 </div>
 
-
 #### Part 1: `reportUserRole()`
 
 Add code to the `reportUserRole()` function so that it does the following:
-{% comment %}
-  Some bulleted items are intentionally lacking punctuation to avoid
-  confusing the users about characters in string values
-{% endcomment -%}
 
 * Returns a future that completes with the following
   string: `"User role: <user role>"`
@@ -447,7 +442,7 @@ Add code to the `reportUserRole()` function so that it does the following:
   * Example return value: `"User role: tester"`
 * Gets the user role by calling the provided function `fetchRole()`.
 
-####  Part 2: `reportLogins()`
+#### Part 2: `reportLogins()`
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
@@ -1075,6 +1070,19 @@ bool _logoutSucceeds = false;
   ```
 
 </details>
+
+## Which lints work for futures?
+
+In real-world scenarios, enable the following two lints to help with
+futures.
+
+* [discarded_futures][]
+* [unawaited_futures][]
+
+By default, these lints aren't enabled.
+
+[discarded_futures]: /tools/linter-rules/discarded_futures
+[unawaited_futures]: /tools/linter-rules/unawaited_futures
 
 ## What's next?
 
