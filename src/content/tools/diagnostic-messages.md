@@ -7146,8 +7146,8 @@ annotated as being `@Native`, but the function isn't marked as `external`:
 ```dart
 import 'dart:ffi';
 
-[!@Native<Void Function(Pointer<Void>)>()!]
-[!void free(Pointer<Void> ptr) {}!]
+@Native<Void Function(Pointer<Void>)>()
+void [!free!](Pointer<Void> ptr) {}
 ```
 
 #### Common fixes
@@ -7182,8 +7182,8 @@ has one argument and the type of the annotated function
 ```dart
 import 'dart:ffi';
 
-[!@Native<Void Function(Double)>(symbol: 'f')!]
-[!external void f(double x, double y);!]
+@Native<Void Function(Double)>(symbol: 'f')
+external void [!f!](double x, double y);
 ```
 
 #### Common fixes
@@ -7229,8 +7229,8 @@ for the receiver of the method:
 import 'dart:ffi';
 
 class C {
-  [!@Native<Void Function(Double)>()!]
-  [!external void f(double x);!]
+  @Native<Void Function(Double)>()
+  external void [!f!](double x);
 }
 ```
 
@@ -12219,7 +12219,7 @@ returns a `Handle`, but the `isLeaf` argument is `true`:
 import 'dart:ffi';
 
 void f(Pointer<NativeFunction<Handle Function()>> p) {
-  [!p.asFunction<Object Function()>(isLeaf: true)!];
+  p.[!asFunction!]<Object Function()>(isLeaf: true);
 }
 ```
 
@@ -12268,7 +12268,7 @@ parameter of type `Handle`, but the `isLeaf` argument is `true`:
 import 'dart:ffi';
 
 void f(Pointer<NativeFunction<Void Function(Handle)>> p) {
-  [!p.asFunction<void Function(Object)>(isLeaf: true)!];
+  p.[!asFunction!]<void Function(Object)>(isLeaf: true);
 }
 ```
 
@@ -15635,52 +15635,6 @@ class A {
 
 class B implements A {}
 ```
-
-### non_leaf_call_must_not_take_typed_data
-
-_FFI non-leaf calls can't take typed data arguments._
-
-#### Description
-
-The analyzer produces this diagnostic when the value of the `isLeaf`
-argument of `Pointer.asFunction`, `DynamicLibrary.lookupFunction`, or
-`@Native` is `false` and the Dart function signature contains a typed
-data parameter.
-
-Typed data unwrapping is only supported on arguments for leaf FFI calls.
-
-For more information about FFI, see [C interop using dart:ffi][ffi].
-
-#### Example
-
-The following code produces this diagnostic because the dart function
-signature contains a typed data, but the `isLeaf` argument is `false`:
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Pointer<NativeFunction<Void Function(Pointer<Uint8>)>> p) {
-  p.asFunction<[!void Function(Uint8List)!]>();
-}
-```
-
-#### Common fixes
-
-If the function has at least one typed data parameter, then add
-the `isLeaf` argument:
-
-```dart
-import 'dart:ffi';
-import 'dart:typed_data';
-
-void f(Pointer<NativeFunction<Void Function(Pointer<Uint8>)>> p) {
-  p.asFunction<void Function(Uint8List)>(isLeaf: true);
-}
-```
-
-If the function also uses `Handle`s, then it must be non-leaf. In That
-case use `Pointer`s instead of typed data.
 
 ### non_native_function_type_argument_to_pointer
 
@@ -19073,7 +19027,8 @@ int f() => 3;
 
 ### return_of_invalid_type_from_closure
 
-_The return type '{0}' isn't a '{1}', as required by the closure's context._
+_The returned type '{0}' isn't returnable from a '{1}' function, as required by
+the closure's context._
 
 #### Description
 
@@ -23520,13 +23475,21 @@ _Target of URI doesn't exist: '{0}'._
 The analyzer produces this diagnostic when an import, export, or part
 directive is found where the URI refers to a file that doesn't exist.
 
-#### Example
+#### Examples
 
 If the file `lib.dart` doesn't exist, the following code produces this
 diagnostic:
 
 ```dart
 import [!'lib.dart'!];
+```
+
+If the file `lib.dart` doesn't exist, the following code produces this
+diagnostic:
+
+```dart
+/// @docImport [!'lib.dart'!];
+library;
 ```
 
 #### Common fixes
@@ -24250,7 +24213,9 @@ Iterable<String> get zero sync* {
 
 ### always_declare_return_types
 
-_Missing return type on method._
+_The function '{0}' should have a return type but doesn't._
+
+_The method '{0}' should have a return type but doesn't._
 
 #### Description
 
@@ -25040,7 +25005,7 @@ flutter:
         fileName: hello_web.dart
 ```
 
-See [Developing packages & plugins](https://docs.flutter.dev/packages-and-plugins/developing-packages)
+See [Developing packages & plugins](https://flutter.dev/to/develop-packages)
 for more information.
 
 ### await_only_futures

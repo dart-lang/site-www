@@ -279,7 +279,7 @@ pattern where a higher precedence one is expected.
 
 For example, imagine the boolean constants `x`, `y`, and `z`
 equal `true`, `true`, and `false`, respectively.
-Though the following example resembles boolean expression evaulation,
+Though the following example resembles boolean expression evaluation,
 the example matches patterns.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (parens)"?>
