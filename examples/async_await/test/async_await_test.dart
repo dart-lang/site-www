@@ -16,6 +16,7 @@ void main() {
       3
       4
       Your order is: Large Latte
+      Exiting main()
     ''';
     expect(async_example.main, m.printsLines(output));
   });
@@ -37,6 +38,7 @@ void main() {
     final output = '''
       Fetching user order...
       Your order is: Instance of 'Future<String>'
+      Exiting main()
     ''';
     expect(get_order_sync_bad.main, m.printsLines(output));
   });
@@ -44,6 +46,9 @@ void main() {
   test('get_order', () {
     final output = '''
       Fetching user order...
+      Future completes!
+      Type of 'order' is String
+      Type of 'msg' is String
       Your order is: Large Latte
     ''';
     expect(get_order.main, m.printsLines(output));
