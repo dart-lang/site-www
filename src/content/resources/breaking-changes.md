@@ -1,6 +1,7 @@
 ---
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
+lastVerified: 2024-05-14
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}

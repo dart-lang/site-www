@@ -10,6 +10,7 @@ eleventyComputed:
   permalink: "/tools/linter-rules/{{lint.name}}.html"
   title: "{{ lint.name }}"
   description: "Learn more about the {{ lint.name }} linter rule."
+skipFreshness: true
 ---
 
 {{lint.description}}

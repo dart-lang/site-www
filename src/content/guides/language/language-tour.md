@@ -6,6 +6,7 @@ js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/language
 noindex: true
+skipFreshness: true
 ---
 
 :::warning

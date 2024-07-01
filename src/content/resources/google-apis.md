@@ -2,6 +2,7 @@
 title: Using Google APIs
 short-title: Google APIs
 description: Your Dart apps can use Firebase and Google client APIs.
+lastVerified: 2021-05-13
 ---
 
 This page points to resources to help you use

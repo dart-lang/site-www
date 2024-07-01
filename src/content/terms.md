@@ -2,6 +2,7 @@
 title: Terms of use
 description: The terms of use for dart.dev.
 toc: false
+skipFreshness: true
 ---
 
 The Dart website (the "Website") is hosted by Google.

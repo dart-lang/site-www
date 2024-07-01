@@ -2,6 +2,7 @@
 title: Learning Dart as a Swift developer
 description: Leverage your Swift knowledge when learning Dart.
 body_class: highlight-languages
+lastVerified: 2022-12-13
 ---
 
 This guide aims to leverage your Swift programming
