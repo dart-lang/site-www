@@ -60,21 +60,6 @@ The function then returns a boolean value
 that indicates whether the `atomicNumber` falls into the noble gas range.
 :::
 
-## Function types
-
-In Dart, function types can be *explicitly* declared based on context. Here is an example of declaring function types:
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (function-shorthand)"?> 
-```dart
-int add(int a, int b) => a + b; 
-// int function(int,int)=>add;
-```
-When you declare functions, you can specify the type of function, which indicates that the return value from the function should be of that specific type. For instance, in the example provided: <code> type function(obj,obj) => return; </code> This means that the function's return value must match the specified type (`type`).
-    
-:::note
-In Dart, functions are first-class objects, meaning they can be assigned to variables, passed as arguments, and returned from other functions. The *typedef* keyword allows defining function types explicitly, which can be useful for clarity and reusability.
-:::
-
 ## Parameters
 
 A function can have any number of *required positional* parameters. These can be
@@ -218,6 +203,33 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
+
+## Function types
+
+In Dart, function types can be *explicitly* declared based on context.
+Here is an example of declaring function types:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
+```dart
+int add(int a, int b) => a + b;
+// int function(int, int) = add;
+```
+
+When you declare functions, you can specify the type of function,
+which indicates that the return value from the function should be of that specific type.
+For instance, in the example provided:
+`type function(obj,obj) => return;`
+This means that the function's return value must match the specified type (`type`).
+    
+:::note
+In Dart, functions are first-class objects,
+meaning they can be assigned to variables,
+passed as arguments, and returned from other functions.
+The [`typedef`][] keyword allows defining function types explicitly,
+which can be useful for clarity and reusability.
+:::
+
+[`typedef`]: /language/typedefs
 
 <a id="the-main-function" aria-hidden="true"></a>
 
