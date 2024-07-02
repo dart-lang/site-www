@@ -57,7 +57,7 @@ you have a situation where two classes are tightly coupled.
 You might know about the `part` directive.
 This directive allows you to split a library into multiple Dart files.
 Though part files can incorporate generated code into a library,
-The Dart team doesn't recommend using them.
+the Dart team doesn't recommend using them.
 Instead, create small libraries.
 :::
 
