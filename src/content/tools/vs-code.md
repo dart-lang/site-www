@@ -4,19 +4,49 @@ description: You can use VS Code to develop Dart apps.
 toc: false
 ---
 
-With the Dart plugin, you can use [Visual Studio Code (VS Code)][vs-code]
-to develop Dart apps.
-The Flutter site has details on how to set up and use VS Code for Flutter apps.
+To develop Dart apps,
+install [Visual Studio Code][vs-code] (VS Code)
+and add the [Dart extension][].
 
-Until this page has more information,
-see the Flutter documentation for instructions that you can apply to
-other kinds of Dart apps:
+## Install VS Code
 
-* [Set up an editor][setup] on the Flutter site has
-  instructions for installing the Flutter and Dart plugins into VS Code.
-* [Visual Studio Code][vscode-flutter] on the Flutter site has
-  details on using VS Code to develop Flutter apps.
+To build and debug apps,
+you can use the [VS Code][] integrated development environment.
 
-[setup]: {{site.flutter-docs}}/get-started/editor?tab=vscode
+To install the latest version of VS Code,
+follow Microsoft's instructions for the relevant platform:
+
+- [Install on macOS][]
+- [Install on Windows][]
+- [Install on Linux][]
+
+[VS Code]: https://code.visualstudio.com/
+[Install on macOS]: https://code.visualstudio.com/docs/setup/mac
+[Install on Windows]: https://code.visualstudio.com/docs/setup/windows
+[Install on Linux]: https://code.visualstudio.com/docs/setup/linux
+
+## Install the VS Code Dart extension
+
+With the Dart extension installed,
+you can compile, deploy, and debug Dart apps.
+
+1. Launch **VS Code**.
+
+1. Click **Extensions** in the **Activity Bar**.  
+   You can also press
+   <kbd>Control</kbd> / <kbd>Command</kbd> +
+   <kbd>Shift</kbd> + <kbd>X</kbd>.
+
+1. In the Search box, type `Dart`.
+   The first extension returned should be the [Dart extension][].
+
+1. Click **Install**.
+
+## Dart Extension documentation
+
+To learn more about the features of the VS Code Dart extension,
+consult its [documentation][].
+
+[Dart extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
+[documentation]: https://dartcode.org/docs/
 [vs-code]: https://code.visualstudio.com/
-[vscode-flutter]: {{site.flutter-docs}}/development/tools/vs-code
