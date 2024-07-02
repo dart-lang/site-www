@@ -438,13 +438,24 @@ If an object has extra fields that the pattern doesn't destructure, it can still
 
 ## Wildcard
 
-`_`
+`_`  
+`<type>()`
 
-A pattern named `_` is a wildcard, either a [variable pattern](#variable) or
-[identifier pattern](#identifier), that doesn't bind or assign to any variable.
+Wildcard patterns don't bind or assign to any variable.
 
-It's useful as a placeholder in places where you need a subpattern in order to
-destructure later positional values:
+These patterns can either be a [variable pattern](#variable) (`_`) or
+[identifier pattern](#identifier) (`<type>()`).
+
+* Object patterns are more concise and convenient,
+  even more so with generic types.
+  With generic types, an object pattern (`MyType()`) infers the
+  most specific type arguments from the matched value.
+* A variable pattern (`MyType _`) uses less specific, often dynamic,
+  type arguments.
+* With non-generic types, there's no reason to prefer variable patterns.
+
+When you need a subpattern to destructure later positional values,
+use a wildcard as a placeholder. This example uses a variable pattern.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard)"?>
 ```dart
@@ -452,13 +463,14 @@ var list = [1, 2, 3];
 var [_, two, _] = list;
 ```
 
-A wildcard name with a type annotation is useful when you want to test a value's
-type but not bind the value to a name:
+To test a value's type but not bind the value to a name,
+use a wildcard name with a type annotation.
+This example uses an object pattern.
 
 <?code-excerpt "language/lib/patterns/pattern_types.dart (wildcard-typed)"?>
 ```dart
 switch (record) {
-  case (int _, String _):
+  case (int(), String()):
     print('First field is int and second is String.');
 }
 ```
