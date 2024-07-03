@@ -58,8 +58,8 @@ importers:
         specifier: ^1.77.6
         version: 1.77.6
       shiki:
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.10.1
+        version: 1.10.1
 
 packages:
 
@@ -379,8 +379,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@shikijs/core@1.10.0':
-    resolution: {integrity: sha512-BZcr6FCmPfP6TXaekvujZcnkFmJHZ/Yglu97r/9VjzVndQA56/F4WjUKtJRQUnK59Wi7p/UTAOekMfCJv7jnYg==}
+  '@shikijs/core@1.10.1':
+    resolution: {integrity: sha512-qdiJS5a/QGCff7VUFIqd0hDdWly9rDp8lhVmXVrS11aazX8LOTRLHAXkkEeONNsS43EcCd7gax9LLoOz4vlFQA==}
 
   '@sindresorhus/slugify@2.2.1':
     resolution: {integrity: sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==}
@@ -2579,8 +2579,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.10.0:
-    resolution: {integrity: sha512-YD2sXQ+TMD/F9BimV9Jn0wj35pqOvywvOG/3PB6hGHyGKlM7TJ9tyJ02jOb2kF8F0HfJwKNYrh3sW7jEcuRlXA==}
+  shiki@1.10.1:
+    resolution: {integrity: sha512-uafV7WCgN4YYrccH6yxpnps6k38sSTlFRrwc4jycWmhWxJIm9dPrk+XkY1hZ2t0I7jmacMNb15Lf2fspa/Y3lg==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -3395,7 +3395,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@shikijs/core@1.10.0': {}
+  '@shikijs/core@1.10.1': {}
 
   '@sindresorhus/slugify@2.2.1':
     dependencies:
@@ -5881,9 +5881,9 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.10.0:
+  shiki@1.10.1:
     dependencies:
-      '@shikijs/core': 1.10.0
+      '@shikijs/core': 1.10.1
 
   side-channel@1.0.6:
     dependencies:
