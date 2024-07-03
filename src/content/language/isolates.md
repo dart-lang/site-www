@@ -2,6 +2,7 @@
 title: Isolates
 description: Information on writing isolates in Dart.
 short-title: Isolates
+lastVerified: 2024-01-04
 prevpage:
   url: /language/async
   title: Asynchronous support

@@ -6,6 +6,7 @@ js: [{url: '/assets/js/library-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/libraries
 noindex: true
+skipFreshness: true
 ---
 
 :::warning
