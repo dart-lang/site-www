@@ -8,7 +8,6 @@ to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/tools/pub/glossary#package).
 
-
 ## Creating a new package
 
 To create the initial directory and structure for a package,
@@ -18,10 +17,6 @@ and the `package` template:
 ```console
 $ dart create -t package <PACKAGE_NAME>
 ```
-
-{% comment %}
-TODO: Add coverage of packages that contain tools.
-{% endcomment %}
 
 ## What makes a package
 
@@ -59,9 +54,11 @@ In most cases, each class should be in its own mini library, unless
 you have a situation where two classes are tightly coupled.
 
 :::note
-You may have heard of the `part` directive, which allows
-you to split a library into multiple Dart files. We recommend
-that you avoid using `part` and create mini libraries instead.
+You might know about the `part` directive.
+This directive allows you to split a library into multiple Dart files.
+Though part files can incorporate generated code into a library,
+the Dart team doesn't recommend using them.
+Instead, create small libraries.
 :::
 
 Create a "main" library file directly under lib,
