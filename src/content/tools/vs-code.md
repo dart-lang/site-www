@@ -10,10 +10,7 @@ and add the [Dart extension][].
 
 ## Install VS Code
 
-To build and debug apps,
-you can use the [VS Code][] integrated development environment.
-
-To install the latest version of VS Code,
+To install the latest version of [VS Code][],
 follow Microsoft's instructions for the relevant platform:
 
 - [Install on macOS][]
@@ -27,8 +24,8 @@ follow Microsoft's instructions for the relevant platform:
 
 ## Install the VS Code Dart extension
 
-With the Dart extension installed,
-you can compile, deploy, and debug Dart apps.
+The Dart extension for VS Code supports Dart-specific development capabilities.
+These include syntax highlighting, package resolution, hot reload, and others.
 
 1. Launch **VS Code**.
 
@@ -42,10 +39,8 @@ you can compile, deploy, and debug Dart apps.
 
 1. Click **Install**.
 
-## Dart Extension documentation
-
-To learn more about the features of the VS Code Dart extension,
-consult its [documentation][].
+To review the full list of features,
+consult the [extension documentation][Dart extension].
 
 [Dart extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
 [documentation]: https://dartcode.org/docs/
