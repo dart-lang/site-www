@@ -1068,12 +1068,12 @@ bool _logoutSucceeds = false;
 To catch common mistakes that arise while working with async and futures,
 [enable](/tools/analysis#individual-rules) the following lints:
 
-* [discarded_futures][]
-* [unawaited_futures][]
+* [`discarded_futures`][]
+* [`unawaited_futures`][]
 
 
-[discarded_futures]: /tools/linter-rules/discarded_futures
-[unawaited_futures]: /tools/linter-rules/unawaited_futures
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 
 ## What's next?
 
