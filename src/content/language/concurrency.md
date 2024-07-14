@@ -239,9 +239,11 @@ shared-memory threads running concurrently. However, shared-state concurrency is
 lead to complicated code.
 
 Instead of threads, all Dart code runs inside isolates.
-Using isolates, your Dart code can perform multiple independent tasks at once.
-Isolates are like threads or processes, but each isolate has its own memory
-and a single thread running an event loop.
+
+Using isolates, your Dart code can perform multiple independent tasks at once,
+using additional processor cores if they're available. Isolates are like threads
+or processes, but each isolate has its own memory and a single thread running an
+event loop. 
 
 Each isolate has its own global fields,
 ensuring that none of the state in an isolate is accessible
@@ -253,10 +255,6 @@ won't occur in Dart. That said, isolates don't prevent race conditions all
 together. For more information on this concurrency model, read about
 the [Actor model](https://en.wikipedia.org/wiki/Actor_model).
 
-Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they're available. Isolates are like threads
-or processes, but each isolate has its own memory and a single thread running an
-event loop. 
 
 :::note Platform note
 Only the [Dart Native platform][] implements isolates.
