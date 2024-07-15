@@ -16,8 +16,8 @@ importers:
         specifier: 3.0.0-alpha.15
         version: 3.0.0-alpha.15
       '@11ty/eleventy-img':
-        specifier: 5.0.0-beta.4
-        version: 5.0.0-beta.4(encoding@0.1.13)
+        specifier: 5.0.0-beta.5
+        version: 5.0.0-beta.5(encoding@0.1.13)
       firebase-tools:
         specifier: ^13.13.2
         version: 13.13.2(encoding@0.1.13)
@@ -78,8 +78,8 @@ packages:
     resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
 
-  '@11ty/eleventy-img@5.0.0-beta.4':
-    resolution: {integrity: sha512-vuizGnW8mgW+O4iP6CbOB4CCKq3W2GiY+Ev9112qTCra+qau+xxhn9yrnyI3621sC/hEzKQI9MUFRZ2x+F8XnQ==}
+  '@11ty/eleventy-img@5.0.0-beta.5':
+    resolution: {integrity: sha512-ilu/4DZIPhZiRfn1IikPGurBBpt1M++w75HTQNJMGuK+DmjxRe1HoAOc756xteXOdu7m/hUmUAoRoTkOZHEsFA==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy-plugin-bundle@2.0.2':
@@ -3040,7 +3040,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@11ty/eleventy-img@5.0.0-beta.4(encoding@0.1.13)':
+  '@11ty/eleventy-img@5.0.0-beta.5(encoding@0.1.13)':
     dependencies:
       '@11ty/eleventy-fetch': 4.0.1(encoding@0.1.13)
       '@11ty/eleventy-utils': 1.0.3
