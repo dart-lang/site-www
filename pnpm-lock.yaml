@@ -19,8 +19,8 @@ importers:
         specifier: 5.0.0-beta.5
         version: 5.0.0-beta.5(encoding@0.1.13)
       firebase-tools:
-        specifier: ^13.13.2
-        version: 13.13.2(encoding@0.1.13)
+        specifier: ^13.13.3
+        version: 13.13.3(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.1
         version: 2.0.1
@@ -1229,8 +1229,8 @@ packages:
     resolution: {integrity: sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@13.13.2:
-    resolution: {integrity: sha512-pX20oZSG7+SW8Jo10/JJilQn+IB5xES45dgiAMtPrx+aJ9RRnHkcosDe6kq9AEsufiRv1/KCn430jS3NF7jtvg==}
+  firebase-tools@13.13.3:
+    resolution: {integrity: sha512-xTlaEhIGkfsMPsJkvjir/AeOQryuRTcoXSlqJO2CZR+IzZCoYPMHO8zMKwEIc1ZEb6nYdRl14gjM8DpGCRpm2A==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
 
@@ -4288,7 +4288,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@13.13.2(encoding@0.1.13):
+  firebase-tools@13.13.3(encoding@0.1.13):
     dependencies:
       '@google-cloud/cloud-sql-connector': 1.3.3(encoding@0.1.13)
       '@google-cloud/pubsub': 4.5.0(encoding@0.1.13)
