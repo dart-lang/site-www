@@ -1,15 +1,78 @@
+# - name: What's New
+#   description: Learn the latest on the Dart language.
+#   url: /guides/whats-new
+#   section: 
+#   color: white
+# - name: Get started
+#   description: Install the Dart SDK on your development system.
+#   url: /get-dart
+#   section: 
+#   color:
+# - name: Language
+#   description: A brief, example-based introduction to the Dart language.
+#   url: /language
+#   section: 
+#   color:
+# - name: Effective Dart
+#   description: Explore the best practices to build consistent, maintainable, efficient Dart code.
+#   url: /effective-dart
+#   section: 
+#   color:
+# - name: Core Libraries
+#   description: Discover the major features of the Dart SDK's core libraries.
+#   url: /libraries
+#   section: 
+#   color:
+# - name: Packages
+#   description: Leverage the Dart community's shared software offerings.
+#   url: /guides/packages
+#   section: 
+#   color:
+
+main:
+- name: Get started
+  description: Install the Dart SDK on your development system.
+  url: /get-dart
+- name: Try online
+  description: Try out Dart in your browser.
+  url: /#try-dart
+
+learn:
+- name: Basic syntax
+  description: >
+    Find out the basics of Dart syntax including keywords,
+    variables, and operators.
+  url: /language/variables
 - name: Language tour
-  description: A brief, example-based introduction to the Dart language.
+  description: Discover the capabilities of the Dart language.
   url: /language
 - name: Effective Dart
-  description: Best practices for building consistent, maintainable, efficient Dart code.
+  description: Explore the best practices to build consistent, maintainable, efficient Dart code.
   url: /effective-dart
-- name: Library documentation
-  description: An example-based introduction to the major features in the Dart SDK's core libraries.
-  url: /libraries
-- name: Dart SDK
-  description: What's in the SDK, and how to install it.
-  url: /tools/sdk
-- name: Futures, async, await
-  description: How to write asynchronous Dart code that uses futures and the async and await keywords.
-  url: /libraries/async/async-await
+- name: Packages
+  description: Leverage the Dart community's shared software offerings.
+  url: /guides/packages
+
+featured:
+- name: Swift Interop
+  description: Dart apps can call ObjC and Swift APIs.
+  url: /interop/objective-c-interop
+- name: Patterns
+  description: >
+    Extract parts of an object's data that match a particular
+    shape or type.
+  url: /language/patterns
+- name: Command line apps
+  description: Write command line apps with Dart. 
+  url: /tutorials/server/cmdline/
+- name: Concurrency
+  description: Learn about isolates and asynchronous programming in Dart.
+  url: /language/concurrency
+- name: Null safety
+  description: Find out how Dart protects you from a common programming issue.
+  url: /null-safety
+- name: Records
+  description: >
+    Bundle multiple objects into one typed, fixed-sized,
+    heterogeneous object.
+  url: /language/records

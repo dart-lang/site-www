@@ -17,7 +17,7 @@ Once you're familiar with the language and futures,
 learn about _iterables_, _streams_, and _packages_,
 which are fundamental to most Dart programs.
 
-<div class="card-grid no_toc_section">
+<div class="card-grid card-col2 no_toc_section">
   <div class="card">
     <h3><a href="/libraries/async/using-streams">Asynchronous programming:
        streams</a></h3>
@@ -42,7 +42,7 @@ which are fundamental to most Dart programs.
 To get more experience developing with Dart,
 try more of the available tutorials!
 
-<div class="card-grid no_toc_section">
+<div class="card-grid card-col2 no_toc_section">
   <div class="card">
     <h3><a href="/resources/dart-cheatsheet">Dart cheatsheet</a></h3>
     <p>Quickly try out some of Dart's unique language features.</p>

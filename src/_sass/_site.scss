@@ -25,6 +25,19 @@
 $font-color: bootstrap.$body-color;
 $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
 
+// Reset initial values
+h1, h2, h3, h4, h5, h6, p, ol, ul {
+  display: block;
+  margin-block-start: 0px;
+  // margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-block-start: 0px;
+  padding-block-end: 0px;
+  // padding-inline-start: 0px;
+  padding-inline-end: 0px;
+  unicode-bidi: isolate;
+}
 
 /* -----------------------------------------
   DOM
@@ -370,32 +383,32 @@ main .content {
 }
 
 .card-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: -15px;
-  margin-right: -15px;
+  display: grid;
+  grid-auto-rows: minmax(5rem, auto);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.card-col2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.card-col3 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
   display: block;
-  position: relative;
-  width: 300px;
-  height: auto;
-  min-height: 100px;
-  padding: 20px;
-  margin: 15px;
+  padding: 1rem;
   overflow: hidden;
-  box-sizing: border-box;
-  background-color: #294058;
-  border-radius: 0;
+  background-color: $gray-lighter;
+  border: 2px solid $flutter-color-dark-blue;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
   color: $site-color-card-text;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: $site-font-family-gsans;
+    color: $flutter-color-blue;
     margin-top: 0;
+    margin-bottom: 0.25rem;
 
     a {
       color: $site-color-card-text;
@@ -408,7 +421,7 @@ main .content {
   }
 
   a {
-    color: $site-color-card-link;
+    color: $flutter-color-dark-blue;
   }
 
   &.narrow {

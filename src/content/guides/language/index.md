@@ -7,7 +7,7 @@ description: Discover resources for learning the Dart programming language.
 
 These two resources are popular with both beginning Dart developers and experts.
 
-<div class="card-grid">
+<div class="card-grid card-col2">
   <div class="card">
     <h2><a href="/language">Language tour</a></h2>
     <p>A walk through all of the major features of the Dart language.</p>

@@ -6,7 +6,7 @@ toc: false
 
 Check out the following Dart language resources:
 
-<div class="card-grid">
+<div class="card-grid card-col3">
   <div class="card">
     <h2><a href="/resources/books">Books</a></h2>
     <p>A collection of books about Dart.</p>
