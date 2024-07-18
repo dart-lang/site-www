@@ -306,7 +306,7 @@ Your order is: Instance of 'Future<String>'
 ```
 
 As shown in following two examples,
-operates in a similar way to synchronous code.
+it operates like synchronous code.
 
 #### Example: asynchronous functions
 
