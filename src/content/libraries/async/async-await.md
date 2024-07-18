@@ -16,6 +16,10 @@ To get the most out of this tutorial, you should have the following:
 
 * Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
+* The [`discarded_futures`][] and [`unawaited_futures`][] lints enabled.
+
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 
 This tutorial covers the following material:
 
@@ -423,7 +427,6 @@ which are provided for you:
 {:.table .table-striped}
 </div>
 
-
 #### Part 1: `reportUserRole()`
 
 Add code to the `reportUserRole()` function so that it does the following:
@@ -435,7 +438,7 @@ Add code to the `reportUserRole()` function so that it does the following:
   * Example return value: `"User role: tester"`
 * Gets the user role by calling the provided function `fetchRole()`.
 
-####  Part 2: `reportLogins()`
+#### Part 2: `reportLogins()`
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
@@ -1064,6 +1067,34 @@ bool _logoutSucceeds = false;
 
 </details>
 
+<<<<<<< HEAD
+## Which lints work for futures?
+
+<<<<<<< HEAD
+To catch common mistakes that arise while working with async and futures,
+[enable](/tools/analysis#individual-rules) the following lints:
+
+* [`discarded_futures`][]
+* [`unawaited_futures`][]
+
+
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
+=======
+In real-world scenarios, enable the following two lints to help with
+futures.
+
+* [discarded_futures][]
+* [unawaited_futures][]
+
+By default, these lints aren't enabled.
+
+[discarded_futures]: /tools/linter-rules/discarded_futures
+[unawaited_futures]: /tools/linter-rules/unawaited_futures
+>>>>>>> 456eff32 (Add lint info to Async)
+
+=======
+>>>>>>> 69bbec41 (Move lint mention to top)
 ## What's next?
 
 Congratulations, you've finished the tutorial! If you'd like to learn more, here
