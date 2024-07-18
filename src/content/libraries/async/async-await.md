@@ -16,6 +16,11 @@ To get the most out of this tutorial, you should have the following:
 
 * Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
+* The [discarded_futures][] and [unawaited_futures][] lints enabled.
+  As with all lints, these lints aren't enabled by default.
+
+[discarded_futures]: /tools/linter-rules/discarded_futures
+[unawaited_futures]: /tools/linter-rules/unawaited_futures
 
 This tutorial covers the following material:
 
@@ -1063,6 +1068,7 @@ bool _logoutSucceeds = false;
 
 </details>
 
+<<<<<<< HEAD
 ## Which lints work for futures?
 
 <<<<<<< HEAD
@@ -1088,6 +1094,8 @@ By default, these lints aren't enabled.
 [unawaited_futures]: /tools/linter-rules/unawaited_futures
 >>>>>>> 456eff32 (Add lint info to Async)
 
+=======
+>>>>>>> 69bbec41 (Move lint mention to top)
 ## What's next?
 
 Congratulations, you've finished the tutorial! If you'd like to learn more, here
