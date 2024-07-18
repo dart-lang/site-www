@@ -10,7 +10,7 @@ toc: false
 To update these cards, edit src/_data/docs_cards.yml.
 {% endcomment %}
 
-<div class="card-grid card-col2">
+<div class="card-grid card-col3">
 {% for card in docs_cards.main -%}
   <div class="card">
     <h3><a href="{{card.url}}">{{card.name}}</a></h3>

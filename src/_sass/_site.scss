@@ -399,19 +399,19 @@ main .content {
   display: block;
   padding: 1rem;
   overflow: hidden;
-  background-color: $gray-lighter;
-  border: 2px solid $flutter-color-dark-blue;
+  background-color: $flutter-color-darkest-blue;
+  border: 2px solid $flutter-color-darkest-blue;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
   color: $site-color-card-text;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: $site-font-family-gsans;
-    color: $flutter-color-blue;
+    color: $flutter-color-lightest-grey;
     margin-top: 0;
     margin-bottom: 0.25rem;
 
     a {
-      color: $site-color-card-text;
+      color: $flutter-color-lightest-grey;
       font-family: $site-font-family-gsans;
     }
   }

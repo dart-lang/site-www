@@ -36,6 +36,9 @@ main:
 - name: Try online
   description: Try out Dart in your browser.
   url: /#try-dart
+- name: What's new
+  description: Find out what's new in the latest release.
+  url: /guides/whats-new
 
 learn:
 - name: Basic syntax
