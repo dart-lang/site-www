@@ -277,10 +277,6 @@ The only differences are highlighted in the asynchronous example,
 which—if your window is wide enough—is 
 to the right of the synchronous example.
 
-<div class="container">
-<div class="row">
-<div class="col-sm">
-
 #### Example: synchronous functions
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
@@ -306,11 +302,11 @@ void main() {
 
 ```plaintext
 Fetching user order...
-Your order is: Instance of '_Future<String>'
+Your order is: Instance of 'Future<String>'
 ```
 
-</div>
-<div class="col-sm">
+As shown in following two examples,
+it operates like synchronous code.
 
 #### Example: asynchronous functions
 
@@ -339,10 +335,6 @@ Future<String> fetchUserOrder() =>
 Fetching user order...
 Your order is: Large Latte
 ```
-
-</div>
-</div>
-</div>
 
 The asynchronous example is different in three ways:
 
@@ -435,10 +427,6 @@ which are provided for you:
 #### Part 1: `reportUserRole()`
 
 Add code to the `reportUserRole()` function so that it does the following:
-{% comment %}
-  Some bulleted items are intentionally lacking punctuation to avoid
-  confusing the users about characters in string values
-{% endcomment -%}
 
 * Returns a future that completes with the following
   string: `"User role: <user role>"`
