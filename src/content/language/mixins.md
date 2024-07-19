@@ -160,7 +160,7 @@ class Musician {
 }
 
 mixin MusicalPerformer [!on Musician!] {
-  perfomerMethod() {
+  performerMethod() {
     print('Performing music!');
     super.musicianMethod();
   }
