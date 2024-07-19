@@ -1067,34 +1067,17 @@ bool _logoutSucceeds = false;
 
 </details>
 
-<<<<<<< HEAD
 ## Which lints work for futures?
 
-<<<<<<< HEAD
 To catch common mistakes that arise while working with async and futures,
 [enable](/tools/analysis#individual-rules) the following lints:
 
 * [`discarded_futures`][]
 * [`unawaited_futures`][]
 
-
 [`discarded_futures`]: /tools/linter-rules/discarded_futures
 [`unawaited_futures`]: /tools/linter-rules/unawaited_futures
-=======
-In real-world scenarios, enable the following two lints to help with
-futures.
 
-* [discarded_futures][]
-* [unawaited_futures][]
-
-By default, these lints aren't enabled.
-
-[discarded_futures]: /tools/linter-rules/discarded_futures
-[unawaited_futures]: /tools/linter-rules/unawaited_futures
->>>>>>> 456eff32 (Add lint info to Async)
-
-=======
->>>>>>> 69bbec41 (Move lint mention to top)
 ## What's next?
 
 Congratulations, you've finished the tutorial! If you'd like to learn more, here
