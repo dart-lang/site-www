@@ -511,7 +511,7 @@ Once you discontinue a package, the package will:
 To mark a package as discontinued:
 
 1. Sign in to pub.dev using a Google Account with uploader or
-   [verified publisher][]permissions for the package.
+   [verified publisher][] permissions for the package.
 
 1. Navigate to the package's **Admin** tab.
 
