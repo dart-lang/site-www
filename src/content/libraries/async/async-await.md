@@ -16,6 +16,10 @@ To get the most out of this tutorial, you should have the following:
 
 * Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
+* The [`discarded_futures`][] and [`unawaited_futures`][] lints enabled.
+
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 
 This tutorial covers the following material:
 
@@ -277,10 +281,6 @@ The only differences are highlighted in the asynchronous example,
 which—if your window is wide enough—is 
 to the right of the synchronous example.
 
-<div class="container">
-<div class="row">
-<div class="col-sm">
-
 #### Example: synchronous functions
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
@@ -306,11 +306,11 @@ void main() {
 
 ```plaintext
 Fetching user order...
-Your order is: Instance of '_Future<String>'
+Your order is: Instance of 'Future<String>'
 ```
 
-</div>
-<div class="col-sm">
+As shown in following two examples,
+it operates like synchronous code.
 
 #### Example: asynchronous functions
 
@@ -339,10 +339,6 @@ Future<String> fetchUserOrder() =>
 Fetching user order...
 Your order is: Large Latte
 ```
-
-</div>
-</div>
-</div>
 
 The asynchronous example is different in three ways:
 
@@ -431,14 +427,9 @@ which are provided for you:
 {:.table .table-striped}
 </div>
 
-
 #### Part 1: `reportUserRole()`
 
 Add code to the `reportUserRole()` function so that it does the following:
-{% comment %}
-  Some bulleted items are intentionally lacking punctuation to avoid
-  confusing the users about characters in string values
-{% endcomment -%}
 
 * Returns a future that completes with the following
   string: `"User role: <user role>"`
@@ -447,7 +438,7 @@ Add code to the `reportUserRole()` function so that it does the following:
   * Example return value: `"User role: tester"`
 * Gets the user role by calling the provided function `fetchRole()`.
 
-####  Part 2: `reportLogins()`
+#### Part 2: `reportLogins()`
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
@@ -1075,6 +1066,17 @@ bool _logoutSucceeds = false;
   ```
 
 </details>
+
+## Which lints work for futures?
+
+To catch common mistakes that arise while working with async and futures,
+[enable](/tools/analysis#individual-rules) the following lints:
+
+* [`discarded_futures`][]
+* [`unawaited_futures`][]
+
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 
 ## What's next?
 
