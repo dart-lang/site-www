@@ -126,7 +126,113 @@ void main() {
   rect.right = 12;
   assert(rect.left == -8);
 }
+class Example {
+  int a;
+  int _b;
+  final int c;
+  static int d = 1000;
+
+  Example(this.a, this._b, this.c);
+}
+
+void handleExample() {
+  final ex = Example(1, 2, 3);
+  final v = ex.a; // Getter for 'a'
+  ex.a = 10;      // Setter for 'a'
+  ex.a++;         // Increment 'a'
+  assert(ex.a == 11);
+
+  final u = ex._b; // Getter for '_b' (private to library)
+  ex._b = 20;      // Setter for '_b'
+  assert(ex._b == 20);
+
+  final w = ex.c; // Getter for 'c' (final field)
+  // ex.c = 10; // Error: 'c' is final
+
+  final z = Example.d; // Static getter for 'd'
+  Example.d = 10;      // Static setter for 'd'
+  Example.d++;
+  assert(Example.d == 11);
+}
+//fautly examples
+/*
+These examples illustrate common mistakes when using getters and setters. They show how attempting to use methods as getters or setters, or vice versa, results in errors.
+*/
+class ExampleFaulty extends Example {
+  ExampleFaulty(super.a, super._b, super.c);
+
+  int a() {
+    return a; // Error: Cannot use method as a getter
+  }
+
+  void a(int x) {
+    a = x; // Error: Cannot use method as a setter
+  }
+}
+//java style getters and setters
+/*This example demonstrates a Java-style approach to getters and setters. Instead of using Dart's get and set keywords, methods are used to achieve similar functionality. This style is not typical in Dart but is shown here for comparison.*/
+class ExampleJavaStyleGetterSetter extends Example {
+  ExampleJavaStyleGetterSetter(super.a, super._b, super.c);
+
+  int getA() {
+    return a;
+  }
+
+  void setA(int x) {
+    a = x;
+  }
+}
+//over riding getters and setters
+class ExampleOverrideGetterSetterOfA1 extends Example {
+  ExampleOverrideGetterSetterOfA1(super.a, super._b, super.c);
+
+  set a(int x) => a = x;
+  int get a => a;
+}
+
+class ExampleOverrideAccessorsOfA2 extends Example {
+  ExampleOverrideAccessorsOfA2(super.a, super._b, super.c);
+
+  set a(int x) {
+    print("Setter for 'a' called");
+    a = x;
+  }
+
+  int get a {
+    print("Getter for 'a' called");
+    return a;
+  }
+}
+//synthetic field example
+class ExampleSyntheticField {
+  double angle = 0.0;
+
+  static double _canonicalize(double x) {
+    if (x >= 0.0) {
+      return x.remainder(2.0 * pi);
+    } else {
+      return 2 * pi + x.remainder(2.0 * pi);
+    }
+  }
+
+  double get opposite => _canonicalize(angle + pi);
+  set opposite(double x) => angle = _canonicalize(x - pi);
+}
+
+void handleExampleSyntheticField() {
+  final obj = ExampleSyntheticField();
+  obj.angle = 0.5 * pi;
+  print("The opposite of ${obj.angle / pi} π is ${obj.opposite / pi} π");
+  obj.opposite = 0.5 * pi;
+  print("If the opposite is ${obj.opposite / pi} π, the angle is ${obj.angle / pi} π");
+  obj.opposite += 0.25 * pi;
+  print("If the opposite is ${obj.opposite / pi} π, the angle is ${obj.angle / pi} π");
+}
+
+
 ```
+
+
 
 With getters and setters, you can start with instance variables, later
 wrapping them with methods, all without changing client code.
