@@ -152,9 +152,9 @@ void infFix() {
 
 //-----------------------------------------------
 
-// #docregion conflicting-generics
+// #docregion compatible-generics
 abstract class C implements List<int> {}
-// #enddocregion conflicting-generics
+// #enddocregion compatible-generics
 
 // #docregion conflicting-generics
 // ignore: inconsistent_inheritance, conflicting_generic_interfaces,
