@@ -149,3 +149,15 @@ void infFix() {
       ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
   // #enddocregion type-inf-fix
 }
+
+//-----------------------------------------------
+
+// #docregion conflicting-generics
+abstract class C implements List<int> {}
+// #enddocregion conflicting-generics
+
+// #docregion conflicting-generics
+// ignore: inconsistent_inheritance, conflicting_generic_interfaces,
+// ignore: duplicate_definition
+abstract class C implements List<int>, Iterable<num> {}
+// #enddocregion conflicting-generics
