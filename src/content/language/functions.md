@@ -280,7 +280,7 @@ An anonymous function resembles a named function as it has:
 The following code block contains the function's body:
 
 ```dart
-([[Type]] param1[, ...]]) {
+([[Type] param1[, ...]]) {
   codeBlock;
 }
 ```
