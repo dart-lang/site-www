@@ -31,7 +31,7 @@ greeting to use another language.
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad:ga_id-hello_world
+```dartpad
 void main() {
   print('Hello, World!');
 }
@@ -127,6 +127,7 @@ Use the `dart compile` tool to AOT compile the program to machine code:
 ```console
 $ dart compile exe bin/cli.dart
 ```
+
 Notice how the compiled program starts instantly, completing quickly:
 
 ```console
@@ -142,9 +143,7 @@ sys	0m0.006s
 
 Check out these resources:
 
-* Additional tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
-  * [Codelabs](/codelabs)
+* Dart [tutorials](/tutorials)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
   * [Dart core library documentation](/libraries)

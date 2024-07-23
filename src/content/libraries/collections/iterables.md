@@ -1,42 +1,43 @@
 ---
 title: Iterable collections
-description: An interactive guide to using Iterable objects such as lists and sets.
+description: >-
+  An interactive guide to using Iterable objects such as lists and sets.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This codelab teaches you how to use collections that
+This tutorial teaches you how to use collections that
 implement the [Iterable][iterable class] class—for example
 [List][list class] and [Set.][set class]
 Iterables are basic building blocks for
 all sorts of Dart applications,
 and you're probably already using them,
 even without noticing.
-This codelab helps you make the most out of them.
+This tutorial helps you make the most out of them.
 
 Using the embedded DartPad editors,
 you can test your knowledge by
 running example code and completing exercises.
 
-To get the most out of this codelab,
+To get the most out of this tutorial,
 you should have basic knowledge of [Dart syntax](/language).
 
-This codelab covers the following material:
+This tutorial covers the following material:
 
 * How to read elements of an Iterable.
 * How to check if the elements of an Iterable satisfy a condition.
 * How to filter the contents of an Iterable.
 * How to map the contents of an Iterable to a different value.
 
-Estimated time to complete this codelab: 60 minutes.
+Estimated time to complete this tutorial: 60 minutes.
 
 :::note
 This page uses embedded DartPads to display examples and exercises.
 {% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
-The exercises in this codelab have partially completed code snippets.
+The exercises in this tutorial have partially completed code snippets.
 You can use DartPad to test your knowledge by completing the code and
 clicking the **Run** button.
 **Don't edit the test code in the `main` function or below**.
@@ -126,7 +127,7 @@ using a `for-in` loop.
 The following example shows you how to read elements using  a `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (for-in)"?>
-```dart:run-dartpad:ga_id-for_in_loop
+```dartpad
 void main() {
   const iterable = ['Salad', 'Popcorn', 'Toast'];
   for (final element in iterable) {
@@ -173,7 +174,7 @@ results in a [StateError.][StateError class]
 :::
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
-```dart:run-dartpad:ga_id-first_and_last
+```dartpad
 void main() {
   Iterable<String> iterable = const ['Salad', 'Popcorn', 'Toast'];
   print('The first element is ${iterable.first}');
@@ -211,7 +212,7 @@ Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-where-long)"?>
-```dart:run-dartpad:height-565px:ga_id-using_firstwhere
+```dartpad
 bool predicate(String item) {
   return item.length > 5;
 }
@@ -313,7 +314,7 @@ satisfies the following conditions:
 All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
-```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
+```dartpad theme="dark"
 // Implement the predicate of singleWhere
 // with the following conditions
 // * The element contains the character `'a'`
@@ -421,7 +422,7 @@ you can use to verify conditions:
 Run this exercise to see them in action.
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-every)"?>
-```dart:run-dartpad:height-255px:ga_id-using_any_and_every
+```dartpad
 void main() {
   const items = ['Salad', 'Popcorn', 'Toast'];
 
@@ -470,7 +471,7 @@ Use `any()` and `every()` to implement two functions:
 * Part 2: Implement `everyUserOver13()`.
   * Return `true` if all users are 14 or older.
 
-```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
+```dartpad
 bool anyUserUnder18(Iterable<User> users) {
   // TODO: Implement the anyUserUnder18 function.
 }
@@ -660,7 +661,7 @@ Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-where)"?>
-```dart:run-dartpad:height-380px:ga_id-using_where
+```dartpad
 void main() {
   var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
@@ -703,7 +704,7 @@ Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
 <?code-excerpt "iterables/test/iterables_test.dart (take-while-long)"?>
-```dart:run-dartpad:ga_id-using_takewhile
+```dartpad
 void main() {
   const numbers = [1, 3, -2, 0, 4, 5];
 
@@ -747,7 +748,7 @@ Use `where()` to implement two functions:
   * Return an `Iterable` containing all users with
     names of length 3 or less.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
+```dartpad theme="dark"
 Iterable<User> filterOutUnder21(Iterable<User> users) {
   // TODO: Implement the filterOutUnder21 function.
 }
@@ -893,7 +894,7 @@ multiply all the elements of an `Iterable` by 2.
 What do you think the output will be?
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-by-two)"?>
-```dart:run-dartpad:ga_id-using_map
+```dartpad
 void main() {
   var numbersByTwo = const [1, -2, 3, 42].map((number) => number * 2);
   print('Numbers: $numbersByTwo');
@@ -913,7 +914,7 @@ contains strings containing each user's name and age.
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
-```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
+```dartpad theme="dark"
 Iterable<String> getNameAndAges(Iterable<User> users) {
   // TODO: Implement the getNameAndAges function.
 }
@@ -1043,7 +1044,7 @@ Part 3: Implement `validEmailAddresses()`.
 - Use the provided function `isValidEmailAddress()` to evaluate whether
   an `EmailAddress` is valid.
 
-```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
+```dartpad theme="dark"
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
   // TODO: Implement the parseEmailAddresses function.
 }
@@ -1211,14 +1212,14 @@ bool isValidEmailAddress(EmailAddress email) {
 
 ## What's next
 
-Congratulations, you finished the codelab!
+Congratulations, you finished the tutorial!
 If you want to learn more,
 here are some suggestions for where to go next:
 
 * Play with [DartPad.]({{site.dartpad}})
-* Try another [codelab](/codelabs).
+* Try another [tutorial](/tutorials).
 * Read the [Iterable API reference][iterable class]
-  to learn about methods not covered by this codelab.
+  to learn about methods that this tutorial doesn't cover.
 
 [hashmap class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-collection/HashMap-class.html
 [iterable class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html

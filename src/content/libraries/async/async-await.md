@@ -6,32 +6,36 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This codelab teaches you how to write asynchronous code using
+This tutorial teaches you how to write asynchronous code using
 futures and the `async` and `await` keywords. 
 Using embedded DartPad editors, 
 you can test your knowledge by running example code
 and completing exercises.
 
-To get the most out of this codelab, you should have the following:
+To get the most out of this tutorial, you should have the following:
 
 * Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
+* The [`discarded_futures`][] and [`unawaited_futures`][] lints enabled.
 
-This codelab covers the following material:
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
+
+This tutorial covers the following material:
 
 * How and when to use the `async` and `await` keywords.
 * How using `async` and `await` affects execution order.
 * How to handle errors from an asynchronous call
   using `try-catch` expressions in `async` functions.
 
-Estimated time to complete this codelab: 40-60 minutes.
+Estimated time to complete this tutorial: 40-60 minutes.
 
 :::note
 This page uses embedded DartPads to display examples and exercises.
 {% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
-The exercises in this codelab have partially completed code snippets.
+The exercises in this tutorial have partially completed code snippets.
 You can use DartPad to test your knowledge by completing the code and
 clicking the **Run** button.
 **Don't edit the test code in the `main` function or below**.
@@ -70,7 +74,7 @@ Before running this example, try to spot the issue --
 what do you think the output will be?
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px:ga_id-incorrect_usage
+```dartpad
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -170,7 +174,7 @@ try to predict which will print first:
 "Large Latte" or "Fetching user order...".
 
 <?code-excerpt "async_await/bin/futures_intro.dart (no-error)"?>
-```dart:run-dartpad:height-300px:ga_id-introducting_futures
+```dartpad
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
@@ -194,7 +198,7 @@ Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px:ga_id-completing_with_error
+```dartpad
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info but encounters a bug.
   return Future.delayed(
@@ -277,10 +281,6 @@ The only differences are highlighted in the asynchronous example,
 which—if your window is wide enough—is 
 to the right of the synchronous example.
 
-<div class="container">
-<div class="row">
-<div class="col-sm">
-
 #### Example: synchronous functions
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
@@ -306,11 +306,11 @@ void main() {
 
 ```plaintext
 Fetching user order...
-Your order is: Instance of '_Future<String>'
+Your order is: Instance of 'Future<String>'
 ```
 
-</div>
-<div class="col-sm">
+As shown in following two examples,
+it operates like synchronous code.
 
 #### Example: asynchronous functions
 
@@ -339,10 +339,6 @@ Future<String> fetchUserOrder() =>
 Fetching user order...
 Your order is: Large Latte
 ```
-
-</div>
-</div>
-</div>
 
 The asynchronous example is different in three ways:
 
@@ -375,7 +371,7 @@ within an `async` function body.
 What do you think the output will be?
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
+```dartpad
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -431,14 +427,9 @@ which are provided for you:
 {:.table .table-striped}
 </div>
 
-
 #### Part 1: `reportUserRole()`
 
 Add code to the `reportUserRole()` function so that it does the following:
-{% comment %}
-  Some bulleted items are intentionally lacking punctuation to avoid
-  confusing the users about characters in string values
-{% endcomment -%}
 
 * Returns a future that completes with the following
   string: `"User role: <user role>"`
@@ -447,7 +438,7 @@ Add code to the `reportUserRole()` function so that it does the following:
   * Example return value: `"User role: tester"`
 * Gets the user role by calling the provided function `fetchRole()`.
 
-####  Part 2: `reportLogins()`
+#### Part 2: `reportLogins()`
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
@@ -457,7 +448,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
+```dartpad theme="dark"
 // Part 1
 // Call the provided async function fetchRole()
 // to return the user role.
@@ -466,7 +457,7 @@ Future<String> reportUserRole() async {
 }
 
 // Part 2
-// TODO: Implement the reportUserRole function here.
+// TODO: Implement the reportLogins function here.
 // Call the provided async function fetchLoginAmount()
 // to return the number of times that the user has logged in.
 reportLogins() {}
@@ -640,7 +631,7 @@ from an asynchronous function.
 What do you think the output will be?
 
 <?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px:ga_id-try_catch
+```dartpad
 Future<void> printOrderMessage() async {
   try {
     print('Awaiting user order...');
@@ -693,7 +684,7 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html)
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
+```dartpad theme="dark"
 // TODO: Implement changeUsername here.
 changeUsername() {}
 
@@ -861,7 +852,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
+```dartpad theme="dark"
 // Part 1
 addHello(String user) {}
 
@@ -1076,15 +1067,26 @@ bool _logoutSucceeds = false;
 
 </details>
 
+## Which lints work for futures?
+
+To catch common mistakes that arise while working with async and futures,
+[enable](/tools/analysis#individual-rules) the following lints:
+
+* [`discarded_futures`][]
+* [`unawaited_futures`][]
+
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
+
 ## What's next?
 
-Congratulations, you've finished the codelab! If you'd like to learn more, here
+Congratulations, you've finished the tutorial! If you'd like to learn more, here
 are some suggestions for where to go next:
 
 - Play with [DartPad]({{site.dartpad}}).
-- Try another [codelab](/codelabs).
+- Try another [tutorial](/tutorials).
 - Learn more about futures and asynchronous code in Dart:
-  - [Streams tutorial](/tutorials/language/streams):
+  - [Streams tutorial](/libraries/async/using-streams):
     Learn how to work with a sequence of asynchronous events.
   - [Concurrency in Dart](/language/concurrency):
     Understand and learn how to implement concurrency in Dart.

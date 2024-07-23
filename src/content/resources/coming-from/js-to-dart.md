@@ -2,6 +2,7 @@
 title: Learning Dart as a JavaScript developer
 description: Leverage your JavaScript knowledge when learning Dart.
 body_class: highlight-languages
+lastVerified: 2022-11-21
 ---
 
 This guide aims to leverage your JavaScript programming knowledge
@@ -1805,9 +1806,9 @@ Future<void> asyncFunction() async {
 
 To learn more about `Future`s and the
 `async`/`await` syntax, see the
-[Asynchronous programming][] codelab.
+[Asynchronous programming][] tutorial.
 
-[Asynchronous programming]: /codelabs/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
 ### Streams
 
@@ -1963,7 +1964,7 @@ Learn more about futures, streams,
 and other asynchronous functionality in the
 [asynchronous programming][] docs.
 
-[asynchronous programming]: /tutorials/language/streams
+[asynchronous programming]: /libraries/async/using-streams
 
 ## Classes
 
@@ -2775,11 +2776,11 @@ Some possible next steps:
 
 * [Language tour][] to learn more about the Dart language
 * [Core library documentation][] to learn about Dart's core libraries
-* [Dart codelabs][] for hands-on experience learning a variety of topics
+* [Dart tutorials][] for applied practice covering a variety of topics
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
 [Language tour]: /language
 [Core library documentation]: /libraries
-[Dart codelabs]: /codelabs
+[Dart tutorials]: /tutorials
 [Effective Dart]: /effective-dart

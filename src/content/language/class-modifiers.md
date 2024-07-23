@@ -80,7 +80,11 @@ Vehicle myVehicle = Vehicle();
 // Can be extended.
 class Car extends Vehicle {
   int passengers = 4;
-  // ···
+
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
 }
 
 // Can be implemented.

@@ -1,0 +1,27 @@
+@use '../core/variables' as *;
+
+.tag-label {
+  user-select: none;
+  display: inline-block;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.925rem;
+  font-family: $site-font-family-gsans;
+  text-wrap: nowrap;
+}
+
+.language-versioned-tag {
+  background-color: #13B9FD;
+}
+
+.deprecated-tag {
+  background-color: #F2AA3A;
+}
+
+.removed-tag {
+  background-color: #F3655B;
+}
+
+.experimental-tag {
+  background-color: #DADCE0;
+}

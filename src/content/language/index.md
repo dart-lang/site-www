@@ -16,8 +16,8 @@ listed under **Language** in the left side menu.
 
 For coverage of Dart's core libraries,
 check out the [core library documentation](/libraries).
-You can also try the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
-for a more hands-on introduction.
+You can also check out the [Dart cheatsheet](/resources/dart-cheatsheet),
+for a more interactive introduction.
 
 
 ## Hello World

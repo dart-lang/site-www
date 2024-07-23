@@ -2,6 +2,7 @@
 title: Learning Dart as a Swift developer
 description: Leverage your Swift knowledge when learning Dart.
 body_class: highlight-languages
+lastVerified: 2022-12-13
 ---
 
 This guide aims to leverage your Swift programming
@@ -2558,10 +2559,10 @@ Future<void> asyncFunction() async {
 }
 ```
 
-For more information and some hands-on practice,
-check out the [Asynchronous programming][] codelab.
+For more information and interactive practice,
+check out the [Asynchronous programming][] tutorial.
 
-[Asynchronous programming]: /codelabs/async-await
+[Asynchronous programming]: /libraries/async/async-await
 
 ### Streams
 

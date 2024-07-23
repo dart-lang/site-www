@@ -30,7 +30,7 @@ class Worker {
     _commands.send(message);
   }
 
-  Worker._(this._commands, this._responses) {
+  Worker._(this._responses, this._commands) {
     // TODO: Initialize main isolate receive port listener.
   }
 

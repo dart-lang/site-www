@@ -3,6 +3,7 @@ title: Concurrency in Dart
 description: >-
   Use isolates to enable parallel code execution on multiple processor cores.
 short-title: Concurrency
+lastVerified: 2023-12-14
 prevpage:
   url: /language/modifier-reference
   title: Class modifiers reference
@@ -224,9 +225,9 @@ Stream<int> sumStream(Stream<int> stream) async* {
 ```
 
 If you'd like to learn more about using `async`, `await`, `Stream`s and
-`Future`s,  visit the [asynchronous programming codelab][].
+`Future`s, check out the [asynchronous programming tutorial][].
 
-[asynchronous programming codelab]: /codelabs/async-await
+[asynchronous programming tutorial]: /libraries/async/async-await
 
 ## Isolates
 
@@ -280,7 +281,7 @@ complete. A well-behaved app starts quickly, getting to the event loop as soon
 as possible. The app then responds to each queued event promptly, using
 asynchronous operations as necessary.
 
-[async-await]: /codelabs/async-await
+[async-await]: /libraries/async/async-await
 
 ### The isolate life cycle
 

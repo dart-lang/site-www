@@ -12,6 +12,7 @@
 @use 'components/header';
 @use 'components/search';
 @use 'components/sidebar';
+@use 'components/tags';
 @use 'components/toc';
 
 @use 'dartvm';
@@ -77,6 +78,10 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
   font-weight: 400;
   font-family: $site-font-family-alt;
   font-size: $font-size-small;
+
+  .brand {
+    width: 176px;
+  }
 
   .footer-section {
     display: flex;
@@ -341,6 +346,17 @@ main .content {
     padding: $font-size-base * 0.5;
     font-size: $font-size-small;
   }
+}
+
+.list-image {
+  width: 48px;
+  margin: 0.25rem;
+}
+
+.text-icon {
+  margin: 0 0.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .cols3 {
@@ -858,4 +874,22 @@ div.tabs__content h1, h2, h3, h4, h5, h6 {
   &:first-child {
     margin-top: 0;
   }
+}
+
+#skip {
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  z-index: $site-z-skip;
+  padding: 1rem;
+  background-color: $site-color-primary;
+  color: $site-color-white;
+  border-radius: 0.5rem;
+  transform: translateY(-5rem);
+}
+
+
+#skip:focus {
+  opacity: 1;
+  transform: translateY(0);
 }

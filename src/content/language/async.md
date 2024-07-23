@@ -31,7 +31,7 @@ When you need the result of a completed Future,
 you have two options:
 
 * Use `async` and `await`, as described here and in the
-  [asynchronous programming codelab](/codelabs/async-await).
+  [asynchronous programming tutorial](/libraries/async/async-await).
 * Use the Future API, as described in the
   [`dart:async` documentation](/libraries/dart-async#future).
 
@@ -117,7 +117,7 @@ use the [unawaited_futures linter rule][].
 :::
 
 For an interactive introduction to using futures, `async`, and `await`,
-see the [asynchronous programming codelab](/codelabs/async-await).
+see the [asynchronous programming tutorial](/libraries/async/async-await).
 
 
 ## Declaring async functions
@@ -149,7 +149,7 @@ If your function doesn't return a useful value,
 make its return type `Future<void>`.
 
 For an interactive introduction to using futures, `async`, and `await`,
-see the [asynchronous programming codelab](/codelabs/async-await).
+see the [asynchronous programming tutorial](/libraries/async/async-await).
 
 {% comment %}
 TODO #1117: Where else should we cover generalized void?

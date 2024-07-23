@@ -2,6 +2,7 @@
 title: Dart language evolution
 short-title: Language evolution
 description: Notable changes and additions to the Dart programming language.
+lastVerified: 2024-05-14
 ---
 
 This page lists notable changes and additions to the

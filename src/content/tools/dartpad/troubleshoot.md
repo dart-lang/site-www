@@ -12,7 +12,7 @@ For an overview of DartPad, see the
 
 ## Embedded DartPads don't appear
 
-The dart.dev homepage and many codelabs have embedded DartPads.
+The dart.dev homepage and many tutorials have embedded DartPads.
 If these DartPads don't appear at all,
 then try the following:
 
@@ -28,7 +28,7 @@ then try the following:
   If you've disabled cookies, change your settings to
   **allow cookies for dartpad.dev**.
   If you're using embedded DartPads,
-  such as in the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet) or the
+  such as in the [Dart cheatsheet](/resources/dart-cheatsheet) or the
   [implicit animations codelab]({{site.flutter-docs}}/codelabs/implicit-animations),
   you might need to allow cookies for the embedding site domain, as well
   (in these cases, **dart.dev** and **docs.flutter.dev**, respectively).
