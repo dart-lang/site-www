@@ -12,10 +12,12 @@ To update these cards, edit src/_data/docs_cards.yml.
 
 <div class="card-grid card-col3">
 {% for card in docs_cards.main -%}
-  <div class="card">
-    <h3><a href="{{card.url}}">{{card.name}}</a></h3>
-    <p>{{card.description}}</p>
-  </div>
+  <a href="{{card.url}}">
+    <div class="card">
+      <h3>{{card.name}}</h3>
+      <p>{{card.description}}</p>
+    </div>
+  </a>
 {% endfor -%}
 </div>
 
@@ -23,10 +25,12 @@ To update these cards, edit src/_data/docs_cards.yml.
 
 <div class="card-grid card-col2">
 {% for card in docs_cards.learn -%}
-  <div class="card">
-    <h3><a href="{{card.url}}">{{card.name}}</a></h3>
-    <p>{{card.description}}</p>
-  </div>
+  <a href="{{card.url}}">
+    <div class="card">
+      <h3>{{card.name}}</h3>
+      <p>{{card.description}}</p>
+    </div>
+  </a>
 {% endfor -%}
 </div>
 
@@ -34,9 +38,11 @@ To update these cards, edit src/_data/docs_cards.yml.
 
 <div class="card-grid card-col3">
 {% for card in docs_cards.featured -%}
-  <div class="card">
-    <h3><a href="{{card.url}}">{{card.name}}</a></h3>
-    <p>{{card.description}}</p>
-  </div>
+  <a href="{{card.url}}">
+    <div class="card">
+      <h3>{{card.name}}</h3>
+      <p>{{card.description}}</p>
+    </div>
+  </a>
 {% endfor -%}
 </div>

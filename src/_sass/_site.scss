@@ -379,7 +379,7 @@ main .content {
 
 .card-grid {
   display: grid;
-  grid-auto-rows: minmax(5rem, auto);
+  grid-auto-rows: 1fr;
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -390,12 +390,12 @@ main .content {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.card {
-  display: block;
+.card, a.card {
+  height: 100%;
   padding: 1rem;
   overflow: hidden;
   background-color: $flutter-color-lightest-grey;
-  border: 2px solid $flutter-color-darkest-blue;
+  border: 1px solid $site-color-light-grey;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
   color: $site-color-black;
 
@@ -415,14 +415,16 @@ main .content {
     font-size: bootstrap.$h2-font-size;
   }
 
-  a {
-    color: $flutter-color-dark-blue;
-  }
-
   &.narrow {
     width: 250px;
   }
+
+  &:hover {
+    border-bottom: .25rem solid $flutter-color-darkest-blue;
+    padding-bottom: .75rem;
+  }
 }
+
 
 // Support for .card-grid formatted as a markdown unordered list
 ul.card-grid {
