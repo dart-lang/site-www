@@ -275,19 +275,14 @@ $icon-size: 24px;
 $anchor-padding: 4px;
 
 main .content {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     // Push # link targets clear of page header.
     &[id] {
       scroll-margin: 60px;
+      // Let the wrapper set the bottom margin.
+      margin-bottom: 0;
     }
 
-    // Let the wrapper set the bottom margin.
-    margin-bottom: 0;
   }
 
   // Push # link targets clear of page header.
@@ -399,19 +394,19 @@ main .content {
   display: block;
   padding: 1rem;
   overflow: hidden;
-  background-color: $flutter-color-darkest-blue;
+  background-color: $flutter-color-lightest-grey;
   border: 2px solid $flutter-color-darkest-blue;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
-  color: $site-color-card-text;
+  color: $site-color-black;
 
-  h1, h2, h3, h4, h5, h6 {
+  & > h1, h2, h3, h4, h5, h6 {
     font-family: $site-font-family-gsans;
-    color: $flutter-color-lightest-grey;
+    color: $flutter-color-darkest-blue;
     margin-top: 0;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 
     a {
-      color: $flutter-color-lightest-grey;
+      color: $flutter-color-darkest-blue;
       font-family: $site-font-family-gsans;
     }
   }

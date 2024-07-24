@@ -39,3 +39,4 @@ og_image_vers: "?2"
 sdkInfo:
   channel: stable
   version: 3.4.1
+  major: 3.4

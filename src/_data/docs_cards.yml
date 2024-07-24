@@ -37,15 +37,11 @@ main:
   description: Try out Dart in your browser.
   url: /#try-dart
 - name: What's new
-  description: Find out what's new in the latest release.
+  description: >
+    Check out the latest features in Dart.
   url: /guides/whats-new
 
 learn:
-- name: Basic syntax
-  description: >
-    Find out the basics of Dart syntax including keywords,
-    variables, and operators.
-  url: /language/variables
 - name: Language tour
   description: Discover the capabilities of the Dart language.
   url: /language
@@ -55,6 +51,10 @@ learn:
 - name: Packages
   description: Leverage the Dart community's shared software offerings.
   url: /guides/packages
+- name: Core libraries
+  description: >
+    Find out the essentials of Dart functionality.
+  url: /language/variables
 
 featured:
 - name: Swift Interop
