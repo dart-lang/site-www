@@ -16,8 +16,8 @@ importers:
         specifier: 3.0.0-alpha.17
         version: 3.0.0-alpha.17
       '@11ty/eleventy-img':
-        specifier: 5.0.0-beta.7
-        version: 5.0.0-beta.7(encoding@0.1.13)
+        specifier: 5.0.0-beta.8
+        version: 5.0.0-beta.8(encoding@0.1.13)
       firebase-tools:
         specifier: ^13.14.0
         version: 13.14.0(encoding@0.1.13)
@@ -78,8 +78,8 @@ packages:
     resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
 
-  '@11ty/eleventy-img@5.0.0-beta.7':
-    resolution: {integrity: sha512-NUWXXYkMKBkSA0L+yaBtdCCpyxtZfPJYNrZXwmLZ0ry+C6lLmk2YWIy5i+2dkovqbqLvWlKd5tmusn56N8mKUA==}
+  '@11ty/eleventy-img@5.0.0-beta.8':
+    resolution: {integrity: sha512-iK6TJZlPBgIHi2Y6vqnepgjxSGGvyi1MFDGlbmbRjf80ssG2ayULmerO9TpPO43XAz/HTeFVq50bLK4w4wuOXA==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy-plugin-bundle@2.0.2':
@@ -1070,6 +1070,10 @@ packages:
 
   entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
+    engines: {node: '>=0.12'}
+
+  entities@5.0.0:
+    resolution: {integrity: sha512-BeJFvFRJddxobhvEdm5GqHzRV/X+ACeuw0/BuuxsCh1EUZcAIz8+kYmBp/LrQuloy6K1f3a0M7+IhmZ7QnkISA==}
     engines: {node: '>=0.12'}
 
   env-paths@2.2.1:
@@ -3038,13 +3042,13 @@ snapshots:
       - encoding
       - supports-color
 
-  '@11ty/eleventy-img@5.0.0-beta.7(encoding@0.1.13)':
+  '@11ty/eleventy-img@5.0.0-beta.8(encoding@0.1.13)':
     dependencies:
       '@11ty/eleventy-fetch': 4.0.1(encoding@0.1.13)
       '@11ty/eleventy-utils': 1.0.3
       brotli-size: 4.0.0
       debug: 4.3.5
-      entities: 4.5.0
+      entities: 5.0.0
       image-size: 1.1.1
       p-queue: 6.6.2
       sharp: 0.33.4
@@ -4088,6 +4092,8 @@ snapshots:
   entities@3.0.1: {}
 
   entities@4.5.0: {}
+
+  entities@5.0.0: {}
 
   env-paths@2.2.1:
     optional: true
