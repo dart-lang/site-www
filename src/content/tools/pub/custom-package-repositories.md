@@ -213,6 +213,10 @@ your own custom package repository:
   <a href="https://help.cloudsmith.io/docs/dart-repository"><b>Cloudsmith</b></a>
 </li>
 <li>
+  <img src="/assets/img/tools/proget.svg" class="list-image" alt="Inedo ProGet logo">
+  <a href="https://docs.inedo.com/docs/proget/feeds/pub"><b>Inedo ProGet</b></a>
+</li>  
+<li>
   <img src="/assets/img/tools/jetbrains-space.svg" class="list-image" alt="JetBrains Space logo">
   <a href="https://www.jetbrains.com/help/space/dart-package-repository.html"><b>JetBrains Space</b></a>
 </li>
