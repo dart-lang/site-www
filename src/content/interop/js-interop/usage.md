@@ -416,7 +416,7 @@ void main() {
 }
 ```
 
-```JS
+```js
 globalThis.exportedFunction('hello world');
 ```
 
