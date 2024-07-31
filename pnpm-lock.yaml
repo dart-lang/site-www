@@ -16,8 +16,8 @@ importers:
         specifier: 3.0.0-alpha.18
         version: 3.0.0-alpha.18
       '@11ty/eleventy-img':
-        specifier: 5.0.0-beta.8
-        version: 5.0.0-beta.8(encoding@0.1.13)
+        specifier: 5.0.0-beta.9
+        version: 5.0.0-beta.9(encoding@0.1.13)
       firebase-tools:
         specifier: ^13.14.2
         version: 13.14.2(encoding@0.1.13)
@@ -78,8 +78,8 @@ packages:
     resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
 
-  '@11ty/eleventy-img@5.0.0-beta.8':
-    resolution: {integrity: sha512-iK6TJZlPBgIHi2Y6vqnepgjxSGGvyi1MFDGlbmbRjf80ssG2ayULmerO9TpPO43XAz/HTeFVq50bLK4w4wuOXA==}
+  '@11ty/eleventy-img@5.0.0-beta.9':
+    resolution: {integrity: sha512-Vd+i3ECwipCxgdoA1ylbIYJtePE+FOZfPU5B3G8EVjqZXOTByFL7yHDzX3iGYq2pd+S5+/iEtURDK4yzvilmhQ==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy-plugin-bundle@2.0.2':
@@ -920,15 +920,6 @@ packages:
 
   debug@4.3.1:
     resolution: {integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
-  debug@4.3.5:
-    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -3050,7 +3041,7 @@ snapshots:
 
   '@11ty/eleventy-fetch@4.0.1(encoding@0.1.13)':
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
       flat-cache: 3.2.0
       node-fetch: 2.7.0(encoding@0.1.13)
       p-queue: 6.6.2
@@ -3058,12 +3049,12 @@ snapshots:
       - encoding
       - supports-color
 
-  '@11ty/eleventy-img@5.0.0-beta.8(encoding@0.1.13)':
+  '@11ty/eleventy-img@5.0.0-beta.9(encoding@0.1.13)':
     dependencies:
       '@11ty/eleventy-fetch': 4.0.1(encoding@0.1.13)
       '@11ty/eleventy-utils': 1.0.3
       brotli-size: 4.0.0
-      debug: 4.3.5
+      debug: 4.3.6
       entities: 5.0.0
       image-size: 1.1.1
       p-queue: 6.6.2
@@ -3486,13 +3477,13 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -3978,10 +3969,6 @@ snapshots:
       ms: 2.1.3
 
   debug@4.3.1:
-    dependencies:
-      ms: 2.1.2
-
-  debug@4.3.5:
     dependencies:
       ms: 2.1.2
 
@@ -4487,7 +4474,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
@@ -4717,28 +4704,28 @@ snapshots:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@7.0.5:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -5419,7 +5406,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       get-uri: 6.0.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
@@ -5602,7 +5589,7 @@ snapshots:
   proxy-agent@6.4.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       lru-cache: 7.18.3
@@ -5918,7 +5905,7 @@ snapshots:
   socks-proxy-agent@8.0.4:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
@@ -6181,7 +6168,7 @@ snapshots:
 
   universal-analytics@0.5.3:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
       uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
