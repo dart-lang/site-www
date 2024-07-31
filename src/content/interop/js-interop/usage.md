@@ -389,6 +389,47 @@ but can often be elided on and within interop types and on extension members as
 the compiler can tell it is a JS interop type from the representation type and
 on-type.
 
+## Exporting Dart code to JS
+
+The above sections show how to call JS members from Dart. It's also useful to
+*export* Dart code so that it can be used in JS. The mechanism to do this
+involves exporting Dart functions, which requires a conversion like
+[`Function.toJS`] that wraps the Dart function with a JS function. Once
+converted, we can pass the resulting JS function to JS through an interop
+member, which can then be called later in JS.
+
+For example, this code converts a Dart function and uses interop to set it in a
+global property, which is then called in JS:
+
+```dart
+import 'dart:js_interop';
+
+@JS()
+external set exportedFunction(JSFunction value);
+
+void printString(JSString string) {
+  print(string.toDart);
+}
+
+void main() {
+  exportedFunction = printString.toJS;
+}
+```
+
+```JS
+globalThis.exportedFunction('hello world');
+```
+
+Functions that are exported this way have type [restrictions] similar to those
+of interop members.
+
+Sometimes it's useful to export an entire Dart interface so that JS can interact
+with a Dart object instead of individual functions. In order to do this, the
+class should be marked as exportable using [`@JSExport`] and an instance of that
+class should be wrapped using [`createJSInteropWrapper`]. For a more detailed
+look on how to do that and how it can be used to mock JS values, see the
+[mocking tutorial].
+
 ## `dart:js_interop` and `dart:js_interop_unsafe`
 
 [`dart:js_interop`] contains all the necessary members you should need,
@@ -443,6 +484,10 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [property accessors]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
 [utility functions]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyOperatorExtension.html
 [`@JS()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JS-class.html
+[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`@JSExport`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSExport-class.html
+[`createJSInteropWrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/createJSInteropWrapper.html
+[mocking tutorial]: /interop/js-interop/mock
 [`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
 [`globalContext`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/globalContext.html
 [Helpers to inspect the type of JS values]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html
