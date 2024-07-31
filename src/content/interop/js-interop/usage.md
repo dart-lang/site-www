@@ -389,14 +389,13 @@ but can often be elided on and within interop types and on extension members as
 the compiler can tell it is a JS interop type from the representation type and
 on-type.
 
-## Exporting Dart code to JS
+## Exporting Dart functions and objects to JS
 
 The above sections show how to call JS members from Dart. It's also useful to
-*export* Dart code so that it can be used in JS. The mechanism to do this
-involves exporting Dart functions, which requires a conversion like
-[`Function.toJS`] that wraps the Dart function with a JS function. Once
-converted, we can pass the resulting JS function to JS through an interop
-member, which can then be called later in JS.
+*export* Dart code so that it can be used in JS. To export a Dart function to
+JS, first convert it using [`Function.toJS'], which wraps the Dart function with
+a JS function. Then, pass the wrapped function to JS through an interop member.
+At that point, it's ready to be called by other JS code.
 
 For example, this code converts a Dart function and uses interop to set it in a
 global property, which is then called in JS:
@@ -424,11 +423,10 @@ Functions that are exported this way have type [restrictions] similar to those
 of interop members.
 
 Sometimes it's useful to export an entire Dart interface so that JS can interact
-with a Dart object instead of individual functions. In order to do this, the
-class should be marked as exportable using [`@JSExport`] and an instance of that
-class should be wrapped using [`createJSInteropWrapper`]. For a more detailed
-look on how to do that and how it can be used to mock JS values, see the
-[mocking tutorial].
+with a Dart object. To do this, mark the Dart class as exportable using
+[`@JSExport`] and wrap instances of that class using [`createJSInteropWrapper`].
+For a more detailed explanation of this technique, including how to mock JS
+values, see the [mocking tutorial].
 
 ## `dart:js_interop` and `dart:js_interop_unsafe`
 

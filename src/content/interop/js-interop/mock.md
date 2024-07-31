@@ -98,8 +98,8 @@ void main() {
 `@JSExport` allows you to declare a class that can be used in
 `createJSInteropWrapper`. `createJSInteropWrapper` will create an object literal
 that maps each of the class' instance member names (or renames) to a JS
-callback, which is created using [`Function.toJS`]. This JS callback then calls
-the instance member when called. In the above example, getting and setting
+callback, which is created using [`Function.toJS`]. When called, the JS callback
+will in turn call the instance member. In the above example, getting and setting
 `counter.value` gets and sets `fakeCounter.value`.
 
 You can specify only some members of a class to be exported by omitting the
