@@ -47,6 +47,7 @@ export default function (eleventyConfig) {
     strictFilters: true,
     lenientIf: true,
   });
+  eleventyConfig.setLiquidParameterParsing('builtin');
 
   eleventyConfig.addFilter('regex_replace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
