@@ -298,9 +298,13 @@ platforms:
   macos:
 ```
 
-:::flutter-note
-Flutter plugins use [plugin declarations][]
-instead of this field.
+:::
+flutter-note Flutter plugins platform support is by default derived from the
+[plugin declarations][].
+
+If there is a discrepancy between the plugin declaration and the actual platform
+support, a top-level `platforms` declaration can still be used and takes
+precedence over the Flutter plugin declaration when deciding platform support.
 :::
 
 :::version-note
