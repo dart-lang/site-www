@@ -298,8 +298,8 @@ platforms:
   macos:
 ```
 
-:::
-flutter-note Flutter plugins platform support is by default derived from the
+:::If you use Flutter
+Flutter plugins platform support is by default derived from the
 [plugin declarations][].
 
 If there is a discrepancy between the plugin declaration and the actual platform
