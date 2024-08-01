@@ -13,8 +13,8 @@ importers:
         version: 4.6.2
     devDependencies:
       '@11ty/eleventy':
-        specifier: 3.0.0-alpha.18
-        version: 3.0.0-alpha.18
+        specifier: 3.0.0-beta.1
+        version: 3.0.0-beta.1
       '@11ty/eleventy-img':
         specifier: 5.0.0-beta.8
         version: 5.0.0-beta.8(encoding@0.1.13)
@@ -90,8 +90,8 @@ packages:
     resolution: {integrity: sha512-nULO91om7vQw4Y/UBjM8i7nJ1xl+/nyK4rImZ41lFxiY2d+XUz7ChAj1CDYFjrLZeu0utAYJTZ45LlcHTkUG4g==}
     engines: {node: '>=12'}
 
-  '@11ty/eleventy@3.0.0-alpha.18':
-    resolution: {integrity: sha512-CQu4HOtYJySEexVRT/tFtLtqtI4+winun0NFmFIUp0SvxRpP46+ZxBvBc9ezSFLo1nN0zJkwoG8GTkhMPOThtg==}
+  '@11ty/eleventy@3.0.0-beta.1':
+    resolution: {integrity: sha512-iJT7vekH11l8PAUPBfUAcb5oWbYK0w4ijgwDTutUsk6tX9rp4ZRL1jdhVWvZq04/rkc55mczNFPPhHB/XO1/qw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3082,7 +3082,7 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
 
-  '@11ty/eleventy@3.0.0-alpha.18':
+  '@11ty/eleventy@3.0.0-beta.1':
     dependencies:
       '@11ty/dependency-tree': 3.0.1
       '@11ty/dependency-tree-esm': 1.0.0
@@ -3486,13 +3486,13 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -4487,7 +4487,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
@@ -4717,28 +4717,28 @@ snapshots:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@7.0.5:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -5419,7 +5419,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       get-uri: 6.0.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
@@ -5602,7 +5602,7 @@ snapshots:
   proxy-agent@6.4.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       lru-cache: 7.18.3
@@ -5918,7 +5918,7 @@ snapshots:
   socks-proxy-agent@8.0.4:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.5
+      debug: 4.3.6
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
@@ -6181,7 +6181,7 @@ snapshots:
 
   universal-analytics@0.5.3:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
       uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
