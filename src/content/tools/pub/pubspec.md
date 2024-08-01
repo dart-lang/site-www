@@ -298,7 +298,7 @@ platforms:
   macos:
 ```
 
-:::If you use Flutter
+:::note If you use Flutter
 Flutter plugins platform support is by default derived from the
 [plugin declarations][].
 
