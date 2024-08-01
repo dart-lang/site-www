@@ -393,7 +393,7 @@ on-type.
 
 The above sections show how to call JS members from Dart. It's also useful to
 *export* Dart code so that it can be used in JS. To export a Dart function to
-JS, first convert it using [`Function.toJS'], which wraps the Dart function with
+JS, first convert it using [`Function.toJS`], which wraps the Dart function with
 a JS function. Then, pass the wrapped function to JS through an interop member.
 At that point, it's ready to be called by other JS code.
 
