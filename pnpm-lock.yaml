@@ -16,8 +16,8 @@ importers:
         specifier: 3.0.0-beta.1
         version: 3.0.0-beta.1
       '@11ty/eleventy-img':
-        specifier: 5.0.0-beta.8
-        version: 5.0.0-beta.8(encoding@0.1.13)
+        specifier: 5.0.0-beta.10
+        version: 5.0.0-beta.10(encoding@0.1.13)
       firebase-tools:
         specifier: ^13.14.2
         version: 13.14.2(encoding@0.1.13)
@@ -78,8 +78,8 @@ packages:
     resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
 
-  '@11ty/eleventy-img@5.0.0-beta.8':
-    resolution: {integrity: sha512-iK6TJZlPBgIHi2Y6vqnepgjxSGGvyi1MFDGlbmbRjf80ssG2ayULmerO9TpPO43XAz/HTeFVq50bLK4w4wuOXA==}
+  '@11ty/eleventy-img@5.0.0-beta.10':
+    resolution: {integrity: sha512-4KwR/jKHu7GRsY7Ug4OFUusa49ITMM2a+TT5K9i67mnNUDk9PdmUv3p0u7sWz4zCPGYHjAplaBlyEo/CtqNt8g==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy-plugin-bundle@2.0.2':
@@ -920,15 +920,6 @@ packages:
 
   debug@4.3.1:
     resolution: {integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
-  debug@4.3.5:
-    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -3050,7 +3041,7 @@ snapshots:
 
   '@11ty/eleventy-fetch@4.0.1(encoding@0.1.13)':
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
       flat-cache: 3.2.0
       node-fetch: 2.7.0(encoding@0.1.13)
       p-queue: 6.6.2
@@ -3058,12 +3049,12 @@ snapshots:
       - encoding
       - supports-color
 
-  '@11ty/eleventy-img@5.0.0-beta.8(encoding@0.1.13)':
+  '@11ty/eleventy-img@5.0.0-beta.10(encoding@0.1.13)':
     dependencies:
       '@11ty/eleventy-fetch': 4.0.1(encoding@0.1.13)
       '@11ty/eleventy-utils': 1.0.3
       brotli-size: 4.0.0
-      debug: 4.3.5
+      debug: 4.3.6
       entities: 5.0.0
       image-size: 1.1.1
       p-queue: 6.6.2
@@ -3978,10 +3969,6 @@ snapshots:
       ms: 2.1.3
 
   debug@4.3.1:
-    dependencies:
-      ms: 2.1.2
-
-  debug@4.3.5:
     dependencies:
       ms: 2.1.2
 
