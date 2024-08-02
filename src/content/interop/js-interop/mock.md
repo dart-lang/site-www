@@ -97,9 +97,10 @@ void main() {
 
 `@JSExport` allows you to declare a class that can be used in
 `createJSInteropWrapper`. `createJSInteropWrapper` will create an object literal
-that maps each of the class' instance member names (or renames) to a JS callback
-that triggers the instance member when called. In the above example, getting and
-setting `counter.value` gets and sets `fakeCounter.value`.
+that maps each of the class' instance member names (or renames) to a JS
+callback, which is created using [`Function.toJS`]. When called, the JS callback
+will in turn call the instance member. In the above example, getting and setting
+`counter.value` gets and sets `fakeCounter.value`.
 
 You can specify only some members of a class to be exported by omitting the
 annotation from the class and instead only annotate the specific members. You
@@ -117,6 +118,7 @@ non-instance members unless the user explicitly replaces the real API in JS.
 
 [Usage]: /interop/js-interop/usage
 [`createJSInteropWrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/createJSInteropWrapper.html
+[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`@JSExport`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSExport-class.html
 [limitation is true for extension members]: {{site.repo.dart.org}}/mockito/blob/master/FAQ.md#how-do-i-mock-an-extension-method
 [extension types]: /language/extension-types
