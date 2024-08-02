@@ -1,8 +1,10 @@
 ---
 title: Who uses Dart
 description: >-
-  Mobile apps and Google web apps are two of
+  Mobile and web apps are two of
   the most common uses for the Dart language.
+  Learn about and try some examples
+  of where Dart is used.
 toc: false
 ---
 
