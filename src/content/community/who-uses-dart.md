@@ -44,8 +44,8 @@ Dart is used in almost every product group at Google:
 
 * The [Google Play Console][] lets app publishers market Android apps, and
   is written completely in Dart.
-* The [Google Ads][] team continues to grow, with hundreds of SWEs primarily
-  writing Dart code.
+* The [Google Ads][] team continues to grow, with
+  hundreds of SWEs primarily writing Dart code.
 * The [Google Assistant][] team uses Flutter and Dart to
   drive the overall system UI of their Smart Displays.
 * Both the UI and much of the back-end code for the
