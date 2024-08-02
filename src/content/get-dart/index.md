@@ -91,16 +91,22 @@ run the same command to install the Dart SDK from your package manager.
   <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
-<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+<div id="tab-sdk-install-windows" class="tabs__content current">
+
 {% include 'install/windows.md' %}
+
 </div>
 
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-linux" class="tabs__content">
+
 {% include 'install/linux.md' %}
+
 </div>
 
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-mac" class="tabs__content">
+
 {% include 'install/macos.md' %}
+
 </div>
 
 ## Release channel reference {:#release-channels}

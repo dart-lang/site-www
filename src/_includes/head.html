@@ -15,7 +15,7 @@
   {% assign desc = description | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
   {% unless desc and desc != '' -%}
     {% assign error = page.url | append: ' must have a description specified!' -%}
-    {{ error | throw_error }}
+    {{ error | throwError }}
   {% endunless %}
   <meta name="description" content="{{desc}}">
   <title>{% if short-title %}{{short-title}}{% else %}{{title}}{% endif %} | {{site.title}}</title>

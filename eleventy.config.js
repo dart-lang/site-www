@@ -2,15 +2,7 @@
 // It configures the core 11ty behavior and registers
 // plugins and customization that live in `/src/_11ty`.
 
-import {
-  activeNavEntryIndexArray,
-  arrayToSentenceString,
-  breadcrumbsForPage,
-  generateToc,
-  regexReplace,
-  toISOString,
-  underscoreBreaker,
-} from './src/_11ty/filters.js';
+import { registerFilters } from './src/_11ty/filters.js';
 import { markdown } from './src/_11ty/plugins/markdown.js';
 import { configureHighlighting } from './src/_11ty/plugins/highlight.js';
 
@@ -19,6 +11,7 @@ import yaml from 'js-yaml';
 
 import * as path from 'node:path';
 import * as sass from 'sass';
+import {registerShortcodes} from "./src/_11ty/shortcodes.js";
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -46,20 +39,10 @@ export default function (eleventyConfig) {
     strictFilters: true,
     lenientIf: true,
   });
+  eleventyConfig.setLiquidParameterParsing('builtin');
 
-  eleventyConfig.addFilter('regex_replace', regexReplace);
-  eleventyConfig.addFilter('toISOString', toISOString);
-  eleventyConfig.addFilter(
-    'active_nav_entry_index_array',
-    activeNavEntryIndexArray,
-  );
-  eleventyConfig.addFilter('array_to_sentence_string', arrayToSentenceString);
-  eleventyConfig.addFilter('underscore_breaker', underscoreBreaker);
-  eleventyConfig.addFilter('throw_error', function (error) {
-    throw new Error(error);
-  });
-  eleventyConfig.addFilter('generate_toc', generateToc);
-  eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
+  registerFilters(eleventyConfig);
+  registerShortcodes(eleventyConfig);
 
   eleventyConfig.addTemplateFormats('scss');
   eleventyConfig.addWatchTarget('src/_sass');

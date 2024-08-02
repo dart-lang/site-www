@@ -32,15 +32,11 @@ If the expression is an identifier, you can omit the `{}`.
 
 Here are some examples of using string interpolation:
 
-<div class="table-wrapper">
-
 | String                      | Result                             |
 |-----------------------------|------------------------------------|
 | `'${3 + 2}'`                | `'5'`                              |
 | `'${"word".toUpperCase()}'` | `'WORD'`                           |
 | `'$myObject'`               | The value of `myObject.toString()` |
-
-</div>
 
 ### Code example {:.no_toc}
 

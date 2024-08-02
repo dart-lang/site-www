@@ -30,7 +30,7 @@ and new developer tools.
 ### [{{book.title}}]({{book.link}})
 {:.title}
 
-by {{book.authors | array_to_sentence_string}}
+by {{book.authors | arrayToSentenceString}}
 {:.authors.h4}
 
 {{book.desc}}

@@ -1171,8 +1171,6 @@ different between the two languages.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 
-<div class="table-wrapper">
-
 | **Meaning**                                        | **Dart operator** | **Swift equivalent**     |
 |----------------------------------------------------|-------------------|--------------------------|
 | Typecast (description below)                       | expr as T         | expr as! T<br>expr as? T |
@@ -1180,7 +1178,6 @@ different between the two languages.
 | True if the object doesn't have the specified type | expr is! T        | !(expr is T)             |
 
 {:.table .table-striped .nowrap}
-</div>
 
 The result of `obj is T` is `true` if `obj`
 is a subtype of the type specified by `T`.

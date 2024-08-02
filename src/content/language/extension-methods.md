@@ -17,12 +17,7 @@ it suggests extension methods alongside regular methods.
 If watching videos helps you learn,
 check out this overview of extension methods.
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about extension methods in Dart"
-  src="{{yt.embed}}/D3j0OSfT9ZI"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "D3j0OSfT9ZI", "Dart extension methods" %}
 
 ## Overview
 

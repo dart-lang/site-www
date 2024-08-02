@@ -255,14 +255,9 @@ var strings = charCodes.map((code) => String.fromCharCode(code));
 var buffers = charCodes.map((code) => StringBuffer(code));
 ```
 
-For visual learners, watch this Decoding Flutter video on tear-offs.
+For more discussion, watch this Decoding Flutter video on tear-offs.
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about tear-offs in Dart"
-  src="{{yt.embed}}/OmCaloD7sis"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "OmCaloD7sis", "Dart Tear-offs | Decoding Flutter" %}
 
 ## Instance Variable Initialization
 

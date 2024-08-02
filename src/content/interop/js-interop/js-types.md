@@ -74,8 +74,6 @@ int integer = jsNum.toDartInt;
 Not all JS types have a conversion, and not all Dart types have a conversion.
 Generally, the conversion table looks like the following:
 
-<div class="table-wrapper" markdown="1">
-
 | `dart:js_interop` type              | Dart type                                |
 | ----------------------------------- | ---------------------------------------- |
 | `JSNumber`, `JSBoolean`, `JSString` | `num`, `int`, `double`, `bool`, `String` |
@@ -87,7 +85,6 @@ Generally, the conversion table looks like the following:
 | `ExternalDartReference`             | Opaque Dart value                        |
 
 {:.table .table-striped}
-</div>
 
 :::warning
 Compiling to JavaScript vs [Wasm][] can introduce inconsistencies in both

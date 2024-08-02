@@ -1,5 +1,5 @@
-{% assign page_url_path = url | regex_replace: '/index$|/index\.html$|\.html$|/$' -%}
-{% assign active_entries = nav | active_nav_entry_index_array: page_url_path -%}
+{% assign page_url_path = url | regexReplace: '/index$|/index\.html$|\.html$|/$' -%}
+{% assign active_entries = nav | activeNavEntryIndexArray: page_url_path -%}
 
 <ul class="nav flex-column">
   {%- for entry in nav -%}
