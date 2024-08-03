@@ -9,6 +9,7 @@ import {
   generateToc,
   regexReplace,
   toISOString,
+  toSimpleDate,
   underscoreBreaker,
 } from './src/_11ty/filters.js';
 import { markdown } from './src/_11ty/plugins/markdown.js';
@@ -47,6 +48,7 @@ export default function (eleventyConfig) {
     lenientIf: true,
   });
 
+  eleventyConfig.addFilter('toSimpleDate', toSimpleDate);
   eleventyConfig.addFilter('regex_replace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter(

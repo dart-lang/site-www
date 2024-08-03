@@ -4,6 +4,17 @@ import { selectAll } from 'hast-util-select';
 import { toText } from 'hast-util-to-text';
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
 
+export function toSimpleDate(input) {
+  let dateString;
+  if (input instanceof Date) {
+    dateString = input.toISOString();
+  } else {
+    // If it's not a Date object, assume it's already in string format.
+    dateString = input;
+  }
+  return dateString.split('T')[0];
+}
+
 /**
  * Replace text in {@link input} that matches the specified {@link regex}
  * with the specified {@link replacement}.
