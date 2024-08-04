@@ -6,8 +6,6 @@ description: The tools that support the Dart language.
 When you're ready to create an app, get the SDK and tools for your app
 type. If you aren't sure which tools you need, **get the Flutter SDK.**
 
-<div class="table-wrapper">
-
 | App type                  | Get started instructions                                     | Tool information                                           |
 |---------------------------|--------------------------------------------------------------|------------------------------------------------------------|
 | Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide)           |
@@ -15,7 +13,6 @@ type. If you aren't sure which tools you need, **get the Flutter SDK.**
 | Server or command line    | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [specialized tools](#server) |
 
 {:.table .table-striped}
-</div>
 
 [General-purpose tools]: #general-purpose-tools
 

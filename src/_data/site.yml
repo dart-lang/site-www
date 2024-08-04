@@ -29,6 +29,10 @@ announce: https://groups.google.com/a/dartlang.org/g/announce
 android-dev: https://developer.android.com
 apple-dev: https://developer.apple.com
 
+yt:
+  watch: 'https://www.youtube.com/watch'
+  playlist: 'https://www.youtube.com/playlist?list='
+
 show_banner: false
 
 # Increment this global og:image URL version number (used as a query parameter)

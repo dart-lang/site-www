@@ -2,7 +2,7 @@
 <html lang="en">
   {% include 'head.html' %}
   {% if toc != false -%}
-    {% assign tocContents = content | generate_toc %}
+    {% assign tocContents = content | generateToc %}
     {% if tocContents == null or tocContents == '' -%}
       {% assign toc = false %}
     {% endif -%}
@@ -22,7 +22,7 @@
           {% include 'navigation-sub.html' -%}
           <div id="site-content-title">
             {% if underscore_breaker_titles -%}
-            <h1>{{title | underscore_breaker}}</h1>
+            <h1>{{title | underscoreBreaker}}</h1>
             {% else %}
             <h1>{{title }}</h1>
             {% endif -%}

@@ -74,7 +74,7 @@ Java's _thread-local storage_
 also has some similarities.
 Closest of all is Brian Ford's JavaScript port of Dart zones,
 [zone.js](https://github.com/btford/zone.js/), which he describes in
-[this video]({{yt.watch}}?v=3IqtmUscE_U).
+[this video]({{site.yt.watch}}?v=3IqtmUscE_U).
 
 
 ## Zone basics

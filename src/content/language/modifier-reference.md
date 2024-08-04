@@ -17,8 +17,6 @@ This page contains reference information for
 
 The valid combinations of class modifiers and their resulting capabilities are:
 
-<div class="table-wrapper">
-
 | Declaration                 | [Construct][]? | [Extend][]? | [Implement][]? | [Mix in][]? | [Exhaustive][]? |
 |-----------------------------|----------------|-------------|----------------|-------------|-----------------|
 | `class`                     | **Yes**        | **Yes**     | **Yes**        | No          | No              |
@@ -38,7 +36,6 @@ The valid combinations of class modifiers and their resulting capabilities are:
 | `base mixin`                | No             | No          | No             | **Yes**     | No              |
 
 {:.table .table-striped .nowrap}
-</div>
 
 [Construct]: /language/classes#using-constructors
 [Extend]: /language/extend
@@ -51,8 +48,6 @@ The valid combinations of class modifiers and their resulting capabilities are:
 Certain [combinations](/language/class-modifiers#combining-modifiers)
 of modifiers are not allowed:
 
-<div class="table-wrapper">
-
 | Combination                                   | Reasoning                                                                                                                                       |
 |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | `base`, `interface`, and `final`              | All control the same two capabilities (`extend` and `implement`), so are mutually exclusive.                                                    |
@@ -64,4 +59,3 @@ of modifiers are not allowed:
 | `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
 
 {:.table .table-striped .nowrap}
-</div>
