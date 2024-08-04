@@ -366,10 +366,10 @@ During Google I/O 2023, we released the following videos:
 * [Rethinking Dart interoperability with Android][]
 * [How to build a package in Dart][]
 
-[What's new in Dart and Flutter]: {{yt.watch}}?v=yRlwOdCK7Ho
-[American Sign Language version]: {{yt.watch}}?v=QbMgjVB0XMI
-[Rethinking Dart interoperability with Android]: {{yt.watch}}?v=ZWp2FJ2TuJs
-[How to build a package in Dart]: {{yt.watch}}?v=8V_TLiWszK0
+[What's new in Dart and Flutter]: {{site.yt.watch}}?v=yRlwOdCK7Ho
+[American Sign Language version]: {{site.yt.watch}}?v=QbMgjVB0XMI
+[Rethinking Dart interoperability with Android]: {{site.yt.watch}}?v=ZWp2FJ2TuJs
+[How to build a package in Dart]: {{site.yt.watch}}?v=8V_TLiWszK0
 
 ## January 25, 2023: 2.19 + 3.0 alpha releases
 

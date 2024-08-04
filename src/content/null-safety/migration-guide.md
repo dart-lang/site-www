@@ -39,12 +39,7 @@ make sure that all of your dependencies are ready.
 To get an informal look at the experience of using the migration tool,
 watch this video:
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about the null-safety migration tool"
-  src="{{yt.embed}}/eBr5tlumwlg"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "eBr5tlumwlg", "How to migrate Dart packages to null safety" %}
 
 [null safety]: /null-safety
 [Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9

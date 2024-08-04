@@ -1,7 +1,6 @@
 ---
 title: Videos
 description: Learn by watching! Here's a collection of videos about Dart.
-dart-playlist-id: PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 ---
 
 Here are some videos about the Dart language and core libraries.
@@ -19,25 +18,10 @@ A playlist of Google-produced videos on Dart's capabilities.
 These range from 5-minute talks on Dart asynchrony support
 to the Dart session from Google I/O 2019.
 
-<iframe
-  {{yt.std-size}}
-  title="Watch the talks on Dart asynchrony support"
-  src="{{yt.embed-series}}{{dart-playlist-id}}"
-  {{yt.set}}>
-</iframe>
-
-[Playlist: Dart videos]({{yt.playlist}}{{dart-playlist-id}})
+{% ytEmbed "PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J", "Dart videos from Google", "series" %}
 
 ## Dart training course in Brazilian Portuguese
 
 Nesta série de vídeos estudaremos juntos a linguagem Dart.
 
-<iframe
-  {{yt.std-size}}
-  title="Watch the talks on Dart asynchrony support"
-  src="{{yt.embed-series}}PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ"
-  {{yt.set}}>
-</iframe>
-
-
-[Playlist: Dart Curso Completo]({{yt.playlist}}PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ)
+{% ytEmbed "PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ", "Dart Curso Completo", "series" %}

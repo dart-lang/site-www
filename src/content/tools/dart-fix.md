@@ -17,15 +17,10 @@ finds and fixes two types of issues:
 To learn about `dart fix` in a video format,
 check out this [deep dive][] on **Decoding Flutter**:
 
-<iframe
-  {{yt.std-size}}
-  src="{{yt.embed}}/OBIuSrg_Quo"
-  title="Learn how to use 'dart fix'"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "OBIuSrg_Quo", "Using Dart analyze & Dart fix" %}
 :::
 
-[deep dive]: {{yt.watch}}/OBIuSrg_Quo
+[deep dive]: {{site.yt.watch}}/OBIuSrg_Quo
 
 <a id="usage"></a>
 ## Apply fixes
