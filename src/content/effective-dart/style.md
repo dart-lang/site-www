@@ -218,14 +218,14 @@ or `HttpSftp` for the latter.
 
 Two-letter abbreviations and acronyms are the exception.
 If both letters are capitalized in English,
-then they should both stay capitalized when used in an identifer.
+then they should both stay capitalized when used in an identifier.
 Otherwise, capitalize it like a word.
 
 ```dart tag=good
 // Longer than two letters, so always like a word:
 Http // "hypertext transfer protocol"
 Nasa // "national aeronautics and space administration"
-Uri // "uniform resource locator"
+Uri // "uniform resource identifier"
 Esq // "esquire"
 Ave // "avenue"
 
@@ -243,7 +243,7 @@ Rd // "road"
 ```dart tag=bad
 HTTP // "hypertext transfer protocol"
 NASA // "national aeronautics and space administration"
-URI // "uniform resource locator"
+URI // "uniform resource identifier"
 esq // "esquire"
 Ave // "avenue"
 
@@ -257,7 +257,7 @@ RD // "road"
 ```
 
 When any form of abbreviation comes at the beginning
-of a lowerCamelCase identifier, lowercase the identifer:
+of a `lowerCamelCase` identifier, the abbreviation should be all lowercase:
 
 ```dart
 var httpConnection = connect();
