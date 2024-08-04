@@ -1,6 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
+lastVerified: 2024-08-04
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -16,6 +17,54 @@ and follow the [Dart blog][].
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+
+## August TODO, 2024: 3.5 release
+
+This section lists notable changes made from May 15, 2024,
+through August TODO, 2024.
+For details about the 3.5 release of Dart,
+check out the [3.5 blog post][] and the [SDK changelog][3-5-changelog].
+
+[3.5 blog post]: https://medium.com/dartlang/dart-3-4-bd8d23b4462a
+[3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Clarified the status and intended uses of both the
+  new and legacy [web platform libraries][].
+* Expanded the documentation on [publishing prerelease versions][]
+  of packages to the pub.dev site.
+* Added a page covering the new [`dart pub unpack` command][].
+* Documented the new [`--skip-validation` flag][] for `dart pub publish` and
+  the [`--tighten` flag][] for `dart pub downgrade`.
+* Provided best practice guidance for package authors to
+  [test their package with downgraded dependencies][].
+* Improved the [Fixing type promotion failures][] guide and added
+  code highlighting to better indicate relevant code.
+* Supplemented the [Dart installation documentation][] with
+  uninstall and cleanup instructions.
+* Introduced new docs and code samples covering
+  [function][func-tear] and [constructor][cons-tear] tear-offs.
+* Explained how to [export Dart functions and objects to be used from JS][].
+* Added glossary entries for [subclass][] and [subtype][]
+  explaining the terms in the context of Dart.
+
+[web platform libraries]: /libraries#web-platform-libraries
+[publishing prerelease versions]: /tools/pub/publishing#publishing-prereleases
+[`dart pub unpack` command]: /tools/pub/cmd/pub-unpack
+[`--skip-validation` flag]: /tools/pub/cmd/pub-lish#skip-validation
+[`--tighten` flag]: /tools/pub/cmd/pub-downgrade#tighten
+[test their package with downgraded dependencies]: /tools/pub/dependencies#test-with-downgraded-dependencies
+[Fixing type promotion failures]: /tools/non-promotion-reasons
+[Dart installation documentation]: /get-dart
+[func-tear]: /language/functions#tear-offs
+[cons-tear]: /language/constructors#constructor-tear-offs
+[export Dart functions and objects to be used from JS]: /interop/js-interop/usage#export
+[subclass]: /resources/glossary#subclass
+[subtype]: /resources/glossary#subtype
 
 ## May 14, 2024: 3.4 release
 
@@ -68,7 +117,7 @@ we made the following changes to this site:
 
 ### Articles added to the Dart blog {:.no_toc}
 
-We published the following article on the Dart blog:
+We published the following articles on the Dart blog:
 
 * [History of JS interop in Dart][blog-3-28-24]
 * [Dart in Google Summer of Code 2024][blog-3-5-24]

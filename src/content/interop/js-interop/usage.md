@@ -389,7 +389,8 @@ but can often be elided on and within interop types and on extension members as
 the compiler can tell it is a JS interop type from the representation type and
 on-type.
 
-## Exporting Dart functions and objects to JS
+<a id="exporting-dart-functions-and-objects-to-js" aria-hidden="true"></a>
+## Export Dart functions and objects to JS {:#export}
 
 The above sections show how to call JS members from Dart. It's also useful to
 *export* Dart code so that it can be used in JS. To export a Dart function to
