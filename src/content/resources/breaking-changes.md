@@ -1,7 +1,7 @@
 ---
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
-lastVerified: 2024-05-14
+lastVerified: 2024-08-04
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
@@ -68,6 +68,25 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
+## 3.6.0
+
+**Tentative**<br>
+The following changes are expected to be included in the 3.6 stable release,
+but the final list will likely change before then.
+To reduce the potential impact of these changes, consider
+accounting for them before the 3.6 release.
+
+### Language {:.no_toc}
+
+- [The context used by Dart to perform type inference on
+  the operand of a throw expression has been changed from
+  the "unknown type" to `Object`][56065].
+  This makes the type system more self-consistent, because
+  it reflects the fact that it's not legal to throw `null`.
+  This change is not expected to make any difference in practice.
+
+[56065]: {{site.repo.dart.sdk}}/issues/56065
+
 ## 3.5.0
 
 **Tentative**<br>
@@ -89,6 +108,35 @@ accounting for them before the 3.5.0 release.
 [55418]: {{site.repo.dart.sdk}}/issues/55418
 [55436]: {{site.repo.dart.sdk}}/issues/55436
 
+### Libraries {:.no_toc}
+
+#### `dart:core`
+
+- [`DateTime` now stores microseconds on the web platform][44876],
+  more closely matching the behavior on native platforms.
+
+[44876]: {{site.repo.dart.sdk}}/issues/44876
+
+#### `dart:io`
+
+- [`SecurityContext` is now final and can no longer be subclassed][55786].
+
+[55786]: {{site.repo.dart.sdk}}/issues/55786
+
+#### `dart:js_interop`
+
+- [`importModule` now accepts a `JSAny` instead of a `String`][55508] to
+  support other JS values as well, such as `TrustedScriptURL` objects.
+- [`isTruthy` and `not` now return `JSBoolean` instead of `bool`][55267] to
+  be consistent with other JS operator methods.
+- [`ExternalDartReference` no longer implements `Object`][56015].
+  Instead, it now accepts a type parameter (`T`) with a bound of
+  `Object?` to capture the type of the Dart object that is externalized.
+
+[55508]: {{site.repo.dart.sdk}}/issues/55508
+[55267]: {{site.repo.dart.sdk}}/issues/55267
+[56015]: {{site.repo.dart.sdk}}/issues/56015
+
 #### `dart:typed_data`
 
 - {{removed}}
@@ -100,8 +148,10 @@ accounting for them before the 3.5.0 release.
 
 - {{removed}} The Dart VM no longer supports unsound null safety.
   - The `--no-sound-null-safety` CLI option has been removed.
-  - The `Dart_NewListOf` and `Dart_IsLegacyType` functions have been removed
-    from the C API.
+  - The `Dart_NewListOf` and `Dart_IsLegacyType` functions have been
+    removed from the C API.
+- {{removed}} The `Dart_DefaultCanonicalizeUrl` function has been
+  removed from the C API.
 
 ## 3.4.0
 
@@ -111,8 +161,8 @@ accounting for them before the 3.5.0 release.
   is now `_` (the unknown type) instead of `Object?`][54640].
 - [The type schema used by the Dart compilers to
   perform type inference on the operand of a null-aware spread operator (`...?`)
-  in map and set literals has been made nullable, to
-  match what currently happens in list literals.][54828]
+  in map and set literals has been made nullable][54828],
+  to match what currently happens in list literals.
 
 [54640]: {{site.repo.dart.sdk}}/issues/54640
 [54828]: {{site.repo.dart.sdk}}/issues/54828
