@@ -2,7 +2,7 @@
 title: Dart language evolution
 short-title: Language evolution
 description: Notable changes and additions to the Dart programming language.
-lastVerified: 2024-05-14
+lastVerified: 2024-08-04
 ---
 
 This page lists notable changes and additions to the
@@ -42,6 +42,18 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.5
+_Release expected in August 2024_
+
+Dart 3.5 added no new language features, but made minor changes to the
+context considered during type inference.
+These include the following, non-language versioned changes:
+
+* When the context for an `await` expression is `dynamic`,
+  the context for the operand of expression is now `FutureOr<_>`.
+* When the context for an entire if-null expression (`e1 ?? e2`) is `dynamic`,
+  the context for `e2` is now the static type of `e1`.
+
 ### Dart 3.4
 _Released 14 May 2024_
 | [Dart 3.4 announcement](https://medium.com/dartlang/dart-3-4-bd8d23b4462a)
@@ -51,14 +63,14 @@ Dart 3.4 made several improvements related to type analysis. These include:
 * Improvements to the type analysis of conditional expressions,
   if-null expressions and assignments, and switch expressions.
 * Aligning the pattern context type schema for cast patterns with the spec.
-* Making the type schema for the null-aware spread operator (`...?`) nullable for maps
-  and set literals, to match the behavior of list literals.
+* Making the type schema for the null-aware spread operator (`...?`)
+  nullable for maps and set literals, to match the behavior of list literals.
 
 ### Dart 3.3
 _Released 15 February 2024_
 | [Dart 3.3 announcement](https://medium.com/dartlang/dart-3-3-325bf2bf6c13)
 
-Dart 3.3 added some enchancements to the language:
+Dart 3.3 added some enhancements to the language:
 
 * [Extension types][] are a new feature in Dart that allow zero-cost wrapping
   of an existing type. They are similar to wrapper classes and extension methods,
