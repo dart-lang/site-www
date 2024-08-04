@@ -9,8 +9,8 @@ Embeds breadcrumb RDFa, follows ARIA guidelines. References:
 {% assign url = page.url | regexReplace: '/index$|/index.html$|/$' -%}
 
 {% if url.size > 0 -%}
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+<nav class="breadcrumbs" aria-label="breadcrumb">
+  <ol class="breadcrumb-list" vocab="http://schema.org/" typeof="BreadcrumbList">
   {% assign breadcrumbs = page | breadcrumbsForPage -%} 
   {% if breadcrumbs -%}
   {% for crumb in breadcrumbs -%}
@@ -23,6 +23,9 @@ Embeds breadcrumb RDFa, follows ARIA guidelines. References:
         <span property="name">{{crumb.title}}</span>
       </a>
       <meta property="position" content="{{forloop.index0}}" />
+      {%- if not forloop.last %}
+      <span class="material-symbols child-icon" aria-hidden="true">chevron_right</span>
+      {% endif %}
     </li>
   {% endfor %}
   {% endif -%}  

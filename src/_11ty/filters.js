@@ -5,6 +5,7 @@ import { toText } from 'hast-util-to-text';
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
 
 export function registerFilters(eleventyConfig) {
+  eleventyConfig.addFilter('toSimpleDate', toSimpleDate);
   eleventyConfig.addFilter('regexReplace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('activeNavEntryIndexArray', activeNavEntryIndexArray);
@@ -15,6 +16,17 @@ export function registerFilters(eleventyConfig) {
   });
   eleventyConfig.addFilter('generateToc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
+}
+
+function toSimpleDate(input) {
+  let dateString;
+  if (input instanceof Date) {
+    dateString = input.toISOString();
+  } else {
+    // If it's not a Date object, assume it's already in string format.
+    dateString = input;
+  }
+  return dateString.split('T')[0];
 }
 
 /**

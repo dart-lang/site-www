@@ -3,6 +3,7 @@
 // plugins and customization that live in `/src/_11ty`.
 
 import { registerFilters } from './src/_11ty/filters.js';
+import { registerShortcodes } from './src/_11ty/shortcodes.js';
 import { markdown } from './src/_11ty/plugins/markdown.js';
 import { configureHighlighting } from './src/_11ty/plugins/highlight.js';
 
@@ -11,7 +12,6 @@ import yaml from 'js-yaml';
 
 import * as path from 'node:path';
 import * as sass from 'sass';
-import {registerShortcodes} from "./src/_11ty/shortcodes.js";
 
 // noinspection JSUnusedGlobalSymbols
 /**
