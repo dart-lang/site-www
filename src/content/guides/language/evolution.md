@@ -43,7 +43,8 @@ on the Dart language GitHub repo.
 ## Changes in each release
 
 ### Dart 3.5
-_Release expected in August 2024_
+_Released 6 August 2024_
+| [Dart 3.5 announcement](https://medium.com/dartlang/dart-3-5-6ca36259fa2f)
 
 Dart 3.5 added no new language features, but made minor changes to the
 context considered during type inference.
