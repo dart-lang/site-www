@@ -82,7 +82,7 @@ import 'package:web/web.dart' as web; // Add
 
 Add `web` to the `dependencies` in your pubspec:
 
-```terminal
+```console
 dart pub add web
 ```
 
