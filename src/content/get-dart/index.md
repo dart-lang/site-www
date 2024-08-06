@@ -38,11 +38,11 @@ to develop and run Dart code.
 {%- endif %}
 {% endfor %}
 
-| Platform | IA32 (x86) |   x64   |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
-|----------|:----------:|:-------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
-| Windows  |  {{dep}}   | {{yes}} | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    |  {{dep}}   | {{yes}} | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
-| macOS    |   {{no}}   | {{yes}} | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
+| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
+|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
+| Windows  | {{yes}} |  {{dep}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
+| Linux    | {{yes}} |  {{dep}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
+| macOS    | {{yes}} |  {{no}}    | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
 
 {:.table .table-striped}
 
