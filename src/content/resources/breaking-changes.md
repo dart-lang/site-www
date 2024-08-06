@@ -89,12 +89,6 @@ accounting for them before the 3.6 release.
 
 ## 3.5.0
 
-**Tentative**<br>
-The following changes are expected to be included in the 3.5.0 stable release,
-but the final list will likely change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.5.0 release.
-
 ### Language {:.no_toc}
 
 - [The context used by the compiler to perform type inference on

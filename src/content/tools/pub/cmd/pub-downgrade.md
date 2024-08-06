@@ -114,7 +114,7 @@ Reports what dependencies would change but doesn't change any.
 ### `--tighten`
 
 :::version-note
-Support for the `--tighten` option is set to be added in Dart 3.5.
+Support for the `--tighten` option was added in Dart 3.5.
 :::
 
 Updates the lower bounds of dependencies in `pubspec.yaml` to match the

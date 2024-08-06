@@ -82,16 +82,15 @@ import 'package:web/web.dart' as web; // Add
 
 Add `web` to the `dependencies` in your pubspec:
 
-```yaml
-dependencies:
-  web: ^0.5.0
+```console
+dart pub add web
 ```
 
 The following sections cover some of the common migration issues
 from `dart:html` to `package:web`.
 
-For any other migration issues, check the [dart-lang/web][] repo and file an
-issue.
+For any other migration issues, check the [dart-lang/web][] repo and
+file an issue.
 
 ### Renames
 

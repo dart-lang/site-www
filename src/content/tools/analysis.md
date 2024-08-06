@@ -517,7 +517,7 @@ dependencies:
     sdk: flutter
 
   # ignore: sort_pub_dependencies
-  collection: ^1.18.0
+  collection: ^1.19.0
 ```
 
 :::version-note
