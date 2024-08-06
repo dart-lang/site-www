@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2024-08-04
+lastVerified: 2024-08-06
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -18,10 +18,10 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
-## August TODO, 2024: 3.5 release
+## August 6, 2024: 3.5 release
 
 This section lists notable changes made from May 15, 2024,
-through August TODO, 2024.
+through August 6, 2024.
 For details about the 3.5 release of Dart,
 check out the [3.5 blog post][] and the [SDK changelog][3-5-changelog].
 
