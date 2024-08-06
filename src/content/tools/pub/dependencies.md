@@ -352,7 +352,7 @@ libraries—it doesn't actually need `test`. In this case, it specifies
 
 ```yaml
 dev_dependencies:
-  test: ^1.20.0
+  test: ^1.25.0
 ```
 
 Pub gets every package that your package depends on, and everything _those_
@@ -467,9 +467,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.4.8
+  build_runner: ^2.4.10
   lints: ^2.1.1
-  test: ^1.25.1
+  test: ^1.25.8
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.
