@@ -25,7 +25,7 @@ through August 6, 2024.
 For details about the 3.5 release of Dart,
 check out the [3.5 announcement][] and the [SDK changelog][3-5-changelog].
 
-[3.5 blog post]: https://medium.com/dartlang/dart-3-5-6ca36259fa2f
+[3.5 announcement]: https://medium.com/dartlang/dart-3-5-6ca36259fa2f
 [3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350
 
 ### Docs updated or added to dart.dev {:.no_toc}
