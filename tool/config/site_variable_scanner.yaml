@@ -4,8 +4,6 @@ yaml_variable_scanner:
   yamlFilePath:
     - path: "src/_data/site.yml" # YAML path (Glob syntax)
       variablePrefix: "site." # Variable prefix. e.g. `a.` -> `a.x.xx`
-    - path: "src/_data/yt.yml"
-      variablePrefix: "yt."
 
   # Ignore YAML file path
   #
