@@ -68,19 +68,6 @@ check out the [`#lints` topic]({{site.pub-pkg}}?q=topic:lints) on pub.dev.
 
 [enabling and disabling linter rules]: /tools/analysis#enabling-linter-rules
 
-## Types
-
-Each rule belongs to one of the following groups:
-
-[Errors](#error-rules)
-: Possible errors or mistakes in your code.
-
-[Style](#style-rules)
-: Matters of style, largely derived from the [Dart style guide][].
-
-[Pub](#pub-rules)
-: Possible issues with [pub package setup](/guides/packages).
-
 <a id="maturity-levels"></a>
 ## Status
 
@@ -129,24 +116,6 @@ For an auto-generated list containing all linter rules
 in Dart `{{site.sdkInfo.version}}`,
 check out [All linter rules](/tools/linter-rules/all).
 
-### Error rules
-
-These rules identify possible errors and other mistakes in your code.
-
-{% include 'linter-rules-section.md', type:'errors', linter_rules:linter_rules %}
-
-### Style rules
-
-These rules identify opportunities for style improvements, 
-largely derived from the [Dart style guide][].
-
-{% include 'linter-rules-section.md', type:'style', linter_rules:linter_rules %}
-
-### Pub rules
-
-These rules identify possible issues around 
-[pub package](/guides/packages) setup.
-
-{% include 'linter-rules-section.md', type:'pub', linter_rules:linter_rules %}
+{% render 'linter-rules-section.md', linter_rules:linter_rules %}
 
 [Dart style guide]: /effective-dart/style
