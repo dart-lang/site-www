@@ -1,6 +1,6 @@
 {% for lint in linter_rules %}
 
-{% if lint.group == type and lint.state != "internal" %}
+{% if lint.state != "internal" %}
 
 {% assign badges = "" %}
 
