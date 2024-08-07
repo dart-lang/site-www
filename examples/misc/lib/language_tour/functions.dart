@@ -27,6 +27,13 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion function-type
+    int add(int a, int b) => a + b;
+    // int function(int, int) = add;
+    // #enddocregion function-type
+  }
+
+  {
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
     void enableFlags({bool? bold, bool? hidden}) {/*...*/}
