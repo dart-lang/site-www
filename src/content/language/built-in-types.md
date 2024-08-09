@@ -15,6 +15,7 @@ The Dart language has special support for the following:
 - [Strings](#strings) (`String`)
 - [Booleans](#booleans) (`bool`)
 - [Records][] (`(value1, value2)`)
+- [Functions][] (`Function`)
 - [Lists][] (`List`, also known as *arrays*)
 - [Sets][] (`Set`)
 - [Maps][] (`Map`)
@@ -393,6 +394,7 @@ Symbol literals are compile-time constants.
 
 
 [Records]: /language/records
+[Functions]: /language/functions#function-types
 [Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
