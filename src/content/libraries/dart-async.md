@@ -258,20 +258,22 @@ void main() async {
   Future<int> delete() async =>  ...
   Future<String> copy() async =>  ...
   Future<bool> errorResult() async =>  ...
-
+  int deleteInt;
+  String copyString;
+  bool errorBool;
   try {    
     // Wait for each future in a record, returns a record of futures:
-    (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
-  
+    (deleteInt, copyString ,errorBool) = await (delete(), copy(), errorResult()).wait;
+
   } on ParallelWaitError<(int?, String?, bool?),
       (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
     // ...
+    rethrow; // if catch ends normally then you will need to initialize a, b, c.
     }
 
   // Do something with the results:
-  var deleteInt  = result.$1;
-  var copyString = result.$2;
-  var errorBool  = result.$3;
+    print("$deleteInt $copyString $errorBool");
+
 }
 ```
 
