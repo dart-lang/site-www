@@ -268,7 +268,7 @@ void main() async {
   } on ParallelWaitError<(int?, String?, bool?),
       (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
     // ...
-    rethrow; // if catch ends normally then you will need to initialize a, b, c.
+    rethrow; // if catch ends normally then you will need to initialize deleteInt, copyString ,errorBool.
     }
 
   // Do something with the results:
