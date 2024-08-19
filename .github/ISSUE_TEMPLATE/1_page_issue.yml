@@ -1,5 +1,5 @@
 name: Page issue
-description: Help improve the content or quality of a dart.dev page
+description: Help improve the content or quality of a dart.dev page.
 labels: [from.page-issue]
 body:
   - type: markdown
@@ -7,11 +7,11 @@ body:
       value: |
           Found a typo? You can fix it yourself!
 
-          1. Click the page icon to the left of the bug icon you clicked to come to this form. The GitHub page source should display.
-          1. Click the pencil icon displayed above the source code.
+          1. Scroll to the bottom of the page with the typo.
+          1. Use the "View source" link located after the content to navigate to the page's source on GitHub.
           1. Fix the typo.
           1. Click **Commit changes...**.
-          1. Update the commit message and add a description.
+          1. Update the title, add a commit message, and add a description.
           1. Click **Propose changes**.
 
           If you want another contributor to fix this issue, complete this form.
@@ -19,7 +19,7 @@ body:
     id: page-url
     attributes:
       label: Page URL
-      placeholder: "Add the address of this page. An example would be https://dart.dev/guides"
+      placeholder: "Add the address of this page. An example would be https://dart.dev/language"
     validations:
       required: true
   - type: input

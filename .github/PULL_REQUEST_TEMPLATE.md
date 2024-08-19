@@ -15,5 +15,5 @@ Fixes <Replace with issue link>
   - See our [contributor guide](https://github.com/dart-lang/site-www/blob/main/CONTRIBUTING.md) for general expectations for PRs.
   - Larger or significant changes should be discussed in an issue before creating a PR.
   - Code changes should generally follow the [Dart style guide](https://dart.dev/effective-dart) and use `dart format`.
-  - Updates to [code excerpts](https://github.com/dart-lang/site-shared/blob/main/doc/code-excerpts.md) indicated by `<?code-excerpt` need to be updated in their source `.dart` file as well.
+  - Updates to [code excerpts](https://github.com/dart-lang/site-shared/blob/main/packages/excerpter) indicated by `<?code-excerpt` need to be updated in their source `.dart` file as well.
 </details>
