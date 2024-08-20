@@ -55,7 +55,7 @@ setting up and managing worker isolates:
 5. Terminates the isolate once work is complete.
 6. Checks, captures, and throws exceptions and errors back to the main isolate.
 
-[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
+[`Isolate.run()`]: {{site.sdkInfo.channel}}/dev/dart-isolate/Isolate/run.html
 
 :::flutter-note
 If you're using Flutter, you can use [Flutter's `compute` function][]
