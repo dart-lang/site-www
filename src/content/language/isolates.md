@@ -39,7 +39,7 @@ but here are some more situations where they can be useful:
 - Performing I/O, such as communicating with a database.
 - Handling a large volume of network requests.
 
-[Flutter]: {{site.flutter}}/perf/isolates
+[Flutter]: {{site.flutter-docs}}/perf/isolates
 
 ## Implementing a simple worker isolate
 
