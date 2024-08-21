@@ -258,9 +258,11 @@ void main() async {
   Future<int> delete() async =>  ...
   Future<String> copy() async =>  ...
   Future<bool> errorResult() async =>  ...
+
   int deleteInt;
   String copyString;
   bool errorBool;
+
   try {    
     // Wait for each future in a record, returns a record of futures:
     (deleteInt, copyString ,errorBool) = await (delete(), copy(), errorResult()).wait;
