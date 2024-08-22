@@ -266,7 +266,8 @@ void main() async {
   } on ParallelWaitError<(int?, String?, bool?),
       (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
     // ...
-    }
+    rethrow;
+  }
 
   // Do something with the results:
   var deleteInt  = result.$1;
