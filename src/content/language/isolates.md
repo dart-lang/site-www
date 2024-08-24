@@ -39,7 +39,7 @@ but here are some more situations where they can be useful:
 - Performing I/O, such as communicating with a database.
 - Handling a large volume of network requests.
 
-[Flutter]: {{site.flutter}}/perf/isolates
+[Flutter]: {{site.flutter-docs}}/perf/isolates
 
 ## Implementing a simple worker isolate
 
@@ -55,7 +55,7 @@ setting up and managing worker isolates:
 5. Terminates the isolate once work is complete.
 6. Checks, captures, and throws exceptions and errors back to the main isolate.
 
-[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
+[`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
 
 :::flutter-note
 If you're using Flutter, you can use [Flutter's `compute` function][]
