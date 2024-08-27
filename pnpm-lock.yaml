@@ -37,8 +37,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       markdown-it-anchor:
-        specifier: ^9.0.1
-        version: 9.0.1(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
+        specifier: ^9.1.0
+        version: 9.1.0(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
       markdown-it-attrs:
         specifier: ^4.2.0
         version: 4.2.0(markdown-it@14.1.0)
@@ -1667,8 +1667,8 @@ packages:
     resolution: {integrity: sha512-cKTUFc/rbKUd/9meOvgrpJ2WrNzymt6jfRDdwg5UCnVzv9dTpEj9JS5m3wtziXVCjluIXyL8pcaukYqezIzZQA==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  markdown-it-anchor@9.0.1:
-    resolution: {integrity: sha512-cBt7aAzmkfX8X7FqAe8EBryiKmToXgMQEEMqkXzWCm0toDtfDYIGboKeTKd8cpNJArJtutrf+977wFJTsvNGmQ==}
+  markdown-it-anchor@9.1.0:
+    resolution: {integrity: sha512-a5WqArGkkLQZUEdC9cpkWvrdLJyS45r+28nE4jxiQynFLZ6VXdX4+hulCRzxmS+hi9+Dwfi5zTFIz3dY1YA6xQ==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
@@ -4786,7 +4786,7 @@ snapshots:
       - supports-color
     optional: true
 
-  markdown-it-anchor@9.0.1(@types/markdown-it@14.1.1)(markdown-it@14.1.0):
+  markdown-it-anchor@9.1.0(@types/markdown-it@14.1.1)(markdown-it@14.1.0):
     dependencies:
       '@types/markdown-it': 14.1.1
       markdown-it: 14.1.0
