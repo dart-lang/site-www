@@ -17,7 +17,7 @@
     "node": ">=20.12.0",
     "pnpm": ">=9.1.0"
   },
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "pnpm@9.9.0",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
@@ -29,6 +29,7 @@
     "hast-util-to-text": "^4.0.2",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
+    "liquidjs": "10.16.4",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.1.0",
     "markdown-it-attrs": "^4.2.0",
