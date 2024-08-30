@@ -101,12 +101,12 @@ on:
   push:
     tags:
     # must align with the tag-pattern configured on pub.dev, often just replace
-      # {% raw %}{{version}}{% endraw %} with [0-9]+.[0-9]+.[0-9]+*
-    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: 'v{% raw %}{{version}}{% endraw %}'
+      # {% raw %}{{version}}{% endraw %} with [0-9]+.[0-9]+.[0-9]+
+    - 'v[0-9]+.[0-9]+.[0-9]+' # tag-pattern on pub.dev: 'v{% raw %}{{version}}{% endraw %}'
     # If you prefer tags like '1.2.3', without the 'v' prefix, then use:
-    # - '[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: '{% raw %}{{version}}{% endraw %}'
+    # - '[0-9]+.[0-9]+.[0-9]+' # tag-pattern on pub.dev: '{% raw %}{{version}}{% endraw %}'
     # If your repository contains multiple packages consider a pattern like:
-    # - 'my_package_name-v[0-9]+.[0-9]+.[0-9]+*'
+    # - 'my_package_name-v[0-9]+.[0-9]+.[0-9]+'
 
 # Publish using the reusable workflow from dart-lang.
 jobs:
@@ -145,7 +145,7 @@ name: Publish to pub.dev
 on:
   push:
     tags:
-    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag pattern on pub.dev: 'v{% raw %}{{version}{% endraw %}'
+    - 'v[0-9]+.[0-9]+.[0-9]+' # tag pattern on pub.dev: 'v{% raw %}{{version}{% endraw %}'
 
 # Publish using custom workflow
 jobs:
@@ -260,7 +260,7 @@ name: Publish to pub.dev
 on:
   push:
     tags:
-    - 'v[0-9]+.[0-9]+.[0-9]+*' # for tags like: 'v1.2.3'
+    - 'v[0-9]+.[0-9]+.[0-9]+' # for tags like: 'v1.2.3'
 
 jobs:
   publish:
