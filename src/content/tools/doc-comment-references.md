@@ -1,4 +1,8 @@
-# Doc comment references
+---
+title: Documentation comment references
+short-title: Comment references
+description: Learn about doc comment references and their syntax.
+---
 
 Doc comments can contain references to various code elements. A library member
 or class member, etc. can be referenced by wrapping its name in square brackets
@@ -17,7 +21,7 @@ parameter, and the `Future.value` constructor.
 
 ## Features of references
 
-There are several benefits to refering to a code element in a doc comment as a
+There are several benefits to referring to a code element in a doc comment as a
 doc comment reference:
 
 ### Editor features
@@ -54,7 +58,7 @@ int x = 7;
 
 Most members of a class, an enum, an extension, an extension type, and a mixin
 can also be referenced. A reference to a member that is not in scope must be
-qualified with it's container's name. For example the `wait` static method on
+qualified with its container's name. For example the `wait` static method on
 the `Future` class can be referenced in a doc comment with `[Future.wait]`.
 This is true for instance members as well; the `add` method and the `length`
 property on the `List` class can be referenced with `[List.add]` and
@@ -66,6 +70,7 @@ abstract class MyList<E> implements List<E> {
   /// Refer to [add] and [contains], which is declared on [Iterable].
   void myMethod() {}
 }
+```
 
 Parameters of a function and parameters of a function type can be referenced in
 a doc comment only when they are in scope. They can therefore only be
