@@ -22,11 +22,12 @@ doc comment reference:
 
 ### Editor features
 
-Doc comment references enable several IDE features. When an element is renamed
-via an IDE command, it can rewrite uses of that element, including references
-in doc comments. When an IDE lists all "references" to an element, it can
-include references in doc comments. An IDE can also provide Go-to-definition
-support at the location of a doc comment reference.
+Doc comment references enable several IDE features. An element's name can be
+code-completed within square brackets. When an element is renamed via an IDE
+command, it can rewrite uses of that element, including references in doc
+comments. When an IDE lists all "references" to an element, it can include
+references in doc comments. An IDE can also provide Go-to-definition support at
+the location of a doc comment reference.
 
 ### API documentation
 
@@ -66,12 +67,17 @@ abstract class MyList<E> implements List<E> {
   void myMethod() {}
 }
 
-The doc comment for a function can include references to the function's
-parameters.
+Parameters of a function and parameters of a function type can be referenced in
+a doc comment only when they are in scope. They can therefore only be
+referenced within a doc comment on such a parameter's function or on a type
+alias for such a paramter's enclosing function type.
 
-The doc comment for a class, enum, extension, extension type, method, mixin,
-top-level function, and type alias can include references to it's type
-parameters.
+Type parameters can be referenced in a doc comment only when they are in scope.
+Therefore a type parameter of a method, top-level function, or type alias can
+only be referenced within a doc comment on that element, and a type parameter
+of a class, enum, extension, extension type, and mixin can only be referenced
+within a doc comment on that element or on one of its members.
 
-The doc comment for a type alias cannot reference any of the aliased type's
-members, if it has any, as if they were in scope.
+The doc comment for a type alias which aliases a class, enum, extension type,
+or mixin cannot reference any of the aliased type's members, if it has any, as
+if they were in scope.
