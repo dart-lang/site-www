@@ -28,17 +28,12 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion function-type
-    void printElement(int element) => print(element);
+    void greet(String name, {String greeting = 'Hello'}) =>
+        print('$greeting $name!');
 
-    void doPrint(void Function(int) printFunction, {required List<int> list}) {
-      list.forEach(printFunction);
-    }
-
-    var list = [1, 2, 3];
-
-    // Store `doPrint` in a variable and call it.
-    void Function(void Function(int), {required List<int> list}) g = doPrint;
-    g(printElement, list: list);
+    // Store `greet` in a variable and call it.
+    void Function(String, {String greeting}) g = greet;
+    g('Dash', greeting: 'Howdy');
     // #enddocregion function-type
   }
 
