@@ -467,7 +467,7 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.4.10
+  build_runner: ^2.4.12
   lints: ^2.1.1
   test: ^1.25.8
 ```
