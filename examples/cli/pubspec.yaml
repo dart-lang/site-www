@@ -2,10 +2,10 @@ name: cli_examples
 description: Examples for CLI tutorials on dart.dev
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
-  args: ^2.4.2
+  args: ^2.5.0
 
 dev_dependencies:
   lints: ^4.0.0
