@@ -206,7 +206,7 @@ String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
     .replaceAll(RegExp(r'[:.]'), '-')
-    .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    .replaceAll(RegExp(r'[^\p{L}\p{N}\s_-]', unicode: true), '')
     .replaceAll(RegExp(r'[\s-]+'), '-')
     .replaceAll(RegExp(r'^-+|-+$'), '');
 
