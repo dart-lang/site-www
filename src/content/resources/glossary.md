@@ -336,3 +336,51 @@ class A implements B {} // A is a subtype of B, but NOT a subclass of B.
 
 class C extends D {} // C is a subtype AND a subclass of D.
 ```
+
+## Variance and variance positions
+
+A type parameter of a class (or a mixin, etc) is said to be _covariant_
+when the type as a whole "co-varies" with the actual type argument, that
+is: if we replace the type argument by a subtype then the type as a whole
+is also a subtype.
+
+For example, the type parameter of the class `List` is covariant because
+list types co-vary with their type argument: `List<int>` is a subtype of
+`List<Object>` because `int` is a subtype of `Object`.
+
+In Dart, all type parameters of all class, mixin, mixin class, and enum
+declarations are covariant.
+
+However, function types are different: A function type is covariant in the
+return type, but the opposite (known as _contravariant_) in its parameter
+types.  For example, the type `int Function(int)` is a subtype of the type
+`Object Function(int)`, but it is a supertype of `int Function(Object)`.
+
+This makes sense if you consider their substitutability (see the section
+about subtypes): If you expect at compile time to work with a function of
+type `int Function(int)` then it is OK to actually work with a function of
+type `int Function(Object)` at run time: You will pass an `int` to it (and
+that's fine, it accepts any `Object`), and it returns an `int` (which is
+exactly what you'd expect). Hence, `int Function(Object)` is a subtype of
+`int Function(int)`. Note that everything is turned upside-down when we
+consider a parameter type.
+
+When we consider a more complex type like `List<int Function(int)>` we need
+to talk about the _positions_ in the type. This is basically just a matter
+of turning one of the parts of the type into a placeholder (let's use `_`
+for that), and then consider what happens to the type when we put different
+types into that location in the type.
+
+For example, consider `List<int Function(_)>` as a template for a type
+where we can put different types into the location where `_` occurs.
+
+This type is contravariant in that position: For example, 
+`List<int Function(Object)>` is a subtype of `List<int Function(int)>`
+because `int Function(Object)` is a subtype of `int Function(int)` because
+`int` is a subtype of `int` (the return type) and `Object` is a _supertype_
+of `int` (the parameter type).
+
+This is the general case. In practice, it's often sufficient to know that
+the type arguments of a class, mixin, etc. are in a covariant position,
+and so is the return type of a function type, but the parameter types
+are in a contravariant position.
