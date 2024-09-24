@@ -12,6 +12,19 @@ below guidelines on [Building the site](#build-the-site).
 To learn more about contributing to this repository,
 check out the [Contributing guidelines](CONTRIBUTING.md).
 
+
+## Table of Contents
+1. [Getting Started](#Getting-Started)
+2. [Build the Site](#Build-the-site)
+   1. [Get the prerequisites](#Get-the-prerequisites)
+   2. [Cloning the Repo](#clone-this-repo-and-its-submodules)
+   3. [Serve Changes](#set-up-your-local-environment-and-serve-changes)
+3. [Validating Changes](#validate-your-changes)
+4. [Optional: Deploy to Staging](#optional-deploy-to-a-staging-site)
+5. [License](#liscense)
+6. [Credits](#credits)
+
+
 ## Getting started
 
 Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
@@ -180,7 +193,22 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 7. View your changes in the browser by navigating to <http://localhost:4000>.
 
-   Note the port might be different if `4000` is taken.
+   Commonly in browsers, localhost:3000 may be used instead
+
+   However, if neither of these work, in terminal, you can type the following to
+   find active ports that may be in use instead. This will return a list of active
+   ports as well as its PID
+
+   ```terminal
+   netstat -ano
+   ```
+
+   When debugging, killing the port may be useful if it gets hung up, so you can use
+   the following to do so with the given PID
+
+   ```terminal
+   taskkill /PID <PID> /F
+   ```
    
    If you want to check the raw, generated HTML output and structure,
    view the `_site` directory in a file explorer or an IDE.
@@ -254,6 +282,10 @@ you can build a full version and upload it to Firebase.
 
    - Navigate to the [Firebase Console](https://console.firebase.google.com)
      and create your own Firebase project (for example, `dart-dev-staging`).
+     
+     Learning how Firebase interacts with different systems and apps may
+     be useful to touch up on before deploying to a staging site. 
+     [Fundamentals of Firebase](https://firebase.google.com/docs/projects/api/workflow_set-up-and-manage-project)
 
    - Head back to your local terminal and verify that you are logged in.
 
@@ -287,6 +319,14 @@ you can build a full version and upload it to Firebase.
    Do consider adding a reference to the commit you staged,
    so that reviewers know if any further changes have been made.
 
+
+## Liscense
+
+The Dart Website is licensed under the BSD-3 License. To view license, click here:[LISENCE](https://github.com/dart-lang/site-www/blob/main/LICENSE)
+
+## Credits
+
+To view project contributors, click here: [CONTRIBUTORS](https://github.com/dart-lang/site-www/graphs/contributors)
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
