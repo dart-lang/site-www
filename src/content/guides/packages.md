@@ -205,7 +205,7 @@ use `dart pub get --enforce-lockfile` - that will fail with a non-zero exit code
 if the current lockfile cannot be exactly fulfilled, and does not match your
 current constraints or if there is a hash mismatch.
 
-```
+```console
 $ dart pub get --enforce-lockfile
 Resolving dependencies... 
 Downloading packages... 
