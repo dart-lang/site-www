@@ -3,7 +3,7 @@ description: dart.dev example utilities.
 version: 0.0.2
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
   test: ^1.25.8

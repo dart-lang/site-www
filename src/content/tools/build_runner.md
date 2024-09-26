@@ -38,7 +38,7 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.10
+  build_runner: ^2.4.12
   build_test: ^2.2.2
 ```
 
