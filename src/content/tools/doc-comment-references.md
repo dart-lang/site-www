@@ -4,9 +4,9 @@ short-title: Comment references
 description: Learn about doc comment references and their syntax.
 ---
 
-Doc comments can contain references to various code elements. A library member
-or class member, etc. can be referenced by wrapping its name in square brackets
-(`[...]`) in a doc comment (a comment starting with `///`). Examples:
+Doc comments can contain references to various identifiers. Elements, such as
+functions and classes, can be referenced by wrapping their name in square
+brackets (`[...]`) in a doc comment (a comment starting with `///`). Examples:
 
 ```dart
 /// Returns a [String].
@@ -21,17 +21,31 @@ parameter, and the `Future.value` constructor.
 
 ## Features of references
 
-There are several benefits to referring to a code element in a doc comment as a
-doc comment reference:
+There are several benefits to referring to code elements with doc comment
+references:
 
 ### Editor features
 
-Doc comment references enable several IDE features. An element's name can be
-code-completed within square brackets. When an element is renamed via an IDE
-command, it can rewrite uses of that element, including references in doc
-comments. When an IDE lists all "references" to an element, it can include
-references in doc comments. An IDE can also provide Go-to-definition support at
-the location of a doc comment reference.
+Doc comment references enable several IDE features:
+
+- **Code completion**
+  An element's name can be code-completed within square brackets.
+- **Rename refactoring**
+  When an element is renamed via an IDE command, it can rewrite uses of that
+  element, including references in doc comments.
+- **Find references**
+  When an IDE lists all "references" to an element, it can include references in
+  doc comments.
+- **Go to definition**
+  An IDE can also provide Go-to-definition support at the location of a doc
+  comment reference.
+
+:::tip
+The [comment_references](https://dart.dev/lints/comment_references) lint rule
+can help to ensure that doc comment references are valid, avoiding typos and
+mis-uses. Keeping doc comment references valid ensures that these IDE features
+are enabled for each reference.
+:::
 
 ### API documentation
 
@@ -45,8 +59,8 @@ parameter, a type variable, or a private class), then no link is created.
 Most library members can be referenced in a doc comment, including classes,
 constants, enums, named extensions, extension types, functions, mixins, and
 type aliases. This includes all in-scope library members, either declared
-locally, or imported. Library members which are imported with an import prefix
-can be referenced with the prefix. Examples:
+locally, or imported. Library members that are imported with an import prefix
+can be referenced with the prefix. For example:
 
 ```dart
 import 'dart:math' as math;
@@ -72,6 +86,10 @@ abstract class MyList<E> implements List<E> {
 }
 ```
 
+Unnamed constructors can be referenced by using the `new` name, similar to the
+tear-off of an unnamed constructor. For example, `[DateTime.new]` is a
+reference to the unnamed `DateTime` constructor.
+
 Parameters of a function and parameters of a function type can be referenced in
 a doc comment only when they are in scope. They can therefore only be
 referenced within a doc comment on such a parameter's function or on a type
@@ -83,6 +101,6 @@ only be referenced within a doc comment on that element, and a type parameter
 of a class, enum, extension, extension type, and mixin can only be referenced
 within a doc comment on that element or on one of its members.
 
-The doc comment for a type alias which aliases a class, enum, extension type,
-or mixin cannot reference any of the aliased type's members, if it has any, as
+The doc comment for a type alias that aliases a class, enum, extension type,
+or mixin can't reference any of the aliased type's members, if it has any, as
 if they were in scope.
