@@ -164,7 +164,7 @@ In some cases `dart pub get` will not give you the exact versions locked in
   
 In all these cases `dart pub get` will
 
-* Attempt to unlock as few dependencies as possible.
+* Unlock as needed.
 * Notify about any changes in the output.
 
 For example after adding `retry: ^3.0.0` to your dependencies:
