@@ -153,7 +153,33 @@ of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
-:::note
+When you're ready to upgrade your dependencies to the latest versions,
+use the [`dart pub upgrade`][upgrade] command:
+
+```console
+$ dart pub upgrade
+```
+
+The `dart pub upgrade` command tells pub to regenerate the lockfile,
+using the newest available versions of your package's dependencies.
+If you want to upgrade only one dependency,
+you can specify the package to upgrade:
+
+```console
+$ dart pub upgrade transmogrify
+```
+
+That command upgrades `transmogrify` to the latest version
+but leaves everything else the same.
+
+The `dart pub upgrade` command can't always upgrade every package
+to its latest version,
+due to conflicting version constraints in the pubspec.
+To identify out-of-date packages that require editing the pubspec,
+use [`dart pub outdated`][outdated].
+
+## Getting dependencies in production - `pub get --enforce-lockfile`
+
 In some cases `dart pub get` will not give you the exact versions locked in
 `pubspec.lock`. For example:
 
@@ -223,33 +249,6 @@ Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 To update `pubspec.lock` run `dart pub get` without
 `--enforce-lockfile`.
 ```
-
-:::
-
-When you're ready to upgrade your dependencies to the latest versions,
-use the [`dart pub upgrade`][upgrade] command:
-
-```console
-$ dart pub upgrade
-```
-
-The `dart pub upgrade` command tells pub to regenerate the lockfile,
-using the newest available versions of your package's dependencies.
-If you want to upgrade only one dependency,
-you can specify the package to upgrade:
-
-```console
-$ dart pub upgrade transmogrify
-```
-
-That command upgrades `transmogrify` to the latest version
-but leaves everything else the same.
-
-The `dart pub upgrade` command can't always upgrade every package
-to its latest version,
-due to conflicting version constraints in the pubspec.
-To identify out-of-date packages that require editing the pubspec,
-use [`dart pub outdated`][outdated].
 
 ## More information
 
