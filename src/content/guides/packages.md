@@ -200,10 +200,8 @@ https://dart.dev/go/content-hashes
 Changed 1 dependency!
 ```
 
-For deploying your project to production, or for ensuring consistent CI runs,
-use `dart pub get --enforce-lockfile` - that will fail with a non-zero exit code
-if the current lockfile cannot be exactly fulfilled, and does not match your
-current constraints or if there is a hash mismatch.
+When deploying your project to production use `dart pub get --enforce-lockfile`.
+This will fail, if dependencies can't be satisfied with the exact versions and hashes in `pubspec.lock`. Thus, you avoid deploying untested dependencies to production.
 
 ```console
 $ dart pub get --enforce-lockfile
