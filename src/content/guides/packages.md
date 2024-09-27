@@ -159,7 +159,7 @@ In some cases `dart pub get` will not give you the exact versions locked in
 
 * If new dependencies are added to `pubspec.yaml` since `pubspec.lock` was created.
 * If the locked version no longer exists in the package repository.
-* If you upgraded the dart sdk, and some packages no longer are compatible with
+* If you upgraded the Dart SDK, and some packages no longer are compatible with
   the sdk.
   
 In all these cases `dart pub get` will
