@@ -175,9 +175,9 @@ Downloading packages...
 + retry 3.1.2
 ```
 
-Also if the hash a published version of a package does not match the hash in
-`pubspec.lock`, `pub` will warn you, but fix the pubspec.lock to reflect the
-published hash:
+Also if the hash of a published version does not match the hash in
+`pubspec.lock`, `pub` will warn you, but fix `pubspec.lock` to reflect the
+published version:
 
 For example if we manually change a hash in `pubspec.lock`:
 
