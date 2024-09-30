@@ -1,15 +1,15 @@
 // ignore_for_file: annotate_overrides
-// #docregion
+// #docregion smart-tv
 class Television {
   void turnOn() {
     _illuminateDisplay();
     _activateIrSensor();
   }
-  // #enddocregion
+  // #enddocregion smart-tv
 
   void _illuminateDisplay() {}
   void _activateIrSensor() {}
-  // #docregion
+  // #docregion smart-tv
 }
 
 class SmartTelevision extends Television {
@@ -19,10 +19,11 @@ class SmartTelevision extends Television {
     _initializeMemory();
     _upgradeApps();
   }
-  // #enddocregion
+  // #enddocregion smart-tv
 
   void _bootNetworkInterface() {}
   void _initializeMemory() {}
   void _upgradeApps() {}
-  // #docregion
+  // #docregion smart-tv
 }
+// #enddocregion smart-tv

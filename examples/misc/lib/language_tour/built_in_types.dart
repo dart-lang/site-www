@@ -1,11 +1,11 @@
-// ignore_for_file: unused_local_variable, type_annotate_public_apis, prefer_single_quotes, prefer_collection_literals
+// ignore_for_file: dead_code, unused_local_variable, type_annotate_public_apis
+// ignore_for_file: prefer_single_quotes, prefer_collection_literals
 
 void miscDeclAnalyzedButNotTested() {
   {
     // #docregion integer-literals
     var x = 1;
     var hex = 0xDEADBEEF;
-    var exponent = 8e5;
     // #enddocregion integer-literals
   }
 
@@ -203,20 +203,12 @@ var s2 = """This is also a
 multi-line string.""";
 // #enddocregion triple-quotes
 
+// MOVE TO library tour?
 class SymbolExampleNotUsedYet {
   // #docregion symbols
-  // MOVE TO library tour?
-
   void main() {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
-    print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-    print(Function.apply(
-        int.parse, ['11a'], {#radix: 16, #onError: handleError}));
   }
-
-  int handleError(String source) {
-    return 0;
-  }
-// #enddocregion symbols
+  // #enddocregion symbols
 }

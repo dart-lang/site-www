@@ -1,0 +1,7 @@
+{
+  "name": "path",
+  "latestVersion": "1.8.3",
+  "description": "A string-based path manipulation library with cross-platform support.",
+  "publisher": "dart.dev",
+  "repository": "https://github.com/dart-lang/path"
+}

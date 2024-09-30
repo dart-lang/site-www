@@ -1,0 +1,28 @@
+@use '../core/variables' as *;
+
+.banner {
+  position: relative;
+  background-color: $dash-callout;
+  padding: 12px 0;
+  text-align: center;
+  z-index: 1000;
+
+  &__text {
+    font-family: $site-font-family-alt;
+    font-size: 16px;
+
+    color: white;
+
+    margin-bottom: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    a {
+      color: $site-color-card-link;
+
+      &:hover, &:focus, &:active {
+        color: darken($site-color-card-link, 20%);
+      }
+    }
+  }
+}

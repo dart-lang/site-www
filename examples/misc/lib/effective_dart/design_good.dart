@@ -1,4 +1,6 @@
-// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element
+// ignore_for_file: unused_local_variable, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'dart:async';
 import 'dart:collection';
@@ -31,6 +33,13 @@ class EdgeInsets {
 
 class Padding extends Widget {
   Padding({required double padding, required Widget child});
+}
+
+class Key {}
+
+class StatelessWidget {
+  final Key? key;
+  StatelessWidget({this.key});
 }
 
 void miscDeclAnalyzedButNotTested() {
@@ -79,20 +88,20 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (stackTrace) {
-    // #docregion to___
+    // #docregion to-misc
     list.toSet();
     stackTrace.toString();
     dateTime.toLocal();
-    // #enddocregion to___
+    // #enddocregion to-misc
   };
 
   () {
     dynamic table;
-    // #docregion as___
+    // #docregion as-misc
     var map = table.asMap();
     var list = bytes.asFloat32List();
     var future = subscription.asFuture();
-    // #enddocregion as___
+    // #enddocregion as-misc
   };
 
   () {
@@ -196,7 +205,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var applyPadding = false;
+    var applyPadding = true;
 
     // #docregion upcast-local
     Widget build(BuildContext context) {
@@ -279,9 +288,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion infer-dynamic
   }
 
-  // #docregion avoid-Function
+  // #docregion avoid-function
   bool isValid(String value, bool Function(String) test) => ellipsis();
-  // #enddocregion avoid-Function
+  // #enddocregion avoid-function
 
   // #docregion function-arity
   void handleError(void Function() operation, Function errorHandler) {
@@ -300,7 +309,7 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion function-arity
 
   () {
-    // #docregion Object-vs-dynamic
+    // #docregion object-vs-dynamic
     /// Returns a Boolean representation for [arg], which must
     /// be a String or bool.
     bool convertToBool(Object arg) {
@@ -308,7 +317,7 @@ void miscDeclAnalyzedButNotTested() {
       if (arg is String) return arg.toLowerCase() == 'true';
       throw ArgumentError('Cannot convert $arg to a bool.');
     }
-    // #enddocregion Object-vs-dynamic
+    // #enddocregion object-vs-dynamic
   };
 
   // #docregion future-or
@@ -346,6 +355,10 @@ void miscDeclAnalyzedButNotTested() {
 class Point1 {
   double x, y;
   Point1(this.x, this.y);
+}
+
+class MyWidget extends StatelessWidget {
+  MyWidget({super.key});
 }
 // #enddocregion dont-type-init-formals
 
@@ -510,27 +523,6 @@ class Graph1<Node, Edge> {
 
 //----------------------------------------------------------------------------
 
-class Control {}
-
-// #docregion mixin
-mixin ClickableMixin implements Control {
-  bool _isDown = false;
-
-  void click();
-
-  void mouseDown() {
-    _isDown = true;
-  }
-
-  void mouseUp() {
-    if (_isDown) click();
-    _isDown = false;
-  }
-}
-// #enddocregion mixin
-
-//----------------------------------------------------------------------------
-
 // #docregion one-member-abstract-class
 typedef Predicate<E> = bool Function(E element);
 // #enddocregion one-member-abstract-class
@@ -584,6 +576,7 @@ class Duration0 {
 // #docregion eq-dont-check-for-null
 class Person {
   final String name;
+
   // #enddocregion eq-dont-check-for-null
   int get hashCode => name.hashCode;
   Person(this.name);

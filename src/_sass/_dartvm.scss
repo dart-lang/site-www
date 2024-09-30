@@ -1,0 +1,15 @@
+@use 'core/bootstrap';
+
+#stable,
+#beta,
+#dev {
+  tbody {
+    tr {
+      @include bootstrap.transition();
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}

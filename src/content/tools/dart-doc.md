@@ -1,0 +1,202 @@
+---
+title: dart doc
+description: >-
+   Learn how to generate HTML-reference documentation for public Dart libraries.
+---
+
+The `dart doc` command generates HTML reference documentation
+for Dart source code.
+
+## Write documentation {:#write}
+
+To add reference text and examples to the generated documentation,
+use [documentation comments][] with [Markdown][] formatting.
+For guidance on writing doc comments,
+check out the [Effective Dart: Documentation][] guide.
+
+[documentation comments]: /language/comments#documentation-comments
+[Markdown]: {{site.pub-pkg}}/markdown
+[Effective Dart: Documentation]: /effective-dart/documentation
+
+## Generate API docs {:#generate}
+
+:::note
+To generate documentation,
+you must first run [`dart pub get`](/tools/pub/cmd/pub-get)
+and your package must pass [`dart analyze`](/tools/dart-analyze)
+without errors.
+:::
+
+To generate the documentation for your package,
+run `dart doc .` from the package's root directory.
+For example, generating the API docs for a `my_package` package
+could resemble the following:
+
+```console
+$ cd my_package
+$ dart pub get
+$ dart doc .
+Documenting my_package...
+...
+Success! Docs generated into /Users/me/projects/my_package/doc/api
+```
+
+By default, `dart doc` places the generated documentation
+and supporting files in the `doc/api` directory.
+To change the output directory, specify
+a path with the `--output` flag:
+
+```console
+$ dart doc --output=api_docs .
+```
+
+If there are any issues with your package setup or documentation comments,
+`dart doc` outputs them as errors or warnings.
+If you just want to test for issues without saving the generated documentation,
+add the `--dry-run` flag:
+
+```console
+$ dart doc --dry-run .
+```
+
+### Configure generation {:#configure}
+
+To configure how `dart doc` generates documentation, create a
+file named `dartdoc_options.yaml` in the root directory of your package.
+
+To learn more about the file's format and supported configuration options,
+check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
+
+{% comment %}
+TODO: Document the long-term supported options here.
+{% endcomment -%}
+
+[dartdoc-options]: {{site.redirect.go}}/dartdoc-options-file
+
+## View generated docs {:#view}
+
+You can view docs generated with `dart doc` in a variety of ways.
+
+### View local docs {:#view-local}
+
+To view API docs you generated with `dart doc` or downloaded from online,
+you must load them with an HTTP server.
+
+To serve the files, use any HTTP server.
+Consider using [`package:dhttpd`][] from pub.dev.
+
+To use `package:dhttpd`, activate it globally, then run it
+and specify the path of your generated docs.
+The following commands activate the package,
+then runs it to serve the API docs located at `doc/api`:
+
+```console
+$ dart pub global activate dhttpd
+$ dart pub global run dhttpd --path doc/api
+```
+
+To then read the generated docs in your browser,
+open the link that `dhttpd` outputs, usually `http://localhost:8080`.
+
+[`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
+
+### View hosted docs {:#view-hosted}
+
+You can also host your generated API docs online
+using any hosting service that supports static web content.
+Two common options are [Firebase hosting][] and [GitHub pages][].
+
+[Firebase hosting]: https://firebase.google.com/docs/hosting
+[GitHub pages]: https://pages.github.com/
+
+### View package docs {:#view-pub}
+
+The [pub.dev site]({{site.pub}}) generates and hosts
+documentation for an uploaded package's public libraries.
+
+To view a package's generated docs,
+navigate to its page and open the **API reference** link
+in the info box on the right side of the page.
+For example, you can find the API docs for `package:http`
+at [pub.dev/documentation/http]({{site.pub-api}}/http).
+
+### View core library docs {:#view-sdk}
+
+`dart doc` is also used to generate the API reference documentation for
+the Dart core libraries.
+
+To view the Dart SDK reference docs, visit the api.dart.dev link
+that corresponds to the Dart release channel you are developing with:
+
+| Branch   | Generated docs                              |
+|----------|---------------------------------------------|
+| `stable` | [api.dart.dev/stable]({{site.dart-api}})    |
+| `beta`   | [api.dart.dev/beta]({{site.dart-api}}/beta) |
+| `dev`    | [api.dart.dev/dev]({{site.dart-api}}/dev)   |
+| `main`   | [api.dart.dev/main]({{site.dart-api}}/main) |
+
+{:.table .table-striped}
+
+## Troubleshoot
+
+To identify and resolve common issues with docs generated with `dart doc`,
+consult the following reference section.
+
+### Search bar failed to load {:#troubleshoot-search}
+
+If the generated documentation's search bars aren't functional or
+include text similar to "Failed to initialize search",
+one of the following scenarios is possible:
+
+1. You are accessing the docs from your own file system,
+   but they aren't being served and loaded with an HTTP server.
+   To learn how to serve local API docs,
+   check out [how to view generated docs locally](#view-local).
+2. The `index.json` file generated by `dart doc` is missing or inaccessible
+   from the documentation directory or your hosted web server.
+   Try regenerating the docs and validating your hosting configuration.
+
+### Sidebar failed to load {:#troubleshoot-sidebar}
+
+If the generated documentation's sidebars are missing or
+include text similar to "Failed to load sidebar",
+one of the following scenarios is possible:
+
+1. You are accessing the docs from your own file system,
+   but the docs aren't being served and loaded with an HTTP server.
+   To learn how to serve local API docs,
+   check out [how to view local docs](#view-local).
+2. The generated docs' base-href behavior is configured.
+   This configuration option is deprecated and should no longer be used.
+   Try removing the option and using the default behavior of `dart doc`.
+   If the default behavior breaks links in your generated docs,
+   please [file an issue][].
+
+[file an issue]: {{site.repo.dart.org}}/dartdoc/issues
+
+### Missing API documentation {:#troubleshoot-missing}
+
+If you can't find or access the generated documentation
+for an API you expect to have docs,
+one of the following scenarios is possible:
+
+1. The package does not expose the API you are looking for as a public API.
+   `dart doc` only generates documentation for public libraries and members
+   that are exposed for other packages to import and use.
+   To learn more about configuring a package's public libraries,
+   check out the package layout guide on [public libraries][].
+2. The URL you are attempting to access has incorrect capitalization.
+   By default, `dart doc` generates filenames that are case-sensitive,
+   match their corresponding source declarations, and have a `.html` extension.
+   Try verifying the URL matches these expectations.
+
+[public libraries]: /tools/pub/package-layout#public-libraries
+
+### Text where icons should be {:#troubleshoot-icons}
+
+If you see text instead of icons like the menu and theme buttons,
+your browser was likely unable to load the Material Symbols font.
+Some options to solve this include:
+
+1. Try using a proxy that enables access to the Google Fonts servers.
+2. Update the generated pages to use a local version of the font.

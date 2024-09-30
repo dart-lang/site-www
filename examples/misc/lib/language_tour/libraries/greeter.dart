@@ -2,8 +2,9 @@
 import 'hello.dart' deferred as hello;
 // #enddocregion import
 
-// #docregion loadLibrary
+// #docregion load-library
 Future<void> greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
+// #enddocregion load-library

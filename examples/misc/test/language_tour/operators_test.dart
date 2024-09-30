@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_if_null_operators
+// ignore_for_file: dead_code, prefer_if_null_operators
 
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
@@ -56,7 +56,7 @@ void main() {
     assert(a == b); // 1 == 1
 
     a = 0;
-    b = a++; // Increment a AFTER b gets its value.
+    b = a++; // Increment a after b gets its value.
     assert(a != b); // 1 != 0
 
     a = 0;
@@ -64,7 +64,7 @@ void main() {
     assert(a == b); // -1 == -1
 
     a = 0;
-    b = a--; // Decrement a AFTER b gets its value.
+    b = a--; // Decrement a after b gets its value.
     assert(a != b); // -1 != 0
     // #enddocregion increment-decrement
   });
@@ -105,13 +105,13 @@ void main() {
     // #enddocregion assignment-gist-main-body
     */
 
-    void _test001() {
+    void testInitiallyNonNull() {
       // #docregion assignment-gist-main-body
       assignValues(0, 0, 1);
       // #enddocregion assignment-gist-main-body
     }
 
-    void _testNull() {
+    void testNull() {
       // #docregion assignment-gist-main-body
       assignValues(null, null, 1);
       // #enddocregion assignment-gist-main-body
@@ -119,7 +119,7 @@ void main() {
 
     test('var initially non-null', () {
       expect(
-          _test001,
+          testInitiallyNonNull,
           m.prints([
             'Initially: a == 0, b == 0',
             'After: a == 1, b == 0',
@@ -128,7 +128,7 @@ void main() {
 
     test('var initially non-null', () {
       expect(
-          _testNull,
+          testNull,
           m.prints([
             'Initially: a == null, b == null',
             'After: a == 1, b == 1',
@@ -159,13 +159,18 @@ void main() {
     assert((value & ~bitmask) == 0x20); // AND NOT
     assert((value | bitmask) == 0x2f); // OR
     assert((value ^ bitmask) == 0x2d); // XOR
+
     assert((value << 4) == 0x220); // Shift left
     assert((value >> 4) == 0x02); // Shift right
+
+    // Shift right example that results in different behavior on web
+    // because the operand value changes when masked to 32 bits:
+    assert((-value >> 4) == -0x03);
+
     assert((value >>> 4) == 0x02); // Unsigned shift right
-    assert((-value >> 4) == -0x03); // Shift right
     assert((-value >>> 4) > 0); // Unsigned shift right
     // #enddocregion op-bitwise
-  });
+  }, testOn: 'vm');
 
   test('if-null', () {
     // #docregion if-null
@@ -184,8 +189,8 @@ void main() {
         return 'Guest';
       }
     }
-
     // #enddocregion if-null-alt
+
     final funcs = [playerName1, playerName2, playerName3];
     expect(funcs.map((f) => f(null)), List.filled(3, 'Guest'));
     expect(funcs.map((f) => f('Alice')), List.filled(3, 'Alice'));

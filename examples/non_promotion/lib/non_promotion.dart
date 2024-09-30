@@ -1,16 +1,27 @@
-// ignore_for_file: expected_executable, missing_statement, unused_local_variable, unused_element, prefer_function_declarations_over_variables
+// ignore_for_file: expected_executable, missing_statement
+// ignore_for_file: unused_local_variable, unused_element
+// ignore_for_file: prefer_function_declarations_over_variables
+// ignore_for_file: prefer_if_null_operators
+
+// #docregion not-field, conflicting-getter
+import 'dart:math';
+// #enddocregion not-field, conflicting-getter
+
+// #docregion mock
+import 'package:mockito/mockito.dart';
+// #enddocregion mock
 
 class C1 {
   int? i;
   void f() {
     if (i == null) return;
-    // #docregion property_bang
+    // #docregion property-bang
     print(i!.isEven);
-    // #enddocregion property_bang
+    // #enddocregion property-bang
   }
 }
 
-// #docregion property_copy
+// #docregion property-copy
 class C {
   int? i;
   void f() {
@@ -19,7 +30,7 @@ class C {
     print(i.isEven);
   }
 }
-// #enddocregion property_copy
+// #enddocregion property-copy
 
 class Link {
   final value = 0;
@@ -28,7 +39,7 @@ class Link {
 
 void miscDeclAnalyzedButNotTested() {
   {
-    // #docregion write_combine_ifs
+    // #docregion write-combine-ifs
     void f(bool b, int? i, int? j) {
       if (i == null) return;
       if (b) {
@@ -37,11 +48,11 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
-    // #enddocregion write_combine_ifs
+    // #enddocregion write-combine-ifs
   }
 
   {
-    // #docregion write_change_type
+    // #docregion write-change-type
     void f(bool b, int? i, int j) {
       if (i == null) return;
       if (b) {
@@ -51,7 +62,7 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
-    // #enddocregion write_change_type
+    // #enddocregion write-change-type
   }
 
   {
@@ -82,10 +93,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-null-check
-      // #enddocregion catch-null-check
       if (i == null) return;
+      // #docregion catch-null-check
       try {
+        // #enddocregion catch-null-check
         i = j; // (1)
         // ... Additional code ...
         if (i == null) return; // (2)
@@ -104,10 +115,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     void f(int? i, int? j) {
-      // #docregion catch-bang
-      // #enddocregion catch-bang
       if (i == null) return;
+      // #docregion catch-bang
       try {
+        // #enddocregion catch-bang
         i = j; // (1)
         // ... Additional code ...
         if (i == null) return; // (2)
@@ -147,7 +158,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion subtype-String
+    // #docregion subtype-string
     void f(Object o) {
       if (o is Comparable /* (1) */) {
         if (o is String /* (2) */) {
@@ -155,7 +166,7 @@ void miscDeclAnalyzedButNotTested() {
         }
       }
     }
-    // #enddocregion subtype-String
+    // #enddocregion subtype-string
   }
 
   {
@@ -238,6 +249,139 @@ void miscDeclAnalyzedButNotTested() {
       };
     }
     // #enddocregion closure-write-capture
-
   }
 }
+
+// #docregion this
+extension on int? {
+  int get valueOrZero {
+    final self = this;
+    return self == null ? 0 : self;
+  }
+}
+// #enddocregion this
+
+// #docregion private
+class PrivateFieldExample {
+  final int? _val;
+  PrivateFieldExample(this._val);
+}
+
+void test(PrivateFieldExample x) {
+  if (x._val != null) {
+    print(x._val + 1);
+  }
+}
+// #enddocregion private
+
+// #docregion final
+class FinalExample {
+  final int? _immutablePrivateField;
+  FinalExample(this._immutablePrivateField);
+
+  void f() {
+    if (_immutablePrivateField != null) {
+      int i = _immutablePrivateField; // OK
+    }
+  }
+}
+// #enddocregion final
+
+// #docregion not-field
+abstract class NotFieldExample {
+  int? get _value => Random().nextBool() ? 123 : null;
+}
+
+void f(NotFieldExample x) {
+  final value = x._value;
+  if (value != null) {
+    print(value.isEven); // OK
+  }
+}
+// #enddocregion not-field
+
+// #docregion external
+class ExternalExample {
+  external final int? _externalField;
+
+  void f() {
+    final i = _externalField;
+    if (i != null) {
+      print(i.isEven); // OK
+    }
+  }
+}
+// #enddocregion external
+
+// #docregion conflicting-getter
+class GetterExample {
+  final int? _overridden;
+  GetterExample(this._overridden);
+}
+
+class Override implements GetterExample {
+  @override
+  int? get _overridden => Random().nextBool() ? 1 : null;
+}
+
+void testParity(GetterExample x) {
+  final i = x._overridden;
+  if (i != null) {
+    print(i.isEven); // OK
+  }
+}
+// #enddocregion conflicting-getter
+
+// #docregion unrelated
+class UnrelatedExample {
+  final int? _i;
+  UnrelatedExample(this._i);
+}
+
+class Unrelated {
+  int? get _j => Random().nextBool() ? 1 : null;
+}
+
+void f2(UnrelatedExample x) {
+  if (x._i != null) {
+    int i = x._i; // OK
+  }
+}
+// #enddocregion unrelated
+
+// #docregion conflicting-field
+class FieldExample {
+  final int? _overridden;
+  FieldExample(this._overridden);
+}
+
+class Override2 implements FieldExample {
+  @override
+  int? _overridden;
+}
+
+void f3(FieldExample x) {
+  final i = x._overridden;
+  if (i != null) {
+    print(i.isEven); // OK
+  }
+}
+// #enddocregion conflicting-field
+
+// #docregion mock
+class MockingExample {
+  final int? _i;
+  MockingExample(this._i);
+}
+
+class MockExample extends Mock implements MockingExample {
+  @override
+  late final int? _i;
+}
+
+void f4(MockingExample x) {
+  if (x._i != null) {
+    int i = x._i; // OK
+  }
+}
+// #enddocregion mock

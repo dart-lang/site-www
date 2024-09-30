@@ -1,0 +1,14 @@
+name: concurrency_examples
+description: dart.dev concurrency examples.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  http: any
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.25.8

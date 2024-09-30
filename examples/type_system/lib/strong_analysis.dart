@@ -1,5 +1,7 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable
+// ignore_for_file: unused_element, unused_local_variable, dead_code, collection_methods_unrelated_type
+
+import 'package:examples_util/ellipsis.dart';
 
 import 'animal.dart';
 
@@ -20,11 +22,11 @@ void _miscDeclAnalyzedButNotTested() {
     void printInts(List<int> a) => print(a);
 
     void main() {
-      var list = [];
+      final list = [];
       list.add(1);
       list.add('2');
       // ignore: stable, beta, dev, argument_type_not_assignable
-      printInts(list); //!analysis-issue
+      printInts(list);
     }
     // #enddocregion opening-example
 
@@ -80,7 +82,7 @@ void _miscDeclAnalyzedButNotTested() {
     // #docregion local-var-type-inference-error
     var x = 3; // x is inferred as an int.
     // ignore: stable, beta, dev, stable, dev, invalid_assignment
-    x = 4.0; //!analysis-issue
+    x = 4.0;
     // #enddocregion local-var-type-inference-error
   }
 
@@ -134,20 +136,23 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion generic-type-assignment-MaineCoon
-    List<Cat> myCats = <MaineCoon>[];
+    List<MaineCoon> myMaineCoons = ellipsis();
+    List<Cat> myCats = myMaineCoons;
     // #enddocregion generic-type-assignment-MaineCoon
   }
 
   {
     // #docregion generic-type-assignment-Animal
+    List<Animal> myAnimals = ellipsis();
     // ignore: stable, beta, dev, invalid_assignment
-    List<Cat> myCats = <Animal>[];
+    List<Cat> myCats = myAnimals;
     // #enddocregion generic-type-assignment-Animal
   }
 
   {
     // #docregion generic-type-assignment-implied-cast
-    List<Cat> myCats = <Animal>[] as List<Cat>;
+    List<Animal> myAnimals = ellipsis();
+    List<Cat> myCats = myAnimals as List<Cat>;
     // #enddocregion generic-type-assignment-implied-cast
   }
 }

@@ -18,11 +18,11 @@ class Employee extends Person {
   // #enddocregion method-then-constructor
   // #docregion super
   // Person does not have a default constructor;
-  // you must call super.fromJson(data).
+  // you must call super.fromJson().
   Employee.fromJson(Map data) : super.fromJson(data) {
     print('in Employee');
   }
-// #docregion method-then-constructor
+  // #docregion method-then-constructor
 }
 // #enddocregion method-then-constructor
 
@@ -34,16 +34,16 @@ void main() {
   // in Employee
   // Instance of 'Employee'
   // #enddocregion super
-  // #docregion emp-is-Person
-  // ignore: stable, beta, dev, unnecessary_type_check
+  // #docregion emp-is-person
+  // ignore: unnecessary_type_check
   if (employee is Person) {
     // Type check
     employee.firstName = 'Bob';
   }
-  // #enddocregion emp-is-Person
-  // #docregion emp-as-Person
+  // #enddocregion emp-is-person
+  // #docregion emp-as-person
   (employee as Person).firstName = 'Bob';
-  // #enddocregion emp-as-Person
+  // #enddocregion emp-as-person
 // #docregion super
 }
 // #enddocregion super

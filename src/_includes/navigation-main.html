@@ -1,9 +1,9 @@
-{% assign page_url_path = page.url | regex_replace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
+{% assign page_url_path = page.url | regexReplace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
 
 <nav id="mainnav" class="site-header">
-  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <div id="menu-toggle"><i class="material-symbols">menu</i></div>
   <a href="/" class="brand" title="{{site.title}}">
-    <img src="{% asset shared/dart/logo+text/horizontal/white.svg @path %}" alt="{{site.title}}">
+    <img src="/assets/img/logo/logo-white-text.svg" alt="{{site.title}}">
   </a>
   <ul class="navbar">
     {%- comment -%}
@@ -15,7 +15,9 @@
     </li>
     <li class="mainnav__get-started">
       <a href="/guides" class="nav-link
-        {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/dart-2/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}"><span>Docs</span></a>
+        {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' or page_url_path contains '/*/effective-dart/' or page_url_path contains '/*/libraries/' %} active {%- endif -%}">
+        <span>Docs</span>
+      </a>
     </li>
     <li>
       <a href="/community" class="nav-link
@@ -33,7 +35,8 @@
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
         <input type="hidden" name="ie" value="UTF-8">
         <input type="hidden" name="hl" value="en">
-        <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="search-main" autocomplete="off" placeholder="Search" aria-label="Search">
       </form>
     </li>
   </ul>

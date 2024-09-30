@@ -1,5 +1,5 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable, one_member_abstracts
+// ignore_for_file: unused_element, unused_local_variable, one_member_abstracts, use_super_parameters
 // ignore_for_file: prefer_function_declarations_over_variables, unused_field, strict_raw_type
 
 import 'dart:html';
@@ -13,7 +13,7 @@ void _samplesFromCommonProblemsPage() {
     // #docregion canvas-undefined
     var canvas = querySelector('canvas')!;
     // ignore: stable, beta, dev, undefined_getter
-    canvas.context2D.lineTo(x, y); //!analysis-issue
+    canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-undefined
   }
 
@@ -36,7 +36,7 @@ void _samplesFromCommonProblemsPage() {
     // Inferred as Map<String, int>
     var map = {'a': 1, 'b': 2, 'c': 3};
     // ignore: stable, beta, dev, invalid_assignment
-    map['d'] = 1.5; //!analysis-issue
+    map['d'] = 1.5;
     // #enddocregion inferred-collection-types
   }
 
@@ -56,8 +56,8 @@ abstract class NumberAdder {
 }
 
 class MyAdder extends NumberAdder {
-  // ignore: stable, beta, dev, invalid_override
   @override
+  // ignore: stable, beta, dev, invalid_override
   num add(int a, int b) => a + b;
 }
 // #enddocregion invalid-method-override
@@ -93,7 +93,7 @@ class _HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last
   _HoneyBadger(Eats food, String name)
-      // ignore: stable, beta, dev, invalid_super_invocation
+      // ignore: stable, beta, dev, super_invocation_not_last
       : super(food),
         _name = name {/* ... */}
 // #enddocregion super-goes-last
@@ -131,3 +131,33 @@ void funcCast() {
   filterValues((x) => (x as String).contains('Hello'));
   // #enddocregion func-cast
 }
+
+//-----------------------------------------------
+
+void infNull() {
+  // #docregion type-inf-null
+  var ints = [1, 2, 3];
+  // ignore: non_bool_operand, undefined_operator, return_of_invalid_type_from_closure
+  var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
+  // #enddocregion type-inf-null
+}
+
+void infFix() {
+  // #docregion type-inf-fix
+  var ints = [1, 2, 3];
+  var maximumOrNull =
+      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+  // #enddocregion type-inf-fix
+}
+
+//-----------------------------------------------
+
+// #docregion compatible-generics
+abstract class C implements List<int> {}
+// #enddocregion compatible-generics
+
+// #docregion conflicting-generics
+// ignore: inconsistent_inheritance, conflicting_generic_interfaces,
+// ignore: duplicate_definition
+abstract class C implements List<int>, Iterable<num> {}
+// #enddocregion conflicting-generics

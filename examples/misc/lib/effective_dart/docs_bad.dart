@@ -37,6 +37,8 @@ class IOError {}
 
 class PermissionError {}
 
+//----------------------------------------------------------------------------
+
 class Widget {}
 
 // #docregion redundant
@@ -48,6 +50,8 @@ class RadioButtonWidget extends Widget {
   }
 }
 // #enddocregion redundant
+
+//----------------------------------------------------------------------------
 
 class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion no-annotations
@@ -61,6 +65,20 @@ class C<ChunkBuilder, Flag, LineWriter> {
   Flag addFlag(String name, String abbr) => ellipsis();
   // #enddocregion no-annotations
 }
+
+//----------------------------------------------------------------------------
+
+class Pool {
+// #docregion getter-and-setter
+  /// The depth of the water in the pool, in meters.
+  int get waterDepth => ellipsis();
+
+  /// Updates the water depth to a total of [meters] in height.
+  set waterDepth(int meters) => ellipsis();
+// #enddocregion getter-and-setter
+}
+
+//----------------------------------------------------------------------------
 
 class Component {
   const Component({String selector = ''});

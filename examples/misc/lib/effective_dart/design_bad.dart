@@ -1,12 +1,20 @@
 // ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names
 // ignore_for_file: type_init_formals, unused_field, always_declare_return_types, strict_raw_type, prefer_typing_uninitialized_variables
 // ignore_for_file: use_function_type_syntax_for_parameters, prefer_generic_function_type_aliases, avoid_null_checks_in_equality_operators
+// ignore_for_file: non_nullable_equals_parameter
 
 import 'dart:async';
 
 import 'package:examples_util/ellipsis.dart';
 
 import 'design_good.dart';
+
+class Key {}
+
+class StatelessWidget {
+  final Key? key;
+  StatelessWidget({this.key});
+}
 
 void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
@@ -130,9 +138,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion prefer-dynamic
   }
 
-  // #docregion avoid-Function
+  // #docregion avoid-function
   bool isValid(String value, Function test) => ellipsis();
-  // #enddocregion avoid-Function
+  // #enddocregion avoid-function
 
   // #docregion future-or
   FutureOr<int> triple(FutureOr<int> value) {
@@ -160,6 +168,10 @@ class MyIterable<T> {
 class Point1 {
   double x, y;
   Point1(double this.x, double this.y);
+}
+
+class MyWidget extends StatelessWidget {
+  MyWidget({Key? super.key});
 }
 // #enddocregion dont-type-init-formals
 
@@ -245,6 +257,7 @@ class C<Foo> {
 // #docregion eq-dont-check-for-null
 class Person1 {
   final String name;
+
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();

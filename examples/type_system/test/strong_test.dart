@@ -18,7 +18,7 @@ void main() {
     void printInts(List<int> a) => print(a);
 
     void main() {
-      var list = <int>[];
+      final list = <int>[];
       list.add(1);
       list.add(2);
       printInts(list);
@@ -32,17 +32,17 @@ void main() {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
-        List<Animal> animals = [Dog()];
+        List<Animal> animals = <Dog>[Dog()];
         List<Cat> cats = animals as List<Cat>;
       }
       // #enddocregion runtime-checks
 
-      const msg = "type 'List<Animal>' is not a subtype of type 'List<Cat>'";
+      const msg = "type 'List<Dog>' is not a subtype of type 'List<Cat>'";
       expect(main, _throwsA<TypeError>(msg));
     });
 
     test('downcast check fails', () {
-      void _test() {
+      void downcastCheck() {
         // #docregion fail-downcast-check
         assumeStrings(<int>[1, 2, 3]);
         // #enddocregion fail-downcast-check
@@ -51,13 +51,13 @@ void main() {
       // #docregion downcast-check-msg
       const msg = "type 'List<int>' is not a subtype of type 'List<String>'";
       // #enddocregion downcast-check-msg
-      expect(_test, _throwsA<TypeError>(msg));
+      expect(downcastCheck, _throwsA<TypeError>(msg));
     });
 
     final expectedOutput = 'a string\n';
 
     test('downcast check ok for <String>[]', () {
-      void _test() {
+      void downcastCheck() {
         // #docregion typed-list-lit
         var list = <String>[];
         list.add('a string');
@@ -66,11 +66,11 @@ void main() {
         // #enddocregion typed-list-lit
       }
 
-      expect(_test, prints(expectedOutput));
+      expect(downcastCheck, prints(expectedOutput));
     });
 
     test('downcast check ok for List<String>', () {
-      void _test() {
+      void downcastCheck() {
         // #docregion typed-list
         List<String> list = [];
         list.add('a string');
@@ -79,7 +79,7 @@ void main() {
         // #enddocregion typed-list
       }
 
-      expect(_test, prints(expectedOutput));
+      expect(downcastCheck, prints(expectedOutput));
     });
 
     Map<String, dynamic> fetchFromExternalSource() => {
@@ -87,7 +87,7 @@ void main() {
         };
 
     test('downcast check ok: use cast()', () {
-      void _test() {
+      void downcastCheck() {
         // #docregion cast
         Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
@@ -95,7 +95,7 @@ void main() {
         // #enddocregion cast
       }
 
-      expect(_test, prints(expectedOutput));
+      expect(downcastCheck, prints(expectedOutput));
     });
 
     test('instantiate-to-bound sanity', () {
