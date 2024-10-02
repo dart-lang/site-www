@@ -13,8 +13,8 @@ importers:
         version: 4.6.2
     devDependencies:
       '@11ty/eleventy':
-        specifier: 3.0.0-beta.2
-        version: 3.0.0-beta.2
+        specifier: 3.0.0
+        version: 3.0.0
       firebase-tools:
         specifier: ^13.20.2
         version: 13.20.2(encoding@0.1.13)
@@ -79,8 +79,8 @@ packages:
     resolution: {integrity: sha512-nULO91om7vQw4Y/UBjM8i7nJ1xl+/nyK4rImZ41lFxiY2d+XUz7ChAj1CDYFjrLZeu0utAYJTZ45LlcHTkUG4g==}
     engines: {node: '>=12'}
 
-  '@11ty/eleventy@3.0.0-beta.2':
-    resolution: {integrity: sha512-N3sKp79gj1D8JjFK1CMHl9JehaM886sLAB8xc75Lv9daXgTqYHTvoeMGwZ5jrlRvatYD54tpWZESiyDyLzM1mw==}
+  '@11ty/eleventy@3.0.0':
+    resolution: {integrity: sha512-0P0ZsJXVW2QiNdhd7z+GYy6n+ivh0enx1DRdua5ta6NlzY2AhbkeWBY6U+FKA8lPS3H4+XsTpfLLfIScpPZLaQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3001,7 +3001,7 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
 
-  '@11ty/eleventy@3.0.0-beta.2':
+  '@11ty/eleventy@3.0.0':
     dependencies:
       '@11ty/dependency-tree': 3.0.1
       '@11ty/dependency-tree-esm': 1.0.0
