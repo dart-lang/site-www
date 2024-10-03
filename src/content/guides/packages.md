@@ -207,7 +207,7 @@ Also, if the [content hash](/tools/pub/glossary#content-hashes) of a
 published package version differs from the hash in the `pubspec.lock` file,
 `pub` will warn you and update the lockfile to reflect the published version:
 
-For example if we manually change a hash in `pubspec.lock`:
+For example, if you manually change the hash of `retry` in `pubspec.lock`:
 
 ```console
 $ dart pub get
