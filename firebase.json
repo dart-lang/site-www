@@ -176,7 +176,6 @@
       { "source": "/go/dartdoc-options-file", "destination": "https://github.com/dart-lang/dartdoc#dartdoc_optionsyaml", "type": 301 },
       { "source": "/go/data-driven-fixes", "destination": "https://github.com/flutter/flutter/wiki/Data-driven-Fixes", "type": 301 },
       { "source": "/go/dot-packages-deprecation", "destination": "https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md", "type": 301 },
-      { "source": "/to/enforce-lockfile", "destination": "/guides/packages#get-dependencies-for-production", "type": 301 },      
       { "source": "/go/experiments", "destination": "/tools/experiment-flags", "type": 301 },
       { "source": "/go/false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },
       { "source": "/go/ffi", "destination": "/interop/c-interop", "type": 301 },
@@ -284,6 +283,7 @@
       { "source": "/support/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
 
+      { "source": "/to/enforce-lockfile", "destination": "/guides/packages#get-dependencies-for-production", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
