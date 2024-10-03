@@ -183,17 +183,18 @@ use [`dart pub outdated`][outdated].
 In some situations, `dart pub get` does not retrieve
 the exact package versions locked in the `pubspec.lock` file:
 
-* If new dependencies are added to or removed from `pubspec.yaml` after the
-  `pubspec.lock` file was last updated.
+* If new dependencies are added to or removed from `pubspec.yaml` after
+  the `pubspec.lock` file was last updated.
 * If the locked version no longer exists in the package repository.
 * If you changed to a different version of the Dart SDK,
   and some packages are no longer compatible with that new version.
   
 In these cases `dart pub get` will:
 
-* Unlock enough of the locked dependency versions that a resolution becomes
-  possible.
-* Notify you about any dependency changes relative to the existing `pubspec.lock`.
+* Unlock enough of the locked dependency versions that
+  a resolution becomes possible.
+* Notify you about any dependency changes relative to
+  the existing `pubspec.lock`.
 
 For example, after adding `retry: ^3.0.0` to your dependencies:
 
@@ -204,9 +205,9 @@ Downloading packages...
 + retry 3.1.2
 ```
 
-Also, if the [content hash](/tools/pub/glossary#content-hashes) of a 
-published package version differs from the hash in the `pubspec.lock` file,
-`pub` will warn you and update the lockfile to reflect the published version:
+Also, if the [content hash][] of a published package version
+differs from the hash in the `pubspec.lock` file, pub will
+warn you and update the lockfile to reflect the published version.
 
 For example, if you manually change the hash of `retry` in `pubspec.lock`:
 
@@ -232,10 +233,11 @@ Changed 1 dependency!
 When deploying your project to production,
 use `dart pub get --enforce-lockfile` to retrieve dependencies.
 
-If your project's dependency constraints can't be satisfied with the exact
-versions and content hashes in `pubspec.lock`, package retrieval and the
-command will fail. This helps avoid deploying untested dependencies and
-dependency versions to production.
+If your project's dependency constraints can't be
+satisfied with the exact versions and content hashes in `pubspec.lock`,
+package retrieval and the command will fail.
+This helps avoid deploying untested
+dependencies and dependency versions to production.
 
 ```console
 $ dart pub get --enforce-lockfile
@@ -254,9 +256,10 @@ https://dart.dev/go/content-hashes
 Would change 1 dependency.
 Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 
-To update `pubspec.lock` run `dart pub get` without
-`--enforce-lockfile`.
+To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 ```
+
+[content hash]: /tools/pub/glossary#content-hashes
 
 ## More information
 
