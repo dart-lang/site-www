@@ -285,6 +285,7 @@
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
 
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
+      { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
       { "source": "/tools/**/private-files", "destination": "/guides/libraries/private-files", "type": 301 },
