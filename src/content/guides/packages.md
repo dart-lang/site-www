@@ -194,7 +194,8 @@ In these cases `dart pub get` will:
 * Unlock as needed.
 * Notify about any changes in the output.
 
-For example after adding `retry: ^3.0.0` to your dependencies:
+For example, after adding `retry: ^3.0.0` to your dependencies:
+
 ```console
 $ dart pub get
 Resolving dependencies... (1.0s)
