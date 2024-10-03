@@ -228,7 +228,8 @@ https://dart.dev/go/content-hashes
 Changed 1 dependency!
 ```
 
-When deploying your project to production use `dart pub get --enforce-lockfile`.
+When deploying your project to production,
+use `dart pub get --enforce-lockfile` to retrieve dependencies.
 This will fail, if dependencies can't be satisfied with the exact versions and hashes in `pubspec.lock`. Thus, you avoid deploying untested dependencies to production.
 
 ```console
