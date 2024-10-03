@@ -183,7 +183,8 @@ use [`dart pub outdated`][outdated].
 In some situations, `dart pub get` does not retrieve
 the exact package versions locked in the `pubspec.lock` file:
 
-* If new dependencies are added to `pubspec.yaml` since `pubspec.lock` was created.
+* If new dependencies are added to `pubspec.yaml` after
+  the `pubspec.lock` file was last updated.
 * If the locked version no longer exists in the package repository.
 * If you upgraded the Dart SDK, and some packages no longer are compatible with
   the sdk.
