@@ -186,8 +186,8 @@ the exact package versions locked in the `pubspec.lock` file:
 * If new dependencies are added to `pubspec.yaml` after
   the `pubspec.lock` file was last updated.
 * If the locked version no longer exists in the package repository.
-* If you upgraded the Dart SDK, and some packages no longer are compatible with
-  the sdk.
+* If you changed to a different version of the Dart SDK,
+  and some packages are no longer compatible with that new version.
   
 In these cases `dart pub get` will:
 
