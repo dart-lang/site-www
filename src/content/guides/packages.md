@@ -178,7 +178,7 @@ due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
 use [`dart pub outdated`][outdated].
 
-## Getting dependencies in production - `pub get --enforce-lockfile`
+## Get dependencies for production
 
 In some cases `dart pub get` will not give you the exact versions locked in
 `pubspec.lock`. For example:
