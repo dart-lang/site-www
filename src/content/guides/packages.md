@@ -180,8 +180,8 @@ use [`dart pub outdated`][outdated].
 
 ## Get dependencies for production
 
-In some cases `dart pub get` will not give you the exact versions locked in
-`pubspec.lock`. For example:
+In some situations, `dart pub get` does not retrieve
+the exact package versions locked in the `pubspec.lock` file:
 
 * If new dependencies are added to `pubspec.yaml` since `pubspec.lock` was created.
 * If the locked version no longer exists in the package repository.
