@@ -183,16 +183,17 @@ use [`dart pub outdated`][outdated].
 In some situations, `dart pub get` does not retrieve
 the exact package versions locked in the `pubspec.lock` file:
 
-* If new dependencies are added to `pubspec.yaml` after
-  the `pubspec.lock` file was last updated.
+* If new dependencies are added to or removed from `pubspec.yaml` after the
+  `pubspec.lock` file was last updated.
 * If the locked version no longer exists in the package repository.
 * If you changed to a different version of the Dart SDK,
   and some packages are no longer compatible with that new version.
   
 In these cases `dart pub get` will:
 
-* Unlock as needed.
-* Notify about any changes in the output.
+* Unlock enough of the locked dependency versions that a resolution becomes
+  possible.
+* Notify you about any dependency changes relative to the existing `pubspec.lock`.
 
 For example, after adding `retry: ^3.0.0` to your dependencies:
 
@@ -230,7 +231,11 @@ Changed 1 dependency!
 
 When deploying your project to production,
 use `dart pub get --enforce-lockfile` to retrieve dependencies.
-This will fail, if dependencies can't be satisfied with the exact versions and hashes in `pubspec.lock`. Thus, you avoid deploying untested dependencies to production.
+
+If your project's dependency constraints can't be satisfied with the exact
+versions and content hashes in `pubspec.lock`, package retrieval and the
+command will fail. This helps avoid deploying untested dependencies and
+dependency versions to production.
 
 ```console
 $ dart pub get --enforce-lockfile
