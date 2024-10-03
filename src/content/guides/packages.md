@@ -189,7 +189,7 @@ the exact package versions locked in the `pubspec.lock` file:
 * If you upgraded the Dart SDK, and some packages no longer are compatible with
   the sdk.
   
-In all these cases `dart pub get` will
+In these cases `dart pub get` will:
 
 * Unlock as needed.
 * Notify about any changes in the output.
