@@ -2615,20 +2615,20 @@ class C extends A<String> implements B {}
 
 ### conflicting_type_variable_and_container
 
-_'{0}' can't be used to name both a type variable and the class in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the class in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the enum in which the type
-variable is defined._
+_'{0}' can't be used to name both a type parameter and the enum in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension in which
+the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension type in
-which the type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension type in
+which the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the mixin in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the mixin in which the
+type parameter is defined._
 
 #### Description
 
@@ -2655,17 +2655,17 @@ class C<T> {}
 
 ### conflicting_type_variable_and_member
 
-_'{0}' can't be used to name both a type variable and a member in this class._
+_'{0}' can't be used to name both a type parameter and a member in this class._
 
-_'{0}' can't be used to name both a type variable and a member in this enum._
+_'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' can't be used to name both a type variable and a member in this extension
-type._
+_'{0}' can't be used to name both a type parameter and a member in this
+extension type._
 
-_'{0}' can't be used to name both a type variable and a member in this
+_'{0}' can't be used to name both a type parameter and a member in this
 extension._
 
-_'{0}' can't be used to name both a type variable and a member in this mixin._
+_'{0}' can't be used to name both a type parameter and a member in this mixin._
 
 #### Description
 
@@ -4888,15 +4888,13 @@ multiple part directives.
 Given a file `part.dart` containing
 
 ```dart
-part of lib;
+part of 'test.dart';
 ```
 
 The following code produces this diagnostic because the file `part.dart` is
 included multiple times:
 
 ```dart
-library lib;
-
 part 'part.dart';
 part [!'part.dart'!];
 ```
@@ -4906,8 +4904,6 @@ part [!'part.dart'!];
 Remove all except the first of the duplicated part directives:
 
 ```dart
-library lib;
-
 part 'part.dart';
 ```
 
@@ -10282,7 +10278,8 @@ The analyzer produces this diagnostic when all of the following are true:
   method.
 
 The concrete implementation can be invalid because of incompatibilities in
-either the return type, the types of parameters, or the type variables.
+either the return type, the types of the method's parameters, or the type
+parameters.
 
 #### Example
 
@@ -11375,18 +11372,18 @@ class D extends A {
 
 ### invalid_type_argument_in_const_literal
 
-_Constant list literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant list literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant map literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant map literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant set literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant set literals can't use a type parameter in a type argument, such as
+'{0}'._
 
 #### Description
 
-The analyzer produces this diagnostic when a type parameter is used as a
+The analyzer produces this diagnostic when a type parameter is used in a
 type argument in a list, map, or set literal that is prefixed by `const`.
 This isn't allowed because the value of the type parameter (the actual type
 that will be used at runtime) can't be known at compile time.
@@ -27273,12 +27270,12 @@ interpolation would achieve the same result.
 
 #### Example
 
-The following code produces this diagnostic because the elements of the
-list `l` are being concatenated with other strings using the `+` operator:
+The following code produces this diagnostic because the String `s` is
+concatenated with other strings using the `+` operator:
 
 ```dart
-String f(List<String> l) {
-  return [!'(' + l[0] + ', ' + l[1] + ')'!];
+String f(String s) {
+  return [!'(' + s!] + ')';
 }
 ```
 
