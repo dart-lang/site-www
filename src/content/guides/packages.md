@@ -347,12 +347,12 @@ Now the file structure looks like this:
   .dart_tool/package_config.json
 ```
 
-{{site.alert.version-note}}
+:::version-note
 Pub workspaces was introduced in Dart 3.6.0.
 
 To use pub workspaces, all your workspace packages (but not your dependencies)
 must have a sdk version constraint of `^3.6.0` or higher.
-{{site.alert.end}}
+:::
 
 ### Interdependencies between workspace packages
 
