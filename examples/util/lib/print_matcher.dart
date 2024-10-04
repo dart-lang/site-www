@@ -5,7 +5,7 @@ import 'package:test/test.dart' as test;
 /// otherwise this matches `'$any'`.
 test.Matcher prints(dynamic any) {
   final args = any is Iterable ? any : [any];
-  return test.prints(args.map((arg) => '$arg').join('\n') + '\n');
+  return test.prints('${args.map((arg) => '$arg').join('\n')}\n');
 }
 
 /// Cleans up [lines] by trimming off leading whitespace and adding a trailing

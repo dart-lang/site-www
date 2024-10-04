@@ -22,16 +22,16 @@ void main() {
   });
 
   test('generic-collections', () {
-    void _test() {
+    void testGenericCollection() {
       // #docregion generic-collections
       var names = <String>[];
       names.addAll(['Seth', 'Kathy', 'Lars']);
-      // ignore: stable, beta, dev, unnecessary_type_check
+      // ignore: unnecessary_type_check
       print(names is List<String>); // true
       // #enddocregion generic-collections
     }
 
-    expect(_test, prints('true\n'));
+    expect(testGenericCollection, prints('true\n'));
   });
 
   test('method', () {

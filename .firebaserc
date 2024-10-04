@@ -4,11 +4,6 @@
     "dev": "dartlang-org-dev",
     "staging-0": "dart-dev-staging-0",
     "staging-1": "dart-dev-staging-1",
-    "staging-0-old": "dartlang-org-staging-0",
-    "staging-1-old": "dartlang-org-staging-1",
-    "kw": "kw-www-dartlang-1",
-    "kw2": "kw-staging-dartlang-2",
-    "kw3": "kw-dartlang-3",
     "sz": "sz-www-1",
     "sz2": "sz-www-2",
     "jr": "jr-dartlang-site"

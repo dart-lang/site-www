@@ -7,51 +7,47 @@ import 'dart:convert';
 
 // #enddocregion read-from-stream
 import 'package:test/test.dart';
-import 'package:examples/library_tour/io/http_server.dart'
-    as http_server;
+import 'package:examples/library_tour/io/http_server.dart' as http_server;
 import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('readAsString, readAsLines', () async {
-    // #docregion readAsString
-    Future<void> main() async {
+    // #docregion read-as-string
+    void main() async {
       var config = File('test_data/config.txt');
 
       // Put the whole file in a single string.
       var stringContents = await config.readAsString();
-      print(
-          'The file is ${stringContents.length} characters long.');
+      print('The file is ${stringContents.length} characters long.');
 
       // Put each line of the file into its own string.
       var lines = await config.readAsLines();
       print('The file is ${lines.length} lines long.');
     }
-    // #enddocregion readAsString
+    // #enddocregion read-as-string
 
     expect(
         main,
-        m.prints([
-          'The file is 58 characters long.',
-          'The file is 4 lines long.'
-        ]));
+        m.prints(
+            ['The file is 58 characters long.', 'The file is 4 lines long.']));
   });
 
   test('readAsBytes', () {
-    // #docregion readAsBytes
-    Future<void> main() async {
+    // #docregion read-as-bytes
+    void main() async {
       var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
       print('The file is ${contents.length} bytes long.');
     }
-    // #enddocregion readAsBytes
+    // #enddocregion read-as-bytes
 
     expect(main, m.prints('The file is 58 bytes long.'));
   });
 
   test('try-catch', () {
     // #docregion try-catch
-    Future<void> main() async {
+    void main() async {
       var config = File('does-not-exist.txt');
       try {
         var contents = await config.readAsString();
@@ -60,9 +56,9 @@ void main() {
         print(e);
       }
     }
-
     // #enddocregion try-catch
-    expect(main, prints(startsWith('FileSystemException')));
+
+    expect(main, prints(contains('Cannot open file')));
   });
 
   test('read-from-stream', () {
@@ -84,8 +80,7 @@ void main() {
     // #enddocregion write-file
     try {
       expect(logFile.existsSync(), isTrue);
-      expect(logFile.readAsStringSync(),
-          startsWith('FILE ACCESSED'));
+      expect(logFile.readAsStringSync(), startsWith('FILE ACCESSED'));
     } finally {
       await logFile.delete();
     }
@@ -93,7 +88,7 @@ void main() {
 
   test('list-dir', () {
     // #docregion list-dir
-    Future<void> main() async {
+    void main() async {
       var dir = Directory('test_data');
 
       try {
@@ -109,8 +104,8 @@ void main() {
         print(e.toString());
       }
     }
-
     // #enddocregion list-dir
+
     expect(main, prints(contains('Found file')));
   });
 
@@ -146,14 +141,12 @@ void main() {
 // included in the excerpt.
 
 // #docregion read-from-stream
-Future<void> main_test_read_from_stream() async {
+void main_test_read_from_stream() async {
   var config = File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
-  var lines = utf8.decoder
-      .bind(inputStream)
-      .transform(const LineSplitter());
+  var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
   try {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');

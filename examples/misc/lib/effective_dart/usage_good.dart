@@ -1,5 +1,7 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
+// ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
+// ignore_for_file: use_super_parameters, dead_code
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -7,12 +9,11 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0<Future<void>> longRunningCalculation =
-    () => Future.value();
+Func0<Future<void>> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
-Func1<bool, dynamic> canHandle = (_) => false,
-    verifyResult = (_) => false;
+Func1<bool, dynamic> canHandle = (_) => false, verifyResult = (_) => false;
+T? somethingNullable<T>() => null;
 
 class Thing {
   bool get isEnabled => true;
@@ -20,24 +21,28 @@ class Thing {
 
 void miscDeclAnalyzedButNotTested() {
   {
-    Thing? optionalThing;
-    // #docregion convert-null-aware
-    // If you want null to be false:
-    if (optionalThing?.isEnabled ?? false) {
-      print('Have enabled thing.');
-    }
+    bool nonNullableBool = true;
+    bool? nullableBool = somethingNullable<bool>();
 
-    // If you want null to be true:
-    if (optionalThing?.isEnabled ?? true) {
-      print('Have enabled thing or nothing.');
-    }
-    // #enddocregion convert-null-aware
+    // #docregion non-null-boolean-expression
+    if (nonNullableBool) {/* ... */}
+
+    if (!nonNullableBool) {/* ... */}
+    // #enddocregion non-null-boolean-expression
+
+    // #docregion nullable-boolean-expression
+    // If you want null to result in false:
+    if (nullableBool ?? false) {/* ... */}
+
+    // If you want null to result in false
+    // and you want the variable to type promote:
+    if (nullableBool != null && nullableBool) {/* ... */}
+    // #enddocregion nullable-boolean-expression
   }
 
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm(
-        'ERROR: Parts of the spaceship are on fire. Other '
+    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
         'parts are overrun by martians. Unclear which are which.');
     // #enddocregion adjacent-strings-literals
   }
@@ -76,8 +81,7 @@ void miscDeclAnalyzedButNotTested() {
       command,
       ...?modeFlags,
       for (var path in filePaths)
-        if (path.endsWith('.dart'))
-          path.replaceAll('.dart', '.js')
+        if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
     ];
     // #enddocregion spread-etc
   }
@@ -130,19 +134,12 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion cast-from
 
-  (Iterable<Animal> animals) {
-    // #docregion use-higher-order-func
-    var aquaticNames = animals
-        .where((animal) => animal.isAquatic)
-        .map((animal) => animal.name);
-  };
-
   (Iterable people) {
-    // #docregion avoid-forEach
+    // #docregion avoid-for-each
     for (final person in people) {
       /*...*/
     }
-    // #enddocregion avoid-forEach
+    // #enddocregion avoid-for-each
     // #docregion forEach-over-func
     people.forEach(print);
     // #enddocregion forEach-over-func
@@ -160,7 +157,20 @@ void miscDeclAnalyzedButNotTested() {
 
   (Iterable names) {
     // #docregion use-tear-off
-    names.forEach(print);
+    var charCodes = [68, 97, 114, 116];
+    var buffer = StringBuffer();
+
+    // Function:
+    charCodes.forEach(print);
+
+    // Method:
+    charCodes.forEach(buffer.write);
+
+    // Named constructor:
+    var strings = charCodes.map(String.fromCharCode);
+
+    // Unnamed constructor:
+    var buffers = charCodes.map(StringBuffer.new);
     // #enddocregion use-tear-off
   };
 
@@ -204,8 +214,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<int> fastestBranch(
-        Future<int> left, Future<int> right) {
+    Future<int> fastestBranch(Future<int> left, Future<int> right) {
       return Future.any([left, right]);
     }
     // #enddocregion unnecessary-async
@@ -222,7 +231,7 @@ void miscDeclAnalyzedButNotTested() {
       throw 'Error!';
     }
 
-    Future<void> asyncValue() async => 'value';
+    Future<String> asyncValue() async => 'value';
     // #enddocregion async
   }
 
@@ -294,8 +303,7 @@ class Player {
 
 class Team {
   Future<List<Player>> get roster => Future.value([]);
-  Future<Team?> downloadTeam(String name) =>
-      Future.value(Team());
+  Future<Team?> downloadTeam(String name) => Future.value(Team());
   dynamic get log => null;
 
   // #docregion async-await
@@ -342,7 +350,7 @@ class Response {
   String get reason => '';
 }
 
-// #docregion copy-nullable-field
+// #docregion shadow-nullable-field, null-check-promo
 class UploadException {
   final Response? response;
 
@@ -350,16 +358,23 @@ class UploadException {
 
   @override
   String toString() {
-    var response = this.response;
+    // #enddocregion shadow-nullable-field
+    if (this.response case var response?) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+// #enddocregion null-check-promo
+// #docregion shadow-nullable-field
+    final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-
+    // #docregion null-check-promo
     return 'Could not upload (no response).';
   }
 }
-// #enddocregion copy-nullable-field
+// #enddocregion shadow-nullable-field, null-check-promo
 
 //----------------------------------------------------------------------------
 
@@ -403,11 +418,7 @@ class Treasure {
 }
 
 class C {
-  double left = 0.0,
-      right = 0.0,
-      top = 0.0,
-      bottom = 0.0,
-      minTime = 0.0;
+  double left = 0.0, right = 0.0, top = 0.0, bottom = 0.0, minTime = 0.0;
   Point center = Point(0.0, 0.0);
   final Map<Chest, Treasure> _opened = {};
 
@@ -553,21 +564,3 @@ Widget build(BuildContext context) {
   );
 }
 // #enddocregion no-new
-
-//----------------------------------------------------------------------------
-
-class Style {}
-
-class ViewBase {
-  ViewBase(_);
-}
-
-class View extends ViewBase {
-  final List _children;
-  // #docregion super-first
-  View(Style style, List children)
-      : _children = children,
-        super(style);
-  // #enddocregion super-first
-  List get children => _children;
-}

@@ -1,5 +1,7 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
+
 import 'dart:async';
 import 'dart:html';
 import 'package:test/test.dart';
@@ -59,25 +61,25 @@ void main() {
     expect(querySelector('.windows')!.hidden, isTrue);
   });
 
-  test('getString', () async {
+  test('getString', skip: 'httpbin timing out', () async {
     final url = 'https://httpbin.org';
-    // #docregion getString
+    // #docregion get-string
     Future<void> main() async {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
-      // #enddocregion getString
+      // #enddocregion get-string
       expect(
         pageHtml.substring(0, 250),
         contains('<title>httpbin'),
       );
-      // #docregion getString
+      // #docregion get-string
     }
-    // #enddocregion getString
+    // #enddocregion get-string
 
     await main();
   });
 
-  test('request', () async {
+  test('request', skip: 'httpbin timing out', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
     Future<void> main() async {
@@ -97,15 +99,15 @@ void main() {
     await main();
   });
 
-  test('POST', () async {
-    final url = 'https://httpbin.org/post';
+  test('POST', skip: 'httpbin timing out', () async {
+    const url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.entries
         .map((e) =>
             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
 
-    Future<void> main() async {
+    void main() async {
       const data = {'dart': 'fun', 'angular': 'productive'};
 
       var request = HttpRequest();

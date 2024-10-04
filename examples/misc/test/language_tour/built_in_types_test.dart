@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation
+// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, avoid_init_to_null
 
 import 'package:test/test.dart';
 
@@ -67,10 +67,10 @@ void main() {
 
     // Check for zero.
     var hitPoints = 0;
-    assert(hitPoints <= 0);
+    assert(hitPoints == 0);
 
     // Check for null.
-    var unicorn;
+    var unicorn = null;
     assert(unicorn == null);
 
     // Check for NaN.
@@ -99,45 +99,31 @@ void main() {
   });
 
   test('list-null-spread', () {
+    List<int>? list;
     // #docregion list-null-spread
-    var list;
     var list2 = [0, ...?list];
     assert(list2.length == 1);
     // #enddocregion list-null-spread
   });
 
   test('list-if', () {
-    var promoActive = false;
+    var promoActive = true;
     // #docregion list-if
-    var nav = [
-      'Home',
-      'Furniture',
-      'Plants',
-      if (promoActive) 'Outlet'
-    ];
+    var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
     // #enddocregion list-if
-    assert(nav.length == 3);
+    assert(nav.length == 4);
   });
 
   test('list-for', () {
     // #docregion list-for
     var listOfInts = [1, 2, 3];
-    var listOfStrings = [
-      '#0',
-      for (var i in listOfInts) '#$i'
-    ];
+    var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
     assert(listOfStrings[1] == '#1');
     // #enddocregion list-for
   });
 
   test('set-length', () {
-    var halogens = {
-      'fluorine',
-      'chlorine',
-      'bromine',
-      'iodine',
-      'astatine'
-    };
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
     // #docregion set-length
     var elements = <String>{};

@@ -1,12 +1,23 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type
+// ignore_for_file: no_leading_underscores_for_local_identifiers, use_function_type_syntax_for_parameters
+
+// #docregion library-doc
+/// A really great test library.
+@TestOn('browser')
+library;
+// #enddocregion library-doc
 
 import 'package:examples_util/ellipsis.dart';
+
+class TestOn {
+  const TestOn(String platform);
+}
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
     // #docregion comments-like-sentences
-    // Not if there is nothing before it.
-    if (_chunks.isEmpty) return false;
+    // Not if anything comes before it.
+    if (_chunks.isNotEmpty) return false;
     // #enddocregion comments-like-sentences
     return true;
   };
@@ -84,7 +95,7 @@ void miscDeclAnalyzedButNotTested() {
     void method1() {}
 
     // #docregion ctor
-    /// To create a point from polar coordinates, use [Point.polar()].
+    /// To create a point, call [Point.new] or use [Point.polar] to ...
     // #enddocregion ctor
     void method2() {}
   };
@@ -180,13 +191,42 @@ class C0 {
 class C1 {
   C1(this.weekday);
 
-// #docregion noun-phrases-for-var-etc
+// #docregion noun-phrases-for-non-boolean-var-etc
   /// The current day of the week, where `0` is Sunday.
   int weekday;
 
   /// The number of checked buttons on the page.
   int get checkedCount => ellipsis();
-// #enddocregion noun-phrases-for-var-etc
+// #enddocregion noun-phrases-for-non-boolean-var-etc
+}
+
+//----------------------------------------------------------------------------
+
+class Modal {
+  Modal(this.isVisible);
+
+// #docregion noun-phrases-for-boolean-var-etc
+  /// Whether the modal is currently displayed to the user.
+  bool isVisible;
+
+  /// Whether the modal should confirm the user's intent on navigation.
+  bool get shouldConfirm => ellipsis();
+
+  /// Whether resizing the current browser window will also resize the modal.
+  bool get canResize => ellipsis();
+// #enddocregion noun-phrases-for-boolean-var-etc
+}
+
+//----------------------------------------------------------------------------
+
+class Pool {
+// #docregion getter-and-setter
+  /// The pH level of the water in the pool.
+  ///
+  /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
+  int get phLevel => ellipsis();
+  set phLevel(int level) => ellipsis();
+// #enddocregion getter-and-setter
 }
 
 //----------------------------------------------------------------------------

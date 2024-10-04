@@ -1,5 +1,7 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
+
 // #docregion dart-html-import
 import 'dart:html';
 // #enddocregion dart-html-import
@@ -16,7 +18,8 @@ void main() {
     querySelector('#confirm') // Get an object.
       ?..text = 'Confirm' // Use its members.
       ..classes.add('important')
-      ..onClick.listen((e) => window.alert('Confirmed!'));
+      ..onClick.listen((e) => window.alert('Confirmed!'))
+      ..scrollIntoView();
     // #enddocregion cascade-operator
 
     expect(document.querySelector('#confirm')?.text, 'Confirm');
@@ -31,6 +34,7 @@ void main() {
     button?.text = 'Confirm';
     button?.classes.add('important');
     button?.onClick.listen((e) => window.alert('Confirmed!'));
+    button?.scrollIntoView();
     // #enddocregion cascade-operator-example-expanded
 
     expect(document.querySelector('#confirm')?.text, 'Confirm');

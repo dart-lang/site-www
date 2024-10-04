@@ -1,16 +1,14 @@
-// #docregion
+// #docregion constructors
 class Logger {
   final String name;
   bool mute = false;
 
   // _cache is library-private, thanks to
   // the _ in front of its name.
-  static final Map<String, Logger> _cache =
-      <String, Logger>{};
+  static final Map<String, Logger> _cache = <String, Logger>{};
 
   factory Logger(String name) {
-    return _cache.putIfAbsent(
-        name, () => Logger._internal(name));
+    return _cache.putIfAbsent(name, () => Logger._internal(name));
   }
 
   factory Logger.fromJson(Map<String, Object> json) {
@@ -23,7 +21,7 @@ class Logger {
     if (!mute) print(msg);
   }
 }
-// #enddocregion
+// #enddocregion constructors
 
 void main() {
   // #docregion logger

@@ -33,15 +33,15 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    String _readThermometer() {
+    String readThermometer() {
       print('in _readThermometer()');
       return '37.0';
     }
 
     {
       // #docregion var-late-lazy
-      // This is the program's only call to _readThermometer().
-      late String temperature = _readThermometer(); // Lazily initialized.
+      // This is the program's only call to readThermometer().
+      late String temperature = readThermometer(); // Lazily initialized.
       // #enddocregion var-late-lazy
       print('$temperature degrees');
       // #docregion var-ns-init
@@ -107,9 +107,9 @@ void miscDeclAnalyzedButNotTested() {
       // #docregion const-dart-25
       const Object i = 3; // Where i is a const Object with an int value...
       const list = [i as int]; // Use a typecast.
-      // ignore: stable, beta, dev, unnecessary_type_check
+      // ignore: unnecessary_type_check
       const map = {if (i is int) i: 'int'}; // Use is and collection if.
-      // ignore: stable, beta, dev, unnecessary_type_check
+      // ignore: unnecessary_type_check
       const set = {if (list is List<int>) ...list}; // ...and a spread.
       // #enddocregion const-dart-25
     }

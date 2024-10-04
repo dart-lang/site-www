@@ -19,6 +19,6 @@ Future<String> fetchUserOrder() {
   return str;
 }
 
-Future<void> main() async {
+void main() async {
   await printOrderMessage();
 }

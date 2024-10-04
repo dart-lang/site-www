@@ -3,21 +3,22 @@ include: package:lints/recommended.yaml
 analyzer:
   exclude: [build/**]
   language:
+    strict-casts: true
     strict-raw-types: true
-  strong-mode:
-    implicit-casts: false
 
 linter:
-  # Rules and documentation: http://dart-lang.github.io/linter/lints
+  # Rules and documentation: https://dart.dev/lints
   rules:
     - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
+    - combinators_ordering
     - comment_references
+    - invalid_case_patterns
+    - library_annotations
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs
-    - prefer_final_in_for_each
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first
@@ -25,3 +26,7 @@ linter:
     - throw_in_finally
     - type_annotate_public_apis
     - unawaited_futures
+    - unnecessary_breaks
+    - unnecessary_library_directive
+    - unnecessary_null_aware_operator_on_extension_on_nullable
+    - use_enums

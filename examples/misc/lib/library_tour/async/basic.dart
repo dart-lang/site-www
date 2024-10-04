@@ -1,23 +1,24 @@
-import 'dart:html';
+import 'package:http/http.dart';
 
 void miscDeclAnalyzedButNotTested() {
-  const url = 'humans.txt';
+  final url = Uri.parse('humans.txt');
+  final httpClient = Client();
 
   {
     // #docregion then
-    HttpRequest.getString(url).then((String result) {
+    httpClient.read(url).then((String result) {
       print(result);
     });
     // #enddocregion then
   }
 
   {
-    // #docregion catchError
-    HttpRequest.getString(url).then((String result) {
+    // #docregion catch-error
+    httpClient.read(url).then((String result) {
       print(result);
     }).catchError((e) {
       // Handle or ignore the error.
     });
-    // #enddocregion catchError
+    // #enddocregion catch-error
   }
 }

@@ -1,0 +1,17 @@
+name: sdk_builds
+description: Utilities for accessing builds of the Dart SDK.
+publish_to: none
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  googleapis: ^13.2.0
+  http: ^1.2.2
+  path: ^1.9.0
+  pub_semver: ^2.1.4
+
+dev_dependencies:
+  analysis_defaults:
+    path: ../../../site-shared/packages/analysis_defaults
+  test: ^1.25.8

@@ -1,4 +1,3 @@
-// #docregion
 class Square extends Shape {}
 
 class Circle extends Shape {}
@@ -13,4 +12,3 @@ class Shape {
     throw ArgumentError('Unrecognized $typeName');
   }
 }
-// #enddocregion

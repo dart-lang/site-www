@@ -1,32 +1,39 @@
 <footer id="page-footer">
-  <div class="container">
-    <div class="content">
-      <div class="text-center">
-        {%- assign dateFormat = '%Y/%m/%d %R %Z' -%}
-        <ul class="menu">
-          <li><a href="/terms">Terms</a></li>
-          <li><a href="/security">Security</a></li>
-          <li><a href="https://policies.google.com/privacy" class="no-automatic-external">Privacy</a></li>
-          <li>Site&nbsp;<a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;4.0</a></li>
-          <li>
-            <a href="{{site.repo.this}}"
-               title="This site's source is on GitHub."
-               class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
-            &nbsp;
-            <a href="{{site.repo.this}}/issues/new/choose"
-               title="File an issue about this site."
-               class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
-            &nbsp;
-            <a {% if site.data.ci.build-id %}
-               href="{{site.repo.this}}/actions/runs/{{site.data.ci.build-id}}"
-               title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
-               {% else %}
-               title="Site built on {{site.now | default: site.time | date: dateFormat}}"
-               {% endif %}
-               class="no-automatic-external"><i class="fas fa-wrench fa-sm"></i></a>
-          </li>
-        </ul>
-      </div>
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/logo/logo-white-text.svg" alt="Dart" width="164">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="X (Twitter)">
+        <svg>
+          <use href="/assets/img/social/x.svg#x"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Except as otherwise noted, this site is licensed under a
+      <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>,
+      and code samples are licensed under the
+      <a href="https://opensource.org/licenses/BSD-3-Clause">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Terms</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy">Privacy</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Security</a></li>
+      </ul>
     </div>
   </div>
 </footer>

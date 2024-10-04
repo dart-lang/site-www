@@ -1,18 +1,13 @@
-// ignore_for_file: unused_import
-// #docregion
-library peg_parser.source_scanner;
-
+// ignore_for_file: unused_import, duplicate_import
 import 'foo/file_system.dart';
 import 'foo/slider_menu.dart';
-// #enddocregion
 
 //----------------------------------------------------------------------------
 
 // #docregion import-as
 import 'dart:math' as math;
-import 'package:examples/effective_dart/foo.dart'
-    as angular_components;
-import 'package:js/js.dart' as js;
+import 'package:examples/effective_dart/foo.dart' as angular_components;
+import 'package:examples/effective_dart/bar.dart' as js;
 // #enddocregion import-as
 
 //----------------------------------------------------------------------------

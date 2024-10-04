@@ -1,5 +1,3 @@
-library todo;
-
 class Todo {
   final String who;
   final String what;
