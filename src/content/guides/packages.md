@@ -261,6 +261,7 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 
 [content hash]: /tools/pub/glossary#content-hashes
 
+<a name="workspaces"></a>
 ## Pub Workspaces (Mono-repo Support)
 
 When working on a project, you might develop multiple Dart packages in the same
