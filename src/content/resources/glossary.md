@@ -339,7 +339,7 @@ class C extends D {} // C is a subtype AND a subclass of D.
 
 ## Variance and variance positions
 
-A type parameter of a class (or a mixin, etc) is said to be _covariant_
+A type parameter of a class (or other type declaration, like a mixin) is said to be _covariant_
 when the type as a whole "co-varies" with the actual type argument, that
 is: if we replace the type argument by a subtype then the type as a whole
 is also a subtype.
