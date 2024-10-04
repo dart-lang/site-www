@@ -143,12 +143,12 @@ For additional details, see the documentation on [Functions][_functions_].
 
 ## Irrefutable pattern
 
-_Irrefutable patterns_ are patterns that always match. 
+_Irrefutable patterns_ are patterns that always match.
 Irrefutable patterns are the only patterns that can appear in
-_irrefutable contexts_: the [_declaration_][] and [_assignment_][] 
+_irrefutable contexts_: the [_declaration_][] and [_assignment_][]
 pattern contexts.
 
-[_declaration_]: /language/patterns#variable-declaration 
+[_declaration_]: /language/patterns#variable-declaration
 [_assignment_]: /language/patterns#variable-assignment
 
 ## Mixin application
@@ -274,7 +274,7 @@ directory but not inside the `lib/src` directory.
 ## Refutable pattern
 
 A _refutable pattern_ is a pattern that can be tested against a value to
-determine if the pattern matches the value. 
+determine if the pattern matches the value.
 If not, the pattern _refutes_, or denies, the match.
 Refutable patterns appear in [_matching contexts_][].
 
@@ -286,7 +286,7 @@ A _subclass_ is a class that inherits the implementation of another class by usi
 [`extends`](/language/extend) keyword, or by [mixin application](#mixin-application).
 
 ```dart
-class A extends B {} // A is a subclass of B; B is the superclass of A. 
+class A extends B {} // A is a subclass of B; B is the superclass of A.
 
 class B1 extends A with M {} // B1 has the superclass `A with M`, which has the superclass A.
 ```
@@ -295,7 +295,7 @@ A subclass relation also implies an associated [subtype](#subtype) relation.
 For example, `class A` implicitly defines an associated type `A`
 which instances of the class `A` inhabit.
 So, `class A extends B` declares not just that the class
-`A` is a subclass of `B`, but also establishes that the *type* `A` is a 
+`A` is a subclass of `B`, but also establishes that the *type* `A` is a
 *subtype* of the type `B`.
 
 Subclass relations are a subset of subtype relations.
@@ -310,7 +310,7 @@ A _subtype_ relation is where a value of a certain type is substitutable
 where the value of another type, the supertype, is expected.
 For example, if `S` is a subtype of `T`,
 then you can substitute a value of type `S`
-where a value of type `T` is expected. 
+where a value of type `T` is expected.
 
 A subtype supports all of the operations of its supertype
 (and possibly some extra operations).
@@ -320,7 +320,7 @@ and all of the methods of the supertype are available on the subtype.
 
 This is true at least statically.
 A specific API might not allow the substitution at run time,
-depending on its operations. 
+depending on its operations.
 
 Some subtype relations are based on the structure of the type,
 like with nullable types (for example, `int` is a subtype of `int?`)
@@ -339,10 +339,10 @@ class C extends D {} // C is a subtype AND a subclass of D.
 
 ## Variance and variance positions
 
-A type parameter of a class (or other type declaration, like a mixin) is said to be _covariant_
-when the type as a whole "co-varies" with the actual type argument, that
-is: if we replace the type argument by a subtype then the type as a whole
-is also a subtype.
+A type parameter of a class (or other type declaration, like a mixin) is
+said to be _covariant_ when the type as a whole "co-varies" with the actual
+type argument. In other words, if the type argument is replaced by a
+subtype then the type as a whole is also a subtype.
 
 For example, the type parameter of the class `List` is covariant because
 list types co-vary with their type argument: `List<int>` is a subtype of
@@ -351,36 +351,53 @@ list types co-vary with their type argument: `List<int>` is a subtype of
 In Dart, all type parameters of all class, mixin, mixin class, and enum
 declarations are covariant.
 
-However, function types are different: A function type is covariant in the
+However, function types are different: A function type is covariant in its
 return type, but the opposite (known as _contravariant_) in its parameter
 types.  For example, the type `int Function(int)` is a subtype of the type
 `Object Function(int)`, but it is a supertype of `int Function(Object)`.
 
-This makes sense if you consider their substitutability (see the section
-about subtypes): If you expect at compile time to work with a function of
-type `int Function(int)` then it is OK to actually work with a function of
-type `int Function(Object)` at run time: You will pass an `int` to it (and
-that's fine, it accepts any `Object`), and it returns an `int` (which is
-exactly what you'd expect). Hence, `int Function(Object)` is a subtype of
-`int Function(int)`. Note that everything is turned upside-down when we
-consider a parameter type.
+This makes sense if you consider their [substitutability](#subtype). If you
+call a function with a static type of `int Function(int)`, that function
+can actually be of type `int Function(Object)` at runtime. Based on the
+static type, you expect to be able to pass an `int` to it. That will be
+fine since the function actually accepts any `Object`, and this includes
+every object of type `int`. Similarly, the returned result will be of type
+`int`, which is also what you expect based on the static type.
 
-When we consider a more complex type like `List<int Function(int)>` we need
-to talk about the _positions_ in the type. This is basically just a matter
-of turning one of the parts of the type into a placeholder (let's use `_`
-for that), and then consider what happens to the type when we put different
-types into that location in the type.
+Hence, `int Function(Object)` is a subtype of `int Function(int)`.
 
-For example, consider `List<int Function(_)>` as a template for a type
-where we can put different types into the location where `_` occurs.
+Note that everything is turned upside-down for parameter types. In
+particular, this subtype relation among function types requires that the
+_opposite_ subtype relation exists for the parameter type (for example,
+`void Function(Object)` is a subtype of `void Function(int)` because `int`
+is a subtype of `Object`).
 
-This type is contravariant in that position: For example, 
-`List<int Function(Object)>` is a subtype of `List<int Function(int)>`
-because `int Function(Object)` is a subtype of `int Function(int)` because
-`int` is a subtype of `int` (the return type) and `Object` is a _supertype_
-of `int` (the parameter type).
+With a more complex type like `List<void Function(int)>`, you have to
+consider the _positions_ in the type. This is basically just a matter of
+turning one of the parts of the type into a placeholder (let's use `_` for
+that), and then consider what happens to the type when different types are
+placed in that position.
 
-This is the general case. In practice, it's often sufficient to know that
-the type arguments of a class, mixin, etc. are in a covariant position,
-and so is the return type of a function type, but the parameter types
-are in a contravariant position.
+For example, consider `List<void Function(_)>` as a template for a type
+where you can put different types in place of the placeholder `_`. This
+type is contravariant in the position where that placeholder occurs.
+
+We can illustrate this as follows. `List<void Function(Object)>` is a
+subtype of `List<void Function(int)>` because `void Function(Object)` is a
+subtype of `void Function(int)` because `void` is a subtype of `void` (the
+return types) and `int` is a subtype of `Object` (the parameter types, in
+the opposite order). Hence, the type at `_` varies in the opposite
+direction of the type `List<void Function(_)>` as a whole, and this
+'opposite direction' by definition makes it a _contravariant position_.
+
+A _covariant position_ is defined similarly. For example, `_` is at a
+covariant position in the type `List<_>`, and `_` is also at a covarinat
+position in the type `_ Function(int)`.
+
+There is yet another kind of position known as _invariant_, but it occurs
+much more rarely so the details are omitted here.
+
+In practice, it's often sufficient to know that the type arguments of a
+class, mixin, etc. are in a covariant position, and so is the return type
+of a function type, but the parameter types are in a contravariant
+position.
