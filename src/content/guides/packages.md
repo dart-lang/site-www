@@ -297,6 +297,16 @@ There are some downsides to this setup:
 Pub allows you to organize your repository as a "workspace" using a single
 shared resolution for all your packages.
 
+:::note
+Using a single shared dependency resolution for all your packages increases
+the risks of dependency conflicts. Because Dart does not allow multiple versions
+of the same package.
+
+If the packages are going to be used together (as is commonly the case),
+this is often a feature, as it forces you to resolve incompatibilities between your
+packages when the arise, rather then when you start using the packages.
+:::
+
 To create a workspace:
 
 * Add a `pubspec.yaml` at the repository root directory with a `workspace` entry
