@@ -315,6 +315,7 @@ To create a workspace:
 
 ```yaml
 name: _
+publish_to: none
 environment:
   sdk: ^3.6.0
 workspace:
