@@ -397,7 +397,8 @@ All `dependency_overrides:` sections in the workspace packages are respected,
 and you can also place a `pubspec_overrides.yaml` file next to any of the
 workspace `pubspec.yaml` files.
 
-You can only override a package once in the workspace.
+You can only override a package once in the workspace. To keep overrides organized
+it can be preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
 
 ### Running a command in a specific workspace package
 
