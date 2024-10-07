@@ -286,7 +286,7 @@ For example you might have a directory layout like:
       .dart_tool/package_config.json
 ```
 
-There are multiple issues with this organization:
+There are some downsides to this setup:
 
 * You need to run `pub get` once for each package.
 * You risk ending up with different versions of dependencies for each package.
