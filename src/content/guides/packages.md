@@ -361,7 +361,7 @@ Now the file structure looks like this:
 Pub workspaces was introduced in Dart 3.6.0.
 
 To use pub workspaces, all your workspace packages (but not your dependencies)
-must have a sdk version constraint of `^3.6.0` or higher.
+must have a SDK version constraint of `^3.6.0` or higher.
 :::
 
 ### Interdependencies between workspace packages
