@@ -453,6 +453,16 @@ Pub.dev requires topics to follow these specifications:
 When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
 
+:::note
+Pub.dev merges different spellings of a topic into a canonical topic to
+avoid duplication and improve discovery by topic.
+
+You can contribute to the list of canonical topics and their aliases
+by opening a pull request that edits the [`topics.yaml` file][] on GitHub.
+:::
+
+[`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
+
 ### Ignored_advisories
 
 If a package has a dependency that is affected by a security advisory,
