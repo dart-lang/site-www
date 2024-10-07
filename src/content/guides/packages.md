@@ -424,7 +424,7 @@ One way to do this is to create a `pubspec_overides.yaml` file that resets the
 resolution:
 ```
 
-Now running `pub get` inside `packages/client_package` will create an
+Now running `dart pub get` inside `packages/client_package` will create an
 independent resolution.
 
 ### Listing all workspace packages
