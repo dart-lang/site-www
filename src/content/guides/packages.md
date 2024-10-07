@@ -292,7 +292,7 @@ There are some downsides to this setup:
 * You risk ending up with different versions of dependencies for each package.
   Leading to confusion when context switching between the packages.
 * If you open the root folder in your IDE, the dart analyzer will have to have a
-  separate analysis contexts for each package.
+  separate analysis contexts for each package (increasing memory usage).
 
 Pub allows you to organize your repository as a "workspace" using a single
 shared resolution for all your packages.
