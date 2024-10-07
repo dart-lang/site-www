@@ -188,6 +188,11 @@ _Previously the `--sdk=<sdk_name>` option_:
 $ dart pub add foo --sdk=flutter
 ```
 
+## In a workspace
+
+In a [Pub Workspace](/guides/packages#workspaces) `dart pub add` will add
+dependencies only to the package in the current directory.
+
 ## Options
 
 For options that apply to all pub commands, see

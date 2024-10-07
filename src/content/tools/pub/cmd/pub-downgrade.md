@@ -122,3 +122,8 @@ resolved versions, and returns a list of the changed constraints.
 Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
 {% render 'pub-problems.md' %}
+
+## In a workspace
+
+In a [Pub Workspace](/guides/packages#workspaces) `dart pub downgrade` will
+downgrade all dependencies across the workspace.
