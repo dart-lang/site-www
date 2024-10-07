@@ -182,7 +182,6 @@
       { "source": "/go/flutter-upper-bound-deprecation", "destination": "https://github.com/flutter/flutter/issues/68143", "type": 301 },
       { "source": "/go/macros", "destination": "/language/macros", "type": 301 },
       { "source": "/go/pub-workspaces", "destination": "https://flutter.dev/go/pub-workspace", "type": 301 },
-
       { "source": "/go/non-promo-conflicting-getter", "destination": "/tools/non-promotion-reasons#getter-name", "type": 301 },
       { "source": "/go/non-promo-conflicting-non-promotable-field", "destination": "/tools/non-promotion-reasons#field-name", "type": 301 },
       { "source": "/go/non-promo-conflicting-noSuchMethod-forwarder", "destination": "/tools/non-promotion-reasons#nosuchmethod", "type": 301 },
@@ -284,7 +283,9 @@
       { "source": "/support/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
 
+      { "source": "/to/enforce-lockfile", "destination": "/guides/packages#get-dependencies-for-production", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
+      { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
       { "source": "/tools/**/private-files", "destination": "/guides/libraries/private-files", "type": 301 },
