@@ -454,9 +454,14 @@ When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
 
 :::note
-On pub.dev topics may be merged into canonical topics. This aims to merge topics where the only difference is the spelling.
-You can contribute to the [list of canonical topics](https://github.com/dart-lang/pub-dev/blob/master/doc/topics.yaml) by filing a Pull-Request on Github.
+Pub.dev might merge similar topics with different spellings into
+a canonical topic to avoid duplication and improve searching by topic.
+
+To contribute to the list of canonical topics and their aliases,
+you can open a pull request editing the [`topics.yaml` file][] on GitHub.
 :::
+
+[`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
 
 ### Ignored_advisories
 
