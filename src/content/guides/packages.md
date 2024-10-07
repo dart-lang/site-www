@@ -323,7 +323,7 @@ workspace:
   - packages/server_package
 ```
 
-* For each of the existing `pubspec.yaml`s, make sure their sdk constraint is at
+* For each of the existing `pubspec.yaml`s, make sure their SDK constraint is at
   least `^3.6.0` and add a `resolution` entry:
 
   ```yaml
