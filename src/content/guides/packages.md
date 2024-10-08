@@ -374,9 +374,7 @@ Eg. `packages/client_package/pubspec.yaml` might depend on `shared`:
 
 ```yaml
 dependencies:
-  shared: 
-    hosted: https://pub.dev
-    version: ^2.3.0
+  shared: ^2.3.0
 ```
 
 When resolved inside the workspace, the _local_ version of `shared` will be
@@ -386,7 +384,7 @@ The local version of `shared` would still have to match the constraint
 (`^2.3.0`) though.
 
 But when the package is consumed as a dependency without being part of the
-workspace, the original source (here `hosted`) is used.
+workspace, the original source (here implicitly `hosted`) is used.
 
 So if `client_package` is published to pub.dev and someone depends on it, they
 will get the hosted version of `shared` as a transitive dependency.
