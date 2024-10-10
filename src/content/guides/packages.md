@@ -304,7 +304,7 @@ of the same package.
 
 If the packages are going to be used together (as is commonly the case),
 this is often a feature, as it forces you to resolve incompatibilities between your
-packages when the arise, rather then when you start using the packages.
+packages when they arise, rather then when you start using the packages.
 :::
 
 To create a workspace:
