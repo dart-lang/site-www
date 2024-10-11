@@ -67,7 +67,7 @@ var name = 'Bob';
 ````
 
 Besides editing
-[`/src/language/variables.md`][]
+[`/src/content/language/variables.md`][]
 (which you can find by clicking the GitHub icon at the top right of the page),
 you'll also need to edit the `var-decl` region of
 [`/examples/misc/lib/language_tour/variables.dart`][].
@@ -82,7 +82,7 @@ you can instead run `dart run dart_site refresh-excerpts`
 from the root directory of the repository to update the Markdown files.
 
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
-[`/src/language/variables.md`]: https://github.com/dart-lang/site-www/blob/main/src/language/variables.md
+[`/src/content/language/variables.md`]: https://github.com/dart-lang/site-www/blob/main/src/content/language/variables.md
 [`/examples/misc/lib/language_tour/variables.dart`]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/language_tour/variables.dart
 
 ## A word about conduct
