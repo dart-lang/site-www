@@ -1,6 +1,7 @@
-name: examples
+name: analysis
 description: dart.dev example code.
 
+resolution: workspace
 environment:
   sdk: ^3.5.3
 

@@ -2,6 +2,7 @@ name: fetch_data_examples
 description: Fetch data example
 version: 0.0.1
 
+resolution: workspace
 environment:
   sdk: ^3.5.3
 

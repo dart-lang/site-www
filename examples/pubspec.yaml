@@ -1,0 +1,25 @@
+name: examples_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.5.3
+
+workspace:
+  - analysis
+  - analysis_alt
+  - async_await
+  - build_runner_usage
+  - cli
+  - concurrency
+  - create_libraries
+  - extension_methods
+  - fetch_data
+  - futures
+  - html
+  - iterables
+  - language
+  - misc
+  - non_promotion
+  - type_system
+  - util
+  - vector_victor

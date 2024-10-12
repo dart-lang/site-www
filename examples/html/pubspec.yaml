@@ -2,6 +2,7 @@ name: html_library_examples
 description: dart.dev example code.
 version: 0.0.1
 
+resolution: workspace
 environment:
   sdk: ^3.5.3
 

@@ -1,6 +1,7 @@
 name: cli_examples
 description: Examples for CLI tutorials on dart.dev
 
+resolution: workspace
 environment:
   sdk: ^3.5.3
 

@@ -1,6 +1,7 @@
 name: type_system_examples
 description: dart.dev type system examples.
 
+resolution: workspace
 environment:
   sdk: ^3.5.3
 
