@@ -7,6 +7,3 @@ environment:
 
 dependencies:
   examples_util: {path: ../util}
-
-dev_dependencies:
-  lints: ^4.0.0

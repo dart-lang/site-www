@@ -7,5 +7,4 @@ environment:
 
 dev_dependencies:
   examples_util: {path: ../util}
-  lints: ^4.0.0
   test: ^1.25.8

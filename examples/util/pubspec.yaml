@@ -8,6 +8,3 @@ environment:
 
 dependencies:
   test: ^1.25.8
-
-dev_dependencies:
-  lints: ^4.0.0

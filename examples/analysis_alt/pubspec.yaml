@@ -4,6 +4,3 @@ description: dart.dev example code.
 resolution: workspace
 environment:
   sdk: ^3.5.3
-
-dev_dependencies:
-  lints: ^4.0.0
