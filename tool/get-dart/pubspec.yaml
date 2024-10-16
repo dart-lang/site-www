@@ -11,4 +11,4 @@ workspace:
 
 dev_dependencies:
   analysis_defaults:
-    path: ../../site-shared/packages/analysis_defaults
+    path: ../../site-shared/pkgs/analysis_defaults
