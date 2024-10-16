@@ -16,7 +16,7 @@ dependencies:
 
 dev_dependencies:
   analysis_defaults:
-    path: ../../../site-shared/packages/analysis_defaults
+    path: ../../../site-shared/pkgs/analysis_defaults
   build_runner: ^2.4.12
   build_web_compilers: ^4.0.11
   dart_style: ^2.3.7

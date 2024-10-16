@@ -42,7 +42,7 @@ The preferred syntax is to use a URI string that points
 directly to the library file. 
 If you have some library, `my_library.dart`, that contains:
 
-<?code-excerpt "my_library.dart"?>
+<?code-excerpt "my_library.dart" remove="ignore_for_file"?>
 ```dart title="my_library.dart"
 library my_library;
 
