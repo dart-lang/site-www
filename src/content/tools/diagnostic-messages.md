@@ -2615,20 +2615,20 @@ class C extends A<String> implements B {}
 
 ### conflicting_type_variable_and_container
 
-_'{0}' can't be used to name both a type variable and the class in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the class in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the enum in which the type
-variable is defined._
+_'{0}' can't be used to name both a type parameter and the enum in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension in which
+the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension type in
-which the type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension type in
+which the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the mixin in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the mixin in which the
+type parameter is defined._
 
 #### Description
 
@@ -2655,17 +2655,17 @@ class C<T> {}
 
 ### conflicting_type_variable_and_member
 
-_'{0}' can't be used to name both a type variable and a member in this class._
+_'{0}' can't be used to name both a type parameter and a member in this class._
 
-_'{0}' can't be used to name both a type variable and a member in this enum._
+_'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' can't be used to name both a type variable and a member in this extension
-type._
+_'{0}' can't be used to name both a type parameter and a member in this
+extension type._
 
-_'{0}' can't be used to name both a type variable and a member in this
+_'{0}' can't be used to name both a type parameter and a member in this
 extension._
 
-_'{0}' can't be used to name both a type variable and a member in this mixin._
+_'{0}' can't be used to name both a type parameter and a member in this mixin._
 
 #### Description
 
@@ -4888,15 +4888,13 @@ multiple part directives.
 Given a file `part.dart` containing
 
 ```dart
-part of lib;
+part of 'test.dart';
 ```
 
 The following code produces this diagnostic because the file `part.dart` is
 included multiple times:
 
 ```dart
-library lib;
-
 part 'part.dart';
 part [!'part.dart'!];
 ```
@@ -4906,8 +4904,6 @@ part [!'part.dart'!];
 Remove all except the first of the duplicated part directives:
 
 ```dart
-library lib;
-
 part 'part.dart';
 ```
 
@@ -10282,7 +10278,8 @@ The analyzer produces this diagnostic when all of the following are true:
   method.
 
 The concrete implementation can be invalid because of incompatibilities in
-either the return type, the types of parameters, or the type variables.
+either the return type, the types of the method's parameters, or the type
+parameters.
 
 #### Example
 
@@ -10710,7 +10707,7 @@ abstract class C {
 
 ### invalid_null_aware_operator
 
-_The receiver can't be null because of short-circuiting, so the null-aware
+_The receiver can't be 'null' because of short-circuiting, so the null-aware
 operator '{0}' can't be used._
 
 _The receiver can't be null, so the null-aware operator '{0}' is unnecessary._
@@ -11375,18 +11372,18 @@ class D extends A {
 
 ### invalid_type_argument_in_const_literal
 
-_Constant list literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant list literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant map literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant map literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant set literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant set literals can't use a type parameter in a type argument, such as
+'{0}'._
 
 #### Description
 
-The analyzer produces this diagnostic when a type parameter is used as a
+The analyzer produces this diagnostic when a type parameter is used in a
 type argument in a list, map, or set literal that is prefixed by `const`.
 This isn't allowed because the value of the type parameter (the actual type
 that will be used at runtime) can't be known at compile time.
@@ -15727,6 +15724,17 @@ final class MyStruct extends Struct {
 }
 ```
 
+If this is a variable length inline array, change the annotation to `Array.variable()`:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct extends Struct {
+  @Array.variable()
+  external Array<Uint8> a0;
+}
+```
+
 ### non_sized_type_argument
 
 _The type '{1}' isn't a valid type argument for '{0}'. The type argument must be
@@ -16679,7 +16687,7 @@ class C with M {}
 
 ### null_argument_to_non_null_type
 
-_'{0}' shouldn't be called with a null argument for the non-nullable type
+_'{0}' shouldn't be called with a 'null' argument for the non-nullable type
 argument '{1}'._
 
 #### Description
@@ -22789,9 +22797,13 @@ void f(int x) {
 
 ### unnecessary_null_comparison
 
-_The operand can't be null, so the condition is always 'false'._
+_The operand can't be 'null', so the condition is always 'false'._
 
-_The operand can't be null, so the condition is always 'true'._
+_The operand can't be 'null', so the condition is always 'true'._
+
+_The operand must be 'null', so the condition is always 'false'._
+
+_The operand must be 'null', so the condition is always 'true'._
 
 #### Description
 
@@ -23089,6 +23101,52 @@ void f(int x) {
     case 1:
       print('one');
     case 2:
+      print('two');
+  }
+}
+```
+
+### unreachable_switch_default
+
+_This default clause is covered by the previous cases._
+
+#### Description
+
+The analyzer produces this diagnostic when a `default` clause in a
+`switch` statement doesn't match anything because all of the matchable
+values are matched by an earlier `case` clause.
+
+#### Example
+
+The following code produces this diagnostic because the values `E.e1` and
+`E.e2` were matched in the preceding cases:
+
+```dart
+enum E { e1, e2 }
+
+void f(E x) {
+  switch (x) {
+    case E.e1:
+      print('one');
+    case E.e2:
+      print('two');
+    [!default!]:
+      print('other');
+  }
+}
+```
+
+#### Common fixes
+
+Remove the unnecessary `default` clause:
+
+```dart
+enum E { e1, e2 }
+void f(E x) {
+  switch (x) {
+    case E.e1:
+      print('one');
+    case E.e2:
       print('two');
   }
 }
@@ -23672,6 +23730,65 @@ Change the name of the conflicting member:
 enum E {
   v;
   void getValues() {}
+}
+```
+
+### variable_length_array_not_last
+
+_Variable length 'Array's must only occur as the last field of Structs._
+
+#### Description
+
+The analyzer produces this diagnostic when a variable length inline `Array`
+is not the last member of a `Struct`.
+
+For more information about FFI, see [C interop using dart:ffi][ffi].
+
+#### Example
+
+The following code produces this diagnostic because the field `a0` has a
+type with three nested arrays, but only two dimensions are given in the
+`Array` annotation:
+
+```dart
+import 'dart:ffi';
+
+final class C extends Struct {
+  [!@Array.variable()!]
+  external Array<Uint8> a0;
+
+  @Uint8()
+  external int a1;
+}
+```
+
+#### Common fixes
+
+Move the variable length inline `Array` to be the last field in the struct.
+
+```dart
+import 'dart:ffi';
+
+final class C extends Struct {
+  @Uint8()
+  external int a1;
+
+  @Array.variable()
+  external Array<Uint8> a0;
+}
+```
+
+If the inline array has a fixed size, annotate it with the size:
+
+```dart
+import 'dart:ffi';
+
+final class C extends Struct {
+  @Array(10)
+  external Array<Uint8> a0;
+
+  @Uint8()
+  external int a1;
 }
 ```
 
@@ -24495,6 +24612,55 @@ void f(Iterable<String> s) {
 }
 ```
 
+### avoid_futureor_void
+
+_Don't use the type 'FutureOr<void>'._
+
+#### Description
+
+The analyzer produces this diagnostic when the type `FutureOr<void>`
+is used as the type of a result (to be precise: it is used in a
+position that isn't contravariant). The type `FutureOr<void>` is
+problematic because it may appear to encode that a result is either a
+`Future<void>`, or the result should be discarded (when it is
+`void`).  However, there is no safe way to detect whether we have one
+or the other case because an expression of type `void` can evaluate
+to any object whatsoever, including a future of any type.
+
+It is also conceptually unsound to have a type whose meaning is
+something like "ignore this object; also, take a look because it
+might be a future".
+
+An exception is made for contravariant occurrences of the type
+`FutureOr<void>` (e.g., for the type of a formal parameter), and no
+warning is emitted for these occurrences. The reason for this
+exception is that the type does not describe a result, it describes a
+constraint on a value provided by others. Similarly, an exception is
+made for type alias declarations, because they may well be used in a
+contravariant position (e.g., as the type of a formal
+parameter). Hence, in type alias declarations, only the type
+parameter bounds are checked.
+
+#### Example
+
+```dart
+import 'dart:async';
+
+[!FutureOr<void>!] m() => null;
+```
+
+#### Common fixes
+
+A replacement for the type `FutureOr<void>` which is often useful is
+`Future<void>?`. This type encodes that a result is either a
+`Future<void>` or it is null, and there is no ambiguity at run time
+since no object can have both types.
+
+It may not always be possible to use the type `Future<void>?` as a
+replacement for the type `FutureOr<void>`, because the latter is a
+supertype of all types, and the former is not. In this case it may be a
+useful remedy to replace `FutureOr<void>` by the type `void`.
+
 ### avoid_init_to_null
 
 _Redundant initialization to 'null'._
@@ -24977,7 +25143,7 @@ Widget buildRow() {
 
 ### avoid_web_libraries_in_flutter
 
-_Don't use web-only libraries outside Flutter web plugin packages._
+_Don't use web-only libraries outside Flutter web plugins._
 
 #### Description
 
@@ -26776,9 +26942,9 @@ C c = C(const [1]);
 
 ### prefer_contains
 
-_Always false because indexOf is always greater or equal -1._
+_Always 'false' because 'indexOf' is always greater than or equal to -1._
 
-_Always true because indexOf is always greater or equal -1._
+_Always 'true' because 'indexOf' is always greater than or equal to -1._
 
 _Unnecessary use of 'indexOf' to test for containment._
 
@@ -27104,12 +27270,12 @@ interpolation would achieve the same result.
 
 #### Example
 
-The following code produces this diagnostic because the elements of the
-list `l` are being concatenated with other strings using the `+` operator:
+The following code produces this diagnostic because the String `s` is
+concatenated with other strings using the `+` operator:
 
 ```dart
-String f(List<String> l) {
-  return [!'(' + l[0] + ', ' + l[1] + ')'!];
+String f(String s) {
+  return [!'(' + s!] + ')';
 }
 ```
 
@@ -28140,8 +28306,6 @@ var o = Object();
 ```
 
 ### unnecessary_final
-
-_Local variables should not be marked as 'final'._
 
 _Local variables should not be marked as 'final'._
 
@@ -29288,9 +29452,9 @@ part of 'lib.dart';
 
 ### use_super_parameters
 
-_Convert '{0}' to a super parameter._
+_Parameter '{0}' could be a super parameter._
 
-_Convert {0} to super parameters._
+_Parameters '{0}' could be super parameters._
 
 #### Description
 

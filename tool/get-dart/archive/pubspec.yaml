@@ -2,15 +2,14 @@ name: download_archive
 description: Display a list of downloads for dart.dev.
 publish_to: none
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
   dart_sdk_archive:
     path: ../dart_sdk_archive
 
 dev_dependencies:
-  analysis_defaults:
-    path: ../../../site-shared/packages/analysis_defaults
-  build_runner: ^2.4.10
-  build_web_compilers: ^4.0.10
+  build_runner: ^2.4.12
+  build_web_compilers: ^4.0.11

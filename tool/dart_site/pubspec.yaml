@@ -2,11 +2,12 @@ name: dart_site
 description: Dart-based tools for building dart.dev.
 publish_to: none
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
-  args: ^2.4.2
+  args: ^2.5.0
   excerpter:
     path: ../../site-shared/packages/excerpter
   fbh_front_matter: ^0.0.1
@@ -14,7 +15,7 @@ dependencies:
   intl: ^0.19.0
   io: ^1.0.4
   linkcheck: ^3.0.0
-  markdown: ^7.2.0
+  markdown: ^7.2.2
   path: ^1.9.0
   yaml_variable_scanner: ^0.0.5
 

@@ -1,12 +1,12 @@
 name: async_await
 description: dart.dev example code.
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
   examples_util: {path: ../util}
 
 dev_dependencies:
-  lints: ^4.0.0
   test: ^1.25.8

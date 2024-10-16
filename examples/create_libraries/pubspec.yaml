@@ -2,9 +2,9 @@ name: create_libraries
 description: dart.dev example code.
 version: 1.0.0
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dev_dependencies:
-  lints: ^4.0.0
   test: ^1.25.8

@@ -2,10 +2,10 @@ name: html_library_examples
 description: dart.dev example code.
 version: 0.0.1
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dev_dependencies:
-  lints: ^4.0.0
   test: ^1.25.8
   examples_util: {path: ../util}

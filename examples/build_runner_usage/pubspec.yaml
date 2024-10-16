@@ -1,11 +1,11 @@
 name: build_runner_usage
 description: dart.dev build_runner example code.
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dev_dependencies:
-  args: ^2.4.0
-  build_runner: ^2.4.10
+  args: ^2.5.0
+  build_runner: ^2.4.12
   build_test: ^2.2.2
-  lints: ^4.0.0

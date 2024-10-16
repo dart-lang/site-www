@@ -307,14 +307,14 @@ Do we have any other package migrations to show off here?
 [interop types]: /interop/js-interop/usage#interop-types
 [dart-lang/web]: {{site.repo.dart.org}}/web
 [issue]: {{site.repo.dart.org}}/web/issues/new
-[helpers]: {{site.repo.dart.org}}/web/tree/main/lib/src/helpers
+[helpers]: {{site.repo.dart.org}}/web/tree/main/web/lib/src/helpers
 [zones]: /libraries/async/zones
 [Conversions]: /interop/js-interop/js-types#conversions
 [interop methods]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html#instance-methods
 [alternative interop declarations]: /interop/js-interop/usage
 [Compatibility, type checks, and casts]: /interop/js-interop/js-types#compatibility-type-checks-and-casts
 [Upgrading `url_launcher` to `package:web`]: https://github.com/flutter/packages/pull/5451/files
-[stream helpers]: {{site.repo.dart.org}}/web/blob/main/lib/src/helpers/events/streams.dart
+[stream helpers]: {{site.repo.dart.org}}/web/blob/main/web/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
 [`JSObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSObject-extension-type.html
 [`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html

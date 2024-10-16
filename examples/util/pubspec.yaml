@@ -2,11 +2,9 @@ name: examples_util
 description: dart.dev example utilities.
 version: 0.0.2
 
+resolution: workspace
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.5.3
 
 dependencies:
   test: ^1.25.8
-
-dev_dependencies:
-  lints: ^4.0.0
