@@ -369,8 +369,8 @@ Hence, `int Function(Object)` is a subtype of `int Function(int)`.
 Note that everything is turned upside-down for parameter types. In
 particular, this subtype relation among function types requires that the
 _opposite_ subtype relation exists for the parameter type.
-For example, `void Function(Object)` is a subtype of `void Function(int)` because
-`int` is a subtype of `Object`.
+For example, `void Function(Object)` is a subtype of `void Function(int)` 
+because `int` is a subtype of `Object`.
 
 With a more complex type like `List<void Function(int)>`, you have to
 consider the _positions_ in the type. To accomplish this,
@@ -382,13 +382,14 @@ For example, consider `List<void Function(_)>` as a template for a type
 where you can put different types in place of the placeholder `_`. This
 type is contravariant in the position where that placeholder occurs.
 
-We can illustrate this as follows. `List<void Function(Object)>` is a
-subtype of `List<void Function(int)>` because `void Function(Object)` is a
-subtype of `void Function(int)` because `void` is a subtype of `void` (the
-return types) and `int` is a subtype of `Object` (the parameter types, in
-the opposite order). Hence, the type at `_` varies in the opposite
-direction of the type `List<void Function(_)>` as a whole, and this
-'opposite direction' by definition makes it a _contravariant position_.
+The following illustrates this by substituting `Object` and `int` for
+`_`. `List<void Function(Object)>` is a subtype of `List<void Function(int)>`
+because `void Function(Object)` is a subtype of `void Function(int)` because
+`void` is a subtype of `void` (the return types) and `int` is a subtype of
+`Object` (the parameter types, in the opposite order). Hence, the type at `_`
+varies in the opposite direction of the type `List<void Function(_)>` as a
+whole, and this 'opposite direction' by definition makes it a _contravariant
+position_.
 
 A _covariant position_ is defined similarly. For example, `_` is at a
 covariant position in the type `List<_>`, and `_` is also at a covariant
