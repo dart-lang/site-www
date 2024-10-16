@@ -373,9 +373,9 @@ For example, `void Function(Object)` is a subtype of `void Function(int)` becaus
 `int` is a subtype of `Object`.
 
 With a more complex type like `List<void Function(int)>`, you have to
-consider the _positions_ in the type. This is basically just a matter of
-turning one of the parts of the type into a placeholder (let's use `_` for
-that), and then consider what happens to the type when different types are
+consider the _positions_ in the type. To accomplish this,
+turn one of the parts of the type into a placeholder,
+and then consider what happens to the type when different types are
 placed in that position.
 
 For example, consider `List<void Function(_)>` as a template for a type
