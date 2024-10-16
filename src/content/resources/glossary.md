@@ -391,7 +391,7 @@ direction of the type `List<void Function(_)>` as a whole, and this
 'opposite direction' by definition makes it a _contravariant position_.
 
 A _covariant position_ is defined similarly. For example, `_` is at a
-covariant position in the type `List<_>`, and `_` is also at a covarinat
+covariant position in the type `List<_>`, and `_` is also at a covariant
 position in the type `_ Function(int)`.
 
 There is yet another kind of position known as _invariant_, but it occurs
