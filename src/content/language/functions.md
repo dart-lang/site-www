@@ -288,7 +288,8 @@ g('Dash', greeting: 'Howdy');
 In Dart, functions are first-class objects,
 meaning they can be assigned to variables,
 passed as arguments, and returned from other functions.
-The [`typedef`][] keyword defines function types explicitly,
+
+You can use a [`typdef`][] declaration to explicitly name function types,
 which can be useful for clarity and reusability.
 :::
 
