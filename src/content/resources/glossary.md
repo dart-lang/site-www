@@ -337,7 +337,7 @@ class A implements B {} // A is a subtype of B, but NOT a subclass of B.
 class C extends D {} // C is a subtype AND a subclass of D.
 ```
 
-## Variance and variance positions
+## Variance and variance positions {:#variance}
 
 A type parameter of a class (or other type declaration, like a mixin) is
 said to be _covariant_ when the type as a whole "co-varies" with the actual
