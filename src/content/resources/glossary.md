@@ -368,9 +368,9 @@ Hence, `int Function(Object)` is a subtype of `int Function(int)`.
 
 Note that everything is turned upside-down for parameter types. In
 particular, this subtype relation among function types requires that the
-_opposite_ subtype relation exists for the parameter type (for example,
-`void Function(Object)` is a subtype of `void Function(int)` because `int`
-is a subtype of `Object`).
+_opposite_ subtype relation exists for the parameter type.
+For example, `void Function(Object)` is a subtype of `void Function(int)` because
+`int` is a subtype of `Object`.
 
 With a more complex type like `List<void Function(int)>`, you have to
 consider the _positions_ in the type. This is basically just a matter of
