@@ -340,65 +340,68 @@ class C extends D {} // C is a subtype AND a subclass of D.
 ## Variance and variance positions {:#variance}
 
 A type parameter of a class (or other type declaration, like a mixin) is
-said to be _covariant_ when the type as a whole "co-varies" with the actual
-type argument. In other words, if the type argument is replaced by a
+said to be _covariant_ when the type as a whole
+"co-varies" with the actual type argument.
+In other words, if the type argument is replaced by a
 subtype then the type as a whole is also a subtype.
 
 For example, the type parameter of the class `List` is covariant because
 list types co-vary with their type argument: `List<int>` is a subtype of
 `List<Object>` because `int` is a subtype of `Object`.
 
-In Dart, all type parameters of all class, mixin, mixin class, and enum
-declarations are covariant.
+In Dart, all type parameters of all class, mixin,
+mixin class, and enum declarations are covariant.
 
-However, function types are different: A function type is covariant in its
-return type, but the opposite (known as _contravariant_) in its parameter
-types.  For example, the type `int Function(int)` is a subtype of the type
-`Object Function(int)`, but it is a supertype of `int Function(Object)`.
+However, function types are different:
+A function type is covariant in its return type, but
+the opposite (known as _contravariant_) in its parameter types.
+For example, the type `int Function(int)` is a subtype of the
+type `Object Function(int)`, but it is a supertype of `int Function(Object)`.
 
-This makes sense if you consider their [substitutability](#subtype). If you
-call a function with a static type of `int Function(int)`, that function
-can actually be of type `int Function(Object)` at runtime. Based on the
-static type, you expect to be able to pass an `int` to it. That will be
-fine since the function actually accepts any `Object`, and this includes
-every object of type `int`. Similarly, the returned result will be of type
-`int`, which is also what you expect based on the static type.
+This makes sense if you consider their [substitutability](#subtype).
+If you call a function with a static type of `int Function(int)`,
+that function can actually be of type `int Function(Object)` at runtime.
+Based on the static type, you expect to be able to pass an `int` to it.
+That will be fine since the function actually accepts any `Object`,
+and this includes every object of type `int`.
+Similarly, the returned result will be of type `int`,
+which is also what you expect based on the static type.
 
 Hence, `int Function(Object)` is a subtype of `int Function(int)`.
 
-Note that everything is turned upside-down for parameter types. In
-particular, this subtype relation among function types requires that the
-_opposite_ subtype relation exists for the parameter type.
+Note that everything is turned upside-down for parameter types.
+In particular, this subtype relation among function types requires that
+the _opposite_ subtype relation exists for the parameter type.
 For example, `void Function(Object)` is a subtype of `void Function(int)` 
 because `int` is a subtype of `Object`.
 
-With a more complex type like `List<void Function(int)>`, you have to
-consider the _positions_ in the type. To accomplish this,
-turn one of the parts of the type into a placeholder,
-and then consider what happens to the type when different types are
-placed in that position.
+With a more complex type like `List<void Function(int)>`,
+you have to consider the _positions_ in the type.
+To accomplish this, turn one of the parts of the type into a placeholder,
+and then consider what happens to the type when
+different types are placed in that position.
 
-For example, consider `List<void Function(_)>` as a template for a type
-where you can put different types in place of the placeholder `_`. This
-type is contravariant in the position where that placeholder occurs.
+For example, consider `List<void Function(_)>` as a template for a type where
+you can put different types in place of the placeholder `_`.
+This type is contravariant in the position where that placeholder occurs.
 
-The following illustrates this by substituting `Object` and `int` for
-`_`. `List<void Function(Object)>` is a subtype of `List<void Function(int)>`
+The following illustrates this by substituting `Object` and `int` for `_`.
+`List<void Function(Object)>` is a subtype of `List<void Function(int)>`
 because `void Function(Object)` is a subtype of `void Function(int)` because
-`void` is a subtype of `void` (the return types) and `int` is a subtype of
-`Object` (the parameter types, in the opposite order). Hence, the type at `_`
-varies in the opposite direction of the type `List<void Function(_)>` as a
-whole, and this 'opposite direction' by definition makes it a _contravariant
-position_.
+`void` is a subtype of `void` (the return types) and
+`int` is a subtype of `Object` (the parameter types, in the opposite order).
+Hence, the type at `_` varies in the opposite direction of
+the type `List<void Function(_)>` as a whole, and this
+'opposite direction' by definition makes it a _contravariant position_.
 
-A _covariant position_ is defined similarly. For example, `_` is at a
-covariant position in the type `List<_>`, and `_` is also at a covariant
-position in the type `_ Function(int)`.
+A _covariant position_ is defined similarly.
+For example, `_` is at a covariant position in the type `List<_>`,
+and `_` is also at a covariant position in the type `_ Function(int)`.
 
-There is yet another kind of position known as _invariant_, but it occurs
-much more rarely so the details are omitted here.
+There is yet another kind of position known as _invariant_,
+but it occurs much more rarely so the details are omitted here.
 
-In practice, it's often sufficient to know that the type arguments of a
-class, mixin, etc. are in a covariant position, and so is the return type
-of a function type, but the parameter types are in a contravariant
-position.
+In practice, it's often sufficient to know that
+the type arguments of a class, mixin, etc. are in a covariant position,
+and so is the return type of a function type, but
+the parameter types are in a contravariant position.
