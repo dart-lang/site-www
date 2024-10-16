@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 void main() {
   // #docregion full-example
   // #docregion variables
