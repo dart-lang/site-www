@@ -266,6 +266,35 @@ assert(loudify('hello') == '!!! HELLO !!!');
 This example uses an anonymous function.
 More about those in the next section.
 
+## Function types
+
+You can specify the type of a function, which is known as a *function type*.
+A function type is obtained from a function declaration header by
+replacing the function name by the keyword `Function`.
+Moreover, you are allowed to omit the names of positional parameters, but
+the names of named parameters can't be omitted. For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
+```dart
+void greet(String name, {String greeting = 'Hello'}) =>
+    print('$greeting $name!');
+
+// Store `greet` in a variable and call it.
+void Function(String, {String greeting}) g = greet;
+g('Dash', greeting: 'Howdy');
+```
+
+:::note
+In Dart, functions are first-class objects,
+meaning they can be assigned to variables,
+passed as arguments, and returned from other functions.
+
+You can use a [`typedef`][] declaration to explicitly name function types,
+which can be useful for clarity and reusability.
+:::
+
+[`typedef`]: /language/typedefs
+
 ## Anonymous functions
 
 Though you name most functions, such as `main()` or `printElement()`.
