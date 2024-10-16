@@ -271,7 +271,7 @@ More about those in the next section.
 You can specify the type of a function, which is known as a *function type*.
 A function type is obtained from a function declaration header by replacing 
 the function name by the keyword `Function`. Moreover, you are allowed to omit 
-the names of positional parameters, but the names of named parameters cannot 
+the names of positional parameters, but the names of named parameters can't 
 be omitted. For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
