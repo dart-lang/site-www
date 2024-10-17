@@ -307,3 +307,15 @@ since they use the [lockfile](#lockfile) to manage their dependency versions.
 
 For more information, see
 [Pub Versioning Philosophy](/tools/pub/versioning).
+
+## Workspace
+
+A collection of packages that are developed together with a shared resolution of
+their dependency constrains. Useful for developing in a mono-repo.
+
+The packages will have a shared `pubspec.lock` and a shared
+`.dart_tool/package_config.json`.
+
+For more information, see
+[Pub Workspaces](/guides/packages#workspaces).
+
