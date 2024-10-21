@@ -6,6 +6,13 @@ prevpage:
   title: dart:io
 ---
 
+:::warning
+`dart:html` is being replaced with [`package:web`][].
+Package maintainers should migrate to `package:web` as
+soon as possible to be compatible with Wasm.
+Read the [Migrate to package:web][] page for guidance.
+:::
+
 Use the [dart:html][] library to program the browser, manipulate objects and
 elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
 Model*, which describes the hierarchy of an HTML page.
@@ -29,7 +36,10 @@ To use the HTML library in your web app, import dart:html:
 import 'dart:html';
 ```
 
-### Manipulating the DOM
+[`package:web`]: {{site.pub-pkg}}/web
+[Migrate to package:web]: /interop/js-interop/package-web
+
+## Manipulating the DOM
 
 To use the DOM, you need to know about *windows*, *documents*,
 *elements*, and *nodes*.
@@ -51,7 +61,7 @@ elements, but they can also be attributes, text, comments, and other DOM
 types. Except for the root node, which has no parent, each node in the
 DOM has one parent and might have many children.
 
-#### Finding elements
+### Finding elements
 
 To manipulate an element, you first need an object that represents it.
 You can get this object using a query.
@@ -67,7 +77,7 @@ The `querySelector()` function returns the first element that matches
 the selector, while `querySelectorAll()`returns a collection of elements
 that match the selector.
 
-<?code-excerpt "html/lib/html.dart (querySelector)"?>
+<?code-excerpt "html/lib/html.dart (query-selector)"?>
 ```dart
 // Find an element by id (an-id).
 Element idElement = querySelector('#an-id')!;
@@ -89,7 +99,7 @@ List<Element> textInputElements = querySelectorAll(
 List<Element> specialParagraphElements = querySelectorAll('#id p.class');
 ```
 
-#### Manipulating elements
+### Manipulating elements
 
 You can use properties to change the state of an element. Node and its
 subtype Element define the properties that all elements have. For
@@ -164,7 +174,7 @@ example of setting an attribute's value:
 elem.attributes['someAttribute'] = 'someValue';
 ```
 
-#### Creating elements
+### Creating elements
 
 You can add to existing HTML pages by creating new elements and
 attaching them to the DOM. Here's an example of creating a paragraph
@@ -198,7 +208,7 @@ elements are accessible (as a `List<Element>`) from the `children` property.
 document.body!.children.add(elem2);
 ```
 
-#### Adding, replacing, and removing nodes
+### Adding, replacing, and removing nodes
 
 Recall that elements are just a kind of node. You can find all the
 children of a node using the `nodes` property of Node, which returns a
@@ -216,7 +226,7 @@ querySelector('#inputs')!.nodes.add(elem);
 
 To replace a node, use the Node `replaceWith()` method:
 
-<?code-excerpt "html/lib/html.dart (replaceWith)"?>
+<?code-excerpt "html/lib/html.dart (replace-with)"?>
 ```dart
 querySelector('#status')!.replaceWith(elem);
 ```
@@ -229,7 +239,7 @@ To remove a node, use the Node `remove()` method:
 querySelector('#expendable')?.remove();
 ```
 
-#### Manipulating CSS styles
+### Manipulating CSS styles
 
 CSS, or *cascading style sheets*, defines the presentation styles of DOM
 elements. You can change the appearance of an element by attaching ID
@@ -276,7 +286,7 @@ message.style
   ..fontSize = '3em';
 ```
 
-#### Handling events
+### Handling events
 
 To respond to external events such as clicks, changes of focus, and
 selections, add an event listener. You can add an event listener to any
@@ -292,7 +302,7 @@ name and <code><em>function</em></code> is the event handler.
 
 For example, here's how you can handle clicks on a button:
 
-<?code-excerpt "html/lib/html.dart (onClick)"?>
+<?code-excerpt "html/lib/html.dart (on-click)"?>
 ```dart
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo')!.onClick.listen((e) {
@@ -324,7 +334,7 @@ subclasses. Some common events include:
 -   mouseUp
 
 
-### Using HTTP resources with HttpRequest
+## Using HTTP resources with HttpRequest
 
 You should avoid directly using `dart:html` to make HTTP requests.
 The [`HttpRequest`][] class in `dart:html` is platform-dependent
@@ -336,7 +346,7 @@ The [Fetch data from the internet][] tutorial
 explains how to make HTTP requests
 using `package:http`.
 
-### Sending and receiving real-time data with WebSockets
+## Sending and receiving real-time data with WebSockets
 
 A WebSocket allows your web app to exchange data with a server
 interactively—no polling necessary. A server creates the WebSocket and
@@ -360,7 +370,7 @@ the websocket sample app.
 var ws = WebSocket('ws://echo.websocket.org');
 ```
 
-#### Sending data
+### Sending data
 
 To send string data on the WebSocket, use the `send()` method:
 
@@ -369,7 +379,7 @@ To send string data on the WebSocket, use the `send()` method:
 ws.send('Hello from Dart!');
 ```
 
-#### Receiving data
+### Receiving data
 
 To receive data on the WebSocket, register a listener for message
 events:
@@ -384,7 +394,7 @@ ws.onMessage.listen((MessageEvent e) {
 The message event handler receives a [MessageEvent][] object.
 This object's `data` field has the data from the server.
 
-#### Handling WebSocket events
+### Handling WebSocket events
 
 Your app can handle the following WebSocket events: open, close, error,
 and (as shown earlier) message. Here's an example of a method that
@@ -428,7 +438,7 @@ void initWebSocket([int retrySeconds = 1]) {
 ```
 
 
-### More information
+## More information
 
 This section barely scratched the surface of using the dart:html
 library. For more information, see the documentation for

@@ -149,7 +149,7 @@ class C<T extends Iterable> {
 The following code creates a new instance of this class 
 (omitting the type argument) and accesses its `collection` member:
 
-<?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\.add\(2\)/[!$&!]/g"?>
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (undefined-method)" replace="/c\.add\(2\)/[!$&!]/g"?>
 ```dart tag=fails-sa
 var c = C(Iterable.empty()).collection;
 [!c.add(2)!];
@@ -485,7 +485,7 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 
 #### Fix: Supply appropriate type as explicit type argument
 
-<?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
+<?code-excerpt "lib/common_fixes_analysis.dart (type-inf-fix)"?>
 ```dart tag=passes-sa
 var ints = [1, 2, 3];
 var maximumOrNull =
@@ -493,6 +493,35 @@ var maximumOrNull =
 ```
 
 <hr>
+
+### Conflicting Superinterfaces
+
+A class which `implements` more than one superinterface must be able to
+implement valid overrides for every member of every superinterface.
+Each member with a given name requires compatible signatures across the
+superinterfaces.
+
+Superinterfaces must not include conflicting generics.
+A class can't implement both `C<A>` and `C<B>`, including indirect
+superinterfaces.
+
+#### Example
+
+In the following code,
+class `C` has conflicting generic interfaces.
+Definitions of valid overrides for some members would be impossible.
+
+<?code-excerpt "lib/common_fixes_analysis.dart (conflicting-generics)"?>
+```dart tag=fails-sa
+abstract class C implements List<int>, Iterable<num> {}
+```
+
+#### Fix: Use consistent generics or avoid repeating transitive interfaces
+
+<?code-excerpt "lib/common_fixes_analysis.dart (compatible-generics)"?>
+```dart tag=passes-sa
+abstract class C implements List<int> {}
+```
 
 <a id="common-errors-and-warnings"></a>
 

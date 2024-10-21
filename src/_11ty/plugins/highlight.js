@@ -1,5 +1,4 @@
-import { getHighlighter } from 'shikiji';
-import { toHtml } from 'hast-util-to-html';
+import { getSingletonHighlighter } from 'shiki';
 import dashLightTheme from '../syntax/dash-light.js';
 
 /**
@@ -11,14 +10,14 @@ import dashLightTheme from '../syntax/dash-light.js';
  * - Wraps the code block in a custom structure for title formatting,
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
- *   using the shikiji package that uses TextMate grammars
+ *   using the shiki package that uses TextMate grammars
  *   and Code -OSS themes.
  *
  * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance to
  *   configure syntax highlighting for.
  */
 export async function configureHighlighting(markdown) {
-  const highlighter = await getHighlighter({
+  const highlighter = await getSingletonHighlighter({
     langs: [
       'dart',
       'yaml',
@@ -39,21 +38,25 @@ export async function configureHighlighting(markdown) {
       'cmd',
       'plaintext',
     ],
+    themes: [dashLightTheme],
   });
-
-  await highlighter.loadTheme(dashLightTheme);
 
   markdown.renderer.rules.fence = function (tokens, index) {
     const token = tokens[index];
 
     const splitTokenInfo = token.info.match(/(\S+)\s?(.*?)$/m);
+
+    if (!splitTokenInfo) {
+      throw new Error('Each Markdown code block should specify a language ' +
+          'after the opening backticks like: ```dart.');
+    }
+
     const language = splitTokenInfo.length > 1 ? splitTokenInfo[1] : '';
     const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
 
     return _highlight(
       markdown,
       highlighter,
-      toHtml,
       token.content,
       language,
       attributes,
@@ -67,10 +70,8 @@ export async function configureHighlighting(markdown) {
  * passed in {@link attributeString}.
  *
  * @param {import('markdown-it/lib').MarkdownIt} markdown The markdown-it instance.
- * @param {import('shikiji').Highlighter} highlighter The shikiji highlighter
+ * @param {import('shiki').Highlighter} highlighter The shiki highlighter
  *   configured with the correct theme(s) and languages.
- * @param {import('hast-util-to-html').toHtml} toHtml The utility function
- *   to convert the hast tree to an HTML string.
  * @param {string} content The content to syntax highlight.
  * @param {string} language The language of the content.
  * @param {string} attributeString The string containing configuration.
@@ -80,20 +81,19 @@ export async function configureHighlighting(markdown) {
 function _highlight(
   markdown,
   highlighter,
-  toHtml,
   content,
   language,
   attributeString,
 ) {
-  // Don't customize or highlight DartPad snippets
-  // so that inject_embed can convert them.
-  if (language.includes('-dartpad') || language.includes('file-')) {
-    return `<pre><code class="language-${language}">
-${markdown.utils.escapeHtml(content)}
-</code></pre>`;
-  }
-
   const attributes = _parseAttributes(attributeString);
+
+  // Specially handle DartPad snippets so that inject_embed can convert them.
+  if (language.includes('dartpad')) {
+    const theme = attributes['theme'] ?? 'light';
+    const title = attributes['title'] ?? 'Runnable Dart sample';
+    const runAutomatically = attributes['run'] ?? 'false';
+    return `<pre><code data-dartpad="true" data-embed="true" data-theme="${theme}" title="${title}" data-run="${runAutomatically}">${markdown.utils.escapeHtml(content)}</code></pre>`;
+  }
 
   const showLineNumbers = 'showLineNumbers' in attributes;
   let startingLineNumber = 0;
@@ -136,11 +136,7 @@ ${markdown.utils.escapeHtml(content)}
 
           const bodyChildren = [preElement];
 
-          if (
-            language !== 'plaintext' &&
-            language !== 'console' &&
-            language !== 'ps'
-          ) {
+          if (!['plaintext', 'console', 'ps', 'diff'].includes(language)) {
             const languageText = _createSpanWithText(language, {
               class: 'code-block-language',
               title: `Language ${language}`,
@@ -339,7 +335,7 @@ function _wrapMarkedText(spans, ranges) {
   for (const span of spans) {
     const [child, ...otherChildren] = span.children;
     if (otherChildren.length > 0 || child.type !== 'text') {
-      throw Error('Each span should have exactly one text child.');
+      throw new Error('Each span should have exactly one text child.');
     }
 
     /** The text within the current span. */

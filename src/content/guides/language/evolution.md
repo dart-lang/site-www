@@ -2,6 +2,7 @@
 title: Dart language evolution
 short-title: Language evolution
 description: Notable changes and additions to the Dart programming language.
+lastVerified: 2024-08-04
 ---
 
 This page lists notable changes and additions to the
@@ -40,6 +41,59 @@ on the Dart language GitHub repo.
 
 
 ## Changes in each release
+
+### Dart 3.5
+_Released 6 August 2024_
+| [Dart 3.5 announcement](https://medium.com/dartlang/dart-3-5-6ca36259fa2f)
+
+Dart 3.5 added no new language features, but made minor changes to the
+context considered during type inference.
+These include the following, non-language versioned changes:
+
+* When the context for an `await` expression is `dynamic`,
+  the context for the operand of expression is now `FutureOr<_>`.
+* When the context for an entire if-null expression (`e1 ?? e2`) is `dynamic`,
+  the context for `e2` is now the static type of `e1`.
+
+### Dart 3.4
+_Released 14 May 2024_
+| [Dart 3.4 announcement](https://medium.com/dartlang/dart-3-4-bd8d23b4462a)
+
+Dart 3.4 made several improvements related to type analysis. These include:
+
+* Improvements to the type analysis of conditional expressions,
+  if-null expressions and assignments, and switch expressions.
+* Aligning the pattern context type schema for cast patterns with the spec.
+* Making the type schema for the null-aware spread operator (`...?`)
+  nullable for maps and set literals, to match the behavior of list literals.
+
+### Dart 3.3
+_Released 15 February 2024_
+| [Dart 3.3 announcement](https://medium.com/dartlang/dart-3-3-325bf2bf6c13)
+
+Dart 3.3 added some enhancements to the language:
+
+* [Extension types][] are a new feature in Dart that allow zero-cost wrapping
+  of an existing type. They are similar to wrapper classes and extension methods,
+  but with implementation differences and different tradeoffs.
+
+  ```dart
+  extension type Meters(int value) {
+    String get label => '${value}m';
+    Meters operator +(Meters other) => Meters(value + other.value);
+  }
+
+  void main() {
+    var m = Meters(42); // Has type `Meters`.
+    var m2 = m + m; // OK, type `Meters`.
+    // int i = m; // Compile-time error, wrong type.
+    // m.isEven; // Compile-time error, no such member.
+    assert(identical(m, m.value)); // Succeeds.
+  }
+  ```
+
+* Abstract getters are now promotable under the rules of
+  [private final field promotion][], if there are no conflicting declarations.
 
 ### Dart 3.2
 _Released 15 November 2023_
@@ -327,7 +381,7 @@ _Released 5 November 2019_
 | [Dart 2.6 announcement](https://medium.com/dartlang/dart2native-a76c815e6baf)
 
 Dart 2.6 introduced a
-[breaking change (dart-lang/sdk#37985)](https://github.com/dart-lang/sdk/issues/37985).
+[breaking change (dart-lang/sdk#37985)]({{site.repo.dart.sdk}}/issues/37985).
 Constraints where `Null` serves as a subtype of `FutureOr<T>`
 now yield `Null` as the solution for `T`.
 
@@ -356,7 +410,7 @@ _Released 27 June 2019_
 
 
 Dart 2.4 introduces a breaking change
-[dart-lang/sdk#35097](https://github.com/dart-lang/sdk/issues/35097).
+[dart-lang/sdk#35097]({{site.repo.dart.sdk}}/issues/35097).
 
 Dart now enforces covariance of type variables used in super-interfaces.
 For example: Prior to this release Dart accepted, but now rejects,
@@ -558,19 +612,21 @@ other comments can appear before the `@dart` comment.
 To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
-[2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
+[2.8 breaking changes]: {{site.repo.dart.sdk}}/issues/40686
 [calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
 [Dart library]: /guides/libraries/create-packages#organizing-a-package
 [Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
-[language funnel]: https://github.com/dart-lang/language/projects/1
+[Extension types]: /language/extension-types
+[language funnel]: {{site.repo.dart.lang}}/projects/1
 [language specification]: /guides/language/spec
 [language documentation]: /language
-[language versioning specification]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
+[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[private final field promotion]: /tools/non-promotion-reasons
+[SDK changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
 [set literals]: /language/collections#sets
 [sound null safety]: /null-safety
 [sound type system]: /language/type-system

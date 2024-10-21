@@ -1,6 +1,5 @@
 import markdownIt from 'markdown-it';
 import markdownItContainer from 'markdown-it-container';
-import { markdownItTable } from 'markdown-it-table';
 import markdownItDefinitionList from 'markdown-it-deflist';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
@@ -9,7 +8,6 @@ import { slugify } from '../utils/slugify.js';
 /** @type {import('markdown-it/lib').MarkdownIt} */
 export const markdown = (() => {
   const markdown = markdownIt({ html: true })
-    .use(markdownItTable)
     .use(markdownItDefinitionList)
     .use(markdownItAttrs, {
       leftDelimiter: '{:',
@@ -20,19 +18,37 @@ export const markdown = (() => {
       slugify: (s) => slugify(s),
       level: 2,
       tabIndex: false,
-      permalink: markdownItAnchor.permalink.ariaHidden({
-        space: true,
-        placement: 'after',
+      permalink: markdownItAnchor.permalink.linkAfterHeader({
+        style: 'aria-label',
+        assistiveText: title => `Link to '${title}' section`,
         symbol: '#',
         class: 'heading-link',
+        wrapper: ['<div class="header-wrapper">', '</div>']
       }),
     });
 
   _registerAsides(markdown);
-  _registerContainers(markdown);
+  _setUpTables(markdown);
 
   return markdown;
 })();
+
+/**
+ * Wrap all tables in a div with `table-wrapper` class.
+ *
+ * @param markdown {import('markdown-it/lib').MarkdownIt} markdown
+ */
+function _setUpTables(markdown) {
+  markdown.renderer.rules = {
+    ...markdown.renderer.rules,
+    table_open: function (tokens, idx, options, env, self) {
+      const token = tokens[idx];
+      // Render added attributes from `{:.table .table-striped}` syntax.
+      return `<div class="table-wrapper">\n<table ${self.renderAttrs(token)}>\n`;
+    },
+    table_close: () => '</table>\n</div>',
+  };
+}
 
 /**
  * Register a custom aside/admonition.
@@ -98,26 +114,4 @@ function _registerAsides(markdown) {
   );
 
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
-}
-
-/**
- * Registers custom containers used on the site.
- *
- * @param {import('markdown-it/lib').MarkdownIt} markdown
- * @private
- */
-function _registerContainers(markdown) {
-  // TODO(parlough): Consider removing all usages of mini-toc.
-  markdown.use(markdownItContainer, 'mini-toc', {
-    render: function (tokens, index) {
-      if (tokens[index].nesting === 1) {
-        const header = /\s+(.*)/.exec(tokens[index].info)[1];
-        return `<div class="mini-toc">
-<h4 class="no_toc">${header}</h4>
-`;
-      } else {
-        return '</div>\n';
-      }
-    },
-  });
 }

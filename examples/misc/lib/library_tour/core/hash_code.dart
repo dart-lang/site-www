@@ -1,5 +1,4 @@
 // ignore_for_file: unrelated_type_equality_checks
-// #docregion
 class Person {
   final String firstName, lastName;
 

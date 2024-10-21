@@ -63,5 +63,5 @@ and [general-purpose packages][] such as `logging`:
 
 {:.table .table-striped .nowrap}
 
-[general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
+[general-purpose packages]: /resources/useful-packages#general-purpose-packages
 [gRPC]: https://grpc.io/

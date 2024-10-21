@@ -1,5 +1,6 @@
-// ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables
+// ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables, avoid_function_literals_in_foreach_calls
 // ignore_for_file: always_declare_return_types
+
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
 import 'package:test/test.dart';
@@ -15,8 +16,8 @@ void main() {
       }
       return result;
     }
-
     // #enddocregion optional-positional-parameters
+
     // #docregion call-without-optional-param
     assert(say('Bob', 'Howdy') == 'Bob says Howdy');
     // #enddocregion call-without-optional-param
@@ -39,7 +40,7 @@ void main() {
 
   test('main-args', () {
     // #docregion main-args
-    // Run the app like this: dart args.dart 1 test
+    // Run the app like this: dart run args.dart 1 test
     void main(List<String> arguments) {
       print(arguments);
 
@@ -47,8 +48,8 @@ void main() {
       assert(int.parse(arguments[0]) == 1);
       assert(arguments[1] == 'test');
     }
-
     // #enddocregion main-args
+
     final args = ['1', 'test'];
     expect(() => main(args), m.prints('[1, test]'));
   });
@@ -71,11 +72,15 @@ ORANGES: 7
       void main() {
         // #docregion anonymous-function
         const list = ['apples', 'bananas', 'oranges'];
-        list.map((item) {
+
+        var uppercaseList = list.map((item) {
           return item.toUpperCase();
-        }).forEach((item) {
+        }).toList();
+        // Convert to list after mapping
+
+        for (var item in uppercaseList) {
           print('$item: ${item.length}');
-        });
+        }
         // #enddocregion anonymous-function
       }
       // #enddocregion anonymous-function-main
@@ -90,9 +95,8 @@ ORANGES: 7
     void testAnonymousFunction() {
       const list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
-      list
-          .map((item) => item.toUpperCase())
-          .forEach((item) => print('$item: ${item.length}'));
+      var uppercaseList = list.map((item) => item.toUpperCase()).toList();
+      uppercaseList.forEach((item) => print('$item: ${item.length}'));
       // #enddocregion anon-func
     }
 
@@ -140,8 +144,8 @@ ORANGES: 7
       assert(add2(3) == 5);
       assert(add4(3) == 7);
     }
-
     // #enddocregion function-closure
+
     main();
   });
 

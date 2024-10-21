@@ -1,7 +1,7 @@
 ---
 title: Functions
 description: Everything about functions in Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /language/pattern-types
   title: Pattern types
@@ -49,9 +49,15 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 is sometimes referred to as _arrow_ syntax.
 
 :::note
-Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-the semicolon (;). For example, you can't put an [if statement][]
-there, but you can use a [conditional expression][].
+Only _expressions_ can appear between the arrow (`=>`) and the semicolon (`;`).
+Expressions evaluate to values.
+This means that you can't write a statement where Dart expects a value.
+For example,
+you could use a [conditional expression][] but not an [if statement][].
+In the previous example,
+`_nobleGases[atomicNumber] != null;` returns a boolean value.
+The function then returns a boolean value
+that indicates whether the `atomicNumber` falls into the noble gas range.
 :::
 
 ## Parameters
@@ -198,8 +204,9 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
+<a id="the-main-function" aria-hidden="true"></a>
 
-## The main() function
+## The main() function {:#main}
 
 Every app must have a top-level `main()` function, which serves as the
 entrypoint to the app. The `main()` function returns `void` and has an
@@ -218,7 +225,7 @@ Here's an example of the `main()` function for a command-line app that
 takes arguments:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
-```dart
+```dart title="args.dart"
 // Run the app like this: dart run args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
@@ -259,80 +266,112 @@ assert(loudify('hello') == '!!! HELLO !!!');
 This example uses an anonymous function.
 More about those in the next section.
 
+## Function types
+
+You can specify the type of a function, which is known as a *function type*.
+A function type is obtained from a function declaration header by
+replacing the function name by the keyword `Function`.
+Moreover, you are allowed to omit the names of positional parameters, but
+the names of named parameters can't be omitted. For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-type)"?>
+```dart
+void greet(String name, {String greeting = 'Hello'}) =>
+    print('$greeting $name!');
+
+// Store `greet` in a variable and call it.
+void Function(String, {String greeting}) g = greet;
+g('Dash', greeting: 'Howdy');
+```
+
+:::note
+In Dart, functions are first-class objects,
+meaning they can be assigned to variables,
+passed as arguments, and returned from other functions.
+
+You can use a [`typedef`][] declaration to explicitly name function types,
+which can be useful for clarity and reusability.
+:::
+
+[`typedef`]: /language/typedefs
+
 ## Anonymous functions
 
-Most functions are named, such as `main()` or `printElement()`.
-You can also create a nameless function
-called an _anonymous function_, or sometimes a _lambda_ or _closure_.
-You might assign an anonymous function to a variable so that,
-for example, you can add or remove it from a collection.
+Though you name most functions, such as `main()` or `printElement()`.
+you can also create functions without names.
+These functions are called _anonymous functions_, _lambdas_, or _closures_.
 
-An anonymous function looks similar
-to a named function—zero or more parameters, separated by commas
-and optional type annotations, between parentheses.
+An anonymous function resembles a named function as it has:
 
-The code block that follows contains the function's body:
+* Zero or more parameters, comma-separated
+* Optional type annotations between parentheses.
 
-<code>
-([[<em>Type</em>] <em>param1</em>[, …]]) { <br>
-&nbsp;&nbsp;<em>codeBlock</em>; <br>
-}; <br>
-</code>
+The following code block contains the function's body:
+
+```dart
+([[Type] param1[, ...]]) {
+  codeBlock;
+}
+```
 
 The following example defines an anonymous function
-with an untyped parameter, `item`,
-and passes it to the `map` function.
-The function, invoked for each item in the list,
+with an untyped parameter, `item`.
+The anonymous function passes it to the `map` function.
+The `map` function, invoked for each item in the list,
 converts each string to uppercase.
-Then in the anonymous function passed to `forEach`,
-each converted string is printed out alongside its length.
+Then, the anonymous function passed to `forEach`,
+prints each converted string with its length.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
-list.map((item) {
+
+var uppercaseList = list.map((item) {
   return item.toUpperCase();
-}).forEach((item) {
+}).toList();
+// Convert to list after mapping
+
+for (var item in uppercaseList) {
   print('$item: ${item.length}');
-});
+}
 ```
 
 Click **Run** to execute the code.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
-```dart:run-dartpad:height-400px:ga_id-anonymous_functions
+```dartpad
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
-  list.map((item) {
+
+  var uppercaseList = list.map((item) {
     return item.toUpperCase();
-  }).forEach((item) {
+  }).toList();
+  // Convert to list after mapping
+
+  for (var item in uppercaseList) {
     print('$item: ${item.length}');
-  });
+  }
 }
 ```
 
 If the function contains only a single expression or return statement,
-you can shorten it using arrow notation. 
+you can shorten it using arrow notation.
 Paste the following line into DartPad and click **Run**
 to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list
-    .map((item) => item.toUpperCase())
-    .forEach((item) => print('$item: ${item.length}'));
+var uppercaseList = list.map((item) => item.toUpperCase()).toList();
+uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
-
 
 ## Lexical scope
 
-Dart is a lexically scoped language, which means that the scope of
-variables is determined statically, simply by the layout of the code.
-You can "follow the curly braces outwards" to see if a variable is in
-scope.
+Dart determines the scope of variables based on the layout of its code.
+A programming language with this feature is termed a lexically scoped language.
+You can "follow the curly braces outwards" to see if a variable is in scope.
 
-Here is an example of nested functions with variables at each scope
-level:
+**Example:** A series of nested functions with variables at each scope level:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (nested-functions)"?>
 ```dart
@@ -356,15 +395,13 @@ void main() {
 }
 ```
 
-Notice how `nestedFunction()` can use variables from every level, all
-the way up to the top level.
-
+The `nestedFunction()` method can use variables from every level,
+all the way up to the top level.
 
 ## Lexical closures
 
-A *closure* is a function object that has access to variables in its
-lexical scope, even when the function is used outside of its original
-scope.
+A function object that can access variables in its lexical scope
+when the function sits outside that scope is called a _closure_.
 
 Functions can close over variables defined in surrounding scopes. In the
 following example, `makeAdder()` captures the variable `addBy`. Wherever the
@@ -390,6 +427,42 @@ void main() {
 }
 ```
 
+## Tear-offs
+
+When you refer to a function, method, or named constructor without parentheses,
+Dart creates a _tear-off_. This is a closure that takes the same
+parameters as the function and invokes the underlying function when you call it.
+If your code needs a closure that invokes a named function with the same
+parameters as the closure accepts, don't wrap the call in a lambda.
+Use a tear-off.
+
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (variables)" ?>
+```dart
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+```
+
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (good-example)" ?>
+```dart tag=good
+// Function tear-off
+charCodes.forEach(print);
+
+// Method tear-off
+charCodes.forEach(buffer.write);
+```
+
+<?code-excerpt "misc/lib/language_tour/tear_offs.dart (bad-example)" ?>
+```dart tag=bad
+// Function lambda
+charCodes.forEach((code) {
+  print(code);
+});
+
+// Method lambda
+charCodes.forEach((code) {
+  buffer.write(code);
+});
+```
 
 ## Testing functions for equality
 

@@ -2,11 +2,9 @@ name: fetch_data_examples
 description: Fetch data example
 version: 0.0.1
 
+resolution: workspace
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.5.3
 
 dependencies:
-  http: ^1.1.0
-
-dev_dependencies:
-  lints: ^3.0.0
+  http: ^1.2.2

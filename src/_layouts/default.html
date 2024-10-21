@@ -2,14 +2,15 @@
 <html lang="en">
   {% include 'head.html' %}
   {% if toc != false -%}
-    {% assign tocContents = content | generate_toc %}
+    {% assign tocContents = content | generateToc %}
     {% if tocContents == null or tocContents == '' -%}
       {% assign toc = false %}
     {% endif -%}
   {% endif -%}
   <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if site.show_banner == true %} show_banner{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
-    {% include 'cookie-notice.html' %}
-    {% include 'gtags.html' %}
+    <a id="skip" href="#site-content-title">Skip to main content</a>
+    {% render 'cookie-notice.html' %}
+    {% render 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
     {% include 'navigation-side.html' %}
     <main id="page-content">
@@ -20,9 +21,8 @@
         <div class="content">
           {% include 'navigation-sub.html' -%}
           <div id="site-content-title">
-            {% include 'page-github-links.html' -%}
             {% if underscore_breaker_titles -%}
-            <h1>{{title | underscore_breaker}}</h1>
+            <h1>{{title | underscoreBreaker}}</h1>
             {% else %}
             <h1>{{title }}</h1>
             {% endif -%}
@@ -35,9 +35,11 @@
           {% endif -%}
           {{ content }}
           {% include 'navigation-sub.html' -%}
+
+          {% include 'page-github-links.html' -%}
         </div>
       </article>
     </main>
-    {% include 'page-footer.html' %}
+    {% render 'page-footer.html' %}
   </body>
 </html>

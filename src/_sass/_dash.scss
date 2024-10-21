@@ -363,6 +363,7 @@ $dash-max-width: 1330px;
     iframe {
       flex: 1;
       border: 1px solid $dash-dartpad-border;
+      resize: none;
     }
   }
 }

@@ -3,6 +3,7 @@ title: Concurrency in Dart
 description: >-
   Use isolates to enable parallel code execution on multiple processor cores.
 short-title: Concurrency
+lastVerified: 2023-12-14
 prevpage:
   url: /language/modifier-reference
   title: Class modifiers reference
@@ -73,7 +74,7 @@ For example, consider making a network request:
 ```dart
 http.get('https://example.com').then((response) {
   if (response.statusCode == 200) {
-    print('Success!')'
+    print('Success!');
   }  
 }
 ```
@@ -109,7 +110,7 @@ eventually complete with a value or an error.
 In this sample code, the return type of `Future<String>` represents a 
 promise to eventually provide a `String` value (or error).
 
-<?code-excerpt "lib/future_syntax.dart"?>
+<?code-excerpt "lib/future_syntax.dart (read-async)"?>
 ```dart
 Future<String> _readFileAsync(String filename) {
   final file = File(filename);
@@ -130,7 +131,7 @@ asynchronous functions and use their results.
 Here's an example of some synchronous code
 that blocks while waiting for file I/O:
 
-<?code-excerpt "lib/sync_number_of_keys.dart"?>
+<?code-excerpt "lib/sync_number_of_keys.dart (blocking)"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -152,7 +153,7 @@ String _readFileSync() {
 
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
-<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
+<?code-excerpt "lib/async_number_of_keys.dart (non-blocking)" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -224,9 +225,9 @@ Stream<int> sumStream(Stream<int> stream) async* {
 ```
 
 If you'd like to learn more about using `async`, `await`, `Stream`s and
-`Future`s,  visit the [asynchronous programming codelab][].
+`Future`s, check out the [asynchronous programming tutorial][].
 
-[asynchronous programming codelab]: /codelabs/async-await
+[asynchronous programming tutorial]: /libraries/async/async-await
 
 ## Isolates
 
@@ -238,7 +239,8 @@ shared-memory threads running concurrently. However, shared-state concurrency is
 lead to complicated code.
 
 Instead of threads, all Dart code runs inside isolates.
-Using isolates, your Dart code can perform multiple independent tasks at once.
+Using isolates, your Dart code can perform multiple independent tasks at once,
+using additional processor cores if they're available.
 Isolates are like threads or processes, but each isolate has its own memory
 and a single thread running an event loop.
 
@@ -251,11 +253,6 @@ and [data races](https://en.wikipedia.org/wiki/Race_condition#Data_race)
 won't occur in Dart. That said, isolates don't prevent race conditions all
 together. For more information on this concurrency model, read about
 the [Actor model](https://en.wikipedia.org/wiki/Actor_model).
-
-Using isolates, your Dart code can perform multiple independent tasks at once,
-using additional processor cores if they're available. Isolates are like threads
-or processes, but each isolate has its own memory and a single thread running an
-event loop. 
 
 :::note Platform note
 Only the [Dart Native platform][] implements isolates.
@@ -280,7 +277,7 @@ complete. A well-behaved app starts quickly, getting to the event loop as soon
 as possible. The app then responds to each queued event promptly, using
 asynchronous operations as necessary.
 
-[async-await]: {{site.url}}/codelabs/async-await
+[async-await]: /libraries/async/async-await
 
 ### The isolate life cycle
 
@@ -357,7 +354,7 @@ API to run processes in the background.
 The static `Isolate.run()` method requires one argument: a callback that will be
 run on the newly spawned isolate.
 
-<?code-excerpt "lib/isolate_run_syntax.dart"?>
+<?code-excerpt "lib/isolate_run_syntax.dart (slow)"?>
 ```dart
 int slowFib(int n) => n <= 1 ? 1 : slowFib(n - 1) + slowFib(n - 2);
 
@@ -472,8 +469,8 @@ as the spawning isolate. Web workers don't have an equivalent API.
     - [`ReceivePort`][]
     - [`SendPort`][]
 
-[`IsolateNameServer`]: https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html
-[`package:isolate_name_server`]: https://pub.dev/packages/isolate_name_server
+[`IsolateNameServer`]: {{site.flutter-api}}/flutter/dart-ui/IsolateNameServer-class.html
+[`package:isolate_name_server`]: {{site.pub-pkg}}/isolate_name_server
 [Actor model]: https://en.wikipedia.org/wiki/Actor_model
 [`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
 [`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html

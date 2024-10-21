@@ -2,15 +2,8 @@
 // It configures the core 11ty behavior and registers
 // plugins and customization that live in `/src/_11ty`.
 
-import {
-  activeNavEntryIndexArray,
-  arrayToSentenceString,
-  breadcrumbsForPage,
-  generateToc,
-  regexReplace,
-  toISOString,
-  underscoreBreaker,
-} from './src/_11ty/filters.js';
+import { registerFilters } from './src/_11ty/filters.js';
+import { registerShortcodes } from './src/_11ty/shortcodes.js';
 import { markdown } from './src/_11ty/plugins/markdown.js';
 import { configureHighlighting } from './src/_11ty/plugins/highlight.js';
 
@@ -27,6 +20,7 @@ import * as sass from 'sass';
  */
 export default function (eleventyConfig) {
   const isProduction = process.env.PRODUCTION === 'true';
+  const shouldOptimize = process.env.OPTIMIZE === 'true';
 
   eleventyConfig.on('eleventy.before', async () => {
     await configureHighlighting(markdown);
@@ -45,20 +39,10 @@ export default function (eleventyConfig) {
     strictFilters: true,
     lenientIf: true,
   });
+  eleventyConfig.setLiquidParameterParsing('builtin');
 
-  eleventyConfig.addFilter('regex_replace', regexReplace);
-  eleventyConfig.addFilter('toISOString', toISOString);
-  eleventyConfig.addFilter(
-    'active_nav_entry_index_array',
-    activeNavEntryIndexArray,
-  );
-  eleventyConfig.addFilter('array_to_sentence_string', arrayToSentenceString);
-  eleventyConfig.addFilter('underscore_breaker', underscoreBreaker);
-  eleventyConfig.addFilter('throw_error', function (error) {
-    throw new Error(error);
-  });
-  eleventyConfig.addFilter('generate_toc', generateToc);
-  eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
+  registerFilters(eleventyConfig);
+  registerShortcodes(eleventyConfig);
 
   eleventyConfig.addTemplateFormats('scss');
   eleventyConfig.addWatchTarget('src/_sass');
@@ -71,7 +55,7 @@ export default function (eleventyConfig) {
       }
 
       const result = sass.compileString(inputContent, {
-        style: isProduction ? 'compressed' : 'expanded',
+        style: shouldOptimize ? 'compressed' : 'expanded',
         quietDeps: true,
         loadPaths: [parsedPath.dir, 'src/_sass'],
       });
@@ -91,6 +75,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('src/content/assets/dash');
   eleventyConfig.addPassthroughCopy('src/content/assets/js');
+  eleventyConfig.addPassthroughCopy({'site-shared/pkgs/inject_dartpad/lib/inject_dartpad.js': 'assets/js/inject_dartpad.js'});
   eleventyConfig.addPassthroughCopy('src/content/assets/img', { expand: true });
   eleventyConfig.addPassthroughCopy('src/content/f', {
     expand: true,
@@ -100,7 +85,7 @@ export default function (eleventyConfig) {
     'src/content/guides/language/specifications',
   );
 
-  if (isProduction) {
+  if (shouldOptimize) {
     // If building for production, minify/optimize the HTML output.
     // Doing so during serving isn't worth the extra build time.
     eleventyConfig.addTransform('minify-html', async function (content) {

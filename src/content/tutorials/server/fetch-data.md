@@ -1,7 +1,7 @@
 ---
 title: Fetch data from the internet
 description: Fetch data over the internet using the http package.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
@@ -12,7 +12,7 @@ nextpage:
 
 <?code-excerpt path-base="fetch_data"?>
 
-:::mini-toc What you'll learn
+:::secondary What you'll learn
 * The basics of what HTTP requests and URIs are and what they are used for.
 * Making HTTP requests using `package:http`.
 * Decoding JSON strings into Dart objects with `dart:convert`.
@@ -81,7 +81,7 @@ To learn more about their capabilities,
 consult the package documentation.
 :::
 
-[Cronet]: {{site.android-dev}}guide/topics/connectivity/cronet/reference/org/chromium/net/package-summary
+[Cronet]: {{site.android-dev}}/develop/connectivity/cronet
 [furl]: {{site.apple-dev}}/documentation/foundation/url_loading_system
 [Introducing JSON]: https://www.json.org/
 
@@ -230,7 +230,7 @@ access the network and perform potentially time-consuming operations,
 therefore they do so asynchronously and return a [`Future`][].
 If you haven't encountered futures yet,
 you can learn about them—as well as the `async` and `await` keywords—in the
-[asynchronous programming codelab](/codelabs/async-await).
+[asynchronous programming tutorial](/libraries/async/async-await).
 :::
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g; /(http\.read)/[!$1!]/g"?>
@@ -244,7 +244,7 @@ void main() async {
 
 This results in the following JSON-formatted output,
 which can also be seen in your browser at
-[{{site.url}}/f/packages/http.json][mock-http-json].
+[`/f/packages/http.json`][mock-http-json].
 
 ```json
 {
@@ -530,7 +530,7 @@ that requests, decodes, then displays
 the mock information about the `http` and `path` packages:
 
 <?code-excerpt "bin/fetch_http_package.dart"?>
-```dart:run-dartpad:height-600px:ga_id-fetch-data-complete
+```dartpad
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -653,5 +653,5 @@ to prevent your interface from becoming unresponsive.
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json
 [convert-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
-[http-pub]: https://pub.dev/packages/http
-[http-docs]: https://pub.dev/documentation/http
+[http-pub]: {{site.pub-pkg}}/http
+[http-docs]: {{site.pub-api}}/http

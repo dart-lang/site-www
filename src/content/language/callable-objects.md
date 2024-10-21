@@ -1,15 +1,17 @@
 ---
 title: Callable objects
 description: Learn how to create and use callable objects in Dart.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 toc: false
 prevpage:
-  url: /language/extension-methods
-  title: Extension methods
+  url: /language/extension-types
+  title: Extension types
 nextpage:
   url: /language/class-modifiers
   title: Class modifiers
 ---
+
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
@@ -23,7 +25,7 @@ that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
 <?code-excerpt "misc/lib/language_tour/callable_objects.dart"?>
-```dart:run-dartpad:height-350px:ga_id-callable_objects
+```dartpad
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }

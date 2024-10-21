@@ -3,6 +3,7 @@ title: Configuring apps with compilation environment declarations
 description: >-
   Learn about using compilation environment declarations 
   to customize application behavior.
+lastVerified: 2023-02-23
 ---
 
 You can specify compilation environment declarations
@@ -119,7 +120,7 @@ To track standardization of this handling,
 reference [SDK issue 44995][].
 :::
 
-[SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
+[SDK issue 44995]: {{site.repo.dart.sdk}}/issues/44995
 
 ### Dart CLI
 

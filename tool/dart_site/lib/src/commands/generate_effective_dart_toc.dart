@@ -39,7 +39,7 @@ final class GenerateEffectiveDartToc extends Command<int> {
 }
 
 Future<int> _generateToc({bool justCheck = false}) async {
-  const dirPath = 'src/effective-dart';
+  const dirPath = 'src/content/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
   final sections =
@@ -75,7 +75,7 @@ To re-generate it, please run the following command from root of
 the project:
 
 ```
-$ dart run dart_site effective-dart
+./dash_site effective-dart
 ```
 {% endcomment %}
     ''');
@@ -206,7 +206,7 @@ String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
     .replaceAll(RegExp(r'[:.]'), '-')
-    .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    .replaceAll(RegExp(r'[^\p{L}\p{N}\s_-]', unicode: true), '')
     .replaceAll(RegExp(r'[\s-]+'), '-')
     .replaceAll(RegExp(r'^-+|-+$'), '');
 

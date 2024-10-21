@@ -13,7 +13,7 @@ void _samplesFromCommonProblemsPage() {
     // #docregion canvas-undefined
     var canvas = querySelector('canvas')!;
     // ignore: stable, beta, dev, undefined_getter
-    canvas.context2D.lineTo(x, y); //!analysis-issue
+    canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-undefined
   }
 
@@ -36,7 +36,7 @@ void _samplesFromCommonProblemsPage() {
     // Inferred as Map<String, int>
     var map = {'a': 1, 'b': 2, 'c': 3};
     // ignore: stable, beta, dev, invalid_assignment
-    map['d'] = 1.5; //!analysis-issue
+    map['d'] = 1.5;
     // #enddocregion inferred-collection-types
   }
 
@@ -149,3 +149,15 @@ void infFix() {
       ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
   // #enddocregion type-inf-fix
 }
+
+//-----------------------------------------------
+
+// #docregion compatible-generics
+abstract class C implements List<int> {}
+// #enddocregion compatible-generics
+
+// #docregion conflicting-generics
+// ignore: inconsistent_inheritance, conflicting_generic_interfaces,
+// ignore: duplicate_definition
+abstract class C implements List<int>, Iterable<num> {}
+// #enddocregion conflicting-generics

@@ -2,23 +2,22 @@ name: dart_sdk_archive
 description: An absolute bare-bones web app.
 publish_to: none
 
+resolution: workspace
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.5.3
 
 dependencies:
-  http: ^1.1.2
+  http: ^1.2.2
   intl: ^0.19.0
   path: ^1.9.0
   pub_semver: ^2.1.4
   sdk_builds:
-    path: ../sdk_builds.dart
-  web: ^0.4.0
+    path: ../sdk_builds
+  web: ^1.0.0
 
 dev_dependencies:
-  analysis_defaults:
-    path: ../../../site-shared/packages/analysis_defaults
-  build_runner: ^2.4.7
-  build_web_compilers: ^4.0.8
-  dart_style: ^2.3.4
+  build_runner: ^2.4.12
+  build_web_compilers: ^4.0.11
+  dart_style: ^2.3.7
   grinder: ^0.9.5
-  test: ^1.25.0
+  test: ^1.25.8

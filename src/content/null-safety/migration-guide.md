@@ -39,12 +39,7 @@ make sure that all of your dependencies are ready.
 To get an informal look at the experience of using the migration tool,
 watch this video:
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about the null-safety migration tool"
-  src="{{yt.embed}}/eBr5tlumwlg"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "eBr5tlumwlg", "How to migrate Dart packages to null safety" %}
 
 [null safety]: /null-safety
 [Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
@@ -405,7 +400,7 @@ To migrate a package by hand, follow these steps:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
+   [package configuration file]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of at least `2.12.0`
    sets the default language version of

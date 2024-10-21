@@ -2,6 +2,7 @@
 title: Isolates
 description: Information on writing isolates in Dart.
 short-title: Isolates
+lastVerified: 2024-01-04
 prevpage:
   url: /language/async
   title: Asynchronous support
@@ -38,7 +39,7 @@ but here are some more situations where they can be useful:
 - Performing I/O, such as communicating with a database.
 - Handling a large volume of network requests.
 
-[Flutter]: {{site.flutter}}/perf/isolates
+[Flutter]: {{site.flutter-docs}}/perf/isolates
 
 ## Implementing a simple worker isolate
 
@@ -54,7 +55,7 @@ setting up and managing worker isolates:
 5. Terminates the isolate once work is complete.
 6. Checks, captures, and throws exceptions and errors back to the main isolate.
 
-[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
+[`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
 
 :::flutter-note
 If you're using Flutter, you can use [Flutter's `compute` function][]
@@ -117,7 +118,7 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
-[send_and_receive.dart]: https://github.com/dart-lang/samples/blob/main/isolates/bin/send_and_receive.dart
+[send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 
@@ -126,7 +127,7 @@ For the complete program, check out the [send_and_receive.dart][] sample.
 You can also create a simple worker isolate with `run()` using a
 function literal, or closure, directly in the main isolate.
 
-<?code-excerpt "lib/simple_isolate_closure.dart"?>
+<?code-excerpt "lib/simple_isolate_closure.dart (worker)"?>
 ```dart
 const String filename = 'with_keys.json';
 
@@ -302,7 +303,7 @@ isolate, and one that handles sending messages to that worker isolate.
 The remaining sections in this example will show you
 how to fill in the class methods, one-by-one.
 
-<?code-excerpt "lib/basic_ports_example/start.dart"?>
+<?code-excerpt "lib/basic_ports_example/start.dart (worker)"?>
 ```dart
 class Worker {
   Future<void> spawn() async {
@@ -366,7 +367,7 @@ method for the worker isolate.
 - Finally, add a listener to the new `ReceivePort`. This listener handles
   messages the main isolate sends to the worker isolate.
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (startRemoteIsolate)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (start-remote-isolate)"?>
 ```dart
 static void _startRemoteIsolate(SendPort port) {
   final receivePort = ReceivePort();
@@ -416,7 +417,7 @@ decoded JSON).
   type of decoded JSON. If so, handle that message with your
   application-specific logic. In this example, the message is printed. 
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (handleResponses)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (handle-responses)"?>
 ```dart
 void _handleResponsesFromIsolate(dynamic message) {
   if (message is SendPort) {
@@ -445,7 +446,7 @@ To handle this, use a [`Completer`][].
   worker isolate until it is spawned _and_ has sent its `SendPort` back to the
   main isolate.
 
-<?code-excerpt "lib/basic_ports_example/complete.dart (parseJson)"?>
+<?code-excerpt "lib/basic_ports_example/complete.dart (parse-json)"?>
 ```dart
 Future<void> parseJson(String message) async {
   await _isolateReady.future;
@@ -456,57 +457,58 @@ Future<void> parseJson(String message) async {
 #### Complete example
 
 <details>
-<summary>Expand to see the complete example</summary>
+  <summary>Expand to see the complete example</summary>
 
-<?code-excerpt "lib/basic_ports_example/complete.dart"?>
-```dart
-import 'dart:async';
-import 'dart:convert';
-import 'dart:isolate';
-
-void main() async {
-  final worker = Worker();
-  await worker.spawn();
-  await worker.parseJson('{"key":"value"}');
-}
-
-class Worker {
-  late SendPort _sendPort;
-  final Completer<void> _isolateReady = Completer.sync();
-
-  Future<void> spawn() async {
-    final receivePort = ReceivePort();
-    receivePort.listen(_handleResponsesFromIsolate);
-    await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
+  <?code-excerpt "lib/basic_ports_example/complete.dart"?>
+  ```dart
+  import 'dart:async';
+  import 'dart:convert';
+  import 'dart:isolate';
+  
+  void main() async {
+    final worker = Worker();
+    await worker.spawn();
+    await worker.parseJson('{"key":"value"}');
   }
-
-  void _handleResponsesFromIsolate(dynamic message) {
-    if (message is SendPort) {
-      _sendPort = message;
-      _isolateReady.complete();
-    } else if (message is Map<String, dynamic>) {
-      print(message);
+  
+  class Worker {
+    late SendPort _sendPort;
+    final Completer<void> _isolateReady = Completer.sync();
+  
+    Future<void> spawn() async {
+      final receivePort = ReceivePort();
+      receivePort.listen(_handleResponsesFromIsolate);
+      await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
+    }
+  
+    void _handleResponsesFromIsolate(dynamic message) {
+      if (message is SendPort) {
+        _sendPort = message;
+        _isolateReady.complete();
+      } else if (message is Map<String, dynamic>) {
+        print(message);
+      }
+    }
+  
+    static void _startRemoteIsolate(SendPort port) {
+      final receivePort = ReceivePort();
+      port.send(receivePort.sendPort);
+  
+      receivePort.listen((dynamic message) async {
+        if (message is String) {
+          final transformed = jsonDecode(message);
+          port.send(transformed);
+        }
+      });
+    }
+  
+    Future<void> parseJson(String message) async {
+      await _isolateReady.future;
+      _sendPort.send(message);
     }
   }
+  ```
 
-  static void _startRemoteIsolate(SendPort port) {
-    final receivePort = ReceivePort();
-    port.send(receivePort.sendPort);
-
-    receivePort.listen((dynamic message) async {
-      if (message is String) {
-        final transformed = jsonDecode(message);
-        port.send(transformed);
-      }
-    });
-  }
-
-  Future<void> parseJson(String message) async {
-    await _isolateReady.future;
-    _sendPort.send(message);
-  }
-}
-```
 </details>
 
 ### Robust ports example
@@ -542,7 +544,7 @@ The class exposes three public methods: one that creates the worker
 isolate, one that handles sending messages to that worker isolate, and one
 that can shut down the ports when they’re no longer in use.
 
-<?code-excerpt "lib/robust_ports_example/start.dart"?>
+<?code-excerpt "lib/robust_ports_example/start.dart (worker)"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -559,7 +561,7 @@ class Worker {
     throw UnimplementedError();
   }
 
-  Worker._(this._commands, this._responses) {
+  Worker._(this._responses, this._commands) {
     // TODO: Initialize main isolate receive port listener.
   }
 
@@ -611,7 +613,7 @@ In the `Worker.spawn` method:
   the `ReceivePort.fromRawReceivePort` constructor, and pass in
   the `initPort`.
 
-<?code-excerpt "lib/robust_ports_example/spawn_1.dart"?>
+<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -660,7 +662,7 @@ the `initPort` will be closed, and the `Worker` object won’t be created.
 - Finally, return an instance of `Worker` by calling its private constructor,
   and passing in the ports from that completer.
 
-<?code-excerpt "lib/robust_ports_example/spawn_2.dart"?>
+<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -688,7 +690,7 @@ class Worker {
     final (ReceivePort receivePort, SendPort sendPort) =
         await connection.future;
 
-    return Worker._(sendPort, receivePort);
+    return Worker._(receivePort, sendPort);
   }
 ```
 

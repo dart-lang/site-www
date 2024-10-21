@@ -3,9 +3,9 @@ title: DartPad
 description: The tool that lets you interactively play with Dart in a browser.
 ---
 
-DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
+DartPad is an [open source tool]({{site.repo.dart.org}}/dart-pad)
 that lets you play with the Dart language in any modern browser.
-Many pages in this site—especially [codelabs](/codelabs)—have
+Many pages in this site—especially [tutorials](/tutorials), have
 [embedded DartPads](#embedding).
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
@@ -26,18 +26,17 @@ Here's what DartPad looks like when configured to run Dart:
 
 ## Library support
 
-DartPad supports `dart:*` [core libraries](/libraries) marked as
-[multi-platform][] and [web platform][]. When writing Flutter apps,
-DartPad also supports the `package:flutter`
-and `dart:ui` libraries.
+DartPad supports the `dart:*` [core libraries](/libraries) marked
+as [multi-platform][].
+When writing Flutter apps, DartPad also supports
+the `package:flutter` and `dart:ui` libraries.
 
 DartPad doesn't support [deferred loading][] 
 or using packages from the [pub.dev]({{site.pub}}) package repository
 besides the [currently supported packages][].
 
 [multi-platform]: /libraries#multi-platform-libraries
-[web platform]: /libraries#web-platform-libraries
-[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 ## Getting started
 
@@ -51,25 +50,22 @@ try running some samples and creating a simple command-line app.
    
    Dart code appears on the left, and 
    a place for the output appears on the right.
-  
 
 2. Choose a Flutter sample such as **Sunflower**, 
-   using the **Samples** list at the upper right.  
+   using the **Samples** button in the top menu. 
    
    The rendered output appears to the right.
 
 
 ### Create a command-line app {:#step-2-server}
 
-To create a simple command-line app, use **New Pad**.
+To create a simple command-line app,
+start by creating a new snippet:
 
-1. Click the **New Pad** button,
+1. Click the **New** button,
    and confirm that you want to discard changes to the current pad.
-   
 
-2. Click the Dart logo, make sure that **HTML** support is disabled,
-   and then click **Create**.
-   
+2. Click the entry with the Dart logo.
 
 3. Change the code. For example, change the `main()` function
    to contain this code:  
@@ -82,17 +78,14 @@ To create a simple command-line app, use **New Pad**.
    
    As you type, DartPad shows hints, documentation,
    and autocomplete suggestions.
-   
 
 4. Click the **Format** button.  
    
    DartPad uses the [Dart formatter](/tools/dart-format)
    to ensure that your code has proper indentation, white space,
    and line wrapping.
-   
 
 5. Run your app.
-   
 
 6. If you didn't happen to have any bugs while you were entering the code,
    try introducing a bug.  
@@ -112,7 +105,7 @@ You can find this SDK version at the bottom right of DartPad.
 
 You can embed DartPad inside of web pages,
 customizing it to suit your use case.
-For example, the [futures codelab][]
+For example, the [futures tutorial][]
 contains multiple embedded DartPads
 labeled as _examples_ and _exercises_.
 
@@ -120,6 +113,6 @@ For technical details on embedding DartPads, see the
 [DartPad embedding guide.][]
 
 [DartPad]: {{site.dartpad}}
-[DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /language/libraries#lazily-loading-a-library
-[futures codelab]: /codelabs/async-await
+[futures tutorial]: /libraries/async/async-await

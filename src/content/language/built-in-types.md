@@ -15,6 +15,7 @@ The Dart language has special support for the following:
 - [Strings](#strings) (`String`)
 - [Booleans](#booleans) (`bool`)
 - [Records][] (`(value1, value2)`)
+- [Functions][] (`Function`)
 - [Lists][] (`List`, also known as *arrays*)
 - [Sets][] (`Set`)
 - [Maps][] (`Map`)
@@ -187,9 +188,11 @@ var s3 = 'It\'s easy to escape the string delimiter.';
 var s4 = "It's even easier to use the other delimiter.";
 ```
 
+<a id="string-interpolation"></a>
+
 You can put the value of an expression inside a string by using
 `${`*`expression`*`}`. If the expression is an identifier, you can skip
-the {}. To get the string corresponding to an object, Dart calls the
+the `{}`. To get the string corresponding to an object, Dart calls the
 object's `toString()` method.
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
@@ -295,7 +298,7 @@ assert(fullName.isEmpty);
 
 // Check for zero.
 var hitPoints = 0;
-assert(hitPoints <= 0);
+assert(hitPoints == 0);
 
 // Check for null.
 var unicorn = null;
@@ -391,6 +394,7 @@ Symbol literals are compile-time constants.
 
 
 [Records]: /language/records
+[Functions]: /language/functions#function-types
 [Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps

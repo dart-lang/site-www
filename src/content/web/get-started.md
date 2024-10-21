@@ -43,9 +43,15 @@ $ dart create -t web quickstart
 
 <i class="material-symbols">web</i>
 To create the same web app from an IDE that has Dart integration,
-create a project using the template named **Bare-bones Web App**.
+[create a project]({{site.flutter}}/tools/vs-code#creating-a-new-project)
+using the template named **Bare-bones Web App**.
+
+The web app template imports [`package:web`][], Dart's powerful and concise web
+interop solution built for the modern web. To learn more about it, check out the
+[web interop overview](/interop/js-interop/package-web).
 
 [`dart create`]: /tools/dart-create
+[`package:web`]: {{site.pub-pkg}}/web
 
 ## 4. Run the app {:#run}
 
@@ -105,23 +111,28 @@ Let's customize the app you just created.
    It creates a new `LIElement` containing the specified `String`.
 
    ```dart
-   Iterable<String> thingsTodo() sync* { ... }
+   Iterable<String> thingsTodo() sync* { /* ... */ }
 
-   [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
-
-   void main() { ... }
+   [!HTMLLIElement newLI(String itemText) =>!]
+     [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
+    
+   void main() { /* ... */ }
    ```
 
-3. In the `main()` function, initialize the `output` element using
-   `thingsTodo()`:
+3. In the `main()` function, append content to the `output` element
+   using `appendChild` and the values from `thingsTodo()`:
 
    ```dart
-   Iterable<String> thingsTodo() sync* { ... }
+   Iterable<String> thingsTodo() sync* { /* ... */ }
 
-   LIElement newLI(String itemText) => LIElement()..text = itemText;
+   HTMLLIElement newLI(String itemText) =>
+     (document.createElement('li') as HTMLLIElement)..text = itemText;
 
    void main() {
-     querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
+    final output = querySelector('#output');
+    [!for (final item in thingsTodo()) {!]
+      [!output?.appendChild(newLI(item));!]
+    [!}!]
    }
    ```
 
@@ -173,11 +184,9 @@ Check out these resources:
 * Web development
   * [JavaScript interoperability](/interop/js-interop)
   * [Web libraries and packages](/web/libraries)
-  * [`dart:html` overview](/libraries/dart-html)
+  * [`package:web` overview](/interop/js-interop/package-web)
   * [Introduction to the DOM][]
-* Tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
-  * [Codelabs](/codelabs)
+* Dart [tutorials](/tutorials)
 
 If you get stuck, find help at [Community and support.](/community)
 

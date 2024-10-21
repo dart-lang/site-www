@@ -12,7 +12,7 @@ nextpage:
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
-<?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/classes/extends.dart (smart-tv)" replace="/extends|super/[!$&!]/g"?>
 ```dart
 class Television {
   void turnOn() {
@@ -94,7 +94,7 @@ For an example of overriding `==` and `hashCode`, check out
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
-<?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
 class A {
   // Unless you override noSuchMethod, using a
@@ -118,7 +118,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

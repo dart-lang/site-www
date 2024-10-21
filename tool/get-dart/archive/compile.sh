@@ -5,7 +5,7 @@ cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
 : ${TMP:=tmp}
 OUT_DIR="$TMP/download_archive"
-DEST_DIR=../../../src/assets/js/get-dart
+DEST_DIR=../../../src/content/assets/js/get-dart
 
 set -x
 

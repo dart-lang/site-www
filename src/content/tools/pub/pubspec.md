@@ -128,7 +128,7 @@ homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '^3.2.0'
   
 dependencies:
   efts: ^2.0.4
@@ -298,9 +298,13 @@ platforms:
   macos:
 ```
 
-:::flutter-note
-Flutter plugins use [plugin declarations][]
-instead of this field.
+:::note If you use Flutter
+Flutter plugins platform support is by default derived from the
+[plugin declarations][].
+
+If there is a discrepancy between the plugin declaration and the actual platform
+support, a top-level `platforms` declaration can still be used and takes
+precedence over the Flutter plugin declaration when deciding platform support.
 :::
 
 :::version-note
@@ -449,6 +453,16 @@ Pub.dev requires topics to follow these specifications:
 When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
 
+:::note
+Pub.dev merges different spellings of a topic into a canonical topic to
+avoid duplication and improve discovery by topic.
+
+You can contribute to the list of canonical topics and their aliases
+by opening a pull request that edits the [`topics.yaml` file][] on GitHub.
+:::
+
+[`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
+
 ### Ignored_advisories
 
 If a package has a dependency that is affected by a security advisory,
@@ -513,7 +527,7 @@ pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
-  sdk: '^3.0.0'
+  sdk: '^3.2.0'
   
 See https://dart.dev/go/sdk-constraint
 ```
@@ -534,8 +548,8 @@ under the `environment:` field:
 
 ```yaml
 environment:
-  sdk: '>=1.19.0 <3.0.0'
-  flutter: ^0.1.2
+  sdk: ^3.2.0
+  flutter: '>= 3.22.0'
 ```
 
 A Flutter SDK constraint is satisfied only if pub is running in the

@@ -9,7 +9,9 @@ import 'src/commands/build.dart';
 import 'src/commands/check_all.dart';
 import 'src/commands/check_link_references.dart';
 import 'src/commands/check_links.dart';
+import 'src/commands/check_site_variable.dart';
 import 'src/commands/format_dart.dart';
+import 'src/commands/freshness.dart';
 import 'src/commands/generate_effective_dart_toc.dart';
 import 'src/commands/refresh_excerpts.dart';
 import 'src/commands/serve.dart';
@@ -27,9 +29,11 @@ final class DartSiteCommandRunner extends CommandRunner<int> {
         ) {
     addCommand(CheckLinksCommand());
     addCommand(CheckLinkReferencesCommand());
+    addCommand(CheckSiteVariableCommand());
     addCommand(VerifyFirebaseJsonCommand());
     addCommand(RefreshExcerptsCommand());
     addCommand(FormatDartCommand());
+    addCommand(FreshnessCommand());
     addCommand(GenerateEffectiveDartToc());
     addCommand(AnalyzeDartCommand());
     addCommand(TestDartCommand());

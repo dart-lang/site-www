@@ -19,9 +19,9 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 Libraries can be distributed using [packages](/guides/packages).
 
 :::note
-If you're curious why Dart uses underscores instead of
-access modifier keywords like `public` or `private`, see
-[SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+To learn why Dart uses underscores instead of access modifier keywords
+like `public` or `private`, consult
+[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
 :::
 
 [library]: /tools/pub/glossary#library
@@ -80,7 +80,7 @@ lib2.Element element2 = lib2.Element();
 If you want to use only part of a library, you can selectively import
 the library. For example:
 
-<?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
+<?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart (imports)" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
 // Import only foo.
 import 'package:lib1/lib1.dart' show foo;
@@ -89,29 +89,29 @@ import 'package:lib1/lib1.dart' show foo;
 import 'package:lib2/lib2.dart' hide foo;
 ```
 
-<a id="deferred-loading"></a>
-#### Lazily loading a library
+#### Lazily loading a library {:#lazily-loading-a-library}
 
-_Deferred loading_ (also called _lazy loading_)
+*Deferred loading* (also called *lazy loading*)
 allows a web app to load a library on demand,
 if and when the library is needed.
-Here are some cases when you might use deferred loading:
+Use deferred loading when you want to meet one or more of the following needs.
 
-* To reduce a web app's initial startup time.
-* To perform A/B testing—trying out
+* Reduce a web app's initial startup time.
+* Perform A/B testing—trying out
   alternative implementations of an algorithm, for example.
-* To load rarely used functionality, such as optional screens and dialogs.
+* Load rarely used functionality, such as optional screens and dialogs.
 
-:::warning
-**Only `dart compile js` supports deferred loading.**
-Flutter and the Dart VM don't support deferred loading.
-To learn more, see
-[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
-[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
-:::
+That doesn't mean Dart loads all the deferred components at start time.
+The web app can download deferred components via the web when needed.
 
-To lazily load a library, you must first
-import it using `deferred as`.
+The `dart` tool doesn't support deferred loading for targets other than web.
+If you're building a Flutter app,
+consult its implementation of deferred loading in the Flutter guide on
+[deferred components][flutter-deferred].
+
+[flutter-deferred]: {{site.flutter-docs}}/perf/deferred-components
+
+To lazily load a library, first import it using `deferred as`.
 
 <?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (import)" replace="/hello\.dart/package:greetings\/$&/g"?>
 ```dart
@@ -121,7 +121,7 @@ import 'package:greetings/hello.dart' deferred as hello;
 When you need the library, invoke
 `loadLibrary()` using the library's identifier.
 
-<?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
+<?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (load-library)"?>
 ```dart
 Future<void> greet() async {
   await hello.loadLibrary();

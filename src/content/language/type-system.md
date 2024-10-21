@@ -73,7 +73,7 @@ void main() {
 }
 ```
 
-[Try it in DartPad]({{site.dartpad}}/25074a51a00c71b4b000f33b688dedd0).
+[Try it in DartPad]({{site.dartpad}}/?id=25074a51a00c71b4b000f33b688dedd0).
 
 ## What is soundness?
 
@@ -258,7 +258,7 @@ because it's an error to cast a list of dogs to a list of cats:
 <?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
 ```dart tag=runtime-fail
 void main() {
-  List<Animal> animals = [Dog()];
+  List<Animal> animals = <Dog>[Dog()];
   List<Cat> cats = [!animals as List<Cat>!];
 }
 ```

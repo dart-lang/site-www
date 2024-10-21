@@ -1,23 +1,3 @@
-- title: Tutorials & codelabs
-  expanded: false
-  children:
-    - title: Tutorials
-      match-page-url-exactly: true
-      permalink: /tutorials
-    - title: Codelabs
-      expanded: true
-      children:
-        - title: List of Dart codelabs
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Language cheatsheet
-          permalink: /codelabs/dart-cheatsheet
-        - title: Iterable collections
-          permalink: /codelabs/iterables
-        - title: Asynchronous programming
-          permalink: /codelabs/async-await
-        - title: Null safety
-          permalink: /codelabs/null-safety
 - title: Language
   expanded: false
   children:
@@ -58,6 +38,8 @@
           permalink: /language/patterns
         - title: Pattern types
           permalink: /language/pattern-types
+        - title: Applied tutorial
+          permalink: https://codelabs.developers.google.com/codelabs/dart-patterns-records
     - title: Functions
       permalink: /language/functions
     - title: Control flow
@@ -84,6 +66,8 @@
           permalink: /language/enums
         - title: Extension methods
           permalink: /language/extension-methods
+        - title: Extension types
+          permalink: /language/extension-types
         - title: Callable objects
           permalink: /language/callable-objects
     - title: Class modifiers
@@ -118,22 +102,6 @@
         - title: FAQ
           permalink: /null-safety/faq
 
-- title: Effective Dart
-  expanded: false
-  permalink: /effective-dart
-  children:
-    - title: Overview
-      match-page-url-exactly: true
-      permalink: /effective-dart
-    - title: Style
-      permalink: /effective-dart/style
-    - title: Documentation
-      permalink: /effective-dart/documentation
-    - title: Usage
-      permalink: /effective-dart/usage
-    - title: Design
-      permalink: /effective-dart/design
-
 - title: Core libraries
   expanded: false
   children:
@@ -153,12 +121,34 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
-    - title: Using streams
-      permalink: /tutorials/language/streams
-    - title: Creating streams
-      permalink: /articles/libraries/creating-streams
-    - title: Futures and error handling
-      permalink: /guides/libraries/futures-error-handling
+    - title: Iterable collections
+      permalink: /libraries/collections/iterables
+    - title: Asynchronous programming
+      children:
+        - title: Tutorial
+          permalink: /libraries/async/async-await
+        - title: Futures and error handling
+          permalink: /libraries/async/futures-error-handling
+        - title: Using streams
+          permalink: /libraries/async/using-streams
+        - title: Creating streams
+          permalink: /libraries/async/creating-streams
+
+- title: Effective Dart
+  expanded: false
+  permalink: /effective-dart
+  children:
+    - title: Overview
+      match-page-url-exactly: true
+      permalink: /effective-dart
+    - title: Style
+      permalink: /effective-dart/style
+    - title: Documentation
+      permalink: /effective-dart/documentation
+    - title: Usage
+      permalink: /effective-dart/usage
+    - title: Design
+      permalink: /effective-dart/design
 
 - title: Packages
   expanded: false
@@ -166,13 +156,13 @@
     - title: How to use packages
       permalink: /guides/packages
     - title: Commonly used packages
-      permalink: /guides/libraries/useful-libraries
+      permalink: /resources/useful-packages
     - title: Creating packages
       permalink: /guides/libraries/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
-      permalink: /guides/libraries/writing-package-pages
+      permalink: /tools/pub/writing-package-pages
     - title: Package reference
       expanded: false
       children:
@@ -194,18 +184,18 @@
           permalink: /tools/pub/security-advisories
         - title: Versioning
           permalink: /tools/pub/versioning
+    - title: What not to commit
+      permalink: /guides/libraries/private-files
 
 - title: Development
   expanded: false
   children:
-    - title: Futures, async, await
-      permalink: /codelabs/async-await
     - title: JSON
       permalink: /guides/json
     - title: Number representation
       permalink: /guides/language/numbers
     - title: Google APIs
-      permalink: /guides/google-apis
+      permalink: /resources/google-apis
     - title: Multi-platform apps
       permalink: /multiplatform-apps
     - title: Command-line & server apps
@@ -236,6 +226,8 @@
           permalink: /web/deployment
         - title: Libraries & packages
           permalink: /web/libraries
+        - title: Wasm compilation
+          permalink: /web/wasm
     - title: Environment declarations
       permalink: /guides/environment-declarations
 
@@ -249,7 +241,21 @@
   - title: Java & Kotlin interop
     permalink: /interop/java-interop
   - title: JavaScript interop
-    permalink: /interop/js-interop
+    children:
+      - title: Overview
+        permalink: /interop/js-interop
+        match-page-url-exactly: true
+      - title: Usage
+        permalink: /interop/js-interop/usage
+      - title: JS types
+        permalink: /interop/js-interop/js-types
+      - title: Tutorials
+        permalink: /interop/js-interop/tutorials
+      - title: Past JS interop
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: Web interop
+        permalink: /interop/js-interop/package-web
 
 - title: Tools & techniques
   expanded: false
@@ -322,18 +328,21 @@
         permalink: /tools/non-promotion-reasons
       - title: Linter rules
         permalink: /tools/linter-rules
+      - title: Diagnostic messages
+        permalink: /tools/diagnostic-messages
   - title: Testing & optimization
     children:
       - title: Testing
         permalink: /guides/testing
       - title: Debugging web apps
         permalink: /web/debugging
-  - title: What not to commit
-    permalink: /guides/libraries/private-files
 
+- divider
 - title: Resources
   expanded: false
   children:
+    - title: Language cheatsheet
+      permalink: /resources/dart-cheatsheet
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
@@ -346,9 +355,10 @@
       expanded: false
       children:
         - title: JavaScript to Dart
-          permalink: /guides/language/coming-from/js-to-dart
+          permalink: /resources/coming-from/js-to-dart
         - title: Swift to Dart
-          permalink: /guides/language/coming-from/swift-to-dart
+          permalink: /resources/coming-from/swift-to-dart
+    - divider
     - title: FAQ
       permalink: /resources/faq
     - title: Glossary
@@ -357,6 +367,9 @@
       permalink: /resources/books
     - title: Videos
       permalink: /resources/videos
+    - title: Tutorials
+      match-page-url-exactly: true
+      permalink: /tutorials
 
 - title: Related sites
   expanded: true

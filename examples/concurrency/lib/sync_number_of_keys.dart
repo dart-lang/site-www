@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-// #docregion
+// #docregion blocking
 const String filename = 'with_keys.json';
 
 void main() {
@@ -18,4 +18,4 @@ String _readFileSync() {
   final contents = file.readAsStringSync();
   return contents.trim();
 }
-// #enddocregion
+// #enddocregion blocking

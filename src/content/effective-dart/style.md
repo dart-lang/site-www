@@ -22,20 +22,18 @@ code.
 
 Identifiers come in three flavors in Dart.
 
-*   `UpperCamelCase` names capitalize the first letter of each word, including
-    the first.
+* `UpperCamelCase` names capitalize the first letter of each word, including
+  the first.
 
-*   `lowerCamelCase` names capitalize the first letter of each word, *except*
-    the first which is always lowercase, even if it's an acronym.
+* `lowerCamelCase` names capitalize the first letter of each word, *except*
+  the first which is always lowercase, even if it's an acronym.
 
-*   `lowercase_with_underscores` names use only lowercase letters,
-    even for acronyms,
-    and separate words with `_`.
-
+* `lowercase_with_underscores` names use only lowercase letters,
+  even for acronyms, and separate words with `_`.
 
 ### DO name types using `UpperCamelCase`
 
-{% include 'linter-rule-mention.md', rules:'camel_case_types' %}
+{% render 'linter-rule-mention.md', rules:'camel_case_types' %}
 
 Classes, enum types, typedefs, and type parameters should capitalize the first
 letter of each word (including the first word), and use no separators.
@@ -77,7 +75,7 @@ class C { ... }
 
 ### DO name extensions using `UpperCamelCase`
 
-{% include 'linter-rule-mention.md', rules:'camel_case_extensions' %}
+{% render 'linter-rule-mention.md', rules:'camel_case_extensions' %}
 
 Like types, [extensions][] should capitalize the first letter of each word
 (including the first word),
@@ -95,7 +93,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
 ### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-{% include 'linter-rule-mention.md', rules:'file_names, package_names' %}
+{% render 'linter-rule-mention.md', rules:'file_names, package_names' %}
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -120,7 +118,7 @@ mypackage
 
 ### DO name import prefixes using `lowercase_with_underscores`
 
-{% include 'linter-rule-mention.md', rules:'library_prefixes' %}
+{% render 'linter-rule-mention.md', rules:'library_prefixes' %}
 
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
 ```dart tag=good
@@ -139,7 +137,7 @@ import 'package:js/js.dart' as JS;
 
 ### DO name other identifiers using `lowerCamelCase`
 
-{% include 'linter-rule-mention.md', rules:'non_constant_identifier_names' %}
+{% render 'linter-rule-mention.md', rules:'non_constant_identifier_names' %}
 
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
@@ -159,7 +157,7 @@ void align(bool clearItems) {
 
 ### PREFER using `lowerCamelCase` for constant names
 
-{% include 'linter-rule-mention.md', rules:'constant_identifier_names' %}
+{% render 'linter-rule-mention.md', rules:'constant_identifier_names' %}
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 
@@ -196,12 +194,12 @@ as in the following cases:
 We initially used Java's `SCREAMING_CAPS` style for constants. We
 changed for a few reasons:
 
-*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-    things like CSS colors.
-*   Constants are often changed to final non-const variables, which would
-    necessitate a name change.
-*   The `values` property automatically defined on an enum type is const and
-    lowercase.
+* `SCREAMING_CAPS` looks bad for many cases,
+  particularly enum values for things like CSS colors.
+* Constants are often changed to final non-const variables,
+  which would necessitate a name change.
+* The `values` property defined on an enum type is const and lowercase.
+
 :::
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
@@ -209,41 +207,63 @@ changed for a few reasons:
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words
 
-Capitalized acronyms can be hard to read, and
-multiple adjacent acronyms can lead to ambiguous names.
-For example, given a name that starts with `HTTPSFTP`, there's no way
-to tell if it's referring to HTTPS FTP or HTTP SFTP.
+Capitalized acronyms can be hard to read,
+and multiple adjacent acronyms can lead to ambiguous names.
+For example, given an identifier `HTTPSFTP`,
+the reader can't tell if it refers to `HTTPS` `FTP` or `HTTP` `SFTP`.
+To avoid this,
+capitalize most acronyms and abbreviations like regular words.
+This identifier would be `HttpsFtp` if referring to the former
+or `HttpSftp` for the latter.
 
-To avoid this, acronyms and abbreviations are capitalized like regular words.
-
-**Exception:** Two-letter *acronyms* like IO (input/output) are fully
-capitalized: `IO`. On the other hand, two-letter *abbreviations* like
-ID (identification) are still capitalized like regular words: `Id`.
+Two-letter abbreviations and acronyms are the exception.
+If both letters are capitalized in English,
+then they should both stay capitalized when used in an identifier.
+Otherwise, capitalize it like a word.
 
 ```dart tag=good
-class HttpConnection {}
-class DBIOPort {}
-class TVVcr {}
-class MrRogers {}
+// Longer than two letters, so always like a word:
+Http // "hypertext transfer protocol"
+Nasa // "national aeronautics and space administration"
+Uri // "uniform resource identifier"
+Esq // "esquire"
+Ave // "avenue"
 
-var httpRequest = ...
-var uiHandler = ...
-var userId = ...
-Id id;
+// Two letters, capitalized in English, so capitalized in an identifier:
+ID // "identifier"
+TV // "television"
+UI // "user interface"
+
+// Two letters, not capitalized in English, so like a word in an identifier:
+Mr // "mister"
+St // "street"
+Rd // "road"
 ```
 
 ```dart tag=bad
-class HTTPConnection {}
-class DbIoPort {}
-class TvVcr {}
-class MRRogers {}
+HTTP // "hypertext transfer protocol"
+NASA // "national aeronautics and space administration"
+URI // "uniform resource identifier"
+esq // "esquire"
+Ave // "avenue"
 
-var hTTPRequest = ...
-var uIHandler = ...
-var userID = ...
-ID iD;
+Id // "identifier"
+Tv // "television"
+Ui // "user interface"
+
+MR // "mister"
+ST // "street"
+RD // "road"
 ```
 
+When any form of abbreviation comes at the beginning
+of a `lowerCamelCase` identifier, the abbreviation should be all lowercase:
+
+```dart
+var httpConnection = connect();
+var tvSet = Television();
+var mrRogers = 'hello, neighbor';
+```
 
 ### PREFER using `_`, `__`, etc. for unused callback parameters
 
@@ -330,7 +350,7 @@ A single linter rule handles all the ordering guidelines:
 
 ### DO place `dart:` imports before other imports
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
@@ -344,7 +364,7 @@ import 'package:foo/foo.dart';
 
 ### DO place `package:` imports before relative imports
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 ```dart tag=good
@@ -357,7 +377,7 @@ import 'util.dart';
 
 ### DO specify exports in a separate section after all imports
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (export)"?>
 ```dart tag=good
@@ -377,7 +397,7 @@ import 'src/foo_bar.dart';
 
 ### DO sort sections alphabetically
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
@@ -417,7 +437,7 @@ The remaining formatting guidelines are for the few things `dart format` cannot 
 for you.
 
 [`dart format`]: /tools/dart-format
-[dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
+[dart format docs]: {{site.repo.dart.org}}/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly
 
@@ -436,7 +456,7 @@ to produce beautiful code.
 
 ### AVOID lines longer than 80 characters
 
-{% include 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
+{% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
@@ -463,7 +483,7 @@ shorter ones can alter the program.
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### DO use curly braces for all flow control statements
 
-{% include 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
+{% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 
 Doing so avoids the [dangling else][] problem.
 

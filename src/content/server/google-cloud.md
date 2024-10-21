@@ -13,7 +13,7 @@ For information about creating HTTP servers with Dart, see the
 
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
-see the [Google APIs page](/guides/google-apis).
+see the [Google APIs page](/resources/google-apis).
 
 ## Recommended solutions
 
@@ -81,7 +81,7 @@ If you _want_ to use App Engine, consider using the [`appengine` package][].
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[server examples]: https://github.com/dart-lang/samples/tree/main/server
+[server examples]: {{site.repo.dart.org}}/samples/tree/main/server
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
 [Dart Functions Framework]: {{site.pub-pkg}}/functions_framework
 [CloudEvents]: https://cloudevents.io/

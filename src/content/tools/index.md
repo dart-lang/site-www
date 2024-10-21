@@ -6,8 +6,6 @@ description: The tools that support the Dart language.
 When you're ready to create an app, get the SDK and tools for your app
 type. If you aren't sure which tools you need, **get the Flutter SDK.**
 
-<div class="table-wrapper">
-
 | App type                  | Get started instructions                                     | Tool information                                           |
 |---------------------------|--------------------------------------------------------------|------------------------------------------------------------|
 | Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide)           |
@@ -15,7 +13,6 @@ type. If you aren't sure which tools you need, **get the Flutter SDK.**
 | Server or command line    | [Install the Dart SDK](/tools/sdk)                           | [General-purpose tools][] and [specialized tools](#server) |
 
 {:.table .table-striped}
-</div>
 
 [General-purpose tools]: #general-purpose-tools
 
@@ -48,19 +45,18 @@ except for VM libraries such as `dart:io`.
 
 Dart plugins exist for these commonly used IDEs.
 
-<ul class="col2">
+<ul class="cols2">
 <li>
-<img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
+<img src="/assets/img/tools/android_studio.svg" class="list-image" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/intellij-idea.svg" width="48" alt="IntelliJ logo">
+<img src="/assets/img/tools/intellij-idea.svg" class="list-image" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/vscode.svg"
-     width="48" alt="Visual Studio Code logo">
+<img src="/assets/img/tools/vscode.svg" class="list-image" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
@@ -68,17 +64,17 @@ Dart plugins exist for these commonly used IDEs.
 The following Dart plugins are also available,
 thanks to the Dart community.
 
-<ul class="col2">
+<ul class="cols2">
 <li>
-<img src="/assets/img/tools/emacs.png" alt="Emacs logo">
+<img src="/assets/img/tools/emacs.png" alt="Emacs logo" class="list-image">
 <a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/vim.png" alt="Vim logo">
-<a href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+<img src="/assets/img/tools/vim.png" alt="Vim logo" class="list-image">
+<a href="{{site.repo.dart.org}}/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
-<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
+<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo" class="list-image">
 <a href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
 </li>
 </ul>
@@ -86,7 +82,7 @@ thanks to the Dart community.
 A [Language Server Protocol implementation][LSP] is also available for
 [LSP-capable editors][] that don't have specific Dart extensions.
 
-[LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
+[LSP]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ### Command-line tools {:#cli}

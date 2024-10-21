@@ -12,6 +12,7 @@
 @use 'components/header';
 @use 'components/search';
 @use 'components/sidebar';
+@use 'components/tags';
 @use 'components/toc';
 
 @use 'dartvm';
@@ -25,39 +26,12 @@ $font-color: bootstrap.$body-color;
 $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
 
 
-// Disable template-generated external links.
-i.fa-external-link-alt {
-  a.external & {
-    display: none;
-  }
-
-  #sidenav & {
-    display: none;
-  }
-}
-
-
 /* -----------------------------------------
   DOM
   ----------------------------------------- */
 
 #page-header {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-
-  // override of shared/_header.scss
-  .site-header {
-    box-shadow: none;
-
-    .navbar {
-      .nav-link {
-        &.active {
-          &:after {
-            background-color: $site-color-card-link;
-          }
-        }
-      }
-    }
-  }
 }
 
 #page-content {
@@ -104,6 +78,10 @@ i.fa-external-link-alt {
   font-weight: 400;
   font-family: $site-font-family-alt;
   font-size: $font-size-small;
+
+  .brand {
+    width: 176px;
+  }
 
   .footer-section {
     display: flex;
@@ -295,12 +273,30 @@ main .content {
       scroll-margin: 60px;
     }
 
+    // Let the wrapper set the bottom margin.
+    margin-bottom: 0;
+  }
+
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
+  }
+
+  .header-wrapper {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+
     .heading-link {
+      margin-left: 0.4rem;
+      font-size: 1.3rem;
+      line-height: 1;
       @include transition(.1s);
       overflow: hidden;
       color: #4a4a4a;
       opacity: 0;
-      
+
       &:hover {
         color: $brand-primary;
       }
@@ -319,11 +315,6 @@ main .content {
         opacity: 1
       }
     }
-  }
-
-  // Push # link targets clear of page header.
-  a[id] {
-    scroll-margin: 60px;
   }
 }
 
@@ -344,7 +335,7 @@ main .content {
 }
 
 // Columns
-.col2 {
+.cols2 {
   list-style: none;
   column-count: 2;
   column-gap: 0;
@@ -357,7 +348,18 @@ main .content {
   }
 }
 
-.col3 {
+.list-image {
+  width: 48px;
+  margin: 0.25rem;
+}
+
+.text-icon {
+  margin: 0 0.25rem;
+  width: 20px;
+  height: 20px;
+}
+
+.cols3 {
   list-style: none;
   column-count: 3;
   column-gap: 0;
@@ -474,20 +476,6 @@ li.card {
   margin: 0 auto;
 }
 
-.mini-toc {
-  @extend .alert;
-  background-color: $gray-light;
-
-  h4 {
-    margin-top: 0;
-  }
-
-  ul {
-    padding-left: 1.5rem;
-    margin-bottom: 0;
-  }
-}
-
 .table {
   width: 100%;
   @extend .table-striped;
@@ -499,7 +487,7 @@ li.card {
 }
 
 // If table head has empty children, just hide it
-// since markdown-it-table doesn't support headless tables.
+// since markdown-it's tables don't support headless tables.
 thead:has(th:empty) {
   display: none;
 }
@@ -513,7 +501,12 @@ thead:has(th:empty) {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 1rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
+
+  i.material-icons {
+    font-size: 1.25em;
+    user-select: none;
+  }
 
   .alert-header {
     display: flex;
@@ -537,7 +530,11 @@ thead:has(th:empty) {
     background-color: transparent;
   }
 
-  p:last-child {
+  pre {
+    background-color: #00000010;
+  }
+
+  p:last-child, li:last-child, ul:last-child, ol:last-child {
     margin-bottom: 0;
   }
 
@@ -590,29 +587,69 @@ thead:has(th:empty) {
 }
 
 /* Used for inlined icon markers, usually at the start of a paragraph */
-.content > p > i.material-symbols {
-  vertical-align: bottom;
+.content > p {
+  > i.material-symbols, > span.material-symbols {
+    vertical-align: bottom;
+    user-select: none;
+  }
 }
 
-// Overwrite bootstrap's breadcrumbs
-.breadcrumb {
-  align-items: center;
+// Make icons used in system requirements table unselectable.
+.system-support {
+  user-select: none;
 }
 
-.breadcrumb-item {
+nav.breadcrumbs {
   align-items: center;
+  margin-bottom: 1rem;
+}
+
+ol.breadcrumb-list {
+  border-radius: 0.375rem;
+  padding: 0.375rem 0;
+
+  align-items: center;
+  list-style: none;
+
+  font-family: $site-font-family-alt;
+
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 
-  + .breadcrumb-item {
-    &::before {
-      font: $site-font-icon;
+  li.breadcrumb-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+
+    & a {
+      padding: 0.125rem;
+      border-radius: 0.125rem;
+    }
+
+    &.active a {
+      color: $site-color-nav-links;
+      cursor: default;
+      text-decoration: none;
+    }
+
+    &:before {
+      display: none;
     }
   }
 
-  &.active a {
-    color: bootstrap.$breadcrumb-active-color;
-    cursor: default; // Disable interactive cursor if already active
+  .child-icon {
+    user-select: none;
   }
+}
+
+#page-github-links {
+  font-style: italic;
+  font-size: 0.75rem;
+  padding-top: 0.25rem;
+
+  border-top: 0.05rem solid $site-color-light-grey;
 }
 
 ul.nav-list {
@@ -627,36 +664,6 @@ ul.nav-list {
       font-size: 20px;
       margin-bottom: 0;
     }
-  }
-}
-
-#page-github-links {
-  float: right;
-
-  // Hide page source button on generated pages
-  .generated-page & a:first-child {
-    display: none;
-  }
-
-  .btn {
-    color: $site-color-body;
-    $padding-x: bootstrap.$btn-padding-x * 0.5;
-    padding-left: $padding-x;
-    padding-right: $padding-x;
-    border: none;
-    box-shadow: none;
-
-    &:hover, &:focus-visible {
-      color: $brand-primary;
-    }
-
-    &:active {
-      color: $flutter-color-blue-700;
-    }
-  }
-
-  .material-symbols {
-    font-size: 18px;
   }
 }
 
@@ -845,6 +852,7 @@ body.obsolete {
   #menu-toggle {
     order: 2;
   }
+
   #mainnav {
     ul {
       li {
@@ -858,4 +866,32 @@ body.obsolete {
 
 dd {
   margin-left: 1rem;
+}
+
+/* -----------------------------------------
+  Headings in tab boxes
+ ----------------------------------------- */
+
+div.tabs__content h1, h2, h3, h4, h5, h6 {
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+#skip {
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  z-index: $site-z-skip;
+  padding: 1rem;
+  background-color: $site-color-primary;
+  color: $site-color-white;
+  border-radius: 0.5rem;
+  transform: translateY(-5rem);
+}
+
+
+#skip:focus {
+  opacity: 1;
+  transform: translateY(0);
 }

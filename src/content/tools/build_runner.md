@@ -38,8 +38,8 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.6
-  build_test: ^2.2.0
+  build_runner: ^2.4.12
+  build_test: ^2.2.2
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -92,12 +92,12 @@ For details on using build_runner, see the following:
   - [Getting started with build_runner][]
   - [Build FAQ][]
 
-[build]: https://github.com/dart-lang/build
-[Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
+[build]: {{site.repo.dart.org}}/build
+[Build FAQ]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[Getting started with build_runner]: https://github.com/dart-lang/build/blob/master/docs/getting_started.md
+[Getting started with build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner

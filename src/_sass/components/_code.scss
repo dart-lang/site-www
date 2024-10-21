@@ -58,13 +58,42 @@ pre {
   }
 }
 
+.code-copy-button {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+
+  font: $site-font-icon;
+
+  appearance: none;
+  border: none;
+  color: $site-color-nav-links;
+  background: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+
+  &:hover, &:focus {
+    color: $site-color-primary;
+    opacity: 1;
+  }
+
+  &:active {
+    color: $flutter-color-blue-700;
+  }
+}
+
 .code-block-language {
   font-family: $font-family-monospace;
   user-select: none;
   font-size: 0.8125rem;
-  color: #6E6E70;
+  color: $site-color-nav-links;
   opacity: 1;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
 
   position: absolute;
   top: 3px;
@@ -123,9 +152,13 @@ pre {
     position: relative;
     background-color: $site-color-codeblock-bg;
 
-    &:hover {
+    &:hover, &:focus-within {
       .code-block-language {
         opacity: 0;
+      }
+
+      .code-copy-button {
+        opacity: 1;
       }
     }
 

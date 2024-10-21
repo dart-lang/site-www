@@ -9,11 +9,11 @@ These two resources are popular with both beginning Dart developers and experts.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/language">Language tour</a></h3>
+    <h2><a href="/language">Language tour</a></h2>
     <p>A walk through all of the major features of the Dart language.</p>
   </div>
   <div class="card">
-    <h3><a href="/effective-dart">Effective Dart</a></h3>
+    <h2><a href="/effective-dart">Effective Dart</a></h2>
     <p>A set of guides on how to write the best Dart code
     possible. Guidelines cover style, documentation, usage,
     and design.</p>
@@ -29,9 +29,9 @@ These two resources are popular with both beginning Dart developers and experts.
 * [Customizing static analysis](/tools/analysis)<br>
     A guide to customizing the analyzer using an analysis options file.
 * Asynchronous programming
-  * [Futures, async, await](/codelabs/async-await)<br>
+  * [Futures, async, await](/libraries/async/async-await)<br>
     Learn about and practice writing asynchronous code, using DartPad.
-  * [Streams](/tutorials/language/streams)<br>
+  * [Streams](/libraries/async/using-streams)<br>
     A beginner's guide to handling sequences of asynchronous events.
 * [Specification](/guides/language/spec)<br>
   A definitive, highly technical description of the Dart language.

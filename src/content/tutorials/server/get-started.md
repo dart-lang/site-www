@@ -1,7 +1,7 @@
 ---
 title: "Get started: Command-line and server apps"
 description: Get Dart, run and compile a small app.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
@@ -27,11 +27,11 @@ console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 :::note
-{% include 'dartpad-embedded-troubleshooting.md' %}
+{% render 'dartpad-embedded-troubleshooting.md' %}
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad:ga_id-hello_world
+```dartpad
 void main() {
   print('Hello, World!');
 }
@@ -127,6 +127,7 @@ Use the `dart compile` tool to AOT compile the program to machine code:
 ```console
 $ dart compile exe bin/cli.dart
 ```
+
 Notice how the compiled program starts instantly, completing quickly:
 
 ```console
@@ -142,9 +143,7 @@ sys	0m0.006s
 
 Check out these resources:
 
-* Additional tutorials and codelabs for Dart
-  * [Tutorials](/tutorials)
-  * [Codelabs](/codelabs)
+* Dart [tutorials](/tutorials)
 * Dart language, libraries, and conventions
   * [Language tour](/language)
   * [Dart core library documentation](/libraries)
@@ -154,7 +153,7 @@ Check out these resources:
   * [Dart tools](/tools)
   * [IDEs](/tools#editors)
 * Other examples of natively compiled apps
-  * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
+  * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 

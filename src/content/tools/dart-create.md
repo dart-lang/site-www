@@ -8,7 +8,7 @@ The `dart create` command creates a Dart project,
 using one of several supported templates.
 The same functionality is available in IDEs.
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 When you run `dart create`, it first creates a directory with the project files. 
 Then it gets package dependencies (unless you specify the `--no-pub` flag).

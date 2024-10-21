@@ -5,8 +5,8 @@ prevpage:
   url: /language/enums
   title: Enums
 nextpage:
-  url: /language/callable-objects
-  title: Callable objects
+  url: /language/extension-types
+  title: Extension types
 ---
 
 Extension methods add functionality to existing libraries.
@@ -17,12 +17,7 @@ it suggests extension methods alongside regular methods.
 If watching videos helps you learn,
 check out this overview of extension methods.
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about extension methods in Dart"
-  src="{{yt.embed}}/D3j0OSfT9ZI"
-  {{yt.set}}>
-</iframe>
+{% ytEmbed "D3j0OSfT9ZI", "Dart extension methods" %}
 
 ## Overview
 
@@ -132,7 +127,7 @@ then you have a few options.
 One option is changing how you import the conflicting extension,
 using `show` or `hide` to limit the exposed API:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" replace="/  //g"?>
 ```dart
 // Defines the String extension method parseInt().
 import 'string_apis.dart';
@@ -149,7 +144,7 @@ print('42'.parseInt());
 Another option is applying the extension explicitly,
 which results in code that looks as if the extension is a wrapper class:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" replace="/  //g"?>
 ```dart
 // Both libraries define extensions on String that contain parseInt(),
 // and the extensions have different names.
@@ -165,7 +160,7 @@ print(NumberParsing2('42').parseInt());
 If both extensions have the same name,
 then you might need to import using a prefix:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart (conflicts-prefix)" replace="/  //g"?>
 ```dart
 // Both libraries define extensions named NumberParsing
 // that contain the extension method parseInt(). One NumberParsing
@@ -197,8 +192,8 @@ to avoid a name conflict when invoking an extension explicitly.
 Use the following syntax to create an extension:
 
 ```plaintext
-extension <extension name>? on <type> {
-  (<member definition>)*
+extension <extension name>? on <type> { // <extension-name> is optional
+  (<member definition>)* // Can provide one or more <member definition>.
 }
 ```
 
@@ -251,7 +246,7 @@ Extensions can have generic type parameters.
 For example, here's some code that extends the built-in `List<T>` type
 with a getter, an operator, and a method:
 
-<?code-excerpt "extension_methods/lib/fancylist.dart"?>
+<?code-excerpt "extension_methods/lib/fancylist.dart (generic)"?>
 ```dart
 extension MyFancyList<T> on List<T> {
   int get doubleLength => length * 2;
@@ -280,6 +275,6 @@ For more information about extension methods, see the following:
 * [Feature specification][specification]
 * [Extension methods sample][sample]
 
-[specification]: https://github.com/dart-lang/language/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
+[specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 [article]: https://medium.com/dartlang/extension-methods-2d466cd8b308
-[sample]: https://github.com/dart-lang/samples/tree/main/extension_methods
+[sample]: {{site.repo.dart.org}}/samples/tree/main/extension_methods

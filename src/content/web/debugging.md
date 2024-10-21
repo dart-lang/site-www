@@ -118,7 +118,7 @@ but you'll need to adjust the instructions to match your app.
    * If Dart Debug Extension is installed and
      you used the `--debug-extension` flag to `webdev`,
      click the Dart logo
-     <img src="/assets/img/logo/dart-64.png" width="16" alt="Dart logo" class="align-baseline">
+     <img src="/assets/img/logo/dart-64.png" alt="Dart logo" class="align-baseline text-icon">
      at the top right of the browser window.
      
    * If you used the `--debug` flag to `webdev`,
@@ -210,5 +210,5 @@ To learn more, see the following:
 [JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
 [dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
-[webdev repo,]: https://github.com/dart-lang/webdev
+[webdev repo,]: {{site.repo.dart.org}}/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev

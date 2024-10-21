@@ -234,7 +234,7 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

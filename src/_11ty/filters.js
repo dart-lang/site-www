@@ -4,6 +4,31 @@ import { selectAll } from 'hast-util-select';
 import { toText } from 'hast-util-to-text';
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
 
+export function registerFilters(eleventyConfig) {
+  eleventyConfig.addFilter('toSimpleDate', toSimpleDate);
+  eleventyConfig.addFilter('regexReplace', regexReplace);
+  eleventyConfig.addFilter('toISOString', toISOString);
+  eleventyConfig.addFilter('activeNavEntryIndexArray', activeNavEntryIndexArray);
+  eleventyConfig.addFilter('arrayToSentenceString', arrayToSentenceString);
+  eleventyConfig.addFilter('underscoreBreaker', underscoreBreaker);
+  eleventyConfig.addFilter('throwError', function (error) {
+    throw new Error(error);
+  });
+  eleventyConfig.addFilter('generateToc', generateToc);
+  eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
+}
+
+function toSimpleDate(input) {
+  let dateString;
+  if (input instanceof Date) {
+    dateString = input.toISOString();
+  } else {
+    // If it's not a Date object, assume it's already in string format.
+    dateString = input;
+  }
+  return dateString.split('T')[0];
+}
+
 /**
  * Replace text in {@link input} that matches the specified {@link regex}
  * with the specified {@link replacement}.
@@ -13,7 +38,7 @@ import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
  * @param {string} replacement
  * @return {string} The resulting string with the replacement made.
  */
-export function regexReplace(input, regex, replacement = '') {
+function regexReplace(input, regex, replacement = '') {
   return input.toString().replace(new RegExp(regex), replacement);
 }
 
@@ -25,7 +50,7 @@ export function regexReplace(input, regex, replacement = '') {
  * @param {string|Date} input The date to convert
  * @return {string} The ISO string
  */
-export function toISOString(input) {
+function toISOString(input) {
   if (input instanceof Date) {
     return input.toISOString();
   } else {
@@ -34,12 +59,12 @@ export function toISOString(input) {
   }
 }
 
-export function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
+function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
   const activeEntryIndexes = _getActiveNavEntries(navEntryTree, pageUrlPath);
   return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
 }
 
-export function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
+function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
   // TODO(parlough): Simplify once standardizing with the Flutter site.
   for (let i = 0; i < navEntryTree.length; i++) {
     const entry = navEntryTree[i];
@@ -68,7 +93,7 @@ export function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
   return [];
 }
 
-export function arrayToSentenceString(list, joiner = 'and') {
+function arrayToSentenceString(list, joiner = 'and') {
   if (!list || list.length === 0) {
     return '';
   }
@@ -91,7 +116,7 @@ export function arrayToSentenceString(list, joiner = 'and') {
   return result;
 }
 
-export function underscoreBreaker(stringToBreak, inAnchor = false) {
+function underscoreBreaker(stringToBreak, inAnchor = false) {
   // Only consider text which has underscores in it to keep this simpler.
   if (!stringToBreak.includes('_')) {
     return stringToBreak;
@@ -109,7 +134,7 @@ export function underscoreBreaker(stringToBreak, inAnchor = false) {
   return stringToBreak.replaceAll('_', '_<wbr>');
 }
 
-export function generateToc(contents) {
+function generateToc(contents) {
   // TODO(parlough): Speed this up.
   //   Perhaps do the processing before HTML rendering?
   //   Maybe shouldn't be a filter.
@@ -146,7 +171,7 @@ export function generateToc(contents) {
     } else if (header.tagName === 'h3') {
       // A level-3 header must be under a level-2 header.
       if (currentH2 === null) {
-        continue;
+        throw new Error(`The h3 header "${id}" must be under an h2.`);
       }
 
       currentH2.children.push({ text: text, id: `#${id}` });
@@ -160,7 +185,7 @@ export function generateToc(contents) {
   };
 }
 
-export function breadcrumbsForPage(page) {
+function breadcrumbsForPage(page) {
   const breadcrumbs = [];
 
   // Retrieve the liquid data for this page.

@@ -16,7 +16,8 @@
   {% endif -%}
 
   <li class="nav-item">
-    <a class="{{class}}" href="{{entry.permalink}}" {%- if isExternal %} target="_blank" rel="noopener" {%- endif -%}>
+    <a class="{{class}}" href="{{entry.permalink}}"
+       {%- if isExternal %} target="_blank" rel="noopener" {%- endif -%}>
       {{entry.title}}
     </a>
   </li>

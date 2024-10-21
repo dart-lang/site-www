@@ -15,7 +15,7 @@ prevpage:
 
 <?code-excerpt replace="/ ?\/\/!tip.*//g"?>
 
-:::mini-toc What's the point?
+:::secondary What's the point?
 * Command-line applications need to do input and output.
 * The `dart:io` library provides I/O functionality.
 * The args package helps define and parse command-line arguments.
@@ -31,8 +31,8 @@ the [`Future`]({{_api}}/dart-async/Future-class.html) and
 [`Stream`]({{_api}}/dart-async/Stream-class.html)
 classes for asynchronous support.
 To learn more about these features, see the
-[asynchronous programming codelab](/codelabs/async-await) and the
-[streams tutorial](/tutorials/language/streams).
+[asynchronous programming tutorial](/libraries/async/async-await) and the
+[streams tutorial](/libraries/async/using-streams).
 :::
 
 This tutorial teaches you how to build command-line apps
@@ -191,15 +191,15 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.2.0
+7   sdk: ^3.5.3
 8 
 9 # Add regular dependencies here.
 10 dependencies:
-11   args: ^2.4.2
+11   args: ^2.5.0
 12   # path: ^1.8.0
 13 
 14 dev_dependencies:
-15   lints: ^2.1.0
+15   lints: ^4.0.0
 16   test: ^1.24.0
 ```
 
@@ -295,7 +295,7 @@ The following code from the `dcat` app
 writes the line numbers to `stdout` (if the `-n` option is specified)
 followed by the contents of the line from the file.
 
-<?code-excerpt "cli/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
+<?code-excerpt "cli/bin/dcat.dart (show-line-numbers)" replace="/stdout\..*/[!$&!]/g"?>
 ```dart
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
@@ -489,7 +489,7 @@ The easiest way to write text to a file is to create a
 [`File`]({{ioAPI}}/File-class.html)
 object and use the `writeAsString()` method:
 
-<?code-excerpt "cli/lib/cmdline.dart (write quote)"?>
+<?code-excerpt "cli/lib/cmdline.dart (write-quote)"?>
 ```dart
 final quotes = File('quotes.txt');
 const stronger = 'That which does not kill us makes us stronger. -Nietzsche';
@@ -637,7 +637,7 @@ and [`package:args`]({{argsAPI}}/args-library.html).
 For another example of a command line app, 
 check out the [`command_line`][] sample.
 
-[`command_line`]: https://github.com/dart-lang/samples/tree/main/command_line
+[`command_line`]: {{site.repo.dart.org}}/samples/tree/main/command_line
 
 ## What next?
 

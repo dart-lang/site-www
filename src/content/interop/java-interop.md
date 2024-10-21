@@ -12,7 +12,7 @@ to call Java and Kotlin APIs.
 
 :::note
 This interop feature is **experimental**,
-and [in active development](https://github.com/dart-lang/sdk/issues/49674).
+and [in active development]({{site.repo.dart.sdk}}/issues/49674).
 :::
 
 `package:jni` allows Dart code to interact
@@ -37,10 +37,8 @@ that uses `package:jnigen` to generate bindings for a simple class.
 
 - JDK
 - [Maven][]
-- (Optional) [`clang-format`][] to format the generated C bindings
 
 [Maven]: https://maven.apache.org/
-[`clang-format`]: https://clang.llvm.org/docs/ClangFormat.html
 
 ### Configure `jnigen`
 
@@ -56,9 +54,6 @@ This file contains the configuration for generating the bindings.
 
 ```yaml
 output:
-  c:
-    library_name: example
-    path: src/example/
   dart:
     path: lib/example.dart
     structure: single_file
@@ -69,7 +64,7 @@ classes:
   - 'dev.dart.Example'
 ```
 
-`path` specifies the path for the generated `c` and `dart` bindings.
+`path` specifies the path for the generated `dart` bindings.
 
 `source_path` specifies the path of the Java source file that
 you want to generate bindings for, 
@@ -90,7 +85,7 @@ public class Example {
 
 ### Generate the Dart bindings
 
-To generate the Dart (and C) bindings, run `jnigen` and
+To generate the Dart bindings, run `jnigen` and
 specify the config file using the `--config` option:
 
 ```console
@@ -120,11 +115,11 @@ print(Example.sum(a, b));
 ### Run the example
 
 Before running the example, 
-you must build the dynamic libraries for `jni` and the generated C files. 
+you must build the dynamic library for `jni`.
 The Java sources also must be compiled. To do so, run:
 
 ```console
-$ dart run jni:setup -p jni -s src/example
+$ dart run jni:setup
 $ javac java/dev/dart/Example.java
 ```
 
@@ -149,7 +144,7 @@ The following are some more comprehensive examples of using `package:jnigen`:
 {:.table}
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[in_app_java]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/in_app_java
-[notification_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/notification_plugin
-[pdfbox_plugin]: https://github.com/dart-lang/jnigen/tree/main/jnigen/example/pdfbox_plugin
+[in_app_java]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/in_app_java
+[notification_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/notification_plugin
+[pdfbox_plugin]: {{site.repo.dart.org}}/native/tree/main/pkgs/jnigen/example/pdfbox_plugin
 [Apache PDFBox]: https://pdfbox.apache.org/

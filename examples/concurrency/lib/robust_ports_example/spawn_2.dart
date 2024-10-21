@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'dart:isolate';
 
-// #docregion
+// #docregion worker-spawn
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -30,16 +30,16 @@ class Worker {
     final (ReceivePort receivePort, SendPort sendPort) =
         await connection.future;
 
-    return Worker._(sendPort, receivePort);
+    return Worker._(receivePort, sendPort);
   }
-// #enddocregion
+// #enddocregion worker-spawn
 
   Future<Object?> parseJson(String message) async {
     // TODO: Ensure the port is still open.
     _commands.send(message);
   }
 
-  Worker._(this._commands, this._responses) {
+  Worker._(this._responses, this._commands) {
     // TODO: Initialize main isolate receive port listener.
   }
 
