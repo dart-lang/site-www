@@ -209,7 +209,7 @@ switch (shape) {
 }
 ```
 
-[Guard clauses][guard] evaluate an arbitrary conditon as part of a case, without
+[Guard clauses][guard] evaluate an arbitrary condition as part of a case, without
 exiting the switch if the condition is false
 (like using an `if` statement in the case body would cause).
 

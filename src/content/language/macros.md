@@ -277,7 +277,7 @@ the program.
 
 Macros are still under development, so that's as much detail we can go into for now.
 If you're curious, or would like to try it yourself behind an experimental flag,
-the best guidance is to take a look at the implementation of exisiting macros:
+the best guidance is to take a look at the implementation of existing macros:
 
 - Check out the [definition][json] of the `JsonCodable` macro,
 - Or any of the [examples][] available in the language repo.

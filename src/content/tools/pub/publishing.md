@@ -29,7 +29,7 @@ disallows unpublishing packages except for very few cases.
 You can always upload new versions of your package,
 but old ones remain available for users that can't upgrade yet.
 
-For published packages that have lost relevance or lack maintainance,
+For published packages that have lost relevance or lack maintenance,
 [mark them as discontinued](#discontinue).
 
 ## Prepare your package for publication
