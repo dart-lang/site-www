@@ -182,7 +182,7 @@ To reduce this burden,
 you can use the [`package:ffigen`][ffigen] binding generator
 to automatically create FFI wrappers from C header files.
 
-[_only_ the `dart:ffi` library]: #leverage-dartffi
+[_only_ the `dart:ffi` library]: #leverage-dart-ffi
 
 ### Compile C code
 
