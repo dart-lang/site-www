@@ -285,7 +285,7 @@ main .content {
   .header-wrapper {
     display: flex;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     align-items: center;
 
     .heading-link {
@@ -894,4 +894,10 @@ div.tabs__content h1, h2, h3, h4, h5, h6 {
 #skip:focus {
   opacity: 1;
   transform: translateY(0);
+}
+
+.glossary-page {
+ .term-separator {
+   border-top: 0.05rem solid $site-color-light-grey;
+ }
 }

@@ -1,7 +1,6 @@
 ---
 title: Mixins
 description: Learn how to add to features to a class in Dart.
-toc: false
 prevpage:
   url: /language/extend
   title: Extend a class
