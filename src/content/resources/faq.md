@@ -82,7 +82,7 @@ output code to emulate the source language's behavior.
 This can cause performance to vary in non-obvious ways to the programmer.
 
 **Languages that compile to native code**
-: Dart prioritizes efficient compliation to machine code.
+: Dart prioritizes efficient compilation to machine code.
   Therefore, it shares some aspects with other compiled languages.
 
 **Languages that are considered "more dynamic" than Dart**
@@ -313,7 +313,7 @@ and directories with APIs not available to the browser.
 Both ways use the `webdev` command.
 The `webdev build` command produces minified JavaScript optimized for
 production.
-The `webdev serve` command produces modulized JavaScript optimized for
+The `webdev serve` command produces modularized JavaScript optimized for
 debugging.
 
 To learn more,

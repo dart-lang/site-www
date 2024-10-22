@@ -315,7 +315,7 @@ to "see" the underlying type.
 
 A transparent extension type can invoke all members of the
 representation type (that aren't [redeclared](#redeclare)),
-plus any auxillary members it defines. 
+plus any auxiliary members it defines. 
 This creates a new, *extended* interface for an existing type.
 The new interface is available to expressions
 whose static type is the extension type.
