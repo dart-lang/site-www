@@ -192,7 +192,7 @@ body in switch expressions or statements:
 <?code-excerpt "language/lib/patterns/switch.dart (or-share-body)"?>
 ```dart
 var isPrimary = switch (color) {
-  Color.red || Color.yellow || Color.blue => true,
+  Color.red || Color.green || Color.blue => true,
   _ => false
 };
 ```
