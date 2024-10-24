@@ -16,6 +16,9 @@ _native interface_ and _language bindings._
 API documentation is available in the
 [`dart:ffi` API reference.]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
 
+TODO: _Maybe add something here about how ffigen is the best way to do stuff (like objective-c page),
+but you can still write things manually with just dart:ffi (link to section)_
+
 ## Download example files
 
 To work with the examples in this guide,
@@ -95,7 +98,7 @@ consult Apple's [Code Signing Guide.][codesign]
 #### Leverage dart:ffi
 
 To learn how to call a C function using the `dart:ffi` library,
-review the [`hello.dart` file]({{hw}}/hello.dart).
+review the code in [`hello.dart` file]({{hw}}/hello.dart).
 This section explains the contents of this file.
 
 1. Import `dart:ffi`.
@@ -149,6 +152,7 @@ This section explains the contents of this file.
    and put it into a variable.
    This code uses the `typedefs` from steps 2 and 3,
    along with the dynamic library variable from step 4.
+
    ```dart
    final HelloWorld hello = dylib
        .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
@@ -163,6 +167,53 @@ This section explains the contents of this file.
 
 Once you understand the `hello_world` example,
 consult the [other `dart:ffi` examples](#download-example-files).
+
+<a id="generate-ffi-bindings-with-package-ffigen" aria-hidden="true"></a>
+## Generate FFI bindings
+
+In almost all scenarios, you should use ffigen to generate the glue code
+between your Dart application and the underlying C artifacts.
+
+It is possible to write the Dart bindings
+that integrate with C code using [_only_ the `dart:ffi` library][],
+but for large API surfaces, this can be time-consuming.
+
+To reduce this burden,
+you can use the [`package:ffigen`][ffigen] binding generator
+to automatically create FFI wrappers from C header files.
+
+[_only_ the `dart:ffi` library]: #leverage-dart-ffi
+
+### Compile C code
+
+#### Header files
+
+TODO: Does this go here?
+
+### Generate bindings
+
+### Create a wrapper class
+
+### Managing memory
+
+TODO: Does this go here?
+
+## Interacting with different types
+
+TODO: _or Using bindings / interacting with generated library / calling c functions from dart ?_
+TODO: _Replaces follow "Interface with native types" section?_
+
+### Booleans
+
+### Integers
+
+### Strings and arrays
+
+### Lists of strings
+
+### Structs
+
+### Opaque structs
 
 ## Bundle and load C libraries
 
@@ -250,17 +301,10 @@ consult the API documentation linked in the following table.
 
 {:.table .table-striped }
 
-## Generate FFI bindings with `package:ffigen`
-
-For large API surfaces, it can be time-consuming
-to write the Dart bindings that integrate with the C code.
-To have Dart create FFI wrappers from C header files,
-use the [`package:ffigen`][ffigen] binding generator.
-
 ## Build and bundle native assets {:#native-assets}
 
 :::note
-The native assets are **experimental**,
+The native assets feature is **experimental**,
 and [in active development]({{site.repo.dart.sdk}}/issues/50565).
 :::
 
