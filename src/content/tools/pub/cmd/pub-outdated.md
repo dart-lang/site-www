@@ -193,6 +193,10 @@ When you edit the `pubspec.yaml` file,
 you generally update the **dependencies** and **dev_dependencies** sections
 so that each package uses the versions in the **Resolvable** column.
 
+## In a workspace
+
+In a [Pub Workspace](/guides/packages#workspaces) `dart pub outdated` lists
+all dependencies 
 
 ## Options
 
