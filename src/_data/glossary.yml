@@ -626,3 +626,288 @@
     - "covariant"
     - "contravariance"
     - "contravariant"
+
+- term: "Version constraint"
+  short_description: |-
+    TODO
+  long_description: |-
+    A constraint placed on each [dependency][] of a package that specifies which
+    versions of that dependency the package is expected to work with. 
+    This can be a single version (`0.3.0`) or a range of versions (`^1.2.1`).
+    While `any` is also allowed,
+    for performance reasons the Dart team doesn't recommend it.
+
+    [Packages][] should always specify version constraints
+    for all of their dependencies.
+    [Application packages][], on the other hand, should usually
+    allow any version of their dependencies, since they use
+    the [lockfile][] to manage their dependency versions.
+
+    [dependency]: #dependency
+    [Packages]: #package
+    [Application packages]: #application-package
+    [lockfile]: #lockfile
+  related_links:
+    - text: "Dart package version constraints"
+      link: "/tools/pub/dependencies#version-constraints"
+    - text: "Pub versioning philosophy"
+      link: "/tools/pub/versioning"
+  category: "packages"
+  labels:
+    - "versioning"
+    - "dependencies"
+    - "pubspec"
+  alternate:
+    - "dependency constraint"
+
+- term: "Verified publisher"
+  short_description: |-
+    TODO
+  long_description: |-
+    One or more users who own a set of packages.
+    Each verified publisher is identified by a verified domain name,
+    such as **dart.dev**.
+  related_links:
+    - text: "Verified publishers"
+      link: "/tools/pub/verified-publishers"
+    - text: "Creating a verified publisher"
+      link: "/tools/pub/publishing#verified-publisher"
+    - text: "List of verified publishers"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "publishing"
+    - "pub.dev"
+
+- term: "Uploader"
+  short_description: |-
+    TODO
+  long_description: |-
+    Someone who has administrative permissions for a package.
+    A package uploader can upload new versions of the package, 
+    and they can also [add and remove other uploaders][] for that package. 
+
+    If a package has a verified publisher,
+    then all members of the publisher can upload the package.
+
+    [add and remove other uploaders]: /tools/pub/publishing#uploaders
+  related_links:
+    - text: "Verified publishers"
+      link: "/tools/pub/verified-publishers"
+    - text: "Package publishing"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "publishing"
+    - "pub.dev"
+
+- term: "Transitive dependency"
+  short_description: |-
+    TODO
+  long_description: |-
+    A dependency that your package indirectly uses because
+    one of its dependencies requires it.
+    If your package depends on A, which in turn depends on B which
+    depends on C, then A is an [immediate dependency][] while
+    B and C are transitive ones.
+
+    [immediate dependency]: #immediate-dependency
+  related_links:
+    - text: "Types of dependencies"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "versioning"
+    - "dependencies"
+
+- term: "Pub system cache"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "package config"
+    - "cache"
+  alternate:
+   - "system cache"
+
+- term: "Source"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "pubspec"
+    - "dependencies"
+    - "versioning"
+  alternate:
+    - "pub source"
+
+- term: "SDK constraint"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "pubspec"
+    - "sdk"
+    - "versioning"
+  alternate:
+    - "dart constraint"
+    - "flutter version constraint"
+
+- term: "Package"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "libraries"
+    - "dependencies"
+  alternate:
+    - "library package"
+
+- term: "Lockfile"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "libraries"
+    - "dependencies"
+    - "pubspec"
+  alternate:
+    - "pubspec.lock"
+    - "pub lock"
+    - "lock file"
+
+- term: "Library"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "language"
+  labels:
+    # TODO(parlough): Perhaps labels and categories should just be combined.
+    # This fits in the "language" and "packages" categories
+    - "packages"
+    - "imports"
+  alternate:
+    - "libraries"
+
+- term: "Immediate dependency"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "Types of dependencies"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "versioning"
+    - "dependencies"
+  alternate:
+    - "direct dependency"
+
+- term: "Entrypoint directory"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "tools"
+  labels:
+    - "packages"
+    - "bin"
+  alternate:
+    - "direct dependency"
+
+- term: "Entrypoint"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "tools"
+  labels:
+    - "packages"
+    - "bin"
+  alternate:
+    - "Entrypoint package"
+    - "Root package"
+    - "Runnable library"
+
+- term: "Dependency"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "dependencies"
+    - "package dependency"
+    - "libraries"
+
+- term: "Content hash"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "pubspec"
+    - "pubspec.lock"
+    - "dependencies"
+  alternate:
+    - "pub hash"
+    - "checksum"
+
+- term: "Application package"
+  short_description: |-
+    TODO
+  long_description: |-
+    TODO
+  related_links:
+    - text: "TODO"
+      link: "TODO"
+  category: "packages"
+  labels:
+    - "apps"
+    - "pubspec.lock"
+  alternate:
+    - "app package"
+    - "app"
