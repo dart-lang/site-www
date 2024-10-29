@@ -159,7 +159,7 @@ assert((3 & 4) == 0); // 0011 & 0100 == 0000
 For more examples, see the
 [bitwise and shift operator][] section.
 
-Literal numbers are compile-time constants.
+Number literals are compile-time constants.
 Many arithmetic expressions are also compile-time constants,
 as long as their operands are
 compile-time constants that evaluate to numbers.
@@ -173,6 +173,18 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 For more information, see [Numbers in Dart][dart-numbers].
 
+You can use one or more underscores (`_`) as digit separators
+to make long number literals more readable.
+Multiple digit separators allow for higher level grouping.
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
+```dart
+var n1 = 1_000_000;
+var n2 = 0.000_000_000_01;
+var n3 = 0x00_14_22_01_23_45;  // MAC address
+var n4 = 555_123_4567;  // US Phone number
+var n5 = 100__000_000__000_000;  // one hundred million million!
+```
 
 ## Strings
 
@@ -254,7 +266,7 @@ var s = r'In a raw string, not even \n gets special treatment.';
 See [Runes and grapheme clusters](#runes-and-grapheme-clusters) for details on how
 to express Unicode characters in a string.
 
-Literal strings are compile-time constants,
+String literals are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
