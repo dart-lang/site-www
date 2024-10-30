@@ -52,8 +52,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       sass:
-        specifier: ^1.80.4
-        version: 1.80.4
+        specifier: ^1.80.5
+        version: 1.80.5
       shiki:
         specifier: ^1.22.1
         version: 1.22.1
@@ -2507,8 +2507,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass@1.80.4:
-    resolution: {integrity: sha512-rhMQ2tSF5CsuuspvC94nPM9rToiAFw2h3JTrLlgmNw1MH79v8Cr3DH6KF6o6r+8oofY3iYVPUf66KzC8yuVN1w==}
+  sass@1.80.5:
+    resolution: {integrity: sha512-TQd2aoQl/+zsxRMEDSxVdpPIqeq9UFc6pr7PzkugiTx3VYCFPUaa3P4RrBQsqok4PO200Vkz0vXQBNlg7W907g==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5854,7 +5854,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass@1.80.4:
+  sass@1.80.5:
     dependencies:
       '@parcel/watcher': 2.4.1
       chokidar: 4.0.0
