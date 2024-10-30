@@ -41,9 +41,9 @@ but here are some more situations where they can be useful:
 
 Also note a caveat due to a limit to the number of concurrently running isolates:
 
- - The limit is not hardcoded to a particular number, it is calculated based on the Dart VM heap size available to the Dart application, can be considered to between 8 and 32 depending on the platform.
- - This limit doesn't affect asynchronous communction between isolates via messages - you can have hundreds of isolates running and making progress. The isolates are scheduled on CPU in round-robin fashion and yield to each other isolate often.
- - Attempts to do *synchronous* communication between isolates over the limit though will result in a deadlock.
+ - The limit is not hardcoded to a particular number, it is calculated based on the Dart VM heap size available to the Dart application, can be considered to be between 8 and 32 depending on the platform.
+ - This limit doesn't affect asynchronous communction between isolates via messages - you can have hundreds of isolates running and making progress. The isolates are scheduled on the CPU in round-robin fashion and yield to each other often.
+ - Attempts to do *synchronous* communication between isolates over the limit though may result in a deadlock.
 
 [Flutter]: {{site.flutter-docs}}/perf/isolates
 
