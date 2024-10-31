@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "3.0.0",
-    "firebase-tools": "^13.22.1",
+    "firebase-tools": "^13.23.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.3",
     "hast-util-to-text": "^4.0.2",
@@ -35,7 +35,7 @@
     "markdown-it-attrs": "^4.2.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.80.3",
-    "shiki": "^1.22.0"
+    "sass": "^1.80.5",
+    "shiki": "^1.22.2"
   }
 }

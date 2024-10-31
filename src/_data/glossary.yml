@@ -46,12 +46,13 @@
       link: "/language/variables#final-and-const"
     - text: "Don't use const redundantly"
       link: "/effective-dart/usage#dont-use-const-redundantly"
-  category: "language"
   labels:
+    - "language"
     - "const"
     - "understanding diagnostics"
   alternate:
     - "Implicit const"
+
 - term: "Definite assignment"
   short_description: |-
     The determination of whether a variable has definitely been
@@ -149,10 +150,11 @@
       link: "https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md"
     - text: "Understanding definite assignment analysis"
       link: "/null-safety/understanding-null-safety#definite-assignment-analysis"
-  category: "language"
   labels:
+    - "language"
     - "flow analysis"
     - "understanding diagnostics"
+
 - term: "Function"
   short_description: |-
     An umbrella term to refer to top-level functions, local functions,
@@ -162,11 +164,12 @@
       link: "/language/functions"
     - text: "Instance methods"
       link: "/language/methods"
-  category: "language"
   labels:
+    - "language"
     - "umbrella term"
   alternate:
     - "Procedure"
+
 - term: "Irrefutable pattern"
   short_description: |-
     A pattern that always matches.
@@ -183,11 +186,12 @@
       link: "/language/patterns#places-patterns-can-appear"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
-  category: "language"
   labels:
+    - "language"
     - "patterns"
   alternate:
     - "irrefutable context"
+
 - term: "Mixin application"
   short_description: |-
     A class created when a mixin is applied to a class.
@@ -227,11 +231,12 @@
   related_links:
     - text: "Mixins in Dart"
       link: "/language/mixins"
-  category: "language"
   labels:
+    - "language"
     - "understanding diagnostics"
   alternate:
     - "with mixin"
+
 - term: "Override inference"
   short_description: |-
     How missing types in a method declaration are inferred.
@@ -298,10 +303,11 @@
   related_links:
     - text: "Inheritance in Dart"
       link: "/language/extend"
-  category: "language"
   labels:
+    - "language"
     - "type inference"
     - "understanding diagnostics"
+
 - term: "Part file"
   short_description: |-
     A Dart source file that contains a `part of` directive.
@@ -313,11 +319,12 @@
       link: "/guides/libraries/create-packages#organizing-a-package"
     - text: "Use library URIs in `part of` directives"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
-  category: "language"
   labels:
+    - "language"
     - "libraries"
   alternate:
     - "part"
+
 - term: "Potentially non-nullable"
   short_description: |-
     A type that is either non-nullable explicitly or
@@ -340,13 +347,14 @@
   related_links:
     - text: "Nullability and generics"
       link: "/null-safety/understanding-null-safety#nullability-and-generics"
-  category: "language"
   labels:
+    - "language"
     - "type system"
     - "flow analysis"
     - "understanding diagnostics"
   alternate:
     - "potentially nullable"
+
 - term: "Public library"
   short_description: |-
     A library that is located in a package's `lib` directory but
@@ -359,9 +367,10 @@
       link: "/guides/libraries/create-packages#organizing-a-package"
     - text: "Public package directories"
       link: "/tools/pub/package-layout#public-directories"
-  category: "packages"
   labels:
+    - "language"
     - "libraries"
+
 - term: "Refutable pattern"
   short_description: |-
     A pattern that can be tested against a value.
@@ -377,11 +386,12 @@
       link: "/language/patterns#places-patterns-can-appear"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
-  category: "language"
   labels:
+    - "language"
     - "patterns"
   alternate:
     - "matching contexts"
+
 - term: "Subclass"
   short_description: |-
     A class that inherits the implementation of another class.
@@ -416,11 +426,12 @@
       link: "/language/extend"
     - text: "Subtype relationship"
       link: "#subtype"
-  category: "language"
   labels:
+    - "language"
     - "type system"
   alternate:
     - "child class"
+
 - term: "Subtype"
   short_description: |-
     A type that can be used wherever a value of its supertype is expected.
@@ -462,12 +473,13 @@
       link: "#subclass"
     - text: "Substituting types"
       link: "/language/type-system#substituting-types"
-  category: "language"
   labels:
+    - "language"
     - "type system"
   alternate:
     - "subtyping"
     - "subtype polymorphism"
+
 - term: "Variance and variance positions"
   id: "variance"
   short_description: |-
@@ -555,8 +567,8 @@
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
     - text: "The covariant keyword"
       link: "/guides/language/sound-problems#the-covariant-keyword"
-  category: "language"
   labels:
+    - "language"
     - "type system"
     - "generics"
   alternate:
