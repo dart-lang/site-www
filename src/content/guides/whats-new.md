@@ -26,7 +26,7 @@ For details about the 3.5 release of Dart,
 check out the [3.5 announcement][] and the [SDK changelog][3-5-changelog].
 
 [3.5 announcement]: https://medium.com/dartlang/dart-3-5-6ca36259fa2f
-[3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350
+[3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350---2024-08-06
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -74,7 +74,7 @@ For details about the 3.4 release,
 check out [3.4 blog post][] and the [SDK changelog][3-4-changelog].
 
 [3.4 blog post]: https://medium.com/dartlang/dart-3-4-bd8d23b4462a
-[3-4-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#340
+[3-4-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#340---2024-05-14
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -202,7 +202,7 @@ For details about the 3.2 release,
 check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
 
 [3.2 blog post]: https://medium.com/dartlang/dart-3-2-c8de8fe1b91f
-[3-2-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#320
+[3-2-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#320---2023-11-15
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -260,7 +260,7 @@ check out
 and the [SDK changelog][3-1-changelog].
 
 [Dart 3.1 & a retrospective on functional style programming in Dart 3]: https://medium.com/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda
-[3-1-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#310
+[3-1-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#310---2023-08-16
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
