@@ -14,28 +14,27 @@
     "build-site-for-production": "PRODUCTION=true OPTIMIZE=true eleventy"
   },
   "engines": {
-    "node": ">=20.12.0",
-    "pnpm": ">=9.1.0"
+    "node": ">=20.14.0",
+    "pnpm": ">=9.4.0"
   },
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.12.3",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0",
+    "@11ty/eleventy": "^3.0.0",
     "firebase-tools": "^13.23.1",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.3",
     "hast-util-to-text": "^4.0.2",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
-    "liquidjs": "^10.18.0",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.2.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.80.5",
+    "sass": "^1.80.6",
     "shiki": "^1.22.2"
   }
 }
