@@ -177,7 +177,11 @@ You can use one or more underscores (`_`) as digit separators
 to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
 
+{% comment %}
+Uncomment when feature is stable:
+
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
+{% endcomment %}
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
@@ -185,6 +189,10 @@ var n3 = 0x00_14_22_01_23_45;  // MAC address
 var n4 = 555_123_4567;  // US Phone number
 var n5 = 100__000_000__000_000;  // one hundred million million!
 ```
+
+:::version-note
+Using digit separators requires a [language version][] of at least 3.6.0.
+:::
 
 ## Strings
 
@@ -427,3 +435,4 @@ Symbol literals are compile-time constants.
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [`Symbol`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html
+[language version]: /guides/language/evolution#language-versioning
