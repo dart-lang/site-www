@@ -56,11 +56,20 @@ $ dart pub upgrade test args
 Dependencies upgraded!
 ```
 
-Upgrading a dependency upgrades its transitive dependencies to their latest
-versions as well. Usually, no other dependencies are updated; they stay at the
+Usually, no other dependencies are updated; they stay at the
 versions that are locked in the lockfile. However, if the requested upgrades
 cause incompatibilities with these locked versions, they are selectively
 unlocked until a compatible set of versions is found.
+
+This means that upgrading a specific dependency does not by default upgrade its
+transitive dependencies.
+
+To upgrade a specific dependency and all its transitive dependencies to their
+latest versions use the '--unlock-transitive' flag.
+
+```console
+$ dart pub upgrade --unlock-transitive test args
+```
 
 
 ## Getting a new dependency
@@ -145,5 +154,10 @@ Updates the lower bounds of dependencies in `pubspec.yaml` to match the
 resolved versions, and returns a list of the changed constraints. 
 Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
 
+### `--unlock-transitive`
+
+When used with a list of packages to unlock, first the transitive closure of
+those packages' dependencies (in the current resolution) is computed, and all
+those packages are unlocked.
 
 {% render 'pub-problems.md' %}
