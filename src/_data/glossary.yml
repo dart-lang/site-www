@@ -1,3 +1,17 @@
+- term: "Assist"
+  short_description: |-
+    An automated, local code edit targeted at common improvements and conventions
+    based on the structure of the code.
+  related_links:
+    - text: "Providing Quick Assists"
+      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analyzer_plugin/doc/tutorial/assists.md"
+  labels:
+    - "tools"
+    - "analyzer"
+    - "understanding diagnostics"
+  alternate:
+    - "Quick assist"
+
 - term: "Constant context"
   short_description: |-
     A region of code where the const keyword is implied and
@@ -370,6 +384,32 @@
   labels:
     - "language"
     - "libraries"
+
+- term: "Quick fix"
+  short_description: |-
+    An automated, local code edit targeted at fixing the issue reported by a specific diagnostic.
+  related_links:
+    - text: "Quick fixes for analysis issues"
+      link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
+    - text: "Writing a quick fix"
+      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/implementation/quick_fix.md"
+    - text: "Linter rules"
+      link: "/tools/linter-rules"
+  labels:
+    - "tools"
+    - "understanding diagnostics"
+
+- term: "Refactor"
+  short_description: |-
+    A code edit targeted at modifications that are either non-local or that
+    require user interaction, sometimes to rename, move, or extract code.
+  related_links:
+    - text: "Code Editing Features"
+      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/implementation/code_edits.md"
+  labels:
+    - "tools"
+    - "analysis"
+    - "understanding diagnostics"
 
 - term: "Refutable pattern"
   short_description: |-
