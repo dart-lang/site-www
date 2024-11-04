@@ -178,10 +178,10 @@ to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
 
 {% comment %}
-Uncomment when feature is stable:
-
-<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
+Attach code excerpt misc/lib/language_tour/built_in_types.dart (digit-separators)
+when feature is stable:
 {% endcomment %}
+
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
