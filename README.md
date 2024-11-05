@@ -3,6 +3,21 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
+<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
+    <img
+      height="32"
+      alt="Open in IDX"
+      src="https://cdn.idx.dev/btn/open_purple_32.svg">
+  </picture>
+</a>
+
 The documentation site for the [Dart programming language](https://dart.dev), 
 built with [Eleventy][] and hosted on [Firebase][].
 
