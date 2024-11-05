@@ -7,7 +7,7 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_22
-    pkgs.nodePackages.pnpm
+    pkgs.pnpm
   ];
 
   # Sets environment variables in the workspace
@@ -15,7 +15,8 @@
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
+      "Dart-Code.flutter"
+      "Dart-Code.dart-code"
     ];
 
     # Enable previews
