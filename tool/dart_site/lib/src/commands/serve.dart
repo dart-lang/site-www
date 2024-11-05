@@ -13,7 +13,12 @@ final class ServeSiteCommand extends Command<int> {
   Future<int> run() async {
     final process = await Process.start(
       'npx',
-      ['eleventy', '--serve', '--incremental', '--port=${Platform.environment['PORT'] ?? 4000}'],
+      [
+        'eleventy',
+        '--serve',
+        '--incremental',
+        '--port=${Platform.environment['PORT'] ?? 4000}'
+      ],
       environment: const {
         'PRODUCTION': 'false',
       },
