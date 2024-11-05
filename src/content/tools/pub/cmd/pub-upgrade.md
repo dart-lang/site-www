@@ -157,7 +157,7 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 ### `--unlock-transitive`
 
 When used with a list of packages to unlock, first the transitive closure of
-those packages' dependencies (in the current resolution) is computed, and all
-those packages are unlocked.
+those packages' dependencies (in the current resolution) is computed,
+and then all those packages are unlocked.
 
 {% render 'pub-problems.md' %}
