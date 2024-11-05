@@ -65,7 +65,7 @@ This means that upgrading a specific dependency does not by default upgrade its
 transitive dependencies.
 
 To upgrade a specific dependency and all its transitive dependencies to their
-latest versions use the '--unlock-transitive' flag.
+latest versions use the `--unlock-transitive` flag.
 
 ```console
 $ dart pub upgrade --unlock-transitive test args
