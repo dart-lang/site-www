@@ -56,7 +56,7 @@ $ dart pub upgrade test args
 Dependencies upgraded!
 ```
 
-Usually, no other dependencies are updated; they stay at the
+Usually, no other dependencies are upgraded; they stay at the
 versions that are locked in the lockfile. However, if the requested upgrades
 cause incompatibilities with these locked versions, they are selectively
 unlocked until a compatible set of versions is found.
