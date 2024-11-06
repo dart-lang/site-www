@@ -1,14 +1,18 @@
 - term: "Assist"
   short_description: |-
-    An automated, local code edit targeted at common improvements and conventions
-    based on the structure of the code.
+    An automated, local code edit targeted at making common improvements to code.
+  long_description: |-
+    An assist is an automated, local code edit targeted at making common
+    improvements to code.
+    Examples of assists include converting `switch` statements to `switch`
+    expressions, reversing the `then` and `else` blocks in an `if` statement,
+    and inserting widgets into a widget structure.
   related_links:
-    - text: "Providing Quick Assists"
-      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analyzer_plugin/doc/tutorial/assists.md"
+    - text: "Refactor"
+      link: "#refactor"
   labels:
     - "tools"
     - "analyzer"
-    - "understanding diagnostics"
   alternate:
     - "Quick assist"
 
@@ -387,12 +391,13 @@
 
 - term: "Quick fix"
   short_description: |-
-    An automated, local code edit targeted at fixing the issue reported by a specific diagnostic.
+    An automated, local code edit targeted at fixing the issue reported by a
+    specific diagnostic.
   related_links:
     - text: "Quick fixes for analysis issues"
       link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
-    - text: "Writing a quick fix"
-      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/implementation/quick_fix.md"
+    - text: "Diagnostic messages"
+      link: "/tools/diagnostic-messages"
     - text: "Linter rules"
       link: "/tools/linter-rules"
   labels:
@@ -402,14 +407,17 @@
 - term: "Refactor"
   short_description: |-
     A code edit targeted at modifications that are either non-local or that
-    require user interaction, sometimes to rename, move, or extract code.
+    require user interaction.
+  long_description: |-
+    A refactor is a code edit targeted at modifications that are either non-local
+    or that require user interaction.
+    Examples of refactors include renaming, removing, or extracting code.
   related_links:
-    - text: "Code Editing Features"
-      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/implementation/code_edits.md"
+    - text: "Assist"
+      link: "#assist"
   labels:
     - "tools"
     - "analysis"
-    - "understanding diagnostics"
 
 - term: "Refutable pattern"
   short_description: |-
