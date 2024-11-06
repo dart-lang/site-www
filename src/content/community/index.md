@@ -38,6 +38,9 @@ Get answers and connect with Dart developers.
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 : The subreddit for all things related to Dart.
 
+[It's All Widgets Flutter Forum](https://forum.itsallwidgets.com/)
+: Asynchronously discuss anything Flutter or Dart related.
+
 [Flutter communities]({{site.flutter}}/community#community-grid)
 : Discuss and get help with Flutter.
 
