@@ -1200,10 +1200,10 @@ makeGreeting(String who) {
 }
 ```
 
-Note that this guideline only applies to *named* function declarations:
-top-level functions, methods, and local functions. Anonymous function
-expressions infer a return type from their body. In fact, the syntax doesn't
-even allow a return type annotation.
+Note that this guideline only applies to *non-local* function declarations:
+top-level, static, and instance methods and getters. Local functions and
+anonymous function expressions infer a return type from their body. In fact, the
+anonymous function syntax doesn't even allow a return type annotation.
 
 
 ### DO annotate parameter types on function declarations
