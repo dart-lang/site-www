@@ -398,14 +398,6 @@ isolate, it will remain untouched in the main isolate. This is how isolates are
 meant to function, and it's important to keep in mind when you’re considering
 using isolates.
 
-#### Synchronous blocking communication between isolates
-
-There is a limit to the number of isolates running in parallel:
-
- - The limit is not hardcoded to a particular number, it is calculated based on the Dart VM heap size available to the Dart application, can be considered to be between 8 and 32 depending on the platform.
- - This limit doesn't affect asynchronous communction between isolates via messages - you can have hundreds of isolates running and making progress. The isolates are scheduled on the CPU in round-robin fashion and yield to each other often.
- - Attempts to do *synchronous* communication between isolates over the limit though may result in a deadlock unless special care is taken (the C code that does synchronous communication would need to leave the current isolate before it blocks and re-enter it before returning to dart, see [`Dart_EnterIsolate`]({{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1254) and [`Dart_ExitIsolate`]({{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1455).
-
 #### Message types
 
 Messages sent via [`SendPort`][]
@@ -435,6 +427,30 @@ objects, so they're subject to the same limitations.
 [`NativeFinalizer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
 [`Pointer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Pointer-class.html
 [`UserTag`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/UserTag-class.html
+
+#### Synchronous blocking communication between isolates
+
+There is a limit to the number of isolates that can run in parallel, or *synchronously*.
+This limit doesn't affect the standard *asynchronous* communction between isolates
+via messages in Dart. You can have hundreds of isolates running concurrently
+and making progress. The isolates are scheduled on the CPU in round-robin fashion
+and yield to each other often.
+
+Isolates can only communicate *synchronously* outside of pure Dart,
+using C code via [FFI] to do so. 
+Attempts to do synchronous communication between isolates in FFI calls
+over the limit may result in deadlock unless special care is taken.
+The limit is not hardcoded to a particular number,
+it's calculated based on the Dart VM heap size available to the Dart application.
+
+To avoid this situation, the C code that does synchronous communication
+needs to leave the current isolate before performing the blocking operation
+and re-enter it before returning to Dart from the FFI call.
+Read about [`Dart_EnterIsolate`] and [`Dart_ExitIsolate`] to learn more.
+
+[FFI]: /interop/c-interop
+[`Dart_EnterIsolate`]: ({{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1254)
+[`Dart_ExitIsolate`]: ({{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1455)
 
 <a id="web"></a>
 ## Concurrency on the web
