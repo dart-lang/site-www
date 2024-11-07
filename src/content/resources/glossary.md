@@ -4,6 +4,10 @@ description: A glossary reference for terminology used across dart.dev.
 body_class: glossary-page
 ---
 
+{% comment %}
+  Write glossary entries into the src/_data/glossary.yml file.
+{% endcomment -%}
+
 The following are definitions of terms used across the Dart documentation.
 
 {% assign sorted_terms = glossary | sort: "term" %}

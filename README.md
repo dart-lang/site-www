@@ -3,6 +3,21 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
+<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
+    <img
+      height="32"
+      alt="Open in IDX"
+      src="https://cdn.idx.dev/btn/open_purple_32.svg">
+  </picture>
+</a>
+
 The documentation site for the [Dart programming language](https://dart.dev), 
 built with [Eleventy][] and hosted on [Firebase][].
 
@@ -69,7 +84,7 @@ If you prefer, you can use a version manager such as [nvm][],
 and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `20.12` or later)_:
+and already the latest stable version _(currently `20.14` or later)_:
 
 ```terminal
 node --version
@@ -143,7 +158,7 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    If you already have `pnpm`, verify you have the latest stable version.
    We recommend using [`corepack`][] to install and manage `pnpm` versions,
    since it is bundled with most installations of Node.
-   
+
    If you haven't used `corepack` before, you'll need to
    first enable it with `corepack enable`.
    Then, to install the correct `pnpm` version, from the
@@ -181,7 +196,7 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 7. View your changes in the browser by navigating to <http://localhost:4000>.
 
    Note the port might be different if `4000` is taken.
-   
+
    If you want to check the raw, generated HTML output and structure,
    view the `_site` directory in a file explorer or an IDE.
 
@@ -274,7 +289,7 @@ you can build a full version and upload it to Firebase.
    ./dash_site build
    ```
 
-   This will build the site and copy it to your local `_site` directory.
+   This builds the site and copy it to your local `_site` directory.
    If that directory previously existed, it will be replaced.
 
 3. Deploy to your activated Firebase project's default hosting site:
