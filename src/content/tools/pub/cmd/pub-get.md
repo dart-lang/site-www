@@ -158,7 +158,7 @@ package has changed.
 
 Useful for CI or deploying to production.
 
-See this [section](/guides/packages#get-dependencies-for-production) for more
-details.
+Read [Get dependencies for production](/guides/packages#get-dependencies-for-production)
+for more details.
 
 {% render 'pub-problems.md' %}
