@@ -6,12 +6,14 @@ description: Use dart pub bump to increase the version number of the current pac
 _Bump_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```plaintext
-$ dart pub bump <subcommand> [arguments]
+$ dart pub bump <subcommand>
 ```
 
-This command increments the verion number of the current package.
-It allows the subcommands `breaking`, `major`, `minor`,
-and `patch` to increment only a specific part of the version number. 
+This command increments the version number of the current package.
+Use one of the subcommands `breaking`, `major`, `minor`,
+or `patch` according to the type of increment desired. 
+
+Refer to [semver](https://semver.org/spec/v2.0.0-rc.1.html) for guidance on versioning your package.
 For example:
 
 ```console
