@@ -31,8 +31,3 @@ $ dart pub bump minor
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
-
-### `-n, --dry-run`
-
-Reports what would change for the version number, and shows the version diff,
-without changing anything.
