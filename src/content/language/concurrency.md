@@ -74,7 +74,7 @@ For example, consider making a network request:
 ```dart
 http.get('https://example.com').then((response) {
   if (response.statusCode == 200) {
-    print('Success!')'
+    print('Success!');
   }  
 }
 ```
@@ -427,6 +427,32 @@ objects, so they're subject to the same limitations.
 [`NativeFinalizer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
 [`Pointer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Pointer-class.html
 [`UserTag`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/UserTag-class.html
+
+#### Synchronous blocking communication between isolates
+
+There is a limit to the number of isolates that can run in parallel.
+This limit doesn't affect the standard *asynchronous* communication between isolates
+via messages in Dart. You can have hundreds of isolates running concurrently
+and making progress. The isolates are scheduled on the CPU in round-robin fashion,
+and yield to each other often.
+
+Isolates can only communicate *synchronously* outside of pure Dart,
+using C code via [FFI] to do so. 
+Attempting synchronous communication between isolates
+by synchronous blocking in FFI calls
+may result in deadlock if the number of isolates is over the limit,
+unless special care is taken.
+The limit is not hardcoded to a particular number,
+it's calculated based on the Dart VM heap size available to the Dart application.
+
+To avoid this situation, the C code performing synchronous blocking
+needs to leave the current isolate before performing the blocking operation
+and re-enter it before returning to Dart from the FFI call.
+Read about [`Dart_EnterIsolate`] and [`Dart_ExitIsolate`] to learn more.
+
+[FFI]: /interop/c-interop
+[`Dart_EnterIsolate`]: {{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1254
+[`Dart_ExitIsolate`]: {{site.repo.dart.sdk}}/blob/c9a8bbd8d6024e419b5e5f26b5131285eb19cc93/runtime/include/dart_api.h#L1455
 
 <a id="web"></a>
 ## Concurrency on the web

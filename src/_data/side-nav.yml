@@ -184,6 +184,8 @@
           permalink: /tools/pub/security-advisories
         - title: Versioning
           permalink: /tools/pub/versioning
+        - title: Custom package repositories
+          permalink: /tools/pub/custom-package-repositories
     - title: What not to commit
       permalink: /guides/libraries/private-files
 

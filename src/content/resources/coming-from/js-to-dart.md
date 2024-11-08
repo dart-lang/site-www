@@ -811,7 +811,7 @@ print([1, 2, 3].map((e) => e + 3).toList());
 
 Both languages support [_generator functions_].
 These functions return an iterable collection of items
-computed to avoid unncessary work.
+computed to avoid unnecessary work.
 
 To write a generator function in Dart,
 add the `sync*` keyword after the function parameters,

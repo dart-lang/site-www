@@ -312,7 +312,8 @@
     "name": "avoid_futureor_void",
     "description": "Avoid using 'FutureOr<void>' as the type of a result.",
     "categories": [
-      "errorProne"
+      "errorProne",
+      "unintentional"
     ],
     "state": "experimental",
     "incompatible": [],
@@ -385,11 +386,11 @@
     "categories": [
       "style"
     ],
-    "state": "stable",
+    "state": "removed",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "hasFix",
-    "details": "**DON'T** check for `null` in custom `==` operators.\n\nAs `null` is a special value, no instance of any class (other than `Null`) can\nbe equivalent to it.  Thus, it is redundant to check whether the other instance\nis `null`.\n\n**BAD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) =>\n      other != null && other is Person && name == other.name;\n}\n```\n\n**GOOD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) => other is Person && name == other.name;\n}\n```",
+    "fixStatus": "noFix",
+    "details": "**DON'T** check for `null` in custom `==` operators.\n\nAs `null` is a special value, no instance of any class (other than `Null`) can\nbe equivalent to it.  Thus, it is redundant to check whether the other instance\nis `null`.\n\n**BAD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) =>\n      other != null && other is Person && name == other.name;\n}\n```\n\n**GOOD:**\n```dart\nclass Person {\n  final String? name;\n\n  @override\n  operator ==(Object? other) => other is Person && name == other.name;\n}\n```\n\nThis rule has been removed.",
     "sinceDartSdk": "2.0"
   },
   {
@@ -757,7 +758,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "From [Effective Dart](https://dart.dev/effective-dart/style#do-name-extensions-using-uppercamelcase):\n\n**DO** name extensions using `UpperCamelCase`.\n\nExtensions should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nextension MyFancyList<T> on List<T> { \n  // ... \n}\n\nextension SmartIterable<T> on Iterable<T> {\n  // ...\n}\n```",
+    "details": "From [Effective Dart](https://dart.dev/effective-dart/style#do-name-extensions-using-uppercamelcase):\n\n**DO** name extensions using `UpperCamelCase`.\n\nExtensions should capitalize the first letter of each word (including\nthe first word), and use no separators.\n\n**GOOD:**\n```dart\nextension MyFancyList<T> on List<T> {\n  // ...\n}\n\nextension SmartIterable<T> on Iterable<T> {\n  // ...\n}\n```",
     "sinceDartSdk": "2.6"
   },
   {
@@ -1760,11 +1761,11 @@
       "effectiveDart",
       "publicInterface"
     ],
-    "state": "stable",
+    "state": "deprecated",
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "**DO** provide doc comments for all public APIs.\n\nAs described in the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files),\npublic APIs consist in everything in your package's `lib` folder, minus\nimplementation files in `lib/src`, adding elements explicitly exported with an\n`export` directive.\n\nFor example, given `lib/foo.dart`:\n```dart\nexport 'src/bar.dart' show Bar;\nexport 'src/baz.dart';\n\nclass Foo { }\n\nclass _Foo { }\n```\nits API includes:\n\n* `Foo` (but not `_Foo`)\n* `Bar` (exported) and\n* all *public* elements in `src/baz.dart`\n\nAll public API members should be documented with `///` doc-style comments.\n\n**BAD:**\n```dart\nclass Bar {\n  void bar();\n}\n```\n\n**GOOD:**\n```dart\n/// A Foo.\nabstract class Foo {\n  /// Start foo-ing.\n  void start() => _start();\n\n  _start();\n}\n```\n\nAdvice for writing good doc comments can be found in the\n[Doc Writing Guidelines](https://dart.dev/effective-dart/documentation).",
+    "details": "**NOTE:** This lint is deprecated because it is has not\nbeen fully functional since at least Dart 2.0.\nRemove all inclusions of this lint from your analysis options.\n\n**DO** provide doc comments for all public APIs.\n\nAs described in the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files),\npublic APIs consist in everything in your package's `lib` folder, minus\nimplementation files in `lib/src`, adding elements explicitly exported with an\n`export` directive.\n\nFor example, given `lib/foo.dart`:\n```dart\nexport 'src/bar.dart' show Bar;\nexport 'src/baz.dart';\n\nclass Foo { }\n\nclass _Foo { }\n```\nits API includes:\n\n* `Foo` (but not `_Foo`)\n* `Bar` (exported) and\n* all *public* elements in `src/baz.dart`\n\nAll public API members should be documented with `///` doc-style comments.\n\n**BAD:**\n```dart\nclass Bar {\n  void bar();\n}\n```\n\n**GOOD:**\n```dart\n/// A Foo.\nabstract class Foo {\n  /// Start foo-ing.\n  void start() => _start();\n\n  _start();\n}\n```\n\nAdvice for writing good doc comments can be found in the\n[Doc Writing Guidelines](https://dart.dev/effective-dart/documentation).",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2621,7 +2622,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Do type annotate initialized local variables when the type is non-obvious.\n\nType annotations on local variables can serve as a request for type inference,\ndocumenting the expected outcome of the type inference step, and declaratively\nallowing the compiler and analyzer to solve the possibly complex task of\nfinding type arguments and annotations in the initializing expression that\nyield the desired result.\n\nType annotations on local variables can also inform readers about the type\nof the initializing expression, which will allow them to proceed reading the\nsubsequent lines of code with known good information about the type of the\ngiven variable (which may not be immediately evident by looking at the\ninitializing expression).\n\nAn expression is considered to have a non-obvious type when it does not\nhave an obvious type.\n\nAn expression e has an obvious type in the following cases:\n\n- e is a non-collection literal. For instance, 1, true, 'Hello, $name!'.\n- e is a collection literal with actual type arguments. For instance,\n  <int, bool>{}.\n- e is a list literal or a set literal where at least one element has an\n  obvious type, and all elements have the same type. For instance, [1, 2] and\n  { [true, false], [] }, but not [1, 1.5].\n- e is a map literal where all key-value pair have a key with an obvious type\n  and a value with an obvious type, and all keys have the same type, and all\n  values have the same type. For instance, { #a: <int>[] }, but not\n  {1: 1, 2: true}.\n- e is an instance creation expression whose class part is not raw. For\n  instance C(14) if C is a non-generic class, or C<int>(14) if C accepts one\n  type argument, but not C(14) if C accepts one or more type arguments.\n- e is a cascade whose target has an obvious type. For instance,\n  1..isEven..isEven has an obvious type because 1 has an obvious type.\n- e is a type cast. For instance, myComplexpression as int.\n\n**BAD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  var desserts = genericFunctionDeclaredFarAway(<num>[42], 'Something');\n  for (final recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n\nconst List<List<Ingredient>> cookbook = ...;\n```\n\n**GOOD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  List<List<Ingredient>> desserts = genericFunctionDeclaredFarAway(\n    <num>[42],\n    'Something',\n  );\n  for (final List<Ingredient> recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n\nconst List<List<Ingredient>> cookbook = ...;\n```\n\n**This rule is experimental.** It is being evaluated, and it may be changed\nor removed. Feedback on its behavior is welcome! The main issue is here:\nhttps://github.com/dart-lang/linter/issues/3480.",
+    "details": "Do type annotate initialized local variables when the type is non-obvious.\n\nType annotations on local variables can serve as a request for type inference,\ndocumenting the expected outcome of the type inference step, and declaratively\nallowing the compiler and analyzer to solve the possibly complex task of\nfinding type arguments and annotations in the initializing expression that\nyield the desired result.\n\nType annotations on local variables can also inform readers about the type\nof the initializing expression, which will allow them to proceed reading the\nsubsequent lines of code with known good information about the type of the\ngiven variable (which may not be immediately evident by looking at the\ninitializing expression).\n\nAn expression is considered to have a non-obvious type when it does not\nhave an obvious type.\n\nAn expression e has an obvious type in the following cases:\n\n- e is a non-collection literal. For instance, 1, true, 'Hello, $name!'.\n- e is a collection literal with actual type arguments. For instance,\n  <int, bool>{}.\n- e is a list literal or a set literal where at least one element has an\n  obvious type, and all elements have the same type. For instance, [1, 2] and\n  { [true, false], [] }, but not [1, 1.5].\n- e is a map literal where all key-value pair have a key with an obvious type\n  and a value with an obvious type, and all keys have the same type, and all\n  values have the same type. For instance, { #a: <int>[] }, but not\n  {1: 1, 2: true}.\n- e is an instance creation expression whose class part is not raw. For\n  instance C(14) if C is a non-generic class, or C<int>(14) if C accepts one\n  type argument, but not C(14) if C accepts one or more type arguments.\n- e is a cascade whose target has an obvious type. For instance,\n  1..isEven..isEven has an obvious type because 1 has an obvious type.\n- e is a type cast. For instance, myComplexExpression as int.\n\n**BAD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  var desserts = genericFunctionDeclaredFarAway(<num>[42], 'Something');\n  for (final recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n\nconst List<List<Ingredient>> cookbook = ...;\n```\n\n**GOOD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  List<List<Ingredient>> desserts = genericFunctionDeclaredFarAway(\n    <num>[42],\n    'Something',\n  );\n  for (final List<Ingredient> recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n\nconst List<List<Ingredient>> cookbook = ...;\n```\n\n**This rule is experimental.** It is being evaluated, and it may be changed\nor removed. Feedback on its behavior is welcome! The main issue is here:\nhttps://github.com/dart-lang/linter/issues/3480.",
     "sinceDartSdk": "3.6-wip"
   },
   {

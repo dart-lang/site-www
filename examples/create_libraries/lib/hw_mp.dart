@@ -1,5 +1,5 @@
 /// A multi-platform Hello World library.
-library hw_mp;
+library;
 
 // #docregion export
 export 'src/hw_none.dart' // Stub implementation

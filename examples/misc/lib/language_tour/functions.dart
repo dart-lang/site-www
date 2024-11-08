@@ -27,6 +27,17 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion function-type
+    void greet(String name, {String greeting = 'Hello'}) =>
+        print('$greeting $name!');
+
+    // Store `greet` in a variable and call it.
+    void Function(String, {String greeting}) g = greet;
+    g('Dash', greeting: 'Howdy');
+    // #enddocregion function-type
+  }
+
+  {
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
     void enableFlags({bool? bold, bool? hidden}) {/*...*/}
