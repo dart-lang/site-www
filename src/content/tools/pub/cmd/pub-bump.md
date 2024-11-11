@@ -6,7 +6,7 @@ description: Use dart pub bump to increase the version number of the current pac
 _Bump_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```plaintext
-$ dart pub bump <subcommand>
+$ dart pub bump <subcommand> [options]
 ```
 
 This command increments the version number of the current package.
@@ -31,3 +31,8 @@ $ dart pub bump minor
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+### `-n, --dry-run`
+
+Reports what would change for the version number under each subcommand,
+and shows the version diff, without changing anything.
