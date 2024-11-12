@@ -265,7 +265,7 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 ## Pub Workspaces (Mono-repo Support)
 
 When working on a project, you might develop multiple Dart packages in the same
-version control repository (a mono-repo).
+version control repository (a _monorepo_).
 
 For example you might have a directory layout like: 
 
