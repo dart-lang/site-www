@@ -34,7 +34,7 @@ There are some downsides to this setup:
 * If you open the root folder in your IDE, the dart analyzer will have to have a
   separate analysis contexts for each package (increasing memory usage).
 
-Pub allows you to organize your repository as a "workspace" using a single
+Pub allows you to organize your repository as a _workspace_ using a single
 shared resolution for all your packages.
 
 :::note
@@ -152,11 +152,11 @@ $ cd packages/client_package ; dart pub publish ; cd -
 
 ## Temporarily resolving a package outside its workspace:
 
-Sometimes you might want to resolve a workspace package on its own, eg. to
-validate its dependency constraints.
+Sometimes you might want to resolve a workspace package on its own, for example
+to validate its dependency constraints.
 
 One way to do this is to create a `pubspec_overides.yaml` file that resets the
-`resolution:` setting. Like:
+`resolution` setting, like so:
 
 ```yaml
 # packages/client_package/pubspec_overrides.yaml

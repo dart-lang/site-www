@@ -166,6 +166,6 @@ upgrade all dependencies in the shared resolution from across all workspace
 packages.
 
 `dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
-constraints in all workspace `pubspec.yaml`s.
+constraints in all workspace `pubspec.yaml` files.
 
 {% render 'pub-problems.md' %}
