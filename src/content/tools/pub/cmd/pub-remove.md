@@ -19,11 +19,6 @@ and then calling `dart pub get`:
 $ dart pub remove http
 ```
 
-## In a workspace
-
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub remove` removes
-dependencies from the package in the current directory.
-
 ## Options
 
 For options that apply to all pub commands, see
@@ -44,5 +39,9 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+## In a workspace
+
+In a [Pub Workspace](/guides/packages#workspaces) `dart pub remove` removes
+dependencies from the package in the current directory.
 
 {% render 'pub-problems.md' %}

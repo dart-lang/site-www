@@ -96,8 +96,6 @@ In offline mode, pub looks only in your local package cache,
 trying to find a set of versions that work with your package from what's already
 available.
 
-
-
 ## Options
 
 For options that apply to all pub commands, see

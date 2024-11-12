@@ -108,15 +108,6 @@ offline `dart pub upgrade` locks your app to that old version.
 The next time you are online, you will likely want to
 run `dart pub upgrade` again to upgrade to a later version.
 
-## In a workspace
-
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub upgrade` will
-upgrade all dependencies in the shared resolution from across all workspace
-packages.
-
-`dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
-constraints in all workspace `pubspec.yaml`s.
-
 ## Options
 
 The `dart pub upgrade` command supports the
@@ -167,5 +158,14 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 When used with a list of packages to unlock, first the transitive closure of
 those packages' dependencies (in the current resolution) is computed,
 and then all those packages are unlocked.
+
+## In a workspace
+
+In a [Pub Workspace](/guides/packages#workspaces) `dart pub upgrade` will
+upgrade all dependencies in the shared resolution from across all workspace
+packages.
+
+`dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
+constraints in all workspace `pubspec.yaml`s.
 
 {% render 'pub-problems.md' %}
