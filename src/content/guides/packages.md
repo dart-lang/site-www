@@ -289,8 +289,8 @@ For example you might have a directory layout like:
 There are some downsides to this setup:
 
 * You need to run `dart pub get` once for each package.
-* You risk ending up with different versions of dependencies for each package.
-  Leading to confusion when context switching between the packages.
+* You risk ending up with different versions of dependencies for each package
+  leading to confusion when context switching between the packages.
 * If you open the root folder in your IDE, the dart analyzer will have to have a
   separate analysis contexts for each package (increasing memory usage).
 
