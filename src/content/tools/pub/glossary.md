@@ -316,6 +316,6 @@ their dependency constraints. Useful for developing in a monorepo.
 The packages will have a shared `pubspec.lock` and a shared
 `.dart_tool/package_config.json`.
 
-For more information, see
+For more information, read
 [Pub Workspaces](/guides/packages#workspaces).
 
