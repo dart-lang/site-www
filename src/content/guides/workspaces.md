@@ -29,9 +29,9 @@ For example you might have a directory layout like:
 There are some downsides to this setup:
 
 * You need to run `dart pub get` once for each package.
-* You risk ending up with different versions of dependencies for each package
+* You risk ending up with different versions of dependencies for each package,
   leading to confusion when context switching between the packages.
-* If you open the root folder in your IDE, the dart analyzer will have to have a
+* If you open the root folder in your IDE, the dart analyzer will have to have
   separate analysis contexts for each package (increasing memory usage).
 
 Pub allows you to organize your repository as a _workspace_ using a single
@@ -39,12 +39,12 @@ shared resolution for all your packages.
 
 :::note
 Using a single shared dependency resolution for all your packages increases
-the risks of dependency conflicts. Because Dart does not allow multiple versions
+the risks of dependency conflicts, because Dart does not allow multiple versions
 of the same package.
 
 If the packages are going to be used together (as is commonly the case),
-this is often a feature, as it forces you to resolve incompatibilities between your
-packages when they arise, rather then when you start using the packages.
+this risk is a useful feature. It forces you to resolve incompatibilities between
+your packages when they arise, rather then when you start using the packages.
 :::
 
 To create a workspace:
@@ -53,19 +53,19 @@ To create a workspace:
   enummerating the paths to the packages of the respository (the workspace
   packages):
 
-```yaml
-name: _
-publish_to: none
-environment:
-  sdk: ^3.6.0
-workspace:
-  - packages/helper
-  - packages/client_package
-  - packages/server_package
-```
+  ```yaml
+  name: _
+  publish_to: none
+  environment:
+    sdk: ^3.6.0
+  workspace:
+    - packages/helper
+    - packages/client_package
+    - packages/server_package
+  ```
 
-* For each of the existing `pubspec.yaml`s, make sure their SDK constraint is at
-  least `^3.6.0` and add a `resolution` entry:
+* For each of the existing `pubspec.yaml` filrd, make sure their SDK constraint
+  is at least `^3.6.0` and add a `resolution` entry:
 
   ```yaml
   environment:
@@ -73,7 +73,7 @@ workspace:
   resolution: workspace
   ```
 
-* Run `dart pub get` anywhere in the repository, and this will:
+* Run `dart pub get` anywhere in the repository. This will:
   * Create a single `pubspec.lock` next to the root `pubspec.yaml` that contains
     the a resolution of all the `dependencies` and `dev_dependencies` of all the
     workspace packages. 
@@ -131,12 +131,12 @@ will get the hosted version of `shared` as a transitive dependency.
 
 ## Dependency overrides in a workspace
 
-All `dependency_overrides:` sections in the workspace packages are respected,
-and you can also place a `pubspec_overrides.yaml` file next to any of the
+All `dependency_overrides` sections in the workspace packages are respected.
+You can also place a `pubspec_overrides.yaml` file next to any of the
 workspace `pubspec.yaml` files.
 
-You can only override a package once in the workspace. To keep overrides organized
-it can be preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
+You can only override a package once in the workspace. To keep overrides organized,
+it's preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
 
 ## Running a command in a specific workspace package
 
