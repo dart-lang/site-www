@@ -48,8 +48,8 @@
         permalink: /language/loops
       - title: Branches
         permalink: /language/branches
-    - title: Error handling
-      permalink: /language/error-handling
+      - title: Error handling
+        permalink: /language/error-handling
     - title: Classes & objects
       children:
         - title: Classes
