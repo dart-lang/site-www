@@ -1218,11 +1218,11 @@ here are some suggestions for where to go next:
 * Read the [Iterable API reference][iterable class]
   to learn about methods that this tutorial doesn't cover.
 
-[hashmap class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-collection/HashMap-class.html
-[iterable class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
-[iterator class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterator-class.html
-[list class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
-[map class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
-[set class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
-[StateError class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StateError-class.html
-[String class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String-class.html
+[hashmap class]: {{site.dart-api}}/dart-collection/HashMap-class.html
+[iterable class]: {{site.dart-api}}/dart-core/Iterable-class.html
+[iterator class]: {{site.dart-api}}/dart-core/Iterator-class.html
+[list class]: {{site.dart-api}}/dart-core/List-class.html
+[map class]: {{site.dart-api}}/dart-core/Map-class.html
+[set class]: {{site.dart-api}}/dart-core/Set-class.html
+[StateError class]: {{site.dart-api}}/dart-core/StateError-class.html
+[String class]: {{site.dart-api}}/dart-core/String-class.html

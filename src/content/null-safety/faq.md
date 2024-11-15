@@ -180,7 +180,7 @@ Until everything is fully migrated and the code switches to running
 with sound null safety, `arg` might be set to `null`.
 
 The simplest way to preserve behavior is change the check into
-[`ArgumentError.checkNotNull`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError/checkNotNull.html).
+[`ArgumentError.checkNotNull`]({{site.dart-api}}/dart-core/ArgumentError/checkNotNull.html).
 
 The same applies to some runtime type checks. If `arg`
 has static type `String`, then `if (arg is! String)` is actually checking
@@ -212,7 +212,7 @@ In such cases, you have two options:
 ## How do I signal that the return value from a Map is non-nullable?
 
 The
-[lookup operator]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map/operator_get.html)
+[lookup operator]({{site.dart-api}}/dart-core/Map/operator_get.html)
 on Map (`[]`) by default returns a nullable type. There's no way to signal to
 the language that the value is guaranteed to be there.
 
@@ -244,7 +244,7 @@ initializing the list with length and filling it in via a loop.
 
 If you are simply initializing the list with the same value, you should instead
 use the 
-[`filled`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.filled.html) 
+[`filled`]({{site.dart-api}}/dart-core/List/List.filled.html) 
 constructor.
 
 ```dart tag=bad
@@ -284,7 +284,7 @@ with the `growable` parameter set to `false`:
 _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 ```
 
-[`List.generate`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.generate.html
+[`List.generate`]: {{site.dart-api}}/dart-core/List/List.generate.html
 
 {% comment %}
   Would preferably suggest a language syntax here,

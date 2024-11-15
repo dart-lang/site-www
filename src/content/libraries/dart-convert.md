@@ -139,4 +139,4 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 [JSON]: https://www.json.org/
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
-[dart:convert]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
+[dart:convert]: {{site.dart-api}}/dart-convert/dart-convert-library.html

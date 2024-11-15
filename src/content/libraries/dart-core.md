@@ -765,8 +765,8 @@ assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 ```
 
-[`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
-[`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
+[`Uri.http`]: {{site.dart-api}}/dart-core/Uri/Uri.http.html
+[`Uri.https`]: {{site.dart-api}}/dart-core/Uri/Uri.https.html
 
 ## Dates and times
 
@@ -899,9 +899,9 @@ you can use either [`Object.hashAll()`][] (if element order matters)
 or [`Object.hashAllUnordered()`][].
 :::
 
-[`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
-[`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
-[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAllUnordered.html
+[`Object.hash()`]: {{site.dart-api}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart-api}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart-api}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
 Note: There's disagreement over whether to include identical() in the ==
@@ -1057,33 +1057,33 @@ Support for weak references and finalizers was added in Dart 2.17.
 :::
 
 
-[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
-[Comparable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Comparable-class.html
-[DateTime]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/DateTime-class.html
-[Duration]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Duration-class.html
-[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
-[Expando]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Expando-class.html
-[Finalizable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Finalizable-class.html
-[Finalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Finalizer-class.html
-[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
-[Iterator]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterator-class.html
-[List]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
-[Map]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
-[Match]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Match-class.html
-[NativeFinalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
-[NoSuchMethodError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError-class.html
-[Pattern]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Pattern-class.html
-[RegExp]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/RegExp-class.html
-[Set]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
-[StringBuffer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StringBuffer-class.html
-[String]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String-class.html
-[Uri]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri-class.html
-[WeakReference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/WeakReference-class.html
-[dart:core]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/dart-core-library.html
+[ArgumentError]: {{site.dart-api}}/dart-core/ArgumentError-class.html
+[Comparable]: {{site.dart-api}}/dart-core/Comparable-class.html
+[DateTime]: {{site.dart-api}}/dart-core/DateTime-class.html
+[Duration]: {{site.dart-api}}/dart-core/Duration-class.html
+[Exception]: {{site.dart-api}}/dart-core/Exception-class.html
+[Expando]: {{site.dart-api}}/dart-core/Expando-class.html
+[Finalizable]: {{site.dart-api}}/dart-ffi/Finalizable-class.html
+[Finalizer]: {{site.dart-api}}/dart-core/Finalizer-class.html
+[Iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
+[Iterator]: {{site.dart-api}}/dart-core/Iterator-class.html
+[List]: {{site.dart-api}}/dart-core/List-class.html
+[Map]: {{site.dart-api}}/dart-core/Map-class.html
+[Match]: {{site.dart-api}}/dart-core/Match-class.html
+[NativeFinalizer]: {{site.dart-api}}/dart-ffi/NativeFinalizer-class.html
+[NoSuchMethodError]: {{site.dart-api}}/dart-core/NoSuchMethodError-class.html
+[Pattern]: {{site.dart-api}}/dart-core/Pattern-class.html
+[RegExp]: {{site.dart-api}}/dart-core/RegExp-class.html
+[Set]: {{site.dart-api}}/dart-core/Set-class.html
+[StringBuffer]: {{site.dart-api}}/dart-core/StringBuffer-class.html
+[String]: {{site.dart-api}}/dart-core/String-class.html
+[Uri]: {{site.dart-api}}/dart-core/Uri-class.html
+[WeakReference]: {{site.dart-api}}/dart-core/WeakReference-class.html
+[dart:core]: {{site.dart-api}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
-[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
+[double]: {{site.dart-api}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
-[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
-[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
-[toStringAsFixed()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsFixed.html
-[toStringAsPrecision()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsPrecision.html
+[int]: {{site.dart-api}}/dart-core/int-class.html
+[num]: {{site.dart-api}}/dart-core/num-class.html
+[toStringAsFixed()]: {{site.dart-api}}/dart-core/num/toStringAsFixed.html
+[toStringAsPrecision()]: {{site.dart-api}}/dart-core/num/toStringAsPrecision.html

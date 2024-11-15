@@ -265,14 +265,14 @@ For more information about server-side and command-line app development, see the
 [server-side Dart overview.](/server)
 
 
-[dart:io]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/dart-io-library.html
-[Directory]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Directory-class.html
+[dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html
+[Directory]: {{site.dart-api}}/dart-io/Directory-class.html
 [Fetch data from the internet]: /tutorials/server/fetch-data
-[File]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File-class.html
-[HttpClient]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/HttpClient-class.html
-[HttpRequest]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/HttpRequest-class.html
-[HttpServer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/HttpServer-class.html
-[IOSink]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/IOSink-class.html
-[Process]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Process-class.html
-[Socket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/Socket-class.html
-[WebSocket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/WebSocket-class.html
+[File]: {{site.dart-api}}/dart-io/File-class.html
+[HttpClient]: {{site.dart-api}}/dart-io/HttpClient-class.html
+[HttpRequest]: {{site.dart-api}}/dart-html/HttpRequest-class.html
+[HttpServer]: {{site.dart-api}}/dart-io/HttpServer-class.html
+[IOSink]: {{site.dart-api}}/dart-io/IOSink-class.html
+[Process]: {{site.dart-api}}/dart-io/Process-class.html
+[Socket]: {{site.dart-api}}/dart-io/Socket-class.html
+[WebSocket]: {{site.dart-api}}/dart-io/WebSocket-class.html

@@ -145,6 +145,6 @@ candidates
 [exceptions]: /language/error-handling
 [branching]: /language/branches
 [iteration]: /libraries/dart-core#iteration
-[forEach()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/forEach.html
-[`Iterable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[forEach()]: {{site.dart-api}}/dart-core/Iterable/forEach.html
+[`Iterable`]: {{site.dart-api}}/dart-core/Iterable-class.html
 [pattern]: /language/patterns

@@ -302,7 +302,7 @@ await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
 [http-client-exc]: {{site.pub-api}}/http/latest/http/ClientException-class.html
 [mock-http-json]: /f/packages/http.json
-[`Future`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[`Future`]: {{site.dart-api}}/dart-async/Future-class.html
 [status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
 [http-get]: {{site.pub-api}}/http/latest/http/get.html
@@ -399,7 +399,7 @@ void main() async {
 }
 ```
 
-[decode-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/JsonCodec/decode.html
+[decode-docs]: {{site.dart-api}}/dart-convert/JsonCodec/decode.html
 
 ### Create a structured class to store the data
 
@@ -652,6 +652,6 @@ to prevent your interface from becoming unresponsive.
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [Using JSON]: /guides/json
-[convert-docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
+[convert-docs]: {{site.dart-api}}/dart-convert/dart-convert-library.html
 [http-pub]: {{site.pub-pkg}}/http
 [http-docs]: {{site.pub-api}}/http

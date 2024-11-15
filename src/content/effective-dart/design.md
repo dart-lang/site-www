@@ -1471,7 +1471,7 @@ marginally more useful than using `dynamic`. If you're going to annotate, prefer
 a full function type that includes the parameters and return type of the
 function.
 
-[Function]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
+[Function]: {{site.dart-api}}/dart-core/Function-class.html
 
 <?code-excerpt "design_good.dart (avoid-function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 ```dart tag=good
