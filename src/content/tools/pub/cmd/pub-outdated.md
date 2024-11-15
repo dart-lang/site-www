@@ -235,7 +235,7 @@ To include up-to-date dependencies, use `--up-to-date`.
 
 ## In a workspace
 
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub outdated` lists
+In a [Pub workspace](/guides/workspaces) `dart pub outdated` lists
 all dependencies 
 
 {% render 'pub-problems.md' %}

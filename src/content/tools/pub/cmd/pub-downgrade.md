@@ -123,5 +123,5 @@ Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
 ## In a workspace
 
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub downgrade` will
+In a [Pub workspace](/guides/workspaces) `dart pub downgrade` will
 downgrade all dependencies across the workspace.

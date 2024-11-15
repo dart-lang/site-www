@@ -41,7 +41,7 @@ To prevent precompilation, use `--no-precompile`.
 
 ## In a workspace
 
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub remove` removes
+In a [Pub workspace](/guides/workspaces) `dart pub remove` removes
 dependencies from the package in the current directory.
 
 {% render 'pub-problems.md' %}

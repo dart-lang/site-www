@@ -50,5 +50,5 @@ to publish the second package immediately, by side-stepping client-side validati
 
 ## In a workspace
 
-In a [Pub Workspace](/guides/packages#workspaces) `dart pub publish` publishes
+In a [Pub workspace](/guides/workspaces) `dart pub publish` publishes
 the package in the current directory.
