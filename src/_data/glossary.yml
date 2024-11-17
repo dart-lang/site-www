@@ -652,8 +652,8 @@
       link: "/tools/pub/dependencies#version-constraints"
     - text: "Pub versioning philosophy"
       link: "/tools/pub/versioning"
-  category: "packages"
   labels:
+    - "packages"
     - "versioning"
     - "dependencies"
     - "pubspec"
@@ -674,8 +674,8 @@
       link: "/tools/pub/publishing#verified-publisher"
     - text: "List of verified publishers"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "publishing"
     - "pub.dev"
 
@@ -696,8 +696,8 @@
       link: "/tools/pub/verified-publishers"
     - text: "Package publishing"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "publishing"
     - "pub.dev"
 
@@ -715,8 +715,8 @@
   related_links:
     - text: "Types of dependencies"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "versioning"
     - "dependencies"
 
@@ -728,8 +728,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "package config"
     - "cache"
   alternate:
@@ -743,8 +743,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "pubspec"
     - "dependencies"
     - "versioning"
@@ -759,8 +759,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "pubspec"
     - "sdk"
     - "versioning"
@@ -776,8 +776,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "libraries"
     - "dependencies"
   alternate:
@@ -791,8 +791,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "libraries"
     - "dependencies"
     - "pubspec"
@@ -809,10 +809,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "language"
   labels:
-    # TODO(parlough): Perhaps labels and categories should just be combined.
-    # This fits in the "language" and "packages" categories
+    - "language"
     - "packages"
     - "imports"
   alternate:
@@ -826,8 +824,8 @@
   related_links:
     - text: "Types of dependencies"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "versioning"
     - "dependencies"
   alternate:
@@ -841,9 +839,9 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "tools"
   labels:
     - "packages"
+    - "tools"
     - "bin"
   alternate:
     - "direct dependency"
@@ -856,9 +854,9 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "tools"
   labels:
     - "packages"
+    - "tools"
     - "bin"
   alternate:
     - "Entrypoint package"
@@ -873,8 +871,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "dependencies"
     - "package dependency"
     - "libraries"
@@ -887,8 +885,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "pubspec"
     - "pubspec.lock"
     - "dependencies"
@@ -904,8 +902,8 @@
   related_links:
     - text: "TODO"
       link: "TODO"
-  category: "packages"
   labels:
+    - "packages"
     - "apps"
     - "pubspec.lock"
   alternate:
