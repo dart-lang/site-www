@@ -22,7 +22,6 @@ yaml_variable_scanner:
     - ^site\.branch$
     - ^site\.show_banner$
     - ^site\.og_image_vers$
-    - ^site\.sdkInfo\.
   
   # File path for check file contents
   #

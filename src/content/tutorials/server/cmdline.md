@@ -9,9 +9,8 @@ prevpage:
   title: "Get started: Command-line and server apps"
 ---
 
-{% assign _api = site.dart-api | append: '/' | append: site.sdkInfo.channel -%}
 {% assign argsAPI = site.pub-api | append: '/args/latest/args' -%}
-{% assign ioAPI = _api | append: '/dart-io' -%}
+{% assign ioAPI = site.dart-api | append: '/dart-io' -%}
 
 <?code-excerpt replace="/ ?\/\/!tip.*//g"?>
 
@@ -27,8 +26,8 @@ prevpage:
 
 :::note
 This tutorial uses the `async` and `await` language features, which rely on
-the [`Future`]({{_api}}/dart-async/Future-class.html) and
-[`Stream`]({{_api}}/dart-async/Stream-class.html)
+the [`Future`]({{site.dart-api}}/dart-async/Future-class.html) and
+[`Stream`]({{_site.dart-api}}/dart-async/Stream-class.html)
 classes for asynchronous support.
 To learn more about these features, see the
 [asynchronous programming tutorial](/libraries/async/async-await) and the
@@ -191,7 +190,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.5.3
+7   sdk: ^3.5.4
 8 
 9 # Add regular dependencies here.
 10 dependencies:
