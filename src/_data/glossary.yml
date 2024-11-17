@@ -876,7 +876,7 @@
     typically check this into source control.
     For regular packages, you usually won't.
 
-    [content hash]: #content-hashes
+    [content hash]: #content-hash
   labels:
     - "packages"
     - "libraries"
