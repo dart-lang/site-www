@@ -27,7 +27,7 @@ prevpage:
 :::note
 This tutorial uses the `async` and `await` language features, which rely on
 the [`Future`]({{site.dart-api}}/dart-async/Future-class.html) and
-[`Stream`]({{_site.dart-api}}/dart-async/Stream-class.html)
+[`Stream`]({{site.dart-api}}/dart-async/Stream-class.html)
 classes for asynchronous support.
 To learn more about these features, see the
 [asynchronous programming tutorial](/libraries/async/async-await) and the
