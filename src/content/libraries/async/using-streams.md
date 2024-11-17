@@ -397,13 +397,13 @@ and asynchronous programming in Dart.
   an article that explains how to handle errors using the Future API
 * [Asynchrony support](/language/async),
   a section in the [language tour](/language)
-* [Stream API reference]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html)
+* [Stream API reference]({{site.dart-api}}/dart-async/Stream-class.html)
 
-[bind()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamTransformer/bind.html
-[LineSplitter]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/LineSplitter-class.html
-[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
-[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
-[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
-[StreamSubscription]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamSubscription-class.html
-[StreamTransformer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamTransformer-class.html
-[Utf8Decoder]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/Utf8Decoder-class.html
+[bind()]: {{site.dart-api}}/dart-async/StreamTransformer/bind.html
+[LineSplitter]: {{site.dart-api}}/dart-convert/LineSplitter-class.html
+[Future]: {{site.dart-api}}/dart-async/Future-class.html
+[Iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
+[Stream]: {{site.dart-api}}/dart-async/Stream-class.html
+[StreamSubscription]: {{site.dart-api}}/dart-async/StreamSubscription-class.html
+[StreamTransformer]: {{site.dart-api}}/dart-async/StreamTransformer-class.html
+[Utf8Decoder]: {{site.dart-api}}/dart-convert/Utf8Decoder-class.html

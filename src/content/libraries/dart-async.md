@@ -211,8 +211,8 @@ or with an error if any of the provided futures fail.
 
 ### Handling errors for multiple futures
 
-You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureIterable/wait.html)
-or [record]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureRecord2/wait.html)
+You can also wait for parallel operations on an [iterable]({{site.dart-api}}/dart-async/FutureIterable/wait.html)
+or [record]({{site.dart-api}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
 These extensions return a future with the resulting values of all provided
@@ -462,9 +462,9 @@ Also see these articles and tutorials:
 - [Dart asynchronous programming: Isolates and event loops](/language/concurrency)
 
 
-[Future.wait()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/wait.html
-[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
-[`ParallelWaitError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ParallelWaitError-class.html
-[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
-[dart:async]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html
+[Future.wait()]: {{site.dart-api}}/dart-async/Future/wait.html
+[Future]: {{site.dart-api}}/dart-async/Future-class.html
+[`ParallelWaitError`]: {{site.dart-api}}/dart-async/ParallelWaitError-class.html
+[Stream]: {{site.dart-api}}/dart-async/Stream-class.html
+[dart:async]: {{site.dart-api}}/dart-async/dart-async-library.html
 [dart:io documentation]: /libraries/dart-io

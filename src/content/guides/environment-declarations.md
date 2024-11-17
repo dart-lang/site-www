@@ -105,10 +105,10 @@ if (const bool.hasEnvironment('DEBUG')) {
 }
 ```
 
-[string-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String/String.fromEnvironment.html
-[int-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int/int.fromEnvironment.html
-[bool-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.fromEnvironment.html
-[bool-has]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/bool/bool.hasEnvironment.html
+[string-from]: {{site.dart-api}}/dart-core/String/String.fromEnvironment.html
+[int-from]: {{site.dart-api}}/dart-core/int/int.fromEnvironment.html
+[bool-from]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
+[bool-has]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 
 ## Specifying environment declarations
 

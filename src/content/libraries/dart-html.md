@@ -449,17 +449,17 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
-[AnchorElement]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/AnchorElement-class.html
-[dart:html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/dart-html-library.html
+[AnchorElement]: {{site.dart-api}}/dart-html/AnchorElement-class.html
+[dart:html]: {{site.dart-api}}/dart-html/dart-html-library.html
 [Fetch data from the internet]: /tutorials/server/fetch-data
-[Document]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Document-class.html
-[Element]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Element-class.html
-[`HttpRequest`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/HttpRequest-class.html
-[IndexedDB]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[MessageEvent]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/MessageEvent-class.html
-[Nodes]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Node-class.html
-[web audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
-[WebGL]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_gl/dart-web_gl-library.html
-[WebSocket]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/WebSocket-class.html
+[Document]: {{site.dart-api}}/dart-html/Document-class.html
+[Element]: {{site.dart-api}}/dart-html/Element-class.html
+[`HttpRequest`]: {{site.dart-api}}/dart-html/HttpRequest-class.html
+[IndexedDB]: {{site.dart-api}}/dart-indexed_db/dart-indexed_db-library.html
+[MessageEvent]: {{site.dart-api}}/dart-html/MessageEvent-class.html
+[Nodes]: {{site.dart-api}}/dart-html/Node-class.html
+[web audio]: {{site.dart-api}}/dart-web_audio/dart-web_audio-library.html
+[WebGL]: {{site.dart-api}}/dart-web_gl/dart-web_gl-library.html
+[WebSocket]: {{site.dart-api}}/dart-html/WebSocket-class.html
 [web library overview]: /web/libraries
-[Window]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Window-class.html
+[Window]: {{site.dart-api}}/dart-html/Window-class.html

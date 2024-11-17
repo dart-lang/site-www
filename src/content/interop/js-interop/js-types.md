@@ -264,17 +264,17 @@ otherwise as it will be faster.
 See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 `ExternalDartReference`.
 
-[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`external`]: /language/functions#external
-[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop` API docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html#extension-types
-[`typeofEquals`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
-[`instanceOfString`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
-[`isA`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`dart:js_interop` API docs]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html#extension-types
+[`typeofEquals`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
+[`instanceOfString`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [#4841]: {{site.repo.dart.org}}/linter/issues/4841
 [#54025]: {{site.repo.dart.sdk}}/issues/54025
-[`JSBoxedDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSBoxedDartObject-extension-type.html
-[`ExternalDartReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReference-extension-type.html
-[`toExternalReference`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
-[`toDartObject`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
+[`JSBoxedDartObject`]: {{site.dart-api}}/dart-js_interop/JSBoxedDartObject-extension-type.html
+[`ExternalDartReference`]: {{site.dart-api}}/dart-js_interop/ExternalDartReference-extension-type.html
+[`toExternalReference`]: {{site.dart-api}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
+[`toDartObject`]: {{site.dart-api}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
 [Wasm]: /web/wasm

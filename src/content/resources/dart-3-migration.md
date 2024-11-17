@@ -341,24 +341,24 @@ that applies to all Dart 3 code.
   Existing bidirectional iterators can still work, they just don't have
   a shared supertype locking them to a specific name for moving backwards.
 
-[`List.filled`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.filled.html
-[`int.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int/parse.html
-[`double.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double/parse.html
-[`num.parse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/parse.html
-[`tryParse`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/tryParse.html
+[`List.filled`]: {{site.dart-api}}/dart-core/List/List.filled.html
+[`int.parse`]: {{site.dart-api}}/dart-core/int/parse.html
+[`double.parse`]: {{site.dart-api}}/dart-core/double/parse.html
+[`num.parse`]: {{site.dart-api}}/dart-core/num/parse.html
+[`tryParse`]: {{site.dart-api}}/dart-core/num/tryParse.html
 [`Deprecated.expires`]: {{site.dart-api}}/stable/2.19.6/dart-core/Deprecated/expires.html
-[`Deprecated.message`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Deprecated/message.html
+[`Deprecated.message`]: {{site.dart-api}}/dart-core/Deprecated/message.html
 [`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
 [`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
 [`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
 [`NoSuchMethodError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NoSuchMethodError/NoSuchMethodError.html
-[`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
+[`NoSuchMethodError.withInvocation`]: {{site.dart-api}}/dart-core/NoSuchMethodError/NoSuchMethodError.withInvocation.html
 [`CyclicInitializationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CyclicInitializationError-class.html
 [`Provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/Provisional-class.html
 [`provisional`]: {{site.dart-api}}/stable/2.19.6/dart-core/provisional-constant.html
 [`proxy`]: {{site.dart-api}}/stable/2.19.6/dart-core/proxy-constant.html
 [`CastError`]: {{site.dart-api}}/stable/2.19.6/dart-core/CastError-class.html
-[`TypeError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/TypeError-class.html
+[`TypeError`]: {{site.dart-api}}/dart-core/TypeError-class.html
 [`FallThroughError`]: {{site.dart-api}}/stable/2.19.6/dart-core/FallThroughError-class.html
 [`NullThrownError`]: {{site.dart-api}}/stable/2.19.6/dart-core/NullThrownError-class.html
 [`AbstractClassInstantiationError`]: {{site.dart-api}}/stable/2.19.6/dart-core/AbstractClassInstantiationError-class.html
@@ -381,7 +381,7 @@ that applies to all Dart 3 code.
   and [`Gauge`][] classes as they have been broken since Dart 2.0.
 
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/2.19.6/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-developer/UserTag/maxUserTags-constant.html
+[`maxUserTags`]: {{site.dart-api}}/dart-developer/UserTag/maxUserTags-constant.html
 [`Metrics`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metrics-class.html
 [`Metric`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Metric-class.html
 [`Counter`]: {{site.dart-api}}/stable/2.19.6/dart-developer/Counter-class.html

@@ -409,4 +409,4 @@ also prevents errors from *accidentally* leaking out of your function.
 See the [Future API reference][Future class]
 for more information on Futures.
 
-[Future class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[Future class]: {{site.dart-api}}/dart-async/Future-class.html
