@@ -3,7 +3,7 @@ title: dart pub
 description: The command-line interface for pub, a package management tool for Dart.
 ---
 
-The [pub package manager](/guides/packages) has a command-line interface
+The [pub package manager](/tools/pub/packages) has a command-line interface
 that works with either the
 [`flutter` tool][flutter-cli] or the [`dart` tool][dart-cli].
 With either tool, add the `pub` command followed by

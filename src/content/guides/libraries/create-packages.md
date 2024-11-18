@@ -3,7 +3,7 @@ title: Creating packages
 description: Learn how to create packages in Dart.
 ---
 
-The Dart ecosystem uses [packages](/guides/packages)
+The Dart ecosystem uses [packages](/tools/pub/packages)
 to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/tools/pub/glossary#package).
@@ -300,7 +300,7 @@ Use the following resources to learn more about packages:
 
 * [Libraries and imports](/language/libraries) covers
   using library files.
-* The [package](/guides/packages) documentation is useful, particularly the
+* The [package](/tools/pub/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).
 * [What not to commit](private-files)
   covers what should not be checked into a source code repository.

@@ -463,7 +463,7 @@ consult the [PubGrub][pubgrub] article on Medium.
 
 [immediate-dep]: /tools/pub/glossary#immediate-dependency
 [transitive-dep]: /tools/pub/glossary#transitive-dependency
-[pub]: /guides/packages
+[pub]: /tools/pub/packages
 [npm]: https://npmjs.org/
 [bundler]: https://bundler.io
 [caret-syntax]: /tools/pub/dependencies#caret-syntax

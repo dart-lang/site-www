@@ -92,7 +92,7 @@ The Dart SDK includes the following general-purpose `dart` tool:
 [`dart`](/tools/dart-tool)
 : A command-line interface (CLI) for creating, formatting, analyzing,
   testing, documenting, compiling, and running Dart code,
-  as well as working with the [pub package manager](/guides/packages).
+  as well as working with the [pub package manager](/tools/pub/packages).
 
 
 ### Debugging

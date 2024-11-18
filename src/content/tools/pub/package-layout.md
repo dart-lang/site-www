@@ -5,7 +5,7 @@ description: >-
   Dart's package management tool, pub.
 ---
 
-When you build a [pub package](/guides/packages),
+When you build a [pub package](/tools/pub/packages),
 we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
