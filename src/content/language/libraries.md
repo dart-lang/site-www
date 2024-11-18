@@ -16,7 +16,7 @@ are a unit of privacy: identifiers that start with an underscore (`_`)
 are visible only inside the library. *Every Dart file (plus its parts) is a
 [library][]*, even if it doesn't use a [`library`](#library-directive) directive.
 
-Libraries can be distributed using [packages](/guides/packages).
+Libraries can be distributed using [packages](/tools/pub/packages).
 
 :::note
 To learn why Dart uses underscores instead of access modifier keywords

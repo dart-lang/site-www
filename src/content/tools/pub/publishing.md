@@ -527,7 +527,7 @@ If you change your mind, you can remove the discontinued mark at any time.
 [Markdown]: {{site.pub-pkg}}/markdown
 [pkg-layout]: /tools/pub/package-layout
 [policy]: {{site.pub}}/policy
-[pub]: /guides/packages
+[pub]: /tools/pub/packages
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html

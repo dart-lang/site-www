@@ -8,7 +8,7 @@ description: >-
 {% assign pubpkg = site.pub-pkg %}
 
 This page lists some of the most popular and useful
-[packages](/guides/packages) that Dart developers have published.
+[packages](/tools/pub/packages) that Dart developers have published.
 To find more packages—and search [core libraries](/libraries)
 as well—use the [pub.dev site.]({{pub}})
 

@@ -3,7 +3,7 @@ title: The pubspec file
 description: Reference guide for the fields in pubspec.yaml.
 ---
 
-Every [pub package](/guides/packages) needs some metadata so it can specify its
+Every [pub package](/tools/pub/packages) needs some metadata so it can specify its
 [dependencies](/tools/pub/glossary#dependency). Pub packages that are shared with
 others also need to provide some other information so users can discover them.
 All of this metadata goes in the package's _pubspec:_

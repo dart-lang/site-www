@@ -7,7 +7,7 @@ The following terms are used in the documentation for
 [package management][] and
 the [pub tool][].
 
-[package management]: /guides/packages
+[package management]: /tools/pub/packages
 [pub tool]: /tools/pub/cmd
 
 ## Application package

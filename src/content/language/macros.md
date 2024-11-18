@@ -82,7 +82,7 @@ and a `fromJson` deserialization constructor.
    ```
 
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
-[Add the package]: /guides/packages
+[Add the package]: /tools/pub/packages
 [Enable the experiment]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
 
 ### Use the macro

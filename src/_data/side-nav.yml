@@ -154,7 +154,7 @@
   expanded: false
   children:
     - title: How to use packages
-      permalink: /guides/packages
+      permalink: /tools/pub/packages
     - title: Commonly used packages
       permalink: /resources/useful-packages
     - title: Creating packages

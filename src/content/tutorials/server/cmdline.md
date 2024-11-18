@@ -142,7 +142,7 @@ Future<void> _handleError(String path) async {
 
 You might notice that dcat depends on a package named **args**.
 To get the args package, use the
-[pub package manager](/guides/packages).
+[pub package manager](/tools/pub/packages).
 
 A real app has tests, license files, dependency files, examples, and so on.
 For the first app though, we can easily create only what is necessary
@@ -173,7 +173,7 @@ with the [`dart create`](/tools/dart-create) command.
 
 :::note
 To learn more about using packages and organizing your code, check out
-[How to use packages](/guides/packages) and
+[How to use packages](/tools/pub/packages) and
 [Package layout conventions](/tools/pub/package-layout).
 :::
 

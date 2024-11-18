@@ -26,7 +26,7 @@ The potentially breaking changes listed below fall into one of two categories:
   language version is set to >= Dart 3.0. 
   The [language version](/guides/language/evolution#language-version-numbers)
   is derived from the `sdk` lower-constraint in the
-  [`pubspec.yaml` file](/guides/packages#creating-a-pubspec). 
+  [`pubspec.yaml` file](/tools/pub/packages#creating-a-pubspec). 
   An SDK constraint like this does *not* apply the Dart 3 versioned changes:
 
   ```yaml
@@ -52,7 +52,7 @@ later are likely backwards compatible with Dart 3.
 This is possible for any package where 
 the lower bound of the SDK constraint is 2.12.0 or higher. 
 
-[Dart's pub tool](/guides/packages) allows resolution even when
+[Dart's pub tool](/tools/pub/packages) allows resolution even when
 the upper bound is limited to versions below 3.0.0. 
 For example, a package with the following constraint
 will be allowed to resolve with a Dart 3.x SDK, 

@@ -558,7 +558,7 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 </aside>
 
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
-[pub package manager]: /guides/packages
+[pub package manager]: /tools/pub/packages
 [`dart pub get`]: /tools/pub/cmd/pub-get
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 [`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
