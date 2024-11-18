@@ -542,7 +542,7 @@ For more information about the `.`, `?.`, and `..` operators, see
 
 [operators as class members]: /language/methods#operators
 [Dart language specification]: /guides/language/spec
-[identical()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/identical.html
+[identical()]: {{site.dart-api}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/branches#if

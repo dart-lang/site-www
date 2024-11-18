@@ -422,17 +422,17 @@ Symbol literals are compile-time constants.
 [iteration]: /libraries/dart-core#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom
-[`int`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
-[`double`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
-[`num`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
-[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math
+[`int`]: {{site.dart-api}}/dart-core/int-class.html
+[`double`]: {{site.dart-api}}/dart-core/double-class.html
+[`num`]: {{site.dart-api}}/dart-core/num-class.html
+[dart:math]: {{site.dart-api}}/dart-math
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 [dart-numbers]: /guides/language/numbers
-[runes]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Runes-class.html
+[runes]: {{site.dart-api}}/dart-core/Runes-class.html
 [characters package]: {{site.pub-pkg}}/characters
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
-[`Symbol`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html
+[`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
 [language version]: /guides/language/evolution#language-versioning

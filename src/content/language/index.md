@@ -561,7 +561,7 @@ This site's code follows the conventions in the
 [Strings]: /language/built-in-types#strings
 [The main() function]: /language/functions#the-main-function
 [ns]: /null-safety
-[`Object`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
+[`Object`]: {{site.dart-api}}/dart-core/Object-class.html
 [language version]: /guides/language/evolution#language-versioning
 [ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries

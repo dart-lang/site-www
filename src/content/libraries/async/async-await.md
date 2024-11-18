@@ -672,11 +672,11 @@ that does the following:
   * Example return value from `changeUsername()`: `"jane_smith_92"`
 * Catches any error that occurs and returns the string value of the error.
   * You can use the
-    [toString()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError/toString.html)
+    [toString()]({{site.dart-api}}/dart-core/ArgumentError/toString.html)
     method to stringify both
-    [Exceptions]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html) 
+    [Exceptions]({{site.dart-api}}/dart-core/Exception-class.html) 
     and
-    [Errors.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html)
+    [Errors.]({{site.dart-api}}/dart-core/Error-class.html)
 
 ```dartpad theme="dark"
 // TODO: Implement changeUsername here.
@@ -1088,7 +1088,7 @@ are some suggestions for where to go next:
 - Get the [Dart SDK](/get-dart)!
 
 [Dart videos]: {{site.yt.playlist}}PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
-[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[Future]: {{site.dart-api}}/dart-async/Future-class.html
 [style guide]: /effective-dart/style
 [documentation guide]: /effective-dart/documentation
 [usage guide]: /effective-dart/usage

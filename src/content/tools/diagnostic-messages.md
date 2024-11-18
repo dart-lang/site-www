@@ -10710,6 +10710,14 @@ abstract class C {
 
 ### invalid_null_aware_operator
 
+_The element can't be null, so the null-aware operator '?' is unnecessary._
+
+_The map entry key can't be null, so the null-aware operator '?' is
+unnecessary._
+
+_The map entry value can't be null, so the null-aware operator '?' is
+unnecessary._
+
 _The receiver can't be 'null' because of short-circuiting, so the null-aware
 operator '{0}' can't be used._
 
@@ -10769,6 +10777,14 @@ The reason `s` can't be null, despite the fact that `o` can be `null`, is
 because of the cast to `String`, which is a non-nullable type. If `o` ever
 has the value `null`, the cast will fail and the invocation of `length`
 will not happen.
+
+The following code produces this diagnostic because `s` can't be `null`:
+
+```dart
+List<String> makeSingletonList(String s) {
+  return <String>[[!?!]s];
+}
+```
 
 #### Common fixes
 
@@ -23234,8 +23250,6 @@ void f() {
 
 ### unused_element
 
-_A value for optional parameter '{0}' isn't ever given._
-
 _The declaration '{0}' isn't referenced._
 
 #### Description
@@ -23245,8 +23259,6 @@ referenced in the library that contains the declaration. The following
 kinds of declarations are analyzed:
 - Private top-level declarations and all of their members
 - Private members of public declarations
-- Optional parameters of private functions for which a value is never
-  passed
 
 Not all references to an element will mark it as "used":
 - Assigning a value to a top-level variable (with a standard `=`
@@ -23265,6 +23277,23 @@ produces this diagnostic:
 ```dart
 class [!_C!] {}
 ```
+
+#### Common fixes
+
+If the declaration isn't needed, then remove it.
+
+If the declaration is intended to be used, then add the code to use it.
+
+### unused_element_parameter
+
+_A value for optional parameter '{0}' isn't ever given._
+
+#### Description
+
+The analyzer produces this diagnostic when a value is never passed for an
+optional parameter declared within a private declaration.
+
+#### Example
 
 Assuming that no code in the library passes a value for `y` in any
 invocation of `_m`, the following code produces this diagnostic:
@@ -25990,7 +26019,7 @@ interop value and an unrelated JS interop type that will always be true and won'
 
 #### Description
 
-The analyzer produces this diagnostic when an `is` test has either
+The analyzer produces this diagnostic when an `is` test has either:
 - a JS interop type on the right-hand side, whether directly or as a type
   argument to another type, or
 - a JS interop value on the left-hand side.
@@ -29116,6 +29145,117 @@ operand:
 ```dart
 bool f(String s) {
   return s.length == 1;
+}
+```
+
+### unsafe_variance
+
+_This type is unsafe: a type parameter occurs in a non-covariant position._
+
+#### Description
+
+This lint warns against declaring non-covariant members.
+
+An instance variable whose type contains a type parameter of the
+enclosing class, mixin, or enum in a non-covariant position is
+likely to cause run-time failures due to failing type
+checks. For example, in `class C<X> {...}`, an instance variable
+of the form `void Function(X) myVariable;` may cause this kind
+of run-time failure.
+
+The same is true for a getter or method whose return type has a
+non-covariant occurrence of a type parameter of the enclosing
+declaration.
+
+This lint flags this kind of member declaration.
+
+#### Example
+
+**BAD:**
+```dart
+class C<X> {
+  final bool Function([!X!]) fun; // LINT
+  C(this.fun);
+}
+
+void main() {
+  C<num> c = C<int>((i) => i.isEven);
+  c.fun(10); // Throws.
+}
+```
+
+The problem is that `X` occurs as a parameter type in the type
+of `fun`.
+
+#### Common fixes
+
+One way to reduce the potential for run-time type errors is to
+ensure that the non-covariant member `fun` is _only_ used on
+`this`. We cannot strictly enforce this, but we can make it
+private and add a forwarding method `fun` such that we can check
+locally in the same library that this constraint is satisfied:
+
+**BETTER:**
+```dart
+class C<X> {
+  // ignore: unsafe_variance
+  final bool Function(X) _fun;
+  bool fun(X x) => _fun(x);
+  C(this._fun);
+}
+
+void main() {
+  C<num> c = C<int>((i) => i.isEven);
+  c.fun(10); // Succeeds.
+}
+```
+
+A fully safe approach requires a feature that Dart does not yet
+have, namely statically checked variance. With that, we could
+specify that the type parameter `X` is invariant (`inout X`).
+
+It is possible to emulate invariance without support for statically
+checked variance. This puts some restrictions on the creation of
+subtypes, but faithfully provides the typing that `inout` would
+give:
+
+**GOOD:**
+```dart
+typedef Inv<X> = X Function(X);
+typedef C<X> = _C<X, Inv<X>>;
+
+class _C<X, Invariance extends Inv<X>> {
+  // ignore: unsafe_variance
+  final bool Function(X) fun; // Safe!
+  _C(this.fun);
+}
+
+void main() {
+  C<int> c = C<int>((i) => i.isEven);
+  c.fun(10); // Succeeds.
+}
+```
+
+With this approach, `C<int>` is not a subtype of `C<num>`, so
+`c` must have a different declared type.
+
+Another possibility is to declare the variable to have a safe
+but more general type. It is then safe to use the variable
+itself, but every invocation will have to be checked at run
+time:
+
+**HONEST:**
+```dart
+class C<X> {
+  final bool Function(Never) fun;
+  C(this.fun);
+}
+
+void main() {
+  C<num> c = C<int>((int i) => i.isEven);
+  var cfun = c.fun; // Local variable, enables promotion.
+  if (cfun is bool Function(int)) cfun(10); // Succeeds.
+  if (cfun is bool Function(bool)) cfun(true); // Not called.
 }
 ```
 

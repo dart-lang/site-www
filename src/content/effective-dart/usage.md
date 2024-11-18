@@ -557,7 +557,7 @@ The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
 collection contains *anything* can be painfully slow.
 
-[iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
 
 Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
@@ -683,7 +683,7 @@ That's verbose and causes two wrappers to be created, with two layers of
 indirection and redundant runtime checking. Fortunately, the core library has
 the [`whereType()`][where-type] method for this exact use case:
 
-[where-type]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/whereType.html
+[where-type]: {{site.dart-api}}/dart-core/Iterable/whereType.html
 
 <?code-excerpt "../../test/effective_dart_test.dart (where-type)"?>
 ```dart tag=good
@@ -705,7 +705,7 @@ existing transformations can change the type.
 If you're already calling `toList()`, replace that with a call to
 [`List<T>.from()`][list-from] where `T` is the type of resulting list you want.
 
-[list-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.from.html
+[list-from]: {{site.dart-api}}/dart-core/List/List.from.html
 
 <?code-excerpt "usage_good.dart (cast-list)"?>
 ```dart tag=good
@@ -1650,7 +1650,7 @@ primitives, and interfacing with asynchronous code that doesn't use futures.
 Most other code should use async/await or [`Future.then()`][then], because
 they're clearer and make error handling easier.
 
-[then]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/then.html
+[then]: {{site.dart-api}}/dart-async/Future/then.html
 
 <?code-excerpt "usage_good.dart (avoid-completer)"?>
 ```dart tag=good
@@ -1716,9 +1716,9 @@ In the bad example, if you pass it a `Future<Object>`, it incorrectly treats it
 like a bare, synchronous value.
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
-[Error]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html
-[StackOverflowError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StackOverflowError-class.html
-[OutOfMemoryError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/OutOfMemoryError-class.html
-[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
-[AssertionError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/AssertionError-class.html
-[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
+[Error]: {{site.dart-api}}/dart-core/Error-class.html
+[StackOverflowError]: {{site.dart-api}}/dart-core/StackOverflowError-class.html
+[OutOfMemoryError]: {{site.dart-api}}/dart-core/OutOfMemoryError-class.html
+[ArgumentError]: {{site.dart-api}}/dart-core/ArgumentError-class.html
+[AssertionError]: {{site.dart-api}}/dart-core/AssertionError-class.html
+[Exception]: {{site.dart-api}}/dart-core/Exception-class.html

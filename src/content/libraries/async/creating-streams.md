@@ -14,8 +14,8 @@ April 2013 (updated May 2021)_
 
 The dart:async library contains two types
 that are important for many Dart APIs:
-[Stream]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html) and
-[Future.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html)
+[Stream]({{site.dart-api}}/dart-async/Stream-class.html) and
+[Future.]({{site.dart-api}}/dart-async/Future-class.html)
 Where a Future represents the result of a single computation,
 a stream is a _sequence_ of results.
 You listen on a stream to get notified of the results
@@ -117,7 +117,7 @@ such as the following:
 Often, a transforming method is all you need.
 However, if you need even more control over the transformation,
 you can specify a
-[StreamTransformer]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamTransformer-class.html)
+[StreamTransformer]({{site.dart-api}}/dart-async/StreamTransformer-class.html)
 with `Stream`'s `transform()` method.
 The platform libraries provide stream transformers for many common tasks.
 For example, the following code uses the `utf8.decoder` and `LineSplitter`
@@ -216,7 +216,7 @@ That's where the `StreamController` class comes in.
 If the events of your stream comes from different parts of your program,
 and not just from a stream or futures that can traversed by an `async` function,
 then use a
-[StreamController]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/StreamController-class.html)
+[StreamController]({{site.dart-api}}/dart-async/StreamController-class.html)
 to create and populate the stream.
 
 A `StreamController` gives you a new stream
@@ -424,7 +424,7 @@ keep these tips in mind:
   one created using `StreamController(sync: true)`.
   When you send an event on an unpaused synchronous controller
   (for example, using the `add()`, `addError()`, or `close()` methods defined by
-  [EventSink]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/EventSink-class.html)),
+  [EventSink]({{site.dart-api}}/dart-async/EventSink-class.html)),
   the event is sent immediately to all listeners on the stream.
   `Stream` listeners must never be called until
   the code that added the listener has fully returned,

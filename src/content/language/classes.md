@@ -361,12 +361,12 @@ You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.
 
 
-[`Object`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
+[`Object`]: {{site.dart-api}}/dart-core/Object-class.html
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [Extension methods]: /language/extension-methods
 [Class modifiers]: /language/class-modifiers
 [constant constructors]: /language/constructors#constant-constructors
-[`Type`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Type-class.html
+[`Type`]: {{site.dart-api}}/dart-core/Type-class.html
 [type test operator]: /language/operators#type-test-operators
 [Getters and setters]: /language/methods#getters-and-setters
 [initializer list]: /language/constructors#use-an-initializer-list

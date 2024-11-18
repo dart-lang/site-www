@@ -37,9 +37,9 @@ To find other libraries that support the web platform,
 search pub.dev for [web packages][].
 
 [web]: {{site.pub-pkg}}/web
-[Dart SDK]: {{site.dart-api}}/{{site.sdkInfo.channel}}
+[Dart SDK]: {{site.dart-api}}
 [migrate]: /interop/js-interop/package-web
-[js_interop]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/dart-js_interop-library.html
+[js_interop]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [flutter-web]: {{site.flutter-docs}}/platform-integration/web
 [flutter]: {{site.flutter}}
 [web packages]: {{site.pub}}/web

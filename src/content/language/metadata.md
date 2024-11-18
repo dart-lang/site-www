@@ -68,9 +68,9 @@ Metadata can appear before a library, class, typedef, type parameter,
 constructor, factory, function, field, parameter, or variable
 declaration and before an import or export directive.
 
-[`@Deprecated`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Deprecated-class.html
-[`@deprecated`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/deprecated-constant.html
-[`@override`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/override-constant.html
-[`@pragma`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/pragma-class.html
+[`@Deprecated`]: {{site.dart-api}}/dart-core/Deprecated-class.html
+[`@deprecated`]: {{site.dart-api}}/dart-core/deprecated-constant.html
+[`@override`]: {{site.dart-api}}/dart-core/override-constant.html
+[`@pragma`]: {{site.dart-api}}/dart-core/pragma-class.html
 [dep-lint]: /tools/linter-rules/provide_deprecation_message
 [Extending a class]: /language/extend
