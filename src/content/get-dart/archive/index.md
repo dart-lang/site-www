@@ -11,8 +11,7 @@ js:
 
 Use this archive to download
 [specific versions](/get-dart#release-channels) of the
-[Dart SDK](/tools/sdk)
-and the [Dart API documentation.]({{site.dart-api}}/{{site.sdkInfo.channel}})
+[Dart SDK](/tools/sdk) and the [Dart API documentation]({{site.dart-api}}).
 
 Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
