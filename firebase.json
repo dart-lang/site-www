@@ -237,6 +237,7 @@
       { "source": "/guides/libraries/writing-package-pages", "destination": "/tools/pub/writing-package-pages", "type": 301 },
       { "source": "/guides/libraries/useful-libraries", "destination": "/resources/useful-packages", "type": 301 },
       { "source": "/guides/platforms", "destination": "/overview#platform", "type": 301 },
+      { "source": "/guides/whats-new", "destination": "/resources/whats-new", "type": 301 },
       { "source": "/install", "destination": "/get-dart", "type": 301 },
       { "source": "/install/**", "destination": "/get-dart", "type": 301 },
       { "source": "/install/archive", "destination": "/get-dart/archive", "type": 301 },
