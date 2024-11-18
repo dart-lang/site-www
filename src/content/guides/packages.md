@@ -271,6 +271,7 @@ the pub package manager.
 
 * [Creating packages](/guides/libraries/create-packages)
 * [Publishing packages](/tools/pub/publishing)
+* [Pub workspaces (monorepo support)](/guides/workspaces)
 
 ### Reference
 
