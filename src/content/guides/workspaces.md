@@ -44,7 +44,7 @@ of the same package.
 
 If the packages are going to be used together (as is commonly the case),
 this risk is a useful feature. It forces you to resolve incompatibilities between
-your packages when they arise, rather then when you start using the packages.
+your packages when they arise, rather than when you start using the packages.
 :::
 
 To create a workspace:
@@ -64,7 +64,7 @@ To create a workspace:
     - packages/server_package
   ```
 
-* For each of the existing `pubspec.yaml` filrd, make sure their SDK constraint
+* For each of the existing `pubspec.yaml` files, make sure their SDK constraint
   is at least `^3.6.0` and add a `resolution` entry:
 
   ```yaml
@@ -75,7 +75,7 @@ To create a workspace:
 
 * Run `dart pub get` anywhere in the repository. This will:
   * Create a single `pubspec.lock` next to the root `pubspec.yaml` that contains
-    the a resolution of all the `dependencies` and `dev_dependencies` of all the
+    the resolution of all the `dependencies` and `dev_dependencies` of all the
     workspace packages. 
   * Create a single shared `.dart_tool/package_config.json` that maps package
     names to file locations.
@@ -141,7 +141,7 @@ it's preferable to keep `dependency_overrides` in the root `pubspec.yaml`.
 ## Running a command in a specific workspace package
 
 Some pub commands, such as `dart pub add`, and `dart pub publish` operate on a
-"current" package. You can either change directory, or use `-C` to point pub at
+"current" package. You can either change the directory, or use `-C` to point pub at
 a directory:
 
 ```console
