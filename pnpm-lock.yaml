@@ -16,8 +16,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       firebase-tools:
-        specifier: ^13.25.0
-        version: 13.25.0(encoding@0.1.13)
+        specifier: ^13.26.0
+        version: 13.26.0(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.3
         version: 2.0.3
@@ -790,10 +790,6 @@ packages:
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
-  commander@4.1.1:
-    resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
-
   commander@5.1.0:
     resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
     engines: {node: '>= 6'}
@@ -1225,8 +1221,8 @@ packages:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@13.25.0:
-    resolution: {integrity: sha512-mrd3czF1cXV1X98czoanIvqOzceQpiBSBaf3B6O67ziXgh3ZsIKDjNk+8dSJIMfUj66DN018s4uX0/1EU+h6Fg==}
+  firebase-tools@13.26.0:
+    resolution: {integrity: sha512-8JgVv1o+gpObnUh9dpMg5mWLpm9okLFNBHWAyM/fYmgYZZDAr480XIKLpdogri9lunVQJ2YqGfFuBE6qo3X7kw==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
 
@@ -3901,8 +3897,6 @@ snapshots:
 
   commander@2.20.3: {}
 
-  commander@4.1.1: {}
-
   commander@5.1.0: {}
 
   compress-commons@6.0.2:
@@ -4352,7 +4346,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@13.25.0(encoding@0.1.13):
+  firebase-tools@13.26.0(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.12
       '@google-cloud/cloud-sql-connector': 1.4.0(encoding@0.1.13)
@@ -4366,7 +4360,7 @@ snapshots:
       cjson: 0.3.3
       cli-table: 0.3.11
       colorette: 2.0.20
-      commander: 4.1.1
+      commander: 5.1.0
       configstore: 5.0.1
       cors: 2.8.5
       cross-env: 5.2.1
