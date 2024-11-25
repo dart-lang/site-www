@@ -55,8 +55,8 @@ class Point {
   double x;
   double y;
 
-  // Generative constructor with optional positional parameters and default values.
-  Point([this.x = 2.0, this.y = 2.0]);
+  // Generative constructor with initializing formal parameters:
+  Point(this.x, this.y);
 }
 ```
 
