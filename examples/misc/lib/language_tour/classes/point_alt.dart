@@ -6,9 +6,9 @@
 ///
 // #docregion idiomatic-constructor
 class Point {
-  // Initializer list of variables and values
-  double x = 2.0;
-  double y = 2.0;
+  // Instance variables to hold the coordinates of the point.
+  double x;
+  double y;
 
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
