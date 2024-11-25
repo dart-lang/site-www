@@ -171,9 +171,12 @@ To conditionally import a file, use the same code as above,
 but change `export` to `import`.
 
 :::note
-The conditional import or export checks only whether the library is
-_available for use_ on the current platform,
-not whether it's actually imported or used.
+Conditional imports or exports only work with keys in the compilation
+environment. Any sequence of dot-separated identifiers is valid syntax.
+Currently, only keys of the form  `dart.library.name` are provided.
+`dart.library.name` is set to `"true"` in the compilation 
+environment if the library `dart:name` is _available for use_ on
+the current platform, not whether it's actually imported or used.
 :::
 
 All of the conditionally exported libraries must implement the same API.
