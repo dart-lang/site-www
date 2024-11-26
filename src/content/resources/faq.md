@@ -352,5 +352,5 @@ either of those lists results in a runtime exception.
 [dart analyze]: /tools/dart-analyze
 [webdev]: /tools/webdev
 
-[dart-mirror]: {{site.dart-api}}/dart-mirrors
+[dart-mirror]: {{site.dart-api}}/dart-mirrors/dart-mirrors-library.html
 [pub-cmd]: /tools/pub/cmd

@@ -87,7 +87,7 @@ and is also where you'll find `abs()`,` ceil()`,
 and `floor()`, among other methods.
 (Bitwise operators, such as \>\>, are defined in the `int` class.)
 If num and its subtypes don't have what you're looking for, the
-[dart:math][] library might.
+[`dart:math`][] library might.
 
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
@@ -425,7 +425,7 @@ Symbol literals are compile-time constants.
 [`int`]: {{site.dart-api}}/dart-core/int-class.html
 [`double`]: {{site.dart-api}}/dart-core/double-class.html
 [`num`]: {{site.dart-api}}/dart-core/num-class.html
-[dart:math]: {{site.dart-api}}/dart-math
+[`dart:math`]: {{site.dart-api}}/dart-math/dart-math-library.html
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 [dart-numbers]: /guides/language/numbers
 [runes]: {{site.dart-api}}/dart-core/Runes-class.html
