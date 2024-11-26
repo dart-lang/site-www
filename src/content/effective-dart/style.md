@@ -430,14 +430,15 @@ way the compiler does.
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
 sophisticated automated code formatter called [`dart format`][] that does it for
-you. We have [some documentation][dart format docs] on the rules it applies, but the
-official whitespace-handling rules for Dart are *whatever `dart format` produces*.
+you. The official whitespace-handling rules for Dart are
+*whatever `dart format` produces*. The [formatter FAQ][] can provide more insight
+into the style choices it enforces.
 
-The remaining formatting guidelines are for the few things `dart format` cannot fix
-for you.
+The remaining formatting guidelines are for the few things `dart format` cannot
+fix for you.  
 
 [`dart format`]: /tools/dart-format
-[dart format docs]: {{site.repo.dart.org}}/dart_style/wiki/Formatting-Rules
+[formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
 
 ### CONSIDER changing your code to make it more formatter-friendly
 
