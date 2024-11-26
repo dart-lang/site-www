@@ -1,3 +1,19 @@
+- term: "Analysis context"
+  short_description: |-
+    A representation of a set of code that should be analyzed using the same
+    sources of metadata.
+  long_description: |-
+    An _analysis context_ is a representation of a set of code that should be
+    analyzed using the same sources of metadata (same `package_config.json` file).
+    That set of code typically corresponds to a package.
+  related_links:
+    - text: "Customizing static analysis"
+      link: "/tools/analysis/"
+    - text: "Performing analysis"
+      link: "https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/doc/tutorial/analysis.md"
+  labels:
+    - "analyzer"
+
 - term: "Assist"
   short_description: |-
     An automated, local code edit targeted at making common improvements to code.
