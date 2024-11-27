@@ -4,7 +4,8 @@
     sources of metadata.
   long_description: |-
     An _analysis context_ is a representation of a set of code that should be
-    analyzed using the same sources of metadata (same `package_config.json` file).
+    analyzed using the same sources of metadata
+    (same [`package_config.json`](/tools/pub/glossary#system-cache) file).
     That set of code typically corresponds to a package.
   related_links:
     - text: "Customizing static analysis"
