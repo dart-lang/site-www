@@ -106,10 +106,10 @@ TODO: add links (with stable) when ready:
 TODO: Link to `package:web` section
 {% endcomment %}
 
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop
-[`dart:html`]: {{site.dart-api}}/dart-html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
+[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
 [`package:web`]: /interop/js-interop/package-web
-[`dart:js`]: {{site.dart-api}}/dart-js
+[`dart:js`]: {{site.dart-api}}/dart-js/dart-js-library.html
 [`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
 [`package:js`]: {{site.pub-pkg}}/js
@@ -118,7 +118,7 @@ TODO: Link to `package:web` section
 [tutorial on mocking]: /interop/js-interop/mock
 [`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
-[`dart:js_util`]: {{site.dart-api}}/dart-js_util
+[`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [Wasm]: /web/wasm

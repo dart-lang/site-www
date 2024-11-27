@@ -487,7 +487,7 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [`@JSExport`]: {{site.dart-api}}/dart-js_interop/JSExport-class.html
 [`createJSInteropWrapper`]: {{site.dart-api}}/dart-js_interop/createJSInteropWrapper.html
 [mocking tutorial]: /interop/js-interop/mock
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`globalContext`]: {{site.dart-api}}/dart-js_interop/globalContext.html
 [Helpers to inspect the type of JS values]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension.html
 [`dartify`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
