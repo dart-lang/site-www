@@ -141,21 +141,20 @@ dependencies:
 The `git` here says this package is found using Git, and the URL after that is
 the Git URL that can be used to clone the package.
 
-Even if the package repo is private, if you can
-[connect to the repo using SSH,][GitHub SSH]
-then you can depend on the package by using the repo's SSH URL:
+Even if the package repo is private, 
+you can configure your `git` setup to access the repo via an
+[HTTPS access key][GitHub HTTPS] or an [SSH key-pair][GitHub SSH].
+Then you can depend on the package by using the repo's corresponding URL:
 
 ```yaml
 dependencies:
   kittens:
+    # SSH URL:
     git: git@github.com:munificent/kittens.git
 ```
 
-Alternatively, you can access private repos using access tokens via HTTPS.
-This bypasses the need to continously generate SSH keys in certain cases.
-To use HTTPS, you'll need to [configure your git environment][].
-
-[configure your git environment]: https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+The `dart pub` command calls `git clone` as a subprocess, so all you need to
+provide is a `<url>` that works when `git clone <url>` is executed.
 
 If you want to depend on a specific commit, branch, or tag,
 add a `ref` key to the description:
@@ -563,6 +562,7 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 </aside>
 
+[GitHub HTTPS]: https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pub package manager]: /tools/pub/packages
 [`dart pub get`]: /tools/pub/cmd/pub-get
