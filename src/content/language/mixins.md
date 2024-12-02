@@ -87,6 +87,8 @@ mixin Musician {
 }
 
 class Virtuoso with Musician { 
+
+  @override
   void playInstrument(String instrumentName) { // Subclass must define.
     print('Plays the $instrumentName beautifully');
   }  
@@ -104,7 +106,10 @@ of a mixin, by calling getters which are defined as abstract on the mixin:
 mixin NameIdentity {
   String get name;
 
+  @override
   int get hashCode => name.hashCode;
+
+  @override
   bool operator ==(other) => other is NameIdentity && name == other.name;
 }
 
@@ -135,6 +140,8 @@ mixin Guitarist implements Tuner {
 }
 
 class PunkRocker with Guitarist {
+
+  @override
   void tuneInstrument() {
     print("Don't bother, being out of tune is punk rock.");
   }
