@@ -40,8 +40,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
       markdown-it-attrs:
-        specifier: ^4.2.0
-        version: 4.2.0(markdown-it@14.1.0)
+        specifier: ^4.3.0
+        version: 4.3.0(markdown-it@14.1.0)
       markdown-it-container:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1811,8 +1811,8 @@ packages:
       '@types/markdown-it': '*'
       markdown-it: '*'
 
-  markdown-it-attrs@4.2.0:
-    resolution: {integrity: sha512-m7svtUBythvcGFFZAv9VjMEvs8UbHri2sojJ3juJumoOzv8sdkx9a7W3KxiHbXxAbvL3Xauak8TMwCnvigVPKw==}
+  markdown-it-attrs@4.3.0:
+    resolution: {integrity: sha512-SQpN8q5LCYtRNuzHaWVLThuJmArN+H3b+jykwaK8AS8XlxyosRvge/7wT9N0XaXCJ5STHGl3gAc6/PXx37cbiQ==}
     engines: {node: '>=6'}
     peerDependencies:
       markdown-it: '>= 9.0.0'
@@ -5129,7 +5129,7 @@ snapshots:
       '@types/markdown-it': 14.1.1
       markdown-it: 14.1.0
 
-  markdown-it-attrs@4.2.0(markdown-it@14.1.0):
+  markdown-it-attrs@4.3.0(markdown-it@14.1.0):
     dependencies:
       markdown-it: 14.1.0
 
