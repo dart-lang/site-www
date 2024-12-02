@@ -151,6 +151,12 @@ dependencies:
     git: git@github.com:munificent/kittens.git
 ```
 
+Alternatively, you can access private repos using access tokens via HTTPS.
+This bypasses the need to continously generate SSH keys in certain cases.
+To use HTTPS, you'll need to [configure your git environment][].
+
+[configure your git environment]: https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+
 If you want to depend on a specific commit, branch, or tag,
 add a `ref` key to the description:
 
