@@ -142,7 +142,7 @@ The `git` here says this package is found using Git, and the URL after that is
 the Git URL that can be used to clone the package.
 
 Even if the package repo is private, 
-you can configure your `git` setup to access the repo via an
+you can configure your `git` setup to access the repo using an
 [HTTPS access key][GitHub HTTPS] or an [SSH key-pair][GitHub SSH].
 Then you can depend on the package by using the repo's corresponding URL:
 
