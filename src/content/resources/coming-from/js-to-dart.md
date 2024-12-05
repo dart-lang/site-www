@@ -384,7 +384,7 @@ When you add `final` to a Dart variable or `const` to a JavaScript variable,
 you must initialize the variable before other code can read its value.
 Once initialized, you can't change these variables' references.
 
-When Dart uses `const`, it refers to special values that it creates
+When Dart uses `final`, it refers to special values that it creates
 when compiling.
 Dart uses limited expressions to create these immutable values.
 These expressions _cannot_ have side effects.
