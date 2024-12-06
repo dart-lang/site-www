@@ -219,8 +219,8 @@ With this command, `dart pub` performs the following tasks:
 1. Verifies that your package follows the [pubspec format][pubspec] and
    [package layout conventions][pkg-layout].
 
-1. Validates that `git status` is clean (warns against publishing files that
-   are tracked in git, but have uncommitted changes).
+1. Validates that `git status` is clean. Warns if
+   files that are tracked in git have uncommitted changes.
 
 1. Shows all of the files it intends to publish.
 
