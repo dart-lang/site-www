@@ -31,15 +31,13 @@ There are some downsides to this setup:
 * You need to run `dart pub get` once for each package.
 * You risk ending up with different versions of dependencies for each package,
   leading to confusion when context switching between the packages.
-* If you open the root folder in your IDE, the dart analyzer will have to have
-  separate [analysis contexts][] for each package (increasing memory usage).
+* If you open the root folder in your IDE, the dart analyzer will create
+  separate analysis contexts for each package, increasing memory usage.
 
 Pub allows you to organize your repository as a _workspace_ using a single
 shared resolution for all your packages. 
-A workspace also has a single analysis context,
-saving memory usage and improving performance.
-
-[analysis contexts]: /resources/glossary#analysis-context
+Using workspaces for large repositories reduces the amount of memory
+required for analysis, hence improving performance.
 
 :::note
 Using a single shared dependency resolution for all your packages increases
