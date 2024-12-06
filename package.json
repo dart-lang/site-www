@@ -9,9 +9,9 @@
     "url": "https://github.com/dart-lang/site-www.git"
   },
   "scripts": {
-    "serve": "PRODUCTION=false eleventy --serve",
-    "build-site-for-staging": "PRODUCTION=false OPTIMIZE=true eleventy",
-    "build-site-for-production": "PRODUCTION=true OPTIMIZE=true eleventy"
+    "serve": "tsx PRODUCTION=false node_modules/@11ty/eleventy/cmd.cjs --serve --config=eleventy.config.ts",
+    "build-site-for-staging": "tsx PRODUCTION=false OPTIMIZE=true node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
+    "build-site-for-production": "tsx PRODUCTION=true OPTIMIZE=true node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts"
   },
   "engines": {
     "node": ">=20.14.0",
@@ -23,6 +23,9 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@types/hast": "^3.0.4",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.10.1",
     "firebase-tools": "^13.28.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.3",
@@ -35,6 +38,7 @@
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "sass": "^1.82.0",
-    "shiki": "^1.24.0"
+    "shiki": "^1.24.0",
+    "tsx": "^4.19.2"
   }
 }

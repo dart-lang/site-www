@@ -1,44 +1,45 @@
-import { getPageInfo } from './utils/get-page-info.js';
-import { fromHtml } from 'hast-util-from-html';
-import { selectAll } from 'hast-util-select';
-import { toText } from 'hast-util-to-text';
-import { escapeHtml } from 'markdown-it/lib/common/utils.mjs';
+import {getPageInfo} from './utils/get-page-info.js';
+import {fromHtml} from 'hast-util-from-html';
+import {selectAll} from 'hast-util-select';
+import {toText} from 'hast-util-to-text';
+import {escapeHtml} from 'markdown-it/lib/common/utils.mjs';
+import {UserConfig} from '@11ty/eleventy';
 
-export function registerFilters(eleventyConfig) {
+export function registerFilters(eleventyConfig: UserConfig): void {
   eleventyConfig.addFilter('toSimpleDate', toSimpleDate);
   eleventyConfig.addFilter('regexReplace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('activeNavEntryIndexArray', activeNavEntryIndexArray);
   eleventyConfig.addFilter('arrayToSentenceString', arrayToSentenceString);
   eleventyConfig.addFilter('underscoreBreaker', underscoreBreaker);
-  eleventyConfig.addFilter('throwError', function (error) {
+  eleventyConfig.addFilter('throwError', function (error: any) {
     throw new Error(error);
   });
   eleventyConfig.addFilter('generateToc', generateToc);
   eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
 }
 
-function toSimpleDate(input) {
-  let dateString;
+function toSimpleDate(input: string | Date): string {
+  let dateString: string;
   if (input instanceof Date) {
     dateString = input.toISOString();
   } else {
     // If it's not a Date object, assume it's already in string format.
     dateString = input;
   }
-  return dateString.split('T')[0];
+  return dateString.split('T')[0]!;
 }
 
 /**
  * Replace text in {@link input} that matches the specified {@link regex}
  * with the specified {@link replacement}.
  *
- * @param {string} input
- * @param {RegExp} regex
- * @param {string} replacement
- * @return {string} The resulting string with the replacement made.
+ * @param input
+ * @param regex
+ * @param replacement
+ * @return The resulting string with the replacement made.
  */
-function regexReplace(input, regex, replacement = '') {
+function regexReplace(input: string, regex: RegExp, replacement: string = ''): string {
   return input.toString().replace(new RegExp(regex), replacement);
 }
 
@@ -47,10 +48,10 @@ function regexReplace(input, regex, replacement = '') {
  *
  * Used to add date information to the sitemap.
  *
- * @param {string|Date} input The date to convert
- * @return {string} The ISO string
+ * @param input The date to convert
+ * @return The ISO string
  */
-function toISOString(input) {
+function toISOString(input: string | Date): string {
   if (input instanceof Date) {
     return input.toISOString();
   } else {
@@ -59,12 +60,12 @@ function toISOString(input) {
   }
 }
 
-function activeNavEntryIndexArray(navEntryTree, pageUrlPath = '') {
+function activeNavEntryIndexArray(navEntryTree: any, pageUrlPath: string = ''): number[] | null {
   const activeEntryIndexes = _getActiveNavEntries(navEntryTree, pageUrlPath);
   return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
 }
 
-function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
+function _getActiveNavEntries(navEntryTree: any, pageUrlPath = ''): number[] {
   // TODO(parlough): Simplify once standardizing with the Flutter site.
   for (let i = 0; i < navEntryTree.length; i++) {
     const entry = navEntryTree[i];
@@ -93,13 +94,13 @@ function _getActiveNavEntries(navEntryTree, pageUrlPath = '') {
   return [];
 }
 
-function arrayToSentenceString(list, joiner = 'and') {
+function arrayToSentenceString(list: string[], joiner: string = 'and'): string {
   if (!list || list.length === 0) {
     return '';
   }
 
   if (list.length === 1) {
-    return list[0];
+    return list[0]!;
   }
 
   let result = '';
@@ -116,7 +117,7 @@ function arrayToSentenceString(list, joiner = 'and') {
   return result;
 }
 
-function underscoreBreaker(stringToBreak, inAnchor = false) {
+function underscoreBreaker(stringToBreak: string, inAnchor: boolean = false): string {
   // Only consider text which has underscores in it to keep this simpler.
   if (!stringToBreak.includes('_')) {
     return stringToBreak;
@@ -127,35 +128,35 @@ function underscoreBreaker(stringToBreak, inAnchor = false) {
     // we don't want to replace the href,
     // just the inner text content.
     return stringToBreak.replace(/>([a-zA-Z_]*?)</g, (match) => {
-      return `>${match[1].replaceAll('_', '_<wbr>')}<`;
+      return `>${match[1]!.replaceAll('_', '_<wbr>')}<`;
     });
   }
 
   return stringToBreak.replaceAll('_', '_<wbr>');
 }
 
-function generateToc(contents) {
+function generateToc(contents: string) {
   // TODO(parlough): Speed this up.
   //   Perhaps do the processing before HTML rendering?
   //   Maybe shouldn't be a filter.
   const dom = fromHtml(contents);
   const headers = selectAll('h2, h3', dom);
-  if (headers < 1) {
-    // If there is only one header, there is no point of a TOC.
+  if (headers.length < 1) {
+    // If there's only one header, there's no point of a TOC.
     return null;
   }
-  let currentH2 = null;
+  let currentH2: {text: string, id: string, children: {text: string, id: string}[]} | null = null;
   const builtToc = [];
   let count = 0;
   for (const header of headers) {
     const id = header.properties['id'];
     // Header can't be linked to without an ID.
-    if (!id || id === '') {
+    if (!id || typeof id !== 'string' || id === '') {
       continue;
     }
 
     // Don't include if no_toc is specified as a class on the header.
-    if (header.properties['className']?.includes('no_toc')) {
+    if ((header.properties['className'] as string | null)?.includes('no_toc')) {
       continue;
     }
 
@@ -185,14 +186,14 @@ function generateToc(contents) {
   };
 }
 
-function breadcrumbsForPage(page) {
+function breadcrumbsForPage(page: any): {title: string, url: string}[] {
   const breadcrumbs = [];
 
   // Retrieve the liquid data for this page.
   let data = this.context.environments;
 
   while (page) {
-    const urlSegments = page.url
+    const urlSegments = (page.url as string)
       .split('/')
       .filter((segment) => segment.length > 0);
 
@@ -202,7 +203,7 @@ function breadcrumbsForPage(page) {
     });
 
     if (urlSegments.length <= 1) {
-      // If this only has one segment, it is the root page
+      // If this only has one segment, it's the root page
       // and has no more parents, so don't continue on.
       break;
     } else {
