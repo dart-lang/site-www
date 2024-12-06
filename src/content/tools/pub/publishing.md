@@ -187,7 +187,7 @@ With this command, `dart pub` performs the following tasks:
 
 1. Shows all of the files it intends to publish.
 
-The following example shows the publishing a package named `transmogrify`:
+The following example shows test publishing a package named `transmogrify`:
 
 ```plaintext
 Publishing transmogrify 1.0.0
@@ -219,6 +219,9 @@ With this command, `dart pub` performs the following tasks:
 1. Verifies that your package follows the [pubspec format][pubspec] and
    [package layout conventions][pkg-layout].
 
+1. Validates that `git status` is clean. Warns if
+   files that are tracked in git have uncommitted changes.
+
 1. Shows all of the files it intends to publish.
 
 1. Uploads your package to [pub.dev]({{site.pub}}).
@@ -232,7 +235,7 @@ Once a package has been transferred to a publisher,
 you can update the package using `dart pub publish`.
 :::
 
-After your package succeeded in uploading to pub.dev, any pub user can
+After your package succeeds in uploading to pub.dev, any pub user can
 download it or depend on it in their projects.
 
 For example, if you just published version 1.0.0 of your `transmogrify` package,
