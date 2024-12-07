@@ -598,7 +598,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [static method]: /language/classes#static-methods

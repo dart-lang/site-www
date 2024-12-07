@@ -47,7 +47,7 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
 [changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
 [sdk]: /get-dart
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [Dart announce]: {{site.announce}}
 
 {% comment %}

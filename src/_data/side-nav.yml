@@ -195,7 +195,7 @@
     - title: JSON
       permalink: /guides/json
     - title: Number representation
-      permalink: /guides/language/numbers
+      permalink: /resources/language/number-representation
     - title: Google APIs
       permalink: /resources/google-apis
     - title: Multi-platform apps
@@ -348,9 +348,9 @@
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
-      permalink: /guides/language/evolution
+      permalink: /resources/language/evolution
     - title: Language specification
-      permalink: /guides/language/spec
+      permalink: /resources/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
     - title: Coming from ...

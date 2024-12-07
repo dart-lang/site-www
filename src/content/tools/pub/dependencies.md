@@ -120,7 +120,7 @@ dependencies:
 ```
 :::
 
-[SDK version]: /guides/language/evolution#language-versioning
+[SDK version]: /resources/language/evolution#language-versioning
 
 ### Git packages
 

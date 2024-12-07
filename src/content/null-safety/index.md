@@ -149,7 +149,7 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 ```
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 
 ## Migrating existing code {:#migrate}
 

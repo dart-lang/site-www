@@ -32,8 +32,8 @@ The latest in-progress version covers to Dart 2.13-dev.
 
 {:.table .table-striped}
 
-To learn more about the specification,
-review the [Dart language specification](/guides/language/spec) page.
+To learn more about the specification, review
+the [Dart language specification](/resources/language/spec) page.
 
 ### Q. How are you taking input on changes to Dart?
 
@@ -50,7 +50,7 @@ and welcomes distributed committers.
 [2nd-ed]: {{ecma-pdf}}/ECMA-408_2nd_edition_december_2014.pdf
 [3rd-ed]: {{ecma-pdf}}/ECMA-408_3rd_edition_june_2015.pdf
 [4th-ed]: {{ecma-pdf}}/ECMA-408_4th_edition_december_2015.pdf
-[5th-ed]: /guides/language/specifications/DartLangSpec-v2.10.pdf
+[5th-ed]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
 [6th-ed]: https://spec.dart.dev/DartLangSpecDraft.pdf
 
 ---

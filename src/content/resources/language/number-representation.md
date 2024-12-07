@@ -1,6 +1,8 @@
 ---
 title: Numbers in Dart
-description: Learn how Dart numbers are slightly different on the web, when that might matter, and how you might adjust your code.
+description: >-
+  Learn how Dart numbers are slightly different on the web,
+  when that might matter, and how you might adjust your code.
 ---
 
 Dart apps often target multiple platforms.
