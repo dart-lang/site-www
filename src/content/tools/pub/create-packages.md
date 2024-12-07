@@ -305,8 +305,8 @@ Use the following resources to learn more about packages:
   using library files.
 * The [package](/tools/pub/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).
-* [What not to commit](private-files)
-  covers what should not be checked into a source code repository.
+* [What not to commit](/tools/pub/private-files)
+  covers what shouldn't be checked into a source code repository.
 * The newer packages under the
   [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:

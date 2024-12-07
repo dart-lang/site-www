@@ -164,7 +164,7 @@ library;
 ## Implementing libraries
 
 See
-[Create Packages](/guides/libraries/create-packages)
+[Create Packages](/tools/pub/create-packages)
 for advice on how to implement a package, including:
 
 * How to organize library source code.

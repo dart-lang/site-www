@@ -616,7 +616,7 @@ check out the [language versioning specification][].
 [calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
-[Dart library]: /guides/libraries/create-packages#organizing-a-package
+[Dart library]: /tools/pub/create-packages#organizing-a-package
 [Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [Extension types]: /language/extension-types

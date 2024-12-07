@@ -158,7 +158,7 @@
     - title: Commonly used packages
       permalink: /resources/useful-packages
     - title: Creating packages
-      permalink: /guides/libraries/create-packages
+      permalink: /tools/pub/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
@@ -187,7 +187,7 @@
         - title: Custom package repositories
           permalink: /tools/pub/custom-package-repositories
     - title: What not to commit
-      permalink: /guides/libraries/private-files
+      permalink: /tools/pub/private-files
 
 - title: Development
   expanded: false

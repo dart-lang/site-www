@@ -65,7 +65,7 @@ in the `.dart_tool/` directory that maps from package names to location URIs.
 Don't check the generated `.dart_tool/` directory into your repo;
 add it to your repo's `.gitignore` file.
 For more information,
-see [What not to commit](/guides/libraries/private-files).
+see [What not to commit](/tools/pub/private-files).
 :::
 
 

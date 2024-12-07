@@ -147,7 +147,7 @@ that your package uses.
 
 If your package is an [application package](/tools/pub/glossary#application-package)
 you should check this file into
-[source control](/guides/libraries/private-files).
+[source control](/tools/pub/private-files).
 That way, everyone working on your app uses the same versions
 of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
@@ -269,7 +269,7 @@ the pub package manager.
 
 ### How to
 
-* [Creating packages](/guides/libraries/create-packages)
+* [Creating packages](/tools/pub/create-packages)
 * [Publishing packages](/tools/pub/publishing)
 
 ### Reference
