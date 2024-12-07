@@ -1,12 +1,13 @@
 ---
-title: A tour of the Dart language
-description: A tour of all the major Dart language features.
+title: Deprecated tour of the Dart language
+description: The previous destination of the Dart language tour.
 short-title: Language tour
 js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/language
 noindex: true
 skipFreshness: true
+show_breadcrumbs: false
 ---
 
 :::warning
