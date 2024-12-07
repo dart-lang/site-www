@@ -334,7 +334,7 @@
     and is included in a library using the `part` directive.
   related_links:
     - text: "Guidance on libraries and parts"
-      link: "/guides/libraries/create-packages#organizing-a-package"
+      link: "/tools/pub/create-packages#organizing-a-package"
     - text: "Use library URIs in `part of` directives"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
   labels:
@@ -382,7 +382,7 @@
     directory but not inside the `lib/src` directory.
   related_links:
     - text: "Organizing a package's libraries"
-      link: "/guides/libraries/create-packages#organizing-a-package"
+      link: "/tools/pub/create-packages#organizing-a-package"
     - text: "Public package directories"
       link: "/tools/pub/package-layout#public-directories"
   labels:

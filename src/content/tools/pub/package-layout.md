@@ -246,7 +246,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 :::
 
 For more information on packages, see
-[Creating packages](/guides/libraries/create-packages).
+[Creating packages](/tools/pub/create-packages).
 
 ### Public tools
 

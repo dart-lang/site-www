@@ -1,10 +1,12 @@
 ---
 title: What not to commit
-description: Your development tools generate a bunch of files. Not all of them should be committed.
+description: >-
+  Your development tools generate a bunch of files.
+  Not all of them should be committed.
 ---
 
 When you put Dart source code in a repository—using the
-[pub tool](/tools/pub/cmd), [GitHub,](https://github.com/)
+[pub tool](/tools/pub/cmd), [GitHub](https://github.com/),
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
