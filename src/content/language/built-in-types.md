@@ -427,7 +427,7 @@ Symbol literals are compile-time constants.
 [`num`]: {{site.dart-api}}/dart-core/num-class.html
 [`dart:math`]: {{site.dart-api}}/dart-math/dart-math-library.html
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
-[dart-numbers]: /guides/language/numbers
+[dart-numbers]: /resources/language/number-representation
 [runes]: {{site.dart-api}}/dart-core/Runes-class.html
 [characters package]: {{site.pub-pkg}}/characters
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
@@ -435,4 +435,4 @@ Symbol literals are compile-time constants.
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning

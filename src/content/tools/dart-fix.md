@@ -114,7 +114,7 @@ To learn more about customizing analysis results and behavior,
 see [Customizing static analysis](/tools/analysis).
 
 [`dart analyze`]: /tools/dart-analyze
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 
 ## VS Code support
 

@@ -123,4 +123,4 @@ For more information, see the informal
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators
 [generic method]: /language/generics#using-generic-methods
-[Dart language specification]: /guides/language/spec
+[Dart language specification]: /resources/language/spec

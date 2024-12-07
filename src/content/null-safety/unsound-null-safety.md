@@ -26,7 +26,7 @@ bug fixes and other improvements.
 However, mixed-version programs don't get all the advantages
 that null safety can bring.
 
-[language versions]: /guides/language/evolution#language-versioning
+[language versions]: /resources/language/evolution#language-versioning
 
 This page describes the differences between sound and unsound null safety,
 with the goal of helping you decide when to migrate to null safety.
@@ -208,4 +208,4 @@ It's important to opt your tests back _in_ to null safety
 when you've finished the incremental migration of your libraries.
 
 
-[language version comment]: /guides/language/evolution#per-library-language-version-selection
+[language version comment]: /resources/language/evolution#per-library-language-version-selection

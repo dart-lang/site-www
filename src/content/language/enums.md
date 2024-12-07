@@ -175,6 +175,6 @@ print(Vehicle.car.carbonFootprint);
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
 [Factory constructors]: /language/constructors#factory-constructors
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [static variable]: /language/classes#class-variables-and-methods
 [switch statements]: /language/branches#switch

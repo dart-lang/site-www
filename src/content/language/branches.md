@@ -292,7 +292,7 @@ When the guard clause evaluates to false,
 execution proceeds to the next case rather
 than exiting the entire switch.
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [loops]: /language/loops
 [exceptions]: /language/error-handling
 [conditional expressions]: /language/operators#conditional-expressions

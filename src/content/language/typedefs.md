@@ -52,5 +52,5 @@ void main() {
 }
 ```
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [inline function types]: /effective-dart/design#prefer-inline-function-types-over-typedefs
