@@ -369,7 +369,6 @@
       { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
-      { "source": "/tools/**/private-files", "destination": "/tools/pub/private-files", "type": 301 },
       { "source": "/tools/analyzer", "destination": "/tools/dart-analyze", "type": 301 },
       { "source": "/tools/dart-pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/tools/dart-vm", "destination": "/tools/dart-run", "type": 301 },
@@ -391,6 +390,7 @@
       { "source": "/tools/editor{,/**}", "destination": "/tools", "type": 301 },
       { "source": "/tools/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/tools/observatory{,/**}", "destination": "/tools/dart-devtools", "type": 301 },
+      { "source": "/tools/private-files", "destination": "/tools/pub/private-files", "type": 301 },
       { "source": "/tools/pub/assets-and-*transformers", "destination": "https://github.com/dart-lang/build", "type": 301 },
       { "source": "/tools/pub/cmd/pub-build", "destination": "/tools/webdev", "type": 301 },
       { "source": "/tools/pub/cmd/pub-run", "destination": "/tools/dart-run", "type": 301 },
