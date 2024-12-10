@@ -51,9 +51,9 @@ To instantiate a class, use a generative constructor.
 <?code-excerpt "point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
-  // Initializer list of variables and values
-  double x = 2.0;
-  double y = 2.0;
+  // Instance variables to hold the coordinates of the point.
+  double x;
+  double y;
 
   // Generative constructor with initializing formal parameters:
   Point(this.x, this.y);
@@ -598,7 +598,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [static method]: /language/classes#static-methods

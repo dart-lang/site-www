@@ -87,6 +87,8 @@ mixin Musician {
 }
 
 class Virtuoso with Musician { 
+
+  @override
   void playInstrument(String instrumentName) { // Subclass must define.
     print('Plays the $instrumentName beautifully');
   }  
@@ -104,7 +106,10 @@ of a mixin, by calling getters which are defined as abstract on the mixin:
 mixin NameIdentity {
   String get name;
 
+  @override
   int get hashCode => name.hashCode;
+
+  @override
   bool operator ==(other) => other is NameIdentity && name == other.name;
 }
 
@@ -135,6 +140,8 @@ mixin Guitarist implements Tuner {
 }
 
 class PunkRocker with Guitarist {
+
+  @override
   void tuneInstrument() {
     print("Don't bother, being out of tune is punk rock.");
   }
@@ -205,6 +212,6 @@ Any restrictions that apply to classes or mixins also apply to mixin classes:
 - Mixins can't have `extends` or `with` clauses, so neither can a `mixin class`.
 - Classes can't have an `on` clause, so neither can a `mixin class`.
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [class]: /language/classes
 [class modifiers]: /language/class-modifiers

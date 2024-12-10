@@ -213,6 +213,6 @@ void main() [!async!] {
 For more information about Dart's asynchronous programming support,
 check out the [`dart:async`](/libraries/dart-async) library documentation.
 
-[`Future`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
-[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[`Future`]: {{site.dart-api}}/dart-async/Future-class.html
+[`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 [unawaited_futures linter rule]: /tools/linter-rules/unawaited_futures

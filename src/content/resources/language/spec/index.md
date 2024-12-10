@@ -40,7 +40,7 @@ The Dart 2 language specification is available in PDF format:
 
   * [Formal specification (Dart 2.10)][2-10 formal spec]
 
-[2-10 formal spec]: /guides/language/specifications/DartLangSpec-v2.10.pdf
+[2-10 formal spec]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
 
 For information on Dart versions 2.12 and later, 
 which have support for [null safety](/null-safety), 

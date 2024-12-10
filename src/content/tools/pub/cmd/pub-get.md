@@ -65,7 +65,7 @@ in the `.dart_tool/` directory that maps from package names to location URIs.
 Don't check the generated `.dart_tool/` directory into your repo;
 add it to your repo's `.gitignore` file.
 For more information,
-see [What not to commit](/guides/libraries/private-files).
+see [What not to commit](/tools/pub/private-files).
 :::
 
 
@@ -158,7 +158,7 @@ package has changed.
 
 Useful for CI or deploying to production.
 
-Read [Get dependencies for production](/guides/packages#get-dependencies-for-production)
+Read [Get dependencies for production](/tools/pub/packages#get-dependencies-for-production)
 for more details.
 
 {% render 'pub-problems.md' %}

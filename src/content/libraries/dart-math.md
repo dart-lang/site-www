@@ -104,9 +104,9 @@ use the [`Random.secure()`][] constructor.
 Refer to the [Math API reference][dart:math] for a full list of methods.
 Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
-[Random]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random-class.html
-[`Random.secure()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random/Random.secure.html
-[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/dart-math-library.html
-[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
-[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
-[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
+[Random]: {{site.dart-api}}/dart-math/Random-class.html
+[`Random.secure()`]: {{site.dart-api}}/dart-math/Random/Random.secure.html
+[dart:math]: {{site.dart-api}}/dart-math/dart-math-library.html
+[double]: {{site.dart-api}}/dart-core/double-class.html
+[int]: {{site.dart-api}}/dart-core/int-class.html
+[num]: {{site.dart-api}}/dart-core/num-class.html

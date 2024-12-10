@@ -420,7 +420,7 @@ This case pattern simultaneously validates that:
 - The new local variables to hold the values are `name` and `age`. 
 
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [types]: /language/pattern-types
 [collection-type]: /language/collections
 [wildcard pattern]: /language/pattern-types#wildcard
@@ -446,5 +446,5 @@ This case pattern simultaneously validates that:
 [check]: /language/pattern-types#null-check
 [assert]: /language/pattern-types#null-assert
 [object]: /language/pattern-types#object
-[`MapEntry`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/MapEntry-class.html
+[`MapEntry`]: {{site.dart-api}}/dart-core/MapEntry-class.html
 [algebraic data type]: https://en.wikipedia.org/wiki/Algebraic_data_type

@@ -216,13 +216,13 @@ In production code, assertions are ignored, and
 the arguments to `assert` aren't evaluated.
 
 [trailing comma]: /language/collections#trailing-comma
-[`AssertionError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/AssertionError-class.html
+[`AssertionError`]: {{site.dart-api}}/dart-core/AssertionError-class.html
 [Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [`webdev serve`]: /tools/webdev#serve
 [`dart run`]: /tools/dart-run
 [`dart compile js`]: /tools/dart-compile#js
 
 [isolate]: /language/concurrency#isolates
-[`Error`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html
-[`Exception`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
-[`StackTrace`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StackTrace-class.html
+[`Error`]: {{site.dart-api}}/dart-core/Error-class.html
+[`Exception`]: {{site.dart-api}}/dart-core/Exception-class.html
+[`StackTrace`]: {{site.dart-api}}/dart-core/StackTrace-class.html

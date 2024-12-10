@@ -386,8 +386,8 @@ we made the following changes:
 [class-modifier-reference]: /language/modifier-reference
 [sound null safety]: /null-safety
 [Dart 3 migration guide]: /resources/dart-3-migration
-[language evolution]: /guides/language/evolution
-[language versioning]: /guides/language/evolution#language-versioning
+[language evolution]: /resources/language/evolution
+[language versioning]: /resources/language/evolution#language-versioning
 [compilation environment declarations]: /guides/environment-declarations
 [Java interop]: /interop/java-interop
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
@@ -549,7 +549,7 @@ we made the following changes to this site:
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
 [Fixing common type problems]: /guides/language/sound-problems
-[What not to commit]: /guides/libraries/private-files
+[What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging
@@ -899,7 +899,7 @@ we made the following changes to this site:
 [get Dart]: /get-dart
 [HTTP server tutorial]: /tutorials/server/httpserver
 [`lints`]: {{site.pub-pkg}}/lints
-[Numbers in Dart]: /guides/language/numbers
+[Numbers in Dart]: /resources/language/number-representation
 [streams tutorial]: /libraries/async/using-streams
 [typedef section]: /language/typedefs
 [Using Google APIs]: /resources/google-apis
@@ -1047,14 +1047,14 @@ we made the following changes to this site:
 [diagnostics]: /tools/diagnostic-messages
 [dynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Effective Dart]: /effective-dart
-[evolution]: /guides/language/evolution
+[evolution]: /resources/language/evolution
 [experiments]: /tools/experiment-flags#using-experiment-flags-with-ides
 [ns-enable]: /null-safety#enable-null-safety
 [Understanding null safety]: /null-safety/understanding-null-safety
 [sound null safety]: /null-safety
 [diagnostics]: /tools/diagnostic-messages
 [changelog-docs]: /tools/pub/package-layout#changelog
-[spec]: /guides/language/spec
+[spec]: /resources/language/spec
 
 ### Articles added to the Dart blog {:.no_toc}
 

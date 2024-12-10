@@ -154,11 +154,11 @@
   expanded: false
   children:
     - title: How to use packages
-      permalink: /guides/packages
+      permalink: /tools/pub/packages
     - title: Commonly used packages
       permalink: /resources/useful-packages
     - title: Creating packages
-      permalink: /guides/libraries/create-packages
+      permalink: /tools/pub/create-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
@@ -189,7 +189,7 @@
         - title: Custom package repositories
           permalink: /tools/pub/custom-package-repositories
     - title: What not to commit
-      permalink: /guides/libraries/private-files
+      permalink: /tools/pub/private-files
 
 - title: Development
   expanded: false
@@ -197,7 +197,7 @@
     - title: JSON
       permalink: /guides/json
     - title: Number representation
-      permalink: /guides/language/numbers
+      permalink: /resources/language/number-representation
     - title: Google APIs
       permalink: /resources/google-apis
     - title: Multi-platform apps
@@ -350,9 +350,9 @@
     - title: Breaking changes
       permalink: /resources/breaking-changes
     - title: Language evolution
-      permalink: /guides/language/evolution
+      permalink: /resources/language/evolution
     - title: Language specification
-      permalink: /guides/language/spec
+      permalink: /resources/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
     - title: Coming from ...

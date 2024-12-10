@@ -91,4 +91,4 @@ mailing list.
 [Google's security philosophy]: https://www.google.com/about/appsecurity/
 [https://g.co/vulnz]: https://g.co/vulnz
 [repos]: {{site.repo.dart.org}}/
-[upgrade your package dependencies]: /guides/packages#upgrading-a-dependency
+[upgrade your package dependencies]: /tools/pub/packages#upgrading-a-dependency

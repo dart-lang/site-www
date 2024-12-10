@@ -3,7 +3,7 @@ title: Creating packages
 description: Learn how to create packages in Dart.
 ---
 
-The Dart ecosystem uses [packages](/guides/packages)
+The Dart ecosystem uses [packages](/tools/pub/packages)
 to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/tools/pub/glossary#package).
@@ -171,9 +171,12 @@ To conditionally import a file, use the same code as above,
 but change `export` to `import`.
 
 :::note
-The conditional import or export checks only whether the library is
-_available for use_ on the current platform,
-not whether it's actually imported or used.
+Conditional imports or exports only work with keys in the compilation
+environment. Any sequence of dot-separated identifiers is valid syntax.
+Currently, only keys of the form  `dart.library.name` are provided.
+`dart.library.name` is set to `"true"` in the compilation 
+environment if the library `dart:name` is _available for use_ on
+the current platform, not whether it's actually imported or used.
 :::
 
 All of the conditionally exported libraries must implement the same API.
@@ -300,10 +303,10 @@ Use the following resources to learn more about packages:
 
 * [Libraries and imports](/language/libraries) covers
   using library files.
-* The [package](/guides/packages) documentation is useful, particularly the
+* The [package](/tools/pub/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).
-* [What not to commit](private-files)
-  covers what should not be checked into a source code repository.
+* [What not to commit](/tools/pub/private-files)
+  covers what shouldn't be checked into a source code repository.
 * The newer packages under the
   [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:

@@ -339,7 +339,7 @@ the web and native platforms. The [Numbers in Dart][]
 page details these differences and shows how to
 write code so the differences don't matter.
 
-[Numbers in Dart]: /guides/language/numbers
+[Numbers in Dart]: /resources/language/number-representation
 
 ### Strings
 
@@ -1245,8 +1245,8 @@ see [Bitwise operations][] in the
 [Numbers in Dart][] page.
 :::
 
-[Bitwise operations]: /guides/language/numbers#bitwise-operations
-[Numbers in Dart]: /guides/language/numbers
+[Bitwise operations]: /resources/language/number-representation#bitwise-operations
+[Numbers in Dart]: /resources/language/number-representation
 
 The bitwise operators are mostly identical
 in both languages.
@@ -2814,7 +2814,7 @@ class Parrot extends _Animal {
 For more information, check out
 [creating packages][].
 
-[creating packages]: /guides/libraries/create-packages#organizing-a-package
+[creating packages]: /tools/pub/create-packages#organizing-a-package
 
 ## Next steps
 

@@ -169,12 +169,12 @@ like you would on a normal object:
 print(Vehicle.car.carbonFootprint);
 ```
 
-[`Enum`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Enum-class.html
+[`Enum`]: {{site.dart-api}}/dart-core/Enum-class.html
 [trailing commas]: /language/collections#lists
 [classes]: /language/classes
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
 [Factory constructors]: /language/constructors#factory-constructors
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [static variable]: /language/classes#class-variables-and-methods
 [switch statements]: /language/branches#switch

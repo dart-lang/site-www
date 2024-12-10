@@ -616,12 +616,12 @@ check out the [language versioning specification][].
 [calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
-[Dart library]: /guides/libraries/create-packages#organizing-a-package
+[Dart library]: /tools/pub/create-packages#organizing-a-package
 [Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [Extension types]: /language/extension-types
 [language funnel]: {{site.repo.dart.lang}}/projects/1
-[language specification]: /guides/language/spec
+[language specification]: /resources/language/spec
 [language documentation]: /language
 [language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety

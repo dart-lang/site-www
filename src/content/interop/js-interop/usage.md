@@ -481,19 +481,19 @@ TODO: Some of these are not available on stable. How do we link to dev?
 [object literal]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Object_initializer
 [54801]: {{site.repo.dart.sdk}}/issues/54801
 [property accessors]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation
-[utility functions]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyOperatorExtension.html
-[`@JS()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JS-class.html
-[`Function.toJS`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`@JSExport`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSExport-class.html
-[`createJSInteropWrapper`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/createJSInteropWrapper.html
+[utility functions]: {{site.dart-api}}/dart-js_interop/JSAnyOperatorExtension.html
+[`@JS()`]: {{site.dart-api}}/dart-js_interop/JS-class.html
+[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`@JSExport`]: {{site.dart-api}}/dart-js_interop/JSExport-class.html
+[`createJSInteropWrapper`]: {{site.dart-api}}/dart-js_interop/createJSInteropWrapper.html
 [mocking tutorial]: /interop/js-interop/mock
-[`dart:js_interop`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop
-[`globalContext`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/globalContext.html
-[Helpers to inspect the type of JS values]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension.html
-[`dartify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
-[`jsify`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
-[`importModule`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop/importModule.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
+[`globalContext`]: {{site.dart-api}}/dart-js_interop/globalContext.html
+[Helpers to inspect the type of JS values]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension.html
+[`dartify`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
+[`jsify`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
+[`importModule`]: {{site.dart-api}}/dart-js_interop/importModule.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [extensions]: /language/extension-methods
 [extension type]: /language/extension-types
 [runtime guarantee]: /language/extension-types#type-considerations

@@ -2575,14 +2575,14 @@ By default, Dart limits access to private class members to code in the same file
 To expand the scope of a library beyond one file, add the `part` directive.
 When possible, [avoid using `part`][]. Reserve using `part` for code generators.
 
-[avoid using `part`]: /guides/libraries/create-packages#organizing-a-package
+[avoid using `part`]: /tools/pub/create-packages#organizing-a-package
 
 ### Late variables
 
 To indicate that Dart initializes class fields at a later point,
 assign the `late` keyword to those class fields.
 Those class fields remain non-nullable.
-Do this when a variable doesn't need to observed or accessed immediately
+Do this when a variable doesn't need to be observed or accessed immediately
 and can be initialized later.
 This differs from labeling the field as nullable.
 

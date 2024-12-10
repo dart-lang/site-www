@@ -66,7 +66,7 @@ You might find the following tutorials helpful.
 
 ## More resources
 
-[Dart API]({{site.dart-api}}/{{site.sdkInfo.channel}})
+[Dart API]({{site.dart-api}})
 : API reference for dart:* libraries.
 
 [dart:io documentation](/libraries/dart-io)

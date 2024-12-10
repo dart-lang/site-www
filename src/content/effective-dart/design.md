@@ -658,8 +658,8 @@ comment.
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
-Dart previously (language version [2.12](/guides/language/evolution#dart-2-12)
-to [2.19](/guides/language/evolution#dart-2-19)) allowed any class that
+Dart previously (language version [2.12](/resources/language/evolution#dart-2-12)
+to [2.19](/resources/language/evolution#dart-2-19)) allowed any class that
 met certain restrictions (no non-default constructor, no superclass, etc.)
 to be mixed into other classes.
 This was confusing because the author of the class
@@ -1471,7 +1471,7 @@ marginally more useful than using `dynamic`. If you're going to annotate, prefer
 a full function type that includes the parameters and return type of the
 function.
 
-[Function]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
+[Function]: {{site.dart-api}}/dart-core/Function-class.html
 
 <?code-excerpt "design_good.dart (avoid-function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 ```dart tag=good

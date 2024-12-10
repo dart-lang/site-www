@@ -188,7 +188,7 @@ The following native types can be used as markers in type signatures.
 They or their subtypes _can_ be instantiated in Dart code.
 
 {% capture dart-ffi -%}
-{{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi
+{{site.dart-api}}/dart-ffi
 {%- endcapture %}
 
 | **Dart type**   | **Description**                                                  |

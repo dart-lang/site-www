@@ -55,7 +55,7 @@ setting up and managing worker isolates:
 5. Terminates the isolate once work is complete.
 6. Checks, captures, and throws exceptions and errors back to the main isolate.
 
-[`Isolate.run()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/run.html
+[`Isolate.run()`]: {{site.dart-api}}/dart-isolate/Isolate/run.html
 
 :::flutter-note
 If you're using Flutter, you can use [Flutter's `compute` function][]
@@ -180,11 +180,11 @@ The first example, [Basic ports](#basic-ports-example), introduces the process
 at a high-level. The second example, [Robust ports](#robust-ports-example),
 gradually adds more practical, real-world functionality to the first.
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
-[`SendPort.send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
+[`Isolate.exit()`]: {{site.dart-api}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
 
 
@@ -1094,17 +1094,17 @@ class Worker {
 
 </details>
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
-[`SendPort.send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
+[`Isolate.exit()`]: {{site.dart-api}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/dart-isolate/SendPort-class.html
+[`SendPort.send()` method]: {{site.dart-api}}/dart-isolate/SendPort/send.html
 [main isolate]: /language/concurrency#isolates
-[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
-[`BroadcastStream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/BroadcastStream-class.html
-[`Completer`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Completer-class.html
-[`RawReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/RawReceivePort-class.html
+[`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
+[`BroadcastStream`]: {{site.dart-api}}/dart-async/BroadcastStream-class.html
+[`Completer`]: {{site.dart-api}}/dart-async/Completer-class.html
+[`RawReceivePort`]: {{site.dart-api}}/dart-isolate/RawReceivePort-class.html
 [record]: /language/records
 [previous example]: #basic-ports-example
 [`try`/`catch` block]: /language/error-handling#catch
-[`RemoteError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/RemoteError-class.html
+[`RemoteError`]: {{site.dart-api}}/dart-isolate/RemoteError-class.html

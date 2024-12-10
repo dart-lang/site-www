@@ -61,7 +61,7 @@ to perform static analysis.
 
 You can customize static analysis to look for a variety of potential
 problems, including errors and warnings specified in the
-[Dart language spec](/guides/language/spec).
+[Dart language spec](/resources/language/spec).
 You can also configure linter rules,
 to ensure that your code complies with the
 [Dart Style Guide](/effective-dart/style)
@@ -597,7 +597,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [linter rules]: /tools/linter-rules
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code

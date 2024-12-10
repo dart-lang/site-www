@@ -1,6 +1,8 @@
 ---
 title: Numbers in Dart
-description: Learn how Dart numbers are slightly different on the web, when that might matter, and how you might adjust your code.
+description: >-
+  Learn how Dart numbers are slightly different on the web,
+  when that might matter, and how you might adjust your code.
 ---
 
 Dart apps often target multiple platforms.
@@ -504,5 +506,5 @@ provides strict 64-bit signed numbers, even on the web.
 Use these types with care, though:
 they often result in significantly bigger and slower code.
 
-[`BigInt`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/BigInt-class.html
+[`BigInt`]: {{site.dart-api}}/dart-core/BigInt-class.html
 [`fixnum`]: {{site.pub-pkg}}/fixnum

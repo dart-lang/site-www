@@ -13,9 +13,9 @@ To learn about other tools you can use for Dart development,
 check out the [Dart tools](/tools) page.
 
 :::version-note
-This site's documentation and examples use
-{% if site.sdkInfo.channel == 'dev' %} the **dev channel** {% endif -%}
-version [{{site.sdkInfo.version}}][site SDK version] of the **Dart SDK**.
+Unless stated otherwise,
+this site's documentation and examples assume
+version `{{site.sdkVersion}}` of the **Dart SDK**.
 :::
 
 {% comment %}
@@ -49,6 +49,5 @@ go to [the SDK issue tracker][sdk-issues].
 
 [Dart libraries]: /libraries
 [flutter]: {{site.flutter-docs}}/get-started/install
-[site SDK version]: {{site.dart-api}}/{{site.sdkInfo.channel}}/{{site.sdkInfo.version}}/index.html
 [readme]: {{site.repo.dart.sdk}}/blob/main/README.dart-sdk
 [sdk-issues]: {{site.repo.dart.sdk}}/issues

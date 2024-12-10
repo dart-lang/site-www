@@ -30,9 +30,9 @@ Review the techniques covered in
 [Futures and Error Handling](/libraries/async/futures-error-handling)
 before reading this article.
 
-[dart:async]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html)
-[`runZoned()`]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZoned.html)
-[`runZonedGuarded()`]: ({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZonedGuarded.html)
+[dart:async]: ({{site.dart-api}}/dart-async/dart-async-library.html)
+[`runZoned()`]: ({{site.dart-api}}/dart-async/runZoned.html)
+[`runZonedGuarded()`]: ({{site.dart-api}}/dart-async/runZonedGuarded.html)
 
 Zones make the following tasks possible:
 
@@ -180,9 +180,9 @@ _Other zone APIs that facilitate uncaught error handling include
 [`Zone.fork`][], [`Zone.runGuarded`][]
 and [`ZoneSpecification.uncaughtErrorHandler`][]._
 
-[`Zone.fork`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/Zone/fork.html)
-[`Zone.runGuarded`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/Zone/runGuarded.html)
-[`ZoneSpecification.uncaughtErrorHandler`]:  ({{site.dart-api}}/{{site.sdkInfo.channel}}dart-async/ZoneSpecification/handleUncaughtError.html)
+[`Zone.fork`]:  {{site.dart-api}}/dart-async/Zone/fork.html
+[`Zone.runGuarded`]:  {{site.dart-api}}/dart-async/Zone/runGuarded.html
+[`ZoneSpecification.uncaughtErrorHandler`]:  {{site.dart-api}}/dart-async/ZoneSpecification/handleUncaughtError.html
 
 The preceding code has an asynchronous callback
 (through `Timer.run()`) that throws an exception.
@@ -463,7 +463,7 @@ that works in asynchronous contexts.
 Use the `zoneSpecification` argument to `runZoned()`
 to override functionality that is managed by zones.
 The argument's value is a
-[ZoneSpecification]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneSpecification-class.html) object,
+[ZoneSpecification]({{site.dart-api}}/dart-async/ZoneSpecification-class.html) object,
 with which you can override any of the following functionality:
 
 * Forking child zones
@@ -759,11 +759,11 @@ that you can use for functionality such as profiling.
 
 Zone-related API documentation
 : Read the docs for
-  [runZoned()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZoned.html),
-  [runZonedGuarded()]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/runZonedGuarded.html),
-  [Zone]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Zone-class.html),
-  [ZoneDelegate]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneDelegate-class.html), and
-  [ZoneSpecification]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ZoneSpecification-class.html).
+  [runZoned()]({{site.dart-api}}/dart-async/runZoned.html),
+  [runZonedGuarded()]({{site.dart-api}}/dart-async/runZonedGuarded.html),
+  [Zone]({{site.dart-api}}/dart-async/Zone-class.html),
+  [ZoneDelegate]({{site.dart-api}}/dart-async/ZoneDelegate-class.html), and
+  [ZoneSpecification]({{site.dart-api}}/dart-async/ZoneSpecification-class.html).
 
 stack_trace
 : With the stack_trace library's
