@@ -375,6 +375,7 @@
       { "source": "/to/doc-comment-references", "destination": "/tools/doc-comments/references", "type": 301 },
       { "source": "/to/enforce-lockfile", "destination": "/tools/pub/packages#get-dependencies-for-production", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
+      { "source": "/to/pub-workspaces", "destination": "/tools/pub/workspaces", "type": 301 },
       { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
