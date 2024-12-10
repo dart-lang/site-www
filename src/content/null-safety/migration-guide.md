@@ -346,7 +346,7 @@ For more information about incremental migration, see
 Note that only fully migrated apps and packages 
 are compatible with Dart 3.
 
-[version comment]: /guides/language/evolution#per-library-language-version-selection
+[version comment]: /resources/language/evolution#per-library-language-version-selection
 
 
 #### Applying changes

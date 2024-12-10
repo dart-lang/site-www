@@ -420,7 +420,7 @@ This case pattern simultaneously validates that:
 - The new local variables to hold the values are `name` and `age`. 
 
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [types]: /language/pattern-types
 [collection-type]: /language/collections
 [wildcard pattern]: /language/pattern-types#wildcard

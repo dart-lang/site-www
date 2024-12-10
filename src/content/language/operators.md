@@ -356,7 +356,7 @@ The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
 requires a [language version][] of at least 2.14.
 :::
 
-[Bitwise operations platform differences]: /guides/language/numbers#bitwise-operations
+[Bitwise operations platform differences]: /resources/language/number-representation#bitwise-operations
 
 ## Conditional expressions
 
@@ -541,10 +541,10 @@ For more information about the `.`, `?.`, and `..` operators, see
 
 
 [operators as class members]: /language/methods#operators
-[Dart language specification]: /guides/language/spec
+[Dart language specification]: /resources/language/spec
 [identical()]: {{site.dart-api}}/dart-core/identical.html
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/branches#if
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [Classes]: /language/classes

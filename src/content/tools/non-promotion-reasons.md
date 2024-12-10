@@ -1210,4 +1210,4 @@ void f(int? i, int? j) {
 }
 ```
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning

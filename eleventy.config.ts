@@ -79,7 +79,7 @@ export default function (eleventyConfig: UserConfig) {
     filter: /^(?!_).+/,
   });
   eleventyConfig.addPassthroughCopy(
-    'src/content/guides/language/specifications',
+    'src/content/resources/language/spec/versions',
   );
 
   if (shouldOptimize) {

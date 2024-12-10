@@ -658,8 +658,8 @@ comment.
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
-Dart previously (language version [2.12](/guides/language/evolution#dart-2-12)
-to [2.19](/guides/language/evolution#dart-2-19)) allowed any class that
+Dart previously (language version [2.12](/resources/language/evolution#dart-2-12)
+to [2.19](/resources/language/evolution#dart-2-19)) allowed any class that
 met certain restrictions (no non-default constructor, no superclass, etc.)
 to be mixed into other classes.
 This was confusing because the author of the class

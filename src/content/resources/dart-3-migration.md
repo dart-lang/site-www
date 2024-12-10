@@ -24,7 +24,7 @@ The potentially breaking changes listed below fall into one of two categories:
 
 * **Versioned changes**: These changes only apply when the package or app's
   language version is set to >= Dart 3.0. 
-  The [language version](/guides/language/evolution#language-version-numbers)
+  The [language version](/resources/language/evolution#language-version-numbers)
   is derived from the `sdk` lower-constraint in the
   [`pubspec.yaml` file](/tools/pub/packages#creating-a-pubspec). 
   An SDK constraint like this does *not* apply the Dart 3 versioned changes:
@@ -144,7 +144,7 @@ $ dart run bin/my_app.dart
 ^^^^^^^^^^^^
 ```
 
-[language version comments]: /guides/language/evolution#per-library-language-version-selection
+[language version comments]: /resources/language/evolution#per-library-language-version-selection
 
 #### Migration
 

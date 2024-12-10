@@ -224,7 +224,7 @@ parallelization of futures of different types, which you can read about in the
 [`dart:async` documentation][].
 :::
 
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
