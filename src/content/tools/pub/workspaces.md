@@ -9,7 +9,7 @@ version control repository (a _monorepo_).
 
 For example you might have a directory layout like: 
 
-```console
+```plaintext
 /
   packages/
     shared/
@@ -41,7 +41,7 @@ required for analysis, hence improving performance.
 
 :::note
 Using a single shared dependency resolution for all your packages increases
-the risks of dependency conflicts, because Dart does not allow multiple versions
+the risks of dependency conflicts, because Dart doesn't allow multiple versions
 of the same package.
 
 If the packages are going to be used together (as is commonly the case),
@@ -52,7 +52,7 @@ your packages when they arise, rather than when you start using the packages.
 To create a workspace:
 
 * Add a `pubspec.yaml` at the repository root directory with a `workspace` entry
-  enummerating the paths to the packages of the respository (the workspace
+  enumerating the paths to the packages of the repository (the workspace
   packages):
 
   ```yaml
@@ -86,7 +86,7 @@ To create a workspace:
 
 Now the file structure looks like this:
 
-```console
+```plaintext
 /
   packages/
     shared/
@@ -101,10 +101,10 @@ Now the file structure looks like this:
 ```
 
 :::version-note
-Pub workspaces was introduced in Dart 3.6.0.
+Support for pub workspaces was introduced in Dart 3.6.0.
 
 To use pub workspaces, all your workspace packages (but not your dependencies)
-must have a SDK version constraint of `^3.6.0` or higher.
+must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
 ## Interdependencies between workspace packages
@@ -120,7 +120,7 @@ dependencies:
 ```
 
 When resolved inside the workspace, the _local_ version of `shared` will be
-used. 
+used.
 
 The local version of `shared` would still have to match the constraint
 (`^2.3.0`) though.
