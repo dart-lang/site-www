@@ -220,7 +220,7 @@ To prevent precompilation, use `--no-precompile`.
 
 ## In a workspace
 
-In a [Pub workspace](/guides/workspaces) `dart pub add` will add
+In a [Pub workspace](/tools/pub/workspaces) `dart pub add` will add
 dependencies only to the package in the current directory.
 
 {% render 'pub-problems.md' %}

@@ -161,7 +161,7 @@ and then all those packages are unlocked.
 
 ## In a workspace
 
-In a [Pub workspace](/guides/workspaces) `dart pub upgrade` will
+In a [Pub workspace](/tools/pub/workspaces) `dart pub upgrade` will
 upgrade all dependencies in the shared resolution from across all workspace
 packages.
 
