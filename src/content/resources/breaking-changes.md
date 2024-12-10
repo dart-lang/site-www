@@ -34,7 +34,7 @@ around breaking changes and deprecations in Dart.
 
   _These are marked as:_ {{deprecated}} / {{removed}}
 * **Experimental**: Part of the release but not yet treated as stable in the SDK,
-  and can break from one version to another. Experimental changes do not
+  and can break from one version to another. Experimental changes don't
   always have a corresponding breaking change issue, but may have more detail in
   the [SDK changelog][changelog].
 
@@ -68,13 +68,54 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
-## 3.6.0
+## 3.7.0
 
 **Tentative**<br>
-The following changes are expected to be included in the 3.6 stable release,
-but the final list will likely change before then.
+The following changes are expected to be included in the 3.7 stable release,
+but the final list might change before then.
 To reduce the potential impact of these changes, consider
-accounting for them before the 3.6 release.
+accounting for them before the 3.7 release.
+
+### Language {:.no_toc}
+
+- {{versioned}} [Local variables and parameters named `_`][wildcards] are
+  now non-binding and can no longer be used or accessed.
+- [Reachability analysis now accounts for if a field is
+  type promoted to `Null` using `is` or `as`][56893].
+  This makes the type system more self-consistent, because it
+  mirrors the behavior of promoted local variables.
+  This change isn't expected to make any difference in practice.
+
+[wildcards]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/wildcard-variables/feature-specification.md
+[56893]: {{site.repo.dart.sdk}}/issues/56893
+
+### Tools {:.no_toc}
+
+#### Analyzer
+
+- {{removed}} The [`package_api_docs`][] and [`unsafe_html`][] lint rules
+  have been removed and should be removed from `analysis_options.yaml` files.
+
+[`package_api_docs`]: /tools/linter-rules/package_api_docs
+[`unsafe_html`]: /tools/linter-rules/unsafe_html
+
+#### Formatter (`dart format`)
+
+- {{versioned}} The formatter implements a [new style][] that results in
+  new output when formatting code with a [language version][] of 3.7 or greater.
+- {{removed}} The `--fix` flag for `dart format` is no longer supported.
+  To apply similar fixes and more,
+  [configure your analysis options][] and run [`dart fix`][].
+- {{deprecated}} The `--line-length` option for `dart format` has been
+  deprecated and set to be removed.
+  All usages should be migrated to the new `--page-width` option.
+
+[new style]: {{site.repo.dart.org}}/dart_style/issues/1253
+[language version]: /guides/language/evolution#language-versioning
+[configure your analysis options]: /tools/analysis
+[`dart fix`]: /tools/dart-fix
+
+## 3.6.0
 
 ### Language {:.no_toc}
 
@@ -83,9 +124,62 @@ accounting for them before the 3.6 release.
   the "unknown type" to `Object`][56065].
   This makes the type system more self-consistent, because
   it reflects the fact that it's not legal to throw `null`.
-  This change is not expected to make any difference in practice.
+  This change isn't expected to make any difference in practice.
 
 [56065]: {{site.repo.dart.sdk}}/issues/56065
+
+### Libraries {:.no_toc}
+
+#### `dart:io`
+
+- {{removed}} [The `Platform()` constructor has been removed][52444].
+  All instantiations of `Platform` should be removed.
+- `HttpClient` now responds to a redirect that's missing a "Location" header by
+  [throwing a `RedirectException` instead of a `StateError`][53618].
+
+[52444]: {{site.repo.dart.sdk}}/issues/52444
+[53618]: {{site.repo.dart.sdk}}/issues/53618
+
+### Tools {:.no_toc}
+
+#### Analyzer
+
+- {{deprecated}} The [`package_api_docs`][] and [`unsafe_html`][] lint rules
+  have been deprecated and are set to be removed in Dart 3.7.
+
+[`package_api_docs`]: /tools/linter-rules/package_api_docs
+[`unsafe_html`]: /tools/linter-rules/unsafe_html
+
+#### Compiler front end (cfe)
+
+- The Dart compiler now [computes the upper and lower closures of type schemas
+  just before they're passed into the subtype testing procedure][56466].
+  Before Dart 3.6, the compiler computed them at the very beginning of
+  the upper and lower-bound computations.
+  The analyzer already followed this behavior, so apps that
+  already pass analysis are unlikely to be affected by this change.
+
+[56466]: {{site.repo.dart.sdk}}/issues/56466
+
+#### Wasm compiler (dart2wasm)
+
+- The condition `dart.library.js` is now `false` on conditional imports
+  when compiling to WebAssembly.
+  The `dart.library.js_interop` condition should be used instead.
+
+#### Formatter (`dart format`)
+
+The following changes might result in small formatting changes
+when running `dart format` with a Dart 3.6 SDK or later:
+
+- Preserve type parameters on old-style function-typed formals that
+  also use `this.` or `super.`.
+- Correctly format imports with both `as` and `if` clauses.
+
+#### Pub
+
+- `dart pub publish` now warns if files that are
+  tracked in git have uncommitted changes.
 
 ## 3.5.0
 
@@ -95,7 +189,7 @@ accounting for them before the 3.6 release.
   the operand of an `await` expression has been changed to
   match the behavior of the analyzer.][55418]
 - [The context used by the compiler to perform type inference on
-  the right hand side of an "if-null" expression (`e1 ?? e2`) has been
+  the right-hand side of an "if-null" expression (`e1 ?? e2`) has been
   changed to match the behavior of the analyzer.][55436]
   The old behavior can be restored by supplying explicit types.
 
