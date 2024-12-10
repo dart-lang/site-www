@@ -2,7 +2,7 @@ name: examples_workspace
 publish_to: none
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.6.0-0
 
 workspace:
   - analysis
