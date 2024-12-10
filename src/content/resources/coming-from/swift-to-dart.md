@@ -2814,7 +2814,7 @@ class Parrot extends _Animal {
 For more information, check out
 [creating packages][].
 
-[creating packages]: /guides/libraries/create-packages#organizing-a-package
+[creating packages]: /tools/pub/create-packages#organizing-a-package
 
 ## Next steps
 

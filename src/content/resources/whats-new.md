@@ -549,7 +549,7 @@ we made the following changes to this site:
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
 [Fixing common type problems]: /guides/language/sound-problems
-[What not to commit]: /guides/libraries/private-files
+[What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
 [Debugging Dart web apps]: /web/debugging
