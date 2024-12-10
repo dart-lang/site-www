@@ -1,13 +1,12 @@
-import markdownIt from 'markdown-it';
+import MarkdownIt from 'markdown-it';
 import markdownItContainer from 'markdown-it-container';
 import markdownItDefinitionList from 'markdown-it-deflist';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
-import { slugify } from '../utils/slugify.js';
+import {slugify} from '../utils/slugify.js';
 
-/** @type {import('markdown-it/lib').MarkdownIt} */
 export const markdown = (() => {
-  const markdown = markdownIt({ html: true })
+  const markdown = new MarkdownIt({ html: true })
     .use(markdownItDefinitionList)
     .use(markdownItAttrs, {
       leftDelimiter: '{:',
@@ -35,14 +34,12 @@ export const markdown = (() => {
 
 /**
  * Wrap all tables in a div with `table-wrapper` class.
- *
- * @param markdown {import('markdown-it/lib').MarkdownIt} markdown
  */
-function _setUpTables(markdown) {
+function _setUpTables(markdown: MarkdownIt): void {
   markdown.renderer.rules = {
     ...markdown.renderer.rules,
-    table_open: function (tokens, idx, options, env, self) {
-      const token = tokens[idx];
+    table_open: function (tokens, idx, _options, _env, self) {
+      const token = tokens[idx]!;
       // Render added attributes from `{:.table .table-striped}` syntax.
       return `<div class="table-wrapper">\n<table ${self.renderAttrs(token)}>\n`;
     },
@@ -53,20 +50,19 @@ function _setUpTables(markdown) {
 /**
  * Register a custom aside/admonition.
  *
- * @param {import('markdown-it/lib').MarkdownIt} markdown
+ * @param markdown
  * @param id The name to use in Markdown to create the aside.
  * @param defaultTitle The title to use if no title is specified in Markdown.
  * @param icon The material icon to use in the aside.
  * @param style The classes to add to the aside.
- * @private
  */
-function _registerAside(markdown, id, defaultTitle, icon, style) {
+function _registerAside(markdown: MarkdownIt, id: string, defaultTitle: string | null, icon: string | null, style: string): void {
   markdown.use(markdownItContainer, id, {
-    render: function (tokens, index) {
+    render: function (tokens: any[], index: number) {
       if (tokens[index].nesting === 1) {
         const parsedArgs = /\s+(.*)/.exec(tokens[index].info);
 
-        const title = parsedArgs?.[1] ?? defaultTitle;
+        const title = parsedArgs?.[1] ?? defaultTitle ?? '';
         return `<aside class="alert ${style}">
 <div class="alert-header">
 ${icon !== null ? `<i class="material-symbols" aria-hidden="true">${icon}</i>` : ''}
@@ -83,11 +79,8 @@ ${icon !== null ? `<i class="material-symbols" aria-hidden="true">${icon}</i>` :
 
 /**
  * Registers the custom asides/admonitions used on the site.
- *
- * @param {import('markdown-it/lib').MarkdownIt} markdown
- * @private
  */
-function _registerAsides(markdown) {
+function _registerAsides(markdown: MarkdownIt): void {
   _registerAside(markdown, 'note', 'Note', 'info', 'alert-info');
   _registerAside(
     markdown,

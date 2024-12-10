@@ -1,12 +1,13 @@
 ---
-title: A tour of the core libraries
-description: Learn about the major features in Dart's libraries.
+title: Deprecated tour of the core libraries
+description: The previous destination of the Dart core library introduction.
 short-title: Library tour
 js: [{url: '/assets/js/library-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.dev/libraries
 noindex: true
 skipFreshness: true
+show_breadcrumbs: false
 ---
 
 :::warning
