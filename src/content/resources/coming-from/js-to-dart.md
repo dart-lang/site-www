@@ -122,7 +122,7 @@ consider themselves as equal.
 :::
 
 [Built-in types]: /language/built-in-types
-[Dart Language Tour]: /guides/language
+[Dart Language Tour]: /language
 
 For example:
 The equals operator `==` and the `identical()` method return `true`

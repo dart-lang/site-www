@@ -179,7 +179,7 @@ subtype of the original parameter.
 
 :::note
 If you have a valid reason to use a subtype, you can use the
-[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword).
 :::
 
 Consider the `chase(Animal)` method for the `Animal` class:
@@ -488,7 +488,7 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 
 The following resources have further information on sound Dart:
 
-* [Fixing common type problems](/guides/language/sound-problems) - 
+* [Fixing common type problems](/deprecated/sound-problems) - 
   Errors you may encounter when writing sound Dart code, and how to fix them.
 * [Fixing type promotion failures](/tools/non-promotion-reasons) - 
   Understand and learn how to fix type promotion errors.

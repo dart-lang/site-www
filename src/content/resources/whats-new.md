@@ -548,7 +548,7 @@ we made the following changes to this site:
 * Added a section on customizing [`dart fix`][].
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
-[Fixing common type problems]: /guides/language/sound-problems
+[Fixing common type problems]: /deprecated/sound-problems
 [What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
