@@ -96,8 +96,6 @@ In offline mode, pub looks only in your local package cache,
 trying to find a set of versions that work with your package from what's already
 available.
 
-
-
 ## Options
 
 For options that apply to all pub commands, see
@@ -122,3 +120,8 @@ resolved versions, and returns a list of the changed constraints.
 Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
 {% render 'pub-problems.md' %}
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub downgrade` will
+downgrade all dependencies across the workspace.

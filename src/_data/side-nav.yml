@@ -163,6 +163,8 @@
       permalink: /tools/pub/publishing
     - title: Writing package pages
       permalink: /tools/pub/writing-package-pages
+    - title: Workspaces (monorepo support)
+      permalink: /tools/pub/workspaces
     - title: Package reference
       expanded: false
       children:
