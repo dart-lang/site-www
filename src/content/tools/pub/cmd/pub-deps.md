@@ -79,3 +79,8 @@ Generates output in JSON format.
 
 
 {% render 'pub-problems.md' %}
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub deps` will list
+dependencies for all packages in the workspace, one workspace package at a time.

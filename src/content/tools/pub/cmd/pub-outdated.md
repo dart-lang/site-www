@@ -193,7 +193,6 @@ When you edit the `pubspec.yaml` file,
 you generally update the **dependencies** and **dev_dependencies** sections
 so that each package uses the versions in the **Resolvable** column.
 
-
 ## Options
 
 For options that apply to all pub commands, see
@@ -233,6 +232,11 @@ By default, doesn't include dependencies that
 are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub outdated` lists
+all dependencies 
 
 {% render 'pub-problems.md' %}
 

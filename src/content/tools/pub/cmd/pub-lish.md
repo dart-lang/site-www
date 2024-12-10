@@ -47,3 +47,8 @@ You can either wait a few minutes in between publishing the first and the second
 to publish the second package immediately, by side-stepping client-side validation.
 
 {% render 'pub-problems.md' %}
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub publish` publishes
+the package in the current directory.
