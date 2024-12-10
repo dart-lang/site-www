@@ -170,7 +170,7 @@ accounting for them before the 3.7 release.
 #### Formatter (`dart format`)
 
 The following changes might result in small formatting changes
-when running `dart format` with a Dart 3.6 SDK or later.
+when running `dart format` with a Dart 3.6 SDK or later:
 
 - Preserve type parameters on old-style function-typed formals that
   also use `this.` or `super.`.
