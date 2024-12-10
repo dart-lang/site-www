@@ -310,12 +310,11 @@ For more information, see
 
 ## Workspace
 
-A collection of packages that are developed together with a shared resolution of
-their dependency constraints. Useful for developing in a monorepo.
+A collection of packages that are developed together with a
+shared resolution of their dependency constraints.
+Useful for developing in a monorepo.
 
-The packages will have a shared `pubspec.lock` and a shared
-`.dart_tool/package_config.json`.
+The packages have a shared `pubspec.lock` and `.dart_tool/package_config.json`.
 
-For more information, check out
-[Pub workspaces](/tools/pub/workspaces).
-
+To learn more about setting up and developing in a workspace,
+check out [Pub workspaces](/tools/pub/workspaces).
