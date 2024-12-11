@@ -46,11 +46,11 @@ on the Dart language GitHub repo.
 _Released 11 December 2024_
 | [Dart 3.6 announcement](https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983)
 
-Dart 3.6 added the [digit separator][] underscore (`_`) to the language.
+Dart 3.6 added support for [digit separator][] underscores (`_`) to the language.
 Digit separators improve readability of long number literals.
 
 ```dart
-var m = 100__000_000__000_000__000_000
+var m = 1__000_000__000_000__000_000;
 ```
 
 [digit separator]: /language/built-in-types#digit-separators
