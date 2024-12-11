@@ -4,7 +4,7 @@ publish_to: none
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0-0
+  sdk: ^3.6.0
 
 dependencies:
   googleapis: ^13.2.0
