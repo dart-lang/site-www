@@ -44,14 +44,14 @@ name: my_app
 ```
 
 Here is an example of a pubspec that declares dependencies on
-two packages (`js` and `intl`) that are hosted on the pub.dev site:
+two packages (`intl` and `path`) that are hosted on the pub.dev site:
 
 ```yaml
 name: my_app
 
 dependencies:
-  js: ^0.6.0
-  intl: ^0.17.0
+  intl: ^0.20.0
+  path: ^1.9.1
 ```
 
 To update the `pubspec.yaml` file, without manual editing, 
