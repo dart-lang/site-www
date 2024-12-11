@@ -173,6 +173,8 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 For more information, see [Numbers in Dart][dart-numbers].
 
+<a id="digit-separators"></a>
+
 You can use one or more underscores (`_`) as digit separators
 to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
