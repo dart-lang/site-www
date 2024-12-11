@@ -40,4 +40,4 @@ show_banner: true
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.5.4
+sdkVersion: 3.6.0
