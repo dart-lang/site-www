@@ -21,8 +21,9 @@ yaml_variable_scanner:
     - ^site\.url$
     - ^site\.branch$
     - ^site\.show_banner$
+    - ^site\.sdkVersion$
     - ^site\.og_image_vers$
-  
+
   # File path for check file contents
   #
   # (Glob Syntax)
