@@ -1,6 +1,7 @@
 name: examples_workspace
 publish_to: none
 
+resolution: workspace
 environment:
   sdk: ^3.6.0
 
