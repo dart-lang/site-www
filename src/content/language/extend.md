@@ -78,7 +78,7 @@ it's similar to a downcast in that it can cause a type error at runtime.
 Still, narrowing the type is possible
 if the code can guarantee that a type error won't occur.
 In this case, you can use the
-[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
+[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword)
 in a parameter declaration.
 For details, see the
 [Dart language specification][].
