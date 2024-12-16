@@ -96,7 +96,7 @@
       { "source": "/books", "destination": "/resources/books", "type": 301 },
       { "source": "/bug", "destination": "https://dartbug.com", "type": 301 },
       { "source": "/bug/:rest*", "destination": "https://dartbug.com/:rest*", "type": 301 },
-      { "source": "/cl", "destination": "https://dart-review.googlesource.com/q/status:open", "type": 301 },
+      { "source": "/cl", "destination": "https://dart-review.googlesource.com/q/status%3Aopen%2B-is%3Awip", "type": 301 },
       { "source": "/cl/:rest*", "destination": "https://dart-review.googlesource.com/c/sdk/+/:rest*", "type": 301 },
       { "source": "/cloud{,/**}", "destination": "/server/google-cloud", "type": 301 },
       { "source": "/codelabs", "destination": "/tutorials", "type": 301 },
