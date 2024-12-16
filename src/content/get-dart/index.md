@@ -23,9 +23,10 @@ includes the full Dart SDK. You don't need to install Dart separately and can sk
 Dart supports the following hardware architectures and platform versions
 to develop and run Dart code.
 
-{% assign yes = '<span class="material-symbols system-support" style="color: #158477;" aria-label="Supported" title="Supported">verified</span>' %}
+{% assign yes = '<span class="material-symbols system-support" style="color: #158477" aria-label="Supported" title="Supported">verified</span>' %}
 {% assign no = '<span class="material-symbols system-support" style="color: #D43324" aria-label="Not supported" title="Not supported">dangerous</span>' %}
 {% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
+{% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Final deprecation" title="Final deprecation">report</span>' %}
 {% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
 {% assign macversions = 'Latest three versions of macOS:<br>' %}
 {% for version in macos limit:3 %}
@@ -40,14 +41,15 @@ to develop and run Dart code.
 
 | Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
 |----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
-| Windows  | {{yes}} |  {{dep}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    | {{yes}} |  {{dep}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
-| macOS    | {{yes}} |  {{no}}    | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
+| Windows  | {{yes}} |  {{rem}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
+| Linux    | {{yes}} |  {{rem}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
+| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
 
 {:.table .table-striped}
 
 {{yes}} Supported on all channels.<br>
 {{dep}} Support is deprecated and might be dropped in a future Dart release.<br>
+{{rem}} Support is deprecated and will likely be removed in the next stable release.<br>
 {{no}} Unsupported on all channels.<br>
 {{na}} Unsupported by the operating system.<br>
 
