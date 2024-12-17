@@ -1,0 +1,263 @@
+@mixin interaction-style($percentage: 4%) {
+  --site-interaction-base-values: 0 0 0;
+  background-image: linear-gradient(rgb(var(--site-interaction-base-values) / $percentage) 0 0);
+}
+
+body.linter-rules {
+  .filter-and-search {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1rem;
+  }
+
+  .lint-card {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 8px;
+    padding: 0.75rem;
+    gap: 0.5rem;
+    background-color: rgb(242, 245, 255);
+
+    scroll-margin: 4rem;
+
+    p {
+      font-size: 0.95em;
+
+      code {
+        font-size: 0.95em;
+        background-color: rgba(0, 0, 0, .05);
+        color: #212121;
+        border-radius: .25rem;
+        padding: .1rem .25rem;
+        text-wrap: nowrap;
+      }
+    }
+  }
+
+  .card-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .card-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8em;
+  }
+
+  .card-actions {
+    margin-top: auto;
+    padding-top: 0.5rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.5rem;
+
+    div {
+      display: flex;
+
+      &.leading {
+        gap: 0.25rem;
+        user-select: none;
+
+        span {
+          color: rgb(63, 72, 80);
+          font-size: 20px;
+          font-variation-settings: 'FILL' 1;
+        }
+      }
+
+      &.trailing {
+        gap: 0.5rem;
+
+        a, button {
+          display: flex;
+          align-items: center;
+
+          text-decoration: none;
+          background: none;
+          border-radius: 20px;
+          padding: 0 0.75rem;
+          height: 32px;
+          color: rgb(63, 72, 80);
+          border: 1px solid rgba(0, 0, 0, .125);
+
+          &:last-child {
+            border: none;
+            color: white;
+            background-color: rgb(6 89 156);
+          }
+
+          &:hover {
+            @include interaction-style(6%);
+          }
+
+          &:active {
+            @include interaction-style(10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.chip-set {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  text-wrap: nowrap;
+  margin: 0 0.5rem;
+  justify-content: center;
+
+  //overflow-x: scroll;
+  //scrollbar-width: thin;
+}
+
+button.chip {
+  border: 1px solid rgb(63, 72, 80);
+  border-radius: 8px;
+  height: 2rem;
+  padding: 0 .5rem;
+  background: none;
+  color: rgb(63, 72, 80);
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+
+  .label {
+    background: none;
+  }
+
+  &:hover {
+    @include interaction-style(6%);
+  }
+
+  &:active {
+    @include interaction-style(10%);
+  }
+
+  .chip-icon {
+    align-self: center;
+    fill: currentcolor;
+    position: relative;
+    height: 18px;
+    width: 18px;
+  }
+
+  .leading-icon {
+    display: none;
+    margin-right: 0.3rem;
+  }
+}
+
+button.filter-chip {
+  &.selected {
+    background-color: #cae4ff;
+    border: none;
+
+    .leading-icon {
+      display: flex;
+    }
+  }
+}
+
+.empty-button {
+  background: none;
+  border: none;
+  color: rgb(63, 72, 80);
+  border-radius: 8px;
+
+  &:hover {
+    @include interaction-style(4%);
+    color: rgb(63, 72, 80);
+  }
+
+  &:active {
+    @include interaction-style(8%);
+    color: rgb(63, 72, 80);
+  }
+
+  &:focus {
+    color: rgb(63, 72, 80);
+    outline: 2px solid blue;
+  }
+}
+
+#reset-filters {
+  padding: 0 .5rem;
+  height: 1.75rem;
+}
+
+#sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2rem;
+}
+
+#linter-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    border: 1px solid rgb(63, 72, 80);
+    border-radius: 20px;
+    height: 3rem;
+    padding: 0 .5rem;
+
+    .leading-icon {
+      padding-left: 0.25rem;
+      user-select: none;
+    }
+
+    input {
+      background: none;
+      width: 100%;
+      font-size: 1rem;
+      cursor: text;
+
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
+    }
+  }
+
+  #sort {
+    margin-left: 0.5rem;
+  }
+}
+
+section.results {
+  margin: 1rem 0;
+}

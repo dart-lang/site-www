@@ -2,6 +2,8 @@
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
 show_breadcrumbs: true
+body_class: linter-rules
+# js: [{url: '/assets/js/linter-rules.js', defer: true}]
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -109,13 +111,53 @@ To learn more, see [Quick fixes for analysis issues][].
 
 The following is an index of all linter rules and 
 a short description of their functionality.
-To learn more about each rule, 
-click on its name.
+To learn more about a specific rule, 
+click the **Learn more** button on its card.
 
 For an auto-generated list containing all linter rules
 in Dart `{{site.sdkVersion}}`,
 check out [All linter rules](/tools/linter-rules/all).
 
-{% render 'linter-rules-section.md', linter_rules:linter_rules %}
+---
+
+<section class="filter-and-search">
+  <div id="linter-search">
+    <search>
+      <span class="material-symbols leading-icon" aria-hidden="true">search</span>
+      <input type="search" placeholder="Search rules..." aria-label="Search linter rules">
+    </search>
+    <button class="empty-button" id="sort">
+      <span class="material-symbols">sort</span>
+    </button>
+  </div>
+
+  <div class="chip-set">
+    <button class="chip select-chip">
+      <span class="label">Category</span>
+      <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5H7z"></path>
+      </svg>
+    </button>
+    <button class="chip select-chip">
+      <span class="label">Rule set</span>
+      <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5H7z"></path>
+      </svg>
+    </button>
+    <button class="chip filter-chip">
+      <svg class="chip-icon leading-icon" viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M6.75012 12.1274L3.62262 8.99988L2.55762 10.0574L6.75012 14.2499L15.7501 5.24988L14.6926 4.19238L6.75012 12.1274Z"></path>
+      </svg>
+      <span class="label">Fix available</span>
+    </button>
+    <button class="empty-button" id="reset-filters">Clear filters</button>
+  </div>
+</section>
+
+<section class="results">
+  <div class="card-container" id="card-container">
+    {% render 'linter-rule-cards.md', linter_rules:linter_rules %}
+  </div>
+</section>
 
 [Dart style guide]: /effective-dart/style
