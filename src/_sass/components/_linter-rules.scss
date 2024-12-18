@@ -4,7 +4,7 @@
 }
 
 body.linter-rules {
-  .filter-and-search {
+  #filter-and-search {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -49,6 +49,10 @@ body.linter-rules {
         text-wrap: nowrap;
       }
     }
+
+    &.hidden {
+      display: none;
+    }
   }
 
   .card-title {
@@ -56,6 +60,7 @@ body.linter-rules {
     font-weight: 700;
     margin: 0;
     overflow: hidden;
+    padding-right: 2rem;
   }
 
   .card-details {
@@ -117,24 +122,31 @@ body.linter-rules {
           &:active {
             @include interaction-style(10%);
           }
+
+          &:focus-visible {
+            outline-offset: 1px;
+          }
         }
       }
     }
   }
 }
 
+.copy-button, #filter-and-search {
+  &.configuring {
+    display: none;
+  }
+}
+
 .chip-set {
   display: flex;
   flex-direction: row;
+  text-wrap: nowrap;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
-  text-wrap: nowrap;
-  margin: 0 0.5rem;
   justify-content: center;
-
-  //overflow-x: scroll;
-  //scrollbar-width: thin;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 button.chip {
@@ -145,20 +157,22 @@ button.chip {
   background: none;
   color: rgb(63, 72, 80);
   font-weight: 500;
+  user-select: none;
 
   display: flex;
   align-items: center;
+  gap: 0.2rem;
 
   .label {
     background: none;
   }
 
   &:hover {
-    @include interaction-style(6%);
+    @include interaction-style(4%);
   }
 
   &:active {
-    @include interaction-style(10%);
+    @include interaction-style(8%);
   }
 
   .chip-icon {
@@ -171,11 +185,11 @@ button.chip {
 
   .leading-icon {
     display: none;
-    margin-right: 0.3rem;
+    margin-right: 0.25rem;
   }
 }
 
-button.filter-chip {
+button.chip {
   &.selected {
     background-color: #cae4ff;
     border: none;
@@ -191,6 +205,7 @@ button.filter-chip {
   border: none;
   color: rgb(63, 72, 80);
   border-radius: 8px;
+  user-select: none;
 
   &:hover {
     @include interaction-style(4%);
@@ -204,7 +219,6 @@ button.filter-chip {
 
   &:focus {
     color: rgb(63, 72, 80);
-    outline: 2px solid blue;
   }
 }
 
@@ -220,7 +234,7 @@ button.filter-chip {
   height: 2rem;
 }
 
-#linter-search {
+.search-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -259,5 +273,93 @@ button.filter-chip {
 }
 
 section.results {
-  margin: 1rem 0;
+  margin: 0.5rem 0 1rem;
+}
+
+.select-menu {
+  display: none;
+  position: absolute;
+  overflow: auto;
+  z-index: 5;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(63, 72, 80);
+  min-width: 100%;
+  max-height: 15rem;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+  margin-top: 0.25rem;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    li {
+      &:first-child {
+        padding-top: 0.5rem;
+      }
+
+      &:last-child {
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    button {
+      padding: 0.2rem 0.75rem 0.2rem 0.5rem;
+      width: 100%;
+      border: none;
+      background: none;
+      color: rgb(63, 72, 80);
+      font-weight: 500;
+      text-align: left;
+      user-select: none;
+
+      &:hover {
+        @include interaction-style(4%);
+      }
+
+      &:focus {
+        @include interaction-style(6%);
+      }
+
+      &:active {
+        @include interaction-style(8%);
+      }
+
+      display: flex;
+      flex-direction: row;
+
+      .material-symbols {
+        align-self: center;
+        vertical-align: center;
+        fill: currentcolor;
+        position: relative;
+        font-size: 20px;
+        margin-right: 0.4rem;
+
+        font-variation-settings: 'FILL' 1;
+        user-select: none;
+      }
+
+      &.selected {
+        background-color: #cae4ff;
+      }
+    }
+  }
+
+  &.show-menu {
+    display: flex;
+  }
+}
+
+search:has(:focus-visible), .chip:focus-visible, .empty-button:focus-visible, .trailing a:focus-visible, .trailing button:focus-visible {
+  outline: 2px solid #1967D2;
+  border-color: transparent;
+}
+
+.button-menu-wrapper {
+  position: relative;
 }

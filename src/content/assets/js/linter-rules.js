@@ -1,131 +1,160 @@
-const cardContainer = document.getElementById('card-container');
-const searchInput = document.getElementById('linter-search');
-const categorySelect = document.getElementById('category');
-const dartVersionSelect = document.getElementById('dart-version');
-const fixAvailableCheckbox = document.getElementById('fix-available');
-const resetFiltersButton = document.getElementById('reset-filters');
+function setupFiltering() {
+  const lintCards = document
+      .getElementById('card-container')
+      ?.querySelectorAll('.lint-card');
+  if (!lintCards) return;
 
-let rulesData = []; // Store the fetched linter rules
+  const lintsInfo = [];
 
-// Fetch and initialize
-fetch('/f/linter_rules.json')
-    .then(response => response.json())
-    .then(data => {
-      rulesData = data;
-      populateDartVersions(rulesData);
-      displayRules(rulesData);
-    })
-    .catch(error => {
-      console.error('Error fetching linter rules:', error);
-      cardContainer.innerHTML = '<p>Error loading linter rules.</p>';
+  lintCards.forEach(card => {
+    const lintName = card.id;
+    if (!lintName) return;
+    lintsInfo.push({
+      name: lintName,
+      hasFix: card.dataset.hasFix === 'true',
+      stable: card.dataset.stable === 'true',
+      inCore: card.dataset.inCore === 'true',
+      inRecommended: card.dataset.inRecommended === 'true',
+      inFlutter: card.dataset.inFlutter === 'true',
     });
 
-// Populate Dart version select
-function populateDartVersions(rules) {
-  const dartVersions = new Set();
-  for (const rule of rules) {
-    dartVersions.add(rule.sinceDartSdk);
-  }
-  for (const version of dartVersions) {
-    const option = document.createElement('option');
-    option.value = version;
-    option.text = version;
-    dartVersionSelect.add(option);
-  }
-}
+    const copyButton = card.querySelector('.copy-button');
+    if (!copyButton) return;
 
-// Display rules as cards
-function displayRules(rules) {
-  cardContainer.innerHTML = ''; // Clear existing cards
+    copyButton.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(lintName);
+      // TODO(parlough): Show toast saying copied to clipboard.
+    });
 
-  for (const rule of rules) {
-    const card = document.createElement('div');
-    card.classList.add('lint-card');
-
-    const title = document.createElement('h2');
-    title.classList.add('card-title');
-    title.textContent = rule.name.replaceAll('_', '_\u200B');
-    card.appendChild(title);
-
-    const description = document.createElement('p');
-    description.classList.add('card-description');
-    description.textContent = rule.description;
-    card.appendChild(description);
-
-    // const details = document.createElement('div');
-    // details.classList.add('card-details');
-    //
-    // if (rule.sets) {
-    //   for (const set of rule.sets) {
-    //     const setLabel = document.createElement('span');
-    //     setLabel.classList.add('label');
-    //     setLabel.textContent = set;
-    //     details.appendChild(setLabel);
-    //   }
-    // }
-    //
-    // if (rule.fixStatus === 'hasFix') {
-    //   const fixLabel = document.createElement('span');
-    //   fixLabel.classList.add('label', 'fix-available');
-    //   fixLabel.innerHTML = '<span class="material-symbols">build</span> Fix available';
-    //   details.appendChild(fixLabel);
-    // }
-    //
-    // card.appendChild(details);
-
-    const cardActions = document.createElement('div');
-    cardActions.classList.add('card-actions');
-
-    const leadingActions = document.createElement('div');
-    leadingActions.classList.add('leading');
-    leadingActions.innerHTML = '<span class="material-symbols has-fix" title="Has a quick fix">build</span>' +
-        // '<span class="material-symbols effective" title="Part of Effective Dart">developer_guide</span>' +
-        '<span class="material-symbols core-lints" title="Part of the core lints">thumb_up</span>' +
-        '<span class="material-symbols flutter-lints" title="Part of the Flutte">flutter</span>';
-
-    const trailingActions = document.createElement('div');
-    trailingActions.classList.add('trailing');
-    trailingActions.innerHTML = '<button>Learn more</button><button>Copy</button>';
-
-    cardActions.appendChild(leadingActions);
-    cardActions.appendChild(trailingActions);
-
-
-    card.appendChild(cardActions);
-
-    cardContainer.appendChild(card);
-  }
-}
-
-// Filter rules based on criteria
-function filterRules() {
-  const searchTerm = searchInput.value.toLowerCase().replace(/\s/g, '');
-  const selectedCategory = categorySelect.value;
-  const selectedDartVersion = dartVersionSelect.value;
-  const fixAvailableChecked = fixAvailableCheckbox.checked;
-
-  const filteredRules = rulesData.filter(rule => {
-    const name = rule.name.toLowerCase().replace(/\s/g, '');
-    return name.includes(searchTerm) &&
-        (selectedCategory === '' || rule.categories.includes(selectedCategory)) &&
-        (selectedDartVersion === '' || rule.sinceDartSdk === selectedDartVersion) &&
-        (!fixAvailableChecked || rule.fixStatus === 'hasFix'); // Filter only if checked
+    copyButton.classList.remove('configuring');
   });
 
-  displayRules(filteredRules);
+  const filterAndSearch = document.getElementById('filter-and-search');
+  if (!filterAndSearch) return;
+
+  function displayLints(lints) {
+    lintCards.forEach(card => {
+      const lintName = card.id;
+
+      if (lints.has(lintName)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  const filterChips = filterAndSearch.querySelectorAll('button.filter-chip');
+  const chips = filterAndSearch.querySelectorAll('button.chip');
+
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      closeMenusAndToggle();
+      chip.classList.toggle('selected');
+      const checked = chip.getAttribute('aria-checked');
+      chip.setAttribute('aria-checked',
+          checked === 'true' ? 'false' : 'true');
+      filterRules();
+    });
+  });
+
+  const selectChips = filterAndSearch.querySelectorAll('button.select-chip');
+  selectChips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      const menuToToggle = chip.dataset.menu;
+      closeMenusAndToggle(menuToToggle);
+    });
+
+    const options = chip.parentElement.querySelectorAll('.select-menu button');
+    function unselectOptions() {
+      options.forEach(option => option.classList.remove('selected'));
+    }
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        if (option.classList.contains('selected')) {
+          resetChip(chip);
+        } else {
+          unselectOptions();
+          option.classList.add('selected');
+          chip.classList.add('selected');
+          chip.querySelector('.label').textContent = option.querySelector('.label').textContent;
+          chip.dataset.filter = option.dataset.filter;
+        }
+
+        filterRules();
+      })
+    })
+  });
+
+  const searchInput = filterAndSearch.querySelector('search input');
+
+  function filterRules() {
+    const lintsToShow = new Set();
+    const searchTerm = searchInput.value.toLowerCase().replace(/\s/g, '');
+    const selectedChips = Array.from(chips).filter(chip => chip.classList.contains('selected'));
+    const selectedProperties = selectedChips.map(chip => chip.dataset.filter);
+
+    for (const lint of lintsInfo) {
+      const lintName = lint.name;
+      if (!lintName.includes(searchTerm)) continue;
+      if (selectedProperties.some(property => lint[property] !== true)) continue;
+
+      lintsToShow.add(lintName);
+    }
+
+    displayLints(lintsToShow);
+  }
+
+  searchInput.addEventListener('input', filterRules);
+
+  filterAndSearch.querySelector('#reset-filters').addEventListener('click', () => {
+    searchInput.value = '';
+    chips.forEach(chip => resetChip(chip));
+    filterRules();
+  });
+
+  document.addEventListener('click', (event) => {
+    // If not clicking inside a menu wrapper, close all menus.
+    if (!event.target.closest('.button-menu-wrapper')) {
+      closeMenusAndToggle();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    // If pressing esc, close any open menus.
+    if (event.key === 'Escape') {
+      closeMenusAndToggle();
+    }
+  });
+
+  filterRules();
 }
 
-// Event listeners for filtering
-searchInput.addEventListener('input', filterRules);
-categorySelect.addEventListener('change', filterRules);
-dartVersionSelect.addEventListener('change', filterRules);
-fixAvailableCheckbox.addEventListener('change', filterRules);
+function closeMenusAndToggle(menuToToggle = '') {
+  document.querySelectorAll('.select-menu').forEach(menu => {
+    if (menu.id === menuToToggle) {
+      menu.classList.toggle('show-menu');
+    } else {
+      // Close all other menus.
+      menu.classList.remove('show-menu');
+    }
+  });
+}
 
-// Reset filters
-resetFiltersButton.addEventListener('click', () => {
-  searchInput.value = '';
-  categorySelect.value = '';
-  dartVersionSelect.value = '';
-  fixAvailableCheckbox.checked = false;
-  filterRules();
-});
+function resetChip(chip) {
+  chip.classList.remove('selected');
+  if (chip.classList.contains('filter-chip')) {
+    chip.setAttribute('aria-checked', 'false');
+  } else if (chip.classList.contains('select-chip')) {
+    chip.parentElement.querySelectorAll('.select-menu button')
+        .forEach(option => option.classList.remove('selected'));
+    chip.querySelector('.label').textContent = chip.dataset.title;
+  }
+}
+
+if (document.readyState !== "loading") {
+  setupFiltering();
+} else {
+  document.addEventListener("DOMContentLoaded", setupFiltering);
+}

@@ -2,7 +2,14 @@
 
 {% if lint.state != "internal" %}
 
-<div class="lint-card" id="{{lint.name}}">
+<div
+  class="lint-card"
+  id="{{lint.name}}"
+  {%- if lint.state == "stable" and not lint.sinceDartSdk contains "wip" %} data-stable="true"{% endif -%}
+  {%- if lint.fixStatus == "hasFix" %} data-has-fix="true"{% endif -%}
+  {%- if lint.sets contains "core" %} data-in-core="true"{% endif -%}
+  {%- if lint.sets contains "recommended" %} data-in-recommended="true"{% endif -%}
+  {%- if lint.sets contains "recommended" %} data-in-flutter="true"{% endif -%}>
 <h3 class="card-title">{{lint.name | underscoreBreaker}}</h3>
 
 {{lint.description}}
@@ -34,7 +41,7 @@
 
 <div class="trailing">
 <a href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
-<button title="Copy {{lint.name}} to your clipboard.">Copy</button>
+<button class="copy-button configuring" title="Copy {{lint.name}} to your clipboard.">Copy</button>
 </div>
 
 </div>

@@ -3,7 +3,7 @@ title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
 show_breadcrumbs: true
 body_class: linter-rules
-# js: [{url: '/assets/js/linter-rules.js', defer: true}]
+js: [{url: '/assets/js/linter-rules.js', defer: true}]
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -120,35 +120,66 @@ check out [All linter rules](/tools/linter-rules/all).
 
 ---
 
-<section class="filter-and-search">
-  <div id="linter-search">
+<section id="filter-and-search">
+  <div class="search-wrapper">
     <search>
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
-      <input type="search" placeholder="Search rules..." aria-label="Search linter rules">
+      <input type="search" placeholder="Search rules..." aria-label="Search linter rules by names">
     </search>
-    <button class="empty-button" id="sort">
+    {%- comment %}<button class="empty-button" id="sort">
       <span class="material-symbols">sort</span>
-    </button>
+    </button>{% endcomment -%}
   </div>
 
   <div class="chip-set">
-    <button class="chip select-chip">
-      <span class="label">Category</span>
-      <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M7 10l5 5 5-5H7z"></path>
-      </svg>
-    </button>
-    <button class="chip select-chip">
-      <span class="label">Rule set</span>
-      <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M7 10l5 5 5-5H7z"></path>
-      </svg>
-    </button>
-    <button class="chip filter-chip">
+    {%- comment %}<div class="button-menu-wrapper">
+      <button class="chip select-chip" data-menu="category-menu" data-title="Category">
+        <span class="label">Category</span>
+        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5H7z"></path>
+        </svg>
+      </button>
+      <div id="category-menu" class="select-menu">
+        <ul>
+          <li><button><span class="label">Effective Dart</span></button></li>
+        </ul>
+      </div>
+    </div>{% endcomment -%}
+    <div class="button-menu-wrapper">
+      <button class="chip select-chip" data-menu="rule-set-menu" data-title="Rule set">
+        <span class="label">Rule set</span>
+        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5H7z"></path>
+        </svg>
+      </button>
+      <div id="rule-set-menu" class="select-menu">
+      <ul>
+      <li><button data-filter="inFlutter">
+        <span class="material-symbols" aria-hidden="true">flutter</span>
+        <span class="label">Flutter</span>
+      </button></li>
+      <li><button data-filter="inRecommended">
+        <span class="material-symbols" aria-hidden="true">thumb_up</span>
+        <span class="label">Recommended</span>
+      </button></li>
+      <li><button data-filter="inCore">
+        <span class="material-symbols" aria-hidden="true">circles</span>
+        <span class="label">Core</span>
+      </button></li>
+      </ul>
+      </div>
+    </div>
+    <button class="chip filter-chip" data-filter="hasFix" role="checkbox" aria-checked="false" aria-label="Show only lints with a fix available">
       <svg class="chip-icon leading-icon" viewBox="0 0 18 18" aria-hidden="true">
         <path d="M6.75012 12.1274L3.62262 8.99988L2.55762 10.0574L6.75012 14.2499L15.7501 5.24988L14.6926 4.19238L6.75012 12.1274Z"></path>
       </svg>
       <span class="label">Fix available</span>
+    </button>
+    <button class="chip filter-chip selected" data-filter="stable" role="checkbox" aria-checked="true" aria-label="Show only released, stable rules">
+      <svg class="chip-icon leading-icon" viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M6.75012 12.1274L3.62262 8.99988L2.55762 10.0574L6.75012 14.2499L15.7501 5.24988L14.6926 4.19238L6.75012 12.1274Z"></path>
+      </svg>
+      <span class="label">Stable only</span>
     </button>
     <button class="empty-button" id="reset-filters">Clear filters</button>
   </div>
