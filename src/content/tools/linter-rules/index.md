@@ -175,7 +175,7 @@ check out [All linter rules](/tools/linter-rules/all).
       </svg>
       <span class="label">Fix available</span>
     </button>
-    <button class="chip filter-chip selected" data-filter="stable" role="checkbox" aria-checked="true" aria-label="Show only released, stable rules">
+    <button class="chip filter-chip" data-filter="stable" role="checkbox" aria-checked="false" aria-label="Show only released, stable rules">
       <svg class="chip-icon leading-icon" viewBox="0 0 18 18" aria-hidden="true">
         <path d="M6.75012 12.1274L3.62262 8.99988L2.55762 10.0574L6.75012 14.2499L15.7501 5.24988L14.6926 4.19238L6.75012 12.1274Z"></path>
       </svg>

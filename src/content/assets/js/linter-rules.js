@@ -1,4 +1,4 @@
-function setupFiltering() {
+function _setupFiltering() {
   const lintCards = document
       .getElementById('card-container')
       ?.querySelectorAll('.lint-card');
@@ -49,23 +49,23 @@ function setupFiltering() {
 
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      closeMenusAndToggle();
+      _closeMenusAndToggle();
       chip.classList.toggle('selected');
       const checked = chip.getAttribute('aria-checked');
-      chip.setAttribute('aria-checked',
-          checked === 'true' ? 'false' : 'true');
+      chip.setAttribute('aria-checked', checked === 'true' ? 'false' : 'true');
       filterRules();
     });
   });
 
   const selectChips = filterAndSearch.querySelectorAll('button.select-chip');
   selectChips.forEach(chip => {
-    chip.addEventListener('click', (e) => {
+    chip.addEventListener('click', (_) => {
       const menuToToggle = chip.dataset.menu;
-      closeMenusAndToggle(menuToToggle);
+      _closeMenusAndToggle(menuToToggle);
     });
 
     const options = chip.parentElement.querySelectorAll('.select-menu button');
+
     function unselectOptions() {
       options.forEach(option => option.classList.remove('selected'));
     }
@@ -73,7 +73,7 @@ function setupFiltering() {
     options.forEach(option => {
       option.addEventListener('click', () => {
         if (option.classList.contains('selected')) {
-          resetChip(chip);
+          _resetChip(chip);
         } else {
           unselectOptions();
           option.classList.add('selected');
@@ -83,8 +83,8 @@ function setupFiltering() {
         }
 
         filterRules();
-      })
-    })
+      });
+    });
   });
 
   const searchInput = filterAndSearch.querySelector('search input');
@@ -110,28 +110,28 @@ function setupFiltering() {
 
   filterAndSearch.querySelector('#reset-filters').addEventListener('click', () => {
     searchInput.value = '';
-    chips.forEach(chip => resetChip(chip));
+    chips.forEach(chip => _resetChip(chip));
     filterRules();
   });
 
   document.addEventListener('click', (event) => {
     // If not clicking inside a menu wrapper, close all menus.
     if (!event.target.closest('.button-menu-wrapper')) {
-      closeMenusAndToggle();
+      _closeMenusAndToggle();
     }
   });
 
   document.addEventListener('keydown', (event) => {
-    // If pressing esc, close any open menus.
-    if (event.key === 'Escape') {
-      closeMenusAndToggle();
+    // If pressing esc in a menu, close any open menus.
+    if (event.key === 'Escape' && event.target.closest('#filter-and-search')) {
+      _closeMenusAndToggle();
     }
   });
 
   filterRules();
 }
 
-function closeMenusAndToggle(menuToToggle = '') {
+function _closeMenusAndToggle(menuToToggle = '') {
   document.querySelectorAll('.select-menu').forEach(menu => {
     if (menu.id === menuToToggle) {
       menu.classList.toggle('show-menu');
@@ -142,7 +142,7 @@ function closeMenusAndToggle(menuToToggle = '') {
   });
 }
 
-function resetChip(chip) {
+function _resetChip(chip) {
   chip.classList.remove('selected');
   if (chip.classList.contains('filter-chip')) {
     chip.setAttribute('aria-checked', 'false');
@@ -153,8 +153,8 @@ function resetChip(chip) {
   }
 }
 
-if (document.readyState !== "loading") {
-  setupFiltering();
+if (document.readyState !== 'loading') {
+  _setupFiltering();
 } else {
-  document.addEventListener("DOMContentLoaded", setupFiltering);
+  document.addEventListener('DOMContentLoaded', _setupFiltering);
 }
