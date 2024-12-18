@@ -133,36 +133,36 @@ check out [All linter rules](/tools/linter-rules/all).
 
   <div class="chip-set">
     {%- comment %}<div class="button-menu-wrapper">
-      <button class="chip select-chip" data-menu="category-menu" data-title="Category">
+      <button class="chip select-chip" data-menu="category-menu" data-title="Category" aria-controls="category-menu" aria-expanded="false">
         <span class="label">Category</span>
         <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
           <path d="M7 10l5 5 5-5H7z"></path>
         </svg>
       </button>
       <div id="category-menu" class="select-menu">
-        <ul>
-          <li><button><span class="label">Effective Dart</span></button></li>
+        <ul role="listbox">
+          <li><button role="option" aria-selected="false"><span class="label">Effective Dart</span></button></li>
         </ul>
       </div>
     </div>{% endcomment -%}
     <div class="button-menu-wrapper">
-      <button class="chip select-chip" data-menu="rule-set-menu" data-title="Rule set">
+      <button class="chip select-chip" data-menu="rule-set-menu" data-title="Rule set" aria-controls="rule-set-menu" aria-expanded="false">
         <span class="label">Rule set</span>
         <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
           <path d="M7 10l5 5 5-5H7z"></path>
         </svg>
       </button>
       <div id="rule-set-menu" class="select-menu">
-      <ul>
-      <li><button data-filter="inFlutter">
+      <ul role="listbox">
+      <li><button data-filter="inFlutter" role="option" aria-selected="false">
         <span class="material-symbols" aria-hidden="true">flutter</span>
         <span class="label">Flutter</span>
       </button></li>
-      <li><button data-filter="inRecommended">
+      <li><button data-filter="inRecommended" role="option" aria-selected="false">
         <span class="material-symbols" aria-hidden="true">thumb_up</span>
         <span class="label">Recommended</span>
       </button></li>
-      <li><button data-filter="inCore">
+      <li><button data-filter="inCore" role="option" aria-selected="false">
         <span class="material-symbols" aria-hidden="true">circles</span>
         <span class="label">Core</span>
       </button></li>

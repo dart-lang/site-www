@@ -51,8 +51,8 @@ function _setupFiltering() {
     chip.addEventListener('click', () => {
       _closeMenusAndToggle();
       chip.classList.toggle('selected');
-      const checked = chip.getAttribute('aria-checked');
-      chip.setAttribute('aria-checked', checked === 'true' ? 'false' : 'true');
+      const checked = chip.ariaChecked;
+      chip.ariaChecked = checked === 'true' ? 'false' : 'true';
       filterRules();
     });
   });
@@ -67,7 +67,10 @@ function _setupFiltering() {
     const options = chip.parentElement.querySelectorAll('.select-menu button');
 
     function unselectOptions() {
-      options.forEach(option => option.classList.remove('selected'));
+      options.forEach(option => {
+        option.classList.remove('selected');
+        option.ariaSelected = 'false';
+      });
     }
 
     options.forEach(option => {
@@ -77,6 +80,7 @@ function _setupFiltering() {
         } else {
           unselectOptions();
           option.classList.add('selected');
+          option.ariaSelected = 'true';
           chip.classList.add('selected');
           chip.querySelector('.label').textContent = option.querySelector('.label').textContent;
           chip.dataset.filter = option.dataset.filter;
@@ -132,12 +136,20 @@ function _setupFiltering() {
 }
 
 function _closeMenusAndToggle(menuToToggle = '') {
-  document.querySelectorAll('.select-menu').forEach(menu => {
+  document.querySelectorAll('.select-chip').forEach(chip => {
+    const menu = chip.parentElement.querySelector('.select-menu');
     if (menu.id === menuToToggle) {
-      menu.classList.toggle('show-menu');
+      if (menu.classList.contains('show-menu')) {
+        menu.classList.remove('show-menu');
+        chip.ariaExpanded = 'false';
+      } else {
+        menu.classList.add('show-menu');
+        chip.ariaExpanded = 'true';
+      }
     } else {
       // Close all other menus.
       menu.classList.remove('show-menu');
+      chip.ariaExpanded = 'false';
     }
   });
 }
@@ -145,10 +157,14 @@ function _closeMenusAndToggle(menuToToggle = '') {
 function _resetChip(chip) {
   chip.classList.remove('selected');
   if (chip.classList.contains('filter-chip')) {
-    chip.setAttribute('aria-checked', 'false');
+    chip.ariaChecked = 'false';
   } else if (chip.classList.contains('select-chip')) {
     chip.parentElement.querySelectorAll('.select-menu button')
-        .forEach(option => option.classList.remove('selected'));
+        .forEach(option => {
+          option.classList.remove('selected');
+          option.ariaSelected = 'false';
+        });
+    chip.ariaExpanded = 'false';
     chip.querySelector('.label').textContent = chip.dataset.title;
   }
 }
