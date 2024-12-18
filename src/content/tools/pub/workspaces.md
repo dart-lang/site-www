@@ -119,7 +119,7 @@ Therefore `pub get` will delete any `pubspec.lock` and
 `.dart_tool/package_config.json` located in directories between the root and
 (including) any workspace package.
 
-```
+```plaintext
 /
   pubspec.yaml                       # Root
   packages/
@@ -137,7 +137,8 @@ report an error and fail to resolve, as resolving such a `pubspec.yaml` would
 create a `.dart_tool/package_config.json` file that shadows the one at the root.
 
 For example:
-```
+
+```plaintext
 /
   pubspec.yaml                      # Root `workspace: ['foo/']`
   packages/
