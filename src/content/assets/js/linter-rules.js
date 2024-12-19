@@ -26,23 +26,12 @@ function _setupFiltering() {
       // TODO(parlough): Show toast saying copied to clipboard.
     });
 
-    copyButton.classList.remove('configuring');
+    copyButton.classList.remove('hidden');
   });
 
   const filterAndSearch = document.getElementById('filter-and-search');
   if (!filterAndSearch) return;
-
-  function displayLints(lints) {
-    lintCards.forEach(card => {
-      const lintName = card.id;
-
-      if (lints.has(lintName)) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  }
+  filterAndSearch.classList.remove('hidden');
 
   const filterChips = filterAndSearch.querySelectorAll('button.filter-chip');
   const chips = filterAndSearch.querySelectorAll('button.chip');
@@ -107,7 +96,15 @@ function _setupFiltering() {
       lintsToShow.add(lintName);
     }
 
-    displayLints(lintsToShow);
+    lintCards.forEach(card => {
+      const lintName = card.id;
+
+      if (lintsToShow.has(lintName)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
   }
 
   searchInput.addEventListener('input', filterRules);
@@ -126,7 +123,7 @@ function _setupFiltering() {
   });
 
   document.addEventListener('keydown', (event) => {
-    // If pressing esc in a menu, close any open menus.
+    // If pressing the `esc` key in the filter area, close any open menus.
     if (event.key === 'Escape' && event.target.closest('#filter-and-search')) {
       _closeMenusAndToggle();
     }
