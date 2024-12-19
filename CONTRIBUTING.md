@@ -4,10 +4,10 @@ Thanks for thinking about helping with [dart.dev][www]!
 You can contribute in a few ways.
 
 * **Fix typos.** The GitHub UI makes it easy to contribute small fixes, and
-  you'll get credit for your contribution! To start, click the **page icon**
+  you'll get credit for your contribution! To begin, click the **page icon**
   at the upper right of the page. Then click the **pencil icon** to start
   editing the file. Once you've fixed the typo, commit your changes to a new
-  branch and create a **pull request.**
+  branch in your forked repository and create a **pull request.**
 
   Once we've reviewed and approved your change, we'll merge it. Normally, we'll
   review your fix within one working day, and your fix will appear online less
