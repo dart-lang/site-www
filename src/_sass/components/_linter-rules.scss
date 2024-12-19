@@ -234,13 +234,13 @@ button.chip {
   height: 2rem;
 }
 
-.search-wrapper {
+.search-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
 
-  search {
+  .search-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
@@ -272,7 +272,7 @@ button.chip {
   }
 }
 
-section.results {
+section.content-search-results {
   margin: 0.5rem 0 1rem;
 }
 
@@ -355,7 +355,7 @@ section.results {
   }
 }
 
-search:has(:focus-visible), .chip:focus-visible, .empty-button:focus-visible, .trailing a:focus-visible, .trailing button:focus-visible {
+.search-wrapper:has(:focus-visible), .chip:focus-visible, .empty-button:focus-visible, .trailing a:focus-visible, .trailing button:focus-visible {
   outline: 2px solid #1967D2;
   border-color: transparent;
 }
