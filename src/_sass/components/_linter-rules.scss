@@ -11,6 +11,10 @@ body.linter-rules {
     justify-content: center;
     gap: 0.75rem;
     margin-bottom: 1.25rem;
+
+    &.hidden {
+      display: none;
+    }
   }
 
   .filter-group {
@@ -127,14 +131,12 @@ body.linter-rules {
             outline-offset: 1px;
           }
         }
+
+        button.hidden {
+          display: none;
+        }
       }
     }
-  }
-}
-
-.copy-button, #filter-and-search {
-  &.configuring {
-    display: none;
   }
 }
 
@@ -276,90 +278,90 @@ section.content-search-results {
   margin: 0.5rem 0 1rem;
 }
 
-.select-menu {
-  display: none;
-  position: absolute;
-  overflow: auto;
-  z-index: 5;
-  background-color: white;
-  border-radius: 0.5rem;
-  border: 1px solid rgb(63, 72, 80);
-  min-width: 100%;
-  max-height: 15rem;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  overscroll-behavior: contain;
-  margin-top: 0.25rem;
+.button-menu-wrapper {
+  position: relative;
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+  .select-menu {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    z-index: 5;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(63, 72, 80);
+    min-width: 100%;
+    max-height: 15rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+    margin-top: 0.25rem;
 
-    li {
-      &:first-child {
-        padding-top: 0.5rem;
-      }
-
-      &:last-child {
-        padding-bottom: 0.5rem;
-      }
-    }
-
-    button {
-      padding: 0.2rem 0.75rem 0.2rem 0.5rem;
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
       width: 100%;
-      border: none;
-      background: none;
-      color: rgb(63, 72, 80);
-      font-weight: 500;
-      text-align: left;
-      user-select: none;
 
-      &:hover {
-        @include interaction-style(4%);
+      li {
+        &:first-child {
+          padding-top: 0.5rem;
+        }
+
+        &:last-child {
+          padding-bottom: 0.5rem;
+        }
       }
 
-      &:focus {
-        @include interaction-style(6%);
-      }
-
-      &:active {
-        @include interaction-style(8%);
-      }
-
-      display: flex;
-      flex-direction: row;
-
-      .material-symbols {
-        align-self: center;
-        vertical-align: center;
-        fill: currentcolor;
-        position: relative;
-        font-size: 20px;
-        margin-right: 0.4rem;
-
-        font-variation-settings: 'FILL' 1;
+      button {
+        padding: 0.2rem 0.75rem 0.2rem 0.5rem;
+        width: 100%;
+        border: none;
+        background: none;
+        color: rgb(63, 72, 80);
+        font-weight: 500;
+        text-align: left;
         user-select: none;
-      }
 
-      &.selected {
-        background-color: #cae4ff;
+        &:hover {
+          @include interaction-style(4%);
+        }
+
+        &:focus {
+          @include interaction-style(6%);
+        }
+
+        &:active {
+          @include interaction-style(8%);
+        }
+
+        display: flex;
+        flex-direction: row;
+
+        .material-symbols {
+          align-self: center;
+          vertical-align: center;
+          fill: currentcolor;
+          position: relative;
+          font-size: 20px;
+          margin-right: 0.4rem;
+
+          font-variation-settings: 'FILL' 1;
+          user-select: none;
+        }
+
+        &.selected {
+          background-color: #cae4ff;
+        }
       }
     }
-  }
 
-  &.show-menu {
-    display: flex;
+    &.show-menu {
+      display: flex;
+    }
   }
 }
 
 .search-wrapper:has(:focus-visible), .chip:focus-visible, .empty-button:focus-visible, .trailing a:focus-visible, .trailing button:focus-visible {
   outline: 2px solid #1967D2;
   border-color: transparent;
-}
-
-.button-menu-wrapper {
-  position: relative;
 }

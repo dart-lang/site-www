@@ -41,7 +41,7 @@
 
 <div class="trailing">
 <a href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
-<button class="copy-button configuring" title="Copy {{lint.name}} to your clipboard.">Copy</button>
+<button class="copy-button hidden" title="Copy {{lint.name}} to your clipboard.">Copy</button>
 </div>
 
 </div>

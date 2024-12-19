@@ -120,11 +120,11 @@ check out [All linter rules](/tools/linter-rules/all).
 
 ---
 
-{%- comment %}
+{% comment -%}
 TODO(parlough): Generate this HTML with some sort of component mechanism.
 {% endcomment -%}
 
-<section id="filter-and-search">
+<section id="filter-and-search" class="hidden">
   <div class="search-row">
     <div class="search-wrapper">
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
