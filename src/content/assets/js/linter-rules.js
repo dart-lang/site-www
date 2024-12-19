@@ -91,7 +91,7 @@ function _setupFiltering() {
     });
   });
 
-  const searchInput = filterAndSearch.querySelector('search input');
+  const searchInput = filterAndSearch.querySelector('.search-wrapper input');
 
   function filterRules() {
     const lintsToShow = new Set();

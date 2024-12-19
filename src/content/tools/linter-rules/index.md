@@ -90,7 +90,7 @@ Each rule has a status or maturity level:
   and might be removed in a future Dart release.
 
 **Removed**
-: These rules have been already been removed in the
+: These rules have already been removed in the
   latest stable Dart release.
 
 ## Quick fixes
@@ -120,12 +120,16 @@ check out [All linter rules](/tools/linter-rules/all).
 
 ---
 
+{%- comment %}
+TODO(parlough): Generate this HTML with some sort of component mechanism.
+{% endcomment -%}
+
 <section id="filter-and-search">
-  <div class="search-wrapper">
-    <search>
+  <div class="search-row">
+    <div class="search-wrapper">
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
       <input type="search" placeholder="Search rules..." aria-label="Search linter rules by names">
-    </search>
+    </div>
     {%- comment %}<button class="empty-button" id="sort">
       <span class="material-symbols">sort</span>
     </button>{% endcomment -%}
@@ -135,7 +139,7 @@ check out [All linter rules](/tools/linter-rules/all).
     {%- comment %}<div class="button-menu-wrapper">
       <button class="chip select-chip" data-menu="category-menu" data-title="Category" aria-controls="category-menu" aria-expanded="false">
         <span class="label">Category</span>
-        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M7 10l5 5 5-5H7z"></path>
         </svg>
       </button>
@@ -148,7 +152,7 @@ check out [All linter rules](/tools/linter-rules/all).
     <div class="button-menu-wrapper">
       <button class="chip select-chip" data-menu="rule-set-menu" data-title="Rule set" aria-controls="rule-set-menu" aria-expanded="false">
         <span class="label">Rule set</span>
-        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24">
+        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M7 10l5 5 5-5H7z"></path>
         </svg>
       </button>
@@ -185,7 +189,7 @@ check out [All linter rules](/tools/linter-rules/all).
   </div>
 </section>
 
-<section class="results">
+<section class="content-search-results">
   <div class="card-container" id="card-container">
     {% render 'linter-rule-cards.md', linter_rules:linter_rules %}
   </div>
