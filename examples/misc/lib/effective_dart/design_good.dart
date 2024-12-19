@@ -271,21 +271,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion prefer-dynamic
-    dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
-    // #enddocregion prefer-dynamic
-  }
-
-  {
-    // #docregion infer-dynamic
-    Map<String, dynamic> readJson() => ellipsis();
-
-    void printUsers() {
-      var json = readJson();
-      var users = json['users'];
-      print(users);
-    }
-    // #enddocregion infer-dynamic
+    // #docregion prefer-object-question
+    Object? mergeJson(Object? original, Object? changes) => ellipsis();
+    // #enddocregion prefer-object-question
   }
 
   // #docregion avoid-function
