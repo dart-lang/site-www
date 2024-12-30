@@ -290,6 +290,52 @@ cannot be changed: they're _immutable_.
 For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
+## Wildcard variables
+
+A wildcard variable declares a local variable or parameter that is non-binding;
+essentially, a placeholder.
+You can declare a wildcard variable using the name `_`. 
+
+Because it does not bind to anything, you can have multiple declarations named
+`_` in the same namespace without a collision error.
+
+```dart
+// local variable declaration
+main() {
+  var _ = 1;
+  int _ = 2;
+}
+
+// for loop varibale declartaion
+for (var _ in list) {}
+
+// catch clause parameters
+try {
+  throw '!';
+} catch (_) {
+  print('oops');
+}
+
+// generic type and function type parameters
+class T<_> {}
+void genericFunction<_>() {}
+
+takeGenericCallback(<_>() => true);
+
+// function parameters
+Foo(_, this._, super._, void _()) {}
+
+list.where((_) => true);
+
+void f(void g(int _, bool _)) {}
+
+typedef T = void Function(String _, String _);
+```
+
+Any declarations local to a block scope is a valid use for wildcard variables.
+Top-level declarations or members where library privacy might be affected are
+not valid uses for wildcard variables.
+
 
 [Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
