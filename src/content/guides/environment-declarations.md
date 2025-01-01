@@ -148,7 +148,7 @@ check out [the `webdev` configuration documentation][webdev-config].
 ### Visual Studio Code
 
 In your launch configuration (`launch.json`) under `configurations`,
-add a new `toolArgs` key containing the your desired environment declarations:
+add a new `toolArgs` key containing your desired environment declarations:
 
 ```json
 "configurations": [
