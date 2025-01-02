@@ -130,7 +130,7 @@ TODO(parlough): Generate this HTML with some sort of component mechanism.
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
       <input type="search" placeholder="Search rules..." aria-label="Search linter rules by names">
     </div>
-    {%- comment %}<button class="empty-button" id="sort">
+    {%- comment %}<button class="empty-button icon-button" id="sort">
       <span class="material-symbols">sort</span>
     </button>{% endcomment -%}
   </div>
@@ -185,12 +185,12 @@ TODO(parlough): Generate this HTML with some sort of component mechanism.
       </svg>
       <span class="label">Stable only</span>
     </button>
-    <button class="empty-button" id="reset-filters">Clear filters</button>
+    <button class="text-button" id="reset-filters">Clear filters</button>
   </div>
 </section>
 
 <section class="content-search-results">
-  <div class="card-container" id="card-container">
+  <div class="card-grid" id="lint-cards">
     {% render 'linter-rule-cards.md', linter_rules:linter_rules %}
   </div>
 </section>

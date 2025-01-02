@@ -9,7 +9,7 @@
   {%- if lint.fixStatus == "hasFix" %} data-has-fix="true"{% endif -%}
   {%- if lint.sets contains "core" %} data-in-core="true"{% endif -%}
   {%- if lint.sets contains "recommended" %} data-in-recommended="true"{% endif -%}
-  {%- if lint.sets contains "recommended" %} data-in-flutter="true"{% endif -%}>
+  {%- if lint.sets contains "flutter" %} data-in-flutter="true"{% endif -%}>
 <h3 class="card-title">{{lint.name | underscoreBreaker}}</h3>
 
 {{lint.description}}
@@ -29,13 +29,13 @@
 <span class="material-symbols has-fix" title="Has a quick fix" aria-label="Has a quick fix">build</span>
 {% endif -%}
 {% if lint.sets contains "core" -%}
-<span class="material-symbols core-lints" title="Included in the core lint set" aria-label="Included in the core lint set">circles</span>
+<span class="material-symbols" title="Included in the core lint set" aria-label="Included in the core lint set">circles</span>
 {% endif -%}
 {% if lint.sets contains "recommended" -%}
-<span class="material-symbols recommended-lints" title="Included in the recommended lint set" aria-label="Included in the recommended lint set">thumb_up</span>
+<span class="material-symbols" title="Included in the recommended lint set" aria-label="Included in the recommended lint set">thumb_up</span>
 {% endif -%}
 {% if lint.sets contains "flutter" -%}
-<span class="material-symbols flutter-lints" title="Included in the Flutter lint set" aria-label="Included in the Flutter lint set">flutter</span>
+<span class="material-symbols" title="Included in the Flutter lint set" aria-label="Included in the Flutter lint set">flutter</span>
 {% endif -%}
 </div>
 
