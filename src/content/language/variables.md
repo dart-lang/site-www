@@ -291,6 +291,60 @@ For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
 
+## Wildcard variables
+
+A wildcard variable with the name `_` declares a local variable or parameter
+that is non-binding; essentially, a placeholder.
+The initializer, if there is one, is still executed, but the value is not accessible.
+Multiple declarations named `_` can exist in the same namespace without a collision error.
+
+Top-level declarations or members where library privacy might be affected are
+not valid uses for wildcard variables.
+Declarations local to a block scope, such as the following examples,
+can declare a wildcard:
+
+* Local variable declaration.
+  ```dart
+  main() {
+    var _ = 1;
+    int _ = 2;
+  }
+  ```
+
+* For loop varibale declartaion.
+  ```dart
+  for (var _ in list) {}
+  ```
+
+* Catch clause parameters.
+  ```dart
+  try {
+    throw '!';
+  } catch (_) {
+    print('oops');
+  }
+  ```
+
+* Generic type and function type parameters.
+  ```dart
+  class T<_> {}
+  void genericFunction<_>() {}
+
+  takeGenericCallback(<_>() => true);
+  ```
+
+* Function parameters.
+  ```dart
+  Foo(_, this._, super._, void _()) {}
+
+  list.where((_) => true);
+
+  void f(void g(int _, bool _)) {}
+
+  typedef T = void Function(String _, String _);
+  ```
+
+
 [Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
 [DON'T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly

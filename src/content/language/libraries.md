@@ -75,6 +75,11 @@ Element element1 = Element();
 lib2.Element element2 = lib2.Element();
 ```
 
+Import prefixes with the [wildcard][] name `_` are non-binding,
+but will provide access to the non-private extensions in that library.
+
+[wildcard]: /language/variables#wildcard-variables
+
 ### Importing only part of a library
 
 If you want to use only part of a library, you can selectively import
