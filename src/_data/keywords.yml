@@ -35,7 +35,7 @@
   link: /language/loops#break-and-continue
   type: reserved
 - term: 'covariant'
-  link: /deprecated/sound-problems#the-covariant-keyword
+  link: /language/type-system#covariant-keyword
   type: bit
 - term: 'default'
   link: /language/branches#switch

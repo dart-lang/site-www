@@ -266,7 +266,7 @@
       { "source": "/keyword/class", "destination": "/language/classes#instance-variables", "type": 301 },
       { "source": "/keyword/const", "destination": "/language/variables#final-and-const", "type": 301 },
       { "source": "/keyword/continue", "destination": "/language/loops#break-and-continue", "type": 301 },
-      { "source": "/keyword/covariant", "destination": "/deprecated/sound-problems#the-covariant-keyword", "type": 301 },
+      { "source": "/keyword/covariant", "destination": "/language/type-system#covariant-keyword", "type": 301 },
       { "source": "/keyword/default", "destination": "/language/branches#switch", "type": 301 },
       { "source": "/keyword/deferred", "destination": "/language/libraries#lazily-loading-a-library", "type": 301 },
       { "source": "/keyword/do", "destination": "/language/loops#while-and-do-while", "type": 301 },
