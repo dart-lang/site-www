@@ -194,8 +194,8 @@
 - title: Development
   expanded: false
   children:
-    - title: JSON
-      permalink: /guides/json
+    - title: JSON serialization
+      permalink: /libraries/serialization/json
     - title: Number representation
       permalink: /resources/language/number-representation
     - title: Google APIs
@@ -233,7 +233,7 @@
         - title: Wasm compilation
           permalink: /web/wasm
     - title: Environment declarations
-      permalink: /guides/environment-declarations
+      permalink: /libraries/core/environment-declarations
 
 - title: Interoperability
   expanded: false
@@ -337,7 +337,7 @@
   - title: Testing & optimization
     children:
       - title: Testing
-        permalink: /guides/testing
+        permalink: /tools/testing
       - title: Debugging web apps
         permalink: /web/debugging
 

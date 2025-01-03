@@ -80,7 +80,7 @@ option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
 
 For more examples and links to JSON-related packages, see
-[Using JSON](/guides/json).
+[Using JSON](/libraries/serialization/json).
 
 
 ## Decoding and encoding UTF-8 characters
