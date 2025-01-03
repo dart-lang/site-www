@@ -46,7 +46,7 @@ We can stage the changes automatically in your pull request.
 > follow the below instruction on cloning with its submodule.
 
 If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and test your work before submitting.
+do consider building and testing your work before submitting.
 
 If you want or need to build the site, follow the steps below.
 
@@ -84,7 +84,7 @@ If you prefer, you can use a version manager such as [nvm][],
 and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `20.14` or later)_:
+and already the latest stable version _(currently `22.12` or later)_:
 
 ```terminal
 node --version
@@ -260,9 +260,8 @@ check out the [excerpt updater package documentation][].
 
 ## [Optional] Deploy to a staging site
 
-Submitted pull requests can be automatically staged
-by a site maintainer.
-If you'd like to stage the site yourself though,
+A site maintainer can automatically stage submitted pull requests.
+If you'd like to first stage the site yourself,
 you can build a full version and upload it to Firebase.
 
 1. If you don't already have a Firebase project,
@@ -270,7 +269,7 @@ you can build a full version and upload it to Firebase.
    - Navigate to the [Firebase Console](https://console.firebase.google.com)
      and create your own Firebase project (for example, `dart-dev-staging`).
 
-   - Head back to your local terminal and verify that you are logged in.
+   - Head back to your local terminal and verify that you're logged in.
 
      ```terminal
      firebase login
@@ -289,7 +288,7 @@ you can build a full version and upload it to Firebase.
    ./dash_site build
    ```
 
-   This builds the site and copy it to your local `_site` directory.
+   This builds the site and copies it to your local `_site` directory.
    If that directory previously existed, it will be replaced.
 
 3. Deploy to your activated Firebase project's default hosting site:
