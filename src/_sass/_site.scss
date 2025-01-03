@@ -348,6 +348,30 @@ main .content {
   }
 }
 
+.logo-link-grids {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  margin-left: 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  img {
+    width: 3rem;
+    margin: 0.25rem;
+  }
+}
+
 .list-image {
   width: 48px;
   margin: 0.25rem;
