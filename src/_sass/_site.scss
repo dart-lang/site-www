@@ -10,6 +10,7 @@
 @use 'components/cookie-notice';
 @use 'components/form';
 @use 'components/header';
+@use 'components/linter-rules';
 @use 'components/search';
 @use 'components/sidebar';
 @use 'components/tags';
@@ -345,6 +346,30 @@ main .content {
     page-break-inside: avoid;
     padding: $font-size-base * 0.5;
     font-size: $font-size-small;
+  }
+}
+
+.logo-link-grids {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  margin-left: 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  img {
+    width: 3rem;
+    margin: 0.25rem;
   }
 }
 
