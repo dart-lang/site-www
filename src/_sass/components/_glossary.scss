@@ -82,6 +82,11 @@ body.glossary-page {
 
     scroll-margin: 4rem;
 
+    .expandable-content {
+      border-top: 0.05rem solid var(--card-border-color);
+      padding-top: 0.5rem;
+    }
+
     &.collapsed {
       height: 10rem;
       overflow: hidden;
@@ -184,6 +189,7 @@ body.glossary-page {
         padding: 0.25rem 0.75rem;
         font-size: 0.9em;
         border-radius: 20px;
+        text-wrap-style: pretty;
 
         .material-symbols {
           font-variation-settings: 'FILL' 1;
