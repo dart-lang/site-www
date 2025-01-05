@@ -257,7 +257,7 @@ For more information, see
 
 :::note
 If you have a valid reason to use a subtype, you can use the
-[covariant keyword](#the-covariant-keyword).
+[covariant keyword](/language/type-system#covariant-keyword).
 :::
 
 <hr>
@@ -600,35 +600,8 @@ assumeStrings(names.[!cast!]<String>());
 
 ### The covariant keyword
 
-Some (rarely used) coding patterns rely on tightening a type
-by overriding a parameter's type with a subtype, which is invalid.
-In this case, you can use the `covariant` keyword to
-tell the analyzer that you are doing this intentionally.
-This removes the static error and instead checks for an invalid
-argument type at runtime.
-
-The following shows how you might use `covariant`:
-
-<?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
-```dart tag=passes-sa
-class Animal {
-  void chase(Animal x) { ... }
-}
-
-class Mouse extends Animal { ... }
-
-class Cat extends Animal {
-  @override
-  void chase([!covariant!] Mouse x) { ... }
-}
-```
-
-Although this example shows using `covariant` in the subtype,
-the `covariant` keyword can be placed in either the superclass
-or the subclass method.
-Usually the superclass method is the best place to put it.
-The `covariant` keyword applies to a single parameter and is
-also supported on setters and fields.
+The documentation on the `covariant` keyword has been
+moved to [The Dart Type system](/language/type-system#covariant-keyword).
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/dart-core/Iterable/cast.html
