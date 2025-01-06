@@ -112,8 +112,8 @@ must have an SDK version constraint of `^3.6.0` or higher.
 
 When you migrate an existing monorepo to use Pub workspaces, there will
 be existing "stray" `pubspec.lock` and `.dart_tool/package_config.json` files
-adjacent to each pubspec. These would shadow the `pubspec.lock` and
-`.dart_tool/package_config.json` placed next to the root
+adjacent to each pubspec. These shadow the `pubspec.lock` and
+`.dart_tool/package_config.json` files placed next to the root.
 
 Therefore `pub get` will delete any `pubspec.lock` and
 `.dart_tool/package_config.json` located in directories between the root and
