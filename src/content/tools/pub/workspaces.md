@@ -133,7 +133,7 @@ Therefore `pub get` will delete any `pubspec.lock` and
 
 If any directory between the workspace root and a workspace package contains a
 "stray" `pubspec.yaml` file that is not member of the workspace, `pub get` will
-report an error and fail to resolve, as resolving such a `pubspec.yaml` would
+report an error and fail to resolve. This is because resolving such a `pubspec.yaml` would
 create a `.dart_tool/package_config.json` file that shadows the one at the root.
 
 For example:
