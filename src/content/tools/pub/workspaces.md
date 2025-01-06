@@ -115,7 +115,7 @@ be existing "stray" `pubspec.lock` and `.dart_tool/package_config.json` files
 adjacent to each pubspec. These shadow the `pubspec.lock` and
 `.dart_tool/package_config.json` files placed next to the root.
 
-Therefore `pub get` will delete any `pubspec.lock` and
+Therefore, `pub get` will delete any `pubspec.lock` and
 `.dart_tool/package_config.json` located in directories between the root and
 (including) any workspace package.
 
