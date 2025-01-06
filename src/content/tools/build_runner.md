@@ -102,6 +102,6 @@ For details on using build_runner, see the following:
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
-[tests]: /guides/testing
+[tests]: /tools/testing
 [webdev]: /tools/webdev
 [webdev serve]: /tools/webdev#serve
