@@ -110,7 +110,7 @@ must have an SDK version constraint of `^3.6.0` or higher.
 <a name='stray-files'></a>
 ## Stray files
 
-When you are migrating an existing mono-repo to use Pub workspaces, there will
+When you migrate an existing monorepo to use Pub workspaces, there will
 be existing "stray" `pubspec.lock` and `.dart_tool/package_config.json` files
 adjacent to each pubspec. These would shadow the `pubspec.lock` and
 `.dart_tool/package_config.json` placed next to the root
