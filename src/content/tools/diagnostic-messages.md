@@ -14425,6 +14425,118 @@ final class C extends Struct {
 }
 ```
 
+### native_function_missing_type
+
+_The native type of this function couldn't be inferred so it must be specified
+in the annotation._
+
+#### Description
+
+The analyzer produces this diagnostic when a `@Native`-annotated function
+requires a type hint on the annotation to infer the native function type.
+
+Dart types like `int` and `double` have multiple possible native
+representations. Since the native type needs to be known at compile time
+to generate correct bindings and call instructions for the function, an
+explicit type must be given.
+
+For more information about FFI, see [C interop using dart:ffi][ffi].
+
+#### Example
+
+The following code produces this diagnostic because the function `f()` has
+the return type `int`, but doesn't have an explicit type parameter on the
+`Native` annotation:
+
+```dart
+import 'dart:ffi';
+
+@Native()
+external int [!f!]();
+```
+
+#### Common fixes
+
+Add the corresponding type to the annotation. For instance, if `f()` was
+declared to return an `int32_t` in C, the Dart function should be declared
+as:
+
+```dart
+import 'dart:ffi';
+
+@Native<Int32 Function()>()
+external int f();
+```
+
+### negative_variable_dimension
+
+_The variable dimension of a variable-length array must be non-negative._
+
+#### Description
+
+The analyzer produces this diagnostic in two cases.
+
+The first is when the variable dimension given in an
+`Array.variableWithVariableDimension` annotation is negative. The variable
+dimension is the first argument in the annotation.
+
+The second is when the variable dimension given in an
+`Array.variableMulti` annotation is negative. The variable dimension is
+specified in the `variableDimension` argument of the annotation.
+
+For more information about FFI, see [C interop using dart:ffi][ffi].
+
+#### Examples
+
+The following code produces this diagnostic because a variable dimension
+of `-1` was provided in the `Array.variableWithVariableDimension`
+annotation:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct extends Struct {
+  @Array.variableWithVariableDimension([!-1!])
+  external Array<Uint8> a0;
+}
+```
+
+The following code produces this diagnostic because a variable dimension
+of `-1` was provided in the `Array.variableMulti` annotation:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct2 extends Struct {
+  @Array.variableMulti(variableDimension: [!-1!], [1, 2])
+  external Array<Array<Array<Uint8>>> a0;
+}
+```
+
+#### Common fixes
+
+Change the variable dimension with zero (`0`) or a positive number:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct extends Struct {
+  @Array.variableWithVariableDimension(1)
+  external Array<Uint8> a0;
+}
+```
+
+Change the variable dimension with zero (`0`) or a positive number:
+
+```dart
+import 'dart:ffi';
+
+final class MyStruct2 extends Struct {
+  @Array.variableMulti(variableDimension: 1, [1, 2])
+  external Array<Array<Array<Uint8>>> a0;
+}
+```
+
 ### new_with_undefined_constructor_default
 
 _The class '{0}' doesn't have an unnamed constructor._
@@ -15719,7 +15831,7 @@ For more information about FFI, see [C interop using dart:ffi][ffi].
 #### Example
 
 The following code produces this diagnostic because an array dimension of
-`-1` was provided:
+`-8` was provided:
 
 ```dart
 import 'dart:ffi';
@@ -15743,7 +15855,8 @@ final class MyStruct extends Struct {
 }
 ```
 
-If this is a variable length inline array, change the annotation to `Array.variable()`:
+If this is a variable length inline array, change the annotation to
+`Array.variable()`:
 
 ```dart
 import 'dart:ffi';
@@ -29099,6 +29212,32 @@ List<String> toLowercase(List<String> strings) {
 }
 ```
 
+### unnecessary_underscores
+
+_Unnecessary use of multiple underscores._
+
+#### Description
+
+The analyzer produces this diagnostic when an unused variable is named
+with multiple underscores (for example `__`).
+A single `_` wildcard variable can be used instead.
+
+#### Example
+
+The following code produces this diagnostic because the `__` parameter is unused:
+
+```dart
+void function(int [!__!]) { }
+```
+
+#### Common fixes
+
+Replace the name with a single underscore:
+
+```dart
+void function(int _) { }
+```
+
 ### unrelated_type_equality_checks
 
 _The type of the operand ('{0}') isn't a subtype or a supertype of the value
@@ -29154,110 +29293,82 @@ _This type is unsafe: a type parameter occurs in a non-covariant position._
 
 #### Description
 
-This lint warns against declaring non-covariant members.
-
-An instance variable whose type contains a type parameter of the
-enclosing class, mixin, or enum in a non-covariant position is
-likely to cause run-time failures due to failing type
-checks. For example, in `class C<X> {...}`, an instance variable
-of the form `void Function(X) myVariable;` may cause this kind
-of run-time failure.
-
-The same is true for a getter or method whose return type has a
-non-covariant occurrence of a type parameter of the enclosing
-declaration.
-
-This lint flags this kind of member declaration.
+The analyzer produces this diagnostic when an instance member has a result
+type which is [contravariant or invariant](https://dart.dev/resources/glossary#variance)
+in a type parameter of the enclosing declaration. The result type of a
+variable is its type, and the result type of a getter or method is its
+return type. This lint warns against such members because they are likely
+to cause a failing type check at run time, with no static warning or error
+at the call site.
 
 #### Example
 
-**BAD:**
+The following code produces this diagnostic because `X` occurs
+as a parameter type in the type of `f`, which is a
+contravariant occurrence of this type parameter:
+
 ```dart
 class C<X> {
-  final bool Function([!X!]) fun; // LINT
-  C(this.fun);
-}
-
-void main() {
-  C<num> c = C<int>((i) => i.isEven);
-  c.fun(10); // Throws.
+  bool Function([!X!]) f;
+  C(this.f);
 }
 ```
 
-The problem is that `X` occurs as a parameter type in the type
-of `fun`.
+This is unsafe: If `c` has static type `C<num>` and run-time type `C<int>`
+then `c.f` will throw. Hence, every invocation `c.f(a)` will also throw,
+even in the case where `a` has a correct type as an argument to `c.f`.
 
 #### Common fixes
 
-One way to reduce the potential for run-time type errors is to
-ensure that the non-covariant member `fun` is _only_ used on
-`this`. We cannot strictly enforce this, but we can make it
-private and add a forwarding method `fun` such that we can check
-locally in the same library that this constraint is satisfied:
+If the linted member is or can be private then you may be able
+to enforce that it is never accessed on any other receiver than `this`.
+This is sufficient to ensure that that the run-time type error does not
+occur. For example:
 
-**BETTER:**
 ```dart
 class C<X> {
+  // NB: Ensure manually that `_f` is only accessed on `this`.
   // ignore: unsafe_variance
-  final bool Function(X) _fun;
-  bool fun(X x) => _fun(x);
-  C(this._fun);
-}
+  bool Function(X) _f;
 
-void main() {
-  C<num> c = C<int>((i) => i.isEven);
-  c.fun(10); // Succeeds.
+  C(this._f);
+
+  // We can write a forwarding method to allow clients to call `_f`.
+  bool f(X x) => _f(x);
 }
 ```
 
-A fully safe approach requires a feature that Dart does not yet
-have, namely statically checked variance. With that, we could
-specify that the type parameter `X` is invariant (`inout X`).
+You can eliminate the unsafe variance by using a more general type for
+the linted member. In this case you may need to check the run-time type
+and perform a downcast at call sites.
 
-It is possible to emulate invariance without support for statically
-checked variance. This puts some restrictions on the creation of
-subtypes, but faithfully provides the typing that `inout` would
-give:
-
-**GOOD:**
-```dart
-typedef Inv<X> = X Function(X);
-typedef C<X> = _C<X, Inv<X>>;
-
-class _C<X, Invariance extends Inv<X>> {
-  // ignore: unsafe_variance
-  final bool Function(X) fun; // Safe!
-  _C(this.fun);
-}
-
-void main() {
-  C<int> c = C<int>((i) => i.isEven);
-  c.fun(10); // Succeeds.
-}
-```
-
-With this approach, `C<int>` is not a subtype of `C<num>`, so
-`c` must have a different declared type.
-
-Another possibility is to declare the variable to have a safe
-but more general type. It is then safe to use the variable
-itself, but every invocation will have to be checked at run
-time:
-
-**HONEST:**
 ```dart
 class C<X> {
-  final bool Function(Never) fun;
-  C(this.fun);
-}
-
-void main() {
-  C<num> c = C<int>((int i) => i.isEven);
-  var cfun = c.fun; // Local variable, enables promotion.
-  if (cfun is bool Function(int)) cfun(10); // Succeeds.
-  if (cfun is bool Function(bool)) cfun(true); // Not called.
+  bool Function(Never) f;
+  C(this.f);
 }
 ```
+
+If `c` has static type `C<num>` then you may test the type. For example,
+`c.f is bool Function(num)`. You may safely call it with an argument of
+type `num` if it has that type.
+
+You can also eliminate the unsafe variance by using a much more general
+type like `Function`, which is essentially the type `dynamic` for
+functions.
+
+```dart
+class C<X> {
+  Function f;
+  C(this.f);
+}
+```
+
+This will make `c.f(a)` dynamically safe: It will throw if and only if the
+argument `a` does not have the type required by the function. This is
+better than the original version because it will not throw because of a
+mismatched static type. It only throws when it _must_ throw for soundness
+reasons.
 
 ### use_build_context_synchronously
 
@@ -29272,7 +29383,7 @@ The analyzer produces this diagnostic when a `BuildContext` is referenced
 by a `StatefulWidget` after an asynchronous gap without first checking the
 `mounted` property.
 
-Storing a `BuildContext` for later use can lead to difficult to diagnose
+Storing a `BuildContext` for later use can lead to difficult-to-diagnose
 crashes. Asynchronous gaps implicitly store a `BuildContext`, making them
 easy to overlook for diagnosis.
 
