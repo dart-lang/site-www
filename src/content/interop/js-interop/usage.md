@@ -508,7 +508,7 @@ Utility functions include:
 - [`importModule`][], which allows you to
   import modules dynamically as a `JSObject`.
 - [`isA`][], which allows you to check if a JS-interop value is
-  an instance of the JS type specified as the type argument.
+  an instance of the JS type specified by the type argument.
 
 More utilities might be added to this library in the future.
 
