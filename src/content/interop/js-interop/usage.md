@@ -445,6 +445,8 @@ Utility functions include:
   may be expensive.
 - [`importModule`], which allows you to import modules dynamically as
   `JSObject`s.
+- [`isA`][], which allows you to check if a JS-interop value is
+  an instance of the JS type specified as the type argument.
 
 More utilities may be added to this library in the future.
 
@@ -464,6 +466,8 @@ Avoid using `dart:js_interop_unsafe` if possible. It makes security compliance
 more difficult to guarantee and may lead to violations, which is why it can be
 "unsafe".
 :::
+
+[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 
 {% comment %}
 TODO: Some of these are not available on stable. How do we link to dev?
