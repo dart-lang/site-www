@@ -52,7 +52,7 @@ class ArchivesTable extends StatelessComponent {
               },
               [
                 for (final version in selector.versions?.map((v) => v.canonicalizedVersion).toList() ?? <String>[]) //
-                  option(value: version, [text(version)]),
+                  option(value: version, selected: version == selector.selectedVersion, [text(version)]),
               ],
             ),
           ]),
@@ -65,10 +65,10 @@ class ArchivesTable extends StatelessComponent {
                 selector.selectedOs = values.first;
               },
               [
-                option(value: 'all', [text('All')]),
-                option(value: 'macos', id: '$channel-macos', classes: 'macos-option', [text('macOS')]),
-                option(value: 'linux', id: '$channel-linux', classes: 'linux-option', [text('Linux')]),
-                option(value: 'windows', id: '$channel-windows', classes: 'windows-option', [text('Windows')]),
+                option(value: 'all', selected: selector.selectedOs == 'all', [text('All')]),
+                option(value: 'macos', id: '$channel-macos', classes: 'macos-option', selected: selector.selectedOs == 'macos',[text('macOS')]),
+                option(value: 'linux', id: '$channel-linux', classes: 'linux-option', selected: selector.selectedOs == 'linux',[text('Linux')]),
+                option(value: 'windows', id: '$channel-windows', classes: 'windows-option', selected: selector.selectedOs == 'windows',[text('Windows')]),
               ],
             ),
           ]),

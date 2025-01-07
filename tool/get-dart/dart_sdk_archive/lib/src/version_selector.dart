@@ -20,7 +20,8 @@ class VersionSelector with ChangeNotifier {
   }) {
     if (OperatingSystem.current.isMac) {
       _selectedOs = 'macos';
-    } else if (OperatingSystem.current.isLinux || OperatingSystem.current.isUnix) {
+    } else if (OperatingSystem.current.isLinux ||
+        OperatingSystem.current.isUnix) {
       _selectedOs = 'linux';
     } else if (OperatingSystem.current.isWindows) {
       _selectedOs = 'windows';
@@ -73,7 +74,7 @@ class VersionSelector with ChangeNotifier {
   }
 
   Future<void> loadVersions() async {
-    final versions = (await fetchSdkVersions(channel)
+    final versions = (await fetchSdkVersions(channel, client)
           ..sort())
         .reversed;
 
@@ -81,7 +82,9 @@ class VersionSelector with ChangeNotifier {
     _versions = versions;
     notifyListeners();
 
-    await findSystemLocale();
+    if (!debugIsTest) {
+      await findSystemLocale();
+    }
     await initializeDateFormatting(Intl.systemLocale);
 
     await loadVersionInfo();
@@ -125,7 +128,8 @@ class VersionSelector with ChangeNotifier {
     if (version == null) return;
 
     final svnRevision = svnRevisionForVersion(version);
-    final versionInfo = await client.fetchVersion(channel, svnRevision ?? version);
+    final versionInfo =
+        await client.fetchVersion(channel, svnRevision ?? version);
 
     _versionInfo = versionInfo;
     notifyListeners();
@@ -138,22 +142,26 @@ class VersionSelector with ChangeNotifier {
         // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
         if (archiveMap[name] == 'linux') {
           if (platformVariant.architecture == 'ARMv7' &&
-              versionInfo.date.isBefore(DateTime.parse((channel == 'dev') ? '2015-10-21' : '2015-08-31'))) {
+              versionInfo.date.isBefore(DateTime.parse(
+                  (channel == 'dev') ? '2015-10-21' : '2015-08-31'))) {
             continue;
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
             continue;
           } else if (platformVariant.architecture == 'RISC-V (RV64GC)') {
             // Dev builds start at 2.17.0-258.0.dev.
-            if (versionInfo.channel == 'dev' && versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
+            if (versionInfo.channel == 'dev' &&
+                versionInfo.version < Version(2, 17, 0, pre: '258.0.dev')) {
               continue;
             }
             // Beta builds start at 3.0.0-290.2.beta.
-            if (versionInfo.channel == 'beta' && versionInfo.version < Version(3, 0, 0, pre: '290.2.beta')) {
+            if (versionInfo.channel == 'beta' &&
+                versionInfo.version < Version(3, 0, 0, pre: '290.2.beta')) {
               continue;
             }
             // Stable builds start at 3.2.3, but only show starting at 3.3
-            if (versionInfo.channel == 'stable' && versionInfo.version < Version(3, 3, 0)) {
+            if (versionInfo.channel == 'stable' &&
+                versionInfo.version < Version(3, 3, 0)) {
               continue;
             }
           }
@@ -163,7 +171,8 @@ class VersionSelector with ChangeNotifier {
               // No macOS 32-bit SDK builds after 2.8.0
               continue;
             }
-          } else if (platformVariant.architecture == 'ARM64' && versionInfo.version < Version(2, 14, 1)) {
+          } else if (platformVariant.architecture == 'ARM64' &&
+              versionInfo.version < Version(2, 14, 1)) {
             // No macOS ARM64 SDK builds before 2.14.1
             // (earlier builds did not have trained snapshots).
             continue;
@@ -171,15 +180,18 @@ class VersionSelector with ChangeNotifier {
         } else if (name == 'Windows') {
           if (platformVariant.architecture == 'ARM64') {
             // Dev builds start at 2.18.0-41.0.dev.
-            if (versionInfo.channel == 'dev' && versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
+            if (versionInfo.channel == 'dev' &&
+                versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {
               continue;
             }
             // Beta builds start at 3.2.0-42.2.beta.
-            if (versionInfo.channel == 'beta' && versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
+            if (versionInfo.channel == 'beta' &&
+                versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
               continue;
             }
             // Stable builds start at 3.2.3, but only show starting at 3.3
-            if (versionInfo.channel == 'stable' && versionInfo.version < Version(3, 3, 0)) {
+            if (versionInfo.channel == 'stable' &&
+                versionInfo.version < Version(3, 3, 0)) {
               continue;
             }
           }
@@ -209,11 +221,13 @@ class VersionSelector with ChangeNotifier {
               }
             }
 
-            final uri = '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
+            final uri =
+                '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
             final svnRevisionInfo = _svnRevision(versionInfo);
-            final hasSha256 =
-                pa != 'Dart Editor' && pa != 'Debian package' && (svnRevisionInfo == null || svnRevisionInfo > 38976);
+            final hasSha256 = pa != 'Dart Editor' &&
+                pa != 'Debian package' &&
+                (svnRevisionInfo == null || svnRevisionInfo > 38976);
             archives.add((label: pa, url: uri, hasSha256: hasSha256));
           }
         }
@@ -247,5 +261,4 @@ class VersionSelector with ChangeNotifier {
       ],
     );
   }
-
 }
