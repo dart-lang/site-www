@@ -14,10 +14,10 @@
     "build-site-for-production": "PRODUCTION=true OPTIMIZE=true tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts"
   },
   "engines": {
-    "node": ">=20.14.0",
-    "pnpm": ">=9.4.0"
+    "node": ">=22.10.0",
+    "pnpm": ">=9.12.3"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.15.2",
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
@@ -25,7 +25,7 @@
     "@11ty/eleventy": "^3.0.0",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.10.3",
+    "@types/node": "^22.10.5",
     "firebase-tools": "^13.29.1",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.3",
@@ -37,8 +37,8 @@
     "markdown-it-attrs": "^4.3.1",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.83.0",
-    "shiki": "^1.25.1",
+    "sass": "^1.83.1",
+    "shiki": "^1.26.1",
     "tsx": "^4.19.2"
   }
 }
