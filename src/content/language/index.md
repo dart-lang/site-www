@@ -2,9 +2,6 @@
 title: Introduction to Dart
 description: A brief introduction to Dart programs and important concepts.
 short-title: Dart basics
-nextpage:
-  url: /language/variables
-  title: Variables
 ---
 
 This page provides a brief introduction to the Dart language
