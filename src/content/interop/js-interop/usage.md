@@ -507,6 +507,8 @@ Utility functions include:
   as the extra type-checking might be expensive.
 - [`importModule`][], which allows you to
   import modules dynamically as a `JSObject`.
+- [`isA`][], which allows you to check if a JS-interop value is
+  an instance of the JS type specified by the type argument.
 
 More utilities might be added to this library in the future.
 
@@ -534,4 +536,5 @@ might lead to violations, which is why it can be "unsafe".
 [`dartify`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
 [`jsify`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
 [`importModule`]: {{site.dart-api}}/dart-js_interop/importModule.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
