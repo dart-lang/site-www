@@ -1410,6 +1410,7 @@ var completer = Completer<Map<String, int>>();
 ```
 
 
+<a id="do-annotate-with-dynamic-instead-of-letting-inference-fail" aria-hidden="true"></a>
 ### DO annotate with `Object?` instead of letting inference fail
 
 When inference doesn't fill in a type, it usually defaults to `dynamic`, which
@@ -1637,6 +1638,7 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
+<a id="avoid-using-dynamic-unless-you-want-to-disable-static-checking" aria-hidden="true"></a>
 ### AVOID using `dynamic` unless you want to invoke dynamic members
 
 Some operations work with any possible object. For example, a `log()` method

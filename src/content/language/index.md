@@ -563,7 +563,7 @@ This site's code follows the conventions in the
 [ns]: /null-safety
 [`Object`]: {{site.dart-api}}/dart-core/Object-class.html
 [language version]: /resources/language/evolution#language-versioning
-[ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-invoke-dynamic-members
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
 [if-else statement]: /language/branches#if

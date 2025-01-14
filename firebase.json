@@ -274,7 +274,7 @@
       { "source": "/keyword/default", "destination": "/language/branches#switch", "type": 301 },
       { "source": "/keyword/deferred", "destination": "/language/libraries#lazily-loading-a-library", "type": 301 },
       { "source": "/keyword/do", "destination": "/language/loops#while-and-do-while", "type": 301 },
-      { "source": "/keyword/dynamic", "destination": "/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking", "type": 301 },
+      { "source": "/keyword/dynamic", "destination": "/effective-dart/design#avoid-using-dynamic-unless-you-want-to-invoke-dynamic-members", "type": 301 },
       { "source": "/keyword/else", "destination": "/language/branches#if", "type": 301 },
       { "source": "/keyword/enum", "destination": "/language/enums", "type": 301 },
       { "source": "/keyword/export", "destination": "/tools/pub/create-packages", "type": 301 },

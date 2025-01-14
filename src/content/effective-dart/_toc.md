@@ -233,13 +233,13 @@ the project:
 * <a href='/effective-dart/design#do-write-type-arguments-on-generic-invocations-that-arent-inferred'>DO write type arguments on generic invocations that aren't inferred.</a>
 * <a href='/effective-dart/design#dont-write-type-arguments-on-generic-invocations-that-are-inferred'>DON'T write type arguments on generic invocations that are inferred.</a>
 * <a href='/effective-dart/design#avoid-writing-incomplete-generic-types'>AVOID writing incomplete generic types.</a>
-* <a href='/effective-dart/design#do-annotate-with-dynamic-instead-of-letting-inference-fail'>DO annotate with <code>dynamic</code> instead of letting inference fail.</a>
+* <a href='/effective-dart/design#do-annotate-with-object-instead-of-letting-inference-fail'>DO annotate with <code>Object?</code> instead of letting inference fail.</a>
 * <a href='/effective-dart/design#prefer-signatures-in-function-type-annotations'>PREFER signatures in function type annotations.</a>
 * <a href='/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
 * <a href='/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
 * <a href='/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
 * <a href='/effective-dart/design#prefer-using-function-type-syntax-for-parameters'>PREFER using function type syntax for parameters.</a>
-* <a href='/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking'>AVOID using <code>dynamic</code> unless you want to disable static checking.</a>
+* <a href='/effective-dart/design#avoid-using-dynamic-unless-you-want-to-invoke-dynamic-members'>AVOID using <code>dynamic</code> unless you want to invokde dynamic members.</a>
 * <a href='/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values'>DO use <code>Future&lt;void&gt;</code> as the return type of asynchronous members that do not produce values.</a>
 * <a href='/effective-dart/design#avoid-using-futureort-as-a-return-type'>AVOID using <code>FutureOr&lt;T&gt;</code> as a return type.</a>
 
