@@ -19,7 +19,6 @@
       {% endif -%}
       <article>
         <div class="content">
-          {% include 'navigation-sub.html' -%}
           <div id="site-content-title">
             {% if underscore_breaker_titles -%}
             <h1>{{title | underscoreBreaker}}</h1>
@@ -34,7 +33,7 @@
           {% include 'navigation-toc-top.html', tocContents:tocContents -%}
           {% endif -%}
           {{ content }}
-          {% include 'navigation-sub.html' -%}
+          {% render 'navigation-sub.html', prevpage:prevpage, nextpage:nextpage %}
 
           {% include 'page-github-links.html' -%}
         </div>
