@@ -7,14 +7,14 @@
 pre {
   margin-bottom: 1rem;
   font-size: 0.9375rem;
-  font-weight: bootstrap.$font-weight-normal;
+  font-weight: 400;
   padding: 1.25rem;
 
   a {
     font-family: inherit;
     font-weight: inherit;
   }
-  
+
   .highlight {
     background: $flutter-color-yellow-300;
     padding: 0.1em;
@@ -31,7 +31,7 @@ pre {
   &:focus {
     outline: none;
   }
-  
+
   span.line {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -41,11 +41,11 @@ pre {
       background: color.change($brand-primary, $alpha: 0.1);
     }
   }
-  
+
   &.show-line-numbers code {
     span.line {
       padding-left: 0.5rem;
-      
+
       &[data-line]::before {
         display: inline-block;
         content: attr(data-line) "";
@@ -88,7 +88,7 @@ pre {
 }
 
 .code-block-language {
-  font-family: $font-family-monospace;
+  font-family: $site-font-family-monospace;
   user-select: none;
   font-size: 0.8125rem;
   color: $site-color-nav-links;
@@ -120,7 +120,7 @@ pre {
 }
 
 .code-block-tag {
-  font-family: $font-family-monospace;
+  font-family: $site-font-family-monospace;
   font-size: 0.8125rem;
   font-weight: 500;
   position: absolute;

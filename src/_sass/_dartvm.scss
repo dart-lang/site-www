@@ -5,7 +5,7 @@
 #dev {
   tbody {
     tr {
-      @include bootstrap.transition();
+      transition: all .25s ease-in-out;
 
       &.hidden {
         display: none;

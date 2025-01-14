@@ -53,7 +53,7 @@
   }
 
   #sidenav & {
-    font-size: bootstrap.$font-size-lg;
+    font-size: 1.25rem;
     height: 66px;
     width: 100%;
 
@@ -67,10 +67,11 @@
   }
 }
 
-input.gsc-search-button {
-  @extend .btn;
-  @extend .btn-primary;
-}
+// TODO(parlough): Improve styling of gsc button.
+// input.gsc-search-button {
+//  @extend .btn;
+//  @extend .btn-primary;
+//}
 
 #search-icon {
   position: absolute;

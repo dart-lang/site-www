@@ -22,10 +22,6 @@
 @use 'overwrites';
 @use 'dash';
 
-// Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: bootstrap.$body-color;
-$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
-
 
 /* -----------------------------------------
   DOM
@@ -429,7 +425,7 @@ main .content {
   }
 
   h3 {
-    font-size: bootstrap.$h2-font-size;
+    font-size: 1.5rem;
   }
 
   a {
@@ -503,7 +499,10 @@ li.card {
 
 .table {
   width: 100%;
-  @extend .table-striped;
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 
   // override .table-striped macro, remove top border
   td {

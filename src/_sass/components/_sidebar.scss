@@ -30,7 +30,7 @@
     padding: 0;
 
     > .nav > .nav-item {
-      font-size: bootstrap.$font-size-base;
+      font-size: 1rem;
     }
 
     > .nav > .nav-item,
@@ -60,7 +60,7 @@
 
   @mixin nav-link-active-style {
     &.active {
-      font-weight: bootstrap.$font-weight-bold;
+      font-weight: 500;
 
       &:not(.collapsible) {
         color: $site-color-primary;
@@ -81,8 +81,8 @@
   }
 
   .nav-header {
-    font-weight: bootstrap.$font-weight-bolder;
-    font-size: bootstrap.$font-size-base;
+    font-weight: 700;
+    font-size: 1rem;
     user-select: none;
     color: lighten($site-color-body-light, 20%);
   }
@@ -168,7 +168,7 @@
     margin-bottom: bootstrap.bs-spacer(1);
 
     .nav-header {
-      font-size: bootstrap.$font-size-sm;
+      font-size: 0.875rem;
 
       &:not(:first-child) {
         margin-top: bootstrap.bs-spacer(2);
@@ -176,7 +176,7 @@
     }
 
     .nav-item {
-      font-size: bootstrap.$font-size-sm;
+      font-size: 0.875rem;
 
       > .nav-link {
         color: $site-color-body-light;
