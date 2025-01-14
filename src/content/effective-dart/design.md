@@ -1668,12 +1668,28 @@ bool convertToBool(Object arg) {
 ```
 
 Prefer using `Object?` over `dynamic` in code that is not invoking a member
-dynamically, even when working with existing APIs that use `dynamic`.
-For example, JSON objects have runtime type `Map<String, dynamic>`, which is an
-equivalent type to `Map<String, Object?>`.
-When using a value from one of these APIs, it's often a good idea to treat it as
-`Object?` which will enforce that it is cast it to a more precise type before
-accessing members.
+dynamically, even when working with existing APIs that use `dynamic`. For
+example, the static types `Map<String, dynamic>` and `Map<String, Object?>` can
+both be used as the static type for the same value, and the `Object?` form is
+preferred.
+
+For intentional dynamic member access, consider using a cast to `dynamic` for
+the member access specifically. Separating the use of `Object?` for non-dynamic
+behavior and limiting `dynamic` to the places where dynamic operations are
+intended makes them syntactically distinct and highlights the places where
+mistakes like misspellings may not be caught by static type checking.
+
+<?code-excerpt "design_good.dart (cast-for-dynamic-member)"?>
+```dart tag=good
+/// Returns whether the length of [value] is exactly [length].
+///
+/// The argument may be a [String], an [Iterable] or [Map], or any other
+/// type that has a `length` field.
+bool hasLength(Object? value, int length) {
+  var actualLength = (value as dynamic).length;
+  return length == actualLength;
+}
+```
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values
