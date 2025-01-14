@@ -30,7 +30,7 @@ Use these packages for a wide range of projects.
 | [cupertino_http][] | Provides access to Apple's [Foundation URL Loading System][furl] using the same interface as `package:http`. | |
 | [http][] | Provides set of high-level functions and classes to simplify consuming HTTP resources. | delete(), get(), post(), read() |
 | [intl][] | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
-| [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/guides/json). | @JsonSerializable |
+| [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/libraries/serialization/json). | @JsonSerializable |
 | [logging][] | Adds message logging to your application. | LoggerHandler, Level, LogRecord |
 | [mockito][] | Mocks objects in tests. Helps when you write tests for dependency injection. Use with the [test][] package. | Answering, Expectation, Verification |
 | [path][] | Manipulates different types of paths. To learn more, consult [Unboxing Packages: path.]({{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |

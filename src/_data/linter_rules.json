@@ -2657,6 +2657,19 @@
     "sinceDartSdk": "3.7-wip"
   },
   {
+    "name": "strict_top_level_inference",
+    "description": "Specify type annotations.",
+    "categories": [
+      "style"
+    ],
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "Do type annotate top-level and class-like member declarations, where types\nare not inferred from super-interfaces or initializers.\n\nThe lint warns about every omitted return type, parameter type, and\nvariable type of a top-level declaration or class-like-namespace-level\ndeclaration (static or instance member or constructor declaration), which\nis not given a type by inference, and which therefore defaults to dynamic.\n\nThe only omitted types that can be given a type by top-level inference,\nare those of variable declarations with initializer expressions, and\nreturn and parameter types of instance members that override a consistent\ncombined super-interface signature.\n\nSetters do not need a return type, as it is always assumed to be `void`.\n\n**BAD:**\n```dart\nvar _zeroPointCache;\nclass Point {\n  get zero => ...;\n  final x, y;\n  Point(x, y) {}\n  closest(b, c) => distance(b) <= distance(c) ? b : c;\n  distance(other) => ...;\n}\n_sq(v) => v * v;\n```\n\n**GOOD:**\n```dart\nPoint? _zeroPointCache;\nclass Point {\n  Point get zero => ...;\n  final int x, y;\n  Point(int x, int y) {}\n  closest(Point b, Point c) =>\n      distance(b) <= distance(c) ? b : c;\n  distance(Point other) => ...;\n}\nint _sq(int v) => v * v;\n```",
+    "sinceDartSdk": "3.7-wip"
+  },
+  {
     "name": "super_goes_last",
     "description": "Place the `super` call last in a constructor initialization list.",
     "categories": [],
@@ -3178,6 +3191,20 @@
     "fixStatus": "hasFix",
     "details": "Unnecessary `toList()` in spreads.\n\n**BAD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)).toList(),\n]\n```\n\n**GOOD:**\n```dart\nchildren: <Widget>[\n  ...['foo', 'bar', 'baz'].map((String s) => Text(s)),\n]\n```",
     "sinceDartSdk": "2.18"
+  },
+  {
+    "name": "unnecessary_underscores",
+    "description": "Unnecessary underscores can be removed.",
+    "categories": [
+      "brevity",
+      "style"
+    ],
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "**AVOID** using multiple underscores when a single wildcard will do.\n\n**BAD:**\n```dart\nvoid function(int __) { }\n```\n\n**GOOD:**\n```dart\nvoid function(int _) { }\n```",
+    "sinceDartSdk": "3.7-wip"
   },
   {
     "name": "unreachable_from_main",

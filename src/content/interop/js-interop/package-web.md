@@ -37,12 +37,12 @@ by addressing several concerns with the existing Dart web libraries:
    if they use [`dart:js_interop`][] and [`dart:js_interop_unsafe`][].
    `package:web` is based on `dart:js_interop`,
    so by default, it's supported on `dart2wasm`.
-   
+
    Dart core web libraries, like [`dart:html`][html] and [`dart:svg`][svg],
-   are **not supported** when compiling to Wasm.
+   are deprecated and **not supported** when compiling to Wasm.
 
 2. **Staying modern**
-   
+
    `package:web` uses the [Web IDL][idl] to automatically generate
    [interop members][] and [interop types][]
    for each declaration in the IDL.

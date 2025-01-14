@@ -12,7 +12,7 @@ For information on writing tests, see the
 If you're working on Flutter code, then use the `flutter test` command instead,
 as described in [Testing Flutter apps][].
 
-[testing documentation]: /guides/testing
+[testing documentation]: /tools/testing
 [`test` package]: {{site.pub-pkg}}/test
 [Testing Flutter apps]: {{site.flutter-docs}}/testing
 
