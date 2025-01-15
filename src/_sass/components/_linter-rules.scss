@@ -1,7 +1,4 @@
-@mixin interaction-style($percentage: 4%) {
-  --site-interaction-base-values: 0 0 0;
-  background-image: linear-gradient(rgb(var(--site-interaction-base-values) / $percentage) 0 0);
-}
+@use '../core/mixins' as *;
 
 body.linter-rules {
   --filled-button-container-color: #06599C;
@@ -25,17 +22,12 @@ body.linter-rules {
   --menu-item-selected-container-color: rgb(194 229 255);
   --menu-item-text-color: #3a3a3a;
 
-  //--icon-button-container-color: ;
-  //--icon-button-color: ;
-
   --card-container-color: rgb(242, 245, 255);
   --card-border-color: rgba(0, 0, 0, .125);
   --card-text-color: #3a3a3a;
   --card-min-width: 19rem;
 
   --card-grid-gap: 1rem;
-
-  --focus-outline-color: #1967D2;
 
   #filter-and-search {
     display: flex;

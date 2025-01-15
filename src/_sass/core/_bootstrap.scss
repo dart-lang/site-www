@@ -2,7 +2,7 @@
 @use '../core/colors';
 
 // Import from NPM library directly
-@forward '../../../node_modules/bootstrap-scss/bootstrap' with (
+@forward '../../../node_modules/bootstrap-scss/bootstrap' hide card-grid, card with (
   // Color config
   $primary: $site-color-primary,
   $body-color: $site-color-body,
