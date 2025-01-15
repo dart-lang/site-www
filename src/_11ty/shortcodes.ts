@@ -10,7 +10,12 @@ function _setupCards(eleventyConfig: UserConfig): void {
     let cardBuilder = link ? `<a class="card filled-card" href="${link}">` : '<div class="card">';
 
     cardBuilder += `<div class="card-header"><header class="card-title">${title}</header></div>`;
-    cardBuilder += `<div class="card-content">${content}</div>`;
+    cardBuilder += `<div class="card-content">
+
+${content}
+
+</div>
+`;
 
     cardBuilder += link ? '</a>' : '</div>';
 
