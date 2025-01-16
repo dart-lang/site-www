@@ -21,6 +21,10 @@
 
     scroll-margin: 4rem;
 
+    &.hidden {
+      display: none;
+    }
+
     &.outlined-card {
       border: 1px solid var(--card-border-color, rgba(0, 0, 0, .125));
     }
@@ -58,7 +62,7 @@
         code {
           font-size: 0.95em;
           background-color: rgba(0, 0, 0, .05);
-          color: #212121;
+          color: var(--card-text-color, $site-color-body);
           border-radius: .25rem;
           padding: .1rem .25rem;
           text-wrap: nowrap;
