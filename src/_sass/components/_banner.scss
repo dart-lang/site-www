@@ -13,14 +13,14 @@
 
     color: white;
 
-    margin-bottom: 0;
+    margin: 0;
     padding-left: 1em;
     padding-right: 1em;
 
     a {
       color: $site-color-card-link;
 
-      &:hover, &:focus, &:active {
+      &:active {
         color: darken($site-color-card-link, 20%);
       }
     }

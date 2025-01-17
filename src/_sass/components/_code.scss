@@ -22,6 +22,10 @@ pre {
   font-weight: 400;
   padding: 1.25rem;
 
+  code {
+    white-space: pre;
+  }
+
   a {
     font-family: inherit;
     font-weight: inherit;
@@ -149,7 +153,8 @@ pre {
 }
 
 .code-block-wrapper {
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
   border: 1px solid $flutter-color-grey-500;
 
   .code-block-header {
@@ -201,7 +206,8 @@ pre {
 // Border and resizability for dartpad
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   border: 1px solid #ccc;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
   min-height: 400px;
   resize: vertical;
   width: 100%;

@@ -52,6 +52,9 @@
       color: var(--card-text-color, $site-color-body);
 
       p {
+        margin: 0;
+        margin-block-end: 0.75rem;
+
         code {
           font-size: 0.95em;
           background-color: rgba(0, 0, 0, .05);
@@ -69,12 +72,10 @@
   }
 
   a.card {
+    text-decoration: none;
+
     .card-header {
       --card-title-color: #1967D2;
-
-      .card-title {
-        font-weight: 400;
-      }
     }
 
     &:hover {

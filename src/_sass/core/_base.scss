@@ -12,9 +12,8 @@ body {
   font-size: $font-size-base;
   font-weight: 400;
   color: $site-color-body;
-  margin: 0;
-  padding: 0;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 section {
@@ -25,6 +24,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $site-font-family-gsans;
   font-weight: 400;
   color: $site-color-body;
+  line-height: 1.2;
 }
 
 h1, .h1 {
@@ -85,7 +85,7 @@ button {
 }
 
 a {
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
 
   &:hover {
     text-decoration: underline;
@@ -115,7 +115,8 @@ blockquote {
 }
 
 details {
-  margin-bottom: 0.75rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
   > summary {
     font-weight: 500;

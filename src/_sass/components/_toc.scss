@@ -17,7 +17,7 @@
 }
 
 #site-toc--side {
-  padding: $top-content-padding 20px $content-padding 28px;
+  padding: $top-content-padding 20px 32px 28px;
 
   @include sidenav-top-position;
   display: none;
@@ -75,7 +75,8 @@
 #site-toc--inline {
   background: #f5f5f7;
   padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
   @include bootstrap.media-breakpoint-up(xl) {
     display: none;

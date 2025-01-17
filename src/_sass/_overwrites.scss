@@ -3,10 +3,6 @@
 @use 'core/variables' as *;
 @use 'core/bootstrap';
 
-b, strong {
-  font-weight: bold;
-}
-
 /* Effective Dart TOC */
 
 .effective_dart--summary_column {
@@ -43,13 +39,8 @@ b, strong {
 
   /* Show borders around notes and code blocks */
   .alert, pre {
-    border: 1px solid black;
+    border: 1px solid $dash-dark-black;
   }
-}
-
-/* Overwrite bootstrap: don't wrap code */
-pre code {
-  white-space: pre;
 }
 
 /* Effective Dart linter rules */

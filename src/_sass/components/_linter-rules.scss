@@ -32,7 +32,8 @@ body.linter-rules {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 
     &.hidden {
       display: none;

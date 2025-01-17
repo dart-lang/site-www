@@ -1,3 +1,7 @@
+// Must be imported first to ensure that
+// the reset is applied before any other styles are applied.
+@use 'core/reset';
+
 @use 'core/variables' as *;
 @use 'core/colors';
 @use 'core/mixins' as *;
@@ -49,7 +53,7 @@
       max-width: 960px;
       margin-left: auto;
       margin-right: auto;
-      padding-top: $top-content-padding;
+      padding: $top-content-padding 1.5rem 1.5rem;
     }
 
     @media(min-width: 1024px) {
@@ -198,11 +202,12 @@
         display: inline-block;
         padding: 0 6px;
         font-size: $site-font-size-header;
-        font-weight: 400;
+        font-weight: 500;
         font-family: $site-font-family-alt;
 
         &:hover, &:active {
           color: $site-color-card-link;
+          text-decoration: none;
         }
       }
 
@@ -268,7 +273,7 @@ main .content {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: 60px;
+      scroll-margin: 4rem;
     }
 
     // Let the wrapper set the bottom margin.
@@ -277,7 +282,7 @@ main .content {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: 60px;
+    scroll-margin: 4rem;
   }
 
   .header-wrapper {
@@ -287,6 +292,7 @@ main .content {
     align-items: center;
 
     .heading-link {
+      border-radius: 0;
       margin-left: 0.4rem;
       font-size: 1.3rem;
       line-height: 1;
@@ -320,11 +326,6 @@ main .content {
 /* -----------------------------------------
   Utility Classes
  ----------------------------------------- */
-
-.content {
-  position: relative;
-  padding: $content-padding;
-}
 
 .button {
   padding: 5px 10px;
@@ -449,6 +450,8 @@ thead:has(th:empty) {
 
 .table-wrapper {
   overflow-x: auto;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 .alert {
@@ -556,7 +559,8 @@ thead:has(th:empty) {
 
 nav.breadcrumbs {
   align-items: center;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 ol.breadcrumb-list {
