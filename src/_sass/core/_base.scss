@@ -2,6 +2,11 @@
 @use '../core/mixins' as *;
 @use '../core/bootstrap';
 
+:root {
+  --site-interaction-base-values: 0 0 0;
+  --focus-outline-color: #1967D2;
+}
+
 body {
   font-family: $site-font-family-base;
   font-size: $font-size-base;
