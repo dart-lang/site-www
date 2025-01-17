@@ -114,16 +114,6 @@ function fixNav() {
   $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
 }
 
-function adjustToc() {
-  // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#site-toc--side');
-  $(tocWrapper).find('header').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  })
-
-  $(document.body).scrollspy({ offset: 100, target: '#site-toc--side' });
-}
-
 function createGallery() {
   for (let i = 0; i < arguments.length; i++) {
     const galleryName = arguments[i];
