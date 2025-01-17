@@ -311,7 +311,7 @@ can declare a wildcard:
   }
   ```
 
-* For loop varibale declartaion.
+* For loop variable declartaion.
   ```dart
   for (var _ in list) {}
   ```
