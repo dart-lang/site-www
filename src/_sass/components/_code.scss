@@ -4,8 +4,20 @@
 @use '../core/variables' as *;
 @use '../core/bootstrap';
 
+*:not(pre) > code {
+  font-size: 0.9em;
+  line-height: 1.25em;
+  padding: 0.1rem 0.25rem;
+  background-color: $site-color-light-grey;
+  background-color: color-mix(in srgb, $site-color-light-grey 40%, transparent);
+  border: 1px solid rgb(195, 201, 214);
+  border-radius: 0.25rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
 pre {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
   font-size: 0.9375rem;
   font-weight: 400;
   padding: 1.25rem;
@@ -27,7 +39,7 @@ pre {
       padding: 0;
     }
   }
-  
+
   &:focus {
     outline: none;
   }
@@ -139,7 +151,7 @@ pre {
 .code-block-wrapper {
   margin-bottom: 1rem;
   border: 1px solid $flutter-color-grey-500;
-  
+
   .code-block-header {
     background-color: #e9ecef;
     border-bottom: 1px solid $flutter-color-grey-500;
@@ -147,7 +159,7 @@ pre {
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
   }
-  
+
   .code-block-body {
     position: relative;
     background-color: $site-color-codeblock-bg;
@@ -170,16 +182,16 @@ pre {
       background-color: $alert-danger-bg;
     }
   }
-  
+
   &:has(:focus-visible) {
     border-color: #1389FD;
   }
-  
+
   pre {
     margin-bottom: 0;
     padding-right: 0;
     padding-left: 0;
-    
+
     &:not([lang="console"]) {
       line-height: 1.8;
     }

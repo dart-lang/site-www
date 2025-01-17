@@ -14,6 +14,7 @@ body {
   color: $site-color-body;
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }
 
 section {
@@ -69,7 +70,9 @@ a, button {
   &:visited {
     color: $brand-primary;
   }
+}
 
+button {
   &:hover, &:focus, &:active {
     color: $flutter-color-blue-700;
     outline: none;
@@ -80,6 +83,19 @@ a, button {
     color: $flutter-color-blue-800;
   }
 }
+
+a {
+  border-radius: 0.25rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $flutter-color-blue-600;
+  }
+}
+
 
 img {
   max-width: 100%;

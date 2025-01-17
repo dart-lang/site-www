@@ -7,18 +7,6 @@ b, strong {
   font-weight: bold;
 }
 
-a {
-  code {
-    color: $default-link;
-  }
-
-  &:hover, &:focus, &:active {
-    code {
-      color: color.scale($default-link, $lightness: -15%, $saturation: 15%);
-    }
-  }
-}
-
 /* Effective Dart TOC */
 
 .effective_dart--summary_column {
