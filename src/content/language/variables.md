@@ -344,6 +344,11 @@ can declare a wildcard:
   typedef T = void Function(String _, String _);
   ```
 
+:::tip
+Enable the lint [`unnecessary_underscores`][] to identify where a single,
+*unbinding* wildcard underscore can replace the previous convention of using
+multiple, *binding* underscores to avoid collisions for wildcard identifiers.
+:::
 
 [Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
@@ -354,3 +359,4 @@ can declare a wildcard:
 [Lists]: /language/collections#lists
 [Maps]: /language/collections#maps
 [Classes]: /language/classes
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
