@@ -83,6 +83,10 @@
 
   .brand {
     width: 176px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.125rem;
   }
 
   .footer-section {
@@ -118,14 +122,21 @@
   }
 
   .footer-social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
     a {
-      &:not(:first-child) {
-        margin-left: 16px;
-      }
+      display: inline-flex;
+      text-align: center;
+      padding: 0.25rem;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
 
       svg {
-        height: 32px;
-        width: 32px;
+        height: 2rem;
+        width: 2rem;
       }
     }
 
