@@ -224,6 +224,15 @@ main isolate. Isolates can only communicate via message passing.
 They can’t “see”  inside each others’ memory, 
 which is where the name “isolate” comes from.
 
+:::note
+In some cases when you don't have easy access to the point isolates are created
+and cannot pass the communication channel during `Isolate.spawn` call,
+you can instead use the [IsolateNameServer](https://api.flutter.dev/flutter/dart-ui/IsolateNameServer-class.html).
+It is a global mapping of names to ports where 
+isolates can dynamically register themselves 
+for future discovery among other isolates.
+:::
+
 To set up this 2-way communication, first create a [`ReceivePort`][] 
 in the main isolate, then pass its [`SendPort`][] as an argument to the 
 new isolate when spawning it with `Isolate.spawn`.
