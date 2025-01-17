@@ -1,7 +1,7 @@
 function _setupFiltering() {
   const lintCards = document
       .getElementById('lint-cards')
-      ?.querySelectorAll('.lint-card');
+      ?.querySelectorAll('.card');
   if (!lintCards) return;
 
   const lintsInfo = [];

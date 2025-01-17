@@ -256,7 +256,7 @@ run `./dash_site refresh-excerpts`.
 To learn more about creating, editing, and using code excerpts,
 check out the [excerpt updater package documentation][].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
 ## [Optional] Deploy to a staging site
 

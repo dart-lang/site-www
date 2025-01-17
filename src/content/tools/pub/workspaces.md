@@ -198,7 +198,7 @@ $ cd packages/client_package ; dart pub publish ; cd -
 Sometimes you might want to resolve a workspace package on its own, for example
 to validate its dependency constraints.
 
-One way to do this is to create a `pubspec_overides.yaml` file that resets the
+One way to do this is to create a `pubspec_overrides.yaml` file that resets the
 `resolution` setting, like so:
 
 ```yaml
