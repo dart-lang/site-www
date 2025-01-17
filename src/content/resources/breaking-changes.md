@@ -111,7 +111,7 @@ accounting for them before the 3.7 release.
   All usages should be migrated to the new `--page-width` option.
 
 [new style]: {{site.repo.dart.org}}/dart_style/issues/1253
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [configure your analysis options]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
 
@@ -664,7 +664,7 @@ on all the changes in this section.
 [collection]: /resources/dart-3-migration#dart-collection
 [49529]: {{site.repo.dart.sdk}}/issues/49529
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html
-[`deferred as`]: /guides/language/language-tour#lazily-loading-a-library
+[`deferred as`]: /language/libraries#lazily-loading-a-library
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
 [`maxUserTags`]: {{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
 [50231]: {{site.repo.dart.sdk}}/issues/50231
@@ -1281,5 +1281,5 @@ other.
 * Replaced pub's transformer-based build system with a [new build system][build system].
 
 [30345]: {{site.repo.dart.sdk}}/issues/30345
-[strong mode]: /guides/language/type-system
+[strong mode]: /language/type-system
 [build system]: {{site.repo.dart.org}}/build
