@@ -209,8 +209,6 @@ $(function() {
     $(this).parent('li').toggleClass('active');
   });
 
-  adjustToc();
-
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {
     e.stopPropagation();
