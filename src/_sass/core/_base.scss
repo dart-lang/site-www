@@ -64,6 +64,7 @@ a, button {
   color: $brand-primary;
   font-family: $site-font-family-base;
   font-weight: 400;
+  cursor: pointer;
 
   &:visited {
     color: $brand-primary;

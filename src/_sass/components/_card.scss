@@ -14,7 +14,6 @@
 
     border-radius: 0.5rem;
     padding: 0.75rem;
-    margin: 0;
     gap: 0.5rem;
     background-color: var(--card-container-color, rgb(242, 245, 255));
     height: auto;
@@ -34,12 +33,6 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
-      // TODO(parlough): Remove these resets after bootstrap removed.
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
 
       .card-title {
         font-size: 1.25rem;
