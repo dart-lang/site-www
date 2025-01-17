@@ -274,4 +274,10 @@ void miscDeclAnalyzedButNotTested() {
       _ => throw FormatException('Invalid')
     };
   }
+
+  {
+    // #docregion map-error
+    final {'foo': int? foo} = {};
+    // #enddocregion map-error
+  }
 }
