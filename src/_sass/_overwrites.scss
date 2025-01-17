@@ -3,11 +3,6 @@
 @use 'core/variables' as *;
 @use 'core/bootstrap';
 
-/* Add space between definitions. */
-dd {
-  margin-bottom: 15px;
-}
-
 b, strong {
   font-weight: bold;
 }
@@ -22,10 +17,6 @@ a {
       color: color.scale($default-link, $lightness: -15%, $saturation: 15%);
     }
   }
-}
-
-.btn-primary, .btn-primary:visited {
-  color: white;
 }
 
 /* Effective Dart TOC */
