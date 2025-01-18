@@ -1,21 +1,17 @@
 @use '../core/variables' as *;
 
 .banner {
-  position: relative;
   background-color: $dash-callout;
-  padding: 12px 0;
+  padding: 0.75rem 0;
   text-align: center;
-  z-index: 500;
+  z-index: 1000;
 
-  &__text {
+  p {
     font-family: $site-font-family-alt;
-    font-size: 16px;
+    font-size: 1rem;
 
-    color: white;
-
+    color: $site-color-header-text;
     margin: 0;
-    padding-left: 1em;
-    padding-right: 1em;
 
     a {
       color: $site-color-card-link;

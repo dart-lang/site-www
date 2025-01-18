@@ -1,3 +1,4 @@
+{% if site.show_banner -%} {% render 'banner.html' %} {%- endif -%}
 <header id="page-header" class="site-header">
   {% include 'navigation-main.html' %}
   {% if obsolete -%}
@@ -10,4 +11,3 @@
   {% endif -%}
   {% endif -%}
 </header>
-{% if site.show_banner -%} {% render 'banner.html' %} {%- endif -%}
