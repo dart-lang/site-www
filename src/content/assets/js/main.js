@@ -99,21 +99,6 @@ function initVideoModal() {
     }
 }
 
-function fixNav() {
-  var t = $(document).scrollTop(),
-    f = $("#page-footer").offset().top,
-    hh = $("#page-header").height(),
-    banner = $(".banner"),
-    bb = banner.length > 0 ? banner[0].getBoundingClientRect().bottom : hh,
-    headerHeight = Math.max(hh, bb),
-    h = window.innerHeight,
-    // space between scroll position and top of the footer
-    whenAtBottom = f - t,
-    mh = Math.min(h, whenAtBottom) - hh;
-  $("#sidenav").css({ top: headerHeight, maxHeight: mh });
-  $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
-}
-
 function createGallery() {
   for (let i = 0; i < arguments.length; i++) {
     const galleryName = arguments[i];
@@ -199,7 +184,6 @@ function setupCopyButtons() {
 }
 
 $(function() {
-  fixNav(); // Adjust heights for navigation elements
   setupOsTabs();
   initCookieNotice();
 
@@ -215,13 +199,6 @@ $(function() {
     $(document.body).toggleClass('open_menu');
   });
 
-  // Remove open_menu when switched back to normal sidenav
-  $(window).smartresize((e) => {
-    if (document.body.clientWidth > 1025) {
-      document.body.classList.remove('open_menu');
-    }
-  });
-
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
   for (var i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
@@ -232,7 +209,6 @@ $(function() {
     });
   }
 
-  $(window).smartresize(fixNav);
   scrollSidebarIntoView();
 
   // Collapsible inline TOC expand/collapse
@@ -241,7 +217,7 @@ $(function() {
     root.toggleClass('toc-collapsed');
   });
 
-  // Initialize the video on the homepage, if it exists.
+  // Initialize the video on the home page, if it exists.
   initVideoModal();
 
   document.addEventListener('keydown', handleSearchShortcut);
@@ -254,17 +230,6 @@ $(function() {
     'galleryFive',
     'gallerySix'
   );
-
-  // When a user scrolls to 50px add class condensed-header to body
-  $(window).scroll(function () {
-    fixNav();
-    var currentScreenPosition = $(document).scrollTop();
-    if (currentScreenPosition > 50) {
-      $(document.body).addClass('fixed_nav');
-    } else {
-      $(document.body).removeClass('fixed_nav');
-    }
-  });
 
   setupCopyButtons();
 });
