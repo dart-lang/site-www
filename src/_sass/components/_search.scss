@@ -7,6 +7,9 @@
     z-index: 1;
   }
 
+  display: flex;
+  align-items: center;
+
   #mainnav & {
     // Override of _header.scss
     border: 0;
@@ -34,9 +37,9 @@
 .site-header__searchfield {
   border: 0;
   box-shadow: none;
+  background-color: transparent;
 
   #mainnav & {
-    background-color: $site-color-header;
     color: $site-color-header-text;
     font-size: $site-font-size-header;
 

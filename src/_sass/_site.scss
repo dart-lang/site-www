@@ -184,7 +184,7 @@
   align-items: center;
   line-height: 50px;
   margin-left: 20px;
-  padding-right: 10px;
+  margin-right: 0.5rem;
   cursor: pointer;
   z-index: 100;
 
@@ -197,10 +197,10 @@
   background-color: $site-color-header;
   color: $site-color-header-text;
   display: flex;
-  $mainnav-entry-spacing: 12px;
+  align-items: center;
 
   ul {
-    margin: auto 0 auto auto;
+    margin: 0 0 0 auto;
     padding: 0;
     list-style: none;
 
@@ -210,12 +210,12 @@
     align-items: center;
 
     li {
-      padding: 0 $mainnav-entry-spacing;
+      padding: 0 0.75rem;
 
       a {
         color: $site-color-header-text;
         display: inline-block;
-        padding: 0 6px;
+        padding: 0.4rem;
         font-size: $site-font-size-header;
         font-weight: 500;
         font-family: $site-font-family-alt;
@@ -228,19 +228,21 @@
 
       &.searchfield {
         position: relative;
+
+        form {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }
 
   .brand {
-    display: block;
-    float: left;
-    width: 85px;
-    margin: 0 20px;
+    display: flex;
+    width: 5.5rem;
     overflow: hidden;
-    line-height: 50px;
-    position: relative;
-    top: -1px;
+    margin-left: 1.25rem;
+    align-items: center;
   }
 }
 

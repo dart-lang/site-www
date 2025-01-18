@@ -45,18 +45,18 @@ form {
 }
 
 input, select {
-  line-height: 32px;
-  height: 32px;
+  line-height: 2rem;
+  height: 2rem;
   margin: 4px 0;
-  padding: 0 10px;
+  padding: 0 0.45rem;
   border: none;
   border-radius: 0;
-  font-size: 13px;
+  font-size: 0.85rem;
   cursor: pointer;
   background-color: $gray-light;
   color: $gray-dark;
 
   &:focus, &:active {
-    outline-color: #fff;
+    outline-color: $site-color-primary;
   }
 }
