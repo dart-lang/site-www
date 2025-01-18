@@ -66,6 +66,7 @@ a, button {
   font-family: $site-font-family-base;
   font-weight: 400;
   cursor: pointer;
+  background: none;
 
   &:visited {
     color: $brand-primary;
@@ -75,7 +76,6 @@ a, button {
 button {
   &:hover, &:focus, &:active {
     color: $flutter-color-blue-700;
-    outline: none;
     text-decoration: none;
   }
 

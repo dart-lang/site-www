@@ -31,7 +31,7 @@ $dash-max-width: 1330px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 17px;
+    margin-top: 1rem;
 
     > button {
       display: flex;
@@ -65,11 +65,15 @@ $dash-max-width: 1330px;
   .callout-oss {
     font-size: 20px;
     color: $dash-dark-grey;
-    margin-top: 16px;
 
     & svg {
       width: 1em;
       height: 1em;
+    }
+
+    p {
+      display: inline-flex;
+      align-items: center;
     }
 
     @include bootstrap.media-breakpoint-down(md) {
@@ -80,7 +84,8 @@ $dash-max-width: 1330px;
 
     a {
       color: $dash-dark-grey;
-      vertical-align: bottom;
+      display: inline-flex;
+      text-decoration: none;
 
       &:hover, &:focus, &:active {
         color: $white-base;
