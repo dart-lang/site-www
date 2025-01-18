@@ -8,7 +8,7 @@ function handleSearchShortcut(event) {
   }
 
   let parentElement;
-  // If the sidebar is open, focus its search field
+  // If the sidebar is open, focus its search field.
   if (document.body.classList.contains('open_menu')) {
     parentElement = document.getElementById('sidenav');
   } else {
@@ -22,7 +22,7 @@ function handleSearchShortcut(event) {
     }
   }
 
-  // If we found a search field, focus that
+  // If we found a search field, focus it.
   if (parentElement !== null) {
     parentElement
         .querySelector('.search-field')
@@ -57,46 +57,8 @@ function switchBanner(galleryName) {
     selector.classList.remove('highlight');
   });
   this.classList.add('highlight');
-  
+
   imgSelector.setAttribute('src', this.dataset.banner);
-}
-
-function initVideoModal() {
-    let videoModalObject = $('[data-video-modal]');
-    var player;
-
-    function onPlayerReady() {
-        videoModalObject.on('shown.bs.modal', function (event) {
-            if (player) {
-                let videoId = event.relatedTarget.dataset.video;
-                player.loadVideoById(videoId);
-                player.playVideo();
-            }
-        });
-
-        videoModalObject.on('hide.bs.modal', function (event) {
-            if (player) {
-                player.stopVideo();
-            }
-        });
-    }
-
-    if (videoModalObject.length > 0) {
-        // there is a video modal in the DOM, load the YouTube API
-        let tag = document.createElement('script');
-        tag.src = 'https://youtube.com/iframe_api';
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player('video-player', {
-                videoId: '5F-6n_2XWR8',
-                events: {
-                    "onReady": onPlayerReady,
-                },
-            });
-        };
-    }
 }
 
 function createGallery() {
@@ -199,8 +161,8 @@ $(function() {
     $(document.body).toggleClass('open_menu');
   });
 
-  var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
-  for (var i = 0; i < topLevelMenuTogglers.length; i++) {
+  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  for (let i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
       if ($(document.body).hasClass('open_menu')) {
         e.preventDefault();
@@ -213,12 +175,9 @@ $(function() {
 
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {
-    var root = $("#site-toc--inline");
+    const root = $("#site-toc--inline");
     root.toggleClass('toc-collapsed');
   });
-
-  // Initialize the video on the home page, if it exists.
-  initVideoModal();
 
   document.addEventListener('keydown', handleSearchShortcut);
 
