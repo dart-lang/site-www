@@ -125,6 +125,7 @@ details {
   > summary {
     font-weight: 500;
     user-select: none;
+    cursor: pointer;
 
     &:hover {
       color: $brand-primary;

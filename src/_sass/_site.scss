@@ -8,6 +8,7 @@
 
 @use 'core/bootstrap';
 @use 'core/base';
+@use 'core/utilities';
 
 @use 'components/banner';
 @use 'components/card';
@@ -24,8 +25,11 @@
 @use 'dartvm';
 @use 'books';
 @use 'os-tabs';
-@use 'overwrites';
 @use 'dash';
+
+// Must be imported last to ensure that
+// the print overrides take priority over earlier defined styles.
+@use 'core/print';
 
 
 /* -----------------------------------------
@@ -298,8 +302,8 @@ main .content {
 
   .header-wrapper {
     display: flex;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 0.75rem;
     align-items: center;
 
     .heading-link {
@@ -734,6 +738,14 @@ body.obsolete {
       }
     }
   }
+}
+
+// Callouts for related lints in Effective Dart guidelines.
+.linter-rule {
+  margin-block-start: -0.25rem;
+  margin-block-end: -0.25rem;
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 

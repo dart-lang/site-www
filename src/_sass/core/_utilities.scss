@@ -1,0 +1,12 @@
+@use 'sass:color';
+
+@use '../core/variables' as *;
+@use '../core/bootstrap';
+
+.side-by-side {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  column-gap: 2rem;
+  row-gap: 1rem;
+  justify-content: center;
+}
