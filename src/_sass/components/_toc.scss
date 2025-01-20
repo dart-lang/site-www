@@ -18,10 +18,9 @@
 
 #site-toc--side {
   padding: $top-content-padding 20px 32px 28px;
-
-  @include sidenav-top-position;
   display: none;
   position: fixed;
+  top: $site-header-height;
   bottom: 0;
   right: 0;
   width: 246px;

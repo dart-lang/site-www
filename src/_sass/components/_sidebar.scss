@@ -4,8 +4,8 @@
 
 #sidenav {
   font-family: $site-font-family-alt;
-  @include sidenav-top-position;
   position: fixed;
+  top: $site-header-height;
   bottom: 0;
   left: 0;
   width: 226px;
