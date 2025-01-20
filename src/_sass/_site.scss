@@ -41,6 +41,11 @@
 }
 
 #page-content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
   min-height: calc(100vh);
 
   body.homepage & {
@@ -53,21 +58,27 @@
   }
 
   > article {
-    > .content {
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: $top-content-padding 1.5rem 1.5rem;
-    }
-
-    @media(min-width: 1024px) {
-      margin-left: 226px;
-    }
-
-    @media(min-width: 1200px) {
-      margin-right: 226px;
-    }
+    overflow-x: hidden;
+    margin: 1rem;
+    max-width: 56rem;
   }
+
+  //> article {
+  //  > .content {
+  //    max-width: 960px;
+  //    margin-left: auto;
+  //    margin-right: auto;
+  //    padding: $top-content-padding 1.5rem 1.5rem;
+  //  }
+  //
+  //  @media(min-width: 1024px) {
+  //    margin-left: 226px;
+  //  }
+  //
+  //  @media(min-width: 1200px) {
+  //    margin-right: 226px;
+  //  }
+  //}
 }
 
 #site-content-title {

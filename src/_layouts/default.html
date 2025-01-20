@@ -12,10 +12,12 @@
     {% render 'cookie-notice.html' %}
     {% render 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
-    {% include 'navigation-side.html' %}
     <main id="page-content">
+      {% include 'navigation-side.html' %}
       {% if toc != false -%}
+      {%- comment -%}
       {% include 'navigation-toc-side.html', tocContents:tocContents %}
+      {% endcomment %}
       {% endif -%}
       <article>
         <div class="content">

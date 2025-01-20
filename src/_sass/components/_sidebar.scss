@@ -3,22 +3,26 @@
 @use '../core/bootstrap';
 
 #sidenav {
-  font-family: $site-font-family-alt;
-  position: fixed;
-  top: $site-header-height;
-  bottom: 0;
-  left: 0;
-  width: 226px;
-  border-right: 1px solid #d8d8d8;
-  overflow-x: hidden;
+  position: sticky;
   overflow-y: auto;
-  z-index: 1;
+
+  top: $site-header-height;
+  width: 15rem;
+  max-height: calc(100vh - $site-header-height);
+
+  font-family: $site-font-family-alt;
+  border-right: 1px solid #d8d8d8;
+  scrollbar-width: thin;
 
   .open_menu & {
     z-index: 10000;
     overflow-y: auto;
     overscroll-behavior: contain;
     pointer-events: auto;
+  }
+
+  @media(max-width: 768px) {
+    display: none;
   }
 }
 
