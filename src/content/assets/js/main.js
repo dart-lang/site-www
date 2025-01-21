@@ -32,14 +32,13 @@ function handleSearchShortcut(event) {
   }
 }
 
-function scrollSidebarIntoView() {
+function scrollSidenavIntoView() {
   const sidenav = document.getElementById('sidenav');
   if (!sidenav) {
     return;
   }
 
   const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
-
   if (activeEntries.length > 0) {
     const activeEntry = activeEntries[activeEntries.length - 1];
 
@@ -99,21 +98,6 @@ function initVideoModal() {
     }
 }
 
-function fixNav() {
-  var t = $(document).scrollTop(),
-    f = $("#page-footer").offset().top,
-    hh = $("#page-header").height(),
-    banner = $(".banner"),
-    bb = banner.length > 0 ? banner[0].getBoundingClientRect().bottom : hh,
-    headerHeight = Math.max(hh, bb),
-    h = window.innerHeight,
-    // space between scroll position and top of the footer
-    whenAtBottom = f - t,
-    mh = Math.min(h, whenAtBottom) - hh;
-  $("#sidenav").css({ top: headerHeight, maxHeight: mh });
-  $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
-}
-
 function adjustToc() {
   // Adjustments to the jekyll-toc TOC.
   var tocWrapper = $('#site-toc--side');
@@ -121,7 +105,7 @@ function adjustToc() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   })
 
-  $(document.body).scrollspy({ offset: 100, target: '#site-toc--side' });
+  $('#site-below-header').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 function createGallery() {
@@ -209,7 +193,6 @@ function setupCopyButtons() {
 }
 
 $(function() {
-  fixNav(); // Adjust heights for navigation elements
   setupOsTabs();
   initCookieNotice();
 
@@ -244,8 +227,7 @@ $(function() {
     });
   }
 
-  $(window).smartresize(fixNav);
-  scrollSidebarIntoView();
+  scrollSidenavIntoView();
 
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {
@@ -266,17 +248,6 @@ $(function() {
     'galleryFive',
     'gallerySix'
   );
-
-  // When a user scrolls to 50px add class condensed-header to body
-  $(window).scroll(function () {
-    fixNav();
-    var currentScreenPosition = $(document).scrollTop();
-    if (currentScreenPosition > 50) {
-      $(document.body).addClass('fixed_nav');
-    } else {
-      $(document.body).removeClass('fixed_nav');
-    }
-  });
 
   setupCopyButtons();
 });

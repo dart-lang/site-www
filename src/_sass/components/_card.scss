@@ -19,7 +19,7 @@
     background-color: var(--card-container-color, rgb(242, 245, 255));
     height: auto;
 
-    scroll-margin: 4rem;
+    scroll-margin: $site-header-height + 1rem;
 
     &.hidden {
       display: none;
