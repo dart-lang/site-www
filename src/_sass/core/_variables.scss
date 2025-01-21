@@ -72,10 +72,6 @@ $site-color-primary: $brand-primary;
 // Sidenav, toc, and footer
 $font-size-small:         14px;
 
-// Spacing
-$live-content-width:      1280px;
-$content-padding:         32px;
-
 // Fonts
 $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
@@ -93,15 +89,7 @@ $font-family-monospace: $site-font-family-monospace;
 
 // Layout
 $site-header-height: 3.25rem;
-$site-header-with-banner-height: 98px; // 50 + 48
-$site-header-with-obsolete-height: 131px; // 50 + 81
-$site-header-with-banner-obsolete-height: 179px; // 50 + 81 + 48
-$site-footer-md-default-height: 140px;
 $site-content-top-padding: 2rem;
-$site-content-max-width: 960px;
-$site-sidebar-top-padding: 24px;
-$site-sidebar-side-padding: 20px;
-$site-nav-mobile-side-padding: 20px;
 $site-snackbar-padding: 20px;
 $site-spacer: 1rem;
 
