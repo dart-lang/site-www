@@ -300,7 +300,7 @@ a [language version][] of at least 3.7.
 
 A wildcard variable with the name `_` declares a local variable or parameter
 that is non-binding; essentially, a placeholder.
-The initializer, if there is one, is still executed, but the value is not accessible.
+The initializer, if there is one, is still executed, but the value isn't accessible.
 Multiple declarations named `_` can exist in the same namespace without a collision error.
 
 Top-level declarations or members where library privacy might be affected are
@@ -364,4 +364,5 @@ multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 [Lists]: /language/collections#lists
 [Maps]: /language/collections#maps
 [Classes]: /language/classes
+[language version]: /resources/language/evolution#language-versioning
 [`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
