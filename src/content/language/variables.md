@@ -293,6 +293,11 @@ For more information on using `const` to create constant values, see
 
 ## Wildcard variables
 
+:::version-note
+Wildcard variables require
+a [language version][] of at least 3.7.
+:::
+
 A wildcard variable with the name `_` declares a local variable or parameter
 that is non-binding; essentially, a placeholder.
 The initializer, if there is one, is still executed, but the value is not accessible.
@@ -345,9 +350,9 @@ can declare a wildcard:
   ```
 
 :::tip
-Enable the lint [`unnecessary_underscores`][] to identify where a single,
-*unbinding* wildcard underscore can replace the previous convention of using
-multiple, *binding* underscores to avoid collisions for wildcard identifiers.
+Enable the lint [`unnecessary_underscores`][] to identify where a single
+non-binding wildcard variable `_` can replace the previous convention of using
+multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 :::
 
 [Assert]: /language/error-handling#assert
