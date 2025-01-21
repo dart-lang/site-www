@@ -47,7 +47,7 @@ consult the [Dart API reference.][Dart API]
   including Flutter apps, servers, and command-line scripts.
 
 [dart:js_interop](/interop/js-interop)
-: DOM and other APIs for browser-based apps.
+: APIs for interop with the web platform.
   `dart:js_interop` replaces `dart:html`.
 
 

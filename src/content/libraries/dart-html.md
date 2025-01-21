@@ -8,7 +8,7 @@ prevpage:
 
 :::warning
 The `dart:html` library is deprecated.
-Instead, use [`dart:js_interop`][] or [`package:web`][].
+Instead, use [`dart:js_interop`][] and [`package:web`][].
 :::
 
 Use the [dart:html][] library to program the browser, manipulate objects and
