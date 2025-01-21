@@ -118,8 +118,9 @@
       permalink: /libraries/dart-convert
     - title: dart:io
       permalink: /libraries/dart-io
-    - title: dart:html
-      permalink: /libraries/dart-html
+    - title: dart:js_interop
+      permalink: /interop/js-interop
+      match-page-url-exactly: true
     - divider
     - title: Iterable collections
       permalink: /libraries/collections/iterables

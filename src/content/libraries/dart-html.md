@@ -7,10 +7,8 @@ prevpage:
 ---
 
 :::warning
-`dart:html` is being replaced with [`package:web`][].
-Package maintainers should migrate to `package:web` as
-soon as possible to be compatible with Wasm.
-Read the [Migrate to package:web][] page for guidance.
+The `dart:html` library is deprecated.
+Instead, use [`dart:js_interop`][] or [`package:web`][].
 :::
 
 Use the [dart:html][] library to program the browser, manipulate objects and
@@ -449,6 +447,7 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
+[`dart:js_interop`]: /interop/js-interop
 [AnchorElement]: {{site.dart-api}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/dart-html/dart-html-library.html
 [Fetch data from the internet]: /tutorials/server/fetch-data
