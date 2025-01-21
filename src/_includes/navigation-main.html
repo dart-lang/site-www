@@ -1,7 +1,7 @@
 {% assign page_url_path = page.url | regexReplace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
 
 <nav id="mainnav" class="site-header">
-  <div id="menu-toggle"><i class="material-symbols">menu</i></div>
+  <div id="menu-toggle"><span class="material-symbols" title="Toggle side navigation menu." aria-label="Toggle side navigation menu." type="button">menu</span></div>
   <a href="/" class="brand" title="{{site.title}}">
     <img src="/assets/img/logo/logo-white-text.svg" alt="{{site.title}}">
   </a>

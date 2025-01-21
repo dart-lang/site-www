@@ -17,15 +17,17 @@
 }
 
 #site-toc--side {
-  padding: $top-content-padding 20px $content-padding 28px;
+  padding: $site-content-top-padding;
+  padding-left: $site-content-top-padding / 2;
 
-  @include sidenav-top-position;
   display: none;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 246px;
-  overflow-x: hidden;
+  position: sticky;
+  top: 0;
+  order: 2;
+  width: 15rem;
+  min-width: 15rem;
+  height: fit-content;
+  max-height: calc(100vh - 3.25rem);
   overflow-y: auto;
   overflow-wrap: break-word;
   z-index: 5;
