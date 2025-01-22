@@ -8,7 +8,7 @@ function handleSearchShortcut(event) {
   }
 
   let parentElement;
-  // If the sidebar is open, focus its search field.
+  // If the sidebar is open, focus its search field
   if (document.body.classList.contains('open_menu')) {
     parentElement = document.getElementById('sidenav');
   } else {
@@ -22,7 +22,7 @@ function handleSearchShortcut(event) {
     }
   }
 
-  // If we found a search field, focus it.
+  // If we found a search field, focus that
   if (parentElement !== null) {
     parentElement
         .querySelector('.search-field')
@@ -32,14 +32,13 @@ function handleSearchShortcut(event) {
   }
 }
 
-function scrollSidebarIntoView() {
+function scrollSidenavIntoView() {
   const sidenav = document.getElementById('sidenav');
   if (!sidenav) {
     return;
   }
 
   const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
-
   if (activeEntries.length > 0) {
     const activeEntry = activeEntries[activeEntries.length - 1];
 
@@ -161,8 +160,8 @@ $(function() {
     $(document.body).toggleClass('open_menu');
   });
 
-  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
-  for (let i = 0; i < topLevelMenuTogglers.length; i++) {
+  var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  for (var i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
       if ($(document.body).hasClass('open_menu')) {
         e.preventDefault();
@@ -171,11 +170,11 @@ $(function() {
     });
   }
 
-  scrollSidebarIntoView();
+  scrollSidenavIntoView();
 
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {
-    const root = $("#site-toc--inline");
+    var root = $("#site-toc--inline");
     root.toggleClass('toc-collapsed');
   });
 

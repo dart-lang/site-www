@@ -16,15 +16,19 @@
   }
 }
 
+//noinspection CssReplaceWithShorthandSafely
 #site-toc--side {
-  padding: $top-content-padding 20px 32px 28px;
+  padding: $site-content-top-padding;
+  padding-left: $site-content-top-padding / 2;
+
   display: none;
-  position: fixed;
-  top: $site-header-height;
-  bottom: 0;
-  right: 0;
-  width: 246px;
-  overflow-x: hidden;
+  position: sticky;
+  top: 0;
+  order: 2;
+  width: 15rem;
+  min-width: 15rem;
+  height: fit-content;
+  max-height: calc(100vh - 3.25rem);
   overflow-y: auto;
   overflow-wrap: break-word;
   z-index: 5;
@@ -35,7 +39,7 @@
 
   .toc-entry {
     padding-bottom: bootstrap.bs-spacer(2);
-    font-size: .875rem;
+    font-size: 0.875rem;
 
     // Indent subsequent lines.
     margin-left: 1rem;

@@ -41,12 +41,15 @@
 }
 
 #page-content {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  align-items: flex-start;
-  justify-content: space-between;
-  min-height: calc(100vh);
+  min-height: calc(100vh - $site-header-height);
+  min-width: 0;
+  width: 100%;
+
+  &:not(.focused) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
   body.homepage & {
     padding: 0 0 60px;
@@ -58,27 +61,30 @@
   }
 
   > article {
-    overflow-x: hidden;
-    margin: 1rem;
-    max-width: 56rem;
-  }
+    min-width: 8rem;
 
-  //> article {
-  //  > .content {
-  //    max-width: 960px;
-  //    margin-left: auto;
-  //    margin-right: auto;
-  //    padding: $top-content-padding 1.5rem 1.5rem;
-  //  }
-  //
-  //  @media(min-width: 1024px) {
-  //    margin-left: 226px;
-  //  }
-  //
-  //  @media(min-width: 1200px) {
-  //    margin-right: 226px;
-  //  }
-  //}
+    > .content {
+      max-width: 58rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: $site-content-top-padding;
+    }
+  }
+}
+
+#site-below-header {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - $site-header-height);
+  overflow-y: auto;
+}
+
+#site-main-row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 #site-content-title {
@@ -194,13 +200,14 @@
 #menu-toggle {
   display: none;
   align-items: center;
-  line-height: 50px;
+  line-height: $site-header-height;
   margin-left: 20px;
   margin-right: 0.5rem;
   cursor: pointer;
   z-index: 100;
+  user-select: none;
 
-  i {
+  span {
     font-size: 32px;
   }
 }
@@ -302,7 +309,7 @@ main .content {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: 4rem;
+      scroll-margin: $site-header-height + 1rem;
     }
 
     // Let the wrapper set the bottom margin.
@@ -311,7 +318,7 @@ main .content {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: 4rem;
+    scroll-margin: $site-header-height + 1rem;
   }
 
   .header-wrapper {
@@ -355,6 +362,11 @@ main .content {
 /* -----------------------------------------
   Utility Classes
  ----------------------------------------- */
+
+.content {
+  position: relative;
+  padding: 2rem;
+}
 
 .button {
   padding: 5px 10px;
@@ -454,7 +466,7 @@ main .content {
 .container {
   position: relative;
   max-width: 100%;
-  width: $live-content-width;
+  width: 1280px;
   margin: 0 auto;
 }
 
@@ -773,23 +785,12 @@ body.obsolete {
   }
 
   #sidenav {
-    top: 0 !important;
-    max-height: 100vh !important;
-    bottom: 0;
-    min-width: 300px;
-    max-width: calc(100vw - 60px);
+    width: 100%;
     background: #fff;
     z-index: 100;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
-    transform: translateX(-100%);
-    transition: transform 0.4s ease-in-out;
 
     .site-header__search {
       display: flex;
-    }
-
-    .nav-link {
-      white-space: nowrap;
     }
   }
 
@@ -804,16 +805,19 @@ body.obsolete {
       right: 0;
       height: 100%;
       z-index: 5;
-      background-color: rgba($gray-base, 0.5);
+      background-color: rgba($gray-base, 0.4);
       cursor: pointer;
       pointer-events: none;
       @include transition(0.5s);
     }
 
+    // Hide the body content and only show the sidenav.
+    #page-content {
+      display: none;
+    }
+
     #sidenav {
       display: block;
-      left: 0 !important;
-      transform: translateX(0);
     }
   }
 }
