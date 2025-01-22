@@ -34,6 +34,7 @@ To use the HTML library in your web app, import dart:html:
 import 'dart:html';
 ```
 
+[`dart:js_interop`]: /interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
 
@@ -447,7 +448,6 @@ Dart has additional libraries for more specialized web APIs, such as
 For more information about Dart web libraries, see the
 [web library overview.][web library overview]
 
-[`dart:js_interop`]: /interop/js-interop
 [AnchorElement]: {{site.dart-api}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/dart-html/dart-html-library.html
 [Fetch data from the internet]: /tutorials/server/fetch-data

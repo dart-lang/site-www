@@ -48,7 +48,7 @@ consult the [Dart API reference.][Dart API]
 
 [dart:js_interop](/interop/js-interop)
 : APIs for interop with the web platform.
-  `dart:js_interop` replaces `dart:html`.
+  Along with `package:web`,`dart:js_interop` replaces `dart:html`.
 
 
 As mentioned, these pages are just an overview;
