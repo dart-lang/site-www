@@ -1,6 +1,9 @@
 ---
 title: Migrate to package:web
 description: How to migrate web interop code from dart:html to package:web.
+prevpage:
+  url: /interop/js-interop/past-js-interop
+  title: Past JS interop
 ---
 
 Dart's [`package:web`][] exposes access to browser APIs,

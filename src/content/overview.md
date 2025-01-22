@@ -148,7 +148,7 @@ providing essentials for many everyday programming tasks:
   (`dart:isolate`)
 * HTML elements and other resources for web-based applications that need to
   interact with the browser and the Document Object Model (DOM)
-  (`dart:html`)
+  (`dart:js_interop` and `package:web`)
 
 Beyond the core libraries, many APIs are provided through
 a comprehensive set of packages.

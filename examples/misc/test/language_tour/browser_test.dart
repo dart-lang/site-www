@@ -1,10 +1,13 @@
+// ignore_for_file: unused_import
+
 @Tags(['browser'])
 @TestOn('browser')
 library;
 
-// #docregion dart-html-import
+// #docregion dart-js-interop-import
+import 'dart:js_interop';
+// #enddocregion dart-js-interop-import
 import 'dart:html';
-// #enddocregion dart-html-import
 // #docregion package-import
 import 'package:test/test.dart';
 // #enddocregion package-import

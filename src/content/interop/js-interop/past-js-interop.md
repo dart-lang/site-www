@@ -1,6 +1,12 @@
 ---
 title: Past JS interop
 description: Archive of Dart's previous JS interop support.
+prevpage:
+  url: /interop/js-interop/tutorials
+  title: JS interop tutorials
+nextpage:
+  url: /interop/js-interop/package-web/
+  title: Migrate to package:web
 ---
 
 :::warning

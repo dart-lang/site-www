@@ -5,8 +5,8 @@ prevpage:
   url: /libraries/dart-convert
   title: dart:convert
 nextpage:
-  url: /libraries/dart-html
-  title: dart:html
+  url: /interop/js-interop/
+  title: dart:js_interop
 ---
 
 <?code-excerpt plaster="none"?>

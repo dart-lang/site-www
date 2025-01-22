@@ -1,6 +1,12 @@
 ---
 title: Usage
 description: How to declare and use JS interop members.
+prevpage:
+  url: /interop/js-interop/
+  title: JS interop
+nextpage:
+  url: /interop/js-interop/js-types
+  title: JS types
 ---
 
 JS interop provides the mechanisms to interact with JavaScript APIs from Dart.

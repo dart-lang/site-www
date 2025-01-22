@@ -7,10 +7,8 @@ prevpage:
 ---
 
 :::warning
-`dart:html` is being replaced with [`package:web`][].
-Package maintainers should migrate to `package:web` as
-soon as possible to be compatible with Wasm.
-Read the [Migrate to package:web][] page for guidance.
+The `dart:html` library is deprecated.
+Instead, use [`dart:js_interop`][] and [`package:web`][].
 :::
 
 Use the [dart:html][] library to program the browser, manipulate objects and
@@ -36,6 +34,7 @@ To use the HTML library in your web app, import dart:html:
 import 'dart:html';
 ```
 
+[`dart:js_interop`]: /interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
 
