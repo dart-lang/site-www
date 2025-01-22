@@ -242,6 +242,10 @@ body.linter-rules {
         &::-webkit-search-cancel-button {
           display: none;
         }
+
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
