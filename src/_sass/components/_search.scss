@@ -18,10 +18,9 @@
 
   #sidenav & {
     display: none;
-    border-bottom: 1px solid $site-color-light-grey;
     flex-shrink: 0;
     margin: 0;
-    padding: 0 $site-nav-mobile-side-padding;
+    padding: 0 1.25rem;
     order: -1;
 
     // Override of _header.scss
@@ -54,7 +53,7 @@
 
   #sidenav & {
     font-size: bootstrap.$font-size-lg;
-    height: 66px;
+    height: 3rem;
     width: 100%;
 
     // Override of _header.scss

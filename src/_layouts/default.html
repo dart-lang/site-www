@@ -12,33 +12,37 @@
     {% render 'cookie-notice.html' %}
     {% render 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
-    {% include 'navigation-side.html' %}
-    <main id="page-content">
-      {% if toc != false -%}
-      {% include 'navigation-toc-side.html', tocContents:tocContents %}
-      {% endif -%}
-      <article>
-        <div class="content">
-          <div id="site-content-title">
-            {% if underscore_breaker_titles -%}
-            <h1>{{title | underscoreBreaker}}</h1>
-            {% else %}
-            <h1>{{title }}</h1>
+    <div id="site-below-header">
+      <div id="site-main-row">
+      {% include 'navigation-side.html' %}
+      <main id="page-content">
+        {% if toc != false -%}
+        {% include 'navigation-toc-side.html', tocContents:tocContents %}
+        {% endif -%}
+        <article>
+          <div class="content">
+            <div id="site-content-title">
+              {% if underscore_breaker_titles -%}
+              <h1>{{title | underscoreBreaker}}</h1>
+              {% else %}
+              <h1>{{title }}</h1>
+              {% endif -%}
+              {% if show_breadcrumbs == true -%}
+                {% include 'breadcrumbs.html' -%}
+              {% endif -%}
+            </div>
+            {% if toc != false -%}
+            {% include 'navigation-toc-top.html', tocContents:tocContents -%}
             {% endif -%}
-            {% if show_breadcrumbs == true -%}
-              {% include 'breadcrumbs.html' -%}
-            {% endif -%}
-          </div>
-          {% if toc != false -%}
-          {% include 'navigation-toc-top.html', tocContents:tocContents -%}
-          {% endif -%}
-          {{ content }}
-          {% render 'navigation-sub.html', prevpage:prevpage, nextpage:nextpage %}
+            {{ content }}
+            {% render 'navigation-sub.html', prevpage:prevpage, nextpage:nextpage %}
 
-          {% include 'page-github-links.html' -%}
-        </div>
-      </article>
-    </main>
-    {% render 'page-footer.html' %}
+            {% include 'page-github-links.html' -%}
+          </div>
+        </article>
+      </main>
+      </div>
+      {% render 'page-footer.html' %}
+    </div>
   </body>
 </html>

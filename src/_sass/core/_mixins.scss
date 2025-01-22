@@ -11,28 +11,6 @@
   animation-delay: ($delay);
 }
 
-// The left and right sidebar is dynamically repositioned as the user scrolls,
-// to follow both the header's bottom and the banner's bottom position.
-//
-// On page load this repositioning happens with a delay, which causes a "flash"
-// as it finally happens. The below rules match the expected initial positions
-// to minimize the "flash".
-@mixin sidenav-top-position() {
-  top: $site-header-height;
-
-  body.show_banner & {
-    top: $site-header-with-banner-height;
-  }
-
-  body.obsolete & {
-    top: $site-header-with-obsolete-height;
-  }
-
-  body.obsolete.show_banner & {
-    top: $site-header-with-banner-obsolete-height;
-  }
-}
-
 @mixin interaction-style($percentage: 4%) {
   background-image: linear-gradient(rgb(var(--site-interaction-base-values) / $percentage) 0 0);
 }
