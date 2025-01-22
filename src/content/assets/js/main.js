@@ -32,12 +32,13 @@ function handleSearchShortcut(event) {
   }
 }
 
-function scrollSidenavIntoView() {
+function setupSidenav() {
   const sidenav = document.getElementById('sidenav');
   if (!sidenav) {
     return;
   }
 
+  // Scroll active entry in to view.
   const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
   if (activeEntries.length > 0) {
     const activeEntry = activeEntries[activeEntries.length - 1];
@@ -145,14 +146,9 @@ function setupCopyButtons() {
 }
 
 $(function() {
+  setupSidenav();
   setupOsTabs();
   initCookieNotice();
-
-  // Sidenav
-  $('#sidenav i').on('click', function (e) {
-    e.stopPropagation();
-    $(this).parent('li').toggleClass('active');
-  });
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {
@@ -170,8 +166,6 @@ $(function() {
     });
   }
 
-  scrollSidenavIntoView();
-
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {
     var root = $("#site-toc--inline");
@@ -179,6 +173,18 @@ $(function() {
   });
 
   document.addEventListener('keydown', handleSearchShortcut);
+
+  const toggles = document.querySelectorAll('.nav-link.collapsible');
+  toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', (e) => {
+      if (toggle.classList.toggle('collapsed')) {
+        toggle.ariaExpanded = 'false';
+      } else {
+        toggle.ariaExpanded = 'true';
+      }
+      e.preventDefault();
+    });
+  });
 
   createGallery(
     'galleryOne',

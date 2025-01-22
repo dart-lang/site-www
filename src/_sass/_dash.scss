@@ -389,12 +389,6 @@ $dash-max-width: 1330px;
   }
 }
 
-.nav-link {
-  &:focus {
-    outline: $dash-highlight auto 2px;
-  }
-}
-
 a.frontanchor {
   padding-top: 50px;
 }
