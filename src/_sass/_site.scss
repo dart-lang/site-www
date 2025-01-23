@@ -2,7 +2,6 @@
 @use 'core/colors';
 @use 'core/mixins' as *;
 
-@use 'core/bootstrap';
 @use 'core/base';
 @use 'core/utils';
 
@@ -41,10 +40,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-
-  body.homepage & {
-    padding: 0 0 60px;
   }
 
   body.obsolete & {
@@ -653,16 +648,6 @@ ul.nav-list {
 body.homepage {
   #sidenav {
     display: none;
-  }
-
-  section {
-    padding: 0;
-  }
-
-  .card-grid {
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
   }
 }
 
