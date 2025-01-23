@@ -24,15 +24,12 @@ body.homepage {
         flex-direction: row;
         text-decoration: none;
         align-items: center;
+        gap: 0.5rem;
         color: $site-color-card-link;
 
         &:hover {
           text-decoration: none;
           color: darken($site-color-card-link, 20%);
-        }
-
-        > span {
-          margin-right: 8px;
         }
       }
     }
@@ -105,16 +102,15 @@ body.homepage {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 1rem;
-    align-items: stretch;
+    align-items: center;
 
     @media (min-width: 768px) {
       flex-direction: row;
+      align-items: unset;
     }
 
     .feature {
       margin-top: 2rem;
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
       width: 14rem;
 
@@ -164,35 +160,17 @@ body.homepage {
     .content-info {
       display: flex;
       align-items: center;
-      padding-right: 1.5rem;
-      padding-left: 1.5rem;
+      justify-content: center;
+      padding: 1rem 1.5rem 0.5rem;
       min-width: 45%;
 
-      //@media (min-width: 992px) {
-      //  min-width: 50%;
-      //}
-
       .content-container {
-        padding: 1.5rem;
+        padding: 1rem;
         max-width: 512px;
         width: 100%;
 
-        @media (min-width: 768px) {
-          width: unset; // TODO(parlough): Verify this is right?
-        }
-
         @media (min-width: 992px) {
-
-        }
-
-        // TODO(parlough): Convert this to min-width if possible.
-        @media (max-width: 991px) {
-          position: relative;
-          left: 0;
-          top: 0;
-          margin: 1rem auto 0;
-          transform: none !important;
-          padding: 1rem;
+          padding: 1.5rem;
         }
       }
 
@@ -200,10 +178,10 @@ body.homepage {
         width: 68px;
         height: 68px;
         border-radius: 50%;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
 
         @media (min-width: 992px) {
-          margin-bottom: 18px;
+          margin-bottom: 16px;
         }
       }
 
@@ -220,7 +198,6 @@ body.homepage {
 
       .content-desc {
         font-family: $site-font-family-base;
-        font-weight: lighter;
         font-size: .9rem;
         line-height: 24px;
         color: $dash-dark-black;
@@ -240,7 +217,7 @@ body.homepage {
         }
 
         @media (min-width: 992px) {
-          font-size: 1.125rem; // TODO(parlough): Should this become 1.0625 (17px)?
+          font-size: 1.125rem;
         }
 
         ul li {
@@ -250,10 +227,6 @@ body.homepage {
           &:focus {
             outline: none;
           }
-        }
-
-        .current-item {
-          color: black !important;
         }
       }
     }
@@ -281,9 +254,7 @@ body.homepage {
       justify-content: center;
       width: 100%;
       min-width: 40%;
-
       background-color: $dark-darker-black;
-      padding: 0 !important;
 
       img {
         max-height: 640px;
@@ -389,21 +360,23 @@ body.homepage {
         &:nth-child(even) {
           flex-direction: row;
         }
-      }
 
-      > div.content-info {
-        justify-content: flex-end;
-
-        &:nth-child(even) {
-          justify-content: flex-start;
+        > div.content-info {
+          justify-content: flex-end;
         }
-      }
 
-      > div.content-image {
-        align-items: flex-end;
+        > div.content-image {
+          align-items: flex-start;
+        }
 
         &:nth-child(even) {
-          align-items: flex-start;
+          > div.content-info {
+            justify-content: flex-start;
+          }
+
+          > div.content-image {
+            align-items: flex-end;
+          }
         }
       }
     }
@@ -422,6 +395,6 @@ body.homepage {
   }
 
   a.frontanchor {
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
 }
