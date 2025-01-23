@@ -60,44 +60,6 @@ function switchBanner(galleryName) {
   imgSelector.setAttribute('src', this.dataset.banner);
 }
 
-function initVideoModal() {
-    let videoModalObject = $('[data-video-modal]');
-    var player;
-
-    function onPlayerReady() {
-        videoModalObject.on('shown.bs.modal', function (event) {
-            if (player) {
-                let videoId = event.relatedTarget.dataset.video;
-                player.loadVideoById(videoId);
-                player.playVideo();
-            }
-        });
-
-        videoModalObject.on('hide.bs.modal', function (event) {
-            if (player) {
-                player.stopVideo();
-            }
-        });
-    }
-
-    if (videoModalObject.length > 0) {
-        // there is a video modal in the DOM, load the YouTube API
-        let tag = document.createElement('script');
-        tag.src = 'https://youtube.com/iframe_api';
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player('video-player', {
-                videoId: '5F-6n_2XWR8',
-                events: {
-                    "onReady": onPlayerReady,
-                },
-            });
-        };
-    }
-}
-
 function adjustToc() {
   // Adjustments to the jekyll-toc TOC.
   var tocWrapper = $('#site-toc--side');
@@ -234,9 +196,6 @@ $(function() {
     var root = $("#site-toc--inline");
     root.toggleClass('toc-collapsed');
   });
-
-  // Initialize the video on the homepage, if it exists.
-  initVideoModal();
 
   document.addEventListener('keydown', handleSearchShortcut);
 
