@@ -298,6 +298,11 @@ body.homepage {
 
   .dash-dartpad-row {
     background-color: $dash-callout;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
   }
 
   .dash-dartpad {
