@@ -2,7 +2,6 @@
 @use 'core/colors';
 @use 'core/mixins' as *;
 
-@use 'core/bootstrap';
 @use 'core/base';
 
 @use 'components/banner';
@@ -23,10 +22,6 @@
 @use 'overwrites';
 @use 'dash';
 
-// Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: bootstrap.$body-color;
-$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
-
 
 /* -----------------------------------------
   DOM
@@ -45,10 +40,6 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-
-  body.homepage & {
-    padding: 0 0 60px;
   }
 
   body.obsolete & {
@@ -84,7 +75,7 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 }
 
 #site-content-title {
-  margin-bottom: bootstrap.bs-spacer(6);
+  margin-bottom: 1.5rem;
 }
 
 #page-footer {
@@ -650,16 +641,6 @@ ul.nav-list {
 body.homepage {
   #sidenav {
     display: none;
-  }
-
-  section {
-    padding: 0;
-  }
-
-  .card-grid {
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
   }
 }
 
