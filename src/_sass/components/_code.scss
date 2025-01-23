@@ -2,19 +2,18 @@
 
 @use '../core/colors' as *;
 @use '../core/variables' as *;
-@use '../core/bootstrap';
 
 pre {
   margin-bottom: 1rem;
   font-size: 0.9375rem;
-  font-weight: bootstrap.$font-weight-normal;
+  font-weight: 400;
   padding: 1.25rem;
 
   a {
     font-family: inherit;
     font-weight: inherit;
   }
-  
+
   .highlight {
     background: $flutter-color-yellow-300;
     padding: 0.1em;
@@ -27,11 +26,11 @@ pre {
       padding: 0;
     }
   }
-  
+
   &:focus {
     outline: none;
   }
-  
+
   span.line {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -41,11 +40,11 @@ pre {
       background: color.change($brand-primary, $alpha: 0.1);
     }
   }
-  
+
   &.show-line-numbers code {
     span.line {
       padding-left: 0.5rem;
-      
+
       &[data-line]::before {
         display: inline-block;
         content: attr(data-line) "";
@@ -139,7 +138,7 @@ pre {
 .code-block-wrapper {
   margin-bottom: 1rem;
   border: 1px solid $flutter-color-grey-500;
-  
+
   .code-block-header {
     background-color: #e9ecef;
     border-bottom: 1px solid $flutter-color-grey-500;
@@ -147,7 +146,7 @@ pre {
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
   }
-  
+
   .code-block-body {
     position: relative;
     background-color: $site-color-codeblock-bg;
@@ -170,16 +169,16 @@ pre {
       background-color: $alert-danger-bg;
     }
   }
-  
+
   &:has(:focus-visible) {
     border-color: #1389FD;
   }
-  
+
   pre {
     margin-bottom: 0;
     padding-right: 0;
     padding-left: 0;
-    
+
     &:not([lang="console"]) {
       line-height: 1.8;
     }

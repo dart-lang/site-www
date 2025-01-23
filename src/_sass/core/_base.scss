@@ -1,6 +1,5 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
-@use '../core/bootstrap';
 
 :root {
   --site-interaction-base-values: 0 0 0;
@@ -27,34 +26,34 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, .h1 {
   font-family: $site-font-family-gsans-display;
-  font-size: bootstrap.$h1-font-size;
+  font-size: 3rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 h2, .h2 {
-  font-size: bootstrap.$h2-font-size;
+  font-size: 1.5rem;
 }
 
 h3, .h3 {
-  font-size: bootstrap.$h3-font-size;
+  font-size: 1.3125rem;
 }
 
 h4, .h4 {
-  font-size: bootstrap.$h4-font-size;
+  font-size: 1.125rem;
 }
 
 h5, .h5 {
-  font-size: bootstrap.$h5-font-size;
+  font-size: 0.9375rem;
 }
 
 h6, .h6 {
-  font-size: bootstrap.$h6-font-size;
+  font-size: 0.9375rem;
 }
 
 dt {
   a {
-    font-weight: bootstrap.$font-weight-bold
+    font-weight: 500;
   }
 }
 

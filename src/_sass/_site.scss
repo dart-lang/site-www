@@ -23,11 +23,6 @@
 @use 'overwrites';
 @use 'dash';
 
-// Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: bootstrap.$body-color;
-$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
-
-
 /* -----------------------------------------
   DOM
   ----------------------------------------- */
@@ -84,7 +79,7 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 }
 
 #site-content-title {
-  margin-bottom: bootstrap.bs-spacer(6);
+  margin-bottom: 1.5rem;
 }
 
 #page-footer {
