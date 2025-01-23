@@ -13,3 +13,6 @@
 - name: Futures, async, await
   description: How to write asynchronous Dart code that uses futures and the async and await keywords.
   url: /libraries/async/async-await
+- name: Packages
+  description: Everything you need to know about the package ecosystem.
+  url: /tools/pub/packages
