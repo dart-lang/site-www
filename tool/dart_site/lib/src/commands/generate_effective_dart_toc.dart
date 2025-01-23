@@ -78,27 +78,20 @@ the project:
 ./dash_site effective-dart
 ```
 {% endcomment %}
-    ''');
+''');
 
-  newOutput.writeln(
-    r"<div class='effective_dart--summary_column'>",
-  );
+  newOutput.writeln(r'<div class="side-by-side"><div>');
 
   for (var sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
     final section = sections[sectionIndex];
     if (sectionIndex > 0) {
-      if (sectionIndex.isEven) {
-        newOutput.writeln("<div style='clear:both'></div>");
-      }
-      newOutput.writeln(
-        "<div class='effective_dart--summary_column'>\n",
-      );
+      newOutput.writeln('<div>\n');
     }
     _writeSection(newOutput, section);
     newOutput.writeln('\n</div>');
   }
 
-  newOutput.writeln("<div style='clear:both'></div>");
+  newOutput.writeln('</div>');
 
   final tocFile = File(path.join(dirPath, '_toc.md'));
   try {

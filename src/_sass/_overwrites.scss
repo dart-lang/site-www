@@ -1,7 +1,6 @@
 @use 'sass:color';
 
 @use 'core/variables' as *;
-@use 'core/bootstrap';
 
 /* Add space between definitions. */
 dd {
@@ -26,16 +25,6 @@ a {
 
 .btn-primary, .btn-primary:visited {
   color: white;
-}
-
-/* Effective Dart TOC */
-
-.effective_dart--summary_column {
-  @include bootstrap.media-breakpoint-up(md) {
-    width: 50%;
-    float: left;
-    padding-right: 5%;
-  }
 }
 
 @media print {
@@ -71,10 +60,4 @@ a {
 /* Overwrite bootstrap: don't wrap code */
 pre code {
   white-space: pre;
-}
-
-/* Effective Dart linter rules */
-.linter-rule {
-  font-size: smaller;
-  font-style: italic;
 }
