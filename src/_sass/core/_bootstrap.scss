@@ -93,7 +93,3 @@
 );
 
 @use '../../../node_modules/bootstrap-scss/bootstrap';
-
-@function bs-spacer($key: 3) {
-  @return map-get(bootstrap.$spacers, $key);
-}
