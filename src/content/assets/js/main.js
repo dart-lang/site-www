@@ -56,18 +56,8 @@ function switchBanner(galleryName) {
     selector.classList.remove('highlight');
   });
   this.classList.add('highlight');
-  
+
   imgSelector.setAttribute('src', this.dataset.banner);
-}
-
-function adjustToc() {
-  // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#site-toc--side');
-  $(tocWrapper).find('header').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  })
-
-  $('#site-below-header').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 function createGallery() {
@@ -158,25 +148,25 @@ $(function() {
   setupOsTabs();
   initCookieNotice();
 
-  // Sidenav
-  $('#sidenav i').on('click', function (e) {
-    e.stopPropagation();
-    $(this).parent('li').toggleClass('active');
-  });
-
-  adjustToc();
-
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {
     e.stopPropagation();
     $(document.body).toggleClass('open_menu');
   });
 
-  // Remove open_menu when switched back to normal sidenav
-  $(window).smartresize((e) => {
-    if (document.body.clientWidth > 1025) {
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 1025) {
       document.body.classList.remove('open_menu');
     }
+  });
+
+  // Set up collapse and expand for sidenav buttons.
+  const toggles = document.querySelectorAll('.nav-link.collapsible');
+  toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', (e) => {
+      toggle.classList.toggle('collapsed');
+      e.preventDefault();
+    });
   });
 
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];

@@ -1,5 +1,4 @@
 @use '../core/variables' as *;
-@use '../core/bootstrap';
 
 .site-header {
   background-color: $site-color-white;
@@ -9,10 +8,10 @@
   z-index: $site-z-header;
 
   .navbar {
-    font-size: 1.25rem;;
+    font-size: 1.25rem;
     min-height: $site-header-height;
 
-    @include bootstrap.media-breakpoint-up(md) {
+    @media (min-width: 768px) {
       font-size: $font-size-base;
     }
 
@@ -34,8 +33,9 @@
       color: $site-color-nav-links;
       padding: 1.25rem 0;
       position: relative;
+      text-decoration: none;
 
-      @include bootstrap.media-breakpoint-up(md) {
+      @media (min-width: 768px) {
         padding: 0 1rem;
       }
 
@@ -43,7 +43,7 @@
         color: $site-color-body;
         font-weight: 500;
 
-        @include bootstrap.media-breakpoint-up(md) {
+        @media (min-width: 768px) {
           &:after {
             $nav-active-marker-thickness: 3px;
             background-color: $site-color-card-link;
@@ -60,15 +60,6 @@
     }
   }
 
-  &__cta {
-    margin-left: 0.5rem;
-    padding: 0.5rem 1rem !important;
-
-    @include bootstrap.media-breakpoint-down(sm) {
-      display: none;
-    }
-  }
-
   &__search {
     position: relative;
 
@@ -80,39 +71,26 @@
       left: 0.25rem;
     }
 
-    @include bootstrap.media-breakpoint-up(md) {
+    @media (min-width: 768px) {
       margin-left: 1rem;
     }
   }
 
   &__searchfield {
     border: 0;
-    font-size: 0.875rem;
     padding-left: 2rem;
+    font-size: 1.25rem;
+    height: 3rem;
+    width: 100%;
 
-    @include bootstrap.media-breakpoint-down(sm) {
-      font-size: 1.25rem;
-      height: 3rem;
-      width: 100%;
-    }
-
-    @include bootstrap.media-breakpoint-up(md) {
+    @media (min-width: 768px) {
+      font-size: 0.875rem;
+      height: unset;
       transition: width .35s ease-in-out;
       width: 24px !important;
 
       &:focus {
         width: 220px !important;
-      }
-    }
-  }
-
-  &__social {
-    .nav-item.nav-link {
-      padding: 0 0.5rem;
-
-      @include bootstrap.media-breakpoint-down(sm) {
-        padding: 0 0.25rem;
-        font-size: smaller;
       }
     }
   }

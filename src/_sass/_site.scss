@@ -1,5 +1,8 @@
+// Must be imported first to ensure that
+// the reset is applied before any other styles are applied.
+@use 'core/reset';
+
 @use 'core/variables' as *;
-@use 'core/colors';
 @use 'core/mixins' as *;
 
 @use 'core/base';
@@ -20,8 +23,11 @@
 @use 'dartvm';
 @use 'books';
 @use 'os-tabs';
-@use 'overwrites';
 @use 'dash';
+
+// Must be imported last to ensure that
+// the print overrides take priority over earlier defined styles.
+@use 'core/print';
 
 /* -----------------------------------------
   DOM
@@ -43,7 +49,7 @@
   }
 
   body.obsolete & {
-    border: 10px solid $alert-warning-bg;
+    border: 0.5rem solid $alert-warning-bg;
     border-top: none;
   }
 
@@ -76,6 +82,7 @@
 
 #site-content-title {
   margin-bottom: 1.5rem;
+  scroll-margin: 4rem;
 }
 
 #page-footer {
@@ -91,6 +98,10 @@
 
   .brand {
     width: 176px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.125rem;
   }
 
   .footer-section {
@@ -126,14 +137,21 @@
   }
 
   .footer-social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
     a {
-      &:not(:first-child) {
-        margin-left: 16px;
-      }
+      display: inline-flex;
+      text-align: center;
+      padding: 0.25rem;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
 
       svg {
-        height: 32px;
-        width: 32px;
+        height: 2rem;
+        width: 2rem;
       }
     }
 
@@ -191,10 +209,10 @@
   background-color: $site-color-header;
   color: $site-color-header-text;
   display: flex;
-  $mainnav-entry-spacing: 12px;
+  align-items: center;
 
   ul {
-    margin: auto 0 auto auto;
+    margin: 0 0 0 auto;
     padding: 0;
     list-style: none;
 
@@ -204,7 +222,7 @@
     align-items: center;
 
     li {
-      padding: 0 $mainnav-entry-spacing;
+      padding: 0 0.75rem;
 
       a {
         color: $site-color-header-text;
@@ -221,19 +239,21 @@
 
       &.searchfield {
         position: relative;
+
+        form {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }
 
   .brand {
-    display: block;
-    float: left;
-    width: 85px;
-    margin: 0 20px;
+    display: flex;
+    width: 5.5rem;
     overflow: hidden;
-    line-height: $site-header-height;
-    position: relative;
-    top: -1px;
+    margin-left: 1.25rem;
+    align-items: center;
   }
 }
 
@@ -295,11 +315,12 @@ main .content {
 
   .header-wrapper {
     display: flex;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 0.75rem;
     align-items: center;
 
     .heading-link {
+      border-radius: 0.125rem;
       margin-left: 0.4rem;
       font-size: 1.3rem;
       line-height: 1;
@@ -307,13 +328,14 @@ main .content {
       overflow: hidden;
       color: #4a4a4a;
       opacity: 0;
+      text-decoration: none;
 
       &:hover {
         color: $brand-primary;
       }
 
       &:focus {
-        opacity: 1
+        opacity: 1;
       }
 
       &:active {
@@ -401,16 +423,6 @@ main .content {
   height: 20px;
 }
 
-.cols3 {
-  list-style: none;
-  column-count: 3;
-  column-gap: 0;
-
-  li {
-    page-break-inside: avoid;
-  }
-}
-
 .muted {
   color: $gray;
 }
@@ -437,10 +449,6 @@ main .content {
   }
 }
 
-/* -----------------------------------------
-  Bootstrap Overwrites
- ----------------------------------------- */
-
 .container {
   position: relative;
   max-width: 100%;
@@ -450,11 +458,31 @@ main .content {
 
 .table {
   width: 100%;
-  @extend .table-striped;
+  border-spacing: 0;
 
-  // override .table-striped macro, remove top border
-  td {
-    border-top: none;
+  thead {
+    vertical-align: bottom;
+
+    th {
+      border-top: 1px solid $site-color-light-grey;
+      border-bottom: 2px solid $site-color-light-grey;
+      text-align: start;
+    }
+  }
+
+  tbody {
+    tr {
+      vertical-align: top;
+
+      &:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  td, th {
+    border: none;
+    padding: .75rem;
   }
 }
 
@@ -466,6 +494,8 @@ thead:has(th:empty) {
 
 .table-wrapper {
   overflow-x: auto;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 .alert {
@@ -474,11 +504,6 @@ thead:has(th:empty) {
   color: $site-color-body;
   margin-top: 1rem;
   padding: 1.5rem;
-
-  i.material-icons {
-    font-size: 1.25em;
-    user-select: none;
-  }
 
   .alert-header {
     display: flex;
@@ -493,21 +518,19 @@ thead:has(th:empty) {
     margin-top: 0.5rem;
   }
 
-  i.material-symbols {
+  span.material-symbols {
     font-size: 1.25em;
     user-select: none;
-  }
-
-  code {
-    background-color: transparent;
   }
 
   pre {
     background-color: #00000010;
   }
 
-  p:last-child, li:last-child, ul:last-child, ol:last-child {
-    margin-bottom: 0;
+  p, li, ul, ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &.alert-success {
@@ -573,7 +596,8 @@ thead:has(th:empty) {
 
 nav.breadcrumbs {
   align-items: center;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 ol.breadcrumb-list {
