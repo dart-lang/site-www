@@ -5,3 +5,16 @@
   row-gap: 0;
   justify-content: center;
 }
+
+.centered-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}

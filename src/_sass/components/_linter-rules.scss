@@ -32,7 +32,8 @@ body.linter-rules {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 
     &.hidden {
       display: none;
@@ -237,6 +238,10 @@ body.linter-rules {
         width: 100%;
         font-size: 1rem;
         cursor: text;
+
+        &:focus {
+          outline: none;
+        }
 
         &::-webkit-search-cancel-button {
           display: none;

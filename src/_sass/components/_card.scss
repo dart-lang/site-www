@@ -14,7 +14,6 @@
 
     border-radius: 0.5rem;
     padding: 0.75rem;
-    margin: 0;
     gap: 0.5rem;
     background-color: var(--card-container-color, rgb(242, 245, 255));
     height: auto;
@@ -35,12 +34,6 @@
       justify-content: space-between;
       align-items: center;
 
-      // TODO(parlough): Remove these resets after bootstrap removed.
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-
       .card-title {
         font-size: 1.25rem;
         font-weight: 500;
@@ -59,6 +52,9 @@
       color: var(--card-text-color, $site-color-body);
 
       p {
+        margin: 0;
+        margin-block-end: 0.75rem;
+
         code {
           font-size: 0.95em;
           background-color: rgba(0, 0, 0, .05);
@@ -76,12 +72,10 @@
   }
 
   a.card {
+    text-decoration: none;
+
     .card-header {
       --card-title-color: #1967D2;
-
-      .card-title {
-        font-weight: 400;
-      }
     }
 
     &:hover {
