@@ -82,7 +82,7 @@
 
 #site-content-title {
   margin-bottom: 1.5rem;
-  scroll-margin: 4rem;
+  scroll-margin: 2rem;
 }
 
 #page-footer {
@@ -301,7 +301,7 @@ main .content {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: $site-header-height + 1rem;
+      scroll-margin: 1.5rem;
     }
 
     // Let the wrapper set the bottom margin.
@@ -310,7 +310,7 @@ main .content {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: $site-header-height + 1rem;
+    scroll-margin: 1.5rem;
   }
 
   .header-wrapper {
