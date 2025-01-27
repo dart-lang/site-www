@@ -3,9 +3,21 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
+
+/// The root path of the website repository.
+String get repositoryRoot {
+  final packageConfigPath = path.fromUri(Isolate.packageConfigSync);
+  final maybeRoot = path.dirname(path.dirname(packageConfigPath));
+  if (!File(path.join(maybeRoot, 'dash_site')).existsSync()) {
+    throw StateError('Trying calling dash_site from the root directory.');
+  }
+
+  return maybeRoot;
+}
 
 final bool _runningInCi = Platform.environment['CI'] == 'true';
 
