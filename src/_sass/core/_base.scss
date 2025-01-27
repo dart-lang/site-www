@@ -10,7 +10,9 @@ body {
   font-family: $site-font-family-base;
   font-size: $font-size-base;
   font-weight: 400;
+  line-height: 1.5;
   color: $site-color-body;
+
   height: 100vh;
 }
 
@@ -21,6 +23,7 @@ section {
 h1, h2, h3, h4, h5, h6 {
   font-family: $site-font-family-gsans;
   font-weight: 400;
+  line-height: 1.2;
   color: $site-color-body;
 }
 
@@ -62,11 +65,48 @@ a, button {
   color: $brand-primary;
   font-family: $site-font-family-base;
   font-weight: 400;
+  cursor: pointer;
+  background: none;
 
   &:visited {
     color: $brand-primary;
   }
 
+  &.filled-button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    width: fit-content;
+    background-color: $site-color-primary;
+    color: $site-color-white;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-family: $site-font-family-alt;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    outline-offset: 2px;
+
+    &:hover {
+      @include interaction-style(4%);
+      color: $site-color-white;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: $site-color-white;
+      outline: 2px solid var(--focus-outline-color);
+    }
+
+    &:active {
+      @include interaction-style(8%);
+      color: $site-color-white;
+    }
+  }
+}
+
+button {
   &:hover, &:focus, &:active {
     color: $flutter-color-blue-700;
     outline: none;
@@ -78,9 +118,30 @@ a, button {
   }
 }
 
+a {
+  border-radius: 0.2rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $flutter-color-blue-600;
+  }
+}
+
+ul {
+  padding-inline-start: 2rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+dd {
+  margin-bottom: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 blockquote {
@@ -91,11 +152,13 @@ blockquote {
 }
 
 details {
-  margin-bottom: 0.75rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
   > summary {
     font-weight: 500;
     user-select: none;
+    cursor: pointer;
 
     &:hover {
       color: $brand-primary;
@@ -113,5 +176,11 @@ details {
   > :not(:first-child) {
     margin-left: 0.75rem;
     margin-right: 0.75rem;
+  }
+}
+
+figure {
+  figcaption {
+    text-align: center;
   }
 }

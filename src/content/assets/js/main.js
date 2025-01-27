@@ -8,31 +8,31 @@ function handleSearchShortcut(event) {
   }
 
   let parentElement;
-  // If the sidebar is open, focus its search field
+  // If the sidebar is open, focus its search field.
   if (document.body.classList.contains('open_menu')) {
     parentElement = document.getElementById('sidenav');
   } else {
     const bodySearch = document.getElementById('in-content-search');
-    // If the page has a search field in the body, focus that
+    // If the page has a search field in the body, focus that.
     if (bodySearch !== null) {
       parentElement = bodySearch;
     } else {
-      // Otherwise, fallback to the top navbar search field
+      // Otherwise, fallback to the top navbar search field.
       parentElement = document.getElementById('cse-search-box');
     }
   }
 
-  // If we found a search field, focus that
+  // If we found any search field, focus it.
   if (parentElement !== null) {
     parentElement
         .querySelector('.search-field')
         .focus();
-    // Prevent the initial slash from showing up in the search field
+    // Prevent the initial slash from showing up in the search field.
     event.preventDefault();
   }
 }
 
-function scrollSidenavIntoView() {
+function setupSidenav() {
   const sidenav = document.getElementById('sidenav');
   if (!sidenav) {
     return;
@@ -56,56 +56,8 @@ function switchBanner(galleryName) {
     selector.classList.remove('highlight');
   });
   this.classList.add('highlight');
-  
+
   imgSelector.setAttribute('src', this.dataset.banner);
-}
-
-function initVideoModal() {
-    let videoModalObject = $('[data-video-modal]');
-    var player;
-
-    function onPlayerReady() {
-        videoModalObject.on('shown.bs.modal', function (event) {
-            if (player) {
-                let videoId = event.relatedTarget.dataset.video;
-                player.loadVideoById(videoId);
-                player.playVideo();
-            }
-        });
-
-        videoModalObject.on('hide.bs.modal', function (event) {
-            if (player) {
-                player.stopVideo();
-            }
-        });
-    }
-
-    if (videoModalObject.length > 0) {
-        // there is a video modal in the DOM, load the YouTube API
-        let tag = document.createElement('script');
-        tag.src = 'https://youtube.com/iframe_api';
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player('video-player', {
-                videoId: '5F-6n_2XWR8',
-                events: {
-                    "onReady": onPlayerReady,
-                },
-            });
-        };
-    }
-}
-
-function adjustToc() {
-  // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#site-toc--side');
-  $(tocWrapper).find('header').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  })
-
-  $('#site-below-header').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 function createGallery() {
@@ -125,9 +77,6 @@ function createGallery() {
   }
 }
 
-/**
- * Activate the cookie notice footer
- */
 function initCookieNotice() {
   const notice = document.getElementById('cookie-notice');
   const agreeBtn = document.getElementById('cookie-consent');
@@ -192,51 +141,49 @@ function setupCopyButtons() {
   });
 }
 
-$(function() {
+function _setupSite() {
+  setupSidenav();
   setupOsTabs();
   initCookieNotice();
 
-  // Sidenav
-  $('#sidenav i').on('click', function (e) {
-    e.stopPropagation();
-    $(this).parent('li').toggleClass('active');
+  // Set up collapse and expand for sidenav buttons.
+  const toggles = document.querySelectorAll('.nav-link.collapsible');
+  toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', (e) => {
+      toggle.classList.toggle('collapsed');
+      e.preventDefault();
+    });
   });
 
-  adjustToc();
-
-  // open - close mobile navigation
-  $('#menu-toggle').on('click', function (e) {
+  document.getElementById('menu-toggle')?.addEventListener('click', function (e) {
     e.stopPropagation();
-    $(document.body).toggleClass('open_menu');
+    document.body.classList.toggle('open_menu');
   });
 
-  // Remove open_menu when switched back to normal sidenav
-  $(window).smartresize((e) => {
-    if (document.body.clientWidth > 1025) {
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 1025) {
       document.body.classList.remove('open_menu');
     }
   });
 
-  var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
-  for (var i = 0; i < topLevelMenuTogglers.length; i++) {
-    $(topLevelMenuTogglers[i]).on('click', function (e) {
-      if ($(document.body).hasClass('open_menu')) {
+  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  topLevelMenuTogglers.forEach(function (togglerSelector) {
+    const toggler = document.querySelector(togglerSelector);
+    toggler?.addEventListener('click', function (e) {
+      const bodyClassList = document.body.classList;
+      if (bodyClassList.contains('open_menu')) {
         e.preventDefault();
-        $(document.body).removeClass("open_menu");
+        bodyClassList.remove('open_menu');
       }
     });
-  }
-
-  scrollSidenavIntoView();
-
-  // Collapsible inline TOC expand/collapse
-  $(".site-toc--inline__toggle").on('click', function () {
-    var root = $("#site-toc--inline");
-    root.toggleClass('toc-collapsed');
   });
 
-  // Initialize the video on the homepage, if it exists.
-  initVideoModal();
+  // Collapsible inline TOC expand/collapse.
+  document.querySelectorAll('.site-toc--inline__toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', (e) => {
+        document.getElementById('site-toc--inline')?.classList.toggle('toc-collapsed');
+      });
+  });
 
   document.addEventListener('keydown', handleSearchShortcut);
 
@@ -250,4 +197,11 @@ $(function() {
   );
 
   setupCopyButtons();
-});
+}
+
+// Run setup if DOM is loaded, otherwise do it after it has loaded.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _setupSite);
+} else {
+  _setupSite();
+}

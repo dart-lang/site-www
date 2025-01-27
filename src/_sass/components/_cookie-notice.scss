@@ -2,10 +2,9 @@
 
 #cookie-notice {
   background-color: white;
-  padding: 2.5rem 0 !important;
+  padding: 2rem;
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -21,9 +20,8 @@
     }
   }
 
-  a.btn {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  button.filled-button {
+    font-size: 1rem;
   }
 
   &.show {
@@ -42,19 +40,18 @@
     align-items: center;
     max-width: 1080px;
     min-width: 0 !important;
-    margin: 0 auto;
     width: auto;
+    gap: 1.5rem;
 
     p {
       font-size: 1rem;
       line-height: 1.6;
-      margin-right: 2rem;
-      margin-bottom: 0;
+      margin: 0;
     }
   }
 }
 
-body.homepage, .error {
+body.homepage, body.error {
   #cookie-notice {
     background-color: $site-color-dark-background;
 

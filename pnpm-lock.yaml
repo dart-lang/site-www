@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      bootstrap-scss:
-        specifier: ^4.6.2
-        version: 4.6.2
     devDependencies:
       '@11ty/eleventy':
         specifier: ^3.0.0
@@ -22,8 +18,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.2
       '@types/node':
-        specifier: ^22.10.9
-        version: 22.10.9
+        specifier: ^22.10.10
+        version: 22.10.10
       firebase-tools:
         specifier: ^13.29.2
         version: 13.29.2(encoding@0.1.13)
@@ -553,8 +549,8 @@ packages:
   '@types/mdurl@2.0.0':
     resolution: {integrity: sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==}
 
-  '@types/node@22.10.9':
-    resolution: {integrity: sha512-Ir6hwgsKyNESl/gLOcEz3krR4CBGgliDqBQ2ma4wIhEx0w+xnoeTq3tdrNw15kU3SxogDjOgv9sqdtLW8mIHaw==}
+  '@types/node@22.10.10':
+    resolution: {integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==}
 
   '@types/request@2.48.12':
     resolution: {integrity: sha512-G3sY+NpsA9jnwm0ixhAFQSJ3Q9JkpLZpJbI3GMv0mIAT0y3mRabYeINzal5WOChIiaTEGQYlHOKgkaM9EisWHw==}
@@ -770,9 +766,6 @@ packages:
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
-
-  bootstrap-scss@4.6.2:
-    resolution: {integrity: sha512-emVpCI/S9aeFV1/qqKrztPZLiyow4XfRWLxOAu2SR/67Vau0y6IHNRukQrTx8+OUQ+aVPDhql40eDHSxGoAceA==}
 
   boxen@5.1.2:
     resolution: {integrity: sha512-9gYgQKXx+1nP8mP7CzFyaUARhg7D3n1dF/FnErWmu9l6JvGpNUN278h0aSb+QjoiKSWG+iZ3uHrcqk0qrY9RQQ==}
@@ -3723,14 +3716,14 @@ snapshots:
 
   '@types/mdurl@2.0.0': {}
 
-  '@types/node@22.10.9':
+  '@types/node@22.10.10':
     dependencies:
       undici-types: 6.20.0
 
   '@types/request@2.48.12':
     dependencies:
       '@types/caseless': 0.12.5
-      '@types/node': 22.10.9
+      '@types/node': 22.10.10
       '@types/tough-cookie': 4.0.5
       form-data: 2.5.2
 
@@ -3940,8 +3933,6 @@ snapshots:
       - supports-color
 
   boolbase@1.0.0: {}
-
-  bootstrap-scss@4.6.2: {}
 
   boxen@5.1.2:
     dependencies:
@@ -5949,7 +5940,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 22.10.9
+      '@types/node': 22.10.10
       long: 5.2.4
 
   proxy-addr@2.0.7:

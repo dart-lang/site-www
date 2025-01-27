@@ -18,14 +18,11 @@
     "pnpm": ">=9.12.3"
   },
   "packageManager": "pnpm@9.15.2",
-  "dependencies": {
-    "bootstrap-scss": "^4.6.2"
-  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.10.9",
+    "@types/node": "^22.10.10",
     "firebase-tools": "^13.29.2",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.3",

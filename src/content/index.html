@@ -6,19 +6,14 @@ description: >-
   high-quality apps on any platform.
 ---
 <!-- Hero animation -->
-<div class="d-none d-sm-none d-md-block">
-    <section class="dash-header">
-        <video autoplay loop muted playsinline>
-            <source src="assets/dash/video/hotreload.webm"
-                    type='video/webm;codecs="vp8, vorbis"' />
-            <source src="assets/dash/video/hotreload.mp4"
-                    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-            <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI" />
-        </video>
-    </section>
-</div>
-
-<section class="dash-header d-sm-block d-md-none">
+<section class="dash-header">
+    <video autoplay loop muted playsinline>
+        <source src="assets/dash/video/hotreload.webm"
+                type='video/webm;codecs="vp8, vorbis"' />
+        <source src="assets/dash/video/hotreload.mp4"
+                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+        <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI" />
+    </video>
     <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI to life"/>
 </section>
 
@@ -28,9 +23,9 @@ description: >-
         An approachable, portable, and productive language for high-quality apps on any platform
     </div>
     <div class="callout-button">
-        <button class="btn btn-link btn-icon" type="button" data-toggle="modal" data-target="#videoModal" data-video="5F-6n_2XWR8">
-            <i class="material-symbols">play_circle</i> Watch video
-        </button>
+        <a href="https://www.youtube.com/watch?v=5F-6n_2XWR8" target="_blank">
+            <span class="material-symbols">play_circle</span><span>Watch video</span>
+        </a>
     </div>
 
     <img class="made-by" src="assets/dash/2x/supported-by-google.png" alt="Supported by Google"/>
@@ -46,300 +41,115 @@ description: >-
 
 <!-- Dart pillars -->
 <section class="dash-dart-features">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-sm-12">
-            <div class="feature">
-                <div class="feature-icon"><img src="assets/dash/2x/multiplatform-performance-light-op1.png" alt="Multiplatform performance"/></div>
-                <div class="feature-title">Approachable<br></div>
-                <div class="feature-desc">Develop with a consistent, concise, and strongly typed
-                programming language that offers modern features like null safety and pattern matching.
-                </div>
-            </div>
+    <div class="feature">
+        <div class="feature-icon"><img src="assets/dash/2x/multiplatform-performance-light-op1.png" alt="Multiplatform performance"/></div>
+        <div class="feature-title">Approachable<br></div>
+        <div class="feature-desc">Develop with a consistent, concise, and strongly typed
+        programming language that offers modern features like null safety and pattern matching.
         </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="feature">
-                <div class="feature-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimised"/></div>
-                <div class="feature-title">Productive</br>development</div>
-                <div class="feature-desc">Make changes iteratively: use hot
-                reload to see the result instantly in your running app.
-                </div>
-            </div>
+    </div>
+    <div class="feature">
+        <div class="feature-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimised"/></div>
+        <div class="feature-title">Productive</br>development</div>
+        <div class="feature-desc">Make changes iteratively: use hot
+        reload to see the result instantly in your running app.
         </div>
-        <div class="col-md-4 col-sm-12">
-                <div class="feature">
-                    <div class="feature-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Productive development"/></div>
-                    <div class="feature-title">Portable and fast<br/>on all platforms</div>
-                    <div class="feature-desc">Compile to ARM, x64, and RISC-V machine
-                    code for mobile, desktop, and backend. Or, compile to JavaScript & WebAssembly
-                    for the web.</div>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="feature">
+        <div class="feature-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Productive development"/></div>
+        <div class="feature-title">Portable and fast<br/>on all platforms</div>
+        <div class="feature-desc">Compile to ARM, x64, and RISC-V machine
+        code for mobile, desktop, and backend. Or, compile to JavaScript & WebAssembly
+        for the web.</div>
     </div>
 </section>
 
-<!-- Dart pillar details, narrow design -->
-<div class="dart-dash-details container-fluid d-sm-block d-md-none" tabindex="-1">
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="gallerySix" src="assets/dash/svg/1-1-async-await.svg" alt="Async await functions"/>
+<!-- Dart pillar details -->
+<div class="dart-dash-details">
+    <section class="dash-row">
+        <div class="content-image">
+            <img class="galleryOne" src="assets/dash/svg/1-1-async-await.svg" alt="Async await functions"/>
         </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+        <div class="content-info">
             <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/multiplatform-performance-light-op1.png" alt="Multiplatform performance"/>
-                </div>
-                <div class="content-feature">Approachable</div>
-                <div class="content-desc" id="gallerySix">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/1-1-async-await.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Mature and complete <a href="/libraries/async/async-await">async-await</a>
-                                    for user interfaces containing event-driven code, paired with
-                                    <a href="/language/concurrency">isolate-based concurrency</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/1-2-language-optimized.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Write safe and concise code using features like <a href="/null-safety">sound null safety</a>,
-                                    <a href="/language/collections#control-flow-operators">collection if</a>,
-                                    and <a href="/language/patterns">pattern matching</a>.
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/1-3-familiar-syntax.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    A consistent programming language, with an easy to learn and
-                                    <a href="/language">familiar syntax</a>.
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryFive" src="assets/dash/svg/2-1-hot-reload-iterative-changes.svg" alt="Hot reload changes"/>
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/client-optimized-light-op1.png" alt="Productive development"/>
-                </div>
-                <div class="content-feature">Productive Development</div>
-                <div class="content-desc" id="galleryFive">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/2-1-hot-reload-iterative-changes.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Make changes to your source code iteratively, using
-                                    <a href="https://docs.flutter.dev/tools/hot-reload">hot
-                                        reload</a>
-                                    to instantly see the effect in the running app.
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/2-2-flexible-type.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Write code using a flexible type system with rich
-                                    static analysis and powerful, <a href="/tools/analysis">configurable tooling</a>.
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/2-3-runtime-insight.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Do <a href="https://docs.flutter.dev/tools/devtools/performance">profiling</a>,
-                                    <a href="https://docs.flutter.dev/tools/devtools/logging">logging</a>,
-                                    and <a href="https://docs.flutter.dev/tools/devtools/debugger">debugging</a>
-                                    with your code editor of choice.
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryFour dash-align-left" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimized"/>
-                </div>
-                <div class="content-feature">Fast on all platforms</div>
-                <div class="content-desc" id="galleryFour">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/3-1-aot-compile.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    <a href="/overview#native-platform">AOT-compile</a> apps to native
-                                    machine code for <a href="https://github.com/timsneath/time">instant startup</a>.
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/3-2-target-web.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Target the web with complete, mature, fast
-                                    <a href="/overview#web-platform">compilers for JavaScript & WebAssembly</a>.
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/3-3-backend-code.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Run <a href="/tutorials/server/httpserver">backend code</a>
-                                    supporting your app, written using a single programming language.
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- Dart pillar details, wide design -->
-<div class="dart-dash-details container-fluid d-none d-sm-none d-md-block">
-    <section class="row dash-row">
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-right">
                 <div class="content-icon"><img src="assets/dash/2x/multiplatform-performance-light-op1.png" alt="Multiplatform performance"/> </div>
                 <div class="content-feature">Approachable</div>
                 <div class="content-desc" id="galleryOne">
                     <ul class="selector">
                         <li class="highlight" tabindex="0" data-banner="assets/dash/svg/1-1-async-await.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Mature and complete <a href="/libraries/async/async-await">async-await</a>
-                                    for user interfaces containing event-driven code, paired with
-                                    <a href="/language/concurrency">isolate-based concurrency</a>.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Mature and complete <a href="/libraries/async/async-await">async-await</a>
+                                for user interfaces containing event-driven code, paired with
+                                <a href="/language/concurrency">isolate-based concurrency</a>.
                             </div>
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/1-2-language-optimized.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Write safe and concise code using features like <a href="/null-safety">sound null safety</a>,
-                                    <a href="/language/collections#control-flow-operators">collection if</a>,
-                                    and <a href="/language/patterns">pattern matching</a>.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Write safe and concise code using features like <a href="/null-safety">sound null safety</a>,
+                                <a href="/language/collections#control-flow-operators">collection if</a>,
+                                and <a href="/language/patterns">pattern matching</a>.
                             </div>
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/1-3-familiar-syntax.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    A consistent programming language, with an easy to learn and
-                                    <a href="/language">familiar syntax</a>.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                A consistent programming language, with an easy to learn and
+                                <a href="/language">familiar syntax</a>.
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryOne dash-align-left" src="assets/dash/svg/1-1-async-await.svg" alt="Async await functions "/>
-        </div>
     </section>
 
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryTwo dash-align-right" src="assets/dash/svg/2-1-hot-reload-iterative-changes.svg" alt="Hot reload your changes"/>
+    <section class="dash-row">
+        <div class="content-image">
+            <img class="galleryTwo" src="assets/dash/svg/2-1-hot-reload-iterative-changes.svg" alt="Hot reload your changes"/>
         </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-left">
+        <div class="content-info">
+            <div class="content-container">
                 <div class="content-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Productive development"/></div>
                 <div class="content-feature">Productive development</div>
                 <div class="content-desc" id="galleryTwo">
                     <ul class="selector">
                         <li class="highlight" tabindex="0" data-banner="assets/dash/svg/2-1-hot-reload-iterative-changes.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Make changes to your source code iteratively, using
-                                    <a href="https://docs.flutter.dev/tools/hot-reload">hot reload</a>
-                                    to instantly see the effect in the running app.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Make changes to your source code iteratively, using
+                                <a href="https://docs.flutter.dev/tools/hot-reload">hot reload</a>
+                                to instantly see the effect in the running app.
                             </div>
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/2-2-flexible-type.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Write code using a flexible type system with rich
-                                    static analysis and powerful, <a href="/tools/analysis">configurable tooling</a>.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Write code using a flexible type system with rich
+                                static analysis and powerful, <a href="/tools/analysis">configurable tooling</a>.
                             </div>
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/2-3-runtime-insight.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Do <a href="https://docs.flutter.dev/tools/devtools/performance">profiling</a>,
-                                    <a href="https://docs.flutter.dev/tools/devtools/logging">logging</a>,
-                                    and <a href="https://docs.flutter.dev/tools/devtools/debugger">debugging</a>
-                                    with your code editor of choice.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
                             </div>
-
+                            <div class="bullet-text">
+                                Do <a href="https://docs.flutter.dev/tools/devtools/performance">profiling</a>,
+                                <a href="https://docs.flutter.dev/tools/devtools/logging">logging</a>,
+                                and <a href="https://docs.flutter.dev/tools/devtools/debugger">debugging</a>
+                                with your code editor of choice.
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -347,59 +157,51 @@ description: >-
         </div>
     </section>
 
-    <section class="row dash-row">
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-right">
-                <div class="content-icon"><img src="assets/dash/2x/multiplatform-performance-light-op1.png" alt="Multiplatform performance"/></div>
+    <section class="dash-row">
+        <div class="content-image">
+            <img class="galleryThree" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
+        </div>
+        <div class="content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Multiplatform performance"/></div>
                 <div class="content-feature">Fast on all platforms</div>
                 <div class="content-desc" id="galleryThree">
                     <ul class="selector">
                         <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1-aot-compile.svg">
-                            <div>
-                                <div class="bullet-container">
+                                <div class="bullet-container" aria-hidden="true">
                                     <div class="animated-bullet"></div>
                                 </div>
                                 <div class="bullet-text">
                                     <a href="/overview#native-platform">AOT-compile</a> apps to native
                                     machine code for <a href="https://github.com/timsneath/time">instant startup</a>.
                                 </div>
-                            </div>
-
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/3-2-target-web.svg">
-                            <div>
-                                <div class="bullet-container">
+                                <div class="bullet-container" aria-hidden="true">
                                     <div class="animated-bullet"></div>
                                 </div>
                                 <div class="bullet-text">
                                     Target the web with complete, mature, fast
                                     <a href="/overview#web-platform">compilers for JavaScript and WebAssembly</a>.
                                 </div>
-                            </div>
-
                         </li>
                         <li tabindex="0" data-banner="assets/dash/svg/3-3-backend-code.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Run <a href="/tutorials/server/httpserver">backend code</a>
-                                    supporting your app, written using a single programming language.
-                                </div>
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Run <a href="/tutorials/server/httpserver">backend code</a>
+                                supporting your app, written using a single programming language.
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryThree dash-align-left" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
-        </div>
     </section>
-    <section class="row dash-dartpad-row">
+    <section class="dash-dartpad-row">
         <div class="dash-dartpad">
-            <a id="try-dart" class="frontanchor"></a>
+            <a id="try-dart" class="frontanchor" aria-hidden="true"></a>
             <h2>Try Dart in your browser</h2>
             <div id="dartpad-host">
                 <iframe src="https://dartpad.dev?theme=dark" loading="lazy"></iframe>
@@ -409,18 +211,4 @@ description: >-
                 or <a href="/tutorials/server/get-started">build a command-line app</a>.</h3>
         </div>
     </section>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" data-video-modal id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="embedded-video-wrapper">
-                    <div id="video-player"></div>
-<!--                    <iframe id="video-player-iframe" class="embedded-video-wrapper__frame" width="auto" height="auto" src="https://youtube.com/embed/5F-6n_2XWR8?cc_lang_pref=en&cc_load_policy=1&enablejsapi=1" loading="lazy" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

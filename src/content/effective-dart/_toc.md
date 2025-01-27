@@ -7,8 +7,8 @@ the project:
 ./dash_site effective-dart
 ```
 {% endcomment %}
-    
-<div class='effective_dart--summary_column'>
+
+<div class="side-by-side"><div>
 
 ### Style
 
@@ -42,7 +42,7 @@ the project:
 * <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-statements'>DO use curly braces for all flow control statements.</a>
 
 </div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Documentation
@@ -85,8 +85,7 @@ the project:
 * <a href='/effective-dart/documentation#prefer-using-this-instead-of-the-to-refer-to-a-members-instance'>PREFER using &quot;this&quot; instead of &quot;the&quot; to refer to a member's instance.</a>
 
 </div>
-<div style='clear:both'></div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Usage
@@ -166,7 +165,7 @@ the project:
 * <a href='/effective-dart/usage#do-test-for-futuret-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future&lt;T&gt;</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
 
 </div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Design
@@ -258,4 +257,4 @@ the project:
 * <a href='/effective-dart/design#dont-make-the-parameter-to-nullable'>DON'T make the parameter to <code>==</code> nullable.</a>
 
 </div>
-<div style='clear:both'></div>
+</div>
