@@ -9,7 +9,7 @@ underscore_breaker_titles: true
 eleventyComputed:
   permalink: "/tools/linter-rules/{{lint.name}}.html"
   title: "{{ lint.name }}"
-  description: "Learn more about the {{ lint.name }} linter rule."
+  description: "Learn about the {{ lint.name }} linter rule."
 skipFreshness: true
 ---
 
@@ -84,4 +84,13 @@ add `{{lint.name}}` under **linter > rules** in your
 linter:
   rules:
     - {{lint.name}}
+```
+
+If you're instead using the YAML map syntax to configure linter rules,
+add `{{lint.name}}: true` under **linter > rules**:
+
+```yaml title="analysis_options.yaml"
+linter:
+  rules:
+    {{lint.name}}: true
 ```
