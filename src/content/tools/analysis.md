@@ -583,6 +583,29 @@ analyzer:
     dead_code: info
 ```
 
+## Configuring formatter page width
+
+When you run [`dart format`][], the formatter defaults to
+80 character line length or shorter. 
+If you'd like to configure the line length for your project,
+you can add a top-level `formatter` section to the `analysis_options.yaml` file,
+like so:
+
+```yaml
+formatter:
+  page_width: 123
+```
+
+With the analysis options file typically at the root,
+the configured line length will apply to everything in the package.
+
+You can also configure individual files' line length,
+overriding the analysis options file,
+with a marker comment at the top of the file before any other code:
+
+```dart
+// dart format width=123
+```
 
 ## Resources
 
@@ -603,3 +626,4 @@ Use the following resources to learn more about static analysis in Dart:
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
 [Effective Dart]: /effective-dart
+[`dart format`]: /tools/dart-format
