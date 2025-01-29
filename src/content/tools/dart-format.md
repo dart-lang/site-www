@@ -68,11 +68,13 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 ## What changes?
 
-`dart format` removes whitespace,
-wraps every line to 80 characters long or shorter,
-adds trailing commas to any argument or parameter list
-that splits across multiple lines and removes them from ones that don't, 
-and might move comments before or after a comma. 
+`dart format` makes the following formatting changes:
+
+* Removes whitespace.
+* Wraps every line to 80 characters long or shorter.
+* Adds trailing commas to any argument or parameter list.
+that splits across multiple lines, and removes them from ones that don't.
+* Might move comments before or after a comma.
 
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
