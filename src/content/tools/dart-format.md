@@ -66,9 +66,10 @@ so they can trigger another action in response to the exit code.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## Whitespace and commas
+## What changes?
 
 `dart format` removes whitespace,
+wraps every line to 80 characters long or shorter,
 adds trailing commas to any argument or parameter list
 that splits across multiple lines and removes them from ones that don't, 
 and may move comments before or after a comma. 
