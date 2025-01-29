@@ -591,7 +591,7 @@ If you'd like to configure the line length for your project,
 you can add a top-level `formatter` section to the `analysis_options.yaml` file,
 like so:
 
-```yaml title="analysis_options.yaml`
+```yaml title="analysis_options.yaml"
 formatter:
   page_width: 123
 ```
