@@ -84,6 +84,30 @@ consistent code than just whitespace, though.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
+### Configuring formatter page width
+
+When you run [`dart format`][], the formatter defaults to
+80 character line length or shorter. 
+If you'd like to configure the line length for your project,
+you can add a top-level `formatter` section to the
+[`analysis_options.yaml`][] file, like so:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  page_width: 123
+```
+
+With the analysis options file typically at the root,
+the configured line length will apply to everything in the package.
+
+You can also configure individual files' line length,
+overriding the analysis options file,
+with a marker comment at the top of the file before any other code:
+
+```dart
+// dart format width=123
+```
+
 ## Learn more
 
 To learn about additional command-line options,
@@ -97,3 +121,5 @@ $ dart help format
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
+[`analysis_options.yaml`]: /tools/analysis
+[`dart format`]: /tools/dart-format
