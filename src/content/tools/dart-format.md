@@ -19,8 +19,8 @@ provide a list of paths to the desired files or directories.
 ### Specify one path
 
 Provide the path to one file or directory.
-If you specify a directory, `dart format` affects only the files in the
-immediate directory; it doesn't recurse through subdirectories.
+If you pass a directory path,
+`dart format` recurses into its subdirectories as well.
 
 **Example:** To format all the Dart files in or under the current directory:
 
@@ -66,21 +66,16 @@ so they can trigger another action in response to the exit code.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## Use trailing commas
+## What changes?
 
-Use optional trailing commas for better automatic formatting.
-Add a trailing comma at the end of parameter lists in functions, methods,
-and constructors.
-This helps the formatter insert the appropriate amount of line breaks for
-Dart-style code.
+`dart format` makes the following formatting changes:
 
-## Affects whitespace only
+* Removes whitespace.
+* Wraps every line to 80 characters long or shorter.
+* Adds trailing commas to any argument or parameter list.
+that splits across multiple lines, and removes them from ones that don't.
+* Might move comments before or after a comma.
 
-To avoid making changes that might be unsafe,
-`dart format` only affects whitespace.
-
-There's a lot more to writing readable and
-consistent code than just whitespace, though.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
@@ -118,8 +113,11 @@ use the `dart help` command or see the documentation for the
 $ dart help format
 ```
 
+Check out the [formatter FAQ][] for more context behind formatting decisions.
+
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
 [`analysis_options.yaml`]: /tools/analysis
 [`dart format`]: /tools/dart-format
+[formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
