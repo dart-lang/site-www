@@ -6,5 +6,8 @@ resolution: workspace
 environment:
   sdk: ^3.6.0
 
+dependencies:
+  web: ^1.1.0
+
 dev_dependencies:
   test: ^1.25.8

@@ -285,7 +285,8 @@ import 'dart:io';
 ```
 
 :::note
-Web apps (apps that depend on `dart:html`) can't use the `dart:io` library.
+Apps that run on the [web platform](/overview#platform)
+can't use the `dart:io` library.
 :::
 
 ### stdout

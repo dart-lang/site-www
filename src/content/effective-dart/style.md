@@ -355,7 +355,7 @@ A single linter rule handles all the ordering guidelines:
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
 import 'dart:async';
-import 'dart:html';
+import 'dart:collection';
 
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';

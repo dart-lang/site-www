@@ -14,7 +14,7 @@ import 'package:examples/effective_dart/bar.dart' as js;
 
 // #docregion dart-import-first
 import 'dart:async';
-import 'dart:html';
+import 'dart:collection';
 
 // #docregion pkg-import-before-local, sorted
 import 'package:examples/effective_dart/bar/bar.dart';
