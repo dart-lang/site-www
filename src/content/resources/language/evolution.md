@@ -43,8 +43,7 @@ on the Dart language GitHub repo.
 ## Changes in each release
 
 ### Dart 3.7
-_Released 12 February 2025_
-| [Dart 3.7 announcement]()
+_Unreleased_
 
 Dart 3.7 added support for [wildcard variables][] to the language.
 A wildcard variable is a local variable or parameter named `_`.
