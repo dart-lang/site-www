@@ -81,7 +81,7 @@ check out the [Dart style guide][].
 
 ### Configuring formatter page width
 
-When you run [`dart format`][], the formatter defaults to
+When you run `dart format`, the formatter defaults to
 80 character line length or shorter. 
 If you'd like to configure the line length for your project,
 you can add a top-level `formatter` section to the
@@ -103,6 +103,11 @@ with a marker comment at the top of the file before any other code:
 // dart format width=123
 ```
 
+:::version-note
+Configurable page width requires
+a [language version][] of at least 3.7.
+:::
+
 ## Learn more
 
 To learn about additional command-line options,
@@ -119,5 +124,5 @@ Check out the [formatter FAQ][] for more context behind formatting decisions.
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
 [`analysis_options.yaml`]: /tools/analysis
-[`dart format`]: /tools/dart-format
+[language version]: /resources/language/evolution#language-versioning
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
