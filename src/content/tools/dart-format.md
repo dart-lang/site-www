@@ -72,7 +72,7 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 * Removes whitespace.
 * Wraps every line to 80 characters long or shorter.
-* Adds trailing commas to any argument or parameter list.
+* Adds trailing commas to any argument or parameter list
 that splits across multiple lines, and removes them from ones that don't.
 * Might move comments before or after a comma.
 
