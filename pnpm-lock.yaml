@@ -21,8 +21,8 @@ importers:
         specifier: ^22.12.0
         version: 22.12.0
       firebase-tools:
-        specifier: ^13.29.2
-        version: 13.29.2(encoding@0.1.13)
+        specifier: ^13.29.3
+        version: 13.29.3(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.3
         version: 2.0.3
@@ -281,8 +281,8 @@ packages:
     resolution: {integrity: sha512-Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==}
     engines: {node: '>=14'}
 
-  '@google-cloud/pubsub@4.9.0':
-    resolution: {integrity: sha512-VLGRwWwjEnyC+NVEiScCRGfVBJzAw9fT5IM3YvC6mlEkv8llr5vcVsoDjv1EbE0P31I601RqlLXH7s6J9tqpfA==}
+  '@google-cloud/pubsub@4.10.0':
+    resolution: {integrity: sha512-HLlIA8qGr6PxAnjK4YjSi2swqEiXjGAC2Tj9GHMNYFtL4uubTIJLHv4CtbJ/Gzem5Cb1HRjuubt/H0oTuRLV0g==}
     engines: {node: '>=14.0.0'}
 
   '@googleapis/sqladmin@24.0.0':
@@ -353,8 +353,8 @@ packages:
     resolution: {integrity: sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==}
     engines: {node: '>=8.0.0'}
 
-  '@opentelemetry/semantic-conventions@1.26.0':
-    resolution: {integrity: sha512-U9PJlOswJPSgQVPI+XEuNLElyFWkb0hAiMg+DExD9V0St03X2lPHGMdxMY/LrVmoukuIpXJ12oyrOtEZ4uXFkw==}
+  '@opentelemetry/semantic-conventions@1.28.0':
+    resolution: {integrity: sha512-lp4qAiMTD4sNWW4DbKLBkfiMZ4jbAboJIGOQr5DvciMRI494OapieI9qiODpOt0XBr1LjIDy1xAGAnVs5supTA==}
     engines: {node: '>=14'}
 
   '@parcel/watcher-android-arm64@2.5.0':
@@ -1393,8 +1393,8 @@ packages:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@13.29.2:
-    resolution: {integrity: sha512-6P4PR4TcrATPI+ut0qhh7gW3GJ0HYaLC2Fr5lesAXkrdAYw7OvOGDzXaRFuORwkCS5grVQuCcJVSsVbjXKAkew==}
+  firebase-tools@13.29.3:
+    resolution: {integrity: sha512-P3d5+RjkhEmYhBP+5CGYD+Zi+eA5lLny/Ph5vGHAPUiJ7VKooiVtWf7fHw7LoXenlkCGPNaGfYVKqFz514+d7A==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
 
@@ -1449,8 +1449,8 @@ packages:
     resolution: {integrity: sha512-LDODD4TMYx7XXdpwxAVRAIAuB0bzv0s+ywFonY46k126qzQHT9ygyoa9tncmOiQmmDrik65UYsEkv3lbfqQ3yQ==}
     engines: {node: '>=14'}
 
-  gcp-metadata@6.1.0:
-    resolution: {integrity: sha512-Jh/AIwwgaxan+7ZUUmRLCjtchyDiqh4KjBJ5tW3plBZb5iL/BPcso8A5DlzeD9qlw0duCamnNdpFjxwaT0KyKg==}
+  gcp-metadata@6.1.1:
+    resolution: {integrity: sha512-a4tiq7E0/5fTjxPAaH4jpjkSv/uCaU2p5KC6HVGrvl0cDjA8iBZv4vv1gyzlmK0ZUKqwpOyQMKzZQe3lTit77A==}
     engines: {node: '>=14'}
 
   get-caller-file@2.0.5:
@@ -1494,12 +1494,16 @@ packages:
     resolution: {integrity: sha512-NBcGGFbBA9s1VzD41QXDG+3++t9Mn5t1FpLdhESY6oKY4gYTFpX4wO3sqGUa0Srjtbfj3szX0RnemmrVRUdULA==}
     engines: {node: '>=10'}
 
-  google-auth-library@9.15.0:
-    resolution: {integrity: sha512-7ccSEJFDFO7exFbO6NRyC+xH8/mZ1GZGG2xxx9iHxZWcjUjJpjWxIMw3cofAKcueZ6DATiukmmprD7yavQHOyQ==}
+  google-auth-library@9.15.1:
+    resolution: {integrity: sha512-Jb6Z0+nvECVz+2lzSMt9u98UsoakXxA2HGHMCxh+so3n90XgYWkq5dur19JAJV7ONiJY22yBTyJB1TSkvPq9Ng==}
     engines: {node: '>=14'}
 
   google-gax@4.4.1:
     resolution: {integrity: sha512-Phyp9fMfA00J3sZbJxbbB4jC55b7DBjE3F6poyL3wKMEBVKA79q6BGuHcTiM28yOzVql0NDbRL8MLLh8Iwk9Dg==}
+    engines: {node: '>=14'}
+
+  google-logging-utils@0.0.2:
+    resolution: {integrity: sha512-NEgUnEcBiP5HrPzufUkBzJOD/Sxsco3rLNo1F1TNf7ieU8ryUzBhqba8r756CjLX7rn3fHl6iLEwPYuqpoKgQQ==}
     engines: {node: '>=14'}
 
   googleapis-common@7.2.0:
@@ -1999,11 +2003,11 @@ packages:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
     hasBin: true
 
-  marked-terminal@7.2.1:
-    resolution: {integrity: sha512-rQ1MoMFXZICWNsKMiiHwP/Z+92PLKskTPXj+e7uwXmuMPkNn7iTqC+IvDekVm1MPeC9wYQeLxeFaOvudRR/XbQ==}
+  marked-terminal@7.3.0:
+    resolution: {integrity: sha512-t4rBvPsHc57uE/2nJOLmMbZCQ4tgAccAED3ngXQqW6g+TxA488JzJ+FK3lQkzBQOI1mRV/r/Kq+1ZlJ4D0owQw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      marked: '>=1 <15'
+      marked: '>=1 <16'
 
   marked@13.0.3:
     resolution: {integrity: sha512-rqRix3/TWzE9rIoFGIn8JmsVfhiuC8VIQ8IdX5TfzmeBucdY05/0UlzKaw0eVtpcN/OdVFpBk7CjKGo9iHJ/zA==}
@@ -2544,9 +2548,6 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  queue-tick@1.0.1:
-    resolution: {integrity: sha512-kJt5qhMxoszgU/62PLP1CJytzd2NKetjSRnyuj31fDd3Rlcz3fzlFdFLD1SItunPwyqEOkca6GbV612BWfaBag==}
-
   railroad-diagrams@1.0.0:
     resolution: {integrity: sha512-cz93DjNeLY0idrCNOH6PviZGRN9GJhsdm9hpn1YCS879fj4W+x5IFJhhkRZcwVgMmFF7R82UA/7Oh+R8lLZg6A==}
 
@@ -2703,6 +2704,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.7.0:
+    resolution: {integrity: sha512-DrfFnPzblFmNrIZzg5RzHegbiRWg7KMR7btwi2yjHwx06zsUbO5g613sVwEV7FTwmzJu+Io0lJe2GJ3LxqpvBQ==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   send@0.19.0:
     resolution: {integrity: sha512-dW41u5VfLXu8SJh5bwRmyYUbAoSB3c9uQh6L8h/KtsFREPWpbX1lrljJo186Jc4nmci/sGUZ9a0a0J2zgfq2hw==}
     engines: {node: '>= 0.8.0'}
@@ -2810,8 +2816,8 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
-  sql-formatter@15.4.9:
-    resolution: {integrity: sha512-5vmt2HlCAVozxsBZuXWkAki/KGawaK+b5GG5x+BtXOFVpN/8cqppblFUxHl4jxdA0cvo14lABhM+KBnrUapOlw==}
+  sql-formatter@15.4.10:
+    resolution: {integrity: sha512-zQfiuxU1F/C7TNu+880BdL+fuvJTd1Kj8R0wv48dfZ27NR3z1PWvQFkH8ai/HrIy+NyvXCaZBkJHp/EeZFXSOA==}
     hasBin: true
 
   ssri@10.0.6:
@@ -2845,8 +2851,8 @@ packages:
   stream-shift@1.0.3:
     resolution: {integrity: sha512-76ORR0DO1o1hlKwTbi/DM3EXWGf3ZJYO8cXX5RJwnul2DEg2oyoZyjLNoQM8WsvZiFKCRfC1O0J7iCvie3RZmQ==}
 
-  streamx@2.21.1:
-    resolution: {integrity: sha512-PhP9wUnFLa+91CPy3N6tiQsK+gnYyUNuk15S3YG/zjYE7RuPeCjJngqnzpC31ow0lzBHQ+QGO4cNJnd0djYUsw==}
+  streamx@2.22.0:
+    resolution: {integrity: sha512-sLh1evHOzBy/iWRiR6d1zRcLao4gGZr3C1kzNz4fopCOKJb6xD9ub8Mpi9Mr1R6id5o43S+d93fI48UC5uM9aw==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -3421,7 +3427,7 @@ snapshots:
     dependencies:
       '@googleapis/sqladmin': 24.0.0(encoding@0.1.13)
       gaxios: 6.7.1(encoding@0.1.13)
-      google-auth-library: 9.15.0(encoding@0.1.13)
+      google-auth-library: 9.15.1(encoding@0.1.13)
       p-throttle: 7.0.0
     transitivePeerDependencies:
       - encoding
@@ -3438,17 +3444,17 @@ snapshots:
 
   '@google-cloud/promisify@4.0.0': {}
 
-  '@google-cloud/pubsub@4.9.0(encoding@0.1.13)':
+  '@google-cloud/pubsub@4.10.0(encoding@0.1.13)':
     dependencies:
       '@google-cloud/paginator': 5.0.2
       '@google-cloud/precise-date': 4.0.0
       '@google-cloud/projectify': 4.0.0
       '@google-cloud/promisify': 4.0.0
       '@opentelemetry/api': 1.9.0
-      '@opentelemetry/semantic-conventions': 1.26.0
+      '@opentelemetry/semantic-conventions': 1.28.0
       arrify: 2.0.1
       extend: 3.0.2
-      google-auth-library: 9.15.0(encoding@0.1.13)
+      google-auth-library: 9.15.1(encoding@0.1.13)
       google-gax: 4.4.1(encoding@0.1.13)
       heap-js: 2.6.0
       is-stream-ended: 0.1.4
@@ -3537,12 +3543,12 @@ snapshots:
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.0
     optional: true
 
   '@opentelemetry/api@1.9.0': {}
 
-  '@opentelemetry/semantic-conventions@1.26.0': {}
+  '@opentelemetry/semantic-conventions@1.28.0': {}
 
   '@parcel/watcher-android-arm64@2.5.0':
     optional: true
@@ -4505,7 +4511,7 @@ snapshots:
       pump: 3.0.2
       qs: 6.14.0
       raw-body: 2.5.2
-      semver: 7.6.3
+      semver: 7.7.0
     transitivePeerDependencies:
       - supports-color
 
@@ -4620,11 +4626,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@13.29.2(encoding@0.1.13):
+  firebase-tools@13.29.3(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.16
       '@google-cloud/cloud-sql-connector': 1.6.0(encoding@0.1.13)
-      '@google-cloud/pubsub': 4.9.0(encoding@0.1.13)
+      '@google-cloud/pubsub': 4.10.0(encoding@0.1.13)
       abort-controller: 3.0.0
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
@@ -4651,7 +4657,7 @@ snapshots:
       fuzzy: 0.1.3
       gaxios: 6.7.1(encoding@0.1.13)
       glob: 10.4.5
-      google-auth-library: 9.15.0(encoding@0.1.13)
+      google-auth-library: 9.15.1(encoding@0.1.13)
       inquirer: 8.2.6
       inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
       js-yaml: 3.14.1
@@ -4661,7 +4667,7 @@ snapshots:
       lodash: 4.17.21
       lsofi: 1.0.0
       marked: 13.0.3
-      marked-terminal: 7.2.1(marked@13.0.3)
+      marked-terminal: 7.3.0(marked@13.0.3)
       mime: 2.6.0
       minimatch: 3.1.2
       morgan: 1.10.0
@@ -4674,8 +4680,8 @@ snapshots:
       progress: 2.0.3
       proxy-agent: 6.5.0
       retry: 0.13.1
-      semver: 7.6.3
-      sql-formatter: 15.4.9
+      semver: 7.7.0
+      sql-formatter: 15.4.10
       stream-chain: 2.2.5
       stream-json: 1.9.1
       superstatic: 9.1.0(encoding@0.1.13)
@@ -4754,9 +4760,10 @@ snapshots:
       - encoding
       - supports-color
 
-  gcp-metadata@6.1.0(encoding@0.1.13):
+  gcp-metadata@6.1.1(encoding@0.1.13):
     dependencies:
       gaxios: 6.7.1(encoding@0.1.13)
+      google-logging-utils: 0.0.2
       json-bigint: 1.0.0
     transitivePeerDependencies:
       - encoding
@@ -4821,12 +4828,12 @@ snapshots:
     dependencies:
       ini: 2.0.0
 
-  google-auth-library@9.15.0(encoding@0.1.13):
+  google-auth-library@9.15.1(encoding@0.1.13):
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
       gaxios: 6.7.1(encoding@0.1.13)
-      gcp-metadata: 6.1.0(encoding@0.1.13)
+      gcp-metadata: 6.1.1(encoding@0.1.13)
       gtoken: 7.1.0(encoding@0.1.13)
       jws: 4.0.0
     transitivePeerDependencies:
@@ -4840,7 +4847,7 @@ snapshots:
       '@types/long': 4.0.2
       abort-controller: 3.0.0
       duplexify: 4.1.3
-      google-auth-library: 9.15.0(encoding@0.1.13)
+      google-auth-library: 9.15.1(encoding@0.1.13)
       node-fetch: 2.7.0(encoding@0.1.13)
       object-hash: 3.0.0
       proto3-json-serializer: 2.0.2
@@ -4851,11 +4858,13 @@ snapshots:
       - encoding
       - supports-color
 
+  google-logging-utils@0.0.2: {}
+
   googleapis-common@7.2.0(encoding@0.1.13):
     dependencies:
       extend: 3.0.2
       gaxios: 6.7.1(encoding@0.1.13)
-      google-auth-library: 9.15.0(encoding@0.1.13)
+      google-auth-library: 9.15.1(encoding@0.1.13)
       qs: 6.14.0
       url-template: 2.0.8
       uuid: 9.0.1
@@ -5264,7 +5273,7 @@ snapshots:
       lodash.isstring: 4.0.1
       lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.6.3
+      semver: 7.7.0
 
   junk@1.0.3: {}
 
@@ -5425,7 +5434,7 @@ snapshots:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
-  marked-terminal@7.2.1(marked@13.0.3):
+  marked-terminal@7.3.0(marked@13.0.3):
     dependencies:
       ansi-escapes: 7.0.0
       ansi-regex: 6.1.0
@@ -5649,7 +5658,7 @@ snapshots:
       make-fetch-happen: 13.0.1
       nopt: 7.2.1
       proc-log: 4.2.0
-      semver: 7.6.3
+      semver: 7.7.0
       tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
@@ -5988,8 +5997,6 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  queue-tick@1.0.1: {}
-
   railroad-diagrams@1.0.0: {}
 
   randexp@0.4.6:
@@ -6161,6 +6168,8 @@ snapshots:
 
   semver@7.6.3: {}
 
+  semver@7.7.0: {}
+
   send@0.19.0:
     dependencies:
       debug: 2.6.9
@@ -6314,7 +6323,7 @@ snapshots:
 
   sprintf-js@1.1.3: {}
 
-  sql-formatter@15.4.9:
+  sql-formatter@15.4.10:
     dependencies:
       argparse: 2.0.1
       get-stdin: 8.0.0
@@ -6347,10 +6356,9 @@ snapshots:
 
   stream-shift@1.0.3: {}
 
-  streamx@2.21.1:
+  streamx@2.22.0:
     dependencies:
       fast-fifo: 1.3.2
-      queue-tick: 1.0.1
       text-decoder: 1.2.3
     optionalDependencies:
       bare-events: 2.5.4
@@ -6433,7 +6441,7 @@ snapshots:
     dependencies:
       b4a: 1.6.7
       fast-fifo: 1.3.2
-      streamx: 2.21.1
+      streamx: 2.22.0
 
   tar@6.2.1:
     dependencies:
@@ -6610,7 +6618,7 @@ snapshots:
       pupa: 2.1.1
       registry-auth-token: 5.0.3
       registry-url: 5.1.0
-      semver: 7.6.3
+      semver: 7.7.0
       semver-diff: 3.1.1
       xdg-basedir: 4.0.0
     transitivePeerDependencies:
