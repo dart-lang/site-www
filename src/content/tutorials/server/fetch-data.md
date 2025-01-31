@@ -148,10 +148,8 @@ for making composable HTTP requests,
 with optional fine-grained control.
 
 :::note
-You should avoid directly using `dart:io` or `dart:html`
-to make HTTP requests.
-Those libraries are platform-dependent
-and tied to a single implementation.
+Avoid directly using `dart:io` or `dart:html` to make HTTP requests.
+Those libraries are platform-dependent and tied to a single implementation.
 :::
 
 To add a dependency on `package:http`,

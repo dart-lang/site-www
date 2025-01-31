@@ -1,5 +1,5 @@
-name: html_library_examples
-description: dart.dev example code.
+name: deprecated_html_library_examples
+description: Deprecated dart.dev example code.
 version: 0.0.1
 
 resolution: workspace

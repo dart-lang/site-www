@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 @Tags(['browser'])
 @TestOn('browser')
 library;

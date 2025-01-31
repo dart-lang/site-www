@@ -10,6 +10,7 @@ dependencies:
   characters: ^1.3.0
   examples_util: { path: ../util }
   http: ^1.2.2
+  web: ^1.1.0
 
 dev_dependencies:
   test: ^1.25.8

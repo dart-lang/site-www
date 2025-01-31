@@ -448,24 +448,20 @@ are attempted on that null object.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-querySelector('#confirm') // Get an object.
-  ?..text = 'Confirm' // Use its members.
-  ..classes.add('important')
+document.querySelector('#confirm') // Get an object.
+  ?..textContent = 'Confirm' // Use its members.
+  ..classList.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
-
-:::version-note
-The `?..` syntax requires a [language version][] of at least 2.12.
-:::
 
 The previous code is equivalent to the following:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
+final button = document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
