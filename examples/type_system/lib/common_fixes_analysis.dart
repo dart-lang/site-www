@@ -157,7 +157,6 @@ abstract class C implements List<int> {}
 // #enddocregion compatible-generics
 
 // #docregion conflicting-generics
-// ignore: inconsistent_inheritance, conflicting_generic_interfaces,
-// ignore: duplicate_definition
+// ignore: duplicate_definition, inconsistent_inheritance, conflicting_generic_interfaces
 abstract class C implements List<int>, Iterable<num> {}
 // #enddocregion conflicting-generics
