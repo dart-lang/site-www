@@ -2798,6 +2798,19 @@
     "sinceDartSdk": "3.5"
   },
   {
+    "name": "unnecessary_async",
+    "description": "No await no async.",
+    "categories": [
+      "style"
+    ],
+    "state": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "Functions that don't do `await` don't have to be `async`.\n\nUsually such functions also don't have to return a `Future`, which allows\nan invoker to avoid `await` in its code, etc. Synchronous code in\ngeneral runs faster, and is easier to reason about.\n\n**BAD:**\n```dart\nvoid f() async {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```\n\n**GOOD:**\n```dart\nvoid f() {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```",
+    "sinceDartSdk": "3.7"
+  },
+  {
     "name": "unnecessary_await_in_return",
     "description": "Unnecessary `await` keyword in return.",
     "categories": [
@@ -2909,6 +2922,19 @@
     "fixStatus": "hasFix",
     "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily):\n\n**AVOID** wrapping fields in getters and setters just to be \"safe\".\n\nIn Java and C#, it's common to hide all fields behind getters and setters (or\nproperties in C#), even if the implementation just forwards to the field.  That\nway, if you ever need to do more work in those members, you can do it without needing\nto touch the callsites.  This is because calling a getter method is different\nthan accessing a field in Java, and accessing a property isn't binary-compatible\nwith accessing a raw field in C#.\n\nDart doesn't have this limitation.  Fields and getters/setters are completely\nindistinguishable.  You can expose a field in a class and later wrap it in a\ngetter and setter without having to touch any code that uses that field.\n\n**BAD:**\n```dart\nclass Box {\n  var _contents;\n  get contents => _contents;\n  set contents(value) {\n    _contents = value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var contents;\n}\n```",
     "sinceDartSdk": "2.0"
+  },
+  {
+    "name": "unnecessary_ignore",
+    "description": "Don't ignore a diagnostic code that is not produced.",
+    "categories": [
+      "style"
+    ],
+    "state": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "**DON'T** specify an ignore for a diagnostic that is not produced.",
+    "sinceDartSdk": "3.8"
   },
   {
     "name": "unnecessary_lambdas",
