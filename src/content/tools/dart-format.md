@@ -72,12 +72,41 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 * Removes whitespace.
 * Wraps every line to 80 characters long or shorter.
-* Adds trailing commas to any argument or parameter list.
+* Adds trailing commas to any argument or parameter list
 that splits across multiple lines, and removes them from ones that don't.
 * Might move comments before or after a comma.
 
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
+
+### Configuring formatter page width
+
+When you run `dart format`, the formatter defaults to
+80 character line length or shorter. 
+If you'd like to configure the line length for your project,
+you can add a top-level `formatter` section to the
+[`analysis_options.yaml`][] file, like so:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  page_width: 123
+```
+
+With the analysis options file typically at the root,
+the configured line length will apply to everything in the package.
+
+You can also configure individual files' line length,
+overriding the analysis options file,
+with a marker comment at the top of the file before any other code:
+
+```dart
+// dart format width=123
+```
+
+:::version-note
+Configurable page width requires
+a [language version][] of at least 3.7.
+:::
 
 ## Learn more
 
@@ -94,4 +123,6 @@ Check out the [formatter FAQ][] for more context behind formatting decisions.
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
+[`analysis_options.yaml`]: /tools/analysis
+[language version]: /resources/language/evolution#language-versioning
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ

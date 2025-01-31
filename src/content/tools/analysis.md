@@ -583,6 +583,13 @@ analyzer:
     dead_code: info
 ```
 
+## Configuring `dart format`
+
+You can configure the behavior of [`dart format`][] by adding a
+`formatter` section to the analysis options file
+specifying your preferred `page_width`.
+
+For more information, read [Configuring formatter page width][].
 
 ## Resources
 
@@ -603,3 +610,5 @@ Use the following resources to learn more about static analysis in Dart:
 [dead_code]: /tools/diagnostic-messages#dead_code
 [disable individual rules]: #disabling-individual-rules
 [Effective Dart]: /effective-dart
+[`dart format`]: /tools/dart-format
+[Configuring formatter page width]: /tools/dart-format#configuring-formatter-page-width
