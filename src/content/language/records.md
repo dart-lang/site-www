@@ -224,6 +224,56 @@ parallelization of futures of different types, which you can read about in the
 [`dart:async` documentation][].
 :::
 
+## Records as simple data structures
+
+The provided example illustrates how developers can leverage this pattern to
+define dynamic UI widgets in a type-safe manner, similar to interfaces in
+TypeScript but without the overhead of classes. This approach is particularly
+useful for scenarios where simplicity and reusability are prioritized.
+
+```dart
+typedef ButtonItem = ({
+  String label,
+  Widget? icon,
+  void Function()? onPressed,
+});
+```
+
+Here is an example about using `record` and `typedef` as structure of dynamic UI
+widgets render:
+
+```dart
+// Define list from `buttonItem` interface.
+List<ButtonItem> buttons = [
+  (
+    label: "Button I",
+    icon: const Icon(Icons.upload_file),
+    onPressed: () => print("Action -> Button I"),
+  ),
+  (
+    label: "Button II",
+    icon: const Icon(Icons.info),
+    onPressed: () => print("Action -> Button II"),
+  )
+];
+
+List<Container> widget = buttons.map(
+  (ButtonItem button) => Container(
+    margin: const EdgeInsets.all(4.0),
+    child: OutlinedButton.icon(
+      onPressed: button.onPressed,
+      icon: button.icon!,
+      label: Text(button.label),
+    ),
+  )
+)
+.toList();
+```
+
+The example demonstrates how to define a `ButtonItem` structure using records
+and `typedef`, which promotes cleaner and more maintainable code by adhering to
+the DRY (Don't Repeat Yourself) principle.
+
 [language version]: /resources/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
