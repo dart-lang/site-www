@@ -13,6 +13,8 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 * There are two kinds of streams: single subscription or broadcast.
 :::
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nQBpOIHE4eE?si=hM5ONj3PXHckEuCS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Asynchronous programming in Dart is characterized by the
 [Future][] and [Stream][] classes.
 
