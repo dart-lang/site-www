@@ -208,7 +208,6 @@
       { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 },
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
-      { "source": "/guides{,/**}", "destination": "/docs", "type": 301 },
       { "source": "/guides/environment-declarations", "destination": "/libraries/core/environment-declarations", "type": 301 },
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
       { "source": "/guides/google-apis", "destination": "/resources/google-apis", "type": 301 },
@@ -252,6 +251,7 @@
       { "source": "/guides/testing", "destination": "/tools/testing", "type": 301 },
       { "source": "/guides/whats-new", "destination": "/resources/whats-new", "type": 301 },
       { "source": "/guides/workspaces", "destination": "/tools/pub/workspaces", "type": 301 },
+      { "source": "/guides{,/**}", "destination": "/docs", "type": 301 },
       { "source": "/install", "destination": "/get-dart", "type": 301 },
       { "source": "/install/**", "destination": "/get-dart", "type": 301 },
       { "source": "/install/archive", "destination": "/get-dart/archive", "type": 301 },
