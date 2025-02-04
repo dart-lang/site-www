@@ -37,6 +37,7 @@ int _testDart({
 }) {
   final directoriesToTest = [
     path.join('tool', 'dart_site'),
+    path.join('tool', 'get-dart', 'dart_sdk_archive'),
     ...dartProjectExampleDirectories,
   ];
 
