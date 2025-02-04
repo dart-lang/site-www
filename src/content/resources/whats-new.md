@@ -1045,7 +1045,7 @@ we made the following changes to this site:
 
 [dart-tool]: /tools/dart-tool
 [diagnostics]: /tools/diagnostic-messages
-[dynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[dynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-invoke-dynamic-members
 [Effective Dart]: /effective-dart
 [evolution]: /resources/language/evolution
 [experiments]: /tools/experiment-flags#using-experiment-flags-with-ides

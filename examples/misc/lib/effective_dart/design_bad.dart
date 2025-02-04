@@ -133,9 +133,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion prefer-dynamic
+    // #docregion prefer-object-question
     mergeJson(original, changes) => ellipsis();
-    // #enddocregion prefer-dynamic
+    // #enddocregion prefer-object-question
   }
 
   // #docregion avoid-function

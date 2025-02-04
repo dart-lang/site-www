@@ -271,21 +271,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion prefer-dynamic
-    dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
-    // #enddocregion prefer-dynamic
-  }
-
-  {
-    // #docregion infer-dynamic
-    Map<String, dynamic> readJson() => ellipsis();
-
-    void printUsers() {
-      var json = readJson();
-      var users = json['users'];
-      print(users);
-    }
-    // #enddocregion infer-dynamic
+    // #docregion prefer-object-question
+    Object? mergeJson(Object? original, Object? changes) => ellipsis();
+    // #enddocregion prefer-object-question
   }
 
   // #docregion avoid-function
@@ -318,6 +306,19 @@ void miscDeclAnalyzedButNotTested() {
       throw ArgumentError('Cannot convert $arg to a bool.');
     }
     // #enddocregion object-vs-dynamic
+  };
+
+  () {
+    // #docregion cast-for-dynamic-member
+    /// Returns whether the length of [value] is exactly [length].
+    ///
+    /// The argument may be a [String], an [Iterable] or [Map], or any other
+    /// type that has a `length` field.
+    bool hasLength(Object? value, int length) {
+      var actualLength = (value as dynamic).length;
+      return length == actualLength;
+    }
+    // #enddocregion cast-for-dynamic-member
   };
 
   // #docregion future-or
