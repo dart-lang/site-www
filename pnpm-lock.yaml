@@ -21,8 +21,8 @@ importers:
         specifier: ^22.13.1
         version: 22.13.1
       firebase-tools:
-        specifier: ^13.29.3
-        version: 13.29.3(encoding@0.1.13)
+        specifier: ^13.30.0
+        version: 13.30.0(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.3
         version: 2.0.3
@@ -289,8 +289,8 @@ packages:
     resolution: {integrity: sha512-Sj2MerYrr4Z6ksK81Scj0gIdFjC3bC0vcqdM+TSfnOskg6d9iIALWdFDc3xgNHQWO58rUb6HjBzr1XbuNjYlPg==}
     engines: {node: '>=12.0.0'}
 
-  '@grpc/grpc-js@1.12.5':
-    resolution: {integrity: sha512-d3iiHxdpg5+ZcJ6jnDSOT8Z0O0VMVGy34jAnYLUX8yd36b1qn8f1TwOA/Lc7TsOh03IkPJ38eGI5qD2EjNkoEA==}
+  '@grpc/grpc-js@1.12.6':
+    resolution: {integrity: sha512-JXUj6PI0oqqzTGvKtzOkxtpsyPRNsrmhh41TtIz/zEB6J+AUiZZ0dxWzcMwO9Ns5rmSPuMdghlTbUuqIM48d3Q==}
     engines: {node: '>=12.10.0'}
 
   '@grpc/proto-loader@0.7.13':
@@ -1325,9 +1325,9 @@ packages:
     resolution: {integrity: sha512-V2hqwTtYRj0bj43K4MCtm0caD97YWkqOUHFMRCBW5L1x9IjyqOEc7Xa4oQjjiFbeFOSQzzwPV+BzXsQjSz08fw==}
     engines: {node: '>=6.0.0', npm: '>5.0.0'}
 
-  exegesis@4.2.0:
-    resolution: {integrity: sha512-MOzRyqhvl+hTA4+W4p0saWRIPlu0grIx4ykjMEYgGLiqr/z9NCIlwSq2jF0gyxNjPZD3xyHgmkW6BSaLVUdctg==}
-    engines: {node: '>=6.0.0', npm: '>5.0.0'}
+  exegesis@4.3.0:
+    resolution: {integrity: sha512-V90IJQ4XYO1SfH5qdJTOijXkQTF3hSpSHHqlf7MstUMDKP22iAvi63gweFLtPZ4Gj3Wnh8RgJX5TGu0WiwTyDQ==}
+    engines: {node: '>=10.0.0', npm: '>5.0.0'}
 
   exponential-backoff@3.1.1:
     resolution: {integrity: sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==}
@@ -1393,8 +1393,8 @@ packages:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@13.29.3:
-    resolution: {integrity: sha512-P3d5+RjkhEmYhBP+5CGYD+Zi+eA5lLny/Ph5vGHAPUiJ7VKooiVtWf7fHw7LoXenlkCGPNaGfYVKqFz514+d7A==}
+  firebase-tools@13.30.0:
+    resolution: {integrity: sha512-YJ2eGqDNAyJwlw3b1t5d9yaY8a3yas732g9p72cMnO0q8bOhsq30B2spm/Y5YKnNM/xL5DT1KChqlxLEkloc+Q==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
 
@@ -2262,8 +2262,8 @@ packages:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
 
-  object-inspect@1.13.3:
-    resolution: {integrity: sha512-kDCGIbxkDSXE3euJZZXzc6to7fCrKHNI/hSRQnRuQ+BWjFNzZwiFF8fj/6o2t2G9/jTj8PSIYTfCLelLZEeRpA==}
+  object-inspect@1.13.4:
+    resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
     engines: {node: '>= 0.4'}
 
   object-keys@1.1.1:
@@ -2523,9 +2523,6 @@ packages:
   prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
 
-  pump@3.0.2:
-    resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
-
   punycode.js@2.3.1:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
     engines: {node: '>=6'}
@@ -2704,8 +2701,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  semver@7.7.0:
-    resolution: {integrity: sha512-DrfFnPzblFmNrIZzg5RzHegbiRWg7KMR7btwi2yjHwx06zsUbO5g613sVwEV7FTwmzJu+Io0lJe2GJ3LxqpvBQ==}
+  semver@7.7.1:
+    resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2899,8 +2896,8 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  supports-hyperlinks@3.1.0:
-    resolution: {integrity: sha512-2rn0BZ+/f7puLOHZm1HOJfwBggfaHXUpPUSSG/SWM4TWp5KCfmNYwnC3hruy2rZlMnmWZ+QAGpZfchu3f3695A==}
+  supports-hyperlinks@3.2.0:
+    resolution: {integrity: sha512-zFObLMyZeEwzAoKCyu1B91U79K2t7ApXuQfo8OuxwXLDgcKxuwM+YvcbIhm6QWqz7mHUH1TVytR1PwVVjEuMig==}
     engines: {node: '>=14.18'}
 
   tar-stream@3.1.7:
@@ -3471,7 +3468,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@grpc/grpc-js@1.12.5':
+  '@grpc/grpc-js@1.12.6':
     dependencies:
       '@grpc/proto-loader': 0.7.13
       '@js-sdsl/ordered-map': 4.4.2
@@ -3543,7 +3540,7 @@ snapshots:
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.7.0
+      semver: 7.7.1
     optional: true
 
   '@opentelemetry/api@1.9.0': {}
@@ -4489,11 +4486,11 @@ snapshots:
 
   exegesis-express@4.0.0:
     dependencies:
-      exegesis: 4.2.0
+      exegesis: 4.3.0
     transitivePeerDependencies:
       - supports-color
 
-  exegesis@4.2.0:
+  exegesis@4.3.0:
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.1.2
       ajv: 8.17.1
@@ -4508,10 +4505,9 @@ snapshots:
       lodash: 4.17.21
       openapi3-ts: 3.2.0
       promise-breaker: 6.0.0
-      pump: 3.0.2
       qs: 6.14.0
       raw-body: 2.5.2
-      semver: 7.7.0
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 
@@ -4626,7 +4622,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@13.29.3(encoding@0.1.13):
+  firebase-tools@13.30.0(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.16
       '@google-cloud/cloud-sql-connector': 1.6.0(encoding@0.1.13)
@@ -4648,7 +4644,7 @@ snapshots:
       cross-spawn: 7.0.6
       csv-parse: 5.6.0
       deep-equal-in-any-order: 2.0.6
-      exegesis: 4.2.0
+      exegesis: 4.3.0
       exegesis-express: 4.0.0
       express: 4.21.2
       filesize: 6.4.0
@@ -4680,7 +4676,7 @@ snapshots:
       progress: 2.0.3
       proxy-agent: 6.5.0
       retry: 0.13.1
-      semver: 7.7.0
+      semver: 7.7.1
       sql-formatter: 15.4.10
       stream-chain: 2.2.5
       stream-json: 1.9.1
@@ -4842,7 +4838,7 @@ snapshots:
 
   google-gax@4.4.1(encoding@0.1.13):
     dependencies:
-      '@grpc/grpc-js': 1.12.5
+      '@grpc/grpc-js': 1.12.6
       '@grpc/proto-loader': 0.7.13
       '@types/long': 4.0.2
       abort-controller: 3.0.0
@@ -5273,7 +5269,7 @@ snapshots:
       lodash.isstring: 4.0.1
       lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.7.0
+      semver: 7.7.1
 
   junk@1.0.3: {}
 
@@ -5443,7 +5439,7 @@ snapshots:
       cli-table3: 0.6.5
       marked: 13.0.3
       node-emoji: 2.2.0
-      supports-hyperlinks: 3.1.0
+      supports-hyperlinks: 3.2.0
 
   marked@13.0.3: {}
 
@@ -5658,7 +5654,7 @@ snapshots:
       make-fetch-happen: 13.0.1
       nopt: 7.2.1
       proc-log: 4.2.0
-      semver: 7.7.0
+      semver: 7.7.1
       tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
@@ -5694,7 +5690,7 @@ snapshots:
 
   object-hash@3.0.0: {}
 
-  object-inspect@1.13.3: {}
+  object-inspect@1.13.4: {}
 
   object-keys@1.1.1: {}
 
@@ -5974,11 +5970,6 @@ snapshots:
 
   prr@1.0.1: {}
 
-  pump@3.0.2:
-    dependencies:
-      end-of-stream: 1.4.4
-      once: 1.4.0
-
   punycode.js@2.3.1: {}
 
   punycode@1.4.1: {}
@@ -6167,7 +6158,7 @@ snapshots:
 
   semver@7.6.3: {}
 
-  semver@7.7.0: {}
+  semver@7.7.1: {}
 
   send@0.19.0:
     dependencies:
@@ -6245,27 +6236,27 @@ snapshots:
   side-channel-list@1.0.0:
     dependencies:
       es-errors: 1.3.0
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
 
   side-channel-map@1.0.1:
     dependencies:
       call-bound: 1.0.3
       es-errors: 1.3.0
       get-intrinsic: 1.2.7
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
 
   side-channel-weakmap@1.0.2:
     dependencies:
       call-bound: 1.0.3
       es-errors: 1.3.0
       get-intrinsic: 1.2.7
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
       side-channel-map: 1.0.1
 
   side-channel@1.1.0:
     dependencies:
       es-errors: 1.3.0
-      object-inspect: 1.13.3
+      object-inspect: 1.13.4
       side-channel-list: 1.0.0
       side-channel-map: 1.0.1
       side-channel-weakmap: 1.0.2
@@ -6431,7 +6422,7 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  supports-hyperlinks@3.1.0:
+  supports-hyperlinks@3.2.0:
     dependencies:
       has-flag: 4.0.0
       supports-color: 7.2.0
@@ -6617,7 +6608,7 @@ snapshots:
       pupa: 2.1.1
       registry-auth-token: 5.0.3
       registry-url: 5.1.0
-      semver: 7.7.0
+      semver: 7.7.1
       semver-diff: 3.1.1
       xdg-basedir: 4.0.0
     transitivePeerDependencies:
