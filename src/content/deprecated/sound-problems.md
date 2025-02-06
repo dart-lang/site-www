@@ -99,7 +99,7 @@ In the following code, the analyzer complains that `context2D` is undefined:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-undefined)" replace="/context2D/[!$&!]/g"?>
 ```dart tag=fails-sa
-var canvas = querySelector('canvas')!;
+var canvas = document.querySelector('canvas')!;
 canvas.[!context2D!].lineTo(x, y);
 ```
 
@@ -121,15 +121,15 @@ You can fix this error with an explicit downcast:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
 ```dart tag=passes-sa
-var canvas = querySelector('canvas') [!as CanvasElement!];
+var canvas = document.querySelector('canvas') [!as HTMLCanvasElement!];
 canvas.context2D.lineTo(x, y);
 ```
 
-Otherwise, use `dynamic` in situations where you cannot use a single type:
+Otherwise, use `dynamic` in situations where you can't use a single type:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
 ```dart tag=passes-sa
-[!dynamic!] canvasOrImg = querySelector('canvas, img');
+var canvasOrImg = document.querySelector('canvas, img') as [!dynamic!];
 var width = canvasOrImg.width;
 ```
 

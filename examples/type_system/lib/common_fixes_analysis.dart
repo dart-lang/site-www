@@ -1,17 +1,17 @@
 // NOTE: Declarations in this file are analyzed but not tested.
 // ignore_for_file: unused_element, unused_local_variable, one_member_abstracts, use_super_parameters
-// ignore_for_file: prefer_function_declarations_over_variables, unused_field, strict_raw_type, deprecated_member_use
+// ignore_for_file: prefer_function_declarations_over_variables, unused_field, strict_raw_type
 
-import 'dart:html';
+import 'package:web/web.dart';
 
-// Include in this file only excerpts used to illustrate fixes to common problems.
+// Excerpts used to illustrate potential fixes to common type problems.
 void _samplesFromCommonProblemsPage() {
   final double x = 0;
   final double y = 0;
 
   {
     // #docregion canvas-undefined
-    var canvas = querySelector('canvas')!;
+    var canvas = document.querySelector('canvas')!;
     // ignore: stable, beta, dev, undefined_getter
     canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-undefined
@@ -19,14 +19,14 @@ void _samplesFromCommonProblemsPage() {
 
   {
     // #docregion canvas-as
-    var canvas = querySelector('canvas') as CanvasElement;
+    var canvas = document.querySelector('canvas') as HTMLCanvasElement;
     canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-as
   }
 
   {
     // #docregion canvas-dynamic
-    dynamic canvasOrImg = querySelector('canvas, img');
+    var canvasOrImg = document.querySelector('canvas, img') as dynamic;
     var width = canvasOrImg.width;
     // #enddocregion canvas-dynamic
   }
