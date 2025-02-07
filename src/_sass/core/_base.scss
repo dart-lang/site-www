@@ -3,6 +3,7 @@
 
 :root {
   --site-interaction-base-values: 0 0 0;
+  --site-interaction-base-values-inverse: 255 255 255;
   --focus-outline-color: #1967D2;
 }
 
@@ -72,38 +73,65 @@ a, button {
     color: $brand-primary;
   }
 
-  &.filled-button {
+  &.filled-button, &.text-button {
     display: flex;
     align-items: center;
     padding: 0.5rem 1rem;
     gap: 0.5rem;
     width: fit-content;
-    background-color: $site-color-primary;
-    color: $site-color-white;
-    text-decoration: none;
-    border-radius: 0.25rem;
     cursor: pointer;
-    font-family: $site-font-family-alt;
     font-size: 1.25rem;
     white-space: nowrap;
+
+    font-family: $site-font-family-alt;
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-outline-color);
+    }
+  }
+
+  &.filled-button {
+    background-color: $site-color-primary;
+    border-radius: 0.25rem;
     outline-offset: 2px;
 
-    &:hover {
-      @include interaction-style(4%);
+    &, &:hover, &:focus, &:active {
       color: $site-color-white;
       text-decoration: none;
     }
 
-    &:focus {
-      color: $site-color-white;
-      outline: 2px solid var(--focus-outline-color);
+    &:hover {
+      @include interaction-style(4%);
     }
 
     &:active {
       @include interaction-style(8%);
-      color: $site-color-white;
     }
   }
+
+  &.text-button {
+    border-radius: 1.5rem;
+
+    &, &:hover, &:focus, &:active {
+      color: $site-color-primary;
+      background: none;
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include interaction-style(4%);
+    }
+
+    &:active {
+      @include interaction-style(7%);
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
 }
 
 button {
