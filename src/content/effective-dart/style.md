@@ -455,7 +455,7 @@ formatting the code by hand and trying to make it more readable. Think of
 to produce beautiful code.
 
 
-### AVOID lines longer than 80 characters
+### PREFER lines 80 characters or less
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -469,7 +469,8 @@ compact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask
 yourself, "Does each word in that type name tell me something critical or
 prevent a name collision?" If not, consider omitting it.
 
-Note that `dart format` does 99% of this for you, but the last 1% is you. 
+Note that `dart format` defaults to 80 characters or less, though you can
+[configure][] the default. 
 It does not split long string literals to fit in 80 columns, 
 so you have to do that manually.
 
@@ -480,6 +481,8 @@ an import or export), it may remain whole even if it causes the line to go over
 **Exception:** Multi-line strings can contain lines longer than 80 characters
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
+
+[configure]: /tools/dart-format#configuring-formatter-page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### DO use curly braces for all flow control statements
