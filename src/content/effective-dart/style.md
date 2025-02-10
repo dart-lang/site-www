@@ -454,7 +454,7 @@ formatting the code by hand and trying to make it more readable. Think of
 `dart format` as a partnership where you work together, sometimes iteratively, 
 to produce beautiful code.
 
-
+<a id="avoid-lines-longer-than-80-characters"></a>
 ### PREFER lines 80 characters or less
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
