@@ -388,7 +388,7 @@ void main() {
 ```
 
 For more information on the inference using bounds algorithm,
-read the [desgin document][]. 
+read the [design document][]. 
 
 [F-bounded]: /language/generics/#self-referential-type-parameter-restrictions
 [design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
