@@ -135,7 +135,6 @@ Future<void> _handleError(String path) async {
     exitCode = 2;
   }
 }
-
 ```
 
 ### Getting dependencies
@@ -575,7 +574,6 @@ Future<void> _handleError(String path) async {
     [!exitCode = 2;!]
   }
 }
-
 ```
 
 An exit code of `2` indicates that the app encountered an error.

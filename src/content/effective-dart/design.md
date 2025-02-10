@@ -1155,7 +1155,6 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
   return desserts;
 }
-
 ```
 
 <?code-excerpt "design_bad.dart (omit-types-on-locals)"?>
@@ -1170,7 +1169,6 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
   return desserts;
 }
-
 ```
 
 Sometimes the inferred type is not the type you want the variable to have. For
@@ -1186,7 +1184,6 @@ Widget build(BuildContext context) {
   }
   return result;
 }
-
 ```
 
 
@@ -1201,7 +1198,6 @@ the return type yourself.
 String makeGreeting(String who) {
   return 'Hello, $who!';
 }
-
 ```
 
 <?code-excerpt "design_bad.dart (annotate-return-types)"?>
@@ -1209,7 +1205,6 @@ String makeGreeting(String who) {
 makeGreeting(String who) {
   return 'Hello, $who!';
 }
-
 ```
 
 Note that this guideline only applies to *non-local* function declarations:
@@ -1232,7 +1227,6 @@ void sayRepeatedly(String message, {int count = 2}) {
     print(message);
   }
 }
-
 ```
 
 <?code-excerpt "design_bad.dart (annotate-parameters)" replace="/\(count as num\)/count/g"?>
@@ -1242,7 +1236,6 @@ void sayRepeatedly(message, {count = 2}) {
     print(message);
   }
 }
-
 ```
 
 **Exception:** Function expressions and initializing formals have
@@ -1457,7 +1450,6 @@ void printUsers() {
   var users = json['users'];
   print(users);
 }
-
 ```
 
 Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
@@ -1695,7 +1687,6 @@ bool convertToBool(Object arg) {
   if (arg is String) return arg.toLowerCase() == 'true';
   throw ArgumentError('Cannot convert $arg to a bool.');
 }
-
 ```
 
 The main exception to this rule is when working with existing APIs that use
@@ -1951,7 +1942,6 @@ class Person {
 
   bool operator ==(Object other) => other is Person && name == other.name;
 }
-
 ```
 
 <?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster="// ···"?>
@@ -1964,6 +1954,5 @@ class Person {
   bool operator ==([!Object?!] other) =>
       other != null && other is Person && name == other.name;
 }
-
 ```
 

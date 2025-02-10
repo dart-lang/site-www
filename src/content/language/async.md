@@ -54,7 +54,6 @@ Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
-
 ```
 
 :::note
@@ -107,7 +106,6 @@ void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
-
 ```
 
 :::note
@@ -210,7 +208,6 @@ void main() [!async!] {
   }
   // ...
 }
-
 ```
 
 For more information about Dart's asynchronous programming support,

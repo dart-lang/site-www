@@ -190,7 +190,6 @@ void main() {
   assert(point.x == 4); // Use the getter method for x.
   assert(point.y == null); // Values default to null.
 }
-
 ```
 
 Initializing a non-`late` instance variable where it's declared
@@ -313,7 +312,6 @@ class Queue {
 void main() {
   assert(Queue.initialCapacity == 16);
 }
-
 ```
 
 Static variables aren't initialized until they're used.

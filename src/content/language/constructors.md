@@ -86,7 +86,6 @@ class Point {
   // Named constructor
   [!Point.origin()!] : x = xOrigin, y = yOrigin;
 }
-
 ```
 
 A subclass doesn't inherit a superclass's named constructor.
@@ -386,7 +385,6 @@ class PointD {
     return 'PointD($x,$y)';
   }
 }
-
 ```
 
 ### Use an initializer list
@@ -502,7 +500,6 @@ void main() {
   // in Employee
   // Instance of 'Employee'
 }
-
 ```
 
 As Dart evaluates the arguments to the superclass constructor *before*
@@ -559,7 +556,6 @@ class Vector3d extends Vector2d {
   // Vector3d(final double x, final double y, this.z) : super(x, y);
   Vector3d(super.x, super.y, this.z);
 }
-
 ```
 
 To further illustrate, consider the following example.
@@ -596,7 +592,6 @@ class Vector3d extends Vector2d {
   //       : super.named(x: 0, y: y);
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
 }
-
 ```
 
 [language version]: /resources/language/evolution#language-versioning

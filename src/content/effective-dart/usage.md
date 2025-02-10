@@ -61,7 +61,6 @@ Not the library name:
 <?code-excerpt "some/other/file_2.dart (part-of)"?>
 ```dart tag=bad
 part of my_library;
-
 ```
 
 ### DON'T import libraries that are inside the `src` directory of another package
@@ -227,7 +226,6 @@ language implicitly uses `null` as the default, so there's no need to write it.
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (default-value-null)"?>
@@ -235,7 +233,6 @@ void error([String? message]) {
 void error([String? message = null]) {
   stderr.write(message ?? '\n');
 }
-
 ```
 
 <a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
@@ -879,7 +876,6 @@ void main() {
     ...
   }
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (func-decl)"?>
@@ -889,7 +885,6 @@ void main() {
     ...
   };
 }
-
 ```
 
 ### DON'T create a lambda when a tear-off will do
@@ -1146,7 +1141,6 @@ Treasure? openChest(Chest chest, Point where) {
   _opened[chest] = treasure;
   return treasure;
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
@@ -1405,7 +1399,6 @@ Widget build(BuildContext context) {
     children: [RaisedButton(child: Text('Increment')), Text('Click!')],
   );
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
@@ -1576,7 +1569,6 @@ Future<int> countActivePlayers(String teamName) [!async!] {
     return 0;
   }
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (async-await)"?>
@@ -1595,7 +1587,6 @@ Future<int> countActivePlayers(String teamName) {
         return 0;
       });
 }
-
 ```
 
 ### DON'T use `async` when it has no useful effect
@@ -1609,7 +1600,6 @@ omit the `async` without changing the behavior of the function, do so.
 Future<int> fastestBranch(Future<int> left, Future<int> right) {
   return Future.any([left, right]);
 }
-
 ```
 
 <?code-excerpt "usage_bad.dart (unnecessary-async)"?>
@@ -1617,7 +1607,6 @@ Future<int> fastestBranch(Future<int> left, Future<int> right) {
 Future<int> fastestBranch(Future<int> left, Future<int> right) async {
   return Future.any([left, right]);
 }
-
 ```
 
 Cases where `async` *is* useful include:
@@ -1666,7 +1655,6 @@ Future<bool> fileContainsBear(String path) {
 
   return completer.future;
 }
-
 ```
 
 Completer is needed for two kinds of low-level code: new asynchronous
@@ -1683,7 +1671,6 @@ Future<bool> fileContainsBear(String path) {
     return contents.contains('bear');
   });
 }
-
 ```
 
 <?code-excerpt "usage_good.dart (avoid-completer-alt)"?>
@@ -1692,7 +1679,6 @@ Future<bool> fileContainsBear(String path) async {
   var contents = await File(path).readAsString();
   return contents.contains('bear');
 }
-
 ```
 
 

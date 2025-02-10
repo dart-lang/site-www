@@ -321,7 +321,6 @@ Stream<S> mapLogErrors<S, T>(
     yield convert(event);
   }
 }
-
 ```
 
 ### The transform() function {:#transform-function}

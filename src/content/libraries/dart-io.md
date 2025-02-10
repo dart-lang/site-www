@@ -238,7 +238,6 @@ void processRequest(HttpRequest request) {
   }
   response.close();
 }
-
 ```
 
 ### HTTP client

@@ -23,7 +23,6 @@ Here's an example of implementing a function:
 bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
-
 ```
 
 Although Effective Dart recommends
@@ -35,7 +34,6 @@ the function still works if you omit the types:
 isNoble(atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
-
 ```
 
 For functions that contain just one expression, you can use a shorthand
@@ -403,7 +401,6 @@ void main() {
     }
   }
 }
-
 ```
 
 The `nestedFunction()` method can use variables from every level,

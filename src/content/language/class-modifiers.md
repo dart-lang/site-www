@@ -94,7 +94,6 @@ class MockVehicle implements Vehicle {
     // ...
   }
 }
-
 ```
 
 If you want your abstract class to appear to be instantiable,

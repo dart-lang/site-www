@@ -92,7 +92,6 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
   final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
   return jsonData;
 }
-
 ```
 
 3. `Isolate.run()` takes the result `_readAndParseJson()` returns
@@ -143,7 +142,6 @@ void main() async {
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
-
 ```
 
 This example accomplishes the same as the previous.
@@ -325,7 +323,6 @@ class Worker {
     // be used to send messages to the worker isolate.
   }
 }
-
 ```
 
 #### Step 2: Spawn a worker isolate
@@ -455,7 +452,6 @@ Future<void> parseJson(String message) async {
   await _isolateReady.future;
   _sendPort.send(message);
 }
-
 ```
 
 #### Complete example
@@ -582,7 +578,6 @@ class Worker {
     // TODO: Initialize worker isolate's ports.
   }
 }
-
 ```
 
 :::note
@@ -619,7 +614,7 @@ In the `Worker.spawn` method:
   the `ReceivePort.fromRawReceivePort` constructor, and pass in
   the `initPort`.
 
-<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -636,8 +631,8 @@ class Worker {
         commandPort,
       ));
     };
-    // ···
   }
+}
 ```
 
 By creating a `RawReceivePort` first, and then a `ReceivePort`, you’ll be able
@@ -668,7 +663,7 @@ the `initPort` will be closed, and the `Worker` object won’t be created.
 - Finally, return an instance of `Worker` by calling its private constructor,
   and passing in the ports from that completer.
 
-<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -698,6 +693,7 @@ class Worker {
 
     return Worker._(receivePort, sendPort);
   }
+}
 ```
 
 Note that in this example (compared to the [previous example][]), `Worker.spawn`
@@ -720,15 +716,16 @@ method. In the constructor body, add a listener to the receive port used by the
 main isolate, and pass an as-yet undefined method to that listener
 called `_handleResponsesFromIsolate`. 
 
-<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)"?>
+<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-  // ···
+
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
+}
 ```
 
 Next, add the code to `_startRemoteIsolate` that is responsible for initializing
@@ -749,7 +746,6 @@ static void _startRemoteIsolate(SendPort sendPort) {
   sendPort.send(receivePort.sendPort);
   _handleCommandsToIsolate(receivePort, sendPort);
 }
-
 ```
 
 Next, add the `_handleCommandsToIsolate` method, which is responsible for
@@ -832,6 +828,8 @@ class Worker {
   final ReceivePort _responses;
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
+  // ···
+}
 ```
 
 The `_activeRequests` map associates a message sent to the worker isolate
@@ -942,7 +940,7 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-
+}
 ```
 
 - Next, you need to handle the “shutdown” message in the worker isolate. Add the

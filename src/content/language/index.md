@@ -268,7 +268,6 @@ enum Planet {
   bool get isGiant =>
       planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
-
 ```
 
 You might use the `Planet` enum like this:

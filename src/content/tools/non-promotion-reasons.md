@@ -689,7 +689,6 @@ void f(Example x) {
     int i = x._i; // OK
   }
 }
-
 ```
 
 The getter is declared `late` to be consistent with
@@ -757,7 +756,6 @@ void f(bool b, int? i, int? j) {
     print(i.isEven);
   }
 }
-
 ```
 
 In straight-line control flow cases like these (no loops),
@@ -777,7 +775,6 @@ void f(bool b, int? i, [!int j!]) {
     print(i.isEven);
   }
 }
-
 ```
 
 ### Possibly written in a previous loop iteration {:#loop-or-switch}
@@ -820,7 +817,6 @@ void f(Link? p) {
     p = p.next;
   }
 }
-
 ```
 
 This situation can also arise in `switch` statements if
@@ -854,7 +850,6 @@ void f(int i, int? j, int? k) {
       continue label;
   }
 }
-
 ```
 
 ### In catch after possible write in try {:#catch}
@@ -974,7 +969,6 @@ void f(Object o) {
     }
   }
 }
-
 ```
 
 However, someone who edits the code later might be tempted to
@@ -993,7 +987,6 @@ void f(Object o) {
     }
   }
 }
-
 ```
 
 Another solution that sometimes works is when you can use a more precise type.
@@ -1010,7 +1003,6 @@ void f(Object o) {
     }
   }
 }
-
 ```
 
 
@@ -1056,7 +1048,6 @@ void f(int? i, int? j) {
   [!};!]
   [!// ... Use foo ...!]
 }
-
 ```
 
 Another option is to create a local variable, so it isn't write captured:
@@ -1073,7 +1064,6 @@ void f(int? i, int? j) {
   // ... Additional code ...
   print([!i2!].isEven); // (2) OK because `i2` isn't write captured.
 }
-
 ```
 
 Or you can do a redundant check:
@@ -1089,7 +1079,6 @@ void f(int? i, int? j) {
   // ... Additional code ...
   print(i[!!!].isEven); // (2) OK due to `!` check.
 }
-
 ```
 
 
@@ -1133,7 +1122,6 @@ void f(int? i, int? j) {
   };
   i = j; // (2)
 }
-
 ```
 
 **Example:**
@@ -1168,7 +1156,6 @@ void f(int? i) {
     print([!j!].isEven); // OK
   };
 }
-
 ```
 
 This solution works because `j` is inferred to have a non-nullable type (`int`)
@@ -1222,7 +1209,6 @@ void f(int? i, int? j) {
     i = j;
   };
 }
-
 ```
 
 [language version]: /resources/language/evolution#language-versioning

@@ -54,4 +54,7 @@ class Worker {
   static void _startRemoteIsolate(SendPort sp) {
     // TODO: Initialize worker isolate's ports.
   }
+  // #docregion worker-spawn
 }
+
+// #enddocregion worker-spawn

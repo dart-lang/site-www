@@ -100,7 +100,6 @@ extension MyFancyList<T> on List<T> {
 extension SmartIterable<T> on Iterable<T> {
    ...
 }
-
 ```
 
 [extensions]: /language/extension-methods
@@ -400,7 +399,6 @@ import 'src/error.dart';
 import 'src/foo_bar.dart';
 
 export 'src/error.dart';
-
 ```
 
 <?code-excerpt "style_lib_bad.dart (export)"?>
@@ -431,7 +429,6 @@ import 'package:bar/bar.dart';
 
 import 'foo/foo.dart';
 import 'foo.dart';
-
 ```
 
 

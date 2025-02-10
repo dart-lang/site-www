@@ -95,7 +95,6 @@ enum Vehicle implements Comparable<Vehicle> {
   @override
   int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
 }
-
 ```
 
 :::version-note

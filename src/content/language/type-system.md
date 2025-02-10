@@ -259,7 +259,6 @@ void main() {
   List<Cat> foo = [!<dynamic>!][Dog()]; // Error
   List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
 }
-
 ```
 
 ## Runtime checks

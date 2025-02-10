@@ -89,7 +89,6 @@ Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 void main() {
   print(createOrderMessage());
 }
-
 ```
 
 Here's why the example fails to print the value
@@ -182,7 +181,6 @@ void main() {
   fetchUserOrder();
   print('Fetching user order...');
 }
-
 ```
 
 In the preceding example, 
@@ -210,7 +208,6 @@ void main() {
   fetchUserOrder();
   print('Fetching user order...');
 }
-
 ```
 
 In this example, `fetchUserOrder()` completes
@@ -299,7 +296,6 @@ void main() {
   print('Fetching user order...');
   print(createOrderMessage());
 }
-
 ```
 
 ```plaintext

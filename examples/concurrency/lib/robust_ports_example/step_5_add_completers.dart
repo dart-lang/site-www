@@ -91,4 +91,7 @@ class Worker {
   }
 
   // #enddocregion start-isolate
+  // #docregion vars
 }
+
+// #enddocregion vars

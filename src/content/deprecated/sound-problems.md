@@ -526,7 +526,6 @@ Definitions of valid overrides for some members would be impossible.
 <?code-excerpt "lib/common_fixes_analysis.dart (conflicting-generics)"?>
 ```dart tag=fails-sa
 abstract class C implements List<int>, Iterable<num> {}
-
 ```
 
 #### Fix: Use consistent generics or avoid repeating transitive interfaces

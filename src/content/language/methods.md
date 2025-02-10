@@ -38,7 +38,6 @@ class Point {
   }
 
 }
-
 ```
 
 ## Operators

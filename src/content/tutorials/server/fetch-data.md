@@ -351,7 +351,6 @@ void main() async {
     client.close();
   }
 }
-
 ```
 
 The `RetryClient` has a default behavior for how many
@@ -515,7 +514,6 @@ class PackageRetrievalException implements Exception {
 
   PackageRetrievalException({required this.packageName, this.statusCode});
 }
-
 ```
 
 ## Utilize the converted data
@@ -629,7 +627,6 @@ class PackageRetrievalException implements Exception {
   }
 
 }
-
 ```
 
 :::flutter-note

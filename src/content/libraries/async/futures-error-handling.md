@@ -304,7 +304,6 @@ void main() {
         .catchError(...); // We get here.
   });
 }
-
 ```
 
 ## Potential problem: accidentally mixing synchronous and asynchronous errors
@@ -410,7 +409,6 @@ Future fragileFunc() {
     ...
   });
 }
-
 ```
 
 `Future.sync()` not only allows you to handle errors you know might occur, but

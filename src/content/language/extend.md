@@ -31,7 +31,6 @@ class SmartTelevision [!extends!] Television {
   }
   // ···
 }
-
 ```
 
 For another usage of `extends`, see the discussion of
@@ -60,7 +59,6 @@ class SmartTelevision extends Television {
   }
   // ···
 }
-
 ```
 
 An overriding method declaration must match
@@ -113,7 +111,6 @@ class A {
     );
   }
 }
-
 ```
 
 You **can't invoke** an unimplemented method unless

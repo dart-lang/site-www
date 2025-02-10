@@ -354,7 +354,6 @@ void listenWithPause() {
     }
   });
 }
-
 ```
 
 When the five seconds of pause are up,

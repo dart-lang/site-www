@@ -62,10 +62,9 @@ Future<int> _refreshExcerpts({
       SimpleReplaceTransform('//!<br>', ''),
       SimpleReplaceTransform(RegExp(r'ellipsis(<\w+>)?(\(\))?;?'), '...'),
       BackReferenceReplaceTransform(RegExp(r'/\*(\s*\.\.\.\s*)\*/'), '\$1'),
-      BackReferenceReplaceTransform(
-        RegExp(r'\{/\*-(\s*\.\.\.\s*)-\*/\}'),
-        '\$1',
-      ),
+      // Workaround for https://github.com/dart-lang/dart_style/issues/1644
+      // to remove extra new lines after block close.
+      SimpleReplaceTransform(RegExp(r'[\r\n]+$'), ''),
     ],
   );
 

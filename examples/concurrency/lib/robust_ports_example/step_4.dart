@@ -9,6 +9,7 @@ class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
   // #enddocregion constructor
+
   static Future<Worker> spawn() async {
     // Create a receive port and add its initial message handler
     final initPort = RawReceivePort();
@@ -41,6 +42,7 @@ class Worker {
   // #enddocregion parse-json
 
   // #docregion constructor
+
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
@@ -80,4 +82,7 @@ class Worker {
   }
 
   // #enddocregion start-isolate
+  // #docregion constructor
 }
+
+// #enddocregion constructor

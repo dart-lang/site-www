@@ -74,7 +74,6 @@ abstract class Cache<T> {
   T getByKey(String key);
   void setByKey(String key, T value);
 }
-
 ```
 
 In this code, T is the stand-in type. It's a placeholder that you can
@@ -156,7 +155,6 @@ by making it a subtype of `Object`
 class Foo<T extends Object> {
   // Any type provided to Foo for T must be non-nullable.
 }
-
 ```
 
 You can use `extends` with other types besides `Object`.
@@ -173,7 +171,6 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {
   ...
 }
-
 ```
 
 It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:

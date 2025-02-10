@@ -67,7 +67,6 @@ void runUsingFuture() {
       })
       .then(flushThenExit);
 }
-
 ```
 
 The equivalent code with await expressions
@@ -81,7 +80,6 @@ Future<void> runUsingAsyncAwait() async {
   var exitCode = await runExecutable(entryPoint, args);
   await flushThenExit(exitCode);
 }
-
 ```
 
 An `async` function can catch exceptions from Futures.
@@ -316,7 +314,6 @@ void main(List<String> arguments) {
     }
   });
 }
-
 ```
 
 The equivalent code with await expressions,
@@ -338,7 +335,6 @@ void main(List<String> arguments) async {
     searchFile(File(searchPath), searchTerms);
   }
 }
-
 ```
 
 :::important
@@ -437,7 +433,6 @@ Future<void> readFileAwaitFor() async {
     print(e);
   }
 }
-
 ```
 
 If you use the Stream API,

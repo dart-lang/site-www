@@ -923,7 +923,6 @@ void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
 }
-
 ```
 
 ### Code example {:.no_toc}
@@ -1640,7 +1639,6 @@ class Point {
 
   Point.origin() : x = 0, y = 0;
 }
-
 ```
 
 To use a named constructor, invoke it using its full name:
@@ -1990,7 +1988,6 @@ class ImmutablePoint {
 
   const ImmutablePoint(this.x, this.y);
 }
-
 ```
 
 ### Code example {:.no_toc}

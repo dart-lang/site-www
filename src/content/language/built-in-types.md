@@ -415,7 +415,6 @@ void main() {
   print(Function.apply(int.parse, ['11']));
   print(Function.apply(int.parse, ['11'], {#radix: 16}));
 }
-
 ```
 {% endcomment %}
 

@@ -64,7 +64,6 @@ And here's an example of using that `@Todo` annotation:
 void doSomething() {
   print('Do something');
 }
-
 ```
 
 Metadata can appear before a library, class, typedef, type parameter,

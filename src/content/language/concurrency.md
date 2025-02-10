@@ -121,7 +121,6 @@ Future<String> _readFileAsync(String filename) {
     return contents.trim();
   });
 }
-
 ```
 
 ### The async-await syntax
@@ -150,7 +149,6 @@ String _readFileSync() {
   final contents = file.readAsStringSync();
   return contents.trim();
 }
-
 ```
 
 Here's similar code, but with changes (highlighted) to make it asynchronous:
@@ -173,7 +171,6 @@ void main() [!async!] {
   final contents = [!await!] file.[!readAsString()!];
   return contents.trim();
 }
-
 ```
 
 The `main()` function uses the `await` keyword in front of `_readFileAsync()`
@@ -366,7 +363,6 @@ void fib40() async {
   var result = await Isolate.run(() => slowFib(40));
   print('Fib(40) = $result');
 }
-
 ```
 
 ### Performance and isolate groups

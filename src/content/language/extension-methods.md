@@ -49,7 +49,6 @@ import 'string_apis.dart';
 void main() {
   print('42'.parseInt()); // Use an extension method.
 }
-
 ```
 
 Extensions can define not just methods,
@@ -65,7 +64,6 @@ extension NumberParsing on String {
     return int.parse(this);
   }
 }
-
 ```
 
 The next section describes how to _use_ extension methods.
@@ -87,7 +85,6 @@ void main() {
   print('42'.padLeft(5)); // Use a String method.
   print('42'.parseInt()); // Use an extension method.
 }
-
 ```
 
 That's all you usually need to know to use extension methods.
@@ -146,7 +143,6 @@ void main() {
   // Uses the parseInt() defined in 'string_apis.dart'.
   print('42'.parseInt());
 }
-
 ```
 
 Another option is applying the extension explicitly,
@@ -221,7 +217,6 @@ extension NumberParsing on String {
   }
 
 }
-
 ```
 
 The members of an extension can be methods, getters, setters, or operators.

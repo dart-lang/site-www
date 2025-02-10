@@ -101,6 +101,6 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-
-  // #enddocregion close
 }
+
+// #enddocregion close
