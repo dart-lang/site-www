@@ -157,10 +157,11 @@ void _miscDeclAnalyzedButNotTested() {
   }
 }
 
-
 // #docregion inference-using-bounds
 class A<X extends A<X>> {}
+
 class B extends A<B> {}
+
 class C extends B {}
 
 void f<X extends A<X>>(X x) {}
