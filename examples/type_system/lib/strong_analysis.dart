@@ -156,3 +156,18 @@ void _miscDeclAnalyzedButNotTested() {
     // #enddocregion generic-type-assignment-implied-cast
   }
 }
+
+
+// #docregion inference-using-bounds
+class A<X extends A<X>> {}
+class B extends A<B> {}
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+  f(C()); // Inference fails, compile-time error.
+  f<B>(C()); // OK.
+}
+// #enddocregion inference-using-bounds

@@ -358,6 +358,40 @@ The return type of the closure is inferred as `int` using upward information.
 Dart uses this return type as upward information when inferring the `map()`
 method's type argument: `<int>`.
 
+#### Inference using bounds
+
+:::version-note
+Inference using bounds requires a [language version][] of at least 3.7.0.
+:::
+
+Dart's type inference algorithm generates constraints by combining
+exisiting lower-bound constraints with the actual type bounds,
+not just best-effort approximations.
+This is especially important for [F-bounded][] types,
+where inference using bounds correctly infers that, in the example below,
+`C` is a subtype of `B`,
+without needing you to explicitly specify the type `f<B>(C())`:
+
+<?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
+```dart
+class A<X extends A<X>> {}
+class B extends A<B> {}
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+  f(C()); // Inference fails, compile-time error.
+  f<B>(C()); // OK.
+}
+```
+
+For more information on the inference using bounds algorithm,
+read the [desgin document][]. 
+
+[F-bounded]: /language/generics/#self-referential-type-parameter-restrictions
+[design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituting types
 

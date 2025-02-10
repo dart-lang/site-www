@@ -65,3 +65,17 @@ void main() {
 }
 
 class View {}
+
+// #docregion f-bound
+abstract class Comparable<T> {
+    int compareTo(T o);
+}
+
+class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
+    @override
+    int compareTo(MyClass<T> other) {
+      // implementation...
+      return 0;
+    }
+}
+// #enddocregion f-bound

@@ -144,6 +144,7 @@ an object is a List, but you can't test whether it's a `List<String>`.
 When implementing a generic type,
 you might want to limit the types that can be provided as arguments,
 so that the argument must be a subtype of a particular type.
+This restriction is called a bound.
 You can do this using `extends`.
 
 A common use case is ensuring that a type is non-nullable
@@ -193,6 +194,30 @@ Specifying any non-`SomeBaseClass` type results in an error:
 var foo = [!Foo<Object>!]();
 ```
 
+### Self-referential type parameter restrictions
+
+When using bounds to restrict parameter types, you can refer the bound
+back to the type parameter itself. This creates a self-referential constraint,
+or an F-bound. For example:
+
+<?code-excerpt "misc/test/language_tour/generics_test.dart (f-bound)"?>
+```dart
+abstract class Comparable<T> {
+    int compareTo(T o);
+}
+
+class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
+    @override
+    int compareTo(MyClass<T> other) {
+      // implementation...
+      return 0;
+    }
+}
+```
+
+The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.
+So, `MyClass` can only be used with types that can be compared to
+other instances of the same type.
 
 ## Using generic methods
 
