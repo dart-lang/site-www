@@ -310,6 +310,11 @@ Other options are to explicitly enable individual linter rules
 or [disable individual rules][].
 :::
 
+:::note
+For more information about including options files, see [including shared
+options](#including-shared-options).
+:::
+
 [lints package]: {{site.pub-pkg}}/lints
 
 ### Enabling individual rules {:#individual-rules}
@@ -367,6 +372,74 @@ Due to YAML restrictions,
 **you can't mix list and key-value syntax in the same `rules` entry.**
 You can use the other syntax for rules in an included file.
 :::
+
+## Including shared options
+
+An analysis options file can include other options which are specified another
+options file, or even a list of other options files. Specify such files with
+the top-level `include:` field:
+
+```yaml title="analysis_options.yaml"
+include: package:flutter_lints/recommended.yaml
+```
+
+An included options file can be specified with a `package:` path, or a relative
+path. Multiple analysis options can be specified in a list:
+
+```yaml title="analysis_options.yaml"
+include:
+  - package:flutter_lints/recommended.yaml
+  - ../team_options.yaml
+```
+
+Options found in an included file can be overridden in the including file.
+Options found in an included file can also be overridden by subsequent included
+files. For example, given the following options files:
+
+```yaml title="one.yaml"
+analyzer:
+  errors:
+    dead_code: ignore
+    todo: ignore
+    unnecessary_import: ignore
+```
+
+```yaml title="two.yaml"
+analyzer:
+  errors:
+    invalid_use_of_protected_member: ignore
+    unused_import: ignore
+```
+
+```yaml title="three.yaml"
+include: two.yaml
+analyzer:
+  errors:
+    unused_import: info
+    unnecessary_import: info
+```
+
+and a final options file that includes these:
+
+```yaml title="analysis_options.yaml"
+include:
+  - one.yaml
+  - three.yaml
+analyzer:
+  errors:
+    todo: warning
+    unused_import: warning
+```
+
+then the combined analysis options are as follows:
+
+* `dead_code` is ignored, as specified by `one.yaml`.
+* `inavlid_use_of_protected_member` is ignored, as specified by `two.yaml`,
+  which is included in `three.yaml`.
+* The severity of `todo` is 'warning,' as specified in the final file,
+  overriding the option set in `one.yaml`.
+* The severity of `unused_import` is also `warning,' as specified in the final
+  file, overriding the option set in `two.yaml`.
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
 
