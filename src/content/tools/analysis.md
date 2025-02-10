@@ -375,16 +375,16 @@ You can use the other syntax for rules in an included file.
 
 ## Including shared options
 
-An analysis options file can include other options which are specified another
-options file, or even a list of other options files. Specify such files with
-the top-level `include:` field:
+An analysis options file can include other options which are specified in
+another options file, or even a list of other options files. Specify such files
+with the top-level `include:` field:
 
 ```yaml title="analysis_options.yaml"
 include: package:flutter_lints/recommended.yaml
 ```
 
 An included options file can be specified with a `package:` path, or a relative
-path. Multiple analysis options can be specified in a list:
+path. Multiple analysis options files can be specified in a list:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -394,29 +394,16 @@ include:
 
 Options found in an included file can be overridden in the including file.
 Options found in an included file can also be overridden by subsequent included
-files. For example, given the following options files:
+files. In other words, the options specified by an analysis options file are
+computed by first applying the options specified in each of the included files
+(by recursively applying this algorithm), in the order they appear in the list,
+and then overriding them with any locally defined options.
 
-```yaml title="one.yaml"
-analyzer:
-  errors:
-    dead_code: ignore
-    todo: ignore
-    unnecessary_import: ignore
-```
-
-```yaml title="two.yaml"
-analyzer:
-  errors:
-    invalid_use_of_protected_member: ignore
-    unused_import: ignore
-```
+For example, given the following options files:
 
 ```yaml title="three.yaml"
 include: two.yaml
-analyzer:
-  errors:
-    unused_import: info
-    unnecessary_import: info
+# ...
 ```
 
 and a final options file that includes these:
@@ -425,21 +412,13 @@ and a final options file that includes these:
 include:
   - one.yaml
   - three.yaml
-analyzer:
-  errors:
-    todo: warning
-    unused_import: warning
+# ...
 ```
 
-then the combined analysis options are as follows:
+then the combined analysis options are computed by applying the options found
+in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
+`analysis_options.yaml`.
 
-* `dead_code` is ignored, as specified by `one.yaml`.
-* `inavlid_use_of_protected_member` is ignored, as specified by `two.yaml`,
-  which is included in `three.yaml`.
-* The severity of `todo` is 'warning,' as specified in the final file,
-  overriding the option set in `one.yaml`.
-* The severity of `unused_import` is also `warning,' as specified in the final
-  file, overriding the option set in `two.yaml`.
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
 
