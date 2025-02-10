@@ -32,7 +32,9 @@ class Television {
   }
 
   /// Turns the TV's power on.
-  void turnOn() {...}
+  void turnOn() {
+    ...
+  }
   // ···
 }
 ```
@@ -62,6 +64,7 @@ And here's an example of using that `@Todo` annotation:
 void doSomething() {
   print('Do something');
 }
+
 ```
 
 Metadata can appear before a library, class, typedef, type parameter,

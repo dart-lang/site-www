@@ -61,6 +61,7 @@ Not the library name:
 <?code-excerpt "some/other/file_2.dart (part-of)"?>
 ```dart tag=bad
 part of my_library;
+
 ```
 
 ### DON'T import libraries that are inside the `src` directory of another package
@@ -226,6 +227,7 @@ language implicitly uses `null` as the default, so there's no need to write it.
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (default-value-null)"?>
@@ -233,6 +235,7 @@ void error([String? message]) {
 void error([String? message = null]) {
   stderr.write(message ?? '\n');
 }
+
 ```
 
 <a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
@@ -245,16 +248,24 @@ and use the unary negation operator `!` if necessary:
 
 <?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 ```dart tag=good
-if (nonNullableBool) { ... }
+if (nonNullableBool) {
+   ...
+}
 
-if (!nonNullableBool) { ... }
+if (!nonNullableBool) {
+   ...
+}
 ```
 
 <?code-excerpt "usage_bad.dart (non-null-boolean-expression)"?>
 ```dart tag=bad
-if (nonNullableBool == true) { ... }
+if (nonNullableBool == true) {
+   ...
+}
 
-if (nonNullableBool == false) { ... }
+if (nonNullableBool == false) {
+   ...
+}
 ```
 
 To evaluate a boolean expression that *is nullable*, you should use `??`
@@ -263,20 +274,28 @@ or an explicit `!= null` check.
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 ```dart tag=good
 // If you want null to result in false:
-if (nullableBool ?? false) { ... }
+if (nullableBool ?? false) {
+   ...
+}
 
 // If you want null to result in false
 // and you want the variable to type promote:
-if (nullableBool != null && nullableBool) { ... }
+if (nullableBool != null && nullableBool) {
+   ...
+}
 ```
 
 <?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 ```dart tag=bad
 // Static error if null:
-if (nullableBool) { ... }
+if (nullableBool) {
+   ...
+}
 
 // If you want null to be false:
-if (nullableBool == true) { ... }
+if (nullableBool == true) {
+   ...
+}
 ```
 
 `nullableBool == true` is a viable expression, 
@@ -437,14 +456,18 @@ a single long string that doesn't fit on one line.
 
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 ```dart tag=good
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm(
+  'ERROR: Parts of the spaceship are on fire. Other '
+  'parts are overrun by martians. Unclear which are which.',
+);
 ```
 
 <?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
 ```dart tag=bad
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm(
+  'ERROR: Parts of the spaceship are on fire. Other ' +
+      'parts are overrun by martians. Unclear which are which.',
+);
 ```
 
 ### PREFER using interpolation to compose strings and values
@@ -533,7 +556,7 @@ var arguments = [
   command,
   ...?modeFlags,
   for (var path in filePaths)
-    if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
+    if (path.endsWith('.dart')) path.replaceAll('.dart', '.js'),
 ];
 ```
 
@@ -543,9 +566,11 @@ var arguments = <String>[];
 arguments.addAll(options);
 arguments.add(command);
 if (modeFlags != null) arguments.addAll(modeFlags);
-arguments.addAll(filePaths
-    .where((path) => path.endsWith('.dart'))
-    .map((path) => path.replaceAll('.dart', '.js')));
+arguments.addAll(
+  filePaths
+      .where((path) => path.endsWith('.dart'))
+      .map((path) => path.replaceAll('.dart', '.js')),
+);
 ```
 
 
@@ -854,6 +879,7 @@ void main() {
     ...
   }
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (func-decl)"?>
@@ -863,6 +889,7 @@ void main() {
     ...
   };
 }
+
 ```
 
 ### DON'T create a lambda when a tear-off will do
@@ -953,9 +980,9 @@ class Circle {
   double circumference;
 
   Circle(double radius)
-      : radius = radius,
-        area = pi * radius * radius,
-        circumference = pi * 2.0 * radius;
+    : radius = radius,
+      area = pi * radius * radius,
+      circumference = pi * 2.0 * radius;
 }
 ```
 
@@ -1119,13 +1146,15 @@ Treasure? openChest(Chest chest, Point where) {
   _opened[chest] = treasure;
   return treasure;
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
 ```dart tag=bad
-Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
-    ? null
-    : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+Treasure? openChest(Chest chest, Point where) =>
+    _opened.containsKey(chest)
+        ? null
+        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 ```
 
 You can also use `=>` on members that don't return a value. This is idiomatic
@@ -1217,9 +1246,7 @@ lists:
 class Box extends BaseBox {
   Object? value;
 
-  Box(Object? value)
-      : value = value,
-        super(value);
+  Box(Object? value) : value = value, super(value);
 }
 ```
 
@@ -1240,9 +1267,7 @@ class ProfileMark {
   final DateTime start;
 
   ProfileMark(this.name) : start = DateTime.now();
-  ProfileMark.unnamed()
-      : name = '',
-        start = DateTime.now();
+  ProfileMark.unnamed() : name = '', start = DateTime.now();
 }
 ```
 
@@ -1279,9 +1304,7 @@ Many fields are initialized directly from a constructor parameter, like:
 ```dart tag=bad
 class Point {
   double x, y;
-  Point(double x, double y)
-      : x = x,
-        y = y;
+  Point(double x, double y) : x = x, y = y;
 }
 ```
 
@@ -1318,8 +1341,8 @@ initialize the field in the constructor initializer list:
 class Point {
   double x, y;
   Point.polar(double theta, double radius)
-      : x = cos(theta) * radius,
-        y = sin(theta) * radius;
+    : x = cos(theta) * radius,
+      y = sin(theta) * radius;
 }
 ```
 
@@ -1379,14 +1402,10 @@ it deprecated and avoid using it in your code.
 ```dart tag=good
 Widget build(BuildContext context) {
   return Row(
-    children: [
-      RaisedButton(
-        child: Text('Increment'),
-      ),
-      Text('Click!'),
-    ],
+    children: [RaisedButton(child: Text('Increment')), Text('Click!')],
   );
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
@@ -1394,9 +1413,7 @@ Widget build(BuildContext context) {
 Widget build(BuildContext context) {
   return [!new!] Row(
     children: [
-      [!new!] RaisedButton(
-        child: [!new!] Text('Increment'),
-      ),
+      [!new!] RaisedButton(child: [!new!] Text('Increment')),
       [!new!] Text('Click!'),
     ],
   );
@@ -1559,22 +1576,26 @@ Future<int> countActivePlayers(String teamName) [!async!] {
     return 0;
   }
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (async-await)"?>
 ```dart tag=bad
 Future<int> countActivePlayers(String teamName) {
-  return downloadTeam(teamName).then((team) {
-    if (team == null) return Future.value(0);
+  return downloadTeam(teamName)
+      .then((team) {
+        if (team == null) return Future.value(0);
 
-    return team.roster.then((players) {
-      return players.where((player) => player.isActive).length;
-    });
-  }).catchError((e) {
-    log.error(e);
-    return 0;
-  });
+        return team.roster.then((players) {
+          return players.where((player) => player.isActive).length;
+        });
+      })
+      .catchError((e) {
+        log.error(e);
+        return 0;
+      });
 }
+
 ```
 
 ### DON'T use `async` when it has no useful effect
@@ -1588,6 +1609,7 @@ omit the `async` without changing the behavior of the function, do so.
 Future<int> fastestBranch(Future<int> left, Future<int> right) {
   return Future.any([left, right]);
 }
+
 ```
 
 <?code-excerpt "usage_bad.dart (unnecessary-async)"?>
@@ -1595,6 +1617,7 @@ Future<int> fastestBranch(Future<int> left, Future<int> right) {
 Future<int> fastestBranch(Future<int> left, Future<int> right) async {
   return Future.any([left, right]);
 }
+
 ```
 
 Cases where `async` *is* useful include:
@@ -1643,6 +1666,7 @@ Future<bool> fileContainsBear(String path) {
 
   return completer.future;
 }
+
 ```
 
 Completer is needed for two kinds of low-level code: new asynchronous
@@ -1659,6 +1683,7 @@ Future<bool> fileContainsBear(String path) {
     return contents.contains('bear');
   });
 }
+
 ```
 
 <?code-excerpt "usage_good.dart (avoid-completer-alt)"?>
@@ -1667,6 +1692,7 @@ Future<bool> fileContainsBear(String path) async {
   var contents = await File(path).readAsString();
   return contents.contains('bear');
 }
+
 ```
 
 

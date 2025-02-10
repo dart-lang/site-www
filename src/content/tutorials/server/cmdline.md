@@ -135,6 +135,7 @@ Future<void> _handleError(String path) async {
     exitCode = 2;
   }
 }
+
 ```
 
 ### Getting dependencies
@@ -190,7 +191,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.6.1
+7   sdk: ^3.7.0-0
 8 
 9 # Add regular dependencies here.
 10 dependencies:
@@ -574,6 +575,7 @@ Future<void> _handleError(String path) async {
     [!exitCode = 2;!]
   }
 }
+
 ```
 
 An exit code of `2` indicates that the app encountered an error.

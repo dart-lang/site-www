@@ -689,6 +689,7 @@ void f(Example x) {
     int i = x._i; // OK
   }
 }
+
 ```
 
 The getter is declared `late` to be consistent with
@@ -756,6 +757,7 @@ void f(bool b, int? i, int? j) {
     print(i.isEven);
   }
 }
+
 ```
 
 In straight-line control flow cases like these (no loops),
@@ -775,6 +777,7 @@ void f(bool b, int? i, [!int j!]) {
     print(i.isEven);
   }
 }
+
 ```
 
 ### Possibly written in a previous loop iteration {:#loop-or-switch}
@@ -817,6 +820,7 @@ void f(Link? p) {
     p = p.next;
   }
 }
+
 ```
 
 This situation can also arise in `switch` statements if
@@ -850,6 +854,7 @@ void f(int i, int? j, int? k) {
       continue label;
   }
 }
+
 ```
 
 ### In catch after possible write in try {:#catch}
@@ -960,14 +965,16 @@ the new variable is promoted to `Pattern`:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 ```dart
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
+  if (o is Comparable /* (1) */ ) {
     [!Object o2 = o;!]
-    if ([!o2!] is Pattern /* (2) */) {
+    if ([!o2!] is Pattern /* (2) */ ) {
       print(
-          [!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
+        [!o2!].matchAsPrefix('foo'),
+      ); // (3) OK; o2 was promoted to `Pattern`.
     }
   }
 }
+
 ```
 
 However, someone who edits the code later might be tempted to
@@ -980,12 +987,13 @@ A redundant type check might be a better solution:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
 ```dart tag=good
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is Pattern /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is Pattern /* (2) */ ) {
       print([!(o as Pattern)!].matchAsPrefix('foo')); // (3) OK
     }
   }
 }
+
 ```
 
 Another solution that sometimes works is when you can use a more precise type.
@@ -996,12 +1004,13 @@ Because `String` is a subtype of `Comparable`, the promotion works:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-string)" replace="/is String/is [!String!]/g"?>
 ```dart tag=good
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is [!String!] /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is [!String!] /* (2) */ ) {
       print(o.matchAsPrefix('foo')); // (3) OK
     }
   }
 }
+
 ```
 
 
@@ -1047,6 +1056,7 @@ void f(int? i, int? j) {
   [!};!]
   [!// ... Use foo ...!]
 }
+
 ```
 
 Another option is to create a local variable, so it isn't write captured:
@@ -1063,6 +1073,7 @@ void f(int? i, int? j) {
   // ... Additional code ...
   print([!i2!].isEven); // (2) OK because `i2` isn't write captured.
 }
+
 ```
 
 Or you can do a redundant check:
@@ -1078,6 +1089,7 @@ void f(int? i, int? j) {
   // ... Additional code ...
   print(i[!!!].isEven); // (2) OK due to `!` check.
 }
+
 ```
 
 
@@ -1121,6 +1133,7 @@ void f(int? i, int? j) {
   };
   i = j; // (2)
 }
+
 ```
 
 **Example:**
@@ -1155,6 +1168,7 @@ void f(int? i) {
     print([!j!].isEven); // OK
   };
 }
+
 ```
 
 This solution works because `j` is inferred to have a non-nullable type (`int`)
@@ -1208,6 +1222,7 @@ void f(int? i, int? j) {
     i = j;
   };
 }
+
 ```
 
 [language version]: /resources/language/evolution#language-versioning

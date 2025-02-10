@@ -24,6 +24,7 @@ void main() {
   // TODO: refactor into an AbstractLlamaGreetingFactory?
   print('Welcome to my Llama farm!');
 }
+
 ```
 
 ## Multi-line comments
@@ -87,6 +88,7 @@ class Llama {
     // ...
   }
 }
+
 ```
 
 In the class's generated documentation, `[feed]` becomes a link

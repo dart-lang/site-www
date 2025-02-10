@@ -28,9 +28,7 @@ void main() {
       Instance of 'Chest<Item>' has 2 items.
       Instance of 'DiamondSword' dealt 50 damage.
       Instance of 'Sword' dealt 5 damage.
-    '''
-        .trimLeft()
-        .replaceAll(RegExp(r'\n\s*'), '\n');
+    '''.trimLeft().replaceAll(RegExp(r'\n\s*'), '\n');
     expect(classes.main, prints(output));
   });
 }

@@ -40,9 +40,13 @@ letter of each word (including the first word), and use no separators.
 
 <?code-excerpt "style_good.dart (type-names)"?>
 ```dart tag=good
-class SliderMenu { ... }
+class SliderMenu {
+   ...
+}
 
-class HttpRequest { ... }
+class HttpRequest {
+   ...
+}
 
 typedef Predicate<T> = bool Function(T value);
 ```
@@ -56,10 +60,14 @@ class Foo {
 }
 
 @Foo(anArg)
-class A { ... }
+class A {
+   ...
+}
 
 @Foo()
-class B { ... }
+class B {
+   ...
+}
 ```
 
 If the annotation class's constructor takes no parameters, you might want to
@@ -70,7 +78,9 @@ create a separate `lowerCamelCase` constant for it.
 const foo = Foo();
 
 @foo
-class C { ... }
+class C {
+   ...
+}
 ```
 
 ### DO name extensions using `UpperCamelCase`
@@ -83,9 +93,14 @@ and use no separators.
 
 <?code-excerpt "style_good.dart (extension-names)"?>
 ```dart tag=good
-extension MyFancyList<T> on List<T> { ... }
+extension MyFancyList<T> on List<T> {
+   ...
+}
 
-extension SmartIterable<T> on Iterable<T> { ... }
+extension SmartIterable<T> on Iterable<T> {
+   ...
+}
+
 ```
 
 [extensions]: /language/extension-methods
@@ -385,6 +400,7 @@ import 'src/error.dart';
 import 'src/foo_bar.dart';
 
 export 'src/error.dart';
+
 ```
 
 <?code-excerpt "style_lib_bad.dart (export)"?>
@@ -415,6 +431,7 @@ import 'package:bar/bar.dart';
 
 import 'foo/foo.dart';
 import 'foo.dart';
+
 ```
 
 

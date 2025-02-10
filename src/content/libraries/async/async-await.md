@@ -83,15 +83,13 @@ String createOrderMessage() {
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print(createOrderMessage());
 }
+
 ```
 
 Here's why the example fails to print the value
@@ -184,6 +182,7 @@ void main() {
   fetchUserOrder();
   print('Fetching user order...');
 }
+
 ```
 
 In the preceding example, 
@@ -211,6 +210,7 @@ void main() {
   fetchUserOrder();
   print('Fetching user order...');
 }
+
 ```
 
 In this example, `fetchUserOrder()` completes
@@ -291,17 +291,15 @@ String createOrderMessage() {
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is
+// more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print('Fetching user order...');
   print(createOrderMessage());
 }
+
 ```
 
 ```plaintext
@@ -322,12 +320,9 @@ it operates like synchronous code.
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is
+// more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 [!Future<void>!] main() [!async!] {
   print('Fetching user order...');
@@ -642,8 +637,9 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      const Duration(seconds: 4),
-      () => throw 'Cannot locate user order');
+    const Duration(seconds: 4),
+    () => throw 'Cannot locate user order',
+  );
   return str;
 }
 

@@ -53,7 +53,7 @@ var antennaDiameter = 3.7;
 var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 var image = {
   'tags': ['saturn'],
-  'url': '//path/to/saturn.jpg'
+  'url': '//path/to/saturn.jpg',
 };
 ```
 
@@ -253,8 +253,11 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   /// A constant generating constructor
-  const Planet(
-      {required this.planetType, required this.moons, required this.hasRings});
+  const Planet({
+    required this.planetType,
+    required this.moons,
+    required this.hasRings,
+  });
 
   /// All instance variables are final
   final PlanetType planetType;
@@ -265,6 +268,7 @@ enum Planet {
   bool get isGiant =>
       planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
+
 ```
 
 You might use the `Planet` enum like this:
@@ -407,7 +411,8 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            'File for $object already exists. It was modified on $modified.');
+          'File for $object already exists. It was modified on $modified.',
+        );
         continue;
       }
       await file.create();

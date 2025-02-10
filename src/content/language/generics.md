@@ -74,6 +74,7 @@ abstract class Cache<T> {
   T getByKey(String key);
   void setByKey(String key, T value);
 }
+
 ```
 
 In this code, T is the stand-in type. It's a placeholder that you can
@@ -95,7 +96,7 @@ var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
-  'humans.txt': 'We are people, not machines'
+  'humans.txt': 'We are people, not machines',
 };
 ```
 
@@ -155,6 +156,7 @@ by making it a subtype of `Object`
 class Foo<T extends Object> {
   // Any type provided to Foo for T must be non-nullable.
 }
+
 ```
 
 You can use `extends` with other types besides `Object`.
@@ -168,7 +170,10 @@ class Foo<T [!extends SomeBaseClass!]> {
   String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {...}
+class Extender extends SomeBaseClass {
+  ...
+}
+
 ```
 
 It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:

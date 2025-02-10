@@ -36,7 +36,9 @@ class Point {
     var dy = y - other.y;
     return sqrt(dx * dx + dy * dy);
   }
+
 }
+
 ```
 
 ## Operators

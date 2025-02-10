@@ -13,4 +13,5 @@ import 'package:examples/effective_dart/bar/bar.dart';
 
 import 'foo/foo.dart';
 import 'foo.dart';
+
 // #enddocregion sorted

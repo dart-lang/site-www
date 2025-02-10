@@ -32,7 +32,7 @@ class Worker {
 
     return Worker._(receivePort, sendPort);
   }
-// #enddocregion worker-spawn
+  // #enddocregion worker-spawn
 
   Future<Object?> parseJson(String message) async {
     // TODO: Ensure the port is still open.

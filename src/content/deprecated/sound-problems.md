@@ -278,12 +278,16 @@ which results in an invalid override error on `method(int)`.
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/int/[!$&!]/g"?>
 ```dart tag=fails-sa
 class Superclass<T> {
-  void method(T param) { ... }
+  void method(T param) {
+     ...
+  }
 }
 
 class Subclass extends Superclass {
   @override
-  void method([!int!] param) { ... }
+  void method([!int!] param) {
+     ...
+  }
 }
 ```
 
@@ -303,12 +307,16 @@ You can fix the example by specifying the type on the subclass:
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/Superclass /Superclass[!<int\x3E!] /g"?>
 ```dart tag=passes-sa
 class Superclass<T> {
-  void method(T param) { ... }
+  void method(T param) {
+     ...
+  }
 }
 
 class Subclass extends Superclass[!<int>!] {
   @override
-  void method(int param) { ... }
+  void method(int param) {
+     ...
+  }
 }
 ```
 
@@ -391,8 +399,10 @@ initialization list.
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g; /_HoneyBadger/HoneyBadger/g"?>
 ```dart tag=fails-sa
 HoneyBadger(Eats food, String name)
-    : [!super!](food),
-      _name = name { ... }
+  : [!super!](food),
+    _name = name {
+   ...
+}
 ```
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
@@ -409,9 +419,9 @@ Fix this error by moving the `super()` call:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last-ok)" replace="/super/[!$&!]/g"?>
 ```dart tag=passes-sa
-HoneyBadger(Eats food, String name)
-    : _name = name,
-      [!super!](food) { ... }
+HoneyBadger(Eats food, String name) : _name = name, [!super!](food) {
+   ...
+}
 ```
 
 <hr>
@@ -488,8 +498,10 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-fix)"?>
 ```dart tag=passes-sa
 var ints = [1, 2, 3];
-var maximumOrNull =
-    ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+var maximumOrNull = ints.fold<int?>(
+  null,
+  (a, b) => a == null || a < b ? b : a,
+);
 ```
 
 <hr>
@@ -514,6 +526,7 @@ Definitions of valid overrides for some members would be impossible.
 <?code-excerpt "lib/common_fixes_analysis.dart (conflicting-generics)"?>
 ```dart tag=fails-sa
 abstract class C implements List<int>, Iterable<num> {}
+
 ```
 
 #### Fix: Use consistent generics or avoid repeating transitive interfaces

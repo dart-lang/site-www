@@ -150,6 +150,7 @@ elsewhere for the solution to their problem.
 void delete(String path) {
   ...
 }
+
 ```
 
 <?code-excerpt "docs_bad.dart (first-sentence)"?>
@@ -161,6 +162,7 @@ void delete(String path) {
 void delete(String path) {
   ...
 }
+
 ```
 
 ### DO separate the first sentence of a doc comment into its own paragraph
@@ -182,6 +184,7 @@ like lists of classes and members.
 void delete(String path) {
   ...
 }
+
 ```
 
 <?code-excerpt "docs_bad.dart (first-sentence-a-paragraph)"?>
@@ -192,6 +195,7 @@ void delete(String path) {
 void delete(String path) {
   ...
 }
+
 ```
 
 ### AVOID redundancy with the surrounding context
@@ -244,6 +248,7 @@ bool all(bool predicate(T element)) => ...
 void start() {
   ...
 }
+
 ```
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase
@@ -322,7 +327,9 @@ extra effort here can make all of the other members simpler to document.
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
-class Chunk { ... }
+class Chunk {
+   ...
+}
 ```
 
 ### CONSIDER including code samples in doc comments
@@ -414,6 +421,7 @@ class ToggleComponent {}
 @Component(selector: 'toggle')
 /// A button that can be flipped on and off.
 class ToggleComponent {}
+
 ```
 
 
@@ -556,4 +564,5 @@ class Box {
   /// True if this box contains a value.
   bool get hasValue => _value != null;
 }
+
 ```

@@ -45,7 +45,7 @@ you can import a library that contains an extension of the `String` class:
 <?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" replace="/  print/print/g"?>
 ```dart
 import 'string_apis.dart';
-// ···
+  // ···
 print('42'.parseInt()); // Use an extension method.
 ```
 
@@ -63,6 +63,7 @@ extension NumberParsing on String {
   }
   // ···
 }
+
 ```
 
 The next section describes how to _use_ extension methods.
@@ -79,7 +80,7 @@ import the library it's in, and use it like an ordinary method:
 ```dart
 // Import a library that contains an extension on String.
 import 'string_apis.dart';
-// ···
+  // ···
 print('42'.padLeft(5)); // Use a String method.
 print('42'.parseInt()); // Use an extension method.
 ```
@@ -209,7 +210,9 @@ extension NumberParsing on String {
   double parseDouble() {
     return double.parse(this);
   }
+
 }
+
 ```
 
 The members of an extension can be methods, getters, setters, or operators.

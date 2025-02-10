@@ -193,8 +193,10 @@ add a string as the second argument to `assert`
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
-assert(urlString.startsWith('https'),
-    'URL ($urlString) should start with "https".');
+assert(
+  urlString.startsWith('https'),
+  'URL ($urlString) should start with "https".',
+);
 ```
 
 The first argument to `assert` can be any expression that

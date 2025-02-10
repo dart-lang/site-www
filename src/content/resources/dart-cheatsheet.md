@@ -335,11 +335,7 @@ You can create them using literals:
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
-final aMapOfStringsToInts = {
-  'one': 1,
-  'two': 2,
-  'three': 3,
-};
+final aMapOfStringsToInts = {'one': 1, 'two': 2, 'three': 3};
 ```
 
 Dart's type inference can assign types to these variables for you.
@@ -927,6 +923,7 @@ void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
 }
+
 ```
 
 ### Code example {:.no_toc}
@@ -1521,9 +1518,7 @@ which goes between the constructor's signature and its body:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1533,9 +1528,7 @@ which run only during development:
 
 <?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
-NonNegativePoint(this.x, this.y)
-    : assert(x >= 0),
-      assert(y >= 0) {
+NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
   print('I just made a NonNegativePoint: ($x, $y)');
 }
 ```
@@ -1645,10 +1638,9 @@ class Point {
 
   Point(this.x, this.y);
 
-  Point.origin()
-      : x = 0,
-        y = 0;
+  Point.origin() : x = 0, y = 0;
 }
+
 ```
 
 To use a named constructor, invoke it using its full name:
@@ -1998,6 +1990,7 @@ class ImmutablePoint {
 
   const ImmutablePoint(this.x, this.y);
 }
+
 ```
 
 ### Code example {:.no_toc}

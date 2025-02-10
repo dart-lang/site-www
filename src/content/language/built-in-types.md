@@ -221,13 +221,17 @@ object's `toString()` method.
 ```dart
 var s = 'string interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, '
-        'which is very handy.');
-assert('That deserves all caps. '
-        '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. '
-        'STRING INTERPOLATION is very handy!');
+assert(
+  'Dart has $s, which is very handy.' ==
+      'Dart has string interpolation, '
+          'which is very handy.',
+);
+assert(
+  'That deserves all caps. '
+          '${s.toUpperCase()} is very handy!' ==
+      'That deserves all caps. '
+          'STRING INTERPOLATION is very handy!',
+);
 ```
 
 :::note
@@ -241,12 +245,15 @@ operator:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
-var s1 = 'String '
+var s1 =
+    'String '
     'concatenation'
     " works even over line breaks.";
-assert(s1 ==
-    'String concatenation works even over '
-        'line breaks.');
+assert(
+  s1 ==
+      'String concatenation works even over '
+          'line breaks.',
+);
 
 var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
@@ -408,6 +415,7 @@ void main() {
   print(Function.apply(int.parse, ['11']));
   print(Function.apply(int.parse, ['11'], {#radix: 16}));
 }
+
 ```
 {% endcomment %}
 

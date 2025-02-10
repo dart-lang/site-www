@@ -34,7 +34,7 @@ jobs:
           - sdk: beta
             experimental: false
           - sdk: stable
-            experimental: false
+            experimental: true
     continue-on-error: ${{ matrix.experimental }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -61,7 +61,7 @@ jobs:
           submodules: recursive
       - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
         with:
-          sdk: stable
+          sdk: beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
@@ -76,7 +76,7 @@ jobs:
           submodules: recursive
       - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
         with:
-          sdk: stable
+          sdk: beta
       - name: Fetch Dart packages
         run: dart pub get
       - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
@@ -102,7 +102,7 @@ jobs:
           submodules: recursive
       - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
         with:
-          sdk: stable
+          sdk: beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if text can be replaced with site variables
@@ -117,7 +117,7 @@ jobs:
           submodules: recursive
       - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
         with:
-          sdk: stable
+          sdk: beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Validate the firebase.json file

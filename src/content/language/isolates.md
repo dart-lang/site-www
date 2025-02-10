@@ -92,6 +92,7 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
   final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
   return jsonData;
 }
+
 ```
 
 3. `Isolate.run()` takes the result `_readAndParseJson()` returns
@@ -142,6 +143,7 @@ void main() async {
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
+
 ```
 
 This example accomplishes the same as the previous.
@@ -323,6 +325,7 @@ class Worker {
     // be used to send messages to the worker isolate.
   }
 }
+
 ```
 
 #### Step 2: Spawn a worker isolate
@@ -452,6 +455,7 @@ Future<void> parseJson(String message) async {
   await _isolateReady.future;
   _sendPort.send(message);
 }
+
 ```
 
 #### Complete example
@@ -506,6 +510,7 @@ Future<void> parseJson(String message) async {
       await _isolateReady.future;
       _sendPort.send(message);
     }
+  
   }
   ```
 
@@ -577,6 +582,7 @@ class Worker {
     // TODO: Initialize worker isolate's ports.
   }
 }
+
 ```
 
 :::note
@@ -630,7 +636,7 @@ class Worker {
         commandPort,
       ));
     };
-// ···
+    // ···
   }
 ```
 
@@ -719,7 +725,7 @@ called `_handleResponsesFromIsolate`.
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// ···
+  // ···
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
@@ -743,6 +749,7 @@ static void _startRemoteIsolate(SendPort sendPort) {
   sendPort.send(receivePort.sendPort);
   _handleCommandsToIsolate(receivePort, sendPort);
 }
+
 ```
 
 Next, add the `_handleCommandsToIsolate` method, which is responsible for
@@ -758,7 +765,9 @@ and sending the decoded json back as a response.
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     try {
       final jsonData = jsonDecode(message as String);
@@ -867,7 +876,9 @@ the id and the decoded json back to the main isolate, again using a record.
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     final (int id, String jsonText) = message as (int, String); // New
     try {
@@ -922,7 +933,7 @@ ports on the main isolate and the worker isolate.
 ```dart
 class Worker {
   bool _closed = false;
-// ···
+  // ···
   void close() {
     if (!_closed) {
       _closed = true;
@@ -931,6 +942,7 @@ class Worker {
       print('--- port closed --- ');
     }
   }
+
 ```
 
 - Next, you need to handle the “shutdown” message in the worker isolate. Add the
@@ -993,7 +1005,8 @@ void main() async {
   print(await worker.parseJson('"banana"'));
   print(await worker.parseJson('[true, false, null, 1, "string"]'));
   print(
-      await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]));
+    await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]),
+  );
   worker.close();
 }
 

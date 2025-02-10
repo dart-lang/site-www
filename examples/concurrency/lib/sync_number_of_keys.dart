@@ -18,4 +18,5 @@ String _readFileSync() {
   final contents = file.readAsStringSync();
   return contents.trim();
 }
+
 // #enddocregion blocking
