@@ -47,7 +47,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion code-like-prose
     // "If errors is empty..."
     if (errors.isEmpty) {
-      /*-...-*/
+      // ...
     }
 
     // "Hey, subscription, cancel!"

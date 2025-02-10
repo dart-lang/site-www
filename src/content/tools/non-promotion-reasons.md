@@ -938,8 +938,8 @@ the variable's current promoted type
 
 ```dart tag=bad
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is Pattern /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is Pattern /* (2) */ ) {
       print(o.matchAsPrefix('foo')); // (3) ERROR
     }
   }

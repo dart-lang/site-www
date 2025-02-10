@@ -94,7 +94,7 @@ it like a sentence.
 ```dart tag=good
 // "If errors is empty..."
 if (errors.isEmpty) {
-  /*-...-*/
+  // ...
 }
 
 // "Hey, subscription, cancel!"
@@ -108,7 +108,7 @@ monsters.where((monster) => monster.hasClaws);
 ```dart tag=bad
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) {
-  /*-...-*/
+  // ...
 }
 
 // Toggle what? To what?
@@ -125,7 +125,7 @@ to force your names to *literally* read like a grammatically correct sentence.
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
 ```dart tag=bad
 if (theCollectionOfErrors.isEmpty) {
-  /*-...-*/
+  // ...
 }
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);

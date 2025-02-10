@@ -21,7 +21,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion code-like-prose
     // Telling errors to empty itself, or asking if it is?
     if (errors.empty as bool) {
-      /*-...-*/
+      // ...
     }
 
     // Toggle what? To what?
@@ -34,7 +34,7 @@ void miscDeclAnalyzedButNotTested() {
     Iterable theCollectionOfErrors = [];
     // #docregion code-like-prose-overdone
     if (theCollectionOfErrors.isEmpty) {
-      /*-...-*/
+      // ...
     }
 
     monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
