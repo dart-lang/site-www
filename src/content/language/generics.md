@@ -203,15 +203,15 @@ or an F-bound. For example:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (f-bound)"?>
 ```dart
 abstract class Comparable<T> {
-    int compareTo(T o);
+  int compareTo(T o);
 }
 
 class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
-    @override
-    int compareTo(MyClass<T> other) {
-      // implementation...
-      return 0;
-    }
+  @override
+  int compareTo(MyClass<T> other) {
+    // implementation...
+    return 0;
+  }
 }
 ```
 

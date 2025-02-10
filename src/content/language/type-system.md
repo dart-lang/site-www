@@ -375,7 +375,9 @@ without needing you to explicitly specify the type `f<B>(C())`:
 <?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
 ```dart
 class A<X extends A<X>> {}
+
 class B extends A<B> {}
+
 class C extends B {}
 
 void f<X extends A<X>>(X x) {}
