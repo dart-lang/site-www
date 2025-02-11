@@ -1410,47 +1410,37 @@ var completer = Completer<Map<String, int>>();
 ```
 
 
-### DO annotate with `dynamic` instead of letting inference fail
+<a id="do-annotate-with-dynamic-instead-of-letting-inference-fail" aria-hidden="true"></a>
+### DO annotate with `Object?` instead of letting inference fail
 
-When inference doesn't fill in a type, it usually defaults to `dynamic`. If
-`dynamic` is the type you want, this is technically the most terse way to get
-it. However, it's not the most *clear* way. A casual reader of your code who
-sees that an annotation is missing has no way of knowing if you intended it to be
-`dynamic`, expected inference to fill in some other type, or simply forgot to
-write the annotation.
+When inference doesn't fill in a type, it usually defaults to `dynamic`, which
+is rarely the best type to use. A `dynamic` reference allows for unsafe
+operations that use identical syntax to operations that are statically safe when
+the type is not `dynamic`. An `Object?` reference is safer. For example a
+`dynamic` reference may fail a type cast that is not visible in the syntax,
+while an `Object?` reference will guarantee that the `as` cast is written in
+source.
 
-When `dynamic` is the type you want, write that explicitly to make your intent
-clear and highlight that this code has less static safety.
+Use `Object?` to indicate in a signature that any type of object, or null, is
+allowed.
 
-<?code-excerpt "design_good.dart (prefer-dynamic)"?>
+<?code-excerpt "design_good.dart (prefer-object-question)"?>
 ```dart tag=good
-dynamic mergeJson(dynamic original, dynamic changes) => ...
+Object? mergeJson(Object? original, Object? changes) => ...
 ```
 
-<?code-excerpt "design_bad.dart (prefer-dynamic)"?>
+<?code-excerpt "design_bad.dart (prefer-object-question)"?>
 ```dart tag=bad
 mergeJson(original, changes) => ...
 ```
 
-Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
-
-<?code-excerpt "design_good.dart (infer-dynamic)"?>
-```dart tag=good
-Map<String, dynamic> readJson() => ...
-
-void printUsers() {
-  var json = readJson();
-  var users = json['users'];
-  print(users);
-}
-```
-
-Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
-`dynamic` for `users`. It's fine to leave `users` without a type annotation. The
-distinction is a little subtle. It's OK to allow inference to *propagate*
-`dynamic` through your code from a `dynamic` type annotation somewhere else, but
-you don't want it to inject a `dynamic` type annotation in a place where your
-code did not specify one.
+In the cases where a dynamic member will be invoked this is technically the most
+terse way to get a dynamic reference. However, it's not the most *clear* way. A
+casual reader of your code who sees that an annotation is missing has no way of
+knowing if you intended it to be `dynamic`, expected inference to fill in some
+other type, or simply forgot to write the annotation. When `dynamic` is the type
+you want, write that explicitly to make your intent clear and highlight that
+this code has less static safety.
 
 :::note
 With Dart's strong type system and type inference, 
@@ -1648,7 +1638,8 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### AVOID using `dynamic` unless you want to disable static checking
+<a id="avoid-using-dynamic-unless-you-want-to-disable-static-checking" aria-hidden="true"></a>
+### AVOID using `dynamic` unless you want to invoke dynamic members
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
@@ -1656,8 +1647,8 @@ values: `Object?` and `dynamic`. However, they convey different things. If you
 simply want to state that you allow all objects, use `Object?`. If you want to
 allow all objects *except* `null`, then use `Object`.
 
-The type `dynamic` not only accepts all objects, but it also permits all
-*operations*. Any member access on a value of type `dynamic` is allowed at
+The type `dynamic` not only accepts all objects, but it also statically permits
+all *operations*. Any member access on a value of type `dynamic` is allowed at
 compile time, but may fail and throw an exception at runtime. If you want
 exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
 type to use.
@@ -1678,11 +1669,29 @@ bool convertToBool(Object arg) {
 }
 ```
 
-The main exception to this rule is when working with existing APIs that use
-`dynamic`, especially inside a generic type. For example, JSON objects have type
-`Map<String, dynamic>` and your code will need to accept that same type. Even
-so, when using a value from one of these APIs, it's often a good idea to cast it
-to a more precise type before accessing members.
+Prefer using `Object?` over `dynamic` in code that is not invoking a member
+dynamically, even when working with existing APIs that use `dynamic`. For
+example, the static types `Map<String, dynamic>` and `Map<String, Object?>` can
+both be used as the static type for the same value, and the `Object?` form is
+preferred.
+
+For intentional dynamic member access, consider using a cast to `dynamic` for
+the member access specifically. Separating the use of `Object?` for non-dynamic
+behavior and limiting `dynamic` to the places where dynamic operations are
+intended makes them syntactically distinct and highlights the places where
+mistakes like misspellings may not be caught by static type checking.
+
+<?code-excerpt "design_good.dart (cast-for-dynamic-member)"?>
+```dart tag=good
+/// Returns whether the length of [value] is exactly [length].
+///
+/// The argument may be a [String], an [Iterable] or [Map], or any other
+/// type that has a `length` field.
+bool hasLength(Object? value, int length) {
+  var actualLength = (value as dynamic).length;
+  return length == actualLength;
+}
+```
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values
