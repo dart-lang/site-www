@@ -455,7 +455,7 @@ formatting the code by hand and trying to make it more readable. Think of
 to produce beautiful code.
 
 <a id="avoid-lines-longer-than-80-characters"></a>
-### PREFER lines 80 characters or less
+### PREFER lines 80 characters or fewer
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -469,7 +469,7 @@ compact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask
 yourself, "Does each word in that type name tell me something critical or
 prevent a name collision?" If not, consider omitting it.
 
-Note that `dart format` defaults to 80 characters or less, though you can
+Note that `dart format` defaults to 80 characters or fewer, though you can
 [configure][] the default. 
 It does not split long string literals to fit in 80 columns, 
 so you have to do that manually.
