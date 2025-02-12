@@ -16,17 +16,20 @@ class SvnVersionGenerator {
     final result = <String, String>{
       for (final MapEntry(key: revision, value: version)
           in versionInfos.entries)
-        revision: version.toString()
+        revision: version.toString(),
     };
     return result;
   }
 
   Future<void> _loadVersionInfo(
-      Map<String, VersionInfo> versionInfos, String channel) async {
-    final versionBaseNames = await _downloader
-        .fetchVersionPaths(channel)
-        .map(path.basename)
-        .toList();
+    Map<String, VersionInfo> versionInfos,
+    String channel,
+  ) async {
+    final versionBaseNames =
+        await _downloader
+            .fetchVersionPaths(channel)
+            .map(path.basename)
+            .toList();
 
     await Future.forEach<String>(versionBaseNames, (name) async {
       if (!isSvnRevision(name)) {

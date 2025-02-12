@@ -24,10 +24,10 @@ import 'src/commands/verify_firebase_json.dart';
 /// run `dart run dart_site --help`.
 final class DartSiteCommandRunner extends CommandRunner<int> {
   DartSiteCommandRunner()
-      : super(
-          'dart_site',
-          'Infrastructure tooling for the Dart documentation website.',
-        ) {
+    : super(
+        'dart_site',
+        'Infrastructure tooling for the Dart documentation website.',
+      ) {
     addCommand(CheckLinksCommand());
     addCommand(CheckLinkReferencesCommand());
     addCommand(CheckSiteVariableCommand());

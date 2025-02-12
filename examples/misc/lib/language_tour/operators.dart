@@ -18,14 +18,16 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion nested-cascades
-    final addressBook = (AddressBookBuilder()
-          ..name = 'jenny'
-          ..email = 'jenny@example.com'
-          ..phone = (PhoneNumberBuilder()
-                ..number = '415-555-0100'
-                ..label = 'home')
-              .build())
-        .build();
+    final addressBook =
+        (AddressBookBuilder()
+              ..name = 'jenny'
+              ..email = 'jenny@example.com'
+              ..phone =
+                  (PhoneNumberBuilder()
+                        ..number = '415-555-0100'
+                        ..label = 'home')
+                      .build())
+            .build();
     // #enddocregion nested-cascades
   }
 
@@ -33,13 +35,13 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion cannot-cascade-on-void
     var sb = StringBuffer();
     sb.write('foo')
-        // #enddocregion cannot-cascade-on-void
-        /*
+    // #enddocregion cannot-cascade-on-void
+    /*
       // #docregion cannot-cascade-on-void
       ..write('bar'); // Error: method 'write' isn't defined for 'void'.
       // #enddocregion cannot-cascade-on-void
       */
-        ;
+    ;
   }
 }
 

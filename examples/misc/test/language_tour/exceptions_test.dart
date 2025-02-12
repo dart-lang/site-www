@@ -24,10 +24,13 @@ void main() {
     // #enddocregion rethrow
 
     expect(
-        main,
-        prints(allOf([
+      main,
+      prints(
+        allOf([
           contains('misbehave() partially handled'),
-          contains('main() finished handling')
-        ])));
+          contains('main() finished handling'),
+        ]),
+      ),
+    );
   });
 }

@@ -46,7 +46,7 @@ rest are not evaluated.
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
-  _ => false
+  _ => false,
 };
 ```
 
@@ -100,7 +100,7 @@ String asciiCharType(int char) {
     == space => 'space',
     > space && < zero => 'punctuation',
     >= zero && <= nine => 'digit',
-    _ => ''
+    _ => '',
   };
 }
 ```

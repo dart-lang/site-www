@@ -18,9 +18,7 @@ class Point {
   // Initializer list sets instance variables before
   // the constructor body runs.
   // #docregion initializer-list-no-comment
-  Point.fromJson(Map<String, double> json)
-      : x = json['x']!,
-        y = json['y']! {
+  Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
     print('In Point.fromJson(): ($x, $y)');
   }
   // #enddocregion initializer-list-no-comment
@@ -32,7 +30,7 @@ class Point {
   }
   // #enddocregion initializer-list-with-assert
 
-// #docregion idiomatic-constructor
+  // #docregion idiomatic-constructor
 }
 // #enddocregion idiomatic-constructor
 
@@ -97,4 +95,5 @@ class PointD {
     return 'PointD($x,$y)';
   }
 }
+
 // #enddocregion initialize-null

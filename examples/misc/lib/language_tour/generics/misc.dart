@@ -7,7 +7,7 @@ void miscDeclAnalyzedButNotTested() {
     var pages = <String, String>{
       'index.html': 'Homepage',
       'robots.txt': 'Hints for web robots',
-      'humans.txt': 'We are people, not machines'
+      'humans.txt': 'We are people, not machines',
     };
     // #enddocregion collection-literals
   }
@@ -17,4 +17,5 @@ void miscDeclAnalyzedButNotTested() {
 class Foo<T extends Object> {
   // Any type provided to Foo for T must be non-nullable.
 }
+
 // #enddocregion non-nullable

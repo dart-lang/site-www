@@ -26,4 +26,5 @@ class SmartTelevision extends Television {
   void _upgradeApps() {}
   // #docregion smart-tv
 }
+
 // #enddocregion smart-tv

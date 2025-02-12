@@ -30,18 +30,20 @@ class VersionSelector {
 
   Future<void> init() async {
     _versionSelector.addEventListener(
-        'change',
-        (Event event) {
-          populateTable();
-        }.toJS);
+      'change',
+      (Event event) {
+        populateTable();
+      }.toJS,
+    );
     _osSelector.addEventListener(
-        'change',
-        (Event event) {
-          filterTable();
-        }.toJS);
-    final versions = (await fetchSdkVersions(channel)
-          ..sort())
-        .reversed;
+      'change',
+      (Event event) {
+        filterTable();
+      }.toJS,
+    );
+    final versions =
+        (await fetchSdkVersions(channel)
+          ..sort()).reversed;
     for (final version in versions) {
       addVersion(version);
     }
@@ -63,12 +65,15 @@ class VersionSelector {
   }
 
   Future<void> populateTable() async {
-    final selectedVersion =
-        _versionSelector.selectedOptions.item(0)?.getAttribute('value');
+    final selectedVersion = _versionSelector.selectedOptions
+        .item(0)
+        ?.getAttribute('value');
     if (selectedVersion == null) return;
     final svnRevision = svnRevisionForVersion(selectedVersion);
-    final versionInfo =
-        await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
+    final versionInfo = await _client.fetchVersion(
+      channel,
+      svnRevision ?? selectedVersion,
+    );
     await findSystemLocale();
     await initializeDateFormatting(Intl.systemLocale);
     clearTable();
@@ -90,10 +95,12 @@ class VersionSelector {
   }
 
   void filterTable() {
-    final selectedVersion =
-        _versionSelector.selectedOptions.item(0)!.getAttribute('value');
-    final selectedOs =
-        _osSelector.selectedOptions.item(0)!.getAttribute('value');
+    final selectedVersion = _versionSelector.selectedOptions
+        .item(0)!
+        .getAttribute('value');
+    final selectedOs = _osSelector.selectedOptions
+        .item(0)!
+        .getAttribute('value');
 
     final tableVersionRows = _table.querySelectorAll('tr[data-version]');
     if (selectedVersion == 'all' && selectedOs == 'all') {
@@ -109,8 +116,9 @@ class VersionSelector {
         selector += '[data-version="$selectedVersion"]';
       }
 
-      final tableOsSelectors =
-          _table.querySelectorAll('$selector[data-os="api"]');
+      final tableOsSelectors = _table.querySelectorAll(
+        '$selector[data-os="api"]',
+      );
       tableOsSelectors.forEachElement((element) {
         element.classList.remove('hidden');
       });
@@ -151,9 +159,10 @@ class VersionSelector {
   }
 
   void addVersion(Version version) {
-    final option = (document.createElement('option') as HTMLOptionElement)
-      ..text = version.toString()
-      ..setAttribute('value', version.toString());
+    final option =
+        (document.createElement('option') as HTMLOptionElement)
+          ..text = version.toString()
+          ..setAttribute('value', version.toString());
     _versionSelector.appendChild(option);
   }
 
@@ -169,8 +178,11 @@ class VersionSelector {
               continue;
             }
           } else if (platformVariant.architecture == 'ARMv7' &&
-              versionInfo.date.isBefore(DateTime.parse(
-                  (channel == 'dev') ? '2015-10-21' : '2015-08-31'))) {
+              versionInfo.date.isBefore(
+                DateTime.parse(
+                  (channel == 'dev') ? '2015-10-21' : '2015-08-31',
+                ),
+              )) {
             continue;
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
@@ -234,12 +246,13 @@ class VersionSelector {
             (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
               ..setAttribute('data-version', versionInfo.version.toString())
               ..setAttribute('data-os', archiveMap[name] ?? '');
-        final versionCell = row.insertCell()
-          ..textContent = versionInfo.version.toString();
-        versionCell
-            .appendChild((document.createElement('span') as HTMLSpanElement)
-              ..textContent = ' (${_prettyRevRef(versionInfo)})'
-              ..classList.add('muted'));
+        final versionCell =
+            row.insertCell()..textContent = versionInfo.version.toString();
+        versionCell.appendChild(
+          (document.createElement('span') as HTMLSpanElement)
+            ..textContent = ' (${_prettyRevRef(versionInfo)})'
+            ..classList.add('muted'),
+        );
         row.insertCell().textContent = name;
         row.insertCell()
           ..classList.add('nowrap')
@@ -256,7 +269,8 @@ class VersionSelector {
               continue;
             }
 
-            var baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
+            var baseFileName =
+                '${archiveMap[pa]}-${archiveMap[name]}-'
                 '${archiveMap[platformVariant.architecture]}';
 
             if (pa == 'Debian package') {
@@ -272,18 +286,22 @@ class VersionSelector {
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
 
-            c.appendChild((document.createElement('a') as HTMLAnchorElement)
-              ..text = pa
-              ..setAttribute('href', uri));
+            c.appendChild(
+              (document.createElement('a') as HTMLAnchorElement)
+                ..text = pa
+                ..setAttribute('href', uri),
+            );
             final svnRevisionInfo = _svnRevision(versionInfo);
             if (pa != 'Dart Editor' &&
                 pa != 'Debian package' &&
                 (svnRevisionInfo == null || svnRevisionInfo > 38976)) {
               c.append(' '.toJS);
-              c.appendChild((document.createElement('a') as HTMLAnchorElement)
-                ..textContent = '(SHA-256)'
-                ..setAttribute('href', '$uri.sha256sum')
-                ..classList.add('sha'));
+              c.appendChild(
+                (document.createElement('a') as HTMLAnchorElement)
+                  ..textContent = '(SHA-256)'
+                  ..setAttribute('href', '$uri.sha256sum')
+                  ..classList.add('sha'),
+              );
             }
             c.appendChild(document.createElement('br'));
           }
@@ -292,12 +310,14 @@ class VersionSelector {
     }
 
     // Add DartDoc archive.
-    final row = (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
-      ..setAttribute('data-version', versionInfo.version.toString())
-      ..setAttribute('data-os', 'api');
-    final rev = (document.createElement('span') as HTMLSpanElement)
-      ..textContent = ' (${_prettyRevRef(versionInfo)})'
-      ..classList.add('muted');
+    final row =
+        (_table.tBodies.item(0) as HTMLTableSectionElement).insertRow()
+          ..setAttribute('data-version', versionInfo.version.toString())
+          ..setAttribute('data-os', 'api');
+    final rev =
+        (document.createElement('span') as HTMLSpanElement)
+          ..textContent = ' (${_prettyRevRef(versionInfo)})'
+          ..classList.add('muted');
     row.insertCell()
       ..textContent = versionInfo.version.toString()
       ..appendChild(rev);
@@ -307,11 +327,14 @@ class VersionSelector {
     _addReleaseDateCell(versionInfo, row);
 
     final c = row.insertCell()..classList.add('archives');
-    final uri = '$_storageBase/channels/$channel/release/'
+    final uri =
+        '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
-    c.appendChild((document.createElement('a') as HTMLAnchorElement)
-      ..textContent = 'API docs'
-      ..setAttribute('href', uri));
+    c.appendChild(
+      (document.createElement('a') as HTMLAnchorElement)
+        ..textContent = 'API docs'
+        ..setAttribute('href', uri),
+    );
 
     final templateRows = _table.querySelectorAll('.template');
     templateRows.forEachElement((element) {
@@ -325,8 +348,9 @@ class VersionSelector {
     if (creationDate == null) {
       dateRow.textContent = '---';
     } else {
-      dateRow.textContent =
-          DateFormat.yMMMd(Intl.systemLocale).format(creationDate);
+      dateRow.textContent = DateFormat.yMMMd(
+        Intl.systemLocale,
+      ).format(creationDate);
     }
   }
 }

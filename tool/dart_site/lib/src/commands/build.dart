@@ -32,9 +32,7 @@ final class BuildSiteCommand extends Command<int> {
         'node_modules/@11ty/eleventy/cmd.cjs',
         '--config=eleventy.config.ts',
       ],
-      environment: {
-        'PRODUCTION': '$productionRelease',
-      },
+      environment: {'PRODUCTION': '$productionRelease'},
     );
 
     await stdout.addStream(process.stdout);
