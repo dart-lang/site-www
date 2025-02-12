@@ -61,9 +61,11 @@ waiting for each one to complete before executing the next one.
 ```dart
 void runUsingFuture() {
   // ...
-  findEntryPoint().then((entryPoint) {
-    return runExecutable(entryPoint, args);
-  }).then(flushThenExit);
+  findEntryPoint()
+      .then((entryPoint) {
+        return runExecutable(entryPoint, args);
+      })
+      .then(flushThenExit);
 }
 ```
 
@@ -123,11 +125,14 @@ object might throw.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catch-error)"?>
 ```dart
-httpClient.read(url).then((String result) {
-  print(result);
-}).catchError((e) {
-  // Handle or ignore the error.
-});
+httpClient
+    .read(url)
+    .then((String result) {
+      print(result);
+    })
+    .catchError((e) {
+      // Handle or ignore the error.
+    });
 ```
 
 The `then().catchError()` pattern is the asynchronous version of
@@ -160,8 +165,8 @@ result
     .then((_) => lengthyComputation())
     .then((_) => print('Done!'))
     .catchError((exception) {
-  /* Handle exception... */
-});
+      /* Handle exception... */
+    });
 ```
 
 In the preceding example, the methods run in the following order:
@@ -384,8 +389,9 @@ different type of data:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 ```dart
-var lines =
-    inputStream.transform(utf8.decoder).transform(const LineSplitter());
+var lines = inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter());
 ```
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -415,8 +421,9 @@ Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines =
-      inputStream.transform(utf8.decoder).transform(const LineSplitter());
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
   [!try!] {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
@@ -438,14 +445,20 @@ an `onDone` listener.
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
-inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
-    (String line) {
-  print('Got ${line.length} characters from stream');
-}, [!onDone!]: () {
-  print('file is now closed');
-}, [!onError!]: (e) {
-  print(e);
-});
+inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter())
+    .listen(
+      (String line) {
+        print('Got ${line.length} characters from stream');
+      },
+      [!onDone!]: () {
+        print('file is now closed');
+      },
+      [!onError!]: (e) {
+        print(e);
+      },
+    );
 ```
 
 

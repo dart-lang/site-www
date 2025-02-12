@@ -39,27 +39,32 @@ final class Messages {
       analyzerMessages: analyzerMessages,
       linterMessages: linterMessages,
       frontEndMessages: frontEndMessages,
-      cfeToAnalyzerErrorCodeTables:
-          CfeToAnalyzerErrorCodeTables._(frontEndMessages),
+      cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._(
+        frontEndMessages,
+      ),
     );
   }
 }
 
 /// Pattern used by the front end to identify placeholders in error message
 /// strings.
-final RegExp _placeholderPattern =
-    RegExp('#([-a-zA-Z0-9_]+)(?:%([0-9]*).([0-9]+))?');
+final RegExp _placeholderPattern = RegExp(
+  '#([-a-zA-Z0-9_]+)(?:%([0-9]*).([0-9]+))?',
+);
 
 /// Convert a CFE template string (which uses placeholders like `#string`) to
 /// an analyzer template string (which uses placeholders like `{0}`).
 String convertTemplate(Map<String, int> placeholderToIndexMap, String entry) {
-  return entry.replaceAllMapped(_placeholderPattern,
-      (match) => '{${placeholderToIndexMap[match.group(0)!]}}');
+  return entry.replaceAllMapped(
+    _placeholderPattern,
+    (match) => '{${placeholderToIndexMap[match.group(0)!]}}',
+  );
 }
 
 Future<String> _fetchSdkFile(String pathInSdk) async {
   final uri = Uri.parse(
-      'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/$pathInSdk');
+    'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/$pathInSdk',
+  );
   final rawFile = await http.read(uri);
   return rawFile;
 }
@@ -73,7 +78,8 @@ Future<Object?> _loadSdkYaml(String pathInSdk) async {
 /// two-level map of [ErrorCodeInfo], indexed first by class name and then by
 /// error name.
 Map<String, Map<String, AnalyzerErrorCodeInfo>> _decodeAnalyzerMessagesYaml(
-    Object? yaml) {
+  Object? yaml,
+) {
   Never problem(String message) {
     throw Exception('Problem in analyzer/messages.yaml: $message');
   }
@@ -94,22 +100,29 @@ Map<String, Map<String, AnalyzerErrorCodeInfo>> _decodeAnalyzerMessagesYaml(
     for (final errorEntry in classValue.entries) {
       final errorName = errorEntry.key;
       if (errorName is! String) {
-        problem('in class $className, non-string error key '
-            '${json.encode(errorName)}');
+        problem(
+          'in class $className, non-string error key '
+          '${json.encode(errorName)}',
+        );
       }
       final errorValue = errorEntry.value;
       if (errorValue is! Map<Object?, Object?>) {
-        problem('value associated with error $className.$errorName is not a '
-            'map');
+        problem(
+          'value associated with error $className.$errorName is not a '
+          'map',
+        );
       }
 
       AnalyzerErrorCodeInfo errorCodeInfo;
       try {
-        errorCodeInfo = (result[className] ??= {})[errorName] =
-            AnalyzerErrorCodeInfo.fromYaml(errorValue);
+        errorCodeInfo =
+            (result[className] ??=
+                {})[errorName] = AnalyzerErrorCodeInfo.fromYaml(errorValue);
       } catch (e, st) {
         Error.throwWithStackTrace(
-            'while processing $className.$errorName, $e', st);
+          'while processing $className.$errorName, $e',
+          st,
+        );
       }
 
       if (errorCodeInfo case AliasErrorCodeInfo(:final aliasFor)) {
@@ -121,8 +134,10 @@ Map<String, Map<String, AnalyzerErrorCodeInfo>> _decodeAnalyzerMessagesYaml(
         for (final key in aliasForPath) {
           final value = node[key];
           if (value is! Map<Object?, Object?>) {
-            problem('No Map value at "$aliasFor", aliased from '
-                '$className.$errorName');
+            problem(
+              'No Map value at "$aliasFor", aliased from '
+              '$className.$errorName',
+            );
           }
           node = value;
         }
@@ -163,7 +178,7 @@ class AliasErrorCodeInfo extends AnalyzerErrorCodeInfo {
   final String aliasFor;
 
   AliasErrorCodeInfo._fromYaml(super.yaml, {required this.aliasFor})
-      : super._fromYaml();
+    : super._fromYaml();
 
   String get aliasForClass => aliasFor.split('.').first;
 }
@@ -223,30 +238,37 @@ pkg/front_end/tool/fasta generate-messages
       }
       final previousEntryForIndex = indexToInfo[index];
       if (previousEntryForIndex != null) {
-        throw Exception('Index $index used by both '
-            '$previousEntryForIndex and $frontEndCode');
+        throw Exception(
+          'Index $index used by both '
+          '$previousEntryForIndex and $frontEndCode',
+        );
       }
       indexToInfo[index] = errorCodeInfo;
       final analyzerCodeLong = errorCodeInfo.analyzerCode.single;
       final expectedPrefix = 'ParserErrorCode.';
       if (!analyzerCodeLong.startsWith(expectedPrefix)) {
-        throw Exception('Expected all analyzer error codes to be prefixed with '
-            '${json.encode(expectedPrefix)}.  Found '
-            '${json.encode(analyzerCodeLong)}.');
+        throw Exception(
+          'Expected all analyzer error codes to be prefixed with '
+          '${json.encode(expectedPrefix)}.  Found '
+          '${json.encode(analyzerCodeLong)}.',
+        );
       }
       final analyzerCode = analyzerCodeLong.substring(expectedPrefix.length);
       final previousEntryForAnalyzerCode = analyzerCodeToInfo[analyzerCode];
       if (previousEntryForAnalyzerCode != null) {
-        throw Exception('Analyzer code $analyzerCode used by both '
-            '$previousEntryForAnalyzerCode and '
-            '$frontEndCode');
+        throw Exception(
+          'Analyzer code $analyzerCode used by both '
+          '$previousEntryForAnalyzerCode and '
+          '$frontEndCode',
+        );
       }
       analyzerCodeToInfo[analyzerCode] = errorCodeInfo;
     }
     for (var i = 1; i < indexToInfo.length; i++) {
       if (indexToInfo[i] == null) {
         throw Exception(
-            'Indices are not consecutive; no error code has index $i.');
+          'Indices are not consecutive; no error code has index $i.',
+        );
       }
     }
   }
@@ -289,13 +311,14 @@ abstract class ErrorCodeInfo {
 
   /// Decodes an [ErrorCodeInfo] object from its YAML representation.
   ErrorCodeInfo.fromYaml(Map<Object?, Object?> yaml)
-      : this(
-            correctionMessage: yaml['correctionMessage'] as String?,
-            deprecatedMessage: yaml['deprecatedMessage'] as String?,
-            documentation: yaml['documentation'] as String?,
-            problemMessage: yaml['problemMessage'] as String? ?? '',
-            sharedName: yaml['sharedName'] as String?,
-            previousName: yaml['previousName'] as String?);
+    : this(
+        correctionMessage: yaml['correctionMessage'] as String?,
+        deprecatedMessage: yaml['deprecatedMessage'] as String?,
+        documentation: yaml['documentation'] as String?,
+        problemMessage: yaml['problemMessage'] as String? ?? '',
+        sharedName: yaml['sharedName'] as String?,
+        previousName: yaml['previousName'] as String?,
+      );
 
   /// Given a messages.yaml entry, come up with a mapping from placeholder
   /// patterns in its message strings to their corresponding indices.
@@ -308,8 +331,9 @@ abstract class ErrorCodeInfo {
         // make sure none of those are used.
         if (match.group(0) != '#${match.group(1)}') {
           throw Exception(
-              'Template string ${json.encode(value)} contains unsupported '
-              'placeholder pattern ${json.encode(match.group(0))}');
+            'Template string ${json.encode(value)} contains unsupported '
+            'placeholder pattern ${json.encode(match.group(0))}',
+          );
         }
 
         mapping[match.group(0)!] ??= mapping.length;
@@ -330,9 +354,9 @@ class FrontEndErrorCodeInfo extends ErrorCodeInfo {
   final int? index;
 
   FrontEndErrorCodeInfo.fromYaml(super.yaml)
-      : analyzerCode = _decodeAnalyzerCode(yaml['analyzerCode']),
-        index = yaml['index'] as int?,
-        super.fromYaml();
+    : analyzerCode = _decodeAnalyzerCode(yaml['analyzerCode']),
+      index = yaml['index'] as int?,
+      super.fromYaml();
 
   static List<String> _decodeAnalyzerCode(Object? value) {
     return switch (value) {

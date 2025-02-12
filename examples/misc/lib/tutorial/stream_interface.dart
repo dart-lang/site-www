@@ -38,19 +38,26 @@ abstract class MyStream<T> implements Stream<T> {
 
   bool get isBroadcast;
 
-  Stream<T> asBroadcastStream(
-      {void Function(StreamSubscription<T> subscription)? onListen,
-      void Function(StreamSubscription<T> subscription)? onCancel});
+  Stream<T> asBroadcastStream({
+    void Function(StreamSubscription<T> subscription)? onListen,
+    void Function(StreamSubscription<T> subscription)? onCancel,
+  });
 
   // #docregion special-stream-members
   Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
-  Stream<T> timeout(Duration timeLimit,
-      {void Function(EventSink<T> sink)? onTimeout});
+  Stream<T> timeout(
+    Duration timeLimit, {
+    void Function(EventSink<T> sink)? onTimeout,
+  });
   Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
   // #enddocregion special-stream-members
 
   // #docregion listen
-  StreamSubscription<T> listen(void Function(T event)? onData,
-      {Function? onError, void Function()? onDone, bool? cancelOnError});
+  StreamSubscription<T> listen(
+    void Function(T event)? onData, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  });
   // #enddocregion listen
 }

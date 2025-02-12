@@ -17,7 +17,8 @@ void main() {
 
     // #docregion cascade-operator
     document.querySelector('#confirm') // Get an object.
-      ?..textContent = 'Confirm' // Use its members.
+      ?..textContent =
+          'Confirm' // Use its members.
       ..classList.add('important')
       ..onClick.listen((e) => window.alert('Confirmed!'))
       ..scrollIntoView();

@@ -47,22 +47,23 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   }
 
   controller = StreamController<int>(
-      onListen: startTimer,
-      onPause: stopTimer,
-      onResume: startTimer,
-      onCancel: stopTimer);
+    onListen: startTimer,
+    onPause: stopTimer,
+    onResume: startTimer,
+    onCancel: stopTimer,
+  );
 
   return controller.stream;
 }
 // #enddocregion better-stream
 
 void main() {
-//  showBasicUsage();
-//  useMap();
-//  useWhere();
-//  useTransform();
-//  useExpand();
-//  useGenerator();
+  //  showBasicUsage();
+  //  useMap();
+  //  useWhere();
+  //  useTransform();
+  //  useExpand();
+  //  useGenerator();
   useStreamFromFutureGenerator();
   // useTake();
   // demoPause();
@@ -82,8 +83,10 @@ void onListenHint() {
 
 void showBasicUsage() {
   // #docregion basic-usage
-  var counterStream =
-      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+  var counterStream = Stream<int>.periodic(
+    const Duration(seconds: 1),
+    (x) => x,
+  ).take(15);
   // #enddocregion basic-usage
 
   // #docregion basic-for-each
@@ -92,8 +95,10 @@ void showBasicUsage() {
 }
 
 void demoPause() {
-  var counterStream =
-      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+  var counterStream = Stream<int>.periodic(
+    const Duration(seconds: 1),
+    (x) => x,
+  ).take(15);
   late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
@@ -108,8 +113,10 @@ void demoPause() {
 }
 
 void useMap() {
-  var counterStream =
-      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+  var counterStream = Stream<int>.periodic(
+    const Duration(seconds: 1),
+    (x) => x,
+  ).take(15);
 
   // #docregion use-map
   // Double the integer in each event.
@@ -119,16 +126,18 @@ void useMap() {
 }
 
 void useWhere() {
-  var counterStream =
-      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+  var counterStream = Stream<int>.periodic(
+    const Duration(seconds: 1),
+    (x) => x,
+  ).take(15);
 
   var mappedStream = counterStream
-          // #docregion use-where
-          .where((int x) => x.isEven) // Retain only even integer events.
-          .expand((var x) => [x, x]) // Duplicate each event.
-          .take(5) // Stop after the first five events.
-      // #enddocregion use-where
-      ;
+      // #docregion use-where
+      .where((int x) => x.isEven) // Retain only even integer events.
+      .expand((var x) => [x, x]) // Duplicate each event.
+      .take(5) // Stop after the first five events.
+  // #enddocregion use-where
+  ;
 
   mappedStream.forEach(print);
 }
@@ -136,10 +145,11 @@ void useWhere() {
 void useTransform() async {
   // #docregion use-transform
   Stream<List<int>> content = File('someFile.txt').openRead();
-  List<String> lines = await content
-      .transform(utf8.decoder)
-      .transform(const LineSplitter())
-      .toList();
+  List<String> lines =
+      await content
+          .transform(utf8.decoder)
+          .transform(const LineSplitter())
+          .toList();
   // #enddocregion use-transform
 
   print(lines);
@@ -168,13 +178,17 @@ void useStreamFromFutureGenerator() {
 }
 
 void useExpand() {
-  var counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
-      .expand((var x) => [x, x]); // Duplicate each event.
+  var counterStream2 = timedCounterGenerator(
+    const Duration(seconds: 1),
+    15,
+  ).expand((var x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 
 void useTake() {
-  var counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
-      .take(5); // Stop after the first five events.
+  var counterStream2 = timedCounterGenerator(
+    const Duration(seconds: 1),
+    15,
+  ).take(5); // Stop after the first five events.
   counterStream2.listen(print);
 }

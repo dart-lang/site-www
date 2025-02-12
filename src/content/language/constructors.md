@@ -84,9 +84,7 @@ class Point {
   Point(this.x, this.y);
 
   // Named constructor
-  [!Point.origin()!]
-      : x = xOrigin,
-        y = yOrigin;
+  [!Point.origin()!] : x = xOrigin, y = yOrigin;
 }
 ```
 
@@ -398,9 +396,7 @@ Separate initializers with commas.
 ```dart
 // Initializer list sets instance variables before
 // the constructor body runs.
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -434,9 +430,9 @@ class Point {
   final double distanceFromOrigin;
 
   Point(double x, double y)
-      : x = x,
-        y = y,
-        distanceFromOrigin = sqrt(x * x + y * y);
+    : x = x,
+      y = y,
+      distanceFromOrigin = sqrt(x * x + y * y);
 }
 
 void main() {

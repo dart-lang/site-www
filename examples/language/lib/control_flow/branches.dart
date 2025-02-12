@@ -123,7 +123,7 @@ dynamic miscDeclAnalyzedButNotTested() {
       slash || star || plus || minus => operator(charCode),
       comma || semicolon => punctuation(charCode),
       >= digit0 && <= digit9 => number(),
-      _ => throw FormatException('Invalid')
+      _ => throw FormatException('Invalid'),
     };
     // #enddocregion switch-exp
   }

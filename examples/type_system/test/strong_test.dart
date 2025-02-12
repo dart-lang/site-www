@@ -5,12 +5,8 @@ import 'package:type_system_examples/animal.dart';
 import 'package:type_system_examples/bounded/my_collection.dart';
 
 Matcher _throwsA<T>(String msg) => throwsA(
-      allOf(
-          TypeMatcher<T>(),
-          predicate(
-            (e) => e.toString().contains(msg),
-          )),
-    );
+  allOf(TypeMatcher<T>(), predicate((e) => e.toString().contains(msg))),
+);
 
 void main() {
   test('opening example', () {
@@ -83,8 +79,8 @@ void main() {
     });
 
     Map<String, dynamic> fetchFromExternalSource() => {
-          'names': ['a string']
-        };
+      'names': ['a string'],
+    };
 
     test('downcast check ok: use cast()', () {
       void downcastCheck() {
