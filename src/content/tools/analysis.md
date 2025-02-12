@@ -310,6 +310,11 @@ Other options are to explicitly enable individual linter rules
 or [disable individual rules][].
 :::
 
+:::note
+For more information about including options files, 
+check out the [Including shared options](#including-shared-options) section.
+:::
+
 [lints package]: {{site.pub-pkg}}/lints
 
 ### Enabling individual rules {:#individual-rules}
@@ -367,6 +372,53 @@ Due to YAML restrictions,
 **you can't mix list and key-value syntax in the same `rules` entry.**
 You can use the other syntax for rules in an included file.
 :::
+
+## Including shared options
+
+An analysis options file can include options which are specified in
+another options file, or even a list of other options files.
+You can specify such files using the top-level `include:` field:
+
+```yaml title="analysis_options.yaml"
+include: package:flutter_lints/recommended.yaml
+```
+
+An included options file can be specified with a `package:` path, or a relative
+path. Multiple analysis options files can be specified in a list:
+
+```yaml title="analysis_options.yaml"
+include:
+  - package:flutter_lints/recommended.yaml
+  - ../team_options.yaml
+```
+
+Options in an included file can be overridden in the including file,
+as well as by subsequent included files. 
+In other words, the options specified by an analysis options file are
+computed by first applying the options specified in each of the included files
+(by recursively applying this algorithm), in the order they appear in the list,
+and then overriding them with any locally defined options.
+
+For example, given the following options files:
+
+```yaml title="three.yaml"
+include: two.yaml
+# ...
+```
+
+And a final options file that includes these:
+
+```yaml title="analysis_options.yaml"
+include:
+  - one.yaml
+  - three.yaml
+# ...
+```
+
+Then the combined analysis options are computed by applying the options found
+in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
+`analysis_options.yaml`.
+
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
 
