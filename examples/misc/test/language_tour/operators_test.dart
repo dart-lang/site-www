@@ -26,10 +26,14 @@ void main() {
     int d = 1, i = 1, n = 1;
     // #docregion precedence
     // Parentheses improve readability.
-    if ((n % i == 0) && (d % i == 0)) {/*-...-*/}
+    if ((n % i == 0) && (d % i == 0)) {
+      // ...
+    }
 
     // Harder to read, but equivalent.
-    if (n % i == 0 && d % i == 0) {/*-...-*/}
+    if (n % i == 0 && d % i == 0) {
+      // ...
+    }
     // #enddocregion precedence
   });
 
@@ -81,8 +85,10 @@ void main() {
   });
 
   test('is-vs-as', () {
-    expect(employee.main,
-        m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]));
+    expect(
+      employee.main,
+      m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]),
+    );
   });
 
   group('`=` vs `??=`:', () {
@@ -119,20 +125,16 @@ void main() {
 
     test('var initially non-null', () {
       expect(
-          testInitiallyNonNull,
-          m.prints([
-            'Initially: a == 0, b == 0',
-            'After: a == 1, b == 0',
-          ]));
+        testInitiallyNonNull,
+        m.prints(['Initially: a == 0, b == 0', 'After: a == 1, b == 0']),
+      );
     });
 
     test('var initially non-null', () {
       expect(
-          testNull,
-          m.prints([
-            'Initially: a == null, b == null',
-            'After: a == 1, b == 1',
-          ]));
+        testNull,
+        m.prints(['Initially: a == null, b == null', 'After: a == 1, b == 1']),
+      );
     });
 
     /*

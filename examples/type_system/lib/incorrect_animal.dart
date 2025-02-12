@@ -2,12 +2,16 @@
 import 'animal.dart';
 
 // #docregion chase-mouse
-class Mouse extends Animal {/* ... */}
+class Mouse extends Animal {
+  /* ... */
+}
 
 class Cat extends Animal {
   @override
   // ignore: invalid_override
-  void chase(Mouse a) {/* ... */}
+  void chase(Mouse a) {
+    /* ... */
+  }
 }
 // #enddocregion chase-mouse
 
@@ -25,5 +29,6 @@ void invalidDynamicList() {
     List<Cat> foo = <dynamic>[Dog()]; // Error
     List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
   }
+
   // #enddocregion invalid-dynamic-list
 }

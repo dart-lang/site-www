@@ -45,6 +45,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence
   }
 
@@ -57,6 +58,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence-a-paragraph
   }
 
@@ -69,6 +71,7 @@ void miscDeclAnalyzedButNotTested() {
     void start() {
       ellipsis();
     }
+
     // #enddocregion third-person
   };
 
@@ -183,7 +186,7 @@ class C0 {
   // #docregion use-doc-comments
   /// The number of characters in this chunk when unsplit.
   int get length => ellipsis();
-// #enddocregion use-doc-comments
+  // #enddocregion use-doc-comments
 }
 
 //----------------------------------------------------------------------------
@@ -191,13 +194,13 @@ class C0 {
 class C1 {
   C1(this.weekday);
 
-// #docregion noun-phrases-for-non-boolean-var-etc
+  // #docregion noun-phrases-for-non-boolean-var-etc
   /// The current day of the week, where `0` is Sunday.
   int weekday;
 
   /// The number of checked buttons on the page.
   int get checkedCount => ellipsis();
-// #enddocregion noun-phrases-for-non-boolean-var-etc
+  // #enddocregion noun-phrases-for-non-boolean-var-etc
 }
 
 //----------------------------------------------------------------------------
@@ -205,7 +208,7 @@ class C1 {
 class Modal {
   Modal(this.isVisible);
 
-// #docregion noun-phrases-for-boolean-var-etc
+  // #docregion noun-phrases-for-boolean-var-etc
   /// Whether the modal is currently displayed to the user.
   bool isVisible;
 
@@ -214,19 +217,19 @@ class Modal {
 
   /// Whether resizing the current browser window will also resize the modal.
   bool get canResize => ellipsis();
-// #enddocregion noun-phrases-for-boolean-var-etc
+  // #enddocregion noun-phrases-for-boolean-var-etc
 }
 
 //----------------------------------------------------------------------------
 
 class Pool {
-// #docregion getter-and-setter
+  // #docregion getter-and-setter
   /// The pH level of the water in the pool.
   ///
   /// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
   int get phLevel => ellipsis();
   set phLevel(int level) => ellipsis();
-// #enddocregion getter-and-setter
+  // #enddocregion getter-and-setter
 }
 
 //----------------------------------------------------------------------------
@@ -235,7 +238,9 @@ class Pool {
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
-class Chunk {/* ... */}
+class Chunk {
+  /* ... */
+}
 // #enddocregion noun-phrases-for-type-or-lib
 
 //----------------------------------------------------------------------------
@@ -260,4 +265,5 @@ class Box {
   /// True if this box contains a value.
   bool get hasValue => _value != null;
 }
+
 // #enddocregion this

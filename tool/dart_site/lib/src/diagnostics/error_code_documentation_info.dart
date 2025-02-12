@@ -9,7 +9,9 @@ import 'dart:convert';
 /// user-publishable documentation about the given [errorCode], along with code
 /// blocks illustrating when the error occurs and how to fix it.
 List<ErrorCodeDocumentationPart>? parseErrorCodeDocumentation(
-    String errorCode, String? documentation) {
+  String errorCode,
+  String? documentation,
+) {
   if (documentation == null) {
     return null;
   }
@@ -53,11 +55,13 @@ class ErrorCodeDocumentationBlock extends ErrorCodeDocumentationPart {
   /// the file.
   final String? uri;
 
-  ErrorCodeDocumentationBlock(this.text,
-      {required this.containingSection,
-      required this.fileType,
-      this.languageVersion,
-      this.uri});
+  ErrorCodeDocumentationBlock(
+    this.text, {
+    required this.containingSection,
+    required this.fileType,
+    this.languageVersion,
+    this.uri,
+  });
 
   @override
   String formatForDocumentation() {
@@ -91,7 +95,8 @@ String _migrateHighlightingSpans(String input) {
         if (trimmedLine.isNotEmpty) {
           final leadingSpaceCount = line.length - trimmedLine.length;
           resultLines.add(
-              '${' ' * leadingSpaceCount}$openingMark$trimmedLine$closingMark');
+            '${' ' * leadingSpaceCount}$openingMark$trimmedLine$closingMark',
+          );
         } else {
           resultLines.add(line);
         }
@@ -109,10 +114,12 @@ String _migrateHighlightingSpans(String input) {
       final leadingSpaceCount =
           trimmedLine.isNotEmpty ? line.length - trimmedLine.length : 0;
 
-      resultLines.add('${' ' * leadingSpaceCount}$openingMark'
-          '${line.substring(leadingSpaceCount, closeIndex)}'
-          '$closingMark'
-          '${line.substring(closeIndex + closingMark.length)}');
+      resultLines.add(
+        '${' ' * leadingSpaceCount}$openingMark'
+        '${line.substring(leadingSpaceCount, closeIndex)}'
+        '$closingMark'
+        '${line.substring(closeIndex + closingMark.length)}',
+      );
       isOpen = false;
       continue;
     }
@@ -121,8 +128,10 @@ String _migrateHighlightingSpans(String input) {
       if (isOpen) {
         throw StateError('Overlapping span at line $lineNumber: $line');
       }
-      resultLines.add('${line.substring(0, openIndex)}$openingMark'
-          '${line.substring(openIndex + openingMark.length)}$closingMark');
+      resultLines.add(
+        '${line.substring(0, openIndex)}$openingMark'
+        '${line.substring(openIndex + openingMark.length)}$closingMark',
+      );
       isOpen = true;
       continue;
     }
@@ -131,8 +140,10 @@ String _migrateHighlightingSpans(String input) {
       if (openIndex < closeIndex) {
         throw StateError('Overlapping span at line $lineNumber: $line');
       }
-      resultLines.add('$openingMark${line.substring(0, closeIndex)}$closingMark'
-          '${line.substring(closeIndex + closingMark.length)}');
+      resultLines.add(
+        '$openingMark${line.substring(0, closeIndex)}$closingMark'
+        '${line.substring(closeIndex + closingMark.length)}',
+      );
       isOpen = false;
     } else {
       if (closeIndex < openIndex) {
@@ -238,8 +249,10 @@ class _ErrorCodeDocumentationParser {
   }
 
   Never problem(String explanation) {
-    throw FormatException('In documentation for $errorCode, '
-        'at line ${currentLineNumber + 1}, $explanation');
+    throw FormatException(
+      'In documentation for $errorCode, '
+      'at line ${currentLineNumber + 1}, $explanation',
+    );
   }
 
   void processCodeBlock() {
@@ -263,11 +276,15 @@ class _ErrorCodeDocumentationParser {
         ++currentLineNumber;
         if (containingSection != null) {
           // Ignore code blocks where they're allowed but aren't checked.
-          result.add(ErrorCodeDocumentationBlock(codeLines.join('\n'),
+          result.add(
+            ErrorCodeDocumentationBlock(
+              codeLines.join('\n'),
               containingSection: containingSection,
               fileType: fileType,
               languageVersion: languageVersion,
-              uri: uri));
+              uri: uri,
+            ),
+          );
         }
         return;
       } else if (line.startsWith('%')) {

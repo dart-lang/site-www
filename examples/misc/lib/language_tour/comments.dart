@@ -7,6 +7,7 @@ void miscDeclAnalyzedButNotTested() {
       // TODO: refactor into an AbstractLlamaGreetingFactory?
       print('Welcome to my Llama farm!');
     }
+
     // #enddocregion single-line-comments
   }
 
@@ -54,4 +55,5 @@ class Llama {
     // ...
   }
 }
+
 // #enddocregion doc-comments

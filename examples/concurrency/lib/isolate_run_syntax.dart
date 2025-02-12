@@ -8,4 +8,5 @@ void fib40() async {
   var result = await Isolate.run(() => slowFib(40));
   print('Fib(40) = $result');
 }
+
 // #enddocregion slow

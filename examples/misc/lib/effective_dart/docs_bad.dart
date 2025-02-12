@@ -18,6 +18,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence
   }
 
@@ -29,6 +30,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence-a-paragraph
   }
 }
@@ -69,13 +71,13 @@ class C<ChunkBuilder, Flag, LineWriter> {
 //----------------------------------------------------------------------------
 
 class Pool {
-// #docregion getter-and-setter
+  // #docregion getter-and-setter
   /// The depth of the water in the pool, in meters.
   int get waterDepth => ellipsis();
 
   /// Updates the water depth to a total of [meters] in height.
   set waterDepth(int meters) => ellipsis();
-// #enddocregion getter-and-setter
+  // #enddocregion getter-and-setter
 }
 
 //----------------------------------------------------------------------------
@@ -86,7 +88,7 @@ class Component {
 
 // #docregion doc-before-meta
 @Component(selector: 'toggle')
-
 /// A button that can be flipped on and off.
 class ToggleComponent {}
+
 // #enddocregion doc-before-meta

@@ -27,9 +27,12 @@ void main() {
     // #enddocregion read-as-string
 
     expect(
-        main,
-        m.prints(
-            ['The file is 58 characters long.', 'The file is 4 lines long.']));
+      main,
+      m.prints([
+        'The file is 58 characters long.',
+        'The file is 4 lines long.',
+      ]),
+    );
   });
 
   test('readAsBytes', () {
@@ -63,11 +66,14 @@ void main() {
 
   test('read-from-stream', () {
     expect(
-        main_test_read_from_stream,
-        prints(allOf([
+      main_test_read_from_stream,
+      prints(
+        allOf([
           contains(RegExp(r'Got \d+ characters from stream')),
           contains('file is now closed'),
-        ])));
+        ]),
+      ),
+    );
   });
 
   test('write-file', () async {
@@ -123,16 +129,14 @@ void main() {
     // #enddocregion client
 
     http_server.stopAfter = 1;
-    void clientAndServer() => Future.wait([
-          http_server.main(),
-          main(),
-        ]);
+    void clientAndServer() => Future.wait([http_server.main(), main()]);
     expect(
-        clientAndServer,
-        m.prints([
-          'Got request for /dart',
-          'Response 200: [Hello from the server]'
-        ]));
+      clientAndServer,
+      m.prints([
+        'Got request for /dart',
+        'Response 200: [Hello from the server]',
+      ]),
+    );
   });
 }
 
