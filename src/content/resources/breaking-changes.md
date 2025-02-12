@@ -9,7 +9,7 @@ lastVerified: 2024-08-04
 {% assign removed = '<span class="tag-label removed-tag">Removed</span>' %}
 {% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
 
-This page lists all language and library breaking changes and deprecations in Dart,
+This page lists all breaking changes and deprecations in the Dart SDK,
 organized by release and area, to help Dart users understand and manage their
 impact. Complete release notes are available in the [Dart SDK changelog][changelog].
 The [breaking change policy][] document describes the policy and process
@@ -20,7 +20,7 @@ around breaking changes and deprecations in Dart.
 * **Unversioned**: The Dart SDK does not maintain backward compatibility, and
   code may break as soon as you [upgrade your sdk version][sdk] if it relies on
   the previous behavior.
-  
+
   _These are the majority of changes and are not specially marked in this list._
 * **Language versioned**: The Dart SDK maintains backward compatibility for
   existing code, and the behavior change only takes effect (potentially breaking
@@ -70,12 +70,6 @@ don't include the section header.
 
 ## 3.7.0
 
-**Tentative**<br>
-The following changes are expected to be included in the 3.7 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.7 release.
-
 ### Language {:.no_toc}
 
 - {{versioned}} [Local variables and parameters named `_`][wildcards] are
@@ -88,6 +82,27 @@ accounting for them before the 3.7 release.
 
 [wildcards]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/wildcard-variables/feature-specification.md
 [56893]: {{site.repo.dart.sdk}}/issues/56893
+
+### Libraries {:.no_toc}
+
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`, `dart:js`
+
+- {{deprecated}} These legacy web libraries are officially deprecated.
+  They are expected to be removed in a future release.
+  Project should migrate to use [`package:web`][] and `dart:js_interop`.
+  To learn more, check out [Migrate to package:web][].
+
+[`package:web`]: {{site.pub-pkg}}/web
+[Migrate to package:web]: /interop/js-interop/package-web
+
+#### `dart:js`, `dart:js_util`, `package:js`
+
+- {{deprecated}} These legacy JS-interop libraries are officially deprecated.
+  They are expected to be removed in a future release.
+  Projects should migrate to use `dart:js_interop`.
+  To learn more, check out [JS interop usage][].
+
+[JS interop usage]: /interop/js-interop/usage
 
 ### Tools {:.no_toc}
 
