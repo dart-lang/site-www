@@ -171,4 +171,5 @@ void main() {
   f(C()); // Inference fails, compile-time error.
   f<B>(C()); // OK.
 }
+
 // #enddocregion inference-using-bounds

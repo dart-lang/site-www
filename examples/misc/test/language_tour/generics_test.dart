@@ -78,4 +78,5 @@ class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
     return 0;
   }
 }
+
 // #enddocregion f-bound
