@@ -67,7 +67,8 @@ void main() {
 class View {}
 
 // #docregion f-bound
-abstract class Comparable<T> {
+// ignore: one_member_abstracts
+abstract interface class Comparable<T> {
   int compareTo(T o);
 }
 
