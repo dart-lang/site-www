@@ -107,11 +107,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion trailing-commas
-    var list = [
-      'Car',
-      'Boat',
-      'Plane',
-    ];
+    var list = ['Car', 'Boat', 'Plane'];
     // #enddocregion trailing-commas
   }
 
@@ -159,14 +155,10 @@ void miscDeclAnalyzedButNotTested() {
       // Key:    Value
       'first': 'partridge',
       'second': 'turtledoves',
-      'fifth': 'golden rings'
+      'fifth': 'golden rings',
     };
 
-    var nobleGases = {
-      2: 'helium',
-      10: 'neon',
-      18: 'argon',
-    };
+    var nobleGases = {2: 'helium', 10: 'neon', 18: 'argon'};
     // #enddocregion map-literal
   }
 
@@ -193,11 +185,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion const-map
-    final constantMap = const {
-      2: 'helium',
-      10: 'neon',
-      18: 'argon',
-    };
+    final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 
     // constantMap[2] = 'Helium'; // This line will cause an error.
     // #enddocregion const-map
@@ -221,5 +209,6 @@ class SymbolExampleNotUsedYet {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
   }
+
   // #enddocregion symbols
 }

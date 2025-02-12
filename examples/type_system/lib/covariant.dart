@@ -1,10 +1,16 @@
 class Animal {
-  void chase(Animal x) {/* ... */}
+  void chase(Animal x) {
+    /* ... */
+  }
 }
 
-class Mouse extends Animal {/* ... */}
+class Mouse extends Animal {
+  /* ... */
+}
 
 class Cat extends Animal {
   @override
-  void chase(covariant Mouse x) {/* ... */}
+  void chase(covariant Mouse x) {
+    /* ... */
+  }
 }

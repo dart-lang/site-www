@@ -6,6 +6,8 @@ import 'package:examples/tutorial/sum_stream_with_catch.dart'
 
 void main() {
   test('sumStream', () => expect(sum_stream.main, prints('55\n')));
-  test('sumStream with catch',
-      () => expect(sum_stream_with_catch.main, prints('-1\n')));
+  test(
+    'sumStream with catch',
+    () => expect(sum_stream_with_catch.main, prints('-1\n')),
+  );
 }

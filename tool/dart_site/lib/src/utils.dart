@@ -36,11 +36,10 @@ void groupEnd() {
 }
 
 int runPubGetIfNecessary(String directory) {
-  final pubGetOutput = Process.runSync(
-    Platform.executable,
-    const ['pub', 'get'],
-    workingDirectory: directory,
-  );
+  final pubGetOutput = Process.runSync(Platform.executable, const [
+    'pub',
+    'get',
+  ], workingDirectory: directory);
 
   if (pubGetOutput.exitCode != 0) {
     final normalOutput = pubGetOutput.stdout.toString();
@@ -66,10 +65,10 @@ extension ArgResultExtensions on ArgResults? {
 /// excluding ones in hidden directories or codelabs.
 final List<String> dartProjectExampleDirectories =
     findNestedDirectoriesWithPubspec(
-  Directory('examples'),
-  skipPaths: {},
-  skipHidden: true,
-)..sort();
+      Directory('examples'),
+      skipPaths: {},
+      skipHidden: true,
+    )..sort();
 
 List<String> findNestedDirectoriesWithPubspec(
   Directory rootDirectory, {
@@ -91,11 +90,13 @@ List<String> findNestedDirectoriesWithPubspec(
     if (entity is Directory) {
       // If this entity is a direct, recurse in to it
       // to find any pubspec files.
-      directoriesWithPubspec.addAll(findNestedDirectoriesWithPubspec(
-        entity,
-        skipPaths: skipPaths,
-        skipHidden: skipHidden,
-      ));
+      directoriesWithPubspec.addAll(
+        findNestedDirectoriesWithPubspec(
+          entity,
+          skipPaths: skipPaths,
+          skipHidden: skipHidden,
+        ),
+      );
     } else if (entity is File && path.basename(entity.path) == 'pubspec.yaml') {
       // If the directory has a pubspec.yaml file, this directory counts.
       directoriesWithPubspec.add(normalizedPath);

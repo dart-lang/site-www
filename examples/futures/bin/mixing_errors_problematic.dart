@@ -39,4 +39,5 @@ Future fragileFunc() {
     ellipsis();
   });
 }
+
 // #enddocregion fragile

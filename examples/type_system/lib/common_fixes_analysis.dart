@@ -71,13 +71,17 @@ void adderRuntimeFail() {
 
 // #docregion type-arguments
 class Superclass<T> {
-  void method(T param) {/* ... */}
+  void method(T param) {
+    /* ... */
+  }
 }
 
 class Subclass extends Superclass {
   @override
   // ignore: stable, beta, dev, invalid_override
-  void method(int param) {/* ... */}
+  void method(int param) {
+    /* ... */
+  }
 }
 // #enddocregion type-arguments
 
@@ -93,19 +97,21 @@ class _HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last
   _HoneyBadger(Eats food, String name)
-      // ignore: stable, beta, dev, super_invocation_not_last
-      : super(food),
-        _name = name {/* ... */}
-// #enddocregion super-goes-last
+    // ignore: stable, beta, dev, super_invocation_not_last
+    : super(food),
+      _name = name {
+    /* ... */
+  }
+  // #enddocregion super-goes-last
 }
 
 class HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last-ok
-  HoneyBadger(Eats food, String name)
-      : _name = name,
-        super(food) {/* ... */}
-// #enddocregion super-goes-last-ok
+  HoneyBadger(Eats food, String name) : _name = name, super(food) {
+    /* ... */
+  }
+  // #enddocregion super-goes-last-ok
 }
 
 //-----------------------------------------------
@@ -145,8 +151,10 @@ void infNull() {
 void infFix() {
   // #docregion type-inf-fix
   var ints = [1, 2, 3];
-  var maximumOrNull =
-      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+  var maximumOrNull = ints.fold<int?>(
+    null,
+    (a, b) => a == null || a < b ? b : a,
+  );
   // #enddocregion type-inf-fix
 }
 
@@ -159,4 +167,5 @@ abstract class C implements List<int> {}
 // #docregion conflicting-generics
 // ignore: duplicate_definition, inconsistent_inheritance, conflicting_generic_interfaces
 abstract class C implements List<int>, Iterable<num> {}
+
 // #enddocregion conflicting-generics

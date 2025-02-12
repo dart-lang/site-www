@@ -47,12 +47,16 @@ intentionally overriding a member:
 ```dart
 class Television {
   // ···
-  set contrast(int value) {...}
+  set contrast(int value) {
+    ...
+  }
 }
 
 class SmartTelevision extends Television {
   [!@override!]
-  set contrast(num value) {...}
+  set contrast(num value) {
+    ...
+  }
   // ···
 }
 ```
@@ -101,8 +105,10 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: '
-        '${invocation.memberName}');
+    print(
+      'You tried to use a non-existent member: '
+      '${invocation.memberName}',
+    );
   }
 }
 ```

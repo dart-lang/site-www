@@ -20,4 +20,5 @@ Future<Map<String, dynamic>> _readAndParseJson() async {
   final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
   return jsonData;
 }
+
 // #enddocregion spawned

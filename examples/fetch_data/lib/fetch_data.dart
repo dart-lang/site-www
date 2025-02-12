@@ -40,8 +40,10 @@ void getMain() async {
 
 void headers() async {
   // #docregion http-headers
-  await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
-      headers: {'User-Agent': '<product name>/<product-version>'});
+  await http.get(
+    Uri.https('dart.dev', '/f/packages/http.json'),
+    headers: {'User-Agent': '<product name>/<product-version>'},
+  );
   // #enddocregion http-headers
 }
 
@@ -79,4 +81,5 @@ void retryMain() async {
     client.close();
   }
 }
+
 // #enddocregion http-retry

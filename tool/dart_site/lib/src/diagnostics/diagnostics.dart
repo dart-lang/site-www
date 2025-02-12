@@ -23,7 +23,12 @@ Future<void> generate() async {
 
 /// Compute the path to the file into which documentation is being generated.
 String get _outputPath => path.join(
-    repositoryRoot, 'src', 'content', 'tools', 'diagnostic-messages.md');
+  repositoryRoot,
+  'src',
+  'content',
+  'tools',
+  'diagnostic-messages.md',
+);
 
 /// An information holder containing information about a diagnostic that was
 /// extracted from the instance creation expression.
@@ -67,8 +72,10 @@ class DiagnosticInformation {
     for (final previousName in previousNames) {
       sink.writeln();
       final previousInLowerCase = previousName.toLowerCase();
-      sink.writeln('<a id="$previousInLowerCase" aria-hidden="true"></a>'
-          '_(Previously known as `$previousInLowerCase`)_');
+      sink.writeln(
+        '<a id="$previousInLowerCase" aria-hidden="true"></a>'
+        '_(Previously known as `$previousInLowerCase`)_',
+      );
     }
     for (final message in messages) {
       sink.writeln();
@@ -118,8 +125,10 @@ class DocumentationGenerator {
       _extractAllDocs(classEntry.key, classEntry.value);
     }
 
-    _extractAllDocs('ParserErrorCode',
-        messages.cfeToAnalyzerErrorCodeTables.analyzerCodeToInfo);
+    _extractAllDocs(
+      'ParserErrorCode',
+      messages.cfeToAnalyzerErrorCodeTables.analyzerCodeToInfo,
+    );
   }
 
   /// Writes the documentation to [sink].
@@ -141,8 +150,9 @@ class DocumentationGenerator {
       final name = errorCodeInfo.sharedName ?? errorName;
       var info = infoByName[name];
       final message = convertTemplate(
-          errorCodeInfo.computePlaceholderToIndexMap(),
-          errorCodeInfo.problemMessage);
+        errorCodeInfo.computePlaceholderToIndexMap(),
+        errorCodeInfo.problemMessage,
+      );
       if (info == null) {
         info = DiagnosticInformation(name, message);
         infoByName[name] = info;
@@ -157,7 +167,8 @@ class DocumentationGenerator {
       if (docs.isNotEmpty) {
         if (info.documentation != null) {
           throw StateError(
-              'Documentation defined multiple times for ${info.name}');
+            'Documentation defined multiple times for ${info.name}',
+          );
         }
         info.documentation = docs;
       }
@@ -166,14 +177,16 @@ class DocumentationGenerator {
 
   /// Extract documentation from the given [errorCodeInfo].
   String _extractDoc(String errorCode, ErrorCodeInfo errorCodeInfo) {
-    final parsedComment =
-        parseErrorCodeDocumentation(errorCode, errorCodeInfo.documentation);
+    final parsedComment = parseErrorCodeDocumentation(
+      errorCode,
+      errorCodeInfo.documentation,
+    );
     if (parsedComment == null) {
       return '';
     }
     return [
       for (final documentationPart in parsedComment)
-        documentationPart.formatForDocumentation()
+        documentationPart.formatForDocumentation(),
     ].join('\n');
   }
 
