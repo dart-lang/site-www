@@ -293,8 +293,10 @@ of the key-value pairs as the `headers` optional named parameter:
 
 <?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
-await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
-    headers: {'User-Agent': '<product name>/<product-version>'});
+await http.get(
+  Uri.https('dart.dev', '/f/packages/http.json'),
+  headers: {'User-Agent': '<product name>/<product-version>'},
+);
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
@@ -623,6 +625,7 @@ class PackageRetrievalException implements Exception {
     buf.write('!');
     return buf.toString();
   }
+
 }
 ```
 

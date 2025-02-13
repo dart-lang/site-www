@@ -7,9 +7,9 @@ class Point {
   final double distanceFromOrigin;
 
   Point(double x, double y)
-      : x = x,
-        y = y,
-        distanceFromOrigin = sqrt(x * x + y * y);
+    : x = x,
+      y = y,
+      distanceFromOrigin = sqrt(x * x + y * y);
 }
 
 void main() {

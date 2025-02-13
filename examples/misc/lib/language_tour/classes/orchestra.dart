@@ -87,7 +87,7 @@ class SingerDancer extends Musician2 with MusicalPerformer {
   // ...
   // #enddocregion mixin-on
   SingerDancer(super.name) : super.withName();
-// #docregion mixin-on
+  // #docregion mixin-on
 }
 // #enddocregion mixin-on
 

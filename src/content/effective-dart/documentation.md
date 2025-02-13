@@ -322,7 +322,9 @@ extra effort here can make all of the other members simpler to document.
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
-class Chunk { ... }
+class Chunk {
+   ...
+}
 ```
 
 ### CONSIDER including code samples in doc comments

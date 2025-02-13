@@ -34,4 +34,5 @@ class Worker {
     // TODO: Initialize worker isolate's ports.
   }
 }
+
 // #enddocregion worker

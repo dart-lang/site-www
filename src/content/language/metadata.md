@@ -32,7 +32,9 @@ class Television {
   }
 
   /// Turns the TV's power on.
-  void turnOn() {...}
+  void turnOn() {
+    ...
+  }
   // ···
 }
 ```

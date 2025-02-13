@@ -34,4 +34,5 @@ import 'src/error.dart';
 import 'src/foo_bar.dart';
 
 export 'src/error.dart';
+
 // #enddocregion export

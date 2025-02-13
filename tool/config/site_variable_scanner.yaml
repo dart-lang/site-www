@@ -20,7 +20,7 @@ yaml_variable_scanner:
     - ^site\.description$
     - ^site\.url$
     - ^site\.branch$
-    - ^site\.show_banner$
+    - ^site\.showBanner$
     - ^site\.sdkVersion$
     - ^site\.og_image_vers$
 

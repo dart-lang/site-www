@@ -42,11 +42,7 @@ but it can help prevent copy-paste errors.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
-var list = [
-  'Car',
-  'Boat',
-  'Plane',
-];
+var list = ['Car', 'Boat', 'Plane'];
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first value
@@ -165,14 +161,10 @@ var gifts = {
   // Key:    Value
   'first': 'partridge',
   'second': 'turtledoves',
-  'fifth': 'golden rings'
+  'fifth': 'golden rings',
 };
 
-var nobleGases = {
-  2: 'helium',
-  10: 'neon',
-  18: 'argon',
-};
+var nobleGases = {2: 'helium', 10: 'neon', 18: 'argon'};
 ```
 
 :::note
@@ -242,11 +234,7 @@ add `const` before the map literal:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 ```dart
-final constantMap = const {
-  2: 'helium',
-  10: 'neon',
-  18: 'argon',
-};
+final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```

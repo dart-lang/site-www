@@ -18,8 +18,8 @@ class Worker {
     }
   }
 
-// rest of class..
-// #enddocregion
+  // rest of class..
+  // #enddocregion
 
   Future<void> spawn() async {
     final receivePort = ReceivePort();
