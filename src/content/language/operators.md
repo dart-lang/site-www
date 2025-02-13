@@ -75,10 +75,14 @@ way:
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
 // Parentheses improve readability.
-if ((n % i == 0) && (d % i == 0)) ...
+if ((n % i == 0) && (d % i == 0)) {
+  // ...
+}
 
 // Harder to read, but equivalent.
-if (n % i == 0 && d % i == 0) ...
+if (n % i == 0 && d % i == 0) {
+  // ...
+}
 ```
 
 :::warning
@@ -419,10 +423,11 @@ Consider the following code:
 
 <?code-excerpt "misc/lib/language_tour/cascades.dart (cascade)"?>
 ```dart
-var paint = Paint()
-  ..color = Colors.black
-  ..strokeCap = StrokeCap.round
-  ..strokeWidth = 5.0;
+var paint =
+    Paint()
+      ..color = Colors.black
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 5.0;
 ```
 
 The constructor, `Paint()`,
@@ -448,24 +453,21 @@ are attempted on that null object.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-querySelector('#confirm') // Get an object.
-  ?..text = 'Confirm' // Use its members.
-  ..classes.add('important')
+document.querySelector('#confirm') // Get an object.
+  ?..textContent =
+      'Confirm' // Use its members.
+  ..classList.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
-
-:::version-note
-The `?..` syntax requires a [language version][] of at least 2.12.
-:::
 
 The previous code is equivalent to the following:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
+final button = document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
@@ -474,14 +476,16 @@ You can also nest cascades. For example:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
-final addressBook = (AddressBookBuilder()
-      ..name = 'jenny'
-      ..email = 'jenny@example.com'
-      ..phone = (PhoneNumberBuilder()
-            ..number = '415-555-0100'
-            ..label = 'home')
-          .build())
-    .build();
+final addressBook =
+    (AddressBookBuilder()
+          ..name = 'jenny'
+          ..email = 'jenny@example.com'
+          ..phone =
+              (PhoneNumberBuilder()
+                    ..number = '415-555-0100'
+                    ..label = 'home')
+                  .build())
+        .build();
 ```
 
 Be careful to construct your cascade on a function that returns

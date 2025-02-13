@@ -82,8 +82,10 @@ Here's how it might be implemented:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic-usage)"?>
 ```dart
-var counterStream =
-    Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+var counterStream = Stream<int>.periodic(
+  const Duration(seconds: 1),
+  (x) => x,
+).take(15);
 ```
 
 To quickly see the events, you can use code like this:
@@ -126,10 +128,11 @@ transformers provided by the dart:convert library.
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 ```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
-List<String> lines = await content
-    .transform(utf8.decoder)
-    .transform(const LineSplitter())
-    .toList();
+List<String> lines =
+    await content
+        .transform(utf8.decoder)
+        .transform(const LineSplitter())
+        .toList();
 ```
 
 
@@ -394,10 +397,11 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   }
 
   controller = StreamController<int>(
-      onListen: startTimer,
-      onPause: stopTimer,
-      onResume: startTimer,
-      onCancel: stopTimer);
+    onListen: startTimer,
+    onPause: stopTimer,
+    onResume: startTimer,
+    onCancel: stopTimer,
+  );
 
   return controller.stream;
 }

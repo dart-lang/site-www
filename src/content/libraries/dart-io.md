@@ -231,10 +231,7 @@ void processRequest(HttpRequest request) {
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
-      ..headers.contentType = ContentType(
-        'text',
-        'plain',
-      )
+      ..headers.contentType = ContentType('text', 'plain')
       ..write('Hello from the server');
   } else {
     response.statusCode = HttpStatus.notFound;

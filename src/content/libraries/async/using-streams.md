@@ -297,8 +297,10 @@ The `distinct()` function doesn't exist on `Iterable`, but it could have.
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
 Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
-Stream<T> timeout(Duration timeLimit,
-    {void Function(EventSink<T> sink)? onTimeout});
+Stream<T> timeout(
+  Duration timeLimit, {
+  void Function(EventSink<T> sink)? onTimeout,
+});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
@@ -365,8 +367,12 @@ method—all other stream functions are defined in terms of `listen()`.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
 ```dart
-StreamSubscription<T> listen(void Function(T event)? onData,
-    {Function? onError, void Function()? onDone, bool? cancelOnError});
+StreamSubscription<T> listen(
+  void Function(T event)? onData, {
+  Function? onError,
+  void Function()? onDone,
+  bool? cancelOnError,
+});
 ```
 
 To create a new `Stream` type, you can just extend the `Stream`

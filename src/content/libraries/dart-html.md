@@ -88,9 +88,7 @@ Element classElement = querySelector('.a-class')!;
 List<Element> divElements = querySelectorAll('div');
 
 // Find all text inputs.
-List<Element> textInputElements = querySelectorAll(
-  'input[type="text"]',
-);
+List<Element> textInputElements = querySelectorAll('input[type="text"]');
 
 // Find all elements with the CSS class 'class'
 // inside of a <p> that is inside an element with
@@ -190,9 +188,7 @@ are also parsed and created.
 
 <?code-excerpt "html/lib/html.dart (creating-from-html)"?>
 ```dart
-var elem2 = Element.html(
-  '<p>Creating <em>is</em> easy!</p>',
-);
+var elem2 = Element.html('<p>Creating <em>is</em> easy!</p>');
 ```
 
 Note that `elem2` is a `ParagraphElement` in the preceding example.
@@ -269,9 +265,10 @@ cascades:
 
 <?code-excerpt "html/lib/html.dart (elem-set-cascade)"?>
 ```dart
-var message = DivElement()
-  ..id = 'message2'
-  ..text = 'Please subscribe to the Dart mailing list.';
+var message =
+    DivElement()
+      ..id = 'message2'
+      ..text = 'Please subscribe to the Dart mailing list.';
 ```
 
 While using IDs and classes to associate an element with a set of styles
@@ -409,8 +406,10 @@ void initWebSocket([int retrySeconds = 1]) {
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
-      Timer(Duration(seconds: retrySeconds),
-          () => initWebSocket(retrySeconds * 2));
+      Timer(
+        Duration(seconds: retrySeconds),
+        () => initWebSocket(retrySeconds * 2),
+      );
     }
     reconnectScheduled = true;
   }

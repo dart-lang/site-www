@@ -31,14 +31,16 @@ void main() {
     var scores = [
       {'score': 40},
       {'score': 80},
-      {'score': 100, 'overtime': true, 'special_guest': null}
+      {'score': 100, 'overtime': true, 'special_guest': null},
     ];
 
     var jsonText = jsonEncode(scores);
-    assert(jsonText ==
-        '[{"score":40},{"score":80},'
-            '{"score":100,"overtime":true,'
-            '"special_guest":null}]');
+    assert(
+      jsonText ==
+          '[{"score":40},{"score":80},'
+              '{"score":100,"overtime":true,'
+              '"special_guest":null}]',
+    );
     // #enddocregion json-encode
   });
 
@@ -49,7 +51,7 @@ void main() {
       0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3, //line-br
       0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4, //line-br
       0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5, //line-br
-      0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1 //line-br
+      0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1, //line-br
     ];
 
     var funnyWord = utf8.decode(utf8Bytes);

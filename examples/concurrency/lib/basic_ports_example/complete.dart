@@ -50,5 +50,6 @@ class Worker {
     await _isolateReady.future;
     _sendPort.send(message);
   }
+
   // #enddocregion parse-json
 }
