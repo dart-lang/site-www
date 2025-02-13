@@ -33,7 +33,38 @@ check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* 
+* Added links to our new [Bluesky][] account. 
+* Updated the [`dart format`][] page to reflect the new formatter style, including
+  [configurable line length][] feature.
+* Documented the new [shared analysis options][] feature.
+* Changed the Effective Dart entry about [line length][] due to the new
+  formatter style.
+* Introduced details of [stray files][] to the Workspaces page.
+* Added the new language feature [wildcard variables][] to the Variables page.
+* Moved [covariant explanation][] to the better-suited Type system page.
+* Changed references to [legacy JS interop][] libraries explicitly to "deprecated". 
+* Removed the [experimental macros page][], since the team [indefinitely paused][]
+  work on the feature.
+* Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
+  throw a `StateError`.
+* Removed usage and inclusion of jQuery and Bootstrap from the website.
+* Revamped the [linter rules][] page with new boxes, search format, and color-coded
+  icons on the individual lint pages ([for example][]).
+* Redesigned the layout implementation and sidenav for efficiency.
+* Removed the officially-deprecated `dart:html` library page.
+
+[for example]: /tools/linter-rules/annotate_overrides
+[Bluesky]: https://bsky.app/profile/dart.dev
+[configurable line length]: /tools/dart-format#configuring-formatter-page-width
+[shared analysis options]: /tools/analysis#including-shared-options
+[line length]: /effective-dart/style#prefer-lines-80-characters-or-fewer
+[stray files]: /tools/pub/workspaces#stray-files
+[wildcard variables]: /language/variables#wildcard-variables
+[covariant explanation]: /language/type-system#covariant-keyword
+[legacy JS interop]: /interop/js-interop/past-js-interop
+[experimental macros page]: /language/macros
+[indefinitely paused]: https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12
+[map-warn]: /language/pattern-types#map
 
 ## December 11, 2024: 3.6 release
 
