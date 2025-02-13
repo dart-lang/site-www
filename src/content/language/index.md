@@ -470,7 +470,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 ```
 
 Note that the code above is asynchronous;
-`try` works for both synchronous code and code in an `async` function.
+`try` works for both synchronous and asynchronous code in an `async` function.
 
 [Read more](/language/error-handling#exceptions) about exceptions, 
 including stack traces, `rethrow`, 
