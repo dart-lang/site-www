@@ -200,7 +200,7 @@ var foo = [!Foo<Object>!]();
 
 When using bounds to restrict parameter types, you can refer the bound
 back to the type parameter itself. This creates a self-referential constraint,
-or an F-bound. For example:
+or F-bound. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (f-bound)"?>
 ```dart
