@@ -208,17 +208,19 @@ abstract interface class Comparable<T> {
   int compareTo(T o);
 }
 
-class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
   @override
-  int compareTo(MyClass<T> other) {
-    // implementation...
-    return 0;
-  }
+  int compareTo(A other) => /*...implementation...*/ 0;
 }
+
+var useIt = compareAndOffset(A(), A());
 ```
 
 The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.
-So, `MyClass` can only be used with types that can be compared to
+So, `A` can only be compared to
 other instances of the same type.
 
 ## Using generic methods

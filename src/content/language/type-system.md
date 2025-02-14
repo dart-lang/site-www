@@ -378,13 +378,13 @@ method's type argument: `<int>`.
 Inference using bounds requires a [language version][] of at least 3.7.0.
 :::
 
-Dart's type inference algorithm generates constraints by combining
+With this feature, Dart's type inference algorithm generates constraints by combining
 existing lower-bound constraints with the actual type bounds,
 not just best-effort approximations.
 This is especially important for [F-bounded][] types,
 where inference using bounds correctly infers that, in the example below,
-`C` is a subtype of `B`,
-without needing you to explicitly specify the type `f<B>(C())`:
+`X` can be bound to `B`.
+Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
 
 <?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
 ```dart
