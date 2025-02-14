@@ -406,8 +406,8 @@ void main() {
 }
 ```
 
-Here's an example using everyday types in Dart like `int` or `num`,
-that typically have their own special properties unlike the simple example above:
+Here's a more realistic example using everyday types in Dart like `int` or `num`,
+that typically have their own special properties:
 
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
 ```dart
@@ -418,6 +418,25 @@ void main() {
     3,
     7,
   ); // Infers `num` with the feature, would have reported an error without it.
+}
+```
+
+With inference using bounds, Dart can *deconstruct* type arguments,
+extracting type information from a generic type parameter's bound.
+This allows functions like `f1` in the following example to preserve both the
+specific iterable type (`List` or `Set`) *and* the element type.
+Before inference using bounds, this wasn't possible 
+without losing type safety or specific type information.
+
+```dart
+(X, Y) f1<X extends Iterable<Y>, Y>(X x) => (x, x.first);
+
+void main() {
+  var (myList, myInt) = f1();
+  myInt.whatever; // Compile-time error, `myInt` has type `int`.
+
+  var (mySet, myString) = f1({'Hello!'});
+  mySet.union({}); // Works, `mySet` has type `Set<String>`.
 }
 ```
 
