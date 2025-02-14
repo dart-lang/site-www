@@ -424,7 +424,7 @@ void main() {
 For more information on the inference using bounds algorithm,
 read the [design document][]. 
 
-[F-bounded]: /language/generics/#self-referential-type-parameter-restrictions
+[F-bounded]: /language/generics/#self-referential-type-parameter-restrictions-f-bounds
 [design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituting types

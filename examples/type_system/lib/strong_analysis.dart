@@ -172,4 +172,5 @@ void main() {
   // approximations would fail after detecting that `C` is not a subtype of `A<C>`.
   f<B>(C()); // OK.
 }
+
 // #enddocregion inference-using-bounds

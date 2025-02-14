@@ -17,4 +17,5 @@ void main() {
     7,
   ); // Infers `num` with the feature, would have reported an error without it.
 }
+
 // #enddocregion inference-using-bounds-2
