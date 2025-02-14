@@ -379,7 +379,7 @@ Inference using bounds requires a [language version][] of at least 3.7.0.
 :::
 
 Dart's type inference algorithm generates constraints by combining
-exisiting lower-bound constraints with the actual type bounds,
+existing lower-bound constraints with the actual type bounds,
 not just best-effort approximations.
 This is especially important for [F-bounded][] types,
 where inference using bounds correctly infers that, in the example below,

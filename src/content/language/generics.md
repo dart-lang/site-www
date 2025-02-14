@@ -196,7 +196,7 @@ Specifying any non-`SomeBaseClass` type results in an error:
 var foo = [!Foo<Object>!]();
 ```
 
-### Self-referential type parameter restrictions
+### Self-referential type parameter restrictions (F-bounds)
 
 When using bounds to restrict parameter types, you can refer the bound
 back to the type parameter itself. This creates a self-referential constraint,
