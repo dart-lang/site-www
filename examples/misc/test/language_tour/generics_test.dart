@@ -72,12 +72,14 @@ abstract interface class Comparable<T> {
   int compareTo(T o);
 }
 
-class MyClass<T extends Comparable<T>> implements Comparable<MyClass<T>> {
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
   @override
-  int compareTo(MyClass<T> other) {
-    // implementation...
-    return 0;
-  }
+  int compareTo(A other) => /*...implementation...*/ 0;
 }
+
+var useIt = compareAndOffset(A(), A());
 
 // #enddocregion f-bound

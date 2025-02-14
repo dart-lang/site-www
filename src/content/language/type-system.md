@@ -378,9 +378,11 @@ method's type argument: `<int>`.
 Inference using bounds requires a [language version][] of at least 3.7.0.
 :::
 
-With this feature, Dart's type inference algorithm generates constraints by combining
-existing lower-bound constraints with the actual type bounds,
+With the inference using bounds feature,
+Dart's type inference algorithm generates constraints by
+combining existing constraints with the declared type bounds,
 not just best-effort approximations.
+
 This is especially important for [F-bounded][] types,
 where inference using bounds correctly infers that, in the example below,
 `X` can be bound to `B`.
@@ -398,8 +400,24 @@ void f<X extends A<X>>(X x) {}
 
 void main() {
   f(B()); // OK.
-  f(C()); // Inference fails, compile-time error.
+  f(C()); // OK. Without using bounds, inference relying on best-effort
+  // approximations would fail after detecting that `C` is not a subtype of `A<C>`.
   f<B>(C()); // OK.
+}
+```
+
+Here's an example using everyday types in Dart like `int` or `num`,
+that typically have their own special properties unlike the simple example above:
+
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
+```dart
+X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
+
+void main() {
+  max(
+    3,
+    7,
+  ); // Infers `num` with the feature, would have reported an error without it.
 }
 ```
 

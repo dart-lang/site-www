@@ -220,8 +220,7 @@ var useIt = compareAndOffset(A(), A());
 ```
 
 The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.
-So, `A` can only be compared to
-other instances of the same type.
+So, `A` can only be compared to other instances of the same type.
 
 ## Using generic methods
 
