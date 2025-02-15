@@ -360,7 +360,7 @@ double calculateArea(Shape shape) => switch (shape) {
 ### Validating incoming JSON
 
 [Map][] and [list][] patterns work well for destructuring key-value pairs in
-deserialized data, such as data parsed from JSON:
+JSON data:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
 ```dart 
