@@ -3,9 +3,21 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
+
+/// The root path of the website repository.
+String get repositoryRoot {
+  final packageConfigPath = path.fromUri(Isolate.packageConfigSync);
+  final maybeRoot = path.dirname(path.dirname(packageConfigPath));
+  if (!File(path.join(maybeRoot, 'dash_site')).existsSync()) {
+    throw StateError('Trying calling dash_site from the root directory.');
+  }
+
+  return maybeRoot;
+}
 
 final bool _runningInCi = Platform.environment['CI'] == 'true';
 
@@ -24,11 +36,10 @@ void groupEnd() {
 }
 
 int runPubGetIfNecessary(String directory) {
-  final pubGetOutput = Process.runSync(
-    Platform.executable,
-    const ['pub', 'get'],
-    workingDirectory: directory,
-  );
+  final pubGetOutput = Process.runSync(Platform.executable, const [
+    'pub',
+    'get',
+  ], workingDirectory: directory);
 
   if (pubGetOutput.exitCode != 0) {
     final normalOutput = pubGetOutput.stdout.toString();
@@ -54,10 +65,10 @@ extension ArgResultExtensions on ArgResults? {
 /// excluding ones in hidden directories or codelabs.
 final List<String> dartProjectExampleDirectories =
     findNestedDirectoriesWithPubspec(
-  Directory('examples'),
-  skipPaths: {},
-  skipHidden: true,
-)..sort();
+      Directory('examples'),
+      skipPaths: {},
+      skipHidden: true,
+    )..sort();
 
 List<String> findNestedDirectoriesWithPubspec(
   Directory rootDirectory, {
@@ -79,11 +90,13 @@ List<String> findNestedDirectoriesWithPubspec(
     if (entity is Directory) {
       // If this entity is a direct, recurse in to it
       // to find any pubspec files.
-      directoriesWithPubspec.addAll(findNestedDirectoriesWithPubspec(
-        entity,
-        skipPaths: skipPaths,
-        skipHidden: skipHidden,
-      ));
+      directoriesWithPubspec.addAll(
+        findNestedDirectoriesWithPubspec(
+          entity,
+          skipPaths: skipPaths,
+          skipHidden: skipHidden,
+        ),
+      );
     } else if (entity is File && path.basename(entity.path) == 'pubspec.yaml') {
       // If the directory has a pubspec.yaml file, this directory counts.
       directoriesWithPubspec.add(normalizedPath);

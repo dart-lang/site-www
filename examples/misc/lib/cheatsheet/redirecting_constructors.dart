@@ -24,4 +24,5 @@ class ImmutablePoint {
 
   const ImmutablePoint(this.x, this.y);
 }
+
 // #enddocregion const-constructors

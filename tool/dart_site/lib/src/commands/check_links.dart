@@ -30,9 +30,8 @@ final class CheckLinksCommand extends Command<int> {
   String get name => 'check-links';
 
   @override
-  Future<int> run() async => _checkLinks(
-        checkExternal: argResults.get<bool>(_externalFlag, false),
-      );
+  Future<int> run() async =>
+      _checkLinks(checkExternal: argResults.get<bool>(_externalFlag, false));
 }
 
 /// The port that the firebase emulator runs on by default.
@@ -81,15 +80,12 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
     }
 
     try {
-      final result = await linkcheck.run(
-        [
-          ':$_emulatorPort',
-          '--skip-file',
-          _skipFilePath,
-          if (checkExternal) 'external'
-        ],
-        stdout,
-      );
+      final result = await linkcheck.run([
+        ':$_emulatorPort',
+        '--skip-file',
+        _skipFilePath,
+        if (checkExternal) 'external',
+      ], stdout);
       return result;
     } catch (e, stackTrace) {
       stderr.writeln('Error: linkcheck failed to execute properly!');

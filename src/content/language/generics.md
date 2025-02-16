@@ -95,7 +95,7 @@ var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
-  'humans.txt': 'We are people, not machines'
+  'humans.txt': 'We are people, not machines',
 };
 ```
 
@@ -168,7 +168,9 @@ class Foo<T [!extends SomeBaseClass!]> {
   String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {...}
+class Extender extends SomeBaseClass {
+  ...
+}
 ```
 
 It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:

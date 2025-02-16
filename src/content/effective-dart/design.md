@@ -93,7 +93,9 @@ it like a sentence.
 <?code-excerpt "design_good.dart (code-like-prose)"?>
 ```dart tag=good
 // "If errors is empty..."
-if (errors.isEmpty) ...
+if (errors.isEmpty) {
+  // ...
+}
 
 // "Hey, subscription, cancel!"
 subscription.cancel();
@@ -105,7 +107,9 @@ monsters.where((monster) => monster.hasClaws);
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 ```dart tag=bad
 // Telling errors to empty itself, or asking if it is?
-if (errors.empty) ...
+if (errors.empty) {
+  // ...
+}
 
 // Toggle what? To what?
 subscription.toggle();
@@ -120,7 +124,9 @@ to force your names to *literally* read like a grammatically correct sentence.
 
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
 ```dart tag=bad
-if (theCollectionOfErrors.isEmpty) ...
+if (theCollectionOfErrors.isEmpty) {
+  // ...
+}
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ```
@@ -931,10 +937,11 @@ Method cascades are a better solution for chaining method calls.
 
 <?code-excerpt "design_good.dart (cascades)"?>
 ```dart tag=good
-var buffer = StringBuffer()
-  ..write('one')
-  ..write('two')
-  ..write('three');
+var buffer =
+    StringBuffer()
+      ..write('one')
+      ..write('two')
+      ..write('three');
 ```
 
 <?code-excerpt "design_bad.dart (cascades)"?>
@@ -1517,12 +1524,16 @@ Setters always return `void` in Dart. Writing the word is pointless.
 
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
 ```dart tag=bad
-void set foo(Foo value) { ... }
+void set foo(Foo value) {
+   ...
+}
 ```
 
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
 ```dart tag=good
-set foo(Foo value) { ... }
+set foo(Foo value) {
+   ...
+}
 ```
 
 
@@ -1743,7 +1754,9 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 <?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
 ```dart tag=good
 Stream<S> asyncMap<T, S>(
-    Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
+  Iterable<T> iterable,
+  [!FutureOr<S>!] Function(T) callback,
+) async* {
   for (final element in iterable) {
     yield await callback(element);
   }
@@ -1803,22 +1816,25 @@ pass later one. You're better off using named arguments for that.
 ```dart tag=good
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
-DateTime(int year,
-    [int month = 1,
-    int day = 1,
-    int hour = 0,
-    int minute = 0,
-    int second = 0,
-    int millisecond = 0,
-    int microsecond = 0]);
+DateTime(
+  int year, [
+  int month = 1,
+  int day = 1,
+  int hour = 0,
+  int minute = 0,
+  int second = 0,
+  int millisecond = 0,
+  int microsecond = 0,
+]);
 
-Duration(
-    {int days = 0,
-    int hours = 0,
-    int minutes = 0,
-    int seconds = 0,
-    int milliseconds = 0,
-    int microseconds = 0});
+Duration({
+  int days = 0,
+  int hours = 0,
+  int minutes = 0,
+  int seconds = 0,
+  int milliseconds = 0,
+  int microseconds = 0,
+});
 ```
 
 

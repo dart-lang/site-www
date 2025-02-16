@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, unused_local_variable
+// ignore_for_file: unused_element, unused_local_variable, deprecated_member_use
 // #docregion import
 import 'dart:html';
 // #enddocregion import
@@ -16,9 +16,7 @@ void miscDeclAnalyzedButNotTested() {
     List<Element> divElements = querySelectorAll('div');
 
     // Find all text inputs.
-    List<Element> textInputElements = querySelectorAll(
-      'input[type="text"]',
-    );
+    List<Element> textInputElements = querySelectorAll('input[type="text"]');
 
     // Find all elements with the CSS class 'class'
     // inside of a <p> that is inside an element with
@@ -41,9 +39,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion creating-elements
 
     // #docregion creating-from-html
-    var elem2 = Element.html(
-      '<p>Creating <em>is</em> easy!</p>',
-    );
+    var elem2 = Element.html('<p>Creating <em>is</em> easy!</p>');
     // #enddocregion creating-from-html
 
     // #docregion body-children-add
@@ -79,9 +75,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion elem-set-cascade
-    var message = DivElement()
-      ..id = 'message2'
-      ..text = 'Please subscribe to the Dart mailing list.';
+    var message =
+        DivElement()
+          ..id = 'message2'
+          ..text = 'Please subscribe to the Dart mailing list.';
     // #enddocregion elem-set-cascade
 
     // #docregion set-style
