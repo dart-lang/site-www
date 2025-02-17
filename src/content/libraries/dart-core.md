@@ -255,17 +255,17 @@ matching of strings.
 <?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
-var digits = RegExp(r'\d+');
+var digitsSequence = RegExp(r'\d+');
 
 var lettersOnly = 'llamas live fifteen to twenty years';
 var someDigits = 'llamas live 15 to 20 years';
 
 // contains() can use a regular expression.
-assert(!lettersOnly.contains(digits));
-assert(someDigits.contains(digits));
+assert(!lettersOnly.contains(digitsSequence));
+assert(someDigits.contains(digitsSequence));
 
 // Replace every match with another string.
-var exedOut = someDigits.replaceAll(digits, 'XX');
+var exedOut = someDigits.replaceAll(digitsSequence, 'XX');
 assert(exedOut == 'llamas live XX to XX years');
 ```
 
@@ -274,7 +274,7 @@ provides access to a regular expression match.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 ```dart
-var digits = RegExp(r'\d+');
+var digitsSequence = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
 
 // Check whether the reg exp has a match in a string.

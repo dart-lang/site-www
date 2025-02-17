@@ -257,11 +257,11 @@ matching of strings.
 // Here's a regular expression for one or more digits.
 var digits = RegExp(r'\d+');
 
-var allCharacters = 'llamas live fifteen to twenty years';
+var lettersOnly = 'llamas live fifteen to twenty years';
 var someDigits = 'llamas live 15 to 20 years';
 
 // contains() can use a regular expression.
-assert(!allCharacters.contains(digits));
+assert(!lettersOnly.contains(digits));
 assert(someDigits.contains(digits));
 
 // Replace every match with another string.

@@ -172,11 +172,11 @@ void main() {
       var someDigits = 'llamas live 15 to 20 years';
 
       // contains() can use a regular expression.
-      assert(!lettersOnly.contains(digitsSequence));
-      assert(someDigits.contains(digitsSequence));
+      assert(!lettersOnly.contains(number digitsSequence));
+      assert(someDigits.contains(number digitsSequence));
 
       // Replace every match with another string.
-      var exedOut = someDigits.replaceAll(digitsSequence, 'XX');
+      var exedOut = someDigits.replaceAll(number digitsSequence, 'XX');
       assert(exedOut == 'llamas live XX to XX years');
       // #enddocregion regexp
     });
