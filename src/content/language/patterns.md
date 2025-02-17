@@ -380,15 +380,15 @@ Without patterns, validation is verbose:
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
 if (data is Map<String, Object?> &&
-data.length == 1 &&
-data.containsKey('user')) {
-var user = data['user'];
-if (user is List<Object> &&
-user.length == 2 &&
-user[0] is String &&
-user[1] is int) {
+    data.length == 1 &&
+    data.containsKey('user')) {
+  var user = data['user'];
+  if (user is List<Object> &&
+      user.length == 2 &&
+      user[0] is String &&
+      user[1] is int) {
 var name = user[0] as String;
-var age = user[1] as int;
+var age  = user[1] as int;
 print('User $name is $age years old.');
 }
 }
