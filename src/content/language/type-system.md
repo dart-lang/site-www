@@ -406,18 +406,15 @@ void main() {
 }
 ```
 
-Here's a more realistic example using everyday types in Dart like `int` or `num`,
-that typically have their own special properties:
+Here's a more realistic example using everyday types in Dart like `int` or `num`:
 
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
 ```dart
 X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
 
 void main() {
-  max(
-    3,
-    7,
-  ); // Infers `num` with the feature, would have reported an error without it.
+  // Inferred as `max<num>(3, 7)` with the feature, fails without it.
+  max(3, 7);
 }
 ```
 
@@ -440,6 +437,7 @@ void main() {
 }
 ```
 
+Without the feature, `myInt` has type `dynamic`. This implies that an expression like `myInt.whatever` is not detected as being wrong at compile time, it will instead throw at run time. Conversely, `mySet.union({})` is a compile-time error when we don't have the feature, because we can't preserve the information that `mySet` is a `Set`.
 For more information on the inference using bounds algorithm,
 read the [design document][]. 
 
