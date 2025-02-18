@@ -301,6 +301,11 @@ In contrast, top-level functions and method declarations don't have that context
 so their parameters must be named so that it's clear what each parameter is for,
 even if it isn't used.
 
+:::version-note
+Since Dart 3.7 `_` no longer creates a variable, so you can use `_` for
+multiple parameters simultaneously without name collision: `(_, _) => print('error');`
+:::
+
 
 ### DON'T use a leading underscore for identifiers that aren't private
 
