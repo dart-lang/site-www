@@ -12,10 +12,8 @@ void cannotRunThis() {
 X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
 
 void main() {
-  max(
-    3,
-    7,
-  ); // Infers `num` with the feature, would have reported an error without it.
+  // Inferred as `max<num>(3, 7)` with the feature, fails without it.
+  max(3, 7);
 }
 
 // #enddocregion inference-using-bounds-2

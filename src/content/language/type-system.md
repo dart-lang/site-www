@@ -420,13 +420,13 @@ void main() {
 
 With inference using bounds, Dart can *deconstruct* type arguments,
 extracting type information from a generic type parameter's bound.
-This allows functions like `f1` in the following example to preserve both the
+This allows functions like `f` in the following example to preserve both the
 specific iterable type (`List` or `Set`) *and* the element type.
 Before inference using bounds, this wasn't possible 
 without losing type safety or specific type information.
 
 ```dart
-(X, Y) f1<X extends Iterable<Y>, Y>(X x) => (x, x.first);
+(X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
 
 void main() {
   var (myList, myInt) = f1();
@@ -437,7 +437,13 @@ void main() {
 }
 ```
 
-Without the feature, `myInt` has type `dynamic`. This implies that an expression like `myInt.whatever` is not detected as being wrong at compile time, it will instead throw at run time. Conversely, `mySet.union({})` is a compile-time error when we don't have the feature, because we can't preserve the information that `mySet` is a `Set`.
+Without inference using bounds, `myInt` would have the type `dynamic`.
+The previous inference algorithm wouldn't catch the incorrect expression
+`myInt.whatever` at compile time, and would instead throw at run time.
+Conversely, `mySet.union({})` would be a compile-time error
+without inference using bounds, because the previous algorithm couldn't
+preserve the information that `mySet` is a `Set`.
+
 For more information on the inference using bounds algorithm,
 read the [design document][]. 
 
