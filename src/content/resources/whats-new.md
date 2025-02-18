@@ -35,8 +35,8 @@ we made the following changes to this site:
 
 * Introduced the new type system algoritm, [inference using bounds][].
 * Added links to our new [Bluesky][] account. 
-* Updated the [`dart format`][] page to reflect the new formatter style, including
-  [configurable line length][] feature.
+* Updated the [`dart format`][] page to reflect the new formatter style,
+  including the new [configurable line length][] feature.
 * Documented the new [shared analysis options][] feature.
 * Changed the Effective Dart entry about [line length][] due to the new
   formatter style.
@@ -48,8 +48,7 @@ we made the following changes to this site:
   work on the feature.
 * Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
   throw a `StateError`.
-* Removed usage and inclusion of jQuery and Bootstrap from the website.
-* Revamped the [linter rules][] page with new boxes, search format, and color-coded
+* Revamped the [linter rules][] page with new cards, search format, and color-coded
   icons on the individual lint pages ([for example][]).
 * Redesigned the layout implementation and sidenav for efficiency.
 * Removed the officially-deprecated `dart:html` library page.
@@ -91,7 +90,7 @@ we made the following changes to this site:
 * Defined [variance and variance positions][] on the glossary page.
 * Created a new page for the new [documentation comment references][] feature.
 * Updated and improved the [Dart platforms graphic][] to include newly available
-  Risc-V and WASM.
+  support compiling to RISC-V and WASM.
 * Defined [function types][]. 
 * Added glossary definitions for the different kinds of code fixes available
   from the analyzer ([assists][], [refactors][], and [quick fixes][]).
@@ -101,11 +100,11 @@ we made the following changes to this site:
 * Improved conditional [import/export documentation][] on the package creation page.
 * Included `@override` annotations in [mixin code examples][] to correctly showcase
   how to work with mixed-in functions.
-* Provided an alternative to SSH for accessing private repo dependencies on the
+* Provided an alternative to SSH for accessing private repo dependencies on
   the [pub dependencies page][]. 
 * Added a new `pub publish` warning about clean `git status` validation to the
   [publishing task list][].
-* Deprecated the Language and Library tour pages (contents are now on indivdual
+* Deprecated the Language and Library tour pages (contents are now on individual
   pages under [Language][lang-sidenav] and [Core libraries][lib-sidenav]
   in the left side-nav panel).
 

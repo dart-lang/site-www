@@ -400,8 +400,11 @@ void f<X extends A<X>>(X x) {}
 
 void main() {
   f(B()); // OK.
-  f(C()); // OK. Without using bounds, inference relying on best-effort
-  // approximations would fail after detecting that `C` is not a subtype of `A<C>`.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
   f<B>(C()); // OK.
 }
 ```
@@ -447,7 +450,8 @@ preserve the information that `mySet` is a `Set`.
 For more information on the inference using bounds algorithm,
 read the [design document][]. 
 
-[F-bounded]: /language/generics/#self-referential-type-parameter-restrictions-f-bounds
+
+[F-bounded]: /language/generics/#f-bounds
 [design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituting types
