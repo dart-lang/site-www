@@ -168,8 +168,11 @@ void f<X extends A<X>>(X x) {}
 
 void main() {
   f(B()); // OK.
-  f(C()); // OK. Without using bounds, inference relying on best-effort
-  // approximations would fail after detecting that `C` is not a subtype of `A<C>`.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
   f<B>(C()); // OK.
 }
 
