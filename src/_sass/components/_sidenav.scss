@@ -1,5 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins';
+@use '../base/variables' as *;
+@use '../base/mixins';
 
 $sidenav-divider-color: #e7e8ed;
 
@@ -15,6 +15,44 @@ $sidenav-divider-color: #e7e8ed;
   scrollbar-width: thin;
 
   border-right: 0.1rem solid $sidenav-divider-color;
+
+  // TODO(parlough): Reverse and simplify these media queries.
+  @media (max-width: 1024px) {
+    width: 100%;
+    background: #fff;
+    z-index: 100;
+
+    .site-header__search {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    display: block;
+
+    @at-root body.open_menu {
+      &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        z-index: 5;
+        background-color: rgba($gray-base, 0.4);
+        cursor: pointer;
+        pointer-events: none;
+        @include mixins.transition(0.5s);
+      }
+
+      // Hide the body content and only show the sidenav.
+      #page-content {
+        display: none;
+      }
+    }
+  }
 
   .nav-header {
     font-weight: bolder;

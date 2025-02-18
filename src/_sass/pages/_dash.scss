@@ -1,4 +1,4 @@
-@use 'core/variables' as *;
+@use '../base/variables' as *;
 
 // Homepage styles
 
@@ -6,6 +6,10 @@
 $dash-max-width: 1330px;
 
 body.homepage {
+  #sidenav {
+    display: none;
+  }
+
   .dash-header-callout {
     font-family: $site-font-family-alt;
     background-color: $dash-callout;
