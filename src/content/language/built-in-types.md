@@ -179,17 +179,13 @@ You can use one or more underscores (`_`) as digit separators
 to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
 
-{% comment %}
-Attach code excerpt misc/lib/language_tour/built_in_types.dart (digit-separators)
-when feature is stable:
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
-var n3 = 0x00_14_22_01_23_45;  // MAC address
-var n4 = 555_123_4567;  // US Phone number
-var n5 = 100__000_000__000_000;  // one hundred million million!
+var n3 = 0x00_14_22_01_23_45; // MAC address
+var n4 = 555_123_4567; // US Phone number
+var n5 = 100__000_000__000_000; // one hundred million million!
 ```
 
 :::version-note
