@@ -33,6 +33,7 @@ check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
+* Introduced the new type system algoritm, [inference using bounds][].
 * Added links to our new [Bluesky][] account. 
 * Updated the [`dart format`][] page to reflect the new formatter style, including
   [configurable line length][] feature.
@@ -53,6 +54,7 @@ we made the following changes to this site:
 * Redesigned the layout implementation and sidenav for efficiency.
 * Removed the officially-deprecated `dart:html` library page.
 
+[inference using bounds]: /language/type-system/#type-argument-inference
 [for example]: /tools/linter-rules/annotate_overrides
 [Bluesky]: https://bsky.app/profile/dart.dev
 [configurable line length]: /tools/dart-format#configuring-formatter-page-width
