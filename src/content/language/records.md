@@ -330,10 +330,10 @@ final List<ButtonItem> buttons =  [
 Again, all while not needing to change the code that uses that list.
 
 Changing any type does require the code using it to be very careful about
-not making assumptions. A type alias does not offer any protection or guarantee
-for the code using it that the value is a record.
+not making assumptions. A type alias does not offer any protection or guarantee,
+for the code using it as a reference, that the value being aliased is a record.
 Extension types, also, offer little protection.
-Only a class can provide full abstraction and control over access to its state.
+Only a class can provide full abstraction and encapsulation.
 
 [language version]: /resources/language/evolution#language-versioning
 [collection types]: /language/collections
