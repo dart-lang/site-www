@@ -1,0 +1,55 @@
+@use '../base/variables' as *;
+
+body.error {
+  #sidenav {
+    display: none;
+  }
+
+  .banner {
+    display: none;
+  }
+
+  background-color: #132030;
+  background-image: url('/assets/img/404-bg-pattern.jpg');
+  color: #8d9399;
+
+  @media(min-width: 1600px) {
+    background-size: cover;
+  }
+
+  h1 {
+    color: white;
+    font-family: $site-font-family-gsans-display;
+    font-size: 100px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    color: white;
+    font-family: $site-font-family-gsans;
+    font-size: 24px;
+    margin: 8px auto 16px;
+  }
+
+  #in-content-search {
+    input[type="search"] {
+      display: inline-block;
+      background: #35404d;
+      color: white;
+      font-size: 20px;
+      padding: 10px 40px;
+      border-radius: 30px;
+      height: 70px;
+      line-height: 70px;
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto 88px;
+    }
+  }
+
+  .content {
+    a {
+      color: $site-color-card-link;
+    }
+  }
+}
