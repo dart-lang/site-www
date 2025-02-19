@@ -2,11 +2,11 @@
 @use '../base/mixins';
 
 $sidenav-divider-color: #e7e8ed;
+$sidenav-wide-layout: 1024px;
 
 #sidenav {
   margin: 0;
   overflow-y: auto;
-  width: 16rem;
   min-width: 16rem;
   height: calc(100vh - $site-header-height);
   padding: 0.75rem 0.75rem 2.25rem;
@@ -14,43 +14,32 @@ $sidenav-divider-color: #e7e8ed;
   top: 0;
   scrollbar-width: thin;
 
-  border-right: 0.1rem solid $sidenav-divider-color;
+  display: none;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
 
-  // TODO(parlough): Reverse and simplify these media queries.
-  @media (max-width: 1024px) {
-    width: 100%;
-    background: #fff;
-    z-index: 100;
+  @at-root body.open_menu {
+    #sidenav {
+      display: block;
+    }
 
-    .site-header__search {
-      display: flex;
+    // Only hide page content if menu is open and in narrow layout.
+    #page-content {
+      display: none;
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (min-width: $sidenav-wide-layout) {
     display: block;
+    width: 16rem;
 
-    @at-root body.open_menu {
-      &:before {
-        content: '';
-        display: block;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        z-index: 5;
-        background-color: rgba($gray-base, 0.4);
-        cursor: pointer;
-        pointer-events: none;
-        @include mixins.transition(0.5s);
-      }
+    border-right: 0.1rem solid $sidenav-divider-color;
+    background: none;
 
-      // Hide the body content and only show the sidenav.
-      #page-content {
-        display: none;
-      }
+
+    @at-root body.open_menu #page-content {
+      display: flex;
     }
   }
 
@@ -178,7 +167,7 @@ $sidenav-divider-color: #e7e8ed;
   }
 
   .navbar-nav {
-    display: none;
+    display: block;
 
     a.nav-link {
       font-size: 1.125rem;
@@ -186,16 +175,19 @@ $sidenav-divider-color: #e7e8ed;
       margin-bottom: 0.5rem;
       padding: 0.375rem 0.6rem;
     }
+
+    // Hide items from top navbar in wide layout to avoid duplication.
+    @media (min-width: $sidenav-wide-layout) {
+      display: none;
+    }
   }
-}
 
-@media(max-width: 1024px) {
-  #sidenav {
-    display: none;
+  .site-header__search {
+    display: flex;
 
-    // The top-level navigation items in the mobile sidenav.
-    .navbar-nav {
-      display: block;
+    // Hide search from top navbar in wide layout.
+    @media (min-width: $sidenav-wide-layout) {
+      display: none;
     }
   }
 }

@@ -1,8 +1,10 @@
 @use '../base/variables' as *;
 
 body.error {
-  #sidenav {
-    display: none;
+  &:not(.open_menu) {
+    #sidenav {
+      display: none;
+    }
   }
 
   .banner {
@@ -20,18 +22,28 @@ body.error {
   h1 {
     color: white;
     font-family: $site-font-family-gsans-display;
-    font-size: 100px;
+    font-size: 8rem;
     margin: 0 auto;
   }
 
   h2 {
     color: white;
     font-family: $site-font-family-gsans;
-    font-size: 24px;
-    margin: 8px auto 16px;
+    font-size: 2rem;
+    margin: 0 auto 16px;
+  }
+
+  #page-content {
+    padding: 1rem;
+
+    a {
+      color: $site-color-card-link;
+    }
   }
 
   #in-content-search {
+    max-width: 100%;
+
     input[type="search"] {
       display: inline-block;
       background: #35404d;
@@ -41,15 +53,11 @@ body.error {
       border-radius: 30px;
       height: 70px;
       line-height: 70px;
-      width: 100%;
-      max-width: 880px;
-      margin: 0 auto 88px;
-    }
-  }
+      width: 40rem;
+      max-width: 90%;
+      margin: 2rem 1rem;
 
-  .content {
-    a {
-      color: $site-color-card-link;
+      outline-offset: 2px;
     }
   }
 }
