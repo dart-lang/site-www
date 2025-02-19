@@ -6,8 +6,10 @@
 $dash-max-width: 1330px;
 
 body.homepage {
-  #sidenav {
-    display: none;
+  &:not(.open_menu) {
+    #sidenav {
+      display: none;
+    }
   }
 
   .dash-header-callout {

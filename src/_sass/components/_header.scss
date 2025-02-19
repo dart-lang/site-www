@@ -40,6 +40,21 @@
           align-items: center;
         }
       }
+
+      // TODO(parlough): Reverse and simplify these media queries.
+      @media(max-width: 960px) {
+        display: none;
+
+        &.searchfield {
+          display: block;
+        }
+      }
+
+      @media(max-width: 479px) {
+        &.searchfield {
+          display: none;
+        }
+      }
     }
   }
 
@@ -51,38 +66,6 @@
     align-items: center;
   }
 }
-
-// TODO(parlough): Reverse and simplify these media queries.
-@media(max-width: 960px) {
-  #mainnav {
-    ul {
-      li {
-        display: none;
-
-        &.searchfield {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-@media(max-width: 479px) {
-  #menu-toggle {
-    order: 2;
-  }
-
-  #mainnav {
-    ul {
-      li {
-        &.searchfield {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
 
 .site-header {
   background-color: $site-color-white;
