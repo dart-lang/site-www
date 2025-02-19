@@ -26,24 +26,25 @@ final class GenerateEffectiveDartToc extends Command<int> {
   }
 
   @override
-  String get description => 'Generate or check up-to-date status of the '
+  String get description =>
+      'Generate or check up-to-date status of the '
       'Effective Dart table of contents.';
 
   @override
   String get name => 'effective-dart';
 
   @override
-  Future<int> run() async => await _generateToc(
-        justCheck: argResults.get<bool>(_checkFlag, false),
-      );
+  Future<int> run() async =>
+      await _generateToc(justCheck: argResults.get<bool>(_checkFlag, false));
 }
 
 Future<int> _generateToc({bool justCheck = false}) async {
   const dirPath = 'src/content/effective-dart';
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
-  final sections =
-      filenames.map((name) => _Section(dirPath, name)).toList(growable: false);
+  final sections = filenames
+      .map((name) => _Section(dirPath, name))
+      .toList(growable: false);
 
   for (final section in sections) {
     // Read the lines, but skip the YAML front matter,
@@ -178,10 +179,11 @@ class _Section {
   final List<_Subsection> subsections = [];
 
   _Section(String dirPath, String filename)
-      : file = File(path.join(dirPath, filename)),
-        uri = Uri.parse('/effective-dart/').resolve(filename.split('.').first),
-        name = '${filename[0].toUpperCase()}'
-            "${filename.substring(1).split('.').first}";
+    : file = File(path.join(dirPath, filename)),
+      uri = Uri.parse('/effective-dart/').resolve(filename.split('.').first),
+      name =
+          '${filename[0].toUpperCase()}'
+              "${filename.substring(1).split('.').first}";
 }
 
 class _Subsection {
@@ -190,8 +192,8 @@ class _Subsection {
   final List<_Rule> rules = [];
 
   _Subsection(md.Element element)
-      : name = _concatenatedText(element),
-        fragment = _generateAnchorHash(_concatenatedText(element));
+    : name = _concatenatedText(element),
+      fragment = _generateAnchorHash(_concatenatedText(element));
 }
 
 /// Generates a valid HTML anchor from [text].
@@ -212,10 +214,13 @@ String _concatenatedText(md.Element element) {
   }
 
   return children
-      .map((child) => (child is md.Text)
-          ? _unescape.convert(child.text)
-          : (child is md.Element)
-              ? _concatenatedText(child)
-              : _unescape.convert(child.textContent))
+      .map(
+        (child) =>
+            (child is md.Text)
+                ? _unescape.convert(child.text)
+                : (child is md.Element)
+                ? _concatenatedText(child)
+                : _unescape.convert(child.textContent),
+      )
       .join('');
 }

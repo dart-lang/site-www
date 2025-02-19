@@ -16,17 +16,21 @@ String get _outputPath =>
 
 Future<void> fetchAndUpdate() async {
   final rawRulesInfoUri = Uri.parse(
-      'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/pkg/linter/tool/machine/rules.json');
+    'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/pkg/linter/tool/machine/rules.json',
+  );
   final rawRulesInfo = await http.read(rawRulesInfoUri);
   final rulesInfo =
       (jsonDecode(rawRulesInfo) as List<Object?>).cast<Map<String, Object?>>();
 
   final coreRules = await _rulesConfigured(
-      'https://raw.githubusercontent.com/dart-lang/core/refs/heads/main/pkgs/lints/lib/core.yaml');
+    'https://raw.githubusercontent.com/dart-lang/core/refs/heads/main/pkgs/lints/lib/core.yaml',
+  );
   final recommendedRules = await _rulesConfigured(
-      'https://raw.githubusercontent.com/dart-lang/core/refs/heads/main/pkgs/lints/lib/recommended.yaml');
+    'https://raw.githubusercontent.com/dart-lang/core/refs/heads/main/pkgs/lints/lib/recommended.yaml',
+  );
   final flutterRules = await _rulesConfigured(
-      'https://raw.githubusercontent.com/flutter/packages/refs/heads/main/packages/flutter_lints/lib/flutter.yaml');
+    'https://raw.githubusercontent.com/flutter/packages/refs/heads/main/packages/flutter_lints/lib/flutter.yaml',
+  );
 
   for (final rule in rulesInfo) {
     final ruleName = rule['name'] as String;
@@ -37,8 +41,9 @@ Future<void> fetchAndUpdate() async {
     }.toList(growable: false);
   }
 
-  final formattedRuleInfo =
-      const JsonEncoder.withIndent('  ').convert(rulesInfo);
+  final formattedRuleInfo = const JsonEncoder.withIndent(
+    '  ',
+  ).convert(rulesInfo);
 
   File(_outputPath).writeAsStringSync(formattedRuleInfo);
 }
@@ -51,7 +56,5 @@ Future<Set<String>> _rulesConfigured(String path) async {
   // Assume the structure of the analysis options file.
   final linterOptions = options['linter'] as Map;
   final enabledRules = linterOptions['rules'] as List<Object?>;
-  return {
-    for (final ruleName in enabledRules) ruleName as String,
-  };
+  return {for (final ruleName in enabledRules) ruleName as String};
 }

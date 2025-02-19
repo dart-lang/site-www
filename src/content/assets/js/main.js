@@ -78,23 +78,33 @@ function createGallery() {
 }
 
 function initCookieNotice() {
-  const notice = document.getElementById('cookie-notice');
-  const agreeBtn = document.getElementById('cookie-consent');
-  const cookieKey = 'dart-site-cookie-consent';
-  const cookieConsentValue = 'true'
-  const activeClass = 'show';
+  const currentDate = Date.now();
+  const cookieKey = 'cookie-consent';
 
-  if (Cookies.get(cookieKey) === cookieConsentValue) {
-    return;
+  // Check if they have already recently agreed.
+  const existingDateString = window.localStorage.getItem(cookieKey);
+  if (existingDateString) {
+    const existingDate = parseInt(existingDateString);
+    if (Number.isInteger(existingDate)) {
+      const halfYearMs = 1000 * 60 * 60 * 24 * 180;
+      // If the last consent is less than 180 days old, don't show the notice.
+      if (currentDate - existingDate < halfYearMs) {
+        return;
+      }
+    }
   }
 
-  notice.classList.add(activeClass);
+  const activeClass = 'show';
 
-  agreeBtn.addEventListener('click', (e) => {
+  // Set up the "OK" button to update storage and hide the banner.
+  document.getElementById('cookie-consent')
+      ?.addEventListener('click', (e) => {
     e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
-    notice.classList.remove(activeClass);
-  });
+    window.localStorage.setItem(cookieKey, currentDate.toString());
+    document.getElementById('cookie-notice')?.classList.remove(activeClass);
+  }, { once: true });
+
+  document.getElementById('cookie-notice').classList.add(activeClass);
 }
 
 // A pattern to remove terminal command markers when copying code blocks.

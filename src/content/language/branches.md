@@ -187,7 +187,7 @@ token = switch (charCode) {
   slash || star || plus || minus => operator(charCode),
   comma || semicolon => punctuation(charCode),
   >= digit0 && <= digit9 => number(),
-  _ => throw FormatException('Invalid')
+  _ => throw FormatException('Invalid'),
 };
 ```
 
@@ -246,9 +246,9 @@ class Circle implements Shape {
 }
 
 double calculateArea(Shape shape) => switch (shape) {
-      Square(length: var l) => l * l,
-      Circle(radius: var r) => math.pi * r * r
-    };
+  Square(length: var l) => l * l,
+  Circle(radius: var r) => math.pi * r * r,
+};
 ```
 
 If anyone were to add a new subclass of `Shape`, 
