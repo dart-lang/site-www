@@ -20,13 +20,19 @@ The following are definitions of terms used across the Dart documentation.
 
 {% for term in sorted_terms -%}
 
-<div class="glossary-card expandable-card">
+{% assign cardId = term.id | default: term.term | slugify -%}
+<div class="glossary-card expandable-card" id="{{cardId}}">
 <div class="card-header">
-<h2 class="card-title" id="{{term.id | default: term.term | slugify}}">{{term.term}}</h2>
+<h2 class="card-title">{{term.term}}</h2>
 
-<button class="expand-button icon-button">
-<span class="material-symbols">keyboard_arrow_up</span>
-</button>
+<div class="card-buttons">
+  <a class="share-button icon-button" title="Link to card" href="#{{cardId}}">
+    <span class="material-symbols">tag</span>
+  </a>
+  <button class="expand-button icon-button" title="Expand card">
+    <span class="material-symbols">keyboard_arrow_up</span>
+  </button>
+</div>
 </div>
 <div class="initial-content">
 

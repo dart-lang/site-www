@@ -60,10 +60,18 @@ body.glossary-page {
     gap: 0.25rem;
   }
 
+  //.card-grid {
+  //  display: grid;
+  //  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min-width)), 1fr));
+  //  align-items: flex-start;
+  //  gap: var(--card-grid-gap);
+  //  margin: 0;
+  //  justify-content: center;
+  //}
+
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min-width)), 1fr));
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
     gap: var(--card-grid-gap);
     margin: 0;
     justify-content: center;
@@ -80,15 +88,13 @@ body.glossary-page {
     background-color: var(--card-container-color);
     height: auto;
 
-    scroll-margin: 4rem;
-
     .expandable-content {
       border-top: 0.05rem solid var(--card-border-color);
       padding-top: 0.5rem;
     }
 
     &.collapsed {
-      height: 10rem;
+      height: 8rem;
       overflow: hidden;
 
       .initial-content {
@@ -107,7 +113,7 @@ body.glossary-page {
     }
 
     .expand-button {
-      transition: transform .25s ease-in-out;
+      transition: transform .25s ease-out;
     }
 
     p {
@@ -139,6 +145,8 @@ body.glossary-page {
       justify-content: space-between;
       align-items: center;
     }
+
+    scroll-margin-top: 1rem;
   }
 
   .card-title {
@@ -200,6 +208,10 @@ body.glossary-page {
   }
 
   .initial-content, .expandable-content {
+    > :first-child {
+      margin-top: 0;
+    }
+
     > :last-child {
       margin-bottom: 0;
     }
@@ -210,6 +222,13 @@ body.glossary-page {
     align-items: center;
     gap: 10px;
     font-size: 0.8em;
+  }
+
+  .card-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
   }
 
   .card-actions {
@@ -373,14 +392,17 @@ body.glossary-page {
   }
 
   .icon-button {
+    text-decoration: none;
     appearance: none;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     height: 2rem;
+    width: 2rem;
 
     border-radius: 20px;
-    padding: 0.25rem;
+    padding: 0.2rem;
     color: var(--outline-button-text-color);
 
     &:hover {
@@ -389,6 +411,10 @@ body.glossary-page {
 
     &:active {
       @include interaction-style(10%);
+    }
+
+    span {
+      font-size: 22px;
     }
   }
 
