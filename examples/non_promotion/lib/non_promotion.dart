@@ -48,6 +48,7 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
+
     // #enddocregion write-combine-ifs
   }
 
@@ -62,6 +63,7 @@ void miscDeclAnalyzedButNotTested() {
         print(i.isEven);
       }
     }
+
     // #enddocregion write-change-type
   }
 
@@ -73,6 +75,7 @@ void miscDeclAnalyzedButNotTested() {
         p = p.next;
       }
     }
+
     // #enddocregion loop
   }
 
@@ -88,6 +91,7 @@ void miscDeclAnalyzedButNotTested() {
           continue label;
       }
     }
+
     // #enddocregion switch-loop
   }
 
@@ -134,38 +138,42 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion subtype-variable
     void f(Object o) {
-      if (o is Comparable /* (1) */) {
+      if (o is Comparable /* (1) */ ) {
         Object o2 = o;
-        if (o2 is Pattern /* (2) */) {
+        if (o2 is Pattern /* (2) */ ) {
           print(
-              o2.matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
+            o2.matchAsPrefix('foo'),
+          ); // (3) OK; o2 was promoted to `Pattern`.
         }
       }
     }
+
     // #enddocregion subtype-variable
   }
 
   {
     // #docregion subtype-redundant
     void f(Object o) {
-      if (o is Comparable /* (1) */) {
-        if (o is Pattern /* (2) */) {
+      if (o is Comparable /* (1) */ ) {
+        if (o is Pattern /* (2) */ ) {
           print((o as Pattern).matchAsPrefix('foo')); // (3) OK
         }
       }
     }
+
     // #enddocregion subtype-redundant
   }
 
   {
     // #docregion subtype-string
     void f(Object o) {
-      if (o is Comparable /* (1) */) {
-        if (o is String /* (2) */) {
+      if (o is Comparable /* (1) */ ) {
+        if (o is String /* (2) */ ) {
           print(o.matchAsPrefix('foo')); // (3) OK
         }
       }
     }
+
     // #enddocregion subtype-string
   }
 
@@ -180,6 +188,7 @@ void miscDeclAnalyzedButNotTested() {
       };
       // ... Use foo ...
     }
+
     // #enddocregion local-write-capture-reorder
   }
 
@@ -195,6 +204,7 @@ void miscDeclAnalyzedButNotTested() {
       // ... Additional code ...
       print(i2.isEven); // (2) OK because `i2` isn't write captured.
     }
+
     // #enddocregion local-write-capture-copy
   }
 
@@ -209,6 +219,7 @@ void miscDeclAnalyzedButNotTested() {
       // ... Additional code ...
       print(i!.isEven); // (2) OK due to `!` check.
     }
+
     // #enddocregion local-write-capture-bang
   }
 
@@ -222,6 +233,7 @@ void miscDeclAnalyzedButNotTested() {
       };
       i = j; // (2)
     }
+
     // #enddocregion closure-new-var
   }
 
@@ -233,6 +245,7 @@ void miscDeclAnalyzedButNotTested() {
         print(j.isEven); // OK
       };
     }
+
     // #enddocregion closure-new-var2
   }
 
@@ -248,6 +261,7 @@ void miscDeclAnalyzedButNotTested() {
         i = j;
       };
     }
+
     // #enddocregion closure-write-capture
   }
 }
@@ -384,4 +398,5 @@ void f4(MockingExample x) {
     int i = x._i; // OK
   }
 }
+
 // #enddocregion mock

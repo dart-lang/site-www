@@ -107,8 +107,11 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   /// A constant generating constructor
-  const Planet(
-      {required this.planetType, required this.moons, required this.hasRings});
+  const Planet({
+    required this.planetType,
+    required this.moons,
+    required this.hasRings,
+  });
 
   /// All instance variables are final
   final PlanetType planetType;
@@ -119,4 +122,5 @@ enum Planet {
   bool get isGiant =>
       planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
+
 // #enddocregion enhanced-enum

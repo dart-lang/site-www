@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+@mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
+  transition: $property $duration $effect;
+}
+
+@mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
+  animation-name: $effect;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-delay: ($delay);
+}
+
+@mixin interaction-style($percentage: 4%) {
+  background-image: linear-gradient(rgb(var(--site-interaction-base-values) / $percentage) 0 0);
+}

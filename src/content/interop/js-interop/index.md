@@ -2,6 +2,9 @@
 title: JavaScript interoperability
 short-title: JS interop
 description: Integrate JavaScript code into your Dart web app.
+nextpage:
+  url: /interop/js-interop/usage
+  title: Usage
 ---
 
 The [Dart web platform](/overview#web-platform) supports communication with

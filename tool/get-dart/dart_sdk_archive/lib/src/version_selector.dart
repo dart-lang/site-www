@@ -141,9 +141,17 @@ class VersionSelector with ChangeNotifier {
       for (final platformVariant in platformVariants) {
         // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
         if (archiveMap[name] == 'linux') {
-          if (platformVariant.architecture == 'ARMv7' &&
-              versionInfo.date.isBefore(DateTime.parse(
-                  (channel == 'dev') ? '2015-10-21' : '2015-08-31'))) {
+          if (platformVariant.architecture == 'IA32') {
+            if (versionInfo.version >= Version(3, 8, 0, pre: '0')) {
+              // No Linux IA32 SDK builds after 3.7.
+              continue;
+            }
+          } else if (platformVariant.architecture == 'ARMv7' &&
+              versionInfo.date.isBefore(
+                DateTime.parse(
+                  (channel == 'dev') ? '2015-10-21' : '2015-08-31',
+                ),
+              )) {
             continue;
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
@@ -178,7 +186,12 @@ class VersionSelector with ChangeNotifier {
             continue;
           }
         } else if (name == 'Windows') {
-          if (platformVariant.architecture == 'ARM64') {
+          if (platformVariant.architecture == 'IA32') {
+            if (versionInfo.version >= Version(3, 8, 0, pre: '0')) {
+              // No Windows IA32 SDK builds after 3.7.
+              continue;
+            }
+          } else if (platformVariant.architecture == 'ARM64') {
             // Dev builds start at 2.18.0-41.0.dev.
             if (versionInfo.channel == 'dev' &&
                 versionInfo.version < Version(2, 18, 0, pre: '41.0.dev')) {

@@ -193,7 +193,7 @@ body in switch expressions or statements:
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
-  _ => false
+  _ => false,
 };
 ```
 
@@ -237,10 +237,7 @@ the [`MapEntry`][] objects that a `<Map>.entries` call returns:
 
 <?code-excerpt "language/lib/patterns/for_in.dart (for-in-pattern)"?>
 ```dart
-Map<String, int> hist = {
-  'a': 23,
-  'b': 100,
-};
+Map<String, int> hist = {'a': 23, 'b': 100};
 
 for (var MapEntry(key: key, value: count) in hist.entries) {
   print('$key occurred $count times');
@@ -355,9 +352,9 @@ class Circle implements Shape {
 }
 
 double calculateArea(Shape shape) => switch (shape) {
-      Square(length: var l) => l * l,
-      Circle(radius: var r) => math.pi * r * r
-    };
+  Square(length: var l) => l * l,
+  Circle(radius: var r) => math.pi * r * r,
+};
 ```
 
 ### Validating incoming JSON
@@ -368,7 +365,7 @@ JSON data:
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
 ```dart 
 var json = {
-  'user': ['Lily', 13]
+  'user': ['Lily', 13],
 };
 var {'user': [name, age]} = json;
 ```

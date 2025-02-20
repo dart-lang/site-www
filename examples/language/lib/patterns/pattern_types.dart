@@ -110,7 +110,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion logical-or
     var isPrimary = switch (color) {
       Color.red || Color.yellow || Color.blue => true,
-      _ => false
+      _ => false,
     };
     // #enddocregion logical-or
   }
@@ -211,7 +211,7 @@ void miscDeclAnalyzedButNotTested() {
         == space => 'space',
         > space && < zero => 'punctuation',
         >= zero && <= nine => 'digit',
-        _ => ''
+        _ => '',
       };
     }
     // #enddocregion relational
@@ -271,7 +271,13 @@ void miscDeclAnalyzedButNotTested() {
       (x || y) && z => 'matches nothing',
       // ...
       // #enddocregion parens
-      _ => throw FormatException('Invalid')
+      _ => throw FormatException('Invalid'),
     };
+  }
+
+  {
+    // #docregion map-error
+    final {'foo': int? foo} = {};
+    // #enddocregion map-error
   }
 }

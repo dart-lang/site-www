@@ -330,7 +330,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       // Maps can be built from a constructor.
@@ -366,7 +366,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       // Get all the keys as an unordered collection
@@ -389,7 +389,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       assert(hawaiianBeaches.containsKey('Oahu'));
@@ -449,8 +449,10 @@ void main() {
         // #enddocregion map-for-each
       }
 
-      expect(testForEach,
-          m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
+      expect(
+        testForEach,
+        m.prints('I want to visit Honolulu and swim at Hanauma Bay'),
+      );
     });
 
     test('List.map()', () {
@@ -519,7 +521,8 @@ void main() {
 
       var encoded = Uri.encodeComponent(uri);
       assert(
-          encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+        encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message',
+      );
 
       var decoded = Uri.decodeComponent(encoded);
       assert(uri == decoded);
@@ -541,11 +544,12 @@ void main() {
     test('constructor', () {
       // #docregion uri
       var uri = Uri(
-          scheme: 'https',
-          host: 'example.org',
-          path: '/foo/bar',
-          fragment: 'frag',
-          queryParameters: {'lang': 'dart'});
+        scheme: 'https',
+        host: 'example.org',
+        path: '/foo/bar',
+        fragment: 'frag',
+        queryParameters: {'lang': 'dart'},
+      );
       assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
       // #enddocregion uri
     });

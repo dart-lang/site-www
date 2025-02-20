@@ -51,8 +51,14 @@ class ArchivesTable extends StatelessComponent {
                 selector.selectedVersion = values.first;
               },
               [
-                for (final version in selector.versions?.map((v) => v.canonicalizedVersion).toList() ?? <String>[]) //
-                  option(value: version, selected: version == selector.selectedVersion, [text(version)]),
+                for (final version in selector.versions
+                        ?.map((v) => v.canonicalizedVersion)
+                        .toList() ??
+                    <String>[]) //
+                  option(
+                      value: version,
+                      selected: version == selector.selectedVersion,
+                      [text(version)]),
               ],
             ),
           ]),
@@ -65,10 +71,28 @@ class ArchivesTable extends StatelessComponent {
                 selector.selectedOs = values.first;
               },
               [
-                option(value: 'all', selected: selector.selectedOs == 'all', [text('All')]),
-                option(value: 'macos', id: '$channel-macos', classes: 'macos-option', selected: selector.selectedOs == 'macos',[text('macOS')]),
-                option(value: 'linux', id: '$channel-linux', classes: 'linux-option', selected: selector.selectedOs == 'linux',[text('Linux')]),
-                option(value: 'windows', id: '$channel-windows', classes: 'windows-option', selected: selector.selectedOs == 'windows',[text('Windows')]),
+                option(
+                    value: 'all',
+                    selected: selector.selectedOs == 'all',
+                    [text('All')]),
+                option(
+                    value: 'macos',
+                    id: '$channel-macos',
+                    classes: 'macos-option',
+                    selected: selector.selectedOs == 'macos',
+                    [text('macOS')]),
+                option(
+                    value: 'linux',
+                    id: '$channel-linux',
+                    classes: 'linux-option',
+                    selected: selector.selectedOs == 'linux',
+                    [text('Linux')]),
+                option(
+                    value: 'windows',
+                    id: '$channel-windows',
+                    classes: 'windows-option',
+                    selected: selector.selectedOs == 'windows',
+                    [text('Windows')]),
               ],
             ),
           ]),
@@ -88,7 +112,10 @@ class ArchivesTable extends StatelessComponent {
             for (final version in selector.versionRows)
               tr(
                 classes: selector.isVersionVisible(version) ? null : 'hidden',
-                attributes: {'data-version': version.version, 'data-os': version.os.toLowerCase()},
+                attributes: {
+                  'data-version': version.version,
+                  'data-os': version.os.toLowerCase()
+                },
                 [
                   td([
                     text(version.version),
@@ -104,7 +131,9 @@ class ArchivesTable extends StatelessComponent {
                         br(),
                       a(href: archive.url, [text(archive.label)]),
                       if (archive.hasSha256) //
-                        a(href: '${archive.url}.sha256sum', [text(' (SHA-256)')]),
+                        a(
+                            href: '${archive.url}.sha256sum',
+                            [text(' (SHA-256)')]),
                     ],
                   ]),
                 ],

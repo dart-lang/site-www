@@ -99,7 +99,7 @@ In the following code, the analyzer complains that `context2D` is undefined:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-undefined)" replace="/context2D/[!$&!]/g"?>
 ```dart tag=fails-sa
-var canvas = querySelector('canvas')!;
+var canvas = document.querySelector('canvas')!;
 canvas.[!context2D!].lineTo(x, y);
 ```
 
@@ -121,15 +121,15 @@ You can fix this error with an explicit downcast:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
 ```dart tag=passes-sa
-var canvas = querySelector('canvas') [!as CanvasElement!];
+var canvas = document.querySelector('canvas') [!as HTMLCanvasElement!];
 canvas.context2D.lineTo(x, y);
 ```
 
-Otherwise, use `dynamic` in situations where you cannot use a single type:
+Otherwise, use `dynamic` in situations where you can't use a single type:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
 ```dart tag=passes-sa
-[!dynamic!] canvasOrImg = querySelector('canvas, img');
+var canvasOrImg = document.querySelector('canvas, img') as [!dynamic!];
 var width = canvasOrImg.width;
 ```
 
@@ -257,7 +257,7 @@ For more information, see
 
 :::note
 If you have a valid reason to use a subtype, you can use the
-[covariant keyword](#the-covariant-keyword).
+[covariant keyword](/language/type-system#covariant-keyword).
 :::
 
 <hr>
@@ -278,12 +278,16 @@ which results in an invalid override error on `method(int)`.
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/int/[!$&!]/g"?>
 ```dart tag=fails-sa
 class Superclass<T> {
-  void method(T param) { ... }
+  void method(T param) {
+     ...
+  }
 }
 
 class Subclass extends Superclass {
   @override
-  void method([!int!] param) { ... }
+  void method([!int!] param) {
+     ...
+  }
 }
 ```
 
@@ -303,12 +307,16 @@ You can fix the example by specifying the type on the subclass:
 <?code-excerpt "lib/common_fixes_analysis.dart (type-arguments)" replace="/Superclass /Superclass[!<int\x3E!] /g"?>
 ```dart tag=passes-sa
 class Superclass<T> {
-  void method(T param) { ... }
+  void method(T param) {
+     ...
+  }
 }
 
 class Subclass extends Superclass[!<int>!] {
   @override
-  void method(int param) { ... }
+  void method(int param) {
+     ...
+  }
 }
 ```
 
@@ -391,8 +399,10 @@ initialization list.
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g; /_HoneyBadger/HoneyBadger/g"?>
 ```dart tag=fails-sa
 HoneyBadger(Eats food, String name)
-    : [!super!](food),
-      _name = name { ... }
+  : [!super!](food),
+    _name = name {
+   ...
+}
 ```
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
@@ -409,9 +419,9 @@ Fix this error by moving the `super()` call:
 
 <?code-excerpt "lib/common_fixes_analysis.dart (super-goes-last-ok)" replace="/super/[!$&!]/g"?>
 ```dart tag=passes-sa
-HoneyBadger(Eats food, String name)
-    : _name = name,
-      [!super!](food) { ... }
+HoneyBadger(Eats food, String name) : _name = name, [!super!](food) {
+   ...
+}
 ```
 
 <hr>
@@ -488,8 +498,10 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-fix)"?>
 ```dart tag=passes-sa
 var ints = [1, 2, 3];
-var maximumOrNull =
-    ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+var maximumOrNull = ints.fold<int?>(
+  null,
+  (a, b) => a == null || a < b ? b : a,
+);
 ```
 
 <hr>
@@ -600,35 +612,8 @@ assumeStrings(names.[!cast!]<String>());
 
 ### The covariant keyword
 
-Some (rarely used) coding patterns rely on tightening a type
-by overriding a parameter's type with a subtype, which is invalid.
-In this case, you can use the `covariant` keyword to
-tell the analyzer that you are doing this intentionally.
-This removes the static error and instead checks for an invalid
-argument type at runtime.
-
-The following shows how you might use `covariant`:
-
-<?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
-```dart tag=passes-sa
-class Animal {
-  void chase(Animal x) { ... }
-}
-
-class Mouse extends Animal { ... }
-
-class Cat extends Animal {
-  @override
-  void chase([!covariant!] Mouse x) { ... }
-}
-```
-
-Although this example shows using `covariant` in the subtype,
-the `covariant` keyword can be placed in either the superclass
-or the subclass method.
-Usually the superclass method is the best place to put it.
-The `covariant` keyword applies to a single parameter and is
-also supported on setters and fields.
+The documentation on the `covariant` keyword has been
+moved to [The Dart Type system](/language/type-system#covariant-keyword).
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/dart-core/Iterable/cast.html

@@ -17,6 +17,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       var version = await lookUpVersion();
       // Do something with version
     }
+
     // #enddocregion checkVersion
   }
 
@@ -56,6 +57,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       checkVersion();
       print('In main: version is ${await lookUpVersion()}');
     }
+
     // #enddocregion main
   }
 
@@ -70,6 +72,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       }
       // ...
     }
+
     // #enddocregion number-thinker
   }
 

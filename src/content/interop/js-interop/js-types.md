@@ -1,6 +1,12 @@
 ---
 title: JS types
 description: Usage information about the core types in JS interop.
+prevpage:
+  url: /interop/js-interop/usage
+  title: Usage
+nextpage:
+  url: /interop/js-interop/tutorials
+  title: JS interop tutorials
 ---
 
 Dart values and JS values belong to separate language domains. When compiling to

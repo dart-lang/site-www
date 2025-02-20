@@ -19,8 +19,7 @@ String _revisionPath(
   String channel,
   String revision, [
   List<String> extra = const [],
-]) =>
-    p.joinAll(['channels', channel, _flavor, revision, ...extra]);
+]) => p.joinAll(['channels', channel, _flavor, revision, ...extra]);
 
 class DartDownloads {
   final storage.StorageApi _api;
@@ -31,11 +30,14 @@ class DartDownloads {
       DartDownloads._(client ?? http.Client());
 
   DartDownloads._(http.Client client)
-      : _client = client,
-        _api = storage.StorageApi(client, rootUrl: storageBaseUrl);
+    : _client = client,
+      _api = storage.StorageApi(client, rootUrl: storageBaseUrl);
 
   Future<Uri> createDownloadLink(
-      String channel, String revision, String path) async {
+    String channel,
+    String revision,
+    String path,
+  ) async {
     final prefix = _revisionPath(channel, revision, [path]);
     final results = await _api.objects.list(_dartChannel, prefix: prefix);
     final items = results.items;
@@ -56,9 +58,10 @@ class DartDownloads {
   }
 
   Future<List<VersionInfo>> fetchVersions(String channel) async {
-    final versions = await fetchVersionPaths(channel)
-        .where((event) => !event.contains('latest'))
-        .toList();
+    final versions =
+        await fetchVersionPaths(
+          channel,
+        ).where((event) => !event.contains('latest')).toList();
 
     final versionMaps = <VersionInfo>[];
 
@@ -85,8 +88,12 @@ class DartDownloads {
     String? nextToken;
 
     do {
-      final objects = await _api.objects.list(_dartChannel,
-          prefix: prefix, pageToken: nextToken, delimiter: '/');
+      final objects = await _api.objects.list(
+        _dartChannel,
+        prefix: prefix,
+        pageToken: nextToken,
+        delimiter: '/',
+      );
       nextToken = objects.nextPageToken;
 
       final prefixes = objects.prefixes;
@@ -106,10 +113,11 @@ class DartDownloads {
     final creationTime =
         (await _fetchMetadata(channel, revision, 'VERSION')).timeCreated;
 
-    final json = await _jsonAsciiDecoder
-        .bind(media.stream)
-        .cast<Map<String, Object?>>()
-        .first;
+    final json =
+        await _jsonAsciiDecoder
+            .bind(media.stream)
+            .cast<Map<String, Object?>>()
+            .first;
 
     return VersionInfo.parse(
       channel,
@@ -122,20 +130,28 @@ class DartDownloads {
   void close() => _client.close();
 
   Future<storage.Media> _fetchFile(
-          String channel, String revision, String path) async =>
+    String channel,
+    String revision,
+    String path,
+  ) async =>
       await _api.objects.get(
-        _dartChannel,
-        _revisionPath(channel, revision, [path]),
-        downloadOptions: storage.DownloadOptions.fullMedia,
-      ) as storage.Media;
+            _dartChannel,
+            _revisionPath(channel, revision, [path]),
+            downloadOptions: storage.DownloadOptions.fullMedia,
+          )
+          as storage.Media;
 
   Future<storage.Object> _fetchMetadata(
-          String channel, String revision, String path) async =>
+    String channel,
+    String revision,
+    String path,
+  ) async =>
       await _api.objects.get(
-        _dartChannel,
-        _revisionPath(channel, revision, [path]),
-        downloadOptions: storage.DownloadOptions.metadata,
-      ) as storage.Object;
+            _dartChannel,
+            _revisionPath(channel, revision, [path]),
+            downloadOptions: storage.DownloadOptions.metadata,
+          )
+          as storage.Object;
 }
 
 final _jsonAsciiDecoder = json.fuse(ascii).decoder;

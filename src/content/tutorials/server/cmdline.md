@@ -190,7 +190,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.6.0
+7   sdk: ^3.7.0
 8 
 9 # Add regular dependencies here.
 10 dependencies:
@@ -285,7 +285,8 @@ import 'dart:io';
 ```
 
 :::note
-Web apps (apps that depend on `dart:html`) can't use the `dart:io` library.
+Apps that run on the [web platform](/overview#platform)
+can't use the `dart:io` library.
 :::
 
 ### stdout

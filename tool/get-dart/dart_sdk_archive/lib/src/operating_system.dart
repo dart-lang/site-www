@@ -22,27 +22,12 @@ final class OperatingSystem {
   bool get isWindows => this == _windows;
 }
 
-const _linux = OperatingSystem(
-  'Linux',
-  'Linux',
-);
+const _linux = OperatingSystem('Linux', 'Linux');
 
-const _mac = OperatingSystem(
-  'Mac',
-  'Mac',
-);
+const _mac = OperatingSystem('Mac', 'Mac');
 
-const _unix = OperatingSystem(
-  'Unix',
-  'X11',
-);
+const _unix = OperatingSystem('Unix', 'X11');
 
-const _windows = OperatingSystem(
-  'Windows',
-  'Win',
-);
+const _windows = OperatingSystem('Windows', 'Win');
 
-const _chrome = OperatingSystem(
-  'ChromeOS',
-  'CrOS',
-);
+const _chrome = OperatingSystem('ChromeOS', 'CrOS');

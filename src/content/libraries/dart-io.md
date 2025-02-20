@@ -5,8 +5,8 @@ prevpage:
   url: /libraries/dart-convert
   title: dart:convert
 nextpage:
-  url: /libraries/dart-html
-  title: dart:html
+  url: /interop/js-interop/
+  title: dart:js_interop
 ---
 
 <?code-excerpt plaster="none"?>
@@ -231,10 +231,7 @@ void processRequest(HttpRequest request) {
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
-      ..headers.contentType = ContentType(
-        'text',
-        'plain',
-      )
+      ..headers.contentType = ContentType('text', 'plain')
       ..write('Hello from the server');
   } else {
     response.statusCode = HttpStatus.notFound;
