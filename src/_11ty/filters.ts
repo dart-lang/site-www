@@ -9,7 +9,7 @@ export function registerFilters(eleventyConfig: UserConfig): void {
   eleventyConfig.addFilter('toSimpleDate', toSimpleDate);
   eleventyConfig.addFilter('regexReplace', regexReplace);
   eleventyConfig.addFilter('toISOString', toISOString);
-  eleventyConfig.addFilter('activeNavEntryIndexArray', activeNavEntryIndexArray);
+  eleventyConfig.addFilter('activeNavForPage', activeNavForPage);
   eleventyConfig.addFilter('arrayToSentenceString', arrayToSentenceString);
   eleventyConfig.addFilter('underscoreBreaker', underscoreBreaker);
   eleventyConfig.addFilter('throwError', function (error: any) {
@@ -60,38 +60,49 @@ function toISOString(input: string | Date): string {
   }
 }
 
-function activeNavEntryIndexArray(navEntryTree: any, pageUrlPath: string = ''): number[] | null {
-  const activeEntryIndexes = _getActiveNavEntries(navEntryTree, pageUrlPath);
-  return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
-}
+function activeNavForPage(pageUrlPath: string, activeNav: any) {
+  // Split the path for this page, dropping everything before the path.
+  // Example: dart.dev/tools/pub/package-layout ->
+  // [tools, pub, package-layout]
+  const parts = pageUrlPath.toLowerCase().split('/').slice(1);
+  let currentPathPairs = activeNav;
+  let lastAllowedBackupActive = [];
 
-function _getActiveNavEntries(navEntryTree: any, pageUrlPath = ''): number[] {
-  // TODO(parlough): Simplify once standardizing with the Flutter site.
-  for (let i = 0; i < navEntryTree.length; i++) {
-    const entry = navEntryTree[i];
-
-    if (entry.children) {
-      const descendantIndexes = _getActiveNavEntries(
-        entry.children,
-        pageUrlPath,
-      );
-      if (descendantIndexes.length > 0) {
-        return [i + 1, ...descendantIndexes];
-      }
+  parts.forEach(part => {
+    // If the current entry has active data,
+    // allow its active data to be a backup if a later path isn't found.
+    const currentEntryActiveData = currentPathPairs['active'];
+    if (currentEntryActiveData) {
+      lastAllowedBackupActive = currentEntryActiveData;
     }
 
-    if (entry.permalink) {
-      const isMatch = entry['match-page-url-exactly']
-        ? pageUrlPath === entry.permalink
-        : pageUrlPath.includes(entry.permalink);
+    const paths = currentPathPairs['paths'];
 
-      if (isMatch) {
-        return [i + 1];
-      }
+    // If the current entry has children paths, explore those next.
+    if (paths) {
+      currentPathPairs = paths;
     }
+
+    // Get the data for the next part.
+    const nextPair = currentPathPairs[part];
+
+    // If the next part of the path doesn't have data,
+    // use the active data for the current backup.
+    if (nextPair === undefined || nextPair === null) {
+      return lastAllowedBackupActive;
+    }
+
+    currentPathPairs = nextPair;
+  });
+
+  // If the last path part has active data, use that,
+  // otherwise fall back to the backup active data.
+  let activeEntries = currentPathPairs['active'];
+  if (activeEntries === undefined || activeEntries === null) {
+    activeEntries = lastAllowedBackupActive;
   }
 
-  return [];
+  return activeEntries;
 }
 
 function arrayToSentenceString(list: string[], joiner: string = 'and'): string {

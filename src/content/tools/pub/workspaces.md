@@ -107,6 +107,47 @@ To use pub workspaces, all your workspace packages (but not your dependencies)
 must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
+<a name='stray-files'></a>
+## Stray files
+
+When you migrate an existing monorepo to use Pub workspaces, there will
+be existing "stray" `pubspec.lock` and `.dart_tool/package_config.json` files
+adjacent to each pubspec. These shadow the `pubspec.lock` and
+`.dart_tool/package_config.json` files placed next to the root.
+
+Therefore, `pub get` will delete any `pubspec.lock` and
+`.dart_tool/package_config.json` located in directories between the root and
+(including) any workspace package.
+
+```plaintext
+/
+  pubspec.yaml                       # Root
+  packages/
+    pubspec.lock                     # Deleted by `pub get`
+    .dart_tool/package_config.json   # Deleted by `pub get`
+    foo/
+      pubspec.yaml                   # Workspace member
+      pubspec.lock                   # Deleted by `pub get`
+      .dart_tool/package_config.json # Deleted by `pub get`
+```
+
+If any directory between the workspace root and a workspace package contains a
+"stray" `pubspec.yaml` file that is not member of the workspace, `pub get` will
+report an error and fail to resolve. This is because resolving such a `pubspec.yaml` would
+create a `.dart_tool/package_config.json` file that shadows the one at the root.
+
+For example:
+
+```plaintext
+/
+  pubspec.yaml                      # Root `workspace: ['foo/']`
+  packages/
+    pubspec.yaml                    # Not workspace member => error
+    foo/
+      pubspec.yaml                  # Workspace member
+```
+
+
 ## Interdependencies between workspace packages
 
 If any of the workspace packages depend on each other, they will automatically
@@ -157,7 +198,7 @@ $ cd packages/client_package ; dart pub publish ; cd -
 Sometimes you might want to resolve a workspace package on its own, for example
 to validate its dependency constraints.
 
-One way to do this is to create a `pubspec_overides.yaml` file that resets the
+One way to do this is to create a `pubspec_overrides.yaml` file that resets the
 `resolution` setting, like so:
 
 ```yaml

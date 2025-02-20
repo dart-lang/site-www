@@ -1,6 +1,12 @@
 ---
 title: JS interop tutorials
 description: Tutorials for common JavaScript interop use cases in Dart.
+prevpage:
+  url: /interop/js-interop/js-types
+  title: JS types
+nextpage:
+  url: /interop/js-interop/past-js-interop
+  title: Past JS interop
 ---
 
 ## Tutorials

@@ -91,8 +91,10 @@ void main() {
   });
 
   test('employee', () {
-    expect(employee.main,
-        m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]));
+    expect(
+      employee.main,
+      m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]),
+    );
   });
 
   test('point_with_distance', () {
@@ -106,15 +108,16 @@ void main() {
 
   test('logger', () {
     expect(
-        logger_with_main.main,
-        m.prints([
-          'Button clicked',
-          'log1: This is l1.',
-          'log1: This is l1_2.',
-          'log2: This is l2.',
-          'UI: This is logger.',
-          'UI: This is loggerJson.'
-        ]));
+      logger_with_main.main,
+      m.prints([
+        'Button clicked',
+        'log1: This is l1.',
+        'log1: This is l1_2.',
+        'log2: This is l2.',
+        'UI: This is logger.',
+        'UI: This is loggerJson.',
+      ]),
+    );
   });
 
   test('rectangle_with_main', () {
@@ -127,26 +130,30 @@ void main() {
 
   test('imposter', () {
     expect(
-        impostor.main,
-        m.prints([
-          'Hello, Bob. I am Kathy.',
-          'Hi Bob. Do you know who I am?',
-        ]));
+      impostor.main,
+      m.prints(['Hello, Bob. I am Kathy.', 'Hi Bob. Do you know who I am?']),
+    );
   });
 
   test('no_such_method', () {
-    expect(no_such_method.main,
-        m.prints('You tried to use a non-existent member: Symbol("foo")'));
+    expect(
+      no_such_method.main,
+      m.prints('You tried to use a non-existent member: Symbol("foo")'),
+    );
   });
 
   test('enum_with_main', () {
-    expect(enum_with_main.main,
-        m.prints(['Your favorite color is blue!', 'Color.blue', 'blue', 80]));
+    expect(
+      enum_with_main.main,
+      m.prints(['Your favorite color is blue!', 'Color.blue', 'blue', 80]),
+    );
   });
 
   test('orchestra', () {
     expect(
-        orchestra.main, m.prints(['Waving hands', 'Playing piano', 'Dancing']));
+      orchestra.main,
+      m.prints(['Waving hands', 'Playing piano', 'Dancing']),
+    );
   });
 
   test('static-field', () {
@@ -195,8 +202,10 @@ void main() {
     expect(simpleVector3d.y, equals(6.4));
     expect(simpleVector3d.z, equals(3));
 
-    final yzPlaneVector3d =
-        super_initializer_parameters.Vector3d.yzPlane(y: 2.17, z: 3);
+    final yzPlaneVector3d = super_initializer_parameters.Vector3d.yzPlane(
+      y: 2.17,
+      z: 3,
+    );
     expect(yzPlaneVector3d.x, equals(0));
     expect(yzPlaneVector3d.y, equals(2.17));
     expect(yzPlaneVector3d.z, equals(3));

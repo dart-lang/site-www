@@ -46,7 +46,7 @@ rest are not evaluated.
 ```dart
 var isPrimary = switch (color) {
   Color.red || Color.yellow || Color.blue => true,
-  _ => false
+  _ => false,
 };
 ```
 
@@ -100,7 +100,7 @@ String asciiCharType(int char) {
     == space => 'space',
     > space && < zero => 'punctuation',
     >= zero && <= nine => 'digit',
-    _ => ''
+    _ => '',
   };
 }
 ```
@@ -362,6 +362,13 @@ match its subpatterns against the map's keys to destructure them.
 
 Map patterns don't require the pattern to match the entire map. A map pattern
 ignores any keys that the map contains that aren't matched by the pattern.
+Trying to match a key that does not exist in the map will
+throw a [`StateError`][]:
+
+<?code-excerpt "language/lib/patterns/pattern_types.dart (map-error)"?>
+```dart
+final {'foo': int? foo} = {};
+```
 
 ## Record
 
@@ -472,6 +479,7 @@ switch (record) {
 [Matching]: /language/patterns#matching
 [`List`]: /language/collections#lists
 [`Map`]: /language/collections#maps
+[`StateError`]: {{site.dart-api}}/dart-core/StateError-class.html
 [refuted]: /resources/glossary#refutable-pattern
 [record]: /language/records
 [shape]: /language/records#record-types

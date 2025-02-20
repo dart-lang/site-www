@@ -18,4 +18,5 @@ Future<String> _readFileAsync() async {
   final contents = await file.readAsString();
   return contents.trim();
 }
+
 // #enddocregion non-blocking

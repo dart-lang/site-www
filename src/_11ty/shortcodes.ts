@@ -1,7 +1,26 @@
 import {UserConfig} from '@11ty/eleventy';
 
 export function registerShortcodes(eleventyConfig: UserConfig): void {
+  _setupCards(eleventyConfig);
   _setupMedia(eleventyConfig);
+}
+
+function _setupCards(eleventyConfig: UserConfig): void {
+  eleventyConfig.addPairedShortcode('card', function (content: string, title: string, link?: string | null) {
+    let cardBuilder = link ? `<a class="card filled-card" href="${link}">` : '<div class="card">';
+
+    cardBuilder += `<div class="card-header"><header class="card-title">${title}</header></div>`;
+    cardBuilder += `<div class="card-content">
+
+${content}
+
+</div>
+`;
+
+    cardBuilder += link ? '</a>' : '</div>';
+
+    return cardBuilder;
+  });
 }
 
 function _setupMedia(eleventyConfig: UserConfig): void {

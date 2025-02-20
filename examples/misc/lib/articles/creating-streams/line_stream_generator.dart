@@ -43,12 +43,15 @@ ex ea commodi consequatur?
   var text = StreamController<String>();
   var lineStream = lines(text.stream);
   int lineCount = 0;
-  lineStream.listen((String line) {
-    lineCount++;
-    print('$lineCount: $line');
-  }, onDone: () {
-    print('Lines received: $lineCount');
-  });
+  lineStream.listen(
+    (String line) {
+      lineCount++;
+      print('$lineCount: $line');
+    },
+    onDone: () {
+      print('Lines received: $lineCount');
+    },
+  );
   text.add(part1);
   text.add(part2);
   text.add(part3);

@@ -9,6 +9,7 @@ void miscDeclAnalyzedButNotTested() {
     bool isNoble(int atomicNumber) {
       return _nobleGases[atomicNumber] != null;
     }
+
     // #enddocregion function
   }
 
@@ -17,6 +18,7 @@ void miscDeclAnalyzedButNotTested() {
     isNoble(atomicNumber) {
       return _nobleGases[atomicNumber] != null;
     }
+
     // #enddocregion function-omitting-types
   }
 
@@ -40,7 +42,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool? bold, bool? hidden}) {/*...*/}
+    void enableFlags({bool? bold, bool? hidden}) {
+      /*...*/
+    }
     // #enddocregion specify-named-parameters
 
     // #docregion use-named-parameters
@@ -59,7 +63,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion named-parameter-default-values
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool bold = false, bool hidden = false}) {/*...*/}
+    void enableFlags({bool bold = false, bool hidden = false}) {
+      /*...*/
+    }
 
     // bold will be true; hidden will be false.
     enableFlags(bold: true);

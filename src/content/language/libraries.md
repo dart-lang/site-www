@@ -31,12 +31,12 @@ like `public` or `private`, consult
 Use `import` to specify how a namespace from one library is used in the
 scope of another library.
 
-For example, Dart web apps generally use the [dart:html][]
+For example, Dart web apps generally use the [`dart:js_interop`][]
 library, which they can import like this:
 
-<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-html-import)"?>
+<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-js-interop-import)"?>
 ```dart
-import 'dart:html';
+import 'dart:js_interop';
 ```
 
 The only required argument to `import` is a URI specifying the
@@ -74,6 +74,11 @@ Element element1 = Element();
 // Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
+
+Import prefixes with the [wildcard][] name `_` are non-binding,
+but will provide access to the non-private extensions in that library.
+
+[wildcard]: /language/variables#wildcard-variables
 
 ### Importing only part of a library
 
@@ -173,6 +178,6 @@ for advice on how to implement a package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-[dart:html]: {{site.dart-api}}/dart-html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

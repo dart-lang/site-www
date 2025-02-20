@@ -481,7 +481,7 @@ traditional constructor:
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 // Maps can be built from a constructor.
@@ -517,7 +517,7 @@ You can retrieve all the values or all the keys from a map:
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 // Get all the keys as an unordered collection
@@ -543,7 +543,7 @@ key and checking for null to determine the existence of a key.
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 assert(hawaiianBeaches.containsKey('Oahu'));
@@ -708,7 +708,8 @@ var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
 assert(
-    encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+  encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message',
+);
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
@@ -744,11 +745,12 @@ constructor:
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri)"?>
 ```dart
 var uri = Uri(
-    scheme: 'https',
-    host: 'example.org',
-    path: '/foo/bar',
-    fragment: 'frag',
-    queryParameters: {'lang': 'dart'});
+  scheme: 'https',
+  host: 'example.org',
+  path: '/foo/bar',
+  fragment: 'frag',
+  queryParameters: {'lang': 'dart'},
+);
 assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
 ```
 
@@ -1080,7 +1082,7 @@ Support for weak references and finalizers was added in Dart 2.17.
 [Uri]: {{site.dart-api}}/dart-core/Uri-class.html
 [WeakReference]: {{site.dart-api}}/dart-core/WeakReference-class.html
 [dart:core]: {{site.dart-api}}/dart-core/dart-core-library.html
-[dart:ffi]: /guides/libraries/c-interop
+[dart:ffi]: /interop/c-interop
 [double]: {{site.dart-api}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 [int]: {{site.dart-api}}/dart-core/int-class.html

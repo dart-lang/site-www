@@ -1,17 +1,28 @@
 ---
 title: Past JS interop
-description: Archive of past JS interop implementations.
+description: Archive of Dart's previous JS interop support.
+prevpage:
+  url: /interop/js-interop/tutorials
+  title: JS interop tutorials
+nextpage:
+  url: /interop/js-interop/package-web/
+  title: Migrate to package:web
 ---
 
 :::warning
 None of these legacy interop libraries are supported when compiling to [Wasm][].
 :::
 
-This page addresses previous iterations of JS interop for Dart that are
-considered legacy. They are not deprecated yet, but will likely be in the
-future. Therefore, prefer using [`dart:js_interop`] going forwards and migrate
-usages of old interop libraries when possible. While [`dart:html`] and other web
-libraries are closely related, they're covered in the [`package:web`] page.
+This page addresses previous iterations of JS interop for Dart that
+have been considered legacy and are deprecated as of Dart 3.7.
+Therefore, prefer using [`dart:js_interop`][] going forwards and
+migrate usages of old interop libraries when possible.
+While [`dart:html`][] and other web libraries are closely related,
+they're covered in the [`package:web`][] page.
+
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
+[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
+[`package:web`]: /interop/js-interop/package-web
 
 ## `dart:js`
 
@@ -23,8 +34,8 @@ code-completion as you couldn't declare interop members and instead relied on
 Strings. Many of the functionalities exposed in `dart:js` like [`allowInterop`]
 were later re-exposed through other interop libraries.
 
-This library has been legacy ever since `package:js` and `dart:js_util` were
-released. It will likely be the first to be deprecated.
+This library has been legacy since
+`package:js` and `dart:js_util` were released.
 
 ## `package:js`
 
@@ -50,7 +61,7 @@ There are significant differences, however:
   `package:js` type to `dynamic` and called an interop member on it, it would
   forward to the right member. This is no longer possible with
   `dart:js_interop`.
-- `package:js`' [`@JS`] has no soundness guarantees as return types of
+- `package:js`' `@JS` has no soundness guarantees as return types of
   `external` members were not checked. `dart:js_interop` is sound.
 - `package:js` types could not rename instance members or have non-`external`
   members.
@@ -101,20 +112,12 @@ and forth. This included members like:
 `dart:js_interop` and `dart:js_interop_unsafe` contain these helpers now with
 possibly alternate syntax.
 
-{% comment %}
-TODO: add links (with stable) when ready:
-TODO: Link to `package:web` section
-{% endcomment %}
 
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
-[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
-[`package:web`]: /interop/js-interop/package-web
 [`dart:js`]: {{site.dart-api}}/dart-js/dart-js-library.html
 [`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
 [`package:js`]: {{site.pub-pkg}}/js
 [`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
-[`@JS`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L11
 [tutorial on mocking]: /interop/js-interop/mock
 [`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
