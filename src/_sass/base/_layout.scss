@@ -23,11 +23,10 @@
 
   > article {
     min-width: 8rem;
+    max-width: 60rem;
 
     > .content {
-      max-width: 58rem;
-      margin-left: auto;
-      margin-right: auto;
+      min-width: 8rem;
       padding: $site-content-top-padding;
     }
   }
