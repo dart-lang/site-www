@@ -88,6 +88,8 @@ body.glossary-page main {
     background-color: var(--card-container-color);
     height: auto;
 
+    scroll-margin-top: 4rem;
+
     .expandable-content {
       border-top: 0.05rem solid var(--card-border-color);
       padding-top: 0.5rem;
@@ -95,7 +97,6 @@ body.glossary-page main {
 
     &.collapsed {
       height: 8rem;
-      overflow: hidden;
 
       .initial-content {
         > :not(:first-child) {
@@ -134,19 +135,11 @@ body.glossary-page main {
     }
 
     .card-header {
-      // TODO(parlough): Remove these resets after bootstrap removed.
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
     }
-
-    scroll-margin-top: 1rem;
   }
 
   .card-title {

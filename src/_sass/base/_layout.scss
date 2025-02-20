@@ -19,7 +19,8 @@
 
   > article {
     min-width: 8rem;
-    max-width: 60rem;
+    width: 60rem;
+    max-width: 100%;
 
     > .content {
       min-width: 8rem;

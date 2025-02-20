@@ -162,9 +162,8 @@ function setupExpandableCards() {
       e.preventDefault();
       e.target?.closest('.expandable-card').classList.toggle('collapsed');
     });
-    if (card.querySelector('.card-title')?.id === currentFragment) {
-      card.scrollIntoView({block: 'start'});
-    } else {
+
+    if (card.id !== currentFragment) {
       card.classList.add('collapsed');
     }
   });
