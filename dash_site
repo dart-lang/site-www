@@ -105,4 +105,4 @@ if [[ ! -d ".dart_tool" ]]; then
 fi
 
 # Run the Dart site tool and pass through all arguments.
-dart run dart_site "$@"
+
