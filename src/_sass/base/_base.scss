@@ -1,5 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
 
 :root {
   --site-interaction-base-values: 0 0 0;
@@ -35,6 +35,22 @@ h1, .h1 {
   margin-bottom: 0;
 }
 
+.material-symbols {
+  font-family: $site-font-family-icon;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
 h2, .h2 {
   font-size: 1.5rem;
 }
@@ -53,6 +69,10 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 0.9375rem;
+}
+
+dd {
+  margin-left: 1rem;
 }
 
 dt {
