@@ -25,11 +25,10 @@ class SvnVersionGenerator {
     Map<String, VersionInfo> versionInfos,
     String channel,
   ) async {
-    final versionBaseNames =
-        await _downloader
-            .fetchVersionPaths(channel)
-            .map(path.basename)
-            .toList();
+    final versionBaseNames = await _downloader
+        .fetchVersionPaths(channel)
+        .map(path.basename)
+        .toList();
 
     await Future.forEach<String>(versionBaseNames, (name) async {
       if (!isSvnRevision(name)) {
