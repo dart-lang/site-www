@@ -1,9 +1,5 @@
 @use '../base/variables' as *;
 
-#page-header {
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-}
-
 #page-content {
   display: flex;
   min-height: calc(100vh - $site-header-height);
@@ -35,8 +31,6 @@
 #site-below-header {
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - $site-header-height);
-  overflow-y: auto;
 }
 
 #site-main-row {

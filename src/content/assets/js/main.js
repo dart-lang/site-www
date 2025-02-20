@@ -195,7 +195,7 @@ function _setupSite() {
     }
   });
 
-  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
   topLevelMenuTogglers.forEach(function (togglerSelector) {
     const toggler = document.querySelector(togglerSelector);
     toggler?.addEventListener('click', function (e) {
