@@ -166,17 +166,17 @@ void main() {
     test('RegExp', () {
       // #docregion regexp
       // Here's a regular expression for one or more digits.
-      var digitsSequence = RegExp(r'\d+');
+      var digitSequence = RegExp(r'\d+');
 
       var lettersOnly = 'llamas live fifteen to twenty years';
       var someDigits = 'llamas live 15 to 20 years';
 
       // contains() can use a regular expression.
-      assert(!lettersOnly.contains(digitsSequence));
-      assert(someDigits.contains(digitsSequence));
+      assert(!lettersOnly.contains(digitSequence));
+      assert(someDigits.contains(digitSequence));
 
       // Replace every match with another string.
-      var exedOut = someDigits.replaceAll(digitsSequence, 'XX');
+      var exedOut = someDigits.replaceAll(digitSequence, 'XX');
       assert(exedOut == 'llamas live XX to XX years');
       // #enddocregion regexp
     });
@@ -184,14 +184,14 @@ void main() {
     test('match', () {
       void testMatch() {
         // #docregion match
-        var digitsSequence = RegExp(r'\d+');
+        var digitSequence = RegExp(r'\d+');
         var someDigits = 'llamas live 15 to 20 years';
 
         // Check whether the reg exp has a match in a string.
-        assert(digitsSequence.hasMatch(someDigits));
+        assert(digitSequence.hasMatch(someDigits));
 
         // Loop through all matches.
-        for (final match in digitsSequence.allMatches(someDigits)) {
+        for (final match in digitSequence.allMatches(someDigits)) {
           print(match.group(0)); // 15, then 20
         }
         // #enddocregion match
