@@ -1185,7 +1185,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo#comments):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
+    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md#avoid-checking-in-comments-that-ask-questions):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
     "sinceDartSdk": "2.1"
   },
   {

@@ -25,7 +25,7 @@
     "@types/node": "^22.13.4",
     "firebase-tools": "^13.31.1",
     "hast-util-from-html": "^2.0.3",
-    "hast-util-select": "^6.0.3",
+    "hast-util-select": "^6.0.4",
     "hast-util-to-text": "^4.0.2",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
@@ -36,6 +36,6 @@
     "markdown-it-deflist": "^3.0.0",
     "sass": "^1.85.0",
     "shiki": "^3.0.0",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.3"
   }
 }
