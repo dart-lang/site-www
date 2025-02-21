@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-@use '../core/variables' as *;
+@use '../base/variables' as *;
 
 *:not(pre) > code {
   font-size: 0.9em;
