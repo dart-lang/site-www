@@ -66,6 +66,8 @@ The following are definitions of terms used across the Dart documentation.
     play_arrow
   {% when "code", "sample" %}
     code_blocks
+  {% when "diagnostic", "lint" %}
+    lightbulb
   {% else %}
     article
 {% endcase -%}
