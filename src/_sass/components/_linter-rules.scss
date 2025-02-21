@@ -1,13 +1,7 @@
 @use '../base/mixins' as *;
+@use '../base/variables' as *;
 
 body.linter-rules {
-  --filled-button-container-color: #06599C;
-  --filled-button-text-color: #ffffff;
-
-  --outline-button-border-color: rgba(0, 0, 0, .125);
-  --outline-button-text-color: #3a3a3a;
-  --text-button-text-color: #3a3a3a;
-
   --chip-container-color: transparent;
   --chip-border-color: rgba(0, 0, 0, .5);
   --chip-selected-container-color: rgb(194 229 255);
@@ -77,35 +71,6 @@ body.linter-rules {
 
         &.trailing {
           gap: 0.5rem;
-
-          a, button {
-            display: flex;
-            align-items: center;
-
-            text-decoration: none;
-            background: none;
-            border-radius: 20px;
-            padding: 0 0.75rem;
-            height: 32px;
-            color: var(--outline-button-text-color);
-            border: 1px solid var(--outline-button-border-color);
-
-            &:hover {
-              @include interaction-style(6%);
-            }
-
-            &:active {
-              @include interaction-style(10%);
-            }
-
-            &:focus-visible {
-              outline-offset: 1px;
-            }
-          }
-
-          button.hidden {
-            display: none;
-          }
         }
       }
     }
@@ -135,6 +100,7 @@ body.linter-rules {
     display: flex;
     align-items: center;
     gap: 0.2rem;
+    font-family: $site-font-family-alt;
 
     .label {
       background: none;
@@ -260,6 +226,7 @@ body.linter-rules {
           font-weight: 500;
           text-align: left;
           user-select: none;
+          font-family: $site-font-family-alt;
 
           &:hover {
             @include interaction-style(4%);
