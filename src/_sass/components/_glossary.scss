@@ -1,7 +1,4 @@
-@mixin interaction-style($percentage: 4%) {
-  --site-interaction-base-values: 0 0 0;
-  background-image: linear-gradient(rgb(var(--site-interaction-base-values) / $percentage) 0 0);
-}
+@use '../base/mixins';
 
 body.glossary-page main {
   --filled-button-container-color: #06599C;
@@ -154,17 +151,18 @@ body.glossary-page main {
     background-color: var(--filled-button-container-color);
 
     &:hover {
-      @include interaction-style(6%);
+      @include mixins.interaction-style(6%);
     }
 
     &:active {
-      @include interaction-style(10%);
+      @include mixins.interaction-style(10%);
     }
   }
 
   .details-header {
     font-weight: 500;
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     font-size: 1rem;
   }
 
@@ -190,7 +188,7 @@ body.glossary-page main {
         padding: 0.25rem 0.75rem;
         font-size: 0.9em;
         border-radius: 20px;
-        text-wrap-style: pretty;
+        text-wrap: pretty;
 
         .material-symbols {
           font-variation-settings: 'FILL' 1;
@@ -270,11 +268,11 @@ body.glossary-page main {
           }
 
           &:hover {
-            @include interaction-style(6%);
+            @include mixins.interaction-style(6%);
           }
 
           &:active {
-            @include interaction-style(10%);
+            @include mixins.interaction-style(10%);
           }
 
           &:focus-visible {
@@ -319,11 +317,11 @@ body.glossary-page main {
     }
 
     &:hover {
-      @include interaction-style(4%);
+      @include mixins.interaction-style(4%);
     }
 
     &:active {
-      @include interaction-style(8%);
+      @include mixins.interaction-style(8%);
     }
 
     .chip-icon {
@@ -362,12 +360,12 @@ body.glossary-page main {
     height: 1.75rem;
 
     &:hover {
-      @include interaction-style(4%);
+      @include mixins.interaction-style(4%);
       color: var(--text-button-text-color);
     }
 
     &:active {
-      @include interaction-style(8%);
+      @include mixins.interaction-style(8%);
       color: var(--text-button-text-color);
     }
 
@@ -399,11 +397,11 @@ body.glossary-page main {
     color: var(--outline-button-text-color);
 
     &:hover {
-      @include interaction-style(6%);
+      @include mixins.interaction-style(6%);
     }
 
     &:active {
-      @include interaction-style(10%);
+      @include mixins.interaction-style(10%);
     }
 
     span {
@@ -496,15 +494,15 @@ body.glossary-page main {
           user-select: none;
 
           &:hover {
-            @include interaction-style(4%);
+            @include mixins.interaction-style(4%);
           }
 
           &:focus {
-            @include interaction-style(6%);
+            @include mixins.interaction-style(6%);
           }
 
           &:active {
-            @include interaction-style(8%);
+            @include mixins.interaction-style(8%);
           }
 
           display: flex;
@@ -533,8 +531,7 @@ body.glossary-page main {
     }
   }
 
-  .search-wrapper:has(:focus-visible), .chip:focus-visible, .text-button:focus-visible, .trailing a:focus-visible, .filled-button:focus-visible, .icon-button:focus-visible {
+  .icon-button:focus-visible {
     outline: 2px solid var(--focus-outline-color);
-    border-color: transparent;
   }
 }

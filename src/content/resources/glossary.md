@@ -26,11 +26,11 @@ The following are definitions of terms used across the Dart documentation.
 <h2 class="card-title">{{term.term}}</h2>
 
 <div class="card-buttons">
-  <a class="share-button icon-button" title="Link to card" href="#{{cardId}}">
-    <span class="material-symbols">tag</span>
+  <a class="share-button icon-button" href="#{{cardId}}" title="Link to card" aria-label="Link to {{term.term}} card">
+    <span class="material-symbols" aria-hidden="true">tag</span>
   </a>
-  <button class="expand-button icon-button" title="Expand card">
-    <span class="material-symbols">keyboard_arrow_up</span>
+  <button class="expand-button icon-button" title="Expand or collapse card" aria-label="Expand or collapse {{term.term}} card">
+    <span class="material-symbols" aria-hidden="true">keyboard_arrow_up</span>
   </button>
 </div>
 </div>
@@ -41,8 +41,11 @@ The following are definitions of terms used across the Dart documentation.
 </div>
 <div class="expandable-content">
 
-{{term.long_description | default: term.short_description }}
+{% if term.long_description -%}
+{{term.long_description }}
+{% endif -%}
 
+{% if term.related_links and term.related_links.size > 0 -%}
 <div>
 <h3 class="no_toc details-header">Related docs and resources</h3>
 
@@ -78,6 +81,8 @@ The following are definitions of terms used across the Dart documentation.
 </ul>
 
 </div>
+{% endif -%}
+
 </div>
 </div>
 
