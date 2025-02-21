@@ -7,7 +7,17 @@
   gap: var(--card-grid-gap, 1rem);
   margin: 0 0 1rem;
   justify-content: center;
+}
 
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-grid-gap, 1rem);
+  margin: 0;
+  justify-content: center;
+}
+
+.card-grid, .card-list {
   .card {
     display: flex;
     flex-direction: column;
@@ -39,7 +49,7 @@
         font-weight: 500;
         margin: 0;
         overflow: hidden;
-        font-family: $site-font-family-gsans;
+        font-family: $site-font-family-alt;
         color: var(--card-title-color, $site-color-body);
       }
     }

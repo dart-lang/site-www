@@ -13,10 +13,7 @@ The following are definitions of terms used across the Dart documentation.
 
 {% assign sorted_terms = glossary | sort: "term" %}
 
-<section id="filter-and-search"></section>
-
-<section class="content-search-results">
-<div class="card-grid">
+<div class="card-list">
 
 {% for term in sorted_terms -%}
 
@@ -25,7 +22,7 @@ The following are definitions of terms used across the Dart documentation.
 <div class="card-header">
 <h2 class="card-title">{{term.term}}</h2>
 
-<div class="card-buttons">
+<div class="card-header-buttons">
   <a class="share-button icon-button" href="#{{cardId}}" title="Link to card" aria-label="Link to {{term.term}} card">
     <span class="material-symbols" aria-hidden="true">tag</span>
   </a>
@@ -52,11 +49,11 @@ The following are definitions of terms used across the Dart documentation.
 
 <ul class="resources-list">
 
-{% for link in term.related_links -%}
+{% for resource in term.related_links -%}
 <li>
-<a href="{{link.link}}" class="filled-button">
+<a href="{{resource.link}}" class="filled-button">
 <span class="material-symbols" aria-hidden="true">
-{%- case link.type %}
+{%- case resource.type %}
   {% when "term", "glossary" %}
     dictionary
   {% when "article", "doc" %}
@@ -73,7 +70,7 @@ The following are definitions of terms used across the Dart documentation.
     article
 {% endcase -%}
 </span>
-<span>{{link.text}}</span>
+<span>{{resource.text}}</span>
 </a>
 </li>
 {% endfor -%}
@@ -88,4 +85,3 @@ The following are definitions of terms used across the Dart documentation.
 
 {% endfor -%}
 </div>
-</section>
