@@ -159,12 +159,19 @@ function setupExpandableCards() {
     if (!expandButton) return;
 
     expandButton.addEventListener('click', (e) => {
+      if (card.classList.contains('collapsed')) {
+        card.classList.remove('collapsed');
+        expandButton.ariaExpanded = 'true';
+      } else {
+        card.classList.add('collapsed');
+        expandButton.ariaExpanded = 'false';
+      }
       e.preventDefault();
-      e.target?.closest('.expandable-card').classList.toggle('collapsed');
     });
 
     if (card.id !== currentFragment) {
       card.classList.add('collapsed');
+      expandButton.ariaExpanded = 'false';
     }
   });
 }

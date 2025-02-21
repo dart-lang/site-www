@@ -18,6 +18,7 @@ The following are definitions of terms used across the Dart documentation.
 {% for term in sorted_terms -%}
 
 {% assign cardId = term.id | default: term.term | slugify -%}
+{% assign contentId = cardId | append: '-content' -%}
 <div class="card outlined-card glossary-card expandable-card" id="{{cardId}}">
 <div class="card-header">
 <h2 class="card-title">{{term.term}}</h2>
@@ -26,7 +27,12 @@ The following are definitions of terms used across the Dart documentation.
   <a class="share-button icon-button" href="#{{cardId}}" title="Link to card" aria-label="Link to {{term.term}} card">
     <span class="material-symbols" aria-hidden="true">tag</span>
   </a>
-  <button class="expand-button icon-button" title="Expand or collapse card" aria-label="Expand or collapse {{term.term}} card">
+  <button
+    class="expand-button icon-button"
+    aria-expanded="true"
+    aria-controls="{{contentId}}"
+    title="Expand or collapse card"
+    aria-label="Expand or collapse {{term.term}} card">
     <span class="material-symbols" aria-hidden="true">keyboard_arrow_up</span>
   </button>
 </div>
@@ -36,7 +42,7 @@ The following are definitions of terms used across the Dart documentation.
 {{term.short_description}}
 
 </div>
-<div class="expandable-content">
+<div id="{{cardId}}-content" class="expandable-content">
 
 {% if term.long_description -%}
 {{term.long_description }}
