@@ -18,7 +18,7 @@ The following are definitions of terms used across the Dart documentation.
 {% for term in sorted_terms -%}
 
 {% assign cardId = term.id | default: term.term | slugify -%}
-<div class="glossary-card expandable-card" id="{{cardId}}">
+<div class="card outlined-card glossary-card expandable-card" id="{{cardId}}">
 <div class="card-header">
 <h2 class="card-title">{{term.term}}</h2>
 

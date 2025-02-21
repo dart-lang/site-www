@@ -1,14 +1,72 @@
-a, button {
-  &.filled-button {
+@use '../base/mixins' as mixins;
+@use '../base/variables';
 
+a, button {
+  &.filled-button, &.icon-button, &.text-button, &.outlined-button {
+    // Reset style of buttons.
+    background: none;
+    text-decoration: none;
+    padding: 0;
+    border: none;
+    user-select: none;
+
+    // Shared layout styles.
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      @include mixins.interaction-style(6%);
+    }
+
+    &:active {
+      @include mixins.interaction-style(10%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-outline-color);
+    }
+  }
+
+  &.filled-button {
+    color: var(--filled-button-text-color);
+    background-color: var(--filled-button-container-color);
+
+    gap: 0.35rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.9em;
+    border-radius: 20px;
+    text-wrap: pretty;
+
+    span.material-symbols {
+      font-variation-settings: 'FILL' 1;
+      font-size: 20px;
+    }
   }
 
   &.icon-button {
+    height: 2rem;
+    width: 2rem;
 
+    border-radius: 20px;
+    padding: 0.2rem;
+    color: var(--outline-button-text-color);
+
+    span {
+      font-size: 22px;
+    }
   }
 
   &.text-button {
+    border-radius: 0.5rem;
+    padding: 0 .5rem;
+    height: 1.75rem;
 
+    // Ensure color takes precedence over other anchor styling.
+    &, &:hover, &:active, &:focus {
+      color: var(--text-button-text-color);
+    }
   }
 
   &.outlined-button {

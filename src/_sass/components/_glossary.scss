@@ -1,52 +1,10 @@
 @use '../base/mixins';
 
 body.glossary-page main {
-  --filled-button-container-color: #06599C;
-  --filled-button-text-color: #ffffff;
-
-  --outline-button-border-color: rgba(0, 0, 0, .125);
-  --outline-button-text-color: #3a3a3a;
-  --text-button-text-color: #3a3a3a;
-
-  --chip-container-color: transparent;
-  --chip-border-color: rgba(0, 0, 0, .5);
-  --chip-selected-container-color: rgb(194 229 255);
-  --chip-text-color: #3a3a3a;
-
-  --text-field-border-color: rgba(0, 0, 0, .5);
-  --text-field-text-color: #3a3a3a;
-
-  --menu-border-color: rgba(0, 0, 0, .5);
-  --menu-container-color: #ffffff;
-  --menu-item-container-color: transparent;
-  --menu-item-selected-container-color: rgb(194 229 255);
-  --menu-item-text-color: #3a3a3a;
-
-  --card-container-color: rgb(242, 245, 255);
   --card-border-color: rgba(0, 0, 0, .125);
-  --card-text-color: #3a3a3a;
-  --card-min-width: 22rem;
-
-  --card-grid-gap: 1rem;
-
-  --focus-outline-color: #1967D2;
-
-  .material-symbols {
-    user-select: none;
-  }
 
   .glossary-card {
-    display: flex;
-    flex-direction: column;
-
-    border: 1px solid var(--card-border-color);
-    border-radius: 8px;
-    padding: 0.75rem;
-    gap: 0.5rem;
-    background-color: var(--card-container-color);
     height: auto;
-
-    scroll-margin-top: 4rem;
 
     .expandable-content {
       border-top: 0.05rem solid var(--card-border-color);
@@ -74,50 +32,6 @@ body.glossary-page main {
     .expand-button {
       transition: transform .25s ease-out;
     }
-
-    p {
-      font-size: 0.95em;
-
-      code {
-        font-size: 0.95em;
-        background-color: rgba(0, 0, 0, .05);
-        color: #212121;
-        border-radius: .25rem;
-        padding: .1rem .25rem;
-        text-wrap: nowrap;
-      }
-    }
-
-    &.hidden {
-      display: none;
-    }
-
-    .card-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  .filled-button {
-    color: var(--filled-button-text-color);
-    background-color: var(--filled-button-container-color);
-
-    &:hover {
-      @include mixins.interaction-style(6%);
-    }
-
-    &:active {
-      @include mixins.interaction-style(10%);
-    }
   }
 
   .details-header {
@@ -139,23 +53,6 @@ body.glossary-page main {
 
     li {
       display: flex;
-      a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.35rem;
-        color: var(--filled-button-text-color);
-        background-color: var(--filled-button-container-color);
-        padding: 0.25rem 0.75rem;
-        font-size: 0.9em;
-        border-radius: 20px;
-        text-wrap: pretty;
-
-        .material-symbols {
-          font-variation-settings: 'FILL' 1;
-          font-size: 20px;
-        }
-      }
     }
   }
 
@@ -169,81 +66,10 @@ body.glossary-page main {
     }
   }
 
-  .card-details {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.8em;
-  }
-
   .card-header-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.2rem;
-  }
-
-  .text-button {
-    background: none;
-    border: none;
-    color: var(--text-button-text-color);
-    border-radius: 8px;
-    user-select: none;
-
-    padding: 0 .5rem;
-    height: 1.75rem;
-
-    &:hover {
-      @include mixins.interaction-style(4%);
-      color: var(--text-button-text-color);
-    }
-
-    &:active {
-      @include mixins.interaction-style(8%);
-      color: var(--text-button-text-color);
-    }
-
-    &:focus {
-      color: var(--text-button-text-color);
-    }
-  }
-
-  button {
-    background: none;
-    text-decoration: none;
-    padding: 0;
-    border: none;
-    user-select: none;
-  }
-
-  .icon-button {
-    text-decoration: none;
-    appearance: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 2rem;
-
-    border-radius: 20px;
-    padding: 0.2rem;
-    color: var(--outline-button-text-color);
-
-    &:hover {
-      @include mixins.interaction-style(6%);
-    }
-
-    &:active {
-      @include mixins.interaction-style(10%);
-    }
-
-    span {
-      font-size: 22px;
-    }
-  }
-
-  .icon-button:focus-visible {
-    outline: 2px solid var(--focus-outline-color);
   }
 }
