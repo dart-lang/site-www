@@ -1,0 +1,7 @@
+@use '../base/variables' as *;
+
+.glossary-page {
+  .term-separator {
+    border-top: 0.05rem solid $site-color-light-grey;
+  }
+}

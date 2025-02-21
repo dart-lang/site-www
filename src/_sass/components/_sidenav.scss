@@ -1,20 +1,49 @@
-@use '../core/variables' as *;
-@use '../core/mixins';
+@use '../base/variables' as *;
+@use '../base/mixins';
 
 $sidenav-divider-color: #e7e8ed;
+$sidenav-wide-layout: 1024px;
 
 #sidenav {
   margin: 0;
-  overflow-y: auto;
-  width: 16rem;
+  //overflow-y: auto;
   min-width: 16rem;
-  height: calc(100vh - $site-header-height);
-  padding: 0.75rem 0.75rem 2.25rem;
+  height: 100%;
+  min-height: calc(100vh - $site-header-height);
+  padding: 0.75rem 0.75rem 3rem;
   position: sticky;
-  top: 0;
+  top: $site-header-height;
   scrollbar-width: thin;
 
-  border-right: 0.1rem solid $sidenav-divider-color;
+  display: none;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
+
+  @at-root body.open_menu {
+    #sidenav {
+      display: block;
+    }
+
+    // Only hide page content if menu is open and in narrow layout.
+    #page-content {
+      display: none;
+    }
+  }
+
+  @media (min-width: $sidenav-wide-layout) {
+    display: block;
+    width: 16rem;
+    height: calc(100vh - $site-header-height);
+    overflow-y: auto;
+
+    border-right: 0.1rem solid $sidenav-divider-color;
+    background: none;
+
+    @at-root body.open_menu #page-content {
+      display: flex;
+    }
+  }
 
   .nav-header {
     font-weight: bolder;
@@ -140,7 +169,7 @@ $sidenav-divider-color: #e7e8ed;
   }
 
   .navbar-nav {
-    display: none;
+    display: block;
 
     a.nav-link {
       font-size: 1.125rem;
@@ -148,16 +177,19 @@ $sidenav-divider-color: #e7e8ed;
       margin-bottom: 0.5rem;
       padding: 0.375rem 0.6rem;
     }
+
+    // Hide items from top navbar in wide layout to avoid duplication.
+    @media (min-width: $sidenav-wide-layout) {
+      display: none;
+    }
   }
-}
 
-@media(max-width: 1024px) {
-  #sidenav {
-    display: none;
+  .site-header-search {
+    display: flex;
 
-    // The top-level navigation items in the mobile sidenav.
-    .navbar-nav {
-      display: block;
+    // Hide search from top navbar in wide layout.
+    @media (min-width: $sidenav-wide-layout) {
+      display: none;
     }
   }
 }
