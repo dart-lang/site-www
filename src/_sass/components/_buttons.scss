@@ -62,6 +62,7 @@ a, button {
     border-radius: 0.5rem;
     padding: 0 .5rem;
     height: 1.75rem;
+    font-size: 1rem;
 
     // Ensure color takes precedence over other anchor styling.
     &, &:hover, &:active, &:focus {
