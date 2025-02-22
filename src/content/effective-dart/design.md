@@ -519,10 +519,24 @@ class in a single library.
 
 ## Classes and mixins
 
-Dart is a "pure" object-oriented language in that all objects are instances of
-classes. But Dart does not require all code to be defined inside a
-class—you can define top-level variables, constants, and functions like
-you can in a procedural or functional language.
+**Note:** As of Dart 3.0, class modifiers (e.g., `final`, `base`, `interface`) 
+enforce restrictions on extending and implementing classes at the language level 
+(see [modifier reference](https://dart.dev/language/modifier-reference)). 
+Previous guidelines advising users to "avoid extending a class that isn’t intended to be subclassed" 
+and "avoid implementing a class that isn’t intended to be an interface" are now obsolete, 
+as the compiler prevents misuse when API authors use these modifiers appropriately.
+
+- **DO use class modifiers to control if your class can be extended**  
+  Since Dart 3.0, class modifiers like `final`, `base`, or `sealed` allow you to enforce whether 
+- a class can be extended directly in code. For example, use `final class A {}` to prevent extension, 
+- or `base class B {}` to allow extension only within the same library. Rely on these modifiers rather 
+- than documentation to communicate and enforce your intent.
+
+- **DO use class modifiers to control if your class can be used as an interface**  
+  With Dart 3.0’s class modifiers, you can restrict implementation using `final`, `base`, or `interface`. 
+- For example, `final class A {}` prevents implementation, while `interface class C {}` allows it explicitly.
+- Use these modifiers to enforce your design intent instead of relying solely on documentation.
+
 
 ### AVOID defining a one-member abstract class when a simple function will do
 
@@ -621,41 +635,23 @@ doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
 
-### DO document if your class supports being extended
+### DO use class modifiers to control if your class can be extended
 
-This is the corollary to the above rule. If you want to allow subclasses of your
-class, state that. Suffix the class name with `Base`, or mention it in the
-class's doc comment.
+Since Dart 3.0, class modifiers like `final`, `base`, or `sealed` 
+allow you to enforce whether a class can be extended directly in code. 
+For example, use `final class A {}` to prevent extension, 
+or `base class B {}` to allow extension only within the same library. 
+Rely on these modifiers rather than documentation to communicate and 
+enforce your intent.
 
 
-### AVOID implementing a class that isn't intended to be an interface
+### DO use class modifiers to control if your class can be used as an interface
 
-Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
-contract of a class when it can be trivially inferred from the signatures of an
-implementation of that contract.
-
-But implementing a class's interface is a very tight coupling to that class. It
-means virtually *any* change to the class whose interface you are implementing
-will break your implementation. For example, adding a new member to a class is
-usually a safe, non-breaking change. But if you are implementing that class's
-interface, now your class has a static error because it lacks an implementation
-of that new method.
-
-Library maintainers need the ability to evolve existing classes without breaking
-users. If you treat every class like it exposes an interface that users are free
-to implement, then changing those classes becomes very difficult. That
-difficulty in turn means the libraries you rely on are slower to grow and adapt
-to new needs.
-
-To give the authors of the classes you use more leeway, avoid implementing
-implicit interfaces except for classes that are clearly intended to be
-implemented. Otherwise, you may introduce a coupling that the author doesn't
-intend, and they may break your code without realizing it.
-
-### DO document if your class supports being used as an interface
-
-If your class can be used as an interface, mention that in the class's doc
-comment.
+With Dart 3.0’s class modifiers, you can restrict implementation using
+`final`, `base`, or `interface`. For example, `final class A {}` 
+prevents implementation, while `interface class C {}` allows it explicitly. 
+Use these modifiers to enforce your design intent instead of relying solely 
+on documentation.
 
 
 <a id="do-use-mixin-to-define-a-mixin-type"></a>
