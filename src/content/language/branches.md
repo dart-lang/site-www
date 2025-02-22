@@ -141,7 +141,11 @@ void main() {
 
 ```
 
-In the above example , the condition is met at `case B`. So, the code stops execution after this case.
+In the above example , the condition is met at `case B`. So, the code stops execution after this case.Expected output :
+
+```dart
+Good Job!
+```
 
 #### `break` in for loop :
 
