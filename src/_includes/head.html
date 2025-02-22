@@ -1,4 +1,4 @@
-{% assign cache_bust = site.time|date:'?v=%s' %}
+{% assign cache_bust = '?v=3' %}
 
 <head>
   <meta charset="utf-8">
@@ -73,11 +73,6 @@
     <link href="{{cssFile}}" rel="stylesheet" type="text/css">
   {% endfor -%}
   {% endif -%}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"
-          integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
 
   <script src="{{ '/assets/js/os-tabs.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>

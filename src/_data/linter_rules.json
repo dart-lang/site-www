@@ -65,7 +65,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** specify type annotations.\n\nAvoid `var` when specifying that a type is unknown and short-hands that elide\ntype annotations.  Use `dynamic` if you are being explicit that the type is\nunknown.  Use `Object` if you are being explicit that you want an object that\nimplements `==` and `hashCode`.\n\n**BAD:**\n```dart\nvar foo = 10;\nfinal bar = Bar();\nconst quux = 20;\n```\n\n**GOOD:**\n```dart\nint foo = 10;\nfinal Bar bar = Bar();\nString baz = 'hello';\nconst int quux = 20;\n```\n\nNOTE: Using the the `@optionalTypeArgs` annotation in the `meta` package, API\nauthors can special-case type parameters whose type needs to be dynamic but whose\ndeclaration should be treated as optional.  For example, suppose you have a\n`Key` object whose type parameter you'd like to treat as optional.  Using the\n`@optionalTypeArgs` would look like this:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@optionalTypeArgs\nclass Key<T> {\n ...\n}\n\nvoid main() {\n  Key s = Key(); // OK!\n}\n```",
+    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** specify type annotations.\n\nAvoid `var` when specifying that a type is unknown and short-hands that elide\ntype annotations.  Use `dynamic` if you are being explicit that the type is\nunknown.  Use `Object` if you are being explicit that you want an object that\nimplements `==` and `hashCode`.\n\n**BAD:**\n```dart\nvar foo = 10;\nfinal bar = Bar();\nconst quux = 20;\n```\n\n**GOOD:**\n```dart\nint foo = 10;\nfinal Bar bar = Bar();\nString baz = 'hello';\nconst int quux = 20;\n```\n\nNOTE: Using the `@optionalTypeArgs` annotation in the `meta` package, API\nauthors can special-case type parameters whose type needs to be dynamic but whose\ndeclaration should be treated as optional.  For example, suppose you have a\n`Key` object whose type parameter you'd like to treat as optional.  Using the\n`@optionalTypeArgs` would look like this:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@optionalTypeArgs\nclass Key<T> {\n ...\n}\n\nvoid main() {\n  Key s = Key(); // OK!\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1185,7 +1185,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo#comments):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
+    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md#avoid-checking-in-comments-that-ask-questions):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
     "sinceDartSdk": "2.1"
   },
   {
@@ -1218,7 +1218,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "From the the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files):\n\n**DON'T** import implementation files from another package.\n\nThe libraries inside `lib` are publicly visible: other packages are free to\nimport them.  But much of a package's code is internal implementation libraries\nthat should only be imported and used by the package itself.  Those go inside a\nsubdirectory of `lib` called `src`.  You can create subdirectories in there if\nit helps you organize things.\n\nYou are free to import libraries that live in `lib/src` from within other Dart\ncode in the same package (like other libraries in `lib`, scripts in `bin`,\nand tests) but you should never import from another package's `lib/src`\ndirectory.  Those files are not part of the package's public API, and they\nmight change in ways that could break your code.\n\n**BAD:**\n```dart\n// In 'road_runner'\nimport 'package:acme/src/internals.dart';\n```",
+    "details": "From the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files):\n\n**DON'T** import implementation files from another package.\n\nThe libraries inside `lib` are publicly visible: other packages are free to\nimport them.  But much of a package's code is internal implementation libraries\nthat should only be imported and used by the package itself.  Those go inside a\nsubdirectory of `lib` called `src`.  You can create subdirectories in there if\nit helps you organize things.\n\nYou are free to import libraries that live in `lib/src` from within other Dart\ncode in the same package (like other libraries in `lib`, scripts in `bin`,\nand tests) but you should never import from another package's `lib/src`\ndirectory.  Those files are not part of the package's public API, and they\nmight change in ways that could break your code.\n\n**BAD:**\n```dart\n// In 'road_runner'\nimport 'package:acme/src/internals.dart';\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -1724,7 +1724,7 @@
     "sets": [],
     "fixStatus": "hasFix",
     "details": "Don't type annotate initialized top-level or static variables when the type is\nobvious.\n\n**BAD:**\n```dart\nfinal int myTopLevelVariable = 7;\n\nclass A {\n  static String myStaticVariable = 'Hello';\n}\n```\n\n**GOOD:**\n```dart\nfinal myTopLevelVariable = 7;\n\nclass A {\n  static myStaticVariable = 'Hello';\n}\n```\n\nSometimes the inferred type is not the type you want the variable to have. For\nexample, you may intend to assign values of other types later. You may also\nwish to write a type annotation explicitly because the type of the initializing\nexpression is non-obvious and it will be helpful for future readers of the\ncode to document this type. Or you may wish to commit to a specific type such\nthat future updates of dependencies (in nearby code, in imports, anywhere)\nwill not silently change the type of that variable, thus introducing\ncompile-time errors or run-time bugs in locations where this variable is used.\nIn those cases, go ahead and annotate the variable with the type you want.\n\n**GOOD:**\n```dart\nfinal num myTopLevelVariable = 7;\n\nclass A {\n  static String? myStaticVariable = 'Hello';\n}\n```\n\n**This rule is experimental.** It is being evaluated, and it may be changed\nor removed. Feedback on its behavior is welcome! The main issue is here:\nhttps://github.com/dart-lang/linter/issues/5101.",
-    "sinceDartSdk": "3.7-wip"
+    "sinceDartSdk": "3.7"
   },
   {
     "name": "one_member_abstracts",
@@ -1777,11 +1777,11 @@
       "effectiveDart",
       "publicInterface"
     ],
-    "state": "deprecated",
+    "state": "removed",
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "**NOTE:** This lint is deprecated because it is has not\nbeen fully functional since at least Dart 2.0.\nRemove all inclusions of this lint from your analysis options.\n\n**DO** provide doc comments for all public APIs.\n\nAs described in the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files),\npublic APIs consist in everything in your package's `lib` folder, minus\nimplementation files in `lib/src`, adding elements explicitly exported with an\n`export` directive.\n\nFor example, given `lib/foo.dart`:\n```dart\nexport 'src/bar.dart' show Bar;\nexport 'src/baz.dart';\n\nclass Foo { }\n\nclass _Foo { }\n```\nits API includes:\n\n* `Foo` (but not `_Foo`)\n* `Bar` (exported) and\n* all *public* elements in `src/baz.dart`\n\nAll public API members should be documented with `///` doc-style comments.\n\n**BAD:**\n```dart\nclass Bar {\n  void bar();\n}\n```\n\n**GOOD:**\n```dart\n/// A Foo.\nabstract class Foo {\n  /// Start foo-ing.\n  void start() => _start();\n\n  _start();\n}\n```\n\nAdvice for writing good doc comments can be found in the\n[Doc Writing Guidelines](https://dart.dev/effective-dart/documentation).",
+    "details": "**NOTE:** This lint has been removed because it is has not\nbeen fully functional since at least Dart 2.0.\nRemove all inclusions of this lint from your analysis options.\n\n**DO** provide doc comments for all public APIs.\n\nAs described in the [pub package layout doc](https://dart.dev/tools/pub/package-layout#implementation-files),\npublic APIs consist in everything in your package's `lib` folder, minus\nimplementation files in `lib/src`, adding elements explicitly exported with an\n`export` directive.\n\nFor example, given `lib/foo.dart`:\n```dart\nexport 'src/bar.dart' show Bar;\nexport 'src/baz.dart';\n\nclass Foo { }\n\nclass _Foo { }\n```\nits API includes:\n\n* `Foo` (but not `_Foo`)\n* `Bar` (exported) and\n* all *public* elements in `src/baz.dart`\n\nAll public API members should be documented with `///` doc-style comments.\n\n**BAD:**\n```dart\nclass Bar {\n  void bar();\n}\n```\n\n**GOOD:**\n```dart\n/// A Foo.\nabstract class Foo {\n  /// Start foo-ing.\n  void start() => _start();\n\n  _start();\n}\n```\n\nAdvice for writing good doc comments can be found in the\n[Doc Writing Guidelines](https://dart.dev/effective-dart/documentation).",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2653,8 +2653,8 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Do type annotate initialized top-level or static variables when the type is\nnon-obvious.\n\nType annotations on top-level or static variables can serve as a request for\ntype inference, documenting the expected outcome of the type inference step,\nand declaratively allowing the compiler and analyzer to solve the possibly\ncomplex task of finding type arguments and annotations in the initializing\nexpression that yield the desired result.\n\nType annotations on top-level or static variables can also inform readers about\nthe type of the initializing expression, which will allow them to proceed\nreading the locations in code where this variable is used with known good\ninformation about the type of the given variable (which may not be immediately\nevident by looking at the initializing expression).\n\nAn expression is considered to have a non-obvious type when it does not\nhave an obvious type.\n\nAn expression e has an obvious type in the following cases:\n\n- e is a non-collection literal. For instance, 1, true, 'Hello, $name!'.\n- e is a collection literal with actual type arguments. For instance,\n  <int, bool>{}.\n- e is a list literal or a set literal where at least one element has an\n  obvious type, and all elements have the same type. For instance, [1, 2] and\n  { [true, false], [] }, but not [1, 1.5].\n- e is a map literal where all key-value pair have a key with an obvious type\n  and a value with an obvious type, and all keys have the same type, and all\n  values have the same type. For instance, { #a: <int>[] }, but not\n  {1: 1, 2: true}.\n- e is an instance creation expression whose class part is not raw. For\n  instance C(14) if C is a non-generic class, or C<int>(14) if C accepts one\n  type argument, but not C(14) if C accepts one or more type arguments.\n- e is a cascade whose target has an obvious type. For instance,\n  1..isEven..isEven has an obvious type because 1 has an obvious type.\n- e is a type cast. For instance, myComplexpression as int.\n\n**BAD:**\n```dart\nfinal myTopLevelVariable =\n    genericFunctionWrittenByOtherFolks(with, args);\n\nclass A {\n  static var myStaticVariable =\n      myTopLevelVariable.update('foo', null);\n}\n```\n\n**GOOD:**\n```dart\nfinal Map<String, Widget?> myTopLevelVariable =\n    genericFunctionWrittenByOtherFolks(with, args);\n\nclass A {\n  static Map<String, Widget?> myStaticVariable =\n      myTopLevelVariable.update('foo', null);\n}\n```\n\n**This rule is experimental.** It is being evaluated, and it may be changed\nor removed. Feedback on its behavior is welcome! The main issue is here:\nhttps://github.com/dart-lang/linter/issues/5101.",
-    "sinceDartSdk": "3.7-wip"
+    "details": "Do type annotate initialized top-level or static variables when the type is\nnon-obvious.\n\nType annotations on top-level or static variables can serve as a request for\ntype inference, documenting the expected outcome of the type inference step,\nand declaratively allowing the compiler and analyzer to solve the possibly\ncomplex task of finding type arguments and annotations in the initializing\nexpression that yield the desired result.\n\nType annotations on top-level or static variables can also inform readers about\nthe type of the initializing expression, which will allow them to proceed\nreading the locations in code where this variable is used with known good\ninformation about the type of the given variable (which may not be immediately\nevident by looking at the initializing expression).\n\nAn expression is considered to have a non-obvious type when it does not\nhave an obvious type.\n\nAn expression e has an obvious type in the following cases:\n\n- e is a non-collection literal. For instance, 1, true, 'Hello, $name!'.\n- e is a collection literal with actual type arguments. For instance,\n  <int, bool>{}.\n- e is a list literal or a set literal where at least one element has an\n  obvious type, and all elements have the same type. For instance, [1, 2] and\n  { [true, false], [] }, but not [1, 1.5].\n- e is a map literal where all key-value pair have a key with an obvious type\n  and a value with an obvious type, and all keys have the same type, and all\n  values have the same type. For instance, { #a: <int>[] }, but not\n  {1: 1, 2: true}.\n- e is an instance creation expression whose class part is not raw. For\n  instance C(14) if C is a non-generic class, or C<int>(14) if C accepts one\n  type argument, but not C(14) if C accepts one or more type arguments.\n- e is a cascade whose target has an obvious type. For instance,\n  1..isEven..isEven has an obvious type because 1 has an obvious type.\n- e is a type cast. For instance, `myComplexExpression as int`.\n\n**BAD:**\n```dart\nfinal myTopLevelVariable =\n    genericFunctionWrittenByOtherFolks(with, args);\n\nclass A {\n  static var myStaticVariable =\n      myTopLevelVariable.update('foo', null);\n}\n```\n\n**GOOD:**\n```dart\nfinal Map<String, Widget?> myTopLevelVariable =\n    genericFunctionWrittenByOtherFolks(with, args);\n\nclass A {\n  static Map<String, Widget?> myStaticVariable =\n      myTopLevelVariable.update('foo', null);\n}\n```\n\n**This rule is experimental.** It is being evaluated, and it may be changed\nor removed. Feedback on its behavior is welcome! The main issue is here:\nhttps://github.com/dart-lang/linter/issues/5101.",
+    "sinceDartSdk": "3.7"
   },
   {
     "name": "strict_top_level_inference",
@@ -2667,7 +2667,7 @@
     "sets": [],
     "fixStatus": "hasFix",
     "details": "Do type annotate top-level and class-like member declarations, where types\nare not inferred from super-interfaces or initializers.\n\nThe lint warns about every omitted return type, parameter type, and\nvariable type of a top-level declaration or class-like-namespace-level\ndeclaration (static or instance member or constructor declaration), which\nis not given a type by inference, and which therefore defaults to dynamic.\n\nThe only omitted types that can be given a type by top-level inference,\nare those of variable declarations with initializer expressions, and\nreturn and parameter types of instance members that override a consistent\ncombined super-interface signature.\n\nSetters do not need a return type, as it is always assumed to be `void`.\n\n**BAD:**\n```dart\nvar _zeroPointCache;\nclass Point {\n  get zero => ...;\n  final x, y;\n  Point(x, y) {}\n  closest(b, c) => distance(b) <= distance(c) ? b : c;\n  distance(other) => ...;\n}\n_sq(v) => v * v;\n```\n\n**GOOD:**\n```dart\nPoint? _zeroPointCache;\nclass Point {\n  Point get zero => ...;\n  final int x, y;\n  Point(int x, int y) {}\n  closest(Point b, Point c) =>\n      distance(b) <= distance(c) ? b : c;\n  distance(Point other) => ...;\n}\nint _sq(int v) => v * v;\n```",
-    "sinceDartSdk": "3.7-wip"
+    "sinceDartSdk": "3.7"
   },
   {
     "name": "super_goes_last",
@@ -2798,6 +2798,19 @@
     "sinceDartSdk": "3.5"
   },
   {
+    "name": "unnecessary_async",
+    "description": "No await no async.",
+    "categories": [
+      "style"
+    ],
+    "state": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "Functions that don't do `await` don't have to be `async`.\n\nUsually such functions also don't have to return a `Future`, which allows\nan invoker to avoid `await` in its code, etc. Synchronous code in\ngeneral runs faster, and is easier to reason about.\n\n**BAD:**\n```dart\nvoid f() async {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```\n\n**GOOD:**\n```dart\nvoid f() {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```",
+    "sinceDartSdk": "3.7"
+  },
+  {
     "name": "unnecessary_await_in_return",
     "description": "Unnecessary `await` keyword in return.",
     "categories": [
@@ -2838,7 +2851,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Only use a `break` in a non-empty switch case statement if you need to break\nbefore the end of the case body.  Dart does not support fallthrough execution\nfor non-empty cases, so `break`s at the end of non-empty switch case statements\nare unnecessary.\n\n**BAD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n    break;\n  case 2:\n    print(\"two\");\n    break;\n}\n```\n\n**GOOD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n  case 2:\n    print(\"two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n  case 2:\n    print(\"one or two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n    break;\n  case 2:\n    print(\"just two\");\n}\n```\n\nNOTE: This lint only reports unnecessary breaks in libraries with a\n[language version](https://dart.dev/resources/language/evolution#language-versioning)\nof 3.0 or greater. Explicit breaks are still required in Dart 2.19 and below.",
+    "details": "Only use a `break` in a non-empty switch case statement if you need to break\nbefore the end of the case body.  Dart does not support fallthrough execution\nfor non-empty cases, so `break`s at the end of non-empty switch case statements\nare unnecessary.\n\n**BAD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n    break;\n  case 2:\n    print(\"two\");\n    break;\n}\n```\n\n**GOOD:**\n```dart\nswitch (1) {\n  case 1:\n    print(\"one\");\n  case 2:\n    print(\"two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n  case 2:\n    print(\"one or two\");\n}\n```\n\n```dart\nswitch (1) {\n  case 1:\n    break;\n  case 2:\n    print(\"just two\");\n}\n```\n\nNOTE: This lint only reports unnecessary breaks in libraries with a\n[language version](https://dart.dev/guides/language/evolution#language-versioning)\nof 3.0 or greater. Explicit breaks are still required in Dart 2.19 and below.",
     "sinceDartSdk": "3.0"
   },
   {
@@ -2909,6 +2922,19 @@
     "fixStatus": "hasFix",
     "details": "From [Effective Dart](https://dart.dev/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily):\n\n**AVOID** wrapping fields in getters and setters just to be \"safe\".\n\nIn Java and C#, it's common to hide all fields behind getters and setters (or\nproperties in C#), even if the implementation just forwards to the field.  That\nway, if you ever need to do more work in those members, you can do it without needing\nto touch the callsites.  This is because calling a getter method is different\nthan accessing a field in Java, and accessing a property isn't binary-compatible\nwith accessing a raw field in C#.\n\nDart doesn't have this limitation.  Fields and getters/setters are completely\nindistinguishable.  You can expose a field in a class and later wrap it in a\ngetter and setter without having to touch any code that uses that field.\n\n**BAD:**\n```dart\nclass Box {\n  var _contents;\n  get contents => _contents;\n  set contents(value) {\n    _contents = value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var contents;\n}\n```",
     "sinceDartSdk": "2.0"
+  },
+  {
+    "name": "unnecessary_ignore",
+    "description": "Don't ignore a diagnostic code that is not produced.",
+    "categories": [
+      "style"
+    ],
+    "state": "experimental",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "**DON'T** specify an ignore for a diagnostic that is not produced.",
+    "sinceDartSdk": "3.8"
   },
   {
     "name": "unnecessary_lambdas",
@@ -3202,9 +3228,9 @@
     "state": "stable",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsFix",
+    "fixStatus": "hasFix",
     "details": "**AVOID** using multiple underscores when a single wildcard will do.\n\n**BAD:**\n```dart\nvoid function(int __) { }\n```\n\n**GOOD:**\n```dart\nvoid function(int _) { }\n```",
-    "sinceDartSdk": "3.7-wip"
+    "sinceDartSdk": "3.7"
   },
   {
     "name": "unreachable_from_main",
@@ -3259,8 +3285,8 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "Don't declare non-covariant members.\n\nAn instance variable whose type contains a type parameter of the\nenclosing class, mixin, or enum in a non-covariant position is\nlikely to cause run-time failures due to failing type\nchecks. For example, in `class C<X> {...}`, an instance variable\nof the form `void Function(X) myVariable;` may cause this kind\nof run-time failure.\n\nThe same is true for a getter or method whose return type has a\nnon-covariant occurrence of a type parameter of the enclosing\ndeclaration.\n\nThis lint flags this kind of member declaration.\n\n**BAD:**\n```dart\nclass C<X> {\n  final bool Function(X) fun; // LINT\n  C(this.fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((i) => i.isEven);\n  c.fun(10); // Throws.\n}\n```\n\nThe problem is that `X` occurs as a parameter type in the type\nof `fun`. A better approach is to ensure that the non-covariant\nmember `fun` is _only_ used on `this`. We cannot strictly\nenforce this, but we can make it private and add a forwarding\nmethod `fun`:\n\n**BETTER:**\n```dart\nclass C<X> {\n  // ignore: unsafe_variance\n  final bool Function(X) _fun;\n  bool fun(X x) => _fun(x);\n  C(this.fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((i) => i.isEven);\n  c.fun(10); // Succeeds.\n}\n```\n\nA fully safe approach requires a feature that Dart does not yet\nhave, namely statically checked variance. With that, we could\nspecify that the type parameter `X` is invariant (`inout X`).\n\nAnother possibility is to declare the variable to have a safe\nbut more general type. It is then safe to use the variable\nitself, but every invocation will have to be checked at run\ntime:\n\n**HONEST:**\n```dart\nclass C<X> {\n  final bool Function(Never) fun;\n  C(this.fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((i) => i.isEven);\n  var cfun = c.fun; // Local variable, enables promotion.\n  if (cfun is bool Function(int)) cfun(10); // Succeeds.\n  if (cfun is bool Function(bool)) cfun(true); // Not called.\n}\n```",
-    "sinceDartSdk": "3.7-wip"
+    "details": "An instance variable whose type contains a type parameter of the\nenclosing class, mixin, or enum in a non-covariant position is\nlikely to cause run-time failures due to failing type\nchecks. For example, in `class C<X> {...}`, an instance variable\nof the form `void Function(X) myVariable;` may cause this kind\nof run-time failure.\n\nThe same is true for a getter or method whose return type has a\nnon-covariant occurrence of a type parameter of the enclosing\ndeclaration.\n\nThis lint flags this kind of member declaration.\n\n**BAD:**\n```dart\nclass C<X> {\n  final bool Function([!X!]) fun; // LINT\n  C(this.fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((i) => i.isEven);\n  c.fun(10); // Throws.\n}\n```\n\nThe problem is that `X` occurs as a parameter type in the type\nof `fun`.\n\nOne way to reduce the potential for run-time type errors is to\nensure that the non-covariant member `fun` is _only_ used on\n`this`. We cannot strictly enforce this, but we can make it\nprivate and add a forwarding method `fun` such that we can check\nlocally in the same library that this constraint is satisfied:\n\n**BETTER:**\n```dart\nclass C<X> {\n  // ignore: unsafe_variance\n  final bool Function(X) _fun;\n  bool fun(X x) => _fun(x);\n  C(this._fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((i) => i.isEven);\n  c.fun(10); // Succeeds.\n}\n```\n\nA fully safe approach requires a feature that Dart does not yet\nhave, namely statically checked variance. With that, we could\nspecify that the type parameter `X` is invariant (`inout X`).\n\nIt is possible to emulate invariance without support for statically\nchecked variance. This puts some restrictions on the creation of\nsubtypes, but faithfully provides the typing that `inout` would\ngive:\n\n**GOOD:**\n```dart\ntypedef Inv<X> = X Function(X);\ntypedef C<X> = _C<X, Inv<X>>;\n\nclass _C<X, Invariance extends Inv<X>> {\n  // ignore: unsafe_variance\n  final bool Function(X) fun; // Safe!\n  _C(this.fun);\n}\n\nvoid main() {\n  C<int> c = C<int>((i) => i.isEven);\n  c.fun(10); // Succeeds.\n}\n```\n\nWith this approach, `C<int>` is not a subtype of `C<num>`, so\n`c` must have a different declared type.\n\nAnother possibility is to declare the variable to have a safe\nbut more general type. It is then safe to use the variable\nitself, but every invocation will have to be checked at run\ntime:\n\n**HONEST:**\n```dart\nclass C<X> {\n  final bool Function(Never) fun;\n  C(this.fun);\n}\n\nvoid main() {\n  C<num> c = C<int>((int i) => i.isEven);\n  var cfun = c.fun; // Local variable, enables promotion.\n  if (cfun is bool Function(int)) cfun(10); // Succeeds.\n  if (cfun is bool Function(bool)) cfun(true); // Not called.\n}\n```",
+    "sinceDartSdk": "3.7"
   },
   {
     "name": "use_build_context_synchronously",
@@ -3275,7 +3301,7 @@
       "flutter"
     ],
     "fixStatus": "noFix",
-    "details": "**DON'T** use `BuildContext` across asynchronous gaps.\n\nStoring `BuildContext` for later usage can easily lead to difficult to diagnose\ncrashes. Asynchronous gaps are implicitly storing `BuildContext` and are some of\nthe easiest to overlook when writing code.\n\nWhen a `BuildContext` is used, a `mounted` property must be checked after an\nasynchronous gap, depending on how the `BuildContext` is accessed:\n\n* When using a `State`'s `context` property, the `State`'s `mounted` property\n  must be checked.\n* For other `BuildContext` instances (like a local variable or function\n  argument), the `BuildContext`'s `mounted` property must be checked.\n\n**BAD:**\n```dart\nvoid onButtonTapped(BuildContext context) async {\n  await Future.delayed(const Duration(seconds: 1));\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nvoid onButtonTapped(BuildContext context) {\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nvoid onButtonTapped(BuildContext context) async {\n  await Future.delayed(const Duration(seconds: 1));\n\n  if (!context.mounted) return;\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nabstract class MyState extends State<MyWidget> {\n  void foo() async {\n    await Future.delayed(const Duration(seconds: 1));\n    if (!mounted) return; // Checks `this.mounted`, not `context.mounted`.\n    Navigator.of(context).pop();\n  }\n}\n```",
+    "details": "**DON'T** use `BuildContext` across asynchronous gaps.\n\nStoring `BuildContext` for later usage can easily lead to difficult-to-diagnose\ncrashes. Asynchronous gaps are implicitly storing `BuildContext` and are some of\nthe easiest to overlook when writing code.\n\nWhen a `BuildContext` is used, a `mounted` property must be checked after an\nasynchronous gap, depending on how the `BuildContext` is accessed:\n\n* When using a `State`'s `context` property, the `State`'s `mounted` property\n  must be checked.\n* For other `BuildContext` instances (like a local variable or function\n  argument), the `BuildContext`'s `mounted` property must be checked.\n\n**BAD:**\n```dart\nvoid onButtonTapped(BuildContext context) async {\n  await Future.delayed(const Duration(seconds: 1));\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nvoid onButtonTapped(BuildContext context) {\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nvoid onButtonTapped(BuildContext context) async {\n  await Future.delayed(const Duration(seconds: 1));\n\n  if (!context.mounted) return;\n  Navigator.of(context).pop();\n}\n```\n\n**GOOD:**\n```dart\nabstract class MyState extends State<MyWidget> {\n  void foo() async {\n    await Future.delayed(const Duration(seconds: 1));\n    if (!mounted) return; // Checks `this.mounted`, not `context.mounted`.\n    Navigator.of(context).pop();\n  }\n}\n```",
     "sinceDartSdk": "2.13"
   },
   {

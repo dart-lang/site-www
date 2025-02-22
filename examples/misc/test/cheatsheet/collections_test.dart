@@ -5,11 +5,7 @@ void main() {
     // #docregion collection-literals-inferred
     final aListOfStrings = ['one', 'two', 'three'];
     final aSetOfStrings = {'one', 'two', 'three'};
-    final aMapOfStringsToInts = {
-      'one': 1,
-      'two': 2,
-      'three': 3,
-    };
+    final aMapOfStringsToInts = {'one': 1, 'two': 2, 'three': 3};
     // #enddocregion collection-literals-inferred
 
     expect(aListOfStrings, isA<List<String>>());
@@ -44,7 +40,9 @@ void main() {
     expect(aListOfBaseType, isA<List<BaseType>>());
 
     expect(
-        aListOfBaseType, containsAllInOrder([isA<SubType>(), isA<SubType>()]));
+      aListOfBaseType,
+      containsAllInOrder([isA<SubType>(), isA<SubType>()]),
+    );
   });
 }
 

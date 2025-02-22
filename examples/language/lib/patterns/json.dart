@@ -3,7 +3,7 @@
 void main() {
   // #docregion json-1
   var json = {
-    'user': ['Lily', 13]
+    'user': ['Lily', 13],
   };
   var {'user': [name, age]} = json;
   // #enddocregion json-1

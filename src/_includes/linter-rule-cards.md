@@ -25,7 +25,7 @@
 {% if lint.state == "removed" -%}
 <span class="material-symbols removed-lints" title="Lint has been removed" aria-label="Lint has been removed">error</span>
 {% elsif lint.state == "deprecated" -%}
-<span class="material-symbols deprecated-lints" title="Lint is deprecated" aria-label="Lint is deprecated">warning</span>
+<span class="material-symbols deprecated-lints" title="Lint is deprecated" aria-label="Lint is deprecated">report</span>
 {% elsif lint.state == "experimental" -%}
 <span class="material-symbols experimental-lints" title="Lint is experimental" aria-label="Lint is experimental">science</span>
 {% elsif lint.sinceDartSdk contains "wip" -%}
@@ -46,8 +46,8 @@
 </div>
 
 <div class="trailing">
-<a href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
-<button class="copy-button hidden" title="Copy {{lint.name}} to your clipboard.">Copy</button>
+<a class="outlined-button" href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
+<button class="copy-button filled-button hidden" title="Copy {{lint.name}} to your clipboard.">Copy</button>
 </div>
 
 </div>

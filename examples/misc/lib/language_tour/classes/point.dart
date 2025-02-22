@@ -19,16 +19,12 @@ class Point {
 
   // #docregion named-constructor
   // Named constructor
-  Point.origin()
-      : x = xOrigin,
-        y = yOrigin;
+  Point.origin() : x = xOrigin, y = yOrigin;
   // #enddocregion named-constructor
 
   // Initializer list sets instance variables before
   // the constructor body runs.
-  Point.fromJson(Map<String, double> json)
-      : x = json['x']!,
-        y = json['y']!;
+  Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']!;
   // #docregion class-with-distance-to
 
   double distanceTo(Point other) {
@@ -36,6 +32,8 @@ class Point {
     var dy = y - other.y;
     return sqrt(dx * dx + dy * dy);
   }
+
   // #docregion constructor-initializer, named-constructor
 }
+
 // #enddocregion class-with-distance-to, constructor-initializer, named-constructor

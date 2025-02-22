@@ -2,16 +2,16 @@
 // ignore_for_file: unused_element, unused_local_variable, one_member_abstracts, use_super_parameters
 // ignore_for_file: prefer_function_declarations_over_variables, unused_field, strict_raw_type
 
-import 'dart:html';
+import 'package:web/web.dart';
 
-// Include in this file only excerpts used to illustrate fixes to common problems.
+// Excerpts used to illustrate potential fixes to common type problems.
 void _samplesFromCommonProblemsPage() {
   final double x = 0;
   final double y = 0;
 
   {
     // #docregion canvas-undefined
-    var canvas = querySelector('canvas')!;
+    var canvas = document.querySelector('canvas')!;
     // ignore: stable, beta, dev, undefined_getter
     canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-undefined
@@ -19,14 +19,14 @@ void _samplesFromCommonProblemsPage() {
 
   {
     // #docregion canvas-as
-    var canvas = querySelector('canvas') as CanvasElement;
+    var canvas = document.querySelector('canvas') as HTMLCanvasElement;
     canvas.context2D.lineTo(x, y);
     // #enddocregion canvas-as
   }
 
   {
     // #docregion canvas-dynamic
-    dynamic canvasOrImg = querySelector('canvas, img');
+    var canvasOrImg = document.querySelector('canvas, img') as dynamic;
     var width = canvasOrImg.width;
     // #enddocregion canvas-dynamic
   }
@@ -71,13 +71,17 @@ void adderRuntimeFail() {
 
 // #docregion type-arguments
 class Superclass<T> {
-  void method(T param) {/* ... */}
+  void method(T param) {
+    /* ... */
+  }
 }
 
 class Subclass extends Superclass {
   @override
   // ignore: stable, beta, dev, invalid_override
-  void method(int param) {/* ... */}
+  void method(int param) {
+    /* ... */
+  }
 }
 // #enddocregion type-arguments
 
@@ -93,19 +97,21 @@ class _HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last
   _HoneyBadger(Eats food, String name)
-      // ignore: stable, beta, dev, super_invocation_not_last
-      : super(food),
-        _name = name {/* ... */}
-// #enddocregion super-goes-last
+    // ignore: stable, beta, dev, super_invocation_not_last
+    : super(food),
+      _name = name {
+    /* ... */
+  }
+  // #enddocregion super-goes-last
 }
 
 class HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last-ok
-  HoneyBadger(Eats food, String name)
-      : _name = name,
-        super(food) {/* ... */}
-// #enddocregion super-goes-last-ok
+  HoneyBadger(Eats food, String name) : _name = name, super(food) {
+    /* ... */
+  }
+  // #enddocregion super-goes-last-ok
 }
 
 //-----------------------------------------------
@@ -145,8 +151,10 @@ void infNull() {
 void infFix() {
   // #docregion type-inf-fix
   var ints = [1, 2, 3];
-  var maximumOrNull =
-      ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
+  var maximumOrNull = ints.fold<int?>(
+    null,
+    (a, b) => a == null || a < b ? b : a,
+  );
   // #enddocregion type-inf-fix
 }
 
@@ -157,7 +165,7 @@ abstract class C implements List<int> {}
 // #enddocregion compatible-generics
 
 // #docregion conflicting-generics
-// ignore: inconsistent_inheritance, conflicting_generic_interfaces,
-// ignore: duplicate_definition
+// ignore: duplicate_definition, inconsistent_inheritance, conflicting_generic_interfaces
 abstract class C implements List<int>, Iterable<num> {}
+
 // #enddocregion conflicting-generics

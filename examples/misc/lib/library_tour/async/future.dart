@@ -13,10 +13,13 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion run-using-future
     void runUsingFuture() {
       // ...
-      findEntryPoint().then((entryPoint) {
-        return runExecutable(entryPoint, args);
-      }).then(flushThenExit);
+      findEntryPoint()
+          .then((entryPoint) {
+            return runExecutable(entryPoint, args);
+          })
+          .then(flushThenExit);
     }
+
     // #enddocregion run-using-future
   }
 
@@ -28,6 +31,7 @@ void miscDeclAnalyzedButNotTested() {
       var exitCode = await runExecutable(entryPoint, args);
       await flushThenExit(exitCode);
     }
+
     // #enddocregion run-using-async-await
   }
 
@@ -59,8 +63,8 @@ void miscDeclAnalyzedButNotTested() {
           .then((_) => lengthyComputation())
           .then((_) => print('Done!'))
           .catchError((exception) {
-        /* Handle exception... */
-      });
+            /* Handle exception... */
+          });
       // #enddocregion then-chain
       return Future.value();
     }

@@ -78,23 +78,33 @@ function createGallery() {
 }
 
 function initCookieNotice() {
-  const notice = document.getElementById('cookie-notice');
-  const agreeBtn = document.getElementById('cookie-consent');
-  const cookieKey = 'dart-site-cookie-consent';
-  const cookieConsentValue = 'true'
-  const activeClass = 'show';
+  const currentDate = Date.now();
+  const cookieKey = 'cookie-consent';
 
-  if (Cookies.get(cookieKey) === cookieConsentValue) {
-    return;
+  // Check if they have already recently agreed.
+  const existingDateString = window.localStorage.getItem(cookieKey);
+  if (existingDateString) {
+    const existingDate = parseInt(existingDateString);
+    if (Number.isInteger(existingDate)) {
+      const halfYearMs = 1000 * 60 * 60 * 24 * 180;
+      // If the last consent is less than 180 days old, don't show the notice.
+      if (currentDate - existingDate < halfYearMs) {
+        return;
+      }
+    }
   }
 
-  notice.classList.add(activeClass);
+  const activeClass = 'show';
 
-  agreeBtn.addEventListener('click', (e) => {
+  // Set up the "OK" button to update storage and hide the banner.
+  document.getElementById('cookie-consent')
+      ?.addEventListener('click', (e) => {
     e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
-    notice.classList.remove(activeClass);
-  });
+    window.localStorage.setItem(cookieKey, currentDate.toString());
+    document.getElementById('cookie-notice')?.classList.remove(activeClass);
+  }, { once: true });
+
+  document.getElementById('cookie-notice').classList.add(activeClass);
 }
 
 // A pattern to remove terminal command markers when copying code blocks.
@@ -141,6 +151,31 @@ function setupCopyButtons() {
   });
 }
 
+function setupExpandableCards() {
+  const currentFragment = window?.location.hash.trim().toLowerCase().substring(1);
+  const expandableCards = document.querySelectorAll('.expandable-card');
+  expandableCards.forEach(card => {
+    const expandButton = card.querySelector('.expand-button');
+    if (!expandButton) return;
+
+    expandButton.addEventListener('click', (e) => {
+      if (card.classList.contains('collapsed')) {
+        card.classList.remove('collapsed');
+        expandButton.ariaExpanded = 'true';
+      } else {
+        card.classList.add('collapsed');
+        expandButton.ariaExpanded = 'false';
+      }
+      e.preventDefault();
+    });
+
+    if (card.id !== currentFragment) {
+      card.classList.add('collapsed');
+      expandButton.ariaExpanded = 'false';
+    }
+  });
+}
+
 function _setupSite() {
   setupSidenav();
   setupOsTabs();
@@ -166,7 +201,7 @@ function _setupSite() {
     }
   });
 
-  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
   topLevelMenuTogglers.forEach(function (togglerSelector) {
     const toggler = document.querySelector(togglerSelector);
     toggler?.addEventListener('click', function (e) {
@@ -197,6 +232,7 @@ function _setupSite() {
   );
 
   setupCopyButtons();
+  setupExpandableCards();
 }
 
 // Run setup if DOM is loaded, otherwise do it after it has loaded.

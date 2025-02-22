@@ -12,6 +12,7 @@ import 'src/commands/check_links.dart';
 import 'src/commands/check_site_variable.dart';
 import 'src/commands/format_dart.dart';
 import 'src/commands/freshness.dart';
+import 'src/commands/generate_diagnostic_docs.dart';
 import 'src/commands/generate_effective_dart_toc.dart';
 import 'src/commands/refresh_excerpts.dart';
 import 'src/commands/serve.dart';
@@ -23,10 +24,10 @@ import 'src/commands/verify_firebase_json.dart';
 /// run `dart run dart_site --help`.
 final class DartSiteCommandRunner extends CommandRunner<int> {
   DartSiteCommandRunner()
-      : super(
-          'dart_site',
-          'Infrastructure tooling for the Dart documentation website.',
-        ) {
+    : super(
+        'dart_site',
+        'Infrastructure tooling for the Dart documentation website.',
+      ) {
     addCommand(CheckLinksCommand());
     addCommand(CheckLinkReferencesCommand());
     addCommand(CheckSiteVariableCommand());
@@ -34,6 +35,7 @@ final class DartSiteCommandRunner extends CommandRunner<int> {
     addCommand(RefreshExcerptsCommand());
     addCommand(FormatDartCommand());
     addCommand(FreshnessCommand());
+    addCommand(GenerateDiagnosticDocs());
     addCommand(GenerateEffectiveDartToc());
     addCommand(AnalyzeDartCommand());
     addCommand(TestDartCommand());
