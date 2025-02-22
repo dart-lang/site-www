@@ -70,22 +70,167 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var command = 'OPEN';
-    // #docregion switch-empty
-    switch (command) {
-      case 'OPEN':
-        executeOpen();
-        continue newCase; // Continues executing at the newCase label.
-
-      case 'DENIED': // Empty case falls through.
-      case 'CLOSED':
-        executeClosed(); // Runs for both DENIED and CLOSED,
-
-      newCase:
-      case 'PENDING':
-        executeNowClosed(); // Runs for both OPEN and PENDING.
+  // #docregion switch-break
+  void main() {
+  String grade = 'B';
+  switch (grade) {
+    case 'A':
+      print('Excellent!');
+      break;
+    case 'B':
+      print('Good Job!');
+      break; 
+    case 'C':
+      print('Needs Improvement');
+      break;
+    default:
+      print('Invalid Grade');
+      }
     }
-    // #enddocregion switch-empty
+    // #enddocregion switch-break
+  }
+
+  {
+    // #docregion for-loop-break
+    void main() {
+    for (int i = 1; i <= 5; i++) {
+      if (i == 3) {
+        print('Breaking at i = $i');
+        break; 
+          }
+      print(i);
+        }
+    print('Loop ended.');
+      }
+    // #enddocregion for-loop-break
+  }
+
+  {
+    // #docregion while-loop-break
+    void main() {
+    int i = 1;
+    while (i <= 5) {
+      if (i == 4) {
+        print('Breaking at i = $i');
+        break;
+      }
+      print(i);
+      i++;
+      }
+    }
+    // #enddocregion while-loop-break
+  }
+
+  {
+    // #docregion do-while-loop-break
+    void main() {
+    int i = 1;
+  
+    do {
+      print('Iteration: $i');
+  
+      if (i == 3) {
+        print('Breaking the loop at i = $i');
+        break; 
+      }
+  
+      i++;
+    } while (i <= 5);
+  
+    print('Loop ended.');
+    }
+    // #enddocregion do-while-loop-break
+  }
+
+  {
+    // #docregion nested-while-loop-break
+    void main() {
+    int i = 1;
+  
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        if (j == 2) {
+          break; 
+        }
+        print('i = $i, j = $j');
+        j++;
+      }
+      i++;
+      print('');
+      }
+    }
+    // #enddocregion nested-while-loop-break
+  }
+
+  {
+    // #docregion for-loop-continue
+    void main() {
+    for (int i = 1; i <= 5; i++) {
+      if (i == 3) {
+        continue; 
+      }
+      print('Iteration: $i');
+      }
+    }
+   // #enddocregion for-loop-continue
+  }
+
+  {
+    // #docregion while-loop-continue
+    void main() {
+    int i = 0;
+  
+    while (i < 5) {
+      i++;
+      if (i == 3) {
+        continue; 
+      }
+  
+      print('Iteration: $i');
+      }
+    }
+   // #enddocregion while-loop-continue
+  }
+
+  {
+    // #docregion do-while-loop-continue
+    void main() {
+    int i = 0;
+  
+    do {
+      i++;
+  
+      if (i == 3) {
+        continue; 
+      }
+  
+      print('Iteration: $i');
+      } while (i < 5);
+    }
+   // #enddocregion do-while-loop-continue
+  }
+
+  {
+    // #docregion nested-while-loop-continue
+    void main() {
+    int i = 1;
+  
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        if (j == 2) {
+          j++;
+          continue;
+        }
+        print('i = $i, j = $j');
+        j++;
+      }
+      print(''); 
+      i++;
+      }
+    }
+   // #enddocregion nested-while-loop-continue
   }
 
   {
