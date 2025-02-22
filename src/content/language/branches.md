@@ -115,27 +115,272 @@ switch (command) {
 
 <a id="switch-share"></a>
 
-Empty cases fall through to the next case, allowing cases to share a body. 
-For an empty case that does not fall through,
-use [`break`][break] for its body.
-For non-sequential fall-through,
-you can use a [`continue` statement][break] and a label:
+### Break in Dart
 
-<?code-excerpt "language/lib/control_flow/branches.dart (switch-empty)"?>
+The `break` statement in Dart is used to exit a loop or switch statement immediately when a specific condition is met. It helps to improve the efficiency of the code by stopping unnecessary iterations.
+
+Here is the sample program to use `break` in Dart : 
+
 ```dart
-switch (command) {
-  case 'OPEN':
-    executeOpen();
-    continue newCase; // Continues executing at the newCase label.
-
-  case 'DENIED': // Empty case falls through.
-  case 'CLOSED':
-    executeClosed(); // Runs for both DENIED and CLOSED,
-
-  newCase:
-  case 'PENDING':
-    executeNowClosed(); // Runs for both OPEN and PENDING.
+void main() {
+  String grade = 'B';
+  switch (grade) {
+    case 'A':
+      print('Excellent!');
+      break;
+    case 'B':
+      print('Good Job!');
+      break; 
+    case 'C':
+      print('Needs Improvement');
+      break;
+    default:
+      print('Invalid Grade');
+  }
 }
+
+```
+
+In the above example , the condition is met at `case B`. So, the code stops execution after this case.
+
+#### `break` in for loop :
+
+The below code demonstrate the usage of `break` in `for` loop : 
+
+```dart
+void main() {
+  for (int i = 1; i <= 5; i++) {
+    if (i == 3) {
+      print('Breaking at i = $i');
+      break; 
+    }
+    print(i);
+  }
+  print('Loop ended.');
+}
+```
+
+In the above example, the loop stops execution when `i` is `3`. This means that if the necessary condition is met, the loop breaks. So, the output would be :
+```dart
+1  
+2  
+Breaking at i = 3  
+Loop ended.
+
+```
+
+#### `break` in while loop :
+
+The below code demonstrate the usage of `break` in `while` loop :
+
+```dart
+void main() {
+  int i = 1;
+  while (i <= 5) {
+    if (i == 4) {
+      print('Breaking at i = $i');
+      break;
+    }
+    print(i);
+    i++;
+  }
+}
+
+```
+In the above example, the loop stops execution when `i` is `4`. So, the output would be :
+
+```dart
+1  
+2  
+3  
+Breaking at i = 4
+```
+
+#### `break` in do while loop :
+
+The below code demonstrate the usage of `break` in `do while` loop :
+```dart
+void main() {
+  int i = 1;
+
+  do {
+    print('Iteration: $i');
+
+    if (i == 3) {
+      print('Breaking the loop at i = $i');
+      break; 
+    }
+
+    i++;
+  } while (i <= 5);
+
+  print('Loop ended.');
+}
+```
+In the above example, the loop stops execution when `i` is `3`. So, the output would be :
+
+```dart
+Iteration: 1  
+Iteration: 2  
+Iteration: 3  
+Breaking the loop at i = 3  
+Loop ended.
+```
+
+#### `break` in nested while loop :
+
+Nested loop is the loop present inside another loop. So, here is the sample program to demonstrate the `break` statement in nested while loop :
+
+```dart
+void main() {
+  int i = 1;
+
+  while (i <= 3) {
+    int j = 1;
+    while (j <= 3) {
+      if (j == 2) {
+        break; 
+      }
+      print('i = $i, j = $j');
+      j++;
+    }
+    i++;
+    print('');
+  }
+}
+```
+In the above example, the inner loop is exited whenever the value of `j` is `2`. So, the output would be :
+
+```dart
+i = 1, j = 1
+
+i = 2, j = 1
+
+i = 3, j = 1
+```
+
+### Continue in Dart
+
+The `continue` statement in Dart is used to skip the current iteration of a loop and proceed to the next iteration. It is particularly useful when you want to ignore certain conditions without breaking the loop.
+
+#### `continue` in for loop :
+
+The below code demonstrate the usage of `continue` in `for` loop :
+
+```dart
+void main() {
+  for (int i = 1; i <= 5; i++) {
+    if (i == 3) {
+      continue; 
+    }
+    print('Iteration: $i');
+  }
+}
+
+```
+In the above example, the loop skips the iteration when `i` is `3`. So, the output would be :
+
+```dart
+Iteration: 1  
+Iteration: 2  
+Iteration: 4  
+Iteration: 5  
+
+```
+
+#### `continue` in while loop :
+
+The below code demonstrate the usage of `continue` in `while` loop :
+
+```dart
+void main() {
+  int i = 0;
+
+  while (i < 5) {
+    i++;
+    if (i == 3) {
+      continue; 
+    }
+
+    print('Iteration: $i');
+  }
+}
+
+```
+In the above example, the loop skips the iteration when `i` is `3`. So, the output would be :
+
+```dart
+Iteration: 1  
+Iteration: 2  
+Iteration: 4  
+Iteration: 5  
+```
+#### `continue` in do while loop : 
+
+The below code demonstrate the usage of `continue` in `do while` loop :
+
+```dart
+void main() {
+  int i = 0;
+
+  do {
+    i++;
+
+    if (i == 3) {
+      continue; 
+    }
+
+    print('Iteration: $i');
+  } while (i < 5);
+}
+```
+
+In the above example, the loop skips the iteration when `i` is `3`. So, the output would be :
+
+```dart
+Iteration: 1  
+Iteration: 2  
+Iteration: 4  
+Iteration: 5  
+```
+
+#### `continue` in nested while loop :
+
+Nested loop is the loop present inside another loop. So, here is the sample program to demonstrate the `continue` statement in nested while loop :
+
+```dart
+void main() {
+  int i = 1;
+
+  while (i <= 3) {
+    int j = 1;
+    while (j <= 3) {
+      if (j == 2) {
+        j++;
+        continue;
+      }
+      print('i = $i, j = $j');
+      j++;
+    }
+    print(''); 
+    i++;
+  }
+}
+
+```
+
+In the above example, the inner loop skips the iteration whenever the value of `j` is `2`. So, the output would be :
+
+```dart
+i = 1, j = 1  
+i = 1, j = 3  
+
+i = 2, j = 1  
+i = 2, j = 3  
+
+i = 3, j = 1  
+i = 3, j = 3  
+
 ```
 
 You can use [logical-or patterns][] to allow cases to share a body or a guard.
