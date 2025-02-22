@@ -110,8 +110,8 @@ angle brackets (`<...>`) just after the class name. For example:
 var nameSet = Set<String>.of(names);
 ```
 
-The following code creates a map `SplayTreeMap` has integer keys and
-values of type `View`:
+The following code creates a `SplayTreeMap` that has
+integer keys and values of type `View`:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 ```dart
