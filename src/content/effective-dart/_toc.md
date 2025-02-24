@@ -199,10 +199,9 @@ the project:
 
 * <a href='/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
-* <a href='/effective-dart/design#avoid-extending-a-class-that-isnt-intended-to-be-subclassed'>AVOID extending a class that isn't intended to be subclassed.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-extended'>DO use class modifiers to control if your class can be extended</a>
 * <a href='/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-used-as-an-interface'>DO use class modifiers to control if your class can be used as an interface.</a>
 * <a href='/effective-dart/design#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class'>PREFER defining a pure <code>mixin</code> or pure <code>class</code> to a <code>mixin class</code>.</a>
 
 **Constructors**
