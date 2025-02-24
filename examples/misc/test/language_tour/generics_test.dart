@@ -1,4 +1,6 @@
-// ignore_for_file: argument_type_not_assignable, prefer_collection_literals
+// ignore_for_file: type_annotate_public_apis
+import 'dart:collection';
+
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 
@@ -9,14 +11,14 @@ void main() {
     var names = <String>[];
     names.addAll(['Seth', 'Kathy', 'Lars']);
     // #docregion constructor-1
-    var nameSet = Set<String>.from(names);
+    var nameSet = Set<String>.of(names);
     // #enddocregion constructor-1
     expect(nameSet.length, 3);
   });
 
   test('constructor-2', () {
     // #docregion constructor-2
-    var views = Map<int, View>();
+    var views = SplayTreeMap<int, View>();
     // #enddocregion constructor-2
     expect(views.length, 0);
   });

@@ -4,7 +4,7 @@
   display: none;
   justify-content: center;
   background-color: $site-color-white;
-  padding: 1.5rem;
+  padding: 1.25rem;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -28,20 +28,28 @@
 
   .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1080px;
     min-width: 0;
     width: auto;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (min-width: 576px) {
+      flex-wrap: nowrap;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: center;
+    }
 
     p {
       line-height: 1.6;
       margin: 0;
-    }
-
-    p, button, a {
-      font-size: 1rem;
     }
   }
 }
@@ -51,8 +59,16 @@ body.homepage, body.error {
     --site-interaction-base-values: var(--site-interaction-base-values-inverse);
     background-color: $site-color-dark-background;
 
-    .container p {
-      color: $site-color-white;
+    .container {
+      p {
+        color: $site-color-white;
+      }
+
+      .text-button {
+        &, &:hover, &:active, &:focus {
+          color: $site-color-white;
+        }
+      }
     }
   }
 }

@@ -142,8 +142,11 @@
 }
 
 body.obsolete {
-  #page-header {
+  #site-header {
     .alert {
+      background-color: $alert-warning-bg;
+
+      padding: 0.5rem;
       margin: 0;
 
       h4 {
