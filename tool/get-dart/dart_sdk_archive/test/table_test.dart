@@ -71,8 +71,8 @@ void main() {
       expect(selector.selectedVersion, '4.0.0');
       expect(versionSelect.value, '4.0.0');
 
-      // 3 mac, 5 linux, 3 windows, 1 docs
-      expect(find.tag('tr'), findsNComponents(12));
+      // 3 mac, 4 linux, 2 windows, 1 docs
+      expect(find.tag('tr'), findsNComponents(10));
     });
 
     testBrowser('updates rows on os change', (tester) async {
@@ -86,8 +86,8 @@ void main() {
       // Await loading versions
       await pumpEventQueue();
 
-      // 1 header, 2 mac, 5 linux, 3 windows, 1 docs
-      expect(find.tag('tr'), findsNComponents(12));
+      // 1 header, 2 mac, 4 linux, 2 windows, 1 docs
+      expect(find.tag('tr'), findsNComponents(10));
 
       final table = tester.findNode(find.tag('tbody')) as HTMLElement;
       final nodes = table.childNodes;
@@ -136,8 +136,8 @@ void main() {
 
       expect(selector.selectedVersion, '4.0.0');
 
-      // 3 mac, 5 linux, 3 windows, 1 docs
-      expect(find.tag('tr'), findsNComponents(12));
+      // 3 mac, 4 linux, 2 windows, 1 docs
+      expect(find.tag('tr'), findsNComponents(10));
 
       final table = tester.findNode(find.tag('tbody')) as HTMLElement;
 
@@ -157,12 +157,10 @@ const nodesHtmlV400 =
     '<tbody><tr data-version="4.0.0" data-os="macos"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>macOS</td><td>x64</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-macos-x64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-macos-x64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="macos"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>macOS</td><td>ARM64</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-macos-arm64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-macos-arm64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="linux"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Linux</td><td>x64</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-x64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-x64-release.zip.sha256sum"> (SHA-256)</a><br><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/linux_packages/dart_4.0.0-1_amd64.deb">Debian package</a></td></tr>'
-    '<tr data-version="4.0.0" data-os="linux"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Linux</td><td>IA32</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-ia32-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-ia32-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="linux"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Linux</td><td>ARMv8 (ARM64)</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-arm64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-arm64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="linux"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Linux</td><td>ARMv7</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-arm-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-arm-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="linux"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Linux</td><td>RISC-V (RV64GC)</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-riscv64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-linux-riscv64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="windows"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Windows</td><td>x64</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-x64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-x64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
-    '<tr data-version="4.0.0" data-os="windows"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Windows</td><td>IA32</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-ia32-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-ia32-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="windows"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>Windows</td><td>ARM64</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-arm64-release.zip">Dart SDK</a><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/sdk/dartsdk-windows-arm64-release.zip.sha256sum"> (SHA-256)</a></td></tr>'
     '<tr data-version="4.0.0" data-os="---"><td>4.0.0<span class="muted"> (ref ae7ca51)</span></td><td>---</td><td>---</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/4.0.0/api-docs/dartdocs-gen-api.zip">API Docs</a></td></tr></tbody>';
 
