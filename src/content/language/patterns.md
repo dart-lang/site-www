@@ -360,14 +360,14 @@ double calculateArea(Shape shape) => switch (shape) {
 ### Validating incoming JSON
 
 [Map][] and [list][] patterns work well for destructuring key-value pairs in
-JSON data:
+deserialized data, such as data parsed from JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-1)"?>
 ```dart 
-var json = {
+var data = {
   'user': ['Lily', 13],
 };
-var {'user': [name, age]} = json;
+var {'user': [name, age]} = data;
 ```
 
 If you know that the JSON data has the structure you expect,
@@ -379,10 +379,10 @@ Without patterns, validation is verbose:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
-if (json is Map<String, Object?> &&
-    json.length == 1 &&
-    json.containsKey('user')) {
-  var user = json['user'];
+if (data is Map<String, Object?> &&
+    data.length == 1 &&
+    data.containsKey('user')) {
+  var user = data['user'];
   if (user is List<Object> &&
       user.length == 2 &&
       user[0] is String &&
@@ -402,7 +402,7 @@ method of validating JSON:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
-if (json case {'user': [String name, int age]}) {
+if (data case {'user': [String name, int age]}) {
   print('User $name is $age years old.');
 }
 ```
