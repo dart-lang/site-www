@@ -14,10 +14,7 @@ import 'util.dart';
 const _storageBase = '${storageBaseUrl}dart-archive';
 
 class VersionSelector with ChangeNotifier {
-  VersionSelector({
-    required this.channel,
-    required this.client,
-  }) {
+  VersionSelector({required this.channel, required this.client}) {
     if (OperatingSystem.current.isMac) {
       _selectedOs = 'macos';
     } else if (OperatingSystem.current.isLinux ||
@@ -59,9 +56,7 @@ class VersionSelector with ChangeNotifier {
     if (_versionInfo case final versionInfo?) {
       return buildVersionRows(versionInfo);
     } else {
-      return [
-        ArchivesTable.templateRow(channel),
-      ];
+      return [ArchivesTable.templateRow(channel)];
     }
   }
 
@@ -74,9 +69,9 @@ class VersionSelector with ChangeNotifier {
   }
 
   Future<void> loadVersions() async {
-    final versions = (await fetchSdkVersions(channel, client)
-          ..sort())
-        .reversed;
+    final versions =
+        (await fetchSdkVersions(channel, client)
+          ..sort()).reversed;
 
     _selectedVersion = versions.first.canonicalizedVersion;
     _versions = versions;
@@ -128,8 +123,10 @@ class VersionSelector with ChangeNotifier {
     if (version == null) return;
 
     final svnRevision = svnRevisionForVersion(version);
-    final versionInfo =
-        await client.fetchVersion(channel, svnRevision ?? version);
+    final versionInfo = await client.fetchVersion(
+      channel,
+      svnRevision ?? version,
+    );
 
     _versionInfo = versionInfo;
     notifyListeners();
@@ -222,7 +219,8 @@ class VersionSelector with ChangeNotifier {
               continue;
             }
 
-            var baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
+            var baseFileName =
+                '${archiveMap[pa]}-${archiveMap[name]}-'
                 '${archiveMap[platformVariant.architecture]}';
 
             if (pa == 'Debian package') {
@@ -238,7 +236,8 @@ class VersionSelector with ChangeNotifier {
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
             final svnRevisionInfo = _svnRevision(versionInfo);
-            final hasSha256 = pa != 'Dart Editor' &&
+            final hasSha256 =
+                pa != 'Dart Editor' &&
                 pa != 'Debian package' &&
                 (svnRevisionInfo == null || svnRevisionInfo > 38976);
             archives.add((label: pa, url: uri, hasSha256: hasSha256));
@@ -267,10 +266,11 @@ class VersionSelector with ChangeNotifier {
       archives: [
         (
           label: 'API Docs',
-          url: '$_storageBase/channels/$channel/release/'
+          url:
+              '$_storageBase/channels/$channel/release/'
               '${versionInfo.version}/api-docs/dartdocs-gen-api.zip',
           hasSha256: false,
-        )
+        ),
       ],
     );
   }

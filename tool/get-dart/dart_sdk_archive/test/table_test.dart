@@ -25,19 +25,26 @@ void main() {
     });
 
     setUp(() {
-      dartDownloads = DartDownloads(client: MockClient((r) async {
-        final data = mockDataForUrl(r.url.toString());
-        if (data == null) {
-          throw Exception('No mock data for ${r.url}');
-        }
-        return Response(jsonEncode(data), 200,
-            headers: {'content-type': 'application/json'});
-      }));
+      dartDownloads = DartDownloads(
+        client: MockClient((r) async {
+          final data = mockDataForUrl(r.url.toString());
+          if (data == null) {
+            throw Exception('No mock data for ${r.url}');
+          }
+          return Response(
+            jsonEncode(data),
+            200,
+            headers: {'content-type': 'application/json'},
+          );
+        }),
+      );
     });
 
     testBrowser('renders table with default os and version', (tester) async {
-      final selector =
-          VersionSelector(channel: 'stable', client: dartDownloads);
+      final selector = VersionSelector(
+        channel: 'stable',
+        client: dartDownloads,
+      );
 
       tester.pumpComponent(ArchivesTable(selector: selector));
 
@@ -69,8 +76,10 @@ void main() {
     });
 
     testBrowser('updates rows on os change', (tester) async {
-      final selector =
-          VersionSelector(channel: 'stable', client: dartDownloads);
+      final selector = VersionSelector(
+        channel: 'stable',
+        client: dartDownloads,
+      );
 
       tester.pumpComponent(ArchivesTable(selector: selector));
 
@@ -113,8 +122,10 @@ void main() {
     });
 
     testBrowser('loads rows on version change', (tester) async {
-      final selector =
-          VersionSelector(channel: 'stable', client: dartDownloads);
+      final selector = VersionSelector(
+        channel: 'stable',
+        client: dartDownloads,
+      );
       selector.selectedOs = 'all';
 
       tester.pumpComponent(ArchivesTable(selector: selector));
@@ -168,7 +179,8 @@ const nodesHtmlV123 =
 const versionListUrl =
     'https://storage.googleapis.com/storage/v1/b/dart-archive/o?delimiter=%2F&prefix=channels%2Fstable%2Frelease%2F&alt=json';
 final versionInfoRegex = RegExp(
-    r'https://storage\.googleapis\.com/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F(\d\.\d\.\d)%2FVERSION\?alt=(media|json)');
+  r'https://storage\.googleapis\.com/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F(\d\.\d\.\d)%2FVERSION\?alt=(media|json)',
+);
 
 dynamic mockDataForUrl(String url) {
   if (url == versionListUrl) {
@@ -189,7 +201,7 @@ dynamic mockDataForUrl(String url) {
       return {
         'date': '2024-01-01',
         'version': v,
-        'revision': 'ae7ca5199a0559db0ae60533e9cedd3ce0d6ab04'
+        'revision': 'ae7ca5199a0559db0ae60533e9cedd3ce0d6ab04',
       };
     } else {
       return {
@@ -213,7 +225,7 @@ dynamic mockDataForUrl(String url) {
         'timeCreated': '2024-12-11T13:39:26.565Z',
         'updated': '2024-12-11T13:39:26.565Z',
         'timeStorageClassUpdated': '2024-12-11T13:39:26.565Z',
-        'timeFinalized': '2024-12-11T13:39:26.565Z'
+        'timeFinalized': '2024-12-11T13:39:26.565Z',
       };
     }
   }

@@ -4,14 +4,15 @@ import 'package:jaspr/jaspr.dart';
 
 import '../version_selector.dart';
 
-typedef VersionRow = ({
-  String version,
-  String? ref,
-  String os,
-  String arch,
-  String date,
-  List<({String label, String url, bool hasSha256})> archives,
-});
+typedef VersionRow =
+    ({
+      String version,
+      String? ref,
+      String os,
+      String arch,
+      String date,
+      List<({String label, String url, bool hasSha256})> archives,
+    });
 
 class ArchivesTable extends StatelessComponent {
   const ArchivesTable({required this.selector, super.key});
@@ -51,14 +52,16 @@ class ArchivesTable extends StatelessComponent {
                 selector.selectedVersion = values.first;
               },
               [
-                for (final version in selector.versions
-                        ?.map((v) => v.canonicalizedVersion)
-                        .toList() ??
-                    <String>[]) //
+                for (final version
+                    in selector.versions
+                            ?.map((v) => v.canonicalizedVersion)
+                            .toList() ??
+                        <String>[]) //
                   option(
-                      value: version,
-                      selected: version == selector.selectedVersion,
-                      [text(version)]),
+                    value: version,
+                    selected: version == selector.selectedVersion,
+                    [text(version)],
+                  ),
               ],
             ),
           ]),
@@ -71,28 +74,30 @@ class ArchivesTable extends StatelessComponent {
                 selector.selectedOs = values.first;
               },
               [
+                option(value: 'all', selected: selector.selectedOs == 'all', [
+                  text('All'),
+                ]),
                 option(
-                    value: 'all',
-                    selected: selector.selectedOs == 'all',
-                    [text('All')]),
+                  value: 'macos',
+                  id: '$channel-macos',
+                  classes: 'macos-option',
+                  selected: selector.selectedOs == 'macos',
+                  [text('macOS')],
+                ),
                 option(
-                    value: 'macos',
-                    id: '$channel-macos',
-                    classes: 'macos-option',
-                    selected: selector.selectedOs == 'macos',
-                    [text('macOS')]),
+                  value: 'linux',
+                  id: '$channel-linux',
+                  classes: 'linux-option',
+                  selected: selector.selectedOs == 'linux',
+                  [text('Linux')],
+                ),
                 option(
-                    value: 'linux',
-                    id: '$channel-linux',
-                    classes: 'linux-option',
-                    selected: selector.selectedOs == 'linux',
-                    [text('Linux')]),
-                option(
-                    value: 'windows',
-                    id: '$channel-windows',
-                    classes: 'windows-option',
-                    selected: selector.selectedOs == 'windows',
-                    [text('Windows')]),
+                  value: 'windows',
+                  id: '$channel-windows',
+                  classes: 'windows-option',
+                  selected: selector.selectedOs == 'windows',
+                  [text('Windows')],
+                ),
               ],
             ),
           ]),
@@ -114,7 +119,7 @@ class ArchivesTable extends StatelessComponent {
                 classes: selector.isVersionVisible(version) ? null : 'hidden',
                 attributes: {
                   'data-version': version.version,
-                  'data-os': version.os.toLowerCase()
+                  'data-os': version.os.toLowerCase(),
                 },
                 [
                   td([
@@ -131,9 +136,9 @@ class ArchivesTable extends StatelessComponent {
                         br(),
                       a(href: archive.url, [text(archive.label)]),
                       if (archive.hasSha256) //
-                        a(
-                            href: '${archive.url}.sha256sum',
-                            [text(' (SHA-256)')]),
+                        a(href: '${archive.url}.sha256sum', [
+                          text(' (SHA-256)'),
+                        ]),
                     ],
                   ]),
                 ],
