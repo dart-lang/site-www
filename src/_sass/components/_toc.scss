@@ -1,5 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
 
 .site-toc {
   ul {
@@ -22,7 +22,7 @@
 
   display: none;
   position: sticky;
-  top: 0;
+  top: $site-header-height;
   order: 2;
   width: 15rem;
   min-width: 15rem;

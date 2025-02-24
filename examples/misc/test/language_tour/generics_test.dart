@@ -65,3 +65,21 @@ void main() {
 }
 
 class View {}
+
+// #docregion f-bound
+// ignore: one_member_abstracts
+abstract interface class Comparable<T> {
+  int compareTo(T o);
+}
+
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
+  @override
+  int compareTo(A other) => /*...implementation...*/ 0;
+}
+
+var useIt = compareAndOffset(A(), A());
+
+// #enddocregion f-bound

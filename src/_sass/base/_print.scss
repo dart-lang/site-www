@@ -2,7 +2,7 @@
 
 @media print {
   // Don't display navigation aids when printing.
-  #page-header, #sidenav, #subnav, #page-footer, .banner,
+  #site-header, #sidenav, #prev-next, #page-footer, .banner,
   #site-toc--inline, #site-toc--side, #page-github-links, #cookie-notice {
     display: none !important;
   }
