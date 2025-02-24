@@ -95,8 +95,9 @@ void main() {
       int countVisibleNodes() {
         var count = 0;
         for (var i = 0; i < nodes.length; i++) {
-          if ((nodes.item(i) as HTMLElement).className.contains('hidden'))
+          if ((nodes.item(i) as HTMLElement).className.contains('hidden')) {
             continue;
+          }
           count++;
         }
         return count;
