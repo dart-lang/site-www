@@ -109,15 +109,15 @@ void main() {
 
       selector.selectedOs = 'linux';
       await pumpEventQueue();
-      expect(countVisibleNodes(), 6);
+      expect(countVisibleNodes(), 5);
 
       selector.selectedOs = 'windows';
       await pumpEventQueue();
-      expect(countVisibleNodes(), 4);
+      expect(countVisibleNodes(), 3);
 
       selector.selectedOs = 'all';
       await pumpEventQueue();
-      expect(countVisibleNodes(), 11);
+      expect(countVisibleNodes(), 9);
 
       expect(table.outerHTML.toString(), equals(nodesHtmlV400));
     });
