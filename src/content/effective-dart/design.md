@@ -606,56 +606,18 @@ class Color {
 ```
 
 
-### AVOID extending a class that isn't intended to be subclassed
+### DO use class modifiers to limit what actions users may perform
 
-If a constructor is changed from a generative constructor to a factory
-constructor, any subclass constructor calling that constructor will break.
-Also, if a class changes which of its own methods it invokes on `this`, that
-may break subclasses that override those methods and expect them to be called
-at certain points.
+:::version-note
+Before Dart 3.0 class modifiers except `abstract` did not exist so you may
+stumble upon classes that use suffix `Base` or have some information of what
+could be done with them in docs. That is old approach that is now redundant.
+:::
 
-Both of these mean that a class needs to be deliberate about whether or not it
-wants to allow subclassing. This can be communicated in a doc comment, or by
-giving the class an obvious name like `IterableBase`. If the author of the class
-doesn't do that, it's best to assume you should *not* extend the class.
-Otherwise, later changes to it may break your code.
-
-
-### DO document if your class supports being extended
-
-This is the corollary to the above rule. If you want to allow subclasses of your
-class, state that. Suffix the class name with `Base`, or mention it in the
-class's doc comment.
-
-
-### AVOID implementing a class that isn't intended to be an interface
-
-Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
-contract of a class when it can be trivially inferred from the signatures of an
-implementation of that contract.
-
-But implementing a class's interface is a very tight coupling to that class. It
-means virtually *any* change to the class whose interface you are implementing
-will break your implementation. For example, adding a new member to a class is
-usually a safe, non-breaking change. But if you are implementing that class's
-interface, now your class has a static error because it lacks an implementation
-of that new method.
-
-Library maintainers need the ability to evolve existing classes without breaking
-users. If you treat every class like it exposes an interface that users are free
-to implement, then changing those classes becomes very difficult. That
-difficulty in turn means the libraries you rely on are slower to grow and adapt
-to new needs.
-
-To give the authors of the classes you use more leeway, avoid implementing
-implicit interfaces except for classes that are clearly intended to be
-implemented. Otherwise, you may introduce a coupling that the author doesn't
-intend, and they may break your code without realizing it.
-
-### DO document if your class supports being used as an interface
-
-If your class can be used as an interface, mention that in the class's doc
-comment.
+If you intend your class to be extended or implemented, use
+[class modifiers](/language/modifier-reference) to enforce that.
+Doing so will ensure that the class that's not meant to be extended or
+implemented is indeed not extended or implemented.
 
 
 <a id="do-use-mixin-to-define-a-mixin-type"></a>
