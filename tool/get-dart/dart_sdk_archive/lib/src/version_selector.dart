@@ -93,8 +93,8 @@ class VersionSelector with ChangeNotifier {
   }
 
   static String _versionString(VersionInfo versionInfo) {
-    /// Use the revision number for anything <= 1.11.0-dev.0.0 (rev 45519)
-    /// and the version string for later ones.
+    // Use the revision number for anything <= 1.11.0-dev.0.0 (rev 45519)
+    // and the version string for later ones.
     if (_svnRevision(versionInfo) != null) {
       return _svnRevision(versionInfo).toString();
     }
@@ -136,7 +136,7 @@ class VersionSelector with ChangeNotifier {
     for (final name in platforms.keys) {
       final platformVariants = platforms[name] ?? const [];
       for (final platformVariant in platformVariants) {
-        // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
+        // ARMv7 builds only available later in 2015, ARMv8 in 03-2017.
         if (archiveMap[name] == 'linux') {
           if (platformVariant.architecture == 'IA32') {
             if (versionInfo.version >= Version(3, 8, 0, pre: '0')) {
@@ -164,7 +164,7 @@ class VersionSelector with ChangeNotifier {
                 versionInfo.version < Version(3, 0, 0, pre: '290.2.beta')) {
               continue;
             }
-            // Stable builds start at 3.2.3, but only show starting at 3.3
+            // Stable builds start at 3.2.3, but only show starting at 3.3.
             if (versionInfo.channel == 'stable' &&
                 versionInfo.version < Version(3, 3, 0)) {
               continue;
@@ -173,7 +173,7 @@ class VersionSelector with ChangeNotifier {
         } else if (name == 'macOS') {
           if (platformVariant.architecture == 'IA32') {
             if (versionInfo.version > Version(2, 7, 0)) {
-              // No macOS 32-bit SDK builds after 2.8.0
+              // No macOS 32-bit SDK builds after 2.8.0.
               continue;
             }
           } else if (platformVariant.architecture == 'ARM64' &&
@@ -199,7 +199,7 @@ class VersionSelector with ChangeNotifier {
                 versionInfo.version < Version(3, 2, 0, pre: '42.2.beta')) {
               continue;
             }
-            // Stable builds start at 3.2.3, but only show starting at 3.3
+            // Stable builds start at 3.2.3, but only show starting at 3.3.
             if (versionInfo.channel == 'stable' &&
                 versionInfo.version < Version(3, 3, 0)) {
               continue;
@@ -214,7 +214,7 @@ class VersionSelector with ChangeNotifier {
         for (final pa in possibleArchives) {
           if (platformVariant.archives.contains(pa)) {
             // We had no editor downloads after the move to GitHub.
-            // This skips the editor link in those cases
+            // This skips the editor link in those cases.
             if (pa == 'Dart Editor') {
               continue;
             }
@@ -256,7 +256,7 @@ class VersionSelector with ChangeNotifier {
       }
     }
 
-    // Add DartDoc archive.
+    // Add entry for dart doc archive.
     yield (
       version: versionInfo.version.toString(),
       ref: _prettyRevRef(versionInfo),

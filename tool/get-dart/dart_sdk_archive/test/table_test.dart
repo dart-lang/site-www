@@ -62,10 +62,10 @@ void main() {
       expect(selector.selectedOs, 'linux');
       expect(osSelect.value, 'linux');
 
-      // Header and template rows
+      // Check the header and template rows.
       expect(find.tag('tr'), findsNComponents(2));
 
-      // Await loading versions
+      // Await loading versions.
       await pumpEventQueue();
 
       expect(selector.selectedVersion, '4.0.0');
@@ -83,7 +83,7 @@ void main() {
 
       tester.pumpComponent(ArchivesTable(selector: selector));
 
-      // Await loading versions
+      // Await loading versions.
       await pumpEventQueue();
 
       // 1 header, 2 mac, 4 linux, 2 windows, 1 docs
@@ -131,7 +131,7 @@ void main() {
 
       tester.pumpComponent(ArchivesTable(selector: selector));
 
-      // Await loading versions
+      // Await loading versions.
       await pumpEventQueue();
 
       expect(selector.selectedVersion, '4.0.0');
@@ -145,7 +145,7 @@ void main() {
 
       selector.selectedVersion = '1.2.3';
 
-      // Await loading versions
+      // Await loading versions.
       await pumpEventQueue();
 
       expect(table.outerHTML.toString(), equals(nodesHtmlV123));
@@ -176,12 +176,14 @@ const nodesHtmlV123 =
     '<tr data-version="1.2.3" data-os="---"><td>1.2.3<span class="muted"> (ref ae7ca51)</span></td><td>---</td><td>---</td><td>Dec 11, 2024</td><td class="archives"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/1.2.3/api-docs/dartdocs-gen-api.zip">API Docs</a></td></tr></tbody>';
 
 const versionListUrl =
-    'https://storage.googleapis.com/storage/v1/b/dart-archive/o?delimiter=%2F&prefix=channels%2Fstable%2Frelease%2F&alt=json';
+    'https://storage.googleapis.com/storage/v1/b/dart-archive/'
+    'o?delimiter=%2F&prefix=channels%2Fstable%2Frelease%2F&alt=json';
 final versionInfoRegex = RegExp(
-  r'https://storage\.googleapis\.com/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F(\d\.\d\.\d)%2FVERSION\?alt=(media|json)',
+  r'https://storage\.googleapis\.com/storage/v1/b/dart-archive/'
+  r'o/channels%2Fstable%2Frelease%2F(\d\.\d\.\d)%2FVERSION\?alt=(media|json)',
 );
 
-dynamic mockDataForUrl(String url) {
+Map<String, Object>? mockDataForUrl(String url) {
   if (url == versionListUrl) {
     return {
       'kind': 'storage#objects',
@@ -202,31 +204,31 @@ dynamic mockDataForUrl(String url) {
         'version': v,
         'revision': 'ae7ca5199a0559db0ae60533e9cedd3ce0d6ab04',
       };
-    } else {
-      return {
-        'kind': 'storage#object',
-        'id':
-            'dart-archive/channels/stable/release/$v/VERSION/1733924366537130',
-        'selfLink':
-            'https://www.googleapis.com/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F$v%2FVERSION',
-        'mediaLink':
-            'https://storage.googleapis.com/download/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F$v%2FVERSION?generation=1733924366537130&alt=media',
-        'name': 'channels/stable/release/$v/VERSION',
-        'bucket': 'dart-archive',
-        'generation': '1733924366537130',
-        'metageneration': '1',
-        'contentType': 'application/octet-stream',
-        'storageClass': 'MULTI_REGIONAL',
-        'size': '106',
-        'md5Hash': 'LJdvyoa8HREN2YliMcmsLw==',
-        'crc32c': 'QOr1VQ==',
-        'etag': 'CKqjvc/rn4oDEAE=',
-        'timeCreated': '2024-12-11T13:39:26.565Z',
-        'updated': '2024-12-11T13:39:26.565Z',
-        'timeStorageClassUpdated': '2024-12-11T13:39:26.565Z',
-        'timeFinalized': '2024-12-11T13:39:26.565Z',
-      };
     }
+
+    return {
+      'kind': 'storage#object',
+      'id': 'dart-archive/channels/stable/release/$v/VERSION/1733924366537130',
+      'selfLink':
+          'https://www.googleapis.com/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F$v%2FVERSION',
+      'mediaLink':
+          'https://storage.googleapis.com/download/storage/v1/b/dart-archive/o/channels%2Fstable%2Frelease%2F$v%2FVERSION?generation=1733924366537130&alt=media',
+      'name': 'channels/stable/release/$v/VERSION',
+      'bucket': 'dart-archive',
+      'generation': '1733924366537130',
+      'metageneration': '1',
+      'contentType': 'application/octet-stream',
+      'storageClass': 'MULTI_REGIONAL',
+      'size': '106',
+      'md5Hash': 'LJdvyoa8HREN2YliMcmsLw==',
+      'crc32c': 'QOr1VQ==',
+      'etag': 'CKqjvc/rn4oDEAE=',
+      'timeCreated': '2024-12-11T13:39:26.565Z',
+      'updated': '2024-12-11T13:39:26.565Z',
+      'timeStorageClassUpdated': '2024-12-11T13:39:26.565Z',
+      'timeFinalized': '2024-12-11T13:39:26.565Z',
+    };
   }
+
   return null;
 }

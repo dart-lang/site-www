@@ -1,5 +1,3 @@
-// ignore_for_file: lines_longer_than_80_chars
-
 import 'package:jaspr/jaspr.dart';
 
 import '../version_selector.dart';
