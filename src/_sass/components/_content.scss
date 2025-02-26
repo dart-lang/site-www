@@ -46,7 +46,7 @@ article {
 
   #site-content-title {
     margin-bottom: 1.5rem;
-    scroll-margin: 2rem;
+    scroll-margin: 4.5rem;
   }
 
   h1,
@@ -57,7 +57,7 @@ article {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: 1.5rem;
+      scroll-margin: 4.5rem;
     }
 
     // Let the wrapper set the bottom margin.
@@ -66,7 +66,7 @@ article {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: 1.5rem;
+    scroll-margin: 4.5rem;
   }
 
   .header-wrapper {
@@ -74,6 +74,10 @@ article {
     margin-block-start: 1.5rem;
     margin-block-end: 0.75rem;
     align-items: center;
+
+    > h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
 
     .heading-link {
       border-radius: 0.125rem;

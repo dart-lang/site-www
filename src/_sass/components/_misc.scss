@@ -122,6 +122,8 @@
 
 // Elements on the archive for each channel.
 #stable, #beta, #dev {
+  margin-top: 1rem;
+
   tbody {
     tr {
       transition: all .25s ease-in-out;
@@ -142,8 +144,11 @@
 }
 
 body.obsolete {
-  #page-header {
+  #site-header {
     .alert {
+      background-color: $alert-warning-bg;
+
+      padding: 0.5rem;
       margin: 0;
 
       h4 {

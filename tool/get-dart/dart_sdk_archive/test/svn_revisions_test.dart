@@ -1,3 +1,6 @@
+@TestOn('vm')
+library;
+
 import 'package:dart_sdk_archive/src/util.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:test/test.dart';
