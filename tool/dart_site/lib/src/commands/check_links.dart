@@ -37,7 +37,7 @@ final class CheckLinksCommand extends Command<int> {
 /// The port that the firebase emulator runs on by default.
 /// This must match what's declared in the `firebase.json`
 /// and can't be 5000, since Airplay uses it.
-const int _emulatorPort = 5500;
+const int _emulatorPort = 5501;
 
 /// The path from root where the linkcheck skip list lives.
 final String _skipFilePath = path.join(
@@ -70,7 +70,8 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
   unawaited(emulatorProcess.stderr.drain<void>());
 
   // Give the emulator a few seconds to start up.
-  await Future<void>.delayed(const Duration(seconds: 3));
+  print('Connecting to the emulator...');
+  await Future<void>.delayed(const Duration(seconds: 8));
 
   try {
     // Check to see if the emulator is running.
@@ -95,8 +96,11 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
     }
   } finally {
     print('Shutting down Firebase hosting emulator...');
+    // Terminate the process, first sending two sigterm signals for
+    // a chance to gracefully handle the signal.
+    emulatorProcess.kill(ProcessSignal.sigterm);
+    emulatorProcess.kill(ProcessSignal.sigterm);
     emulatorProcess.kill(ProcessSignal.sigkill);
-    print('Done!\n');
   }
 }
 
@@ -107,8 +111,7 @@ Future<bool> _isPortInUse(int port) async {
     final server = await ServerSocket.bind(
       InternetAddress.loopbackIPv4,
       port,
-      shared: false,
-    ).timeout(const Duration(seconds: 2)); // Ignore timeout.
+    ).timeout(const Duration(seconds: 5));
 
     // If we reach this line, the port was available,
     // and we know the Firebase hosting emulator is not running.
