@@ -390,7 +390,7 @@ if (data is Map<String, Object?> &&
     var name = user[0] as String;
     var age = user[1] as int;
     print('User $name is $age years old.');
-}
+  }
 }
 ```
 

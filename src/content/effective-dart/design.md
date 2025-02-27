@@ -519,9 +519,9 @@ class in a single library.
 
 ## Classes and mixins
 
-Classes. But Dart does not require all code to be defined inside a
+classes. But Dart does not require all code to be defined inside a
 class—you can define top-level variables, constants, and functions like
-you can in a procedural or functional language
+you can in a procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do
 
@@ -622,22 +622,20 @@ Otherwise, later changes to it may break your code.
 
 ### DO use class modifiers to control if your class can be extended
 
-Class modifiers like `final`, `base`, or `sealed` 
-allow you to enforce whether a class can be extended directly in code. 
+Class modifiers like `final`, `base`, or `sealed`
+enforce whether a class can be extended.
 For example, use `final class A {}` to prevent extension, 
-or `base class B {}` to allow extension only within the same library. 
-Rely on these modifiers rather than documentation to communicate and 
-enforce your intent.
+or `base class B {}` to allow extension only within the same library.
+Use these modifiers to communicate your intent, rather than relying on documentation.
 
 
-### ### DO use class modifiers to control if your class can be an interface
+### DO use class modifiers to control if your class can be an interface
 
-you can also restrict implementation using
-`final`, `base`, or `interface`. For example, `final class C {}`
-prevents implementation, while `interface class D {}` allows it explicitly.
-Use these modifiers to enforce your design intent instead of relying solely
-on documentation.
-
+When designing a library, use class modifiers like `final`, `base`, or `interface` to enforce intended
+usage. For example, `final class C {}` prevents implementation, while `interface class D {}`
+explicitly allows it. While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
 <a id="do-use-mixin-to-define-a-mixin-type"></a>
 <a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
