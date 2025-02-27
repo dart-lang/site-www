@@ -631,11 +631,11 @@ Use these modifiers to communicate your intent, rather than relying on documenta
 
 ### DO use class modifiers to control if your class can be an interface
 
-When designing a library, use class modifiers like `final`, `base`, or `interface` to enforce intended
-usage. For example, `final class C {}` prevents implementation, while `interface class D {}`
-explicitly allows it. While it's ideal for all libraries to use these modifiers to enforce design intent,
-developers may still encounter cases where they aren't applied. In such cases, be mindful of
-unintended implementation issues.
+While class modifiers like `final`, `base`, or `interface` help enforce intended 
+usage, not all libraries may use them consistently. As a result, developers may 
+still encounter classes that are not explicitly restricted but were not designed 
+for implementation. Be cautious when implementing such classes to avoid potential
+issues with future changes.
 
 <a id="do-use-mixin-to-define-a-mixin-type"></a>
 <a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
