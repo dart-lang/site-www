@@ -628,14 +628,37 @@ For example, use `final class A {}` to prevent extension,
 or `base class B {}` to allow extension only within the same library.
 Use these modifiers to communicate your intent, rather than relying on documentation.
 
+### AVOID implementing a class that isn't intended to be an interface
+
+Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
+contract of a class when it can be trivially inferred from the signatures of an
+implementation of that contract.
+
+But implementing a class's interface is a very tight coupling to that class. It
+means virtually *any* change to the class whose interface you are implementing
+will break your implementation. For example, adding a new member to a class is
+usually a safe, non-breaking change. But if you are implementing that class's
+interface, now your class has a static error because it lacks an implementation
+of that new method.
+
+Library maintainers need the ability to evolve existing classes without breaking
+users. If you treat every class like it exposes an interface that users are free
+to implement, then changing those classes becomes very difficult. That
+difficulty in turn means the libraries you rely on are slower to grow and adapt
+to new needs.
+
+To give the authors of the classes you use more leeway, avoid implementing
+implicit interfaces except for classes that are clearly intended to be
+implemented. Otherwise, you may introduce a coupling that the author doesn't
+intend, and they may break your code without realizing it.
 
 ### DO use class modifiers to control if your class can be an interface
 
-While class modifiers like `final`, `base`, or `interface` help enforce intended 
-usage, not all libraries may use them consistently. As a result, developers may 
-still encounter classes that are not explicitly restricted but were not designed 
-for implementation. Be cautious when implementing such classes to avoid potential
-issues with future changes.
+When designing a library, use class modifiers like `final`, `base`, or `interface` to enforce intended
+usage. For example, `final class C {}` prevents implementation, while `interface class D {}`
+explicitly allows it. While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
 <a id="do-use-mixin-to-define-a-mixin-type"></a>
 <a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
