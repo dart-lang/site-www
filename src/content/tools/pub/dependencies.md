@@ -438,7 +438,7 @@ workspace.
 
 ## `pubspec_overrides.yaml`
 
-If you locally want to change certain aspects of your `pubspec.yaml` but do not
+If you want to change certain aspects of your `pubspec.yaml` but do not
 want to have active changes to the actual file, you can place a file called
 `pubspec_overrides.yaml` placed next to `pubspec.yaml`.
 
