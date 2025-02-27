@@ -67,7 +67,7 @@ enchilada/
    [Project specific caching for tools](#project-specific-caching-for-tools).
    
 \** The [`pubspec_overrides.yaml`](/tools/pub/dependencies#pubspec_overrides-yaml)
-   file if present will override certain aspects of pubspec.yaml. Usually you
+   file if present will override certain aspects of `pubspec.yaml`. Usually you
    don't want to check it into source control.
 
 \*** The `pubspec.lock` file exists after you've run `dart pub get`.
