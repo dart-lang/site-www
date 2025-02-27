@@ -403,7 +403,7 @@ method of validating JSON:
 <?code-excerpt "language/lib/patterns/json.dart (json-3)"?>
 ```dart
 if (data case {'user': [String name, int age]}) {
-print('User $name is $age years old.');
+  print('User $name is $age years old.');
 }
 ```
 
