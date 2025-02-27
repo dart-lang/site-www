@@ -66,7 +66,7 @@ enchilada/
    To learn more, see 
    [Project specific caching for tools](#project-specific-caching-for-tools).
    
-\** The [`pubspec_overrides.yaml`](/tools/pub/dependencies#pubspec-overrides)
+\** The [`pubspec_overrides.yaml`](/tools/pub/dependencies#pubspec_overrides-yaml)
    file if present will override certain aspects of pubspec.yaml. Usually you
    don't want to check it into source control.
 
