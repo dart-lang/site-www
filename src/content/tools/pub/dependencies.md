@@ -432,15 +432,16 @@ As a result, if you publish a package to pub.dev,
 keep in mind that your package's dependency overrides
 are ignored by all users of your package.
 
-If you are using a [pub workspace][workspaces], you can
-have `dependency_overrides` in each workspace package, but
+If you are using a [pub workspace][workspaces],
+you can have `dependency_overrides` in each workspace package, but
 a single package can only be overridden once in the workspace.
 
-## `pubspec_overrides.yaml`
+## `pubspec_overrides.yaml` {:#pubspec-overrides}
 
-If you want to change certain aspects of the resolution of your
-`pubspec.yaml` but do not want to change the actual file, you can place a file
-called `pubspec_overrides.yaml` placed next to `pubspec.yaml`.
+If you want to change certain aspects of
+the resolution of your `pubspec.yaml` file, but
+do not want to change the actual file, you can
+place a file named `pubspec_overrides.yaml` next to the `pubspec.yaml`.
 
 Attributes from that file will override those from `pubspec.yaml`.
 
@@ -450,11 +451,12 @@ The properties that can be overridden are:
 * `workspace`
 * `resolution`
 
-This can be useful to avoid accidentally checking temporary overrides in to 
-version control. It can also make it easier to generate overrides from a script. 
+This can be useful to avoid accidentally
+checking temporary overrides in to version control.
+It can also make it easier to generate overrides from a script.
 
-In a [pub workspace][workspaces], you can have one `pubspec_overrides.yaml` file
-in each workspace package.
+In a [pub workspace][workspaces], each workspace package
+can have a `pubspec_overrides.yaml` file.
 
 ## Best practices
 
