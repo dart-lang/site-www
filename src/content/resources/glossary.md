@@ -3,6 +3,7 @@ title: Glossary
 description: A glossary reference for terminology used across dart.dev.
 body_class: glossary-page
 toc: false
+js: [{url: '/assets/js/glossary.js', defer: true}]
 ---
 
 {% comment %}
@@ -11,15 +12,26 @@ toc: false
 
 The following are definitions of terms used across the Dart documentation.
 
-{% assign sorted_terms = glossary | sort: "term" %}
+<section id="filter-and-search" class="hidden">
+  <div class="search-row">
+    <div class="search-wrapper">
+      <span class="material-symbols leading-icon" aria-hidden="true">search</span>
+      <input type="search" placeholder="Search terms..." aria-label="Search terms by name...">
+    </div>
+  </div>
+</section>
 
+
+<section id="content-search-results">
 <div class="card-list">
 
+{% assign sorted_terms = glossary | sort: "term" %}
 {% for term in sorted_terms -%}
 
 {% assign cardId = term.id | default: term.term | slugify -%}
 {% assign contentId = cardId | append: '-content' -%}
-<div class="card outlined-card glossary-card expandable-card" id="{{cardId}}">
+<div class="card outlined-card glossary-card expandable-card" id="{{cardId}}"
+  data-partial-matches="{{term.term | downcase}}" data-full-matches="{{term.alternate | default: '' | join: ',' | downcase}}">
 <div class="card-header">
 <h2 class="card-title">{{term.term}}</h2>
 
@@ -93,3 +105,4 @@ The following are definitions of terms used across the Dart documentation.
 
 {% endfor -%}
 </div>
+</section>
