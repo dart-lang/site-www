@@ -451,7 +451,7 @@ The properties that can be overridden are:
 * `resolution`
 
 This can be useful to avoid accidentally checking temporary overrides in to 
-version control. Also it can make it easier to generate overrides from a script. 
+version control. It can also make it easier to generate overrides from a script. 
 
 In a [pub workspace][workspaces], you can have one `pubspec_overrides.yaml` file
 in each workspace package.
