@@ -1,4 +1,4 @@
-@use 'core/variables' as *;
+@use '../base/variables' as *;
 
 $tab-accent-color: $brand-primary;
 
@@ -11,6 +11,14 @@ $tab-accent-color: $brand-primary;
 
     &.current {
       display: inherit;
+    }
+
+    > .header-wrapper:first-child {
+      margin-block-start: 0.25rem;
+
+      h1, h2, h3, h4, h5, h6 {
+        margin-block-start: 0;
+      }
     }
   }
 

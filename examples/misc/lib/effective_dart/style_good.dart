@@ -117,11 +117,18 @@ class Dice {
 
 void unusedCallbackParams() {
   var futureOfVoid = Future<void>.value();
-  // #docregion unused-callback-params
+  // #docregion unused-callback-param
   futureOfVoid.then((_) {
     print('Operation complete.');
   });
-  // #enddocregion unused-callback-params
+  // #enddocregion unused-callback-param
+
+  futureOfVoid
+  // #docregion unused-callback-params-multiple
+  .onError((_, _) {
+    print('Operation failed.');
+  });
+  // #enddocregion unused-callback-params-multiple
 }
 
 //----------------------------------------------------------------------------

@@ -28,8 +28,8 @@
       }
     ],
     "redirects": [
-      { "regex": "(?P<basename>.*)\\.html$", "destination": ":basename", "type": 301 },
-      { "regex": "(?P<basename>.*)\\.$", "destination": ":basename", "type": 301 },
+      { "regex": "(.*)\\.html$", "destination": ":1", "type": 301 },
+      { "regex": "(.*)\\.$", "destination": ":1", "type": 301 },
 
       { "source": "/+", "destination": "/community", "type": 301 },
       { "source": "/+dart2js", "destination": "/tools/dart-compile#js", "type": 301 },
@@ -446,8 +446,7 @@
   },
   "emulators": {
     "hosting": {
-      "port": 5500,
-      "host": "0.0.0.0"
+      "port": 5501
     }
   }
 }

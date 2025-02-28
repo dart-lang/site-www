@@ -259,7 +259,7 @@ HTTP // "hypertext transfer protocol"
 NASA // "national aeronautics and space administration"
 URI // "uniform resource identifier"
 esq // "esquire"
-Ave // "avenue"
+ave // "avenue"
 
 Id // "identifier"
 Tv // "television"
@@ -279,18 +279,29 @@ var tvSet = Television();
 var mrRogers = 'hello, neighbor';
 ```
 
-### PREFER using `_`, `__`, etc. for unused callback parameters
+<a id="prefer-using-_-__-etc-for-unused-callback-parameters" aria-hidden="true"></a>
+
+### PREFER using wildcards for unused callback parameters
 
 Sometimes the type signature of a callback function requires a parameter,
 but the callback implementation doesn't _use_ the parameter.
-In this case, it's idiomatic to name the unused parameter `_`.
-If the function has multiple unused parameters, use additional
-underscores to avoid name collisions: `__`, `___`, etc.
+In this case, it's idiomatic to name the unused parameter `_`,
+which declares a [wildcard variable][wildcards] that is non-binding.
 
-<?code-excerpt "style_good.dart (unused-callback-params)"?>
+<?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
 futureOfVoid.then((_) {
   print('Operation complete.');
+});
+```
+
+Because wildcard variables are non-binding,
+you can name multiple unused parameters `_`.
+
+<?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
+```dart tag=good
+.onError((_, _) {
+  print('Operation failed.');
 });
 ```
 
@@ -301,6 +312,23 @@ In contrast, top-level functions and method declarations don't have that context
 so their parameters must be named so that it's clear what each parameter is for,
 even if it isn't used.
 
+:::version-note
+Declaring non-binding [wildcard variables][wildcards] requires
+a [language version][] of at least 3.7.
+
+In earlier language versions, use additional underscores to
+work around name collisions, such as `__` and `___`.
+To enforce not using them and simplify the migration to wildcards later on,
+enable the [`no_wildcard_variable_uses`][] lint.
+
+To help migrate from this convention to wildcard variables,
+enable the [`unnecessary_underscores`][] lint.
+:::
+
+[wildcards]: /language/variables#wildcard-variables
+[language version]: /resources/language/evolution#language-versioning
+[`no_wildcard_variable_uses`]: /tools/linter-rules/no_wildcard_variable_uses
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
 
 ### DON'T use a leading underscore for identifiers that aren't private
 
