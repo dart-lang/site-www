@@ -70,167 +70,152 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
-  // #docregion switch-break
-  void main() {
-  String grade = 'B';
-  switch (grade) {
-    case 'A':
-      print('Excellent!');
-      break;
-    case 'B':
-      print('Good Job!');
-      break; 
-    case 'C':
-      print('Needs Improvement');
-      break;
-    default:
-      print('Invalid Grade');
-      }
+    var command = 'OPEN';
+    // #docregion switch-empty
+    switch (command) {
+      case 'OPEN':
+        executeOpen();
+        continue newCase; // Continues executing at the newCase label.
+
+      case 'DENIED': // Empty case falls through.
+      case 'CLOSED':
+        executeClosed(); // Runs for both DENIED and CLOSED,
+
+      newCase:
+      case 'PENDING':
+        executeNowClosed(); // Runs for both OPEN and PENDING.
     }
-    // #enddocregion switch-break
+    // #enddocregion switch-empty
   }
 
   {
-    // #docregion for-loop-break
+  // #docregion syntax-label
+    labelName:
+    for (/* condition */) {
+    // code
+    }
+    // #enddocregion syntax-label
+  }
+
+  {
+    // #docregion label-for-loop-break
     void main() {
-    for (int i = 1; i <= 5; i++) {
-      if (i == 3) {
-        print('Breaking at i = $i');
-        break; 
+    outerLoop:
+    for (int i = 1; i <= 3; i++) {
+      for (int j = 1; j <= 3; j++) {
+        print("i = $i, j = $j");
+        if (i == 2 && j == 2) {
+          break outerLoop;
+        }
+      }
+    }
+    print("outerLoop exited");
+    }
+    // #enddocregion label-for-loop-break
+  }
+
+  {
+    // #docregion label-for-loop-continue
+    void main() {
+    outerLoop:
+    for (int i = 1; i <= 3; i++) {
+      for (int j = 1; j <= 3; j++) {
+        if (i == 2 && j == 2) {
+          continue outerLoop;
+        }
+        print("i = $i, j = $j");
+        }
+      }
+    }
+    // #enddocregion label-for-loop-continue
+  }
+
+  {
+    // #docregion label-while-loop-break
+   void main() {
+    int i = 1;
+    outerLoop:
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        print("i = $i, j = $j");
+        if (i == 2 && j == 2) {
+          break outerLoop; 
+        }
+        j++;
+      }
+      i++;
+    }
+    print("outerLoop exited");
+    }
+    // #enddocregion label-while-loop-break
+  }
+
+  {
+    // #docregion label-while-loop-continue
+    void main() {
+    int i = 1;
+    
+    outerLoop:
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        if (i == 2 && j == 2) {
+          i++; 
+          continue outerLoop;
+        }
+        print("i = $i, j = $j");
+        j++;
+        }
+        i++;
+      }
+    }
+    // #enddocregion label-while-loop-continue
+  }
+
+  {
+    // #docregion label-do-while-loop-break
+    
+    void main() {
+      int i = 1;
+      outerLoop:
+      do {
+        int j = 1;
+        do {
+          print("i = $i, j = $j");
+          if (i == 2 && j == 2) {
+            break outerLoop;
           }
-      print(i);
-        }
-    print('Loop ended.');
-      }
-    // #enddocregion for-loop-break
-  }
-
-  {
-    // #docregion while-loop-break
-    void main() {
-    int i = 1;
-    while (i <= 5) {
-      if (i == 4) {
-        print('Breaking at i = $i');
-        break;
-      }
-      print(i);
-      i++;
-      }
-    }
-    // #enddocregion while-loop-break
-  }
-
-  {
-    // #docregion do-while-loop-break
-    void main() {
-    int i = 1;
-  
-    do {
-      print('Iteration: $i');
-  
-      if (i == 3) {
-        print('Breaking the loop at i = $i');
-        break; 
-      }
-  
-      i++;
-    } while (i <= 5);
-  
-    print('Loop ended.');
-    }
-    // #enddocregion do-while-loop-break
-  }
-
-  {
-    // #docregion nested-while-loop-break
-    void main() {
-    int i = 1;
-  
-    while (i <= 3) {
-      int j = 1;
-      while (j <= 3) {
-        if (j == 2) {
-          break; 
-        }
-        print('i = $i, j = $j');
-        j++;
-      }
-      i++;
-      print('');
-      }
-    }
-    // #enddocregion nested-while-loop-break
-  }
-
-  {
-    // #docregion for-loop-continue
-    void main() {
-    for (int i = 1; i <= 5; i++) {
-      if (i == 3) {
-        continue; 
-      }
-      print('Iteration: $i');
-      }
-    }
-   // #enddocregion for-loop-continue
-  }
-
-  {
-    // #docregion while-loop-continue
-    void main() {
-    int i = 0;
-  
-    while (i < 5) {
-      i++;
-      if (i == 3) {
-        continue; 
-      }
-  
-      print('Iteration: $i');
-      }
-    }
-   // #enddocregion while-loop-continue
-  }
-
-  {
-    // #docregion do-while-loop-continue
-    void main() {
-    int i = 0;
-  
-    do {
-      i++;
-  
-      if (i == 3) {
-        continue; 
-      }
-  
-      print('Iteration: $i');
-      } while (i < 5);
-    }
-   // #enddocregion do-while-loop-continue
-  }
-
-  {
-    // #docregion nested-while-loop-continue
-    void main() {
-    int i = 1;
-  
-    while (i <= 3) {
-      int j = 1;
-      while (j <= 3) {
-        if (j == 2) {
           j++;
-          continue;
-        }
-        print('i = $i, j = $j');
-        j++;
-      }
-      print(''); 
-      i++;
-      }
+        } while (j <= 3);
+        i++;
+      } while (i <= 3);
+    
+      print("outerLoop exited");
     }
-   // #enddocregion nested-while-loop-continue
+   // #enddocregion label-do-while-loop-break
+  }
+
+  {
+    // #docregion label-do-while-loop-continue
+    void main() {
+      int i = 1;
+    
+      outerLoop:
+      do {
+        int j = 1;
+        do {
+          if (i == 2 && j == 2) {
+            i++; 
+            continue outerLoop;
+          }
+          print("i = $i, j = $j");
+          j++;
+        } while (j <= 3);
+        i++;
+      } while (i <= 3);
+    }
+   // #enddocregion label-do-while-loop-continue
   }
 
   {
