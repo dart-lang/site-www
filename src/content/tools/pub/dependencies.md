@@ -432,9 +432,9 @@ As a result, if you publish a package to pub.dev,
 keep in mind that your package's dependency overrides
 are ignored by all users of your package.
 
-If you are using a [pub workspace][workspaces], you can place `dependency_overrides` in all
-workspace packages, but a single package can only be overridden once in the
-workspace.
+If you are using a [pub workspace][workspaces], you can
+have `dependency_overrides` in each workspace package, but
+a single package can only be overridden once in the workspace.
 
 ## `pubspec_overrides.yaml`
 
