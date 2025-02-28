@@ -519,6 +519,7 @@ class in a single library.
 
 ## Classes and mixins
 
+Dart is a "pure" object-oriented language in that all objects are instances of
 classes. But Dart does not require all code to be defined inside a
 class—you can define top-level variables, constants, and functions like
 you can in a procedural or functional language.
