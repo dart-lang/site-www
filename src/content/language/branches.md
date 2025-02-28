@@ -142,6 +142,15 @@ switch (command) {
 
 In Dart, labels are used to control nested loops(Loop inside Loop) using break and continue. Labels allow you to specify which loop to `break` or `continue`, rather than affecting the innermost loop by default.
 
+Here is the syntax for labels in Dart : 
+
+```dart
+labelName:
+for (/* condition */) {
+  // code
+}
+```
+
 A label is simply an identifier followed by a colon (`:`) placed before a loop or statement.
 
 #### Labels in for loop using `break` :
