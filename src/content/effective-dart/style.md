@@ -259,7 +259,7 @@ HTTP // "hypertext transfer protocol"
 NASA // "national aeronautics and space administration"
 URI // "uniform resource identifier"
 esq // "esquire"
-ave // "avenue" (exception: lowercase in some contexts)
+ave // "avenue"
 
 Id // "identifier"
 Tv // "television"
