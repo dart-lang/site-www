@@ -438,7 +438,7 @@ a single package can only be overridden once in the workspace.
 
 ## `pubspec_overrides.yaml`
 
-If you want to change certain aspects of the resolution your
+If you want to change certain aspects of the resolution of your
 `pubspec.yaml` but do not want to change the actual file, you can place a file
 called `pubspec_overrides.yaml` placed next to `pubspec.yaml`.
 
