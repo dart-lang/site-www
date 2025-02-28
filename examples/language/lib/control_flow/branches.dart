@@ -89,15 +89,6 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
-  // #docregion syntax-label
-    labelName:
-    for (/* condition */) {
-    // code
-    }
-    // #enddocregion syntax-label
-  }
-
-  {
     // #docregion label-for-loop-break
     void main() {
     outerLoop:
