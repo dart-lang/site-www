@@ -623,10 +623,10 @@ Otherwise, later changes to it may break your code.
 
 ### DO use class modifiers to control if your class can be extended
 
-Class modifiers like `final`, `base`, or `sealed`
-enforce whether a class can be extended.
-For example, use `final class A {}` to prevent extension, 
-or `base class B {}` to allow extension only within the same library.
+Class modifiers like `final`, `interface`, or `sealed`
+restrict how a class can be extended.
+For example, use `final class A {}` or `base class B {}` to prevent 
+extension outside the current library.
 Use these modifiers to communicate your intent, rather than relying on documentation.
 
 ### AVOID implementing a class that isn't intended to be an interface
@@ -655,9 +655,10 @@ intend, and they may break your code without realizing it.
 
 ### DO use class modifiers to control if your class can be an interface
 
-When designing a library, use class modifiers like `final`, `base`, or `interface` to enforce intended
-usage. For example, `final class C {}` prevents implementation, while `interface class D {}`
-explicitly allows it. While it's ideal for all libraries to use these modifiers to enforce design intent,
+When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
+usage. For example, use `final class C {}` or `base class D{}` to prevent
+implementation outside the current library.
+While it's ideal for all libraries to use these modifiers to enforce design intent,
 developers may still encounter cases where they aren't applied. In such cases, be mindful of
 unintended implementation issues.
 
