@@ -625,7 +625,7 @@ Otherwise, later changes to it may break your code.
 
 Class modifiers like `final`, `interface`, or `sealed`
 restrict how a class can be extended.
-For example, use `final class A {}` or `base class B {}` to prevent 
+For example, use `final class A {}` or `interface class B {}` to prevent 
 extension outside the current library.
 Use these modifiers to communicate your intent, rather than relying on documentation.
 
