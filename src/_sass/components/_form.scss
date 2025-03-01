@@ -1,5 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
 
 form {
   .muted {

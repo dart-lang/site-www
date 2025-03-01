@@ -9,7 +9,7 @@ This page points to tools and documentation
 that can help you develop command-line and server apps.
 
 <p class="centered-rows">
-  <a href="/tutorials/server/get-started" class="filled-button">Get started</a>
+  <a href="/tutorials/server/get-started" class="filled-button large-button">Get started</a>
 </p>
 
 

@@ -1,6 +1,6 @@
-@use '../core/variables' as *;
+@use '../base/variables' as *;
 
-.site-header__search {
+.site-header-search {
   &::before {
     color: $gray;
     z-index: 1;
@@ -32,7 +32,7 @@
   }
 }
 
-.site-header__searchfield {
+.site-header-searchfield {
   border: 0;
   box-shadow: none;
   background-color: transparent;

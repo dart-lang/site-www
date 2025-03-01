@@ -1282,7 +1282,7 @@ function producing the value.
 
 ### assignment_to_const
 
-_Constant variables can't be assigned a value._
+_Constant variables can't be assigned a value after initialization._
 
 #### Description
 
@@ -6154,7 +6154,7 @@ Remove the constructor or replace it with a static method.
 
 ### extension_declares_instance_field
 
-_Extensions can't declare instance fields_
+_Extensions can't declare instance fields._
 
 #### Description
 
@@ -6175,8 +6175,37 @@ extension E on String {
 
 #### Common fixes
 
-Remove the field, make it a static field, or convert it to be a getter,
-setter, or method.
+If the value can be computed without storing it in a field,
+then try using a getter or a method:
+
+```dart
+extension E on String {
+  String get s => '';
+
+  void s(String value) => print(s);
+}
+```
+
+If the value must be stored, but is the same for every instance,
+try using a static field:
+
+```dart
+extension E on String {
+  static String s = '';
+}
+```
+
+If each instance needs to have its own value stored,
+then try using a getter and setter pair backed by a static `Expando`:
+
+```dart
+extension E on SomeType {
+  static final _s = Expando<String>();
+
+  String get s => _s[this] ?? '';
+  set s(String value) => _s[this] = value;
+}
+```
 
 ### extension_declares_member_of_object
 
@@ -28701,12 +28730,13 @@ ignored._
 
 #### Description
 
-The analyzer produces this diagnostic when an ignore is specified to ignore a diagnostic that isn't produced.
+The analyzer produces this diagnostic when an ignore is specified to
+ignore a diagnostic that isn't produced.
 
 #### Example
 
-The following code produces this diagnostic because the `unused_local_variable`
-diagnostic isn't reported at the ignored location:
+The following code produces this diagnostic because the
+`unused_local_variable` diagnostic isn't reported at the ignored location:
 
 ```dart
 // ignore: [!unused_local_variable!]
@@ -29754,6 +29784,33 @@ variable:
 
 ```dart
 Duration d = Duration.zero;
+```
+
+### use_null_aware_elements
+
+_Use the null-aware marker '?' rather than a null check via an 'if'._
+
+#### Description
+
+The analyzer produces this diagnostic when a null check is used instead
+of a null-aware marker inside of a collection literal.
+
+#### Example
+
+The following code produces this diagnostic because a null check is used
+to decide whether `x` should be inserted into the list, while the
+null-aware marker '?' would be less brittle and less verbose.
+
+```dart
+f(int? x) => [[!if!] (x != null) x];
+```
+
+#### Common fixes
+
+Replace the null-check with the null-aware marker '?':
+
+```dart
+f(int? x) => [?x];
 ```
 
 ### use_raw_strings

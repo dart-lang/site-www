@@ -25,7 +25,8 @@ might look like:
 enchilada/
   .dart_tool/ *
   pubspec.yaml
-  pubspec.lock **
+  pubspec_overrides.yaml **
+  pubspec.lock ***
   LICENSE
   README.md
   CHANGELOG.md
@@ -34,7 +35,7 @@ enchilada/
   bin/
     enchilada
   doc/
-    api/ ***
+    api/ ****
     getting_started.md
   example/
     main.dart
@@ -58,21 +59,27 @@ enchilada/
     index.html
     main.dart
     style.css
-```    
+```
 
 \* The `.dart_tool/` directory exists after you've run `dart pub get`.
    Don't check it into source control.
    To learn more, see 
    [Project specific caching for tools](#project-specific-caching-for-tools).
 
-\** The `pubspec.lock` file exists after you've run `dart pub get`.
+\** The [`pubspec_overrides.yaml`][] file,
+    if present, overrides certain aspects of `pubspec.yaml`.
+    Usually you don't want to check it into source control.
+
+\*** The `pubspec.lock` file exists after you've run `dart pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
-\*** The `doc/api` directory exists locally after you've run
+\**** The `doc/api` directory exists locally after you've run
      [`dart doc`](/tools/dart-doc).
      Don't check the `api` directory into source control.
 
+
+[`pubspec_overrides.yaml`]: /tools/pub/dependencies#pubspec-overrides
 
 ## The pubspec
 
