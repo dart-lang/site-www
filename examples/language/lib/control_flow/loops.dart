@@ -74,4 +74,126 @@ void miscDeclAnalyzedButNotTested() {
         .forEach((c) => c.interview());
     // #enddocregion where
   }
+  
+  {
+    // #docregion label-for-loop-break
+    void main() {
+    outerLoop:
+    for (int i = 1; i <= 3; i++) {
+      for (int j = 1; j <= 3; j++) {
+        print("i = $i, j = $j");
+        if (i == 2 && j == 2) {
+          break outerLoop;
+        }
+      }
+    }
+    print("outerLoop exited");
+    }
+    // #enddocregion label-for-loop-break
+  }
+
+  {
+    // #docregion label-for-loop-continue
+    void main() {
+    outerLoop:
+    for (int i = 1; i <= 3; i++) {
+      for (int j = 1; j <= 3; j++) {
+        if (i == 2 && j == 2) {
+          continue outerLoop;
+        }
+        print("i = $i, j = $j");
+        }
+      }
+    }
+    // #enddocregion label-for-loop-continue
+  }
+
+  {
+    // #docregion label-while-loop-break
+   void main() {
+    int i = 1;
+    outerLoop:
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        print("i = $i, j = $j");
+        if (i == 2 && j == 2) {
+          break outerLoop; 
+        }
+        j++;
+      }
+      i++;
+    }
+    print("outerLoop exited");
+    }
+    // #enddocregion label-while-loop-break
+  }
+
+  {
+    // #docregion label-while-loop-continue
+    void main() {
+    int i = 1;
+    
+    outerLoop:
+    while (i <= 3) {
+      int j = 1;
+      while (j <= 3) {
+        if (i == 2 && j == 2) {
+          i++; 
+          continue outerLoop;
+        }
+        print("i = $i, j = $j");
+        j++;
+        }
+        i++;
+      }
+    }
+    // #enddocregion label-while-loop-continue
+  }
+
+  {
+    // #docregion label-do-while-loop-break
+    
+    void main() {
+      int i = 1;
+      outerLoop:
+      do {
+        int j = 1;
+        do {
+          print("i = $i, j = $j");
+          if (i == 2 && j == 2) {
+            break outerLoop;
+          }
+          j++;
+        } while (j <= 3);
+        i++;
+      } while (i <= 3);
+    
+      print("outerLoop exited");
+    }
+   // #enddocregion label-do-while-loop-break
+  }
+
+  {
+    // #docregion label-do-while-loop-continue
+    void main() {
+      int i = 1;
+    
+      outerLoop:
+      do {
+        int j = 1;
+        do {
+          if (i == 2 && j == 2) {
+            i++; 
+            continue outerLoop;
+          }
+          print("i = $i, j = $j");
+          j++;
+        } while (j <= 3);
+        i++;
+      } while (i <= 3);
+    }
+   // #enddocregion label-do-while-loop-continue
+  } 
+  
 }
