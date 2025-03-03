@@ -53,7 +53,7 @@ whichever comes first.
 
 The Dart team provides fixes to critical issues and security problems as needed
 through patch releases but only for the currently supported version.
-For example, if `3.7.0` is the latest release,
+For example, if `3.7.0` is the latest stable release,
 a fix to a vulnerability might be issued in a `3.7.1` patch release.
 
 On average, the Dart team ships a new stable release every 3 months.
