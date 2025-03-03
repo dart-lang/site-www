@@ -388,6 +388,7 @@
       { "source": "/to/publish-from-github", "destination": "/tools/pub/automated-publishing#publishing-packages-using-github-actions", "type": 301 },
       { "source": "/to/publish-with-service-account", "destination": "/tools/pub/automated-publishing#publishing-from-google-cloud-build", "type": 301 },
       { "source": "/to/pubspec-overrides", "destination": "/tools/pub/dependencies#pubspec-overrides", "type": 301 },
+      { "source": "/to/sdk-support-policy", "destination": "/tools/sdk#support-policy", "type": 301 },
       { "source": "/to/sdk-constraint", "destination": "/tools/pub/pubspec#sdk-constraints", "type": 301 },
       { "source": "/to/sdk-version-pinning", "destination": "https://github.com/dart-lang/sdk/blob/main/docs/Flutter-Pinned-Packages.md", "type": 301 },
       { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
