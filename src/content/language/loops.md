@@ -144,22 +144,28 @@ candidates
 
 ### Labels
 
-In Dart, labels are used to manage control flow in nested loops using `break` and `continue` statements. They allow you to specify which loop to break out of or continue, rather than affecting the innermost loop by default.
+A label is an identifier followed by a colon (`labelName:`)
+that you can place before a statement to create a
+_labeled statement_. Loops and switch cases are often used as
+labeled statements. A labeled statement can be referenced later
+in a `break` or `continue` statement as follows:
 
-Here is the syntax for labels in Dart:
+*  `break labelName;`: Terminates the execution of the labeled statement.
+   This is useful for breaking out of a specific outer loop when you're
+   within a nested loop.
 
-```dart
-labelName:
-for (/* condition */) {
-  // code
-}
-```
+*  `continue labelName;`: Skips the rest of the current iteration of the
+   labeled statement loop and continues with the next iteration.
 
-A label is simply an identifier followed by a colon (`:`) placed before a loop or statement.
+Labels are used to manage control flow. They are often used with
+loops and switch cases and allow you to specify which statement to
+break out of or continue, rather than affecting the innermost
+loop by default.
 
-#### Labels in for loop using `break`:
+#### Labels in `for` loop using `break`:
 
-The below code demonstrates the usage of a labels in `for` loop with `break`:
+The following code demonstrates the usage of a label called `outerLoop`
+in a  `for` loop with a `break` statement:
 
 ```dart
 void main() {
@@ -174,28 +180,26 @@ void main() {
   }
   print("outerLoop exited");
 }
-
 ```
 
-In the above example, when `i == 2` and `j == 2`, `break outerLoop;` statement stops both inner and outer loops. So, the expected output would be:
+In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
+statement stops both inner and outer loops. So, the expected output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
 i = 2, j = 1
 i = 2, j = 2
 outerLoop exited
-
 ```
 
-#### Labels in for loop using `continue`:
+#### Labels in `for` loop using `continue`:
 
-The below code demonstrates the usage of labels in `for` loop with `continue`:
+The following code demonstrates the use of a label called `outerLoop`
+in a  `for` loop with a `continue` statement:
 
 ```dart
-
 void main() {
   outerLoop:
   for (int i = 1; i <= 3; i++) {
@@ -207,12 +211,12 @@ void main() {
     }
   }
 }
-
 ```
-In the above example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the rest of the iterations for `i = 2` and moves to `i = 3`. So, the output would be:
+
+In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
+rest of the iterations for `i = 2` and moves to `i = 3`. So, the output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -220,15 +224,14 @@ i = 2, j = 1
 i = 3, j = 1
 i = 3, j = 2
 i = 3, j = 3
-
 ```
 
 #### Labels in while loop using `break`:
 
-The below code demonstrates the usage of a labels in `while` loop with `break`:
+The following code demonstrates the use of a label called `outerLoop` in
+a `while` loop with a `break` statement:
 
 ```dart
-
 void main() {
   int i = 1;
   outerLoop:
@@ -245,28 +248,26 @@ void main() {
   }
   print("outerLoop exited");
 }
-
 ```
 
-In the above example, the program breaks out of both inner and outer while loops when `i == 2` and `j == 2`.So, the expected output would be:
+In the previous example, the program breaks out of both inner and outer `while` loops
+when `i == 2` and `j == 2`.So, the expected output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
 i = 2, j = 1
 i = 2, j = 2
 outerLoop exited
-
 ```
 
 #### Labels in while loop using `continue`:
 
-The below code demonstrates the usage of labels in `while` loop using `continue`:
+The following code demonstrates the use of a label called `outerLoop` in
+a `while` loop with a `continue` statement:
 
 ```dart
-
 void main() {
   int i = 1;
   
@@ -284,12 +285,12 @@ void main() {
     i++;
   }
 }
-
 ```
-In the above example, the iteration for `i = 2` and `j = 2` is skipped, and the loop moves directly to `i = 3`. As a result, the output would be:
+
+In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
+directly to `i = 3`. As a result, the output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -297,14 +298,14 @@ i = 2, j = 1
 i = 3, j = 1
 i = 3, j = 2
 i = 3, j = 3
-  
 ```
 
 #### Label in do while loop using `break`:
 
-The below code demonstrate the usage of label in `do while` loop:
-```dart
+The following code demonstrates the use of a label called `outerLoop` in
+a `do while` loop with a `break` statement:
 
+```dart
 void main() {
   int i = 1;
   outerLoop:
@@ -322,24 +323,24 @@ void main() {
 
   print("outerLoop exited");
 }
-
 ```
-In the above example, the program breaks out of both inner and outer loops when `i == 2` and `j == 2`. So, the expected output would be:
+
+In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
+`j == 2`. So, the expected output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
 i = 2, j = 1
 i = 2, j = 2
 outerLoop exited
-
 ```
 
 #### Labels in do while loop using `continue`:
 
-The below code demonstrates the usage of labels in `do while` loop using `continue`:
+The following code demonstrates the use of a label called `outerLoop` in
+a `do while` loop with a `continue` statement:
 
 ```dart
 void main() {
@@ -359,13 +360,12 @@ void main() {
     i++;
   } while (i <= 3);
 }
-
 ```
 
-In the above example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`. As a result, the output would be:
+In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
+As a result, the output is:
 
 ```dart
-
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -373,7 +373,6 @@ i = 2, j = 1
 i = 3, j = 1
 i = 3, j = 2
 i = 3, j = 3
- 
 ```
 
 [exceptions]: /language/error-handling
