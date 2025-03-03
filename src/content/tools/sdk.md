@@ -59,9 +59,9 @@ a fix to a vulnerability might be issued in a `3.7.1` patch release.
 On average, the Dart team ships a new stable release every 3 months.
 Patch releases to the currently supported version are shipped as needed.
 
-This policy ensures developers have access to
-the latest features and security updates and that
-the Dart team's efforts are focused on the most recent release.
+This policy helps ensure Dart developers have access to
+a stable and reliable platform that continues to
+evolve with new features and improvements.
 
 {% comment %}
 TODO(parlough): Add a section discussing the breaking change policy
