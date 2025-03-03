@@ -42,7 +42,7 @@ The Dart SDK includes two directories:
 
 To learn more about the SDK, check out its [README file][readme].
 
-## Release policy
+## Support policy
 
 The Dart team supports only the latest, stable version of the Dart SDK.
 When a new major or minor version is released,

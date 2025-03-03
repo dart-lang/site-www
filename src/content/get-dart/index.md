@@ -13,7 +13,7 @@ you need to develop Dart command-line, server, and web apps.
 
 The Dart team supports only the latest stable release of the SDK.
 For full details on the SDK release lifecycle and supported versions,
-check out the [SDK release policy](/tools/sdk#release-policy).
+check out the [SDK support policy](/tools/sdk#support-policy).
 
 To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
