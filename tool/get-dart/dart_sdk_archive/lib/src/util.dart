@@ -6,8 +6,12 @@ import 'svn_versions.dart';
 
 final _downloader = DartDownloads();
 
-Future<List<Version>> fetchSdkVersions(String channel) async {
-  final versionPaths = await _downloader.fetchVersionPaths(channel).toList();
+Future<List<Version>> fetchSdkVersions(
+  String channel, [
+  DartDownloads? downloader,
+]) async {
+  downloader ??= _downloader;
+  final versionPaths = await downloader.fetchVersionPaths(channel).toList();
   final versions = <Version>[];
   for (final versionPath in versionPaths) {
     final basename = path.basename(versionPath);
@@ -83,3 +87,5 @@ class PlatformVariant {
 
   const PlatformVariant(this.architecture, this.archives);
 }
+
+bool debugIsTest = false;
