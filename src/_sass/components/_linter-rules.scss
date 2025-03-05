@@ -3,14 +3,11 @@
 
 body.linter-rules {
   --chip-container-color: transparent;
-  --chip-border-color: rgba(0, 0, 0, .5);
+  --chip-border-color: rgba(0, 0, 0, .35);
   --chip-selected-container-color: rgb(194 229 255);
   --chip-text-color: #3a3a3a;
 
-  --text-field-border-color: rgba(0, 0, 0, .5);
-  --text-field-text-color: #3a3a3a;
-
-  --menu-border-color: rgba(0, 0, 0, .5);
+  --menu-border-color: rgba(0, 0, 0, .35);
   --menu-container-color: #ffffff;
   --menu-item-container-color: transparent;
   --menu-item-selected-container-color: rgb(194 229 255);
@@ -19,20 +16,6 @@ body.linter-rules {
   // Overrides of existing variables.
   --card-min-width: 19rem;
   --card-text-color: #3a3a3a;
-
-  #filter-and-search {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
-
-    &.hidden {
-      display: none;
-    }
-  }
 
   .filter-group {
     display: flex;
@@ -114,6 +97,11 @@ body.linter-rules {
       @include interaction-style(8%);
     }
 
+    &:focus-visible {
+      outline: 2px solid var(--focus-outline-color);
+      border-color: transparent;
+    }
+
     .chip-icon {
       align-self: center;
       fill: currentcolor;
@@ -137,49 +125,6 @@ body.linter-rules {
         display: flex;
       }
     }
-  }
-
-  .search-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
-
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      width: 100%;
-
-      border: 1px solid var(--text-field-border-color);
-      border-radius: 20px;
-      height: 3rem;
-      padding: 0 .5rem;
-
-      .leading-icon {
-        padding-left: 0.25rem;
-        user-select: none;
-      }
-
-      input {
-        background: none;
-        width: 100%;
-        font-size: 1rem;
-        cursor: text;
-
-        &:focus {
-          outline: none;
-        }
-
-        &::-webkit-search-cancel-button {
-          display: none;
-        }
-      }
-    }
-  }
-
-  section.content-search-results {
-    margin: 0.5rem 0 1rem;
   }
 
   .button-menu-wrapper {
@@ -264,10 +209,5 @@ body.linter-rules {
         display: flex;
       }
     }
-  }
-
-  .search-wrapper:has(:focus-visible), .chip:focus-visible {
-    outline: 2px solid var(--focus-outline-color);
-    border-color: transparent;
   }
 }

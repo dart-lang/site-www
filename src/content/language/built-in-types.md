@@ -189,7 +189,7 @@ var n5 = 100__000_000__000_000; // one hundred million million!
 ```
 
 :::version-note
-Using digit separators requires a [language version][] of at least 3.6.0.
+Using digit separators requires a [language version][] of at least 3.6.
 :::
 
 ## Strings
