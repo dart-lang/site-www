@@ -167,6 +167,7 @@ loop by default.
 The following code demonstrates the usage of a label called `outerLoop`
 in a  `for` loop with a `break` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-break)"?>
 ```dart
 void main() {
   outerLoop:
@@ -199,6 +200,7 @@ outerLoop exited
 The following code demonstrates the use of a label called `outerLoop`
 in a  `for` loop with a `continue` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-continue)"?>
 ```dart
 void main() {
   outerLoop:
@@ -231,6 +233,7 @@ i = 3, j = 3
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `break` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-break)"?>
 ```dart
 void main() {
   int i = 1;
@@ -267,10 +270,10 @@ outerLoop exited
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `continue` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-wjile-loop-continue)"?>
 ```dart
 void main() {
   int i = 1;
-  
   outerLoop:
   while (i <= 3) {
     int j = 1;
@@ -305,6 +308,7 @@ i = 3, j = 3
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `break` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-break)"?>
 ```dart
 void main() {
   int i = 1;
@@ -342,6 +346,7 @@ outerLoop exited
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `continue` statement:
 
+<?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-continue)"?>
 ```dart
 void main() {
   int i = 1;
