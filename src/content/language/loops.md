@@ -228,7 +228,7 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-#### Labels in while loop using `break`:
+#### Labels in `while` loop using `break`:
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `break` statement:
@@ -265,7 +265,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in while loop using `continue`:
+#### Labels in `while` loop using `continue`:
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `continue` statement:
@@ -303,7 +303,7 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-#### Label in do while loop using `break`:
+#### Labels in do `while` loop using `break`:
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `break` statement:
@@ -341,7 +341,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in do while loop using `continue`:
+#### Labels in `do while` loop using `continue`:
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `continue` statement:
