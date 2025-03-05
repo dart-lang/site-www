@@ -270,7 +270,7 @@ outerLoop exited
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `continue` statement:
 
-<?code-excerpt "language/lib/control_flow/loops.dart (label-wjile-loop-continue)"?>
+<?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
 ```dart
 void main() {
   int i = 1;
