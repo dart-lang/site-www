@@ -432,10 +432,10 @@ without losing type safety or specific type information.
 (X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
 
 void main() {
-  var (myList, myInt) = f1();
+  var (myList, myInt) = f([1]);
   myInt.whatever; // Compile-time error, `myInt` has type `int`.
 
-  var (mySet, myString) = f1({'Hello!'});
+  var (mySet, myString) = f({'Hello!'});
   mySet.union({}); // Works, `mySet` has type `Set<String>`.
 }
 ```
