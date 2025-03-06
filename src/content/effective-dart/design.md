@@ -620,6 +620,7 @@ giving the class an obvious name like `IterableBase`. If the author of the class
 doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
+<a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
 ### DO use class modifiers to control if your class can be extended
 
@@ -653,6 +654,8 @@ implicit interfaces except for classes that are clearly intended to be
 implemented. Otherwise, you may introduce a coupling that the author doesn't
 intend, and they may break your code without realizing it.
 
+<a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
+
 ### DO use class modifiers to control if your class can be an interface
 
 When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
@@ -662,8 +665,9 @@ While it's ideal for all libraries to use these modifiers to enforce design inte
 developers may still encounter cases where they aren't applied. In such cases, be mindful of
 unintended implementation issues.
 
-<a id="do-use-mixin-to-define-a-mixin-type"></a>
-<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
+<a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
+
 ### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
