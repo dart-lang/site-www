@@ -89,7 +89,7 @@ class DiagnosticInformation {
       sink.writeln();
       sink.writeln('''
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/$name"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
