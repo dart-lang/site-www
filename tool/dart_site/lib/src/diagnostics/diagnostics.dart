@@ -9,13 +9,17 @@ import 'package:path/path.dart' as path;
 import '../utils.dart';
 import 'error_code_documentation_info.dart';
 import 'error_code_info.dart';
+import 'linter.dart';
 
 /// Generate the file `diagnostics.md` based on the documentation associated
 /// with the declarations of the error codes.
 Future<void> generate() async {
   final sink = File(_outputPath).openWrite();
   final messages = await Messages.retrieve();
-  final generator = DocumentationGenerator(messages);
+  final generator = DocumentationGenerator(
+    messages,
+    lintNames: await allLintNames,
+  );
   generator.writeDocumentation(sink);
   await sink.flush();
   await sink.close();
@@ -42,12 +46,16 @@ class DiagnosticInformation {
   /// The previous names by which this diagnostic has been known.
   final List<String> previousNames = [];
 
+  /// Whether this diagnostic is from a lint rule.
+  final bool isFromLint;
+
   /// The documentation text associated with the diagnostic.
   String? documentation;
 
   /// Initialize a newly created information holder with the given [name] and
   /// [message].
-  DiagnosticInformation(this.name, String message) : messages = [message];
+  DiagnosticInformation(this.name, String message, {this.isFromLint = false})
+    : messages = [message];
 
   /// Return `true` if this diagnostic has documentation.
   bool get hasDocumentation => documentation != null;
@@ -76,6 +84,20 @@ class DiagnosticInformation {
         '<a id="$previousInLowerCase" aria-hidden="true"></a>'
         '_(Previously known as `$previousInLowerCase`)_',
       );
+    }
+    if (isFromLint) {
+      sink.writeln();
+      sink.writeln('''
+<div class="tags">
+  <a class="tag-label" 
+      href="/tools/linter-rules/$name"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>''');
     }
     for (final message in messages) {
       sink.writeln();
@@ -116,8 +138,11 @@ class DocumentationGenerator {
   /// diagnostic.
   final Map<String, DiagnosticInformation> infoByName = {};
 
+  /// A collection of all lint names.
+  final Set<String> lintNames;
+
   /// Initialize a newly created documentation generator.
-  DocumentationGenerator(Messages messages) {
+  DocumentationGenerator(Messages messages, {this.lintNames = const {}}) {
     for (final classEntry in messages.analyzerMessages.entries) {
       _extractAllDocs(classEntry.key, classEntry.value);
     }
@@ -154,7 +179,11 @@ class DocumentationGenerator {
         errorCodeInfo.problemMessage,
       );
       if (info == null) {
-        info = DiagnosticInformation(name, message);
+        info = DiagnosticInformation(
+          name,
+          message,
+          isFromLint: lintNames.contains(name),
+        );
         infoByName[name] = info;
       } else {
         info.addMessage(message);
