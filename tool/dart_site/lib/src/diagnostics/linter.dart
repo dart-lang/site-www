@@ -14,7 +14,7 @@ import '../utils.dart';
 String get _outputPath =>
     path.join(repositoryRoot, 'src', '_data', 'linter_rules.json');
 
-Future<void> fetchAndUpdate() async {
+final Future<List<Map<String, Object?>>> _lintDocs = () async {
   final rawRulesInfoUri = Uri.parse(
     'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/pkg/linter/tool/machine/rules.json',
   );
@@ -41,9 +41,17 @@ Future<void> fetchAndUpdate() async {
     }.toList(growable: false);
   }
 
+  return rulesInfo;
+}();
+
+Future<Set<String>> get allLintNames async {
+  return (await _lintDocs).map((l) => l['name'] as String).toSet();
+}
+
+Future<void> fetchAndUpdate() async {
   final formattedRuleInfo = const JsonEncoder.withIndent(
     '  ',
-  ).convert(rulesInfo);
+  ).convert(await _lintDocs);
 
   File(_outputPath).writeAsStringSync(formattedRuleInfo);
 }
