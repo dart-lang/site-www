@@ -22,7 +22,7 @@ the project:
 * <a href='/effective-dart/style#do-name-other-identifiers-using-lowercamelcase'>DO name other identifiers using <code>lowerCamelCase</code>.</a>
 * <a href='/effective-dart/style#prefer-using-lowercamelcase-for-constant-names'>PREFER using <code>lowerCamelCase</code> for constant names.</a>
 * <a href='/effective-dart/style#do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words'>DO capitalize acronyms and abbreviations longer than two letters like words.</a>
-* <a href='/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters'>PREFER using <code>_</code>, <code>__</code>, etc. for unused callback parameters.</a>
+* <a href='/effective-dart/style#prefer-using-wildcards-for-unused-callback-parameters'>PREFER using wildcards for unused callback parameters.</a>
 * <a href='/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private'>DON'T use a leading underscore for identifiers that aren't private.</a>
 * <a href='/effective-dart/style#dont-use-prefix-letters'>DON'T use prefix letters.</a>
 * <a href='/effective-dart/style#dont-explicitly-name-libraries'>DON'T explicitly name libraries.</a>
@@ -200,9 +200,9 @@ the project:
 * <a href='/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
 * <a href='/effective-dart/design#avoid-extending-a-class-that-isnt-intended-to-be-subclassed'>AVOID extending a class that isn't intended to be subclassed.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-extended'>DO use class modifiers to control if your class can be extended.</a>
 * <a href='/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface'>DO use class modifiers to control if your class can be an interface.</a>
 * <a href='/effective-dart/design#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class'>PREFER defining a pure <code>mixin</code> or pure <code>class</code> to a <code>mixin class</code>.</a>
 
 **Constructors**

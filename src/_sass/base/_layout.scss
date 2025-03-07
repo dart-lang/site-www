@@ -1,0 +1,50 @@
+@use '../base/variables' as *;
+
+#page-content {
+  display: flex;
+  min-height: calc(100vh - $site-header-height);
+  min-width: 0;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+
+  &.focused {
+    flex-direction: column;
+  }
+
+  body.obsolete & {
+    border: 0.5rem solid $alert-warning-bg;
+    border-top: none;
+  }
+
+  > article {
+    min-width: 8rem;
+    width: 60rem;
+    max-width: 100%;
+
+    > .content {
+      min-width: 8rem;
+      padding: $site-content-top-padding;
+    }
+  }
+}
+
+#site-below-header {
+  display: flex;
+  flex-direction: column;
+}
+
+#site-main-row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+  width: 1280px;
+  margin: 0 auto;
+}

@@ -60,8 +60,6 @@ Dart is used in almost every product group at Google:
   * [Google Shopping][]
   * [Cloud Search][]
   * [Family Link][]
-  * [Google One][]
-  * [Cloud Search][] 
 
 Several other Google teams are currently rewriting their projects in Flutter.
 In all, Google has thousands of developers

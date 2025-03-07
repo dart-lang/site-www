@@ -42,6 +42,32 @@ The Dart SDK includes two directories:
 
 To learn more about the SDK, check out its [README file][readme].
 
+## Support policy
+
+The Dart team supports only the latest, stable version of the Dart SDK.
+When a new major or minor version is released,
+older versions are no longer supported.
+For example, if `3.7.x` is the latest release,
+it is supported until `3.8.0` or `4.0.0` is released,
+whichever comes first.
+
+The Dart team provides fixes to critical issues and security problems as needed
+through patch releases but only for the currently supported version.
+For example, if `3.7.0` is the latest stable release,
+a fix to a vulnerability might be issued in a `3.7.1` patch release.
+
+On average, the Dart team ships a new stable release every 3 months.
+Patch releases to the currently supported version are shipped as needed.
+
+This policy helps ensure Dart developers have access to
+a stable and reliable platform that continues to
+evolve with new features and improvements.
+
+{% comment %}
+TODO(parlough): Add a section discussing the breaking change policy
+and link out to the breaking change index.
+{% endcomment %}
+
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
