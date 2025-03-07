@@ -305,7 +305,7 @@ assumeStrings(<int>[![1, 2, 3]!]);
 To prevent implicit downcasts from `dynamic` and avoid this issue,
 consider enabling the analyzer's _strict casts_ mode.
 
-```yaml analysis_options.yaml
+```yaml title="analysis_options.yaml" highlightLines=3
 analyzer:
   language:
     strict-casts: true
