@@ -86,6 +86,8 @@ The following are definitions of terms used across the Dart documentation.
     code_blocks
   {% when "diagnostic", "lint" %}
     lightbulb
+  {% when "lint" %}
+    toggle_on
   {% else %}
     article
 {% endcase -%}
