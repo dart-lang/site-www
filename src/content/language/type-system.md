@@ -277,6 +277,43 @@ void main() {
 }
 ```
 
+### Implicit casts
+
+Expressions with a static type of `dynamic` can be
+implicitly cast to a more specific type.
+If the actual type doesn't match, the cast throws an error at runtime.
+Consider the following `assumeStrings` method:
+
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/strings = objects/[!$&!]/g"?>
+```dart tag=passes-sa
+void assumeStrings(dynamic objects) {
+  List<String> [!strings = objects!]; // Runtime downcast check.
+  String string = strings[0];
+}
+```
+
+In this example, if `objects` is a `List<String>`, the cast succeeds.
+If it's not a subtype of `List<String>`, such as `List<int>`,
+a `TypeError` is thrown:
+
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/\[.*\]/[!$&!]/g"?>
+```dart tag=runtime-fail
+assumeStrings(<int>[![1, 2, 3]!]);
+```
+
+:::tip
+To prevent implicit downcasts from `dynamic` and avoid this issue,
+consider enabling the analyzer's _strict casts_ mode.
+
+```yaml analysis_options.yaml
+analyzer:
+  language:
+    strict-casts: true
+```
+
+To learn more about customizing the analyzer's behavior,
+check out [Customizing static analysis](/tools/analysis).
+:::
 
 ## Type inference
 
@@ -291,9 +328,9 @@ pairs string keys with values of various types.
 
 If you explicitly type the variable, you might write this:
 
-<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
-[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
 Alternatively, you can use `var` or `final` and let Dart infer the type:
