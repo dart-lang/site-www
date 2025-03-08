@@ -151,6 +151,31 @@ function setupCopyButtons() {
   });
 }
 
+function setupExpandableCards() {
+  const currentFragment = window?.location.hash.trim().toLowerCase().substring(1);
+  const expandableCards = document.querySelectorAll('.expandable-card');
+  expandableCards.forEach(card => {
+    const expandButton = card.querySelector('.expand-button');
+    if (!expandButton) return;
+
+    expandButton.addEventListener('click', (e) => {
+      if (card.classList.contains('collapsed')) {
+        card.classList.remove('collapsed');
+        expandButton.ariaExpanded = 'true';
+      } else {
+        card.classList.add('collapsed');
+        expandButton.ariaExpanded = 'false';
+      }
+      e.preventDefault();
+    });
+
+    if (card.id !== currentFragment) {
+      card.classList.add('collapsed');
+      expandButton.ariaExpanded = 'false';
+    }
+  });
+}
+
 function _setupSite() {
   setupSidenav();
   setupOsTabs();
@@ -176,7 +201,7 @@ function _setupSite() {
     }
   });
 
-  const topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
   topLevelMenuTogglers.forEach(function (togglerSelector) {
     const toggler = document.querySelector(togglerSelector);
     toggler?.addEventListener('click', function (e) {
@@ -207,6 +232,7 @@ function _setupSite() {
   );
 
   setupCopyButtons();
+  setupExpandableCards();
 }
 
 // Run setup if DOM is loaded, otherwise do it after it has loaded.

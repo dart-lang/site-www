@@ -25,7 +25,7 @@ fast production code for any platform.
 
 
 <p style="margin-block-end: 2rem;">
-  <a href="{{site.flutter-docs}}/get-started" class="filled-button">
+  <a href="{{site.flutter-docs}}/get-started" class="outlined-button large-button" title="Get started with Flutter" aria-label="Get started with Flutter">
     <img src="/assets/img/logo/flutter-64.png" width="32px" height="32px" alt="Flutter">
     <span>Get started</span>
   </a>

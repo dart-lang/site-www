@@ -372,6 +372,87 @@ The return type of the closure is inferred as `int` using upward information.
 Dart uses this return type as upward information when inferring the `map()`
 method's type argument: `<int>`.
 
+#### Inference using bounds
+
+:::version-note
+Inference using bounds requires a [language version][] of at least 3.7.0.
+:::
+
+With the inference using bounds feature,
+Dart's type inference algorithm generates constraints by
+combining existing constraints with the declared type bounds,
+not just best-effort approximations.
+
+This is especially important for [F-bounded][] types,
+where inference using bounds correctly infers that, in the example below,
+`X` can be bound to `B`.
+Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
+
+<?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
+```dart
+class A<X extends A<X>> {}
+
+class B extends A<B> {}
+
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
+  f<B>(C()); // OK.
+}
+```
+
+Here's a more realistic example using everyday types in Dart like `int` or `num`:
+
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
+```dart
+X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
+
+void main() {
+  // Inferred as `max<num>(3, 7)` with the feature, fails without it.
+  max(3, 7);
+}
+```
+
+With inference using bounds, Dart can *deconstruct* type arguments,
+extracting type information from a generic type parameter's bound.
+This allows functions like `f` in the following example to preserve both the
+specific iterable type (`List` or `Set`) *and* the element type.
+Before inference using bounds, this wasn't possible 
+without losing type safety or specific type information.
+
+```dart
+(X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
+
+void main() {
+  var (myList, myInt) = f([1]);
+  myInt.whatever; // Compile-time error, `myInt` has type `int`.
+
+  var (mySet, myString) = f({'Hello!'});
+  mySet.union({}); // Works, `mySet` has type `Set<String>`.
+}
+```
+
+Without inference using bounds, `myInt` would have the type `dynamic`.
+The previous inference algorithm wouldn't catch the incorrect expression
+`myInt.whatever` at compile time, and would instead throw at run time.
+Conversely, `mySet.union({})` would be a compile-time error
+without inference using bounds, because the previous algorithm couldn't
+preserve the information that `mySet` is a `Set`.
+
+For more information on the inference using bounds algorithm,
+read the [design document][]. 
+
+
+[F-bounded]: /language/generics/#f-bounds
+[design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituting types
 

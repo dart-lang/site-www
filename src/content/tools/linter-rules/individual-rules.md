@@ -13,7 +13,7 @@ eleventyComputed:
 skipFreshness: true
 ---
 
-<div class="lint-tags">
+<div class="tags">
 {% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" -%}
 <div class="tag-label orange" title="Lint is unreleased or work in progress." aria-label="Lint is unreleased or work in progress.">
 <span class="material-symbols" aria-hidden="true">pending</span>
