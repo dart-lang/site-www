@@ -40,15 +40,15 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion downcast-check
-    void assumeStrings(dynamic objects) {
+    int assumeString(dynamic object) {
       // ignore: stable, beta, dev, invalid_assignment
-      List<String> strings = objects; // Runtime downcast check.
-      String string = strings[0];
+      String string = object; // Check at run time that `object` is a `String`.
+      return string.length;
     }
     // #enddocregion downcast-check
 
     // #docregion fail-downcast-check
-    assumeStrings(<int>[1, 2, 3]);
+    final length = assumeString(1);
     // #enddocregion fail-downcast-check
   }
 

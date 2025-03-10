@@ -277,28 +277,28 @@ void main() {
 }
 ```
 
-### Implicit casts
+### Implicit downcasts from `dynamic`
 
 Expressions with a static type of `dynamic` can be
 implicitly cast to a more specific type.
-If the actual type doesn't match, the cast throws an error at runtime.
-Consider the following `assumeStrings` method:
+If the actual type doesn't match, the cast throws an error at run time.
+Consider the following `assumeString` method:
 
-<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/strings = objects/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
 ```dart tag=passes-sa
-void assumeStrings(dynamic objects) {
-  List<String> [!strings = objects!]; // Runtime downcast check.
-  String string = strings[0];
+int assumeString(dynamic object) {
+  String [!string = object!]; // Check at run time that `object` is a `String`.
+  return string.length;
 }
 ```
 
-In this example, if `objects` is a `List<String>`, the cast succeeds.
-If it's not a subtype of `List<String>`, such as `List<int>`,
+In this example, if `object` is a `String`, the cast succeeds.
+If it's not a subtype of `String`, such as `int`,
 a `TypeError` is thrown:
 
-<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/\[.*\]/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
 ```dart tag=runtime-fail
-assumeStrings(<int>[![1, 2, 3]!]);
+final length = assumeString([!1!]);
 ```
 
 :::tip
