@@ -1,4 +1,5 @@
 @use '../base/variables' as *;
+@use '../base/mixins';
 
 .tag-label {
   user-select: none;
@@ -26,20 +27,20 @@
   background-color: #DADCE0;
 }
 
-.lint-tags {
+.tags {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.5rem;
 
-  div.tag-label {
+  .tag-label {
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: rgb(194 229 255);
     gap: 0.25rem;
     font-size: 1rem;
-    padding: 0.15rem 0.5rem;
+    padding: 0.1rem 0.4rem;
 
     span.material-symbols {
       fill: currentcolor;
@@ -58,6 +59,25 @@
 
     &.red {
       background-color: rgb(255, 205, 200);
+    }
+  }
+
+  span.tag-label {
+    display: inline-flex;
+  }
+
+  a.tag-label {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      @include mixins.interaction-style(6%);
+      text-decoration: none;
+    }
+
+    &:active {
+      @include mixins.interaction-style(10%);
+      text-decoration: none;
     }
   }
 }
