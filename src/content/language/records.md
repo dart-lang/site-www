@@ -124,9 +124,10 @@ check out the page on [Patterns][pattern].
 
 ## Record types
 
-There is no type declaration for individual record types. Records are structurally
-typed based on the types of their fields. A record's _shape_ (the set of its fields,
-the fields' types, and their names, if any) uniquely determines the type of a record. 
+There is no type declaration for individual record types.
+Records are structurally typed based on the types of their fields.
+A record's _shape_ (the set of its fields, the fields' types,
+and their names, if any) uniquely determines the type of a record.
 
 Each field in a record has its own type. Field types can differ within the same
 record. The type system is aware of each field's type wherever it is accessed
@@ -143,6 +144,13 @@ var second = pair.$2; // Static type `Object`, runtime type `String`.
 Consider two unrelated libraries that create records with the same set of fields.
 The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
+
+:::tip
+While you can't declare a unique type for a record shape,
+you can create type aliases for readability and reuse.
+To learn how and when to do so,
+check out [Records and typedefs](#records-and-typedefs).
+:::
 
 ## Record equality
 
@@ -272,17 +280,17 @@ Code can work with the given button definitions the same way it would
 with simple class instances:
 
 ```dart
-  List<Container> widget = [
-    for (var button in buttons)
-      Container(
-        margin: const EdgeInsets.all(4.0),
-        child: OutlinedButton.icon(
-          onPressed: button.onPressed,
-          icon: button.icon,
-          label: Text(button.label),
-        ),
+List<Container> widget = [
+  for (var button in buttons)
+    Container(
+      margin: const EdgeInsets.all(4.0),
+      child: OutlinedButton.icon(
+        onPressed: button.onPressed,
+        icon: button.icon,
+        label: Text(button.label),
       ),
-  ];
+    ),
+];
 ```
 
 You could even decide to later change the record type to a class type to add methods:
