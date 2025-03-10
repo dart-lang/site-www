@@ -145,6 +145,12 @@ Consider two unrelated libraries that create records with the same set of fields
 The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
 
+:::tip
+While you can't declare a unique type for a record shape, you can use `typedef` for readability and reuse.
+Learn more in the [Records and typedefs](https://dart.dev/language/records#records-and-typedefs)
+section of the Dart language documentation.
+:::
+
 ## Record equality
 
 Two records are equal if they have the same _shape_ (set of fields),
@@ -273,17 +279,17 @@ Code can work with the given button definitions the same way it would
 with simple class instances:
 
 ```dart
-  List<Container> widget = [
-    for (var button in buttons)
-      Container(
-        margin: const EdgeInsets.all(4.0),
-        child: OutlinedButton.icon(
-          onPressed: button.onPressed,
-          icon: button.icon,
-          label: Text(button.label),
-        ),
+List<Container> widget = [
+  for (var button in buttons)
+    Container(
+      margin: const EdgeInsets.all(4.0),
+      child: OutlinedButton.icon(
+        onPressed: button.onPressed,
+        icon: button.icon,
+        label: Text(button.label),
       ),
-  ];
+    ),
+];
 ```
 
 You could even decide to later change the record type to a class type to add methods:
