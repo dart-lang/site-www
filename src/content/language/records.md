@@ -146,9 +146,10 @@ The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
 
 :::tip
-While you can't declare a unique type for a record shape, you can use `typedef` for readability and reuse.
-Learn more in the [Records and typedefs](https://dart.dev/language/records#records-and-typedefs)
-section of the Dart language documentation.
+While you can't declare a unique type for a record shape,
+you can create type aliases for readability and reuse.
+To learn how and when to do so,
+check out [Records and typedefs](#records-and-typedefs).
 :::
 
 ## Record equality
