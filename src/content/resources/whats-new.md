@@ -642,7 +642,7 @@ we made the following changes to this site:
 
 * Introduced the [Objective-C and Swift interop][] page,
   which explains how to use Dart packages to call APIs from those languages.
-* Added a workaround to [Fixing common type problems][], 
+* Added a workaround to Fixing common type problems,
   for the rare case where type inference might incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy dependencies,
@@ -658,7 +658,6 @@ we made the following changes to this site:
 * Added a section on customizing [`dart fix`][].
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
-[Fixing common type problems]: /deprecated/sound-problems
 [What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile

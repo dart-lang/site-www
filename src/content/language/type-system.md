@@ -658,13 +658,11 @@ also supported on setters and fields.
 
 The following resources have further information on sound Dart:
 
-* [Fixing common type problems](/deprecated/sound-problems) - 
-  Errors you may encounter when writing sound Dart code, and how to fix them.
-* [Fixing type promotion failures](/tools/non-promotion-reasons) - 
+* [Fixing type promotion failures](/tools/non-promotion-reasons) -
   Understand and learn how to fix type promotion errors.
-* [Sound null safety](/null-safety) - 
+* [Sound null safety](/null-safety) -
   Learn about writing code with sound null safety.
-* [Customizing static analysis][analysis] - 
+* [Customizing static analysis][analysis] -
   How to set up and customize the analyzer and linter
   using an analysis options file.
 
