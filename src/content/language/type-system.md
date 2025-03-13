@@ -277,6 +277,43 @@ void main() {
 }
 ```
 
+### Implicit downcasts from `dynamic`
+
+Expressions with a static type of `dynamic` can be
+implicitly cast to a more specific type.
+If the actual type doesn't match, the cast throws an error at run time.
+Consider the following `assumeString` method:
+
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
+```dart tag=passes-sa
+int assumeString(dynamic object) {
+  String [!string = object!]; // Check at run time that `object` is a `String`.
+  return string.length;
+}
+```
+
+In this example, if `object` is a `String`, the cast succeeds.
+If it's not a subtype of `String`, such as `int`,
+a `TypeError` is thrown:
+
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
+```dart tag=runtime-fail
+final length = assumeString([!1!]);
+```
+
+:::tip
+To prevent implicit downcasts from `dynamic` and avoid this issue,
+consider enabling the analyzer's _strict casts_ mode.
+
+```yaml title="analysis_options.yaml" highlightLines=3
+analyzer:
+  language:
+    strict-casts: true
+```
+
+To learn more about customizing the analyzer's behavior,
+check out [Customizing static analysis](/tools/analysis).
+:::
 
 ## Type inference
 
@@ -291,9 +328,9 @@ pairs string keys with values of various types.
 
 If you explicitly type the variable, you might write this:
 
-<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
-[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
 Alternatively, you can use `var` or `final` and let Dart infer the type:
@@ -621,13 +658,11 @@ also supported on setters and fields.
 
 The following resources have further information on sound Dart:
 
-* [Fixing common type problems](/deprecated/sound-problems) - 
-  Errors you may encounter when writing sound Dart code, and how to fix them.
-* [Fixing type promotion failures](/tools/non-promotion-reasons) - 
+* [Fixing type promotion failures](/tools/non-promotion-reasons) -
   Understand and learn how to fix type promotion errors.
-* [Sound null safety](/null-safety) - 
+* [Sound null safety](/null-safety) -
   Learn about writing code with sound null safety.
-* [Customizing static analysis][analysis] - 
+* [Customizing static analysis][analysis] -
   How to set up and customize the analyzer and linter
   using an analysis options file.
 

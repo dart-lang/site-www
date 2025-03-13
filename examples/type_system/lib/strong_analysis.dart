@@ -39,17 +39,31 @@ void _miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion downcast-check
+    int assumeString(dynamic object) {
+      // ignore: stable, beta, dev, invalid_assignment
+      String string = object; // Check at run time that `object` is a `String`.
+      return string.length;
+    }
+    // #enddocregion downcast-check
+
+    // #docregion fail-downcast-check
+    final length = assumeString(1);
+    // #enddocregion fail-downcast-check
+  }
+
+  {
     // #docregion type-inference-1-orig
-    Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
+    Map<String, Object?> arguments = {'argA': 'hello', 'argB': 42};
     // #enddocregion type-inference-1-orig
 
     // ignore: stable, beta, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2-orig
-    Map<String, dynamic> message = {
+    Map<String, Object?> message = {
       'method': 'someMethod',
-      'args': <Map<String, dynamic>>[arguments],
+      'args': <Map<String, Object?>>[arguments],
     };
     // #enddocregion type-inference-2-orig
   }
