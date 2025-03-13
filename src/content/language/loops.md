@@ -142,6 +142,243 @@ candidates
     .forEach((c) => c.interview());
 ```
 
+### Labels
+
+A label is an identifier followed by a colon (`labelName:`)
+that you can place before a statement to create a
+_labeled statement_. Loops and switch cases are often used as
+labeled statements. A labeled statement can be referenced later
+in a `break` or `continue` statement as follows:
+
+*  `break labelName;`: Terminates the execution of the labeled statement.
+   This is useful for breaking out of a specific outer loop when you're
+   within a nested loop.
+
+*  `continue labelName;`: Skips the rest of the current iteration of the
+   labeled statement loop and continues with the next iteration.
+
+Labels are used to manage control flow. They are often used with
+loops and switch cases and allow you to specify which statement to
+break out of or continue, rather than affecting the innermost
+loop by default.
+
+#### Labels in `for` loop using `break`:
+
+The following code demonstrates the usage of a label called `outerLoop`
+in a  `for` loop with a `break` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-break)"?>
+```dart
+
+  outerLoop:
+  for (int i = 1; i <= 3; i++) {
+    for (int j = 1; j <= 3; j++) {
+      print("i = $i, j = $j");
+      if (i == 2 && j == 2) {
+        break outerLoop;
+      }
+    }
+  }
+  print("outerLoop exited");
+
+```
+
+In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
+statement stops both inner and outer loops. So, the expected output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 2, j = 2
+outerLoop exited
+```
+
+#### Labels in `for` loop using `continue`:
+
+The following code demonstrates the use of a label called `outerLoop`
+in a  `for` loop with a `continue` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-continue)"?>
+```dart
+
+  outerLoop:
+  for (int i = 1; i <= 3; i++) {
+    for (int j = 1; j <= 3; j++) {
+      if (i == 2 && j == 2) {
+        continue outerLoop;
+      }
+      print("i = $i, j = $j");
+    }
+  }
+
+```
+
+In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
+rest of the iterations for `i = 2` and moves to `i = 3`. So, the output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 3, j = 1
+i = 3, j = 2
+i = 3, j = 3
+```
+
+#### Labels in `while` loop using `break`:
+
+The following code demonstrates the use of a label called `outerLoop` in
+a `while` loop with a `break` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-break)"?>
+```dart
+
+  int i = 1;
+  outerLoop:
+  while (i <= 3) {
+    int j = 1;
+    while (j <= 3) {
+      print("i = $i, j = $j");
+      if (i == 2 && j == 2) {
+        break outerLoop; 
+      }
+      j++;
+    }
+    i++;
+  }
+  print("outerLoop exited");
+
+```
+
+In the previous example, the program breaks out of both inner and outer `while` loops
+when `i == 2` and `j == 2`.So, the expected output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 2, j = 2
+outerLoop exited
+```
+
+#### Labels in `while` loop using `continue`:
+
+The following code demonstrates the use of a label called `outerLoop` in
+a `while` loop with a `continue` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
+```dart
+
+  int i = 1;
+  outerLoop:
+  while (i <= 3) {
+    int j = 1;
+    while (j <= 3) {
+      if (i == 2 && j == 2) {
+        i++; 
+        continue outerLoop;
+      }
+      print("i = $i, j = $j");
+      j++;
+    }
+    i++;
+  }
+
+```
+
+In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
+directly to `i = 3`. As a result, the output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 3, j = 1
+i = 3, j = 2
+i = 3, j = 3
+```
+
+#### Labels in do `while` loop using `break`:
+
+The following code demonstrates the use of a label called `outerLoop` in
+a `do while` loop with a `break` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-break)"?>
+```dart
+
+  int i = 1;
+  outerLoop:
+  do {
+    int j = 1;
+    do {
+      print("i = $i, j = $j");
+      if (i == 2 && j == 2) {
+        break outerLoop;
+      }
+      j++;
+    } while (j <= 3);
+    i++;
+  } while (i <= 3);
+
+  print("outerLoop exited");
+
+```
+
+In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
+`j == 2`. So, the expected output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 2, j = 2
+outerLoop exited
+```
+
+#### Labels in `do while` loop using `continue`:
+
+The following code demonstrates the use of a label called `outerLoop` in
+a `do while` loop with a `continue` statement:
+
+<?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-continue)"?>
+```dart
+
+  int i = 1;
+  outerLoop:
+  do {
+    int j = 1;
+    do {
+      if (i == 2 && j == 2) {
+        i++; 
+        continue outerLoop;
+      }
+      print("i = $i, j = $j");
+      j++;
+    } while (j <= 3);
+    i++;
+  } while (i <= 3);
+
+```
+
+In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
+As a result, the output is:
+
+```dart
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 3, j = 1
+i = 3, j = 2
+i = 3, j = 3
+```
+
 [exceptions]: /language/error-handling
 [branching]: /language/branches
 [iteration]: /libraries/dart-core#iteration
