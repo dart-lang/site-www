@@ -129,13 +129,6 @@ Records are structurally typed based on the types of their fields.
 A record's _shape_ (the set of its fields, the fields' types,
 and their names, if any) uniquely determines the type of a record.
 
-
-For example, you can define a named record type for a user profile:
-
-```dart
-typedef UserProfile = ({String name, int age});
-```
-
 Each field in a record has its own type. Field types can differ within the same
 record. The type system is aware of each field's type wherever it is accessed
 from the record:
