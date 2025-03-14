@@ -124,10 +124,10 @@ check out the page on [Patterns][pattern].
 
 ## Record types
 
-Records in Dart are structurally typed based on their fields' types, names, and count. 
-While you can't declare a unique type for a record shape, you can use `typedef` for readability and reuse. 
-Learn more in the [Records and typedefs](https://dart.dev/language/records#records-and-typedefs) 
-section of the Dart language documentation.
+There is no type declaration for individual record types.
+Records are structurally typed based on the types of their fields.
+A record's _shape_ (the set of its fields, the fields' types,
+and their names, if any) uniquely determines the type of a record.
 
 
 For example, you can define a named record type for a user profile:
