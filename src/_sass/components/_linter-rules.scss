@@ -1,22 +1,13 @@
-@use '../core/mixins' as *;
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
 
 body.linter-rules {
-  --filled-button-container-color: #06599C;
-  --filled-button-text-color: #ffffff;
-
-  --outline-button-border-color: rgba(0, 0, 0, .125);
-  --outline-button-text-color: #3a3a3a;
-  --text-button-text-color: #3a3a3a;
-
   --chip-container-color: transparent;
-  --chip-border-color: rgba(0, 0, 0, .5);
+  --chip-border-color: rgba(0, 0, 0, .35);
   --chip-selected-container-color: rgb(194 229 255);
   --chip-text-color: #3a3a3a;
 
-  --text-field-border-color: rgba(0, 0, 0, .5);
-  --text-field-text-color: #3a3a3a;
-
-  --menu-border-color: rgba(0, 0, 0, .5);
+  --menu-border-color: rgba(0, 0, 0, .35);
   --menu-container-color: #ffffff;
   --menu-item-container-color: transparent;
   --menu-item-selected-container-color: rgb(194 229 255);
@@ -25,20 +16,6 @@ body.linter-rules {
   // Overrides of existing variables.
   --card-min-width: 19rem;
   --card-text-color: #3a3a3a;
-
-  #filter-and-search {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
-
-    &.hidden {
-      display: none;
-    }
-  }
 
   .filter-group {
     display: flex;
@@ -77,41 +54,6 @@ body.linter-rules {
 
         &.trailing {
           gap: 0.5rem;
-
-          a, button {
-            display: flex;
-            align-items: center;
-
-            text-decoration: none;
-            background: none;
-            border-radius: 20px;
-            padding: 0 0.75rem;
-            height: 32px;
-            color: var(--outline-button-text-color);
-            border: 1px solid var(--outline-button-border-color);
-
-            &:last-child {
-              border: none;
-              color: var(--filled-button-text-color);
-              background-color: var(--filled-button-container-color);
-            }
-
-            &:hover {
-              @include interaction-style(6%);
-            }
-
-            &:active {
-              @include interaction-style(10%);
-            }
-
-            &:focus-visible {
-              outline-offset: 1px;
-            }
-          }
-
-          button.hidden {
-            display: none;
-          }
         }
       }
     }
@@ -141,6 +83,7 @@ body.linter-rules {
     display: flex;
     align-items: center;
     gap: 0.2rem;
+    font-family: $site-font-family-alt;
 
     .label {
       background: none;
@@ -152,6 +95,11 @@ body.linter-rules {
 
     &:active {
       @include interaction-style(8%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-outline-color);
+      border-color: transparent;
     }
 
     .chip-icon {
@@ -177,81 +125,6 @@ body.linter-rules {
         display: flex;
       }
     }
-  }
-
-  .text-button {
-    background: none;
-    border: none;
-    color: var(--text-button-text-color);
-    border-radius: 8px;
-    user-select: none;
-
-    padding: 0 .5rem;
-    height: 1.75rem;
-
-    &:hover {
-      @include interaction-style(4%);
-      color: var(--text-button-text-color);
-    }
-
-    &:active {
-      @include interaction-style(8%);
-      color: var(--text-button-text-color);
-    }
-
-    &:focus {
-      color: var(--text-button-text-color);
-    }
-  }
-
-  .icon-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 2rem;
-  }
-
-  .search-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
-
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      width: 100%;
-
-      border: 1px solid var(--text-field-border-color);
-      border-radius: 20px;
-      height: 3rem;
-      padding: 0 .5rem;
-
-      .leading-icon {
-        padding-left: 0.25rem;
-        user-select: none;
-      }
-
-      input {
-        background: none;
-        width: 100%;
-        font-size: 1rem;
-        cursor: text;
-
-        &:focus {
-          outline: none;
-        }
-
-        &::-webkit-search-cancel-button {
-          display: none;
-        }
-      }
-    }
-  }
-
-  section.content-search-results {
-    margin: 0.5rem 0 1rem;
   }
 
   .button-menu-wrapper {
@@ -298,6 +171,7 @@ body.linter-rules {
           font-weight: 500;
           text-align: left;
           user-select: none;
+          font-family: $site-font-family-alt;
 
           &:hover {
             @include interaction-style(4%);
@@ -335,10 +209,5 @@ body.linter-rules {
         display: flex;
       }
     }
-  }
-
-  .search-wrapper:has(:focus-visible), .chip:focus-visible, .text-button:focus-visible, .trailing a:focus-visible, .trailing button:focus-visible {
-    outline: 2px solid var(--focus-outline-color);
-    border-color: transparent;
   }
 }

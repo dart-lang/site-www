@@ -620,13 +620,15 @@ giving the class an obvious name like `IterableBase`. If the author of the class
 doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
+<a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### DO document if your class supports being extended
+### DO use class modifiers to control if your class can be extended
 
-This is the corollary to the above rule. If you want to allow subclasses of your
-class, state that. Suffix the class name with `Base`, or mention it in the
-class's doc comment.
-
+Class modifiers like `final`, `interface`, or `sealed`
+restrict how a class can be extended.
+For example, use `final class A {}` or `interface class B {}` to prevent 
+extension outside the current library.
+Use these modifiers to communicate your intent, rather than relying on documentation.
 
 ### AVOID implementing a class that isn't intended to be an interface
 
@@ -652,14 +654,20 @@ implicit interfaces except for classes that are clearly intended to be
 implemented. Otherwise, you may introduce a coupling that the author doesn't
 intend, and they may break your code without realizing it.
 
-### DO document if your class supports being used as an interface
+<a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-If your class can be used as an interface, mention that in the class's doc
-comment.
+### DO use class modifiers to control if your class can be an interface
 
+When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
+usage. For example, use `final class C {}` or `base class D{}` to prevent
+implementation outside the current library.
+While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
-<a id="do-use-mixin-to-define-a-mixin-type"></a>
-<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
+<a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
+
 ### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
