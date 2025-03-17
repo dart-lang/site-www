@@ -238,7 +238,7 @@ while (i <= 3) {
   while (j <= 3) {
     print("i = $i, j = $j");
     if (i == 2 && j == 2) {
-      break outerLoop; 
+      break outerLoop;
     }
     j++;
   }
@@ -267,12 +267,13 @@ a `while` loop with a `continue` statement:
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
 ```dart
 int i = 1;
+
 outerLoop:
 while (i <= 3) {
   int j = 1;
   while (j <= 3) {
     if (i == 2 && j == 2) {
-      i++; 
+      i++;
       continue outerLoop;
     }
     print("i = $i, j = $j");
@@ -344,7 +345,7 @@ do {
   int j = 1;
   do {
     if (i == 2 && j == 2) {
-      i++; 
+      i++;
       continue outerLoop;
     }
     print("i = $i, j = $j");
