@@ -39,6 +39,17 @@ pub.dev verifies that the user creating the verified publisher has
 admin access to the associated ["Domain Property"][domain-prop],
 based on existing logic in the [Google Search Console.][search-console]
 
+:::note
+Domain name ownership is only verified at the time of publisher creation.
+
+If the owner of a publisher loses access to a domain, they do not lose access to
+the publisher. Nor can the new owner of a domain name obtain ownership of an
+existing publisher.
+
+Publisher ownership must be explicitly transferred by the owner of the
+publisher.
+:::
+
 ## Creating a verified publisher account
 
 If you publish packages and want to create a new verified publisher,
