@@ -180,6 +180,5 @@ void miscDeclAnalyzedButNotTested() {
         i++;
       } while (i <= 3);
    // #enddocregion label-do-while-loop-continue
-  } 
-  
+  }
 }
