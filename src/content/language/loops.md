@@ -169,7 +169,6 @@ in a  `for` loop with a `break` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-break)"?>
 ```dart
-
   outerLoop:
   for (int i = 1; i <= 3; i++) {
     for (int j = 1; j <= 3; j++) {
@@ -180,7 +179,6 @@ in a  `for` loop with a `break` statement:
     }
   }
   print("outerLoop exited");
-
 ```
 
 In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
@@ -202,7 +200,6 @@ in a  `for` loop with a `continue` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-continue)"?>
 ```dart
-
   outerLoop:
   for (int i = 1; i <= 3; i++) {
     for (int j = 1; j <= 3; j++) {
@@ -212,7 +209,6 @@ in a  `for` loop with a `continue` statement:
       print("i = $i, j = $j");
     }
   }
-
 ```
 
 In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
@@ -235,7 +231,6 @@ a `while` loop with a `break` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-break)"?>
 ```dart
-
   int i = 1;
   outerLoop:
   while (i <= 3) {
@@ -250,7 +245,6 @@ a `while` loop with a `break` statement:
     i++;
   }
   print("outerLoop exited");
-
 ```
 
 In the previous example, the program breaks out of both inner and outer `while` loops
@@ -272,7 +266,6 @@ a `while` loop with a `continue` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
 ```dart
-
   int i = 1;
   outerLoop:
   while (i <= 3) {
@@ -287,7 +280,6 @@ a `while` loop with a `continue` statement:
     }
     i++;
   }
-
 ```
 
 In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
@@ -310,7 +302,6 @@ a `do while` loop with a `break` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-break)"?>
 ```dart
-
   int i = 1;
   outerLoop:
   do {
@@ -326,7 +317,6 @@ a `do while` loop with a `break` statement:
   } while (i <= 3);
 
   print("outerLoop exited");
-
 ```
 
 In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
@@ -348,7 +338,6 @@ a `do while` loop with a `continue` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-continue)"?>
 ```dart
-
   int i = 1;
   outerLoop:
   do {
@@ -363,7 +352,6 @@ a `do while` loop with a `continue` statement:
     } while (j <= 3);
     i++;
   } while (i <= 3);
-
 ```
 
 In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
