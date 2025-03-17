@@ -106,7 +106,7 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 Follow the same format including spaces.
 
 ```plaintext
-"<package>:{<source>: <descriptor>[<source>: <descriptor>], version: <constraint>}"
+"<package>:{<source>: <descriptor>[, <source>: <descriptor>], version: <constraint>}"
 ```
 
 ### `git`
