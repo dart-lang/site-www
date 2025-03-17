@@ -103,7 +103,7 @@ Dart chooses _familiarity_ over _excitement_.
 **Web or Flutter apps**
 : No, Dart doesn't support write to [web or Flutter apps][Flutter no mirrors].
 
-### Q. Can Dart add a language feature I want?
+### Q. Can Dart add a language feature that I want?
 
 Future releases might include a feature you want.
 Some features don't fit the nature of the language.
