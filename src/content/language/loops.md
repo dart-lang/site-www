@@ -170,15 +170,15 @@ in a  `for` loop with a `break` statement:
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-break)"?>
 ```dart
 outerLoop:
-for (int i = 1; i <= 3; i++) {
-  for (int j = 1; j <= 3; j++) {
-    print("i = $i, j = $j");
+for (var i = 1; i <= 3; i++) {
+  for (var j = 1; j <= 3; j++) {
+    print('i = $i, j = $j');
     if (i == 2 && j == 2) {
       break outerLoop;
     }
   }
 }
-print("outerLoop exited");
+print('outerLoop exited');
 ```
 
 In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
@@ -201,12 +201,12 @@ in a  `for` loop with a `continue` statement:
 <?code-excerpt "language/lib/control_flow/loops.dart (label-for-loop-continue)"?>
 ```dart
 outerLoop:
-for (int i = 1; i <= 3; i++) {
-  for (int j = 1; j <= 3; j++) {
+for (var i = 1; i <= 3; i++) {
+  for (var j = 1; j <= 3; j++) {
     if (i == 2 && j == 2) {
       continue outerLoop;
     }
-    print("i = $i, j = $j");
+    print('i = $i, j = $j');
   }
 }
 ```
@@ -231,12 +231,13 @@ a `while` loop with a `break` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-break)"?>
 ```dart
-int i = 1;
+var i = 1;
+
 outerLoop:
 while (i <= 3) {
-  int j = 1;
+  var j = 1;
   while (j <= 3) {
-    print("i = $i, j = $j");
+    print('i = $i, j = $j');
     if (i == 2 && j == 2) {
       break outerLoop;
     }
@@ -244,7 +245,7 @@ while (i <= 3) {
   }
   i++;
 }
-print("outerLoop exited");
+print('outerLoop exited');
 ```
 
 In the previous example, the program breaks out of both inner and outer `while` loops
@@ -266,17 +267,17 @@ a `while` loop with a `continue` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-while-loop-continue)"?>
 ```dart
-int i = 1;
+var i = 1;
 
 outerLoop:
 while (i <= 3) {
-  int j = 1;
+  var j = 1;
   while (j <= 3) {
     if (i == 2 && j == 2) {
       i++;
       continue outerLoop;
     }
-    print("i = $i, j = $j");
+    print('i = $i, j = $j');
     j++;
   }
   i++;
@@ -303,12 +304,13 @@ a `do while` loop with a `break` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-break)"?>
 ```dart
-int i = 1;
+var i = 1;
+
 outerLoop:
 do {
-  int j = 1;
+  var j = 1;
   do {
-    print("i = $i, j = $j");
+    print('i = $i, j = $j');
     if (i == 2 && j == 2) {
       break outerLoop;
     }
@@ -317,7 +319,7 @@ do {
   i++;
 } while (i <= 3);
 
-print("outerLoop exited");
+print('outerLoop exited');
 ```
 
 In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
@@ -339,16 +341,17 @@ a `do while` loop with a `continue` statement:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (label-do-while-loop-continue)"?>
 ```dart
-int i = 1;
+var i = 1;
+
 outerLoop:
 do {
-  int j = 1;
+  var j = 1;
   do {
     if (i == 2 && j == 2) {
       i++;
       continue outerLoop;
     }
-    print("i = $i, j = $j");
+    print('i = $i, j = $j');
     j++;
   } while (j <= 3);
   i++;
