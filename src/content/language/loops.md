@@ -186,7 +186,7 @@ print('outerLoop exited');
 In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
 statement stops both inner and outer loops. So, the expected output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -216,7 +216,7 @@ for (var i = 1; i <= 3; i++) {
 In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
 rest of the iterations for `i = 2` and moves to `i = 3`. So, the output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -255,7 +255,7 @@ when `i == 2` and `j == 2`.
 So, the expected output is:
 So, the expected output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -291,7 +291,7 @@ while (i <= 3) {
 In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
 directly to `i = 3`. As a result, the output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -329,7 +329,7 @@ print('outerLoop exited');
 In the previous example, the program breaks out of both inner and outer loops when `i == 2` and
 `j == 2`. So, the expected output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
@@ -365,7 +365,7 @@ do {
 In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
 As a result, the output is:
 
-```terminal
+```plaintext
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
