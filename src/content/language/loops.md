@@ -338,7 +338,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in `do while` loop using `continue`:
+#### Labels in do-while loop using `continue`
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `continue` statement:
