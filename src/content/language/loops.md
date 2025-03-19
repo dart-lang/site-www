@@ -214,7 +214,7 @@ for (var i = 1; i <= 3; i++) {
 In the previous example, when `i == 2` and `j == 2`, `continue outerLoop;` skips the
 rest of the iterations for `i = 2` and moves to `i = 3`. So, the output is:
 
-```dart
+```terminal
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
