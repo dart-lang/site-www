@@ -184,7 +184,7 @@ print('outerLoop exited');
 In the previous example, when `i == 2` and `j == 2`, the `break outerLoop;`
 statement stops both inner and outer loops. So, the expected output is:
 
-```dart
+```terminal
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
