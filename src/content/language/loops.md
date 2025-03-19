@@ -301,7 +301,7 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-#### Labels in do `while` loop using `break`:
+#### Labels in do-while loop using `break`
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `break` statement:
