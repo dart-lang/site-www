@@ -291,7 +291,7 @@ while (i <= 3) {
 In the previous example, the iteration for `i = 2` and `j = 2` is skipped and the loop moves
 directly to `i = 3`. As a result, the output is:
 
-```dart
+```terminal
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
