@@ -253,6 +253,7 @@ print('outerLoop exited');
 In the previous example, the program breaks out of both inner and outer `while` loops
 when `i == 2` and `j == 2`.
 So, the expected output is:
+So, the expected output is:
 
 ```dart
 i = 1, j = 1
