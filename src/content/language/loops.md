@@ -365,7 +365,7 @@ do {
 In the previous example, the loop skips `i = 2` and `j = 2` and moves directly to `i = 3`.
 As a result, the output is:
 
-```dart
+```terminal
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
