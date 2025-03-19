@@ -164,7 +164,7 @@ loops and switch cases and allow you to specify which statement to
 break out of or continue, rather than affecting the innermost
 loop by default.
 
-#### Labels in for loop using `break`
+#### Labels in for loop using `break` {:.no_toc}
 
 The following code demonstrates the usage of a label called `outerLoop`
 in a  `for` loop with a `break` statement:
@@ -195,7 +195,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in for loop using `continue`
+#### Labels in for loop using `continue` {:.no_toc}
 
 The following code demonstrates the use of a label called `outerLoop`
 in a  `for` loop with a `continue` statement:
@@ -226,7 +226,7 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-#### Labels in while loop using `break`
+#### Labels in while loop using `break` {:.no_toc}
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `break` statement:
@@ -264,7 +264,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in while loop using `continue`
+#### Labels in while loop using `continue` {:.no_toc}
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `while` loop with a `continue` statement:
@@ -301,7 +301,7 @@ i = 3, j = 2
 i = 3, j = 3
 ```
 
-#### Labels in do-while loop using `break`
+#### Labels in do-while loop using `break` {:.no_toc}
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `break` statement:
@@ -338,7 +338,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in do-while loop using `continue`
+#### Labels in do-while loop using `continue` {:.no_toc}
 
 The following code demonstrates the use of a label called `outerLoop` in
 a `do while` loop with a `continue` statement:
