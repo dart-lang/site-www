@@ -162,7 +162,7 @@ loops and switch cases and allow you to specify which statement to
 break out of or continue, rather than affecting the innermost
 loop by default.
 
-#### Labels in `for` loop using `break`:
+#### Labels in for loop using `break`
 
 The following code demonstrates the usage of a label called `outerLoop`
 in a  `for` loop with a `break` statement:
