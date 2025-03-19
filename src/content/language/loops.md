@@ -255,7 +255,7 @@ when `i == 2` and `j == 2`.
 So, the expected output is:
 So, the expected output is:
 
-```dart
+```terminal
 i = 1, j = 1
 i = 1, j = 2
 i = 1, j = 3
