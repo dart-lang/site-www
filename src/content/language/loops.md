@@ -193,7 +193,7 @@ i = 2, j = 2
 outerLoop exited
 ```
 
-#### Labels in `for` loop using `continue`:
+#### Labels in for loop using `continue`
 
 The following code demonstrates the use of a label called `outerLoop`
 in a  `for` loop with a `continue` statement:
