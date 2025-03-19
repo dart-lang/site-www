@@ -150,13 +150,10 @@ _labeled statement_. Loops and switch cases are often used as
 labeled statements. A labeled statement can be referenced later
 in a `break` or `continue` statement as follows:
 
-`break labelName;`
-: Terminates the execution of the labeled statement.
+* `break labelName;`: Terminates the execution of the labeled statement.
   This is useful for breaking out of a specific outer loop when you're
   within a nested loop.
-
-`continue labelName;`
-: Skips the rest of the current iteration of the
+* `continue labelName;`: Skips the rest of the current iteration of the
   labeled statement loop and continues with the next iteration.
 
 Labels are used to manage control flow. They are often used with
