@@ -6175,7 +6175,8 @@ extension E on String {
 
 #### Common fixes
 
-If the value can be computed without storing it in a field, then try using a getter or a method:
+If the value can be computed without storing it in a field, then try
+using a getter or a method:
 
 ```dart
 extension E on String {
@@ -6185,7 +6186,8 @@ extension E on String {
 }
 ```
 
-If the value must be stored, but is the same for every instance, try using a static field:
+If the value must be stored, but is the same for every instance,
+try using a static field:
 
 ```dart
 extension E on String {
@@ -6193,7 +6195,8 @@ extension E on String {
 }
 ```
 
-If each instance needs to have its own value stored, then try using a getter and setter pair backed by a static Expando:
+If each instance needs to have its own value stored, then try
+using a getter and setter pair backed by a static `Expando`:
 
 ```dart
 extension E on SomeType {
@@ -13875,6 +13878,73 @@ If the type was intended to be a class but was mistyped, then replace the
 name.
 
 Otherwise, remove the type from the `on` clause.
+
+### multiple_combinators
+
+_Using multiple 'hide' or 'show' combinators is never necessary and often
+produces surprising results._
+
+#### Description
+
+The analyzer produces this diagnostic when an import or export directive
+contains more than one combinator.
+
+#### Examples
+
+The following code produces this diagnostic because the second `show`
+combinator hides `List` and `int`:
+
+```dart
+import 'dart:core' [!show Future, List, int show Future!];
+
+var x = Future.value(1);
+```
+
+The following code produces this diagnostic because the second `hide` combinator
+is redundant:
+
+```dart
+import 'dart:math' [!hide Random, max, min hide min!];
+
+var x = pi;
+```
+
+The following codes produce this diagnostic because the `hide` combinator
+is redundant:
+
+```dart
+import 'dart:math' [!show Random, max hide min!];
+
+var x = max(0, 1);
+var r = Random();
+```
+
+The following code produces this diagnostic because the `show` combinator
+already hides `Random` and `max`, so the `hide` combinator is redundant:
+
+```dart
+import 'dart:math' [!hide Random, max show min!];
+
+var x = min(0, 1);
+```
+
+#### Common fixes
+
+If you prefer to list the names that should be visible, then use a single `show` combinator:
+
+```dart
+import 'dart:math' show min;
+
+var x = min(0, 1);
+```
+
+If you prefer to list the names that should be hidden, then use a single `hide` combinator:
+
+```dart
+import 'dart:math' hide Random, max, min;
+
+var x = pi;
+```
 
 ### multiple_redirecting_constructor_invocations
 
@@ -24524,7 +24594,7 @@ Iterable<String> get zero sync* {
 ### always_declare_return_types
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/always_declare_return_types"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24563,7 +24633,7 @@ void f() {}
 ### always_put_control_body_on_new_line
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/always_put_control_body_on_new_line"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24607,7 +24677,7 @@ void f(bool b) {
 ### always_put_required_named_parameters_first
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/always_put_required_named_parameters_first"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24645,7 +24715,7 @@ void f({required int x, int? y}) {}
 ### always_use_package_imports
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/always_use_package_imports"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24684,7 +24754,7 @@ import 'package:p/a.dart';
 ### annotate_overrides
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/annotate_overrides"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24747,10 +24817,52 @@ class B extends A {
 }
 ```
 
+### avoid_dynamic_calls
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/avoid_dynamic_calls"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Method invocation or property access on a 'dynamic' target._
+
+#### Description
+
+The analyzer produces this diagnostic when a member of a class is accessed
+on an expression whose type is `dynamic`.
+
+#### Example
+
+The following code produces this diagnostic because the getter `length` is
+being invoked on `s`, which has the type `dynamic`:
+
+```dart
+void f(dynamic s) {
+  [!s!].length;
+}
+```
+
+#### Common fixes
+
+Provide enough type information that the expression has a type other than
+`dynamic`:
+
+```dart
+void f(String s) {
+  s.length;
+}
+```
+
 ### avoid_empty_else
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_empty_else"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24812,7 +24924,7 @@ void f(int x, int y) {
 ### avoid_function_literals_in_foreach_calls
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_function_literals_in_foreach_calls"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24864,7 +24976,7 @@ void f(Iterable<String> s) {
 ### avoid_futureor_void
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_futureor_void"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24924,7 +25036,7 @@ useful remedy to replace `FutureOr<void>` by the type `void`.
 ### avoid_init_to_null
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_init_to_null"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -24982,7 +25094,7 @@ class C {
 ### avoid_print
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_print"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25033,7 +25145,7 @@ information.
 ### avoid_relative_lib_imports
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_relative_lib_imports"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25076,7 +25188,7 @@ import 'a.dart';
 ### avoid_renaming_method_parameters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_renaming_method_parameters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25129,7 +25241,7 @@ class B extends A {
 ### avoid_return_types_on_setters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_return_types_on_setters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25169,7 +25281,7 @@ set s(int p) {}
 ### avoid_returning_null_for_void
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_returning_null_for_void"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25212,7 +25324,7 @@ void f() {
 ### avoid_shadowing_type_parameters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_shadowing_type_parameters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25257,7 +25369,7 @@ class C<T> {
 ### avoid_single_cascade_in_expression_statements
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_single_cascade_in_expression_statements"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25299,7 +25411,7 @@ void f(String s) {
 ### avoid_slow_async_io
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_slow_async_io"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25356,7 +25468,7 @@ void g(File f) {
 ### avoid_type_to_string
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_type_to_string"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25407,7 +25519,7 @@ class C {}
 ### avoid_types_as_parameter_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_types_as_parameter_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25459,7 +25571,7 @@ void f(int_) {}
 ### avoid_unnecessary_containers
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_unnecessary_containers"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25536,7 +25648,7 @@ Widget buildRow() {
 ### avoid_web_libraries_in_flutter
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/avoid_web_libraries_in_flutter"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25601,7 +25713,7 @@ for more information.
 ### await_only_futures
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/await_only_futures"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25649,7 +25761,7 @@ void f() async {
 ### camel_case_extensions
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/camel_case_extensions"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25694,7 +25806,7 @@ extension on String {}
 ### camel_case_types
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/camel_case_types"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25732,7 +25844,7 @@ class C {}
 ### cancel_subscriptions
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/cancel_subscriptions"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25779,7 +25891,7 @@ void f(Stream stream) {
 ### close_sinks
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/close_sinks"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25827,7 +25939,7 @@ void g(File f) {
 ### collection_methods_unrelated_type
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/collection_methods_unrelated_type"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25885,7 +25997,7 @@ bool f(List<String> l)  => l.contains('1');
 ### constant_identifier_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/constant_identifier_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25922,7 +26034,7 @@ const emptyString = '';
 ### control_flow_in_finally
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/control_flow_in_finally"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -25988,7 +26100,7 @@ int f() {
 ### curly_braces_in_flow_control_structures
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/curly_braces_in_flow_control_structures"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26034,7 +26146,7 @@ int f(bool b) {
 ### dangling_library_doc_comments
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/dangling_library_doc_comments"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26098,7 +26210,7 @@ class C {}
 ### depend_on_referenced_packages
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/depend_on_referenced_packages"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26163,10 +26275,80 @@ dev_dependencies:
   a: ^1.0.0
 ```
 
+### diagnostic_describe_all_properties
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/diagnostic_describe_all_properties"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_The public property isn't described by either 'debugFillProperties' or
+'debugDescribeChildren'._
+
+#### Description
+
+The analyzer produces this diagnostic when a class that implements
+`Diagnosticable` has a public property that isn't added as a property in
+either a `debugFillProperties` or `debugDescribeChildren` method.
+
+#### Example
+
+The following code produces this diagnostic because the property `p2`
+isn't added in the `debugFillProperties` method:
+
+```dart
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+class C extends Widget {
+  bool get p1 => true;
+
+  bool get [!p2!] => false;
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('p1', p1));
+  }
+}
+```
+
+#### Common fixes
+
+If there isn't on override of either the `debugFillProperties` or
+`debugDescribeChildren` method, then add one.
+
+Add a description of the property in the `debugFillProperties` or
+`debugDescribeChildren` method:
+
+```dart
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+class C extends Widget {
+  bool get p1 => true;
+
+  bool get p2 => false;
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('p1', p1));
+    properties.add(DiagnosticsProperty<bool>('p2', p2));
+  }
+}
+```
+
 ### empty_catches
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/empty_catches"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26238,7 +26420,7 @@ void f() {
 ### empty_constructor_bodies
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/empty_constructor_bodies"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26279,7 +26461,7 @@ class C {
 ### empty_statements
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/empty_statements"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26354,7 +26536,7 @@ void g() {}
 ### file_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/file_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26384,7 +26566,7 @@ Rename the file to use the lower_case_with_underscores convention, such as
 ### hash_and_equals
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/hash_and_equals"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26462,7 +26644,7 @@ class C {
 ### implementation_imports
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/implementation_imports"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26508,7 +26690,7 @@ of the public API.
 ### implicit_call_tearoffs
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/implicit_call_tearoffs"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26566,7 +26748,7 @@ void f() {
 ### invalid_runtime_check_with_js_interop_types
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/invalid_runtime_check_with_js_interop_types"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26701,7 +26883,7 @@ void emulateCrashWithOtherFunctionality() {
 ### library_annotations
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/library_annotations"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26749,7 +26931,7 @@ void main() {}
 ### library_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/library_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26793,7 +26975,7 @@ library library_name;
 ### library_prefixes
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/library_prefixes"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26831,7 +27013,7 @@ import 'package:ffi/ffi.dart' as ffi_support;
 ### library_private_types_in_public_api
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/library_private_types_in_public_api"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26885,7 +27067,7 @@ class C {}
 ### literal_only_boolean_expressions
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/literal_only_boolean_expressions"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -26951,10 +27133,54 @@ void f() {
 }
 ```
 
+### missing_whitespace_between_adjacent_strings
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/missing_whitespace_between_adjacent_strings"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Missing whitespace between adjacent strings._
+
+#### Description
+
+The analyzer produces this diagnostic for a pair of adjacent string
+literals unless either the left-hand string ends in whitespace or the
+right-hand string begins with whitespace.
+
+#### Example
+
+The following code produces this diagnostic because neither the left nor
+the right string literal includes a space to separate the words that will
+be joined:
+
+```dart
+var s =
+  [!'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed'!]
+  'do eiusmod tempor incididunt ut labore et dolore magna';
+```
+
+#### Common fixes
+
+Add whitespace at the end of the left-hand literal or at the beginning of
+the right-hand literal:
+
+```dart
+var s =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed '
+  'do eiusmod tempor incididunt ut labore et dolore magna';
+```
+
 ### no_adjacent_strings_in_list
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_adjacent_strings_in_list"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27007,7 +27233,7 @@ List<String> list = ['a' + 'b', 'c'];
 ### no_duplicate_case_values
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_duplicate_case_values"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27078,7 +27304,7 @@ void f(int v) {
 ### no_leading_underscores_for_library_prefixes
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_leading_underscores_for_library_prefixes"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27118,7 +27344,7 @@ import 'dart:core' as core;
 ### no_leading_underscores_for_local_identifiers
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_leading_underscores_for_local_identifiers"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27158,7 +27384,7 @@ int f(String s) => s.length;
 ### no_logic_in_create_state
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_logic_in_create_state"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27218,7 +27444,7 @@ class MyState extends State {
 ### no_wildcard_variable_uses
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/no_wildcard_variable_uses"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27283,7 +27509,7 @@ void f() {
 ### non_constant_identifier_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/non_constant_identifier_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27323,7 +27549,7 @@ var count = 0;
 ### null_check_on_nullable_type_parameter
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/null_check_on_nullable_type_parameter"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27369,10 +27595,49 @@ Use the type parameter to cast the variable:
 T f<T>(T? t) => t as T;
 ```
 
+### only_throw_errors
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/only_throw_errors"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Don't throw instances of classes that don't extend either 'Exception' or
+'Error'._
+
+#### Description
+
+The analyzer produces this diagnostic when the value being thrown isn't a
+subclass of either `Exception` or `Error`.
+
+#### Example
+
+The following code produces this diagnostic because the string `'f'` is
+being thrown:
+
+```dart
+void f() => throw [!'f'!];
+```
+
+#### Common fixes
+
+Replace the value with an instance of a subclass of either `Exception` or
+`Error`:
+
+```dart
+void f() => throw ArgumentError('f');
+```
+
 ### overridden_fields
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/overridden_fields"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27442,7 +27707,7 @@ find a different way to implement the semantics you need.
 ### package_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/package_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27480,7 +27745,7 @@ name: some_package
 ### package_prefixed_library_names
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/package_prefixed_library_names"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27526,7 +27791,7 @@ Change the name of the library to conform to the guidelines.
 ### prefer_adjacent_string_concatenation
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_adjacent_string_concatenation"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27560,10 +27825,95 @@ Remove the operator:
 var s = 'a' 'b';
 ```
 
+### prefer_asserts_in_initializer_lists
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_asserts_in_initializer_lists"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Assert should be in the initializer list._
+
+#### Description
+
+The analyzer produces this diagnostic when the body of a constructor
+begins with one or more assert statements.
+
+#### Example
+
+The following code produces this diagnostic because the body of the
+constructor begins with an assert statement:
+
+```dart
+class C {
+  C(int i) {
+    [!assert!](i != 0);
+  }
+}
+```
+
+#### Common fixes
+
+Move the assert to the initializer list, removing the body if there are
+only assert statements in it:
+
+```dart
+class C {
+  C(int i) : assert(i != 0);
+}
+```
+
+### prefer_asserts_with_message
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_asserts_with_message"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Missing a message in an assert._
+
+#### Description
+
+The analyzer produces this diagnostic when an assert statement doesn't
+have a message.
+
+#### Example
+
+The following code produces this diagnostic because there's no message
+in the assert statement:
+
+```dart
+void f(String s) {
+  [!assert(s.isNotEmpty);!]
+}
+```
+
+#### Common fixes
+
+Add a message to the assert statement:
+
+```dart
+void f(String s) {
+  assert(s.isNotEmpty, 'The argument must not be empty.');
+}
+```
+
 ### prefer_collection_literals
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_collection_literals"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27601,7 +27951,7 @@ var m = <String, String>{};
 ### prefer_conditional_assignment
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_conditional_assignment"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27648,7 +27998,7 @@ int f(String? s) {
 ### prefer_const_constructors
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_const_constructors"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27705,7 +28055,7 @@ C c = const C();
 ### prefer_const_constructors_in_immutables
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_const_constructors_in_immutables"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27767,7 +28117,7 @@ class C {
 ### prefer_const_declarations
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_const_declarations"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27827,7 +28177,7 @@ class C {
 ### prefer_const_literals_to_create_immutables
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_const_literals_to_create_immutables"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27915,10 +28265,55 @@ class C {
 C c = C(const [1]);
 ```
 
+### prefer_constructors_over_static_methods
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_constructors_over_static_methods"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Static method should be a constructor._
+
+#### Description
+
+The analyzer produces this diagnostic when a static method returns a newly
+created instance of the class and could, therefore, be a constructor.
+
+#### Example
+
+The following code produces this diagnostic because the static method
+`all` could be a constructor:
+
+```dart
+class C {
+  final int a, b, c;
+  C(this.a, this.b, this.c);
+  static C [!all!](int i) => C(i, i, i);
+}
+```
+
+#### Common fixes
+
+Convert the static method to a named constructor:
+
+```dart
+class C {
+  final int a, b, c;
+  C(this.a, this.b, this.c);
+  C.all(int i) : a = i, b = i, c = i;
+}
+```
+
 ### prefer_contains
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_contains"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -27968,7 +28363,7 @@ void f(List<String> l, String s) {
 ### prefer_double_quotes
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_double_quotes"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28007,10 +28402,51 @@ void f(String name) {
 }
 ```
 
+### prefer_expression_function_bodies
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_expression_function_bodies"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Unnecessary use of a block function body._
+
+#### Description
+
+The analyzer produces this diagnostic when the body of a function consists
+of a single return statement with an expression.
+
+#### Example
+
+The following code produces this diagnostic because the body of `f` has a
+single return statement:
+
+```dart
+int f() [!{!]
+  [!return 0;!]
+[!}!]
+```
+
+#### Common fixes
+
+If the body is complete, then replace the body with an expression body:
+
+```dart
+int f() => 0;
+```
+
+If the body isn't complete, then add the missing statements.
+
 ### prefer_final_fields
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_final_fields"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28053,10 +28489,139 @@ class C {
 }
 ```
 
+### prefer_final_in_for_each
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_final_in_for_each"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_The pattern should be final._
+
+_The variable '{0}' should be final._
+
+#### Description
+
+The analyzer produces this diagnostic when the loop variable in a for-each
+statement isn't marked as being `final`.
+
+#### Example
+
+The following code produces this diagnostic because the loop variable `e`
+isn't marked as being `final`:
+
+```dart
+void f(List<int> l) {
+  for (var [!e!] in l) {
+    print(e);
+  }
+}
+```
+
+#### Common fixes
+
+Add the modifier `final` to the loop variable, removing the `var` if there
+is one:
+
+```dart
+void f(List<int> l) {
+  for (final e in l) {
+    print(e);
+  }
+}
+```
+
+### prefer_final_locals
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_final_locals"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Local variables should be final._
+
+#### Description
+
+The analyzer produces this diagnostic when a local variable isn't marked
+as being `final`.
+
+#### Example
+
+The following code produces this diagnostic because the variable `s` isn't
+marked as being `final`:
+
+```dart
+int f(int i) {
+  [!var!] s = i + 1;
+  return s;
+}
+```
+
+#### Common fixes
+
+Add the modifier `final` to the variable, removing the `var` if there is
+one:
+
+```dart
+int f(int i) {
+  final s = i + 1;
+  return s;
+}
+```
+
+### prefer_final_parameters
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_final_parameters"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_The parameter '{0}' should be final._
+
+#### Description
+
+The analyzer produces this diagnostic when a parameter of a constructor,
+method, function, or closure isn't marked as being `final`.
+
+#### Example
+
+The following code produces this diagnostic because the parameter `s`
+isn't a `final` parameter:
+
+```dart
+String f([!String s!]) => s;
+```
+
+#### Common fixes
+
+Add the modifier `final` to the parameter:
+
+```dart
+String f(final String s) => s;
+```
+
 ### prefer_for_elements_to_map_fromiterable
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_for_elements_to_map_fromIterable"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28101,10 +28666,54 @@ void f(Iterable<String> data) {
 }
 ```
 
+### prefer_foreach
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/prefer_foreach"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Use 'forEach' rather than a 'for' loop to apply a function to every element._
+
+#### Description
+
+The analyzer produces this diagnostic when a `for` loop is used to operate
+on every member of a collection and the method `forEach` could be used
+instead.
+
+#### Example
+
+The following code produces this diagnostic because a `for` loop is being
+used to invoke a single function for each key in `m`:
+
+```dart
+void f(Map<String, int> m) {
+  [!for (final key in m.keys) {!]
+    [!print(key);!]
+  [!}!]
+}
+```
+
+#### Common fixes
+
+Replace the for loop with an invocation of `forEach`:
+
+```dart
+void f(Map<String, int> m) {
+  m.keys.forEach(print);
+}
+```
+
 ### prefer_function_declarations_over_variables
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_function_declarations_over_variables"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28148,7 +28757,7 @@ void g() {
 ### prefer_generic_function_type_aliases
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_generic_function_type_aliases"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28186,7 +28795,7 @@ typedef F<T> = void Function();
 ### prefer_if_null_operators
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_if_null_operators"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28225,7 +28834,7 @@ String f(String? s) => s ?? '';
 ### prefer_initializing_formals
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_initializing_formals"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28270,7 +28879,7 @@ class C {
 ### prefer_inlined_adds
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_inlined_adds"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28335,7 +28944,7 @@ List<String> f(String a, List<String> b) {
 ### prefer_interpolation_to_compose_strings
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_interpolation_to_compose_strings"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28377,7 +28986,7 @@ String f(List<String> l) {
 ### prefer_is_empty
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_is_empty"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28424,7 +29033,7 @@ void f(Iterable<int> p) => p.isEmpty ? 0 : p.first;
 ### prefer_is_not_empty
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_is_not_empty"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28461,7 +29070,7 @@ void f(Iterable<int> p) => p.isNotEmpty ? p.first : 0;
 ### prefer_is_not_operator
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_is_not_operator"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28508,7 +29117,7 @@ String f(Object o) {
 ### prefer_iterable_wheretype
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_iterable_whereType"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28548,7 +29157,7 @@ other type checks.
 ### prefer_null_aware_operators
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_null_aware_operators"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28591,7 +29200,7 @@ int? f(List<int>? p) {
 ### prefer_relative_imports
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_relative_imports"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28629,7 +29238,7 @@ import 'bar.dart';
 ### prefer_single_quotes
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_single_quotes"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28671,7 +29280,7 @@ void f(String name) {
 ### prefer_typing_uninitialized_variables
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_typing_uninitialized_variables"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28732,7 +29341,7 @@ Object f() {
 ### prefer_void_to_null
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/prefer_void_to_null"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28769,7 +29378,7 @@ Future<void> f() async {}
 ### provide_deprecation_message
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/provide_deprecation_message"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28805,10 +29414,48 @@ Convert the code to use the longer form:
 void f() {}
 ```
 
+### public_member_api_docs
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/public_member_api_docs"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Missing documentation for a public member._
+
+#### Description
+
+The analyzer produces this diagnostic when the declaration of part of the
+public API of a package doesn't have a documentation comment.
+
+#### Example
+
+The following code produces this diagnostic because the class `C` doesn't
+have a documentation comment:
+
+```dart
+class [!C!] {}
+```
+
+#### Common fixes
+
+Add a documentation comment.
+
+```dart
+/// Documentation comment.
+class C {}
+```
+
 ### recursive_getters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/recursive_getters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28853,7 +29500,7 @@ class C {
 ### secure_pubspec_urls
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/secure_pubspec_urls"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28894,7 +29541,7 @@ dependencies:
 ### sized_box_for_whitespace
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sized_box_for_whitespace"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -28961,7 +29608,7 @@ Widget buildRow() {
 ### sized_box_shrink_expand
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sized_box_shrink_expand"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29040,7 +29687,7 @@ Widget build() {
 ### slash_for_doc_comments
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/slash_for_doc_comments"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29081,7 +29728,7 @@ void f() {}
 ### sort_child_properties_last
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sort_child_properties_last"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29134,7 +29781,7 @@ Widget createWidget() {
 ### sort_constructors_first
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sort_constructors_first"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29179,7 +29826,7 @@ class C {
 ### sort_pub_dependencies
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sort_pub_dependencies"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29222,7 +29869,7 @@ dependencies:
 ### sort_unnamed_constructors_first
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/sort_unnamed_constructors_first"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29267,7 +29914,7 @@ class C {
 ### test_types_in_equals
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/test_types_in_equals"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29322,7 +29969,7 @@ class C {
 ### throw_in_finally
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/throw_in_finally"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29372,10 +30019,95 @@ void f() {
 }
 ```
 
+### tighten_type_of_initializing_formals
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/tighten_type_of_initializing_formals"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Use a type annotation rather than 'assert' to enforce non-nullability._
+
+#### Description
+
+The analyzer produces this diagnostic when an `assert` is being used in
+the initializer list of a constructor to ensure that only a non-`null`
+value is being used to initialize a field.
+
+#### Example
+
+The following code produces this diagnostic because an `assert` is being
+used to catch an error that could be caught by the type system:
+
+```dart
+class C {
+  final String? s;
+
+  C([!this.s!]) : assert(s != null);
+}
+```
+
+#### Common fixes
+
+Remove the `assert` and add the non-nullable type before the initializing
+formal:
+
+```dart
+class C {
+  final String? s;
+
+  C(String this.s);
+}
+```
+
+### type_annotate_public_apis
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/type_annotate_public_apis"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Missing type annotation on a public API._
+
+#### Description
+
+The analyzer produces this diagnostic when the declaration of part of the
+public API of a package doesn't have explicit type annotations.
+
+#### Example
+
+The following code produces this diagnostic because the function `f`
+doesn't have an explicit return type and the parameters `x` and `y` don't
+have explicit types:
+
+```dart
+[!f!](x, y) => '';
+```
+
+#### Common fixes
+
+Add type annotations to the API:
+
+```dart
+String f(int x, int y) => '';
+```
+
 ### type_init_formals
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/type_init_formals"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29441,7 +30173,7 @@ class C {
 ### type_literal_in_constant_pattern
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/type_literal_in_constant_pattern"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29508,7 +30240,7 @@ void f(Object? x) {
 ### unawaited_futures
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unawaited_futures"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29522,10 +30254,18 @@ _Missing an 'await' for the 'Future' computed by this expression._
 
 #### Description
 
-The analyzer produces this diagnostic when an instance of `Future` is
-returned from an invocation within an `async` (or `async*`) method or
-function and the future is neither awaited nor passed to the `unawaited`
-function.
+The analyzer produces this diagnostic on an expression with a `Future`
+type, only in a few specific cases:
+
+* when the expression is itself a statement (like `f();`),
+* when the expression is part of a cascade (like `C()..f()`),
+* when the expression is a String interpolation (like `'${f()}'`).
+
+The analyzer only produces this diagnostic on expressions inside an
+`async` or `async*` function.
+
+The two common corrections are to 'await' the expression, or to wrap the
+expression in a call to `unawaited()`.
 
 #### Example
 
@@ -29570,7 +30310,7 @@ Future<int> g() => Future.value(0);
 ### unintended_html_in_doc_comment
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unintended_html_in_doc_comment"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29634,7 +30374,7 @@ String f(List<int> l) => '';
 ### unnecessary_brace_in_string_interps
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_brace_in_string_interps"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29676,7 +30416,7 @@ String f(String s) {
 ### unnecessary_const
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_const"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29716,7 +30456,7 @@ const l = <int>[];
 ### unnecessary_constructor_name
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_constructor_name"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29754,7 +30494,7 @@ var o = Object();
 ### unnecessary_final
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_final"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29808,7 +30548,7 @@ void f(int a, int b) {
 ### unnecessary_getters_setters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_getters_setters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29853,7 +30593,7 @@ class C {
 ### unnecessary_ignore
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_ignore"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29895,7 +30635,7 @@ void f() {}
 ### unnecessary_lambdas
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_lambdas"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29940,7 +30680,7 @@ void f(List<String> strings) {
 ### unnecessary_late
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_late"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -29983,7 +30723,7 @@ class C {
 ### unnecessary_library_name
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_library_name"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30027,7 +30767,7 @@ the library name should be updated to use the URI of the library instead.
 ### unnecessary_new
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_new"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30064,7 +30804,7 @@ var o = Object();
 ### unnecessary_null_aware_assignments
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_null_aware_assignments"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30111,10 +30851,98 @@ void f(String? s) {
 }
 ```
 
+### unnecessary_null_aware_operator_on_extension_on_nullable
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/unnecessary_null_aware_operator_on_extension_on_nullable"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Unnecessary use of a null-aware operator to invoke an extension method on a
+nullable type._
+
+#### Description
+
+The analyzer produces this diagnostic when a null-aware operator is used
+to invoke an extension method on an extension whose type is nullable.
+
+#### Example
+
+The following code produces this diagnostic because the extension method
+`m` is invoked using `?.` when it doesn't need to be:
+
+```dart
+extension E on int? {
+  int m() => 1;
+}
+
+int? f(int? i) => i[!?.!]m();
+```
+
+#### Common fixes
+
+If it isn't a requirement not invoke the method when the receiver is
+`null`, then remove the question mark from the invocation:
+
+```dart
+extension E on int? {
+  int m() => 1;
+}
+
+int? f(int? i) => i.m();
+```
+
+### unnecessary_null_checks
+
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/unnecessary_null_checks"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
+_Unnecessary use of a null check ('!')._
+
+#### Description
+
+The analyzer produces this diagnostic when a null check operator (`!`) is
+used in a context where a nullable value is acceptable.
+
+#### Example
+
+The following code produces this diagnostic because a null check is being
+used even though `null` is a valid value to return:
+
+```dart
+int? f(int? i) {
+  return i[!!!];
+}
+```
+
+#### Common fixes
+
+Remove the null check operator:
+
+```dart
+int? f(int? i) {
+  return i;
+}
+```
+
 ### unnecessary_null_in_if_null_operators
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_null_in_if_null_operators"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30159,7 +30987,7 @@ String? f(String? s) => s;
 ### unnecessary_nullable_for_final_variable_declarations
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_nullable_for_final_variable_declarations"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30196,7 +31024,7 @@ final int i = 1;
 ### unnecessary_overrides
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_overrides"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30279,7 +31107,7 @@ class D extends C {}
 ### unnecessary_parenthesis
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_parenthesis"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30316,7 +31144,7 @@ int f(int a, int b) => a + b;
 ### unnecessary_raw_strings
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_raw_strings"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30354,7 +31182,7 @@ var s = 'abc';
 ### unnecessary_statements
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_statements"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30413,7 +31241,7 @@ void f(int Function() first, int Function() second) {
 ### unnecessary_string_escapes
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_string_escapes"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30450,7 +31278,7 @@ var s = "Don't use a backslash here.";
 ### unnecessary_string_interpolations
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_string_interpolations"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30489,7 +31317,7 @@ String f(String s) => s;
 ### unnecessary_this
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_this"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30534,7 +31362,7 @@ class C {
 ### unnecessary_to_list_in_spreads
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_to_list_in_spreads"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30582,7 +31410,7 @@ List<String> toLowercase(List<String> strings) {
 ### unnecessary_underscores
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unnecessary_underscores"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30619,7 +31447,7 @@ void function(int _) { }
 ### unrelated_type_equality_checks
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unrelated_type_equality_checks"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30679,7 +31507,7 @@ bool f(String s) {
 ### unsafe_variance
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/unsafe_variance"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30773,7 +31601,7 @@ reasons.
 ### use_build_context_synchronously
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_build_context_synchronously"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30847,7 +31675,7 @@ class MyWidget extends Widget {
 ### use_colored_box
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_colored_box"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30898,7 +31726,7 @@ Widget build() {
 ### use_decorated_box
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_decorated_box"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -30959,7 +31787,7 @@ Widget buildArea() {
 ### use_full_hex_values_for_flutter_colors
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_full_hex_values_for_flutter_colors"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31002,7 +31830,7 @@ Color c = Color(0x00000001);
 ### use_function_type_syntax_for_parameters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_function_type_syntax_for_parameters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31039,7 +31867,7 @@ void g(bool Function(String) f) {}
 ### use_if_null_to_convert_nulls_to_bools
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_if_null_to_convert_nulls_to_bools"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31084,7 +31912,7 @@ void f(bool? b) {
 ### use_key_in_widget_constructors
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_key_in_widget_constructors"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31140,7 +31968,7 @@ class MyWidget extends StatelessWidget {
 ### use_late_for_private_fields_and_variables
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_late_for_private_fields_and_variables"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31188,7 +32016,7 @@ late int _i;
 ### use_named_constants
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_named_constants"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31226,6 +32054,17 @@ Duration d = Duration.zero;
 
 ### use_null_aware_elements
 
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/use_null_aware_elements"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
 _Use the null-aware marker '?' rather than a null check via an 'if'._
 
 #### Description
@@ -31254,7 +32093,7 @@ f(int? x) => [?x];
 ### use_raw_strings
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_raw_strings"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31293,7 +32132,7 @@ var s = r'A string with only \ and $';
 ### use_rethrow_when_possible
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_rethrow_when_possible"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31342,7 +32181,7 @@ void f() {
 ### use_setters_to_change_properties
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_setters_to_change_properties"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31388,7 +32227,7 @@ class C {
 ### use_string_buffers
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_string_buffers"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31438,7 +32277,7 @@ String f() {
 ### use_string_in_part_of_directives
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_string_in_part_of_directives"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31484,7 +32323,7 @@ part of 'lib.dart';
 ### use_super_parameters
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_super_parameters"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31534,7 +32373,7 @@ class B extends A {
 ### use_truncating_division
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/use_truncating_division"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31574,7 +32413,7 @@ int divide(int x, int y) => x ~/ y;
 ### valid_regexps
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/valid_regexps"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."
@@ -31615,7 +32454,7 @@ var r = RegExp(r'\(');
 ### void_checks
 
 <div class="tags">
-  <a class="tag-label" 
+  <a class="tag-label"
       href="/tools/linter-rules/void_checks"
       title="Learn about the lint rule that enables this diagnostic."
       aria-label="Learn about the lint rule that enables this diagnostic."

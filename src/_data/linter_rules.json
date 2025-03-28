@@ -1185,7 +1185,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md#avoid-checking-in-comments-that-ask-questions):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
+    "details": "**DO** use Flutter TODO format.\n\nFrom the [Flutter\ndocs](https://github.com/flutter/flutter/blob/main/docs/contributing/Style-guide-for-Flutter-repo.md#comments):\n\n> TODOs should include the string TODO in all caps, followed by the GitHub\nusername of the person with the best context about the problem referenced by the\nTODO in parenthesis. A TODO is not a commitment that the person referenced will\nfix the problem, it is intended to be the person with enough context to explain\nthe problem. Thus, when you create a TODO, it is almost always your username\nthat is given.\n\n**GOOD:**\n```dart\n// TODO(username): message.\n// TODO(username): message, https://URL-to-issue.\n```",
     "sinceDartSdk": "2.1"
   },
   {
@@ -2664,7 +2664,11 @@
     ],
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "hasFix",
     "details": "Do type annotate top-level and class-like member declarations, where types\nare not inferred from super-interfaces or initializers.\n\nThe lint warns about every omitted return type, parameter type, and\nvariable type of a top-level declaration or class-like-namespace-level\ndeclaration (static or instance member or constructor declaration), which\nis not given a type by inference, and which therefore defaults to dynamic.\n\nThe only omitted types that can be given a type by top-level inference,\nare those of variable declarations with initializer expressions, and\nreturn and parameter types of instance members that override a consistent\ncombined super-interface signature.\n\nSetters do not need a return type, as it is always assumed to be `void`.\n\n**BAD:**\n```dart\nvar _zeroPointCache;\nclass Point {\n  get zero => ...;\n  final x, y;\n  Point(x, y) {}\n  closest(b, c) => distance(b) <= distance(c) ? b : c;\n  distance(other) => ...;\n}\n_sq(v) => v * v;\n```\n\n**GOOD:**\n```dart\nPoint? _zeroPointCache;\nclass Point {\n  Point get zero => ...;\n  final int x, y;\n  Point(int x, int y) {}\n  closest(Point b, Point c) =>\n      distance(b) <= distance(c) ? b : c;\n  distance(Point other) => ...;\n}\nint _sq(int v) => v * v;\n```",
     "sinceDartSdk": "3.7"
@@ -2929,7 +2933,7 @@
     "categories": [
       "style"
     ],
-    "state": "experimental",
+    "state": "stable",
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
@@ -3448,6 +3452,20 @@
     "fixStatus": "hasFix",
     "details": "Where possible, use already defined const values.\n\n**BAD:**\n```dart\nconst Duration(seconds: 0);\n```\n\n**GOOD:**\n```dart\nDuration.zero;\n```",
     "sinceDartSdk": "2.13"
+  },
+  {
+    "name": "use_null_aware_elements",
+    "description": "If-elements testing for null can be replaced with null-aware elements.",
+    "categories": [
+      "brevity",
+      "style"
+    ],
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "Where possible, use null-aware elements in collection literals.\n\n**BAD:**\n```dart\nf(String? key) => {if (key != null) key: \"value\"};\n```\n\n**GOOD:**\n```dart\nf(String? key) => {?key: \"value\"};\n```",
+    "sinceDartSdk": "3.8"
   },
   {
     "name": "use_raw_strings",
