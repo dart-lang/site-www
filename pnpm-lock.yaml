@@ -21,8 +21,8 @@ importers:
         specifier: ^22.13.14
         version: 22.13.14
       firebase-tools:
-        specifier: ^14.0.0
-        version: 14.0.0(encoding@0.1.13)
+        specifier: ^14.0.1
+        version: 14.0.1(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.3
         version: 2.0.3
@@ -287,12 +287,12 @@ packages:
     resolution: {integrity: sha512-MmaX6HeSvyPbWGwFq7mXdo0uQZLGBYCwziiLIGq5JVX+/bdI3SAq6bP98trV5eTWfLuvsMcIC1YJOF2vfteLFA==}
     engines: {node: '>=14.0.0'}
 
-  '@google-cloud/promisify@4.1.0':
-    resolution: {integrity: sha512-G/FQx5cE/+DqBbOpA5jKsegGwdPniU6PuIEMt+qxWgFxvxuFOzVmp6zYchtYuwAWV5/8Dgs0yAmjvNZv3uXLQg==}
-    engines: {node: '>=18'}
+  '@google-cloud/promisify@4.0.0':
+    resolution: {integrity: sha512-Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==}
+    engines: {node: '>=14'}
 
-  '@google-cloud/pubsub@4.10.0':
-    resolution: {integrity: sha512-HLlIA8qGr6PxAnjK4YjSi2swqEiXjGAC2Tj9GHMNYFtL4uubTIJLHv4CtbJ/Gzem5Cb1HRjuubt/H0oTuRLV0g==}
+  '@google-cloud/pubsub@4.11.0':
+    resolution: {integrity: sha512-xWxJAlyUGd6OPp97u8maMcI3xVXuHjxfwh6Dr7P/P+6NK9o446slJobsbgsmK0xKY4nTK8m5uuJrhEKapfZSmQ==}
     engines: {node: '>=14.0.0'}
 
   '@googleapis/sqladmin@27.0.0':
@@ -363,8 +363,8 @@ packages:
     resolution: {integrity: sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==}
     engines: {node: '>=8.0.0'}
 
-  '@opentelemetry/semantic-conventions@1.28.0':
-    resolution: {integrity: sha512-lp4qAiMTD4sNWW4DbKLBkfiMZ4jbAboJIGOQr5DvciMRI494OapieI9qiODpOt0XBr1LjIDy1xAGAnVs5supTA==}
+  '@opentelemetry/semantic-conventions@1.30.0':
+    resolution: {integrity: sha512-4VlGgo32k2EQ2wcCY3vEU28A0O13aOtHz3Xt2/2U5FAh9EfhD6t6DqL5Z6yAnRCntbTFDU4YfbpyzSlHNWycPw==}
     engines: {node: '>=14'}
 
   '@parcel/watcher-android-arm64@2.5.1':
@@ -1370,8 +1370,8 @@ packages:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@14.0.0:
-    resolution: {integrity: sha512-pyQfgHf01x3RTP1lB6fDq5+sn5z5rMcvQhP97EEFDUJh/9zSJ6Q6ru62sgIiJ7Uhx90OQ86/aO6jDhTk4Jp5Og==}
+  firebase-tools@14.0.1:
+    resolution: {integrity: sha512-iSo0Af+pHT2iGDEJIcAzIv0tN4WDn9IjVECY9EoT/SgqLfUbF0kKQ4JdRJc8npswPH9EtU5+1gIJ/ZyzCodw+w==}
     engines: {node: '>=20.0.0 || >=22.0.0'}
     hasBin: true
 
@@ -3137,8 +3137,8 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
-  yaml@2.7.0:
-    resolution: {integrity: sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==}
+  yaml@2.7.1:
+    resolution: {integrity: sha512-10ULxpnOCQXxJvBgxsn9ptjq6uviG/htZKk9veJGhlqn3w/DxQ631zFF+nlQXLwmImeS5amR2dl2U8sg6U9jsQ==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -3396,16 +3396,16 @@ snapshots:
 
   '@google-cloud/projectify@4.0.0': {}
 
-  '@google-cloud/promisify@4.1.0': {}
+  '@google-cloud/promisify@4.0.0': {}
 
-  '@google-cloud/pubsub@4.10.0(encoding@0.1.13)':
+  '@google-cloud/pubsub@4.11.0(encoding@0.1.13)':
     dependencies:
       '@google-cloud/paginator': 5.0.2
       '@google-cloud/precise-date': 4.0.0
       '@google-cloud/projectify': 4.0.0
-      '@google-cloud/promisify': 4.1.0
+      '@google-cloud/promisify': 4.0.0
       '@opentelemetry/api': 1.9.0
-      '@opentelemetry/semantic-conventions': 1.28.0
+      '@opentelemetry/semantic-conventions': 1.30.0
       arrify: 2.0.1
       extend: 3.0.2
       google-auth-library: 9.15.1(encoding@0.1.13)
@@ -3502,7 +3502,7 @@ snapshots:
 
   '@opentelemetry/api@1.9.0': {}
 
-  '@opentelemetry/semantic-conventions@1.28.0': {}
+  '@opentelemetry/semantic-conventions@1.30.0': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
@@ -4546,11 +4546,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@14.0.0(encoding@0.1.13):
+  firebase-tools@14.0.1(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.17
       '@google-cloud/cloud-sql-connector': 1.7.0(encoding@0.1.13)
-      '@google-cloud/pubsub': 4.10.0(encoding@0.1.13)
+      '@google-cloud/pubsub': 4.11.0(encoding@0.1.13)
       abort-controller: 3.0.0
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
@@ -4615,7 +4615,7 @@ snapshots:
       winston: 3.17.0
       winston-transport: 4.9.0
       ws: 7.5.10
-      yaml: 2.7.0
+      yaml: 2.7.1
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -5649,7 +5649,7 @@ snapshots:
 
   openapi3-ts@3.2.0:
     dependencies:
-      yaml: 2.7.0
+      yaml: 2.7.1
 
   ora@5.4.1:
     dependencies:
@@ -6632,7 +6632,7 @@ snapshots:
 
   yallist@4.0.0: {}
 
-  yaml@2.7.0: {}
+  yaml@2.7.1: {}
 
   yargs-parser@20.2.9: {}
 
