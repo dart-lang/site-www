@@ -21,7 +21,7 @@ and follow the [Dart blog][].
 ## February 12, 2025: 3.7 release
 
 This section lists notable changes made from December 12, 2024,
-through February 12, 2024.
+through February 12, 2025.
 For details about the 3.7 release of Dart,
 check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 
