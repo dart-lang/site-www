@@ -228,7 +228,7 @@ class Modal {
 //----------------------------------------------------------------------------
 
 abstract class Iterable<E> {
-  // @docregion noun-for-func-returning-value
+  // #docregion noun-for-func-returning-value
   /// The [index]th element of this iterable in iteration order.
   E elementAt(int index);
   
