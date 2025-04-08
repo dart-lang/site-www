@@ -293,7 +293,7 @@ Use a noun-phrase for such non-boolean functions, and a phrase starting
 with "Whether" for such boolean functions, just as for a syntactic property
 or variable.
 
-<?code-excerpt "design_good.dart (noun-for-func-returning-value)"?>
+<?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
 /// The [index]th element of this iterable in iteration order.
 E elementAt(int index);
@@ -302,14 +302,15 @@ E elementAt(int index);
 bool contains(Object? element);
 ```
 
-This guideline is deliberately softer than the previous ones. Sometimes a method
-has no side effects but is still simpler to name with a verb phrase like
-`list.take()` or `string.split()`, and then a verb phrase may still apply.
-_For example `Iterable.take` can be described both as "An iterable of ..."
-or as "Creates a new iterable of ...", depending on whether it being a new
-iterable is important._
+This guideline should be applied based on whether the declaration is 
+conceptually seen as a property.
+Sometimes a method has no side effects, and may conceptually be seen
+as a property, but is still simpler to name with a verb phrase like
+`list.take()`. Then a noun phrase should still be used to document it.
+_For example `Iterable.take` can be described as
+"The first \[count\] elements of ..."._
 
-[parameterized_property_name]: design.md##prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+[parameterized_property_name]: design.md#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
 ### DON'T write documentation for both the getter and setter of a property
 
