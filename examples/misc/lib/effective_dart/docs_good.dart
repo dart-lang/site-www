@@ -165,6 +165,10 @@ class IOError {}
 
 class PermissionError {}
 
+class Query {}
+
+class QueryResult {}
+
 class Widget {}
 
 // #docregion redundant
@@ -227,7 +231,7 @@ class Modal {
 
 //----------------------------------------------------------------------------
 
-abstract class Iterable<E> {
+abstract class MyIterable<E> {
   // #docregion noun-for-func-returning-value
   /// The [index]th element of this iterable in iteration order.
   E elementAt(int index);
