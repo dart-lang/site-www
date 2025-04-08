@@ -232,7 +232,7 @@ It's better to say nothing
 than waste a reader's time telling them something they already know.
 
 
-### PREFER starting comments of a function or method with third-person verbs, if its main purpose is a side effect
+### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
 
 The doc comment should focus on what the code *does*.
 
