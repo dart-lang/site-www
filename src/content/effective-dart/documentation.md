@@ -436,8 +436,8 @@ precise error which will be thrown.
 ///
 /// Returns a new flag.
 ///
-/// Throws a [DuplicateFlagException] if there is already an option named [name]
-/// or there is already an option using the abbreviation [abbr].
+/// Throws a [DuplicateFlagException] if there is already an option named
+/// [name] or there is already an option using the abbreviation [abbr].
 Flag addFlag(String name, String abbr) => ...
 ```
 
