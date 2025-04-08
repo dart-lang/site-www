@@ -310,7 +310,7 @@ as a property, but is still simpler to name with a verb phrase like
 _For example `Iterable.take` can be described as
 "The first \[count\] elements of ..."._
 
-[parameterized_property_name]: design.md#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+[parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
 ### DON'T write documentation for both the getter and setter of a property
 
