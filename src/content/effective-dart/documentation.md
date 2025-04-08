@@ -427,7 +427,7 @@ and highlight parameters using square brackets.
 Consider having sections starting with "The \[paramameter\]" to describe 
 parameters, with "Returns" for the returned value and "Throws" for exceptions.
 Errors can be documented the same way as exceptions,
-or just are requirments that must be satified, without documenting the
+or just as requirements that must be satified, without documenting the
 precise error which will be thrown.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
