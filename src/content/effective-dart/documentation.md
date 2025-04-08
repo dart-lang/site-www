@@ -302,6 +302,7 @@ E elementAt(int index);
 bool contains(Object? element);
 ```
 
+:::note
 This guideline should be applied based on whether the declaration is 
 conceptually seen as a property.
 Sometimes a method has no side effects, and may conceptually be seen
@@ -309,6 +310,7 @@ as a property, but is still simpler to name with a verb phrase like
 `list.take()`. Then a noun phrase should still be used to document it.
 _For example `Iterable.take` can be described as
 "The first \[count\] elements of ..."._
+:::
 
 [parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
