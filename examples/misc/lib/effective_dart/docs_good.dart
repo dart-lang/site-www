@@ -37,8 +37,8 @@ void miscDeclAnalyzedButNotTested() {
     ///
     /// Returns a new flag.
     ///
-    /// Throws a [DuplicateFlagException] if there is already an option named [name]
-    /// or there is already an option using the abbreviation [abbr].
+    /// Throws a [DuplicateFlagException] if there is already an option named
+    /// [name] or there is already an option using the abbreviation [abbr].
     Flag addFlag(String name, String abbr) => ellipsis();
     // #enddocregion no-annotations
   };
@@ -70,7 +70,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion third-person
     /// Connects to server and fetches results of query.
     Stream<QueryResult> fetchResults(Query query) => ellipsis();
-      
+
     /// Starts the stopwatch if not already running.
     void start() => ellipsis();
 
@@ -231,7 +231,7 @@ abstract class Iterable<E> {
   // #docregion noun-for-func-returning-value
   /// The [index]th element of this iterable in iteration order.
   E elementAt(int index);
-  
+
   /// Whether this iterable contains an element equal to [element].
   bool contains(Object? element);
   // #enddocregion noun-for-func-returning-value
