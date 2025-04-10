@@ -273,22 +273,21 @@ signature in a collection:
 ...<collection_name>
 ```
 
-In the following example, the values in `list_a` are added
-as values in `list_b`.
+In the following example, the values in `a` are added
+as values in `items`.
 
 <?code-excerpt "misc/lib/language_tour/misc/spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var list_a = [1, 2, null, 4];
-var list_b = [0, ...list_a, 5]; // [0, 1, 2, null, 4, 5]
+var a = [1, 2, null, 4];
+var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
 In the following example, an error is produced because
-`list_a` is null and can't be passed into `list_b`.
+`a` is null and can't be passed into `items`.
 
-<?code-excerpt "misc/lib/language_tour/misc/spread_operator_in_collection_b.dart (code_sample)"?>
 ```dart
-var list_a = null;
-var list_b = [0, ...list_a, 4]; // Error
+var a = null;
+var items = [0, ...a, 4]; // Error
 ```
 
 To learn more about the operator used in spread operations
@@ -308,14 +307,13 @@ signature in a collection:
 ...?<collection_name>
 ```
 
-In the following example, `list_a` is ignored because it's
-null, but `list_b` is passed into `list_c`.
+In the following example, `a` is ignored because it's
+null, but `b` is passed into `items`.
 
-<?code-excerpt "misc/lib/language_tour/misc/null_aware_spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var list_a = null;
-var list_b = [1, 2, null];
-var list_c = [0, ...?list_a, ...?list_b, 4]; // [0, 1, 2, null, 4]
+var a = null;
+var b = [1, 2, null];
+var items = [0, ...?a, ...?b, 4]; // [0, 1, 2, null, 4]
 ```
 
 To learn more about the operator used in null-aware spread
@@ -342,19 +340,13 @@ if (<bool_expression>) <result>
 if (!<bool_expression>) <result>
 ```
 
-In the following example, `1` is included in `item_list`
-because `include_item` is evaluates as true, but `2` is not
-included because `!include_item` evaluates as false.
+In the following example, `1` is included in `items`
+because `includeItem` evaluates as true, but `2` is not
+included because `!includeItem` evaluates as false.
 
-<?code-excerpt "misc/lib/language_tour/misc/if_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var include_item = true;
-var item_list = [
-  0,
-  if (include_item) 1,
-  if (!include_item) 2,
-  3,
-]; // [0, 1, 3]
+var includeItem = true;
+var items = [0, if (includeItem) 1, if (!includeItem) 2, 3]; // [0, 1, 3]
 ```
 
 To learn more about the `if` statement, see
@@ -381,7 +373,7 @@ included because `b == 'two'` evaluates as false.
 ```dart
 var a = 'one';
 var b = '';
-var item_list = [
+var items = [
   0,
   if (a case 'one') 1,
   if (b case 'two') 2,
@@ -400,29 +392,29 @@ To learn more about the `if-case` statement, see
 You can use a `for` loop inside of a collection to
 programmatically generate multiple values and insert them
 into the collection in a concise and readable way.
-An `for` loop has this signature in a collection:
+A `for` loop has this signature in a collection:
 
 ```dart
-for (<expression> in <list>) <result>
+for (<expression> in <collection>) <result>
 ```
 
-In the following example, get the square for each value in
-`numbers` and include that value in `item_list`.
+In the following example, the square for each value in
+`numbers` is included in `items`.
 
 <?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_a.dart (code_sample)"?>
 ```dart
 var numbers = [2, 3, 4];
-var item_list = [1, for (var n in numbers) n * n, 7]; // [1, 4, 9, 16, 7]
+var items = [1, for (var n in numbers) n * n, 7]; // [1, 4, 9, 16, 7]
 ```
 
 You can include `if` statements in `for` loops.
 In the following example, only the even numbers in `numbers`
-are included in `item_list`.
+are included in `items`.
 
 <?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_b.dart (code_sample)"?>
 ```dart
 var numbers = [1, 2, 3, 4, 5, 6];
-var item_list = [
+var items = [
   1,
   for (var n in numbers)
     if (n.isEven) n,
