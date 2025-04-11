@@ -13,6 +13,9 @@ Dart has built-in support for list, set, and map [collections][].
 To learn more about configuring the types collections contain,
 check out [Generics][].
 
+[generics]: /language/generics
+[collections]: /libraries/dart-core#collections
+
 ## Lists
 
 Perhaps the most common collection in nearly every programming language
@@ -71,6 +74,9 @@ var constantList = const [1, 2, 3];
 
 For more information about lists, refer to the Lists section of the
 [`dart:core` documentation](/libraries/dart-core#lists).
+
+[`List`]: {{site.dart-api}}/dart-core/List-class.html
+[type inference]: /language/type-system#type-inference
 
 ## Sets
 
@@ -145,6 +151,8 @@ final constantSet = const {
 
 For more information about sets, refer to the Sets section of the
 [`dart:core` documentation](/libraries/dart-core#sets).
+
+[`Set`]: {{site.dart-api}}/dart-core/Set-class.html
 
 ## Maps
 
@@ -242,78 +250,180 @@ final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 For more information about maps, refer to the Maps section of the
 [`dart:core` documentation](/libraries/dart-core#maps).
 
-## Operators
+[Using constructors]: /language/classes#using-constructors
+[`Map`]: {{site.dart-api}}/dart-core/Map-class.html
+[type inference]: /language/type-system#type-inference
 
-### Spread operators
+## Supplementals
 
-Dart supports the **spread operator** (`...`) and the
-**null-aware spread operator** (`...?`) in list, map, and set literals.
-Spread operators provide a concise way to insert multiple values into a collection.
+The following supplemental materials can be used with
+Dart's collection types.
 
-For example, you can use the spread operator (`...`) to insert
-all the values of a list into another list:
+<a id="control-flow-operators"></a>
+<a id="spread-operators"></a>
 
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
+### Spread operations
+
+With a spread operation, you can
+add values from one collection to another collection. Null
+values inside of a  collection can be passed in, but null
+collections produce an error. A spread operation has this
+signature in a collection:
+
 ```dart
-var list = [1, 2, 3];
-var list2 = [0, ...list];
-assert(list2.length == 4);
+...<collection_name>
 ```
 
-If the expression to the right of the spread operator might be null,
-you can avoid exceptions by using a null-aware spread operator (`...?`):
+In the following example, the values in `a` are added
+as values in `items`.
 
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
+<?code-excerpt "misc/lib/language_tour/misc/spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var list2 = [0, ...?list];
-assert(list2.length == 1);
+var a = [1, 2, null, 4];
+var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
-For more details and examples of using the spread operator, see the
-[spread operator proposal.][spread proposal]
+In the following example, an error is produced because
+`a` is null and can't be passed into `items`.
+
+```dart
+var a = null;
+var items = [0, ...a, 4]; // Error
+```
+
+To learn more about the operator used in spread operations
+for collections, see [Spread operator][].
+
+[Spread operator]: /language/operators/#spread-operators
+
+### Null-aware spread operations
+
+With a null-aware spread operation, you can add values from
+one collection to another collection. Null values inside of
+a collection can be passed in, but null collections are
+ignored. A null-aware spread operation has this
+signature in a collection:
+
+```dart
+...?<collection_name>
+```
+
+In the following example, `a` is ignored because it's
+null, but `b` is passed into `items`.
+
+```dart
+var a = null;
+var b = [1, 2, null];
+var items = [0, ...?a, ...?b, 4]; // [0, 1, 2, null, 4]
+```
+
+To learn more about the operator used in null-aware spread
+operations for collections, see [Spread operator][].
+
+[Spread operator]: /language/operators/#spread-operators
 
 <a id="collection-operators"></a>
-### Control-flow operators
 
-Dart offers **collection if** and **collection for** for use in list, map,
-and set literals. You can use these operators to build collections using
-conditionals (`if`) and repetition (`for`).
+### If statements
 
-Here's an example of using **collection if**
-to create a list with three or four items in it:
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
-```dart
-var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
-```
-
-Dart also supports [if-case][] inside collection literals:
+You can use an `if` statement inside of a collection to
+conditionally include values in the collection based on a
+boolean expression. An `if` statement has this signature in
+a collection:
 
 ```dart
-var nav = ['Home', 'Furniture', 'Plants', if (login case 'Manager') 'Inventory'];
+// boolean expression must be true to include result
+if (<bool_expression>) <result>
 ```
 
-Here's an example of using **collection for**
-to manipulate the items of a list before
-adding them to another list:
-
-<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 ```dart
-var listOfInts = [1, 2, 3];
-var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
-assert(listOfStrings[1] == '#1');
+// boolean expression must be false to include result
+if (!<bool_expression>) <result>
 ```
 
-For more details and examples of using collection `if` and `for`, see the
-[control flow collections proposal.][collections proposal]
+In the following example, `1` is included in `items`
+because `includeItem` evaluates as true, but `2` is not
+included because `!includeItem` evaluates as false.
 
-[collections]: /libraries/dart-core#collections
-[type inference]: /language/type-system#type-inference
-[`List`]: {{site.dart-api}}/dart-core/List-class.html
-[`Map`]: {{site.dart-api}}/dart-core/Map-class.html
-[Using constructors]: /language/classes#using-constructors
-[collections proposal]: {{site.repo.dart.lang}}/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
-[spread proposal]: {{site.repo.dart.lang}}/blob/main/accepted/2.3/spread-collections/feature-specification.md
-[generics]: /language/generics
-[`Set`]: {{site.dart-api}}/dart-core/Set-class.html
-[if-case]: /language/branches#if-case
+```dart
+var includeItem = true;
+var items = [0, if (includeItem) 1, if (!includeItem) 2, 3]; // [0, 1, 3]
+```
+
+To learn more about the `if` statement, see
+[`if` statement][].
+
+[`if` statement]: /language/branches#if
+
+### If case statements
+
+You can use an `if-case` statement inside of a collection to
+conditionally include values in the collection if the
+matching expressions evaluate as true. An `if-case`
+statement has this signature in a collection:
+
+```dart
+if (<expression> case expression_literal) <result>
+```
+
+In the following example, `1` is included because
+`a == 'one'` evaluates as true but `2` is not
+included because `b == 'two'` evaluates as false.
+
+<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_a.dart (code_sample)"?>
+```dart
+var a = 'one';
+var b = '';
+var items = [
+  0,
+  if (a case 'one') 1,
+  if (b case 'two') 2,
+  3,
+  4,
+]; // [0, 1, 3, 4]
+```
+
+To learn more about the `if-case` statement, see
+[`if-case` statement][].
+
+[`if-case` statement]: /language/branches#if-case
+
+### For loops
+
+You can use a `for` loop inside of a collection to
+programmatically generate multiple values and insert them
+into the collection in a concise and readable way.
+A `for` loop has this signature in a collection:
+
+```dart
+for (<expression> in <collection>) <result>
+```
+
+In the following example, the square for each value in
+`numbers` is included in `items`.
+
+<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_a.dart (code_sample)"?>
+```dart
+var numbers = [2, 3, 4];
+var items = [1, for (var n in numbers) n * n, 7]; // [1, 4, 9, 16, 7]
+```
+
+You can include `if` statements in `for` loops.
+In the following example, only the even numbers in `numbers`
+are included in `items`.
+
+<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_b.dart (code_sample)"?>
+```dart
+var numbers = [1, 2, 3, 4, 5, 6];
+var items = [
+  1,
+  for (var n in numbers)
+    if (n.isEven) n,
+  7,
+]; // [1, 2, 4, 6, 7]
+```
+
+To learn more about the `for` loop, see
+[`for` loops][].
+
+[`for` loops]: /language/loops/#for-loops
