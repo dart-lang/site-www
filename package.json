@@ -22,7 +22,7 @@
     "@11ty/eleventy": "3.0.1-alpha.5",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.14.0",
+    "@types/node": "^22.14.1",
     "firebase-tools": "^14.1.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-select": "^6.0.4",
