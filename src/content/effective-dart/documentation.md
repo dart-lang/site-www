@@ -239,7 +239,7 @@ The doc comment should focus on what the code *does*.
 
 <?code-excerpt "docs_good.dart (third-person)"?>
 ```dart tag=good
-/// Connects to server and fetches results of query.
+/// Connects to the server and fetches the query results.
 Stream<QueryResult> fetchResults(Query query) => ...
 
 /// Starts the stopwatch if not already running.
