@@ -161,7 +161,7 @@ associated with a value, and both keys and values can be
 any type of object. Each key can occur only once, although
 the same value can be associated with multiple different
 keys. Dart support for maps is provided by map literals and
-the [Map][] type.
+the [`Map`][] type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
@@ -500,6 +500,16 @@ var items = [
   if (c case 'apple') 3 else if (c case 'mango') 30,
   4,
 ]; // [0, 1, 30, 4]
+```
+
+<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_d.dart (code_sample)"?>
+```dart
+var word = 'hello';
+var items = [
+  1,
+  if (word case String(length: var word_length)) word_length,
+  3,
+]; // [1, 5, 3]
 ```
 
 To learn more about `if-case` conditionals,
