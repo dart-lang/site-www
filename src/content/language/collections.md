@@ -22,10 +22,9 @@ Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
 [`List`][] objects, so most people just call them *lists*.
 
-Dart list literals are denoted by
-a comma separated list of expressions or values,
-enclosed in square brackets (`[]`).
-Here's a simple Dart list:
+Dart list literals are denoted by a comma separated list of
+elements enclosed in square brackets (`[]`). Each element
+contain an expression or value. Here's a simple Dart list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -48,10 +47,10 @@ but it can help prevent copy-paste errors.
 var list = ['Car', 'Boat', 'Plane'];
 ```
 
-Lists use zero-based indexing, where 0 is the index of the first value
-and `list.length - 1` is the index of the last value. 
+Lists use zero-based indexing, where 0 is the index of the first element
+and `list.length - 1` is the index of the last element. 
 You can get a list's length using the `.length` property
-and access a list's values using the subscript operator (`[]`):
+and access a list's elements using the subscript operator (`[]`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 ```dart
@@ -80,7 +79,7 @@ For more information about lists, refer to the Lists section of the
 
 ## Sets
 
-A set in Dart is an unordered collection of unique items.
+A set in Dart is an unordered collection of unique elements.
 Dart support for sets is provided by set literals and the
 [`Set`][] type.
 
@@ -93,7 +92,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
 :::note
 Dart infers that `halogens` has the type `Set<String>`. If you try to add the
-wrong type of value to the set, the analyzer or runtime raises an error. For
+wrong type of element to the set, the analyzer or runtime raises an error. For
 more information, read about
 [type inference.](/language/type-system#type-inference)
 :::
@@ -156,10 +155,13 @@ For more information about sets, refer to the Sets section of the
 
 ## Maps
 
-In general, a map is an object that associates keys and values. Both
-keys and values can be any type of object. Each *key* occurs only once,
-but you can use the same *value* multiple times. Dart support for maps
-is provided by map literals and the [`Map`][] type.
+In general, a map is an object that contains elements in the
+form of key-value pairs. Each key within these pairs is
+associated with a value, and both keys and values can be
+any type of object. Each key can occur only once, although
+the same value can be associated with multiple different
+keys. Dart support for maps is provided by map literals and
+the [Map][] type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
@@ -261,21 +263,22 @@ Dart's collection types.
 
 <a id="control-flow-operators"></a>
 <a id="spread-operators"></a>
+<a id="collection-operators"></a>
 
-### Spread operations
+### Spread operation element {: #spread-element }
 
-With a spread operation, you can
-add values from one collection to another collection. Null
-values inside of a  collection can be passed in, but null
-collections produce an error. A spread operation has this
-signature in a collection:
+The spread element (`...`) lets you add elements in one
+collection to another. A null collection can't be used in a
+spread element and will produce an error. 
+
+A spread element has this syntax in a collection:
 
 ```dart
 ...<collection_name>
 ```
 
-In the following example, the values in `a` are added
-as values in `items`.
+In the following example, the elements in a list called `a`
+are added to a list called `items`.
 
 <?code-excerpt "misc/lib/language_tour/misc/spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -283,124 +286,244 @@ var a = [1, 2, null, 4];
 var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
-In the following example, an error is produced because
-`a` is null and can't be passed into `items`.
-
-```dart
-var a = null;
-var items = [0, ...a, 4]; // Error
-```
-
-To learn more about the operator used in spread operations
-for collections, see [Spread operator][].
+If you would like a spread element to ignore a null
+collection and not produce an error, use a
+[null-aware spread element][]. To learn more about
+the spread operator, see [Spread operator][].
 
 [Spread operator]: /language/operators/#spread-operators
+[null-aware spread element]: #null-spread-element
 
-### Null-aware spread operations
+### Null-aware spread operation element {: #null-spread-element }
 
-With a null-aware spread operation, you can add values from
-one collection to another collection. Null values inside of
-a collection can be passed in, but null collections are
-ignored. A null-aware spread operation has this
-signature in a collection:
+The null-aware spread element (`...?`) lets you to safely
+add all elements from one collection into another. If the
+source collection is null, no elements are added.
+
+A null-aware spread element has this syntax in a
+collection:
 
 ```dart
 ...?<collection_name>
 ```
 
-In the following example, `a` is ignored because it's
-null, but `b` is passed into `items`.
+In the following example, a list called `a` is ignored
+because it's null, but the elements in a list called `b`
+are added to a list called `items`. Notice that if a
+collection itself is not null, but it contains elements that
+are, those null elements are added to the result.
+
+In the following example, the list `a` is null, so no
+elements from `a` are added to the `items` list. However,
+the list `b` is not null, so its elements are added to
+`items`.
 
 ```dart
-var a = null;
-var b = [1, 2, null];
-var items = [0, ...?a, ...?b, 4]; // [0, 1, 2, null, 4]
+List<int>? a = null;
+var b = [1, null, 3];
+var items = [0, ...?a, ...?b, 4]; // [0, 1, null, 3, 4]
 ```
 
-To learn more about the operator used in null-aware spread
-operations for collections, see [Spread operator][].
+Because of null safety, you can't perform a
+spread operation (`...`) on a value that might be null. The
+following example produces a compile error because the 
+`extraOptions` parameter is nullable and the `extraOptions`
+spread operation is not.
+
+[//]: # (No code-excerpt due to analysis issue: compile error - on purpose in this example)
+```dart
+List<String> buildCommandLine(
+  String executable,
+  List<String> options, [
+  List<String>? extraOptions,
+]) {
+  return [
+    executable,
+    ...options,
+    ...extraOptions, // <-- Error!   
+  ];
+}
+
+// Usage:
+//   buildCommandLine('dart', ['run', 'my_script.dart'], null);
+// Result:
+//   Error!
+```
+
+If you want to spread a nullable collection, use a
+null-aware spread element. The following example is valid
+because the  `extraOptions` parameter and `extraOptions`
+spread element are nullable.
+
+<?code-excerpt "misc/lib/language_tour/misc/null_spread_operator_in_collection_a.dart (code_sample)"?>
+```dart
+List<String> buildCommandLine(
+  String executable,
+  List<String> options, [
+  List<String>? extraOptions,
+]) {
+  return [
+    executable,
+    ...options,
+    ...?extraOptions, // <-- OK now.
+  ];
+}
+
+// Usage:
+//   buildCommandLine('dart', ['run', 'my_script.dart'], null);
+// Result:
+//   [dart, run, my_script.dart]
+```
+
+To learn more about the null-aware spread operator, see
+[Spread operator][].
 
 [Spread operator]: /language/operators/#spread-operators
 
-<a id="collection-operators"></a>
+### If condition elements {: #if-element }
 
-### If statements
+You can use an `if` element inside of a collection
+to conditionally include elements if a boolean expression
+evaluates to true or false.
 
-You can use an `if` statement inside of a collection to
-conditionally include values in the collection based on a
-boolean expression. An `if` statement has this signature in
-a collection:
+An `if` element has this syntax in a collection:
 
 ```dart
-// boolean expression must be true to include result
-if (<bool_expression>) <result>
+if (<bool_expression>) <result> // include result if bool_expression is true
 ```
 
 ```dart
-// boolean expression must be false to include result
-if (!<bool_expression>) <result>
+if (!<bool_expression>) <result> // include result if bool_expression is false
 ```
 
-In the following example, `1` is included in `items`
-because `includeItem` evaluates as true, but `2` is not
-included because `!includeItem` evaluates as false.
+```dart
+if (<bool_expression>) <result_a> else <result_b>
+```
 
+```dart
+if (<bool_expression_a>) <result_a> else if (<bool_expression_b>) <result_b>
+```
+
+The following examples illustrate various ways that
+you can use an `if` element inside of a collection:
+
+[//]: # (No code-excerpt due to analysis issue: always evaluates true)
 ```dart
 var includeItem = true;
-var items = [0, if (includeItem) 1, if (!includeItem) 2, 3]; // [0, 1, 3]
+var items = [0, if (includeItem) 1, 2, 3]; // [0, 1, 2, 3]
 ```
 
-To learn more about the `if` statement, see
+[//]: # (No code-excerpt due to analysis issue: always evaluates false)
+```dart
+var includeItem = true;
+var items = [0, if (!includeItem) 1, 2, 3]; // [0, 2, 3]
+```
+
+[//]: # (No code-excerpt due to analysis issue: 1 never hit)
+```dart
+var name = 'apple';
+var items = [0, if (name == 'orange') 1 else 10, 2, 3]; // [0, 10, 2, 3]
+```
+
+[//]: # (No code-excerpt due to analysis issue: 1 and 10 never hit)
+```dart
+var name = 'apple';
+var items = [0, if (name == 'orange') 1 else if (name == 'pear') 10, 2, 3]; // [0, 2, 3]
+```
+
+To learn more about `if` conditions, see
 [`if` statement][].
 
 [`if` statement]: /language/branches#if
 
-### If case statements
+### If-case condition elements {: #if-case-element }
 
-You can use an `if-case` statement inside of a collection to
-conditionally include values in the collection if the
-matching expressions evaluate as true. An `if-case`
-statement has this signature in a collection:
+You can use an `if-case` element inside of a collection to
+conditionally include elements that match a specific
+pattern.
+
+An `if-case` element has this syntax in a collection:
 
 ```dart
-if (<expression> case expression_literal) <result>
+if (<expression> case <pattern>) <result>
 ```
 
-In the following example, `1` is included because
-`a == 'one'` evaluates as true but `2` is not
-included because `b == 'two'` evaluates as false.
+```dart
+if (<expression> case <pattern>) <result_a> else <result_b>
+```
+
+```dart
+if (<expression_a> case <pattern_a>)
+  <result_a>
+else if (<expression_b> case <pattern_b>)
+  <result_b>
+```
+
+The following examples illustrate various ways that
+you can use an `if-case` element inside of a collection:
 
 <?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var a = 'one';
-var b = '';
+var a = 'apple';
+var b = 'orange';
 var items = [
   0,
-  if (a case 'one') 1,
-  if (b case 'two') 2,
+  if (a case 'apple') 1,
+  if (b case 'pear') 2,
   3,
   4,
 ]; // [0, 1, 3, 4]
 ```
 
-To learn more about the `if-case` statement, see
-[`if-case` statement][].
+<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_b.dart (code_sample)"?>
+```dart
+var a = 'apple';
+var b = 'orange';
+var items = [
+  0,
+  if (a case 'apple') 1 else 10,
+  if (b case 'pear') 2 else 20,
+  3,
+  4,
+]; // [0, 1, 20, 3, 4]
+```
+
+<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_c.dart (code_sample)"?>
+```dart
+var a = 'apple';
+var b = 'orange';
+var c = 'mango';
+var items = [
+  0,
+  if (a case 'apple') 1 else if (a case 'mango') 10,
+  if (b case 'pear') 2 else if (b case 'mango') 20,
+  if (c case 'apple') 3 else if (c case 'mango') 30,
+  4,
+]; // [0, 1, 30, 4]
+```
+
+To learn more about `if-case` conditionals,
+see [`if-case` statement][].
 
 [`if-case` statement]: /language/branches#if-case
 
-### For loops
+### For loop elements {: #for-element }
 
-You can use a `for` loop inside of a collection to
-programmatically generate multiple values and insert them
-into the collection in a concise and readable way.
-A `for` loop has this signature in a collection:
+You can use a `for` element inside of a collection to
+insert multiple elements into that collection.
+
+A `for` element has this syntax in a collection:
 
 ```dart
 for (<expression> in <collection>) <result>
 ```
 
-In the following example, the square for each value in
-`numbers` is included in `items`.
+```dart
+for (<initialization_clause>; <condition_clause>; <increment_clause>) <result>
+```
+
+The following examples illustrate various ways that
+you can use a `for` element inside of a collection:
 
 <?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_a.dart (code_sample)"?>
 ```dart
@@ -408,22 +531,66 @@ var numbers = [2, 3, 4];
 var items = [1, for (var n in numbers) n * n, 7]; // [1, 4, 9, 16, 7]
 ```
 
-You can include `if` statements in `for` loops.
-In the following example, only the even numbers in `numbers`
-are included in `items`.
-
 <?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_b.dart (code_sample)"?>
 ```dart
-var numbers = [1, 2, 3, 4, 5, 6];
-var items = [
-  1,
-  for (var n in numbers)
-    if (n.isEven) n,
-  7,
-]; // [1, 2, 4, 6, 7]
+var items = [1, for (var x = 5; x > 2; x--) x, 7]; // [1, 5, 4, 3, 7]
+```
+
+<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_c.dart (code_sample)"?>
+```dart
+var items = [1, for (var x = 2; x < 4; x++) x, 7]; // [1, 2, 3, 4, 7]
 ```
 
 To learn more about the `for` loop, see
 [`for` loops][].
 
 [`for` loops]: /language/loops/#for-loops
+
+### Nesting elements {: #nesting-elements }
+
+You can nest `if` elements, `for` elements, and spread
+elements within each other. This is a powerful alternative
+to list comprehensions in other languages.
+
+In the following example, only the even numbers in
+`numbers` are included in `items`.
+
+<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_a.dart (code_sample)"?>
+```dart
+var numbers = [1, 2, 3, 4, 5, 6, 7];
+var items = [
+  0,
+  for (var n in numbers)
+    if (n.isEven) n,
+  8,
+]; // [0, 2, 4, 6, 8]
+```
+
+It's common and idiomatic to use a spread on a collection
+literal immediately inside of an `if` or `for` element. For
+example:
+
+<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_c.dart (code_sample)"?>
+```dart
+var items = [
+  if (condition) oneThing(),
+  if (condition) ...[multiple(), things()],
+]; // [oneThing, [multiple_a, multiple_b], things]
+```
+
+You can nest all kinds of elements arbitrarily deep.
+In the following example, `if`, `for` and spread elements
+are nested within each other in a collection:
+
+<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_b.dart (code_sample)"?>
+```dart
+var nestItems = true;
+var ys = [1, 2, 3, 4];
+var items = [
+  if (nestItems) ...[
+    for (var x = 0; x < 3; x++)
+      for (var y in ys)
+        if (x < y) x + y * 10,
+  ],
+]; // [10, 20, 30, 40, 21, 31, 41, 32, 42]
+```
