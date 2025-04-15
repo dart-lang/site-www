@@ -31,15 +31,15 @@ void miscDeclAnalyzedButNotTested() {
 
   <Flag>() {
     // #docregion no-annotations
-    /// Defines a flag with the given [name] and [abbr] as abbreviation.
+    /// Defines a flag with the given [name] and [abbreviation].
     ///
-    /// The [name] and [abbr] strings must not be empty.
+    /// The [name] and [abbreviation] strings must not be empty.
     ///
     /// Returns a new flag.
     ///
     /// Throws a [DuplicateFlagException] if there is already an option named
-    /// [name] or there is already an option using the abbreviation [abbr].
-    Flag addFlag(String name, String abbr) => ellipsis();
+    /// [name] or there is already an option using the [abbreviation].
+    Flag addFlag(String name, String abbreviation) => ellipsis();
     // #enddocregion no-annotations
   };
 

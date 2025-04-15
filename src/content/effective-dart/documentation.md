@@ -263,8 +263,8 @@ int get checkedCount => ...
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
-The doc comment should clarify the states this variable represents. 
-This is true even for getters which may do calculation or other work. 
+The doc comment should clarify the states this variable represents.
+This is true even for getters which may do calculation or other work.
 What the caller cares about is the *result* of that work, not the work itself.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
@@ -290,9 +290,9 @@ especially when used in this context.
 If a method is *syntactically* a method, but *conceptually* it is a property,
 and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
 it should also be documented as such.
-Use a noun-phrase for such non-boolean functions, and a phrase starting
-with "Whether" for such boolean functions, just as for a syntactic property
-or variable.
+Use a noun-phrase for such non-boolean functions, and
+a phrase starting with "Whether" for such boolean functions,
+just as for a syntactic property or variable.
 
 <?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
@@ -304,11 +304,13 @@ bool contains(Object? element);
 ```
 
 :::note
-This guideline should be applied based on whether the declaration is 
+This guideline should be applied based on whether the declaration is
 conceptually seen as a property.
-Sometimes a method has no side effects, and may conceptually be seen
-as a property, but is still simpler to name with a verb phrase like
-`list.take()`. Then a noun phrase should still be used to document it.
+
+Sometimes a method has no side effects, and might
+conceptually be seen as a property, but is still
+simpler to name with a verb phrase like `list.take()`.
+Then a noun phrase should still be used to document it.
 _For example `Iterable.take` can be described as
 "The first \[count\] elements of ..."._
 :::
@@ -419,7 +421,7 @@ and returns of a method are.
 /// @returns The new flag.
 /// @throws ArgumentError If there is already an option with
 ///     the given name or abbreviation.
-Flag addFlag(String name, String abbr) => ...
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 The convention in Dart is to integrate that into the description of the method
@@ -433,15 +435,15 @@ precise error which will be thrown.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
-/// Defines a flag with the given [name] and [abbr] as abbreviation.
+/// Defines a flag with the given [name] and [abbreviation].
 ///
-/// The [name] and [abbr] strings must not be empty.
+/// The [name] and [abbreviation] strings must not be empty.
 ///
 /// Returns a new flag.
 ///
 /// Throws a [DuplicateFlagException] if there is already an option named
-/// [name] or there is already an option using the abbreviation [abbr].
-Flag addFlag(String name, String abbr) => ...
+/// [name] or there is already an option using the [abbreviation].
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 ### DO put doc comments before metadata annotations
