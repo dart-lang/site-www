@@ -231,6 +231,7 @@ then omit the doc comment.
 It's better to say nothing
 than waste a reader's time telling them something they already know.
 
+<a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
 ### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
 
