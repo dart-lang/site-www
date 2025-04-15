@@ -265,7 +265,7 @@ Dart's collection types.
 <a id="spread-operators"></a>
 <a id="collection-operators"></a>
 
-### Spread operation element {: #spread-element }
+### Spread operation elements {: #spread-element }
 
 The spread element (`...`) lets you add elements in one
 collection to another. A null collection can't be used in a
@@ -294,7 +294,7 @@ the spread operator, see [Spread operator][].
 [Spread operator]: /language/operators/#spread-operators
 [null-aware spread element]: #null-spread-element
 
-### Null-aware spread operation element {: #null-spread-element }
+### Null-aware spread operation elements {: #null-spread-element }
 
 The null-aware spread element (`...?`) lets you to safely
 add all elements from one collection into another. If the
