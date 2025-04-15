@@ -380,7 +380,7 @@ makes an API easier to learn.
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional, 
+Parentheses are optional,
 but can make it clearer when you're referring to a method or constructor.
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
@@ -425,10 +425,10 @@ Flag addFlag(String name, String abbr) => ...
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
-Consider having sections starting with "The \[paramameter\]" to describe 
+Consider having sections starting with "The \[parameter\]" to describe
 parameters, with "Returns" for the returned value and "Throws" for exceptions.
 Errors can be documented the same way as exceptions,
-or just as requirements that must be satified, without documenting the
+or just as requirements that must be satisfied, without documenting the
 precise error which will be thrown.
 
 <?code-excerpt "docs_good.dart (no-annotations)"?>
@@ -589,7 +589,7 @@ think.
 
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
-Prefer having some qualifier after "this", a sole "this" can ambiguous too.
+Prefer having some qualifier after "this", a sole "this" can be ambiguous too.
 
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
