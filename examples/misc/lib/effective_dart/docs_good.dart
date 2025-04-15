@@ -68,7 +68,7 @@ void miscDeclAnalyzedButNotTested() {
 
   <T>() {
     // #docregion third-person
-    /// Connects to server and fetches results of query.
+    /// Connects to the server and fetches the query results.
     Stream<QueryResult> fetchResults(Query query) => ellipsis();
 
     /// Starts the stopwatch if not already running.
