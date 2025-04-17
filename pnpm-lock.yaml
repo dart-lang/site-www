@@ -21,8 +21,8 @@ importers:
         specifier: ^22.14.1
         version: 22.14.1
       firebase-tools:
-        specifier: ^14.1.0
-        version: 14.1.0(encoding@0.1.13)
+        specifier: ^14.2.0
+        version: 14.2.0(encoding@0.1.13)
       hast-util-from-html:
         specifier: ^2.0.3
         version: 2.0.3
@@ -268,8 +268,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@google-cloud/cloud-sql-connector@1.7.0':
-    resolution: {integrity: sha512-lM68oXpAoTuyjb+2eSd2m7ikqIkpnt2UPoSmSm+5IPv99biUweYluaWjMs4f9mS9jLMRx10CQSuwgYz1lCtfPA==}
+  '@google-cloud/cloud-sql-connector@1.7.1':
+    resolution: {integrity: sha512-J20TbMWTCkFKaW8lihXktZzGh4sxDsVTCKLr9sryVZY/eRj5i3pWRcMSb1crTsgNUCmlbGfkWB0ZqJI60vdVYQ==}
     engines: {node: '>=18'}
 
   '@google-cloud/paginator@5.0.2':
@@ -296,8 +296,8 @@ packages:
     resolution: {integrity: sha512-zXdM1zg+X/r/QM8Rl3sxI/7dk4mcwCegqiNCEeBfP7E07kNl1bLW767mp1VgfY8mN8HJRrQ8JEBeDRUWfO1iLg==}
     engines: {node: '>=12.0.0'}
 
-  '@grpc/grpc-js@1.13.2':
-    resolution: {integrity: sha512-nnR5nmL6lxF8YBqb6gWvEgLdLh/Fn+kvAdX5hUOnt48sNSb0riz/93ASd2E5gvanPA41X6Yp25bIfGRp1SMb2g==}
+  '@grpc/grpc-js@1.13.3':
+    resolution: {integrity: sha512-FTXHdOoPbZrBjlVLHuKbDZnsTxXv2BlHF57xw6LuThXacXvtkahEPED0CKMk6obZDf65Hv4k3z62eyPNpvinIg==}
     engines: {node: '>=12.10.0'}
 
   '@grpc/proto-loader@0.7.13':
@@ -751,8 +751,8 @@ packages:
   bcp-47@2.1.0:
     resolution: {integrity: sha512-9IIS3UPrvIa1Ej+lVDdDwO7zLehjqsaByECw0bu2RRGP73jALm6FYbzI5gWbgHLvNdkvfXB5YrSbocZdOS0c0w==}
 
-  bignumber.js@9.1.2:
-    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
+  bignumber.js@9.2.1:
+    resolution: {integrity: sha512-+NzaKgOUvInq9TIUZ1+DRspzf/HApkCwD4btfuasFTdrfnOxqx853TgDpMolp+uv4RpRp7bPcEU2zKr9+fRmyw==}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -1359,8 +1359,8 @@ packages:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
 
-  firebase-tools@14.1.0:
-    resolution: {integrity: sha512-tPSjoZBZNPfcHQwHLo5rjvlB2oniTDjKhqBb+BWs87O4NgqZRL92I2aFLycZoCOVgXLyLjDg+QoK6p9iasYIdQ==}
+  firebase-tools@14.2.0:
+    resolution: {integrity: sha512-dMYtB+1Tc4rAcmuZ9krfhrywYQAEWQk7CV6BTTllObhTTIhuFB256eLuiGmOP3RrmopZ6MDRGFIQ7I3drNF3Yw==}
     engines: {node: '>=20.0.0 || >=22.0.0'}
     hasBin: true
 
@@ -1464,8 +1464,8 @@ packages:
     resolution: {integrity: sha512-Jb6Z0+nvECVz+2lzSMt9u98UsoakXxA2HGHMCxh+so3n90XgYWkq5dur19JAJV7ONiJY22yBTyJB1TSkvPq9Ng==}
     engines: {node: '>=14'}
 
-  google-gax@4.4.1:
-    resolution: {integrity: sha512-Phyp9fMfA00J3sZbJxbbB4jC55b7DBjE3F6poyL3wKMEBVKA79q6BGuHcTiM28yOzVql0NDbRL8MLLh8Iwk9Dg==}
+  google-gax@4.6.0:
+    resolution: {integrity: sha512-zKKLeLfcYBVOzzM48Brtn4EQkKcTli9w6c1ilzFK2NbJvcd4ATD8/XqFExImvE/W5IwMlKKwa5qqVufji3ioNQ==}
     engines: {node: '>=14'}
 
   google-logging-utils@0.0.2:
@@ -2389,8 +2389,8 @@ packages:
   please-upgrade-node@3.2.0:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
 
-  portfinder@1.0.35:
-    resolution: {integrity: sha512-73JaFg4NwYNAufDtS5FsFu/PdM49ahJrO1i44aCRsDWju1z5wuGDaqyFUQWR6aJoK2JPDWlaYYAGFNIGTSUHSw==}
+  portfinder@1.0.36:
+    resolution: {integrity: sha512-gMKUzCoP+feA7t45moaSx7UniU7PgGN3hA8acAB+3Qn7/js0/lJ07fYZlxt9riE9S3myyxDCyAFzSrLlta0c9g==}
     engines: {node: '>= 10.12'}
 
   postgres-array@2.0.0:
@@ -2459,8 +2459,8 @@ packages:
     resolution: {integrity: sha512-SAzp/O4Yh02jGdRc+uIrGoe87dkN/XtwxfZ4ZyafJHymd79ozp5VG5nyZ7ygqPM5+cpLDjjGnYFUkngonyDPOQ==}
     engines: {node: '>=14.0.0'}
 
-  protobufjs@7.4.0:
-    resolution: {integrity: sha512-mRUWCc3KUU4w1jU8sGxICXH/gNS94DvI1gxqDvBzhj1JpcsimQkYiOJfwsPUykUI5ZaspFbSgmBLER8IrQ3tqw==}
+  protobufjs@7.5.0:
+    resolution: {integrity: sha512-Z2E/kOY1QjoMlCytmexzYfDm/w5fKAiRwpSzGtdnXW1zC88Z2yXazHHrOtwCzn+7wSxyE8PYM4rvVcMphF9sOA==}
     engines: {node: '>=12.0.0'}
 
   proxy-addr@2.0.7:
@@ -3352,7 +3352,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.1':
     optional: true
 
-  '@google-cloud/cloud-sql-connector@1.7.0(encoding@0.1.13)':
+  '@google-cloud/cloud-sql-connector@1.7.1(encoding@0.1.13)':
     dependencies:
       '@googleapis/sqladmin': 27.0.0(encoding@0.1.13)
       gaxios: 6.7.1(encoding@0.1.13)
@@ -3384,7 +3384,7 @@ snapshots:
       arrify: 2.0.1
       extend: 3.0.2
       google-auth-library: 9.15.1(encoding@0.1.13)
-      google-gax: 4.4.1(encoding@0.1.13)
+      google-gax: 4.6.0(encoding@0.1.13)
       heap-js: 2.6.0
       is-stream-ended: 0.1.4
       lodash.snakecase: 4.1.1
@@ -3400,7 +3400,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@grpc/grpc-js@1.13.2':
+  '@grpc/grpc-js@1.13.3':
     dependencies:
       '@grpc/proto-loader': 0.7.13
       '@js-sdsl/ordered-map': 4.4.2
@@ -3409,7 +3409,7 @@ snapshots:
     dependencies:
       lodash.camelcase: 4.3.0
       long: 5.3.1
-      protobufjs: 7.4.0
+      protobufjs: 7.5.0
       yargs: 17.7.2
 
   '@isaacs/cliui@8.0.2':
@@ -3832,7 +3832,7 @@ snapshots:
       is-alphanumerical: 2.0.1
       is-decimal: 2.0.1
 
-  bignumber.js@9.1.2: {}
+  bignumber.js@9.2.1: {}
 
   binary-extensions@2.3.0: {}
 
@@ -4517,10 +4517,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  firebase-tools@14.1.0(encoding@0.1.13):
+  firebase-tools@14.2.0(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.17
-      '@google-cloud/cloud-sql-connector': 1.7.0(encoding@0.1.13)
+      '@google-cloud/cloud-sql-connector': 1.7.1(encoding@0.1.13)
       '@google-cloud/pubsub': 4.11.0(encoding@0.1.13)
       abort-controller: 3.0.0
       ajv: 8.17.1
@@ -4567,7 +4567,7 @@ snapshots:
       ora: 5.4.1
       p-limit: 3.1.0
       pg: 8.14.1
-      portfinder: 1.0.35
+      portfinder: 1.0.36
       progress: 2.0.3
       proxy-agent: 6.5.0
       retry: 0.13.1
@@ -4733,9 +4733,9 @@ snapshots:
       - encoding
       - supports-color
 
-  google-gax@4.4.1(encoding@0.1.13):
+  google-gax@4.6.0(encoding@0.1.13):
     dependencies:
-      '@grpc/grpc-js': 1.13.2
+      '@grpc/grpc-js': 1.13.3
       '@grpc/proto-loader': 0.7.13
       '@types/long': 4.0.2
       abort-controller: 3.0.0
@@ -4744,7 +4744,7 @@ snapshots:
       node-fetch: 2.7.0(encoding@0.1.13)
       object-hash: 3.0.0
       proto3-json-serializer: 2.0.2
-      protobufjs: 7.4.0
+      protobufjs: 7.5.0
       retry-request: 7.0.2(encoding@0.1.13)
       uuid: 9.0.1
     transitivePeerDependencies:
@@ -5139,7 +5139,7 @@ snapshots:
 
   json-bigint@1.0.0:
     dependencies:
-      bignumber.js: 9.1.2
+      bignumber.js: 9.2.1
 
   json-parse-helpfulerror@1.0.3:
     dependencies:
@@ -5759,7 +5759,7 @@ snapshots:
     dependencies:
       semver-compare: 1.0.0
 
-  portfinder@1.0.35:
+  portfinder@1.0.36:
     dependencies:
       async: 3.2.6
       debug: 4.4.0
@@ -5816,9 +5816,9 @@ snapshots:
 
   proto3-json-serializer@2.0.2:
     dependencies:
-      protobufjs: 7.4.0
+      protobufjs: 7.5.0
 
-  protobufjs@7.4.0:
+  protobufjs@7.5.0:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
