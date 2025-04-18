@@ -197,7 +197,7 @@ evolution now. Let's see how they play together and what pub does.
 When you define your package, you list its
 [immediate dependencies][immediate-dep].
 These are packages that your package uses.
-For each of these package, you specify the range of versions your package allows.
+For each of these packages, you specify the range of versions your package allows.
 Each of those dependent packages might then have their own dependencies.
 These are called [transitive dependencies][transitive-dep].
 Pub traverses these and builds the entire dependency graph for your app.
