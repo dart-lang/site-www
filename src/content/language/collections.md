@@ -261,9 +261,9 @@ For more information about maps, refer to the Maps section of the
 The following supplemental materials can be used with
 Dart's collection types.
 
-<a id="control-flow-operators"></a>
-<a id="spread-operators"></a>
-<a id="collection-operators"></a>
+<a id="control-flow-operators" aria-hidden="true"></a>
+<a id="spread-operators" aria-hidden="true"></a>
+<a id="collection-operators" aria-hidden="true"></a>
 
 ### Spread operation elements {: #spread-element }
 
