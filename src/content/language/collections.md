@@ -331,7 +331,7 @@ following example produces a compile-time error because the
 spread operator used on `extraOptions` is not null-aware.
 
 [//]: # (No code-excerpt due to analysis issue: compile error - on purpose in this example)
-```dart
+```dart tag=fails-sa
 List<String> buildCommandLine(
   String executable,
   List<String> options, [
