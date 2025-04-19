@@ -352,8 +352,7 @@ List<String> buildCommandLine(
 
 If you want to spread a nullable collection, use a
 null-aware spread element. The following example is valid
-because the  `extraOptions` parameter and `extraOptions`
-spread element are nullable.
+because the null-aware spread operator is used on `extraOptions`.
 
 <?code-excerpt "misc/lib/language_tour/misc/null_spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
