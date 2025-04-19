@@ -326,7 +326,7 @@ var items = [0, ...?a, ...?b, 4]; // [0, 1, null, 3, 4]
 
 Because of null safety, you can't perform a
 spread operation (`...`) on a value that might be null. The
-following example produces a compile error because the 
+following example produces a compile-time error because the 
 `extraOptions` parameter is nullable and the `extraOptions`
 spread operation is not.
 
