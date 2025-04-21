@@ -1,3 +1,5 @@
+import 'package:test/test.dart';
+
 void main() {
   // #docregion code_sample
   var word = 'hello';
@@ -9,4 +11,5 @@ void main() {
   // #enddocregion code_sample
 
   print(items);
+  expect(items, equals([1, 5, 3]));
 }

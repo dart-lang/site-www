@@ -256,55 +256,63 @@ For more information about maps, refer to the Maps section of the
 [`Map`]: {{site.dart-api}}/dart-core/Map-class.html
 [type inference]: /language/type-system#type-inference
 
-## Supplementals
+## Collection elements {: #collection-elements }
 
-The following supplemental materials can be used with
-Dart's collection types.
+In a collection, an element is an individual item in that
+collection. These types of elements are supported in
+a collection:
+
+*   Built-in data types
+*   Functions and methods
+*   Collection-specific operators, branches, and loops
+
+In this section, you can learn more about the element types
+that were specifically designed for collections.
 
 <a id="control-flow-operators"></a>
 <a id="spread-operators"></a>
 <a id="collection-operators"></a>
 
-### Spread operation elements {: #spread-element }
+### Spread elements {: #spread-element }
 
 The spread element (`...`) lets you add elements in one
-collection to another. A null collection can't be used in a
-spread element and will produce an error. 
+collection to another.
 
 A spread element has this syntax in a collection:
 
 ```dart
-...<collection_name>
+...<collection_expression>
 ```
 
 In the following example, the elements in a list called `a`
 are added to a list called `items`.
 
-<?code-excerpt "misc/lib/language_tour/misc/spread_operator_in_collection_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
 var a = [1, 2, null, 4];
 var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
-If you would like a spread element to ignore a null
-collection and not produce an error, use a
-[null-aware spread element][]. To learn more about
-the spread operator, see [Spread operator][].
+If you would like the spread element to ignore a null
+collection that is passed into and not produce an
+error, use a [null-aware spread element][]. To learn more
+about the spread operator, see [Spread operator][].
 
 [Spread operator]: /language/operators/#spread-operators
 [null-aware spread element]: #null-spread-element
 
-### Null-aware spread operation elements {: #null-spread-element }
+### Null-aware spread elements {: #null-spread-element }
 
-The null-aware spread element (`...?`) lets you to safely
-add all elements from one collection into another. If the
-source collection is null, no elements are added.
+The null-aware spread element (`...?`) adds elements
+in a nullable collection to another collection. If the
+nullable collection itself is null, it is skipped and no
+element is added for it.
 
 A null-aware spread element has this syntax in a
 collection:
 
 ```dart
-...?<collection_name>
+...?<collection_expression>
 ```
 
 In the following example, a list called `a` is ignored
@@ -312,11 +320,6 @@ because it's null, but the elements in a list called `b`
 are added to a list called `items`. Notice that if a
 collection itself is not null, but it contains elements that
 are, those null elements are added to the result.
-
-In the following example, the list `a` is null, so no
-elements from `a` are added to the `items` list. However,
-the list `b` is not null, so its elements are added to
-`items`.
 
 ```dart
 List<int>? a = null;
@@ -330,7 +333,7 @@ following example produces a compile error because the
 `extraOptions` parameter is nullable and the `extraOptions`
 spread operation is not.
 
-[//]: # (No code-excerpt due to analysis issue: compile error - on purpose in this example)
+<?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_b.dart (code_sample)"?>
 ```dart
 List<String> buildCommandLine(
   String executable,
@@ -340,14 +343,14 @@ List<String> buildCommandLine(
   return [
     executable,
     ...options,
-    ...extraOptions, // <-- Error!   
+    ...extraOptions, // <-- OK now.
   ];
 }
 
 // Usage:
 //   buildCommandLine('dart', ['run', 'my_script.dart'], null);
 // Result:
-//   Error!
+//   [dart, run, my_script.dart]
 ```
 
 If you want to spread a nullable collection, use a
@@ -355,7 +358,7 @@ null-aware spread element. The following example is valid
 because the  `extraOptions` parameter and `extraOptions`
 spread element are nullable.
 
-<?code-excerpt "misc/lib/language_tour/misc/null_spread_operator_in_collection_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
 List<String> buildCommandLine(
   String executable,
@@ -380,129 +383,87 @@ To learn more about the null-aware spread operator, see
 
 [Spread operator]: /language/operators/#spread-operators
 
-### If condition elements {: #if-element }
+### If elements {: #if-element }
 
 You can use an `if` element inside of a collection
-to conditionally include elements if a boolean expression
-evaluates to true or false.
-
-An `if` element has this syntax in a collection:
+to conditionally include elements in the collection. The
+`if` element has a few syntax variations:
 
 ```dart
-if (<bool_expression>) <result> // include result if bool_expression is true
+// If the bool expression is true, include the result.
+if (<bool_expression>) <result>
 ```
 
 ```dart
-if (!<bool_expression>) <result> // include result if bool_expression is false
+// If the expression matches the pattern, include the result.
+if (<expression> case <pattern>) <result>
 ```
 
 ```dart
-if (<bool_expression>) <result_a> else <result_b>
+// If the operation such as '(<bool_expression>)'
+// or '(<expression> case <pattern>)' resolves as true,
+// include the first result, otherwise include the second
+// result.
+if (<if_operation>) <result> else <result>
 ```
 
 ```dart
-if (<bool_expression_a>) <result_a> else if (<bool_expression_b>) <result_b>
+// If the first operation such as '(<bool_expression>)'
+// or '(<expression> case <pattern>)' resolves as true,
+// include the first result, otherwise, perform the second
+// operation.
+if (<if_operation>) <result> else if (<if_operation>)
 ```
 
 The following examples illustrate various ways that
-you can use an `if` element inside of a collection:
+you can use an `if` element inside of a collection with
+a boolean expression:
 
-[//]: # (No code-excerpt due to analysis issue: always evaluates true)
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_e.dart (code_sample)"?>
 ```dart
 var includeItem = true;
 var items = [0, if (includeItem) 1, 2, 3]; // [0, 1, 2, 3]
 ```
 
-[//]: # (No code-excerpt due to analysis issue: always evaluates false)
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_f.dart (code_sample)"?>
 ```dart
 var includeItem = true;
 var items = [0, if (!includeItem) 1, 2, 3]; // [0, 2, 3]
 ```
 
-[//]: # (No code-excerpt due to analysis issue: 1 never hit)
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_g.dart (code_sample)"?>
 ```dart
 var name = 'apple';
 var items = [0, if (name == 'orange') 1 else 10, 2, 3]; // [0, 10, 2, 3]
 ```
 
-[//]: # (No code-excerpt due to analysis issue: 1 and 10 never hit)
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_h.dart (code_sample)"?>
 ```dart
 var name = 'apple';
-var items = [0, if (name == 'orange') 1 else if (name == 'pear') 10, 2, 3]; // [0, 2, 3]
-```
-
-To learn more about `if` conditions, see
-[`if` statement][].
-
-[`if` statement]: /language/branches#if
-
-### If-case condition elements {: #if-case-element }
-
-You can use an `if-case` element inside of a collection to
-conditionally include elements that match a specific
-pattern.
-
-An `if-case` element has this syntax in a collection:
-
-```dart
-if (<expression> case <pattern>) <result>
-```
-
-```dart
-if (<expression> case <pattern>) <result_a> else <result_b>
-```
-
-```dart
-if (<expression_a> case <pattern_a>)
-  <result_a>
-else if (<expression_b> case <pattern_b>)
-  <result_b>
+var items = [
+  0,
+  if (name == 'kiwi') 1 else if (name == 'pear') 10,
+  2,
+  3,
+]; // [0, 2, 3]
 ```
 
 The following examples illustrate various ways that
-you can use an `if-case` element inside of a collection:
+you can use an `if` element with a `case` part inside of a
+collection:
 
-<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-var a = 'apple';
-var b = 'orange';
-var items = [
-  0,
-  if (a case 'apple') 1,
-  if (b case 'pear') 2,
-  3,
-  4,
-]; // [0, 1, 3, 4]
+dynamic data = 123;
+var typeInfo = [
+  if (data case int i) 'Data is an integer: $i',
+  if (data case String s) 'Data is a string: $s',
+  if (data case bool b) 'Data is a boolean: $b',
+  if (data case double d) 'Data is a double: $d',
+]; // [Data is an integer: 123, Data is a double: 123]
 ```
 
-<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_b.dart (code_sample)"?>
-```dart
-var a = 'apple';
-var b = 'orange';
-var items = [
-  0,
-  if (a case 'apple') 1 else 10,
-  if (b case 'pear') 2 else 20,
-  3,
-  4,
-]; // [0, 1, 20, 3, 4]
-```
-
-<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_c.dart (code_sample)"?>
-```dart
-var a = 'apple';
-var b = 'orange';
-var c = 'mango';
-var items = [
-  0,
-  if (a case 'apple') 1 else if (a case 'mango') 10,
-  if (b case 'pear') 2 else if (b case 'mango') 20,
-  if (c case 'apple') 3 else if (c case 'mango') 30,
-  4,
-]; // [0, 1, 30, 4]
-```
-
-<?code-excerpt "misc/lib/language_tour/misc/if_case_operator_in_collection_d.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_d.dart (code_sample)"?>
 ```dart
 var word = 'hello';
 var items = [
@@ -512,12 +473,44 @@ var items = [
 ]; // [1, 5, 3]
 ```
 
-To learn more about `if-case` conditionals,
-see [`if-case` statement][].
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_b.dart (code_sample)"?>
+```dart
+var orderDetails = ['Apples', 12, ''];
+var summary = [
+  'Product: ${orderDetails[0]}',
+  if (orderDetails case [_, int qty, _]) 'Quantity: $qty',
+  if (orderDetails case [_, _, ''])
+    'Delivery: Not Started'
+  else
+    'Delivery: In Progress',
+]; // [Product: Apples, Quantity: 12, Delivery: Not Started]
+```
 
+You can mix different `if` operations with an `else if`
+part. For example:
+
+<?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_c.dart (code_sample)"?>
+```dart
+var a = 'apple';
+var b = 'orange';
+var c = 'mango';
+var items = [
+  0,
+  if (a == 'apple') 1 else if (a case 'mango') 10,
+  if (b case 'pear') 2 else if (b == 'mango') 20,
+  if (c case 'apple') 3 else if (c case 'mango') 30,
+  4,
+]; // [0, 1, 30, 4]
+```
+
+To learn more about the `if` conditional, see
+[`if` statement][]. To learn more about the `if-case`
+conditional, see [`if-case` statement][].
+
+[`if` statement]: /language/branches#if
 [`if-case` statement]: /language/branches#if-case
 
-### For loop elements {: #for-element }
+### For elements {: #for-element }
 
 You can use a `for` element inside of a collection to
 insert multiple elements into that collection.
@@ -535,18 +528,18 @@ for (<initialization_clause>; <condition_clause>; <increment_clause>) <result>
 The following examples illustrate various ways that
 you can use a `for` element inside of a collection:
 
-<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/for_loop_in_collection_a.dart (code_sample)"?>
 ```dart
 var numbers = [2, 3, 4];
 var items = [1, for (var n in numbers) n * n, 7]; // [1, 4, 9, 16, 7]
 ```
 
-<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_b.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/for_loop_in_collection_b.dart (code_sample)"?>
 ```dart
 var items = [1, for (var x = 5; x > 2; x--) x, 7]; // [1, 5, 4, 3, 7]
 ```
 
-<?code-excerpt "misc/lib/language_tour/misc/for_loop_in_collection_c.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/for_loop_in_collection_c.dart (code_sample)"?>
 ```dart
 var items = [1, for (var x = 2; x < 4; x++) x, 7]; // [1, 2, 3, 4, 7]
 ```
@@ -565,7 +558,7 @@ to list comprehensions in other languages.
 In the following example, only the even numbers in
 `numbers` are included in `items`.
 
-<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_a.dart (code_sample)"?>
 ```dart
 var numbers = [1, 2, 3, 4, 5, 6, 7];
 var items = [
@@ -580,7 +573,7 @@ It's common and idiomatic to use a spread on a collection
 literal immediately inside of an `if` or `for` element. For
 example:
 
-<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_c.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_c.dart (code_sample)"?>
 ```dart
 var items = [
   if (condition) oneThing(),
@@ -592,7 +585,7 @@ You can nest all kinds of elements arbitrarily deep.
 In the following example, `if`, `for` and spread elements
 are nested within each other in a collection:
 
-<?code-excerpt "misc/lib/language_tour/misc/nesting_in_collection_b.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/nesting_in_collection_b.dart (code_sample)"?>
 ```dart
 var nestItems = true;
 var ys = [1, 2, 3, 4];

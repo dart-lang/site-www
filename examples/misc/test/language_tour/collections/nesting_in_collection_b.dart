@@ -1,3 +1,5 @@
+import 'package:test/test.dart';
+
 void main() {
   // #docregion code_sample
   var nestItems = true;
@@ -12,4 +14,5 @@ void main() {
   // #enddocregion code_sample
 
   print(items);
+  expect(items, equals([10, 20, 30, 40, 21, 31, 41, 32, 42]));
 }

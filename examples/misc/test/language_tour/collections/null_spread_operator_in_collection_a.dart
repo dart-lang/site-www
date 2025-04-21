@@ -1,3 +1,5 @@
+import 'package:test/test.dart';
+
 // #docregion code_sample
 List<String> buildCommandLine(
   String executable,
@@ -19,5 +21,7 @@ List<String> buildCommandLine(
 
 void main() {
   var command = buildCommandLine('dart', ['run', 'my_script.dart'], null);
+
   print(command);
+  expect(command, equals(['dart', 'run', 'my_script.dart']));
 }

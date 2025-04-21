@@ -1,3 +1,5 @@
+import 'package:test/test.dart';
+
 void main() {
   // #docregion code_sample
   var a = [1, 2, null, 4];
@@ -5,4 +7,5 @@ void main() {
   // #enddocregion code_sample
 
   print(items);
+  expect(items, equals([0, 1, 2, null, 4, 5]));
 }

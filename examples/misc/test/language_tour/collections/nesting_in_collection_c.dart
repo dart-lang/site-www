@@ -1,3 +1,5 @@
+import 'package:test/test.dart';
+
 String oneThing() {
   return 'oneThing'; // In a real scenario, this would likely return a value
 }
@@ -20,4 +22,12 @@ void main() {
   // #enddocregion code_sample
 
   print(items);
+  expect(
+    items,
+    equals([
+      'oneThing',
+      ['multiple_a', 'multiple_b'],
+      'things',
+    ]),
+  );
 }
