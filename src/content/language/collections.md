@@ -269,9 +269,9 @@ a collection:
 In this section, you can learn more about the element types
 that were specifically designed for collections.
 
-<a id="control-flow-operators"></a>
-<a id="spread-operators"></a>
-<a id="collection-operators"></a>
+<a id="control-flow-operators" aria-hidden="true"></a>
+<a id="spread-operators" aria-hidden="true"></a>
+<a id="collection-operators" aria-hidden="true"></a>
 
 ### Spread elements {: #spread-element }
 
@@ -329,12 +329,12 @@ var items = [0, ...?a, ...?b, 4]; // [0, 1, null, 3, 4]
 
 Because of null safety, you can't perform a
 spread operation (`...`) on a value that might be null. The
-following example produces a compile error because the 
-`extraOptions` parameter is nullable and the `extraOptions`
-spread operation is not.
+following example produces a compile-time error because the 
+`extraOptions` parameter is nullable and the
+spread operator used on `extraOptions` is not null-aware.
 
 <?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_b.dart (code_sample)"?>
-```dart
+```dart tag=fails-sa
 List<String> buildCommandLine(
   String executable,
   List<String> options, [
@@ -343,7 +343,7 @@ List<String> buildCommandLine(
   return [
     executable,
     ...options,
-    ...extraOptions, // <-- OK now.
+    [!...extraOptions!], // <-- Error!   
   ];
 }
 
@@ -355,8 +355,7 @@ List<String> buildCommandLine(
 
 If you want to spread a nullable collection, use a
 null-aware spread element. The following example is valid
-because the  `extraOptions` parameter and `extraOptions`
-spread element are nullable.
+because the null-aware spread operator is used on `extraOptions`.
 
 <?code-excerpt "misc/test/language_tour/collections/null_spread_operator_in_collection_a.dart (code_sample)"?>
 ```dart
