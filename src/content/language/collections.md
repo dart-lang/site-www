@@ -343,7 +343,7 @@ List<String> buildCommandLine(
   return [
     executable,
     ...options,
-    [!...extraOptions!], // <-- Error!   
+    ...extraOptions, // <-- OK now.
   ];
 }
 
