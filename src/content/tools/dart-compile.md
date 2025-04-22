@@ -3,6 +3,11 @@ title: dart compile
 description: Command-line tool for compiling Dart source code.
 ---
 
+This guide describes how to use the `dart compile` command
+to compile a Dart program to a target platform.
+
+## Overview
+
 Use the `dart compile` command to compile
 a Dart program to a [target platform](/overview#platform).
 The output—which you specify using a subcommand—can 
@@ -164,6 +169,54 @@ Run your compiled app from the `/tmp` directory:
 $ ./tmp/myapp
 ```
 
+#### Cross-compilation {: #cross-compilation-exe }
+
+Cross-compilation to Linux x64 and ARM64 is supported on the
+following 64-bit host operating systems: macOS, Windows,
+and Linux.
+
+To use cross-compilation, include the following flags:
+
+*   `-target-os=linux`: The target operating system
+    for the compiled executable. The Linux operating system
+    is supported at this time.
+
+*   `--target-arch=value`: The target
+    architecture for the compiled executable. The value
+    for this flag can be `arm64` (64-bit ARM processor)
+    or `x64` (64-bit processor).
+
+*   `--experimental-cross-compilation`: Explicitly enables
+    the cross-compilation functionality.
+
+The following command demonstrates how to cross-compile a
+standalone executable for a 64-bit Linux system:
+
+```console
+dart compile exe \
+  -target-os=linux \
+  --target-arch=x64 \
+  --experimental-cross-compilation \
+  hello.dart
+```
+
+Internally, this command downloads additional Dart SDK
+binaries and caches them in the `~/.dart` directory. Here's
+a sample output with the `--verbose` flag included with
+the command:
+
+```console
+Downloading https://storage.googleapis.com/dart-archive/channels/dev/signed/hash/...4864.../sdk/gen_snapshot_macos_arm64_linux_x64...
+Downloading https://storage.googleapis.com/dart-archive/channels/dev/raw/hash/...64e44.../sdk/dartaotruntime_linux_x64...
+Specializing Platform getters for target OS linux.
+Generating AOT kernel dill.
+Compiling /tmp/hello.dart to /tmp/hello.exe using format Kind.exe:
+Generating AOT snapshot. path/to/dir/.dart/3.8.0-265.0.dev/gen_snapshot_macos_arm64_linux_x64 []
+Generating executable.
+Marking binary executable.
+Generated: /tmp/hello.exe
+```
+
 #### Signing
 
 Executables created with `dart compile exe`
@@ -178,11 +231,17 @@ see the platform documentation for those operating systems:
 [`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
 [Apple Code Signing guide]: {{site.apple-dev}}/support/code-signing/
 
-#### Known limitations
+#### Known limitations {: #known-limitations }
 
-The `exe` subcommand has some known limitations:
+The `exe` subcommand has the following known limitations:
 
-{% include 'known-issues/compile-ki.md' %}
+* No support for `dart:mirrors` and `dart:developer`.
+  For a complete list of the core libraries you can use,
+  see the [Multi-platform][] and [Native platform][] library
+  tables.
+
+[Multi-platform]: /libraries#multi-platform-libraries
+[Native platform]: /libraries#native-platform-libraries
 
 ### AOT modules (aot-snapshot) {:#aot-snapshot}
 
@@ -195,24 +254,47 @@ For example, if you use macOS to create a `.aot` file,
 then that file can run on macOS only.
 Dart supports AOT modules on Windows, macOS, and Linux.
 
+Compile your app and set the output file:
+
 ```console
 $ dart compile aot-snapshot bin/myapp.dart
+```
+
+When successful, this command outputs the following:
+
+```console
 Generated: /Users/me/myapp/bin/myapp.aot
+```
+
+Run your compiled app from the `/bin` directory:
+
+```console
 $ dartaotruntime bin/myapp.aot
 ```
 
-The `aot-snapshot` subcommand has some known limitations.
-
-{% include 'known-issues/compile-ki.md' %}
-
 To learn more, see the
 [`dartaotruntime` documentation](/tools/dartaotruntime).
-
 
 {% comment %}
   TODO: Get info from https://github.com/dart-lang/sdk/wiki/Snapshots
 {% endcomment %}
 
+#### Cross-compilation {: #cross-compilation-aot }
+
+Cross-compilation support for the `aot-snapshot` subcommand
+is the same as what is available for the `exe` subcommand.
+For more information, see
+[Self-contained executables (exe)][cross-compile-exe].
+
+[cross-compile-exe]: #cross-compilation-exe
+
+#### Known limitations {: #known-limitations-aot }
+
+The `aot-snapshot` subcommand has the the same limitations
+as the `exe` subcommand. For more information, see
+[Self-contained executables (exe)][known-limitations-exe]
+
+[known-limitations-exe]: #known-limitations
 
 ### JIT modules (jit-snapshot) {:#jit-snapshot}
 
