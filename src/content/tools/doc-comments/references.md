@@ -109,3 +109,28 @@ within a doc comment on that element or on one of its members.
 The doc comment for a type alias that aliases a class, enum, extension type, or
 mixin can't reference any of the aliased type's members as if they were in
 scope.
+
+## Documentation imports
+
+Dart provides a "documentation imports" feature which enables external elements
+to be referenced in doc comments without actually importing them via a Dart
+import directive. Doc imports are specified in a doc comment on a `library`
+directive. For example:
+
+```dart
+/// @docImport 'dart:async';
+library;
+
+/// We can now reference elements like [Future] and [Future.value] from
+/// dart:async, even if the library is not imported with an actual import.
+class Foo {}
+```
+
+Doc imports support all of the same URI styles as regular Dart imports (e.g.
+'dart:', 'package:', and relative paths). They can't contain the `deferred`
+keyword, or configurations. Doc imports currently can't contain `as`, `show`,
+or `hide`.
+
+:::version-note
+Doc imports were introduced in Dart 3.8.
+:::
