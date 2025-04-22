@@ -1,20 +1,34 @@
 @use 'sass:color';
 
-@use '../core/colors' as *;
-@use '../core/variables' as *;
-@use '../core/bootstrap';
+@use '../base/variables' as *;
+
+*:not(pre) > code {
+  font-size: 0.9em;
+  line-height: 1.25em;
+  padding: 0.1rem 0.25rem;
+  background-color: $site-color-light-grey;
+  background-color: color-mix(in srgb, $site-color-light-grey 35%, transparent);
+  border: 1px solid rgb(195, 201, 214);
+  border-radius: 0.25rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
 
 pre {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
   font-size: 0.9375rem;
-  font-weight: bootstrap.$font-weight-normal;
+  font-weight: 400;
   padding: 1.25rem;
+
+  code {
+    white-space: pre;
+  }
 
   a {
     font-family: inherit;
     font-weight: inherit;
   }
-  
+
   .highlight {
     background: $flutter-color-yellow-300;
     padding: 0.1em;
@@ -22,30 +36,35 @@ pre {
 
   .highlight-diagnostics & {
     .highlight {
-      border-bottom: 2px $red-500 dashed;
+      border-bottom: 2px #F44336 dashed;
       background: inherit;
       padding: 0;
     }
   }
-  
+
   &:focus {
     outline: none;
   }
-  
+
   span.line {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     width: 100%;
+    display: inline-block;
+    min-width: 100%;
+    border-left: 2px solid rgba(0, 0, 0, 0);
 
     &.highlighted-line {
       background: color.change($brand-primary, $alpha: 0.1);
+      min-width: 100%;
+      border-left-color: $brand-primary;
     }
   }
-  
+
   &.show-line-numbers code {
     span.line {
       padding-left: 0.5rem;
-      
+
       &[data-line]::before {
         display: inline-block;
         content: attr(data-line) "";
@@ -137,9 +156,10 @@ pre {
 }
 
 .code-block-wrapper {
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
   border: 1px solid $flutter-color-grey-500;
-  
+
   .code-block-header {
     background-color: #e9ecef;
     border-bottom: 1px solid $flutter-color-grey-500;
@@ -147,7 +167,7 @@ pre {
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
   }
-  
+
   .code-block-body {
     position: relative;
     background-color: $site-color-codeblock-bg;
@@ -170,18 +190,25 @@ pre {
       background-color: $alert-danger-bg;
     }
   }
-  
+
   &:has(:focus-visible) {
     border-color: #1389FD;
   }
-  
+
   pre {
     margin-bottom: 0;
     padding-right: 0;
     padding-left: 0;
-    
+    overflow-x: scroll;
+
     &:not([lang="console"]) {
       line-height: 1.8;
+    }
+
+    code {
+      display: block;
+      min-width: fit-content;
+      width: 100%;
     }
   }
 }
@@ -189,7 +216,7 @@ pre {
 // Border and resizability for dartpad
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   border: 1px solid #ccc;
-  margin-bottom: 1rem;
+  margin: 0;
   min-height: 400px;
   resize: vertical;
   width: 100%;

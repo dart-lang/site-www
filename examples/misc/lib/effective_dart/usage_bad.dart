@@ -29,24 +29,34 @@ void miscDeclAnalyzedButNotTested() {
     bool? nullableBool = null;
 
     // #docregion non-null-boolean-expression
-    if (nonNullableBool == true) {/* ... */}
+    if (nonNullableBool == true) {
+      /* ... */
+    }
 
-    if (nonNullableBool == false) {/* ... */}
+    if (nonNullableBool == false) {
+      /* ... */
+    }
     // #enddocregion non-null-boolean-expression
 
     // #docregion nullable-boolean-expression
     // Static error if null:
-    if (nullableBool) {/* ... */}
+    if (nullableBool) {
+      /* ... */
+    }
 
     // If you want null to be false:
-    if (nullableBool == true) {/* ... */}
+    if (nullableBool == true) {
+      /* ... */
+    }
     // #enddocregion nullable-boolean-expression
   }
 
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
-        'parts are overrun by martians. Unclear which are which.');
+    raiseAlarm(
+      'ERROR: Parts of the spaceship are on fire. Other ' +
+          'parts are overrun by martians. Unclear which are which.',
+    );
     // #enddocregion adjacent-strings-literals
   }
 
@@ -81,9 +91,11 @@ void miscDeclAnalyzedButNotTested() {
     arguments.addAll(options);
     arguments.add(command);
     if (modeFlags != null) arguments.addAll(modeFlags);
-    arguments.addAll(filePaths
-        .where((path) => path.endsWith('.dart'))
-        .map((path) => path.replaceAll('.dart', '.js')));
+    arguments.addAll(
+      filePaths
+          .where((path) => path.endsWith('.dart'))
+          .map((path) => path.replaceAll('.dart', '.js')),
+    );
     // #enddocregion spread-etc
   }
 
@@ -164,6 +176,7 @@ void miscDeclAnalyzedButNotTested() {
         /*...*/
       };
     }
+
     // #enddocregion func-decl
   }
 
@@ -195,6 +208,7 @@ void miscDeclAnalyzedButNotTested() {
     void error([String? message = null]) {
       stderr.write(message ?? '\n');
     }
+
     // #enddocregion default-value-null
   }
 
@@ -208,6 +222,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return 0;
     }
+
     // #enddocregion null-aware-promote
   }
 
@@ -228,6 +243,7 @@ void miscDeclAnalyzedButNotTested() {
     Future<int> fastestBranch(Future<int> left, Future<int> right) async {
       return Future.any([left, right]);
     }
+
     // #enddocregion unnecessary-async
   }
 
@@ -242,6 +258,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return completer.future;
     }
+
     // #enddocregion avoid-completer
   }
 
@@ -260,9 +277,10 @@ void miscDeclAnalyzedButNotTested() {
 
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
-    Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
-        ? null
-        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+    Treasure? openChest(Chest chest, Point where) =>
+        _opened.containsKey(chest)
+            ? null
+            : _opened[chest] = (Treasure(where)..addAll(chest.contents));
     // #enddocregion arrow-long
   };
 }
@@ -289,17 +307,20 @@ class BadTeam extends Team {
   @override
   // #docregion async-await
   Future<int> countActivePlayers(String teamName) {
-    return downloadTeam(teamName).then((team) {
-      if (team == null) return Future.value(0);
+    return downloadTeam(teamName)
+        .then((team) {
+          if (team == null) return Future.value(0);
 
-      return team.roster.then((players) {
-        return players.where((player) => player.isActive).length;
-      });
-    }).catchError((e) {
-      log.error(e);
-      return 0;
-    });
+          return team.roster.then((players) {
+            return players.where((player) => player.isActive).length;
+          });
+        })
+        .catchError((e) {
+          log.error(e);
+          return 0;
+        });
   }
+
   // #enddocregion async-await
 }
 
@@ -352,9 +373,9 @@ class Circle1 {
   double circumference;
 
   Circle1(double radius)
-      : radius = radius,
-        area = pi * radius * radius,
-        circumference = pi * 2.0 * radius;
+    : radius = radius,
+      area = pi * radius * radius,
+      circumference = pi * 2.0 * radius;
 }
 // #enddocregion calc-vs-store1
 
@@ -431,9 +452,7 @@ class ProfileMark {
   final DateTime start;
 
   ProfileMark(this.name) : start = DateTime.now();
-  ProfileMark.unnamed()
-      : name = '',
-        start = DateTime.now();
+  ProfileMark.unnamed() : name = '', start = DateTime.now();
 }
 // #enddocregion field-init-at-decl
 
@@ -442,9 +461,7 @@ class ProfileMark {
 // #docregion field-init-as-param
 class Point0 {
   double x, y;
-  Point0(double x, double y)
-      : x = x,
-        y = y;
+  Point0(double x, double y) : x = x, y = y;
 }
 // #enddocregion field-init-as-param
 
@@ -477,9 +494,7 @@ void unnecessaryNewOrConst() {
   Widget build(BuildContext context) {
     return new Row(
       children: [
-        new RaisedButton(
-          child: new Text('Increment'),
-        ),
+        new RaisedButton(child: new Text('Increment')),
         new Text('Click!'),
       ],
     );

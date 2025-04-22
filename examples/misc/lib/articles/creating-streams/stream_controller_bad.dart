@@ -22,8 +22,8 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
 // #enddocregion flawed-stream
 
 void main() {
-//   showBasicUsage();
-//   listenAfterDelay();
+  //   showBasicUsage();
+  //   listenAfterDelay();
   listenWithPause();
 }
 
@@ -59,4 +59,5 @@ void listenWithPause() {
     }
   });
 }
+
 // #enddocregion pause-problem

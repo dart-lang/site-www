@@ -42,11 +42,13 @@ have that functionality be on `String` instead:
 To enable that code,
 you can import a library that contains an extension of the `String` class:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" plaster="none"?>
 ```dart
 import 'string_apis.dart';
-// ···
-print('42'.parseInt()); // Use an extension method.
+
+void main() {
+  print('42'.parseInt()); // Use an extension method.
+}
 ```
 
 Extensions can define not just methods,
@@ -55,13 +57,12 @@ Also, extensions can have names, which can be helpful if an API conflict arises.
 Here's how you might implement the extension method `parseInt()`,
 using an extension (named `NumberParsing`) that operates on strings:
 
-<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
+<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)" plaster="none"?>
 ```dart title="lib/string_apis.dart"
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
   }
-  // ···
 }
 ```
 
@@ -75,13 +76,15 @@ Like all Dart code, extension methods are in libraries.
 You've already seen how to use an extension method—just 
 import the library it's in, and use it like an ordinary method:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" plaster="none"?>
 ```dart
 // Import a library that contains an extension on String.
 import 'string_apis.dart';
-// ···
-print('42'.padLeft(5)); // Use a String method.
-print('42'.parseInt()); // Use an extension method.
+
+void main() {
+  print('42'.padLeft(5)); // Use a String method.
+  print('42'.parseInt()); // Use an extension method.
+}
 ```
 
 That's all you usually need to know to use extension methods.
@@ -127,7 +130,7 @@ then you have a few options.
 One option is changing how you import the conflicting extension,
 using `show` or `hide` to limit the exposed API:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart (hide-conflicts)" plaster="none"?>
 ```dart
 // Defines the String extension method parseInt().
 import 'string_apis.dart';
@@ -136,31 +139,33 @@ import 'string_apis.dart';
 // hides that extension method.
 import 'string_apis_2.dart' hide NumberParsing2;
 
-// ···
-// Uses the parseInt() defined in 'string_apis.dart'.
-print('42'.parseInt());
+void main() {
+  // Uses the parseInt() defined in 'string_apis.dart'.
+  print('42'.parseInt());
+}
 ```
 
 Another option is applying the extension explicitly,
 which results in code that looks as if the extension is a wrapper class:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart (conflicts-explicit)" plaster="none"?>
 ```dart
 // Both libraries define extensions on String that contain parseInt(),
 // and the extensions have different names.
 import 'string_apis.dart'; // Contains NumberParsing extension.
 import 'string_apis_2.dart'; // Contains NumberParsing2 extension.
 
-// ···
-// print('42'.parseInt()); // Doesn't work.
-print(NumberParsing('42').parseInt());
-print(NumberParsing2('42').parseInt());
+void main() {
+  // print('42'.parseInt()); // Doesn't work.
+  print(NumberParsing('42').parseInt());
+  print(NumberParsing2('42').parseInt());
+}
 ```
 
 If both extensions have the same name,
 then you might need to import using a prefix:
 
-<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart (conflicts-prefix)" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart"?>
 ```dart
 // Both libraries define extensions named NumberParsing
 // that contain the extension method parseInt(). One NumberParsing
@@ -168,17 +173,18 @@ then you might need to import using a prefix:
 import 'string_apis.dart';
 import 'string_apis_3.dart' as rad;
 
-// ···
-// print('42'.parseInt()); // Doesn't work.
+void main() {
+  // print('42'.parseInt()); // Doesn't work.
 
-// Use the ParseNumbers extension from string_apis.dart.
-print(NumberParsing('42').parseInt());
+  // Use the ParseNumbers extension from string_apis.dart.
+  print(NumberParsing('42').parseInt());
 
-// Use the ParseNumbers extension from string_apis_3.dart.
-print(rad.NumberParsing('42').parseInt());
+  // Use the ParseNumbers extension from string_apis_3.dart.
+  print(rad.NumberParsing('42').parseInt());
 
-// Only string_apis_3.dart has parseNum().
-print('42'.parseNum());
+  // Only string_apis_3.dart has parseNum().
+  print('42'.parseNum());
+}
 ```
 
 As the example shows,
@@ -209,6 +215,7 @@ extension NumberParsing on String {
   double parseDouble() {
     return double.parse(this);
   }
+
 }
 ```
 

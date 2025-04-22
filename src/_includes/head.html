@@ -1,4 +1,4 @@
-{% assign cache_bust = site.time|date:'?v=%s' %}
+{% assign cache_bust = '?v=3' %}
 
 <head>
   <meta charset="utf-8">
@@ -74,21 +74,7 @@
   {% endfor -%}
   {% endif -%}
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-          integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"
-          integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"
-          integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
-  
   <script src="{{ '/assets/js/os-tabs.js' | append: cache_bust }}"></script>
-  <script src="{{ '/assets/js/utilities.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 
   {% if js -%}

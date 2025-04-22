@@ -1,7 +1,7 @@
 {% assign page_url_path = page.url | regexReplace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
 
-<nav id="mainnav" class="site-header">
-  <div id="menu-toggle"><i class="material-symbols">menu</i></div>
+<nav id="mainnav">
+  <div id="menu-toggle"><span class="material-symbols" title="Toggle side navigation menu." aria-label="Toggle side navigation menu." type="button">menu</span></div>
   <a href="/" class="brand" title="{{site.title}}">
     <img src="/assets/img/logo/logo-white-text.svg" alt="{{site.title}}">
   </a>
@@ -14,8 +14,8 @@
         {%- if page_url_path contains '/*/overview/' %} active {%- endif -%}">Overview</a>
     </li>
     <li class="mainnav__get-started">
-      <a href="/guides" class="nav-link
-        {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/deprecated/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' or page_url_path contains '/*/effective-dart/' or page_url_path contains '/*/libraries/' %} active {%- endif -%}">
+      <a href="/docs" class="nav-link
+        {%- if page_url_path contains '/*/docs/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/deprecated/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' or page_url_path contains '/*/effective-dart/' or page_url_path contains '/*/libraries/' %} active {%- endif -%}">
         <span>Docs</span>
       </a>
     </li>
@@ -31,11 +31,11 @@
         {%- if page_url_path contains '/*/get-dart/' %} active {%- endif -%}">Get Dart</a>
     </li>
     <li class="searchfield">
-      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+      <form action="/search" class="site-header-search form-inline" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
         <input type="hidden" name="ie" value="UTF-8">
         <input type="hidden" name="hl" value="en">
-        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+        <input class="site-header-searchfield form-control search-field" type="search" name="q"
           id="search-main" autocomplete="off" placeholder="Search" aria-label="Search">
       </form>
     </li>

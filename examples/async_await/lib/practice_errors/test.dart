@@ -24,22 +24,28 @@ Future<String> fetchNewUsername() {
 void main() async {
   try {
     messages
-      ..add(makeReadable(
+      ..add(
+        makeReadable(
           testLabel: '',
           testResult: await asyncDidCatchException(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
                 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
-      ..add(makeReadable(
+          },
+        ),
+      )
+      ..add(
+        makeReadable(
           testLabel: '',
           testResult: await asyncErrorEquals(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
                 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
+          },
+        ),
+      )
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -73,10 +79,11 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-    final userMessages = messages
-        .where((message) => readable.containsKey(message))
-        .map((message) => readable[message]!)
-        .toList();
+    final userMessages =
+        messages
+            .where((message) => readable.containsKey(message))
+            .map((message) => readable[message]!)
+            .toList();
     print(messages);
 
     _result(false, userMessages);
@@ -109,4 +116,5 @@ Future<String> asyncDidCatchException(Function fn) async {
     return passed;
   }
 }
+
 // #enddocregion

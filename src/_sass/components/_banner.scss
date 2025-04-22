@@ -1,28 +1,37 @@
-@use '../core/variables' as *;
+@use 'sass:color';
 
-.banner {
-  position: relative;
-  background-color: $dash-callout;
-  padding: 12px 0;
+@use '../base/variables' as *;
+
+#site-banner {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: $site-font-family-alt;
+  font-size: 1rem;
+
+  gap: 0.5rem;
+  padding: 0.75rem;
   text-align: center;
-  z-index: 1000;
+  background-color: $dash-callout;
+  color: $site-color-white;
 
-  &__text {
-    font-family: $site-font-family-alt;
-    font-size: 16px;
+  p {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    margin: 0;
+    flex-grow: 1;
+  }
 
-    color: white;
+  a, button {
+    color: $site-color-card-link;
 
-    margin-bottom: 0;
-    padding-left: 1em;
-    padding-right: 1em;
+    &:hover {
+      color: color.mix($site-color-white, $site-color-card-link, 25%);
+    }
 
-    a {
-      color: $site-color-card-link;
-
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
-      }
+    &:active {
+      color: color.mix($site-color-white, $site-color-card-link, 50%);
     }
   }
 }

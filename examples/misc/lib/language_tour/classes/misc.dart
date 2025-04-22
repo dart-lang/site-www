@@ -14,7 +14,9 @@ class Comparable {}
 class Location {}
 
 // #docregion point-interfaces
-class Point implements Comparable, Location {/*...*/}
+class Point implements Comparable, Location {
+  /*...*/
+}
 // #enddocregion point-interfaces
 
 // #docregion static-field
@@ -27,4 +29,5 @@ class Queue {
 void main() {
   assert(Queue.initialCapacity == 16);
 }
+
 // #enddocregion static-field

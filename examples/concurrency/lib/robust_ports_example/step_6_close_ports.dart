@@ -6,7 +6,7 @@ import 'dart:isolate';
 // #docregion close
 class Worker {
   bool _closed = false;
-// #enddocregion close
+  // #enddocregion close
 
   final SendPort _commands;
   final ReceivePort _responses;
@@ -92,7 +92,7 @@ class Worker {
     _handleCommandsToIsolate(receivePort, sendPort);
   }
 
-// #docregion close
+  // #docregion close
   void close() {
     if (!_closed) {
       _closed = true;
@@ -101,5 +101,6 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-// #enddocregion close
 }
+
+// #enddocregion close

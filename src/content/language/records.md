@@ -95,7 +95,7 @@ recordAB = recordXY; // OK.
 ```
 
 This is similar to how positional parameters
-in a function declaration or function typedef
+in a [function declaration or function typedef][function-type]
 can have names but those names don't affect the signature of the function.
 
 For more information and examples, check out 
@@ -124,9 +124,10 @@ check out the page on [Patterns][pattern].
 
 ## Record types
 
-There is no type declaration for individual record types. Records are structurally
-typed based on the types of their fields. A record's _shape_ (the set of its fields,
-the fields' types, and their names, if any) uniquely determines the type of a record. 
+There is no type declaration for individual record types.
+Records are structurally typed based on the types of their fields.
+A record's _shape_ (the set of its fields, the fields' types,
+and their names, if any) uniquely determines the type of a record.
 
 Each field in a record has its own type. Field types can differ within the same
 record. The type system is aware of each field's type wherever it is accessed
@@ -143,6 +144,13 @@ var second = pair.$2; // Static type `Object`, runtime type `String`.
 Consider two unrelated libraries that create records with the same set of fields.
 The type system understands that those records are the same type even though the
 libraries are not coupled to each other.
+
+:::tip
+While you can't declare a unique type for a record shape,
+you can create type aliases for readability and reuse.
+To learn how and when to do so,
+check out [Records and typedefs](#records-and-typedefs).
+:::
 
 ## Record equality
 
@@ -185,11 +193,7 @@ To retrieve record values from a return,
   return (json['name'] as String, json['age'] as int);
 }
 
-final json = <String, dynamic>{
-  'name': 'Dash',
-  'age': 10,
-  'color': 'blue',
-};
+final json = <String, dynamic>{'name': 'Dash', 'age': 10, 'color': 'blue'};
 
 // Destructures using a record pattern with positional fields:
 var (name, age) = userInfo(json);
@@ -224,10 +228,128 @@ parallelization of futures of different types, which you can read about in the
 [`dart:async` documentation][].
 :::
 
+## Records as simple data structures
+
+Records only hold data. When that's all you need,
+they're immediately available and easy to use 
+without needing to declare any new classes.
+For a simple list of data tuples that all have the same shape,
+a *list of records* is the most direct representation.
+
+Take this list of "button definitions", for example:
+
+```dart
+final buttons = [
+  (
+    label: "Button I",
+    icon: const Icon(Icons.upload_file),
+    onPressed: () => print("Action -> Button I"),
+  ),
+  (
+    label: "Button II",
+    icon: const Icon(Icons.info),
+    onPressed: () => print("Action -> Button II"),
+  )
+];
+```
+
+This code can be written directly without needing any additional declarations.
+
+### Records and typedefs
+
+You can choose to use [typedefs][] to give the record type itself a name,
+and use that rather than writing out the full record type.
+This method allows you to state that some fields can be null (`?`),
+even if none of the current entries in the list have a null value.
+
+```dart
+typedef ButtonItem = ({String label, Icon icon, void Function()? onPressed});
+final List<ButtonItem> buttons = [
+  // ...
+];
+```
+
+Because record types are structural types, giving a name like `ButtonItem`
+only introduces an alias that makes it easier to refer to the structural type: 
+`({String label, Icon icon, void Function()? onPressed})`.
+
+Having all your code refer to a record type by its alias makes it easier to
+later change the record's implementation without needing to update every reference.
+
+Code can work with the given button definitions the same way it would
+with simple class instances:
+
+```dart
+List<Container> widget = [
+  for (var button in buttons)
+    Container(
+      margin: const EdgeInsets.all(4.0),
+      child: OutlinedButton.icon(
+        onPressed: button.onPressed,
+        icon: button.icon,
+        label: Text(button.label),
+      ),
+    ),
+];
+```
+
+You could even decide to later change the record type to a class type to add methods:
+
+```dart
+class ButtonItem {
+  final String label;
+  final Icon icon;
+  final void Function()? onPressed;
+  ButtonItem({required this.label, required this.icon, this.onPressed});
+  bool get hasOnpressed => onPressed != null;
+}
+```
+
+Or to an [extension type][]:
+
+```dart
+extension type ButtonItem._(({String label, Icon icon, void Function()? onPressed}) _) {
+  String get label => _.label;
+  Icon get icon => _.icon;
+  void Function()? get onPressed => _.onPressed;
+  ButtonItem({required String label, required Icon icon, void Function()? onPressed})
+      : this._((label: label, icon: icon, onPressed: onPressed));
+  bool get hasOnpressed => _.onPressed != null;
+}
+```
+
+And then create the list of button definitions using that type's constructors:
+
+```dart
+final List<ButtonItem> buttons =  [
+  ButtonItem(
+    label: "Button I",
+    icon: const Icon(Icons.upload_file),
+    onPressed: () => print("Action -> Button I"),
+  ),
+  ButtonItem(
+    label: "Button II",
+    icon: const Icon(Icons.info),
+    onPressed: () => print("Action -> Button II"),
+  )
+];
+```
+
+Again, all while not needing to change the code that uses that list.
+
+Changing any type does require the code using it to be very careful about
+not making assumptions. A type alias does not offer any protection or guarantee,
+for the code using it as a reference, that the value being aliased is a record.
+Extension types, also, offer little protection.
+Only a class can provide full abstraction and encapsulation.
+
 [language version]: /resources/language/evolution#language-versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
 [parameters and arguments]: /language/functions#parameters
+[function-type]: /language/functions#function-types
 [destructure]: /language/patterns#destructuring
 [Pattern types]: /language/pattern-types#record
+[typedefs]: /language/typedefs
+[extension type]: /language/extension-types

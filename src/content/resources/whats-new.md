@@ -18,6 +18,116 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## February 12, 2025: 3.7 release
+
+This section lists notable changes made from December 12, 2024,
+through February 12, 2025.
+For details about the 3.7 release of Dart,
+check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
+
+[3.7 announcement]: https://medium.com/dartlang/announcing-dart-3-7-bf864a1b195c
+[3-7-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#370
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Introduced the new type system algoritm, [inference using bounds][].
+* Added links to our new [Bluesky][] account. 
+* Updated the [`dart format`][] page to reflect the new formatter style,
+  including the new [configurable line length][] feature.
+* Documented the new [shared analysis options][] feature.
+* Changed the Effective Dart entry about [line length][] due to the new
+  formatter style.
+* Introduced details of [stray files][] to the Workspaces page.
+* Added the new language feature [wildcard variables][] to the Variables page.
+* Moved [covariant explanation][] to the better-suited Type system page.
+* Changed references to [legacy JS interop][] libraries explicitly to "deprecated". 
+* Removed the [experimental macros page][], since the team [indefinitely paused][]
+  work on the feature.
+* Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
+  throw a `StateError`.
+* Revamped the [linter rules][] page with new cards, search format, and color-coded
+  icons on the individual lint pages ([for example][]).
+* Redesigned the layout implementation and sidenav for efficiency.
+* Removed the officially-deprecated `dart:html` library page.
+
+[inference using bounds]: /language/type-system/#type-argument-inference
+[for example]: /tools/linter-rules/annotate_overrides
+[Bluesky]: https://bsky.app/profile/dart.dev
+[configurable line length]: /tools/dart-format#configuring-formatter-page-width
+[shared analysis options]: /tools/analysis#including-shared-options
+[line length]: /effective-dart/style#prefer-lines-80-characters-or-fewer
+[stray files]: /tools/pub/workspaces#stray-files
+[wildcard variables]: /language/variables#wildcard-variables
+[covariant explanation]: /language/type-system#covariant-keyword
+[legacy JS interop]: /interop/js-interop/past-js-interop
+[experimental macros page]: /language/macros
+[indefinitely paused]: https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12
+[map-warn]: /language/pattern-types#map
+
+## December 11, 2024: 3.6 release
+
+This section lists notable changes made from August 7, 2024,
+through December 11, 2024.
+For details about the 3.6 release of Dart,
+check out the [3.6 announcement][] and the [SDK changelog][3-6-changelog].
+
+[3.6 announcement]: https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983
+[3-6-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#360
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Documented the new [pub workspaces][] feature.
+* Explained the new `pub get` flag [`--enforce-lockfile`][].
+* Introduced guidance around [synchronous communication][] between too many isolates
+  on the Concurrency page.
+* Added new language feature [digit separators][] to the Built-in types page.
+* Defined [variance and variance positions][] on the glossary page.
+* Created a new page for the new [documentation comment references][] feature.
+* Updated and improved the [Dart platforms graphic][] to include newly available
+  support compiling to RISC-V and WASM.
+* Defined [function types][]. 
+* Added glossary definitions for the different kinds of code fixes available
+  from the analyzer ([assists][], [refactors][], and [quick fixes][]).
+* Created a [page][bump-page] for the new `pub bump` command.
+* Updated the [example for generative constructors][] to reflect the use of
+  optional positional parameters with default values.
+* Improved conditional [import/export documentation][] on the package creation page.
+* Included `@override` annotations in [mixin code examples][] to correctly showcase
+  how to work with mixed-in functions.
+* Provided an alternative to SSH for accessing private repo dependencies on
+  the [pub dependencies page][]. 
+* Added a new `pub publish` warning about clean `git status` validation to the
+  [publishing task list][].
+* Deprecated the Language and Library tour pages (contents are now on individual
+  pages under [Language][lang-sidenav] and [Core libraries][lib-sidenav]
+  in the left side-nav panel).
+
+[pub workspaces]: /tools/pub/workspaces
+[`--enforce-lockfile`]: /tools/pub/packages#get-dependencies-for-production
+[synchronous communication]: /language/concurrency#synchronous-blocking-communication-between-isolates
+[digit separators]: /language/built-in-types#digit-separators
+[variance and variance positions]: /resources/glossary#variance
+[documentation comment references]: /tools/doc-comments/references
+[Dart platforms graphic]: /overview#platform
+[function types]: /language/functions#function-types
+[assists]: /resources/glossary#assist
+[refactors]: /resources/glossary#refactor
+[quick fixes]: /resources/glossary#quick-fix
+[bump-page]: /tools/pub/cmd/pub-bump
+[example for generative constructors]: /language/constructors#generative-constructors
+[import/export documentation]: /tools/pub/create-packages#conditionally-importing-and-exporting-library-files
+[mixin code examples]: /language/mixins
+[pub dependencies page]: /tools/pub/dependencies#git-packages
+[publishing task list]: /tools/pub/publishing#publish-to-pub-dev
+[lib-sidenav]: /libraries
+[lang-sidenav]: /language
+
 ## August 6, 2024: 3.5 release
 
 This section lists notable changes made from May 15, 2024,
@@ -532,7 +642,7 @@ we made the following changes to this site:
 
 * Introduced the [Objective-C and Swift interop][] page,
   which explains how to use Dart packages to call APIs from those languages.
-* Added a workaround to [Fixing common type problems][], 
+* Added a workaround to Fixing common type problems,
   for the rare case where type inference might incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy dependencies,
@@ -548,7 +658,6 @@ we made the following changes to this site:
 * Added a section on customizing [`dart fix`][].
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
-[Fixing common type problems]: /deprecated/sound-problems
 [What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile

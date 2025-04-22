@@ -205,8 +205,9 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 <?code-excerpt "docs_good.dart (redundant)"?>
 ```dart tag=good
 class RadioButtonWidget extends Widget {
-  /// Sets the tooltip to [lines], which should have been word wrapped using
-  /// the current font.
+  /// Sets the tooltip to [lines].
+  ///
+  /// The lines should be word wrapped using the current font.
   void tooltip(List<String> lines) {
     ...
   }
@@ -230,20 +231,19 @@ then omit the doc comment.
 It's better to say nothing
 than waste a reader's time telling them something they already know.
 
+<a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
-### PREFER starting function or method comments with third-person verbs
+### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
 
 The doc comment should focus on what the code *does*.
 
 <?code-excerpt "docs_good.dart (third-person)"?>
 ```dart tag=good
-/// Returns `true` if every element satisfies the [predicate].
-bool all(bool predicate(T element)) => ...
+/// Connects to the server and fetches the query results.
+Stream<QueryResult> fetchResults(Query query) => ...
 
 /// Starts the stopwatch if not already running.
-void start() {
-  ...
-}
+void start() => ...
 ```
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase
@@ -263,8 +263,8 @@ int get checkedCount => ...
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
-The doc comment should clarify the states this variable represents. 
-This is true even for getters which may do calculation or other work. 
+The doc comment should clarify the states this variable represents.
+This is true even for getters which may do calculation or other work.
 What the caller cares about is the *result* of that work, not the work itself.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
@@ -284,6 +284,38 @@ This guideline intentionally doesn't include using "Whether or not". In many
 cases, usage of "or not" with "whether" is superfluous and can be omitted,
 especially when used in this context.
 :::
+
+### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+
+If a method is *syntactically* a method, but *conceptually* it is a property,
+and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
+it should also be documented as such.
+Use a noun-phrase for such non-boolean functions, and
+a phrase starting with "Whether" for such boolean functions,
+just as for a syntactic property or variable.
+
+<?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
+```dart tag=good
+/// The [index]th element of this iterable in iteration order.
+E elementAt(int index);
+
+/// Whether this iterable contains an element equal to [element].
+bool contains(Object? element);
+```
+
+:::note
+This guideline should be applied based on whether the declaration is
+conceptually seen as a property.
+
+Sometimes a method has no side effects, and might
+conceptually be seen as a property, but is still
+simpler to name with a verb phrase like `list.take()`.
+Then a noun phrase should still be used to document it.
+_For example `Iterable.take` can be described as
+"The first \[count\] elements of ..."._
+:::
+
+[parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
 
 ### DON'T write documentation for both the getter and setter of a property
 
@@ -317,19 +349,23 @@ program. They describe the type's invariants, establish the terminology it uses,
 and provide context to the other doc comments for the class's members. A little
 extra effort here can make all of the other members simpler to document.
 
+The documentation should describe an *instance* of the type.
+
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 ```dart tag=good
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
-class Chunk { ... }
+class Chunk {
+   ...
+}
 ```
 
 ### CONSIDER including code samples in doc comments
 
 <?code-excerpt "docs_good.dart (code-sample)"?>
 ````dart tag=good
-/// Returns the lesser of two numbers.
+/// The lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
@@ -346,7 +382,7 @@ makes an API easier to learn.
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional, 
+Parentheses are optional,
 but can make it clearer when you're referring to a method or constructor.
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
@@ -385,19 +421,29 @@ and returns of a method are.
 /// @returns The new flag.
 /// @throws ArgumentError If there is already an option with
 ///     the given name or abbreviation.
-Flag addFlag(String name, String abbr) => ...
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
+Consider having sections starting with "The \[parameter\]" to describe
+parameters, with "Returns" for the returned value and "Throws" for exceptions.
+Errors can be documented the same way as exceptions,
+or just as requirements that must be satisfied, without documenting the
+precise error which will be thrown.
+
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
-/// Defines a flag.
+/// Defines a flag with the given [name] and [abbreviation].
 ///
-/// Throws an [ArgumentError] if there is already an option named [name] or
-/// there is already an option using abbreviation [abbr]. Returns the new flag.
-Flag addFlag(String name, String abbr) => ...
+/// The [name] and [abbreviation] strings must not be empty.
+///
+/// Returns a new flag.
+///
+/// Throws a [DuplicateFlagException] if there is already an option named
+/// [name] or there is already an option using the [abbreviation].
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 ### DO put doc comments before metadata annotations
@@ -415,7 +461,6 @@ class ToggleComponent {}
 /// A button that can be flipped on and off.
 class ToggleComponent {}
 ```
-
 
 ## Markdown
 
@@ -546,14 +591,15 @@ think.
 
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
+Prefer having some qualifier after "this", a sole "this" can be ambiguous too.
 
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
 class Box {
-  /// The value this wraps.
+  /// The value this box wraps.
   Object? _value;
 
-  /// True if this box contains a value.
+  /// Whether this box contains a value.
   bool get hasValue => _value != null;
 }
 ```

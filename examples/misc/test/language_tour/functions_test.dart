@@ -22,8 +22,10 @@ void main() {
     assert(say('Bob', 'Howdy') == 'Bob says Howdy');
     // #enddocregion call-without-optional-param
     // #docregion call-with-optional-param
-    assert(say('Bob', 'Howdy', 'smoke signal') ==
-        'Bob says Howdy with a smoke signal');
+    assert(
+      say('Bob', 'Howdy', 'smoke signal') ==
+          'Bob says Howdy with a smoke signal',
+    );
     // #enddocregion call-with-optional-param
   });
 
@@ -73,9 +75,10 @@ ORANGES: 7
         // #docregion anonymous-function
         const list = ['apples', 'bananas', 'oranges'];
 
-        var uppercaseList = list.map((item) {
-          return item.toUpperCase();
-        }).toList();
+        var uppercaseList =
+            list.map((item) {
+              return item.toUpperCase();
+            }).toList();
         // Convert to list after mapping
 
         for (var item in uppercaseList) {
@@ -123,6 +126,7 @@ ORANGES: 7
         }
       }
     }
+
     // #enddocregion nested-functions
   });
 

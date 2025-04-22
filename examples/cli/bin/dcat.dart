@@ -68,5 +68,6 @@ Future<void> _handleError(String path) async {
   }
   // #enddocregion await-entity
 }
+
 // #enddocregion handle-error
 // #enddocregion dcat-app

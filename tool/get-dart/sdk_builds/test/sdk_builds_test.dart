@@ -43,8 +43,9 @@ void main() async {
       const channel = 'dev';
       const revision = '1.11.0-dev.5.2';
 
-      final content = await _dartDownloads.fetchVersion(channel, revision)
-          as GitVersionInfo;
+      final content =
+          await _dartDownloads.fetchVersion(channel, revision)
+              as GitVersionInfo;
 
       expect(content.ref, '23736d3630da614c655d0569e1ba5af2021b1c61');
       expect(content.version, Version.parse('1.11.0-dev.5.2'));
@@ -55,8 +56,9 @@ void main() async {
       const channel = 'stable';
       const revision = '44672';
 
-      final content = await _dartDownloads.fetchVersion(channel, revision)
-          as SvnVersionInfo;
+      final content =
+          await _dartDownloads.fetchVersion(channel, revision)
+              as SvnVersionInfo;
 
       expect(content.revision, 44672);
       expect(content.version, Version.parse('1.9.1'));
@@ -79,7 +81,10 @@ void main() async {
     const revision = '44672';
 
     final content = await _dartDownloads.createDownloadLink(
-        channel, revision, 'api-docs/dart-api-docs.zip');
+      channel,
+      revision,
+      'api-docs/dart-api-docs.zip',
+    );
     expect(content.pathSegments, [
       'download',
       'storage',
@@ -87,7 +92,7 @@ void main() async {
       'b',
       'dart-archive',
       'o',
-      'channels/$channel/release/$revision/api-docs/dart-api-docs.zip'
+      'channels/$channel/release/$revision/api-docs/dart-api-docs.zip',
     ]);
   });
 }

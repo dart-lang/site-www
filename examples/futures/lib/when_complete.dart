@@ -21,10 +21,11 @@ void withObjectMain() {
       // Future completes with an error:
       .then((_) => ellipsis())
       .catchError((e) {
-    handleError(e);
-    printErrorMessage();
-    return someObject; // Future completes with someObject
-  }).whenComplete(() => print('Done!')); // Future completes with someObject
+        handleError(e);
+        printErrorMessage();
+        return someObject; // Future completes with someObject
+      })
+      .whenComplete(() => print('Done!')); // Future completes with someObject
 }
 // #enddocregion with-object
 

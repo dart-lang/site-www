@@ -39,17 +39,31 @@ void _miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion downcast-check
+    int assumeString(dynamic object) {
+      // ignore: stable, beta, dev, invalid_assignment
+      String string = object; // Check at run time that `object` is a `String`.
+      return string.length;
+    }
+    // #enddocregion downcast-check
+
+    // #docregion fail-downcast-check
+    final length = assumeString(1);
+    // #enddocregion fail-downcast-check
+  }
+
+  {
     // #docregion type-inference-1-orig
-    Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
+    Map<String, Object?> arguments = {'argA': 'hello', 'argB': 42};
     // #enddocregion type-inference-1-orig
 
     // ignore: stable, beta, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2-orig
-    Map<String, dynamic> message = {
+    Map<String, Object?> message = {
       'method': 'someMethod',
-      'args': <Map<String, dynamic>>[arguments],
+      'args': <Map<String, Object?>>[arguments],
     };
     // #enddocregion type-inference-2-orig
   }
@@ -156,3 +170,24 @@ void _miscDeclAnalyzedButNotTested() {
     // #enddocregion generic-type-assignment-implied-cast
   }
 }
+
+// #docregion inference-using-bounds
+class A<X extends A<X>> {}
+
+class B extends A<B> {}
+
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
+  f<B>(C()); // OK.
+}
+
+// #enddocregion inference-using-bounds

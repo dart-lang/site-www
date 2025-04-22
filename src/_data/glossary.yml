@@ -10,6 +10,7 @@
   related_links:
     - text: "Refactor"
       link: "#refactor"
+      type: "term"
   labels:
     - "tools"
     - "analyzer"
@@ -62,8 +63,10 @@
   related_links:
     - text: "Final and const variables"
       link: "/language/variables#final-and-const"
+      type: "doc"
     - text: "Don't use const redundantly"
       link: "/effective-dart/usage#dont-use-const-redundantly"
+      type: "doc"
   labels:
     - "language"
     - "const"
@@ -166,8 +169,10 @@
   related_links:
     - text: "Definite assignment specification"
       link: "https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md"
+      type: "doc"
     - text: "Understanding definite assignment analysis"
       link: "/null-safety/understanding-null-safety#definite-assignment-analysis"
+      type: "doc"
   labels:
     - "language"
     - "flow analysis"
@@ -180,8 +185,10 @@
   related_links:
     - text: "Functions overview"
       link: "/language/functions"
+      type: "doc"
     - text: "Instance methods"
       link: "/language/methods"
+      type: "doc"
   labels:
     - "language"
     - "umbrella term"
@@ -202,8 +209,10 @@
   related_links:
     - text: "Places patterns can appear"
       link: "/language/patterns#places-patterns-can-appear"
+      type: "doc"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
+      type: "tutorial"
   labels:
     - "language"
     - "patterns"
@@ -249,6 +258,7 @@
   related_links:
     - text: "Mixins in Dart"
       link: "/language/mixins"
+      type: "doc"
   labels:
     - "language"
     - "understanding diagnostics"
@@ -321,6 +331,7 @@
   related_links:
     - text: "Inheritance in Dart"
       link: "/language/extend"
+      type: "doc"
   labels:
     - "language"
     - "type inference"
@@ -335,8 +346,10 @@
   related_links:
     - text: "Guidance on libraries and parts"
       link: "/tools/pub/create-packages#organizing-a-package"
+      type: "doc"
     - text: "Use library URIs in `part of` directives"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
+      type: "doc"
   labels:
     - "language"
     - "libraries"
@@ -365,6 +378,7 @@
   related_links:
     - text: "Nullability and generics"
       link: "/null-safety/understanding-null-safety#nullability-and-generics"
+      type: "doc"
   labels:
     - "language"
     - "type system"
@@ -383,8 +397,10 @@
   related_links:
     - text: "Organizing a package's libraries"
       link: "/tools/pub/create-packages#organizing-a-package"
+      type: "doc"
     - text: "Public package directories"
       link: "/tools/pub/package-layout#public-directories"
+      type: "doc"
   labels:
     - "language"
     - "libraries"
@@ -396,10 +412,13 @@
   related_links:
     - text: "Quick fixes for analysis issues"
       link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
+      type: "article"
     - text: "Diagnostic messages"
       link: "/tools/diagnostic-messages"
+      type: "doc"
     - text: "Linter rules"
       link: "/tools/linter-rules"
+      type: "doc"
   labels:
     - "tools"
     - "understanding diagnostics"
@@ -415,6 +434,7 @@
   related_links:
     - text: "Assist"
       link: "#assist"
+      type: "term"
   labels:
     - "tools"
     - "analysis"
@@ -432,8 +452,10 @@
   related_links:
     - text: "Places patterns can appear"
       link: "/language/patterns#places-patterns-can-appear"
+      type: "doc"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
+      type: "tutorial"
   labels:
     - "language"
     - "patterns"
@@ -472,8 +494,10 @@
   related_links:
     - text: "Inheritance in Dart"
       link: "/language/extend"
+      type: "doc"
     - text: "Subtype relationship"
       link: "#subtype"
+      type: "term"
   labels:
     - "language"
     - "type system"
@@ -519,8 +543,10 @@
   related_links:
     - text: "Subclass"
       link: "#subclass"
+      type: "term"
     - text: "Substituting types"
       link: "/language/type-system#substituting-types"
+      type: "doc"
   labels:
     - "language"
     - "type system"
@@ -611,10 +637,13 @@
   related_links:
     - text: "Subtype relationship"
       link: "#subtype"
+      type: "term"
     - text: "Covariance and contravariance"
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
+      type: "article"
     - text: "The covariant keyword"
       link: "/language/type-system#covariant-keyword"
+      type: "doc"
   labels:
     - "language"
     - "type system"

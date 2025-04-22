@@ -15,11 +15,11 @@ $flutter-color-grey-500: #E8EAED;
 $site-color-dark-background: #1C2834;
 $site-color-black: #000;
 $site-color-white: #FFF;
-$site-color-codeblock-bg: #F8F9FA;
+$site-color-codeblock-bg: rgba(248, 249, 250, 0.9);
 $site-color-light-grey: #DADCE0;
 $site-color-nav-links: #6E7274;
 $site-color-body: #212121;
-$site-color-body-light: $site-color-body;
+$site-color-body-light: #4A4A4A;
 $site-color-footer: $site-color-dark-background;
 $site-color-primary: $flutter-color-blue-500;
 
@@ -72,11 +72,6 @@ $site-color-primary: $brand-primary;
 // Sidenav, toc, and footer
 $font-size-small:         14px;
 
-// Spacing
-$live-content-width:      1280px;
-$content-padding:         32px;
-$top-content-padding:     40px;
-
 // Fonts
 $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
@@ -93,16 +88,8 @@ $font-family-base: $site-font-family-base;
 $font-family-monospace: $site-font-family-monospace;
 
 // Layout
-$site-header-height: 50px;
-$site-header-with-banner-height: 98px; // 50 + 48
-$site-header-with-obsolete-height: 131px; // 50 + 81
-$site-header-with-banner-obsolete-height: 179px; // 50 + 81 + 48
-$site-footer-md-default-height: 140px;
-$site-content-top-padding: 40px;
-$site-content-max-width: 960px;
-$site-sidebar-top-padding: 24px;
-$site-sidebar-side-padding: 20px;
-$site-nav-mobile-side-padding: 20px;
+$site-header-height: 3.25rem;
+$site-content-top-padding: 2rem;
 $site-snackbar-padding: 20px;
 $site-spacer: 1rem;
 

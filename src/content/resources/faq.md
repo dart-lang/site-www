@@ -103,7 +103,7 @@ Dart chooses _familiarity_ over _excitement_.
 **Web or Flutter apps**
 : No, Dart doesn't support write to [web or Flutter apps][Flutter no mirrors].
 
-### Q. Can Dart add tuples, partial evaluation, ...?
+### Q. Can Dart add a language feature that I want?
 
 Future releases might include a feature you want.
 Some features don't fit the nature of the language.
@@ -347,10 +347,8 @@ either of those lists results in a runtime exception.
 
 [number-js]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
-[package:js]: {{site.pub-pkg}}/js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
 [webdev]: /tools/webdev
-
 [dart-mirror]: {{site.dart-api}}/dart-mirrors/dart-mirrors-library.html
 [pub-cmd]: /tools/pub/cmd

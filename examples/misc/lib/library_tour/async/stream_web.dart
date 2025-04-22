@@ -1,9 +1,9 @@
-import 'dart:html';
+import 'package:web/web.dart' as web;
 
 void miscDeclAnalyzedButNotTested() {
   {
     void submitData() {}
-    var submitButton = querySelector('#submitInfo')!;
+    var submitButton = web.document.querySelector('#submitInfo')!;
     // #docregion listen
     // Add an event handler to a button.
     submitButton.onClick.listen((e) {

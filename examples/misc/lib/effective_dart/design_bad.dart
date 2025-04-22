@@ -20,7 +20,9 @@ void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
     // #docregion code-like-prose
     // Telling errors to empty itself, or asking if it is?
-    if (errors.empty as bool) {/*-...-*/}
+    if (errors.empty as bool) {
+      // ...
+    }
 
     // Toggle what? To what?
     subscription.toggle();
@@ -31,7 +33,9 @@ void miscDeclAnalyzedButNotTested() {
 
     Iterable theCollectionOfErrors = [];
     // #docregion code-like-prose-overdone
-    if (theCollectionOfErrors.isEmpty) {/*-...-*/}
+    if (theCollectionOfErrors.isEmpty) {
+      // ...
+    }
 
     monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
     // #enddocregion code-like-prose-overdone
@@ -78,6 +82,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return desserts;
     }
+
     // #enddocregion omit-types-on-locals
   }
 
@@ -86,6 +91,7 @@ void miscDeclAnalyzedButNotTested() {
     makeGreeting(String who) {
       return 'Hello, $who!';
     }
+
     // #enddocregion annotate-return-types
   }
 
@@ -98,6 +104,7 @@ void miscDeclAnalyzedButNotTested() {
         print(message);
       }
     }
+
     // #enddocregion annotate-parameters
   }
 
@@ -247,7 +254,9 @@ class Color {
 
 class C<Foo> {
   // #docregion avoid_return_types_on_setters
-  void set foo(Foo value) {/* ... */}
+  void set foo(Foo value) {
+    /* ... */
+  }
   // #enddocregion avoid_return_types_on_setters
 }
 
@@ -267,4 +276,5 @@ class Person1 {
   bool operator ==(Object? other) =>
       other != null && other is Person && name == other.name;
 }
+
 // #enddocregion eq-dont-check-for-null

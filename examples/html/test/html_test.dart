@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 @Tags(['browser'])
 @TestOn('browser')
 library;
@@ -68,10 +70,7 @@ void main() {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
       // #enddocregion get-string
-      expect(
-        pageHtml.substring(0, 250),
-        contains('<title>httpbin'),
-      );
+      expect(pageHtml.substring(0, 250), contains('<title>httpbin'));
       // #docregion get-string
     }
     // #enddocregion get-string
@@ -83,10 +82,7 @@ void main() {
     final url = 'https://httpbin.org/headers';
     // #docregion request
     Future<void> main() async {
-      HttpRequest req = await HttpRequest.request(
-        url,
-        method: 'HEAD',
-      );
+      HttpRequest req = await HttpRequest.request(url, method: 'HEAD');
       if (req.status == 200) {
         // Successful URL access...
       }
@@ -103,8 +99,10 @@ void main() {
     const url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.entries
-        .map((e) =>
-            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .map(
+          (e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}',
+        )
         .join('&');
 
     void main() async {
@@ -113,10 +111,7 @@ void main() {
       var request = HttpRequest();
       request
         ..open('POST', url)
-        ..setRequestHeader(
-          'Content-type',
-          'application/x-www-form-urlencoded',
-        )
+        ..setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         ..send(encodeMap(data));
 
       await request.onLoadEnd.first;
@@ -150,8 +145,10 @@ void main() {
 
       void scheduleReconnect() {
         if (!reconnectScheduled) {
-          Timer(Duration(seconds: retrySeconds),
-              () => initWebSocket(retrySeconds * 2));
+          Timer(
+            Duration(seconds: retrySeconds),
+            () => initWebSocket(retrySeconds * 2),
+          );
         }
         reconnectScheduled = true;
       }
@@ -194,11 +191,9 @@ void main() {
     try {
       initWebSocket();
       expect(
-          await t.first,
-          anyOf([
-            contains('Received message'),
-            contains('Timeout'),
-          ]));
+        await t.first,
+        anyOf([contains('Received message'), contains('Timeout')]),
+      );
     } finally {
       await wsStream.close();
     }

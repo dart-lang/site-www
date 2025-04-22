@@ -37,16 +37,15 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion const-num
   }
 
-  // Uncomment when feature is stable:
-  // {
-  //   // #docregion digit-separators
-  //   var n1 = 1_000_000;
-  //   var n2 = 0.000_000_000_01;
-  //   var n3 = 0x00_14_22_01_23_45;  // MAC address
-  //   var n4 = 555_123_4567;  // US Phone number
-  //   var n5 = 100__000_000__000_000;  // one hundred million million!
-  //   // #enddocregion digit-separators
-  // }
+  {
+    // #docregion digit-separators
+    var n1 = 1_000_000;
+    var n2 = 0.000_000_000_01;
+    var n3 = 0x00_14_22_01_23_45; // MAC address
+    var n4 = 555_123_4567; // US Phone number
+    var n5 = 100__000_000__000_000; // one hundred million million!
+    // #enddocregion digit-separators
+  }
 
   {
     // #docregion quoting
@@ -107,11 +106,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion trailing-commas
-    var list = [
-      'Car',
-      'Boat',
-      'Plane',
-    ];
+    var list = ['Car', 'Boat', 'Plane'];
     // #enddocregion trailing-commas
   }
 
@@ -159,14 +154,10 @@ void miscDeclAnalyzedButNotTested() {
       // Key:    Value
       'first': 'partridge',
       'second': 'turtledoves',
-      'fifth': 'golden rings'
+      'fifth': 'golden rings',
     };
 
-    var nobleGases = {
-      2: 'helium',
-      10: 'neon',
-      18: 'argon',
-    };
+    var nobleGases = {2: 'helium', 10: 'neon', 18: 'argon'};
     // #enddocregion map-literal
   }
 
@@ -193,11 +184,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion const-map
-    final constantMap = const {
-      2: 'helium',
-      10: 'neon',
-      18: 'argon',
-    };
+    final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 
     // constantMap[2] = 'Helium'; // This line will cause an error.
     // #enddocregion const-map
@@ -221,5 +208,6 @@ class SymbolExampleNotUsedYet {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
   }
+
   // #enddocregion symbols
 }

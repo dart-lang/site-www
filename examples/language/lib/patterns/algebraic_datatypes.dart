@@ -14,7 +14,7 @@ class Circle implements Shape {
 }
 
 double calculateArea(Shape shape) => switch (shape) {
-      Square(length: var l) => l * l,
-      Circle(radius: var r) => math.pi * r * r
-    };
+  Square(length: var l) => l * l,
+  Circle(radius: var r) => math.pi * r * r,
+};
 // #enddocregion algebraic-datatypes

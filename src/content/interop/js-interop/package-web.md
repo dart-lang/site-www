@@ -1,6 +1,9 @@
 ---
 title: Migrate to package:web
 description: How to migrate web interop code from dart:html to package:web.
+prevpage:
+  url: /interop/js-interop/past-js-interop
+  title: Past JS interop
 ---
 
 Dart's [`package:web`][] exposes access to browser APIs,
@@ -202,7 +205,7 @@ A value of type '...' can't be assigned to a variable of type 'JSFunction?'
 
 ### Conditional imports
 
-It is common for code to use a conditional import based on whether `dart:html`
+It's common for code to use a conditional import based on whether `dart:html`
 is supported to differentiate between native and web:
 
 ```dart
@@ -211,14 +214,15 @@ export 'src/hw_none.dart'
     if (dart.library.html) 'src/hw_html.dart';
 ```
 
-However, since `dart:html` is not supported when compiling to Wasm, the correct
-alternative now is to use `dart.library.js_interop` to differentiate between
-native and web:
+However, since `dart:html` is deprecated and not supported when
+compiling to Wasm, the correct alternative now is to
+use `dart.library.js_interop` to differentiate between native and web:
 
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
-export 'src/hw_none.dart'
-    if (dart.library.io) 'src/hw_io.dart'
-    if (dart.library.js_interop) 'src/hw_web.dart';
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
 
 ### Virtual dispatch and mocking
@@ -260,7 +264,7 @@ automatically do this.
 ## Helpers
 
 The core of `package:web` contains `external` interop members,
-but does not provide other functionality that `dart:html` provided by default.
+but doesn't provide other functionality that `dart:html` provided by default.
 To mitigate these differences, `package:web` contains [`helpers`][helpers]
 for additional support in handling a number of use cases
 that aren't directly available through the core interop.
@@ -272,12 +276,12 @@ event listeners. Instead, you can use [stream helpers][] that makes it easy to
 subscribe to events with Dart `Stream`s without writing that code yourself.
 
 ```dart
-// dart:html version
-InputElement htmlInput = InputElement();
+// Original dart:html version:
+final htmlInput = InputElement();
 await htmlInput.onBlur.first;
 
-// package:web version
-HTMLInputElement webInput = document.createElement('input') as HTMLInputElement;
+// Migrated package:web version:
+final webInput = HTMLInputElement();
 await webInput.onBlur.first;
 ```
 

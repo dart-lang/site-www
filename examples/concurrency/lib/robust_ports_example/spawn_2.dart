@@ -32,7 +32,7 @@ class Worker {
 
     return Worker._(receivePort, sendPort);
   }
-// #enddocregion worker-spawn
+  // #enddocregion worker-spawn
 
   Future<Object?> parseJson(String message) async {
     // TODO: Ensure the port is still open.
@@ -54,4 +54,7 @@ class Worker {
   static void _startRemoteIsolate(SendPort sp) {
     // TODO: Initialize worker isolate's ports.
   }
+  // #docregion worker-spawn
 }
+
+// #enddocregion worker-spawn

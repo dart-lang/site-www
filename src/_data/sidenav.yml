@@ -2,7 +2,6 @@
   expanded: false
   children:
     - title: Introduction
-      match-page-url-exactly: true
       permalink: /language
     - title: Syntax basics
       children:
@@ -73,7 +72,6 @@
     - title: Class modifiers
       children:
         - title: Overview & usage
-          match-page-url-exactly: true
           permalink: /language/class-modifiers
         - title: Class modifiers for API maintainers
           permalink: /language/class-modifiers-for-apis
@@ -91,7 +89,6 @@
       expanded: false
       children:
         - title: Sound null safety
-          match-page-url-exactly: true
           permalink: /null-safety
         - title: Migrating to null safety
           permalink: /null-safety/migration-guide
@@ -106,7 +103,6 @@
   expanded: false
   children:
     - title: Overview
-      match-page-url-exactly: true
       permalink: /libraries
     - title: dart:core
       permalink: /libraries/dart-core
@@ -118,8 +114,9 @@
       permalink: /libraries/dart-convert
     - title: dart:io
       permalink: /libraries/dart-io
-    - title: dart:html
-      permalink: /libraries/dart-html
+    - title: dart:js_interop
+      permalink: /interop/js-interop
+      match-page-url-exactly: true
     - divider
     - title: Iterable collections
       permalink: /libraries/collections/iterables
@@ -139,7 +136,6 @@
   permalink: /effective-dart
   children:
     - title: Overview
-      match-page-url-exactly: true
       permalink: /effective-dart
     - title: Style
       permalink: /effective-dart/style
@@ -205,7 +201,6 @@
     - title: Command-line & server apps
       children:
         - title: Overview
-          match-page-url-exactly: true
           permalink: /server
         - title: Get started
           permalink: /tutorials/server/get-started
@@ -222,7 +217,6 @@
     - title: Web apps
       children:
         - title: Overview
-          match-page-url-exactly: true
           permalink: /web
         - title: Get started
           permalink: /web/get-started
@@ -248,7 +242,6 @@
     children:
       - title: Overview
         permalink: /interop/js-interop
-        match-page-url-exactly: true
       - title: Usage
         permalink: /interop/js-interop/usage
       - title: JS types
@@ -265,7 +258,6 @@
   expanded: false
   children:
   - title: Overview
-    match-page-url-exactly: true
     permalink: /tools
   - title: Editors & debuggers
     children:
@@ -278,7 +270,6 @@
       - title: DartPad
         children:
           - title: Overview
-            match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: Troubleshooting DartPad
             permalink: /tools/dartpad/troubleshoot
@@ -326,8 +317,6 @@
     children:
       - title: Customizing static analysis
         permalink: /tools/analysis
-      - title: Fixing common type problems
-        permalink: /deprecated/sound-problems
       - title: Fixing type promotion failures
         permalink: /tools/non-promotion-reasons
       - title: Linter rules
@@ -372,7 +361,6 @@
     - title: Videos
       permalink: /resources/videos
     - title: Tutorials
-      match-page-url-exactly: true
       permalink: /tutorials
 
 - title: Related sites

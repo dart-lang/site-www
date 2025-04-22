@@ -432,6 +432,32 @@ As a result, if you publish a package to pub.dev,
 keep in mind that your package's dependency overrides
 are ignored by all users of your package.
 
+If you are using a [pub workspace][workspaces],
+you can have `dependency_overrides` in each workspace package, but
+a single package can only be overridden once in the workspace.
+
+## `pubspec_overrides.yaml` {:#pubspec-overrides}
+
+If you want to change certain aspects of
+the resolution of your `pubspec.yaml` file, but
+do not want to change the actual file, you can
+place a file named `pubspec_overrides.yaml` next to the `pubspec.yaml`.
+
+Attributes from that file will override those from `pubspec.yaml`.
+
+The properties that can be overridden are:
+
+* `dependency_overrides`
+* `workspace`
+* `resolution`
+
+This can be useful to avoid accidentally
+checking temporary overrides in to version control.
+It can also make it easier to generate overrides from a script.
+
+In a [pub workspace][workspaces], each workspace package
+can have a `pubspec_overrides.yaml` file.
+
 ## Best practices
 
 Be proactive in managing your dependencies.
@@ -570,3 +596,4 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [`dart pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [pubsite]: {{site.pub}}
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
+[workspaces]: /tools/pub/workspaces

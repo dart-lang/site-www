@@ -92,7 +92,9 @@ as their default value will be `null`:
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool? bold, bool? hidden}) {...}
+void enableFlags({bool? bold, bool? hidden}) {
+  ...
+}
 ```
 
 When calling a function, 
@@ -114,7 +116,9 @@ For example:
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {...}
+void enableFlags({bool bold = false, bool hidden = false}) {
+  ...
+}
 
 // bold will be true; hidden will be false.
 enableFlags(bold: true);
@@ -185,8 +189,10 @@ And here's an example of calling this function with the third parameter:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
-assert(say('Bob', 'Howdy', 'smoke signal') ==
-    'Bob says Howdy with a smoke signal');
+assert(
+  say('Bob', 'Howdy', 'smoke signal') ==
+      'Bob says Howdy with a smoke signal',
+);
 ```
 
 To define a default value for an optional positional parameter besides `null`,
@@ -326,9 +332,10 @@ prints each converted string with its length.
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
 
-var uppercaseList = list.map((item) {
-  return item.toUpperCase();
-}).toList();
+var uppercaseList =
+    list.map((item) {
+      return item.toUpperCase();
+    }).toList();
 // Convert to list after mapping
 
 for (var item in uppercaseList) {
@@ -343,9 +350,10 @@ Click **Run** to execute the code.
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
 
-  var uppercaseList = list.map((item) {
-    return item.toUpperCase();
-  }).toList();
+  var uppercaseList =
+      list.map((item) {
+        return item.toUpperCase();
+      }).toList();
   // Convert to list after mapping
 
   for (var item in uppercaseList) {

@@ -179,21 +179,17 @@ You can use one or more underscores (`_`) as digit separators
 to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
 
-{% comment %}
-Attach code excerpt misc/lib/language_tour/built_in_types.dart (digit-separators)
-when feature is stable:
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
-var n3 = 0x00_14_22_01_23_45;  // MAC address
-var n4 = 555_123_4567;  // US Phone number
-var n5 = 100__000_000__000_000;  // one hundred million million!
+var n3 = 0x00_14_22_01_23_45; // MAC address
+var n4 = 555_123_4567; // US Phone number
+var n5 = 100__000_000__000_000; // one hundred million million!
 ```
 
 :::version-note
-Using digit separators requires a [language version][] of at least 3.6.0.
+Using digit separators requires a [language version][] of at least 3.6.
 :::
 
 ## Strings
@@ -221,13 +217,17 @@ object's `toString()` method.
 ```dart
 var s = 'string interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, '
-        'which is very handy.');
-assert('That deserves all caps. '
-        '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. '
-        'STRING INTERPOLATION is very handy!');
+assert(
+  'Dart has $s, which is very handy.' ==
+      'Dart has string interpolation, '
+          'which is very handy.',
+);
+assert(
+  'That deserves all caps. '
+          '${s.toUpperCase()} is very handy!' ==
+      'That deserves all caps. '
+          'STRING INTERPOLATION is very handy!',
+);
 ```
 
 :::note
@@ -241,12 +241,15 @@ operator:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
-var s1 = 'String '
+var s1 =
+    'String '
     'concatenation'
     " works even over line breaks.";
-assert(s1 ==
-    'String concatenation works even over '
-        'line breaks.');
+assert(
+  s1 ==
+      'String concatenation works even over '
+          'line breaks.',
+);
 
 var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');

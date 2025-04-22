@@ -22,4 +22,5 @@ void mainGood() {
         .catchError(ellipsis()); // We get here.
   });
 }
+
 // #enddocregion good

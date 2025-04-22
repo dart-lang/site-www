@@ -7,8 +7,8 @@ the project:
 ./dash_site effective-dart
 ```
 {% endcomment %}
-    
-<div class='effective_dart--summary_column'>
+
+<div class="side-by-side"><div>
 
 ### Style
 
@@ -22,7 +22,7 @@ the project:
 * <a href='/effective-dart/style#do-name-other-identifiers-using-lowercamelcase'>DO name other identifiers using <code>lowerCamelCase</code>.</a>
 * <a href='/effective-dart/style#prefer-using-lowercamelcase-for-constant-names'>PREFER using <code>lowerCamelCase</code> for constant names.</a>
 * <a href='/effective-dart/style#do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words'>DO capitalize acronyms and abbreviations longer than two letters like words.</a>
-* <a href='/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters'>PREFER using <code>_</code>, <code>__</code>, etc. for unused callback parameters.</a>
+* <a href='/effective-dart/style#prefer-using-wildcards-for-unused-callback-parameters'>PREFER using wildcards for unused callback parameters.</a>
 * <a href='/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private'>DON'T use a leading underscore for identifiers that aren't private.</a>
 * <a href='/effective-dart/style#dont-use-prefix-letters'>DON'T use prefix letters.</a>
 * <a href='/effective-dart/style#dont-explicitly-name-libraries'>DON'T explicitly name libraries.</a>
@@ -38,11 +38,11 @@ the project:
 
 * <a href='/effective-dart/style#do-format-your-code-using-dart-format'>DO format your code using <code>dart format</code>.</a>
 * <a href='/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDER changing your code to make it more formatter-friendly.</a>
-* <a href='/effective-dart/style#avoid-lines-longer-than-80-characters'>AVOID lines longer than 80 characters.</a>
+* <a href='/effective-dart/style#prefer-lines-80-characters-or-fewer'>PREFER lines 80 characters or fewer.</a>
 * <a href='/effective-dart/style#do-use-curly-braces-for-all-flow-control-statements'>DO use curly braces for all flow control statements.</a>
 
 </div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Documentation
@@ -62,9 +62,10 @@ the project:
 * <a href='/effective-dart/documentation#do-start-doc-comments-with-a-single-sentence-summary'>DO start doc comments with a single-sentence summary.</a>
 * <a href='/effective-dart/documentation#do-separate-the-first-sentence-of-a-doc-comment-into-its-own-paragraph'>DO separate the first sentence of a doc comment into its own paragraph.</a>
 * <a href='/effective-dart/documentation#avoid-redundancy-with-the-surrounding-context'>AVOID redundancy with the surrounding context.</a>
-* <a href='/effective-dart/documentation#prefer-starting-function-or-method-comments-with-third-person-verbs'>PREFER starting function or method comments with third-person verbs.</a>
+* <a href='/effective-dart/documentation#prefer-starting-comments-of-a-function-or-method-with-third-person-verbs-if-its-main-purpose-is-a-side-effect'>PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect.</a>
 * <a href='/effective-dart/documentation#prefer-starting-a-non-boolean-variable-or-property-comment-with-a-noun-phrase'>PREFER starting a non-boolean variable or property comment with a noun phrase.</a>
 * <a href='/effective-dart/documentation#prefer-starting-a-boolean-variable-or-property-comment-with-whether-followed-by-a-noun-or-gerund-phrase'>PREFER starting a boolean variable or property comment with &quot;Whether&quot; followed by a noun or gerund phrase.</a>
+* <a href='/effective-dart/documentation#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose'>PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.</a>
 * <a href='/effective-dart/documentation#dont-write-documentation-for-both-the-getter-and-setter-of-a-property'>DON'T write documentation for both the getter and setter of a property.</a>
 * <a href='/effective-dart/documentation#prefer-starting-library-or-type-comments-with-noun-phrases'>PREFER starting library or type comments with noun phrases.</a>
 * <a href='/effective-dart/documentation#consider-including-code-samples-in-doc-comments'>CONSIDER including code samples in doc comments.</a>
@@ -85,8 +86,7 @@ the project:
 * <a href='/effective-dart/documentation#prefer-using-this-instead-of-the-to-refer-to-a-members-instance'>PREFER using &quot;this&quot; instead of &quot;the&quot; to refer to a member's instance.</a>
 
 </div>
-<div style='clear:both'></div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Usage
@@ -166,7 +166,7 @@ the project:
 * <a href='/effective-dart/usage#do-test-for-futuret-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future&lt;T&gt;</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
 
 </div>
-<div class='effective_dart--summary_column'>
+<div>
 
 
 ### Design
@@ -201,9 +201,9 @@ the project:
 * <a href='/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
 * <a href='/effective-dart/design#avoid-extending-a-class-that-isnt-intended-to-be-subclassed'>AVOID extending a class that isn't intended to be subclassed.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-extended'>DO use class modifiers to control if your class can be extended.</a>
 * <a href='/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
-* <a href='/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
+* <a href='/effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-an-interface'>DO use class modifiers to control if your class can be an interface.</a>
 * <a href='/effective-dart/design#prefer-defining-a-pure-mixin-or-pure-class-to-a-mixin-class'>PREFER defining a pure <code>mixin</code> or pure <code>class</code> to a <code>mixin class</code>.</a>
 
 **Constructors**
@@ -258,4 +258,4 @@ the project:
 * <a href='/effective-dart/design#dont-make-the-parameter-to-nullable'>DON'T make the parameter to <code>==</code> nullable.</a>
 
 </div>
-<div style='clear:both'></div>
+</div>

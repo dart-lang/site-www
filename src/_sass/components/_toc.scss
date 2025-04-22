@@ -1,6 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
-@use '../core/bootstrap';
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
 
 .site-toc {
   ul {
@@ -12,31 +11,34 @@
   &__title {
     font-family: $site-font-family-alt;
     font-size: 18px;
-    margin-bottom: bootstrap.bs-spacer(2);
+    margin-bottom: 0.5rem;
   }
 }
 
+//noinspection CssReplaceWithShorthandSafely
 #site-toc--side {
-  padding: $top-content-padding 20px $content-padding 28px;
+  padding: $site-content-top-padding;
+  padding-left: $site-content-top-padding / 2;
 
-  @include sidenav-top-position;
   display: none;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 246px;
-  overflow-x: hidden;
+  position: sticky;
+  top: $site-header-height;
+  order: 2;
+  width: 15rem;
+  min-width: 15rem;
+  height: fit-content;
+  max-height: calc(100vh - 3.25rem);
   overflow-y: auto;
   overflow-wrap: break-word;
   z-index: 5;
 
-  @include bootstrap.media-breakpoint-up(xl) {
+  @media (min-width: 1200px) {
     display: block;
   }
 
   .toc-entry {
-    padding-bottom: bootstrap.bs-spacer(2);
-    font-size: bootstrap.$font-size-sm;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
 
     // Indent subsequent lines.
     margin-left: 1rem;
@@ -75,9 +77,10 @@
 #site-toc--inline {
   background: #f5f5f7;
   padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
-  @include bootstrap.media-breakpoint-up(xl) {
+  @media (min-width: 1200px) {
     display: none;
   }
 

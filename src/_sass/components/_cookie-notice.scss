@@ -1,15 +1,15 @@
-@use '../core/variables' as *;
+@use '../base/variables' as *;
 
 #cookie-notice {
-  background-color: white;
-  padding: 2.5rem 0 !important;
+  display: none;
+  justify-content: center;
+  background-color: $site-color-white;
+  padding: 1.25rem;
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
-  box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.25);
   opacity: 0;
-  display: none;
   z-index: 9999;
 
   @keyframes fadein {
@@ -21,53 +21,52 @@
     }
   }
 
-  a.btn {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
   &.show {
-    display: block;
-    animation-duration: 500ms;
-    animation-delay: 200ms;
-    animation-name: fadein;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+    display: flex;
+    animation: fadein 500ms ease 200ms 1 forwards;
   }
 
   .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1080px;
-    min-width: 0 !important;
-    margin: 0 auto;
+    min-width: 0;
     width: auto;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (min-width: 576px) {
+      flex-wrap: nowrap;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: center;
+    }
 
     p {
-      font-size: 1rem;
       line-height: 1.6;
-      margin-right: 2rem;
-      margin-bottom: 0;
+      margin: 0;
     }
   }
 }
 
-body.homepage, .error {
+body.homepage, body.error {
   #cookie-notice {
+    --site-interaction-base-values: var(--site-interaction-base-values-inverse);
     background-color: $site-color-dark-background;
 
     .container {
       p {
-        color: white;
+        color: $site-color-white;
+      }
 
-        a {
-          color: $site-color-card-link;
-
-          &:hover, &:focus, &:active {
-            color: darken($site-color-card-link, 20%);
-          }
+      .text-button {
+        &, &:hover, &:active, &:focus {
+          color: $site-color-white;
         }
       }
     }

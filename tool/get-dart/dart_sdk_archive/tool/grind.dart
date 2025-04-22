@@ -20,7 +20,9 @@ void buildJson() async {
   final fileContents = '''
 const Map<String, String> svnVersions = $jsonStr;
   ''';
-  final formatted = DartFormatter().format(fileContents);
+  final formatted = DartFormatter(
+    languageVersion: DartFormatter.latestLanguageVersion,
+  ).format(fileContents);
 
   file.writeAsBytesSync(utf8.encode(formatted));
   print('$filePath written');

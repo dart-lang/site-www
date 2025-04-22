@@ -2,24 +2,30 @@
 
 {% if lint.state != "internal" %}
 
+{% assign lintId = lint.name | downcase %}
+
 <div
-  class="lint-card"
+  class="card outlined-card"
   id="{{lint.name}}"
   {%- if lint.state == "stable" and not lint.sinceDartSdk contains "wip" %} data-stable="true"{% endif -%}
   {%- if lint.fixStatus == "hasFix" %} data-has-fix="true"{% endif -%}
   {%- if lint.sets contains "core" %} data-in-core="true"{% endif -%}
   {%- if lint.sets contains "recommended" %} data-in-recommended="true"{% endif -%}
   {%- if lint.sets contains "flutter" %} data-in-flutter="true"{% endif -%}>
-<h3 class="card-title">{{lint.name | underscoreBreaker}}</h3>
+<div class="card-header">
+<header class="card-title" id="{{lintId}}">{{lintId | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
 
 {{lint.description}}
 
+</div>
 <div class="card-actions">
 <div class="leading">
 {% if lint.state == "removed" -%}
 <span class="material-symbols removed-lints" title="Lint has been removed" aria-label="Lint has been removed">error</span>
 {% elsif lint.state == "deprecated" -%}
-<span class="material-symbols deprecated-lints" title="Lint is deprecated" aria-label="Lint is deprecated">warning</span>
+<span class="material-symbols deprecated-lints" title="Lint is deprecated" aria-label="Lint is deprecated">report</span>
 {% elsif lint.state == "experimental" -%}
 <span class="material-symbols experimental-lints" title="Lint is experimental" aria-label="Lint is experimental">science</span>
 {% elsif lint.sinceDartSdk contains "wip" -%}
@@ -40,8 +46,8 @@
 </div>
 
 <div class="trailing">
-<a href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
-<button class="copy-button hidden" title="Copy {{lint.name}} to your clipboard.">Copy</button>
+<a class="outlined-button" href="/tools/linter-rules/{{lint.name}}" title="Learn more about this lint and when to enable it.">Learn more</a>
+<button class="copy-button filled-button hidden" title="Copy {{lint.name}} to your clipboard.">Copy</button>
 </div>
 
 </div>

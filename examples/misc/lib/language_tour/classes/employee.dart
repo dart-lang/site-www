@@ -44,6 +44,7 @@ void main() {
   // #docregion emp-as-person
   (employee as Person).firstName = 'Bob';
   // #enddocregion emp-as-person
-// #docregion super
+  // #docregion super
 }
+
 // #enddocregion super

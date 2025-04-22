@@ -729,8 +729,9 @@ it reaches the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 ```dart
-var numbersUntilNegative =
-    numbers.takeWhile((number) => !number.isNegative);
+var numbersUntilNegative = numbers.takeWhile(
+  (number) => !number.isNegative,
+);
 ```
 
 Notice that the condition `number.isNegative` is negated with `!`.

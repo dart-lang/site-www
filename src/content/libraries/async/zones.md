@@ -792,7 +792,7 @@ The source code for the stack_trace package
   You can find the stack_trace source code in the
   [stack_trace GitHub project]({{site.repo.dart.org}}/stack_trace).
 
-The source code for dart:html and dart:async
+The source code for dart:async
 : These two SDK libraries implement APIs featuring asynchronous callbacks,
   and thus they deal with zones.
   You can browse or download their source code under the

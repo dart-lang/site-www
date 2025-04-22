@@ -1,0 +1,49 @@
+name: build
+
+on:
+  # Run on PRs and pushes to the default branch.
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Run build check every day at 3 AM PST.
+    - cron: "0 11 * * 0"
+
+# Declare default permissions as read only.
+permissions: read-all
+
+env:
+  # Configure analytics reporting for pub.
+  PUB_ENVIRONMENT: bot.github
+  # The Node version to use for site infra. Generally should be the latest LTS.
+  NODE_VERSION: '22'
+
+jobs:
+  build:
+    name: Build site and check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+        with:
+          sdk: stable
+      - name: Fetch Dart packages
+        run: dart pub get
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: Install Node dependencies
+        run: pnpm install
+      - name: Build site
+        run: dart run dart_site build
+      - name: Check for broken Markdown links
+        run: dart run dart_site check-link-references
+      - name: Check internal site links are functional
+        run: dart run dart_site check-links

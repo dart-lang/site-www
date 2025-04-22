@@ -20,4 +20,5 @@ class Worker {
     // be used to send messages to the worker isolate.
   }
 }
+
 // #enddocregion worker

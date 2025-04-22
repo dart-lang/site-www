@@ -166,17 +166,17 @@ void main() {
     test('RegExp', () {
       // #docregion regexp
       // Here's a regular expression for one or more digits.
-      var numbers = RegExp(r'\d+');
+      var digitSequence = RegExp(r'\d+');
 
-      var allCharacters = 'llamas live fifteen to twenty years';
+      var lettersOnly = 'llamas live fifteen to twenty years';
       var someDigits = 'llamas live 15 to 20 years';
 
       // contains() can use a regular expression.
-      assert(!allCharacters.contains(numbers));
-      assert(someDigits.contains(numbers));
+      assert(!lettersOnly.contains(digitSequence));
+      assert(someDigits.contains(digitSequence));
 
       // Replace every match with another string.
-      var exedOut = someDigits.replaceAll(numbers, 'XX');
+      var exedOut = someDigits.replaceAll(digitSequence, 'XX');
       assert(exedOut == 'llamas live XX to XX years');
       // #enddocregion regexp
     });
@@ -184,14 +184,14 @@ void main() {
     test('match', () {
       void testMatch() {
         // #docregion match
-        var numbers = RegExp(r'\d+');
+        var digitSequence = RegExp(r'\d+');
         var someDigits = 'llamas live 15 to 20 years';
 
         // Check whether the reg exp has a match in a string.
-        assert(numbers.hasMatch(someDigits));
+        assert(digitSequence.hasMatch(someDigits));
 
         // Loop through all matches.
-        for (final match in numbers.allMatches(someDigits)) {
+        for (final match in digitSequence.allMatches(someDigits)) {
           print(match.group(0)); // 15, then 20
         }
         // #enddocregion match
@@ -330,7 +330,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       // Maps can be built from a constructor.
@@ -366,7 +366,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       // Get all the keys as an unordered collection
@@ -389,7 +389,7 @@ void main() {
       var hawaiianBeaches = {
         'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
         'Big Island': ['Wailea Bay', 'Pololu Beach'],
-        'Kauai': ['Hanalei', 'Poipu']
+        'Kauai': ['Hanalei', 'Poipu'],
       };
 
       assert(hawaiianBeaches.containsKey('Oahu'));
@@ -449,8 +449,10 @@ void main() {
         // #enddocregion map-for-each
       }
 
-      expect(testForEach,
-          m.prints('I want to visit Honolulu and swim at Hanauma Bay'));
+      expect(
+        testForEach,
+        m.prints('I want to visit Honolulu and swim at Hanauma Bay'),
+      );
     });
 
     test('List.map()', () {
@@ -519,7 +521,8 @@ void main() {
 
       var encoded = Uri.encodeComponent(uri);
       assert(
-          encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+        encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message',
+      );
 
       var decoded = Uri.decodeComponent(encoded);
       assert(uri == decoded);
@@ -541,11 +544,12 @@ void main() {
     test('constructor', () {
       // #docregion uri
       var uri = Uri(
-          scheme: 'https',
-          host: 'example.org',
-          path: '/foo/bar',
-          fragment: 'frag',
-          queryParameters: {'lang': 'dart'});
+        scheme: 'https',
+        host: 'example.org',
+        path: '/foo/bar',
+        fragment: 'frag',
+        queryParameters: {'lang': 'dart'},
+      );
       assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
       // #enddocregion uri
     });

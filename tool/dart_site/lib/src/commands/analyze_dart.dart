@@ -26,22 +26,18 @@ final class AnalyzeDartCommand extends Command<int> {
   String get name => 'analyze-dart';
 
   @override
-  Future<int> run() async => analyzeDart(
-        verboseLogging: argResults.get<bool>(_verboseFlag, false),
-      );
+  Future<int> run() async =>
+      analyzeDart(verboseLogging: argResults.get<bool>(_verboseFlag, false));
 }
 
-int analyzeDart({
-  bool verboseLogging = false,
-}) {
+int analyzeDart({bool verboseLogging = false}) {
   if (!verboseLogging) {
     print('Analyzing code...');
   }
 
-  final dartAnalyzeOutput = Process.runSync(
-    Platform.executable,
-    const ['analyze'],
-  );
+  final dartAnalyzeOutput = Process.runSync(Platform.executable, const [
+    'analyze',
+  ]);
 
   if (dartAnalyzeOutput.exitCode != 0) {
     final normalOutput = dartAnalyzeOutput.stdout.toString();

@@ -41,6 +41,7 @@ void streamsTutorial() {
       yield convert(event);
     }
   }
+
   // #enddocregion map-log-errors
 }
 

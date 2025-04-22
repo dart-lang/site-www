@@ -15,13 +15,10 @@ on:
 permissions: read-all
 
 env:
-  # Keep for Dart SDK reporting
+  # Configure analytics reporting for pub.
   PUB_ENVIRONMENT: bot.github
-  # LTS
-  NODE_VERSION: '20'
-  # Tool location
-  BASE_DIR: ${{ github.workspace }}
-  TOOL_DIR: ${{ github.workspace }}/tool
+  # The Node version to use for site infra. Generally should be the latest LTS.
+  NODE_VERSION: '22'
 
 jobs:
   test:
@@ -40,7 +37,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
+      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
         with:
           sdk: ${{ matrix.sdk }}
       - name: Fetch Dart packages
@@ -59,39 +56,13 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
+      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
         with:
           sdk: stable
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
         run: dart run dart_site refresh-excerpts --fail-on-update --dry-run
-
-  linkcheck:
-    name: Build site and check links
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          submodules: recursive
-      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
-        with:
-          sdk: stable
-      - name: Fetch Dart packages
-        run: dart pub get
-      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
-      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-      - name: Install node dependencies
-        run: pnpm install
-      - name: Build site
-        run: dart run dart_site build
-      - name: Check for broken Markdown links
-        run: dart run dart_site check-link-references
-      - name: Check internal site links are functional
-        run: dart run dart_site check-links
 
   site-variable-scanner:
     name: Check if text can be replaced with site variables
@@ -100,7 +71,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
+      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
         with:
           sdk: stable
       - name: Fetch Dart packages
@@ -115,7 +86,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: recursive
-      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
+      - uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
         with:
           sdk: stable
       - name: Fetch Dart packages

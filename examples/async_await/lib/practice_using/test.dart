@@ -20,12 +20,14 @@ Future<int> fetchLoginAmount() => Future.delayed(oneSecond, () => logins);
 void main() async {
   try {
     messages
-      ..add(makeReadable(
+      ..add(
+        makeReadable(
           testLabel: 'Part 1',
           testResult: await asyncEquals(
-              expected: 'User role: administrator',
-              actual: await reportUserRole(),
-              typoKeyword: role),
+            expected: 'User role: administrator',
+            actual: await reportUserRole(),
+            typoKeyword: role,
+          ),
           readableErrors: {
             typoMessage: typoMessage,
             'null': '$didNotImplement reportUserRole?',
@@ -39,13 +41,17 @@ void main() async {
                 '$testFailedMessage reportUserRole. Did you return a user role?',
             'User role: tester':
                 '$testFailedMessage reportUserRole. Did you invoke fetchRole to fetch the user\'s role?',
-          }))
-      ..add(makeReadable(
+          },
+        ),
+      )
+      ..add(
+        makeReadable(
           testLabel: 'Part 2',
           testResult: await asyncEquals(
-              expected: 'Total number of logins: 42',
-              actual: await reportLogins(),
-              typoKeyword: logins.toString()),
+            expected: 'Total number of logins: 42',
+            actual: await reportLogins(),
+            typoKeyword: logins.toString(),
+          ),
           readableErrors: {
             typoMessage: typoMessage,
             'null': '$didNotImplement reportLogins?',
@@ -59,7 +65,9 @@ void main() async {
                 '$testFailedMessage reportLogins. Did you return the number of logins?',
             'Total number of logins: 57':
                 '$testFailedMessage reportLogins. Did you invoke fetchLoginAmount to fetch the number of user logins?',
-          }))
+          },
+        ),
+      )
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -69,9 +77,7 @@ void main() async {
       _result(false, messages);
     }
   } on UnimplementedError {
-    _result(false, [
-      '$didNotImplement reportUserRole?',
-    ]);
+    _result(false, ['$didNotImplement reportUserRole?']);
   } catch (e) {
     _result(false, ['Tried to run solution, but received an exception: $e']);
   }
@@ -114,4 +120,5 @@ Future<String> asyncEquals({
     return e.toString();
   }
 }
+
 // #enddocregion

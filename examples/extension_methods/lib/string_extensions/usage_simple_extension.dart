@@ -3,19 +3,19 @@
 // Import a library that contains an extension on String.
 // #docregion basic
 import 'string_apis.dart';
-// #enddocregion basic, import-and-use
 
 void main() {
+  // #enddocregion basic, import-and-use
   // WithOUT extension methods.
   print(int.parse('42'));
   print(double.parse('42'));
 
   // WITH extension methods.
-// #docregion import-and-use
+  // #docregion import-and-use
   print('42'.padLeft(5)); // Use a String method.
-// #docregion basic
+  // #docregion basic
   print('42'.parseInt()); // Use an extension method.
-// #enddocregion basic, import-and-use
+  // #enddocregion basic, import-and-use
   print('42'.parseDouble());
 
   // var vs. dynamic.
@@ -35,4 +35,7 @@ void main() {
     // #enddocregion dynamic
   }
   print(d); // Avoid unused_local_variable hint.
+  // #docregion basic, import-and-use
 }
+
+// #enddocregion basic, import-and-use

@@ -23,4 +23,5 @@ class MockVehicle implements Vehicle {
     // ...
   }
 }
+
 // #enddocregion abstract-usages

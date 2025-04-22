@@ -27,16 +27,14 @@ final class TestDartCommand extends Command<int> {
   String get name => 'test-dart';
 
   @override
-  Future<int> run() async => _testDart(
-        verboseLogging: argResults.get<bool>(_verboseFlag, false),
-      );
+  Future<int> run() async =>
+      _testDart(verboseLogging: argResults.get<bool>(_verboseFlag, false));
 }
 
-int _testDart({
-  bool verboseLogging = false,
-}) {
+int _testDart({bool verboseLogging = false}) {
   final directoriesToTest = [
     path.join('tool', 'dart_site'),
+    path.join('tool', 'get-dart', 'dart_sdk_archive'),
     ...dartProjectExampleDirectories,
   ];
 
@@ -52,15 +50,11 @@ int _testDart({
       return pubGetResult;
     }
 
-    final dartTestOutput = Process.runSync(
-      Platform.executable,
-      const [
-        'test',
-        '--reporter',
-        'expanded', // Non-animated expanded output looks better in CI and logs.
-      ],
-      workingDirectory: directory,
-    );
+    final dartTestOutput = Process.runSync(Platform.executable, const [
+      'test',
+      '--reporter',
+      'expanded', // Non-animated expanded output looks better in CI and logs.
+    ], workingDirectory: directory);
 
     if (dartTestOutput.exitCode != 0) {
       final normalOutput = dartTestOutput.stdout.toString();

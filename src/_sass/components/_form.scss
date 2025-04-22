@@ -1,5 +1,5 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
 
 form {
   .muted {
@@ -8,6 +8,12 @@ form {
     text-indent: 0;
     padding: 10px;
   }
+
+  &.form-inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .select {
@@ -15,32 +21,8 @@ form {
   cursor: pointer;
 
   select {
-    appearance: none;
     min-width: 120px;
-    padding: 0 30px 0 10px;
-    margin: 0 .25rem;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &:after {
-    font: $site-font-icon;
-    content: 'expand_more';
-    vertical-align: bottom;
-    display: block;
-    position: absolute;
-    right: .5rem;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    font-size: 20px;
-    color: $gray-dark;
-    pointer-events: none;
-    @include transition();
+    margin: 0 0.3rem;
   }
 }
 
@@ -57,6 +39,6 @@ input, select {
   color: $gray-dark;
 
   &:focus, &:active {
-    outline-color: #fff;
+    outline-color: $site-color-primary;
   }
 }
