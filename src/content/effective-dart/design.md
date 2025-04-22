@@ -1426,18 +1426,21 @@ var completer = Completer<Map<String, int>>();
 
 
 <a id="do-annotate-with-dynamic-instead-of-letting-inference-fail" aria-hidden="true"></a>
+
 ### DO annotate with `Object?` instead of letting inference fail
 
-When inference doesn't fill in a type, it usually defaults to `dynamic`, which
-is rarely the best type to use. A `dynamic` reference allows for unsafe
-operations that use identical syntax to operations that are statically safe when
-the type is not `dynamic`. An `Object?` reference is safer. For example a
-`dynamic` reference may fail a type cast that is not visible in the syntax,
-while an `Object?` reference will guarantee that the `as` cast is written in
-source.
+When inference doesn't fill in a type, it usually defaults to `dynamic`,
+which is rarely the best type to use.
+A `dynamic` reference allows for unsafe operations that
+use identical syntax to operations that are
+statically safe when the type is not `dynamic`.
+An `Object?` reference is safer.
+For example, a `dynamic` reference might fail a type cast that
+is not visible in the syntax, while an `Object?` reference will
+guarantee that the `as` cast is explicitly written.
 
-Use `Object?` to indicate in a signature that any type of object, or null, is
-allowed.
+Use `Object?` to indicate in a signature that
+any type of object, or null, is allowed.
 
 <?code-excerpt "design_good.dart (prefer-object-question)"?>
 ```dart tag=good
@@ -1449,18 +1452,21 @@ Object? mergeJson(Object? original, Object? changes) => ...
 mergeJson(original, changes) => ...
 ```
 
-In the cases where a dynamic member will be invoked this is technically the most
-terse way to get a dynamic reference. However, it's not the most *clear* way. A
-casual reader of your code who sees that an annotation is missing has no way of
-knowing if you intended it to be `dynamic`, expected inference to fill in some
-other type, or simply forgot to write the annotation. When `dynamic` is the type
-you want, write that explicitly to make your intent clear and highlight that
-this code has less static safety.
+In the cases where a dynamic member will be invoked,
+this is technically the tersest way to get a dynamic reference.
+However, it's not the most *clear* way.
+A casual reader of your code who sees that an annotation is missing has
+no way of knowing if you intended it to be `dynamic`,
+expected inference to fill in some other type,
+or simply forgot to write the annotation.
+When `dynamic` is the type you want,
+write that explicitly to make your intent clear and
+highlight that this code has less static safety.
 
 :::note
-With Dart's strong type system and type inference, 
-users expect Dart to behave like an inferred statically-typed language. 
-With that mental model, 
+With Dart's strong type system and type inference,
+users expect Dart to behave like an inferred statically-typed language.
+With that mental model,
 it is an unpleasant surprise to discover that
 a region of code has silently lost all of the
 safety and performance of static types.
@@ -1658,6 +1664,7 @@ where you must use the new syntax.
 
 
 <a id="avoid-using-dynamic-unless-you-want-to-disable-static-checking" aria-hidden="true"></a>
+
 ### AVOID using `dynamic` unless you want to invoke dynamic members
 
 Some operations work with any possible object. For example, a `log()` method
@@ -1688,17 +1695,18 @@ bool convertToBool(Object arg) {
 }
 ```
 
-Prefer using `Object?` over `dynamic` in code that is not invoking a member
-dynamically, even when working with existing APIs that use `dynamic`. For
-example, the static types `Map<String, dynamic>` and `Map<String, Object?>` can
-both be used as the static type for the same value, and the `Object?` form is
-preferred.
+Prefer using `Object?` over `dynamic` in code not invoking a member dynamically,
+even when working with existing APIs that use `dynamic`.
+For example, the static types `Map<String, dynamic>` and `Map<String, Object?>`
+can both be used as the static type for the same value, and
+the `Object?` form is preferred.
 
-For intentional dynamic member access, consider using a cast to `dynamic` for
-the member access specifically. Separating the use of `Object?` for non-dynamic
-behavior and limiting `dynamic` to the places where dynamic operations are
+For intentional dynamic member access, consider
+using a cast to `dynamic` for the member access specifically.
+Separating the use of `Object?` for non-dynamic behavior and
+limiting `dynamic` to the places where dynamic operations are
 intended makes them syntactically distinct and highlights the places where
-mistakes like misspellings may not be caught by static type checking.
+static type checking might not catch mistakes like misspellings.
 
 <?code-excerpt "design_good.dart (cast-for-dynamic-member)"?>
 ```dart tag=good
