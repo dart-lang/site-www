@@ -64,7 +64,7 @@ class C<ChunkBuilder, Flag, LineWriter> {
   /// @returns The new flag.
   /// @throws ArgumentError If there is already an option with
   ///     the given name or abbreviation.
-  Flag addFlag(String name, String abbr) => ellipsis();
+  Flag addFlag(String name, String abbreviation) => ellipsis();
   // #enddocregion no-annotations
 }
 

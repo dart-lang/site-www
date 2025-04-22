@@ -31,11 +31,15 @@ void miscDeclAnalyzedButNotTested() {
 
   <Flag>() {
     // #docregion no-annotations
-    /// Defines a flag.
+    /// Defines a flag with the given [name] and [abbreviation].
     ///
-    /// Throws an [ArgumentError] if there is already an option named [name] or
-    /// there is already an option using abbreviation [abbr]. Returns the new flag.
-    Flag addFlag(String name, String abbr) => ellipsis();
+    /// The [name] and [abbreviation] strings must not be empty.
+    ///
+    /// Returns a new flag.
+    ///
+    /// Throws a [DuplicateFlagException] if there is already an option named
+    /// [name] or there is already an option using the [abbreviation].
+    Flag addFlag(String name, String abbreviation) => ellipsis();
     // #enddocregion no-annotations
   };
 
@@ -64,19 +68,17 @@ void miscDeclAnalyzedButNotTested() {
 
   <T>() {
     // #docregion third-person
-    /// Returns `true` if every element satisfies the [predicate].
-    bool all(bool predicate(T element)) => ellipsis();
+    /// Connects to the server and fetches the query results.
+    Stream<QueryResult> fetchResults(Query query) => ellipsis();
 
     /// Starts the stopwatch if not already running.
-    void start() {
-      ellipsis();
-    }
+    void start() => ellipsis();
 
     // #enddocregion third-person
   };
 
   // #docregion code-sample
-  /// Returns the lesser of two numbers.
+  /// The lesser of two numbers.
   ///
   /// ```dart
   /// min(5, 3) == 3
@@ -157,16 +159,23 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion markdown
 }
 
+class DuplicateFlagException implements Exception {}
+
 class IOError {}
 
 class PermissionError {}
+
+class Query {}
+
+class QueryResult {}
 
 class Widget {}
 
 // #docregion redundant
 class RadioButtonWidget extends Widget {
-  /// Sets the tooltip to [lines], which should have been word wrapped using
-  /// the current font.
+  /// Sets the tooltip to [lines].
+  ///
+  /// The lines should be word wrapped using the current font.
   void tooltip(List<String> lines) {
     ellipsis();
   }
@@ -222,6 +231,18 @@ class Modal {
 
 //----------------------------------------------------------------------------
 
+abstract class MyIterable<E> {
+  // #docregion noun-for-func-returning-value
+  /// The [index]th element of this iterable in iteration order.
+  E elementAt(int index);
+
+  /// Whether this iterable contains an element equal to [element].
+  bool contains(Object? element);
+  // #enddocregion noun-for-func-returning-value
+}
+
+//----------------------------------------------------------------------------
+
 class Pool {
   // #docregion getter-and-setter
   /// The pH level of the water in the pool.
@@ -259,10 +280,10 @@ class ToggleComponent {}
 
 // #docregion this
 class Box {
-  /// The value this wraps.
+  /// The value this box wraps.
   Object? _value;
 
-  /// True if this box contains a value.
+  /// Whether this box contains a value.
   bool get hasValue => _value != null;
 }
 
