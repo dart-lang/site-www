@@ -110,7 +110,7 @@ The doc comment for a type alias that aliases a class, enum, extension type, or
 mixin can't reference any of the aliased type's members as if they were in
 scope.
 
-## Documentation imports
+## Doc imports
 
 Dart provides a "documentation imports" feature which enables external elements
 to be referenced in doc comments without actually importing them via a Dart
