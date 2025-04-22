@@ -112,10 +112,9 @@ scope.
 
 ## Doc imports
 
-Dart provides a "documentation imports" feature which enables external elements
-to be referenced in doc comments without actually importing them via a Dart
-import directive. Doc imports are specified in a doc comment on a `library`
-directive. For example:
+Dart provides a `@docImport` documentation tag, which enables external elements
+to be referenced in doc comments without actually importing them. This tag can be
+specified in a doc comment above a `library` directive. For example:
 
 ```dart
 /// @docImport 'dart:async';
