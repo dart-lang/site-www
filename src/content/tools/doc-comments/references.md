@@ -128,7 +128,7 @@ class Foo {}
 
 Doc imports support all of the same URI styles as regular Dart imports (for example,
 'dart:', 'package:', and relative paths). They can't contain the `deferred`
-keyword, or configurations. Doc imports currently can't contain `as`, `show`,
+keyword or configurations. Doc imports currently can't contain `as`, `show`,
 or `hide`.
 
 :::version-note
