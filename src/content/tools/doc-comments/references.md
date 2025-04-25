@@ -125,10 +125,12 @@ library;
 class Foo {}
 ```
 
-Doc imports support all of the same URI styles as regular Dart imports (for example,
-'dart:', 'package:', and relative paths). They can't contain the `deferred`
-keyword or configurations. Doc imports currently can't contain `as`, `show`,
-or `hide`.
+Doc imports support all of the same URI styles as [regular Dart imports][] (for
+example, 'dart:', 'package:', and relative paths). They can't contain the
+`deferred` keyword or configurations. Doc imports currently can't contain `as`,
+`show`, or `hide`.
+
+[regular doc imports]: https://dart.dev/language/libraries#using-libraries
 
 :::version-note
 Support for doc imports was introduced in Dart 3.8.
