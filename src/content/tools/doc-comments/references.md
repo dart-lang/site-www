@@ -63,8 +63,9 @@ link is created.
 Most library members can be referenced in a doc comment, including classes,
 constants, enums, named extensions, extension types, functions, mixins, and
 type aliases. This includes all in-scope library members, either declared
-locally, or imported. Library members that are imported with an import prefix
-can be referenced with the prefix. For example:
+locally, or imported, or [imported with a doc import](#doc-imports). Library
+members that are imported with an import prefix can be referenced with the
+prefix. For example:
 
 ```dart
 import 'dart:math' as math;
