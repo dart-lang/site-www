@@ -121,7 +121,7 @@ specified in a doc comment above a `library` directive. For example:
 library;
 
 /// We can now reference elements like [Future] and [Future.value] from
-/// dart:async, even if the library is not imported with an actual import.
+/// `dart:async`, even if the library is not imported with an actual import.
 class Foo {}
 ```
 
