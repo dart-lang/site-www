@@ -131,5 +131,5 @@ keyword or configurations. Doc imports currently can't contain `as`, `show`,
 or `hide`.
 
 :::version-note
-Doc imports were introduced in Dart 3.8.
+Support for doc imports was introduced in Dart 3.8.
 :::
