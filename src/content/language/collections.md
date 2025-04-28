@@ -375,8 +375,8 @@ collection:
 In the following example, a list called `a` is ignored
 because it's null, but the elements in a list called `b`
 are added to a list called `items`. Notice that if a
-collection itself is not null, but it contains elements that
-are, those null elements are added to the result.
+collection itself is not `null`, but it contains elements that
+are, those `null` elements are still added to the result.
 
 ```dart
 List<int>? a = null;
