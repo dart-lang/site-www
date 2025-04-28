@@ -22,7 +22,7 @@ Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
 [`List`][] objects, so most people just call them *lists*.
 
-Dart list literals are denoted by a comma separated list of
+Dart list literals are denoted by a comma-separated list of
 elements enclosed in square brackets (`[]`). Each element
 contain an expression or value. Here's a simple Dart list:
 
