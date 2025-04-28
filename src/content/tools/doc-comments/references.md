@@ -131,7 +131,7 @@ example, 'dart:', 'package:', and relative paths). They can't contain the
 `deferred` keyword or configurations. Doc imports currently can't contain `as`,
 `show`, or `hide`.
 
-[regular doc imports]: /language/libraries#using-libraries
+[regular Dart imports]: /language/libraries#using-libraries
 
 :::version-note
 Support for doc imports was introduced in Dart 3.8.
