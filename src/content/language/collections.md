@@ -400,14 +400,14 @@ List<String> buildCommandLine(
   return [
     executable,
     ...options,
-    ...extraOptions, // <-- OK now.
+    ...extraOptions, // <-- Error
   ];
 }
 
 // Usage:
 //   buildCommandLine('dart', ['run', 'my_script.dart'], null);
 // Result:
-//   [dart, run, my_script.dart]
+//   Compile-time error
 ```
 
 If you want to spread a nullable collection, use a
@@ -513,7 +513,7 @@ collection:
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_a.dart (code_sample)"?>
 ```dart
-dynamic data = 123;
+Object data = 123;
 var typeInfo = [
   if (data case int i) 'Data is an integer: $i',
   if (data case String s) 'Data is a string: $s',

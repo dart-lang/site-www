@@ -10,14 +10,14 @@ List<String> buildCommandLine(
   return [
     executable,
     ...options,
-    ...extraOptions, // <-- OK now.
+    ...extraOptions, // <-- Error
   ];
 }
 
 // Usage:
 //   buildCommandLine('dart', ['run', 'my_script.dart'], null);
 // Result:
-//   [dart, run, my_script.dart]
+//   Compile-time error
 // #enddocregion code_sample
 
 void main() {
