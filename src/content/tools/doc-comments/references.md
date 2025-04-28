@@ -130,10 +130,9 @@ library;
 class Foo {}
 ```
 
-Doc imports support the same URI styles as [regular Dart imports][]
-(for example, 'dart:', 'package:', and relative paths).
-They can't contain the `deferred` keyword or configurations.
-Doc imports currently can't contain `as`, `show`, or `hide`.
+Doc imports support the same URI styles as [regular Dart imports][],
+including the `dart:` and `package:` schemes as well as relative paths.
+However, they can't be deferred or configured with `as`, `show`, or `hide`.
 
 [regular Dart imports]: /language/libraries#using-libraries
 
