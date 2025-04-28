@@ -24,7 +24,7 @@ is the *array*, or ordered group of objects. In Dart, arrays are
 
 Dart list literals are denoted by a comma-separated list of
 elements enclosed in square brackets (`[]`). Each element
-contain an expression or value. Here's a simple Dart list:
+contains an expression or value. Here's a simple Dart list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
