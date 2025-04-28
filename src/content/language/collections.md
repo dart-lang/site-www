@@ -441,7 +441,7 @@ To learn more about the null-aware spread operator, see
 
 ### If elements {: #if-element }
 
-You can use an `if` element inside of a collection
+You can use an `if` element inside of a collection literal
 to conditionally include elements in the collection.
 An if element is a control flow element type that is
 converted into zero or more leaf elements at run-time.
