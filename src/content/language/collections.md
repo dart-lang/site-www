@@ -461,8 +461,8 @@ if (<expression> case <pattern>) <result>
 ```dart
 // If the operation such as '(<bool_expression>)'
 // or '(<expression> case <pattern>)' resolves as true,
-// include the first result, otherwise include the second
-// result.
+// include the first result, otherwise,
+// include the second result.
 if (<if_operation>) <result> else <result>
 ```
 
