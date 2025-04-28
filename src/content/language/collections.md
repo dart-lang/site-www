@@ -48,7 +48,7 @@ var list = ['Car', 'Boat', 'Plane'];
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. 
+and `list.length - 1` is the index of the last element.
 You can get a list's length using the `.length` property
 and access a list's elements using the subscript operator (`[]`):
 
