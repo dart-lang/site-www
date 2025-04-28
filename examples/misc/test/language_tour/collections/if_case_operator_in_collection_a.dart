@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 
 void main() {
   // #docregion code_sample
-  dynamic data = 123;
+  Object data = 123;
   var typeInfo = [
     if (data case int i) 'Data is an integer: $i',
     if (data case String s) 'Data is a string: $s',
