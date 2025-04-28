@@ -359,7 +359,7 @@ about the spread operator, see [Spread operator][].
 
 The null-aware spread element (`...?`) adds elements
 in a nullable collection to another collection. If the
-nullable collection itself is null, it is skipped and no
+nullable collection itself is `null`, it is skipped and no
 element is added for it.
 A null-aware spread element is a control flow element type
 that is converted into zero or more leaf elements at
