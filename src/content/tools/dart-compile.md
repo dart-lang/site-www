@@ -177,7 +177,7 @@ and Linux.
 
 To use cross-compilation, include the following flags:
 
-*   `-target-os=linux`: The target operating system
+*   `--target-os=linux`: The target operating system
     for the compiled executable. The Linux operating system
     is supported at this time.
 
@@ -194,7 +194,7 @@ standalone executable for a 64-bit Linux system:
 
 ```console
 dart compile exe \
-  -target-os=linux \
+  --target-os=linux \
   --target-arch=x64 \
   --experimental-cross-compilation \
   hello.dart
@@ -240,8 +240,12 @@ The `exe` subcommand has the following known limitations:
   see the [Multi-platform][] and [Native platform][] library
   tables.
 
+* Cross-compilation is supported, but the target is limited
+  to Linux. For more information, see [Cross-compilation][].
+
 [Multi-platform]: /libraries#multi-platform-libraries
 [Native platform]: /libraries#native-platform-libraries
+[Cross-compilation]: #cross-compilation-exe
 
 ### AOT modules (aot-snapshot) {:#aot-snapshot}
 
