@@ -186,9 +186,6 @@ To use cross-compilation, include the following flags:
     for this flag can be `arm64` (64-bit ARM processor)
     or `x64` (64-bit processor).
 
-*   `--experimental-cross-compilation`: Explicitly enables
-    the cross-compilation functionality.
-
 The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:
 
@@ -196,7 +193,6 @@ standalone executable for a 64-bit Linux system:
 dart compile exe \
   --target-os=linux \
   --target-arch=x64 \
-  --experimental-cross-compilation \
   hello.dart
 ```
 
