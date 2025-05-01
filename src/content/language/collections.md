@@ -258,38 +258,43 @@ For more information about maps, refer to the Maps section of the
 
 ## Collection elements {: #collection-elements }
 
-Elements represent the items in a collection. There are two
-element categories: _leaf elements_ and
-_control flow elements_. 
+A collection literal contains a series of elements. During
+runtime, each element is evaluated, producing zero or more
+values that are then inserted into the resulting collection.
+These elements fall into two main categories: leaf elements
+and control flow elements.
 
-*   Leaf element: Represents an expression element or
-    map entry element. A leaf element exist before and after
-    run-time in a collection.
+*   Leaf element: Inserts an individual item into a
+    collection literal.
     
-    *   Expression element: Contains an expression that
-        produces a value.
+    *   Expression element: Evaluates a single
+        general expression and inserts the resulting value
+        into the collection.
 
-    *   Map entry element: Contains an expression that
-        produces a key-value pair.
+    *   Map entry element: Evaluates a pair of key and value
+        expressions and inserts the resulting entry into the
+        collection. 
 
-*   Control flow element: Represents a unique type of
-    element that replaces itself with zero or more
-    additional leaf elements at a specific location in a
-    collection at run-time. A collection only contains
-    control-flow elements before run-time.
+*   Control flow element: Conditionally or iteratively
+    constructs collections directly within a
+    collection literal.
 
-    *   Spread element: Inserts the elements from one
-        collection into another.
+    *   Spread element: Iterates over a given sequence
+        (collection expression) and inserts all of the
+        resulting values into another collection.
     
-    *   Null-aware spread element: Similar to the spread
-        element, but won't produce an error if you attempt
-        to pass in a null collection.
+    *   Null-aware spread element: Similar to the
+        spread element, but allows the collection to be
+        `null` and inserts nothing if it is.
 
-    *   If element: Inserts an element if a condition is
-        met.
+    *   If element: Conditionally evaluates an inner element
+        based on given a condition expression, and
+        optionally evaluates another `else` element if the
+        condition is false.
 
-    *   For element: Inserts zero or more elements if a
-        condition is met.
+    *   For element: Iterates and repeatedly evaluates a
+        given inner element, inserting zero or more
+        resulting values.
 
 To learn more about collection elements, see the following
 sections.
@@ -300,11 +305,11 @@ sections.
 
 ### Expression elements {: #expression-element }
 
-An expression element can contain a general expression that
-produces a value. In a collection, a general expression can
-include literals, variables, operators, function calls, and
-constructor calls. An expression element is a
-leaf element type and exists before and after run-time.
+An expression element evaluates a single general expression
+and inserts the resulting value into a collection. This
+general expression can encompass various constructs like
+literals, variables, operators, function calls, and
+constructor calls.
 
 An expression element has this syntax in a collection:
 
@@ -314,10 +319,10 @@ An expression element has this syntax in a collection:
 
 ### Map entry elements {: #map-entry-element }
 
-A map entry element contains a key-value pair for a map.
-The key and the value can both contain a general expression.
-A map element is a leaf element type and exists
-before and after run-time.
+A map entry element evaluates a pair of key and value
+expressions and inserts the resulting entry into a
+collection. Both the key and the value within this pair can
+be general expressions.
 
 A map entry element has this syntax in a collection:
 
@@ -327,10 +332,9 @@ A map entry element has this syntax in a collection:
 
 ### Spread elements {: #spread-element }
 
-The spread element (`...`) lets you add elements in one
-collection to another.
-A spread element is a control flow element type that is
-converted into zero or more leaf elements at run-time.
+The spread element (`...`) iterates over a given sequence
+(collection expression) and inserts all of the resulting
+values into another collection.
 
 A spread element has this syntax in a collection:
 
@@ -357,13 +361,9 @@ about the spread operator, see [Spread operator][].
 
 ### Null-aware spread elements {: #null-spread-element }
 
-The null-aware spread element (`...?`) adds elements
-in a nullable collection to another collection. If the
-nullable collection itself is `null`, it is skipped and no
-element is added for it.
-A null-aware spread element is a control flow element type
-that is converted into zero or more leaf elements at
-run-time.
+The null-aware spread element (`...?`) is similar to the
+spread element, but allows the collection to be `null` and
+inserts nothing if it is.
 
 A null-aware spread element has this syntax in a
 collection:
@@ -441,10 +441,9 @@ To learn more about the null-aware spread operator, see
 
 ### If elements {: #if-element }
 
-You can use an `if` element inside of a collection literal
-to conditionally include elements in the collection.
-An if element is a control flow element type that is
-converted into zero or more leaf elements at run-time.
+An `if` element conditionally evaluates an inner element
+based on given a condition expression, and optionally
+evaluates another `else` element if the condition is false.
 
 The `if` element has a few syntax variations:
 
@@ -571,15 +570,13 @@ conditional, see [`if-case` statement][].
 
 ### For elements {: #for-element }
 
-You can use a `for` element inside of a collection to
-insert multiple elements into that collection.
-A for element is a control flow element type that is
-converted into zero or more leaf elements at run-time.
+A `for` element iterates and repeatedly evaluates a given
+inner element, inserting zero or more resulting values.
 
 A `for` element has this syntax in a collection:
 
 ```dart
-for (<expression> in <collection>) <result>
+for (<general_expression> in <collection>) <result>
 ```
 
 ```dart
