@@ -252,7 +252,7 @@ const baz = []; // Equivalent to `const []`
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON'T use const redundantly][].
 
-You can change the value of a non-final, non-const variable,
+You can change the reference of a non-final, non-const variable,
 even if it used to have a `const` value:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
