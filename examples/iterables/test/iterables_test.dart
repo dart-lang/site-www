@@ -152,7 +152,7 @@ void main() {
       final hundredthItem = items[99];
       final thousandthItem = items[999];
       final lastItem = items.last;
-      // #docregion iterable-to-list
+      // #enddocregion iterable-to-list
       expect(tenthItem, 9);
       expect(hundredthItem, 99);
       expect(thousandthItem, 999);
