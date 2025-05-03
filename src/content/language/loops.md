@@ -57,10 +57,21 @@ In that case, use the `for-in` loop for cleaner code:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
 ```dart
-for (final candidate in candidates) {
+for (var candidate in candidates) {
   candidate.interview();
 }
 ```
+
+In this example loop, the `candidate` variable is
+defined within the loop body and
+set to a reference to one value from `candidates` at a time.
+
+:::note
+`candidate` is just a normal, local [variable][].
+Reassigning `candidate` inside the loop body only
+changes the local variable for that iteration and
+doesn't modify the original `candidates` iterable.
+:::
 
 To process the values obtained from the iterable, 
 you can also use a [pattern][] in a `for-in` loop:
@@ -85,6 +96,7 @@ var collection = [1, 2, 3];
 collection.forEach(print); // 1 2 3
 ```
 
+[variable]: /language/variables
 
 ## While and do-while
 
