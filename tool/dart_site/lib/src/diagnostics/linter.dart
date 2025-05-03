@@ -53,7 +53,7 @@ Future<void> fetchAndUpdate() async {
     '  ',
   ).convert(await _lintDocs);
 
-  File(_outputPath).writeAsStringSync(formattedRuleInfo);
+  File(_outputPath).writeAsStringSync('$formattedRuleInfo\n');
 }
 
 Future<Set<String>> _rulesConfigured(String path) async {
