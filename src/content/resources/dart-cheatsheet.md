@@ -2023,6 +2023,14 @@ void main() {
     if (obj.milligramsOfSodium != 200) {
       errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
     }
+
+    try {
+      obj.ingredients.add('Sugar to taste');
+      errs.add('Tried adding an item to the \'ingredients\' list of a const Recipe and didn\'t get an error due to it being unmodifiable.');
+    } on UnsupportedError catch (_) {
+      // We expect an `UnsupportedError` due to
+      // `ingredients` being a const, unmodifiable list.
+    }
   } catch (e) {
     print('Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and received a null.');
   }
