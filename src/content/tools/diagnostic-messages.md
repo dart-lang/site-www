@@ -36,6 +36,7 @@ that might work in unexpected ways.
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
 [irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
 [kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html
+[meta-awaitNotRequired]: https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
 [meta-doNotSubmit]: https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html
 [meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
@@ -9795,6 +9796,37 @@ int i = 0;
 int s = i;
 ```
 
+### invalid_await_not_required_annotation
+
+_The annotation 'awaitNotRequired' can only be applied to a Future-returning
+function, or a Future-typed field._
+
+#### Description
+
+The analyzer produces this diagnostic when anything other than a
+`Future`-returning function or a `Future`-typed field or top-level
+variable is annotated with [`awaitNotRequired`][meta-awaitNotRequired].
+
+#### Example
+
+The following code produces this diagnostic because the annotation is on a
+`void`-returning function:
+
+```dart
+import 'package:meta/meta.dart';
+
+@[!awaitNotRequired!]
+void f() {}
+```
+
+#### Common fixes
+
+Remove the annotation:
+
+```dart
+void f() {}
+```
+
 ### invalid_dependency
 
 _Publishable packages can't have '{0}' dependencies._
@@ -11530,6 +11562,59 @@ extension E on String {
 }
 ```
 
+### invalid_use_of_do_not_submit_member
+
+_Uses of '{0}' should not be submitted to source control._
+
+#### Description
+
+The analyzer produces this diagnostic when a member that is annotated with
+[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
+declaration that is also annotated with `@doNotSubmit`.
+
+#### Example
+
+Given a file `a.dart` containing the following declaration:
+
+```dart
+import 'package:meta/meta.dart';
+
+@doNotSubmit
+void emulateCrash() { /* ... */ }
+```
+
+The following code produces this diagnostic because the declaration is
+being referenced outside of a member that is also annotated with
+`@doNotSubmit`:
+
+```dart
+import 'a.dart';
+
+void f() {
+  [!emulateCrash!]();
+}
+```
+
+#### Common fixes
+
+Most commonly, when complete with local testing, the reference to the
+member should be removed.
+
+If building additional functionality on top of the member, annotate the
+newly added member with `@doNotSubmit` as well:
+
+```dart
+import 'package:meta/meta.dart';
+
+import 'a.dart';
+
+@doNotSubmit
+void emulateCrashWithOtherFunctionality() {
+  emulateCrash();
+  // do other things.
+}
+```
+
 ### invalid_use_of_internal_member
 
 _The member '{0}' can only be used within its package._
@@ -11902,6 +11987,187 @@ annotation, remove the annotation:
 
 ```dart
 class C {}
+```
+
+### invalid_widget_preview_application
+
+_The '@Preview(...)' annotation can only be applied to public, statically
+accessible constructors and functions._
+
+#### Description
+
+The analyzer produces this diagnostic when a `@Preview(...)` annotation
+is applied to an invalid widget preview target. Widget previews can only
+be applied to public, statically accessible, explicitly defined
+constructors and functions.
+
+#### Examples
+
+The following code produces this diagnostic because `_myPrivatePreview`
+is private:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+// Invalid application to private top-level function.
+@[!Preview!]()
+// ignore: unused_element
+Widget _myPrivatePreview() => Text('Foo');
+```
+
+The following code produces this diagnostic because `myExternalPreview`
+is `external`:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+
+// Invalid application to an external function.
+@[!Preview!]()
+external Widget myExternalPreview();
+```
+
+The following code produces this diagnostic because `PublicWidget._()` is
+private:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+class PublicWidget extends StatelessWidget {
+  // Invalid application to a private constructor.
+  @[!Preview!]()
+  PublicWidget._();
+
+  @override
+  Widget build(BuildContext) => Text('Foo');
+}
+```
+
+The following code produces this diagnostic because `instancePreview` is
+an instance method:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+class PublicWidget extends StatelessWidget {
+  // Invalid application to a instance member.
+  @[!Preview!]()
+  Widget instancePreview() => PublicWidget();
+
+  @override
+  Widget build(BuildContext context) => Text('Foo');
+}
+```
+
+The following code produces this diagnostic because `_PrivateWidget` is
+private:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+// ignore: unused_element
+class _PrivateWidget extends StatelessWidget {
+  // Invalid application to a constructor of a private class.
+  @[!Preview!]()
+  _PrivateWidget();
+
+  @override
+  Widget build(BuildContext context) => Text('Foo');
+}
+```
+
+The following code produces this diagnostic because `_PrivateWidget` is
+private:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+// ignore: unused_element
+class _PrivateWidget extends StatelessWidget {
+  // Invalid application to a static method of a private class.
+  @[!Preview!]()
+  Widget privateStatic() => _PrivateWidget();
+
+  @override
+  Widget build(BuildContext context) => Text('Foo');
+}
+```
+
+The following code produces this diagnostic because `AbstractWidget` is
+an `abstract` class:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+abstract class AbstractWidget extends StatelessWidget {
+  // Invalid application to a constructor of an abstract class.
+  @[!Preview!]()
+  AbstractWidget();
+
+  @override
+  Widget build(BuildContext context) => Text('Foo');
+}
+```
+
+#### Common fixes
+
+Create a dedicated public, statically accessible, and explicitly defined
+constructor, top-level function, or class member for use as a preview:
+
+### invalid_widget_preview_private_argument
+
+_'@Preview(...)' can only accept arguments that consist of literals and public
+symbols._
+
+#### Description
+
+The analyzer produces this diagnostic when the `Preview` constructor is
+invoked with arguments that contain references to private symbols.
+
+#### Example
+
+The following code produces this diagnostic because the constant variable
+`_name` is private to the current library:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+const String _name = 'My Foo Preview';
+
+@Preview([!name: _name!])
+Widget myPreview() => Text('Foo');
+```
+
+#### Common fixes
+
+If appropriate, the private symbol should be made public:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+const String name = 'My Foo Preview';
+
+@Preview(name: name)
+Widget myPreview() => Text('Foo');
+```
+
+Otherwise, a different public constant symbol should be used:
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widget_previews.dart';
+
+@Preview(name: 'My Foo Preview')
+Widget myPreview() => Text('Foo');
 ```
 
 ### invocation_of_extension_without_call
@@ -13900,8 +14166,8 @@ import 'dart:core' [!show Future, List, int show Future!];
 var x = Future.value(1);
 ```
 
-The following code produces this diagnostic because the second `hide` combinator
-is redundant:
+The following code produces this diagnostic because
+the second `hide` combinator is redundant:
 
 ```dart
 import 'dart:math' [!hide Random, max, min hide min!];
@@ -13909,8 +14175,8 @@ import 'dart:math' [!hide Random, max, min hide min!];
 var x = pi;
 ```
 
-The following codes produce this diagnostic because the `hide` combinator
-is redundant:
+The following codes produce this diagnostic because
+the `hide` combinator is redundant:
 
 ```dart
 import 'dart:math' [!show Random, max hide min!];
@@ -13919,8 +14185,9 @@ var x = max(0, 1);
 var r = Random();
 ```
 
-The following code produces this diagnostic because the `show` combinator
-already hides `Random` and `max`, so the `hide` combinator is redundant:
+The following code produces this diagnostic because
+the `show` combinator already hides `Random` and `max`,
+so the `hide` combinator is redundant:
 
 ```dart
 import 'dart:math' [!hide Random, max show min!];
@@ -13930,7 +14197,8 @@ var x = min(0, 1);
 
 #### Common fixes
 
-If you prefer to list the names that should be visible, then use a single `show` combinator:
+If you prefer to list the names that should be visible,
+then use a single `show` combinator:
 
 ```dart
 import 'dart:math' show min;
@@ -13938,7 +14206,8 @@ import 'dart:math' show min;
 var x = min(0, 1);
 ```
 
-If you prefer to list the names that should be hidden, then use a single `hide` combinator:
+If you prefer to list the names that should be hidden,
+then use a single `hide` combinator:
 
 ```dart
 import 'dart:math' hide Random, max, min;
@@ -25531,6 +25800,8 @@ class C {}
 
 _The parameter name '{0}' matches a visible type name._
 
+_The type parameter name '{0}' matches a visible type name._
+
 #### Description
 
 The analyzer produces this diagnostic when the name of a parameter in a
@@ -25543,6 +25814,11 @@ rather than the type of the parameter. Even when that's not the case (the
 name of the parameter is intentional), the name of the parameter will
 shadow the existing type, which can lead to bugs that are difficult to
 diagnose.
+
+The analyzer also produces this diagnostic when the name of a type
+parameter in a type parameter list is the same as a type whose name is
+in scope. It is again recommended that the type parameter is renamed
+such that the error-prone shadowing is avoided.
 
 #### Example
 
@@ -26825,59 +27101,6 @@ JS interop values:
 import 'dart:js_interop';
 
 void f(Object b) => b.jsify()?.isA<JSBoolean>();
-```
-
-### invalid_use_of_do_not_submit_member
-
-_Uses of '{0}' should not be submitted to source control._
-
-#### Description
-
-The analyzer produces this diagnostic when a member that is annotated with
-[`@doNotSubmit`][meta-doNotSubmit] is referenced outside of a member
-declaration that is also annotated with `@doNotSubmit`.
-
-#### Example
-
-Given a file `a.dart` containing the following declaration:
-
-```dart
-import 'package:meta/meta.dart';
-
-@doNotSubmit
-void emulateCrash() { /* ... */ }
-```
-
-The following code produces this diagnostic because the declaration is
-being referenced outside of a member that is also annotated with
-`@doNotSubmit`:
-
-```dart
-import 'a.dart';
-
-void f() {
-  [!emulateCrash!]();
-}
-```
-
-#### Common fixes
-
-Most commonly, when complete with local testing, the reference to the
-member should be removed.
-
-If building additional functionality on top of the member, annotate the
-newly added member with `@doNotSubmit` as well:
-
-```dart
-import 'package:meta/meta.dart';
-
-import 'a.dart';
-
-@doNotSubmit
-void emulateCrashWithOtherFunctionality() {
-  emulateCrash();
-  // do other things.
-}
 ```
 
 ### library_annotations
@@ -28679,7 +28902,8 @@ void f(Iterable<String> data) {
   </a>
 </div>
 
-_Use 'forEach' rather than a 'for' loop to apply a function to every element._
+_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to
+every element._
 
 #### Description
 

@@ -235,6 +235,7 @@ that might work in unexpected ways.
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
 [irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
 [kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html
+[meta-awaitNotRequired]: https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html
 [meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
 [meta-doNotSubmit]: https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html
 [meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
