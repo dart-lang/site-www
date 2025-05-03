@@ -407,6 +407,12 @@ constructor, use `.new` after the class name:
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
+To learn more about the references that
+the analyzer and `dart doc` support in doc comments,
+check out [Documentation comment references][].
+
+[Documentation comment references]: /tools/doc-comments/references
+
 ### DO use prose to explain parameters, return values, and exceptions
 
 Other languages use verbose tags and sections to describe what the parameters
