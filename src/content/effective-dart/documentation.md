@@ -382,13 +382,16 @@ makes an API easier to learn.
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional,
-but can make it clearer when you're referring to a method or constructor.
+Parentheses are optional but can
+clarify you're referring to a function or constructor.
+The following partial doc comments illustrate a few cases
+where these comment references can be helpful:
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
 ```dart tag=good
 /// Throws a [StateError] if ...
-/// similar to [anotherMethod()], but ...
+///
+/// Similar to [anotherMethod()], but ...
 ```
 
 To link to a member of a specific class, use the class name and member name,
