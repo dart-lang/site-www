@@ -137,7 +137,7 @@ Future<void> greet() async {
 In the preceding code,
 the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
-see [asynchrony support](/language/async).
+check out [asynchronous programming](/language/async).
 
 You can invoke `loadLibrary()` multiple times on a library without problems.
 The library is loaded only once.
