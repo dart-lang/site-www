@@ -312,14 +312,46 @@ There is no recovering from that.
 The following code shows how to use `handleError()` to remove errors
 from a stream before using it in an **await for** loop.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)"?>
-```dart
+<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)" plaster="none"?>
+```dart highlightLines=5
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
   S Function(T event) convert,
 ) async* {
   var streamWithoutErrors = stream.handleError((e) => log(e));
+
   await for (final event in streamWithoutErrors) {
+    yield convert(event);
+  }
+}
+```
+
+Then the `timeout` function is necessary as
+an **await for** loop would never be returned to
+if no events are emitted by the stream.
+Creating a new stream with `timeout` enables you to
+set a time limit and continue emitting events on the returned stream.
+
+The following code modifies the previous example,
+adding a 2-second timeout on top of the error handling,
+adding a relevant error if no events occur for 2 or more seconds.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
+```dart highlightLines=6-12
+Stream<S> mapLogErrors<S, T>(
+  Stream<T> stream,
+  S Function(T event) convert,
+) async* {
+  var streamWithoutErrors = stream.handleError((e) => log(e));
+  var streamWithTimeout = streamWithoutErrors.timeout(
+    const Duration(seconds: 2),
+    onTimeout: (eventSink) {
+      eventSink.addError('Timed out after 2 seconds');
+      eventSink.close();
+    },
+  );
+
+  await for (final event in streamWithTimeout) {
     yield convert(event);
   }
 }
