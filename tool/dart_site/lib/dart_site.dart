@@ -9,6 +9,7 @@ import 'src/commands/build.dart';
 import 'src/commands/check_all.dart';
 import 'src/commands/check_link_references.dart';
 import 'src/commands/check_links.dart';
+import 'src/commands/check_markdown.dart';
 import 'src/commands/check_site_variable.dart';
 import 'src/commands/format_dart.dart';
 import 'src/commands/freshness.dart';
@@ -30,6 +31,7 @@ final class DartSiteCommandRunner extends CommandRunner<int> {
       ) {
     addCommand(CheckLinksCommand());
     addCommand(CheckLinkReferencesCommand());
+    addCommand(CheckMarkdownCommand());
     addCommand(CheckSiteVariableCommand());
     addCommand(VerifyFirebaseJsonCommand());
     addCommand(RefreshExcerptsCommand());
