@@ -874,8 +874,10 @@ There isn't a null-aware function call operator, but you can write:
 function?.call(arg1, arg2);
 ```
 
-<a id="null-assertion-operator"></a>
-### Non-null assertion operator
+<a id="null-assertion-operator" aria-hidden="true"></a>
+<a id="non-null-assertion-operator aria-hidden="true"></a>
+
+### Not-null assertion operator
 
 The great thing about using flow analysis to move a nullable variable to the
 non-nullable side of the world is that doing so is provably safe. You get to
@@ -986,8 +988,8 @@ it has a conservative rule that non-nullable fields have to be initialized
 either at their declaration (or in the constructor initialization list for
 instance fields). So Dart reports a compile error on this class.
 
-You can fix the error by making the field nullable and then using null assertion
-operators on the uses:
+You can fix the error by making the field nullable and then
+using not-null assertion operators on the uses:
 
 ```dart
 // Using null safety:
@@ -1021,11 +1023,13 @@ class Coffee {
 }
 ```
 
-Note that the `_temperature` field has a non-nullable type, but is not
-initialized. Also, there's no explicit null assertion when it's used. There are
-a few models you can apply to the semantics of `late`, but I think of it like
-this: The `late` modifier means "enforce this variable's constraints at runtime
-instead of at compile time". It's almost like the word "late" describes *when*
+Note that the `_temperature` field has a non-nullable type,
+but is not initialized.
+Also, there's no explicit not-null assertion when it's used.
+There are a few models you can apply to the semantics of `late`,
+but I think of it like this: The `late` modifier means
+"enforce this variable's constraints at runtime instead of at compile time".
+It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
 In this case, since the field is not definitely initialized, every time the
@@ -1532,7 +1536,7 @@ The core points to take away are:
 
 *   Method chains after null-aware operators short circuit if the receiver is
     `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
-    operators. The postfix null assertion "bang" operator (`!`) casts its
+    operators. The postfix not-null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
