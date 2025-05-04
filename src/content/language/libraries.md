@@ -6,8 +6,8 @@ prevpage:
   url: /language/metadata
   title: Metadata
 nextpage:
-  url: /language/keywords
-  title: Keywords
+  url: /language/classes
+  title: Classes
 ---
 
 The `import` and `library` directives can help you create a
