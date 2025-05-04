@@ -47,7 +47,7 @@ watch this video:
 
 ## 1. Wait to migrate {:#step1-wait}
 
-We strongly recommend migrating code in order, 
+We strongly recommend migrating code in order,
 with the leaves of the dependency graph being migrated first.
 For example, if package C depends on package B, which depends on package A,
 then A should be migrated to null safety first, then B, then C.
@@ -80,7 +80,7 @@ so that you can easily undo any changes.
 <a id="switch-to-the-latest-stable-dart-release"></a>
 ### Switch to the Dart 2.19.6 release
 
-Switch to the **2.19.6 release** of the Dart SDK. 
+Switch to the **2.19.6 release** of the Dart SDK.
 This is included in the Flutter 3.7.12 SDK.
 
 Check that you have Dart 2.19.6:
@@ -145,7 +145,7 @@ update its dependencies to null-safe versions:
 Most of the changes that your code needs to be null safe
 are easily predictable.
 For example, if a variable can be `null`,
-[its type needs a `?` suffix][nullable type]. 
+[its type needs a `?` suffix][nullable type].
 If a named parameter shouldn't be nullable,
 mark it [`required`][required]
 or give it a [default value][].
@@ -182,7 +182,7 @@ Before starting the tool, make sure you're ready:
 * Use the 2.19.6 release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
-  
+
 Start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
@@ -343,7 +343,7 @@ except for a 2.9 [version comment][].
 For more information about incremental migration, see
 [Unsound null safety][].
 
-Note that only fully migrated apps and packages 
+Note that only fully migrated apps and packages
 are compatible with Dart 3.
 
 [version comment]: /resources/language/evolution#per-library-language-version-selection
@@ -369,7 +369,7 @@ Then, if you've published your code on pub.dev,
 If you prefer not to use the migration tool,
 you can migrate manually.
 
-We recommend that you **first migrate leaf libraries**—libraries 
+We recommend that you **first migrate leaf libraries**—libraries
 that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
@@ -454,14 +454,15 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. Publish {:#step5-publish}
 
-We encourage you to publish packages—possibly as prereleases—as 
+We encourage you to publish packages—possibly as prereleases—as
 soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
 * [Update the SDK constraints and package dependencies.](#check-your-pubspec)
 * [Publish the package](/tools/pub/publishing).
-  If you don't consider this version to be a stable release, 
+  If you don't consider this version to be a stable release,
   then [publish the package as a prerelease][].
+* [Update examples and documentation](#update-examples-and-docs)
 
 [publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
@@ -482,12 +483,23 @@ to indicate a breaking change:
 
 ### Check your pubspec
 
-Before you publish a stable null safety version of a package, 
+Before you publish a stable null safety version of a package,
 we strongly recommend following these pubspec rules:
 
 * Set the Dart lower SDK constraint to the lowest stable version
   that you've tested against (at least `2.12.0`).
 * Use stable versions of all direct dependencies.
+
+### Update examples and docs
+
+If you haven't yet, also update all
+[examples][] and samples of your package to
+use a migrated version of your package and to opt in to null safety.
+
+If you've published any separate documentation or tutorials for your package,
+also make sure that they're up to date for the null-safe release.
+
+[examples]: /tools/pub/package-layout#examples
 
 ## Welcome to null safety
 
