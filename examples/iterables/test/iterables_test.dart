@@ -140,6 +140,25 @@ void main() {
       expect(value, 2);
     });
 
+    test('iterable-to-list', () {
+      Iterable<int> veryLargeIterable() {
+        return [for (var i = 0; i < 10000; i++) i];
+      }
+
+      // #docregion iterable-to-list
+      final items = veryLargeIterable().toList();
+
+      final tenthItem = items[9];
+      final hundredthItem = items[99];
+      final thousandthItem = items[999];
+      final lastItem = items.last;
+      // #enddocregion iterable-to-list
+      expect(tenthItem, 9);
+      expect(hundredthItem, 99);
+      expect(thousandthItem, 999);
+      expect(lastItem, 9999);
+    });
+
     test('map_int_example', () {
       final numbers = [1, 2, 3];
       // #docregion map-int
