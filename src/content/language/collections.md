@@ -371,7 +371,7 @@ A null-aware spread element has this syntax in a
 collection:
 
 ```dart
-...?<collection_expression>
+...?<sequence_expression>
 ```
 
 In the following example, a list called `a` is ignored
