@@ -1,16 +1,22 @@
-{% if nextpage.url or prevpage.url %}
-<nav id="prev-next">
-  <ul>
-    <li class="previous">
-      {% if prevpage.url %}
-        <a href="{{prevpage.url}}">&lang;&nbsp;&nbsp;{{prevpage.title}}</a>
-      {% endif %}
-    </li>
-    <li class="next">
-      {% if nextpage.url %}
-        <a href="{{nextpage.url}}">{{nextpage.title}}&nbsp;&nbsp;&rang;</a>
-      {% endif %}
-    </li>
-  </ul>
+{% if nextpage or prevpage -%}
+<nav id="site-prev-next">
+  {% if prevpage.url -%}
+  <a class="prev" href="{{ prevpage.url }}">
+    <span class="material-symbols" aria-hidden="true">chevron_left</span>
+    <div>
+      <span class="prev-next-subtitle" aria-label="Previous page: ">Previous</span>
+      <span class="prev-next-title">{{ prevpage.title}}</span>
+    </div>
+  </a>
+  {% endif -%}
+  {% if nextpage.url -%}
+  <a class="next" href="{{ nextpage.url }}">
+    <div>
+      <span class="prev-next-subtitle" aria-label="Next page: ">Next</span>
+      <span class="prev-next-title">{{ nextpage.title}}</span>
+    </div>
+    <span class="material-symbols" aria-hidden="true">chevron_right</span>
+  </a>
+  {% endif -%}
 </nav>
-{% endif %}
+{% endif -%}
