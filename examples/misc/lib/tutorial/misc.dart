@@ -31,18 +31,44 @@ void streamsTutorial() {
 
   void log(e) {}
 
-  // #docregion map-log-errors
-  Stream<S> mapLogErrors<S, T>(
-    Stream<T> stream,
-    S Function(T event) convert,
-  ) async* {
-    var streamWithoutErrors = stream.handleError((e) => log(e));
-    await for (final event in streamWithoutErrors) {
-      yield convert(event);
+  {
+    // #docregion map-log-errors
+    Stream<S> mapLogErrors<S, T>(
+      Stream<T> stream,
+      S Function(T event) convert,
+    ) async* {
+      var streamWithoutErrors = stream.handleError((e) => log(e));
+
+      await for (final event in streamWithoutErrors) {
+        yield convert(event);
+      }
     }
+
+    // #enddocregion map-log-errors
   }
 
-  // #enddocregion map-log-errors
+  {
+    // #docregion stream-timeout
+    Stream<S> mapLogErrors<S, T>(
+      Stream<T> stream,
+      S Function(T event) convert,
+    ) async* {
+      var streamWithoutErrors = stream.handleError((e) => log(e));
+      var streamWithTimeout = streamWithoutErrors.timeout(
+        const Duration(seconds: 2),
+        onTimeout: (eventSink) {
+          eventSink.addError('Timed out after 2 seconds');
+          eventSink.close();
+        },
+      );
+
+      await for (final event in streamWithTimeout) {
+        yield convert(event);
+      }
+    }
+
+    // #enddocregion stream-timeout
+  }
 }
 
 abstract class MyStream<T> extends Stream<T> {
