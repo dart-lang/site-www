@@ -12,6 +12,66 @@ import 'error_code_documentation_info.dart';
 import 'error_code_info.dart';
 import 'linter.dart';
 
+/// Markdown link definitions used by various diagnostic docs.
+Map<String, String> get _linkDefinitions => {
+  'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
+  'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
+  'ffi': '/interop/c-interop',
+  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
+  'kDebugMode':
+      'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
+  'meta-awaitNotRequired':
+      'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
+  'meta-doNotStore':
+      'https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html',
+  'meta-doNotSubmit':
+      'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
+  'meta-factory':
+      'https://pub.dev/documentation/meta/latest/meta/factory-constant.html',
+  'meta-immutable':
+      'https://pub.dev/documentation/meta/latest/meta/immutable-constant.html',
+  'meta-internal':
+      'https://pub.dev/documentation/meta/latest/meta/internal-constant.html',
+  'meta-literal':
+      'https://pub.dev/documentation/meta/latest/meta/literal-constant.html',
+  'meta-mustBeConst':
+      'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
+  'meta-mustCallSuper':
+      'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
+  'meta-optionalTypeArgs':
+      'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
+  'meta-sealed':
+      'https://pub.dev/documentation/meta/latest/meta/sealed-constant.html',
+  'meta-useResult':
+      'https://pub.dev/documentation/meta/latest/meta/useResult-constant.html',
+  'meta-UseResult':
+      'https://pub.dev/documentation/meta/latest/meta/UseResult-class.html',
+  'meta-visibleForOverriding':
+      'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
+  'meta-visibleForTesting':
+      'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
+  'package-logging': 'https://pub.dev/packages/logging',
+  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
+  'refutable pattern': '/resources/glossary#refutable-pattern',
+  'constant context': '/resources/glossary#constant-context',
+  'definite assignment': '/resources/glossary#definite-assignment',
+  'mixin application': '/resources/glossary#mixin-application',
+  'override inference': '/resources/glossary#override-inference',
+  'part file': '/resources/glossary#part-file',
+  'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
+  'public library': '/resources/glossary#public-library',
+};
+
+/// Compute the path to the file into which documentation is being generated.
+String get _outputPath => path.join(
+  repositoryRoot,
+  'src',
+  'content',
+  'tools',
+  'diagnostics',
+  'index.md',
+);
+
 /// Generate the file `diagnostics.md` based on the documentation associated
 /// with the declarations of the error codes.
 Future<void> generate() async {
@@ -86,16 +146,6 @@ body_class: highlight-diagnostics
   }
 }
 
-/// Compute the path to the file into which documentation is being generated.
-String get _outputPath => path.join(
-  repositoryRoot,
-  'src',
-  'content',
-  'tools',
-  'diagnostics',
-  'index.md',
-);
-
 /// An information holder containing information about a diagnostic that was
 /// extracted from the instance creation expression.
 class DiagnosticInformation {
@@ -114,12 +164,12 @@ class DiagnosticInformation {
   /// The documentation text associated with the diagnostic.
   String? documentation;
 
-  /// Initialize a newly created information holder with the given [name] and
-  /// [message].
+  /// Initialize a newly created information holder with
+  /// the given [name] and [message].
   DiagnosticInformation(this.name, String message, {this.isFromLint = false})
     : messages = [message];
 
-  /// Return `true` if this diagnostic has documentation.
+  /// If this diagnostic has documentation associated with it.
   bool get hasDocumentation => documentation != null;
 
   /// Add the [message] to the list of messages associated with the diagnostic.
@@ -129,12 +179,14 @@ class DiagnosticInformation {
     }
   }
 
+  /// Add [previousName] to the list of previous names for this diagnostic.
   void addPreviousName(String previousName) {
     if (!previousNames.contains(previousName)) {
       previousNames.add(previousName);
     }
   }
 
+  /// Write the problem messages of this diagnostic to the given [sink].
   void writeMessages(StringSink sink) {
     if (messages.isEmpty) return;
 
@@ -148,16 +200,12 @@ class DiagnosticInformation {
     }
   }
 
-  /// Return the full documentation for this diagnostic.
+  /// Write the content of this diagnostic's documentation to the given [sink].
   void writeOn(StringSink sink) {
-    //sink.writeln('### ${name.toLowerCase()}');
     for (final previousName in previousNames) {
       sink.writeln();
       final previousInLowerCase = previousName.toLowerCase();
-      sink.writeln(
-        //'<a id="$previousInLowerCase" aria-hidden="true"></a>'
-        '_(Previously known as `$previousInLowerCase`)_',
-      );
+      sink.writeln('_(Previously known as `$previousInLowerCase`)_');
     }
     if (isFromLint) {
       sink.writeln();
@@ -197,13 +245,13 @@ class DiagnosticInformation {
 
   /// Return a version of the [text] in which characters that have special
   /// meaning in markdown have been escaped.
-  String _escape(String text) {
+  static String _escape(String text) {
     return text.replaceAll('_', '\\_');
   }
 
   /// Split the [message] into multiple lines, each of which is less than 80
   /// characters long.
-  List<String> _split(String message) {
+  static List<String> _split(String message) {
     // This uses a brute force approach because we don't expect to have messages
     // that need to be split more than once.
     final length = message.length;
@@ -218,8 +266,8 @@ class DiagnosticInformation {
   }
 }
 
-/// A class used to generate diagnostic documentation.
-class DocumentationGenerator {
+/// Documentation generator for analyzer diagnostics.
+final class DocumentationGenerator {
   /// A map from the name of a diagnostic to the information about that
   /// diagnostic.
   final Map<String, DiagnosticInformation> infoByName = {};
@@ -404,52 +452,3 @@ For more information about the analyzer, see
 ''');
   }
 }
-
-Map<String, String> get _linkDefinitions => {
-  'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
-  'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
-  'ffi': '/interop/c-interop',
-  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
-  'kDebugMode':
-      'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
-  'meta-awaitNotRequired':
-      'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
-  'meta-doNotStore':
-      'https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html',
-  'meta-doNotSubmit':
-      'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
-  'meta-factory':
-      'https://pub.dev/documentation/meta/latest/meta/factory-constant.html',
-  'meta-immutable':
-      'https://pub.dev/documentation/meta/latest/meta/immutable-constant.html',
-  'meta-internal':
-      'https://pub.dev/documentation/meta/latest/meta/internal-constant.html',
-  'meta-literal':
-      'https://pub.dev/documentation/meta/latest/meta/literal-constant.html',
-  'meta-mustBeConst':
-      'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
-  'meta-mustCallSuper':
-      'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
-  'meta-optionalTypeArgs':
-      'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
-  'meta-sealed':
-      'https://pub.dev/documentation/meta/latest/meta/sealed-constant.html',
-  'meta-useResult':
-      'https://pub.dev/documentation/meta/latest/meta/useResult-constant.html',
-  'meta-UseResult':
-      'https://pub.dev/documentation/meta/latest/meta/UseResult-class.html',
-  'meta-visibleForOverriding':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
-  'meta-visibleForTesting':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
-  'package-logging': 'https://pub.dev/packages/logging',
-  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
-  'refutable pattern': '/resources/glossary#refutable-pattern',
-  'constant context': '/resources/glossary#constant-context',
-  'definite assignment': '/resources/glossary#definite-assignment',
-  'mixin application': '/resources/glossary#mixin-application',
-  'override inference': '/resources/glossary#override-inference',
-  'part file': '/resources/glossary#part-file',
-  'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
-  'public library': '/resources/glossary#public-library',
-};
