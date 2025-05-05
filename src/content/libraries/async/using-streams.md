@@ -403,8 +403,8 @@ and asynchronous programming in Dart.
   an article about creating your own streams
 * [Futures and Error Handling](/libraries/async/futures-error-handling),
   an article that explains how to handle errors using the Future API
-* [Asynchrony support](/language/async),
-  a section in the [language tour](/language)
+* [Asynchronous programming](/language/async),
+  which goes in-depth into Dart's language support for asynchrony
 * [Stream API reference]({{site.dart-api}}/dart-async/Stream-class.html)
 
 [bind()]: {{site.dart-api}}/dart-async/StreamTransformer/bind.html

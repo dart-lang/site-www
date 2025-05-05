@@ -453,22 +453,22 @@ This content has moved to [Libraries & visibility](/language/libraries#implement
 <a id="asynchrony"></a>
 ## Asynchrony support
 
-This content has moved to [Asynchrony support](/language/async).
+This content has moved to [Asynchronous programming](/language/async).
 
 <a id="await"></a>
 ### Handling Futures
 
-This content has moved to [Asynchrony support](/language/async#handling-futures).
+This content has moved to [Asynchronous programming](/language/async#handling-futures).
 
 <a id="async"></a>
 ### Declaring async functions
 
-This content has moved to [Asynchrony support](/language/async#declaring-async-functions).
+This content has moved to [Asynchronous programming](/language/async#declaring-async-functions).
 
 <a id="await-for"></a>
 ### Handling Streams
 
-This content has moved to [Asynchrony support](/language/async#handling-streams).
+This content has moved to [Asynchronous programming](/language/async#handling-streams).
 
 <a id="generator"></a>
 ## Generators
