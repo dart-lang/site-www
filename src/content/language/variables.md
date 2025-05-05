@@ -3,7 +3,7 @@ title: Variables
 description: Learn about variables in Dart.
 prevpage:
   url: /language
-  title: Basics
+  title: Introduction
 nextpage:
   url: /language/operators
   title: Operators

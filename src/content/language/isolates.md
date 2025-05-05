@@ -8,7 +8,7 @@ prevpage:
   title: Asynchronous support
 nextpage:
   url: /null-safety
-  title: Sound Null Safety
+  title: Sound null safety
 ---
 
 <?code-excerpt path-base="concurrency"?>

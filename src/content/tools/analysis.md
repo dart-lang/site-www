@@ -331,6 +331,7 @@ For example:
 linter:
   rules:
     - always_declare_return_types
+    - annotate_redeclares
     - cancel_subscriptions
     - close_sinks
     - combinators_ordering
@@ -338,7 +339,6 @@ linter:
     - invalid_case_patterns
     - one_member_abstracts
     - only_throw_errors
-    - prefer_single_quotes
 ```
 
 

@@ -2,8 +2,8 @@
 title: Loops 
 description: Learn how to use loops to control the flow of your Dart code.
 prevpage:
-  url: /language/functions
-  title: Functions
+  url: /language/pattern-types
+  title: Pattern types
 nextpage:
   url: /language/branches
   title: Branches
@@ -57,10 +57,18 @@ In that case, use the `for-in` loop for cleaner code:
 
 <?code-excerpt "language/lib/control_flow/loops.dart (collection)"?>
 ```dart
-for (final candidate in candidates) {
+for (var candidate in candidates) {
   candidate.interview();
 }
 ```
+
+In the previous example loop, `candidate` is
+defined within the loop body and
+set to reference one value from `candidates` at a time.
+`candidate` is a local [variable][].
+Reassigning `candidate` inside the loop body only
+changes the local variable for that iteration and
+doesn't modify the original `candidates` iterable.
 
 To process the values obtained from the iterable, 
 you can also use a [pattern][] in a `for-in` loop:
@@ -85,6 +93,7 @@ var collection = [1, 2, 3];
 collection.forEach(print); // 1 2 3
 ```
 
+[variable]: /language/variables
 
 ## While and do-while
 
