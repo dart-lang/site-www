@@ -35,7 +35,7 @@ The valid combinations of class modifiers and their resulting capabilities are:
 | `mixin`                     | No             | No          | **Yes**        | **Yes**     | No              |
 | `base mixin`                | No             | No          | No             | **Yes**     | No              |
 
-{:.table .table-striped .nowrap}
+{: .table .table-striped .nowrap}
 
 [Construct]: /language/classes#using-constructors
 [Extend]: /language/extend
@@ -45,8 +45,7 @@ The valid combinations of class modifiers and their resulting capabilities are:
 
 ## Invalid combinations
 
-Certain [combinations](/language/class-modifiers#combining-modifiers)
-of modifiers are not allowed:
+Certain [combinations][] of modifiers aren't allowed:
 
 | Combination                                   | Reasoning                                                                                                                                       |
 |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -58,4 +57,6 @@ of modifiers are not allowed:
 | `enum` and any modifiers                      | `enum` declarations can't be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.     |
 | `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
 
-{:.table .table-striped .nowrap}
+{: .table .table-striped .nowrap}
+
+[combinations]: /language/class-modifiers#combining-modifiers

@@ -105,13 +105,29 @@ isn't defined for the class `Iterable`,
 which means that you can't use `[index]` in this case.
 
 You can instead read elements with `elementAt()`,
-which steps through the elements of the iterable until
-it reaches that position.
+which can step through the items of the iterable until
+it reaches the item at that position.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 ```dart
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
+```
+
+Depending on the iterable implementation and number of items,
+`elementAt` can have a linear complexity and be expensive.
+If you plan to access specific items repeatedly, then consider
+calling `.toList()` on the iterable to convert it to a list once,
+then use the `[]` operator.
+
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-to-list)"?>
+```dart
+final items = veryLargeIterable().toList();
+
+final tenthItem = items[9];
+final hundredthItem = items[99];
+final thousandthItem = items[999];
+final lastItem = items.last;
 ```
 
 Continue to the next section to learn more about

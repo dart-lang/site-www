@@ -10,7 +10,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection
-    for (final candidate in candidates) {
+    for (var candidate in candidates) {
       candidate.interview();
     }
     // #enddocregion collection
