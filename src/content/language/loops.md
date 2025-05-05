@@ -2,8 +2,8 @@
 title: Loops 
 description: Learn how to use loops to control the flow of your Dart code.
 prevpage:
-  url: /language/functions
-  title: Functions
+  url: /language/pattern-types
+  title: Pattern types
 nextpage:
   url: /language/branches
   title: Branches

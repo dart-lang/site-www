@@ -5,8 +5,8 @@ prevpage:
   url: /language/branches
   title: Branches
 nextpage:
-  url: /language/classes
-  title: Classes
+  url: /language/functions
+  title: Functions
 ---
 
 ## Exceptions
