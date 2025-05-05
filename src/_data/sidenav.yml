@@ -81,7 +81,7 @@
       children:
         - title: Overview
           permalink: /language/concurrency
-        - title: Asynchronous support
+        - title: Asynchronous programming
           permalink: /language/async
         - title: Isolates
           permalink: /language/isolates
