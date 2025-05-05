@@ -73,7 +73,7 @@ Dart supports null safety using the following two core design principles:
   a variable or expression has a non-nullable type,
   it's guaranteed that it can never evaluate to `null` at runtime.
 
-Program-wide sound null safety enables you and Dart to
+Program-wide sound null safety lets Dart
 leverage these principles for
 fewer bugs, smaller binaries, and faster execution.
 
