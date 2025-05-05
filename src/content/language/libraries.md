@@ -18,13 +18,17 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 
 Libraries can be distributed using [packages](/tools/pub/packages).
 
-:::note
-To learn why Dart uses underscores instead of access modifier keywords
-like `public` or `private`, consult
-[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
-:::
+Dart uses underscores instead of access modifier keywords
+like `public`, `protected`, or `private`.
+While access modifier keywords from other languages
+provide more fine-grained control,
+Dart's use of underscores and library-based privacy
+provides a straightforward configuration mechanism,
+helps enable an efficient implementation of [dynamic access][],
+and improves tree shaking (dead code elimination).
 
 [library]: /tools/pub/glossary#library
+[dynamic access]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
 ## Using libraries
 
