@@ -2,10 +2,11 @@
 
 nav.breadcrumbs {
   align-items: center;
-  margin-block-start: 1rem;
+  margin-block-start: 0.25rem;
   margin-block-end: 1rem;
 
   ol.breadcrumb-list {
+    margin: 0;
     border-radius: 0.375rem;
     padding: 0.375rem 0;
 

@@ -4,6 +4,7 @@
 
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
 
 import '../utils.dart';
@@ -21,8 +22,68 @@ Future<void> generate() async {
     lintNames: await allLintNames,
   );
   generator.writeDocumentation(sink);
+  _writeIndividualFiles(generator.infoByName.values.toList(growable: false));
   await sink.flush();
   await sink.close();
+}
+
+void _writeIndividualFiles(List<DiagnosticInformation> diagnostics) {
+  final diagnosticDirectory = path.join(
+    repositoryRoot,
+    'src',
+    'content',
+    'tools',
+    'diagnostics',
+  );
+
+  for (final diagnostic in diagnostics) {
+    if (!diagnostic.hasDocumentation) continue;
+    final diagnosticName = diagnostic.name.toLowerCase().trim();
+    final diagnosticPath = path.join(diagnosticDirectory, '$diagnosticName.md');
+
+    final buffer = StringBuffer('''
+---
+title: $diagnosticName
+description: >-
+  Details about the $diagnosticName
+  diagnostic produced by the Dart analyzer.
+underscore_breaker_titles: true
+show_breadcrumbs: true
+body_class: highlight-diagnostics
+---
+''');
+
+    diagnostic.writeOn(buffer);
+
+    File(diagnosticPath).writeAsStringSync(buffer.toString());
+
+    for (final previousName in diagnostic.previousNames) {
+      final previousDiagnosticName = previousName.toLowerCase().trim();
+      final previousDiagnosticPath = path.join(
+        diagnosticDirectory,
+        '$previousDiagnosticName.md',
+      );
+
+      final buffer = StringBuffer('''
+---
+title: $diagnosticName
+description: >-
+  Details about the $diagnosticName
+  diagnostic produced by the Dart analyzer.
+underscore_breaker_titles: true
+show_breadcrumbs: true
+canonical: https://dart.dev/tools/diagnostics/$diagnosticName
+redirectTo: /tools/diagnostics/$diagnosticName
+sitemap: false
+noindex: true
+body_class: highlight-diagnostics
+---
+''');
+      diagnostic.writeOn(buffer);
+
+      File(previousDiagnosticPath).writeAsStringSync(buffer.toString());
+    }
+  }
 }
 
 /// Compute the path to the file into which documentation is being generated.
@@ -31,7 +92,8 @@ String get _outputPath => path.join(
   'src',
   'content',
   'tools',
-  'diagnostic-messages.md',
+  'diagnostics',
+  'index.md',
 );
 
 /// An information holder containing information about a diagnostic that was
@@ -73,15 +135,27 @@ class DiagnosticInformation {
     }
   }
 
+  void writeMessages(StringSink sink) {
+    if (messages.isEmpty) return;
+
+    for (final message in messages.sorted()) {
+      final escapedMessage = _escape(message).trim();
+      if (escapedMessage.isEmpty) continue;
+      sink.writeln();
+      for (final line in _split('_${escapedMessage}_')) {
+        sink.writeln(line);
+      }
+    }
+  }
+
   /// Return the full documentation for this diagnostic.
   void writeOn(StringSink sink) {
-    messages.sort();
-    sink.writeln('### ${name.toLowerCase()}');
+    //sink.writeln('### ${name.toLowerCase()}');
     for (final previousName in previousNames) {
       sink.writeln();
       final previousInLowerCase = previousName.toLowerCase();
       sink.writeln(
-        '<a id="$previousInLowerCase" aria-hidden="true"></a>'
+        //'<a id="$previousInLowerCase" aria-hidden="true"></a>'
         '_(Previously known as `$previousInLowerCase`)_',
       );
     }
@@ -99,14 +173,26 @@ class DiagnosticInformation {
   </a>
 </div>''');
     }
-    for (final message in messages) {
-      sink.writeln();
-      for (final line in _split('_${_escape(message)}_')) {
-        sink.writeln(line);
+    writeMessages(sink);
+    sink.writeln();
+    final diagnosticDocumentation = documentation!;
+
+    sink.writeln(
+      diagnosticDocumentation.replaceAll('#### ', '## ').trimRight(),
+    );
+
+    var noLinkReference = true;
+    for (final MapEntry(key: reference, value: url)
+        in _linkDefinitions.entries) {
+      final linkReference = '[$reference]';
+      if (diagnosticDocumentation.contains(linkReference)) {
+        if (noLinkReference) {
+          sink.writeln();
+          noLinkReference = false;
+        }
+        sink.writeln('$linkReference: $url');
       }
     }
-    sink.writeln();
-    sink.writeln(documentation!);
   }
 
   /// Return a version of the [text] in which characters that have special
@@ -159,7 +245,6 @@ class DocumentationGenerator {
   /// Writes the documentation to [sink].
   void writeDocumentation(StringSink sink) {
     _writeHeader(sink);
-    _writeGlossary(sink);
     _writeDiagnostics(sink);
   }
 
@@ -223,59 +308,76 @@ class DocumentationGenerator {
   void _writeDiagnostics(StringSink sink) {
     sink.write('''
 
-## Diagnostics
+<a id="diagnostics" aria-hidden="true"></a>
+
+## Diagnostic index
 
 The analyzer produces the following diagnostics for code that
 doesn't conform to the language specification or
 that might work in unexpected ways.
 
-[bottom type]: https://dart.dev/null-safety/understanding-null-safety#top-and-bottom
-[debugPrint]: https://api.flutter.dev/flutter/foundation/debugPrint.html
-[ffi]: https://dart.dev/interop/c-interop
-[IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
-[irrefutable pattern]: https://dart.dev/resources/glossary#irrefutable-pattern
-[kDebugMode]: https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html
-[meta-awaitNotRequired]: https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html
-[meta-doNotStore]: https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html
-[meta-doNotSubmit]: https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html
-[meta-factory]: https://pub.dev/documentation/meta/latest/meta/factory-constant.html
-[meta-immutable]: https://pub.dev/documentation/meta/latest/meta/immutable-constant.html
-[meta-internal]: https://pub.dev/documentation/meta/latest/meta/internal-constant.html
-[meta-literal]: https://pub.dev/documentation/meta/latest/meta/literal-constant.html
-[meta-mustBeConst]: https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html
-[meta-mustCallSuper]: https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html
-[meta-optionalTypeArgs]: https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html
-[meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html
-[meta-useResult]: https://pub.dev/documentation/meta/latest/meta/useResult-constant.html
-[meta-UseResult]: https://pub.dev/documentation/meta/latest/meta/UseResult-class.html
-[meta-visibleForOverriding]: https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html
-[meta-visibleForTesting]: https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html
-[package-logging]: https://pub.dev/packages/logging
-[refutable pattern]: https://dart.dev/resources/glossary#refutable-pattern
+If a diagnostic has extra documentation and guidance,
+click **Learn more** to view it.
+
+<section class="content-search-results">
+<div class="card-list">
 ''');
     final errorCodes = infoByName.keys.toList();
     errorCodes.sort();
     for (final errorCode in errorCodes) {
       final info = infoByName[errorCode]!;
-      if (info.hasDocumentation) {
-        sink.writeln();
-        info.writeOn(sink);
+      final formattedDiagnostic = info.name.toLowerCase().trim();
+      sink.writeln(
+        '<div class="card outlined-card" id="$formattedDiagnostic">',
+      );
+
+      for (final previousName in info.previousNames) {
+        final formattedName = previousName.toLowerCase().trim();
+        sink.writeln('<a id="$formattedName" aria-hidden="true"></a>');
       }
+
+      sink.writeln('''
+<div class="card-header">
+<header class="card-title" id="$formattedDiagnostic">{{"$formattedDiagnostic" | underscoreBreaker}}</header>
+</div>''');
+
+      sink.writeln('<div class="card-content">');
+
+      info.writeMessages(sink);
+
+      sink.writeln('\n</div>');
+
+      sink.writeln('''
+<div class="card-actions">
+<div class="leading">''');
+
+      if (info.isFromLint) {
+        sink.writeln(
+          '<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>',
+        );
+      }
+
+      sink.writeln('</div>');
+
+      sink.writeln('<div class="trailing">');
+
+      if (info.hasDocumentation) {
+        sink.writeln(
+          '  <a class="outlined-button" '
+          'href="/tools/diagnostics/$formattedDiagnostic" '
+          'title="Learn more about this diagnostic and how to resolve it.">'
+          'Learn more</a>',
+        );
+      }
+
+      sink.writeln('''
+  <button class="copy-button filled-button hidden" data-copy="$formattedDiagnostic" title="Copy $formattedDiagnostic to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>''');
     }
-  }
 
-  /// Link to the glossary.
-  void _writeGlossary(StringSink sink) {
-    sink.write(r'''
-
-[constant context]: /resources/glossary#constant-context
-[definite assignment]: /resources/glossary#definite-assignment
-[mixin application]: /resources/glossary#mixin-application
-[override inference]: /resources/glossary#override-inference
-[part file]: /resources/glossary#part-file
-[potentially non-nullable]: /resources/glossary#potentially-non-nullable
-[public library]: /resources/glossary#public-library
-''');
+    sink.writeln('</div></section>');
   }
 
   /// Write the header of the file.
@@ -283,15 +385,16 @@ that might work in unexpected ways.
     sink.write('''
 ---
 title: Diagnostic messages
-description: Details for diagnostics produced by the Dart analyzer.
-body_class: highlight-diagnostics
+description: >-
+  An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
+show_breadcrumbs: true
+body_class: diagnostics
 ---
 
 {%- comment %}
-WARNING: Do NOT EDIT this file directly. It is autogenerated by the script in
-`pkg/analyzer/tool/diagnostics/generate.dart` in the sdk repository.
-Update instructions: https://github.com/dart-lang/site-www/issues/1949
+WARNING: Do NOT EDIT this file directly.
+It is autogenerated with `./dash_site generate-diagnostics`.
 {% endcomment -%}
 
 This page lists diagnostic messages produced by the Dart analyzer,
@@ -301,3 +404,52 @@ For more information about the analyzer, see
 ''');
   }
 }
+
+Map<String, String> get _linkDefinitions => {
+  'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
+  'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
+  'ffi': '/interop/c-interop',
+  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
+  'kDebugMode':
+      'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
+  'meta-awaitNotRequired':
+      'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
+  'meta-doNotStore':
+      'https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html',
+  'meta-doNotSubmit':
+      'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
+  'meta-factory':
+      'https://pub.dev/documentation/meta/latest/meta/factory-constant.html',
+  'meta-immutable':
+      'https://pub.dev/documentation/meta/latest/meta/immutable-constant.html',
+  'meta-internal':
+      'https://pub.dev/documentation/meta/latest/meta/internal-constant.html',
+  'meta-literal':
+      'https://pub.dev/documentation/meta/latest/meta/literal-constant.html',
+  'meta-mustBeConst':
+      'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
+  'meta-mustCallSuper':
+      'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
+  'meta-optionalTypeArgs':
+      'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
+  'meta-sealed':
+      'https://pub.dev/documentation/meta/latest/meta/sealed-constant.html',
+  'meta-useResult':
+      'https://pub.dev/documentation/meta/latest/meta/useResult-constant.html',
+  'meta-UseResult':
+      'https://pub.dev/documentation/meta/latest/meta/UseResult-class.html',
+  'meta-visibleForOverriding':
+      'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
+  'meta-visibleForTesting':
+      'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
+  'package-logging': 'https://pub.dev/packages/logging',
+  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
+  'refutable pattern': '/resources/glossary#refutable-pattern',
+  'constant context': '/resources/glossary#constant-context',
+  'definite assignment': '/resources/glossary#definite-assignment',
+  'mixin application': '/resources/glossary#mixin-application',
+  'override inference': '/resources/glossary#override-inference',
+  'part file': '/resources/glossary#part-file',
+  'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
+  'public library': '/resources/glossary#public-library',
+};

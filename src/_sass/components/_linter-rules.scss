@@ -1,7 +1,7 @@
 @use '../base/mixins' as *;
 @use '../base/variables' as *;
 
-body.linter-rules {
+body.diagnostics {
   --chip-container-color: transparent;
   --chip-border-color: rgba(0, 0, 0, .35);
   --chip-selected-container-color: rgb(194 229 255);
