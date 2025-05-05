@@ -12,6 +12,16 @@ import 'error_code_documentation_info.dart';
 import 'error_code_info.dart';
 import 'linter.dart';
 
+/// The path to the diagnostic index file.
+String get _indexOutputPath => path.join(
+  repositoryRoot,
+  'src',
+  'content',
+  'tools',
+  'diagnostics',
+  'index.md',
+);
+
 /// Markdown link definitions used by various diagnostic docs.
 Map<String, String> get _linkDefinitions => {
   'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
@@ -62,91 +72,16 @@ Map<String, String> get _linkDefinitions => {
   'public library': '/resources/glossary#public-library',
 };
 
-/// Compute the path to the file into which documentation is being generated.
-String get _outputPath => path.join(
-  repositoryRoot,
-  'src',
-  'content',
-  'tools',
-  'diagnostics',
-  'index.md',
-);
-
-/// Generate the file `diagnostics.md` based on the documentation associated
-/// with the declarations of the error codes.
+/// Generate the diagnostic index page and individual diagnostic pages.
 Future<void> generate() async {
-  final sink = File(_outputPath).openWrite();
   final messages = await Messages.retrieve();
   final generator = DocumentationGenerator(
     messages,
     lintNames: await allLintNames,
   );
-  generator.writeDiagnosticIndexPage(sink);
-  await sink.flush();
-  await sink.close();
 
-  _writeIndividualFiles(generator.infoByName.values.toList(growable: false));
-}
-
-void _writeIndividualFiles(List<DiagnosticInformation> diagnostics) {
-  final diagnosticDirectory = path.join(
-    repositoryRoot,
-    'src',
-    'content',
-    'tools',
-    'diagnostics',
-  );
-
-  for (final diagnostic in diagnostics) {
-    if (!diagnostic.hasDocumentation) continue;
-    final diagnosticName = diagnostic.name.toLowerCase().trim();
-    final diagnosticPath = path.join(diagnosticDirectory, '$diagnosticName.md');
-
-    final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
----
-''');
-
-    diagnostic.writeOn(buffer);
-
-    File(diagnosticPath).writeAsStringSync(buffer.toString());
-
-    // Create hidden pages for removed diagnostics that
-    // redirect to the page for the current name.
-    for (final previousName in diagnostic.previousNames) {
-      final previousDiagnosticName = previousName.toLowerCase().trim();
-      final previousDiagnosticPath = path.join(
-        diagnosticDirectory,
-        '$previousDiagnosticName.md',
-      );
-
-      final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-show_breadcrumbs: true
-canonical: https://dart.dev/tools/diagnostics/$diagnosticName
-redirectTo: /tools/diagnostics/$diagnosticName
-sitemap: false
-noindex: true
-body_class: highlight-diagnostics
----
-''');
-      diagnostic.writeOn(buffer);
-
-      File(previousDiagnosticPath).writeAsStringSync(buffer.toString());
-    }
-  }
+  await generator.writeDiagnosticIndexPage();
+  generator._writeIndividualFiles();
 }
 
 /// An information holder containing information about a diagnostic that was
@@ -293,10 +228,13 @@ final class DocumentationGenerator {
     );
   }
 
-  /// Writes the documentation to [sink].
-  void writeDiagnosticIndexPage(StringSink sink) {
+  /// Writes the index of diagnostics to [_indexOutputPath].
+  Future<void> writeDiagnosticIndexPage() async {
+    final sink = File(_indexOutputPath).openWrite();
     _writeHeader(sink);
     _writeIndex(sink);
+    await sink.flush();
+    await sink.close();
   }
 
   /// Extract documentation from all of the files containing the definitions of
@@ -455,5 +393,69 @@ click **Learn more** to view it.
 
     // Close the card grid.
     sink.writeln('</div>');
+  }
+
+  void _writeIndividualFiles() {
+    final diagnosticDirectory = path.join(
+      repositoryRoot,
+      'src',
+      'content',
+      'tools',
+      'diagnostics',
+    );
+
+    for (final diagnostic in infoByName.values) {
+      if (!diagnostic.hasDocumentation) continue;
+      final diagnosticName = diagnostic.name.toLowerCase().trim();
+      final diagnosticPath = path.join(
+        diagnosticDirectory,
+        '$diagnosticName.md',
+      );
+
+      final buffer = StringBuffer('''
+---
+title: $diagnosticName
+description: >-
+  Details about the $diagnosticName
+  diagnostic produced by the Dart analyzer.
+underscore_breaker_titles: true
+show_breadcrumbs: true
+body_class: highlight-diagnostics
+---
+''');
+
+      diagnostic.writeOn(buffer);
+
+      File(diagnosticPath).writeAsStringSync(buffer.toString());
+
+      // Create hidden pages for removed diagnostics that
+      // redirect to the page for the current name.
+      for (final previousName in diagnostic.previousNames) {
+        final previousDiagnosticName = previousName.toLowerCase().trim();
+        final previousDiagnosticPath = path.join(
+          diagnosticDirectory,
+          '$previousDiagnosticName.md',
+        );
+
+        final buffer = StringBuffer('''
+---
+title: $diagnosticName
+description: >-
+  Details about the $diagnosticName
+  diagnostic produced by the Dart analyzer.
+underscore_breaker_titles: true
+show_breadcrumbs: true
+canonical: https://dart.dev/tools/diagnostics/$diagnosticName
+redirectTo: /tools/diagnostics/$diagnosticName
+sitemap: false
+noindex: true
+body_class: highlight-diagnostics
+---
+''');
+        diagnostic.writeOn(buffer);
+
+        File(previousDiagnosticPath).writeAsStringSync(buffer.toString());
+      }
+    }
   }
 }

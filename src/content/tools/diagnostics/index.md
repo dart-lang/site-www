@@ -29,7 +29,6 @@ that might work in unexpected ways.
 If a diagnostic has extra documentation and guidance,
 click **Learn more** to view it.
 
-<section class="content-search-results">
 <div class="card-list">
 <div class="card outlined-card" id="abi_specific_integer_invalid">
 <div class="card-header">
@@ -21874,4 +21873,4 @@ _Assignment to a variable of type 'void'._
 </div>
 </div>
 </div>
-</div></section>
+</div>

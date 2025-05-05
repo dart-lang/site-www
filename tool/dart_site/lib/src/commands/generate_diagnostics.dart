@@ -5,11 +5,8 @@
 import 'package:args/command_runner.dart';
 
 import '../diagnostics/diagnostics.dart' as diagnostics;
-import '../diagnostics/linter.dart' as linter;
 
 final class GenerateDiagnosticDocs extends Command<int> {
-  GenerateDiagnosticDocs();
-
   @override
   String get description => 'Generate and update diagnostic docs.';
 
@@ -17,23 +14,12 @@ final class GenerateDiagnosticDocs extends Command<int> {
   String get name => 'generate-diagnostics';
 
   @override
-  Future<int> run() => _update();
+  Future<int> run() => _updateDiagnosticDocs();
 }
 
-Future<int> _update() async {
-  print('Updating src/_data/linter_rules.json...');
-  await _updateLintInfo();
-
-  print('Updating src/content/tool/diagnostic-messages.md...');
-  await _updateDiagnosticDocs();
+Future<int> _updateDiagnosticDocs() async {
+  print('Updating src/content/tool/diagnostics/...');
+  await diagnostics.generate();
 
   return 0;
-}
-
-Future<void> _updateLintInfo() async {
-  await linter.fetchAndUpdate();
-}
-
-Future<void> _updateDiagnosticDocs() async {
-  await diagnostics.generate();
 }
