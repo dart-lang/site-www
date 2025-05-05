@@ -114,7 +114,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-map
     var stuff = <dynamic>[1, 2];
-    var reciprocals = stuff.map<double>((n) => 1 / (n as int));
+    var reciprocals = stuff.map<double>((n) => (n as int) * 2);
     // #enddocregion cast-map
   }
 

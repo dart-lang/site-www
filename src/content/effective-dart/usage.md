@@ -749,13 +749,13 @@ to be explicit.
 <?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=good
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map<double>((n) => 1 / n);
+var reciprocals = stuff.map<double>((n) => n * 2);
 ```
 
 <?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=bad
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map((n) => 1 / n).cast<double>();
+var reciprocals = stuff.map((n) => n * 2).cast<double>();
 ```
 
 

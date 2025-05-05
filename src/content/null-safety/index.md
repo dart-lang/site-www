@@ -61,17 +61,21 @@ int? aNullableInt = null;
 
 Dart supports null safety using the following two core design principles:
 
-* **Non-nullable by default**. Unless you explicitly tell Dart that a variable
-   can be null, it's considered non-nullable. This default was chosen
-   after research found that non-null was by far the most common choice in APIs.
+**Non-nullable by default**
+: Unless you explicitly tell Dart that a variable can be null,
+  it's considered non-nullable.
+  This default was chosen after research found that
+  non-null was by far the most common choice in APIs.
 
-* **Fully sound**. Dart's null safety is sound, which enables compiler optimizations.
-  If the type system determines that something isn't null, then that thing can _never_ be
-  null. Once you migrate your whole project
-  and its dependencies to null safety, 
-  you reap the full benefits of soundness—not only 
-  fewer bugs, but smaller binaries and faster execution.
+**Fully sound**
+: Dart's null safety is sound.
+  If the type system determines that
+  a variable or expression has a non-nullable type,
+  it's guaranteed that it can never evaluate to `null` at runtime.
 
+Program-wide sound null safety lets Dart
+leverage these principles for
+fewer bugs, smaller binaries, and faster execution.
 
 ## Dart 3 and null safety
 
@@ -136,7 +140,7 @@ listed by the analyzer.
 ## Dart 2.x and null safety {:#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
-You cannot use null safety in SDK versions earlier than Dart 2.12.
+You can't use null safety in SDK versions earlier than Dart 2.12.
 
 <a id="constraints"></a>
 To enable sound null safety, set the
