@@ -2,8 +2,8 @@
 title: Built-in types
 description: Information on the types Dart supports.
 prevpage:
-  url: /language/keywords
-  title: Keywords
+  url: /language/comments
+  title: Comments
 nextpage:
   url: /language/records
   title: Records
@@ -36,7 +36,7 @@ Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
 * `Enum`: The superclass of all enums.
-* `Future` and `Stream`: Used in [asynchrony support][].
+* `Future` and `Stream`: Used in [asynchronous programming][].
 * `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions][].
 * `Never`: Indicates that an expression can never
@@ -423,7 +423,7 @@ Symbol literals are compile-time constants.
 [Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
-[asynchrony support]: /language/async
+[asynchronous programming]: /language/async
 [iteration]: /libraries/dart-core#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom

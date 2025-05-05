@@ -10,6 +10,7 @@ linter:
   # Rules and documentation: https://dart.dev/lints
   rules:
     - always_declare_return_types
+    - annotate_redeclares
     - cancel_subscriptions
     - close_sinks
     - combinators_ordering

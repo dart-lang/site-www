@@ -5,8 +5,8 @@ prevpage:
   url: /language/patterns
   title: Patterns
 nextpage:
-  url: /language/functions
-  title: Functions
+  url: /language/loops
+  title: Loops
 ---
 
 This page is a reference for the different kinds of patterns.

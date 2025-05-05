@@ -2,12 +2,6 @@
 title: Keywords
 description: Keywords in Dart.
 toc: false
-prevpage:
-  url: /language/libraries
-  title: Libraries
-nextpage:
-  url: /language/built-in-types
-  title: Built-in types
 ---
 
 {% assign ckw = '&nbsp;<sup>1</sup>' %}

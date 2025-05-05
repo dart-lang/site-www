@@ -3,20 +3,13 @@
   children:
     - title: Introduction
       permalink: /language
-    - title: Syntax basics
-      children:
-        - title: Variables
-          permalink: /language/variables
-        - title: Operators
-          permalink: /language/operators
-        - title: Comments
-          permalink: /language/comments
-        - title: Metadata
-          permalink: /language/metadata
-        - title: Libraries & imports
-          permalink: /language/libraries
-        - title: Keywords
-          permalink: /language/keywords
+    - title: Variables
+      permalink: /language/variables
+    - title: Operators
+      permalink: /language/operators
+    - title: Comments
+      permalink: /language/comments
+    - divider
     - title: Types
       children:
         - title: Built-in types
@@ -39,8 +32,6 @@
           permalink: /language/pattern-types
         - title: Applied tutorial
           permalink: https://codelabs.developers.google.com/codelabs/dart-patterns-records
-    - title: Functions
-      permalink: /language/functions
     - title: Control flow
       children:
       - title: Loops
@@ -49,6 +40,12 @@
         permalink: /language/branches
       - title: Error handling
         permalink: /language/error-handling
+    - title: Functions
+      permalink: /language/functions
+    - title: Metadata
+      permalink: /language/metadata
+    - title: Libraries & imports
+      permalink: /language/libraries
     - title: Classes & objects
       children:
         - title: Classes
@@ -81,10 +78,11 @@
       children:
         - title: Overview
           permalink: /language/concurrency
-        - title: Asynchronous support
+        - title: Asynchronous programming
           permalink: /language/async
         - title: Isolates
           permalink: /language/isolates
+    - divider
     - title: Null safety
       expanded: false
       children:
@@ -98,6 +96,8 @@
           permalink: /null-safety/unsound-null-safety
         - title: FAQ
           permalink: /null-safety/faq
+    - title: Keywords
+      permalink: /language/keywords
 
 - title: Core libraries
   expanded: false
