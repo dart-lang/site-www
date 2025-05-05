@@ -590,7 +590,7 @@ var typeInfo = [
 var word = 'hello';
 var items = [
   1,
-  if (word case String(length: var word_length)) word_length,
+  if (word case String(length: var wordLength)) wordLength,
   3,
 ]; // [1, 5, 3]
 ```
