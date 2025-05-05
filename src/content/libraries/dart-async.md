@@ -216,9 +216,10 @@ or with an error if any of the provided futures fail.
 
 ### Handling errors for multiple futures
 
-You can also wait for parallel operations on
-an [iterable][iterable-futures] of futures
-or a [record][record-futures] with futures as positional fields.
+You can also wait for parallel operations on:
+
+* An [iterable][iterable-futures] of futures
+* A [record][record-futures] with futures as positional fields.
 
 These extensions return a `Future` with the
 resulting values of all provided futures.
