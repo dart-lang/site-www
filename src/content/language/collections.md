@@ -330,14 +330,16 @@ A map entry element has this syntax in a collection:
 
 ### Spread elements {: #spread-element }
 
-The spread element (`...`) iterates over a given sequence
-(collection expression) and inserts all of the resulting
-values into the surrounding collection.
+The spread element iterates over a given sequence and
+inserts all of the resulting values into the surrounding
+collection.
 
-A spread element has this syntax in a collection:
+A spread element has the following syntax in a collection.
+The sequence expression can represent any expression that
+evaluates to an object that implements `Iterable`:
 
 ```dart
-...<collection_expression>
+...<sequence_expression>
 ```
 
 In the following example, the elements in a list called `a`
@@ -361,7 +363,7 @@ To learn more about the spread operator, see
 
 ### Null-aware spread elements {: #null-spread-element }
 
-The null-aware spread element (`...?`) is similar to the
+The null-aware spread element is similar to the
 spread element, but allows the collection to be `null` and
 inserts nothing if it is.
 
