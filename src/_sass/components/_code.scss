@@ -55,7 +55,7 @@ pre {
     border-left: 2px solid rgba(0, 0, 0, 0);
 
     &.highlighted-line {
-      background: color.change($brand-primary, $alpha: 0.1);
+      background: color.change($brand-primary, $alpha: 0.075);
       min-width: 100%;
       border-left-color: $brand-primary;
     }
