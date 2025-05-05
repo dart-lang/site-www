@@ -727,7 +727,7 @@ we made the following changes to this site:
     as the underlying compilers of tools like
     [`dart compile js`][] and [`webdev`][].
 * Increased documentation coverage of null safety:
-  * Documented the non-null assertion operator (`!`) as part of
+  * Documented the not-null assertion operator (`!`) as part of
     the [Other operators][] section of the language tour.
   * Migrated the [Low-level HTML tutorials][] to support null safety
     and discuss how to interact with web APIs while using it.
