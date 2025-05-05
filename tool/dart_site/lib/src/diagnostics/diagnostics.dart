@@ -433,6 +433,7 @@ click **Learn more** to view it.
     sink.write('''
 ---
 title: Diagnostic messages
+short-title: Diagnostics
 description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
