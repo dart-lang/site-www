@@ -102,6 +102,7 @@
       { "source": "/codelabs", "destination": "/tutorials", "type": 301 },
       { "source": "/codelabs/async-await", "destination": "/libraries/async/async-await", "type": 301 },
       { "source": "/codelabs/dart-cheatsheet", "destination": "/resources/dart-cheatsheet", "type": 301 },
+      { "source": "/codelabs/iterables", "destination": "/libraries/collections/iterables", "type": 301 },
       { "source": "/codelabs/null-safety{,/**}", "destination": "/null-safety/understanding-null-safety", "type": 301 },
       { "source": "/codelabs/server{,/**}", "destination": "/tutorials/server/httpserver", "type": 301 },
       { "source": "/code-of-conduct", "destination": "/community/code-of-conduct", "type": 301 },

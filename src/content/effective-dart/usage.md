@@ -1564,7 +1564,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 
     var players = [!await!] team.roster;
     return players.where((player) => player.isActive).length;
-  } catch (e) {
+  } on DownloadException catch (e, _) {
     log.error(e);
     return 0;
   }
@@ -1582,7 +1582,7 @@ Future<int> countActivePlayers(String teamName) {
           return players.where((player) => player.isActive).length;
         });
       })
-      .catchError((e) {
+      .onError<DownloadException>((e, _) {
         log.error(e);
         return 0;
       });

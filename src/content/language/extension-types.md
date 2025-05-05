@@ -249,29 +249,37 @@ in different scenarios.
 
 #### `@redeclare`
 
-Declaring an extension type member that shares a name with a member of a supertype
-is *not* an override relationship like it is between classes,
-but rather a *redeclaration*. An extension type member declaration
-*completely replaces* any supertype member with the same name. 
-It's not possible to provide an alternative implementation
-for the same function.
+Declaring an extension type member that
+shares a name with a member of a supertype is *not* an
+override relationship like it is between classes, but rather a *redeclaration*.
+An extension type member declaration *completely replaces* any
+supertype member with the same name.
+It's not possible to provide an
+alternative implementation for the same function.
 
-You can use the `@redeclare` annotation to tell the compiler you are
-*knowingly* choosing to use the same name as a supertype's member.
+You can use the [`@redeclare`][] annotation from `package:meta` to
+tell the compiler you are *knowingly* choosing to
+use the same name as a supertype's member.
 The analyzer will then warn you if that's not actually true,
-for example if one of the names are mistyped.
+for example, if one of the names is mistyped.
 
+<?code-excerpt "language/lib/extension_types/redeclare.dart"?>
 ```dart
+import 'package:meta/meta.dart';
+
 extension type MyString(String _) implements String {
-  // Replaces 'String.operator[]'
+  // Replaces 'String.operator[]'.
   @redeclare
   int operator [](int index) => codeUnitAt(index);
 }
 ```
 
-You can also enable the lint [`annotate_redeclares`][lint]
+You can also enable the lint [`annotate_redeclares`][]
 to get a warning if you declare an extension type method
 that hides a superinterface member and *isn't* annotated with `@redeclare`.
+
+[`@redeclare`]: {{site.pub-api}}/meta/latest/meta/redeclare-constant.html
+[`annotate_redeclares`]: /tools/linter-rules/annotate_redeclares
 
 ## Usage
 
@@ -465,7 +473,6 @@ improve performance in some scenarios.
 [factory]: /language/constructors#factory-constructors
 [applicability]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
 [more specific]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#specificity
-[lint]: /tools/linter-rules/annotate_redeclares
 [instance variables]: /language/classes#instance-variables
 [`external`]: /language/functions#external
 [abstract members]: /language/methods#abstract-methods

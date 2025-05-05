@@ -579,22 +579,27 @@ You might use it like so:
 ```dart
 // Using null safety:
 class Point {
-  final double x, y;
+  final int x, y;
 
-  bool operator ==(Object other) {
-    if (other is! Point) wrongType('Point', other);
-    return x == other.x && y == other.y;
+  Point(this.x, this.y);
+
+  Point operator +(Object other) {
+    if (other is int) return Point(x + other, y + other);
+    if (other is! Point) wrongType('int | Point', other);
+
+    print('Adding two Point instances together: $this + $other');
+    return Point(x + other.x, y + other.y);
   }
 
-  // Constructor and hashCode...
+  // toString, hashCode, and other implementations...
 }
 ```
 
-This program analyzes without error. Notice that the last line of the `==`
+This program analyzes without error. Notice that the last line of the `+`
 method accesses `.x` and `.y` on `other`. It has been promoted to `Point` even
 though the function doesn't have any `return` or `throw`. The control flow
 analysis knows that the declared type of `wrongType()` is `Never` which means
-the then branch of the `if` statement *must* abort somehow. Since the second
+the then branch of the `if` statement *must* abort somehow. Since the final
 statement can only be reached when `other` is a `Point`, Dart promotes it.
 
 In other words, using `Never` in your own APIs lets you extend Dart's

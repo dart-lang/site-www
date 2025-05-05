@@ -91,8 +91,10 @@ void miscDeclAnalyzedButNotTested() {
 
     // #docregion identifiers
     /// Throws a [StateError] if ...
-    /// similar to [anotherMethod()], but ...
+    ///
+    /// Similar to [anotherMethod()], but ...
     // #enddocregion identifiers
+    void method0() {}
 
     // #docregion member
     /// Similar to [Duration.inDays], but handles fractional days.
