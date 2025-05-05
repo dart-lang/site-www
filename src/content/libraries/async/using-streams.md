@@ -260,9 +260,9 @@ but mainly for historical reasons.)
 
 ## Methods that modify a stream {:#modify-stream-methods}
 
-The following methods on Stream return a new stream based
+The following methods on `Stream` return a new stream based
 on the original stream.
-Each one waits until someone listens on the new stream before
+Each one waits until something listens on the new stream before
 listening on the original.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
@@ -277,7 +277,7 @@ Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
 ```
 
-The preceding methods correspond to similar methods on [Iterable][]
+The preceding methods correspond to similar methods on [Iterable][],
 which transform an iterable into another iterable.
 All of these can be written easily using an `async` function
 with an **await for** loop.
@@ -304,13 +304,15 @@ Stream<T> timeout(
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
-The final three functions are more special.
-They involve error handling which an **await for** loop
-can't do—the first error reaching the loops will end
-the loop and its subscription on the stream.
-There is no recovering from that.
-The following code shows how to use `handleError()` to remove errors
-from a stream before using it in an **await for** loop.
+The final three functions are more specialized.
+They involve error handling that an **await for** loop
+cannot directly manage; the first error encountered will
+terminate the loop and its stream subscription, with no
+built-in mechanism for recovery.
+
+The following code demonstrates how to use `handleError()`
+to filter out errors from a stream before it's consumed by
+an **await for** loop.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)" plaster="none"?>
 ```dart highlightLines=5
@@ -326,15 +328,16 @@ Stream<S> mapLogErrors<S, T>(
 }
 ```
 
-Then the `timeout` function is necessary as
-an **await for** loop would never be returned to
-if no events are emitted by the stream.
-Creating a new stream with `timeout` enables you to
-set a time limit and continue emitting events on the returned stream.
+In the previous example, an **await for** loop is never
+returned to if no events are emitted by the stream.
+To avoid this, use the `timeout()` function to create
+a new stream. `timeout()` enables you to set a
+time limit and continue emitting events on the returned
+stream.
 
-The following code modifies the previous example,
-adding a 2-second timeout on top of the error handling,
-adding a relevant error if no events occur for 2 or more seconds.
+The following code modifies the previous example. 
+It adds a two-second timeout and produces a
+relevant error if no events occur for two or more seconds.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
 ```dart highlightLines=6-12
