@@ -24,7 +24,7 @@ is the *array*, or ordered group of objects. In Dart, arrays are
 
 Dart list literals are denoted by a comma-separated list of
 elements enclosed in square brackets (`[]`). Each element
-contains an expression or value. Here's a simple Dart list:
+is usually an expression. Here's a simple Dart list:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -155,13 +155,12 @@ For more information about sets, refer to the Sets section of the
 
 ## Maps
 
-In general, a map is an object that contains elements in the
-form of key-value pairs. Each key within these pairs is
-associated with a value, and both keys and values can be
-any type of object. Each key can occur only once, although
-the same value can be associated with multiple different
-keys. Dart support for maps is provided by map literals and
-the [`Map`][] type.
+In a map, each element is a key-value pair. Each key within
+a pair is associated with a value, and both keys and values
+can be any type of object. Each key can occur only once,
+although the same value can be associated with multiple
+different keys. Dart support for maps is provided by
+map literals and the [`Map`][] type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
@@ -268,20 +267,19 @@ and control flow elements.
     collection literal.
     
     *   Expression element: Evaluates a single
-        general expression and inserts the resulting value
+        expression and inserts the resulting value
         into the collection.
 
     *   Map entry element: Evaluates a pair of key and value
         expressions and inserts the resulting entry into the
         collection. 
 
-*   Control flow element: Conditionally or iteratively
-    constructs collections directly within a
-    collection literal.
+*   Control flow element: Conditionally or iteratively adds
+    zero or more values to the surrounding collection.
 
     *   Spread element: Iterates over a given sequence
         (collection expression) and inserts all of the
-        resulting values into another collection.
+        resulting values into the surrounding collection.
     
     *   Null-aware spread element: Similar to the
         spread element, but allows the collection to be
@@ -305,16 +303,16 @@ sections.
 
 ### Expression elements {: #expression-element }
 
-An expression element evaluates a single general expression
+An expression element evaluates a single expression
 and inserts the resulting value into a collection. This
-general expression can encompass various constructs like
+expression can encompass various constructs like
 literals, variables, operators, function calls, and
 constructor calls.
 
 An expression element has this syntax in a collection:
 
 ```dart
-<general_expression>
+<expression>
 ```
 
 ### Map entry elements {: #map-entry-element }
@@ -322,7 +320,7 @@ An expression element has this syntax in a collection:
 A map entry element evaluates a pair of key and value
 expressions and inserts the resulting entry into a
 collection. Both the key and the value within this pair can
-be general expressions.
+be expressions.
 
 A map entry element has this syntax in a collection:
 
@@ -334,7 +332,7 @@ A map entry element has this syntax in a collection:
 
 The spread element (`...`) iterates over a given sequence
 (collection expression) and inserts all of the resulting
-values into another collection.
+values into the surrounding collection.
 
 A spread element has this syntax in a collection:
 
@@ -351,10 +349,12 @@ var a = [1, 2, null, 4];
 var items = [0, ...a, 5]; // [0, 1, 2, null, 4, 5]
 ```
 
-If you would like the spread element to ignore a null
-collection that is passed into and not produce an
-error, use a [null-aware spread element][]. To learn more
-about the spread operator, see [Spread operator][].
+If you are spreading an expression that might evaluate to
+`null` and you want to ignore the `null` (and insert no
+elements), use a [null-aware spread element][].
+
+To learn more about the spread operator, see
+[Spread operator][].
 
 [Spread operator]: /language/operators/#spread-operators
 [null-aware spread element]: #null-spread-element
@@ -458,19 +458,15 @@ if (<expression> case <pattern>) <result>
 ```
 
 ```dart
-// If the operation such as '(<bool_expression>)'
-// or '(<expression> case <pattern>)' resolves as true,
-// include the first result, otherwise,
-// include the second result.
-if (<if_operation>) <result> else <result>
+// If the operation resolves as true, include the first
+// result, otherwise, include the second result.
+if (<bool_expression>) <result> else <result>
 ```
 
 ```dart
-// If the first operation such as '(<bool_expression>)'
-// or '(<expression> case <pattern>)' resolves as true,
-// include the first result, otherwise,
-// perform the second operation.
-if (<if_operation>) <result> else if (<if_operation>)
+// If the operation resolves as true, include the first
+// result, otherwise, include the second result.
+if (<expression> case <pattern>) <result> else <result>
 ```
 
 The following examples illustrate various ways that
@@ -576,7 +572,7 @@ inner element, inserting zero or more resulting values.
 A `for` element has this syntax in a collection:
 
 ```dart
-for (<general_expression> in <collection>) <result>
+for (<expression> in <collection>) <result>
 ```
 
 ```dart
