@@ -436,7 +436,7 @@ class UploadException {
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [null-check pattern]: /language/pattern-types#null-check
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
-[use `!`]: /null-safety/understanding-null-safety#non-null-assertion-operator
+[use `!`]: /null-safety/understanding-null-safety#not-null-assertion-operator
 
 ## Strings
 
