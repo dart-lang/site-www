@@ -328,6 +328,72 @@ A map entry element has this syntax in a collection:
 <key_expression>: <value_expression>
 ```
 
+### Null-aware elements {: #null-aware-element }
+
+The null-aware element checks if a value is not null
+and inserts the resulting value into the surrounding
+collection. Null-aware elements can only be used with
+leaf elements and can't be nested.
+
+A null-aware element has the following syntax in an
+expression element:
+
+```dart
+?<expression>
+```
+
+A null-aware element has the following syntax in a
+map entry element:
+
+```dart
+// key is a null-aware element
+?<key_expression>: <value_expression>
+```
+
+```dart
+// value is a null-aware element
+<key_expression>: ?<value_expression>
+```
+
+```dart
+// key and value are null-aware elements
+?<key_expression>: ?<value_expression>
+```
+
+In the following example, the result for the
+null-aware element `?a` is not added to a list called
+`items` because `a` is `null`:
+
+<?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code_sample)"?>
+```dart
+int? a = null;
+int? b = 3;
+int? c = null;
+var items = [1, ?a, ?b, c, 5]; // [1, 3, null, 5]
+```
+
+The following example illustrates various ways that
+you can use null-aware elements inside of
+map entry elements:
+
+<?code-excerpt "misc/test/language_tour/collections/null_aware_element_b.dart (code_sample)"?>
+```dart
+String? itemX = 'Apple';
+String? itemY = null;
+
+int? quantityX = 3;
+int? quantityY = null;
+
+var inventoryA = {itemX: quantityY}; // {Apple: null}
+var inventoryB = {itemX: ?quantityY}; // {}
+
+var inventoryC = {itemY: quantityX}; // {null: 3}
+var inventoryD = {?itemY: quantityX}; // {}
+
+var inventoryE = {itemY: quantityY}; // {null: null}
+var inventoryF = {?itemY: ?quantityY}; // {}
+```
+
 ### Spread elements {: #spread-element }
 
 The spread element iterates over a given sequence and
