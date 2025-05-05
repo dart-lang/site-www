@@ -492,12 +492,13 @@ we strongly recommend following these pubspec rules:
 
 ### Update examples and docs
 
-If you haven't yet, also update all
-[examples][] and samples of your package to
-use a migrated version of your package and to opt in to null safety.
+If you haven't yet, update all [examples][] and samples
+of your package to use a migrated version of your package
+and to opt in to null safety.
 
-If you've published any separate documentation or tutorials for your package,
-also make sure that they're up to date for the null-safe release.
+If you've published any separate documentation or tutorials
+for your package, also make sure that they're up to date for
+the null-safe release.
 
 [examples]: /tools/pub/package-layout#examples
 
