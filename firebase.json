@@ -121,7 +121,7 @@
       { "source": "/devices", "destination": "/overview#platform", "type": 301 },
       { "source": "/dev{,/**}", "destination": "https://api.dart.dev/dev", "type": 301 },
       { "source": "/diagnostics", "destination": "/tools/diagnostics", "type": 301 },
-      { "source": "/diagnostics/:code*", "destination": "/tools/diagnostics/:code?utm_source=dartdev&utm_medium=redir&utm_id=diagcode&utm_content=:code", "type": 301 },
+      { "source": "/diagnostics/:code*", "destination": "/tools/diagnostics/:code/?utm_source=dartdev&utm_medium=redir&utm_id=diagcode&utm_content=:code", "type": 301 },
       { "source": "/docs/api{,/**}", "destination": "https://api.dart.dev", "type": 301 },
       { "source": "/docs/cookbook", "destination": "/language", "type": 301 },
       { "source": "/docs/dart-up-and-running/**/ch02", "destination": "/language", "type": 301 },
