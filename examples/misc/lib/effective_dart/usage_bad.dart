@@ -315,7 +315,7 @@ class BadTeam extends Team {
             return players.where((player) => player.isActive).length;
           });
         })
-        .catchError((e) {
+        .onError<DownloadException>((e, _) {
           log.error(e);
           return 0;
         });

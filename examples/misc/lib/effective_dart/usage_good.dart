@@ -319,6 +319,8 @@ class Player {
   bool get isActive => false;
 }
 
+class DownloadException implements Exception {}
+
 class Team {
   Future<List<Player>> get roster => Future.value([]);
   Future<Team?> downloadTeam(String name) => Future.value(Team());
@@ -332,7 +334,7 @@ class Team {
 
       var players = await team.roster;
       return players.where((player) => player.isActive).length;
-    } catch (e) {
+    } on DownloadException catch (e, _) {
       log.error(e);
       return 0;
     }
