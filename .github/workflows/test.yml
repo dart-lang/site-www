@@ -42,12 +42,16 @@ jobs:
           sdk: ${{ matrix.sdk }}
       - name: Fetch Dart packages
         run: dart pub get
+        continue-on-error: ${{ matrix.experimental }}
       - name: Check Dart code formatting
         run: dart run dart_site format-dart --check
+        continue-on-error: ${{ matrix.experimental }}
       - name: Analyze Dart code
         run: dart run dart_site analyze-dart
+        continue-on-error: ${{ matrix.experimental }}
       - name: Run Dart tests
         run: dart run dart_site test-dart
+        continue-on-error: ${{ matrix.experimental }}
 
   markdown-check:
     name: Check Markdown content
