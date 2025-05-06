@@ -128,11 +128,10 @@ transformers provided by the dart:convert library.
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 ```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
-List<String> lines =
-    await content
-        .transform(utf8.decoder)
-        .transform(const LineSplitter())
-        .toList();
+List<String> lines = await content
+    .transform(utf8.decoder)
+    .transform(const LineSplitter())
+    .toList();
 ```
 
 

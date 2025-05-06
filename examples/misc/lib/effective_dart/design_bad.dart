@@ -51,10 +51,11 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion cascades
-    var buffer = StringBuffer0() //!<br>
-        .write('one')
-        .write('two')
-        .write('three');
+    var buffer =
+        StringBuffer0() //!<br>
+            .write('one')
+            .write('two')
+            .write('three');
     // #enddocregion cascades
   }
 
