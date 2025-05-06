@@ -423,11 +423,10 @@ Consider the following code:
 
 <?code-excerpt "misc/lib/language_tour/cascades.dart (cascade)"?>
 ```dart
-var paint =
-    Paint()
-      ..color = Colors.black
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 5.0;
+var paint = Paint()
+  ..color = Colors.black
+  ..strokeCap = StrokeCap.round
+  ..strokeWidth = 5.0;
 ```
 
 The constructor, `Paint()`,

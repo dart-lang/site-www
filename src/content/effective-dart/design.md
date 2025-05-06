@@ -954,10 +954,11 @@ var buffer =
 
 <?code-excerpt "design_bad.dart (cascades)"?>
 ```dart tag=bad
-var buffer = StringBuffer()
-    .write('one')
-    .write('two')
-    .write('three');
+var buffer =
+    StringBuffer()
+        .write('one')
+        .write('two')
+        .write('three');
 ```
 
 
