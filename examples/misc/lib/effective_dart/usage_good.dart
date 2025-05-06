@@ -575,7 +575,10 @@ class Text {
 // #docregion no-new
 Widget build(BuildContext context) {
   return Row(
-    children: [RaisedButton(child: Text('Increment')), Text('Click!')],
+    children: [
+      RaisedButton(child: Text('Increment')),
+      Text('Click!'),
+    ],
   );
 }
 

@@ -1145,10 +1145,9 @@ Treasure? openChest(Chest chest, Point where) {
 
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
 ```dart tag=bad
-Treasure? openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest)
-        ? null
-        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+    ? null
+    : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 ```
 
 You can also use `=>` on members that don't return a value. This is idiomatic
@@ -1396,7 +1395,10 @@ it deprecated and avoid using it in your code.
 ```dart tag=good
 Widget build(BuildContext context) {
   return Row(
-    children: [RaisedButton(child: Text('Increment')), Text('Click!')],
+    children: [
+      RaisedButton(child: Text('Increment')),
+      Text('Click!'),
+    ],
   );
 }
 ```
