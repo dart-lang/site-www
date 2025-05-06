@@ -277,10 +277,9 @@ void miscDeclAnalyzedButNotTested() {
 
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
-    Treasure? openChest(Chest chest, Point where) =>
-        _opened.containsKey(chest)
-            ? null
-            : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+    Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+        ? null
+        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
     // #enddocregion arrow-long
   };
 }

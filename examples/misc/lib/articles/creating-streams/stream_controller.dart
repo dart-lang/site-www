@@ -145,11 +145,10 @@ void useWhere() {
 void useTransform() async {
   // #docregion use-transform
   Stream<List<int>> content = File('someFile.txt').openRead();
-  List<String> lines =
-      await content
-          .transform(utf8.decoder)
-          .transform(const LineSplitter())
-          .toList();
+  List<String> lines = await content
+      .transform(utf8.decoder)
+      .transform(const LineSplitter())
+      .toList();
   // #enddocregion use-transform
 
   print(lines);
