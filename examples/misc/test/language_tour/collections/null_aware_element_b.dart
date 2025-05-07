@@ -3,32 +3,32 @@ import 'package:test/test.dart';
 
 void main() {
   // #docregion code_sample
-  String? itemX = 'Apple';
-  String? itemY = null;
+  String? presentKey = 'Apple';
+  String? absentKey = null;
   
-  int? quantityX = 3;
-  int? quantityY = null;
+  int? presentValue = 3;
+  int? absentValue = null;
   
-  var inventoryA = {itemX: quantityY}; // {Apple: null}
-  var inventoryB = {itemX: ?quantityY}; // {}
+  var itemsA = {presentKey: absentValue}; // {Apple: null}
+  var itemsB = {presentKey: ?absentValue}; // {}
   
-  var inventoryC = {itemY: quantityX}; // {null: 3}
-  var inventoryD = {?itemY: quantityX}; // {}
+  var itemsC = {absentKey: presentValue}; // {null: 3}
+  var itemsD = {?absentKey: presentValue}; // {}
   
-  var inventoryE = {itemY: quantityY}; // {null: null}
-  var inventoryF = {?itemY: ?quantityY}; // {}
+  var itemsE = {absentKey: absentValue}; // {null: null}
+  var itemsF = {?absentKey: ?absentValue}; // {}
   // #enddocregion code_sample
 
-  print(inventoryA);
-  print(inventoryB);
-  print(inventoryC);
-  print(inventoryD);
-  print(inventoryE);
-  print(inventoryF);
-  expect(inventoryA, equals({'Apple': null}));
-  expect(inventoryB, equals({}));
-  expect(inventoryC, equals({null: 3}));
-  expect(inventoryD, equals({}));
-  expect(inventoryE, equals({null: null}));
-  expect(inventoryF, equals({}));
+  print(itemsA);
+  print(itemsB);
+  print(itemsC);
+  print(itemsD);
+  print(itemsE);
+  print(itemsF);
+  expect(itemsA, equals({'Apple': null}));
+  expect(itemsB, equals({}));
+  expect(itemsC, equals({null: 3}));
+  expect(itemsD, equals({}));
+  expect(itemsE, equals({null: null}));
+  expect(itemsF, equals({}));
 }

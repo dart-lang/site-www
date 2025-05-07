@@ -277,9 +277,9 @@ and control flow elements.
 *   Control flow element: Conditionally or iteratively adds
     zero or more values to the surrounding collection.
 
-    *   Null-aware element: If a value is not null,
-        inserts the resulting value into the surrounding
-        collection.
+    *   Null-aware element: Evaluates an expression and if
+        the result is not `null`, inserts the value into the
+        surrounding collection.
 
     *   Spread element: Iterates over a given sequence
         (collection expression) and inserts all of the
@@ -334,10 +334,9 @@ A map entry element has this syntax in a collection:
 
 ### Null-aware elements {: #null-aware-element }
 
-The null-aware element checks if a value is not null
-and inserts the resulting value into the surrounding
-collection. Null-aware elements can only be used with
-leaf elements and can't be nested.
+The null-aware element evaluates an expression and if the
+result is not `null`, inserts the value into the surrounding
+collection.
 
 A null-aware element has the following syntax in an
 expression element:

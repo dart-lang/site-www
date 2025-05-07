@@ -3,10 +3,9 @@ import 'package:test/test.dart';
 
 void main() {
   // #docregion code_sample
-  int? a = null;
-  int? b = 3;
-  int? c = null;
-  var items = [1, ?a, ?b, c, 5]; // [1, 3, null, 5]
+  int? absentValue = null;
+  int? presentValue = 3;
+  var items = [1, ?absentValue, ?presentValue, absentValue, 5]; // [1, 3, null, 5]
   // #enddocregion code_sample
 
   print(items);
