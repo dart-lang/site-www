@@ -1,76 +1,21 @@
-
 // Colors
 $flutter-color-blue: #043875;
-$flutter-color-teal: #158477;
 $flutter-color-dark-blue: #042B59;
-$flutter-color-blue-500: #0468D7;
 $flutter-color-blue-600: #0553B1;
 $flutter-color-blue-700: $flutter-color-blue;
 $flutter-color-blue-800: $flutter-color-dark-blue;
-$flutter-color-fuchsia: #E64637;
-$flutter-color-light-blue: #E7F8FF;
-$flutter-color-yellow: #FFF275;
 $flutter-color-yellow-300: #FFF59C;
 $flutter-color-grey-500: #E8EAED;
 $site-color-dark-background: #1C2834;
-$site-color-black: #000;
 $site-color-white: #FFF;
 $site-color-codeblock-bg: rgba(248, 249, 250, 0.9);
 $site-color-light-grey: #DADCE0;
 $site-color-nav-links: #6E7274;
 $site-color-body: #212121;
 $site-color-body-light: #4A4A4A;
-$site-color-footer: $site-color-dark-background;
-$site-color-primary: $flutter-color-blue-500;
 
-// Layer stack
-$site-z-header: 1000;
-$site-z-footer: 99;
-$site-z-snackbar: 150;
-$site-z-skip: 2000;
-$hero-layer-1-z: 40;
-$hero-layer-2-z: 41;
-$hero-layer-3-z: 42;
-$hero-layer-4-z: 43;
-$hero-layer-5-z: 44;
-$hero-phone-z: 50;
-$hero-text-z: 60;
-
-/* -----------------------------------------
-   Variables
------------------------------------------ */
-
-// Color Palette
-$gray-base:                 #111111;
-$white-base:                #ffffff;
-$gray:                      #D3D3D3;
-$gray-light:                #eeeeee;
-$gray-lighter:              #f0f0f0;
-$gray-dark:                 #111111;
-$teal:                      #1FBAAC;
-$blue:                      #1b87c9;
-$blue-light:                #e2f4fd;
-
-$brand-primary:             #1967D2;
-$brand-secondary:           #13B9FD; // 400
-$brand-highlight:           #FFC108; // 700
-
-$google-gray:               #202124; // 900
-$google-gray-light:         #60646B; // 600
-$google-gray-lighter:       #D5D7DA; // 100
-
-$default-link:              #0175C2;
-$default-link-visited:      #0175C2;
-
-$site-color-header: $site-color-dark-background;
-$site-color-header-text: #f8f9fa;
-$site-color-card-text: #f8f9fa;
+$site-color-primary: #1967D2;
 $site-color-card-link: #40C4FF;
-$site-font-size-header: 16px;
-$site-color-primary: $brand-primary;
-
-// Sidenav, toc, and footer
-$font-size-small:         14px;
 
 // Fonts
 $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
@@ -81,22 +26,13 @@ $site-font-family-icon: 'Material Symbols Outlined';
 $site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
 $site-font-icon: 24px/1 $site-font-family-icon;
 
-// Typography
-$font-size-base: 1.0rem; // 16px
-$font-size-base-weight: 400;
-$font-family-base: $site-font-family-base;
-$font-family-monospace: $site-font-family-monospace;
-
 // Layout
 $site-header-height: 3.25rem;
 $site-content-top-padding: 2rem;
-$site-snackbar-padding: 20px;
-$site-spacer: 1rem;
 
 // Alerts
 $alert-success-bg:        #f1fbf9;
 $alert-success-fg:        #155723;
-$alert-info-bg:           #e7f8ff;
 $alert-warning-bg:        #fcf8e3;
 $alert-danger-bg:         #fef3f6;
 $alert-danger-fg:         #cb1425;
