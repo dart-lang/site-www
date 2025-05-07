@@ -19,11 +19,10 @@ void main() {
 
 void showCascade() {
   // #docregion cascade
-  var paint =
-      Paint()
-        ..color = Colors.black
-        ..strokeCap = StrokeCap.round
-        ..strokeWidth = 5.0;
+  var paint = Paint()
+    ..color = Colors.black
+    ..strokeCap = StrokeCap.round
+    ..strokeWidth = 5.0;
   // #enddocregion cascade
   print(paint);
 }

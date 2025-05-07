@@ -332,10 +332,9 @@ prints each converted string with its length.
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
 
-var uppercaseList =
-    list.map((item) {
-      return item.toUpperCase();
-    }).toList();
+var uppercaseList = list.map((item) {
+  return item.toUpperCase();
+}).toList();
 // Convert to list after mapping
 
 for (var item in uppercaseList) {
@@ -350,10 +349,9 @@ Click **Run** to execute the code.
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
 
-  var uppercaseList =
-      list.map((item) {
-        return item.toUpperCase();
-      }).toList();
+  var uppercaseList = list.map((item) {
+    return item.toUpperCase();
+  }).toList();
   // Convert to list after mapping
 
   for (var item in uppercaseList) {
