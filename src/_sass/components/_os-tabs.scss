@@ -1,6 +1,6 @@
 @use '../base/variables' as *;
 
-$tab-accent-color: $brand-primary;
+$tab-accent-color: $site-color-primary;
 
 .tabs {
   &__content {
@@ -29,14 +29,14 @@ $tab-accent-color: $brand-primary;
 
     li {
       background: none;
-      color: $gray-base;
+      color: $site-color-body;
       display: inline-block;
       padding: 10px 15px;
       cursor: pointer;
 
       &.current {
         background: $tab-accent-color;
-        color: $white-base;
+        color: #fff;
       }
     }
   }

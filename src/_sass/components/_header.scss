@@ -5,7 +5,7 @@
   font-family: $site-font-family-alt;
   position: sticky;
   top: 0;
-  z-index: $site-z-header;
+  z-index: 1000;
 
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
@@ -14,7 +14,7 @@
     min-height: $site-header-height;
 
     @media (min-width: 768px) {
-      font-size: $font-size-base;
+      font-size: 1rem;
     }
 
     .navbar-toggler {
@@ -98,8 +98,8 @@
   }
 
   #mainnav {
-    background-color: $site-color-header;
-    color: $site-color-header-text;
+    background-color: $site-color-dark-background;
+    color: $site-color-light-grey;
     display: flex;
     align-items: center;
 
@@ -117,11 +117,11 @@
         padding: 0 0.75rem;
 
         a {
-          color: $site-color-header-text;
+          color: $site-color-light-grey;
           display: inline-block;
           padding: 0 6px;
-          font-size: $site-font-size-header;
-          font-weight: 400;
+          font-size: 1rem;
+          font-weight: 500;
           font-family: $site-font-family-alt;
 
           &:hover, &:active {

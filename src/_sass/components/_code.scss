@@ -55,9 +55,9 @@ pre {
     border-left: 2px solid rgba(0, 0, 0, 0);
 
     &.highlighted-line {
-      background: color.change($brand-primary, $alpha: 0.075);
+      background: color.change($site-color-primary, $alpha: 0.075);
       min-width: 100%;
-      border-left-color: $brand-primary;
+      border-left-color: $site-color-primary;
     }
   }
 
@@ -107,7 +107,7 @@ pre {
 }
 
 .code-block-language {
-  font-family: $font-family-monospace;
+  font-family: $site-font-family-monospace;
   user-select: none;
   font-size: 0.8125rem;
   color: $site-color-nav-links;
@@ -120,7 +120,7 @@ pre {
   z-index: 5;
 
   .highlight-languages .language-dart & {
-    color: $brand-primary;
+    color: $site-color-primary;
   }
 
   .highlight-languages .language-js & {
@@ -139,7 +139,7 @@ pre {
 }
 
 .code-block-tag {
-  font-family: $font-family-monospace;
+  font-family: $site-font-family-monospace;
   font-size: 0.8125rem;
   font-weight: 500;
   position: absolute;

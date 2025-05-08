@@ -4,7 +4,7 @@
 form {
   .muted {
     font-size: 75%;
-    color: $gray-light;
+    color: $site-color-light-grey;
     text-indent: 0;
     padding: 10px;
   }
@@ -35,8 +35,8 @@ input, select {
   border-radius: 0;
   font-size: 13px;
   cursor: pointer;
-  background-color: $gray-light;
-  color: $gray-dark;
+  background-color: $site-color-codeblock-bg;
+  color: $site-color-body;
 
   &:focus, &:active {
     outline-color: $site-color-primary;

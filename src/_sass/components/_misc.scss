@@ -56,12 +56,12 @@
   list-style: none;
   column-count: 2;
   column-gap: 0;
-  padding-left: $font-size-base * 0.5;
+  padding-left: 0.5rem;
 
   li {
     page-break-inside: avoid;
-    padding: $font-size-base * 0.5;
-    font-size: $font-size-small;
+    padding: 0.5rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -117,7 +117,7 @@
 
 // Used for lightening entries on the SDK archive.
 .muted {
-  color: $gray;
+  color: $site-color-light-grey;
 }
 
 // Elements on the archive for each channel.

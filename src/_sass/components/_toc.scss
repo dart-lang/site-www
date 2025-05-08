@@ -52,16 +52,16 @@
 
   .nav-link {
     color: $site-color-body;
-    font-size: $font-size-small;
+    font-size: 0.875rem;
     line-height: normal;
     padding: 1px 0;
 
     &:hover {
-      color: $brand-primary;
+      color: $site-color-primary;
     }
 
     &.active {
-      color: $brand-primary;
+      color: $site-color-primary;
 
       &:hover {
         color: $flutter-color-dark-blue;
