@@ -35,7 +35,7 @@ yaml_variable_scanner:
   #
   # (Glob Syntax)
   ignoreCheckFilePath:
-    - "src/content/tools/diagnostic-messages.md"
+    - "src/content/tools/diagnostics/**"
 
   # Ignore text that doesn't need to match
   #

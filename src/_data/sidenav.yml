@@ -322,7 +322,7 @@
       - title: Linter rules
         permalink: /tools/linter-rules
       - title: Diagnostic messages
-        permalink: /tools/diagnostic-messages
+        permalink: /tools/diagnostics
   - title: Testing & optimization
     children:
       - title: Testing
