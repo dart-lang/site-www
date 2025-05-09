@@ -29,7 +29,7 @@ to cover `import` and `export` directives. The guidelines apply equally to both.
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
 `part` to split part of a library out into another file, Dart requires the other
-file to in turn indicate which library it's a part of. 
+file too in turn indicate which library it's a part of. 
 
 Dart allows the `part of` directive to use the *name* of a library.
 Naming libraries is a legacy feature that is now [discouraged][]. 
