@@ -5,7 +5,13 @@ void main() {
   // #docregion code_sample
   int? absentValue = null;
   int? presentValue = 3;
-  var items = [1, ?absentValue, ?presentValue, absentValue, 5]; // [1, 3, null, 5]
+  var items = [
+    1,
+    ?absentValue,
+    ?presentValue,
+    absentValue,
+    5,
+  ]; // [1, 3, null, 5]
   // #enddocregion code_sample
 
   print(items);
