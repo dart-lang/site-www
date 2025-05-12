@@ -369,10 +369,15 @@ null-aware element `?a` is not added to a list called
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code_sample)"?>
 ```dart
-int? a = null;
-int? b = 3;
-int? c = null;
-var items = [1, ?a, ?b, c, 5]; // [1, 3, null, 5]
+int? absentValue = null;
+int? presentValue = 3;
+var items = [
+  1,
+  ?absentValue,
+  ?presentValue,
+  absentValue,
+  5,
+]; // [1, 3, null, 5]
 ```
 
 The following example illustrates various ways that
@@ -381,16 +386,20 @@ map entry elements:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_b.dart (code_sample)"?>
 ```dart
-String? itemX = 'Apple';
-String? itemY = null;
-int? quantityX = 3;
-int? quantityY = null;
-var inventoryA = {itemX: quantityY}; // {Apple: null}
-var inventoryB = {itemX: ?quantityY}; // {}
-var inventoryC = {itemY: quantityX}; // {null: 3}
-var inventoryD = {?itemY: quantityX}; // {}
-var inventoryE = {itemY: quantityY}; // {null: null}
-var inventoryF = {?itemY: ?quantityY}; // {}
+String? presentKey = 'Apple';
+String? absentKey = null;
+
+int? presentValue = 3;
+int? absentValue = null;
+
+var itemsA = {presentKey: absentValue}; // {Apple: null}
+var itemsB = {presentKey: ?absentValue}; // {}
+
+var itemsC = {absentKey: presentValue}; // {null: 3}
+var itemsD = {?absentKey: presentValue}; // {}
+
+var itemsE = {absentKey: absentValue}; // {null: null}
+var itemsF = {?absentKey: ?absentValue}; // {}
 ```
 
 ### Spread elements {: #spread-element }
