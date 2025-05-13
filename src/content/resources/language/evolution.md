@@ -60,12 +60,13 @@ The following language features have been added to Dart 3.8:
 The following support features have been added to
 Dart 3.8:
 
-*   [Cross-compile to Linux x64 and ARM64][]:
-    Cross-compilation to Linux x64 and ARM64 is supported on
-    the following 64-bit host operating systems: macOS,
-    Windows, and Linux.
+*   [New cross-compilation command flags][]:
+    Cross-compilation flags for Linux x64 and ARM64 have
+    been added for the `dart compile` command. These are:
 
-
+    * `--target-os=linux`
+    * `--target-arch=x64`
+    * `--target-arch=arm64`
 
 [Null-aware elements]: /language/collections#null-aware-element
 [Doc imports]: /tools/doc-comments/references.md
