@@ -597,7 +597,7 @@ var items = [1, for (var x = 5; x > 2; x--) x, 7]; // [1, 5, 4, 3, 7]
 
 <?code-excerpt "misc/test/language_tour/collections/for_loop_in_collection_c.dart (code_sample)"?>
 ```dart
-var items = [1, for (var x = 2; x < 4; x++) x, 7]; // [1, 2, 3, 4, 7]
+var items = [1, for (var x = 2; x < 4; x++) x, 7]; // [1, 2, 3, 7]
 ```
 
 To learn more about the `for` loop, see
