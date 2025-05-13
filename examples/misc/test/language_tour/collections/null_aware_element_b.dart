@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_init_to_null, invalid_null_aware_operator
+// ignore_for_file: avoid_init_to_null
+
 import 'package:test/test.dart';
 
 void main() {
-  // #docregion code_sample
+  // #docregion code-sample
   String? presentKey = 'Apple';
   String? absentKey = null;
 
@@ -17,7 +18,7 @@ void main() {
 
   var itemsE = {absentKey: absentValue}; // {null: null}
   var itemsF = {?absentKey: ?absentValue}; // {}
-  // #enddocregion code_sample
+  // #enddocregion code-sample
 
   print(itemsA);
   print(itemsB);

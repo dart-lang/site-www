@@ -372,7 +372,7 @@ In the following example, the result for the
 null-aware element `?a` is not added to a list called
 `items` because `a` is `null`:
 
-<?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code-sample)"?>
 ```dart
 int? absentValue = null;
 int? presentValue = 3;
@@ -389,7 +389,7 @@ The following example illustrates various ways that
 you can use null-aware elements inside of
 map entry elements:
 
-<?code-excerpt "misc/test/language_tour/collections/null_aware_element_b.dart (code_sample)"?>
+<?code-excerpt "misc/test/language_tour/collections/null_aware_element_b.dart (code-sample)"?>
 ```dart
 String? presentKey = 'Apple';
 String? absentKey = null;
