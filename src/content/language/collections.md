@@ -334,9 +334,14 @@ A map entry element has this syntax in a collection:
 
 ### Null-aware elements {: #null-aware-element }
 
-The null-aware element evaluates an expression and if the
+A null-aware element evaluates an expression and if the
 result is not `null`, inserts the value into the surrounding
 collection.
+
+:::version-note
+Null-aware collection elements require
+a [language version][] of at least 3.8.
+:::
 
 A null-aware element has the following syntax in an
 expression element:
@@ -401,6 +406,8 @@ var itemsD = {?absentKey: presentValue}; // {}
 var itemsE = {absentKey: absentValue}; // {null: null}
 var itemsF = {?absentKey: ?absentValue}; // {}
 ```
+
+[language version]: /resources/language/evolution#language-versioning
 
 ### Spread elements {: #spread-element }
 
