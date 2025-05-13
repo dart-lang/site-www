@@ -70,7 +70,7 @@ Dart 3.8:
 
 [Null-aware elements]: /language/collections#null-aware-element
 [Doc imports]: /tools/doc-comments/references.md
-[Cross-compilation to Linux x64 and ARM64]: /tools/dart-compile.md
+[New cross-compilation command flags]: /tools/dart-compile.md
 
 ### Dart 3.7
 _Released 12 February 2025_
