@@ -13,8 +13,9 @@ import 'src/commands/check_markdown.dart';
 import 'src/commands/check_site_variable.dart';
 import 'src/commands/format_dart.dart';
 import 'src/commands/freshness.dart';
-import 'src/commands/generate_diagnostic_docs.dart';
+import 'src/commands/generate_diagnostics.dart';
 import 'src/commands/generate_effective_dart_toc.dart';
+import 'src/commands/generate_lints.dart';
 import 'src/commands/refresh_excerpts.dart';
 import 'src/commands/serve.dart';
 import 'src/commands/test_dart.dart';
@@ -38,6 +39,7 @@ final class DartSiteCommandRunner extends CommandRunner<int> {
     addCommand(FormatDartCommand());
     addCommand(FreshnessCommand());
     addCommand(GenerateDiagnosticDocs());
+    addCommand(GenerateLintDocs());
     addCommand(GenerateEffectiveDartToc());
     addCommand(AnalyzeDartCommand());
     addCommand(TestDartCommand());

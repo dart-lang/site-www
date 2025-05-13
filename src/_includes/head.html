@@ -74,6 +74,10 @@
   {% endfor -%}
   {% endif -%}
 
+  {% if redirectTo and redirectTo != '' -%}
+  <script>window.location.replace('{{redirectTo}}');</script>
+  {% endif -%}
+
   <script src="{{ '/assets/js/os-tabs.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 

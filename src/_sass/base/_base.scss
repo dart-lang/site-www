@@ -9,10 +9,18 @@
 
 body {
   font-family: $site-font-family-base;
-  font-size: $font-size-base;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: $site-color-body;
+
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
 }
 
 section {
@@ -20,7 +28,7 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $site-font-family-gsans;
+  font-family: $site-font-family-alt;
   font-weight: 400;
   line-height: 1.2;
   color: $site-color-body;
@@ -81,7 +89,7 @@ dt {
 
 a {
   &, &:visited {
-    color: $brand-primary;
+    color: $site-color-primary;
   }
 }
 
@@ -140,7 +148,7 @@ details {
     cursor: pointer;
 
     &:hover {
-      color: $brand-primary;
+      color: $site-color-primary;
     }
   }
 

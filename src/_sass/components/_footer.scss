@@ -3,13 +3,13 @@
 #page-footer {
   position: relative;
   z-index: 1000;
-  background-color: $site-color-footer;
+  background-color: $site-color-dark-background;
   padding: 2rem;
 
   color: $site-color-light-grey;
   font-weight: 400;
   font-family: $site-font-family-alt;
-  font-size: $font-size-small;
+  font-size: 0.875rem;
 
   .brand {
     width: 176px;

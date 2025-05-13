@@ -68,7 +68,7 @@ body.homepage {
         text-decoration: none;
 
         &:hover, &:focus, &:active {
-          color: $white-base;
+          color: #fff;
         }
       }
     }
@@ -405,6 +405,7 @@ body.homepage {
   }
 
   a.frontanchor {
+    scroll-margin-top: 2rem;
     padding-top: 2rem;
   }
 }

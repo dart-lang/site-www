@@ -115,6 +115,18 @@ function setupCopyButtons() {
     return;
   }
 
+  const copyButtons = document.querySelectorAll('.copy-button[data-copy]');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const textToCopy = button.dataset.copy;
+      if (textToCopy) {
+        await navigator.clipboard.writeText(textToCopy);
+      }
+      e.preventDefault();
+    });
+    button.classList.remove('hidden');
+  });
+
   const codeBlocks =
       document.querySelectorAll('.code-block-body');
 

@@ -2,7 +2,7 @@
 
 .site-header-search {
   &::before {
-    color: $gray;
+    color: $site-color-light-grey;
     z-index: 1;
   }
 
@@ -38,8 +38,8 @@
   background-color: transparent;
 
   #mainnav & {
-    background-color: $site-color-header;
-    color: $site-color-header-text;
+    background-color: $site-color-dark-background;
+    color: $site-color-light-grey;
     font-size: inherit;
     height: inherit;
     width: 24px;
@@ -49,7 +49,7 @@
     }
 
     @media (min-width: 768px) {
-      font-size: $site-font-size-header;
+      font-size: 1rem;
       height: unset;
       width: unset;
     }
@@ -75,7 +75,7 @@
   position: absolute;
   right: 5px;
   top: 0;
-  color: $gray-dark;
+  color: $site-color-body;
   font-size: 14px;
 }
 
@@ -95,7 +95,7 @@
     z-index: 5;
 
     &:hover {
-      color: $gray;
+      color: $site-color-light-grey;
     }
   }
 }

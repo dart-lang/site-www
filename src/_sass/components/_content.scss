@@ -45,7 +45,7 @@ article {
   }
 
   #site-content-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     scroll-margin: 4.5rem;
   }
 
@@ -91,7 +91,7 @@ article {
       text-decoration: none;
 
       &:hover {
-        color: $brand-primary;
+        color: $site-color-primary;
       }
 
       &:focus {
