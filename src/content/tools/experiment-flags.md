@@ -20,17 +20,28 @@ pass the corresponding flag to the tool.
 
 For example, to enable the experiments
 `super-mixins` and `no-slow-checks`,
-add those flags to the `dart` command:
+add those flags to the
+`dart` or `flutter` command:
+
+{% tabs "experiment-flags-tabs" %}
+
+{% tab "Dart command" %}
 
 ```console
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
-Or for the `flutter` command:
+{% endtab %}
+
+{% tab "Flutter command" %}
 
 ```console
 $ flutter run --enable-experiment=super-mixins,no-slow-checks
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Using experiment flags with the Dart analyzer (command-line and IDE)
 
