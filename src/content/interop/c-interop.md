@@ -290,7 +290,7 @@ build and bundle C code in a Dart package.
 The example includes the following files:
 
 {% capture native-assets -%}
-{{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/example/build/native_add_library
+{{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
 {%- endcapture %}
 
 | **Source file**                         | **Description**                                                                                                                                                                |
@@ -318,7 +318,7 @@ API documentation can be found for the following packages:
 * To learn about native assets in Dart FFI,
   consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
 * To learn about the `hook/build.dart` build hook,
-  consult the [`package:native_assets_cli` API reference][].
+  consult the [`package:hooks` API reference][].
 
 ### Opt-in to the experiment
 
@@ -328,14 +328,14 @@ consult these tracking issues:
 * [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
 * [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
 
-[`Asset`]: {{site.pub-api}}/native_assets_cli/latest/native_assets_cli/Asset-class.html
+[`Asset`]: {{site.pub-api}}/hooks/latest/hooks/Asset-class.html
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 [`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
-[`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/native_assets_cli/example/build/native_add_app
+[`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_add_app
 [`native_add_library`]: {{native-assets}}
 [`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
 [`NativeType`]: {{dart-ffi}}/NativeType-class.html
-[`package:native_assets_cli` API reference]: {{site.pub-api}}/native_assets_cli/latest/
+[`package:hooks` API reference]: {{site.pub-api}}/hooks/latest/
 [ABI]: {{dart-ffi}}/Abi-class.html
 [AbiSpecificInteger]: {{dart-ffi}}/AbiSpecificInteger-class.html
 [android]: {{site.flutter-docs}}/development/platform-integration/android/c-interop
