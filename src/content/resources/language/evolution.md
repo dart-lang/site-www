@@ -69,8 +69,8 @@ Dart 3.8:
     * `--target-arch=arm64`
 
 [Null-aware elements]: /language/collections#null-aware-element
-[Doc imports]: /tools/doc-comments/references
-[New cross-compilation command flags]: /tools/dart-compile
+[Doc imports]: /tools/doc-comments/references#doc-imports
+[New cross-compilation command flags]: /tools/dart-compile#cross-compilation-exe
 
 ### Dart 3.7
 _Released 12 February 2025_
