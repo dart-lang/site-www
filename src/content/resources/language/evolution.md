@@ -42,6 +42,36 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.8
+_Released 20 May 2025_
+| [Dart 3.8 announcement](https://medium.com/dartlang/...)
+
+The following language features have been added to Dart 3.8:
+
+*   [Null-aware elements][]: A null-aware element evaluates
+    an expression and if the result is not null, inserts the
+    value into the surrounding collection.
+
+*   [Doc imports][]: Dart now supports a
+    `@docImport` documentation tag, which enables external
+    elements to be referenced in documentation comments
+    without actually importing them.
+
+The following support features have been added to
+Dart 3.8:
+
+*   [New cross-compilation command flags][]:
+    Cross-compilation flags for Linux x64 and ARM64 have
+    been added for the `dart compile` command. These are:
+
+    * `--target-os=linux`
+    * `--target-arch=x64`
+    * `--target-arch=arm64`
+
+[Null-aware elements]: /language/collections#null-aware-element
+[Doc imports]: /tools/doc-comments/references#doc-imports
+[New cross-compilation command flags]: /tools/dart-compile#cross-compilation-exe
+
 ### Dart 3.7
 _Released 12 February 2025_
 | [Dart 3.7 announcement](https://medium.com/dartlang/announcing-dart-3-7-bf864a1b195c)
