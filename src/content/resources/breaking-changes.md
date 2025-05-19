@@ -112,9 +112,12 @@ don't include the section header.
 
 #### Development JavaScript compiler (DDC)
 
-- Now throws a runtime error when a redirecting factory constructor is
-  torn off and one of its optional non-nullable parameters is provided no value.
+- Now throws a runtime error when a
+  redirecting factory constructor is [torn off][tear-offs] and
+  one of its optional non-nullable parameters is provided no value.
   In the future this is likely to be a compile-time error.
+
+[tear-offs]: /language/functions#tear-offs
 
 #### Production JavaScript compiler (dart2js)
 
