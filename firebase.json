@@ -373,6 +373,7 @@
       { "source": "/support/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
 
+      { "source": "/to/cross-compilation", "destination": "/tools/dart-compile#cross-compilation", "type": 301 },
       { "source": "/to/doc-comment-references", "destination": "/tools/doc-comments/references", "type": 301 },
       { "source": "/to/downgrade-testing", "destination": "/tools/pub/dependencies#test-with-downgraded-dependencies", "type": 301 },
       { "source": "/to/enforce-lockfile", "destination": "/tools/pub/packages#get-dependencies-for-production", "type": 301 },
