@@ -98,7 +98,7 @@ don't include the section header.
 - Native classes in `dart:html`, such as `HtmlElement`,
   [can no longer be extended][53264].
 
-[53264]: https://github.com/dart-lang/sdk/issues/53264
+[53264]: {{site.repo.dart.sdk}}/issues/53264
 
 ### Tools {:.no_toc}
 
