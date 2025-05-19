@@ -3,19 +3,11 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
-<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
-    <img
-      height="32"
-      alt="Open in IDX"
-      src="https://cdn.idx.dev/btn/open_purple_32.svg">
-  </picture>
+<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
+  <img
+    height="32"
+    alt="Open in Firebase Studio"
+    src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
 </a>
 
 The documentation site for the [Dart programming language](https://dart.dev), 
@@ -84,7 +76,7 @@ If you prefer, you can use a version manager such as [nvm][],
 and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `22.14` or later)_:
+and already the latest stable version _(currently `22.15` or later)_:
 
 ```terminal
 node --version
