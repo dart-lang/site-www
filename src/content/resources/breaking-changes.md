@@ -9,39 +9,47 @@ lastVerified: 2024-08-04
 {% assign removed = '<span class="tag-label removed-tag">Removed</span>' %}
 {% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
 
-This page lists all breaking changes and deprecations in the Dart SDK,
-organized by release and area, to help Dart users understand and manage their
-impact. Complete release notes are available in the [Dart SDK changelog][changelog].
+This page lists all breaking changes and deprecations in
+updates to the Dart SDK, organized by release and area,
+to help Dart developers understand and manage their impact.
+Complete release notes are available in the [Dart SDK changelog][changelog].
 The [breaking change policy][] document describes the policy and process
-around breaking changes and deprecations in Dart. 
+around breaking changes and deprecations in Dart.
 
-**This page includes the following types of breaking changes**:
+**This page includes the following types of breaking changes:**
 
-* **Unversioned**: The Dart SDK does not maintain backward compatibility, and
-  code may break as soon as you [upgrade your sdk version][sdk] if it relies on
-  the previous behavior.
+**Unversioned**
+: The Dart SDK doesn't maintain backward compatibility,
+  and code might break as soon as you [upgrade your sdk version][sdk] if
+  it relies on the previous behavior.
 
-  _These are the majority of changes and are not specially marked in this list._
-* **Language versioned**: The Dart SDK maintains backward compatibility for
-  existing code, and the behavior change only takes effect (potentially breaking
-  code that relies on the previous behavior) when you upgrade the
-  [language version][] of your code.
+  _These are the majority of changes and aren't specially marked in this list._
+
+**Language versioned**
+: The Dart SDK maintains backward compatibility for existing code,
+  and the behavior change only takes effect (potentially breaking
+  code that relies on the previous behavior) when you
+  upgrade the [language version][] of your code.
 
   _These are marked as:_ {{versioned}}
-* **Deprecations**: The Dart SDK maintains compatibility for deprecated code,
-  with a warning. Deprecations are then completely removed in a subsequent release,
+
+**Deprecations**
+: The Dart SDK maintains compatibility for deprecated code, with a warning.
+  Deprecations are then completely removed in a later release,
   breaking any code that relies on the previous behavior.
 
   _These are marked as:_ {{deprecated}} / {{removed}}
-* **Experimental**: Part of the release but not yet treated as stable in the SDK,
-  and can break from one version to another. Experimental changes don't
-  always have a corresponding breaking change issue, but may have more detail in
-  the [SDK changelog][changelog].
+
+**Experimental**
+: Part of the release but not yet treated as stable in the SDK and
+  can break from one version to another.
+  Experimental changes don't always have a corresponding breaking change issue,
+  but might have more details in the [SDK changelog][changelog].
 
   These are marked: {{experimental}}
 
-If you have questions or concerns about any of these breaking changes, please 
-comment on the breaking change issue linked from the relevant entry.
+If you have questions or concerns about any of these breaking changes,
+please comment on the breaking change issue linked from the relevant entry.
 To be notified about future breaking changes, join the [Dart announce][] group.
 
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
@@ -68,6 +76,59 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
+## 3.9.0
+
+### Language {:.no_toc}
+
+- {{versioned}}
+  Null safety is now assumed when computing
+  type promotion, reachability, and definite assignment.
+  As a result, improved dead code analysis might
+  cause new analyzer diagnostics to trigger on
+  existing code that previously passed analysis.
+
+## 3.8.0
+
+### Libraries {:.no_toc}
+
+#### `dart:html`
+
+- {{removed}}
+  The `Element.created` constructor has been removed.
+- Native classes in `dart:html`, such as `HtmlElement`,
+  [can no longer be extended][53264].
+
+[53264]: https://github.com/dart-lang/sdk/issues/53264
+
+### Tools {:.no_toc}
+
+#### Analyzer
+
+- {{deprecated}}
+  The [`avoid_null_checks_in_equality_operators`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+[`avoid_null_checks_in_equality_operators`]: /tools/linter-rules/avoid_null_checks_in_equality_operators
+
+#### Development JavaScript compiler (DDC)
+
+- Now throws a runtime error when a redirecting factory constructor is
+  torn off and one of its optional non-nullable parameters is provided no value.
+  In the future this is likely to be a compile-time error.
+
+#### Production JavaScript compiler (dart2js)
+
+- {{experimental}} {{removed}}
+  The `--experiment-new-rti` and `--use-old-rti` flags are no longer supported.
+
+#### Formatter (`dart format`)
+
+- {{versioned}}
+  The formatter made changes and fixes that result in new output when
+  formatting code with a [language version][] of 3.8 or greater.
+
+[language version]: /resources/language/evolution#language-versioning
+
 ## 3.7.0
 
 ### Language {:.no_toc}
@@ -80,7 +141,7 @@ don't include the section header.
   mirrors the behavior of promoted local variables.
   This change isn't expected to make any difference in practice.
 
-[wildcards]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/wildcard-variables/feature-specification.md
+[wildcards]: /language/variables#wildcard-variables
 [56893]: {{site.repo.dart.sdk}}/issues/56893
 
 ### Libraries {:.no_toc}
@@ -1245,7 +1306,7 @@ other.
 
 * A number of static errors that should have been detected
   and reported were not supported in 2.0.0. These are reported now, which means
-  existing incorrect code may show new errors:
+  existing incorrect code might show new errors:
   * [Mixins must correctly override their superclasses][34235].
   * [Implicit type arguments in extends clauses must satisfy the class bounds][34532].
   * [Instance members should shadow prefixes][34498].
