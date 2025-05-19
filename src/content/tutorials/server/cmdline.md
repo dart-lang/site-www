@@ -190,16 +190,16 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.7.0
+7   sdk: ^3.8.0
 8 
 9 # Add regular dependencies here.
 10 dependencies:
-11   args: ^2.5.0
+11   args: ^2.7.0
 12   # path: ^1.8.0
 13 
 14 dev_dependencies:
-15   lints: ^5.0.0
-16   test: ^1.24.0
+15   lints: ^5.1.1
+16   test: ^1.25.0
 ```
 
 This command displays each line of the specified file.

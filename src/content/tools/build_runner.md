@@ -38,8 +38,8 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.13
-  build_test: ^2.2.2
+  build_runner: ^2.4.15
+  build_test: ^2.2.3
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.

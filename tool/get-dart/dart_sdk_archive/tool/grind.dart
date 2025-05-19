@@ -17,7 +17,8 @@ void buildJson() async {
   final svnVersions = await generator.svnVersions;
   final file = File(filePath);
   final jsonStr = json.encode(svnVersions);
-  final fileContents = '''
+  final fileContents =
+      '''
 const Map<String, String> svnVersions = $jsonStr;
   ''';
   final formatted = DartFormatter(

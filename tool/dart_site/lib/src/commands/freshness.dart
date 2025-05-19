@@ -168,8 +168,9 @@ final class FreshnessResults {
       buffer.writeln('\n====== Files with stale lastVerified dates ======\n');
       final currentDate = DateTime.now();
       for (final staleFile in _staleFiles) {
-        final dayDifference =
-            currentDate.difference(staleFile.lastVerified).inDays;
+        final dayDifference = currentDate
+            .difference(staleFile.lastVerified)
+            .inDays;
         var outputIcon = '🟩';
         for (final (:days, :icon) in _cutoffDays.reversed) {
           if (dayDifference < days) continue;
