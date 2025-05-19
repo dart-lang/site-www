@@ -48,9 +48,9 @@ _Released 20 May 2025_
 
 The following language features have been added to Dart 3.8:
 
-*   [Null-aware elements][]: A null-aware element evaluates
-    an expression and if the result is not null, inserts the
-    value into the surrounding collection.
+*   [Null-aware elements][]: A null-aware collection element evaluates
+    an expression in a collection literal and if the result is not `null`,
+    inserts the value into the resulting collection.
 
 *   [Doc imports][]: Dart now supports a
     `@docImport` documentation tag, which enables external
