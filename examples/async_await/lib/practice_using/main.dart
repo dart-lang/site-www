@@ -1,4 +1,4 @@
-// ignore_for_file: always_declare_return_types, type_annotate_public_apis
+// ignore_for_file: always_declare_return_types, type_annotate_public_apis, strict_top_level_inference
 import 'package:examples_util/codelabs.dart';
 
 // #docregion

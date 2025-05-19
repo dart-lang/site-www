@@ -561,14 +561,14 @@ class Widget {}
 class BuildContext {}
 
 class Row extends Widget {
-  Row({children});
+  Row({List<Widget> children = const []});
 }
 
-class RaisedButton {
-  RaisedButton({child});
+class RaisedButton extends Widget {
+  RaisedButton({Widget? child});
 }
 
-class Text {
+class Text extends Widget {
   Text(String text);
 }
 

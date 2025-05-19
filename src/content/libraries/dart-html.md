@@ -265,10 +265,9 @@ cascades:
 
 <?code-excerpt "html/lib/html.dart (elem-set-cascade)"?>
 ```dart
-var message =
-    DivElement()
-      ..id = 'message2'
-      ..text = 'Please subscribe to the Dart mailing list.';
+var message = DivElement()
+  ..id = 'message2'
+  ..text = 'Please subscribe to the Dart mailing list.';
 ```
 
 While using IDs and classes to associate an element with a set of styles

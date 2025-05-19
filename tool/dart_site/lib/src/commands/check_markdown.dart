@@ -63,8 +63,9 @@ List<String> _findMergeConflictRemnants(
     throw ArgumentError('The provided path is not a directory: $directoryPath');
   }
 
-  final files =
-      directory.listSync(recursive: true, followLinks: false).whereType<File>();
+  final files = directory
+      .listSync(recursive: true, followLinks: false)
+      .whereType<File>();
 
   for (final file in files) {
     // If the file doesn't have one of the specified extensions, skip it.

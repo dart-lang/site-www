@@ -3,14 +3,13 @@ import 'package:web/web.dart';
 import 'util.dart';
 
 final class OperatingSystem {
-  static final OperatingSystem current =
-      debugIsTest
-          ? _linux
-          : [_chrome, _mac, _windows, _linux, _unix].firstWhere(
-            (system) =>
-                window.navigator.appVersion.contains(system._navigatorName),
-            orElse: () => const OperatingSystem('Unknown', 'Unknown'),
-          );
+  static final OperatingSystem current = debugIsTest
+      ? _linux
+      : [_chrome, _mac, _windows, _linux, _unix].firstWhere(
+          (system) =>
+              window.navigator.appVersion.contains(system._navigatorName),
+          orElse: () => const OperatingSystem('Unknown', 'Unknown'),
+        );
 
   final String name;
   final String _navigatorName;

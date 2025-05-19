@@ -71,7 +71,8 @@ class VersionSelector with ChangeNotifier {
   Future<void> loadVersions() async {
     final versions =
         (await fetchSdkVersions(channel, client)
-          ..sort()).reversed;
+              ..sort())
+            .reversed;
 
     _selectedVersion = versions.first.canonicalizedVersion;
     _versions = versions;

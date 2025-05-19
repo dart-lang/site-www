@@ -498,9 +498,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.4.13
-  lints: ^2.1.1
-  test: ^1.25.8
+  build_runner: ^2.4.15
+  lints: ^5.1.1
+  test: ^1.25.15
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.
