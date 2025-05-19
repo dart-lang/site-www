@@ -68,7 +68,7 @@ the [Dart 3.8 changelog][].
 
 [Null-aware elements]: /language/collections#null-aware-element
 [Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
-[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
+[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md##380
 
 ### Dart 3.7
 _Released 12 February 2025_
