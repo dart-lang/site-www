@@ -48,29 +48,27 @@ _Released 20 May 2025_
 
 The following language features have been added to Dart 3.8:
 
-*   [Null-aware elements][]: A null-aware collection element evaluates
-    an expression in a collection literal and if the result is not `null`,
-    inserts the value into the resulting collection.
+*   [Null-aware elements][]: A null-aware element evaluates
+    an expression in a collection literal and if the result
+    is not `null`, inserts the value into the surrounding
+    collection.
 
-*   [Doc imports][]: Dart now supports a
-    `@docImport` documentation tag, which enables external
-    elements to be referenced in documentation comments
-    without actually importing them.
+The following supporting features have been updated:
 
-The following support features have been added to
-Dart 3.8:
-
-*   [New cross-compilation command flags][]:
-    Cross-compilation flags for Linux x64 and ARM64 have
-    been added for the `dart compile` command. These are:
-
-    * `--target-os=linux`
-    * `--target-arch=x64`
-    * `--target-arch=arm64`
+*   [Dart format][]: Dart 3.8's formatter builds on the
+    previous release's rewrite, incorporating feedback,
+    bug fixes, and further enhancements. It now
+    intelligently automates trailing comma placement,
+    deciding whether to split constructs rather than forcing
+    them. The update also includes style changes to tighten
+    and improve code output.
+    
+For more information about these and additional changes, see
+the [Dart 3.8 changelog][].
 
 [Null-aware elements]: /language/collections#null-aware-element
-[Doc imports]: /tools/doc-comments/references#doc-imports
-[New cross-compilation command flags]: /tools/dart-compile#cross-compilation-exe
+[Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
+[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
 
 ### Dart 3.7
 _Released 12 February 2025_
