@@ -2220,23 +2220,6 @@ _Methods can't be invoked in constant expressions._
 </div>
 </div>
 </div>
-<div class="card outlined-card" id="const_eval_null_aware_access">
-<div class="card-header">
-<header class="card-title" id="const_eval_null_aware_access">{{"const_eval_null_aware_access" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_Null-aware property access can't be used in a constant expression._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="const_eval_null_aware_access" title="Copy const_eval_null_aware_access to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
 <div class="card outlined-card" id="const_eval_primitive_equality">
 <div class="card-header">
 <header class="card-title" id="const_eval_primitive_equality">{{"const_eval_primitive_equality" | underscoreBreaker}}</header>
@@ -7001,7 +6984,12 @@ _The include file '{0}' in '{1}' can't be found when analyzing '{2}'._
 </div>
 <div class="card-content">
 
+_The rule '{0}' is incompatible with the rule '{1}' enabled at '{2}'._
+
 _The rule '{0}' is incompatible with the rule '{1}'._
+
+_This file enables '{0}' that is incompatible with '{1}' enabled in another
+include._
 
 </div>
 <div class="card-actions">
@@ -16990,6 +16978,8 @@ were given._
 
 _The constructor '{0}.{1}' doesn't have type parameters._
 
+_The constructor '{0}.{1}` doesn't have type parameters._
+
 </div>
 <div class="card-actions">
 <div class="leading">
@@ -20649,6 +20639,24 @@ _Missing type annotation._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="switch_on_type">
+<div class="card-header">
+<header class="card-title" id="switch_on_type">{{"switch_on_type" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Avoid switch statements on a 'Type'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/switch_on_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="switch_on_type" title="Copy switch_on_type to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="test_types_in_equals">
 <div class="card-header">
 <header class="card-title" id="test_types_in_equals">{{"test_types_in_equals" | underscoreBreaker}}</header>
@@ -21328,6 +21336,7 @@ _Unnecessary use of 'unawaited'._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_unawaited" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_unawaited" title="Copy unnecessary_unawaited to your clipboard.">Copy name</button>
 </div>
 </div>
