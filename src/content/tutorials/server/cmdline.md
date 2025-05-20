@@ -198,7 +198,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 12   # path: ^1.8.0
 13 
 14 dev_dependencies:
-15   lints: ^5.1.1
+15   lints: ^6.0.0
 16   test: ^1.25.0
 ```
 
