@@ -6984,12 +6984,7 @@ _The include file '{0}' in '{1}' can't be found when analyzing '{2}'._
 </div>
 <div class="card-content">
 
-_The rule '{0}' is incompatible with the rule '{1}' enabled at '{2}'._
-
 _The rule '{0}' is incompatible with the rule '{1}'._
-
-_This file enables '{0}' that is incompatible with '{1}' enabled in another
-include._
 
 </div>
 <div class="card-actions">
@@ -20650,6 +20645,7 @@ _Avoid switch statements on a 'Type'._
 </div>
 <div class="card-actions">
 <div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
 </div>
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/switch_on_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
@@ -21334,6 +21330,7 @@ _Unnecessary use of 'unawaited'._
 </div>
 <div class="card-actions">
 <div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
 </div>
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/unnecessary_unawaited" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
