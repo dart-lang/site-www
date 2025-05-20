@@ -190,7 +190,7 @@ dependencies:
 :::version-note
 Support for `tag_pattern` was introduced in Dart 3.9.0.
 
-To use pub workspaces, the including pubspec (but not the dependency)
+To use `tag_pattern`, the including pubspec (but not the dependency)
 must have an SDK version constraint of `^3.9.0` or higher.
 :::
 
