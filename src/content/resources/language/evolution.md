@@ -44,7 +44,7 @@ on the Dart language GitHub repo.
 
 ### Dart 3.8
 _Released 20 May 2025_
-| [Dart 3.8 announcement](https://medium.com/dartlang/...)
+| [Dart 3.8 announcement](https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47)
 
 The following language features have been added to Dart 3.8:
 
@@ -67,8 +67,8 @@ For more information about these and additional changes, see
 the [Dart 3.8 changelog][].
 
 [Null-aware elements]: /language/collections#null-aware-element
-[Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
-[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md##380
+[Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
 
 ### Dart 3.7
 _Released 12 February 2025_
