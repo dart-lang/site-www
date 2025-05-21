@@ -29,7 +29,7 @@ It includes the following examples show how to use the `dart:ffi` library:
 | [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
 | [test_utils][]  | Common testing utilities for all of these examples.                                                     |
 
-{:.table .table-striped }
+{: .table .table-striped }
 
 ### Review the hello_world example
 
@@ -51,7 +51,7 @@ The `hello_world` example has the following files:
 | [`hello_library/hello.def`]      | A module-definition file which specifies information used when building a DLL. |
 | [`hello_library/CMakeLists.txt`] | A CMake build file for compiling the C code into a dynamic library.            |
 
-{:.table .table-striped }
+{: .table .table-striped }
 
 [`hello.dart`]: {{hw}}/hello.dart
 [`pubspec.yaml`]: {{hw}}/pubspec.yaml
@@ -104,7 +104,8 @@ This section explains the contents of this file.
    import 'dart:ffi' as ffi;
    ```
 
-2. Import the path library that you'll use to store the path of dynamic library.
+2. Import the path library that you'll use to
+   store the path of the dynamic library.
 
    ```dart
    import 'dart:io' show Platform, Directory;
@@ -128,14 +129,26 @@ This section explains the contents of this file.
 5. Create a variable to store the path of the dynamic library.
 
    ```dart
-   var libraryPath = path.join(Directory.current.path, 'hello_library',
-       'libhello.so');
+   final String libraryPath;
    if (Platform.isMacOS) {
-     libraryPath = path.join(Directory.current.path, 'hello_library',
-         'libhello.dylib');
+     libraryPath = path.join(
+       Directory.current.path,
+       'hello_library',
+       'libhello.dylib',
+     );
    } else if (Platform.isWindows) {
-     libraryPath = path.join(Directory.current.path, 'hello_library',
-         'Debug', 'hello.dll');
+     libraryPath = path.join(
+       Directory.current.path,
+       'hello_library',
+       'Debug',
+       'hello.dll',
+     );
+   } else {
+     libraryPath = path.join(
+       Directory.current.path,
+       'hello_library',
+       'libhello.so',
+     );
    }
    ```
 
@@ -149,6 +162,7 @@ This section explains the contents of this file.
    and put it into a variable.
    This code uses the `typedefs` from steps 2 and 3,
    along with the dynamic library variable from step 4.
+
    ```dart
    final HelloWorld hello = dylib
        .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
@@ -198,7 +212,7 @@ They or their subtypes _can_ be instantiated in Dart code.
 | [Struct][]    | The supertype of all FFI struct types.                           |
 | [Union][]     | The supertype of all FFI union types.                            |
 
-{:.table .table-striped }
+{: .table .table-striped }
 
 ### Serve as type signature markers only
 
@@ -223,7 +237,7 @@ They _can't_ be instantiated in Dart code.
 | [Uint64][]         | Represents a native unsigned 64 bit integer in C. |
 | [Void][]           | Represents the `void` type in C.                  |
 
-{:.table .table-striped }
+{: .table .table-striped }
 
 There are also many [ABI][] specific marker native types
 that extend [AbiSpecificInteger][].
@@ -248,7 +262,7 @@ consult the API documentation linked in the following table.
 | [UnsignedShort][]      | Represents the `unsigned short` type in C.       |
 | [WChar][]              | Represents the `wchar_t` type in C.              |
 
-{:.table .table-striped }
+{: .table .table-striped }
 
 ## Generate FFI bindings with `package:ffigen`
 
@@ -259,7 +273,7 @@ use the [`package:ffigen`][ffigen] binding generator.
 
 <a id="native-assets" aria-hidden="true"></a>
 
-## Dart packages containing native code {: #build-hooks }
+## Depend on and bundle native code {: #build-hooks }
 
 :::note
 Support for build hooks is in **preview** and
@@ -291,10 +305,6 @@ build and bundle C code in a Dart package.
 
 The example includes the following files:
 
-{% capture native-assets -%}
-{{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
-{%- endcapture %}
-
 | **Source file**                         | **Description**                                                                                                                                                                |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
@@ -302,7 +312,11 @@ The example includes the following files:
 | [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
 | [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                          |
 
-{:.table .table-striped }
+{: .table .table-striped }
+
+{% capture native-assets -%}
+{{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
+{%- endcapture %}
 
 [`src/native_add_library.c`]: {{native-assets}}/src/native_add_library.c
 [`lib/native_add_library.dart`]: {{native-assets}}/lib/native_add_library.dart
@@ -310,14 +324,15 @@ The example includes the following files:
 [`hook/build.dart`]: {{native-assets}}/hook/build.dart
 
 When a Dart or Flutter project depends on `package:native_add_library`,
-it invokes the `hook/build.dart` build hook on `run`, `build`, and `test` commands.
+it invokes the `hook/build.dart` build hook when
+running the `run`, `build`, and `test` commands.
 The [`native_add_app`][] example showcases a use of `native_add_library`.
 
-### Review Native Asset API documentation
+### Review build hooks API docs
 
 API documentation can be found for the following packages:
 
-* To learn about native code assets in Dart FFI,
+* To learn about support for code assets in Dart FFI,
   consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
 * To learn about the `hook/build.dart` build hook,
   consult the [`package:hooks` API reference][].
