@@ -341,8 +341,8 @@ API documentation can be found for the following packages:
 
 To provide feedback, consult these tracking issues:
 
-* [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
-* [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
+* [Dart build hooks & code assets]({{site.repo.dart.sdk}}/issues/50565)
+* [Flutter build hooks & code assets](https://github.com/flutter/flutter/issues/129757)
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
