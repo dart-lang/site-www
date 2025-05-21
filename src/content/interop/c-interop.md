@@ -257,30 +257,29 @@ to write the Dart bindings that integrate with the C code.
 To have Dart create FFI wrappers from C header files,
 use the [`package:ffigen`][ffigen] binding generator.
 
-## Build and bundle native assets {:#native-assets}
+## Dart packages containing native code {:#native-assets}
 
 :::note
-The dart build hooks support is in **preview**.
+The dart build hooks support is in **preview** and can be used in Dart & Flutter main channel.
 :::
 
-The _Build Hooks_ (formerly known as _Native Assets_) feature should
-resolve a number of issues associated with
-the distribution of Dart packages that depend on native code.
-It does so by providing uniform hooks for integrating with various
-build systems involved in building Flutter and standalone Dart applications.
+The _Build Hooks_ (formerly known as _Native Assets_) feature enables Dart
+packages to contain more than just Dart source code. Dart packages can now
+contain native code assets that will be transparently built, bundled and made
+available at runtime.
 
-This feature should simplify how Dart packages depend on and use native code.
-Build hooks should provide the following benefits:
+This feature simplifies how Dart packages depend on and use native code:
 
-* Build the native code or obtains the binaries
-  using a package's `hook/build.dart` build hook.
-* Bundle the native [`Asset`][] that the `build.dart` build hook reports.
-* Make native code assets available at runtime through
-  declarative `@Native<>() extern` functions using the [`assetId`][].
+* Build the native code or obtain the binaries using a package's build hook
+(`hook/build.dart`).
+* Dart and Flutter bundle the native code [`Asset`][]s that the build hook
+  reports.
+* Access the native code assets at runtime through declarative
+  `@Native<>() extern` functions using the [`assetId`][].
 
-When you [opt in](#opt-in-to-the-experiment) to the native experiment,
-The `flutter (run|build)` and `dart (run|build)` commands
-build and bundle native code with the Dart code.
+Flutter and standalone Dart automatically bundle the native code of all packages
+used by the app and makes them available at runtime. This works for `flutter
+(run|build)` as well as `dart (run|build)` .
 
 ### Review the `native_add_library` example
 
