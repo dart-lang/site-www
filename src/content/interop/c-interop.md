@@ -280,9 +280,9 @@ This feature simplifies how Dart packages depend on and use native code:
 * Access the code assets at runtime through declarative
   `@Native<>() extern` functions using the [`assetId`][].
 
-Flutter and standalone Dart automatically bundle the native code of all packages
-used by the app and makes them available at runtime. This works for `flutter
-(run|build)` as well as `dart (run|build)` .
+Flutter and standalone Dart automatically bundle the
+native code of all packages used by the app and make it available at runtime.
+This works for `flutter (run|build)` as well as `dart (run|build)`.
 
 ### Review the `native_add_library` example
 
