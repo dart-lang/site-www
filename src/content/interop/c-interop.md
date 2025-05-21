@@ -273,7 +273,7 @@ use the [`package:ffigen`][ffigen] binding generator.
 
 <a id="native-assets" aria-hidden="true"></a>
 
-## Depend on and bundle native code {: #build-hooks }
+## Build and bundle native code {: #build-hooks }
 
 :::note
 Support for build hooks is in **preview** and
