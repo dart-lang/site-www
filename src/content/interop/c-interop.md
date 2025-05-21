@@ -260,7 +260,7 @@ use the [`package:ffigen`][ffigen] binding generator.
 ## Build and bundle native assets {:#native-assets}
 
 :::note
-The native assets are **experimental**,
+The native assets are in **preview**,
 and [in active development]({{site.repo.dart.sdk}}/issues/50565).
 :::
 
