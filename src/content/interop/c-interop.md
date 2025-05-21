@@ -43,7 +43,7 @@ previous section.
 The `hello_world` example has the following files:
 
 | **Source file**                  | **Description**                                                                |
-|----------------------------------|--------------------------------------------------------------------------------|
+| -------------------------------- | ------------------------------------------------------------------------------ |
 | [`hello.dart`]                   | A Dart file that uses the `hello_world()` function from a C library.           |
 | [`pubspec.yaml`]                 | The Dart [pubspec](/tools/pub/pubspec) file, with an SDK lower bound of 3.4.   |
 | [`hello_library/hello.h`]        | Declares the `hello_world()` function.                                         |
@@ -191,12 +191,12 @@ They or their subtypes _can_ be instantiated in Dart code.
 {{site.dart-api}}/dart-ffi
 {%- endcapture %}
 
-| **Dart type**   | **Description**                                                  |
-| --------------- | ---------------------------------------------------------------- |
-| [Array][]       | A fixed-sized array of items. Supertype of type specific arrays. |
-| [Pointer][]     | Represents a pointer into native C memory.                       |
-| [Struct][]      | The supertype of all FFI struct types.                           |
-| [Union][]       | The supertype of all FFI union types.                            |
+| **Dart type** | **Description**                                                  |
+| ------------- | ---------------------------------------------------------------- |
+| [Array][]     | A fixed-sized array of items. Supertype of type specific arrays. |
+| [Pointer][]   | Represents a pointer into native C memory.                       |
+| [Struct][]    | The supertype of all FFI struct types.                           |
+| [Union][]     | The supertype of all FFI union types.                            |
 
 {:.table .table-striped }
 
@@ -230,23 +230,23 @@ that extend [AbiSpecificInteger][].
 To learn how these types map on specific platforms,
 consult the API documentation linked in the following table.
 
-| **Dart type**            | **Description**                                    |
-| -------------------------| -------------------------------------------------- |
-| [AbiSpecificInteger][]   | The supertype of all ABI-specific integer types.   |
-| [Int][]                  | Represents the `int` type in C.                    |
-| [IntPtr][]               | Represents the `intptr_t` type in C.               |
-| [Long][]                 | Represents the `long int` (`long`) type in C.      |
-| [LongLong][]             | Represents the `long long` type in C.              |
-| [Short][]                | Represents the `short` type in C.                  |
-| [SignedChar][]           | Represents the `signed char` type in C.            |
-| [Size][]                 | Represents the `size_t` type in C.                 |
-| [UintPtr][]              | Represents the `uintptr_t` type in C.              |
-| [UnsignedChar][]         | Represents the `unsigned char` type in C.          |
-| [UnsignedInt][]          | Represents the `unsigned int` type in C.           |
-| [UnsignedLong][]         | Represents the `unsigned long int` type in C.      |
-| [UnsignedLongLong][]     | Represents the `unsigned long long` type in C.     |
-| [UnsignedShort][]        | Represents the `unsigned short` type in C.         |
-| [WChar][]                | Represents the `wchar_t` type in C.                |
+| **Dart type**          | **Description**                                  |
+| ---------------------- | ------------------------------------------------ |
+| [AbiSpecificInteger][] | The supertype of all ABI-specific integer types. |
+| [Int][]                | Represents the `int` type in C.                  |
+| [IntPtr][]             | Represents the `intptr_t` type in C.             |
+| [Long][]               | Represents the `long int` (`long`) type in C.    |
+| [LongLong][]           | Represents the `long long` type in C.            |
+| [Short][]              | Represents the `short` type in C.                |
+| [SignedChar][]         | Represents the `signed char` type in C.          |
+| [Size][]               | Represents the `size_t` type in C.               |
+| [UintPtr][]            | Represents the `uintptr_t` type in C.            |
+| [UnsignedChar][]       | Represents the `unsigned char` type in C.        |
+| [UnsignedInt][]        | Represents the `unsigned int` type in C.         |
+| [UnsignedLong][]       | Represents the `unsigned long int` type in C.    |
+| [UnsignedLongLong][]   | Represents the `unsigned long long` type in C.   |
+| [UnsignedShort][]      | Represents the `unsigned short` type in C.       |
+| [WChar][]              | Represents the `wchar_t` type in C.              |
 
 {:.table .table-striped }
 
@@ -272,9 +272,9 @@ This feature simplifies how Dart packages depend on and use native code:
 
 * Build the native code or obtain the binaries using a package's build hook
 (`hook/build.dart`).
-* Dart and Flutter bundle the native code [`Asset`][]s that the build hook
+* Dart and Flutter bundle the [`CodeAsset`][]s that the build hook
   reports.
-* Access the native code assets at runtime through declarative
+* Access the code assets at runtime through declarative
   `@Native<>() extern` functions using the [`assetId`][].
 
 Flutter and standalone Dart automatically bundle the native code of all packages
@@ -293,11 +293,11 @@ The example includes the following files:
 {%- endcapture %}
 
 | **Source file**                         | **Description**                                                                                                                                                                |
-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
 | [`lib/native_add_library.dart`][]       | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
 | [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
-| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                          |
 
 {:.table .table-striped }
 
@@ -326,7 +326,7 @@ To provide feedback, consult these tracking issues:
 * [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
 * [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
 
-[`Asset`]: {{site.pub-api}}/hooks/latest/hooks/Asset-class.html
+[`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 [`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
 [`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_add_app
