@@ -257,7 +257,9 @@ to write the Dart bindings that integrate with the C code.
 To have Dart create FFI wrappers from C header files,
 use the [`package:ffigen`][ffigen] binding generator.
 
-## Dart packages containing native code {:#native-assets}
+<a id="native-assets" aria-hidden="true"></a>
+
+## Dart packages containing native code {: #build-hooks }
 
 :::note
 Support for build hooks is in **preview** and
