@@ -260,18 +260,19 @@ use the [`package:ffigen`][ffigen] binding generator.
 ## Dart packages containing native code {:#native-assets}
 
 :::note
-The dart build hooks support is in **preview** and can be used in Dart & Flutter main channel.
+Support for build hooks is in **preview** and
+can be used on the `main` channel.
 :::
 
-The _Build Hooks_ (formerly known as _Native Assets_) feature enables Dart
-packages to contain more than just Dart source code. Dart packages can now
-contain native code assets that will be transparently built, bundled and made
-available at runtime.
+Dart _build hooks_ (formerly known as _native assets_) enable
+packages to contain more than just Dart source code.
+Packages can now contain native code assets that are
+transparently built, bundled, and made available at runtime.
 
 This feature simplifies how Dart packages depend on and use native code:
 
-* Build the native code or obtain the binaries using a package's build hook
-(`hook/build.dart`).
+* Build the native code or obtain the binaries using a
+  package's build hook in `hook/build.dart`.
 * Dart and Flutter bundle the [`CodeAsset`][]s that the build hook
   reports.
 * Access the code assets at runtime through declarative
