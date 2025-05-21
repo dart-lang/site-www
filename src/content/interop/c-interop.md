@@ -260,22 +260,22 @@ use the [`package:ffigen`][ffigen] binding generator.
 ## Build and bundle native assets {:#native-assets}
 
 :::note
-The native assets are in **preview**,
-and [in active development]({{site.repo.dart.sdk}}/issues/50565).
+The dart build hooks support is in **preview**.
 :::
 
-The _Native Assets_ feature should resolve a number of issues associated with
+The _Build Hooks_ (formerly known as _Native Assets_) feature should
+resolve a number of issues associated with
 the distribution of Dart packages that depend on native code.
 It does so by providing uniform hooks for integrating with various
 build systems involved in building Flutter and standalone Dart applications.
 
 This feature should simplify how Dart packages depend on and use native code.
-Native Assets should provide the following benefits:
+Build hooks should provide the following benefits:
 
 * Build the native code or obtains the binaries
   using a package's `hook/build.dart` build hook.
 * Bundle the native [`Asset`][] that the `build.dart` build hook reports.
-* Make native assets available at runtime through
+* Make native code assets available at runtime through
   declarative `@Native<>() extern` functions using the [`assetId`][].
 
 When you [opt in](#opt-in-to-the-experiment) to the native experiment,
@@ -315,7 +315,7 @@ The [`native_add_app`][] example showcases a use of `native_add_library`.
 
 API documentation can be found for the following packages:
 
-* To learn about native assets in Dart FFI,
+* To learn about native code assets in Dart FFI,
   consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
 * To learn about the `hook/build.dart` build hook,
   consult the [`package:hooks` API reference][].
