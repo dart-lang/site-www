@@ -319,10 +319,9 @@ API documentation can be found for the following packages:
 * To learn about the `hook/build.dart` build hook,
   consult the [`package:hooks` API reference][].
 
-### Opt-in to the experiment
+### Provide feedback
 
-To learn how to enable the experiment and provide feedback,
-consult these tracking issues:
+To provide feedback, consult these tracking issues:
 
 * [Dart native assets]({{site.repo.dart.sdk}}/issues/50565)
 * [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
