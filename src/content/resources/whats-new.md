@@ -25,8 +25,11 @@ through May 20, 2025 to [dart.dev](https://dart.dev/docs).
 For details about the 3.8 release of Dart,
 check out the [3.8 announcement][] and the
 [3.8 SDK changelog][3-8-changelog].
+
+### Docs updated or added to dart.dev {:.no_toc}
+
 In addition to bug fixes and incremental improvements,
-we made the following changes to this site:
+we made the following changes to docs on this site:
 
 * Added [Collection elements][3-8-c-elements] docs,
   which includes the various types of collection elements,
@@ -83,6 +86,11 @@ we made the following changes to this site:
 * Changed the guidance to prefer a noun phrase or
   non-imperative verb phrase for a function or method in the
   [Effective Dart Documentation][] guide.
+
+### Site changes for dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following structural changes to this site:
 
 * Added a new card-based design and the ability to search
   for entries in the [glossary][].
