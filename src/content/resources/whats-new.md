@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2024-08-06
+lastVerified: 2025-05-23
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -17,6 +17,114 @@ and follow the [Dart blog][].
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+
+## May 20, 2025: 3.8 release
+
+This section lists notable changes made from February  13, 2025,
+through May 20, 2025 to [dart.dev](https://dart.dev/docs).
+For details about the 3.8 release of Dart,
+check out the [3.8 announcement][] and the
+[3.8 SDK changelog][3-8-changelog].
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to docs on this site:
+
+* Added [Collection elements][3-8-c-elements] docs,
+  which includes the various types of collection elements,
+  including expression elements, map entry elements,
+  spread elements, null-aware spread elements, if elements,
+  for elements. The new docs also explain how to nest
+  elements.
+
+* Added [Doc imports][] docs, which explains how to use the
+  `@docImport` documentation tag to reference external
+  elements in documentation comments.
+
+* Added [Cross-compilation][] docs for the `dart compile`
+  command. Cross-compilation to Linux x64 and ARM64 is now
+  supported on the following 64-bit host operating systems:
+  macOS, Windows, and Linux.
+
+* Added [Null-aware elements][3-8-null-aware] docs, which
+  explain how to use the null-aware element.
+
+* Added [Labels][] docs for loops. This addition shows how
+  to use labels with `break` and `continue`
+  control flow statements.
+
+* Added documentation for the [`pubspec_overrides.yaml`][]
+  file. This file lets you override certain aspects of
+  the `pubspec.yaml` file without changing the
+  `pubspec.yaml` file.
+
+* Added [Inference using bounds][] docs for the
+  type system.
+
+* Added [Records as simple data structures][] docs for
+  record types.
+
+* Added [Self-referential type parameter restrictions (F-bounds)][]
+  docs for generic types.
+
+* Added [Implicit downcast from `dynamic`][] docs which
+  explain how to implicitly cast expressions with a static
+  type of `dynamic` to a more specific type.
+
+* Added a [support policy][] for the Dart SDK.
+
+* Updated the guidance for when and when not to use
+  class modifiers in the [Effective Dart Design][] guide.
+
+* Updated the guidance to prefer a noun phrase or
+  non-imperative verb phrase for a function or method in the
+  [Effective Dart Documentation][] guide. Also included
+  several small changes to existing documentation guidance.
+  For more information, see [PR 6522][].
+
+* Changed the guidance to prefer a noun phrase or
+  non-imperative verb phrase for a function or method in the
+  [Effective Dart Documentation][] guide.
+
+### Site changes for dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following structural changes to this site:
+
+* Added a new card-based design and the ability to search
+  for entries in the [glossary][].
+
+  <img src="/assets/img/whats-new/3-8-glossary.png" alt="Glossary" style="width:50%">
+
+* New previous and next page buttons for the docs site.
+
+  <img src="/assets/img/whats-new/3-8-prev-next-buttons-new.png" alt="New page buttons" style="width:80%">
+
+* Added individual pages for some [diagnostic messages][].
+  To see an individual page for a diagnostic message, select
+  its **Learn more** button.
+
+  <img src="/assets/img/whats-new/3-8-diagnostic-docs.png" alt="Learn more button" style="width:50%">
+
+[3.8 announcement]: https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47
+[3-8-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+[3-8-c-elements]: /language/collections#collection-elements
+[3-8-null-aware]: /language/collections#null-aware-element
+[glossary]: /resources/glossary
+[Records as simple data structures]: /language/records#records-as-simple-data-structures
+[Self-referential type parameter restrictions (F-bounds)]: /language/generics#f-bounds
+[Inference using bounds]: /language/type-system#inference-using-bounds
+[Effective Dart Design]: /effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-extended
+[Effective Dart Documentation]: /effective-dart/documentation#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+[Labels]: /language/loops#labels
+[`pubspec_overrides.yaml`]: /tools/pub/dependencies#pubspec-overrides
+[support policy]: /tools/sdk#support-policy
+[Implicit downcast from `dynamic`]: /language/type-system#implicit-downcasts-from-dynamic
+[PR 6522]: {{site.repo.this}}/pull/6522
+[Doc imports]: /tools/doc-comments/references#doc-imports
+[Cross-compilation]: /tools/dart-compile
+[diagnostic messages]: /tools/diagnostics
 
 ## February 12, 2025: 3.7 release
 
