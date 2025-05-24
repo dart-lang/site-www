@@ -7,7 +7,7 @@ toc: false
 Check out the following Dart language resources:
 
 <div class="card-grid">
-  {% card "Glossary", "/resources/breaking-changes" %}
+  {% card "Glossary", "/resources/glossary" %}
     Terminology used by Dart documentation and developers.
   {% endcard %}
   {% card "Breaking changes", "/resources/breaking-changes" %}
