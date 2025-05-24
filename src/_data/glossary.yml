@@ -716,3 +716,69 @@
     - "covariant"
     - "contravariance"
     - "contravariant"
+
+
+- term: "Zone"
+  id: "zone"
+  short_description: |-
+    A mechanism in Dart to customize the behavior of asynchronous code 
+    without modifying the async code itself.
+  long_description: |-
+    A zone is an execution context that allows you to run code with
+    customized behavior for asynchronous events such as timers,
+    microtasks, and uncaught errors.
+
+    Zones provide a way to track and influence asynchronous execution 
+    without requiring the async code to be aware of it.
+
+    You can create a new zone using `runZoned` (or `runZonedGuarded`)
+    and override zone-specific features like error handling, timers, and print.
+
+    Example:
+    ```dart
+    import 'dart:async';
+
+    void main() {
+      runZonedGuarded(() {
+        Future.delayed(Duration(seconds: 1), () {
+          throw 'Zone caught this error!';
+        });
+      }, (error, stackTrace) {
+        print('Caught error: $error');
+      });
+    }
+    ```
+
+    In this example, the uncaught error inside the async callback
+    is intercepted by the custom zone.
+
+    Zones are useful for:
+    - Logging
+    - Error tracking
+    - Maintaining request-specific state across async gaps (e.g., in server apps)
+    - Testing and debugging async behavior
+
+    Flutter and some backend frameworks (like `shelf`) use zones internally
+    to track things like user sessions or HTTP request context.
+
+    Zones form a tree, where each zone has a parent. Unless customized, 
+    async operations inherit the current zone of the calling context.
+  related_links:
+    - text: "Zones API documentation"
+      link: "https://api.dart.dev/stable/dart-async/Zone-class.html"
+      type: "api"
+    - text: "Error handling with zones"
+      link: "https://dart.dev/articles/libraries/zones"
+      type: "doc"
+    - text: "runZonedGuarded"
+      link: "https://api.dart.dev/stable/dart-async/runZonedGuarded.html"
+      type: "api"
+  labels:
+    - "language"
+    - "asynchronous"
+    - "runtime"
+  alternate:
+    - "zones"
+    - "dart zones"
+    - "execution zone"
+    - "runZoned"
