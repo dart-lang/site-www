@@ -265,7 +265,7 @@
   alternate:
     - "with mixin"
     
-- term: "late"
+- term: "Late"
   id: "late"
   short_description: |-
     A keyword that enables deferred initialization of non-nullable variables.
@@ -758,11 +758,6 @@
     - Maintaining request-specific state across async gaps (e.g., in server apps)
     - Testing and debugging async behavior
 
-    Flutter and some backend frameworks (like `shelf`) use zones internally
-    to track things like user sessions or HTTP request context.
-
-    Zones form a tree, where each zone has a parent. Unless customized, 
-    async operations inherit the current zone of the calling context.
   related_links:
     - text: "Zones API documentation"
       link: "https://api.dart.dev/stable/dart-async/Zone-class.html"
