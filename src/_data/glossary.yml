@@ -264,6 +264,67 @@
     - "understanding diagnostics"
   alternate:
     - "with mixin"
+    
+- term: "late"
+  id: "late"
+  short_description: |-
+    A keyword that enables deferred initialization of non-nullable variables.
+
+    In Dart, `late` is used when a variable is guaranteed to be initialized 
+    before it's accessed but cannot be initialized at the point of declaration.
+  long_description: |-
+    The `late` keyword in Dart is used to indicate that a non-nullable variable 
+    will be initialized later, after its declaration, but before it's used. 
+    This helps avoid the need to make a variable nullable (`?`) when you know 
+    it will definitely receive a value, just not immediately.
+
+    Using `late` defers initialization, allowing you to write more flexible 
+    and readable code, especially when dealing with dependencies or complex setup.
+
+    For example:
+    ```dart
+    late String description;
+
+    void setup() {
+      description = 'This will be initialized before use.';
+    }
+    ```
+
+    If you try to read a `late` variable before it's initialized, Dart throws a 
+    `LateInitializationError`.
+
+    You can also use `late final` when the variable should only be set once. 
+    This is common in dependency injection scenarios.
+
+    Example:
+    ```dart
+    class MyService {
+      late final Logger logger;
+
+      MyService(this.logger);
+    }
+    ```
+
+    Be cautious: if the `late` variable is never initialized, it will cause a 
+    runtime error when accessed.
+  related_links:
+    - text: "Null safety in Dart"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Late variables"
+      link: "https://dart.dev/language/variables#late-variables"
+      type: "doc"
+    - text: "Error: LateInitializationError"
+      link: "https://api.dart.dev/stable/dart-core/LateInitializationError-class.html"
+      type: "api"
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+  alternate:
+    - "late keyword"
+    - "deferred initialization"
+    - "late final"
 
 - term: "Override inference"
   short_description: |-
