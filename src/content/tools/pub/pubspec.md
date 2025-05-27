@@ -549,7 +549,7 @@ under the `environment:` field:
 ```yaml
 environment:
   sdk: ^3.2.0
-  flutter: '>= 3.22.0'
+  flutter: '>=3.22.0'
 ```
 
 A Flutter SDK constraint is satisfied only if pub is running in the
