@@ -7,6 +7,9 @@
   gap: var(--card-grid-gap, 1rem);
   margin: 0 0 1rem;
   justify-content: center;
+
+  // Disable lite-youtube shadow for videos in cards.
+  --lite-youtube-frame-shadow-visible: false;
 }
 
 .card-list {
