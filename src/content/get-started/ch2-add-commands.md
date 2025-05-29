@@ -1,51 +1,65 @@
 ---
-title: Making Your CLI Program Interactive
+title: Making your CLI program interactive
 description: Add simple commands to your cli program. Learn the fundamentals of Dart syntax including control flow, collections, variables, functions, and more.
 ---
 
-In this chapter, you'll get hands-on with Dart syntax. You'll cover control
-flow, collections, variables, functions, and more. You'll learn how to read user
-input, print usage information, and create a basic command-line interaction. By
-the end, you'll have a foundational understanding of Dart syntax.
+In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
+to read user input, print usage information, and create a basic command-line
+interaction. By the end, you'll have a foundational understanding of Dart
+syntax.
+
+:::secondary What you'll learn
+
+* Implement basic control flow with `if/else`.
+* Work with collections, specifically `List`s, and perform common operations
+  like checking if a list is empty.
+* Declare and use variables with `const` and `late String?`.
+* Handle nullability with null checks.
+* Define and call functions.
+* Use string interpolation for dynamic text.
+* Read user input from the command line using `stdin`.
+
+:::
 
 ## Prerequisites
 
+Before you begin this chapter, ensure you have:
+
 * Completed Chapter 1 and have a working Dart development environment.
 * Familiarity with basic programming concepts (variables, data types, control
-  low).
+  flow).
 
 ## Tasks
 
-Start building your Wikipedia command-line application by adding some basic
+Start building your **Dartpedia** command-line application by adding some basic
 functionality and exploring Dart syntax.
 
-### Task 1: Implement `Version` and `Help` Commands
+### Task 1: Implement version and help commands
 
-1.  **Implement the version command in `cli/bin/cli.dart`:** Add logic to handle
-    a `version` command. Use an `if` statement to check if the first argument
-    provided is `version`. You'll also need a `version` constant.
-    
-    First, above your main function, declare a `const` variable for the version:
+1.  **Implement the `version` command in `cli/bin/cli.dart`:** Add logic to
+    handle a `version` command. Use an `if` statement to check if the first
+    argument provided is `version`. You'll also need a `version` constant.
+
+    First, above your `main` function, declare a `const` variable for the
+    version:
 
     ```dart
     const version = '0.0.1'; // Add this line
     ```
 
-    Next, modify your main function to check for the `version` argument:
+    Next, modify your `main` function to check for the `version` argument:
 
     ```dart
-    // ... (keep the const version = '0.0.1'; line above)
-
     void main(List<String> arguments) {
       if (arguments.isNotEmpty && arguments.first == 'version') {
-        print('Dart Wikipedia version $version');
+        print('Dartpedia CLI version $version');
       } else {
         print('Hello, Dart!'); // Keep this for now, we'll refine it.
       }
     }
     ```
 
-1.  **Test the `version` command:** Run your application with the version
+2.  **Test the `version` command:** Run your application with the version
     argument:
 
     ```bash
@@ -55,62 +69,54 @@ functionality and exploring Dart syntax.
     You should now see:
 
     ```bash
-    Dart Wikipedia version 0.0.1
+    Dartpedia CLI version 0.0.1
     ```
 
     If you run your app without arguments, you'll still see "Hello, Dart!".
 
-2.  **Add a `printUsage` function:** To make the output more user-friendly,
+3.  **Add a `printUsage` function:** To make the output more user-friendly,
     create a separate function to display usage information. Place this function
-    outside and below your main function.
+    outside and below your `main` function.
 
     ```dart
-    // ... (keep the main function above)
-
     void printUsage() { // Add this new function
       print(
-        "The following commands are valid: 'help', 'version', 'wikipedia <ARTICLE-TITLE>'",
+        "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'" // Changed to 'search'
       );
     }
     ```
 
-3.  **Implement the `help` command and refine `main`:** Now, integrate the
+4.  **Implement the `help` command and refine `main`:** Now, integrate the
     `help` command using an `else if` statement, and clean up the default
     behavior to call `printUsage`.
 
-    Modify your main function to look like this:
+    Modify your `main` function to look like this:
 
     ```dart
-    // ... (keep const version = '0.0.1'; above)
-
     void main(List<String> arguments) {
       if (arguments.isNotEmpty && arguments.first == 'version') {
-        print('Dart Wikipedia version $version');
-      } else if (arguments.isNotEmpty && arguments.first == 'help') { // Add this else if
+        print('Dartpedia CLI version $version');
+      } else if (arguments.isNotEmpty && arguments.first == 'help') {
         printUsage();
       } else {
         printUsage(); // Change this from 'Hello, Dart!'
       }
     }
-
-    // ... (keep printUsage() below)
     ```
 
-4.  **Understand the `if/else` structure:** You've now built an `if`, `else if`,
-    and `else` structure for conditional execution.
+5.  **Understand the `if/else` structure and variables:** You've now built an
+    `if`, `else if`, and `else` structure for conditional execution.
 
     * `arguments.isNotEmpty` checks if any command-line arguments were
-      provided.
+        provided.
     * `arguments.first` accesses the very first argument, which we're using as
-      our command.
-
-5.  **Variables and Constants:**
+        our command.
     * Notice the `version` variable is declared as a `const`. This means its
-      value is known at compile time and you cannot change it during runtime.
+        value is known at compile time and you cannot change it during runtime.
     * `arguments`, on the other hand, is a regular (non-constant) variable
-      because its content can change based on user input.
+        because its content can change based on user input.
 
-    Test the help command: Run your application with the help argument:
+    Test the `help` command: Run your application with the help argument:
 
     ```bash
     dart bin/cli.dart help
@@ -126,98 +132,102 @@ functionality and exploring Dart syntax.
 
     It should now also display the usage information.
 
-### Task 2: Implement the `wikipedia` command
+    :::note
+    Any command-line argument that is not `version` or `help` will currently
+    also print the usage information. This is expected behavior for now.
+    :::
 
-Next, implement a basic `wikipedia` command that takes an article title as
+### Task 2: Implement the search command
+
+Next, implement a basic `search` command that takes an article title as
 input. As you build this functionality, you'll work with `List` manipulation,
 null checks, and string interpolation.
 
-1.  **Integrate the `wikipedia` command into `main`:** First, modify your main
+1.  **Integrate the `search` command into `main`:** First, modify your `main`
     function in `cli/bin/cli.dart` to include an `else if` branch that handles
-    the `wikipedia` command. For now, we'll just print a placeholder message.
+    the `search` command. For now, we'll just print a placeholder message.
 
     ```dart
-    // ... (your existing const version and printUsage() functions)
-
     void main(List<String> arguments) {
       if (arguments.isNotEmpty && arguments.first == 'version') {
-        print('Dart Wikipedia version $version');
+        print('Dartpedia CLI version $version');
       } else if (arguments.isNotEmpty && arguments.first == 'help') {
         printUsage();
-      } else if (arguments.isNotEmpty && arguments.first == 'wikipedia') {
+      } else if (arguments.isNotEmpty && arguments.first == 'search') {
         // Add this new block:
-        print('Wikipedia command recognized!');
+        print('Search command recognized!');
       } else {
         printUsage();
       }
     }
-
-    // ... (your existing printUsage() function)
     ```
 
-1.  **Test the new command:** Run your application with the ``wikipedia``
+2.  **Test the new command:** Run your application with the `search`
     command:
 
     ```bash
-    dart bin/cli.dart wikipedia
+    dart bin/cli.dart search
     ```
 
     You should see:
 
     ```bash
-    Wikipedia command recognized!
+    Search command recognized!
     ```
 
-1.  **Define the runApp function:** Your `wikipedia` command will eventually run
-    the core logic of our application. Next create a new function called `runApp`
-    that will house this logic. Initially, `runApp` will just take a list of
-    arguments and print them. Place this new function below `main`.
+3.  **Define the `runApp` function:** Your `search` command will eventually run
+    the core logic of our application. Next, create a new function called
+    `runApp` that will house this logic. Initially, `runApp` will just take a
+    list of arguments and print them. Place this new function below `main`.
 
     ```dart
     // ... (your existing main function)
 
-    void runApp(List<String> arguments) { // Add this new function
+    void runApp(List<String>? arguments) { // Add this new function and add ? to arguments type
       print('runApp received arguments: $arguments');
     }
 
     // ... (your existing printUsage() function)
     ```
 
-1.  **Call `runApp` from main:** Now, modify the `wikipedia` command block in
+    * The `List<String>? arguments` type signature means that the `arguments`
+        list itself can be `null`. This is important for null safety in Dart.
+
+4.  **Call `runApp` from `main`:** Now, modify the `search` command block in
     `main` to call `runApp` and pass it any arguments that come after the
-    `wikipedia` command itself. We use `arguments.sublist(1)` to get all
-    arguments starting from the second one.
+    `search` command itself. We use `arguments.sublist(1)` to get all
+    arguments starting from the second one. If no arguments are provided after
+    `search`, we'll pass `null` to `runApp`.
 
     ```dart
-    // ... (your existing const version and printUsage() functions)
-
     void main(List<String> arguments) {
       if (arguments.isNotEmpty && arguments.first == 'version') {
-        print('Dart Wikipedia version $version');
+        print('Dartpedia CLI version $version');
       } else if (arguments.isNotEmpty && arguments.first == 'help') {
         printUsage();
-      } else if (arguments.isNotEmpty && arguments.first == 'wikipedia') {
+      } else if (arguments.isNotEmpty && arguments.first == 'search') { // Changed to 'search'
         // Modify this block:
-        final inputArgs = arguments.length > 1 ? arguments.sublist(1) : []; // Use empty list for no args
+        final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
         runApp(inputArgs);
       } else {
         printUsage();
       }
     }
-
-    // ... (your existing runApp and printUsage() functions)
     ```
 
-    * **List Manipulation:** `arguments.sublist(1)` creates a new list containing
-      all elements of the `arguments` list after the first element (which was
-      `wikipedia`). We use a conditional (`? :`) to ensure `inputArgs` is an
-      empty list if no further arguments are provided.
+    * **List manipulation:** `arguments.sublist(1)` creates a new list
+        containing all elements of the `arguments` list *after* the first
+        element (which was `search`).
+    * **Conditional assignment to `null`:** The `arguments.length > 1 ? ... : null;`
+        is a conditional (ternary) operator. It ensures that if no arguments
+        are provided after `search`, `inputArgs` becomes `null`, matching the
+        sample code's behavior for `runApp`'s `arguments` parameter.
 
-2.  **Test runApp with arguments:** Run the application with a test article
+5.  **Test `runApp` with arguments:** Run the application with a test article
     title:
 
     ```bash
-    dart bin/cli.dart wikipedia Dart Programming
+    dart bin/cli.dart search Dart Programming
     ```
 
     You should see:
@@ -229,283 +239,185 @@ null checks, and string interpolation.
     Run without extra arguments:
 
     ```bash
-    dart bin/cli.dart wikipedia
+    dart bin/cli.dart search
     ```
 
     You should see:
 
     ```bash
-    runApp received arguments: []
+    runApp received arguments: null
     ```
 
-3.  **Handle missing article title and user input:** It's more user-friendly to
-    prompt the user if they don't provide an article title on the command line.
-    We'll use `stdin.readLineSync()` for this.
+6.  **Handle missing article title and user input with `stdin`:** It's more
+    user-friendly to prompt the user if they don't provide an article title on
+    the command line. We'll use `stdin.readLineSync()` for this.
 
-    Update your `runApp` function. Notice that `stdin.readLineSync()` can return
-    `null`, so we declare `articleTitle` as `late String?`. You'll need to
-    import `dart:io` at the top of your `cli.dart` file.
+    First, add the necessary import at the top of your `cli/bin/cli.dart` file:
 
     ```dart
-    // Add this line at the top of cli/bin/cli.dart:
-    import 'dart:io';
+    import 'dart:io'; // Add this line at the top
+    ```
 
-    // ... (your existing main function and const version)
+    Now, update your `runApp` function. This next code block introduces a few
+    key concepts:
+    * It declares a `late String? articleTitle` variable which will hold the
+        full search query, whether it comes from the command line or user input.
+    * An `if/else` statement then checks if command-line arguments for the
+        search were provided.
+    * If arguments are missing, it prompts the user, reads input using
+        `stdin.readLineSync()`, and performs null and empty checks.
+    * If arguments *are* present, it uses `arguments.join(' ')` to combine
+        them into a single search string.
 
-    void runApp(List<String>? arguments) { // Add ? to arguments type
-      late String? articleTitle; // Declare articleTitle with late and ?
+    ```dart
+    void runApp(List<String>? arguments) {
+      late String? articleTitle; // Declare articleTitle as late nullable
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         articleTitle = stdin.readLineSync(); // Read input from user
-        if (articleTitle == null || articleTitle.isEmpty) { // Add basic check for empty input
-          print('No article title provided. Exiting.');
-          return; // Exit if no input
-        }
+        return; // Exit the function immediately after reading input from stdin
       } else {
-        articleTitle = arguments.join(', '); // Join command-line arguments
+        // We'll handle command-line arguments and their simulation here later.
+        articleTitle = arguments.join(' '); // Join arguments into a single string
       }
 
-      // We'll add more print statements here later
-      print('Looking up articles about $articleTitle. Please wait.');
+      // We'll add the "Looking up..." and final simulation here later.
+      print('Current article title: $articleTitle'); // This line will only run if arguments were provided
     }
-
-    // ... (your existing printUsage() function)
     ```
 
-    *   **Null Safety:** `List<String>? arguments` means that the `arguments`
-    list itself can be `null` or contain strings. The
-    `if (arguments == null ||arguments.isEmpty)` explicitly checks for both
-    conditions.
-    *   `stdin.readLineSync()`: This function reads a line of text typed by the
-    user into the console.
-    *   `late String? articleTitle`: We use `late` because we promise that
-    `articleTitle` will definitely have a value before it's used. The `?`
-    signifies that its value could be `null` (for instance, if
-    `stdin.readLineSync()` returns `null`).
+    * `stdin.readLineSync()`: This function reads a line of text typed by the
+        user into the console. Its return type is `String?`.
+    * The `if (inputFromStdin == null || inputFromStdin.isEmpty)` performs a
+        null check and an empty string check. If either is true, the program
+        prints a message and `return`s, exiting the function.
+    * `arguments.join(' ')`: This `List` method concatenates all elements of
+        the `arguments` list into a single string, using a space as the
+        separator. For example, `['Dart', 'Programming']` becomes
+        `"Dart Programming"`. This is crucial for treating multi-word
+        command-line inputs as a single search phrase.
 
-4.  **Test with and without command-line arguments:**
-
-    Run without arguments:
-
-    ```bash
-    dart bin/cli.dart wikipedia
-    ```
-
-    The program will prompt you. Type `My Article Title` and press Enter.
-
-    You should see:
-
-    ```bash
-    Please provide an article title.
-    My Article Title
-    Looking up articles about My Article Title. Please wait.
-    ```
-
-    Run with arguments:
-
-    ```bash
-    dart bin/cli.dart wikipedia Another Article
-    ```
-
-    You should see:
-
-    ```bash
-    Looking up articles about Another, Article. Please wait.
-    ```
-
-5.  **Simulate article lookup with `for-in` loop:** To complete the `wikipedia`
-    command's current basic functionality, let's add a loop that pretends to find
-    articles for each argument provided. We'll use the `arguments` list (which
-    came from the command line) for this simulation.
-
-    Modify your `runApp` function:
+7.  **Introduce `for-in` loops (separate demonstration):** While the `search`
+    command itself will operate on a single combined phrase, understanding how
+    to iterate over collections is fundamental. Here's a quick example of a
+    `for-in` loop:
 
     ```dart
-    // ... (beginning of runApp function)
+    // Example: Iterating over a list of strings
+    void demonstrateForInLoop() {
+      List<String> planets = ['Mercury', 'Venus', 'Earth', 'Mars'];
+      print('\n--- Demonstrating for-in loop ---');
+      for (var planet in planets) {
+        print('Found: $planet');
+      }
+      print('--- End of for-in loop demonstration ---\n');
+    }
+    ```
 
+    * **`for-in` loop:** The `for (var item in collection)` syntax provides a
+        concise way to iterate through each element in a collection like a
+        `List`. On each iteration, the `item` variable takes on the value of the
+        current element. You can place this function anywhere outside `main` or
+        `runApp`. You don't need to call it from anywhere for now; it's just to
+        show the syntax.
+
+8.  **Finalize `runApp` with single article simulation:** Now, let's complete
+    the `runApp` function to print the simulation messages. Note that these
+    messages will only appear if command-line arguments were provided (as
+    `runApp` returns early for `stdin` input).
+
+    ```dart
     void runApp(List<String>? arguments) {
       late String? articleTitle;
-      List<String> lookupArgs = []; // Create a new list for arguments to look up
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         articleTitle = stdin.readLineSync();
-        if (articleTitle == null || articleTitle.isEmpty) {
-          print('No article title provided. Exiting.');
-          return;
-        }
-        lookupArgs = [articleTitle]; // If input from stdin, make it the single lookup argument
+        return; // Exits here if input is from stdin
       } else {
-        articleTitle = arguments.join(', ');
-        lookupArgs = arguments; // If input from command line, use those
+        articleTitle = arguments.join(' ');
       }
 
-      print('Looking up articles about $articleTitle. Please wait.');
-      // Add or modify this for loop:
-      for (var arg in lookupArgs) { // Loop over lookupArgs
-        print('Here ya go!');
-        print('(Pretend this is an article about $arg)');
-      }
+      // This section runs only if arguments were originally provided (not from stdin)
+      print('Looking up articles about "$articleTitle". Please wait.'); // Using string interpolation
+      print('Here ya go!');
+      print('(Pretend this is an article about "$articleTitle")'); // Simulates finding the combined article
     }
     ```
 
-    * `for-in loop`: The `for (var arg in lookupArgs)` loop iterates through
-      each element in the `lookupArgs` list. This is a concise way to loop over
-      collections in Dart.
-    * **Updated Logic for `lookupArgs`:** We now create a `lookupArgs` list. If
-      the input came from `stdin`, this list will contain just the single
-      `articleTitle`. If it came from the command line, it will contain the
-      `arguments` themselves.
-    * **String Interpolation:** The
-      `print('(Pretend this is an article about $arg)');` line uses string
-      interpolation. The `$` sign allows you to embed variables directly into a
-      string, making it easy to create dynamic output.
 
-1.  **Final Test Run with both scenarios:**
+9.  **Final Test Run with both scenarios:**
 
-    Run with arguments:
+    Run with arguments (note the quotes around the search term in the output):
 
     ```bash
-    dart bin/cli.dart wikipedia Dart Programming
+    dart bin/cli.dart search Dart Programming
     ```
 
     You should see:
 
     ```bash
-    Looking up articles about Dart, Programming. Please wait.
+    Looking up articles about "Dart Programming". Please wait.
     Here ya go!
-    (Pretend this is an article about Dart)
-    Here ya go!
-    (Pretend this is an article about Programming)
+    (Pretend this is an article about "Dart Programming")
     ```
 
-    Run without arguments (type "Flutter" when prompted):
+    Run without arguments (type "Flutter Framework" when prompted):
 
     ```bash
-    dart bin/cli.dart wikipedia
-
-
-    Please provide an article title.
-    Flutter
-    Looking up articles about Flutter. Please wait.
-    Here ya go!
-    (Pretend this is an article about Flutter)
+    dart bin/cli.dart search
     ```
-
-    You have now successfully built the basic `wikipedia` command with user input
-    handling.
-
-### Task 3: Handle Null Input from `stdin`
-
-In the previous step, you added a basic check for
-`articleTitle == null || articleTitle.isEmpty` after reading from `stdin`. Let's
-refine this to specifically handle the scenario where a user presses Enter
-without typing anything at the prompt, which `stdin.readLineSync()` returns as
-`null`.
-
-1.  **Refine the `stdin` null check:** Open your `cli/bin/cli.dart` file and
-    locate the `runApp` function. Modify the if condition that checks the
-    `articleTitle` immediately after `stdin.readLineSync()`.
-
-    ```dart
-    import 'dart:io';
-
-    // ... (your existing main and printUsage functions)
-
-    void runApp(List<String>? arguments) {
-      late String? articleTitle;
-      List<String> lookupArgs = [];
-
-      if (arguments == null || arguments.isEmpty) {
-        print('Please provide an article title.');
-        articleTitle = stdin.readLineSync();
-
-        // Modify this null check:
-        if (articleTitle == null) { // This now specifically checks for null
-          print('No article title provided. Exiting.');
-          return; // Exit if no input
-        }
-        // If it's not null, but still empty (user just pressed Enter),
-        // we can decide how to handle that. For now, let's allow it
-        // but note the previous check for empty string still catches it later.
-        lookupArgs = [articleTitle];
-      } else {
-        articleTitle = arguments.join(', ');
-        lookupArgs = arguments;
-      }
-
-      print('Looking up articles about $articleTitle. Please wait.');
-      for (var arg in lookupArgs) {
-        print('Here ya go!');
-        print('(Pretend this is an article about $arg)');
-      }
-    }
-    ```
-
-    The additional `if (articleTitle == null)` check now precisely handles the
-    case where the user simply presses Enter at the `stdin.readLineSync()`
-    prompt, which causes it to return a `null` value. This provides a clear
-    message to the user for this specific scenario.
-
-1.  **Test by providing no input:** Run your application without arguments and
-    press Enter immediately when prompted:
-
-    ```bash
-    dart bin/cli.dart wikipedia
-    ```
-
-    The program will prompt you:
 
     ```bash
     Please provide an article title.
+    Flutter Framework
     ```
+    
+    :::note
+    The program will exit after you type "Flutter Framework" because `runApp`
+    returns immediately after `stdin` input as per the sample code's behavior.
 
-    Now, just press Enter without typing anything.
+    :::
 
-    You should see:
-
-    ```bash
-    No article title provided. Exiting.
-    ```
-
-    This confirms that your application now correctly handles the null input
-    from `stdin.readLineSync()`, providing a robust user experience
+    You have now successfully built the basic `search` command with user input
+    handling, correctly treating multi-word command-line inputs as a single
+    search phrase in the output, and learned about `for-in` loops.
 
 ## Review
 
 In this chapter, you learned:
 
-*   **Control flow:** Using `if/else` statements to control the execution flow
+* **Control flow:** Using `if/else` statements to control the execution flow
     of your program.
-*   **Variables and Constants:** Declaring variables with `var` and `const`.
-*   **Lists:**  Creating and manipulating lists using `.isNotEmpty`, `.first`,
-    and `sublist`.
-*   **Loops:** Iterating over collections using `for-in` loops.
-*   **Null Safety:** Understanding nullability and using null checks (`?`).
-*   **Functions:** Defining and calling functions.
-*   **String interpolation:** Embedding variables in strings using `$`.
-*   **Input/Output:** Reading user input from the console using `stdin`.
+* **Variables and Constants:** Declaring variables with `var`, `const`, and `late String?`.
+* **Lists:** Creating and manipulating lists using `.isNotEmpty`, `.first`,
+    `.sublist`, and `.join()`.
+* **Loops:** Iterating over collections using `for-in` loops.
+* **Null Safety:** Understanding nullability (`?`) and using null checks.
+* **Functions:** Defining and calling functions.
+* **String interpolation:** Embedding variables in strings using `$`.
+* **Input/Output:** Reading user input from the console using `stdin.readLineSync()`.
 
 ## Quiz
 
-**Question 1:** Which keyword is used to declare a constant variable in Dart?
-*   A) `var`
-*   B) `final`
-*   C) `const`
-*   D) `static`
+**Question 1:** Which keyword is used to declare a constant variable in Dart whose value is known at compile time?
+* A) `var`
+* B) `final`
+* C) `const`
+* D) `static`
 
-**Question 2:** How do you check if a list is empty in Dart?
-*   A) `list.length == 0`
-*   B) `list.isEmpty`
-*   C) `list.size() == 0`
-*   D) `list.empty()`
+**Question 2:** How do you check if a list named `myList` is empty in Dart?
+* A) `myList.length == 0`
+* B) `myList.isEmpty`
+* C) `myList.size() == 0`
+* D) Both A and B
 
-**Question 3:** How do you embed a variable named `name` into a string in Dart?
-*   A) `"Hello, " + name + "!"`
-*   B) `"Hello, ${name}!"`
-*   C) `"Hello, $name!"`
-*   D) Both B and C
+**Question 3:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
+* A) To print output to the console.
+* B) To read a single line of text input from the user.
+* C) To execute a command.
+* D) To check if a file exists.
 
 ## Next lesson
 
