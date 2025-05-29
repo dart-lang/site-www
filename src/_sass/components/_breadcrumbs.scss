@@ -1,5 +1,3 @@
-@use '../base/variables' as *;
-
 nav.breadcrumbs {
   align-items: center;
   margin-block-start: 0.25rem;
@@ -13,7 +11,7 @@ nav.breadcrumbs {
     align-items: center;
     list-style: none;
 
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
 
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +29,7 @@ nav.breadcrumbs {
       }
 
       &.active a {
-        color: $site-color-nav-links;
+        color: var(--site-base-fgColor-alt);
         cursor: default;
         text-decoration: none;
       }

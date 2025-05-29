@@ -1,11 +1,7 @@
-@use '../base/variables' as *;
-
-$tab-accent-color: $site-color-primary;
-
 .tabs {
   &__content {
     display: none;
-    border: 2px solid $tab-accent-color;
+    border: 2px solid var(--site-primary-color);
     padding: 15px;
     margin-bottom: 15px;
 
@@ -29,14 +25,14 @@ $tab-accent-color: $site-color-primary;
 
     li {
       background: none;
-      color: $site-color-body;
+      color: var(--site-base-fgColor);
       display: inline-block;
       padding: 10px 15px;
       cursor: pointer;
 
       &.current {
-        background: $tab-accent-color;
-        color: #fff;
+        background: var(--site-primary-color);
+        color: var(--site-onPrimary-color-lighter);
       }
     }
   }

@@ -1,5 +1,4 @@
 @use '../base/mixins' as mixins;
-@use '../base/variables' as *;
 
 a, button {
   // Reset style of buttons and anchors.
@@ -22,7 +21,7 @@ a, button {
     border-radius: 20px;
     width: fit-content;
     white-space: nowrap;
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
     font-size: 1rem;
     outline-offset: 2px;
 
@@ -41,7 +40,7 @@ a, button {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--focus-outline-color);
+      outline: 2px solid var(--site-primary-color);
     }
   }
 
@@ -63,7 +62,7 @@ a, button {
 
     // Ensure color takes precedence over other anchor styling.
     &, &:hover, &:focus, &:active {
-      color: $site-color-white;
+      color: #fff;
     }
 
     span.material-symbols {

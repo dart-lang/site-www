@@ -1,5 +1,4 @@
 @use '../base/mixins' as *;
-@use '../base/variables' as *;
 
 body.diagnostics {
   --chip-container-color: transparent;
@@ -83,7 +82,7 @@ body.diagnostics {
     display: flex;
     align-items: center;
     gap: 0.2rem;
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
 
     .label {
       background: none;
@@ -98,7 +97,7 @@ body.diagnostics {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--focus-outline-color);
+      outline: 2px solid var(--site-primary-color);
       border-color: transparent;
     }
 
@@ -171,7 +170,7 @@ body.diagnostics {
           font-weight: 500;
           text-align: left;
           user-select: none;
-          font-family: $site-font-family-alt;
+          font-family: var(--site-ui-fontFamily);
 
           &:hover {
             @include interaction-style(4%);

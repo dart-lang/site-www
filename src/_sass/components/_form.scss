@@ -1,10 +1,9 @@
-@use '../base/variables' as *;
 @use '../base/mixins' as *;
 
 form {
   .muted {
     font-size: 75%;
-    color: $site-color-light-grey;
+    color: var(--site-base-fgColor-alt);
     text-indent: 0;
     padding: 10px;
   }
@@ -35,10 +34,10 @@ input, select {
   border-radius: 0;
   font-size: 13px;
   cursor: pointer;
-  background-color: $site-color-codeblock-bg;
-  color: $site-color-body;
+  background-color: var(--site-inset-bgColor);
+  color: var(--site-base-fgColor);
 
   &:focus, &:active {
-    outline-color: $site-color-primary;
+    outline-color: var(--site-primary-color);
   }
 }
