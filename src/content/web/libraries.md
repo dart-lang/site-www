@@ -31,7 +31,7 @@ The [Dart SDK][] also contains other libraries that provide low-level web APIs.
   in addition to mobile, desktop, and embedded device support.
 
 [Jaspr web framework][jaspr]
-: [Jaspr](jaspr) is a Dart web framework for building fast and dynamic 
+: [Jaspr][jaspr] is a Dart web framework for building fast and dynamic 
   HTML-based websites.
 
 [Build a web app with Dart](/web/get-started)
