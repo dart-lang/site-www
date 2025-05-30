@@ -8,7 +8,7 @@ show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 
-_The '.address' expression can only be used as argument to a leaf native
+_The '.address' expression can only be used as an argument to a leaf native
 external call._
 
 ## Description
