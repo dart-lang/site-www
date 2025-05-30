@@ -1,6 +1,14 @@
 ---
 title: Making your CLI program interactive
-description: Add simple commands to your cli program. Learn the fundamentals of Dart syntax including control flow, collections, variables, functions, and more.
+short-title: Add commands
+description: >-
+  Add simple commands to your cli program. Learn the fundamentals of Dart syntax including control flow, collections, variables, functions, and more.
+prevpage:
+  url: /get-started/hello-world
+  title: Build your first app
+nextpage:
+  url: /get-started/async
+  title: Intro to async and HTTP
 ---
 
 In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
@@ -196,7 +204,7 @@ null checks, and string interpolation.
     * `List<String>? arguments` means that the `arguments` list itself
        can be `null`. 
        
-       ::: note Null safety
+       :::note
        Dart enforces [sound null safety][], which means you
        have to explicity state when a variable can be null. Any
        variable that isn't marked as nullable is *guarateed* to never

@@ -7,7 +7,7 @@ prevpage:
   url: /get-started
   title: Get started
 nextpage:
-  url: /get-started/hello-world
+  url: /get-started/add-commands
   title: Add interactivity to your app
 ---
 
