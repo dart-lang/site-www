@@ -1,4 +1,5 @@
 import {UserConfig} from '@11ty/eleventy';
+import {escapeHtml} from 'markdown-it/lib/common/utils.mjs';
 
 export function registerShortcodes(eleventyConfig: UserConfig): void {
   _setupCards(eleventyConfig);
@@ -24,19 +25,24 @@ ${content}
 }
 
 function _setupMedia(eleventyConfig: UserConfig): void {
-  eleventyConfig.addShortcode('ytEmbed', function (id: string, title: string, type = 'video', fullWidth = false) {
-    let embedTypePath = '';
-    if (type === 'playlist') {
-      embedTypePath = 'playlist?list=';
-    } else if (type === 'series') {
-      embedTypePath = 'videoseries?list=';
+  eleventyConfig.addShortcode('ytEmbed', function (id: string, title: string, playlistId: string | null = null) {
+    const escapedTitle = title && title.length > 0 ? escapeHtml(title) : '';
+
+    let startTime = 0;
+    if (id.includes('?')) {
+      id = id.split('?')[0];
+
+      const idAndStartTime = id.split('start=');
+      if (idAndStartTime.length > 1) {
+        const startTimeString = idAndStartTime[1];
+        startTime = Number.parseInt(startTimeString);
+      }
     }
 
-    return `<iframe ${fullWidth ? 'class="full-width"' : 'width="560" height="315"'} 
-        src="https://www.youtube.com/embed/${embedTypePath}${id}" title="${title}" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen loading="lazy"></iframe><br>
-        <p><a href="https://www.youtube.com/watch/${id}" target="_blank" rel="noopener" title="Open '${title}' video in new tab">${title}</a></p>`;
+    return `
+<lite-youtube videoid="${id}" videotitle="${escapedTitle}" videoStartAt="${startTime}" ${playlistId ? `playlistid="${playlistId}"` : ''}>
+  <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch/${id}" target="_blank" rel="noopener">Watch on YouTube in a new tab: "${title}"</a></p>
+</lite-youtube>`;
   });
 
   eleventyConfig.addPairedShortcode('videoWrapper', function (content: string, intro = '') {

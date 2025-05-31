@@ -131,10 +131,20 @@ article {
     }
   }
 
-  .content > p {
-    > i.material-symbols, > span.material-symbols {
-      vertical-align: bottom;
-      user-select: none;
+  .content {
+    > p {
+      > i.material-symbols, > span.material-symbols {
+        vertical-align: bottom;
+        user-select: none;
+      }
     }
+
+    > lite-youtube {
+      margin-block-end: 1rem;
+    }
+  }
+
+  lite-youtube:not(.full-width) {
+    max-width: 560px;
   }
 }
