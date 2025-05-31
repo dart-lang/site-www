@@ -20,7 +20,7 @@ ul.nav-tabs {
 
   padding: $wrapper-padding;
   border-radius: $wrapper-radius;
-  background-color: #e9ecef; // TODO: var(--site-raised-bgColor);
+  background-color: var(--site-raised-bgColor);
   gap: 0.5rem;
   overflow-x: scroll;
   scrollbar-width: thin;
@@ -30,7 +30,7 @@ ul.nav-tabs {
   }
 
   a {
-    font-family: 'Google Sans', Roboto, sans-serif; // TODO: var(--site-ui-fontFamily);
+    font-family: var(--site-ui-fontFamily);
     text-decoration: none;
     color: inherit;
     display: block;
@@ -45,8 +45,8 @@ ul.nav-tabs {
     }
 
     &.active {
-      background-color: #1967D2; // TODO: var(--site-filledButton-bgColor);
-      color: #fff; // TODO: var(--site-filledButton-fgColor);
+      background-color: var(--site-filledButton-bgColor);
+      color: var(--site-filledButton-fgColor);
     }
 
     &:active {
@@ -62,7 +62,7 @@ ul.nav-tabs {
 }
 
 .tabs-wrapper.wrapped {
-  background-color: rgba(233, 236, 240, 0.1); // TODO: var(--site-raised-bgColor-translucent);
+  background-color: var(--site-raised-bgColor-translucent);
 
   .nav-tabs {
     margin-bottom: 0;
@@ -73,7 +73,7 @@ ul.nav-tabs {
   .tab-content {
     padding: 1rem 1rem 0;
 
-    border: $wrapper-padding solid #e9ecef; // TODO: var(--site-raised-bgColor);
+    border: $wrapper-padding solid var(--site-raised-bgColor);
     border-top: none;
     border-bottom-left-radius: $wrapper-radius;
     border-bottom-right-radius: $wrapper-radius;

@@ -42,7 +42,7 @@ body {
   --site-base-fgColor-alt: #6a6f71;
 
   --site-raised-bgColor: #edf0f2;
-  --site-raised-bgColor-translucent: #{color.change(#edf0f2, $alpha: 0.2)};
+  --site-raised-bgColor-translucent: #{color.change(#edf0f2, $alpha: 0.1)};
 
   --site-primary-color: #{$base_primary_color};
   --site-accent-color: #833ef2;
@@ -111,7 +111,7 @@ body {
     --site-base-fgColor-alt: #a8acad;
 
     --site-raised-bgColor: #1c1e27;
-    --site-raised-bgColor-translucent: #{color.change(#1c1e27, $alpha: 0.4)};
+    --site-raised-bgColor-translucent: #{color.change(#1c1e27, $alpha: 0.1)};
 
     --site-primary-color: #{$base_primary_color};
     --site-accent-color: #b07fff;
