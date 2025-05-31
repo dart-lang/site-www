@@ -1,7 +1,5 @@
-@use '../base/variables' as *;
 @use '../base/mixins';
 
-$sidenav-divider-color: #e7e8ed;
 $sidenav-wide-layout: 1024px;
 
 #sidenav {
@@ -9,10 +7,10 @@ $sidenav-wide-layout: 1024px;
   //overflow-y: auto;
   min-width: 16rem;
   height: 100%;
-  min-height: calc(100vh - $site-header-height);
+  min-height: calc(100vh - var(--site-header-height));
   padding: 0.75rem 0.75rem 3rem;
   position: sticky;
-  top: $site-header-height;
+  top: var(--site-header-height);
   scrollbar-width: thin;
 
   display: none;
@@ -34,10 +32,10 @@ $sidenav-wide-layout: 1024px;
   @media (min-width: $sidenav-wide-layout) {
     display: block;
     width: 16rem;
-    height: calc(100vh - $site-header-height);
+    height: calc(100vh - var(--site-header-height));
     overflow-y: auto;
 
-    border-right: 0.1rem solid $sidenav-divider-color;
+    border-right: 0.1rem solid var(--site-outline-variant);
     background: none;
 
     @at-root body.open_menu #page-content {
@@ -48,7 +46,7 @@ $sidenav-wide-layout: 1024px;
   .nav-header {
     font-weight: bolder;
     padding: 0.25rem 0.4rem 0;
-    color: $site-color-body-light;
+    color: var(--site-base-fgColor-lighter);
   }
 
   ul {
@@ -59,7 +57,7 @@ $sidenav-wide-layout: 1024px;
   }
 
   .sidenav-divider {
-    background-color: $sidenav-divider-color;
+    background-color: var(--site-outline-variant);
     border-radius: 0.5rem;
     width: 100%;
     height: 0.125rem;
@@ -98,12 +96,12 @@ $sidenav-wide-layout: 1024px;
 
       cursor: pointer;
 
-      color: $site-color-body;
-      font-family: $site-font-family-alt, sans-serif;
+      color: var(--site-base-fgColor);
+      font-family: var(--site-ui-fontFamily);
       text-decoration: none;
 
       &:focus-visible {
-        outline: 2px solid var(--focus-outline-color);
+        outline: 2px solid var(--site-primary-color);
       }
 
       > div {
@@ -112,7 +110,7 @@ $sidenav-wide-layout: 1024px;
         .material-symbols {
           font-size: 0.825rem;
           margin-left: 0.125rem;
-          color: $site-color-nav-links;
+          color: var(--site-base-fgColor-alt);
         }
       }
 
@@ -121,7 +119,7 @@ $sidenav-wide-layout: 1024px;
       }
 
       .expander {
-        color: $site-color-body-light;
+        color: var(--site-base-fgColor-lighter);
         transition: transform .3s ease-in-out;
       }
 
@@ -151,7 +149,7 @@ $sidenav-wide-layout: 1024px;
         background-color: rgb(245, 245, 246);
 
         &:not(.collapsible) {
-          color: $site-color-primary;
+          color: var(--site-link-fgColor);
         }
       }
     }

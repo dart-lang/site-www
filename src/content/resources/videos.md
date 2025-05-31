@@ -18,10 +18,10 @@ A playlist of Google-produced videos on Dart's capabilities.
 These range from 5-minute talks on Dart asynchrony support
 to the Dart session from Google I/O 2019.
 
-{% ytEmbed "PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J", "Dart videos from Google", "series" %}
+{% ytEmbed "TF-TBsgIErY", "Dart videos from Google", "PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J" %}
 
 ## Dart training course in Brazilian Portuguese
 
 Nesta série de vídeos estudaremos juntos a linguagem Dart.
 
-{% ytEmbed "PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ", "Dart Curso Completo", "series" %}
+{% ytEmbed "Vz11rFFewkM", "Dart Curso Completo", "PLK5FPzMuRKlyiWZUUqea2Hmszhy9vUixJ" %}

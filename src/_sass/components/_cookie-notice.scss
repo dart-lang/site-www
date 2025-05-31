@@ -1,9 +1,7 @@
-@use '../base/variables' as *;
-
 #cookie-notice {
   display: none;
   justify-content: center;
-  background-color: $site-color-white;
+  background-color: #fff;
   padding: 1.25rem;
   position: fixed;
   bottom: 0;
@@ -57,16 +55,16 @@
 body.homepage, body.error {
   #cookie-notice {
     --site-interaction-base-values: var(--site-interaction-base-values-inverse);
-    background-color: $site-color-dark-background;
+    background-color: var(--site-chrome-bgColor);
 
     .container {
       p {
-        color: $site-color-white;
+        color: #fff;
       }
 
       .text-button {
         &, &:hover, &:active, &:focus {
-          color: $site-color-white;
+          color: #fff;
         }
       }
     }

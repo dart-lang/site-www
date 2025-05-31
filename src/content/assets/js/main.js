@@ -190,8 +190,8 @@ function setupExpandableCards() {
 
 function _setupSite() {
   setupSidenav();
-  setupOsTabs();
   initCookieNotice();
+  setupTabs();
 
   // Set up collapse and expand for sidenav buttons.
   const toggles = document.querySelectorAll('.nav-link.collapsible');

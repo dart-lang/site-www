@@ -1,8 +1,6 @@
-@use '../base/variables' as *;
-
 #site-header {
-  background-color: $site-color-white;
-  font-family: $site-font-family-alt;
+  background-color: #fff;
+  font-family: var(--site-ui-fontFamily);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -11,14 +9,14 @@
 
   .navbar {
     font-size: 1.25rem;
-    min-height: $site-header-height;
+    min-height: var(--site-header-height);
 
     @media (min-width: 768px) {
       font-size: 1rem;
     }
 
     .navbar-toggler {
-      color: $site-color-body;
+      color: var(--site-base-fgColor);
       margin-right: 1rem;
       padding: 0;
 
@@ -32,7 +30,7 @@
     }
 
     .nav-link {
-      color: $site-color-nav-links;
+      color: var(--site-base-fgColor-alt);
       padding: 1.25rem 0;
       position: relative;
       text-decoration: none;
@@ -42,19 +40,19 @@
       }
 
       &.active {
-        color: $site-color-body;
+        color: var(--site-base-fgColor);
         font-weight: 500;
 
         @media (min-width: 768px) {
           &:after {
             $nav-active-marker-thickness: 3px;
-            background-color: $site-color-card-link;
+            background-color: var(--site-altLink-fgColor);
             content: '';
             display: block;
             height: $nav-active-marker-thickness;
             left: 0;
             position: absolute;
-            top: calc(50% + (#{$site-header-height} / 2) - #{$nav-active-marker-thickness});
+            top: calc(50% + (var(--site-header-height) / 2) - #{$nav-active-marker-thickness});
             width: 100%;
           }
         }
@@ -67,7 +65,7 @@
 
     &::before {
       content: 'search';
-      font: $site-font-icon;
+      font: 24px / 1 var(--site-icon-fontFamily);
       pointer-events: none;
       position: absolute;
       left: 0.25rem;
@@ -98,8 +96,8 @@
   }
 
   #mainnav {
-    background-color: $site-color-dark-background;
-    color: $site-color-light-grey;
+    background-color: var(--site-chrome-bgColor);
+    color: var(--site-chrome-fgColor);
     display: flex;
     align-items: center;
 
@@ -117,15 +115,19 @@
         padding: 0 0.75rem;
 
         a {
-          color: $site-color-light-grey;
+          color: var(--site-chrome-fgColor);
           display: inline-block;
           padding: 0 6px;
           font-size: 1rem;
           font-weight: 500;
-          font-family: $site-font-family-alt;
+          font-family: var(--site-ui-fontFamily);
 
-          &:hover, &:active {
-            color: $site-color-card-link;
+          &:hover {
+            color: var(--site-altLink-fgColor);
+          }
+
+          &:active {
+            color: var(--site-altLink-fgColor-active);
           }
         }
 
@@ -167,7 +169,7 @@
   #menu-toggle {
     display: none;
     align-items: center;
-    line-height: $site-header-height;
+    line-height: var(--site-header-height);
     margin-left: 20px;
     padding-right: 10px;
     cursor: pointer;

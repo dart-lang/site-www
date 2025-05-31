@@ -2,7 +2,11 @@
 // the reset is applied before any other styles are applied.
 @use 'base/reset';
 
-@use 'base/variables' as *;
+// Must be imported first after reset to ensure that our
+// defined CSS variables are defined before any other
+// styles are applied and they are used.
+@use 'base/root';
+
 @use 'base/mixins' as *;
 
 @use 'base/base';
@@ -25,9 +29,9 @@
 @use 'components/header';
 @use 'components/misc';
 @use 'components/next-prev-nav';
-@use 'components/os-tabs';
 @use 'components/search';
 @use 'components/sidenav';
+@use 'components/tabs';
 @use 'components/tags';
 @use 'components/toc';
 
