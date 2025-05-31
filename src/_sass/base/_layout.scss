@@ -1,8 +1,6 @@
-@use '../base/variables' as *;
-
 #page-content {
   display: flex;
-  min-height: calc(100vh - $site-header-height);
+  min-height: calc(100vh - var(--site-header-height));
   min-width: 0;
   width: 100%;
   flex-direction: row;
@@ -13,7 +11,7 @@
   }
 
   body.obsolete & {
-    border: 0.5rem solid $alert-warning-bg;
+    border: 0.5rem solid #fcf8e3;
     border-top: none;
   }
 
@@ -24,7 +22,7 @@
 
     > .content {
       min-width: 8rem;
-      padding: $site-content-top-padding;
+      padding: 2rem;
     }
   }
 }

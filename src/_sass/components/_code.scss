@@ -1,13 +1,10 @@
-@use 'sass:color';
-
-@use '../base/variables' as *;
-
 *:not(pre) > code {
+  font-family: var(--site-code-fontFamily);
   font-size: 0.9em;
   line-height: 1.25em;
   padding: 0.1rem 0.25rem;
-  background-color: $site-color-light-grey;
-  background-color: color-mix(in srgb, $site-color-light-grey 35%, transparent);
+  background-color: var(--site-outline-variant);
+  background-color: color-mix(in srgb, var(--site-outline-variant) 35%, transparent);
   border: 1px solid rgb(195, 201, 214);
   border-radius: 0.25rem;
   word-wrap: break-word;
@@ -22,6 +19,7 @@ pre {
 
   code {
     white-space: pre;
+    font-family: var(--site-code-fontFamily);
   }
 
   a {
@@ -30,7 +28,7 @@ pre {
   }
 
   .highlight {
-    background: $flutter-color-yellow-300;
+    background: var(--site-code-highlight-bgColor);
     padding: 0.1em;
   }
 
@@ -55,9 +53,9 @@ pre {
     border-left: 2px solid rgba(0, 0, 0, 0);
 
     &.highlighted-line {
-      background: color.change($site-color-primary, $alpha: 0.075);
+      background: var(--site-primary-color-highlight);
+      border-left-color: var(--site-primary-color);
       min-width: 100%;
-      border-left-color: $site-color-primary;
     }
   }
 
@@ -71,7 +69,7 @@ pre {
         width: 2em;
         margin-right: 0.5rem;
         text-align: right;
-        color: $dash-sub-grey;
+        color: var(--site-base-fgColor-alt);
       }
     }
   }
@@ -87,30 +85,31 @@ pre {
   height: 2rem;
   padding: 0;
 
-  font: $site-font-icon;
+  font: 24px / 1 var(--site-icon-fontFamily);
 
   appearance: none;
   border: none;
-  color: $site-color-nav-links;
+  color: var(--site-base-fgColor-alt);
   background: none;
   opacity: 0;
   transition: opacity 0.4s;
 
   &:hover, &:focus {
-    color: $site-color-primary;
+    color: var(--site-link-fgColor);
     opacity: 1;
+    outline: none;
   }
 
   &:active {
-    color: $flutter-color-blue-700;
+    color: var(--site-link-fgColor-active);
   }
 }
 
 .code-block-language {
-  font-family: $site-font-family-monospace;
+  font-family: var(--site-code-fontFamily);
   user-select: none;
   font-size: 0.8125rem;
-  color: $site-color-nav-links;
+  color: var(--site-base-fgColor-alt);
   opacity: 1;
   transition: opacity 0.25s;
 
@@ -120,7 +119,7 @@ pre {
   z-index: 5;
 
   .highlight-languages .language-dart & {
-    color: $site-color-primary;
+    color: var(--site-primary-color);
   }
 
   .highlight-languages .language-js & {
@@ -139,7 +138,7 @@ pre {
 }
 
 .code-block-tag {
-  font-family: $site-font-family-monospace;
+  font-family: var(--site-code-fontFamily);
   font-size: 0.8125rem;
   font-weight: 500;
   position: absolute;
@@ -147,22 +146,23 @@ pre {
   left: 6px;
 
   .tag-good &, .tag-passes-sa &, .tag-runtime-success & {
-    color: $alert-success-fg;
+    color: #155723;
   }
 
   .tag-bad &, .tag-fails-sa &, .tag-runtime-fail & {
-    color: $alert-danger-fg;
+    color: #cb1425;
   }
 }
 
 .code-block-wrapper {
   margin-block-start: 1rem;
   margin-block-end: 1rem;
-  border: 1px solid $flutter-color-grey-500;
+  border: 1px solid var(--site-inset-borderColor);
+  background-color: var(--site-inset-bgColor);
 
   .code-block-header {
-    background-color: #e9ecef;
-    border-bottom: 1px solid $flutter-color-grey-500;
+    background-color: var(--site-raised-bgColor);
+    border-bottom: 1px solid var(--site-inset-borderColor);
     font-size: 0.9375rem;
     font-weight: 500;
     padding: 0.75rem 0.5rem 0.67rem 1rem;
@@ -170,7 +170,7 @@ pre {
 
   .code-block-body {
     position: relative;
-    background-color: $site-color-codeblock-bg;
+    background: none;
 
     &:hover, &:focus-within {
       .code-block-language {
@@ -183,16 +183,16 @@ pre {
     }
 
     &.tag-good, &.tag-passes-sa, &.tag-runtime-success {
-      background-color: $alert-success-bg;
+      background-color: #f1fbf9;
     }
 
     &.tag-bad, &.tag-fails-sa, &.tag-runtime-fail {
-      background-color: $alert-danger-bg;
+      background-color: #fef3f6;
     }
   }
 
   &:has(:focus-visible) {
-    border-color: #1389FD;
+    border-color: var(--site-primary-color);
   }
 
   pre {
@@ -215,7 +215,7 @@ pre {
 
 // Border and resizability for dartpad
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {
-  border: 1px solid #ccc;
+  border: 1px solid var(--site-inset-borderColor);
   margin: 0;
   min-height: 400px;
   resize: vertical;

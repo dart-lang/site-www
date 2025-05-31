@@ -294,6 +294,7 @@ external call._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_position" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_position" title="Copy address_position to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -312,6 +313,7 @@ _The receiver of '.address' must be a concrete 'TypedData', a concrete
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_receiver" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_receiver" title="Copy address_receiver to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -5779,6 +5781,7 @@ _Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Copy ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer to your clipboard.">Copy name</button>
 </div>
 </div>

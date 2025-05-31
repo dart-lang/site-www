@@ -1,5 +1,4 @@
 @use '../base/mixins';
-@use '../base/variables' as *;
 
 #site-prev-next {
   display: flex;
@@ -8,7 +7,6 @@
   justify-content: space-between;
   gap: 1rem;
   margin-block-end: 1rem;
-  font-family: $site-font-family-alt;
 
   .prev {
     text-align: left;
@@ -34,8 +32,8 @@
     flex-basis: 100%;
 
     text-decoration: none;
-    color: $site-color-body;
-    border: 1px solid rgba(194, 198, 214, .75);
+    color: var(--site-base-fgColor);
+    border: 1px solid var(--site-outline);
     border-radius: 0.25rem;
 
     display: flex;
