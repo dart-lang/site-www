@@ -23,9 +23,15 @@
       <a href="/community" class="nav-link
         {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
     </li>
+    {%- if page_url_path contains '/*/get-started/' -%}
+    <li>
+      <a href="/get-started" class="nav-link active">Learn</a>
+    </li>
+    {%- else -%}
     <li>
       <a href="/#try-dart" class="nav-link">Try Dart</a>
     </li>
+    {% endif -%}
     <li>
       <a href="/get-dart" class="nav-link
         {%- if page_url_path contains '/*/get-dart/' %} active {%- endif -%}">Get Dart</a>

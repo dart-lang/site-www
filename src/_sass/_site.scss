@@ -37,6 +37,7 @@
 
 @use 'pages/dash';
 @use 'pages/error';
+@use 'pages/tutorial';
 
 // Must be imported last to ensure that
 // the print overrides take priority over earlier defined styles.
