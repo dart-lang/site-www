@@ -22,7 +22,11 @@
 
     > .content {
       min-width: 8rem;
-      padding: 2rem;
+      padding: 1.5rem;
+
+      @media (min-width: 576px) {
+        padding: 2rem;
+      }
     }
   }
 }

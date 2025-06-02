@@ -5,6 +5,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  background-color: var(--site-base-bgColor);
   color: var(--site-base-fgColor);
 
   overflow-x: hidden;
@@ -115,6 +116,12 @@ ul {
 img {
   max-width: 100%;
   height: auto;
+
+  &.diagram-wrap {
+    background-color: var(--site-diagram-wrap-bgColor);
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }
 
 dd {
@@ -123,10 +130,15 @@ dd {
 }
 
 blockquote {
-  border: solid #b3b3b3;
-  border-width: 1px 0;
-  margin: 20px;
-  padding: 10px 20px 0 20px;
+  background-color: var(--site-inset-bgColor-translucent);
+  padding: 0.75rem 1rem;
+  border-left: solid 5px var(--site-inset-borderColor);
+  margin: 0;
+  margin-block-end: 1rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 details {

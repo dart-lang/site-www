@@ -26,7 +26,7 @@ and other web frameworks for Dart are powered by the Dart web platform.
 <div class="side-by-side">
 <div class="centered-rows">
 <p class="">
-  <a href="/web/get-started" class="filled-button">Build a web app with Dart</a>
+  <a href="/web/get-started" class="filled-button large-button">Build a web app with Dart</a>
 </p>
 </div>
 <div class="centered-rows">

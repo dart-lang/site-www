@@ -52,6 +52,8 @@
   .footer-social-links {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
     margin-top: 1.5rem;
 
