@@ -15,7 +15,7 @@ $sidenav-wide-layout: 1024px;
 
   display: none;
   width: 100%;
-  background: #fff;
+  background-color: var(--site-base-bgColor);
   z-index: 100;
 
   @at-root body.open_menu {
@@ -146,7 +146,7 @@ $sidenav-wide-layout: 1024px;
       }
 
       &.active {
-        background-color: rgb(245, 245, 246);
+        background-color: rgb(var(--site-interaction-base-values) / 4%);
 
         &:not(.collapsible) {
           color: var(--site-link-fgColor);

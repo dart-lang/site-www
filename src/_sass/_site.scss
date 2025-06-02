@@ -21,6 +21,7 @@
 @use 'components/code';
 @use 'components/content';
 @use 'components/diagnostics';
+@use 'components/dropdown';
 @use 'components/filter-search';
 @use 'components/cookie-notice';
 @use 'components/footer';
@@ -33,10 +34,12 @@
 @use 'components/sidenav';
 @use 'components/tabs';
 @use 'components/tags';
+@use 'components/theming';
 @use 'components/toc';
 
 @use 'pages/dash';
 @use 'pages/error';
+@use 'pages/tutorial';
 
 // Must be imported last to ensure that
 // the print overrides take priority over earlier defined styles.

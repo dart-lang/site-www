@@ -11,7 +11,7 @@ body {
   --site-icon-fontFamily: 'Material Symbols Outlined', 'Material Symbols', 'Material Icons';
 
   // Site layout sizes.
-  --site-header-height: 3.25rem; // TODO(parlough): Make 4 when adding toc.
+  --site-header-height: 3.25rem;
   --site-subheader-height: 2.5rem;
 
   // Site visual hierarchy levels.
@@ -25,7 +25,7 @@ body {
   --site-z-top: 1000;
 
   // Misc site styles.
-  --site-radius: 0.35rem;
+  --site-radius: 0.45rem;
 }
 
 body {
@@ -72,9 +72,10 @@ body {
   --site-wordmark-fgColor: #4a4a4a;
 
   --site-chrome-bgColor: #1c2834;
+  --site-chrome-borderColor: #394c60;
   --site-chrome-fgColor: #F3F4F6;
 
-  --site-banner-bgColor: linear-gradient(139deg, #{$base_primary_color}, #833ef2);
+  --site-banner-bgColor: linear-gradient(139deg, #134386, #1959b3);
   --site-banner-fgColor: #fff;
 
   --site-card-borderColor: var(--site-outline);
@@ -98,7 +99,7 @@ body {
     display: none !important;
   }
 
-  &.dark-mode {
+  &.dark-mode, .always-dark-mode {
     color-scheme: dark;
     --site-outline: rgba(95, 100, 119, .75);
     --site-outline-variant: #252834;
@@ -141,6 +142,7 @@ body {
     --site-wordmark-fgColor: #fff;
 
     --site-chrome-bgColor: #1c2834;
+    --site-chrome-borderColor: #394c60;
     --site-chrome-fgColor: #F3F4F6;
 
     --site-banner-bgColor: linear-gradient(139deg, #165399, #5b0fd7);
@@ -155,7 +157,7 @@ body {
 
     --site-code-highlight-bgColor: rgba(164, 158, 62, 0.15);
 
-    --site-diagram-wrap-bgColor: #e1e6ea;
+    --site-diagram-wrap-bgColor: #c2cdd6;
 
     --site-alert-info-color: #439bff;
     --site-alert-tip-color: #25c04b;
