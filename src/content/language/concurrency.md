@@ -14,12 +14,6 @@ nextpage:
 
 <?code-excerpt path-base="concurrency"?>
 
-<style>
-  article img {
-    padding: 15px 0;
-  }
-</style>
-
 This page contains a conceptual overview of how concurrent programming works in
 Dart. It explains the event-loop, async language features, and isolates from
 a high-level. For more practical code examples of using concurrency in Dart,
@@ -50,8 +44,7 @@ to user taps and keystrokes, to I/O from the disk.
 Because your app can’t predict what order events will happen,
 the event loop processes events in the order they're queued, one at a time.
 
-![A figure showing events being fed, one by one, into the
-event loop](/assets/img/language/concurrency/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png){:.diagram-wrap}
 
 The way the event loop functions resembles this code:
 
@@ -85,9 +78,7 @@ It also tells the event loop to hold onto the callback in the `then()` clause
 until the HTTP request resolves. When that happens, it should
 execute that callback, passing the result of the request as an argument.
 
-![Figure showing async events being added to an event loop and
-holding onto a callback to execute later
-.](/assets/img/language/concurrency/async-event-loop.png)
+![Figure showing async events being added to an event loop and holding onto a callback to execute later .](/assets/img/language/concurrency/async-event-loop.png){:.diagram-wrap}
 
 This same model is generally how the event loop handles all other
 asynchronous events in Dart, such as [`Stream`][] objects.
@@ -188,8 +179,7 @@ As the following figure shows, the Dart code pauses while `readAsString()`
 executes non-Dart code, in either the Dart runtime or the operating system. 
 Once `readAsString()` returns a value, Dart code execution resumes.
 
-![Flowchart-like figure showing app code executing from start to exit, waiting
-for native I/O in between](/assets/img/language/concurrency/basics-await.png)
+![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/assets/img/language/concurrency/basics-await.png){:.diagram-wrap}
 
 ### Streams
 
@@ -268,8 +258,7 @@ In most cases, you don't need to think about isolates at all. Dart programs run
 in the main isolate by default. It’s the thread where a program starts to run
 and execute, as shown in the following figure:
 
-![A figure showing a main isolate, which runs `main()`, responds to events,
-and then exits](/assets/img/language/concurrency/basics-main-isolate.png)
+![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/assets/img/language/concurrency/basics-main-isolate.png){:.diagram-wrap}
 
 Even single-isolate programs can execute smoothly. Before continuing to the next
 line of code, these apps use [async-await][] to wait for asynchronous operations to
@@ -290,7 +279,7 @@ When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
 
-![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png)
+![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/assets/img/language/concurrency/basics-isolate.png){:.diagram-wrap}
 
 ### Event handling
 
@@ -299,7 +288,7 @@ and notifications of tap and other UI events. For example, the following figure
 shows a repaint event, followed by a tap event, followed by two repaint events.
 The event loop takes events from the queue in first in, first out order.
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/event-loop.png){:.diagram-wrap}
 
 Event handling happens on the main isolate after `main()` exits. In the
 following figure, after `main()` exits, the main isolate handles the first
@@ -311,7 +300,7 @@ unresponsive. In the following figure, the tap-handling code takes too long, so
 subsequent events are handled too late. The app might appear to freeze, and any
 animation it performs might be jerky.
 
-![A figure showing a tap handler with a too-long execution time](/assets/img/language/concurrency/event-jank.png)
+![A figure showing a tap handler with a too-long execution time](/assets/img/language/concurrency/event-jank.png){:.diagram-wrap}
 
 In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank]. Worse, the UI might become completely
@@ -330,7 +319,7 @@ its result in a message when it exits.
 
 [json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
-![A figure showing a main isolate and a simple worker isolate](/assets/img/language/concurrency/isolate-bg-worker.png)
+![A figure showing a main isolate and a simple worker isolate](/assets/img/language/concurrency/isolate-bg-worker.png){:.diagram-wrap}
 
 A worker isolate can perform I/O
 (reading and writing files, for example), set timers, and more. It has its own

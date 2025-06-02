@@ -4,10 +4,17 @@ description: A short introduction to Dart.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 
-<img 
+<img
+  class="light-mode-visible"
   style="padding: 30px; float: right; width: 300px" 
   src="/assets/img/logo_lockup_dart_horizontal.png" 
   alt="Dart product logo">
+<img
+  class="dark-mode-visible"
+  style="padding: 30px; float: right; width: 300px"
+  src="/assets/img/logo/logo-white-text.svg"
+  alt="Dart product logo">
+
 
 Dart is a client-optimized language for developing fast apps on any platform.
 Its goal is to offer the most productive programming language for

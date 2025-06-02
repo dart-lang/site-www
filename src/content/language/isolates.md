@@ -13,12 +13,6 @@ nextpage:
 
 <?code-excerpt path-base="concurrency"?>
 
-<style>
-  article img {
-    padding: 15px 0;
-  }
-</style>
-
 This page discusses some examples that use the `Isolate` API to implement 
 isolates.
 
@@ -236,10 +230,10 @@ now both sides have an open channel to send and receive messages.
 The diagrams in this section are high-level and intended to convey the 
 _concept_ of using ports for isolates. Actual implementation requires 
 a bit more code, which you will find 
-[later on this page](#basic-ports-example).  
+[later on this page](#basic-ports-example).
 :::
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png){:.diagram-wrap}
 
 1. Create a `ReceivePort` in the main isolate. The `SendPort` is created
    automatically as a property on the `ReceivePort`.
@@ -254,7 +248,7 @@ Along with creating the ports and setting up communication, you’ll also need
 to tell the ports what to do when they receive messages. This is done using
 the `listen` method on each respective `ReceivePort`.
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png){:.diagram-wrap}
 
 1. Send a message via the main isolate’s reference to the worker isolate's
    `SendPort`.

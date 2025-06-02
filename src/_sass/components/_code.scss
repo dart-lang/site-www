@@ -3,9 +3,8 @@
   font-size: 0.9em;
   line-height: 1.25em;
   padding: 0.1rem 0.25rem;
-  background-color: var(--site-outline-variant);
-  background-color: color-mix(in srgb, var(--site-outline-variant) 35%, transparent);
-  border: 1px solid rgb(195, 201, 214);
+  background-color: var(--site-inset-bgColor-translucent);
+  border: 1px solid var(--site-inset-borderColor);
   border-radius: 0.25rem;
   word-wrap: break-word;
   white-space: nowrap;
@@ -146,11 +145,11 @@ pre {
   left: 6px;
 
   .tag-good &, .tag-passes-sa &, .tag-runtime-success & {
-    color: #155723;
+    color: var(--site-alert-tip-color);
   }
 
   .tag-bad &, .tag-fails-sa &, .tag-runtime-fail & {
-    color: #cb1425;
+    color: var(--site-alert-error-color);
   }
 }
 
@@ -182,13 +181,14 @@ pre {
       }
     }
 
-    &.tag-good, &.tag-passes-sa, &.tag-runtime-success {
-      background-color: #f1fbf9;
-    }
-
-    &.tag-bad, &.tag-fails-sa, &.tag-runtime-fail {
-      background-color: #fef3f6;
-    }
+    // TODO(parlough): Consider bringing some background highlighting back.
+    //&.tag-good, &.tag-passes-sa, &.tag-runtime-success {
+    //  background-color: #f1fbf9;
+    //}
+    //
+    //&.tag-bad, &.tag-fails-sa, &.tag-runtime-fail {
+    //  background-color: #fef3f6;
+    //}
   }
 
   &:has(:focus-visible) {

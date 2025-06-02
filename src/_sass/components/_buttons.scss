@@ -18,7 +18,7 @@ a, button {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: var(--site-radius);
     width: fit-content;
     white-space: nowrap;
     font-family: var(--site-ui-fontFamily);
@@ -57,12 +57,13 @@ a, button {
   }
 
   &.filled-button {
-    background-color: #06599C;
+    background-color: var(--site-filledButton-bgColor);
+    color: var(--site-filledButton-fgColor);
     outline-offset: 2px;
 
     // Ensure color takes precedence over other anchor styling.
     &, &:hover, &:focus, &:active {
-      color: #fff;
+      color: var(--site-filledButton-fgColor);
     }
 
     span.material-symbols {
@@ -72,25 +73,36 @@ a, button {
   }
 
   &.icon-button {
-    height: 2rem;
-    width: 2rem;
+    border-radius: 2rem;
+    padding: 0.25rem;
+    color: var(--site-base-fgColor-alt);
+    text-decoration: none;
 
-    padding: 0.2rem;
-    color: #3a3a3a;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    background: none;
 
-    span {
-      font-size: 22px;
+    > span {
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      color: var(--site-base-fgColor);
     }
   }
 
   &.text-button, &.outlined-button {
     // Ensure color takes precedence over other anchor styling.
     &, &:hover, &:active, &:focus {
-      color: #3a3a3a;
+      // TODO(parlough): Should this be primary color instead?
+      color: var(--site-base-fgColor-lighter);
     }
   }
 
   &.outlined-button {
-    border: 1px solid rgba(0, 0, 0, .125);
+    border: 1px solid var(--site-outline);
   }
 }

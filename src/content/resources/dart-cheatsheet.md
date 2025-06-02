@@ -44,7 +44,7 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-```dartpad
+```dartpad theme="dark"
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
@@ -119,7 +119,7 @@ Declare two variables in this DartPad:
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 // TODO: Declare the two variables here
 
 
@@ -187,7 +187,7 @@ to implement the described behavior in the following snippet.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 String? foo = 'a string';
 String? bar; // = null
 
@@ -275,7 +275,7 @@ The following function takes a nullable string as a parameter.
 Try using conditional property access to make it
 return the uppercase version of `str`, or `null` if `str` is `null`.
 
-```dartpad
+```dartpad theme="dark"
 String? upperCaseIt(String? str) {
   // TODO: Try conditionally accessing the `toUpperCase` method here.
 }
@@ -361,7 +361,7 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
-```dartpad
+```dartpad theme="dark"
 // Assign this a list containing 'a', 'b', and 'c' in that order:
 final aListOfStrings = null;
 
@@ -491,7 +491,7 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 Try finishing the following statements, which use arrow syntax.
 
-```dartpad
+```dartpad theme="dark"
 class MyClass {
   int value1 = 2;
   int value2 = 3;
@@ -643,7 +643,7 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-```dartpad
+```dartpad theme="dark"
 class BigObject {
   int anInt = 0;
   String aString = '';
@@ -780,7 +780,7 @@ Add the following:
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class InvalidPriceException {}
 
 class ShoppingCart {
@@ -937,7 +937,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-```dartpad
+```dartpad theme="dark"
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
@@ -1079,7 +1079,7 @@ then copy its value into `anInt`.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class MyDataObject {
   final int anInt;
   final String aString;
@@ -1271,7 +1271,7 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-```dartpad
+```dartpad theme="dark"
 typedef VoidFunction = void Function();
 
 class ExceptionWithMessage {
@@ -1465,7 +1465,7 @@ all three properties of the class.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class MyClass {
   final int anInt;
   final String aString;
@@ -1554,7 +1554,7 @@ For extra credit, add an `assert` to catch words of less than two characters.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
@@ -1648,7 +1648,7 @@ that sets all three properties to zero.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
@@ -1743,7 +1743,7 @@ named `IntegerHolder.fromList` to return the following:
 
 If you succeed, the console should display `Success!`.
 
-```dartpad
+```dartpad theme="dark"
 class IntegerHolder {
   IntegerHolder();
 
@@ -1906,7 +1906,7 @@ default constructor with zeros as the arguments.
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
@@ -1994,7 +1994,7 @@ and create a constant constructor that does the following:
 
 Ignore all initial errors in the DartPad.
 
-```dartpad
+```dartpad theme="dark"
 class Recipe {
   List<String> ingredients;
   int calories;

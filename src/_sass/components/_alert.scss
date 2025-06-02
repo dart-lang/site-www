@@ -1,17 +1,11 @@
 aside.alert {
-  --alert-info-fgColor: #2058b7;
-  --alert-tip-fgColor: #0c7927;
-  --alert-important-fgColor: #7953bf;
-  --alert-warning-fgColor: #955d00;
-  --alert-error-fgColor: #c43131;
-
-  --alert-title-color: var(--site-base-fgColor);
-
   padding: 0.75rem;
   margin-block-start: 1rem;
   margin-block-end: 1rem;
-  border-left: solid 0.25rem var(--alert-border-color, var(--alert-title-color, var(--site-outline-variant)));
-  background-color: var(--site-inset-bgColor);
+  border-left: solid 0.25rem var(--site-inset-borderColor);
+  background-color: var(--site-inset-bgColor-translucent);
+  color: var(--site-inset-fgColor);
+  --alert-title-color: var(--site-base-fgColor);
 
   .alert-header {
     display: flex;
@@ -25,7 +19,7 @@ aside.alert {
     color: var(--alert-title-color);
 
     .material-symbols {
-      font-size: 22px;
+      font-size: 1.25em;
       user-select: none;
     }
   }
@@ -49,26 +43,32 @@ aside.alert {
   }
 
   &.alert-success {
-    --alert-title-color: var(--alert-tip-fgColor);
+    border-color: var(--site-alert-tip-color);
+    --alert-title-color: var(--site-alert-tip-color);
   }
 
   &.alert-important {
-    --alert-title-color: var(--alert-important-fgColor);
+    border-color: var(--site-alert-important-color);
+    --alert-title-color: var(--site-alert-important-color);
   }
 
   &.alert-warning {
-    --alert-title-color: var(--alert-warning-fgColor);
+    border-color: var(--site-alert-warning-color);
+    --alert-title-color: var(--site-alert-warning-color);
   }
 
   &.alert-info {
-    --alert-title-color: var(--alert-info-fgColor);
+    border-color: var(--site-alert-info-color);
+    --alert-title-color: var(--site-alert-info-color);
   }
 
   &.alert-secondary {
-    --alert-border-color: var(--site-outline-variant);
+    border-color: var(--site-inset-borderColor);
+    --alert-title-color: var(--site-base-fgColor);
   }
 
   &.alert-error {
-    --alert-title-color: var(--alert-error-fgColor);
+    border-color: var(--site-alert-error-color);
+    --alert-title-color: var(--site-alert-error-color);
   }
 }
