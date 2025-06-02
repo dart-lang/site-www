@@ -35,7 +35,7 @@
     "markdown-it-attrs": "^4.3.1",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.89.0",
+    "sass": "^1.89.1",
     "shiki": "^3.4.2",
     "tsx": "^4.19.4"
   }
