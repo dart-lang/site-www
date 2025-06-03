@@ -295,6 +295,28 @@ function setupExpandableCards() {
   });
 }
 
+function setupFeedback() {
+  const feedbackContainer =
+      document.getElementById('page-feedback');
+  if (!feedbackContainer) return;
+
+  const feedbackUpButton = feedbackContainer.querySelector('#feedback-up-button');
+  const feedbackDownButton = feedbackContainer.querySelector('#feedback-down-button');
+  if (!feedbackUpButton || !feedbackDownButton) return;
+
+  feedbackUpButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'up'});
+
+    feedbackContainer.classList.add('feedback-up');
+  }, { once: true });
+
+  feedbackDownButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'down'});
+
+    feedbackContainer.classList.add('feedback-down');
+  }, { once: true });
+}
+
 function _setupSite() {
   setupTheme();
   setupSidenav();
@@ -354,6 +376,7 @@ function _setupSite() {
 
   setupCopyButtons();
   setupExpandableCards();
+  setupFeedback();
 }
 
 // Run setup if DOM is loaded, otherwise do it after it has loaded.
