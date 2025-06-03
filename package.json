@@ -17,7 +17,7 @@
     "node": ">=22.11.0",
     "pnpm": ">=10.4.1"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",
     "@swc/html": "^1.11.29",
@@ -35,7 +35,7 @@
     "markdown-it-attrs": "^4.3.1",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.89.0",
+    "sass": "^1.89.1",
     "shiki": "^3.4.2",
     "tsx": "^4.19.4"
   }
