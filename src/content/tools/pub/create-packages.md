@@ -314,7 +314,7 @@ Use the following resources to learn more about packages:
   [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:
   [dart_style,]({{site.repo.dart.org}}/dart_style)
-  [path,]({{site.repo.dart.org}}/path)
+  [path,]({{site.repo.dart.org}}/core/tree/main/pkgs/path)
   [shelf,]({{site.repo.dart.org}}/shelf)
   [source_gen,]({{site.repo.dart.org}}/source_gen) and
   [test.]({{site.repo.dart.org}}/test)
