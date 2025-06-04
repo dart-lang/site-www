@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@11ty/eleventy':
-        specifier: ^3.1.0
+        specifier: ^3.1.1
         version: 3.1.1
       '@swc/html':
         specifier: ^1.11.29
@@ -57,7 +57,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       sass:
-        specifier: ^1.89.0
+        specifier: ^1.89.1
         version: 1.89.1
       shiki:
         specifier: ^3.5.0
