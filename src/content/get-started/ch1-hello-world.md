@@ -141,7 +141,7 @@ Next, modify the code that generated `Hello world: 42!`.
     Inside, you'll see the `main` function. Every Dart program starts executing from
     its `main` function.
 
-2.  Your `bin/cli.dart` should look like this:
+2.  Check to make sure that your `bin/cli.dart` looks like this:
 
     ```dart
     import 'package:cli/cli.dart' as cli;
