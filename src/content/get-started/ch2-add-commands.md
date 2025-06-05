@@ -88,7 +88,7 @@ explore the Dart syntax for it.
 
 1.  **Implement the `help` command and refine `main`:** Now, integrate the
     `help` command using an `else if` statement, and clean up the default
-    behavior to call `printUsage`.
+    behavior to call the `printUsage` function.
 
     Modify your `main` function to look like this:
 
@@ -111,12 +111,12 @@ explore the Dart syntax for it.
         provided.
     * `arguments.first` accesses the very first argument, which we're using as
         our command.
-    * Notice the `version` variable is declared as a `const`. This means its
-        value is known at compile time and you cannot change it during runtime.
-    * `arguments`, on the other hand, is a regular (non-constant) variable
-        because its content can change based on user input.
+    * `version` is declared as a `const`. This means its
+        value is known at compile time and you can't change it during runtime.
+    * `arguments` is a regular (non-constant) variable
+        because its content can change during runtime based on user input.
 
-    Test the `help` command: Run your application with the help argument:
+    Run your application with the help argument so that you can see usage information:
 
     ```bash
     dart bin/cli.dart help
@@ -143,9 +143,9 @@ Next, implement a basic `search` command that takes an article title as
 input. As you build this functionality, you'll work with `List` manipulation,
 null checks, and string interpolation.
 
-1.  **Integrate the `search` command into `main`:** First, modify your `main`
+1.  **Integrate the `search` command into `main`:** First, modify the `main`
     function in `cli/bin/cli.dart` to include an `else if` branch that handles
-    the `search` command. For now, we'll just print a placeholder message.
+    the `search` command. For now, just print a placeholder message.
 
     ```dart
     void main(List<String> arguments) {
@@ -177,7 +177,7 @@ null checks, and string interpolation.
 
 1.  **Define the `runApp` function:** The `search` command will eventually run
     the core logic of your application by calling a function called `runApp`.
-    For now, it will print the arguments passed into search. Place this new
+    For now, have `runApp` print the arguments passed into it with the `search` command. Place this new
     function below `main`.
 
     ```dart
@@ -193,11 +193,11 @@ null checks, and string interpolation.
     * The `List<String>? arguments` type signature means that the `arguments`
         list itself can be `null`. This is important for null safety in Dart.
 
-1.  **Call `runApp` from `main`:** Now, modify the `search` command block in
+1.  **Call the `runApp` function from the `main` function:** Now, modify the `search` command block in
     `main` to call `runApp` and pass it any arguments that come after the
-    `search` command itself. We use `arguments.sublist(1)` to get all
+    `search` command itself. Use `arguments.sublist(1)` to get all
     arguments starting from the second one. If no arguments are provided after
-    `search`, we'll pass `null` to `runApp`.
+    `search`, pass `null` to `runApp`.
 
     ```dart
     void main(List<String> arguments) {
@@ -215,15 +215,15 @@ null checks, and string interpolation.
     }
     ```
 
-    * **List manipulation:** `arguments.sublist(1)` creates a new list
+    * `arguments.sublist(1)` creates a new list
         containing all elements of the `arguments` list *after* the first
         element (which was `search`).
-    * **Conditional assignment to `null`:** The `arguments.length > 1 ? ... : null;`
+    * `arguments.length > 1 ? ... : null;`
         is a conditional (ternary) operator. It ensures that if no arguments
-        are provided after `search`, `inputArgs` becomes `null`, matching the
+        are provided after the `search` command, `inputArgs` becomes `null`, matching the
         sample code's behavior for `runApp`'s `arguments` parameter.
 
-1.  **Test `runApp` with arguments:** Run the application with a test article
+1.  **Test `runApp` with arguments:** Using the command line, run the application with a test article
     title:
 
     ```bash
@@ -236,7 +236,7 @@ null checks, and string interpolation.
     runApp received arguments: [Dart, Programming]
     ```
 
-    Run without extra arguments:
+    Next, run the same command without the extra arguments:
 
     ```bash
     dart bin/cli.dart search
@@ -248,9 +248,9 @@ null checks, and string interpolation.
     runApp received arguments: null
     ```
 
-1.  **Handle missing article title and user input with `stdin`:** It's more
+1.  **Handle the missing article title and user input with the `stdin` command:** It's more
     user-friendly to prompt the user if they don't provide an article title on
-    the command line. We'll use `stdin.readLineSync()` for this.
+    the command line. Use `stdin.readLineSync()` for this.
 
     First, add the necessary import at the top of your `cli/bin/cli.dart` file:
 
