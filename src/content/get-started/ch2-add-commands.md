@@ -104,8 +104,9 @@ explore the Dart syntax for it.
     }
     ```
 
-1.  **Understand the `if/else` structure and variables:** You've now built an
-    `if`, `else if`, and `else` structure for conditional execution.
+1.  **Understand the `if/else` structure and variables:** Now that
+    you've implemented control flow in the `main` function, review the
+    code that was added for it.
 
     * `arguments.isNotEmpty` checks if any command-line arguments were
         provided.
@@ -116,13 +117,12 @@ explore the Dart syntax for it.
     * `arguments` is a regular (non-constant) variable
         because its content can change during runtime based on user input.
 
-    Run your application with the help argument so that you can see usage information:
+    Run your application with the help argument. You should see the
+    usage information printed:
 
     ```bash
     dart bin/cli.dart help
     ```
-
-    You should see the usage information printed.
 
     Also, try running it without any arguments:
 
@@ -130,12 +130,9 @@ explore the Dart syntax for it.
     dart bin/cli.dart
     ```
 
-    It should now also display the usage information.
-
-    :::note
-    At this point, any command we haven't defined will also print usage
-    information. This is expected behavior for now.
-    :::
+    Notice that it continues to display usage information.
+    At this point, any command we haven't defined will also
+    print usage information. This is expected behavior for now.
 
 ### Task 2: Implement the search command
 
@@ -190,8 +187,10 @@ null checks, and string interpolation.
     // ... (your existing printUsage() function)
     ```
 
-    * The `List<String>? arguments` type signature means that the `arguments`
-        list itself can be `null`. This is important for null safety in Dart.
+    Highlights from the preceding code:
+
+    * `List<String>? arguments` means that the `arguments`
+       list itself can be `null`. This is important for null safety in Dart.
 
 1.  **Call the `runApp` function from the `main` function:** Now, modify the `search` command block in
     `main` to call `runApp` and pass it any arguments that come after the
@@ -214,6 +213,8 @@ null checks, and string interpolation.
       }
     }
     ```
+
+    Highlights from the preceding code:
 
     * `arguments.sublist(1)` creates a new list
         containing all elements of the `arguments` list *after* the first
@@ -258,16 +259,7 @@ null checks, and string interpolation.
     import 'dart:io'; // Add this line at the top
     ```
 
-    Now, update your `runApp` function. This next code block introduces a few
-    key concepts:
-    * It declares a `late String? articleTitle` variable which will hold the
-        full search query, whether it comes from the command line or user input.
-    * An `if/else` statement then checks if command-line arguments for the
-        search were provided.
-    * If arguments are missing, it prompts the user, reads input using
-        `stdin.readLineSync()`, and performs null and empty checks.
-    * If arguments *are* present, it uses `arguments.join(' ')` to combine
-        them into a single search string.
+    Now, update your `runApp` function.
 
     ```dart
     void runApp(List<String>? arguments) {
@@ -286,6 +278,20 @@ null checks, and string interpolation.
       print('Current article title: $articleTitle'); // This line will only run if arguments were provided
     }
     ```
+
+    This preceding code block introduces a few
+    key concepts:
+
+    * It declares a `late String? articleTitle` variable which will hold the
+        full search query, whether it comes from the command line or user input.
+    * An `if/else` statement then checks if command-line arguments for the
+        search were provided.
+    * If arguments are missing, it prompts the user, reads input using
+        `stdin.readLineSync()`, and performs null and empty checks.
+    * If arguments *are* present, it uses `arguments.join(' ')` to combine
+        them into a single search string.
+
+    Highlights from the preceding code:
 
     * `stdin.readLineSync()` reads a line of text typed by the user into the
       console. Its return type is `String?`.
