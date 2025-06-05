@@ -323,7 +323,6 @@ null checks, and string interpolation.
     }
     ```
 
-
 1.  **Final Test Run with both scenarios:**
 
     Run with arguments (note the quotes around the search term in the output):
