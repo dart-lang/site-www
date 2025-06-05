@@ -47,7 +47,8 @@ functionality and exploring Dart syntax.
     const version = '0.0.1'; // Add this line
     ```
 
-    Next, modify your `main` function to check for the `version` argument:
+    Next, modify your `main` function to check for the `version` argument. The
+    value of a const variable can never be changed after it's been set:
 
     ```dart
     void main(List<String> arguments) {
@@ -59,7 +60,7 @@ functionality and exploring Dart syntax.
     }
     ```
 
-2.  **Test the `version` command:** Run your application with the version
+1.  **Test the `version` command:** Run your application with the version
     argument:
 
     ```bash
@@ -74,7 +75,7 @@ functionality and exploring Dart syntax.
 
     If you run your app without arguments, you'll still see "Hello, Dart!".
 
-3.  **Add a `printUsage` function:** To make the output more user-friendly,
+1.  **Add a `printUsage` function:** To make the output more user-friendly,
     create a separate function to display usage information. Place this function
     outside and below your `main` function.
 
@@ -86,7 +87,7 @@ functionality and exploring Dart syntax.
     }
     ```
 
-4.  **Implement the `help` command and refine `main`:** Now, integrate the
+1.  **Implement the `help` command and refine `main`:** Now, integrate the
     `help` command using an `else if` statement, and clean up the default
     behavior to call `printUsage`.
 
@@ -104,7 +105,7 @@ functionality and exploring Dart syntax.
     }
     ```
 
-5.  **Understand the `if/else` structure and variables:** You've now built an
+1.  **Understand the `if/else` structure and variables:** You've now built an
     `if`, `else if`, and `else` structure for conditional execution.
 
     * `arguments.isNotEmpty` checks if any command-line arguments were
@@ -133,8 +134,8 @@ functionality and exploring Dart syntax.
     It should now also display the usage information.
 
     :::note
-    Any command-line argument that is not `version` or `help` will currently
-    also print the usage information. This is expected behavior for now.
+    At this point, any command we haven't defined will also print usage
+    information. This is expected behavior for now.
     :::
 
 ### Task 2: Implement the search command
@@ -162,7 +163,7 @@ null checks, and string interpolation.
     }
     ```
 
-2.  **Test the new command:** Run your application with the `search`
+1.  **Test the new command:** Run your application with the `search`
     command:
 
     ```bash
@@ -175,10 +176,10 @@ null checks, and string interpolation.
     Search command recognized!
     ```
 
-3.  **Define the `runApp` function:** Your `search` command will eventually run
-    the core logic of our application. Next, create a new function called
-    `runApp` that will house this logic. Initially, `runApp` will just take a
-    list of arguments and print them. Place this new function below `main`.
+1.  **Define the `runApp` function:** The `search` command will eventually run
+    the core logic of your application by calling a function called `runApp`.
+    For now, it will print the arguments passed into search. Place this new
+    function below `main`.
 
     ```dart
     // ... (your existing main function)
@@ -193,7 +194,7 @@ null checks, and string interpolation.
     * The `List<String>? arguments` type signature means that the `arguments`
         list itself can be `null`. This is important for null safety in Dart.
 
-4.  **Call `runApp` from `main`:** Now, modify the `search` command block in
+1.  **Call `runApp` from `main`:** Now, modify the `search` command block in
     `main` to call `runApp` and pass it any arguments that come after the
     `search` command itself. We use `arguments.sublist(1)` to get all
     arguments starting from the second one. If no arguments are provided after
@@ -223,7 +224,7 @@ null checks, and string interpolation.
         are provided after `search`, `inputArgs` becomes `null`, matching the
         sample code's behavior for `runApp`'s `arguments` parameter.
 
-5.  **Test `runApp` with arguments:** Run the application with a test article
+1.  **Test `runApp` with arguments:** Run the application with a test article
     title:
 
     ```bash
@@ -248,7 +249,7 @@ null checks, and string interpolation.
     runApp received arguments: null
     ```
 
-6.  **Handle missing article title and user input with `stdin`:** It's more
+1.  **Handle missing article title and user input with `stdin`:** It's more
     user-friendly to prompt the user if they don't provide an article title on
     the command line. We'll use `stdin.readLineSync()` for this.
 
@@ -298,31 +299,7 @@ null checks, and string interpolation.
         `"Dart Programming"`. This is crucial for treating multi-word
         command-line inputs as a single search phrase.
 
-7.  **Introduce `for-in` loops (separate demonstration):** While the `search`
-    command itself will operate on a single combined phrase, understanding how
-    to iterate over collections is fundamental. Here's a quick example of a
-    `for-in` loop:
-
-    ```dart
-    // Example: Iterating over a list of strings
-    void demonstrateForInLoop() {
-      List<String> planets = ['Mercury', 'Venus', 'Earth', 'Mars'];
-      print('\n--- Demonstrating for-in loop ---');
-      for (var planet in planets) {
-        print('Found: $planet');
-      }
-      print('--- End of for-in loop demonstration ---\n');
-    }
-    ```
-
-    * **`for-in` loop:** The `for (var item in collection)` syntax provides a
-        concise way to iterate through each element in a collection like a
-        `List`. On each iteration, the `item` variable takes on the value of the
-        current element. You can place this function anywhere outside `main` or
-        `runApp`. You don't need to call it from anywhere for now; it's just to
-        show the syntax.
-
-8.  **Finalize `runApp` with single article simulation:** Now, let's complete
+2.  **Finalize `runApp` with single article simulation:** Now, let's complete
     the `runApp` function to print the simulation messages. Note that these
     messages will only appear if command-line arguments were provided (as
     `runApp` returns early for `stdin` input).
@@ -347,7 +324,7 @@ null checks, and string interpolation.
     ```
 
 
-9.  **Final Test Run with both scenarios:**
+1.  **Final Test Run with both scenarios:**
 
     Run with arguments (note the quotes around the search term in the output):
 
@@ -407,13 +384,7 @@ In this chapter, you learned:
 * C) `const`
 * D) `static`
 
-**Question 2:** How do you check if a list named `myList` is empty in Dart?
-* A) `myList.length == 0`
-* B) `myList.isEmpty`
-* C) `myList.size() == 0`
-* D) Both A and B
-
-**Question 3:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
+**Question 2:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
 * A) To print output to the console.
 * B) To read a single line of text input from the user.
 * C) To execute a command.
