@@ -21,8 +21,9 @@ moves fast!
 
 Before you begin this chapter, ensure you have:
 
-* Installed the Dart SDK.
-* Reviewed the Dart overview page (if you're new to Dart).
+* [Installed the Dart SDK](https://dart.dev/tools/sdk).
+* Reviewed the [Dart overview page](https://dart.dev/overview) (if you're new
+  to Dart).
 
 ## Task 1: Confirm your Dart setup
 
