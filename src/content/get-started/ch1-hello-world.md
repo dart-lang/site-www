@@ -29,7 +29,7 @@ Before you begin this chapter, ensure you have:
 
 First, make sure Dart is ready to go on your system by following these steps.
 
-1.  Open your terminal (or command prompt).
+1.  Open a terminal (or command prompt).
 
 2.  Run the following command to check your Dart SDK version:
 
@@ -37,7 +37,8 @@ First, make sure Dart is ready to go on your system by following these steps.
     dart --version
     ```
 
-3.  You should see output similar to this (the version numbers might be different):
+3.  Make sure that you see output similar to this (the version numbers might be
+    different):
 
     ```bash
     Dart SDK version: 3.8.0 (stable) (None) on "linux_x64"
@@ -50,7 +51,8 @@ First, make sure Dart is ready to go on your system by following these steps.
 
 Now, create your first Dart command-line application.
 
-1.  In your terminal, create a new directory called "dartpedia" to hold your project. Then switch into that directory.
+1.  In the same terminal, create a new directory called "dartpedia" to hold your
+    project. Then switch into that directory.
 
     ```bash
     mkdir dartpedia
@@ -103,7 +105,7 @@ Now, create your first Dart command-line application.
 
 Next, run your program to test it out.
 
-1.  Navigate into your new project directory:
+1.  In the terminal, navigate into your new project directory:
 
     ```bash
     cd cli
@@ -131,7 +133,7 @@ Next, run your program to test it out.
 
 Next, modify the code that generated `Hello world: 42!`.
 
-1.  Open the `bin/cli.dart` file in your editor.
+1.  In a code editor, open the `bin/cli.dart` file.
 
     The `bin/` directory is where your executable code lives. `cli.dart` is the
     entry point of your application.
@@ -162,18 +164,18 @@ Next, modify the code that generated `Hello world: 42!`.
     ```
 
     :::note
-    For now, comment out the `import 'package:cli/cli.dart'` line to avoid
-    an unused import warning. You will learn about this and fully remove the line
-    later.
+    You commented out the `import 'package:cli/cli.dart'` line to avoid an
+    unused import warning. You will learn about this soon and then fully remove
+    the line later.
     :::
 
-4.  Save your file and run your program again:
+4.  In the terminal, save your file and run your program again:
 
     ```bash
     dart run
     ```
 
-5.  You should now see:
+5.  Check to make sure that you see the following:
 
     ```bash
     Building package executable... 
