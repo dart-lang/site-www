@@ -5,19 +5,18 @@ description: Add simple commands to your cli program. Learn the fundamentals of 
 
 In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
 to read user input, print usage information, and create a basic command-line
-interaction. By the end, you'll have a foundational understanding of Dart
-syntax.
+interaction.
 
 :::secondary What you'll learn
 
-* Implement basic control flow with `if/else`.
+* Implement basic control flow with `if/else` statements.
 * Work with collections, specifically `List`s, and perform common operations
   like checking if a list is empty.
 * Declare and use variables with `const` and `late String?`.
 * Handle nullability with null checks.
 * Define and call functions.
 * Use string interpolation for dynamic text.
-* Read user input from the command line using `stdin`.
+* Read user input from the command line using the `stdin` command.
 
 :::
 
@@ -31,8 +30,8 @@ Before you begin this chapter, ensure you have:
 
 ## Tasks
 
-Start building your **Dartpedia** command-line application by adding some basic
-functionality and exploring Dart syntax.
+Add some basic functionality to your **Dartpedia** command-line application and then
+explore the Dart syntax for it.
 
 ### Task 1: Implement version and help commands
 
@@ -41,14 +40,14 @@ functionality and exploring Dart syntax.
     argument provided is `version`. You'll also need a `version` constant.
 
     First, above your `main` function, declare a `const` variable for the
-    version:
+    version. The value of a `const` variable can never be changed after it's
+    been set:
 
     ```dart
     const version = '0.0.1'; // Add this line
     ```
 
-    Next, modify your `main` function to check for the `version` argument. The
-    value of a const variable can never be changed after it's been set:
+    Next, modify your `main` function to check for the `version` argument:
 
     ```dart
     void main(List<String> arguments) {
@@ -288,21 +287,23 @@ null checks, and string interpolation.
     }
     ```
 
-    * `stdin.readLineSync()`: This function reads a line of text typed by the
-        user into the console. Its return type is `String?`.
-    * The `if (inputFromStdin == null || inputFromStdin.isEmpty)` performs a
-        null check and an empty string check. If either is true, the program
-        prints a message and `return`s, exiting the function.
-    * `arguments.join(' ')`: This `List` method concatenates all elements of
-        the `arguments` list into a single string, using a space as the
-        separator. For example, `['Dart', 'Programming']` becomes
-        `"Dart Programming"`. This is crucial for treating multi-word
-        command-line inputs as a single search phrase.
+    * `stdin.readLineSync()` reads a line of text typed by the user into the
+      console. Its return type is `String?`.
+    * `if (inputFromStdin == null || inputFromStdin.isEmpty)` performs a
+      null check and an empty string check. If either is true, the program
+      prints a message and `return`s, exiting the function.
+    * `arguments.join(' ')`: concatenates all elements of the `arguments` list
+      into a single string, using a space as the separator. For example,
+      `['Dart', 'Programming']` becomes `"Dart Programming"`. This is crucial
+      for treating multi-word command-line inputs as a single search phrase.
 
-2.  **Finalize `runApp` with single article simulation:** Now, let's complete
-    the `runApp` function to print the simulation messages. Note that these
-    messages will only appear if command-line arguments were provided (as
-    `runApp` returns early for `stdin` input).
+2.  **Finish `runApp` to print mock search results:** Update `runApp` to display
+    messages that look like our program found something. This helps us see what
+    our finished program will do without actually building everything right now.
+    You'll only see these messages if you include a search query when you run
+    the program.
+    
+    For example: `dart bin/cli.dart search Dart Programming`.
 
     ```dart
     void runApp(List<String>? arguments) {
@@ -323,9 +324,10 @@ null checks, and string interpolation.
     }
     ```
 
-1.  **Final Test Run with both scenarios:**
+3.  **Final Test Run with both scenarios:**
 
-    Run with arguments (note the quotes around the search term in the output):
+    Now that the article simulation is set up, test the `runApp` function in a
+    few different ways:
 
     ```bash
     dart bin/cli.dart search Dart Programming
