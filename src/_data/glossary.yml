@@ -732,13 +732,20 @@
     A zone is an execution context that allows you to run code with
     customized behavior for asynchronous events such as timers,
     microtasks, and uncaught errors.
+    
+    Zones are useful for:
+    - Logging
+    - Error tracking
+    - Maintaining request-specific state across async gaps (e.g., in server apps)
+    - Testing and debugging async behavior
 
     Zones provide a way to track and influence asynchronous execution 
     without requiring the async code to be aware of it.
 
-    You can create a new zone using `runZoned` (or `runZonedGuarded`)
-    and override zone-specific features like error handling, timers, and print.
-
+    You can create a new zone using runZoned (or runZonedGuarded) 
+    and override zone-specific behavior such as error handling and timers.
+    Even print can be overridden, although it’s not asynchronous — it’s included for convenience.
+    
     Example:
     ```dart
     import 'dart:async';
@@ -757,11 +764,6 @@
     In this example, the uncaught error inside the async callback
     is intercepted by the custom zone.
 
-    Zones are useful for:
-    - Logging
-    - Error tracking
-    - Maintaining request-specific state across async gaps (e.g., in server apps)
-    - Testing and debugging async behavior
 
   related_links:
     - text: "Zones API documentation"
