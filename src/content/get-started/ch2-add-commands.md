@@ -10,7 +10,7 @@ interaction.
 :::secondary What you'll learn
 
 * Implement basic control flow with `if/else` statements.
-* Work with collections, specifically `List`s, and perform common operations
+* Work with collections, specifically `List` objects, and perform common operations
   like checking if a list is empty.
 * Declare and use variables with `const` and `late String?`.
 * Handle nullability with null checks.
@@ -36,7 +36,8 @@ explore the Dart syntax for it.
 ### Task 1: Implement version and help commands
 
 1.  **Implement the `version` command in `cli/bin/cli.dart`:** Add logic to
-    handle a `version` command. Use an `if` statement to check if the first
+    handle a `version` command, which prints the current version of the CLI.
+    Use an `if` statement to check if the first
     argument provided is `version`. You'll also need a `version` constant.
 
     First, above your `main` function, declare a `const` variable for the
@@ -51,10 +52,10 @@ explore the Dart syntax for it.
 
     ```dart
     void main(List<String> arguments) {
-      if (arguments.isNotEmpty && arguments.first == 'version') {
+      if (arguments.isEmpty) {
+        print('Hello, Dart!');
+      } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
-      } else {
-        print('Hello, Dart!'); // Keep this for now, we'll refine it.
       }
     }
     ```
@@ -81,12 +82,14 @@ explore the Dart syntax for it.
     ```dart
     void printUsage() { // Add this new function
       print(
-        "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'" // Changed to 'search'
+        "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'"
       );
     }
     ```
 
-1.  **Implement the `help` command and refine `main`:** Now, integrate the
+    `search` is the command that will eventually search from Wikipedia.
+
+2.  **Implement the `help` command and refine `main`:** Now, integrate the
     `help` command using an `else if` statement, and clean up the default
     behavior to call the `printUsage` function.
 
@@ -94,17 +97,17 @@ explore the Dart syntax for it.
 
     ```dart
     void main(List<String> arguments) {
-      if (arguments.isNotEmpty && arguments.first == 'version') {
-        print('Dartpedia CLI version $version');
-      } else if (arguments.isNotEmpty && arguments.first == 'help') {
-        printUsage();
-      } else {
+      if (arguments.isEmpty || arguments.first == 'help') {
         printUsage(); // Change this from 'Hello, Dart!'
+      } else if (arguments.first == 'version') {
+        print('Dartpedia CLI version $version');
+      } else {
+        printUsage(); // Catch all for any unrecognized command.
       }
     }
     ```
 
-1.  **Understand the `if/else` structure and variables:** Now that
+3.  **Understand the `if/else` structure and variables:** Now that
     you've implemented control flow in the `main` function, review the
     code that was added for it.
 
@@ -146,11 +149,11 @@ null checks, and string interpolation.
 
     ```dart
     void main(List<String> arguments) {
-      if (arguments.isNotEmpty && arguments.first == 'version') {
+      if (arguments.isEmpty || arguments.first == 'help') {
+        printUsage(); 
+      } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
-      } else if (arguments.isNotEmpty && arguments.first == 'help') {
-        printUsage();
-      } else if (arguments.isNotEmpty && arguments.first == 'search') {
+      } else if (arguments.first == 'search') {
         // Add this new block:
         print('Search command recognized!');
       } else {
@@ -172,16 +175,17 @@ null checks, and string interpolation.
     Search command recognized!
     ```
 
-1.  **Define the `runApp` function:** The `search` command will eventually run
-    the core logic of your application by calling a function called `runApp`.
-    For now, have `runApp` print the arguments passed into it with the `search` command. Place this new
-    function below `main`.
+1.  **Define the `searchWikipedia` function:** The `search` command
+    will eventually run the core logic of your application by calling
+    a function called `searchWikipedia`. For now, have
+    `searchWikipedia` print the arguments passed into it with the
+    `search` command. Place this new function below `main`.
 
     ```dart
     // ... (your existing main function)
 
-    void runApp(List<String>? arguments) { // Add this new function and add ? to arguments type
-      print('runApp received arguments: $arguments');
+    void searchWikipedia(List<String>? arguments) { // Add this new function and add ? to arguments type
+      print('searchWikipedia received arguments: $arguments');
     }
 
     // ... (your existing printUsage() function)
@@ -189,25 +193,39 @@ null checks, and string interpolation.
 
     Highlights from the preceding code:
 
-    * `List<String>? arguments` means that the `arguments`
-       list itself can be `null`. This is important for null safety in Dart.
+    * `List<String>? arguments` means that the `arguments` list itself
+       can be `null`. 
+       
+       ::: note Null safety
+       Dart enforces [sound null safety][], which means you
+       have to explicity state when a variable can be null. Any
+       variable that isn't marked as nullable is *guarateed* to never
+       be null, even in production. The purpose of null-safety isn't
+       to stop you from ever using null in your code, because
+       representing the absense of a value can be valuable. Rather,
+       it's to force you to consider nullability and therefor be more
+       careful about it. Along with the analyzer, this helps prevent
+       one of the most common runtime crashes in programming:
+       null-pointer errors.
+       ::: 
 
-1.  **Call the `runApp` function from the `main` function:** Now, modify the `search` command block in
-    `main` to call `runApp` and pass it any arguments that come after the
+2.  **Call the `searchWikipedia` function from the `main` function:**
+    Now, modify the `search` command block in `main` to call
+    `searchWikipedia` and pass it any arguments that come after the
     `search` command itself. Use `arguments.sublist(1)` to get all
-    arguments starting from the second one. If no arguments are provided after
-    `search`, pass `null` to `runApp`.
+    arguments starting from the second one. If no arguments are
+    provided after `search`, pass `null` to `searchWikipedia`.
 
     ```dart
     void main(List<String> arguments) {
-      if (arguments.isNotEmpty && arguments.first == 'version') {
+      if (arguments.isEmpty || arguments.first == 'help') {
+        printUsage(); 
+      } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
-      } else if (arguments.isNotEmpty && arguments.first == 'help') {
-        printUsage();
-      } else if (arguments.isNotEmpty && arguments.first == 'search') { // Changed to 'search'
-        // Modify this block:
+      } else if (arguments.first == 'search') {
+        // Add this new block:
         final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-        runApp(inputArgs);
+        searchWikipedia(inputArgs);
       } else {
         printUsage();
       }
@@ -222,9 +240,9 @@ null checks, and string interpolation.
     * `arguments.length > 1 ? ... : null;`
         is a conditional (ternary) operator. It ensures that if no arguments
         are provided after the `search` command, `inputArgs` becomes `null`, matching the
-        sample code's behavior for `runApp`'s `arguments` parameter.
+        sample code's behavior for `searchWikipedia`'s `arguments` parameter of `List<String>?`.
 
-1.  **Test `runApp` with arguments:** Using the command line, run the application with a test article
+3.  **Test `searchWikipedia` with arguments:** Using the command line, run the application with a test article
     title:
 
     ```bash
@@ -234,7 +252,7 @@ null checks, and string interpolation.
     You should see:
 
     ```bash
-    runApp received arguments: [Dart, Programming]
+    searchWikipedia received arguments: [Dart, Programming]
     ```
 
     Next, run the same command without the extra arguments:
@@ -246,10 +264,10 @@ null checks, and string interpolation.
     You should see:
 
     ```bash
-    runApp received arguments: null
+    searchWikipedia received arguments: null
     ```
 
-1.  **Handle the missing article title and user input with the `stdin` command:** It's more
+4.  **Handle the missing article title and user input with the `stdin` command:** It's more
     user-friendly to prompt the user if they don't provide an article title on
     the command line. Use `stdin.readLineSync()` for this.
 
@@ -259,31 +277,37 @@ null checks, and string interpolation.
     import 'dart:io'; // Add this line at the top
     ```
 
-    Now, update your `runApp` function.
+    `dart:io` is core library in the Dart SDK, and provides APIs to
+    deal with files, directories, sockets, and
+    HTTP clients and servers, and more. 
+
+    Now, update your `searchWikipedia` function.
 
     ```dart
-    void runApp(List<String>? arguments) {
-      late String? articleTitle; // Declare articleTitle as late nullable
+    void searchWikipedia(List<String>? arguments) {
+      late String articleTitle;
 
+      // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync(); // Read input from user
-        return; // Exit the function immediately after reading input from stdin
+        articleTitle = stdin.readLineSync(); // Await input from the user
       } else {
-        // We'll handle command-line arguments and their simulation here later.
-        articleTitle = arguments.join(' '); // Join arguments into a single string
+        // Otherwise, join the arguments into the CLI into a single string
+        articleTitle = arguments.join(' ');
       }
 
-      // We'll add the "Looking up..." and final simulation here later.
-      print('Current article title: $articleTitle'); // This line will only run if arguments were provided
+      print('Current article title: $articleTitle');
     }
     ```
 
     This preceding code block introduces a few
     key concepts:
 
-    * It declares a `late String? articleTitle` variable which will hold the
-        full search query, whether it comes from the command line or user input.
+    * It declares a `late String? articleTitle` variable which will
+        hold the full search query, whether it comes from the command
+        line or user input. `late` is a keyword that tells the
+        analyzer that you, the programmer, promise that this variable
+        won't be null by the time it's used.
     * An `if/else` statement then checks if command-line arguments for the
         search were provided.
     * If arguments are missing, it prompts the user, reads input using
@@ -303,7 +327,7 @@ null checks, and string interpolation.
       `['Dart', 'Programming']` becomes `"Dart Programming"`. This is crucial
       for treating multi-word command-line inputs as a single search phrase.
 
-2.  **Finish `runApp` to print mock search results:** Update `runApp` to display
+5.  **Finish `searchWikipedia` to print mock search results:** Update `searchWikipedia` to display
     messages that look like our program found something. This helps us see what
     our finished program will do without actually building everything right now.
     You'll only see these messages if you include a search query when you run
@@ -312,7 +336,7 @@ null checks, and string interpolation.
     For example: `dart bin/cli.dart search Dart Programming`.
 
     ```dart
-    void runApp(List<String>? arguments) {
+    void searchWikipedia(List<String>? arguments) {
       late String? articleTitle;
 
       if (arguments == null || arguments.isEmpty) {
@@ -323,16 +347,15 @@ null checks, and string interpolation.
         articleTitle = arguments.join(' ');
       }
 
-      // This section runs only if arguments were originally provided (not from stdin)
-      print('Looking up articles about "$articleTitle". Please wait.'); // Using string interpolation
+      print('Looking up articles about "$articleTitle". Please wait.');
       print('Here ya go!');
-      print('(Pretend this is an article about "$articleTitle")'); // Simulates finding the combined article
+      print('(Pretend this is an article about "$articleTitle")');
     }
     ```
 
-3.  **Final Test Run with both scenarios:**
+6.  **Final Test Run with both scenarios:**
 
-    Now that the article simulation is set up, test the `runApp` function in a
+    Now that the article simulation is set up, test the `searchWikipedia` function in a
     few different ways:
 
     ```bash
@@ -357,16 +380,10 @@ null checks, and string interpolation.
     Please provide an article title.
     Flutter Framework
     ```
-    
-    :::note
-    The program will exit after you type "Flutter Framework" because `runApp`
-    returns immediately after `stdin` input as per the sample code's behavior.
-
-    :::
 
     You have now successfully built the basic `search` command with user input
     handling, correctly treating multi-word command-line inputs as a single
-    search phrase in the output, and learned about `for-in` loops.
+    search phrase in the output.
 
 ## Review
 
@@ -377,7 +394,6 @@ In this chapter, you learned:
 * **Variables and Constants:** Declaring variables with `var`, `const`, and `late String?`.
 * **Lists:** Creating and manipulating lists using `.isNotEmpty`, `.first`,
     `.sublist`, and `.join()`.
-* **Loops:** Iterating over collections using `for-in` loops.
 * **Null Safety:** Understanding nullability (`?`) and using null checks.
 * **Functions:** Defining and calling functions.
 * **String interpolation:** Embedding variables in strings using `$`.
@@ -402,3 +418,5 @@ In this chapter, you learned:
 In the next chapter, you'll dive into asynchronous programming and learn how to
 fetch data from the Wikipedia API using the `http` package. This will allow your
 application to retrieve real data and display it to the user.
+
+[sound null safety]: https://dart.dev/null-safety
