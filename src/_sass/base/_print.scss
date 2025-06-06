@@ -1,9 +1,7 @@
-@use 'variables' as *;
-
 @media print {
   // Don't display navigation aids when printing.
   #site-header, #sidenav, #prev-next, #page-footer, .banner,
-  #site-toc--inline, #site-toc--side, #page-github-links, #cookie-notice {
+  #site-toc--inline, #site-toc--side, #trailing-content, #cookie-notice {
     display: none !important;
   }
 
@@ -26,6 +24,6 @@
 
   // Show borders around notes and code blocks.
   .alert, pre {
-    border: 1px solid $dash-dark-black;
+    border: 1px solid var(--site-base-fgColor-lighter);
   }
 }

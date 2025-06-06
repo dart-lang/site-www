@@ -1,0 +1,11 @@
+body.tutorial {
+  &:not(.open_menu) {
+    #sidenav {
+      display: none;
+    }
+  }
+
+  #site-banner {
+    display: none;
+  }
+}

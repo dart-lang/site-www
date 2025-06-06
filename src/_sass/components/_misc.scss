@@ -1,5 +1,3 @@
-@use '../base/variables' as *;
-
 #skip-to-main {
   position: absolute;
   top: 0.75rem;
@@ -117,7 +115,7 @@
 
 // Used for lightening entries on the SDK archive.
 .muted {
-  color: $site-color-light-grey;
+  color: var(--site-base-fgColor-alt);
 }
 
 // Elements on the archive for each channel.
@@ -135,18 +133,10 @@
   }
 }
 
-#page-github-links {
-  font-style: italic;
-  font-size: 0.75rem;
-  padding-top: 0.25rem;
-
-  border-top: 0.05rem solid $site-color-light-grey;
-}
-
 body.obsolete {
   #site-header {
     .alert {
-      background-color: $alert-warning-bg;
+      background-color: #fcf8e3;
 
       padding: 0.5rem;
       margin: 0;

@@ -42,6 +42,34 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.8
+_Released 20 May 2025_
+| [Dart 3.8 announcement](https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47)
+
+The following language features have been added to Dart 3.8:
+
+*   [Null-aware elements][]: A null-aware element evaluates
+    an expression in a collection literal and if the result
+    is not `null`, inserts the value into the surrounding
+    collection.
+
+The following supporting features have been updated:
+
+*   [Dart format][]: Dart 3.8's formatter builds on the
+    previous release's rewrite, incorporating feedback,
+    bug fixes, and further enhancements. It now
+    intelligently automates trailing comma placement,
+    deciding whether to split constructs rather than forcing
+    them. The update also includes style changes to tighten
+    and improve code output.
+    
+For more information about these and additional changes, see
+the [Dart 3.8 changelog][].
+
+[Null-aware elements]: /language/collections#null-aware-element
+[Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+
 ### Dart 3.7
 _Released 12 February 2025_
 | [Dart 3.7 announcement](https://medium.com/dartlang/announcing-dart-3-7-bf864a1b195c)

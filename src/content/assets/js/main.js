@@ -1,3 +1,110 @@
+const _prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+function setupTheme() {
+  const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
+  if (storedTheme === 'auto-mode') {
+    document.body.classList.add(
+        'auto-mode',
+        _prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
+    );
+  } else {
+    document.body.classList.add(storedTheme);
+  }
+
+  const themeMenu = document.getElementById('theme-menu');
+  if (themeMenu) {
+    const themeButtons = themeMenu.querySelectorAll('button');
+
+    function updateButtonSelectedState() {
+      const theme =
+          document.body.classList.contains('auto-mode') ? 'auto' :
+              document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+
+      themeButtons.forEach((button) => {
+        button.ariaSelected = button.dataset.theme === theme ? 'true' : 'false';
+      });
+    }
+
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', (_) => {
+        const newMode = `${button.dataset.theme}-mode`;
+
+        document.body.classList.remove('auto-mode', 'dark-mode', 'light-mode');
+        document.body.classList.add(newMode);
+
+        window.localStorage.setItem('theme', newMode);
+        _switchToPreferenceIfAuto();
+
+        updateButtonSelectedState();
+      });
+    });
+
+    updateButtonSelectedState();
+  }
+
+  _prefersDarkMode.addEventListener('change', _switchToPreferenceIfAuto);
+}
+
+function _switchToPreferenceIfAuto() {
+  if (document.body.classList.contains('auto-mode')) {
+    if (_prefersDarkMode.matches) {
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
+    }
+  }
+}
+
+function setupThemeSwitcher() {
+  const themeSwitcher = document.getElementById('theme-switcher');
+  if (!themeSwitcher) {
+    return;
+  }
+
+  const themeSwitcherButton = themeSwitcher.querySelector('.dropdown-button');
+  const themeSwitcherMenu = themeSwitcher.querySelector('#theme-menu');
+  if (!themeSwitcherButton || !themeSwitcherMenu) {
+    return;
+  }
+
+  function _closeMenusAndToggle() {
+    themeSwitcherMenu.classList.remove('show');
+    themeSwitcherButton.ariaExpanded = 'false';
+  }
+
+  themeSwitcherButton.addEventListener('click', (_) => {
+    if (themeSwitcherMenu.classList.contains('show')) {
+      _closeMenusAndToggle();
+    } else {
+      themeSwitcherMenu.classList.add('show');
+      themeSwitcherButton.ariaExpanded = 'true';
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    // If pressing the `esc` key in the menu area, close the menu.
+    if (event.key === 'Escape' && event.target.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  });
+
+  themeSwitcher.addEventListener('focusout', (e) => {
+    // If focus leaves the theme-switcher, hide the menu.
+    if (e.relatedTarget && !e.relatedTarget.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    // If not clicking inside the theme switcher, close the menu.
+    if (!event.target.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  })
+}
+
 function handleSearchShortcut(event) {
   const activeElement = document.activeElement;
   if (activeElement instanceof HTMLInputElement ||
@@ -188,10 +295,34 @@ function setupExpandableCards() {
   });
 }
 
+function setupFeedback() {
+  const feedbackContainer =
+      document.getElementById('page-feedback');
+  if (!feedbackContainer) return;
+
+  const feedbackUpButton = feedbackContainer.querySelector('#feedback-up-button');
+  const feedbackDownButton = feedbackContainer.querySelector('#feedback-down-button');
+  if (!feedbackUpButton || !feedbackDownButton) return;
+
+  feedbackUpButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'up'});
+
+    feedbackContainer.classList.add('feedback-up');
+  }, { once: true });
+
+  feedbackDownButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'down'});
+
+    feedbackContainer.classList.add('feedback-down');
+  }, { once: true });
+}
+
 function _setupSite() {
+  setupTheme();
   setupSidenav();
-  setupOsTabs();
   initCookieNotice();
+  setupTabs();
+  setupThemeSwitcher();
 
   // Set up collapse and expand for sidenav buttons.
   const toggles = document.querySelectorAll('.nav-link.collapsible');
@@ -245,6 +376,7 @@ function _setupSite() {
 
   setupCopyButtons();
   setupExpandableCards();
+  setupFeedback();
 }
 
 // Run setup if DOM is loaded, otherwise do it after it has loaded.
