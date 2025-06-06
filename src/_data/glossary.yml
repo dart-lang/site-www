@@ -273,7 +273,7 @@
     In Dart, `late` is used when a variable is guaranteed to be initialized 
     before it's accessed but cannot be initialized at the point of declaration.
   long_description: |-
-    The `late` keyword in Dart is used to indicate that a non-nullable variable 
+    The `late` keyword in Dart is used to indicate that a variable 
     will be initialized later, after its declaration, but before it's used. 
     This helps avoid the need to make a variable nullable (`?`) when you know 
     it will definitely receive a value, just not immediately.
