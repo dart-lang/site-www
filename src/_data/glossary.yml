@@ -268,7 +268,7 @@
 - term: "Late"
   id: "late"
   short_description: |-
-    A keyword that enables deferred initialization of non-nullable variables.
+    A keyword that enables deferred initialization of variables, typically used with non-nullable variabels.
 
     In Dart, `late` is used when a variable is guaranteed to be initialized 
     before it's accessed, but cannot be initialized at the point of declaration.
