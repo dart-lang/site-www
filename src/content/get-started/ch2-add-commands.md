@@ -194,7 +194,10 @@ null checks, and string interpolation.
     Highlights from the preceding code:
 
     * `List<String>? arguments` means that the `arguments` list itself
-       can be `null`. Dart enforces sound null safety, which means you
+       can be `null`. 
+       
+       ::: note Null safety
+       Dart enforces [sound null safety][], which means you
        have to explicity state when a variable can be null. Any
        variable that isn't marked as nullable is *guarateed* to never
        be null, even in production. The purpose of null-safety isn't
@@ -204,12 +207,14 @@ null checks, and string interpolation.
        careful about it. Along with the analyzer, this helps prevent
        one of the most common runtime crashes in programming:
        null-pointer errors.
+       ::: 
 
-2.  **Call the `searchWikipedia` function from the `main` function:** Now, modify the `search` command block in
-    `main` to call `searchWikipedia` and pass it any arguments that come after the
+2.  **Call the `searchWikipedia` function from the `main` function:**
+    Now, modify the `search` command block in `main` to call
+    `searchWikipedia` and pass it any arguments that come after the
     `search` command itself. Use `arguments.sublist(1)` to get all
-    arguments starting from the second one. If no arguments are provided after
-    `search`, pass `null` to `searchWikipedia`.
+    arguments starting from the second one. If no arguments are
+    provided after `search`, pass `null` to `searchWikipedia`.
 
     ```dart
     void main(List<String> arguments) {
@@ -420,3 +425,5 @@ In this chapter, you learned:
 In the next chapter, you'll dive into asynchronous programming and learn how to
 fetch data from the Wikipedia API using the `http` package. This will allow your
 application to retrieve real data and display it to the user.
+
+[sound null safety]: https://dart.dev/null-safety
