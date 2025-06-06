@@ -290,23 +290,28 @@
     }
     ```
 
-    If you try to read a `late` variable before it's initialized, Dart throws a 
-    `LateInitializationError`.
-
-    You can also use `late final` when the variable should only be set once. 
-    This is common in dependency injection scenarios.
+    Be careful with late variables that are part of a public API. 
+    If a client accesses the variable before it’s initialized, they will encounter a LateInitializationError, which provides little context.
+    In such cases, consider using a private nullable variable with a public getter that throws a descriptive error (e.g., StateError) if accessed too early — this can offer clearer feedback to API users, despite the added complexity.
+    
+    
+    You can also use late final when the variable should only be set once. 
+    This is useful in scenarios where the value is not available at object construction time, such as
+    cyclic dependencies in object graphs.
 
     Example:
     ```dart
-    class MyService {
-      late final Logger logger;
-
-      MyService(this.logger);
+    class LinkedQueue<T> {
+      late final QueueLink<T> _head;
+      
+      LinkedQueue() {
+        _head = QueueLink<T>._head(owner: this); // Cyclic reference between objects
+      }
     }
     ```
+    Be cautious: if a late variable is accessed before it’s initialized  or never initialized at all ,
+    it will cause a runtime error.
 
-    Be cautious: if the `late` variable is never initialized, it will cause a 
-    runtime error when accessed.
   related_links:
     - text: "Null safety in Dart"
       link: "/null-safety"
