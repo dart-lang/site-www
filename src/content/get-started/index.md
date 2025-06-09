@@ -5,23 +5,11 @@ breadcrumb: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
 nextpage:
-  url: /get-started/first-program
+  url: /get-started/hello-world
   title: Build your first app
 ---
 
-:::warning Work in progress
-**These getting-started documents are in progress.**
-They shouldn't be considered a reliable source of information or
-a representation of their final state.
-
-If you are looking to learn Dart,
-check out the [Dart language documentation][], [Dart API docs][], or
-try out one of the topic-specific [Dart tutorials][].
-
-[Dart language documentation]: /language
-[Dart API docs]: {{site.dart-api}}
-[Dart tutorials]: /tutorials
-:::
+{% include 'fwe-wip-warning.md' %}
 
 ## Set up Dart {: #set-up }
 
@@ -34,5 +22,5 @@ follow the instructions on how to [Get the Dart SDK][].
 
 ## In progress lessons {: #lessons }
 
-1. [Build your first app](/get-started)
+1. [Build your first app](/get-started/hello-world)
 2. [Add interactivity to your app](/get-started)
