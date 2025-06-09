@@ -325,7 +325,7 @@
       link: "https://dart.dev/language/variables#late-variables"
       type: "doc"
     - text: "Error: LateInitializationError"
-      link: "https://api.dart.dev/stable/dart-core/LateInitializationError-class.html"
+      link: "https://api.dart.dev/stable/2.7.2/dart-core/LateInitializationError-class.html"
       type: "api"
   labels:
     - "language"
