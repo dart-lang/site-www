@@ -7,7 +7,7 @@ prevpage:
   url: /get-started/add-commands
   title: Make your program interactive
 nextpage:
-  url: /get-started
+  url: /packages-libs
   title: Packages and librarires
 ---
 
