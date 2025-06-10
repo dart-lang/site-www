@@ -727,6 +727,51 @@
     - "contravariance"
     - "contravariant"
 
+- term: "Wildcard"
+  id: "wildcard"
+  short_description: |-
+    A symbol (`_`) that represents an unused or unnamed value in patterns and other contexts.
+  long_description: |-
+    A wildcard is the underscore character (`_`) used to ignore values or indicate
+    that a value is intentionally unused. It's often used in patterns, destructuring,
+    and switch expressions to match any value without binding it to a name.
+
+    Wildcards help make the code more intentional by clearly marking
+    values that are not needed in a specific context.
+
+    Example:
+    ```dart
+    // Ignoring the index in a forEach loop
+    var names = ['Alice', 'Bob', 'Charlie'];
+    for (var _ in names) {
+      print('Someone is here!');
+    }
+    ```
+
+    The wildcard pattern is particularly useful when:
+    - You only need certain parts of a destructured value
+    - You want to explicitly show some values are being ignored
+    - You need a catch-all case in pattern matching
+
+  related_links:
+    - text: "Pattern matching"
+      link: "#pattern-matching"
+      type: "term"
+    - text: "Destructuring"
+      link: "#destructuring"
+      type: "term"
+    - text: "Patterns documentation"
+      link: "https://dart.dev/language/pattern-types#wildcard"
+      type: "doc"
+  labels:
+    - "language"
+    - "patterns"
+    - "syntax"
+  alternate:
+    - "Underscore"
+    - "Discard symbol"
+    - "Pattern wildcard"
+    - "Placeholder pattern"
 
 - term: "Zone"
   id: "zone"
