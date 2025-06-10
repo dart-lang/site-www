@@ -264,6 +264,77 @@
     - "understanding diagnostics"
   alternate:
     - "with mixin"
+    
+- term: "Late"
+  id: "late"
+  short_description: |-
+    A keyword that enables deferred initialization of variables and is
+    typically used with non-nullable variabels.
+  long_description: |-
+    The `late` keyword in Dart is used to indicate that a variable 
+    will be initialized later, after its declaration, but before it's used. 
+    This helps avoid the need to make a variable nullable (`?`) when you
+    know it will definitely receive a value, just not immediately.
+
+    Using `late` defers initialization, allowing you to write more
+    flexible and readable code, especially when dealing with dependencies
+    or complex setup.
+
+    For example:
+    ```dart
+    late String description;
+
+    void setup() {
+      description = 'This will be initialized before use.';
+    }
+    ```
+
+    Be careful with late variables that are part of a public API. 
+    If a client accesses the variable before it’s initialized,
+    they will encounter a `LateInitializationError`, which provides
+    little context. In such cases, consider using a
+    private nullable variable with a public getter that throws a
+    descriptive error (e.g., `StateError`) if accessed too early as
+    this can offer clearer feedback to API users, despite the added
+    complexity.
+
+    You can also use `late final` when the variable should only be set once. 
+    This is useful in scenarios where the value is not available at object
+    construction time, such as cyclic dependencies in object graphs.
+
+    Example:
+
+    ```dart
+    class LinkedQueue<T> {
+      late final QueueLink<T> _head;
+      
+      LinkedQueue() {
+        _head = QueueLink<T>._head(owner: this); // Cyclic reference between objects
+      }
+    }
+    ```
+
+    Be cautious: if a late variable is accessed before it’s initialized
+    or never initialized at all, it will cause a runtime error.
+
+  related_links:
+    - text: "Null safety in Dart"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Late variables"
+      link: "https://dart.dev/language/variables#late-variables"
+      type: "doc"
+    - text: "Error: LateInitializationError"
+      link: "https://api.dart.dev/stable/2.7.2/dart-core/LateInitializationError-class.html"
+      type: "api"
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+  alternate:
+    - "late keyword"
+    - "deferred initialization"
+    - "late final"
 
 - term: "Override inference"
   short_description: |-
@@ -655,3 +726,67 @@
     - "covariant"
     - "contravariance"
     - "contravariant"
+
+
+- term: "Zone"
+  id: "zone"
+  short_description: |-
+    A mechanism to customize the behavior of asynchronous code 
+    without modifying the asynchronous code itself.
+  long_description: |-
+    A zone is an execution context that allows you to run code with
+    customized behavior for asynchronous events such as timers,
+    microtasks, and uncaught errors.
+    
+    Zones are useful for:
+    - Logging
+    - Error tracking
+    - Maintaining request-specific state across async gaps
+      (for example, in server apps)
+    - Testing and debugging async behavior
+
+    Zones provide a way to track and influence asynchronous execution 
+    without requiring the asynchronous code to be aware of it.
+
+    You can create a new zone using `runZoned` (or `runZonedGuarded`) 
+    and override zone-specific behavior such as error handling and timers.
+    Even `print` can be overridden, although it's not asynchronous and just
+    included for convenience.
+    
+    Example:
+    ```dart
+    import 'dart:async';
+
+    void main() {
+      runZonedGuarded(() {
+        Future.delayed(Duration(seconds: 1), () {
+          throw 'Zone caught this error!';
+        });
+      }, (error, stackTrace) {
+        print('Caught error: $error');
+      });
+    }
+    ```
+
+    In the preceeding example, the uncaught error inside the async callback
+    is intercepted by the custom zone.
+
+  related_links:
+    - text: "Zones API documentation"
+      link: "https://api.dart.dev/stable/dart-async/Zone-class.html"
+      type: "api"
+    - text: "Error handling with zones"
+      link: "https://dart.dev/articles/libraries/zones"
+      type: "doc"
+    - text: "runZonedGuarded"
+      link: "https://api.dart.dev/stable/dart-async/runZonedGuarded.html"
+      type: "api"
+  labels:
+    - "language"
+    - "asynchronous"
+    - "runtime"
+  alternate:
+    - "zones"
+    - "dart zones"
+    - "execution zone"
+    - "runZoned"

@@ -1,21 +1,18 @@
 @use '../base/mixins' as *;
-@use '../base/variables' as *;
 
 body.diagnostics {
-  --chip-container-color: transparent;
-  --chip-border-color: rgba(0, 0, 0, .35);
-  --chip-selected-container-color: rgb(194 229 255);
-  --chip-text-color: #3a3a3a;
+  --chip-border-color: var(--site-outline);
+  --chip-selected-container-color: var(--site-secondaryContainer-bgColor);
+  --chip-text-color: var(--site-base-fgColor);
 
-  --menu-border-color: rgba(0, 0, 0, .35);
-  --menu-container-color: #ffffff;
+  --menu-border-color: var(--site-inset-borderColor);
+  --menu-container-color: var(--site-inset-bgColor);
   --menu-item-container-color: transparent;
-  --menu-item-selected-container-color: rgb(194 229 255);
-  --menu-item-text-color: #3a3a3a;
+  --menu-item-selected-container-color: var(--site-secondaryContainer-bgColor);
+  --menu-item-text-color: var(--site-base-fgColor);
 
   // Overrides of existing variables.
   --card-min-width: 19rem;
-  --card-text-color: #3a3a3a;
 
   .filter-group {
     display: flex;
@@ -46,7 +43,7 @@ body.diagnostics {
           user-select: none;
 
           span {
-            color: var(--card-text-color);
+            color: var(--site-base-fgColor-alt);
             font-size: 20px;
             font-variation-settings: 'FILL' 1;
           }
@@ -83,7 +80,7 @@ body.diagnostics {
     display: flex;
     align-items: center;
     gap: 0.2rem;
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
 
     .label {
       background: none;
@@ -98,7 +95,7 @@ body.diagnostics {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--focus-outline-color);
+      outline: 2px solid var(--site-primary-color);
       border-color: transparent;
     }
 
@@ -171,7 +168,7 @@ body.diagnostics {
           font-weight: 500;
           text-align: left;
           user-select: none;
-          font-family: $site-font-family-alt;
+          font-family: var(--site-ui-fontFamily);
 
           &:hover {
             @include interaction-style(4%);

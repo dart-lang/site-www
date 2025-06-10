@@ -33,11 +33,14 @@ yt:
   watch: 'https://www.youtube.com/watch'
   playlist: 'https://www.youtube.com/playlist?list='
 
-showBanner: true
+showBanner: false
+
+google_analytics_id: UA-26406144-4
+google_tag_manager_id: GTM-5VSZM5J
 
 # Increment this global og:image URL version number (used as a query parameter)
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.8.0
+sdkVersion: 3.8.1

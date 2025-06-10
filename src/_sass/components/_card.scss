@@ -1,5 +1,4 @@
 @use '../base/mixins' as *;
-@use '../base/variables' as *;
 
 .card-grid {
   display: grid;
@@ -7,6 +6,9 @@
   gap: var(--card-grid-gap, 1rem);
   margin: 0 0 1rem;
   justify-content: center;
+
+  // Disable lite-youtube shadow for videos in cards.
+  --lite-youtube-frame-shadow-visible: false;
 }
 
 .card-list {
@@ -25,7 +27,7 @@
     border-radius: 0.5rem;
     padding: 0.75rem;
     gap: 0.5rem;
-    background-color: var(--card-container-color, rgb(242, 245, 255));
+    background-color: var(--card-container-color, var(--site-filledCard-bgColor, rgb(242, 245, 255)));
     height: auto;
 
     scroll-margin: 4rem;
@@ -35,7 +37,7 @@
     }
 
     &.outlined-card {
-      border: 1px solid var(--card-border-color, rgba(0, 0, 0, .125));
+      border: 1px solid var(--card-border-color, var(--site-card-borderColor));
     }
 
     .card-header {
@@ -49,8 +51,8 @@
         font-weight: 500;
         margin: 0;
         overflow: hidden;
-        font-family: $site-font-family-alt;
-        color: var(--card-title-color, $site-color-body);
+        font-family: var(--site-ui-fontFamily);
+        color: var(--card-title-color, var(--site-base-fgColor));
       }
     }
 
@@ -59,7 +61,7 @@
       flex-direction: column;
       gap: 0.75rem;
       font-size: 0.95rem;
-      color: var(--card-text-color, $site-color-body);
+      color: var(--card-text-color, var(--site-base-fgColor));
 
       p {
         margin: 0;
@@ -67,7 +69,7 @@
         code {
           font-size: 0.95em;
           background-color: rgba(0, 0, 0, .05);
-          color: var(--card-text-color, $site-color-body);
+          color: var(--card-text-color, var(--site-base-fgColor));
           border-radius: .25rem;
           padding: .1rem .25rem;
           text-wrap: nowrap;
@@ -84,7 +86,7 @@
     text-decoration: none;
 
     .card-header {
-      --card-title-color: #1967D2;
+      --card-title-color: var(--site-link-fgColor);
     }
 
     &:hover {
@@ -96,7 +98,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid var(--focus-outline-color);
+      outline: 2px solid var(--site-primary-color);
       border-color: transparent;
     }
   }

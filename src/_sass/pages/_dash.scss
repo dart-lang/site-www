@@ -1,6 +1,16 @@
-@use '../base/variables' as *;
-
 // Homepage styles
+
+// Dash colors
+$dash-callout: #121a26;
+$dash-sub-grey: #8d9399;
+$dash-dark-grey: #82878c;
+$dash-off-white: #f8f9fa;
+$dash-dark-black: #4a4a4a;
+$dash-highlight: #1967d2;
+$dash-off-black: #12202f;
+$dark-darker-black: #0d1520;
+$dash-header-bg: #17212f;
+$dash-dartpad-border: #293542;
 
 // Sizes
 $dash-max-width: 1330px;
@@ -13,7 +23,7 @@ body.homepage {
   }
 
   .dash-header-callout {
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
     background-color: $dash-callout;
     text-align: center;
     padding: 4rem 0 4rem 0 !important;
@@ -30,11 +40,11 @@ body.homepage {
         text-decoration: none;
         align-items: center;
         gap: 0.5rem;
-        color: $site-color-card-link;
+        color: var(--site-altLink-fgColor);
 
         &:hover {
           text-decoration: none;
-          color: darken($site-color-card-link, 20%);
+          color: var(--site-altLink-fgColor-active);
         }
       }
     }
@@ -98,7 +108,7 @@ body.homepage {
   }
 
   .dash-dart-features {
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
     padding: 2rem 1rem 4rem;
     background-color: $dark-darker-black;
 
@@ -202,7 +212,7 @@ body.homepage {
       }
 
       .content-desc {
-        font-family: $site-font-family-base;
+        font-family: var(--site-body-fontFamily);
         font-size: .9rem;
         line-height: 24px;
         color: $dash-dark-black;
@@ -335,10 +345,10 @@ body.homepage {
     }
 
     a {
-      color: $site-color-card-link;
+      color: var(--site-altLink-fgColor);
 
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
+      &:hover, &:active {
+        color: var(--site-altLink-fgColor-active);
       }
     }
 
@@ -358,7 +368,7 @@ body.homepage {
   .dart-dash-details {
     display: flex;
     flex-direction: column;
-    font-family: $site-font-family-alt;
+    font-family: var(--site-ui-fontFamily);
 
     .dash-row {
       justify-content: space-between;

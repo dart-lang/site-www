@@ -1,4 +1,3 @@
-@use '../base/variables' as *;
 @use '../base/mixins';
 
 .tag-label {
@@ -7,24 +6,28 @@
   padding: 0 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.925rem;
-  font-family: $site-font-family-alt;
+  font-family: var(--site-ui-fontFamily);
   text-wrap: nowrap;
 }
 
 .language-versioned-tag {
   background-color: #13B9FD;
+  color: #212121;
 }
 
 .deprecated-tag {
   background-color: #F2AA3A;
+  color: #212121;
 }
 
 .removed-tag {
   background-color: #F3655B;
+  color: #212121;
 }
 
 .experimental-tag {
   background-color: #DADCE0;
+  color: #212121;
 }
 
 .tags {
@@ -38,6 +41,7 @@
     flex-direction: row;
     align-items: center;
     background-color: rgb(194 229 255);
+    color: #212121;
     gap: 0.25rem;
     font-size: 1rem;
     padding: 0.1rem 0.4rem;
@@ -68,7 +72,6 @@
 
   a.tag-label {
     text-decoration: none;
-    color: inherit;
 
     &:hover {
       @include mixins.interaction-style(6%);

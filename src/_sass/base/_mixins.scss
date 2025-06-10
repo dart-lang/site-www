@@ -1,5 +1,3 @@
-@use 'variables' as *;
-
 @mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
   transition: $property $duration $effect;
 }

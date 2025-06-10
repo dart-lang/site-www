@@ -1,4 +1,3 @@
-@use '../base/variables' as *;
 @use '../base/mixins' as mixins;
 
 article {
@@ -8,10 +7,10 @@ article {
 
     thead {
       vertical-align: bottom;
+      background-color: var(--site-raised-bgColor);
 
       th {
-        border-top: 1px solid $site-color-light-grey;
-        border-bottom: 2px solid $site-color-light-grey;
+        border-top: 1px solid var(--site-outline-variant);
         text-align: start;
       }
     }
@@ -21,13 +20,14 @@ article {
         vertical-align: top;
 
         &:nth-of-type(odd) {
-          background-color: rgba(0, 0, 0, 0.05);
+          background-color: rgb(var(--site-interaction-base-values) / 3%)
         }
       }
     }
 
     td, th {
       border: none;
+      border-top: 1px solid var(--site-inset-borderColor);
       padding: .75rem;
     }
   }
@@ -86,12 +86,12 @@ article {
       line-height: 1;
       @include mixins.transition(.1s);
       overflow: hidden;
-      color: #4a4a4a;
+      color: var(--site-base-fgColor-alt);
       opacity: 0;
       text-decoration: none;
 
       &:hover {
-        color: $site-color-primary;
+        color: var(--site-link-fgColor);
       }
 
       &:focus {
@@ -99,7 +99,7 @@ article {
       }
 
       &:active {
-        color: $flutter-color-blue-700;
+        color: var(--site-link-fgColor-active);
       }
     }
 
@@ -132,10 +132,20 @@ article {
     }
   }
 
-  .content > p {
-    > i.material-symbols, > span.material-symbols {
-      vertical-align: bottom;
-      user-select: none;
+  .content {
+    > p {
+      > i.material-symbols, > span.material-symbols {
+        vertical-align: bottom;
+        user-select: none;
+      }
     }
+
+    > lite-youtube {
+      margin-block-end: 1rem;
+    }
+  }
+
+  lite-youtube:not(.full-width) {
+    max-width: 560px;
   }
 }
