@@ -13,7 +13,7 @@ nextpage:
 
 In this chapter, you'll explore asynchronous programming in Dart, allowing your
 applications to perform multiple tasks concurrently. You'll learn how to fetch
-data from the internet using the `http` package, to rerieve an article summary
+data from the internet using the `http` package, to retrieve an article summary
 from Wikipedia.
 
 :::secondary What you'll learn
@@ -30,13 +30,13 @@ from Wikipedia.
 
 * Completion of Chapter 2, which covered basic Dart syntax and command-line
   interaction. You should have a `dartpedia` project set up.
-* Familiarity with the concept of APIs (Application Programming Interfaces) as a
+* Familiarity with the concept of APIs ([Application Programming Interfaces][]) as a
   way to retrieve data.
 
 ## Tasks
 
 In this chapter, you will modify the existing `dartpedia` CLI application to
-fetch and display an **article summary** using the `http` package and
+fetch and display an **[article summary][]** using the `http` package and
 asynchronous programming techniques.
 
 ### Task 1: Add the http dependency
@@ -88,7 +88,7 @@ your Dart file to use its functionalities.
     ```
 
     This line imports the `http` package and gives it the alias `http`. After
-    you do this, you can to classes and functions within the `http` package
+    you do this, you can use classes and functions from within the `http` package
     using `http.` (e.g., `http.Client`, `http.get`). The `as http` part is a
     standard convention to avoid naming conflicts if another imported library
     also has a similarly named class or function.
@@ -116,15 +116,15 @@ network requests are asynchronous operations.
 
 1.  **Construct the API URL and `http.Client`:**
     Inside your new `getWikipediaArticle` function, create an `http.Client()`
-    instance and a `Uri` object. The `Uri` represents the endpoint of the
+    instance and a `Uri` object. `Uri` represents the endpoint of the
     Wikipedia API you'll be calling to get an article summary.
 
     Add these lines inside the `getWikipediaArticle` function:
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final http.Client client = http.Client(); // Create an HTTP client
-      final Uri url = Uri.https(
+      final client = http.Client(); // Create an HTTP client
+      final url = Uri.https(
         'en.wikipedia.org', // Wikipedia API domain
         '/api/rest_v1/page/summary/$articleTitle', // API path for article summary
       );
@@ -152,12 +152,12 @@ network requests are asynchronous operations.
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final http.Client client = http.Client();
-      final Uri url = Uri.https(
+      final client = http.Client();
+      final url = Uri.https(
         'en.wikipedia.org',
         '/api/rest_v1/page/summary/$articleTitle',
       );
-      final http.Response response = await client.get(url); // Make the HTTP request
+      final response = await client.get(url); // Make the HTTP request
 
       if (response.statusCode == 200) {
         return response.body; // Return the response body if successful
