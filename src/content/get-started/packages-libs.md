@@ -7,7 +7,7 @@ prevpage:
   url: /get-started/async
   title: Introduction to async and HTTP
 nextpage:
-  url: /get-started
+  url: /get-started/object-oriented
   title: Object oriented dart
 ---
 
