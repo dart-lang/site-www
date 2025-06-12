@@ -39,7 +39,7 @@ In this chapter, you will modify the existing `dartpedia` CLI application to
 fetch and display an **article summary** using the `http` package and
 asynchronous programming techniques.
 
-### Task 1: Adding the http dependency
+### Task 1: Add the http dependency
 
 Before you can make HTTP requests, you need to add the `http` package as a
 dependency to your project.
@@ -73,7 +73,7 @@ dependency to your project.
     Try `dart pub outdated` for more information.
     ```
 
-### Task 2: Importing the http package
+### Task 2: Import the http package
 
 Now that you've added the `http` package, you need to import it into
 your Dart file to use its functionalities.
@@ -168,7 +168,7 @@ network requests are asynchronous operations.
     }
     ```
 
-### Task 4: Refactor `searchWikipedia` into `runApp` and integrate the API call
+### Task 4: Refactor searchWikipedia into runApp and integrate the API call
 
 In Chapter 2, you added a `searchWikipedia` function. To make the code more
 organized and align with common Dart application patterns, you'll now rename
@@ -270,7 +270,7 @@ function will house the core logic for handling the `wikipedia` command.
     * `print(articleContent)`: Prints the fetched article summary (as a raw JSON
     string) to the console.
 
-### Task 5: Update `main` to call `runApp`
+### Task 5: Update main to call runApp
 
 Finally, update your `main` function to call the new `runApp` function when the `wikipedia` command is used.
 
@@ -300,6 +300,7 @@ Finally, update your `main` function to call the new `runApp` function when the 
       }
     }
     ```
+
     * `arguments.sublist(1)`: This extracts all elements from the `arguments`
     list starting from the second element (index 1). This effectively removes
     the `wikipedia` command itself, so `runApp` only receives the actual article
@@ -308,7 +309,7 @@ Finally, update your `main` function to call the new `runApp` function when the 
     need to do anything after `runApp` completes, you don't need to `await` it
     from `main` (and therefore `main` doesn't need to be `async`).
 
-### Task 6: Running the application
+### Task 6: Run the application
 
 Now that you've implemented the `http` request and integrated it into your
 application, test it out.
