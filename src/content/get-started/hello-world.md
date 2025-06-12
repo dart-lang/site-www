@@ -7,7 +7,7 @@ prevpage:
   url: /get-started
   title: Get started
 nextpage:
-  url: /get-started/hello-world
+  url: /get-started/add-commands
   title: Add interactivity to your app
 ---
 
@@ -70,7 +70,7 @@ Now, create your first Dart command-line application.
     cd dartpedia
     ```
 
-2.  Run the following command:
+1.  Run the following command:
 
     ```bash
     dart create cli
@@ -80,7 +80,7 @@ Now, create your first Dart command-line application.
     "cli" (for Command Line Interface).
     It sets up the essential files and directories you need.
 
-3.  You should see output similar to this, confirming the project creation:
+1.  You should see output similar to this, confirming the project creation:
 
     ```bash
     Creating cli using template console...
@@ -123,7 +123,7 @@ Next, run your program to test it out.
     cd cli
     ```
 
-2.  Run the default application:
+1.  Run the default application:
 
     ```bash
     dart run
@@ -131,7 +131,7 @@ Next, run your program to test it out.
 
     This command tells Dart to execute your program.
 
-3.  You should see the following output:
+1.  You should see the following output:
 
     ```bash
     Building package executable...
@@ -153,7 +153,7 @@ Next, modify the code that generated `Hello world: 42!`.
     Inside, you'll see the `main` function.
     Every Dart program starts executing from its `main` function.
 
-2.  Check to make sure that your `bin/cli.dart` looks like this:
+1.  Check to make sure that your `bin/cli.dart` looks like this:
 
     ```dart title="bin/cli.dart"
     import 'package:cli/cli.dart' as cli;
@@ -163,7 +163,7 @@ Next, modify the code that generated `Hello world: 42!`.
     }
     ```
 
-3.  Simplify the output for now.
+1.  Simplify the output for now.
     Comment out the first line (you don't need this import statement), and
     change the `print` statement to display a simple greeting:
 
@@ -181,13 +181,13 @@ Next, modify the code that generated `Hello world: 42!`.
     You will learn about this soon and then fully remove the line later.
     :::
 
-4.  Save your file. Then in the terminal, run your program again:
+1.  Save your file. Then in the terminal, run your program again:
 
     ```bash
     dart run
     ```
 
-5.  Check to make sure that you see the following:
+1.  Check to make sure that you see the following:
 
     ```bash
     Building package executable...
