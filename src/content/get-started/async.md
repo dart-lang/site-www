@@ -405,3 +405,6 @@ In the next chapter, You'll focus on organizing our code into reusable
 libraries and packages. You'll refactor our application to improve its
 structure and maintainability by creating a separate package for
 handling command-line arguments.
+
+[Application Programming Interfaces]: https://www.postman.com/what-is-an-api/
+[article summary]: http://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
