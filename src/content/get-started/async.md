@@ -13,7 +13,7 @@ nextpage:
 
 In this chapter, you'll explore asynchronous programming in Dart, allowing your
 applications to perform multiple tasks concurrently. You'll learn how to fetch
-data from the internet using the `http` package, to rerieve an article summary
+data from the internet using the `http` package, to retrieve an article summary
 from Wikipedia.
 
 :::secondary What you'll learn
@@ -30,13 +30,13 @@ from Wikipedia.
 
 * Completion of Chapter 2, which covered basic Dart syntax and command-line
   interaction. You should have a `dartpedia` project set up.
-* Familiarity with the concept of APIs (Application Programming Interfaces) as a
+* Familiarity with the concept of APIs ([Application Programming Interfaces][]) as a
   way to retrieve data.
 
 ## Tasks
 
 In this chapter, you will modify the existing `dartpedia` CLI application to
-fetch and display an **article summary** using the `http` package and
+fetch and display an **[article summary][]** using the `http` package and
 asynchronous programming techniques.
 
 ### Task 1: Add the http dependency
@@ -127,8 +127,8 @@ network requests are asynchronous operations.
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final http.Client client = http.Client(); // Create an HTTP client
-      final Uri url = Uri.https(
+      final client = http.Client(); // Create an HTTP client
+      final url = Uri.https(
         'en.wikipedia.org', // Wikipedia API domain
         '/api/rest_v1/page/summary/$articleTitle', // API path for article summary
       );
@@ -150,12 +150,12 @@ network requests are asynchronous operations.
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final http.Client client = http.Client();
-      final Uri url = Uri.https(
+      final client = http.Client();
+      final url = Uri.https(
         'en.wikipedia.org',
         '/api/rest_v1/page/summary/$articleTitle',
       );
-      final http.Response response = await client.get(url); // Make the HTTP request
+      final response = await client.get(url); // Make the HTTP request
 
       if (response.statusCode == 200) {
         return response.body; // Return the response body if successful
