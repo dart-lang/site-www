@@ -1,6 +1,15 @@
 ---
-title: Making your CLI program interactive
-description: Add simple commands to your cli program. Learn the fundamentals of Dart syntax including control flow, collections, variables, functions, and more.
+title: Make your CLI program interactive
+short-title: Add commands
+description: >-
+  Add simple commands to your cli application. Learn the fundamentals of Dart
+  syntax including control flow, collections, variables, functions, and more.
+prevpage:
+  url: /get-started/hello-world
+  title: Build your first app
+nextpage:
+  url: /get-started/async
+  title: Intro to async and HTTP
 ---
 
 In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
@@ -89,7 +98,7 @@ explore the Dart syntax for it.
 
     `search` is the command that will eventually search from Wikipedia.
 
-2.  **Implement the `help` command and refine `main`:** Now, integrate the
+1.  **Implement the `help` command and refine `main`:** Now, integrate the
     `help` command using an `else if` statement, and clean up the default
     behavior to call the `printUsage` function.
 
@@ -107,13 +116,13 @@ explore the Dart syntax for it.
     }
     ```
 
-3.  **Understand the `if/else` structure and variables:** Now that
+1.  **Understand the `if/else` structure and variables:** Now that
     you've implemented control flow in the `main` function, review the
     code that was added for it.
 
     * `arguments.isNotEmpty` checks if any command-line arguments were
         provided.
-    * `arguments.first` accesses the very first argument, which we're using as
+    * `arguments.first` accesses the very first argument, which you're using as
         our command.
     * `version` is declared as a `const`. This means its
         value is known at compile time and you can't change it during runtime.
@@ -134,7 +143,7 @@ explore the Dart syntax for it.
     ```
 
     Notice that it continues to display usage information.
-    At this point, any command we haven't defined will also
+    At this point, any command you haven't defined will also
     print usage information. This is expected behavior for now.
 
 ### Task 2: Implement the search command
@@ -196,7 +205,7 @@ null checks, and string interpolation.
     * `List<String>? arguments` means that the `arguments` list itself
        can be `null`. 
        
-       ::: note Null safety
+       :::note
        Dart enforces [sound null safety][], which means you
        have to explicity state when a variable can be null. Any
        variable that isn't marked as nullable is *guarateed* to never
@@ -209,7 +218,7 @@ null checks, and string interpolation.
        null-pointer errors.
        ::: 
 
-2.  **Call the `searchWikipedia` function from the `main` function:**
+1.  **Call the `searchWikipedia` function from the `main` function:**
     Now, modify the `search` command block in `main` to call
     `searchWikipedia` and pass it any arguments that come after the
     `search` command itself. Use `arguments.sublist(1)` to get all
@@ -242,7 +251,7 @@ null checks, and string interpolation.
         are provided after the `search` command, `inputArgs` becomes `null`, matching the
         sample code's behavior for `searchWikipedia`'s `arguments` parameter of `List<String>?`.
 
-3.  **Test `searchWikipedia` with arguments:** Using the command line, run the application with a test article
+1.  **Test `searchWikipedia` with arguments:** Using the command line, run the application with a test article
     title:
 
     ```bash
@@ -267,7 +276,7 @@ null checks, and string interpolation.
     searchWikipedia received arguments: null
     ```
 
-4.  **Handle the missing article title and user input with the `stdin` command:** It's more
+1.  **Handle the missing article title and user input with the `stdin` command:** It's more
     user-friendly to prompt the user if they don't provide an article title on
     the command line. Use `stdin.readLineSync()` for this.
 
@@ -327,7 +336,7 @@ null checks, and string interpolation.
       `['Dart', 'Programming']` becomes `"Dart Programming"`. This is crucial
       for treating multi-word command-line inputs as a single search phrase.
 
-5.  **Finish `searchWikipedia` to print mock search results:** Update `searchWikipedia` to display
+1.  **Finish `searchWikipedia` to print mock search results:** Update `searchWikipedia` to display
     messages that look like our program found something. This helps us see what
     our finished program will do without actually building everything right now.
     You'll only see these messages if you include a search query when you run
@@ -353,7 +362,7 @@ null checks, and string interpolation.
     }
     ```
 
-6.  **Final Test Run with both scenarios:**
+1.  **Final Test Run with both scenarios:**
 
     Now that the article simulation is set up, test the `searchWikipedia` function in a
     few different ways:
