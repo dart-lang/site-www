@@ -730,7 +730,7 @@
 - term: "Wildcard"
   id: "wildcard"
   short_description: |-
-    A symbol (`_`) that represents an unused or unnamed value in patterns and other contexts.
+    A symbol (`_`) used instead of a variable name to indicate an unused value in patterns and other contexts.
   long_description: |-
     A wildcard is the underscore character (`_`) used to ignore values or indicate
     that a value is intentionally unused. It's often used in patterns, destructuring,
