@@ -10,7 +10,7 @@
   <body class="{{layout}}{% if toc %}{% if toc == false %} hide_toc{% endif %}{% endif %}{% if obsolete %}{% if obsolete == true %} obsolete{% endif %}{% endif %}{% if body_class %} {{ body_class }}{% endif %}">
     <a id="skip-to-main" class="filled-button" href="#site-content-title" tabindex="1">Skip to main content</a>
     {% render 'cookie-notice.html' %}
-    {% render 'gtags.html' %}
+    {% include 'gtags.html' %}
     {% include 'page-header.html', obsolete:obsolete %}
     <div id="site-below-header">
       <div id="site-main-row">

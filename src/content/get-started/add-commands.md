@@ -1,5 +1,5 @@
 ---
-title: Making your CLI program interactive
+title: Make your CLI program interactive
 short-title: Add commands
 description: >-
   Add simple commands to your cli application. Learn the fundamentals of Dart

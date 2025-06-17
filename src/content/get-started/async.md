@@ -1,431 +1,410 @@
 ---
-title: Make your CLI program interactive
-short-title: Add commands
+title: Intro to async and HTTP
+short-title: Async and HTTP
 description: >-
-  Add simple commands to your cli application. Learn the fundamentals of Dart
-  syntax including control flow, collections, variables, functions, and more.
+  Learn about asynchronous programming in Dart and how to make HTTP requests.
 prevpage:
-  url: /get-started/hello-world
-  title: Build your first app
+  url: /get-started/add-commands
+  title: Make your program interactive
 nextpage:
-  url: /get-started/async
-  title: Intro to async and HTTP
+  url: /get-started
+  title: Packages and librarires
 ---
 
-In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
-to read user input, print usage information, and create a basic command-line
-interaction.
+In this chapter, you'll explore asynchronous programming in Dart, allowing your
+applications to perform multiple tasks concurrently. You'll learn how to fetch
+data from the internet using the `http` package, to retrieve an article summary
+from Wikipedia.
 
 :::secondary What you'll learn
 
-* Implement basic control flow with `if/else` statements.
-* Work with collections, specifically `List` objects, and perform common operations
-  like checking if a list is empty.
-* Declare and use variables with `const` and `late String?`.
-* Handle nullability with null checks.
-* Define and call functions.
-* Use string interpolation for dynamic text.
-* Read user input from the command line using the `stdin` command.
+* Understand asynchronous programming, `Future`s, `async`, and `await`.
+* Learn about the `http` package and import statements.
+* Implement the `getWikipediaArticle` function step-by-step, including `http.Client`.
+* Understand how the main logic function becomes `async` to handle `await`.
+* Run the application to see HTTP data fetching in action.
 
 :::
 
 ## Prerequisites
 
-Before you begin this chapter, ensure you have:
-
-* Completed Chapter 1 and have a working Dart development environment.
-* Familiarity with basic programming concepts (variables, data types, control
-  flow).
+* Completion of Chapter 2, which covered basic Dart syntax and command-line
+  interaction. You should have a `dartpedia` project set up.
+* Familiarity with the concept of APIs ([Application Programming Interfaces][]) as a
+  way to retrieve data.
 
 ## Tasks
 
-Add some basic functionality to your **Dartpedia** command-line application and then
-explore the Dart syntax for it.
+In this chapter, you will modify the existing `dartpedia` CLI application to
+fetch and display an **[article summary][]** using the `http` package and
+asynchronous programming techniques.
 
-### Task 1: Implement version and help commands
+### Task 1: Add the http dependency
 
-1.  **Implement the `version` command in `cli/bin/cli.dart`:** Add logic to
-    handle a `version` command, which prints the current version of the CLI.
-    Use an `if` statement to check if the first
-    argument provided is `version`. You'll also need a `version` constant.
+Before you can make HTTP requests, you need to add the `http` package as a
+dependency to your project.
 
-    First, above your `main` function, declare a `const` variable for the
-    version. The value of a `const` variable can never be changed after it's
-    been set:
+1.  Open the `dartpedia/pubspec.yaml` file within your project. This file is
+    called the **pubspec**, and it manages your Dart project's metadata,
+    dependencies (like the `http` package), and assets.
+1.  Locate the `dependencies` section.
+1.  Add `http: ^1.3.0` (or the latest stable version) under `dependencies`. The
+    `^` symbol allows compatible versions to be used.
 
-    ```dart
-    const version = '0.0.1'; // Add this line
+    ```yaml
+    dependencies:
+      http: ^1.3.0
     ```
 
-    Next, modify your `main` function to check for the `version` argument:
+1.  Save the `pubspec.yaml` file.
+1.  Run `dart pub get` in your terminal from the `dartpedia` directory. This
+    command fetches the newly added dependency and makes it available for
+    use in your project.
+
+    You should see output similar to this:
+
+    ```bash
+    Resolving dependencies...  
+    Downloading packages...  
+    + http 1.4.0
+      lints 5.1.1 (6.0.0 available)
+    Changed 1 dependency!
+    1 package has newer versions incompatible with dependency constraints.
+    Try `dart pub outdated` for more information.
+    ```
+
+### Task 2: Import the http package
+
+Now that you've added the `http` package, you need to import it into
+your Dart file to use its functionalities.
+
+1.  Open the `dartpedia/bin/cli.dart` file.
+1.  Add the following `import` statement at the top of the file, along with the
+    existing `dart:io` import:
 
     ```dart
-    void main(List<String> arguments) {
-      if (arguments.isEmpty) {
-        print('Hello, Dart!');
-      } else if (arguments.first == 'version') {
-        print('Dartpedia CLI version $version');
-      }
+    import 'dart:io';
+    import 'package:http/http.dart' as http; // Add this line
+    ```
+
+    This line imports the `http` package and gives it the alias `http`. After
+    you do this, you can refer to classes and functions within the `http`
+    package using `http.` (for example, `http.Client`, `http.get`). The `as
+    http` part is a standard convention to avoid naming conflicts if another
+    imported library also has a similarly named class or function.
+
+### Task 3: Implement the `getWikipediaArticle` function
+
+Now create a new function called `getWikipediaArticle` that handles
+fetching data from an external API. This function will be `async` because
+network requests are asynchronous operations.
+
+1.  **Define the function signature:**
+    Below your `main` function (and `printUsage` function), add the following
+    function signature.
+
+    ```dart
+    // ... (your existing printUsage() function)
+
+    Future<String> getWikipediaArticle(String articleTitle) async {
+      //You'll add more code here soon
     }
     ```
 
-1.  **Test the `version` command:** Run your application with the version
-    argument:
+    Highlights from the preceding code:
 
-    ```bash
-    dart bin/cli.dart version
-    ```
+    * The `Future<String>` return type indicates that this function will
+    eventually produce a `String` result, but not immediately, because it's an asynchronous operation.
+    * The `async` keyword marks the function as asynchronous, allowing you to
+    use `await` inside it.
 
-    You should now see:
+1.  **Construct the API URL and `http.Client`:**
+    Inside your new `getWikipediaArticle` function, create an `http.Client()`
+    instance and a `Uri` object. The `Uri` represents the endpoint of the
+    Wikipedia API you'll be calling to get an article summary.
 
-    ```bash
-    Dartpedia CLI version 0.0.1
-    ```
-
-    If you run your app without arguments, you'll still see "Hello, Dart!".
-
-1.  **Add a `printUsage` function:** To make the output more user-friendly,
-    create a separate function to display usage information. Place this function
-    outside and below your `main` function.
+    Add these lines inside the `getWikipediaArticle` function:
 
     ```dart
-    void printUsage() { // Add this new function
-      print(
-        "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'"
+    Future<String> getWikipediaArticle(String articleTitle) async {
+      final client = http.Client(); // Create an HTTP client
+      final url = Uri.https(
+        'en.wikipedia.org', // Wikipedia API domain
+        '/api/rest_v1/page/summary/$articleTitle', // API path for article summary
       );
+      // ...
     }
     ```
 
-    `search` is the command that will eventually search from Wikipedia.
+2.  **Make the HTTP Request and handle the response:**
+    Now, use the `http` client to make an HTTP `GET` request to the URL you just constructed. The `await` keyword pauses the execution of
+    `getWikipediaArticle` until the `client.get(url)` call completes and returns
+    an `http.Response` object.
 
-1.  **Implement the `help` command and refine `main`:** Now, integrate the
-    `help` command using an `else if` statement, and clean up the default
-    behavior to call the `printUsage` function.
+    After the request completes, check the `response.statusCode` to ensure the
+    request was successful (a status code of `200` means OK). If successful,
+    return the `response.body`, which contains the fetched data (in this case,
+    raw JSON). If the request fails, return an informative error message.
 
-    Modify your `main` function to look like this:
+    Add these lines after the `Uri` construction within `getWikipediaArticle`:
 
     ```dart
+    Future<String> getWikipediaArticle(String articleTitle) async {
+      final client = http.Client();
+      final url = Uri.https(
+        'en.wikipedia.org',
+        '/api/rest_v1/page/summary/$articleTitle',
+      );
+      final response = await client.get(url); // Make the HTTP request
+
+      if (response.statusCode == 200) {
+        return response.body; // Return the response body if successful
+      }
+
+      // Return an error message if the request failed
+      return 'Error: Failed to fetch article "$articleTitle". Status code: ${response.statusCode}';
+    }
+    ```
+
+### Task 4: Integrate the API call into searchWikipedia
+
+You'll integrate the API call into `searchWikipedia`. This function will house
+the core logic for handling the `wikipedia` command.
+
+1.  **Update `searchWikipedia` to use `async`:**
+    Locate your `searchWikipedia` function and update its signature to be
+    `async` as it will now perform asynchronous operations.
+
+    Your `searchWikipedia` function should now look like this (initial part):
+
+    ```dart
+    // ... (your existing main function)
+
+    void searchWikipedia(List<String>? arguments) async { // Added 'async'
+      late String? articleTitle;
+
+      // If the user didn't pass in arguments, request an article title.
+      if (arguments == null || arguments.isEmpty) {
+        print('Please provide an article title.');
+        articleTitle = stdin.readLineSync(); // Await input from the user
+        // You'll add error handling for null input here in a moment
+      } else {
+        // Otherwise, join the arguments into the CLI into a single string
+        articleTitle = arguments.join(' ');
+      }
+
+      // ... rest of the function
+    }
+
+    // ... (your existing printUsage() function)
+    ```
+    
+    Highlights from the preceding code:
+    
+    * `void searchWikipedia(List<String>? arguments) async`: The function is now
+    `async`. This is essential because it will call `getWikipediaArticle`,
+    which is an `async` function itself and will need to `await` its result.
+
+1.  **Add `null` and empty string checks for user input:**
+    Inside `searchWikipedia`, refine the `if` block that handles the case where
+    no arguments are provided. If `stdin.readLineSync()` returns `null` (for
+    example, if the user presses Ctrl+D/Ctrl+Z) or an empty string, print a
+    message and exit the function.
+
+    ```dart
+    void searchWikipedia(List<String>? arguments) async {
+      late String? articleTitle;
+
+      if (arguments == null || arguments.isEmpty) {
+        print('Please provide an article title.');
+        final inputFromStdin = stdin.readLineSync(); // Read input
+        if (inputFromStdin == null || inputFromStdin.isEmpty) {
+          print('No article title provided. Exiting.');
+          return; // Exit the function if no valid input
+        }
+        articleTitle = inputFromStdin;
+      } else {
+        articleTitle = arguments.join(' ');
+      }
+
+      // ... rest of the function
+    }
+    ```
+
+1.  **Call `getWikipediaArticle` and print the result:**
+    Now, modify the `searchWikipedia` function to call your new
+    `getWikipediaArticle` function and print the result. Replace the previous
+    placeholder `print` statements with the actual API call.
+
+    ```dart
+    // ... (beginning of searchWikipedia function, after determining articleTitle)
+
+    void searchWikipedia(List<String>? arguments) async {
+      late String? articleTitle;
+      if (arguments == null || arguments.isEmpty) {
+        print('Please provide an article title.');
+        final inputFromStdin = stdin.readLineSync();
+        if (inputFromStdin == null || inputFromStdin.isEmpty) {
+          print('No article title provided. Exiting.');
+          return;
+        }
+        articleTitle = inputFromStdin;
+      } else {
+        articleTitle = arguments.join(' ');
+      }
+
+      print('Looking up articles about "$articleTitle". Please wait.');
+
+      // Call the API and await the result
+      var articleContent = await getWikipediaArticle(articleTitle);
+      print(articleContent); // Print the full article response (raw JSON for now)
+    }
+    ```
+
+    Highlights from the preceding code:
+
+    * `await getWikipediaArticle(articleTitle)`: Because `getWikipediaArticle`
+    is an `async` function, you need to `await` its result. This pauses the
+    `searchWikipedia` function until the `Future<String>` returned by
+    `getWikipediaArticle` resolves into a `String` containing the article's
+    contents.
+    * `print(articleContent)`: Prints the fetched article summary as a raw JSON
+    string to the console.
+
+### Task 5: Update main to call searchWikipedia
+
+Finally, update your `main` function to call the new `searchWikipedia` function
+when the `wikipedia` command is used.
+
+1.  Locate the `else if` block in your `main` function that currently handles
+    the `search` command. Change the command name from `search` to `wikipedia`
+    and update the function call.
+    
+    In the sample code, `main` does *not* `await` the call to `searchWikipedia`,
+    meaning `main` itself does not need to be marked `async`.
+    
+    Your `main` function should now look like this:
+
+    ```dart
+    // ... (existing const version declaration and printUsage function)
+
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
-        printUsage(); // Change this from 'Hello, Dart!'
+        printUsage();
       } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
+      } else if (arguments.first == 'wikipedia') { // Changed to 'wikipedia'
+        // Pass all arguments *after* 'wikipedia' to searchWikipedia
+        final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
+        searchWikipedia(inputArgs); // Call searchWikipedia (no 'await' needed here for main)
       } else {
         printUsage(); // Catch all for any unrecognized command.
       }
     }
     ```
 
-1.  **Understand the `if/else` structure and variables:** Now that
-    you've implemented control flow in the `main` function, review the
-    code that was added for it.
+    * `arguments.sublist(1)`: This extracts all elements from the `arguments`
+    list starting from the second element (index 1). This effectively removes
+    the `wikipedia` command itself, so `searchWikipedia` only receives the
+    actual article title arguments.
+    * `searchWikipedia(inputArgs)`: This calls `searchWikipedia` directly. Since
+    `main` doesn't need to do anything after `searchWikipedia` completes, you
+    don't need to `await` it from `main` (and therefore `main` doesn't need to
+    be `async`).
 
-    * `arguments.isNotEmpty` checks if any command-line arguments were
-        provided.
-    * `arguments.first` accesses the very first argument, which you're using as
-        our command.
-    * `version` is declared as a `const`. This means its
-        value is known at compile time and you can't change it during runtime.
-    * `arguments` is a regular (non-constant) variable
-        because its content can change during runtime based on user input.
+### Task 6: Run the application
 
-    Run your application with the help argument. You should see the
-    usage information printed:
+Now that you've implemented the `http` request and integrated it into your
+application, test it out.
 
-    ```bash
-    dart bin/cli.dart help
-    ```
-
-    Also, try running it without any arguments:
-
-    ```bash
-    dart bin/cli.dart
-    ```
-
-    Notice that it continues to display usage information.
-    At this point, any command you haven't defined will also
-    print usage information. This is expected behavior for now.
-
-### Task 2: Implement the search command
-
-Next, implement a basic `search` command that takes an article title as
-input. As you build this functionality, you'll work with `List` manipulation,
-null checks, and string interpolation.
-
-1.  **Integrate the `search` command into `main`:** First, modify the `main`
-    function in `cli/bin/cli.dart` to include an `else if` branch that handles
-    the `search` command. For now, just print a placeholder message.
-
-    ```dart
-    void main(List<String> arguments) {
-      if (arguments.isEmpty || arguments.first == 'help') {
-        printUsage(); 
-      } else if (arguments.first == 'version') {
-        print('Dartpedia CLI version $version');
-      } else if (arguments.first == 'search') {
-        // Add this new block:
-        print('Search command recognized!');
-      } else {
-        printUsage();
-      }
-    }
-    ```
-
-1.  **Test the new command:** Run your application with the `search`
-    command:
-
-    ```bash
-    dart bin/cli.dart search
-    ```
-
-    You should see:
-
-    ```bash
-    Search command recognized!
-    ```
-
-1.  **Define the `searchWikipedia` function:** The `search` command
-    will eventually run the core logic of your application by calling
-    a function called `searchWikipedia`. For now, have
-    `searchWikipedia` print the arguments passed into it with the
-    `search` command. Place this new function below `main`.
-
-    ```dart
-    // ... (your existing main function)
-
-    void searchWikipedia(List<String>? arguments) { // Add this new function and add ? to arguments type
-      print('searchWikipedia received arguments: $arguments');
-    }
-
-    // ... (your existing printUsage() function)
-    ```
-
-    Highlights from the preceding code:
-
-    * `List<String>? arguments` means that the `arguments` list itself
-       can be `null`. 
-       
-       :::note
-       Dart enforces [sound null safety][], which means you
-       have to explicity state when a variable can be null. Any
-       variable that isn't marked as nullable is *guarateed* to never
-       be null, even in production. The purpose of null-safety isn't
-       to stop you from ever using null in your code, because
-       representing the absense of a value can be valuable. Rather,
-       it's to force you to consider nullability and therefor be more
-       careful about it. Along with the analyzer, this helps prevent
-       one of the most common runtime crashes in programming:
-       null-pointer errors.
-       ::: 
-
-1.  **Call the `searchWikipedia` function from the `main` function:**
-    Now, modify the `search` command block in `main` to call
-    `searchWikipedia` and pass it any arguments that come after the
-    `search` command itself. Use `arguments.sublist(1)` to get all
-    arguments starting from the second one. If no arguments are
-    provided after `search`, pass `null` to `searchWikipedia`.
-
-    ```dart
-    void main(List<String> arguments) {
-      if (arguments.isEmpty || arguments.first == 'help') {
-        printUsage(); 
-      } else if (arguments.first == 'version') {
-        print('Dartpedia CLI version $version');
-      } else if (arguments.first == 'search') {
-        // Add this new block:
-        final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-        searchWikipedia(inputArgs);
-      } else {
-        printUsage();
-      }
-    }
-    ```
-
-    Highlights from the preceding code:
-
-    * `arguments.sublist(1)` creates a new list
-        containing all elements of the `arguments` list *after* the first
-        element (which was `search`).
-    * `arguments.length > 1 ? ... : null;`
-        is a conditional (ternary) operator. It ensures that if no arguments
-        are provided after the `search` command, `inputArgs` becomes `null`, matching the
-        sample code's behavior for `searchWikipedia`'s `arguments` parameter of `List<String>?`.
-
-1.  **Test `searchWikipedia` with arguments:** Using the command line, run the application with a test article
-    title:
-
-    ```bash
-    dart bin/cli.dart search Dart Programming
-    ```
-
-    You should see:
-
-    ```bash
-    searchWikipedia received arguments: [Dart, Programming]
-    ```
-
-    Next, run the same command without the extra arguments:
-
-    ```bash
-    dart bin/cli.dart search
-    ```
-
-    You should see:
-
-    ```bash
-    searchWikipedia received arguments: null
-    ```
-
-1.  **Handle the missing article title and user input with the `stdin` command:** It's more
-    user-friendly to prompt the user if they don't provide an article title on
-    the command line. Use `stdin.readLineSync()` for this.
-
-    First, add the necessary import at the top of your `cli/bin/cli.dart` file:
-
-    ```dart
-    import 'dart:io'; // Add this line at the top
-    ```
-
-    `dart:io` is core library in the Dart SDK, and provides APIs to
-    deal with files, directories, sockets, and
-    HTTP clients and servers, and more. 
-
-    Now, update your `searchWikipedia` function.
-
-    ```dart
-    void searchWikipedia(List<String>? arguments) {
-      late String articleTitle;
-
-      // If the user didn't pass in arguments, request an article title.
-      if (arguments == null || arguments.isEmpty) {
-        print('Please provide an article title.');
-        articleTitle = stdin.readLineSync(); // Await input from the user
-      } else {
-        // Otherwise, join the arguments into the CLI into a single string
-        articleTitle = arguments.join(' ');
-      }
-
-      print('Current article title: $articleTitle');
-    }
-    ```
-
-    This preceding code block introduces a few
-    key concepts:
-
-    * It declares a `late String? articleTitle` variable which will
-        hold the full search query, whether it comes from the command
-        line or user input. `late` is a keyword that tells the
-        analyzer that you, the programmer, promise that this variable
-        won't be null by the time it's used.
-    * An `if/else` statement then checks if command-line arguments for the
-        search were provided.
-    * If arguments are missing, it prompts the user, reads input using
-        `stdin.readLineSync()`, and performs null and empty checks.
-    * If arguments *are* present, it uses `arguments.join(' ')` to combine
-        them into a single search string.
-
-    Highlights from the preceding code:
-
-    * `stdin.readLineSync()` reads a line of text typed by the user into the
-      console. Its return type is `String?`.
-    * `if (inputFromStdin == null || inputFromStdin.isEmpty)` performs a
-      null check and an empty string check. If either is true, the program
-      prints a message and `return`s, exiting the function.
-    * `arguments.join(' ')`: concatenates all elements of the `arguments` list
-      into a single string, using a space as the separator. For example,
-      `['Dart', 'Programming']` becomes `"Dart Programming"`. This is crucial
-      for treating multi-word command-line inputs as a single search phrase.
-
-1.  **Finish `searchWikipedia` to print mock search results:** Update `searchWikipedia` to display
-    messages that look like our program found something. This helps us see what
-    our finished program will do without actually building everything right now.
-    You'll only see these messages if you include a search query when you run
-    the program.
+1.  Open your terminal run the following command:
     
-    For example: `dart bin/cli.dart search Dart Programming`.
-
     ```dart
-    void searchWikipedia(List<String>? arguments) {
-      late String? articleTitle;
+    dart run bin/cli.dart wikipedia "Dart_(programming_language)"
+    ```
+    
+1.  Check to make sure that the application fetched the summary of the "Dart"
+    article from the Wikipedia API and print the raw JSON response to the
+    console. You might see something like:
 
-      if (arguments == null || arguments.isEmpty) {
-        print('Please provide an article title.');
-        articleTitle = stdin.readLineSync();
-        return; // Exits here if input is from stdin
-      } else {
-        articleTitle = arguments.join(' ');
-      }
-
-      print('Looking up articles about "$articleTitle". Please wait.');
-      print('Here ya go!');
-      print('(Pretend this is an article about "$articleTitle")');
+    ```json
+    Looking up articles about "Dart_(programming_language)". Please wait.
+    {
+      "type": "standard",
+      "title": "Dart (programming language)",
+      "displaytitle": "<span class=\"mw-page-title-main\">Dart (programming language)</span>",
+      "namespace": {
+          "id": 0,
+          "text": ""
+        }
+      // ... (rest of the JSON output will be present but truncated here)
     }
     ```
-
-1.  **Final Test Run with both scenarios:**
-
-    Now that the article simulation is set up, test the `searchWikipedia` function in a
-    few different ways:
+1.  Next, try running without arguments (type or paste in "Flutter_(software)"
+    when prompted):
 
     ```bash
-    dart bin/cli.dart search Dart Programming
-    ```
-
-    You should see:
-
-    ```bash
-    Looking up articles about "Dart Programming". Please wait.
-    Here ya go!
-    (Pretend this is an article about "Dart Programming")
-    ```
-
-    Run without arguments (type "Flutter Framework" when prompted):
-
-    ```bash
-    dart bin/cli.dart search
+    dart run bin/cli.dart wikipedia
     ```
 
     ```bash
     Please provide an article title.
-    Flutter Framework
+    Flutter_(software)
+    Looking up articles about "Flutter_(software)". Please wait.
+    {
+      "type": "standard",
+      "title": "Flutter (software)",
+      "displaytitle": "<span class=\"mw-page-title-main\">Flutter (software)</span>",
+      "namespace": {
+          "id": 0,
+          "text": ""
+      }
+    }
     ```
-
-    You have now successfully built the basic `search` command with user input
-    handling, correctly treating multi-word command-line inputs as a single
-    search phrase in the output.
+    You have now successfully implemented the basic `wikipedia` command that
+    fetches real data from an external API!
 
 ## Review
 
-In this chapter, you learned:
+In this chapter, you learned about:
 
-* **Control flow:** Using `if/else` statements to control the execution flow
-    of your program.
-* **Variables and Constants:** Declaring variables with `var`, `const`, and `late String?`.
-* **Lists:** Creating and manipulating lists using `.isNotEmpty`, `.first`,
-    `.sublist`, and `.join()`.
-* **Null Safety:** Understanding nullability (`?`) and using null checks.
-* **Functions:** Defining and calling functions.
-* **String interpolation:** Embedding variables in strings using `$`.
-* **Input/Output:** Reading user input from the console using `stdin.readLineSync()`.
+* **Asynchronous programming:** Understanding `Future`s, `async`, and `await`
+for operations that take time, like network requests.
+* **External packages:** How to add dependencies using `pubspec.yaml` and import
+them into your Dart files.
+* **HTTP requests:** Making network calls using the `package:http` library.
+* **API interaction:** Fetching data from a public API (Wikipedia) and handling
+its response.
+* **Code organization:** Refactoring logic into a dedicated `searchWikipedia`
+function for better structure.
 
 ## Quiz
 
-**Question 1:** Which keyword is used to declare a constant variable in Dart whose value is known at compile time?
-* A) `var`
-* B) `final`
-* C) `const`
-* D) `static`
+**Question 1:** What keyword is used to mark a function as asynchronous in Dart?
+* A) `sync`
+* B) `async`
+* C) `future`
+* D) `thread`
 
-**Question 2:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
-* A) To print output to the console.
-* B) To read a single line of text input from the user.
-* C) To execute a command.
-* D) To check if a file exists.
+**Question 2:** What does the `await` keyword do?
+* A) Cancels the execution of an asynchronous function.
+* B) Declares a new `Future` object.
+* C) Pauses the execution of the current `async` function until a `Future`
+    completes.
+* D) Creates a new thread.
+
+**Question 3:** Which package is used in this guide to make HTTP requests?
+* A) `dart:io`
+* B) `dart:html`
+* C) `package:http`
+* D) `package:async`
 
 ## Next lesson
 
-In the next chapter, you'll dive into asynchronous programming and learn how to
-fetch data from the Wikipedia API using the `http` package. This will allow your
-application to retrieve real data and display it to the user.
+In the next chapter, You'll focus on organizing our code into reusable
+libraries and packages. You'll refactor our application to improve its
+structure and maintainability by creating a separate package for
+handling command-line arguments.
 
-[sound null safety]: https://dart.dev/null-safety
+[Application Programming Interfaces]: https://www.postman.com/what-is-an-api/
+[article summary]: http://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
