@@ -11,12 +11,14 @@ nextpage:
   title: Object oriented dart
 ---
 
-In this chapter, you'll learn how to refactor your Dart code into reusable
-components by creating a separate package for handling command-line arguments.
-This involves understanding Dart libraries, `export` statements, and how to
-structure your project for better organization and maintainability. This
-refactoring will set the stage for building a more advanced command-line
-application in the next part of the guide.
+In this chapter, you'll level up from basic Dart syntax to building command-line
+applications "the Dart way," embracing best practices. You'll learn to refactor
+your code into reusable components by creating a dedicated package for handling
+command-line arguments. This step sets you up for building a more advanced
+command-line application in future chapters, which will integrate specialized
+packages for Wikipedia logic and a robust `command_runner` framework. This
+chapter helps you understand Dart libraries, export statements, and how to
+structure your project for better organization and maintainability.
 
 :::secondary What you'll learn
 
@@ -26,22 +28,28 @@ application in the next part of the guide.
 * Use `export` statements to make library declarations available to other
   packages.
 * Import and use classes from your new package in your `dartpedia` application.
-* Understand the benefits of refactoring code into reusable packages.
+* Recognize the benefits of separating code into packages.
 
 :::
 
 ## Prerequisites
 
-* Completion of Chapter 3, which covered asynchronous programmingcand HTTP
+* Completion of Chapter 3, which covered asynchronous programming and HTTP
   requests.
-* Basic understanding of code organization principles.
 
 ## Tasks
 
 In this chapter, you'll be refactoring the existing `dartpedia` CLI application
-bycextracting the command-line argument parsing logic into a separate package
+by extracting the command-line argument parsing logic into a separate package
 called `command_runner`. This will improve the structure of your project, making
 it more modular and maintainable.
+
+:::note
+There is a `command_runner` class that is part of the officially maintained
+[`args` package](https://pub.dev/packages/args). For this tutorial we're
+building our own `command_runner` class, but in a real project you would likely
+use the class from `args`.
+:::
 
 ### Task 1: Create the command_runner package
 
@@ -82,12 +90,11 @@ logic.
 
     * `library;`: Declares this file as a library.
     * `export 'src/command_runner_base.dart';`: This line is crucial. It makes
-      declarations from `command_runner_base.dart` (and anything else declared
-      in `command_runner_base.dart`) available to other packages that import the
-      `command_runner` package. Without this `export` statement, the classes and
-      functions within `command_runner_base.dart` would be private to the
-      `command_runner` package, and you wouldn't be able to use them in your
-      `dartpedia` application.
+      declarations from `command_runner_base.dart` available to other packages
+      that import the `command_runner` package. Without this `export` statement,
+      the classes and functions within `command_runner_base.dart` would be
+      private to the `command_runner` package, and you wouldn't be able to use
+      them in your `dartpedia` application.
 
 2.  Create the file `command_runner/lib/src/command_runner_base.dart`.
 3.  Add the following `CommandRunner` class to
@@ -101,8 +108,6 @@ logic.
       }
     }
     ```
-    
-    Highlights from the preceding code:
 
     This `CommandRunner` class will serve as a simplified stand-in for now. Its
     `run` method currently just prints the arguments it receives. In later
@@ -271,13 +276,6 @@ In this chapter, you learned about:
 * B) By specifying the package name and the path to the package.
 * C) By using the `git` option and specifying the URL of the Git repository.
 * D) By using the `hosted` option and specifying the URL of the package server.
-
-**Question 3:** What command do you use to create a new Dart package?
-
-* A) `dart create -t application`
-* B) `dart create -t library`
-* C) `dart create -t package`
-* D) `dart create -t console`
 
 ## Next lesson
 
