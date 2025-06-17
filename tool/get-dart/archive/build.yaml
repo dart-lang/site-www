@@ -6,9 +6,14 @@ targets:
         generate_for:
           - web/**.dart
         options:
-          dart2js_args:
-            - --dump-info
-            - --no-frequency-based-minification
-            - --no-source-maps
-            - --show-package-warnings
-            - -O4
+          compilers:
+            dart2js:
+              args:
+                - --dump-info
+                - --no-frequency-based-minification
+                - --no-source-maps
+                - --show-package-warnings
+                - -O4
+            dart2wasm:
+              args:
+                - -O2
