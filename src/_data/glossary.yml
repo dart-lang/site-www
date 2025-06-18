@@ -730,18 +730,21 @@
 - term: "Wildcard"
   id: "wildcard"
   short_description: |-
-    A symbol (`_`) used instead of a variable name to indicate an unused value in patterns and other contexts.
+    A symbol (`_`) used instead of a variable name to
+    indicate an unused value in patterns and other contexts.
   long_description: |-
-    A wildcard is the underscore character (`_`) used to ignore values or indicate
-    that a value is intentionally unused. It's often used in patterns, destructuring,
-    and switch expressions to match any value without binding it to a name.
+    A wildcard is the underscore character (`_`) used to
+    ignore values or indicate that a value is intentionally unused.
+    It's often used in patterns, destructuring, and switch expressions to
+    match any value without binding it to a name.
 
     Wildcards help make the code more intentional by clearly marking
-    values that are not needed in a specific context.
+    values that aren't needed in a specific context.
 
     Example:
+
     ```dart
-    // Ignoring the index in a forEach loop
+    // Ignoring the value in a for-each loop.
     var names = ['Alice', 'Bob', 'Charlie'];
     for (var _ in names) {
       print('Someone is here!');
@@ -749,10 +752,10 @@
     ```
 
     The wildcard pattern is particularly useful when:
-    - You only need certain parts of a destructured value
-    - You want to explicitly show some values are being ignored
-    - You need a catch-all case in pattern matching
 
+    - You only need certain parts of a destructured value.
+    - You want to explicitly show some values are being ignored.
+    - You need a catch-all case in pattern matching.
   related_links:
     - text: "Pattern matching"
       link: "#pattern-matching"
