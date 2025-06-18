@@ -757,14 +757,8 @@
     - You want to explicitly show some values are being ignored.
     - You need a catch-all case in pattern matching.
   related_links:
-    - text: "Pattern matching"
-      link: "#pattern-matching"
-      type: "term"
-    - text: "Destructuring"
-      link: "#destructuring"
-      type: "term"
-    - text: "Patterns documentation"
-      link: "https://dart.dev/language/pattern-types#wildcard"
+    - text: "Wildcard patterns"
+      link: "/language/pattern-types#wildcard"
       type: "doc"
   labels:
     - "language"
