@@ -88,7 +88,7 @@ logic.
 
     Highlights from the preceding code:
 
-    * `library;`: Declares this file as a library.
+    * `library;`: Declares this file as a library, which helps define the boundaries and public interface of a reusable unit of Dart code.
     * `export 'src/command_runner_base.dart';`: This line is crucial. It makes
       declarations from `command_runner_base.dart` available to other packages
       that import the `command_runner` package. Without this `export` statement,
