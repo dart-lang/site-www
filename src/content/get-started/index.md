@@ -25,3 +25,8 @@ follow the instructions on how to [Get the Dart SDK][].
 1. [Build your first app](/get-started/hello-world)
 2. [Add interactivity to your app](/get-started/add-commands)
 3. [Intro to async and HTTP](/get-started/async)
+4. [Packages and librarires](/get-started/packages-libs)
+5. [Object oriented Dart](/get-started/object-oriented)
+6. [Error handling in Dart](/get-started/error-handling)
+7. [Advanced Object Oriented Programming](/get-started/advanced-oop)
+8. [Command Runner Polish](/get-started/command-runner-polish)
