@@ -53,11 +53,12 @@ use the class from `args`.
 
 ### Task 1: Create the command_runner package
 
-First, you'll create a new Dart package to house the command-line argument
+First, create a new Dart package to house the command-line argument
 parsing logic.
 
 1.  Navigate to the root directory of your project (`/dartpedia`).
-2.  Run the following command in your terminal:
+
+1.  Run the following command in your terminal:
 
     ```bash
     dart create -t package command_runner
@@ -69,7 +70,7 @@ parsing logic.
 
 ### Task 2: Implement the CommandRunner class
 
-Now that you have created the `command_runner` package, you need to add a
+Now that you have created the `command_runner` package, add a
 placeholder class that will eventually handle the command-line argument parsing
 logic.
 
@@ -88,16 +89,18 @@ logic.
 
     Highlights from the preceding code:
 
-    * `library;`: Declares this file as a library, which helps define the boundaries and public interface of a reusable unit of Dart code.
-    * `export 'src/command_runner_base.dart';`: This line is crucial. It makes
+    * `library;` declares this file as a library, which helps define the
+      boundaries and public interface of a reusable unit of Dart code.
+    * `export 'src/command_runner_base.dart';` is a crucial line that makes
       declarations from `command_runner_base.dart` available to other packages
       that import the `command_runner` package. Without this `export` statement,
       the classes and functions within `command_runner_base.dart` would be
       private to the `command_runner` package, and you wouldn't be able to use
       them in your `dartpedia` application.
 
-2.  Create the file `command_runner/lib/src/command_runner_base.dart`.
-3.  Add the following `CommandRunner` class to
+1.  Create the file `command_runner/lib/src/command_runner_base.dart`.
+
+1.  Add the following `CommandRunner` class to
     `command_runner/lib/src/command_runner_base.dart`:
 
     ```dart
@@ -109,20 +112,24 @@ logic.
     }
     ```
 
-    This `CommandRunner` class will serve as a simplified stand-in for now. Its
-    `run` method currently just prints the arguments it receives. In later
-    chapters, you'll expand this class to handle complex command parsing. The `Future<void>` return type indicates that this method might perform
-    asynchronous operations but doesn't return a value.
+    Highlights from the preceding code:
+
+    * `CommandRunner` is a class that serves as a simplified stand-in for now. Its
+      `run` method currently just prints the arguments it receives. In later
+      chapters, you'll expand this class to handle complex command parsing.
+    * `Future<void>` is a return type that indicates that this method might perform
+      asynchronous operations, but doesn't return a value.
 
 ### Task 3: Add `command_runner` as a dependency
 
 Now that you've created the `command_runner` package and added a placeholder
 `CommandRunner` class, you need to tell your `cli` application that it depends
 on `command_runner`. Because the `command_runner` package is located locally
-within your project, you will use the `path` dependency option.
+within your project, use the `path` dependency option.
 
 1.  Open the `cli/pubspec.yaml` file.
-2.  Locate the `dependencies` section. Add the following lines:
+
+1.  Locate the `dependencies` section. Add the following lines:
 
     ```yaml
     dependencies:
@@ -131,10 +138,11 @@ within your project, you will use the `path` dependency option.
         path: ../command_runner # Points to your local command_runner package
     ```
 
-    This tells the `cli` application to depend on the `command_runner` package,
-    and specifies that the package is located in the `../command_runner`
-    directory (relative to the `cli` directory).
-3.  Run `dart pub get` in the `cli` directory of your terminal to fetch the new
+    This section tells the `cli` application to depend on the
+    `command_runner` package, and specifies that the package is located in the
+    `../command_runner` directory (relative to the `cli` directory).
+
+1.  Run `dart pub get` in the `cli` directory of your terminal to fetch the new
     dependency.
 
 ### Task 4: Import and use the `command_runner` package
@@ -146,17 +154,17 @@ discussed at the end of Chapter 3.
 
 1.  Open the `cli/bin/cli.dart` file.
 
-2.  Add the following import statement at the top of the file, alongside
+1.  Add the following import statement at the top of the file, alongside
     your other imports:
 
     ```dart
     import 'package:command_runner/command_runner.dart';
     ```
 
-    This imports the `command_runner` package, making the `CommandRunner`
+    This statement imports the `command_runner` package, making the `CommandRunner`
     class available for use.
 
-3.  **Refactor the `main` function and remove old logic:**
+1.  **Refactor the `main` function and remove old logic:**
     Currently, your `main` function from Chapter 3 directly handles commands
     like `version`, `help`, and `wikipedia`, and then calls `searchWikipedia`.
     You'll now replace all of this custom command-handling logic with a single
@@ -203,34 +211,39 @@ discussed at the end of Chapter 3.
 
     Highlights from the preceding code:
 
-    * `void main(List<String> arguments) async`: Notice that `main` is now
-    declared `async`. This is essential because `runner.run()` returns a
-    `Future`, and `main` must `await` its completion to ensure the program waits
-    for all asynchronous tasks to finish before exiting. This directly addresses
-    the program not exiting cleanly issue from Chapter 3.
-    * `var runner = CommandRunner();`: This creates an instance of the
-    `CommandRunner` class from your new `command_runner` package.
-    * `await runner.run(arguments);`: This calls the `run` method on the
-    `CommandRunner` instance, passing in the command-line arguments.
-    * **Removed Functions:** The `printUsage`, `searchWikipedia`, and
+    * `void main(List<String> arguments) async` directly addresses
+      the program not exiting cleanly issue from Chapter 3.
+      Notice that `main` is now declared `async`. This is essential because
+      `runner.run()` returns a `Future`, and `main` must `await` its completion
+      to ensure the program waits for all asynchronous tasks to finish before exiting. 
+    * `var runner = CommandRunner();` creates an instance of the
+      `CommandRunner` class from your new `command_runner` package.
+    * `await runner.run(arguments);` calls the `run` method on the
+      `CommandRunner` instance, passing in the command-line arguments.
+    
+    Removed Functions:
+
+    The `printUsage`, `searchWikipedia`, and
     `getWikipediaArticle` functions are now completely removed from
-    `cli/bin/cli.dart`. Their logic will be redesigned and moved into the `command_runner` package in future chapters, as part of building the full 
+    `cli/bin/cli.dart`. Their logic will be redesigned and moved into the
+    `command_runner` package in future chapters, as part of building the full 
     command-line framework.
 
 ### Task 5: Run the application
 
 Now that you've refactored the code and updated the `cli` application to use the
-`command_runner` package, you can run the application to verify that everything
+`command_runner` package, run the application to verify that everything
 is working correctly at this stage.
 
 1.  Open your terminal and navigate to the `cli` directory.
-2.  Run the `wikipedia` command:
+
+1.  Run the `wikipedia` command:
 
     ```bash
     dart run bin/cli.dart wikipedia Dart
     ```
 
-3.  The application should now execute without errors and print the arguments
+1.  Ensure that the application now executes without errors and print the arguments
     to the console, demonstrating that the control has successfully transferred
     to your new `command_runner` package.
 
