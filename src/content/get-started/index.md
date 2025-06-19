@@ -25,3 +25,4 @@ follow the instructions on how to [Get the Dart SDK][].
 1. [Build your first app](/get-started/hello-world)
 2. [Add interactivity to your app](/get-started/add-commands)
 3. [Intro to async and HTTP](/get-started/async)
+4. [Packages and libraries](/get-started/packages-libs)
