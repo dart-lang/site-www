@@ -45,10 +45,10 @@ called `command_runner`. This will improve the structure of your project, making
 it more modular and maintainable.
 
 :::note
-There is a `command_runner` class that is part of the officially maintained
+There is a `CommandRunner` class that is part of the officially maintained
 [`args` package](https://pub.dev/packages/args). For this tutorial we're
-building our own `command_runner` class, but in a real project you would likely
-use the class from `args`.
+building our own `CommandRunner` class, but in a real project you would likely
+use the `args` package to build a CLI application.
 :::
 
 ### Task 1: Create the command_runner package
