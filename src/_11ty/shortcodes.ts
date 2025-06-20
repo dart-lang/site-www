@@ -73,7 +73,10 @@ function _setupTabs(eleventyConfig: UserConfig) {
     let tabMarkup = `<div id="${tabWrapperId}" class="tabs-wrapper${wrapped ? " wrapped" : ""}" ${saveKey ? `data-tab-save-key="${slugify(saveKey)}"` : ''}><ul class="nav-tabs" role="tablist">`;
 
     // Only select child tab panes that don't already have a parent wrapper.
-    const tabPanes = selectAll('.tab-pane[data-tab-wrapper-id="undefined"]', fromHtml(content));
+    const tabPanes = selectAll(
+        '.tab-pane[data-tab-wrapper-id="undefined"]',
+        fromHtml(content, {'fragment': true}),
+    );
     if (tabPanes.length <= 1) {
       throw new Error(`Tabs with save key of ${saveKey} needs more than one tab!`);
     }
@@ -83,6 +86,16 @@ function _setupTabs(eleventyConfig: UserConfig) {
       // Keep track of the tab wrapper ID to avoid including
       // a duplicate of this tab's contents in a parent wrapper.
       tabPane.properties.dataTabWrapperId = tabWrapperId;
+
+      // The tab pane children are non-rendered Markdown still,
+      // so we need to convert them to raw nodes to prevent
+      // hast-util-to-html from re-escaping their content.
+      tabPane.children.forEach(child => {
+        if (child.type === 'text') {
+          // @ts-ignore
+          child.type = 'raw';
+        }
+      });
 
       const tabId = tabPane.properties.dataTabId! as string;
       const tabPanelId = `${tabId}-panel`;
@@ -102,7 +115,9 @@ function _setupTabs(eleventyConfig: UserConfig) {
     }
 
     tabMarkup += '</ul><div class="tab-content">\n';
-    tabMarkup += toHtml(tabPanes);
+    // The content is Markdown and controlled by us,
+    // so specify allowDangerousHtml to avoid double escaping.
+    tabMarkup += toHtml(tabPanes, {allowDangerousHtml: true});
     tabMarkup += '\n</div></div>';
 
     return tabMarkup;
