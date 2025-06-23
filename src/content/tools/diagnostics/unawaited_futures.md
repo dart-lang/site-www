@@ -43,7 +43,7 @@ returns a future, but the future isn't awaited:
 
 ```dart
 Future<void> f() async {
-  [!g();!]
+  [!g!]();
 }
 
 Future<int> g() => Future.value(0);

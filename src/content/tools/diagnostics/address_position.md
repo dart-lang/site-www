@@ -8,7 +8,7 @@ show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 
-_The '.address' expression can only be used as an argument to a leaf native
+_The '.address' expression can only be used as argument to a leaf native
 external call._
 
 ## Description
@@ -51,7 +51,7 @@ import 'dart:typed_data';
 external void leafCall(Pointer<Uint8> ptr);
 
 void main() {
-  final data = Uint8List(10); 
+  final data = Uint8List(10);
 
   // Correct: Using .address directly as an argument to a leaf call.
   leafCall(data.address);
