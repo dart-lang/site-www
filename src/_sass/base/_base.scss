@@ -136,8 +136,14 @@ blockquote {
   margin: 0;
   margin-block-end: 1rem;
 
-  p:last-child {
-    margin-bottom: 0;
+  > p, > li, > ul, > ol {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
