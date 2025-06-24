@@ -8,8 +8,8 @@ show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 
-_The type '{0}' is not exhaustively matched by the switch cases since it doesn't
-match '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't
+match the pattern '{1}'._
 
 ## Description
 

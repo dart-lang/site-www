@@ -3514,6 +3514,7 @@ _Doc imports can't be deferred._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_be_deferred" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_be_deferred" title="Copy doc_import_cannot_be_deferred to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3531,6 +3532,7 @@ _Doc imports can't have show or hide combinators._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_combinators" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_combinators" title="Copy doc_import_cannot_have_combinators to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3548,6 +3550,7 @@ _Doc imports can't have configurations._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_configurations" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_configurations" title="Copy doc_import_cannot_have_configurations to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3565,6 +3568,7 @@ _Doc imports can't have prefixes._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_prefix" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_prefix" title="Copy doc_import_cannot_have_prefix to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3582,6 +3586,7 @@ _A dot shorthand can't be used where there is no context type._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/dot_shorthand_missing_context" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="dot_shorthand_missing_context" title="Copy dot_shorthand_missing_context to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3594,13 +3599,15 @@ _A dot shorthand can't be used where there is no context type._
 
 _The static getter '{0}' isn't defined for the context type '{1}'._
 
-_The static method or constructor '{0}' isn't defined for the type '{1}'._
+_The static method or constructor '{0}' isn't defined for the context type
+'{1}'._
 
 </div>
 <div class="card-actions">
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/dot_shorthand_undefined_member" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="dot_shorthand_undefined_member" title="Copy dot_shorthand_undefined_member to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -8609,6 +8616,7 @@ that the supertype intentionally disallows._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_reopen_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="invalid_reopen_annotation" title="Copy invalid_reopen_annotation to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -9048,6 +9056,7 @@ _The member '{0}' can only be used within instance members of subclasses of
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_use_of_protected_member" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="invalid_use_of_protected_member" title="Copy invalid_use_of_protected_member to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -11874,8 +11883,8 @@ representation type._
 </div>
 <div class="card-content">
 
-_The type '{0}' is not exhaustively matched by the switch cases since it doesn't
-match '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't
+match the pattern '{1}'._
 
 </div>
 <div class="card-actions">
@@ -11893,8 +11902,8 @@ match '{1}'._
 </div>
 <div class="card-content">
 
-_The type '{0}' is not exhaustively matched by the switch cases since it doesn't
-match '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't
+match the pattern '{1}'._
 
 </div>
 <div class="card-actions">
@@ -12010,6 +12019,7 @@ _The parameter type of '==' operators should be non-nullable._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/non_nullable_equals_parameter" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="non_nullable_equals_parameter" title="Copy non_nullable_equals_parameter to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -16141,6 +16151,7 @@ _Unnecessary wildcard pattern._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_wildcard_pattern" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_wildcard_pattern" title="Copy unnecessary_wildcard_pattern to your clipboard.">Copy name</button>
 </div>
 </div>
