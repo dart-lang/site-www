@@ -35,7 +35,11 @@ Before you begin this chapter, ensure you:
 * [Installed the Dart SDK](/get-dart).
 * Reviewed the [Dart overview](/overview) (if you're new to Dart).
 
-## Task 1: Confirm your Dart setup
+## Tasks
+
+Create the classic Hello World in Dart to get your project started.
+
+### Task 1: Confirm your Dart setup
 
 First, make sure Dart is ready to go on your system by following these steps.
 
@@ -51,13 +55,13 @@ First, make sure Dart is ready to go on your system by following these steps.
     (the version numbers might be different):
 
     ```bash
-    Dart SDK version: 3.8.0 (stable) (None) on "linux_x64"
+    Dart SDK version: 3.8.1 (stable) (None) on "linux_x64"
     ```
 
     If you see an error like "command not found," refer to the
     [Dart installation guide](/get-dart) to set up your environment.
 
-## Task 2: Create a new Dart project
+### Task 2: Create a new Dart project
 
 Now, create your first Dart command-line application.
 
@@ -113,7 +117,7 @@ Now, create your first Dart command-line application.
     Their specifics will be covered in future chapters.
     :::
 
-## Task 3: Run your first Dart program
+### Task 3: Run your first Dart program
 
 Next, run your program to test it out.
 
@@ -141,7 +145,7 @@ Next, run your program to test it out.
 
     Congratulations! You've successfully run your first Dart program!
 
-## Task 4: Make your first code change
+### Task 4: Make your first code change
 
 Next, modify the code that generated `Hello world: 42!`.
 
@@ -168,26 +172,20 @@ Next, modify the code that generated `Hello world: 42!`.
     change the `print` statement to display a simple greeting:
 
     ```dart title="bin/cli.dart" highlightLines=1,4
-    // import 'package:cli/cli.dart' as cli;
+    import 'package:cli/cli.dart' as cli; // Delete this entire line
 
     void main(List<String> arguments) {
       print('Hello, Dart!'); // Change this line
     }
     ```
 
-    :::note
-    You commented out the `import 'package:cli/cli.dart'` line to
-    avoid an unused import warning.
-    You will learn about this soon and then fully remove the line later.
-    :::
-
-1.  Save your file. Then in the terminal, run your program again:
+2.  Save your file. Then in the terminal, run your program again:
 
     ```bash
     dart run
     ```
 
-1.  Check to make sure that you see the following:
+3.  Check to make sure that you see the following:
 
     ```bash
     Building package executable...
