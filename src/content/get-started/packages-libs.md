@@ -98,10 +98,10 @@ logic.
       private to the `command_runner` package, and you wouldn't be able to use
       them in your `dartpedia` application.
 
-1.  Create the file `command_runner/lib/src/command_runner_base.dart`.
+1.  Open the file `command_runner/lib/src/command_runner_base.dart`.
 
-1.  Add the following `CommandRunner` class to
-    `command_runner/lib/src/command_runner_base.dart`:
+1.  Remove any existing placeholder code and add the following `CommandRunner`
+    class to `command_runner/lib/src/command_runner_base.dart`:
 
     ```dart
     class CommandRunner {
@@ -131,6 +131,12 @@ within your project, use the `path` dependency option.
 
 1.  Locate the `dependencies` section. Add the following lines:
 
+    :::note
+    Make sure you open the correct `/dartpedia/cli/pubspec.yaml` file. When you
+    created the `command_runner` package, it also came with a
+    `/dartpedia/command_runner/pubspec.yaml` file.
+    :::
+
     ```yaml
     dependencies:
       http: ^1.3.0 # Keep your existing http dependency
@@ -142,8 +148,8 @@ within your project, use the `path` dependency option.
     `command_runner` package, and specifies that the package is located in the
     `../command_runner` directory (relative to the `cli` directory).
 
-1.  Run `dart pub get` in the `cli` directory of your terminal to fetch the new
-    dependency.
+2.  Run `dart pub get` in the `/dartpedia/cli` directory of your terminal to
+    fetch the new dependency.
 
 ### Task 4: Import and use the `command_runner` package
 
@@ -176,6 +182,7 @@ discussed at the end of Chapter 3.
     ```dart
     import 'dart:io';
     import 'package:http/http.dart' as http;
+    import 'package:command_runner/command_runner.dart';
 
     const version = '0.0.1';
 
@@ -200,8 +207,9 @@ discussed at the end of Chapter 3.
     **Now, replace the entire contents of `cli/bin/cli.dart` (except for the `http` import) with the following updated version:**
 
     ```dart
-    import 'package:http/http.dart' as http; // Keep this import
-    import 'package:command_runner/command_runner.dart'; // Add this new import
+    import 'dart:io';
+    import 'package:http/http.dart' as http;
+    import 'package:command_runner/command_runner.dart';
 
     void main(List<String> arguments) async { // main is now async and awaits the runner
       var runner = CommandRunner(); // Create an instance of your new CommandRunner
@@ -240,7 +248,7 @@ is working correctly at this stage.
 1.  Run the `wikipedia` command:
 
     ```bash
-    dart run bin/cli.dart wikipedia Dart
+    dart run bin/cli.dart wikipedia Computer_programming
     ```
 
 1.  Ensure that the application now executes without errors and print the arguments
@@ -248,7 +256,7 @@ is working correctly at this stage.
     to your new `command_runner` package.
 
     ```bash
-    CommandRunner received arguments: [wikipedia, Dart]
+    CommandRunner received arguments: [wikipedia, Computer_programming]
     ```
 
     :::important
