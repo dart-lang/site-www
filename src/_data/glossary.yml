@@ -196,18 +196,22 @@
     - "Procedure"
 - term: "Immutable"
   short_description: |-
-    An object whose state cannot be changed after it is created.
+    An object whose state, including all nested values, cannot be changed after it is created.
   long_description: |-
     An immutable object is one whose state cannot be modified after it is created.
-    This means all of its fields must be final.
+    This means:
+      - All of its fields must be `final` (cannot be reassigned), and
+      - The values of those fields must themselves be immutable (cannot be mutated).
 
     Immutability helps ensure consistency and enables
     safer use in concurrent or reactive code.
 
-    In Dart, you can make a class immutable by:
-      - Marking it with the `@immutable` annotation from `meta` package
-      - Making all fields `final`
-
+    In Dart, you can have the analyzer help you ensure that a class is immutable by:
+    - Marking it with the `@immutable` annotation from the `meta` package  
+      (this does not enforce anything at runtime, but gives analyzer warnings if the class
+      has non-final fields or fields with mutable types)
+    - Making all fields `final`
+    
     Example:
 
       ```dart
@@ -222,8 +226,11 @@
       }
       ```
 
-    Once created, you cannot modify a `User` instance. You must create a new one
-    to "change" any data.
+    Once created, you cannot modify a User instance, You must create a new one to "change" any data.
+
+    Additionally, all Dart const values are immutable. For example, const [1, 2, 3] creates an immutable list.
+    If a class has a const (non-factory) constructor, then all its fields must be final, 
+    ensuring that its instances are deeply immutable at compile time.
 
   related_links:
     - text: "final"
