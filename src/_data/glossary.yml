@@ -194,7 +194,7 @@
     - "umbrella term"
   alternate:
     - "Procedure"
-    
+
 - term: "Immutable"
   short_description: |-
     An object whose state, including all nested values, cannot be changed after it is created.
@@ -207,11 +207,11 @@
     Immutability helps ensure consistency and enables
     safer use in concurrent or reactive code.
 
-    In Dart, you can have the analyzer help you ensure that a class is immutable by:
-    - Marking it with the `@immutable` annotation from the `meta` package  
-      (this does not enforce anything at runtime, but gives analyzer warnings if the class
-      has non-final fields or fields with mutable types)
-    - Making all fields `final`
+    In Dart, you can make a class immutable by:
+    - Declaring all fields as final, so they can’t be reassigned
+    - Ensuring the field values themselves are immutable
+    - Optionally, using the @immutable annotation from the meta package
+    (This lets the analyzer warn you if any field is not final or refers to a mutable type)
     
     Example:
 
