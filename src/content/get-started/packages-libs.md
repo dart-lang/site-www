@@ -3,6 +3,10 @@ title: Organizing Dart code with packages and libraries
 short-title: Packages and libraries
 description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
+sitemap: false
+noindex: true
+showToc: false
+show_breadcrumbs: true
 prevpage:
   url: /get-started/async
   title: Introduction to async and HTTP

@@ -12,16 +12,9 @@ final class ServeSiteCommand extends Command<int> {
   @override
   Future<int> run() async {
     final process = await Process.start(
-      'npx',
-      [
-        'tsx',
-        'node_modules/@11ty/eleventy/cmd.cjs',
-        '--config=eleventy.config.ts',
-        '--serve',
-        '--incremental',
-        '--port=${Platform.environment['PORT'] ?? 4000}',
-      ],
-      environment: const {'PRODUCTION': 'false'},
+      Platform.resolvedExecutable,
+      ['run', 'jaspr_cli:jaspr', 'serve', '--dart-define=PRODUCTION=false'],
+      workingDirectory: 'site',
       runInShell: true,
       mode: ProcessStartMode.inheritStdio,
     );

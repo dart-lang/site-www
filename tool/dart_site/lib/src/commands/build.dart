@@ -25,15 +25,13 @@ final class BuildSiteCommand extends Command<int> {
   Future<int> run() async {
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
-    final process = await Process.start(
-      'npx',
-      const [
-        'tsx',
-        'node_modules/@11ty/eleventy/cmd.cjs',
-        '--config=eleventy.config.ts',
-      ],
-      environment: {'PRODUCTION': '$productionRelease'},
-    );
+    final process = await Process.start(Platform.resolvedExecutable, [
+      'run',
+      'jaspr_cli:jaspr',
+      'build',
+      '--sitemap-domain=https://dart.dev',
+      '--dart-define=PRODUCTION=$productionRelease',
+    ], workingDirectory: 'site');
 
     await stdout.addStream(process.stdout);
     await stderr.addStream(process.stderr);

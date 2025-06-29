@@ -3,6 +3,10 @@ title: Your first Dart program
 short-title: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
+sitemap: false
+noindex: true
+showToc: false
+show_breadcrumbs: true
 prevpage:
   url: /get-started
   title: Get started

@@ -1,0 +1,45 @@
+name: dart_dev_site
+publish_to: none
+homepage: https://dart.dev
+
+resolution: workspace
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  collection: ^1.19.1
+  html: ^0.15.6
+  jaspr: ^0.19.1
+  jaspr_content: ^0.2.0
+  jaspr_router: ^0.7.0
+  liquify: ^1.1.0
+  markdown: ^7.3.0
+  meta: ^1.17.0
+  path: ^1.9.1
+
+dev_dependencies:
+  analysis_defaults:
+    path: ../site-shared/pkgs/analysis_defaults
+  build_runner: ^2.5.2
+  build_web_compilers: ^4.1.5
+  jaspr_builder: ^0.19.1
+  jaspr_cli: ^0.19.1
+  jaspr_lints: ^0.4.0
+  lints: ^5.1.1
+  sass: ^1.89.2
+  sass_builder: ^2.2.1
+
+dependency_overrides:
+  jaspr:
+    git:
+      url: https://github.com/schultek/jaspr.git
+      ref: fix/markdown-html-syntax
+      path: packages/jaspr
+  jaspr_content:
+    git:
+      url: https://github.com/schultek/jaspr.git
+      ref: fix/markdown-html-syntax
+      path: packages/jaspr_content
+
+jaspr:
+  mode: static

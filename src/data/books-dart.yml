@@ -1,0 +1,48 @@
+- title: 'Dart Apprentice: Fundamentals'
+  authors:
+    - Jonathan Sande
+  publisher: Kodeco
+  cover: dart-apprentice-fundamentals.webp
+  link: "https://www.kodeco.com/books/dart-apprentice-fundamentals"
+  desc: "Dart Apprentice: Fundamentals is the first of a two-book series that will teach you all the basic concepts you need to master this powerful and versatile language."
+- title: 'Dart Apprentice: Beyond the Basics'
+  authors:
+    - Jonathan Sande
+  publisher: Kodeco
+  cover: dart-apprentice-beyond-the-basics.webp
+  link: "https://www.kodeco.com/books/dart-apprentice-beyond-the-basics"
+  desc: "Dart Apprentice: Beyond the Basics is the second of a two-book series that will teach you all the important concepts you need to master this powerful and versatile language."
+- title: "Data Structures & Algorithms in Dart"
+  authors:
+    - Jonathan Sande
+    - Vincent Ngo
+    - Kelvin Lau
+  publisher: raywenderlich
+  cover: data-structures-algorithms-dart.webp
+  link: "https://www.raywenderlich.com/books/data-structures-algorithms-in-dart"
+  desc: "Take your programming skills to the next level. Learn to build stacks, queues, trees, graphs, and efficient sorting and searching algorithms from scratch."
+- title: "The Art of Dart: Master the Dart Programming Language"
+  authors:
+   - Kenneth Choi
+  publisher: Kenneth Choi
+  cover: art-of-dart.webp
+  link: "https://www.amazon.com/Art-Dart-Master-Programming-Language/dp/B0CRGKQX6W"
+  desc: "The Art of Dart is a comprehensive guide to mastering the Dart programming language! It caters to all skill levels, making it perfect for beginners and experienced coders. Inside, you'll find elegant coding practices, explore both foundational and complex programming concepts, and gain confidence in solving coding challenges. With a clear and concise approach, The Art of Dart transforms coding into a creative endeavor."
+- title: "O guia de Dart"
+  authors:
+    - Julio Bitencourt
+  publisher: Casa do Código
+  cover: o-guia-de-dart.webp
+  link: "https://www.casadocodigo.com.br/products/livro-dart"
+  desc: |-
+    <p>Fundamentos, prática, conceitos avançados e tudo mais.
+    Embarque neste livro que te guiará no aprendizado de Dart.</p>
+    <p>Fundamentals, practice, the concepts and everything.
+    Embark on a journey of learning Dart in Portuguese.</p>
+- title: "Основы Dart"
+  authors:
+    - Stanislav Chernyshev
+  publisher: Издательский дом «Питер»
+  cover: basics-dart.webp
+  link: "https://www.piter.com/collection/biblioteka-programmista/product/osnovy-dart"
+  desc: "Книга «Основы Dart» адресована тем, кто интересуется этим удивительным языком программирования. Вы узнаете об истории создания, синтаксисе и особенностях языка, таких как встроенные типы данных, и многом другом. В главе 2 вас ждет проект, который будет изменяться и расти вместе с вашими знаниями и навыками, а к главе 6 преобразится в полноценное клиент-серверное приложение. После каждой новой итерации проекта, вас будут ждать предложения по внесению изменений в его кодовую базу, что позволит прокачать свои hard-скиллы. Исходный код рассматриваемых в книге примеров можно найти в GitHub-репозитории автора (весь код в книге соответствует Dart 3.4)."

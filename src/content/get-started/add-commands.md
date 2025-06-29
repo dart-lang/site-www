@@ -4,6 +4,10 @@ short-title: Add commands
 description: >-
   Add simple commands to your cli application. Learn the fundamentals of Dart
   syntax including control flow, collections, variables, functions, and more.
+sitemap: false
+noindex: true
+showToc: false
+show_breadcrumbs: true
 prevpage:
   url: /get-started/hello-world
   title: Build your first app

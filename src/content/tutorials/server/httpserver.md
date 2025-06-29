@@ -1,7 +1,7 @@
 ---
 title: "Write HTTP servers"
 description: Communicate over the internet
-toc: false
+showToc: false
 prevpage:
   url: /tutorials/server/fetch-data
   title: Fetch data from the internet
