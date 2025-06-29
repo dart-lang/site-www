@@ -87,7 +87,7 @@ The declaration also introduces:
 - An implicit constructor: `E(int i) : i = i`.
 
 The representation object gives the extension type access to an object
-at the underlying type.
+of the underlying type.
 The object is in scope in the extension type body, and
 you can access it using its name as a getter:
 
