@@ -207,11 +207,11 @@ null checks, and string interpolation.
        
        :::note
        Dart enforces [sound null safety][], which means you
-       have to explicity state when a variable can be null. Any
-       variable that isn't marked as nullable is *guarateed* to never
+       have to explicitly state when a variable can be null. Any
+       variable that isn't marked as nullable is *guaranteed* to never
        be null, even in production. The purpose of null-safety isn't
        to stop you from ever using null in your code, because
-       representing the absense of a value can be valuable. Rather,
+       representing the absence of a value can be valuable. Rather,
        it's to force you to consider nullability and therefor be more
        careful about it. Along with the analyzer, this helps prevent
        one of the most common runtime crashes in programming:

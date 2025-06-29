@@ -860,7 +860,7 @@
     }
     ```
 
-    In the preceeding example, the uncaught error inside the async callback
+    In the preceding example, the uncaught error inside the async callback
     is intercepted by the custom zone.
 
   related_links:

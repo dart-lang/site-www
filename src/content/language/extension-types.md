@@ -397,7 +397,7 @@ void testE() {
 You can use an extension type this way to *replace* the interface
 of an existing type. This allows you to model an interface that is
 makes sense for the constraints of your new type
-(like the `IdNumber` example in the introduction), while also benefitting from
+(like the `IdNumber` example in the introduction), while also benefiting from
 the performance and convenience of a simple pre-defined type, like `int`.
 
 This use case is as close as you can get to the complete encapsulation

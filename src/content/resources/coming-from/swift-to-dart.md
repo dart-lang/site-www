@@ -2371,7 +2371,7 @@ For example, the `List` class has a generic definition:
 `class List<E>`. Generic type `E` refers to the type
 of the list's contents. Normally,
 this type is automatically inferred,
-which is used in some membery types of the `List` class's.
+which is used in some member types of the `List` class's.
 (For example, its first getter returns a value of type `E`).
 When defining a `List` literal,
 you can explicitly define the generic type as follows:
