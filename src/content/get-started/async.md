@@ -8,7 +8,7 @@ prevpage:
   title: Make your program interactive
 nextpage:
   url: /get-started/packages-libs
-  title: Packages and librarires
+  title: Packages and libraries
 ---
 
 In this chapter, you'll explore asynchronous programming in Dart, allowing your

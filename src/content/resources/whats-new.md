@@ -141,7 +141,7 @@ check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Introduced the new type system algoritm, [inference using bounds][].
+* Introduced the new type system algorithm, [inference using bounds][].
 * Added links to our new [Bluesky][] account. 
 * Updated the [`dart format`][] page to reflect the new formatter style,
   including the new [configurable line length][] feature.

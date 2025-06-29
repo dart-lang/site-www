@@ -423,7 +423,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
   * `patterns`
   * `records`
-  * `class-modifers`
+  * `class-modifiers`
   * `sealed-class`
 
 ### Language {:.no_toc}
