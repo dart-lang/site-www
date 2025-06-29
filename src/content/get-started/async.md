@@ -3,6 +3,10 @@ title: Intro to async and HTTP
 short-title: Async and HTTP
 description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
+sitemap: false
+noindex: true
+showToc: false
+show_breadcrumbs: true
 prevpage:
   url: /get-started/add-commands
   title: Make your program interactive

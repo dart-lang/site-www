@@ -2,7 +2,7 @@
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
 show_breadcrumbs: true
-body_class: diagnostics
+bodyClass: diagnostics
 js: [{url: '/assets/js/linter-rules.js', defer: true}]
 ---
 
@@ -128,7 +128,6 @@ TODO(parlough): Generate this HTML with some sort of component mechanism.
   <div class="search-row">
     <div class="search-wrapper">
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
-      <input type="search" placeholder="Search rules..." aria-label="Search linter rules by names">
     </div>
     {%- comment %}<button class="empty-button icon-button" id="sort">
       <span class="material-symbols">sort</span>

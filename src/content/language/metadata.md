@@ -1,7 +1,7 @@
 ---
 title: Metadata
 description: Metadata and annotations in Dart.
-toc: false
+showToc: false
 prevpage:
   url: /language/functions
   title: Functions

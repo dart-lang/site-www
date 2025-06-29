@@ -5,7 +5,7 @@ description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
 show_breadcrumbs: true
-body_class: diagnostics
+bodyClass: diagnostics
 ---
 
 {%- comment %}

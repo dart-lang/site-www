@@ -6,8 +6,9 @@ environment:
   sdk: ^3.8.0
 
 workspace:
-  - tool/dart_site
   - examples
+  - site
+  - tool/dart_site
   - tool/get-dart
 
 dev_dependencies:

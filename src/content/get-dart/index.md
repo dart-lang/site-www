@@ -32,22 +32,12 @@ to develop and run Dart code.
 {% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
 {% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Final deprecation" title="Final deprecation">report</span>' %}
 {% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
-{% assign macversions = 'Latest three versions of macOS:<br>' %}
-{% for version in macos limit:3 %}
-{%- if version.eol == false -%}
-{% capture maclinkversion -%}
-[{{version.codename}}]({{version.link}}) ({{version.cycle}})
-{%- endcapture -%}
-{% assign macversions = macversions | append: maclinkversion %}
-{%- unless forloop.last -%}{% assign macversions = macversions | append: ', ' %}{% endunless -%}
-{%- endif %}
-{% endfor %}
 
-| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
-|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
-| Windows  | {{yes}} |  {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    | {{yes}} |  {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
-| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
+| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                                                                                                                                                                                             |
+|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows  | {{yes}} |   {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                                                                                                                                                                                            |
+| Linux    | {{yes}} |   {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support                                                                                                                                                                             |
+| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | Latest three versions of macOS:<br>{% for version in macos limit:3 %}{%- if version.eol == false -%}[{{version.codename}}]({{version.link}}) ({{version.cycle}}){%- unless forloop.last -%}, {% endunless -%} {%- endif %} {% endfor %} |
 
 {:.table .table-striped}
 

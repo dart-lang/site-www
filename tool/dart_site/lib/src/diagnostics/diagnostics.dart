@@ -303,7 +303,7 @@ description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
 show_breadcrumbs: true
-body_class: diagnostics
+bodyClass: diagnostics
 ---
 
 {%- comment %}
@@ -420,7 +420,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 ''');
 
@@ -449,7 +449,7 @@ canonical: https://dart.dev/tools/diagnostics/$diagnosticName
 redirectTo: /tools/diagnostics/$diagnosticName
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 ''');
         diagnostic.writeOn(buffer);

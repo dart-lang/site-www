@@ -1,7 +1,7 @@
 ---
 title: "dart: The Dart command-line tool"
 description: "The reference page for using 'dart' in a terminal window."
-toc: false
+showToc: false
 ---
 
 The `dart` tool (`bin/dart`)
