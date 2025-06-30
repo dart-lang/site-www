@@ -32,7 +32,7 @@
       ```
       The context type `List<int>` lets the compiler infer the list type as `<int>[]`.
 
-    - **Implicit coercion** (e.g., downcast):
+    - **Implicit downcast**:
       ```dart
       String asString(dynamic value) => value;
       ```
