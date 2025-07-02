@@ -21,11 +21,7 @@ final class TableWrapperExtension implements PageExtension {
           final prevNode = processedNodes.last;
           if (prevNode is ElementNode &&
               prevNode.tag.toLowerCase() == 'div' &&
-              prevNode.attributes['class'] == 'table-wrapper' &&
-              prevNode.children?.length == 1 &&
-              prevNode.children![0] is ElementNode &&
-              (prevNode.children![0] as ElementNode).tag.toLowerCase() ==
-                  'table') {
+              (prevNode.attributes['class'] ?? '').contains('table-wrapper')) {
             // This table is already wrapped, skip wrapping.
             processedNodes.add(_processNode(node));
             continue;
@@ -53,7 +49,8 @@ final class TableWrapperExtension implements PageExtension {
     if (tagName == 'table') return node;
 
     // Check if this is already a table-wrapper div.
-    if (tagName == 'div' && node.attributes['class'] == 'table-wrapper') {
+    if (tagName == 'div' &&
+        (node.attributes['class'] ?? '').contains('table-wrapper')) {
       // Don't recurse into table-wrapper divs to avoid double wrapping.
       return node;
     }
