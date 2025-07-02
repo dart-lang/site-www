@@ -51,14 +51,14 @@ previous section.
 
 The `hello_world` example has the following files:
 
-| **Source file**                  | **Description**                                                                |
-| -------------------------------- | ------------------------------------------------------------------------------ |
-| [`hello.dart`]                   | A Dart file that uses the `hello_world()` function from a C library.           |
-| [`pubspec.yaml`]                 | The Dart [pubspec](/tools/pub/pubspec) file, with an SDK lower bound of 3.4.   |
-| [`hello_library/hello.h`]        | Declares the `hello_world()` function.                                         |
-| [`hello_library/hello.c`]        | A C file that imports `hello.h` and defines the `hello_world()` function.      |
-| [`hello_library/hello.def`]      | A module-definition file which specifies information used when building a DLL. |
-| [`hello_library/CMakeLists.txt`] | A CMake build file for compiling the C code into a dynamic library.            |
+| **Source file**                    | **Description**                                                                |
+|------------------------------------|--------------------------------------------------------------------------------|
+| [`hello.dart`][]                   | A Dart file that uses the `hello_world()` function from a C library.           |
+| [`pubspec.yaml`][]                 | The Dart [pubspec](/tools/pub/pubspec) file, with an SDK lower bound of 3.4.   |
+| [`hello_library/hello.h`][]        | Declares the `hello_world()` function.                                         |
+| [`hello_library/hello.c`][]        | A C file that imports `hello.h` and defines the `hello_world()` function.      |
+| [`hello_library/hello.def`][]      | A module-definition file which specifies information used when building a DLL. |
+| [`hello_library/CMakeLists.txt`][] | A CMake build file for compiling the C code into a dynamic library.            |
 
 {: .table .table-striped }
 
@@ -104,7 +104,7 @@ consult Apple's [Code Signing Guide.][codesign]
 #### Leverage dart:ffi
 
 To learn how to call a C function using the `dart:ffi` library,
-review the [`hello.dart` file]({{hw}}/hello.dart).
+review the [`hello.dart` file][`hello.dart`].
 This section explains the contents of this file.
 
 1. Import `dart:ffi`.
@@ -210,16 +210,12 @@ The `dart:ffi` library provides multiple types that implement [`NativeType`][]
 and represent native types in C. You can instantiate some native types.
 Some other native types can be used only as markers in type signatures.
 
-[`NativeType`]: {{dart-ffi}}/NativeType-class.html
+[`NativeType`]: {{site.dart-api}}/dart-ffi/NativeType-class.html
 
 ### Can instantiate these type signature markers
 
 The following native types can be used as markers in type signatures.
 They or their subtypes _can_ be instantiated in Dart code.
-
-{% capture dart-ffi -%}
-{{site.dart-api}}/dart-ffi
-{%- endcapture %}
 
 | **Dart type** | **Description**                                                  |
 | ------------- | ---------------------------------------------------------------- |
@@ -230,10 +226,10 @@ They or their subtypes _can_ be instantiated in Dart code.
 
 {: .table .table-striped }
 
-[Array]: {{dart-ffi}}/Array-class.html
-[Pointer]: {{dart-ffi}}/Pointer-class.html
-[Struct]: {{dart-ffi}}/Struct-class.html
-[Union]: {{dart-ffi}}/Union-class.html
+[Array]: {{site.dart-api}}/dart-ffi/Array-class.html
+[Pointer]: {{site.dart-api}}/dart-ffi/Pointer-class.html
+[Struct]: {{site.dart-api}}/dart-ffi/Struct-class.html
+[Union]: {{site.dart-api}}/dart-ffi/Union-class.html
 
 ### Serve as type signature markers only
 
@@ -285,37 +281,37 @@ consult the API documentation linked in the following table.
 
 {: .table .table-striped }
 
-[Bool]: {{dart-ffi}}/Bool-class.html
-[Double]: {{dart-ffi}}/Double-class.html
-[Float]: {{dart-ffi}}/Float-class.html
-[Int8]: {{dart-ffi}}/Int8-class.html
-[Int16]: {{dart-ffi}}/Int16-class.html
-[Int32]: {{dart-ffi}}/Int32-class.html
-[Int64]: {{dart-ffi}}/Int64-class.html
-[NativeFunction]: {{dart-ffi}}/NativeFunction-class.html
-[Opaque]: {{dart-ffi}}/Opaque-class.html
-[Uint16]: {{dart-ffi}}/Uint16-class.html
-[Uint32]: {{dart-ffi}}/Uint32-class.html
-[Uint64]: {{dart-ffi}}/Uint64-class.html
-[Uint8]: {{dart-ffi}}/Uint8-class.html
-[Void]: {{dart-ffi}}/Void-class.html
+[Bool]: {{site.dart-api}}/dart-ffi/Bool-class.html
+[Double]: {{site.dart-api}}/dart-ffi/Double-class.html
+[Float]: {{site.dart-api}}/dart-ffi/Float-class.html
+[Int8]: {{site.dart-api}}/dart-ffi/Int8-class.html
+[Int16]: {{site.dart-api}}/dart-ffi/Int16-class.html
+[Int32]: {{site.dart-api}}/dart-ffi/Int32-class.html
+[Int64]: {{site.dart-api}}/dart-ffi/Int64-class.html
+[NativeFunction]: {{site.dart-api}}/dart-ffi/NativeFunction-class.html
+[Opaque]: {{site.dart-api}}/dart-ffi/Opaque-class.html
+[Uint16]: {{site.dart-api}}/dart-ffi/Uint16-class.html
+[Uint32]: {{site.dart-api}}/dart-ffi/Uint32-class.html
+[Uint64]: {{site.dart-api}}/dart-ffi/Uint64-class.html
+[Uint8]: {{site.dart-api}}/dart-ffi/Uint8-class.html
+[Void]: {{site.dart-api}}/dart-ffi/Void-class.html
 
-[ABI]: {{dart-ffi}}/Abi-class.html
-[AbiSpecificInteger]: {{dart-ffi}}/AbiSpecificInteger-class.html
-[Int]: {{dart-ffi}}/Int-class.html
-[IntPtr]: {{dart-ffi}}/IntPtr-class.html
-[Long]: {{dart-ffi}}/Long-class.html
-[LongLong]: {{dart-ffi}}/LongLong-class.html
-[Short]: {{dart-ffi}}/Short-class.html
-[SignedChar]: {{dart-ffi}}/SignedChar-class.html
-[Size]: {{dart-ffi}}/Size-class.html
-[UintPtr]: {{dart-ffi}}/UintPtr-class.html
-[UnsignedChar]: {{dart-ffi}}/UnsignedChar-class.html
-[UnsignedInt]: {{dart-ffi}}/UnsignedInt-class.html
-[UnsignedLong]: {{dart-ffi}}/UnsignedLong-class.html
-[UnsignedLongLong]: {{dart-ffi}}/UnsignedLongLong-class.html
-[UnsignedShort]: {{dart-ffi}}/UnsignedShort-class.html
-[WChar]: {{dart-ffi}}/WChar-class.html
+[ABI]: {{site.dart-api}}/dart-ffi/Abi-class.html
+[AbiSpecificInteger]: {{site.dart-api}}/dart-ffi/AbiSpecificInteger-class.html
+[Int]: {{site.dart-api}}/dart-ffi/Int-class.html
+[IntPtr]: {{site.dart-api}}/dart-ffi/IntPtr-class.html
+[Long]: {{site.dart-api}}/dart-ffi/Long-class.html
+[LongLong]: {{site.dart-api}}/dart-ffi/LongLong-class.html
+[Short]: {{site.dart-api}}/dart-ffi/Short-class.html
+[SignedChar]: {{site.dart-api}}/dart-ffi/SignedChar-class.html
+[Size]: {{site.dart-api}}/dart-ffi/Size-class.html
+[UintPtr]: {{site.dart-api}}/dart-ffi/UintPtr-class.html
+[UnsignedChar]: {{site.dart-api}}/dart-ffi/UnsignedChar-class.html
+[UnsignedInt]: {{site.dart-api}}/dart-ffi/UnsignedInt-class.html
+[UnsignedLong]: {{site.dart-api}}/dart-ffi/UnsignedLong-class.html
+[UnsignedLongLong]: {{site.dart-api}}/dart-ffi/UnsignedLongLong-class.html
+[UnsignedShort]: {{site.dart-api}}/dart-ffi/UnsignedShort-class.html
+[WChar]: {{site.dart-api}}/dart-ffi/WChar-class.html
 
 ## Generate FFI bindings with `package:ffigen`
 
