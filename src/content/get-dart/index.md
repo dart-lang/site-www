@@ -1,5 +1,6 @@
 ---
 title: Get the Dart SDK
+short-title: Get Dart
 description: >-
   Get the libraries and command-line tools that you need to develop
   Dart web, command-line, and server apps.
