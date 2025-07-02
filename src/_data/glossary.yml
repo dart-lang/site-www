@@ -63,7 +63,7 @@
 
   related_links:
     - text: "Type inference"
-      link: "https://dart.dev/language/type-system#type-inference"
+      link: "/language/type-system#type-inference"
       type: "doc"
     - text: "Implicit downcast from `dynamic`"
       link: "https://dart.dev/language/type-system#implicit-downcasts-from-dynamic"
