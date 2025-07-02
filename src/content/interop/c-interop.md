@@ -32,11 +32,11 @@ It includes the following examples show how to use the `dart:ffi` library:
 
 {: .table .table-striped }
 
-[ffi samples]: {{site.repo.samples}}/tree/main/ffi
-[hello_world]: {{site.repo.samples}}/tree/main/ffi/hello_world
-[primitives]: {{site.repo.samples}}/tree/main/ffi/primitives
-[structs]: {{site.repo.samples}}/tree/main/ffi/structs
-[test_utils]: {{site.repo.samples}}/tree/main/ffi/test_utils
+[ffi samples]: {{site.repo.dart.samples}}/tree/main/ffi
+[hello_world]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world
+[primitives]: {{site.repo.dart.samples}}/tree/main/ffi/primitives
+[structs]: {{site.repo.dart.samples}}/tree/main/ffi/structs
+[test_utils]: {{site.repo.dart.samples}}/tree/main/ffi/test_utils
 
 ### Review the hello_world example
 
@@ -45,7 +45,7 @@ for calling a C library.
 This example can be found in the `samples/ffi` you downloaded in the
 previous section.
 
-[hello_world]: {{site.repo.samples}}/tree/main/ffi/hello_world
+[hello_world]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world
 
 #### Files
 
@@ -62,12 +62,12 @@ The `hello_world` example has the following files:
 
 {: .table .table-striped }
 
-[`hello.dart`]: {{site.repo.samples}}/tree/main/ffi/hello_world/hello.dart
-[`pubspec.yaml`]: {{site.repo.samples}}/tree/main/ffi/hello_world/pubspec.yaml
-[`hello_library/hello.h`]: {{site.repo.samples}}/tree/main/ffi/hello_world/hello_library/hello.h
-[`hello_library/hello.c`]: {{site.repo.samples}}/tree/main/ffi/hello_world/hello_library/hello.c
-[`hello_library/hello.def`]: {{site.repo.samples}}/tree/main/ffi/hello_world/hello_library/hello.def
-[`hello_library/CMakeLists.txt`]: {{site.repo.samples}}/tree/main/ffi/hello_world/hello_library/CMakeLists.txt
+[`hello.dart`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/hello.dart
+[`pubspec.yaml`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/pubspec.yaml
+[`hello_library/hello.h`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/hello_library/hello.h
+[`hello_library/hello.c`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/hello_library/hello.c
+[`hello_library/hello.def`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/hello_library/hello.def
+[`hello_library/CMakeLists.txt`]: {{site.repo.dart.samples}}/tree/main/ffi/hello_world/hello_library/CMakeLists.txt
 
 Building the C library creates several files,
 including a dynamic library file named
@@ -202,7 +202,7 @@ To learn how, consult the following pages and examples.
 [android]: {{site.flutter-docs}}/platform-integration/android/c-interop
 [ios]: {{site.flutter-docs}}/platform-integration/ios/c-interop
 [macos]: {{site.flutter-docs}}/platform-integration/macos/c-interop
-[ffi-samples]: https://github.com/dart-lang/samples/tree/main/ffi
+[ffi-samples]: {{site.repo.dart.samples}}/tree/main/ffi
 
 ## Interface with native types
 
