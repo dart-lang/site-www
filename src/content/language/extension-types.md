@@ -90,12 +90,12 @@ The declaration also introduces:
   with the representation type as the return type: `int get i`.
 - An implicit constructor: `E(int i) : i = i`.
 
-The representation object gives the extension type access to an object
-at the underlying type.
-The object is in scope in the extension type body, and
-you can access it using its name as a getter:
+The representation getter gives access to the
+representation object typed as the underlying type.
+The getter is in scope in the extension type body,
+and you can access it using its name like any other getter:
 
-- Within the extension type body using `i` (or `this.i` in a constructor).
+- Within the extension type body using `i` (or `this.i`).
 - Outside with a property extraction using `e.i`
   (where `e` has the extension type as its static type).
 
