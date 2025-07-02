@@ -11,7 +11,7 @@ nextpage:
 
 An extension type is a compile-time abstraction that "wraps"
 an existing type with a different, static-only interface.
-They are a major component of [static JS interop][] because 
+They are a major component of [static JS interop][] because
 they can easily modify an existing type's interface
 (crucial for any kind of interop)
 without incurring the cost of an actual wrapper.
@@ -65,12 +65,15 @@ whose static type is that extension type.
 They are distinct from the interface of their underlying type by default.
 :::
 
+[static JS interop]: /go/next-gen-js-interop
+[ext]: /language/extension-methods
+
 ## Syntax
 
 ### Declaration
 
 Define a new extension type with the `extension type` declaration and a name,
-followed by the *representation type declaration* in parenthesis:
+followed by the *representation type declaration* in parentheses:
 
 ```dart
 extension type E(int i) {
@@ -78,24 +81,25 @@ extension type E(int i) {
 }
 ```
 
-The representation type declaration `(int i)` specifies that 
+The representation type declaration `(int i)` specifies that
 the underlying type of extension type `E` is `int`,
 and that the reference to the *representation object* is named `i`.
 The declaration also introduces:
+
 - An implicit getter for the representation object
   with the representation type as the return type: `int get i`.
 - An implicit constructor: `E(int i) : i = i`.
 
 The representation object gives the extension type access to an object
-of the underlying type.
+at the underlying type.
 The object is in scope in the extension type body, and
 you can access it using its name as a getter:
 
 - Within the extension type body using `i` (or `this.i` in a constructor).
 - Outside with a property extraction using `e.i`
-  (where `e` has the extension type as its static type). 
+  (where `e` has the extension type as its static type).
 
-Extension type declarations can also include [type parameters](generics)
+Extension type declarations can also include [type parameters][generics]
 just like classes or extensions:
 
 ```dart
@@ -103,6 +107,8 @@ extension type E<T>(List<T> elements) {
   // ...
 }
 ```
+
+[generics]: /language/generics
 
 ### Constructors
 
@@ -157,6 +163,9 @@ You can also declare forwarding generative constructors,
 or [factory constructors][factory]
 (which can also forward to constructors of sub-extension types).
 
+[constructors]: /language/constructors
+[factory]: /language/constructors#factory-constructors
+
 ### Members
 
 Declare members in the body of an extension type to define its interface
@@ -185,9 +194,14 @@ in the extension type definition, like the `operator +` in `NumberE`.
 You also can define new members unrelated to the representation type,
 like the `i` getter and `isValid` method.
 
+[`external`]: /language/functions#external
+[instance variables]: /language/classes#instance-variables
+[abstract members]: /language/methods#abstract-methods
+
 ### Implements
 
 You can optionally use the `implements` clause to:
+
 - Introduce a subtype relationship on an extension type, AND
 - Add the members of the representation object to the extension type interface.
 
@@ -202,40 +216,40 @@ An extension type can only implement:
 - **Its representation type**.
   This makes all members of the representation type implicitly available
   to the extension type.
-  
+
   ```dart
-  extension type NumberI(int i) 
+  extension type NumberI(int i)
     implements int{
     // 'NumberI' can invoke all members of 'int',
     // plus anything else it declares here.
   }
   ```
-  
+
 - **A supertype of its representation type**.
   This makes the members of the supertype available,
   while not necessarily all the members of representation type.
-  
+
   ```dart
   extension type Sequence<T>(List<T> _) implements Iterable<T> {
     // Better operations than List.
   }
-  
+
   extension type Id(int _id) implements Object {
     // Makes the extension type non-nullable.
     static Id? tryParse(String source) => int.tryParse(source) as Id?;
   }
   ```
-  
+
 - **Another extension type** that is valid on the same representation type.
   This allows you to reuse operations across multiple extension types
   (similar to multiple inheritance).
-  
+
   ```dart
-  extension type const Opt<T>._(({T value})? _) { 
+  extension type const Opt<T>._(({T value})? _) {
     const factory Opt(T value) = Val<T>;
     const factory Opt.none() = Non<T>;
   }
-  extension type const Val<T>._(({T value}) _) implements Opt<T> { 
+  extension type const Val<T>._(({T value}) _) implements Opt<T> {
     const Val(T value) : this._((value: value));
     T get value => _.value;
   }
@@ -246,6 +260,9 @@ An extension type can only implement:
 
 Read the [Usage](#usage) section to learn more about the effect of `implements`
 in different scenarios.
+
+[applicability]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
+[ext]: /language/extension-methods
 
 #### `@redeclare`
 
@@ -295,7 +312,7 @@ extension type NumberE(int value) {
   bool isValid() => !value.isNegative;
 }
 
-void testE() { 
+void testE() {
   var num = NumberE(1);
 }
 ```
@@ -310,12 +327,14 @@ for extension types:
 
 :::note
 In any case, the representation type of an extension type is never its subtype,
-so a representation type can't be used interchangeably where the extension type is needed.
+so a representation type can't be used interchangeably where
+the extension type is needed.
 :::
 
-<a id="transparency"></a>
+<a id="transparency" aria-hidden="true"></a>
+<a id="1-provide-an-extended-interface-to-an-existing-type" aria-hidden="true"></a>
 
-### 1. Provide an *extended* interface to an existing type
+### 1. Provide an *extended* interface to an existing type {#provide-extended-interface}
 
 When an extension type [implements](#implements) its representation type,
 you can consider it "transparent", because it allows the extension type
@@ -323,17 +342,17 @@ to "see" the underlying type.
 
 A transparent extension type can invoke all members of the
 representation type (that aren't [redeclared](#redeclare)),
-plus any auxiliary members it defines. 
+plus any auxiliary members it defines.
 This creates a new, *extended* interface for an existing type.
 The new interface is available to expressions
 whose static type is the extension type.
 
 This means you *can* invoke members of the representation type
-(unlike a [non-transparent](#2-provide-a-different-interface-to-an-existing-type)
+(unlike a [non-transparent](#provide-different-interface)
 extension type), like so:
 
 ```dart
-extension type NumberT(int value) 
+extension type NumberT(int value)
   implements int {
   // Doesn't explicitly declare any members of 'int'.
   NumberT get i => this;
@@ -362,7 +381,9 @@ a type that is a supertype of the representation type.
 For example, if the representation type is private but its supertype
 defines the part of the interface that matters for clients.
 
-### 2. Provide a *different* interface to an existing type
+<a id="2-provide-a-different-interface-to-an-existing-type" aria-hidden="true"></a>
+
+### 2. Provide a *different* interface to an existing type {:#provide-different-interface}
 
 An extension type that is not [transparent](#transparency)
 (that does not [`implement`](#implements) its representation type)
@@ -374,20 +395,20 @@ and it doesn't expose its representation type's members.
 For example, take the `NumberE` extension type we declared under [Usage](#usage):
 
 ```dart
-void testE() { 
+void testE() {
   var num1 = NumberE(1);
   int num2 = NumberE(2); // Error: Can't assign 'NumberE' to 'int'.
-  
+
   num1.isValid(); // OK: Extension member invocation.
   num1.isNegative(); // Error: 'NumberE' does not define 'int' member 'isNegative'.
-  
+
   var sum1 = num1 + num1; // OK: 'NumberE' defines '+'.
   var diff1 = num1 - num1; // Error: 'NumberE' does not define 'int' member '-'.
   var diff2 = num1.value - 2; // OK: Can access representation object with reference.
-  var sum2 = num1 + 2; // Error: Can't assign 'int' to parameter type 'NumberE'. 
-  
+  var sum2 = num1 + 2; // Error: Can't assign 'int' to parameter type 'NumberE'.
+
   List<NumberE> numbers = [
-    NumberE(1), 
+    NumberE(1),
     num1.next, // OK: 'next' getter returns type 'NumberE'.
     1, // Error: Can't assign 'int' element to list type 'NumberE'.
   ];
@@ -417,7 +438,7 @@ and access the underlying object.
 Dynamic type tests (`e is T`), casts (`e as T`),
 and other run-time type queries (like `switch (e) ...` or `if (e case ...)`)
 all evaluate to the underlying representation object,
-and type check against that object's runtime type. 
+and type check against that object's runtime type.
 That's true when the static type of `e` is an extension type,
 and when testing against an extension type (`case MyExtensionType(): ... `).
 
@@ -465,15 +486,3 @@ whereas an extension type is just a compile-time view on the wrapped object.
 While a real wrapper is safer, the trade-off is extension types
 give you the option to avoid wrapper objects, which can greatly
 improve performance in some scenarios.
-
-[static JS interop]: /go/next-gen-js-interop
-[ext]: /language/extension-methods
-[generics]: /language/generics
-[constructors]: /language/constructors
-[factory]: /language/constructors#factory-constructors
-[applicability]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#examples
-[more specific]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#specificity
-[instance variables]: /language/classes#instance-variables
-[`external`]: /language/functions#external
-[abstract members]: /language/methods#abstract-methods
-[`is` or `as` check]: /language/operators#type-test-operators
