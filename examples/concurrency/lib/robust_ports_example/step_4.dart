@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, body_might_complete_normally_nullable, unused_element
+// ignore_for_file: body_might_complete_normally_nullable
 
 import 'dart:async';
 import 'dart:convert';
@@ -11,7 +11,7 @@ class Worker {
   // #enddocregion constructor
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
