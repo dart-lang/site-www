@@ -17,8 +17,7 @@ simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 ```dart showLineNumbers=8
 void increment() {
@@ -34,14 +33,12 @@ produces the following warning:
 ```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
-
-</blockquote>
+:::
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 ```dart
 var [!controller = StreamController<String>()!];
@@ -51,8 +48,7 @@ var [!controller = StreamController<String>()!];
 ```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
-
-</blockquote>
+:::
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
