@@ -13,7 +13,7 @@ nextpage:
   title: Build your first app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 ## Set up Dart {: #set-up }
 

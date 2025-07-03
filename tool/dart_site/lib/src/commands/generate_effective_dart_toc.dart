@@ -39,7 +39,8 @@ final class GenerateEffectiveDartToc extends Command<int> {
 }
 
 Future<int> _generateToc({bool justCheck = false}) async {
-  const dirPath = 'src/content/effective-dart';
+  final dirPath = path.join('src', 'content', 'effective-dart');
+  final outputPath = path.join('src', '_includes', 'effective-dart-toc.md');
   const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
   final sections = filenames
@@ -94,7 +95,7 @@ the project:
 
   newOutput.writeln('</div>');
 
-  final tocFile = File(path.join(dirPath, '_toc.md'));
+  final tocFile = File(outputPath);
   try {
     final oldContents = tocFile.readAsStringSync();
 

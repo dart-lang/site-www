@@ -15,7 +15,7 @@ nextpage:
   title: Add interactivity to your app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 Welcome to Dart!
 In this chapter, you'll ensure your setup is complete, and

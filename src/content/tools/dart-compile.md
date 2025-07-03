@@ -360,7 +360,7 @@ Dart-to-JavaScript compiler.
   modules for running and debugging during development.
 :::
 
-{% include 'tools/dart-compile-js-options.md' %}
+{% render 'tools/dart-compile-js-options.md', site: site %}
 
 #### Compiling web app example
 

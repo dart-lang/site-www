@@ -67,7 +67,7 @@ choose one of the following options:
 1. [Build the SDK from source][build-source].
 
 :::warning Notice
-{% include './archive/_sdk-terms.md' %}
+{% render 'install/sdk-terms.md' %}
 :::
 
 {% comment %}
@@ -86,17 +86,17 @@ run the same command to install the Dart SDK from your package manager.
 {% tabs "dev-os", true %}
 {% tab "Windows" %}
 
-{% include 'install/windows.md' %}
+{% render 'install/windows.md', site: site %}
 
 {% endtab %}
 {% tab "Linux" %}
 
-{% include 'install/linux.md' %}
+{% render 'install/linux.md', site: site %}
 
 {% endtab %}
 {% tab "macOS" %}
 
-{% include 'install/macos.md' %}
+{% render 'install/macos.md', site: site %}
 
 {% endtab %}
 {% endtabs %}
