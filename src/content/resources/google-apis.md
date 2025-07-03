@@ -56,4 +56,4 @@ To find wrapper packages for Google client APIs, search for
 [gsheets-api-docs]: {{site.pub-api}}/gsheets/latest/gsheets/gsheets-library.html
 [gsheets-api-docs-gapi]: {{site.pub-api}}/googleapis/latest/sheets_v4/sheets_v4-library.html
 [flutter-google-apis]: {{site.flutter-docs}}/development/data-and-backend/google-apis
-[server-sample]: {{site.repo.dart.org}}/samples/tree/main/server/google_apis
+[server-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis

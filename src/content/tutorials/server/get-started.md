@@ -153,7 +153,7 @@ Check out these resources:
   * [Dart tools](/tools)
   * [IDEs](/tools#editors)
 * Other examples of natively compiled apps
-  * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
+  * [native_app]({{site.repo.dart.samples}}/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 

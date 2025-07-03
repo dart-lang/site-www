@@ -66,7 +66,7 @@ Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
 followed by examples of running the app.
 
-[native_app]: {{site.repo.dart.org}}/samples/tree/main/native_app
+[native_app]: {{site.repo.dart.samples}}/tree/main/native_app
 [dart-run]: /tools/dart-run
 
 ## Subcommands
