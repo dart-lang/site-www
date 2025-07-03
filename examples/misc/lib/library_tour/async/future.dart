@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis, strict_raw_type
+// ignore_for_file: unused_element, strict_raw_type
 // #docregion import
 import 'dart:async';
 // #enddocregion import

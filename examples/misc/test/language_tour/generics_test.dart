@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 import 'dart:collection';
 
 import 'package:examples/language_tour/generics/base_class.dart';
@@ -82,6 +81,6 @@ class A implements Comparable<A> {
   int compareTo(A other) => /*...implementation...*/ 0;
 }
 
-var useIt = compareAndOffset(A(), A());
+int useIt = compareAndOffset(A(), A());
 
 // #enddocregion f-bound

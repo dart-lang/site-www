@@ -78,7 +78,6 @@ Future<void> miscDeclAnalyzedButNotTested() async {
 
   <varOrType>(Stream<varOrType> expression) async {
     // #docregion await-for
-    // ignore: prefer_final_in_for_each
     await for (varOrType identifier in expression) {
       // Executes each time the stream emits a value.
     }
