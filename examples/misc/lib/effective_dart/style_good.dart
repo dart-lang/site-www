@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable, sdk_version_extension_methods
+// ignore_for_file: unused_element, unused_local_variable, sdk_version_extension_methods
 import 'dart:io';
 import 'dart:math';
 
