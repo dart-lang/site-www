@@ -25,16 +25,18 @@ final class BuildSiteCommand extends Command<int> {
   Future<int> run() async {
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
-    final process = await Process.start(Platform.resolvedExecutable, [
-      'run',
-      'jaspr_cli:jaspr',
-      'build',
-      '--sitemap-domain=https://dart.dev',
-      '--dart-define=PRODUCTION=$productionRelease',
-    ], workingDirectory: 'site');
-
-    await stdout.addStream(process.stdout);
-    await stderr.addStream(process.stderr);
+    final process = await Process.start(
+      Platform.resolvedExecutable,
+      [
+        'run',
+        'jaspr_cli:jaspr',
+        'build',
+        '--sitemap-domain=https://dart.dev',
+        '--dart-define=PRODUCTION=$productionRelease',
+      ],
+      workingDirectory: 'site',
+      mode: ProcessStartMode.inheritStdio,
+    );
 
     final processExitCode = await process.exitCode;
     return processExitCode;
