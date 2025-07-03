@@ -163,10 +163,4 @@ final class DefinitionListSyntax extends md.BlockSyntax {
       parser.advance();
     }
   }
-
-  bool _isSimpleDefinition(List<String> lines) {
-    // A simple definition has no empty lines and
-    // should result in a single paragraph.
-    return !lines.contains('');
-  }
 }
