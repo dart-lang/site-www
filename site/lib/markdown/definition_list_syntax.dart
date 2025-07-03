@@ -97,20 +97,12 @@ final class DefinitionListSyntax extends md.BlockSyntax {
       }
     }
 
-    // Check if this is a simple single-paragraph definition.
-    if (_isSimpleDefinition(lines)) {
-      // Parse as inline content without wrapping in paragraph.
-      final inlineContent = lines.join('\n');
-      final inlineNodes = parser.document.parseInline(inlineContent);
-      return md.Element('dd', inlineNodes);
-    } else {
-      // Parse as blocks for multi-paragraph content.
-      final nodes = md.BlockParser(
-        lines.map(md.Line.new).toList(growable: false),
-        parser.document,
-      ).parseLines(parentSyntax: this);
-      return md.Element('dd', nodes);
-    }
+    // Parse as blocks for multi-paragraph content.
+    final nodes = md.BlockParser(
+      lines.map(md.Line.new).toList(growable: false),
+      parser.document,
+    ).parseLines(parentSyntax: this);
+    return md.Element('dd', nodes);
   }
 
   bool _isDefinitionListStart(md.BlockParser parser) {
