@@ -9,6 +9,7 @@ import 'fenced_code_block_syntax.dart';
 
 final md.Document _sharedMarkdownDocument = md.Document(
   blockSyntaxes: const [
+    //md.HtmlBlockSyntax(),
     CustomHtmlSyntax(),
     CustomFencedCodeBlockSyntax(),
     AttributeBlockSyntax(),
@@ -17,10 +18,19 @@ final md.Document _sharedMarkdownDocument = md.Document(
     md.HeaderWithIdSyntax(),
     md.TableSyntax(),
     md.FootnoteDefSyntax(),
+    md.EmptyBlockSyntax(),
+    md.HeaderSyntax(),
+    md.BlockquoteSyntax(),
+    md.HorizontalRuleSyntax(),
+    md.UnorderedListSyntax(),
+    md.OrderedListSyntax(),
+    md.LinkReferenceDefinitionSyntax(),
+    md.ParagraphSyntax(),
   ],
   inlineSyntaxes: [
     md.InlineHtmlSyntax(),
   ],
+  withDefaultBlockSyntaxes: false,
 );
 
 String parseMarkdownToHtml(String markdown, {bool inline = false}) {
