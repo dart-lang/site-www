@@ -216,7 +216,7 @@ class A implements Comparable<A> {
   int compareTo(A other) => /*...implementation...*/ 0;
 }
 
-var useIt = compareAndOffset(A(), A());
+int useIt = compareAndOffset(A(), A());
 ```
 
 The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.

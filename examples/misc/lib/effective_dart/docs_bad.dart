@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element
+// ignore_for_file: unused_element
 import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {

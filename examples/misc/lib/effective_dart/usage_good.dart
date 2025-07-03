@@ -1,7 +1,5 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
-// ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
-// ignore_for_file: use_super_parameters, dead_code
+// ignore_for_file:  unused_element, unused_local_variable, specify_nonobvious_property_types
+// ignore_for_file: strict_raw_type, prefer_initializing_formals, use_super_parameters, dead_code
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -80,7 +78,6 @@ void miscDeclAnalyzedButNotTested() {
   {
     var command = 'c';
     var options = ['a'];
-    // ignore: unnecessary_cast
     var modeFlags = ['b'] as List<String>?;
     var filePaths = ['p'];
     String removeExtension(String path) => path;
