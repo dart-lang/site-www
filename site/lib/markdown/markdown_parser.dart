@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:html/parser.dart' as html;
+import 'package:html/parser.dart' as html show parseFragment;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
 
@@ -9,8 +7,9 @@ import 'attribute_syntax.dart';
 import 'definition_list_syntax.dart';
 import 'fenced_code_block_syntax.dart';
 
-final md.Document sharedMarkdownDocument = md.Document(
+final md.Document _sharedMarkdownDocument = md.Document(
   blockSyntaxes: const [
+    CustomHtmlSyntax(),
     CustomFencedCodeBlockSyntax(),
     AttributeBlockSyntax(),
     AlertBlockSyntax(),
@@ -18,7 +17,6 @@ final md.Document sharedMarkdownDocument = md.Document(
     md.HeaderWithIdSyntax(),
     md.TableSyntax(),
     md.FootnoteDefSyntax(),
-    CustomHtmlSyntax(),
   ],
   inlineSyntaxes: [
     md.InlineHtmlSyntax(),
@@ -27,44 +25,31 @@ final md.Document sharedMarkdownDocument = md.Document(
 
 String parseMarkdownToHtml(String markdown, {bool inline = false}) {
   final nodes = inline
-      ? sharedMarkdownDocument.parseInline(markdown)
-      : sharedMarkdownDocument.parse(markdown);
+      ? _sharedMarkdownDocument.parseInline(markdown)
+      : _sharedMarkdownDocument.parse(markdown);
   final renderer = md.HtmlRenderer();
   return renderer.render(nodes);
 }
 
 class DashMarkdownParser implements PageParser {
   static final _attributePostProcessor = AttributePostProcessor();
+  static final RegExp _markdownPattern = RegExp(r'.*\.md?$');
 
   const DashMarkdownParser();
 
   @override
-  Pattern get pattern => RegExp(r'.*\.md?$');
+  Pattern get pattern => _markdownPattern;
 
   @override
   List<Node> parsePage(Page page) => _parseContent(page.content);
 
   static List<Node> _parseContent(String content) {
-    final filteredContent = _removeProcessingInstructions(content);
-
-    final markdownNodes = sharedMarkdownDocument.parse(filteredContent);
+    final markdownNodes = _sharedMarkdownDocument.parse(content);
 
     final tempElement = md.Element('temp-dash-document', markdownNodes);
     tempElement.accept(_attributePostProcessor);
 
     return _buildNodes(tempElement.children ?? []);
-  }
-
-  // TODO(parlough): Remove workaround when processing instructions
-  //   stop breaking the HTML syntax.
-  static String _removeProcessingInstructions(String content) {
-    final lines = const LineSplitter().convert(content.trimRight());
-    final filteredLines = <String>[
-      for (final line in lines)
-        if (!line.contains('<?code-excerpt')) line,
-    ];
-
-    return filteredLines.join('\n');
   }
 
   static List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
@@ -80,14 +65,17 @@ class DashMarkdownParser implements PageParser {
             ? _buildNodes(nodeChildren)
             : null;
         nodes.add(
-          ElementNode(node.tag, {
-            if (node.generatedId case final generatedId?) 'id': generatedId,
-            ...node.attributes,
-          }, children),
+          ElementNode(
+            node.tag,
+            {
+              if (node.generatedId case final generatedId?) 'id': generatedId,
+              ...node.attributes,
+            },
+            children,
+          ),
         );
-      } else if (node is Comment) {
-        nodes.add(TextNode('<!--${node.text.text}-->', raw: true));
       }
+      // Ignore other types of nodes, such as comments.
     }
     return nodes;
   }

@@ -86,7 +86,7 @@ void main() {
           ),
         ),
         parsers: [
-          MarkdownParser(documentBuilder: (_) => sharedMarkdownDocument),
+          const DashMarkdownParser(),
           const HtmlParser(),
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
