@@ -54,15 +54,15 @@
       ```
       The context type is `int`, so `.parse` resolves to `int.parse(input)`.
 
-    Some expressions have **no context type**:
+    Some expressions have **no context type**, including:
 
-    - **Expression statements**, like `set.remove(value);`, are used for effect — not value — so no type is expected.
-    - **When type flows from the expression to the context**:
+      - **When used as statements**:  
+        Expressions like `set.remove(value);` are used only for their effect — not their value — so no type is expected.
 
-      ```dart
-      var list = [1];
-      ```
-      `[1]` has no context type; Dart infers `List<int>` from its contents.
+      - **When the context type is inferred from the expression**:  
+        For example, in `var list = [1];`, the list literal has no context type.
+        Dart infers `List<int>` from the contents and assigns that type to the variable.
+
 
   related_links:
     - text: "Type inference"
