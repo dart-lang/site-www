@@ -19,7 +19,7 @@
 
 - term: "Context type"
   short_description: |-
-    A type expected from an expression based on how it's used.
+    A type expected from an expression based on how and where it's used.
   long_description: |-
     A **context type** is the type that surrounding code expects from an expression, 
     such as a variable type, a parameter type, or a return type.
@@ -58,8 +58,6 @@
       var list = [1];
       ```
       `[1]` has no context type; Dart infers `List<int>` from its contents.
-
-    This is sometimes called the **empty context type**.
 
   related_links:
     - text: "Type inference"
