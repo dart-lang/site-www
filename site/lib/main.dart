@@ -86,7 +86,7 @@ void main() {
           ),
         ),
         parsers: [
-          const DashMarkdownParser(),
+          MarkdownParser(documentBuilder: (_) => sharedMarkdownDocument),
           const HtmlParser(),
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
@@ -114,7 +114,7 @@ void main() {
             },
           ),
           CustomComponent(
-            pattern: 'YouTubeEmbed',
+            pattern: RegExp('YouTubeEmbed', caseSensitive: false),
             builder: (name, attributes, child) {
               // TODO(parlough): This likely shouldn't be implemented here.
               final rawVideoId = attributes['id'] as String;
@@ -135,8 +135,8 @@ void main() {
 
               return raw('''
 <lite-youtube videoid="$videoId" videotitle="$videoTitle" videoStartAt="$startTime" ${playlistId != null ? 'playlistid="$playlistId"' : ''}>
-  <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "$videoId"</a></p>
-</lite-youtube>`
+  <a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "$videoTitle"</a>
+</lite-youtube>
 ''');
             },
           ),

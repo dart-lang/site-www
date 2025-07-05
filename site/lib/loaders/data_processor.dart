@@ -6,7 +6,7 @@ import '../lints.dart';
 final class DataProcessor implements DataLoader {
   @override
   Future<void> loadData(Page page) async {
-    final pageData = page.data['page'] as Map<String, Object?>;
+    final pageData = page.data.page;
 
     if (pageData['processLints'] == true) {
       final lintRules = loadLints(page.data['linter_rules']);

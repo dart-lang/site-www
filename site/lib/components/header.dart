@@ -10,8 +10,8 @@ class DashHeader extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     final page = context.page;
     final pageUrlPath = page.url;
-    final pageData = page.data['page'] as Map<String, Object?>;
-    final siteData = page.data['site'] as Map<String, Object?>;
+    final pageData = page.data.page;
+    final siteData = page.data.site;
     final siteTitle = siteData['title'] as String;
     final obsolete = pageData['obsolete'] == true;
 

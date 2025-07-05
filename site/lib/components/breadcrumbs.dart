@@ -50,10 +50,7 @@ class PageBreadcrumbs extends StatelessComponent {
     // Only show breadcrumbs if the URL isn't empty.
     if (pageUrl.isEmpty || pageUrl == '/') return null;
 
-    final pageData = page.data['page'] as Map<String, Object?>?;
-    if (pageData == null) {
-      return null;
-    }
+    final pageData = page.data.page;
 
     final displayTitle =
         pageData['breadcrumb'] ?? pageData['short-title'] ?? pageData['title'];
@@ -82,7 +79,7 @@ class PageBreadcrumbs extends StatelessComponent {
       // Skip if no index page found.
       if (indexPage == null) continue;
 
-      final indexPageData = indexPage.data['page'] as Map<String, Object?>?;
+      final indexPageData = indexPage.data.page;
       if (indexPageData != null) {
         final indexTitle =
             indexPageData['breadcrumb'] ??

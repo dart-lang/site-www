@@ -17,7 +17,7 @@ class DocLayout extends DashLayout {
 
   @override
   Component buildBody(Page page, Component child) {
-    final pageData = page.data['page'] as Map<String, Object?>;
+    final pageData = page.data.page;
     final pageTitle = pageData['title'] as String;
 
     return super.buildBody(

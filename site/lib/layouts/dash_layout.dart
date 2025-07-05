@@ -15,8 +15,8 @@ abstract class DashLayout extends PageLayoutBase {
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) sync* {
-    final pageData = page.data['page'] as Map<String, Object?>? ?? {};
-    final siteData = page.data['site'] as Map<String, Object?>? ?? {};
+    final pageData = page.data.page;
+    final siteData = page.data.site;
     final pageTitle = (pageData['title'] ?? siteData['title']) as String;
 
     yield* super.buildHead(page);
@@ -172,7 +172,7 @@ ga('send', 'pageview');
 
   @override
   Component buildBody(Page page, Component child) {
-    final pageData = page.data['page'] as Map<String, Object?>;
+    final pageData = page.data.page;
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
     final sideNavEntries = switch (page.data['sidenav']) {

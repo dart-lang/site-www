@@ -11,7 +11,7 @@ class TrailingContent extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     final page = context.page;
     final pageUrl = page.url;
-    final siteData = page.data['site'] as Map<String, Object?>? ?? {};
+    final siteData = page.data.site;
     final branch = siteData['branch'] as String? ?? 'main';
     final repoLinks = siteData['repo'] as Map<String, Object?>? ?? {};
     final repoUrl =

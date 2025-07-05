@@ -7,10 +7,10 @@ import 'attribute_syntax.dart';
 import 'definition_list_syntax.dart';
 import 'fenced_code_block_syntax.dart';
 
-final md.Document _sharedMarkdownDocument = md.Document(
+final md.Document sharedMarkdownDocument = md.Document(
   blockSyntaxes: const [
     //md.HtmlBlockSyntax(),
-    CustomHtmlSyntax(),
+    JasprHtmlBlockSyntax(),
     CustomFencedCodeBlockSyntax(),
     AttributeBlockSyntax(),
     AlertBlockSyntax(),
@@ -35,8 +35,8 @@ final md.Document _sharedMarkdownDocument = md.Document(
 
 String parseMarkdownToHtml(String markdown, {bool inline = false}) {
   final nodes = inline
-      ? _sharedMarkdownDocument.parseInline(markdown)
-      : _sharedMarkdownDocument.parse(markdown);
+      ? sharedMarkdownDocument.parseInline(markdown)
+      : sharedMarkdownDocument.parse(markdown);
   final renderer = md.HtmlRenderer();
   return renderer.render(nodes);
 }
@@ -54,9 +54,10 @@ class DashMarkdownParser implements PageParser {
   List<Node> parsePage(Page page) => _parseContent(page.content);
 
   static List<Node> _parseContent(String content) {
-    final markdownNodes = _sharedMarkdownDocument.parse(content);
+    final markdownNodes = sharedMarkdownDocument.parse(content);
 
     final tempElement = md.Element('temp-dash-document', markdownNodes);
+    // TODO(parlough): Bring back attribute post processing.
     tempElement.accept(_attributePostProcessor);
 
     return _buildNodes(tempElement.children ?? []);

@@ -205,7 +205,7 @@ class _LintRulePageSource extends PageSource {
       path: path,
       url: url,
       content: buffer.toString(),
-      data: {
+      initialData: {
         'page': <String, Object?>{
           'title': lint.name,
           'show_breadcrumbs': true,
