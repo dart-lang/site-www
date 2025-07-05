@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 // A list literal.
 const lostNumbers = [4, 8, 15, 16, 23, 42];
 

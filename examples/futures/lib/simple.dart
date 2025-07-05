@@ -1,4 +1,4 @@
-// ignore_for_file: dead_code, invalid_return_type_for_catch_error, one_member_abstracts
+// ignore_for_file: dead_code, invalid_return_type_for_catch_error
 
 import 'dart:async';
 

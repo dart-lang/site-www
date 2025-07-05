@@ -1,4 +1,3 @@
-// ignore_for_file: assignment_to_final, unused_local_variable
 import 'package:test/test.dart';
 
 void main() {

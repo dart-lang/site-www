@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, avoid_init_to_null
+// ignore_for_file: prefer_single_quotes, prefer_adjacent_string_concatenation, avoid_init_to_null
 
 import 'package:test/test.dart';
 

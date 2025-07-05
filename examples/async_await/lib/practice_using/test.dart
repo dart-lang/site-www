@@ -2,7 +2,7 @@ import 'package:examples_util/codelabs.dart';
 
 import 'solution.dart';
 
-const _result = result;
+const void Function(bool success, [List<String> messages]) _result = result;
 
 // #docregion
 const role = 'administrator';

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis, always_declare_return_types
+// ignore_for_file: unused_element, always_declare_return_types
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 void miscDeclAnalyzedButNotTested() {

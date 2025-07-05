@@ -1,5 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type
-// ignore_for_file: no_leading_underscores_for_local_identifiers, use_function_type_syntax_for_parameters
+// ignore_for_file: unused_element, strict_raw_type, no_leading_underscores_for_local_identifiers
 
 // #docregion library-doc
 /// A really great test library.
