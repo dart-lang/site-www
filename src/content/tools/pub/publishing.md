@@ -16,7 +16,7 @@ as defined in the [pubspec][].
 
 Watch the following video for an overview of building and publishing packages.
 
-{% ytEmbed "8V_TLiWszK0", "How to build a package in Dart" %}
+<YouTubeEmbed id="8V_TLiWszK0" title="How to build a package in Dart"></YouTubeEmbed>
 
 ## Remember: Publishing is forever
 

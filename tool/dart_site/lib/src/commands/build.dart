@@ -26,17 +26,17 @@ final class BuildSiteCommand extends Command<int> {
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
     final process = await Process.start(
-      'npx',
-      const [
-        'tsx',
-        'node_modules/@11ty/eleventy/cmd.cjs',
-        '--config=eleventy.config.ts',
+      Platform.resolvedExecutable,
+      [
+        'run',
+        'jaspr_cli:jaspr',
+        'build',
+        '--sitemap-domain=https://dart.dev',
+        '--dart-define=PRODUCTION=$productionRelease',
       ],
-      environment: {'PRODUCTION': '$productionRelease'},
+      workingDirectory: 'site',
+      mode: ProcessStartMode.inheritStdio,
     );
-
-    await stdout.addStream(process.stdout);
-    await stderr.addStream(process.stderr);
 
     final processExitCode = await process.exitCode;
     return processExitCode;

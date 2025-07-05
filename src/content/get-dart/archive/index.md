@@ -1,7 +1,9 @@
 ---
 title: Dart SDK archive
 short-title: Archive
-description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
+description: >-
+  Download specific stable, beta, dev, and main channel versions of
+  the Dart SDK and the Dart API documentation.
 js:
 - url: /assets/js/get-dart/download_archive.dart.js
   defer: true
@@ -17,14 +19,14 @@ Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
 
 :::warning Notice
-{% include './_sdk-terms.md' %}
+{% render 'install/sdk-terms.md' %}
 :::
 
 ## Stable channel
 
 Stable channel builds are tested and approved for production use.
 
-{% include './_archives_table.html', channel:'stable' %}
+{% render 'install/archives_table.html', channel: 'stable' %}
 
 ## Beta channel
 
@@ -33,7 +35,7 @@ We recommend testing, but not releasing, your apps against beta
 to preview new features or test compatibility with future releases.
 Beta channel builds are not suitable for production use.
 
-{% include './_archives_table.html', channel:'beta' %}
+{% render 'install/archives_table.html', channel: 'beta' %}
 
 ## Dev channel
 
@@ -41,7 +43,7 @@ Dev channel builds can provide early access
 to new features but might contain bugs.
 Dev channel builds are not suitable for production use.
 
-{% include './_archives_table.html', channel:'dev' %}
+{% render 'install/archives_table.html', channel: 'dev' %}
 
 ## Main channel
 
