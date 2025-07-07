@@ -7,6 +7,7 @@ import 'package:path/path.dart' as path;
 import 'components/card.dart';
 
 import 'components/glossary.dart';
+import 'extensions/attribute_processor.dart';
 import 'extensions/code_block_processor.dart';
 import 'extensions/header_processor.dart';
 import 'extensions/table_processor.dart';
@@ -91,6 +92,7 @@ void main() {
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
         extensions: [
+          const AttributeProcessor(),
           const TableOfContentsExtension(maxHeaderDepth: 3),
           const HeaderWrapperExtension(),
           const TableWrapperExtension(),
