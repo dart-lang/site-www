@@ -80,19 +80,17 @@ class PageBreadcrumbs extends StatelessComponent {
       if (indexPage == null) continue;
 
       final indexPageData = indexPage.data.page;
-      if (indexPageData != null) {
-        final indexTitle =
-            indexPageData['breadcrumb'] ??
-            indexPageData['short-title'] ??
-            indexPageData['title'];
-        if (indexTitle is String && indexTitle.isNotEmpty) {
-          breadcrumbs.add(
-            _BreadcrumbItem(
-              title: indexTitle,
-              url: indexPage.url,
-            ),
-          );
-        }
+      final indexTitle =
+          indexPageData['breadcrumb'] ??
+          indexPageData['short-title'] ??
+          indexPageData['title'];
+      if (indexTitle is String && indexTitle.isNotEmpty) {
+        breadcrumbs.add(
+          _BreadcrumbItem(
+            title: indexTitle,
+            url: indexPage.url,
+          ),
+        );
       }
     }
 
