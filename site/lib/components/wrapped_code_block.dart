@@ -7,6 +7,7 @@ final class WrappedCodeBlock extends StatelessComponent {
     required this.language,
     this.title,
     this.highlightLines = const {},
+    this.languagesToHide = const {'plaintext'},
     this.tag,
     this.initialLineNumber = 1,
     this.showLineNumbers = false,
@@ -19,6 +20,7 @@ final class WrappedCodeBlock extends StatelessComponent {
   final String? title;
 
   final Set<int> highlightLines;
+  final Set<String> languagesToHide;
   final CodeBlockTag? tag;
   final int initialLineNumber;
 
@@ -39,11 +41,12 @@ final class WrappedCodeBlock extends StatelessComponent {
           div(
             classes: 'code-block-body',
             [
-              span(
-                classes: 'code-block-language',
-                attributes: {'title': 'Language $language'},
-                [text(language)],
-              ),
+              if (!languagesToHide.contains(language))
+                span(
+                  classes: 'code-block-language',
+                  attributes: {'title': 'Language $language'},
+                  [text(language)],
+                ),
               pre(
                 classes: [
                   if (showLineNumbers) 'show-line-numbers',
