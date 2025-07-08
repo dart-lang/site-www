@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 import 'package:test/test.dart';
 import 'package:examples_util/print_matcher.dart' as m;
 

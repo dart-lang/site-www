@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, strict_raw_type
+// ignore_for_file: annotate_overrides, strict_raw_type
 import 'dart:async';
 
 abstract class MyStream<T> implements Stream<T> {

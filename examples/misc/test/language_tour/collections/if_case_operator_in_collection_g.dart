@@ -1,4 +1,3 @@
-// ignore_for_file: dead_code
 import 'package:test/test.dart';
 
 void main() {
