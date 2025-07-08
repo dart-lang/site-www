@@ -71,8 +71,18 @@ final class WrappedCodeBlock extends StatelessComponent {
                               'data-line': '${initialLineNumber + lineIndex}',
                           },
                           [
-                            // TODO(parlough): These should be tokenized spans.
-                            span([text(content[lineIndex])]),
+                            switch (content[lineIndex]) {
+                              // Add a zero-width space when empty
+                              // so that the line isn't collapsed to 0 height.
+                              final line when line.isEmpty => span(
+                                styles: const Styles(
+                                  userSelect: UserSelect.none,
+                                ),
+                                [text('\u200b')],
+                              ),
+                              // TODO(parlough): These should be tokenized spans.
+                              final line => span([text(line)]),
+                            },
                           ],
                         ),
                     ],

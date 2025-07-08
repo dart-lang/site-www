@@ -216,6 +216,7 @@ function initCookieNotice() {
 
 // A pattern to remove terminal command markers when copying code blocks.
 const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
+const zeroWidthSpaceReplacementPattern = /\u200B/g;
 
 function setupCopyButtons() {
   if (!navigator.clipboard) {
@@ -255,7 +256,8 @@ function setupCopyButtons() {
           const codePre = codeBlock.querySelector('pre');
           if (codePre) {
             const contentToCopy = codePre.textContent
-                .replace(terminalReplacementPattern, '');
+                .replace(terminalReplacementPattern, '')
+                .replace(zeroWidthSpaceReplacementPattern, '');
             if (contentToCopy && contentToCopy.length !== 0) {
               await navigator.clipboard.writeText(contentToCopy);
             }

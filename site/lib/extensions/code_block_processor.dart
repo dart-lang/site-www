@@ -117,6 +117,12 @@ final class CodeBlockProcessor implements PageExtension {
 
     for (var lineIndex = 0; lineIndex < lines.length; lineIndex++) {
       final line = lines[lineIndex];
+      if (line.trim().isEmpty) {
+        // Empty lines should still be a part of the output.
+        processedLines.add('');
+        continue;
+      }
+
       final processedLine = StringBuffer();
       var i = 0;
 
