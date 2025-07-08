@@ -11,6 +11,7 @@ class TrailingContent extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     final page = context.page;
     final pageUrl = page.url;
+    final pageData = page.data.page;
     final siteData = page.data.site;
     final branch = siteData['branch'] as String? ?? 'main';
     final repoLinks = siteData['repo'] as Map<String, Object?>? ?? {};
@@ -18,18 +19,26 @@ class TrailingContent extends StatelessComponent {
         repo ??
         repoLinks['this'] as String? ??
         'https://github.com/dart-lang/site-www';
-    final inputPath = page.data['inputPath'] as String? ?? '';
-    final pageDate = page.data['date'] as String? ?? '';
+    final inputPath = pageData['inputPath'] as String?;
+    final pageDate = pageData['date'] as String?;
 
     final currentSdkVersion =
         sdkVersion ?? siteData['sdkVersion'] as String? ?? '';
     final siteUrl = siteData['url'] as String? ?? 'https://dart.dev';
 
-    final pageSource =
-        '$repoUrl/tree/$branch/${inputPath.replaceAll('./', '')}';
     final fullPageUrl = '$siteUrl$pageUrl';
-    final issueUrl =
-        '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl&page-source=$pageSource';
+    final String issueUrl;
+    final String? pageSource;
+
+    if (inputPath != null) {
+      pageSource = '$repoUrl/blob/$branch/${inputPath.replaceAll('./', '')}';
+      issueUrl =
+          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl&page-source=$pageSource';
+    } else {
+      pageSource = null;
+      issueUrl =
+          '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
+    }
 
     yield div(
       id: 'trailing-content',
@@ -124,16 +133,21 @@ class TrailingContent extends StatelessComponent {
           span([
             text(
               'Unless stated otherwise, the documentation on '
-              'this site reflects Dart $currentSdkVersion. '
-              'Page last updated on $pageDate. ',
+              'this site reflects Dart $currentSdkVersion. ',
             ),
+            if (pageDate != null)
+              text(
+                'Page last updated on $pageDate. ',
+              ),
           ]),
-          a(
-            href: pageSource,
-            attributes: {'target': '_blank', 'rel': 'noopener'},
-            [text('View source')],
-          ),
-          span([text(' or ')]),
+          if (pageSource != null) ...[
+            a(
+              href: pageSource,
+              attributes: {'target': '_blank', 'rel': 'noopener'},
+              [text('View source')],
+            ),
+            span([text(' or ')]),
+          ],
           a(
             href: issueUrl,
             attributes: {
@@ -141,7 +155,7 @@ class TrailingContent extends StatelessComponent {
               'target': '_blank',
               'rel': 'noopener',
             },
-            [text('report an issue')],
+            [text(pageSource == null ? 'Report an issue' : 'report an issue')],
           ),
           text('.'),
         ]),
