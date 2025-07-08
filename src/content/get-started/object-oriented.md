@@ -2,9 +2,9 @@
 title: Object-oriented Dart programming
 short-title: Object oriented Dart
 description: >-
-  Learn about object-oriented programming in Dart, including abstract classes,
-  inheritance, overrides, and enums. Build a framework for well-architected CLI
-  apps.
+  Learn about object-oriented programming in Dart, including
+  abstract classes, inheritance, overrides, and enums.
+  Build a framework for well-architected CLI apps.
 prevpage:
   url: /get-started/packages-libs
   title: Packages and libraries
@@ -36,8 +36,8 @@ Before you begin this chapter, ensure you:
 
 * Have completed Chapter 4 and have a working Dart development environment with
   the `dartpedia` project.
-* Are familiar with basic programming concepts like variables, functions, and
-  control flow.
+* Are familiar with basic programming concepts like
+  variables, functions, and control flow.
 * Understand the concepts of packages and libraries in Dart.
 
 ## Tasks
@@ -45,8 +45,8 @@ Before you begin this chapter, ensure you:
 A command-line interface (CLI) is defined by the commands, options, and
 arguments a user can type into their terminal.
 
-By the end of this lesson, you will have built a framework that can understand a
-command like this:
+By the end of this lesson, you will have built a framework that can
+understand a command like this:
 
 ```bash
 $ dartpedia help --verbose --command=search
@@ -113,7 +113,7 @@ class, establishing an inheritance relationship.
       flags) or a `String`.
     * **`valueHelp`** is an optional `String` to give a hint about the expected
       value.
-    * The **`usage`** getter will provide a string showing how to use the 
+    * The **`usage`** getter will provide a string showing how to use the
       argument.
 
     With the `Argument` class fully defined, you have a common interface for all
@@ -227,7 +227,7 @@ class, establishing an inheritance relationship.
 
     Next, to give commands their own set of options, you'll use a private list
     and expose a read-only, **unmodifiable view** of it. This uses the
-    `UnmodifiableSetView` class, which is part of Dart's core collections
+    `UnmodifiableSetView` class, which is part of Dart's core collection
     library. To use it, you must import that library.
 
     Update the imports at the top of your file to include `dart:collection`:
@@ -247,7 +247,7 @@ class, establishing an inheritance relationship.
       String? valueHelp;
 
 
-      // Add the following lines to the bottom of your Command class 
+      // Add the following lines to the bottom of your Command class:
 
       final List<Option> _options = [];
     
@@ -267,7 +267,7 @@ class, establishing an inheritance relationship.
           UnmodifiableSetView(_options.toSet());
     
 
-      // Add the following lines to the bottom of your Command class
+      // Add the following lines to the bottom of your Command class:
 
       // A flag is an [Option] that's treated as a boolean.
       void addFlag(String name, {String? help, String? abbr, String? valueHelp}) {
@@ -309,7 +309,7 @@ class, establishing an inheritance relationship.
     be flexible, allowing it to return a value either immediately
     (synchronously) or after a delay (asynchronously). The `FutureOr<Object?>`
     type from Dart's `async` library serves this purpose. This means the method
-    must return a value (of any type, or null) either synchronously or
+    must return a value (of any type or `null`) either synchronously or
     asynchronously. This is your final required import.
 
     Update the imports at the top of your file to include `dart:async`:
@@ -347,7 +347,7 @@ class, establishing an inheritance relationship.
       }
 
 
-      // Add the following lines to the bottom of your Command class
+      // Add the following lines to the bottom of your Command class:
       FutureOr<Object?> run(ArgResults args);
     
       @override
@@ -357,12 +357,12 @@ class, establishing an inheritance relationship.
     }
     ```
 
-    * **`run(ArgResults args)`**: This abstract method is where a command's
-    * logic resides. Concrete subclasses *must* implement it.
-    * **`usage`**: This getter provides a simple usage string, combining the
-    * command's `name` and `description`.
+    * **`run(ArgResults args)`**: This abstract method is where a
+      command's logic resides. Concrete subclasses *must* implement it.
+    * **`usage`**: This getter provides a simple usage string,
+      combining the command's `name` and `description`.
 
-    The `Command` class now provides a robust foundation for all commands in\
+    The `Command` class now provides a robust foundation for all commands in
     your CLI app. With the class hierarchy in place, you're ready to define
     `ArgResults` to hold the parsed input.
 
@@ -375,9 +375,9 @@ class, establishing an inheritance relationship.
       String? commandArg;
       Map<Option, Object?> options = {};
     
-      // Returns true if the flag exists
+      // Returns true if the flag exists.
       bool flag(String name) {
-        // Only check flags, because we're sure that flags are booleans
+        // Only check flags, because we're sure that flags are booleans.
         for (var option in options.keys.where(
           (option) => option.type == OptionType.flag,
         )) {
@@ -555,7 +555,7 @@ Modify `cli/bin/cli.dart` to use the new `CommandRunner` and `HelpCommand`.
 
 2.  Replace the existing code with the following:
 
-    ```dart title="cli/bin/cli.dart"    
+    ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
     
     const version = '0.0.1';
