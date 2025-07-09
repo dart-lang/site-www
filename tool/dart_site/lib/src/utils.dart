@@ -19,6 +19,9 @@ String get repositoryRoot {
   return maybeRoot;
 }
 
+/// The path of the site output directory.
+String get siteOutputDirectoryPath => path.join(repositoryRoot, '_site');
+
 final bool _runningInCi = Platform.environment['CI'] == 'true';
 
 void groupStart(String text) {

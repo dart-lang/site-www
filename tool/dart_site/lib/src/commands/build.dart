@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:io/io.dart' as io;
+import 'package:path/path.dart' as path;
 
 import '../utils.dart';
 
@@ -39,6 +41,23 @@ final class BuildSiteCommand extends Command<int> {
     );
 
     final processExitCode = await process.exitCode;
+
+    final originalOutputDirectoryPath = path.join(
+      repositoryRoot,
+      'site',
+      'build',
+      'jaspr',
+    );
+    if (!Directory(originalOutputDirectoryPath).existsSync()) {
+      stderr.writeln(
+        'Error: Jaspr output directory not found at: '
+        '$originalOutputDirectoryPath',
+      );
+      return 1;
+    }
+
+    await io.copyPath(originalOutputDirectoryPath, siteOutputDirectoryPath);
+
     return processExitCode;
   }
 }
