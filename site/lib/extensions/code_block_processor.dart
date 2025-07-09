@@ -147,16 +147,11 @@ final class CodeBlockProcessor implements PageExtension {
           continue;
         }
 
-        // Check for the closing marker !].
-        if (i + 1 < line.length && line[i] == '!' && line[i + 1] == ']') {
-          if (currentHighlight == null) {
-            throw ArgumentError(
-              'Closing highlight marker "!]" found at '
-              'line ${lineIndex + 1}, column ${i + 1} without '
-              'a matching opening marker',
-            );
-          }
-
+        // If there's an open highlight span, check for the closing marker !].
+        if (currentHighlight != null &&
+            i + 1 < line.length &&
+            line[i] == '!' &&
+            line[i + 1] == ']') {
           if (currentHighlight.startLine == lineIndex) {
             // If the highlight span is opened and closed in the same line.
             lineHighlights.putIfAbsent(lineIndex, () => []).add((
