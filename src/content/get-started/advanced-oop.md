@@ -47,7 +47,7 @@ color to the output and improving text formatting.
 
 ### Task 1: Enhance the console color enum
 
-First, you'll add color to the console output. The
+First, add color to the console output. The
 `ConsoleColor` enum will include RGB values and methods for applying
 colors to text.
 
@@ -161,7 +161,7 @@ colors to text.
 
 ### Task 2: Create a String extension
 
-Next, you'll create an extension on the `String` class to add utility methods
+Next, create an extension on the `String` class to add utility methods
 for applying console colors and formatting text.
 
 1.  Add the following code to the `command_runner/lib/src/console.dart` file:
@@ -203,7 +203,7 @@ for applying console colors and formatting text.
     This code defines an extension called `TextRenderUtils` on the `String`
     class. It adds three getter methods for applying console colors:
     `errorText`, `instructionText`, and `titleText`. It also adds a method for
-    splitting a string into lines of a specified length: `splitLinesByLength`.
+    splitting a string into lines of a specified length called `splitLinesByLength`.
 
 ### Task 3: Update command_runner package
 
@@ -225,10 +225,10 @@ Update the `command_runner` package to export `console.dart`.
 
 ### Task 4: Implement colorful echo command
 
-Finally, you'll implement an example command to test the print. It's
+Finally, implement an example command to test the print. It's
 good practice to implement example usage of a package in Dart for
 developers that will use your package.  This example creates a command
-that simply makes console output colorful.
+that makes console output colorful.
 
 1.  Open the `example/command_runner_example.dart` file.
 2.  Replace the contents of the file with the following code:
@@ -303,7 +303,7 @@ that simply makes console output colorful.
     `instructionText`, and `errorText` getter methods from the `TextRenderUtils`
     extension to apply the colors.
 
-3.  Navigate to `/dartpedia/command_runner` and run the command:
+3.  Navigate to `/dartpedia/command_runner` and run the following command:
 
     ```bash
     dart run example/command_runner_example.dart echo "hello world goodbye"
