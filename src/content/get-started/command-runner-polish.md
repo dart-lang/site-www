@@ -54,7 +54,7 @@ understand how to use your CLI application.
 
 1.  Open the `command_runner/lib/src/help_command.dart` file.
 
-2.  Add imports for `console.dart` and `exceptions.dart` at the top of the file.
+1.  Add imports for `console.dart` and `exceptions.dart` at the top of the file.
     You need these to use the color extensions and to throw an
     `ArgumentException`.
 
@@ -67,7 +67,7 @@ understand how to use your CLI application.
     import 'exceptions.dart';
     ```
 
-3.  Replace the existing `run` method with the following. This new version uses
+1.  Replace the existing `run` method with the following. This new version uses
     a `StringBuffer` to efficiently build the help string and includes logic to
     handle verbose output.
 
@@ -113,7 +113,7 @@ understand how to use your CLI application.
     It's more performant than using the `+` operator, especially when performing
     many concatenations inside a loop.
 
-4.  Add the `_renderCommandVerbose` private helper method to the `HelpCommand`
+1.  Add the `_renderCommandVerbose` private helper method to the `HelpCommand`
     class. This method formats the detailed output for a single command.
 
     ```dart
@@ -142,7 +142,7 @@ flexible output handling.
 
 1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
 
-2.  Add the `onOutput` argument to the `CommandRunner` constructor, and add the
+1.  Add the `onOutput` argument to the `CommandRunner` constructor, and add the
     corresponding `onOutput` member to the class.
 
     ```dart
@@ -161,7 +161,7 @@ flexible output handling.
     }
     ```
 
-3.  Update the `run` method to use the `onOutput` argument.
+1.  Update the `run` method to use the `onOutput` argument.
 
     ```dart
       Future<void> run(List<String> input) async {
@@ -190,7 +190,7 @@ Finally, update your main application to use the new `onOutput` feature.
 
 1.  Open the `cli/bin/cli.dart` file.
 
-2.  Update the `main` function to pass the `onOutput` function to the
+1.  Update the `main` function to pass the `onOutput` function to the
     `CommandRunner`. You will also need to add an import for `console.dart` to
     make the `write` function available.
 
@@ -224,7 +224,7 @@ Test the improved `HelpCommand` and the `onOutput` callback.
 
 1.  Open your terminal and navigate to the `cli` directory.
 
-2.  Run the command `dart run bin/cli.dart help --verbose`.
+1.  Run the command `dart run bin/cli.dart help --verbose`.
 
     You should see detailed usage information for the `help` command, printed
     using the custom `write` function.
