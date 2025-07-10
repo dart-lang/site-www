@@ -19,18 +19,21 @@
 
 - term: "Context type"
   short_description: |-
-    A type expected from an expression based on how and where it's used.
+    The type that the surrounding code expects from an expression.
   long_description: |-
-    A **context type** is the type that surrounding code expects from an expression, 
-    such as a variable type, a parameter type, or a return type.
+    The **context type** is the type that the surrounding code expects
+    from an expression, such as a variable type, a parameter type, or a
+    return type.
 
-    Dart uses the context type to interpret and infer meaning from expressions, including:
+    Dart uses the context type to interpret and infer meaning
+    from expressions, including:
 
     - **Type inference** ("downwards inference"):
 
       ```dart
       List<int> list = [];
       ```
+
       The context type `List<int>` lets the compiler infer the list type as `<int>[]`.
 
     - **Implicit downcast**:
@@ -38,6 +41,7 @@
       ```dart
       String asString(dynamic value) => value;
       ```
+
       The return context is `String`, so Dart inserts an implicit downcast.
 
     - **Literal interpretation**:
@@ -45,6 +49,7 @@
       ```dart
       double d = 0;
       ```
+
       The context type `double` makes `0` behave like `0.0`.
 
     - **Static access shorthand** (dot shorthand):
@@ -52,17 +57,18 @@
       ```dart
       int x = .parse(input);
       ```
+
       The context type is `int`, so `.parse` resolves to `int.parse(input)`.
 
-    Some expressions have **no context type**, including:
+    Some expressions have no context type, including:
 
       - **When used as statements**:  
-        Expressions like `set.remove(value);` are used only for their effect — not their value — so no type is expected.
+        Expressions like `set.remove(value);` are used only for their
+        effect, not their value, so no type is expected.
 
       - **When the context type is inferred from the expression**:  
         For example, in `var list = [1];`, the list literal has no context type.
         Dart infers `List<int>` from the contents and assigns that type to the variable.
-
 
   related_links:
     - text: "Type inference"
