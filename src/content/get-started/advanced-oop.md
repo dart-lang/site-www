@@ -47,8 +47,9 @@ color to the output and improving text formatting.
 
 ### Task 1: Enhance the console color enum
 
-First, you'll enhance the `ConsoleColor` enum to include RGB values and methods
-for applying colors to text.
+First, you'll add color to the console output. The
+`ConsoleColor` enum will include RGB values and methods for applying
+colors to text.
 
 1.  Create the `command_runner/lib/src/console.dart` file.
 
@@ -69,6 +70,7 @@ for applying colors to text.
       }
     }
 
+    /// Prints line-by-line
     Future<void> _delayedPrint(String text, {int duration = 0}) async {
       return Future<void>.delayed(
         Duration(milliseconds: duration),
@@ -153,7 +155,7 @@ for applying colors to text.
     }
     ```
 
-    These methods use ANSI escape codes to apply foreground and background
+    These methods use [ANSI escape codes][] to apply foreground and background
     colors to text. The `applyForeground` and `applyBackground` methods return
     a string with the ANSI escape codes applied.
 
@@ -223,8 +225,10 @@ Update the `command_runner` package to export `console.dart`.
 
 ### Task 4: Implement colorful echo command
 
-Finally, you'll implement a colorful echo command that uses the enhanced enum
-and string extension to format the output.
+Finally, you'll implement an example command to test the print. It's
+good practice to implement example usage of a package in Dart for
+developers that will use your package.  This example creates a command
+that simply makes console output colorful.
 
 1.  Open the `example/command_runner_example.dart` file.
 2.  Replace the contents of the file with the following code:
@@ -261,12 +265,12 @@ and string extension to format the output.
 
       @override
       FutureOr<String> run(ArgResults arg) {
-        // if (arg.commandArg == null) {
-        //   throw ArgumentException(
-        //     'This argument requires one positional argument',
-        //     name,
-        //   );
-        // }
+        if (arg.commandArg == null) {
+          throw ArgumentException(
+            'This argument requires one positional argument',
+            name,
+          );
+        }
 
         List<String> prettyWords = [];
         var words = arg.commandArg!.split(' ');
@@ -342,3 +346,5 @@ In the next lesson, you'll learn how to further improve the
 `command_runner` package by polishing the `HelpCommand`, completing the
 `CommandRunner` class, adding the `onOutput` argument, and providing a complete
 example.
+
+[ANSI escape codes]: https://en.wikipedia.org/wiki/ANSI_escape_code

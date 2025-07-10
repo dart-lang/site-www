@@ -202,41 +202,41 @@ provides bad input.
                 var base = _removeDash(input[i]);
                 // Throw an exception if an option is not recognized for the given command.
                 var option = results.command!.options.firstWhere(
-                (option) => option.name == base || option.abbr == base,
-                orElse: () {
-                    throw ArgumentException(
-                    'Unknown option ${input[i]}',
-                    results.command!.name,
-                    input[i],
-                    );
-                },
+                    (option) => option.name == base || option.abbr == base,
+                    orElse: () {
+                        throw ArgumentException(
+                        'Unknown option ${input[i]}',
+                        results.command!.name,
+                        input[i],
+                        );
+                    },
                 );
 
                 if (option.type == OptionType.flag) {
-                inputOptions[option] = true;
-                i++;
-                continue;
+                    inputOptions[option] = true;
+                    i++;
+                    continue;
                 }
 
                 if (option.type == OptionType.option) {
                 // Throw an exception if an option requires an argument but none is given.
-                if (i + 1 >= input.length) {
-                    throw ArgumentException(
-                    'Option ${option.name} requires an argument',
-                    results.command!.name,
-                    option.name,
-                    );
-                }
-                if (input[i + 1].startsWith('-')) {
-                    throw ArgumentException(
-                    'Option ${option.name} requires an argument, but got another option ${input[i + 1]}',
-                    results.command!.name,
-                    option.name,
-                    );
-                }
-                var arg = input[i + 1];
-                inputOptions[option] = arg;
-                i++;
+                    if (i + 1 >= input.length) {
+                        throw ArgumentException(
+                            'Option ${option.name} requires an argument',
+                            results.command!.name,
+                            option.name,
+                        );
+                    }
+                    if (input[i + 1].startsWith('-')) {
+                        throw ArgumentException(
+                            'Option ${option.name} requires an argument, but got another option ${input[i + 1]}',
+                            results.command!.name,
+                            option.name,
+                        );
+                    }
+                    var arg = input[i + 1];
+                    inputOptions[option] = arg;
+                    i++;
                 }
             } else {
                 // Throw an exception if more than one positional argument is provided.
@@ -257,27 +257,27 @@ provides bad input.
     }
 
     String _removeDash(String input) {
-    if (input.startsWith('--')) {
-        return input.substring(2);
-    }
-    if (input.startsWith('-')) {
-        return input.substring(1);
-    }
-    return input;
+        if (input.startsWith('--')) {
+            return input.substring(2);
+        }
+        if (input.startsWith('-')) {
+            return input.substring(1);
+        }
+        return input;
     }
     ```
     
     This updated parse method now actively defends against bad input.
     Specifically, the new throw statements handle several common error cases:
 
-    *   Unknown Commands: The first if/else block ensures the first argument is
+    *   Unknown Commands: The first `if`/`else` block ensures the first argument is
         a valid command.
     *   Multiple Commands: It checks that the user hasn't tried to run more than
         one command at a time.
-    *   Unknown Options: The orElse parameter within firstWhere now throws an
-        exception if a user provides a flag or option    (like --foo) that
+    *   Unknown Options: The `orElse` parameter within `firstWhere` now throws an
+        exception if a user provides a flag or option    (like `--foo`) that
         hasn't been defined for that command.
-    *   Missing Option Values: It ensures that an option (like --output) is
+    *   Missing Option Values: It ensures that an option (like `--output`) is
         followed by a value and not another option or the end of the input.
     *   Too Many Arguments: It enforces a rule that commands can only have one
         positional argument.
