@@ -45,13 +45,13 @@ may occur during command execution.
 
 ### Task 1: Create a custom ArgumentException
 
-First, you'll define a custom exception class called `ArgumentException` to
+First, define a custom exception class called `ArgumentException` to
 represent errors related to command-line arguments.
 
 1.  Create the file `command_runner/lib/src/exceptions.dart`. This file will
-2.  contain the definition for your `ArgumentException` class.
+    contain the definition for your `ArgumentException` class.
 
-3.  Define a class called `ArgumentException` that `extends` `FormatException`.
+1.  Define a class called `ArgumentException` that `extends` `FormatException`.
 
     ```dart title="command_runner/lib/src/exceptions.dart"
     class ArgumentException extends FormatException {
@@ -86,7 +86,7 @@ represent errors related to command-line arguments.
 
 ## Task 2: Implement error handling in CommandRunner
 
-Next, you'll update the `CommandRunner` class to handle potential errors
+Next, update the `CommandRunner` class to handle potential errors
 gracefully. This involves adding an error-handling callback, using `try/catch`
 to manage exceptions, and throwing your new `ArgumentException` when the user
 provides bad input.
@@ -107,7 +107,7 @@ provides bad input.
 
 1.  Add an `onError` callback to the `CommandRunner`.
 
-    Modify the CommandRunner to accept an optional onError function in its
+    Modify the CommandRunner to accept an optional `onError` function in its
     constructor. This will allow the user of your package to define their own
     error-handling logic.
 
@@ -128,15 +128,15 @@ provides bad input.
     }
     ```
     
-    This change introduces a nullable onError property. The
+    This change introduces a nullable `onError` property. The
     `FutureOr<void> Function(Object)?` type means it's a function that takes an
     `Object` and returns a `Future` or nothing, and it might be null.
 
 1.  Update the run method to use `try`/`catch`.
 
     Wrap the logic inside the run method in a `try`/`catch` block. If an exception
-    occurs, this block will "catch" it and either pass it to the `onError
-    callback or rethrow it if no callback was provided. rethrow preserves the
+    occurs, this block will "catch" it and either pass it to the `onError`
+    callback or rethrow it if no callback was provided. `rethrow` preserves the
     original error and stack trace.
 
     ```dart
@@ -158,11 +158,11 @@ provides bad input.
     }
     ```
 
-1.  Add validation to the parse method.
+1.  Add validation to the `parse` method.
 
-    Finally, replace the existing parse method in `command_runner_base.dart`
+    Finally, replace the existing `parse` method in `command_runner_base.dart`
     with the following updated version. This new version is much more robust.
-    It's filled with checks that will throw your custom ArgumentException
+    It's filled with checks that will throw your custom `ArgumentException`
     whenever it detects invalid user input.
 
     ```dart
@@ -270,16 +270,16 @@ provides bad input.
     This updated parse method now actively defends against bad input.
     Specifically, the new throw statements handle several common error cases:
 
-    *   Unknown Commands: The first `if`/`else` block ensures the first argument is
+    *   Unknown commands: The first `if`/`else` block ensures the first argument is
         a valid command.
-    *   Multiple Commands: It checks that the user hasn't tried to run more than
+    *   Multiple commands: It checks that the user hasn't tried to run more than
         one command at a time.
     *   Unknown Options: The `orElse` parameter within `firstWhere` now throws an
-        exception if a user provides a flag or option    (like `--foo`) that
+        exception if a user provides a flag or option (like `--foo`) that
         hasn't been defined for that command.
-    *   Missing Option Values: It ensures that an option (like `--output`) is
+    *   Missing option values: It ensures that an option (like `--output`) is
         followed by a value and not another option or the end of the input.
-    *   Too Many Arguments: It enforces a rule that commands can only have one
+    *   Too many arguments: It enforces a rule that commands can only have one
         positional argument.
 
 ### Task 3: Update cli.dart to use the new error handling
@@ -288,7 +288,7 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
 
 1.  Open the `cli/bin/cli.dart` file.
 
-2.  Update the `main` function to pass in an `onError` method to the
+1.  Update the `main` function to pass in an `onError` method to the
     `CommandRunner`:
 
     ```dart title="cli/bin/cli.dart"
@@ -320,6 +320,8 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
 
 ### Task 4: Update command_runner library exports
 
+Make `ArgumentException` available to the `command_runner` library.
+
 1.  Open `command_runner/lib/command_runner.dart`, and add the following
     exports:
 
@@ -346,7 +348,7 @@ Test the new error handling by running the application with invalid arguments.
 
 1.  Open your terminal and navigate to the `cli` directory.
 
-2.  Run the command `dart run bin/cli.dart invalid_command`.
+1.  Run the command `dart run bin/cli.dart invalid_command`.
 
     You should see the following output:
 
