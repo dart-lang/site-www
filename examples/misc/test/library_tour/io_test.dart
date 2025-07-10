@@ -11,7 +11,7 @@ import 'package:examples/library_tour/io/http_server.dart' as http_server;
 import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
-  test('readAsString, readAsLines', () async {
+  test('readAsString, readAsLines', () {
     // #docregion read-as-string
     void main() async {
       var config = File('test_data/config.txt');
@@ -115,7 +115,7 @@ void main() {
     expect(main, prints(contains('Found file')));
   });
 
-  test('client-server', () async {
+  test('client-server', () {
     // #docregion client
     Future<void> main() async {
       var url = Uri.parse('http://localhost:8888/dart');

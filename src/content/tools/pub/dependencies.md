@@ -499,7 +499,7 @@ resemble the following:
 ```yaml
 dev_dependencies:
   build_runner: ^2.4.15
-  lints: ^5.1.1
+  lints: ^6.0.0
   test: ^1.25.15
 ```
 

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables, avoid_function_literals_in_foreach_calls
+// ignore_for_file: unused_element, prefer_function_declarations_over_variables, avoid_function_literals_in_foreach_calls
 // ignore_for_file: always_declare_return_types
 
 import 'package:examples/language_tour/function_equality.dart'

@@ -32,7 +32,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
