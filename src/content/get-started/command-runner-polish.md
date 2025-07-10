@@ -48,7 +48,7 @@ user-friendly.
 
 ### Task 1 Improve the `HelpCommand` output
 
-You'll enhance the `HelpCommand` to provide more detailed usage information,
+Enhance the `HelpCommand` to provide more detailed usage information,
 including options and their descriptions. This will make it easier for users to
 understand how to use your CLI application.
 
@@ -108,6 +108,7 @@ understand how to use your CLI application.
       return buffer.toString();
     }
     ```
+
     `StringBuffer` is a Dart class that allows you to efficiently build strings.
     It's more performant than using the `+` operator, especially when performing
     many concatenations inside a loop.
@@ -136,7 +137,7 @@ understand how to use your CLI application.
 
 ### Task 2 Add an `onOutput` callback
 
-Next, you'll add an `onOutput` argument to the `CommandRunner` to allow for
+Next, add an `onOutput` argument to the `CommandRunner` to allow for
 flexible output handling.
 
 1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
@@ -179,6 +180,7 @@ flexible output handling.
         }
       }
     ```
+
     This updates the `run` method to use the `onOutput` function if it is
     provided, otherwise it defaults to printing to the console.
 
