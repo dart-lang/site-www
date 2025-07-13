@@ -59,8 +59,21 @@ final class DefinitionListSyntax extends md.BlockSyntax {
   ) {
     // Parse all consecutive terms.
     while (!parser.isDone && _isTerm(parser)) {
-      final termNodes = parser.document.parseInline(parser.current.content);
-      elements.add(md.Element('dt', termNodes));
+      // Use a block parser to ensure link references work as expected.
+      // If wrapped in paragraph, remove it.
+      final termNodes = md.BlockParser(
+        [parser.current],
+        parser.document,
+      ).parseLines();
+      final firstNode = termNodes.first;
+      final List<md.Node> unwrappedNodes;
+      if (firstNode is md.Element && firstNode.tag == 'p') {
+        unwrappedNodes = firstNode.children ?? [];
+      } else {
+        unwrappedNodes = termNodes;
+      }
+
+      elements.add(md.Element('dt', unwrappedNodes));
       parser.advance();
     }
 
