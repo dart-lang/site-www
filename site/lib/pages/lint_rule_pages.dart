@@ -17,23 +17,34 @@ final class LintLoader extends RouteLoaderBase {
     );
     final lintRules = loadLints(jsonDecode(await lintRulesFile.readAsString()));
 
-    final sources = [
-      for (final lint in lintRules)
-        _LintRulePageSource(
+    final sources = <PageSource>[];
+    for (final lint in lintRules) {
+      sources.add(_LintRulePageSource(
+        lint,
+        '/tools/linter-rules/${lint.id}.md',
+        this,
+      ));
+
+      final lowerCaseId = lint.id.toLowerCase();
+      if (lint.id != lowerCaseId) {
+        sources.add(_LintRulePageSource(
           lint,
-          '/tools/linter-rules/${lint.id}.md',
+          '/tools/linter-rules/$lowerCaseId.md',
           this,
-        ),
-    ];
+          hide: true,
+        ));
+      }
+    }
 
     return sources;
   }
 }
 
 class _LintRulePageSource extends PageSource {
-  _LintRulePageSource(this.lint, super.path, super.loader);
+  _LintRulePageSource(this.lint, super.path, super.loader, {this.hide = false});
 
   final LintDetails lint;
+  final bool hide;
 
   @override
   Future<Page> buildPage() async {
@@ -211,6 +222,8 @@ class _LintRulePageSource extends PageSource {
           'show_breadcrumbs': true,
           'underscore_breaker_titles': true,
           'description': 'Learn about the ${lint.name} linter rule.',
+          if (hide)
+            ...{'noindex': true, 'sitemap': false}
         },
       },
       config: config,

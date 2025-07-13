@@ -30,7 +30,7 @@ to generate bindings for Kotlin as well.
 
 ## Simple Java example
 
-This guide walks you through [an example]({{example}})
+This guide walks you through [an example]({{page.example}})
 that uses `package:jnigen` to generate bindings for a simple class.
 
 ### Prerequisites
@@ -93,7 +93,7 @@ $ dart run jnigen --config jnigen.yaml
 ```
 
 In this example, this generates
-[lib/example.dart]({{example}}/lib/example.dart), just
+[`lib/example.dart`]({{page.example}}/lib/example.dart), just
 as you specified in `jnigen.yaml`.
 
 This file contains a class called `Example`, 
@@ -103,7 +103,7 @@ just like the Java file.
 ### Use the bindings
 
 Now you're ready to load and interact with the generated library.
-The example app, [bin/sum.dart]({{example}}/bin/sum.dart), gets 
+The example app, [`bin/sum.dart`]({{page.example}}/bin/sum.dart), gets 
 two numbers as arguments and prints their sum. 
 Using the `Example.sum` method is identical to Java.
 

@@ -20,7 +20,7 @@ final class HeaderWithAttributesSyntax extends md.HeaderSyntax {
     final children = element.children;
     if (children != null && children.isNotEmpty) {
       final lastChild = children.last;
-      final childText = lastChild.textContent;
+      var childText = lastChild.textContent;
       final match = _attributeEndPattern.firstMatch(childText);
 
       if (match != null) {
@@ -30,6 +30,7 @@ final class HeaderWithAttributesSyntax extends md.HeaderSyntax {
 
         // Remove the attribute syntax from the text.
         final cleanText = childText.substring(0, match.start).trim();
+        childText = cleanText;
         children[children.length - 1] = md.Text(cleanText);
 
         // Apply the parsed attributes to the header element.

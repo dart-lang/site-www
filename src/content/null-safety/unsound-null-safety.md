@@ -101,7 +101,9 @@ If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
 
-### Using the migration tool
+<a id="using-the-migration-tool" aria-hidden="true"></a>
+
+### Using the migration tool {: #migration-tool}
 
 You can migrate incrementally using the
 [migration tool][].

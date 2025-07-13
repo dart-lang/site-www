@@ -120,14 +120,11 @@ check out [All linter rules](/tools/linter-rules/all).
 
 ---
 
-{% comment -%}
-TODO(parlough): Generate this HTML with some sort of component mechanism.
-{% endcomment -%}
-
 <section id="filter-and-search" class="hidden">
   <div class="search-row">
     <div class="search-wrapper">
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
+      <input type="search" placeholder="Search rules..." aria-label="Search linter rules by names">
     </div>
     {%- comment %}<button class="empty-button icon-button" id="sort">
       <span class="material-symbols">sort</span>
@@ -135,19 +132,6 @@ TODO(parlough): Generate this HTML with some sort of component mechanism.
   </div>
 
   <div class="chip-set">
-    {%- comment %}<div class="button-menu-wrapper">
-      <button class="chip select-chip" data-menu="category-menu" data-title="Category" aria-controls="category-menu" aria-expanded="false">
-        <span class="label">Category</span>
-        <svg class="chip-icon trailing-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 10l5 5 5-5H7z"></path>
-        </svg>
-      </button>
-      <div id="category-menu" class="select-menu">
-        <ul role="listbox">
-          <li><button role="option" aria-selected="false"><span class="label">Effective Dart</span></button></li>
-        </ul>
-      </div>
-    </div>{% endcomment -%}
     <div class="button-menu-wrapper">
       <button class="chip select-chip" data-menu="rule-set-menu" data-title="Rule set" aria-controls="rule-set-menu" aria-expanded="false">
         <span class="label">Rule set</span>

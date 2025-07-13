@@ -80,7 +80,7 @@ final class WrappedCodeBlock extends StatelessComponent {
                                 ),
                                 [text('\u200b')],
                               ),
-                              // TODO(parlough): These should be tokenized spans.
+                              // TODO(parlough): This should be highlighted.
                               final line => span([text(line)]),
                             },
                           ],
