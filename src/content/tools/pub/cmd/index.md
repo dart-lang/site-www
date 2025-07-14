@@ -86,6 +86,12 @@ or any modification of the pubspec.
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
+[`install`](/tools/dart-install)
+: Installs Dart CLI tools for global use.
+  If a `pubspec.lock` file already exists, fetches the version
+  of each dependency (if possible) as listed in the lock file.
+  Creates or updates the lock file, as needed.
+
 [`outdated`](/tools/pub/cmd/pub-outdated)
 : Looks at every package that the current package depends on,
   determines which package dependencies are out of date,
@@ -161,4 +167,3 @@ The default depends on whether you're using this command at a terminal.
 At a terminal, `--color` is the default,
 otherwise, `--no-color` is the default.
 Use `--no-color` to disable color in all environments.
-

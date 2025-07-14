@@ -17,77 +17,13 @@
   alternate:
     - "Quick assist"
 
-- term: "Context type"
-  short_description: |-
-    The type that the surrounding code expects from an expression.
-  long_description: |-
-    The **context type** is the type that the surrounding code expects
-    from an expression, such as a variable type, a parameter type, or a
-    return type.
-
-    Dart uses the context type to interpret and infer meaning
-    from expressions, including:
-
-    - **Type inference** ("downwards inference"):
-
-      ```dart
-      List<int> list = [];
-      ```
-
-      The context type `List<int>` lets the compiler infer the list type as `<int>[]`.
-
-    - **Implicit downcast**:
-
-      ```dart
-      String asString(dynamic value) => value;
-      ```
-
-      The return context is `String`, so Dart inserts an implicit downcast.
-
-    - **Literal interpretation**:
-
-      ```dart
-      double d = 0;
-      ```
-
-      The context type `double` makes `0` behave like `0.0`.
-
-    - **Static access shorthand** (dot shorthand):
-
-      ```dart
-      int x = .parse(input);
-      ```
-
-      The context type is `int`, so `.parse` resolves to `int.parse(input)`.
-
-    Some expressions have no context type, including:
-
-      - **When used as statements**:  
-        Expressions like `set.remove(value);` are used only for their
-        effect, not their value, so no type is expected.
-
-      - **When the context type is inferred from the expression**:  
-        For example, in `var list = [1];`, the list literal has no context type.
-        Dart infers `List<int>` from the contents and assigns that type to the variable.
-
-  related_links:
-    - text: "Type inference"
-      link: "/language/type-system#type-inference"
-      type: "doc"
-    - text: "Implicit downcast from `dynamic`"
-      link: "/language/type-system#implicit-downcasts-from-dynamic"
-      type: "doc"
-  labels:
-    - "language"
-    - "type system"
-
 - term: "Constant context"
   short_description: |-
     A region of code where the const keyword is implied and
     everything within that region must be a constant.
   long_description: |-
     A _constant context_ is a region of code in which it
-    isn't necessary to include the `const` keyword because it's implied by
+    isn't necessary to include the `const` keyword because it's implied by 
     the fact that everything in that region is required to be a constant.
     The following locations are constant contexts:
 
@@ -104,7 +40,7 @@
       ```dart
       var p = const Point(/*constant context*/);
       ```
-
+  
     - The initializer for a variable that's prefixed by the `const` keyword.
       For example:
 
@@ -270,7 +206,7 @@
 
     In Dart, a class is immutable if you:
 
-    * Declare all fields as final, so they can't be reassigned.
+    * Declare all fields as final, so they can’t be reassigned.
     * Ensure the field values themselves are immutable.
     * Optionally, use the `@immutable` annotation from the meta package.
       This lets the analyzer warn you if any field is not final or refers to a mutable type.
@@ -278,7 +214,7 @@
     Additionally, all Dart const values are immutable. For example, `const [1, 2, 3]`
     creates an immutable list. If a class has a `const` (non-factory) constructor, then
     all of its fields must be final.
-
+    
     Example:
 
       ```dart
@@ -375,15 +311,15 @@
     - "understanding diagnostics"
   alternate:
     - "with mixin"
-
+    
 - term: "Late"
   id: "late"
   short_description: |-
     A keyword that enables deferred initialization of variables and is
-    typically used with non-nullable variables.
+    typically used with non-nullable variabels.
   long_description: |-
-    The `late` keyword in Dart is used to indicate that a variable
-    will be initialized later, after its declaration, but before it's used.
+    The `late` keyword in Dart is used to indicate that a variable 
+    will be initialized later, after its declaration, but before it's used. 
     This helps avoid the need to make a variable nullable (`?`) when you
     know it will definitely receive a value, just not immediately.
 
@@ -400,8 +336,8 @@
     }
     ```
 
-    Be careful with late variables that are part of a public API.
-    If a client accesses the variable before it's initialized,
+    Be careful with late variables that are part of a public API. 
+    If a client accesses the variable before it’s initialized,
     they will encounter a `LateInitializationError`, which provides
     little context. In such cases, consider using a
     private nullable variable with a public getter that throws a
@@ -409,7 +345,7 @@
     this can offer clearer feedback to API users, despite the added
     complexity.
 
-    You can also use `late final` when the variable should only be set once.
+    You can also use `late final` when the variable should only be set once. 
     This is useful in scenarios where the value is not available at object
     construction time, such as cyclic dependencies in object graphs.
 
@@ -418,14 +354,14 @@
     ```dart
     class LinkedQueue<T> {
       late final QueueLink<T> _head;
-
+      
       LinkedQueue() {
         _head = QueueLink<T>._head(owner: this); // Cyclic reference between objects
       }
     }
     ```
 
-    Be cautious: if a late variable is accessed before it's initialized
+    Be cautious: if a late variable is accessed before it’s initialized
     or never initialized at all, it will cause a runtime error.
 
   related_links:
@@ -433,7 +369,7 @@
       link: "/null-safety"
       type: "doc"
     - text: "Late variables"
-      link: "/language/variables#late-variables"
+      link: "https://dart.dev/language/variables#late-variables"
       type: "doc"
     - text: "Error: LateInitializationError"
       link: "https://api.dart.dev/stable/2.7.2/dart-core/LateInitializationError-class.html"
@@ -783,7 +719,7 @@
     Note that everything is turned upside-down for parameter types.
     In particular, this subtype relation among function types requires that
     the _opposite_ subtype relation exists for the parameter type.
-    For example, `void Function(Object)` is a subtype of `void Function(int)`
+    For example, `void Function(Object)` is a subtype of `void Function(int)` 
     because `int` is a subtype of `Object`.
 
     With a more complex type like `List<void Function(int)>`,
@@ -887,13 +823,13 @@
 - term: "Zone"
   id: "zone"
   short_description: |-
-    A mechanism to customize the behavior of asynchronous code
+    A mechanism to customize the behavior of asynchronous code 
     without modifying the asynchronous code itself.
   long_description: |-
     A zone is an execution context that allows you to run code with
     customized behavior for asynchronous events such as timers,
     microtasks, and uncaught errors.
-
+    
     Zones are useful for:
     - Logging
     - Error tracking
@@ -901,14 +837,14 @@
       (for example, in server apps)
     - Testing and debugging async behavior
 
-    Zones provide a way to track and influence asynchronous execution
+    Zones provide a way to track and influence asynchronous execution 
     without requiring the asynchronous code to be aware of it.
 
-    You can create a new zone using `runZoned` (or `runZonedGuarded`)
+    You can create a new zone using `runZoned` (or `runZonedGuarded`) 
     and override zone-specific behavior such as error handling and timers.
     Even `print` can be overridden, although it's not asynchronous and just
     included for convenience.
-
+    
     Example:
     ```dart
     import 'dart:async';
@@ -924,7 +860,7 @@
     }
     ```
 
-    In the preceding example, the uncaught error inside the async callback
+    In the preceeding example, the uncaught error inside the async callback
     is intercepted by the custom zone.
 
   related_links:

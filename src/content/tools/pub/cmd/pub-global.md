@@ -44,6 +44,10 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
+:::note
+[`dart install`][] is a newer alternative to `dart pub global activate`.
+:::
+
 ### Activating a package on the pub.dev site
 
 ```console
@@ -278,3 +282,4 @@ the preexisting executable will not be replaced.
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev
+[`dart install`]: /tools/dart-install
