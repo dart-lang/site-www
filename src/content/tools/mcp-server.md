@@ -52,8 +52,6 @@ to this project) or edit the global
       "command": "dart",
       "args": [
         "mcp-server",
-        "--experimental-mcp-server",
-        // Can be removed for Dart 3.9.0 or later.
       ]
     }
   }
@@ -119,11 +117,7 @@ Alternatively, you can configure the server manually:
       "command": "dart",
       "args": [
         "mcp-server",
-        "--experimental-mcp-server",
-        // Can be removed for Dart 3.9.0 or later
-        "--force-roots-fallback" // Workaround for a
-                                   // Cursor issue with
-                                   // Roots support
+        "--force-roots-fallback" // Workaround for a Cursor issue with Roots support
       ]
     }
   }
@@ -202,8 +196,8 @@ documentation for [enabling MCP support][].
 
 ## Tools for Flutter
 
-| Tool Name                  | Feature Group    | Description |
-| :------------------------- | :--------------- | :---------- |
+| Tool Name | Title | Description |
+| --- | --- | --- |
 | `get_runtime_errors` | Get runtime errors | Retrieves the most recent runtime errors that have occurred in the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
 | `hot_reload` | Hot reload | Performs a hot reload of the active Flutter application. This is to apply the latest code changes to the running application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
 | `get_widget_tree` | Get widget tree | Retrieves the widget tree from the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
