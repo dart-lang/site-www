@@ -194,6 +194,8 @@ documentation for [enabling MCP support][].
 | `signature_help` | Signature help | Get signature help for an API being used at a given cursor position in a file. |
 | `hover` | Hover information | Get hover information at a given cursor position in a file. This can include documentation, type information, etc for the text at that position. |
 
+{:.table .table-striped .nowrap}
+
 ## Tools for Flutter
 
 | Tool Name | Title | Description |
@@ -206,3 +208,6 @@ documentation for [enabling MCP support][].
 | `run_tests` | Run tests | Run Flutter tests with an agent centric UX. ALWAYS use instead of `flutter test` shell commands. |
 | `create_project` | Create project | Creates a new Flutter project. |
 | `pub` | pub | Runs a pub command for the given project roots, like `flutter pub add`. |
+
+{:.table .table-striped .nowrap}
+
