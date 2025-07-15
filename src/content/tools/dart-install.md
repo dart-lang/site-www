@@ -34,13 +34,13 @@ The following command specifies a package on the pub.dev
 site to install.
 
 ```console
-$ dart pub install <pub.dev package>
+$ dart install <pub.dev package>
 ```
 
 For example:
 
 ```console
-$ dart pub install markdown
+$ dart install markdown
 ```
 
 ### Install a Git package
@@ -49,19 +49,14 @@ The following commands can both be used to install a package
 in a Git repository.
 
 ```console
-$ dart install --source git <Git URL>
+$ dart install <Git URL>
 ```
 
-```console
-$ dart install -sgit <Git URL>
-```
-
-The following examples, which install the `async_await` package on
-[GitHub][], are equivalent:
+The following example installs the `async_await` package from
+[GitHub][]:
 
 ```console
-$ dart install --source git https://github.com/dart-lang/async_await.git
-$ dart install -sgit https://github.com/dart-lang/async_await.git
+$ dart install https://github.com/dart-lang/async_await.git
 ```
 
 Pub expects to find the package in the root of the Git repository.
@@ -70,7 +65,7 @@ a path relative to the repository root:
 
 ```console
 $ dart install \
-  -sgit https://github.com/dart-lang/http.git \
+  https://github.com/dart-lang/http.git \
   --git-path pkgs/http/
 ```
 
@@ -79,7 +74,7 @@ different branch or commit, use the `--git-ref` option:
 
 ```console
 $ dart install \
-  -sgit https://github.com/dart-lang/http.git \
+  https://github.com/dart-lang/http.git \
   --git-ref 36f98e900347335af2338a0e087538009b7de2f9
 ```
 
@@ -97,14 +92,12 @@ Installs a package for Dart.
 $ dart install [arguments] <package> [version-constraint]
 ```
 
-| Arguments | Description |
-| :--- | :--- |
-| **`-s, --source`** | The source used to find the package. Options are `git`, `hosted` (default), and `path`. |
-| **`--git-path`** | Path of the git package within the repository. |
-| **`--git-ref`** | The specific git branch or commit to retrieve. |
-| **`-x, --executable`** | The executable(s) to place on your system's PATH. |
-| **`--overwrite`** | Allows overwriting executables from other packages that have the same name. |
-| **`-u, --hosted-url`** | A custom pub server URL for the package. This only applies when using the `hosted` source. |
+| Arguments              | Description                                                                                            |
+| :--------------------- | :----------------------------------------------------------------------------------------------------- |
+| **`--git-path`**       | Path of the git package within the repository. This only applies when using a git URL for `<package>`. |
+| **`--git-ref`**        | The specific git branch or commit to retrieve. This only applies when using a git URL for `<package>`. |
+| **`--overwrite`**      | Allows overwriting executables from other packages that have the same name.                            |
+| **`-u, --hosted-url`** | A custom pub server URL for the package. This only applies when using a package name for `<package>`.  |
 
 In the following example, the markdown package is installed
 with no arguments or version constraints:
@@ -129,17 +122,13 @@ $ dart uninstall markdown
 
 ### dart installed
 
-Check if a package is installed for Dart.
+Check which packages are installed
 
 ```console
-$ dart installed <package>
+$ dart installed
 ```
 
 For example:
-
-```console
-$ dart installed markdown
-```
 
 ## Options
 
@@ -158,21 +147,6 @@ $ dart install --help
 
 ```console
 $ dart install -h
-```
-
-### --source
-
-Use the `--source` option to specify the source of the
-package. Valid values are `git`, `hosted` (default), and `path`.
-
-```console
-$ dart install --source <source>
-```
-
-For example:
-
-```console
-$ dart install --source ~/dart/stopwatch
 ```
 
 ### --git-path
@@ -205,26 +179,6 @@ For example:
 $ dart install --git-ref tmpfixes
 ```
 
-### -x, --executable
-
-Use the `-x` or `--executable` option to add the specified executable
-to your PATH. You can pass more than one of these flags.
-
-```console
-$ dart install <executable> -x <another executable> ...
-```
-
-For example, the following commands add `bar` and `baz`,
-(but not any other executables that `foo` might define) to your PATH.
-
-```console
-$ dart install foo -x bar -x baz
-```
-
-```console
-$ dart install foo --executable bar --executable baz
-```
-
 ### --overwrite
 
 Use the `--overwrite` option to overwrite any previously
@@ -244,7 +198,8 @@ $ dart install markdown --overwrite
 ### --hosted-url
 
 Use the `--hosted-url` option to specify a custom pub server
-URL for the package. Only applies when using the `hosted` source.
+URL for the package. This only applies when using a package name
+for `<package>`.
 
 ```console
 $ dart install --hosted-url <url>
