@@ -222,8 +222,7 @@ class _LintRulePageSource extends PageSource {
           'show_breadcrumbs': true,
           'underscore_breaker_titles': true,
           'description': 'Learn about the ${lint.name} linter rule.',
-          if (hide)
-            ...{'noindex': true, 'sitemap': false}
+          if (hide) ...{'noindex': true, 'sitemap': false},
         },
       },
       config: config,

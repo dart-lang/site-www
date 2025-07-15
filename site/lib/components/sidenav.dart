@@ -163,7 +163,6 @@ final class SideNav extends StatelessComponent {
               'placeholder': 'Search',
               'aria-label': 'Search',
             },
-            [],
           ),
         ]),
         ul(classes: 'navbar-nav', [

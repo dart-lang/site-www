@@ -164,7 +164,6 @@ class GlossaryIndex extends StatelessComponent {
               'aria-label': 'Search terms by name...',
               'placeholder': 'Search terms...',
             },
-            [],
           ),
         ]),
       ]),

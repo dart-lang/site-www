@@ -118,8 +118,8 @@ abstract class DashLayout extends PageLayoutBase {
     );
     yield link(rel: 'stylesheet', href: '/assets/css/main.css');
 
-    yield script(src: '/assets/js/tabs.js', []);
-    yield script(src: '/assets/js/main.js', []);
+    yield script(src: '/assets/js/tabs.js');
+    yield script(src: '/assets/js/main.js');
 
     if (pageData['js'] case final List<Object?> jsList) {
       for (final js in jsList) {
@@ -127,7 +127,6 @@ abstract class DashLayout extends PageLayoutBase {
           yield script(
             src: jsUrl,
             attributes: {if (defer ?? false) 'defer': ''},
-            [],
           );
         }
       }
@@ -142,7 +141,6 @@ abstract class DashLayout extends PageLayoutBase {
         'crossorigin': 'anonymous',
         'referrerpolicy': 'no-referrer',
       },
-      [],
     );
 
     // Set up tag manager and analytics.
