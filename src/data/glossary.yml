@@ -74,7 +74,7 @@
     - text: "Type inference"
       link: "/language/type-system#type-inference"
       type: "doc"
-    - text: "Implicit downcast from `dynamic`"
+    - text: "Implicit downcast from dynamic"
       link: "/language/type-system#implicit-downcasts-from-dynamic"
       type: "doc"
   labels:

@@ -3,9 +3,11 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
 
-final class RobotsTxtOutput extends SecondaryOutput {
+final class RobotsTxtOutput implements SecondaryOutput {
+  const RobotsTxtOutput();
+
   @override
-  final Pattern pattern = RegExp(r'/?index\..*');
+  Pattern get pattern => RegExp(r'/?index\..*');
 
   @override
   String createRoute(String _) => '/robots.txt';

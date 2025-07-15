@@ -87,16 +87,17 @@ void main() {
           ),
         ),
         parsers: [
-          MarkdownParser(documentBuilder: (_) => sharedMarkdownDocument),
+          //MarkdownParser(documentBuilder: (_) => sharedMarkdownDocument),
+          const DashMarkdownParser(),
           const HtmlParser(),
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
-        extensions: [
-          const AttributeProcessor(),
-          const TableOfContentsExtension(maxHeaderDepth: 3),
-          const HeaderWrapperExtension(),
-          const TableWrapperExtension(),
-          const CodeBlockProcessor(),
+        extensions: const [
+          AttributeProcessor(),
+          TableOfContentsExtension(maxHeaderDepth: 3),
+          HeaderWrapperExtension(),
+          TableWrapperExtension(),
+          CodeBlockProcessor(),
         ],
         components: [
           CustomComponent(
@@ -107,12 +108,6 @@ void main() {
                 link: attributes['link'],
                 child: child!,
               );
-            },
-          ),
-          CustomComponent(
-            pattern: RegExp('Glossary', caseSensitive: false),
-            builder: (_, _, _) {
-              return const GlossaryIndex();
             },
           ),
           CustomComponent(
@@ -145,7 +140,7 @@ void main() {
         ],
         layouts: [const DocLayout(), const HomepageLayout()],
         theme: const ContentTheme.none(),
-        secondaryOutputs: [RobotsTxtOutput()],
+        secondaryOutputs: [const RobotsTxtOutput()],
       ),
     ),
   );
