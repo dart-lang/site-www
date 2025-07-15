@@ -17,24 +17,19 @@ final class LintLoader extends RouteLoaderBase {
     );
     final lintRules = loadLints(jsonDecode(await lintRulesFile.readAsString()));
 
-    final sources = <PageSource>[];
-    for (final lint in lintRules) {
-      sources.add(_LintRulePageSource(
-        lint,
-        '/tools/linter-rules/${lint.id}.md',
-        this,
-      ));
-
-      final lowerCaseId = lint.id.toLowerCase();
-      if (lint.id != lowerCaseId) {
-        sources.add(_LintRulePageSource(
+    final sources = [
+      for (final lint in lintRules)
+        _LintRulePageSource(
           lint,
-          '/tools/linter-rules/$lowerCaseId.md',
+          p.join(
+            'tools',
+            'linter-rules',
+            '${lint.id}.md',
+          ),
           this,
-          hide: true,
-        ));
-      }
-    }
+          hide: lint.state == 'removed',
+        ),
+    ];
 
     return sources;
   }
