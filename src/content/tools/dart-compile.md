@@ -200,8 +200,8 @@ To use cross-compilation, include the following flags:
 `--target-arch=value`
 : The target architecture for the compiled executable.
   The value for this flag can be `arm` (32-bit ARM processor),
-  `arm64` (64-bit ARM processor), `riscv64` (64-bit RISCV
-  processor), or `x64` (x86-64 processor).
+  `arm64` (64-bit ARM processor), `riscv64` (64-bit RISC-V
+  processor (RV64GC)), or `x64` (x86-64 processor).
 
 The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:
