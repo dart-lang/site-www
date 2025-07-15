@@ -1,6 +1,7 @@
 ---
 title: "Effective Dart: Documentation"
 description: Clear, helpful comments and documentation.
+breadcrumb: Documentation
 nextpage:
   url: /effective-dart/usage
   title: Usage

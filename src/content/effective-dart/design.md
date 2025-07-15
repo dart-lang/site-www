@@ -1,6 +1,7 @@
 ---
 title: "Effective Dart: Design"
 description: Design consistent, usable libraries.
+breadcrumb: Design
 prevpage:
   url: /effective-dart/usage
   title: Usage
