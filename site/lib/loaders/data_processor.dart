@@ -5,6 +5,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 
 import '../lints.dart';
+import '../util.dart';
 
 final class DataProcessor implements DataLoader {
   @override
@@ -34,13 +35,14 @@ final class DataProcessor implements DataLoader {
       );
       final pageFile = File(sourcePath);
       if (await pageFile.exists()) {
-        final lastModified =
-            await _lastModifiedWithGit(sourcePath) ??
-            await pageFile.lastModified();
         page.apply(
           data: {
             'page': {
-              'date': lastModified.formatted,
+              if (productionBuild)
+                'date':
+                    (await _lastModifiedWithGit(sourcePath) ??
+                            await pageFile.lastModified())
+                        .formatted,
               'inputPath': path.relative(sourcePath, from: '..'),
             },
           },
