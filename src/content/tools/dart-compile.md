@@ -175,13 +175,14 @@ $ ./tmp/myapp
 
 :::version-note
 Support for Linux ARM64 and x64 cross-compilation was introduced in Dart 3.8.
+
 Support for Linux ARM and RISCV64 was introduced in Dart 3.9.
 :::
 
 The following table shows which 64-bit host operating systems support
 cross-compilation to which targets:
 
-{% assign y = '<span class="material-symbols" user-select="none" title="Supported" aria-label="Supported">done</span>' %}
+{% assign y = '<span class="material-symbols system-support" title="Supported" aria-label="Supported">done</span>' %}
 
 | 64-bit host OS | Linux ARM | Linux ARM64 | Linux RISCV64 | Linux x64 |
 |----------------|-----------|-------------|---------------|-----------|
