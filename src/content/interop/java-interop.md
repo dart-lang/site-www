@@ -36,9 +36,6 @@ that uses `package:jnigen` to generate bindings for a simple class.
 ### Prerequisites
 
 - JDK
-- [Maven][]
-
-[Maven]: https://maven.apache.org/
 
 ### Configure `jnigen`
 
