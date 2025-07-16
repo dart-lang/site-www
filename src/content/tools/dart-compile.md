@@ -181,7 +181,7 @@ Support for Linux ARM and RISCV64 was introduced in Dart 3.9.
 The following table shows which 64-bit host operating systems support
 cross-compilation to which targets:
 
-{% assign y = '<span class="material-symbols user-select-none" title="Supported" aria-label="Supported">done</span>' %}
+{% assign y = '<span class="material-symbols" user-select="none" title="Supported" aria-label="Supported">done</span>' %}
 
 | 64-bit host OS | Linux ARM | Linux ARM64 | Linux RISCV64 | Linux x64 |
 |----------------|-----------|-------------|---------------|-----------|
@@ -201,10 +201,10 @@ To use cross-compilation, include the following flags:
 : The target architecture for the compiled executable.
   The value for this flag can be:
 
-- `arm` : 32-bit ARM processor
-- `arm64` : 64-bit ARM processor
-- `riscv64` : 64-bit RISC-V (RV64GC) processor
-- `x64` : x86-64 processor
+  - `arm`: 32-bit ARM processor
+  - `arm64`: 64-bit ARM processor
+  - `riscv64`: 64-bit RISC-V (RV64GC) processor
+  - `x64`: x86-64 processor
 
 The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:
