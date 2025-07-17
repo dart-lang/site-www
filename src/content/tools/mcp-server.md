@@ -32,6 +32,9 @@ Dart 3.9.0-163.0.dev or later.
 
 ## Set up your MCP client
 
+The server is run with the `dart mcp-server` command, which will
+have to be configured in your preferred client. 
+
 This section provides instructions for setting up the
 Dart MCP server with popular tools like Gemini CLI,
 Gemini Code Assist, Cursor, and GitHub Copilot.
