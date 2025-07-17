@@ -33,7 +33,7 @@ Dart 3.9.0-163.0.dev or later.
 ## Set up your MCP client
 
 The server is run with the `dart mcp-server` command, which will
-have to be configured in your preferred client. 
+have to be configured in your preferred client.
 
 This section provides instructions for setting up the
 Dart MCP server with popular tools like Gemini CLI,
@@ -177,40 +177,14 @@ documentation for [enabling MCP support][].
 [VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
 [enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
 
-## Tools for Dart
+## Available Tools
 
-| Tool Name | Title | Description |
-| --- | --- | --- |
-| `connect_dart_tooling_daemon` | Connect to DTD | Connects to the Dart Tooling Daemon. You should get the uri either from available tools or the user, do not just make up a random URI to pass. When asking the user for the uri, you should suggest the "Copy DTD Uri to clipboard" action. When reconnecting after losing a connection, always request a new uri first. |
-| `get_runtime_errors` | Get runtime errors | Retrieves the most recent runtime errors that have occurred in the active Dart application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `get_active_location` | Get Active Editor Location | Retrieves the current active location (e.g., cursor position) in the connected editor. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `pub_dev_search` | pub.dev search | Searches pub.dev for packages relevant to a given search query. The response will describe each result with its download count, package description, topics, license, and publisher. |
-| `remove_roots` | Remove roots | Removes one or more project roots previously added via the add_roots tool. |
-| `add_roots` | Add roots | Adds one or more project roots. Tools are only allowed to run under these roots, so you must call this function before passing any roots to any other tools. |
-| `dart_fix` | Dart fix | Runs `dart fix --apply` for the given project roots. |
-| `dart_format` | Dart format | Runs `dart format .` for the given project roots. |
-| `run_tests` | Run tests | Run Dart tests with an agent centric UX. ALWAYS use instead of `dart test` shell commands. |
-| `create_project` | Create project | Creates a new Dart project. |
-| `pub` | pub | Runs a pub command for the given project roots, like `dart pub get`. |
-| `analyze_files` | Analyze projects | Analyzes the entire project for errors. |
-| `resolve_workspace_symbol` | Project search | Look up a symbol or symbols in all workspaces by name. Can be used to validate that a symbol exists or discover small spelling mistakes, since the search is fuzzy. |
-| `signature_help` | Signature help | Get signature help for an API being used at a given cursor position in a file. |
-| `hover` | Hover information | Get hover information at a given cursor position in a file. This can include documentation, type information, etc for the text at that position. |
+For an update to date list of the available tools and any
+other functionality, see the [README.md][MCP Readme] file.
 
-{:.table .table-striped .nowrap}
+Note that MCP tools are not intended to be invoked by normal
+code, only by LLMs based on their description. This means we
+do not consider it a breaking change to add, remove, or
+modify the behavior of tools at any time.
 
-## Tools for Flutter
-
-| Tool Name | Title | Description |
-| --- | --- | --- |
-| `get_runtime_errors` | Get runtime errors | Retrieves the most recent runtime errors that have occurred in the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `hot_reload` | Hot reload | Performs a hot reload of the active Flutter application. This is to apply the latest code changes to the running application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `get_widget_tree` | Get widget tree | Retrieves the widget tree from the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `get_selected_widget` | Get selected widget | Retrieves the selected widget from the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `set_widget_selection_mode` | Set Widget Selection Mode | Enables or disables widget selection mode in the active Flutter application. Requires "connect_dart_tooling_daemon" to be successfully called first. |
-| `run_tests` | Run tests | Run Flutter tests with an agent centric UX. ALWAYS use instead of `flutter test` shell commands. |
-| `create_project` | Create project | Creates a new Flutter project. |
-| `pub` | pub | Runs a pub command for the given project roots, like `flutter pub add`. |
-
-{:.table .table-striped .nowrap}
-
+[MCP Readme]: https://github.com/dart-lang/ai/blob/main/pkgs/dart_mcp_server/README.md#tools
