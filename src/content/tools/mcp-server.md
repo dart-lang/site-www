@@ -18,20 +18,6 @@ but does not actually set them, pass
 `--force-roots-fallback` which will instead enable tools
 for managing the roots.
 
-:::note
-This package is still experimental and is likely to
-evolve quickly.
-
-All of the following set up instructions require
-Dart 3.9.0-163.0.dev or later.
-:::
-
-[Tools]: https://modelcontextprotocol.io/docs/concepts/tools
-[Resources]: https://modelcontextprotocol.io/docs/concepts/resources
-[Roots]: https://modelcontextprotocol.io/docs/concepts/roots
-
-### What can the Dart MCP Server do for you?
-
 The Dart MCP Server provides a growing list of tools that
 grant AI assistants deep insights into your project.
 Here is an overivew of a few things it can do:
@@ -43,6 +29,18 @@ Here is an overivew of a few things it can do:
 *  Search pub.dev for the best package for your use case.
 *  Manage package dependencies in your pubspec.yaml.
 *  Run tests and analyze the results.
+
+:::note
+This package is still experimental and is likely to
+evolve quickly.
+
+All of the following set up instructions require
+Dart 3.9.0-163.0.dev or later.
+:::
+
+[Tools]: https://modelcontextprotocol.io/docs/concepts/tools
+[Resources]: https://modelcontextprotocol.io/docs/concepts/resources
+[Roots]: https://modelcontextprotocol.io/docs/concepts/roots
 
 ## Set up your MCP client
 
