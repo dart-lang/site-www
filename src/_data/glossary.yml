@@ -107,7 +107,7 @@
     Since `fail` never returns, it has type `Never`, which can be assigned to any other type.
 
   related_links:
-    - text: "Builtin types"
+    - text: "Built-in types"
       link: "/language/built-in-types"
       type: "doc"
     - text: "Never for unreachable code"
