@@ -20,7 +20,7 @@
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@swc/html": "^1.12.14",
+    "@swc/html": "^1.13.0",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.16.4",
@@ -36,7 +36,7 @@
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "sass": "^1.89.2",
-    "shiki": "^3.8.0",
+    "shiki": "^3.8.1",
     "tsx": "4.19.4"
   }
 }
