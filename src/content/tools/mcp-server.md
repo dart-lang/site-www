@@ -30,6 +30,20 @@ Dart 3.9.0-163.0.dev or later.
 [Resources]: https://modelcontextprotocol.io/docs/concepts/resources
 [Roots]: https://modelcontextprotocol.io/docs/concepts/roots
 
+### What can the Dart MCP Server do for you?
+
+The Dart MCP Server provides a growing list of tools that
+grant AI assistants deep insights into your project.
+Here is an overivew of a few things it can do:
+
+*  Analyze and fix errors in your project's code.
+*  Introspect and interact with your running application
+   (such as trigger a hot reload, get the selected widget,
+   fetch runtime errors).
+*  Search pub.dev for the best package for your use case.
+*  Manage package dependencies in your pubspec.yaml.
+*  Run tests and analyze the results.
+
 ## Set up your MCP client
 
 The server is run with the `dart mcp-server` command, which will
@@ -177,6 +191,67 @@ documentation for [enabling MCP support][].
 
 [VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
 [enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
+
+### The  Dart MCP Server in action
+
+The true power of the Dart MCP Server is how it enables
+AI assistants and agents to not only reason about your
+project’s context, but take action with tools. The 
+Large Language Model (LLM) decides which tools to use and when,
+so you can focus on describing your goal in natural language.
+Let's see this in action with a couple of examples using
+GitHub Copilot's Agent mode in VS Code.
+
+### Fix a runtime layout error
+
+We’ve all been there: you build a beautiful UI, run the app,
+and are greeted by the infamous yellow-and-black stripes of
+a RenderFlex overflow error. Instead of manually debugging the
+widget tree, you can now ask your AI assistant for help.
+
+[screencast]
+
+**Prompt**: *"Check for and fix static and runtime analysis issues.
+Check for and fix any layout issues."* (Note: For brevity, parts of
+this recording have been sped up.)
+
+Behind the scenes, the AI agent uses the Dart MCP Server's tools to:
+
+*  See the error: It uses a tool to get the current runtime errors
+   from the running application.
+*  Inspect the UI: It accesses the Flutter widget tree to understand
+   the layout that is causing the overflow.
+*  Applies a fix: Armed with this context, it applies a fix and checks
+   once more for any remaining errors.
+
+You can then keep or undo the code changes.
+
+### Add new functionality with package search
+
+Imagine you need to add a chart to your app. Which package should you use?
+How do you add it and write the boilerplate? The Dart MCP Server streamlines
+this entire process.
+
+[screencast]
+
+**Prompt**: *"Find a suitable package to add a line chart that maps the number
+of button presses over time."* (Note: For brevity, parts of this recording
+have been sped up.)
+
+The AI agent now acts as a true assistant:
+
+*  Find the right tool: It uses the pub_dev_search tool to find popular and
+   highly-rated charting libraries.
+*  Manage dependencies: After you confirm its choice (for example,
+   syncfusion_flutter_charts), it uses a tool to add the package to your
+   pubspec.yaml and runs pub get.
+*  Generate the code: It generates the new widget code, complete with boilerplate
+   or a line chart that it places in the UI. It even self-corrects syntax errors
+   introduced during the process. You can customize further from there.
+
+What used to be a multi-step process of research, reading documentation,
+editing pubspec.yaml, and writing the appropriate code in your app, is now a single
+request.
 
 ## Available Tools
 
