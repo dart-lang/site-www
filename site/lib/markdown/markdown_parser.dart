@@ -14,35 +14,39 @@ import 'definition_list_syntax.dart';
 import 'fenced_code_block_syntax.dart';
 import 'header_syntax.dart';
 
-final md.Document sharedMarkdownDocument = md.Document(
-  blockSyntaxes: const [
-    JasprHtmlBlockSyntax(),
-    CustomFencedCodeBlockSyntax(),
-    HeaderWithAttributesSyntax(),
-    AttributeBlockSyntax(),
-    AlertBlockSyntax(),
-    DefinitionListSyntax(),
-    md.TableSyntax(),
-    md.FootnoteDefSyntax(),
-    md.EmptyBlockSyntax(),
-    md.BlockquoteSyntax(),
-    md.HorizontalRuleSyntax(),
-    md.UnorderedListSyntax(),
-    md.OrderedListSyntax(),
-    md.LinkReferenceDefinitionSyntax(),
-    md.ParagraphSyntax(),
-  ],
-  inlineSyntaxes: [
-    md.InlineHtmlSyntax(),
-    AttributeInlineSyntax(),
-  ],
+const List<md.BlockSyntax> _blockSyntaxes = [
+  JasprHtmlBlockSyntax(),
+  CustomFencedCodeBlockSyntax(),
+  HeaderWithAttributesSyntax(),
+  AttributeBlockSyntax(),
+  AlertBlockSyntax(),
+  DefinitionListSyntax(),
+  md.TableSyntax(),
+  md.FootnoteDefSyntax(),
+  md.EmptyBlockSyntax(),
+  md.BlockquoteSyntax(),
+  md.HorizontalRuleSyntax(),
+  md.UnorderedListSyntax(),
+  md.OrderedListSyntax(),
+  md.LinkReferenceDefinitionSyntax(),
+  md.ParagraphSyntax(),
+];
+
+final List<md.InlineSyntax> _inlineSyntaxes = [
+  md.InlineHtmlSyntax(),
+  AttributeInlineSyntax(),
+];
+
+md.Document get _defaultMarkdownDocument => md.Document(
+  blockSyntaxes: _blockSyntaxes,
+  inlineSyntaxes: _inlineSyntaxes,
   withDefaultBlockSyntaxes: false,
 );
 
 String parseMarkdownToHtml(String markdown, {bool inline = false}) {
   final nodes = inline
-      ? sharedMarkdownDocument.parseInline(markdown)
-      : sharedMarkdownDocument.parse(markdown);
+      ? _defaultMarkdownDocument.parseInline(markdown)
+      : _defaultMarkdownDocument.parse(markdown);
   final renderer = md.HtmlRenderer();
   return renderer.render(nodes);
 }
@@ -58,7 +62,7 @@ class DashMarkdownParser implements PageParser {
 
   @override
   List<Node> parsePage(Page page) {
-    final markdownNodes = sharedMarkdownDocument.parse(page.content);
+    final markdownNodes = _defaultMarkdownDocument.parse(page.content);
 
     return _buildNodes(markdownNodes);
   }
