@@ -5,7 +5,6 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_content/components/sidebar_toggle_button.dart' as prefix0;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -23,11 +22,4 @@ import 'package:jaspr_content/components/sidebar_toggle_button.dart' as prefix0;
 ///   runApp(...);
 /// }
 /// ```
-JasprOptions get defaultJasprOptions => JasprOptions(
-  clients: {
-    prefix0.SidebarToggleButton: ClientTarget<prefix0.SidebarToggleButton>(
-      'jaspr_content:components/sidebar_toggle_button',
-    ),
-  },
-  styles: () => [],
-);
+JasprOptions get defaultJasprOptions => JasprOptions(styles: () => []);
