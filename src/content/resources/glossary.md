@@ -1,13 +1,13 @@
 ---
 title: Glossary
 description: A glossary reference for terminology used across dart.dev.
-body_class: glossary-page
-toc: false
+bodyClass: glossary-page
+showToc: false
 js: [{url: '/assets/js/glossary.js', defer: true}]
 ---
 
 {% comment %}
-  Write glossary entries into the src/_data/glossary.yml file.
+  Write glossary entries into the src/data/glossary.yml file.
 {% endcomment -%}
 
 The following are definitions of terms used across the Dart documentation.
@@ -16,7 +16,7 @@ The following are definitions of terms used across the Dart documentation.
   <div class="search-row">
     <div class="search-wrapper">
       <span class="material-symbols leading-icon" aria-hidden="true">search</span>
-      <input type="search" placeholder="Search terms..." aria-label="Search terms by name...">
+      <input type="search" placeholder="Search terms..." aria-label="Search terms by name..." />
     </div>
   </div>
 </section>
@@ -25,7 +25,7 @@ The following are definitions of terms used across the Dart documentation.
 <section id="content-search-results">
 <div class="card-list">
 
-{% assign sorted_terms = glossary | sort: "term" %}
+{% assign sorted_terms = glossary %}
 {% for term in sorted_terms -%}
 
 {% assign cardId = term.id | default: term.term | slugify -%}

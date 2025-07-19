@@ -9,7 +9,7 @@ canonical: https://dart.dev/tools/diagnostics/undefined_super_member
 redirectTo: /tools/diagnostics/undefined_super_member
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `undefined_super_method`)_
