@@ -6,7 +6,7 @@ clients.
 
 ## Overview
 
-The Dart MCP server can work with any MCP client that
+The [Dart MCP server][] can work with any MCP client that
 supports standard I/O (stdio) as the transport medium.
 To access all the features of the Dart MCP server, an
 MCP client must support [Tools][] and [Resources][].
@@ -41,6 +41,7 @@ Dart 3.9.0-163.0.dev or later.
 [Tools]: https://modelcontextprotocol.io/docs/concepts/tools
 [Resources]: https://modelcontextprotocol.io/docs/concepts/resources
 [Roots]: https://modelcontextprotocol.io/docs/concepts/roots
+[Dart MCP server]: {{site.repo.dart.org}}/ai/blob/main/pkgs/dart_mcp_server
 
 ## Set up your MCP client
 
@@ -190,10 +191,10 @@ documentation for [enabling MCP support][].
 [VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
 [enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
 
-### The  Dart MCP Server in action
+## Use your MCP client
 
-The true power of the Dart MCP Server is how it enables
-AI assistants and agents to not only reason about your
+Once you've set up the Dart MCP server with a client,
+Dart MCP Server enables the client to not only reason about your
 project’s context, but take action with tools. The 
 Large Language Model (LLM) decides which tools to use and when,
 so you can focus on describing your goal in natural language.
@@ -250,15 +251,3 @@ The AI agent now acts as a true assistant:
 What used to be a multi-step process of research, reading documentation,
 editing pubspec.yaml, and writing the appropriate code in your app, is now a single
 request.
-
-## Available Tools
-
-For an update to date list of the available tools and any
-other functionality, see the [README.md][MCP Readme] file.
-
-Note that MCP tools are not intended to be invoked by normal
-code, only by LLMs based on their description. This means we
-do not consider it a breaking change to add, remove, or
-modify the behavior of tools at any time.
-
-[MCP Readme]: https://github.com/dart-lang/ai/blob/main/pkgs/dart_mcp_server/README.md#tools
