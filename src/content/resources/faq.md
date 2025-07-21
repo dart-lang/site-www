@@ -51,7 +51,7 @@ and welcomes distributed committers.
 [3rd-ed]: {{ecma-pdf}}/ECMA-408_3rd_edition_june_2015.pdf
 [4th-ed]: {{ecma-pdf}}/ECMA-408_4th_edition_december_2015.pdf
 [5th-ed]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
-[6th-ed]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[6th-ed]: {{site.url}}/to/spec-draft
 
 ---
 
