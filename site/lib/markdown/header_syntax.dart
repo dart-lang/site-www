@@ -31,7 +31,7 @@ final class HeaderWithAttributesSyntax extends md.HeaderSyntax {
         // Remove the attribute syntax from the text.
         final cleanText = childText.substring(0, match.start).trim();
         childText = cleanText;
-        children[children.length - 1] = md.Text(cleanText);
+        children[children.length - 1] = md.UnparsedContent(cleanText);
 
         // Apply the parsed attributes to the header element.
         element.attributes.addAll(attributes);
