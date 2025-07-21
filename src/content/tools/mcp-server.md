@@ -210,8 +210,7 @@ widget tree, you can now ask your AI assistant for help with a
 prompt similar to the following:
 
 **Prompt**: *"Check for and fix static and runtime analysis issues.
-Check for and fix any layout issues."* (Note: For brevity, parts of
-this recording have been sped up.)
+Check for and fix any layout issues."*
 
 Behind the scenes, the AI agent uses the Dart MCP Server's tools to:
 
@@ -231,8 +230,7 @@ How do you add it and write the boilerplate? The Dart MCP Server can streamline
 this entire process with a prompt similar to the following:
 
 **Prompt**: *"Find a suitable package to add a line chart that maps the number
-of button presses over time."* (Note: For brevity, parts of this recording
-have been sped up.)
+of button presses over time."*
 
 The AI agent now acts as a true assistant:
 
