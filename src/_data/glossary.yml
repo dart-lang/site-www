@@ -85,14 +85,17 @@
   short_description: |-
     A type that has no values and is a subtype of all other types.
   long_description: |-
-    The **bottom type** in Dart is the type that has **no values** and is considered a **subtype of every other type**.
+    The **bottom type** in Dart is the type that has **no values** and is considered a [**subtype**](/resources/glossary#subtype) of every other type.
 
     In Dart, the bottom type is represented by the `Never` type.
 
     This means a value of type `Never` can be used anywhere, because such a value can never actually exist. 
-    It's most often used to represent functions or expressions that **never return**, such as those that throw exceptions or loop forever.
+    It's most often used as the **return type** of functions to indicate they **never return**,  
+    such as for those that throw exceptions or loop forever.
 
     Example:
+
+    The `fail` function below always throws an exception, so it’s declared with return type `Never` to indicate that it never returns.
 
     ```dart
     Never fail(String message) {
@@ -104,7 +107,7 @@
     }
     ```
 
-    Since `fail` never returns, it has type `Never`, which can be assigned to any other type.
+    Since `fail` returns Never, assigning it to a String is allowed    
 
   related_links:
     - text: "Built-in types"
