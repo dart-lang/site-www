@@ -50,6 +50,7 @@ final class CodeBlockProcessor implements PageExtension {
           }
 
           final tag = metadata['tag'];
+          print(tag);
 
           final rawHighlightLines = metadata['highlightLines'];
           // ignore: unused_local_variable

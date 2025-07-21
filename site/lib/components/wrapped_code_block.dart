@@ -39,8 +39,16 @@ final class WrappedCodeBlock extends StatelessComponent {
               [text(title)],
             ),
           div(
-            classes: 'code-block-body',
+            classes: [
+              'code-block-body',
+              if (tag case final codeTag?) ...['has-tag', codeTag.parentClass],
+            ].join(' '),
             [
+              if (tag case final codeTag?)
+                span(
+                  classes: 'code-block-tag',
+                  [text(codeTag.spanContent)],
+                ),
               if (!languagesToHide.contains(language))
                 span(
                   classes: 'code-block-language',
@@ -98,12 +106,17 @@ final class WrappedCodeBlock extends StatelessComponent {
 }
 
 enum CodeBlockTag {
-  good,
-  bad,
-  passesStaticAnalysis,
-  failsStaticAnalysis,
-  runtimeSuccess,
-  runtimeFailure;
+  good('good', parentClass: 'tag-good'),
+  bad('bad', parentClass: 'tag-bad'),
+  passesStaticAnalysis('static analysis: success', parentClass: 'passes-sa'),
+  failsStaticAnalysis('static analysis: failure', parentClass: 'fails-sa'),
+  runtimeSuccess('runtime: success', parentClass: 'runtime-success'),
+  runtimeFailure('runtime: failure', parentClass: 'runtime-fail');
+
+  const CodeBlockTag(this.spanContent, {required this.parentClass});
+
+  final String spanContent;
+  final String parentClass;
 
   static CodeBlockTag parse(String tag) => switch (tag) {
     'good' => good,
