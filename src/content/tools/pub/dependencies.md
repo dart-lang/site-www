@@ -171,14 +171,15 @@ The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-If the package you depend on has tagged the revision of each version of the
-package, you can use `tag_pattern` instead of `ref`, together with a version
-constraint.
+If the package you depend on has tagged the
+revision of each version of the package,
+you can use `tag_pattern` instead of `ref`,
+together with a version constraint.
 
-Pub will then query Git for all matching tags, and feed those version to the 
-version solver.
+Pub will then query Git for all matching tags, and
+feed those version to the version solver.
 
-```yaml
+```yaml highlightLines=5
 dependencies:
   kittens:
     git:
@@ -188,7 +189,7 @@ dependencies:
 ```
 
 :::version-note
-Support for `tag_pattern` was introduced in Dart 3.9.0.
+Support for `tag_pattern` was introduced in Dart 3.9.
 
 To use `tag_pattern`, the including pubspec (but not the dependency)
 must have an SDK version constraint of `^3.9.0` or higher.
