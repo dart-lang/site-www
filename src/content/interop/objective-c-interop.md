@@ -8,7 +8,7 @@ appledoc: "https://developer.apple.com/documentation"
 
 Dart mobile, command-line, and server apps
 running on the [Dart Native platform](/overview#platform), on macOS or iOS,
-can use `dart:ffi` and [`package:ffigen`]({{ffigen}})
+can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
 to call Objective-C and Swift APIs.
 
 :::note
@@ -30,9 +30,9 @@ enabling `dart:ffi` and `package:ffigen` to interact with Swift.
 
 ## Objective-C Example
 
-This guide walks you through [an example]({{example}})
+This guide walks you through [an example]({{page.example}})
 that uses `package:ffigen` to generate bindings for
-[`AVAudioPlayer`]({{appledoc}}/avfaudio/avaudioplayer?language=objc).
+[`AVAudioPlayer`]({{page.appledoc}}/avfaudio/avaudioplayer?language=objc).
 This API requires at least macOS SDK 10.7,
 so check your version and update Xcode if necessary:
 
@@ -47,7 +47,7 @@ and then load the library with `dart:ffi`.
 `package:ffigen` parses Objective-C header files
 using [LLVM](https://llvm.org/),
 so you'll need to install that first.
-See [Installing LLVM]({{ffigen}}#installing-llvm)
+See [Installing LLVM]({{page.ffigen}}#installing-llvm)
 from the ffigen README for more details.
 
 ### Configuring ffigen
@@ -83,7 +83,7 @@ The entry point is the header file containing the API.
 In this example, it is the internal `AVAudioPlayer.h` header.
 
 Another import thing you'll see,
-if you look at the [example config]({{example}}/pubspec.yaml),
+if you look at the [example config]({{page.example}}/pubspec.yaml),
 is the exclude and include options.
 By default, `ffigen` generates bindings for everything
 it finds in the header,
@@ -155,7 +155,7 @@ to insert some linter ignore rules at the top of the generated file:
     // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
-See the [ffigen readme]({{ffigen}}#configurations)
+See the [ffigen readme]({{page.ffigen}}#configurations)
 for a full list of configuration options.
 
 ### Generating the Dart bindings
@@ -176,7 +176,7 @@ $ dart run ffigen --config my_ffigen_config.yaml
 ```
 
 For this example, this will generate
-[avf_audio_bindings.dart]({{example}}/avf_audio_bindings.dart).
+[avf_audio_bindings.dart]({{page.example}}/avf_audio_bindings.dart).
 
 This file contains a class called `AVFAudio`, which is the native library
 wrapper that loads all the API functions using FFI,
@@ -188,10 +188,10 @@ such as `AVAudioPlayer` and its dependencies.
 ### Using the bindings
 
 Now you're ready to load and interact with the generated library.
-The example app, [play_audio.dart]({{example}}/play_audio.dart),
+The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
 loads and plays audio files passed as command line arguments.
 The first step is to load the
-[dylib]({{appledoc}}/avfaudio?language=objc)
+[dylib]({{page.appledoc}}/avfaudio?language=objc)
 and instantiate the native `AVFAudio` library:
 
 ```dart
@@ -231,7 +231,7 @@ and a `toString()` method that converts it back to a Dart `String`.
 ```
 
 The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`](
-{{appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc)
+{{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc)
 method to convert the `NSString` to an `NSURL`.
 Since `:` is not a valid character in a Dart method name,
 it has been translated to `_` in the bindings.
@@ -537,12 +537,12 @@ Now you can run the example using:
 $ dart run example.dart
 ```
 
-[`initWithContentsOfURL:error:`]: {{appledoc}}/avfaudio/avaudioplayer/1387281-initwithcontentsofurl?language=objc
-[`duration`]: {{appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
-[`play`]: {{appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
-[Swift documentation]: {{appledoc}}/swift/importing-swift-into-objective-c
+[`initWithContentsOfURL:error:`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387281-initwithcontentsofurl?language=objc
+[`duration`]: {{page.appledoc}}/avfaudio/avaudioplayer/1388395-duration?language=objc
+[`play`]: {{page.appledoc}}/avfaudio/avaudioplayer/1387388-play?language=objc
+[Swift documentation]: {{page.appledoc}}/swift/importing-swift-into-objective-c
 [open feature request]: {{site.repo.dart.sdk}}/issues/46943
 [`package:cupertino_http`]: {{site.repo.dart.org}}/http/blob/master/pkgs/cupertino_http/src/CUPHTTPClientDelegate.m
 [not thread safe]: {{site.apple-dev}}/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
-[Objective-C dispatch documentation]: {{appledoc}}/dispatch?language=objc
+[Objective-C dispatch documentation]: {{page.appledoc}}/dispatch?language=objc
 [swift_example]: {{site.repo.dart.org}}/native/tree/main/pkgs/ffigen/example/swift

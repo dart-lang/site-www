@@ -1,7 +1,7 @@
 ---
 title: dart create
 description: Command-line tool for creating Dart projects.
-toc: false
+showToc: false
 ---
 
 The `dart create` command creates a Dart project,

@@ -1,7 +1,7 @@
 ---
 title: dart analyze
 description: Command-line tool for static analysis
-toc: false
+showToc: false
 ---
 
 The `dart analyze` command

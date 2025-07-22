@@ -262,7 +262,7 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 
 For more discussion, watch this Decoding Flutter video on tear-offs.
 
-{% ytEmbed "OmCaloD7sis", "Dart Tear-offs | Decoding Flutter" %}
+<YouTubeEmbed id="OmCaloD7sis" title="Dart Tear-offs | Decoding Flutter"></YouTubeEmbed>
 
 ## Instance variable initialization
 
