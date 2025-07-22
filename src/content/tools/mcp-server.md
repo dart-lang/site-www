@@ -1,4 +1,11 @@
-# Dart MCP Server
+---
+title: Dart MCP server
+short-title: MCP server
+description: >-
+  Learn about the Dart MCP server tool that
+  exposes Dart and Flutter tools to compatible
+  AI-assistant clients and agents.
+---
 
 The Dart MCP server exposes Dart (and Flutter)
 development tool actions to compatible AI-assistant
