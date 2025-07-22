@@ -14,7 +14,7 @@ List<LintDetails>? _loadedLints;
 // TODO(parlough): Once replacing rules.json, get rid of this structure.
 extension type LintDetails._(Map<String, Object?> details) {
   String get name => details['name'] as String;
-  String get id => name.trim().toLowerCase();
+  String get id => name.trim();
   String get description => details['description'] as String;
   List<String> get categories =>
       (details['categories'] as List<Object?>).cast<String>();
