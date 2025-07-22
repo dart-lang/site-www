@@ -101,7 +101,7 @@ documentation for [using agent mode][].
 [instructions]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
 [Gemini Code Assist]: https://codeassist.google/
 [Agent mode]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer
-[configure the Gemini]: #gemini-cli
+[configure the Gemini CLI]: #gemini-cli
 [using agent mode]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
 
 ### Cursor
