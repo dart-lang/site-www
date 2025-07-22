@@ -37,10 +37,10 @@ Here is an overview of a few things it can do:
 *  Manage package dependencies in your `pubspec.yaml`.
 *  Run tests and analyze the results.
 
-:::note
-This package is still experimental and is likely to
-evolve quickly. All of the following setup instructions
-require Dart 3.9.0-163.0.dev or later.
+:::note Experimental
+This package is still experimental and is likely to evolve quickly.
+The following setup and usage instructions
+require Dart `3.9.0-163.0.dev` or later.
 :::
 
 [Tools]: https://modelcontextprotocol.io/docs/concepts/tools
@@ -66,7 +66,7 @@ to this project) or edit the global
 `~/.gemini/settings.json` file in your home directory
 (configuration will apply for all projects).
 
-```json
+```json title=".gemini/settings.json"
 {
   "mcpServers": {
     "dart": {
@@ -88,8 +88,8 @@ documentation for [setting up MCP servers][].
 ### Gemini Code Assist in VS Code
 
 :::note
-This requires the "Insiders" channel.
-Follow [instructions][] to enable this build.
+This requires the "Insiders" channel of Gemini Code Assist.
+Follow the [instructions][] to enable this build.
 :::
 
 [Gemini Code Assist][]'s [Agent mode][] integrates the
@@ -99,8 +99,7 @@ use the Dart MCP server, follow the instructions to
 [configure the Gemini CLI][].
 
 You can verify the MCP server has been configured
-properly by typing `/mcp` in the chat window in Agent
-mode.
+properly by typing `/mcp` in the chat window in Agent mode.
 
 For more information see the official Gemini Code Assist
 documentation for [using agent mode][].
@@ -153,8 +152,7 @@ documentation for [installing MCP servers][].
 ### GitHub Copilot in VS Code
 
 :::note
-This requires Dart-Code VS Code extension v3.116 or
-later.
+This requires v3.116 or later of the [Dart Code extension][] for VS Code.
 :::
 
 By default, the Dart-Code extension uses the
@@ -193,6 +191,7 @@ workspace, add the entry to your workspace settings:
 For more information, see the official VS Code
 documentation for [enabling MCP support][].
 
+[Dart Code extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
 [VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
 [enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
 
@@ -200,15 +199,15 @@ documentation for [enabling MCP support][].
 
 Once you've set up the Dart MCP server with a client,
 the Dart MCP server enables the client to not only reason
-about your project’s context but also to take action with tools.
+about your project's context but also to take action with tools.
 The Large Language Model (LLM) decides which tools to use and
 when, so you can focus on describing your goal in natural language.
 Let's see this in action with a couple of examples using
 GitHub Copilot's Agent mode in VS Code.
 
-### Fix a runtime layout error
+### Fix a runtime layout error in a Flutter app
 
-We’ve all been there: you build a beautiful UI, run the app,
+We've all been there: you build a beautiful UI, run the app,
 and are greeted by the infamous yellow-and-black stripes of
 a RenderFlex overflow error. Instead of manually debugging the
 widget tree, you can now ask your AI assistant for help with a
@@ -251,6 +250,7 @@ The AI agent now acts as a true assistant:
    It even self-corrects syntax errors introduced during the
    process. You can customize further from there.
 
-What used to be a multi-step process of research, reading
-documentation, editing `pubspec.yaml`, and writing the appropriate
-code in your app, is now a single request.
+What used to be a multi-step process of research,
+reading documentation, editing `pubspec.yaml`, and
+writing the appropriate code in your app,
+is now a single request.
