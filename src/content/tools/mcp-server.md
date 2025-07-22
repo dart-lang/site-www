@@ -72,7 +72,7 @@ to this project) or edit the global
     "dart": {
       "command": "dart",
       "args": [
-        "mcp-server",
+        "mcp-server"
       ]
     }
   }
@@ -138,7 +138,7 @@ Alternatively, you can configure the server manually:
       "command": "dart",
       "args": [
         "mcp-server",
-        "--force-roots-fallback" // Workaround for a Cursor issue with Roots support
+        "--force-roots-fallback"
       ]
     }
   }
