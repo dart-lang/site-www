@@ -8,22 +8,20 @@ description: >-
 ---
 
 The Dart MCP server exposes Dart (and Flutter)
-development tool actions to compatible AI-assistant
-clients.
+development tool actions to compatible AI-assistant clients.
 
 ## Overview
 
 The [Dart MCP server][] can work with any MCP client that
 supports standard I/O (stdio) as the transport medium.
-To access all the features of the Dart MCP server, an
-MCP client must support [Tools][] and [Resources][].
-For the best development experience with the Dart MCP
-server, an MCP client should also support [Roots][].
+To access all the features of the Dart MCP server,
+an MCP client must support [Tools][] and [Resources][].
+For the best development experience with the Dart MCP server,
+an MCP client should also support [Roots][].
 
-If you are using a client that claims it supports roots
-but does not actually set them, pass
-`--force-roots-fallback` which will instead enable tools
-for managing the roots.
+If you are using a client that claims it
+supports roots but doesn't actually set them,
+pass `--force-roots-fallback` to enable tools for managing the roots.
 
 The Dart MCP server provides a growing list of tools that
 grant AI assistants deep insights into your project.
@@ -33,12 +31,12 @@ Here is an overview of a few things it can do:
 *  Introspect and interact with your running application
    (such as trigger a hot reload, get the selected widget,
    fetch runtime errors).
-*  Search pub.dev for the best package for your use case.
+*  Search the [pub.dev site]({{site.pub}}) for the best package for a use case.
 *  Manage package dependencies in your `pubspec.yaml`.
 *  Run tests and analyze the results.
 
 :::note Experimental
-This package is still experimental and is likely to evolve quickly.
+This tool is still experimental and is likely to evolve quickly.
 The following setup and usage instructions
 require Dart `3.9.0-163.0.dev` or later.
 :::
@@ -93,10 +91,9 @@ Follow the [instructions][] to enable this build.
 :::
 
 [Gemini Code Assist][]'s [Agent mode][] integrates the
-Gemini CLI to provide a powerful AI agent
-directly in your IDE. To configure Gemini Code Assist to
-use the Dart MCP server, follow the instructions to
-[configure the Gemini CLI][].
+Gemini CLI to provide a powerful AI agent directly in your IDE.
+To configure Gemini Code Assist to use the Dart MCP server,
+follow the instructions to [configure the Gemini CLI][].
 
 You can verify the MCP server has been configured
 properly by typing `/mcp` in the chat window in Agent mode.
@@ -119,30 +116,28 @@ Cursor is by clicking the **Add to Cursor** button:
 
 Alternatively, you can configure the server manually:
 
-1.  Go to **Cursor > Settings > Cursor Settings > Tools
-    & Integrations**.
+1.  Go to **Cursor > Settings > Cursor Settings > Tools & Integrations**.
 1.  Click **Add Custom MCP** or **New MCP Server**
-    depending on whether you already have other MCP
-    servers configured.
-1.  Edit the `.cursor/mcp.json` file in your local
-    project (configuration will only apply to this
-    project) or edit the global `~/.cursor/mcp.json`
-    file in your home directory (configuration will apply
-    for all projects) to configure the Dart MCP server:
+    depending on whether you already have other MCP servers configured.
+1.  Edit the `.cursor/mcp.json` file in your local project
+    (configuration will only apply to this project) or
+    edit the global `~/.cursor/mcp.json` file in your home directory
+    (configuration will apply for all projects) to
+    configure the Dart MCP server:
 
-```json
-{
-  "mcpServers": {
-    "dart": {
-      "command": "dart",
-      "args": [
-        "mcp-server",
-        "--force-roots-fallback"
-      ]
+    ```json title=".cursor/mcp.json"
+    {
+      "mcpServers": {
+        "dart": {
+          "command": "dart",
+          "args": [
+            "mcp-server",
+            "--force-roots-fallback"
+          ]
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 For more information, see the official Cursor
 documentation for [installing MCP servers][].
@@ -162,8 +157,7 @@ Daemon. This automatically enables it for any tool (such as
 Copilot) which uses these APIs for MCP configuration.
 
 You explicitly enable or disable the Dart MCP server by
-configuring the `dart.mcpServer` setting your VS Code
-settings files.
+configuring the `dart.mcpServer` setting in your VS Code settings.
 
 To change this globally, update your user settings:
 
@@ -200,8 +194,8 @@ documentation for [enabling MCP support][].
 Once you've set up the Dart MCP server with a client,
 the Dart MCP server enables the client to not only reason
 about your project's context but also to take action with tools.
-The Large Language Model (LLM) decides which tools to use and
-when, so you can focus on describing your goal in natural language.
+The Large Language Model (LLM) decides which tools to use and when,
+so you can focus on describing your goal in natural language.
 Let's see this in action with a couple of examples using
 GitHub Copilot's Agent mode in VS Code.
 
@@ -222,15 +216,15 @@ Behind the scenes, the AI agent uses the Dart MCP server's tools to:
    from the running application.
 *  Inspect the UI: It accesses the Flutter widget tree to understand
    the layout that is causing the overflow.
-*  Apply a fix: Armed with this context, it applies a fix and checks
-   once more for any remaining errors.
+*  Apply a fix: Armed with this context, it applies a fix and
+   checks once more for any remaining errors.
 
 You can then keep or undo the code changes.
 
 ### Add new functionality with package search
 
-Imagine you need to add a chart to your app. Which package
-should you use? How do you add it and write the boilerplate?
+Imagine you need to add a chart to your app.
+Which package should you use? How do you add it and write the boilerplate?
 The Dart MCP server can streamline this entire process with
 a prompt similar to the following:
 
@@ -243,12 +237,11 @@ The AI agent now acts as a true assistant:
    find popular and highly-rated charting libraries.
 *  Manage dependencies: After you confirm its choice (for
    example, `syncfusion_flutter_charts`), it uses a tool to
-   add the package to your `pubspec.yaml` file and runs
-   `pub get`.
-*  Generate the code: It generates the new widget code, complete
-   with boilerplate for a line chart that it places in the UI.
-   It even self-corrects syntax errors introduced during the
-   process. You can customize further from there.
+   add the package to your `pubspec.yaml` file and runs `dart pub get`.
+*  Generate the code: It generates the new widget code,
+   complete with boilerplate for a line chart that it places in the UI.
+   It even self-corrects syntax errors introduced during the process.
+   You can customize further from there.
 
 What used to be a multi-step process of research,
 reading documentation, editing `pubspec.yaml`, and
