@@ -21,6 +21,8 @@ linter:
     - prefer_single_quotes
     - sort_child_properties_last
     - sort_unnamed_constructors_first
+    - specify_nonobvious_property_types
+    - strict_top_level_inference
     - test_types_in_equals
     - throw_in_finally
     - type_annotate_public_apis
@@ -28,5 +30,7 @@ linter:
     - unnecessary_breaks
     - unnecessary_library_directive
     - unnecessary_null_aware_operator_on_extension_on_nullable
+    - unnecessary_underscores
     - use_enums
     - use_truncating_division
+    - use_null_aware_elements

@@ -281,7 +281,7 @@ the entire dependency graph of the containing app.
 Package authors must define package constraints with care.
 Consider the following scenario:
 
-<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="dependency graph">
+<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="dependency graph" class="diagram-wrap">
 
 The `bookshelf` package depends on `widgets`.
 The `widgets` package, currently at 1.2.0, exports

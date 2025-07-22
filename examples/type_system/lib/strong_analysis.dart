@@ -131,7 +131,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion MaineCoon-Cat-err
-    // ignore: stable, beta, dev, invalid_cast_new_expr, invalid_assignment
+    // ignore: stable, beta, dev, invalid_assignment
     MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err
   }

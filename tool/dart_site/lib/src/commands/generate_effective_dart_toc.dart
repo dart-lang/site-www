@@ -183,7 +183,7 @@ class _Section {
       uri = Uri.parse('/effective-dart/').resolve(filename.split('.').first),
       name =
           '${filename[0].toUpperCase()}'
-              "${filename.substring(1).split('.').first}";
+          "${filename.substring(1).split('.').first}";
 }
 
 class _Subsection {
@@ -215,12 +215,11 @@ String _concatenatedText(md.Element element) {
 
   return children
       .map(
-        (child) =>
-            (child is md.Text)
-                ? _unescape.convert(child.text)
-                : (child is md.Element)
-                ? _concatenatedText(child)
-                : _unescape.convert(child.textContent),
+        (child) => (child is md.Text)
+            ? _unescape.convert(child.text)
+            : (child is md.Element)
+            ? _concatenatedText(child)
+            : _unescape.convert(child.textContent),
       )
       .join('');
 }

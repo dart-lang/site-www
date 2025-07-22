@@ -1,72 +1,19 @@
-@use '../base/variables' as *;
+@use '../base/mixins';
 
 .site-header-search {
-  &::before {
-    color: $site-color-light-grey;
-    z-index: 1;
-  }
-
   display: flex;
   align-items: center;
 
-  #mainnav & {
-    // Override of _header.scss
-    border: 0;
-
-    .open_menu & {
-      visibility: hidden;
-    }
-  }
-
   #sidenav & {
     display: none;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0 1.25rem;
-    order: -1;
+    margin: 0 0.5rem 0.5rem;
 
-    // Override of _header.scss
-    &::before {
-      left: 1.5rem;
-    }
-  }
-}
-
-.site-header-searchfield {
-  border: 0;
-  box-shadow: none;
-  background-color: transparent;
-
-  #mainnav & {
-    background-color: $site-color-dark-background;
-    color: $site-color-light-grey;
-    font-size: inherit;
-    height: inherit;
-    width: 24px;
-
-    &:focus {
-      width: 220px;
-    }
-
-    @media (min-width: 768px) {
-      font-size: 1rem;
-      height: unset;
-      width: unset;
-    }
-  }
-
-  #sidenav & {
-    font-size: 1.25rem;
-    height: 3rem;
-    width: 100%;
-
-    // Override of _header.scss.
-    @media (min-width: 768px) {
-      width: 100% !important;
-
-      &:focus {
-        width: 100% !important;
-      }
+    .site-header-searchfield {
+      font-size: 1.25rem;
+      height: 3rem;
+      width: 100%;
+      background-color: var(--site-raised-bgColor);
+      border-radius: var(--site-radius);
     }
   }
 }
@@ -75,7 +22,7 @@
   position: absolute;
   right: 5px;
   top: 0;
-  color: $site-color-body;
+  color: var(--site-base-fgColor);
   font-size: 14px;
 }
 
@@ -95,16 +42,119 @@
     z-index: 5;
 
     &:hover {
-      color: $site-color-light-grey;
+      color: var(--site-outline-variant);
     }
   }
 }
 
 #search-body {
-  margin-block-end: 1rem;
-  max-width: 640px;
+  margin-block-start: 1.5rem;
+  margin-block-end: 1.5rem;
 
   .gsc-control-cse {
-    border-radius: 0.5rem;
+    border-radius: var(--site-radius);
+    background-color: var(--site-inset-bgColor);
+    border: none;
+    color: var(--site-base-fgColor);
+  }
+
+  .gsc-above-wrapper-area {
+    border-color: var(--site-outline);
+  }
+
+  .gsc-orderby-container {
+    display: none;
+  }
+
+  .gsc-input-box {
+    border: none;
+    border-radius: var(--site-radius);
+    background-color: var(--site-raised-bgColor);
+
+    input.gsc-input {
+      background-color: transparent !important;
+      height: 2rem !important;
+    }
+  }
+
+  @at-root body .gsc-completion-container {
+    background-color: var(--site-raised-bgColor);
+    color: var(--site-base-fgColor);
+    border: none;
+    border-radius: var(--site-radius);
+    padding-top: 0.5rem;
+
+    .gsc-completion-selected {
+      background-color: var(--site-primary-color-highlight);
+    }
+  }
+
+  .gsc-search-button-v2 {
+    background-color: var(--site-filledButton-bgColor);
+    color: var(--site-filledButton-fgColor);
+    border: none;
+    border-radius: var(--site-radius);
+    font-weight: 500;
+    gap: 0.3rem;
+    padding: 0.6rem 1.4rem;
+
+    &:hover {
+      @include mixins.interaction-style(8%);
+    }
+
+    &:active {
+      @include mixins.interaction-style(16%);
+    }
+  }
+
+  .gsc-result-info, .gs-spelling {
+    color: var(--site-base-fgColor-lighter);
+  }
+
+  .gs-no-results-result .gs-snippet {
+    border: none;
+    background-color: var(--site-raised-bgColor);
+    border-radius: var(--site-radius);
+  }
+
+  .gsc-webResult {
+    .gsc-result {
+      background-color: transparent;
+    }
+
+    .gs-title, .gs-title * {
+      color: var(--site-link-fgColor);
+    }
+
+    .gs-visibleUrl {
+      color: var(--site-accent-color);
+    }
+
+    .gs-image-box {
+      display: none;
+    }
+
+    .gs-snippet {
+      color: var(--site-base-fgColor);
+    }
+
+    .gsc-result {
+      border: none;
+    }
+  }
+
+  .gsc-cursor-box {
+    .gsc-cursor-page {
+      color: var(--site-base-fgColor-lighter);
+    }
+
+    .gsc-cursor-current-page {
+      color: var(--site-link-fgColor);
+    }
+  }
+
+  .gcsc-find-more-on-google, .gcsc-find-more-on-google * {
+    color: var(--site-link-fgColor);
+    fill: var(--site-link-fgColor);
   }
 }

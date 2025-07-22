@@ -16,7 +16,7 @@ This page collects some of the top questions from the community.
 
 ### Q. Is there a specification for Dart?
 
-Yes. [EMCA-408][emca408] covers the Dart Programming Language Specification.
+Yes. [ECMA-408][ecma408] covers the Dart Programming Language Specification.
 
 Five versions have been published.
 The latest in-progress version covers to Dart 2.13-dev.
@@ -45,13 +45,13 @@ Google engineers also work in the public repository, making visible changes.
 The project has received many external patches
 and welcomes distributed committers.
 
-[emca408]: https://ecma-international.org/publications-and-standards/standards/ecma-408/
+[ecma408]: https://ecma-international.org/publications-and-standards/standards/ecma-408/
 [1st-ed]: {{ecma-pdf}}/ECMA-408_1st_edition_june_2014.pdf
 [2nd-ed]: {{ecma-pdf}}/ECMA-408_2nd_edition_december_2014.pdf
 [3rd-ed]: {{ecma-pdf}}/ECMA-408_3rd_edition_june_2015.pdf
 [4th-ed]: {{ecma-pdf}}/ECMA-408_4th_edition_december_2015.pdf
 [5th-ed]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
-[6th-ed]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[6th-ed]: {{site.url}}/to/spec-draft
 
 ---
 

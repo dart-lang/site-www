@@ -190,16 +190,16 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.7.0
+7   sdk: ^3.8.0
 8 
 9 # Add regular dependencies here.
 10 dependencies:
-11   args: ^2.5.0
+11   args: ^2.7.0
 12   # path: ^1.8.0
 13 
 14 dev_dependencies:
-15   lints: ^5.0.0
-16   test: ^1.24.0
+15   lints: ^6.0.0
+16   test: ^1.25.0
 ```
 
 This command displays each line of the specified file.
@@ -253,7 +253,7 @@ Then, the result of parsing command-line arguments is stored in `argResults`.
 The following diagram shows how the `dcat` command line used above
 is parsed into an `ArgResults` object.
 
-![Run dcat from the command-line](/assets/img/tutorials/server/dcat-dart-run.svg){:width="350"}
+![Run dcat from the command-line](/assets/img/tutorials/server/dcat-dart-run.svg){:width="350" .diagram-wrap}
 
 You can access flags and options by name,
 treating an `ArgResults` like a `Map`.
@@ -637,7 +637,7 @@ and [`package:args`]({{argsAPI}}/args-library.html).
 For another example of a command line app, 
 check out the [`command_line`][] sample.
 
-[`command_line`]: {{site.repo.dart.org}}/samples/tree/main/command_line
+[`command_line`]: {{site.repo.dart.samples}}/tree/main/command_line
 
 ## What next?
 

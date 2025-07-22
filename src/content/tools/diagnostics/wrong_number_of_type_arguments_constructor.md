@@ -10,6 +10,8 @@ body_class: highlight-diagnostics
 
 _The constructor '{0}.{1}' doesn't have type parameters._
 
+_The constructor '{0}.{1}` doesn't have type parameters._
+
 ## Description
 
 The analyzer produces this diagnostic when type arguments are provided

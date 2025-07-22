@@ -58,10 +58,9 @@ class DartDownloads {
   }
 
   Future<List<VersionInfo>> fetchVersions(String channel) async {
-    final versions =
-        await fetchVersionPaths(
-          channel,
-        ).where((event) => !event.contains('latest')).toList();
+    final versions = await fetchVersionPaths(
+      channel,
+    ).where((event) => !event.contains('latest')).toList();
 
     final versionMaps = <VersionInfo>[];
 
@@ -110,14 +109,16 @@ class DartDownloads {
 
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
     final media = await _fetchFile(channel, revision, 'VERSION');
-    final creationTime =
-        (await _fetchMetadata(channel, revision, 'VERSION')).timeCreated;
+    final creationTime = (await _fetchMetadata(
+      channel,
+      revision,
+      'VERSION',
+    )).timeCreated;
 
-    final json =
-        await _jsonAsciiDecoder
-            .bind(media.stream)
-            .cast<Map<String, Object?>>()
-            .first;
+    final json = await _jsonAsciiDecoder
+        .bind(media.stream)
+        .cast<Map<String, Object?>>()
+        .first;
 
     return VersionInfo.parse(
       channel,

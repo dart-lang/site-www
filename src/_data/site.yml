@@ -14,6 +14,7 @@ repo:
     org: https://github.com/dart-lang
     sdk: https://github.com/dart-lang/sdk
     lang: https://github.com/dart-lang/language
+    samples: https://github.com/dart-lang/samples
 branch: main
 
 flutter: https://flutter.dev
@@ -33,11 +34,14 @@ yt:
   watch: 'https://www.youtube.com/watch'
   playlist: 'https://www.youtube.com/playlist?list='
 
-showBanner: true
+showBanner: false
+
+google_analytics_id: UA-26406144-4
+google_tag_manager_id: GTM-5VSZM5J
 
 # Increment this global og:image URL version number (used as a query parameter)
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.7.3
+sdkVersion: 3.8.1

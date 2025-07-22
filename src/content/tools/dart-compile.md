@@ -66,7 +66,7 @@ Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
 followed by examples of running the app.
 
-[native_app]: {{site.repo.dart.org}}/samples/tree/main/native_app
+[native_app]: {{site.repo.dart.samples}}/tree/main/native_app
 [dart-run]: /tools/dart-run
 
 ## Subcommands
@@ -169,22 +169,43 @@ Run your compiled app from the `/tmp` directory:
 $ ./tmp/myapp
 ```
 
+<a id="cross-compilation" aria-hidden="true"></a>
+
 #### Cross-compilation {: #cross-compilation-exe }
 
-Cross-compilation to Linux x64 and ARM64 is supported on the
-following 64-bit host operating systems: macOS, Windows,
-and Linux.
+:::version-note
+Support for Linux ARM64 and x64 cross-compilation was introduced in Dart 3.8.
+
+Support for Linux ARM and RISCV64 was introduced in Dart 3.9.
+:::
+
+The following table shows which 64-bit host operating systems support
+cross-compilation to which targets:
+
+{% assign y = '<span class="material-symbols system-support" title="Supported" aria-label="Supported">done</span>' %}
+
+| 64-bit host OS | Linux ARM | Linux ARM64 | Linux RISCV64 | Linux x64 |
+|----------------|-----------|-------------|---------------|-----------|
+| Linux          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+| macOS          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+| Windows        |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+
+{:.table .table-striped .nowrap}
 
 To use cross-compilation, include the following flags:
 
-*   `--target-os=linux`: The target operating system
-    for the compiled executable. The Linux operating system
-    is supported at this time.
+`--target-os=linux`
+: The target operating system for the compiled executable.
+  Only the Linux operating system is supported at this time.
 
-*   `--target-arch=value`: The target
-    architecture for the compiled executable. The value
-    for this flag can be `arm64` (64-bit ARM processor)
-    or `x64` (64-bit processor).
+`--target-arch=value`
+: The target architecture for the compiled executable.
+  The value for this flag can be:
+
+  - `arm`: 32-bit ARM processor
+  - `arm64`: 64-bit ARM processor
+  - `riscv64`: 64-bit RISC-V (RV64GC) processor
+  - `x64`: x86-64 processor
 
 The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:
@@ -196,9 +217,10 @@ dart compile exe \
   hello.dart
 ```
 
-Internally, this command downloads additional Dart SDK
-binaries and caches them in the `~/.dart` directory. Here's
-a sample output with the `--verbose` flag included with
+Internally, this command downloads additional Dart SDK binaries and
+caches them in the `~/.dart` directory.
+
+Here's a sample output with the `--verbose` flag specified with
 the command:
 
 ```console
@@ -233,11 +255,10 @@ The `exe` subcommand has the following known limitations:
 
 * No support for `dart:mirrors` and `dart:developer`.
   For a complete list of the core libraries you can use,
-  see the [Multi-platform][] and [Native platform][] library
-  tables.
+  reference the [Multi-platform][] and [Native platform][] library tables.
 
-* Cross-compilation is supported, but the target is limited
-  to Linux. For more information, see [Cross-compilation][].
+* Cross-compilation is supported, but the target OS is limited to Linux.
+  To learn more, check out [Cross-compilation][].
 
 [Multi-platform]: /libraries#multi-platform-libraries
 [Native platform]: /libraries#native-platform-libraries
@@ -282,7 +303,7 @@ To learn more, see the
 #### Cross-compilation {: #cross-compilation-aot }
 
 Cross-compilation support for the `aot-snapshot` subcommand
-is the same as what is available for the `exe` subcommand.
+is the same as what's available for the `exe` subcommand.
 For more information, see
 [Self-contained executables (exe)][cross-compile-exe].
 
@@ -290,7 +311,7 @@ For more information, see
 
 #### Known limitations {: #known-limitations-aot }
 
-The `aot-snapshot` subcommand has the the same limitations
+The `aot-snapshot` subcommand has the same limitations
 as the `exe` subcommand. For more information, see
 [Self-contained executables (exe)][known-limitations-exe]
 
@@ -379,10 +400,10 @@ improve JavaScript performance:
   you pass into each function or method.
 
 :::tip
-Don't worry about the size of your app's included libraries. 
+Don't worry about the size of your app's included libraries.
 The production compiler performs tree shaking to omit
 unused classes, functions, methods, and so on.
-Import the libraries you think you'll need, 
+Import the libraries you think you'll need,
 and let the compiler get rid of what it doesn't need.
 :::
 

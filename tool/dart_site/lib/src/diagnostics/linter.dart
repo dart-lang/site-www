@@ -19,8 +19,8 @@ final Future<List<Map<String, Object?>>> _lintDocs = () async {
     'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/pkg/linter/tool/machine/rules.json',
   );
   final rawRulesInfo = await http.read(rawRulesInfoUri);
-  final rulesInfo =
-      (jsonDecode(rawRulesInfo) as List<Object?>).cast<Map<String, Object?>>();
+  final rulesInfo = (jsonDecode(rawRulesInfo) as List<Object?>)
+      .cast<Map<String, Object?>>();
 
   final coreRules = await _rulesConfigured(
     'https://raw.githubusercontent.com/dart-lang/core/refs/heads/main/pkgs/lints/lib/core.yaml',

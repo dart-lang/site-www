@@ -294,6 +294,7 @@ external call._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_position" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_position" title="Copy address_position to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -312,6 +313,7 @@ _The receiver of '.address' must be a concrete 'TypedData', a concrete
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_receiver" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_receiver" title="Copy address_receiver to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -2220,23 +2222,6 @@ _Methods can't be invoked in constant expressions._
 </div>
 </div>
 </div>
-<div class="card outlined-card" id="const_eval_null_aware_access">
-<div class="card-header">
-<header class="card-title" id="const_eval_null_aware_access">{{"const_eval_null_aware_access" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_Null-aware property access can't be used in a constant expression._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="const_eval_null_aware_access" title="Copy const_eval_null_aware_access to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
 <div class="card outlined-card" id="const_eval_primitive_equality">
 <div class="card-header">
 <header class="card-title" id="const_eval_primitive_equality">{{"const_eval_primitive_equality" | underscoreBreaker}}</header>
@@ -3529,6 +3514,7 @@ _Doc imports can't be deferred._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_be_deferred" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_be_deferred" title="Copy doc_import_cannot_be_deferred to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3546,6 +3532,7 @@ _Doc imports can't have show or hide combinators._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_combinators" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_combinators" title="Copy doc_import_cannot_have_combinators to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3563,6 +3550,7 @@ _Doc imports can't have configurations._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_configurations" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_configurations" title="Copy doc_import_cannot_have_configurations to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3580,6 +3568,7 @@ _Doc imports can't have prefixes._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/doc_import_cannot_have_prefix" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="doc_import_cannot_have_prefix" title="Copy doc_import_cannot_have_prefix to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3597,6 +3586,7 @@ _A dot shorthand can't be used where there is no context type._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/dot_shorthand_missing_context" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="dot_shorthand_missing_context" title="Copy dot_shorthand_missing_context to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -3609,13 +3599,15 @@ _A dot shorthand can't be used where there is no context type._
 
 _The static getter '{0}' isn't defined for the context type '{1}'._
 
-_The static method or constructor '{0}' isn't defined for the type '{1}'._
+_The static method or constructor '{0}' isn't defined for the context type
+'{1}'._
 
 </div>
 <div class="card-actions">
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/dot_shorthand_undefined_member" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="dot_shorthand_undefined_member" title="Copy dot_shorthand_undefined_member to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -5796,6 +5788,7 @@ _Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Copy ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -8623,6 +8616,7 @@ that the supertype intentionally disallows._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_reopen_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="invalid_reopen_annotation" title="Copy invalid_reopen_annotation to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -9062,6 +9056,7 @@ _The member '{0}' can only be used within instance members of subclasses of
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_use_of_protected_member" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="invalid_use_of_protected_member" title="Copy invalid_use_of_protected_member to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -11888,8 +11883,8 @@ representation type._
 </div>
 <div class="card-content">
 
-_The type '{0}' is not exhaustively matched by the switch cases since it doesn't
-match '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't
+match the pattern '{1}'._
 
 </div>
 <div class="card-actions">
@@ -11907,8 +11902,8 @@ match '{1}'._
 </div>
 <div class="card-content">
 
-_The type '{0}' is not exhaustively matched by the switch cases since it doesn't
-match '{1}'._
+_The type '{0}' isn't exhaustively matched by the switch cases since it doesn't
+match the pattern '{1}'._
 
 </div>
 <div class="card-actions">
@@ -12024,6 +12019,7 @@ _The parameter type of '==' operators should be non-nullable._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/non_nullable_equals_parameter" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="non_nullable_equals_parameter" title="Copy non_nullable_equals_parameter to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -16155,6 +16151,7 @@ _Unnecessary wildcard pattern._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_wildcard_pattern" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_wildcard_pattern" title="Copy unnecessary_wildcard_pattern to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -16989,6 +16986,8 @@ were given._
 <div class="card-content">
 
 _The constructor '{0}.{1}' doesn't have type parameters._
+
+_The constructor '{0}.{1}` doesn't have type parameters._
 
 </div>
 <div class="card-actions">
@@ -20649,6 +20648,25 @@ _Missing type annotation._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="switch_on_type">
+<div class="card-header">
+<header class="card-title" id="switch_on_type">{{"switch_on_type" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Avoid switch statements on a 'Type'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/switch_on_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="switch_on_type" title="Copy switch_on_type to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="test_types_in_equals">
 <div class="card-header">
 <header class="card-title" id="test_types_in_equals">{{"test_types_in_equals" | underscoreBreaker}}</header>
@@ -21326,8 +21344,10 @@ _Unnecessary use of 'unawaited'._
 </div>
 <div class="card-actions">
 <div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_unawaited" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_unawaited" title="Copy unnecessary_unawaited to your clipboard.">Copy name</button>
 </div>
 </div>

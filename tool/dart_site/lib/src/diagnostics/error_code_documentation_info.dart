@@ -111,8 +111,9 @@ String _migrateHighlightingSpans(String input) {
         throw StateError('Unexpected closing tag at line $lineNumber: $line');
       }
       final trimmedLine = line.trimLeft();
-      final leadingSpaceCount =
-          trimmedLine.isNotEmpty ? line.length - trimmedLine.length : 0;
+      final leadingSpaceCount = trimmedLine.isNotEmpty
+          ? line.length - trimmedLine.length
+          : 0;
 
       resultLines.add(
         '${' ' * leadingSpaceCount}$openingMark'

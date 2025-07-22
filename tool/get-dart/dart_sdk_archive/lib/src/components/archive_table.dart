@@ -2,15 +2,14 @@ import 'package:jaspr/jaspr.dart';
 
 import '../version_selector.dart';
 
-typedef VersionRow =
-    ({
-      String version,
-      String? ref,
-      String os,
-      String arch,
-      String date,
-      List<({String label, String url, bool hasSha256})> archives,
-    });
+typedef VersionRow = ({
+  String version,
+  String? ref,
+  String os,
+  String arch,
+  String date,
+  List<({String label, String url, bool hasSha256})> archives,
+});
 
 class ArchivesTable extends StatelessComponent {
   const ArchivesTable({required this.selector, super.key});

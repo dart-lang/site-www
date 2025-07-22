@@ -75,10 +75,9 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion elem-set-cascade
-    var message =
-        DivElement()
-          ..id = 'message2'
-          ..text = 'Please subscribe to the Dart mailing list.';
+    var message = DivElement()
+      ..id = 'message2'
+      ..text = 'Please subscribe to the Dart mailing list.';
     // #enddocregion elem-set-cascade
 
     // #docregion set-style

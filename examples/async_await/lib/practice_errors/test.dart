@@ -2,7 +2,7 @@ import 'package:examples_util/codelabs.dart';
 
 import 'solution.dart';
 
-const _result = result;
+const void Function(bool success, [List<String> messages]) _result = result;
 
 // #docregion
 List<String> messages = [];
@@ -79,11 +79,10 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable) {
   if (messages.isEmpty) {
     _result(true);
   } else {
-    final userMessages =
-        messages
-            .where((message) => readable.containsKey(message))
-            .map((message) => readable[message]!)
-            .toList();
+    final userMessages = messages
+        .where((message) => readable.containsKey(message))
+        .map((message) => readable[message]!)
+        .toList();
     print(messages);
 
     _result(false, userMessages);

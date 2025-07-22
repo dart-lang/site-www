@@ -115,9 +115,8 @@ Map<String, Map<String, AnalyzerErrorCodeInfo>> _decodeAnalyzerMessagesYaml(
 
       AnalyzerErrorCodeInfo errorCodeInfo;
       try {
-        errorCodeInfo =
-            (result[className] ??=
-                {})[errorName] = AnalyzerErrorCodeInfo.fromYaml(errorValue);
+        errorCodeInfo = (result[className] ??= {})[errorName] =
+            AnalyzerErrorCodeInfo.fromYaml(errorValue);
       } catch (e, st) {
         Error.throwWithStackTrace(
           'while processing $className.$errorName, $e',

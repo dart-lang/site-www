@@ -22,8 +22,9 @@ $ dart create -t package <PACKAGE_NAME>
 
 The following diagram shows the simplest layout of a package:
 
-<img 
-  src="/assets/img/libraries/simple-lib2.png" 
+<img
+  src="/assets/img/libraries/simple-lib2.png"
+  class="diagram-wrap"
   alt="root directory contains pubspec.yaml and lib/file.dart">
 
 The minimal requirements for a library are:
@@ -78,8 +79,9 @@ Let's look at the organization of a real-world package: shelf. The
 package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart packages:
 
-<img 
+<img
   src="/assets/img/libraries/shelf.png"
+  class="diagram-wrap"
   alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Directly under lib, the main library file,
@@ -134,8 +136,9 @@ Use `package:` when the imported file is in lib and the importer is outside.
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
 
-<img 
+<img
   src="/assets/img/libraries/import-lib-rules.png"
+  class="diagram-wrap"
   alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 
@@ -311,7 +314,7 @@ Use the following resources to learn more about packages:
   [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:
   [dart_style,]({{site.repo.dart.org}}/dart_style)
-  [path,]({{site.repo.dart.org}}/path)
+  [path,]({{site.repo.dart.org}}/core/tree/main/pkgs/path)
   [shelf,]({{site.repo.dart.org}}/shelf)
   [source_gen,]({{site.repo.dart.org}}/source_gen) and
   [test.]({{site.repo.dart.org}}/test)

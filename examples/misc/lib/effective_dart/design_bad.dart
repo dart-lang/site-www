@@ -1,6 +1,6 @@
 // ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names
 // ignore_for_file: type_init_formals, unused_field, always_declare_return_types, strict_raw_type, prefer_typing_uninitialized_variables
-// ignore_for_file: use_function_type_syntax_for_parameters, prefer_generic_function_type_aliases, avoid_null_checks_in_equality_operators
+// ignore_for_file: use_function_type_syntax_for_parameters, prefer_generic_function_type_aliases, specify_nonobvious_property_types
 // ignore_for_file: non_nullable_equals_parameter
 
 import 'dart:async';
@@ -271,7 +271,6 @@ class Person1 {
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();
-  // ignore_for_file: unnecessary_null_comparison
   // #docregion eq-dont-check-for-null
 
   bool operator ==(Object? other) =>

@@ -1,18 +1,12 @@
-@use 'variables' as *;
 @use 'mixins' as *;
 
-:root {
-  --site-interaction-base-values: 0 0 0;
-  --site-interaction-base-values-inverse: 255 255 255;
-  --focus-outline-color: #1967D2;
-}
-
 body {
-  font-family: $site-font-family-base;
+  font-family: var(--site-body-fontFamily);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: $site-color-body;
+  background-color: var(--site-base-bgColor);
+  color: var(--site-base-fgColor);
 
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -20,7 +14,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--focus-outline-color);
+  outline: 2px solid var(--site-primary-color);
 }
 
 section {
@@ -28,21 +22,21 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $site-font-family-alt;
+  font-family: var(--site-ui-fontFamily);
   font-weight: 400;
   line-height: 1.2;
-  color: $site-color-body;
+  color: var(--site-base-fgColor);
 }
 
 h1, .h1 {
-  font-family: $site-font-family-gsans-display;
+  font-family: var(--site-ui-fontFamily);
   font-size: 3rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .material-symbols {
-  font-family: $site-font-family-icon;
+  font-family: var(--site-icon-fontFamily);
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -87,33 +81,31 @@ dt {
   }
 }
 
-a {
-  &, &:visited {
-    color: $site-color-primary;
-  }
-}
-
 button {
   &:hover, &:active {
-    color: $flutter-color-blue-700;
+    color: var(--site-link-fgColor);
     outline: none;
     text-decoration: none;
   }
 
   &:active {
-    color: $flutter-color-blue-800;
+    color: var(--site-link-fgColor-active);
   }
 }
 
 a {
   border-radius: 0.2rem;
 
+  &, &:hover, &:visited {
+    color: var(--site-link-fgColor);
+  }
+
   &:hover {
     text-decoration: underline;
   }
 
   &:active {
-    color: $flutter-color-blue-600;
+    color: var(--site-link-fgColor-active);
   }
 }
 
@@ -124,6 +116,12 @@ ul {
 img {
   max-width: 100%;
   height: auto;
+
+  &.diagram-wrap {
+    background-color: var(--site-diagram-wrap-bgColor);
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }
 
 dd {
@@ -132,10 +130,21 @@ dd {
 }
 
 blockquote {
-  border: solid #b3b3b3;
-  border-width: 1px 0;
-  margin: 20px;
-  padding: 10px 20px 0 20px;
+  background-color: var(--site-inset-bgColor-translucent);
+  padding: 0.75rem 1rem;
+  border-left: solid 5px var(--site-inset-borderColor);
+  margin: 0;
+  margin-block-end: 1rem;
+
+  > p, > li, > ul, > ol {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 details {
@@ -148,7 +157,11 @@ details {
     cursor: pointer;
 
     &:hover {
-      color: $site-color-primary;
+      color: var(--site-link-fgColor);
+    }
+
+    &:active {
+      color: var(--site-link-fgColor-active);
     }
   }
 

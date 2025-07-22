@@ -1,4 +1,5 @@
 import {getSingletonHighlighter, Highlighter} from 'shiki';
+import dashDarkTheme from '../syntax/dark-dark.js';
 import dashLightTheme from '../syntax/dash-light.js';
 import MarkdownIt from 'markdown-it';
 import * as hast from 'hast';
@@ -44,7 +45,7 @@ export async function configureHighlighting(markdown: MarkdownIt): Promise<void>
       'cmd',
       'plaintext',
     ],
-    themes: [dashLightTheme],
+    themes: [dashLightTheme, dashDarkTheme],
   });
 
   markdown.renderer.rules.fence = function (tokens, index) {
@@ -135,7 +136,10 @@ function _highlight(
 
   return highlighter.codeToHtml(content, {
     lang: language,
-    theme: 'dash-light',
+    themes: {
+      light: 'dash-light',
+      dark: 'dash-dark',
+    },
     transformers: [
       {
         pre(preElement) {

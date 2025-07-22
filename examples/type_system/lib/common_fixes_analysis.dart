@@ -1,6 +1,6 @@
 // NOTE: Declarations in this file are analyzed but not tested.
 // ignore_for_file: unused_element, unused_local_variable, one_member_abstracts, use_super_parameters
-// ignore_for_file: prefer_function_declarations_over_variables, unused_field, strict_raw_type
+// ignore_for_file: unused_field, strict_raw_type
 
 import 'package:web/web.dart';
 
@@ -143,7 +143,7 @@ void funcCast() {
 void infNull() {
   // #docregion type-inf-null
   var ints = [1, 2, 3];
-  // ignore: non_bool_operand, undefined_operator, return_of_invalid_type_from_closure
+  // ignore: undefined_operator, return_of_invalid_type_from_closure
   var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
   // #enddocregion type-inf-null
 }
