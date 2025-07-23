@@ -782,7 +782,7 @@
 
 - term: "Type alias"
   short_description: |-
-    A name that refers to another type.
+    A user-defined name for an existing type
   long_description: |-
     A **type alias** is an alternative name that refers to another type.
 
