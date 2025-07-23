@@ -189,6 +189,44 @@ documentation for [enabling MCP support][].
 [VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
 [enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
 
+### Firebase Studio
+
+If you wish to use the Dart MCP Server in Firebase Studio,
+an agentic cloud-based development environment that helps
+you build and ship production-quality full-stack AI apps,
+follow these steps:
+
+1.  In your Firebase Studio app project, create a
+    `.idx/mcp.json` file in your project if it
+    doesn’t exist already and add the following
+    Dart MCP Server configuration to the file:
+
+    ```json title=".idx/mcp.json"
+    {
+      "mcpServers": {
+        "dart": {
+          "command": "dart",
+          "args": [
+            "mcp-server"
+          ]
+        }
+      }
+    }
+    ```
+
+1.  Ensure your environment is running Dart SDK 3.9/Flutter 3.35 beta
+    or later.
+1.  Switch channels and use the `flutter upgrade` command if
+    needed.
+1.  Rebuild your workspace to complete the setup.
+    *   Open the Command Palette (**Shift+Ctrl+P**).
+    *   Enter **Firebase Studio: Rebuild Environment**.
+
+For more information about MCP server configuration in
+Firebase Studio, see [Customize your Firebase Studio workspace][].
+
+[Customize your Firebase Studio workspace]: https://firebase.google.com/docs/studio/customize-workspace
+
 ## Use your MCP client
 
 Once you've set up the Dart MCP server with a client,
