@@ -18,6 +18,9 @@ and the `package` template:
 $ dart create -t package <PACKAGE_NAME>
 ```
 
+To learn more about available templates and how to use the `-t` flag, 
+see the [dart create documentation](/tools/dart-create#available-templates).
+
 ## What makes a package
 
 The following diagram shows the simplest layout of a package:
