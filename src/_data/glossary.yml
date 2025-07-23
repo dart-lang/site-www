@@ -780,6 +780,47 @@
     - "subtyping"
     - "subtype polymorphism"
 
+- term: "Type alias"
+  short_description: |-
+    A name that refers to another type.
+  long_description: |-
+    A **type alias** is an alternative name that refers to another type.
+
+    It can be used to simplify complex type definitions, improve readability, or create semantic meaning in code.
+
+    Dart supports type aliases using the `typedef` keyword. You can alias functions, classes, and even generic types.
+
+    ### Examples
+
+    #### Function type alias:
+
+    ```dart
+    typedef StringTransformer = String Function(String);
+    ```
+
+    #### Class alias (since Dart 2.13):
+
+    ```dart
+    class HttpClient {}
+
+    typedef Client = HttpClient;
+
+    Client client = HttpClient();
+    ```
+
+    Type aliases don’t create new types — they just provide alternate names.
+
+  related_links:
+    - text: "`typedef` keyword"
+      link: "/language/typedefs"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "typedef"
+    - "alias"
+
 - term: "Variance and variance positions"
   id: "variance"
   short_description: |-
