@@ -794,7 +794,7 @@
 
     ### Examples
 
-    #### Function type alias:
+    #### Function type alias
 
     ```dart
     typedef StringTransformer = String Function(String);
