@@ -789,7 +789,8 @@
     They can be used to simplify complex type definitions,
     improve readability, or create semantic meaning in code.
 
-    Dart supports type aliases using the `typedef` keyword. You can alias functions, classes, and even generic types.
+    Dart supports defining type aliases using the `typedef` keyword.
+    You can alias functions, classes, and even generic types.
 
     ### Examples
 
