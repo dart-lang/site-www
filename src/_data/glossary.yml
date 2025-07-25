@@ -818,8 +818,7 @@
     Client client = HttpClient();
     ```
 
-    Type aliases don’t create new types, they just provide alternate names.
-
+    Type aliases don't create new types, they just provide alternate names.
   related_links:
     - text: "`typedef` keyword"
       link: "/language/typedefs"
