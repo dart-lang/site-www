@@ -597,7 +597,7 @@ var typeInfo = [
   if (data case String s) 'Data is a string: $s',
   if (data case bool b) 'Data is a boolean: $b',
   if (data case double d) 'Data is a double: $d',
-]; // [Data is an integer: 123, Data is a double: 123]
+]; // [Data is an integer: 123]
 ```
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_d.dart (code_sample)"?>
