@@ -730,6 +730,55 @@
   alternate:
     - "child class"
 
+- term: "Shadowing"
+  short_description: |-
+    When a local declaration hides another with the same name.
+  long_description: |-
+    **Shadowing** occurs when a local declaration (such as a variable or parameter)
+    uses the same name as an existing declaration in an outer scope,
+    making the outer one inaccessible within the inner scope.
+
+    Shadowing is valid in Dart, but it can lead to confusing or unintended behavior,
+    so it’s generally discouraged unless used deliberately and clearly.
+
+    ### Example
+
+    ```dart
+    String message = 'Global';
+
+    void printMessage() {
+      String message = 'Local'; // Shadows the global `message`
+      print(message); // Prints: Local
+    }
+
+    void main() {
+      printMessage();
+      print(message); // Prints: Global
+    }
+    ```
+
+    In this example, the local `message` inside `printMessage` **shadows** the global one.
+
+    Shadowing can also happen in nested blocks:
+
+    ```dart
+    void main() {
+      int value = 10;
+      if (true) {
+        int value = 20; // Shadows the outer `value`
+        print(value);   // Prints: 20
+      }
+      print(value);     // Prints: 10
+    }
+    ```
+
+    Although legal, excessive shadowing can reduce code readability and should be avoided in most cases.
+  labels:
+    - "language"
+  alternate:
+    - "variable shadowing"
+    - "name shadowing"
+
 - term: "Subtype"
   short_description: |-
     A type that can be used wherever a value of its supertype is expected.
