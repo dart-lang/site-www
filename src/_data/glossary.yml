@@ -800,7 +800,7 @@
     typedef StringTransformer = String Function(String);
     ```
 
-    #### Class alias (since Dart 2.13):
+    #### Class alias
 
     ```dart
     class HttpClient {}
