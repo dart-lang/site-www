@@ -786,7 +786,8 @@
   long_description: |-
     A **type alias** is an alternative name that refers to another type.
 
-    It can be used to simplify complex type definitions, improve readability, or create semantic meaning in code.
+    They can be used to simplify complex type definitions,
+    improve readability, or create semantic meaning in code.
 
     Dart supports type aliases using the `typedef` keyword. You can alias functions, classes, and even generic types.
 
