@@ -798,6 +798,14 @@
 
     ```dart
     typedef StringTransformer = String Function(String);
+
+    void printTransformed(String input, StringTransformer transformer) {
+      print(transformer(input));
+    }
+
+    void main() {
+      printTransformed('hello', (str) => str.toUpperCase()); // Output: HELLO
+    }
     ```
 
     #### Class alias
