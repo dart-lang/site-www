@@ -81,6 +81,50 @@
     - "language"
     - "type system"
 
+- term: "Bottom type"
+  short_description: |-
+    A type that has no values and is a subtype of all other types.
+  long_description: |-
+    The **bottom type** in Dart is the type that has **no values** and is
+    considered a [**subtype**](/resources/glossary#subtype) of every other type.
+
+    In Dart, the bottom type is represented by the `Never` type.
+
+    This means a value of type `Never` can be used anywhere,
+    because such a value can never actually exist.
+    It's most often used as the **return type** of functions to
+    indicate they **never return**, such as for those that
+    throw exceptions or loop forever.
+
+    For example, the following `fail` function always throws an exception,
+    so it's declared with a return type of `Never` to
+    indicate that it never returns:
+
+    ```dart
+    Never fail(String message) {
+      throw Exception(message);
+    }
+
+    void main() {
+      String result = fail('Oops'); // OK: Never is a subtype of String.
+    }
+    ```
+
+    Since `fail` never returns, assigning it to a `String` is allowed.
+
+  related_links:
+    - text: "Built-in types"
+      link: "/language/built-in-types"
+      type: "doc"
+    - text: "Never for unreachable code"
+      link: "/null-safety/understanding-null-safety#never-for-unreachable-code"
+      type: "doc"
+  labels:
+    - "type system"
+    - "language"
+  alternate:
+    - "Never"
+
 - term: "Constant context"
   short_description: |-
     A region of code where the const keyword is implied and
@@ -735,6 +779,56 @@
   alternate:
     - "subtyping"
     - "subtype polymorphism"
+
+- term: "Type alias"
+  short_description: |-
+    A user-defined name for an existing type.
+  long_description: |-
+    A **type alias** is an alternative name that refers to another type.
+
+    They can be used to simplify complex type definitions,
+    improve readability, or create semantic meaning in code.
+
+    Dart supports defining type aliases using the `typedef` keyword.
+    You can alias functions, classes, and even generic types.
+
+    ### Examples
+
+    #### Function type alias
+
+    ```dart
+    typedef StringTransformer = String Function(String);
+
+    void printTransformed(String input, StringTransformer transformer) {
+      print(transformer(input));
+    }
+
+    void main() {
+      printTransformed('hello', (str) => str.toUpperCase()); // Output: HELLO
+    }
+    ```
+
+    #### Class alias
+
+    ```dart
+    class HttpClient {}
+
+    typedef Client = HttpClient;
+
+    Client client = HttpClient();
+    ```
+
+    Type aliases don't create new types, they just provide alternate names.
+  related_links:
+    - text: "`typedef` keyword"
+      link: "/language/typedefs"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "typedef"
+    - "alias"
 
 - term: "Variance and variance positions"
   id: "variance"

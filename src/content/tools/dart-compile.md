@@ -188,7 +188,7 @@ cross-compilation to which targets:
 |----------------|-----------|-------------|---------------|-----------|
 | Linux          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
 | macOS          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
-| Windows        |           |    {{y}}    |    {{y}}      |    {{y}}  |
+| Windows        |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
 
 {:.table .table-striped .nowrap}
 
