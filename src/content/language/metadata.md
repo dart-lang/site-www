@@ -10,14 +10,13 @@ nextpage:
 ---
 
 
-Use metadata to give additional information about your code. A metadata
-annotation begins with the character `@`, followed by either a reference
-to a compile-time constant (such as `deprecated`) or a call to a
-constant constructor.
+Use metadata to provide additional static information about your code.
+A metadata annotation begins with the character `@`, followed by either
+a reference to a compile-time constant (such as `deprecated`) or
+a call to a constant constructor.
 
-Metadata can appear before a library, class, typedef, type parameter,
-constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive.
+Metadata can be attached to most Dart program constructs by
+adding annotations before the construct's declaration or directive.
 
 ## Built-in annotations
 
