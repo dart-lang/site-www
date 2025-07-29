@@ -71,6 +71,37 @@ members annotated with `@deprecated` or `@Deprecated`.
 [Extend a class]: /language/extend
 [Dart analyzer]: /tools/analysis
 
+## Analyzer-supported annotations
+
+Beyond providing support and analysis for the [built-in annotations][],
+the [Dart analyzer][] provides additional support and diagnostics for
+a variety of annotations from [`package:meta`][].
+Some commonly used annotations the package provides include:
+
+[`@visibleForTesting`][]
+: Marks a public member of a package as only public so
+  that the package can write tests for it.
+  The analyzer hides the member from autocompletion suggestions
+  and warns if it's used from another package.
+
+[`@awaitNotRequired`][]
+: Marks variables that have a `Future` type or functions that return a `Future`
+  as not requiring the caller to await the `Future`.
+  This stops the analyzer from warning callers that don't await the `Future`
+  due to the [`discarded_futures`][] or [`unawaited_futures`][] lints.
+
+To learn more about these and the other annotations the package provides,
+what they indicate, what functionality they enable, and how to use them,
+check out the [`package:meta/meta.dart` API docs][meta-api].
+
+[built-in annotations]: #built-in-annotations
+[Dart analyzer]: /tools/analysis
+[`@visibleForTesting`]: {{site.pub-api}}/meta/latest/meta/visibleForTesting-constant.html
+[`@awaitNotRequired`]: {{site.pub-api}}/meta/latest/meta/awaitNotRequired-constant.html
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
+[meta-api]: {{site.pub-api}}/meta/latest/meta/meta-library.html
+
 ## Custom annotations
 
 You can define your own metadata annotations. Here's an example of
@@ -117,34 +148,3 @@ an annotation on any declaration besides a top-level function or method.
 
 [`@Target`]: {{site.pub-api}}/meta/latest/meta_meta/Target-class.html
 [`package:meta`]: {{site.pub-pkg}}/meta
-
-## Analyzer supported annotations
-
-Beyond providing support and analysis for the [built-in annotations][],
-the [Dart analyzer][] provides additional support and diagnostics for
-a variety of annotations from [`package:meta`][].
-Some commonly used annotations the package provides include:
-
-[`@visibleForTesting`][]
-: Marks a public member of a package as only public so
-  that the package can write tests for it.
-  The analyzer hides the member from autocompletion suggestions
-  and warns if it's used from another package.
-
-[`@awaitNotRequired`][]
-:  Marks variables that have a `Future` type or functions that return a `Future`
-  as not requiring the caller to await the `Future`.
-  This stops the analyzer from warning callers that don't await the `Future`
-  due to the [`discarded_futures`][] or [`unawaited_futures`][] lints.
-
-To learn more about these and the other annotations the package provides,
-what they indicate, what functionality they enable, and how to use them,
-check out the [`package:meta/meta.dart` API docs][meta-api].
-
-[built-in annotations]: #built-in-annotations
-[Dart analyzer]: /tools/analysis
-[`@visibleForTesting`]: {{site.pub-api}}/meta/latest/meta/visibleForTesting-constant.html
-[`@awaitNotRequired`]: {{site.pub-api}}/meta/latest/meta/awaitNotRequired-constant.html
-[`discarded_futures`]: /tools/linter-rules/discarded_futures
-[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
-[meta-api]: {{site.pub-api}}/meta/latest/meta/meta-library.html
