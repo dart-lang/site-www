@@ -79,8 +79,8 @@ a variety of annotations from [`package:meta`][].
 Some commonly used annotations the package provides include:
 
 [`@visibleForTesting`][]
-: Marks a public member of a package as only public so
-  that the package can write tests for it.
+: Marks a member of a package as only public so that
+  the member can be accessed from the package's tests.
   The analyzer hides the member from autocompletion suggestions
   and warns if it's used from another package.
 
