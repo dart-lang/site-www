@@ -1,7 +1,6 @@
 ---
 title: Metadata
 description: Metadata and annotations in Dart.
-toc: false
 prevpage:
   url: /language/functions
   title: Functions
@@ -22,18 +21,25 @@ declaration and before an import or export directive.
 
 ## Built-in annotations
 
-The following annotations are available to all Dart code: 
+The following annotations are available to all Dart code:
 
-*   [`@Deprecated`][]: Mark a part of your code as no longer
-    recommended. Optionally [provide a deprecation message][].
-*   [`@deprecated`][]: Mark a part of your code as no longer
-    recommended.
-*   [`@override`][]: Mark a method as an override for a
-    method with the same name from a parent class or
-    interface. For examples of using `@override`, see
-    [Extending a class][].
-*   [`@pragma`][]: Provide specific instructions or hints to
-    Dart tools, like the compiler or analyzer.
+[`@Deprecated`][]
+: Marks a declaration as deprecated,
+  indicating it should be migrated away from,
+  with a message explaining the replacement and potential removal date.
+
+[`@deprecated`][]
+: Marks a declaration as deprecated until an unspecified future release.
+  Prefer using `@Deprecated` and [providing a deprecation message][].
+
+[`@override`][]
+: Marks an instance member as an override or implementation of
+  a member with the same name from a parent class or interface.
+  For examples of using `@override`, check out [Extend a class][].
+
+[`@pragma`][]
+: Provides specific instructions or hints about a declaration to
+  Dart tools, such as the compiler or analyzer.
 
 Here's an example of using the `@Deprecated` annotation:
 
@@ -62,8 +68,8 @@ members annotated with `@deprecated` or `@Deprecated`.
 [`@deprecated`]: {{site.dart-api}}/dart-core/deprecated-constant.html
 [`@override`]: {{site.dart-api}}/dart-core/override-constant.html
 [`@pragma`]: {{site.dart-api}}/dart-core/pragma-class.html
-[provide a deprecation message]: /tools/linter-rules/provide_deprecation_message
-[Extending a class]: /language/extend
+[providing a deprecation message]: /tools/linter-rules/provide_deprecation_message
+[Extend a class]: /language/extend
 [Dart analyzer]: /tools/analysis
 
 ## Custom annotations
@@ -84,7 +90,7 @@ class Todo {
 And here's an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart (usage)"?>
-```dart
+```dart highlightLines=1
 @Todo('Dash', 'Implement this function')
 void doSomething() {
   print('Do something');
@@ -118,21 +124,28 @@ an annotation on any declaration besides a top-level function or method.
 Beyond providing support and analysis for the [built-in annotations][],
 the [Dart analyzer][] provides additional support and diagnostics for
 a variety of annotations from [`package:meta`][].
-Some of the most commonly used annotations it provides include:
+Some commonly used annotations the package provides include:
 
-*   [`@visibleForTesting`][]: Mark a public member of a package as
-    only public for that package to write tests for it.
-    The analyzer hides the member from autocompletion suggestions
-    and warns if it's used from another package.
-*   [`@awaitNotRequired`][]: Suppress `unawaited_futures` and
-    `discarded_futures` lint diagnostics at call sites.
+[`@visibleForTesting`][]
+: Marks a public member of a package as only public so
+  that the package can write tests for it.
+  The analyzer hides the member from autocompletion suggestions
+  and warns if it's used from another package.
+
+[`@awaitNotRequired`][]
+:  Marks variables that have a `Future` type or functions that return a `Future`
+  as not requiring the caller to await the `Future`.
+  This stops the analyzer from warning callers that don't await the `Future`
+  due to the [`discarded_futures`][] or [`unawaited_futures`][] lints.
 
 To learn more about these and the other annotations the package provides,
-what elements they can be applied to, what they do, and how to use them,
+what they indicate, what functionality they enable, and how to use them,
 check out the [`package:meta/meta.dart` API docs][meta-api].
 
 [built-in annotations]: #built-in-annotations
 [Dart analyzer]: /tools/analysis
 [`@visibleForTesting`]: {{site.pub-api}}/meta/latest/meta/visibleForTesting-constant.html
 [`@awaitNotRequired`]: {{site.pub-api}}/meta/latest/meta/awaitNotRequired-constant.html
+[`discarded_futures`]: /tools/linter-rules/discarded_futures
+[`unawaited_futures`]: /tools/linter-rules/unawaited_futures
 [meta-api]: {{site.pub-api}}/meta/latest/meta/meta-library.html
