@@ -127,11 +127,15 @@ void doSomething() {
 }
 ```
 
-To indicate the type of elements that should be annotated with your annotation,
-you can use the [`@Target`][] annotation from [`package:meta`][].
+### Specifying supported targets {:.no_toc}
 
-For example, if you wanted the above `@Todo` annotation to
-only be allowed on functions, you'd add the following annotation:
+To indicate the type of language constructs that
+should be annotated with your annotation,
+use the [`@Target`][] annotation from [`package:meta`][].
+
+For example, if you wanted the earlier `@Todo` annotation to
+only be allowed on functions and methods,
+you'd add the following annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart (target-kinds)"?>
 ```dart highlightLines=3
