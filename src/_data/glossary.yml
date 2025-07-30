@@ -738,8 +738,10 @@
     uses the same name as an existing declaration in an outer scope,
     making the outer one inaccessible within the inner scope.
 
-    Shadowing is valid in Dart, but it can lead to confusing or unintended behavior,
-    so it’s generally discouraged unless used deliberately and clearly.
+    While valid in Dart, shadowing can lead to
+    confusing code or unintended behavior.
+    As a result, it's generally discouraged unless
+    used deliberately to improve the clarity of your code.
 
     ### Example
 
