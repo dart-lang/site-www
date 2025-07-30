@@ -64,9 +64,9 @@ void main() {
       // #enddocregion any-every
 
       expect(
-          main,
-          prints(
-              'At least one item contains "a"\nAll items have length >= 5\n'));
+        main,
+        prints('At least one item contains "a"\nAll items have length >= 5\n'),
+      );
     });
 
     test('firstWhere_example', () {
@@ -113,13 +113,21 @@ void main() {
       expect(predicate('Soda'), isFalse);
 
       expect(
-          main,
-          prints(allOf(
-              stringContainsInOrder(
-                  ['Popcorn\n', 'Popcorn\n', 'Popcorn\n', 'None!\n']),
-              isNot(contains('Lasagne')),
-              isNot(contains('Salad')),
-              isNot(contains('Toast')))));
+        main,
+        prints(
+          allOf(
+            stringContainsInOrder([
+              'Popcorn\n',
+              'Popcorn\n',
+              'Popcorn\n',
+              'None!\n',
+            ]),
+            isNot(contains('Lasagne')),
+            isNot(contains('Salad')),
+            isNot(contains('Toast')),
+          ),
+        ),
+      );
     });
 
     test('iterable_example', () {
@@ -130,6 +138,25 @@ void main() {
       int value = iterable.elementAt(1);
       // #enddocregion iterable-elementat
       expect(value, 2);
+    });
+
+    test('iterable-to-list', () {
+      Iterable<int> veryLargeIterable() {
+        return [for (var i = 0; i < 10000; i++) i];
+      }
+
+      // #docregion iterable-to-list
+      final items = veryLargeIterable().toList();
+
+      final tenthItem = items[9];
+      final hundredthItem = items[99];
+      final thousandthItem = items[999];
+      final lastItem = items.last;
+      // #enddocregion iterable-to-list
+      expect(tenthItem, 9);
+      expect(hundredthItem, 99);
+      expect(thousandthItem, 999);
+      expect(lastItem, 9999);
     });
 
     test('map_int_example', () {
@@ -151,8 +178,9 @@ void main() {
     test('takeWhile_example', () {
       const numbers = [1, 2, 3, -1, 4, 5];
       // #docregion takewhile
-      var numbersUntilNegative =
-          numbers.takeWhile((number) => !number.isNegative);
+      var numbersUntilNegative = numbers.takeWhile(
+        (number) => !number.isNegative,
+      );
       // #enddocregion takewhile
       expect(numbersUntilNegative, [1, 2, 3]);
     });
@@ -171,9 +199,14 @@ void main() {
       // #enddocregion take-while-long
 
       expect(
-          main,
-          prints(allOf(contains('Numbers until 0: (1, 3, -2)'),
-              contains('Numbers starting at 0: (0, 4, 5)'))));
+        main,
+        prints(
+          allOf(
+            contains('Numbers until 0: (1, 3, -2)'),
+            contains('Numbers starting at 0: (0, 4, 5)'),
+          ),
+        ),
+      );
     });
 
     test('where_example', () {
@@ -212,9 +245,15 @@ void main() {
       // #enddocregion first-last
 
       expect(
-          main,
-          prints(allOf(contains('Salad'), contains('Toast'),
-              isNot(contains('Popcorn')))));
+        main,
+        prints(
+          allOf(
+            contains('Salad'),
+            contains('Toast'),
+            isNot(contains('Popcorn')),
+          ),
+        ),
+      );
     });
 
     test('numbers_where', () {
@@ -239,14 +278,18 @@ void main() {
       // #enddocregion numbers-where
 
       expect(
-          main,
-          prints(allOf(
-              isNot(contains('1 is even.\n')),
-              contains('-2 is even.\n'),
-              contains('42 is even.\n'),
-              isNot(contains('3 is even')),
-              contains('evenNumbers contains negative'),
-              contains('largeNumbers is empty'))));
+        main,
+        prints(
+          allOf(
+            isNot(contains('1 is even.\n')),
+            contains('-2 is even.\n'),
+            contains('42 is even.\n'),
+            isNot(contains('3 is even')),
+            contains('evenNumbers contains negative'),
+            contains('largeNumbers is empty'),
+          ),
+        ),
+      );
     });
 
     test('numbers_by_two', () {

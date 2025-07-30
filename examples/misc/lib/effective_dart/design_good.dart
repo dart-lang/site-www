@@ -1,4 +1,4 @@
-// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element
+// ignore_for_file: close_sinks, unused_element
 // ignore_for_file: unused_local_variable, strict_raw_type, use_function_type_syntax_for_parameters
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
@@ -46,7 +46,9 @@ void miscDeclAnalyzedButNotTested() {
   (Iterable errors, Iterable<Monster> monsters) {
     // #docregion code-like-prose
     // "If errors is empty..."
-    if (errors.isEmpty) {/*-...-*/}
+    if (errors.isEmpty) {
+      // ...
+    }
 
     // "Hey, subscription, cancel!"
     subscription.cancel();
@@ -138,10 +140,11 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion cascades
-    var buffer = StringBuffer() //!<br>
-      ..write('one')
-      ..write('two')
-      ..write('three');
+    var buffer =
+        StringBuffer() //!<br>
+          ..write('one')
+          ..write('two')
+          ..write('three');
     // #enddocregion cascades
   };
 
@@ -201,6 +204,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return desserts;
     }
+
     // #enddocregion omit-types-on-locals
   }
 
@@ -215,6 +219,7 @@ void miscDeclAnalyzedButNotTested() {
       }
       return result;
     }
+
     // #enddocregion upcast-local
   }
 
@@ -223,6 +228,7 @@ void miscDeclAnalyzedButNotTested() {
     String makeGreeting(String who) {
       return 'Hello, $who!';
     }
+
     // #enddocregion annotate-return-types
   }
 
@@ -233,6 +239,7 @@ void miscDeclAnalyzedButNotTested() {
         print(message);
       }
     }
+
     // #enddocregion annotate-parameters
   }
 
@@ -285,6 +292,7 @@ void miscDeclAnalyzedButNotTested() {
       var users = json['users'];
       print(users);
     }
+
     // #enddocregion infer-dynamic
   }
 
@@ -317,6 +325,7 @@ void miscDeclAnalyzedButNotTested() {
       if (arg is String) return arg.toLowerCase() == 'true';
       throw ArgumentError('Cannot convert $arg to a bool.');
     }
+
     // #enddocregion object-vs-dynamic
   };
 
@@ -326,7 +335,9 @@ void miscDeclAnalyzedButNotTested() {
 
   // #docregion future-or-contra
   Stream<S> asyncMap<T, S>(
-      Iterable<T> iterable, FutureOr<S> Function(T) callback) async* {
+    Iterable<T> iterable,
+    FutureOr<S> Function(T) callback,
+  ) async* {
     for (final element in iterable) {
       yield await callback(element);
     }
@@ -531,8 +542,10 @@ typedef Predicate<E> = bool Function(E element);
 
 class C<Foo> {
   // #docregion avoid_return_types_on_setters
-  set foo(Foo value) {/* ... */}
-// #enddocregion avoid_return_types_on_setters
+  set foo(Foo value) {
+    /* ... */
+  }
+  // #enddocregion avoid_return_types_on_setters
 }
 
 //----------------------------------------------------------------------------
@@ -546,27 +559,30 @@ class String0 {
 
 class DateTime0 {
   // #docregion omit-optional-positional
-  DateTime0(int year,
-      [int month = 1,
-      int day = 1,
-      int hour = 0,
-      int minute = 0,
-      int second = 0,
-      int millisecond = 0,
-      int microsecond = 0]);
+  DateTime0(
+    int year, [
+    int month = 1,
+    int day = 1,
+    int hour = 0,
+    int minute = 0,
+    int second = 0,
+    int millisecond = 0,
+    int microsecond = 0,
+  ]);
 
   // #enddocregion omit-optional-positional
 }
 
 class Duration0 {
   // #docregion omit-optional-positional
-  Duration0(
-      {int days = 0,
-      int hours = 0,
-      int minutes = 0,
-      int seconds = 0,
-      int milliseconds = 0,
-      int microseconds = 0});
+  Duration0({
+    int days = 0,
+    int hours = 0,
+    int minutes = 0,
+    int seconds = 0,
+    int milliseconds = 0,
+    int microseconds = 0,
+  });
   // #enddocregion omit-optional-positional
 }
 
@@ -584,4 +600,5 @@ class Person {
 
   bool operator ==(Object other) => other is Person && name == other.name;
 }
+
 // #enddocregion eq-dont-check-for-null

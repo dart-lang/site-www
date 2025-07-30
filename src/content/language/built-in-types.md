@@ -2,8 +2,8 @@
 title: Built-in types
 description: Information on the types Dart supports.
 prevpage:
-  url: /language/keywords
-  title: Keywords
+  url: /language/comments
+  title: Comments
 nextpage:
   url: /language/records
   title: Records
@@ -36,7 +36,7 @@ Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
 * `Enum`: The superclass of all enums.
-* `Future` and `Stream`: Used in [asynchrony support][].
+* `Future` and `Stream`: Used in [asynchronous programming][].
 * `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions][].
 * `Never`: Indicates that an expression can never
@@ -179,21 +179,17 @@ You can use one or more underscores (`_`) as digit separators
 to make long number literals more readable.
 Multiple digit separators allow for higher level grouping.
 
-{% comment %}
-Attach code excerpt misc/lib/language_tour/built_in_types.dart (digit-separators)
-when feature is stable:
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (digit-separators)"?>
 ```dart
 var n1 = 1_000_000;
 var n2 = 0.000_000_000_01;
-var n3 = 0x00_14_22_01_23_45;  // MAC address
-var n4 = 555_123_4567;  // US Phone number
-var n5 = 100__000_000__000_000;  // one hundred million million!
+var n3 = 0x00_14_22_01_23_45; // MAC address
+var n4 = 555_123_4567; // US Phone number
+var n5 = 100__000_000__000_000; // one hundred million million!
 ```
 
 :::version-note
-Using digit separators requires a [language version][] of at least 3.6.0.
+Using digit separators requires a [language version][] of at least 3.6.
 :::
 
 ## Strings
@@ -221,13 +217,17 @@ object's `toString()` method.
 ```dart
 var s = 'string interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, '
-        'which is very handy.');
-assert('That deserves all caps. '
-        '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. '
-        'STRING INTERPOLATION is very handy!');
+assert(
+  'Dart has $s, which is very handy.' ==
+      'Dart has string interpolation, '
+          'which is very handy.',
+);
+assert(
+  'That deserves all caps. '
+          '${s.toUpperCase()} is very handy!' ==
+      'That deserves all caps. '
+          'STRING INTERPOLATION is very handy!',
+);
 ```
 
 :::note
@@ -241,12 +241,15 @@ operator:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
-var s1 = 'String '
+var s1 =
+    'String '
     'concatenation'
     " works even over line breaks.";
-assert(s1 ==
-    'String concatenation works even over '
-        'line breaks.');
+assert(
+  s1 ==
+      'String concatenation works even over '
+          'line breaks.',
+);
 
 var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
@@ -420,7 +423,7 @@ Symbol literals are compile-time constants.
 [Lists]: /language/collections#lists
 [Sets]: /language/collections#sets
 [Maps]: /language/collections#maps
-[asynchrony support]: /language/async
+[asynchronous programming]: /language/async
 [iteration]: /libraries/dart-core#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom

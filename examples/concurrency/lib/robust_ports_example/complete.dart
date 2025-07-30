@@ -8,7 +8,8 @@ void main() async {
   print(await worker.parseJson('"banana"'));
   print(await worker.parseJson('[true, false, null, 1, "string"]'));
   print(
-      await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]));
+    await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]),
+  );
   worker.close();
 }
 
@@ -16,7 +17,7 @@ void main() async {
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// #enddocregion constructor
+  // #enddocregion constructor
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
   bool _closed = false;
@@ -31,7 +32,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {

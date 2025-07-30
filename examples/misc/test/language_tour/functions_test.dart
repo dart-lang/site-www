@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables, avoid_function_literals_in_foreach_calls
+// ignore_for_file: unused_element, prefer_function_declarations_over_variables, avoid_function_literals_in_foreach_calls
 // ignore_for_file: always_declare_return_types
 
 import 'package:examples/language_tour/function_equality.dart'
@@ -22,8 +22,10 @@ void main() {
     assert(say('Bob', 'Howdy') == 'Bob says Howdy');
     // #enddocregion call-without-optional-param
     // #docregion call-with-optional-param
-    assert(say('Bob', 'Howdy', 'smoke signal') ==
-        'Bob says Howdy with a smoke signal');
+    assert(
+      say('Bob', 'Howdy', 'smoke signal') ==
+          'Bob says Howdy with a smoke signal',
+    );
     // #enddocregion call-with-optional-param
   });
 
@@ -123,6 +125,7 @@ ORANGES: 7
         }
       }
     }
+
     // #enddocregion nested-functions
   });
 

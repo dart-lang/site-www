@@ -579,22 +579,27 @@ You might use it like so:
 ```dart
 // Using null safety:
 class Point {
-  final double x, y;
+  final int x, y;
 
-  bool operator ==(Object other) {
-    if (other is! Point) wrongType('Point', other);
-    return x == other.x && y == other.y;
+  Point(this.x, this.y);
+
+  Point operator +(Object other) {
+    if (other is int) return Point(x + other, y + other);
+    if (other is! Point) wrongType('int | Point', other);
+
+    print('Adding two Point instances together: $this + $other');
+    return Point(x + other.x, y + other.y);
   }
 
-  // Constructor and hashCode...
+  // toString, hashCode, and other implementations...
 }
 ```
 
-This program analyzes without error. Notice that the last line of the `==`
+This program analyzes without error. Notice that the last line of the `+`
 method accesses `.x` and `.y` on `other`. It has been promoted to `Point` even
 though the function doesn't have any `return` or `throw`. The control flow
 analysis knows that the declared type of `wrongType()` is `Never` which means
-the then branch of the `if` statement *must* abort somehow. Since the second
+the then branch of the `if` statement *must* abort somehow. Since the final
 statement can only be reached when `other` is a `Point`, Dart promotes it.
 
 In other words, using `Never` in your own APIs lets you extend Dart's
@@ -693,7 +698,7 @@ String makeCommand(String executable, [List<String>? arguments]) {
 The language is also smarter about what kinds of expressions cause promotion. An
 explicit `== null` or `!= null` of course works. But explicit casts using `as`,
 or assignments, or the postfix `!` operator
-(which we'll cover [later on](#non-null-assertion-operator)) also cause
+(which we'll cover [later on](#not-null-assertion-operator)) also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
@@ -874,8 +879,10 @@ There isn't a null-aware function call operator, but you can write:
 function?.call(arg1, arg2);
 ```
 
-<a id="null-assertion-operator"></a>
-### Non-null assertion operator
+<a id="null-assertion-operator" aria-hidden="true"></a>
+<a id="non-null-assertion-operator" aria-hidden="true"></a>
+
+### Not-null assertion operator
 
 The great thing about using flow analysis to move a nullable variable to the
 non-nullable side of the world is that doing so is provably safe. You get to
@@ -986,8 +993,8 @@ it has a conservative rule that non-nullable fields have to be initialized
 either at their declaration (or in the constructor initialization list for
 instance fields). So Dart reports a compile error on this class.
 
-You can fix the error by making the field nullable and then using null assertion
-operators on the uses:
+You can fix the error by making the field nullable and then
+using not-null assertion operators on the uses:
 
 ```dart
 // Using null safety:
@@ -1021,11 +1028,13 @@ class Coffee {
 }
 ```
 
-Note that the `_temperature` field has a non-nullable type, but is not
-initialized. Also, there's no explicit null assertion when it's used. There are
-a few models you can apply to the semantics of `late`, but I think of it like
-this: The `late` modifier means "enforce this variable's constraints at runtime
-instead of at compile time". It's almost like the word "late" describes *when*
+Note that the `_temperature` field has a non-nullable type,
+but is not initialized.
+Also, there's no explicit not-null assertion when it's used.
+There are a few models you can apply to the semantics of `late`,
+but I think of it like this: The `late` modifier means
+"enforce this variable's constraints at runtime instead of at compile time".
+It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
 In this case, since the field is not definitely initialized, every time the
@@ -1532,7 +1541,7 @@ The core points to take away are:
 
 *   Method chains after null-aware operators short circuit if the receiver is
     `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
-    operators. The postfix null assertion "bang" operator (`!`) casts its
+    operators. The postfix not-null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
 
 *   Flow analysis lets you safely turn nullable local variables and parameters

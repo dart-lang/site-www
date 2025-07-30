@@ -1,7 +1,7 @@
 ---
-title: Asynchrony support
+title: Asynchronous programming
 description: Information on writing asynchronous code in Dart.
-short-title: Async
+short-title: Async programming
 prevpage:
   url: /language/concurrency
   title: Concurrency

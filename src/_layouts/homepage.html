@@ -3,12 +3,16 @@
   {% include 'head.html' %}
   <body class="homepage">
     {% render 'cookie-notice.html' %}
-    {% render 'gtags.html' %}
+    {% include 'gtags.html' %}
     {% include 'page-header.html' %}
-    {% include 'navigation-side.html' %}
-    <main id="page-content">
-      {{content}}
-    </main>
-    {% render 'page-footer.html' %}
+    <div id="site-below-header">
+      <div id="site-main-row">
+        {% include 'navigation-side.html' %}
+        <main id="page-content" class="focused">
+          {{content}}
+        </main>
+      </div>
+      {% render 'page-footer.html' %}
+    </div>
   </body>
 </html>

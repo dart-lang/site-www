@@ -1,4 +1,9 @@
-<header id="page-header" class="site-header">
+{%- if site.showBanner and showBanner != false -%}
+<div id="site-banner" role="alert">
+  <p>{% render 'banner.html' %}</p>
+</div>
+{% endif -%}
+<header id="site-header">
   {% include 'navigation-main.html' %}
   {% if obsolete -%}
   {% if obsolete == true -%}
@@ -10,4 +15,3 @@
   {% endif -%}
   {% endif -%}
 </header>
-{% if site.show_banner -%} {% render 'banner.html' %} {%- endif -%}

@@ -18,8 +18,10 @@ void main() {
     // #enddocregion assert
 
     // #docregion assert-with-message
-    assert(urlString.startsWith('https'),
-        'URL ($urlString) should start with "https".');
+    assert(
+      urlString.startsWith('https'),
+      'URL ($urlString) should start with "https".',
+    );
     // #enddocregion assert-with-message
   });
 }

@@ -38,8 +38,8 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.13
-  build_test: ^2.2.2
+  build_runner: ^2.4.15
+  build_test: ^2.2.3
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -102,6 +102,6 @@ For details on using build_runner, see the following:
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
-[tests]: /guides/testing
+[tests]: /tools/testing
 [webdev]: /tools/webdev
 [webdev serve]: /tools/webdev#serve

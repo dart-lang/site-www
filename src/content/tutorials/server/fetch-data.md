@@ -148,10 +148,8 @@ for making composable HTTP requests,
 with optional fine-grained control.
 
 :::note
-You should avoid directly using `dart:io` or `dart:html`
-to make HTTP requests.
-Those libraries are platform-dependent
-and tied to a single implementation.
+Avoid directly using `dart:io` or `dart:html` to make HTTP requests.
+Those libraries are platform-dependent and tied to a single implementation.
 :::
 
 To add a dependency on `package:http`,
@@ -295,8 +293,10 @@ of the key-value pairs as the `headers` optional named parameter:
 
 <?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
-await http.get(Uri.https('dart.dev', '/f/packages/http.json'),
-    headers: {'User-Agent': '<product name>/<product-version>'});
+await http.get(
+  Uri.https('dart.dev', '/f/packages/http.json'),
+  headers: {'User-Agent': '<product name>/<product-version>'},
+);
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
@@ -625,6 +625,7 @@ class PackageRetrievalException implements Exception {
     buf.write('!');
     return buf.toString();
   }
+
 }
 ```
 
@@ -651,7 +652,7 @@ to prevent your interface from becoming unresponsive.
 [isolate]: /language/concurrency#isolates
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
-[Using JSON]: /guides/json
+[Using JSON]: /libraries/serialization/json
 [convert-docs]: {{site.dart-api}}/dart-convert/dart-convert-library.html
 [http-pub]: {{site.pub-pkg}}/http
 [http-docs]: {{site.pub-api}}/http

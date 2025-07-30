@@ -13,7 +13,7 @@ class Vector2d {
 
   // #docregion named
   Vector2d.named({required this.x, required this.y});
-// #docregion positional
+  // #docregion positional
 }
 
 class Vector3d extends Vector2d {
@@ -34,6 +34,7 @@ class Vector3d extends Vector2d {
   // Vector3d.yzPlane({required double y, required this.z})
   //       : super.named(x: 0, y: y);
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
-// #docregion positional
+  // #docregion positional
 }
+
 // #enddocregion positional, named

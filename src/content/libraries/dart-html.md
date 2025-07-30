@@ -7,10 +7,8 @@ prevpage:
 ---
 
 :::warning
-`dart:html` is being replaced with [`package:web`][].
-Package maintainers should migrate to `package:web` as
-soon as possible to be compatible with Wasm.
-Read the [Migrate to package:web][] page for guidance.
+The `dart:html` library is deprecated.
+Instead, use [`dart:js_interop`][] and [`package:web`][].
 :::
 
 Use the [dart:html][] library to program the browser, manipulate objects and
@@ -36,6 +34,7 @@ To use the HTML library in your web app, import dart:html:
 import 'dart:html';
 ```
 
+[`dart:js_interop`]: /interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 [Migrate to package:web]: /interop/js-interop/package-web
 
@@ -89,9 +88,7 @@ Element classElement = querySelector('.a-class')!;
 List<Element> divElements = querySelectorAll('div');
 
 // Find all text inputs.
-List<Element> textInputElements = querySelectorAll(
-  'input[type="text"]',
-);
+List<Element> textInputElements = querySelectorAll('input[type="text"]');
 
 // Find all elements with the CSS class 'class'
 // inside of a <p> that is inside an element with
@@ -191,9 +188,7 @@ are also parsed and created.
 
 <?code-excerpt "html/lib/html.dart (creating-from-html)"?>
 ```dart
-var elem2 = Element.html(
-  '<p>Creating <em>is</em> easy!</p>',
-);
+var elem2 = Element.html('<p>Creating <em>is</em> easy!</p>');
 ```
 
 Note that `elem2` is a `ParagraphElement` in the preceding example.
@@ -410,8 +405,10 @@ void initWebSocket([int retrySeconds = 1]) {
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
-      Timer(Duration(seconds: retrySeconds),
-          () => initWebSocket(retrySeconds * 2));
+      Timer(
+        Duration(seconds: retrySeconds),
+        () => initWebSocket(retrySeconds * 2),
+      );
     }
     reconnectScheduled = true;
   }

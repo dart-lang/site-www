@@ -1,4 +1,3 @@
-// ignore_for_file: unused_field, body_might_complete_normally_nullable, unused_element
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -6,7 +5,7 @@ import 'dart:isolate';
 // #docregion close
 class Worker {
   bool _closed = false;
-// #enddocregion close
+  // #enddocregion close
 
   final SendPort _commands;
   final ReceivePort _responses;
@@ -14,7 +13,7 @@ class Worker {
   int _idCounter = 0;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -92,7 +91,7 @@ class Worker {
     _handleCommandsToIsolate(receivePort, sendPort);
   }
 
-// #docregion close
+  // #docregion close
   void close() {
     if (!_closed) {
       _closed = true;
@@ -101,5 +100,6 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-// #enddocregion close
 }
+
+// #enddocregion close

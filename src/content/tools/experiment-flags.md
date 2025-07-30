@@ -17,6 +17,7 @@ without notice.
 
 To use an experiment with Dart SDK [command line tools](/tools/sdk),
 pass the corresponding flag to the tool.
+
 For example, to enable the experiments
 `super-mixins` and `no-slow-checks`,
 add those flags to the `dart` command:
@@ -25,6 +26,11 @@ add those flags to the `dart` command:
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
+Or to the `flutter` command:
+
+```console
+$ flutter run --enable-experiment=super-mixins,no-slow-checks
+```
 
 ## Using experiment flags with the Dart analyzer (command-line and IDE)
 

@@ -16,4 +16,5 @@ Future<String> sayGoodbye() async {
     return 'Failed to logout user: $e';
   }
 }
+
 // #enddocregion

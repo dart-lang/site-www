@@ -60,11 +60,14 @@ link is created.
 
 ## What can be referenced
 
-Most library members can be referenced in a doc comment, including classes,
-constants, enums, named extensions, extension types, functions, mixins, and
-type aliases. This includes all in-scope library members, either declared
-locally, or imported. Library members that are imported with an import prefix
-can be referenced with the prefix. For example:
+Most library members can be referenced in a doc comment, including
+classes, constants, enums, named extensions, extension types,
+functions, mixins, and type aliases.
+This includes all in-scope library members, either
+declared locally, imported, or [imported with a doc import](#doc-imports).
+Library members that are imported with an import prefix can
+be referenced with the prefix.
+For example:
 
 ```dart
 import 'dart:math' as math;
@@ -76,7 +79,7 @@ int x = 7;
 
 Most members of a class, an enum, an extension, an extension type, and a mixin
 can also be referenced. A reference to a member that is not in scope must be
-qualified (prefixed) with its container's name. For example the `wait` static
+qualified (prefixed) with its container's name. For example, the `wait` static
 method on the `Future` class can be referenced in a doc comment with
 `[Future.wait]`. This is true for instance members as well; the `add` method
 and the `length` property on the `List` class can be referenced with
@@ -109,3 +112,31 @@ within a doc comment on that element or on one of its members.
 The doc comment for a type alias that aliases a class, enum, extension type, or
 mixin can't reference any of the aliased type's members as if they were in
 scope.
+
+## Doc imports
+
+Dart supports a `@docImport` documentation tag,
+which enables external elements to be referenced in
+documentation comments without actually importing them.
+This tag can be specified in a doc comment above a `library` directive.
+For example:
+
+```dart highlightLines=1
+/// @docImport 'dart:async';
+library;
+
+/// Doc comments can now reference elements like
+/// [Future] and [Future.value] from `dart:async`,
+/// even if the library is not imported with an actual import.
+class Foo {}
+```
+
+Doc imports support the same URI styles as [regular Dart imports][],
+including the `dart:` and `package:` schemes as well as relative paths.
+However, they can't be deferred or configured with `as`, `show`, or `hide`.
+
+[regular Dart imports]: /language/libraries#using-libraries
+
+:::version-note
+Support for doc imports was introduced in Dart 3.8.
+:::

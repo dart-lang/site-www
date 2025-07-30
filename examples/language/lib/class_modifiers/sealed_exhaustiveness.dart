@@ -7,7 +7,7 @@ class Dusty extends Amigo {}
 class Ned extends Amigo {}
 
 String lastName(Amigo amigo) => switch (amigo) {
-      Lucky _ => 'Day',
-      Dusty _ => 'Bottoms',
-      Ned _ => 'Nederlander',
-    };
+  Lucky _ => 'Day',
+  Dusty _ => 'Bottoms',
+  Ned _ => 'Nederlander',
+};

@@ -17,6 +17,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       var version = await lookUpVersion();
       // Do something with version
     }
+
     // #enddocregion checkVersion
   }
 
@@ -56,6 +57,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       checkVersion();
       print('In main: version is ${await lookUpVersion()}');
     }
+
     // #enddocregion main
   }
 
@@ -70,12 +72,12 @@ Future<void> miscDeclAnalyzedButNotTested() async {
       }
       // ...
     }
+
     // #enddocregion number-thinker
   }
 
   <varOrType>(Stream<varOrType> expression) async {
     // #docregion await-for
-    // ignore: prefer_final_in_for_each
     await for (varOrType identifier in expression) {
       // Executes each time the stream emits a value.
     }

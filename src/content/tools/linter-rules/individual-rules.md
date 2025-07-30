@@ -9,72 +9,82 @@ underscore_breaker_titles: true
 eleventyComputed:
   permalink: "/tools/linter-rules/{{lint.name}}.html"
   title: "{{ lint.name }}"
-  description: "Learn more about the {{ lint.name }} linter rule."
+  description: "Learn about the {{ lint.name }} linter rule."
 skipFreshness: true
 ---
 
-{{lint.description}}
-
+<div class="tags">
 {% if lint.sinceDartSdk == "Unreleased" or lint.sinceDartSdk contains "-wip" -%}
-_This rule is currently **experimental**
-and not yet available in a stable SDK._
+<div class="tag-label orange" title="Lint is unreleased or work in progress." aria-label="Lint is unreleased or work in progress.">
+<span class="material-symbols" aria-hidden="true">pending</span>
+<span>Unreleased</span>
+</div>
+{% elsif lint.state == "experimental" -%}
+<div class="tag-label orange" title="Lint is experimental." aria-label="Lint is experimental.">
+<span class="material-symbols" aria-hidden="true">science</span>
+<span>Experimental</span>
+</div>
+{% elsif lint.state == "deprecated" -%}
+<div class="tag-label orange" title="Lint is deprecated." aria-label="Lint is deprecated.">
+<span class="material-symbols" aria-hidden="true">report</span>
+<span>Deprecated</span>
+</div>
 {% elsif lint.state == "removed" -%}
-_This rule has been removed as of the latest Dart releases._
-{% elsif lint.state != "stable" -%}
-_This rule is currently **{{lint.state}}**
-and available as of Dart {{lint.sinceDartSdk}}._
+<div class="tag-label red" title="Lint has been removed." aria-label="Lint has been removed.">
+<span class="material-symbols" aria-hidden="true">error</span>
+<span>Removed</span>
+</div>
 {% else -%}
-_This rule is available as of Dart {{lint.sinceDartSdk}}._
+<div class="tag-label green" title="Lint is stable." aria-label="Lint is stable.">
+<span class="material-symbols" aria-hidden="true">verified_user</span>
+<span>Stable</span>
+</div>
 {% endif -%}
-
-{% if lint.sets != empty -%}
-
-{% assign rule_sets = "" -%}
-
-{% for set in lint.sets -%}
-
-{% if set == "core" or set == "recommended" -%}
-{% assign set_link = "lints" %}
-{% elsif set == "flutter" -%}
-{% assign set_link = "flutter_lints" %}
-{% else -%}
-{% assign set_link = set %}
+{% if lint.sets contains "core" -%}
+<div class="tag-label" title="Lint is included in the core set of rules." aria-label="Lint is included in the core set of rules.">
+<span class="material-symbols" aria-hidden="true">circles</span>
+<span>Core</span>
+</div>
+{% elsif lint.sets contains "recommended" -%}
+<div class="tag-label" title="Lint is included in the recommended set of rules." aria-label="Lint is included in the recommended set of rules.">
+<span class="material-symbols" aria-hidden="true">thumb_up</span>
+<span>Recommended</span>
+</div>
+{% elsif lint.sets contains "flutter" -%}
+<div class="tag-label" title="Lint is included in the Flutter set of rules." aria-label="Lint is included in the Flutter set of rules.">
+<span class="material-symbols" aria-hidden="true">flutter</span>
+<span>Flutter</span>
+</div>
 {% endif -%}
-
-{%- capture rule_set -%}
-[{{set}}](/tools/linter-rules#{{set_link}}){% if forloop.last == false %},{% endif %}
-{% endcapture -%}
-
-{%- assign rule_sets = rule_sets | append: rule_set -%}
-{% endfor -%}
-
-<em>Rule sets: {{ rule_sets }}</em>
-{% endif -%}
-
 {% if lint.fixStatus == "hasFix" %}
-_This rule has a [quick fix](/tools/linter-rules#quick-fixes) available._
+<div class="tag-label" title="Lint has one or more quick fixes available." aria-label="Lint has one or more quick fixes available.">
+<span class="material-symbols" aria-hidden="true">build</span>
+<span>Fix available</span>
+</div>
 {% endif %}
+</div>
 
-{% if lint.incompatible != empty -%}
-{% assign incompatible_rules = "" -%}
-
-{% for incompatible in lint.incompatible -%}
-
-{%- capture incompatible_rule -%}
-[{{incompatible}}](/tools/linter-rules/{{incompatible}}){% if forloop.last == false %},{% endif %}
-{% endcapture -%}
-
-{% assign incompatible_rules = incompatible_rules | append: incompatible_rule -%}
-{% endfor -%}
-
-<em>Incompatible rules: {{ incompatible_rules }}</em>
-{% endif -%}
+{{lint.description}}
 
 ## Details
 
 {{lint.details}}
 
-## Usage
+{% if lint.incompatible != empty -%}
+
+## Incompatible rules
+
+The `{{lint.name}}` rule is incompatible with the following rules:
+
+{% for incompatible in lint.incompatible -%}
+- [`{{incompatible}}`](/tools/linter-rules/{{incompatible}})
+{% endfor -%}
+
+{% endif -%}
+
+<a id="usage" aria-hidden="true"></a>
+
+## Enable
 
 To enable the `{{lint.name}}` rule,
 add `{{lint.name}}` under **linter > rules** in your
@@ -84,4 +94,13 @@ add `{{lint.name}}` under **linter > rules** in your
 linter:
   rules:
     - {{lint.name}}
+```
+
+If you're instead using the YAML map syntax to configure linter rules,
+add `{{lint.name}}: true` under **linter > rules**:
+
+```yaml title="analysis_options.yaml"
+linter:
+  rules:
+    {{lint.name}}: true
 ```

@@ -3,7 +3,7 @@ publish_to: none
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.8.0
 
 workspace:
   - analysis
@@ -26,4 +26,4 @@ workspace:
   - vector_victor
 
 dev_dependencies:
-  lints: ^5.0.0
+  lints: ^6.0.0

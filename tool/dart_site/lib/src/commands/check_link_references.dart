@@ -9,7 +9,8 @@ import 'package:path/path.dart' as path;
 
 final class CheckLinkReferencesCommand extends Command<int> {
   @override
-  String get description => 'Verify there are no unlinked/broken '
+  String get description =>
+      'Verify there are no unlinked/broken '
       'Markdown link references in the generated site output.';
 
   @override
@@ -59,10 +60,11 @@ int _checkLinkReferences() {
 Map<String, List<String>> _findInvalidLinkReferences(Directory directory) {
   final invalidReferences = <String, List<String>>{};
 
-  for (final filePath in directory
-      .listSync(recursive: true)
-      .map((f) => f.path)
-      .where((p) => path.extension(p) == '.html')) {
+  for (final filePath
+      in directory
+          .listSync(recursive: true)
+          .map((f) => f.path)
+          .where((p) => path.extension(p) == '.html')) {
     final content = File(filePath).readAsStringSync();
     final results = _findInContent(content);
     if (results.isNotEmpty) {

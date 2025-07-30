@@ -16,27 +16,32 @@ the Dart web platform provides [core libraries][],
 access to the [DOM (Document Object Model)][DOM],
 and [interoperability for calling JavaScript][interop] from Dart.
 
-You have the option of using Dart web with a higher-level web app framework.
+You have the option of using Dart web with a higher-level framework.
 Many apps that support web plus mobile or desktop are built
 using [Flutter][] and [Flutter web][] support.
-Flutter web support
-and other web app frameworks for Dart are powered by the Dart web platform.
+You can also use [Jaspr][] to build fast and dynamic HTML-based websites.
+Flutter web support, Jaspr
+and other web frameworks for Dart are powered by the Dart web platform.
 
-<p class="text-center">
-  <a href="/web/get-started" class="btn btn-primary btn-lg">Build a web app with Dart</a>
+<div class="side-by-side">
+<div class="centered-rows">
+<p class="">
+  <a href="/web/get-started" class="filled-button large-button">Build a web app with Dart</a>
 </p>
-
-<p class="text-center">
-  <br>
+</div>
+<div class="centered-rows">
+<figure>
   <img 
     src="/assets/img/flutter-gallery.jpg"
     alt="screenshot of Flutter Gallery">
-  <br>
-  <em>Flutter Gallery, running in a web browser</em>
-</p>
+  <figcaption>Flutter Gallery, running in a web browser</figcaption>
+</figure>
+</div>
+</div>
 
 [core libraries]: /libraries#web-platform-libraries
 [DOM]: /web/get-started
 [Flutter]: {{site.flutter}}
 [Flutter web]: {{site.flutter}}/web
+[Jaspr]: https://jaspr.site
 [interop]: /interop/js-interop

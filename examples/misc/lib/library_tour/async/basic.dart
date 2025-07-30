@@ -14,11 +14,14 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion catch-error
-    httpClient.read(url).then((String result) {
-      print(result);
-    }).catchError((e) {
-      // Handle or ignore the error.
-    });
+    httpClient
+        .read(url)
+        .then((String result) {
+          print(result);
+        })
+        .catchError((e) {
+          // Handle or ignore the error.
+        });
     // #enddocregion catch-error
   }
 }

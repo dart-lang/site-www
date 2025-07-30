@@ -3,19 +3,11 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
-<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
-    <img
-      height="32"
-      alt="Open in IDX"
-      src="https://cdn.idx.dev/btn/open_purple_32.svg">
-  </picture>
+<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
+  <img
+    height="32"
+    alt="Open in Firebase Studio"
+    src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
 </a>
 
 The documentation site for the [Dart programming language](https://dart.dev), 
@@ -46,7 +38,7 @@ We can stage the changes automatically in your pull request.
 > follow the below instruction on cloning with its submodule.
 
 If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and test your work before submitting.
+do consider building and testing your work before submitting.
 
 If you want or need to build the site, follow the steps below.
 
@@ -84,7 +76,7 @@ If you prefer, you can use a version manager such as [nvm][],
 and run `nvm install` from the repository's root directory.
 
 If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `20.14` or later)_:
+and already the latest stable version _(currently `22.15` or later)_:
 
 ```terminal
 node --version
@@ -256,13 +248,12 @@ run `./dash_site refresh-excerpts`.
 To learn more about creating, editing, and using code excerpts,
 check out the [excerpt updater package documentation][].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/packages/excerpter#readme
+[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
 ## [Optional] Deploy to a staging site
 
-Submitted pull requests can be automatically staged
-by a site maintainer.
-If you'd like to stage the site yourself though,
+A site maintainer can automatically stage submitted pull requests.
+If you'd like to first stage the site yourself,
 you can build a full version and upload it to Firebase.
 
 1. If you don't already have a Firebase project,
@@ -270,17 +261,17 @@ you can build a full version and upload it to Firebase.
    - Navigate to the [Firebase Console](https://console.firebase.google.com)
      and create your own Firebase project (for example, `dart-dev-staging`).
 
-   - Head back to your local terminal and verify that you are logged in.
+   - Head back to your local terminal and verify that you're logged in.
 
      ```terminal
-     firebase login
+     npm exec -- firebase-tools login
      ```
 
    - Ensure that your project exists and activate that project:
 
      ```terminal
-     firebase projects:list
-     firebase use <your-project>
+     npm exec -- firebase-tools projects:list
+     npm exec -- firebase-tools use <your-project>
      ```
 
 2. From the root directory of the repository, build the site:
@@ -289,13 +280,13 @@ you can build a full version and upload it to Firebase.
    ./dash_site build
    ```
 
-   This builds the site and copy it to your local `_site` directory.
+   This builds the site and copies it to your local `_site` directory.
    If that directory previously existed, it will be replaced.
 
 3. Deploy to your activated Firebase project's default hosting site:
 
    ```terminal
-   firebase deploy --only hosting
+   npm exec -- firebase-tools deploy --only hosting
    ```
 
 4. Navigate to your PR on GitHub and include the link of the staged version.

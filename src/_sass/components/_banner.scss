@@ -1,28 +1,38 @@
-@use '../core/variables' as *;
+#site-banner {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--site-ui-fontFamily);
+  font-weight: 500;
+  font-size: 1rem;
 
-.banner {
-  position: relative;
-  background-color: $dash-callout;
-  padding: 12px 0;
+  gap: 0.5rem;
+  padding: 0.75rem;
   text-align: center;
-  z-index: 1000;
+  background: var(--site-banner-bgColor);
+  color: var(--site-banner-fgColor);
+  z-index: var(--site-z-floating);
 
-  &__text {
-    font-family: $site-font-family-alt;
-    font-size: 16px;
+  p {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    margin: 0;
+    flex-grow: 1;
+    text-wrap: balance;
+  }
 
-    color: white;
+  a, button {
+    white-space: nowrap;
+    color: var(--site-onPrimary-color);
+    font-family: var(--site-ui-fontFamily);
 
-    margin-bottom: 0;
-    padding-left: 1em;
-    padding-right: 1em;
+    &:hover {
+      color: var(--site-onPrimary-color-light);
+    }
 
-    a {
-      color: $site-color-card-link;
-
-      &:hover, &:focus, &:active {
-        color: darken($site-color-card-link, 20%);
-      }
+    &:active {
+      color: var(--site-onPrimary-color-lighter);
     }
   }
 }

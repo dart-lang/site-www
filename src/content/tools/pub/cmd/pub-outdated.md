@@ -202,7 +202,7 @@ For options that apply to all pub commands, see
 
 By default, accounts for [`dependency_overrides`][]
 when resolving package constraints (`--dependency-overrides`).
-To not consider overrides, use `--no-dependency_overrides`.
+To not consider overrides, use `--no-dependency-overrides`.
 
 ### `--[no-]dev-dependencies`
 

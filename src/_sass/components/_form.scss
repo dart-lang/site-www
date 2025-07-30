@@ -1,12 +1,17 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
+@use '../base/mixins' as *;
 
 form {
   .muted {
     font-size: 75%;
-    color: $gray-light;
+    color: var(--site-base-fgColor-alt);
     text-indent: 0;
     padding: 10px;
+  }
+
+  &.form-inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -15,32 +20,8 @@ form {
   cursor: pointer;
 
   select {
-    appearance: none;
     min-width: 120px;
-    padding: 0 30px 0 10px;
-    margin: 0 .25rem;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &:after {
-    font: $site-font-icon;
-    content: 'expand_more';
-    vertical-align: bottom;
-    display: block;
-    position: absolute;
-    right: .5rem;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    font-size: 20px;
-    color: $gray-dark;
-    pointer-events: none;
-    @include transition();
+    margin: 0 0.3rem;
   }
 }
 
@@ -53,10 +34,10 @@ input, select {
   border-radius: 0;
   font-size: 13px;
   cursor: pointer;
-  background-color: $gray-light;
-  color: $gray-dark;
+  background-color: var(--site-inset-bgColor);
+  color: var(--site-base-fgColor);
 
   &:focus, &:active {
-    outline-color: #fff;
+    outline-color: var(--site-primary-color);
   }
 }

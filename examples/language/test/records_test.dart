@@ -119,11 +119,7 @@ void main() {
       return (json['name'] as String, json['age'] as int);
     }
 
-    final json = <String, dynamic>{
-      'name': 'Dash',
-      'age': 10,
-      'color': 'blue',
-    };
+    final json = <String, dynamic>{'name': 'Dash', 'age': 10, 'color': 'blue'};
 
     // Destructures using a record pattern with positional fields:
     var (name, age) = userInfo(json);
@@ -146,11 +142,7 @@ void main() {
       return (name: json['name'] as String, age: json['age'] as int);
     }
 
-    final json = <String, dynamic>{
-      'name': 'Dash',
-      'age': 10,
-      'color': 'blue',
-    };
+    final json = <String, dynamic>{'name': 'Dash', 'age': 10, 'color': 'blue'};
     // #docregion record-name-destructure
     // Destructures using a record pattern with named fields:
     final (:name, :age) = userInfo(json);

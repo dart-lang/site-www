@@ -10,4 +10,5 @@ Future<String> reportLogins() async {
   var logins = await fetchLoginAmount();
   return 'Total number of logins: $logins';
 }
+
 // #enddocregion

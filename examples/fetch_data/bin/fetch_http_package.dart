@@ -102,6 +102,8 @@ class PackageRetrievalException implements Exception {
     buf.write('!');
     return buf.toString();
   }
+
   // #docregion get-package
 }
+
 // #enddocregion get-package

@@ -6,8 +6,8 @@ prevpage:
   url: /language/metadata
   title: Metadata
 nextpage:
-  url: /language/keywords
-  title: Keywords
+  url: /language/classes
+  title: Classes
 ---
 
 The `import` and `library` directives can help you create a
@@ -18,25 +18,29 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 
 Libraries can be distributed using [packages](/tools/pub/packages).
 
-:::note
-To learn why Dart uses underscores instead of access modifier keywords
-like `public` or `private`, consult
-[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
-:::
+Dart uses underscores instead of access modifier keywords
+like `public`, `protected`, or `private`.
+While access modifier keywords from other languages
+provide more fine-grained control,
+Dart's use of underscores and library-based privacy
+provides a straightforward configuration mechanism,
+helps enable an efficient implementation of [dynamic access][],
+and improves tree shaking (dead code elimination).
 
 [library]: /tools/pub/glossary#library
+[dynamic access]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
 ## Using libraries
 
 Use `import` to specify how a namespace from one library is used in the
 scope of another library.
 
-For example, Dart web apps generally use the [dart:html][]
+For example, Dart web apps generally use the [`dart:js_interop`][]
 library, which they can import like this:
 
-<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-html-import)"?>
+<?code-excerpt "misc/test/language_tour/browser_test.dart (dart-js-interop-import)"?>
 ```dart
-import 'dart:html';
+import 'dart:js_interop';
 ```
 
 The only required argument to `import` is a URI specifying the
@@ -74,6 +78,11 @@ Element element1 = Element();
 // Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
+
+Import prefixes with the [wildcard][] name `_` are non-binding,
+but will provide access to the non-private extensions in that library.
+
+[wildcard]: /language/variables#wildcard-variables
 
 ### Importing only part of a library
 
@@ -132,7 +141,7 @@ Future<void> greet() async {
 In the preceding code,
 the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
-see [asynchrony support](/language/async).
+check out [asynchronous programming](/language/async).
 
 You can invoke `loadLibrary()` multiple times on a library without problems.
 The library is loaded only once.
@@ -173,6 +182,6 @@ for advice on how to implement a package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-[dart:html]: {{site.dart-api}}/dart-html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

@@ -61,9 +61,11 @@ waiting for each one to complete before executing the next one.
 ```dart
 void runUsingFuture() {
   // ...
-  findEntryPoint().then((entryPoint) {
-    return runExecutable(entryPoint, args);
-  }).then(flushThenExit);
+  findEntryPoint()
+      .then((entryPoint) {
+        return runExecutable(entryPoint, args);
+      })
+      .then(flushThenExit);
 }
 ```
 
@@ -123,11 +125,14 @@ object might throw.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catch-error)"?>
 ```dart
-httpClient.read(url).then((String result) {
-  print(result);
-}).catchError((e) {
-  // Handle or ignore the error.
-});
+httpClient
+    .read(url)
+    .then((String result) {
+      print(result);
+    })
+    .catchError((e) {
+      // Handle or ignore the error.
+    });
 ```
 
 The `then().catchError()` pattern is the asynchronous version of
@@ -160,8 +165,8 @@ result
     .then((_) => lengthyComputation())
     .then((_) => print('Done!'))
     .catchError((exception) {
-  /* Handle exception... */
-});
+      /* Handle exception... */
+    });
 ```
 
 In the preceding example, the methods run in the following order:
@@ -211,32 +216,33 @@ or with an error if any of the provided futures fail.
 
 ### Handling errors for multiple futures
 
-You can also wait for parallel operations on an [iterable]({{site.dart-api}}/dart-async/FutureIterable/wait.html)
-or [record]({{site.dart-api}}/dart-async/FutureRecord2/wait.html)
-of futures.
+You can also wait for parallel operations on:
 
-These extensions return a future with the resulting values of all provided
-futures. Unlike `Future.wait`, they also let you handle errors. 
+* An [iterable][iterable-futures] of futures
+* A [record][record-futures] with futures as positional fields
 
-If any future in the collection completes with an error, `wait` completes with a
-[`ParallelWaitError`][]. This allows the caller to handle individual errors and
-dispose successful results if necessary.
+These extensions return a `Future` with the
+resulting values of all provided futures.
+Unlike `Future.wait`, they also let you handle errors.
 
-When you _don't_ need the result values from each individual future,
+If any future in the collection completes with an error,
+`wait` completes with a [`ParallelWaitError`][].
+This allows the caller to handle individual errors and
+dispose of successful results if necessary.
+
+When you _don't_ need the result values from each future,
 use `wait` on an _iterable_ of futures:
 
 ```dart
+Future<int> delete() async => ...;
+Future<String> copy() async => ...;
+Future<bool> errorResult() async => ...;
+
 void main() async {
-  Future<void> delete() async =>  ...
-  Future<void> copy() async =>  ...
-  Future<void> errorResult() async =>  ...
-  
   try {
     // Wait for each future in a list, returns a list of futures:
     var results = await [delete(), copy(), errorResult()].wait;
-
-    } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
-
+  } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
     print(e.values[0]);    // Prints successful future
     print(e.values[1]);    // Prints successful future
     print(e.values[2]);    // Prints null when the result is an error
@@ -245,7 +251,6 @@ void main() async {
     print(e.errors[1]);    // Prints null when the result is successful
     print(e.errors[2]);    // Prints error
   }
-
 }
 ```
 
@@ -254,26 +259,29 @@ use `wait` on a _record_ of futures.
 This provides the additional benefit that the futures can be of different types:
 
 ```dart
+Future<int> delete() async => ...;
+Future<String> copy() async => ...;
+Future<bool> errorResult() async => ...;
+
 void main() async {
-  Future<int> delete() async =>  ...
-  Future<String> copy() async =>  ...
-  Future<bool> errorResult() async =>  ...
+  try {
+    // Wait for each future in a record.
+    // Returns a record of futures that you can destructure.
+    final (deleteInt, copyString, errorBool) =
+        await (delete(), copy(), errorResult()).wait;
 
-  try {    
-    // Wait for each future in a record, returns a record of futures:
-    (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
-  
-  } on ParallelWaitError<(int?, String?, bool?),
-      (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
+    // Do something with the results...
+  } on ParallelWaitError<
+    (int?, String?, bool?),
+    (AsyncError?, AsyncError?, AsyncError?)
+  > catch (e) {
     // ...
-    }
-
-  // Do something with the results:
-  var deleteInt  = result.$1;
-  var copyString = result.$2;
-  var errorBool  = result.$3;
+  }
 }
 ```
+
+[iterable-futures]: {{site.dart-api}}/dart-async/FutureIterable/wait.html
+[record-futures]: {{site.dart-api}}/dart-async/FutureRecord2/wait.html
 
 ## Stream
 
@@ -384,8 +392,9 @@ different type of data:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 ```dart
-var lines =
-    inputStream.transform(utf8.decoder).transform(const LineSplitter());
+var lines = inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter());
 ```
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -415,8 +424,9 @@ Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines =
-      inputStream.transform(utf8.decoder).transform(const LineSplitter());
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
   [!try!] {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
@@ -438,14 +448,20 @@ an `onDone` listener.
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
-inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
-    (String line) {
-  print('Got ${line.length} characters from stream');
-}, [!onDone!]: () {
-  print('file is now closed');
-}, [!onError!]: (e) {
-  print(e);
-});
+inputStream
+    .transform(utf8.decoder)
+    .transform(const LineSplitter())
+    .listen(
+      (String line) {
+        print('Got ${line.length} characters from stream');
+      },
+      [!onDone!]: () {
+        print('file is now closed');
+      },
+      [!onError!]: (e) {
+        print(e);
+      },
+    );
 ```
 
 

@@ -93,7 +93,9 @@ it like a sentence.
 <?code-excerpt "design_good.dart (code-like-prose)"?>
 ```dart tag=good
 // "If errors is empty..."
-if (errors.isEmpty) ...
+if (errors.isEmpty) {
+  // ...
+}
 
 // "Hey, subscription, cancel!"
 subscription.cancel();
@@ -105,7 +107,9 @@ monsters.where((monster) => monster.hasClaws);
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 ```dart tag=bad
 // Telling errors to empty itself, or asking if it is?
-if (errors.empty) ...
+if (errors.empty) {
+  // ...
+}
 
 // Toggle what? To what?
 subscription.toggle();
@@ -120,7 +124,9 @@ to force your names to *literally* read like a grammatically correct sentence.
 
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
 ```dart tag=bad
-if (theCollectionOfErrors.isEmpty) ...
+if (theCollectionOfErrors.isEmpty) {
+  // ...
+}
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ```
@@ -614,13 +620,15 @@ giving the class an obvious name like `IterableBase`. If the author of the class
 doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
+<a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### DO document if your class supports being extended
+### DO use class modifiers to control if your class can be extended
 
-This is the corollary to the above rule. If you want to allow subclasses of your
-class, state that. Suffix the class name with `Base`, or mention it in the
-class's doc comment.
-
+Class modifiers like `final`, `interface`, or `sealed`
+restrict how a class can be extended.
+For example, use `final class A {}` or `interface class B {}` to prevent 
+extension outside the current library.
+Use these modifiers to communicate your intent, rather than relying on documentation.
 
 ### AVOID implementing a class that isn't intended to be an interface
 
@@ -646,14 +654,20 @@ implicit interfaces except for classes that are clearly intended to be
 implemented. Otherwise, you may introduce a coupling that the author doesn't
 intend, and they may break your code without realizing it.
 
-### DO document if your class supports being used as an interface
+<a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-If your class can be used as an interface, mention that in the class's doc
-comment.
+### DO use class modifiers to control if your class can be an interface
 
+When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
+usage. For example, use `final class C {}` or `base class D{}` to prevent
+implementation outside the current library.
+While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
-<a id="do-use-mixin-to-define-a-mixin-type"></a>
-<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
+<a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
+
 ### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
 {% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
@@ -931,18 +945,20 @@ Method cascades are a better solution for chaining method calls.
 
 <?code-excerpt "design_good.dart (cascades)"?>
 ```dart tag=good
-var buffer = StringBuffer()
-  ..write('one')
-  ..write('two')
-  ..write('three');
+var buffer =
+    StringBuffer()
+      ..write('one')
+      ..write('two')
+      ..write('three');
 ```
 
 <?code-excerpt "design_bad.dart (cascades)"?>
 ```dart tag=bad
-var buffer = StringBuffer()
-    .write('one')
-    .write('two')
-    .write('three');
+var buffer =
+    StringBuffer()
+        .write('one')
+        .write('two')
+        .write('three');
 ```
 
 
@@ -1517,12 +1533,16 @@ Setters always return `void` in Dart. Writing the word is pointless.
 
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
 ```dart tag=bad
-void set foo(Foo value) { ... }
+void set foo(Foo value) {
+   ...
+}
 ```
 
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
 ```dart tag=good
-set foo(Foo value) { ... }
+set foo(Foo value) {
+   ...
+}
 ```
 
 
@@ -1743,7 +1763,9 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 <?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
 ```dart tag=good
 Stream<S> asyncMap<T, S>(
-    Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
+  Iterable<T> iterable,
+  [!FutureOr<S>!] Function(T) callback,
+) async* {
   for (final element in iterable) {
     yield await callback(element);
   }
@@ -1803,22 +1825,25 @@ pass later one. You're better off using named arguments for that.
 ```dart tag=good
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
-DateTime(int year,
-    [int month = 1,
-    int day = 1,
-    int hour = 0,
-    int minute = 0,
-    int second = 0,
-    int millisecond = 0,
-    int microsecond = 0]);
+DateTime(
+  int year, [
+  int month = 1,
+  int day = 1,
+  int hour = 0,
+  int minute = 0,
+  int second = 0,
+  int millisecond = 0,
+  int microsecond = 0,
+]);
 
-Duration(
-    {int days = 0,
-    int hours = 0,
-    int minutes = 0,
-    int seconds = 0,
-    int milliseconds = 0,
-    int microseconds = 0});
+Duration({
+  int days = 0,
+  int hours = 0,
+  int minutes = 0,
+  int seconds = 0,
+  int milliseconds = 0,
+  int microseconds = 0,
+});
 ```
 
 

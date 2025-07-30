@@ -13,6 +13,8 @@ js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 * There are two kinds of streams: single subscription or broadcast.
 :::
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nQBpOIHE4eE?si=hM5ONj3PXHckEuCS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Asynchronous programming in Dart is characterized by the
 [Future][] and [Stream][] classes.
 
@@ -258,9 +260,9 @@ but mainly for historical reasons.)
 
 ## Methods that modify a stream {:#modify-stream-methods}
 
-The following methods on Stream return a new stream based
+The following methods on `Stream` return a new stream based
 on the original stream.
-Each one waits until someone listens on the new stream before
+Each one waits until something listens on the new stream before
 listening on the original.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
@@ -275,7 +277,7 @@ Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
 ```
 
-The preceding methods correspond to similar methods on [Iterable][]
+The preceding methods correspond to similar methods on [Iterable][],
 which transform an iterable into another iterable.
 All of these can be written easily using an `async` function
 with an **await for** loop.
@@ -295,27 +297,64 @@ The `distinct()` function doesn't exist on `Iterable`, but it could have.
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
 Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
-Stream<T> timeout(Duration timeLimit,
-    {void Function(EventSink<T> sink)? onTimeout});
+Stream<T> timeout(
+  Duration timeLimit, {
+  void Function(EventSink<T> sink)? onTimeout,
+});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
-The final three functions are more special.
-They involve error handling which an **await for** loop
-can't do—the first error reaching the loops will end
-the loop and its subscription on the stream.
-There is no recovering from that.
-The following code shows how to use `handleError()` to remove errors
-from a stream before using it in an **await for** loop.
+The final three functions are more specialized.
+They involve error handling that an **await for** loop
+cannot directly manage; the first error encountered will
+terminate the loop and its stream subscription, with no
+built-in mechanism for recovery.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)"?>
-```dart
+The following code demonstrates how to use `handleError()`
+to filter out errors from a stream before it's consumed by
+an **await for** loop.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)" plaster="none"?>
+```dart highlightLines=5
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
   S Function(T event) convert,
 ) async* {
   var streamWithoutErrors = stream.handleError((e) => log(e));
+
   await for (final event in streamWithoutErrors) {
+    yield convert(event);
+  }
+}
+```
+
+In the previous example, an **await for** loop is never
+returned to if no events are emitted by the stream.
+To avoid this, use the `timeout()` function to create
+a new stream. `timeout()` enables you to set a
+time limit and continue emitting events on the returned
+stream.
+
+The following code modifies the previous example. 
+It adds a two-second timeout and produces a
+relevant error if no events occur for two or more seconds.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
+```dart highlightLines=6-12
+Stream<S> mapLogErrors<S, T>(
+  Stream<T> stream,
+  S Function(T event) convert,
+) async* {
+  var streamWithoutErrors = stream.handleError((e) => log(e));
+  var streamWithTimeout = streamWithoutErrors.timeout(
+    const Duration(seconds: 2),
+    onTimeout: (eventSink) {
+      eventSink.addError('Timed out after 2 seconds');
+      eventSink.close();
+    },
+  );
+
+  await for (final event in streamWithTimeout) {
     yield convert(event);
   }
 }
@@ -363,8 +402,12 @@ method—all other stream functions are defined in terms of `listen()`.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
 ```dart
-StreamSubscription<T> listen(void Function(T event)? onData,
-    {Function? onError, void Function()? onDone, bool? cancelOnError});
+StreamSubscription<T> listen(
+  void Function(T event)? onData, {
+  Function? onError,
+  void Function()? onDone,
+  bool? cancelOnError,
+});
 ```
 
 To create a new `Stream` type, you can just extend the `Stream`
@@ -395,8 +438,8 @@ and asynchronous programming in Dart.
   an article about creating your own streams
 * [Futures and Error Handling](/libraries/async/futures-error-handling),
   an article that explains how to handle errors using the Future API
-* [Asynchrony support](/language/async),
-  a section in the [language tour](/language)
+* [Asynchronous programming](/language/async),
+  which goes in-depth into Dart's language support for asynchrony
 * [Stream API reference]({{site.dart-api}}/dart-async/Stream-class.html)
 
 [bind()]: {{site.dart-api}}/dart-async/StreamTransformer/bind.html

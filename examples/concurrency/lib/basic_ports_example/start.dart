@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, unused_element
+// ignore_for_file: unused_element
 import 'dart:isolate';
 
 // #docregion worker
@@ -20,4 +20,5 @@ class Worker {
     // be used to send messages to the worker isolate.
   }
 }
+
 // #enddocregion worker

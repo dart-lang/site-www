@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -23,8 +21,8 @@ class Worker {
     await _isolateReady.future;
     _sendPort.send(message);
   }
-// rest of class..
-// #enddocregion
+  // rest of class..
+  // #enddocregion
 
   Future<void> spawn() async {
     final receivePort = ReceivePort();

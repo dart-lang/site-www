@@ -30,11 +30,10 @@ Use these packages for a wide range of projects.
 | [cupertino_http][] | Provides access to Apple's [Foundation URL Loading System][furl] using the same interface as `package:http`. | |
 | [http][] | Provides set of high-level functions and classes to simplify consuming HTTP resources. | delete(), get(), post(), read() |
 | [intl][] | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
-| [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/guides/json). | @JsonSerializable |
+| [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/libraries/serialization/json). | @JsonSerializable |
 | [logging][] | Adds message logging to your application. | LoggerHandler, Level, LogRecord |
 | [mockito][] | Mocks objects in tests. Helps when you write tests for dependency injection. Use with the [test][] package. | Answering, Expectation, Verification |
 | [path][] | Manipulates different types of paths. To learn more, consult [Unboxing Packages: path.]({{site.news}}/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
-| [quiver][] | Simplifies using core Dart libraries. Some of the libraries where Quiver provides additional support include async, cache, collection, core, iterables, patterns, and testing. | CountdownTimer (quiver.async); MapCache (quiver.cache); MultiMap, TreeSet (quiver.collection); EnumerateIterable (quiver.iterables); center(), compareIgnoreCase(), isWhiteSpace() (quiver.strings) |
 | [shelf][] | Provides web server middleware for Dart. Shelf makes it easy to create and compose web servers, and parts of web servers. | Cascade, Pipeline, Request, Response, Server |
 | [stack_trace][] | Parses, inspects, and manipulates stack traces that Dart produces. Also transforms stack traces into a more readable format than the native StackTrace implementation. To learn more, consult [Unboxing Packages: stack_trace.]({{site.news}}/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
 | [test][] | Standardizes writing and running tests in Dart. | expect(), group(), test() |
@@ -52,7 +51,6 @@ Use these packages for a wide range of projects.
 [logging]: {{pubpkg}}/logging
 [mockito]: {{pubpkg}}/mockito
 [path]: {{pubpkg}}/path
-[quiver]: {{pubpkg}}/quiver
 [shelf]: {{pubpkg}}/shelf
 [stack_trace]: {{pubpkg}}/stack_trace
 [test]: {{pubpkg}}/test

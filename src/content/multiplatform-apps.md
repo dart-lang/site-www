@@ -6,9 +6,8 @@ description: >-
 toc: false
 ---
 
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
+<div class="side-by-side">
+<div class="centered-rows">
 
 We recommend the [Flutter framework][] for developing multi-platform native apps
 for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
@@ -25,19 +24,15 @@ fast production code for any platform.
 [Dart-to-JavaScript compiler]: /overview#web-platform
 
 
-<p class="text-center"> 
-  <a href="{{site.flutter-docs}}/get-started" class="btn btn-primary btn-lg">
-    <img src="/assets/img/logo/flutter-64.png" width="32px" alt="Flutter">
-    Get started
+<p style="margin-block-end: 2rem;">
+  <a href="{{site.flutter-docs}}/get-started" class="outlined-button large-button" title="Get started with Flutter" aria-label="Get started with Flutter">
+    <img src="/assets/img/logo/flutter-64.png" width="32px" height="32px" alt="Flutter">
+    <span>Get started</span>
   </a>
 </p>
 </div>
 
-<div class="col-sm-6">
-  <img 
-    style="padding: 30px; float: right; width: 400px" 
-    src="/assets/img/multiplat.png" 
-    alt="Multi-platform apps illustration">
+<div class="centered-rows">
+  <img src="/assets/img/multiplat.png" alt="Multi-platform apps illustration">
 </div>
-  </div>
 </div>

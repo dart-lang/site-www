@@ -2828,6 +2828,6 @@ multiplatform applications from a single codebase),
 where you'll find in-depth information about the
 language and practical ways of getting started. 
 
-[Dart]: /guides
+[Dart]: /docs
 [Flutter]: {{site.flutter-docs}}
 

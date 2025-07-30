@@ -1,0 +1,105 @@
+@use '../base/mixins' as *;
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min-width, 18rem)), 1fr));
+  gap: var(--card-grid-gap, 1rem);
+  margin: 0 0 1rem;
+  justify-content: center;
+
+  // Disable lite-youtube shadow for videos in cards.
+  --lite-youtube-frame-shadow-visible: false;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-grid-gap, 1rem);
+  margin: 0;
+  justify-content: center;
+}
+
+.card-grid, .card-list {
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    gap: 0.5rem;
+    background-color: var(--card-container-color, var(--site-filledCard-bgColor, rgb(242, 245, 255)));
+    height: auto;
+
+    scroll-margin: 4rem;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.outlined-card {
+      border: 1px solid var(--card-border-color, var(--site-card-borderColor));
+    }
+
+    .card-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin: 0;
+        overflow: hidden;
+        font-family: var(--site-ui-fontFamily);
+        color: var(--card-title-color, var(--site-base-fgColor));
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--card-text-color, var(--site-base-fgColor));
+
+      p {
+        margin: 0;
+
+        code {
+          font-size: 0.95em;
+          background-color: rgba(0, 0, 0, .05);
+          color: var(--card-text-color, var(--site-base-fgColor));
+          border-radius: .25rem;
+          padding: .1rem .25rem;
+          text-wrap: nowrap;
+        }
+      }
+    }
+
+    span.material-symbols {
+      user-select: none;
+    }
+  }
+
+  a.card {
+    text-decoration: none;
+
+    .card-header {
+      --card-title-color: var(--site-link-fgColor);
+    }
+
+    &:hover {
+      @include interaction-style(3%);
+    }
+
+    &:active {
+      @include interaction-style(6%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--site-primary-color);
+      border-color: transparent;
+    }
+  }
+}

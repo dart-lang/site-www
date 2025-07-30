@@ -245,16 +245,24 @@ and use the unary negation operator `!` if necessary:
 
 <?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 ```dart tag=good
-if (nonNullableBool) { ... }
+if (nonNullableBool) {
+   ...
+}
 
-if (!nonNullableBool) { ... }
+if (!nonNullableBool) {
+   ...
+}
 ```
 
 <?code-excerpt "usage_bad.dart (non-null-boolean-expression)"?>
 ```dart tag=bad
-if (nonNullableBool == true) { ... }
+if (nonNullableBool == true) {
+   ...
+}
 
-if (nonNullableBool == false) { ... }
+if (nonNullableBool == false) {
+   ...
+}
 ```
 
 To evaluate a boolean expression that *is nullable*, you should use `??`
@@ -263,20 +271,28 @@ or an explicit `!= null` check.
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 ```dart tag=good
 // If you want null to result in false:
-if (nullableBool ?? false) { ... }
+if (nullableBool ?? false) {
+   ...
+}
 
 // If you want null to result in false
 // and you want the variable to type promote:
-if (nullableBool != null && nullableBool) { ... }
+if (nullableBool != null && nullableBool) {
+   ...
+}
 ```
 
 <?code-excerpt "usage_bad.dart (nullable-boolean-expression)"?>
 ```dart tag=bad
 // Static error if null:
-if (nullableBool) { ... }
+if (nullableBool) {
+   ...
+}
 
 // If you want null to be false:
-if (nullableBool == true) { ... }
+if (nullableBool == true) {
+   ...
+}
 ```
 
 `nullableBool == true` is a viable expression, 
@@ -420,7 +436,7 @@ class UploadException {
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [null-check pattern]: /language/pattern-types#null-check
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
-[use `!`]: /null-safety/understanding-null-safety#non-null-assertion-operator
+[use `!`]: /null-safety/understanding-null-safety#not-null-assertion-operator
 
 ## Strings
 
@@ -437,14 +453,18 @@ a single long string that doesn't fit on one line.
 
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 ```dart tag=good
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm(
+  'ERROR: Parts of the spaceship are on fire. Other '
+  'parts are overrun by martians. Unclear which are which.',
+);
 ```
 
 <?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
 ```dart tag=bad
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
-    'parts are overrun by martians. Unclear which are which.');
+raiseAlarm(
+  'ERROR: Parts of the spaceship are on fire. Other ' +
+      'parts are overrun by martians. Unclear which are which.',
+);
 ```
 
 ### PREFER using interpolation to compose strings and values
@@ -533,7 +553,7 @@ var arguments = [
   command,
   ...?modeFlags,
   for (var path in filePaths)
-    if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
+    if (path.endsWith('.dart')) path.replaceAll('.dart', '.js'),
 ];
 ```
 
@@ -543,9 +563,11 @@ var arguments = <String>[];
 arguments.addAll(options);
 arguments.add(command);
 if (modeFlags != null) arguments.addAll(modeFlags);
-arguments.addAll(filePaths
-    .where((path) => path.endsWith('.dart'))
-    .map((path) => path.replaceAll('.dart', '.js')));
+arguments.addAll(
+  filePaths
+      .where((path) => path.endsWith('.dart'))
+      .map((path) => path.replaceAll('.dart', '.js')),
+);
 ```
 
 
@@ -727,13 +749,13 @@ to be explicit.
 <?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=good
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map<double>((n) => 1 / n);
+var reciprocals = stuff.map<double>((n) => n * 2);
 ```
 
 <?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=bad
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map((n) => 1 / n).cast<double>();
+var reciprocals = stuff.map((n) => n * 2).cast<double>();
 ```
 
 
@@ -953,9 +975,9 @@ class Circle {
   double circumference;
 
   Circle(double radius)
-      : radius = radius,
-        area = pi * radius * radius,
-        circumference = pi * 2.0 * radius;
+    : radius = radius,
+      area = pi * radius * radius,
+      circumference = pi * 2.0 * radius;
 }
 ```
 
@@ -1217,9 +1239,7 @@ lists:
 class Box extends BaseBox {
   Object? value;
 
-  Box(Object? value)
-      : value = value,
-        super(value);
+  Box(Object? value) : value = value, super(value);
 }
 ```
 
@@ -1240,9 +1260,7 @@ class ProfileMark {
   final DateTime start;
 
   ProfileMark(this.name) : start = DateTime.now();
-  ProfileMark.unnamed()
-      : name = '',
-        start = DateTime.now();
+  ProfileMark.unnamed() : name = '', start = DateTime.now();
 }
 ```
 
@@ -1279,9 +1297,7 @@ Many fields are initialized directly from a constructor parameter, like:
 ```dart tag=bad
 class Point {
   double x, y;
-  Point(double x, double y)
-      : x = x,
-        y = y;
+  Point(double x, double y) : x = x, y = y;
 }
 ```
 
@@ -1318,8 +1334,8 @@ initialize the field in the constructor initializer list:
 class Point {
   double x, y;
   Point.polar(double theta, double radius)
-      : x = cos(theta) * radius,
-        y = sin(theta) * radius;
+    : x = cos(theta) * radius,
+      y = sin(theta) * radius;
 }
 ```
 
@@ -1380,9 +1396,7 @@ it deprecated and avoid using it in your code.
 Widget build(BuildContext context) {
   return Row(
     children: [
-      RaisedButton(
-        child: Text('Increment'),
-      ),
+      RaisedButton(child: Text('Increment')),
       Text('Click!'),
     ],
   );
@@ -1394,9 +1408,7 @@ Widget build(BuildContext context) {
 Widget build(BuildContext context) {
   return [!new!] Row(
     children: [
-      [!new!] RaisedButton(
-        child: [!new!] Text('Increment'),
-      ),
+      [!new!] RaisedButton(child: [!new!] Text('Increment')),
       [!new!] Text('Click!'),
     ],
   );
@@ -1554,7 +1566,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 
     var players = [!await!] team.roster;
     return players.where((player) => player.isActive).length;
-  } catch (e) {
+  } on DownloadException catch (e, _) {
     log.error(e);
     return 0;
   }
@@ -1564,16 +1576,18 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 <?code-excerpt "usage_bad.dart (async-await)"?>
 ```dart tag=bad
 Future<int> countActivePlayers(String teamName) {
-  return downloadTeam(teamName).then((team) {
-    if (team == null) return Future.value(0);
+  return downloadTeam(teamName)
+      .then((team) {
+        if (team == null) return Future.value(0);
 
-    return team.roster.then((players) {
-      return players.where((player) => player.isActive).length;
-    });
-  }).catchError((e) {
-    log.error(e);
-    return 0;
-  });
+        return team.roster.then((players) {
+          return players.where((player) => player.isActive).length;
+        });
+      })
+      .onError<DownloadException>((e, _) {
+        log.error(e);
+        return 0;
+      });
 }
 ```
 

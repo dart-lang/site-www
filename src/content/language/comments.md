@@ -5,8 +5,8 @@ prevpage:
   url: /language/operators
   title: Operators
 nextpage:
-  url: /language/metadata
-  title: Metadata
+  url: /language/built-in-types
+  title: Built-in types
 ---
 
 Dart supports single-line comments, multi-line comments, and
