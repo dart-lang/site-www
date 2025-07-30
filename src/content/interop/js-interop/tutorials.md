@@ -7,7 +7,8 @@ description: Tutorials for common JavaScript interop use cases in Dart.
 
 ### [Getting started with Javascript interop][]
 
-
+In this tutorial, you'll learn the basics of interacting with JavaScript 
+in Dart, using various JavaScript and browser APIs.
 
 ### [How to mock JavaScript interop in Dart][]
 

@@ -1,6 +1,6 @@
 ---
-title: Getting started with Javascript interop
-description: A basic example of using browswer APIs and a bundled JS libarary.
+title: Getting started with JavaScript interop
+description: A basic example of using browser APIs and a bundled JS library.
 ---
 
 In this tutorial, you'll learn the basics of interacting with JavaScript 
@@ -14,9 +14,9 @@ import 'dart:js_interop';
 external JSObject get document;
 ```
 
-We use an `@JS`-annotated external top-level getter to access the document that’s
+You use an `@JS`-annotated external top-level getter to access the document that's
 available within `globalThis`. The result is a JS object, and is typed in Dart as a `JSObject`.
-An opaque JS object is not very useful, so we define an interop type using
+An opaque JS object isn't very useful, so you define an interop type using
 [extension types][] to view it differently:
 
 ```dart
@@ -26,7 +26,7 @@ external Document get document;
 extension type Document._(JSObject _) implements JSObject {}
 ```
 
-We define an interface for the `JSObject`, which allows us to interact with the
+You define an interface for the `JSObject`, which allows you to interact with the
 `JSObject` by declaring more interop APIs:
 
 ```dart
@@ -35,7 +35,7 @@ extension type Document._(JSObject _) implements JSObject {
 }
 ```
 
-We’ve declared an external method within `Document` that allows us to call
+You've declared an external method within `Document` that allows you to call
 instance methods on it, like:
 
 ```dart
@@ -44,11 +44,11 @@ var button = document.createElement('button'.toJS);
 
 An important thing to note is that all values that flow into and out of interop
 APIs should be typed as an interop type or an allowed Dart primitive type.
-In order to convert some Dart values to a JS value and vice versa,
-we use conversion methods like .toJS above.
-In the case where a Dart primitive type is used,
+To convert some Dart values to a JS value and vice versa,
+you use conversion methods like .toJS above.
+When a Dart primitive type is used,
 the compiler automatically converts the Dart value to a JS value and vice versa,
-so we can rewrite the above code as:
+so you can rewrite the above code as:
 
 ```dart
 external JSObject createElement(String tag);
@@ -96,8 +96,8 @@ button.addEventListener('click', (JSObject event) {
 }.toJS);
 ```
 
-Here, we create an interface for a button element and register an event listener
-for the “click” event using a Dart function that is converted to a JS function using toJS.
+Here, you create an interface for a button element and register an event listener
+for the "click" event using a Dart function that is converted to a JS function using toJS.
 Functions converted using toJS have the same limitations as interop APIs: 
 their parameter and return types can only be an interop type or a primitive type.
 
@@ -161,9 +161,9 @@ list.map((e) => e.toJS).toList().toJS;
 
 ## Learn more
 
-* For more information on which types have conversions, checkout [Conversions][].
-* For more information on how to write interop APIs, checkout [Usage][].
-* To access common utility functions, checkout:
+* For more information on which types have conversions, check out [Conversions][].
+* For more information on how to write interop APIs, check out [Usage][].
+* To access common utility functions, check out:
   * The [`dart:js_interop`][] library, and
   * The [`dart:js_interop_unsafe`][] library.
 * [`package:web`][] exposes many of the browser APIs
