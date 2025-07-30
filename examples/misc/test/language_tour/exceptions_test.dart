@@ -1,4 +1,3 @@
-// ignore_for_file: assignment_to_final, unused_local_variable
 import 'package:test/test.dart';
 
 void main() {
@@ -24,10 +23,13 @@ void main() {
     // #enddocregion rethrow
 
     expect(
-        main,
-        prints(allOf([
+      main,
+      prints(
+        allOf([
           contains('misbehave() partially handled'),
-          contains('main() finished handling')
-        ])));
+          contains('main() finished handling'),
+        ]),
+      ),
+    );
   });
 }

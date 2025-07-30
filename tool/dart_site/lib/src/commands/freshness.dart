@@ -23,7 +23,8 @@ final class FreshnessCommand extends Command<int> {
     );
     argParser.addOption(
       _cutoffDaysOption,
-      help: 'The cut off amount of days since lastVerified date '
+      help:
+          'The cut off amount of days since lastVerified date '
           'to consider inclusion in output.',
     );
   }
@@ -36,22 +37,16 @@ final class FreshnessCommand extends Command<int> {
 
   @override
   Future<int> run() async => determineFreshness(
-        includeMissing: argResults.get<bool>(_includeMissingFlag, true),
-        cutOffDays: int.tryParse(argResults.get<String>(_cutoffDaysOption, '')),
-      );
+    includeMissing: argResults.get<bool>(_includeMissingFlag, true),
+    cutOffDays: int.tryParse(argResults.get<String>(_cutoffDaysOption, '')),
+  );
 }
 
 int determineFreshness({bool includeMissing = true, int? cutOffDays}) {
   // Directories to check for content.
-  final directoryPathsToCheck = [
-    path.join('src', 'content'),
-  ];
+  final directoryPathsToCheck = [path.join('src', 'content')];
 
-  const extensionsToConsider = {
-    '.md',
-    '.html',
-    '.liquid',
-  };
+  const extensionsToConsider = {'.md', '.html', '.liquid'};
 
   final currentDate = DateTime.now();
   final results = FreshnessResults._();
@@ -62,9 +57,11 @@ int determineFreshness({bool includeMissing = true, int? cutOffDays}) {
         .listSync(recursive: true)
         .whereType<File>()
         .where(
-            (file) => extensionsToConsider.contains(path.extension(file.path)))
+          (file) => extensionsToConsider.contains(path.extension(file.path)),
+        )
         .where(
-            (file) => !path.basenameWithoutExtension(file.path).startsWith('_'))
+          (file) => !path.basenameWithoutExtension(file.path).startsWith('_'),
+        )
         .where((file) => path.basenameWithoutExtension(file.path).isNotEmpty)
         .toList(growable: false);
 
@@ -88,12 +85,16 @@ int determineFreshness({bool includeMissing = true, int? cutOffDays}) {
                 results._addStale(filePath, lastVerified: lastVerified);
               }
             } else {
-              results._addMisformatted(filePath,
-                  misformattedDate: lastVerifiedString);
+              results._addMisformatted(
+                filePath,
+                misformattedDate: lastVerifiedString,
+              );
             }
           } else {
-            results._addMisformatted(filePath,
-                misformattedDate: '$lastVerifiedRaw');
+            results._addMisformatted(
+              filePath,
+              misformattedDate: '$lastVerifiedRaw',
+            );
           }
         } else {
           results._addMissingVerified(filePath);
@@ -116,7 +117,7 @@ int determineFreshness({bool includeMissing = true, int? cutOffDays}) {
 final List<({int days, String icon})> _cutoffDays = [
   (days: 270, icon: '🟨'),
   (days: 540, icon: '🟧'),
-  (days: 810, icon: '🟥')
+  (days: 810, icon: '🟥'),
 ];
 
 final DateFormat _dateFormat = DateFormat('y-MM-dd');
@@ -139,8 +140,9 @@ final class FreshnessResults {
   }
 
   void _addMisformatted(String path, {required String misformattedDate}) {
-    _misformattedDateFiles
-        .add(MisformattedDateFile(path, misformattedDate: misformattedDate));
+    _misformattedDateFiles.add(
+      MisformattedDateFile(path, misformattedDate: misformattedDate),
+    );
   }
 
   void _addError(String path, {required String error}) {
@@ -166,8 +168,9 @@ final class FreshnessResults {
       buffer.writeln('\n====== Files with stale lastVerified dates ======\n');
       final currentDate = DateTime.now();
       for (final staleFile in _staleFiles) {
-        final dayDifference =
-            currentDate.difference(staleFile.lastVerified).inDays;
+        final dayDifference = currentDate
+            .difference(staleFile.lastVerified)
+            .inDays;
         var outputIcon = '🟩';
         for (final (:days, :icon) in _cutoffDays.reversed) {
           if (dayDifference < days) continue;
@@ -207,7 +210,8 @@ final class FreshnessResults {
     if (_misformattedDateFiles.isNotEmpty) {
       _misformattedDateFiles.sortByPath();
       buffer.writeln(
-          '\n====== Files with misformatted lastVerified dates ======\n');
+        '\n====== Files with misformatted lastVerified dates ======\n',
+      );
       for (final misformattedFile in _misformattedDateFiles) {
         buffer.write('❗   ');
         buffer.write(misformattedFile.misformattedDate);

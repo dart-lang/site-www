@@ -47,12 +47,16 @@ intentionally overriding a member:
 ```dart
 class Television {
   // ···
-  set contrast(int value) {...}
+  set contrast(int value) {
+    // ···
+  }
 }
 
 class SmartTelevision extends Television {
   [!@override!]
-  set contrast(num value) {...}
+  set contrast(num value) {
+    // ···
+  }
   // ···
 }
 ```
@@ -78,7 +82,7 @@ it's similar to a downcast in that it can cause a type error at runtime.
 Still, narrowing the type is possible
 if the code can guarantee that a type error won't occur.
 In this case, you can use the
-[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword)
+[`covariant` keyword](/language/type-system#covariant-keyword)
 in a parameter declaration.
 For details, see the
 [Dart language specification][].
@@ -101,8 +105,10 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: '
-        '${invocation.memberName}');
+    print(
+      'You tried to use a non-existent member: '
+      '${invocation.memberName}',
+    );
   }
 }
 ```

@@ -10,11 +10,120 @@
   related_links:
     - text: "Refactor"
       link: "#refactor"
+      type: "term"
   labels:
     - "tools"
     - "analyzer"
   alternate:
     - "Quick assist"
+
+- term: "Context type"
+  short_description: |-
+    The type that the surrounding code expects from an expression.
+  long_description: |-
+    The **context type** is the type that the surrounding code expects
+    from an expression, such as a variable type, a parameter type, or a
+    return type.
+
+    Dart uses the context type to interpret and infer meaning
+    from expressions, including:
+
+    - **Type inference** ("downwards inference"):
+
+      ```dart
+      List<int> list = [];
+      ```
+
+      The context type `List<int>` lets the compiler infer the list type as `<int>[]`.
+
+    - **Implicit downcast**:
+
+      ```dart
+      String asString(dynamic value) => value;
+      ```
+
+      The return context is `String`, so Dart inserts an implicit downcast.
+
+    - **Literal interpretation**:
+
+      ```dart
+      double d = 0;
+      ```
+
+      The context type `double` makes `0` behave like `0.0`.
+
+    - **Static access shorthand** (dot shorthand):
+
+      ```dart
+      int x = .parse(input);
+      ```
+
+      The context type is `int`, so `.parse` resolves to `int.parse(input)`.
+
+    Some expressions have no context type, including:
+
+      - **When used as statements**:  
+        Expressions like `set.remove(value);` are used only for their
+        effect, not their value, so no type is expected.
+
+      - **When the context type is inferred from the expression**:  
+        For example, in `var list = [1];`, the list literal has no context type.
+        Dart infers `List<int>` from the contents and assigns that type to the variable.
+
+  related_links:
+    - text: "Type inference"
+      link: "/language/type-system#type-inference"
+      type: "doc"
+    - text: "Implicit downcast from `dynamic`"
+      link: "/language/type-system#implicit-downcasts-from-dynamic"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+
+- term: "Bottom type"
+  short_description: |-
+    A type that has no values and is a subtype of all other types.
+  long_description: |-
+    The **bottom type** in Dart is the type that has **no values** and is
+    considered a [**subtype**](/resources/glossary#subtype) of every other type.
+
+    In Dart, the bottom type is represented by the `Never` type.
+
+    This means a value of type `Never` can be used anywhere,
+    because such a value can never actually exist.
+    It's most often used as the **return type** of functions to
+    indicate they **never return**, such as for those that
+    throw exceptions or loop forever.
+
+    For example, the following `fail` function always throws an exception,
+    so it's declared with a return type of `Never` to
+    indicate that it never returns:
+
+    ```dart
+    Never fail(String message) {
+      throw Exception(message);
+    }
+
+    void main() {
+      String result = fail('Oops'); // OK: Never is a subtype of String.
+    }
+    ```
+
+    Since `fail` never returns, assigning it to a `String` is allowed.
+
+  related_links:
+    - text: "Built-in types"
+      link: "/language/built-in-types"
+      type: "doc"
+    - text: "Never for unreachable code"
+      link: "/null-safety/understanding-null-safety#never-for-unreachable-code"
+      type: "doc"
+  labels:
+    - "type system"
+    - "language"
+  alternate:
+    - "Never"
 
 - term: "Constant context"
   short_description: |-
@@ -22,7 +131,7 @@
     everything within that region must be a constant.
   long_description: |-
     A _constant context_ is a region of code in which it
-    isn't necessary to include the `const` keyword because it's implied by 
+    isn't necessary to include the `const` keyword because it's implied by
     the fact that everything in that region is required to be a constant.
     The following locations are constant contexts:
 
@@ -39,7 +148,7 @@
       ```dart
       var p = const Point(/*constant context*/);
       ```
-  
+
     - The initializer for a variable that's prefixed by the `const` keyword.
       For example:
 
@@ -62,8 +171,10 @@
   related_links:
     - text: "Final and const variables"
       link: "/language/variables#final-and-const"
+      type: "doc"
     - text: "Don't use const redundantly"
       link: "/effective-dart/usage#dont-use-const-redundantly"
+      type: "doc"
   labels:
     - "language"
     - "const"
@@ -166,8 +277,10 @@
   related_links:
     - text: "Definite assignment specification"
       link: "https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md"
+      type: "doc"
     - text: "Understanding definite assignment analysis"
       link: "/null-safety/understanding-null-safety#definite-assignment-analysis"
+      type: "doc"
   labels:
     - "language"
     - "flow analysis"
@@ -180,13 +293,62 @@
   related_links:
     - text: "Functions overview"
       link: "/language/functions"
+      type: "doc"
     - text: "Instance methods"
       link: "/language/methods"
+      type: "doc"
   labels:
     - "language"
     - "umbrella term"
   alternate:
     - "Procedure"
+
+- term: "Immutable"
+  short_description: |-
+    An object whose state, including all nested values, can't be changed after it is created.
+  long_description: |-
+    An immutable object is one whose state can't be modified after it is created.
+    When an object is immutable, all of its fields must be `final` (can't be reassigned), and
+    the values of those fields must themselves be immutable (can't be mutated).
+    This helps ensure consistency and enables safer use in concurrent or reactive code.
+
+    In Dart, a class is immutable if you:
+
+    * Declare all fields as final, so they can't be reassigned.
+    * Ensure the field values themselves are immutable.
+    * Optionally, use the `@immutable` annotation from the meta package.
+      This lets the analyzer warn you if any field is not final or refers to a mutable type.
+
+    Additionally, all Dart const values are immutable. For example, `const [1, 2, 3]`
+    creates an immutable list. If a class has a `const` (non-factory) constructor, then
+    all of its fields must be final.
+
+    Example:
+
+      ```dart
+      import 'package:meta/meta.dart';
+
+      @immutable
+      class User {
+        final String name;
+        final int age;
+
+        const User(this.name, this.age);
+      }
+      ```
+
+    In the proceeding example, once created, you can't modify the `User` instance.
+    You must create a new one to change any data.
+
+  related_links:
+    - text: "final"
+      link: "/language/class-modifiers#final"
+      type: "term"
+  labels:
+    - "language"
+  alternate:
+    - "Read-only"
+    - "Unchangeable"
 
 - term: "Irrefutable pattern"
   short_description: |-
@@ -202,8 +364,10 @@
   related_links:
     - text: "Places patterns can appear"
       link: "/language/patterns#places-patterns-can-appear"
+      type: "doc"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
+      type: "tutorial"
   labels:
     - "language"
     - "patterns"
@@ -249,11 +413,83 @@
   related_links:
     - text: "Mixins in Dart"
       link: "/language/mixins"
+      type: "doc"
   labels:
     - "language"
     - "understanding diagnostics"
   alternate:
     - "with mixin"
+
+- term: "Late"
+  id: "late"
+  short_description: |-
+    A keyword that enables deferred initialization of variables and is
+    typically used with non-nullable variables.
+  long_description: |-
+    The `late` keyword in Dart is used to indicate that a variable
+    will be initialized later, after its declaration, but before it's used.
+    This helps avoid the need to make a variable nullable (`?`) when you
+    know it will definitely receive a value, just not immediately.
+
+    Using `late` defers initialization, allowing you to write more
+    flexible and readable code, especially when dealing with dependencies
+    or complex setup.
+
+    For example:
+    ```dart
+    late String description;
+
+    void setup() {
+      description = 'This will be initialized before use.';
+    }
+    ```
+
+    Be careful with late variables that are part of a public API.
+    If a client accesses the variable before it's initialized,
+    they will encounter a `LateInitializationError`, which provides
+    little context. In such cases, consider using a
+    private nullable variable with a public getter that throws a
+    descriptive error (e.g., `StateError`) if accessed too early as
+    this can offer clearer feedback to API users, despite the added
+    complexity.
+
+    You can also use `late final` when the variable should only be set once.
+    This is useful in scenarios where the value is not available at object
+    construction time, such as cyclic dependencies in object graphs.
+
+    Example:
+
+    ```dart
+    class LinkedQueue<T> {
+      late final QueueLink<T> _head;
+
+      LinkedQueue() {
+        _head = QueueLink<T>._head(owner: this); // Cyclic reference between objects
+      }
+    }
+    ```
+
+    Be cautious: if a late variable is accessed before it's initialized
+    or never initialized at all, it will cause a runtime error.
+
+  related_links:
+    - text: "Null safety in Dart"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Late variables"
+      link: "/language/variables#late-variables"
+      type: "doc"
+    - text: "Error: LateInitializationError"
+      link: "https://api.dart.dev/stable/2.7.2/dart-core/LateInitializationError-class.html"
+      type: "api"
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+  alternate:
+    - "late keyword"
+    - "deferred initialization"
+    - "late final"
 
 - term: "Override inference"
   short_description: |-
@@ -321,6 +557,7 @@
   related_links:
     - text: "Inheritance in Dart"
       link: "/language/extend"
+      type: "doc"
   labels:
     - "language"
     - "type inference"
@@ -335,8 +572,10 @@
   related_links:
     - text: "Guidance on libraries and parts"
       link: "/tools/pub/create-packages#organizing-a-package"
+      type: "doc"
     - text: "Use library URIs in `part of` directives"
       link: "/effective-dart/usage#do-use-strings-in-part-of-directives"
+      type: "doc"
   labels:
     - "language"
     - "libraries"
@@ -365,6 +604,7 @@
   related_links:
     - text: "Nullability and generics"
       link: "/null-safety/understanding-null-safety#nullability-and-generics"
+      type: "doc"
   labels:
     - "language"
     - "type system"
@@ -383,8 +623,10 @@
   related_links:
     - text: "Organizing a package's libraries"
       link: "/tools/pub/create-packages#organizing-a-package"
+      type: "doc"
     - text: "Public package directories"
       link: "/tools/pub/package-layout#public-directories"
+      type: "doc"
   labels:
     - "language"
     - "libraries"
@@ -396,10 +638,13 @@
   related_links:
     - text: "Quick fixes for analysis issues"
       link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
+      type: "article"
     - text: "Diagnostic messages"
       link: "/tools/diagnostic-messages"
+      type: "doc"
     - text: "Linter rules"
       link: "/tools/linter-rules"
+      type: "doc"
   labels:
     - "tools"
     - "understanding diagnostics"
@@ -415,6 +660,7 @@
   related_links:
     - text: "Assist"
       link: "#assist"
+      type: "term"
   labels:
     - "tools"
     - "analysis"
@@ -432,8 +678,10 @@
   related_links:
     - text: "Places patterns can appear"
       link: "/language/patterns#places-patterns-can-appear"
+      type: "doc"
     - text: "Dive into Dart patterns and records"
       link: "https://codelabs.developers.google.com/codelabs/dart-patterns-records"
+      type: "tutorial"
   labels:
     - "language"
     - "patterns"
@@ -472,8 +720,10 @@
   related_links:
     - text: "Inheritance in Dart"
       link: "/language/extend"
+      type: "doc"
     - text: "Subtype relationship"
       link: "#subtype"
+      type: "term"
   labels:
     - "language"
     - "type system"
@@ -519,14 +769,66 @@
   related_links:
     - text: "Subclass"
       link: "#subclass"
+      type: "term"
     - text: "Substituting types"
       link: "/language/type-system#substituting-types"
+      type: "doc"
   labels:
     - "language"
     - "type system"
   alternate:
     - "subtyping"
     - "subtype polymorphism"
+
+- term: "Type alias"
+  short_description: |-
+    A user-defined name for an existing type.
+  long_description: |-
+    A **type alias** is an alternative name that refers to another type.
+
+    They can be used to simplify complex type definitions,
+    improve readability, or create semantic meaning in code.
+
+    Dart supports defining type aliases using the `typedef` keyword.
+    You can alias functions, classes, and even generic types.
+
+    ### Examples
+
+    #### Function type alias
+
+    ```dart
+    typedef StringTransformer = String Function(String);
+
+    void printTransformed(String input, StringTransformer transformer) {
+      print(transformer(input));
+    }
+
+    void main() {
+      printTransformed('hello', (str) => str.toUpperCase()); // Output: HELLO
+    }
+    ```
+
+    #### Class alias
+
+    ```dart
+    class HttpClient {}
+
+    typedef Client = HttpClient;
+
+    Client client = HttpClient();
+    ```
+
+    Type aliases don't create new types, they just provide alternate names.
+  related_links:
+    - text: "`typedef` keyword"
+      link: "/language/typedefs"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "typedef"
+    - "alias"
 
 - term: "Variance and variance positions"
   id: "variance"
@@ -575,7 +877,7 @@
     Note that everything is turned upside-down for parameter types.
     In particular, this subtype relation among function types requires that
     the _opposite_ subtype relation exists for the parameter type.
-    For example, `void Function(Object)` is a subtype of `void Function(int)` 
+    For example, `void Function(Object)` is a subtype of `void Function(int)`
     because `int` is a subtype of `Object`.
 
     With a more complex type like `List<void Function(int)>`,
@@ -611,10 +913,13 @@
   related_links:
     - text: "Subtype relationship"
       link: "#subtype"
+      type: "term"
     - text: "Covariance and contravariance"
       link: "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)"
+      type: "article"
     - text: "The covariant keyword"
-      link: "/deprecated/sound-problems#the-covariant-keyword"
+      link: "/language/type-system#covariant-keyword"
+      type: "doc"
   labels:
     - "language"
     - "type system"
@@ -626,3 +931,112 @@
     - "covariant"
     - "contravariance"
     - "contravariant"
+
+- term: "Wildcard"
+  id: "wildcard"
+  short_description: |-
+    A symbol (`_`) used instead of a variable name to
+    indicate an unused value in patterns and other contexts.
+  long_description: |-
+    A wildcard is the underscore character (`_`) used to
+    ignore values or indicate that a value is intentionally unused.
+    It's often used in patterns, destructuring, and switch expressions to
+    match any value without binding it to a name.
+
+    Wildcards help make the code more intentional by clearly marking
+    values that aren't needed in a specific context.
+
+    Example:
+
+    ```dart
+    // Ignoring the value in a for-each loop.
+    var names = ['Alice', 'Bob', 'Charlie'];
+    for (var _ in names) {
+      print('Someone is here!');
+    }
+    ```
+
+    The wildcard pattern is particularly useful when:
+
+    - You only need certain parts of a destructured value.
+    - You want to explicitly show some values are being ignored.
+    - You need a catch-all case in pattern matching.
+  related_links:
+    - text: "Wildcard variables"
+      link: "/language/variables#wildcard-variables"
+      type: "doc"
+    - text: "Wildcard patterns"
+      link: "/language/pattern-types#wildcard"
+      type: "doc"
+  labels:
+    - "language"
+    - "patterns"
+    - "syntax"
+  alternate:
+    - "Underscore"
+    - "Discard symbol"
+    - "Pattern wildcard"
+    - "Placeholder pattern"
+
+- term: "Zone"
+  id: "zone"
+  short_description: |-
+    A mechanism to customize the behavior of asynchronous code
+    without modifying the asynchronous code itself.
+  long_description: |-
+    A zone is an execution context that allows you to run code with
+    customized behavior for asynchronous events such as timers,
+    microtasks, and uncaught errors.
+
+    Zones are useful for:
+    - Logging
+    - Error tracking
+    - Maintaining request-specific state across async gaps
+      (for example, in server apps)
+    - Testing and debugging async behavior
+
+    Zones provide a way to track and influence asynchronous execution
+    without requiring the asynchronous code to be aware of it.
+
+    You can create a new zone using `runZoned` (or `runZonedGuarded`)
+    and override zone-specific behavior such as error handling and timers.
+    Even `print` can be overridden, although it's not asynchronous and just
+    included for convenience.
+
+    Example:
+    ```dart
+    import 'dart:async';
+
+    void main() {
+      runZonedGuarded(() {
+        Future.delayed(Duration(seconds: 1), () {
+          throw 'Zone caught this error!';
+        });
+      }, (error, stackTrace) {
+        print('Caught error: $error');
+      });
+    }
+    ```
+
+    In the preceding example, the uncaught error inside the async callback
+    is intercepted by the custom zone.
+
+  related_links:
+    - text: "Zones API documentation"
+      link: "https://api.dart.dev/stable/dart-async/Zone-class.html"
+      type: "api"
+    - text: "Error handling with zones"
+      link: "https://dart.dev/articles/libraries/zones"
+      type: "doc"
+    - text: "runZonedGuarded"
+      link: "https://api.dart.dev/stable/dart-async/runZonedGuarded.html"
+      type: "api"
+  labels:
+    - "language"
+    - "asynchronous"
+    - "runtime"
+  alternate:
+    - "zones"
+    - "dart zones"
+    - "execution zone"
+    - "runZoned"

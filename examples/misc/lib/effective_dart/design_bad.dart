@@ -1,6 +1,6 @@
 // ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names
 // ignore_for_file: type_init_formals, unused_field, always_declare_return_types, strict_raw_type, prefer_typing_uninitialized_variables
-// ignore_for_file: use_function_type_syntax_for_parameters, prefer_generic_function_type_aliases, avoid_null_checks_in_equality_operators
+// ignore_for_file: use_function_type_syntax_for_parameters, prefer_generic_function_type_aliases, specify_nonobvious_property_types
 // ignore_for_file: non_nullable_equals_parameter
 
 import 'dart:async';
@@ -20,7 +20,9 @@ void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
     // #docregion code-like-prose
     // Telling errors to empty itself, or asking if it is?
-    if (errors.empty as bool) {/*-...-*/}
+    if (errors.empty as bool) {
+      // ...
+    }
 
     // Toggle what? To what?
     subscription.toggle();
@@ -31,7 +33,9 @@ void miscDeclAnalyzedButNotTested() {
 
     Iterable theCollectionOfErrors = [];
     // #docregion code-like-prose-overdone
-    if (theCollectionOfErrors.isEmpty) {/*-...-*/}
+    if (theCollectionOfErrors.isEmpty) {
+      // ...
+    }
 
     monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
     // #enddocregion code-like-prose-overdone
@@ -47,10 +51,11 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion cascades
-    var buffer = StringBuffer0() //!<br>
-        .write('one')
-        .write('two')
-        .write('three');
+    var buffer =
+        StringBuffer0() //!<br>
+            .write('one')
+            .write('two')
+            .write('three');
     // #enddocregion cascades
   }
 
@@ -78,6 +83,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return desserts;
     }
+
     // #enddocregion omit-types-on-locals
   }
 
@@ -86,6 +92,7 @@ void miscDeclAnalyzedButNotTested() {
     makeGreeting(String who) {
       return 'Hello, $who!';
     }
+
     // #enddocregion annotate-return-types
   }
 
@@ -98,6 +105,7 @@ void miscDeclAnalyzedButNotTested() {
         print(message);
       }
     }
+
     // #enddocregion annotate-parameters
   }
 
@@ -247,7 +255,9 @@ class Color {
 
 class C<Foo> {
   // #docregion avoid_return_types_on_setters
-  void set foo(Foo value) {/* ... */}
+  void set foo(Foo value) {
+    /* ... */
+  }
   // #enddocregion avoid_return_types_on_setters
 }
 
@@ -261,10 +271,10 @@ class Person1 {
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();
-  // ignore_for_file: unnecessary_null_comparison
   // #docregion eq-dont-check-for-null
 
   bool operator ==(Object? other) =>
       other != null && other is Person && name == other.name;
 }
+
 // #enddocregion eq-dont-check-for-null

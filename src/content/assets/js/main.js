@@ -1,3 +1,110 @@
+const _prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+function setupTheme() {
+  const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
+  if (storedTheme === 'auto-mode') {
+    document.body.classList.add(
+        'auto-mode',
+        _prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
+    );
+  } else {
+    document.body.classList.add(storedTheme);
+  }
+
+  const themeMenu = document.getElementById('theme-menu');
+  if (themeMenu) {
+    const themeButtons = themeMenu.querySelectorAll('button');
+
+    function updateButtonSelectedState() {
+      const theme =
+          document.body.classList.contains('auto-mode') ? 'auto' :
+              document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+
+      themeButtons.forEach((button) => {
+        button.ariaSelected = button.dataset.theme === theme ? 'true' : 'false';
+      });
+    }
+
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', (_) => {
+        const newMode = `${button.dataset.theme}-mode`;
+
+        document.body.classList.remove('auto-mode', 'dark-mode', 'light-mode');
+        document.body.classList.add(newMode);
+
+        window.localStorage.setItem('theme', newMode);
+        _switchToPreferenceIfAuto();
+
+        updateButtonSelectedState();
+      });
+    });
+
+    updateButtonSelectedState();
+  }
+
+  _prefersDarkMode.addEventListener('change', _switchToPreferenceIfAuto);
+}
+
+function _switchToPreferenceIfAuto() {
+  if (document.body.classList.contains('auto-mode')) {
+    if (_prefersDarkMode.matches) {
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
+    }
+  }
+}
+
+function setupThemeSwitcher() {
+  const themeSwitcher = document.getElementById('theme-switcher');
+  if (!themeSwitcher) {
+    return;
+  }
+
+  const themeSwitcherButton = themeSwitcher.querySelector('.dropdown-button');
+  const themeSwitcherMenu = themeSwitcher.querySelector('#theme-menu');
+  if (!themeSwitcherButton || !themeSwitcherMenu) {
+    return;
+  }
+
+  function _closeMenusAndToggle() {
+    themeSwitcherMenu.classList.remove('show');
+    themeSwitcherButton.ariaExpanded = 'false';
+  }
+
+  themeSwitcherButton.addEventListener('click', (_) => {
+    if (themeSwitcherMenu.classList.contains('show')) {
+      _closeMenusAndToggle();
+    } else {
+      themeSwitcherMenu.classList.add('show');
+      themeSwitcherButton.ariaExpanded = 'true';
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    // If pressing the `esc` key in the menu area, close the menu.
+    if (event.key === 'Escape' && event.target.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  });
+
+  themeSwitcher.addEventListener('focusout', (e) => {
+    // If focus leaves the theme-switcher, hide the menu.
+    if (e.relatedTarget && !e.relatedTarget.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    // If not clicking inside the theme switcher, close the menu.
+    if (!event.target.closest('#theme-switcher')) {
+      _closeMenusAndToggle();
+    }
+  })
+}
+
 function handleSearchShortcut(event) {
   const activeElement = document.activeElement;
   if (activeElement instanceof HTMLInputElement ||
@@ -8,38 +115,37 @@ function handleSearchShortcut(event) {
   }
 
   let parentElement;
-  // If the sidebar is open, focus its search field
+  // If the sidebar is open, focus its search field.
   if (document.body.classList.contains('open_menu')) {
     parentElement = document.getElementById('sidenav');
   } else {
     const bodySearch = document.getElementById('in-content-search');
-    // If the page has a search field in the body, focus that
+    // If the page has a search field in the body, focus that.
     if (bodySearch !== null) {
       parentElement = bodySearch;
     } else {
-      // Otherwise, fallback to the top navbar search field
+      // Otherwise, fallback to the top navbar search field.
       parentElement = document.getElementById('cse-search-box');
     }
   }
 
-  // If we found a search field, focus that
+  // If we found any search field, focus it.
   if (parentElement !== null) {
     parentElement
         .querySelector('.search-field')
         .focus();
-    // Prevent the initial slash from showing up in the search field
+    // Prevent the initial slash from showing up in the search field.
     event.preventDefault();
   }
 }
 
-function scrollSidebarIntoView() {
+function setupSidenav() {
   const sidenav = document.getElementById('sidenav');
   if (!sidenav) {
     return;
   }
 
   const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
-
   if (activeEntries.length > 0) {
     const activeEntry = activeEntries[activeEntries.length - 1];
 
@@ -57,71 +163,8 @@ function switchBanner(galleryName) {
     selector.classList.remove('highlight');
   });
   this.classList.add('highlight');
-  
+
   imgSelector.setAttribute('src', this.dataset.banner);
-}
-
-function initVideoModal() {
-    let videoModalObject = $('[data-video-modal]');
-    var player;
-
-    function onPlayerReady() {
-        videoModalObject.on('shown.bs.modal', function (event) {
-            if (player) {
-                let videoId = event.relatedTarget.dataset.video;
-                player.loadVideoById(videoId);
-                player.playVideo();
-            }
-        });
-
-        videoModalObject.on('hide.bs.modal', function (event) {
-            if (player) {
-                player.stopVideo();
-            }
-        });
-    }
-
-    if (videoModalObject.length > 0) {
-        // there is a video modal in the DOM, load the YouTube API
-        let tag = document.createElement('script');
-        tag.src = 'https://youtube.com/iframe_api';
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player('video-player', {
-                videoId: '5F-6n_2XWR8',
-                events: {
-                    "onReady": onPlayerReady,
-                },
-            });
-        };
-    }
-}
-
-function fixNav() {
-  var t = $(document).scrollTop(),
-    f = $("#page-footer").offset().top,
-    hh = $("#page-header").height(),
-    banner = $(".banner"),
-    bb = banner.length > 0 ? banner[0].getBoundingClientRect().bottom : hh,
-    headerHeight = Math.max(hh, bb),
-    h = window.innerHeight,
-    // space between scroll position and top of the footer
-    whenAtBottom = f - t,
-    mh = Math.min(h, whenAtBottom) - hh;
-  $("#sidenav").css({ top: headerHeight, maxHeight: mh });
-  $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
-}
-
-function adjustToc() {
-  // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#site-toc--side');
-  $(tocWrapper).find('header').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  })
-
-  $(document.body).scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 function createGallery() {
@@ -141,27 +184,34 @@ function createGallery() {
   }
 }
 
-/**
- * Activate the cookie notice footer
- */
 function initCookieNotice() {
-  const notice = document.getElementById('cookie-notice');
-  const agreeBtn = document.getElementById('cookie-consent');
-  const cookieKey = 'dart-site-cookie-consent';
-  const cookieConsentValue = 'true'
-  const activeClass = 'show';
+  const currentDate = Date.now();
+  const cookieKey = 'cookie-consent';
 
-  if (Cookies.get(cookieKey) === cookieConsentValue) {
-    return;
+  // Check if they have already recently agreed.
+  const existingDateString = window.localStorage.getItem(cookieKey);
+  if (existingDateString) {
+    const existingDate = parseInt(existingDateString);
+    if (Number.isInteger(existingDate)) {
+      const halfYearMs = 1000 * 60 * 60 * 24 * 180;
+      // If the last consent is less than 180 days old, don't show the notice.
+      if (currentDate - existingDate < halfYearMs) {
+        return;
+      }
+    }
   }
 
-  notice.classList.add(activeClass);
+  const activeClass = 'show';
 
-  agreeBtn.addEventListener('click', (e) => {
+  // Set up the "OK" button to update storage and hide the banner.
+  document.getElementById('cookie-consent')
+      ?.addEventListener('click', (e) => {
     e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
-    notice.classList.remove(activeClass);
-  });
+    window.localStorage.setItem(cookieKey, currentDate.toString());
+    document.getElementById('cookie-notice')?.classList.remove(activeClass);
+  }, { once: true });
+
+  document.getElementById('cookie-notice').classList.add(activeClass);
 }
 
 // A pattern to remove terminal command markers when copying code blocks.
@@ -171,6 +221,18 @@ function setupCopyButtons() {
   if (!navigator.clipboard) {
     return;
   }
+
+  const copyButtons = document.querySelectorAll('.copy-button[data-copy]');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const textToCopy = button.dataset.copy;
+      if (textToCopy) {
+        await navigator.clipboard.writeText(textToCopy);
+      }
+      e.preventDefault();
+    });
+    button.classList.remove('hidden');
+  });
 
   const codeBlocks =
       document.querySelectorAll('.code-block-body');
@@ -208,53 +270,98 @@ function setupCopyButtons() {
   });
 }
 
-$(function() {
-  fixNav(); // Adjust heights for navigation elements
-  setupOsTabs();
+function setupExpandableCards() {
+  const currentFragment = window?.location.hash.trim().toLowerCase().substring(1);
+  const expandableCards = document.querySelectorAll('.expandable-card');
+  expandableCards.forEach(card => {
+    const expandButton = card.querySelector('.expand-button');
+    if (!expandButton) return;
+
+    expandButton.addEventListener('click', (e) => {
+      if (card.classList.contains('collapsed')) {
+        card.classList.remove('collapsed');
+        expandButton.ariaExpanded = 'true';
+      } else {
+        card.classList.add('collapsed');
+        expandButton.ariaExpanded = 'false';
+      }
+      e.preventDefault();
+    });
+
+    if (card.id !== currentFragment) {
+      card.classList.add('collapsed');
+      expandButton.ariaExpanded = 'false';
+    }
+  });
+}
+
+function setupFeedback() {
+  const feedbackContainer =
+      document.getElementById('page-feedback');
+  if (!feedbackContainer) return;
+
+  const feedbackUpButton = feedbackContainer.querySelector('#feedback-up-button');
+  const feedbackDownButton = feedbackContainer.querySelector('#feedback-down-button');
+  if (!feedbackUpButton || !feedbackDownButton) return;
+
+  feedbackUpButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'up'});
+
+    feedbackContainer.classList.add('feedback-up');
+  }, { once: true });
+
+  feedbackDownButton.addEventListener('click', (_) => {
+    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'down'});
+
+    feedbackContainer.classList.add('feedback-down');
+  }, { once: true });
+}
+
+function _setupSite() {
+  setupTheme();
+  setupSidenav();
   initCookieNotice();
+  setupTabs();
+  setupThemeSwitcher();
 
-  // Sidenav
-  $('#sidenav i').on('click', function (e) {
-    e.stopPropagation();
-    $(this).parent('li').toggleClass('active');
+  // Set up collapse and expand for sidenav buttons.
+  const toggles = document.querySelectorAll('.nav-link.collapsible');
+  toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', (e) => {
+      toggle.classList.toggle('collapsed');
+      e.preventDefault();
+    });
   });
 
-  adjustToc();
-
-  // open - close mobile navigation
-  $('#menu-toggle').on('click', function (e) {
+  document.getElementById('menu-toggle')?.addEventListener('click', function (e) {
     e.stopPropagation();
-    $(document.body).toggleClass('open_menu');
+    document.body.classList.toggle('open_menu');
   });
 
-  // Remove open_menu when switched back to normal sidenav
-  $(window).smartresize((e) => {
-    if (document.body.clientWidth > 1025) {
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 1025) {
       document.body.classList.remove('open_menu');
     }
   });
 
-  var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
-  for (var i = 0; i < topLevelMenuTogglers.length; i++) {
-    $(topLevelMenuTogglers[i]).on('click', function (e) {
-      if ($(document.body).hasClass('open_menu')) {
+  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
+  topLevelMenuTogglers.forEach(function (togglerSelector) {
+    const toggler = document.querySelector(togglerSelector);
+    toggler?.addEventListener('click', function (e) {
+      const bodyClassList = document.body.classList;
+      if (bodyClassList.contains('open_menu')) {
         e.preventDefault();
-        $(document.body).removeClass("open_menu");
+        bodyClassList.remove('open_menu');
       }
     });
-  }
-
-  $(window).smartresize(fixNav);
-  scrollSidebarIntoView();
-
-  // Collapsible inline TOC expand/collapse
-  $(".site-toc--inline__toggle").on('click', function () {
-    var root = $("#site-toc--inline");
-    root.toggleClass('toc-collapsed');
   });
 
-  // Initialize the video on the homepage, if it exists.
-  initVideoModal();
+  // Collapsible inline TOC expand/collapse.
+  document.querySelectorAll('.site-toc--inline__toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', (e) => {
+        document.getElementById('site-toc--inline')?.classList.toggle('toc-collapsed');
+      });
+  });
 
   document.addEventListener('keydown', handleSearchShortcut);
 
@@ -267,16 +374,14 @@ $(function() {
     'gallerySix'
   );
 
-  // When a user scrolls to 50px add class condensed-header to body
-  $(window).scroll(function () {
-    fixNav();
-    var currentScreenPosition = $(document).scrollTop();
-    if (currentScreenPosition > 50) {
-      $(document.body).addClass('fixed_nav');
-    } else {
-      $(document.body).removeClass('fixed_nav');
-    }
-  });
-
   setupCopyButtons();
-});
+  setupExpandableCards();
+  setupFeedback();
+}
+
+// Run setup if DOM is loaded, otherwise do it after it has loaded.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _setupSite);
+} else {
+  _setupSite();
+}

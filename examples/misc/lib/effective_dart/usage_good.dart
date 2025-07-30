@@ -1,7 +1,5 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
-// ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
-// ignore_for_file: use_super_parameters, dead_code
+// ignore_for_file:  unused_element, unused_local_variable, specify_nonobvious_property_types
+// ignore_for_file: strict_raw_type, prefer_initializing_formals, use_super_parameters, dead_code
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -25,25 +23,35 @@ void miscDeclAnalyzedButNotTested() {
     bool? nullableBool = somethingNullable<bool>();
 
     // #docregion non-null-boolean-expression
-    if (nonNullableBool) {/* ... */}
+    if (nonNullableBool) {
+      /* ... */
+    }
 
-    if (!nonNullableBool) {/* ... */}
+    if (!nonNullableBool) {
+      /* ... */
+    }
     // #enddocregion non-null-boolean-expression
 
     // #docregion nullable-boolean-expression
     // If you want null to result in false:
-    if (nullableBool ?? false) {/* ... */}
+    if (nullableBool ?? false) {
+      /* ... */
+    }
 
     // If you want null to result in false
     // and you want the variable to type promote:
-    if (nullableBool != null && nullableBool) {/* ... */}
+    if (nullableBool != null && nullableBool) {
+      /* ... */
+    }
     // #enddocregion nullable-boolean-expression
   }
 
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
-        'parts are overrun by martians. Unclear which are which.');
+    raiseAlarm(
+      'ERROR: Parts of the spaceship are on fire. Other '
+      'parts are overrun by martians. Unclear which are which.',
+    );
     // #enddocregion adjacent-strings-literals
   }
 
@@ -70,7 +78,6 @@ void miscDeclAnalyzedButNotTested() {
   {
     var command = 'c';
     var options = ['a'];
-    // ignore: unnecessary_cast
     var modeFlags = ['b'] as List<String>?;
     var filePaths = ['p'];
     String removeExtension(String path) => path;
@@ -81,7 +88,7 @@ void miscDeclAnalyzedButNotTested() {
       command,
       ...?modeFlags,
       for (var path in filePaths)
-        if (path.endsWith('.dart')) path.replaceAll('.dart', '.js')
+        if (path.endsWith('.dart')) path.replaceAll('.dart', '.js'),
     ];
     // #enddocregion spread-etc
   }
@@ -104,7 +111,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-map
     var stuff = <dynamic>[1, 2];
-    var reciprocals = stuff.map<double>((n) => 1 / (n as int));
+    var reciprocals = stuff.map<double>((n) => (n as int) * 2);
     // #enddocregion cast-map
   }
 
@@ -152,6 +159,7 @@ void miscDeclAnalyzedButNotTested() {
         /*...*/
       }
     }
+
     // #enddocregion func-decl
   }
 
@@ -176,7 +184,9 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-separator
-    void insert(Object item, {int at = 0}) {/* ... */}
+    void insert(Object item, {int at = 0}) {
+      /* ... */
+    }
     // #enddocregion default-separator
   }
 
@@ -185,6 +195,7 @@ void miscDeclAnalyzedButNotTested() {
     void error([String? message]) {
       stderr.write(message ?? '\n');
     }
+
     // #enddocregion default-value-null
   }
 
@@ -198,6 +209,7 @@ void miscDeclAnalyzedButNotTested() {
 
       return 0;
     }
+
     // #enddocregion null-aware-promote
   }
 
@@ -217,6 +229,7 @@ void miscDeclAnalyzedButNotTested() {
     Future<int> fastestBranch(Future<int> left, Future<int> right) {
       return Future.any([left, right]);
     }
+
     // #enddocregion unnecessary-async
   }
 
@@ -242,6 +255,7 @@ void miscDeclAnalyzedButNotTested() {
         return contents.contains('bear');
       });
     }
+
     // #enddocregion avoid-completer
   }
 
@@ -264,6 +278,7 @@ void miscDeclAnalyzedButNotTested() {
       var contents = await File(path).readAsString();
       return contents.contains('bear');
     }
+
     // #enddocregion avoid-completer-alt
   }
 
@@ -301,6 +316,8 @@ class Player {
   bool get isActive => false;
 }
 
+class DownloadException implements Exception {}
+
 class Team {
   Future<List<Player>> get roster => Future.value([]);
   Future<Team?> downloadTeam(String name) => Future.value(Team());
@@ -314,11 +331,12 @@ class Team {
 
       var players = await team.roster;
       return players.where((player) => player.isActive).length;
-    } catch (e) {
+    } on DownloadException catch (e, _) {
       log.error(e);
       return 0;
     }
   }
+
   // #enddocregion async-await
 }
 
@@ -363,8 +381,8 @@ class UploadException {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
     }
-// #enddocregion null-check-promo
-// #docregion shadow-nullable-field
+    // #enddocregion null-check-promo
+    // #docregion shadow-nullable-field
     final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
@@ -443,6 +461,7 @@ class C {
     _opened[chest] = treasure;
     return treasure;
   }
+
   // #enddocregion arrow-long
 }
 
@@ -487,9 +506,7 @@ class BaseBox {
 class Box3 extends BaseBox {
   Object? value;
 
-  Box3(Object? value)
-      : value = value,
-        super(value);
+  Box3(Object? value) : value = value, super(value);
 }
 // #enddocregion param-dont-shadow-field-ctr-init
 
@@ -522,8 +539,8 @@ class Point0 {
 class Point1 {
   double x, y;
   Point1.polar(double theta, double radius)
-      : x = cos(theta) * radius,
-        y = sin(theta) * radius;
+    : x = cos(theta) * radius,
+      y = sin(theta) * radius;
 }
 // #enddocregion late-init-list
 
@@ -541,14 +558,14 @@ class Widget {}
 class BuildContext {}
 
 class Row extends Widget {
-  Row({children});
+  Row({List<Widget> children = const []});
 }
 
-class RaisedButton {
-  RaisedButton({child});
+class RaisedButton extends Widget {
+  RaisedButton({Widget? child});
 }
 
-class Text {
+class Text extends Widget {
   Text(String text);
 }
 
@@ -556,11 +573,10 @@ class Text {
 Widget build(BuildContext context) {
   return Row(
     children: [
-      RaisedButton(
-        child: Text('Increment'),
-      ),
+      RaisedButton(child: Text('Increment')),
       Text('Click!'),
     ],
   );
 }
+
 // #enddocregion no-new

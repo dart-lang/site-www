@@ -24,16 +24,18 @@ final class CheckAllCommand extends Command<int> {
       ['test-dart'],
       ['refresh-excerpts', '--fail-on-update', '--dry-run'],
       ['verify-firebase-json'],
+      ['check-markdown'],
     ];
 
     var seenFailure = false;
 
     for (final task in verificationTasks) {
       groupStart(task.first);
-      final process = await Process.start(
-        Platform.executable,
-        ['run', 'dart_site', ...task],
-      );
+      final process = await Process.start(Platform.executable, [
+        'run',
+        'dart_site',
+        ...task,
+      ]);
       await stdout.addStream(process.stdout);
       await stderr.addStream(process.stderr);
       final processExitCode = await process.exitCode;

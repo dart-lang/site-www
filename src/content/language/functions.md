@@ -3,11 +3,11 @@ title: Functions
 description: Everything about functions in Dart.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
-  url: /language/pattern-types
-  title: Pattern types
+  url: /language/error-handling
+  title: Error handling
 nextpage:
-  url: /language/loops
-  title: Loops
+  url: /language/metadata
+  title: Metadata
 ---
 
 Dart is a true object-oriented language, so even functions are objects
@@ -92,7 +92,9 @@ as their default value will be `null`:
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool? bold, bool? hidden}) {...}
+void enableFlags({bool? bold, bool? hidden}) {
+  ...
+}
 ```
 
 When calling a function, 
@@ -114,7 +116,9 @@ For example:
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {...}
+void enableFlags({bool bold = false, bool hidden = false}) {
+  ...
+}
 
 // bold will be true; hidden will be false.
 enableFlags(bold: true);
@@ -185,8 +189,10 @@ And here's an example of calling this function with the third parameter:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
-assert(say('Bob', 'Howdy', 'smoke signal') ==
-    'Bob says Howdy with a smoke signal');
+assert(
+  say('Bob', 'Howdy', 'smoke signal') ==
+      'Bob says Howdy with a smoke signal',
+);
 ```
 
 To define a default value for an optional positional parameter besides `null`,

@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable, sdk_version_extension_methods
+// ignore_for_file: unused_element, unused_local_variable, sdk_version_extension_methods
 import 'dart:io';
 import 'dart:math';
 
@@ -16,16 +16,16 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   <IOStream, Id, DBIOPort, TVVcr>(uiHandler) => [
-        // #docregion acronyms-and-abbreviations
-        HttpConnectionInfo,
-        uiHandler,
-        IOStream,
-        HttpRequest,
-        Id,
-        DBIOPort,
-        TVVcr
-        // #enddocregion acronyms-and-abbreviations
-      ];
+    // #docregion acronyms-and-abbreviations
+    HttpConnectionInfo,
+    uiHandler,
+    IOStream,
+    HttpRequest,
+    Id,
+    DBIOPort,
+    TVVcr,
+    // #enddocregion acronyms-and-abbreviations
+  ];
 
   (bool isWeekDay) {
     // #docregion curly-braces
@@ -59,9 +59,13 @@ class SomeType {}
 //----------------------------------------------------------------------------
 
 // #docregion type-names
-class SliderMenu {/* ... */}
+class SliderMenu {
+  /* ... */
+}
 
-class HttpRequest {/* ... */}
+class HttpRequest {
+  /* ... */
+}
 
 typedef Predicate<T> = bool Function(T value);
 // #enddocregion type-names
@@ -76,10 +80,14 @@ class Foo {
 }
 
 @Foo(anArg)
-class A {/* ... */}
+class A {
+  /* ... */
+}
 
 @Foo()
-class B {/* ... */}
+class B {
+  /* ... */
+}
 // #enddocregion annotation-type-names
 
 //----------------------------------------------------------------------------
@@ -88,7 +96,9 @@ class B {/* ... */}
 const foo = Foo();
 
 @foo
-class C {/* ... */}
+class C {
+  /* ... */
+}
 // #enddocregion annotation-const
 
 //----------------------------------------------------------------------------
@@ -107,17 +117,29 @@ class Dice {
 
 void unusedCallbackParams() {
   var futureOfVoid = Future<void>.value();
-  // #docregion unused-callback-params
+  // #docregion unused-callback-param
   futureOfVoid.then((_) {
     print('Operation complete.');
   });
-  // #enddocregion unused-callback-params
+  // #enddocregion unused-callback-param
+
+  futureOfVoid
+  // #docregion unused-callback-params-multiple
+  .onError((_, _) {
+    print('Operation failed.');
+  });
+  // #enddocregion unused-callback-params-multiple
 }
 
 //----------------------------------------------------------------------------
 
 // #docregion extension-names
-extension MyFancyList<T> on List<T> {/* ... */}
+extension MyFancyList<T> on List<T> {
+  /* ... */
+}
 
-extension SmartIterable<T> on Iterable<T> {/* ... */}
+extension SmartIterable<T> on Iterable<T> {
+  /* ... */
+}
+
 // #enddocregion extension-names

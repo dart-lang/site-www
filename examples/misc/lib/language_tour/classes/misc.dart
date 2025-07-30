@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, one_member_abstracts
+// ignore_for_file: one_member_abstracts
 // #docregion abstract
 // This class is declared abstract and thus
 // can't be instantiated.
@@ -14,12 +14,14 @@ class Comparable {}
 class Location {}
 
 // #docregion point-interfaces
-class Point implements Comparable, Location {/*...*/}
+class Point implements Comparable, Location {
+  /*...*/
+}
 // #enddocregion point-interfaces
 
 // #docregion static-field
 class Queue {
-  static const initialCapacity = 16; // ignore: type_annotate_public_apis
+  static const initialCapacity = 16;
   // #enddocregion static-field
   // #docregion static-field
 }
@@ -27,4 +29,5 @@ class Queue {
 void main() {
   assert(Queue.initialCapacity == 16);
 }
+
 // #enddocregion static-field

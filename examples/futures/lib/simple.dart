@@ -1,4 +1,4 @@
-// ignore_for_file: dead_code, invalid_return_type_for_catch_error, one_member_abstracts
+// ignore_for_file: dead_code, invalid_return_type_for_catch_error
 
 import 'dart:async';
 
@@ -14,20 +14,27 @@ void simpleCallbacks() {
 
   {
     // #docregion comprehensive-errors
-    myFunc().then((value) {
-      doSomethingWith(value);
-      ellipsis();
-      throw Exception('Some arbitrary error');
-    }).catchError(handleError);
+    myFunc()
+        .then((value) {
+          doSomethingWith(value);
+          ellipsis();
+          throw Exception('Some arbitrary error');
+        })
+        .catchError(handleError);
     // #enddocregion comprehensive-errors
   }
 
   {
     // #docregion throws-then-catch
-    asyncErrorFunction().then(successCallback, onError: (e) {
-      handleError(e); // Original error.
-      anotherAsyncErrorFunction(); // Oops, new error.
-    }).catchError(handleError); // Error from within then() handled.
+    asyncErrorFunction()
+        .then(
+          successCallback,
+          onError: (e) {
+            handleError(e); // Original error.
+            anotherAsyncErrorFunction(); // Oops, new error.
+          },
+        )
+        .catchError(handleError); // Error from within then() handled.
     // #enddocregion throws-then-catch
   }
 
@@ -62,8 +69,10 @@ void main() {
   handleAuthResponse(const {'username': 'dash', 'age': 3})
       .then((_) => ellipsis())
       .catchError(handleFormatException, test: (e) => e is FormatException)
-      .catchError(handleAuthorizationException,
-          test: (e) => e is AuthorizationException);
+      .catchError(
+        handleAuthorizationException,
+        test: (e) => e is AuthorizationException,
+      );
 }
 // #enddocregion auth-response
 

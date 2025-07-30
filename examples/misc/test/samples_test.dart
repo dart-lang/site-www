@@ -44,7 +44,7 @@ void main() {
     var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
     var image = {
       'tags': ['saturn'],
-      'url': '//path/to/saturn.jpg'
+      'url': '//path/to/saturn.jpg',
     };
     // #enddocregion var
 
@@ -52,7 +52,9 @@ void main() {
       expect(flybyObjects, TypeMatcher<List<String>>());
       expect(image, TypeMatcher<Map<String, dynamic>>());
       expect(
-          name.length > antennaDiameter, isTrue); // avoid unused_local_variable
+        name.length > antennaDiameter,
+        isTrue,
+      ); // avoid unused_local_variable
     });
 
     test('Control flow', () {
@@ -79,12 +81,15 @@ void main() {
       }
 
       expect(
-          testControlFlow,
-          m.prints(flatten([
+        testControlFlow,
+        m.prints(
+          flatten([
             '20th century',
             flybyObjects,
             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-          ])));
+          ]),
+        ),
+      );
     });
 
     test('arrow', () {
@@ -127,17 +132,15 @@ void main() {
     }
 
     expect(
-        testUseClass,
-        prints(allOf(
-          startsWith('Spacecraft: Voyager I'),
-          contains('Launched: 1977'),
-        )));
+      testUseClass,
+      prints(
+        allOf(startsWith('Spacecraft: Voyager I'), contains('Launched: 1977')),
+      ),
+    );
     expect(
-        testNamedConstructor,
-        m.prints([
-          'Spacecraft: Voyager III',
-          'Unlaunched',
-        ]));
+      testNamedConstructor,
+      m.prints(['Spacecraft: Voyager III', 'Unlaunched']),
+    );
   });
 
   test('use enum', () {
@@ -221,7 +224,8 @@ void main() {
             if (await file.exists()) {
               var modified = await file.lastModified();
               print(
-                  'File for $object already exists. It was modified on $modified.');
+                'File for $object already exists. It was modified on $modified.',
+              );
               continue;
             }
             await file.create();
@@ -240,10 +244,9 @@ void main() {
       }
 
       expect(
-          testAwait,
-          prints(
-            contains('File for test_data/config already exists.'),
-          ));
+        testAwait,
+        prints(contains('File for test_data/config already exists.')),
+      );
     });
   });
 
@@ -293,7 +296,9 @@ void main() {
     }
     // #enddocregion try
 
-    expect(() => describeFlybyObjects(flybyObjects),
-        prints(startsWith('Could not describe object:')));
+    expect(
+      () => describeFlybyObjects(flybyObjects),
+      prints(startsWith('Could not describe object:')),
+    );
   });
 }

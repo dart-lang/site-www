@@ -19,11 +19,9 @@ final class ServeSiteCommand extends Command<int> {
         '--config=eleventy.config.ts',
         '--serve',
         '--incremental',
-        '--port=${Platform.environment['PORT'] ?? 4000}'
+        '--port=${Platform.environment['PORT'] ?? 4000}',
       ],
-      environment: const {
-        'PRODUCTION': 'false',
-      },
+      environment: const {'PRODUCTION': 'false'},
       runInShell: true,
       mode: ProcessStartMode.inheritStdio,
     );

@@ -3,10 +3,10 @@
   {% include 'head.html' %}
   <body class="{{layout}} hide_toc">
     {% render 'cookie-notice.html' %}
-    {% render 'gtags.html' %}
+    {% include 'gtags.html' %}
     {% include 'page-header.html' %}
     {% include 'navigation-side.html' %}
-    <main id="page-content">
+    <main id="page-content" class="focused">
       <div class="content">
         {{content}}
       </div>

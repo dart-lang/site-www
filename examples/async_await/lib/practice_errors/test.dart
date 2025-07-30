@@ -2,7 +2,7 @@ import 'package:examples_util/codelabs.dart';
 
 import 'solution.dart';
 
-const _result = result;
+const void Function(bool success, [List<String> messages]) _result = result;
 
 // #docregion
 List<String> messages = [];
@@ -24,22 +24,28 @@ Future<String> fetchNewUsername() {
 void main() async {
   try {
     messages
-      ..add(makeReadable(
+      ..add(
+        makeReadable(
           testLabel: '',
           testResult: await asyncDidCatchException(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
                 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
-      ..add(makeReadable(
+          },
+        ),
+      )
+      ..add(
+        makeReadable(
           testLabel: '',
           testResult: await asyncErrorEquals(changeUsername),
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
                 'Did you remember to call fetchNewUsername within a try/catch block?',
-          }))
+          },
+        ),
+      )
       ..removeWhere((m) => m.contains(passed))
       ..toList();
 
@@ -109,4 +115,5 @@ Future<String> asyncDidCatchException(Function fn) async {
     return passed;
   }
 }
+
 // #enddocregion

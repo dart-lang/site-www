@@ -933,8 +933,8 @@ the variable's current promoted type
 
 ```dart tag=bad
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is Pattern /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is Pattern /* (2) */ ) {
       print(o.matchAsPrefix('foo')); // (3) ERROR
     }
   }
@@ -960,11 +960,12 @@ the new variable is promoted to `Pattern`:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 ```dart
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
+  if (o is Comparable /* (1) */ ) {
     [!Object o2 = o;!]
-    if ([!o2!] is Pattern /* (2) */) {
+    if ([!o2!] is Pattern /* (2) */ ) {
       print(
-          [!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
+        [!o2!].matchAsPrefix('foo'),
+      ); // (3) OK; o2 was promoted to `Pattern`.
     }
   }
 }
@@ -980,8 +981,8 @@ A redundant type check might be a better solution:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
 ```dart tag=good
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is Pattern /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is Pattern /* (2) */ ) {
       print([!(o as Pattern)!].matchAsPrefix('foo')); // (3) OK
     }
   }
@@ -996,8 +997,8 @@ Because `String` is a subtype of `Comparable`, the promotion works:
 <?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-string)" replace="/is String/is [!String!]/g"?>
 ```dart tag=good
 void f(Object o) {
-  if (o is Comparable /* (1) */) {
-    if (o is [!String!] /* (2) */) {
+  if (o is Comparable /* (1) */ ) {
+    if (o is [!String!] /* (2) */ ) {
       print(o.matchAsPrefix('foo')); // (3) OK
     }
   }

@@ -1,82 +1,28 @@
-@use '../core/variables' as *;
-@use '../core/bootstrap';
+@use '../base/mixins';
 
-.site-header__search {
-  &::before {
-    color: $gray;
-    z-index: 1;
-  }
-
-  #mainnav & {
-    // Override of _header.scss
-    border: 0;
-
-    .open_menu & {
-      visibility: hidden;
-    }
-  }
+.site-header-search {
+  display: flex;
+  align-items: center;
 
   #sidenav & {
     display: none;
-    border-bottom: 1px solid $site-color-light-grey;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0 $site-nav-mobile-side-padding;
-    order: -1;
+    margin: 0 0.5rem 0.5rem;
 
-    // Override of _header.scss
-    &::before {
-      left: 1.5rem;
+    .site-header-searchfield {
+      font-size: 1.25rem;
+      height: 3rem;
+      width: 100%;
+      background-color: var(--site-raised-bgColor);
+      border-radius: var(--site-radius);
     }
   }
-}
-
-.site-header__searchfield {
-  border: 0;
-  box-shadow: none;
-
-  #mainnav & {
-    background-color: $site-color-header;
-    color: $site-color-header-text;
-    font-size: $site-font-size-header;
-
-    // Override of _header.scss
-    @include bootstrap.media-breakpoint-down(sm) {
-      font-size: inherit;
-      height: inherit;
-
-      width: 24px !important;
-      &:focus {
-        width: 220px !important;
-      }
-    }
-  }
-
-  #sidenav & {
-    font-size: bootstrap.$font-size-lg;
-    height: 66px;
-    width: 100%;
-
-    // Override of _header.scss
-    @include bootstrap.media-breakpoint-up(md) {
-      width: 100% !important;
-      &:focus {
-        width: 100% !important;
-      }
-    }
-  }
-}
-
-input.gsc-search-button {
-  @extend .btn;
-  @extend .btn-primary;
 }
 
 #search-icon {
   position: absolute;
   right: 5px;
   top: 0;
-  color: $gray-dark;
+  color: var(--site-base-fgColor);
   font-size: 14px;
 }
 
@@ -96,14 +42,119 @@ input.gsc-search-button {
     z-index: 5;
 
     &:hover {
-      color: $gray;
+      color: var(--site-outline-variant);
     }
   }
 }
 
-.searchbar {
-  > * {
-    max-width: 640px;
-    width: 100%
+#search-body {
+  margin-block-start: 1.5rem;
+  margin-block-end: 1.5rem;
+
+  .gsc-control-cse {
+    border-radius: var(--site-radius);
+    background-color: var(--site-inset-bgColor);
+    border: none;
+    color: var(--site-base-fgColor);
+  }
+
+  .gsc-above-wrapper-area {
+    border-color: var(--site-outline);
+  }
+
+  .gsc-orderby-container {
+    display: none;
+  }
+
+  .gsc-input-box {
+    border: none;
+    border-radius: var(--site-radius);
+    background-color: var(--site-raised-bgColor);
+
+    input.gsc-input {
+      background-color: transparent !important;
+      height: 2rem !important;
+    }
+  }
+
+  @at-root body .gsc-completion-container {
+    background-color: var(--site-raised-bgColor);
+    color: var(--site-base-fgColor);
+    border: none;
+    border-radius: var(--site-radius);
+    padding-top: 0.5rem;
+
+    .gsc-completion-selected {
+      background-color: var(--site-primary-color-highlight);
+    }
+  }
+
+  .gsc-search-button-v2 {
+    background-color: var(--site-filledButton-bgColor);
+    color: var(--site-filledButton-fgColor);
+    border: none;
+    border-radius: var(--site-radius);
+    font-weight: 500;
+    gap: 0.3rem;
+    padding: 0.6rem 1.4rem;
+
+    &:hover {
+      @include mixins.interaction-style(8%);
+    }
+
+    &:active {
+      @include mixins.interaction-style(16%);
+    }
+  }
+
+  .gsc-result-info, .gs-spelling {
+    color: var(--site-base-fgColor-lighter);
+  }
+
+  .gs-no-results-result .gs-snippet {
+    border: none;
+    background-color: var(--site-raised-bgColor);
+    border-radius: var(--site-radius);
+  }
+
+  .gsc-webResult {
+    .gsc-result {
+      background-color: transparent;
+    }
+
+    .gs-title, .gs-title * {
+      color: var(--site-link-fgColor);
+    }
+
+    .gs-visibleUrl {
+      color: var(--site-accent-color);
+    }
+
+    .gs-image-box {
+      display: none;
+    }
+
+    .gs-snippet {
+      color: var(--site-base-fgColor);
+    }
+
+    .gsc-result {
+      border: none;
+    }
+  }
+
+  .gsc-cursor-box {
+    .gsc-cursor-page {
+      color: var(--site-base-fgColor-lighter);
+    }
+
+    .gsc-cursor-current-page {
+      color: var(--site-link-fgColor);
+    }
+  }
+
+  .gcsc-find-more-on-google, .gcsc-find-more-on-google * {
+    color: var(--site-link-fgColor);
+    fill: var(--site-link-fgColor);
   }
 }

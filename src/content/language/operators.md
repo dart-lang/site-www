@@ -75,10 +75,14 @@ way:
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
 // Parentheses improve readability.
-if ((n % i == 0) && (d % i == 0)) ...
+if ((n % i == 0) && (d % i == 0)) {
+  // ...
+}
 
 // Harder to read, but equivalent.
-if (n % i == 0 && d % i == 0) ...
+if (n % i == 0 && d % i == 0) {
+  // ...
+}
 ```
 
 :::warning
@@ -448,24 +452,21 @@ are attempted on that null object.
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-querySelector('#confirm') // Get an object.
-  ?..text = 'Confirm' // Use its members.
-  ..classes.add('important')
+document.querySelector('#confirm') // Get an object.
+  ?..textContent =
+      'Confirm' // Use its members.
+  ..classList.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
-
-:::version-note
-The `?..` syntax requires a [language version][] of at least 2.12.
-:::
 
 The previous code is equivalent to the following:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
+final button = document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
@@ -474,14 +475,16 @@ You can also nest cascades. For example:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
-final addressBook = (AddressBookBuilder()
-      ..name = 'jenny'
-      ..email = 'jenny@example.com'
-      ..phone = (PhoneNumberBuilder()
-            ..number = '415-555-0100'
-            ..label = 'home')
-          .build())
-    .build();
+final addressBook =
+    (AddressBookBuilder()
+          ..name = 'jenny'
+          ..email = 'jenny@example.com'
+          ..phone =
+              (PhoneNumberBuilder()
+                    ..number = '415-555-0100'
+                    ..label = 'home')
+                  .build())
+        .build();
 ```
 
 Be careful to construct your cascade on a function that returns
@@ -532,7 +535,7 @@ You've seen most of the remaining operators in other examples:
 | `?[]`    | Conditional subscript access | Like `[]`, but the leftmost operand can be null; example: `fooList?[1]` passes the int `1` to `fooList` to access the element at index `1` unless `fooList` is null (in which case the expression evaluates to null)                                    |
 | `.`      | Member access                | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`                                                                                                                                                  |
 | `?.`     | Conditional member access    | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)                                                                   |
-| `!`      | Non-null assertion operator  | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null in which case a runtime exception is thrown |
+| `!`      | Not-null assertion operator  | Casts an expression to its underlying non-nullable type, throwing a runtime exception if the cast fails; example: `foo!.bar` asserts `foo` is non-null and selects the property `bar`, unless `foo` is null (in which case a runtime exception is thrown) |
 
 {:.table .table-striped}
 

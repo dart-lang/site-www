@@ -255,17 +255,17 @@ matching of strings.
 <?code-excerpt "misc/test/library_tour/core_test.dart (regexp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
-var numbers = RegExp(r'\d+');
+var digitSequence = RegExp(r'\d+');
 
-var allCharacters = 'llamas live fifteen to twenty years';
+var lettersOnly = 'llamas live fifteen to twenty years';
 var someDigits = 'llamas live 15 to 20 years';
 
 // contains() can use a regular expression.
-assert(!allCharacters.contains(numbers));
-assert(someDigits.contains(numbers));
+assert(!lettersOnly.contains(digitSequence));
+assert(someDigits.contains(digitSequence));
 
 // Replace every match with another string.
-var exedOut = someDigits.replaceAll(numbers, 'XX');
+var exedOut = someDigits.replaceAll(digitSequence, 'XX');
 assert(exedOut == 'llamas live XX to XX years');
 ```
 
@@ -274,14 +274,14 @@ provides access to a regular expression match.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 ```dart
-var numbers = RegExp(r'\d+');
+var digitSequence = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
 
 // Check whether the reg exp has a match in a string.
-assert(numbers.hasMatch(someDigits));
+assert(digitSequence.hasMatch(someDigits));
 
 // Loop through all matches.
-for (final match in numbers.allMatches(someDigits)) {
+for (final match in digitSequence.allMatches(someDigits)) {
   print(match.group(0)); // 15, then 20
 }
 ```
@@ -481,7 +481,7 @@ traditional constructor:
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 // Maps can be built from a constructor.
@@ -517,7 +517,7 @@ You can retrieve all the values or all the keys from a map:
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 // Get all the keys as an unordered collection
@@ -543,7 +543,7 @@ key and checking for null to determine the existence of a key.
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
-  'Kauai': ['Hanalei', 'Poipu']
+  'Kauai': ['Hanalei', 'Poipu'],
 };
 
 assert(hawaiianBeaches.containsKey('Oahu'));
@@ -708,7 +708,8 @@ var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
 assert(
-    encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+  encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message',
+);
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
@@ -744,11 +745,12 @@ constructor:
 <?code-excerpt "misc/test/library_tour/core_test.dart (uri)"?>
 ```dart
 var uri = Uri(
-    scheme: 'https',
-    host: 'example.org',
-    path: '/foo/bar',
-    fragment: 'frag',
-    queryParameters: {'lang': 'dart'});
+  scheme: 'https',
+  host: 'example.org',
+  path: '/foo/bar',
+  fragment: 'frag',
+  queryParameters: {'lang': 'dart'},
+);
 assert(uri.toString() == 'https://example.org/foo/bar?lang=dart#frag');
 ```
 
@@ -1080,7 +1082,7 @@ Support for weak references and finalizers was added in Dart 2.17.
 [Uri]: {{site.dart-api}}/dart-core/Uri-class.html
 [WeakReference]: {{site.dart-api}}/dart-core/WeakReference-class.html
 [dart:core]: {{site.dart-api}}/dart-core/dart-core-library.html
-[dart:ffi]: /guides/libraries/c-interop
+[dart:ffi]: /interop/c-interop
 [double]: {{site.dart-api}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 [int]: {{site.dart-api}}/dart-core/int-class.html

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, body_might_complete_normally_nullable, unused_element
+// ignore_for_file: body_might_complete_normally_nullable
 
 import 'dart:async';
 import 'dart:convert';
@@ -8,9 +8,10 @@ import 'dart:isolate';
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// #enddocregion constructor
+  // #enddocregion constructor
+
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -34,19 +35,20 @@ class Worker {
     return Worker._(receivePort, sendPort);
   }
 
-// #docregion parse-json
+  // #docregion parse-json
   Future<Object?> parseJson(String message) async {
     _commands.send(message);
   }
-// #enddocregion parse-json
+  // #enddocregion parse-json
 
-// #docregion constructor
+  // #docregion constructor
+
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
-// #enddocregion constructor
+  // #enddocregion constructor
 
-// #docregion handle-response
+  // #docregion handle-response
   void _handleResponsesFromIsolate(dynamic message) {
     if (message is RemoteError) {
       throw message;
@@ -54,11 +56,13 @@ class Worker {
       print(message);
     }
   }
-// #enddocregion handle-response
+  // #enddocregion handle-response
 
-// #docregion handle-commands
+  // #docregion handle-commands
   static void _handleCommandsToIsolate(
-      ReceivePort receivePort, SendPort sendPort) {
+    ReceivePort receivePort,
+    SendPort sendPort,
+  ) {
     receivePort.listen((message) {
       try {
         final jsonData = jsonDecode(message as String);
@@ -68,13 +72,17 @@ class Worker {
       }
     });
   }
-// #enddocregion handle-commands
+  // #enddocregion handle-commands
 
-// #docregion start-isolate
+  // #docregion start-isolate
   static void _startRemoteIsolate(SendPort sendPort) {
     final receivePort = ReceivePort();
     sendPort.send(receivePort.sendPort);
     _handleCommandsToIsolate(receivePort, sendPort);
   }
-// #enddocregion start-isolate
+
+  // #enddocregion start-isolate
+  // #docregion constructor
 }
+
+// #enddocregion constructor

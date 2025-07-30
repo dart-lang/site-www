@@ -28,12 +28,12 @@ Dart resources for writing HTTP servers include:
     [`shelf_router`][] packages.
   * Is deployable on Cloud Run.
 
-[cloud-sample]: {{site.repo.dart.org}}/samples/tree/main/server/google_apis
+[cloud-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis
 [`googleapis`]: {{site.pub-pkg}}/googleapis
 [`googleapis_auth`]: {{site.pub-pkg}}/googleapis_auth
 [`shelf`]: {{site.pub-pkg}}/shelf
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static
-[simple-sample]: {{site.repo.dart.org}}/samples/tree/main/server/simple
+[simple-sample]: {{site.repo.dart.samples}}/tree/main/server/simple
 [Using Google APIs]: /resources/google-apis
 [Using Google Cloud]: /server/google-cloud

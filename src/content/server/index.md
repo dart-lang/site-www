@@ -8,8 +8,8 @@ toc: false
 This page points to tools and documentation
 that can help you develop command-line and server apps.
 
-<p class="text-center">
-  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Get started</a>
+<p class="centered-rows">
+  <a href="/tutorials/server/get-started" class="filled-button large-button">Get started</a>
 </p>
 
 

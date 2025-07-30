@@ -11,6 +11,10 @@ This page describes how to download the Dart SDK.
 The Dart SDK includes the libraries and command-line tools that
 you need to develop Dart command-line, server, and web apps.
 
+The Dart team supports only the latest stable release of the SDK.
+For full details on the SDK release lifecycle and supported versions,
+check out the [SDK support policy](/tools/sdk#support-policy).
+
 To learn more about the Dart SDK, consult the [Dart SDK overview](/tools/sdk).
 
 :::tip
@@ -41,8 +45,8 @@ to develop and run Dart code.
 
 | Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
 |----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
-| Windows  | {{yes}} |  {{rem}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    | {{yes}} |  {{rem}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
+| Windows  | {{yes}} |  {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
+| Linux    | {{yes}} |  {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
 | macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
 
 {:.table .table-striped}
@@ -88,28 +92,23 @@ use the appropriate package manager for your development platform.
 To upgrade the Dart SDK,
 run the same command to install the Dart SDK from your package manager.
 
-<ul class="tabs__top-bar">
-  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
-  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
-</ul>
-<div id="tab-sdk-install-windows" class="tabs__content current">
+{% tabs "dev-os", true %}
+{% tab "Windows" %}
 
 {% include 'install/windows.md' %}
 
-</div>
-
-<div id="tab-sdk-install-linux" class="tabs__content">
+{% endtab %}
+{% tab "Linux" %}
 
 {% include 'install/linux.md' %}
 
-</div>
-
-<div id="tab-sdk-install-mac" class="tabs__content">
+{% endtab %}
+{% tab "macOS" %}
 
 {% include 'install/macos.md' %}
 
-</div>
+{% endtab %}
+{% endtabs %}
 
 ## Release channel reference {:#release-channels}
 

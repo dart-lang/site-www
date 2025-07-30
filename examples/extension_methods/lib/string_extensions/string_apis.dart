@@ -8,6 +8,8 @@ extension NumberParsing on String {
   double parseDouble() {
     return double.parse(this);
   }
+
   // #docregion parseInt
 }
+
 // #enddocregion parseInt

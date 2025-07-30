@@ -1,7 +1,12 @@
 import {getSingletonHighlighter, Highlighter} from 'shiki';
+import dashDarkTheme from '../syntax/dark-dark.js';
 import dashLightTheme from '../syntax/dash-light.js';
 import MarkdownIt from 'markdown-it';
 import * as hast from 'hast';
+
+const _terminalLanguages = {
+  'console': '$',
+};
 
 /**
  * Replaces the markdown-it code block renderer with our own that:
@@ -13,7 +18,7 @@ import * as hast from 'hast';
  *   copy buttons, etc.
  * - Syntax highlights the contents according to the specified language
  *   using the shiki package that uses TextMate grammars
- *   and Code -OSS themes.
+ *   and Code-OSS themes.
  *
  * @param markdown The markdown-it instance to
  *   configure syntax highlighting for.
@@ -40,11 +45,11 @@ export async function configureHighlighting(markdown: MarkdownIt): Promise<void>
       'cmd',
       'plaintext',
     ],
-    themes: [dashLightTheme],
+    themes: [dashLightTheme, dashDarkTheme],
   });
 
   markdown.renderer.rules.fence = function (tokens, index) {
-    const token = tokens[index] as MarkdownIt.Token;
+    const token = tokens[index]!;
 
     const splitTokenInfo = token.info.match(/(\S+)\s?(.*?)$/m);
 
@@ -92,8 +97,9 @@ function _highlight(
   if (language.includes('dartpad')) {
     const theme = attributes['theme'] ?? 'light';
     const title = attributes['title'] ?? 'Runnable Dart sample';
+    const height = attributes['height'];
     const runAutomatically = attributes['run'] ?? 'false';
-    return `<pre><code data-dartpad="true" data-embed="true" data-theme="${theme}" title="${title}" data-run="${runAutomatically}">${markdown.utils.escapeHtml(content)}</code></pre>`;
+    return `<pre><code data-dartpad="true" data-embed="true" data-theme="${theme}" title="${title}" data-run="${runAutomatically}"${height != null ? `data-height="${height}"` : ''}>${markdown.utils.escapeHtml(content)}</code></pre>`;
   }
 
   const showLineNumbers = 'showLineNumbers' in attributes;
@@ -110,13 +116,19 @@ function _highlight(
 
   const highlightLines = attributes['highlightLines'];
   const linesToHighlight = highlightLines
-    ? _parseNumbersAndRanges(highlightLines)
-    : null;
+      ? _parseNumbersAndRanges(highlightLines)
+      : new Set<number>();
+
+  const noHighlight = 'noHighlight' in attributes;
 
   // Find the spans enclosed in `[!` and `!]` that we should mark
   // and remove them from the text.
   const { updatedText, linesToMarkedRanges } =
-    _findMarkedTextAndUpdate(content);
+      noHighlight ? {
+            updatedText: content,
+            linesToMarkedRanges: {},
+          } :
+          _findMarkedTextAndUpdate(content);
 
   // Update the content with the markers removed and
   // with any extra whitespace trimmed off the end.
@@ -124,7 +136,10 @@ function _highlight(
 
   return highlighter.codeToHtml(content, {
     lang: language,
-    theme: 'dash-light',
+    themes: {
+      light: 'dash-light',
+      dark: 'dash-dark',
+    },
     transformers: [
       {
         pre(preElement) {
@@ -137,7 +152,7 @@ function _highlight(
 
           const bodyChildren = [preElement];
 
-          if (!['plaintext', 'console', 'ps', 'diff'].includes(language)) {
+          if (!['plaintext', 'console', 'ps', 'diff', 'powershell'].includes(language)) {
             const languageText = _createSpanWithText(language, {
               class: 'code-block-language',
               title: `Language ${language}`,
@@ -215,8 +230,22 @@ function _highlight(
             lineElement.properties['data-line'] = startingLineNumber + line - 1;
           }
 
-          if (linesToHighlight?.has(line)) {
+          if (linesToHighlight.has(line)) {
             lineElement.properties['class'] += ' highlighted-line';
+          }
+
+          if (lineElement.children.length < 1) return;
+
+          if (language in _terminalLanguages) {
+            // Remove the terminal command marker if present.
+            const firstSpan = lineElement.children[0] as hast.Element;
+            const firstText = firstSpan.children[0] as hast.Text;
+            if (firstText?.value.startsWith('$ ')) {
+              // If a terminal marker is present on the first span,
+              // remove it and add a class to use CSS to display it.
+              firstText.value = firstText.value.substring(2);
+              firstSpan.properties['class'] += ' terminal-command';
+            }
           }
 
           const highlightRange = linesToMarkedRanges[line];
@@ -273,7 +302,7 @@ function _parseNumbersAndRanges(input: string): Set<number> {
     if (rangeParts.length > 1) {
       // Split by the dash, and turn each string into a number.
       // Assume the user only included one dash.
-      const [start, end] = rangeParts.map(Number.parseInt);
+      const [start, end] = rangeParts.map((part) => Number.parseInt(part));
       if (start && end && !Number.isNaN(start) && !Number.isNaN(end)) {
         for (let i = start; i <= end; i++) {
           combinedNumbers.add(i);

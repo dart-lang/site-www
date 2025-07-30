@@ -84,10 +84,7 @@ String createOrderMessage() {
 
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print(createOrderMessage());
@@ -293,10 +290,7 @@ String createOrderMessage() {
 Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print('Fetching user order...');
@@ -324,10 +318,7 @@ it operates like synchronous code.
 Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+    Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 [!Future<void>!] main() [!async!] {
   print('Fetching user order...');
@@ -642,8 +633,9 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      const Duration(seconds: 4),
-      () => throw 'Cannot locate user order');
+    const Duration(seconds: 4),
+    () => throw 'Cannot locate user order',
+  );
   return str;
 }
 
@@ -1081,7 +1073,7 @@ are some suggestions for where to go next:
     Learn how to work with a sequence of asynchronous events.
   - [Concurrency in Dart](/language/concurrency):
     Understand and learn how to implement concurrency in Dart.
-  - [Asynchrony support](/language/async):
+  - [Asynchronous programming](/language/async):
     Dive in to Dart's language and library support for asynchronous coding.
   - [Dart videos from Google][Dart videos]:
     Watch one or more of the videos about asynchronous coding.

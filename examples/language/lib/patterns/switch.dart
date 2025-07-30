@@ -70,7 +70,7 @@ void main() {
     // #docregion or-share-body
     var isPrimary = switch (color) {
       Color.red || Color.yellow || Color.blue => true,
-      _ => false
+      _ => false,
     };
     // #enddocregion or-share-body
     print(isPrimary);

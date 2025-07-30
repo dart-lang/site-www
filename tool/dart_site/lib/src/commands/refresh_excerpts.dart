@@ -41,10 +41,10 @@ final class RefreshExcerptsCommand extends Command<int> {
 
   @override
   Future<int> run() async => _refreshExcerpts(
-        verboseLogging: argResults.get<bool>(_verboseFlag, false),
-        dryRun: argResults.get<bool>(_dryRunFlag, false),
-        failOnUpdate: argResults.get<bool>(_failOnUpdateFlag, false),
-      );
+    verboseLogging: argResults.get<bool>(_verboseFlag, false),
+    dryRun: argResults.get<bool>(_dryRunFlag, false),
+    failOnUpdate: argResults.get<bool>(_failOnUpdateFlag, false),
+  );
 }
 
 Future<int> _refreshExcerpts({
@@ -60,18 +60,11 @@ Future<int> _refreshExcerpts({
     validTargetExtensions: const {'.md'},
     defaultTransforms: [
       SimpleReplaceTransform('//!<br>', ''),
-      SimpleReplaceTransform(
-        RegExp(r'ellipsis(<\w+>)?(\(\))?;?'),
-        '...',
-      ),
-      BackReferenceReplaceTransform(
-        RegExp(r'/\*(\s*\.\.\.\s*)\*/'),
-        '\$1',
-      ),
-      BackReferenceReplaceTransform(
-        RegExp(r'\{/\*-(\s*\.\.\.\s*)-\*/\}'),
-        '\$1',
-      ),
+      SimpleReplaceTransform(RegExp(r'ellipsis(<\w+>)?(\(\))?;?'), '...'),
+      BackReferenceReplaceTransform(RegExp(r'/\*(\s*\.\.\.\s*)\*/'), '\$1'),
+      // Workaround for https://github.com/dart-lang/dart_style/issues/1644
+      // to remove extra new lines after block close.
+      SimpleReplaceTransform(RegExp(r'[\r\n]+$'), ''),
     ],
   );
 

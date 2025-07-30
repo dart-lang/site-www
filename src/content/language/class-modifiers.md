@@ -36,14 +36,22 @@ Only the `base` modifier can appear before a mixin declaration.
 The modifiers do not apply to other declarations like
 `enum`, `typedef`, `extension`, or `extension type`.
 
-When deciding whether to use class modifiers, consider the intended uses of
-the class, and what behaviors the class needs to be able to rely on.
+When deciding whether to use class modifiers,
+consider the intended uses of the class and
+what behaviors the class needs to be able to rely on.
 
-:::note
-If you maintain a library, read the
-[Class modifiers for API maintainers](/language/class-modifiers-for-apis)
-page for guidance on how to navigate these changes for your libraries. 
+:::tip
+If you're already familiar with Dart's class modifiers and just want
+an outline or refresher of their behavior when combined,
+check out the [Class modifier reference][].
+
+If you maintain a library,
+read the [Class modifiers for API maintainers][] page for
+guidance on how to navigate these changes for your libraries.
 :::
+
+[Class modifier reference]: /language/modifier-reference
+[Class modifiers for API maintainers]: /language/class-modifiers-for-apis
 
 ## No modifier
 

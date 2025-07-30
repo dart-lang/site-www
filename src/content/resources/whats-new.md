@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2024-08-06
+lastVerified: 2025-05-23
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -17,6 +17,224 @@ and follow the [Dart blog][].
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+
+## May 20, 2025: 3.8 release
+
+This section lists notable changes made from February  13, 2025,
+through May 20, 2025 to [dart.dev](https://dart.dev/docs).
+For details about the 3.8 release of Dart,
+check out the [3.8 announcement][] and the
+[3.8 SDK changelog][3-8-changelog].
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to docs on this site:
+
+* Added [Collection elements][3-8-c-elements] docs,
+  which includes the various types of collection elements,
+  including expression elements, map entry elements,
+  spread elements, null-aware spread elements, if elements,
+  for elements. The new docs also explain how to nest
+  elements.
+
+* Added [Doc imports][] docs, which explains how to use the
+  `@docImport` documentation tag to reference external
+  elements in documentation comments.
+
+* Added [Cross-compilation][] docs for the `dart compile`
+  command. Cross-compilation to Linux x64 and ARM64 is now
+  supported on the following 64-bit host operating systems:
+  macOS, Windows, and Linux.
+
+* Added [Null-aware elements][3-8-null-aware] docs, which
+  explain how to use the null-aware element.
+
+* Added [Labels][] docs for loops. This addition shows how
+  to use labels with `break` and `continue`
+  control flow statements.
+
+* Added documentation for the [`pubspec_overrides.yaml`][]
+  file. This file lets you override certain aspects of
+  the `pubspec.yaml` file without changing the
+  `pubspec.yaml` file.
+
+* Added [Inference using bounds][] docs for the
+  type system.
+
+* Added [Records as simple data structures][] docs for
+  record types.
+
+* Added [Self-referential type parameter restrictions (F-bounds)][]
+  docs for generic types.
+
+* Added [Implicit downcast from `dynamic`][] docs which
+  explain how to implicitly cast expressions with a static
+  type of `dynamic` to a more specific type.
+
+* Added a [support policy][] for the Dart SDK.
+
+* Updated the guidance for when and when not to use
+  class modifiers in the [Effective Dart Design][] guide.
+
+* Updated the guidance to prefer a noun phrase or
+  non-imperative verb phrase for a function or method in the
+  [Effective Dart Documentation][] guide. Also included
+  several small changes to existing documentation guidance.
+  For more information, see [PR 6522][].
+
+* Changed the guidance to prefer a noun phrase or
+  non-imperative verb phrase for a function or method in the
+  [Effective Dart Documentation][] guide.
+
+### Site changes for dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following structural changes to this site:
+
+* Added a new card-based design and the ability to search
+  for entries in the [glossary][].
+
+  <img src="/assets/img/whats-new/3-8-glossary.png" alt="Glossary" style="width:50%">
+
+* New previous and next page buttons for the docs site.
+
+  <img src="/assets/img/whats-new/3-8-prev-next-buttons-new.png" alt="New page buttons" style="width:80%">
+
+* Added individual pages for some [diagnostic messages][].
+  To see an individual page for a diagnostic message, select
+  its **Learn more** button.
+
+  <img src="/assets/img/whats-new/3-8-diagnostic-docs.png" alt="Learn more button" style="width:50%">
+
+[3.8 announcement]: https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47
+[3-8-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+[3-8-c-elements]: /language/collections#collection-elements
+[3-8-null-aware]: /language/collections#null-aware-element
+[glossary]: /resources/glossary
+[Records as simple data structures]: /language/records#records-as-simple-data-structures
+[Self-referential type parameter restrictions (F-bounds)]: /language/generics#f-bounds
+[Inference using bounds]: /language/type-system#inference-using-bounds
+[Effective Dart Design]: /effective-dart/design#do-use-class-modifiers-to-control-if-your-class-can-be-extended
+[Effective Dart Documentation]: /effective-dart/documentation#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+[Labels]: /language/loops#labels
+[`pubspec_overrides.yaml`]: /tools/pub/dependencies#pubspec-overrides
+[support policy]: /tools/sdk#support-policy
+[Implicit downcast from `dynamic`]: /language/type-system#implicit-downcasts-from-dynamic
+[PR 6522]: {{site.repo.this}}/pull/6522
+[Doc imports]: /tools/doc-comments/references#doc-imports
+[Cross-compilation]: /tools/dart-compile
+[diagnostic messages]: /tools/diagnostics
+
+## February 12, 2025: 3.7 release
+
+This section lists notable changes made from December 12, 2024,
+through February 12, 2025.
+For details about the 3.7 release of Dart,
+check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
+
+[3.7 announcement]: https://medium.com/dartlang/announcing-dart-3-7-bf864a1b195c
+[3-7-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#370
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Introduced the new type system algoritm, [inference using bounds][].
+* Added links to our new [Bluesky][] account. 
+* Updated the [`dart format`][] page to reflect the new formatter style,
+  including the new [configurable line length][] feature.
+* Documented the new [shared analysis options][] feature.
+* Changed the Effective Dart entry about [line length][] due to the new
+  formatter style.
+* Introduced details of [stray files][] to the Workspaces page.
+* Added the new language feature [wildcard variables][] to the Variables page.
+* Moved [covariant explanation][] to the better-suited Type system page.
+* Changed references to [legacy JS interop][] libraries explicitly to "deprecated". 
+* Removed the [experimental macros page][], since the team [indefinitely paused][]
+  work on the feature.
+* Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
+  throw a `StateError`.
+* Revamped the [linter rules][] page with new cards, search format, and color-coded
+  icons on the individual lint pages ([for example][]).
+* Redesigned the layout implementation and sidenav for efficiency.
+* Removed the officially-deprecated `dart:html` library page.
+
+[inference using bounds]: /language/type-system/#type-argument-inference
+[for example]: /tools/linter-rules/annotate_overrides
+[Bluesky]: https://bsky.app/profile/dart.dev
+[configurable line length]: /tools/dart-format#configuring-formatter-page-width
+[shared analysis options]: /tools/analysis#including-shared-options
+[line length]: /effective-dart/style#prefer-lines-80-characters-or-fewer
+[stray files]: /tools/pub/workspaces#stray-files
+[wildcard variables]: /language/variables#wildcard-variables
+[covariant explanation]: /language/type-system#covariant-keyword
+[legacy JS interop]: /interop/js-interop/past-js-interop
+[experimental macros page]: /language/macros
+[indefinitely paused]: https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12
+[map-warn]: /language/pattern-types#map
+
+## December 11, 2024: 3.6 release
+
+This section lists notable changes made from August 7, 2024,
+through December 11, 2024.
+For details about the 3.6 release of Dart,
+check out the [3.6 announcement][] and the [SDK changelog][3-6-changelog].
+
+[3.6 announcement]: https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983
+[3-6-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#360
+
+### Docs updated or added to dart.dev {:.no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Documented the new [pub workspaces][] feature.
+* Explained the new `pub get` flag [`--enforce-lockfile`][].
+* Introduced guidance around [synchronous communication][] between too many isolates
+  on the Concurrency page.
+* Added new language feature [digit separators][] to the Built-in types page.
+* Defined [variance and variance positions][] on the glossary page.
+* Created a new page for the new [documentation comment references][] feature.
+* Updated and improved the [Dart platforms graphic][] to include newly available
+  support compiling to RISC-V and WASM.
+* Defined [function types][]. 
+* Added glossary definitions for the different kinds of code fixes available
+  from the analyzer ([assists][], [refactors][], and [quick fixes][]).
+* Created a [page][bump-page] for the new `pub bump` command.
+* Updated the [example for generative constructors][] to reflect the use of
+  optional positional parameters with default values.
+* Improved conditional [import/export documentation][] on the package creation page.
+* Included `@override` annotations in [mixin code examples][] to correctly showcase
+  how to work with mixed-in functions.
+* Provided an alternative to SSH for accessing private repo dependencies on
+  the [pub dependencies page][]. 
+* Added a new `pub publish` warning about clean `git status` validation to the
+  [publishing task list][].
+* Deprecated the Language and Library tour pages (contents are now on individual
+  pages under [Language][lang-sidenav] and [Core libraries][lib-sidenav]
+  in the left side-nav panel).
+
+[pub workspaces]: /tools/pub/workspaces
+[`--enforce-lockfile`]: /tools/pub/packages#get-dependencies-for-production
+[synchronous communication]: /language/concurrency#synchronous-blocking-communication-between-isolates
+[digit separators]: /language/built-in-types#digit-separators
+[variance and variance positions]: /resources/glossary#variance
+[documentation comment references]: /tools/doc-comments/references
+[Dart platforms graphic]: /overview#platform
+[function types]: /language/functions#function-types
+[assists]: /resources/glossary#assist
+[refactors]: /resources/glossary#refactor
+[quick fixes]: /resources/glossary#quick-fix
+[bump-page]: /tools/pub/cmd/pub-bump
+[example for generative constructors]: /language/constructors#generative-constructors
+[import/export documentation]: /tools/pub/create-packages#conditionally-importing-and-exporting-library-files
+[mixin code examples]: /language/mixins
+[pub dependencies page]: /tools/pub/dependencies#git-packages
+[publishing task list]: /tools/pub/publishing#publish-to-pub-dev
+[lib-sidenav]: /libraries
+[lang-sidenav]: /language
 
 ## August 6, 2024: 3.5 release
 
@@ -388,7 +606,7 @@ we made the following changes:
 [Dart 3 migration guide]: /resources/dart-3-migration
 [language evolution]: /resources/language/evolution
 [language versioning]: /resources/language/evolution#language-versioning
-[compilation environment declarations]: /guides/environment-declarations
+[compilation environment declarations]: /libraries/core/environment-declarations
 [Java interop]: /interop/java-interop
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
 [`dart info`]: /tools/dart-info
@@ -532,7 +750,7 @@ we made the following changes to this site:
 
 * Introduced the [Objective-C and Swift interop][] page,
   which explains how to use Dart packages to call APIs from those languages.
-* Added a workaround to [Fixing common type problems][], 
+* Added a workaround to Fixing common type problems,
   for the rare case where type inference might incorrectly infer an argument type is null.
 * Removed all mention of discontinued `.packages` files from [What not to commit][].
   If you still need to generate a `.packages` file due to third-party legacy dependencies,
@@ -548,7 +766,6 @@ we made the following changes to this site:
 * Added a section on customizing [`dart fix`][].
 
 [Objective-C and Swift interop]: /interop/objective-c-interop
-[Fixing common type problems]: /deprecated/sound-problems
 [What not to commit]: /tools/pub/private-files
 [`dart pub get` Options]: /tools/pub/cmd/pub-get#options
 [`dart compile`]: /tools/dart-compile
@@ -618,7 +835,7 @@ we made the following changes to this site:
     as the underlying compilers of tools like
     [`dart compile js`][] and [`webdev`][].
 * Increased documentation coverage of null safety:
-  * Documented the non-null assertion operator (`!`) as part of
+  * Documented the not-null assertion operator (`!`) as part of
     the [Other operators][] section of the language tour.
   * Migrated the [Low-level HTML tutorials][] to support null safety
     and discuss how to interact with web APIs while using it.

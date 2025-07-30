@@ -17,6 +17,5 @@ Analyzing type_system...
   error - lib/strong_analysis.dart:109:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
   error - lib/strong_analysis.dart:121:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
   error - lib/strong_analysis.dart:148:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
-  error - test/strong_test.dart:120:26 - A value of type 'dynamic' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
 
-16 issues found.
+15 issues found.

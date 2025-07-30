@@ -40,9 +40,13 @@ letter of each word (including the first word), and use no separators.
 
 <?code-excerpt "style_good.dart (type-names)"?>
 ```dart tag=good
-class SliderMenu { ... }
+class SliderMenu {
+   ...
+}
 
-class HttpRequest { ... }
+class HttpRequest {
+   ...
+}
 
 typedef Predicate<T> = bool Function(T value);
 ```
@@ -56,10 +60,14 @@ class Foo {
 }
 
 @Foo(anArg)
-class A { ... }
+class A {
+   ...
+}
 
 @Foo()
-class B { ... }
+class B {
+   ...
+}
 ```
 
 If the annotation class's constructor takes no parameters, you might want to
@@ -70,7 +78,9 @@ create a separate `lowerCamelCase` constant for it.
 const foo = Foo();
 
 @foo
-class C { ... }
+class C {
+   ...
+}
 ```
 
 ### DO name extensions using `UpperCamelCase`
@@ -83,9 +93,13 @@ and use no separators.
 
 <?code-excerpt "style_good.dart (extension-names)"?>
 ```dart tag=good
-extension MyFancyList<T> on List<T> { ... }
+extension MyFancyList<T> on List<T> {
+   ...
+}
 
-extension SmartIterable<T> on Iterable<T> { ... }
+extension SmartIterable<T> on Iterable<T> {
+   ...
+}
 ```
 
 [extensions]: /language/extension-methods
@@ -245,7 +259,7 @@ HTTP // "hypertext transfer protocol"
 NASA // "national aeronautics and space administration"
 URI // "uniform resource identifier"
 esq // "esquire"
-Ave // "avenue"
+ave // "avenue"
 
 Id // "identifier"
 Tv // "television"
@@ -265,18 +279,29 @@ var tvSet = Television();
 var mrRogers = 'hello, neighbor';
 ```
 
-### PREFER using `_`, `__`, etc. for unused callback parameters
+<a id="prefer-using-_-__-etc-for-unused-callback-parameters" aria-hidden="true"></a>
+
+### PREFER using wildcards for unused callback parameters
 
 Sometimes the type signature of a callback function requires a parameter,
 but the callback implementation doesn't _use_ the parameter.
-In this case, it's idiomatic to name the unused parameter `_`.
-If the function has multiple unused parameters, use additional
-underscores to avoid name collisions: `__`, `___`, etc.
+In this case, it's idiomatic to name the unused parameter `_`,
+which declares a [wildcard variable][wildcards] that is non-binding.
 
-<?code-excerpt "style_good.dart (unused-callback-params)"?>
+<?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
 futureOfVoid.then((_) {
   print('Operation complete.');
+});
+```
+
+Because wildcard variables are non-binding,
+you can name multiple unused parameters `_`.
+
+<?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
+```dart tag=good
+.onError((_, _) {
+  print('Operation failed.');
 });
 ```
 
@@ -287,6 +312,23 @@ In contrast, top-level functions and method declarations don't have that context
 so their parameters must be named so that it's clear what each parameter is for,
 even if it isn't used.
 
+:::version-note
+Declaring non-binding [wildcard variables][wildcards] requires
+a [language version][] of at least 3.7.
+
+In earlier language versions, use additional underscores to
+work around name collisions, such as `__` and `___`.
+To enforce not using them and simplify the migration to wildcards later on,
+enable the [`no_wildcard_variable_uses`][] lint.
+
+To help migrate from this convention to wildcard variables,
+enable the [`unnecessary_underscores`][] lint.
+:::
+
+[wildcards]: /language/variables#wildcard-variables
+[language version]: /resources/language/evolution#language-versioning
+[`no_wildcard_variable_uses`]: /tools/linter-rules/no_wildcard_variable_uses
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
 
 ### DON'T use a leading underscore for identifiers that aren't private
 
@@ -355,7 +397,7 @@ A single linter rule handles all the ordering guidelines:
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
 import 'dart:async';
-import 'dart:html';
+import 'dart:collection';
 
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
@@ -454,8 +496,8 @@ formatting the code by hand and trying to make it more readable. Think of
 `dart format` as a partnership where you work together, sometimes iteratively, 
 to produce beautiful code.
 
-
-### AVOID lines longer than 80 characters
+<a id="avoid-lines-longer-than-80-characters"></a>
+### PREFER lines 80 characters or fewer
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -469,7 +511,8 @@ compact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask
 yourself, "Does each word in that type name tell me something critical or
 prevent a name collision?" If not, consider omitting it.
 
-Note that `dart format` does 99% of this for you, but the last 1% is you. 
+Note that `dart format` defaults to 80 characters or fewer, though you can
+[configure][] the default. 
 It does not split long string literals to fit in 80 columns, 
 so you have to do that manually.
 
@@ -480,6 +523,8 @@ an import or export), it may remain whole even if it causes the line to go over
 **Exception:** Multi-line strings can contain lines longer than 80 characters
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
+
+[configure]: /tools/dart-format#configuring-formatter-page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### DO use curly braces for all flow control statements

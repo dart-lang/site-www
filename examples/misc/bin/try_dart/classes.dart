@@ -30,10 +30,7 @@ class DiamondSword extends Sword {
 
 void main() {
   // The 'new' keyword is optional.
-  var chest = Chest<Item>([
-    DiamondSword(),
-    Sword(),
-  ]);
+  var chest = Chest<Item>([DiamondSword(), Sword()]);
 
   chest.use();
 

@@ -8,16 +8,10 @@ prevpage:
   title: Asynchronous support
 nextpage:
   url: /null-safety
-  title: Sound Null Safety
+  title: Sound null safety
 ---
 
 <?code-excerpt path-base="concurrency"?>
-
-<style>
-  article img {
-    padding: 15px 0;
-  }
-</style>
 
 This page discusses some examples that use the `Isolate` API to implement 
 isolates.
@@ -118,7 +112,7 @@ main isolate, because it's running concurrently either way.
 
 For the complete program, check out the [send_and_receive.dart][] sample.
 
-[send_and_receive.dart]: {{site.repo.dart.org}}/samples/blob/main/isolates/bin/send_and_receive.dart
+[send_and_receive.dart]: {{site.repo.dart.samples}}/blob/main/isolates/bin/send_and_receive.dart
 [background worker]: /language/concurrency#background-workers
 [main isolate]: /language/concurrency#the-main-isolate
 
@@ -236,10 +230,10 @@ now both sides have an open channel to send and receive messages.
 The diagrams in this section are high-level and intended to convey the 
 _concept_ of using ports for isolates. Actual implementation requires 
 a bit more code, which you will find 
-[later on this page](#basic-ports-example).  
+[later on this page](#basic-ports-example).
 :::
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-setup.png){:.diagram-wrap}
 
 1. Create a `ReceivePort` in the main isolate. The `SendPort` is created
    automatically as a property on the `ReceivePort`.
@@ -254,7 +248,7 @@ Along with creating the ports and setting up communication, you’ll also need
 to tell the ports what to do when they receive messages. This is done using
 the `listen` method on each respective `ReceivePort`.
 
-![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png)
+![A figure showing events being fed, one by one, into the event loop](/assets/img/language/concurrency/ports-passing-messages.png){:.diagram-wrap}
 
 1. Send a message via the main isolate’s reference to the worker isolate's
    `SendPort`.
@@ -506,6 +500,7 @@ Future<void> parseJson(String message) async {
       await _isolateReady.future;
       _sendPort.send(message);
     }
+  
   }
   ```
 
@@ -613,7 +608,7 @@ In the `Worker.spawn` method:
   the `ReceivePort.fromRawReceivePort` constructor, and pass in
   the `initPort`.
 
-<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_1.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
@@ -630,8 +625,8 @@ class Worker {
         commandPort,
       ));
     };
-// ···
   }
+}
 ```
 
 By creating a `RawReceivePort` first, and then a `ReceivePort`, you’ll be able
@@ -662,14 +657,14 @@ the `initPort` will be closed, and the `Worker` object won’t be created.
 - Finally, return an instance of `Worker` by calling its private constructor,
   and passing in the ports from that completer.
 
-<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)"?>
+<?code-excerpt "lib/robust_ports_example/spawn_2.dart (worker-spawn)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {
@@ -692,6 +687,7 @@ class Worker {
 
     return Worker._(receivePort, sendPort);
   }
+}
 ```
 
 Note that in this example (compared to the [previous example][]), `Worker.spawn`
@@ -714,15 +710,16 @@ method. In the constructor body, add a listener to the receive port used by the
 main isolate, and pass an as-yet undefined method to that listener
 called `_handleResponsesFromIsolate`. 
 
-<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)"?>
+<?code-excerpt "lib/robust_ports_example/step_4.dart (constructor)" plaster="none"?>
 ```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
-// ···
+
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
+}
 ```
 
 Next, add the code to `_startRemoteIsolate` that is responsible for initializing
@@ -758,7 +755,9 @@ and sending the decoded json back as a response.
 <?code-excerpt "lib/robust_ports_example/step_4.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     try {
       final jsonData = jsonDecode(message as String);
@@ -823,6 +822,8 @@ class Worker {
   final ReceivePort _responses;
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
+  // ···
+}
 ```
 
 The `_activeRequests` map associates a message sent to the worker isolate
@@ -867,7 +868,9 @@ the id and the decoded json back to the main isolate, again using a record.
 <?code-excerpt "lib/robust_ports_example/step_5_add_completers.dart (handle-commands)"?>
 ```dart
 static void _handleCommandsToIsolate(
-    ReceivePort receivePort, SendPort sendPort) {
+  ReceivePort receivePort,
+  SendPort sendPort,
+) {
   receivePort.listen((message) {
     final (int id, String jsonText) = message as (int, String); // New
     try {
@@ -922,7 +925,7 @@ ports on the main isolate and the worker isolate.
 ```dart
 class Worker {
   bool _closed = false;
-// ···
+  // ···
   void close() {
     if (!_closed) {
       _closed = true;
@@ -931,6 +934,7 @@ class Worker {
       print('--- port closed --- ');
     }
   }
+}
 ```
 
 - Next, you need to handle the “shutdown” message in the worker isolate. Add the
@@ -993,7 +997,8 @@ void main() async {
   print(await worker.parseJson('"banana"'));
   print(await worker.parseJson('[true, false, null, 1, "string"]'));
   print(
-      await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]));
+    await Future.wait([worker.parseJson('"yes"'), worker.parseJson('"no"')]),
+  );
   worker.close();
 }
 
@@ -1014,7 +1019,7 @@ class Worker {
   }
 
   static Future<Worker> spawn() async {
-    // Create a receive port and add its initial message handler
+    // Create a receive port and add its initial message handler.
     final initPort = RawReceivePort();
     final connection = Completer<(ReceivePort, SendPort)>.sync();
     initPort.handler = (initialMessage) {

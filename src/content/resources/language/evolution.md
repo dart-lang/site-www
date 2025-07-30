@@ -42,6 +42,69 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.8
+_Released 20 May 2025_
+| [Dart 3.8 announcement](https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47)
+
+The following language features have been added to Dart 3.8:
+
+*   [Null-aware elements][]: A null-aware element evaluates
+    an expression in a collection literal and if the result
+    is not `null`, inserts the value into the surrounding
+    collection.
+
+The following supporting features have been updated:
+
+*   [Dart format][]: Dart 3.8's formatter builds on the
+    previous release's rewrite, incorporating feedback,
+    bug fixes, and further enhancements. It now
+    intelligently automates trailing comma placement,
+    deciding whether to split constructs rather than forcing
+    them. The update also includes style changes to tighten
+    and improve code output.
+    
+For more information about these and additional changes, see
+the [Dart 3.8 changelog][].
+
+[Null-aware elements]: /language/collections#null-aware-element
+[Dart format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+[Dart 3.8 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
+
+### Dart 3.7
+_Released 12 February 2025_
+| [Dart 3.7 announcement](https://medium.com/dartlang/announcing-dart-3-7-bf864a1b195c)
+
+Dart 3.7 added support for [wildcard variables][] to the language.
+A wildcard variable is a local variable or parameter named `_`.
+Wildcard variables are non-binding,
+so they can be declared multiple times without collisions.
+For example:
+
+```dart
+Foo(_, this._, super._, void _()) {}
+```
+
+The `dart format` command is also now tied to the language version as of 3.7.
+If the language version of an input file is 3.7 or later, the code is formatted
+with the new tall style. 
+
+The new style looks similar to the style you get when you add trailing commas
+to argument lists, except that now the formatter will add and remove those
+commas for you. When an argument or parameter lists splits, it is formatted
+like so:
+
+```dart
+longFunction(
+  longArgument,
+  anotherLongArgument,
+);
+```
+
+You can find more details in the [changelog][dart-format].
+
+[wildcard variables]: /language/variables#wildcard-variables
+[dart-format]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#dart-format
+
 ### Dart 3.6
 _Released 11 December 2024_
 | [Dart 3.6 announcement](https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983)

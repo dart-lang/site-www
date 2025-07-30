@@ -11,10 +11,6 @@ void main() {
     final quotes = File(pathToQuotes);
     expect(quotes.readAsStringSync(), contains('#'));
 
-    expect(
-        () => cat_no_hash.main([quotes.path]),
-        prints(
-          isNot(contains('#')),
-        ));
+    expect(() => cat_no_hash.main([quotes.path]), prints(isNot(contains('#'))));
   });
 }

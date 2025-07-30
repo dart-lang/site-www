@@ -1,4 +1,5 @@
-// ignore_for_file: argument_type_not_assignable, prefer_collection_literals
+import 'dart:collection';
+
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 
@@ -9,14 +10,14 @@ void main() {
     var names = <String>[];
     names.addAll(['Seth', 'Kathy', 'Lars']);
     // #docregion constructor-1
-    var nameSet = Set<String>.from(names);
+    var nameSet = Set<String>.of(names);
     // #enddocregion constructor-1
     expect(nameSet.length, 3);
   });
 
   test('constructor-2', () {
     // #docregion constructor-2
-    var views = Map<int, View>();
+    var views = SplayTreeMap<int, View>();
     // #enddocregion constructor-2
     expect(views.length, 0);
   });
@@ -65,3 +66,21 @@ void main() {
 }
 
 class View {}
+
+// #docregion f-bound
+// ignore: one_member_abstracts
+abstract interface class Comparable<T> {
+  int compareTo(T o);
+}
+
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
+  @override
+  int compareTo(A other) => /*...implementation...*/ 0;
+}
+
+int useIt = compareAndOffset(A(), A());
+
+// #enddocregion f-bound

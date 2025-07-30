@@ -95,7 +95,7 @@ var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
-  'humans.txt': 'We are people, not machines'
+  'humans.txt': 'We are people, not machines',
 };
 ```
 
@@ -107,15 +107,15 @@ angle brackets (`<...>`) just after the class name. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 ```dart
-var nameSet = Set<String>.from(names);
+var nameSet = Set<String>.of(names);
 ```
 
-The following code creates a map that has integer keys and values of
-type View:
+The following code creates a `SplayTreeMap` that has
+integer keys and values of type `View`:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 ```dart
-var views = Map<int, View>();
+var views = SplayTreeMap<int, View>();
 ```
 
 
@@ -144,6 +144,7 @@ an object is a List, but you can't test whether it's a `List<String>`.
 When implementing a generic type,
 you might want to limit the types that can be provided as arguments,
 so that the argument must be a subtype of a particular type.
+This restriction is called a bound.
 You can do this using `extends`.
 
 A common use case is ensuring that a type is non-nullable
@@ -168,7 +169,9 @@ class Foo<T [!extends SomeBaseClass!]> {
   String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {...}
+class Extender extends SomeBaseClass {
+  ...
+}
 ```
 
 It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
@@ -193,6 +196,31 @@ Specifying any non-`SomeBaseClass` type results in an error:
 var foo = [!Foo<Object>!]();
 ```
 
+### Self-referential type parameter restrictions (F-bounds) {:#f-bounds}
+
+When using bounds to restrict parameter types, you can refer the bound
+back to the type parameter itself. This creates a self-referential constraint,
+or F-bound. For example:
+
+<?code-excerpt "misc/test/language_tour/generics_test.dart (f-bound)"?>
+```dart
+abstract interface class Comparable<T> {
+  int compareTo(T o);
+}
+
+int compareAndOffset<T extends Comparable<T>>(T t1, T t2) =>
+    t1.compareTo(t2) + 1;
+
+class A implements Comparable<A> {
+  @override
+  int compareTo(A other) => /*...implementation...*/ 0;
+}
+
+int useIt = compareAndOffset(A(), A());
+```
+
+The F-bound `T extends Comparable<T>` means `T` must be comparable to itself.
+So, `A` can only be compared to other instances of the same type.
 
 ## Using generic methods
 

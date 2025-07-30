@@ -3,7 +3,7 @@ title: Variables
 description: Learn about variables in Dart.
 prevpage:
   url: /language
-  title: Basics
+  title: Introduction
 nextpage:
   url: /language/operators
   title: Operators
@@ -252,7 +252,7 @@ const baz = []; // Equivalent to `const []`
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON'T use const redundantly][].
 
-You can change the value of a non-final, non-const variable,
+You can change the reference of a non-final, non-const variable,
 even if it used to have a `const` value:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
@@ -291,6 +291,70 @@ For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
 
+## Wildcard variables
+
+:::version-note
+Wildcard variables require
+a [language version][] of at least 3.7.
+:::
+
+A wildcard variable with the name `_` declares a local variable or parameter
+that is non-binding; essentially, a placeholder.
+The initializer, if there is one, is still executed, but the value isn't accessible.
+Multiple declarations named `_` can exist in the same namespace without a collision error.
+
+Top-level declarations or members where library privacy might be affected are
+not valid uses for wildcard variables.
+Declarations local to a block scope, such as the following examples,
+can declare a wildcard:
+
+* Local variable declaration.
+  ```dart
+  main() {
+    var _ = 1;
+    int _ = 2;
+  }
+  ```
+
+* For loop variable declaration.
+  ```dart
+  for (var _ in list) {}
+  ```
+
+* Catch clause parameters.
+  ```dart
+  try {
+    throw '!';
+  } catch (_) {
+    print('oops');
+  }
+  ```
+
+* Generic type and function type parameters.
+  ```dart
+  class T<_> {}
+  void genericFunction<_>() {}
+
+  takeGenericCallback(<_>() => true);
+  ```
+
+* Function parameters.
+  ```dart
+  Foo(_, this._, super._, void _()) {}
+
+  list.where((_) => true);
+
+  void f(void g(int _, bool _)) {}
+
+  typedef T = void Function(String _, String _);
+  ```
+
+:::tip
+Enable the lint [`unnecessary_underscores`][] to identify where a single
+non-binding wildcard variable `_` can replace the previous convention of using
+multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
+:::
+
 [Assert]: /language/error-handling#assert
 [Instance variables]: /language/classes#instance-variables
 [DON'T use const redundantly]: /effective-dart/usage#dont-use-const-redundantly
@@ -300,3 +364,5 @@ For more information on using `const` to create constant values, see
 [Lists]: /language/collections#lists
 [Maps]: /language/collections#maps
 [Classes]: /language/classes
+[language version]: /resources/language/evolution#language-versioning
+[`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores

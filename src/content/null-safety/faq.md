@@ -216,8 +216,8 @@ The
 on Map (`[]`) by default returns a nullable type. There's no way to signal to
 the language that the value is guaranteed to be there.
 
-In this case, you should use the bang operator (`!`) to cast the value back to
-V:
+In this case, you should use the not-null assertion operator (`!`) to
+cast the value back to `V`:
 
 ```dart
 return blockTypes[key]!;
@@ -339,12 +339,13 @@ seem less than their native targets.
 
 A few notes that are worth highlighting:
 
-* The production JavaScript compiler generates `!` null assertions. You might
-  not notice them when comparing the output of the compiler before and
-  after adding null assertions. That's because the compiler already
+* The production JavaScript compiler generates `!` not-null assertions.
+  You might not notice them when comparing the output of the compiler
+  before and after adding not-null assertions.
+  That's because the compiler already
   generated null checks in programs that weren't null safe.
 
-* The compiler generates these null assertions regardless of the
+* The compiler generates these not-null assertions regardless of the
   soundness of null safety or optimization level. In fact, the compiler
   doesn't remove `!` when using `-O3` or `--omit-implicit-checks`.
 

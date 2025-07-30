@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_cast, strict_raw_type, use_super_parameters
+// ignore_for_file: strict_raw_type, use_super_parameters
 
 Map fetchDefaultData() => {}; // stub
 
@@ -44,6 +44,7 @@ void main() {
   // #docregion emp-as-person
   (employee as Person).firstName = 'Bob';
   // #enddocregion emp-as-person
-// #docregion super
+  // #docregion super
 }
+
 // #enddocregion super

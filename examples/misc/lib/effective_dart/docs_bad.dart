@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element
+// ignore_for_file: unused_element
 import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
@@ -18,6 +18,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence
   }
 
@@ -29,6 +30,7 @@ void miscDeclAnalyzedButNotTested() {
     void delete(String path) {
       ellipsis();
     }
+
     // #enddocregion first-sentence-a-paragraph
   }
 }
@@ -62,20 +64,20 @@ class C<ChunkBuilder, Flag, LineWriter> {
   /// @returns The new flag.
   /// @throws ArgumentError If there is already an option with
   ///     the given name or abbreviation.
-  Flag addFlag(String name, String abbr) => ellipsis();
+  Flag addFlag(String name, String abbreviation) => ellipsis();
   // #enddocregion no-annotations
 }
 
 //----------------------------------------------------------------------------
 
 class Pool {
-// #docregion getter-and-setter
+  // #docregion getter-and-setter
   /// The depth of the water in the pool, in meters.
   int get waterDepth => ellipsis();
 
   /// Updates the water depth to a total of [meters] in height.
   set waterDepth(int meters) => ellipsis();
-// #enddocregion getter-and-setter
+  // #enddocregion getter-and-setter
 }
 
 //----------------------------------------------------------------------------
@@ -86,7 +88,7 @@ class Component {
 
 // #docregion doc-before-meta
 @Component(selector: 'toggle')
-
 /// A button that can be flipped on and off.
 class ToggleComponent {}
+
 // #enddocregion doc-before-meta

@@ -11,7 +11,7 @@ import 'package:examples/library_tour/io/http_server.dart' as http_server;
 import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
-  test('readAsString, readAsLines', () async {
+  test('readAsString, readAsLines', () {
     // #docregion read-as-string
     void main() async {
       var config = File('test_data/config.txt');
@@ -27,9 +27,12 @@ void main() {
     // #enddocregion read-as-string
 
     expect(
-        main,
-        m.prints(
-            ['The file is 58 characters long.', 'The file is 4 lines long.']));
+      main,
+      m.prints([
+        'The file is 58 characters long.',
+        'The file is 4 lines long.',
+      ]),
+    );
   });
 
   test('readAsBytes', () {
@@ -63,11 +66,14 @@ void main() {
 
   test('read-from-stream', () {
     expect(
-        main_test_read_from_stream,
-        prints(allOf([
+      main_test_read_from_stream,
+      prints(
+        allOf([
           contains(RegExp(r'Got \d+ characters from stream')),
           contains('file is now closed'),
-        ])));
+        ]),
+      ),
+    );
   });
 
   test('write-file', () async {
@@ -109,7 +115,7 @@ void main() {
     expect(main, prints(contains('Found file')));
   });
 
-  test('client-server', () async {
+  test('client-server', () {
     // #docregion client
     Future<void> main() async {
       var url = Uri.parse('http://localhost:8888/dart');
@@ -123,16 +129,14 @@ void main() {
     // #enddocregion client
 
     http_server.stopAfter = 1;
-    void clientAndServer() => Future.wait([
-          http_server.main(),
-          main(),
-        ]);
+    void clientAndServer() => Future.wait([http_server.main(), main()]);
     expect(
-        clientAndServer,
-        m.prints([
-          'Got request for /dart',
-          'Response 200: [Hello from the server]'
-        ]));
+      clientAndServer,
+      m.prints([
+        'Got request for /dart',
+        'Response 200: [Hello from the server]',
+      ]),
+    );
   });
 }
 

@@ -1,4 +1,4 @@
-@use '../core/variables' as *;
+@use '../base/mixins';
 
 .tag-label {
   user-select: none;
@@ -6,22 +6,81 @@
   padding: 0 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.925rem;
-  font-family: $site-font-family-gsans;
+  font-family: var(--site-ui-fontFamily);
   text-wrap: nowrap;
 }
 
 .language-versioned-tag {
   background-color: #13B9FD;
+  color: #212121;
 }
 
 .deprecated-tag {
   background-color: #F2AA3A;
+  color: #212121;
 }
 
 .removed-tag {
   background-color: #F3655B;
+  color: #212121;
 }
 
 .experimental-tag {
   background-color: #DADCE0;
+  color: #212121;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .tag-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(194 229 255);
+    color: #212121;
+    gap: 0.25rem;
+    font-size: 1rem;
+    padding: 0.1rem 0.4rem;
+
+    span.material-symbols {
+      fill: currentcolor;
+      position: relative;
+      font-size: 1.25rem;
+      font-variation-settings: "FILL" 1;
+    }
+
+    &.green {
+      background-color: rgb(214, 245, 230);
+    }
+
+    &.orange {
+      background-color: rgb(255, 220, 185);
+    }
+
+    &.red {
+      background-color: rgb(255, 205, 200);
+    }
+  }
+
+  span.tag-label {
+    display: inline-flex;
+  }
+
+  a.tag-label {
+    text-decoration: none;
+
+    &:hover {
+      @include mixins.interaction-style(6%);
+      text-decoration: none;
+    }
+
+    &:active {
+      @include mixins.interaction-style(10%);
+      text-decoration: none;
+    }
+  }
 }

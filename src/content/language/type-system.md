@@ -126,7 +126,7 @@ Here are some of the less obvious rules:
 Let's see these rules in detail, with examples that use the following
 type hierarchy:
 
-<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
 ### Use sound return types when overriding methods
@@ -138,7 +138,9 @@ Consider the getter method in the `Animal` class:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
   [!Animal get parent => ...!]
 }
 ```
@@ -151,7 +153,9 @@ you can replace the getter's return type with `HoneyBadger`
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!HoneyBadger!] get parent => ...
@@ -162,7 +166,9 @@ class HoneyBadger extends Animal {
 ```dart tag=fails-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!Root!] get parent => ...
@@ -179,7 +185,7 @@ subtype of the original parameter.
 
 :::note
 If you have a valid reason to use a subtype, you can use the
-[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword).
+[`covariant` keyword](/language/type-system#covariant-keyword).
 :::
 
 Consider the `chase(Animal)` method for the `Animal` class:
@@ -187,7 +193,9 @@ Consider the `chase(Animal)` method for the `Animal` class:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  [!void chase(Animal a) { ... }!]
+  [!void chase(Animal a) {!]
+     ...
+  }
   Animal get parent => ...
 }
 ```
@@ -199,7 +207,9 @@ It's OK to override the `chase()` method to take anything (`Object`).
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase([!Object!] a) { ... }
+  void chase([!Object!] a) {
+     ...
+  }
 
   @override
   Animal get parent => ...
@@ -211,11 +221,15 @@ from `Animal` to `Mouse`, a subclass of `Animal`.
 
 <?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
 ```dart tag=fails-sa
-class [!Mouse!] extends Animal { ... }
+class [!Mouse!] extends Animal {
+   ...
+}
 
 class Cat extends Animal {
   @override
-  void chase([!Mouse!] a) { ... }
+  void chase([!Mouse!] a) {
+     ...
+  }
 }
 ```
 
@@ -263,6 +277,43 @@ void main() {
 }
 ```
 
+### Implicit downcasts from `dynamic`
+
+Expressions with a static type of `dynamic` can be
+implicitly cast to a more specific type.
+If the actual type doesn't match, the cast throws an error at run time.
+Consider the following `assumeString` method:
+
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
+```dart tag=passes-sa
+int assumeString(dynamic object) {
+  String [!string = object!]; // Check at run time that `object` is a `String`.
+  return string.length;
+}
+```
+
+In this example, if `object` is a `String`, the cast succeeds.
+If it's not a subtype of `String`, such as `int`,
+a `TypeError` is thrown:
+
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
+```dart tag=runtime-fail
+final length = assumeString([!1!]);
+```
+
+:::tip
+To prevent implicit downcasts from `dynamic` and avoid this issue,
+consider enabling the analyzer's _strict casts_ mode.
+
+```yaml title="analysis_options.yaml" highlightLines=3
+analyzer:
+  language:
+    strict-casts: true
+```
+
+To learn more about customizing the analyzer's behavior,
+check out [Customizing static analysis](/tools/analysis).
+:::
 
 ## Type inference
 
@@ -277,9 +328,9 @@ pairs string keys with values of various types.
 
 If you explicitly type the variable, you might write this:
 
-<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
-[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
 Alternatively, you can use `var` or `final` and let Dart infer the type:
@@ -358,6 +409,87 @@ The return type of the closure is inferred as `int` using upward information.
 Dart uses this return type as upward information when inferring the `map()`
 method's type argument: `<int>`.
 
+#### Inference using bounds
+
+:::version-note
+Inference using bounds requires a [language version][] of at least 3.7.0.
+:::
+
+With the inference using bounds feature,
+Dart's type inference algorithm generates constraints by
+combining existing constraints with the declared type bounds,
+not just best-effort approximations.
+
+This is especially important for [F-bounded][] types,
+where inference using bounds correctly infers that, in the example below,
+`X` can be bound to `B`.
+Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
+
+<?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
+```dart
+class A<X extends A<X>> {}
+
+class B extends A<B> {}
+
+class C extends B {}
+
+void f<X extends A<X>>(X x) {}
+
+void main() {
+  f(B()); // OK.
+
+  // OK. Without using bounds, inference relying on best-effort approximations
+  // would fail after detecting that `C` is not a subtype of `A<C>`.
+  f(C());
+
+  f<B>(C()); // OK.
+}
+```
+
+Here's a more realistic example using everyday types in Dart like `int` or `num`:
+
+<?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
+```dart
+X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
+
+void main() {
+  // Inferred as `max<num>(3, 7)` with the feature, fails without it.
+  max(3, 7);
+}
+```
+
+With inference using bounds, Dart can *deconstruct* type arguments,
+extracting type information from a generic type parameter's bound.
+This allows functions like `f` in the following example to preserve both the
+specific iterable type (`List` or `Set`) *and* the element type.
+Before inference using bounds, this wasn't possible 
+without losing type safety or specific type information.
+
+```dart
+(X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
+
+void main() {
+  var (myList, myInt) = f([1]);
+  myInt.whatever; // Compile-time error, `myInt` has type `int`.
+
+  var (mySet, myString) = f({'Hello!'});
+  mySet.union({}); // Works, `mySet` has type `Set<String>`.
+}
+```
+
+Without inference using bounds, `myInt` would have the type `dynamic`.
+The previous inference algorithm wouldn't catch the incorrect expression
+`myInt.whatever` at compile time, and would instead throw at run time.
+Conversely, `mySet.union({})` would be a compile-time error
+without inference using bounds, because the previous algorithm couldn't
+preserve the information that `mySet` is a `Set`.
+
+For more information on the inference using bounds algorithm,
+read the [design document][]. 
+
+
+[F-bounded]: /language/generics/#f-bounds
+[design document]: {{site.repo.dart.lang}}/blob/main/accepted/future-releases/3009-inference-using-bounds/design-document.md#motivating-example
 
 ## Substituting types
 
@@ -386,7 +518,7 @@ or a producer.
 
 Consider the following type hierarchy:
 
-<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 Consider the following simple assignment where `Cat c` is a _consumer_
 and `Cat()` is a _producer_:
@@ -430,7 +562,7 @@ Are the rules the same for generic types? Yes. Consider the hierarchy
 of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 `Animal`, and a supertype of a `List` of `MaineCoon`:
 
-<img src="/assets/img/language/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
+<img src="/assets/img/language/type-hierarchy-generics.png" class="diagram-wrap" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
 In the following example, 
 you can assign a `MaineCoon` list to `myCats`
@@ -472,7 +604,7 @@ depending on the actual type of the list being cast (`myAnimals`).
 When overriding a method, the producer and consumer rules still apply.
 For example:
 
-<img src="/assets/img/language/consumer-producer-methods.png" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
+<img src="/assets/img/language/consumer-producer-methods.png" class="diagram-wrap" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
 
 For a consumer (such as the `chase(Animal)` method), you can replace
 the parameter type with a supertype. For a producer (such as
@@ -483,18 +615,54 @@ For more information, see
 [Use sound return types when overriding methods](#use-proper-return-types)
 and [Use sound parameter types when overriding methods](#use-proper-param-types).
 
+<a id="covariant-keyword" aria-hidden="true"></a>
+#### Covariant parameters
+
+Some (rarely used) coding patterns rely on tightening a type
+by overriding a parameter's type with a subtype, which is invalid.
+In this case, you can use the `covariant` keyword to
+tell the analyzer that you're doing this intentionally.
+This removes the static error and instead checks for an invalid
+argument type at runtime.
+
+The following shows how you might use `covariant`:
+
+<?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
+```dart tag=passes-sa
+class Animal {
+  void chase(Animal x) {
+     ...
+  }
+}
+
+class Mouse extends Animal {
+   ...
+}
+
+class Cat extends Animal {
+  @override
+  void chase([!covariant!] Mouse x) {
+     ...
+  }
+}
+```
+
+Although this example shows using `covariant` in the subtype,
+the `covariant` keyword can be placed in either the superclass
+or the subclass method.
+Usually the superclass method is the best place to put it.
+The `covariant` keyword applies to a single parameter and is
+also supported on setters and fields.
 
 ## Other resources
 
 The following resources have further information on sound Dart:
 
-* [Fixing common type problems](/deprecated/sound-problems) - 
-  Errors you may encounter when writing sound Dart code, and how to fix them.
-* [Fixing type promotion failures](/tools/non-promotion-reasons) - 
+* [Fixing type promotion failures](/tools/non-promotion-reasons) -
   Understand and learn how to fix type promotion errors.
-* [Sound null safety](/null-safety) - 
+* [Sound null safety](/null-safety) -
   Learn about writing code with sound null safety.
-* [Customizing static analysis][analysis] - 
+* [Customizing static analysis][analysis] -
   How to set up and customize the analyzer and linter
   using an analysis options file.
 

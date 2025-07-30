@@ -1,11 +1,11 @@
 // #docregion named
 class Vector2d {
-// #enddocregion named
+  // #enddocregion named
   final double x;
   final double y;
 
   Vector2d(this.x, this.y);
-// #docregion named
+  // #docregion named
   // ...
   Vector2d.named({required this.x, required this.y});
 }
@@ -18,4 +18,5 @@ class Vector3d extends Vector2d {
   //       : super.named(x: 0, y: y);
   Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
 }
+
 // #enddocregion named

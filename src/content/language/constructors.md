@@ -16,20 +16,26 @@ Dart implements many types of constructors.
 Except for default constructors,
 these functions use the same name as their class.
 
-* [Generative constructors][generative]: Creates new instances and
-      initializes instance variables.
-* [Default constructors][default]: Used to create a new instance when a
-     constructor hasn't been specified. It doesn't take arguments and
-     isn't named.
-* [Named constructors][named]: Clarifies the purpose of
-      a constructor or allows the creation of multiple constructors for
-      the same class.
-* [Constant constructors][constant]: Creates instances as compile-type
-      constants.
-* [Factory constructors][factory]: Either creates a new instance of a
-      subtype or returns an existing instance from cache.
-* [Redirecting constructor][redirecting]: Forwards calls to another
-      constructor in the same class.
+[Generative constructors][generative]
+: Creates new instances and initializes instance variables.
+
+[Default constructors][default]
+: Used to create a new instance when a constructor hasn't been specified.
+  It doesn't take arguments and isn't named.
+
+[Named constructors][named]
+: Clarifies the purpose of a constructor or
+  allows the creation of multiple constructors for the same class.
+
+[Constant constructors][constant]
+: Creates instances as compile-time constants.
+
+[Factory constructors][factory]
+: Either creates a new instance of a subtype or
+  returns an existing instance from cache.
+
+[Redirecting constructor][redirecting]
+: Forwards calls to another constructor in the same class.
 
 [default]: #default-constructors
 [generative]: #generative-constructors
@@ -84,9 +90,7 @@ class Point {
   Point(this.x, this.y);
 
   // Named constructor
-  [!Point.origin()!]
-      : x = xOrigin,
-        y = yOrigin;
+  [!Point.origin()!] : x = xOrigin, y = yOrigin;
 }
 ```
 
@@ -97,7 +101,7 @@ implement that constructor in the subclass.
 ### Constant constructors
 
 If your class produces unchanging objects, make these
-objects compile-time constants. 
+objects compile-time constants.
 To make objects compile-time constants, define a `const` constructor
 with all instance variables set as `final`.
 
@@ -120,7 +124,7 @@ To learn more, consult the section on [using constructors][].
 
 A constructor might redirect to another constructor in the same class.
 A redirecting constructor has an empty body.
-The constructor uses `this` instead of the class name after a colon (:).
+The constructor uses `this` instead of the class name after a colon (`:`).
 
 <?code-excerpt "point_redirecting.dart"?>
 ```dart
@@ -141,15 +145,15 @@ When encountering one of following two cases of implementing a constructor,
 use the `factory` keyword:
 
 * The constructor doesn't always create a new instance of its class.
-  Although a factory constructor cannot return `null`,
+  Although a factory constructor can't return `null`,
   it might return:
-  
+
   * an existing instance from a cache instead of creating a new one
   * a new instance of a subtype
 
 * You need to perform non-trivial work prior to constructing an instance.
   This could include checking arguments or doing any other processing
-  that cannot be handled in the initializer list.
+  that can't be handled in the initializer list.
 
 :::tip
 You can also handle late initialization of a final variable
@@ -228,21 +232,22 @@ Dart allows you to supply a constructor as a parameter without calling it.
 Called a _tear-off_ (as you _tear off_ the parentheses)
 serves as a closure that invokes the constructor with the same parameters.
 
-If the tear-off is a constructor with the same signature and return type
-as the method accepts, you can use the tear-off as a parameter or variable.
+If the tear-off is a constructor with the same
+signature and return type as the method accepts,
+you can use the tear-off as a parameter or variable.
 
 Tear-offs differ from lambdas or anonymous functions.
-Lambdas serve as a wrapper for the constructor whereas a tear-off
-is the constructor.
+Lambdas serve as a wrapper for the constructor,
+whereas a tear-off is the constructor.
 
 **Use Tear-Offs**
 
 ```dart tag=good
-// Use a tear-off for a named constructor: 
-var strings = charCodes.map(String.fromCharCode);  
+// Use a tear-off for a named constructor:
+var strings = charCodes.map(String.fromCharCode);
 
-// Use a tear-off for an unnamed constructor: 
-var buffers = charCodes.map(StringBuffer.new); 
+// Use a tear-off for an unnamed constructor:
+var buffers = charCodes.map(StringBuffer.new);
 ```
 
 **Not Lambdas**
@@ -259,7 +264,7 @@ For more discussion, watch this Decoding Flutter video on tear-offs.
 
 {% ytEmbed "OmCaloD7sis", "Dart Tear-offs | Decoding Flutter" %}
 
-## Instance Variable Initialization
+## Instance variable initialization
 
 Dart can initialize variables in three ways.
 
@@ -398,9 +403,7 @@ Separate initializers with commas.
 ```dart
 // Initializer list sets instance variables before
 // the constructor body runs.
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -434,9 +437,9 @@ class Point {
   final double distanceFromOrigin;
 
   Point(double x, double y)
-      : x = x,
-        y = y,
-        distanceFromOrigin = sqrt(x * x + y * y);
+    : x = x,
+      y = y,
+      distanceFromOrigin = sqrt(x * x + y * y);
 }
 
 void main() {

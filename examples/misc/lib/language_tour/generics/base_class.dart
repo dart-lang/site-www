@@ -6,5 +6,8 @@ class Foo<T extends SomeBaseClass> {
   String toString() => "Instance of 'Foo<$T>'"; // ignore: annotate_overrides
 }
 
-class Extender extends SomeBaseClass {/*...*/}
+class Extender extends SomeBaseClass {
+  /*...*/
+}
+
 // #enddocregion generic

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, avoid_init_to_null
+// ignore_for_file: prefer_single_quotes, prefer_adjacent_string_concatenation, avoid_init_to_null
 
 import 'package:test/test.dart';
 
@@ -35,24 +35,31 @@ void main() {
     // #docregion string-interpolation
     var s = 'string interpolation';
 
-    assert('Dart has $s, which is very handy.' ==
-        'Dart has string interpolation, '
-            'which is very handy.');
-    assert('That deserves all caps. '
-            '${s.toUpperCase()} is very handy!' ==
-        'That deserves all caps. '
-            'STRING INTERPOLATION is very handy!');
+    assert(
+      'Dart has $s, which is very handy.' ==
+          'Dart has string interpolation, '
+              'which is very handy.',
+    );
+    assert(
+      'That deserves all caps. '
+              '${s.toUpperCase()} is very handy!' ==
+          'That deserves all caps. '
+              'STRING INTERPOLATION is very handy!',
+    );
     // #enddocregion string-interpolation
   });
 
   test('adjacent-string-literals', () {
     // #docregion adjacent-string-literals
-    var s1 = 'String '
+    var s1 =
+        'String '
         'concatenation'
         " works even over line breaks.";
-    assert(s1 ==
-        'String concatenation works even over '
-            'line breaks.');
+    assert(
+      s1 ==
+          'String concatenation works even over '
+              'line breaks.',
+    );
 
     var s2 = 'The + operator ' + 'works, as well.';
     assert(s2 == 'The + operator works, as well.');

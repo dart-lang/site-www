@@ -14,21 +14,19 @@
     "build-site-for-production": "PRODUCTION=true OPTIMIZE=true tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts"
   },
   "engines": {
-    "node": ">=20.14.0",
-    "pnpm": ">=9.4.0"
+    "node": ">=22.11.0",
+    "pnpm": ">=10.4.1"
   },
-  "packageManager": "pnpm@9.12.3",
-  "dependencies": {
-    "bootstrap-scss": "^4.6.2"
-  },
+  "packageManager": "pnpm@10.13.1",
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy": "^3.1.2",
+    "@swc/html": "^1.13.3",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.10.3",
-    "firebase-tools": "^13.29.1",
+    "@types/node": "^22.17.0",
     "hast-util-from-html": "^2.0.3",
-    "hast-util-select": "^6.0.3",
+    "hast-util-select": "^6.0.4",
+    "hast-util-to-html": "^9.0.5",
     "hast-util-to-text": "^4.0.2",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.0",
@@ -37,8 +35,8 @@
     "markdown-it-attrs": "^4.3.1",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.83.0",
-    "shiki": "^1.25.1",
-    "tsx": "^4.19.2"
+    "sass": "^1.89.2",
+    "shiki": "^3.8.1",
+    "tsx": "4.19.4"
   }
 }

@@ -4,13 +4,13 @@ publish_to: none
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.8.0
 
 dependencies:
-  googleapis: ^13.2.0
-  http: ^1.2.2
+  googleapis: ^14.0.0
+  http: ^1.4.0
   path: ^1.9.0
-  pub_semver: ^2.1.4
+  pub_semver: ^2.2.0
 
 dev_dependencies:
   test: ^1.25.8

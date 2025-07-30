@@ -287,7 +287,9 @@ interfaces:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point-interfaces)"?>
 ```dart
-class Point implements Comparable, Location {...}
+class Point implements Comparable, Location {
+  ...
+}
 ```
 
 

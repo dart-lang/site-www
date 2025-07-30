@@ -10,11 +10,12 @@ void main() {
       .then((_) => four()) // Future completes with two()'s error.
       .then((value) => value.length) // Future completes with two()'s error.
       .catchError((e) {
-    print('Got error: $e'); // Finally, callback fires.
-    return 42; // Future completes with 42.
-  }).then((value) {
-    print('The value is $value');
-  });
+        print('Got error: $e'); // Finally, callback fires.
+        return 42; // Future completes with 42.
+      })
+      .then((value) {
+        print('The value is $value');
+      });
 }
 
 // Output of this program:

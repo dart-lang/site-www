@@ -1,5 +1,6 @@
 ---
 title: How to mock JavaScript interop objects
+description: Learn how to mock JS interop objects in Dart for testing.
 ---
 
 In this tutorial, you'll learn how to mock JS objects so that you can test

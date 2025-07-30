@@ -26,11 +26,12 @@ void main() {
       Large Latte
     ''';
     expect(
-        () => Future.wait([
-              Future.delayed(const Duration(seconds: 4)),
-              Future.sync(futures_intro.main),
-            ]),
-        m.printsLines(output));
+      () => Future.wait([
+        Future.delayed(const Duration(seconds: 4)),
+        Future.sync(futures_intro.main),
+      ]),
+      m.printsLines(output),
+    );
   });
 
   test('get_order_sync_bad', () {
