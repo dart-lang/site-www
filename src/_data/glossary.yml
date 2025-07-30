@@ -744,7 +744,7 @@
     ### Example
 
     ```dart
-    String message = 'Global';
+    final message = 'Global';
 
     void printMessage() {
       final message = 'Local'; // Shadows the global `message` variable.
