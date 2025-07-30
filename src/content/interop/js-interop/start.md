@@ -169,8 +169,8 @@ list.map((e) => e.toJS).toList().toJS;
 * [`package:web`][] exposes many of the browser APIs
   (including those used in the above examples) through interop declarations.
 
-[Conversions]: https://dart.dev/interop/js-interop/js-types#conversions
-[Usage]: https://dart.dev/interop/js-interop/usage
-[`dart:js_interop`]: https://api.dart.dev/main/dart-js_interop/dart-js_interop-library.html
-[`dart:js_interop_unsafe`]: https://api.dart.dev/main/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[Conversions]: /interop/js-interop/js-types#conversions
+[Usage]: /interop/js-interop/usage
+[`dart:js_interop`]: {{site.dart-api}}/main/dart-js_interop/dart-js_interop-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/main/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
 [`package:web`]: /interop/js-interop/package-web
