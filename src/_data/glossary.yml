@@ -744,6 +744,8 @@
     used deliberately to improve the clarity of your code.
 
     ### Example
+    
+    In this example, the local `message` inside `printMessage` **shadows** the global one:
 
     ```dart
     final message = 'Global';
@@ -759,7 +761,6 @@
     }
     ```
 
-
     Shadowing can also occur in nested blocks:
 
     ```dart
@@ -772,7 +773,6 @@
       print(value);     // Prints: 10
     }
     ```
-    
   labels:
     - "language"
   alternate:
