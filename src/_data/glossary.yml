@@ -747,7 +747,7 @@
     String message = 'Global';
 
     void printMessage() {
-      String message = 'Local'; // Shadows the global `message`
+      final message = 'Local'; // Shadows the global `message` variable.
       print(message); // Prints: Local
     }
 
