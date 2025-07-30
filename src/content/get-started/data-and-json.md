@@ -15,11 +15,11 @@ nextpage:
 
 {% include 'fwe-wip-warning.md' %}
 
-In this chapter, you'll learn how to work with JSON (JavaScript Object Notation)
+In this chapter, you'll learn how to work with [JSON (JavaScript Object Notation)][]
 data in Dart. JSON is a common format for data exchange on the web, and you'll
 often encounter it when working with APIs. You'll learn how to convert JSON data
 into Dart objects, making it easier to work with in your application. You'll use
-the `dart:convert` library, the `jsonDecode` function, and pattern matching.
+the [`dart:convert` library][], the `jsonDecode` function, and pattern matching.
 
 :::secondary What you'll learn
 
@@ -76,7 +76,7 @@ a Dart workspace.
     name: _
     publish_to: none
     environment:
-        sdk: ^3.8.1 # IMPORTANT: Adjust this to match your Dart SDK version or a compatible range (e.g., ^3.4.4 if you're on the latest stable)
+        sdk: ^3.8.1 # IMPORTANT: Adjust this to match your Dart SDK version or a compatible range
     workspace:
         - cli
         - command_runner
@@ -138,11 +138,6 @@ Let's create a Dart class to represent this summary.
 3.  Add the following code to `wikipedia/lib/src/model/summary.dart`:
 
     ```dart title="wikipedia/lib/src/model/summary.dart"
-    /*
-     * // Copyright 2025 The Dart and Flutter teams. All rights reserved.
-     * // Use of this source code is governed by a BSD-style license that can be
-     * // found in the LICENSE file.
-     */
     import 'title_set.dart';
 
     class Summary {
@@ -249,7 +244,7 @@ Let's create a Dart class to represent this summary.
 
     This code defines a `Summary` class with properties that correspond to the
     fields in the JSON response from the Wikipedia API. The `fromJson` method
-    uses pattern matching to extract the data from the JSON object and create a
+    uses [pattern matching][] to extract the data from the JSON object and create a
     new `Summary` instance. The `toString` method provides a convenient way to
     print the contents of the `Summary` object. Note that the `TitlesSet` class
     is used in the `Summary` class, so you'll need to create that next.
@@ -464,3 +459,8 @@ class?
 In the next lesson, you'll learn how to test your Dart code using the
 `package:test` library. You'll write tests to ensure that your JSON
 deserialization logic is working correctly.
+
+[JSON (JavaScript Object Notation)]:  https://en.wikipedia.org/wiki/JSON
+[`dart:convert` library]: https://api.dart.dev/dart-convert/
+[pattern matching]: https://dart.dev/language/patterns
+
