@@ -759,7 +759,7 @@
 
     In this example, the local `message` inside `printMessage` **shadows** the global one.
 
-    Shadowing can also happen in nested blocks:
+    Shadowing can also occur in nested blocks:
 
     ```dart
     void main() {
