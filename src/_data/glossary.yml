@@ -757,7 +757,6 @@
     }
     ```
 
-    In this example, the local `message` inside `printMessage` **shadows** the global one.
 
     Shadowing can also occur in nested blocks:
 
@@ -771,8 +770,7 @@
       print(value);     // Prints: 10
     }
     ```
-
-    Although legal, excessive shadowing can reduce code readability and should be avoided in most cases.
+    
   labels:
     - "language"
   alternate:
