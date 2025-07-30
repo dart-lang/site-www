@@ -384,6 +384,7 @@
       { "source": "/to/language-version", "destination": "/resources/language/evolution#language-versioning", "type": 301 },
       { "source": "/to/language-version-override", "destination": "/resources/language/evolution#per-library-language-version-selection", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
+      { "source": "/to/mcp-server", "destination": "/tools/mcp-server", "type": 301 },
       { "source": "/to/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/to/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/to/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
@@ -403,6 +404,7 @@
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
       { "source": "/tools/analyzer", "destination": "/tools/dart-analyze", "type": 301 },
+      { "source": "/tools/dart-mcp-server", "destination": "/tools/mcp-server", "type": 301 },
       { "source": "/tools/dart-pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/tools/dart-vm", "destination": "/tools/dart-run", "type": 301 },
       { "source": "/tools/dart2aot", "destination": "/tools/dart-compile", "type": 301 },

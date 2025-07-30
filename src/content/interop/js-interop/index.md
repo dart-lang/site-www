@@ -59,6 +59,7 @@ For information on interacting with web APIs:
   * [`package:web` and migration]
 
 For tutorials and help:
+  * [Getting started with Javascript interop]
   * [How to mock JavaScript interop objects]
 
 For information on previous JavaScript interop libraries:
@@ -71,6 +72,7 @@ For additional documentation on JavaScript interop:
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
+[Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 [Past JS interop]: /interop/js-interop/past-js-interop
 [`dart:js_interop` API reference]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
