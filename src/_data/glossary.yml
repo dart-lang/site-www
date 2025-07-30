@@ -765,7 +765,7 @@
     void main() {
       final value = 10;
       if (true) {
-        int value = 20; // Shadows the outer `value`
+        final value = 20; // Shadows the outer `value` variable.
         print(value);   // Prints: 20
       }
       print(value);     // Prints: 10
