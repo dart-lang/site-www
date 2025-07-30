@@ -763,7 +763,7 @@
 
     ```dart
     void main() {
-      int value = 10;
+      final value = 10;
       if (true) {
         int value = 20; // Shadows the outer `value`
         print(value);   // Prints: 20
