@@ -463,6 +463,6 @@ In the next lesson, you'll learn how to test your Dart code using the
 deserialization logic is working correctly.
 
 [JSON (JavaScript Object Notation)]:  https://en.wikipedia.org/wiki/JSON
-[`dart:convert` library]: https://api.dart.dev/dart-convert/
+[`dart:convert` library]: {{site.dart-api}}/dart-convert/
 [pattern matching]: https://dart.dev/language/patterns
 
