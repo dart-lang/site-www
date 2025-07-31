@@ -1,6 +1,5 @@
 ---
 title: Data and JSON
-short-title: Data and JSON
 description: >-
   Learn about JSON deserialization in Dart, and how to use `dart:convert`,
   `jsonDecode`, and pattern matching to work with JSON data from the Wikipedia
