@@ -36,7 +36,7 @@
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "sass": "^1.89.2",
-    "shiki": "^3.8.1",
+    "shiki": "^3.9.0",
     "tsx": "4.19.4"
   }
 }

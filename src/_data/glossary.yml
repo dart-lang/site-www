@@ -17,6 +17,53 @@
   alternate:
     - "Quick assist"
 
+- term: "Bottom type"
+  short_description: |-
+    A type that has no values and is a subtype of all other types.
+  long_description: |-
+    The **bottom type** in Dart is the type that has **no values** and is
+    considered a [**subtype**](/resources/glossary#subtype) of every other type.
+
+    In Dart, the bottom type is represented by the `Never` type.
+
+    This means a value of type `Never` can be used anywhere,
+    because such a value can never actually exist.
+    It's most often used as the **return type** of functions to
+    indicate they **never return**, such as for those that
+    throw exceptions or loop forever.
+
+    For example, the following `fail` function always throws an exception,
+    so it's declared with a return type of `Never` to
+    indicate that it never returns:
+
+    ```dart
+    Never fail(String message) {
+      throw Exception(message);
+    }
+
+    void main() {
+      String result = fail('Oops'); // OK: Never is a subtype of String.
+    }
+    ```
+
+    Since `fail` never returns, assigning it to a `String` is allowed.
+
+  related_links:
+    - text: "Built-in types"
+      link: "/language/built-in-types"
+      type: "doc"
+    - text: "Never for unreachable code"
+      link: "/null-safety/understanding-null-safety#never-for-unreachable-code"
+      type: "doc"
+    - text: "Bottom types in type theory"
+      link: "https://en.wikipedia.org/wiki/Bottom_type"
+      type: "external"
+  labels:
+    - "type system"
+    - "language"
+  alternate:
+    - "Never"
+
 - term: "Context type"
   short_description: |-
     The type that the surrounding code expects from an expression.
@@ -80,50 +127,6 @@
   labels:
     - "language"
     - "type system"
-
-- term: "Bottom type"
-  short_description: |-
-    A type that has no values and is a subtype of all other types.
-  long_description: |-
-    The **bottom type** in Dart is the type that has **no values** and is
-    considered a [**subtype**](/resources/glossary#subtype) of every other type.
-
-    In Dart, the bottom type is represented by the `Never` type.
-
-    This means a value of type `Never` can be used anywhere,
-    because such a value can never actually exist.
-    It's most often used as the **return type** of functions to
-    indicate they **never return**, such as for those that
-    throw exceptions or loop forever.
-
-    For example, the following `fail` function always throws an exception,
-    so it's declared with a return type of `Never` to
-    indicate that it never returns:
-
-    ```dart
-    Never fail(String message) {
-      throw Exception(message);
-    }
-
-    void main() {
-      String result = fail('Oops'); // OK: Never is a subtype of String.
-    }
-    ```
-
-    Since `fail` never returns, assigning it to a `String` is allowed.
-
-  related_links:
-    - text: "Built-in types"
-      link: "/language/built-in-types"
-      type: "doc"
-    - text: "Never for unreachable code"
-      link: "/null-safety/understanding-null-safety#never-for-unreachable-code"
-      type: "doc"
-  labels:
-    - "type system"
-    - "language"
-  alternate:
-    - "Never"
 
 - term: "Constant context"
   short_description: |-
