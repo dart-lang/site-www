@@ -4,30 +4,37 @@ description: Run custom build scripts.
 ---
 
 :::note
-Support for hooks is in **preview** and
-can be used on the `main` channel.
+Support for build hooks is in **preview** and
+can be used on the `main` and `beta` channels.
 :::
 
-This guide explains how to use the `hooks` and
-`hooks_runner` packages to run custom build scripts for your
-Dart projects.
+This guide explains what hooks are and how to use them.
 
-## Introduction
+# Introduction
 
-The `hooks` package provides a framework for creating hooks.
-Currently, build hooks are supported. A build hook is a Dart
-script that runs during your project's build process. This
-is useful for tasks that need to happen before your
-main application code is compiled, such as:
+Hooks are Dart scripts placed in the `hook/` directory of your Dart package.
+These scripts have predefined format for their input and output, such that the
+Dart SDK can invoke them.
 
-  * Compiling C, C++, Rust, or other native code into a
-    dynamic library.
+The Dart SDK knows about the folling hooks:
 
-  * Generating Dart code based on native headers
-    (for example, using `ffigen`).
+* `hook/build.dart` To may build assets to be bundled with a Dart application.
+* `hook/link.dart` To shrink assets to only the required parts based on Dart
+  AOT tree-shaking information.
 
-  * Downloading or generating other assets required at
-    runtime.
+The `hooks` package provides a Dart API for reading the input and writing the
+output in these hooks.
+
+## Build Hooks
+
+A build hook is a Dart script that runs during your project's build process.
+This is useful for tasks that need to happen before your main application code
+is compiled, such as:
+
+* Compiling C, C++, Rust, or other native code into a dynamic library.
+* Downloading or generating other assets required at runtime.
+* ~~Generating Dart code based on native headers (for example, using
+    `ffigen`).~~ This fits in `hook/generate.dart`
 
 ### Hooks
 
