@@ -1,4 +1,4 @@
-<div class="archive-table table-wrapper" data-channel="{{channel}}">
+<div class="archive-table" data-channel="{{channel}}">
   <form class="form-inline">
     <div class="form-group select">
       <label for="{{channel}}-versions">Version:</label>
@@ -14,30 +14,26 @@
       </select>
     </div>
   </form>
-  <table id="{{channel}}" class="table">
-    <thead>
-      <tr>
-        <th>Version</th>
-        <th>OS</th>
-        <th>Architecture</th>
-        <th>Release date</th>
-        <th>Downloads</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="template">
-        {% if channel == 'stable' %}
-        <td>0.0.0 (ref 00000)</td>
-        {% elsif channel == 'beta' %}
-        <td>0.0.0-0.0.beta (ref 00000)</td>
-        {% else %}
-        <td>0.0.0-0.0.dev (ref 00000)</td>
-        {% endif %}
-        <td>---</td>
-        <td>---</td>
-        <td>01/01/1970</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table id="{{channel}}" class="table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>OS</th>
+          <th>Architecture</th>
+          <th>Release date</th>
+          <th>Downloads</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="template">
+          <td>0.0.0 (ref 00000)</td>
+          <td>---</td>
+          <td>---</td>
+          <td>01/01/1970</td>
+          <td>---</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
