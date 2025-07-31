@@ -4,7 +4,7 @@ short-title: Get Dart
 description: >-
   Get the libraries and command-line tools that you need to develop
   Dart web, command-line, and server apps.
-channel-list: [Stable, Beta, Dev]
+channelList: [Stable, Beta, Dev]
 js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
@@ -83,27 +83,27 @@ use the appropriate package manager for your development platform.
 To upgrade the Dart SDK,
 run the same command to install the Dart SDK from your package manager.
 
-{% tabs "dev-os", true %}
-{% tab "Windows" %}
+<Tabs key="dev-os" wrapped="true">
+  <Tab name="Windows">
 
-{% render 'install/windows.md', site: site %}
+  {% render 'install/windows.md', site: site %}
 
-{% endtab %}
-{% tab "Linux" %}
+  </Tab>
+  <Tab name="Linux">
 
-{% render 'install/linux.md', site: site %}
+  {% render 'install/linux.md', site: site %}
 
-{% endtab %}
-{% tab "macOS" %}
+  </Tab>
+  <Tab name="macOS">
 
-{% render 'install/macos.md', site: site %}
+  {% render 'install/macos.md', site: site %}
 
-{% endtab %}
-{% endtabs %}
+  </Tab>
+</Tabs>
 
 ## Release channel reference {:#release-channels}
 
-{% for channel in channel-list %}
+{% for channel in page.channelList %}
 {% assign chnl = channel | downcase -%}
 {% assign current="`[calculating]`{:.build-rev-" | append: chnl | append: "}" %}
 {% case chnl %}

@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
 
+import 'components/tabs.dart';
 import 'extensions/attribute_processor.dart';
 import 'extensions/code_block_processor.dart';
 import 'extensions/header_processor.dart';
@@ -99,6 +100,7 @@ void main() {
           CodeBlockProcessor(),
         ],
         components: [
+          const DashTabs(),
           CustomComponent(
             pattern: RegExp('Card', caseSensitive: false),
             builder: (name, attributes, child) {
