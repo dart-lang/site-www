@@ -171,6 +171,30 @@ The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
+If the package you depend on has tagged the
+revision of each version of the package,
+you can use `tag_pattern` instead of `ref`,
+together with a version constraint.
+
+Pub will then query Git for all matching tags, and
+feed those version to the version solver.
+
+```yaml highlightLines=5
+dependencies:
+  kittens:
+    git:
+      url: git@github.com:munificent/kittens.git
+      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+    version: ^2.0.1
+```
+
+:::version-note
+Support for `tag_pattern` was introduced in Dart 3.9.
+
+To use `tag_pattern`, the including pubspec (but not the dependency)
+must have an SDK version constraint of `^3.9.0` or higher.
+:::
+
 Pub assumes that the package is in the root of the Git repository. To specify a
 different location in the repo, specify a `path` relative to the repository
 root:
