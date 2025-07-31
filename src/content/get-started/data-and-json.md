@@ -47,10 +47,10 @@ your application.
 
 ### Task 1: Create the Wikipedia package
 
-First, you'll create a new Dart package to house the data models.
+First, create a new Dart package to house the data models.
 
 1.  Navigate to the root directory of your project (`/dartpedia`).
-2.  Run the following command in your terminal:
+1.  Run the following command in your terminal:
 
     ```bash
     dart create wikipedia
@@ -64,8 +64,8 @@ First, you'll create a new Dart package to house the data models.
 
 Dart workspaces allow you to manage multiple related packages within a single
 project, simplifying dependency management and local development. Now that
-you're adding your 3rd package, its a good time to configure your project to use
-a Dart workspace.
+you're adding your third package, its a good time to configure your project to
+use a Dart workspace.
 
 1.  **Create the root `pubspec.yaml` file.**
     
@@ -134,8 +134,9 @@ Let's create a Dart class to represent this summary.
     mkdir -p wikipedia/lib/src/model
     ```
 
-2.  Create the file `wikipedia/lib/src/model/summary.dart`.
-3.  Add the following code to `wikipedia/lib/src/model/summary.dart`:
+1.  Create the file `wikipedia/lib/src/model/summary.dart`.
+
+1.  Add the following code to `wikipedia/lib/src/model/summary.dart`:
 
     ```dart title="wikipedia/lib/src/model/summary.dart"
     import 'title_set.dart';
@@ -255,7 +256,8 @@ The `Summary` class uses a `TitlesSet` class to represent the title information.
 Let's create that class now.
 
 1.  Create the file `wikipedia/lib/src/model/title_set.dart`.
-2.  Add the following code to `wikipedia/lib/src/model/title_set.dart`:
+
+1.  Add the following code to `wikipedia/lib/src/model/title_set.dart`:
 
     ```dart title="wikipedia/lib/src/model/title_set.dart"
     class TitlesSet {
@@ -315,7 +317,8 @@ The Wikipedia API also returns a list of articles in a search result. Let's
 create a Dart class to represent an article.
 
 1.  Create the file `wikipedia/lib/src/model/article.dart`.
-2.  Add the following code to `wikipedia/lib/src/model/article.dart`:
+
+1.  Add the following code to `wikipedia/lib/src/model/article.dart`:
 
     ```dart title="wikipedia/lib/src/model/article.dart"
     class Article {
@@ -418,7 +421,6 @@ At this point, you've created data models to represent JSON structures. There's
 nothing to test at this point. You'll add that application logic in the upcoming
 sections, which will enable you to test how data is deserialized from the
 Wikipedia API.
-
 
 ## Review
 
