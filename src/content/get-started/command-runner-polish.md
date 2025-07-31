@@ -8,8 +8,8 @@ prevpage:
   url: /get-started/advanced-oop
   title: Advanced OOP features
 nextpage:
-  url: /get-started/wikipedia-setup
-  title: Setup for the Wikipedia app
+  url: /get-started/data-and-json
+  title: Data and JSON
 ---
 
 {% include 'fwe-wip-warning.md' %}
