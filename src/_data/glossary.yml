@@ -737,7 +737,8 @@
   short_description: |-
     When a local declaration hides another with the same name.
   long_description: |-
-    **Shadowing** occurs when a local declaration (such as a variable or parameter)
+    **Shadowing** occurs when a local declaration,
+    such as a variable or parameter,
     uses the same name as an existing declaration in an outer scope,
     making the outer one inaccessible within the inner scope.
 
@@ -747,8 +748,9 @@
     used deliberately to improve the clarity of your code.
 
     ### Example
-    
-    In this example, the local `message` inside `printMessage` **shadows** the global one:
+
+    In this example, the local `message` variable inside
+    the `printMessage` function **shadows** the top-level `message` variable:
 
     ```dart
     final message = 'Global';
