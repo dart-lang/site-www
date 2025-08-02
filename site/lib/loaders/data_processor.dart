@@ -1,4 +1,5 @@
-import 'dart:io' show File, Process;
+import 'dart:convert';
+import 'dart:io' show File, FileSystemException, Process;
 
 import 'package:collection/collection.dart';
 import 'package:jaspr_content/jaspr_content.dart';
@@ -35,15 +36,12 @@ final class DataProcessor implements DataLoader {
       );
       final pageFile = File(sourcePath);
       if (await pageFile.exists()) {
+        final inputPath = path.relative(sourcePath, from: '..');
         page.apply(
           data: {
             'page': {
-              if (productionBuild)
-                'date':
-                    (await _lastModifiedWithGit(sourcePath) ??
-                            await pageFile.lastModified())
-                        .formatted,
-              'inputPath': path.relative(sourcePath, from: '..'),
+              if (productionBuild) 'date': ?_lastModifiedDateForPath(inputPath),
+              'inputPath': inputPath,
             },
           },
         );
@@ -52,27 +50,49 @@ final class DataProcessor implements DataLoader {
   }
 }
 
-Future<DateTime?> _lastModifiedWithGit(String filePath) async {
+String? _lastModifiedDateForPath(String inputPath) =>
+    _lastModifiedPerPath[inputPath]?.formatted;
+
+final Map<String, DateTime> _lastModifiedPerPath = () {
+  final fileLastModified = <String, DateTime>{};
+
   try {
-    final processResult = await Process.run(
-      'git',
-      ['log', '-1', '--pretty=format:%ci', '--', filePath],
-    );
+    final output =
+        Process.runSync('git', [
+              'log',
+              '--name-only',
+              '--format=commit-date:%cI',
+              '--',
+              '../src/content',
+            ]).stdout
+            as String;
 
-    if (processResult.exitCode != 0) {
-      return null;
+    final lines = const LineSplitter().convert(output);
+    DateTime? currentCommitDate;
+    for (final line in lines) {
+      // Check if the line is a commit date line.
+      if (line.split('commit-date:') case [_, final dateString]) {
+        // Extract the date string and try to parse it.
+        currentCommitDate = DateTime.tryParse(dateString);
+      } else if (line.isNotEmpty) {
+        // If it's a non-empty line and a date is set, it's a file path.
+        if (currentCommitDate case final lastModifiedTime?) {
+          // Only set the last modified time for this path
+          // if we haven't already stored a later modified time.
+          fileLastModified.putIfAbsent(
+            line,
+            () => lastModifiedTime,
+          );
+        }
+      }
     }
-
-    final commitDateString = (processResult.stdout as String?)?.trim();
-    if (commitDateString == null || commitDateString.isEmpty) {
-      return null;
-    }
-
-    return DateTime.tryParse(commitDateString);
-  } catch (_) {
-    return null;
+  } on FileSystemException catch (_) {
+    // Ignore and fall through to return an empty list.
+    // We just won't render the last updated time.
   }
-}
+
+  return fileLastModified;
+}();
 
 extension on DateTime {
   String get formatted => '$year-$month-$day';
