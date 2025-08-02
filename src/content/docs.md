@@ -20,7 +20,9 @@ To update these cards, edit src/_data/docs_cards.yml.
 <div class="card-grid">
 {% for card in docs_cards -%}
   <Card title="{{card.name}}" link="{{card.url}}">
-    {{card.description}}
+
+  {{card.description}}
+
   </Card>
 {% endfor -%}
 </div>

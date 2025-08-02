@@ -123,10 +123,10 @@ abstract class DashLayout extends PageLayoutBase {
 
     if (pageData['js'] case final List<Object?> jsList) {
       for (final js in jsList) {
-        if (js case {'url': final String jsUrl, 'defer': final bool? defer}) {
+        if (js case {'url': final String jsUrl, 'defer': final Object? defer}) {
           yield script(
             src: jsUrl,
-            attributes: {if (defer ?? false) 'defer': ''},
+            attributes: {if (defer == 'true' || defer == true) 'defer': ''},
           );
         }
       }

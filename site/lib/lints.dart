@@ -1,7 +1,16 @@
-List<LintDetails> loadLints(Object Function() retrieveLints) {
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:path/path.dart' as p;
+
+List<LintDetails> readAndLoadLints() {
   if (_loadedLints case final alreadyLoadedLints?) return alreadyLoadedLints;
 
-  final lintRules = (retrieveLints() as List<Object?>)
+  final lintRulesFile = File(p.join('..', 'src', 'data', 'linter_rules.json'));
+  final rawLintRules =
+      jsonDecode(lintRulesFile.readAsStringSync()) as List<Object?>;
+
+  final lintRules = rawLintRules
       .cast<Map<String, Object?>>()
       .map(LintDetails._)
       .toList(growable: false);

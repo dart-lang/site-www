@@ -70,6 +70,11 @@ a, button {
       font-variation-settings: 'FILL' 1;
       font-size: 20px;
     }
+
+    code {
+      background-color: var(--site-inset-bgColor-translucent-extra);
+      border-color: transparent;
+    }
   }
 
   &.icon-button {

@@ -59,6 +59,7 @@ body {
 
   --site-inset-bgColor: #f9fafb;
   --site-inset-bgColor-translucent: rgba(237, 240, 242, 0.8);
+  --site-inset-bgColor-translucent-extra: rgba(237, 240, 242, 0.2);
   --site-inset-fgColor: var(--site-base-fgColor);
   --site-inset-borderColor: #dadce0;
 
@@ -129,6 +130,7 @@ body {
 
     --site-inset-bgColor: #202731; // pub.dev uses #242b32;
     --site-inset-bgColor-translucent: rgba(32, 39, 49, 0.7);
+    --site-inset-bgColor-translucent-extra: rgba(32, 39, 49, 0.2);
     --site-inset-fgColor: var(--site-base-fgColor);
     --site-inset-borderColor: #485563;
 

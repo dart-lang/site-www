@@ -1,34 +1,14 @@
 import 'dart:convert';
 import 'dart:io' show FileSystemException, Process;
 
-import 'package:collection/collection.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 
-import '../lints.dart';
 import '../util.dart';
 
 final class DataProcessor implements DataLoader {
   @override
   Future<void> loadData(Page page) async {
-    final pageData = page.data.page;
-
-    if (pageData['processLints'] == true) {
-      final lintRules = loadLints(() => page.data['linter_rules']!);
-
-      final filteredLints = lintRules
-          .where(
-            (lint) =>
-                lint.sinceDartSdk != 'Unreleased' &&
-                !lint.sinceDartSdk.contains('wip') &&
-                lint.state != 'removed' &&
-                lint.state != 'internal',
-          )
-          .sortedBy((lint) => lint.name);
-
-      page.apply(data: {'lintsToShow': filteredLints});
-    }
-
     final pageLoader = page.loader;
     if (pageLoader is FilesystemLoader) {
       final sourcePath = path.canonicalize(

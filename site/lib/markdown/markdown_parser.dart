@@ -5,9 +5,11 @@ import 'package:html/parser.dart' as html;
 import 'package:html/src/token.dart' as html;
 // ignore: implementation_imports
 import 'package:html/src/tokenizer.dart' as html;
+import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
 
+import '../extensions/registry.dart';
 import 'alert_syntax.dart';
 import 'attribute_syntax.dart';
 import 'definition_list_syntax.dart';
@@ -37,6 +39,33 @@ final List<md.InlineSyntax> _inlineSyntaxes = [
   AttributeInlineSyntax(),
 ];
 
+class DashMarkdown extends AsyncStatelessComponent {
+  static const NodesBuilder _nodeBuilder = NodesBuilder([]);
+
+  DashMarkdown({
+    required this.content,
+    this.inline = false,
+  });
+
+  final String content;
+  final bool inline;
+
+  @override
+  Stream<Component> build(BuildContext context) async* {
+    final currentPage = context.page;
+    final markdownNodes = _defaultMarkdownDocument.parse(content);
+    var nodes = DashMarkdownParser.buildNodes(markdownNodes);
+    for (final extension in allNodeProcessingExtensions) {
+      nodes = await extension.apply(currentPage, nodes);
+    }
+
+    final builtComponent = _nodeBuilder.build(nodes);
+    if (builtComponent != null) {
+      yield builtComponent;
+    }
+  }
+}
+
 md.Document get _defaultMarkdownDocument => md.Document(
   blockSyntaxes: _blockSyntaxes,
   inlineSyntaxes: _inlineSyntaxes,
@@ -53,7 +82,6 @@ String parseMarkdownToHtml(String markdown, {bool inline = false}) {
 
 final RegExp _markdownFilePattern = RegExp(r'.*\.md$');
 
-// TODO(parlough): Switch back to Jaspr's built in Markdown parser.
 class DashMarkdownParser implements PageParser {
   const DashMarkdownParser();
 
@@ -64,10 +92,10 @@ class DashMarkdownParser implements PageParser {
   List<Node> parsePage(Page page) {
     final markdownNodes = _defaultMarkdownDocument.parse(page.content);
 
-    return _buildNodes(markdownNodes);
+    return buildNodes(markdownNodes);
   }
 
-  static List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
+  static List<Node> buildNodes(Iterable<md.Node> markdownNodes) {
     final rootChildren = <Node>[];
     final root = ElementNode('_', {}, rootChildren);
     final stack = Queue<ElementNode>();
@@ -136,7 +164,7 @@ class DashMarkdownParser implements PageParser {
               'id': ?node.generatedId,
               ...node.attributes,
             },
-            nodeChildren != null ? _buildNodes(nodeChildren) : null,
+            nodeChildren != null ? buildNodes(nodeChildren) : null,
           ),
         );
       }

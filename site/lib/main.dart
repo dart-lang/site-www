@@ -6,16 +6,14 @@ import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
 import 'components/tabs.dart';
-import 'extensions/attribute_processor.dart';
-import 'extensions/code_block_processor.dart';
-import 'extensions/header_processor.dart';
-import 'extensions/table_processor.dart';
+import 'extensions/registry.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
 import 'layouts/doc_layout.dart';
 import 'layouts/homepage_layout.dart';
 import 'loaders/data_processor.dart';
 import 'markdown/markdown_parser.dart';
-import 'pages/lint_rule_pages.dart';
+import 'pages/custom_pages.dart';
+import 'pages/lint_index.dart';
 import 'pages/robots_txt.dart';
 import 'util.dart';
 
@@ -69,7 +67,7 @@ void main() {
       eagerlyLoadAllPages: true,
       loaders: [
         FilesystemLoader(path.join(siteSrcPath, 'content')),
-        LintLoader(),
+        MemoryLoader(pages: allMemoryPages),
       ],
       configResolver: PageConfig.all(
         dataLoaders: [
@@ -91,22 +89,27 @@ void main() {
           const HtmlParser(),
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
-        extensions: const [
-          AttributeProcessor(),
-          TableOfContentsExtension(maxHeaderDepth: 3),
-          HeaderWrapperExtension(),
-          TableWrapperExtension(),
-          CodeBlockProcessor(),
-        ],
+        extensions: allNodeProcessingExtensions,
         components: [
           const DashTabs(),
           CustomComponent(
+            pattern: RegExp('LintRuleIndex', caseSensitive: false),
+            builder: (name, attributes, child) {
+              return const LintRuleIndex();
+            },
+          ),
+          CustomComponent(
             pattern: RegExp('Card', caseSensitive: false),
             builder: (name, attributes, child) {
-              return ContentCard(
-                title: attributes['title']!,
-                link: attributes['link'],
-                child: child!,
+              final link = attributes['link'];
+              final title = attributes['title']!;
+              return Card(
+                header: [
+                  header(classes: 'card-title', [text(title)]),
+                ],
+                content: [?child],
+                link: link,
+                filled: link != null,
               );
             },
           ),
