@@ -18,15 +18,37 @@ for their input and output. With hooks, the Dart SDK can:
 
 1. Discover your hooks.
 1. Execute your hooks with the necessary input.
-1. Consume the output.
+1. Consume the output produced by the hooks.
+
+Example project:
+
+```plaintext
+📁  example_project                   // project with the hooks
+    📁  build                         // assets are generated here
+        📄 asset
+        📄 asset
+        ...
+    📁  hook                          // add hook scripts here
+        📄 build.dart
+        📄 link.dart
+    📁  lib                           // reference your assets here
+        📄 example.dart
+    📁  src                           // add native assets here (build hooks)
+        📄 example_native_library.c
+        📄 example_native_library.h
+    📁  test                          // test your assets here
+        📄 example_test.dart
+```
+
+## Hooks
 
 Currently, the build hook and link hook are available,
-but more are planned. For details, see the
-[Dart hooks project][] on Github.
+but more are planned. To learn more about these hooks,
+see the following sections.
 
 ### Build hooks
 
-A build hook (`hook/build.dart`) builds assets that you want
+A build hook builds assets that you want
 to run during your project's build process. This is useful
 for tasks that need to happen before your main
 application code is compiled, such as:
@@ -36,48 +58,69 @@ application code is compiled, such as:
 * Downloading or generating other assets required at
   runtime.
 
-Build hooks create `CodeAsset`-typed assets.
+Use the [`build`][] function to create a build hook.
+Build hooks are stored in the `hook/build.dart` directory
+and create code assets in the `build/` directory.
+
+[`build`]: {{site.pub-api}}/hooks/0.19.5/hooks/build.html
 
 ### Link hooks
 
-A link hook (`hook/link.dart`) shrinks assets to only the
+A link hook shrinks assets to only the
 required parts based on Dart AOT tree-shaking information.
 
-Link hooks create `CodeAsset`-typed assets.
+Use the [`link`][] function to create a build hook.
+Link hooks are stored in the `hook/link.dart` directory
+and create code assets and data assets in the
+`build/` directory.
 
-### Assets
+[`link`]: {{site.pub-api}}/hooks/0.19.5/hooks/link.html
 
-Assets are the files output from a hook that needs to be
-bundled in a Dart application. These assets can be accessed
-at runtime from the Dart code.
+## Assets
 
-Currently, the Dart SDK can use the following asset type,
-but more are planned:
+Assets are the files output from a hook that need to be
+bundled in a Dart application. Assets can be accessed
+at runtime from the Dart code. Currently, the Dart SDK can
+use the `CodeAsset` and `DataAsset` asset types.
 
-* ([`CodeAsset`][]s). Code assets that represent
-  dynamic libraries compiled from a language other than
-  Dart, such as C, C++, Rust, or Go. They can be used with
-  build and link hooks.
-  
-  Code assets are part of the `code_asset`s package and are
-  called with `dart:ffi` from the Dart code at runtime using
-  the `@Native` annotation.
+### CodeAsset type
+
+A [`CodeAsset`][] represents a code asset. A code asset is
+a dynamic library compiled from a language other than
+Dart, such as C, C++, Rust, or Go. `CodeAsset` is part of
+the `code_asset` package and are called with `dart:ffi` from
+the Dart code at runtime using the `@Native` annotation.
+A code asset can be used with build and link hooks.
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 
+### DataAsset type
+
+A [`DataAsset`][] represents a data asset in bytes format.
+It can be accessed by Dart at runtime and used in
+Dart standalone packages. `DataAsset` is part of the
+`data_asset` package and can be used with link hooks.
+
+[`DataAsset`]: {{site.pub-api}}/data_assets/latest/data_assets/DataAsset-class.html
+
 ## Use a hook
 
-To use a hook with your Dart project, you must include a
-hook from the  the `hooks` package, which provides a
-Dart API for reading input and writing output.
+To setup a hook, use a hook to generate assets, and use
+those assets in your Dart project, see the steps in the
+following sections.
 
 ### Add dependencies
 
 Open your package in a code editor, navigate to its
-`pubspec.yaml`, and then add `hooks` amd `code_assets` as
-`dependencies`. You will also likely need to add a
-tool for your specific task, such as `native_toolchain_c`
-for compiling C code.
+`pubspec.yaml`, and then add the following dependencies as
+needed under `dependencies`:
+
+* `hooks`
+* `code_assets` (for build hooks and link hooks)
+* `data_assets` (for link hooks)
+
+You will also likely need to add a tool for your specific
+task, such as `native_toolchain_c` for compiling C code.
 
 :::note
 You need to add the dependencies under `dependencies`, not
@@ -108,19 +151,38 @@ dev_dependencies:
   ffigen: ^18.0.0
  ```
 
+ Example dependencies for a link hook:
+
+ ```yaml title="pubspec.yaml"
+name: package_with_assets
+description: An example of using a package with assets.
+version: 0.1.0
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+
+dependencies:
+  ...
+  data_assets: any
+  hooks: any
+
+dev_dependencies:
+  ...
+ ```
+
 ### Create a build hook script
 
 If you want to use a build hook, first create the native
 library that you want to use, and then follow these steps to
 connect a build hook to that library in a Dart script: 
 
-1.  Open the script that you want to contain the build hook
-    (for example, `hooks/build.dart`). 
+1.  In your Dart project, create or open `hooks/build.dart`. 
 
 1.  In the main method, add a `build` function from
-    `package:hooks/hooks.dart`. For example:
+    `package:hooks/hooks.dart` and link to the native
+    library. For example:
 
-    ```dart title="hooks/build.dart"
+    ```dart title="hooks/build.dart" highlightLines=6
     import 'package:hooks/hooks.dart';
     import 'package:logging/logging.dart';
     import 'package:native_toolchain_c/native_toolchain_c.dart';
@@ -147,24 +209,27 @@ connect a build hook to that library in a Dart script:
     * `input`: The input for `hook/build.dart`. This
       includes the target OS, target architecture,
       output directory, etc. For details, see
-      the [`BuildInput` class][].
+      the [`BuildInput`][] class.
 
     * `output`: The output for `hook/build.dart`. This
       includes the assets to be bundled, and dependencies.
-      For details, see the [`BuildOutputBuilder` class][].
+      For details, see the [`BuildOutputBuilder`][] class.
+
+[`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
+[`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 
 ### Create a link hook script
 
 If you want to use a link hook, follow these steps to
 add one to a Dart script: 
 
-1.  Open the script that you want to contain the build hook
-    (for example, `hooks/link.dart`). 
+1.  In your Dart project, create or open `hooks/link.dart`. 
 
-1.  In the main method, add a `build` function from
-    `package:hooks/hooks.dart`. For example:
+1.  In the main method, add a `link` function from
+    `package:hooks/hooks.dart` and construct a data asset.
+    For example:
 
-    ```dart title="hooks/link.dart"
+    ```dart title="hooks/link.dart" highlightLines=14
     import 'dart:convert';
     import 'dart:io';
 
@@ -207,32 +272,28 @@ add one to a Dart script:
     * `input`: The input for `hook/link.dart`. This
       includes the target OS, target architecture,
       output directory, etc. For details, see
-      the [`BuildInput` class][].
+      the [`LinkInput`][] class.
 
     * `output`: The output for `hook/link.dart`. This
       includes the assets to be bundled, and dependencies.
-      For details, see the [`BuildOutputBuilder` class][].
+      For details, see the [`LinkOutputBuilder`][] class.
+
+[`LinkInput`]: {{site.pub-api}}/hooks/latest/hooks/LinkInput-class.html
+[`LinkOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/LinkOutputBuilder-class.html
 
 ### Generate assets
 
-Dart invokes the hooks in the `hook/` directory when running
-the `run`, `build`, and `test` commands on your package.
+Assets are generated when you invoke the Dart hooks in
+the `hook/` directory. Your Dart hooks are invoked when when
+you use the `run`, `build`, or `test` command on your
+package.
 
-## Reference assets
+### Reference assets
 
 Assets are the files that hooks create in the
 `build/` directory. Once an asset has been created,
 you can reference it in your code and at runtime with it's
-asset ID.
-
-An asset that is output from a hook and accessed
-at runtime has an _asset ID_ (`assetId`). The asset ID
-is constructed in the build hook as
-`package:$packageName/$packageName.dart` (which is
-`package:native_add_library/native_add_library.dart`).
-The asset ID in `@Native` is optional and defaults to the
-library uri (for example,
-`package:native_add_library/native_add_library.dart`).
+asset ID (`assetId`).
 
 The following example illustrates how to call a native
 C function `add` from `native_add_library.c`:
@@ -244,31 +305,60 @@ import 'dart:ffi' as ffi;
 external int add(int a, int b);
 ```
 
+:::note
+*   The asset ID is constructed in the build hook as
+    `package:$packageName/$packageName.dart` (for example,
+    `package:native_add_library/native_add_library.dart`).
+*   The asset ID in `@Native` is optional and defaults to the
+    library uri (for example,
+    `package:native_add_library/native_add_library.dart`).
+:::
+
+### Test assets
+
+After you've generated an asset and referenced it in
+your Dart code, consider creating a test for the generated
+asset. In the following example, a test is created for
+`native_add_library.dart`, a script that references a
+code asset called  
+
+```dart title="test/native_add_library_test.dart"
+import 'package:native_add_library/native_add_library.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('invoke native function', () {
+    expect(add(24, 18), 42);
+  });
+}
+```
+
 ## Example project
 
-The [`native_add_library`][] example includes the
-minimum code to build and bundle C code in a Dart package.
-The example includes the following files:
+There are several example projects to help you get started
+with hooks:
 
-| **Source file**                         | **Description**                                                                                                                                                                |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
-| [`lib/native_add_library.dart`][]       | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
-| [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
-| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                          |
-
+| **Project** | **Description** |
+| ------------| --------------- |
+| [`download_asset`][] | Library depending on prebuilt assets which are downloaded in the build hook. |
+| [`local_asset`][] | Library bundling all files in a directory as data assets. |
+| [`native_add_app`][] | Invocation of native code bundled with the native assets feature. |
+| [`native_add_library`][] | Native code that should be bundled with Dart and Flutter applications. |
+| [`native_dynamic_linking`][] | Builds three native libraries, two of which are dynamically linked to each other. |
+| [`system_library`][] | A Dart library using a native system library. |
+| [`use_dart_api`][] | Project that uses the C API of the Dart VM. |
+| [`app_with_asset_treeshaking`][] | Calls some methods from `package_with_assets`, which declares assets and treeshakes them. |
+ 
 {: .table .table-striped }
 
-[`src/native_add_library.c`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/src/native_add_library.c
-[`lib/native_add_library.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/lib/native_add_library.dart
-[`test/native_add_library_test.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/test/native_add_library_test.dart
-[`hook/build.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/hook/build.dart
-[`native_add_library`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
+[`download_asset`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/download_asset
+[`local_asset`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/local_asset
 [`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_add_app
-
-For more example projects, see [Hooks example projects][].
-
-[Hooks example projects]: https://github.com/dart-lang/native/tree/main/pkgs/hooks/example/build
+[`native_add_library`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
+[`native_dynamic_linking`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_dynamic_linking
+[`system_library`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/system_library
+[`use_dart_api`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/use_dart_api
+[`app_with_asset_treeshaking`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/link/app_with_asset_treeshaking
 
 ## More information
 
