@@ -69,7 +69,7 @@ The following are definitions of terms used across the Dart documentation.
 
 {% for resource in term.related_links -%}
 <li>
-<a href="{{resource.link}}" class="filled-button">
+<a href="{{resource.link}}" class="filled-button"{% if resource.type == "external" %} target="_blank" rel="noopener"{% endif %}>
 <span class="material-symbols" aria-hidden="true">
 {%- case resource.type %}
   {% when "term", "glossary" %}
@@ -88,6 +88,8 @@ The following are definitions of terms used across the Dart documentation.
     lightbulb
   {% when "lint" %}
     toggle_on
+  {% when "external" %}
+    open_in_new
   {% else %}
     article
 {% endcase -%}

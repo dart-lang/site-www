@@ -12,8 +12,8 @@ prevpage:
   url: /get-started/advanced-oop
   title: Advanced OOP features
 nextpage:
-  url: /get-started/wikipedia-setup
-  title: Setup for the Wikipedia app
+  url: /get-started/data-and-json
+  title: Data and JSON
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
