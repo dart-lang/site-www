@@ -224,15 +224,15 @@ final class _CodeLine {
   final String content;
   final List<({int startColumn, int length})> highlights;
 
-  _CodeLine({required this.content, required this.highlights});
+  const _CodeLine({required this.content, required this.highlights});
 }
 
 class CodeSpan {
   final String text;
-  bool? bold;
-  String? color;
+  final bool? bold;
+  final String? color;
 
-  CodeSpan({required this.text});
+  const CodeSpan({required this.text, this.bold, this.color});
 }
 
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.

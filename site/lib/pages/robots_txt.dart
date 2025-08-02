@@ -4,10 +4,12 @@ import 'package:jaspr_content/jaspr_content.dart';
 import '../util.dart';
 
 final class RobotsTxtOutput implements SecondaryOutput {
+  static final _indexPattern = RegExp(r'/?index\..*');
+
   const RobotsTxtOutput();
 
   @override
-  Pattern get pattern => RegExp(r'/?index\..*');
+  Pattern get pattern => _indexPattern;
 
   @override
   String createRoute(String _) => '/robots.txt';

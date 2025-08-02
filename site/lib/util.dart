@@ -12,7 +12,7 @@ List<Component> underscoreBreaker(String sourceString) {
     // Add a word break opportunity after each underscore,
     // except for the final one.
     if (i < parts.length - 1) {
-      result.add(text('_'));
+      result.add(const Text('_'));
       result.add(const DomComponent(tag: 'wbr'));
     }
   }
@@ -20,17 +20,21 @@ List<Component> underscoreBreaker(String sourceString) {
   return result;
 }
 
-String slugify(String text) {
-  if (text.isEmpty) return text;
+String slugify(String text) => text
+    .toLowerCase()
+    .trim()
+    .replaceAll(_slugifyPunctuationToReplace, '-')
+    .replaceAll(_slugifyUnsupportedToRemove, '')
+    .replaceAll(_slugifyCharsToCombine, '-')
+    .replaceAll(_slugifyHyphenTrim, '');
 
-  return text
-      .toLowerCase()
-      .trim()
-      .replaceAll(RegExp(r'[:.]'), '-')
-      .replaceAll(RegExp(r'[^\p{L}\p{N}\s:._-]', unicode: true), '')
-      .replaceAll(RegExp(r'[\s-]+'), '-')
-      .replaceAll(RegExp(r'^-+|-+$'), '');
-}
+final RegExp _slugifyPunctuationToReplace = RegExp(r'[:.]');
+final RegExp _slugifyUnsupportedToRemove = RegExp(
+  r'[^\p{L}\p{N}\s:._-]',
+  unicode: true,
+);
+final RegExp _slugifyCharsToCombine = RegExp(r'[\s-]+');
+final RegExp _slugifyHyphenTrim = RegExp(r'^-+|-+$');
 
 final RegExp _attributePattern = RegExp(r'(\w+)="([^"]*)"');
 final RegExp _whitespacePattern = RegExp(r'\s+');

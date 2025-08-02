@@ -1,7 +1,7 @@
-List<LintDetails> loadLints(Object? rawLints) {
+List<LintDetails> loadLints(Object Function() retrieveLints) {
   if (_loadedLints case final alreadyLoadedLints?) return alreadyLoadedLints;
 
-  final lintRules = (rawLints as List<Object?>)
+  final lintRules = (retrieveLints() as List<Object?>)
       .cast<Map<String, Object?>>()
       .map(LintDetails._)
       .toList(growable: false);

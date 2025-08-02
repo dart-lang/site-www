@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io' show File, FileSystemException, Process;
+import 'dart:io' show FileSystemException, Process;
 
 import 'package:collection/collection.dart';
 import 'package:jaspr_content/jaspr_content.dart';
@@ -14,7 +14,7 @@ final class DataProcessor implements DataLoader {
     final pageData = page.data.page;
 
     if (pageData['processLints'] == true) {
-      final lintRules = loadLints(page.data['linter_rules']);
+      final lintRules = loadLints(() => page.data['linter_rules']!);
 
       final filteredLints = lintRules
           .where(
@@ -34,18 +34,16 @@ final class DataProcessor implements DataLoader {
       final sourcePath = path.canonicalize(
         path.join(pageLoader.directory, page.path),
       );
-      final pageFile = File(sourcePath);
-      if (await pageFile.exists()) {
-        final inputPath = path.relative(sourcePath, from: '..');
-        page.apply(
-          data: {
-            'page': {
-              if (productionBuild) 'date': ?_lastModifiedDateForPath(inputPath),
-              'inputPath': inputPath,
-            },
+
+      final inputPath = path.relative(sourcePath, from: '..');
+      page.apply(
+        data: {
+          'page': {
+            if (productionBuild) 'date': ?_lastModifiedDateForPath(inputPath),
+            'inputPath': inputPath,
           },
-        );
-      }
+        },
+      );
     }
   }
 }

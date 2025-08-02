@@ -5,7 +5,6 @@ import 'package:liquify/liquify.dart' show FilterRegistry;
 import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
-
 import 'components/tabs.dart';
 import 'extensions/attribute_processor.dart';
 import 'extensions/code_block_processor.dart';
@@ -139,9 +138,9 @@ void main() {
             },
           ),
         ],
-        layouts: [const DocLayout(), const HomepageLayout()],
+        layouts: const [DocLayout(), HomepageLayout()],
         theme: const ContentTheme.none(),
-        secondaryOutputs: [const RobotsTxtOutput()],
+        secondaryOutputs: const [RobotsTxtOutput()],
       ),
     ),
   );

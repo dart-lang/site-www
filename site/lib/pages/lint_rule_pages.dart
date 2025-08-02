@@ -12,10 +12,14 @@ final class LintLoader extends RouteLoaderBase {
 
   @override
   Future<List<PageSource>> loadPageSources() async {
-    final lintRulesFile = File(
-      p.join('..', 'src', 'data', 'linter_rules.json'),
+    final lintRules = loadLints(
+      () {
+        final lintRulesFile = File(
+          p.join('..', 'src', 'data', 'linter_rules.json'),
+        );
+        return jsonDecode(lintRulesFile.readAsStringSync()) as Object;
+      },
     );
-    final lintRules = loadLints(jsonDecode(await lintRulesFile.readAsString()));
 
     final sources = [
       for (final lint in lintRules)
@@ -217,7 +221,7 @@ class _LintRulePageSource extends PageSource {
           'show_breadcrumbs': true,
           'underscore_breaker_titles': true,
           'description': 'Learn about the ${lint.name} linter rule.',
-          if (hide) ...{'noindex': true, 'sitemap': false},
+          if (hide) ...const {'noindex': true, 'sitemap': false},
         },
       },
       config: config,

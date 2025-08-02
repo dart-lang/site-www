@@ -45,7 +45,7 @@ class DashTabs implements CustomComponent {
 }
 
 class _DashTabsWrapper extends StatelessComponent {
-  _DashTabsWrapper({
+  const _DashTabsWrapper({
     required this.id,
     required this.tabs,
     this.saveKey,

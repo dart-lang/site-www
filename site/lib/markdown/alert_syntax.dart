@@ -65,7 +65,7 @@ final class AlertBlockSyntax extends md.BlockSyntax {
     // Create a new BlockParser with the same document context.
     // This preserves link references and other document-level state.
     final contentNodes = md.BlockParser(
-      contentLines.map(md.Line.new).toList(),
+      contentLines.map(md.Line.new).toList(growable: false),
       parser.document,
     ).parseLines(parentSyntax: this);
 
@@ -73,8 +73,6 @@ final class AlertBlockSyntax extends md.BlockSyntax {
 
     // If title is provided, create and add a header.
     if (title != null && title.isNotEmpty) {
-      final headerElement = md.Element('div', []);
-      headerElement.attributes['class'] = 'alert-header';
       final headerChildren = <md.Node>[];
 
       // If the type is any but 'secondary', add an icon.

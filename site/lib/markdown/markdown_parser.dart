@@ -68,11 +68,11 @@ class DashMarkdownParser implements PageParser {
   }
 
   static List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
-    // ignore: prefer_const_constructors
-    final root = ElementNode('_', {}, []);
+    final rootChildren = <Node>[];
+    final root = ElementNode('_', {}, rootChildren);
     final stack = Queue<ElementNode>();
     stack.add(root);
-    var currentNodes = root.children!;
+    var currentNodes = rootChildren;
 
     for (final node in markdownNodes) {
       if (node is HtmlText) {
@@ -96,13 +96,12 @@ class DashMarkdownParser implements PageParser {
 
           if (token.kind == html.TokenKind.startTag) {
             final tag = (token as html.StartTagToken).name ?? '';
-            final attributes = token.data.map(
-              (k, v) => MapEntry(k.toString(), v),
-            );
-            final element = ElementNode(tag, attributes, []);
+            final element = ElementNode(tag, {
+              for (final MapEntry(:key, :value) in token.data.entries)
+                key.toString(): value,
+            }, []);
             currentNodes.add(element);
-            final selfClosing =
-                token.selfClosing || _isVoidElement(token.name ?? '');
+            final selfClosing = token.selfClosing || _isVoidElement(tag);
             if (!selfClosing) {
               stack.add(element);
               currentNodes = element.children!;
@@ -129,25 +128,25 @@ class DashMarkdownParser implements PageParser {
           HtmlParser.buildNodes(html.parseFragment(node.text).nodes),
         );
       } else if (node is md.Element) {
-        final children = _buildNodes(node.children ?? []);
+        final nodeChildren = node.children;
         currentNodes.add(
           ElementNode(
             node.tag,
             {
-              if (node.generatedId != null) 'id': node.generatedId!,
+              'id': ?node.generatedId,
               ...node.attributes,
             },
-            children,
+            nodeChildren != null ? _buildNodes(nodeChildren) : null,
           ),
         );
       }
     }
 
-    return root.children!;
+    return rootChildren;
   }
 }
 
-bool _isVoidElement(String tag) => {
+bool _isVoidElement(String tag) => const {
   'area',
   'base',
   'br',

@@ -10,7 +10,7 @@ import '../util.dart';
 final class HeaderWithAttributesSyntax extends md.HeaderSyntax {
   const HeaderWithAttributesSyntax();
 
-  static final _attributeEndPattern = RegExp(r'\s*\{:\s*([^}]+)\}\s*$');
+  static final RegExp _attributeEndPattern = RegExp(r'\s*\{:\s*([^}]+)\}\s*$');
 
   @override
   md.Node parse(md.BlockParser parser) {
