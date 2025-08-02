@@ -4,6 +4,10 @@ description: >-
   Learn about JSON deserialization in Dart, including how to
   use `dart:convert`, `jsonDecode`, and pattern matching to work with
   JSON data from the Wikipedia API.
+sitemap: false
+noindex: true
+showToc: false
+show_breadcrumbs: true
 prevpage:
   url: /get-started/command-runner-polish
   title: Command runner polish
@@ -12,7 +16,7 @@ nextpage:
   title: Testing
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to work with
 [JSON (JavaScript Object Notation)][] data in Dart.

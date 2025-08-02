@@ -1,7 +1,7 @@
 ---
 title: DartPad Privacy Notice
 description: How Google uses the source code that you enter into DartPad.
-toc: false
+showToc: false
 ---
 
 DartPad is a free, open source service to help developers learn about the Dart

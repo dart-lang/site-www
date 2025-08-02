@@ -13,7 +13,7 @@ nextpage:
   title: Error handling
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll explore the power of object-oriented programming (OOP)
 in Dart. You'll learn how to create classes and define relationships between

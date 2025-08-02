@@ -100,46 +100,48 @@ class ArchivesTable extends StatelessComponent {
           ]),
         ]);
 
-        yield table(id: channel, classes: 'table', [
-          thead([
-            tr([
-              th([text('Version')]),
-              th([text('OS')]),
-              th([text('Architecture')]),
-              th([text('Release date')]),
-              th([text('Downloads')]),
+        yield div(classes: 'table-wrapper', [
+          table(id: channel, classes: 'table', [
+            thead([
+              tr([
+                th([text('Version')]),
+                th([text('OS')]),
+                th([text('Architecture')]),
+                th([text('Release date')]),
+                th([text('Downloads')]),
+              ]),
             ]),
-          ]),
-          tbody([
-            for (final version in selector.versionRows)
-              tr(
-                classes: selector.isVersionVisible(version) ? null : 'hidden',
-                attributes: {
-                  'data-version': version.version,
-                  'data-os': version.os.toLowerCase(),
-                },
-                [
-                  td([
-                    text(version.version),
-                    if (version.ref != null) //
-                      span(classes: 'muted', [text(' (${version.ref})')]),
-                  ]),
-                  td([text(version.os)]),
-                  td([text(version.arch)]),
-                  td([text(version.date)]),
-                  td(classes: 'archives', [
-                    for (final archive in version.archives) ...[
-                      if (archive != version.archives.first) //
-                        br(),
-                      a(href: archive.url, [text(archive.label)]),
-                      if (archive.hasSha256) //
-                        a(href: '${archive.url}.sha256sum', [
-                          text(' (SHA-256)'),
-                        ]),
-                    ],
-                  ]),
-                ],
-              ),
+            tbody([
+              for (final version in selector.versionRows)
+                tr(
+                  classes: selector.isVersionVisible(version) ? null : 'hidden',
+                  attributes: {
+                    'data-version': version.version,
+                    'data-os': version.os.toLowerCase(),
+                  },
+                  [
+                    td([
+                      text(version.version),
+                      if (version.ref != null) //
+                        span(classes: 'muted', [text(' (${version.ref})')]),
+                    ]),
+                    td([text(version.os)]),
+                    td([text(version.arch)]),
+                    td([text(version.date)]),
+                    td(classes: 'archives', [
+                      for (final archive in version.archives) ...[
+                        if (archive != version.archives.first) //
+                          br(),
+                        a(href: archive.url, [text(archive.label)]),
+                        if (archive.hasSha256) //
+                          a(href: '${archive.url}.sha256sum', [
+                            text(' (SHA-256)'),
+                          ]),
+                      ],
+                    ]),
+                  ],
+                ),
+            ]),
           ]),
         ]);
       },
