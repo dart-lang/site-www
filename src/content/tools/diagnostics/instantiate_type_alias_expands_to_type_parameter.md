@@ -4,7 +4,6 @@ description: >-
   Details about the instantiate_type_alias_expands_to_type_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

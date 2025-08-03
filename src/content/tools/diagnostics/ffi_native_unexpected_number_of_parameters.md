@@ -4,7 +4,6 @@ description: >-
   Details about the ffi_native_unexpected_number_of_parameters
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

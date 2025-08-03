@@ -4,7 +4,6 @@ description: >-
   Details about the ambiguous_set_or_map_literal_either
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

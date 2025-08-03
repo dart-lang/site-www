@@ -4,7 +4,6 @@ description: >-
   Details about the dot_shorthand_undefined_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

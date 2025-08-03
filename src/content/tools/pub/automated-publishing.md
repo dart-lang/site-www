@@ -1,5 +1,6 @@
 ---
 title: Automated publishing of packages to pub.dev
+short-title: Automated publishing
 description: Publish Dart packages to pub.dev directly from GitHub Actions.
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the expected_one_list_pattern_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

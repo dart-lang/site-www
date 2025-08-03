@@ -2,6 +2,7 @@
 title: Terms of use
 description: The terms of use for dart.dev.
 toc: false
+showBreadcrumbs: false
 skipFreshness: true
 ---
 

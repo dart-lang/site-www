@@ -4,7 +4,6 @@ description: >-
   Details about the non_type_as_type_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

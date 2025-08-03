@@ -1,6 +1,9 @@
 ---
 title: Glossary of package terms
-description: A glossary of terms relating to Dart's package management tool, pub.
+short-title: Pub glossary
+breadcrumb: Glossary
+description: >-
+  A glossary of terms relating to Dart's package management tool, pub.
 ---
 
 The following terms are used in the documentation for

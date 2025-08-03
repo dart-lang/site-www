@@ -302,7 +302,6 @@ short-title: Diagnostics
 description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
-show_breadcrumbs: true
 body_class: diagnostics
 ---
 
@@ -419,7 +418,6 @@ description: >-
   Details about the $diagnosticName
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 ''');
@@ -444,7 +442,6 @@ description: >-
   Details about the $diagnosticName
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 canonical: https://dart.dev/tools/diagnostics/$diagnosticName
 redirectTo: /tools/diagnostics/$diagnosticName
 sitemap: false
